@@ -1,43 +1,42 @@
 ---
-title: 'Connect to Azure Database for MySQL using Java | Microsoft Docs'
-description: This quickstart provides a Java code sample you can use to connect and query data from a Azure Database for MySQL database.
-services: mysql
+title: 'Connect to Azure Database for PostgreSQL using Java | Microsoft Docs'
+description: This quickstart provides a Java code sample you can use to connect and query data from Azure Database for PostgreSQL.
+services: postgresql
 author: jasonwhowell
 ms.author: jasonh
 manager: jhubbard
 editor: jasonwhowell
-ms.service: mysql-database
+ms.service: postgresql-database
 ms.custom: mvc
-ms.topic: article
 ms.devlang: java
+ms.topic: article
 ms.date: 06/20/2017
 ---
 
-# Azure Database for MySQL: Use Java to connect and query data
-This quickstart demonstrates how to connect to an Azure Database for MySQL using a Java application. It shows how to use SQL statements to query, insert, update, and delete data in the database. The steps in this article assume that you are familiar with developing using Java, and that you are new to working with Azure Database for MySQL.
+# Azure Database for PostgreSQL: Use Java to connect and query data
+This quickstart demonstrates how to connect to an Azure Database for PostgreSQL using a Java application. It shows how to use SQL statements to query, insert, update, and delete data in the database. The steps in this article assume that you are familiar with developing using Java, and that you are new to working with Azure Database for PostgreSQL.
 
 ## Prerequisites
 This quickstart uses the resources created in either of these guides as a starting point:
-- [Create an Azure Database for MySQL server using Azure portal](./quickstart-create-mysql-server-database-using-azure-portal.md)
-- [Create an Azure Database for MySQL server using Azure CLI](./quickstart-create-mysql-server-database-using-azure-cli.md)
+- [Create DB - Portal](quickstart-create-server-database-portal.md)
+- [Create DB - CLI](quickstart-create-server-database-azure-cli.md)
 
 You also need to:
-- Download the JDBC driver [MySQL Connector/J](https://dev.mysql.com/downloads/connector/j/)
-- Include the JDBC jar file (for example mysql-connector-java-5.1.42-bin.jar) into your application classpath.
-- Ensure your Azure Database for MySQL connection security is configured with the firewall opened and SSL settings adjusted for your application to connect successfully.
+- Download the [PostgreSQL JDBC Driver](https://jdbc.postgresql.org/download.html) matching your version of Java and the Java Development Kit.
+- Include the PostgreSQL JDBC jar file (for example postgresql-42.1.1.jar) in your application classpath. For more information, see [classpath details](https://jdbc.postgresql.org/documentation/head/classpath.html).
 
 ## Get connection information
-Get the connection information needed to connect to the Azure Database for MySQL. You need the fully qualified server name and login credentials.
+Get the connection information needed to connect to the Azure Database for PostgreSQL. You need the fully qualified server name and login credentials.
 
 1. Log in to the [Azure portal](https://portal.azure.com/).
-2. From the left-hand menu in Azure portal, click **All resources** and search for the server you have created, such as **myserver4demo**.
-3. Click the server name.
-4. Select the server's **Properties** page. Make a note of the **Server name** and **Server admin login name**.
- ![Azure Database for MySQL server name](./media/connect-java/1_server-properties-name-login.png)
+2. From the left-hand menu in Azure portal, click **All resources** and search for the server you have created, such as **mypgserver-20170401**.
+3. Click the server name **mypgserver-20170401**.
+4. Select the server's **Overview** page. Make a note of the **Server name** and **Server admin login name**.
+ ![Azure Database for PostgreSQL - Server Admin Login](./media/connect-java/1-connection-string.png)
 5. If you forget your server login information, navigate to the **Overview** page to view the Server admin login name and, if necessary, reset the password.
 
 ## Connect, create table, and insert data
-Use the following code to connect and load the data using the function with an **INSERT** SQL statement. The [getConnection()](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-usagenotes-connect-drivermanager.html) method is used to connect to MySQL. Methods [createStatement()](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-usagenotes-statements.html) and execute() are used to drop and create the table. The prepareStatement object is used to build the insert commands, with setString() and setInt() to bind the parameter values. Method executeUpdate() runs the command for each set of parameters to insert the values. 
+Use the following code to connect and load the data using the function with an **INSERT** SQL statement. The methods [getConnection()](https://www.postgresql.org/docs/7.4/static/jdbc-use.html), [createStatement()](https://jdbc.postgresql.org/documentation/head/query.html), and [executeQuery()](https://jdbc.postgresql.org/documentation/head/query.html) are used to connect, drop, and create the table. The prepareStatement object is used to build the insert commands, with setString() and setInt() to bind the parameter values. Method [executeUpdate()](https://jdbc.postgresql.org/documentation/head/update.html) runs the command for each set of parameters. 
 
 Replace the host, database, user, and password parameters with the values that you specified when you created your own server and database.
 
@@ -49,38 +48,37 @@ public class CreateTableInsertRows {
 
 	public static void main (String[] args)  throws Exception
 	{
-		// Initialize connection variables.	
-		String host = "myserver4demo.mysql.database.azure.com";
-		String database = "quickstartdb";
-		String user = "myadmin@myserver4demo";
+
+		// Initialize connection variables.
+		String host = "mypgserver-20170401.postgres.database.azure.com";
+		String database = "mypgsqldb";
+		String user = "mylogin@mypgserver-20170401";
 		String password = "<server_admin_password>";
 
 		// check that the driver is installed
 		try
 		{
-			Class.forName("com.mysql.jdbc.Driver");
+			Class.forName("org.postgresql.Driver");
 		}
 		catch (ClassNotFoundException e)
 		{
-			throw new ClassNotFoundException("MySQL JDBC driver NOT detected in library path.", e);
+			throw new ClassNotFoundException("PostgreSQL JDBC driver NOT detected in library path.", e);
 		}
 
-		System.out.println("MySQL JDBC driver detected in library path.");
+		System.out.println("PostgreSQL JDBC driver detected in library path.");
 
 		Connection connection = null;
 
 		// Initialize connection object
 		try
 		{
-			String url = String.format("jdbc:mysql://%s/%s", host, database);
-
-			// Set connection properties.
+			String url = String.format("jdbc:postgresql://%s/%s", host, database);
+			
+			// set up the connection properties
 			Properties properties = new Properties();
 			properties.setProperty("user", user);
 			properties.setProperty("password", password);
-			properties.setProperty("useSSL", "true");
-			properties.setProperty("verifyServerCertificate", "true");
-			properties.setProperty("requireSSL", "false");
+			properties.setProperty("ssl", "true");
 
 			// get connection
 			connection = DriverManager.getConnection(url, properties);
@@ -104,7 +102,7 @@ public class CreateTableInsertRows {
 				// Create table.
 				statement.execute("CREATE TABLE inventory (id serial PRIMARY KEY, name VARCHAR(50), quantity INTEGER);");
 				System.out.println("Created table.");
-				
+	
 				// Insert some data into table.
 				int nRowsInserted = 0;
 				PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO inventory (name, quantity) VALUES (?, ?);");
@@ -135,11 +133,10 @@ public class CreateTableInsertRows {
 		System.out.println("Execution finished.");
 	}
 }
-
 ```
 
 ## Read data
-Use the following code to read the data with a **SELECT** SQL statement. The [getConnection()](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-usagenotes-connect-drivermanager.html) method is used to connect to MySQL. The methods [createStatement()](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-usagenotes-statements.html) and executeQuery() are used to connect and run the select statement. The results are processed using a [ResultSet](https://docs.oracle.com/javase/tutorial/jdbc/basics/retrieving.html) object. 
+Use the following code to read the data with a **SELECT** SQL statement. The methods [getConnection()](https://www.postgresql.org/docs/7.4/static/jdbc-use.html), [createStatement()](https://jdbc.postgresql.org/documentation/head/query.html), and [executeQuery()](https://jdbc.postgresql.org/documentation/head/query.html) are used to connect, create, and run the select statement. The results are processed using a [ResultSet](https://www.postgresql.org/docs/7.4/static/jdbc-query.html) object. 
 
 Replace the host, database, user, and password parameters with the values that you specified when you created your own server and database.
 
@@ -151,45 +148,44 @@ public class ReadTable {
 
 	public static void main (String[] args)  throws Exception
 	{
+
 		// Initialize connection variables.
-		String host = "myserver4demo.mysql.database.azure.com";
-		String database = "quickstartdb";
-		String user = "myadmin@myserver4demo";
+		String host = "mypgserver-20170401.postgres.database.azure.com";
+		String database = "mypgsqldb";
+		String user = "mylogin@mypgserver-20170401";
 		String password = "<server_admin_password>";
 
 		// check that the driver is installed
 		try
 		{
-			Class.forName("com.mysql.jdbc.Driver");
+			Class.forName("org.postgresql.Driver");
 		}
 		catch (ClassNotFoundException e)
 		{
-			throw new ClassNotFoundException("MySQL JDBC driver NOT detected in library path.", e);
+			throw new ClassNotFoundException("PostgreSQL JDBC driver NOT detected in library path.", e);
 		}
 
-		System.out.println("MySQL JDBC driver detected in library path.");
+		System.out.println("PostgreSQL JDBC driver detected in library path.");
 
 		Connection connection = null;
 
 		// Initialize connection object
 		try
 		{
-			String url = String.format("jdbc:mysql://%s/%s", host, database);
-
-			// Set connection properties.
+			String url = String.format("jdbc:postgresql://%s/%s", host, database);
+			
+			// set up the connection properties
 			Properties properties = new Properties();
 			properties.setProperty("user", user);
 			properties.setProperty("password", password);
-			properties.setProperty("useSSL", "true");
-			properties.setProperty("verifyServerCertificate", "true");
-			properties.setProperty("requireSSL", "false");
-			
+			properties.setProperty("ssl", "true");
+
 			// get connection
 			connection = DriverManager.getConnection(url, properties);
 		}
 		catch (SQLException e)
 		{
-			throw new SQLException("Failed to create connection to database", e);
+			throw new SQLException("Failed to create connection to database.", e);
 		}
 		if (connection != null) 
 		{ 
@@ -214,19 +210,20 @@ public class ReadTable {
 			}
 			catch (SQLException e)
 			{
-				throw new SQLException("Encountered an error when executing given sql statement", e);
+				throw new SQLException("Encountered an error when executing given sql statement.", e);
 			}		
 		}
 		else {
-			System.out.println("Failed to create connection to database.");	
+			System.out.println("Failed to create connection to database.");
 		}
 		System.out.println("Execution finished.");
 	}
 }
+
 ```
 
 ## Update data
-Use the following code to change the data with an **UPDATE** SQL statement. The [getConnection()](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-usagenotes-connect-drivermanager.html) method is used to connect to MySQL. The methods [prepareStatement()](http://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html) and executeUpdate() are used to prepare and run the update statement. 
+Use the following code to change the data with an **UPDATE** SQL statement. The methods [getConnection()](https://www.postgresql.org/docs/7.4/static/jdbc-use.html), prepareStatement(), and [executeUpdate()](https://jdbc.postgresql.org/documentation/head/update.html) are used to connect, prepare, and run the update statement. 
 
 Replace the host, database, user, and password parameters with the values that you specified when you created your own server and database.
 
@@ -237,37 +234,37 @@ import java.util.Properties;
 public class UpdateTable {
 	public static void main (String[] args)  throws Exception
 	{
-		// Initialize connection variables.	
-		String host = "myserver4demo.mysql.database.azure.com";
-		String database = "quickstartdb";
-		String user = "myadmin@myserver4demo";
+
+		// Initialize connection variables.
+		String host = "mypgserver-20170401.postgres.database.azure.com";
+		String database = "mypgsqldb";
+		String user = "mylogin@mypgserver-20170401";
 		String password = "<server_admin_password>";
 
 		// check that the driver is installed
 		try
 		{
-			Class.forName("com.mysql.jdbc.Driver");
+			Class.forName("org.postgresql.Driver");
 		}
 		catch (ClassNotFoundException e)
 		{
-			throw new ClassNotFoundException("MySQL JDBC driver NOT detected in library path.", e);
+			throw new ClassNotFoundException("PostgreSQL JDBC driver NOT detected in library path.", e);
 		}
-		System.out.println("MySQL JDBC driver detected in library path.");
+
+		System.out.println("PostgreSQL JDBC driver detected in library path.");
 
 		Connection connection = null;
 
 		// Initialize connection object
 		try
 		{
-			String url = String.format("jdbc:mysql://%s/%s", host, database);
+			String url = String.format("jdbc:postgresql://%s/%s", host, database);
 			
 			// set up the connection properties
 			Properties properties = new Properties();
 			properties.setProperty("user", user);
 			properties.setProperty("password", password);
-			properties.setProperty("useSSL", "true");
-			properties.setProperty("verifyServerCertificate", "true");
-			properties.setProperty("requireSSL", "false");
+			properties.setProperty("ssl", "true");
 
 			// get connection
 			connection = DriverManager.getConnection(url, properties);
@@ -305,9 +302,8 @@ public class UpdateTable {
 	}
 }
 ```
-
 ## Delete data
-Use the following code to remove data with a **DELETE** SQL statement. The [getConnection()](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-usagenotes-connect-drivermanager.html) method is used to connect to MySQL.  The methods [prepareStatement()](http://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html) and executeUpdate() are used to prepare and run the update statement. 
+Use the following code to remove data with a **DELETE** SQL statement. The methods [getConnection()](https://www.postgresql.org/docs/7.4/static/jdbc-use.html), prepareStatement(), and [executeUpdate()](https://jdbc.postgresql.org/documentation/head/update.html) are used to connect, prepare, and run the delete statement. 
 
 Replace the host, database, user, and password parameters with the values that you specified when you created your own server and database.
 
@@ -318,45 +314,44 @@ import java.util.Properties;
 public class DeleteTable {
 	public static void main (String[] args)  throws Exception
 	{
+
 		// Initialize connection variables.
-		String host = "myserver4demo.mysql.database.azure.com";
-		String database = "quickstartdb";
-		String user = "myadmin@myserver4demo";
+		String host = "mypgserver-20170401.postgres.database.azure.com";
+		String database = "mypgsqldb";
+		String user = "mylogin@mypgserver-20170401";
 		String password = "<server_admin_password>";
-		
+
 		// check that the driver is installed
 		try
 		{
-			Class.forName("com.mysql.jdbc.Driver");
+			Class.forName("org.postgresql.Driver");
 		}
 		catch (ClassNotFoundException e)
 		{
-			throw new ClassNotFoundException("MySQL JDBC driver NOT detected in library path.", e);
+			throw new ClassNotFoundException("PostgreSQL JDBC driver NOT detected in library path.", e);
 		}
 
-		System.out.println("MySQL JDBC driver detected in library path.");
+		System.out.println("PostgreSQL JDBC driver detected in library path.");
 
 		Connection connection = null;
 
 		// Initialize connection object
 		try
 		{
-			String url = String.format("jdbc:mysql://%s/%s", host, database);
+			String url = String.format("jdbc:postgresql://%s/%s", host, database);
 			
 			// set up the connection properties
 			Properties properties = new Properties();
 			properties.setProperty("user", user);
 			properties.setProperty("password", password);
-			properties.setProperty("useSSL", "true");
-			properties.setProperty("verifyServerCertificate", "true");
-			properties.setProperty("requireSSL", "false");
-			
+			properties.setProperty("ssl", "true");
+
 			// get connection
 			connection = DriverManager.getConnection(url, properties);
 		}
 		catch (SQLException e)
 		{
-			throw new SQLException("Failed to create connection to database", e);
+			throw new SQLException("Failed to create connection to database.", e);
 		}
 		if (connection != null) 
 		{ 
@@ -389,4 +384,4 @@ public class DeleteTable {
 
 ## Next steps
 > [!div class="nextstepaction"]
-> [Migrate your MySQL database to Azure Database for MySQL using dump and restore](concepts-migrate-dump-restore.md)
+> [Migrate your database using Export and Import](./howto-migrate-using-export-and-import.md)
