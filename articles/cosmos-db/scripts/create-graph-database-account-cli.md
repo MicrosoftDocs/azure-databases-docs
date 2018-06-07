@@ -1,6 +1,6 @@
 ---
-title: Azure CLI Script-Get Azure Cosmos DB connection string for MongoDB apps| Microsoft Docs
-description: Azure CLI Script Sample - Get Azure Cosmos DB connection string for MongoDB apps
+title: Azure CLI Script-Create an Azure Cosmos DB Gremlin API account, database, and collection | Microsoft Docs
+description: Azure CLI Script Sample - Create an Azure Cosmos DB Gremlin API account, database, and collection
 services: cosmos-db
 documentationcenter: cosmosdb
 author: SnehaGunda
@@ -8,19 +8,19 @@ manager: kfile
 tags: azure-service-management
 
 ms.service: cosmos-db
-ms.component: cosmosdb-mongo
+ms.component: cosmosdb-graph
 ms.custom: mvc
 ms.devlang: azurecli
 ms.topic: sample
 ms.tgt_pltfrm: cosmosdb
 ms.workload: database
-ms.date: 06/02/2017
+ms.date: 05/29/2018
 ms.author: sngun
 ---
 
-# Get an Azure Cosmos DB connection string for MongoDB apps using the Azure CLI
+# Azure Cosmos DB: Create a Gremlin API account using the Azure CLI
 
-This sample gets an Azure Cosmos DB connection string for MongoDB apps using the Azure CLI. 
+This sample CLI script creates an Azure Cosmos DB Gremlin API account, database, and collection. 
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -28,7 +28,7 @@ If you choose to install and use the CLI locally, this topic requires that you a
 
 ## Sample script
 
-[!code-azurecli-interactive[main](../../../cli_scripts/cosmosdb/secure-cosmosdb-get-mongodb-connection-string/secure-cosmosdb-get-mongodb-connection-string.sh?highlight=36-39 "Get Azure Cosmos DB connection string for MongoDB apps")]
+[!code-azurecli-interactive[main](../../../cli_scripts/cosmosdb/create-cosmosdb-gremlin-account/create-cosmosdb-gremlin-account.sh?highlight=15-35 "Create an Azure Cosmos DB Gremlin API account, database, and collection")]
 
 ## Clean up deployment
 
@@ -44,10 +44,9 @@ This script uses the following commands. Each command in the table links to comm
 
 | Command | Notes |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | Creates a resource group in which all resources are stored. |
-| [az cosmosdb update](https://docs.microsoft.com/cli/azure/cosmosdb#az_cosmosdb_update) | Updates an Azure Cosmos DB account. |
-| [az cosmosdb list-connection-strings](https://docs.microsoft.com/cli/azure/cosmosdb#az_cosmosdb_list_connection_strings) | Gets the connection string for the account.|
-| [az group delete](https://docs.microsoft.com/cli/azure/group#az_group_delete) | Deletes a resource group including all nested resources. |
+| [az group create](/cli/azure/group#az_group_create) | Creates a resource group in which all resources are stored. |
+| [az cosmosdb create](/cli/azure/cosmosdb#az_cosmosdb_create) | Creates an Azure Cosmos DB account. |
+| [az group delete](/cli/azure/resource#az_resource_delete) | Deletes a resource group including all nested resources. |
 
 ## Next steps
 
