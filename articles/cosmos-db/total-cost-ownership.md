@@ -11,7 +11,7 @@ ms.author: rimman
 
 # Total Cost of Ownership(TCO) with Azure Cosmos DB
 
-Azure Cosmos DB is designed with the fine grained multi-tenancy and resource governance. This design allows Azure Cosmos DB to operate at significantly lower cost and help users save. Currently Azure Cosmos DB supports more than 280 customer workloads on a single machine with the density continuously increasing, and thousands of customer workloads within a cluster. It load balances replicas of customers workloads across different machines in a cluster and across multiple clusters within a data center To learn more, see [Azure Cosmos DB: Pushing the frontier of globally distributed databases](https://azure.microsoft.com/en-us/blog/azure-cosmos-db-pushing-the-frontier-of-globally-distributed-databases/). Because of  resource-governance, multi-tenancy, and native integration with the rest of Azure infrastructure, Azure Cosmos DB is on average 4 to 6 times cheaper than MongoDB, Cassandra, or other OSS NoSQL running on IaaS and up to 10 times cheaper than the database engines running on premises. See the paper on [The total cost of (non) ownership of a NoSQL database cloud service](https://documentdbportalstorage.blob.core.windows.net/papers/11.15.2017/NoSQL%20TCO%20paper.pdf).
+Azure Cosmos DB is designed with the fine grained multi-tenancy and resource governance. This design allows Azure Cosmos DB to operate at significantly lower cost and help users save. Currently Azure Cosmos DB supports more than 280 customer workloads on a single machine with the density continuously increasing, and thousands of customer workloads within a cluster. It load balances replicas of customers workloads across different machines in a cluster and across multiple clusters within a data center To learn more, see [Azure Cosmos DB: Pushing the frontier of globally distributed databases](https://azure.microsoft.com/blog/azure-cosmos-db-pushing-the-frontier-of-globally-distributed-databases/). Because of  resource-governance, multi-tenancy, and native integration with the rest of Azure infrastructure, Azure Cosmos DB is on average 4 to 6 times cheaper than MongoDB, Cassandra, or other OSS NoSQL running on IaaS and up to 10 times cheaper than the database engines running on premises. See the paper on [The total cost of (non) ownership of a NoSQL database cloud service](https://documentdbportalstorage.blob.core.windows.net/papers/11.15.2017/NoSQL%20TCO%20paper.pdf).
 
 The OSS NoSQL database solutions, such as Apache Cassandra, MongoDB, HBase, engines were designed for on-premises. When offered as a managed service they are equivalent to a Resource Manager template with a tenant database for managing the provisioned clusters and monitoring support. OSS NoSQL architectures require significant operational overhead, and the expertise can be difficult and expensive to find. On the other hand, Azure Cosmos DB is a fully managed cloud service, which allows developers to focus on business innovation rather than on managing and maintaining database infrastructure. 
 
@@ -25,7 +25,7 @@ The serverless provisioning model of Azure Cosmos DB eliminates the need to over
 
 * **No NoSQL devops administration is required:** With Azure Cosmos DB one does not need to employ devops to manage deployments, perform maintenance, scale, or patch. You can execute the all the workloads that you would do with OSS NoSQL cluster hosted on-premises or on cloud infrastructure.
 
-![Azure Cosmos DB cost of ownership](./media/total-cost-of-ownership/tco.png)
+![Azure Cosmos DB cost of ownership](./media/total-cost-ownership/tco.png)
 
 * **Ability to elastically scale:** Azure Cosmos DB throughput can be scaled up and down, allowing you to reduce the cost of ownership during non-peak times. OSS NoSQL clusters deployed on cloud infrastructure offer limited elasticity, and on-premises deployments aren't elastic by definition. In Azure Cosmos DB, if you provision more throughput, your throughput is guaranteed to scale linearly. This guarantee is backed up by financial SLAs and at the 99th percentile at any scale.
 
@@ -45,7 +45,7 @@ The serverless provisioning model of Azure Cosmos DB eliminates the need to over
 
 * **Deep integration of Azure Cosmos DB with other Azure services.** Azure Cosmos DB has a native integration with Networking, Compute, Azure Functions (serverless), Azure IoT, and others Azure services. With this integration, you get the best performance, speed of data replication across the world with robust guarantees. The third party solutions won't be able to match or would typically charge a premium to offer such features.
 
-* **You automatically get high availability, with at least 10-12 fault domains by default:** Azure Cosmos DB supports the distribution of workloads across fault domains, a feature that is critical for high availability. It offers 99.999 high availability for reads and writes at the 99th percentile across anywhere in the world. The cost of implementing something like this on your own or through a third-party solution, would be high.
+* **You automatically get high availability, with at least 10-20 fault domains by default:** Azure Cosmos DB supports the distribution of workloads across fault domains, a feature that is critical for high availability. It offers 99.999 high availability for reads and writes at the 99th percentile across anywhere in the world. The cost of implementing something like this on your own or through a third-party solution, would be high.
 
 * **You automatically get all enterprise capabilities, at no additional cost.** Azure Cosmos DB offers the most comprehensive set of compliance certifications, security, and encryption at rest and in motion at no additional cost (compared to our competition). You automatically get regional availability anywhere in the world. You can span your database across any number of Azure regions and add or remove regions at any point.
 
@@ -53,11 +53,11 @@ The serverless provisioning model of Azure Cosmos DB eliminates the need to over
 
 ## Next steps
 
-* Learn more about [How Azure Cosmos DB pricing model is cost-effective for customers](total-cost-of-ownership.md)
+* Learn more about [How Azure Cosmos DB pricing model is cost-effective for customers](total-cost-ownership.md)
 * Learn more about [Optimizing for development and testing](optimize-dev-test.md)
 * Learn more about [Optimizing throughput cost](optimize-cost-throughput.md)
 * Learn more about [Optimizing storage cost](optimize-cost-storage.md)
 * Learn more about [Optimizing the cost of reads and writes](optimize-cost-reads-writes.md)
-* Learn more about [Optimizing the cost of queries](optimize-cost-queries)
+* Learn more about [Optimizing the cost of queries](optimize-cost-queries.md)
 * Learn more about [Optimizing the cost of multi-region Cosmos accounts](optimize-cost-regions.md)
 * Learn more about [The Total Cost of (Non) Ownership of a NoSQL Database Cloud Service](https://documentdbportalstorage.blob.core.windows.net/papers/11.15.2017/NoSQL%20TCO%20paper.pdf)
