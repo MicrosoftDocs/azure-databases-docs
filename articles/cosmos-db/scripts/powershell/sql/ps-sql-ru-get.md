@@ -1,14 +1,14 @@
 ---
-title: Azure PowerShell script - Account key and connection string operations for an Azure Cosmos account
-description: Azure PowerShell script sample - Account key and connection string operations for an Azure Cosmos account
+title: Azure PowerShell script - Azure Cosmos DB get provisioned throughput (RU/s) for SQL (Core) API
+description: Azure PowerShell script - Azure Cosmos DB get provisioned throughput (RU/s) for SQL (Core) API
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 05/20/2019
+ms.date: 07/03/2019
 ms.author: mjbrown
 ---
 
-# Connection string and account key operations for an Azure Cosmos account using PowerShell
+# Get the provisioned throughput (RU/s) for a database or container for Azure Cosmos DB - SQL (Core) API
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -16,9 +16,7 @@ ms.author: mjbrown
 
 ## Sample script
 
-This samples requires the resource group and account to exist. Use an existing PowerShell create sample to provision an account first.
-
-[!code-powershell[main](../../../../../powershell_scripts/cosmosdb/common/ps-account-keys-connection-strings.ps1 "Connection strings and account keys for Azure Cosmos account")]
+[!code-powershell[main](../../../../../powershell_scripts/cosmosdb/sql/ps-sql-ru-get.ps1 "Get throughput for a database or container for SQL (Core) API")]
 
 ## Clean up deployment
 
@@ -35,7 +33,7 @@ This script uses the following commands. Each command in the table links to comm
 | Command | Notes |
 |---|---|
 |**Azure Resources**| |
-| [Invoke-AzResourceAction](https://docs.microsoft.com/powershell/module/az.resources/invoke-azresourceaction) | Invokes an action on a resource. |
+| [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Creates a resource. |
 |**Azure Resource Groups**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Deletes a resource group including all nested resources. |
 |||
