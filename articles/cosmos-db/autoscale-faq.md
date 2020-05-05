@@ -1,11 +1,11 @@
 ---
-title: Frequently asked questions on autoscale mode in Azure Cosmos DB 
+title: Frequently asked questions on autoscale provisioned throughput in Azure Cosmos DB 
 description: Frequently asked questions about autoscale provisioned throughput for Azure Cosmos DB databases and containers
 author: deborahc
 ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/24/2020
+ms.date: 04/28/2020
 ---
 
 # Frequently asked questions about autoscale provisioned throughput in Azure Cosmos DB
@@ -51,7 +51,7 @@ For shared throughput databases with autoscale mode enabled, the number of allow
 
 ### What is the storage limit associated with each max RU/s option?  
 The storage limit in GB for each max RU/s is: Max RU/s of database or container / 100. For example, if the max RU/s is 20,000 RU/s, the resource can support 200 GB of storage. 
-See the [autoscale limits](provision-throughput-autopilot.md#autoscale-limits) article for the available max RU/s and storage options. 
+See the [autoscale limits](provision-throughput-autoscale.md#autoscale-limits) article for the available max RU/s and storage options. 
 
 ### What happens if I exceed the storage limit associated with my max throughput?
 If the storage limit associated with the max throughput of the database or container is exceeded, Azure Cosmos DB will automatically increase the max throughput to the next highest RU/s that can support that level of storage.
@@ -76,6 +76,12 @@ Yes. See this [documentation](provision-throughput-autopilot.md#how-autoscale-pr
 ### Can I change the max RU/s on the database or container? 
 Yes. You can currently use the Azure Cosmos DB .NET V3 SDK or the Azure Portal to change the max RU/s. 
 
+### How quickly will autoscale up and down based on spikes in traffic?
+With autoscale, you can instantaneously scale up or scale down the RU/s within the minimum and maximum RU/s range, based on incoming traffic. Billing is done at a 1-hour granularity, where you are charged for the highest RU/s in a particular hour.
+
+### Can I increase the max RU/s (move to a higher tier) on the database or container? 
+Yes. From the **Scale & Settings** option for your container, or **Scale** option for your database, you can select a higher max RU/s for autoscale. This is an asynchronous scale-up operation that may take sometime to complete (typically 4-6 hours, depending on the RU/s selected) as the service provisions more resources to support the higher scale. 
+
 The minimum autoscale max RU/s is: MAX(4000, highest max RU/s ever provisioned / 10, current storage * 100). For example, suppose you have an autoscale container with max RU/s of 20,000 RU/s (scales between 2000 - 20,000 RU/s) and 50 GB of storage. You would be able to lower the max RU/s to a minimum of 5000 RU/s (scales between 500 - 5000 RU/s).
 
 ### What is the mapping between the max RU/s and physical partitions?
@@ -87,9 +93,9 @@ The Max RU/s of the database or container is divided evenly across all physical 
 If the overall consumed RU/s exceeds the max RU/s of the container or database, requests that exceed the max RU/s will be throttled and return a 429 status code. Requests that result in over 100% normalized utilization will also be throttled. Normalized utilization is defined as the max of the RU/s utilization across all physical partitions. For example, suppose your max throughput is 20,000 RU/s and you have two physical partitions, P_1 and P_2, each capable of scaling to 10,000 RU/s. In a given second, if P_1 has used 6000 RUs, and P_2 8000 RUs, the normalized utilization is MAX(6000 RU / 10,000 RU, 8000 RU / 10,000 RU) = 0.8.
 
 > [!NOTE]
-> The Azure Cosmos DB client SDKs and data import tools (Azure Data Factory, bulk executor library) automatically retry on 429s, so occasional 429s are fine. A sustained high number of 429s may indicate you need to increase the max RU/s or review your partitioning strategy for a [hot partition](#is-it-still-possible-to-see-429s-throttlingrate-limiting-when-autoscale-is-enabled).
+> The Azure Cosmos DB client SDKs and data import tools (Azure Data Factory, bulk executor library) automatically retry on 429s, so occasional 429s are fine. A sustained high number of 429s may indicate you need to increase the max RU/s or review your partitioning strategy for a [hot partition](#autoscale-rate-limiting).
 
-### Is it still possible to see 429s (throttling/rate limiting) when autoscale is enabled? 
+### <a id="autoscale-rate-limiting"></a> Is it still possible to see 429s (throttling/rate limiting) when autoscale is enabled? 
 Yes. It is possible to see 429s in two scenarios. First, when the overall consumed RU/s exceeds the max RU/s of the container or database, the service will throttle requests accordingly. 
 
 Second, if there is a hot partition, i.e. a logical partition key value that has a disproportionately higher amount of requests compared to other partition key values, it is possible for the underlying physical partition to exceed its RU/s budget. As a best practice, to avoid hot partitions, [choose a good partition key](partitioning-overview.md#choose-partitionkey) that results in an even distribution of both storage and throughput. 
@@ -98,6 +104,6 @@ For example, if you select the 20,000 RU/s max throughput option and have 200 GB
 
 ## Next steps
 
-* Learn how to [enable autoscale on an Azure Cosmos container or database](provision-throughput-autopilot.md#create-a-database-or-a-container-with-autoscale-mode).
-* Learn about the [benefits of provisioned throughput in autoscale mode](provision-throughput-autopilot.md#benefits-of-autoscale-mode).
+* Learn how to [enable autoscale on an Azure Cosmos container or database](provision-throughput-autoscale.md#create-db-container-autoscale).
+* Learn about the [benefits of provisioned throughput with autoscale](provision-throughput-autoscale.md#autoscale-benefits).
 * Learn more about [logical and physical partitions](partition-data.md).
