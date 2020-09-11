@@ -1,12 +1,12 @@
 ---
 title: Built-in policy definitions for Azure Database for MySQL
 description: Lists Azure Policy built-in policy definitions for Azure Database for MySQL. These built-in policy definitions provide common approaches to managing your Azure resources.
-ms.date: 07/10/2020
-ms.topic: sample
+ms.date: 09/10/2020
+ms.topic: reference
 author: ajlam
 ms.author: andrela
 ms.service: mysql
-ms.custom: subject-policy-samples
+ms.custom: subject-policy-reference
 ---
 # Azure Policy built-in definitions for Azure Database for MySQL
 
@@ -20,7 +20,7 @@ the link in the **Version** column to view the source on the
 
 ## Azure Database for MySQL
 
-[!INCLUDE [azure-policy-samples-rp-mysql](../../includes/policy/samples/byrp/microsoft.dbformysql.md)]
+[!INCLUDE [azure-policy-reference-rp-mysql](../../includes/policy/reference/byrp/microsoft.dbformysql.md)]
 
 ## Next steps
 

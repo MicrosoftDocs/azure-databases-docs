@@ -1,12 +1,12 @@
 ---
 title: Built-in policy definitions for Azure Database for PostgreSQL
 description: Lists Azure Policy built-in policy definitions for Azure Database for PostgreSQL. These built-in policy definitions provide common approaches to managing your Azure resources.
-ms.date: 07/10/2020
-ms.topic: sample
+ms.date: 09/10/2020
+ms.topic: reference
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
-ms.custom: subject-policy-samples
+ms.custom: subject-policy-reference
 ---
 # Azure Policy built-in definitions for Azure Database for PostgreSQL
 
@@ -21,7 +21,7 @@ the link in the **Version** column to view the source on the
 
 ## Azure Database for PostgreSQL
 
-[!INCLUDE [azure-policy-samples-rp-postgre](../../includes/policy/samples/byrp/microsoft.dbforpostgresql.md)]
+[!INCLUDE [azure-policy-reference-rp-postgre](../../includes/policy/reference/byrp/microsoft.dbforpostgresql.md)]
 
 ## Next steps
 
