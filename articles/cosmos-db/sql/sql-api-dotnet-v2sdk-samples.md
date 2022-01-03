@@ -1,25 +1,25 @@
 ---
 title: 'Azure Cosmos DB: .NET examples for the SQL API'
 description: Find C# .NET examples on GitHub for common tasks using the Azure Cosmos DB SQL API, including CRUD operations.
-author: SnehaGunda
+author: StefArroyo
+ms.author: esarroyo
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 08/26/2021
-ms.author: sngun
 ms.custom: devx-track-dotnet
 
 ---
-# Azure Cosmos DB: .NET examples for the SQL API
+# Azure Cosmos DB: .NET examples for the SQL API (Legacy)
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
 
 > [!div class="op_single_selector"]
-> * [.NET V2 SDK Examples](sql-api-dotnet-samples.md)
 > * [.NET V3 SDK Examples](sql-api-dotnet-v3sdk-samples.md)
 > * [Java V4 SDK Examples](sql-api-java-sdk-samples.md)
 > * [Spring Data V3 SDK Examples](sql-api-spring-data-sdk-samples.md)
 > * [Node.js Examples](sql-api-nodejs-samples.md)
 > * [Python Examples](sql-api-python-samples.md)
+> * [.NET V2 SDK Examples (Legacy)](sql-api-dotnet-v2sdk-samples.md)
 > * [Azure Code Sample Gallery](https://azure.microsoft.com/resources/samples/?sort=0&service=cosmos-db)
 > 
 > 
