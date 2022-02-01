@@ -1,18 +1,18 @@
 ---
-title: CLI script - Create server with vNet rule - Azure Database for MariaDB
-description: This sample CLI script creates an Azure Database for MariaDB server with a service endpoint on a virtual network and configures a vNet rule.
+title: CLI script - Create server with vNet rule - Azure Database for PostgreSQL
+description: This sample CLI script creates an Azure Database for PostgreSQL server with a service endpoint on a virtual network and configures a vNet rule.
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc, devx-track-azurecli
 ms.date: 01/26/2022 
 ---
 
-# Create a MariaDB server and configure a vNet rule using the Azure CLI
+# Create a PostgreSQL server and configure a vNet rule using the Azure CLI
 
-This sample CLI script creates an Azure Database for MariaDB server and configures a vNet rule.
+This sample CLI script creates an Azure Database for PostgreSQL server and configures a vNet rule.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -24,7 +24,7 @@ This sample CLI script creates an Azure Database for MariaDB server and configur
 
 ### Run the script
 
-:::code language="azurecli" source="~/azure_cli_scripts/mariadb/create-mariadb-server-vnet/create-mariadb-server.sh" range="4-50":::
+:::code language="azurecli" source="~/azure_cli_scripts/postgresql/create-postgresql-server-vnet/create-postgresql-server.sh" range="4-50":::
 
 ## Clean up resources
 
@@ -41,15 +41,15 @@ This script uses the commands outlined in the following table:
 | **Command** | **Notes** |
 |---|---|
 | [az group create](/cli/azure/group#az_group_create) | Creates a resource group in which all resources are stored. |
-| [az mariadb server create](/cli/azure/mariadb/server#az_mariadb_server_create) | Creates a MariaDB server that hosts the databases. |
+| [az postgresql server create](/cli/azure/postgresql/server#az_postgresql_server_create) | Creates a PostgreSQL server that hosts the databases. |
 | [az network vnet list-endpoint-services](/cli/cli/azure/network/vnet#az-network-vnet-list-endpoint-services) | List which services support VNET service tunneling in a given region. |
 | [az network vnet create](/cli/azure/network/vnet#az-network-vnet-create) | Creates a virtual network. |
 | [az network vnet subnet create](/cli/azure/network/vnet#az-network-vnet-subnet-create) | Create a subnet and associate an existing NSG and route table. |
-| [az network vnet subnet show](/cli/azure/network/vnet#az-network-vnet-subnet-show) | Shows details of a subnet. |
-| [az mariadb server vnet-rule create](/cli/azure/mariadb/server/vnet-rule#az-mariadb-server-vnet-rule-create) | Create a virtual network rule to allows access to a MariaDB server. |
+| [az network vnet subnet show](/cli/azure/network/vnet#az-network-vnet-subnet-show) |Shows details of a subnet. |
+| [az postgresql server vnet-rule create](/cli/azure/postgresql/server/vnet-rule#az-postgresql-server-vnet-rule-create) | Create a virtual network rule to allows access to a PostgreSQL server. |
 | [az group delete](/cli/azure/group#az_group_delete) | Deletes a resource group including all nested resources. |
 
 ## Next steps
 
 - Read more information on the Azure CLI: [Azure CLI documentation](/cli/azure).
-- Try additional scripts: [Azure CLI samples for Azure Database for MariaDB](../sample-scripts-azure-cli.md).
+- Try additional scripts: [Azure CLI samples for Azure Database for PostgreSQL](../sample-scripts-azure-cli.md)
