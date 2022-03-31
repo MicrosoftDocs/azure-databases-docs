@@ -1,8 +1,8 @@
 ---
 title: Determine application type - Hyperscale (Citus) - Azure Database for PostgreSQL
 description: Identify your application for effective distributed data modeling
-author: jonels-msft
 ms.author: jonels
+author: jonels-msft
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
@@ -83,5 +83,5 @@ queries to ensure performance.
 ## Next steps
 
 * [Choose a distribution
-  column](concepts-choose-distribution-column.md) for tables in your
+  column](howto-choose-distribution-column.md) for tables in your
   application to distribute data efficiently
