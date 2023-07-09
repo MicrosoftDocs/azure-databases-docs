@@ -1,7 +1,7 @@
 ---
-title: IntBitAnd
+title: IntBitXor
 titleSuffix: Azure Cosmos DB for NoSQL
-description: An Azure Cosmos DB for NoSQL system function that compares bits of each operand using an inclusive AND operator.
+description: An Azure Cosmos DB for NoSQL system function that compares bits of each operand using an exclusive OR operator.
 author: jcodella
 ms.author: jacodel
 ms.reviewer: sidandrews
@@ -12,16 +12,16 @@ ms.date: 07/01/2023
 ms.custom: query-reference
 ---
 
-# IntBitAnd (NoSQL query)
+# IntBitXor (NoSQL query)
 
 [!INCLUDE[NoSQL](../../includes/appliesto-nosql.md)]
 
-Compares the bits on both the left-hand and right-hand operators using `AND` and returns a result for each bit. If both bits match, the corresponding bit is `1`. Otherwise, the corresponding bit is `0`. For more information, see [bitwise `AND` operator](/cpp/cpp/bitwise-and-operator-amp).
+Compares the bits on both the left-hand and right-hand operators using exclusive `OR` and returns a result for each bit. If a bit is a `0` and the other bit is `1`, the corresponding bit is `1`. Otherwise, the corresponding bit is `0`. For more information, see [bitwise exclusive `OR` operator](/cpp/cpp/bitwise-exclusive-or-operator-hat).
 
 ## Syntax
 
 ```sql
-IntBitAnd(<int_expr_1>, <int_expr_2>)
+IntBitXor(<int_expr_1>, <int_expr_2>)
 ```
 
 ## Arguments
@@ -41,19 +41,19 @@ This example tests the function with various static values.
 
 ```sql
 SELECT VALUE {
-    compareNumbers: IntBitAnd(15, 25),
-    compareZero: IntBitAnd(15, 0),
-    compareSameNumber: IntBitAnd(15, 15),
-    compareDecimal: IntBitAnd(15, 1.5)
+    exclusiveOr: IntBitXor(56, 100),
+    exclusiveOrSame: IntBitXor(56, 56),
+    exclusiveOrZero: IntBitXor(56, 0),
+    exclusiveOrDecimal: IntBitXor(56, 0.1)
 }
 ```
 
 ```json
 [
   {
-    "compareNumbers": 9,
-    "compareZero": 0,
-    "compareSameNumber": 15
+    "exclusiveOr": 92,
+    "exclusiveOrSame": 0,
+    "exclusiveOrZero": 56
   }
 ]
 ```
