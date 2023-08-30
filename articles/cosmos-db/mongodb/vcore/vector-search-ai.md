@@ -1,13 +1,14 @@
 ---
-title: Build AI apps with Azure Cosmos DB for MongoDB vCore vector search
-description: Enhance AI-powered applications with Retrieval Augmented Generation (RAG) by using vector search in Azure Cosmos DB for MongoDB vCore.
+title: Build AI apps with vector search
+titleSuffix: Azure Cosmos DB for MongoDB vCore
+description: Enhance AI-powered applications with Retrieval Augmented Generation (RAG) by using Azure Cosmos DB for MongoDB vCore vector search.
+author: gahl-levy
+ms.author: gahllevy
+ms.reviewer: sidandrews
 ms.service: cosmos-db
 ms.subservice: mongodb-vcore
-ms.topic: tutorial
-author: sandnair
-ms.author: sandnair
-ms.reviewer: sandnair
-ms.date: 08/22/2023
+ms.topic: conceptual
+ms.date: 08/28/2023
 ---
 
 # Build AI apps with Azure Cosmos DB for MongoDB vCore vector search
@@ -16,7 +17,7 @@ ms.date: 08/22/2023
 
 Language models available in Azure OpenAI Service can elevate the capabilities of your AI-driven applications. To fully unleash the potential of language models, you must give them access to timely and relevant data from your application's data store. You can accomplish this process, known as Retrieval Augmented Generation (RAG), by using Azure Cosmos DB.
 
-This tutorial delves into the core concepts of RAG. It provides links to tutorials and sample code that exemplify RAG strategies by using vector search in Azure Cosmos DB for MongoDB vCore.
+This article delves into the core concepts of RAG. It provides links to tutorials and sample code that exemplify RAG strategies by using vector search in Azure Cosmos DB for MongoDB vCore.
 
 RAG elevates AI-powered applications by incorporating external knowledge and data into model inputs. With vector search in Azure Cosmos DB for MongoDB vCore, this process becomes seamless. You can use it to integrate the most pertinent information into your AI models with minimal effort.
 
@@ -32,13 +33,13 @@ RAG addresses these limitations by using embeddings, which convert data into vec
 
 [Vector search](./vector-search.md) is an approach that enables the discovery of analogous items based on shared data characteristics. It deviates from the necessity for precise matches within a property field.
 
-This method is invaluable in applications like text similarity searches, image association, recommendation systems, and anomaly detection. Its functionality revolves around the use of vector representations (sequences of numerical values) generated from your data via machine learning models or embeddings APIs. Examples of such APIs encompass [Azure OpenAI embeddings](/azure/ai-services/openai/tutorials/embeddings) or [Hugging Face on Azure](https://azure.microsoft.com/solutions/hugging-face-on-azure/).
+This method is invaluable in applications like text similarity searches, image association, recommendation systems, and anomaly detection. Its functionality revolves around the use of vector representations (sequences of numerical values) that are generated from your data via machine learning models or embeddings APIs. Examples of such APIs encompass [Azure OpenAI embeddings](/azure/ai-services/openai/how-to/embeddings) or [Hugging Face on Azure](https://azure.microsoft.com/solutions/hugging-face-on-azure/).
 
 The technique gauges the disparity between your query vector and the data vectors. The data vectors that show the closest proximity to your query vector are identified as semantically akin.
 
-## How can you use vector search with Azure Cosmos DB for MongoDB vCore?
+## How does vector search work in Azure Cosmos DB for MongoDB vCore?
 
-You can truly harness the power of RAG through the native vector search capability within Azure Cosmos DB for MongoDB vCore. This native search fuses AI-focused applications with stored data in Azure Cosmos DB.
+You can truly harness the power of RAG through the native vector search capability in Azure Cosmos DB for MongoDB vCore. This native search fuses AI-focused applications with stored data in Azure Cosmos DB.
 
 Vector search optimally stores, indexes, and searches high-dimensional vector data directly within Azure Cosmos DB for MongoDB vCore, alongside other application data. This capability eliminates the need to migrate data to costlier alternatives for vector search functionality.
 
@@ -46,9 +47,9 @@ Vector search optimally stores, indexes, and searches high-dimensional vector da
 
 - [.NET retail chatbot demo](https://github.com/AzureCosmosDB/VectorSearchAiAssistant/tree/mongovcorev2): Learn how to use .NET to build a chatbot that demonstrates the potential of RAG in a retail context.
 - [.NET tutorial - recipe chatbot](https://github.com/microsoft/AzureDataRetrievalAugmentedGenerationSamples/tree/main/C%23/CosmosDB-MongoDBvCore): Walk through creating a recipe chatbot by using .NET, to showcase the application of RAG in a culinary scenario.
-- [Python notebook tutorial - Azure product chatbot](https://github.com/microsoft/AzureDataRetrievalAugmentedGenerationSamples/tree/main/Python/CosmosDB-MongoDB-vCore): Learn how to create an Azure product chatbot that highlights the benefits of RAG.
+- [Python notebook tutorial - Azure product chatbot](https://github.com/microsoft/AzureDataRetrievalAugmentedGenerationSamples/tree/main/Python/CosmosDB-MongoDB-vCore): Learn how to construct an Azure product chatbot that highlights the benefits of RAG.
 
 ## Next steps
 
 > [!div class="nextstepaction"]
-> [Introduction to Azure Cosmos DB for MongoDB vCore](introduction.md)
+> [Vector search](vector-search.md)
