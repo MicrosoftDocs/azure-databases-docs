@@ -1,21 +1,23 @@
 ---
-title: Emulator command-line and PowerShell reference
+title: Windows emulator command-line and PowerShell reference
 titleSuffix: Azure Cosmos DB 
-description: Manage the Azure Cosmos DB emulator with PowerShell and change the number of containers that you can create within the emulator.   
+description: Manage the Azure Cosmos DB emulator with the command line or PowerShell and change the configuration of the emulator.   
+author: sajeetharan
+ms.author: sasinnat
+ms.reviewer: sidandrews
 ms.service: cosmos-db
 ms.topic: reference
-author: seesharprun
-ms.author: sidandrews
-ms.reviewer: mjbrown
-ms.date: 04/03/2023
-ms.custom: contperf-fy21q1, ignite-2022
+ms.date: 09/11/2023
 ---
 
-# Command-line and PowerShell reference for emulator
+# Command-line and PowerShell reference for Windows (local) emulator
 
 [!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
-The Azure Cosmos DB emulator provides a local environment that emulates the Azure Cosmos DB service for local development purposes. After [installing the emulator](local-emulator.md), you can control the emulator with command line and PowerShell commands. This article describes how to use the command-line and PowerShell commands to start and stop the emulator, configure options, and perform other operations. You have to run the commands from the installation location.
+The Azure Cosmos DB emulator provides a local environment that emulates the Azure Cosmos DB service for local development purposes. After installing the emulator, you can control the emulator with command line and PowerShell commands. This article describes how to use the command-line and PowerShell commands to start and stop the emulator, configure options, and perform other operations. You have to run the commands from the installation location.
+
+> [!IMPORTANT]
+> This article only includes command-line arguments for the Windows local emulator.
 
 ## Manage the emulator with command-line syntax
 
@@ -55,7 +57,7 @@ To view the list of parameters, type `Microsoft.Azure.Cosmos.Emulator.exe /?` at
 | `StopTraces` | Stop collecting debug trace logs using **LOGMAN**. | `Microsoft.Azure.Cosmos.Emulator.exe /StopTraces` |
 | `StartWprTraces` | Start collecting debug trace logs using **Windows Performance Recording** tool. | `Microsoft.Azure.Cosmos.Emulator.exe /StartWprTraces` |
 | `StopWprTraces` | Stop collecting debug trace logs using **Windows Performance Recording** tool. | `Microsoft.Azure.Cosmos.Emulator.exe /StopWprTraces` |
-| `FailOnSslCertificateNameMismatch` | By default the emulator regenerates its self-signed TLS/SSL certificate, if the certificate's SAN doesn't include the emulator host's domain name, local IPv4 address, `localhost`, and `127.0.0.1`. With this option, the emulator instead fails at startup. You should then use the `/GenCert` option to create and install a new self-signed TLS/SSL certificate. | `Microsoft.Azure.Cosmos.Emulator.exe /FailOnSslCertificateNameMismatch` |
+| `FailOnSslCertificateNameMismatch` | By default the emulator regenerates its self-signed TLS/SSL certificate, if the certificate's SAN doesn't include the emulator host's domain name, local IP address ([v4](https://wikipedia.org/wiki/Internet_Protocol_version_4)), `localhost`, and `127.0.0.1`. With this option, the emulator instead fails at startup. You should then use the `/GenCert` option to create and install a new self-signed TLS/SSL certificate. | `Microsoft.Azure.Cosmos.Emulator.exe /FailOnSslCertificateNameMismatch` |
 | `GenCert` | Generate and install a new self-signed TLS/SSL certificate. optionally including a comma-separated list of extra DNS names for accessing the emulator over the network. | `Microsoft.Azure.Cosmos.Emulator.exe /GenCert`  |
 | `DirectPorts` | Specifies the ports to use for direct connectivity. Defaults are `10251`, `10252`, `10253`, and `10254`. | `Microsoft.Azure.Cosmos.Emulator.exe /DirectPorts:65600,65700` |
 | `Key` | Authorization key for the emulator. Key must be the base-64 encoding of a 64-byte vector. | `Microsoft.Azure.Cosmos.Emulator.exe /Key:D67PoU0bcK/kgPKFHu4W+3SUY9LNcwcFLIUHnwrkA==` |
@@ -69,7 +71,7 @@ To view the list of parameters, type `Microsoft.Azure.Cosmos.Emulator.exe /?` at
 | `NoFirewall` | Don't adjust firewall rules when `/AllowNetworkAccess` option is used. | `Microsoft.Azure.Cosmos.Emulator.exe /NoFirewall` |
 | `GenKeyFile` | Generate a new authorization key and save to the specified file. The generated key can be used with the `/Key` or `/KeyFile` options. | `Microsoft.Azure.Cosmos.Emulator.exe /GenKeyFile=D:\Keys\keyfile` |
 | `Consistency` | Set the default consistency level for the account. The default value is **Session**. | `Microsoft.Azure.Cosmos.Emulator.exe /Consistency=Strong` |
-| `?` | Show the help message.| |
+| `?` | Show the help message. | |
 
 ## Manage the emulator with PowerShell cmdlets
 
@@ -110,7 +112,7 @@ Get-CosmosDbEmulatorStatus
 
 | Name | Type | Description |
 | --- | --- | --- |
-| `AlternativeInstallLocation` | String | |
+| `AlternativeInstallLocation` | `String` | |
 
 #### Examples
 
@@ -149,37 +151,37 @@ Start-CosmosDbEmulator [-AllowNetworkAccess]
 
 | Name | Type | Description |
 | --- | --- | --- |
-| `AllowNetworkAccess` | SwitchParameter | Allow access from all IP Addresses assigned to the emulator's host. You must also specify a value for Key or KeyFile to allow network access. |
-| `AlternativeInstallLocation` | String | Alternative location path to the emulator executable. |
-| `CassandraPort` | UInt16 | Port number to use for the API for Cassandra. The default port is `10350`. |
-| `ComputePort` | UInt16 | Port to use for the compute interop gateway service. The gateway's HTTP endpoint probe port is calculated as `ComputePort + 79`. Hence, `ComputePort` and `ComputePort + 79` must be open and available. The default ports are `8900`, `8979`. |
-| `Consistency` | String | Sets the default consistency level for the emulator to **Session**, **Strong**, **Eventual**, or **BoundedStaleness**. The default level is **Session.** |
-| `Credential` | PSCredential | Specifies a user account that has permission to perform this action. Use a username, such as `User01` or `Domain01\User01`, or enter a [`PSCredential`](/dotnet/api/system.management.automation.pscredential) object, such as one from the [`Get-Credential`](/powershell/module/microsoft.powershell.security/get-credential/) cmdlet. By default, the cmdlet uses the credentials of the current user. |
-| `DataPath` | String | Path to store data files. The default location for data files is `$env:LocalAppData\CosmosDbEmulator`. |
-| `DefaultPartitionCount` | UInt16 | The number of partitions to reserve per partitioned collection. The default is **25**, which is the same as default value of the total partition count. |
-| `DirectPort` | UInt16 | A list of four ports to use for direct connectivity to the emulator's backend. The default list is `10251`, `10252`, `10253`, and `10254`. |
-| `EnableMongoDb` | SwitchParameter | Specifies that API for MongoDB endpoint is enabled. The default is **false**. |
-| `EnableCassandra` | SwitchParameter | Specifies that API for Apache Cassandra endpoint is enabled. The default is **false**. |
-| `EnableGremlin` | SwitchParameter | Specifies that API for Apache Gremlin endpoint is enabled. The default is **false**. |
-| `EnableTable` | SwitchParameter | Specifies that API for Table endpoint is enabled. The default is **false**. |
-| `EnableSqlCompute` | SwitchParameter | Specifies that API for NoSQL endpoint is enabled. The default is **false**. |
-| `EnablePreview` | SwitchParameter | Enables emulator features that are in preview and not fully matured to be on by default. |
-| `FailOnSslCertificateNameMismatch` | SwitchParameter | By default the emulator regenerates its self-signed TLS/SSL certificate, if the certificate's SAN doesn't include the emulator host's domain name, local IPv4 address, `localhost`, and `127.0.0.1`. This option causes the emulator to fail at startup instead. You should then use the `New-CosmosDbEmulatorCertificate` option to create and install a new self-signed TLS/SSL certificate. |
-| `GremlinPort` | UInt16 | Port number to use for the API for Apache Gremlin. The default port number is `8901`. |
-| `TablePort` | UInt16 | Port number to use for the API for Table. The default port number is `8902`. |
-| `SqlComputePort` | UInt16 | Port number to use for the API for NoSQL. The default port number is `8903`. |
-| `Key` | String | Authorization key for the emulator. This value must be the base 64 encoding of a 64-byte vector. |
-| `MongoPort` | UInt16 | Port number to use for the API for MongoDB. The default port number is `10250`. |
-| `MongoApiVersion` | String | Specifies which version to use for the API for MongoDB. The default version is `4.0`. |
-| `NoFirewall` | SwitchParameter | Specifies that no inbound port rules should be added to the emulator host's firewall. |
-| `NoTelemetry` | SwitchParameter | Specifies that the cmdlet shouldn't collect data for the current emulator session. |
-| `NoUI` | SwitchParameter | Specifies that the cmdlet shouldn't present the user interface or taskbar icon. |
-| `NoWait` | SwitchParameter | Specifies that the cmdlet should return as soon as the emulator begins to start. By default the cmdlet waits until startup is complete and the emulator is ready to receive requests before returning. |
-| `PartitionCount` | UInt16 | The total number of partitions allocated by the emulator. |
-| `Port` | UInt16 | Port number for the emulator Gateway Service and Web UI. The default port number is `8081`. |
-| `SimulateRateLimiting` | SwitchParameter | |
-| `Timeout` | UInt32 | |
-| `Trace` | SwitchParameter | |
+| `AllowNetworkAccess` | `SwitchParameter` | Allow access from all IP Addresses assigned to the emulator's host. You must also specify a value for Key or KeyFile to allow network access. |
+| `AlternativeInstallLocation` | `String` | Alternative location path to the emulator executable. |
+| `CassandraPort` | `UInt16` | Port number to use for the API for Cassandra. The default port is `10350`. |
+| `ComputePort` | `UInt16` | Port to use for the compute interop gateway service. The gateway's HTTP endpoint probe port is calculated as `ComputePort + 79`. Hence, `ComputePort` and `ComputePort + 79` must be open and available. The default ports are `8900`, `8979`. |
+| `Consistency` | `String` | Sets the default consistency level for the emulator to **Session**, **Strong**, **Eventual**, or **BoundedStaleness**. The default level is **Session.** |
+| `Credential` | `PSCredential` | Specifies a user account that has permission to perform this action. Use a username, such as `User01` or `Domain01\User01`, or enter a [`PSCredential`](/dotnet/api/system.management.automation.pscredential) object, such as one from the [`Get-Credential`](/powershell/module/microsoft.powershell.security/get-credential/) cmdlet. By default, the cmdlet uses the credentials of the current user. |
+| `DataPath` | `String` | Path to store data files. The default location for data files is `$env:LocalAppData\CosmosDbEmulator`. |
+| `DefaultPartitionCount` | `UInt16` | The number of partitions to reserve per partitioned collection. The default is **25**, which is the same as default value of the total partition count. |
+| `DirectPort` | `UInt16` | A list of four ports to use for direct connectivity to the emulator's backend. The default list is `10251`, `10252`, `10253`, and `10254`. |
+| `EnableMongoDb` | `SwitchParameter` | Specifies that API for MongoDB endpoint is enabled. The default is **false**. |
+| `EnableCassandra` | `SwitchParameter` | Specifies that API for Apache Cassandra endpoint is enabled. The default is **false**. |
+| `EnableGremlin` | `SwitchParameter` | Specifies that API for Apache Gremlin endpoint is enabled. The default is **false**. |
+| `EnableTable` | `SwitchParameter` | Specifies that API for Table endpoint is enabled. The default is **false**. |
+| `EnableSqlCompute` | `SwitchParameter` | Specifies that API for NoSQL endpoint is enabled. The default is **false**. |
+| `EnablePreview` | `SwitchParameter` | Enables emulator features that are in preview and not fully matured to be on by default. |
+| `FailOnSslCertificateNameMismatch` | `SwitchParameter` | By default the emulator regenerates its self-signed TLS/SSL certificate, if the certificate's SAN doesn't include the emulator host's domain name, local IP address ([v4](https://wikipedia.org/wiki/Internet_Protocol_version_4)), `localhost`, and `127.0.0.1`. This option causes the emulator to fail at startup instead. You should then use the `New-CosmosDbEmulatorCertificate` option to create and install a new self-signed TLS/SSL certificate. |
+| `GremlinPort` | `UInt16` | Port number to use for the API for Apache Gremlin. The default port number is `8901`. |
+| `TablePort` | `UInt16` | Port number to use for the API for Table. The default port number is `8902`. |
+| `SqlComputePort` | `UInt16` | Port number to use for the API for NoSQL. The default port number is `8903`. |
+| `Key` | `String` | Authorization key for the emulator. This value must be the base 64 encoding of a 64-byte vector. |
+| `MongoPort` | `UInt16` | Port number to use for the API for MongoDB. The default port number is `10250`. |
+| `MongoApiVersion` | `String` | Specifies which version to use for the API for MongoDB. The default version is `4.0`. |
+| `NoFirewall` | `SwitchParameter` | Specifies that no inbound port rules should be added to the emulator host's firewall. |
+| `NoTelemetry` | `SwitchParameter` | Specifies that the cmdlet shouldn't collect data for the current emulator session. |
+| `NoUI` | `SwitchParameter` | Specifies that the cmdlet shouldn't present the user interface or taskbar icon. |
+| `NoWait` | `SwitchParameter` | Specifies that the cmdlet should return as soon as the emulator begins to start. By default the cmdlet waits until startup is complete and the emulator is ready to receive requests before returning. |
+| `PartitionCount` | `UInt16` | The total number of partitions allocated by the emulator. |
+| `Port` | `UInt16` | Port number for the emulator Gateway Service and Web UI. The default port number is `8081`. |
+| `SimulateRateLimiting` | `SwitchParameter` | |
+| `Timeout` | `UInt32` | |
+| `Trace` | `SwitchParameter` | |
 
 #### Examples
 
@@ -226,10 +228,10 @@ Stop-CosmosDbEmulator
 
 | Name | Type | Description |
 | --- | --- | --- |
-| `AlternativeInstallLocation` | String | |
-| `Timeout` | UInt32 | |
-| `NoWait` | SwitchParameter | Specifies that the cmdlet should return as soon as the shutdown begins. |
-| `Trace` | SwitchParameter | |
+| `AlternativeInstallLocation` | `String` | |
+| `Timeout` | `UInt32` | |
+| `NoWait` | `SwitchParameter` | Specifies that the cmdlet should return as soon as the shutdown begins. |
+| `Trace` | `SwitchParameter` | |
 
 #### Examples
 
@@ -256,7 +258,7 @@ Uninstall-CosmosDbEmulator
 
 | Name | Type | Description |
 | --- | --- | --- |
-| `RemoveData` | SwitchParameter | Specifies that the cmdlet should delete all data after it removes the emulator. |
+| `RemoveData` | `SwitchParameter` | Specifies that the cmdlet should delete all data after it removes the emulator. |
 
 #### Examples
 
@@ -292,5 +294,5 @@ To change the number of containers available in the emulator, run the following 
 
 ## Next steps
 
-- [Export the emulator certificates for use with Java, Python, and Node.js apps](local-emulator-export-ssl-certificates.md)
-- [Debug issues with the emulator](troubleshoot-local-emulator.md)
+- [Learn more about the Azure Cosmos DB emulator](emulator.md)
+- [Review the emulator's release notes](emulator-release-notes.md)
