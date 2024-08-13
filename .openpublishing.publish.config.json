@@ -3,6 +3,10 @@
     {
       "docset_name": "azure-databases",
       "build_source_folder": ".",
+      "xref_query_tags": [
+        "/dotnet",
+        "/python"
+      ],
       "build_output_subfolder": "azure-databases",
       "locale": "en-us",
       "monikers": [],
@@ -21,6 +25,240 @@
     {
       "path_to_root": "_themes",
       "url": "https://github.com/Microsoft/templates.docs.msft",
+      "branch": "main",
+      "branch_mapping": {}
+    },
+    {
+      "path_to_root": "reusable-content",
+      "url": "https://github.com/MicrosoftDocs/reusable-content",
+      "branch": "main",
+      "branch_mapping": {}
+    },
+    {
+      "path_to_root": "cosmosdb-cassandra-python-sample",
+      "url": "https://github.com/Azure-Samples/azure-cosmos-db-cassandra-python-getting-started",
+      "branch": "main",
+      "branch_mapping": {}
+    },
+    {
+      "path_to_root": "quickstart-templates",
+      "url": "https://github.com/Azure/azure-quickstart-templates",
+      "branch": "master",
+      "branch_mapping": {}
+    },
+    {
+      "path_to_root": "samples-cosmosdb-dotnet-v3",
+      "url": "https://github.com/Azure/azure-cosmos-dotnet-v3",
+      "branch": "master",
+      "branch_mapping": {}
+    },
+    {
+      "path_to_root": "cosmos-db-apache-gremlin-dotnet-samples",
+      "url": "https://github.com/azure-samples/cosmos-db-apache-gremlin-dotnet-samples",
+      "branch": "main",
+      "branch_mapping": {}
+    },
+    {
+      "path_to_root": "cosmos-db-apache-gremlin-javascript-samples",
+      "url": "https://github.com/azure-samples/cosmos-db-apache-gremlin-javascript-samples",
+      "branch": "main",
+      "branch_mapping": {}
+    },
+    {
+      "path_to_root": "cosmos-db-apache-gremlin-python-samples",
+      "url": "https://github.com/azure-samples/cosmos-db-apache-gremlin-python-samples",
+      "branch": "main",
+      "branch_mapping": {}
+    },
+    {
+      "path_to_root": "cosmos-db-apache-cassandra-dotnet-samples",
+      "url": "https://github.com/azure-samples/cosmos-db-apache-cassandra-dotnet-samples",
+      "branch": "main",
+      "branch_mapping": {}
+    },
+    {
+      "path_to_root": "cosmos-db-apache-cassandra-javascript-samples",
+      "url": "https://github.com/azure-samples/cosmos-db-apache-cassandra-javascript-samples",
+      "branch": "main",
+      "branch_mapping": {}
+    },
+    {
+      "path_to_root": "cosmos-db-apache-cassandra-python-samples",
+      "url": "https://github.com/azure-samples/cosmos-db-apache-cassandra-python-samples",
+      "branch": "main",
+      "branch_mapping": {}
+    },
+    {
+      "path_to_root": "cosmos-db-mongodb-dotnet-samples",
+      "url": "https://github.com/azure-samples/cosmos-db-mongodb-dotnet-samples",
+      "branch": "main",
+      "branch_mapping": {}
+    },
+    {
+      "path_to_root": "cosmos-db-mongodb-javascript-samples",
+      "url": "https://github.com/azure-samples/cosmos-db-mongodb-javascript-samples",
+      "branch": "main",
+      "branch_mapping": {}
+    },
+    {
+      "path_to_root": "cosmos-db-mongodb-python-samples",
+      "url": "https://github.com/azure-samples/cosmos-db-mongodb-python-samples",
+      "branch": "main",
+      "branch_mapping": {}
+    },
+    {
+      "path_to_root": "cosmos-db-nosql-dotnet-samples",
+      "url": "https://github.com/azure-samples/cosmos-db-nosql-dotnet-samples",
+      "branch": "main",
+      "branch_mapping": {}
+    },
+    {
+      "path_to_root": "cosmos-db-nosql-javascript-samples",
+      "url": "https://github.com/azure-samples/cosmos-db-nosql-javascript-samples",
+      "branch": "main",
+      "branch_mapping": {}
+    },
+    {
+      "path_to_root": "cosmos-db-nosql-python-samples",
+      "url": "https://github.com/azure-samples/cosmos-db-nosql-python-samples",
+      "branch": "main",
+      "branch_mapping": {}
+    },
+    {
+      "path_to_root": "cosmos-db-table-dotnet-samples",
+      "url": "https://github.com/azure-samples/cosmos-db-table-dotnet-samples",
+      "branch": "main",
+      "branch_mapping": {}
+    },
+    {
+      "path_to_root": "cosmos-db-table-javascript-samples",
+      "url": "https://github.com/azure-samples/cosmos-db-table-javascript-samples",
+      "branch": "main",
+      "branch_mapping": {}
+    },
+    {
+      "path_to_root": "cosmos-db-table-python-samples",
+      "url": "https://github.com/azure-samples/cosmos-db-table-python-samples",
+      "branch": "main",
+      "branch_mapping": {}
+    },
+    {
+      "path_to_root": "azure-cosmos-mongodb-dotnet",
+      "url": "https://github.com/Azure-Samples/cosmos-db-mongodb-api-dotnet-samples",
+      "branch": "main",
+      "branch_mapping": {}
+    },
+    {
+      "path_to_root": "samples-cosmosdb-mongodb-javascript",
+      "url": "https://github.com/Azure-Samples/cosmos-db-mongodb-api-javascript-samples",
+      "branch": "main",
+      "branch_mapping": {}
+    },
+    {
+      "path_to_root": "azure-cosmos-db-mongodb-python-getting-started",
+      "url": "https://github.com/Azure-Samples/azure-cosmos-db-mongodb-python-getting-started",
+      "branch": "main",
+      "branch_mapping": {}
+    },
+    {
+      "path_to_root": "azure-cosmos-db-mongodb-mern-web-app",
+      "url": "https://github.com/Azure-samples/msdocs-azure-cosmos-db-mongodb-mern-web-app/",
+      "branch": "main",
+      "branch_mapping": {}
+    },
+    {
+      "path_to_root": "azure-cosmos-java-sql-api-samples",
+      "url": "https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples",
+      "branch": "main",
+      "branch_mapping": {}
+    },
+    {
+      "path_to_root": "samples-cosmosdb-dotnet-change-feed-processor",
+      "url": "https://github.com/Azure-Samples/cosmos-dotnet-change-feed-processor",
+      "branch": "main",
+      "branch_mapping": {}
+    },
+    {
+      "path_to_root": "terraform_samples",
+      "url": "https://github.com/Azure/terraform",
+      "branch": "master",
+      "branch_mapping": {}
+    },
+    {
+      "path_to_root": "cosmos-db-nosql-query-samples",
+      "url": "https://github.com/Azure-Samples/cosmos-db-nosql-query-samples",
+      "branch": "main",
+      "branch_mapping": {}
+    },
+    {
+      "path_to_root": "cosmos-db-nosql-dotnet-quickstart",
+      "url": "https://github.com/azure-samples/cosmos-db-nosql-dotnet-quickstart",
+      "branch": "main",
+      "branch_mapping": {}
+    },
+    {
+      "path_to_root": "cosmos-db-nosql-go-quickstart",
+      "url": "https://github.com/azure-samples/cosmos-db-nosql-go-quickstart",
+      "branch": "main",
+      "branch_mapping": {}
+    },
+    {
+      "path_to_root": "cosmos-db-nosql-java-quickstart",
+      "url": "https://github.com/azure-samples/cosmos-db-nosql-java-quickstart",
+      "branch": "main",
+      "branch_mapping": {}
+    },
+    {
+      "path_to_root": "cosmos-db-nosql-nodejs-quickstart",
+      "url": "https://github.com/azure-samples/cosmos-db-nosql-nodejs-quickstart",
+      "branch": "main",
+      "branch_mapping": {}
+    },
+    {
+      "path_to_root": "cosmos-db-nosql-python-quickstart",
+      "url": "https://github.com/azure-samples/cosmos-db-nosql-python-quickstart",
+      "branch": "main",
+      "branch_mapping": {}
+    },
+    {
+      "path_to_root": "cosmos-dotnet-bulk-import",
+      "url": "https://github.com/Azure-Samples/cosmos-dotnet-bulk-import-throughput-optimizer",
+      "branch": "main",
+      "branch_mapping": {}
+    },
+    {
+      "path_to_root": "samples-cosmosdb-java-v4-web-app",
+      "url": "https://github.com/Azure-Samples/azure-cosmos-java-sql-api-todo-app",
+      "branch": "main",
+      "branch_mapping": {}
+    },
+    {
+      "path_to_root": "azure_cli_scripts",
+      "url": "https://github.com/Azure-Samples/azure-cli-samples",
+      "branch": "master",
+      "branch_mapping": {}
+    },
+    {
+      "path_to_root": "powershell_scripts",
+      "url": "https://github.com/Azure/azure-docs-powershell-samples",
+      "branch": "master",
+      "branch_mapping": {}
+    },
+    {
+      "path_to_root": "azure-cosmos-db-table-dotnet-v12",
+      "url": "https://github.com/Azure-Samples/cosmos-db-table-api-dotnet-samples",
+      "branch": "v12",
+      "branch_mapping": {}
+    },
+    {
+      "path_to_root": "azure-cosmos-tableapi-dotnet",
+      "url": "https://github.com/Azure-Samples/cosmos-db-table-api-dotnet-samples",
+      "branch": "v12",
+      "branch_mapping": {}
+    },
+    {
+      "path_to_root": "azure-dev-docs-pr",
+      "url": "https://github.com/MicrosoftDocs/azure-dev-docs-pr",
       "branch": "main",
       "branch_mapping": {}
     }
