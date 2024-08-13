@@ -6,7 +6,6 @@ ms.subservice: migration-guide
 ms.topic: how-to
 author: akashraokm
 ms.author: akashrao
-author: AlicjaKucharczyk
 ms.date: 01/04/2024
 ---
 
