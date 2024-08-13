@@ -5,7 +5,7 @@ author: gbowerman
 ms.author: guybo
 ms.reviewer: maghan, randolphwest
 ms.date: 05/03/2024
-ms.service: postgresql
+ms.service: azure-database-postgresql
 ms.topic: conceptual
 ---
 

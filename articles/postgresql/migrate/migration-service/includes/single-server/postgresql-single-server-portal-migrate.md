@@ -3,7 +3,7 @@ title: Azure Database for PostgreSQL - Single Server to Flexible Server CLI migr
 author: markingmyname
 ms.author: maghan
 ms.date: 06/19/2024
-ms.service: postgresql
+ms.service: azure-database-postgresql
 ms.topic: include
 ms.custom:
   - build-2024

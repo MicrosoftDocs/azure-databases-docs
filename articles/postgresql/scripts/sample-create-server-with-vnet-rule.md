@@ -3,7 +3,7 @@ title: CLI script - Create with vNet rule
 description: This sample CLI script creates an Azure Database for PostgreSQL - Flexible Server instance with a service endpoint on a virtual network and configures a vNet rule.
 author: savjani
 ms.author: pariks
-ms.service: postgresql
+ms.service: azure-database-postgresql
 ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc, devx-track-azurecli

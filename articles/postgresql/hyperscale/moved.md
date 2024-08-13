@@ -3,7 +3,7 @@ title: Where is Azure Database for PostgreSQL - Hyperscale (Citus)
 description: Hyperscale (Citus) is now Azure Cosmos DB for PostgreSQL
 ms.author: nlarin
 author: niklarin
-ms.service: postgresql
+ms.service: azure-database-postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 recommendations: false
