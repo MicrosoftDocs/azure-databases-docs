@@ -65,7 +65,7 @@ The following are the steps for using Percona XtraBackup to take a full backup:
     * Make sure there are no errors in the backup and prepare step.
     * Keep the backup and prepare step logs for Azure Support, which is required in case of failures.
 - [Create an Azure Blob container](/azure/storage/blobs/storage-quickstart-blobs-portal#create-a-container) and get the Shared Access Signature (SAS) Token ([Azure portal](/azure/ai-services/translator/document-translation/how-to-guides/create-sas-tokens?tabs=Containers#create-sas-tokens-in-the-azure-portal) or [Azure CLI](/azure/storage/blobs/storage-blob-user-delegation-sas-create-cli)) for the container. Ensure that you grant Add, Create, and Write in the **Permissions** dropdown list. Copy and paste the Blob SAS token and URL values in a secure location. They're only displayed once and can't be retrieved once the window is closed.
-- Upload the full backup file at {backup_dir_path} to your Azure Blob storage. Follow steps [here]( ../../storage/common/storage-use-azcopy-blobs-upload.md#upload-a-file).
+- Upload the full backup file at {backup_dir_path} to your Azure Blob storage. Follow [these steps to upload a file](/azure/storage/common/storage-use-azcopy-blobs-upload#upload-a-file).
 - To perform an online migration, capture and store the bin-log position of the backup file taken using Percona XtraBackup by running the **cat xtrabackup_info** command and copying the bin_log pos output.
 - The Azure storage account should be publicly accessible using SAS token. Azure storage account with virtual network configuration are not supported.
 
