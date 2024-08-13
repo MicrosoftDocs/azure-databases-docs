@@ -1618,7 +1618,7 @@
     {
       "source_path_from_root": "/articles/cosmos-db/troubleshoot-azure-cosmosdb.md",
       "redirect_url": "/azure/vs-azure-tools-storage-manage-with-storage-explorer",
-      "redirect_document_id": true
+      "redirect_document_id": false
     },
     {
       "source_path_from_root": "/articles/cosmos-db/tutorial-documentdb-and-mongodb-in-storage-explorer.md",
@@ -1723,7 +1723,7 @@
     {
       "source_path_from_root": "/articles/cosmos-db/table-storage-how-to-use-powershell.md",
       "redirect_url": "/azure/storage/tables/table-storage-how-to-use-powershell",
-      "redirect_document_id": true
+      "redirect_document_id": false
     },
     {
       "source_path_from_root": "/articles/cosmos-db/cli-samples-table.md",
