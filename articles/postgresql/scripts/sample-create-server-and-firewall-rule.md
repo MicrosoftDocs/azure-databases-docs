@@ -3,7 +3,7 @@ title: Azure CLI Script - Create
 description: Azure CLI Script Sample - Creates an Azure Database for PostgreSQL - Flexible Server instance and configures a server-level firewall rule.
 ms.author: sunila
 author: sunilagarwal
-ms.service: postgresql
+ms.service: azure-database-postgresql
 ms.custom: mvc, devx-track-azurecli
 ms.devlang: azurecli
 ms.topic: sample

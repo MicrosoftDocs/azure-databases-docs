@@ -3,7 +3,7 @@ title: Deprecate Azure Database for MariaDB - Single Server
 author: markingmyname
 ms.author: maghan
 ms.date: 09/19/2023
-ms.service: MariaDB
+ms.service: azure-database-mariadb
 ms.topic: include
 ---
 

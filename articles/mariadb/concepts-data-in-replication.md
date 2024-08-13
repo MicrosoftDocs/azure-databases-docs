@@ -1,7 +1,7 @@
 ---
 title: Data-in replication - Azure Database for MariaDB
 description: Learn about using data-in replication to synchronize from an external server into the Azure Database for MariaDB service.
-ms.service: mariadb
+ms.service: azure-database-mariadb
 author: VandhanaMehta
 ms.author: vamehta
 ms.topic: conceptual

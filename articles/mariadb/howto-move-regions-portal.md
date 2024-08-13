@@ -1,7 +1,7 @@
 ---
 title: Move Azure regions - Azure portal - Azure Database for MariaDB
 description: Move an Azure Database for MariaDB server from one Azure region to another using a read replica and the Azure portal.
-ms.service: mariadb
+ms.service: azure-database-mariadb
 author: SudheeshGH
 ms.author: sunaray
 ms.topic: how-to

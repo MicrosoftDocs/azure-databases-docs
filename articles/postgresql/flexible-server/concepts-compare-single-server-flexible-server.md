@@ -1,8 +1,8 @@
 ---
 title: Compare deployment options
 description: Detailed comparison of features and capabilities between Azure Database for PostgreSQL - Single Server and Azure Database for PostgreSQL - Flexible Server.
-author: AwdotiaRomanowna
-ms.author: alkuchar
+author: akashraokm
+ms.author: akashrao
 ms.reviewer: maghan
 ms.date: 04/29/2024
 ms.service: azure-database-postgresql

@@ -1,7 +1,7 @@
 ---
 title: Built-in policy definitions for Azure Database for MariaDB
 description: Lists Azure Policy built-in policy definitions for Azure Database for MariaDB. These built-in policy definitions provide common approaches to managing your Azure resources.
-ms.service: mariadb
+ms.service: azure-database-mariadb
 ms.topic: reference
 author: SudheeshGH
 ms.author: sunaray

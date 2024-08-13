@@ -4,8 +4,8 @@ description: You can extract a PostgreSQL database into a dump file. Then, you c
 ms.service: azure-database-postgresql
 ms.subservice: migration-guide
 ms.topic: how-to
-ms.author: alkuchar
-author: AlicjaKucharczyk
+author: akashraokm
+ms.author: akashrao
 ms.date: 01/04/2024
 ---
 

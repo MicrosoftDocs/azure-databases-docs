@@ -1,5 +1,5 @@
 ---
-ms.service: mysql
+ms.service: azure-database-mysql
 ms.topic: include
 author: shreyaaithal
 ms.author: shaithal

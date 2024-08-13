@@ -4,7 +4,8 @@ ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
 ms.date: 01/22/2024
-ms.author: alkuchar
+author: akashraokm
+ms.author: akashrao
 ---
 
 ### Azure Storage and Query Store compatibility

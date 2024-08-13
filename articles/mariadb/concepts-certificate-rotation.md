@@ -1,7 +1,7 @@
 ---
 title: Certificate rotation for Azure Database for MariaDB
 description: Learn about the upcoming changes of root certificate changes that will affect Azure Database for MariaDB
-ms.service: mariadb
+ms.service: azure-database-mariadb
 author: mksuni
 ms.author: sumuth
 ms.topic: conceptual

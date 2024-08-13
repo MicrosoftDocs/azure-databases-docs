@@ -1,7 +1,7 @@
 ---
 title: Access slow query logs - Azure CLI  - Azure Database for MariaDB
 description: This article describes how to access the slow logs in Azure Database for MariaDB by using the Azure CLI command-line utility.
-ms.service: mariadb
+ms.service: azure-database-mariadb
 author: SudheeshGH
 ms.author: sunaray
 ms.devlang: azurecli

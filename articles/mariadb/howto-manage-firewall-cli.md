@@ -1,7 +1,7 @@
 ---
 title: Manage firewall rules - Azure CLI - Azure Database for MariaDB
 description: This article describes how to create and manage Azure Database for MariaDB firewall rules using Azure CLI command-line.
-ms.service: mariadb
+ms.service: azure-database-mariadb
 author: SudheeshGH
 ms.author: sunaray
 ms.devlang: azurecli

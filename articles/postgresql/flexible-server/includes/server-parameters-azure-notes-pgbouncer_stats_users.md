@@ -6,7 +6,8 @@ ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
 ms.date: 05/15/2024
-ms.author: alkuchar
+author: akashraokm
+ms.author: akashrao
 zone_pivot_groups: postgresql-server-version
 ---
 #### Azure-specific notes

@@ -1,7 +1,7 @@
 ---
 author: markingmyname
 ms.author: maghan
-ms.service: mysql
+ms.service: azure-database-mysql
 ms.topic: include
 ms.date: 09/15/2022
 ---

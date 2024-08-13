@@ -1,6 +1,6 @@
 ---
 title: Deprecate Azure Database for PostgreSQL - Single Server
-ms.service: postgresql
+ms.service: azure-database-postgresql
 ms.topic: include
 author: markingmyname
 ms.author: maghan

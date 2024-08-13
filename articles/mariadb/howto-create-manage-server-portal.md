@@ -1,7 +1,7 @@
 ---
 title: Manage server - Azure portal - Azure Database for MariaDB
 description: Learn how to manage an Azure Database for MariaDB server from the Azure portal.
-ms.service: mariadb
+ms.service: azure-database-mariadb
 author: SudheeshGH
 ms.author: sunaray
 ms.topic: how-to

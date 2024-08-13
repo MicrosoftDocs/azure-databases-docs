@@ -1,7 +1,7 @@
 ---
 title: Business continuity - Azure Database for MariaDB
 description: Learn about business continuity (point-in-time restore, datacenter outage, geo-restore) when you're using the Azure Database for MariaDB service.
-ms.service: mariadb
+ms.service: azure-database-mariadb
 author: SudheeshGH
 ms.author: sunaray
 ms.topic: conceptual

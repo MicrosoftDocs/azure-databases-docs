@@ -4,8 +4,8 @@ description: This article provides information on high availability in Azure Dat
 ms.service: azure-database-postgresql
 ms.subservice: single-server
 ms.topic: conceptual
-ms.author: alkuchar
-author: AwdotiaRomanowna
+author: akashraokm
+ms.author: akashrao
 ms.date: 08/3/2022
 ---
 

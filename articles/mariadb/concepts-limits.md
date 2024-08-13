@@ -1,7 +1,7 @@
 ---
 title: Limitations - Azure Database for MariaDB
 description: This article describes limitations in Azure Database for MariaDB, such as number of connection and storage engine options.
-ms.service: mariadb
+ms.service: azure-database-mariadb
 author: SudheeshGH
 ms.author: sunaray
 ms.topic: conceptual
