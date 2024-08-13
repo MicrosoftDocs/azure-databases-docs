@@ -5,7 +5,7 @@ author: karla-escobar
 ms.author: karlaescobar
 ms.reviewer: maghan
 ms.date: 1/24/2024
-ms.service: mariadb
+ms.service: azure-database-mariadb
 ms.topic: overview
 ms.custom: deprecation announcement
 ---

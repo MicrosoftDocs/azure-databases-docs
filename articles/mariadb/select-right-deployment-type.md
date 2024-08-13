@@ -1,7 +1,7 @@
 ---
 title: Selecting the right deployment type - Azure Database for MariaDB
 description: This article describes what factors to consider before you deploy Azure Database for MariaDB as either infrastructure as a service (IaaS) or platform as a service (PaaS).
-ms.service: mariadb
+ms.service: azure-database-mariadb
 author: mksuni
 ms.author: sumuth
 ms.topic: conceptual

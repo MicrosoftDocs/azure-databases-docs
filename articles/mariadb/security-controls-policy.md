@@ -3,7 +3,7 @@ title: Azure Policy Regulatory Compliance controls for Azure Database for MariaD
 description: Lists Azure Policy Regulatory Compliance controls available for Azure Database for MariaDB. These built-in policy definitions provide common approaches to managing the compliance of your Azure resources.
 ms.date: 02/06/2024
 ms.topic: sample
-ms.service: mariadb
+ms.service: azure-database-mariadb
 author: SudheeshGH
 ms.author: sunaray
 ms.custom: subject-policy-compliancecontrols

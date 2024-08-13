@@ -1,7 +1,7 @@
 ---
 title: Troubleshoot connection issues - Azure Database for MariaDB
 description: Learn how to troubleshoot connection issues to Azure Database for MariaDB, including transient errors requiring retries, firewall issues, and outages.
-ms.service: mariadb
+ms.service: azure-database-mariadb
 author: SudheeshGH
 ms.author: sunaray
 ms.topic: troubleshooting

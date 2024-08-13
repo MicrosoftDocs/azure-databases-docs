@@ -1,7 +1,7 @@
 ---
 title: Backup and restore - Azure PowerShell - Azure Database for MariaDB
 description: Learn how to backup and restore a server in Azure Database for MariaDB by using Azure PowerShell.
-ms.service: mariadb
+ms.service: azure-database-mariadb
 author: SudheeshGH
 ms.author: sunaray
 ms.devlang: azurepowershell

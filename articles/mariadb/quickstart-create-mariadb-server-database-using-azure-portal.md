@@ -5,7 +5,7 @@ author: SudheeshGH
 ms.author: sunaray
 ms.date: 06/24/2022
 ms.topic: quickstart
-ms.service: mariadb
+ms.service: azure-database-mariadb
 ms.custom: mvc, mode-ui
 ---
 

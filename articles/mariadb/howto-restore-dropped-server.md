@@ -1,7 +1,7 @@
 ---
 title: Restore a deleted Azure Database for MariaDB server
 description: This article describes how to restore a deleted server in Azure Database for MariaDB using the Azure portal.
-ms.service: mariadb
+ms.service: azure-database-mariadb
 author: SudheeshGH
 ms.author: sunaray
 ms.topic: how-to

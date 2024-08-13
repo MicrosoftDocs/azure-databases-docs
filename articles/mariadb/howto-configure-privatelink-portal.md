@@ -1,7 +1,7 @@
 ---
 title: Private Link - Azure portal - Azure Database for MariaDB
 description: Learn how to configure private link for Azure Database for MariaDB from Azure portal
-ms.service: mariadb
+ms.service: azure-database-mariadb
 author: mksuni
 ms.author: sumuth
 ms.topic: how-to

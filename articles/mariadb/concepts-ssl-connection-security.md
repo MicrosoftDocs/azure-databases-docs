@@ -5,7 +5,7 @@ author: shreyaaithal
 ms.author: shaithal
 ms.reviewer: maghan
 ms.date: 04/18/2023
-ms.service: mariadb
+ms.service: azure-database-mariadb
 ms.topic: conceptual
 ---
 

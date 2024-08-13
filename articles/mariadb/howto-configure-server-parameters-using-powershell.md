@@ -1,7 +1,7 @@
 ---
 title: Configure Azure Database for MariaDB - Azure PowerShell
 description: This article describes how to configure the service parameters in Azure Database for MariaDB using PowerShell.
-ms.service: mariadb
+ms.service: azure-database-mariadb
 author: SudheeshGH
 ms.author: sunaray
 ms.devlang: azurepowershell
