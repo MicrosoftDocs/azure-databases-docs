@@ -2,7 +2,7 @@
 title: Backup and restore
 description: Learn about the concepts of backup and restore with Azure Database for PostgreSQL - Flexible Server.
 author: akashraokm
-ms.author: akashraor
+ms.author: akashrao
 ms.reviewer: maghan
 ms.date: 05/06/2024
 ms.service: azure-database-postgresql
