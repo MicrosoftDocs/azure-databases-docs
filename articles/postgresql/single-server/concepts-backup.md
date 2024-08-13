@@ -128,7 +128,7 @@ Azure backup vaults support immutability and soft delete (preview) features, pro
 
 
 - For more information about performing a long term backup, visit the [how-to guide](/azure/backup/backup-azure-database-postgresql).
-- Known [[LTR issues]](../../backup/backup-azure-database-postgresql-troubleshoot.md).
+- Known issues with [Long-term Retention](/azure/backup/backup-azure-database-postgresql-troubleshoot).
 
 ## Next steps
 
