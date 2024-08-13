@@ -142,7 +142,7 @@
     - name: Azure SQL Migration extension for Azure Data Studio
       href: /azure-data-studio/extensions/azure-sql-migration-extension
     - name: Azure Migrate
-      href: ../migrate/migrate-services-overview.md
+      href: /azure/migrate/migrate-services-overview
     - name: SQL Database Projects
       href: /azure-data-studio/extensions/sql-database-project-extension
     - name: Database Schema Conversion Toolkit (Oracle to Microsoft SQL)

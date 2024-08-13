@@ -30,7 +30,7 @@ This article provides a list of recommendations for optimizing Azure Database fo
 
 ## 1. Use reserved capacity pricing
 
-Azure Postgres reserved capacity pricing allows committing to a specific capacity for **1-3** **years**, saving costs for customers using Azure Database for PostgreSQL flexible server. The cost savings compared to pay-as-you-go pricing can be significant, depending on the amount of capacity reserved and the length of the term. Customers can purchase reserved capacity in increments of vCores and storage. Reserved capacity can cover costs for Azure Database for PostgreSQL flexible server instances in the same region, applied to the customer's Azure subscription. Reserved pricing for Azure Database for PostgreSQL flexible server offers cost savings up to 40% for 1 year and up to 60% for 3-year commitments, for customers who reserve capacity. For more details, see Pricing Calculator | Microsoft Azure. To learn more, see [What are Azure Reservations?](../../cost-management-billing/reservations/save-compute-costs-reservations.md)
+Azure Postgres reserved capacity pricing allows committing to a specific capacity for **1-3** **years**, saving costs for customers using Azure Database for PostgreSQL flexible server. The cost savings compared to pay-as-you-go pricing can be significant, depending on the amount of capacity reserved and the length of the term. Customers can purchase reserved capacity in increments of vCores and storage. Reserved capacity can cover costs for Azure Database for PostgreSQL flexible server instances in the same region, applied to the customer's Azure subscription. Reserved pricing for Azure Database for PostgreSQL flexible server offers cost savings up to 40% for 1 year and up to 60% for 3-year commitments, for customers who reserve capacity. For more details, see Pricing Calculator | Microsoft Azure. To learn more, see [What are Azure Reservations?](/azure/cost-management-billing/reservations/save-compute-costs-reservations)
 
 ## 2. Scale compute up/down
 
@@ -70,7 +70,7 @@ Consolidating databases can be a cost-saving strategy for Azure Database for Pos
 
 Consolidating databases can help you save costs by reducing the number of Azure Database for PostgreSQL flexible server instances you need to run and by enabling you to use larger instances that are more cost-effective than smaller instances. It is important to evaluate the impact of consolidation on your databases' performance and ensure that the consolidated Azure Database for PostgreSQL flexible server instance is appropriately sized to meet all database needs.
 
-To learn more, see [Improve the performance of Azure applications by using Azure Advisor](../../advisor/advisor-reference-performance-recommendations.md#databases)
+To learn more, see [Improve the performance of Azure applications by using Azure Advisor](/azure/advisor/advisor-reference-performance-recommendations#databases)
 
 ## 6. Place test servers in cost-efficient geo-regions
 

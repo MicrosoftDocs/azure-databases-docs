@@ -60,7 +60,7 @@ The Internet Engineering Task Force (IETF) released the TLS 1.3 specification in
 > Azure Database for PostgreSQL - Flexible server doesn't support [custom SSL\TLS certificates](https://www.postgresql.org/docs/current/ssl-tcp.html#SSL-CERTIFICATE-CREATION) at this time.
 
 > [!NOTE]
-> Microsoft has been going through root CA changes for various Azure services, including Azure Database for PostgreSQL - Flexible Server , as detailed in this [document](../../security/fundamentals/tls-certificate-changes.md) and [Configuring SSL on the Client section below](#configuring-ssl-on-the-client).
+> Microsoft has been going through root CA changes for various Azure services, including Azure Database for PostgreSQL - Flexible Server , as detailed in this [document](/azure/security/fundamentals/tls-certificate-changes) and [Configuring SSL on the Client section below](#configuring-ssl-on-the-client).
 
 To determine your current TLS\SSL connection status, you can load the [sslinfo extension](concepts-extensions.md) and then call the `ssl_is_used()` function to determine if SSL is being used. The function returns t if the connection is using SSL, otherwise it returns f. You can also collect all the information about your Azure Database for PostgreSQL flexible server instance's SSL usage by process, client, and application by using the following query:
 
@@ -107,7 +107,7 @@ The default **sslmode** mode used is different between libpq-based clients (such
 **Certificate Authorities (CAs)** are the institutions responsible for issuing certificates. A trusted certificate authority is an entity that’s entitled to verify someone is who they say they are. In order for this model to work, all participants must agree on a set of trusted CAs. All operating systems and most web browsers ship with a set of trusted CAs.
 
 > [!NOTE]  
-> Using verify-ca and verify-full **sslmode** configuration settings can also be known as **[certificate pinning](../../security/fundamentals/certificate-pinning.md#how-to-address-certificate-pinning-in-your-application)**. In this case root CA certificates on the PostgreSQL server have to match certificate signature and even host name against certificate on the client. Important to remember, you might periodically need to update client stored certificates when Certificate Authorities change or expire on PostgreSQL server certificates. To determine if you are pinning CAs, please refer to [Certificate pinning and Azure services](../../security/fundamentals/certificate-pinning.md#how-to-address-certificate-pinning-in-your-application). 
+> Using verify-ca and verify-full **sslmode** configuration settings can also be known as **[certificate pinning](/azure/security/fundamentals/certificate-pinning#how-to-address-certificate-pinning-in-your-application)**. In this case root CA certificates on the PostgreSQL server have to match certificate signature and even host name against certificate on the client. Important to remember, you might periodically need to update client stored certificates when Certificate Authorities change or expire on PostgreSQL server certificates. To determine if you are pinning CAs, please refer to [Certificate pinning and Azure services](/azure/security/fundamentals/certificate-pinning#how-to-address-certificate-pinning-in-your-application). 
 
 For more on SSL\TLS configuration on the client, see [PostgreSQL documentation](https://www.postgresql.org/docs/current/ssl-tcp.html#SSL-CLIENT-CERTIFICATES).
 

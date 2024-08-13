@@ -20,7 +20,7 @@ Audit logging of database activities in Azure Database for PostgreSQL - Single S
 > [!NOTE]
 > The pgAudit extension is in preview on Azure Database for PostgreSQL. It can be enabled on general purpose and memory-optimized servers only.
 
-If you want Azure resource-level logs for operations like compute and storage scaling, see [Overview of Azure platform logs](../../azure-monitor/essentials/platform-logs-overview.md).
+If you want Azure resource-level logs for operations like compute and storage scaling, see [Overview of Azure platform logs](/azure/azure-monitor/essentials/platform-logs-overview).
 
 ## Usage considerations
 
@@ -106,9 +106,9 @@ To quickly get started, set **pgaudit.log** to **WRITE**. Then open your logs to
 
 If you're using .log files, your audit logs are included in the same file as your PostgreSQL error logs. You can download log files from the [portal](how-to-configure-server-logs-in-portal.md) or the [CLI](how-to-configure-server-logs-using-cli.md).
 
-If you're using Azure resource logging, the way you access the logs depends on which endpoint you choose. For Storage, see [Azure resource logs](../../azure-monitor/essentials/resource-logs.md#send-to-azure-storage). For Event Hubs, also see [Azure resource logs](../../azure-monitor/essentials/resource-logs.md#send-to-azure-event-hubs).
+If you're using Azure resource logging, the way you access the logs depends on which endpoint you choose. For Storage, see [Azure resource logs](/azure/azure-monitor/essentials/resource-logs#send-to-azure-storage). For Event Hubs, also see [Azure resource logs](/azure/azure-monitor/essentials/resource-logs#send-to-azure-event-hubs).
 
-For Monitor Logs, the logs are sent to the workspace you selected. The Postgres logs use the `AzureDiagnostics` collection mode, so they can be queried from the `AzureDiagnostics` table, as shown. To learn more about querying and alerting, see [Log queries in Azure Monitor](../../azure-monitor/logs/log-query-overview.md).
+For Monitor Logs, the logs are sent to the workspace you selected. The Postgres logs use the `AzureDiagnostics` collection mode, so they can be queried from the `AzureDiagnostics` table, as shown. To learn more about querying and alerting, see [Log queries in Azure Monitor](/azure/azure-monitor/logs/log-query-overview).
 
 Use this query to get started. You can configure alerts based on queries.
 

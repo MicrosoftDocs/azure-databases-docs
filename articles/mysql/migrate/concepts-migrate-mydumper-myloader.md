@@ -13,7 +13,7 @@ ms.topic: conceptual
 # Migrate large databases to Azure Database for MySQL using mydumper/myloader
 
 > [!CAUTION]  
-> This article references CentOS, a Linux distribution that is End Of Life (EOL) status. Please consider your use and planning accordingly. For more information, see the [CentOS End Of Life guidance](~/articles/virtual-machines/workloads/centos/centos-end-of-life.md).
+> This article references CentOS, a Linux distribution that is End Of Life (EOL) status. Please consider your use and planning accordingly. For more information, see the [CentOS End Of Life guidance](/azure/virtual-machines/workloads/centos/centos-end-of-life).
 
 [!INCLUDE [applies-to-mysql-single-flexible-server](../includes/applies-to-mysql-single-flexible-server.md)]
 
@@ -34,12 +34,12 @@ Before you begin migrating your MySQL database, you need to:
 
 1. Create an Azure Database for MySQL server by using the [Azure portal](../flexible-server/quickstart-create-server-portal.md).
 
-1. Create an Azure VM running Linux by using the [Azure portal](../../virtual-machines/linux/quick-create-portal.md) (preferably Ubuntu).
+1. Create an Azure VM running Linux by using the [Azure portal](/azure/virtual-machines/linux/quick-create-portal) (preferably Ubuntu).
     > [!NOTE]  
     > Prior to installing the tools, consider the following points:
     >  
     > * If your source is on-premises and has a high bandwidth connection to Azure (using ExpressRoute), consider installing the tool on an Azure VM.<br>
-    > * If you have a challenge in the bandwidth between the source and target, consider installing mydumper near the source and myloader near the target server. You can use tools **[Azcopy](../../storage/common/storage-use-azcopy-v10.md)** to move the data from on-premises or other cloud solutions to Azure.
+    > * If you have a challenge in the bandwidth between the source and target, consider installing mydumper near the source and myloader near the target server. You can use tools **[Azcopy](/azure/storage/common/storage-use-azcopy-v10)** to move the data from on-premises or other cloud solutions to Azure.
 
 1. Install mysql client, do the following steps:
 

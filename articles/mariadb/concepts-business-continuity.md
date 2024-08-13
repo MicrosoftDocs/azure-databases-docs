@@ -49,7 +49,7 @@ You can use the service's backups to recover a server from various disruptive ev
 You can perform a point-in-time-restore to create a copy of your server to a known good point in time. This point in time must be within the backup retention period that you configured for your server. After the data is restored to the new server, you can either replace the original server with the newly restored server or copy the needed data from the restored server to the original server.
 
 > [!IMPORTANT]
-> You can restore deleted servers only within *five days* of deletion. After five days, the backups are deleted. You can access and restore the database backup only from the Azure subscription that hosts the server. To restore a dropped server, refer to the [documented steps](howto-restore-dropped-server.md). To help protect server resources from accidental deletion or unexpected changes after deployment, administrators can use [management locks](../azure-resource-manager/management/lock-resources.md).
+> You can restore deleted servers only within *five days* of deletion. After five days, the backups are deleted. You can access and restore the database backup only from the Azure subscription that hosts the server. To restore a dropped server, refer to the [documented steps](howto-restore-dropped-server.md). To help protect server resources from accidental deletion or unexpected changes after deployment, administrators can use [management locks](/azure/azure-resource-manager/management/lock-resources).
 
 ## Recovery from an Azure regional datacenter outage
 
@@ -59,7 +59,7 @@ One option is to wait for your server to come back online when the datacenter ou
 
 ## Geo-restore
 
-The geo-restore feature restores the server by using geo-redundant backups. The backups are hosted in your server's [paired region](../availability-zones/cross-region-replication-azure.md). These backups are accessible even when the region where your server is hosted is offline. You can restore from these backups to any other region and then bring your server back online. Learn more about geo-restore in the [article about backup and restore concepts](concepts-backup.md).
+The geo-restore feature restores the server by using geo-redundant backups. The backups are hosted in your server's [paired region](/azure/availability-zones/cross-region-replication-azure). These backups are accessible even when the region where your server is hosted is offline. You can restore from these backups to any other region and then bring your server back online. Learn more about geo-restore in the [article about backup and restore concepts](concepts-backup.md).
 
 > [!IMPORTANT]
 > Geo-restore is possible only if you provisioned the server with geo-redundant backup storage. If you want to switch from locally redundant to geo-redundant backups for an existing server, you must generate a backup of your existing server by using [mysqldump](howto-migrate-dump-restore.md). Then, restore to a newly created server that's configured with geo-redundant backups.

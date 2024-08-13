@@ -41,11 +41,11 @@ The following diagram represents the data flow and components involved in the so
 
 2. **Azure Cosmos DB:** The generated data is stored in an Azure Cosmos DB container.  
 
-3. **Change Feed:** The change feed will listen for changes to the Azure Cosmos DB container. Each time a new document is added into the collection (that is when an event occurs such a user viewing an item, adding an item to their cart, or purchasing an item), the change feed will trigger an [Azure Function](../../azure-functions/functions-overview.md).  
+3. **Change Feed:** The change feed will listen for changes to the Azure Cosmos DB container. Each time a new document is added into the collection (that is when an event occurs such a user viewing an item, adding an item to their cart, or purchasing an item), the change feed will trigger an [Azure Function](/azure/azure-functions/functions-overview).  
 
-4. **Azure Function:** The Azure Function processes the new data and sends it to [Azure Event Hubs](../../event-hubs/event-hubs-about.md).  
+4. **Azure Function:** The Azure Function processes the new data and sends it to [Azure Event Hubs](/azure/event-hubs/event-hubs-about).  
 
-5. **Azure event hub:** The event hub stores these events and sends them to [Azure Stream Analytics](../../stream-analytics/stream-analytics-introduction.md) to perform further analysis.  
+5. **Azure event hub:** The event hub stores these events and sends them to [Azure Stream Analytics](/azure/stream-analytics/stream-analytics-introduction) to perform further analysis.  
 
 6. **Azure Stream Analytics:** Azure Stream Analytics defines queries to process the events and perform real-time data analysis. This data is then sent to [Microsoft Power BI](/power-bi/desktop-what-is-desktop).  
 

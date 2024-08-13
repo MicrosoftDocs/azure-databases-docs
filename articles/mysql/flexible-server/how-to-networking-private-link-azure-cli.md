@@ -20,7 +20,7 @@ In this article, you learn how to use Azure CLI to create a private endpoint for
 
 ### Launch Azure Cloud Shell
 
-The [Azure Cloud Shell](../../cloud-shell/overview.md) is a free interactive shell that you can use to run the steps in this article. It has standard Azure tools preinstalled and configured to use with your account.
+The [Azure Cloud Shell](/azure/cloud-shell/overview) is a free interactive shell that you can use to run the steps in this article. It has standard Azure tools preinstalled and configured to use with your account.
 
 To open the Cloud Shell, select **Try it** from the upper right corner of a code block. You can also open Cloud Shell in a separate browser tab by going to [https://shell.azure.com/bash](https://shell.azure.com/bash). Select **Copy** to copy the blocks of code, paste it into the Cloud Shell, and select **Enter** to run it.
 
@@ -61,7 +61,7 @@ az network vnet create \
 
 ### Disable subnet private endpoint policies
 
-Azure deploys resources to a subnet within a virtual network, so you need to create or update the subnet to disable private endpoint [network policies](../../private-link/disable-private-endpoint-network-policy.md). Update a subnet configuration named *mySubnet* with [az network vnet subnet update](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update):
+Azure deploys resources to a subnet within a virtual network, so you need to create or update the subnet to disable private endpoint [network policies](/azure/private-link/disable-private-endpoint-network-policy). Update a subnet configuration named *mySubnet* with [az network vnet subnet update](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update):
 
 ```azurecli-interactive
 az network vnet subnet update \
@@ -102,7 +102,7 @@ az mysql flexible-server create \
 > [!NOTE]  
 > In some cases, the Azure Database for MySQL flexible server instance and the VNet-subnet are in different subscriptions. In these cases, you must ensure the following configurations:
 >  
-> - Make sure that both subscriptions have the **Microsoft.DBforMySQL/flexibleServer** resource provider registered. For more information, refer to [resource-manager-registration](../../azure-resource-manager/management/resource-providers-and-types.md).
+> - Make sure that both subscriptions have the **Microsoft.DBforMySQL/flexibleServer** resource provider registered. For more information, refer to [resource-manager-registration](/azure/azure-resource-manager/management/resource-providers-and-types).
 
 ### Create the Private Endpoint
 
@@ -145,7 +145,7 @@ az network private-dns record-set a add-record --record-set-name myserver --zone
 ```
 
 > [!NOTE]  
-> The FQDN in the customer's DNS setting does not resolve the private IP configured. You must set up a DNS zone for the configured FQDN as shown[here](../../dns/dns-operations-recordsets-portal.md).
+> The FQDN in the customer's DNS setting does not resolve the private IP configured. You must set up a DNS zone for the configured FQDN as shown[here](/azure/dns/dns-operations-recordsets-portal).
 
 ### Connect to a VM from the internet
 

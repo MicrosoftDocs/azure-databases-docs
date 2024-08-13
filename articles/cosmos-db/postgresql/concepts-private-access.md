@@ -35,7 +35,7 @@ Enabling private access for Azure Cosmos DB for PostgreSQL creates a private end
 
 ## Private link
 
-You can use [private endpoints](../../private-link/private-endpoint-overview.md) for your clusters to allow hosts on a virtual network (VNet) to securely access data over a [Private Link](../../private-link/private-link-overview.md).
+You can use [private endpoints](/azure/private-link/private-endpoint-overview) for your clusters to allow hosts on a virtual network (VNet) to securely access data over a [Private Link](/azure/private-link/private-link-overview).
 
 The cluster's private endpoint uses an IP address from the virtual network's address space. Traffic between hosts on the virtual network and nodes goes over a private link on the Microsoft backbone network, eliminating exposure to the public Internet.
 
@@ -45,12 +45,12 @@ You can select private access during cluster creation, and you can switch from p
 
 ### Using a private DNS zone
 
-A new private DNS zone is automatically provisioned for each private endpoint, unless you select one of the private DNS zones previously created by Azure Cosmos DB for PostgreSQL. For more information, see the [private DNS zones overview](../../dns/private-dns-overview.md).
+A new private DNS zone is automatically provisioned for each private endpoint, unless you select one of the private DNS zones previously created by Azure Cosmos DB for PostgreSQL. For more information, see the [private DNS zones overview](/azure/dns/private-dns-overview).
 
 The Azure Cosmos DB for PostgreSQL service creates DNS records such as
 `c-mygroup01.12345678901234.privatelink.postgres.cosmos.azure.com`  in the selected private DNS zone for each node with a private endpoint. When you connect to a node from an Azure VM via private endpoint, Azure DNS resolves the node’s FQDN into a private IP address.
 
-Private DNS zone settings and virtual network peering are independent of each other. If you want to connect to a node in the cluster from a client that's provisioned in another virtual network (from the same region or a different region), you have to link the private DNS zone with the virtual network. For more information, see [Link the virtual network](../../dns/private-dns-getstarted-portal.md#link-the-virtual-network).
+Private DNS zone settings and virtual network peering are independent of each other. If you want to connect to a node in the cluster from a client that's provisioned in another virtual network (from the same region or a different region), you have to link the private DNS zone with the virtual network. For more information, see [Link the virtual network](/azure/dns/private-dns-getstarted-portal#link-the-virtual-network).
 
 > [!NOTE]
 >
@@ -60,7 +60,7 @@ Private DNS zone settings and virtual network peering are independent of each ot
 > the database administrator enables [public
 > access](concepts-firewall-rules.md) to the cluster.
 
-If you're using a custom DNS server, you must use a DNS forwarder to resolve the FQDN of nodes. The forwarder IP address should be 168.63.129.16. The custom DNS server should be inside the virtual network or reachable via the virtual network's DNS server setting. To learn more, see [Name resolution that uses your own DNS server](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server).
+If you're using a custom DNS server, you must use a DNS forwarder to resolve the FQDN of nodes. The forwarder IP address should be 168.63.129.16. The custom DNS server should be inside the virtual network or reachable via the virtual network's DNS server setting. To learn more, see [Name resolution that uses your own DNS server](/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server).
 
 ### Recommendations
 
@@ -70,7 +70,7 @@ When you enable private access for your cluster, consider:
 
   Make sure you have enough private IP addresses for the current and future needs. Keep in mind, Azure reserves five IP addresses in each subnet.
 
-  See more details [in this FAQ](../../virtual-network/virtual-networks-faq.md#configuration).
+  See more details [in this FAQ](/azure/virtual-network/virtual-networks-faq#configuration).
 
 * **Private DNS zone**: DNS records with private IP addresses are going to be maintained by Azure Cosmos DB for PostgreSQL service. Make sure you don’t delete private DNS zone used for clusters.
 
@@ -82,6 +82,6 @@ See Azure Cosmos DB for PostgreSQL [limits and limitations](reference-limits.md)
 
 * Learn how to [enable and manage private access](howto-private-access.md)
 * Follow a [tutorial](tutorial-private-access.md) to see private access in action.
-* Learn about [private endpoints](../../private-link/private-endpoint-overview.md)
-* Learn about [virtual networks](../../virtual-network/concepts-and-best-practices.md)
-* Learn about [private DNS zones](../../dns/private-dns-overview.md)
+* Learn about [private endpoints](/azure/private-link/private-endpoint-overview)
+* Learn about [virtual networks](/azure/virtual-network/concepts-and-best-practices)
+* Learn about [private DNS zones](/azure/dns/private-dns-overview)

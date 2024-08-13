@@ -34,7 +34,7 @@ If you don't have an Azure subscription, create a [free](https://azure.microsoft
 
 ## Create an Azure Database for PostgreSQL
 
-An Azure Database for PostgreSQL server is created with a defined set of [compute and storage resources](./concepts-pricing-tiers.md). The server is created within an [Azure resource group](../../azure-resource-manager/management/overview.md).
+An Azure Database for PostgreSQL server is created with a defined set of [compute and storage resources](./concepts-pricing-tiers.md). The server is created within an [Azure resource group](/azure/azure-resource-manager/management/overview).
 
 Follow these steps to create an Azure Database for PostgreSQL server:
 1. Select **Create a resource**  in the upper left-hand corner of the Azure portal.

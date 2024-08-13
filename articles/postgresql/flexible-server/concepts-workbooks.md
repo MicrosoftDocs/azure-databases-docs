@@ -37,7 +37,7 @@ Azure Database for PostgreSQL flexible server has two available templates:
     * Autovacuum Metrics
     * Replication Metrics
 
-You can also edit and customize these templates according to your requirements. For more information, see [Azure Workbooks](../../azure-monitor/visualize/workbooks-overview.md).
+You can also edit and customize these templates according to your requirements. For more information, see [Azure Workbooks](/azure/azure-monitor/visualize/workbooks-overview).
 
 ## Access the workbook templates
 
@@ -47,7 +47,7 @@ To view the templates in the Azure portal, go to the **Monitoring** pane for Azu
 
 ## Related content
 
-- [Azure workbooks access control](../../azure-monitor/visualize/workbooks-overview.md#access-control)
-- [Azure workbooks visualization options](../../azure-monitor/visualize/workbooks-visualizations.md)
+- [Azure workbooks access control](/azure/azure-monitor/visualize/workbooks-overview#access-control)
+- [Azure workbooks visualization options](/azure/azure-monitor/visualize/workbooks-visualizations)
 - [Enhanced metrics](concepts-monitoring.md#enhanced-metrics)
 - [Autovacuum metrics](concepts-monitoring.md#autovacuum-metrics)

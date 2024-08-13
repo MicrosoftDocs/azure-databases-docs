@@ -36,7 +36,7 @@ Azure OpenAI is Azure’s LLM service offering to help build GenAI applications 
 
 With Azure OpenAI, customers get the security capabilities of Microsoft Azure while running the same models as OpenAI. Azure OpenAI offers private networking, regional availability, and responsible AI content filtering.
 
-Learn more about [Azure OpenAI](../../ai-services/openai/overview.md).
+Learn more about [Azure OpenAI](/azure/ai-services/openai/overview).
 
 ## Large Language Model (LLM)
 

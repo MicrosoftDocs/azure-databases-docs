@@ -23,7 +23,7 @@ You can list, show, and update configuration parameters for an Azure PostgreSQL 
 
 To step through this how-to guide, you need:
 - Create an Azure Database for PostgreSQL server and database by following [Create an Azure Database for PostgreSQL](quickstart-create-server-database-azure-cli.md)
-- Install [Azure CLI](/cli/azure/install-azure-cli) command-line interface on your machine or use the [Azure Cloud Shell](../../cloud-shell/overview.md) in the Azure portal using your browser.
+- Install [Azure CLI](/cli/azure/install-azure-cli) command-line interface on your machine or use the [Azure Cloud Shell](/azure/cloud-shell/overview) in the Azure portal using your browser.
 
 ## List server configuration parameters for Azure Database for PostgreSQL server
 

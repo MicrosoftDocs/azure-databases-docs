@@ -81,7 +81,7 @@ This article provides a list of known issues and troubleshooting steps associate
 
 - **Cause**: Azure Storage firewall isn't configured to allow access to Azure SQL target.
 
-- **Recommendation**: For more information about Azure Storage firewall setup, see [Configure Azure Storage firewalls and virtual networks](../storage/common/storage-network-security.md).
+- **Recommendation**: For more information about Azure Storage firewall setup, see [Configure Azure Storage firewalls and virtual networks](/azure/storage/common/storage-network-security).
 
 - **Message**: `Migration for Database <Database Name> failed with error 'There are backups from multiple databases in the container folder. Please make sure the container folder has backups from a single database.`
 
@@ -110,7 +110,7 @@ This article provides a list of known issues and troubleshooting steps associate
 
 - **Cause**: Your network settings in the firewall are causing the Self-Hosted Integration Runtime to be unable to connect to the service back end.
 
-- **Recommendation**: There's a Domain Name System (DNS) issue. Contact your network team to fix the issue. For more information, see [Troubleshoot Self-Hosted Integration Runtime](../data-factory/self-hosted-integration-runtime-troubleshoot-guide.md).
+- **Recommendation**: There's a Domain Name System (DNS) issue. Contact your network team to fix the issue. For more information, see [Troubleshoot Self-Hosted Integration Runtime](/azure/data-factory/self-hosted-integration-runtime-troubleshoot-guide).
 
 - **Message**: `Failed to test connections using provided Integration Runtime. 'Cannot connect to <File share>. Detail Message: The system could not find the environment option that was entered`
 
@@ -128,7 +128,7 @@ This article provides a list of known issues and troubleshooting steps associate
 
 - **Cause**: Connection to the Self-Hosted Integration Runtime has failed.
 
-- **Recommendation**: See [Troubleshoot Self-Hosted Integration Runtime](../data-factory/self-hosted-integration-runtime-troubleshoot-guide.md) for general troubleshooting steps for Integration Runtime connectivity errors.
+- **Recommendation**: See [Troubleshoot Self-Hosted Integration Runtime](/azure/data-factory/self-hosted-integration-runtime-troubleshoot-guide) for general troubleshooting steps for Integration Runtime connectivity errors.
 
 ## Error code: 2014 - IntegrationRuntimeIsNotOnline
 
@@ -136,7 +136,7 @@ This article provides a list of known issues and troubleshooting steps associate
 
 - **Cause**: The Self-Hosted Integration Runtime isn't online.
 
-- **Recommendation**: Make sure the Self-hosted Integration Runtime is registered and online. To perform the registration, you can use scripts from [Automating self-hosted integration runtime installation using local PowerShell scripts](../data-factory/self-hosted-integration-runtime-automation-scripts.md). Also, see [Troubleshoot self-hosted integration runtime](../data-factory/self-hosted-integration-runtime-troubleshoot-guide.md) for general troubleshooting steps for Integration Runtime connectivity errors.
+- **Recommendation**: Make sure the Self-hosted Integration Runtime is registered and online. To perform the registration, you can use scripts from [Automating self-hosted integration runtime installation using local PowerShell scripts](/azure/data-factory/self-hosted-integration-runtime-automation-scripts). Also, see [Troubleshoot self-hosted integration runtime](/azure/data-factory/self-hosted-integration-runtime-troubleshoot-guide) for general troubleshooting steps for Integration Runtime connectivity errors.
 
 ## Error code: 2030 - AzureSQLManagedInstanceNotReady
 
@@ -213,7 +213,7 @@ This article provides a list of known issues and troubleshooting steps associate
 
 - **Cause**: The request failed due to an underlying issue such as network connectivity, a DNS failure, a server certificate validation, or a timeout.
 
-- **Recommendation**: For more troubleshooting steps, see [Troubleshoot Azure Data Factory and Synapse pipelines](../data-factory/data-factory-troubleshoot-guide.md#error-code-2108).
+- **Recommendation**: For more troubleshooting steps, see [Troubleshoot Azure Data Factory and Synapse pipelines](/azure/data-factory/data-factory-troubleshoot-guide#error-code-2108).
 
 ## Error code: 2049 - FileShareTestConnectionFailed
 
@@ -224,7 +224,7 @@ This article provides a list of known issues and troubleshooting steps associate
 - **Recommendation**: The latest version of Integration Runtime (**5.28.8488**) prevents access to a network file share on a local host. Ensure you run Integration Runtime on a different machine than the network share hosting. If hosting the self-hosted Integration Runtime and the network share on different machines isn't possible with your current migration setup, you can use the option to opt out using `DisableLocalFolderPathValidation`.
 
   > [!NOTE]  
-  > For more information, see [Set up an existing self-hosted IR via local PowerShell](../data-factory/create-self-hosted-integration-runtime.md#set-up-an-existing-self-hosted-ir-via-local-powershell). Use the disabling option with discretion as this is less secure.
+  > For more information, see [Set up an existing self-hosted IR via local PowerShell](/azure/data-factory/create-self-hosted-integration-runtime#set-up-an-existing-self-hosted-ir-via-local-powershell). Use the disabling option with discretion as this is less secure.
 
 ## Error code: 2055 - SqlInfoCollectionFailed
 
@@ -422,7 +422,7 @@ Note: This query should be run in context of master DB
 
 ## Azure Database Migration Service Naming Rules
 
-If your DMS service failed with "Error: Service name 'x_y_z' is not valid", then you need to follow the Azure Database Migration Service Naming Rules. As Azure Database Migration Service uses Azure Data factory for its compute, it follows the exact same naming rules as mentioned [here](../data-factory/naming-rules.md).
+If your DMS service failed with "Error: Service name 'x_y_z' is not valid", then you need to follow the Azure Database Migration Service Naming Rules. As Azure Database Migration Service uses Azure Data factory for its compute, it follows the exact same naming rules as mentioned [here](/azure/data-factory/naming-rules).
 
 ## Azure SQL Database limitations
 

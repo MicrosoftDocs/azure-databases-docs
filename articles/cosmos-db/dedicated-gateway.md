@@ -81,7 +81,7 @@ There are many different ways to provision a dedicated gateway:
     - Note: You cannot deprovision a dedicated gateway using ARM templates
 
 > [!NOTE]
-> You can provision a dedicated gateway in Azure Cosmos DB accounts with [availability zones](../availability-zones/az-region.md) by request. Reach out to cosmoscachefeedback@microsoft.com for more information.
+> You can provision a dedicated gateway in Azure Cosmos DB accounts with [availability zones](/azure/availability-zones/az-region) by request. Reach out to cosmoscachefeedback@microsoft.com for more information.
 
 ## Dedicated gateway in multi-region accounts
 

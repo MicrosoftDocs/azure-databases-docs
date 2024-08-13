@@ -16,8 +16,8 @@ Managed identities for Azure resources provide Azure services with an automatica
 
 ## Prerequisites
 
-- If you're unfamiliar with managed identities for Azure resources, see [What are managed identities for Azure resources?](../active-directory/managed-identities-azure-resources/overview.md). To learn about managed identity types, see [Managed identity types](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types).
-- To set up managed identities, your account needs to have the [DocumentDB Account Contributor role](../role-based-access-control/built-in-roles.md#documentdb-account-contributor).
+- If you're unfamiliar with managed identities for Azure resources, see [What are managed identities for Azure resources?](/azure/active-directory/managed-identities-azure-resources/overview). To learn about managed identity types, see [Managed identity types](/azure/active-directory/managed-identities-azure-resources/overview#managed-identity-types).
+- To set up managed identities, your account needs to have the [DocumentDB Account Contributor role](/azure/role-based-access-control/built-in-roles#documentdb-account-contributor).
 
 ## Add a system-assigned identity
 
@@ -257,5 +257,5 @@ az cosmosdb identity remove \
 > [!div class="nextstepaction"]
 > [Tutorial: Store and use Azure Cosmos DB credentials with Azure Key Vault](store-credentials-key-vault.md)
 
-- Learn more about [managed identities for Azure resources](../active-directory/managed-identities-azure-resources/overview.md)
+- Learn more about [managed identities for Azure resources](/azure/active-directory/managed-identities-azure-resources/overview)
 - Learn more about [customer-managed keys on Azure Cosmos DB](how-to-setup-cmk.md)

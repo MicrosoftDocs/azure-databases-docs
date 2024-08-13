@@ -50,7 +50,7 @@ Create a server with the [az postgres server create](/cli/azure/postgres/server#
 
 > [!NOTE]
 >
->- The server name can contain only lowercase letters, numbers, and the hyphen (-) character. It must contain 3 to 63 characters. For more information, see [Azure Database for PostgreSQL Naming Rules](../../azure-resource-manager/management/resource-name-rules.md#microsoftdbforpostgresql).
+>- The server name can contain only lowercase letters, numbers, and the hyphen (-) character. It must contain 3 to 63 characters. For more information, see [Azure Database for PostgreSQL Naming Rules](/azure/azure-resource-manager/management/resource-name-rules#microsoftdbforpostgresql).
 >- The user name for the admin user can't be **azure_superuser**, **admin**, **administrator**, **root**, **guest**, or **public**.
 >- The password must contain 8 to 128 characters from three of the following categories: English uppercase letters, English lowercase letters, numbers, and non-alphanumeric characters.
 >- For information about SKUs, see [Azure Database for PostgreSQL pricing](https://azure.microsoft.com/pricing/details/postgresql/server/).
@@ -92,7 +92,7 @@ Make a note of the **administratorLogin** and **fullyQualifiedDomainName** value
 
 ## Connect to the Azure Database for PostgreSQL server by using psql
 
-The [psql](https://www.postgresql.org/docs/current/static/app-psql.html) client is a popular choice for connecting to PostgreSQL servers. You can connect to your server by using `psql` with [Azure Cloud Shell](../../cloud-shell/overview.md). You can also use `psql` on your local environment if you have it available. An empty database, **postgres**, is automatically created with a new PostgreSQL server. You can use that database to connect with `psql`, as shown in the following code.
+The [psql](https://www.postgresql.org/docs/current/static/app-psql.html) client is a popular choice for connecting to PostgreSQL servers. You can connect to your server by using `psql` with [Azure Cloud Shell](/azure/cloud-shell/overview). You can also use `psql` on your local environment if you have it available. An empty database, **postgres**, is automatically created with a new PostgreSQL server. You can use that database to connect with `psql`, as shown in the following code.
 
 ```bash
 psql --host=<server_name>.postgres.database.azure.com --port=5432 --username=<admin_user>@<server_name> --dbname=postgres

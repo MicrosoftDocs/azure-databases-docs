@@ -37,7 +37,7 @@ You can also selectively trigger a notification or send a call to an API based o
 
 ## Real-time stream processing
 
-The Azure Cosmos DB change feed can be used for real-time stream processing for IoT or real-time analytics processing on operational data. For example, you might receive and store event data from devices, sensors, infrastructure, and applications, and then process these events in real time by using [Spark](../../hdinsight/spark/apache-spark-overview.md). The following image shows how you can implement a lambda architecture by using the Azure Cosmos DB change feed:
+The Azure Cosmos DB change feed can be used for real-time stream processing for IoT or real-time analytics processing on operational data. For example, you might receive and store event data from devices, sensors, infrastructure, and applications, and then process these events in real time by using [Spark](/azure/hdinsight/spark/apache-spark-overview). The following image shows how you can implement a lambda architecture by using the Azure Cosmos DB change feed:
 
 :::image type="content" source="../media/change-feed/lambda.png" alt-text="Diagram that shows an Azure Cosmos DB-based lambda pipeline for ingestion and query." border="false":::
 
@@ -67,7 +67,7 @@ For example, the change feed helps you perform the following tasks efficiently:
 
 - Perform zero-downtime migrations to another Azure Cosmos DB account or to another Azure Cosmos DB container that has a different logical partition key.
 
-- Implement an application-level data tiering and archival. For example, you can store "hot data" in Azure Cosmos DB and age out "cold data" to other storage systems such as [Azure Blob Storage](../../storage/common/storage-introduction.md).
+- Implement an application-level data tiering and archival. For example, you can store "hot data" in Azure Cosmos DB and age out "cold data" to other storage systems such as [Azure Blob Storage](/azure/storage/common/storage-introduction).
 
 When you have to [denormalize data across partitions and containers](model-partition-example.md#v2-introducing-denormalization-to-optimize-read-queries), you can read from your container's change feed as a source for this data replication. Real-time data replication with the change feed can guarantee only eventual consistency. You can [monitor how far the change feed processor lags behind](how-to-use-change-feed-estimator.md) in processing changes in your Azure Cosmos DB container.
 

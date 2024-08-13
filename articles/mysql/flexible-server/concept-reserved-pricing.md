@@ -21,17 +21,17 @@ Azure Database for MySQL flexible server now helps you save money by prepaying f
 ## How does the instance reservation work?
 You don't need to assign the reservation to specific Azure Database for MySQL flexible server instances. An already running Azure Database for MySQL flexible server instance or ones that are newly deployed automatically get the benefit of reserved pricing. By purchasing a reservation, you're pre-paying for the compute costs for a period of one or three years. As soon as you buy a reservation, the Azure Database for MySQL flexible server compute charges that match the reservation attributes are no longer charged at the pay-as-you go rates. A reservation doesn't cover software, networking, or storage charges associated with Azure Database for MySQL flexible server. At the end of the reservation term, the billing benefit expires, and Azure Database for MySQL flexible server is billed at the pay-as-you go price. Reservations don't auto-renew. For pricing information, see the [Azure Database for MySQL flexible server reserved capacity offering](https://azure.microsoft.com/pricing/details/mysql/).
 
-You can buy Azure Database for MySQL flexible server reserved capacity in the [Azure portal](https://portal.azure.com/). Pay for the reservation [up front or with monthly payments](../../cost-management-billing/reservations/prepare-buy-reservation.md). To buy the reserved capacity:
+You can buy Azure Database for MySQL flexible server reserved capacity in the [Azure portal](https://portal.azure.com/). Pay for the reservation [up front or with monthly payments](/azure/cost-management-billing/reservations/prepare-buy-reservation). To buy the reserved capacity:
 
 * To buy a reservation, you must have owner role or reservation purchaser role on an Azure subscription.
 * For Enterprise subscriptions, **Add Reserved Instances** must be enabled in the [EA portal](https://ea.azure.com/). Or, if that setting is disabled, you must be an EA Admin on the subscription.
 * For Cloud Solution Provider (CSP) program, only the admin agents or sales agents can purchase Azure Database for MySQL flexible server reserved capacity. </br>
 
-The details on how enterprise customers and Pay-As-You-Go customers are charged for reservation purchases, see [understand Azure reservation usage for your Enterprise enrollment](../../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md) and [understand Azure reservation usage for your Pay-As-You-Go subscription](../../cost-management-billing/reservations/understand-reserved-instance-usage.md).
+The details on how enterprise customers and Pay-As-You-Go customers are charged for reservation purchases, see [understand Azure reservation usage for your Enterprise enrollment](/azure/cost-management-billing/reservations/understand-reserved-instance-usage-ea) and [understand Azure reservation usage for your Pay-As-You-Go subscription](/azure/cost-management-billing/reservations/understand-reserved-instance-usage).
 
 ## Reservation exchanges and refunds
 
-You can exchange a reservation for another reservation of the same type. You can also exchange a reservation from Azure Database for MySQL - Single Server with one for Azure Database for MySQL flexible server. It's also possible to refund a reservation, if you no longer need it. The Azure portal can be used to exchange or refund a reservation. For more information, see [Self-service exchanges and refunds for Azure Reservations](../../cost-management-billing/reservations/exchange-and-refund-azure-reservations.md).
+You can exchange a reservation for another reservation of the same type. You can also exchange a reservation from Azure Database for MySQL - Single Server with one for Azure Database for MySQL flexible server. It's also possible to refund a reservation, if you no longer need it. The Azure portal can be used to exchange or refund a reservation. For more information, see [Self-service exchanges and refunds for Azure Reservations](/azure/cost-management-billing/reservations/exchange-and-refund-azure-reservations).
 
 ## Reservation discount
 
@@ -79,7 +79,7 @@ Use Azure APIs to programmatically get information for your organization about A
 - Split or merge reservations
 - Change the scope of reservations
 
-For more information, see [APIs for Azure reservation automation](../../cost-management-billing/reservations/reservation-apis.md).
+For more information, see [APIs for Azure reservation automation](/azure/cost-management-billing/reservations/reservation-apis).
 
 ## vCore size flexibility
 
@@ -87,11 +87,11 @@ vCore size flexibility helps you scale up or down within a performance tier and 
 
 ## How to view reserved instance purchase details
 
-You can view your reserved instance purchase details via the [Reservations menu on the left side of the Azure portal](https://aka.ms/reservations). For more information, see [How a reservation discount is applied to Azure Database for MySQL flexible server](../../cost-management-billing/reservations/understand-reservation-charges-mysql.md).
+You can view your reserved instance purchase details via the [Reservations menu on the left side of the Azure portal](https://aka.ms/reservations). For more information, see [How a reservation discount is applied to Azure Database for MySQL flexible server](/azure/cost-management-billing/reservations/understand-reservation-charges-mysql).
 
 ## Reserved instance expiration
 
-You receive email notifications, the first one 30 days prior to reservation expiry and the other one at expiration. Once the reservation expires, deployed VMs will continue to run and be billed at a pay-as-you-go rate. For more information, see [Reserved Instances for Azure Database for MySQL flexible server](../../cost-management-billing/reservations/understand-reservation-charges-mysql.md).
+You receive email notifications, the first one 30 days prior to reservation expiry and the other one at expiration. Once the reservation expires, deployed VMs will continue to run and be billed at a pay-as-you-go rate. For more information, see [Reserved Instances for Azure Database for MySQL flexible server](/azure/cost-management-billing/reservations/understand-reservation-charges-mysql).
 
 ## Need help ? Contact us
 
@@ -103,9 +103,9 @@ The vCore reservation discount is applied automatically to the number of Azure D
 
 To learn more about Azure Reservations, see the following articles:
 
-* [What are Azure Reservations](../../cost-management-billing/reservations/save-compute-costs-reservations.md)?
-* [Manage Azure Reservations](../../cost-management-billing/reservations/manage-reserved-vm-instance.md)
-* [Understand Azure Reservations discount](../../cost-management-billing/reservations/understand-reservation-charges.md)
-* [Understand reservation usage for your Pay-As-You-Go subscription](../../cost-management-billing/reservations/understand-reservation-charges-mysql.md)
-* [Understand reservation usage for your Enterprise enrollment](../../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)
+* [What are Azure Reservations](/azure/cost-management-billing/reservations/save-compute-costs-reservations)?
+* [Manage Azure Reservations](/azure/cost-management-billing/reservations/manage-reserved-vm-instance)
+* [Understand Azure Reservations discount](/azure/cost-management-billing/reservations/understand-reservation-charges)
+* [Understand reservation usage for your Pay-As-You-Go subscription](/azure/cost-management-billing/reservations/understand-reservation-charges-mysql)
+* [Understand reservation usage for your Enterprise enrollment](/azure/cost-management-billing/reservations/understand-reserved-instance-usage-ea)
 * [Azure Reservations in Partner Center Cloud Solution Provider (CSP) program](/partner-center/azure-reservations)

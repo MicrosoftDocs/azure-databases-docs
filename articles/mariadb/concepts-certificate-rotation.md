@@ -106,7 +106,7 @@ If you're using a client that abstracts the connection string away, review the c
 For Azure app services, connecting to Azure Database for MariaDB, there are two possible scenarios depending on how on you're using SSL with your application.
 
 - This new certificate has been added to App Service at platform level. If you're using the SSL certificates included on App Service platform in your application, then no action is needed. This is the most common scenario. 
-- If you're explicitly including the path to SSL cert file in your code, then you would need to download the new cert and update the code to use the new cert. A good example of this scenario is when you use custom containers in App Service as shared in the [App Service documentation](../app-service/tutorial-multi-container-app.md#configure-database-variables-in-wordpress). This is an uncommon scenario but we have seen some users using this.
+- If you're explicitly including the path to SSL cert file in your code, then you would need to download the new cert and update the code to use the new cert. A good example of this scenario is when you use custom containers in App Service as shared in the [App Service documentation](/azure/app-service/tutorial-multi-container-app#configure-database-variables-in-wordpress). This is an uncommon scenario but we have seen some users using this.
 
 ### 5. What is the impact if using Azure Kubernetes Services (AKS) with Azure Database for MariaDB?
 

@@ -29,7 +29,7 @@ step-by-step guidance, see [How to set up
 alerts](howto-alert-on-metric.md).  Other tasks include setting up
 automated actions, running advanced analytics, and archiving history. For more
 information, see the [Azure Metrics
-Overview](../../azure-monitor/data-platform.md).
+Overview](/azure/azure-monitor/data-platform).
 
 ### Per node vs aggregate
 
@@ -58,7 +58,7 @@ These metrics are available for nodes:
 |cpu_credits_consumed|CPU credits consumed|Credits|Total number of credits consumed by the node. (Only available when burstable compute is provisioned on the node.)|
 |cpu_credits_remaining|CPU credits remaining|Credits|Total number of credits available to burst. (Only available when burstable compute is provisioned on the node.)|
 |cpu_percent|CPU percent|Percent|The percentage of CPU in use.|
-|iops|IOPS|Count|See the [IOPS definition](../../virtual-machines/premium-storage-performance.md#iops) and [Azure Cosmos DB for PostgreSQL throughput](resources-compute.md)|
+|iops|IOPS|Count|See the [IOPS definition](/azure/virtual-machines/premium-storage-performance#iops) and [Azure Cosmos DB for PostgreSQL throughput](resources-compute.md)|
 |memory_percent|Memory percent|Percent|The percentage of memory in use.|
 |network_bytes_ingress|Network In|Bytes|Network In across active connections.|
 |network_bytes_egress|Network Out|Bytes|Network Out across active connections.|
@@ -76,6 +76,6 @@ multiple nodes can be placed on the same graph.
 - See [how to set up alerts](howto-alert-on-metric.md) for guidance
   on creating an alert on a metric.
 - Learn how to do [metric
-  splitting](../../azure-monitor/essentials/metrics-charts.md#metric-splitting) to
+  splitting](/azure/azure-monitor/essentials/metrics-charts#metric-splitting) to
   inspect metrics per node in a cluster.
 - See other measures of database health with [useful diagnostic queries](howto-useful-diagnostic-queries.md).

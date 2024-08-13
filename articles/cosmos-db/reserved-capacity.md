@@ -32,7 +32,7 @@ Note that:
 After you buy a reservation, it's applied immediately to any existing Azure Cosmos DB resources that match the terms of the reservation. If you don’t have any existing Azure Cosmos DB resources, the reservation applies when you deploy a new Azure Cosmos DB instance that matches the terms of the reservation. In both cases, the period of the reservation starts immediately after a successful purchase.
 
 When your reservation expires, your Azure Cosmos DB instances continue to run and are billed at the regular pay-as-you-go rates.
-You can buy Azure Cosmos DB Reserved Capacity from the [Azure portal](https://portal.azure.com). Pay for the reservation [upfront or with monthly payments](../cost-management-billing/reservations/prepare-buy-reservation.md). 
+You can buy Azure Cosmos DB Reserved Capacity from the [Azure portal](https://portal.azure.com). Pay for the reservation [upfront or with monthly payments](/azure/cost-management-billing/reservations/prepare-buy-reservation). 
 
 ### Required permissions
 
@@ -44,7 +44,7 @@ The required permissions to purchase Reserved Capacity for Azure Cosmos DB are:
 
 ### Reservations consumption
 
-As soon as you buy a reservation, the throughput charges that match the reservation attributes are no longer charged at the pay-as-you go rates. For more information on reservations, see the [Azure reservations](../cost-management-billing/reservations/save-compute-costs-reservations.md) article.
+As soon as you buy a reservation, the throughput charges that match the reservation attributes are no longer charged at the pay-as-you go rates. For more information on reservations, see the [Azure reservations](/azure/cost-management-billing/reservations/save-compute-costs-reservations) article.
 
 Azure Cosmos DB consumes reservations in two different ways:
 
@@ -192,11 +192,11 @@ For a 30,000 RU/s reservation, in standard provisioned throughput, you should bu
 
 ## Cancel, exchange, or refund reservations
 
-You can cancel, exchange, or refund reservations with certain limitations. For more information, see [Self-service exchanges and refunds for Azure Reservations](../cost-management-billing/reservations/exchange-and-refund-azure-reservations.md).
+You can cancel, exchange, or refund reservations with certain limitations. For more information, see [Self-service exchanges and refunds for Azure Reservations](/azure/cost-management-billing/reservations/exchange-and-refund-azure-reservations).
 
 ### Exceeding Reserved Capacity
 
-When you reserve capacity for your Azure Cosmos DB resources, you are reserving [provisioned throughput](set-throughput.md). If the provisioned throughput is exceeded, requests beyond that provisioning amount are billed using pay-as-you go rates. For more information on reservations, see the [Azure reservations](../cost-management-billing/reservations/save-compute-costs-reservations.md) article. For more information on provisioned throughput, see [provisioned throughput types](how-to-choose-offer.md#overview-of-provisioned-throughput-types).
+When you reserve capacity for your Azure Cosmos DB resources, you are reserving [provisioned throughput](set-throughput.md). If the provisioned throughput is exceeded, requests beyond that provisioning amount are billed using pay-as-you go rates. For more information on reservations, see the [Azure reservations](/azure/cost-management-billing/reservations/save-compute-costs-reservations) article. For more information on provisioned throughput, see [provisioned throughput types](how-to-choose-offer.md#overview-of-provisioned-throughput-types).
 
 ## Limitations
 
@@ -208,14 +208,14 @@ When you reserve capacity for your Azure Cosmos DB resources, you are reserving 
 
 The reservation discount is applied automatically to the Azure Cosmos DB resources that match the reservation scope and attributes. You can update the scope of the reservation through the Azure portal, PowerShell, Azure CLI, or the API.
 
-*  To learn how Reserved Capacity discounts are applied to Azure Cosmos DB, see [Understand the Azure reservation discount](../cost-management-billing/reservations/understand-cosmosdb-reservation-charges.md).
+*  To learn how Reserved Capacity discounts are applied to Azure Cosmos DB, see [Understand the Azure reservation discount](/azure/cost-management-billing/reservations/understand-cosmosdb-reservation-charges).
 
 * To learn more about Azure reservations, see the following articles:
 
-   * [What are Azure reservations?](../cost-management-billing/reservations/save-compute-costs-reservations.md)  
-   * [Manage Azure reservations](../cost-management-billing/reservations/manage-reserved-vm-instance.md)  
-   * [Understand reservation usage for your Enterprise enrollment](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)  
-   * [Understand reservation usage for your pay-as-you-go subscription](../cost-management-billing/reservations/understand-reserved-instance-usage.md)
+   * [What are Azure reservations?](/azure/cost-management-billing/reservations/save-compute-costs-reservations)  
+   * [Manage Azure reservations](/azure/cost-management-billing/reservations/manage-reserved-vm-instance)  
+   * [Understand reservation usage for your Enterprise enrollment](/azure/cost-management-billing/reservations/understand-reserved-instance-usage-ea)  
+   * [Understand reservation usage for your pay-as-you-go subscription](/azure/cost-management-billing/reservations/understand-reserved-instance-usage)
    * [Azure reservations in the Partner Center CSP program](/partner-center/azure-reservations)
 
 Trying to do capacity planning for a migration to Azure Cosmos DB? You can use information about your existing database cluster for capacity planning.

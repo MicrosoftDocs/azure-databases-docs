@@ -27,7 +27,7 @@ Open your web browser and go to the [portal](https://portal.azure.com/). Enter y
 
 ## Create an Azure Database for PostgreSQL server
 
-An Azure Database for PostgreSQL flexible server instance is created with a configured set of [compute and storage resources](./concepts-compute-storage.md). The server is created within an [Azure resource group](../../azure-resource-manager/management/overview.md).
+An Azure Database for PostgreSQL flexible server instance is created with a configured set of [compute and storage resources](./concepts-compute-storage.md). The server is created within an [Azure resource group](/azure/azure-resource-manager/management/overview).
 
 To create an Azure Database for PostgreSQL flexible server instance, take the following steps:
 

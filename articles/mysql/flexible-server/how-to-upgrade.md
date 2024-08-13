@@ -130,7 +130,7 @@ To perform a major version upgrade of an Azure Database for MySQL flexible serve
 
 To perform a major version upgrade of an Azure Database for MySQL flexible server 5.7 server using the Azure CLI, perform the following steps.
 
-1.	Install the [Azure CLI](/cli/azure/install-azure-cli) for Windows or use the [Azure CLI](../../cloud-shell/overview.md) in Azure Cloud Shell to run the upgrade commands.
+1.	Install the [Azure CLI](/cli/azure/install-azure-cli) for Windows or use the [Azure CLI](/azure/cloud-shell/overview) in Azure Cloud Shell to run the upgrade commands.
 
     This upgrade requires version 2.40.0 or later of the Azure CLI. If you're using Azure Cloud Shell, the latest version is already installed. Run az version to find the version and dependent libraries that are installed. To upgrade to the latest version, run az upgrade.
 

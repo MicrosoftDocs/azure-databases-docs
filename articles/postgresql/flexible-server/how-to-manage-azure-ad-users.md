@@ -22,7 +22,7 @@ This article describes how you can create a Microsoft Entra ID enabled database 
 > This guide assumes you already enabled Microsoft Entra authentication on your Azure Database for PostgreSQL flexible server instance.
 > See [How to Configure Microsoft Entra authentication](./how-to-configure-sign-in-azure-ad-authentication.md)
 
-If you like to learn about how to create and manage Azure subscription users and their privileges, you can visit the [Azure role-based access control (Azure RBAC) article](../../role-based-access-control/built-in-roles.md) or review [how to customize roles](../../role-based-access-control/custom-roles.md).
+If you like to learn about how to create and manage Azure subscription users and their privileges, you can visit the [Azure role-based access control (Azure RBAC) article](/azure/role-based-access-control/built-in-roles) or review [how to customize roles](/azure/role-based-access-control/custom-roles).
 
 ## Create or delete Microsoft Entra administrators using Azure portal or Azure Resource Manager (ARM) API
 
@@ -41,7 +41,7 @@ If you like to learn about how to create and manage Azure subscription users and
 
 Once the first Microsoft Entra administrator is created from the Azure portal or API, you can use the administrator role to manage Microsoft Entra roles in your Azure Database for PostgreSQL flexible server instance.
 
-We recommend getting familiar with [Microsoft identity platform](../../active-directory/develop/v2-overview.md) for best use of Microsoft Entra integration with Azure Database for PostgreSQL flexible server.
+We recommend getting familiar with [Microsoft identity platform](/azure/active-directory/develop/v2-overview) for best use of Microsoft Entra integration with Azure Database for PostgreSQL flexible server.
 
 ### Principal types
 
@@ -49,7 +49,7 @@ Azure Database for PostgreSQL flexible server internally stores mapping between 
 Each PostgreSQL database role can be mapped to one of the following Microsoft Entra object types:
 
 1. **User** - Including Tenant local and guest users.
-1. **Service Principal**. Including [Applications and Managed identities](../../active-directory/develop/app-objects-and-service-principals.md)
+1. **Service Principal**. Including [Applications and Managed identities](/azure/active-directory/develop/app-objects-and-service-principals)
 1. **Group**  When a PostgreSQL role is linked to a Microsoft Entra group, any user or service principal member of this group can connect to the Azure Database for PostgreSQL flexible server instance with the group role.
 
 ### List Microsoft Entra roles using SQL

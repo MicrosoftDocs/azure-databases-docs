@@ -129,7 +129,7 @@ landingContent:
           - text: Azure SQL Migration extension for Azure Data Studio
             url: /azure-data-studio/extensions/azure-sql-migration-extension
           - text: Azure Migrate
-            url: ../migrate/migrate-services-overview.md
+            url: /azure/migrate/migrate-services-overview
           - text: SQL Database Projects
             url: /azure-data-studio/extensions/sql-database-project-extension
           - text: Database Schema Conversion Toolkit (Oracle to Microsoft SQL)

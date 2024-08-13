@@ -46,7 +46,7 @@ ms.date: 01/03/2024
    ![Screenshot of User assigned managed Identity page in Azure portal.](media/how-to-customer-managed-keys/user-assigned-managed-identity-provisioning.png)
 
 
-Learn more about [user-assigned managed identity](../../active-directory/managed-identities-azure-resources/how-manage-user-assigned-managed-identities.md?pivots=identity-mi-methods-azp#create-a-user-assigned-managed-identity).
+Learn more about [user-assigned managed identity](/azure/active-directory/managed-identities-azure-resources/how-manage-user-assigned-managed-identities?pivots=identity-mi-methods-azp#create-a-user-assigned-managed-identity).
 
 ### Key Vault
 
@@ -329,11 +329,11 @@ Encryption configuration can be changed from service-managed encryption to custo
 
 To monitor the database state, and to enable alerting for the loss of transparent data encryption protector access, configure the following Azure features:
 
-* [Azure Resource Health](../../service-health/resource-health-overview.md): An inaccessible database that has lost access to the Customer Key shows as "Inaccessible" after the first connection to the database has been denied.
+* [Azure Resource Health](/azure/service-health/resource-health-overview): An inaccessible database that has lost access to the Customer Key shows as "Inaccessible" after the first connection to the database has been denied.
 
-* [Activity log](../../service-health/alerts-activity-log-service-notifications-portal.md): When access to the Customer Key in the customer-managed Key Vault fails, entries are added to the activity log. You can reinstate access as soon as possible, if you create alerts for these events.
+* [Activity log](/azure/service-health/alerts-activity-log-service-notifications-portal): When access to the Customer Key in the customer-managed Key Vault fails, entries are added to the activity log. You can reinstate access as soon as possible, if you create alerts for these events.
 
-* [Action groups](../../azure-monitor/alerts/action-groups.md): Define these groups to send you notifications and alerts based on your preference.
+* [Action groups](/azure/azure-monitor/alerts/action-groups): Define these groups to send you notifications and alerts based on your preference.
 
 ## Next steps
 

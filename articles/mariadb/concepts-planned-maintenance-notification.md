@@ -34,7 +34,7 @@ You can utilize the planned maintenance notifications feature to receive alerts 
 > [!IMPORTANT]
 > Planned maintenance notifications are currently available in preview in all regions **except** West Central US
 
-**Planned maintenance notifications** allow you to receive alerts for upcoming planned maintenance event to your Azure Database for MariaDB. These notifications are integrated with [Service Health's](../service-health/overview.md) planned maintenance and allow you to view all scheduled maintenance for your subscriptions in one place. It also helps to scale the notification to the right audiences for different resource groups, as you may have different contacts responsible for different resources. You will receive the notification about the upcoming maintenance 72 calendar hours before the event.
+**Planned maintenance notifications** allow you to receive alerts for upcoming planned maintenance event to your Azure Database for MariaDB. These notifications are integrated with [Service Health's](/azure/service-health/overview) planned maintenance and allow you to view all scheduled maintenance for your subscriptions in one place. It also helps to scale the notification to the right audiences for different resource groups, as you may have different contacts responsible for different resources. You will receive the notification about the upcoming maintenance 72 calendar hours before the event.
 
 We will make every attempt to provide **Planned maintenance notification** 72 hours notice for all events. However, in cases of critical or security patches, notifications might be sent closer to the event or be omitted.
 
@@ -57,7 +57,7 @@ You can either check the planned maintenance notification on Azure portal or con
 7. Ensure Enable rule upon creation is set to Yes.
 8. Select **Create alert rule** to complete your alert
 
-For detailed steps on how to create **service health alerts**, refer to [Create activity log alerts on service notifications](../service-health/alerts-activity-log-service-notifications-portal.md).
+For detailed steps on how to create **service health alerts**, refer to [Create activity log alerts on service notifications](/azure/service-health/alerts-activity-log-service-notifications-portal).
 
 ## Can I cancel or postpone planned maintenance?
 

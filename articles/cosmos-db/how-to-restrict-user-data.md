@@ -28,13 +28,13 @@ Each authentication method gives access to different sets of operations, with so
 In some scenarios, you may want to restrict some users of your organization to perform data operations (that is CRUD requests and queries) only. This is typically the case for developers who don't need to create or delete resources, or change the provisioned throughput of the containers they are working on.
 
 You can restrict the access by applying the following steps:
-1. Creating a custom Microsoft Entra role for the users whom you want to restrict access. The custom Active Directory role should have fine-grained access level to operations using Azure Cosmos DB's [granular actions](../role-based-access-control/resource-provider-operations.md#microsoftdocumentdb).
+1. Creating a custom Microsoft Entra role for the users whom you want to restrict access. The custom Active Directory role should have fine-grained access level to operations using Azure Cosmos DB's [granular actions](/azure/role-based-access-control/resource-provider-operations#microsoftdocumentdb).
 1. Disallowing the execution of non-data operations with keys. You can achieve this by restricting these operations to Azure Resource Manager calls only.
 
 The next sections of this article show how to perform these steps.
 
 > [!NOTE]
-> In order to execute the commands in the next sections, you need to install Azure PowerShell Module 3.0.0 or later, as well as the [Azure Owner Role](../role-based-access-control/built-in-roles.md#owner) on the subscription that you are trying to modify.
+> In order to execute the commands in the next sections, you need to install Azure PowerShell Module 3.0.0 or later, as well as the [Azure Owner Role](/azure/role-based-access-control/built-in-roles#owner) on the subscription that you are trying to modify.
 
 In the PowerShell scripts in the next sections, substitute the following placeholders with values specific to your environment:
 - `$MySubscriptionId` - The subscription ID that contains the Azure Cosmos DB account where you want to limit the permissions. For example: `e5c8766a-eeb0-40e8-af56-0eb142ebf78e`.
@@ -55,7 +55,7 @@ Select-AzSubscription $MySubscriptionId
 
 ## Create the custom Microsoft Entra role
 
-The following script creates a Microsoft Entra role assignment with "Key Only" access for Azure Cosmos DB accounts. The role is based on [Azure custom roles](../role-based-access-control/custom-roles.md) and [Granular actions for Azure Cosmos DB](../role-based-access-control/resource-provider-operations.md#microsoftdocumentdb). These roles and actions are part of the `Microsoft.DocumentDB` Microsoft Entra namespace.
+The following script creates a Microsoft Entra role assignment with "Key Only" access for Azure Cosmos DB accounts. The role is based on [Azure custom roles](/azure/role-based-access-control/custom-roles) and [Granular actions for Azure Cosmos DB](/azure/role-based-access-control/resource-provider-operations#microsoftdocumentdb). These roles and actions are part of the `Microsoft.DocumentDB` Microsoft Entra namespace.
 
 1. First, create a JSON document named `AzureCosmosKeyOnlyAccess.json` with the following content:
 

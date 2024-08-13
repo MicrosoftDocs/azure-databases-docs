@@ -43,13 +43,13 @@ An app that interacts with a multi-region Azure Cosmos DB account needs to confi
 
 **Enable accelerated networking to reduce latency and CPU jitter**
 
-It is recommended that you follow the instructions to enable [Accelerated Networking](../../virtual-network/accelerated-networking-overview.md) in your [Windows (select for instructions)](../../virtual-network/create-vm-accelerated-networking-powershell.md) or [Linux (select for instructions)](../../virtual-network/create-vm-accelerated-networking-cli.md) Azure VM, in order to maximize performance (reduce latency and CPU jitter).
+It is recommended that you follow the instructions to enable [Accelerated Networking](/azure/virtual-network/accelerated-networking-overview) in your [Windows (select for instructions)](/azure/virtual-network/create-vm-accelerated-networking-powershell) or [Linux (select for instructions)](/azure/virtual-network/create-vm-accelerated-networking-cli) Azure VM, in order to maximize performance (reduce latency and CPU jitter).
 
 Without accelerated networking, IO that transits between your Azure VM and other Azure resources might be unnecessarily routed through a host and virtual switch situated between the VM and its network card. Having the host and virtual switch inline in the datapath not only increases latency and jitter in the communication channel, it also steals CPU cycles from the VM. With accelerated networking, the VM interfaces directly with the NIC without intermediaries; any network policy details which were being handled by the host and virtual switch are now handled in hardware at the NIC; the host and virtual switch are bypassed. Generally you can expect lower latency and higher throughput, as well as more *consistent* latency and decreased CPU utilization when you enable accelerated networking.
 
-Limitations: accelerated networking must be supported on the VM OS, and can only be enabled when the VM is stopped and deallocated. The VM cannot be deployed with Azure Resource Manager. [App Service](../../app-service/overview.md) has no accelerated network enabled.
+Limitations: accelerated networking must be supported on the VM OS, and can only be enabled when the VM is stopped and deallocated. The VM cannot be deployed with Azure Resource Manager. [App Service](/azure/app-service/overview) has no accelerated network enabled.
 
-Please see the [Windows](../../virtual-network/create-vm-accelerated-networking-powershell.md) and [Linux](../../virtual-network/create-vm-accelerated-networking-cli.md) instructions for more details.
+Please see the [Windows](/azure/virtual-network/create-vm-accelerated-networking-powershell) and [Linux](/azure/virtual-network/create-vm-accelerated-networking-cli) instructions for more details.
 
 ## SDK usage
 * **Install the most recent SDK**

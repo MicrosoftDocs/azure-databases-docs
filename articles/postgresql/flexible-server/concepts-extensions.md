@@ -36,7 +36,7 @@ Using [Azure CLI](/cli/azure/):
 az postgres flexible-server parameter set --resource-group <resource_group>  --server-name <server> --subscription <subscription_id> --name azure.extensions --value <extension_name>,<extension_name>
    ```
 
-   Using [ARM Template](../../azure-resource-manager/templates/index.yml):
+   Using [ARM Template](/azure/azure-resource-manager/templates/):
    Following example allowlists extensions `dblink`, `dict_xsyn`, `pg_buffercache` on a server whose name is `postgres-test-server`:
 
 ```json
@@ -141,7 +141,7 @@ Following is a list of supported extensions that require some specific considera
 
 [dblink](https://www.postgresql.org/docs/current/contrib-dblink-function.html) allows you to connect from one Azure Database for PostgreSQL flexible server instance to another, or to another database in the same server. Azure Database for PostgreSQL flexible server supports both incoming and outgoing connections to any PostgreSQL server. The sending server needs to allow outbound connections to the receiving server. Similarly, the receiving server needs to allow connections from the sending server.
 
-We recommend deploying your servers with [virtual network integration](concepts-networking.md) if you plan to use this extension. By default virtual network integration allows connections between servers in the virtual network. You can also choose to use [virtual network network security groups](../../virtual-network/manage-network-security-group.md) to customize access.
+We recommend deploying your servers with [virtual network integration](concepts-networking.md) if you plan to use this extension. By default virtual network integration allows connections between servers in the virtual network. You can also choose to use [virtual network network security groups](/azure/virtual-network/manage-network-security-group) to customize access.
 
 ### pg_buffercache
 
@@ -315,7 +315,7 @@ There's a tradeoff between the query execution information `pg_stat_statements` 
 
 [postgres_fdw](https://www.postgresql.org/docs/current/postgres-fdw.html) allows you to connect from one Azure Database for PostgreSQL flexible server instance to another, or to another database in the same server. Azure Database for PostgreSQL flexible server supports both incoming and outgoing connections to any PostgreSQL server. The sending server needs to allow outbound connections to the receiving server. Similarly, the receiving server needs to allow connections from the sending server.
 
-We recommend deploying your servers with [virtual network integration](concepts-networking.md) if you plan to use this extension. By default virtual network integration allows connections between servers in the virtual network. You can also choose to use [virtual network network security groups](../../virtual-network/manage-network-security-group.md) to customize access.
+We recommend deploying your servers with [virtual network integration](concepts-networking.md) if you plan to use this extension. By default virtual network integration allows connections between servers in the virtual network. You can also choose to use [virtual network network security groups](/azure/virtual-network/manage-network-security-group) to customize access.
 
 ### TimescaleDB
 

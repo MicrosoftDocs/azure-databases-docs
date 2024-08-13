@@ -140,7 +140,7 @@ Because calls to Azure Cosmos DB are made over the network, you might need to va
 
 **Enable accelerated networking**
  
-To reduce latency and CPU jitter, we recommend that you enable accelerated networking on client virtual machines. See [Create a Windows virtual machine with accelerated networking](../../virtual-network/create-vm-accelerated-networking-powershell.md) or [Create a Linux virtual machine with accelerated networking](../../virtual-network/create-vm-accelerated-networking-cli.md).
+To reduce latency and CPU jitter, we recommend that you enable accelerated networking on client virtual machines. See [Create a Windows virtual machine with accelerated networking](/azure/virtual-network/create-vm-accelerated-networking-powershell) or [Create a Linux virtual machine with accelerated networking](/azure/virtual-network/create-vm-accelerated-networking-cli).
 
 ## SDK usage
 

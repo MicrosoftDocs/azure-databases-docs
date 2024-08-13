@@ -65,7 +65,7 @@ In this section, you will create a Virtual Network and the subnet to host the VM
     | Size | Leave the default **Standard DS1 v2**. |
     | **ADMINISTRATOR ACCOUNT** |  |
     | Username | Enter a username of your choosing. |
-    | Password | Enter a password of your choosing. The password must be at least 12 characters long and meet the [defined complexity requirements](../virtual-machines/windows/faq.yml?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm-).|
+    | Password | Enter a password of your choosing. The password must be at least 12 characters long and meet the [defined complexity requirements](/azure/virtual-machines/windows/faq?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm-).|
     | Confirm Password | Reenter password. |
     | **INBOUND PORT RULES** |  |
     | Public inbound ports | Leave the default **None**. |
@@ -155,7 +155,7 @@ In this section, you will create a private endpoint to the MariaDB server to it.
 7. Select **Next: Configuration**.
     > [!Note]
     > To enable virtual network service endpoints, you need a subscription with Network contributor role
-If your virtual network and Azure database for MariaDB account are in different subscriptions, make sure that the subscription that has virtual network also has Microsoft.DBforMariaDB resource provider registered. To register a resource provider, see [Azure resource providers and types article](../azure-resource-manager/management/resource-providers-and-types.md).
+If your virtual network and Azure database for MariaDB account are in different subscriptions, make sure that the subscription that has virtual network also has Microsoft.DBforMariaDB resource provider registered. To register a resource provider, see [Azure resource providers and types article](/azure/azure-resource-manager/management/resource-providers-and-types).
 8. In **Create a private endpoint - Configuration**, enter or select this information:
 
     | Setting | Value |
@@ -168,7 +168,7 @@ If your virtual network and Azure database for MariaDB account are in different 
     |Private DNS Zone |Select *(New)privatelink.mariadb.database.azure.com* |
 
     > [!Note] 
-    > Use the predefined private DNS zone for your service or provide your preferred DNS zone name. Refer to the [Azure services DNS zone configuration](../private-link/private-endpoint-dns.md) for details.
+    > Use the predefined private DNS zone for your service or provide your preferred DNS zone name. Refer to the [Azure services DNS zone configuration](/azure/private-link/private-endpoint-dns) for details.
 
 1. Select **Review + create**. You're taken to the **Review + create** page where Azure validates your configuration. 
 2. When you see the **Validation passed** message, select **Create**.
@@ -176,7 +176,7 @@ If your virtual network and Azure database for MariaDB account are in different 
     ![Private Link created](media/concepts-data-access-and-security-private-link/show-mariadb-private-link.png)
 
     > [!NOTE] 
-    > The FQDN in the customer DNS setting does not resolve to the private IP configured. You will have to setup a DNS zone for the configured FQDN as shown [here](../dns/dns-operations-recordsets-portal.md).
+    > The FQDN in the customer DNS setting does not resolve to the private IP configured. You will have to setup a DNS zone for the configured FQDN as shown [here](/azure/dns/dns-operations-recordsets-portal).
 
 ## Connect to a VM using Remote Desktop (RDP)
 
@@ -246,7 +246,7 @@ When you're done using the private endpoint, MariaDB server, and the VM, delete 
 
 ## Next steps
 
-In this how-to, you created a VM on a virtual network, an Azure Database for MariaDB, and a private endpoint for private access. You connected to one VM from the internet and securely communicated to the MariaDB server using Private Link. To learn more about private endpoints, see [What is Azure private endpoint](../private-link/private-endpoint-overview.md).
+In this how-to, you created a VM on a virtual network, an Azure Database for MariaDB, and a private endpoint for private access. You connected to one VM from the internet and securely communicated to the MariaDB server using Private Link. To learn more about private endpoints, see [What is Azure private endpoint](/azure/private-link/private-endpoint-overview).
 
 <!-- Link references, to text, Within this same GitHub repo. -->
-[resource-manager-portal]: ../azure-resource-manager/management/resource-providers-and-types.md
+[resource-manager-portal]: /azure/azure-resource-manager/management/resource-providers-and-types

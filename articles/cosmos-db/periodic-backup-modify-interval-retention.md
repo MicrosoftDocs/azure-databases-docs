@@ -46,7 +46,7 @@ Use the following steps to change the default backup options for an existing Azu
     - **Backup storage redundancy** - Choose the required storage redundancy option. For more information, see [backup storage redundancy](periodic-backup-storage-redundancy.md). By default, your existing periodic backup mode accounts have geo-redundant storage if the region where the account is being provisioned supports it. Otherwise, the account fallback to the highest redundancy option available. You can choose other storage such as locally redundant to ensure the backup isn't replicated to another region. The changes made to an existing account are applied to only future backups. After the backup storage redundancy of an existing account is updated, it may take up to twice the backup interval time for the changes to take effect, and **you will lose access to restore the older backups immediately.**
 
     > [!NOTE]
-    > You must have the Azure [Azure Cosmos DB Operator role](../role-based-access-control/built-in-roles.md#cosmos-db-operator) role assigned at the subscription level to configure backup storage redundancy.
+    > You must have the Azure [Azure Cosmos DB Operator role](/azure/role-based-access-control/built-in-roles#cosmos-db-operator) role assigned at the subscription level to configure backup storage redundancy.
 
     :::image type="content" source="./media/periodic-backup-modify-interval-retention/configure-existing-account-portal.png" lightbox="./media/periodic-backup-modify-interval-retention/configure-existing-account-portal.png" alt-text="Screenshot of configuration options including backup interval, retention, and storage redundancy for an existing Azure Cosmos DB account.":::
 

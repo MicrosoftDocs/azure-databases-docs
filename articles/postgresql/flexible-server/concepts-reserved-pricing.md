@@ -33,19 +33,19 @@ A reservation doesn't cover software, networking, or storage charges associated 
 
 > Starting July 1st, 2024, new reservations will not be available for Azure Database for PostgreSQL single server. Your existing single server reservations remain valid, and you can still purchase reservations for Azure Database for PostgreSQL flexible server.
 
-You can buy Azure Database for PostgreSQL flexible server reserved capacity in the [Azure portal](https://portal.azure.com/). Pay for the reservation [up front or with monthly payments](../../cost-management-billing/reservations/prepare-buy-reservation.md). To buy the reserved capacity:
+You can buy Azure Database for PostgreSQL flexible server reserved capacity in the [Azure portal](https://portal.azure.com/). Pay for the reservation [up front or with monthly payments](/azure/cost-management-billing/reservations/prepare-buy-reservation). To buy the reserved capacity:
 
 * To buy a reservation, you must have owner role or reservation purchaser role on an Azure subscription.
 * For EA subscriptions, **Add Reserved Instances** must be turned on in the [EA portal](https://ea.azure.com/). Or, if that setting is off, you must be an EA admin on the subscription.
 * For the Cloud Solution Provider (CSP) program, only the admin agents or sales agents can purchase Azure Database for PostgreSQL flexible server reserved capacity.
 
-For details on how enterprise customers and pay-as-you-go customers are charged for reservation purchases, see [Understand Azure reservation usage for your Enterprise Agreement enrollment](../../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md) and [Understand Azure reservation usage for your pay-as-you-go subscription](../../cost-management-billing/reservations/understand-reserved-instance-usage.md).
+For details on how enterprise customers and pay-as-you-go customers are charged for reservation purchases, see [Understand Azure reservation usage for your Enterprise Agreement enrollment](/azure/cost-management-billing/reservations/understand-reserved-instance-usage-ea) and [Understand Azure reservation usage for your pay-as-you-go subscription](/azure/cost-management-billing/reservations/understand-reserved-instance-usage).
 
 ## Reservation exchanges and refunds
 
 You can exchange a reservation for another reservation of the same type. You can also exchange a reservation from Azure Database for PostgreSQL single server with Azure Database for PostgreSQL flexible server. It's also possible to refund a reservation, if you no longer need it.
 
-You can use the Azure portal to exchange or refund a reservation. For more information, see [Self-service exchanges and refunds for Azure reservations](../../cost-management-billing/reservations/exchange-and-refund-azure-reservations.md).
+You can use the Azure portal to exchange or refund a reservation. For more information, see [Self-service exchanges and refunds for Azure reservations](/azure/cost-management-billing/reservations/exchange-and-refund-azure-reservations).
 
 ## Reservation discount
 
@@ -100,7 +100,7 @@ Use Azure APIs to programmatically get information for your organization about A
 * Split or merge reservations.
 * Change the scope of reservations.
 
-For more information, see [APIs for Azure reservation automation](../../cost-management-billing/reservations/reservation-apis.md).
+For more information, see [APIs for Azure reservation automation](/azure/cost-management-billing/reservations/reservation-apis).
 
 ## vCore size flexibility
 
@@ -124,8 +124,8 @@ The vCore reservation discount is applied automatically to the Azure Database fo
 
 To learn more about Azure reservations, see the following articles:
 
-* [What are Azure reservations?](../../cost-management-billing/reservations/save-compute-costs-reservations.md)
-* [Manage Azure reservations](../../cost-management-billing/reservations/manage-reserved-vm-instance.md)
-* [Understand Azure reservation discounts](../../cost-management-billing/reservations/understand-reservation-charges.md)
-* [Understand reservation usage for your Enterprise Agreement enrollment](../../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)
+* [What are Azure reservations?](/azure/cost-management-billing/reservations/save-compute-costs-reservations)
+* [Manage Azure reservations](/azure/cost-management-billing/reservations/manage-reserved-vm-instance)
+* [Understand Azure reservation discounts](/azure/cost-management-billing/reservations/understand-reservation-charges)
+* [Understand reservation usage for your Enterprise Agreement enrollment](/azure/cost-management-billing/reservations/understand-reserved-instance-usage-ea)
 * [Azure reservations in the Partner Center CSP program](/partner-center/azure-reservations)

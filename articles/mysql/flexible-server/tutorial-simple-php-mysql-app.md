@@ -18,7 +18,7 @@ ms.devlang: php
 
 [!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
-[Azure App Service](../../app-service/overview.md) provides a highly scalable, self-patching web hosting service using the Linux operating system. 
+[Azure App Service](/azure/app-service/overview) provides a highly scalable, self-patching web hosting service using the Linux operating system. 
 
 This tutorial shows how to build and deploy a sample PHP application to Azure App Service, and integrate it with Azure Database for MySQL flexible server on the back end. Here you'll use public access connectivity (allowed IP addresses) in the Azure Database for MySQL flexible server instance to connect to the App Service app.
 
@@ -169,7 +169,7 @@ In Azure App Service (Web Apps, API Apps, or Mobile Apps), an app always runs in
     MYSQL_SSL="true"
     ```
     
-    Alternatively, you can use Service Connector to establish a connection between the App Service app and the Azure Database for MySQL flexible server instance. For more details, see [Integrate Azure Database for MySQL flexible server with Service Connector](../../service-connector/how-to-integrate-mysql.md).
+    Alternatively, you can use Service Connector to establish a connection between the App Service app and the Azure Database for MySQL flexible server instance. For more details, see [Integrate Azure Database for MySQL flexible server with Service Connector](/azure/service-connector/how-to-integrate-mysql).
 
 ## Deploy your application using Local Git
 
@@ -231,7 +231,7 @@ az group delete --name rg-php-demo
 ## Next steps
 
 > [!div class="nextstepaction"]
-> [How to manage your resources in Azure portal](../../azure-resource-manager/management/manage-resources-portal.md)
+> [How to manage your resources in Azure portal](/azure/azure-resource-manager/management/manage-resources-portal)
 
 > [!div class="nextstepaction"]
 > [How to manage your server](how-to-manage-server-cli.md)

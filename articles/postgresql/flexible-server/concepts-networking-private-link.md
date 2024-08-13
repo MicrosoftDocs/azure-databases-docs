@@ -29,7 +29,7 @@ Private Link is exposed to users through two Azure resource types:
 ## Private Endpoints
 
 A **Private Endpoint** adds a network interface to a resource, providing it with a private IP address assigned from your VNET (Virtual Network). Once applied, you can communicate with this resource exclusively via the virtual network (VNET).
-For a list to PaaS services that support Private Link functionality, review the Private Link [documentation](../../private-link/private-link-overview.md). A **private endpoint** is a private IP address within a specific [VNet](../../virtual-network/virtual-networks-overview.md) and Subnet.
+For a list to PaaS services that support Private Link functionality, review the Private Link [documentation](/azure/private-link/private-link-overview). A **private endpoint** is a private IP address within a specific [VNet](/azure/virtual-network/virtual-networks-overview) and Subnet.
 
 The same public service instance can be referenced by multiple private endpoints in different VNets/subnets, even if they  have overlapping address spaces.
 
@@ -48,7 +48,7 @@ The same public service instance can be referenced by multiple private endpoints
 
 ## Use Cases for Private Link with Azure Database for PostgreSQL flexible server
 
-Clients can connect to the private endpoint from the same VNet, peered VNet in same region or across regions, or via [VNet-to-VNet connection](../../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md) across regions. Additionally, clients can connect from on-premises using ExpressRoute, private peering, or VPN tunneling. Below is a simplified diagram showing the common use cases.
+Clients can connect to the private endpoint from the same VNet, peered VNet in same region or across regions, or via [VNet-to-VNet connection](/azure/vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal) across regions. Additionally, clients can connect from on-premises using ExpressRoute, private peering, or VPN tunneling. Below is a simplified diagram showing the common use cases.
 
 :::image type="content" source="./media/concepts-networking/show-private-link-overview.png" alt-text="Diagram that shows how Azure Private Link works with Private Endpoints."  lightbox="./media/concepts-networking/show-private-link-overview.png":::
 
@@ -67,37 +67,37 @@ Cross Feature Availability Matrix for Private Endpoint in Azure Database for Pos
 | Major Version Upgrade (MVU) | Yes | Works as designed |
 | Microsoft Entra Authentication (Entra Auth) | Yes | Works as designed |
 | Connection pooling with PGBouncer | Yes | Works as designed |
-| Private Endpoint DNS | Yes | Works as designed and [documented](../../private-link/private-endpoint-dns.md) |
+| Private Endpoint DNS | Yes | Works as designed and [documented](/azure/private-link/private-endpoint-dns) |
 | Encryption with Customer Managed Keys (CMK)| Yes| Works as designed|
 
 
 ### Connect from an Azure VM in Peered Virtual Network 
 
-Configure [virtual network peering](../../virtual-network/tutorial-connect-virtual-networks-powershell.md) to establish connectivity to Azure Database for PostgreSQL flexible server from an Azure VM in a peered virtual network.
+Configure [virtual network peering](/azure/virtual-network/tutorial-connect-virtual-networks-powershell) to establish connectivity to Azure Database for PostgreSQL flexible server from an Azure VM in a peered virtual network.
 
 ### Connect from an Azure VM in VNet-to-VNet environment
 
-Configure [VNet-to-VNet VPN gateway](../../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md) connection to establish connectivity to an Azure Database for PostgreSQL flexible server instance from an Azure VM in a different region or subscription.
+Configure [VNet-to-VNet VPN gateway](/azure/vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal) connection to establish connectivity to an Azure Database for PostgreSQL flexible server instance from an Azure VM in a different region or subscription.
 
 ### Connect from an on-premises environment over VPN
 
 To establish connectivity from an on-premises environment to the Azure Database for PostgreSQL flexible server instance, choose and implement one of the options:
-- [Point-to-Site Connection](../../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)
-- [Site-to-Site VPN Connection](../../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)
-- [ExpressRoute Circuit](../../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md)
+- [Point-to-Site Connection](/azure/vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps)
+- [Site-to-Site VPN Connection](/azure/vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell)
+- [ExpressRoute Circuit](/azure/expressroute/expressroute-howto-linkvnet-portal-resource-manager)
 
 ## Network Security and Private Link
 
 When you use private endpoints, traffic is secured to a **private-link resource**. The platform validates network connections, allowing only those connections that reach the specified private-link resource. To access more subresources within the same Azure service, more private endpoints with corresponding targets are required. In the case of Azure Storage, for instance, you would need separate private endpoints to access the file and blob subresources.
 
-**Private endpoints** provide a privately accessible IP address for the Azure service, but don't necessarily restrict public network access to it. All other Azure services require another [access controls](../../event-hubs/event-hubs-ip-filtering.md), however. These controls provide an extra network security layer to your resources, providing protection that helps prevent access to the Azure service associated with the private-link resource.
+**Private endpoints** provide a privately accessible IP address for the Azure service, but don't necessarily restrict public network access to it. All other Azure services require another [access controls](/azure/event-hubs/event-hubs-ip-filtering), however. These controls provide an extra network security layer to your resources, providing protection that helps prevent access to the Azure service associated with the private-link resource.
 
-Private endpoints support network policies. Network policies enable support for Network Security Groups (NSG), User Defined Routes (UDR), and Application Security Groups (ASG). For more information about enabling network policies for a private endpoint, see [Manage network policies for private endpoints](../../private-link/disable-private-endpoint-network-policy.md). To use an ASG with a private endpoint, see [Configure an application security group (ASG) with a private endpoint](../../private-link/configure-asg-private-endpoint.md).
+Private endpoints support network policies. Network policies enable support for Network Security Groups (NSG), User Defined Routes (UDR), and Application Security Groups (ASG). For more information about enabling network policies for a private endpoint, see [Manage network policies for private endpoints](/azure/private-link/disable-private-endpoint-network-policy). To use an ASG with a private endpoint, see [Configure an application security group (ASG) with a private endpoint](/azure/private-link/configure-asg-private-endpoint).
 
 ## Private Link and DNS
 
 When using a private endpoint, you need to connect to the same Azure service but use the private endpoint IP address. The intimate endpoint connection requires separate **Domain Name System (DNS)** settings to resolve the private IP address to the resource name.
-**[Private DNS zones](../../dns/private-dns-overview.md)** provide domain name resolution within a virtual network without a custom DNS solution. You link the **private DNS zones** to each virtual network to provide DNS services to that network.
+**[Private DNS zones](/azure/dns/private-dns-overview)** provide domain name resolution within a virtual network without a custom DNS solution. You link the **private DNS zones** to each virtual network to provide DNS services to that network.
 
 **Private DNS zones** provide separate DNS zone names for each Azure service. For example, if you configured a private DNS zone for the storage account blob service in the previous image, the DNS zones name is **privatelink.blob.core.windows.net**. Check out the Microsoft documentation here to see more of the private DNS zone names for all Azure services.
 
@@ -108,9 +108,9 @@ When using a private endpoint, you need to connect to the same Azure service but
 ### Hybrid DNS for Azure and on-premises resources
 
 **Domain Name System (DNS)** is a critical design topic in the overall landing zone architecture. Some organizations might want to use their existing investments in DNS, while others may want to adopt native Azure capabilities for all their DNS needs. 
-You can use [Azure DNS Private Resolver service](../../dns/dns-private-resolver-overview.md) in conjunction with Azure Private DNS Zones for cross-premises name resolution. DNS Private Resolver  can forward DNS request to another DNS server and  also provides an IP address that can be used by external DNS server to forward requests. So external on-premises DNS servers are able to resolve name located in a private DNS zone.
+You can use [Azure DNS Private Resolver service](/azure/dns/dns-private-resolver-overview) in conjunction with Azure Private DNS Zones for cross-premises name resolution. DNS Private Resolver  can forward DNS request to another DNS server and  also provides an IP address that can be used by external DNS server to forward requests. So external on-premises DNS servers are able to resolve name located in a private DNS zone.
 
-More information on using [Private DNS Resolver]() with on-premises DNS forwarder to forward DNS traffic to Azure DNS see this [document](../../private-link/private-endpoint-dns-integration.md#on-premises-workloads-using-a-dns-forwarder), as well as this [document](../../private-link/tutorial-dns-on-premises-private-resolver.md) . Solutions described allow to extend on-premises network that already has a DNS solution in place to resolve resources in Azure. 
+More information on using [Private DNS Resolver]() with on-premises DNS forwarder to forward DNS traffic to Azure DNS see this [document](/azure/private-link/private-endpoint-dns-integration#on-premises-workloads-using-a-dns-forwarder), as well as this [document](/azure/private-link/tutorial-dns-on-premises-private-resolver) . Solutions described allow to extend on-premises network that already has a DNS solution in place to resolve resources in Azure. 
 Microsoft architecture.
 
 ### Private Link and DNS integration in hub and spoke network architectures
@@ -130,9 +130,9 @@ In such architecture following is configured:
 
 By default, network policies are disabled for a subnet in a virtual network. To utilize network policies like User-Defined Routes and Network Security Groups support, network policy support must be enabled for the subnet. This setting is only applicable to private endpoints within the subnet. This setting affects all private endpoints within the subnet. For other resources in the subnet, access is controlled based on security rules in the network security group.
 
-Network policies can be enabled either for Network Security Groups only, for User-Defined Routes only, or for both. For more you can see [Azure docs](../../private-link/disable-private-endpoint-network-policy.md?tabs=network-policy-portal)
+Network policies can be enabled either for Network Security Groups only, for User-Defined Routes only, or for both. For more you can see [Azure docs](/azure/private-link/disable-private-endpoint-network-policy?tabs=network-policy-portal)
 
-Limitations to Network Security Groups (NSG) and Private Endpoints are listed [here](../../private-link/private-endpoint-overview.md)
+Limitations to Network Security Groups (NSG) and Private Endpoints are listed [here](/azure/private-link/private-endpoint-overview)
 
  > [!IMPORTANT]
  > Protection against data leakage: A private endpoint is mapped to an instance of a PaaS resource instead of the entire service. Consumers can only connect to the specific resource. Access to any other resource in the service is blocked. This mechanism provides basic protection against data leakage risks.
@@ -151,20 +151,20 @@ The following situations and outcomes are possible when you use Private Link in 
 
 Following are basic areas to check if you're having connectivity issues using Private Endpoint based networking:
 
-1. **Verify IP Address Assignments:** Check that the private endpoint has the correct IP address assigned and that there are no conflicts with other resources. For more information on private endpoint and IP see this [doc](../../private-link/manage-private-endpoint.md)
-2. **Check Network Security Groups (NSGs):** Review the NSG rules for the private endpoint's subnet to ensure the necessary traffic is allowed and doesn't have conflicting rules.  For more information on NSG see this [doc](../../virtual-network/network-security-groups-overview.md)
+1. **Verify IP Address Assignments:** Check that the private endpoint has the correct IP address assigned and that there are no conflicts with other resources. For more information on private endpoint and IP see this [doc](/azure/private-link/manage-private-endpoint)
+2. **Check Network Security Groups (NSGs):** Review the NSG rules for the private endpoint's subnet to ensure the necessary traffic is allowed and doesn't have conflicting rules.  For more information on NSG see this [doc](/azure/virtual-network/network-security-groups-overview)
 3. **Validate Route Table Configuration:** Ensure the route tables associated with the private endpoint's subnet and the connected resources are correctly configured with the appropriate routes.
-4. **Use Network Monitoring and Diagnostics:** Leverage Azure Network Watcher to monitor and diagnose network traffic using tools like Connection Monitor or Packet Capture. For more information on network diagnostics see this [doc](../../network-watcher/network-watcher-overview.md)
+4. **Use Network Monitoring and Diagnostics:** Leverage Azure Network Watcher to monitor and diagnose network traffic using tools like Connection Monitor or Packet Capture. For more information on network diagnostics see this [doc](/azure/network-watcher/network-watcher-overview)
 
-Further details on troubleshooting private are also available in this [guide](../../private-link/troubleshoot-private-endpoint-connectivity.md)
+Further details on troubleshooting private are also available in this [guide](/azure/private-link/troubleshoot-private-endpoint-connectivity)
 
 ## Troubleshooting DNS resolution with Private Endpoint based networking
 
 Following are basic areas to check if you're having DNS resolution issues using Private Endpoint based networking:
 
-1. **Validate DNS Resolution:** Check if the DNS server or service used by the private endpoint and the connected resources is functioning correctly. Ensure the private endpoint's DNS settings are accurate. For more information on private endpoints and DNS zone settings see this [doc](../../private-link/private-endpoint-dns.md)
+1. **Validate DNS Resolution:** Check if the DNS server or service used by the private endpoint and the connected resources is functioning correctly. Ensure the private endpoint's DNS settings are accurate. For more information on private endpoints and DNS zone settings see this [doc](/azure/private-link/private-endpoint-dns)
 2. **Clear DNS Cache:** Clear the DNS cache on the private endpoint or client machine to ensure the latest DNS information is retrieved and avoid inconsistent errors.
-3. **Analyze DNS Logs:** Review DNS logs for error messages or unusual patterns, such as DNS query failures, server errors, or timeouts. For more on DNS metrics see this [doc](../../dns/dns-alerts-metrics.md)
+3. **Analyze DNS Logs:** Review DNS logs for error messages or unusual patterns, such as DNS query failures, server errors, or timeouts. For more on DNS metrics see this [doc](/azure/dns/dns-alerts-metrics)
 
 
 ## Next steps

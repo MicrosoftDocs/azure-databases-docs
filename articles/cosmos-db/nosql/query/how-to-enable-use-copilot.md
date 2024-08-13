@@ -36,7 +36,7 @@ Microsoft Copilot for Azure in Cosmos DB (preview) can assist with authoring Azu
 - An existing Azure Cosmos DB for NoSQL account
   - If you don't have an Azure subscription, [create an account for free](https://azure.microsoft.com/free).
   - Once you have an existing Azure subscription, [create a new Azure Cosmos DB for NoSQL account](../quickstart-portal.md).
-  - Enroll your Azure subscription, in the Microsoft Copilot for Azure in Cosmos DB [preview feature](../../../azure-resource-manager/management/preview-features.md).
+  - Enroll your Azure subscription, in the Microsoft Copilot for Azure in Cosmos DB [preview feature](/azure/azure-resource-manager/management/preview-features).
  
 > [!IMPORTANT]
 > Review these [preview terms](https://azure.microsoft.com/support/legal/preview-supplemental-terms/#AzureOpenAI-PoweredPreviews) before using query Copilot for NoSQL.

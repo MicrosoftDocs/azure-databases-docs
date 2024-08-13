@@ -172,7 +172,7 @@ The following Azure Cosmos DB configuration choices can't be modified or undone 
   }
   ```
 
-* You can also use [the diagnostic settings](../monitor-resource-logs.md) to understand the frequency and patterns of the queries executed against Azure Cosmos DB. The results from the diagnostic logs can be sent to a storage account, an Event Hubs instance or [Azure Log Analytics](../../azure-monitor/logs/log-analytics-tutorial.md).  
+* You can also use [the diagnostic settings](../monitor-resource-logs.md) to understand the frequency and patterns of the queries executed against Azure Cosmos DB. The results from the diagnostic logs can be sent to a storage account, an Event Hubs instance or [Azure Log Analytics](/azure/azure-monitor/logs/log-analytics-tutorial).  
 
 ## Pre-migration logistics planning
 
@@ -188,7 +188,7 @@ Finally, now that you have a view of your existing data estate and a design for 
     |---------|---------|---------|
     |Online|[Azure Database Migration Service](../../dms/tutorial-mongodb-cosmos-db-online.md)|&bull; Uses the [bulk executor library](../bulk-executor-overview.md) for Azure Cosmos DB <br />&bull; Suitable for large datasets and takes care of replicating live changes <br/>&bull; Works only with other MongoDB sources|
     |Offline|[Azure Database Migration Service](../../dms/tutorial-mongodb-cosmos-db-online.md)|&bull; Uses the [bulk executor library](../bulk-executor-overview.md) for Azure Cosmos DB <br/>&bull; Suitable for large datasets and takes care of replicating live changes <br/>&bull; Works only with other MongoDB sources|
-    |Offline|[Azure Data Factory](../../data-factory/connector-azure-cosmos-db.md)|&bull; Uses the [bulk executor library](../bulk-executor-overview.md) for Azure Cosmos DB <br/>&bull; Suitable for large datasets <br/> &bull; Easy to set up and supports multiple sources <br/> &bull; Lack of checkpointing means that any issue during migration would require a restart of the whole migration process<br/>&bull; Lack of a dead letter queue would mean that a few erroneous files could stop the entire migration process <br/>&bull; Needs custom code to increase read throughput for certain data sources|
+    |Offline|[Azure Data Factory](/azure/data-factory/connector-azure-cosmos-db)|&bull; Uses the [bulk executor library](../bulk-executor-overview.md) for Azure Cosmos DB <br/>&bull; Suitable for large datasets <br/> &bull; Easy to set up and supports multiple sources <br/> &bull; Lack of checkpointing means that any issue during migration would require a restart of the whole migration process<br/>&bull; Lack of a dead letter queue would mean that a few erroneous files could stop the entire migration process <br/>&bull; Needs custom code to increase read throughput for certain data sources|
     |Offline|[Existing Mongo Tools (mongodump, mongorestore, Studio3T)](tutorial-mongotools-cosmos-db.md)|&bull; Easy to set up and integration <br/>&bull; Needs custom handling for throttles|
     *|Offline/online|[Azure Databricks and Spark](migrate-databricks.md)|&bull; Full control of migration rate and data transformation <br/>&bull; Requires custom coding|
   

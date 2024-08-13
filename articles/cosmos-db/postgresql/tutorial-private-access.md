@@ -21,7 +21,7 @@ them.
 ## Prerequisites
 
 - An Azure account with an active subscription. If you don't have one, [create an account for free](https://azure.microsoft.com/free).
-- If you want to run the code locally, [Azure CLI](/cli/azure/install-azure-cli) installed. You can also run the code in [Azure Cloud Shell](../../cloud-shell/overview.md).
+- If you want to run the code locally, [Azure CLI](/cli/azure/install-azure-cli) installed. You can also run the code in [Azure Cloud Shell](/azure/cloud-shell/overview).
 
 ## Create a virtual network
 
@@ -153,7 +153,7 @@ az group delete --resource-group link-demo
 
 * Learn more about [private access](concepts-private-access.md)
 * Learn about [private
-  endpoints](../../private-link/private-endpoint-overview.md)
+  endpoints](/azure/private-link/private-endpoint-overview)
 * Learn about [virtual
-  networks](../../virtual-network/concepts-and-best-practices.md)
-* Learn about [private DNS zones](../../dns/private-dns-overview.md)
+  networks](/azure/virtual-network/concepts-and-best-practices)
+* Learn about [private DNS zones](/azure/dns/private-dns-overview)

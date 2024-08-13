@@ -23,7 +23,7 @@ In your web browser, sign in to the [Azure portal](https://portal.azure.com). En
 
 ## Create an Azure Database for MariaDB server
 
-You create an Azure Database for MariaDB server with a defined set of [compute and storage resources](concepts-pricing-tiers.md). You create the server within an [Azure resource group](../azure-resource-manager/management/overview.md).
+You create an Azure Database for MariaDB server with a defined set of [compute and storage resources](concepts-pricing-tiers.md). You create the server within an [Azure resource group](/azure/azure-resource-manager/management/overview).
 
 To create an Azure Database for MariaDB server:
 
@@ -206,7 +206,7 @@ To connect to the server by using MySQL Workbench:
 
 ## Clean up resources
 
-You can clean up the resources that you created in this quickstart in two ways. You can delete the [Azure resource group](../azure-resource-manager/management/overview.md). This option deletes all the resources in the resource group. If you want to keep the other resources intact, delete only the one server resource.
+You can clean up the resources that you created in this quickstart in two ways. You can delete the [Azure resource group](/azure/azure-resource-manager/management/overview). This option deletes all the resources in the resource group. If you want to keep the other resources intact, delete only the one server resource.
 
 > [!TIP]
 > Other quickstarts in this collection build on this quickstart. If you plan to continue working with Azure Database for MariaDB quickstarts, don't clean up the resources that you created in this quickstart. If you don't plan to continue, use the following steps to delete all the resources that you created in this quickstart.

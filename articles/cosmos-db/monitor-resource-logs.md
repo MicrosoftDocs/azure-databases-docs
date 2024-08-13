@@ -173,7 +173,7 @@ Use the [Azure Monitor REST API](/rest/api/monitor/diagnosticsettings/createorup
 
 ### [Bicep](#tab/bicep)
 
-Use an [Bicep template](../azure-resource-manager/bicep/overview.md) to create the diagnostic setting.
+Use an [Bicep template](/azure/azure-resource-manager/bicep/overview) to create the diagnostic setting.
 
 1. Ensure you logged in to the Azure CLI. For more information, see [sign in with Azure CLI](/cli/azure/authenticate-azure-cli).
 
@@ -234,7 +234,7 @@ Use an [Bicep template](../azure-resource-manager/bicep/overview.md) to create t
 
 ### [ARM Template](#tab/azure-resource-manager-template)
 
-Use an [Azure Resource Manager template](../azure-resource-manager/templates/overview.md) to create the diagnostic setting.
+Use an [Azure Resource Manager template](/azure/azure-resource-manager/templates/overview) to create the diagnostic setting.
 
 1. Ensure you logged in to the Azure CLI. For more information, see [sign in with Azure CLI](/cli/azure/authenticate-azure-cli).
 

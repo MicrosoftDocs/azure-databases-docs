@@ -102,7 +102,7 @@ Here's the info you need to know post automigration:
 
 - The server parameters in Flexible server are tuned to the community standards. If you want to retain the same server parameter values as your Single server, you can log in via PowerShell and run the script [here](https://github.com/hariramt/auto-migration/tree/main) to copy the parameter values.
 - To enable [query perf insights](../flexible-server/concepts-query-performance-insight.md), you need to enable query store on the Flexible server which isn't enabled by default
-- If [High Availability](../../reliability/reliability-postgresql-flexible-server.md) is needed, you can enable it with zero downtime.
+- If [High Availability](/azure/reliability/reliability-postgresql-flexible-server) is needed, you can enable it with zero downtime.
 
 ## Frequently Asked Questions (FAQs)
 

@@ -74,6 +74,6 @@ Azure Database for MariaDB has inherent high-availability capabilities to help p
 
 ## Next steps
 
-- Learn about [Azure regions](../availability-zones/az-overview.md).
+- Learn about [Azure regions](/azure/availability-zones/az-overview).
 - Learn about [handling transient connectivity errors](concepts-connectivity.md).
 - Learn how to [replicate your data with read replicas](howto-read-replicas-portal.md).

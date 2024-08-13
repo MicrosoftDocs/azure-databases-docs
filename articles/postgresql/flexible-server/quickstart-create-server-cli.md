@@ -25,7 +25,7 @@ This quickstart shows how to use the [Azure CLI](/cli/azure/get-started-with-azu
 
 ## Launch Azure Cloud Shell
 
-The [Azure Cloud Shell](../../cloud-shell/overview.md) is a free interactive shell that you can use to run the steps in this article. It has common Azure tools preinstalled and configured to use with your account.
+The [Azure Cloud Shell](/azure/cloud-shell/overview) is a free interactive shell that you can use to run the steps in this article. It has common Azure tools preinstalled and configured to use with your account.
 
 To open the Cloud Shell, just select **Try it** from the upper right corner of a code block. You can also open Cloud Shell in a separate browser tab by going to [https://shell.azure.com/bash](https://shell.azure.com/bash). Select **Copy** to copy the blocks of code, paste it into the Cloud Shell, and select **Enter** to run it.
 
@@ -47,7 +47,7 @@ az account set --subscription <subscription id>
 
 ## Create a flexible server
 
-Create an [Azure resource group](../../azure-resource-manager/management/overview.md) using the `az group create` command and then create your Azure Database for PostgreSQL flexible server instance inside this resource group. You should provide a unique name. The following example creates a resource group named `myresourcegroup` in the `eastus` location.
+Create an [Azure resource group](/azure/azure-resource-manager/management/overview) using the `az group create` command and then create your Azure Database for PostgreSQL flexible server instance inside this resource group. You should provide a unique name. The following example creates a resource group named `myresourcegroup` in the `eastus` location.
 
 ```azurecli-interactive
 az group create --name myresourcegroup --location eastus

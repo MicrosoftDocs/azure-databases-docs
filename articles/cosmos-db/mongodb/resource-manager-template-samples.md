@@ -25,7 +25,7 @@ This article has examples for Azure Cosmos DB's API for MongoDB only, to find ex
 > * To change the throughput values, redeploy the template with updated RU/s.
 > * When you add or remove locations to an Azure Cosmos DB account, you can't simultaneously modify other properties. These operations must be done separately.
 
-To create any of the Azure Cosmos DB resources below, copy the following example template into a new json file. You can optionally create a parameters json file to use when deploying multiple instances of the same resource with different names and values. There are many ways to deploy Azure Resource Manager templates including, [Azure portal](../../azure-resource-manager/templates/deploy-portal.md), [Azure CLI](../../azure-resource-manager/templates/deploy-cli.md), [Azure PowerShell](../../azure-resource-manager/templates/deploy-powershell.md) and [GitHub](../../azure-resource-manager/templates/deploy-to-azure-button.md).
+To create any of the Azure Cosmos DB resources below, copy the following example template into a new json file. You can optionally create a parameters json file to use when deploying multiple instances of the same resource with different names and values. There are many ways to deploy Azure Resource Manager templates including, [Azure portal](/azure/azure-resource-manager/templates/deploy-portal), [Azure CLI](/azure/azure-resource-manager/templates/deploy-cli), [Azure PowerShell](/azure/azure-resource-manager/templates/deploy-powershell) and [GitHub](/azure/azure-resource-manager/templates/deploy-to-azure-button).
 
 <a id="create-autoscale"></a>
 
@@ -51,10 +51,10 @@ This template will create an Azure Cosmos DB account for API for MongoDB (3.2, 3
 
 Here are some additional resources:
 
-* [Azure Resource Manager documentation](../../azure-resource-manager/index.yml)
+* [Azure Resource Manager documentation](/azure/azure-resource-manager/)
 * [Azure Cosmos DB resource provider schema](/azure/templates/microsoft.documentdb/allversions)
 * [Azure Cosmos DB Quickstart templates](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.DocumentDB&pageNumber=1&sort=Popular)
-* [Troubleshoot common Azure Resource Manager deployment errors](../../azure-resource-manager/templates/common-deployment-errors.md)
+* [Troubleshoot common Azure Resource Manager deployment errors](/azure/azure-resource-manager/templates/common-deployment-errors)
 * Trying to do capacity planning for a migration to Azure Cosmos DB? You can use information about your existing database cluster for capacity planning.
     * If all you know is the number of vcores and servers in your existing database cluster, read about [estimating request units using vCores or vCPUs](../convert-vcore-to-request-unit.md) 
     * If you know typical request rates for your current database workload, read about [estimating request units using Azure Cosmos DB capacity planner](estimate-ru-capacity-planner.md)

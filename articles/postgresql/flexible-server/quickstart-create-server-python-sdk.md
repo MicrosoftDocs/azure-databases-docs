@@ -92,7 +92,7 @@ if __name__ == '__main__':
 
 Replace the following parameters with your data:
 
-- **subscription_id**: Your own [subscription ID](../../azure-portal/get-subscription-tenant-id.md#find-your-azure-subscription).
+- **subscription_id**: Your own [subscription ID](/azure/azure-portal/get-subscription-tenant-id#find-your-azure-subscription).
 - **resource_group**: The name of the resource group you want to use. The script will create a new resource group if it doesn't exist.   
 - **server_name**: A unique name that identifies your Azure Database for PostgreSQL flexible server instance. The domain name `postgres.database.azure.com` is appended to the server name you provide. The server name must be at least 3 characters and at most 63 characters, and can only contain lowercase letters, numbers, and hyphens.
 - **location**: The Azure region where you want to create your Azure Database for PostgreSQL flexible server instance. It defines the geographical location where your server and its data reside. Choose a region close to your users for reduced latency. The location should be specified in the format of Azure region short names, like `westus2`, `eastus`, or `northeurope`.

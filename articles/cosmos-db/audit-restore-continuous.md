@@ -32,7 +32,7 @@ For the accounts that were already deleted, there would not be any database acco
 
 :::image type="content" source="media/restore-account-continuous-backup/continuous-backup-restore-details-deleted-json.png" alt-text="Azure Cosmos DB restore audit activity log." lightbox="media/restore-account-continuous-backup/continuous-backup-restore-details-deleted-json.png":::
 
-The activity logs can also be accessed using Azure CLI or Azure PowerShell. For more information on activity logs, review [Azure Activity log - Azure Monitor](../azure-monitor/essentials/activity-log.md).
+The activity logs can also be accessed using Azure CLI or Azure PowerShell. For more information on activity logs, review [Azure Activity log - Azure Monitor](/azure/azure-monitor/essentials/activity-log).
 
 ## Track the progress of the restore operation 
 

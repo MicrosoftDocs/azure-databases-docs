@@ -152,7 +152,7 @@
     - name: Configure TLS
       href: howto-tls-configurations.md
     - name: Threat protection with Microsoft Defender for Cloud
-      href: ../security-center/defender-for-databases-usage.md?toc=/azure/mariadb/toc.json&bc=/azure/mariadb/breadcrumb/toc.json
+      href: /azure/security-center/defender-for-databases-usage?toc=/azure/mariadb/toc.json&bc=/azure/mariadb/breadcrumb/toc.json
     - name: Auditing Concepts
       href: concepts-audit-logs.md    
     - name: Configuring Audit logs

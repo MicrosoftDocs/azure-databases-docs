@@ -56,4 +56,4 @@ For reference information, see [.NET bulk executor library](nosql/sdk-dotnet-bul
 ## Next steps
   
 * [Azure Cosmos DB Spark connector](./nosql/quickstart-spark.md)
-* [Azure Cosmos DB connector](../data-factory/connector-azure-cosmos-db.md)
+* [Azure Cosmos DB connector](/azure/data-factory/connector-azure-cosmos-db)

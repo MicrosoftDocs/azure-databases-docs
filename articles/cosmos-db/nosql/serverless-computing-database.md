@@ -68,9 +68,9 @@ In financial implementations, you can invoke a function when a bank account bala
 
 **Implementation:** A timer trigger with an Azure Cosmos DB input binding
 
-1. Using a [timer trigger](../../azure-functions/functions-bindings-timer.md), you can retrieve the bank account balance information stored in an Azure Cosmos DB container at timed intervals using an **input binding**.
+1. Using a [timer trigger](/azure/azure-functions/functions-bindings-timer), you can retrieve the bank account balance information stored in an Azure Cosmos DB container at timed intervals using an **input binding**.
 2. If the balance is below the low balance threshold set by the user, then follow up with an action from the Azure Function.
-3. The output binding can be a [SendGrid integration](../../azure-functions/functions-bindings-sendgrid.md) that sends an email from a service account to the email addresses identified for each of the low balance accounts.
+3. The output binding can be a [SendGrid integration](/azure/azure-functions/functions-bindings-sendgrid) that sends an email from a service account to the email addresses identified for each of the low balance accounts.
 
 The following images show the code in the Azure portal for this scenario.
 
@@ -109,9 +109,9 @@ In all of these use cases, because the function has decoupled the app itself, yo
 
 Native integration between Azure Cosmos DB and Azure Functions is available in the Azure portal and in Visual Studio.
 
-* In the Azure Functions portal, you can create a trigger. For quickstart instructions, see [Create an Azure Functions trigger for Azure Cosmos DB in the Azure portal](../../azure-functions/functions-create-cosmos-db-triggered-function.md).
+* In the Azure Functions portal, you can create a trigger. For quickstart instructions, see [Create an Azure Functions trigger for Azure Cosmos DB in the Azure portal](/azure/azure-functions/functions-create-cosmos-db-triggered-function).
 * In the Azure Cosmos DB portal, you can add an Azure Functions trigger for Azure Cosmos DB to an existing Azure Function app in the same resource group.
-* In Visual Studio, you can create the trigger using the [Azure Functions Tools](../../azure-functions/functions-develop-vs.md):
+* In Visual Studio, you can create the trigger using the [Azure Functions Tools](/azure/azure-functions/functions-develop-vs):
 
   >
   >[!VIDEO https://aka.ms/docs.change-feed-azure-functions]
@@ -130,7 +130,7 @@ Azure Cosmos DB is the recommended database for your serverless computing archit
 
 * **Global replication**. You can replicate Azure Cosmos DB data [around the globe](../distribute-data-globally.md) to reduce latency, geo-locating your data closest to where your users are. As with all Azure Cosmos DB queries, data from event-driven triggers is read data from the Azure Cosmos DB closest to the user.
 
-If you're looking to integrate with Azure Functions to store data and don't need deep indexing or if you need to store attachments and media files, the [Azure Blob Storage trigger](../../azure-functions/functions-bindings-storage-blob.md) may be a better option.
+If you're looking to integrate with Azure Functions to store data and don't need deep indexing or if you need to store attachments and media files, the [Azure Blob Storage trigger](/azure/azure-functions/functions-bindings-storage-blob) may be a better option.
 
 Benefits of Azure Functions: 
 
@@ -140,12 +140,12 @@ Benefits of Azure Functions:
 
 * **Good for quick tasks**. The service spins up new instances of functions whenever an event fires and closes them as soon as the function completes. You only pay for the time your functions are running.
 
-If you're not sure whether Flow, Logic Apps, Azure Functions, or WebJobs are best for your implementation, see [Choose between Flow, Logic Apps, Functions, and WebJobs](../../azure-functions/functions-compare-logic-apps-ms-flow-webjobs.md).
+If you're not sure whether Flow, Logic Apps, Azure Functions, or WebJobs are best for your implementation, see [Choose between Flow, Logic Apps, Functions, and WebJobs](/azure/azure-functions/functions-compare-logic-apps-ms-flow-webjobs).
 
 ## Next steps
 
 Now let's connect Azure Cosmos DB and Azure Functions for real: 
 
-* [Create an Azure Functions trigger for Azure Cosmos DB in the Azure portal](../../azure-functions/functions-create-cosmos-db-triggered-function.md)
-* [Create an Azure Functions HTTP trigger with an Azure Cosmos DB input binding](../../azure-functions/functions-bindings-cosmosdb.md?tabs=csharp)
-* [Azure Cosmos DB bindings and triggers](../../azure-functions/functions-bindings-cosmosdb-v2.md)
+* [Create an Azure Functions trigger for Azure Cosmos DB in the Azure portal](/azure/azure-functions/functions-create-cosmos-db-triggered-function)
+* [Create an Azure Functions HTTP trigger with an Azure Cosmos DB input binding](/azure/azure-functions/functions-bindings-cosmosdb?tabs=csharp)
+* [Azure Cosmos DB bindings and triggers](/azure/azure-functions/functions-bindings-cosmosdb-v2)

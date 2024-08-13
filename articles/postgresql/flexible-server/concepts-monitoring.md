@@ -18,7 +18,7 @@ Monitoring data about your servers helps you troubleshoot and optimize for your 
 
 ## Metrics
 
-Azure Database for PostgreSQL flexible server provides various metrics that give insight into the behavior of the resources that support the Azure Database for PostgreSQL flexible server instance. Each metric is emitted at a 1-minute interval and has up to [93 days of history](../../azure-monitor/essentials/data-platform-metrics.md#retention-of-metrics). You can configure alerts on the metrics. Other options include setting up automated actions, performing advanced analytics, and archiving the history. For more information, see the [Azure Metrics overview](../../azure-monitor/essentials/data-platform-metrics.md).
+Azure Database for PostgreSQL flexible server provides various metrics that give insight into the behavior of the resources that support the Azure Database for PostgreSQL flexible server instance. Each metric is emitted at a 1-minute interval and has up to [93 days of history](/azure/azure-monitor/essentials/data-platform-metrics#retention-of-metrics). You can configure alerts on the metrics. Other options include setting up automated actions, performing advanced analytics, and archiving the history. For more information, see the [Azure Metrics overview](/azure/azure-monitor/essentials/data-platform-metrics).
 
 > [!NOTE]
 > While metrics are stored for 93 days, you can only query (in the Metrics tile) for a maximum of 30 days' worth of data on any single chart. If you see a blank chart or your chart displays only part of metric data, verify that the difference between start and end dates in the time picker doesn't exceed the 30-day interval. After you've selected a 30-day interval, you can pan the chart to view the full retention window. 
@@ -217,7 +217,7 @@ Is-db-alive is a database server availability metric for Azure Database for Post
 
 ### Filter and split on dimension metrics
 
-In the preceding tables, some metrics have dimensions like DatabaseName or State. You can use [filtering](../../azure-monitor/essentials/metrics-charts.md#filters) and [splitting](../../azure-monitor/essentials/metrics-charts.md#apply-splitting) for the metrics that have dimensions. These features show how various metric segments (or *dimension values*) affect the overall value of the metric. You can use them to identify possible outliers.
+In the preceding tables, some metrics have dimensions like DatabaseName or State. You can use [filtering](/azure/azure-monitor/essentials/metrics-charts#filters) and [splitting](/azure/azure-monitor/essentials/metrics-charts#apply-splitting) for the metrics that have dimensions. These features show how various metric segments (or *dimension values*) affect the overall value of the metric. You can use them to identify possible outliers.
 
 - **Filtering**: Use filtering to choose which dimension values are included in the chart. For example, you might want to show idle connections when you chart the `Sessions-by-State` metric. You set the filter for Idle in the State dimension.
 - **Splitting**: Use splitting to control whether the chart displays separate lines for each value of a dimension or if it aggregates the values in a single line. For example, you can see one line for a `Sessions-by-State` metric across all sessions. You can see separate lines for each session grouped by State value. Apply splitting on the State dimension to see separate lines.
@@ -226,7 +226,7 @@ The following example demonstrates splitting by the State dimension and filterin
 
 :::image type="content" source="media/concepts-monitoring/example-split-filter.png" alt-text="Screenshot that shows an example of splitting and filtering on metrics and dimensions." lightbox="media/concepts-monitoring/example-split-filter.png":::
 
-For more information about setting up charts for dimensional metrics, see [Metric chart examples](../../azure-monitor/essentials/metric-chart-samples.md).
+For more information about setting up charts for dimensional metrics, see [Metric chart examples](/azure/azure-monitor/essentials/metric-chart-samples).
 
 ### Metrics visualization
 
@@ -235,8 +235,8 @@ There are several options to visualize Azure Monitor metrics.
 |Component  |Description | Required training and/or configuration|
 |---------|---------|--------|
 |Overview page|Most Azure services have an **Overview** page in the Azure portal that includes a **Monitor** section with charts that show recent critical metrics. This information is intended for owners of individual services to quickly assess the performance of the resource. |This page is based on platform metrics that are collected automatically. No configuration is required.         |
-|[Metrics Explorer](../../azure-monitor/essentials/metrics-getting-started.md)|You can use Metrics Explorer to interactively work with metric data and create metric alerts. You need minimal training to use Metrics Explorer, but you must be familiar with the metrics you want to analyze. |- Once data collection is configured, no other configuration is required.<br>- Platform metrics for Azure resources are automatically available.<br>- Guest metrics for virtual machines are available after an Azure Monitor agent is deployed to the virtual machine.<br>- Application metrics are available after Application Insights is configured.         |
-| [Grafana](https://grafana.com/grafana/dashboards/19556-azure-azure-postgresql-flexible-server-monitoring/) | You can use Grafana for visualizing and alerting on metrics. All versions of Grafana include the [Azure Monitor datasource plug-in](../../azure-monitor/visualize/grafana-plugin.md) to visualize your Azure Monitor metrics and logs.                                                     | To become familiar with Grafana dashboards, some training is required. However, you can simplify the process by downloading a prebuilt [Azure Database for PostgreSQL flexible server grafana monitoring dashboard](https://grafana.com/grafana/dashboards/19556-azure-azure-postgresql-flexible-server-monitoring/), which allows for easy monitoring of all Azure Database for PostgreSQL flexible server instances within your organization.                                                                                                                                              |
+|[Metrics Explorer](/azure/azure-monitor/essentials/metrics-getting-started)|You can use Metrics Explorer to interactively work with metric data and create metric alerts. You need minimal training to use Metrics Explorer, but you must be familiar with the metrics you want to analyze. |- Once data collection is configured, no other configuration is required.<br>- Platform metrics for Azure resources are automatically available.<br>- Guest metrics for virtual machines are available after an Azure Monitor agent is deployed to the virtual machine.<br>- Application metrics are available after Application Insights is configured.         |
+| [Grafana](https://grafana.com/grafana/dashboards/19556-azure-azure-postgresql-flexible-server-monitoring/) | You can use Grafana for visualizing and alerting on metrics. All versions of Grafana include the [Azure Monitor datasource plug-in](/azure/azure-monitor/visualize/grafana-plugin) to visualize your Azure Monitor metrics and logs.                                                     | To become familiar with Grafana dashboards, some training is required. However, you can simplify the process by downloading a prebuilt [Azure Database for PostgreSQL flexible server grafana monitoring dashboard](https://grafana.com/grafana/dashboards/19556-azure-azure-postgresql-flexible-server-monitoring/), which allows for easy monitoring of all Azure Database for PostgreSQL flexible server instances within your organization.                                                                                                                                              |
 
 
 ## Logs
@@ -247,7 +247,7 @@ In addition to the metrics, you can use Azure Database for PostgreSQL flexible s
 
 |Component  |Description | Required training and/or configuration|
 |---------|---------|--------|
-|[Log Analytics](../../azure-monitor/logs/log-analytics-overview.md)|With Log Analytics, you can create log queries to interactively work with log data and create log query alerts.| Some training is required for you to become familiar with the query language, although you can use prebuilt queries for common requirements. |
+|[Log Analytics](/azure/azure-monitor/logs/log-analytics-overview)|With Log Analytics, you can create log queries to interactively work with log data and create log query alerts.| Some training is required for you to become familiar with the query language, although you can use prebuilt queries for common requirements. |
 
 
 ## Next steps

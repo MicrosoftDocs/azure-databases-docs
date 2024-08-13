@@ -224,9 +224,9 @@
         - name: High availability
           items:
             - name: High availability and reliability
-              href: ../../reliability/reliability-cosmos-db-nosql.md?toc=/azure/cosmos-db/toc.json
+              href: /azure/reliability/reliability-cosmos-db-nosql?toc=/azure/cosmos-db/toc.json
             - name: Proactive resiliency
-              href: ../../reliability/resiliency-recommendations/recommend-cosmos-db-nosql.md?toc=/azure/cosmos-db/toc.json
+              href: /azure/reliability/resiliency-recommendations/recommend-cosmos-db-nosql?toc=/azure/cosmos-db/toc.json
             - name: Multi-region writes
               items:
                 - name: Understanding multi-region writes
@@ -363,7 +363,7 @@
             - name: Azure Synapse Link for Azure Cosmos DB
               href: ../synapse-link.md
             - name: Azure Synapse Link supported features
-              href: ../../synapse-analytics/synapse-link/concept-synapse-link-cosmos-db-support.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+              href: /azure/synapse-analytics/synapse-link/concept-synapse-link-cosmos-db-support?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
             - name: Custom partitioning - Overview
               href: ../custom-partitioning-analytical-store.md
             - name: Azure Synapse Link FAQ
@@ -421,9 +421,9 @@
         - name: High availability
           items:
             - name: High availability and reliability
-              href: ../../reliability/reliability-cosmos-db-nosql.md?toc=/azure/cosmos-db/toc.json
+              href: /azure/reliability/reliability-cosmos-db-nosql?toc=/azure/cosmos-db/toc.json
             - name: Proactive resiliency
-              href: ../../reliability/resiliency-recommendations/recommend-cosmos-db-nosql.md?toc=/azure/cosmos-db/toc.json
+              href: /azure/reliability/resiliency-recommendations/recommend-cosmos-db-nosql?toc=/azure/cosmos-db/toc.json
             - name: Multi-region writes
               items:
                 - name: Understanding multi-region writes
@@ -443,7 +443,7 @@
         - name: Data encryption
           href: ../database-encryption-at-rest.md
         - name: Service tags
-          href: ../../virtual-network/service-tags-overview.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+          href: /azure/virtual-network/service-tags-overview?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: Azure role-based access control
           displayName: rbac
           href: ../role-based-access-control.md
@@ -808,17 +808,17 @@
             - name: Configure Azure Synapse Link
               href: ../configure-synapse-link.md
             - name: Connect to Azure Synapse Link
-              href: ../../synapse-analytics/synapse-link/how-to-connect-synapse-link-cosmos-db.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+              href: /azure/synapse-analytics/synapse-link/how-to-connect-synapse-link-cosmos-db?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
             - name: Azure Synapse Link and integrated Power BI
               href: ../integrated-power-bi-synapse-link.md
             - name: Analytical store and private endpoints
               href: ../analytical-store-private-endpoints.md
             - name: Query with Azure Synapse Spark 3
-              href: ../../synapse-analytics/synapse-link/how-to-query-analytical-store-spark-3.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+              href: /azure/synapse-analytics/synapse-link/how-to-query-analytical-store-spark-3?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
             - name: Query with Azure Synapse Spark 2
-              href: ../../synapse-analytics/synapse-link/how-to-query-analytical-store-spark.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+              href: /azure/synapse-analytics/synapse-link/how-to-query-analytical-store-spark?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
             - name: Query with serverless SQL pool
-              href: ../../synapse-analytics/sql/query-cosmos-db-analytical-store.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+              href: /azure/synapse-analytics/sql/query-cosmos-db-analytical-store?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
             - name: Configure custom partitioning
               href: ../configure-custom-partitioning.md
             - name: Get started with change data capture
@@ -847,7 +847,7 @@
           href: manage-with-terraform.md
           displayName: Terraform
         - name: Relocate to another region
-          href: ../../operational-excellence/relocation-cosmos-db.md?toc=/azure/cosmosdb/nosql/toc.json
+          href: /azure/operational-excellence/relocation-cosmos-db?toc=/azure/cosmosdb/nosql/toc.json
         - name: Prevent changes or deletion
           href: ../resource-locks.md
     - name: Global distribution
@@ -899,7 +899,7 @@
             - name: Configure access from private endpoints
               href: ../how-to-configure-private-endpoints.md
             - name: Connect privately to an Azure Cosmos DB account
-              href: ../../private-link/tutorial-private-endpoint-cosmosdb-portal.md?bc=%2fazure%2fcosmos-db%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fcosmos-db%2ftoc.json
+              href: /azure/private-link/tutorial-private-endpoint-cosmosdb-portal?bc=%2fazure%2fcosmos-db%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fcosmos-db%2ftoc.json
         - name: Encryption
           items:
             - name: Use Always Encrypted
@@ -1026,17 +1026,17 @@
         - name: Azure App Service
           href: create-website.md
         - name: Azure AI Search indexer
-          href: ../../search/search-howto-index-cosmosdb.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+          href: /azure/search/search-howto-index-cosmosdb?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: Azure Functions
           items:
             - name: Serverless computing
               href: serverless-computing-database.md
             - name: Azure Function bindings
-              href: ../../azure-functions/functions-bindings-cosmosdb.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+              href: /azure/azure-functions/functions-bindings-cosmosdb?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: Azure Data Factory
-          href: ../../data-factory/connector-azure-cosmos-db.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+          href: /azure/data-factory/connector-azure-cosmos-db?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: Azure Stream Analytics
-          href: ../../stream-analytics/stream-analytics-documentdb-output.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+          href: /azure/stream-analytics/stream-analytics-documentdb-output?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: Azure Data Explorer
           href: https://github.com/Azure/azure-kusto-labs/tree/master/cosmosdb-adx-integration
         - name: Azure Event Hubs and Azure Storage

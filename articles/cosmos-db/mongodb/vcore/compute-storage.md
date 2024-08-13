@@ -106,7 +106,7 @@ Determining the right compute and storage configuration for your Azure Cosmos DB
     - **Memory**: Ensure that your [working set](#working-set-and-memory-considerations) (frequently accessed data and indexes) fits into RAM. If your working set size exceeds available memory, consider adding more RAM or optimizing your data model.
     - **CPU**: Choose a CPU configuration that can handle your query load and concurrency requirements. CPU-intensive workloads may require more cores. Use 'CPU percent' metric with 'Max' aggregation on your Azure Cosmos DB for MongoDB vCore cluster to see historical compute usage patterns.
     - **Storage IOPS**: Select storage with sufficient IOPS to handle your read and write operations. Use 'IOPS' metric with 'Max' aggregation on your cluster to see historical storage IOPS usage.
-    - **Network**: Ensure adequate network bandwidth to handle data transfer between your application and the database, especially for distributed setups. Make sure you configured host for your MongoDB application to support [accelerated networking](../../../virtual-network/accelerated-networking-overview.md) technologies such as SR-IOV.
+    - **Network**: Ensure adequate network bandwidth to handle data transfer between your application and the database, especially for distributed setups. Make sure you configured host for your MongoDB application to support [accelerated networking](/azure/virtual-network/accelerated-networking-overview) technologies such as SR-IOV.
 
 4. **Scale appropriately**
     - **Vertical scaling**: Scale compute / RAM up and down and scale storage up. 

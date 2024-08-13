@@ -129,7 +129,7 @@ During the preview, the following methods to read the change feed are available 
 
 ### Get started
 
-To get started using all versions and deletes change feed mode, enroll in the preview via the [Preview Features page](../../azure-resource-manager/management/preview-features.md) in your Azure Subscription overview page. Search for the **AllVersionsAndDeletesChangeFeed** feature and select **Register**.
+To get started using all versions and deletes change feed mode, enroll in the preview via the [Preview Features page](/azure/azure-resource-manager/management/preview-features) in your Azure Subscription overview page. Search for the **AllVersionsAndDeletesChangeFeed** feature and select **Register**.
 
 :::image type="content" source="media/change-feed-modes/enroll-in-preview.png" alt-text="Screenshot of All versions and deletes change feed mode feature in Preview Features page in Subscriptions overview in Azure portal.":::
 

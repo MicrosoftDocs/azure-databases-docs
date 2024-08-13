@@ -33,7 +33,7 @@ To complete these steps, you need:
 
 * SSMS version 17.2 or later.
 * An instance of your target database server to host SSISDB. If you don't already have one, create a [logical SQL server](/azure/azure-sql/database/logical-servers) (without a database) using the Azure portal by navigating to the SQL Server (logical server only) [form](https://portal.azure.com/#create/Microsoft.SQLServer).
-* SSIS must be provisioned in Azure Data Factory (ADF) containing Azure-SSIS Integration Runtime (IR) with the destination SSISDB hosted by SQL Database (as described in the article [Provision the Azure-SSIS Integration Runtime in Azure Data Factory](../data-factory/tutorial-deploy-ssis-packages-azure.md)).
+* SSIS must be provisioned in Azure Data Factory (ADF) containing Azure-SSIS Integration Runtime (IR) with the destination SSISDB hosted by SQL Database (as described in the article [Provision the Azure-SSIS Integration Runtime in Azure Data Factory](/azure/data-factory/tutorial-deploy-ssis-packages-azure)).
 
 ## Assess source SSIS projects/packages
 

@@ -24,11 +24,11 @@ Azure Blob Storage is an object storage solution for the cloud. Blob Storage is 
 
 Blob Storage offers a hierarchy of three types of resources:
 
-- The [storage account](../../storage/blobs/storage-blobs-introduction.md#storage-accounts) is an administrative entity that holds services for items like blobs, files, queues, tables, or disks.
+- The [storage account](/azure/storage/blobs/storage-blobs-introduction#storage-accounts) is an administrative entity that holds services for items like blobs, files, queues, tables, or disks.
 
   When you create a storage account in Azure, you get a unique namespace for your storage resources. That unique namespace forms part of the URL. The storage account name should be unique across all existing storage account names in Azure.
 
-- A [container](../../storage/blobs/storage-blobs-introduction.md#containers) is inside a storage account. A container is like a folder where blobs are stored.
+- A [container](/azure/storage/blobs/storage-blobs-introduction#containers) is inside a storage account. A container is like a folder where blobs are stored.
 
   You can define security policies and assign policies to the container. Those policies cascade to all the blobs in the container.
 
@@ -36,7 +36,7 @@ Blob Storage offers a hierarchy of three types of resources:
 
   After you place a blob into a container that's inside a storage account, you can refer to the blob by using a URL in this format: `protocol://<storage_account_name>/blob.core.windows.net/<container_name>/<blob_name>`.
 
-- A [blob](../../storage/blobs/storage-blobs-introduction.md#blobs) is a piece of data that resides in the container.
+- A [blob](/azure/storage/blobs/storage-blobs-introduction#blobs) is a piece of data that resides in the container.
 
 The following diagram shows the relationship between these resources.
 

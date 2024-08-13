@@ -15,7 +15,7 @@ ms.custom: devx-track-azurecli, devx-track-azurepowershell
 
 [!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
-By default, Azure Cosmos DB stores periodic mode backup data in geo-redundant [blob storage](../storage/common/storage-redundancy.md) that is replicated to a [paired region](../availability-zones/cross-region-replication-azure.md). You can override the default backup storage redundancy. This article explains how to update the backup storage redundancy using Azure CLI and PowerShell. It also shows how to configure an Azure policy on your accounts to enforce the required storage redundancy.
+By default, Azure Cosmos DB stores periodic mode backup data in geo-redundant [blob storage](/azure/storage/common/storage-redundancy) that is replicated to a [paired region](/azure/availability-zones/cross-region-replication-azure). You can override the default backup storage redundancy. This article explains how to update the backup storage redundancy using Azure CLI and PowerShell. It also shows how to configure an Azure policy on your accounts to enforce the required storage redundancy.
 
 ## Prerequisites
 
@@ -148,7 +148,7 @@ Use the following steps to update backup storage redundancy.
 
 ## Add an Azure Policy for backup storage redundancy
 
-Azure Policy helps you to enforce organizational standards and to assess compliance at-scale. For more information, see [what is Azure Policy?](../governance/policy/overview.md).
+Azure Policy helps you to enforce organizational standards and to assess compliance at-scale. For more information, see [what is Azure Policy?](/azure/governance/policy/overview).
 
 The following sample shows how to add an Azure policy for Azure Cosmos DB accounts to validate (using `audit`) that they have their backup redundancy configured to `Local`.
 

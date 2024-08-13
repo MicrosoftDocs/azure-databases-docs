@@ -65,5 +65,5 @@ Some considerations when considering during monthly maintenance.
 ## Related content
 
 - [change the maintenance schedule](how-to-maintenance-portal.md)
-- [get notifications about upcoming maintenance](../../service-health/service-notifications.md)
-- [set up alerts for upcoming scheduled maintenance events](../../service-health/resource-health-alert-monitor-guide.md)
+- [get notifications about upcoming maintenance](/azure/service-health/service-notifications)
+- [set up alerts for upcoming scheduled maintenance events](/azure/service-health/resource-health-alert-monitor-guide)

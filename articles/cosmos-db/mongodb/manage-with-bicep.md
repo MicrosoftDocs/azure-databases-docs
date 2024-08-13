@@ -25,7 +25,7 @@ This article shows Bicep samples for API for MongoDB accounts. You can also find
 > * To change the throughput values, redeploy the template with updated RU/s.
 > * When you add or remove locations to an Azure Cosmos DB account, you can't simultaneously modify other properties. These operations must be done separately.
 
-To create any of the Azure Cosmos DB resources below, copy the following example into a new bicep file. You can optionally create a parameters file to use when deploying multiple instances of the same resource with different names and values. There are many ways to deploy Azure Resource Manager templates including, [Azure CLI](../../azure-resource-manager/bicep/deploy-cli.md), [Azure PowerShell](../../azure-resource-manager/bicep/deploy-powershell.md) and [Cloud Shell](../../azure-resource-manager/bicep/deploy-cloud-shell.md).
+To create any of the Azure Cosmos DB resources below, copy the following example into a new bicep file. You can optionally create a parameters file to use when deploying multiple instances of the same resource with different names and values. There are many ways to deploy Azure Resource Manager templates including, [Azure CLI](/azure/azure-resource-manager/bicep/deploy-cli), [Azure PowerShell](/azure/azure-resource-manager/bicep/deploy-powershell) and [Cloud Shell](/azure/azure-resource-manager/bicep/deploy-cloud-shell).
 
 <a id="create-autoscale"></a>
 
@@ -47,8 +47,8 @@ Create an Azure Cosmos DB account for API for MongoDB (3.2, 3.6, 4.0, or 4.2) wi
 
 Here are some additional resources:
 
-* [Bicep documentation](../../azure-resource-manager/bicep/index.yml)
-* [Install Bicep tools](../../azure-resource-manager/bicep/install.md)
+* [Bicep documentation](/azure/azure-resource-manager/bicep/)
+* [Install Bicep tools](/azure/azure-resource-manager/bicep/install)
 * Trying to do capacity planning for a migration to Azure Cosmos DB? You can use information about your existing database cluster for capacity planning.
   * If all you know is the number of vcores and servers in your existing database cluster, read about [estimating request units using vCores or vCPUs](../convert-vcore-to-request-unit.md)
   * If you know typical request rates for your current database workload, read about [estimating request units using Azure Cosmos DB capacity planner](estimate-ru-capacity-planner.md)

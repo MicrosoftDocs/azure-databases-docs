@@ -12,9 +12,9 @@ ms.date: 09/23/2020
 # Use Azure Policy to implement governance and controls for Azure Cosmos DB resources
 [!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
-[Azure Policy](../governance/policy/overview.md) helps to enforce organizational governance standards, assess resource compliance, and implement automatic remediation. Common use cases include security, cost management, and configuration consistency.
+[Azure Policy](/azure/governance/policy/overview) helps to enforce organizational governance standards, assess resource compliance, and implement automatic remediation. Common use cases include security, cost management, and configuration consistency.
 
-Azure Policy provides built-in policy definitions. You can create custom policy definitions for scenarios that are not addressed by the built-in policy definitions. See the [Azure Policy documentation](../governance/policy/overview.md) for more details.
+Azure Policy provides built-in policy definitions. You can create custom policy definitions for scenarios that are not addressed by the built-in policy definitions. See the [Azure Policy documentation](/azure/governance/policy/overview) for more details.
 
 > [!IMPORTANT]
 > Azure Policy is enforced at the resource provider level for Azure services. Azure Cosmos DB SDKs can perform most management operations on database, container and throughput resources that bypass Azure Cosmos DB's resource provider, thus ignoring any policies created using Azure Policy. To ensure enforcement of policies see, [Preventing changes from the Azure Cosmos DB SDKs](role-based-access-control.md#prevent-sdk-changes)
@@ -23,9 +23,9 @@ Azure Policy provides built-in policy definitions. You can create custom policy 
 
 Policy definitions describe resource compliance conditions and the effect to take if a condition is met. Policy _assignments_ are created from policy _definitions_. You can use built-in or custom policy definitions for your Azure Cosmos DB resources. Policy assignments are scoped to an Azure management group, an Azure subscription, or a resource group and they are applied to the resources within the selected scope. Optionally, you can exclude specific resources from the scope.
 
-You can create policy assignments with the [Azure portal](../governance/policy/assign-policy-portal.md), [Azure PowerShell](../governance/policy/assign-policy-powershell.md), [Azure CLI](../governance/policy/assign-policy-azurecli.md), or [ARM template](../governance/policy/assign-policy-template.md).
+You can create policy assignments with the [Azure portal](/azure/governance/policy/assign-policy-portal), [Azure PowerShell](/azure/governance/policy/assign-policy-powershell), [Azure CLI](/azure/governance/policy/assign-policy-azurecli), or [ARM template](/azure/governance/policy/assign-policy-template).
 
-To create a policy assignment from a built-in policy definition for Azure Cosmos DB, use the steps in [create a policy assignment with the Azure portal](../governance/policy/assign-policy-portal.md) article.
+To create a policy assignment from a built-in policy definition for Azure Cosmos DB, use the steps in [create a policy assignment with the Azure portal](/azure/governance/policy/assign-policy-portal) article.
 
 At the step to select a policy definition, enter `Azure Cosmos DB` in the Search field to filter the list of available built-in policy definitions. Select one of the available built-in policy definitions, and then choose **Select** to continue creating the policy assignment.
 
@@ -36,11 +36,11 @@ At the step to select a policy definition, enter `Azure Cosmos DB` in the Search
 
 ## Create a custom policy definition
 
-For specific scenarios that are not addressed by built-in policies, you can create [a custom policy definition](../governance/policy/tutorials/create-custom-policy-definition.md). Later you create a Policy _assignment_ from your custom policy _definition_.
+For specific scenarios that are not addressed by built-in policies, you can create [a custom policy definition](/azure/governance/policy/tutorials/create-custom-policy-definition). Later you create a Policy _assignment_ from your custom policy _definition_.
 
 ### Property types and property aliases in policy rules
 
-Use the [custom policy definition steps](../governance/policy/tutorials/create-custom-policy-definition.md) to identify the resource properties and property aliases, which are required to create policy rules.
+Use the [custom policy definition steps](/azure/governance/policy/tutorials/create-custom-policy-definition) to identify the resource properties and property aliases, which are required to create policy rules.
 
 To identify Azure Cosmos DB specific property aliases, use the namespace `Microsoft.DocumentDB` with one of the methods shown in the custom policy definition steps article.
 
@@ -77,7 +77,7 @@ These commands output the list of property alias names for Azure Cosmos DB prope
 ]
 ```
 
-You can use any of these property alias names in the [custom policy definition rules](../governance/policy/tutorials/create-custom-policy-definition.md#policy-rule).
+You can use any of these property alias names in the [custom policy definition rules](/azure/governance/policy/tutorials/create-custom-policy-definition#policy-rule).
 
 The following is an example policy definition that checks if an Azure Cosmos DB account is configured for multiple write locations. The custom policy definition includes two rules: one to check for the specific type of property alias, and the second one for the specific property of the type, in this case the field that stores the multiple write location setting. Both rules use the alias names.
 
@@ -107,7 +107,7 @@ Custom policy definitions can be used to create policy assignments just like the
 
 After the policy assignments are created, Azure Policy evaluates the resources in the assignment's scope. Each resource's _compliance_ with the policy is assessed. The _effect_ specified in the policy is then applied to non-compliant resources.
 
-You can review the compliance results and remediation details in the [Azure portal](../governance/policy/how-to/get-compliance-data.md#portal) or via the [Azure CLI](../governance/policy/how-to/get-compliance-data.md#command-line) or the [Azure Monitor logs](../governance/policy/how-to/get-compliance-data.md#azure-monitor-logs).
+You can review the compliance results and remediation details in the [Azure portal](/azure/governance/policy/how-to/get-compliance-data#portal) or via the [Azure CLI](/azure/governance/policy/how-to/get-compliance-data#command-line) or the [Azure Monitor logs](/azure/governance/policy/how-to/get-compliance-data#azure-monitor-logs).
 
 The following screenshot shows two example policy assignments.
 
@@ -115,7 +115,7 @@ One assignment is based on a built-in policy definition, which checks that the A
 
 The other assignment is based on a custom policy definition. This assignment checks that Azure Cosmos DB accounts are configured for multiple write locations.
 
-After the policy assignments are deployed, the compliance dashboard shows evaluation results. Note that this can take up to 30 minutes after deploying a policy assignment. Additionally, [policy evaluation scans can be started on-demand](../governance/policy/how-to/get-compliance-data.md#on-demand-evaluation-scan) immediately after creating policy assignments.
+After the policy assignments are deployed, the compliance dashboard shows evaluation results. Note that this can take up to 30 minutes after deploying a policy assignment. Additionally, [policy evaluation scans can be started on-demand](/azure/governance/policy/how-to/get-compliance-data#on-demand-evaluation-scan) immediately after creating policy assignments.
 
 The screenshot shows the following compliance evaluation results for in-scope Azure Cosmos DB accounts:
 
@@ -125,10 +125,10 @@ The screenshot shows the following compliance evaluation results for in-scope Az
 
 :::image type="content" source="./media/policy/compliance.png" alt-text="Compliance results for Azure Policy assignments listed":::
 
-To remediate the non-compliant resources, see [how to remediate resources with Azure Policy](../governance/policy/how-to/remediate-resources.md).
+To remediate the non-compliant resources, see [how to remediate resources with Azure Policy](/azure/governance/policy/how-to/remediate-resources).
 
 ## Next steps
 
 - [Review sample custom policy definitions for Azure Cosmos DB](https://github.com/Azure/azure-policy/tree/master/samples/CosmosDB), including for the multiple write location and VNet filtering policies shown above.
-- [Create a policy assignment in the Azure portal](../governance/policy/assign-policy-portal.md)
+- [Create a policy assignment in the Azure portal](/azure/governance/policy/assign-policy-portal)
 - [Review Azure Policy built-in policy definitions for Azure Cosmos DB](./policy-reference.md)

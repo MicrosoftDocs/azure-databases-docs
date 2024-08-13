@@ -156,4 +156,4 @@ Manage resource locks for Azure Cosmos DB:
 ## Next steps
 
 > [!div class="nextstepaction"]
-> [Overview of Azure Resource Manager Locks](../azure-resource-manager/management/lock-resources.md)
+> [Overview of Azure Resource Manager Locks](/azure/azure-resource-manager/management/lock-resources)

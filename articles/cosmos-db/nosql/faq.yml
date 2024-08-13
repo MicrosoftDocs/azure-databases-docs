@@ -72,7 +72,7 @@ sections:
         answer:
           Yes! Azure Cosmos DB supports Microsoft Entra authentication to manage the service and its resources (control-plane) and to execute data, operations, and queries (data-plane).
 
-          Control-plane authentication is performed using the [role-based access control]() feature of Azure. You can use a preconfigured built-in role](../../role-based-access-control/built-in-roles.md) or you can [create a custom role](../../role-based-access-control/custom-roles.md). With Azure role-based access control, you can manage accounts, databases, containers, and metadata. The control-plane includes operations including, but not limited to these examples.
+          Control-plane authentication is performed using the [role-based access control]() feature of Azure. You can use a preconfigured built-in role](../../role-based-access-control/built-in-roles.md) or you can [create a custom role](/azure/role-based-access-control/custom-roles). With Azure role-based access control, you can manage accounts, databases, containers, and metadata. The control-plane includes operations including, but not limited to these examples.
 
           - Creating, replacing, or deleting databases
           - Creating, replacing, or deleting containers

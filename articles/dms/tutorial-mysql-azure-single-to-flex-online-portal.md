@@ -192,14 +192,14 @@ To register the Microsoft.DataMigration resource provider, perform the following
 8. On the **Create Migration Service** page, select **Next : Networking >>**.
 
 9. On the **Networking** tab, select an existing VNet from the list or provide the name of new VNet to create, and then select **Review + Create**.
-    For more information, see the article [Create a virtual network using the Azure portal.](./../virtual-network/quick-create-portal.md).
+    For more information, see the article [Create a virtual network using the Azure portal.](/azure/virtual-network/quick-create-portal).
     :::image type="content" source="media/tutorial-azure-mysql-single-to-flex-online/8-1-networking.png" alt-text="Screenshot of a Select Networking.":::
 
     > [!IMPORTANT]
     > Your VNet must be configured with access to both the source single server and the target flexible server, so be sure to:
     >
     > * Create a server-level firewall rule or [configure VNET service endpoints](./../mysql/single-server/how-to-manage-vnet-using-portal.md) for both the source and target Azure Database for MySQL servers to allow the VNet for Azure Database Migration Service access to the source and target databases.
-    > * Ensure that your VNet Network Security Group (NSG) rules don't block the outbound port 443 of ServiceTag for ServiceBus, Storage, and Azure Monitor. For more information about VNet NSG traffic filtering, see [Filter network traffic with network security groups](./../virtual-network/virtual-network-vnet-plan-design-arm.md).
+    > * Ensure that your VNet Network Security Group (NSG) rules don't block the outbound port 443 of ServiceTag for ServiceBus, Storage, and Azure Monitor. For more information about VNet NSG traffic filtering, see [Filter network traffic with network security groups](/azure/virtual-network/virtual-network-vnet-plan-design-arm).
 
     > [!NOTE]
     > To add tags to the service, advance to the **Tags** tab by selecting **Next : Tags**. Adding tags to the service is optional.

@@ -115,4 +115,4 @@ Use the **Feedback** icon in the command bar of the Data Explorer to give the pr
 
 - [Queries in Azure Cosmos DB for NoSQL](nosql/query/index.yml)
 - [Azure Cosmos DB Data Explorer](data-explorer.md)
-- [Azure portal keyboard shortcuts](../azure-portal/azure-portal-keyboard-shortcuts.md)
+- [Azure portal keyboard shortcuts](/azure/azure-portal/azure-portal-keyboard-shortcuts)

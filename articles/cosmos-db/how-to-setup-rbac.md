@@ -24,7 +24,7 @@ Azure Cosmos DB exposes a built-in role-based access control system that lets yo
 
 ## Concepts
 
-The Azure Cosmos DB data plane role-based access control is built on concepts that are commonly found in other role-based access control systems like [Azure role-based access control](../role-based-access-control/overview.md):
+The Azure Cosmos DB data plane role-based access control is built on concepts that are commonly found in other role-based access control systems like [Azure role-based access control](/azure/role-based-access-control/overview):
 
 - The [permission model](#permission-model) is composed of a set of **actions**; each of these actions maps to one or multiple database operations. Some examples of actions include reading an item, writing an item, or executing a query.
 - Azure Cosmos DB users create **[role definitions](#role-definitions)** containing a list of allowed actions.

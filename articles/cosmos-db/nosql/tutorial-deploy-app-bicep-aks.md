@@ -22,7 +22,7 @@ In this tutorial, you'll deploy a reference ASP.NET web application on an Azure 
 
 > [!IMPORTANT]
 > - This article requires the latest version of the Azure CLI. For more information, see [Install the Azure CLI](/cli/azure/install-azure-cli). If you're using Azure Cloud Shell, the latest version is already installed.
-> - This article also requires the latest version of the Bicep CLI within the Azure CLI. For more information, see [Install Bicep tools](../../azure-resource-manager/bicep/install.md#azure-cli).
+> - This article also requires the latest version of the Bicep CLI within the Azure CLI. For more information, see [Install Bicep tools](/azure/azure-resource-manager/bicep/install#azure-cli).
 > - If you're running the commands in this tutorial locally instead of in Azure Cloud Shell, ensure that you use an administrator account.
 
 ## Prerequisites
@@ -37,22 +37,22 @@ The following tools are required to compile the ASP.NET web application and crea
 
 ## Overview
 
-This tutorial uses an [infrastructure as code (IaC)](/devops/deliver/what-is-infrastructure-as-code) approach to deploy the resources to Azure. You'll use [Bicep](../../azure-resource-manager/bicep/overview.md), which is a new declarative language that offers the same capabilities as [Azure Resource Manager templates](../../azure-resource-manager/templates/overview.md). However, Bicep includes a syntax that's more concise and easier to use.
+This tutorial uses an [infrastructure as code (IaC)](/devops/deliver/what-is-infrastructure-as-code) approach to deploy the resources to Azure. You'll use [Bicep](/azure/azure-resource-manager/bicep/overview), which is a new declarative language that offers the same capabilities as [Azure Resource Manager templates](/azure/azure-resource-manager/templates/overview). However, Bicep includes a syntax that's more concise and easier to use.
 
 The Bicep modules will deploy the following Azure resources within the targeted subscription scope:
 
-- A [resource group](../../azure-resource-manager/management/overview.md#resource-groups) to organize the resources
--  A [managed identity](../../active-directory/managed-identities-azure-resources/overview.md) for authentication
-- A [container registry](../../container-registry/container-registry-intro.md) for storing container images
+- A [resource group](/azure/azure-resource-manager/management/overview#resource-groups) to organize the resources
+-  A [managed identity](/azure/active-directory/managed-identities-azure-resources/overview) for authentication
+- A [container registry](/azure/container-registry/container-registry-intro) for storing container images
 - An [AKS](/azure/aks/intro-kubernetes) cluster
-- A [virtual network](../../virtual-network/network-overview.md) for configuring AKS
+- A [virtual network](/azure/virtual-network/network-overview) for configuring AKS
 - An [Azure Cosmos DB for NoSQL account](../introduction.md), along with a database, a container, and the [SQL role](/cli/azure/cosmosdb/sql/role)
 - A [key vault](/azure/key-vault/general/overview) to store secure keys
-- (Optional) A [Log Analytics workspace](../../azure-monitor/logs/log-analytics-overview.md)
+- (Optional) A [Log Analytics workspace](/azure/azure-monitor/logs/log-analytics-overview)
 
 This tutorial uses the following security best practices with Azure Cosmos DB:
 
-- Implement access control by using [role-based access control (RBAC)](../../role-based-access-control/overview.md) and a [managed identity](../../active-directory/managed-identities-azure-resources/overview.md). These features eliminate the need for developers to manage secrets, credentials, certificates, and keys for secure communication between services.
+- Implement access control by using [role-based access control (RBAC)](/azure/role-based-access-control/overview) and a [managed identity](/azure/active-directory/managed-identities-azure-resources/overview). These features eliminate the need for developers to manage secrets, credentials, certificates, and keys for secure communication between services.
 - Limit Azure Cosmos DB access to the AKS subnet by [configuring a virtual network service endpoint](../how-to-configure-vnet-service-endpoint.md).
 - Set `disableLocalAuth = true` in the `databaseAccount` resource to [enforce RBAC as the only authentication method](../how-to-setup-rbac.md#disable-local-auth).
 
@@ -89,7 +89,7 @@ az account set \
 Create a *param.json* file by using the JSON in the following example. Replace the `{resource group name}`, `{Azure Cosmos DB account name}`, and `{Azure Container Registry instance name}` placeholders with your own values.
 
 > [!IMPORTANT]
-> All resource names that you use in the following code should comply with the [naming rules and restrictions for Azure resources](../../azure-resource-manager/management/resource-name-rules.md). Also ensure that the placeholder values are replaced consistently and match the values in *param.json*.
+> All resource names that you use in the following code should comply with the [naming rules and restrictions for Azure resources](/azure/azure-resource-manager/management/resource-name-rules). Also ensure that the placeholder values are replaced consistently and match the values in *param.json*.
 
 ```json
 {

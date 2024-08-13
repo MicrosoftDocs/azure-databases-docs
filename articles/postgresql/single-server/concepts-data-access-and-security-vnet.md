@@ -139,18 +139,18 @@ For articles on creating VNet rules, see:
 - [Create and manage Azure Database for PostgreSQL VNet rules using Azure CLI](how-to-manage-vnet-using-cli.md)
 
 <!-- Link references, to text, Within this same GitHub repo. -->
-[arm-deployment-model-568f]: ../../azure-resource-manager/management/deployment-models.md
+[arm-deployment-model-568f]: /azure/azure-resource-manager/management/deployment-models
 
-[vm-virtual-network-overview]: ../../virtual-network/virtual-networks-overview.md
+[vm-virtual-network-overview]: /azure/virtual-network/virtual-networks-overview
 
-[vm-virtual-network-service-endpoints-overview-649d]: ../../virtual-network/virtual-network-service-endpoints-overview.md
+[vm-virtual-network-service-endpoints-overview-649d]: /azure/virtual-network/virtual-network-service-endpoints-overview
 
-[vm-configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-portal-321w]: ../../virtual-network/ip-services/virtual-networks-static-private-ip-arm-pportal.md
+[vm-configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-portal-321w]: /azure/virtual-network/ip-services/virtual-networks-static-private-ip-arm-pportal
 
-[rbac-what-is-813s]: ../../role-based-access-control/overview.md
+[rbac-what-is-813s]: /azure/role-based-access-control/overview
 
-[vpn-gateway-indexmd-608y]: ../../vpn-gateway/index.yml
+[vpn-gateway-indexmd-608y]: /azure/vpn-gateway/
 
-[expressroute-indexmd-744v]: ../../expressroute/index.yml
+[expressroute-indexmd-744v]: /azure/expressroute/
 
-[resource-manager-portal]: ../../azure-resource-manager/management/resource-providers-and-types.md
+[resource-manager-portal]: /azure/azure-resource-manager/management/resource-providers-and-types

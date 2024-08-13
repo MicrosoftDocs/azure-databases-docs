@@ -30,15 +30,15 @@ In this article, you learn how to:
 
 To complete these steps, you need:
 
-* To create a Microsoft Azure Virtual Network for the Azure Database Migration Service by using the Azure Resource Manager deployment model, which provides site-to-site connectivity to your on-premises source servers by using either [ExpressRoute](../expressroute/expressroute-introduction.md) or [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md). For more information, see the article [Network topologies for SQL Managed Instance migrations using Azure Database Migration Service]( https://aka.ms/dmsnetworkformi). For more information about creating a virtual network, see the [Virtual Network Documentation](../virtual-network/index.yml), and especially the quickstart articles with step-by-step details.
-* To ensure that your virtual network Network Security Group rules don't block the outbound port 443 of ServiceTag for ServiceBus, Storage and AzureMonitor. For more detail on virtual network NSG traffic filtering, see the article [Filter network traffic with network security groups](../virtual-network/virtual-network-vnet-plan-design-arm.md).
+* To create a Microsoft Azure Virtual Network for the Azure Database Migration Service by using the Azure Resource Manager deployment model, which provides site-to-site connectivity to your on-premises source servers by using either [ExpressRoute](/azure/expressroute/expressroute-introduction) or [VPN](/azure/vpn-gateway/vpn-gateway-about-vpngateways). For more information, see the article [Network topologies for SQL Managed Instance migrations using Azure Database Migration Service]( https://aka.ms/dmsnetworkformi). For more information about creating a virtual network, see the [Virtual Network Documentation](/azure/virtual-network/), and especially the quickstart articles with step-by-step details.
+* To ensure that your virtual network Network Security Group rules don't block the outbound port 443 of ServiceTag for ServiceBus, Storage and AzureMonitor. For more detail on virtual network NSG traffic filtering, see the article [Filter network traffic with network security groups](/azure/virtual-network/virtual-network-vnet-plan-design-arm).
 * To configure your [Windows Firewall for source database engine access](/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).
 * To open your Windows Firewall to allow the Azure Database Migration Service to access the source SQL Server, which by default is TCP port 1433.
 * If you're running multiple named SQL Server instances using dynamic ports, you may wish to enable the SQL Browser Service and allow access to UDP port 1434 through your firewalls so that the Azure Database Migration Service can connect to a named instance on your source server.
 * If you're using a firewall appliance in front of your source databases, you may need to add firewall rules to allow the Azure Database Migration Service to access the source database(s) for migration, as well as files via SMB port 445.
 * A SQL Managed Instance to host SSISDB. If you need to create one, follow the detail in the article [Create a Azure SQL Managed Instance](/azure/azure-sql/managed-instance/instance-create-quickstart).
 * To ensure that the logins used to connect the source SQL Server and target managed instance are members of the sysadmin server role.
-* To verify that SSIS is provisioned in Azure Data Factory (ADF) containing Azure-SSIS Integration Runtime (IR) with the destination SSISDB hosted by a SQL Managed Instance (as described in the article [Create the Azure-SSIS integration runtime in Azure Data Factory](../data-factory/create-azure-ssis-integration-runtime.md)).
+* To verify that SSIS is provisioned in Azure Data Factory (ADF) containing Azure-SSIS Integration Runtime (IR) with the destination SSISDB hosted by a SQL Managed Instance (as described in the article [Create the Azure-SSIS integration runtime in Azure Data Factory](/azure/data-factory/create-azure-ssis-integration-runtime)).
 
 ## Assess source SSIS projects/packages
 
@@ -76,7 +76,7 @@ While assessment of source SSISDB isn't yet integrated into the Database Migrati
 
     The virtual network provides Azure Database Migration Service with access to the source SQL Server and target Azure SQL Managed Instance.
 
-    For more information on how to create a virtual network in Azure portal, see the article [Create a virtual network using the Azure portal](../virtual-network/quick-create-portal.md).
+    For more information on how to create a virtual network in Azure portal, see the article [Create a virtual network using the Azure portal](/azure/virtual-network/quick-create-portal).
 
     For additional detail, see the article [Network topologies for Azure SQL Managed Instance migrations using the Azure Database Migration Service](./resource-network-topologies.md).
 

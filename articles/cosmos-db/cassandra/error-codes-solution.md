@@ -17,9 +17,9 @@ Log Analytics is a tool in the Azure portal that helps you run server diagnostic
 
 ## Prerequisites
 
-- Create a [Log Analytics workspace](../../azure-monitor/logs/quick-create-workspace.md).
+- Create a [Log Analytics workspace](/azure/azure-monitor/logs/quick-create-workspace).
 - Create [diagnostic settings](../monitor-resource-logs.md).
-- Start [log analytics](../../azure-monitor/logs/log-analytics-overview.md) on your API for Cassandra account.
+- Start [log analytics](/azure/azure-monitor/logs/log-analytics-overview) on your API for Cassandra account.
 
 ## Use Log Analytics
 After you've completed the log analytics setup, you can begin to explore your logs to gain more insights.
@@ -59,5 +59,5 @@ CDBControlPlaneRequests
 
 ## Next steps
 
-- Learn more about [Log Analytics](../../azure-monitor/logs/log-analytics-tutorial.md).
+- Learn more about [Log Analytics](/azure/azure-monitor/logs/log-analytics-tutorial).
 - Learn how to [migrate from native Apache Cassandra to Azure Cosmos DB for Apache Cassandra](migrate-data-databricks.md).

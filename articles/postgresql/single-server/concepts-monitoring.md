@@ -19,7 +19,7 @@ Monitoring data about your servers helps you troubleshoot and optimize for your 
 
 ## Metrics
 
-Azure Database for PostgreSQL provides various metrics that give insight into the behavior of the resources supporting the PostgreSQL server. Each metric is emitted at a one-minute frequency, and has up to [93 days of history](../../azure-monitor/essentials/data-platform-metrics.md#retention-of-metrics). You can configure alerts on the metrics. For step by step guidance, see [How to set up alerts](how-to-alert-on-metric.md). Other tasks include setting up automated actions, performing advanced analytics, and archiving history. For more information, see the [Azure Metrics Overview](../../azure-monitor/data-platform.md).
+Azure Database for PostgreSQL provides various metrics that give insight into the behavior of the resources supporting the PostgreSQL server. Each metric is emitted at a one-minute frequency, and has up to [93 days of history](/azure/azure-monitor/essentials/data-platform-metrics#retention-of-metrics). You can configure alerts on the metrics. For step by step guidance, see [How to set up alerts](how-to-alert-on-metric.md). Other tasks include setting up automated actions, performing advanced analytics, and archiving history. For more information, see the [Azure Metrics Overview](/azure/azure-monitor/data-platform).
 
 ### List of metrics
 
@@ -63,7 +63,7 @@ These metrics are available for Azure Database for PostgreSQL:
 
 ## Server logs
 
-You can enable logging on your server. These resource logs can be sent to [Azure Monitor logs](../../azure-monitor/logs/log-query-overview.md), Event Hubs, and a Storage Account. To learn more about logging, visit the [server logs](concepts-server-logs.md) page.
+You can enable logging on your server. These resource logs can be sent to [Azure Monitor logs](/azure/azure-monitor/logs/log-query-overview), Event Hubs, and a Storage Account. To learn more about logging, visit the [server logs](concepts-server-logs.md) page.
 
 ## Query Store
 
@@ -79,13 +79,13 @@ The [Performance Recommendations](concepts-performance-recommendations.md) featu
 
 ## Planned maintenance notification
 
-[Planned maintenance notifications](./concepts-planned-maintenance-notification.md) allow you to receive alerts for upcoming planned maintenance to your Azure Database for PostgreSQL - Single Server. These notifications are integrated with [Service Health's](../../service-health/overview.md) planned maintenance and allow you to view all scheduled maintenance for your subscriptions in one place. It also helps to scale the notification to the right audiences for different resource groups, as you may have different contacts responsible for different resources. You will receive the notification about the upcoming maintenance 72 hours before the event.
+[Planned maintenance notifications](./concepts-planned-maintenance-notification.md) allow you to receive alerts for upcoming planned maintenance to your Azure Database for PostgreSQL - Single Server. These notifications are integrated with [Service Health's](/azure/service-health/overview) planned maintenance and allow you to view all scheduled maintenance for your subscriptions in one place. It also helps to scale the notification to the right audiences for different resource groups, as you may have different contacts responsible for different resources. You will receive the notification about the upcoming maintenance 72 hours before the event.
 
 Learn more about how to set up notifications in the [planned maintenance notifications](./concepts-planned-maintenance-notification.md) document.
 
 ## Next steps
 
 - See [how to set up alerts](how-to-alert-on-metric.md) for guidance on creating an alert on a metric.
-- For more information on how to access and export metrics using the Azure portal, REST API, or CLI, see the [Azure Metrics Overview](../../azure-monitor/data-platform.md)
+- For more information on how to access and export metrics using the Azure portal, REST API, or CLI, see the [Azure Metrics Overview](/azure/azure-monitor/data-platform)
 - Read our blog on [best practices for monitoring your server](https://azure.microsoft.com/blog/best-practices-for-alerting-on-metrics-with-azure-database-for-postgresql-monitoring/).
 - Learn more about [planned maintenance notifications](./concepts-planned-maintenance-notification.md) in Azure Database for PostgreSQL - Single Server.

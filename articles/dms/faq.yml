@@ -133,7 +133,7 @@ sections:
         answer: |
           DMS (Classic) relies on the customer network configuration. If the migration source uses private endpoints, we use private endpoints, which is the preferred configuration. We use public endpoints if they are the only option.
 
-          DMS uses ADF heavily behind the scenes for scheduling and coordination of data movement. Additionally, the Self-Hosted Integration Runtime is no different from the one you probably already use for your own ADF pipelines. For more information about firewall and proxy server issues, see [Create and configure a self-hosted integration runtime](../data-factory/create-self-hosted-integration-runtime.md?tabs=data-factory#possible-symptoms-for-issues-related-to-the-firewall-and-proxy-server).
+          DMS uses ADF heavily behind the scenes for scheduling and coordination of data movement. Additionally, the Self-Hosted Integration Runtime is no different from the one you probably already use for your own ADF pipelines. For more information about firewall and proxy server issues, see [Create and configure a self-hosted integration runtime](/azure/data-factory/create-self-hosted-integration-runtime?tabs=data-factory#possible-symptoms-for-issues-related-to-the-firewall-and-proxy-server).
 
       - question: |
           Is all data in transit and at rest encrypted?
@@ -201,8 +201,8 @@ sections:
           
           Azure Database Migration Service prerequisites that are common across all supported migration scenarios include the need to:
           
-          * Create a Microsoft Azure Virtual Network for Azure Database Migration Service by using the Azure Resource Manager deployment model, which provides site-to-site connectivity to your on-premises source servers by using either [ExpressRoute](../expressroute/expressroute-introduction.md) or [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md).
-          * Ensure that your virtual network Network Security Group rules don't block the port 443 for ServiceTags of ServiceBus, Storage and AzureMonitor. For more detail on virtual network NSG traffic filtering, see the article [Filter network traffic with network security groups](../virtual-network/virtual-network-vnet-plan-design-arm.md).
+          * Create a Microsoft Azure Virtual Network for Azure Database Migration Service by using the Azure Resource Manager deployment model, which provides site-to-site connectivity to your on-premises source servers by using either [ExpressRoute](/azure/expressroute/expressroute-introduction) or [VPN](/azure/vpn-gateway/vpn-gateway-about-vpngateways).
+          * Ensure that your virtual network Network Security Group rules don't block the port 443 for ServiceTags of ServiceBus, Storage and AzureMonitor. For more detail on virtual network NSG traffic filtering, see the article [Filter network traffic with network security groups](/azure/virtual-network/virtual-network-vnet-plan-design-arm).
           * When using a firewall appliance in front of your source database(s), you may need to add firewall rules to allow Azure Database Migration Service to access the source database(s) for migration.
           
           For a list of all the prerequisites required to compete specific migration scenarios using Azure Database Migration Service, see the related tutorials in the [Azure Database Migration Service documentation](./dms-overview.md).
@@ -233,7 +233,7 @@ sections:
       - question: |
           How do I set up a Microsoft Azure Virtual Network?
         answer: |
-          While multiple Microsoft tutorials that can walk you through the process of setting up a virtual network, the official documentation appears in the article [Azure Virtual Network](../virtual-network/virtual-networks-overview.md).
+          While multiple Microsoft tutorials that can walk you through the process of setting up a virtual network, the official documentation appears in the article [Azure Virtual Network](/azure/virtual-network/virtual-networks-overview).
           
   - name: Usage
     questions:

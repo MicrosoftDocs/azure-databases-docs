@@ -155,7 +155,7 @@ If your IOPS max out what your SKU supports, you can:
 * [Scale up the data center(s)](create-cluster-portal.md#scale-a-datacenter) by adding more nodes.
 
 
-For more information, refer to [Virtual Machine and disk performance](../virtual-machines/disks-performance.md).
+For more information, refer to [Virtual Machine and disk performance](/azure/virtual-machines/disks-performance).
 
 ### Network performance
 

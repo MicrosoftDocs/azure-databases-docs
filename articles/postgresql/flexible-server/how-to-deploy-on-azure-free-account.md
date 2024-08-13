@@ -93,7 +93,7 @@ To complete this tutorial, you need:
     For the purposes of this tutorial, enable public access to connect to the server.
 
     >[!NOTE]
-    >Azure Database for PostgreSQL flexible server support for Private Endpoints in Preview requires enablement of **Enable Private Endpoints for PostgreSQL flexible servers** [preview feature in your subscription](../../azure-resource-manager/management/preview-features.md).
+    >Azure Database for PostgreSQL flexible server support for Private Endpoints in Preview requires enablement of **Enable Private Endpoints for PostgreSQL flexible servers** [preview feature in your subscription](/azure/azure-resource-manager/management/preview-features).
     >Only **after preview feature is enabled** you can create servers which are PE capable, i.e. can be networked using Private Link.
 
 1. On the **Networking** tab, for **Connectivity method** select **Public access (allowed IP addresses) and Private endpoint**.
@@ -184,4 +184,4 @@ Alternatively, if you don't expect to need these resources in the future, you ca
 ## Next steps
 
 > [!div class="nextstepaction"]
->[Deploy a Django app with App Service and PostgreSQL](../../app-service/tutorial-python-postgresql-app.md)
+>[Deploy a Django app with App Service and PostgreSQL](/azure/app-service/tutorial-python-postgresql-app)

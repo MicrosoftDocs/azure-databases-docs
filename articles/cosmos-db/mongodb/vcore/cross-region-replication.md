@@ -31,7 +31,7 @@ Replicas are new clusters that you manage similar to regular clusters. For each 
 
 ## Disaster recovery using cluster read replicas
 
-Cross-region replication is one of several important pillars in [the Azure business continuity and disaster recovery (BCDR) strategy](../../../reliability/business-continuity-management-program.md). Cross-region replication asynchronously replicates the same applications and data across other Azure regions for disaster recovery protection. Not all Azure services automatically replicate data or automatically fall back from a failed region to cross-replicate to another enabled region. Azure Cosmos DB for MongoDB vCore provides an option to create a cluster replica in another region and have data written on the primary cluster replicated to that replica automatically. The fallback to the cluster replica if there's an outage in the primary region needs to be initiated manually.
+Cross-region replication is one of several important pillars in [the Azure business continuity and disaster recovery (BCDR) strategy](/azure/reliability/business-continuity-management-program). Cross-region replication asynchronously replicates the same applications and data across other Azure regions for disaster recovery protection. Not all Azure services automatically replicate data or automatically fall back from a failed region to cross-replicate to another enabled region. Azure Cosmos DB for MongoDB vCore provides an option to create a cluster replica in another region and have data written on the primary cluster replicated to that replica automatically. The fallback to the cluster replica if there's an outage in the primary region needs to be initiated manually.
 
 When cross-region replication is enabled on an Azure Cosmos DB for MongoDB vCore cluster, each shard gets replicated to another region continuously. This replication maintains a replica of data in the selected region. Such a replica is ready to be used as a part of disaster recovery plan in a rare case of the primary region outage. Replication is asynchronous. Write operations on the primary cluster's shard don't wait for completed replication to the corresponding replica's shard before sending confirmation of a successful write. Asynchronous replication helps to avoid increased latencies for write operations on the primary cluster.  
 
@@ -59,4 +59,4 @@ If a region outage occurs, you can perform disaster recovery operation by promot
 ## Related content
 
 - [Learn how to enable cross-region replication and promote replica cluster](./how-to-cluster-replica.md)
-- [Learn about reliability in Azure Cosmos DB for MongoDB vCore](../../../reliability/reliability-cosmos-mongodb.md)
+- [Learn about reliability in Azure Cosmos DB for MongoDB vCore](/azure/reliability/reliability-cosmos-mongodb)

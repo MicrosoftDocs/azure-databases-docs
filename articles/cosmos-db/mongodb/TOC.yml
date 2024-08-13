@@ -202,7 +202,7 @@
             - name: Azure Synapse Link for Azure Cosmos DB
               href: ../synapse-link.md
             - name: Azure Synapse Link supported features
-              href: ../../synapse-analytics/synapse-link/concept-synapse-link-cosmos-db-support.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+              href: /azure/synapse-analytics/synapse-link/concept-synapse-link-cosmos-db-support?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
             - name: Azure Synapse Link use cases
               href: ../synapse-link-use-cases.md
             - name: Azure Synapse Link FAQ
@@ -284,7 +284,7 @@
             - name: Data encryption
               href: ../database-encryption-at-rest.md
             - name: Service tags
-              href: ../../virtual-network/service-tags-overview.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+              href: /azure/virtual-network/service-tags-overview?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
             - name: Azure Policy support
               href: ../policy.md
             - name: Security controls by Azure Policy
@@ -453,17 +453,17 @@
             - name: Configure Azure Synapse Link
               href: ../configure-synapse-link.md
             - name: Connect to Azure Synapse Link
-              href: ../../synapse-analytics/synapse-link/how-to-connect-synapse-link-cosmos-db.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+              href: /azure/synapse-analytics/synapse-link/how-to-connect-synapse-link-cosmos-db?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
             - name: Azure Synapse Link and integrated Power BI
               href: ../integrated-power-bi-synapse-link.md
             - name: Analytical store and private endpoints
               href: ../analytical-store-private-endpoints.md
             - name: Query with Azure Synapse Spark 3
-              href: ../../synapse-analytics/synapse-link/how-to-query-analytical-store-spark-3.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+              href: /azure/synapse-analytics/synapse-link/how-to-query-analytical-store-spark-3?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
             - name: Query with Azure Synapse Spark 2
-              href: ../../synapse-analytics/synapse-link/how-to-query-analytical-store-spark.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+              href: /azure/synapse-analytics/synapse-link/how-to-query-analytical-store-spark?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
             - name: Query with serverless SQL pool
-              href: ../../synapse-analytics/sql/query-cosmos-db-analytical-store.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+              href: /azure/synapse-analytics/sql/query-cosmos-db-analytical-store?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
             - name: Use Power BI with Azure Synapse Link
               href: ../synapse-link-power-bi.md
             - name: Configure custom partitioning
@@ -506,7 +506,7 @@
             - name: Configure access from private endpoints
               href: ../how-to-configure-private-endpoints.md
             - name: Connect privately to an Azure Cosmos DB account
-              href: ../../private-link/tutorial-private-endpoint-cosmosdb-portal.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+              href: /azure/private-link/tutorial-private-endpoint-cosmosdb-portal?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
             - name: Store credentials in Azure Key Vault
               href: ../store-credentials-key-vault.md
             - name: Access Azure Key Vault with managed identity

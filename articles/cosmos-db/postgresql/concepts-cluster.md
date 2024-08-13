@@ -28,7 +28,7 @@ Azure Cosmos DB for PostgreSQL displays the status of nodes in a cluster on the 
 * **Available**: Node is in a healthy state.
 * **Need attention**: An issue is detected on the node. The node is attempting to self-heal. If self-healing fails, an issue gets put in the queue for our engineers to investigate.
 * **Dropping**: Cluster deletion started.
-* **Disabled**: The cluster's Azure subscription turned into Disabled states. For more information about subscription states, see [this page](../../cost-management-billing/manage/subscription-states.md).
+* **Disabled**: The cluster's Azure subscription turned into Disabled states. For more information about subscription states, see [this page](/azure/cost-management-billing/manage/subscription-states).
 
 ### Node availability zone
 

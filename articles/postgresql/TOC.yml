@@ -236,7 +236,7 @@
       - name: Overview
         href: flexible-server/concepts-business-continuity.md
       - name: Reliability and high availability
-        href: ../reliability/reliability-postgresql-flexible-server.md?toc=/azure/postgresql/toc.json&&bc=/azure/postgresql/breadcrumb/toc.json
+        href: /azure/reliability/reliability-postgresql-flexible-server?toc=/azure/postgresql/toc.json&&bc=/azure/postgresql/breadcrumb/toc.json
       - name: Backup and restore
         href: flexible-server/concepts-backup-restore.md
       - name: Geo-disaster recovery
@@ -354,7 +354,7 @@
       - name: Create a web app in a virtual network
         href: flexible-server/tutorial-webapp-server-vnet.md
       - name: Deploy a Django app on App Service
-        href: ../app-service/tutorial-python-postgresql-app.md
+        href: /azure/app-service/tutorial-python-postgresql-app
   - name: How-to guides
     items:
     - name: Server administration
@@ -408,7 +408,7 @@
         - name: Azure CLI
           href: flexible-server/how-to-server-logs-cli.md
       - name: Relocate a server 
-        href: ../operational-excellence/relocation-postgresql-flexible-server.md?toc=/azure/postgresql/toc.json
+        href: /azure/operational-excellence/relocation-postgresql-flexible-server?toc=/azure/postgresql/toc.json
     - name: Encryption with CMK
       items:
       - name: Azure CLI
@@ -665,7 +665,7 @@
       - name: Azure PowerShell
         href: single-server/tutorial-design-database-using-powershell.md
     - name: Build & deploy Python web app (Django)
-      href: ../app-service/tutorial-python-postgresql-app.md
+      href: /azure/app-service/tutorial-python-postgresql-app
       displayName: python, django, connect
       maintainContext: true
     - name: Monitor and tune

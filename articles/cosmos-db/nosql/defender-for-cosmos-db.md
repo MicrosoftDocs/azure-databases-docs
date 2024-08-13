@@ -41,11 +41,11 @@ See [Enable Microsoft Defender for Azure Cosmos DB](/azure/defender-for-cloud/de
 
 When Azure Cosmos DB activity anomalies occur, a security alert is triggered with information about the suspicious security event. 
 
- From Microsoft Defender for Cloud, you can review and manage your current [security alerts](../../security-center/security-center-alerts-overview.md).  Click on a specific alert in [Defender for Cloud](https://portal.azure.com/#blade/Microsoft_Azure_Security/SecurityMenuBlade/0) to view possible causes and recommended actions to investigate and mitigate the potential threat. An email notification is also sent with the alert details and recommended actions.
+ From Microsoft Defender for Cloud, you can review and manage your current [security alerts](/azure/security-center/security-center-alerts-overview).  Click on a specific alert in [Defender for Cloud](https://portal.azure.com/#blade/Microsoft_Azure_Security/SecurityMenuBlade/0) to view possible causes and recommended actions to investigate and mitigate the potential threat. An email notification is also sent with the alert details and recommended actions.
 
 ## Azure Cosmos DB alerts
 
- To see a list of the alerts generated when monitoring Azure Cosmos DB accounts, see the [Azure Cosmos DB alerts](../../security-center/alerts-reference.md#alerts-azurecosmos) section in the Microsoft Defender for Cloud documentation.
+ To see a list of the alerts generated when monitoring Azure Cosmos DB accounts, see the [Azure Cosmos DB alerts](/azure/security-center/alerts-reference#alerts-azurecosmos) section in the Microsoft Defender for Cloud documentation.
 
 ## Next steps
 

@@ -111,7 +111,7 @@ If you are using a client that abstracts the connection string away, review the 
 
 For Azure app services, connecting to Azure Database for PostgreSQL, we can have two possible scenarios and it depends on how on you are using SSL with your application.
 *   This new certificate has been added to App Service at platform level. If you are using the SSL certificates included on App Service platform in your application, then no action is needed.
-*   If you are explicitly including the path to SSL cert file in your code, then you would need to download the new cert and update the code to use the new cert. A good example of this scenario is when you use custom containers in App Service as shared in the [App Service documentation](../../app-service/tutorial-multi-container-app.md#configure-database-variables-in-wordpress)
+*   If you are explicitly including the path to SSL cert file in your code, then you would need to download the new cert and update the code to use the new cert. A good example of this scenario is when you use custom containers in App Service as shared in the [App Service documentation](/azure/app-service/tutorial-multi-container-app#configure-database-variables-in-wordpress)
 
 ### 5. What is the impact if using Azure Kubernetes Services (AKS) with Azure Database for PostgreSQL?
 
@@ -156,7 +156,7 @@ openssl s_client -starttls postgres -showcerts -connect <your-postgresql-server-
 ```
 
 ### 14. What if I have further questions?
-If you have questions, get answers from community experts in [Microsoft Q&A](mailto:AzureDatabaseforPostgreSQL@service.microsoft.com). If you have a support plan and you need technical help,  please create a [support request](../../azure-portal/supportability/how-to-create-azure-support-request.md):
+If you have questions, get answers from community experts in [Microsoft Q&A](mailto:AzureDatabaseforPostgreSQL@service.microsoft.com). If you have a support plan and you need technical help,  please create a [support request](/azure/azure-portal/supportability/how-to-create-azure-support-request):
 * For *Issue type*, select *Technical*.  
 * For *Subscription*, select your *subscription*.  
 * For *Service*, select *My Services*, then select *Azure Database for PostgreSQL – Single Server*.

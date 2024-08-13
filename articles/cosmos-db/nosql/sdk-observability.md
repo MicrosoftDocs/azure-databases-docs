@@ -14,7 +14,7 @@ ms.reviewer: jucocchi
 # Azure Cosmos DB SDK observability
 [!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
 
-The Azure Cosmos DB .NET and Java SDKs support distributed tracing to help you monitor your applications. Tracing the flow of requests is helpful in debugging, analyzing latency and performance, and gathering diagnostics. Instrument tracing for your applications using [OpenTelemetry](https://opentelemetry.io/), which is vendor-neutral and has a set of semantic conventions to ensure a standardized data format regardless of your chosen exporter, or use the [Application Insights SDK or Azure Monitor OpenTelemetry Distro](../../azure-monitor/app/app-insights-overview.md#how-do-i-use-application-insights).
+The Azure Cosmos DB .NET and Java SDKs support distributed tracing to help you monitor your applications. Tracing the flow of requests is helpful in debugging, analyzing latency and performance, and gathering diagnostics. Instrument tracing for your applications using [OpenTelemetry](https://opentelemetry.io/), which is vendor-neutral and has a set of semantic conventions to ensure a standardized data format regardless of your chosen exporter, or use the [Application Insights SDK or Azure Monitor OpenTelemetry Distro](/azure/azure-monitor/app/app-insights-overview#how-do-i-use-application-insights).
 
 ## Get started
 
@@ -114,7 +114,7 @@ To use OpenTelemetry with the Azure Cosmos DB SDKs, add the `Azure.Cosmos.Operat
 
 > [!TIP]
 > If you use the `Azure.Monitor.OpenTelemetry.Exporter` package, ensure you're using version >= `1.0.0-beta.11`.
-> If you're using ASP.NET Core and Azure Monitor, we recommend using the [Azure Monitor OpenTelemetry Distro](../../azure-monitor/app/opentelemetry-enable.md) instead.
+> If you're using ASP.NET Core and Azure Monitor, we recommend using the [Azure Monitor OpenTelemetry Distro](/azure/azure-monitor/app/opentelemetry-enable) instead.
 
 This sample shows how to configure OpenTelemetry for a .NET console app. See the [complete sample](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/OpenTelemetry) on GitHub.
 
@@ -122,7 +122,7 @@ This sample shows how to configure OpenTelemetry for a .NET console app. See the
 
 ## Configure the Application Insights SDK
 
-There are many different ways to configure Application Insights depending on the language your application is written in and your compute environment. For more information, see the [Application Insights documentation](../../azure-monitor/app/app-insights-overview.md#how-do-i-use-application-insights). Ingestion of data into Application Insights can take up to a few minutes.
+There are many different ways to configure Application Insights depending on the language your application is written in and your compute environment. For more information, see the [Application Insights documentation](/azure/azure-monitor/app/app-insights-overview#how-do-i-use-application-insights). Ingestion of data into Application Insights can take up to a few minutes.
 
 > [!NOTE]
 > Use version >= `2.22.0-beta2` of the Application Insights package for your target .NET environment.

@@ -16,7 +16,7 @@ ms.custom:
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
-If there's a region-wide disaster, Azure can provide protection from regional or large geography disasters with disaster recovery by making use of another region. For more information on Azure disaster recovery architecture, see [Azure to Azure disaster recovery architecture](../../site-recovery/azure-to-azure-architecture.md).
+If there's a region-wide disaster, Azure can provide protection from regional or large geography disasters with disaster recovery by making use of another region. For more information on Azure disaster recovery architecture, see [Azure to Azure disaster recovery architecture](/azure/site-recovery/azure-to-azure-architecture).
 
 Azure Database for PostgreSQL flexible server provides features that protect data and mitigates downtime for your mission-critical databases during planned and unplanned downtime events. Built on top of the Azure infrastructure that offers robust resiliency and availability, Azure Database for PostgreSQL flexible server offers business continuity features that provide fault-protection, address recovery time requirements, and reduce data loss exposure. As you architect your applications, you should consider the downtime tolerance - the recovery time objective (RTO), and data loss exposure - the recovery point objective (RPO). For example, your business-critical database requires stricter uptime than a test database.
 
@@ -62,4 +62,4 @@ For more information on unplanned downtime mitigation and recovery after regiona
 > [Azure Database for PostgreSQL flexible server documentation](/azure/postgresql/)
 
 > [!div class="nextstepaction"]
-> [Reliability in Azure](../../reliability/availability-zones-overview.md)
+> [Reliability in Azure](/azure/reliability/availability-zones-overview)

@@ -110,10 +110,10 @@ Inserting a 1 KB item without indexing costs around ~5.5 RUs. Replacing an item 
 
 The best way to optimize the RU cost of write operations is to rightsize your items and the number of properties that get indexed.
 
-- Storing very large items in Azure Cosmos DB results in high RU charges and can be considered as an anti-pattern. In particular, don't store binary content or large chunks of text that you don't need to query on. A best practice is to put this kind of data in [Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md) and store a reference (or link) to the blob in the item you write to Azure Cosmos DB.
+- Storing very large items in Azure Cosmos DB results in high RU charges and can be considered as an anti-pattern. In particular, don't store binary content or large chunks of text that you don't need to query on. A best practice is to put this kind of data in [Azure Blob Storage](/azure/storage/blobs/storage-blobs-introduction) and store a reference (or link) to the blob in the item you write to Azure Cosmos DB.
 - Optimizing your indexing policy to only index the properties that your queries filter on can make a huge difference in the RUs consumed by your write operations. When creating a new container, the default indexing policy indexes each and every property found in your items. While this is a good default for development activities, it is highly recommended to re-evaluate and [customize your indexing policy](how-to-manage-indexing-policy.md) when going to production or when your workload begins to receive significant traffic.
 
-When performing bulk ingestion of data, it is also recommended to use the [Azure Cosmos DB bulk executor library](bulk-executor-overview.md) as it is designed to optimize the RU consumption of such operations. Optionally, you can also use [Azure Data Factory](../data-factory/introduction.md) which is built on that same library.
+When performing bulk ingestion of data, it is also recommended to use the [Azure Cosmos DB bulk executor library](bulk-executor-overview.md) as it is designed to optimize the RU consumption of such operations. Optionally, you can also use [Azure Data Factory](/azure/data-factory/introduction) which is built on that same library.
 
 ## Next steps
 

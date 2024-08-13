@@ -19,7 +19,7 @@ ms.custom:
 
 [!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
-In this tutorial, you'll learn how to deploy a [Spring Boot](https://spring.io/projects/spring-boot) application on [Azure Kubernetes Service (AKS)](/azure/aks/intro-kubernetes) cluster with [Azure Database for MySQL flexible server](overview.md) in the backend, securely communicating with each other within an [Azure virtual network](../../virtual-network/virtual-networks-overview.md). 
+In this tutorial, you'll learn how to deploy a [Spring Boot](https://spring.io/projects/spring-boot) application on [Azure Kubernetes Service (AKS)](/azure/aks/intro-kubernetes) cluster with [Azure Database for MySQL flexible server](overview.md) in the backend, securely communicating with each other within an [Azure virtual network](/azure/virtual-network/virtual-networks-overview). 
 
 > [!NOTE]
 > This tutorial assumes a basic understanding of Kubernetes concepts, Java Spring Boot and MySQL.

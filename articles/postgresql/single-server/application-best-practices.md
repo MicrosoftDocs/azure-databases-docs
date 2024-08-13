@@ -37,7 +37,7 @@ For security, you must always connect to your PostgreSQL server over SSL and con
 
 ### Use environment variables for connection information
 
-Do not save your database credentials in your application code. Depending on the front end application, follow the guidance to set up environment variables. For App service use, see [how to configure app settings](../../app-service/configure-common.md#configure-app-settings) and for Azure Kubernetes service, see [how to use Kubernetes secrets](https://kubernetes.io/docs/concepts/configuration/secret/).
+Do not save your database credentials in your application code. Depending on the front end application, follow the guidance to set up environment variables. For App service use, see [how to configure app settings](/azure/app-service/configure-common#configure-app-settings) and for Azure Kubernetes service, see [how to use Kubernetes secrets](https://kubernetes.io/docs/concepts/configuration/secret/).
 
 ## Performance and resiliency
 

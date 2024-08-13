@@ -214,9 +214,9 @@ Below are the networking steps for migrating a PostgreSQL database from an on-pr
 
 ## Resources for network setup
 
-- To establish an **ExpressRoute** connection, refer to the [What is Azure ExpressRoute?](../../../expressroute/expressroute-introduction.md).
-- For setting up an **IPsec VPN**, consult the guide on [About Point-to-Site VPN](../../../vpn-gateway/point-to-site-about.md).
-- For virtual network peering, [Virtual network peering](../../../virtual-network/virtual-network-peering-overview.md)
+- To establish an **ExpressRoute** connection, refer to the [What is Azure ExpressRoute?](/azure/expressroute/expressroute-introduction).
+- For setting up an **IPsec VPN**, consult the guide on [About Point-to-Site VPN](/azure/vpn-gateway/point-to-site-about).
+- For virtual network peering, [Virtual network peering](/azure/virtual-network/virtual-network-peering-overview)
 
 ## Related content
 

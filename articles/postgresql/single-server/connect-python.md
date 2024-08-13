@@ -21,7 +21,7 @@ ms.date: 06/24/2022
 In this quickstart, you will learn how to connect to the database on Azure Database for PostgreSQL Single Server and run SQL statements to query using Python on macOS, Ubuntu Linux, or Windows.
 
 > [!TIP]
-> If you are looking to build a Django Application with PostgreSQL then checkout the tutorial, [Deploy a Django web app with PostgreSQL](../../app-service/tutorial-python-postgresql-app.md) tutorial.
+> If you are looking to build a Django Application with PostgreSQL then checkout the tutorial, [Deploy a Django web app with PostgreSQL](/azure/app-service/tutorial-python-postgresql-app) tutorial.
 
 ## Prerequisites
 

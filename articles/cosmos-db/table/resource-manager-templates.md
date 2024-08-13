@@ -24,7 +24,7 @@ This article has examples for API for Table accounts only, to find examples for 
 > * To change the throughput values, redeploy the template with updated RU/s.
 > * When you add or remove locations to an Azure Cosmos DB account, you can't simultaneously modify other properties. These operations must be done separately.
 
-To create any of the Azure Cosmos DB resources below, copy the following example template into a new json file. You can optionally create a parameters json file to use when deploying multiple instances of the same resource with different names and values. There are many ways to deploy Azure Resource Manager templates including, [Azure portal](../../azure-resource-manager/templates/deploy-portal.md), [Azure CLI](../../azure-resource-manager/templates/deploy-cli.md), [Azure PowerShell](../../azure-resource-manager/templates/deploy-powershell.md) and [GitHub](../../azure-resource-manager/templates/deploy-to-azure-button.md).
+To create any of the Azure Cosmos DB resources below, copy the following example template into a new json file. You can optionally create a parameters json file to use when deploying multiple instances of the same resource with different names and values. There are many ways to deploy Azure Resource Manager templates including, [Azure portal](/azure/azure-resource-manager/templates/deploy-portal), [Azure CLI](/azure/azure-resource-manager/templates/deploy-cli), [Azure PowerShell](/azure/azure-resource-manager/templates/deploy-powershell) and [GitHub](/azure/azure-resource-manager/templates/deploy-to-azure-button).
 
 > [!TIP]
 > To enable shared throughput when using API for Table, enable account-level throughput in the Azure portal.
@@ -53,7 +53,7 @@ This template will create an Azure Cosmos DB account for API for Table with one 
 
 Here are some additional resources:
 
-* [Azure Resource Manager documentation](../../azure-resource-manager/index.yml)
+* [Azure Resource Manager documentation](/azure/azure-resource-manager/)
 * [Azure Cosmos DB resource provider schema](/azure/templates/microsoft.documentdb/allversions)
 * [Azure Cosmos DB Quickstart templates](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.DocumentDB&pageNumber=1&sort=Popular)
-* [Troubleshoot common Azure Resource Manager deployment errors](../../azure-resource-manager/templates/common-deployment-errors.md)
+* [Troubleshoot common Azure Resource Manager deployment errors](/azure/azure-resource-manager/templates/common-deployment-errors)

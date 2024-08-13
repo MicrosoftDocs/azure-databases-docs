@@ -18,7 +18,7 @@ ms.devlang: azurecli
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
-This tutorial shows you how to create a Azure App Service Web app with Azure Database for PostgreSQL flexible server inside a [Virtual network](../../virtual-network/virtual-networks-overview.md).
+This tutorial shows you how to create a Azure App Service Web app with Azure Database for PostgreSQL flexible server inside a [Virtual network](/azure/virtual-network/virtual-networks-overview).
 
 In this tutorial you'll learn how to:
 >[!div class="checklist"]
@@ -151,4 +151,4 @@ az group delete -n demoresourcegroup
 
 ## Next steps
 > [!div class="nextstepaction"]
-> [Map an existing custom DNS name to Azure App Service](../../app-service/app-service-web-tutorial-custom-domain.md)
+> [Map an existing custom DNS name to Azure App Service](/azure/app-service/app-service-web-tutorial-custom-domain)

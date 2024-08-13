@@ -135,7 +135,7 @@ sections:
       - question: |
           Is it possible to switch between container-level and database-level throughput provisioning?
         answer: |
-          Container and database-level throughput provisioning are separate offerings and switching between either of these require migrating data from source to destination. You need to create a new database or container and then migrate data using [bulk executor library](bulk-executor-overview.md) or [Azure Data Factory](../data-factory/connector-azure-cosmos-db.md).
+          Container and database-level throughput provisioning are separate offerings and switching between either of these require migrating data from source to destination. You need to create a new database or container and then migrate data using [bulk executor library](bulk-executor-overview.md) or [Azure Data Factory](/azure/data-factory/connector-azure-cosmos-db).
       - question: |
           Does Azure Cosmos DB support time series analysis?
         answer: |

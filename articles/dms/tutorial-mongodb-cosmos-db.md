@@ -48,10 +48,10 @@ To complete this tutorial, you need to:
   > [!NOTE]
   > DMS is currently not supported if you're migrating to an Azure Cosmos DB for MongoDB account that is provisioned with serverless mode.
 
-* Create a Microsoft Azure Virtual Network for Azure Database Migration Service by using Azure Resource Manager. This deployment model provides site-to-site connectivity to your on-premises source servers by using either [Azure ExpressRoute](../expressroute/expressroute-introduction.md) or [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md). For more information about creating a virtual network, see the [Azure Virtual Network documentation](../virtual-network/index.yml), especially the "quickstart" articles with step-by-step details.
+* Create a Microsoft Azure Virtual Network for Azure Database Migration Service by using Azure Resource Manager. This deployment model provides site-to-site connectivity to your on-premises source servers by using either [Azure ExpressRoute](/azure/expressroute/expressroute-introduction) or [VPN](/azure/vpn-gateway/vpn-gateway-about-vpngateways). For more information about creating a virtual network, see the [Azure Virtual Network documentation](/azure/virtual-network/), especially the "quickstart" articles with step-by-step details.
 
     > [!NOTE]
-    > During virtual network setup, if you use ExpressRoute with network peering to Microsoft, add the following service [endpoints](../virtual-network/virtual-network-service-endpoints-overview.md) to the subnet in which the service will be provisioned:
+    > During virtual network setup, if you use ExpressRoute with network peering to Microsoft, add the following service [endpoints](/azure/virtual-network/virtual-network-service-endpoints-overview) to the subnet in which the service will be provisioned:
     >
     > * Target database endpoint (for example, SQL endpoint or Azure Cosmos DB endpoint)
     > * Storage endpoint
@@ -59,7 +59,7 @@ To complete this tutorial, you need to:
     >
     > This configuration is necessary because Azure Database Migration Service lacks internet connectivity.
 
-* Ensure that your network security group (NSG) rules for your virtual network don't block the following communication ports: 53, 443, 445, 9354, and 10000-20000. For more information, see [Filter network traffic with network security groups](../virtual-network/virtual-network-vnet-plan-design-arm.md).
+* Ensure that your network security group (NSG) rules for your virtual network don't block the following communication ports: 53, 443, 445, 9354, and 10000-20000. For more information, see [Filter network traffic with network security groups](/azure/virtual-network/virtual-network-vnet-plan-design-arm).
 * Open your Windows firewall to allow Azure Database Migration Service to access the source MongoDB server, which by default is TCP port 27017.
 * When you're using a firewall appliance in front of your source database, you might need to add firewall rules to allow Azure Database Migration Service to access the source database for migration.
 
@@ -99,7 +99,7 @@ If the feature is disabled, select **Enable**.
 
     The virtual network provides Azure Database Migration Service with access to the source MongoDB instance and the target Azure Cosmos DB account.
 
-    For more information about how to create a virtual network in the Azure portal, see [Create a virtual network by using the Azure portal](../virtual-network/quick-create-portal.md).
+    For more information about how to create a virtual network in the Azure portal, see [Create a virtual network by using the Azure portal](/azure/virtual-network/quick-create-portal).
 
 6. Select a pricing tier.
 

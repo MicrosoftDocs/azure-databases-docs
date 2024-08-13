@@ -213,7 +213,7 @@
         - name: Data encryption
           href: ../database-encryption-at-rest.md
         - name: Service tags
-          href: ../../virtual-network/service-tags-overview.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+          href: /azure/virtual-network/service-tags-overview?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: Azure Policy support
           href: ../policy.md
         - name: Security controls by Azure Policy
@@ -330,7 +330,7 @@
         - name: Configure access from private endpoints
           href: ../how-to-configure-private-endpoints.md
         - name: Connect privately to an Azure Cosmos DB account
-          href: ../../private-link/tutorial-private-endpoint-cosmosdb-portal.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+          href: /azure/private-link/tutorial-private-endpoint-cosmosdb-portal?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: Store credentials in Azure Key Vault
           href: ../store-credentials-key-vault.md
         - name: Access Azure Key Vault with managed identity

@@ -12,7 +12,7 @@ ms.custom: references_regions, devx-track-azurecli
 
 # Monitor Azure Managed Instance for Apache Cassandra by using Azure Monitor
 
-Azure Managed Instance for Apache Cassandra provides metrics and diagnostic logging through [Azure Monitor](../azure-monitor/overview.md).
+Azure Managed Instance for Apache Cassandra provides metrics and diagnostic logging through [Azure Monitor](/azure/azure-monitor/overview).
 
 ## Azure Managed Instance for Apache Cassandra metrics
 
@@ -56,7 +56,7 @@ Platform metrics and activity logs are collected automatically, whereas you must
    > [!NOTE]
    > If you're sending logs to a Log Analytics workspace, they can take up to 20 minutes to appear. Until then, the resource-specific tables (shown under **Azure Managed Instance for Apache Cassandra**) aren't visible.  
 
-1. After you set up diagnostic logging and data is flowing, you can select **Logs** and query the available diagnostic logs by using Azure Data Explorer. For more information on Azure Monitor and Kusto Query Language, see [Log queries in Azure Monitor](../azure-monitor/logs/log-query-overview.md).
+1. After you set up diagnostic logging and data is flowing, you can select **Logs** and query the available diagnostic logs by using Azure Data Explorer. For more information on Azure Monitor and Kusto Query Language, see [Log queries in Azure Monitor](/azure/azure-monitor/logs/log-query-overview).
 
     :::image type="content" source="./media/azure-monitor/query.png" alt-text="Screenshot that shows query logs.":::
 
@@ -203,4 +203,4 @@ By default, the configuration sets `included_categories` to `AUTH,ERROR,DCL,DDL`
 
 ## Next steps
 
-- For detailed information about how to create a diagnostic setting by using the Azure portal, the Azure CLI, or PowerShell, see [Diagnostic settings in Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md).
+- For detailed information about how to create a diagnostic setting by using the Azure portal, the Azure CLI, or PowerShell, see [Diagnostic settings in Azure Monitor](/azure/azure-monitor/essentials/diagnostic-settings).

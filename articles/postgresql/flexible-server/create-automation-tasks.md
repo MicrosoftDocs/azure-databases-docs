@@ -24,13 +24,13 @@ In addition, you can also set up automation tasks for other routine tasks such a
 
 ## How do automation tasks differ from Azure Automation?
 
-Automation tasks are more basic and lightweight than [Azure Automation](../../automation/overview.md). Currently, you can create an automation task only at the Azure resource level. An automation task is actually a logic app resource that runs a workflow, powered by the [multi-tenant Azure Logic Apps service](../../logic-apps/logic-apps-overview.md). You can view and edit the underlying workflow by opening the task in the workflow designer after it has completed at least one run.
+Automation tasks are more basic and lightweight than [Azure Automation](/azure/automation/overview). Currently, you can create an automation task only at the Azure resource level. An automation task is actually a logic app resource that runs a workflow, powered by the [multi-tenant Azure Logic Apps service](/azure/logic-apps/logic-apps-overview). You can view and edit the underlying workflow by opening the task in the workflow designer after it has completed at least one run.
 
 In contrast, Azure Automation is a comprehensive cloud-based automation and configuration service that provides consistent management across your Azure and non-Azure environments. 
 
 ## Pricing
 
-Creating an automation task doesn't immediately incur charges. Underneath, an automation task is powered by a workflow in a logic app resource hosted in multi-tenant Azure Logic Apps, thus the [Consumption pricing model](../../logic-apps/logic-apps-pricing.md) applies to automation tasks. Metering and billing are based on the trigger and action executions in the underlying logic app workflow. 
+Creating an automation task doesn't immediately incur charges. Underneath, an automation task is powered by a workflow in a logic app resource hosted in multi-tenant Azure Logic Apps, thus the [Consumption pricing model](/azure/logic-apps/logic-apps-pricing) applies to automation tasks. Metering and billing are based on the trigger and action executions in the underlying logic app workflow. 
 
 
 ## Prerequisites
@@ -101,7 +101,7 @@ Here the possible statuses for a run:
    | **Waiting** | The run hasn't started yet and is paused because an earlier instance of the task is still running. |
    |||
 
-   For more information, see [Review runs history in monitoring view](../../logic-apps/monitor-logic-apps.md#review-runs-history).
+   For more information, see [Review runs history in monitoring view](/azure/logic-apps/monitor-logic-apps#review-runs-history).
 
 ## Edit the task
 
@@ -122,10 +122,10 @@ To change a task, you have these options:
 
 ### Edit the task's underlying workflow
 
-* For details on editing the underlying workflow, please refer [Edit the task's underlying workflow](../../logic-apps/create-automation-tasks-azure-resources.md#edit-the-tasks-underlying-workflow)
+* For details on editing the underlying workflow, please refer [Edit the task's underlying workflow](/azure/logic-apps/create-automation-tasks-azure-resources#edit-the-tasks-underlying-workflow)
 
 ## Next steps
 
-* [Manage logic apps in the Azure portal](../../logic-apps/manage-logic-apps-with-azure-portal.md)
+* [Manage logic apps in the Azure portal](/azure/logic-apps/manage-logic-apps-with-azure-portal)
 
 

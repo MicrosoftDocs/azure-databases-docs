@@ -166,7 +166,7 @@ The **Overview** tab provides the most common metrics for the selected Azure Cos
 
 ## Pin, export, and expand
 
-You can pin any one of the metric sections to an [Azure dashboard](../azure-portal/azure-portal-dashboards.md) by selecting the pushpin in the upper-right corner of the section.
+You can pin any one of the metric sections to an [Azure dashboard](/azure/azure-portal/azure-portal-dashboards) by selecting the pushpin in the upper-right corner of the section.
 
 ![Screenshot that shows the metric section pin to dashboard example.](~/reusable-content/ce-skilling/azure/media/cosmos-db/pin.png)
 
@@ -190,9 +190,9 @@ Workbooks are saved within a resource group. The **My Reports** section is priva
 
 ## Troubleshooting
 
-For troubleshooting guidance, see [Troubleshooting workbook-based insights](../azure-monitor/insights/troubleshoot-workbooks.md).
+For troubleshooting guidance, see [Troubleshooting workbook-based insights](/azure/azure-monitor/insights/troubleshoot-workbooks).
 
 ## Next steps
 
-* Configure [metric alerts](../azure-monitor/alerts/alerts-metric.md) and [Service Health notifications](../service-health/alerts-activity-log-service-notifications-portal.md) to set up automated alerting to aid in detecting issues.
-* For more information on how the scenario workbooks are designed and how to author new and customize existing reports, see [Create interactive reports with Azure Monitor workbooks](../azure-monitor/visualize/workbooks-overview.md).
+* Configure [metric alerts](/azure/azure-monitor/alerts/alerts-metric) and [Service Health notifications](/azure/service-health/alerts-activity-log-service-notifications-portal) to set up automated alerting to aid in detecting issues.
+* For more information on how the scenario workbooks are designed and how to author new and customize existing reports, see [Create interactive reports with Azure Monitor workbooks](/azure/azure-monitor/visualize/workbooks-overview).

@@ -18,7 +18,7 @@ ms.custom:
 
 A read replica can be created in the same region as the primary server or in a different geographical region. Geo-replication can be helpful for scenarios like disaster recovery planning or bringing data closer to your users.
 
-You can have a primary server in any [Azure Database for PostgreSQL flexible server region](https://azure.microsoft.com/global-infrastructure/services/?products=postgresql). A primary server can also have replicas in any global region of Azure that supports Azure Database for PostgreSQL flexible server. Additionally, we support special regions [Azure Government](../../azure-government/documentation-government-welcome.md) and [Microsoft Azure operated by 21Vianet](/azure/china/overview-operations). The special regions now supported are:
+You can have a primary server in any [Azure Database for PostgreSQL flexible server region](https://azure.microsoft.com/global-infrastructure/services/?products=postgresql). A primary server can also have replicas in any global region of Azure that supports Azure Database for PostgreSQL flexible server. Additionally, we support special regions [Azure Government](/azure/azure-government/documentation-government-welcome) and [Microsoft Azure operated by 21Vianet](/azure/china/overview-operations). The special regions now supported are:
 
 - **Azure Government regions**:
   - US Gov Arizona
@@ -44,9 +44,9 @@ While creating replicas in any supported region is possible, there are notable b
 
 - **Data Residency**: With a few exceptions, regions in a paired set reside within the same geography, meeting data residency requirements.
 
-- **Performance**: While paired regions typically offer low network latency, enhancing data accessibility and user experience, they might not always be the regions with the absolute lowest latency. If the primary objective is to serve data closer to users rather than prioritize disaster recovery, it's crucial to evaluate all available regions for latency. In some cases, a non-paired region might exhibit the lowest latency. For a comprehensive understanding, you can reference [Azure's round-trip latency figures](../../networking/azure-network-latency.md#round-trip-latency-figures) to make an informed choice.
+- **Performance**: While paired regions typically offer low network latency, enhancing data accessibility and user experience, they might not always be the regions with the absolute lowest latency. If the primary objective is to serve data closer to users rather than prioritize disaster recovery, it's crucial to evaluate all available regions for latency. In some cases, a non-paired region might exhibit the lowest latency. For a comprehensive understanding, you can reference [Azure's round-trip latency figures](/azure/networking/azure-network-latency#round-trip-latency-figures) to make an informed choice.
 
-For a deeper understanding of the advantages of paired regions, refer to [Azure's documentation on cross-region replication](../../reliability/cross-region-replication-azure.md#azure-paired-regions).
+For a deeper understanding of the advantages of paired regions, refer to [Azure's documentation on cross-region replication](/azure/reliability/cross-region-replication-azure#azure-paired-regions).
 
 
 ## Regional Failures and Recovery
@@ -65,7 +65,7 @@ Being prepared for potential regional disasters is critical to ensure the uninte
 4.  **Configure the read replica**: Not all settings from the primary server are replicated over to the read replica. It's crucial to ensure that all necessary configurations and features (for example, PgBouncer) are appropriately set up on your read replica. For more information, see the [Configuration management](concepts-read-replicas-promote.md#configuration-management) section.
 5.  **Prepare for High Availability (HA)**: If your setup requires high availability, it won't be automatically enabled on a promoted replica. Be ready to activate it post-promotion. Consider automating this step to minimize downtime.
 6.  **Regular testing**: Regularly simulate regional disaster scenarios to validate existing thresholds, targets, and configurations. Ensure that your application responds as expected during these test scenarios.
-7.  **Follow Azure's general guidance**: Azure provides comprehensive guidance on [reliability and disaster preparedness](../../reliability/overview.md). It's highly beneficial to consult these resources and integrate best practices into your preparedness plan.
+7.  **Follow Azure's general guidance**: Azure provides comprehensive guidance on [reliability and disaster preparedness](/azure/reliability/overview). It's highly beneficial to consult these resources and integrate best practices into your preparedness plan.
 
 Being proactive and preparing in advance for regional disasters ensure the resilience and reliability of your applications and data.
 

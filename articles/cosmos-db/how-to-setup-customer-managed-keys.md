@@ -746,7 +746,7 @@ User-Assigned Identity is tied to a specified Cosmos DB account, whenever we ass
 Since the identity metadata is bound with the source database account and restore workflow doesn't re-scope identity to the target database account. This will cause the restored database accounts to be in a bad state, and become inaccessible after the source account is deleted and identity’s renew time is expired. 
 
 Steps to assign a new managed-identity:
-1. [Create a new user-assigned managed identity.](../active-directory/managed-identities-azure-resources/how-manage-user-assigned-managed-identities.md#create-a-user-assigned-managed-identity)
+1. [Create a new user-assigned managed identity.](/azure/active-directory/managed-identities-azure-resources/how-manage-user-assigned-managed-identities#create-a-user-assigned-managed-identity)
 2. [Grant KeyVault key access to this identity.](#choosing-the-preferred-security-model)
 3. [Assign this new identity to your restored database account.](/cli/azure/cosmosdb/identity#az-cosmosdb-identity-assign)
 

@@ -26,7 +26,7 @@ This article shows Bicep samples for API for NoSQL accounts. You can also find B
 > * When you add or remove locations to an Azure Cosmos DB account, you can't simultaneously modify other properties. These operations must be done separately.
 > * To provision throughput at the database level and share across all containers, apply the throughput values to the database options property.
 
-To create any of the Azure Cosmos DB resources below, copy the following example into a new bicep file. You can optionally create a parameters file to use when deploying multiple instances of the same resource with different names and values. There are many ways to deploy Azure Bicep files including, [Azure CLI](../../azure-resource-manager/bicep/deploy-cli.md), [Azure PowerShell](../../azure-resource-manager/bicep/deploy-powershell.md) and [Cloud Shell](../../azure-resource-manager/bicep/deploy-cloud-shell.md).
+To create any of the Azure Cosmos DB resources below, copy the following example into a new bicep file. You can optionally create a parameters file to use when deploying multiple instances of the same resource with different names and values. There are many ways to deploy Azure Bicep files including, [Azure CLI](/azure/azure-resource-manager/bicep/deploy-cli), [Azure PowerShell](/azure/azure-resource-manager/bicep/deploy-powershell) and [Cloud Shell](/azure/azure-resource-manager/bicep/deploy-cloud-shell).
 
 <a id="create-autoscale"></a>
 
@@ -82,5 +82,5 @@ Create a free-tier Azure Cosmos DB account and a database with shared throughput
 
 Here are some additional resources:
 
-* [Bicep documentation](../../azure-resource-manager/bicep/index.yml)
-* [Install Bicep tools](../../azure-resource-manager/bicep/install.md)
+* [Bicep documentation](/azure/azure-resource-manager/bicep/)
+* [Install Bicep tools](/azure/azure-resource-manager/bicep/install)

@@ -185,7 +185,7 @@ Also, index tuning isn't supported currently on read replicas. Any recommendatio
 
 ### Important considerations
 
-If you have [high availability](../../reliability/reliability-postgresql-flexible-server.md) or [read replicas](concepts-read-replicas.md) configured on your server, be aware of the implications associated with producing write-intensive workloads on the primary server when indexes recommended are implemented. Be especially careful when creating indexes whose size is estimated to be significantly large.
+If you have [high availability](/azure/reliability/reliability-postgresql-flexible-server) or [read replicas](concepts-read-replicas.md) configured on your server, be aware of the implications associated with producing write-intensive workloads on the primary server when indexes recommended are implemented. Be especially careful when creating indexes whose size is estimated to be significantly large.
 
 ## Related content
 

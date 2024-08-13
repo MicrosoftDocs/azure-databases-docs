@@ -116,7 +116,7 @@ After you restore the data, you get a notification about the name of the new acc
 
 The following are different ways to migrate data back to the original account:
 
-- Use the [Azure Data Factory](../data-factory/connector-azure-cosmos-db.md).
+- Use the [Azure Data Factory](/azure/data-factory/connector-azure-cosmos-db).
 - Use the [change feed](change-feed.md) in Azure Cosmos DB.
 - You can write your own custom code.
 

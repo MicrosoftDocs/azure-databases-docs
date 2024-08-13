@@ -30,9 +30,9 @@ Consider the following when developing your application:
 * The application should be in the same region as your Azure Cosmos DB account.
 * Your [ApplicationRegion](/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.applicationregion) or [ApplicationPreferredRegions](/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.applicationpreferredregions) should reflect your regional preference and point to the region your application is deployed on.
 * There might be a bottleneck on the Network interface because of high traffic. If the application is running on Azure Virtual Machines, there are possible workarounds:
-  * Consider using a [Virtual Machine with Accelerated Networking enabled](../../virtual-network/create-vm-accelerated-networking-powershell.md).
-  * Enable [Accelerated Networking on an existing Virtual Machine](../../virtual-network/create-vm-accelerated-networking-powershell.md#enable-accelerated-networking-on-existing-vms).
-  * Consider using a [higher end Virtual Machine](../../virtual-machines/sizes.md).
+  * Consider using a [Virtual Machine with Accelerated Networking enabled](/azure/virtual-network/create-vm-accelerated-networking-powershell).
+  * Enable [Accelerated Networking on an existing Virtual Machine](/azure/virtual-network/create-vm-accelerated-networking-powershell#enable-accelerated-networking-on-existing-vms).
+  * Consider using a [higher end Virtual Machine](/azure/virtual-machines/sizes).
 * Prefer [direct connectivity mode](sdk-connection-modes.md).
 * Avoid high CPU. Make sure to look at the maximum CPU and not the average, which is the default for most logging systems. Anything above roughly 40 percent can increase the latency.
 

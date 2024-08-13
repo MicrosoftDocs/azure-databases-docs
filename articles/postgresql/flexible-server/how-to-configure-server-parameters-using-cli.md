@@ -23,7 +23,7 @@ You can list, show, and update configuration parameters for an Azure PostgreSQL 
 
 To step through this how-to guide, you need:
 - Create an Azure Database for PostgreSQL flexible server instance and database by following [Create an Azure Database for PostgreSQL flexible server instance](quickstart-create-server-cli.md)
-- Install [Azure CLI](/cli/azure/install-azure-cli) command-line interface on your machine or use the [Azure Cloud Shell](../../cloud-shell/overview.md) in the Azure portal using your browser.
+- Install [Azure CLI](/cli/azure/install-azure-cli) command-line interface on your machine or use the [Azure Cloud Shell](/azure/cloud-shell/overview) in the Azure portal using your browser.
 
 ## List server parameters for an Azure Database for PostgreSQL flexible server instance
 

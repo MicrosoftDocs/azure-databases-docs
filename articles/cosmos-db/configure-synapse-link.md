@@ -228,19 +228,19 @@ except exceptions.CosmosResourceExistsError:
 
 ## <a id="connect-to-cosmos-database"></a> Connect to a Synapse workspace
 
-Use the instructions in [Connect to Azure Synapse Link](../synapse-analytics/synapse-link/how-to-connect-synapse-link-cosmos-db.md) on how to access an Azure Cosmos DB database from Azure Synapse Analytics Studio with Azure Synapse Link.
+Use the instructions in [Connect to Azure Synapse Link](/azure/synapse-analytics/synapse-link/how-to-connect-synapse-link-cosmos-db) on how to access an Azure Cosmos DB database from Azure Synapse Analytics Studio with Azure Synapse Link.
 
 ## <a id="query"></a> Query analytical store using Azure Synapse Analytics
 
 ### Query analytical store using Apache Spark for Azure Synapse Analytics
 
-Use the instructions in the [Query Azure Cosmos DB analytical store using Spark 3](../synapse-analytics/synapse-link/how-to-query-analytical-store-spark-3.md) article on how to query with Synapse Spark 3. That article gives some examples on how you can interact with the analytical store from Synapse gestures. Those gestures are visible when you right-click on a container. With gestures, you can quickly generate code and tweak it to your needs. They are also perfect for discovering data with a single click.
+Use the instructions in the [Query Azure Cosmos DB analytical store using Spark 3](/azure/synapse-analytics/synapse-link/how-to-query-analytical-store-spark-3) article on how to query with Synapse Spark 3. That article gives some examples on how you can interact with the analytical store from Synapse gestures. Those gestures are visible when you right-click on a container. With gestures, you can quickly generate code and tweak it to your needs. They are also perfect for discovering data with a single click.
 
-For Spark 2 integration use the instruction in the [Query Azure Cosmos DB analytical store using Spark 2](../synapse-analytics/synapse-link/how-to-query-analytical-store-spark.md) article.
+For Spark 2 integration use the instruction in the [Query Azure Cosmos DB analytical store using Spark 2](/azure/synapse-analytics/synapse-link/how-to-query-analytical-store-spark) article.
 
 ### Query the analytical store using serverless SQL pool in Azure Synapse Analytics
 
-Serverless SQL pool allows you to query and analyze data in your Azure Cosmos DB containers that are enabled with Azure Synapse Link. You can analyze data in near real-time without impacting the performance of your transactional workloads. It offers a familiar T-SQL syntax to query data from the analytical store and integrated connectivity to a wide range of BI and ad-hoc querying tools via the T-SQL interface. To learn more, see the [Query analytical store using serverless SQL pool](../synapse-analytics/sql/query-cosmos-db-analytical-store.md) article.
+Serverless SQL pool allows you to query and analyze data in your Azure Cosmos DB containers that are enabled with Azure Synapse Link. You can analyze data in near real-time without impacting the performance of your transactional workloads. It offers a familiar T-SQL syntax to query data from the analytical store and integrated connectivity to a wide range of BI and ad-hoc querying tools via the T-SQL interface. To learn more, see the [Query analytical store using serverless SQL pool](/azure/synapse-analytics/sql/query-cosmos-db-analytical-store) article.
 
 ## <a id="analyze-with-powerbi"></a>Use serverless SQL pool to analyze and visualize data in Power BI
 
@@ -270,5 +270,5 @@ To learn more, see the following docs:
 * Check the training module on how to [configure Azure Synapse Link for Azure Cosmos DB.](/training/modules/configure-azure-synapse-link-with-azure-cosmos-db/)
 * [Azure Cosmos DB analytical store overview.](analytical-store-introduction.md)
 * [Frequently asked questions about Synapse Link for Azure Cosmos DB.](synapse-link-frequently-asked-questions.yml)
-* [Apache Spark in Azure Synapse Analytics](../synapse-analytics/spark/apache-spark-concepts.md).
-* [Serverless SQL pool runtime support in Azure Synapse Analytics](../synapse-analytics/sql/on-demand-workspace-overview.md).
+* [Apache Spark in Azure Synapse Analytics](/azure/synapse-analytics/spark/apache-spark-concepts).
+* [Serverless SQL pool runtime support in Azure Synapse Analytics](/azure/synapse-analytics/sql/on-demand-workspace-overview).

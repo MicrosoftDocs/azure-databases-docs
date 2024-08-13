@@ -30,7 +30,7 @@ Data encryption with customer-managed keys for Azure Database for MySQL flexible
 
 ## How does data encryption with a customer-managed key work?
 
-Managed identities in Microsoft Entra ID provide Azure services an alternative to storing credentials in the code by provisioning an automatically assigned identity that can be used to authenticate to any service supporting Microsoft Entra authentication, such as Azure Key Vault (AKV). Azure Database for MySQL flexible server currently supports only User-assigned Managed Identity (UMI). For more information, see [Managed identity types](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) in Azure.
+Managed identities in Microsoft Entra ID provide Azure services an alternative to storing credentials in the code by provisioning an automatically assigned identity that can be used to authenticate to any service supporting Microsoft Entra authentication, such as Azure Key Vault (AKV). Azure Database for MySQL flexible server currently supports only User-assigned Managed Identity (UMI). For more information, see [Managed identity types](/azure/active-directory/managed-identities-azure-resources/overview#managed-identity-types) in Azure.
 
 To configure the CMK for an Azure Database for MySQL flexible server, you need to link the UMI to the server and specify the Azure Key vault and key to use.
 
@@ -54,7 +54,7 @@ If RBAC is enabled, the UMI must also be assigned the following role:
 
 **Data encryption key (DEK)**: A symmetric AES256 key used to encrypt a partition or block of data. Encrypting each block of data with a different key makes crypto analysis attacks more difficult. Access to DEKs is needed by the resource provider or application instance that encrypts and decrypts a specific block. When you replace a DEK with a new key, only the data in its associated block must be re-encrypted with the new key.
 
-**Key encryption key (KEK)**: An encryption key used to encrypt the DEKs. A KEK that never leaves Key Vault allows the DEKs themselves to be encrypted and controlled. The entity that has access to the KEK might be different than the entity that requires the DEK. Since the KEK is required to decrypt the DEKs, the KEK is effectively a single point by which DEKs can be effectively deleted by deleting the KEK. The DEKs, encrypted with the KEKs, are stored separately. Only an entity with access to the KEK can decrypt these DEKs. For more information, see [Security in encryption rest](../../security/fundamentals/encryption-atrest.md).
+**Key encryption key (KEK)**: An encryption key used to encrypt the DEKs. A KEK that never leaves Key Vault allows the DEKs themselves to be encrypted and controlled. The entity that has access to the KEK might be different than the entity that requires the DEK. Since the KEK is required to decrypt the DEKs, the KEK is effectively a single point by which DEKs can be effectively deleted by deleting the KEK. The DEKs, encrypted with the KEKs, are stored separately. Only an entity with access to the KEK can decrypt these DEKs. For more information, see [Security in encryption rest](/azure/security/fundamentals/encryption-atrest).
 
 ### How it works
 
@@ -125,8 +125,8 @@ It might happen that someone with sufficient access rights to Key Vault accident
 
 To monitor the database state, and to enable alerting for the loss of transparent data encryption protector access, configure the following Azure features:
 
-- [Activity log](../../service-health/alerts-activity-log-service-notifications-portal.md): When access to the Customer Key in the customer-managed Key Vault fails, entries are added to the activity log. You can reinstate access as soon as possible if you create alerts for these events.
-- [Action groups](../../azure-monitor/alerts/action-groups.md): Define these groups to send notifications and alerts based on your preferences.
+- [Activity log](/azure/service-health/alerts-activity-log-service-notifications-portal): When access to the Customer Key in the customer-managed Key Vault fails, entries are added to the activity log. You can reinstate access as soon as possible if you create alerts for these events.
+- [Action groups](/azure/azure-monitor/alerts/action-groups): Define these groups to send notifications and alerts based on your preferences.
 
 ## Replica with a customer managed key in Key Vault
 
@@ -148,7 +148,7 @@ To avoid issues while setting up customer-managed data encryption during restore
 
 - [Data encryption with Azure CLI](how-to-data-encryption-cli.md)
 - [Data encryption with Azure portal](how-to-data-encryption-portal.md)
-- [Security in encryption rest](../../security/fundamentals/encryption-atrest.md)
+- [Security in encryption rest](/azure/security/fundamentals/encryption-atrest)
 - [Active Directory authentication](concepts-azure-ad-authentication.md)
 
 

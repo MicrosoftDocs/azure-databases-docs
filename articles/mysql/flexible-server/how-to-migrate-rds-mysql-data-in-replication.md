@@ -44,7 +44,7 @@ In the preceding case, you can move dump files between client machines by using 
 No matter where the client computer is located, it requires adequate computing, I/O, and network capacity to perform the requested operations. The general recommendations are:
 
 - If the dump or restore involves real-time processing of data, for example, compression or decompression, choose an instance class with at least one CPU core per dump or restore thread.
-- Ensure there's enough network bandwidth available to the client instance. Use instance types that support the accelerated networking feature. For more information, see the "Accelerated Networking" section in the [Azure Virtual Machine Networking Guide](../../virtual-network/create-vm-accelerated-networking-cli.md).
+- Ensure there's enough network bandwidth available to the client instance. Use instance types that support the accelerated networking feature. For more information, see the "Accelerated Networking" section in the [Azure Virtual Machine Networking Guide](/azure/virtual-network/create-vm-accelerated-networking-cli).
 - Ensure that the client machine's storage layer provides the expected read/write capacity. We recommend that you use an Azure virtual machine with Premium SSD storage.
 
 ## Prerequisites
@@ -81,7 +81,7 @@ Finally, to prepare for Data-in Replication:
 
 - Verify that the target Azure Database for MySQL flexible server instance can connect to the source Amazon RDS for MySQL server over port 3306.
 - Ensure that the source Amazon RDS for MySQL server allows both inbound and outbound traffic on port 3306.
-- Make sure you provide [site-to-site connectivity](../../vpn-gateway/tutorial-site-to-site-portal.md) to your source server by using either [Azure ExpressRoute](../../expressroute/expressroute-introduction.md) or [Azure VPN Gateway](../../vpn-gateway/vpn-gateway-about-vpngateways.md). For more information about creating a virtual network, see the [Azure Virtual Network documentation](../../virtual-network/index.yml). Also see the quickstart articles with step-by-step details.
+- Make sure you provide [site-to-site connectivity](/azure/vpn-gateway/tutorial-site-to-site-portal) to your source server by using either [Azure ExpressRoute](/azure/expressroute/expressroute-introduction) or [Azure VPN Gateway](/azure/vpn-gateway/vpn-gateway-about-vpngateways). For more information about creating a virtual network, see the [Azure Virtual Network documentation](/azure/virtual-network/). Also see the quickstart articles with step-by-step details.
 - Configure your source database server's network security groups to allow the target Azure Database for MySQL flexible server IP address.
 
 > [!IMPORTANT]  

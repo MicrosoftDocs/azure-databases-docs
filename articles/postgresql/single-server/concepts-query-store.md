@@ -183,7 +183,7 @@ Query_store.staging_data_reset() returns void
 
 ## Azure Monitor
 
-Azure Database for PostgreSQL is integrated with [Azure Monitor diagnostic settings](../../azure-monitor/essentials/diagnostic-settings.md). Diagnostic settings allows you to send your Postgres logs in JSON format to [Azure Monitor Logs](../../azure-monitor/logs/log-query-overview.md) for analytics and alerting, Event Hubs for streaming, and Azure Storage for archiving.
+Azure Database for PostgreSQL is integrated with [Azure Monitor diagnostic settings](/azure/azure-monitor/essentials/diagnostic-settings). Diagnostic settings allows you to send your Postgres logs in JSON format to [Azure Monitor Logs](/azure/azure-monitor/logs/log-query-overview) for analytics and alerting, Event Hubs for streaming, and Azure Storage for archiving.
 
 >[!IMPORTANT]
 > This diagnostic feature for is only available in the General Purpose and Memory Optimized pricing tiers.
@@ -201,7 +201,7 @@ To enable resource logs using the Azure portal:
 5. Select the log types **QueryStoreRuntimeStatistics** and **QueryStoreWaitStatistics**.
 6. Save your setting.
 
-To enable this setting using PowerShell, CLI, or REST API, visit the [diagnostic settings article](../../azure-monitor/essentials/diagnostic-settings.md).
+To enable this setting using PowerShell, CLI, or REST API, visit the [diagnostic settings article](/azure/azure-monitor/essentials/diagnostic-settings).
 
 ### JSON log format
 

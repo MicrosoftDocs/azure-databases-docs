@@ -18,7 +18,7 @@ In this article, you learn how to create and manage an Azure Database for Postgr
 ## Set up customer managed key during server creation
 Prerequisites:
 
-- Microsoft Entra user managed identity in the region where the Azure Database for PostgreSQL flexible server instance will be created. Follow this [tutorial](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md) to create identity.
+- Microsoft Entra user managed identity in the region where the Azure Database for PostgreSQL flexible server instance will be created. Follow this [tutorial](/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm) to create identity.
 
 - Key Vault with key in region where the Azure Database for PostgreSQL flexible server instance will be created. Follow this [tutorial](/azure/key-vault/general/quick-create-portal) to create Key Vault and generate key. Follow [requirements section in concepts doc](concepts-data-encryption.md) for required Azure Key Vault settings.
 
@@ -38,7 +38,7 @@ Follow the steps below to enable CMK while creating the Azure Database for Postg
 
 Prerequisites:
 
-- Microsoft Entra user-managed identity in region where the Azure Database for PostgreSQL flexible server instance will be created. Follow this [tutorial](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md) to create identity.
+- Microsoft Entra user-managed identity in region where the Azure Database for PostgreSQL flexible server instance will be created. Follow this [tutorial](/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm) to create identity.
 
 - Key Vault with key in region where the Azure Database for PostgreSQL flexible server instance will be created. Follow this [tutorial](/azure/key-vault/general/quick-create-portal) to create Key Vault and generate key.
 

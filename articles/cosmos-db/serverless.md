@@ -34,7 +34,7 @@ The Azure Cosmos DB serverless option best fits scenarios in which you expect *i
   - Bursting, intermittent traffic that is hard to forecast.
   - Low (less than 10 percent) average-to-peak traffic ratio.
 - You're developing, testing, prototyping, or offering your users a new application, and you don't yet know the traffic pattern.
-- You're integrating with a serverless compute service, like [Azure Functions](../azure-functions/functions-overview.md).
+- You're integrating with a serverless compute service, like [Azure Functions](/azure/azure-functions/functions-overview).
 
 For more information, see [Choose between provisioned throughput and serverless](throughput-serverless.md).
 
@@ -62,11 +62,11 @@ You can monitor consumption by viewing a chart in your Azure Cosmos DB account i
 
 :::image type="content" source="./media/serverless/request-units-consumed.png" alt-text="Screenshot that shows a chart of the consumed request units.":::
 
-You can use the same [chart in Azure Monitor](monitor-request-unit-usage.md). When you use Azure Monitor, you can set up [alerts](../azure-monitor/alerts/alerts-metric-overview.md) so that you're notified when your RU consumption passes a threshold that you set.
+You can use the same [chart in Azure Monitor](monitor-request-unit-usage.md). When you use Azure Monitor, you can set up [alerts](/azure/azure-monitor/alerts/alerts-metric-overview) so that you're notified when your RU consumption passes a threshold that you set.
 
 ## High availability
 
-Azure Cosmos DB serverless extends high availability support with availability zones in [designated regions](../../articles/reliability/availability-zones-service-support.md#azure-regions-with-availability-zone-support). The associated Service Level Agreements (SLAs) are aligned with the [Single-region writes with availability zone](../../articles/cosmos-db/high-availability.md#slas) configuration, ensuring reliability for your deployments.
+Azure Cosmos DB serverless extends high availability support with availability zones in [designated regions](/azure/reliability/availability-zones-service-support#azure-regions-with-availability-zone-support). The associated Service Level Agreements (SLAs) are aligned with the [Single-region writes with availability zone](../../articles/cosmos-db/high-availability.md#slas) configuration, ensuring reliability for your deployments.
 
 
 ## Next steps

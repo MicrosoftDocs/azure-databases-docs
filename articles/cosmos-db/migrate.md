@@ -19,7 +19,7 @@ Before you migrate the entire workload to Azure Cosmos DB, you can migrate a sub
 
 ## Tools for data migration 
 
-Azure Cosmos DB migration strategies currently differ based on the API choice and the size of the data. To migrate smaller datasets – for validating data modeling, query performance, partition key choice etc. – you can use [Azure Data Factory’s Azure Cosmos DB connector](../data-factory/connector-azure-cosmos-db.md). If you are familiar with Spark, you can also choose to use the [Azure Cosmos DB Spark connector](./nosql/quickstart-spark.md) to migrate data.
+Azure Cosmos DB migration strategies currently differ based on the API choice and the size of the data. To migrate smaller datasets – for validating data modeling, query performance, partition key choice etc. – you can use [Azure Data Factory’s Azure Cosmos DB connector](/azure/data-factory/connector-azure-cosmos-db). If you are familiar with Spark, you can also choose to use the [Azure Cosmos DB Spark connector](./nosql/quickstart-spark.md) to migrate data.
 
 ## Challenges for large-scale migrations 
 

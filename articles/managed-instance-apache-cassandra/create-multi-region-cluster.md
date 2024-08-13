@@ -20,7 +20,7 @@ This quickstart demonstrates how to use the Azure CLI commands to configure a mu
 
 * This article requires the Azure CLI version 2.30.0 or higher. If you're using Azure Cloud Shell, the latest version is already installed.
 
-* [Azure Virtual Network](../virtual-network/virtual-networks-overview.md) with connectivity to your self-hosted or on-premises environment. For more information on connecting on premises environments to Azure, see the [Connect an on-premises network to Azure](/azure/architecture/reference-architectures/hybrid-networking/) article.
+* [Azure Virtual Network](/azure/virtual-network/virtual-networks-overview) with connectivity to your self-hosted or on-premises environment. For more information on connecting on premises environments to Azure, see the [Connect an on-premises network to Azure](/azure/architecture/reference-architectures/hybrid-networking/) article.
 
 ## Set up the network environment<a id="create-account"></a>
 
@@ -192,7 +192,7 @@ If you encounter errors when you run `az role assignment create`, you might not 
    > Note also that `--availability-zone` is set to `false`. To enable availability zones, set this to `true`. Availability zones increase the availability SLA of the service. For more information, see [SLA for Azure Managed Instance for Apache Cassandra](https://azure.microsoft.com/support/legal/sla/managed-instance-apache-cassandra/v1_0/).
 
    > [!WARNING]
-   > Availability zones are not supported in all regions. Deployments fail if you select a region where Availability zones are not supported. For supported regions, see [Azure regions with availability zones](../availability-zones/az-overview.md#azure-regions-with-availability-zones).
+   > Availability zones are not supported in all regions. Deployments fail if you select a region where Availability zones are not supported. For supported regions, see [Azure regions with availability zones](/azure/availability-zones/az-overview#azure-regions-with-availability-zones).
    >
    > The successful deployment of availability zones is also subject to the availability of compute resources in all of the zones in the given region. Deployments may fail if the SKU you have selected, or capacity, is not available across all zones.
 

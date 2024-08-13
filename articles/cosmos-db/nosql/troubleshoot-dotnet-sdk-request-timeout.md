@@ -132,11 +132,11 @@ If you're running on Azure VMs, follow the [SNAT port exhaustion guide](troubles
 
 #### Solution 2
 
-If you're running on Azure App Service, follow the [connection errors troubleshooting guide](../../app-service/troubleshoot-intermittent-outbound-connection-errors.md#cause) and [use App Service diagnostics](https://azure.github.io/AppService/2018/03/01/Deep-Dive-into-TCP-Connections-in-App-Service-Diagnostics.html).
+If you're running on Azure App Service, follow the [connection errors troubleshooting guide](/azure/app-service/troubleshoot-intermittent-outbound-connection-errors#cause) and [use App Service diagnostics](https://azure.github.io/AppService/2018/03/01/Deep-Dive-into-TCP-Connections-in-App-Service-Diagnostics.html).
 
 #### Solution 3
 
-If you're running on Azure Functions, verify you're following the [Azure Functions recommendation](../../azure-functions/manage-connections.md#static-clients) of maintaining singleton or static clients for all of the involved services (including Azure Cosmos DB). Check the [service limits](../../azure-functions/functions-scale.md#service-limits) based on the type and size of your Function App hosting.
+If you're running on Azure Functions, verify you're following the [Azure Functions recommendation](/azure/azure-functions/manage-connections#static-clients) of maintaining singleton or static clients for all of the involved services (including Azure Cosmos DB). Check the [service limits](/azure/azure-functions/functions-scale#service-limits) based on the type and size of your Function App hosting.
 
 #### Solution 4
 

@@ -39,6 +39,6 @@ See Azure Cosmos DB for PostgreSQL [limits and limitations](reference-limits.md)
 ## Next steps
 
 * Learn how to [enable and manage private access](howto-private-access.md)
-* Learn about [private endpoints](../../private-link/private-endpoint-overview.md)
-* Learn about [virtual networks](../../virtual-network/concepts-and-best-practices.md)
-* Learn about [private DNS zones](../../dns/private-dns-overview.md)
+* Learn about [private endpoints](/azure/private-link/private-endpoint-overview)
+* Learn about [virtual networks](/azure/virtual-network/concepts-and-best-practices)
+* Learn about [private DNS zones](/azure/dns/private-dns-overview)

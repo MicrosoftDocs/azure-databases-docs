@@ -30,7 +30,7 @@ ms.devlang: azurecli
 - Check if Key Vault missing any of the Wrap/Unwrap/Get permission in the access policy following [Cosmos DB Customer Managed Key Documentation:](./how-to-setup-customer-managed-keys.md#add-an-access-policy)
   - If YES, regrant the access
 - In case the Multi-Tenant App used in the default identity has been mistakenly deleted
-  - If YES, follow [restore application documentation](..//active-directory/manage-apps/restore-application.md) to restore the Application.
+  - If YES, follow [restore application documentation](/azure/active-directory/manage-apps/restore-application) to restore the Application.
 - In case UserAssigned identity used in the default identity has been mistakenly deleted
   - If YES, since UserAssigned identity isn't recoverable once deleted. The customer needs to create new UserAssigned Identity to the db account, and then follow the exact same configuration steps during provision like set FedereatedCrdential with Multi-Tenant App. Finally, customer need to update the db account's default identity with the new UserAssigned identity.
     - Example:`` _az cosmosdb update --resource-group \<rg\> --name \<dbname\> --default-identity "UserAssignedIdentity=\<New\_UA\_Resource\_ID1\>&FederatedClientId=00000000-0000-0000-0000-000000000000"_.``
@@ -103,7 +103,7 @@ For Scenario 1: customer needs to follow Configure your azure key vault instance
 
 For Scenario 2: customer need to add the missing “&FederatedClientId=<00000000-0000-0000-0000-000000000000>” into the default identity.
 
-For Scenario 3: customer need to use the correct FederatedClientId or restore the multi-tenant app using [restore application documentation](..//active-directory/manage-apps/restore-application.md)
+For Scenario 3: customer need to use the correct FederatedClientId or restore the multi-tenant app using [restore application documentation](/azure/active-directory/manage-apps/restore-application)
 
 
 ___________________________________

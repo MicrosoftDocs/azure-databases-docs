@@ -40,7 +40,7 @@ This guide includes best practices for solutions built using the latest version 
 
 - You may run into connectivity/availability issues due to lack of resources on your client machine. Monitor your CPU utilization on nodes running the Azure Cosmos DB client, and scale up/out if usage is high. Also, consider running your workload using the [cluster](https://nodejs.org/api/cluster.html) module.
 - For most common cases of production workloads, we highly recommend using at least 4-cores and 8-GB memory VMs whenever possible.
-- If using a virtual machine to run your application, enable [Accelerated Networking](../../virtual-network/create-vm-accelerated-networking-powershell.md) on your VM to help with bottlenecks due to high traffic and reduce latency or CPU jitter. You might also want to consider using a higher end Virtual Machine where the max CPU usage is under 70%.
+- If using a virtual machine to run your application, enable [Accelerated Networking](/azure/virtual-network/create-vm-accelerated-networking-powershell) on your VM to help with bottlenecks due to high traffic and reduce latency or CPU jitter. You might also want to consider using a higher end Virtual Machine where the max CPU usage is under 70%.
 - By default, query results are returned in chunks of 100 items or 4 MB, whichever limit is hit first. If a query returns more than 100 items, increase the page size to reduce the number of round trips required. Memory consumption increases as page size increases.
 
 ## Next steps

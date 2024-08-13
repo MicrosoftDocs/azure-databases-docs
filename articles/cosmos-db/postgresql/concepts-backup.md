@@ -73,7 +73,7 @@ On clusters with geo-backup enabled, restore can be performed in the remote regi
 > cluster, all nodes that belong to the cluster are deleted and can't
 > be recovered. To protect cluster resources, post deployment, from
 > accidental deletion or unexpected changes, administrators can leverage
-> [management locks](../../azure-resource-manager/management/lock-resources.md).
+> [management locks](/azure/azure-resource-manager/management/lock-resources).
 
 The restore process creates a new cluster in the same or remote Azure region,
 subscription, and resource group as the original. The cluster has the
@@ -89,4 +89,4 @@ In most cases, cluster restore takes up to 1 hour.
 * See the steps to [restore a cluster](howto-restore-portal.md)
   in the Azure portal.
 * See [backup and restore limits and limitations](./reference-limits.md#backup-and-restore).
-* Learn about  [Azure availability zones](../../availability-zones/az-overview.md).
+* Learn about  [Azure availability zones](/azure/availability-zones/az-overview).

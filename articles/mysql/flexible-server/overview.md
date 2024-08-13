@@ -94,7 +94,7 @@ See [Backup concepts](concepts-backup-restore.md) for more information.
 
 To connect to Azure Database for MySQL flexible server, you have two networking options: **private access (VNet integration)** and **public access (allowed IP addresses)**.
 
-- **Private access (VNet Integration)** – You can deploy your Azure Database for MySQL flexible server instance into your [Azure Virtual Network](../../virtual-network/virtual-networks-overview.md). Azure virtual networks provide private and secure network communication. Resources in a virtual network can communicate through private IP addresses.
+- **Private access (VNet Integration)** – You can deploy your Azure Database for MySQL flexible server instance into your [Azure Virtual Network](/azure/virtual-network/virtual-networks-overview). Azure virtual networks provide private and secure network communication. Resources in a virtual network can communicate through private IP addresses.
 
   Choose the virtual network Integration option if you want the following capabilities:
 
@@ -116,7 +116,7 @@ For more information, see [Compute and Storage concepts](concepts-compute-storag
 
 MySQL is one of the popular database engines for running internet-scale web and mobile applications. Our customers use it for online education, video streaming, digital payment solutions, e-commerce platforms, gaming services, news portals, and government and healthcare websites. These services are required to serve and scale as the web or mobile application traffic increases.
 
-On the applications side, the application is typically developed in Java or PHP and migrated to run on [Azure virtual machine scale sets](../../virtual-machine-scale-sets/overview.md) or [Azure App Services](../../app-service/overview.md) or are containerized to run on [Azure Kubernetes Service (AKS)](/azure/aks/intro-kubernetes). Using a virtual machine scale set with App Service or AKS as the underlying infrastructure simplifies application scaling by instantaneously provisioning new VMs and replicating the stateless components of applications to cater to the requests, but often, the database ends up being a bottleneck as a centralized stateful component.
+On the applications side, the application is typically developed in Java or PHP and migrated to run on [Azure virtual machine scale sets](/azure/virtual-machine-scale-sets/overview) or [Azure App Services](/azure/app-service/overview) or are containerized to run on [Azure Kubernetes Service (AKS)](/azure/aks/intro-kubernetes). Using a virtual machine scale set with App Service or AKS as the underlying infrastructure simplifies application scaling by instantaneously provisioning new VMs and replicating the stateless components of applications to cater to the requests, but often, the database ends up being a bottleneck as a centralized stateful component.
 
 The read replica feature allows you to replicate data from an Azure Database for MySQL flexible server instance to a read-only server. You can replicate from the source server to **up to 10 replicas**. Replicas are updated asynchronously using the MySQL engine's native [binary log (binlog) file position-based replication technology](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html). You can use a load balancer proxy solution like [ProxySQL](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/load-balance-read-replicas-using-proxysql-in-azure-database-for/ba-p/880042) to seamlessly scale out your application workload to read replicas without any application refactoring cost.
 
@@ -149,7 +149,7 @@ Azure Database for MySQL flexible server encrypts data in-motion with transport 
 
 For more information, see [how to use encrypted connections to Azure Database for MySQL flexible server instances](how-to-connect-tls-ssl.md).
 
-Azure Database for MySQL flexible server allows full-private access to the servers using [Azure virtual network](../../virtual-network/virtual-networks-overview.md) (virtual network) integration. Servers in Azure virtual network can only be reached and connected through private IP addresses. With virtual network integration, public access is denied and servers can't be reached using public endpoints.
+Azure Database for MySQL flexible server allows full-private access to the servers using [Azure virtual network](/azure/virtual-network/virtual-networks-overview) (virtual network) integration. Servers in Azure virtual network can only be reached and connected through private IP addresses. With virtual network integration, public access is denied and servers can't be reached using public endpoints.
 
 See [Networking concepts](concepts-networking.md) for more information.
 

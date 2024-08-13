@@ -90,7 +90,7 @@ We tested the following clients:
 - **Other libpq-based clients**: Examples include common application frameworks and object-relational mappers (ORMs).
 - **pgAdmin**: Clear **Connect now** at server creation.
 
-Use the following procedures to authenticate with Microsoft Entra ID as an Azure Cosmos DB for PostgreSQL user. You can follow along in [Azure Cloud Shell](./../../cloud-shell/get-started.md), on an Azure virtual machine, or on your local machine.
+Use the following procedures to authenticate with Microsoft Entra ID as an Azure Cosmos DB for PostgreSQL user. You can follow along in [Azure Cloud Shell](/azure/cloud-shell/get-started), on an Azure virtual machine, or on your local machine.
 
 ### Sign in to the user's Azure subscription
 

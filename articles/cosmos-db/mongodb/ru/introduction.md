@@ -48,7 +48,7 @@ Cosmos DB for MongoDB (RU) has numerous benefits compared to other MongoDB servi
 
 - **Role Based Access Control**: With Azure Cosmos DB for MongoDB (RU), you can assign granular roles and permissions to users to control access to your data and audit user actions- all using native Azure tooling.
 
-- **In-depth monitoring capabilities**: Azure Cosmos DB for MongoDB (RU) integrates natively with [Azure Monitor](../../../azure-monitor/overview.md) to provide in-depth monitoring capabilities.
+- **In-depth monitoring capabilities**: Azure Cosmos DB for MongoDB (RU) integrates natively with [Azure Monitor](/azure/azure-monitor/overview) to provide in-depth monitoring capabilities.
 
 ## How Cosmos DB for MongoDB works
 

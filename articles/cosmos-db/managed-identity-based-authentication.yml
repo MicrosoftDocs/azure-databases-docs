@@ -22,7 +22,7 @@ title: |
 introduction: |
   [!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
-  In this article, you'll set up a *robust, key rotation agnostic* solution to access Azure Cosmos DB keys by using [managed identities](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md) and [data plane role-based access control](how-to-setup-rbac.md). The example in this article uses Azure Functions, but you can use any service that supports managed identities.
+  In this article, you'll set up a *robust, key rotation agnostic* solution to access Azure Cosmos DB keys by using [managed identities](/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities) and [data plane role-based access control](how-to-setup-rbac.md). The example in this article uses Azure Functions, but you can use any service that supports managed identities.
 
   You'll learn how to create a function app that can access Azure Cosmos DB data without needing to copy any Azure Cosmos DB keys. The function app will trigger when an HTTP request is made and then list all of the existing databases.
 
@@ -30,9 +30,9 @@ prerequisites:
   summary: |
     - An Azure account with an active subscription. [Create an account for free](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
     - An existing Azure Cosmos DB API for NoSQL account. [Create an Azure Cosmos DB API for NoSQL account](nosql/quickstart-portal.md)
-    - An existing Azure Functions function app. [Create your first function in the Azure portal](../azure-functions/functions-create-function-app-portal.md)
-      - A system-assigned managed identity for the function app. [Add a system-assigned identity](../app-service/overview-managed-identity.md#add-a-system-assigned-identity)
-    - [Azure Functions Core Tools](../azure-functions/functions-run-local.md)
+    - An existing Azure Functions function app. [Create your first function in the Azure portal](/azure/azure-functions/functions-create-function-app-portal)
+      - A system-assigned managed identity for the function app. [Add a system-assigned identity](/azure/app-service/overview-managed-identity#add-a-system-assigned-identity)
+    - [Azure Functions Core Tools](/azure/azure-functions/functions-run-local)
     - To perform the steps in this article, install the [Azure CLI](/cli/azure/install-azure-cli) and [sign in to Azure](/cli/azure/authenticate-azure-cli).
   
       ## Prerequisite check
@@ -132,7 +132,7 @@ procedureSection:
       In this step, you assign a role to the function app's system-assigned managed identity. Azure Cosmos DB has multiple built-in roles that you can assign to the managed identity for control-plane access. For data-plane access, you create a new custom role with access to read metadata.
 
       > [!TIP]
-      > For more information about the importance of least privilege access, see the [Lower exposure of privileged accounts](../security/fundamentals/identity-management-best-practices.md#lower-exposure-of-privileged-accounts) article.
+      > For more information about the importance of least privilege access, see the [Lower exposure of privileged accounts](/azure/security/fundamentals/identity-management-best-practices#lower-exposure-of-privileged-accounts) article.
     steps:
       - |
         Use ``az cosmosdb show`` with the **query** parameter set to ``id``. Store the result in a shell variable named ``scope``.
@@ -182,7 +182,7 @@ procedureSection:
           ```
 
           > [!TIP]
-          > You can create a file in the Azure Cloud Shell using either `touch <filename>` or the built-in editor (`code .`). For more information, see [Azure Cloud Shell editor](../cloud-shell/using-cloud-shell-editor.md)
+          > You can create a file in the Azure Cloud Shell using either `touch <filename>` or the built-in editor (`code .`). For more information, see [Azure Cloud Shell editor](/azure/cloud-shell/using-cloud-shell-editor)
       - |
         Use [``az cosmosdb sql role definition create``](/cli/azure/cosmosdb/sql/role/definition#az-cosmosdb-sql-role-definition-create) to create a new role definition named ``Read Azure Cosmos DB Metadata`` using the custom JSON object.
 
@@ -357,7 +357,7 @@ procedureSection:
           func azure functionapp publish $functionName
           ```
       - |
-        [Test your function in the Azure portal](../azure-functions/functions-create-function-app-portal.md#test-the-function).
+        [Test your function in the Azure portal](/azure/azure-functions/functions-create-function-app-portal#test-the-function).
 relatedContent:
   - text: Secure Azure Cosmos DB keys using Azure Key Vault
     url: store-credentials-key-vault.md

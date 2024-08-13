@@ -120,7 +120,7 @@ If you're encountering the "password authentication failed for user `<user-name>
   
 
 
-By following these steps, you should be able to resolve the authentication issues and successfully connect to your Azure Database for PostgreSQL - Flexible Server. If you're still facing issues after following the guidance provided, please don't hesitate to [file a support ticket](../../azure-portal/supportability/how-to-create-azure-support-request.md).
+By following these steps, you should be able to resolve the authentication issues and successfully connect to your Azure Database for PostgreSQL - Flexible Server. If you're still facing issues after following the guidance provided, please don't hesitate to [file a support ticket](/azure/azure-portal/supportability/how-to-create-azure-support-request).
 
 
 

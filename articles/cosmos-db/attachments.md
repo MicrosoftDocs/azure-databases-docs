@@ -161,7 +161,7 @@ namespace attachments
 
 ## Next steps
 
-- Get started with [Azure Blob storage](../storage/blobs/storage-quickstart-blobs-dotnet.md)
+- Get started with [Azure Blob storage](/azure/storage/blobs/storage-quickstart-blobs-dotnet)
 - Get references for using attachments via [Azure Cosmos DB's .NET SDK v2](/dotnet/api/microsoft.azure.documents.attachment)
 - Get references for using attachments via [Azure Cosmos DB's Java SDK v2](/java/api/com.microsoft.azure.documentdb.attachment)
 - Get references for using attachments via [Azure Cosmos DB's REST API](/rest/api/cosmos-db/attachments)

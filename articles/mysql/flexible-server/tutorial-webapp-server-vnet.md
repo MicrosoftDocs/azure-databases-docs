@@ -18,7 +18,7 @@ ms.devlang: azurecli
 
 [!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
-This tutorial shows you how to create and connect an Azure App Service Web App to an Azure Database for MySQL flexible server instance isolated inside same or different [virtual networks](../../virtual-network/virtual-networks-overview.md).
+This tutorial shows you how to create and connect an Azure App Service Web App to an Azure Database for MySQL flexible server instance isolated inside same or different [virtual networks](/azure/virtual-network/virtual-networks-overview).
 
 In this tutorial you will learn how to:
 >[!div class="checklist"]
@@ -126,8 +126,8 @@ az webapp config set --name mywebapp --resource-group myresourcesourcegroup --ge
 
 If you have created the App Service app and the Azure Database for MySQL flexible server instance in different virtual networks (VNets), you will need to do the following two steps to establish a seamless connection:
 
-- **Connect the two VNets using VNet peering** (local or global). See [Connect virtual networks with virtual network peering](../../virtual-network/tutorial-connect-virtual-networks-cli.md) guide.
-- **Link the Azure Database for MySQL flexible server instance's Private DNS zone to the web app's VNet using virtual network links.** If you use the Azure portal or the Azure CLI to create Azure Database for MySQL flexible server instances in a VNet, a new private DNS zone is auto-provisioned in your subscription using the server name provided. Navigate to the Azure Database for MySQL flexible server instance's private DNS zone and follow the [How to link the private DNS zone to a virtual network](../../dns/private-dns-getstarted-portal.md#link-the-virtual-network) guide to set up a virtual network link.
+- **Connect the two VNets using VNet peering** (local or global). See [Connect virtual networks with virtual network peering](/azure/virtual-network/tutorial-connect-virtual-networks-cli) guide.
+- **Link the Azure Database for MySQL flexible server instance's Private DNS zone to the web app's VNet using virtual network links.** If you use the Azure portal or the Azure CLI to create Azure Database for MySQL flexible server instances in a VNet, a new private DNS zone is auto-provisioned in your subscription using the server name provided. Navigate to the Azure Database for MySQL flexible server instance's private DNS zone and follow the [How to link the private DNS zone to a virtual network](/azure/dns/private-dns-getstarted-portal#link-the-virtual-network) guide to set up a virtual network link.
 
 ## Clean up resources
 
@@ -140,4 +140,4 @@ az group delete -n myresourcegroup
 ## Next steps
 
 > [!div class="nextstepaction"]
-> [Map an existing custom DNS name to Azure App Service](../../app-service/app-service-web-tutorial-custom-domain.md)
+> [Map an existing custom DNS name to Azure App Service](/azure/app-service/app-service-web-tutorial-custom-domain)

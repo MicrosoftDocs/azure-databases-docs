@@ -25,11 +25,11 @@ The following are the built-in roles supported by Azure Cosmos DB:
 
 |**Built-in role**  |**Description**  |
 |---------|---------|
-|[DocumentDB Account Contributor](../role-based-access-control/built-in-roles.md#documentdb-account-contributor)|Can manage Azure Cosmos DB accounts.|
-|[Cosmos DB Account Reader Role](../role-based-access-control/built-in-roles.md#cosmos-db-account-reader-role)|Can read Azure Cosmos DB account data.|
-|[CosmosBackupOperator](../role-based-access-control/built-in-roles.md#cosmosbackupoperator)| Can submit a restore request in the Azure portal for a periodic backup enabled database or a container. Can modify the backup interval and retention in the Azure portal. Cannot access any data or use Data Explorer.  |
-| [CosmosRestoreOperator](../role-based-access-control/built-in-roles.md#cosmosrestoreoperator) | Can perform a restore action for an Azure Cosmos DB account with continuous backup mode.|
-|[Cosmos DB Operator](../role-based-access-control/built-in-roles.md#cosmos-db-operator)|Can provision Azure Cosmos DB accounts, databases, and containers. Cannot access any data or use Data Explorer.|
+|[DocumentDB Account Contributor](/azure/role-based-access-control/built-in-roles#documentdb-account-contributor)|Can manage Azure Cosmos DB accounts.|
+|[Cosmos DB Account Reader Role](/azure/role-based-access-control/built-in-roles#cosmos-db-account-reader-role)|Can read Azure Cosmos DB account data.|
+|[CosmosBackupOperator](/azure/role-based-access-control/built-in-roles#cosmosbackupoperator)| Can submit a restore request in the Azure portal for a periodic backup enabled database or a container. Can modify the backup interval and retention in the Azure portal. Cannot access any data or use Data Explorer.  |
+| [CosmosRestoreOperator](/azure/role-based-access-control/built-in-roles#cosmosrestoreoperator) | Can perform a restore action for an Azure Cosmos DB account with continuous backup mode.|
+|[Cosmos DB Operator](/azure/role-based-access-control/built-in-roles#cosmos-db-operator)|Can provision Azure Cosmos DB accounts, databases, and containers. Cannot access any data or use Data Explorer.|
 
 ## Identity and access management (IAM)
 
@@ -40,7 +40,7 @@ The **Access control (IAM)** pane in the Azure portal is used to configure Azure
 
 ## Custom roles
 
-In addition to the built-in roles, users may also create [custom roles](../role-based-access-control/custom-roles.md) in Azure and apply these roles to service principals across all subscriptions within their Active Directory tenant. Custom roles provide users a way to create Azure role definitions with a custom set of resource provider operations. To learn which operations are available for building custom roles for Azure Cosmos DB see, [Azure Cosmos DB resource provider operations](../role-based-access-control/resource-provider-operations.md#microsoftdocumentdb)
+In addition to the built-in roles, users may also create [custom roles](/azure/role-based-access-control/custom-roles) in Azure and apply these roles to service principals across all subscriptions within their Active Directory tenant. Custom roles provide users a way to create Azure role definitions with a custom set of resource provider operations. To learn which operations are available for building custom roles for Azure Cosmos DB see, [Azure Cosmos DB resource provider operations](/azure/role-based-access-control/resource-provider-operations#microsoftdocumentdb)
 
 > [!TIP]
 > Custom roles that need to access data stored within Azure Cosmos DB or use Data Explorer in the Azure portal must have `Microsoft.DocumentDB/databaseAccounts/listKeys/*` action.
@@ -71,7 +71,7 @@ This setting will prevent any changes to any Azure Cosmos DB resource from any c
 
 - Modifying stored procedures, triggers or user-defined functions.
 
-If your applications (or users via Azure portal) perform any of these actions they will need to be migrated to execute via [ARM Templates](sql/manage-with-templates.md), [PowerShell](sql/manage-with-powershell.md), [Azure CLI](sql/manage-with-cli.md), REST, or [Azure Management Library](https://github.com/Azure-Samples/cosmos-management-net). Note that Azure Management is available in [multiple languages](../index.yml?product=featured).
+If your applications (or users via Azure portal) perform any of these actions they will need to be migrated to execute via [ARM Templates](sql/manage-with-templates.md), [PowerShell](sql/manage-with-powershell.md), [Azure CLI](sql/manage-with-cli.md), REST, or [Azure Management Library](https://github.com/Azure-Samples/cosmos-management-net). Note that Azure Management is available in [multiple languages](/azure/?product=featured).
 
 ### Set via ARM Template
 
@@ -117,7 +117,7 @@ Update-AzCosmosDBAccount -ResourceGroupName [ResourceGroupName] -Name [CosmosDBA
 
 ## Next steps
 
-- [What is Azure role-based access control (Azure RBAC)](../role-based-access-control/overview.md)
-- [Azure custom roles](../role-based-access-control/custom-roles.md)
-- [Azure Cosmos DB resource provider operations](../role-based-access-control/resource-provider-operations.md#microsoftdocumentdb)
+- [What is Azure role-based access control (Azure RBAC)](/azure/role-based-access-control/overview)
+- [Azure custom roles](/azure/role-based-access-control/custom-roles)
+- [Azure Cosmos DB resource provider operations](/azure/role-based-access-control/resource-provider-operations#microsoftdocumentdb)
 - [Configure role-based access control for your Azure Cosmos DB for MongoDB](mongodb/how-to-setup-rbac.md)

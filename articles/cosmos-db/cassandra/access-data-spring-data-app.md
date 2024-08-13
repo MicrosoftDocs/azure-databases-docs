@@ -128,7 +128,7 @@ Browse to the directory that contains the .pom file to build and test the applic
 To learn more about Spring and Azure, continue to the Spring on Azure documentation center.
 
 > [!div class="nextstepaction"]
-> [Spring on Azure](../../index.yml)
+> [Spring on Azure](/azure/)
 
 ### Additional Resources
 

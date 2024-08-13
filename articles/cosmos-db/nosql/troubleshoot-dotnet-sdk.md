@@ -59,14 +59,14 @@ See our guide to [designing resilient applications with Azure Cosmos DB SDKs](co
 
 ### SNAT
 
-If your app is deployed on [Azure Virtual Machines without a public IP address](../../load-balancer/load-balancer-outbound-connections.md), by default [Azure SNAT ports](../../load-balancer/load-balancer-outbound-connections.md#preallocatedports) establish connections to any endpoint outside of your VM. The number of connections allowed from the VM to the Azure Cosmos DB endpoint is limited by the [Azure SNAT configuration](../../load-balancer/load-balancer-outbound-connections.md#preallocatedports). This situation can lead to connection throttling, connection closure, or the above mentioned [Request timeouts](troubleshoot-dotnet-sdk-request-timeout.md).
+If your app is deployed on [Azure Virtual Machines without a public IP address](/azure/load-balancer/load-balancer-outbound-connections), by default [Azure SNAT ports](/azure/load-balancer/load-balancer-outbound-connections#preallocatedports) establish connections to any endpoint outside of your VM. The number of connections allowed from the VM to the Azure Cosmos DB endpoint is limited by the [Azure SNAT configuration](/azure/load-balancer/load-balancer-outbound-connections#preallocatedports). This situation can lead to connection throttling, connection closure, or the above mentioned [Request timeouts](troubleshoot-dotnet-sdk-request-timeout.md).
 
  Azure SNAT ports are used only when your VM has a private IP address is connecting to a public IP address. There are two workarounds to avoid Azure SNAT limitation (provided you already are using a single client instance across the entire application):
 
-* Add your Azure Cosmos DB service endpoint to the subnet of your Azure Virtual Machines virtual network. For more information, see [Azure Virtual Network service endpoints](../../virtual-network/virtual-network-service-endpoints-overview.md).
+* Add your Azure Cosmos DB service endpoint to the subnet of your Azure Virtual Machines virtual network. For more information, see [Azure Virtual Network service endpoints](/azure/virtual-network/virtual-network-service-endpoints-overview).
 
     When the service endpoint is enabled, the requests are no longer sent from a public IP to Azure Cosmos DB. Instead, the virtual network and subnet identity are sent. This change might result in firewall drops if only public IPs are allowed. If you use a firewall, when you enable the service endpoint, add a subnet to the firewall by using [Virtual Network ACLs](/previous-versions/azure/virtual-network/virtual-networks-acl).
-* Assign a [public IP to your Azure VM](../../load-balancer/troubleshoot-outbound-connection.md#configure-an-individual-public-ip-on-vm).
+* Assign a [public IP to your Azure VM](/azure/load-balancer/troubleshoot-outbound-connection#configure-an-individual-public-ip-on-vm).
 
 ### High network latency
 

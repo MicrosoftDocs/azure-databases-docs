@@ -29,7 +29,7 @@ The script in this article demonstrates performing resource lock operations for 
 
 - This script requires Azure CLI version 2.12.1 or later.
 
-  - You can run the script in the Bash environment in [Azure Cloud Shell](../../../../cloud-shell/get-started.md). When Cloud Shell opens, make sure **Bash** appears in the environment field at the upper left of the shell window. Cloud Shell always has the latest version of Azure CLI.
+  - You can run the script in the Bash environment in [Azure Cloud Shell](/azure/cloud-shell/get-started). When Cloud Shell opens, make sure **Bash** appears in the environment field at the upper left of the shell window. Cloud Shell always has the latest version of Azure CLI.
 
     :::image type="icon" source="~/reusable-content/ce-skilling/azure/media/cloud-shell/launch-cloud-shell-button.png" alt-text="Button to launch the Azure Cloud Shell." border="false" link="https://shell.azure.com":::
 
@@ -66,7 +66,7 @@ az group delete --name $resourceGroup
 ## Next steps
 
 - [Prevent Azure Cosmos DB resources from being deleted or changed](../../../resource-locks.md)
-- [Lock resources to prevent unexpected changes](../../../../azure-resource-manager/management/lock-resources.md)
+- [Lock resources to prevent unexpected changes](/azure/azure-resource-manager/management/lock-resources)
 - [How to audit Azure Cosmos DB control plane operations](../../../audit-control-plane-logs.md)
 - [Azure Cosmos DB CLI documentation](/cli/azure/cosmosdb)
 - [Azure Cosmos DB CLI GitHub repository](https://github.com/Azure-Samples/azure-cli-samples/tree/master/cosmosdb)

@@ -29,7 +29,7 @@ This quickstart shows how to get started with the Azure Cosmos DB for Table from
 > [!NOTE]
 > The [example code snippets](https://github.com/Azure-Samples/cosmos-db-table-api-dotnet-samples) are available on GitHub as a .NET project.
 
-[API for Table reference documentation](../../storage/tables/index.yml) | [Azure.Data.Tables Package (NuGet)](https://www.nuget.org/packages/Azure.Data.Tables/)
+[API for Table reference documentation](/azure/storage/tables/) | [Azure.Data.Tables Package (NuGet)](https://www.nuget.org/packages/Azure.Data.Tables/)
 
 ## Prerequisites
 

@@ -28,7 +28,7 @@ Sign in to the [Azure portal](https://portal.azure.com). Enter your credentials 
 
 ## Create an Azure Database for MySQL flexible server instance
 
-You create an Azure Database for MySQL flexible server instance with a defined set of [compute and storage resources](./concepts-compute-storage.md). You create the server within an [Azure resource group](../../azure-resource-manager/management/overview.md).
+You create an Azure Database for MySQL flexible server instance with a defined set of [compute and storage resources](./concepts-compute-storage.md). You create the server within an [Azure resource group](/azure/azure-resource-manager/management/overview).
 
 Complete these steps to create an Azure Database for MySQL flexible server instance:
 

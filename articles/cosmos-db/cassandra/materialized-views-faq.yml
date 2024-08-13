@@ -92,7 +92,7 @@ sections:
       - question: |
           Can we use materialized views with customer-managed keys in Azure Cosmos DB for Apache Cassandra?
         answer: |
-          To create an account with support for both customer-managed keys and materialized views, create a [support request](../../azure-portal/supportability/how-to-create-azure-support-request.md).
+          To create an account with support for both customer-managed keys and materialized views, create a [support request](/azure/azure-portal/supportability/how-to-create-azure-support-request).
 additionalContent: |
 
   ## Next steps

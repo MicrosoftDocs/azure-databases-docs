@@ -16,20 +16,20 @@ ms.topic: how-to
 
 In this article, you create a linked service in Azure Data Factory to connect to an instance of Azure Database for PostgreSQL flexible server using a private endpoint.
 
-[Azure Data Factory](../../data-factory/introduction.md) is a fully managed, serverless data integration service built to orchestrate and operationalize complex hybrid extract-transform-load (ETL), extract-load-transform (ELT), and data integration projects. An Azure [integration runtime](../../data-factory/concepts-integration-runtime.md#azure-integration-runtime) supports connecting to data stores and compute services with public accessible endpoints. If you enable the managed virtual network feature of an Azure integration runtime, it supports connecting to data stores using Azure Private Link service in private network environments.
+[Azure Data Factory](/azure/data-factory/introduction) is a fully managed, serverless data integration service built to orchestrate and operationalize complex hybrid extract-transform-load (ETL), extract-load-transform (ELT), and data integration projects. An Azure [integration runtime](/azure/data-factory/concepts-integration-runtime#azure-integration-runtime) supports connecting to data stores and compute services with public accessible endpoints. If you enable the managed virtual network feature of an Azure integration runtime, it supports connecting to data stores using Azure Private Link service in private network environments.
 
-Data Factory offers an [Azure Database for PostgreSQL](../../data-factory/connector-azure-database-for-postgresql.md) connector with [support for various capabilities](../../data-factory/connector-azure-database-for-postgresql.md#supported-capabilities), depending on the integration runtime selected.
+Data Factory offers an [Azure Database for PostgreSQL](/azure/data-factory/connector-azure-database-for-postgresql) connector with [support for various capabilities](/azure/data-factory/connector-azure-database-for-postgresql#supported-capabilities), depending on the integration runtime selected.
 
 ## Prerequisites
 
 - An Azure Database for PostgreSQL flexible server instance with its network connectivity method configured as **Public access (allowed IP addresses)** so that you can create [private endpoints](../flexible-server/concepts-networking-private-link.md) to connect to it privately using Azure Private Link.
-- An Azure integration runtime [created within a managed virtual network](../../data-factory/managed-virtual-network-private-endpoint.md).
+- An Azure integration runtime [created within a managed virtual network](/azure/data-factory/managed-virtual-network-private-endpoint).
 
 ## Create a private endpoint in Data Factory
 
-Using the [Azure Database for PostgreSQL connector](../../data-factory/connector-azure-database-for-postgresql.md) you can connect to an instance of Azure Database for PostgreSQL flexible server routing all traffic privately, through a managed private endpoint.
+Using the [Azure Database for PostgreSQL connector](/azure/data-factory/connector-azure-database-for-postgresql) you can connect to an instance of Azure Database for PostgreSQL flexible server routing all traffic privately, through a managed private endpoint.
 
-You can create the managed private endpoint using the user interface provided for such purpose in the **Managed private endpoints** option, under the **Security** section of the **Manage** hub of [Azure Data Factory Studio](https://adf.azure.com), as described in [managed private endpoints](../../data-factory/managed-virtual-network-private-endpoint.md#managed-private-endpoints). As an alternative, you can use the corresponding Azure CLI command, [az datafactory managed-private-endpoint create](/cli/azure/datafactory/managed-private-endpoint), to create a managed private endpoint in Azure Data Factory.
+You can create the managed private endpoint using the user interface provided for such purpose in the **Managed private endpoints** option, under the **Security** section of the **Manage** hub of [Azure Data Factory Studio](https://adf.azure.com), as described in [managed private endpoints](/azure/data-factory/managed-virtual-network-private-endpoint#managed-private-endpoints). As an alternative, you can use the corresponding Azure CLI command, [az datafactory managed-private-endpoint create](/cli/azure/datafactory/managed-private-endpoint), to create a managed private endpoint in Azure Data Factory.
 
 After successfully provisioned, the managed private endpoint shows like this in the **Managed private endpoints** page of [Azure Data Factory Studio](https://adf.azure.com):
 

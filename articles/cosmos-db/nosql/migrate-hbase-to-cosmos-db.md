@@ -358,9 +358,9 @@ The following flowchart uses some conditions to reach the available data migrati
 
 This option is suitable for large datasets. The Azure Cosmos DB Bulk Executor library is used. There are no checkpoints, so if you encounter any issues during the migration you will have to restart the migration process from the beginning. You can also use Data Factory's self-hosted integration runtime to connect to your on-premises HBase, or deploy Data Factory to a Managed VNET and connect to your on-premises network via VPN or ExpressRoute.
 
-Data Factory's Copy activity supports HBase as a data source. See the [Copy data from HBase using Azure Data Factory](../../data-factory/connector-hbase.md) article for more details.
+Data Factory's Copy activity supports HBase as a data source. See the [Copy data from HBase using Azure Data Factory](/azure/data-factory/connector-hbase) article for more details.
 
-You can specify Azure Cosmos DB (API for NoSQL) as the destination for your data. See the [Copy and transform data in Azure Cosmos DB (API for NoSQL) by using Azure Data Factory](../../data-factory/connector-azure-cosmos-db.md) article for more details.
+You can specify Azure Cosmos DB (API for NoSQL) as the destination for your data. See the [Copy and transform data in Azure Cosmos DB (API for NoSQL) by using Azure Data Factory](/azure/data-factory/connector-azure-cosmos-db) article for more details.
 
 :::image type="content" source="./media/migrate-hbase-to-cosmos-db/data-migration-hbase-azure-data-factory.png" alt-text="Architecture for migrating data from on-premises to Azure Cosmos DB using Data Factory.":::
 
@@ -457,8 +457,8 @@ It writes in parallel at high speed, its performance is high. On the other hand,
 
 Phoenix is supported as a Data Factory data source. Refer to the following documents for detailed steps.
 
-* [Copy data from Phoenix using Azure Data Factory](../../data-factory/connector-phoenix.md)
-* [Copy data from HBase using Azure Data Factory](../../data-factory/connector-hbase.md)
+* [Copy data from Phoenix using Azure Data Factory](/azure/data-factory/connector-phoenix)
+* [Copy data from HBase using Azure Data Factory](/azure/data-factory/connector-hbase)
 
 ## Migrate your code
 

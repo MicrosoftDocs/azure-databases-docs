@@ -16,14 +16,14 @@ ms.topic: how-to
 
 # Integrate Azure Database for PostgreSQL with Azure Machine Learning Services
 
-Azure AI extension gives the ability to invoke any machine learning models deployed on [Azure Machine Learning online endpoints](../../machine-learning/concept-endpoints-online.md) from within SQL. These models can be from the Azure Machine Learning catalog or custom models that are trained and deployed.
+Azure AI extension gives the ability to invoke any machine learning models deployed on [Azure Machine Learning online endpoints](/azure/machine-learning/concept-endpoints-online) from within SQL. These models can be from the Azure Machine Learning catalog or custom models that are trained and deployed.
 
 ## Prerequisites
 
 - [Enable and configure](generative-ai-azure-overview.md#enable-the-azure_ai-extension) the `azure_ai` extension.
-- Create a machine learning workspace and [deploy a model with an online endpoint](../../machine-learning/how-to-deploy-online-endpoints.md) using CLI, Python, or Azure Machine Learning studio or [deploy an mlflow model to an online endpoint](../../machine-learning/how-to-deploy-mlflow-models-online-endpoints.md).
+- Create a machine learning workspace and [deploy a model with an online endpoint](/azure/machine-learning/how-to-deploy-online-endpoints) using CLI, Python, or Azure Machine Learning studio or [deploy an mlflow model to an online endpoint](/azure/machine-learning/how-to-deploy-mlflow-models-online-endpoints).
 - Make sure that the status of the deployment to ensure the model was deployed successfully and test the model invoking the endpoint to ensure the model runs successfully.
-- Get the [URI](../../machine-learning/how-to-authenticate-online-endpoint.md#get-the-scoring-uri-for-the-endpoint) and the [Key](../../machine-learning/how-to-authenticate-online-endpoint.md#get-the-key-or-token-for-data-plane-operations), which are needed to configure the extension to communicate with Azure Machine Learning.
+- Get the [URI](/azure/machine-learning/how-to-authenticate-online-endpoint#get-the-scoring-uri-for-the-endpoint) and the [Key](/azure/machine-learning/how-to-authenticate-online-endpoint#get-the-key-or-token-for-data-plane-operations), which are needed to configure the extension to communicate with Azure Machine Learning.
 
 > [!NOTE]  
 > You can explore Azure Machine Learning [samples](https://github.com/Azure/azureml-examples).
@@ -39,7 +39,7 @@ select azure_ai.set_setting('azure_ml.endpoint_key', '<Key>');
 
 ### `azure_ml.invoke`
 
-Scores the input data invoking an Azure Machine Learning model deployment on an [online endpoint](../../machine-learning/how-to-authenticate-online-endpoint.md).
+Scores the input data invoking an Azure Machine Learning model deployment on an [online endpoint](/azure/machine-learning/how-to-authenticate-online-endpoint).
 
 ```sql
 azure_ml.invoke(input_data jsonb, timeout_ms integer DEFAULT NULL, throw_on_error boolean DEFAULT true, deployment_name text DEFAULT NULL)

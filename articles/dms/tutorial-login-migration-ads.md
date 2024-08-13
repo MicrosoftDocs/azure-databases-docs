@@ -70,8 +70,8 @@ Before you begin the tutorial:
   Domain federation between local Active Directory Domain Services (AD DS) and Microsoft Entra ID has to be set up by an administrator. This configuration is required so that the on-premises Windows users can be synced with the company Microsoft Entra ID. The login migrations process would then be able to create an external login for the corresponding Microsoft Entra user in the target managed instance. 
   
   In case the domain federation hasn't been set up yet in your Microsoft Entra tenant, the administrator can refer to the following links to get started:
-    - [Tutorial: Basic Active Directory environment](../active-directory/cloud-sync/tutorial-basic-ad-azure.md)
-    - [Tutorial: Integrate a single forest with a single Microsoft Entra tenant](../active-directory/cloud-sync/tutorial-single-forest.md)
+    - [Tutorial: Basic Active Directory environment](/azure/active-directory/cloud-sync/tutorial-basic-ad-azure)
+    - [Tutorial: Integrate a single forest with a single Microsoft Entra tenant](/azure/active-directory/cloud-sync/tutorial-single-forest)
     - [Provision Microsoft Entra admin (SQL Managed Instance)](/azure/azure-sql/database/authentication-aad-configure#provision-azure-ad-admin-sql-managed-instance)  
 
 - Windows account migrations are supported **only for Azure SQL Managed Instance targets**. The Login Migration wizard will show you a prompt, where you have to enter the Microsoft Entra domain name to convert the Windows users to their Microsoft Entra versions. 

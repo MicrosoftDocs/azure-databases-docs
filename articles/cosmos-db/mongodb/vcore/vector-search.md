@@ -17,7 +17,7 @@ ms.date: 11/1/2023
 
 [!INCLUDE[MongoDB vCore](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 
-Use the Integrated Vector Database in Azure Cosmos DB for MongoDB vCore to seamlessly connect your AI-based applications with your data that's stored in Azure Cosmos DB. This integration can include apps that you built by using [Azure OpenAI embeddings](../../../ai-services/openai/tutorials/embeddings.md). The natively integrated vector database enables you to efficiently store, index, and query high-dimensional vector data that's stored directly in Azure Cosmos DB for MongoDB vCore, along with the original data from which the vector data is created. It eliminates the need to transfer your data to alternative vector stores and incur additional costs.
+Use the Integrated Vector Database in Azure Cosmos DB for MongoDB vCore to seamlessly connect your AI-based applications with your data that's stored in Azure Cosmos DB. This integration can include apps that you built by using [Azure OpenAI embeddings](/azure/ai-services/openai/tutorials/embeddings). The natively integrated vector database enables you to efficiently store, index, and query high-dimensional vector data that's stored directly in Azure Cosmos DB for MongoDB vCore, along with the original data from which the vector data is created. It eliminates the need to transfer your data to alternative vector stores and incur additional costs.
 
 ## What is a vector store?
 
@@ -25,7 +25,7 @@ A vector store or [vector database](../../vector-database.md) is a database desi
 
 ## How does a vector store work?
 
-In a vector store, vector search algorithms are used to index and query embeddings. Some well-known vector search algorithms include Hierarchical Navigable Small World (HNSW), Inverted File (IVF), DiskANN, etc. Vector search is a method that helps you find similar items based on their data characteristics rather than by exact matches on a property field. This technique is useful in applications such as searching for similar text, finding related images, making recommendations, or even detecting anomalies. It is used to query the [vector embeddings](../../../ai-services/openai/concepts/understand-embeddings.md) (lists of numbers) of your data that you created by using a machine learning model by using an embeddings API. Examples of embeddings APIs are [Azure OpenAI Embeddings](/azure/ai-services/openai/how-to/embeddings) or [Hugging Face on Azure](https://azure.microsoft.com/solutions/hugging-face-on-azure/). Vector search measures the distance between the data vectors and your query vector. The data vectors that are closest to your query vector are the ones that are found to be most similar semantically.
+In a vector store, vector search algorithms are used to index and query embeddings. Some well-known vector search algorithms include Hierarchical Navigable Small World (HNSW), Inverted File (IVF), DiskANN, etc. Vector search is a method that helps you find similar items based on their data characteristics rather than by exact matches on a property field. This technique is useful in applications such as searching for similar text, finding related images, making recommendations, or even detecting anomalies. It is used to query the [vector embeddings](/azure/ai-services/openai/concepts/understand-embeddings) (lists of numbers) of your data that you created by using a machine learning model by using an embeddings API. Examples of embeddings APIs are [Azure OpenAI Embeddings](/azure/ai-services/openai/how-to/embeddings) or [Hugging Face on Azure](https://azure.microsoft.com/solutions/hugging-face-on-azure/). Vector search measures the distance between the data vectors and your query vector. The data vectors that are closest to your query vector are the ones that are found to be most similar semantically.
 
 In the Integrated Vector Database in Azure Cosmos DB for MongoDB vCore, embeddings can be stored, indexed, and queried alongside the original data. This approach eliminates the extra cost of replicating data in a separate pure vector database. Moreover, this architecture keeps the vector embeddings and original data together, which better facilitates multi-modal data operations, and enables greater data consistency, scale, and performance.
 
@@ -191,7 +191,7 @@ This command creates an HNSW index against the `contentVector` property in the d
 
 ### Add vectors to your database
 
-To add vectors to your database's collection, you first need to create the [embeddings](../../../ai-services/openai/concepts/understand-embeddings.md) by using your own model, [Azure OpenAI Embeddings](../../../cognitive-services/openai/tutorials/embeddings.md), or another API (such as [Hugging Face on Azure](https://azure.microsoft.com/solutions/hugging-face-on-azure/)). In this example, new documents are added through sample embeddings:
+To add vectors to your database's collection, you first need to create the [embeddings](/azure/ai-services/openai/concepts/understand-embeddings) by using your own model, [Azure OpenAI Embeddings](/azure/cognitive-services/openai/tutorials/embeddings), or another API (such as [Hugging Face on Azure](https://azure.microsoft.com/solutions/hugging-face-on-azure/)). In this example, new documents are added through sample embeddings:
 
 ```javascript
 db.exampleCollection.insertMany([
@@ -319,7 +319,7 @@ This command creates a `vector-ivf` index against the `vectorContent` property i
 
 ### Add vectors to your database
 
-To add vectors to your database's collection, you first need to create the [embeddings](../../../ai-services/openai/concepts/understand-embeddings.md) by using your own model, [Azure OpenAI Embeddings](../../../cognitive-services/openai/tutorials/embeddings.md), or another API (such as [Hugging Face on Azure](https://azure.microsoft.com/solutions/hugging-face-on-azure/)). In this example, new documents are added through sample embeddings:
+To add vectors to your database's collection, you first need to create the [embeddings](/azure/ai-services/openai/concepts/understand-embeddings) by using your own model, [Azure OpenAI Embeddings](/azure/cognitive-services/openai/tutorials/embeddings), or another API (such as [Hugging Face on Azure](https://azure.microsoft.com/solutions/hugging-face-on-azure/)). In this example, new documents are added through sample embeddings:
 
 ```javascript
 db.exampleCollection.insertMany([
@@ -433,7 +433,7 @@ In this example, `vectorIndex` is returned with all the `cosmosSearch` parameter
 ```
 
 ## Filtered vector search (preview)
-You can now execute vector searches with any supported query filter such as `$lt`, `$lte`, `$eq`, `$neq`, `$gte`, `$gt`, `$in`, `$nin`, and `$regex`. Enable the "filtering vector search" feature in the "Preview Features" tab of your Azure Subscription. Learn more about preview features [here](../../../azure-resource-manager/management/preview-features.md).
+You can now execute vector searches with any supported query filter such as `$lt`, `$lte`, `$eq`, `$neq`, `$gte`, `$gt`, `$in`, `$nin`, and `$regex`. Enable the "filtering vector search" feature in the "Preview Features" tab of your Azure Subscription. Learn more about preview features [here](/azure/azure-resource-manager/management/preview-features).
 
 First, you'll need to define an index for your filter in addition to a vector index. For example, you can define the filter index on a property  
 
@@ -494,7 +494,7 @@ Use LangChain and Azure Cosmos DB for MongoDB (vCore) to orchestrate Semantic Ca
 
 ## Summary
 
-This guide demonstrates how to create a vector index, add documents that have vector data, perform a similarity search, and retrieve the index definition. By using our integrated vector database, you can efficiently store, index, and query high-dimensional vector data directly in Azure Cosmos DB for MongoDB vCore. It enables you to unlock the full potential of your data via [vector embeddings](../../../ai-services/openai/concepts/understand-embeddings.md), and it empowers you to build more accurate, efficient, and powerful applications.
+This guide demonstrates how to create a vector index, add documents that have vector data, perform a similarity search, and retrieve the index definition. By using our integrated vector database, you can efficiently store, index, and query high-dimensional vector data directly in Azure Cosmos DB for MongoDB vCore. It enables you to unlock the full potential of your data via [vector embeddings](/azure/ai-services/openai/concepts/understand-embeddings), and it empowers you to build more accurate, efficient, and powerful applications.
 
 ## Related content
 

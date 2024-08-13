@@ -119,7 +119,7 @@ When you scale out your cloud service by adding role instances, those new instan
 
 ### Requests from virtual machines
 
-You can also use [virtual machines](https://azure.microsoft.com/services/virtual-machines/) or [virtual machine scale sets](../virtual-machine-scale-sets/overview.md) to host middle-tier services by using Azure Cosmos DB. To configure your Azure Cosmos DB account such that it allows access from virtual machines, you must configure the public IP address of the virtual machine and/or virtual machine scale set as one of the allowed IP addresses for your Azure Cosmos DB account by [configuring the IP access control policy](#configure-ip-policy).
+You can also use [virtual machines](https://azure.microsoft.com/services/virtual-machines/) or [virtual machine scale sets](/azure/virtual-machine-scale-sets/overview) to host middle-tier services by using Azure Cosmos DB. To configure your Azure Cosmos DB account such that it allows access from virtual machines, you must configure the public IP address of the virtual machine and/or virtual machine scale set as one of the allowed IP addresses for your Azure Cosmos DB account by [configuring the IP access control policy](#configure-ip-policy).
 
 You can retrieve IP addresses for virtual machines in the Azure portal, as shown in the following screenshot:
 
@@ -135,7 +135,7 @@ When you access your Azure Cosmos DB account from a computer on the internet, th
 
 To access a current list of outbound IP ranges to add to your firewall settings, please see [Download Azure IP Ranges and Service Tags](https://www.microsoft.com/download/details.aspx?id=56519).
 
-To automate the list, please see [Use the Service Tag Discovery API](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api).
+To automate the list, please see [Use the Service Tag Discovery API](/azure/virtual-network/service-tags-overview#use-the-service-tag-discovery-api).
 
 ## <a id="configure-ip-firewall-arm"></a>Configure an IP firewall by using a Resource Manager template
 

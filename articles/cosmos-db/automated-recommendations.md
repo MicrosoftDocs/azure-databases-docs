@@ -22,7 +22,7 @@ You can view recommendations for Azure Cosmos DB in the following ways:
 
    :::image type="content" source="./media/automated-recommendations/cosmos-db-pane-recommendations.png" alt-text="View recommendations from Azure Cosmos DB pane":::
 
-- You can also find the recommendations through [Azure Advisor](../advisor/advisor-overview.md) in categorized by different buckets such as cost, security, reliability, performance, and operational excellence. You can select specific subscriptions and filter by the resource type, which is **Azure Cosmos DB accounts**.  When you select a specific recommendation, it displays the actions you can take to benefit your workloads.
+- You can also find the recommendations through [Azure Advisor](/azure/advisor/advisor-overview) in categorized by different buckets such as cost, security, reliability, performance, and operational excellence. You can select specific subscriptions and filter by the resource type, which is **Azure Cosmos DB accounts**.  When you select a specific recommendation, it displays the actions you can take to benefit your workloads.
 
    :::image type="content" source="./media/automated-recommendations/advisor-pane-recommendations.png" alt-text="View recommendations from Azure Advisor pane":::
 

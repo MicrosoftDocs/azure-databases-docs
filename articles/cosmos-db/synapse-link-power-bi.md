@@ -36,9 +36,9 @@ Make sure to create the following resources before you start:
 
 * Load products data into the Azure Cosmos DB containers as described in this [batch data ingestion](https://github.com/Azure-Samples/Synapse/blob/main/Notebooks/PySpark/Synapse%20Link%20for%20Cosmos%20DB%20samples/Retail/spark-notebooks/pyspark/1CosmoDBSynapseSparkBatchIngestion.ipynb) notebook.
 
-* [Create a Synapse workspace](../synapse-analytics/quickstart-create-workspace.md) named **SynapseLinkBI**.
+* [Create a Synapse workspace](/azure/synapse-analytics/quickstart-create-workspace) named **SynapseLinkBI**.
 
-* [Connect the Azure Cosmos DB database to the Synapse workspace](../synapse-analytics/synapse-link/how-to-connect-synapse-link-cosmos-db.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json).
+* [Connect the Azure Cosmos DB database to the Synapse workspace](/azure/synapse-analytics/synapse-link/how-to-connect-synapse-link-cosmos-db?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json).
 
 ## Create a database and views
 
@@ -149,6 +149,6 @@ After you choose these options, you should see a graph like the following screen
 
 [Integrated Power BI experience in Azure Cosmos DB portal for Synapse Link enabled accounts](integrated-power-bi-synapse-link.md)
 
-[Use T-SQL to query Azure Cosmos DB data using Azure Synapse Link](../synapse-analytics/sql/query-cosmos-db-analytical-store.md)
+[Use T-SQL to query Azure Cosmos DB data using Azure Synapse Link](/azure/synapse-analytics/sql/query-cosmos-db-analytical-store)
 
-Use serverless SQL pool to [analyze Azure Open Datasets and visualize the results in Azure Synapse Studio](../synapse-analytics/sql/tutorial-data-analyst.md)
+Use serverless SQL pool to [analyze Azure Open Datasets and visualize the results in Azure Synapse Studio](/azure/synapse-analytics/sql/tutorial-data-analyst)

@@ -82,7 +82,7 @@ More Azure Cosmos DB template samples can be found in the [quickstart template g
 
    :::image type="content" source="../media/quick-create-template/resource-manager-template-portal-deployment-notification.png" alt-text="ARM template, Azure Cosmos DB integration, deploy portal notification":::
 
-The Azure portal is used to deploy the template. In addition to the Azure portal, you can also use the Azure PowerShell, Azure CLI, and REST API. To learn other deployment methods, see [Deploy templates](../../azure-resource-manager/templates/deploy-powershell.md).
+The Azure portal is used to deploy the template. In addition to the Azure portal, you can also use the Azure PowerShell, Azure CLI, and REST API. To learn other deployment methods, see [Deploy templates](/azure/azure-resource-manager/templates/deploy-powershell).
 
 ## Validate the deployment
 
@@ -137,7 +137,7 @@ Write-Host "Press [ENTER] to continue..."
 In this quickstart, you created an Azure Cosmos DB account, a database and a container by using an ARM template and validated the deployment. To learn more about Azure Cosmos DB and Azure Resource Manager, continue on to the articles below.
 
 - Read an [Overview of Azure Cosmos DB](../introduction.md)
-- Learn more about [Azure Resource Manager](../../azure-resource-manager/management/overview.md)
+- Learn more about [Azure Resource Manager](/azure/azure-resource-manager/management/overview)
 - Get other [Azure Cosmos DB Resource Manager templates](./samples-resource-manager-templates.md)
 - Trying to do capacity planning for a migration to Azure Cosmos DB? You can use information about your existing database cluster for capacity planning.
     - If all you know is the number of vcores and servers in your existing database cluster, read about [estimating request units using vCores or vCPUs](../convert-vcore-to-request-unit.md) 

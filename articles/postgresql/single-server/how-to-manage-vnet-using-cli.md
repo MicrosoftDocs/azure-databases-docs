@@ -32,12 +32,12 @@ The [az network vnet](/cli/azure/network/vnet) commands are used to configure vi
 
 To secure Azure service resources to a VNet, the user must have permission to "Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/" for the subnets being added. This permission is included in the built-in service administrator roles, by default and can be modified by creating custom roles.
 
-Learn more about [built-in roles](../../role-based-access-control/built-in-roles.md) and assigning specific permissions to [custom roles](../../role-based-access-control/custom-roles.md).
+Learn more about [built-in roles](/azure/role-based-access-control/built-in-roles) and assigning specific permissions to [custom roles](/azure/role-based-access-control/custom-roles).
 
 VNets and Azure service resources can be in the same or different subscriptions. If the VNet and Azure service resources are in different subscriptions, the resources should be under the same Active Directory (AD) tenant. Ensure that both the subscriptions have the **Microsoft.Sql** resource provider registered. For more information, see [resource-manager-registration][resource-manager-portal].
 
 > [!IMPORTANT]
-> It is highly recommended to read this article about service endpoint configurations and considerations before running the sample script below, or configuring service endpoints. **Virtual Network service endpoint:** A [Virtual Network service endpoint](../../virtual-network/virtual-network-service-endpoints-overview.md) is a subnet whose property values include one or more formal Azure service type names. VNet services endpoints use the service type name **Microsoft.Sql**, which refers to the Azure service named SQL Database. This service tag also applies to the Azure SQL Database, Azure Database for PostgreSQL and MySQL services. It is important to note when applying the **Microsoft.Sql** service tag to a VNet service endpoint it configures service endpoint traffic for all Azure Database services, including Azure SQL Database, Azure Database for PostgreSQL and Azure Database for MySQL servers on the subnet.
+> It is highly recommended to read this article about service endpoint configurations and considerations before running the sample script below, or configuring service endpoints. **Virtual Network service endpoint:** A [Virtual Network service endpoint](/azure/virtual-network/virtual-network-service-endpoints-overview) is a subnet whose property values include one or more formal Azure service type names. VNet services endpoints use the service type name **Microsoft.Sql**, which refers to the Azure service named SQL Database. This service tag also applies to the Azure SQL Database, Azure Database for PostgreSQL and MySQL services. It is important to note when applying the **Microsoft.Sql** service tag to a VNet service endpoint it configures service endpoint traffic for all Azure Database services, including Azure SQL Database, Azure Database for PostgreSQL and Azure Database for MySQL servers on the subnet.
 
 ## Sample script
 
@@ -57,4 +57,4 @@ VNets and Azure service resources can be in the same or different subscriptions.
    ```
 
 <!-- Link references, to text, Within this same GitHub repo. -->
-[resource-manager-portal]: ../../azure-resource-manager/management/resource-providers-and-types.md
+[resource-manager-portal]: /azure/azure-resource-manager/management/resource-providers-and-types

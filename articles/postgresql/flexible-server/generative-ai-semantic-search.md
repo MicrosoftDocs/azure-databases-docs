@@ -33,9 +33,9 @@ Building semantic search capability on your data using GenAI and Flexible Server
 
 1. Create an Open AI account and [request access to Azure OpenAI Service](https://aka.ms/oai/access).
 1. Grant access to Azure OpenAI in the desired subscription.
-1. Grant permissions to [create Azure OpenAI resources and to deploy models](../../ai-services/openai/how-to/role-based-access-control.md). 
+1. Grant permissions to [create Azure OpenAI resources and to deploy models](/azure/ai-services/openai/how-to/role-based-access-control). 
 
-[Create and deploy an Azure OpenAI Service resource and a model](../../ai-services/openai/how-to/create-resource.md), deploy the embeddings model [text-embedding-ada-002](../../ai-services/openai/concepts/models.md#embeddings-models). Copy the deployment name as it is needed to create embeddings.
+[Create and deploy an Azure OpenAI Service resource and a model](/azure/ai-services/openai/how-to/create-resource), deploy the embeddings model [text-embedding-ada-002](/azure/ai-services/openai/concepts/models#embeddings-models). Copy the deployment name as it is needed to create embeddings.
 
 ## Enable the `azure_ai` and `pgvector` extensions
 

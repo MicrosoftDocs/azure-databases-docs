@@ -24,7 +24,7 @@ The following steps show how Azure Cosmos DB performs data backup:
 
 - Azure Cosmos DB stores these backups in Azure Blob storage whereas the actual data resides locally within Azure Cosmos DB.
 
-- To guarantee low latency, the snapshot of your backup is stored in Azure Blob storage in the same region as the current write region (or **one** of the write regions, in case you have a multi-region write configuration). For resiliency against regional disaster, each snapshot of the backup data in Azure Blob storage is again replicated to another region through geo-redundant storage (GRS). The region to which the backup is replicated is based on your source region and the regional pair associated with the source region. To learn more, see the [list of geo-redundant pairs of Azure regions](../availability-zones/cross-region-replication-azure.md) article. You can't access this backup directly. Azure Cosmos DB team restores your backup when you request through a support request.
+- To guarantee low latency, the snapshot of your backup is stored in Azure Blob storage in the same region as the current write region (or **one** of the write regions, in case you have a multi-region write configuration). For resiliency against regional disaster, each snapshot of the backup data in Azure Blob storage is again replicated to another region through geo-redundant storage (GRS). The region to which the backup is replicated is based on your source region and the regional pair associated with the source region. To learn more, see the [list of geo-redundant pairs of Azure regions](/azure/availability-zones/cross-region-replication-azure) article. You can't access this backup directly. Azure Cosmos DB team restores your backup when you request through a support request.
 
   The following image shows how an Azure Cosmos DB container with all the three primary physical partitions in West US. The container is backed up in a remote Azure Blob Storage account in West US and then replicated to East US:
 
@@ -68,7 +68,7 @@ For example, consider a scenario where Backup Retention is configured to **240 h
 
 ## Required permissions to manage retention or restoration
 
-Principals who are part of the role [CosmosdbBackupOperator](../role-based-access-control/built-in-roles.md#cosmosbackupoperator), owner, or contributor are allowed to request a restore or change the retention period.
+Principals who are part of the role [CosmosdbBackupOperator](/azure/role-based-access-control/built-in-roles#cosmosbackupoperator), owner, or contributor are allowed to request a restore or change the retention period.
 
 ## Manually managing periodic backups in Azure Cosmos DB
 
@@ -76,7 +76,7 @@ With Azure Cosmos DB API for NoSQL accounts, you can also maintain your own back
 
 ### Azure Data Factory
 
-Use [Azure Data Factory](../data-factory/connector-azure-cosmos-db.md) to move data periodically to a storage solution of your choice.
+Use [Azure Data Factory](/azure/data-factory/connector-azure-cosmos-db) to move data periodically to a storage solution of your choice.
 
 
 ### Azure Cosmos DB change feed

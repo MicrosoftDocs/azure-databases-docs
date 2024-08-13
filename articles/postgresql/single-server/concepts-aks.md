@@ -20,7 +20,7 @@ Azure Kubernetes Service (AKS) provides a managed Kubernetes cluster you can use
 
 ## Accelerated networking
 
-Use accelerated networking-enabled underlying VMs in your AKS cluster. When accelerated networking is enabled on a VM, there is lower latency, reduced jitter, and decreased CPU utilization on the VM. Learn more about how accelerated networking works, the supported OS versions, and supported VM instances for [Linux](../../virtual-network/create-vm-accelerated-networking-cli.md).
+Use accelerated networking-enabled underlying VMs in your AKS cluster. When accelerated networking is enabled on a VM, there is lower latency, reduced jitter, and decreased CPU utilization on the VM. Learn more about how accelerated networking works, the supported OS versions, and supported VM instances for [Linux](/azure/virtual-network/create-vm-accelerated-networking-cli).
 
 From November 2018, AKS supports accelerated networking on those supported VM instances. Accelerated networking is enabled by default on new AKS clusters that use those VMs.
 

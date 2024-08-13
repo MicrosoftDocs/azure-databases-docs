@@ -19,13 +19,13 @@ of every shard in a cluster. If a shard becomes unresponsive for any reason, Azu
 switches incoming connections from the failed shard to its standby. When failover
 happens promoted shards always have fresh data through synchronous replication.
 
-All primary shards in a cluster are provisioned into one [availability zone (AZ)](../../../reliability/availability-zones-overview.md)
+All primary shards in a cluster are provisioned into one [availability zone (AZ)](/azure/reliability/availability-zones-overview)
 for better latency between the shards. The standby shards are provisioned into
 another availability zone. 
 
 Even without HA enabled, each node has its own locally
 redundant storage (LRS) with three synchronous replicas maintained by Azure
-Storage service. All three replicas are located in the cluster's Azure region. If there's a single replica failure, Azure Storage service detects it and transparently re-creates failed replica. See metrics [on this page](../../../storage/common/storage-redundancy.md#summary-of-redundancy-options) for LRS storage durability.
+Storage service. All three replicas are located in the cluster's Azure region. If there's a single replica failure, Azure Storage service detects it and transparently re-creates failed replica. See metrics [on this page](/azure/storage/common/storage-redundancy#summary-of-redundancy-options) for LRS storage durability.
 
 When HA *is* enabled, Azure Cosmos DB for MongoDB vCore runs one standby shard for each primary
 shard in the cluster. Each primary and standby shard has the same compute and storage configuration. 
@@ -47,4 +47,4 @@ Once the shard failover is completed, the cluster is fully operational. The last
 ## Related content
 
 - [See how to enable high availability in Azure Cosmos DB for MongoDB vCore](./how-to-scale-cluster.md#enable-or-disable-high-availability)
-- [Learn about reliability fundamentals in Azure Cosmos DB for MongoDB vCore](../../../reliability/reliability-cosmos-mongodb.md)
+- [Learn about reliability fundamentals in Azure Cosmos DB for MongoDB vCore](/azure/reliability/reliability-cosmos-mongodb)

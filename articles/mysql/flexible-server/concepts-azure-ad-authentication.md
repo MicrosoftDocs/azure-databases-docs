@@ -46,7 +46,7 @@ Microsoft Entra authentication is a mechanism of connecting to Azure Database fo
 
 User-managed identities are required for Microsoft Entra authentication. When a User-Assigned Identity is linked to the flexible server, the Managed Identity Resource Provider (MSRP) issues a certificate internally to that identity. When the managed identity is deleted, the corresponding service principal is automatically removed.
 
-The service then uses the managed identity to request access tokens for services that support Microsoft Entra authentication. Azure Database currently supports only a User-assigned Managed Identity (UMI) for Azure Database for MySQL flexible server. For more information, see [Managed identity types](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) in Azure.
+The service then uses the managed identity to request access tokens for services that support Microsoft Entra authentication. Azure Database currently supports only a User-assigned Managed Identity (UMI) for Azure Database for MySQL flexible server. For more information, see [Managed identity types](/azure/active-directory/managed-identities-azure-resources/overview#managed-identity-types) in Azure.
 
 The following high-level diagram summarizes how authentication works using Microsoft Entra authentication with Azure Database for MySQL flexible server. The arrows indicate communication pathways.
 
@@ -73,10 +73,10 @@ Methods of authentication for accessing the flexible server include:
 
 ## Permissions
 
-The following permissions are required to allow the UMI to read from the Microsoft Graph as the server identity. Alternatively, give the UMI the [Directory Readers](../../active-directory/roles/permissions-reference.md#directory-readers) role.
+The following permissions are required to allow the UMI to read from the Microsoft Graph as the server identity. Alternatively, give the UMI the [Directory Readers](/azure/active-directory/roles/permissions-reference#directory-readers) role.
 
 > [!IMPORTANT]  
-> Only a [Global Administrator](../../active-directory/roles/permissions-reference.md#global-administrator) or [Privileged Role Administrator](../../active-directory/roles/permissions-reference.md#privileged-role-administrator) can grant these permissions.
+> Only a [Global Administrator](/azure/active-directory/roles/permissions-reference#global-administrator) or [Privileged Role Administrator](/azure/active-directory/roles/permissions-reference#privileged-role-administrator) can grant these permissions.
 
 - [User.Read.All](/graph/permissions-reference#user-permissions): Allows access to Microsoft Entra user information.
 - [GroupMember.Read.All](/graph/permissions-reference#group-permissions): Allows access to Microsoft Entra group information.

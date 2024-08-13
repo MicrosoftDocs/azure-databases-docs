@@ -13,14 +13,14 @@ ms.custom: devx-track-azurecli, devx-track-azurepowershell
 
 [!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
-By using Azure Private Link, you can connect to an Azure Cosmos DB account through a private endpoint. The private endpoint is a set of private IP addresses in a subnet within your virtual network. You can then limit access to an Azure Cosmos DB account over private IP addresses. When Private Link is combined with restrictive NSG policies, it helps reduce the risk of data exfiltration. To learn more about private endpoints, see [What is Azure Private Link?](../private-link/private-link-overview.md)
+By using Azure Private Link, you can connect to an Azure Cosmos DB account through a private endpoint. The private endpoint is a set of private IP addresses in a subnet within your virtual network. You can then limit access to an Azure Cosmos DB account over private IP addresses. When Private Link is combined with restrictive NSG policies, it helps reduce the risk of data exfiltration. To learn more about private endpoints, see [What is Azure Private Link?](/azure/private-link/private-link-overview)
 
 > [!NOTE]
 > Private Link doesn't prevent your Azure Cosmos DB endpoints from being resolved by public DNS. Filtering of incoming requests happens at application level, not transport or network level.
 
 Private Link allows users to access an Azure Cosmos DB account from within the virtual network or from any peered virtual network. Resources mapped to Private Link are also accessible on-premises over private peering through VPN or Azure ExpressRoute.
 
-You can connect to an Azure Cosmos DB account configured with Private Link by using the automatic or manual approval method. To learn more, see the [approval workflow](../private-link/private-endpoint-overview.md#access-to-a-private-link-resource-using-approval-workflow) section of the Private Link documentation.
+You can connect to an Azure Cosmos DB account configured with Private Link by using the automatic or manual approval method. To learn more, see the [approval workflow](/azure/private-link/private-endpoint-overview#access-to-a-private-link-resource-using-approval-workflow) section of the Private Link documentation.
 
 This article describes how to set up private endpoints for Azure Cosmos DB transactional store. It assumes that you're using the automatic approval method. If you're using the analytical store, see [Configure private endpoints for the analytical store](analytical-store-private-endpoints.md).
 
@@ -83,7 +83,7 @@ When you have an approved Private Link for an Azure Cosmos DB account, in the Az
 
 ## <a id="private-zone-name-mapping"></a>API types and private zone names
 
-Please review [Azure Private Endpoint DNS configuration](../private-link/private-endpoint-dns.md) for a more detailed explanation about private zones and DNS configurations for private endpoint. The following table shows the mapping between different Azure Cosmos DB account API types, supported subresources, and the corresponding private zone names. You can also access the Gremlin and API for Table accounts through the API for NoSQL, so there are two entries for these APIs. There's also an extra entry for the API for NoSQL for accounts using the [dedicated gateway](./dedicated-gateway.md).
+Please review [Azure Private Endpoint DNS configuration](/azure/private-link/private-endpoint-dns) for a more detailed explanation about private zones and DNS configurations for private endpoint. The following table shows the mapping between different Azure Cosmos DB account API types, supported subresources, and the corresponding private zone names. You can also access the Gremlin and API for Table accounts through the API for NoSQL, so there are two entries for these APIs. There's also an extra entry for the API for NoSQL for accounts using the [dedicated gateway](./dedicated-gateway.md).
 
 |Azure Cosmos DB account API type  |Supported subresources or group IDs |Private zone name  |
 |---------|---------|---------|
@@ -762,4 +762,4 @@ To learn more about Azure Cosmos DB security features, see the following article
 
 * To learn how to configure a virtual network service endpoint for your Azure Cosmos DB account, see [Configure access from virtual networks](how-to-configure-vnet-service-endpoint.md).
 
-* To learn more about Private Link, see the [Azure Private Link](../private-link/private-link-overview.md) documentation.
+* To learn more about Private Link, see the [Azure Private Link](/azure/private-link/private-link-overview) documentation.

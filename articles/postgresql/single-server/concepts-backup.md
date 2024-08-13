@@ -46,7 +46,7 @@ The backup retention period governs how far back in time a point-in-time restore
 
 ### Backup redundancy options
 
-Azure Database for PostgreSQL provides the flexibility to choose between locally redundant or geo-redundant backup storage in the General Purpose and Memory Optimized tiers. When the backups are stored in geo-redundant backup storage, an additional backup copy is replicated to a [paired region](../../availability-zones/cross-region-replication-azure.md). This provides better protection and ability to restore your server in the event of a regional disaster. The Basic tier only offers locally redundant backup storage.
+Azure Database for PostgreSQL provides the flexibility to choose between locally redundant or geo-redundant backup storage in the General Purpose and Memory Optimized tiers. When the backups are stored in geo-redundant backup storage, an additional backup copy is replicated to a [paired region](/azure/availability-zones/cross-region-replication-azure). This provides better protection and ability to restore your server in the event of a regional disaster. The Basic tier only offers locally redundant backup storage.
 
 > [!IMPORTANT]
 > Configuring locally redundant or geo-redundant storage for backup is only allowed during server create. Once the server is provisioned, you cannot change the backup storage redundancy option.
@@ -127,7 +127,7 @@ Using pg_dump allows greater flexibility in restoring data across different data
 Azure backup vaults support immutability and soft delete (preview) features, protecting your data.
 
 
-- For more information about performing a long term backup, visit the [how-to guide](../../backup/backup-azure-database-postgresql.md).
+- For more information about performing a long term backup, visit the [how-to guide](/azure/backup/backup-azure-database-postgresql).
 - Known [[LTR issues]](../../backup/backup-azure-database-postgresql-troubleshoot.md).
 
 ## Next steps

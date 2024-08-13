@@ -27,9 +27,9 @@ Recommendations are available from the **Overview** navigation sidebar in the Az
 ## Recommendation types
 
 Azure Database for MariaDB prioritizes the following types of recommendations:
-* **Performance**: To improve the speed of your MariaDB server, which includes CPU usage, memory pressure, disk utilization, and product-specific server parameters. For more information, see [Advisor Performance recommendations](../advisor/advisor-performance-recommendations.md).
-* **Reliability**: To ensure and improve the continuity of your business-critical databases: storage limit and connection limit recommendations. For more information, see [Advisor Reliability recommendations](../advisor/advisor-high-availability-recommendations.md).
-* **Cost**: To optimize and reduce your overall Azure spending: server right-sizing recommendations. For more information, see [Advisor Cost recommendations](../advisor/advisor-cost-recommendations.md).
+* **Performance**: To improve the speed of your MariaDB server, which includes CPU usage, memory pressure, disk utilization, and product-specific server parameters. For more information, see [Advisor Performance recommendations](/azure/advisor/advisor-performance-recommendations).
+* **Reliability**: To ensure and improve the continuity of your business-critical databases: storage limit and connection limit recommendations. For more information, see [Advisor Reliability recommendations](/azure/advisor/advisor-high-availability-recommendations).
+* **Cost**: To optimize and reduce your overall Azure spending: server right-sizing recommendations. For more information, see [Advisor Cost recommendations](/azure/advisor/advisor-cost-recommendations).
 
 ## Understanding your recommendations
 
@@ -38,4 +38,4 @@ Azure Database for MariaDB prioritizes the following types of recommendations:
 
 ## Next steps
 
-For more information, see [Azure Advisor Overview](../advisor/advisor-overview.md).
+For more information, see [Azure Advisor Overview](/azure/advisor/advisor-overview).

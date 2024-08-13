@@ -20,7 +20,7 @@ The change data capture feature in Azure Cosmos DB analytical store can write to
 
 :::image type="content" source="media\analytical-store-change-data-capture\overview-diagram.svg" alt-text="Diagram of the analytical store in Azure Cosmos DB and how it, with change data capture, can write to various first and third-party target services.":::
 
-For more information on supported sink types in a mapping data flow, see [data flow supported sink types](../data-factory/data-flow-sink.md#supported-sinks).
+For more information on supported sink types in a mapping data flow, see [data flow supported sink types](/azure/data-factory/data-flow-sink#supported-sinks).
 
 In addition to providing incremental data feed from analytical store to diverse targets, change data capture supports the following capabilities:
 
@@ -105,7 +105,7 @@ You can use analytical store change data capture, if you're currently using or p
 
 ### Incremental feed to analytical platform of your choice
 
-Change data capture capability enables an end-to-end analytical solution providing you with the flexibility to use Azure Cosmos DB data with any of the supported sink types. For more information on supported sink types, see [data flow supported sink types](../data-factory/data-flow-sink.md#supported-sinks). Change data capture also enables you to bring Azure Cosmos DB data into a centralized data lake and join the data with data from other diverse sources. You can flatten the data, partition it, and apply more transformations either in Azure Synapse Analytics or Azure Data Factory.
+Change data capture capability enables an end-to-end analytical solution providing you with the flexibility to use Azure Cosmos DB data with any of the supported sink types. For more information on supported sink types, see [data flow supported sink types](/azure/data-factory/data-flow-sink#supported-sinks). Change data capture also enables you to bring Azure Cosmos DB data into a centralized data lake and join the data with data from other diverse sources. You can flatten the data, partition it, and apply more transformations either in Azure Synapse Analytics or Azure Data Factory.
 
 ## Change data capture on Azure Cosmos DB for MongoDB containers
 

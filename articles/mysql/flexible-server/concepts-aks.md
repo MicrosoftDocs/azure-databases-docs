@@ -29,7 +29,7 @@ Single Server supports a single availability zone and Flexible Server supports m
 
 ## Use Accelerated networking
 
-Use accelerated networking-enabled underlying VMs in your AKS cluster. When accelerated networking is enabled on a VM, there's lower latency, reduced jitter, and decreased CPU utilization on the VM. Learn more about how accelerated networking works, the supported OS versions, and supported VM instances for [Linux](../../virtual-network/create-vm-accelerated-networking-cli.md).
+Use accelerated networking-enabled underlying VMs in your AKS cluster. When accelerated networking is enabled on a VM, there's lower latency, reduced jitter, and decreased CPU utilization on the VM. Learn more about how accelerated networking works, the supported OS versions, and supported VM instances for [Linux](/azure/virtual-network/create-vm-accelerated-networking-cli).
 
 From November 2018, AKS supports accelerated networking on those supported VM instances. Accelerated networking is enabled by default on new AKS clusters that use those VMs.
 
@@ -57,7 +57,7 @@ az network nic list --resource-group nodeResourceGroup -o table
 
 ## Use Azure premium fileshare
 
- Use [Azure premium fileshare](../../storage/files/storage-how-to-create-file-share.md?tabs=azure-portal) for persistent storage that can be used by one or many pods, and can be dynamically or statically provisioned. Azure premium fileshare gives you best performance for your application if you expect large number of I/O operations on the file storage. To learn more, see [How to enable Azure Files](/azure/aks/azure-files-dynamic-pv).
+ Use [Azure premium fileshare](/azure/storage/files/storage-how-to-create-file-share?tabs=azure-portal) for persistent storage that can be used by one or many pods, and can be dynamically or statically provisioned. Azure premium fileshare gives you best performance for your application if you expect large number of I/O operations on the file storage. To learn more, see [How to enable Azure Files](/azure/aks/azure-files-dynamic-pv).
 
 ## Next steps
 

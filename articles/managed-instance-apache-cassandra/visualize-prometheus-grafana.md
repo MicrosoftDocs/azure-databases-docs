@@ -18,7 +18,7 @@ The following tasks are required to visualize metrics:
 * Install the [Prometheus Dashboards](https://github.com/datastax/metric-collector-for-apache-cassandra#installing-the-prometheus-dashboards) onto the VM.
 
 >[!WARNING]
-> Prometheus and Grafana are open-source software and not supported as part of the Azure Managed Instance for Apache Cassandra service. Visualizing metrics in the way described below will require you to host and maintain a virtual machine as the server for both Prometheus and Grafana. The instructions below were tested only for Ubuntu Server 18.04, there is no guarantee that they will work with other linux distributions. Following this approach will entail supporting any issues that may arise, such as running out of space, or availability of the server. For a fully supported and hosted metrics experience, consider using [Azure Monitor metrics](monitor-clusters.md#azure-managed-instance-for-apache-cassandra-metrics), or alternatively [Azure Monitor partner integrations](../azure-monitor/partners.md).
+> Prometheus and Grafana are open-source software and not supported as part of the Azure Managed Instance for Apache Cassandra service. Visualizing metrics in the way described below will require you to host and maintain a virtual machine as the server for both Prometheus and Grafana. The instructions below were tested only for Ubuntu Server 18.04, there is no guarantee that they will work with other linux distributions. Following this approach will entail supporting any issues that may arise, such as running out of space, or availability of the server. For a fully supported and hosted metrics experience, consider using [Azure Monitor metrics](monitor-clusters.md#azure-managed-instance-for-apache-cassandra-metrics), or alternatively [Azure Monitor partner integrations](/azure/azure-monitor/partners).
 
 ## Deploy an Ubuntu server
 
@@ -49,7 +49,7 @@ The following tasks are required to visualize metrics:
 
    :::image type="content" source="./media/visualize-prometheus-grafana/networking.png" alt-text="Allow ports" border="true":::
 
-1. Connect to your Ubuntu server by using [Azure CLI](../virtual-machines/linux/ssh-from-windows.md#ssh-clients) or your preferred client tool to connect via SSH.
+1. Connect to your Ubuntu server by using [Azure CLI](/azure/virtual-machines/linux/ssh-from-windows#ssh-clients) or your preferred client tool to connect via SSH.
 
 1. After connecting to the VM, you have to install the metrics collector software. First, download and unzip the files:
 

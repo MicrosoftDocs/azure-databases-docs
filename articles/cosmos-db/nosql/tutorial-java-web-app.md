@@ -44,7 +44,7 @@ Before you begin this application development tutorial, you must have the follow
 
 * [Java Development Kit (JDK) 7+](/java/azure/jdk/).
 * [Eclipse IDE for Java EE Developers.](https://www.eclipse.org/downloads/packages/release/luna/sr1/eclipse-ide-java-ee-developers)
-* [An Azure Web Site with a Java runtime environment (for example, Tomcat or Jetty) enabled.](../../app-service/quickstart-java.md)
+* [An Azure Web Site with a Java runtime environment (for example, Tomcat or Jetty) enabled.](/azure/app-service/quickstart-java)
 
 If you're installing these tools for the first time, coreservlets.com provides a walk-through of the installation process in the quickstart section of their [Tutorial: Installing TomCat7 and Using it with Eclipse](https://www.youtube.com/watch?v=jOdCfW7-ybI&t=2s) article.
 
@@ -192,7 +192,7 @@ Azure Web Sites makes deploying Java applications as simple as exporting your ap
    * In the Destination box, choose a destination to save the WAR file.
    * Select **Finish**.
 
-1. Now that you have a WAR file in hand, you can simply upload it to your Azure Web Site's **webapps** directory. For instructions on uploading the file, see [Add a Java application to Azure App Service Web Apps](../../app-service/quickstart-java.md). After the WAR file is uploaded to the webapps directory, the runtime environment will detect that you've added it and will automatically load it.
+1. Now that you have a WAR file in hand, you can simply upload it to your Azure Web Site's **webapps** directory. For instructions on uploading the file, see [Add a Java application to Azure App Service Web Apps](/azure/app-service/quickstart-java). After the WAR file is uploaded to the webapps directory, the runtime environment will detect that you've added it and will automatically load it.
 
 1. To view your finished product, navigate to `http://YOUR\_SITE\_NAME.azurewebsites.net/azure-cosmos-java-sample/` and start adding your tasks!
 

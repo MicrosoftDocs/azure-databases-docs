@@ -35,7 +35,7 @@ In this tutorial, you'll learn how to:
 ## Prerequisites
 
 - [Create an Azure Database for MySQL flexible server instance](./quickstart-create-server-portal.md).
-- [Create a Log Analytics workspace](../../azure-monitor/logs/quick-create-workspace.md).
+- [Create a Log Analytics workspace](/azure/azure-monitor/logs/quick-create-workspace).
 
 
 ## Configure slow query logs by using the Azure portal 
@@ -165,13 +165,13 @@ In the workbook, you can view the following visualizations:
 
 >[!Note]
 > * To view resource utilization, you can use the Overview template.
-> * You can also edit these templates and customize them according to your requirements. For more information, see [Azure Workbooks](../../azure-monitor/visualize/workbooks-overview.md).
-> * For a quick view, you can also pin the workbooks or Log Analytics query to your Dashboard. For more information, see [Create a dashboard in the Azure portal](../../azure-portal/azure-portal-dashboards.md). 
+> * You can also edit these templates and customize them according to your requirements. For more information, see [Azure Workbooks](/azure/azure-monitor/visualize/workbooks-overview).
+> * For a quick view, you can also pin the workbooks or Log Analytics query to your Dashboard. For more information, see [Create a dashboard in the Azure portal](/azure/azure-portal/azure-portal-dashboards). 
 
 In Query Performance Insight, two metrics that can help you find potential bottlenecks are *duration* and *execution count*. Long-running queries have the greatest potential for locking resources longer, blocking other users, and limiting scalability. 
 
 In some cases, a high execution count can lead to more network round trips. Round trips affect performance. They're subject to network latency and downstream server latency. So execution count can help to find frequently executed ("chatty") queries. These queries are the best candidates for optimization. 
 
 ## Next steps
-- [Learn more about Azure Monitor workbooks](../../azure-monitor/visualize/workbooks-overview.md#visualizations) and their rich visualization options.
+- [Learn more about Azure Monitor workbooks](/azure/azure-monitor/visualize/workbooks-overview#visualizations) and their rich visualization options.
 - [Learn more about slow query logs](concepts-slow-query-logs.md).

@@ -30,7 +30,7 @@ Blob Storage into Azure Cosmos DB for PostgreSQL.
 ## Steps to set up Stream Analytics
 
 > [!NOTE]
->> This article uses [Azure IoT Hub](../../iot-hub/iot-concepts-and-iot-hub.md)
+>> This article uses [Azure IoT Hub](/azure/iot-hub/iot-concepts-and-iot-hub)
 > as an example datasource, but the technique is applicable to any other source
 > supported by Stream Analytics. Also, the following demonstration data comes from the
 > [Azure IoT Device Telemetry Simulator](https://github.com/Azure-Samples/Iot-Telemetry-Simulator). This

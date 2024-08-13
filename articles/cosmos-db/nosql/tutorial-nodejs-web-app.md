@@ -468,7 +468,7 @@ After your application succeeds locally, you can deploy it to Azure App Service.
 az webapp up --sku F1 --name <app-name>
 ```
 
-Replace <app_name> with a name that's unique across all of Azure (valid characters are a-z, 0-9, and -). A good pattern is to use a combination of your company name and an app identifier. To learn more about the app deployment, see [Node.js app deployment in Azure](../../app-service/quickstart-nodejs.md?tabs=linux&pivots=development-environment-cli#deploy-to-azure).
+Replace <app_name> with a name that's unique across all of Azure (valid characters are a-z, 0-9, and -). A good pattern is to use a combination of your company name and an app identifier. To learn more about the app deployment, see [Node.js app deployment in Azure](/azure/app-service/quickstart-nodejs?tabs=linux&pivots=development-environment-cli#deploy-to-azure).
 
 The command might take a few minutes to complete. The command provides messages about creating the resource group, the App Service plan, and the app resource, configuring logging and doing ZIP deployment. The command provides these messages while running. It then gives you a URL to launch the app at `http://<app-name>.azurewebsites.net`, which is the app's URL on Azure.
 

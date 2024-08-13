@@ -25,7 +25,7 @@ This quickstart shows you how to use [Azure CLI](/cli/azure/get-started-with-azu
 
 ## Open Azure Cloud Shell
 
-[Azure Cloud Shell](../../cloud-shell/overview.md) is a free, interactive shell that you can use to run the steps that are described in this article. In Cloud Shell, common Azure tools are preinstalled and configured to use with your account.
+[Azure Cloud Shell](/azure/cloud-shell/overview) is a free, interactive shell that you can use to run the steps that are described in this article. In Cloud Shell, common Azure tools are preinstalled and configured to use with your account.
 
 To open Cloud Shell, in the upper-right corner of a code example, select **Try it**.
 
@@ -51,7 +51,7 @@ az account set --subscription <subscription ID>
 
 ## Create an Azure Database for MySQL flexible server
 
-Create an [Azure resource group](../../azure-resource-manager/management/overview.md) by using the `az group create` command. Then create your Azure Database for MySQL flexible server inside the resource group. Be sure to provide a unique name. The following example creates a resource group named `myresourcegroup` in the `eastus2` location.
+Create an [Azure resource group](/azure/azure-resource-manager/management/overview) by using the `az group create` command. Then create your Azure Database for MySQL flexible server inside the resource group. Be sure to provide a unique name. The following example creates a resource group named `myresourcegroup` in the `eastus2` location.
 
 ```azurecli-interactive
 az group create --name myresourcegroup --location eastus2

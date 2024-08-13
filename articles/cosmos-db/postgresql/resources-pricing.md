@@ -33,15 +33,15 @@ You don't need to assign the reservation to specific clusters. An already runnin
 
 A reservation doesn't cover software, networking, or storage charges associated with the clusters. At the end of the reservation term, the billing benefit expires, and the clusters are billed at the pay-as-you go price. Reservations don't autorenew. For pricing information, see the [Azure Cosmos DB for PostgreSQL reserved capacity offering](https://azure.microsoft.com/pricing/details/cosmos-db/postgresql/).
 
-You can buy Azure Cosmos DB for PostgreSQL reserved capacity in the [Azure portal](https://portal.azure.com/). Pay for the reservation [up front or with monthly payments](../../cost-management-billing/reservations/prepare-buy-reservation.md). To buy the reserved capacity:
+You can buy Azure Cosmos DB for PostgreSQL reserved capacity in the [Azure portal](https://portal.azure.com/). Pay for the reservation [up front or with monthly payments](/azure/cost-management-billing/reservations/prepare-buy-reservation). To buy the reserved capacity:
 
 * You must be in the owner role for at least one Enterprise Agreement (EA) or individual subscription with pay-as-you-go rates.
 * For Enterprise Agreement subscriptions, **Add Reserved Instances** must be enabled in the [EA Portal](https://ea.azure.com/). Or, if that setting is disabled, you must be an Enterprise Agreement admin on the subscription.
 * For the Cloud Solution Provider (CSP) program, only the admin agents or sales agents can purchase Azure Cosmos DB for PostgreSQL reserved capacity.
 
 For information on how Enterprise Agreement customers and pay-as-you-go customers are charged for reservation purchases, see:
-- [Understand Azure reservation usage for your Enterprise Agreement enrollment](../../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)
-- [Understand Azure reservation usage for your pay-as-you-go subscription](../../cost-management-billing/reservations/understand-reserved-instance-usage.md)
+- [Understand Azure reservation usage for your Enterprise Agreement enrollment](/azure/cost-management-billing/reservations/understand-reserved-instance-usage-ea)
+- [Understand Azure reservation usage for your pay-as-you-go subscription](/azure/cost-management-billing/reservations/understand-reserved-instance-usage)
 
 ### Determine the right cluster size before purchase
 
@@ -89,7 +89,7 @@ The following table describes required fields.
 
 ### Cancel, exchange, or refund reservations
 
-You can cancel, exchange, or refund reservations with certain limitations. For more information, see [Self-service exchanges and refunds for Azure reservations](../../cost-management-billing/reservations/exchange-and-refund-azure-reservations.md).
+You can cancel, exchange, or refund reservations with certain limitations. For more information, see [Self-service exchanges and refunds for Azure reservations](/azure/cost-management-billing/reservations/exchange-and-refund-azure-reservations).
 
 ### vCore size flexibility
 
@@ -105,6 +105,6 @@ The vCore reservation discount is applied automatically to the number of cluster
 
 To learn more about Azure reservations, see the following articles:
 
-* [What are Azure reservations?](../../cost-management-billing/reservations/save-compute-costs-reservations.md)
-* [Manage Azure reservations](../../cost-management-billing/reservations/manage-reserved-vm-instance.md)
-* [Understand reservation usage for your Enterprise Agreement enrollment](../../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)
+* [What are Azure reservations?](/azure/cost-management-billing/reservations/save-compute-costs-reservations)
+* [Manage Azure reservations](/azure/cost-management-billing/reservations/manage-reserved-vm-instance)
+* [Understand reservation usage for your Enterprise Agreement enrollment](/azure/cost-management-billing/reservations/understand-reserved-instance-usage-ea)

@@ -60,4 +60,4 @@ You can also programmatically fetch Key Vault Uri using [Azure REST API](/rest/a
 ## Next steps
 
 - [Azure Database for PostgreSQL - Flexible Server encryption with customer managed key (CMK)](../flexible-server/concepts-data-encryption.md)
-- [Microsoft Entra ID](../../active-directory-domain-services/overview.md)
+- [Microsoft Entra ID](/azure/active-directory-domain-services/overview)

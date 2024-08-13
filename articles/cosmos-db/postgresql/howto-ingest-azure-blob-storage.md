@@ -28,7 +28,7 @@ SELECT * FROM create_extension('azure_storage');
 > The pg_azure_storage extension is available only on Azure Cosmos DB for
 > PostgreSQL clusters running PostgreSQL 13 and above.
 
-We've prepared a public demonstration dataset for this article. To use your own dataset, follow [migrate your on-premises data to cloud storage](../../storage/common/storage-use-azcopy-migrate-on-premises-data.md) to learn how to get your datasets efficiently into Azure Blob Storage.
+We've prepared a public demonstration dataset for this article. To use your own dataset, follow [migrate your on-premises data to cloud storage](/azure/storage/common/storage-use-azcopy-migrate-on-premises-data) to learn how to get your datasets efficiently into Azure Blob Storage.
 
 > [!NOTE]
 >

@@ -49,7 +49,7 @@ az network vnet create \
 
 ## Disable subnet private endpoint policies 
 
-Azure deploys resources to a subnet within a virtual network, so you need to create or update the subnet to disable private endpoint [network policies](../private-link/disable-private-endpoint-network-policy.md). Update a subnet configuration named *mySubnet* with [az network vnet subnet update](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update):
+Azure deploys resources to a subnet within a virtual network, so you need to create or update the subnet to disable private endpoint [network policies](/azure/private-link/disable-private-endpoint-network-policy). Update a subnet configuration named *mySubnet* with [az network vnet subnet update](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update):
 
 ```azurecli-interactive
 az network vnet subnet update \
@@ -131,7 +131,7 @@ az network private-dns record-set a add-record --record-set-name mydemoserver --
 ```
 
 > [!NOTE] 
-> The FQDN in the customer DNS setting does not resolve to the private IP configured. You will have to setup a DNS zone for the configured FQDN as shown [here](../dns/dns-operations-recordsets-portal.md).
+> The FQDN in the customer DNS setting does not resolve to the private IP configured. You will have to setup a DNS zone for the configured FQDN as shown [here](/azure/dns/dns-operations-recordsets-portal).
 
 ## Connect to a VM from the internet
 
@@ -200,7 +200,7 @@ az group delete --name myResourceGroup --yes
 
 ## Next steps
 
-Learn more about [What is Azure private endpoint](../private-link/private-endpoint-overview.md)
+Learn more about [What is Azure private endpoint](/azure/private-link/private-endpoint-overview)
 
 <!-- Link references, to text, Within this same GitHub repo. -->
-[resource-manager-portal]: ../azure-resource-manager/management/resource-providers-and-types.md
+[resource-manager-portal]: /azure/azure-resource-manager/management/resource-providers-and-types

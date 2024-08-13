@@ -34,7 +34,7 @@ In this tutorial, you'll learn how to:
 ## Prerequisites
 
 - [Create an Azure Database for MySQL flexible server instance](./quickstart-create-server-portal.md).
-- [Create a Log Analytics workspace](../../azure-monitor/logs/quick-create-workspace.md).
+- [Create a Log Analytics workspace](/azure/azure-monitor/logs/quick-create-workspace).
 
 ## Configure auditing by using the Azure portal 
 
@@ -162,8 +162,8 @@ In the workbook, you can view the following visualizations:
 :::image type="content" source="./media/tutorial-configure-audit/audit-summary.png" alt-text="Screenshot of workbook template 'Audit Connection Events'.":::
 
 >[!Note]
-> * You can also edit these templates and customize them according to your requirements. For more information, see the "Editing mode" section of [Azure Workbooks](../../azure-monitor/visualize/workbooks-overview.md).
-> * For a quick view, you can also pin the workbooks or Log Analytics query to your dashboard. For more information, see [Create a dashboard in the Azure portal](../../azure-portal/azure-portal-dashboards.md). 
+> * You can also edit these templates and customize them according to your requirements. For more information, see the "Editing mode" section of [Azure Workbooks](/azure/azure-monitor/visualize/workbooks-overview).
+> * For a quick view, you can also pin the workbooks or Log Analytics query to your dashboard. For more information, see [Create a dashboard in the Azure portal](/azure/azure-portal/azure-portal-dashboards). 
 
 The *Administrative Actions on the service* view gives you details on activity performed on the service. It helps to determine the *what, who, and when* for any write operations (PUT, POST, DELETE) that are performed on the resources in your subscription. 
 
@@ -174,5 +174,5 @@ You can use other visualizations to help you understand the details of database 
 * **Database access restriction**: Particularly important for those who've uploaded a database to the internet, and helps prevent outside sources from getting access to your database. 
 
 ## Next steps
-- [Learn more about Azure Monitor workbooks](../../azure-monitor/visualize/workbooks-overview.md#visualizations) and their rich visualization options.
+- [Learn more about Azure Monitor workbooks](/azure/azure-monitor/visualize/workbooks-overview#visualizations) and their rich visualization options.
 - [Learn more about audit logs](concepts-audit-logs.md).

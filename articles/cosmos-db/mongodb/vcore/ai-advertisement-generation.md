@@ -21,10 +21,10 @@ In this guide, we demonstrate how to create dynamic advertising content that res
 
 ## Prerequisites
 - Azure OpenAI: Let's setup the Azure OpenAI resource. Access to this service is currently available by application only. You can apply for access to Azure OpenAI by completing the form at https://aka.ms/oai/access. Once you have access, complete the following steps:
-    - Create an Azure OpenAI resource following this [quickstart](../../../ai-services/openai/how-to/create-resource.md?pivots=web-portal).
+    - Create an Azure OpenAI resource following this [quickstart](/azure/ai-services/openai/how-to/create-resource?pivots=web-portal).
     - Deploy a `completions` and an `embeddings` model 
-        - For more information on `completions`, go [here](../../../ai-services/openai/how-to/completions.md).
-        - For more information on `embeddings`, go [here](../../../ai-services/openai/how-to/embeddings.md).
+        - For more information on `completions`, go [here](/azure/ai-services/openai/how-to/completions).
+        - For more information on `embeddings`, go [here](/azure/ai-services/openai/how-to/embeddings).
     - Note down your endpoint, key, and deployment names.
 
 - Cosmos DB for MongoDB vCore resource: Let's start by creating an Azure Cosmos DB for MongoDB vCore resource for free following this [quick start](./quickstart-portal.md) guide.

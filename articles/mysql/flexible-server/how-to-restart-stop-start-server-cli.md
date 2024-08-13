@@ -89,7 +89,7 @@ az mysql flexible-server start
 To restart a server, run the `az mysql flexible-server restart` command. If you use [local context](/cli/azure/config/param-persist), you don't need to provide any arguments.
 
 >[!Note]
->If the user restarting the server is part of [custom role](../../role-based-access-control/custom-roles.md) the user should have write privilege on the server.
+>If the user restarting the server is part of [custom role](/azure/role-based-access-control/custom-roles) the user should have write privilege on the server.
 
 **Usage:**
 ```azurecli

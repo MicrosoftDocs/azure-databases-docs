@@ -361,7 +361,7 @@ For this example, we create a [``ClientSecretCredential``](/python/api/azure-ide
 
 In your *app.py*:
 
-* Get the credential information from environment variables for a service principal. You can obtain the client ID, tenant ID, and client secret when you register an application in Microsoft Entra ID. For more information about registering Microsoft Entra applications, see [Register an application with the Microsoft identity platform](../../active-directory/develop/quickstart-register-app.md).
+* Get the credential information from environment variables for a service principal. You can obtain the client ID, tenant ID, and client secret when you register an application in Microsoft Entra ID. For more information about registering Microsoft Entra applications, see [Register an application with the Microsoft identity platform](/azure/active-directory/develop/quickstart-register-app).
 
 * Import the [ClientSecretCredential](/python/api/azure-identity/azure.identity.clientsecretcredential) and create an instance with the ``TENANT_ID``, ``CLIENT_ID``, and ``CLIENT_SECRET`` environment variables as parameters.
 

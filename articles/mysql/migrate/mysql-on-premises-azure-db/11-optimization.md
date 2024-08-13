@@ -20,7 +20,7 @@ ms.topic: how-to
 
 ## Monitor hardware and query performance
 
-In addition to the audit and activity logs, the server performance can also be monitored with [Azure Metrics.](../../../azure-monitor/essentials/data-platform-metrics.md) Azure metrics are provided in a one-minute frequency and alerts can be configured from them. For more information, reference [Monitoring in Azure Database for MySQL](../../concepts-monitoring.md) for specifics on what kind of metrics that can be monitored.
+In addition to the audit and activity logs, the server performance can also be monitored with [Azure Metrics.](/azure/azure-monitor/essentials/data-platform-metrics) Azure metrics are provided in a one-minute frequency and alerts can be configured from them. For more information, reference [Monitoring in Azure Database for MySQL](../../concepts-monitoring.md) for specifics on what kind of metrics that can be monitored.
 
 As previously mentioned, monitoring metrics such as the cpu\_percent or memory\_percent can be important when deciding to upgrade the database tier. Consistently high values could indicate a tier upgrade is necessary.
 

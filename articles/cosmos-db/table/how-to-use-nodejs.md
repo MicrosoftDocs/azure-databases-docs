@@ -339,7 +339,7 @@ const tableSAS = generateTableSas('mytable', cred, {
 });
 ```
 
-The client application then uses the SAS with **AzureSASCredential** to perform operations against the table. The following example connects to the table and performs a query. See [Grant limited access to Azure Storage resources using shared access signatures (SAS)](../../storage/common/storage-sas-overview.md) article for the format of tableSAS.
+The client application then uses the SAS with **AzureSASCredential** to perform operations against the table. The following example connects to the table and performs a query. See [Grant limited access to Azure Storage resources using shared access signatures (SAS)](/azure/storage/common/storage-sas-overview) article for the format of tableSAS.
 
 ```javascript
 // Note in the following command, tablesUrl is in the format: `https://<your_storage_account_name>.table.core.windows.net` and the tableSAS is in the format: `sv=2018-03-28&si=saspolicy&tn=mytable&sig=9aCzs76n0E7y5BpEi2GvsSv433BZa22leDOZXX%2BXXIU%3D`;
@@ -395,7 +395,7 @@ tableSAS = generateTableSas("hometasks",cred,{identifier:'user2'});
 
 For more information, see the following resources.
 
-* [Microsoft Azure Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md) is a free, standalone app from Microsoft that enables you to work visually with Azure Storage data on Windows, macOS, and Linux.
+* [Microsoft Azure Storage Explorer](/azure/vs-azure-tools-storage-manage-with-storage-explorer) is a free, standalone app from Microsoft that enables you to work visually with Azure Storage data on Windows, macOS, and Linux.
 * [Azure Data Tables SDK for Node.js](https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/tables/data-tables) repository on GitHub.
-* [Create a Node.js web app in Azure](../../app-service/quickstart-nodejs.md)
-* [Build and deploy a Node.js application to an Azure Cloud Service](../../cloud-services/cloud-services-nodejs-develop-deploy-app.md) (using Windows PowerShell)
+* [Create a Node.js web app in Azure](/azure/app-service/quickstart-nodejs)
+* [Build and deploy a Node.js application to an Azure Cloud Service](/azure/cloud-services/cloud-services-nodejs-develop-deploy-app) (using Windows PowerShell)

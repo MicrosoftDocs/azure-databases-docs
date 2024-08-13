@@ -61,7 +61,7 @@ The role has no permission to create a new Database Migration Service and no per
 ```
 You can use either the Azure portal, AZ PowerShell, Azure CLI or Azure REST API to create the roles.
 
-For more information, see the articles [Create custom roles using the Azure portal](../role-based-access-control/custom-roles-portal.md) and [Azure custom roles](../role-based-access-control/custom-roles.md).
+For more information, see the articles [Create custom roles using the Azure portal](/azure/role-based-access-control/custom-roles-portal) and [Azure custom roles](/azure/role-based-access-control/custom-roles).
 
 ## Role assignment
 

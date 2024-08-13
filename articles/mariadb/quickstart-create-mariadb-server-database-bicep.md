@@ -23,7 +23,7 @@ You'll need an Azure account with an active subscription. [Create one for free](
 
 ## Review the Bicep file
 
-You create an Azure Database for MariaDB server with a defined set of compute and storage resources. To learn more, see [Azure Database for MariaDB pricing tiers](concepts-pricing-tiers.md). You create the server within an [Azure resource group](../azure-resource-manager/management/overview.md).
+You create an Azure Database for MariaDB server with a defined set of compute and storage resources. To learn more, see [Azure Database for MariaDB pricing tiers](concepts-pricing-tiers.md). You create the server within an [Azure resource group](/azure/azure-resource-manager/management/overview).
 
 <!--
 :::code language="bicep" source="~/quickstart-templates/quickstarts/microsoft.dbformariadb/managed-mariadb-with-vnet/main.bicep":::
@@ -103,4 +103,4 @@ Remove-AzResourceGroup -Name exampleRG
 For a step-by-step tutorial that guides you through the process of creating a Bicep file using Visual Studio Code, see:
 
 > [!div class="nextstepaction"]
-> [Quickstart: Create Bicep files with Visual Studio Code](../azure-resource-manager/bicep/quickstart-create-bicep-use-visual-studio-code.md)
+> [Quickstart: Create Bicep files with Visual Studio Code](/azure/azure-resource-manager/bicep/quickstart-create-bicep-use-visual-studio-code)

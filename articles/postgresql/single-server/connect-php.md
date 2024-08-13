@@ -28,7 +28,7 @@ This quickstart uses the resources created in either of these guides as a starti
 
 ## Install PHP
 
-Install PHP on your own server, or create an Azure [web app](../../app-service/overview.md) that includes PHP.
+Install PHP on your own server, or create an Azure [web app](/azure/app-service/overview) that includes PHP.
 
 ### Windows
 

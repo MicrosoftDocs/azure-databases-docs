@@ -52,7 +52,7 @@ Review the migration process. See [Perform post-restore tasks](../../concepts-ba
 
 ## Deleted servers
 
-If an administrator or bad actor deletes the server in the Azure portal or via automated methods, all backups and read replicas are deleted. it's important that [resource locks](../../../azure-resource-manager/management/lock-resources.md) are created on the Azure Database for MySQL resource group to add an extra layer of deletion prevention to the instances.
+If an administrator or bad actor deletes the server in the Azure portal or via automated methods, all backups and read replicas are deleted. it's important that [resource locks](/azure/azure-resource-manager/management/lock-resources) are created on the Azure Database for MySQL resource group to add an extra layer of deletion prevention to the instances.
 
 ## Regional failure
 
@@ -63,7 +63,7 @@ Although rare, if a regional failure occurs geo-redundant backups or a read repl
 
 ### Load balancers
 
-If the application is made up of many different instances around the world, it might not be feasible to update all of the clients. Utilize an [Azure Load Balancer](../../../load-balancer/load-balancer-overview.md) or [Application Gateway](../../../application-gateway/overview.md) to implement a seamless failover functionality. Although helpful and time-saving, these tools aren't required for regional failover capability.
+If the application is made up of many different instances around the world, it might not be feasible to update all of the clients. Utilize an [Azure Load Balancer](/azure/load-balancer/load-balancer-overview) or [Application Gateway](/azure/application-gateway/overview) to implement a seamless failover functionality. Although helpful and time-saving, these tools aren't required for regional failover capability.
 
 ## WWI scenario
 

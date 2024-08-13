@@ -126,7 +126,7 @@ The estimated time of recovery depends on several factors including the database
 > If you are restoring an Azure Database for MySQL flexible server instance configured with zone redundant high availability, the restored server is configured in the same region and zone as your primary server, and deployed as a single server in a non-HA mode. Refer to [zone redundant high availability](concepts-high-availability.md) for flexible server.
 
 > [!IMPORTANT]
-> You can recover a deleted Azure Database for MySQL flexible server resource within 5 days from the time of server deletion. For a detailed guide on how to restore a deleted server, [refer documented steps](../flexible-server/how-to-restore-dropped-server.md). To protect server resources post deployment from accidental deletion or unexpected changes, administrators can leverage [management locks](../../azure-resource-manager/management/lock-resources.md).
+> You can recover a deleted Azure Database for MySQL flexible server resource within 5 days from the time of server deletion. For a detailed guide on how to restore a deleted server, [refer documented steps](../flexible-server/how-to-restore-dropped-server.md). To protect server resources post deployment from accidental deletion or unexpected changes, administrators can leverage [management locks](/azure/azure-resource-manager/management/lock-resources).
 
 ## Geo-restore
 
@@ -166,7 +166,7 @@ Azure Backup and Azure Database for MySQL flexible server services have built an
 - In preview, LTR restore is currently available as RestoreasFiles to storage accounts. RestoreasServer capability will be added in the future.
 - Support for LTR creation and management through Azure CLI is currently not supported.
 
-For more information about performing a long-term backup, visit the [how-to guide](../../backup/backup-azure-mysql-flexible-server.md)
+For more information about performing a long-term backup, visit the [how-to guide](/azure/backup/backup-azure-mysql-flexible-server)
 
 ## On-demand backup and Export (preview)
 
@@ -218,7 +218,7 @@ For more information regarding export backup, visit the [how-to guide](../flexib
 
 - **What happens to my backups if I delete my server?**
 
-  If you delete the server, all backups that belong to the server are also deleted and can't be recovered. To protect server resources post deployment from accidental deletion or unexpected changes, administrators can use [management locks](../../azure-resource-manager/management/lock-resources.md).
+  If you delete the server, all backups that belong to the server are also deleted and can't be recovered. To protect server resources post deployment from accidental deletion or unexpected changes, administrators can use [management locks](/azure/azure-resource-manager/management/lock-resources).
 - **What happens to my backups when I restore a server?**
 
   If you restore a server, then it always results in a creation of a net new server that has been restored using original server's backups. The old backup from the original server is not copied over to the newly restored server and it remains with the original server. However, for the newly created server the first snapshot backup is scheduled immediately after a server is created and the service ensures daily automated backups are taken and stored as per configured server retention period.

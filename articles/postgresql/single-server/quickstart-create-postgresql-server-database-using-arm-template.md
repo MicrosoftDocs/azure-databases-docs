@@ -56,7 +56,7 @@ An Azure account with an active subscription. [Create one for free](https://azur
 
 ## Review the template
 
-You create an Azure Database for PostgreSQL server with a configured set of compute and storage resources. To learn more, see [Pricing tiers in Azure Database for PostgreSQL - Single Server](concepts-pricing-tiers.md). You create the server within an [Azure resource group](../../azure-resource-manager/management/overview.md).
+You create an Azure Database for PostgreSQL server with a configured set of compute and storage resources. To learn more, see [Pricing tiers in Azure Database for PostgreSQL - Single Server](concepts-pricing-tiers.md). You create the server within an [Azure resource group](/azure/azure-resource-manager/management/overview).
 
 The template used in this quickstart is from [Azure Quickstart Templates](https://azure.microsoft.com/resources/templates/managed-postgresql-with-vnet/).
 
@@ -213,10 +213,10 @@ read -p "Press [ENTER] to continue: "
 
 ## Exporting ARM template from the portal
 
-You can [export an ARM template](../../azure-resource-manager/templates/export-template-portal.md) from the Azure portal. There are two ways to export a template:
+You can [export an ARM template](/azure/azure-resource-manager/templates/export-template-portal) from the Azure portal. There are two ways to export a template:
 
-- [Export from resource group or resource](../../azure-resource-manager/templates/export-template-portal.md#export-template-from-a-resource). This option generates a new template from existing resources. The exported template is a "snapshot" of the current state of the resource group. You can export an entire resource group or specific resources within that resource group.
-- [Export before deployment or from history](../../azure-resource-manager/templates/export-template-portal.md#download-template-before-deployment). This option retrieves an exact copy of a template used for deployment.
+- [Export from resource group or resource](/azure/azure-resource-manager/templates/export-template-portal#export-template-from-a-resource). This option generates a new template from existing resources. The exported template is a "snapshot" of the current state of the resource group. You can export an entire resource group or specific resources within that resource group.
+- [Export before deployment or from history](/azure/azure-resource-manager/templates/export-template-portal#download-template-before-deployment). This option retrieves an exact copy of a template used for deployment.
 
 When exporting the template, in the ```"properties":{ }```  section of the PostgreSQL server resource you will notice that ```administratorLogin``` and ```administratorLoginPassword``` will not be included for security reasons. You **MUST** add these parameters to your template before deploying the template or the template will fail.
 
@@ -288,4 +288,4 @@ read -p "Press [ENTER] to continue: "
 For a step-by-step tutorial that guides you through the process of creating a template, see:
 
 > [!div class="nextstepaction"]
-> [Tutorial: Create and deploy your first ARM template](../../azure-resource-manager/templates/template-tutorial-create-first-template.md)
+> [Tutorial: Create and deploy your first ARM template](/azure/azure-resource-manager/templates/template-tutorial-create-first-template)

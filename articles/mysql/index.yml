@@ -141,7 +141,7 @@ landingContent:
           - text: Deploy Java Spring Boot app on AKS with Azure Database for MySQL - Flexible Server
             url: flexible-server/tutorial-deploy-springboot-on-aks-vnet.md
           - text: Deploy WordPress on App Service with Azure Database for MySQL - Flexible Server
-            url: ../app-service/quickstart-wordpress.md
+            url: /azure/app-service/quickstart-wordpress
 
 # Card 7
   - title: Troubleshoot

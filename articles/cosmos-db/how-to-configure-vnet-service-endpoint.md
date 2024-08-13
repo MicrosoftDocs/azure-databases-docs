@@ -13,7 +13,7 @@ ms.custom: devx-track-azurecli, devx-track-azurepowershell
 
 [!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
-You can configure the Azure Cosmos DB account to allow access only from a specific subnet of a virtual network (VNET). Enable [service endpoint](../virtual-network/virtual-network-service-endpoints-overview.md) on a subnet within a virtual network to control access to Azure Cosmos DB. The traffic from that subnet is sent to Azure Cosmos DB with the identity of the subnet and Virtual Network. Once the Azure Cosmos DB service endpoint is enabled, you can limit access to the subnet by adding it to your Azure Cosmos DB account.
+You can configure the Azure Cosmos DB account to allow access only from a specific subnet of a virtual network (VNET). Enable [service endpoint](/azure/virtual-network/virtual-network-service-endpoints-overview) on a subnet within a virtual network to control access to Azure Cosmos DB. The traffic from that subnet is sent to Azure Cosmos DB with the identity of the subnet and Virtual Network. Once the Azure Cosmos DB service endpoint is enabled, you can limit access to the subnet by adding it to your Azure Cosmos DB account.
 
 By default, an Azure Cosmos DB account is accessible from any source if the request is accompanied by a valid authorization token. When you add one or more subnets within VNets, only requests originating from those subnets will get a valid response. Requests originating from any other source will receive a 403 (Forbidden) response.
 
@@ -60,7 +60,7 @@ The following sections describe how to configure a virtual network service endpo
 >
 > - Subscription with virtual network: Network contributor
 > - Subscription with Azure Cosmos DB account: DocumentDB account contributor
-> - If your virtual network and Azure Cosmos DB account are in different subscriptions, make sure that the subscription that has virtual network also has `Microsoft.DocumentDB` resource provider registered. To register a resource provider, see [Azure resource providers and types](../azure-resource-manager/management/resource-providers-and-types.md) article.
+> - If your virtual network and Azure Cosmos DB account are in different subscriptions, make sure that the subscription that has virtual network also has `Microsoft.DocumentDB` resource provider registered. To register a resource provider, see [Azure resource providers and types](/azure/azure-resource-manager/management/resource-providers-and-types) article.
 >
 
 Here are the directions for registering subscription with resource provider.
@@ -371,8 +371,8 @@ No, Only Azure Resource Manager virtual networks can have service endpoint enabl
 
 This setting should only be enabled when you want your Azure Cosmos DB account to be accessible to any Azure service in any Azure region. Other Azure first party services such as Azure Data Factory and Azure AI Search provide documentation for how to secure access to data sources including Azure Cosmos DB accounts, for example:
 
-- [Azure Data Factory Managed Virtual Network](../data-factory/managed-virtual-network-private-endpoint.md)
-- [Azure AI Search Indexer access to protected resources](../search/search-indexer-securing-resources.md)
+- [Azure Data Factory Managed Virtual Network](/azure/data-factory/managed-virtual-network-private-endpoint)
+- [Azure AI Search Indexer access to protected resources](/azure/search/search-indexer-securing-resources)
 
 ## Next steps
 

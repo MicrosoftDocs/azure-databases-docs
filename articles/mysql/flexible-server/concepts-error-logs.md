@@ -15,7 +15,7 @@ ms.topic: conceptual
 [!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 In Azure Database for MySQL - Flexible Server, the error log is available to users to configure and access. Error logs in MySQL gather diagnostic messages during server startup and shutdown, and while the server is running, information that can help proactive troubleshooting. For more information about the MySQL error log, see the [Error log](https://dev.mysql.com/doc/refman/8.0/en/error-log.html) section in the MySQL documentation. 
-Under Preview phase, error logs are available under Server logs only, error logs **can't be emitted** to [Azure Diagnostic logs](./../../azure-monitor/essentials/platform-logs-overview.md).
+Under Preview phase, error logs are available under Server logs only, error logs **can't be emitted** to [Azure Diagnostic logs](/azure/azure-monitor/essentials/platform-logs-overview).
 
 In Azure Database for MySQL - Flexible Server, enabling the error log under [Server logs](./concepts-monitoring.md#server-logs) in the Azure portal records details in multiple files named using the syntax *mysql-error-servername-timestamp.log*. In the file name, the timestamp (in GMT/UTC) associated with when the file was generated is appended, identifying the specific time that that log entries were recorded. For more information, see [Server logs retention.](./concepts-monitoring.md#server-logs)
 

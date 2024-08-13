@@ -60,7 +60,7 @@ In this section, you create a Virtual Network and the subnet to host the VM used
     | Size | Leave the default **Standard DS1 v2**. |
     | **ADMINISTRATOR ACCOUNT** | |
     | Username | Enter a username of your choosing. |
-    | Password | Enter a password of your choosing. The password must be at least 12 characters long and meet the [defined complexity requirements](../../virtual-machines/windows/faq.yml?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm-). |
+    | Password | Enter a password of your choosing. The password must be at least 12 characters long and meet the [defined complexity requirements](/azure/virtual-machines/windows/faq?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm-). |
     | Confirm Password | Reenter password. |
     | **INBOUND PORT RULES** | |
     | Public inbound ports | Leave the default **None**. |
@@ -113,7 +113,7 @@ In this section, you create a Virtual Network and the subnet to host the VM used
 > [!NOTE]  
 > In some cases, the Azure Database for MySQL flexible server instance and the VNet-subnet are in different subscriptions. In these cases, you must ensure the following configurations:
 >
-> - Make sure that both subscriptions have the **Microsoft.DBforMySQL/flexibleServer** resource provider registered. For more information refer [resource-manager-registration](../../azure-resource-manager/management/resource-providers-and-types.md).
+> - Make sure that both subscriptions have the **Microsoft.DBforMySQL/flexibleServer** resource provider registered. For more information refer [resource-manager-registration](/azure/azure-resource-manager/management/resource-providers-and-types).
 
 ## Manage private endpoints on Azure Database for MySQL flexible server via the Networking tab
 
@@ -244,14 +244,14 @@ In this section, you learn how to add a private endpoint to the Azure Database f
     | Private DNS Zone | Select *(New)privatelink.mysql.database.Azure.com* |
 
   > [!NOTE]  
-  > Use your service's predefined private DNS zone or provide your preferred DNS zone name. For details, refer to the [[Azure services DNS zone configuration](../../private-link/private-endpoint-dns.md).
+  > Use your service's predefined private DNS zone or provide your preferred DNS zone name. For details, refer to the [[Azure services DNS zone configuration](/azure/private-link/private-endpoint-dns).
 
 1. Select **Review + create**. You're taken to the **Review + create** page, where Azure validates your configuration.
 
 1. When you see the **Validation passed** message, select **Create**.
 
 > [!NOTE]  
-> The FQDN in the customer's DNS setting does not resolve the private IP configured. You must set up a DNS zone for the configured FQDN as shown [here](../../dns/dns-operations-recordsets-portal.md).
+> The FQDN in the customer's DNS setting does not resolve the private IP configured. You must set up a DNS zone for the configured FQDN as shown [here](/azure/dns/dns-operations-recordsets-portal).
 
 ## Next steps
 

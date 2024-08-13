@@ -14,7 +14,7 @@ ms.date: 11/28/2023
 
 [!INCLUDE[NoSQL, MongoDB](includes/appliesto-nosql-mongodb.md)]
 
-Use Change data capture (CDC) in Azure Cosmos DB analytical store as a source to [Azure Data Factory](../data-factory/index.yml) or [Azure Synapse Analytics](../synapse-analytics/index.yml) to capture specific changes to your data.
+Use Change data capture (CDC) in Azure Cosmos DB analytical store as a source to [Azure Data Factory](/azure/data-factory/) or [Azure Synapse Analytics](/azure/synapse-analytics/) to capture specific changes to your data.
 
 
 > [!NOTE]
@@ -42,12 +42,12 @@ First, enable Azure Synapse Link at the account level and then enable analytical
 
 ## Create a target Azure resource using data flows
 
-The change data capture feature of the analytical store is available through the data flow feature of [Azure Data Factory](../data-factory/concepts-data-flow-overview.md) or [Azure Synapse Analytics](../synapse-analytics/concepts-data-flow-overview.md). For this guide, use Azure Data Factory.
+The change data capture feature of the analytical store is available through the data flow feature of [Azure Data Factory](/azure/data-factory/concepts-data-flow-overview) or [Azure Synapse Analytics](/azure/synapse-analytics/concepts-data-flow-overview). For this guide, use Azure Data Factory.
 
 > [!IMPORTANT]
-> You can alternatively use Azure Synapse Analytics. First, [create an Azure Synapse workspace](../synapse-analytics/quickstart-create-workspace.md), if you don't already have one. Within the newly created workspace, select the **Develop** tab, select **Add new resource**, and then select **Data flow**.
+> You can alternatively use Azure Synapse Analytics. First, [create an Azure Synapse workspace](/azure/synapse-analytics/quickstart-create-workspace), if you don't already have one. Within the newly created workspace, select the **Develop** tab, select **Add new resource**, and then select **Data flow**.
 
-1. [Create an Azure Data Factory](../data-factory/quickstart-create-data-factory.md), if you don't already have one.
+1. [Create an Azure Data Factory](/azure/data-factory/quickstart-create-data-factory), if you don't already have one.
 
     > [!TIP]
     > If possible, create the data factory in the same region where your Azure Cosmos DB account resides.
@@ -127,9 +127,9 @@ If you have to differentiate the TTL deleted records from documents deleted by u
   
 ## Create and configure sink settings for update and delete operations
 
-First, create a straightforward [Azure Blob Storage](../storage/blobs/index.yml) sink and then configure the sink to filter data to only specific operations.
+First, create a straightforward [Azure Blob Storage](/azure/storage/blobs/) sink and then configure the sink to filter data to only specific operations.
 
-1. [Create an Azure Blob Storage](../data-factory/quickstart-create-data-factory.md) account and container, if you don't already have one. For the next examples, we'll use an account named `msdocsblobstorage` and a container named `output`.
+1. [Create an Azure Blob Storage](/azure/data-factory/quickstart-create-data-factory) account and container, if you don't already have one. For the next examples, we'll use an account named `msdocsblobstorage` and a container named `output`.
 
     > [!TIP]
     > If possible, create the storage account in the same region where your Azure Cosmos DB account resides.
@@ -203,7 +203,7 @@ After a data flow has been published, you can add a new pipeline to move and tra
     :::image type="content" source="media/get-started-change-data-capture/output-files.png" alt-text="Screnshot of the output files from the pipeline in the Azure Blob Storage container.":::
 
     > [!NOTE]
-    > The initial cluster startup time may take up to three minutes. To avoid cluster startup time in the subsequent change data capture executions, configure the Dataflow cluster **Time to live** value. For more information about the itegration runtime and TTL, see [integration runtime in Azure Data Factory](../data-factory/concepts-integration-runtime.md).
+    > The initial cluster startup time may take up to three minutes. To avoid cluster startup time in the subsequent change data capture executions, configure the Dataflow cluster **Time to live** value. For more information about the itegration runtime and TTL, see [integration runtime in Azure Data Factory](/azure/data-factory/concepts-integration-runtime).
 
 ## Concurrent jobs
 

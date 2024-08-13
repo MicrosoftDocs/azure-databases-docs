@@ -13,7 +13,7 @@ ms.date: 12/13/2023
 
 [!INCLUDE [PostgreSQL](../includes/appliesto-postgresql.md)]
 
-[Azure Data Factory](../../data-factory/introduction.md) is a cloud-based
+[Azure Data Factory](/azure/data-factory/introduction) is a cloud-based
 [ETL](https://en.wikipedia.org/wiki/Extract,_transform,_load) and data integration service. It allows you to create data-driven workflows to move and transform data at scale.
 
 Using Data Factory, you can create and schedule data-driven workflows
@@ -46,7 +46,7 @@ In this article, you create a data pipeline by using the Data Factory
 user interface (UI). The pipeline in this data factory copies data from Azure
 Blob storage to a database. For a list of data stores
 supported as sources and sinks, see the [supported data
-stores](../../data-factory/copy-activity-overview.md#supported-data-stores-and-formats)
+stores](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats)
 table.
 
 In Data Factory, you can use the **Copy** activity to copy data among

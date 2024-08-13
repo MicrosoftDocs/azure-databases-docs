@@ -36,13 +36,13 @@ To enable resource logs using the Azure portal:
 
 7. Save your setting.
 
-To enable resource logs using PowerShell, CLI, or REST API, visit the [diagnostic settings](../../azure-monitor/essentials/diagnostic-settings.md) article.
+To enable resource logs using PowerShell, CLI, or REST API, visit the [diagnostic settings](/azure/azure-monitor/essentials/diagnostic-settings) article.
 
 ### Access resource logs
 
-The way you access the logs depends on which endpoint you choose. For Azure Storage, see the [logs storage account](../../azure-monitor/essentials/resource-logs.md#send-to-azure-storage) article. For Event Hubs, see the [stream Azure logs](../../azure-monitor/essentials/resource-logs.md#send-to-azure-event-hubs) article.
+The way you access the logs depends on which endpoint you choose. For Azure Storage, see the [logs storage account](/azure/azure-monitor/essentials/resource-logs#send-to-azure-storage) article. For Event Hubs, see the [stream Azure logs](/azure/azure-monitor/essentials/resource-logs#send-to-azure-event-hubs) article.
 
-For Azure Monitor Logs, logs are sent to the workspace you selected. The Azure Database for PostgreSQL flexible server logs use the **AzureDiagnostics** collection mode, so they can be queried from the AzureDiagnostics table. The fields in the table are described below. Learn more about querying and alerting in the [Azure Monitor Logs query](../../azure-monitor/logs/log-query-overview.md) overview.
+For Azure Monitor Logs, logs are sent to the workspace you selected. The Azure Database for PostgreSQL flexible server logs use the **AzureDiagnostics** collection mode, so they can be queried from the AzureDiagnostics table. The fields in the table are described below. Learn more about querying and alerting in the [Azure Monitor Logs query](/azure/azure-monitor/logs/log-query-overview) overview.
 
 The following are queries you can try to get started. You can configure alerts based on queries.
 
@@ -109,5 +109,5 @@ AzureDiagnostics
 
 ## Next steps
 
-- [Get started with log analytics queries](../../azure-monitor/logs/log-analytics-tutorial.md)
-- Learn about [Azure event hubs](../../event-hubs/event-hubs-about.md)
+- [Get started with log analytics queries](/azure/azure-monitor/logs/log-analytics-tutorial)
+- Learn about [Azure event hubs](/azure/event-hubs/event-hubs-about)

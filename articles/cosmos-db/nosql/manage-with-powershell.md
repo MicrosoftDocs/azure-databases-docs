@@ -835,5 +835,5 @@ Remove-AzResourceLock `
 [scaling-globally]: ../distribute-data-globally.md#EnableGlobalDistribution
 [distribute-data-globally]: ../distribute-data-globally.md
 [azure-resource-groups]: ../../azure-resource-manager/management/overview.md#resource-groups
-[azure-resource-tags]: ../../azure-resource-manager/management/tag-resources.md
+[azure-resource-tags]: /azure/azure-resource-manager/management/tag-resources
 [rp-rest-api]: /rest/api/cosmos-db-resource-provider/

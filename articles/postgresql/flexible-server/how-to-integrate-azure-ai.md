@@ -275,7 +275,7 @@ The `Argument data types` property in the output of the `\df azure_cognitive.sum
 | Argument | Type | Default | Description |
 | --- | --- | --- | --- |
 | text | `text` | | The input text to summarize. |
-| language | `text` | | A two-letter ISO 639-1 representation of the language in which the input text is written. Check [language support](../../ai-services/language-service/concepts/language-support.md) for allowed values. |
+| language | `text` | | A two-letter ISO 639-1 representation of the language in which the input text is written. Check [language support](/azure/ai-services/language-service/concepts/language-support) for allowed values. |
 | timeout_ms | `integer` | 3600000 | Timeout in milliseconds after which the operation is stopped. |
 | throw_on_error | `boolean` | true | Flag indicating whether the function should, on error, throw an exception resulting in a rollback of the wrapping transactions. |
 | sentence_count | `integer` | 3 | The maximum number of sentences to include in the generated summary. |

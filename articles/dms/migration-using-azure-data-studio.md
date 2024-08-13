@@ -122,7 +122,7 @@ The following sections walk through the prerequisites for each supported Azure S
 
 - We recommend up to 10 concurrent database migrations per self-hosted integration runtime on a single computer. To increase the number of concurrent database migrations, scale out the self-hosted runtime to up to four nodes or create separate instances of the self-hosted integration runtime on different computers.
 
-- Configure the self-hosted integration runtime to auto-update and automatically apply any new features, bug fixes, and enhancements that are released. For more information, see [Self-hosted integration runtime auto-update](../data-factory/self-hosted-integration-runtime-auto-update.md).
+- Configure the self-hosted integration runtime to auto-update and automatically apply any new features, bug fixes, and enhancements that are released. For more information, see [Self-hosted integration runtime auto-update](/azure/data-factory/self-hosted-integration-runtime-auto-update).
 
 ## Monitor database migration progress in the Azure portal
 

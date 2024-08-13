@@ -61,11 +61,11 @@ The following is some guidance for data integration for batch & streaming data i
 
 * **Batch data integration & orchestration:** With supply chains getting more complex, supply chain data platforms need to integrate with variety of data sources and formats. Microsoft Fabric and Azure Synapse come built-in with the same data integration engine and experiences as Azure Data Factory. This integration allows data engineers to create rich data pipelines without a separate orchestration engine:
 
-  * Move data from 85+ supported data sources to [Azure Cosmos DB with Azure Data Factory](../data-factory/connector-azure-cosmos-db.md).  
+  * Move data from 85+ supported data sources to [Azure Cosmos DB with Azure Data Factory](/azure/data-factory/connector-azure-cosmos-db).  
 
-  * Write code-free ETL pipelines to Azure Cosmos DB including [relational-to-hierarchical and hierarchical-to-hierarchical mappings with mapping data flows](../data-factory/how-to-sqldb-to-cosmosdb.md).
+  * Write code-free ETL pipelines to Azure Cosmos DB including [relational-to-hierarchical and hierarchical-to-hierarchical mappings with mapping data flows](/azure/data-factory/how-to-sqldb-to-cosmosdb).
 
-* **Streaming data integration & processing:** With the growth of Industrial IoT (sensors tracking assets from 'floor-to-store', connected logistics fleets, etc.), there is an explosion of real-time data being generated in a streaming fashion that needs to be integrated with traditional slow moving data for generating insights. Azure Stream Analytics is a recommended service for streaming ETL and processing on Azure with a [wide range of scenarios](../stream-analytics/streaming-technologies.md). Azure Stream Analytics supports [Azure Cosmos DB as a native data sink](../stream-analytics/stream-analytics-documentdb-output.md).
+* **Streaming data integration & processing:** With the growth of Industrial IoT (sensors tracking assets from 'floor-to-store', connected logistics fleets, etc.), there is an explosion of real-time data being generated in a streaming fashion that needs to be integrated with traditional slow moving data for generating insights. Azure Stream Analytics is a recommended service for streaming ETL and processing on Azure with a [wide range of scenarios](/azure/stream-analytics/streaming-technologies). Azure Stream Analytics supports [Azure Cosmos DB as a native data sink](/azure/stream-analytics/stream-analytics-documentdb-output).
 
 ## Real-time personalization
 

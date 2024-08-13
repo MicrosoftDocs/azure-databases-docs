@@ -12,7 +12,7 @@ ms.custom: subject-policy-compliancecontrols
 # Azure Policy Regulatory Compliance controls for Azure Cosmos DB
 [!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
-[Regulatory Compliance in Azure Policy](../governance/policy/concepts/regulatory-compliance.md)
+[Regulatory Compliance in Azure Policy](/azure/governance/policy/concepts/regulatory-compliance)
 provides Microsoft created and managed initiative definitions, known as _built-ins_, for the
 **compliance domains** and **security controls** related to different compliance standards. This
 page lists the **compliance domains** and **security controls** for Azure Cosmos DB. You can assign
@@ -25,5 +25,5 @@ with the specific standard.
 
 ## Next steps
 
-- Learn more about [Azure Policy Regulatory Compliance](../governance/policy/concepts/regulatory-compliance.md).
+- Learn more about [Azure Policy Regulatory Compliance](/azure/governance/policy/concepts/regulatory-compliance).
 - See the built-ins on the [Azure Policy GitHub repo](https://github.com/Azure/azure-policy).

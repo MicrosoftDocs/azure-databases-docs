@@ -21,13 +21,13 @@ Azure Database for PostgreSQL flexible server supports two types of mutually exc
 * Public access (allowed IP addresses). That method can be further secured by using [Private Link](./concepts-networking-private-link.md) based networking with Azure Database for PostgreSQL flexible server in Preview. 
 * Private access (VNET Integration)
 
-In this article, we focus on creation of an Azure Database for PostgreSQL flexible server instance with **Private access (VNet Integration)** using Azure CLI. With *Private access (VNET Integration)*, you can deploy your Azure Database for PostgreSQL flexible server instance into your own [Azure Virtual Network](../../virtual-network/virtual-networks-overview.md). Azure Virtual Networks provide private and secure network communication. In Private access, the connections to the Azure Database for PostgreSQL flexible server instance are restricted to only within your virtual network. To learn more about it, refer to [Private access (VNet Integration)](./concepts-networking.md#private-access-vnet-integration).
+In this article, we focus on creation of an Azure Database for PostgreSQL flexible server instance with **Private access (VNet Integration)** using Azure CLI. With *Private access (VNET Integration)*, you can deploy your Azure Database for PostgreSQL flexible server instance into your own [Azure Virtual Network](/azure/virtual-network/virtual-networks-overview). Azure Virtual Networks provide private and secure network communication. In Private access, the connections to the Azure Database for PostgreSQL flexible server instance are restricted to only within your virtual network. To learn more about it, refer to [Private access (VNet Integration)](./concepts-networking.md#private-access-vnet-integration).
 
 In Azure Database for PostgreSQL flexible server, you can only deploy the server to a virtual network and subnet during creation of the server. After the Azure Database for PostgreSQL flexible server instance is deployed to a virtual network and subnet, you can't move it to another virtual network, subnet or to *Public access (allowed IP addresses)*.
 
 ## Launch Azure Cloud Shell
 
-The [Azure Cloud Shell](../../cloud-shell/overview.md) is a free interactive shell that you can use to run the steps in this article. It has common Azure tools preinstalled and configured to use with your account.
+The [Azure Cloud Shell](/azure/cloud-shell/overview) is a free interactive shell that you can use to run the steps in this article. It has common Azure tools preinstalled and configured to use with your account.
 
 To open the Cloud Shell, just select **Try it** from the upper right corner of a code block. You can also open Cloud Shell in a separate browser tab by going to [https://shell.azure.com/bash](https://shell.azure.com/bash). Select **Copy** to copy the blocks of code, paste it into the Cloud Shell, and select **Enter** to run it.
 

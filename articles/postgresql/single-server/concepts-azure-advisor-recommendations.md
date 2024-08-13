@@ -34,9 +34,9 @@ Recommendations are available from the **Overview** navigation sidebar in the Az
 ## Recommendation types
 
 Azure Database for PostgreSQL prioritizes the following types of recommendations:
-* **Performance**: To improve the speed of your PostgreSQL server. This includes CPU usage, memory pressure, connection pooling, disk utilization, and product-specific server parameters. For more information, see [Advisor Performance recommendations](../../advisor/advisor-performance-recommendations.md).
-* **Reliability**: To ensure and improve the continuity of your business-critical databases. This includes storage limits, and connection limits. For more information, see [Advisor Reliability recommendations](../../advisor/advisor-high-availability-recommendations.md).
-* **Cost**: To optimize and reduce your overall Azure spending. This includes server right-sizing recommendations. For more information, see [Advisor Cost recommendations](../../advisor/advisor-cost-recommendations.md).
+* **Performance**: To improve the speed of your PostgreSQL server. This includes CPU usage, memory pressure, connection pooling, disk utilization, and product-specific server parameters. For more information, see [Advisor Performance recommendations](/azure/advisor/advisor-performance-recommendations).
+* **Reliability**: To ensure and improve the continuity of your business-critical databases. This includes storage limits, and connection limits. For more information, see [Advisor Reliability recommendations](/azure/advisor/advisor-high-availability-recommendations).
+* **Cost**: To optimize and reduce your overall Azure spending. This includes server right-sizing recommendations. For more information, see [Advisor Cost recommendations](/azure/advisor/advisor-cost-recommendations).
 
 ## Understanding your recommendations
 
@@ -45,4 +45,4 @@ Azure Database for PostgreSQL prioritizes the following types of recommendations
 
 ## Next steps
 
-For more information, see [Azure Advisor Overview](../../advisor/advisor-overview.md).
+For more information, see [Azure Advisor Overview](/azure/advisor/advisor-overview).

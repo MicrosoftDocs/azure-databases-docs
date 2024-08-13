@@ -23,7 +23,7 @@ In this article, we'll cover how to write more advanced queries to help troubles
 ## Prerequisites
 
 - Create [API for Cassandra account](create-account-java.md)
-- Create a [Log Analytics Workspace](../../azure-monitor/logs/quick-create-workspace.md).
+- Create a [Log Analytics Workspace](/azure/azure-monitor/logs/quick-create-workspace).
 - Create [Diagnostic Settings](../monitor-resource-logs.md).
 
 > [!WARNING]
@@ -209,5 +209,5 @@ In this article, we'll cover how to write more advanced queries to help troubles
 
 ## Next steps
 
-- Enable [log analytics](../../azure-monitor/logs/log-analytics-overview.md) on your API for Cassandra account.
+- Enable [log analytics](/azure/azure-monitor/logs/log-analytics-overview) on your API for Cassandra account.
 - Overview [error code definition](error-codes-solution.md).

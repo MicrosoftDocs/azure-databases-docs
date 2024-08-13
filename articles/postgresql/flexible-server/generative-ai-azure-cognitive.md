@@ -15,7 +15,7 @@ ms.topic: conceptual
 
 # Integrate Azure Database for PostgreSQL - Flexible Server with Azure Cognitive Services
 
-Azure AI extension gives the ability to invoke the [Azure AI Language Services](../../ai-services/language-service/overview.md#which-language-service-feature-should-i-use) such as sentiment analysis right from within the database.
+Azure AI extension gives the ability to invoke the [Azure AI Language Services](/azure/ai-services/language-service/overview#which-language-service-feature-should-i-use) such as sentiment analysis right from within the database.
 
 ## Prerequisites
 
@@ -39,7 +39,7 @@ select azure_ai.set_setting('azure_cognitive.region', '<Region>');
 
 ## Sentiment analysis
 
-[Sentiment analysis](../../ai-services/language-service/sentiment-opinion-mining/overview.md) provides sentiment labels (`negative`,`positive`,`neutral`) and confidence scores for the text passed to the model.
+[Sentiment analysis](/azure/ai-services/language-service/sentiment-opinion-mining/overview) provides sentiment labels (`negative`,`positive`,`neutral`) and confidence scores for the text passed to the model.
 
 ### `azure_cognitive.analyze_sentiment`
 
@@ -57,7 +57,7 @@ azure_cognitive.analyze_sentiment(text text[], language text[] DEFAULT NULL::tex
 
 ##### `language`
 
-`text` or `text[]` single value or array of values, depending on the overload of the function used, with the two-letter ISO 639-1 representation of the language that the input is written in. Check [language support](../../ai-services/language-service/concepts/language-support.md) for allowed values.
+`text` or `text[]` single value or array of values, depending on the overload of the function used, with the two-letter ISO 639-1 representation of the language that the input is written in. Check [language support](/azure/ai-services/language-service/concepts/language-support) for allowed values.
 
 ##### `batch_size`
 
@@ -91,7 +91,7 @@ For more information, see Cognitive Services Compliance and Privacy notes at htt
 
 ## Language detection
 
-[Language detection in Azure AI](../../ai-services/language-service/language-detection/overview.md) automatically detects the language a document.
+[Language detection in Azure AI](/azure/ai-services/language-service/language-detection/overview) automatically detects the language a document.
 
 ### `azure_cognitive.detect_language`
 
@@ -138,7 +138,7 @@ For more information, see Cognitive Services Compliance and Privacy notes at htt
 
 ## Key phrase extraction
 
-[Key phrase extraction in Azure AI](../../ai-services/language-service/key-phrase-extraction/overview.md) extracts the main concepts in a text.
+[Key phrase extraction in Azure AI](/azure/ai-services/language-service/key-phrase-extraction/overview) extracts the main concepts in a text.
 
 ### `azure_cognitive.extract_key_phrases`
 
@@ -156,7 +156,7 @@ azure_cognitive.extract_key_phrases(text text[], language text[] DEFAULT NULL::t
 
 ##### `language`
 
-`text` or `text[]` single value or array of values, depending on the overload of the function used, with the two-letter ISO 639-1 representation of the languages that the input is written in. Check [language support](../../ai-services/language-service/concepts/language-support.md) for allowed values.
+`text` or `text[]` single value or array of values, depending on the overload of the function used, with the two-letter ISO 639-1 representation of the languages that the input is written in. Check [language support](/azure/ai-services/language-service/concepts/language-support) for allowed values.
 
 ##### `batch_size`
 
@@ -190,7 +190,7 @@ For more information, see Cognitive Services Compliance and Privacy notes at htt
 
 ## Entity linking
 
-[Entity linking in Azure AI](../../ai-services/language-service/entity-linking/overview.md) identifies and disambiguates the identity of entities found in text linking them to a well-known knowledge base.
+[Entity linking in Azure AI](/azure/ai-services/language-service/entity-linking/overview) identifies and disambiguates the identity of entities found in text linking them to a well-known knowledge base.
 
 ### `azure_cognitive.linked_entities`
 
@@ -208,7 +208,7 @@ azure_cognitive.linked_entities(text text[], language text[] DEFAULT NULL::text[
 
 ##### `language`
 
-`text` or `text[]` single value or array of values, depending on the overload of the function used, with the two-letter ISO 639-1 representation of the language that the input is written in. Check [language support](../../ai-services/language-service/concepts/language-support.md) for allowed values.
+`text` or `text[]` single value or array of values, depending on the overload of the function used, with the two-letter ISO 639-1 representation of the language that the input is written in. Check [language support](/azure/ai-services/language-service/concepts/language-support) for allowed values.
 
 ##### `batch_size`
 
@@ -249,7 +249,7 @@ For more information, see Cognitive Services Compliance and Privacy notes at htt
 
 ### `azure_cognitive.recognize_entities`
 
-[Named Entity Recognition (NER) feature in Azure AI](../../ai-services/language-service/named-entity-recognition/overview.md) can identify and categorize entities in unstructured text.
+[Named Entity Recognition (NER) feature in Azure AI](/azure/ai-services/language-service/named-entity-recognition/overview) can identify and categorize entities in unstructured text.
 
 ```sql
 azure_cognitive.recognize_entities(text text, language text DEFAULT NULL::text, disable_service_logs boolean DEFAULT false, timeout_ms integer DEFAULT NULL::integer, throw_on_error boolean DEFAULT true, max_attempts integer DEFAULT 1, retry_delay_ms integer DEFAULT 1000)
@@ -265,7 +265,7 @@ azure_cognitive.recognize_entities(text text[], language text[] DEFAULT NULL::te
 
 ##### `language`
 
-`text` or `text[]` single value or array of values, depending on the overload of the function used, with the two-letter ISO 639-1 representation of the language that the input is written in. Check [language support](../../ai-services/language-service/concepts/language-support.md) for allowed values.
+`text` or `text[]` single value or array of values, depending on the overload of the function used, with the two-letter ISO 639-1 representation of the language that the input is written in. Check [language support](/azure/ai-services/language-service/concepts/language-support) for allowed values.
 
 ##### `batch_size`
 
@@ -299,7 +299,7 @@ For more information, see Cognitive Services Compliance and Privacy notes at htt
 
 ## Personally Identifiable data (PII) detection
 
- Identifies [PII data](../../ai-services/language-service/personally-identifiable-information/overview.md) found in the input text and categorizes those entities into types.
+ Identifies [PII data](/azure/ai-services/language-service/personally-identifiable-information/overview) found in the input text and categorizes those entities into types.
 
 ### `azure_cognitive.recognize_pii_entities`
 
@@ -317,7 +317,7 @@ azure_cognitive.recognize_pii_entities(text text[], language text[] DEFAULT NULL
 
 ##### `language`
 
-`text` or `text[]` single value or array of values, depending on the overload of the function used, with the two-letter ISO 639-1 representation of the language that the input is written in. Check [language support](../../ai-services/language-service/concepts/language-support.md) for allowed values.
+`text` or `text[]` single value or array of values, depending on the overload of the function used, with the two-letter ISO 639-1 representation of the language that the input is written in. Check [language support](/azure/ai-services/language-service/concepts/language-support) for allowed values.
 
 ##### `domain`
 
@@ -355,11 +355,11 @@ For more information, see Cognitive Services Compliance and Privacy notes at htt
 
 ## Document summarization
 
-[Document summarization](../../ai-services/language-service/summarization/overview.md) uses natural language processing techniques to generate a summary for documents.
+[Document summarization](/azure/ai-services/language-service/summarization/overview) uses natural language processing techniques to generate a summary for documents.
 
 ### `azure_cognitive.summarize_abstractive`
 
-[Document abstractive summarization](../../ai-services/language-service/summarization/overview.md) produces a summary that might not use the same words in the document but yet captures the main idea.
+[Document abstractive summarization](/azure/ai-services/language-service/summarization/overview) produces a summary that might not use the same words in the document but yet captures the main idea.
 
 ```sql
 azure_cognitive.summarize_abstractive(text text, language text DEFAULT NULL::text, sentence_count integer DEFAULT 3, disable_service_logs boolean DEFAULT false, timeout_ms integer DEFAULT NULL::integer, throw_on_error boolean DEFAULT true, max_attempts integer DEFAULT 1, retry_delay_ms integer DEFAULT 1000)
@@ -375,7 +375,7 @@ azure_cognitive.summarize_abstractive(text text[], language text[] DEFAULT NULL:
 
 ##### `language`
 
-`text` or `text[]` single value or array of values, depending on the overload of the function used, with the two-letter ISO 639-1 representation of the language that the input is written in. Check [language support](../../ai-services/language-service/concepts/language-support.md) for allowed values.
+`text` or `text[]` single value or array of values, depending on the overload of the function used, with the two-letter ISO 639-1 representation of the language that the input is written in. Check [language support](/azure/ai-services/language-service/concepts/language-support) for allowed values.
 
 ##### `sentence_count`
 
@@ -413,7 +413,7 @@ For more information, see Cognitive Services Compliance and Privacy notes at htt
 
 ### `azure_cognitive.summarize_extractive`
 
-[Document extractive summarization](../../ai-services/language-service/summarization/how-to/document-summarization.md) produces a summary extracting key sentences within the document.
+[Document extractive summarization](/azure/ai-services/language-service/summarization/how-to/document-summarization) produces a summary extracting key sentences within the document.
 
 ```sql
 azure_cognitive.summarize_extractive(text text, language text DEFAULT NULL::text, sentence_count integer DEFAULT 3, sort_by text DEFAULT 'offset'::text, disable_service_logs boolean DEFAULT false, timeout_ms integer DEFAULT NULL::integer, throw_on_error boolean DEFAULT true, max_attempts integer DEFAULT 1, retry_delay_ms integer DEFAULT 1000)
@@ -429,7 +429,7 @@ azure_cognitive.summarize_extractive(text text[], language text[] DEFAULT NULL::
 
 ##### `language`
 
-`text` or `text[]` single value or array of values, depending on the overload of the function used, with the two-letter ISO 639-1 representation of the language that the input is written in. Check [language support](../../ai-services/language-service/concepts/language-support.md) for allowed values.
+`text` or `text[]` single value or array of values, depending on the overload of the function used, with the two-letter ISO 639-1 representation of the language that the input is written in. Check [language support](/azure/ai-services/language-service/concepts/language-support) for allowed values.
 
 ##### `sentence_count`
 
@@ -472,7 +472,7 @@ For example, if invoked with a `text` set to `'PostgreSQL features transactions 
 
 ## Language translation
 
-[Azure AI Text Translation](../../ai-services/translator/text-translation-overview.md) enables quick and accurate translation to target languages in real time.
+[Azure AI Text Translation](/azure/ai-services/translator/text-translation-overview) enables quick and accurate translation to target languages in real time.
 
 ### `azure_cognitive.translate`
 
@@ -492,7 +492,7 @@ select * from pg_available_extensions where name = 'azure_ai';
 
 #### Arguments
 
-For more information on parameters, see [Translator API](../../ai-services/translator/reference/v3-0-translate.md).  
+For more information on parameters, see [Translator API](/azure/ai-services/translator/reference/v3-0-translate).  
 
 ##### `text`
 
@@ -500,11 +500,11 @@ For more information on parameters, see [Translator API](../../ai-services/trans
 
 ##### `target_language`
 
-`text` or `text[]` single value or array of values, depending on the overload of the function used, with the two-letter ISO 639-1 representation of the language that the input is written in. Check [language support](../../ai-services/language-service/concepts/language-support.md) for allowed values.
+`text` or `text[]` single value or array of values, depending on the overload of the function used, with the two-letter ISO 639-1 representation of the language that the input is written in. Check [language support](/azure/ai-services/language-service/concepts/language-support) for allowed values.
 
 ##### `source_language`
 
-`text DEFAULT NULL` two-letter ISO 639-1 representation of the language that the input text is written in. Check [language support](../../ai-services/language-service/concepts/language-support.md) for allowed values. If it isn't specified, automatic language detection is applied to determine the source language.
+`text DEFAULT NULL` two-letter ISO 639-1 representation of the language that the input text is written in. Check [language support](/azure/ai-services/language-service/concepts/language-support) for allowed values. If it isn't specified, automatic language detection is applied to determine the source language.
 
 ##### `text_type`
 
@@ -548,7 +548,7 @@ For more information on parameters, see [Translator API](../../ai-services/trans
 
 #### Return type
 
-`azure_cognitive.translated_text_result` or `TABLE(result azure_cognitive.translated_text_result)` an array or a single-column table of translated texts. Details of the response body can be found in the [response body](../../ai-services/translator/reference/v3-0-translate.md#response-body).
+`azure_cognitive.translated_text_result` or `TABLE(result azure_cognitive.translated_text_result)` an array or a single-column table of translated texts. Details of the response body can be found in the [response body](/azure/ai-services/translator/reference/v3-0-translate#response-body).
 
 ## Examples
 

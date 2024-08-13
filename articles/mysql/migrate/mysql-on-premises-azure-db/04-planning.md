@@ -28,15 +28,15 @@ Since WWI is based in San Francisco, all resources for the Azure landing zone we
 
 - [Azure Database Migration Service (DMS)](../../../dms/quickstart-create-data-migration-service-portal.md)
 
-- [Express Route](../../../expressroute/expressroute-introduction.md)
+- [Express Route](/azure/expressroute/expressroute-introduction)
 
-- [Azure Virtual Network](../../../virtual-network/quick-create-portal.md) with [hub and spoke design](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) with corresponding [virtual network peerings](../../../virtual-network/virtual-network-peering-overview.md) establish.
+- [Azure Virtual Network](/azure/virtual-network/quick-create-portal) with [hub and spoke design](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) with corresponding [virtual network peerings](/azure/virtual-network/virtual-network-peering-overview) establish.
 
-- [App Service](../../../app-service/overview.md)
+- [App Service](/azure/app-service/overview)
 
-- [Application Gateway](../../../load-balancer/quickstart-load-balancer-standard-internal-portal.md?tabs=option-1-create-internal-load-balancer-standard)
+- [Application Gateway](/azure/load-balancer/quickstart-load-balancer-standard-internal-portal?tabs=option-1-create-internal-load-balancer-standard)
 
-- [Private endpoints](../../../private-link/private-endpoint-overview.md) for the App Services and MySQL instance
+- [Private endpoints](/azure/private-link/private-endpoint-overview) for the App Services and MySQL instance
 
 > [!NOTE]  
 > As part of this guide, two ARM templates (one with private endpoints, one without) were provided in order to deploy a potential Azure landing zone for a MySQL migration project. The private endpoints ARM template provides a more secure and production like scenario. Additional manual Azure landing zone configuration might be necessary, depending on the requirements.
@@ -60,7 +60,7 @@ The migration tool location determines the network connectivity requirements. As
 
 Other networking considerations include:
 
-- DMS located in a VNET is assigned a [dynamic public IP](../../../dms/faq.yml) to the service. At creation time, you can place the service inside a virtual network that has connectivity via a [ExpressRoute](../../../expressroute/expressroute-introduction.md) or over [a site to site VPN](../../../vpn-gateway/tutorial-site-to-site-portal.md).
+- DMS located in a VNET is assigned a [dynamic public IP](../../../dms/faq.yml) to the service. At creation time, you can place the service inside a virtual network that has connectivity via a [ExpressRoute](/azure/expressroute/expressroute-introduction) or over [a site to site VPN](/azure/vpn-gateway/tutorial-site-to-site-portal).
 
 - When using an Azure Virtual Machine to run the migration tools, assign it a public IP address and then only allow it to connect to the on-premises MySQL instance.
 

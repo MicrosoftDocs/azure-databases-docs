@@ -14,7 +14,7 @@ ms.date: 06/24/2022
 
 Private Link allows you to create private endpoints for Azure Database for MariaDB and so brings Azure services inside your private Virtual Network (VNet). The private endpoint exposes a private IP you can use to connect to your Azure Database for MariaDB database server just like any other resource in the VNet.
 
-For a list to PaaS services that support Private Link functionality, review the Private Link [documentation](../private-link/index.yml). A private endpoint is a private IP address within a specific [VNet](../virtual-network/virtual-networks-overview.md) and Subnet.
+For a list to PaaS services that support Private Link functionality, review the Private Link [documentation](/azure/private-link/). A private endpoint is a private IP address within a specific [VNet](/azure/virtual-network/virtual-networks-overview) and Subnet.
 
 > [!NOTE]
 > The private link feature is only available for Azure Database for MariaDB servers in the General Purpose or Memory Optimized pricing tiers. Ensure the database server is in one of these pricing tiers.
@@ -42,7 +42,7 @@ With Private Link, you can now set up network access controls like NSGs to restr
 
 When you connect to the public endpoint from on-premises machines, your IP address needs to be added to the IP-based firewall using a server-level firewall rule. While this model works well for allowing access to individual machines for dev or test workloads, it's difficult to manage in a production environment.
 
-With Private Link, you can enable cross-premises access to the private endpoint using [Express Route](https://azure.microsoft.com/services/expressroute/) (ER), private peering or [VPN tunnel](../vpn-gateway/index.yml). They can subsequently disable all access via public endpoint and not use the IP-based firewall.
+With Private Link, you can enable cross-premises access to the private endpoint using [Express Route](https://azure.microsoft.com/services/expressroute/) (ER), private peering or [VPN tunnel](/azure/vpn-gateway/). They can subsequently disable all access via public endpoint and not use the IP-based firewall.
 
 > [!NOTE]
 > In some cases the Azure Database for MariaDB and the VNet-subnet are in different subscriptions. In these cases you must ensure the following configurations:
@@ -82,25 +82,25 @@ Once the network admin creates the private endpoint (PE), the admin can manage t
 
 ## Use cases of Private Link for Azure Database for MariaDB
 
-Clients can connect to the private endpoint from the same VNet, [peered VNet](../virtual-network/virtual-network-peering-overview.md) in same region or across regions, or via [VNet-to-VNet connection](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md) across regions. Additionally, clients can connect from on-premises using ExpressRoute, private peering, or VPN tunneling. Below is a simplified diagram showing the common use cases.
+Clients can connect to the private endpoint from the same VNet, [peered VNet](/azure/virtual-network/virtual-network-peering-overview) in same region or across regions, or via [VNet-to-VNet connection](/azure/vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal) across regions. Additionally, clients can connect from on-premises using ExpressRoute, private peering, or VPN tunneling. Below is a simplified diagram showing the common use cases.
 
 ![select the private endpoint overview](media/concepts-data-access-and-security-private-link/show-private-link-overview.png)
 
 ### Connecting from an Azure VM in Peered Virtual Network (VNet)
 
-Configure [VNet peering](../virtual-network/tutorial-connect-virtual-networks-powershell.md) to establish connectivity to the Azure Database for MariaDB from an Azure VM in a peered VNet.
+Configure [VNet peering](/azure/virtual-network/tutorial-connect-virtual-networks-powershell) to establish connectivity to the Azure Database for MariaDB from an Azure VM in a peered VNet.
 
 ### Connecting from an Azure VM in VNet-to-VNet environment
 
-Configure [VNet-to-VNet VPN gateway connection](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md) to establish connectivity to an Azure Database for MariaDB from an Azure VM in a different region or subscription.
+Configure [VNet-to-VNet VPN gateway connection](/azure/vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal) to establish connectivity to an Azure Database for MariaDB from an Azure VM in a different region or subscription.
 
 ### Connecting from an on-premises environment over VPN
 
 To establish connectivity from an on-premises environment to the Azure Database for MariaDB, choose and implement one of the options:
 
-* [Point-to-Site connection](../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)
-* [Site-to-Site VPN connection](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)
-* [ExpressRoute circuit](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md)
+* [Point-to-Site connection](/azure/vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps)
+* [Site-to-Site VPN connection](/azure/vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell)
+* [ExpressRoute circuit](/azure/expressroute/expressroute-howto-linkvnet-portal-resource-manager)
 
 ## Private Link combined with firewall rules
 
@@ -136,4 +136,4 @@ To learn more about Azure Database for MariaDB security features, see the follow
 * For an overview of Azure Database for MariaDB connectivity, see [Azure Database for MariaDB Connectivity Architecture](concepts-connectivity-architecture.md)
 
 <!-- Link references, to text, Within this same GitHub repo. -->
-[resource-manager-portal]: ../azure-resource-manager/management/resource-providers-and-types.md
+[resource-manager-portal]: /azure/azure-resource-manager/management/resource-providers-and-types

@@ -100,7 +100,7 @@ First, the application needs to request the Azure Cosmos DB endpoint and key in 
 
 ### Using special Azure Resource Management functions
 
-For these values to be available to the application when deployed, the Azure Resource Manager template can ask for those values from the Azure Cosmos DB account using special Azure Resource Management functions including [reference](../../azure-resource-manager/templates/template-functions-resource.md#reference) and [listKeys](../../azure-resource-manager/templates/template-functions-resource.md#listkeys) which grab the values from the Azure Cosmos DB account and insert them into the application settings values with key names that match what is used in the application above in a '{section:key}' format. For example, `CosmosDb:Account`.
+For these values to be available to the application when deployed, the Azure Resource Manager template can ask for those values from the Azure Cosmos DB account using special Azure Resource Management functions including [reference](/azure/azure-resource-manager/templates/template-functions-resource#reference) and [listKeys](/azure/azure-resource-manager/templates/template-functions-resource#listkeys) which grab the values from the Azure Cosmos DB account and insert them into the application settings values with key names that match what is used in the application above in a '{section:key}' format. For example, `CosmosDb:Account`.
 
 :::image type="content" source="./media/create-website/template-keys.png" alt-text="Template Keys":::
 

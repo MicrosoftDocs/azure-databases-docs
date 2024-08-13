@@ -47,7 +47,7 @@ Other parameters you can adjust to control audit logging behavior include:
 
 ## Access audit logs
 
-Audit logs are integrated with Azure Monitor diagnostic settings. Once you've enabled audit logs on your flexible server, you can emit them to Azure Monitor logs, Azure Event Hubs, or Azure Storage. To learn more about diagnostic settings, see the [diagnostic logs documentation](../../azure-monitor/essentials/platform-logs-overview.md). To learn more about how to enable diagnostic settings in the Azure portal, see the [audit log portal article](tutorial-configure-audit.md#set-up-diagnostics).
+Audit logs are integrated with Azure Monitor diagnostic settings. Once you've enabled audit logs on your flexible server, you can emit them to Azure Monitor logs, Azure Event Hubs, or Azure Storage. To learn more about diagnostic settings, see the [diagnostic logs documentation](/azure/azure-monitor/essentials/platform-logs-overview). To learn more about how to enable diagnostic settings in the Azure portal, see the [audit log portal article](tutorial-configure-audit.md#set-up-diagnostics).
 
 > [!NOTE]  
 > Premium Storage accounts aren't supported if you send the logs to Azure storage via diagnostics and settings.

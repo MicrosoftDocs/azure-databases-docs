@@ -95,9 +95,9 @@ sections:
       - question: |
           Which tools work with the API for Table?
         answer: |
-          You can use the [Azure Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md).
+          You can use the [Azure Storage Explorer](/azure/vs-azure-tools-storage-manage-with-storage-explorer).
 
-          Tools with the flexibility to take a connection string in the format specified previously can support the new API for Table. A list of table tools is provided on the [Azure Storage Client Tools](../../storage/common/storage-explorers.md) page.
+          Tools with the flexibility to take a connection string in the format specified previously can support the new API for Table. A list of table tools is provided on the [Azure Storage Client Tools](/azure/storage/common/storage-explorers) page.
 
       - question: |
           Is the concurrency on operations controlled?
@@ -117,7 +117,7 @@ sections:
       - question: |
           How do I migrate an existing Azure Table storage application to this offering?
         answer: |
-          [AzCopy](../../storage/common/storage-use-azcopy-v10.md) is supported.
+          [AzCopy](/azure/storage/common/storage-use-azcopy-v10) is supported.
 
       - question: |
           How is expansion of the storage size done for this service if, for example, I start with 'n' GB of data and my data will grow to 1 TB over time?

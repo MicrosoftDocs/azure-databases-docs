@@ -19,7 +19,7 @@ ms.devlang: php
 
 [!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
-[Azure App Service](../../app-service/overview.md) provides a highly scalable, self-patching web hosting service using the Linux operating system. This tutorial shows how to create a secure PHP app in Azure App Service that's connected to a MySQL database (using Azure Database for MySQL flexible server). When you're finished, you'll have a [Laravel](https://laravel.com/) app running on Azure App Service on Linux.
+[Azure App Service](/azure/app-service/overview) provides a highly scalable, self-patching web hosting service using the Linux operating system. This tutorial shows how to create a secure PHP app in Azure App Service that's connected to a MySQL database (using Azure Database for MySQL flexible server). When you're finished, you'll have a [Laravel](https://laravel.com/) app running on Azure App Service on Linux.
 
 :::image type="content" source="./media/tutorial-php-database-app/azure-portal-browse-app-2.png" alt-text="Screenshot of the Azure app example titled Task List showing new tasks added.":::
 
@@ -76,7 +76,7 @@ Sign in to the [Azure portal](https://portal.azure.com/) and follow these steps 
 
 ## 2 - Set up database connectivity
 
-The creation wizard generated [app settings](../../app-service/configure-common.md#configure-app-settings) for you to use to connect to the database, but not in a format that's useable for your code yet. In this step, you edit and update app settings to the format that your app needs.
+The creation wizard generated [app settings](/azure/app-service/configure-common#configure-app-settings) for you to use to connect to the database, but not in a format that's useable for your code yet. In this step, you edit and update app settings to the format that your app needs.
 
 | Instructions    | Screenshot |
 |:----------------|-----------:|
@@ -166,15 +166,15 @@ To connect to an Azure Database for MySQL flexible server database, you can use 
    - Use the `mysql` command from the app's SSH terminal for basic access.
 - **Desktop tools (for example, MySQL Workbench)**:
    - **Using SSH tunneling with Azure CLI**:
-     - Create an [SSH session](../../app-service/configure-linux-open-ssh-session.md#open-ssh-session-from-remote-shell) to the web app by using the Azure CLI.
+     - Create an [SSH session](/azure/app-service/configure-linux-open-ssh-session#open-ssh-session-from-remote-shell) to the web app by using the Azure CLI.
      - Use the SSH session to tunnel the traffic to MySQL.
    - **Using site-to-site VPN or Azure VM**:
      - Your machine must be part of the virtual network.
      - Consider using:
        - An Azure VM linked to one of the subnets.
-       - A machine in an on-premises network that has a [site-to-site VPN connection](../../vpn-gateway/vpn-gateway-about-vpngateways.md) to the Azure virtual network.
+       - A machine in an on-premises network that has a [site-to-site VPN connection](/azure/vpn-gateway/vpn-gateway-about-vpngateways) to the Azure virtual network.
 - **Azure Cloud Shell integration**:
-   - [Integrate Azure Cloud Shell](../../cloud-shell/private-vnet.md) with the virtual network for direct access.
+   - [Integrate Azure Cloud Shell](/azure/cloud-shell/private-vnet) with the virtual network for direct access.
 
 
 
@@ -215,8 +215,8 @@ In this tutorial, you learned how to:
 ## Next steps
 
 > [!div class="nextstepaction"]
-> [Tutorial: Map custom DNS name to your app](../../app-service/app-service-web-tutorial-custom-domain.md)
+> [Tutorial: Map custom DNS name to your app](/azure/app-service/app-service-web-tutorial-custom-domain)
 > [!div class="nextstepaction"]
-> [How to manage your resources in Azure portal](../../azure-resource-manager/management/manage-resources-portal.md)
+> [How to manage your resources in Azure portal](/azure/azure-resource-manager/management/manage-resources-portal)
 > [!div class="nextstepaction"]
 > [How to manage your server](how-to-manage-server-cli.md)

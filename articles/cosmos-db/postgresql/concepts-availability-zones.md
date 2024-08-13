@@ -45,5 +45,5 @@ To get resiliency benefits of availability zones, your cluster needs to be in [o
 ## Next steps
 
 - Check out [regions that are configured for AZ outage resiliency](./resources-regions.md) in Azure Cosmos DB for PostgreSQL
-- Learn about [availability zones in Azure](../../reliability/availability-zones-overview.md)
+- Learn about [availability zones in Azure](/azure/reliability/availability-zones-overview)
 - Learn how to [enable high availability](howto-high-availability.md) in a cluster

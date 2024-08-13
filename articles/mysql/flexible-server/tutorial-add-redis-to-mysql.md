@@ -16,7 +16,7 @@ ms.custom:
 
 [!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
-This article demonstrates how to boost the performance of an Azure Database for MySQL flexible server instance using [Azure Cache for Redis](../../azure-cache-for-redis/cache-overview.md). Azure Cache for Redis is a secure data cache and messaging broker that provides high throughput and low-latency access to data for applications.
+This article demonstrates how to boost the performance of an Azure Database for MySQL flexible server instance using [Azure Cache for Redis](/azure/azure-cache-for-redis/cache-overview). Azure Cache for Redis is a secure data cache and messaging broker that provides high throughput and low-latency access to data for applications.
 
 ## Prerequisites
 
@@ -146,7 +146,7 @@ print_r($tasks);
 
 ## Using Redis with WordPress
 
-The benefit of enabling Azure Cache for Redis instance to your WordPress application will allow you to deliver content faster since all of the WordPress content is stored in the database. You can cache content that is mostly read only from WordPress database to make the query lookups faster. You can use either of these plugins to setup Redis.  Install and enable [Redis PECL extension](https://pecl.php.net/package/redis). See [how to install the extension locally](https://github.com/phpredis/phpredis/blob/develop/INSTALL.md) or [how to install the extension in Azure App Service](../../app-service/configure-language-php.md).
+The benefit of enabling Azure Cache for Redis instance to your WordPress application will allow you to deliver content faster since all of the WordPress content is stored in the database. You can cache content that is mostly read only from WordPress database to make the query lookups faster. You can use either of these plugins to setup Redis.  Install and enable [Redis PECL extension](https://pecl.php.net/package/redis). See [how to install the extension locally](https://github.com/phpredis/phpredis/blob/develop/INSTALL.md) or [how to install the extension in Azure App Service](/azure/app-service/configure-language-php).
 
 Install [Redis Object cache](https://wordpress.org/plugins/redis-cache/) and activate this plugin on our WordPress application. Now update the `wp-config.php` file right above the statement */* That's all, stop editing! Happy blogging. */**
 

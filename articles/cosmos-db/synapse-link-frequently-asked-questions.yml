@@ -214,7 +214,7 @@ sections:
       - question: |
           What are the ways to authenticate with the analytical store?
         answer: |
-          Authentication with the analytical store is the same as a transactional store. For a given database, you can authenticate with the primary or read-only key. You can use linked services in Azure Synapse Studio to prevent pasting the Azure Cosmos DB keys in the Spark notebooks. Access to this Linked Service is available for everyone who has access to the workspace. When using Synapse serverless SQL pools, you can query the Azure Cosmos DB analytical store by pre-creating and referencing SQL credentials in the OPENROWSET function. To learn more, see [Query with a serverless SQL pool in Azure Synapse Link](../synapse-analytics/sql/query-cosmos-db-analytical-store.md) article.
+          Authentication with the analytical store is the same as a transactional store. For a given database, you can authenticate with the primary or read-only key. You can use linked services in Azure Synapse Studio to prevent pasting the Azure Cosmos DB keys in the Spark notebooks. Access to this Linked Service is available for everyone who has access to the workspace. When using Synapse serverless SQL pools, you can query the Azure Cosmos DB analytical store by pre-creating and referencing SQL credentials in the OPENROWSET function. To learn more, see [Query with a serverless SQL pool in Azure Synapse Link](/azure/synapse-analytics/sql/query-cosmos-db-analytical-store) article.
           
       - question: | 
           Is it possible to use customer-managed keys with Azure Synapse Link?

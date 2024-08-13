@@ -72,5 +72,5 @@ AzureDiagnostics
 
 ## Next steps
 
-- [Get started with log analytics queries](../../azure-monitor/logs/log-analytics-tutorial.md)
-- Learn about [Azure Event Hubs](../../event-hubs/event-hubs-about.md)
+- [Get started with log analytics queries](/azure/azure-monitor/logs/log-analytics-tutorial)
+- Learn about [Azure Event Hubs](/azure/event-hubs/event-hubs-about)
