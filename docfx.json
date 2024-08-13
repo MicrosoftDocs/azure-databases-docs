@@ -7,44 +7,219 @@
           "**/*.yml"
         ],
         "exclude": [
-          "**/obj/**",
+          "iot-edge/**",
+          "ai-services/document-intelligence/**",
+          "**/_themes/**",
           "**/includes/**",
-          "_themes/**",
-          "_themes.pdf/**",
-          "**/docfx.json",
-          "_repo.en-us/**",
-          "README.md",
-          "LICENSE",
-          "LICENSE-CODE",
-          "ThirdPartyNotices.md",
-          "SECURITY.md"
-        ]
+          "**/obj/**",
+          "**/*.graffle",
+          "machine-learning/**",
+          "machine-learning/v1/**"
+        ],
+        "src": "articles",
+        "dest": "."
+      },
+      {
+        "files": [
+          "toc.yml"
+        ],
+        "src": "breadcrumb/azure-databases",
+        "dest": "breadcrumb/azure-databases"
       }
     ],
     "resource": [
       {
         "files": [
+          "**/*.gif",
+          "**/*.jpeg",
+          "**/*.jpg",
           "**/*.png",
-          "**/*.jpg"
+          "**/*.svg"
         ],
         "exclude": [
+          "iot-edge/**",
+          "ai-services/document-intelligence/**",
+          "**/_themes/**",
           "**/obj/**",
-          "**/includes/**",
-          "_themes/**",
-          "_themes.pdf/**",
-          "**/docfx.json",
-          "_repo.en-us/**"
-        ]
+          "machine-learning/**",
+          "machine-learning/v1/**"
+        ],
+        "src": "articles",
+        "dest": "."
       }
     ],
+    "globalMetadata": {
+      "contributors_to_exclude": [
+        "alexbuckgit",
+        "American-Dipper",
+        "AnnaMHuff",
+        "cdpark",
+        "Court72",
+        "damabe",
+        "denrea",
+        "dksimpson",
+        "garycentric",
+        "GitHubber17",
+        "Jak-MS",
+        "JamesJBarnett",
+        "JasonWHowell",
+        "JillGrant615",
+        "JKirsch1",
+        "Jmart1428",
+        "JustPies",
+        "ktoliver",
+        "LizCasey1",
+        "MeeraDi",
+        "meganbradley",
+        "mohitp930",
+        "mSarts",
+        "ms-robkni",
+        "openpublishingbuild",
+        "paulth1",
+        "PMEds28",
+        "PRmerger",
+        "PRMerger17",
+        "PRMerger-2",
+        "PRMerger3",
+        "PRMerger4",
+        "PRMerger5",
+        "PRMerger9",
+        "rjagiewich",
+        "rmca14",
+        "Saisang",
+        "sdwheeler",
+        "ShannonLeavitt",
+        "ShawnJackson",
+        "ShawnKupfer",
+        "tfosmark",
+        "TimShererWithAquent",
+        "ttorble",
+        "tysonn",
+        "v-albemi",
+        "v-ccolin",
+        "v-dirichards",
+        "v-emilypr",
+        "v-lmcdonald",
+        "v-regandowner",
+        "v-savila",
+        "v-shils",
+        "v-stsavell",
+        "v-thepet",
+        "v-thpra"
+      ],
+      "breadcrumb_path": "~/breadcrumb/azure-databases/toc.yml",
+      "_op_documentIdPathDepotMapping": {
+        "articles/iot-central/": {}
+      },
+      "brand": "azure",
+      "feedback_github_repo": "MicrosoftDocs/azure-docs",
+      "feedback_help_link_url": "https://learn.microsoft.com/answers/tags/133/azure",
+      "feedback_help_link_type": "get-help-at-qna",
+      "feedback_product_url": "https://feedback.azure.com/d365community/forum/79b1327d-d925-ec11-b6e6-000d3a4f06a4",
+      "feedback_system": "Standard",
+      "searchScope": [
+        "Azure"
+      ],
+      "permissioned-type": "public",
+      "recommendations": true,
+      "recommendation_types": [
+        "Training",
+        "Certification"
+      ],
+      "uhfHeaderId": "azure",
+      "ms.suite": "office"
+    },
+    "fileMetadata": {
+      "adobe-target": {
+        "articles/cosmos-db/*": true
+      },
+      "featureFlags": {
+        "articles/**/*.md": [
+          "show_learn_banner"
+        ]
+      },
+      "feedback_product_url": {
+        "articles/cosmos-db/**/*.md": "https://feedback.azure.com/d365community/forum/3002b3be-0d25-ec11-b6e6-000d3a4f0858",
+        "articles/managed-instance-apache-cassandra/**/*.md": "https://feedback.azure.com/d365community/forum/3002b3be-0d25-ec11-b6e6-000d3a4f0858?c=e6e5c7c4-0d25-ec11-b6e6-000d3a4f0858",
+        "articles/dms/**/*.md": "https://feedback.azure.com/d365community/forum/2dd7eb75-ef24-ec11-b6e6-000d3a4f0da0",
+        "articles/mysql/**/*.md": "https://feedback.azure.com/d365community/forum/47b1e71d-ee24-ec11-b6e6-000d3a4f0da0",
+        "articles/postgresql/**/*.md": "https://feedback.azure.com/d365community/forum/c5e32b97-ee24-ec11-b6e6-000d3a4f0da0"
+      },
+      "feedback_help_link_url": {
+        "articles/cosmos-db/**/*": "https://learn.microsoft.com/answers/tags/187/azure-cosmos-db/",
+        "articles/dms/**/*": "https://learn.microsoft.com/answers/tags/37/azure-database-migration/",
+        "articles/managed-instance-apache-cassandra/**/*": "https://learn.microsoft.com/answers/tags/187/azure-cosmos-db/",
+        "articles/mariadb/**/*": "https://learn.microsoft.com/answers/tags/56/azure-database-mariadb/",
+        "articles/mysql/**/*": "https://learn.microsoft.com/answers/tags/181/azure-database-mysql/",
+        "articles/postgresql/**/*": "https://learn.microsoft.com/answers/tags/214/azure-database-postgresql/"
+      },
+      "feedback_help_link_type": {
+        "**/*": "get-help-at-qna"
+      },
+      "learn_banner_products": {
+        "articles/**/*.md": [
+          "azure"
+        ]
+      },
+      "ms.subservice": {
+        "articles/cosmos-db/nosql/*.md": "nosql",
+        "articles/cosmos-db/mongodb/*.md": "mongodb",
+        "articles/cosmos-db/mongodb/vcore/*.md": "mongodb-vcore",
+        "articles/cosmos-db/postgresql/*.md": "postgresql",
+        "articles/cosmos-db/cassandra/*.md": "apache-cassandra",
+        "articles/cosmos-db/table/*.md": "table"
+      },
+      "searchScope": {
+        "articles/cosmos-db/**/*.md": [
+          "Azure",
+          "Azure Cosmos DB"
+        ],
+        "articles/cosmos-db/**/*.yml": [
+          "Azure",
+          "Azure Cosmos DB"
+        ],
+        "articles/managed-instance-apache-cassandra/**/*.md": [
+          "Azure",
+          "Azure Managed instance for Apache Cassandra"
+        ],
+        "articles/managed-instance-apache-cassandra/**/*.yml": [
+          "Azure",
+          "Azure Managed instance for Apache Cassandra"
+        ],
+        "articles/mariadb/**/*.md": [
+          "Azure",
+          "Azure Database for MariaDB"
+        ],
+        "articles/mariadb/**/*.yml": [
+          "Azure",
+          "Azure Database for MariaDB"
+        ],
+        "articles/mysql/**/*.md": [
+          "Azure",
+          "Azure Database for MySQL"
+        ],
+        "articles/mysql/**/*.yml": [
+          "Azure",
+          "Azure Database for MySQL"
+        ],
+        "articles/postgresql/**.md": [
+          "Azure",
+          "Azure Database for PostgreSQL"
+        ],
+        "articles/postgresql/**.yml": [
+          "Azure",
+          "Azure Database for PostgreSQL"
+        ]
+      },
+      "titleSuffix": {
+        "articles/mysql/flexible-server/**/*.md": "Azure Database for MySQL - Flexible Server",
+        "articles/postgresql/scripts/**/*.md": "Azure Database for PostgreSQL - Flexible Server",
+        "articles/postgresql/flexible-server/**/*.md": "Azure Database for PostgreSQL - Flexible Server",
+        "articles/postgresql/migrate/**/*.md": "Azure Database for PostgreSQL - Flexible Server"
+      }
+    },
     "overwrite": [],
     "externalReference": [],
-    "globalMetadata": {
-      "breadcrumb_path": "~/breadcrumb/azure-databases/toc.yml",
-      "feedback_system": "Standard",
-      "permissioned-type": "public"
-    },
-    "fileMetadata": {},
     "template": []
   }
 }
