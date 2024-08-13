@@ -4,8 +4,8 @@ description: This article describes how to restore a server in Azure Database fo
 ms.service: azure-database-postgresql
 ms.subservice: single-server
 ms.topic: how-to
-ms.author: alkuchar
-author: AwdotiaRomanowna
+author: akashraokm
+ms.author: akashrao
 ms.date: 06/24/2022
 ---
 

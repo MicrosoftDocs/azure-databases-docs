@@ -4,8 +4,8 @@ description: Describes logical decoding and wal2json for change data capture in 
 ms.service: azure-database-postgresql
 ms.subservice: single-server
 ms.topic: conceptual
-ms.author: alkuchar
-author: AwdotiaRomanowna
+author: akashraokm
+ms.author: akashrao
 ms.date: 06/24/2022
 ---
 

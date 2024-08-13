@@ -1,8 +1,8 @@
 ---
 title: Point-in-time restore - Azure portal
 description: This article describes how to perform restore operations in Azure Database for PostgreSQL - Flexible Server through the Azure portal.
-author: AwdotiaRomanowna
-ms.author: alkuchar
+author: akashraokm
+ms.author: akashraor
 ms.reviewer: maghan
 ms.date: 07/26/2024
 ms.service: azure-database-postgresql

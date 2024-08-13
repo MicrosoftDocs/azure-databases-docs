@@ -4,8 +4,8 @@ description: Lists the known issues that customers should be aware of.
 ms.service: azure-database-postgresql
 ms.subservice: single-server
 ms.topic: conceptual
-ms.author: alkuchar
-author: AwdotiaRomanowna
+author: akashraokm
+ms.author: akashrao
 ms.date: 06/24/2022
 ---
 

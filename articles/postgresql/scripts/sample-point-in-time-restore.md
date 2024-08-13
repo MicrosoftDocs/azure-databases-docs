@@ -1,8 +1,8 @@
 ---
 title: Azure CLI script - Restore
 description: This sample Azure CLI script shows how to restore an Azure Database for PostgreSQL - Flexible Server instance and its databases to a previous point in time.
-ms.author: alkuchar
-author: AwdotiaRomanowna
+author: akashraokm
+ms.author: akashrao
 ms.service: azure-database-postgresql
 ms.devlang: azurecli
 ms.topic: sample
