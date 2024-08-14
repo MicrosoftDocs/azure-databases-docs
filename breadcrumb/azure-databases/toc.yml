@@ -1,3 +1,73 @@
-- name: '<please enter product name here>'
-  tocHref: /
-  topicHref: /
+items:
+- name: Azure
+  tocHref: /azure/
+  topicHref: /azure/index
+  items:
+  - name: Azure Cosmos DB
+    tocHref: /azure/cosmos-db/
+    topicHref: /azure/cosmos-db/
+    items:
+    - name: MongoDB
+      tocHref: /azure/cosmos-db/mongodb/
+      topicHref: /azure/cosmos-db/mongodb/
+      items:
+      - name: vCore
+        tocHref: /azure/cosmos-db/mongodb/vcore/
+        topicHref: /azure/cosmos-db/mongodb/vcore/
+    - name: MongoDB
+      tocHref: /azure/cosmos-db/mongodb/cli-samples
+      topicHref: /azure/cosmos-db/mongodb/cli-samples
+    - name: MongoDB
+      tocHref: /azure/cosmos-db/mongodb/powershell-samples
+      topicHref: /azure/cosmos-db/mongodb/powershell-samples
+    - name: Table
+      tocHref: /azure/cosmos-db/table/
+      topicHref: /azure/cosmos-db/table/
+    - name: Table
+      tocHref: /azure/cosmos-db/table/cli-samples
+      topicHref: /azure/cosmos-db/table/cli-samples
+    - name: Table
+      tocHref: /azure/cosmos-db/table/powershell-samples
+      topicHref: /azure/cosmos-db/table/powershell-samples
+    - name: Apache Cassandra
+      tocHref: /azure/cosmos-db/cassandra/
+      topicHref: /azure/cosmos-db/cassandra/
+    - name: Apache Cassandra
+      tocHref: /azure/cosmos-db/cassandra/cli-samples
+      topicHref: /azure/cosmos-db/cassandra/cli-samples
+    - name: Apache Cassandra
+      tocHref: /azure/cosmos-db/cassandra/powershell-samples
+      topicHref: /azure/cosmos-db/cassandra/powershell-samples
+    - name: Apache Gremlin
+      tocHref: /azure/cosmos-db/gremlin/
+      topicHref: /azure/cosmos-db/gremlin/
+    - name: Apache Gremlin
+      tocHref: /azure/cosmos-db/gremlin/cli-samples
+      topicHref: /azure/cosmos-db/gremlin/cli-samples
+    - name: Apache Gremlin
+      tocHref: /azure/cosmos-db/gremlin/powershell-samples
+      topicHref: /azure/cosmos-db/gremlin/powershell-samples
+    - name: NoSQL
+      tocHref: /azure/cosmos-db/nosql/
+      topicHref: /azure/cosmos-db/nosql/
+    - name: NoSQL
+      tocHref: /azure/cosmos-db/nosql/cli-samples
+      topicHref: /azure/cosmos-db/nosql/cli-samples
+    - name: NoSQL
+      tocHref: /azure/cosmos-db/nosql/powershell-samples
+      topicHref: /azure/cosmos-db/nosql/powershell-samples
+  - name: Azure Database Migration Service
+    tocHref: /azure/dms/
+    topicHref: /azure/dms/
+  - name: Managed Instance for Apache Cassandra
+    tocHref: /azure/managed-instance-apache-cassandra/
+    topicHref: /azure/managed-instance-apache-cassandra/
+  - name: Azure Database for MariaDB
+    tocHref: /azure/mariadb/
+    topicHref: /azure/mariadb/
+  - name: MySQL
+    tocHref: /azure/mysql/
+    topicHref: /azure/mysql/
+  - name: PostgreSQL
+    tocHref: /azure/postgresql/
+    topicHref: /azure/postgresql/
