@@ -261,6 +261,12 @@
       "url": "https://github.com/MicrosoftDocs/azure-dev-docs-pr",
       "branch": "main",
       "branch_mapping": {}
+    },
+    {
+      "path_to_root": "azure-docs-pr",
+      "url": "https://github.com/MicrosoftDocs/azure-docs-pr",
+      "branch": "main",
+      "branch_mapping": {}
     }
   ],
   "branch_target_mapping": {}

@@ -220,6 +220,56 @@
     },
     "overwrite": [],
     "externalReference": [],
-    "template": []
+    "template": [],
+	"rules": {
+      "sensitive-language-ma": {
+        "exclude": [
+          "articles/mariadb/**/*.md",
+          "articles/mysql/**/*.md",
+          "articles/postgresql/**/*.md"
+        ]
+      },
+      "sensitive-language-sl": {
+        "exclude": [
+          "articles/dms/known-issues-troubleshooting-dms.md",
+          "articles/dms/tutorial-mysql-azure-mysql-online.md",
+          "articles/dms/tutorial-mysql-azure-single-to-flex-online-portal.md",
+          "articles/dms/**/*.md",
+          "articles/mariadb/**/*.md",
+          "articles/mysql/**/*.md",
+          "articles/postgresql/**/*.md"
+        ]
+      },
+      "sensitive-language-bl": {
+        "exclude": [
+          "articles/mariadb/concepts-certificate-rotation.md",
+          "articles/mariadb/concepts-read-replicas.md",
+          "articles/mariadb/howto-create-users.md",
+          "articles/mariadb/howto-data-in-replication.md",
+          "articles/mysql/concepts-certificate-rotation.md",
+          "articles/mysql/concepts-read-replicas.md",
+          "articles/mysql/flexible-server/concepts-read-replicas.md",
+          "articles/mysql/howto-create-users.md",
+          "articles/mysql/howto-data-in-replication.md",
+          "articles/mysql/howto-troubleshoot-replication-latency.md",
+          "articles/postgresql/hyperscale/tutorial-design-database-multi-tenant.md"
+        ]
+      },
+      "sensitive-language-wl": {
+        "exclude": [
+          "articles/mariadb/concepts-certificate-rotation.md",
+          "articles/mariadb/concepts-read-replicas.md",
+          "articles/mariadb/howto-create-users.md",
+          "articles/mariadb/howto-data-in-replication.md",
+          "articles/mysql/concepts-certificate-rotation.md",
+          "articles/mysql/concepts-read-replicas.md",
+          "articles/mysql/flexible-server/concepts-read-replicas.md",
+          "articles/mysql/howto-create-users.md",
+          "articles/mysql/howto-data-in-replication.md",
+          "articles/mysql/howto-troubleshoot-replication-latency.md",
+          "articles/postgresql/migrate/migration-service/*.*"
+        ]
+      }
+    }
   }
 }

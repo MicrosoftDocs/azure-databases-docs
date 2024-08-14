@@ -56,9 +56,15 @@ items:
     - name: NoSQL
       tocHref: /azure/cosmos-db/nosql/powershell-samples
       topicHref: /azure/cosmos-db/nosql/powershell-samples
+  - name: Azure Database Migration Service
+    tocHref: /azure/dms/
+    topicHref: /azure/dms/
   - name: Managed Instance for Apache Cassandra
     tocHref: /azure/managed-instance-apache-cassandra/
     topicHref: /azure/managed-instance-apache-cassandra/
+  - name: Azure Database for MariaDB
+    tocHref: /azure/mariadb/
+    topicHref: /azure/mariadb/
   - name: MySQL
     tocHref: /azure/mysql/
     topicHref: /azure/mysql/

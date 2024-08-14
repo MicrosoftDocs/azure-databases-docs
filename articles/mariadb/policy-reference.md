@@ -23,7 +23,7 @@ the link in the **Version** column to view the source on the
 
 ## Azure Database for MariaDB
 
-[!INCLUDE [azure-policy-reference-rp-mariadb](../../includes/policy/reference/byrp/microsoft.dbformariadb.md)]
+[!INCLUDE [azure-policy-reference-rp-mariadb](~/azure-docs-pr/includes/policy/reference/byrp/microsoft.dbformariadb.md)]
 
 ## Next steps
 
