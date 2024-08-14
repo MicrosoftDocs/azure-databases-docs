@@ -21,7 +21,7 @@ compliant with the specific standard.
 
 [!INCLUDE [azure-policy-compliancecontrols-introwarning](~/azure-docs-pr/includes/policy/standards/intro-warning.md)]
 
-[!INCLUDE [azure-policy-compliancecontrols-mariadb](~/azure-docs-pr/includes/policy/standards/byrp/microsoft.dbformariadb.md)]
+[!INCLUDE [azure-policy-compliancecontrols-mariadb](~/azure-docs-pr/includes/policy/reference/byrp/microsoft.dbformariadb.md)]
 
 ## Next steps
 
