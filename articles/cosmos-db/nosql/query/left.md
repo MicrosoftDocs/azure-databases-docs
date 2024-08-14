@@ -38,7 +38,7 @@ Returns a string expression.
   
 ## Examples
   
-The following example returns the left part of the string `Microsoft` for various length values.  
+The following example returns the left part of the string `AdventureWorks` for various length values.
 
 :::code language="nosql" source="~/cosmos-db-nosql-query-samples/scripts/left/query.sql" highlight="2-6":::
 
