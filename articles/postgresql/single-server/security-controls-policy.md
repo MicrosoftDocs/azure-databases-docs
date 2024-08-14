@@ -25,7 +25,7 @@ resources compliant with the specific standard.
 
 [!INCLUDE [azure-policy-compliancecontrols-introwarning](~/azure-docs-pr/includes/policy/standards/intro-warning.md)]
 
-
+[!INCLUDE [azure-policy-compliancecontrols-postgresql](~/azure-docs-pr/includes/policy/standards/byrp/microsoft.dbforpostgresql.md)]
 
 ## Next steps
 
