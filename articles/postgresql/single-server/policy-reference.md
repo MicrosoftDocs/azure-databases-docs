@@ -27,7 +27,7 @@ the link in the **Version** column to view the source on the
 
 ## Azure Database for PostgreSQL
 
-[!INCLUDE [azure-policy-reference-rp-postgre](../../../includes/policy/reference/byrp/microsoft.dbforpostgresql.md)]
+[!INCLUDE [azure-policy-reference-rp-postgre](~/azure-docs-pr/includes/policy/reference/byrp/microsoft.dbforpostgresql.md)]
 
 ## Next steps
 

@@ -23,9 +23,9 @@ page lists the **compliance domains** and **security controls** for Azure Databa
 You can assign the built-ins for a **security control** individually to help make your Azure
 resources compliant with the specific standard.
 
-[!INCLUDE [azure-policy-compliancecontrols-introwarning](../../../includes/policy/standards/intro-warning.md)]
+[!INCLUDE [azure-policy-compliancecontrols-introwarning](~/azure-docs-pr/includes/policy/standards/intro-warning.md)]
 
-[!INCLUDE [azure-policy-compliancecontrols-postgresql](../../../includes/policy/standards/byrp/microsoft.dbforpostgresql.md)]
+[!INCLUDE [azure-policy-compliancecontrols-postgresql](~/azure-docs-pr/includes/policy/standards/byrp/microsoft.dbforpostgresql.md)]
 
 ## Next steps
 
