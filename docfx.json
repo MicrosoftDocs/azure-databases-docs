@@ -257,6 +257,7 @@
       },
       "sensitive-language-wl": {
         "exclude": [
+          "articles/managed-instance-apache-cassandra/*.*",
           "articles/mariadb/concepts-certificate-rotation.md",
           "articles/mariadb/concepts-read-replicas.md",
           "articles/mariadb/howto-create-users.md",
