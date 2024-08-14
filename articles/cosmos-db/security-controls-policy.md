@@ -21,7 +21,7 @@ with the specific standard.
 
 [!INCLUDE [azure-policy-compliancecontrols-introwarning](~/azure-docs-pr/includes/policy/standards/intro-warning.md)]
 
-
+[!INCLUDE [azure-policy-compliancecontrols-cosmosdb](~/azure-docs-pr/includes/policy/reference/byrp/microsoft.documentdb.md)]
 
 ## Next steps
 
