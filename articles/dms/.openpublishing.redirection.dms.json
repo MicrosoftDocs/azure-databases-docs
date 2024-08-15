@@ -154,6 +154,11 @@
             "source_path_from_root": "/articles/dms/tutorial-sql-server-to-managed-instance.md",
             "redirect_url": "/azure/dms/dms-overview",
             "redirect_document_id": false
+        },
+        {
+            "source_path_from_root": "/articles/dms/security-baseline.md",
+            "redirect_url": "/security/benchmark/azure/baselines/database-migration-security-baseline",
+            "redirect_document_id": false
         }
     ]
 }
