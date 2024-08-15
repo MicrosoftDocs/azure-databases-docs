@@ -72,7 +72,7 @@ Azure Database for MySQL flexible server supports encrypted connections using Tr
 Following are the different configurations of SSL and TLS settings you can have for your flexible server:
 
 >[!IMPORTANT]
->Starting in early September 2024, new servers will no longer be permitted to use TLS 1.0 or 1.1, and existing servers will not be allowed to downgrade to these versions. Beginning mid-September 2024, we will initiate a mandatory upgrade of all servers currently using TLS 1.0 or 1.1 to TLS 1.2. This upgrade process is expected to be completed by the end of September 2024. We strongly recommend that customers ensure their applications are fully compatible with TLS 1.2 before the end of September.
+> According to [Removal of Support for the TLS 1.0 and TLS 1.1 Protocols](https://dev.mysql.com/doc/refman/8.0/en/encrypted-connection-protocols-ciphers.html#encrypted-connection-deprecated-protocols), starting in early September 2024, new servers will no longer be permitted to use TLS 1.0 or 1.1, and existing servers will not be allowed to downgrade to these versions. Beginning mid-September 2024, we will initiate a mandatory upgrade of all servers currently using TLS 1.0 or 1.1 to TLS 1.2. This upgrade process is expected to be completed by the end of September 2024. We strongly recommend that customers ensure their applications are fully compatible with TLS 1.2 before the end of September.
 
 | Scenario | Server parameter settings | Description |
 | --- | --- | --- |
@@ -85,11 +85,10 @@ Following are the different configurations of SSL and TLS settings you can have 
 > Changes to SSL Cipher on the flexible server is not supported. FIPS cipher suites is enforced by default when tls_version is set to TLS version 1.2. For TLS versions other than version 1.2, SSL Cipher is set to default settings which comes with MySQL community installation.
 
 
-Review how to [connect using SSL/TLS](how-to-connect-tls-ssl.md) to learn more.
+Review [connect using SSL/TLS](how-to-connect-tls-ssl.md#verify-the-tlsssl-connection) to learn how to identify the TLS version you are using .
 
 ## Next steps
 
 - Learn how to enable private access (VNet integration) using the [Azure portal](how-to-manage-virtual-network-portal.md) or [Azure CLI](how-to-manage-virtual-network-cli.md)
 - Learn how to enable public access (allowed IP addresses) using the [Azure portal](how-to-manage-firewall-portal.md) or [Azure CLI](how-to-manage-firewall-cli.md)
 - Learn how to [configure private link for Azure Database for MySQL flexible server from Azure portal](how-to-networking-private-link-portal.md).
-
