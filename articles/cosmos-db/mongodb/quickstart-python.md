@@ -34,13 +34,13 @@ Deploy this project's development container to your environment. Then, use the A
 
 ::: zone pivot="devcontainer-codespace"
 
-[![Open in GitHub Codespaces](https://img.shields.io/static/v1?style=for-the-badge&label=GitHub+Codespaces&message=Open&color=brightgreen&logo=github)](https://codespaces.new/alexwolfmsft/cosmos-db-mongodb-python-quickstart?template=false&quickstart=1&azure-portal=true)
+[![Open in GitHub Codespaces](https://img.shields.io/static/v1?style=for-the-badge&label=GitHub+Codespaces&message=Open&color=brightgreen&logo=github)](https://codespaces.new/Azure-Samples/cosmos-db-mongodb-python-quickstarttemplate=false&quickstart=1&azure-portal=true)
 
 ::: zone-end
 
 ::: zone pivot="devcontainer-vscode"
 
-[![Open in Dev Container](https://img.shields.io/static/v1?style=for-the-badge&label=Dev+Containers&message=Open&color=blue&logo=visualstudiocode)](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/alexwolfmsft/cosmos-db-mongodb-python-quickstart)
+[![Open in Dev Container](https://img.shields.io/static/v1?style=for-the-badge&label=Dev+Containers&message=Open&color=blue&logo=visualstudiocode)](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://Azure-Samples/cosmos-db-mongodb-python-quickstart)
 
 ::: zone-end
 
@@ -70,7 +70,7 @@ Deploy this project's development container to your environment. Then, use the A
     ```
 
     > [!NOTE]
-    > This quickstart uses the [azure-samples/cosmos-db-mongodb-python-quickstart](https://github.com/alexwolfmsft/cosmos-db-mongodb-python-quickstart) template GitHub repository. The Azure Developer CLI automatically clones this project to your machine if it is not already there.
+    > This quickstart uses the [azure-samples/cosmos-db-mongodb-python-quickstart](https://github.com/Azure-Samples/cosmos-db-mongodb-python-quickstart) template GitHub repository. The Azure Developer CLI automatically clones this project to your machine if it is not already there.
 
 1. During initialization, configure a unique environment name.
 
