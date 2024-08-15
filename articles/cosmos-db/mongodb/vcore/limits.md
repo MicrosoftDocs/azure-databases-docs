@@ -26,7 +26,7 @@ db.collection.find({ field: "value" }).maxTimeMS(5000)
 
 ### Maximum MongoDB Query Size
 - The maximum memory size for MongoDB queries depends on the tier. For example, for M80, the query memory size limit is approximately 150 MiB.
-- In sharded clusters, if a query pulls data across nodes, the limit on that data size is 1GB.
+- In sharded clusters, if a query pulls data across nodes, the limit on that data size is 1 GB.
 
 ## Indexing Limits
 
