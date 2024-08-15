@@ -6,7 +6,7 @@ ms.author: gahllevy
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: conceptual
-ms.date: 06/27/2024
+ms.date: 08/14/2024
 ---
 
 # Service Limits in Azure Cosmos DB for MongoDB vCore
@@ -75,11 +75,17 @@ db.collection.find({ field: "value" }).maxTimeMS(5000)
 ### Shards
 - Maximum: 6 (in preview). Please [reach out to our team](mailto:mongodb-feedback@microsoft.com) for additional shards.
 
+### Collection and index limits
+-	Collections per cluster: 1,000
+-	Collection size: 4 TiB
+-	Indexes per cluster: 100
+-	Total index size: 100 GiB
+
 ### Secondary Regions
 - Maximum: 1 additional secondary region. Please [reach out to our team](mailto:mongodb-feedback@microsoft.com) for additional regions.
 
 ### Free Tier Limits
-The following limitations can be overridden by upgrading a paid tier
+The following limitations can be overridden by upgrading to a paid tier
 - Maximum storage: 32GB.
 - Backup / Restore not supported (available in M25+)
 - High availability (HA) not supported (available in M30+)
@@ -108,6 +114,3 @@ The following limitations can be overridden by upgrading a paid tier
 
 - Get started by [creating a cluster.](quickstart-portal.md).
 - Review options for [migrating from MongoDB to Azure Cosmos DB for MongoDB vCore.](migration-options.md)
-
-
-
