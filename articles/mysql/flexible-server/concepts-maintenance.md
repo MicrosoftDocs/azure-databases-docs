@@ -101,6 +101,19 @@ There's no limitation on how many times a maintenance can be rescheduled, as lon
 
 Use this feature to avoid disruptions during critical database operations. We encourage your feedback as we continue to develop this functionality.
 
+## FAQ
+
+**Q: Why did some of my servers receive maintenance notifications while others did not?**
+
+A: The maintenance start times differ across regions, so servers in different regions may receive maintenance notifications at different times.
+
+**Q: Why did some servers in the same region receive maintenance notifications while others did not?**
+
+A: This could be because the servers that did not receive notifications were created more recently, and the system determined that they do not yet require maintenance.
+
+**Q: Can I opt out of scheduled maintenance?**
+
+A: No, opting out of scheduled maintenance is not allowed. However, you can use the maintenance reschedule feature to adjust the timing or enable the High Availability (HA) feature to minimize downtime. As a PaaS database product, it's essential to perform timely maintenance to ensure the security and reliability of your database.
 
 ## Next steps
 
