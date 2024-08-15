@@ -20,9 +20,9 @@ Azure Database for MySQL flexible server supports three ways to configure connec
 
    - **[Public access](./concepts-networking-public.md)** Your flexible server is accessed through a public endpoint. The public endpoint is a publicly resolvable DNS address. The phrase "allowed IP addresses" refers to a range of IPs you choose to give permission to access your server. These permissions are called **firewall rules**.
 
-   - **[Private Endpoint](/azure/private-link/private-endpoint-overview)** You can use private endpoints to allow hosts on a virtual network [VNet](/azure/virtual-network/virtual-networks-overview) to securely access data over a [Private Link](/azure/private-link/private-link-overview).
+   - **[Private Endpoint](../../private-link/private-endpoint-overview.md)** You can use private endpoints to allow hosts on a virtual network [VNet](../../virtual-network/virtual-networks-overview.md) to securely access data over a [Private Link](../../private-link/private-link-overview.md).
 
-   - **[Private access (VNet Integration)](./concepts-networking-vnet.md)** You can deploy your flexible server into your [Azure Virtual Network](/azure/virtual-network/virtual-networks-overview). Azure virtual networks provide private and secure network communication. Resources in a virtual network can communicate through private IP addresses.
+   - **[Private access (VNet Integration)](./concepts-networking-vnet.md)** You can deploy your flexible server into your [Azure Virtual Network](../../virtual-network/virtual-networks-overview.md). Azure virtual networks provide private and secure network communication. Resources in a virtual network can communicate through private IP addresses.
 
 > [!NOTE]  
 > After deploying a server with public or private access (via VNet integration), you cannot modify the connectivity mode. But in public access mode, you can enable or disable private endpoints as required and also disable public access if needed.
@@ -36,7 +36,7 @@ Choose **Public access (allowed IP addresses) and Private endpoint** method if y
    - Ability to configure Private endpoints to access the server from hosts on a virtual network (VNet)
 
 Choose **Private access (VNet integration)** if you want the following capabilities:
-   - Connect to your flexible server from Azure resources within the same virtual network or a [peered virtual network](/azure/virtual-network/virtual-network-peering-overview) without the need to configure a private endpoint
+   - Connect to your flexible server from Azure resources within the same virtual network or a [peered virtual network](../../virtual-network/virtual-network-peering-overview.md) without the need to configure a private endpoint
    - Use VPN or ExpressRoute to connect from non-Azure resources to your flexible server
    - No public endpoint
 
@@ -55,7 +55,7 @@ The following characteristics apply whether you choose to use the private access
 - Change from Public to Private access isn't allowed after the server is created. The recommended way is to use point-in-time restore.
 
 > [!NOTE]  
-> If you are using the custom DNS server, you must use a DNS forwarder to resolve the FQDN of the Azure Database for MySQL flexible server instance. Refer to **[name resolution that uses your DNS server](/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server)** to learn more.
+> If you are using the custom DNS server, you must use a DNS forwarder to resolve the FQDN of the Azure Database for MySQL flexible server instance. Refer to **[name resolution that uses your DNS server](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)** to learn more.
 
 ## Hostname
 
@@ -72,7 +72,7 @@ Azure Database for MySQL flexible server supports encrypted connections using Tr
 Following are the different configurations of SSL and TLS settings you can have for your flexible server:
 
 >[!IMPORTANT]
->Starting in early September 2024, new servers will no longer be permitted to use TLS 1.0 or 1.1, and existing servers will not be allowed to downgrade to these versions. Beginning mid-September 2024, we will initiate a mandatory upgrade of all servers currently using TLS 1.0 or 1.1 to TLS 1.2. This upgrade process is expected to be completed by the end of September 2024. We strongly recommend that customers ensure their applications are fully compatible with TLS 1.2 before the end of September.
+> According to [Removal of Support for the TLS 1.0 and TLS 1.1 Protocols](https://dev.mysql.com/doc/refman/8.0/en/encrypted-connection-protocols-ciphers.html#encrypted-connection-deprecated-protocols), starting in early September 2024, new servers will no longer be permitted to use TLS 1.0 or 1.1, and existing servers will not be allowed to downgrade to these versions. Beginning mid-September 2024, we will initiate a mandatory upgrade of all servers currently using TLS 1.0 or 1.1 to TLS 1.2. This upgrade process is expected to be completed by the end of September 2024. We strongly recommend that customers ensure their applications are fully compatible with TLS 1.2 before the end of September.
 
 | Scenario | Server parameter settings | Description |
 | --- | --- | --- |
@@ -85,11 +85,10 @@ Following are the different configurations of SSL and TLS settings you can have 
 > Changes to SSL Cipher on the flexible server is not supported. FIPS cipher suites is enforced by default when tls_version is set to TLS version 1.2. For TLS versions other than version 1.2, SSL Cipher is set to default settings which comes with MySQL community installation.
 
 
-Review how to [connect using SSL/TLS](how-to-connect-tls-ssl.md) to learn more.
+Review [connect using SSL/TLS](how-to-connect-tls-ssl.md#verify-the-tlsssl-connection) to learn how to identify the TLS version you are using .
 
 ## Next steps
 
 - Learn how to enable private access (VNet integration) using the [Azure portal](how-to-manage-virtual-network-portal.md) or [Azure CLI](how-to-manage-virtual-network-cli.md)
 - Learn how to enable public access (allowed IP addresses) using the [Azure portal](how-to-manage-firewall-portal.md) or [Azure CLI](how-to-manage-firewall-cli.md)
 - Learn how to [configure private link for Azure Database for MySQL flexible server from Azure portal](how-to-networking-private-link-portal.md).
-
