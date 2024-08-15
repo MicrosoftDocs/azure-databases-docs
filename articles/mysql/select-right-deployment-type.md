@@ -5,7 +5,7 @@ author: SudheeshGH
 ms.author: sunaray
 ms.reviewer: maghan
 ms.date: 12/01/2023
-ms.service: mysql
+ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: conceptual
 ---
@@ -55,7 +55,7 @@ The main differences between these options are listed in the following table:
 | Low cost Burstable SKU | Not Supported | Supported | Supported |
 | [**Networking/Security**](single-server/concepts-security.md) | | | |
 | Network Connectivity | - Public endpoints with server firewall.<br />- Private access with Private Link support. | - Public endpoints with server firewall.<br />- Private access with Private Link support. <br />- Private access with Virtual Network integration. | - Public endpoints with server firewall.<br />- Private access with Private Link support.  |
-| SSL/TLS | Enabled by default with support for TLS v1.2, 1.1 and 1.0 | Enabled by default with support for TLS v1.3, 1.2, 1.1 and 1.0 | Supported with TLS v1.2, 1.1 and 1.0 |
+| SSL/TLS | Enabled by default with support for TLS v1.2, 1.1 and 1.0 | Enabled by default with support for TLS v1.3, 1.2| Supported with TLS v1.2, 1.1 and 1.0 |
 | Data Encryption at rest | Supported with customer-managed keys (BYOK) | Supported with service managed keys | Not Supported |
 | Microsoft Entra authentication | Supported | Supported | Not Supported |
 | Microsoft Defender for Cloud support | Yes | Yes | No |
@@ -167,7 +167,7 @@ The following list describes administrative considerations for each option:
 
   Additionally, configuring high availability to another data center requires minimal to no configuration or administration.
 
-- With MySQL on Azure VMs, you can control the operating system and the MySQL server instance configuration. You decide when to update or upgrade the operating system and database software with a VM and what patches to apply. You also choose when to install any additional software such as an antivirus application. Some automated features are provided to simplify significantly patching, backup, and high availability. You can control the size of the VM, the number of disks, and their storage configurations. For more information, see [Virtual machine and cloud service sizes for Azure](../virtual-machines/sizes.md).
+- With MySQL on Azure VMs, you can control the operating system and the MySQL server instance configuration. You decide when to update or upgrade the operating system and database software with a VM and what patches to apply. You also choose when to install any additional software such as an antivirus application. Some automated features are provided to simplify significantly patching, backup, and high availability. You can control the size of the VM, the number of disks, and their storage configurations. For more information, see [Virtual machine and cloud service sizes for Azure](/azure/virtual-machines/sizes).
 
 ### Time to move to Azure
 
