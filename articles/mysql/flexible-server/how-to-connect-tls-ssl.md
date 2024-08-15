@@ -21,16 +21,18 @@ Azure Database for MySQL flexible server supports encrypted connections using Tr
 
 Following are the different configurations of SSL and TLS settings you can have for your Azure Database for MySQL flexible server instance:
 
+> [!IMPORTANT]
+> According to [Removal of Support for the TLS 1.0 and TLS 1.1 Protocols](https://dev.mysql.com/doc/refman/8.0/en/encrypted-connection-protocols-ciphers.html#encrypted-connection-deprecated-protocols), starting in early September 2024, new servers will no longer be permitted to use TLS 1.0 or 1.1, and existing servers will not be allowed to downgrade to these versions. Beginning mid-September 2024, we will initiate a mandatory upgrade of all servers currently using TLS 1.0 or 1.1 to TLS 1.2. This upgrade process is expected to be completed by the end of September 2024. We strongly recommend that customers ensure their applications are fully compatible with TLS 1.2 before the end of September.
+
 | Scenario | Server parameter settings | Description |
 | --- | --- | --- |
 | Disable SSL enforcement | require_secure_transport = OFF | If your legacy application doesn't support encrypted connections to Azure Database for MySQL flexible server, you can disable enforcement of encrypted connections to your Azure Database for MySQL flexible server instance by setting require_secure_transport=OFF. |
-| Enforce SSL with TLS version < 1.2 | require_secure_transport = ON and tls_version = TLS 1.0 or TLS 1.1 | If your legacy application supports encrypted connections but requires TLS version < 1.2, you can enable encrypted connections, but configure your Azure Database for MySQL flexible server instance to allow connections with the TLS version (1.0 or 1.1) supported by your application. Supported only with Azure Database for MySQL flexible server version v5.7 |
+| Enforce SSL with TLS version < 1.2 (Will be deprecated in September 2024)| require_secure_transport = ON and tls_version = TLS 1.0 or TLS 1.1 | If your legacy application supports encrypted connections but requires TLS version < 1.2, you can enable encrypted connections, but configure your Azure Database for MySQL flexible server instance to allow connections with the TLS version (1.0 or 1.1) supported by your application. Supported only with Azure Database for MySQL flexible server version v5.7 |
 | Enforce SSL with TLS version = 1.2(Default configuration) | require_secure_transport = ON and tls_version = TLS 1.2 | This is the recommended and default configuration for Azure Database for MySQL flexible server. |
 | Enforce SSL with TLS version = 1.3 | require_secure_transport = ON and tls_version = TLS 1.3 | This is useful and recommended for new applications development. Supported only with Azure Database for MySQL flexible server version v8.0 |
 
 > [!NOTE]  
-> - Changes to SSL Cipher on Azure Database for MySQL flexible server is not supported. FIPS cipher suites is enforced by default when tls_version is set to TLS version 1.2 . For TLS versions other than version 1.2, SSL Cipher is set to default settings which comes with MySQL community installation.
-> - MySQL open-source community editions starting with the release of MySQL versions 8.0.26 and 5.7.35, the TLS 1.0 and TLS 1.1 protocols are deprecated. These protocols released in 1996 and 2006, respectively to encrypt data in motion, are considered weak, outdated, and vulnerable to security threats. For more information, see [Removal of Support for the TLS 1.0 and TLS 1.1 Protocols](https://dev.mysql.com/doc/refman/8.0/en/encrypted-connection-protocols-ciphers.html#encrypted-connection-deprecated-protocols). Azure Database for MySQL flexible server also stops supporting TLS versions once the community stops the support for the protocol, to align with modern security standards.
+> Changes to SSL Cipher on Azure Database for MySQL flexible server is not supported. FIPS cipher suites is enforced by default when tls_version is set to TLS version 1.2 . For TLS versions other than version 1.2, SSL Cipher is set to default settings which comes with MySQL community installation.
 
 In this article, you learn how to:
 
@@ -94,7 +96,7 @@ To set TLS versions on your Azure Database for MySQL flexible server instance, y
 
 | Azure Database for MySQL flexible server version | Supported Values of tls_version | Default Setting |
 | --- | --- | --- |
-| MySQL 5.7 | TLS 1.0, TLS 1.1, TLS 1.2 | TLS 1.2 |
+| MySQL 5.7 | TLS 1.0, TLS 1.1(Will be deprecated in September 2024) TLS 1.2 | TLS 1.2 |
 | MySQL 8.0	 | TLS 1.2, TLS 1.3 | TLS 1.2 |
 
 ## Connect using mysql command-line client with TLS/SSL
