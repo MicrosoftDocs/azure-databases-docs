@@ -6,12 +6,12 @@ ms.author: gahllevy
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: conceptual
-ms.date: 06/27/2024
+ms.date: 08/14/2024
 ---
 
 # Service Limits in Azure Cosmos DB for MongoDB vCore
 
-This document outlines the current hard and soft limits for Azure Cosmos DB for MongoDB vCore. Many of these limitations are temporary and will evolve over time as the service continues to improve. If any of these limits are an issue for your organization, please [reach out to our team](mailto:mongodb-feedback@microsoft.com) for assistance.
+This document outlines the current hard and soft limits for Azure Cosmos DB for MongoDB vCore. Many of these limitations are temporary and will evolve over time as the service continues to improve. If any of these limits are an issue for your organization, [reach out to our team](mailto:mongodb-feedback@microsoft.com) for assistance.
 
 ## Query and Execution Limits
 
@@ -26,19 +26,19 @@ db.collection.find({ field: "value" }).maxTimeMS(5000)
 
 ### Maximum MongoDB Query Size
 - The maximum memory size for MongoDB queries depends on the tier. For example, for M80, the query memory size limit is approximately 150 MiB.
-- In sharded clusters, if a query pulls data across nodes, the limit on that data size is 1GB.
+- In sharded clusters, if a query pulls data across nodes, the limit on that data size is 1 GB.
 
 ## Indexing Limits
 
 ### General Indexing Limits
 - Maximum number of compound index fields: 32.
-- Maximum size for `_id` field value: 2KB.
+- Maximum size for `_id` field value: 2 KB.
 - Maximum size for index path: 256B.
 - Default maximum: 64.
   - Configurable up to: 300 indexes per collection.
 - Sorting is done in memory and doesn't push down to the index.
 - Maximum level of nesting for embedded objects/arrays on index definitions: 6.
-- Background index builds are in preview. To enable, please [reach out to our team](mailto:mongodb-feedback@microsoft.com) for assistance.
+- Background index builds are in preview. To enable, [reach out to our team](mailto:mongodb-feedback@microsoft.com) for assistance.
   - A single index build can be in progress on the same collection.
   - The number of simultaneous index builds on different collections is configurable (default: 2).
   - Use the `currentOp` command to view the progress of long-running index builds.
@@ -70,17 +70,23 @@ db.collection.find({ field: "value" }).maxTimeMS(5000)
 ## Cluster and Shard Limits
 
 ### Cluster Tier
-- Maximum: M200. Please [reach out to our team](mailto:mongodb-feedback@microsoft.com) for higher tiers.
+- Maximum: M200. [Reach out to our team](mailto:mongodb-feedback@microsoft.com) for higher tiers.
 
 ### Shards
-- Maximum: 6 (in preview). Please [reach out to our team](mailto:mongodb-feedback@microsoft.com) for additional shards.
+- Maximum: 6 (in preview). [Reach out to our team](mailto:mongodb-feedback@microsoft.com) for more shards.
+
+### Collection and index limits
+-	Collections per cluster: 1,000
+-	Collection size: 4 TiB
+-	Indexes per cluster: 100
+-	Total index size: 100 GiB
 
 ### Secondary Regions
-- Maximum: 1 additional secondary region. Please [reach out to our team](mailto:mongodb-feedback@microsoft.com) for additional regions.
+- Maximum: 1 secondary region. [Reach out to our team](mailto:mongodb-feedback@microsoft.com) for more regions.
 
 ### Free Tier Limits
-The following limitations can be overridden by upgrading a paid tier
-- Maximum storage: 32GB.
+The following limitations can be overridden by upgrading to a paid tier
+- Maximum storage: 32 GiB.
 - Backup / Restore not supported (available in M25+)
 - High availability (HA) not supported (available in M30+)
 - HNSW vector indexes not supported (available in M40+)
@@ -106,8 +112,5 @@ The following limitations can be overridden by upgrading a paid tier
 
 ## Next steps
 
-- Get started by [creating a cluster.](quickstart-portal.md).
-- Review options for [migrating from MongoDB to Azure Cosmos DB for MongoDB vCore.](migration-options.md)
-
-
-
+- Get started by [creating a cluster](quickstart-portal.md).
+- Review options for [migrating from MongoDB to Azure Cosmos DB for MongoDB vCore](migration-options.md).
