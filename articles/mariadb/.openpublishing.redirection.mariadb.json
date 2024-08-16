@@ -19,6 +19,11 @@
         "source_path_from_root": "/articles/mariadb/concepts-data-access-and-security-threat-protection.md",
         "redirect_url": "/azure/security-center/defender-for-databases-usage",
         "redirect_document_id": false
+    },
+    {
+        "source_path_from_root": "/articles/mariadb/security-baseline.md",
+        "redirect_url": "/security/benchmark/azure/baselines/mariadb-security-baseline",
+        "redirect_document_id": false
     }
-    ]
+  ]
 }

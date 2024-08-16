@@ -26,6 +26,7 @@ At the end, we'll create a simple UX using Gradio to allow users to type in ques
 **Important Note**: This sample requires you to set up accounts for Azure Cosmos DB for NoSQL and Azure OpenAI. To get started, visit:
 - [Azure Cosmos DB for NoSQL Python Quickstart](../nosql/quickstart-python.md)
 - [Azure Cosmos DB for NoSQL Vector Search](../nosql/vector-search.md)
+- [Azure OpenAI](/azure/ai-services/openai)
 
 ### 1. Install Required Packages
 
@@ -430,5 +431,3 @@ This quickstart guide is designed to help you set up and get running with Azure 
 ### More Vector Database Solutions
 
 - [Azure PostgreSQL Server pgvector Extension](../../postgresql/flexible-server/how-to-use-pgvector.md)
-
-:::image type="content" source="../media/vector-search/azure-databases-and-ai-search.png" lightbox="../media/vector-search/azure-databases-and-ai-search.png" alt-text="Diagram of Vector indexing services.":::                    
