@@ -49,12 +49,11 @@ When you stop the server, all active connections are dropped. Later, when you wa
 When the server is in the stopped state, the server's compute isn't billed. However, storage continues to be billed because the server's storage remains to ensure that data files are available when you start the server again.
 
 > [!IMPORTANT]
-> When you stop the server, it remains in that state for the next 30 days. If you don't manually start it during that time, the server is automatically started at the end of 30 days. You can chose to stop the server again if you're not using it.
+> When you stop the server, it remains in that state for the next 30 days. If you don't manually start the server during that time, it's automatically started at the end of 30 days. You can chose to stop the server again if you're not using it.
 
-During the time that the server is stopped, you can't perform any management operations on it. To change any configuration settings on the server, you need to [start the server](how-to-stop-start-server-portal.md). For more information, refer to the [stop/start limitations](./concepts-limitations.md#stopstart-operation).
+During the time that the server is stopped, you can't perform any management operations on it. Operations that aren't supported on stopped servers include changing the pricing tier, number of vCores, storage size or I/O operations, backup retention day, server tag, server password, server parameters, storage autogrow, geo-redundant backup, high availability, and user identity. These operations appear as inactive in the Azure portal.
 
-> [!NOTE]
-> Operations on servers that are in a stopped state are disabled and appear as inactive in the Azure portal. Operations that are not supported on stopped servers include changing the pricing tier, number of vCores, storage size or I/O operations, backup retention day, server tag, server password, server parameters, storage autogrow, geo-redundant backup, high availability, and user identity.
+To change any configuration settings on a stopped server, you need to [start the server](how-to-stop-start-server-portal.md). For more information, refer to the [stop/start limitations](./concepts-limitations.md#stopstart-operation).
 
 ## Manage a server
 
@@ -66,9 +65,9 @@ In addition, the following stored procedures are available in Azure Database for
 |-----|-----|-----|-----|
 |*mysql.az_kill*|`processlist_id`|Not applicable|Equivalent to the [`KILL CONNECTION`](https://dev.mysql.com/doc/refman/8.0/en/kill.html) command. Terminates the connection associated with the provided `processlist_id` value after terminating any statement that the connection is executing.|
 |*mysql.az_kill_query*|`processlist_id`|Not applicable|Equivalent to the [`KILL QUERY`](https://dev.mysql.com/doc/refman/8.0/en/kill.html) command. Terminates the statement that the connection is currently executing. Leaves the connection itself alive.|
-|*mysql.az_load_timezone*|Not applicable|Not applicable|Loads [time zone tables](../single-server/how-to-server-parameters.md#working-with-the-time-zone-parameter) to allow the `time_zone` parameter to be set to named values (ex. "US/Pacific").|
+|*mysql.az_load_timezone*|Not applicable|Not applicable|Loads [time zone tables](../single-server/how-to-server-parameters.md#working-with-the-time-zone-parameter) to allow the `time_zone` parameter to be set to named values (for example, `US/Pacific`).|
 
-## Next steps
+## Related content
 
-- Learn about [creating a server](./quickstart-create-server-portal.md)
-- Learn about [monitoring and alerts](./how-to-alert-on-metric.md)
+- Learn about [creating a server](./quickstart-create-server-portal.md).
+- Learn about [monitoring and alerts](./how-to-alert-on-metric.md).
