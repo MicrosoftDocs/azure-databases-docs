@@ -66,7 +66,7 @@ At this time, Azure Database for PostgreSQL - Flexible Server doesn't support:
 - [Custom SSL\TLS certificates](https://www.postgresql.org/docs/current/ssl-tcp.html#SSL-CERTIFICATE-CREATION).
 
 > [!NOTE]
-> Microsoft made root CA changes for various Azure services, including Azure Database for PostgreSQL - Flexible Server. For more information, see [Azure TLS certificate changes](/azure/security/fundamentals/tls-certificate-changes.md) and the section [Configure SSL on the client](#configure-ssl-on-the-client).
+> Microsoft made root CA changes for various Azure services, including Azure Database for PostgreSQL - Flexible Server. For more information, see [Azure TLS certificate changes](/azure/security/fundamentals/tls-certificate-changes) and the section [Configure SSL on the client](#configure-ssl-on-the-client).
 
 To determine your current TLS\SSL connection status, you can load the [sslinfo extension](concepts-extensions.md) and then call the `ssl_is_used()` function to determine if SSL is being used. The function returns `t` if the connection is using SSL. Otherwise, it returns `f`. You can also collect all the information about your Azure Database for PostgreSQL - Flexible Server instance's SSL usage by process, client, and application by using the following query:
 
@@ -139,7 +139,7 @@ To import certificates to client certificate stores, you might have to convert c
 openssl x509 -inform DER -in certificate.crt -out certificate.pem -outform PEM
 ```
 
-Information on updating client applications certificate stores with new root CA certificates is documented in [Update client TLS certificates for application clients](../flexible-server/how-to-update-client-certificates-java.md).
+Information on updating client applications certificate stores with new root CA certificates is documented in [Update client TLS certificates for application clients](/azure/flexible-server/how-to-update-client-certificates-java).
 
 > [!IMPORTANT]
 > Some of the Postgres client libraries, while using the `sslmode=verify-full` setting, might experience connection failures with root CA certificates that are cross-signed with intermediate certificates. The result is alternate trust paths. In this case, we recommend that you explicitly specify the `sslrootcert` parameter. Or, set the `PGSSLROOTCERT` environment variable to a local path where the Microsoft RSA Root CA 2017 root CA certificate is placed, from the default value of `%APPDATA%\postgresql\root.crt`.
