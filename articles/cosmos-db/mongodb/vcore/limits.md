@@ -112,5 +112,5 @@ The following limitations can be overridden by upgrading to a paid tier
 
 ## Next steps
 
-- Get started by [creating a cluster.](quickstart-portal.md).
-- Review options for [migrating from MongoDB to Azure Cosmos DB for MongoDB vCore.](migration-options.md)
+- Get started by [creating a cluster](quickstart-portal.md).
+- Review options for [migrating from MongoDB to Azure Cosmos DB for MongoDB vCore](migration-options.md).
