@@ -114,9 +114,9 @@ There are many connection parameters for configuring the client for SSL. A few i
 
 CAs are the institutions responsible for issuing certificates. A trusted certificate authority is an entity that's entitled to verify that someone is who they say they are. For this model to work, all participants must agree on a set of trusted CAs. All operating systems and most web browsers ship with a set of trusted CAs.
 
-Using `verify-ca` and `verify-full` `sslmode` configuration settings can also be known as [certificate pinning](/azure/security/fundamentals/certificate-pinning.md#how-to-address-certificate-pinning-in-your-application). In this case, root CA certificates on the PostgreSQL server have to match the certificate signature and even the host name against the certificate on the client.
+Using `verify-ca` and `verify-full` `sslmode` configuration settings can also be known as [certificate pinning](/azure/security/fundamentals/certificate-pinning#how-to-address-certificate-pinning-in-your-application). In this case, root CA certificates on the PostgreSQL server have to match the certificate signature and even the host name against the certificate on the client.
 
-You might periodically need to update client-stored certificates when CAs change or expire on PostgreSQL server certificates. To determine if you're pinning CAs, see [Certificate pinning and Azure services](/azure/security/fundamentals/certificate-pinning.md#how-to-address-certificate-pinning-in-your-application).
+You might periodically need to update client-stored certificates when CAs change or expire on PostgreSQL server certificates. To determine if you're pinning CAs, see [Certificate pinning and Azure services](/azure/security/fundamentals/certificate-pinning#how-to-address-certificate-pinning-in-your-application).
 
 For more on SSL\TLS configuration on the client, see [PostgreSQL documentation](https://www.postgresql.org/docs/current/ssl-tcp.html#SSL-CLIENT-CERTIFICATES).
 
@@ -139,7 +139,7 @@ To import certificates to client certificate stores, you might have to convert c
 openssl x509 -inform DER -in certificate.crt -out certificate.pem -outform PEM
 ```
 
-Information on updating client applications certificate stores with new root CA certificates is documented in [Update client TLS certificates for application clients](/azure/flexible-server/how-to-update-client-certificates-java).
+Information on updating client applications certificate stores with new root CA certificates is documented in [Update client TLS certificates for application clients](/azure/postgresql/flexible-server/how-to-update-client-certificates-java).
 
 > [!IMPORTANT]
 > Some of the Postgres client libraries, while using the `sslmode=verify-full` setting, might experience connection failures with root CA certificates that are cross-signed with intermediate certificates. The result is alternate trust paths. In this case, we recommend that you explicitly specify the `sslrootcert` parameter. Or, set the `PGSSLROOTCERT` environment variable to a local path where the Microsoft RSA Root CA 2017 root CA certificate is placed, from the default value of `%APPDATA%\postgresql\root.crt`.
