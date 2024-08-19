@@ -8,7 +8,7 @@ ms.topic: include
 ms.date: 05/15/2024
 author: AlicjaKucharczyk
 author: akashraokm
-ms.ms.author: akashrao
+ms.author: akashrao
 zone_pivot_groups: postgresql-server-version
 ---
 #### Description
