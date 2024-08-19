@@ -106,7 +106,7 @@ You can enable the feature during creation of a flexible server or on an existin
 
     :::image type="content" source="./media/concepts-accelerated-logs/accelerated-logs-mysql-portal-enable.png" alt-text="Screenshot that shows selections for enabling accelerated logs on an existing server." lightbox="./media/concepts-accelerated-logs/accelerated-logs-mysql-portal-enable.png":::
 
-3. Select **Save** and wait for the deployment process to finish. After you receive a successful deployment message, the feature is ready to be used.
+3. Select **Save** and wait for the deployment process to finish. After you receive a successful deployment message, the feature is ready for use.
 
 ## Disable accelerated logs
 

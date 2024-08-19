@@ -14,7 +14,7 @@ ms.topic: conceptual
 
 [!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
-This article describes limitations in Azure Database for MySQL - Flexible Server. [General limitations](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.7/en/limits.html) in the MySQL database engine are also applicable. If you want to learn about resource limitations (compute, memory, storage), see the [article about compute and storage](concepts-service-tiers-storage.md).
+This article describes limitations in Azure Database for MySQL - Flexible Server. [General limitations](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.7/en/limits.html) in the MySQL database engine also apply. If you want to learn about resource limitations (compute, memory, storage), see the [article about compute and storage](concepts-service-tiers-storage.md).
 
 ## Server parameters
 
@@ -28,7 +28,7 @@ MySQL 8.0+ servers add the invisible column `my_row_id` to the tables and a prim
 
 By default, GIPKs appear in the output of [SHOW CREATE TABLE](https://dev.mysql.com/doc/refman/8.0/en/show-create-table.html), [SHOW COLUMNS](https://dev.mysql.com/doc/refman/8.0/en/show-columns.html), and [SHOW INDEX](https://dev.mysql.com/doc/refman/8.0/en/show-index.html). GIPKs are also visible in the `INFORMATION_SCHEMA` [COLUMNS](https://dev.mysql.com/doc/refman/8.0/en/information-schema-columns-table.html) and [STATISTICS](https://dev.mysql.com/doc/refman/8.0/en/information-schema-statistics-table.html) tables.
 
-For more details on GIPK and its use cases with data-in replication, see [Replicate data into Azure Database for MySQL - Flexible Server](./concepts-data-in-replication.md#generated-invisible-primary-key).
+For more details on GIPKs and their use cases with data-in replication, see [Replicate data into Azure Database for MySQL - Flexible Server](./concepts-data-in-replication.md#generated-invisible-primary-key).
 
 #### Steps to disable a GIPK
 
@@ -129,7 +129,7 @@ With point-in-time restore, new servers have the same compute and storage config
 
 Not all features available in Azure Database for MySQL - Single Server are available in Azure Database for MySQL - Flexible Server.
 
-For the complete list of feature comparisons between the Azure Database for MySQL - Single Server and Azure Database for MySQL - Flexible Server, refer to the [article about choosing the right MySQL Server option in Azure](../select-right-deployment-type.md#compare-the-mysql-deployment-options-in-azure).
+For the complete list of feature comparisons between Azure Database for MySQL - Single Server and Azure Database for MySQL - Flexible Server, see the [article about choosing the right MySQL Server option in Azure](../select-right-deployment-type.md#compare-the-mysql-deployment-options-in-azure).
 
 ## Related content
 

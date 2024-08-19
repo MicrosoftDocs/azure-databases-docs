@@ -34,7 +34,7 @@ An Azure Database for MySQL - Flexible Server instance:
 - Supports customer-provided server maintenance schedules.
 - Supports the ability to deploy flexible servers in a zone-redundant setup for improved high availability.
 - Provides a virtual network integration for database server access.
-- Provides a way to save costs by pausing the flexible server when it's not in use.
+- Provides a way to save costs by pausing when it's not in use.
 - Provides the scope for management policies that apply to its databases; for example, sign-in, firewall, users, roles, and configurations.
 - Supports the major versions MySQL 5.7 and MySQL 8.0. For more information, see [Connect to a gateway node to a specific MySQL version](./../concepts-supported-versions.md).
 
@@ -59,7 +59,7 @@ To change any configuration settings on a stopped server, you need to [start the
 
 You can manage the creation, deletion, server parameter configuration (*my.cnf*), scaling, networking, security, high availability, backup and restore, and monitoring of your Azure Database for MySQL - Flexible Server instance by using the [Azure portal](./quickstart-create-server-portal.md) or the [Azure CLI](./quickstart-create-server-cli.md).
 
-In addition, the following stored procedures are available in Azure Database for MySQL - Flexible Server to perform certain required database administration tasks, because the server doesn't support superuser privileges.
+In addition, the following stored procedures are available in Azure Database for MySQL - Flexible Server to perform certain required database administration tasks, because the server doesn't support `SUPER` user privileges.
 
 |Stored procedure name|Input parameters|Output parameters|Usage note|
 |-----|-----|-----|-----|
