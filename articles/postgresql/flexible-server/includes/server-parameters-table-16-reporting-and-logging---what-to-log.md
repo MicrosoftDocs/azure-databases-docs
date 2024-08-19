@@ -3,7 +3,7 @@ author: AlicjaKucharczyk
 author: akashraokm
 ms.author: akashrao
 ms.reviewer: maghan
-ms.date: 06/18/2024
+ms.date: 08/19/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
@@ -100,7 +100,7 @@ ms.topic: include
 | Category       | Reporting and Logging / What to Log |
 | Description    | Sets the minimum execution time above which autovacuum actions will be logged.                                                 |
 | Data type      | integer     |
-| Default value  | `-1`          |
+| Default value  | `600000`      |
 | Allowed values | `-1-2147483647`         |
 | Parameter type | dynamic        |
 | Documentation  | [log_autovacuum_min_duration](https://www.postgresql.org/docs/16/runtime-config-logging.html#GUC-LOG-AUTOVACUUM-MIN-DURATION)             |

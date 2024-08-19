@@ -3,7 +3,7 @@ author: AlicjaKucharczyk
 author: akashraokm
 ms.author: akashrao
 ms.reviewer: maghan
-ms.date: 06/18/2024
+ms.date: 08/19/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
@@ -1019,7 +1019,7 @@ ms.topic: include
 | Description    | Required. The database(s) that run_maintenance() will run on. If more than one, use a comma separated list. If not set, BGW will do nothing.                                                |
 | Data type      | string      |
 | Default value  |                     |
-| Allowed values | `[A-Za-z0-9_,]*`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| Allowed values | `[A-Za-z0-9_,-]*`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | Parameter type | dynamic        |
 | Documentation  | [pg_partman_bgw.dbname](https://github.com/pgpartman/pg_partman)                                                                                       |
 
