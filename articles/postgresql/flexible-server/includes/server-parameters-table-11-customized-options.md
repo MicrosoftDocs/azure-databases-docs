@@ -1,6 +1,7 @@
 ---
+author: AlicjaKucharczyk
 author: akashraokm
-author: akashrao
+ms.author: akashrao
 ms.reviewer: maghan
 ms.date: 08/19/2024
 ms.service: azure-database-postgresql
