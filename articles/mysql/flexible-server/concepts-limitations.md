@@ -46,7 +46,7 @@ If you want to disable a GIPK, you have two options:
 
 In Azure Database for MySQL - Flexible Server, the default value for `lower_case_table_names` is `1` for MySQL version 5.7. If you need to adjust this setting, we recommend that you [create a support ticket](https://azure.microsoft.com/support/create-ticket/). It's important to understand that after you change the parameter value to `2`, reverting it to `1` isn't allowed.
 
-For MySQL version 8.0, changing the `lower_case_table_names` setting after the server is initialized is prohibited. [Learn more](https://dev.mysql.com/doc/refman/8.0/en/identifier-case-sensitivity.html). In Azure Database for MySQL - Flexible Server, the default value for `lower_case_table_names` is 1 for MySQL version 8.0. If you want to change this parameter to 2, we suggest that you create a MySQL 5.7 server and [create a support ticket](https://azure.microsoft.com/support/create-ticket/) for assistance with the change. Later, if necessary, you can upgrade the server to version 8.0.
+For MySQL version 8.0, changing the `lower_case_table_names` setting after the server is initialized is prohibited. [Learn more](https://dev.mysql.com/doc/refman/8.0/en/identifier-case-sensitivity.html). In Azure Database for MySQL - Flexible Server, the default value for `lower_case_table_names` is `1` for MySQL version 8.0. If you want to change this parameter to `2`, we suggest that you create a MySQL 5.7 server and [create a support ticket](https://azure.microsoft.com/support/create-ticket/) for assistance with the change. Later, if necessary, you can upgrade the server to version 8.0.
 
 ## Storage engines
 
@@ -64,15 +64,15 @@ MySQL supports many storage engines. The following lists show which storage engi
 - [ARCHIVE](https://dev.mysql.com/doc/refman/5.7/en/archive-storage-engine.html)
 - [FEDERATED](https://dev.mysql.com/doc/refman/5.7/en/federated-storage-engine.html)
 
-## Privileges and data manipulation support
+## Privileges and data-manipulation support
 
-Many server parameters and settings can inadvertently degrade server performance or negate the ACID (atomic, consistent, isolated, and durable) properties of the MySQL server. Azure Database for MySQL - Flexible Server doesn't expose multiple roles to maintain service integrity and the service-level agreement at a product level.
+Many server parameters and settings can inadvertently degrade server performance or negate the ACID (atomic, consistent, isolated, and durable) properties of the MySQL server. To maintain service integrity and the service-level agreement at a product level, Azure Database for MySQL - Flexible Server doesn't expose multiple roles.
 
-Azure Database for MySQL - Flexible Server doesn't allow direct access to the underlying file system. Some data manipulation commands aren't supported.
+Azure Database for MySQL - Flexible Server doesn't allow direct access to the underlying file system. Some data-manipulation commands aren't supported.
 
 ### Supported privileges
 
-- `LOAD DATA INFILE` is supported, but the `[LOCAL]` parameter must be specified and directed to a UNC path (Azure storage mounted through Server Message Block). If you're using MySQL client version 8.0 or later, you need to include the `-–local-infile=1` parameter in your connection string.
+- `LOAD DATA INFILE` is supported, but you must specify the `[LOCAL]` parameter and direct it to a UNC path (Azure storage mounted through Server Message Block). If you're using MySQL client version 8.0 or later, you need to include the `-–local-infile=1` parameter in your connection string.
 
 - For MySQL version 8.0 and later, only the following [dynamic privileges](https://dev.mysql.com/doc/refman/8.0/en/privileges-provided.html#privileges-provided-dynamic) are supported:
   - [REPLICATION_APPLIER](https://dev.mysql.com/doc/refman/8.0/en/privileges-provided.html#priv_replication-applier)
@@ -83,21 +83,21 @@ Azure Database for MySQL - Flexible Server doesn't allow direct access to the un
 
 ### Unsupported privileges
 
-- The DBA role is restricted. Alternatively, you can use the administrator user (created during the new server creation), which allows you to perform most of DDL and DML statements.
+- The database administrator (DBA) role is restricted. Alternatively, you can use the role of the administrator user who's assigned during creation of a new server. This role allows you to perform most of the Data Definition Language (DDL) and Data Manipulation Language (DML) statements.
 
 - The following [static privileges](https://dev.mysql.com/doc/refman/8.0/en/privileges-provided.html#privileges-provided-static) are restricted:
-  - [SUPER privilege](https://dev.mysql.com/doc/refman/8.0/en/privileges-provided.html#priv_super)
-  - [FILE privilege](https://dev.mysql.com/doc/refman/8.0/en/privileges-provided.html#priv_file)
+  - [SUPER](https://dev.mysql.com/doc/refman/8.0/en/privileges-provided.html#priv_super)
+  - [FILE](https://dev.mysql.com/doc/refman/8.0/en/privileges-provided.html#priv_file)
   - [CREATE TABLESPACE](https://dev.mysql.com/doc/refman/8.0/en/privileges-provided.html#priv_create-tablespace)
   - [SHUTDOWN](https://dev.mysql.com/doc/refman/8.0/en/privileges-provided.html#priv_shutdown)
 
-- Granting [BACKUP_ADMIN](https://dev.mysql.com/doc/refman/8.0/en/privileges-provided.html#priv_backup-admin) privileges isn't supported for taking backups using any [utility tools](../migrate/how-to-decide-on-right-migration-tools.md).
+- Granting [BACKUP_ADMIN](https://dev.mysql.com/doc/refman/8.0/en/privileges-provided.html#priv_backup-admin) privileges isn't supported for taking backups by using [migration tools](../migrate/how-to-decide-on-right-migration-tools.md).
 
-- `DEFINER` requires super privileges to create and is restricted. If importing data using a backup, manually remove the `CREATE DEFINER` commands or use the `--skip-definer` command when performing a [mysqlpump](https://dev.mysql.com/doc/refman/5.7/en/mysqlpump.html).
+- `DEFINER` requires `SUPER` privileges to create and is restricted. If you're importing data by using a backup, manually remove the `CREATE DEFINER` commands or use the `--skip-definer` command when you're performing a [mysqlpump](https://dev.mysql.com/doc/refman/5.7/en/mysqlpump.html) backup.
 
-- The [mysql system database](https://dev.mysql.com/doc/refman/5.7/en/system-schema.html) is read-only and used to support various PaaS functionalities. You can't make changes to the `mysql` system database.
+- The [mysql system database](https://dev.mysql.com/doc/refman/5.7/en/system-schema.html) is read-only and supports various platform as a service (PaaS) functionalities. You can't make changes to the `mysql` system database.
 
-- `SELECT ... INTO OUTFILE` is not supported in the service.
+- `SELECT ... INTO OUTFILE` isn't supported in the service.
 
 ## Functional limitations
 
@@ -107,7 +107,7 @@ You can set a zone-redundant high-availability configuration only during server 
 
 ### Network
 
-You can't change the connectivity method after you create the server. If you create the server with *Private access (virtual network Integration)*, it can't be changed to *Public access (allowed IP addresses)* after creation, and vice versa.
+You can't change the connectivity method after you create the server. If you create the server with *private access (virtual network integration)*, it can't be changed to *public access (allowed IP addresses)* after creation, and vice versa.
 
 ### Stop/start operations
 
@@ -115,24 +115,24 @@ Operations to stop and start the server are not supported with read replica conf
 
 ### Scale operations
 
-Decreasing server storage provisioned isn't supported.
+Decreasing provisioned server storage isn't supported.
 
 ### Server version upgrades
 
-Automated migration between major database engine versions isn't supported. If you want to upgrade the major version, take a [dump and restore](../concepts-migrate-dump-restore.md) to a server created with the new engine version.
+Automated migration between major database engine versions isn't supported. If you want to upgrade the major version, use a [dump and restore](../concepts-migrate-dump-restore.md) on a server that you created with the new engine version.
 
 ### Restore a server
 
-With point-in-time restore, new servers are created with the same compute and storage configurations as the source server it's based on. The newly restored server's compute can be scaled down after the server is created.
+With point-in-time restore, new servers have the same compute and storage configurations as the source server that they're based on. You can scale down the newly restored server's compute after you create the server.
 
 ## Feature comparisons
 
 Not all features available in Azure Database for MySQL - Single Server are available in Azure Database for MySQL - Flexible Server.
 
-For the complete list of feature comparisons between Azure Database for MySQL - Single Server and Azure Database for MySQL - Flexible Server, refer to the [article about choosing the right MySQL Server option in Azure](../select-right-deployment-type.md#compare-the-mysql-deployment-options-in-azure).
+For the complete list of feature comparisons between the Azure Database for MySQL - Single Server and Azure Database for MySQL - Flexible Server, refer to the [article about choosing the right MySQL Server option in Azure](../select-right-deployment-type.md#compare-the-mysql-deployment-options-in-azure).
 
 ## Related content
 
-- Understand [what's available for compute and storage options in flexible servers](concepts-service-tiers-storage.md).
-- Learn about [Supported MySQL Versions](concepts-supported-versions.md).
-- Quickstart: [Use the Azure portal to create an Azure Database for MySQL - Flexible Server instance](quickstart-create-server-portal.md).
+- Understand [what compute and storage options are available in flexible servers](concepts-service-tiers-storage.md).
+- Learn about [supported MySQL versions](concepts-supported-versions.md).
+- Learn how to [use the Azure portal to create an Azure Database for MySQL - Flexible Server instance](quickstart-create-server-portal.md).
