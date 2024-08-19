@@ -22,11 +22,14 @@ ms.custom:
 
 **In-place automigration** from Azure Database for MySQL – Single Server to Flexible Server is a service-initiated in-place migration during planned maintenance window for Single Server database workloads with **Basic, General Purpose or Memory Optimized SKU** and **no complex features (Read Replica, Virtual Network, Double Infra encryption, Service endpoint/VNet Rules) enabled**. The eligible servers are identified by the service and are sent an advance notification detailing steps to review migration details.
 
-The in-place migration provides a highly resilient and self-healing offline migration experience during a planned maintenance window, with less than **5 mins** of downtime. It uses backup and restore technology for faster migration time. This migration removes the overhead to manually migrate your server and ensure you can take advantage of the benefits of Flexible Server, including better price & performance, granular control over database configuration, and custom maintenance windows. Following described are the key phases of the migration:
+The in-place migration provides a highly resilient and self-healing offline migration experience during a planned maintenance window, with less than **5 mins** of downtime for General Purpose and Memory optimized SKU and up to **30 mins** for Basic SKU.. It uses backup and restore technology for faster migration time. This migration removes the overhead to manually migrate your server and ensure you can take advantage of the benefits of Flexible Server, including better price & performance, granular control over database configuration, and custom maintenance windows. Following described are the key phases of the migration:
 
 - **Target Flexible Server is deployed**, inheriting all feature set and properties (including server parameters and firewall rules) from source Single Server. Source Single Server is set to read-only and backup from source Single Server is copied to the target Flexible Server.
 - **DNS switch and cutover** are performed successfully within the planned maintenance window with minimal downtime, allowing maintenance of the same connection string post-migration. Client applications seamlessly connect to the target flexible server without any user driven manual updates. In addition to both connection string formats (Single and Flexible Server) being supported on migrated Flexible Server, both username formats – username@server_name and username are also supported on the migrated Flexible Server.
 - The **migrated Flexible Server is online** and can now be managed via Azure portal/CLI. Stopped Single Server is deleted seven days after the migration.
+
+> [!NOTE]
+> If your Single Server instance has Basic SKU, your scheduled instance will be migrated with a downtime window of up to 30 minutes. The instance will be migrated to a higher General Purpose SKU to ensure a successful migration and will be downscaled to Burstable SKU in 24-48 hours. If post migration to Burstable SKU, your instance runs out of credits due to heavy CPU workload, consider upgrading to General Purpose SKU on the Flexible Server instance.
 
 > [!NOTE]
 > If your Single Server instance has General Purpose V1 storage, your scheduled instance will undergo an additional restart operation 12 hours prior to the scheduled migration time. This restart operation serves to enable the log_bin server parameter needed to upgrade the instance to General Purpose V2 storage before undergoing the in-place auto-migration.
@@ -73,11 +76,15 @@ Following described are the ways to review your migration schedule once you rece
   > [!NOTE]  
   > If the mandatory inputs for migration are not provided at least 7 days before the scheduled migration, the migration is rescheduled to a later date.
 
+  > [!NOTE]
+  > For Single Server instance with private endpoints, delete the Single Server source instance post migration validation. If no server delete operation is performed, the source instance is maintained until 30 days post which it will be deleted by the service.
+
 ## Prerequisite checks for in-place automigration
 
 Review the following prerequisites to ensure a successful in-place automigration:
 
 - The Single Server instance should be in **ready state** and shouldn't be in stopped state during the planned maintenance window for automigration to take place.
+- The Single Server instance's server parameters, settings, configuration and firewall rules should not be updated during the 7 day window prior to the scheduled automigration.
 - For Single Server instance with **SSL enabled**, ensure you have all three certificates (**[BaltimoreCyberTrustRoot](https://cacerts.digicert.com/BaltimoreCyberTrustRoot.crt.pem), [DigiCertGlobalRootG2 Root CA](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem) and [DigiCertGlobalRootCA Root CA](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem)**) available in the trusted root store. Additionally, if you have the certificate pinned to the connection string create a combined CA certificate with all three certificates before scheduled automigration to ensure business continuity post-migration.
 - The MySQL engine doesn't guarantee any sort order if there's no 'SORT' clause present in queries. Post in-place automigration, you might observe a change in the sort order. If preserving sort order is crucial, ensure your queries are updated to include 'SORT' clause before the scheduled in-place automigration.
 - If your source Azure Database for MySQL Single Server has engine version v8.x, ensure to upgrade your source server's .NET client driver version to 8.0.32 to avoid any encoding incompatibilities post migration to Flexible Server.
@@ -121,6 +128,7 @@ Here's the info you need to know post in-place migration:
   - Monitoring page settings (Alerts, Metrics, and Diagnostic settings) and Locks settings
   - Any Terraform/CLI scripts you host to manage your Single Server instance should be updated with Flexible Server references.
 - For Single Server instance with Query store enabled, the server parameter 'slow_query_log' on target instance is set to ON to ensure feature parity when migrating to Flexible Server. Note, for certain workloads this could affect performance and if you observe any performance degradation, set this server parameter to 'OFF' on the Flexible Server instance.
+- For Single Server instance with private endpoints, delete the Single Server source instance post migration validation. If no server delete operation is performed, the source instance is maintained until 30 days post which it will be deleted by the service.
 - For Single Server instance with Microsoft Defender for Cloud enabled, the enablement state is migrated. To achieve parity in Flexible Server post automigration for properties you can configure in Single Server, consider the details in the following table:
 
 | **Property** | **Configuration** |
