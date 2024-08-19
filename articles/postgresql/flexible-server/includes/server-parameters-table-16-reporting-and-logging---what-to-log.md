@@ -3,7 +3,7 @@ author: AlicjaKucharczyk
 author: akashraokm
 ms.author: akashrao
 ms.reviewer: maghan
-ms.date: 06/18/2024
+ms.date: 08/19/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
