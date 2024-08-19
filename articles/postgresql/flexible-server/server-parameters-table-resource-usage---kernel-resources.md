@@ -1,8 +1,8 @@
 ---
 title: Resource Usage / Kernel Resources server parameters
 description: Resource Usage / Kernel Resources server parameters for Azure Database for PostgreSQL - Flexible Server.
-author: nachoalonsoportillo
-ms.author: ialonso
+author: akashraokm
+author: akashrao
 ms.reviewer: maghan
 ms.date: 06/18/2024
 ms.service: azure-database-postgresql
