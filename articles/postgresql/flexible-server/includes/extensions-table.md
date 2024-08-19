@@ -2,7 +2,7 @@
 author: akashraokm
 ms.author: akashrao
 ms.reviewer: maghan
-ms.date: 07/13/2024
+ms.date: 08/19/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
@@ -61,6 +61,7 @@ ms.topic: include
 | [postgis_tiger_geocoder](https://www.postgis.net)                                            | PostGIS tiger geocoder and reverse geocoder                                                                         | 3.3.3                     | 3.3.1                     | 3.2.3                     | 3.2.3                     | 3.2.3                     | 3.2.3|
 | [postgis_topology](https://postgis.net/docs/Topology.html)                                   | PostGIS topology spatial types and functions                                                                        | 3.3.3                     | 3.3.1                     | 3.2.3                     | 3.2.3                     | 3.2.3                     | 3.2.3|
 | [postgres_fdw](https://www.postgresql.org/docs/13/postgres-fdw.html)                         | Foreign-data wrapper for remote PostgreSQL servers                                                                  | 1.1                       | 1.1                       | 1.1                       | 1.0                       | 1.0                       | 1.0|
+| [postgres_protobuf](https://github.com/mpartel/postgres-protobuf)                            | Protocol buffers for PostgreSQL                                                                                     | 0.2                       | 0.2                       | 0.2                       | 0.2                       | 0.2                       | N/A|
 | [semver](https://pgxn.org/dist/semver/doc/semver.html)                                       | Semantic version data type                                                                                          | 0.32.1                    | 0.32.0                    | 0.32.0                    | 0.32.0                    | 0.32.0                    | 0.32.0|
 | [session_variable](https://github.com/splendiddata/session_variable)                         | Session_variable - registration and manipulation of session variables and constants                                 | 3.3                       | 3.3                       | 3.3                       | 3.3                       | 3.3                       | 3.3|
 | [sslinfo](https://www.postgresql.org/docs/13/sslinfo.html)                                   | Information about SSL certificates                                                                                  | 1.2                       | 1.2                       | 1.2                       | 1.2                       | 1.2                       | 1.2|
