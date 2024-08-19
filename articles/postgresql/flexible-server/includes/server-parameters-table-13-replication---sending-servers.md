@@ -1,5 +1,4 @@
 ---
-author: AlicjaKucharczyk
 author: akashraokm
 ms.author: akashrao
 ms.reviewer: maghan
