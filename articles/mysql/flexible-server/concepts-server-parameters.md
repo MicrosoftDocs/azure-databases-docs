@@ -163,7 +163,7 @@ A connection pooler that decreases idle connections and reuses existing connecti
 
 If you receive an error similar to "Row size too large (> 8126)," you might want to turn off the `innodb_strict_mode` server parameter. This parameter can't be modified globally at the server level because if row data size is larger than 8K, the data is truncated without an error. This truncation can lead to potential data loss. We recommend modifying the schema to fit the page size limit.
 
-You can set this parameter at the session level by using `init_connect`. For more information, refer to [Setting non-modifiable server parameters](./how-to-configure-server-parameters-portal.md#setting-non-modifiable-server-parameters).
+You can set this parameter at the session level by using `init_connect`. For more information, see [Setting non-modifiable server parameters](./how-to-configure-server-parameters-portal.md#setting-non-modifiable-server-parameters).
 
 > [!NOTE]
 > If you have a read replica server, setting `innodb_strict_mode` to `OFF` at the session level on a source server will break the replication. We suggest keeping the parameter set to `ON` if you have read replicas.

@@ -28,7 +28,7 @@ MySQL 8.0+ servers add the invisible column `my_row_id` to the tables and a prim
 
 By default, GIPKs appear in the output of [SHOW CREATE TABLE](https://dev.mysql.com/doc/refman/8.0/en/show-create-table.html), [SHOW COLUMNS](https://dev.mysql.com/doc/refman/8.0/en/show-columns.html), and [SHOW INDEX](https://dev.mysql.com/doc/refman/8.0/en/show-index.html). GIPKs are also visible in the `INFORMATION_SCHEMA` [COLUMNS](https://dev.mysql.com/doc/refman/8.0/en/information-schema-columns-table.html) and [STATISTICS](https://dev.mysql.com/doc/refman/8.0/en/information-schema-statistics-table.html) tables.
 
-For more details on GIPK and its use cases with data-in replication, refer to [Replicate data into Azure Database for MySQL - Flexible Server](./concepts-data-in-replication.md#generated-invisible-primary-key).
+For more details on GIPK and its use cases with data-in replication, see [Replicate data into Azure Database for MySQL - Flexible Server](./concepts-data-in-replication.md#generated-invisible-primary-key).
 
 #### Steps to disable a GIPK
 

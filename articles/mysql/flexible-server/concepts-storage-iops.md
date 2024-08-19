@@ -28,11 +28,11 @@ Azure Database for MySQL - Flexible Server currently offers two settings for IOP
 
 You can use pre-provisioned IOPS to allocate a specific number of IOPS to your Azure Database for MySQL - Flexible Server instance. Defining a specific IOPS limit for your storage volume guarantees the ability to handle a certain number of requests per second. This setting helps ensure consistent and predictable performance for your workloads.
 
-Pre-provisioned IOPs also provides the flexibility of increasing provisioned IOPS for the storage volume associated with the server. You can customize performance by adding extra IOPS beyond the default provisioned level at any time, to better align with your workload requirements.
+Pre-provisioned IOPS also provide the flexibility of increasing provisioned IOPS for the storage volume associated with the server. You can customize performance by adding extra IOPS beyond the default provisioned level at any time, to better align with your workload requirements.
 
 ### Autoscale IOPS
 
-Autoscale IOPS offer the flexibility to scale IOPS on demand. When you enable autoscale IOPS, your server automatically adjusts the IOPS limit of your database server based on the demand of your workload. This dynamic scaling helps optimize workload performance without manual intervention or configuration. For detailed information on the maximum supported IOPS for each service tier and compute size, refer to the [service tier documentation](./concepts-service-tiers-storage.md#service-tiers-size-and-server-types).
+Autoscale IOPS offer the flexibility to scale IOPS on demand. When you enable autoscale IOPS, your server automatically adjusts the IOPS limit of your database server based on the demand of your workload. This dynamic scaling helps optimize workload performance without manual intervention or configuration. For detailed information on the maximum supported IOPS for each service tier and compute size, see the [service tier documentation](./concepts-service-tiers-storage.md#service-tiers-size-and-server-types).
 
 Other benefits of autoscale IOPS include:
 
@@ -140,7 +140,7 @@ During a point-in-time restore (PITR) operation in Azure Database for MySQL - Fl
 
 This increase in IOPS usage is a normal occurrence and doesn't indicate any problems with the source server or the PITR operation. After the PITR operation is complete, the IOPS usage on the source server returns to its usual levels.
 
-For more information on PITR, refer to [Backup and restore in Azure Database for MySQL - Flexible Server](./concepts-backup-restore.md).
+For more information on PITR, see [Backup and restore in Azure Database for MySQL - Flexible Server](./concepts-backup-restore.md).
 
 ### How do I know that IOPS have scaled up and scaled down when the server is using the autoscale IOPS feature? Can I monitor IOPS usage for my server?
 

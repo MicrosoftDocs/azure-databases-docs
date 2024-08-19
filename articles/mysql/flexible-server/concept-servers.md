@@ -53,7 +53,7 @@ When the server is in the stopped state, the server's compute isn't billed. Howe
 
 During the time that the server is stopped, you can't perform any management operations on it. Operations that aren't supported on stopped servers include changing the pricing tier, number of vCores, storage size or I/O operations, backup retention day, server tag, server password, server parameters, storage autogrow, geo-redundant backup, high availability, and user identity. These operations appear as inactive in the Azure portal.
 
-To change any configuration settings on a stopped server, you need to [start the server](how-to-stop-start-server-portal.md). For more information, refer to the [stop/start limitations](./concepts-limitations.md#stopstart-operation).
+To change any configuration settings on a stopped server, you need to [start the server](how-to-stop-start-server-portal.md). For more information, see the [stop/start limitations](./concepts-limitations.md#stopstart-operations).
 
 ## Manage a server
 
