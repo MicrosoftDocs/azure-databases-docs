@@ -2,7 +2,7 @@
 title: Geo-replication
 description: This article describes the Geo-replication in Azure Database for PostgreSQL - Flexible Server.
 author: akashraokm
-ms.author: akashrao
+ms.author: kabharati
 ms.reviewer: maghan
 ms.date: 04/27/2024
 ms.service: azure-database-postgresql
@@ -18,18 +18,7 @@ ms.custom:
 
 A read replica can be created in the same region as the primary server or in a different geographical region. Geo-replication can be helpful for scenarios like disaster recovery planning or bringing data closer to your users.
 
-You can have a primary server in any [Azure Database for PostgreSQL flexible server region](https://azure.microsoft.com/global-infrastructure/services/?products=postgresql). A primary server can also have replicas in any global region of Azure that supports Azure Database for PostgreSQL flexible server. Additionally, we support special regions [Azure Government](/azure/azure-government/documentation-government-welcome) and [Microsoft Azure operated by 21Vianet](/azure/china/overview-operations). The special regions now supported are:
-
-- **Azure Government regions**:
-  - US Gov Arizona
-  - US Gov Texas
-  - US Gov Virginia
-
-- **Microsoft Azure operated by 21Vianet regions**:
-  - China North 3
-  - China East 3
-  - China North 2
-  - China East 2
+You can have a primary server in any [Azure Database for PostgreSQL flexible server region](https://azure.microsoft.com/global-infrastructure/services/?products=postgresql). A primary server can also have replicas in any global region of Azure that supports Azure Database for PostgreSQL flexible server. Additionally, we also support special regions [Azure Government](/azure/azure-government/documentation-government-welcome) and [Microsoft Azure operated by 21Vianet](/azure/china/overview-operations). 
 
 
 ## Paired regions for disaster recovery purposes
