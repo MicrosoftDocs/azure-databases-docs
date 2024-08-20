@@ -16,7 +16,7 @@ ms.custom:
 
 [!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
-Storage input/output operations per second (IOPS) are the number of read and write operations that the storage system can perform each second. Higher IOPS values indicate better storage performance, which allows your database to handle more simultaneous read and write operations. The result is faster data retrieval and improved overall efficiency.
+The number of read and write operations that the storage system can perform is measured in input/output operations per second (IOPS). Higher IOPS values indicate better storage performance, which allows your database to handle more simultaneous read and write operations. The result is faster data retrieval and improved overall efficiency.
 
 If the IOPS setting is too low, the database server might experience delays in processing requests, resulting in slow performance and reduced throughput. If the IOPS setting is too high, it might lead to unnecessary resource allocation and potentially increased costs without significant performance improvements.
 
@@ -38,7 +38,7 @@ Other benefits of autoscale IOPS include:
 
 - **Handling workload spikes**: Autoscale IOPS enable your database to seamlessly handle workload spikes or fluctuations without compromising the performance of your applications. This feature helps ensure consistent responsiveness, even during peak usage periods.
 
-- **Cost savings**: Unlike the pre-provisioned IOPS, where you specify and pay for a fixed IOPS limit regardless of usage, autoscale IOPS lets you pay for only the number of I/O operations that you consume. You avoid unnecessary provisioning and expenses for underutilized resources. The result is both cost savings and optimal performance, making it a smart choice for managing your database workload efficiently.
+- **Cost savings**: Unlike pre-provisioned IOPS, where you specify and pay for a fixed IOPS limit regardless of usage, autoscale IOPS lets you pay for only the number of I/O operations that you consume. You avoid unnecessary provisioning and expenses for underutilized resources. The result is both cost savings and optimal performance, making autoscale a smart choice for managing your database workload efficiently.
 
 ## Monitor storage performance
 
@@ -86,9 +86,7 @@ If you need throughput that's higher than the usual requirement, you can allot a
 
 Consider the impact of throttling on your workload. If potential performance degradation due to throttling is a concern, autoscale IOPS can dynamically handle workload spikes to minimize the risk of throttling and help maintain performance at an optimal level.
 
-Ultimately, the decision between autoscale and pre-provisioned IOPS depends on your specific workload requirements and performance expectations. Analyze your workload patterns, evaluate the cost implications, and consider the potential impact of throttling to make an informed choice that aligns with your priorities.
-
-By considering the specific characteristics of your database workload, such as traffic fluctuations, query patterns, and performance requirements, you can make an informed decision regarding the choice between autoscale and pre-provisioned IOPS.
+Ultimately, the decision between autoscale and pre-provisioned IOPS depends on your specific workload requirements and performance expectations. Analyze your workload patterns, evaluate the cost implications, and consider the potential impact of throttling to make a choice that aligns with your priorities.
 
 | Workload considerations | Pre-provisioned IOPS | Autoscale IOPS |
 |---|---|---|
@@ -127,7 +125,7 @@ By using pre-provisioned IOPS, you have predictable performance without the need
 ### How do I move from pre-provisioned IOPS to autoscale IOPS?
 
 1. In the Azure portal, find the relevant Azure Database for MySQL flexible server.
-1. Go to the **Settings** pane, and then select **Compute + Storage**.
+1. Go to the **Settings** pane, and then select **Compute + storage**.
 1. In the **IOPS** section, select **Auto Scale IOPS** and save the settings to apply the modifications.
 
 ### How soon does autoscale IOPS take effect after I make the change?
@@ -138,7 +136,7 @@ After you enable autoscale IOPS for your Azure Database for MySQL flexible serve
 
 During a point-in-time restore (PITR) operation in Azure Database for MySQL - Flexible Server, a new server is created and data is copied from the source server's storage to the new server's storage. This process results in an increased IOPS usage on the source server.
 
-This increase in IOPS usage is a normal occurrence and doesn't indicate any problems with the source server or the PITR operation. After the PITR operation is complete, the IOPS usage on the source server returns to its usual levels.
+The increase in IOPS usage is a normal occurrence and doesn't indicate any problems with the source server or the PITR operation. After the PITR operation is complete, the IOPS usage on the source server returns to its usual levels.
 
 For more information on PITR, see [Backup and restore in Azure Database for MySQL - Flexible Server](./concepts-backup-restore.md).
 
@@ -148,7 +146,7 @@ Refer to the [Monitor storage performance](#monitor-storage-performance) section
 
 ### Can I switch between autoscale IOPS and pre-provisioned IOPS later?
 
-Yes. You can move back to pre-provisioned IOPS by selecting it in the **Compute + Storage** section of the **Settings** pane.
+Yes. You can move back to pre-provisioned IOPS by selecting it in the **Compute + storage** section of the **Settings** pane.
 
 ### How do I know how many IOPS I've used in Azure Database for MySQL - Flexible Server?
 

@@ -26,7 +26,7 @@ In Azure Database for MySQL - Flexible Server, you can change the value of vario
 
 ## Configurable server parameters
 
-You can manage the configuration of an Azure Database for MySQL flexible server by using server parameters. The server parameters are configured with the default and recommended value when you create the server. The **Server parameters** pane in the Azure portal shows both the modifiable and nonmodifiable parameters. The nonmodifiable server parameters are unavailable.
+You can manage the configuration of an Azure Database for MySQL flexible server by using server parameters. The server parameters are configured with the default and recommended values when you create the server. The **Server parameters** pane in the Azure portal shows both the modifiable and nonmodifiable parameters. The nonmodifiable server parameters are unavailable.
 
 The list of supported server parameters is constantly growing. You can use the Azure portal to periodically view the full list of server parameters and configure the values.
 
@@ -42,7 +42,7 @@ For MySQL version 5.7, the default value of `lower_case_table_names` is `1` in A
 
 For [MySQL version 8.0+](https://dev.mysql.com/doc/refman/8.0/en/identifier-case-sensitivity.html) you can configure `lower_case_table_names` only when you're initializing the server. [Learn more](https://dev.mysql.com/doc/refman/8.0/en/identifier-case-sensitivity.html). Changing the `lower_case_table_names` setting after the server is initialized is prohibited.
 
-For MySQL version 8.0, the default value is `1` in Azure Database for MySQL - Flexible Server. Supported values for MySQL version 8.0 are `1` and `2` in Azure Database for MySQL - Flexible Server. For assistance in changing the default value during server creation, [create a support ticket](https://azure.microsoft.com/support/create-ticket/).
+Supported values for MySQL version 8.0 are `1` and `2` in Azure Database for MySQL - Flexible Server. The default value is `1`. For assistance in changing the default value during server creation, [create a support ticket](https://azure.microsoft.com/support/create-ticket/).
 
 ### innodb_tmpdir
 
@@ -157,13 +157,13 @@ Creating new client connections to MySQL takes time. After you establish these c
 A connection pooler that decreases idle connections and reuses existing connections helps you avoid this problem. For the best experience, we recommend that you use a connection pooler like ProxySQL to efficiently manage connections. To learn about setting up ProxySQL, see [this blog post](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/load-balance-read-replicas-using-proxysql-in-azure-database-for/ba-p/880042).
 
 > [!NOTE]
-> ProxySQL is an open-source community tool. Microsoft supports it on a best effort basis. To get production support with authoritative guidance, contact [ProxySQL product support](https://proxysql.com/services/support/).
+> ProxySQL is an open-source community tool. Microsoft supports it on a best-effort basis. To get production support with authoritative guidance, contact [ProxySQL product support](https://proxysql.com/services/support/).
 
 ### innodb_strict_mode
 
 If you receive an error similar to "Row size too large (> 8126)," you might want to turn off the `innodb_strict_mode` server parameter. This parameter can't be modified globally at the server level because if row data size is larger than 8K, the data is truncated without an error. This truncation can lead to potential data loss. We recommend modifying the schema to fit the page size limit.
 
-You can set this parameter at the session level by using `init_connect`. For more information, see [Setting non-modifiable server parameters](./how-to-configure-server-parameters-portal.md#setting-non-modifiable-server-parameters).
+You can set this parameter at the session level by using `init_connect`. For more information, see [Setting nonmodifiable server parameters](./how-to-configure-server-parameters-portal.md#setting-non-modifiable-server-parameters).
 
 > [!NOTE]
 > If you have a read replica server, setting `innodb_strict_mode` to `OFF` at the session level on a source server will break the replication. We suggest keeping the parameter set to `ON` if you have read replicas.
@@ -186,7 +186,7 @@ Azure Database for MySQL - Flexible Server handles managed features, like backup
 
 ### event_scheduler
 
-In Azure Database for MySQL - Flexible Server, the `event_scheduler` server parameter manages creating, scheduling, and running events. That is, the parameter manages tasks that run according to a schedule by a special event scheduler thread. When the `event_scheduler` parameter is set to `ON`, the event scheduler thread is listed as a daemon process in the output of `SHOW PROCESSLIST`.
+In Azure Database for MySQL - Flexible Server, the `event_scheduler` server parameter manages creating, scheduling, and running events. That is, the parameter manages tasks that run according to a schedule by a special MySQL Event Scheduler thread. When the `event_scheduler` parameter is set to `ON`, the Event Scheduler thread is listed as a daemon process in the output of `SHOW PROCESSLIST`.
 
 You can create and schedule events by using the following SQL syntax:
 
@@ -200,7 +200,7 @@ DO
 <your statement>;
 ```
 
-For more information about creating an event, see the following documentation about MySQL Event Scheduler in the MySQL reference manual:
+For more information about creating an event, see the following documentation about the Event Scheduler in the MySQL reference manual:
 
 - [Using the Event Scheduler in MySQL 5.7](https://dev.mysql.com/doc/refman/5.7/en/event-scheduler.html)
 - [Using the Event Scheduler in MySQL 8.0](https://dev.mysql.com/doc/refman/8.0/en/event-scheduler.html)

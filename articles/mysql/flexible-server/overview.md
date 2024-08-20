@@ -1,6 +1,6 @@
 ---
 title: Azure Database for MySQL - Flexible Server overview
-description: Learn about the flexible server deployment model for Azure Database for MySQL.
+description: Learn about the Flexible Server deployment model for Azure Database for MySQL.
 author: SudheeshGH
 ms.author: sunaray
 ms.reviewer: maghan
@@ -19,7 +19,7 @@ ms.custom:
 
 > [!VIDEO https://aka.ms/docs/player?id=492c7a41-5f0a-4482-828b-72be1b38e691]
 
-This article provides an overview and introduction to the core concepts of the flexible server deployment model. For information on the appropriate deployment option for your workload, see [Choose the right MySQL Server option in Azure](../select-right-deployment-type.md).
+This article provides an overview and introduction to the core concepts of the Flexible Server deployment model. For information on the appropriate deployment option for your workload, see [Choose the right MySQL Server option in Azure](../select-right-deployment-type.md).
 
 Azure Database for MySQL - Flexible Server is a fully managed, production-ready relational database service in the Microsoft Cloud. It's based on the [MySQL Community Edition](https://www.mysql.com/products/community/) (available under the GPLv2 license) database engine, versions 5.6 (retired), 5.7, and 8.0. The service gives you granular control and flexibility over database management functions and configuration settings. It's generally available in various [Azure regions](#azure-regions).
 
@@ -36,7 +36,7 @@ Azure Database for MySQL - Flexible Server delivers:
 - Monitoring and automation to simplify management for large-scale deployments.
 - Multiple ways to get support.
 
-These capabilities require no extra cost and almost no administration. They allow you to focus on rapid app development and accelerate your time to market rather than allocating precious time and resources to managing virtual machines and infrastructure. In addition, you can continue to develop your application with the open-source tools and platform of your choice to deliver the speed and efficiency that your business demands without learning new skills.
+These capabilities require no extra cost and almost no administration. They allow you to focus on rapid app development and accelerate your time to market rather than allocating time and resources to managing virtual machines and infrastructure. In addition, you can continue to develop your application with the open-source tools and platform of your choice to deliver the speed and efficiency that your business demands without learning new skills.
 
 Azure Database for MySQL - Flexible Server also supports reserved instances. If your production workloads have predictable compute capacity requirements, using reserved instances can help you save costs.
 
@@ -46,21 +46,21 @@ For the latest updates on Azure Database for MySQL - Flexible Server, refer to [
 
 ## Architecture overview
 
-The flexible server deployment option offers three compute tiers have different compute and memory capacities to support your database workloads:
+The Flexible Server deployment option offers three compute tiers have different compute and memory capacities to support your database workloads:
 
 - The *Burstable* tier is best suited for low-cost development workloads and low-concurrency workloads that don't need full compute capacity continuously.
 - The *General Purpose* and *Business Critical* tiers are better suited for production workloads that require high concurrency, scale, and predictable performance.
 
-You can build your first app on a Burstable tier at a low cost and then adjust the scale to meet the needs of your solution. Dynamic scalability enables your database to respond to rapidly changing resource requirements transparently. You pay for only the resources that you need and only when you need them. For details, see [Azure Database for MySQL - Flexible Server service tiers](concepts-compute-storage.md).
+You can build your first app on a Burstable tier at a low cost and then adjust the scale to meet the needs of your solution. For details, see [Azure Database for MySQL - Flexible Server service tiers](concepts-compute-storage.md).
 
-When you use a flexible server architecture, you can opt for high availability within a single availability zone or across multiple availability zones. Flexible servers are best suited for:
+When you use a Flexible Server architecture, you can opt for high availability within a single availability zone or across multiple availability zones. Flexible servers are best suited for:
 
 - Ease of deployment, simplified scaling, and low database-management overhead for backups, high availability, security, and monitoring.
 - Application developments that require a community version of MySQL with better control and customizations.
 - Production workloads with same-zone or zone-redundant high availability, along with managed maintenance windows.
 - A simplified development experience.
 
-:::image type="content" source="media/overview-single/1-flexible-server-conceptual-diagram.png" alt-text="Diagram of a flexible server architecture." lightbox="media/overview-single/1-flexible-server-conceptual-diagram.png":::
+:::image type="content" source="media/overview-single/1-flexible-server-conceptual-diagram.png" alt-text="Diagram of a Flexible Server architecture." lightbox="media/overview-single/1-flexible-server-conceptual-diagram.png":::
 
 ## Free 12-month offer
 
@@ -91,7 +91,7 @@ There are two high-availability architectural models:
 
   :::image type="content" source="media/concepts-high-availability/flexible-server-overview-same-zone-ha.png" alt-text="Diagram of same-zone high availability." lightbox="media/concepts-high-availability/flexible-server-overview-same-zone-ha.png":::
 
-For more information, see [High availability concepts in Azure Database for MySQL - Flexible Server](concepts-high-availability.md).
+For more information, see [High-availability concepts in Azure Database for MySQL - Flexible Server](concepts-high-availability.md).
 
 ## Automated patching with a managed maintenance window
 
@@ -115,10 +115,10 @@ To connect to Azure Database for MySQL - Flexible Server, you have two networkin
 
 - **Private access (virtual network integration)**: You can deploy your Azure Database for MySQL - Flexible Server instance into an [Azure virtual network](/azure/virtual-network/virtual-networks-overview). Resources in a virtual network can communicate through private IP addresses.
 
-  Choose the virtual network integration option if you want the following capabilities:
+  Choose virtual network integration if you want the following capabilities:
 
   - Connect from Azure resources in the same virtual network to your Azure Database for MySQL - Flexible Server instance by using private IP addresses.
-  - Use VPN or Azure ExpressRoute to connect from non-Azure resources to your Azure Database for MySQL - Flexible Server instance.
+  - Use a virtual private network (VPN) or Azure ExpressRoute to connect from non-Azure resources to your Azure Database for MySQL - Flexible Server instance.
   - Avoid a public endpoint.
 
 - **Public access (allowed IP addresses)**: You can deploy your Azure Database for MySQL - Flexible Server instance with a public endpoint. The public endpoint is a publicly resolvable DNS address. You choose a range of IP addresses to give permission to access your server. These types of permissions are called *firewall rules*.
@@ -208,7 +208,7 @@ Use mydumper and myloader to use compression settings to efficiently move data o
 
 ### Online or minimal-downtime migrations
 
-Use data-in replication with mydumper/myloader-consistent backup and restore for initial seeding. For step-by-step instructions, see: [Migrate Azure Database for MySQL - Single Server to Azure Database for MySQL - Flexible Server with open-source tools](../../mysql/howto-migrate-single-flexible-minimum-downtime.md).
+Use data-in replication with mydumper/myloader-consistent backup and restore for initial seeding. For step-by-step instructions, see [Migrate Azure Database for MySQL - Single Server to Azure Database for MySQL - Flexible Server with open-source tools](../../mysql/howto-migrate-single-flexible-minimum-downtime.md).
 
 To migrate from Azure Database for MySQL - Single Server to Azure Database for MySQL - Flexible Server in five easy steps, refer to [this blog](https://techcommunity.microsoft.com/t5/azure-database-for-mysql-blog/migrate-from-azure-database-for-mysql-single-server-to-flexible/ba-p/2674057).
 
