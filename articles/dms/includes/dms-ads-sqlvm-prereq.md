@@ -1,6 +1,6 @@
 ---
-author: croblesm
-ms.author: roblescarlos
+author: abhims14
+ms.author: abhishekum
 ms.service: azure-database-migration-service
 ms.topic: include
 ms.date: 09/30/2022
