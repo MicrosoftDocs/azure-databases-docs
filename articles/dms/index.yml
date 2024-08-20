@@ -115,7 +115,7 @@ landingContent:
         links:
           - text: Migrate PostgreSQL to Azure DB for PostgreSQL - Single server
             url: https://azure.microsoft.com/resources/videos/how-to-migrate-postgresql-to-azure-postgresql-online-dms-and-cli/
-          - text: Migrate to Azure Cosmos DB for MongoDB
+          - text: Migrate to Azure Cosmos DB for MongoDB (RU)
             url: https://azure.microsoft.com/resources/videos/how-to-migrate-mongodb-to-cosmos-db/
 # Card 4
   - title: Tools and guidance
