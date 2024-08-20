@@ -98,13 +98,13 @@
     items:
     - name: RU
       items: 
-      - name: to Azure Cosmos DB for MongoDB (offline)
+      - name: to Azure Cosmos DB for MongoDB RU (offline)
         href: tutorial-mongodb-cosmos-db.md
-      - name: to Azure Cosmos DB for MongoDB (online)
+      - name: to Azure Cosmos DB for MongoDB RU (online)
         href: tutorial-mongodb-cosmos-db-online.md  
     - name: vCore
       items:
-      - name: to Azure Cosmos DB for MongoDB
+      - name: to Azure Cosmos DB for MongoDB vCore
         href: /azure-data-studio/extensions/database-migration-for-mongo-extension
 - name: How-to guides
   items:
