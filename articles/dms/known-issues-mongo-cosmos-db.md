@@ -13,7 +13,7 @@ ms.custom:
   - sql-migration-content
 ---
 
-# Known issues with migrations from MongoDB to Azure Cosmos DB
+# Known issues with migrations from MongoDB to Azure Cosmos DB (RU)
 
 The following sections describe known issues and limitations associated with migrations from MongoDB to Azure Cosmos DB for MongoDB.
 
@@ -43,5 +43,5 @@ The migration fails.
 
 ## Next steps
 
-* View the tutorial [Migrate MongoDB to Azure Cosmos DB for MongoDB online using DMS](tutorial-mongodb-cosmos-db-online.md).
-* View the tutorial [Migrate MongoDB to Azure Cosmos DB for MongoDB offline using DMS](tutorial-mongodb-cosmos-db.md).
+* View the tutorial [Migrate MongoDB to Azure Cosmos DB for MongoDB (RU) online using DMS](tutorial-mongodb-cosmos-db-online.md).
+* View the tutorial [Migrate MongoDB to Azure Cosmos DB for MongoDB (RU) offline using DMS](tutorial-mongodb-cosmos-db.md).
