@@ -101,10 +101,10 @@ landingContent:
             url: tutorial-mysql-azure-mysql-offline-portal.md
           - text: Migrate RDS MySQL to Azure DB for MySQL - offline
             url: tutorial-mysql-azure-mysql-offline-portal.md
-          - text: Migrate to Azure Cosmos DB for MongoDB` - online
+          - text: Migrate to Azure Cosmos DB for MongoDB (RU) - online
             url: tutorial-mongodb-cosmos-db-online.md
-          - text: Migrate to Azure Cosmos DB for MongoDB- offline
-            url: tutorial-mongodb-cosmos-db.md
+          - text: Migrate to Azure Cosmos DB for MongoDB (vCore)
+            url: /azure-data-studio/extensions/database-migration-for-mongo-extension
       - linkListType: reference
         links:
           - text: Known issues - Online migration to Azure DB for PostgreSQL
@@ -136,5 +136,7 @@ landingContent:
             url: /azure-data-studio/extensions/dsct/database-schema-conversion-toolkit
           - text: Database Migration Assessment for Oracle
             url: /azure-data-studio/extensions/database-migration-assessment-for-oracle-extension
+          - text: Database Migration Assessment for MongoDB
+            url: /azure-data-studio/extensions/database-migration-for-mongo-extension
           - text: SQL Server Migration Assistant
             url: /sql/ssma/sql-server-migration-assistant
