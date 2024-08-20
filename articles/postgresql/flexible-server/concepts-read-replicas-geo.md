@@ -2,7 +2,7 @@
 title: Geo-replication
 description: This article describes the Geo-replication in Azure Database for PostgreSQL - Flexible Server.
 author: akashraokm
-ms.author: akashrao
+ms.author: kabharati
 ms.reviewer: maghan
 ms.date: 04/27/2024
 ms.service: azure-database-postgresql
@@ -18,18 +18,7 @@ ms.custom:
 
 A read replica can be created in the same region as the primary server or in a different geographical region. Geo-replication can be helpful for scenarios like disaster recovery planning or bringing data closer to your users.
 
-You can have a primary server in any [Azure Database for PostgreSQL flexible server region](https://azure.microsoft.com/global-infrastructure/services/?products=postgresql). A primary server can also have replicas in any global region of Azure that supports Azure Database for PostgreSQL flexible server. Additionally, we support special regions [Azure Government](/azure/azure-government/documentation-government-welcome) and [Microsoft Azure operated by 21Vianet](/azure/china/overview-operations). The special regions now supported are:
-
-- **Azure Government regions**:
-  - US Gov Arizona
-  - US Gov Texas
-  - US Gov Virginia
-
-- **Microsoft Azure operated by 21Vianet regions**:
-  - China North 3
-  - China East 3
-  - China North 2
-  - China East 2
+You can have a primary server in any [Azure Database for PostgreSQL flexible server region](https://azure.microsoft.com/global-infrastructure/services/?products=postgresql). A primary server can also have replicas in any global region of Azure that supports Azure Database for PostgreSQL flexible server. Additionally, we also support special regions [Azure Government](/azure/azure-government/documentation-government-welcome) and [Microsoft Azure operated by 21Vianet](/azure/china/overview-operations). 
 
 
 ## Paired regions for disaster recovery purposes
@@ -61,7 +50,7 @@ Being prepared for potential regional disasters is critical to ensure the uninte
 2.  **Ensure server symmetry**: The "promote to primary server" action is the most recommended for handling regional outages, but it comes with a [server symmetry](concepts-read-replicas.md#configuration-management) requirement. This means both the primary and replica servers must have identical configurations of specific settings. The advantages of using this action include:
      * No need to modify application connection strings if you use [virtual endpoints](concepts-read-replicas-virtual-endpoints.md).
      * It provides a seamless recovery process where, once the affected region is back online, the original primary server automatically resumes its function, but in a new replica role.
-3.  **Set up virtual endpoints**: Virtual endpoints allow for a smooth transition of your application to another region if there is an outage. They eliminate the need for any changes in the connection strings of your application.
+3.  **Set up virtual endpoints**: Virtual endpoints allow for a smooth transition of your application to another region if there's an outage. They eliminate the need for any changes in the connection strings of your application.
 4.  **Configure the read replica**: Not all settings from the primary server are replicated over to the read replica. It's crucial to ensure that all necessary configurations and features (for example, PgBouncer) are appropriately set up on your read replica. For more information, see the [Configuration management](concepts-read-replicas-promote.md#configuration-management) section.
 5.  **Prepare for High Availability (HA)**: If your setup requires high availability, it won't be automatically enabled on a promoted replica. Be ready to activate it post-promotion. Consider automating this step to minimize downtime.
 6.  **Regular testing**: Regularly simulate regional disaster scenarios to validate existing thresholds, targets, and configurations. Ensure that your application responds as expected during these test scenarios.
@@ -71,7 +60,7 @@ Being proactive and preparing in advance for regional disasters ensure the resil
 
 ### When outages impact your SLA
 
-In the event of a prolonged outage with Azure Database for PostgreSQL flexible server in a specific region that threatens your application's service-level agreement (SLA), be aware that both the actions discussed below aren't service-driven. User intervention is required for both. It's a best practice to automate the entire process as much as possible and to have robust monitoring in place. For more information about what information is provided during an outage, see the [Service outage](concepts-business-continuity.md#service-outage) page. Only a **forced** promote is possible in a region down scenario, meaning the amount of data loss is roughly equal to the current lag between the replica and primary. Hence, it's crucial to [monitor the lag](concepts-read-replicas.md#monitor-replication). Consider the following steps:
+If a prolonged outage with Azure Database for PostgreSQL flexible server in a specific region that threatens your application's service-level agreement (SLA), be aware that both the actions discussed below aren't service-driven. User intervention is required for both. It's a best practice to automate the entire process as much as possible and to have robust monitoring in place. For more information about what information is provided during an outage, see the [Service outage](concepts-business-continuity.md#service-outage) page. Only a **forced** promote is possible in a region down scenario, meaning the amount of data loss is roughly equal to the current lag between the replica and primary. Hence, it's crucial to [monitor the lag](concepts-read-replicas.md#monitor-replication). Consider the following steps:
 
 **Promote to primary server**
 
