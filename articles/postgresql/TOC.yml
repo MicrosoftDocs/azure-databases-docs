@@ -68,6 +68,8 @@
           href: flexible-server/connect-java.md
         - name: .NET
           href: flexible-server/connect-csharp.md
+        - name: Go
+          href: flexible-server/connect-go.md
     - name: Database deployment
       items:
       - name: GitHub Actions
