@@ -11,19 +11,21 @@ ms.author: mjbrown
 
 # What is a semantic cache
 
-Large language models (LLMs) are amazing with their ability to generate completions based upon user prompts. As with any service, they have a compute cost to them. For an LLM, this is typically expressed in tokens.
+Large language models (LLM's) are amazing with their ability to generate completions, or text responses, based upon user prompts. As with any service, they have a compute cost to them. For an LLM, this is typically expressed in [tokens](tokens.md).
 
-In a scenario where a user provides a small about of text, such as asking a single question and generating a completion on that question, this computational cost is generally low. However, LLM's do not retain any context between prompts and completions. It is necessary to send some portion of the chat history to the LLM when sending the latest prompt to be processed to give it context. This is often referred to as a *context window* and is a sliding window of requests and responses or prompts and completions, between a user and an LLM. The additional text sent in the request to an LLM increases the compute cost, or tokens required to process the request. Additionally, as the amount of text being sent increases, so too does the latency for the generating the response.
+A semantic cache provides a way for you to leverage prior user prompts and LLM completions to address similar user prompts using vector similarity search. This can reduce latency and save costs in your GenAI applications as making calls to LLMs is often the most costly and highest latency service in such applications.
 
-In pattern called Retrieval Augmented Generation or RAG Pattern, data from a database or some external source, is used to *augment* or ground the LLM by providing additional information and is sent along with the user prompt and chat history. The payloads for RAG Pattern requests to an LLM can get rather large. It is not uncommon to consume thousands of tokens and wait for many seconds for a response for large payloads. In a world where milliseconds counts, waiting for 3-4 seconds is often an unacceptable user experience. The cost can also get very expensive at high volumes.
+In a scenario where an LLM processes a simple prompt, this computational cost is low. However, LLM's do not retain any context between prompts and completions. It's necessary to send some portion of the chat history to the LLM when sending the latest prompt to be processed to give it context. This is often referred to as a *context window* and is a sliding window of prompts and completions, between a user and an LLM. This additional text increases the compute cost, or tokens, required to process the request. Additionally, as the amount of text increases, so too does the latency for the generating the completion.
 
-The solution typically used to deal with requests with high computational costs and latency is to employ a cache. This scenario is no different. However, there are some differences in how this type of cache works and how you implement it.
+In pattern called Retrieval Augmented Generation or [RAG Pattern](rag.md) for short, data from an external source such as a database, is sent with the user prompt and context window to *augment* or ground the LLM by providing additional information to generate a completion. The size of the payloads for RAG Pattern to an LLM can often get rather large. It's not uncommon to consume thousands of tokens and wait for many seconds to generate a completion. In a world where milliseconds counts, waiting for many seconds is often an unacceptable user experience. The cost can also get expensive at high volumes.
+
+The solution typically used to deal with requests with high computational costs and latency is to employ a cache. This scenario is not different, however, there are differences in how a semantic cache works, and how it's implemented.
 
 ## How a semantic cache works
 
-Unlike a traditional cache that uses a string equality match on the cache keys, a semantic cache uses a *vector query* on the cache keys which are stored as vectors. To perform a cache lookup, text is converted into vectors and then used as the filter predicate, or WHERE clause in a vector query, to search for vectors that are *similiar* in the cache's keys.
+Unlike a traditional cache that uses a string equality match on the cache keys, a semantic cache uses a *vector query* on the cache keys, which are stored as vectors. To perform a cache lookup, text is converted into a vector embedding and then used to conduct a vector search query, to find vectors that are most *similiar* in the cache's keys.
 
-The use of a vector query versus key value look up has some advantages. A traditional cache typically returns just a single result for a cache hit. Because a semantic cache uses a query, it can optionally return multiple results to the user. Providing more items to choose from can help reduce compute costs further. It can potentially keep the cache size smaller by reducing the number of items which need to get generated by the LLM due to cache misses.
+The use of a vector query versus key value look up has some advantages. A traditional cache typically returns just a single result for a cache hit. Because a semantic cache uses a query, it can optionally return multiple results to the user. Providing more items to choose from can help reduce compute costs further. It can potentially keep the cache size smaller by reducing the number of items, which need to get generated by the LLM due to cache misses.
 
 ## Similarity score
 
@@ -31,11 +33,11 @@ All vector queries return what is referred to as a *similarity score* that repre
 
 In a vector query, the similarity score for the returned results represents how similar the words or users intent are to what was passed in the WHERE clause. Because this is also a query that can return multiple results, these can be sorted from the most likely to least likely cache results for a user to choose from.
 
-The similarity score is used as a filter for a vector query to limit the results returned to those items most likely to match the users' intent. In practice, setting the similarity score value for a vector query may require some trial and error. Too high, and the cache will quickly fill up with multiple responses for very similar questions because of repeated cache misses. To low, and the cache will return too many irrelevant responses that do not match the user's intent.
+The similarity score is used as a filter for a vector query to limit the results returned to those items most likely to match the users' intent. In practice, setting the similarity score value for a vector query may require some trial and error. Too high, and the cache quickly fills up with multiple responses for similar questions because of repeated cache misses. To low, and the cache returns too many irrelevant responses that do not match the user's intent.
 
 ## Context window
 
-Large language models don't maintain context between requests. To have a *conversation* with an LLM, you have to maintain a context window or chat history and pass that to the LLM for each request so it can provide a contextually relevant response. 
+Large language models don't maintain context between requests. To have a *conversation* with an LLM, you have to maintain a context window, or chat history and pass that to the LLM for each request so it can provide a contextually relevant response. 
 
 For a semantic cache to be effective, it needs to have that context as well. In other words, a semantic cache shouldn't just use the text from individual prompts as keys, it should use some portion of the prompts in the chat history as well. Doing so ensures that what gets returned from the cache is also contextually correct, just as it would be if it were generated by an LLM. If a cache didn't have this additional context, users would get unexpected, and likely unacceptable responses.
 
@@ -45,15 +47,21 @@ If you then ask, "What is the second largest?", the LLM is passed the context wi
 
 Later, another user in a different session asks, "What is the largest stadium in North America?", the LLM will respond with, "Michigan Stadium" with some facts and figures. If that user then asks, "What is the second largest?", the cache will find an exact match for that prompt and return, "Lake Huron", which of course is incorrect.
 
-It is for this reason a semantic cache must cache within a context window. The context window already provides the information necessary for an LLM to generate relevant completions. This makes it a logical choice for how the cache should work as well. 
+For this reason a semantic cache should operate within a context window. The context window already provides the information necessary for an LLM to generate relevant completions. This makes it a logical choice for how the cache should work as well. 
 
 Implementing this requires first vectorizing the array of prompts from the context window and the last prompt. The vectors are first then used in the WHERE clause in the vector query on the cache key. What is returned is the completion from the same sequence of questions asked previously by another user. As the context window continuously slides forward in the conversation, any sequence of prompts that have high similarity are also returned by the cache versus being regenerated by the LLM.
 
 ## Maintenance
 
-As with any cache there is the potential for it to grow to enormous size. Keeping a semantic cache requires the same kind of maintenance, this include one or more ways to maintain its size including using a TTL for cache items or limiting the maximum size or item limit for your cache. Another possible means is to keep a cache hit score on items and implement a mechanism to prune the cache based upon cache hit score.
+As with any cache there is the potential for it to grow to enormous size. Keeping a semantic cache requires the same kind of maintenance. This can include one or more ways to maintain its size including using a TTL for cached items, limiting the maximum size, or limiting the number of items in the cache.
 
-The use of a similarity score also provides a mechanism for keeping the cache lean. The lower the similarity score in the WHERE clause for the vector query on a cache can increase the number of cache hits, reducing the need to generate and cache completions for similar user prompts. However this comes at a cost of potentially less relevant results.
+The use of a similarity score also provides a mechanism for keeping the cache lean. The lower the similarity score in the WHERE clause for the vector query on a cache can increase the number of cache hits, reducing the need to generate and cache completions for similar user prompts. However this comes at a cost of potentially returning less relevant results.
+
+Other possible techniques that leverage a TTL but also preserve frequent cache hits could include keeping a cache hit score on items and implement a mechanism to prune the cache based upon cache hit score. This could be implemented using a patch operation to increment a hit-count property on a cache item. Then over-ride the TTL on that item to preseve it in the cache if it reaches some pre-determined threshold of cache hits.
+
+There may also be additional considerations in how to maintain a cache beyond just efficiency. It is widely understood users' chat history can allow developers to tune applications that use an LLM to generate completions. Chat history also provides valuable data on users' interactions with these types of applications and can yield significant insights on their sentiment and behaviors. The same is true for cache usage as well.
+
+It may be desirable to keep the entire contents of a cache and use it for further analysis, yet ensure that users only see the most recent cached entries. In scenarios like this, a possible technique may use an additional filter in the WHERE clause for the vector query on the cache that filters for the most recent cached items or sorts them based upon freshness. For example, `WHERE c.lastUpdated > @someDate ORDER BY c.lastUpdated DESC`
 
 Whatever method you use will need to be balanced against the cost and latency benefits from not generating responses from the LLM.
 
