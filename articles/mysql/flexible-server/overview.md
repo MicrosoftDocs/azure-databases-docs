@@ -196,9 +196,9 @@ One advantage of running your workload in Azure is its global reach. Azure Datab
 | Canada East | :heavy_check_mark: | :heavy_check_mark: | :x: | :heavy_check_mark: |
 | Central India | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | Central US | :heavy_check_mark: | :heavy_check_mark: | :x: | :heavy_check_mark: |
-| China East 2 | :heavy_check_mark: | :heavy_check_mark: | :x: | :x: |
+| China East 2 | :heavy_check_mark: | :heavy_check_mark: | :x: | :heavy_check_mark: |
 | China East 3 | :heavy_check_mark: | :heavy_check_mark: | :x: | :heavy_check_mark: |
-| China North 2 | :heavy_check_mark: | :heavy_check_mark: | :x: | :x: |
+| China North 2 | :heavy_check_mark: | :heavy_check_mark: | :x: | :heavy_check_mark: |
 | China North 3 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | East Asia (Hong Kong SAR) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | East US | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
@@ -216,7 +216,7 @@ One advantage of running your workload in Azure is its global reach. Azure Datab
 | Korea South | :heavy_check_mark: | :heavy_check_mark: | :x: | :heavy_check_mark: |
 | North Central US | :heavy_check_mark: | :heavy_check_mark: | :x: | :heavy_check_mark: |
 | North Europe | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Norway East | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :x: |
+| Norway East | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | Norway West | :heavy_check_mark: | :heavy_check_mark: | :x: | :x: |
 | Poland Central | :heavy_check_mark: | :heavy_check_mark: | :x: | :x: |
 | Qatar Central | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :x: |
@@ -232,12 +232,12 @@ One advantage of running your workload in Azure is its global reach. Azure Datab
 | Taiwan North | :heavy_check_mark: | :heavy_check_mark: | :x: | :x: |
 | Taiwan Northwest | :heavy_check_mark: | :heavy_check_mark: | :x: | :x: |
 | UAE Central | :heavy_check_mark: | :heavy_check_mark: | :x: | :heavy_check_mark: |
-| UAE North | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :x: |
+| UAE North | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | UK South | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | UK West | :heavy_check_mark: | :heavy_check_mark: | :x: | :heavy_check_mark: |
 | USGov Virginia | :heavy_check_mark: | :heavy_check_mark: | :x: | :x: |
-| USGov Arizona | :heavy_check_mark: | :heavy_check_mark: | :x: | :x: |
-| USGov Texas | :heavy_check_mark: | :heavy_check_mark: | :x: | :x: |
+| USGov Arizona | :heavy_check_mark: | :heavy_check_mark: | :x: | :heavy_check_mark: |
+| USGov Texas | :heavy_check_mark: | :heavy_check_mark: | :x: | :heavy_check_mark: |
 | West Central US | :heavy_check_mark: | :heavy_check_mark: | :x: | :heavy_check_mark: |
 | West Europe | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | West US | :heavy_check_mark: | :heavy_check_mark: | :x: | :heavy_check_mark: |
