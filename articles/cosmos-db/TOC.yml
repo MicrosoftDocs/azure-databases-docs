@@ -38,6 +38,8 @@
           href: gen-ai/distance-functions.md
         - name: kNN vs ANN
           href: gen-ai/knn-vs-ann.md
+        - name: Semantic Cache
+          href: gen-ai/semantic-cache.md
         - name: Multi-tenancy for vector search
           href: nosql/multi-tenancy-vector-search.md
     - name: AI Applications
