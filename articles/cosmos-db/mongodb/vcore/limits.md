@@ -6,7 +6,7 @@ ms.author: gahllevy
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: conceptual
-ms.date: 08/14/2024
+ms.date: 08/20/2024
 ---
 
 # Service Limits in Azure Cosmos DB for MongoDB vCore
@@ -81,6 +81,8 @@ db.collection.find({ field: "value" }).maxTimeMS(5000)
 -	Indexes per cluster: 100
 -	Total index size: 100 GiB
 
+[Reach out to our team](mailto:mongodb-feedback@microsoft.com) for the higher values support.
+
 ### Secondary Regions
 - Maximum: 1 secondary region. [Reach out to our team](mailto:mongodb-feedback@microsoft.com) for more regions.
 
@@ -94,7 +96,7 @@ The following limitations can be overridden by upgrading to a paid tier
 - No service-level-agreement provided (requires HA to be enabled)
 - Free tier clusters are paused after 60 days of inactivity where there are no connections to the cluster.
 
-## Replication and HA Limits
+## Replication and HA (high availability) Limits
 
 ### Cross-Region Replication (Preview)
 - Supported only on single shard (node) vCore clusters.
