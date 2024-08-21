@@ -13,7 +13,7 @@ ms.date: 05/01/2024
 # CustomerIntent: As a database adminstrator, I want to fine tune autoscaler for specific regions or partitions so that I can balance an uneven workload.
 ---
 
-# Per-region and per-partition autoscale (preview)
+# Per-region and per-partition autoscale
 
 By default, Azure Cosmos DB autoscale scales workloads based on the most active region and partition. For nonuniform workloads that have different workload patterns across regions and partitions, this scaling can cause unnecessary scale-ups. With this improvement to autoscale, also known as "dynamic scaling," the per region and per partition autoscale feature now allows your workloads’ regions and partitions to scale independently based on usage.
 
