@@ -1,5 +1,5 @@
 ---
-title: What is a Semantic Cache
+title: Semantic cache
 description: Learn what a semantic cache is and how to build one using Azure Cosmos DB
 author: markjbrown
 ms.service: azure-cosmos-db
@@ -9,7 +9,7 @@ ms.date: 08/21/2024
 ms.author: mjbrown
 ---
 
-# What is a semantic cache
+# Introduction to semantic cache
 
 Large language models (LLM) are amazing with their ability to generate completions, or text responses, based upon user prompts. As with any service, they have a compute cost to them. For an LLM, this is typically expressed in [tokens](tokens.md).
 
@@ -29,7 +29,7 @@ The use of a vector query versus key value look up has some advantages. A tradit
 
 ## Similarity score
 
-All vector queries return what is referred to as a *similarity score* that represent how close the vectors are to each other in high dimensional space. Values range from 0 (no similarity) to 1 (exact match).
+All vector queries return what is referred to as a *similarity score* that represents how close the vectors are to each other in high dimensional space. Values range from 0 (no similarity) to 1 (exact match).
 
 In a vector query, the similarity score for the returned results represents how similar the words or users intent are to what was passed in the WHERE clause. Because a query can return multiple results, the results can be sorted from the most likely to least likely cache results for a user to choose from.
 
