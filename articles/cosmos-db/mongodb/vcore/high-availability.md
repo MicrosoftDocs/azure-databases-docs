@@ -7,7 +7,7 @@ ms.author: nlarin
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: conceptual
-ms.date: 06/20/2024
+ms.date: 08/20/2024
 ---
 
 # High availability in Azure Cosmos DB for MongoDB vCore
@@ -17,13 +17,13 @@ ms.date: 06/20/2024
 In-region high availability (HA) avoids database downtime by maintaining standby replicas
 of every shard in a cluster. If a shard becomes unresponsive for any reason, Azure Cosmos DB for MongoDB vCore
 switches incoming connections from the failed shard to its standby. When failover
-happens promoted shards always have fresh data through synchronous replication.
+happens, promoted shards always have fresh data through synchronous replication.
 
 All primary shards in a cluster are provisioned into one [availability zone (AZ)](/azure/reliability/availability-zones-overview)
 for better latency between the shards. The standby shards are provisioned into
 another availability zone. 
 
-Even without HA enabled, each node has its own locally
+Even without HA enabled, each shard has its own locally
 redundant storage (LRS) with three synchronous replicas maintained by Azure
 Storage service. All three replicas are located in the cluster's Azure region. If there's a single replica failure, Azure Storage service detects it and transparently re-creates failed replica. See metrics [on this page](/azure/storage/common/storage-redundancy#summary-of-redundancy-options) for LRS storage durability.
 
@@ -31,9 +31,11 @@ When HA *is* enabled, Azure Cosmos DB for MongoDB vCore runs one standby shard f
 shard in the cluster. Each primary and standby shard has the same compute and storage configuration. 
 The primary and its standby use synchronous replication. This type of replication allows you to always have 
 the same data on the primary and standby shards in your cluster. In a nutshell, our service detects a failure
-on primary shards, and fails over to standby nodes with zero data loss. 
+on primary shards, and fails over to standby shards with zero data loss. 
 
 The cluster connection string always stays the same regardless of failovers. That allows the service to abstract changes in physical shards serving requests from applications.
+
+When in-region high availability is enabled on the cluster, each cluster shard is covered by the 99.99% service level agreement (SLA) for availability.
 
 High availability can be enabled at cluster creation time. High availability can also be [enabled and disabled at any time on an existing Azure Cosmos DB for MongoDB vCore cluster](./how-to-scale-cluster.md#enable-or-disable-high-availability). There's no database downtime when high availability is enabled or disabled on an Azure Cosmos DB for MongoDB vCore cluster.
 
