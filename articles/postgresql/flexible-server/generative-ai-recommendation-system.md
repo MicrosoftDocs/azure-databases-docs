@@ -23,7 +23,7 @@ There are different ways to model recommendation systems. This article explores 
 
 ## Prerequisites
 
-1. Create an Open AI account and [request access to Azure OpenAI Service](https://aka.ms/oai/access).
+1. Create an OpenAI account and [request access to Azure OpenAI Service](https://aka.ms/oai/access).
 1. Grant access to Azure OpenAI in the desired subscription.
 1. Grant permissions to [create Azure OpenAI resources and to deploy models](/azure/ai-services/openai/how-to/role-based-access-control).
 
