@@ -17,7 +17,7 @@ ms.date: 08/20/2024
 In-region high availability (HA) avoids database downtime by maintaining standby replicas
 of every shard in a cluster. If a shard becomes unresponsive for any reason, Azure Cosmos DB for MongoDB vCore
 switches incoming connections from the failed shard to its standby. When failover
-happens promoted shards always have fresh data through synchronous replication.
+happens, promoted shards always have fresh data through synchronous replication.
 
 All primary shards in a cluster are provisioned into one [availability zone (AZ)](/azure/reliability/availability-zones-overview)
 for better latency between the shards. The standby shards are provisioned into
