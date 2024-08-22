@@ -3,7 +3,7 @@ title: Run Glowroot on Azure Cosmos DB for Apache Cassandra(preview)
 description: This article details how to run Glowroot in Azure Cosmos DB for Apache Cassandra.
 author: IriaOsara
 ms.author: IriaOsara
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.subservice: apache-cassandra
 ms.topic: how-to
 ms.date: 10/02/2021

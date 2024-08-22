@@ -4,7 +4,7 @@ description: This article covers how to work with Azure Cosmos DB for Apache Cas
 author: TheovanKraay
 ms.author: thvankra
 ms.reviewer: mjbrown
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.subservice: apache-cassandra
 ms.topic: how-to
 ms.date: 09/24/2018

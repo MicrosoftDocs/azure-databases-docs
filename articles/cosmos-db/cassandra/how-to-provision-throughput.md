@@ -3,7 +3,7 @@ title: Provision throughput on Azure Cosmos DB for Apache Cassandra resources
 description: Learn how to provision container, database, and autoscale throughput in Azure Cosmos DB for Apache Cassandra resources. You will use Azure portal, CLI, PowerShell and various other SDKs.
 author: TheovanKraay
 ms.author: thvankra
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.subservice: apache-cassandra
 ms.topic: how-to
 ms.date: 10/15/2020

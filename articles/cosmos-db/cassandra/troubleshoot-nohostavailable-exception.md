@@ -2,7 +2,7 @@
 title: Troubleshoot NoHostAvailableException and NoNodeAvailableException
 description: This article discusses the various reasons for having a NoHostException and ways to handle it.
 author: IriaOsara
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.subservice: apache-cassandra
 ms.topic: troubleshooting
 ms.date: 12/02/2021
