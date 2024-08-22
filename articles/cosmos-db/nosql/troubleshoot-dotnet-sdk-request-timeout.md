@@ -7,7 +7,6 @@ ms.subservice: nosql
 ms.date: 11/16/2023
 ms.author: mjbrown
 ms.topic: troubleshooting
-ms.reviewer: mjbrown
 ms.custom: devx-track-dotnet
 ---
 

@@ -8,7 +8,6 @@ ms.subservice: nosql
 ms.topic: conceptual
 ms.date: 03/16/2023
 ms.author: mjbrown
-ms.reviewer: jucocchi
 ms.devlang: csharp
 # ms.devlang: csharp, java, javascript, python
 ms.custom: devx-track-csharp

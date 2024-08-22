@@ -5,7 +5,6 @@ author: markjbrown
 ms.devlang: java
 ms.custom: devx-track-java, devx-track-extended-java
 ms.author: mjbrown
-ms.reviewer: mjbrown
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: how-to

@@ -7,7 +7,6 @@ ms.date: 03/10/2023
 ms.author: maquaran
 ms.subservice: nosql
 ms.topic: troubleshooting
-ms.reviewer: mjbrown
 ---
 # Diagnose and troubleshoot the availability of Azure Cosmos DB SDKs in multiregional environments
 [!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]

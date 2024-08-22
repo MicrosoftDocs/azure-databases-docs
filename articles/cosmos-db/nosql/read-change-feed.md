@@ -3,7 +3,6 @@ title: Reading Azure Cosmos DB change feed
 description: This article describes different options available to read and access change feed in Azure Cosmos DB.  
 author: markjbrown
 ms.author: mjbrown
-ms.reviewer: jucocchi
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.custom: build-2023

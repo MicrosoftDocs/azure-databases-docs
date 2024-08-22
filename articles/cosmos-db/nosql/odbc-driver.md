@@ -4,7 +4,6 @@ titleSuffix: Azure Cosmos DB
 description: Use the ODBC driver for Azure Cosmos DB to create normalized data tables and views for SQL queries, analytics, BI, and visualizations.
 author: markjbrown
 ms.author: mjbrown
-ms.reviewer: mjbrown
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: conceptual

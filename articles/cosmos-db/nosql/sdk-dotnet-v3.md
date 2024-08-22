@@ -8,7 +8,6 @@ ms.devlang: csharp
 ms.topic: reference
 ms.date: 11/03/2023
 ms.author: mjbrown
-ms.reviewer: mjbrown
 ms.custom: devx-track-dotnet
 ---
 # Azure Cosmos DB .NET SDK v3 for API for NoSQL: Download and release notes

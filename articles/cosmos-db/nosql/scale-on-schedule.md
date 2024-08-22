@@ -7,7 +7,6 @@ ms.subservice: nosql
 ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: mjbrown
-ms.reviewer: mjbrown
 ---
 
 # Scale Azure Cosmos DB throughput by using Azure Functions Timer trigger

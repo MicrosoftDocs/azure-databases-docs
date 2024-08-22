@@ -8,7 +8,6 @@ ms.topic: sample
 ms.date: 08/26/2021
 ms.custom: devx-track-java, devx-track-extended-java
 ms.author: mjbrown
-ms.reviewer: mjbrown
 ---
 # Azure Cosmos DB for NoSQL: Spring Data Azure Cosmos DB v5 examples
 [!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]

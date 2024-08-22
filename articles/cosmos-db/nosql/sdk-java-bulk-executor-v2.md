@@ -8,7 +8,6 @@ ms.devlang: java
 ms.topic: reference
 ms.date: 04/06/2021
 ms.author: mjbrown
-ms.reviewer: mjbrown
 ms.custom: devx-track-java, devx-track-extended-java
 ---
 

@@ -5,7 +5,6 @@ author: markjbrown
 ms.service: azure-cosmos-db
 ms.date: 09/01/2022
 ms.author: mjbrown
-ms.reviewer: mjbrown
 ms.subservice: nosql
 ms.topic: troubleshooting
 ms.custom: devx-track-dotnet

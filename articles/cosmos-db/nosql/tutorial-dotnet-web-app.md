@@ -5,7 +5,6 @@ description:  |
   ASP.NET tutorial to create a web application that queries data from Azure Cosmos DB for NoSQL.
 author: markjbrown
 ms.author: mjbrown
-ms.reviewer: esarroyo
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: tutorial

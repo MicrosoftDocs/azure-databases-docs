@@ -8,7 +8,6 @@ ms.custom: devx-track-terraform
 ms.topic: how-to
 ms.date: 09/16/2022
 ms.author: mjbrown
-ms.reviewer: mjbrown
 ---
 
 # Manage Azure Cosmos DB for NoSQL resources with terraform

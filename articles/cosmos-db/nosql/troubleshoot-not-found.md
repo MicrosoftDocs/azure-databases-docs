@@ -7,7 +7,6 @@ ms.subservice: nosql
 ms.date: 05/26/2021
 ms.author: mjbrown
 ms.topic: troubleshooting
-ms.reviewer: mjbrown
 ---
 
 # Diagnose and troubleshoot Azure Cosmos DB not found exceptions

@@ -7,7 +7,6 @@ ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: tutorial
 ms.date: 03/25/2022
-ms.reviewer: mjbrown
 ms.devlang: csharp
 ms.custom: devx-track-csharp, cosmos-db-video, devx-track-dotnet
 ---

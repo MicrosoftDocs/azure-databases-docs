@@ -3,7 +3,6 @@ title: Examples for Azure Cosmos DB for NoSQL SDK for Python
 description: Find Python examples on GitHub for common tasks in Azure Cosmos DB, including CRUD operations.
 author: markjbrown
 ms.author: mjbrown
-ms.reviewer: rosouz
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.devlang: python

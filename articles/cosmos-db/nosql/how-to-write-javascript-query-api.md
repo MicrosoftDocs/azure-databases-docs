@@ -7,7 +7,6 @@ ms.subservice: nosql
 ms.topic: how-to
 ms.date: 05/07/2020
 ms.author: mjbrown
-ms.reviewer: jucocchi
 ms.devlang: javascript
 ms.custom: devx-track-js
 ---
