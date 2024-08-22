@@ -7,7 +7,6 @@ ms.subservice: nosql
 ms.topic: sample
 ms.date: 03/17/2020
 ms.author: mjbrown
-ms.reviewer: mjbrown
 ms.custom: devx-track-azurepowershell
 ---
 

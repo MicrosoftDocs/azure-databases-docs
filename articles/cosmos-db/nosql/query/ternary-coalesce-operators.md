@@ -4,7 +4,6 @@ titleSuffix: Azure Cosmos DB for NoSQL
 description: Ternary and coalesce operators in Azure Cosmos DB for NoSQL evaluates expressions and returns a result depending on a boolean operand or if a field exists.
 author: seesharprun
 ms.author: sidandrews
-ms.reviewer: jacodel
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: reference

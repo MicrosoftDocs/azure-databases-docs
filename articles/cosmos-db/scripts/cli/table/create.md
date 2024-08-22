@@ -3,7 +3,6 @@ title: Create a API for Table table for Azure Cosmos DB
 description: Create a API for Table table for Azure Cosmos DB
 author: markjbrown
 ms.author: mjbrown
-ms.reviewer: mjbrown
 ms.service: azure-cosmos-db
 ms.subservice: table
 ms.custom: devx-track-azurecli

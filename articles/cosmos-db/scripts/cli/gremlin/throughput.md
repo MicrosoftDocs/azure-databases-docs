@@ -3,7 +3,6 @@ title: Perform throughput (RU/s) operations for Azure Cosmos DB for Gremlin reso
 description: Azure CLI scripts for throughput (RU/s) operations for Azure Cosmos DB for Gremlin resources
 author: markjbrown
 ms.author: mjbrown
-ms.reviewer: mjbrown
 ms.service: azure-cosmos-db
 ms.subservice: apache-gremlin
 ms.custom: devx-track-azurecli

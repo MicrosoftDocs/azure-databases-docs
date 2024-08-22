@@ -3,7 +3,6 @@ title: Create an Azure Cosmos DB account with virtual network service endpoints
 description: Create an Azure Cosmos DB account with virtual network service endpoints
 author: markjbrown
 ms.author: mjbrown
-ms.reviewer: mjbrown
 ms.service: azure-cosmos-db
 ms.custom: devx-track-azurecli
 ms.topic: sample

@@ -3,7 +3,6 @@ title: Perform throughput (RU/s) operations for Azure Cosmos DB for Apache Cassa
 description: Azure CLI scripts for throughput (RU/s) operations for Azure Cosmos DB for Apache Cassandra resources
 author: markjbrown
 ms.author: mjbrown
-ms.reviewer: mjbrown
 ms.service: azure-cosmos-db
 ms.subservice: apache-cassandra
 ms.custom: devx-track-azurecli

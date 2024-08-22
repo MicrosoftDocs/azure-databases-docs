@@ -8,7 +8,6 @@ ms.custom: devx-track-azurecli, devx-track-dotnet, devx-track-extended-java, dev
 ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: sidandrews
-ms.reviewer: mjbrown
 ---
 
 # Create a container in Azure Cosmos DB for Table

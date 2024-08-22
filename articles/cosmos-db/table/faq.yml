@@ -5,7 +5,6 @@ metadata:
   description: Get answers to frequently asked questions about Azure Cosmos DB for Table.
   author: seesharprun
   ms.author: sidandrews
-  ms.reviewer: akshanka
   ms.service: azure-cosmos-db
   ms.subservice: apache-gremlin
   ms.topic: faq

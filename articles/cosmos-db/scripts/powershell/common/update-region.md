@@ -6,7 +6,6 @@ ms.service: azure-cosmos-db
 ms.topic: sample
 ms.date: 05/02/2022
 ms.author: mjbrown
-ms.reviewer: mjbrown
 ms.custom: devx-track-azurepowershell
 ---
 

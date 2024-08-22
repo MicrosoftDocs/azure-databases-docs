@@ -3,7 +3,6 @@ title: Convert all Azure Cosmos DB resources from standard to autoscale throughp
 description: Convert all resources to autoscale in a user subscription
 author: markjbrown
 ms.author: mjbrown
-ms.reviewer: mjbrown
 ms.service: azure-cosmos-db
 ms.custom: devx-track-azurecli
 ms.topic: sample
