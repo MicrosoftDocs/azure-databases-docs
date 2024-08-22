@@ -7,7 +7,6 @@
  ms.topic: include
  ms.date: 03/03/2023
  ms.author: sidandrews
-ms.reviewer: mjbrown
 ms.custom: include file
 ---
 You can use queries in Data Explorer to retrieve and filter your data.

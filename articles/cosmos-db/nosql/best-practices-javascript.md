@@ -4,7 +4,6 @@ titleSuffix: Azure Cosmos DB
 description: Review a list of best practices for using the Azure Cosmos DB JavaScript SDK in a performant manner.
 author: sajeetharan
 ms.author: sasinnat
-ms.reviewer: sidandrews
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.custom: devx-track-js

@@ -3,10 +3,10 @@ title: Azure Policy Regulatory Compliance controls for Azure Cosmos DB
 description: Lists Azure Policy Regulatory Compliance controls available for Azure Cosmos DB. These built-in policy definitions provide common approaches to managing the compliance of your Azure resources.
 ms.date: 02/06/2024
 ms.topic: sample
-author: seesharprun
-ms.author: sidandrews
+author: iriaosara
+ms.author: iriaosara
 ms.reviewer: mjbrown 
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.custom: subject-policy-compliancecontrols
 ---
 # Azure Policy Regulatory Compliance controls for Azure Cosmos DB

@@ -3,7 +3,7 @@ title: Create a profile app with Node.js using the API for Cassandra
 description: This quickstart shows how to use the Azure Cosmos DB for Apache Cassandra to create a profile application with Node.js.
 author: TheovanKraay
 ms.author: thvankra
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.subservice: apache-cassandra
 ms.devlang: javascript
 ms.topic: quickstart

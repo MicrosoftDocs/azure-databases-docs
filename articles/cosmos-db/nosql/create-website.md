@@ -1,14 +1,13 @@
 ---
 title: Deploy a web app with a template - Azure Cosmos DB
 description: Learn how to deploy an Azure Cosmos DB account, Azure App Service Web Apps, and a sample web application using an Azure Resource Manager template.
-author: seesharprun
+author: markjbrown
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.custom: devx-track-arm-template
 ms.topic: how-to
 ms.date: 06/19/2020
-ms.author: sidandrews
-ms.reviewer: mjbrown
+ms.author: mjbrown
 ---
 # Deploy Azure Cosmos DB and Azure App Service with a web app from GitHub using an Azure Resource Manager Template
 [!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]

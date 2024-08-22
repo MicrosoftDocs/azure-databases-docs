@@ -8,7 +8,6 @@ ms.custom: devx-track-bicep
 ms.topic: how-to
 ms.date: 05/23/2022
 ms.author: gahllevy
-ms.reviewer: mjbrown
 ---
 
 # Manage Azure Cosmos DB for MongoDB resources using Bicep

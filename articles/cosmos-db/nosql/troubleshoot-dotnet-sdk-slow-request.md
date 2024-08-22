@@ -8,7 +8,6 @@ ms.custom: devx-track-dotnet
 ms.date: 07/10/2024
 ms.author: maquaran
 ms.topic: troubleshooting
-ms.reviewer: mjbrown
 ---
 
 # Diagnose and troubleshoot slow requests in Azure Cosmos DB .NET SDK

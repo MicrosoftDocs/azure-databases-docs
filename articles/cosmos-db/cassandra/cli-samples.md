@@ -2,12 +2,11 @@
 title: Azure CLI Samples for Azure Cosmos DB for Apache Cassandra
 description: Azure CLI Samples for Azure Cosmos DB for Apache Cassandra
 author: theovankraay
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.subservice: apache-cassandra
 ms.topic: sample
 ms.date: 08/19/2022
 ms.author: thvankra
-ms.reviewer: mjbrown
 ms.custom: devx-track-azurecli
 ---
 

@@ -3,7 +3,6 @@ title: Create resource lock for a database and collection for API for MongoDB fo
 description: Create resource lock for a database and collection for API for MongoDB for Azure Cosmos DB
 author: markjbrown
 ms.author: mjbrown
-ms.reviewer: mjbrown
 ms.service: azure-cosmos-db
 ms.subservice: mongodb
 ms.custom: devx-track-azurecli

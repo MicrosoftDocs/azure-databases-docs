@@ -6,7 +6,6 @@ ms.author: mansha
 ms.service: azure-cosmos-db
 ms.topic: conceptual
 ms.date: 05/25/2021
-ms.reviewer: mjbrown
 ---
 # Third-party data modeling tools for Azure Cosmos DB graph data
 

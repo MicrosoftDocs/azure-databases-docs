@@ -3,7 +3,6 @@ title: Quickstart - Create an Azure Cosmos DB and a container by using Azure Res
 description: Quickstart showing how to an Azure Cosmos DB database and a container by using Azure Resource Manager template
 author: seesharprun
 ms.author: sidandrews
-ms.reviewer: mjbrown
 tags: azure-resource-manager
 ms.service: azure-cosmos-db
 ms.subservice: nosql

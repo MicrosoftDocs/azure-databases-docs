@@ -4,7 +4,6 @@ titleSuffix: vCore-based Azure Cosmos DB for MongoDB
 description: Review various options to migrate your data from other MongoDB sources to vCore-based Azure Cosmos DB for MongoDB.
 author: sandeep-nair
 ms.author: sandnair
-ms.reviewer: sidandrews
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: conceptual

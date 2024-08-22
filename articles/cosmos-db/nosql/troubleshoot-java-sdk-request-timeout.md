@@ -8,7 +8,6 @@ ms.custom: devx-track-extended-java
 ms.date: 10/28/2020
 ms.author: kuthapar
 ms.topic: troubleshooting
-ms.reviewer: mjbrown
 ---
 
 # Diagnose and troubleshoot Azure Cosmos DB Java v4 SDK request timeout exceptions

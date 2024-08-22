@@ -1,9 +1,8 @@
 ---
 title: Change feed processor in Azure Cosmos DB 
 description: Learn how to use the Azure Cosmos DB change feed processor to read the change feed, and learn about the components of the change feed processor.
-author: seesharprun
-ms.author: sidandrews
-ms.reviewer: jucocchi
+author: markjbrown
+ms.author: mjbrown
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.devlang: csharp

@@ -1,7 +1,6 @@
 ---
 author: seesharprun
 ms.author: sidandrews
-ms.reviewer: mjbrown
 ms.service: azure-cosmos-db
 ms.topic: include
 ms.date: 08/16/2023

@@ -4,7 +4,6 @@ titleSuffix: Azure Cosmos DB for MongoDB (vCore)
 description: Learn about vCore-based Azure Cosmos DB for MongoDB, a fully managed MongoDB-compatible database for building modern applications with a familiar architecture.
 author: gahl-levy
 ms.author: gahllevy
-ms.reviewer: sidandrews
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.custom:

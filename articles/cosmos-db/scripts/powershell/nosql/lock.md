@@ -3,7 +3,6 @@ title: PowerShell script to create resource lock for Azure Cosmos DB for NoSQL d
 description: Create resource lock for Azure Cosmos DB for NoSQL database and container
 author: markjbrown
 ms.author: mjbrown
-ms.reviewer: mjbrown
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: sample

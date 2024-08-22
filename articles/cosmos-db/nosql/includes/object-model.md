@@ -7,7 +7,6 @@ ms.service: azure-cosmos-db
 ms.topic: include
 ms.date: 09/22/2022
 ms.author: sidandrews
-ms.reviewer: mjbrown
 ms.custom: include file
 ---
 

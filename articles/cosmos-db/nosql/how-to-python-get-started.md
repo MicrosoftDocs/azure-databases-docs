@@ -1,8 +1,8 @@
 ---
 title: Get started with Azure Cosmos DB for NoSQL using Python
 description: Get started developing a Python application that works with Azure Cosmos DB for NoSQL. This article helps you learn how to set up a project and configure access to an Azure Cosmos DB for NoSQL endpoint.
-author: seesharprun
-ms.author: sidandrews
+author: markjbrown
+ms.author: mjbrown
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.devlang: python

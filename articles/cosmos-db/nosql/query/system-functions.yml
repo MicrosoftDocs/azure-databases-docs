@@ -7,14 +7,13 @@ metadata:
   title: System functions (NoSQL query)
   titleSuffix: Azure Cosmos DB for NoSQL
   description: Azure Cosmos DB for NoSQL provides many built-in system functions for common tasks across a wide variety of categories.
-  author: jcodella
-  ms.author: jacodel
-  ms.reviewer: sidandrews
+  author: seesharprun
+  ms.author: sidandrews
   ms.service: azure-cosmos-db
   ms.subservice: nosql
   ms.topic: landing-page
   ms.devlang: nosql
-  ms.date: 02/27/2024
+  ms.date: 08/22/2024
   ms.custom: query-reference, build-2024
 landingContent:
   - title: Array functions

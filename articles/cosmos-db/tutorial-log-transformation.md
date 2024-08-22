@@ -5,8 +5,7 @@ titleSuffix: Azure Cosmos DB
 description: In this tutorial, add a custom transformation to data flowing through Azure Monitor Logs from Azure Cosmos DB by using the Azure portal.
 author: StefArroyo
 ms.author: esarroyo
-ms.reviewer: sidandrews
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.topic: tutorial
 ms.date: 03/22/2023
 ---

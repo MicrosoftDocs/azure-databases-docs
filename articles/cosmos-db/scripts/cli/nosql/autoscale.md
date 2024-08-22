@@ -3,7 +3,6 @@ title: Azure Cosmos DB for NoSQL account, database, and container with autoscale
 description: Use Azure CLI to create an Azure Cosmos DB for NoSQL account, database, and container with autoscale.
 author: markjbrown
 ms.author: mjbrown
-ms.reviewer: mjbrown
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: sample

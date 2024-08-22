@@ -6,7 +6,7 @@ ms.custom: horz-monitor
 ms.topic: conceptual
 ms.author: esarroyo
 author: StefArroyo
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ---
 
 # Monitor Azure Cosmos DB

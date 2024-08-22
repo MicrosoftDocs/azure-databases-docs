@@ -8,7 +8,6 @@ ms.custom: devx-track-arm-template
 ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: sidandrews
-ms.reviewer: mjbrown
 ---
 
 # Manage Azure Cosmos DB for Table resources using Azure Resource Manager templates

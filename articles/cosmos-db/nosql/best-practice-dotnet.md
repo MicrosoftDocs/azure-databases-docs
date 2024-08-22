@@ -7,7 +7,6 @@ ms.subservice: nosql
 ms.topic: how-to
 ms.date: 07/31/2023
 ms.author: esarroyo
-ms.reviewer: mjbrown
 ms.custom: cosmos-db-video, devx-track-dotnet
 ---
 

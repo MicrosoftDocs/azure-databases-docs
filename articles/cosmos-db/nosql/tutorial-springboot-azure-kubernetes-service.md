@@ -1,14 +1,13 @@
 ---
 title: Tutorial - Spring Boot application with Azure Cosmos DB for NoSQL and Azure Kubernetes Service
 description: This tutorial demonstrates how to deploy a Spring Boot application to Azure Kubernetes Service and use it to perform operations on data in an Azure Cosmos DB for NoSQL account.
-author: seesharprun
+author: markjbrown
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.devlang: java
 ms.topic: quickstart
 ms.date: 10/01/2021
-ms.author: sidandrews
-ms.reviewer: mjbrown
+ms.author: mjbrown
 ms.custom: mode-api, devx-track-azurecli, build-2023, build-2023-dataai
 ---
 

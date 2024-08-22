@@ -8,7 +8,6 @@ ms.custom: devx-track-azurepowershell
 ms.topic: sample
 ms.date: 05/13/2020
 ms.author: mjbrown
-ms.reviewer: mjbrown
 ---
 
 # Create a table for Azure Cosmos DB - API for Table

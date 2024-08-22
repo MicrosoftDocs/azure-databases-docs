@@ -2,10 +2,10 @@
 title: Databases, containers, and items
 titleSuffix: Azure Cosmos DB
 description: Learn about the hierarchy of an account's elements in an Azure Cosmos DB resource model.
-author: seesharprun
-ms.author: sidandrews
+author: markjbrown
+ms.author: mjbrown
 ms.reviewer: mjbrown
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.topic: conceptual
 ms.date: 02/27/2023
 ---

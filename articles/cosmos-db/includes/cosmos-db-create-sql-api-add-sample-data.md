@@ -7,7 +7,6 @@
  ms.topic: include
  ms.date: 08/07/2019
  ms.author: sidandrews
-ms.reviewer: mjbrown
  ms.custom: include file
 ---
 You can now add data to your new container using Data Explorer.

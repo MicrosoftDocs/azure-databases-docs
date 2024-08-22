@@ -4,7 +4,6 @@
  ms.topic: include
  ms.date: 03/15/2023
  ms.author: sidandrews
-ms.reviewer: mjbrown
 ---
 
 ## Capacity planner modes

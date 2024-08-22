@@ -4,7 +4,7 @@ description: Learn about key concepts for agents and step through the implementa
 author: wmwxwa
 ms.author: wangwilliam
 ms.reviewer: sidandrews
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.topic: conceptual
 ms.date: 06/26/2024
 ---

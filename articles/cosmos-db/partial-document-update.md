@@ -2,8 +2,8 @@
 title: Partial document update
 titleSuffix: Azure Cosmos DB for NoSQL
 description: Learn how to conditionally modify a document using the partial document update feature in Azure Cosmos DB for NoSQL.
-ms.author: sidandrews
-author: seesharprun
+author: abhinavtrips
+ms.author: abtripathi
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: conceptual

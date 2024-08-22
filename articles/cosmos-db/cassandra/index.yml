@@ -8,8 +8,7 @@ metadata:
   description: Azure Cosmos DB for Apache Cassandra accounts provides support for storing data for apps written for Apache Cassandra.
   author: theovankraay
   ms.author: thvankra
-  ms.reviewer: markjbrown
-  ms.service: cosmos-db
+  ms.service: azure-cosmos-db
   ms.subservice: apache-cassandra
   ms.topic: landing-page
   ms.date: 02/21/2024

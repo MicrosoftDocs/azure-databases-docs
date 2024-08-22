@@ -1,12 +1,11 @@
 ---
 title: Redistribute throughput across partitions (preview) in Azure Cosmos DB
 description: Learn how to redistribute throughput across partitions (preview)
-author: seesharprun
-ms.author: sidandrews
+author: markjbrown
+ms.author: mjbrown
 ms.service: azure-cosmos-db
 ms.custom: devx-track-azurecli
 ms.topic: how-to
-ms.reviewer: dech
 ms.date: 12/18/2023
 ---
 

@@ -2,9 +2,9 @@
 metadata:
   title: Frequently asked questions on burst capacity in Azure Cosmos DB
   description: Frequently asked questions about burst capacity in Azure Cosmos DB
-  author: seesharprun
-  ms.author: sidandrews
-  ms.service: cosmos-db
+  author: deborahc
+  ms.author: dech
+  ms.service: azure-cosmos-db
   ms.custom: build-2023
   ms.topic: faq
   ms.reviewer: dech

@@ -3,10 +3,10 @@ title: Built-in policy definitions for Azure Cosmos DB
 description: Lists Azure Policy built-in policy definitions for Azure Cosmos DB. These built-in policy definitions provide common approaches to managing your Azure resources.
 ms.date: 02/06/2024
 ms.topic: reference
-author: seesharprun
-ms.author: sidandrews
+author: iriaosara
+ms.author: iriaosara
 ms.reviewer: mjbrown
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.custom: subject-policy-reference
 ---
 # Azure Policy built-in definitions for Azure Cosmos DB

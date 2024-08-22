@@ -1,13 +1,12 @@
 ---
 title: Troubleshoot Azure Cosmos DB not found exceptions
 description: Learn how to diagnose and fix not found exceptions.
-author: seesharprun
+author: markjbrown
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.date: 05/26/2021
-ms.author: sidandrews
+ms.author: mjbrown
 ms.topic: troubleshooting
-ms.reviewer: mjbrown
 ---
 
 # Diagnose and troubleshoot Azure Cosmos DB not found exceptions

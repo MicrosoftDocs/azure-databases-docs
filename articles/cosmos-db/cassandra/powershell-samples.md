@@ -2,13 +2,12 @@
 title: Azure PowerShell samples for Azure Cosmos DB for Apache Cassandra
 description:  Get the Azure PowerShell samples to perform common tasks in Azure Cosmos DB for Apache Cassandra
 author: theovankraay
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.subservice: apache-cassandra
 ms.custom: devx-track-azurepowershell
 ms.topic: sample
 ms.date: 01/20/2021
 ms.author: thvankra
-ms.reviewer: mjbrown
 ---
 
 # Azure PowerShell samples for Azure Cosmos DB for Apache Cassandra

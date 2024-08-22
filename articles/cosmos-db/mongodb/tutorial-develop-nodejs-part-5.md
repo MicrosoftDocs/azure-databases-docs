@@ -9,7 +9,6 @@ ms.topic: tutorial
 ms.date: 08/26/2021
 ms.author: gahllevy
 ms.custom: devx-track-js
-ms.reviewer: mjbrown
 #Customer intent: As a developer, I want to build a Node.js application, so that I can manage the data stored in Azure Cosmos DB.
 ---
 

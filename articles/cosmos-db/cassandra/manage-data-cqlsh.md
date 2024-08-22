@@ -3,7 +3,7 @@ title: 'Quickstart: API for Cassandra with CQLSH - Azure Cosmos DB'
 description: This quickstart shows how to use the Azure Cosmos DB's API for Apache Cassandra to create a profile application using CQLSH.
 author: iriaosara
 ms.author: iriaosara
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.subservice: apache-cassandra
 ms.topic: quickstart
 ms.date: 01/24/2022
