@@ -1,8 +1,8 @@
 ---
 title: Examples for Azure Cosmos DB for NoSQL SDK for .NET
 description: Find .NET SDK examples on GitHub for common tasks using the Azure Cosmos DB for NoSQL.
-author: seesharprun
-ms.author: sidandrews
+author: markjbrown
+ms.author: mjbrown
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.devlang: csharp

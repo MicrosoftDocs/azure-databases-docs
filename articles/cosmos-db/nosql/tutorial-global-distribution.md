@@ -1,8 +1,8 @@
 ---
 title: 'Tutorial: Azure Cosmos DB global distribution tutorial for the API for NoSQL'
 description: 'Tutorial: Learn how to set up Azure Cosmos DB global distribution using the API for NoSQL with .NET, Java, Python and various other SDKs'
-author: seesharprun
-ms.author: sidandrews
+author: markjbrown
+ms.author: mjbrown
 ms.reviewer: mjbrown
 ms.service: azure-cosmos-db
 ms.subservice: nosql

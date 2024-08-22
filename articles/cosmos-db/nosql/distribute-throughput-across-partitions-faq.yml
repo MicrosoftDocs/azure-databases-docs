@@ -2,8 +2,8 @@
 metadata:
   title: Frequently asked questions on distributing throughput across partitions in Azure Cosmos DB (preview)
   description: Frequently asked questions about distributing throughput across partitions in Azure Cosmos DB
-  author: seesharprun
-  ms.author: sidandrews
+  author: markjbrown
+  ms.author: mjbrown
   ms.service: cosmos-db
   ms.topic: faq
   ms.reviewer: dech

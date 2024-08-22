@@ -5,8 +5,8 @@ ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: conceptual
 ms.date: 06/21/2022
-ms.author: sidandrews
-author: seesharprun
+ms.author: mjbrown
+author: markjbrown
 ---
 
 # Microsoft Defender for Azure Cosmos DB

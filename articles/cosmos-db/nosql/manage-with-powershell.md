@@ -1,12 +1,12 @@
 ---
 title: Manage Azure Cosmos DB for NoSQL resources using PowerShell
 description: Manage Azure Cosmos DB for NoSQL resources using PowerShell.
-author: seesharprun
+author: markjbrown
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: how-to
 ms.date: 02/18/2022
-ms.author: sidandrews
+ms.author: mjbrown
 ms.reviewer: mjbrown
 ms.custom: devx-track-azurepowershell
 ---

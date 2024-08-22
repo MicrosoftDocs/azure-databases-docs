@@ -1,8 +1,8 @@
 ---
 title: Change feed pull model in Azure Cosmos DB
 description: Learn how to use the Azure Cosmos DB change feed pull model to read the change feed. Understand the differences between the change feed pull model and the change feed processor.
-author: seesharprun
-ms.author: sidandrews
+author: markjbrown
+ms.author: mjbrown
 ms.reviewer: jucocchi
 ms.service: azure-cosmos-db
 ms.subservice: nosql

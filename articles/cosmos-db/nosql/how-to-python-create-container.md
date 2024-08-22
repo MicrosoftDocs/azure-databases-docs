@@ -1,8 +1,8 @@
 ---
 title: Create a container in Azure Cosmos DB for NoSQL using Python
 description: Learn how to create a container in your Azure Cosmos DB for NoSQL database using the Python SDK.
-author: seesharprun
-ms.author: sidandrews
+author: markjbrown
+ms.author: mjbrown
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.devlang: python

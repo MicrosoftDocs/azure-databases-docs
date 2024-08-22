@@ -1,12 +1,12 @@
 ---
 title: Azure CLI Samples for Azure Cosmos DB | Microsoft Docs
 description: This article lists several Azure CLI code samples available for interacting with Azure Cosmos DB. View API-specific CLI samples.
-author: seesharprun
+author: markjbrown
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: sample
 ms.date: 08/19/2022
-ms.author: sidandrews
+ms.author: mjbrown
 ms.reviewer: mjbrown
 ms.custom: devx-track-azurecli, seo-azure-cli
 keywords: cosmos-db, azure cli samples, azure cli code samples, azure cli script samples

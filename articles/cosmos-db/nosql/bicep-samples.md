@@ -1,13 +1,13 @@
 ---
 title: Bicep samples for Azure Cosmos DB for NoSQL
 description: Use Bicep to create and configure Azure Cosmos DB.
-author: seesharprun
+author: markjbrown
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.custom: devx-track-bicep
 ms.topic: conceptual
 ms.date: 09/13/2021
-ms.author: sidandrews
+ms.author: mjbrown
 ms.reviewer: mjbrown
 ---
 
