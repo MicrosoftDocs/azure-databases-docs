@@ -1,6 +1,6 @@
 ---
 author: johnpapa
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.topic: include
 ms.date: 11/25/2018
 ms.author: jopapa

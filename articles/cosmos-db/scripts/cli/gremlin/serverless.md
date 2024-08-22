@@ -1,10 +1,10 @@
 ---
 title: Azure Cosmos DB for Gremlin serverless account, database, and graph
 description: Use this Azure CLI script to create an Azure Cosmos DB for Gremlin serverless account, database, and graph.
-author: seesharprun
-ms.author: sidandrews
+author: markjbrown
+ms.author: mjbrown
 ms.reviewer: mjbrown
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.subservice: apache-gremlin
 ms.topic: sample
 ms.date: 05/02/2022

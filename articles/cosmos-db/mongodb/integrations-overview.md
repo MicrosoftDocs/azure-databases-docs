@@ -1,11 +1,11 @@
 ---
 title: Integrations overview in Azure Cosmos DB for MongoDB
 description: Learn how to integrate Azure Cosmos DB for MongoDB account with other Azure services.
-author: seesharprun
+author: gahl-levy
 ms.service: azure-cosmos-db
 ms.topic: how-to
 ms.date: 07/25/2022
-ms.author: sidandrews
+ms.author: gahllevy
 ms.subservice: mongodb
 ---
 

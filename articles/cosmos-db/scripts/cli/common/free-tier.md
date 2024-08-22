@@ -1,10 +1,10 @@
 ---
 title: Find an existing Azure Cosmos DB free-tier account in a subscription
 description: Find an existing Azure Cosmos DB free-tier account in a subscription
-author: seesharprun
-ms.author: sidandrews
+author: markjbrown
+ms.author: mjbrown
 ms.reviewer: mjbrown
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.custom: devx-track-azurecli
 ms.topic: sample
 ms.date: 07/08/2022

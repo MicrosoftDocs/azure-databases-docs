@@ -5,7 +5,7 @@ description: In this quickstart, connect to an Azure Cosmos DB for Apache Gremli
 author: manishmsfte
 ms.author: mansha
 ms.reviewer: sidandrews
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.subservice: apache-gremlin
 ms.custom: devx-track-azurecli
 ms.topic: quickstart
