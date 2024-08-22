@@ -4,7 +4,7 @@ description: Learn how to query diagnostics logs for troubleshooting data stored
 author: theovankraay
 ms.author: thvankra
 ms.reviewer: esarroyo
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.topic: how-to
 ms.date: 11/08/2022
 ms.subservice: apache-cassandra

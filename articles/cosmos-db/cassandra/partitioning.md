@@ -3,7 +3,7 @@ title: Partitioning in Azure Cosmos DB for Apache Cassandra
 description: Learn about partitioning in Azure Cosmos DB for Apache Cassandra
 author: TheovanKraay
 ms.author: thvankra
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.subservice: apache-cassandra
 ms.topic: conceptual
 ms.date: 09/03/2021

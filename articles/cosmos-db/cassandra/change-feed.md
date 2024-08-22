@@ -1,7 +1,7 @@
 ---
 title: Change feed in the Azure Cosmos DB for Apache Cassandra
 description: Learn how to use change feed in the Azure Cosmos DB for Apache Cassandra to get the changes made to your data.
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.subservice: apache-cassandra
 ms.topic: how-to
 ms.date: 11/25/2019
