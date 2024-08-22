@@ -1,6 +1,6 @@
 ---
 title: Semantic cache
-description: Learn what a semantic cache is and how to build one using Azure Cosmos DB
+description: Learn how semantic cache, in Azure Cosmos DB, provides a way for you to re-use past prompts and completions to address similar prompts using vector similarity.
 author: markjbrown
 ms.service: azure-cosmos-db
 ms.subservice: nosql
