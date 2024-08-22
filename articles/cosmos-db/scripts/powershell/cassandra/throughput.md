@@ -2,7 +2,7 @@
 title: PowerShell scripts for throughput (RU/s) operations for Azure Cosmos DB for Apache Cassandra resources
 description: PowerShell scripts for throughput (RU/s) operations for Azure Cosmos DB for Apache Cassandra resources
 author: seesharprun
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.subservice: apache-cassandra
 ms.custom: devx-track-azurepowershell
 ms.topic: sample
