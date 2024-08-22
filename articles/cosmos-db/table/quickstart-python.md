@@ -8,7 +8,6 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 05/04/2023
 ms.author: sidandrews
-ms.reviewer: mjbrown
 ms.custom: devx-track-python, mode-api, devx-track-azurecli, py-fresh-zinc
 ---
 
