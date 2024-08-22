@@ -24,12 +24,14 @@ This quickstart demonstrates how to connect to an Azure Database for MySQL from 
 
 ## Prerequisites
 
-This quickstart uses the resources created in either of these guides as a starting point. We recommend you use a server with **Public access (allowed IP addresses)** enabled for this quickstart. Using a server with **Private access (VNet Integration)** enabled to complete this quickstart might involve extra steps that are not covered.
+This quickstart uses the resources created in either of these guides as a starting point:
 
 - [Create an Azure Database for MySQL flexible server instance using Azure portal](./quickstart-create-server-portal.md)
 - [Create an Azure Database for MySQL flexible server instance using Azure CLI](./quickstart-create-server-cli.md)
 
 > [!IMPORTANT]
+> We recommend you use a server with **Public access (allowed IP addresses)** enabled for this quickstart. Using a server with **Private access (VNet Integration)** enabled to complete this quickstart might involve extra steps that aren't covered.
+>
 > Ensure the IP address you're connecting from has been added the server's firewall rules using the [Azure portal](./how-to-manage-firewall-portal.md) or [Azure CLI](./how-to-manage-firewall-cli.md)
 
 ## Install Go and MySQL connector
@@ -40,8 +42,8 @@ Install [Go](https://go.dev/doc/install) and the [go-sql-driver for MySQL](https
 
 1. [Download](https://go.dev/dl/) and install Go for Microsoft Windows according to the [installation instructions](https://go.dev/doc/install).
 1. Launch the command prompt from the start menu.
-1. Make a folder for your project such as: `mkdir  %USERPROFILE%\go\src\mysqlgo`.
-1. Change directory into the project folder, such as: `cd %USERPROFILE%\go\src\mysqlgo`.
+1. Make a folder for your project, such as `mkdir  %USERPROFILE%\go\src\mysqlgo`.
+1. Change directory into the project folder, such as `cd %USERPROFILE%\go\src\mysqlgo`.
 1. Set the environment variable for GOPATH to point to the source code directory: `set GOPATH=%USERPROFILE%\go`.
 1. Run [go mod init](https://go.dev/ref/mod#go-mod-init) to create a module in the current directory. For example: `go mod init mysqlgo`.
     - The `<module_path>` parameter is generally a location in a GitHub repo - such as `github.com/<your_github_account_name>/<directory>`.
