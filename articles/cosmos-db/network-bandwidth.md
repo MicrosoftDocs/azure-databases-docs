@@ -5,7 +5,7 @@ description: Review how Azure Cosmos DB ingress and egress operations influence 
 author: seesharprun
 ms.author: sidandrews
 ms.reviewer: garyhope
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.topic: conceptual
 ms.date: 01/19/2024
 ---

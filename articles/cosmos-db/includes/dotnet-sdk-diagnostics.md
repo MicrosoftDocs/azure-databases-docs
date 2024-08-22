@@ -1,6 +1,6 @@
 ---
 author: ealsur
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.topic: include
 ms.date: 08/30/2022
 ms.author: maquaran

@@ -1,7 +1,7 @@
 ---
 author: seesharprun
 ms.author: sidandrews
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.subservice: apache-gremlin
 ms.custom: devx-track-azurecli
 ms.topic: include

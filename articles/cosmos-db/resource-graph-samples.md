@@ -5,7 +5,7 @@ ms.date: 07/07/2022
 ms.topic: sample
 author: manishmsfte
 ms.author: mansha
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.custom: subject-resourcegraph-sample
 ---
 # Azure Resource Graph sample queries for Azure Cosmos DB

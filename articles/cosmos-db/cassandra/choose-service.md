@@ -4,7 +4,7 @@ description: Learn about the differences between Azure Managed Instance for Apac
 author: TheovanKraay
 ms.author: thvankra
 ms.reviewer: mjbrown
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.subservice: apache-cassandra
 ms.topic: quickstart
 ms.date: 09/14/2023

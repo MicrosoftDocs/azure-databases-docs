@@ -3,7 +3,7 @@ title: Configure customer-managed keys
 titleSuffix: Azure Cosmos DB
 description: Store customer-managed keys in Azure Key Vault to use for encryption in your Azure Cosmos DB account with access control.
 author: seesharprun
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.topic: how-to
 ms.date: 01/05/2023
 ms.author: sidandrews

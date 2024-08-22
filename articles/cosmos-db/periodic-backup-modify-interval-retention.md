@@ -5,7 +5,7 @@ description: Learn how to modify the interval and retention period for periodic 
 author: kanshiG
 ms.author: govindk
 ms.reviewer: sidandrews
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.topic: how-to
 ms.date: 03/21/2023
 ---

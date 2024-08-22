@@ -4,7 +4,7 @@ description: Learn how to choose between APIs for NoSQL, MongoDB, Cassandra, Gre
 author: seesharprun
 ms.author: sidandrews
 ms.reviewer: mjbrown
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.topic: overview
 ms.date: 11/30/2022
 adobe-target: true

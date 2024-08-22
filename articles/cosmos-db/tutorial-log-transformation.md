@@ -6,7 +6,7 @@ description: In this tutorial, add a custom transformation to data flowing throu
 author: StefArroyo
 ms.author: esarroyo
 ms.reviewer: sidandrews
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.topic: tutorial
 ms.date: 03/22/2023
 ---

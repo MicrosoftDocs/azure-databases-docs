@@ -3,7 +3,7 @@
  description: include file
  services: cosmos-db
  author: LuisBosquez
- ms.service: cosmos-db
+ ms.service: azure-cosmos-db
  ms.topic: include
  ms.date: 04/15/2020
  ms.author: lbosq

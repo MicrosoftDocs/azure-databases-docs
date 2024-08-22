@@ -2,7 +2,7 @@
 title: Azure PowerShell samples for Azure Cosmos DB for Gremlin
 description:  Get the Azure PowerShell samples to perform common tasks in Azure Cosmos DB for Gremlin
 author: seesharprun
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.subservice: apache-gremlin
 ms.custom: devx-track-azurepowershell
 ms.topic: sample

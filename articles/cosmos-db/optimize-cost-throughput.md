@@ -4,7 +4,7 @@ description: This article explains how to optimize throughput costs for the data
 author: seesharprun
 ms.author: sidandrews
 ms.reviewer: mjbrown
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.topic: conceptual
 ms.date: 08/26/2021
 ms.devlang: csharp

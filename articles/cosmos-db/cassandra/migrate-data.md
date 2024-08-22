@@ -4,7 +4,7 @@ description: In this tutorial, learn how to copy data from Apache Cassandra to a
 author: TheovanKraay
 ms.author: thvankra
 ms.reviewer: mjbrown
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.subservice: apache-cassandra
 ms.topic: tutorial
 ms.date: 12/03/2018

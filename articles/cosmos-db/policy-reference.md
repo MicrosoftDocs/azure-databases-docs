@@ -6,7 +6,7 @@ ms.topic: reference
 author: seesharprun
 ms.author: sidandrews
 ms.reviewer: mjbrown
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.custom: subject-policy-reference
 ---
 # Azure Policy built-in definitions for Azure Cosmos DB

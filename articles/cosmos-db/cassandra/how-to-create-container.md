@@ -3,7 +3,7 @@ title: Create a container in Azure Cosmos DB for Apache Cassandra
 description: Learn how to create a container in Azure Cosmos DB for Apache Cassandra by using Azure portal, .NET, Java, Python, Node.js, and other SDKs.
 author: TheovanKraay
 ms.author: thvankra
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.subservice: apache-cassandra
 ms.topic: how-to
 ms.date: 10/16/2020

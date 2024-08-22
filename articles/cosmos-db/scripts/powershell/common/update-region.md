@@ -2,7 +2,7 @@
 title: PowerShell script to update regions for an Azure Cosmos DB account
 description: Run this Azure PowerShell script to add regions or change region failover order for an Azure Cosmos DB account.
 author: markjbrown
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.topic: sample
 ms.date: 05/02/2022
 ms.author: mjbrown

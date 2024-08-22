@@ -4,7 +4,7 @@ titleSuffix: Azure Cosmos DB for Apache Gremlin
 description: Use Azure Cosmos DB for Apache Gremlin to store, query, and traverse massive graphs with the Gremlin graph query language of Apache TinkerPop.
 author: manishmsfte
 ms.author: mansha
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.subservice: apache-gremlin
 ms.topic: overview
 ms.date: 02/28/2023

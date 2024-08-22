@@ -4,7 +4,7 @@ titleSuffix: Azure Cosmos DB
 description: Use your database or container's idle throughput capacity to handle spikes of traffic with burst capacity in Azure Cosmos DB.
 author: seesharprun
 ms.author: sidandrews
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.custom: build-2023
 ms.topic: conceptual
 ms.reviewer: dech

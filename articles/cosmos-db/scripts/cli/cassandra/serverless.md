@@ -4,7 +4,7 @@ description: Create a Cassandra serverless account, keyspace and table for Azure
 author: markjbrown
 ms.author: mjbrown
 ms.reviewer: mjbrown
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.subservice: apache-cassandra
 ms.custom: devx-track-azurecli
 ms.topic: sample
