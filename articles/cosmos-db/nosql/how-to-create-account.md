@@ -1,8 +1,8 @@
 ---
 title: Create an Azure Cosmos DB for NoSQL account
 description: Learn how to create a new Azure Cosmos DB for NoSQL account to store databases, containers, and items.
-author: seesharprun
-ms.author: sidandrews
+author: markjbrown
+ms.author: mjbrown
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.devlang: csharp

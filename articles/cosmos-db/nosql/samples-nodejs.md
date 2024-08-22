@@ -1,8 +1,8 @@
 ---
 title: Examples for Azure Cosmos DB for NoSQL SDK for JS
 description: Find Node.js examples on GitHub for common tasks in Azure Cosmos DB, including CRUD operations.
-author: seesharprun
-ms.author: sidandrews
+author: markjbrown
+ms.author: mjbrown
 ms.reviewer: deborahc
 ms.service: azure-cosmos-db
 ms.subservice: nosql
