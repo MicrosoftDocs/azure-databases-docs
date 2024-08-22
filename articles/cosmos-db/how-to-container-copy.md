@@ -7,7 +7,6 @@ ms.custom: devx-track-azurecli, build-2023, ignite-2023
 ms.topic: how-to
 ms.date: 08/01/2022
 ms.author: richagaur
-ms.reviewer: sidandrews
 ---
 
 # Create and manage container copy jobs in Azure Cosmos DB (Preview)

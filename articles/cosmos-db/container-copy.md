@@ -4,7 +4,6 @@ titleSuffix: Azure Cosmos DB
 description: Learn how to copy data from one container to another in Azure Cosmos DB (preview).
 author: richagaur
 ms.author: richagaur
-ms.reviewer: sidandrews
 ms.service: azure-cosmos-db
 ms.topic: conceptual
 ms.date: 11/30/2022

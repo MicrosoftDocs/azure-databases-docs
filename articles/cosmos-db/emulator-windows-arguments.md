@@ -4,7 +4,6 @@ titleSuffix: Azure Cosmos DB
 description: Manage the Azure Cosmos DB emulator with the command line or PowerShell and change the configuration of the emulator.   
 author: sajeetharan
 ms.author: sasinnat
-ms.reviewer: mjbrown
 ms.service: azure-cosmos-db
 ms.topic: reference
 ms.date: 06/20/2024

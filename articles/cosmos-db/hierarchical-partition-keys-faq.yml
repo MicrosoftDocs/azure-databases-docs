@@ -4,7 +4,6 @@ metadata:
   description: Frequently asked questions about subpartitioning in Azure Cosmos DB
   author: deborahc
   ms.author: dech
-  ms.reviewer: dech
   ms.service: azure-cosmos-db
   ms.topic: faq
   ms.date: 05/05/2023

@@ -4,7 +4,6 @@ titleSuffix: Azure Cosmos DB
 description: Review the required parameters and resource model for the same account(in-account) point-in-time restore feature of Azure Cosmos DB.
 author: kanshiG
 ms.author: govindk
-ms.reviewer: mjbrown
 ms.service: azure-cosmos-db
 ms.custom: build-2023, devx-track-arm-template
 ms.topic: conceptual

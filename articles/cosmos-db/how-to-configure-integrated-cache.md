@@ -7,7 +7,6 @@ ms.subservice: nosql
 ms.topic: conceptual
 ms.date: 08/29/2022
 ms.author: jucocchi
-ms.reviewer: jucocchi
 ---
 
 # How to configure the Azure Cosmos DB integrated cache

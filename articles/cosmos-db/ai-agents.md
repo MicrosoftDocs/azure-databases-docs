@@ -3,7 +3,6 @@ title: AI agent
 description: Learn about key concepts for agents and step through the implementation of an AI agent memory system.
 author: wmwxwa
 ms.author: wangwilliam
-ms.reviewer: sidandrews
 ms.service: azure-cosmos-db
 ms.topic: conceptual
 ms.date: 06/26/2024

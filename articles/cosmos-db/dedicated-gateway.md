@@ -3,7 +3,6 @@ title: Azure Cosmos DB dedicated gateway
 description: A dedicated gateway is compute that is a front-end to your Azure Cosmos DB account. When you connect to the dedicated gateway, it routes requests and caches data.
 author: jcocchi
 ms.author: jucocchi
-ms.reviewer: jucocchi
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: conceptual

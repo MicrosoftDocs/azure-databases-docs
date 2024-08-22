@@ -4,7 +4,6 @@ titleSuffix: Azure Cosmos DB
 description: Enable change data capture in Azure Cosmos DB analytical store for an existing account to consume a continuous and incremental feed of changed data.
 author: Rodrigossz
 ms.author: rosouz
-ms.reviewer: sidandrews
 ms.service: azure-cosmos-db
 ms.topic: how-to
 ms.date: 11/28/2023

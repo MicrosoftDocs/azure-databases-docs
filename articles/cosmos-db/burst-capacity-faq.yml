@@ -7,7 +7,6 @@ metadata:
   ms.service: azure-cosmos-db
   ms.custom: build-2023
   ms.topic: faq
-  ms.reviewer: dech
   ms.date: 05/23/2023
 title: Frequently asked questions on burst capacity in Azure Cosmos DB
 summary: |

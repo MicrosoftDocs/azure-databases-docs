@@ -3,7 +3,6 @@ title: 'Convert the number of vCores or vCPUs in your nonrelational database to 
 description: 'Convert the number of vCores or vCPUs in your nonrelational database to Azure Cosmos DB RU/s'
 author: markjbrown
 ms.author: mjbrown
-ms.reviewer: mjbrown
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: tutorial

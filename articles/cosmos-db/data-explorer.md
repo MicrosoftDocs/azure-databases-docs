@@ -4,7 +4,6 @@ titleSuffix: Azure Cosmos DB
 description: Learn about the Azure Cosmos DB Explorer, a standalone web-based interface that allows you to view and manage the data stored in Azure Cosmos DB.
 author: meredithmooreux
 ms.author: merae
-ms.reviewer: markjbrown
 ms.service: azure-cosmos-db
 ms.topic: how-to
 ms.date: 04/26/2024

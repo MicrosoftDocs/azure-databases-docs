@@ -3,7 +3,6 @@ title: Use Azure Policy to implement governance and controls for Azure Cosmos DB
 description: Learn how to use Azure Policy to implement governance and controls for Azure Cosmos DB resources.
 author: iriaosara
 ms.author: iriaosara
-ms.reviewer: mjbrown
 ms.service: azure-cosmos-db
 ms.topic: conceptual
 ms.date: 09/23/2020
