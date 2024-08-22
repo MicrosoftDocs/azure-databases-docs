@@ -4,7 +4,7 @@ description: Learn about the Apache Cassandra feature support in Azure Cosmos DB
 author: IriaOsara
 ms.author: iriaosara
 ms.reviewer: mjbrown
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.subservice: apache-cassandra
 ms.topic: overview
 ms.date: 09/14/2020

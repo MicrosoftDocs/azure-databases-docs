@@ -3,7 +3,7 @@ title: include file
 description: include file
 services: cosmos-db
 author: seesharprun
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.topic: include
 ms.date: 09/22/2022
 ms.author: sidandrews

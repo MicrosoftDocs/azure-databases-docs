@@ -1,7 +1,7 @@
 ---
 title: Java app with Azure Cosmos DB for Apache Cassandra using Java 4.0 SDK
 description: This quickstart shows how to use the Azure Cosmos DB for Apache Cassandra to create a profile application with the Azure portal and Java 4.0 SDK.
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 author: TheovanKraay
 ms.author: thvankra
 ms.subservice: apache-cassandra

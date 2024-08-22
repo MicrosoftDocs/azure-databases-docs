@@ -5,7 +5,7 @@ description: Learn about Azure Cosmos DB accounts with periodic backup retention
 author: kanshiG
 ms.author: govindk
 ms.reviewer: sidandrews
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.topic: conceptual
 ms.date: 04/02/2023
 ---

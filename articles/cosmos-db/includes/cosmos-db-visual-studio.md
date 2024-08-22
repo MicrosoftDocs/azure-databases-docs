@@ -1,6 +1,6 @@
 ---
 author: seesharprun
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.topic: include
 ms.date: 05/02/2022
 ms.author: sidandrews

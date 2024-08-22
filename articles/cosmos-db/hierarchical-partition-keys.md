@@ -5,7 +5,7 @@ description: Learn about subpartitioning in Azure Cosmos DB, how to use the feat
 author: seesharprun
 ms.author: sidandrews
 ms.reviewer: dech
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.topic: conceptual
 ms.date: 05/05/2023
 ms.custom: build-2023

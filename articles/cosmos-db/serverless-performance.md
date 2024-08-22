@@ -4,7 +4,7 @@ titleSuffix: Azure Cosmos DB
 description: Learn more about performance for the Azure Cosmos DB serverless account type.
 author: richagaur
 ms.author: richagaur
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.custom: build-2023
 ms.topic: conceptual
 ms.date: 12/01/2022

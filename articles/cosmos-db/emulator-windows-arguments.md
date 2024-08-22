@@ -5,7 +5,7 @@ description: Manage the Azure Cosmos DB emulator with the command line or PowerS
 author: sajeetharan
 ms.author: sasinnat
 ms.reviewer: mjbrown
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.topic: reference
 ms.date: 06/20/2024
 ---

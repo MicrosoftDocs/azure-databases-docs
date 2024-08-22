@@ -6,7 +6,7 @@ description: |
 author: seesharprun
 ms.author: sidandrews
 ms.reviewer: thweiss
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.devlang: csharp
 ms.topic: how-to
 ms.date: 11/07/2022

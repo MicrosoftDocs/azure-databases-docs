@@ -2,7 +2,7 @@
 title: PowerShell script to create Azure Cosmos DB for Gremlin database and graph with autoscale
 description: Azure PowerShell script - Azure Cosmos DB create API for Gremlin database and graph with autoscale
 author: markjbrown
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.subservice: apache-gremlin
 ms.topic: sample
 ms.date: 07/30/2020

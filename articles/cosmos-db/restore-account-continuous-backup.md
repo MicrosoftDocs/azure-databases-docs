@@ -2,7 +2,7 @@
 title: Restore an Azure Cosmos DB account that uses continuous backup mode.
 description: Learn how to identify the restore time and restore a live or deleted Azure Cosmos DB account. It shows how to use the event feed to identify the restore time and restore the account using Azure portal, PowerShell, CLI, or an Azure Resource Manager template.
 author: kanshiG
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.topic: how-to
 ms.date: 03/21/2024
 ms.author: govindk

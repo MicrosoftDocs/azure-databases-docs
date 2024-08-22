@@ -4,7 +4,7 @@ description: Create resource lock for Azure Cosmos DB Cassandra API keyspace and
 author: markjbrown
 ms.author: mjbrown
 ms.reviewer: mjbrown
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.subservice: apache-cassandra
 ms.topic: sample
 ms.date: 06/12/2020

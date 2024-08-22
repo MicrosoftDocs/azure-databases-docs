@@ -1,7 +1,7 @@
 ---
 title: 'Tutorial: Java app to load sample data into a API for Cassandra table in Azure Cosmos DB'
 description: This tutorial shows how to load sample user data to a API for Cassandra table in Azure Cosmos DB by using a Java application.
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.subservice: apache-cassandra
 ms.topic: tutorial
 ms.date: 05/20/2019

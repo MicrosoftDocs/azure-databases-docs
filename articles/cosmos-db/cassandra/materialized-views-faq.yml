@@ -5,7 +5,7 @@ metadata:
   description: Frequently asked questions on materialized views in Azure Cosmos DB for Apache Cassandra (preview)
   author: dileepraotv-github
   ms.author: turao
-  ms.service: cosmos-db
+  ms.service: azure-cosmos-db
   ms.subservice: apache-cassandra
   ms.topic: faq
   ms.date: 02/08/2023

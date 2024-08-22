@@ -2,7 +2,7 @@
  title: include file
  description: include file
  author: jonels-msft
- ms.service: cosmos-db
+ ms.service: azure-cosmos-db
  ms.subservice: postgresql
  ms.topic: include
  ms.date: 06/06/2023

@@ -4,7 +4,7 @@ description: Learn about Azure Cosmos DB transactional (row-based) and analytica
 author: Rodrigossz
 ms.author: rosouz
 ms.reviewer: mjbrown
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.topic: conceptual
 ms.date: 05/08/2024
 ms.custom: devx-track-azurecli

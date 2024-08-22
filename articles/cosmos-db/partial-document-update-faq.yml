@@ -4,7 +4,7 @@ metadata:
   description: Frequently asked questions about partial document update for Azure Cosmos DB
   author: abhirockzz
   ms.author: abhishgu
-  ms.service: cosmos-db
+  ms.service: azure-cosmos-db
   ms.topic: faq
   ms.date: 09/16/2021
 title: Frequently asked questions about partial document update in Azure Cosmos DB

@@ -3,7 +3,7 @@ title: Monitor and debug with insights in Azure Cosmos DB for Apache Cassandra
 description: Learn how to debug and monitor your Azure Cosmos DB for Apache Cassandra account using insights
 author: iriaosara
 ms.author: iriaosara
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.subservice: apache-cassandra
 ms.topic: how-to
 ms.date: 05/02/2022
