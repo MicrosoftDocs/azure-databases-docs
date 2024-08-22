@@ -5,7 +5,7 @@ description: Learn how to read and write system document properties using Azure 
 author: seesharprun
 ms.author: sidandrews
 ms.reviewer: mansha
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.subservice: apache-gremlin
 ms.topic: how-to
 ms.date: 02/08/2024

@@ -4,7 +4,7 @@ description: Azure CLI scripts for throughput (RU/s) operations for Azure Cosmos
 author: markjbrown
 ms.author: mjbrown
 ms.reviewer: mjbrown
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.subservice: apache-gremlin
 ms.custom: devx-track-azurecli
 ms.topic: sample
