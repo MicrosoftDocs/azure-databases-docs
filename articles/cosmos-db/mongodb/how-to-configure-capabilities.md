@@ -1,8 +1,8 @@
 ---
 title: Configure your Azure Cosmos DB for MongoDB account capabilities
 description: Learn how to configure your API for MongoDB account capabilities.
-author: seesharprun
-ms.author: sidandrews
+author: gahl-levy
+ms.author: gahllevy
 ms.reviewer: gahllevy
 ms.service: azure-cosmos-db
 ms.subservice: mongodb

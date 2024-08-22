@@ -1,8 +1,8 @@
 ---
 title: Create a document in Azure Cosmos DB for MongoDB using JavaScript
 description: Learn how to work with a document in your Azure Cosmos DB for MongoDB database using the JavaScript SDK.
-author: seesharprun
-ms.author: sidandrews
+author: gahl-levy
+ms.author: gahllevy
 ms.service: azure-cosmos-db
 ms.subservice: mongodb
 ms.devlang: javascript
