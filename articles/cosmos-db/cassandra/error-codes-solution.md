@@ -3,7 +3,7 @@ title: Server diagnostics for Azure Cosmos DB for Apache Cassandra
 description: This article explains some common error codes in Azure Cosmos DB's API for Cassandra and how to troubleshoot using Log Analytics
 author: IriaOsara
 ms.author: IriaOsara
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.subservice: apache-cassandra
 ms.topic: troubleshooting
 ms.date: 10/12/2021
