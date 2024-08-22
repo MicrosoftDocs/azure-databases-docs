@@ -7,7 +7,6 @@ ms.subservice: mongodb
 ms.topic: sample
 ms.date: 05/13/2020
 ms.author: mjbrown
-ms.reviewer: mjbrown
 ms.custom: devx-track-azurepowershell
 ---
 

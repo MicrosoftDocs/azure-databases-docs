@@ -3,7 +3,6 @@ title: Perform throughput (RU/s) operations for Azure Cosmos DB for Table resour
 description: Azure CLI scripts for throughput (RU/s) operations for Azure Cosmos DB for Table resources
 author: markjbrown
 ms.author: mjbrown
-ms.reviewer: mjbrown
 ms.service: azure-cosmos-db
 ms.subservice: table
 ms.custom: devx-track-azurecli

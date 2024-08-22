@@ -3,7 +3,6 @@ title: Create a Gremlin database and graph for Azure Cosmos DB
 description: Create a Gremlin database and graph for Azure Cosmos DB
 author: markjbrown
 ms.author: mjbrown
-ms.reviewer: mjbrown
 ms.service: azure-cosmos-db
 ms.subservice: apache-gremlin
 ms.custom: devx-track-azurecli

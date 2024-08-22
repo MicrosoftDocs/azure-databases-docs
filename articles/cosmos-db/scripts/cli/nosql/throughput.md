@@ -3,7 +3,6 @@ title: Perform throughput (RU/s) operations for Azure Cosmos DB for NoSQL resour
 description: Azure CLI scripts for throughput (RU/s) operations for Azure Cosmos DB for NoSQL resources
 author: markjbrown
 ms.author: mjbrown
-ms.reviewer: mjbrown
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.custom: devx-track-azurecli

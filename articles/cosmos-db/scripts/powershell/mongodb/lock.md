@@ -3,7 +3,6 @@ title: PowerShell script to create resource lock for Azure Cosmos DB MongoDB API
 description: Create resource lock for Azure Cosmos DB MongoDB API database and collection
 author: markjbrown
 ms.author: mjbrown
-ms.reviewer: mjbrown
 ms.service: azure-cosmos-db
 ms.subservice: mongodb
 ms.topic: sample

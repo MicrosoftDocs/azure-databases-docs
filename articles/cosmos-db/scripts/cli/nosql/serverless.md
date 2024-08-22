@@ -3,7 +3,6 @@ title: Create a API for NoSQL serverless account, database and container for Azu
 description: Create a API for NoSQL serverless account, database and container for Azure Cosmos DB
 author: markjbrown
 ms.author: mjbrown
-ms.reviewer: mjbrown
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.custom: devx-track-azurecli
