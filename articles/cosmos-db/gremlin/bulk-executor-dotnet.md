@@ -1,7 +1,7 @@
 ---
 title: Ingest data in bulk in Azure Cosmos DB for Gremlin by using a bulk executor library
 description: Learn how to use a bulk executor library to massively import graph data into an Azure Cosmos DB for Gremlin container.
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.subservice: apache-gremlin
 ms.topic: how-to
 ms.date: 05/10/2022
