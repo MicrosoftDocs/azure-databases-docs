@@ -1,13 +1,13 @@
 ---
 title: PowerShell script to create a table with autoscale in Azure Cosmos DB for Table
 description: PowerShell script to create a table with autoscale in Azure Cosmos DB for Table
-author: seesharprun
+author: markjbrown
 ms.service: azure-cosmos-db
 ms.subservice: table
 ms.custom: devx-track-azurepowershell
 ms.topic: sample
 ms.date: 07/30/2020
-ms.author: sidandrews
+ms.author: mjbrown
 ms.reviewer: mjbrown
 ---
 

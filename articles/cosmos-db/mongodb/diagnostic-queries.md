@@ -1,8 +1,8 @@
 ---
 title: Troubleshoot issues with advanced diagnostics queries with Azure Cosmos DB for MongoDB
 description: Learn how to query diagnostics logs for troubleshooting data stored in Azure Cosmos DB for MongoDB.
-author: seesharprun
-ms.author: sidandrews
+author: gahl-levy
+ms.author: gahllevy
 ms.reviewer: esarroyo
 ms.service: azure-cosmos-db
 ms.topic: how-to
