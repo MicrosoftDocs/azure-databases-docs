@@ -23,10 +23,15 @@ This quickstart demonstrates how to connect to an Azure Database for PostgreSQL 
 
 ## Prerequisites
 
-This quickstart uses the resources created in either of these guides as a starting point. We recommend you use a server with **Public access (allowed IP addresses)** enabled for this quickstart. Using a server with **Private access (VNet Integration)** enabled to complete this quickstart might involve extra steps that are not covered.
+This quickstart uses the resources created in either of these guides as a starting point:
 
 - [Create DB - Portal](quickstart-create-server-portal.md)
 - [Create DB - Azure CLI](quickstart-create-server-cli.md)
+
+> [!IMPORTANT]
+> We recommend you use a server with **Public access (allowed IP addresses)** enabled for this quickstart. Using a server with **Private access (VNet Integration)** enabled to complete this quickstart might involve extra steps that aren't covered.
+>
+> Ensure the IP address you're connecting from has been added the server's firewall rules using the [Azure portal](./how-to-manage-firewall-portal.md) or [Azure CLI](./how-to-manage-firewall-cli.md).
 
 ## Install Go and pq connector
 
