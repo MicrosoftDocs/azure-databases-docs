@@ -2,7 +2,7 @@
 title: PowerShell script to create Azure Cosmos DB for Apache Cassandra keyspace and table with autoscale
 description:  Azure PowerShell script - Azure Cosmos DB create API for Cassandra keyspace and table with autoscale
 author: seesharprun
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.subservice: apache-cassandra
 ms.topic: sample
 ms.date: 07/30/2020

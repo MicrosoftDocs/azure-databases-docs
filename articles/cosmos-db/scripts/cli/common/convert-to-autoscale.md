@@ -4,7 +4,7 @@ description: Convert all resources to autoscale in a user subscription
 author: markjbrown
 ms.author: mjbrown
 ms.reviewer: mjbrown
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.custom: devx-track-azurecli
 ms.topic: sample
 ms.date: 07/26/2024

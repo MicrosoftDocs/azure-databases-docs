@@ -4,7 +4,7 @@ description: Use this Azure CLI script to create an Azure Cosmos DB for Gremlin 
 author: seesharprun
 ms.author: sidandrews
 ms.reviewer: mjbrown
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.subservice: apache-gremlin
 ms.topic: sample
 ms.date: 05/02/2022

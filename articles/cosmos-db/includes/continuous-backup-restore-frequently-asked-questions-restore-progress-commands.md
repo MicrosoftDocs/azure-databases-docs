@@ -2,7 +2,7 @@
   author: kanshiG
   ms.author: govindk
   ms.reviewer: mjbrown
-  ms.service: cosmos-db
+  ms.service: azure-cosmos-db
   ms.topic: include
   ms.date: 04/19/2023
 ---

@@ -4,7 +4,7 @@ description: Create resource lock for a Cassandra keyspace and table for Azure C
 author: seesharprun
 ms.author: sidandrews
 ms.reviewer: mjbrown
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.subservice: apache-cassandra
 ms.custom: devx-track-azurecli
 ms.topic: sample

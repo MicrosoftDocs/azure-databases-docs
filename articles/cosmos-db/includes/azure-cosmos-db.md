@@ -1,5 +1,5 @@
 ---
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.topic: include
 ms.date: 07/07/2022
 author: manishmsfte
