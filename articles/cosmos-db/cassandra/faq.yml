@@ -3,8 +3,8 @@ metadata:
   title: Frequently asked questions
   titleSuffix: Azure Cosmos DB for Apache Cassandra
   description: Get answers to frequently asked questions about Azure Cosmos DB for Apache Cassandra.
-  author: seesharprun
-  ms.author: sidandrews
+  author: theovankraay
+  ms.author: thvankra
   ms.reviewer: thvankra
   ms.service: azure-cosmos-db
   ms.subservice: apache-cassandra

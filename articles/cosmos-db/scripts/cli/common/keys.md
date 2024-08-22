@@ -1,8 +1,8 @@
 ---
 title: Work with account keys and connection strings for an Azure Cosmos DB account
 description: Work with account keys and connection strings for an Azure Cosmos DB account
-author: seesharprun
-ms.author: sidandrews
+author: markjbrown
+ms.author: mjbrown
 ms.reviewer: mjbrown
 ms.service: cosmos-db
 ms.custom: devx-track-azurecli

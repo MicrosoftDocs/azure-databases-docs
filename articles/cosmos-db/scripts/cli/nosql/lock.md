@@ -1,8 +1,8 @@
 ---
 title: Create resource lock for an Azure Cosmos DB for NoSQL database and container
 description: Create resource lock for an Azure Cosmos DB for NoSQL database and container
-author: seesharprun
-ms.author: sidandrews
+author: markjbrown
+ms.author: mjbrown
 ms.reviewer: mjbrown
 ms.service: azure-cosmos-db
 ms.subservice: nosql
