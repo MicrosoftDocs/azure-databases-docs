@@ -2,8 +2,8 @@
 title: Unified AI Database
 titleSuffix: Azure Cosmos DB
 description: Database for AI Era - Azure Cosmos DB is a NoSQL, relational, and vector database that provides unmatched reliability and flexibility for your operational data needs.
-author: seesharprun
-ms.author: sidandrews
+author: markjbrown
+ms.author: mjbrown
 ms.reviewer: mjbrown
 ms.service: cosmos-db
 ms.topic: overview

@@ -1,8 +1,8 @@
 ---
 title: Choose an API in Azure Cosmos DB
 description: Learn how to choose between APIs for NoSQL, MongoDB, Cassandra, Gremlin, and Table in Azure Cosmos DB based on your workload requirements.
-author: seesharprun
-ms.author: sidandrews
+author: markjbrown
+ms.author: mjbrown
 ms.reviewer: mjbrown
 ms.service: cosmos-db
 ms.topic: overview
