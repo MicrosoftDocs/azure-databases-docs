@@ -24,7 +24,7 @@ This quickstart demonstrates how to connect to an Azure Database for MySQL from 
 
 ## Prerequisites
 
-This quickstart uses the resources created in either of these guides as a starting point:
+This quickstart uses the resources created in either of these guides as a starting point. We recommend you use a server with **Public access (allowed IP addresses)** enabled for this quickstart. Using a server with **Private access (VNet Integration)** enabled to complete this quickstart might involve extra steps that are not covered.
 
 - [Create an Azure Database for MySQL flexible server instance using Azure portal](./quickstart-create-server-portal.md)
 - [Create an Azure Database for MySQL flexible server instance using Azure CLI](./quickstart-create-server-cli.md)
