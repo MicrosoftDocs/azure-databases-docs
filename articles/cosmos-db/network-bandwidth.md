@@ -2,8 +2,8 @@
 title: Network bandwidth
 titleSuffix: Azure Cosmos DB
 description: Review how Azure Cosmos DB ingress and egress operations influence Azure network bandwidth consumption.
-author: seesharprun
-ms.author: sidandrews
+author: garyhopems
+ms.author: garyhope
 ms.reviewer: garyhope
 ms.service: cosmos-db
 ms.topic: conceptual
