@@ -7,7 +7,6 @@ ms.subservice: nosql
 ms.topic: how-to
 ms.date: 01/03/2022
 ms.author: mjbrown
-ms.reviewer: mjbrown
 ms.devlang: csharp
 ms.custom: devx-track-csharp, devx-track-azurecli, devx-track-dotnet, devx-track-extended-java, devx-track-python
 ---

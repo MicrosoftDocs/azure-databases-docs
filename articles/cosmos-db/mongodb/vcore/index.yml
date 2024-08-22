@@ -8,7 +8,6 @@ metadata:
   description: Azure Cosmos DB for MongoDB in vCore architecture makes it easy to create a database with full native MongoDB support.
   author: gahl-levy
   ms.author: gahllevy
-  ms.reviewer: gahllevy
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: landing-page

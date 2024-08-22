@@ -4,7 +4,6 @@ titleSuffix: Azure Cosmos DB for MongoDB vCore
 description: Includes a list of all feature updates, grouped by release date, for the Azure Cosmos DB for MongoDB vCore service.
 author: avijitgupta
 ms.author: avijitgupta
-ms.reviewer: gahllevy
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: release-notes

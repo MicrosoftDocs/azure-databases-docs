@@ -4,7 +4,6 @@ titleSuffix: Azure Cosmos DB for MongoDB vCore
 description: Observe and query diagnostic logs from Azure Cosmos DB for MongoDB vCore using Azure Monitor Log Analytics.
 author: sajeetharan
 ms.author: sasinnat
-ms.reviewer: sidandrews
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.custom: ignite-2023, devx-track-azurecli

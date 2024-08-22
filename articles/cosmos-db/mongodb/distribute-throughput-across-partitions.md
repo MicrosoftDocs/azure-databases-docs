@@ -3,7 +3,6 @@ title: Redistribute throughput across partitions in Azure Cosmos DB
 description: Learn how to redistribute throughput across partitions
 author: avijitgupta
 ms.author: avijitgupta
-ms.reviewer: gahllevy
 ms.service: azure-cosmos-db
 ms.subservice: mongodb
 ms.custom:

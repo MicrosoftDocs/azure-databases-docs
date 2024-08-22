@@ -3,7 +3,6 @@ title: Change log for Azure Cosmos DB API for MongoDB
 description: Notifies our customers of any minor/medium updates that were pushed
 author: avijitgupta
 ms.author: avijitgupta
-ms.reviewer: gahllevy
 ms.service: azure-cosmos-db
 ms.subservice: mongodb
 ms.topic: release-notes

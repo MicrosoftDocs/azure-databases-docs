@@ -4,7 +4,6 @@ titleSuffix: Azure Cosmos DB for MongoDB vCore
 description: Learn how Azure Cosmos DB for MongoDB vCore provides database protection and data security for your data.
 author: khelanmodi
 ms.author: khelanmodi
-ms.reviewer: sidandrews
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: conceptual

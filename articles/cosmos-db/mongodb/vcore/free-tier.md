@@ -4,7 +4,6 @@ titleSuffix: Azure Cosmos DB for MongoDB (vCore)
 description: Free tier on vCore-based Azure Cosmos DB for MongoDB.
 author: suvishodcitus
 ms.author: suvishod
-ms.reviewer: abramees
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: conceptual

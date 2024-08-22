@@ -4,7 +4,6 @@ titleSuffix: Azure Cosmos DB for MongoDB vCore
 description: Use vector store in Azure Cosmos DB for MongoDB vCore to enhance AI-based applications.
 author: gahl-levy
 ms.author: gahllevy
-ms.reviewer: sidandrews
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.custom:

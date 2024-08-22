@@ -4,7 +4,6 @@ titleSuffix: Azure Cosmos DB for MongoDB vCore
 description: Use MongoDB native tools to migrate small datasets from existing MongoDB instances to Azure Cosmos DB for MongoDB vCore offline.
 author: gahl-levy
 ms.author: gahllevy
-ms.reviewer: sidandrews
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.custom:

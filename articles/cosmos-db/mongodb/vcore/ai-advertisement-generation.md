@@ -4,7 +4,6 @@ titleSuffix: Azure Cosmos DB
 description: Demonstrates the use of Azure Cosmos DB for MongoDB vCore's vector similarity search and OpenAI embeddings to generate advertising content.
 author: khelanmodi
 ms.author: khelanmodi
-ms.reviewer: gahllevy
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: concept-article

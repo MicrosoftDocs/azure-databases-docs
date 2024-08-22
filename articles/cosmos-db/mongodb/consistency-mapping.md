@@ -7,7 +7,6 @@ ms.service: azure-cosmos-db
 ms.subservice: mongodb
 ms.topic: conceptual
 ms.date: 10/12/2020
-ms.reviewer: mjbrown
 ---
 
 # Consistency levels for Azure Cosmos DB and the API for MongoDB
