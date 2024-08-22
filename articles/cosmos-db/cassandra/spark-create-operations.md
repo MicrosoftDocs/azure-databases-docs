@@ -3,7 +3,6 @@ title: Create or insert data into Azure Cosmos DB for Apache Cassandra from Spar
 description: This article details how to insert sample data into Azure Cosmos DB for Apache Cassandra tables
 author: TheovanKraay
 ms.author: thvankra
-ms.reviewer: mjbrown
 ms.service: azure-cosmos-db
 ms.subservice: apache-cassandra
 ms.topic: how-to

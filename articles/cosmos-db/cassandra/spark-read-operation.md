@@ -4,7 +4,6 @@ titleSufix: Azure Cosmos DB
 description: This article describes how to read data from API for Cassandra tables in Azure Cosmos DB.
 author: TheovanKraay
 ms.author: thvankra
-ms.reviewer: mjbrown
 ms.service: azure-cosmos-db
 ms.subservice: apache-cassandra
 ms.topic: how-to

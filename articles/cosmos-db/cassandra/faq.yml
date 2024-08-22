@@ -5,7 +5,6 @@ metadata:
   description: Get answers to frequently asked questions about Azure Cosmos DB for Apache Cassandra.
   author: theovankraay
   ms.author: thvankra
-  ms.reviewer: thvankra
   ms.service: azure-cosmos-db
   ms.subservice: apache-cassandra
   ms.topic: faq

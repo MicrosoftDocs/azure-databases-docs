@@ -4,7 +4,6 @@ titleSuffix: Azure Cosmos DB for Apache Gremlin
 description: In this quickstart, connect to an Azure Cosmos DB for Apache Gremlin account using the console. Then; create vertices, create edges, and traverse them.
 author: manishmsfte
 ms.author: mansha
-ms.reviewer: sidandrews
 ms.service: azure-cosmos-db
 ms.subservice: apache-gremlin
 ms.custom: devx-track-azurecli

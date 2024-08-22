@@ -3,7 +3,6 @@ title: Vector database
 description: Vector database functionalities, implementation, and comparison.
 author: markjbrown
 ms.author: mjbrown
-ms.reviewer: sidandrews
 ms.service: azure-cosmos-db
 ms.custom:
   - build-2024

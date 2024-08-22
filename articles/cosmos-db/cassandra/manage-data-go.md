@@ -4,7 +4,6 @@ description: This quickstart shows how to use a Go client to interact with Azure
 ms.service: azure-cosmos-db
 author: theovankraay
 ms.author: thvankra
-ms.reviewer: mjbrown
 ms.subservice: apache-cassandra
 ms.devlang: golang
 ms.topic: quickstart

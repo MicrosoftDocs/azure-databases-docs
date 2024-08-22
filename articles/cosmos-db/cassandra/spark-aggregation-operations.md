@@ -3,7 +3,6 @@ title: Aggregate operations on Azure Cosmos DB for Apache Cassandra tables from 
 description: This article covers basic aggregation operations against Azure Cosmos DB for Apache Cassandra tables from Spark
 author: TheovanKraay
 ms.author: thvankra
-ms.reviewer: mjbrown
 ms.service: azure-cosmos-db
 ms.subservice: apache-cassandra
 ms.topic: how-to

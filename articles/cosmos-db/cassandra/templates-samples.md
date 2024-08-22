@@ -8,7 +8,6 @@ ms.custom: devx-track-arm-template
 ms.topic: how-to
 ms.date: 10/14/2020
 ms.author: thvankra
-ms.reviewer: mjbrown
 ---
 
 # Manage Azure Cosmos DB for Apache Cassandra resources using Azure Resource Manager templates

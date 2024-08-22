@@ -7,7 +7,6 @@ ms.service: azure-cosmos-db
 ms.subservice: apache-cassandra
 ms.topic: how-to
 ms.date: 03/24/2022
-ms.reviewer: mjbrown
 ms.custom: kr2b-contr-experiment
 ---
 

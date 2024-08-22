@@ -6,7 +6,6 @@ ms.author: mjbrown
 ms.service: azure-cosmos-db
 ms.topic: conceptual
 ms.date: 05/09/2022
-ms.reviewer: thweiss
 ms.custom: cosmos-db-video
 ---
 

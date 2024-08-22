@@ -7,7 +7,6 @@ ms.subservice: apache-cassandra
 ms.topic: how-to
 ms.date: 03/10/2021
 ms.author: thvankra
-ms.reviewer: thvankra
 ---
 
 # Migrate data from Cassandra to an Azure Cosmos DB for Apache Cassandra account by using Azure Databricks

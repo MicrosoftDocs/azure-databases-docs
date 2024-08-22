@@ -4,7 +4,6 @@ titleSuffix: Azure Cosmos DB for Apache Cassandra
 description: Use Azure Cosmos DB for Apache Cassandra to power existing and new applications with Cassandra drivers and CQL.
 author: TheovanKraay
 ms.author: thvankra
-ms.reviewer: mjbrown
 ms.service: azure-cosmos-db
 ms.subservice: apache-cassandra
 ms.topic: overview
