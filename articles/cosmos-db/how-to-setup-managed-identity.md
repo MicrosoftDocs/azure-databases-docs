@@ -1,12 +1,12 @@
 ---
 title: Configure managed identities with Microsoft Entra ID for your Azure Cosmos DB account
 description: Learn how to configure managed identities with Microsoft Entra ID for your Azure Cosmos DB account
-author: seesharprun
+author: iriaosara
+ms.author: iriaosara
 ms.service: cosmos-db
 ms.custom: devx-track-azurecli
 ms.topic: how-to
 ms.date: 10/15/2021
-ms.author: sidandrews
 ---
 
 # Configure managed identities with Microsoft Entra ID for your Azure Cosmos DB account

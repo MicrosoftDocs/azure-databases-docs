@@ -3,8 +3,8 @@ title: |
   Tutorial: Store and use Azure Cosmos DB credentials with Azure Key Vault
 description: |
   Use Azure Key Vault to store and access Azure Cosmos DB connection string, keys, and endpoints.
-author: seesharprun
-ms.author: sidandrews
+author: iriaosara
+ms.author: iriaosara
 ms.reviewer: thweiss
 ms.service: cosmos-db
 ms.devlang: csharp
