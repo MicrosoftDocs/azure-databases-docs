@@ -7,7 +7,6 @@ ms.author: dech
 ms.service: azure-cosmos-db
 ms.custom: build-2023
 ms.topic: conceptual
-ms.reviewer: dech
 ms.date: 05/23/2023
 ---
 

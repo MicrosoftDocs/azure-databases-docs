@@ -6,7 +6,6 @@ ms.service: azure-cosmos-db
 ms.topic: how-to
 ms.date: 03/31/2023
 ms.author: govindk
-ms.reviewer: mjbrown
 ms.custom: subject-rbac-steps, devx-track-azurecli
 ---
 

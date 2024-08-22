@@ -6,7 +6,6 @@ ms.service: azure-cosmos-db
 ms.topic: conceptual
 ms.date: 03/20/2024
 ms.author: rosouz
-ms.reviewer: rosouz
 ---
 
 # Azure Cosmos DB pricing & discounts with Reserved Capacity

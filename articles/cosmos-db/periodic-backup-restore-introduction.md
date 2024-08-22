@@ -4,7 +4,6 @@ titleSuffix: Azure Cosmos DB
 description: Learn about Azure Cosmos DB accounts with periodic backup retention and restoration capabilities at a specified interval.
 author: kanshiG
 ms.author: govindk
-ms.reviewer: sidandrews
 ms.service: azure-cosmos-db
 ms.topic: conceptual
 ms.date: 04/02/2023

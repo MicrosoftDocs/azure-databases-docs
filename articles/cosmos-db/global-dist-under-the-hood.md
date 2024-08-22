@@ -6,7 +6,6 @@ ms.author: mjbrown
 ms.service: azure-cosmos-db
 ms.topic: conceptual
 ms.date: 07/02/2020
-ms.reviewer: mjbrown
 ---
 
 # Global data distribution with Azure Cosmos DB - under the hood

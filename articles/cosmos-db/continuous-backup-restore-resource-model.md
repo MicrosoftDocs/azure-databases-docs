@@ -6,7 +6,6 @@ ms.author: govindk
 ms.service: azure-cosmos-db
 ms.topic: conceptual
 ms.date: 03/21/2024
-ms.reviewer: mjbrown
 ---
 
 # Resource model for the Azure Cosmos DB point-in-time restore feature

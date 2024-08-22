@@ -6,7 +6,6 @@ ms.author: iriaosara
 ms.service: azure-cosmos-db
 ms.topic: how-to
 ms.date: 12/9/2019
-ms.reviewer: mjbrown
 ms.custom: devx-track-azurepowershell
 ---
 

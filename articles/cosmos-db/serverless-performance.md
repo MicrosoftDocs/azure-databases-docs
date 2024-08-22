@@ -8,7 +8,6 @@ ms.service: azure-cosmos-db
 ms.custom: build-2023
 ms.topic: conceptual
 ms.date: 12/01/2022
-ms.reviewer: dech
 ---
 
 # Azure Cosmos DB serverless account performance

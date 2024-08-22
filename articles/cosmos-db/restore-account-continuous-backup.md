@@ -6,7 +6,6 @@ ms.service: azure-cosmos-db
 ms.topic: how-to
 ms.date: 03/21/2024
 ms.author: govindk
-ms.reviewer: mjbrown
 ms.custom: devx-track-azurepowershell, devx-track-azurecli, devx-track-arm-template
 ---
 

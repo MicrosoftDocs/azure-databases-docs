@@ -6,7 +6,6 @@ ms.service: azure-cosmos-db
 ms.topic: conceptual
 ms.date: 04/15/2024
 ms.author: govindk
-ms.reviewer: mjbrown
 ms.custom: references_regions, cosmos-db-video, build-2023
 ---
 

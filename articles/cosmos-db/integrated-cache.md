@@ -7,7 +7,6 @@ ms.subservice: nosql
 ms.topic: conceptual
 ms.date: 7/19/2024
 ms.author: jucocchi
-ms.reviewer: jucocchi
 ---
 
 # Azure Cosmos DB integrated cache - Overview

@@ -5,7 +5,6 @@ metadata:
   description: Get answers to frequently asked questions about Azure Cosmos DB. Learn about capacity, performance levels, and scaling, and service features.
   author: markjbrown
   ms.author: mjbrown
-  ms.reviewer: mjbrown
   ms.service: azure-cosmos-db
   ms.topic: faq
   ms.date: 02/23/2024

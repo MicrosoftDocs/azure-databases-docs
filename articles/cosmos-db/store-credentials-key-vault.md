@@ -5,7 +5,6 @@ description: |
   Use Azure Key Vault to store and access Azure Cosmos DB connection string, keys, and endpoints.
 author: iriaosara
 ms.author: iriaosara
-ms.reviewer: thweiss
 ms.service: azure-cosmos-db
 ms.devlang: csharp
 ms.topic: how-to

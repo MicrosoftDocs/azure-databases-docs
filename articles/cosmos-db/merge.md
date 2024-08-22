@@ -5,7 +5,6 @@ description: Reduce the number of physical partitions used for your container wi
 ms.topic: conceptual
 author: deborahc
 ms.author: dech
-ms.reviewer: dech
 ms.service: azure-cosmos-db
 ms.custom: devx-track-azurecli
 ms.date: 04/28/2023

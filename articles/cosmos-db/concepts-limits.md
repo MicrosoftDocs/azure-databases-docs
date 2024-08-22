@@ -4,7 +4,6 @@ titleSuffix: Azure Cosmos DB
 description: Service quotas and default limits on operations, storage, and throughput with various resource types within Azure Cosmos DB.
 author: markjbrown
 ms.author: mjbrown
-ms.reviewer: mjbrown
 ms.service: azure-cosmos-db
 ms.topic: conceptual
 ms.date: 04/15/2023

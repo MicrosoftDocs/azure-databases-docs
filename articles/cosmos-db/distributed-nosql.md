@@ -4,7 +4,6 @@ titleSuffix: Azure Cosmos DB
 description: Learn about distributed NoSQL databases and how you can use them together with your cloud-native global-scale applications at with flexible data schemas.
 author: markjbrown
 ms.author: mjbrown
-ms.reviewer: mjbrown
 ms.service: azure-cosmos-db
 ms.topic: overview
 ms.date: 11/21/2021
