@@ -4,7 +4,7 @@ description: This article describes the Azure Cosmos DB insights feature of Azur
 author: seesharprun
 ms.author: sidandrews
 ms.topic: conceptual
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.date: 02/08/2023
 ms.reviewer: markjbrown
 ms.custom: subject-monitoring

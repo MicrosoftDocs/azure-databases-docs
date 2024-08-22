@@ -5,7 +5,7 @@ description: Request the restoration of your Azure Cosmos DB data from a backup 
 author: kanshiG
 ms.author: govindk
 ms.reviewer: sidandrews
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.topic: conceptual
 ms.date: 03/21/2023
 ---

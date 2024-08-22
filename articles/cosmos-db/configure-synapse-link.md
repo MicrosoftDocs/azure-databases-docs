@@ -2,7 +2,7 @@
 title: Configure and use Azure Synapse Link for Azure Cosmos DB
 description: Learn how to enable Synapse Link for Azure Cosmos DB accounts, create a container with analytical store enabled, connect the Azure Cosmos DB database to Synapse workspace, and run queries.
 author: Rodrigossz
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.topic: how-to
 ms.date: 09/26/2022
 ms.author: rosouz

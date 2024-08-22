@@ -3,7 +3,7 @@ title: Configure role-based access control with Microsoft Entra ID
 titleSuffix: Azure Cosmos Db
 description: Learn how to configure role-based access control with Microsoft Entra ID for your Azure Cosmos DB account
 author: seesharprun
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.topic: how-to
 ms.date: 07/12/2023
 ms.author: sidandrews

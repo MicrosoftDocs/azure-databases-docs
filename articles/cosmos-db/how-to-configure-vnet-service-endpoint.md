@@ -2,7 +2,7 @@
 title: Configure virtual network based access for an Azure Cosmos DB account
 description: This document describes the steps required to set up a virtual network service endpoint for Azure Cosmos DB.
 author: seesharprun
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.topic: how-to
 ms.date: 08/25/2022
 ms.author: sidandrews
