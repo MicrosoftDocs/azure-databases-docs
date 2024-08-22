@@ -5,7 +5,7 @@ description: Review the required parameters and resource model for the same acco
 author: kanshiG
 ms.author: govindk
 ms.reviewer: mjbrown
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.custom: build-2023, devx-track-arm-template
 ms.topic: conceptual
 ms.date: 03/21/2024

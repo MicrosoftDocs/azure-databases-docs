@@ -4,7 +4,7 @@ titleSuffix: Azure Cosmos DB
 description: Learn how to use Priority-based execution in Azure Cosmos DB.
 author: richagaur
 ms.author: richagaur
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.custom: ignite-2023
 ms.topic: conceptual
 ms.date: 11/15/2023

@@ -10,7 +10,7 @@ metadata:
   author: markjbrown
   ms.author: mjbrown
   ms.reviewer: mjbrown
-  ms.service: cosmos-db
+  ms.service: azure-cosmos-db
   ms.topic: landing-page
   ms.date: 07/05/2024
 highlightedContent:

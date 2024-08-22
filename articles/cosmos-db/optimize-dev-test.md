@@ -4,7 +4,7 @@ description: This article explains how Azure Cosmos DB offers multiple options f
 author: markjbrown
 ms.author: mjbrown
 ms.reviewer: mjbrown
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.topic: conceptual
 ms.date: 08/26/2021
 ---

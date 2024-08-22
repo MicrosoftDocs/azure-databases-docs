@@ -1,7 +1,7 @@
 ---
 title: Azure Cosmos DB for Gremlin support and compatibility with TinkerPop features
 description: Learn about the Gremlin language from Apache TinkerPop. Learn which features and steps are available in Azure Cosmos DB and the TinkerPop Graph engine compatibility differences.
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.subservice: apache-gremlin
 ms.topic: overview
 ms.date: 07/06/2021

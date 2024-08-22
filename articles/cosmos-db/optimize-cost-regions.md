@@ -4,7 +4,7 @@ description: This article explains how to manage costs of multi-region deploymen
 author: markjbrown
 ms.author: mjbrown
 ms.reviewer: mjbrown
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.topic: conceptual
 ms.date: 02/22/2024
 ---

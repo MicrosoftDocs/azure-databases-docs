@@ -3,7 +3,7 @@ title: Restrict user access to data operations only with Azure Cosmos DB
 description: Learn how to restrict access to data operations only with Azure Cosmos DB
 author: iriaosara
 ms.author: iriaosara
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.topic: how-to
 ms.date: 12/9/2019
 ms.reviewer: mjbrown

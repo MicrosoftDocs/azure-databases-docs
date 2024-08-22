@@ -4,7 +4,7 @@ description: Learn about planet-scale geo-replication, multi-region writes, fail
 author: markjbrown
 ms.author: mjbrown
 ms.reviewer: mjbrown
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.topic: conceptual
 ms.date: 01/06/2021
 adobe-target: true

@@ -6,7 +6,7 @@ ms.topic: sample
 author: iriaosara
 ms.author: iriaosara
 ms.reviewer: mjbrown 
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.custom: subject-policy-compliancecontrols
 ---
 # Azure Policy Regulatory Compliance controls for Azure Cosmos DB

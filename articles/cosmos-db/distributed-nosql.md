@@ -5,7 +5,7 @@ description: Learn about distributed NoSQL databases and how you can use them to
 author: markjbrown
 ms.author: mjbrown
 ms.reviewer: mjbrown
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.topic: overview
 ms.date: 11/21/2021
 ---

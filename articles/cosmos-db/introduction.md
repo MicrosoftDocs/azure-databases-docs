@@ -5,7 +5,7 @@ description: Database for AI Era - Azure Cosmos DB is a NoSQL, relational, and v
 author: markjbrown
 ms.author: mjbrown
 ms.reviewer: mjbrown
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.topic: overview
 ms.date: 04/03/2024
 adobe-target: true

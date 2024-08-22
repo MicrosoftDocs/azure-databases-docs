@@ -5,7 +5,7 @@ description: Restore a deleted container or database to the same, existing Azure
 author: kanshiG
 ms.author: govindk
 ms.reviewer: mjbrown
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.custom: build-2023, devx-track-azurecli, devx-track-azurepowershell, devx-track-arm-template
 ms.topic: how-to
 ms.date: 03/21/2024

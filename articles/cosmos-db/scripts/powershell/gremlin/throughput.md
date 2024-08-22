@@ -1,13 +1,13 @@
 ---
 title: PowerShell scripts for throughput (RU/s) operations for Azure Cosmos DB for Gremlin
 description: PowerShell scripts for throughput (RU/s) operations for API for Gremlin
-author: seesharprun
-ms.service: cosmos-db
+author: markjbrown
+ms.service: azure-cosmos-db
 ms.subservice: apache-gremlin
 ms.custom: devx-track-azurepowershell
 ms.topic: sample
 ms.date: 10/07/2020
-ms.author: sidandrews
+ms.author: mjbrown
 ms.reviewer: mjbrown
 ---
 

@@ -5,7 +5,7 @@ author: markjbrown
 ms.author: mjbrown
 ms.reviewer: jucocchi
 ms.custom: subject-cost-optimization
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.topic: conceptual
 ms.date: 10/08/2021
 ---

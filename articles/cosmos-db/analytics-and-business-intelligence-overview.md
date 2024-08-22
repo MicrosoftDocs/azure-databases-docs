@@ -4,7 +4,7 @@ titleSuffix: Azure Cosmos DB
 description: Review Azure Cosmos DB options to enable large-scale analytics and BI reporting on your operational data.
 author: rodrigossz
 ms.author: rosouz
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.topic: concept-article
 ms.date: 07/01/2024
 ---

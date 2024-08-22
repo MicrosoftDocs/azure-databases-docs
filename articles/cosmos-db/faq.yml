@@ -6,7 +6,7 @@ metadata:
   author: markjbrown
   ms.author: mjbrown
   ms.reviewer: mjbrown
-  ms.service: cosmos-db
+  ms.service: azure-cosmos-db
   ms.topic: faq
   ms.date: 02/23/2024
 title: Frequently asked questions about Azure Cosmos DB

@@ -5,7 +5,7 @@ description: Use Azure Cosmos DB for Apache Cassandra to power existing and new 
 author: TheovanKraay
 ms.author: thvankra
 ms.reviewer: mjbrown
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.subservice: apache-cassandra
 ms.topic: overview
 ms.date: 02/28/2023

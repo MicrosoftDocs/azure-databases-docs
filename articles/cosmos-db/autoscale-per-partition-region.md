@@ -5,7 +5,7 @@ description: Configure autoscale in Azure Cosmos DB for uneven workload patterns
 author: tarabhatiamsft
 ms.author: tarabhatia
 ms.reviewer: sidandrews
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.custom:
   - ignite-2023
 ms.topic: conceptual

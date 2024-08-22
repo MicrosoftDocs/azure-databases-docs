@@ -4,7 +4,7 @@ description: This tutorial shows how to create a API for Cassandra account, add 
 author: TheovanKraay
 ms.author: thvankra
 ms.reviewer: mjbrown
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.subservice: apache-cassandra
 ms.topic: tutorial
 ms.date: 12/06/2018

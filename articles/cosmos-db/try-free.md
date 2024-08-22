@@ -6,7 +6,7 @@ description: |
 author: meredithmooreux
 ms.author: merae
 ms.reviewer: merae
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.custom: references_regions
 ms.topic: overview
 ms.date: 07/23/2024

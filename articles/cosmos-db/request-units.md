@@ -5,7 +5,7 @@ description: Learn how request units function as a currency in Azure Cosmos DB a
 author: markjbrown
 ms.author: mjbrown
 ms.reviewer: mjbrown
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.topic: conceptual
 ms.date: 02/27/2023
 ms.custom: cosmos-db-video

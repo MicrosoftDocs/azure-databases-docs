@@ -169,6 +169,10 @@
         "articles/cosmos-db/cassandra/*.md": "apache-cassandra",
         "articles/cosmos-db/table/*.md": "table"
       },
+      "ms.reviewer": {
+        "articles/cosmos-db/**/*.md": "mjbrown",
+        "articles/cosmos-db/**/*.yml": "mjbrown"
+      },
       "searchScope": {
         "articles/cosmos-db/**/*.md": [
           "Azure",
@@ -221,7 +225,7 @@
     "overwrite": [],
     "externalReference": [],
     "template": [],
-	"rules": {
+    "rules": {
       "sensitive-language-ma": {
         "exclude": [
           "articles/mariadb/**/*.md",
