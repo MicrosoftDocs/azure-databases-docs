@@ -1,8 +1,8 @@
 ---
 title: PowerShell script to create resource lock for Azure Cosmos DB Table API table
 description: Create resource lock for Azure Cosmos DB Table API table
-author: seesharprun
-ms.author: sidandrews
+author: markjbrown
+ms.author: mjbrown
 ms.reviewer: mjbrown
 ms.service: azure-cosmos-db
 ms.subservice: table
