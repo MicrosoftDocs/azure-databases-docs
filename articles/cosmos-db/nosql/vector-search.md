@@ -4,7 +4,6 @@ titleSuffix: Azure Cosmos DB for NoSQL
 description: Use vector store in Azure Cosmos DB for NoSQL to enhance AI-based applications.
 author: jcodella
 ms.author: jacodel
-ms.reviewer: sidandrews
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.custom:

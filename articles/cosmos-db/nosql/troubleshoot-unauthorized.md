@@ -7,7 +7,6 @@ ms.subservice: nosql
 ms.date: 07/13/2020
 ms.author: mjbrown
 ms.topic: troubleshooting
-ms.reviewer: mjbrown
 ---
 
 # Diagnose and troubleshoot Azure Cosmos DB unauthorized exceptions

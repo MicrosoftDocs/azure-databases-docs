@@ -4,7 +4,6 @@ titleSuffix: Azure Cosmos DB
 description: Learn to migrate existing applications away from connection strings to instead use Microsoft Entra ID and Azure RBAC for enhanced security.
 author: alexwolfmsft
 ms.author: alexwolf
-ms.reviewer: randolphwest
 ms.date: 06/20/2024
 ms.service: azure-cosmos-db
 ms.topic: how-to

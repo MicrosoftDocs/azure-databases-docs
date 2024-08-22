@@ -8,7 +8,6 @@ ms.custom: build-2023
 ms.topic: how-to
 ms.date: 02/27/2024
 ms.author: jucocchi
-ms.reviewer: jucocchi
 ---
 
 # Azure Cosmos DB SDK observability

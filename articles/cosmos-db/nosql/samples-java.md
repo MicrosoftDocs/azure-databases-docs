@@ -10,7 +10,6 @@ ms.date: 08/26/2021
 ms.devlang: java
 ms.custom: devx-track-java, devx-track-extended-java
 ms.author: mjbrown
-ms.reviewer: mjbrown
 ---
 # Azure Cosmos DB for NoSQL: Java SDK v4 examples
 [!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]

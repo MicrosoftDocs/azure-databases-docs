@@ -6,7 +6,6 @@ ms.service: azure-cosmos-db
 ms.topic: troubleshooting
 ms.date: 04/04/2022
 ms.author: mjbrown
-ms.reviewer: jucocchi
 ms.subservice: nosql
 ---
 # Troubleshoot query issues when using Azure Cosmos DB

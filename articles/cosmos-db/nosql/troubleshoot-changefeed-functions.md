@@ -8,7 +8,6 @@ ms.custom: build-2023
 ms.date: 04/11/2023
 ms.author: maquaran
 ms.topic: troubleshooting
-ms.reviewer: mjbrown
 ---
 
 # Diagnose and troubleshoot issues with the Azure Functions trigger for Azure Cosmos DB

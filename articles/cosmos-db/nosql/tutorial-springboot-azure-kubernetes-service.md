@@ -8,7 +8,6 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 10/01/2021
 ms.author: mjbrown
-ms.reviewer: mjbrown
 ms.custom: mode-api, devx-track-azurecli, build-2023, build-2023-dataai
 ---
 

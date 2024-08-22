@@ -9,7 +9,6 @@ ms.custom: devx-track-dotnet
 ms.topic: reference
 ms.date: 04/06/2021
 ms.author: mjbrown
-ms.reviewer: mjbrown
 ---
 
 # .NET Change Feed Processor SDK: Download and release notes (Legacy)

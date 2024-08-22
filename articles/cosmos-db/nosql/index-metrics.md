@@ -7,7 +7,6 @@ ms.subservice: nosql
 ms.topic: conceptual
 ms.date: 10/25/2021
 ms.author: mjbrown
-ms.reviewer: jucocchi
 ---
 # Indexing metrics in Azure Cosmos DB
 [!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]

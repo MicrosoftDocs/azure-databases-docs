@@ -7,7 +7,6 @@ ms.subservice: nosql
 ms.topic: how-to
 ms.date: 05/12/2022
 ms.author: mjbrown
-ms.reviewer: mjbrown
 ms.custom: devx-track-csharp, devx-track-azurecli, devx-track-azurepowershell
 ---
 

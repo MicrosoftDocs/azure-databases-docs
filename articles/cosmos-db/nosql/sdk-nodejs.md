@@ -8,7 +8,6 @@ ms.devlang: javascript
 ms.topic: reference
 ms.date: 12/09/2021
 ms.author: mjbrown
-ms.reviewer: mjbrown
 ms.custom: devx-track-js
 ---
 # Azure Cosmos DB Node.js SDK for API for NoSQL: Release notes and resources

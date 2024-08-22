@@ -5,7 +5,6 @@ author: markjbrown
 ms.service: azure-cosmos-db
 ms.date: 05/11/2020
 ms.author: mjbrown
-ms.reviewer: mjbrown
 ms.devlang: java
 ms.subservice: nosql
 ms.topic: troubleshooting

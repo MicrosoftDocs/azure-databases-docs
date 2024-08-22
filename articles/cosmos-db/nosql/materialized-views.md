@@ -4,7 +4,6 @@ titleSuffix: Azure Cosmos DB for NoSQL
 description: Learn how to efficiently query a base container by using predefined filters in materialized views for Azure Cosmos DB for NoSQL. Use materilaized views as global secondary indexes to avoid expensive cross-partition queries.
 author: AbhinavTrips
 ms.author: abtripathi
-ms.reviewer: sidandrews
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.custom: build-2023, devx-track-azurecli

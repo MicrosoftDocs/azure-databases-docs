@@ -8,7 +8,6 @@ metadata:
   description: Azure Cosmos DB for NoSQL accounts provides support for querying items with flexible schemas and native support for JSON.
   author: markjbrown
   ms.author: mjbrown
-  ms.reviewer: markjbrown
   ms.service: azure-cosmos-db
   ms.subservice: nosql
   ms.topic: landing-page

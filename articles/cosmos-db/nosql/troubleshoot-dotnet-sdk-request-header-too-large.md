@@ -4,7 +4,6 @@ titleSuffix: Azure Cosmos DB
 description: Learn how to diagnose and fix either the HTTP request header too large or bad request (400) exceptions.
 author: markjbrown
 ms.author: mjbrown
-ms.reviewer: mjbrown
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: troubleshooting

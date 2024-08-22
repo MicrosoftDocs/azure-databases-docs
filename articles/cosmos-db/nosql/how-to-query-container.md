@@ -7,7 +7,6 @@ ms.subservice: nosql
 ms.topic: how-to
 ms.date: 03/09/2023
 ms.author: mjbrown
-ms.reviewer: mjbrown
 ---
 
 # Query an Azure Cosmos DB container

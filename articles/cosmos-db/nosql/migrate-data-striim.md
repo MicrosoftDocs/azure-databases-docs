@@ -7,7 +7,6 @@ ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: how-to
 ms.date: 12/09/2021
-ms.reviewer: mjbrown
 ---
 
 # Migrate data to Azure Cosmos DB for NoSQL account using Striim
