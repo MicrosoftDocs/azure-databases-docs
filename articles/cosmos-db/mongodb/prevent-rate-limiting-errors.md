@@ -8,7 +8,6 @@ ms.topic: how-to
 ms.date: 04/02/2024
 author: avijitgupta
 ms.author: avijitgupta
-ms.reviewer: gahllevy
 ---
 
 # Prevent rate-limiting errors for Azure Cosmos DB for MongoDB operations

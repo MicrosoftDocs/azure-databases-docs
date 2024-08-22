@@ -8,7 +8,6 @@ ms.custom: devx-track-arm-template
 ms.topic: how-to
 ms.date: 06/19/2020
 ms.author: mjbrown
-ms.reviewer: mjbrown
 ---
 # Deploy Azure Cosmos DB and Azure App Service with a web app from GitHub using an Azure Resource Manager Template
 [!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]

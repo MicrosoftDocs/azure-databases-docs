@@ -8,7 +8,6 @@ ms.custom: devx-track-bicep
 ms.topic: conceptual
 ms.date: 09/13/2021
 ms.author: mjbrown
-ms.reviewer: mjbrown
 ---
 
 # Bicep for Azure Cosmos DB

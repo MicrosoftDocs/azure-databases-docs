@@ -6,7 +6,6 @@ metadata:
   ms.author: mjbrown
   ms.service: azure-cosmos-db
   ms.topic: faq
-  ms.reviewer: dech
   ms.date: 12/18/2023
 title: Frequently asked questions on distributing throughput across partitions in Azure Cosmos DB (preview)
 summary: |

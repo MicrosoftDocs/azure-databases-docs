@@ -6,7 +6,6 @@ ms.author: mjbrown
 ms.service: azure-cosmos-db
 ms.custom: devx-track-azurecli
 ms.topic: how-to
-ms.reviewer: dech
 ms.date: 12/18/2023
 ---
 

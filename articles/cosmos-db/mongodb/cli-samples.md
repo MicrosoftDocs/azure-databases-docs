@@ -7,7 +7,6 @@ ms.subservice: mongodb
 ms.topic: sample
 ms.date: 08/18/2022
 ms.author: gahllevy
-ms.reviewer: mjbrown
 ms.custom: devx-track-azurecli
 ---
 

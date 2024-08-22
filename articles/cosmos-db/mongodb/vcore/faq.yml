@@ -5,7 +5,6 @@ metadata:
   description: Get answers to frequently asked questions about vCore-based Azure Cosmos DB for MongoDB.
   author: gahl-levy
   ms.author: gahllevy
-  ms.reviewer: mjbrown
   ms.service: azure-cosmos-db
   ms.subservice: nosql
   ms.topic: faq
