@@ -7,7 +7,6 @@ ms.topic: how-to
 ms.date: 03/07/2023
 author: seesharprun
 ms.author: sidandrews
-ms.reviewer: mjbrown
 ms.devlang: cpp
 # ms.devlang: cpp, csharp, java, javascript, php, python, ruby
 ---

@@ -7,7 +7,6 @@ ms.service: azure-cosmos-db
 ms.subservice: table
 ms.topic: tutorial
 ms.date: 03/14/2023
-ms.reviewer: mjbrown
 ms.devlang: csharp
 ms.custom: devx-track-csharp
 ---
