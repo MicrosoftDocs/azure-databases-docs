@@ -5,7 +5,7 @@ description: Service quotas and default limits on operations, storage, and throu
 author: seesharprun
 ms.author: sidandrews
 ms.reviewer: mjbrown
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.topic: conceptual
 ms.date: 04/15/2023
 ms.custom: build-2023

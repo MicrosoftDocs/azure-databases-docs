@@ -2,7 +2,7 @@
 title: Online backup and on-demand data restore in Azure Cosmos DB.
 description: This article describes how automatic backup, on-demand data restore works. It also explains the difference between continuous and periodic backup modes.
 author: kanshiG
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.custom: build-2023
 ms.topic: how-to
 ms.date: 06/28/2022

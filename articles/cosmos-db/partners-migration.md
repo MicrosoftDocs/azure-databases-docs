@@ -5,7 +5,7 @@ author: seesharprun
 ms.author: sidandrews
 ms.reviewer: mjbrown
 ms.date: 07/20/2023
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.topic: conceptual
 ---
 

@@ -5,7 +5,7 @@ description: Learn about the Azure Cosmos DB Explorer, a standalone web-based in
 author: meredithmooreux
 ms.author: merae
 ms.reviewer: markjbrown
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.topic: how-to
 ms.date: 04/26/2024
 # CustomerIntent: As a database developer, I want to access the Explorer so that I can observe my data and make queries against my data.

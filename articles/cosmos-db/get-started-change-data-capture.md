@@ -5,7 +5,7 @@ description: Enable change data capture in Azure Cosmos DB analytical store for 
 author: Rodrigossz
 ms.author: rosouz
 ms.reviewer: sidandrews
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.topic: how-to
 ms.date: 11/28/2023
 ---
