@@ -7,7 +7,6 @@ ms.subservice: apache-cassandra
 ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: thvankra
-ms.reviewer: abhishgu
 ---
 
 # Ingest data from Apache Kafka into Azure Cosmos DB for Apache Cassandra using Kafka Connect

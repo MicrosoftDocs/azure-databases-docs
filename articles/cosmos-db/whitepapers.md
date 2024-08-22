@@ -6,7 +6,6 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: azure-cosmos-db
 ms.subservice: nosql
-ms.reviewer: mjbrown
 ms.topic: conceptual
 ms.date: 02/20/2023
 ---

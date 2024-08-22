@@ -1,7 +1,6 @@
 ---
 author: seesharprun
 ms.author: sidandrews
-ms.reviewer: mjbrown
 ms.service: azure-cosmos-db
 ms.subservice: table
 ms.topic: include

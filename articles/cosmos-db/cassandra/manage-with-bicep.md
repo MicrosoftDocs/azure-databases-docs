@@ -8,7 +8,6 @@ ms.custom: devx-track-bicep
 ms.topic: how-to
 ms.date: 9/13/2021
 ms.author: thvankra
-ms.reviewer: mjbrown
 ---
 
 # Manage Azure Cosmos DB for Apache Cassandra resources using Bicep

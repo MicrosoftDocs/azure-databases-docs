@@ -7,7 +7,6 @@ ms.subservice: apache-cassandra
 ms.topic: conceptual
 ms.date: 09/03/2021
 ms.author: thvankra
-ms.reviewer: mjbrown
 ---
 
 # Secondary indexing in Azure Cosmos DB for Apache Cassandra

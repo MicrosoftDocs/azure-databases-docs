@@ -3,7 +3,6 @@ title: 'Migrate your data to a API for Cassandra account in Azure Cosmos DB- Tut
 description: In this tutorial, learn how to copy data from Apache Cassandra to a API for Cassandra account in Azure Cosmos DB.
 author: TheovanKraay
 ms.author: thvankra
-ms.reviewer: mjbrown
 ms.service: azure-cosmos-db
 ms.subservice: apache-cassandra
 ms.topic: tutorial

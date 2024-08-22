@@ -4,7 +4,6 @@
  services: cosmos-db
  author: seesharprun
  ms.author: sidandrews
-ms.reviewer: mjbrown
  ms.service: azure-cosmos-db
  ms.topic: include
  ms.date: 12/26/2018

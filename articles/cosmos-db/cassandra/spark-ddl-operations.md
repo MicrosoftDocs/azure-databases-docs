@@ -3,7 +3,6 @@ title: DDL operations in Azure Cosmos DB for Apache Cassandra from Spark
 description: This article details keyspace and table DDL operations against Azure Cosmos DB for Apache Cassandra from Spark.
 author: TheovanKraay
 ms.author: thvankra
-ms.reviewer: mjbrown
 ms.service: azure-cosmos-db
 ms.subservice: apache-cassandra
 ms.topic: how-to

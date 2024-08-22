@@ -7,7 +7,6 @@ ms.topic: how-to
 ms.date: 12/09/2021
 author: TheovanKraay
 ms.author: thvankra
-ms.reviewer: mjbrown
 ---
 
 # Migrate data to Azure Cosmos DB for Apache Cassandra account using Striim

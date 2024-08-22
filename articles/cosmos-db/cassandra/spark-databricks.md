@@ -3,7 +3,6 @@ title: Access Azure Cosmos DB for Apache Cassandra from Azure Databricks
 description: This article covers how to work with Azure Cosmos DB for Apache Cassandra from Azure Databricks.
 author: TheovanKraay
 ms.author: thvankra
-ms.reviewer: mjbrown
 ms.service: azure-cosmos-db
 ms.subservice: apache-cassandra
 ms.topic: how-to

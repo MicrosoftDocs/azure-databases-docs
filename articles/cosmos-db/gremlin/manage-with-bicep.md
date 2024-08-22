@@ -8,7 +8,6 @@ ms.custom: devx-track-bicep
 ms.topic: how-to
 ms.date: 9/13/2021
 ms.author: sidandrews
-ms.reviewer: mjbrown
 ---
 
 # Manage Azure Cosmos DB for Gremlin resources using Bicep

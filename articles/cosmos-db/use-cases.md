@@ -4,7 +4,6 @@ description: 'Learn about the top five use cases for Azure Cosmos DB: user gener
 ms.service: azure-cosmos-db
 author: markjbrown
 ms.author: mjbrown
-ms.reviewer: mjbrown
 ms.topic: conceptual
 ms.date: 05/21/2019
 ms.custom: cosmos-db-video
