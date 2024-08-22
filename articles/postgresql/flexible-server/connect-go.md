@@ -23,7 +23,7 @@ This quickstart demonstrates how to connect to an Azure Database for PostgreSQL 
 
 ## Prerequisites
 
-This quickstart uses the resources created in either of these guides as a starting point:
+This quickstart uses the resources created in either of these guides as a starting point. We recommend you use a server with **Public access (allowed IP addresses)** enabled for this quickstart. Using a server with **Private access (VNet Integration)** enabled to complete this quickstart might involve extra steps that are not covered.
 
 - [Create DB - Portal](quickstart-create-server-portal.md)
 - [Create DB - Azure CLI](quickstart-create-server-cli.md)
@@ -32,14 +32,17 @@ This quickstart uses the resources created in either of these guides as a starti
 
 Install [Go](https://go.dev/doc/install) and the [Pure Go Postgres driver (pq)](https://github.com/lib/pq) on your own machine. Depending on your platform, follow the appropriate steps:
 
-### Windows
+### [Windows](#tab/windows)
 
 1. [Download](https://go.dev/dl/) and install Go for Microsoft Windows according to the [installation instructions](https://go.dev/doc/install).
-2. Launch the command prompt from the start menu.
-3. Make a folder for your project, such as `mkdir  %USERPROFILE%\go\src\postgresqlgo`.
-4. Change directory into the project folder, such as `cd %USERPROFILE%\go\src\postgresqlgo`.
-5. Set the environment variable for GOPATH to point to the source code directory. `set GOPATH=%USERPROFILE%\go`.
-6. Install the [Pure Go Postgres driver (pq)](https://github.com/lib/pq) by running the `go get github.com/lib/pq` command.
+1. Launch the command prompt from the start menu.
+1. Make a folder for your project, such as `mkdir  %USERPROFILE%\go\src\postgresqlgo`.
+1. Change directory into the project folder, such as `cd %USERPROFILE%\go\src\postgresqlgo`.
+1. Set the environment variable for GOPATH to point to the source code directory. `set GOPATH=%USERPROFILE%\go`.
+1. Run [go mod init](https://go.dev/ref/mod#go-mod-init) to create a module in the current directory. For example: `go mod init mysqlgo`.
+    - The `<module_path>` parameter is generally a location in a GitHub repo - such as `github.com/<your_github_account_name>/<directory>`.
+    - When you're creating a command-line app as a test and won't publish the app, the `<module_path>` doesn't need to refer to an actual location. For example, `mqsqlgo`.
+1. Install the [Pure Go Postgres driver (pq)](https://github.com/lib/pq) by running the `go get github.com/lib/pq` command.
 
    In summary, install Go, then run these commands in the command prompt:
 
@@ -47,17 +50,21 @@ Install [Go](https://go.dev/doc/install) and the [Pure Go Postgres driver (pq)](
    mkdir  %USERPROFILE%\go\src\postgresqlgo
    cd %USERPROFILE%\go\src\postgresqlgo
    set GOPATH=%USERPROFILE%\go
+   go mod init mysqlgo
    go get github.com/lib/pq
    ```
 
-### Linux (Ubuntu)
+### [Linux (Ubuntu)](#tab/ubuntu)
 
 1. Launch the Bash shell.
-2. Install Go by running `sudo apt-get install golang-go`.
-3. Make a folder for your project in your home directory, such as `mkdir -p ~/go/src/postgresqlgo/`.
-4. Change directory into the folder, such as `cd ~/go/src/postgresqlgo/`.
-5. Set the GOPATH environment variable to point to a valid source directory, such as your current home directory's go folder. At the bash shell, run `export GOPATH=~/go` to add the go directory as the GOPATH for the current shell session.
-6. Install the [Pure Go Postgres driver (pq)](https://github.com/lib/pq) by running the `go get github.com/lib/pq` command.
+1. Install Go by running `sudo apt-get install golang-go`.
+1. Make a folder for your project in your home directory, such as `mkdir -p ~/go/src/postgresqlgo/`.
+1. Change directory into the folder, such as `cd ~/go/src/postgresqlgo/`.
+1. Set the GOPATH environment variable to point to a valid source directory, such as your current home directory's go folder. At the bash shell, run `export GOPATH=~/go` to add the go directory as the GOPATH for the current shell session.
+1. Run [go mod init](https://go.dev/ref/mod#go-mod-init) to create a module in the current directory. For example: `go mod init mysqlgo`.
+    - The `<module_path>` parameter is generally a location in a GitHub repo - such as `github.com/<your_github_account_name>/<directory>`.
+    - When you're creating a command-line app as a test and won't publish the app, the `<module_path>` doesn't need to refer to an actual location. For example, `mqsqlgo`.
+1. Install the [Pure Go Postgres driver (pq)](https://github.com/lib/pq) by running the `go get github.com/lib/pq` command.
 
    In summary, run these bash commands:
 
@@ -66,17 +73,21 @@ Install [Go](https://go.dev/doc/install) and the [Pure Go Postgres driver (pq)](
    mkdir -p ~/go/src/postgresqlgo/
    cd ~/go/src/postgresqlgo/
    export GOPATH=~/go/
+   go mod init mysqlgo
    go get github.com/lib/pq
    ```
 
-### Apple macOS
+### [Apple macOS](#tab/macos)
 
 1. Download and install Go according to the [installation instructions](https://go.dev/doc/install)  matching your platform.
-2. Launch the Bash shell.
-3. Make a folder for your project in your home directory, such as `mkdir -p ~/go/src/postgresqlgo/`.
-4. Change directory into the folder, such as `cd ~/go/src/postgresqlgo/`.
-5. Set the GOPATH environment variable to point to a valid source directory, such as your current home directory's go folder. At the bash shell, run `export GOPATH=~/go` to add the go directory as the GOPATH for the current shell session.
-6. Install the [Pure Go Postgres driver (pq)](https://github.com/lib/pq) by running the `go get github.com/lib/pq` command.
+1. Launch the Bash shell.
+1. Make a folder for your project in your home directory, such as `mkdir -p ~/go/src/postgresqlgo/`.
+1. Change directory into the folder, such as `cd ~/go/src/postgresqlgo/`.
+1. Set the GOPATH environment variable to point to a valid source directory, such as your current home directory's go folder. At the bash shell, run `export GOPATH=~/go` to add the go directory as the GOPATH for the current shell session.
+1. Run [go mod init](https://go.dev/ref/mod#go-mod-init) to create a module in the current directory. For example: `go mod init mysqlgo`.
+    - The `<module_path>` parameter is generally a location in a GitHub repo - such as `github.com/<your_github_account_name>/<directory>`.
+    - When you're creating a command-line app as a test and won't publish the app, the `<module_path>` doesn't need to refer to an actual location. For example, `mqsqlgo`.
+1. Install the [Pure Go Postgres driver (pq)](https://github.com/lib/pq) by running the `go get github.com/lib/pq` command.
 
    In summary, install Go, then run these bash commands:
 
@@ -84,8 +95,11 @@ Install [Go](https://go.dev/doc/install) and the [Pure Go Postgres driver (pq)](
    mkdir -p ~/go/src/postgresqlgo/
    cd ~/go/src/postgresqlgo/
    export GOPATH=~/go/
+   go mod init mysqlgo
    go get github.com/lib/pq
    ```
+
+---
 
 ## Get connection information
 
