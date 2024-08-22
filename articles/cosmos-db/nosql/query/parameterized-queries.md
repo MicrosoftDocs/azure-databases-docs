@@ -4,7 +4,6 @@ titleSuffix: Azure Cosmos DB for NoSQL
 description: Execute parameterized queries in Azure Cosmos DB for NoSQL to provide robust handling and escaping of user input, and prevent accidental exposure of data through SQL injection.
 author: seesharprun
 ms.author: sidandrews
-ms.reviewer: jacodel
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: how-to

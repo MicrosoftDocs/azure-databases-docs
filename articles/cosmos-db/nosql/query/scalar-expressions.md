@@ -4,7 +4,6 @@ titleSuffix: Azure Cosmos DB for NoSQL
 description: The scalar expression syntax in Azure Cosmos DB for NoSQL evaluates symbols and operators to single values.
 author: seesharprun
 ms.author: sidandrews
-ms.reviewer: jacodel
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: reference
