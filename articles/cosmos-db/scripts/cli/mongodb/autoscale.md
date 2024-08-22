@@ -1,8 +1,8 @@
 ---
 title: Create a database with autoscale and shared collections for API for MongoDB for Azure Cosmos DB
 description: Create a database with autoscale and shared collections for API for MongoDB for Azure Cosmos DB
-author: seesharprun
-ms.author: sidandrews
+author: markjbrown
+ms.author: mjbrown
 ms.reviewer: mjbrown
 ms.service: azure-cosmos-db
 ms.subservice: mongodb

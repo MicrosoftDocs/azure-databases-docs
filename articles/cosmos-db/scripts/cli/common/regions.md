@@ -1,8 +1,8 @@
 ---
 title: Add regions, change failover priority, trigger failover for an Azure Cosmos DB account
 description: Add regions, change failover priority, trigger failover for an Azure Cosmos DB account
-author: seesharprun
-ms.author: sidandrews
+author: markjbrown
+ms.author: mjbrown
 ms.reviewer: mjbrown
 ms.service: azure-cosmos-db
 ms.custom: devx-track-azurecli
