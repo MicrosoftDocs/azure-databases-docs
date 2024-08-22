@@ -2,8 +2,8 @@
 title: Understanding distributed relational databases
 titleSuffix: Azure Cosmos DB
 description: Learn about distributed relational databases and how you can use them together with your global-scale applications and your existing RDBMS development skills.
-author: seesharprun
-ms.author: sidandrews
+author: markjbrown
+ms.author: mjbrown
 ms.reviewer: mjbrown
 ms.service: azure-cosmos-db
 ms.topic: overview

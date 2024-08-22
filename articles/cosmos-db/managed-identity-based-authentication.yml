@@ -4,8 +4,8 @@
 metadata:
   title: Use system-assigned managed identities to access Azure Cosmos DB data
   description: Learn how to configure a Microsoft Entra system-assigned managed identity (managed service identity) to access keys from Azure Cosmos DB.
-  author: seesharprun
-  ms.author: sidandrews
+  author: iriaosara
+  ms.author: iriaosara
   ms.reviewer: justipat
   ms.date: 06/25/2024
   ms.service: azure-cosmos-db

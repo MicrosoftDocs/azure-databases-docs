@@ -1,8 +1,8 @@
 ---
 title: How to choose between provisioned throughput and serverless on Azure Cosmos DB
 description: Learn about how to choose between provisioned throughput and serverless for your workload.
-author: seesharprun
-ms.author: sidandrews
+author: markjbrown
+ms.author: mjbrown
 ms.service: azure-cosmos-db
 ms.topic: conceptual
 ms.date: 05/09/2022
