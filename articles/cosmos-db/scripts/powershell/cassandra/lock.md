@@ -1,8 +1,8 @@
 ---
 title: PowerShell script to create resource lock for Azure Cosmos DB Cassandra API keyspace and table
 description: Create resource lock for Azure Cosmos DB Cassandra API keyspace and table
-author: seesharprun
-ms.author: sidandrews
+author: markjbrown
+ms.author: mjbrown
 ms.reviewer: mjbrown
 ms.service: cosmos-db
 ms.subservice: apache-cassandra

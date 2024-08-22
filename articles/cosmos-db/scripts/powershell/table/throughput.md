@@ -1,13 +1,13 @@
 ---
 title: PowerShell scripts for throughput (RU/s) operations for Azure Cosmos DB for Table
 description: PowerShell scripts for throughput (RU/s) operations for Azure Cosmos DB for Table
-author: seesharprun
+author: markjbrown
 ms.service: azure-cosmos-db
 ms.subservice: table
 ms.custom: devx-track-azurepowershell
 ms.topic: sample
 ms.date: 10/07/2020
-ms.author: sidandrews
+ms.author: mjbrown
 ms.reviewer: mjbrown
 ---
 

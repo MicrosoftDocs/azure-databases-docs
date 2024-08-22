@@ -1,12 +1,12 @@
 ---
 title: PowerShell script to list and get Azure Cosmos DB for Apache Cassandra resources
 description: Azure PowerShell script - Azure Cosmos DB list and get operations for API for Cassandra
-author: seesharprun
+author: markjbrown
 ms.service: cosmos-db
 ms.subservice: apache-cassandra
 ms.topic: sample
 ms.date: 03/18/2020
-ms.author: sidandrews
+ms.author: mjbrown
 ms.reviewer: mjbrown
 ms.custom: devx-track-azurepowershell
 ---

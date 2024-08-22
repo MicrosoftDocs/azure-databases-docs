@@ -1,13 +1,13 @@
 ---
 title: PowerShell script to create a table in Azure Cosmos DB for Table
 description: Learn how to use a PowerShell script to update the throughput for a database or a container in Azure Cosmos DB for Table
-author: seesharprun
+author: markjbrown
 ms.service: azure-cosmos-db
 ms.subservice: table
 ms.custom: devx-track-azurepowershell
 ms.topic: sample
 ms.date: 05/13/2020
-ms.author: sidandrews
+ms.author: mjbrown
 ms.reviewer: mjbrown
 ---
 
