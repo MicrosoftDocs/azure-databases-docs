@@ -3,7 +3,7 @@ title: Use a managed identity to access Azure Key Vault from Azure Cosmos DB
 description: Use managed identity in Azure Cosmos DB to access Azure Key Vault.
 author: iriaosara
 ms.author: iriaosara
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.devlang: csharp
 ms.topic: how-to
 ms.date: 06/01/2022
