@@ -9,7 +9,6 @@ metadata:
   description: Azure Cosmos DB for NoSQL has the ability to query data by writing queries using the Structured Query Language (SQL) as a JSON query language.
   author: seesharprun
   ms.author: sidandrews
-  ms.reviewer: jacodel
   ms.service: azure-cosmos-db
   ms.subservice: nosql
   ms.topic: landing-page

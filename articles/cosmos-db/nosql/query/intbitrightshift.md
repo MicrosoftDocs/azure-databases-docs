@@ -4,7 +4,6 @@ titleSuffix: Azure Cosmos DB for NoSQL
 description: An Azure Cosmos DB for NoSQL system function that right shifts one number by a specific number of bits.
 author: seesharprun
 ms.author: sidandrews
-ms.reviewer: jacodel
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: reference

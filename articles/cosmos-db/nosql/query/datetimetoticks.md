@@ -4,7 +4,6 @@ titleSuffix: Azure Cosmos DB for NoSQL
 description: An Azure Cosmos DB for NoSQL system function that returns the number of ticks, or 100 nanoseconds, since the Unix epoch.
 author: seesharprun
 ms.author: sidandrews
-ms.reviewer: jacodel
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: reference

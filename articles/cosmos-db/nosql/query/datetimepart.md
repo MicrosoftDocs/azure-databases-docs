@@ -4,7 +4,6 @@ titleSuffix: Azure Cosmos DB for NoSQL
 description: An Azure Cosmos DB for NoSQL system function that returns the numeric value of a specific part of a date and time.
 author: seesharprun
 ms.author: sidandrews
-ms.reviewer: jacodel
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: reference

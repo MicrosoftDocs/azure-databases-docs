@@ -4,7 +4,6 @@ titleSuffix: Azure Cosmos DB for NoSQL
 description: An Azure Cosmos DB for NoSQL query clause with two keywords that skips and/or takes a specified number of results.
 author: seesharprun
 ms.author: sidandrews
-ms.reviewer: jacodel
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: reference

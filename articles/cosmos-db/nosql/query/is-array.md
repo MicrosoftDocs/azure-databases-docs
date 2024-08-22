@@ -4,7 +4,6 @@ titleSuffix: Azure Cosmos DB for NoSQL
 description: An Azure Cosmos DB for NoSQL system function that returns a boolean indicating whether an expression is an array.
 author: seesharprun
 ms.author: sidandrews
-ms.reviewer: jacodel
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: reference

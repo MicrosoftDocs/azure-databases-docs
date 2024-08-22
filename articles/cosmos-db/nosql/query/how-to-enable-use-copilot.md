@@ -4,7 +4,6 @@ titleSuffix: Azure Cosmos DB for NoSQL
 description: Generate suggestions from natural language prompts to write NoSQL queries using Microsoft Copilot for Azure in Cosmos DB (preview).
 author: seesharprun
 ms.author: sidandrews
-ms.reviewer: jacodel
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.custom:

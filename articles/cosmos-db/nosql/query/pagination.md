@@ -4,7 +4,6 @@ titleSuffix: Azure Cosmos DB for NoSQL
 description: Page through multiple sets of results and use continuation tokens to continue pagination operators.
 author: seesharprun
 ms.author: sidandrews
-ms.reviewer: jacodel
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: reference

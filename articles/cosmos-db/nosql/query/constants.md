@@ -4,7 +4,6 @@ titleSuffix: Azure Cosmos DB for NoSQL
 description: Use constants to represent specific data values in Azure Cosmos DB for NoSQL.
 author: seesharprun
 ms.author: sidandrews
-ms.reviewer: jacodel
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: reference

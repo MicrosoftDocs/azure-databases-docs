@@ -4,7 +4,6 @@ titleSuffix: Azure Cosmos DB for NoSQL
 description: Create spatial objects with Azure Cosmos DB for NoSQL, index these objects, and perform queries using them.
 author: seesharprun
 ms.author: sidandrews
-ms.reviewer: jacodel
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: reference

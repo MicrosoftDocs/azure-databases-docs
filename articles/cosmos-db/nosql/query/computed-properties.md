@@ -4,7 +4,6 @@ titleSuffix: Azure Cosmos DB for NoSQL
 description: Computed properties in Azure Cosmos DB for NoSQL simplify complex queries and can increase query performance.
 author: seesharprun
 ms.author: sidandrews
-ms.reviewer: jacodel
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: reference
