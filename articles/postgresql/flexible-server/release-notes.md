@@ -6,7 +6,7 @@ ms.author: varundhawan
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: overview
-ms.date: 8/15/2024
+ms.date: 8/22/2024
 #customer intent: As a reader, I want the title and description to meet the required length and include the relevant information about the release notes for Azure DB for PostgreSQL - Flexible Server.
 ---
 
@@ -18,6 +18,7 @@ This page provides latest news and updates regarding feature additions, engine v
 
 ## Release: Aug 2024
 * General availability of [Database Size Metrics](./concepts-monitoring.md) for Azure Database for PostgreSQL flexible server.
+* General availability: [postgres_protobuf](./concepts-extensions.md#extension-versions) extension.
 
 ## Release: July 2024
 * General availability of [Major Version Upgrade Support for PostgreSQL 16](concepts-major-version-upgrade.md) for Azure Database for PostgreSQL flexible server.
