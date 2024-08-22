@@ -2,7 +2,7 @@
 title: Migrate data from Apache Cassandra to the Azure Cosmos DB for Apache Cassandra by using Databricks (Spark)
 description: Learn how to migrate data from an Apache Cassandra database to the Azure Cosmos DB for Apache Cassandra by using Azure Databricks and Spark.
 author: TheovanKraay
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.subservice: apache-cassandra
 ms.topic: how-to
 ms.date: 03/10/2021

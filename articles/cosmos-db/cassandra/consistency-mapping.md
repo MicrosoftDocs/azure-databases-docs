@@ -4,7 +4,7 @@ description: Apache Cassandra and Azure Cosmos DB consistency levels.
 author: TheovanKraay
 ms.author: thvankra
 ms.reviewer: mjbrown
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.subservice: apache-cassandra
 ms.topic: conceptual
 ms.date: 10/18/2022
