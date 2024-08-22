@@ -1,13 +1,13 @@
 ---
 title: 'Azure Cosmos DB for NoSQL: Spring Data v3 examples'
 description: Find Spring Data v3 examples on GitHub for common tasks using the Azure Cosmos DB for NoSQL, including CRUD operations.
-author: seesharprun
+author: markjbrown
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: sample
 ms.date: 08/26/2021
 ms.custom: devx-track-java, devx-track-extended-java
-ms.author: sidandrews
+ms.author: mjbrown
 ms.reviewer: mjbrown
 ---
 # Azure Cosmos DB for NoSQL: Spring Data Azure Cosmos DB v5 examples

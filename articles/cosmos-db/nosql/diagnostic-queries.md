@@ -1,8 +1,8 @@
 ---
 title: Troubleshoot issues with advanced diagnostics queries with Azure Cosmos DB for NoSQL
 description: Learn how to query diagnostics logs for troubleshooting data stored in Azure Cosmos DB for NoSQL.
-author: seesharprun
-ms.author: sidandrews
+author: markjbrown
+ms.author: mjbrown
 ms.reviewer: esarroyo
 ms.service: azure-cosmos-db
 ms.topic: how-to

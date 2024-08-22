@@ -7,8 +7,8 @@ ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: overview 
 ms.date: 10/09/2023
-author: seesharprun
-ms.author: sidandrews
+author: markjbrown
+ms.author: mjbrown
 ms.reviewer: dech
 ---
 

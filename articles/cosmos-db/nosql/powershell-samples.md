@@ -1,13 +1,13 @@
 ---
 title: Azure PowerShell samples for Azure Cosmos DB for NoSQL
 description:  Get the Azure PowerShell samples to perform common tasks in Azure Cosmos DB for API for NoSQL
-author: seesharprun
+author: markjbrown
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.custom: devx-track-azurepowershell
 ms.topic: sample
 ms.date: 01/20/2021
-ms.author: sidandrews
+ms.author: mjbrown
 ms.reviewer: mjbrown
 ---
 
