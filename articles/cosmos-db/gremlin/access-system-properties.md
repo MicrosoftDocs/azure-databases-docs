@@ -2,8 +2,8 @@
 title: Access system document properties
 titleSuffix: Azure Cosmos DB for Apache Gremlin
 description: Learn how to read and write system document properties using Azure Cosmos DB for Apache Gremlin.
-author: seesharprun
-ms.author: sidandrews
+author: manishmsfte
+ms.author: mansha
 ms.service: azure-cosmos-db
 ms.subservice: apache-gremlin
 ms.topic: how-to
