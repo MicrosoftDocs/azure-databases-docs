@@ -2,11 +2,11 @@
  title: include file
  description: include file
  services: cosmos-db
- author: seesharprun
+ author: markjbrown
  ms.service: azure-cosmos-db
  ms.topic: include
  ms.date: 08/07/2019
- ms.author: sidandrews
+ ms.author: mjbrown
  ms.custom: include file
 ---
 You can now add data to your new container using Data Explorer.

@@ -1,11 +1,11 @@
 ---
 services: cosmos-db
-author: seesharprun
+author: markjbrown
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: include
 ms.date: 11/07/2022
-ms.author: sidandrews
+ms.author: mjbrown
 ms.custom: include file
 ---
 
