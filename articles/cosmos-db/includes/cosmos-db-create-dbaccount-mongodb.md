@@ -1,5 +1,4 @@
 ---
- services: cosmos-db
 ---
 
 1. In a new browser window, sign in to the [Azure portal](https://portal.azure.com/).
