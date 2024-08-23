@@ -61,7 +61,7 @@ To retrieve the database connection details:
 
 ## Install the `azure_ai` extension
 
-[Azure AI extension and Open AI](generative-ai-azure-openai.md)
+[Azure AI extension and OpenAI](generative-ai-azure-openai.md)
 
 The `azure_ai` extension allows you to integrate Azure OpenAI and Azure Cognitive Services into your database. To enable the extension in your database, follow the steps below:
 
