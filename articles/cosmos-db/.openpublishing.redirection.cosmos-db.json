@@ -5824,6 +5824,16 @@
       "source_path_from_root": "/articles/cosmos-db/security-baseline.md",
       "redirect_url": "/security/benchmark/azure/baselines/cosmos-db-security-baseline",
       "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/create-website.md",
+      "redirect_url": "/azure/cosmos-db/sql/create-website",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/how-to-move-regions.md",
+      "redirect_url": "/azure/operational-excellence/relocation-cosmos-db",
+      "redirect_document_id": false
     }
   ]
 }
