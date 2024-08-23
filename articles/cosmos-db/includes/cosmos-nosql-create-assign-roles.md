@@ -2,11 +2,9 @@
 title: "include file"
 description: "include file"
 services: storage
-author: alexwolfmsft
 ms.service: azure-storage
 ms.topic: include
-ms.date: 09/09/2022
-ms.author: alexwolf
+ms.date: 08/23/2024
 ms.custom: include file
 ---
 

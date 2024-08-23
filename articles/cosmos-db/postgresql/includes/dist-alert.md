@@ -1,12 +1,10 @@
 ---
  title: include file
  description: include file
- author: jonels-msft
  ms.service: azure-cosmos-db
  ms.subservice: postgresql
  ms.topic: include
- ms.date: 10/01/2023
- ms.author: jonels
+ ms.date: 08/23/2024
 ms.custom: include file
 ---
 

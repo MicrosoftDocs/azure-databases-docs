@@ -2,11 +2,9 @@
 title: "include file"
 description: "include file"
 services: storage
-author: MarkMcGeeAtAquent
 ms.service: azure-storage
 ms.topic: "include"
-ms.date: 03/07/2023
-ms.author: mimig
+ms.date: 08/23/2024
 ms.custom: "include file"
 ---
 If you currently use Azure Table Storage, you gain the following benefits by moving to Azure Cosmos DB for Table:

@@ -2,11 +2,9 @@
  title: Azure Cosmos DB global distribution
  description: Learn how to replicate data globally with Azure Cosmos DB in the Azure portal
  services: cosmos-db
- author: markjbrown
- ms.author: mjbrown
  ms.service: azure-cosmos-db
  ms.topic: include
- ms.date: 12/26/2018
+ ms.date: 08/23/2024
 ms.custom: include file
 ---
 

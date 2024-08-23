@@ -2,11 +2,9 @@
 title: "include file"
 description: "include file"
 services: cosmosdb
-author: diberry
 ms.service: cosmosdb
 ms.topic: include
-ms.date: 01/23/2023
-ms.author: diberry
+ms.date: 08/23/2024
 ms.custom: include file
 ---
 

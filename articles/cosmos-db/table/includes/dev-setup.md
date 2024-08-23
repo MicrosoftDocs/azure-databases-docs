@@ -1,10 +1,8 @@
 ---
-author: sajeetharan
-ms.author: sasinnat
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: include
-ms.date: 01/08/2024
+ms.date: 08/23/2024
 ms.custom: include file
 zone_pivot_groups: azure-cosmos-db-quickstart-env
 ---

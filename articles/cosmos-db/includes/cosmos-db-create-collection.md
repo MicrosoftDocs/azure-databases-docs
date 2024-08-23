@@ -2,11 +2,9 @@
  title: include file
  description: include file
  services: cosmos-db
- author: markjbrown
  ms.service: azure-cosmos-db
  ms.topic: include
- ms.date: 04/13/2018
- ms.author: mjbrown
+ ms.date: 08/23/2024
  ms.custom: include file
 ---
 

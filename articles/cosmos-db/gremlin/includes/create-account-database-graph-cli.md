@@ -1,11 +1,9 @@
 ---
-author: manishmsfte
-ms.author: mansha
 ms.service: azure-cosmos-db
 ms.subservice: apache-gremlin
 ms.custom: devx-track-azurecli
 ms.topic: include
-ms.date: 09/27/2023
+ms.date: 08/23/2024
 ---
 
 1. Create shell variables for *accountName*, *resourceGroupName*, and *location*.

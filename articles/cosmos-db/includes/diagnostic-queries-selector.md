@@ -1,9 +1,7 @@
 ---
-author: markjbrown
-ms.author: mjbrown
 ms.service: azure-cosmos-db
 ms.topic: include
-ms.date: 11/08/2022
+ms.date: 08/23/2024
 ms.custom: include file
 ---
 

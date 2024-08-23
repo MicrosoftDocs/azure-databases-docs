@@ -2,11 +2,9 @@
  title: include file
  description: include file
  services: cosmos-db
- author: markjbrown
  ms.service: azure-cosmos-db
  ms.topic: include
- ms.date: 03/03/2023
- ms.author: mjbrown
+ ms.date: 08/23/2024
 ms.custom: include file
 ---
 You can use queries in Data Explorer to retrieve and filter your data.

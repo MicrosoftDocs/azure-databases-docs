@@ -1,7 +1,7 @@
 ---
 ms.service: azure-cosmos-db
 ms.topic: include
-ms.date: 09/01/2022
+ms.date: 08/23/2024
 ---
 
 APPLIES TO:
