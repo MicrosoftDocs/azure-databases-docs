@@ -1,11 +1,7 @@
 ---
-title: "include file"
-description: "include file"
-services: cosmosdb
-ms.service: cosmosdb
+ms.service: azure-cosmos-db
 ms.topic: include
 ms.date: 08/23/2024
-ms.custom: include file
 ---
 
 #### [Sync / Async](#tab/sync+async)

@@ -1,7 +1,6 @@
 ---
 ms.service: azure-cosmos-db
 ms.subservice: table
-ms.custom: devx-track-azurecli
 ms.topic: include
 ms.date: 08/23/2024
 ---

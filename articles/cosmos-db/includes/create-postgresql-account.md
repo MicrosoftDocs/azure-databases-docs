@@ -4,7 +4,6 @@ ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: include
 ms.date: 08/23/2024
-ms.custom: include file
 ---
 
 1. Sign in to the [Azure portal](https://portal.azure.com).

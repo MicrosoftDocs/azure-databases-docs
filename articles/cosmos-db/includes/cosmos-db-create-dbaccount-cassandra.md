@@ -1,11 +1,8 @@
 ---
- title: include file
- description: include file
  services: cosmos-db
  ms.service: azure-cosmos-db
  ms.topic: include
  ms.date: 08/23/2024
-ms.custom: include file
 ---
    
 1. From the Azure portal menu or the **Home page**, select **Create a resource**.

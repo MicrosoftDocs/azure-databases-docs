@@ -1,6 +1,4 @@
 ---
-title: Multi-tenant monitoring - Azure Cosmos DB for PostgreSQL
-description: Multi-tenant metrics tracking summary
 ms.service: azure-cosmos-db
 ms.subservice: postgresql
 ms.topic: include

@@ -1,11 +1,8 @@
 ---
- title: include file
- description: include file
  ms.service: azure-cosmos-db
  ms.subservice: postgresql
  ms.topic: include
  ms.date: 08/23/2024
-ms.custom: include file
 ---
 
 If you don't have an Azure subscription, create a [free](https://azure.microsoft.com/free/) account before you begin.

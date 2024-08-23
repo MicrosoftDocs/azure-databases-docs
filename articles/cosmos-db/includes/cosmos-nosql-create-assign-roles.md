@@ -1,11 +1,8 @@
 ---
-title: "include file"
-description: "include file"
 services: storage
 ms.service: azure-storage
 ms.topic: include
 ms.date: 08/23/2024
-ms.custom: include file
 ---
 
 When developing locally with passwordless authentication, make sure the user account that connects to Cosmos DB is assigned a role with the correct permissions to perform data operations. Currently, Azure Cosmos DB for NoSQL doesn't include built-in roles for data operations, but you can create your own using the Azure CLI or PowerShell.
