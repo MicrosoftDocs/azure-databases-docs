@@ -1,11 +1,11 @@
 ---
 title: "include file"
 description: "include file"
-author: seesharprun
+author: markjbrown
 ms.service: azure-cosmos-db
 ms.topic: "include"
 ms.date: 04/13/2018
-ms.author: sidandrews
+ms.author: mjbrown
 ms.custom: "include file"
 ---
 

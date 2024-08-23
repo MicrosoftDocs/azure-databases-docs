@@ -1,9 +1,9 @@
 ---
-author: seesharprun
+author: markjbrown
 ms.service: azure-cosmos-db
 ms.topic: include
 ms.date: 11/09/2018
-ms.author: sidandrews
+ms.author: mjbrown
 ---
 Alternatively, you can [Try Azure Cosmos DB for free](https://azure.microsoft.com/try/cosmosdb/) without an Azure subscription, free of charge and commitments. Or you can use the [Azure Cosmos DB Emulator](../emulator.md) for this 
 tutorial with a connection string of:
