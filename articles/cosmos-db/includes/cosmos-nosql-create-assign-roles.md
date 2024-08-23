@@ -1,5 +1,4 @@
 ---
-services: storage
 ms.service: azure-storage
 ms.topic: include
 ms.date: 08/23/2024
