@@ -1,12 +1,12 @@
 ---
 title: Azure CLI Samples for Azure Cosmos DB for Table
 description: Azure CLI Samples for Azure Cosmos DB for Table
-author: seesharprun
+author: sajeetharan
 ms.service: azure-cosmos-db
 ms.subservice: table
 ms.topic: sample
 ms.date: 08/19/2022
-ms.author: sidandrews
+ms.author: sasinnat
 ms.custom: devx-track-azurecli
 ---
 

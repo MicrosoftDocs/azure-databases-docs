@@ -1,6 +1,6 @@
 ---
-author: seesharprun
-ms.author: sidandrews
+author: sajeetharan
+ms.author: sasinnat
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: include
