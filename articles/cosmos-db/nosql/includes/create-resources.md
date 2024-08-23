@@ -1,13 +1,7 @@
 ---
-title: include file
-description: include file
-services: cosmos-db
-author: seesharprun
 ms.service: azure-cosmos-db
 ms.topic: include
-ms.date: 11/07/2022
-ms.author: sidandrews
-ms.custom: include file
+ms.date: 08/23/2024
 ---
 
 This quickstart will create a single Azure Cosmos DB account using the API for NoSQL.

@@ -1,13 +1,7 @@
 ---
-title: "include file"
-description: "include file"
-services: cosmos-db
-author: MarkMcGeeAtAquent
 ms.service: azure-cosmos-db
-ms.topic: "include"
-ms.date: 04/06/2018
-ms.author: mimig
-ms.custom: include file
+ms.topic: include
+ms.date: 08/23/2024
 ---
 
 For instructions on creating an Azure Cosmos DB for Table account, see [Create a database account](../how-to-manage-database-account.yml).
