@@ -5,7 +5,7 @@ ms.service: azure-cosmos-db
 ms.subservice: mongodb
 ms.custom: devx-track-azurecli
 ms.topic: how-to
-ms.date: 04/02/2024
+ms.date: 08/23/2024
 author: avijitgupta
 ms.author: avijitgupta
 ---
@@ -54,8 +54,6 @@ Enable Server Side Retry (SSR) to automate operation retries. SSR retries reques
 ## Frequently asked questions
 
 ### How can I monitor the effects of a server-side retry?
-
-You can view the rate limiting errors (16500) with mongo requests metric, that are retried server-side in the Azure Cosmos DB Metrics pane. Keep in mind that these errors don't go to the client when SSR is enabled, since they are handled and retried server-side.
 
 You can search for log entries containing *estimatedDelayFromRateLimitingInMilliseconds* in your [Azure Cosmos DB resource logs](../monitor-resource-logs.md).
 
