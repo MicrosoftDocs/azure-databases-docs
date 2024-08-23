@@ -3,7 +3,6 @@ title: Use Micrometer metrics for Java SDK in Azure Cosmos DB
 description: Learn how to consume Micrometer metrics in the Java SDK for Azure Cosmos DB.
 author: TheovanKraay
 ms.author: thvankra
-services: cosmos-db
 ms.service: azure-cosmos-db
 ms.custom: devx-track-extended-java
 ms.topic: how-to
