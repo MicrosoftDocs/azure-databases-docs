@@ -1,13 +1,13 @@
 ---
 title: Resource Manager templates for Azure Cosmos DB for Gremlin
 description: Use Azure Resource Manager templates to create and configure Azure Cosmos DB for Gremlin.
-author: seesharprun
+author: manishmsfte
 ms.service: azure-cosmos-db
 ms.subservice: apache-gremlin
 ms.custom: devx-track-arm-template
 ms.topic: how-to
 ms.date: 10/14/2020
-ms.author: sidandrews
+ms.author: mansha
 ---
 
 # Manage Azure Cosmos DB for Gremlin resources using Azure Resource Manager templates

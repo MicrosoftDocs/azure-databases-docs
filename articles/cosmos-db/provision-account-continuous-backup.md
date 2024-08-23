@@ -6,7 +6,6 @@ ms.service: azure-cosmos-db
 ms.topic: how-to
 ms.date: 05/02/2023
 ms.author: govindk
-ms.reviewer: mjbrown
 ms.custom: devx-track-azurepowershell, devx-track-azurecli, build-2023
 ms.devlang: azurecli
 ---

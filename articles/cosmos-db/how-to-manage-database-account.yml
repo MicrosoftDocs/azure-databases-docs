@@ -5,7 +5,6 @@ metadata:
   description: Learn how to manage Azure Cosmos DB resources by using the Azure portal, PowerShell, CLI, and Azure Resource Manager templates.
   author: markjbrown
   ms.author: mjbrown
-  ms.reviewer: mjbrown
   ms.date: 02/26/2024
   ms.service: azure-cosmos-db
   ms.subservice: nosql

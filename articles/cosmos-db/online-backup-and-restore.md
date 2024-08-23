@@ -7,7 +7,6 @@ ms.custom: build-2023
 ms.topic: how-to
 ms.date: 06/28/2022
 ms.author: govindk
-ms.reviewer: mjbrown
 ---
 
 # Online backup and on-demand data restore in Azure Cosmos DB

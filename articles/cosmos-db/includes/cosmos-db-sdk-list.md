@@ -1,9 +1,7 @@
 ---
-author: seesharprun
-ms.author: sidandrews
 ms.service: azure-cosmos-db
 ms.topic: include
-ms.date: 02/12/2024
+ms.date: 08/23/2024
 ---
 
 > [!div class="op_single_selector"]

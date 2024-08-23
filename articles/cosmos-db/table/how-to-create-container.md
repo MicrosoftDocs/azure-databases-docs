@@ -1,13 +1,13 @@
 ---
 title: Create a container in Azure Cosmos DB for Table
 description: Learn how to create a container in Azure Cosmos DB for Table by using Azure portal, .NET, Java, Python, Node.js, and other SDKs.
-author: seesharprun
+author: sajeetharan
 ms.service: azure-cosmos-db
 ms.subservice: table
 ms.custom: devx-track-azurecli, devx-track-dotnet, devx-track-extended-java, devx-track-python
 ms.topic: how-to
 ms.date: 10/16/2020
-ms.author: sidandrews
+ms.author: sasinnat
 ---
 
 # Create a container in Azure Cosmos DB for Table

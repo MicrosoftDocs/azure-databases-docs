@@ -6,7 +6,6 @@ ms.author: esarroyo
 ms.topic: conceptual
 ms.service: azure-cosmos-db
 ms.date: 02/08/2023
-ms.reviewer: markjbrown
 ms.custom: subject-monitoring
 ---
 

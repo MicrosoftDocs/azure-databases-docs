@@ -4,7 +4,6 @@ titleSuffix: Azure Cosmos DB
 description: Learn about the hierarchy of an account's elements in an Azure Cosmos DB resource model.
 author: markjbrown
 ms.author: mjbrown
-ms.reviewer: mjbrown
 ms.service: azure-cosmos-db
 ms.topic: conceptual
 ms.date: 02/27/2023

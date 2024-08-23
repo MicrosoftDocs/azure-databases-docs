@@ -7,7 +7,6 @@ ms.subservice: nosql
 ms.topic: conceptual
 ms.date: 04/20/2020
 ms.author: dech
-ms.reviewer: mjbrown
 ---
 
 # Conflict types and resolution policies when using multiple write regions

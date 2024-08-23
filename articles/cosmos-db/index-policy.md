@@ -9,7 +9,6 @@ ms.custom:
 ms.topic: conceptual
 ms.date: 12/07/2021
 ms.author: dech
-ms.reviewer: jacodel
 ---
 
 # Indexing policies in Azure Cosmos DB

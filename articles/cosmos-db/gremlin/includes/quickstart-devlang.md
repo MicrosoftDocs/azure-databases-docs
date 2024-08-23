@@ -1,10 +1,8 @@
 ---
-author: seesharprun
-ms.author: sidandrews
 ms.service: azure-cosmos-db
 ms.subservice: apache-gremlin
 ms.topic: include
-ms.date: 09/27/2023
+ms.date: 08/23/2024
 ---
 
 > [!div class="op_single_selector"]

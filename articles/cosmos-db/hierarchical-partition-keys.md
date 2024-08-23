@@ -4,7 +4,6 @@ titleSuffix: Azure Cosmos DB
 description: Learn about subpartitioning in Azure Cosmos DB, how to use the feature, and how to manage logical partitions.
 author: deborahc
 ms.author: dech
-ms.reviewer: dech
 ms.service: azure-cosmos-db
 ms.topic: conceptual
 ms.date: 05/05/2023

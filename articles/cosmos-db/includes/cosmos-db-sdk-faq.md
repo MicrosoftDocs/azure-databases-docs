@@ -1,9 +1,7 @@
 ---
-author: seesharprun
 ms.service: azure-cosmos-db
 ms.topic: include
-ms.date: 8/12/2020
-ms.author: sidandrews
+ms.date: 08/23/2024
 ---
 **How will I be notified of the retiring SDK?**
 

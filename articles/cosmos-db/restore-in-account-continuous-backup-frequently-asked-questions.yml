@@ -5,7 +5,6 @@ metadata:
   description: This article lists frequently asked questions about the same account restore feature for continuous backup in Azure Cosmos DB.
   author: kanshiG
   ms.author: govindk
-  ms.reviewer: mjbrown
   ms.service: azure-cosmos-db
   ms.custom: build-2023
   ms.topic: faq

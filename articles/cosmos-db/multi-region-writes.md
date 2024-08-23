@@ -6,7 +6,6 @@ ms.service: azure-cosmos-db
 ms.topic: conceptual
 ms.date: 04/12/2024
 ms.author: thvankra
-ms.reviewer: thvankra
 ---
 
 # Understanding multi-region writes in Azure Cosmos DB

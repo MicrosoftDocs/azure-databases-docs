@@ -1,13 +1,7 @@
 ---
- title: include file
- description: include file
- services: cosmos-db
- author: seesharprun
  ms.service: azure-cosmos-db
  ms.topic: include
- ms.date: 04/13/2018
- ms.author: sidandrews
- ms.custom: include file
+ ms.date: 08/23/2024
 ---
 
 You can now use the Data Explorer tool in the Azure portal to create a database and container. 

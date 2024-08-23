@@ -4,7 +4,6 @@ titleSuffix: Azure Cosmos DB
 description: Learn how request units function as a currency in Azure Cosmos DB and how to specify and estimate Request Unit requirements.
 author: markjbrown
 ms.author: mjbrown
-ms.reviewer: mjbrown
 ms.service: azure-cosmos-db
 ms.topic: conceptual
 ms.date: 02/27/2023

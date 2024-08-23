@@ -5,7 +5,6 @@ ms.date: 02/06/2024
 ms.topic: sample
 author: iriaosara
 ms.author: iriaosara
-ms.reviewer: mjbrown 
 ms.service: azure-cosmos-db
 ms.custom: subject-policy-compliancecontrols
 ---

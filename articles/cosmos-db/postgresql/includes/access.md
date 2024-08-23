@@ -1,13 +1,8 @@
 ---
- title: include file
- description: include file
- author: jonels-msft
  ms.service: azure-cosmos-db
  ms.subservice: postgresql
  ms.topic: include
- ms.date: 10/15/2021
- ms.author: jonels
-ms.custom: include file
+ ms.date: 08/23/2024
 ---
 
 Azure Cosmos DB for PostgreSQL supports three networking options:

@@ -6,8 +6,8 @@ ms.subservice: table
 ms.devlang: cpp
 ms.topic: sample
 ms.date: 10/07/2019
-author: seesharprun
-ms.author: sidandrews
+author: sajeetharan
+ms.author: sasinnat
 ---
 # How to use Azure Table storage and Azure Cosmos DB for Table with C++
 [!INCLUDE[Table](../includes/appliesto-table.md)]

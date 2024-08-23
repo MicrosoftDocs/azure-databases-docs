@@ -1,9 +1,7 @@
 ---
-author: seesharprun
 ms.service: azure-cosmos-db
 ms.topic: include
-ms.date: 01/22/2020
-ms.author: sidandrews
+ms.date: 08/23/2024
 ---
 When you're done with your app and Azure Cosmos DB account, you can delete the Azure resources you created so you don't incur more charges. To delete the resources:
 

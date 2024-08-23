@@ -1,11 +1,8 @@
 ---
-author: seesharprun
-ms.author: sidandrews
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: include
-ms.date: 01/08/2024
-ms.custom: include file
+ms.date: 08/23/2024
 ---
 
 Application requests to most Azure services must be authorized. Use the `DefaultAzureCredential` type as the preferred way to implement a passwordless connection between your applications and Azure Cosmos DB for NoSQL. `DefaultAzureCredential` supports multiple authentication methods and determines which method should be used at runtime.

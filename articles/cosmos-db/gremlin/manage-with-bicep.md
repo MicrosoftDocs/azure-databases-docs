@@ -1,13 +1,13 @@
 ---
 title: Create and manage Azure Cosmos DB for Gremlin with Bicep
 description: Use Bicep to create and configure Azure Cosmos DB for Gremlin.
-author: seesharprun
+author: manishmsfte
 ms.service: azure-cosmos-db
 ms.subservice: apache-gremlin
 ms.custom: devx-track-bicep
 ms.topic: how-to
 ms.date: 9/13/2021
-ms.author: sidandrews
+ms.author: mansha
 ---
 
 # Manage Azure Cosmos DB for Gremlin resources using Bicep

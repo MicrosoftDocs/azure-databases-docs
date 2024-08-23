@@ -1,10 +1,8 @@
 ---
-author: seesharprun
-ms.author: sidandrews
 ms.service: azure-cosmos-db
 ms.subservice: table
 ms.topic: include
-ms.date: 02/05/2024
+ms.date: 08/23/2024
 ---
 
 > [!TIP]

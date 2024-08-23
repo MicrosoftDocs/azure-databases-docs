@@ -7,7 +7,6 @@ ms.service: azure-cosmos-db
 ms.custom: devx-track-azurecli, devx-track-azurepowershell, devx-track-arm-template
 ms.topic: how-to
 ms.date: 09/27/2022
-ms.reviewer: turao
 ---
 
 # Configure cross-tenant customer-managed keys for your Azure Cosmos DB account with Azure Key Vault

@@ -1,8 +1,8 @@
 ---
 title: Troubleshoot issues with advanced diagnostics queries with Azure Cosmos DB for Apache Gremlin
 description: Learn how to query diagnostics logs for troubleshooting data stored in Azure Cosmos DB for Apache Gremlin.
-author: seesharprun
-ms.author: sidandrews
+author: manishmsfte
+ms.author: mansha
 ms.service: azure-cosmos-db
 ms.topic: how-to
 ms.date: 11/08/2022

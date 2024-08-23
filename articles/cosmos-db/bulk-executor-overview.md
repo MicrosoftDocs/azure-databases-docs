@@ -6,7 +6,6 @@ ms.service: azure-cosmos-db
 ms.topic: overview
 ms.date: 3/30/2023
 ms.author: abramees
-ms.reviewer: mjbrown
 ---
 
 # Azure Cosmos DB bulk executor library overview

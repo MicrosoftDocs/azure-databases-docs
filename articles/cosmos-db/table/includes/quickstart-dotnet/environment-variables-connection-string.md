@@ -1,10 +1,8 @@
 ---
-author: alexwolfmsft
 ms.service: azure-cosmos-db
 ms.subservice: table
 ms.topic: include
-ms.date: 07/08/2022
-ms.author: alexwolf
+ms.date: 08/23/2024
 ---
 To use the **CONNECTION STRING** values within your code, set this value on the local machine running the application. To set the environment variable, use your preferred terminal to run the following commands:
 

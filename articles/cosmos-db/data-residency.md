@@ -6,7 +6,6 @@ ms.service: azure-cosmos-db
 ms.topic: conceptual
 ms.date: 04/05/2021
 ms.author: govindk
-ms.reviewer: mjbrown
 ---
 
 # How to meet data residency requirements in Azure Cosmos DB
