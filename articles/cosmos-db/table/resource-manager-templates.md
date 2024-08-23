@@ -7,7 +7,7 @@ ms.subservice: table
 ms.custom: devx-track-arm-template
 ms.topic: how-to
 ms.date: 05/19/2020
-ms.author: sidandrews
+author: sasinnat
 ---
 
 # Manage Azure Cosmos DB for Table resources using Azure Resource Manager templates

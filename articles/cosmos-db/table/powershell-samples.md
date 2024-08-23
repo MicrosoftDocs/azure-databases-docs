@@ -7,7 +7,7 @@ ms.subservice: table
 ms.custom: devx-track-azurepowershell
 ms.topic: sample
 ms.date: 01/20/2021
-ms.author: sidandrews
+author: sasinnat
 ---
 
 # Azure PowerShell samples for Azure Cosmos DB for Table
