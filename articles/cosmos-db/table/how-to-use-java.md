@@ -7,7 +7,7 @@ ms.devlang: java
 ms.topic: sample
 ms.date: 12/10/2020
 author: sajeetharan
-author: sasinnat
+ms.author: sasinnat
 ms.custom: devx-track-java, devx-track-extended-java
 ---
 

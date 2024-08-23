@@ -8,7 +8,7 @@ ms.custom: devx-track-go
 ms.topic: sample
 ms.date: 03/24/2022
 author: sajeetharan
-author: sasinnat
+ms.author: sasinnat
 ---
 
 # How to use the Azure SDK for Go with Azure Table

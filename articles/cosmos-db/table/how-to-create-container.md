@@ -7,7 +7,7 @@ ms.subservice: table
 ms.custom: devx-track-azurecli, devx-track-dotnet, devx-track-extended-java, devx-track-python
 ms.topic: how-to
 ms.date: 10/16/2020
-author: sasinnat
+ms.author: sasinnat
 ---
 
 # Create a container in Azure Cosmos DB for Table

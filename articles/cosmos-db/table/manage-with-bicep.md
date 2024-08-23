@@ -7,7 +7,7 @@ ms.subservice: table
 ms.custom: devx-track-bicep
 ms.topic: how-to
 ms.date: 09/13/2021
-author: sasinnat
+ms.author: sasinnat
 ---
 
 # Manage Azure Cosmos DB for Table resources using Bicep

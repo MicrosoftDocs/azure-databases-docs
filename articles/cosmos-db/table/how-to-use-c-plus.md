@@ -7,7 +7,7 @@ ms.devlang: cpp
 ms.topic: sample
 ms.date: 10/07/2019
 author: sajeetharan
-author: sasinnat
+ms.author: sasinnat
 ---
 # How to use Azure Table storage and Azure Cosmos DB for Table with C++
 [!INCLUDE[Table](../includes/appliesto-table.md)]

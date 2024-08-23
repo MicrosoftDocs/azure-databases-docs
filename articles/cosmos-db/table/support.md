@@ -6,7 +6,7 @@ ms.subservice: table
 ms.topic: how-to
 ms.date: 03/07/2023
 author: seesharprun
-author: sasinnat
+ms.author: sasinnat
 ms.devlang: cpp
 # ms.devlang: cpp, csharp, java, javascript, php, python, ruby
 ---

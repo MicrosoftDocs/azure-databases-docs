@@ -6,7 +6,7 @@ ms.service: azure-cosmos-db
 ms.subservice: table
 ms.topic: sample
 ms.date: 08/19/2022
-author: sasinnat
+ms.author: sasinnat
 ms.custom: devx-track-azurecli
 ---
 

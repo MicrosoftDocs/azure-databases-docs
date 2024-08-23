@@ -6,7 +6,7 @@ ms.service: azure-cosmos-db
 ms.subservice: table
 ms.topic: how-to
 ms.date: 10/14/2020
-author: sasinnat
+ms.author: sasinnat
 ms.devlang: csharp
 ms.custom: devx-track-dotnet, devx-track-extended-java, devx-track-python
 ---

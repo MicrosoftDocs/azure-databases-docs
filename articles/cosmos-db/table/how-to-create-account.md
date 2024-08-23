@@ -2,7 +2,7 @@
 title: Create an Azure Cosmos DB for Table account
 description: Learn how to create a new Azure Cosmos DB for Table account
 author: sajeetharan
-author: sasinnat
+ms.author: sasinnat
 ms.service: azure-cosmos-db
 ms.subservice: table
 ms.devlang: csharp

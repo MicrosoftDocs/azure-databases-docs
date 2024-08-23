@@ -2,7 +2,7 @@
 title: Read an item in Azure Cosmos DB for Table using .NET
 description: Learn how to read an item in your Azure Cosmos DB for Table account using the .NET SDK
 author: sajeetharan
-author: sasinnat
+ms.author: sasinnat
 ms.service: azure-cosmos-db
 ms.subservice: table
 ms.devlang: csharp
