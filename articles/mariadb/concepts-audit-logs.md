@@ -4,7 +4,7 @@ description: Describes the audit logs available in Azure Database for MariaDB, a
 ms.service: azure-database-mariadb
 author: SudheeshGH
 ms.author: sunaray
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 06/24/2022
 ---
 
