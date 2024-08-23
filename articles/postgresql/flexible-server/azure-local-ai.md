@@ -30,19 +30,19 @@ During this public preview, the azure_local_ai extension will be available in th
 
  
 
-Australia East
+- Australia East
 
-East USA
+- East USA
 
-France Central
+- France Central
 
-Japan East
+- Japan East
 
-UK South
+- UK South
 
-West Europe
+- West Europe
 
-West USA
+- West USA
 
 This preview feature is also only available for newly deployed Azure Database for PostgreSQL Flexible Server instances.
 
