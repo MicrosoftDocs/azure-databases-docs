@@ -1,19 +1,19 @@
 ### YamlMime:Landing
 
 title: Azure Cosmos DB for MongoDB (vCore) commands
-summary: TODO.
+summary: TODO
 
 metadata:
   title: Azure Cosmos DB for MongoDB (vCore) commands
-  description: TODO.
-  author: gahl-levy
+  description: TODO
+  author: avijitkgupta
   ms.author: avijitgupta
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: landing-page
   ms.date: 08/27/2024
 landingContent:
-  - title: Array Query commands
+  - title: Array query commands
     linkLists:
       - linkListType: reference
         links:

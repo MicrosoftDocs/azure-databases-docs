@@ -1,4 +1,4 @@
-- name: Array Query
+- name: Array query
   items:
     - name: $elemMatch
       href: array-query-elemmatch.md
