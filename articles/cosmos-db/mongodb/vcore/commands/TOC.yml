@@ -1,3 +1,5 @@
+- name: Index
+  href: index.yml
 - name: Array query
   items:
     - name: $elemMatch
