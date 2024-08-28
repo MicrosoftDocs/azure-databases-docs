@@ -1,11 +1,11 @@
 ### YamlMime:Landing
 
 title: Azure Cosmos DB for MongoDB (vCore) commands
-summary: TODO
+summary: Review the details for various supported commands and operators you can use with Azure Cosmos DB for MongoDB vCore.
 
 metadata:
   title: Azure Cosmos DB for MongoDB (vCore) commands
-  description: TODO
+  description: Review the details for various supported commands and operators you can use with Azure Cosmos DB for MongoDB vCore.
   author: avijitkgupta
   ms.author: avijitgupta
   ms.service: azure-cosmos-db
