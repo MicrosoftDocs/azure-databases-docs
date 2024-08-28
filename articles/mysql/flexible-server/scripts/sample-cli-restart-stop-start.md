@@ -25,7 +25,7 @@ This sample CLI script performs restart, start and stop operations on an Azure D
 
 During the time server is stopped, no management operations can be performed on the server. In order to change any configuration settings on the server, you will need to start the server.
 
-Also, see [stop/start limitations](../concepts-limitations.md#stopstart-operation) before performing stop/start operations.
+Also, see [stop/start limitations](../concepts-limitations.md#stopstart-operations) before performing stop/start operations.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/flexible-server-free-trial-note.md)]
 
