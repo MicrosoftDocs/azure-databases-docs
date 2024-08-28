@@ -5,7 +5,7 @@ author: akashraokm
 ms.author: akashrao
 ms.reviewer: maghan
 ms.date: 05/02/2024
-ms.service: postgresql
+ms.service: azure-database-postgresql
 ms.subservice: 
 ms.topic: conceptual
 
