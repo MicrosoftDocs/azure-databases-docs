@@ -6,9 +6,8 @@ summary: Azure Cosmos DB for NoSQL accounts provides support for querying items 
 metadata:
   title: Azure Cosmos DB for NoSQL
   description: Azure Cosmos DB for NoSQL accounts provides support for querying items with flexible schemas and native support for JSON.
-  author: seesharprun
-  ms.author: sidandrews
-  ms.reviewer: markjbrown
+  author: markjbrown
+  ms.author: mjbrown
   ms.service: azure-cosmos-db
   ms.subservice: nosql
   ms.topic: landing-page

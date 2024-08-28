@@ -7,7 +7,6 @@ ms.service: azure-cosmos-db
 ms.subservice: mongodb
 ms.topic: tutorial
 ms.date: 08/26/2021
-ms.reviewer: mjbrown
 ms.devlang: csharp
 ms.custom: devx-track-csharp
 ---

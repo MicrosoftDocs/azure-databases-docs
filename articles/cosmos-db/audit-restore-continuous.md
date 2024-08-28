@@ -2,11 +2,10 @@
 title: Auditing the point in time restore action for continuous backup mode in Azure Cosmos DB
 description: This article provides details available to audit Azure Cosmos DB's point in time restore feature in continuous backup mode.
 author: kanshiG
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.topic: conceptual
 ms.date: 04/18/2022
 ms.author: govindk
-ms.reviewer: mjbrown
 ---
 
 # Audit the point-in-time restore action for continuous backup mode in Azure Cosmos DB

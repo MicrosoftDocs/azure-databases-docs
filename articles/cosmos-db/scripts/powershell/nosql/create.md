@@ -1,13 +1,12 @@
 ---
 title: PowerShell script to create Azure Cosmos DB for NoSQL database and container
 description: Azure PowerShell script - Azure Cosmos DB create API for NoSQL database and container
-author: seesharprun
+author: markjbrown
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: sample
 ms.date: 05/13/2020
-ms.author: sidandrews
-ms.reviewer: mjbrown
+ms.author: mjbrown
 ms.custom: devx-track-azurepowershell
 ---
 

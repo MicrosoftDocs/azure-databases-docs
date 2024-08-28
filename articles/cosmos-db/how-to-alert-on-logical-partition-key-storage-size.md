@@ -3,7 +3,7 @@ title: Create alerts to monitor if storage for a logical partition key is approa
 description: Learn how to set up alerts for Azure Cosmos DB using Log Analytics
 author: deborahc
 ms.author: dech
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.topic: how-to
 ms.date: 02/08/2022
 ---

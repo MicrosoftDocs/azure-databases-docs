@@ -6,7 +6,7 @@ ms.custom: horz-monitor
 ms.topic: reference
 ms.author: esarroyo
 author: StefArroyo
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ---
 
 # Azure Cosmos DB monitoring data reference

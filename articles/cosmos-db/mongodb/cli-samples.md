@@ -1,13 +1,12 @@
 ---
 title: Azure CLI Samples for Azure Cosmos DB for MongoDB
 description: Azure CLI Samples for Azure Cosmos DB for MongoDB
-author: seesharprun
+author: gahl-levy
 ms.service: azure-cosmos-db
 ms.subservice: mongodb
 ms.topic: sample
 ms.date: 08/18/2022
-ms.author: sidandrews
-ms.reviewer: mjbrown
+ms.author: gahllevy
 ms.custom: devx-track-azurecli
 ---
 

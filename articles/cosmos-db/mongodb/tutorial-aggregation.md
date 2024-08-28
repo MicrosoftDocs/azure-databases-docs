@@ -7,7 +7,6 @@ ms.service: azure-cosmos-db
 ms.subservice: mongodb
 ms.topic: tutorial
 ms.date: 01/24/2023
-ms.reviewer: mjbrown
 ---
 
 # Getting Started with Aggregation Pipeline

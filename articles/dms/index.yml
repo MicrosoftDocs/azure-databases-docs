@@ -4,8 +4,8 @@ summary: "Azure Database Migration Service enables seamless migrations from mult
 metadata: 
   description: "Learn how to enable seamless migrations from multiple database sources to Azure Data platforms with minimal downtime by using Azure Database Migration Service."
   keywords: azure database migration services, dms service, azure data migration, data migration service, database migration service
-  author: croblesm
-  ms.author: roblescarlos
+  author: abhims14
+  ms.author: abhishekum
   ms.date: 01/25/2022
   ms.service: azure-database-migration-service
   ms.topic: landing-page
@@ -101,10 +101,10 @@ landingContent:
             url: tutorial-mysql-azure-mysql-offline-portal.md
           - text: Migrate RDS MySQL to Azure DB for MySQL - offline
             url: tutorial-mysql-azure-mysql-offline-portal.md
-          - text: Migrate to Azure Cosmos DB for MongoDB` - online
+          - text: Migrate to Azure Cosmos DB for MongoDB (RU) - online
             url: tutorial-mongodb-cosmos-db-online.md
-          - text: Migrate to Azure Cosmos DB for MongoDB- offline
-            url: tutorial-mongodb-cosmos-db.md
+          - text: Migrate to Azure Cosmos DB for MongoDB (vCore)
+            url: /azure-data-studio/extensions/database-migration-for-mongo-extension
       - linkListType: reference
         links:
           - text: Known issues - Online migration to Azure DB for PostgreSQL
@@ -115,7 +115,7 @@ landingContent:
         links:
           - text: Migrate PostgreSQL to Azure DB for PostgreSQL - Single server
             url: https://azure.microsoft.com/resources/videos/how-to-migrate-postgresql-to-azure-postgresql-online-dms-and-cli/
-          - text: Migrate to Azure Cosmos DB for MongoDB
+          - text: Migrate to Azure Cosmos DB for MongoDB (RU)
             url: https://azure.microsoft.com/resources/videos/how-to-migrate-mongodb-to-cosmos-db/
 # Card 4
   - title: Tools and guidance
@@ -136,5 +136,7 @@ landingContent:
             url: /azure-data-studio/extensions/dsct/database-schema-conversion-toolkit
           - text: Database Migration Assessment for Oracle
             url: /azure-data-studio/extensions/database-migration-assessment-for-oracle-extension
+          - text: Database Migration Assessment for MongoDB
+            url: /azure-data-studio/extensions/database-migration-for-mongo-extension
           - text: SQL Server Migration Assistant
             url: /sql/ssma/sql-server-migration-assistant

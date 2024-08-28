@@ -2,10 +2,9 @@
 title: Request Units as a throughput and performance currency
 titleSuffix: Azure Cosmos DB
 description: Learn how request units function as a currency in Azure Cosmos DB and how to specify and estimate Request Unit requirements.
-author: seesharprun
-ms.author: sidandrews
-ms.reviewer: mjbrown
-ms.service: cosmos-db
+author: markjbrown
+ms.author: mjbrown
+ms.service: azure-cosmos-db
 ms.topic: conceptual
 ms.date: 02/27/2023
 ms.custom: cosmos-db-video
@@ -21,7 +20,7 @@ Azure Cosmos DB normalizes the cost of all database operations using Request Uni
 
 Request unit is a performance currency abstracting the system resources such as CPU, IOPS, and memory that are required to perform the database operations supported by Azure Cosmos DB. Whether the database operation is a write, point read, or query, operations are always measured in RUs. For example, a [point read](optimize-cost-reads-writes.md#point-reads) (fetching a single item by its ID and partition key value) for a 1-KB item is one Request Unit (or one RU), no matter which API you use to interact with your Azure Cosmos DB container. You can model your throughput costs using the [Azure Cosmos DB Capacity Calculator](https://cosmos.azure.com/capacitycalculator/).
 
-> [!VIDEO https://learn.microsoft.com/_themes/docs.theme/master/en-us/_themes/global/video-embed.html?id=772fba63-62c7-488c-acdb-a8f686a3b5f4]
+> [!VIDEO 772fba63-62c7-488c-acdb-a8f686a3b5f4]
 
 The following image shows the high-level idea of RUs:
 

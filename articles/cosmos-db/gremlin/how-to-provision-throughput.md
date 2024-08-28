@@ -1,7 +1,7 @@
 ---
 title: Provision throughput on Azure Cosmos DB for Gremlin resources
 description: Learn how to provision container, database, and autoscale throughput in Azure Cosmos DB for Gremlin resources. You will use Azure portal, CLI, PowerShell and various other SDKs.
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.subservice: apache-gremlin
 ms.topic: how-to
 ms.date: 10/15/2020

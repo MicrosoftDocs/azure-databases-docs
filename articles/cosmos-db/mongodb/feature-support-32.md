@@ -1,9 +1,8 @@
 ---
 title: Azure Cosmos DB for MongoDB (3.2 version) supported features and syntax
 description: Learn about Azure Cosmos DB for MongoDB (3.2 version) supported features and syntax.
-author: seesharprun
-ms.author: sidandrews
-ms.reviewer: gahllevy
+author: gahl-levy
+ms.author: gahllevy
 ms.service: azure-cosmos-db
 ms.subservice: mongodb
 ms.topic: release-notes

@@ -7,9 +7,8 @@ ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: overview 
 ms.date: 10/09/2023
-author: seesharprun
-ms.author: sidandrews
-ms.reviewer: dech
+author: markjbrown
+ms.author: mjbrown
 ---
 
 # Tutorial: Create a Jupyter Notebook to analyze data in your Azure Cosmos DB for NoSQL account using Visual Studio Code Jupyter notebooks

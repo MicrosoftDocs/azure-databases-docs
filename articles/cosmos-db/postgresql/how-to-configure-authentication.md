@@ -6,7 +6,7 @@ ms.author: nlarin
 ms.service: azure-cosmos-db
 ms.subservice: postgresql
 ms.topic: how-to
-ms.date: 02/06/2024
+ms.date: 08/21/2024
 ---
 
 # Use Microsoft Entra ID and native PostgreSQL roles for authentication with Azure Cosmos DB for PostgreSQL
@@ -57,7 +57,7 @@ az ad sp update --id b4fa09d8-5da5-4352-83d9-05c2a44cf431 --set accountEnabled=t
 ---
 
 > [!NOTE]
-> Editing enterprise application's properties such as 'Enabled for users to sign-in' requires permissions granted to the Global Administrator, Cloud Application Administrator, or Application Administrator roles. See [the list of built-in Microsoft Entra roles](/entra/identity/role-based-access-control/permissions-reference).
+> Editing enterprise application's properties such as "Enabled for users to sign-in" requires permissions granted to a role with privileges to update enterprise application properties. Roles, such as **Enterprise application owner**, must have the *"update enterprise application properties"* permisssion. For more information, see [Microsoft Entra least privileged roles by task - Enterprise applications](/entra/identity/role-based-access-control/delegate-by-task#enterprise-applications).
 
 ### Add Microsoft Entra ID admins to Azure Cosmos DB for PostgreSQL cluster
 

@@ -2,13 +2,12 @@
 title: Serverless (consumption-based) account type
 titleSuffix: Azure Cosmos DB
 description: Learn how to use Azure Cosmos DB based on consumption by choosing the serverless account type. Learn how the serverless model compares to the provisioned throughput model.
-author: seesharprun
-ms.author: sidandrews
-ms.service: cosmos-db
+author: markjbrown
+ms.author: mjbrown
+ms.service: azure-cosmos-db
 ms.custom: build-2023
 ms.topic: conceptual
 ms.date: 03/16/2023
-ms.reviewer: thweiss
 ---
 
 # Azure Cosmos DB serverless account type

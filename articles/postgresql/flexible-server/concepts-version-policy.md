@@ -4,7 +4,7 @@ description: Describes the policy around Postgres major and minor versions in Az
 author: akashraokm
 ms.author: akashrao
 ms.reviewer: maghan
-ms.date: 04/27/2024
+ms.date: 08/19/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: conceptual
@@ -64,6 +64,10 @@ The table below provides the retirement details for PostgreSQL major versions. T
 ## PostgreSQL 11 support
 
 Azure is extending its support for PostgreSQL 11 within both the Azure Database for PostgreSQL Single Server and Azure Database for PostgreSQL Flexible Server platforms. This extended support timeline is designed to provide more time for users to plan and [migrate to Azure Database for PostgreSQL flexible server](../migrate/concepts-single-to-flexible.md) for higher PostgreSQL versions.
+
+## PostgreSQL 12 support
+
+PostgreSQL 12 is retiring on **November 14, 2024**, as per Azure's versioning policy, which aligns with the PostgreSQL community [versioning policy](https://www.postgresql.org/support/versioning/). According to this policy, each major version is supported until it is retired by the community. However, Azure has extended support for PostgreSQL 11 until November 9, 2025, to give customers more time to plan and migrate from Azure Database for PostgreSQL Single Server to Flexible Server, as well as to higher PostgreSQL versions. This support extension is designed to provide a smoother transition for customers currently using PostgreSQL 11.
 
 ### Single Server Support:
 - Until March 28, 2025, users can continue to create and utilize PostgreSQL 11 servers on the Azure Database for PostgreSQL Single Server, except for creation through the Azure portal. It's important to note that other [restrictions](#retired-postgresql-engine-versions-not-supported-in-azure-database-for-postgresql-flexible-server) associated with retired PostgreSQL engines still apply.

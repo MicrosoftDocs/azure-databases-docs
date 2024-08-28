@@ -1,10 +1,8 @@
 ---
-author: diberry
 ms.service: azure-cosmos-db
 ms.subservice: mongodb
 ms.topic: include
-ms.date: 10/31/2022
-ms.author: diberry
+ms.date: 08/23/2024
 ---
 1. Find the API for MongoDB **connection string** from the list of connection strings for the account with the [``az cosmosdb keys list``](/cli/azure/cosmosdb/keys#az-cosmosdb-keys-list) command.
 

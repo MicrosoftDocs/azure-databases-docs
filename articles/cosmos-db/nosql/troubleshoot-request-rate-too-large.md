@@ -1,13 +1,12 @@
 ---
 title: Troubleshoot Azure Cosmos DB request rate too large exceptions
 description: Learn how to diagnose and fix request rate too large exceptions.
-author: seesharprun
+author: markjbrown
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.date: 03/03/2022
-ms.author: sidandrews
+ms.author: mjbrown
 ms.topic: troubleshooting
-ms.reviewer: mjbrown
 ---
 
 # Diagnose and troubleshoot Azure Cosmos DB request rate too large (429) exceptions

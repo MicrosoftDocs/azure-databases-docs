@@ -1,8 +1,7 @@
 ---
 title: Use the execution profile to evaluate queries in Azure Cosmos DB for Gremlin
 description: Learn how to troubleshoot and improve your Gremlin queries using the execution profile step.
-services: cosmos-db
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.subservice: apache-gremlin
 ms.topic: how-to
 ms.date: 03/27/2019

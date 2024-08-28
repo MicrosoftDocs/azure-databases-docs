@@ -4,8 +4,7 @@ titleSuffix: Azure Cosmos DB
 description: View the release notes for the latest version and previous versions of the Azure Cosmos DB Windows (local) emulator.
 author: sajeetharan
 ms.author: sasinnat
-ms.reviewer: mjbrown
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.topic: release-notes
 ms.date: 06/20/2024
 ---

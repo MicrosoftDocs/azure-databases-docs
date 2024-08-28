@@ -3,10 +3,9 @@ metadata:
   title: Frequently asked questions
   titleSuffix: Azure Cosmos DB for Apache Gremlin
   description: Get answers to frequently asked questions about Azure Cosmos DB for Apache Gremlin.
-  author: seesharprun
-  ms.author: sidandrews
-  ms.reviewer: mansha
-  ms.service: cosmos-db
+  author: manishmsfte
+  ms.author: mansha
+  ms.service: azure-cosmos-db
   ms.subservice: apache-gremlin
   ms.topic: faq
   ms.date: 02/23/2024

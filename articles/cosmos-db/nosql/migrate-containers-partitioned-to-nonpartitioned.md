@@ -1,13 +1,12 @@
 ---
 title: Migrate nonpartitioned Azure Cosmos DB containers to partitioned containers
 description: Learn how to migrate all the existing nonpartitioned containers into partitioned containers.
-author: seesharprun
+author: markjbrown
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: how-to
 ms.date: 08/26/2021
-ms.author: sidandrews
-ms.reviewer: mjbrown
+ms.author: mjbrown
 ms.custom: devx-track-csharp
 ---
 

@@ -3,8 +3,7 @@ title: Working with Azure Cosmos DB for Apache Cassandra from Spark
 description: This article is the main page for Azure Cosmos DB for Apache Cassandra integration from Spark.
 author: TheovanKraay
 ms.author: thvankra
-ms.reviewer: mjbrown
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.subservice: apache-cassandra
 ms.topic: how-to
 ms.date: 09/01/2019

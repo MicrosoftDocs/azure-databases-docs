@@ -4,8 +4,7 @@ titleSuffix: Azure Cosmos DB
 description: Azure Synapse Link for Azure Cosmos DB lets you run near real time analytics (HTAP) using Azure Synapse Analytics over operational data in Azure Cosmos DB.
 author: Rodrigossz
 ms.author: rosouz
-ms.reviewer: mjbrown
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.topic: conceptual
 ms.date: 05/08/2024
 ms.custom: synapse-cosmos-db

@@ -7,7 +7,6 @@ ms.subservice: nosql
 ms.date: 03/07/2022
 ms.author: maquaran
 ms.topic: troubleshooting
-ms.reviewer: mjbrown
 ---
 
 # Diagnose and troubleshoot bad request exceptions in Azure Cosmos DB

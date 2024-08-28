@@ -4,7 +4,6 @@ description: Get started developing a Python application that works with Azure C
 author: diberry
 ms.author: diberry
 ms.service: azure-cosmos-db
-ms.reviewer: sidandrews
 ms.subservice: mongodb
 ms.devlang: python
 ms.topic: how-to

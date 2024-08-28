@@ -4,7 +4,6 @@ titleSuffix: Azure Cosmos DB for MongoDB vCore
 description: Assess an existing MongoDB installation to determine if it's suitable for migration to Azure Cosmos DB for MongoDB vCore.
 author: sandnair
 ms.author: sandnair
-ms.reviewer: sidandrews
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.custom:

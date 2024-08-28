@@ -2,14 +2,13 @@
 title: CEILING
 titleSuffix: Azure Cosmos DB for NoSQL
 description: An Azure Cosmos DB for NoSQL system function that returns the smallest integer value greater than or equal to the specified numeric expression.
-author: jcodella
-ms.author: jacodel
-ms.reviewer: sidandrews
+author: seesharprun
+ms.author: sidandrews
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: reference
 ms.devlang: nosql
-ms.date: 06/05/2024
+ms.date: 08/22/2024
 ms.custom: query-reference
 ---
 

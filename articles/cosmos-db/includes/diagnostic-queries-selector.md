@@ -1,11 +1,7 @@
 ---
-author: seesharprun
-ms.author: sidandrews
-ms.reviewer: esarroyo
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.topic: include
-ms.date: 11/08/2022
-ms.custom: include file
+ms.date: 08/23/2024
 ---
 
 > [!div class="op_single_selector"]

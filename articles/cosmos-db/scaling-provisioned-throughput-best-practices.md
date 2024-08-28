@@ -7,7 +7,6 @@ ms.subservice: nosql
 ms.date: 08/20/2021
 ms.author: dech
 ms.topic: troubleshooting
-ms.reviewer: mjbrown
 ---
 
 # Best practices for scaling provisioned throughput (RU/s) 

@@ -4,8 +4,7 @@ titleSuffix: Azure Cosmos DB
 description: An introduction to restoring a deleted container or database to a specific point in time in the same Azure Cosmos DB account.
 author: kanshiG
 ms.author: govindk
-ms.reviewer: mjbrown
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.custom: build-2023
 ms.topic: conceptual
 ms.date: 04/15/2024

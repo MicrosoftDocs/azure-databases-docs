@@ -7,8 +7,7 @@ metadata:
   title: Azure Cosmos DB for Table documentation
   description: Azure Cosmos DB provides the API for Table for applications that are written for Azure Table storage and require premium capabilities.
   author: seesharprun
-  ms.author: sidandrews
-  ms.reviewer: markjbrown
+  ms.author: sasinnat
   ms.service: azure-cosmos-db
   ms.subservice: table
   ms.topic: landing-page

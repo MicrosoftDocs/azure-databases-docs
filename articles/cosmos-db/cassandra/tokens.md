@@ -3,7 +3,7 @@ title: Tokens and the Token Function in Azure Cosmos DB for Apache Cassandra
 description: Tokens and the Token Function in Azure Cosmos DB for Apache Cassandra.
 author: IriaOsara
 ms.author: iriaosara
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.subservice: apache-cassandra
 ms.topic: overview
 ms.date: 11/04/2022

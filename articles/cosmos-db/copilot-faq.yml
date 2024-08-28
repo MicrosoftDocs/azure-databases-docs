@@ -6,7 +6,6 @@ metadata:
     Get answers to frequently asked questions about Microsoft Copilot for Azure in Cosmos DB (preview). Questions include general functionality, responsible AI, and trust categories.
   author: jcodella
   ms.author: jacodel
-  ms.reviewer: sidandrews
   ms.service: azure-cosmos-db
   ms.subservice: nosql
   ms.custom:

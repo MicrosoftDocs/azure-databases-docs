@@ -2,10 +2,9 @@
 metadata:
   title: Frequently asked questions on hierarchical partition keys in Azure Cosmos DB
   description: Frequently asked questions about subpartitioning in Azure Cosmos DB
-  author: seesharprun
-  ms.author: sidandrews
-  ms.reviewer: dech
-  ms.service: cosmos-db
+  author: deborahc
+  ms.author: dech
+  ms.service: azure-cosmos-db
   ms.topic: faq
   ms.date: 05/05/2023
   ms.custom: build-2023

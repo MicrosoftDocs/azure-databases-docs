@@ -8,7 +8,6 @@ ms.subservice: nosql
 ms.custom: build-2023, devx-track-azurecli
 ms.date: 05/08/2024
 ms.topic: how-to
-ms.reviewer: mjbrown
 ---
 
 # Migrate an Azure Cosmos DB account from periodic to continuous backup mode

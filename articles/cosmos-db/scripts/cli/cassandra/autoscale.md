@@ -1,10 +1,9 @@
 ---
 title: Azure Cosmos DB for Apache Cassandra keyspace and table with autoscale
 description: Use Azure CLI to create an Azure Cosmos DB for Apache Cassandra account, keyspace, and table with autoscale.
-author: seesharprun
-ms.author: sidandrews
-ms.reviewer: mjbrown
-ms.service: cosmos-db
+author: markjbrown
+ms.author: mjbrown
+ms.service: azure-cosmos-db
 ms.subservice: apache-cassandra
 ms.topic: sample
 ms.date: 05/02/2022

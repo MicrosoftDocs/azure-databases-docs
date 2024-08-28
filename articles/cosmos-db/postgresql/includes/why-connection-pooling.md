@@ -1,10 +1,8 @@
 ---
-author: jonels-msft
-ms.author: jonels
 ms.service: azure-cosmos-db
 ms.subservice: postgresql
 ms.topic: include
-ms.date: 07/26/2022
+ms.date: 08/23/2024
 ---
 
 > [!TIP]

@@ -5,7 +5,6 @@ titleSuffix: Azure Cosmos DB for MongoDB (vCore)
 description: In this tutorial, create a Node.js web application that connects to a vCore cluster in Azure Cosmos DB for MongoDB and manages documents within a collection.
 author: gahl-levy
 ms.author: gahllevy
-ms.reviewer: sidandrews
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: tutorial

@@ -1,10 +1,9 @@
 ---
 title: Azure Cosmos DB for Gremlin database and graph with autoscale
 description: Use this Azure CLI script to create an Azure Cosmos DB for Gremlin account, database, and graph with autoscale.
-author: seesharprun
-ms.author: sidandrews
-ms.reviewer: mjbrown
-ms.service: cosmos-db
+author: markjbrown
+ms.author: mjbrown
+ms.service: azure-cosmos-db
 ms.subservice: apache-gremlin
 ms.topic: sample
 ms.date: 05/02/2022

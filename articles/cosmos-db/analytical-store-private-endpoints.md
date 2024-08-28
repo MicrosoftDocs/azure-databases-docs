@@ -2,7 +2,7 @@
 title: Configure private endpoints for Azure Cosmos DB analytical store.
 description: Learn how to set up managed private endpoints for Azure Cosmos DB analytical store to restrict network access.
 author: AnithaAdusumilli
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.topic: how-to
 ms.date: 09/29/2022
 ms.author: anithaa
@@ -32,6 +32,9 @@ The following access restrictions are applicable when data-exfiltration protecti
 > You cannot change managed virtual network and data-exfiltration configuration after the workspace is created.
 
 ### Add a managed private endpoint for Azure Cosmos DB analytical store
+
+> [!NOTE]
+> To perform some of the steps below, you will need to temporarly change the Azure Cosmos DB account networking configuration. Go to the **Networking** tab in the portal, and click on the **Allow access from Azure Portal** option. After the configuration of your private endpoint, you can revert this action and disable the access.
 
 1. Sign in to the [Azure portal](https://portal.azure.com).
 
