@@ -157,8 +157,6 @@ This tutorial also requires:
 
     This response shows the app is up and running locally. 
 
-    :::image type="content" source="./media/tutorial-develop-nodejs-part-2/azure-cosmos-db-postman.png" alt-text="Postman showing the request and the response":::
-
 
 ## Next steps
 
