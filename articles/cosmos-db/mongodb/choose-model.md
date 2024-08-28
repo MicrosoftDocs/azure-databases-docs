@@ -31,7 +31,7 @@ Here are a few key factors to help you decide which is the right option for you.
 [**Get started with Azure Cosmos DB for MongoDB vCore**](./vcore/quickstart-portal.md)
 
 > [!TIP]
-> Want to try the latest in Cosmos DB for MongoDB with no commitment? [Try Azure Cosmos DB for MongoDB vCore for free](https://learn.microsoft.com/en-us/azure/cosmos-db/mongodb/vcore/free-tier) for free.
+> Want to try the latest in Cosmos DB for MongoDB with no commitment? [Try Azure Cosmos DB for MongoDB vCore for free](./vcore/free-tier.md) for free.
 
 ### Choose RU-based if
 
