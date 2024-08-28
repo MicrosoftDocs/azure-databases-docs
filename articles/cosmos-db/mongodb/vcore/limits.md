@@ -6,7 +6,7 @@ ms.author: gahllevy
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: conceptual
-ms.date: 08/26/2024
+ms.date: 08/27/2024
 ---
 
 # Service Limits in Azure Cosmos DB for MongoDB vCore
@@ -108,6 +108,7 @@ The following limitations can be overridden by upgrading to a paid tier
 - The following features aren't available when cross-replication preview is enabled:
   - Private endpoints (Private Link).
   - Diagnostic settings.
+  - Point-in-time restore preview.
 - Cross-region replication isn't available on clusters with burstable compute or Free tier clusters.
 
 ## Miscellaneous Limits

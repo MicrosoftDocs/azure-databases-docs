@@ -63,7 +63,7 @@ The restore process creates a new cluster with the same configuration in the sam
 1. Select **Submit** to initiate cluster restore.
 
 > [!NOTE]
-> Cluster backups are stored for 35 days. If your cluster was created 35 days or more ago and you don't see desired date in the restore date field, you might need to open a support request to restore the cluster to that point.
+> Cluster backups are stored for 35 days. If your cluster was created 35 days or more ago and you don't see the desired date in the restore date field, you might need to open a support request to restore the cluster to that point.
 
 To create an Azure support request, follow these steps:
 
@@ -72,7 +72,7 @@ To create an Azure support request, follow these steps:
 
 ## Next steps
 
-In this guide, we've covered the backup and restore features for Azure Cosmos DB for MongoDB vCore.
+In this guide, we covered the backup and restore features for Azure Cosmos DB for MongoDB vCore.
 
 > [!div class="nextstepaction"]
-> [Review security concepts](security.md)
+> [Review cross-region replication capabilities in Azure Cosmos DB for MongoDB vCore](./cross-region-replication.md)
