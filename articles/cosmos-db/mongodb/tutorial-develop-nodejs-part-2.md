@@ -152,9 +152,9 @@ This tutorial also requires:
 
 ## Test the HTTP endpoints of the app
 
-1. Now use a HTTP testing tool to issue a `GET` request to `http://localhost:3000/api/heroes`.
+1. Now use a HTTP testing tool to issue a `GET` request to `http://localhost:3000/api/heroes`. 
 
-2. This response shows the app is up and running locally.
+2. The response shows the app is up and running locally.
 
 ## Next steps
 
