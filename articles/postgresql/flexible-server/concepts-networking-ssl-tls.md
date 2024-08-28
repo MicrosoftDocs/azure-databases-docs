@@ -1,8 +1,8 @@
 ---
 title: Networking overview using SSL and TLS
 description: Learn about secure connectivity with Azure Database for PostgreSQL - Flexible Server using SSL and TLS.
-author: GennadNY
-ms.author: gennadyk
+author: techlake
+ms.author: jganten
 ms.reviewer: maghan
 ms.date: 05/02/2024
 ms.service: postgresql
@@ -68,7 +68,7 @@ At this time, Azure Database for PostgreSQL - Flexible Server doesn't support:
 > [!NOTE]
 > Microsoft made root CA changes for various Azure services, including Azure Database for PostgreSQL - Flexible Server. For more information, see [Azure TLS certificate changes](/azure/security/fundamentals/tls-certificate-changes) and the section [Configure SSL on the client](#configure-ssl-on-the-client).
 
-To determine your current TLS\SSL connection status, you can load the [sslinfo extension](concepts-extensions.md) and then call the `ssl_is_used()` function to determine if SSL is being used. The function returns `t` if the connection is using SSL. Otherwise, it returns `f`. You can also collect all the information about your Azure Database for PostgreSQL - Flexible Server instance's SSL usage by process, client, and application by using the following query:
+To determine your current TLS\SSL connection status, you can load the [sslinfo extension](concepts-extensions.md) and then call the `ssl_is_used()` function to determine if SSL is being used. The function returns `t` if the connection is using SSL. Otherwise, it returns `f`. You can also collect all the information about your Azure Database for PostgreSQL flexible server's SSL usage by process, client, and application by using the following query:
 
 ```sql
 SELECT datname as "Database name", usename as "User name", ssl, client_addr, application_name, backend_type
@@ -86,7 +86,7 @@ openssl s_client -starttls postgres -showcerts -connect <your-postgresql-server-
 
 This command prints low-level protocol information, like the TLS version and cipher. You must use the option `-starttls postgres`. Otherwise, this command reports that no SSL is in use. Using this command requires at least OpenSSL 1.1.1.
 
-To enforce the latest, most secure TLS version for connectivity protection from the client to Azure Database for PostgreSQL - Flexible Server, set `ssl_min_protocol_version` to `1.3`. That setting *requires* clients that connect to your Azure Database for PostgreSQL - Flexible Server instance to use *this version of the protocol only* to securely communicate. Older clients might not be able to communicate with the server because they don't support this version.
+To enforce the latest, most secure TLS version for connectivity protection from the client to Azure Database for PostgreSQL - Flexible Server, set `ssl_min_protocol_version` to `1.3`. That setting *requires* clients that connect to your Azure Database for PostgreSQL flexible server to use *this version of the protocol only* to securely communicate. Older clients might not be able to communicate with the server because they don't support this version.
 
 ## Configure SSL on the client
 
@@ -194,7 +194,7 @@ At this time, Azure Database for PostgreSQL - Flexible Server supports many ciph
 
 ## Troubleshoot TLS/SSL connectivity errors
 
-1. The first step to troubleshoot TLS/SSL protocol version compatibility is to identify the error messages that you or your users are seeing when they try to access your Azure Database for PostgreSQL - Flexible Server under TLS encryption from the client. Depending on the application and platform, the error messages might be different. In many cases, they point to the underlying issue.
+1. The first step to troubleshoot TLS/SSL protocol version compatibility is to identify the error messages that you or your users are seeing when they try to access your Azure Database for PostgreSQL flexible server under TLS encryption from the client. Depending on the application and platform, the error messages might be different. In many cases, they point to the underlying issue.
 1. To be certain of TLS/SSL protocol version compatibility, check the TLS/SSL configuration of the database server and the application client to make sure they support compatible versions and cipher suites.
 1. Analyze any discrepancies or gaps between the database server and the client's TLS/SSL versions and cipher suites. Try to resolve them by enabling or disabling certain options, upgrading or downgrading software, or changing certificates or keys. For example, you might need to enable or disable specific TLS/SSL versions on the server or the client depending on security and compatibility requirements. For example, you might need to disable TLS 1.0 and TLS 1.1, which are considered insecure and deprecated, and enable TLS 1.2 and TLS 1.3, which are more secure and modern.
 1. The newest certificate issued with [Microsoft RSA Root CA 2017 has intermediate in the chain cross-signed by Digicert Global Root G2 CA](https://www.microsoft.com/pkiops/docs/repository.htm). Some of the Postgres client libraries, while using `sslmode=verify-full` or `sslmode=verify-ca` settings, might experience connection failures with root CA certificates that are cross-signed with intermediate certificates. The result is alternate trust paths.
@@ -203,5 +203,5 @@ At this time, Azure Database for PostgreSQL - Flexible Server supports many ciph
 
 ## Related content
 
-- Learn how to create an Azure Database for PostgreSQL - Flexible Server instance by using the **Private access (VNet integration)** option in the [Azure portal](how-to-manage-virtual-network-portal.md) or the [Azure CLI](how-to-manage-virtual-network-cli.md).
-- Learn how to create an Azure Database for PostgreSQL - Flexible Server instance by using the **Public access (allowed IP addresses)** option in the [Azure portal](how-to-manage-firewall-portal.md) or the [Azure CLI](how-to-manage-firewall-cli.md).
+- Learn how to create an Azure Database for PostgreSQL flexible server by using the **Private access (VNet integration)** option in the [Azure portal](how-to-manage-virtual-network-portal.md) or the [Azure CLI](how-to-manage-virtual-network-cli.md).
+- Learn how to create an Azure Database for PostgreSQL flexible server by using the **Public access (allowed IP addresses)** option in the [Azure portal](how-to-manage-firewall-portal.md) or the [Azure CLI](how-to-manage-firewall-cli.md).

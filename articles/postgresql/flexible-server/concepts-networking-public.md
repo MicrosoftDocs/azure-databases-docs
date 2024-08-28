@@ -1,8 +1,8 @@
 ---
 title: Networking overview with public access (allowed IP addresses)
 description: Learn about connectivity and networking with public access for Azure Database for PostgreSQL - Flexible Server.
-author: GennadNY
-ms.author: gennadyk
+author: techlake
+ms.author: jganten
 ms.reviewer: maghan
 ms.date: 04/27/2024
 ms.service: azure-database-postgresql
@@ -18,14 +18,14 @@ ms.custom:
 
 This article describes connectivity and networking concepts for Azure Database for PostgreSQL - Flexible Server.
 
-When you create an Azure Database for PostgreSQL - Flexible Server instance, you must choose one of the following networking options:
+When you create an Azure Database for PostgreSQL flexible server, you must choose one of the following networking options:
 
 - Private access (virtual network integration)
 - Public access (allowed IP addresses) and private endpoint  
 
 The following characteristics apply whether you choose to use the private access or the public access option:
 
-- Connections from allowed IP addresses need to authenticate to the Azure Database for PostgreSQL - Flexible Server instance with valid credentials.
+- Connections from allowed IP addresses need to authenticate to the Azure Database for PostgreSQL flexible server with valid credentials.
 - Connection encryption is enforced for your network traffic.
 - The server has a fully qualified domain name (FQDN). For the `hostname` property in connection strings, we recommend using the FQDN instead of an IP address.
 - Both options control access at the server level, not at the database or table level. You would use PostgreSQL's roles properties to control database, table, and other object access.
@@ -35,24 +35,24 @@ The following characteristics apply whether you choose to use the private access
 
 ## Use public access networking with Azure Database for PostgreSQL - Flexible Server
 
-When you choose the public access method, your Azure Database for PostgreSQL - Flexible Server instance is accessed through a public endpoint over the internet. The public endpoint is a publicly resolvable DNS address. The phrase *allowed IP addresses* refers to a range of IP addresses that you choose to give permission to access your server. These permissions are called *firewall rules*.
+When you choose the public access method, your Azure Database for PostgreSQL flexible server is accessed through a public endpoint over the internet. The public endpoint is a publicly resolvable DNS address. The phrase *allowed IP addresses* refers to a range of IP addresses that you choose to give permission to access your server. These permissions are called *firewall rules*.
 
 Choose this networking option if you want the following capabilities:
 
 - Connect from Azure resources that don't support virtual networks.
 - Connect from resources outside Azure that aren't connected by VPN or Azure ExpressRoute.
-- Ensure that the Azure Database for PostgreSQL - Flexible Server instance has a public endpoint that's accessible through the internet.
+- Ensure that the Azure Database for PostgreSQL flexible server has a public endpoint that's accessible through the internet.
 
 Characteristics of the public access method include:
 
-- Only the IP addresses that you allow have permission to access your Azure Database for PostgreSQL - Flexible Server instance. By default, no IP addresses are allowed. You can add IP addresses during server creation or afterward.
-- Your Azure Database for PostgreSQL - Flexible Server instance has a publicly resolvable DNS name.
-- Your Azure Database for PostgreSQL - Flexible Server instance isn't in one of your Azure virtual networks.
+- Only the IP addresses that you allow have permission to access your Azure Database for PostgreSQL flexible server. By default, no IP addresses are allowed. You can add IP addresses during server creation or afterward.
+- Your Azure Database for PostgreSQL flexible server has a publicly resolvable DNS name.
+- Your Azure Database for PostgreSQL flexible server isn't in one of your Azure virtual networks.
 - Network traffic to and from your server doesn't go over a private network. The traffic uses the general internet pathways.
 
 ### Firewall rules
 
-Server-level firewall rules apply to all databases on the same Azure Database for PostgreSQL - Flexible Server instance. If the source IP address of the request is within one of the ranges specified in the server-level firewall rules, the connection is granted. Otherwise, it's rejected. For example, if your application connects with the JDBC driver for PostgreSQL, you might encounter this error when you attempt to connect when the firewall is blocking the connection.
+Server-level firewall rules apply to all databases on the same Azure Database for PostgreSQL flexible server. If the source IP address of the request is within one of the ranges specified in the server-level firewall rules, the connection is granted. Otherwise, it's rejected. For example, if your application connects with the JDBC driver for PostgreSQL, you might encounter this error when you attempt to connect when the firewall is blocking the connection.
 
 ```java
 java.util.concurrent.ExecutionException: java.lang.RuntimeException: org.postgresql.util.PSQLException: FATAL: no pg_hba.conf entry for host "123.45.67.890", user "adminuser", database "postgresql", SSL
@@ -78,20 +78,20 @@ To enable this setting from the Azure portal, on the **Networking** pane, select
 
 Consider the following points when access to Azure Database for PostgreSQL - Flexible Server doesn't behave as you expect:
 
-- **Changes to the allowlist haven't taken effect yet**. There might be as much as a five-minute delay for changes to the firewall configuration of the Azure Database for PostgreSQL - Flexible Server instance to take effect.
-- **Authentication failed**. If a user doesn't have permissions on the Azure Database for PostgreSQL - Flexible Server instance or the password is incorrect, the connection to the Azure Database for PostgreSQL - Flexible Server instance is denied. Creating a firewall setting only provides clients with an opportunity to try connecting to your server. Each client must still provide the necessary security credentials.
+- **Changes to the allowlist haven't taken effect yet**. There might be as much as a five-minute delay for changes to the firewall configuration of the Azure Database for PostgreSQL flexible server to take effect.
+- **Authentication failed**. If a user doesn't have permissions on the Azure Database for PostgreSQL flexible server or the password is incorrect, the connection to the Azure Database for PostgreSQL flexible server is denied. Creating a firewall setting only provides clients with an opportunity to try connecting to your server. Each client must still provide the necessary security credentials.
 - **Dynamic client IP address is preventing access**. If you have an internet connection with dynamic IP addressing and you're having trouble getting through the firewall, try one of the following solutions:
 
-   * Ask your internet service provider (ISP) for the IP address range assigned to your client computers that access the Azure Database for PostgreSQL - Flexible Server instance. Then add the IP address range as a firewall rule.
+   * Ask your internet service provider (ISP) for the IP address range assigned to your client computers that access the Azure Database for PostgreSQL flexible server. Then add the IP address range as a firewall rule.
    * Get static IP addressing instead for your client computers. Then add the static IP address as a firewall rule.
 - **Firewall rule isn't available for IPv6 format**. The firewall rules must be in IPv4 format. If you specify firewall rules in IPv6 format, you get a validation error.
 
 ## Host name
 
-Regardless of the networking option that you choose, we recommend that you always use an FQDN as host name when connecting to your Azure Database for PostgreSQL - Flexible Server instance. The server's IP address isn't guaranteed to remain static. Using the FQDN helps you avoid making changes to your connection string.
+Regardless of the networking option that you choose, we recommend that you always use an FQDN as host name when connecting to your Azure Database for PostgreSQL flexible server. The server's IP address isn't guaranteed to remain static. Using the FQDN helps you avoid making changes to your connection string.
 
 An example that uses an FQDN as a host name is `hostname = servername.postgres.database.azure.com`. Where possible, avoid using `hostname = 10.0.0.4` (a private address) or `hostname = 40.2.45.67` (a public address).
 
 ## Related content
 
-- Learn how to create an Azure Database for PostgreSQL - Flexible Server instance by using the **Public access (allowed IP addresses)** option in the [Azure portal](how-to-manage-firewall-portal.md) or the [Azure CLI](how-to-manage-firewall-cli.md).
+- Learn how to create an Azure Database for PostgreSQL flexible server by using the **Public access (allowed IP addresses)** option in the [Azure portal](how-to-manage-firewall-portal.md) or the [Azure CLI](how-to-manage-firewall-cli.md).

@@ -1,8 +1,8 @@
 ---
 title: Networking overview with Private Link connectivity
 description: Learn about connectivity and networking options for Azure Database for PostgreSQL - Flexible Server with Private Link.
-author: GennadNY
-ms.author: gennadyk
+author: techlake
+ms.author: jganten
 ms.reviewer: maghan
 ms.date: 04/27/2024
 ms.service: postgresql
@@ -79,11 +79,11 @@ Configure [virtual network peering](/azure/virtual-network/tutorial-connect-virt
 
 ### Connect from an Azure VM in a network-to-network environment
 
-Configure a [network-to-network VPN gateway](/azure/vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal) connection to establish connectivity to an Azure Database for PostgreSQL - Flexible Server instance from an Azure VM in a different region or subscription.
+Configure a [network-to-network VPN gateway](/azure/vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal) connection to establish connectivity to an Azure Database for PostgreSQL flexible server from an Azure VM in a different region or subscription.
 
 ### Connect from an on-premises environment over VPN
 
-To establish connectivity from an on-premises environment to the Azure Database for PostgreSQL - Flexible Server instance, choose and implement one of the options:
+To establish connectivity from an on-premises environment to the Azure Database for PostgreSQL flexible server, choose and implement one of the options:
 
 - [Point-to-site connection](/azure/vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps)
 - [Site-to-site VPN connection](/azure/vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell)
@@ -149,11 +149,11 @@ Limitations to NSGs and private endpoints are listed in [What is a private endpo
 
 The following situations and outcomes are possible when you use Private Link in combination with firewall rules:
 
-- If you don't configure any firewall rules, by default, traffic can't access the Azure Database for PostgreSQL - Flexible Server instance.
+- If you don't configure any firewall rules, by default, traffic can't access the Azure Database for PostgreSQL flexible server.
 
 - If you configure public traffic or a service endpoint and you create private endpoints, different types of incoming traffic are authorized by the corresponding type of firewall rule.
 
-- If you don't configure any public traffic or service endpoint and you create private endpoints, the Azure Database for PostgreSQL - Flexible Server instance is accessible only through private endpoints. If you don't configure public traffic or a service endpoint, after all approved private endpoints are rejected or deleted, no traffic can access the Azure Database for PostgreSQL - Flexible Server instance.
+- If you don't configure any public traffic or service endpoint and you create private endpoints, the Azure Database for PostgreSQL flexible server is accessible only through private endpoints. If you don't configure public traffic or a service endpoint, after all approved private endpoints are rejected or deleted, no traffic can access the Azure Database for PostgreSQL flexible server.
 
 ## Troubleshoot connectivity issues with private endpoint-based networking
 
@@ -176,4 +176,4 @@ More information on troubleshooting private endpoints is also available in [Trou
 
 ## Related content
 
-Learn how to create an Azure Database for PostgreSQL - Flexible Server instance by using the **Private access (VNet integration)** option in the [Azure portal](how-to-manage-virtual-network-portal.md) or the [Azure CLI](how-to-manage-virtual-network-cli.md).
+Learn how to create an Azure Database for PostgreSQL flexible server by using the **Private access (VNet integration)** option in the [Azure portal](how-to-manage-virtual-network-portal.md) or the [Azure CLI](how-to-manage-virtual-network-cli.md).
