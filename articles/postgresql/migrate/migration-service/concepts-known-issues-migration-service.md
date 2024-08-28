@@ -23,7 +23,7 @@ Here are common limitations that apply to migration scenarios:
 - The migration service only supports migration for users and roles when the source is Azure Database for PostgreSQL - Single Server.
 - The migration service shows the number of tables copied from source to target. You must manually check the data and PostgreSQL objects on the target server post-migration.
 - The migration service migrates only user databases, not system databases, such as template_0 and template_1.
-- The migration service doesn't support moving TIMESCALEDB, POSTGIS_TOPOLOGY, POSTGIS_TIGER_GEOCODER, or PG_PARTMAN extensions from source to target.
+- The migration service doesn't support moving TIMESCALEDB, POSTGIS_TOPOLOGY, POSTGIS_TIGER_GEOCODER, POSTGRES_FDW and PG_PARTMAN extensions from source to target.
 - You can't move extensions not supported by Azure Database for PostgreSQL - Flexible Server. The supported extensions are listed in [Extensions - Azure Database for PostgreSQL](/azure/postgresql/flexible-server/concepts-extensions).
 - User-defined collations can't be migrated into Azure Database for PostgreSQL - Flexible Server.
 - You can't migrate to an older version. For instance, you can't migrate from Azure Database for PostgreSQL version 15 to version 14.
@@ -39,7 +39,7 @@ Here are common limitations that apply to migration scenarios:
     - Create TYPE
 
 - The migration service doesn't support migration at the object level, that is, at the table level or schema level.
-- Migration to burstable SKUs isn't supported. Databases must first be migrated to a nonburstable SKU and then scaled down if needed.
+- Migration into Burstable SKU is supported only in West Europe region currently. In all other regions, the Databases can first be migrated into a General Purpose or Memory Optimized SKU and then scaled down if needed.
 - The Migration Runtime Server is designed to operate with the default DNS servers/private DNS zones, for example, `privatelink.postgres.database.azure.com`. Custom DNS names/DNS servers aren't supported by the migration service when you use the Migration Runtime Server feature. When you're configuring private endpoints for both the source and target databases, it's imperative to use the default private DNS zone provided by Azure for the private link service. The use of custom DNS configurations isn't yet supported and might lead to connectivity issues during the migration process.
 
 ## Limitations migrating from Azure Database for PostgreSQL - Single Server
