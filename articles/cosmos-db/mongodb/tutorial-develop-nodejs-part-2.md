@@ -21,7 +21,7 @@ Part 2 of the tutorial builds on [the introduction](tutorial-develop-nodejs-part
 > * Install the Angular CLI and TypeScript
 > * Create a new project using Angular
 > * Build out the app using the Express framework
-> * Test the app in Postman
+> * Test the app in a HTTP testing tool
 
 ## Video walkthrough
 
@@ -33,7 +33,8 @@ Before starting this part of the tutorial, ensure you've watched the [introducti
 
 This tutorial also requires: 
 * [Node.js](https://nodejs.org/) version 8.4.0 or above.
-* [Postman](https://www.getpostman.com/)
+* An HTTP testing tool
+  * We recommend Insomnia, `curl`, Visual Studio, or `Invoke-RestMethod`
 * [Visual Studio Code](https://code.visualstudio.com/) or your favorite code editor.
 
 > [!TIP]
@@ -149,16 +150,11 @@ This tutorial also requires:
 
     The app should run without errors.
 
-## Use Postman to test the app
+## Test the HTTP endpoints of the app
 
-1. Now open Postman and put `http://localhost:3000/api/heroes` in the GET box. 
+1. Now use a HTTP testing tool to issue a `GET` request to `http://localhost:3000/api/heroes`. 
 
-2. Click the **Send** button and get the json response from the app. 
-
-    This response shows the app is up and running locally. 
-
-    :::image type="content" source="./media/tutorial-develop-nodejs-part-2/azure-cosmos-db-postman.png" alt-text="Postman showing the request and the response":::
-
+2. The response shows the app is up and running locally.
 
 ## Next steps
 
@@ -166,7 +162,7 @@ In this part of the tutorial, you've done the following:
 
 > [!div class="checklist"]
 > * Created a Node.js project using the Angular CLI
-> * Tested the app using Postman
+> * Tested the app using a HTTP testing tool
 
 You can proceed to the next part of the tutorial to build the UI.
 
