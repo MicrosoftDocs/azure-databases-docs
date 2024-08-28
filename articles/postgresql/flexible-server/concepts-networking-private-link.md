@@ -1,8 +1,8 @@
 ---
 title: Networking overview with Private Link connectivity
 description: Learn about connectivity and networking options for Azure Database for PostgreSQL - Flexible Server with Private Link.
-author: techlake
-ms.author: jganten
+author: akashraokm
+ms.author: akashrao
 ms.reviewer: maghan
 ms.date: 04/27/2024
 ms.service: postgresql

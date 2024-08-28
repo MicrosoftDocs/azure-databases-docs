@@ -1,8 +1,8 @@
 ---
 title: Networking overview using SSL and TLS
 description: Learn about secure connectivity with Azure Database for PostgreSQL - Flexible Server using SSL and TLS.
-author: techlake
-ms.author: jganten
+author: akashraokm
+ms.author: akashrao
 ms.reviewer: maghan
 ms.date: 05/02/2024
 ms.service: postgresql
