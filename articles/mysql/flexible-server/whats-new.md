@@ -443,7 +443,7 @@ This release of Azure Database for MySQL flexible server includes the following 
 This release of Azure Database for MySQL flexible server includes the following updates.
 
 - **All Operations are disabled on Stopped Azure Database for MySQL flexible server instances**
-    Operations on servers in a [Stop](concept-servers.md#stopstart-an-azure-database-for-mysql-flexible-server-instance) state are disabled and show as inactive in the Azure portal. Operations that aren't supported on stopped servers include changing the pricing tier, number of vCores, storage size or IOPS, backup retention day, server tag, the server password, server parameters, storage autogrow, GEO backup, HA, and user identity.
+    Operations on servers in a [Stop](concept-servers.md#stop-and-start-a-server) state are disabled and show as inactive in the Azure portal. Operations that aren't supported on stopped servers include changing the pricing tier, number of vCores, storage size or IOPS, backup retention day, server tag, the server password, server parameters, storage autogrow, GEO backup, HA, and user identity.
 
 - **Availability in three additional Azure regions**
 
@@ -521,7 +521,7 @@ This release of Azure Database for MySQL flexible server includes the following 
 
 - **Stopping the server for up to 30 days while the server is not in use**
 
-    Azure Database for MySQL flexible server now allows you to Stop the server for up to 30 days when not in use and Start the server when you're ready to resume your development. This enables you to develop at your own pace and save development costs on the database servers by paying for the resources only when used. This is important for dev-test workloads and when you only use the server for part of the day. When you stop the server, all active connections are dropped. When the server is in the Stopped state, the server's compute isn't billed. However, storage continues to be billed as the server's storage remains to ensure that data files are available when the server is started again. [Learn more](concept-servers.md#stopstart-an-azure-database-for-mysql-flexible-server-instance).
+    Azure Database for MySQL flexible server now allows you to Stop the server for up to 30 days when not in use and Start the server when you're ready to resume your development. This enables you to develop at your own pace and save development costs on the database servers by paying for the resources only when used. This is important for dev-test workloads and when you only use the server for part of the day. When you stop the server, all active connections are dropped. When the server is in the Stopped state, the server's compute isn't billed. However, storage continues to be billed as the server's storage remains to ensure that data files are available when the server is started again. [Learn more](concept-servers.md#stop-and-start-a-server).
 
 - **Terraform Support for Azure Database for MySQL flexible server**
 
