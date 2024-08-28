@@ -1,0 +1,11 @@
+{
+  "name": "Content contributor environment",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "acrolinx.vscode-sidebar",
+        "docsmsft.learnlinter"
+      ]
+    }
+  }
+}
