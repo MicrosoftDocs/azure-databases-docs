@@ -154,7 +154,7 @@ This tutorial also requires:
 
 1. Now use a HTTP testing tool to issue a `GET` request to `http://localhost:3000/api/heroes`.
 
-    :::image type="content" source="./media/tutorial-develop-nodejs-part-2/azure-cosmos-db-postman.png" alt-text="Postman showing the request and the response":::
+2. This response shows the app is up and running locally.
 
 ## Next steps
 
