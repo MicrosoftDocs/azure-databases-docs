@@ -7,11 +7,11 @@ ms.date: 08/28/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: overview
-# customer intent: As a user, I want to understand the overview and use cases of the diskann extension for Azure Database for PostgreSQL - Flexible Server.
+# customer intent: As a user, I want to understand the overview and how to use diskann extension for Azure Database for PostgreSQL - Flexible Server.
 ---
 
 # How to enable and use diskann extension for Azure Database for PostgreSQL - Flexible Server (Preview)
-
+ 
 DiskANN is a scalable approximate nearest neighbor search algorithm designed for efficient vector search at any scale. It offers high recall, high queries per second (QPS), and low query latency even for billion-point datasets. This makes it a powerful tool for handling large volumes of data. [Learn more about DiskANN from Microsoft](https://www.microsoft.com/en-us/research/project/project-akupara-approximate-nearest-neighbor-search-for-large-scale-semantic-search/)
 
 The `pg_diskann` extension for Azure Database for PostgreSQL flexible server adds support for using the DiskANN for efficient vectors indexing and searching.
@@ -33,7 +33,7 @@ CREATE EXTENSION pg_diskann CASCADE;
 
 ## Using `diskann` Index Access Method
 
-Once the extension is installed, you can create a `diskann` index on a table column that contains vector data. For example, to create an index on the `embedding` column of the `my_table` table, use the following command:
+Once the extension is installed, you can create a `diskann` index on a table column that contains vector data. For example, to create an index on the `embedding` column of the `my_table` table, use the following command: 
 
 	```sql
 	CREATE TABLE my_table (
