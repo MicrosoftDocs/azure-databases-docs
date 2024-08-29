@@ -25,10 +25,10 @@ TLS was made from Netscape's SSL protocol and has regularly replaced it. The ter
 
 The preceding diagram shows a typical TLS 1.2 handshake sequence, which consists of these steps:
 
-1. The client starts by sending a message called `ClientHello` that expresses willingness to communicate via TLS 1.2 with a set of cipher suites the client supports.
+1. The client starts by sending a message called `ClientHello` that expresses willingness to communicate via TLS 1.2 with a set of cipher suites that the client supports.
 1. The server receives the message, answers with `ServerHello`, and agrees to communicate with the client via TLS 1.2 by using a particular cipher suite.
 1. The server also sends its key share. The specifics of this key share change based on the cipher suite that was selected. For the client and server to agree on a cryptographic key, they need to receive each other's portion, or share.
-1. The server sends the certificate (signed by the Certificate Authority [CA]) and a signature on portions of `ClientHello` and `ServerHello`. It also includes the key share. In this way, the client knows that they're authentic.
+1. The server sends the certificate (signed by the certificate authority [CA]) and a signature on portions of `ClientHello` and `ServerHello`. It also includes the key share. In this way, the client knows that they're authentic.
 1. After the client successfully receives the data and then generates its own key share, it mixes it with the server key share to generate encryption keys for the session.
 1. The client sends the server its key share, enables encryption, and sends a `Finished` message. This message is a hash of a transcript of what has happened so far. The server does the same. It mixes the key shares to get the key and sends its own `Finished` message.
 1. Now application data can be sent encrypted on the connection.
@@ -51,7 +51,7 @@ Azure Database for PostgreSQL supports TLS version 1.2 and later. In [RFC 8996](
 
 All incoming connections that use earlier versions of the TLS protocol, such as TLS 1.0 and TLS 1.1, are denied by default.
 
-The IETF released the TLS 1.3 specification in RFC 8446 in August 2018 and is now the most common and recommended TLS version in use. TLS 1.3 is faster and more secure than TLS 1.2.
+The IETF released the TLS 1.3 specification in RFC 8446 in August 2018, and TLS 1.3 is now the most common and recommended TLS version in use. TLS 1.3 is faster and more secure than TLS 1.2.
 
 > [!NOTE]
 > SSL and TLS certificates certify that your connection is secured with state-of-the-art encryption protocols. By encrypting your connection on the wire, you prevent unauthorized access to your data while in transit. We strongly recommend that you use the latest versions of TLS to encrypt your connections to Azure Database for PostgreSQL - Flexible Server.
@@ -96,7 +96,7 @@ To prevent spoofing, SSL certificate verification on the client must be used.
 
 There are many connection parameters for configuring the client for SSL. A few important ones are:
 
-- `ssl`: Connect using SSL. This property doesn't need a value associated with it. The mere presence of it specifies an SSL connection. For compatibility with future versions, the value `true` is preferred. In this mode, when establishing an SSL connection, the client driver validates the server's identity to prevent man-in-the-middle attacks. It checks that the server certificate is signed by a trusted authority and that the host you're connecting to is the same as the host name in the certificate.
+- `ssl`: Connect using SSL. This property doesn't need a value associated with it. The mere presence of it specifies an SSL connection. For compatibility with future versions, the value `true` is preferred. In this mode, when you're establishing an SSL connection, the client driver validates the server's identity to prevent man-in-the-middle attacks. It checks that the server certificate is signed by a trusted authority and that the host you're connecting to is the same as the host name in the certificate.
 - `sslmode`: If you require encryption and want the connection to fail if it can't be encrypted, set `sslmode=require`. This setting ensures that the server is configured to accept SSL connections for this host/IP address and that the server recognizes the client certificate. If the server doesn't accept SSL connections or the client certificate isn't recognized, the connection fails. The following table lists values for this setting:
 
     | SSL mode | Explanation |
@@ -120,7 +120,7 @@ You might periodically need to update client-stored certificates when CAs change
 
 For more on SSL\TLS configuration on the client, see [PostgreSQL documentation](https://www.postgresql.org/docs/current/ssl-tcp.html#SSL-CLIENT-CERTIFICATES).
 
-For clients that use `verify-ca` and `verify-full` `sslmode` configuration settings, for example, for certificate pinning, they must deploy *three* root CA certificates to the client certificate stores:
+For clients that use `verify-ca` and `verify-full` `sslmode` configuration settings (that is, certificate pinning), they must deploy *three* root CA certificates to the client certificate stores:
 
 - [DigiCert Global Root G2](https://www.digicert.com/kb/digicert-root-certificates.htm) and [Microsoft RSA Root CA 2017](https://www.microsoft.com/pkiops/docs/repository.htm) root CA certificates, because services are migrating from Digicert to Microsoft CA.
 - [Digicert Global Root CA](https://www.digicert.com/kb/digicert-root-certificates.htm), for legacy compatibility.
@@ -146,7 +146,7 @@ Information on updating client applications certificate stores with new root CA 
 
 ### Read replicas with certificate pinning scenarios
 
-With root CA migration to [Microsoft RSA Root CA 2017](https://www.microsoft.com/pkiops/docs/repository.htm), it's feasible for newly created replicas to be on a newer root CA certificate than the primary server that was created earlier. For clients that use `verify-ca` and `verify-full` `sslmode` configuration settings, that is, certificate pinning, it's imperative for interrupted connectivity to accept three root CA certificates:
+With root CA migration to [Microsoft RSA Root CA 2017](https://www.microsoft.com/pkiops/docs/repository.htm), it's feasible for newly created replicas to be on a newer root CA certificate than the primary server that was created earlier. For clients that use `verify-ca` and `verify-full` `sslmode` configuration settings (that is, certificate pinning), it's imperative for interrupted connectivity to accept three root CA certificates:
 
 - [Microsoft RSA Root CA 2017](https://www.microsoft.com/pkiops/certs/Microsoft%20RSA%20Root%20Certificate%20Authority%202017.crt)
 - [DigiCert Global Root G2](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem)
@@ -180,7 +180,7 @@ You can also load the [sslinfo extension](./concepts-extensions.md) and then cal
 
 A *cipher suite* is a set of cryptographic algorithms. TLS/SSL protocols use algorithms from a cipher suite to create keys and encrypt information.
 
-A cipher suite is displayed as a long string of seemingly random information, but each segment of that string contains essential information. Generally, this data string is made up of several key components:
+A cipher suite is displayed as a long string of seemingly random information, but each segment of that string contains essential information. Generally, this data string includes several key components:
 
 - Protocol (that is, TLS 1.2 or TLS 1.3)
 - Key exchange or agreement algorithm
@@ -188,7 +188,7 @@ A cipher suite is displayed as a long string of seemingly random information, bu
 - Bulk encryption algorithm
 - Message authentication code algorithm (MAC)
 
-Different versions of TLS/SSL support different cipher suites. TLS 1.2 cipher suites can't be negotiated with TLS 1.3 connections and vice versa.
+Different versions of TLS/SSL support different cipher suites. TLS 1.2 cipher suites can't be negotiated with TLS 1.3 connections, and vice versa.
 
 At this time, Azure Database for PostgreSQL - Flexible Server supports many cipher suites with the TLS 1.2 protocol version that fall into the [HIGH:!aNULL](https://www.postgresql.org/docs/current/runtime-config-connection.html#GUC-SSL-CIPHERS) category.
 
@@ -196,7 +196,7 @@ At this time, Azure Database for PostgreSQL - Flexible Server supports many ciph
 
 1. The first step to troubleshoot TLS/SSL protocol version compatibility is to identify the error messages that you or your users are seeing when they try to access your Azure Database for PostgreSQL flexible server under TLS encryption from the client. Depending on the application and platform, the error messages might be different. In many cases, they point to the underlying issue.
 1. To be certain of TLS/SSL protocol version compatibility, check the TLS/SSL configuration of the database server and the application client to make sure they support compatible versions and cipher suites.
-1. Analyze any discrepancies or gaps between the database server and the client's TLS/SSL versions and cipher suites. Try to resolve them by enabling or disabling certain options, upgrading or downgrading software, or changing certificates or keys. For example, you might need to enable or disable specific TLS/SSL versions on the server or the client depending on security and compatibility requirements. For example, you might need to disable TLS 1.0 and TLS 1.1, which are considered insecure and deprecated, and enable TLS 1.2 and TLS 1.3, which are more secure and modern.
+1. Analyze any discrepancies or gaps between the database server and the client's TLS/SSL versions and cipher suites. Try to resolve them by enabling or disabling certain options, upgrading or downgrading software, or changing certificates or keys. For example, you might need to enable or disable specific TLS/SSL versions on the server or the client, depending on security and compatibility requirements. For example, you might need to disable TLS 1.0 and TLS 1.1, which are considered nonsecure and deprecated, and enable TLS 1.2 and TLS 1.3, which are more secure and modern.
 1. The newest certificate issued with [Microsoft RSA Root CA 2017 has intermediate in the chain cross-signed by Digicert Global Root G2 CA](https://www.microsoft.com/pkiops/docs/repository.htm). Some of the Postgres client libraries, while using `sslmode=verify-full` or `sslmode=verify-ca` settings, might experience connection failures with root CA certificates that are cross-signed with intermediate certificates. The result is alternate trust paths.
 
    To work around these issues, add all three necessary certificates to the client certificate store or explicitly specify the `sslrootcert` parameter. Or, set the `PGSSLROOTCERT` environment variable to the local path where the Microsoft RSA Root CA 2017 root CA certificate is placed, from the default value of `%APPDATA%\postgresql\root.crt`.
