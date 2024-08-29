@@ -28,7 +28,7 @@ The following characteristics apply whether you choose to use the private access
 - Connections from allowed IP addresses need to authenticate to the Azure Database for PostgreSQL flexible server with valid credentials.
 - Connection encryption is enforced for your network traffic.
 - The server has a fully qualified domain name (FQDN). For the `hostname` property in connection strings, we recommend using the FQDN instead of an IP address.
-- Both options control access at the server level, not at the database or table level. You would use PostgreSQL's roles properties to control database, table, and other object access.
+- Both options control access at the server level, not at the database or table level. You would use PostgreSQL's role properties to control database, table, and other object access.
 
 > [!NOTE]  
 > Because Azure Database for PostgreSQL - Flexible Server is a managed database service, users aren't provided host or operating system access to view or modify configuration files such as `pg_hba.conf`. The content of the files is automatically updated based on the network settings.
@@ -63,7 +63,7 @@ java.util.concurrent.ExecutionException: java.lang.RuntimeException: org.postgre
 
 ### Programmatically managed firewall rules
 
-In addition to the Azure portal, firewall rules can be managed programmatically by using the Azure CLI. For more information, see [Create and manage Azure Database for PostgreSQL - Flexible Server firewall rules using the Azure CLI](./how-to-manage-firewall-cli.md)
+In addition using to the Azure portal, you can manage firewall rules programmatically by using the Azure CLI. For more information, see [Create and manage Azure Database for PostgreSQL - Flexible Server firewall rules using the Azure CLI](./how-to-manage-firewall-cli.md).
 
 ### Allow all Azure IP addresses
 
