@@ -109,7 +109,7 @@ When you migrate from Azure Database for MySQL - Single Server to Flexible Serve
 
 **Q. Why is Azure Database for MySQL-Single Server being retired?**
 
-**A.** Azure Database for MySQL – Single Server became Generally Available (GA) in 2018. However, given customer feedback and new advancements in the compute, availability, scalability, and performance capabilities in the Azure database landscape, the Single Server offering needs to be retired and upgraded with a new architecture – Azure Database for MySQL Flexible Server to bring you the best of Azure's open-source database platform. Find teh retirement announcement [here](https://azure.microsoft.com/en-us/updates/action-required-migrate-to-azure-database-for-mysql-flexible-server-by-16-september-2024/).
+**A.** Azure Database for MySQL – Single Server became Generally Available (GA) in 2018. However, given customer feedback and new advancements in the compute, availability, scalability, and performance capabilities in the Azure database landscape, the Single Server offering needs to be retired and upgraded with a new architecture – Azure Database for MySQL Flexible Server to bring you the best of Azure's open-source database platform. Find teh retirement announcement [here](https://azure.microsoft.com/updates/action-required-migrate-to-azure-database-for-mysql-flexible-server-by-16-september-2024/).
 
 **Q. Why am I being asked to migrate to Azure Database for MySQL - Flexible Server?**
 
