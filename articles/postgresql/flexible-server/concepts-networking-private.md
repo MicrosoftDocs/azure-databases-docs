@@ -92,14 +92,14 @@ For new Azure Database for PostgreSQL flexible server creation by using private 
 
 If you use the [Azure portal](./how-to-manage-virtual-network-portal.md) or the [Azure CLI](./how-to-manage-virtual-network-cli.md) to create Azure Database for PostgreSQL flexible servers, you can provide a Private DNS zone name that you previously created in the same or a different subscription, or a default Private DNS zone is automatically created in your subscription.
 
-If you use an Azure API, an ARM template, or Terraform, create Private DNS zones that end with `.postgres.database.azure.com`. Use those zones while you configure Azure Database for PostgreSQL flexible servers with private access. For example, use the form `[name1].[name2].postgres.database.azure.com` or `[name].postgres.database.azure.com`. If you choose to use the form `[name].postgres.database.azure.com`, the name _can't_ be the name that you use for one of your Azure Database for PostgreSQL flexible servers. You get an error message during provisioning. For more information, see [Private DNS zones overview](/azure/dns/private-dns-overview).
+If you use an Azure API, an ARM template, or Terraform, create Private DNS zones that end with `.postgres.database.azure.com`. Use those zones while you configure Azure Database for PostgreSQL flexible servers with private access. For example, use the form `[name1].[name2].postgres.database.azure.com` or `[name].postgres.database.azure.com`. If you choose to use the form `[name].postgres.database.azure.com`, the name _can't_ be the name that you use for one of your Azure Database for PostgreSQL flexible servers, or you'll get an error message during provisioning. For more information, see [Private DNS zones overview](/azure/dns/private-dns-overview).
 
-When you use the Azure portal, APIs, the Azure CLI, or an ARM template, you can also change the Private DNS zone from the one you provided when you created your Azure Database for PostgreSQL flexible server to another Private DNS zone that exists for the same or different subscription.
+When you use the Azure portal, APIs, the Azure CLI, or an ARM template, you can also change the Private DNS zone from the one that you provided when you created your Azure Database for PostgreSQL flexible server to another Private DNS zone that exists for the same or different subscription.
 
   > [!IMPORTANT]
-  > The ability to change a Private DNS zone from the one you provided when you created your Azure Database for PostgreSQL flexible server to another Private DNS zone is currently disabled for servers with the high-availability feature enabled.
+  > The ability to change a Private DNS zone from the one that you provided when you created your Azure Database for PostgreSQL flexible server to another Private DNS zone is currently disabled for servers with the high-availability feature enabled.
 
-After you create a Private DNS zone in Azure, you need to [link](/azure/dns/private-dns-virtual-network-links) a virtual network to it. Once linked, resources hosted in that virtual network can access the Private DNS zone.
+After you create a Private DNS zone in Azure, you need to [link](/azure/dns/private-dns-virtual-network-links) a virtual network to it. Resources hosted in the linked virtual network can then access the Private DNS zone.
 
   > [!IMPORTANT]
   > We no longer validate virtual network link presence on server creation for Azure Database for PostgreSQL - Flexible Server with private networking. When you create a server through the portal, we provide customer choice to create a link on server creation via the checkbox **Link a Private DNS zone to your virtual network** in the Azure portal.
@@ -135,9 +135,9 @@ The spokes are also virtual networks in Azure that are used to isolate individua
 
 There are three main patterns for connecting spoke virtual networks to each other:
 
-- **Spokes directly connected to each other**: Virtual network peerings or VPN tunnels are created between the spoke virtual networks to provide direct connectivity without traversing the hub virtual network.
+- **Spokes are directly connected to each other**: Virtual network peerings or VPN tunnels are created between the spoke virtual networks to provide direct connectivity without traversing the hub virtual network.
 - **Spokes communicate over a network appliance**: Each spoke virtual network has a peering to a virtual WAN or to a hub virtual network. An appliance routes traffic from spoke to spoke. The appliance can be managed by Microsoft (as with a virtual WAN) or by you.
-- **Virtual network gateway attached to the hub network and make use of user-defined routes**: Enables communication between the spokes.
+- **A virtual network gateway is attached to the hub network and makes use of user-defined routes**: Enables communication between the spokes.
 
 :::image type="content" source="media/concepts-networking-private/hub-spoke-architecture.png" alt-text="Diagram that shows basic hub-and-spoke architecture with hybrid connectivity via an express hub.":::
 
@@ -147,10 +147,10 @@ Use [Azure Virtual Network Manager](/azure/virtual-network-manager/overview) to 
 
 Frequently, customers have a need to connect to clients' different Azure regions. More specifically, this question typically boils down to how to connect two virtual networks (one of which has Azure Database for PostgreSQL - Flexible Server and another has an application client) that are in different regions.
 
-There are multiple ways to achieve such connectivity, some of which are:
+There are multiple ways to achieve such connectivity, including:
 
-- [Global virtual network peering](/azure/virtual-network/virtual-network-peering-overview). This methodology is the most common because it's the easiest way to connect networks in different regions together. Global virtual network peering creates a connection over the Azure backbone directly between the two peered virtual networks. This provides the best network throughput and lowest latencies for connectivity by using this method. When virtual networks are peered, Azure also handles the routing automatically for you. These virtual networks can communicate with all resources in the peered virtual network that are established on a VPN gateway.
-- [Virtual network-to-virtual network connection](/azure/vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal). A virtual network-to-virtual network connection is essentially a VPN between the two different Azure locations. The virtual network-to-virtual network connection is established on a VPN gateway. Your traffic incurs two more traffic hops as compared to global virtual network peering. There's also extra latency and lower bandwidth as compared to that method.
+- [Global virtual network peering](/azure/virtual-network/virtual-network-peering-overview). This methodology is the most common because it's the easiest way to connect networks in different regions together. Global virtual network peering creates a connection over the Azure backbone directly between the two peered virtual networks. This method provides the best network throughput and lowest latencies for connectivity. When virtual networks are peered, Azure also handles the routing automatically for you. These virtual networks can communicate with all resources in the peered virtual network that are established on a VPN gateway.
+- [Network-to-network connection](/azure/vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal). A connection between virtual networks (network-to-network connection) is essentially a VPN between the two Azure locations. The network-to-network connection is established on a VPN gateway. Your traffic incurs two more traffic hops as compared to global virtual network peering. There's also extra latency and lower bandwidth as compared to that method.
 - **Communication via network appliance in hub-and-spoke architecture.** Instead of connecting spoke virtual networks directly to each other, you can use network appliances to forward traffic between spokes. Network appliances provide more network services like deep packet inspection and traffic segmentation or monitoring, but they can introduce latency and performance bottlenecks if they're not properly sized.
 
 ### Replication across Azure regions and virtual networks with private networking
