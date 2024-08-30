@@ -1,6 +1,6 @@
 ---
-title: "Tutorial: Migrate online from Amazon RDS for PostgreSQL using the migration service with the Azure portal and Azure CLI"
-description: "Learn to migrate online seamlessly from Amazon RDS for PostgreSQL to Azure Database for PostgreSQL using the new migration service in Azure, simplifying the transition while ensuring data integrity and efficient deployment."
+title: "Tutorial: Migrate online from Amazon Aurora using the migration service with the Azure portal and Azure CLI"
+description: "Learn to migrate online seamlessly from Amazon Aurora to Azure Database for PostgreSQL using the new migration service in Azure, simplifying the transition while ensuring data integrity and efficient deployment."
 author: apduvuri
 ms.author: adityaduvuri
 ms.reviewer: maghan
@@ -10,12 +10,12 @@ ms.subservice: migration-guide
 ms.topic: tutorial
 ms.custom:
   - devx-track-azurecli
-# customer intent: As a developer, I want to learn how to migrate from Amazon RDS for PostgreSQL to Azure Database for PostgreSQL using the migration service, so that I can simplify the transition and ensure data integrity.
+# customer intent: As a developer, I want to learn how to migrate from Amazon Aurora to Azure Database for PostgreSQL using the migration service, so that I can simplify the transition and ensure data integrity.
 ---
 
-# Tutorial: Migrate online from Amazon RDS for PostgreSQL to Azure Database for PostgreSQL with the migration service Preview
+# Tutorial: Migrate online from Amazon Aurora PostgreSQL to Azure Database for PostgreSQL with the migration service Preview
 
-This article explores how to migrate your PostgreSQL database from Amazon RDS for PostgreSQL to Azure Database for PostgreSQL online.
+This article explores how to migrate your PostgreSQL database from Amazon Aurora to Azure Database for PostgreSQL online.
 
 The migration service in Azure Database for PostgreSQL is a fully managed service integrated into the Azure portal and Azure CLI. It's designed to simplify your migration journey to Azure Database for PostgreSQL server.
 
@@ -55,7 +55,7 @@ The migration service comes with a simple, wizard-based experience on the Azure 
 
     :::image type="content" source="media/tutorial-migration-service-aws-online/migration-portal-select.png" alt-text="Screenshot of the Migration selection." lightbox="media/tutorial-migration-service-aws-online/migration-portal-select.png":::
 
-1. Select the **Create** button to migrate from Amazon RDS for PostgreSQL to Azure Database for PostgreSQL - Flexible Server. If this is your first time using the migration service, an empty grid appears with a prompt to begin your first migration.
+1. Select the **Create** button to migrate from Amazon Aurora to Azure Database for PostgreSQL - Flexible Server. If this is your first time using the migration service, an empty grid appears with a prompt to begin your first migration.
 
     :::image type="content" source="media/tutorial-migration-service-aws-online/portal-online-create-migration.png" alt-text="Screenshot of creating a migration." lightbox="media/tutorial-migration-service-aws-online/portal-online-create-migration.png":::
 
@@ -212,7 +212,7 @@ Time depends on the backlog of changes occurring in the last 15 minutes. Hence, 
 
 #### [CLI](#tab/cli)
 
-This article explores using the Azure CLI to migrate your PostgreSQL database from Amazon RDS for PostgreSQL to Azure Database for PostgreSQL. The Azure CLI provides a powerful and flexible command-line interface that allows you to perform various tasks, including database migration. Following the steps outlined in this article, you can seamlessly transfer your database to Azure and take advantage of its powerful features and scalability.
+This article explores using the Azure CLI to migrate your PostgreSQL database from Amazon Aurora to Azure Database for PostgreSQL. The Azure CLI provides a powerful and flexible command-line interface that allows you to perform various tasks, including database migration. Following the steps outlined in this article, you can seamlessly transfer your database to Azure and take advantage of its powerful features and scalability.
 
 To learn more about Azure CLI with the migration service, visit [How to set up Azure CLI for the migration service](how-to-setup-azure-cli-commands-postgresql.md).
 
@@ -241,7 +241,7 @@ To begin the migration, you need to create a JSON file with the migration detail
 		},
 		"DBsToMigrate": "<<comma separated list of databases in a array like - ["ticketdb","timedb","inventorydb"]>>",
 		"OverwriteDBsInTarget": "true",
-		"sourceType": "AWS_RDS",
+		"sourceType": "AWS_AURORA",
 		"sslMode": "Require"
 	}
 }
@@ -301,7 +301,7 @@ After migration, you can perform the following tasks:
 
 ## Related content
 
-- [Migrate offline from Amazon RDS for PostgreSQL](tutorial-migration-service-aws-offline.md)
+- [Migrate offline from Amazon Aurora PostgreSQL](tutorial-migration-service-aurora-offline.md)
 - [Migration service](concepts-migration-service-postgresql.md)
 - [Migrate from on-premises and Azure VMs](tutorial-migration-service-iaas.md)
 - [Known Issues and limitations](concepts-known-issues-migration-service.md)

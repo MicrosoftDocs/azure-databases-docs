@@ -65,7 +65,7 @@ Although a migration often runs without any problems, it's good practice to plan
 
 ## Migration speed benchmarking
 
-The following table shows the time it takes to perform migrations for databases of various sizes by using the migration service. The migration was performed by using a flexible server with the SKU Standard_D4ds_v4 (4 cores, 16-GB memory, 128-GB disk, and 500 IOPS).
+The following table shows the time it takes to perform migrations for databases of various sizes by using the migration service. The migration was performed by using a flexible server with the SKU Standard_D4ds_v4 (4 cores, 16-GB memory).
 
 | Database size | Approximate time taken (HH:MM) |
 | :--- | :--- |

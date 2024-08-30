@@ -14,7 +14,7 @@ ms.topic: overview
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
-The migration service in Azure Database for PostgreSQL simplifies the process of moving your PostgreSQL databases to Azure, offering migration options from an Azure Database for PostgreSQL single server, AWS RDS for PostgreSQL, on-premises servers, and Azure virtual machines (VMs). The migration service is designed to help you move to Azure Database for PostgreSQL - Flexible Server with ease and confidence.
+The migration service in Azure Database for PostgreSQL simplifies the process of moving your PostgreSQL databases to Azure, offering migration options from various PostgreSQL supported sources including cloud services, on-premises environments and virtual machines. The migration service is designed to help you move to Azure Database for PostgreSQL - Flexible Server with ease and confidence.
 
 Some advantages for using the migration service include:
 
@@ -76,9 +76,10 @@ The following table lists the various sources supported by the migration service
 | PostgreSQL Source Type | Offline Migration | Online Migration |
 | --- | --- | --- |
 | [Azure Database for PostgreSQL – Single server](../how-to-migrate-single-to-flexible-portal.md) | supported | supported |
-| AWS RDS for PostgreSQL | [supported](tutorial-migration-service-aws-offline.md) | [supported](tutorial-migration-service-aws-online.md) |
+| Amazon RDS for PostgreSQL | [supported](tutorial-migration-service-aws-offline.md) | [supported](tutorial-migration-service-aws-online.md) |
 | On-premises | [supported](tutorial-migration-service-iaas-offline.md) | [supported](tutorial-migration-service-iaas-online.md) |
 | Azure virtual machine(s) | [supported](tutorial-migration-service-iaas-offline.md) | [supported](tutorial-migration-service-iaas-online.md) |
+| Amazon Aurora PostgreSQL | [supported](tutorial-migration-service-aurora-offline.md) | [supported](tutorial-migration-service-aurora-online.md) |
 
 :::image type="content" source="media/concepts-migration-service-postgresql/migrate-different-sources-option.png" alt-text="Screenshot of the migration setup showing different sources." lightbox="media/concepts-migration-service-postgresql/migrate-different-sources-option.png":::
 
@@ -98,7 +99,7 @@ Get started with the migration service by using any of the following methods:
 
 - [Migration from Azure Database for PostgreSQL - Single Server](tutorial-migration-service-single-to-flexible.md)
 - [Migration from on-premises or IaaS](tutorial-migration-service-iaas.md)
-- [Migration from AWS RDS for PostgreSQL](tutorial-migration-service-aws.md)
+- [Migration from Amazon RDS for PostgreSQL](tutorial-migration-service-aws.md)
 
 ## Additional information
 
@@ -109,6 +110,6 @@ The migration service is a hosted solution where we use binary called [pgcopydb]
 - [Premigration validations](concepts-premigration-migration-service.md)
 - [Migration from Azure Database for PostgreSQL - Single Server](tutorial-migration-service-single-to-flexible.md)
 - [Migrate from on-premises and Azure VMs](tutorial-migration-service-iaas.md)
-- [Migrate from AWS RDS for PostgreSQL](tutorial-migration-service-aws.md)
+- [Migrate from Amazon RDS for PostgreSQL](tutorial-migration-service-aws.md)
 - [Network setup](how-to-network-setup-migration-service.md)
 - [Known issues and limitations](concepts-known-issues-migration-service.md)
