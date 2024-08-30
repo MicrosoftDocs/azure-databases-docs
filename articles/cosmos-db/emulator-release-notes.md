@@ -22,7 +22,7 @@ Only the most recent version of the Azure Cosmos DB emulator is actively support
 
 ## Latest version ``2.14.20``
 
-> *Released Sept 30, 2024*
+> *Released Aug 30, 2024*
 
 - Fix emulator crash on ARM processors
 - Update Azure Cosmos DB Emulator background services to match the latest online functionality of the Azure Cosmos DB.
