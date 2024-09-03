@@ -7,7 +7,6 @@ ms.subservice: mongodb
 ms.date: 04/02/2024
 author: avijitgupta
 ms.author: avijitgupta
-ms.reviewer: gahllevy
 ---
 
 # Troubleshoot query issues when using the Azure Cosmos DB for MongoDB

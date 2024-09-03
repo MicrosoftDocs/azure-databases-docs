@@ -4,8 +4,7 @@ titleSuffix: Azure Cosmos DB
 description: Use the Azure Cosmos DB emulator to develop your applications locally and test then with a working database.
 author: sajeetharan
 ms.author: sasinnat
-ms.reviewer: mjbrown
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.topic: how-to
 ms.date: 06/20/2024
 zone_pivot_groups: azure-cosmos-db-apis-nosql-mongodb-cassandra-gremlin-table

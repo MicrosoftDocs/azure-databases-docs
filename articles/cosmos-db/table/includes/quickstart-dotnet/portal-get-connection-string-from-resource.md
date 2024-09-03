@@ -1,10 +1,8 @@
 ---
-author: alexwolfmsft
 ms.service: azure-cosmos-db
 ms.subservice: table
 ms.topic: include
-ms.date: 07/08/2022
-ms.author: alexwolf
+ms.date: 08/23/2024
 ---
 1. From the Azure Cosmos DB for Table account page, select the **Connection String** navigation menu option.
 

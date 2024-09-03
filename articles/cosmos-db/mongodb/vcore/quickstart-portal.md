@@ -5,7 +5,6 @@ titleSuffix: Azure Cosmos DB for MongoDB vCore
 description: In this quickstart, create a new Azure Cosmos DB for MongoDB vCore cluster to store databases, collections, and documents by using the Azure portal.
 author: gahl-levy
 ms.author: gahllevy
-ms.reviewer: sidandrews
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: quickstart

@@ -4,7 +4,7 @@ titleSuffix: Azure Cosmos DB
 description: Learn how to self-serve minimum TLS version enforcement for your Azure Cosmos DB account to improve your security posture.
 author: dileepraotv-github
 ms.author: turao
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.topic: conceptual
 ms.date: 01/18/2023
 ---
@@ -29,6 +29,9 @@ Starting with the [2022-11-15 API version of the Azure Cosmos DB Resource Provid
 - `Tls12` for setting the minimum version to TLS 1.2.
 
 The **default value for new accounts is `Tls12`**.
+
+> [!IMPORTANT]
+> **Starting October 31, 2024, all Cosmos DB database accounts must use Transport Layer Security (TLS) 1.2 or higher**, as [support for TLS 1.0 and 1.1 will be discontinued](https://azure.microsoft.com/updates/azure-support-tls-will-end-by-31-october-2024-2/).
 
 ### Set Minimal TLS Protocol in Azure Cosmos DB using the Portal 
 

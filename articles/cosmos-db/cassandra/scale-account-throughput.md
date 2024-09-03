@@ -2,7 +2,7 @@
 title: Elastically scale with API for Cassandra in Azure Cosmos DB
 description: Learn about the options available to scale an Azure Cosmos DB for Apache Cassandra account and their advantages/disadvantages
 author: TheovanKraay
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.subservice: apache-cassandra
 ms.topic: conceptual
 ms.date: 07/29/2020

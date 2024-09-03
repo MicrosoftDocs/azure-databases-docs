@@ -1,13 +1,12 @@
 ---
 title: Azure Cosmos DB indexing metrics
 description:  Learn how to obtain and interpret the indexing metrics in Azure Cosmos DB
-author: seesharprun
+author: markjbrown
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: conceptual
 ms.date: 10/25/2021
-ms.author: sidandrews
-ms.reviewer: jucocchi
+ms.author: mjbrown
 ---
 # Indexing metrics in Azure Cosmos DB
 [!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]

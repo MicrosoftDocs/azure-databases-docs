@@ -2,16 +2,15 @@
 title: Query NoSQL with Microsoft Copilot for Azure (preview)
 titleSuffix: Azure Cosmos DB for NoSQL
 description: Generate suggestions from natural language prompts to write NoSQL queries using Microsoft Copilot for Azure in Cosmos DB (preview).
-author: jcodella
-ms.author: jacodel
-ms.reviewer: sidandrews
+author: seesharprun
+ms.author: sidandrews
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.custom:
   - ignite-2023
 ms.topic: how-to
 ms.devlang: nosql
-ms.date: 02/27/2024
+ms.date: 08/22/2024
 # CustomerIntent: As a developer, I want to use Copilot so that I can write queries faster and easier.
 ---
 

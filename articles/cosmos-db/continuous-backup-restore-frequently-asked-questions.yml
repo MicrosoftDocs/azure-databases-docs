@@ -5,9 +5,8 @@ metadata:
   description: This article lists frequently asked questions about the Azure Cosmos DB point-in-time restore feature that's available in continuous backup mode.
   author: kanshiG
   ms.author: govindk
-  ms.reviewer: mjbrown
   ms.topic: faq
-  ms.service: cosmos-db
+  ms.service: azure-cosmos-db
   ms.date: 04/19/2023
 title: Frequently asked questions about the Azure Cosmos DB continuous backup
 summary: |

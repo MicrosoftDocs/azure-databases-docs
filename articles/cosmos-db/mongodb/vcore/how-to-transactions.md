@@ -4,7 +4,6 @@ titleSuffix: Azure Cosmos DB for MongoDB vCore
 description: Support atomicity, consistency, isolation, and durability with transactions in Azure Cosmos DB for MongoDB vCore.
 author: gahl-levy
 ms.author: gahllevy
-ms.reviewer: sidandrews
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: how-to

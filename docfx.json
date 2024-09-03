@@ -161,13 +161,26 @@
           "azure"
         ]
       },
+      "ms.service": {
+        "articles/cosmos-db/**/*.md": "azure-cosmos-db"
+      },
       "ms.subservice": {
-        "articles/cosmos-db/nosql/*.md": "nosql",
-        "articles/cosmos-db/mongodb/*.md": "mongodb",
-        "articles/cosmos-db/mongodb/vcore/*.md": "mongodb-vcore",
-        "articles/cosmos-db/postgresql/*.md": "postgresql",
-        "articles/cosmos-db/cassandra/*.md": "apache-cassandra",
-        "articles/cosmos-db/table/*.md": "table"
+        "articles/cosmos-db/nosql/**/*.md": "nosql",
+        "articles/cosmos-db/mongodb/**/*.md": "mongodb",
+        "articles/cosmos-db/mongodb/vcore/**/*.md": "mongodb-vcore",
+        "articles/cosmos-db/postgresql/**/*.md": "postgresql",
+        "articles/cosmos-db/cassandra/**/*.md": "apache-cassandra",
+        "articles/cosmos-db/table/**/*.md": "table"
+      },
+      "author": {
+        "articles/cosmos-db/**/includes/**/*.md": "markjbrown"
+      },
+      "ms.author": {
+        "articles/cosmos-db/**/includes/**/*.md": "mjbrown"
+      },
+      "ms.reviewer": {
+        "articles/cosmos-db/**/*.md": "mjbrown",
+        "articles/cosmos-db/**/*.yml": "mjbrown"
       },
       "searchScope": {
         "articles/cosmos-db/**/*.md": [
@@ -221,7 +234,7 @@
     "overwrite": [],
     "externalReference": [],
     "template": [],
-	"rules": {
+    "rules": {
       "sensitive-language-ma": {
         "exclude": [
           "articles/mariadb/**/*.md",

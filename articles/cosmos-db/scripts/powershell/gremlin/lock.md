@@ -1,10 +1,9 @@
 ---
 title: PowerShell script to create resource lock for Azure Cosmos DB for Gremlin database and graph
 description: Create resource lock for Azure Cosmos DB for Gremlin database and graph
-author: seesharprun
-ms.author: sidandrews
-ms.reviewer: mjbrown
-ms.service: cosmos-db
+author: markjbrown
+ms.author: mjbrown
+ms.service: azure-cosmos-db
 ms.subservice: apache-gremlin
 ms.topic: sample
 ms.date: 06/12/2020

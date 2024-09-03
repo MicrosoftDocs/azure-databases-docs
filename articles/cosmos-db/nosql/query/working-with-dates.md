@@ -2,14 +2,13 @@
 title: Working with dates
 titleSuffix: Azure Cosmos DB for NoSQL
 description: Store, index, and query date and time objects as strings in Azure Cosmos DB for NoSQL.
-author: jcodella
-ms.author: jacodel
-ms.reviewer: sidandrews
+author: seesharprun
+ms.author: sidandrews
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: reference
 ms.devlang: nosql
-ms.date: 02/27/2024
+ms.date: 08/22/2024
 ms.custom: query-reference
 ---
 
@@ -49,7 +48,7 @@ public class Order
 await container.CreateItemAsync(
     new Order
     {
-        Id = "09152014101",
+        Id = "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb",
         OrderDate = DateTime.UtcNow.AddDays(-30),
         ShipDate = DateTime.UtcNow.AddDays(-14),
         Total = 113.39
@@ -60,7 +59,7 @@ This document is stored in the following structure:
 
 ```json
 {
-  "id": "09152014101",
+  "id": "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb",
   "OrderDate": "2014-09-15T23:14:25.7251173Z",
   "ShipDate": "2014-09-30T23:14:25.7251173Z",
   "Total": 113.39

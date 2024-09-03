@@ -8,7 +8,6 @@ ms.subservice: nosql
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
 ms.date: 03/31/2023
 ms.topic: how-to
-ms.reviewer: mjbrown
 ---
 
 # Get the latest restorable timestamp for continuous backup accounts

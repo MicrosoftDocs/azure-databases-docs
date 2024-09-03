@@ -1,13 +1,12 @@
 ---
 title: Azure Cosmos DB integrated cache
 description: The Azure Cosmos DB integrated cache is an in-memory cache that helps you ensure manageable costs and low latency as your request volume grows.
-author: seesharprun
+author: jcocchi
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: conceptual
 ms.date: 7/19/2024
-ms.author: sidandrews
-ms.reviewer: jucocchi
+ms.author: jucocchi
 ---
 
 # Azure Cosmos DB integrated cache - Overview

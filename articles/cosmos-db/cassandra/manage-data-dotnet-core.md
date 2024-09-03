@@ -1,7 +1,7 @@
 ---
 title: 'Quickstart: API for Cassandra with .NET Core - Azure Cosmos DB'
 description: This quickstart shows how to use the Azure Cosmos DB for Apache Cassandra to create a profile application with the Azure portal and .NET Core
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.subservice: apache-cassandra
 author: TheovanKraay
 ms.author: thvankra

@@ -3,7 +3,7 @@ title: Vector search concept overview
 description: Vector search concept overview
 author: wmwxwa
 ms.author: wangwilliam
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.topic: conceptual
 ms.date: 07/01/2024
 ---

@@ -4,11 +4,10 @@ titleSuffix: Azure Cosmos DB for MongoDB vCore
 description: Includes a list of all feature updates, grouped by release date, for the Azure Cosmos DB for MongoDB vCore service.
 author: avijitgupta
 ms.author: avijitgupta
-ms.reviewer: gahllevy
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: release-notes
-ms.date: 08/08/2024
+ms.date: 08/23/2024
 #Customer intent: As a database administrator, I want to review the release notes, so I can understand what new features are released for the service.
 ---
 
@@ -19,7 +18,7 @@ This article contains release notes for the API for MongoDB vCore. These release
 ## Latest release: Aug 05, 2024
 
 - [Geospatial support](geospatial-support.md) is now GA.
-
+- [MongoDB vCore v7 released](how-to-upgrade-cluster.md).
 - Support for TLS1.3 for mongo connections.
 - Support for accumulators
   - $mergeObjects.

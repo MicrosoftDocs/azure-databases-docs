@@ -1,14 +1,13 @@
 ---
 title: Create and manage Azure Cosmos DB for Apache Cassandra with Bicep
 description: Use Bicep to create and configure Azure Cosmos DB for Apache Cassandra.
-author: seesharprun
-ms.service: cosmos-db
+author: theovankraay
+ms.service: azure-cosmos-db
 ms.subservice: apache-cassandra
 ms.custom: devx-track-bicep
 ms.topic: how-to
 ms.date: 9/13/2021
-ms.author: sidandrews
-ms.reviewer: mjbrown
+ms.author: thvankra
 ---
 
 # Manage Azure Cosmos DB for Apache Cassandra resources using Bicep

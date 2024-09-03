@@ -1,10 +1,9 @@
 ---
 title: Optimizing the cost of your requests in Azure Cosmos DB
 description: This article explains how to optimize costs when issuing requests on Azure Cosmos DB.
-author: seesharprun
-ms.author: sidandrews
-ms.reviewer: mjbrown
-ms.service: cosmos-db
+author: markjbrown
+ms.author: mjbrown
+ms.service: azure-cosmos-db
 ms.topic: conceptual
 ms.date: 08/26/2021
 ---

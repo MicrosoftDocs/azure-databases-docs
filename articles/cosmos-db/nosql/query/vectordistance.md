@@ -2,14 +2,13 @@
 title: VectorDistance
 titleSuffix: Azure Cosmos DB for NoSQL
 description: An Azure Cosmos DB for NoSQL system function that return the similarity score between two vectors for one or more items in a container.
-author: jcodella
-ms.author: jacodel
-ms.reviewer: sidandrews
+author: seesharprun
+ms.author: sidandrews
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: reference
 ms.devlang: nosql
-ms.date: 08/06/2024
+ms.date: 08/22/2024
 ms.custom: query-reference, build-2024
 ---
 
@@ -53,7 +52,7 @@ Returns a numeric expression that enumerates the similarity score between two ex
 
 This first example includes only the required arguments.
 
-```sql
+```nosql
 SELECT VALUE {
   name: s.name, 
   similarityScore: VectorDistance(s.vector1, s.vector2)
@@ -66,7 +65,7 @@ ORDER BY
 
 This next example also includes optional arguments.
 
-```sql
+```nosql
 SELECT VALUE {
   name: s.name, 
   similarityScore: VectorDistance(s.vector1, s.vector2, true, {'distanceFunction':'cosine', 'dataType':'float32',})

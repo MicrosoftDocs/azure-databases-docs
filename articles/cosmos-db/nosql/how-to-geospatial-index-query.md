@@ -4,7 +4,6 @@ titleSuffix: Azure Cosmos DB for NoSQL
 description: Add geospatial location data to Azure Cosmos DB for NoSQL and then query the data efficiently in your application.
 author: jcodella
 ms.author: jacodel
-ms.reviewer: sidandrews
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: how-to

@@ -1,9 +1,8 @@
 ---
 title: Use unique keys in Azure Cosmos DB
 description: Learn how to define and use unique keys for an Azure Cosmos DB database. This article also describes how unique keys add a layer of data integrity.
-author: seesharprun
-ms.author: sidandrews
-ms.reviewer: mjbrown
+author: jcodella
+ms.author: jacodel
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: conceptual

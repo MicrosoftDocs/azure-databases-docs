@@ -1,9 +1,7 @@
 ---
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.topic: include
-ms.date: 07/07/2022
-author: manishmsfte
-ms.author: mansha
+ms.date: 08/23/2024
 ---
 
 ### List Azure Cosmos DB with specific write locations

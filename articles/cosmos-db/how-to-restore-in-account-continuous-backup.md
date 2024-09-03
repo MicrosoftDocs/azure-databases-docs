@@ -4,8 +4,7 @@ titleSuffix: Azure Cosmos DB
 description: Restore a deleted container or database to the same, existing Azure Cosmos DB account by using the Azure portal, the Azure CLI, Azure PowerShell, or an Azure Resource Manager template in continuous backup mod.
 author: kanshiG
 ms.author: govindk
-ms.reviewer: mjbrown
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.custom: build-2023, devx-track-azurecli, devx-track-azurepowershell, devx-track-arm-template
 ms.topic: how-to
 ms.date: 03/21/2024

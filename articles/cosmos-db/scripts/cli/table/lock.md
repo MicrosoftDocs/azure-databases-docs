@@ -1,9 +1,8 @@
 ---
 title: Azure Cosmos DB for Table resource lock operations
 description: Use Azure CLI to create, list, show properties for, and delete resource locks for an Azure Cosmos DB for Table table.
-author: seesharprun
-ms.author: sidandrews
-ms.reviewer: mjbrown
+author: markjbrown
+ms.author: mjbrown
 ms.service: azure-cosmos-db
 ms.subservice: table
 ms.topic: sample

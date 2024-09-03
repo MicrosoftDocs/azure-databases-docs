@@ -6,8 +6,8 @@ ms.subservice: table
 ms.devlang: java
 ms.topic: sample
 ms.date: 12/10/2020
-author: seesharprun
-ms.author: sidandrews
+author: sajeetharan
+ms.author: sasinnat
 ms.custom: devx-track-java, devx-track-extended-java
 ---
 

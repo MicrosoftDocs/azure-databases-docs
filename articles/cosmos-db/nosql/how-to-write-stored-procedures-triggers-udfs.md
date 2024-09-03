@@ -1,13 +1,12 @@
 ---
 title: Write stored procedures, triggers, and UDFs in Azure Cosmos DB
 description: Learn how to define stored procedures, triggers, and user-defined functions by using the API for NoSQL in Azure Cosmos DB.
-author: seesharprun
+author: markjbrown
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: how-to
 ms.date: 03/01/2023
-ms.author: sidandrews
-ms.reviewer: jucocchi
+ms.author: mjbrown
 ms.devlang: javascript
 ms.custom:
 ---
@@ -413,7 +412,7 @@ console.log(responseHeaders[Constants.HttpHeaders.ScriptLogResults]);
 ```csharp
 var response = await client.ExecuteStoredProcedureAsync(
 document.SelfLink,
-new RequestOptions { EnableScriptLogging = true } );
+new StoredProcedureRequestOptions { EnableScriptLogging = true } );
 Console.WriteLine(response.ScriptLog);
 ```
 ---

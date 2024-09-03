@@ -1,10 +1,9 @@
 ---
 title: Troubleshoot issues with advanced diagnostics queries with Azure Cosmos DB for Apache Cassandra
 description: Learn how to query diagnostics logs for troubleshooting data stored in Azure Cosmos DB for Apache Cassandra.
-author: seesharprun
-ms.author: sidandrews
-ms.reviewer: esarroyo
-ms.service: cosmos-db
+author: theovankraay
+ms.author: thvankra
+ms.service: azure-cosmos-db
 ms.topic: how-to
 ms.date: 11/08/2022
 ms.subservice: apache-cassandra

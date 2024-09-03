@@ -1,8 +1,8 @@
 ---
 title: Manage a MongoDB database using JavaScript
 description: Learn how to manage your Azure Cosmos DB resource when it provides the API for MongoDB with a JavaScript SDK.
-author: seesharprun
-ms.author: sidandrews
+author: gahl-levy
+ms.author: gahllevy
 ms.service: azure-cosmos-db
 ms.subservice: mongodb
 ms.devlang: javascript

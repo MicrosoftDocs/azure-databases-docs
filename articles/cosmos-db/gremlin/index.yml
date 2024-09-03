@@ -6,10 +6,9 @@ summary: Azure Cosmos DB for Gremlin provides a graph database service via the A
 metadata:
   title: Azure Cosmos DB for Gremlin documentation
   description: Azure Cosmos DB for Gremlin provides a graph database service via the API for Gremlin on a fully managed database service designed for any scale.
-  author: seesharprun
-  ms.author: sidandrews
-  ms.reviewer: markjbrown
-  ms.service: cosmos-db
+  author: manishmsfte
+  ms.author: mansha
+  ms.service: azure-cosmos-db
   ms.subservice: apache-gremlin
   ms.topic: landing-page
   ms.date: 02/21/2024

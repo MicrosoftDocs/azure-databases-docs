@@ -4,8 +4,7 @@ titleSuffix: Azure Cosmos DB
 description: Configure autoscale in Azure Cosmos DB for uneven workload patterns by customizing autoscale for specific regions or partitions.
 author: tarabhatiamsft
 ms.author: tarabhatia
-ms.reviewer: sidandrews
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.custom:
   - ignite-2023
 ms.topic: conceptual

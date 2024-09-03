@@ -4,7 +4,6 @@ titleSuffix: Azure Cosmos DB
 description: Learn how to enhance AI-based applications using Retrieval-Augmented Generation (RAG) with Azure Cosmos DB for MongoDB (vCore), LangChain, and OpenAI. Discover key concepts, architecture, and real-world applications.
 author: khelanmodi
 ms.author: khelanmodi
-ms.reviewer: gahllevy
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: conceptual

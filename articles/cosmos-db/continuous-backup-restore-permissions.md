@@ -2,11 +2,10 @@
 title: Configure permissions to restore an Azure Cosmos DB account.
 description: Learn how to isolate and restrict the restore permissions for continuous backup account to a specific role or a principal. It shows how to assign a built-in role using Azure portal, CLI, or define a custom role.
 author: kanshiG
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.topic: how-to
 ms.date: 03/31/2023
 ms.author: govindk
-ms.reviewer: mjbrown
 ms.custom: subject-rbac-steps, devx-track-azurecli
 ---
 

@@ -2,14 +2,13 @@
 title: Geospatial and GeoJSON location data
 titleSuffix: Azure Cosmos DB for NoSQL
 description: Create spatial objects with Azure Cosmos DB for NoSQL, index these objects, and perform queries using them.
-author: jcodella
-ms.author: jacodel
-ms.reviewer: sidandrews
+author: seesharprun
+ms.author: sidandrews
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: reference
 ms.devlang: nosql
-ms.date: 02/27/2024
+ms.date: 08/22/2024
 ms.custom: query-reference
 ---
 
@@ -168,7 +167,7 @@ When you create items that contain GeoJSON values, they're automatically indexed
 
 ```javascript
 var userProfileitem = {
-    "id":"cosmosdb",
+    "id": "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb",
     "location":{
         "type":"Point",
         "coordinates":[ -122.12, 47.66 ]
@@ -201,7 +200,7 @@ public class UserProfile
 await container.CreateItemAsync(
     new UserProfile
     {
-        id = "cosmosdb",
+        id = "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb",
         Location = new Point (-122.12, 47.66)
     }
 );

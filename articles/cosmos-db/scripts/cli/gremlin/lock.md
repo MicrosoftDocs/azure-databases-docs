@@ -1,10 +1,9 @@
 ---
 title: Create resource lock for a Gremlin database and graph for Azure Cosmos DB
 description: Create resource lock for a Gremlin database and graph for Azure Cosmos DB
-author: seesharprun
-ms.author: sidandrews
-ms.reviewer: mjbrown
-ms.service: cosmos-db
+author: markjbrown
+ms.author: mjbrown
+ms.service: azure-cosmos-db
 ms.subservice: apache-gremlin
 ms.custom: devx-track-azurecli
 ms.topic: sample

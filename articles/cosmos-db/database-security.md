@@ -2,9 +2,9 @@
 title: Database security overview
 titleSuffix: Azure Cosmos DB
 description: Learn how Azure Cosmos DB provides database protection and data security for your data.
-author: seesharprun
-ms.author: sidandrews
-ms.service: cosmos-db
+author: iriaosara
+ms.author: iriaosara
+ms.service: azure-cosmos-db
 ms.topic: conceptual
 ms.date: 11/21/2022
 ---

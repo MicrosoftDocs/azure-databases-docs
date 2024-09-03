@@ -1,10 +1,8 @@
 ---
-author: alexwolfmsft
 ms.service: azure-cosmos-db
 ms.subservice: table
 ms.topic: include
-ms.date: 07/08/2022
-ms.author: alexwolf
+ms.date: 08/23/2024
 ---
 > [!TIP]
 > For this quickstart, we recommend using the resource group name ``msdocs-cosmos-quickstart-rg``.

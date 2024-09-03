@@ -2,10 +2,9 @@
 title: Consistency level choices
 titleSuffix: Azure Cosmos DB
 description: Azure Cosmos DB has five consistency levels to help balance eventual consistency, availability, and latency trade-offs.
-author: seesharprun
-ms.author: sidandrews
-ms.reviewer: mjbrown
-ms.service: cosmos-db
+author: markjbrown
+ms.author: mjbrown
+ms.service: azure-cosmos-db
 ms.topic: conceptual
 ms.date: 02/27/2023
 ms.custom: cosmos-db-video

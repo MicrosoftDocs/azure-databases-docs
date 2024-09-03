@@ -1,10 +1,8 @@
 ---
-author: seesharprun
-ms.author: sidandrews
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.subservice: apache-gremlin
 ms.topic: include
-ms.date: 09/28/2023
+ms.date: 08/23/2024
 ---
 
 1. Create a shell variable for *resourceGroupName* if it doesn't already exist.

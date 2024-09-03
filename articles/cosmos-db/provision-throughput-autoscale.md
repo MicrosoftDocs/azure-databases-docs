@@ -3,7 +3,7 @@ title: Create Azure Cosmos DB containers and databases in autoscale mode.
 description: Learn about the benefits, use cases, and how to provision Azure Cosmos DB databases and containers in autoscale mode.
 author: kirillg
 ms.author: kirillg
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.topic: conceptual
 ms.date: 07/26/2024
 ---

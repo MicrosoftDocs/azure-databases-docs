@@ -7,7 +7,6 @@ ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: conceptual
 ms.date: 08/07/2020
-ms.reviewer: mjbrown
 ---
 
 # Azure Cosmos DB Attachments

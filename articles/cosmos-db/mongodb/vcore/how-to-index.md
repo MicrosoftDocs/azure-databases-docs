@@ -1,14 +1,13 @@
 ---
-"title":  Exploring indexing scenarios on Azure Cosmos DB for MongoDB vCore
-"titleSuffix": Azure Cosmos DB for MongoDB vCore
-"description": Practical indexing examples in Azure Cosmos DB for MongoDb vCore.
-"author": avijitgupta
-"ms.author": avijitgupta
-"ms.reviewer": gahllevy
-"ms.service": azure-cosmos-db
-"ms.subservice": mongodb-vcore
-"ms.topic": conceptual
-"ms.date": 07/30/2024
+  title: Exploring indexing scenarios
+  titleSuffix: Azure Cosmos DB for MongoDB vCore
+  description: Review a series of practical indexing examples illustrating indexing at various nesting levels in Azure Cosmos DB for MongoDB vCore.
+  author: avijitgupta
+  ms.author: avijitgupta
+  ms.service: azure-cosmos-db
+  ms.subservice: mongodb-vcore
+  ms.topic: how-to
+  ms.date: 08/22/2024
 ---
 
 # Scenario based guide to indexing in Azure Cosmos DB for MongoDB vCore

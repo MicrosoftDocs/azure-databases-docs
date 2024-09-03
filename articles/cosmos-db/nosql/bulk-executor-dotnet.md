@@ -8,7 +8,6 @@ ms.subservice: nosql
 ms.devlang: csharp
 ms.topic: how-to
 ms.date: 03/15/2023
-ms.reviewer: mjbrown
 ms.custom: devx-track-csharp, devx-track-dotnet
 ---
 

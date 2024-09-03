@@ -4,7 +4,6 @@ titleSuffix: Azure Cosmos DB for MongoDB in vCore architecture
 description: Connect to an Azure Cosmos DB for MongoDB (vCore architecture) account by using the Studio 3T community tool to query data.
 author: gahl-levy
 ms.author: gahllevy
-ms.reviewer: sidandrews
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: how-to

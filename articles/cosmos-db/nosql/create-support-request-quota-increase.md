@@ -3,7 +3,6 @@ title: How to request quota increase for Azure Cosmos DB resources
 description: Learn how to request a quota increase for Azure Cosmos DB resources. You will also learn how to enable a subscription to access a region.
 author: kanshiG
 ms.author: govindk
-ms.reviewer: mjbrown
 ms.service: azure-cosmos-db
 ms.topic: how-to
 ms.date: 04/27/2022
