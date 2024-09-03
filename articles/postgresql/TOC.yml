@@ -559,6 +559,10 @@
         href: migrate/migration-service/tutorial-migration-service-aws-offline.md
       - name: Migrate from AWS RDS online
         href: migrate/migration-service/tutorial-migration-service-aws-online.md
+      - name: Migrate from Amazon Aurora offline
+        href: migrate/migration-service/tutorial-migration-service-aurora-offline.md
+      - name: Migrate from Amazon Aurora online
+        href: migrate/migration-service/tutorial-migration-service-aurora-online.md
     - name: Concepts
       items:
       - name: Premigration validation

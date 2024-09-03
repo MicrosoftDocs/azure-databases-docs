@@ -28,8 +28,8 @@ The table summarizes the scenarios for connecting a source database to an Azure 
 | Azure Database for PostgreSQL - Single Server with public access | VNet-integrated Azure Database for PostgreSQL - Flexible Server | Yes |
 | Azure Database for PostgreSQL - Single Server with private endpoint | VNet-integrated Azure Database for PostgreSQL - Flexible Server | Yes |
 | Azure Database for PostgreSQL - Single Server with private endpoint | Azure Database for PostgreSQL - Flexible Server with private endpoint | Yes |
-| PostgreSQL source with private access | Azure Database for PostgreSQL - Flexible Server with private endpoint | Yes |
-| PostgreSQL source with private access | Azure Database for PostgreSQL - Flexible Server with public access | No |
+| PostgreSQL sources with private access | Azure Database for PostgreSQL - Flexible Server with private endpoint | Yes |
+| PostgreSQL sources with private access | Azure Database for PostgreSQL - Flexible Server with public access | No |
 
 ## Scenario 1: On-premises source to Azure Database for PostgreSQL with public access
 
