@@ -6,6 +6,10 @@
       href: array-query-elemmatch.md
     - name: $size
       href: array-query-size.md
+- name: Aggregation Pipeline
+  items:
+    - name: $skip
+      href: aggregation-skip.md
 - name: Projection
   items:
     - name: $elemMatch
