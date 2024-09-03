@@ -23,8 +23,8 @@ ms.date: 02/27/2024
 
 | Feature | Azure Cosmos DB for MongoDB | MongoDB Atlas by MongoDB, Inc |
 |---------|---------|----------------------------------|
-| MongoDB wire protocol | Yes | Yes |
 | Compatible with MongoDB tools and drivers | Yes | Yes |
+| MongoDB wire protocol | Yes: v8 (private preview), v7, v6, v5, v4 | v7, v6, v5. Mongo Atlas does not support older versions such as v4 and soon v5 (EOL October 2024) |
 | Global Distribution | Yes, [globally distributed](../distribute-data-globally.md) with automatic and fast data replication across any number of Azure regions | Yes, globally distributed with automatic and fast data replication across supported cloud providers or regions |
 | 99.999% availability SLA | [Yes](../high-availability.md) | No. MongoDB Atlas offers a 99.995% availability SLA |
 | SLA covers cloud platform | Yes | No. For more details, read the MongoDB Atlas SLA |
