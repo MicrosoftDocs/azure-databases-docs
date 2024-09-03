@@ -1,30 +1,30 @@
 ---
-title: Per-region and per-partition autoscale (preview)
+title: Dynamic Scaling (Per-region and per-partition autoscale)
 titleSuffix: Azure Cosmos DB
 description: Configure autoscale in Azure Cosmos DB for uneven workload patterns by customizing autoscale for specific regions or partitions.
-author: tarabhatiamsft
-ms.author: tarabhatia
-ms.service: azure-cosmos-db
+author: rakhithejraj
+ms.author: rakhithejraj
+ms.reviewer: sidandrews
+ms.service: cosmos-db
 ms.custom:
-  - ignite-2023
+  - Fabriccon Sep2024
 ms.topic: conceptual
-ms.date: 05/01/2024
+ms.date: 09/25/2024
 # CustomerIntent: As a database adminstrator, I want to fine tune autoscaler for specific regions or partitions so that I can balance an uneven workload.
 ---
 
-# Per-region and per-partition autoscale
+# Dynamic Scaling (Per-region and per-partition autoscale)
 
-By default, Azure Cosmos DB autoscale scales workloads based on the most active region and partition. For nonuniform workloads that have different workload patterns across regions and partitions, this scaling can cause unnecessary scale-ups. With this improvement to autoscale, also known as "dynamic scaling," the per region and per partition autoscale feature now allows your workloads’ regions and partitions to scale independently based on usage.
+[!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
-> [!IMPORTANT]
-> By default, this feature is only available for Azure Cosmos DB accounts created after **November 15, 2023**. For customers who can significantly benefit from dynamic scaling, Azure Cosmos DB is progressively enabling the feature in stages for existing accounts and providing GA support, ahead of broader GA. Customers in this cohort will be notified by email before the enablement. This update won’t impact your account(s) performance, availability, and won't cause downtime or data movement. Please contact your Microsoft representative for questions.
+Azure Cosmos DB autoscale by default scales workloads based on the most active region and partition. For nonuniform workloads that have different workload patterns across regions and partitions, this scaling can cause unnecessary scale-ups. With this improvement to autoscale, also known as "dynamic scaling," the per region and per partition autoscale feature now allows your workloads’ regions and partitions to scale independently based on usage.
 
-This feature is recommended for autoscale workloads that are nonuniform across regions and partitions. This feature allows you to save costs if you often experience hot partitions and/or have multiple regions. When enabled, this feature applies to all autoscale resources in the account.
+This feature is recommended for provisioned autoscale workloads that are nonuniform across regions and partitions. This feature allows you to save costs if you often experience hot partitions and/or have multiple regions. When enabled, this feature applies to all autoscale resources in the account.
 
 ## Use cases
 
 - Database workloads that have a highly trafficked primary region and a secondary passive region for disaster recovery.
-  - By enabling autoscale per region and partition, you can now save on costs as the secondary region independently and automatically scales down while idle. The secondary regions also automatically scales-up as it becomes active and while handling write replication from the primary region.
+  - With dynamic scaling feature, you can now save on costs as the secondary region independently and automatically scales down while idle. The secondary regions also automatically scales-up as it becomes active and while handling write replication from the primary region.
 - Multi-region database workloads.
   - These workloads often observe uneven distribution of requests across regions due to natural traffic growth and dips throughout the day. For example, a database might be active during business hours across globally distributed time zones.
 
@@ -41,25 +41,26 @@ For example, if we have a collection with **1000** RU/s and **2** partitions, ea
 
 Because all partitions are scaled uniformly based on the hottest partition, both the write and read regions are scaled to 1000 RU/s, making the total RU/s as much as **2000 RU/s**.
 
-With per-partition or per-region scaling, you can optimize your throughput. The total consumption would be **900 RU/s** as each partition or region's throughput is scaled independently and measured per hour using the same scenario.
+With dynamic scaling, you can optimize your throughput. The total consumption would be **900 RU/s** as each partition or region's throughput is scaled independently and measured per hour using the same scenario.
 
 ## Get started
 
-This feature is available for new Azure Cosmos DB accounts. To enable this feature, follow these steps:
+Dynamic scaling feature is enabled by default for all Azure Cosmos DB accounts created after **September 25, 2024**. For customers who wish to enable this feature for their old accounts can go to the features pane of Azure portal and enable the same. 
 
 1. Navigate to your Azure Cosmos DB account in the [Azure portal](https://portal.azure.com).
 1. Navigate to the **Features** page.
-1. Locate and enable the **Per Region and Per Partition Autoscale** feature.
+1. Locate and enable the **Dynamic Scaling (Per Region and Per Partition Autoscale)** feature.
 
-    :::image type="content" source="media/autoscale-per-partition-region/enable-feature.png" lightbox="media/autoscale-per-partition-region/enable-feature.png" alt-text="Screenshot of the 'Per Region and Per Partition Autoscale' feature in the Azure portal.":::
+    :::image type="content" source="media/autoscale-per-partition-region/enable-feature.png" lightbox="media/autoscale-per-partition-region/enable-feature.png" alt-text="Screenshot of the 'Dynamic Scaling (Per Region and Per Partition Autoscale)' feature in the Azure portal.":::
 
     > [!IMPORTANT]
-    > The feature is enabled at the account level, so all containers within the account will automatically have this capability applied. The feature is available for both shared throughput databases and containers with dedicated throughput. Provisioned throughput accounts must switch over to autoscale and then enable this feature, if interested.
+    > The feature is enabled at the account level, so all Autoscale containers and Autoscale shared databases within the account will automatically have this capability applied. Manual Provisioned throughput accounts must switch over to autoscale and then enable this feature, if interested. Enabling this feature has zero downtime or performance impact. This fearture is not applicable for serverless accounts
 
-1. Use [Azure Monitor metrics](monitor-reference.md#supported-metrics-for-microsoftdocumentdbdatabaseaccounts) to analyze how the new autoscaling is applied across partitions and regions. Filter to your desired database account and container, then filter or split by the `PhysicalPartitionID` metric. This metric shows all partitions across their various regions.
+1. Use [Azure Monitor metrics](monitor-reference.md#supported-metrics-for-microsoftdocumentdbdatabaseaccounts) - `Autoscaled RU` to analyze how the new autoscaling is applied across partitions and regions. Filter to your desired database account and container, then filter or split by the `PhysicalPartitionID` metric. This metric shows all partitions across their various regions.
 
-    Then, use `NormalizedRUConsumption` to see which partitions and regions scale independently. You can use the `ProvisionedThroughput` metric to see what throughput value is emitted to our billing service.
+    Then, use `NormalizedRUConsumption` to see which partitions and regions scale independently. You can use the `ProvisionedThroughput` metric to see what throughput value is emitted to our billing service.When using dynamic scaling, the Provisioned Throughput metric reflects the sum of each partition’s highest RU/s scaled to within the hour. Because of the hour boundary, the value resets at the start of each hour. 
 
-## Requirements/Limitations
 
-Accounts must be created after 11/15/2023 to enable this feature.
+
+
+
