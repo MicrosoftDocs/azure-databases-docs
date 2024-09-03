@@ -69,7 +69,11 @@ These metrics are available for Azure Database for MySQL flexible server:
 | Slow_queries | slow_queries | Count | The total count of slow queries on your server in the selected time range. |
 | Active Transactions | active_transactions | Count | This metric represents the total number of transactions within MySQL. Active transactions include all transactions that have started but have yet to be committed or rolled back. |
 
-## Storage Breakdown metrics
+## Storage breakdown metrics
+
+Storage breakdown metrics provide valuable insights into the storage usage of your Azure Database for MySQL flexible server. These metrics give you a detailed breakdown of the storage limit, storage percentage, storage used, data storage used, ibdata1 storage used, binlog storage used, other storage used, and backup storage used. By monitoring these metrics, you can effectively manage your storage resources, optimize storage allocation, and ensure efficient utilization of your server's storage capacity. Understanding the storage breakdown metrics helps you make informed decisions to maintain the performance and availability of your Azure Database for MySQL flexible server.
+
+The table below lists the storage breakdown metrics available for Azure Database for MySQL flexible server:
 
 | Metric display name | Metric | Unit | Description |
 | --- | --- | --- | --- |
@@ -83,6 +87,10 @@ These metrics are available for Azure Database for MySQL flexible server:
 | Backup Storage Used | backup_storage_used | Bytes | The amount of backup storage used. |
 
 ## Replication metrics
+
+Replication metrics provide valuable insights into the performance and status of replication in Azure Database for MySQL flexible server. These metrics allow you to monitor the replication lag, check the status of replica and HA IO/SQL threads, and measure the replication latency. By tracking these metrics, you can ensure the reliability and efficiency of your replication setup, identify any potential issues or delays, and take appropriate actions to maintain data consistency and availability. Let's explore the different replication metrics available for Azure Database for MySQL flexible server.
+
+The table below lists the replication metrics available for Azure Database for MySQL flexible server:
 
 | Metric display name | Metric | Unit | Description |
 | --- | --- | --- | --- |
@@ -107,7 +115,6 @@ The DML (Data Manipulation Language) statistics metrics give you visibility into
 | Com_update | Com_update | Count | The total count of update statements executed on your server in the selected time range. |
 | Com_insert | Com_insert | Count | The total count of insert statements executed on your server in the selected time range. |
 | Com_delete | Com_delete | Count | The total count of deleted statements executed on your server in the selected time range. |
-
 
 ### DDL statistics
 
@@ -148,7 +155,7 @@ The server logs feature is disabled by default. For information about how to ena
 Server logs support enabling and downloading [slow query logs](./concepts-slow-query-logs.md) and [error logs](./concepts-error-logs.md).
 To perform a historical analysis of your data, in the Azure portal, on the Diagnostics settings pane for your server, add a diagnostic setting to send the logs to the Log Analytics workspace, Azure Storage, or event hubs. For more information, see [Set up diagnostics](./tutorial-query-performance-insights.md#set-up-diagnostics).
 
-**Server logs retention**
+### Server logs retention
 
 When logging is enabled for an Azure Database for MySQL flexible server instance, logs are available up to seven days from their creation. If the total size of the available logs exceeds 7 GB, then the oldest files are deleted until space is available.
 The 7-GB storage limit for server logs is available free of cost and can't be extended.
