@@ -21,9 +21,6 @@ Azure Database for MySQL flexible server provides monitoring of servers through 
 
 In this article, you learn about the various metrics available and Server logs for your flexible server, which give insight into its behavior.
 
-> [!NOTE]  
-> This article references the term *slave*, which Microsoft no longer uses. When the term is removed from the software, we'll remove it from this article.
-
 ## Metrics
 
 Metrics are numerical values that describe some aspect of your server's resources at a particular time. Monitoring your server's resources helps you troubleshoot and optimize your workload by allowing you to monitor what matters most to you. Monitoring the right metrics helps you maintain the performance, reliability, and availability of your server and applications.
