@@ -16,14 +16,14 @@ ms.custom:
 
 [!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
-Azure Database for MySQL flexible server supports two types of mutually exclusive network connectivity methods to connect to your Azure Database for MySQL flexible server instance. The two options are:
+Azure Database for MySQL Flexible Server supports two types of mutually exclusive network connectivity methods to connect to your Azure Database for MySQL Flexible Server instance. The two options are:
 
 - Public access (allowed IP addresses)
 - Private access (virtual network integration)
 
-This article focuses on creation of MySQL server with **Private access (virtual network Integration)** using Azure CLI. With *Private access (virtual network integration)*, you can deploy your Azure Database for MySQL flexible server instance into your own [Azure Virtual Network](/azure/virtual-network/virtual-networks-overview). Azure Virtual Networks provide private and secure network communication. In Private access, the connections to the Azure Database for MySQL flexible server instance are restricted to only within your virtual network. To learn more about it, refer to [Private access (Virtual Network Integration)](./concepts-networking-vnet.md).
+This article focuses on creation of MySQL server with **Private access (virtual network Integration)** using Azure CLI. With *Private access (virtual network integration)*, you can deploy your Azure Database for MySQL Flexible Server instance into your own [Azure Virtual Network](/azure/virtual-network/virtual-networks-overview). Azure Virtual Networks provide private and secure network communication. In Private access, the connections to the Azure Database for MySQL Flexible Server instance are restricted to only within your virtual network. To learn more about it, refer to [Private access (Virtual Network Integration)](./concepts-networking-vnet.md).
 
-In Azure Database for MySQL flexible server, you can only deploy the server to a virtual network and subnet during creation of the server. After the Azure Database for MySQL flexible server instance is deployed to a virtual network and subnet, you can't move it to another virtual network, subnet or to *Public access (allowed IP addresses)*.
+In Azure Database for MySQL Flexible Server, you can only deploy the server to a virtual network and subnet during creation of the server. After the Azure Database for MySQL Flexible Server instance is deployed to a virtual network and subnet, you can't move it to another virtual network, subnet or to *Public access (allowed IP addresses)*.
 
 ## Launch Azure Cloud Shell
 
@@ -47,38 +47,38 @@ Select the specific subscription under your account using [az account set](/cli/
 az account set --subscription <subscription id>
 ```
 
-## Create an Azure Database for MySQL flexible server instance using CLI
+## Create an Azure Database for MySQL Flexible Server instance using CLI
 
-You can use the `az mysql flexible-server` command to create the Azure Database for MySQL flexible server instance with *Private access (virtual network integration)*. This command uses Private access (virtual network integration) as the default connectivity method. A virtual network and subnet are created for you if none is provided. You can also provide the already existing virtual network and subnet using subnet ID. <!-- You can provide the **vnet**,**subnet**,**vnet-address-prefix** or**subnet-address-prefix** to customize the virtual network and subnet.--> There are various options to create an Azure Database for MySQL flexible server instance using CLI as shown in the following examples.
+You can use the `az mysql flexible-server` command to create the Azure Database for MySQL Flexible Server instance with *Private access (virtual network integration)*. This command uses Private access (virtual network integration) as the default connectivity method. A virtual network and subnet are created for you if none is provided. You can also provide the already existing virtual network and subnet using subnet ID. <!-- You can provide the **vnet**,**subnet**,**vnet-address-prefix** or**subnet-address-prefix** to customize the virtual network and subnet.--> There are various options to create an Azure Database for MySQL Flexible Server instance using CLI as shown in the following examples.
 
 >[!Important]
-> Using this command will delegate the subnet to **Microsoft.DBforMySQL/flexibleServers**. This delegation means that only Azure Database for MySQL flexible server instances can use that subnet. No other Azure resource types can be in the delegated subnet.
+> Using this command will delegate the subnet to **Microsoft.DBforMySQL/flexibleServers**. This delegation means that only Azure Database for MySQL Flexible Server instances can use that subnet. No other Azure resource types can be in the delegated subnet.
 >
 
 Refer to the Azure CLI [reference documentation](/cli/azure/mysql/flexible-server) for the complete list of configurable CLI parameters. For example, in the following commands you can optionally specify the resource group.
 
-- Create an Azure Database for MySQL flexible server instance using default virtual network, subnet with default address prefix.
+- Create an Azure Database for MySQL Flexible Server instance using default virtual network, subnet with default address prefix.
 
     ```azurecli-interactive
     az mysql flexible-server create
     ```
 
-- Create an Azure Database for MySQL flexible server instance using already existing virtual network and subnet. If provided virtual network and subnet don't exist, then virtual network and subnet with default address prefix are created.
+- Create an Azure Database for MySQL Flexible Server instance using already existing virtual network and subnet. If provided virtual network and subnet don't exist, then virtual network and subnet with default address prefix are created.
 
     ```azurecli-interactive
     az mysql flexible-server create --vnet myVnet --subnet mySubnet
     ```
 
-- Create an Azure Database for MySQL flexible server instance using already existing virtual network, subnet, and using the subnet ID. The provided subnet shouldn't have any other resource deployed in it and this subnet are delegated to **Microsoft.DBforMySQL/flexibleServers**, if not already delegated.
+- Create an Azure Database for MySQL Flexible Server instance using already existing virtual network, subnet, and using the subnet ID. The provided subnet shouldn't have any other resource deployed in it and this subnet are delegated to **Microsoft.DBforMySQL/flexibleServers**, if not already delegated.
 
     ```azurecli-interactive
     az mysql flexible-server create --subnet /subscriptions/{SubID}/resourceGroups/{ResourceGroup}/providers/Microsoft.Network/virtualNetworks/{VNetName}/subnets/{SubnetName}
     ```
 
     > [!Note]
-    > The virtual network and subnet should be in the same region and subscription as your Azure Database for MySQL flexible server instance.
+    > The virtual network and subnet should be in the same region and subscription as your Azure Database for MySQL Flexible Server instance.
 <
-- Create an Azure Database for MySQL flexible server instance using a new virtual network, subnet with nondefault address prefix.
+- Create an Azure Database for MySQL Flexible Server instance using a new virtual network, subnet with nondefault address prefix.
 
     ```azurecli-interactive
     az mysql flexible-server create --vnet myVnet --address-prefixes 10.0.0.0/24 --subnet mySubnet --subnet-prefixes 10.0.0.0/24
@@ -88,6 +88,6 @@ Refer to the Azure CLI [reference documentation](/cli/azure/mysql/flexible-serve
 
 ## Next steps
 
-- Learn more about [networking in Azure Database for MySQL flexible server](./concepts-networking.md).
-- [Create and manage Azure Database for MySQL flexible server virtual network using Azure portal](./how-to-manage-virtual-network-portal.md).
-- Understand more about [Azure Database for MySQL flexible server virtual network](./concepts-networking-vnet.md#private-access-virtual-network-integration).
+- Learn more about [networking in Azure Database for MySQL Flexible Server](./concepts-networking.md).
+- [Create and manage Azure Database for MySQL Flexible Server virtual network using Azure portal](./how-to-manage-virtual-network-portal.md).
+- Understand more about [Azure Database for MySQL Flexible Server virtual network](./concepts-networking-vnet.md#private-access-virtual-network-integration).
