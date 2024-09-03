@@ -32,7 +32,7 @@ Azure Database for MySQL flexible server provides various metrics to help you un
 
 All Azure metrics have a one-minute frequency, each providing 30 days of history. You can configure alerts on the metrics. See [How to set up alerts](./how-to-alert-on-metric.md). Other tasks include setting up automated actions, performing advanced analytics, and archiving history. For more information, see the [Azure Metrics Overview](/azure/azure-monitor/data-platform).
 
-### Troubleshoot Metrics
+### Troubleshoot metrics
 
 Sometimes, you might encounter issues with creating, customizing, or interpreting charts in Azure Metrics Explorer.  
 A *Chart showing no data* could arise due to various factors. These might include the Microsoft Insights resource provider not being registered for your subscription or you lacking adequate access rights to your Azure Database for MySQL - Flexible Server. Other possibilities could be that your resource didn't generate metrics within the chosen time frame or the selected time range exceeds 30 days.
@@ -72,7 +72,7 @@ These metrics are available for Azure Database for MySQL flexible server:
 | Slow_queries | slow_queries | Count | The total count of slow queries on your server in the selected time range. |
 | Active Transactions | active_transactions | Count | This metric represents the total number of transactions within MySQL. Active transactions include all transactions that have started but have yet to be committed or rolled back. |
 
-## Storage Breakdown Metrics
+## Storage Breakdown metrics
 
 | Metric display name | Metric | Unit | Description |
 | --- | --- | --- | --- |
