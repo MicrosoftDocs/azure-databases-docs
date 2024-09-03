@@ -44,7 +44,7 @@ ms.date: 02/27/2024
 | JSON data type support | BSON (Binary JSON) | BSON (Binary JSON) |
 | Support for MongoDB aggregation pipeline | Yes. Supporting MongoDB wire protocol v7, v6, and v5 in vCore and RU architectures.​ | Yes |
 | Maximum document size | 16 MB | 16 MB |
-| JSON schema for data governance controls | Yes, in preview | Yes |
+| JSON schema for data governance controls | Currently in development | Yes |
 | Integrated text search | Yes | Yes |
 | Integrated querying of data in cloud object storage | Yes, with Synapse Link | Yes |
 | Blend data with joins and unions for analytics queries | Yes | Yes |
