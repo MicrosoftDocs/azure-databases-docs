@@ -4,7 +4,7 @@ description: This quickstart provides a Go programming language sample you can u
 author: agapovm
 ms.author: maximagapov
 ms.reviewer: maghan
-ms.date: 08/21/2024
+ms.date: 09/04/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: quickstart
@@ -44,9 +44,9 @@ Install [Go](https://go.dev/doc/install) and the [Pure Go Postgres driver (pq)](
 1. Make a folder for your project, such as `mkdir  %USERPROFILE%\go\src\postgresqlgo`.
 1. Change directory into the project folder, such as `cd %USERPROFILE%\go\src\postgresqlgo`.
 1. Set the environment variable for GOPATH to point to the source code directory. `set GOPATH=%USERPROFILE%\go`.
-1. Run [go mod init](https://go.dev/ref/mod#go-mod-init) to create a module in the current directory. For example: `go mod init mysqlgo`.
+1. Run [go mod init](https://go.dev/ref/mod#go-mod-init) to create a module in the current directory. For example: `go mod init postgresqlgo`.
     - The `<module_path>` parameter is generally a location in a GitHub repo - such as `github.com/<your_github_account_name>/<directory>`.
-    - When you're creating a command-line app as a test and won't publish the app, the `<module_path>` doesn't need to refer to an actual location. For example, `mqsqlgo`.
+    - When you're creating a command-line app as a test and won't publish the app, the `<module_path>` doesn't need to refer to an actual location. For example, `postgresqlgo`.
 1. Install the [Pure Go Postgres driver (pq)](https://github.com/lib/pq) by running the `go get github.com/lib/pq` command.
 
    In summary, install Go, then run these commands in the command prompt:
@@ -55,7 +55,7 @@ Install [Go](https://go.dev/doc/install) and the [Pure Go Postgres driver (pq)](
    mkdir  %USERPROFILE%\go\src\postgresqlgo
    cd %USERPROFILE%\go\src\postgresqlgo
    set GOPATH=%USERPROFILE%\go
-   go mod init mysqlgo
+   go mod init postgresqlgo
    go get github.com/lib/pq
    ```
 
@@ -66,9 +66,9 @@ Install [Go](https://go.dev/doc/install) and the [Pure Go Postgres driver (pq)](
 1. Make a folder for your project in your home directory, such as `mkdir -p ~/go/src/postgresqlgo/`.
 1. Change directory into the folder, such as `cd ~/go/src/postgresqlgo/`.
 1. Set the GOPATH environment variable to point to a valid source directory, such as your current home directory's go folder. At the bash shell, run `export GOPATH=~/go` to add the go directory as the GOPATH for the current shell session.
-1. Run [go mod init](https://go.dev/ref/mod#go-mod-init) to create a module in the current directory. For example: `go mod init mysqlgo`.
+1. Run [go mod init](https://go.dev/ref/mod#go-mod-init) to create a module in the current directory. For example: `go mod init postgresqlgo`.
     - The `<module_path>` parameter is generally a location in a GitHub repo - such as `github.com/<your_github_account_name>/<directory>`.
-    - When you're creating a command-line app as a test and won't publish the app, the `<module_path>` doesn't need to refer to an actual location. For example, `mqsqlgo`.
+    - When you're creating a command-line app as a test and won't publish the app, the `<module_path>` doesn't need to refer to an actual location. For example, `postgresqlgo`.
 1. Install the [Pure Go Postgres driver (pq)](https://github.com/lib/pq) by running the `go get github.com/lib/pq` command.
 
    In summary, run these bash commands:
@@ -78,7 +78,7 @@ Install [Go](https://go.dev/doc/install) and the [Pure Go Postgres driver (pq)](
    mkdir -p ~/go/src/postgresqlgo/
    cd ~/go/src/postgresqlgo/
    export GOPATH=~/go/
-   go mod init mysqlgo
+   go mod init postgresqlgo
    go get github.com/lib/pq
    ```
 
@@ -89,9 +89,9 @@ Install [Go](https://go.dev/doc/install) and the [Pure Go Postgres driver (pq)](
 1. Make a folder for your project in your home directory, such as `mkdir -p ~/go/src/postgresqlgo/`.
 1. Change directory into the folder, such as `cd ~/go/src/postgresqlgo/`.
 1. Set the GOPATH environment variable to point to a valid source directory, such as your current home directory's go folder. At the bash shell, run `export GOPATH=~/go` to add the go directory as the GOPATH for the current shell session.
-1. Run [go mod init](https://go.dev/ref/mod#go-mod-init) to create a module in the current directory. For example: `go mod init mysqlgo`.
+1. Run [go mod init](https://go.dev/ref/mod#go-mod-init) to create a module in the current directory. For example: `go mod init postgresqlgo`.
     - The `<module_path>` parameter is generally a location in a GitHub repo - such as `github.com/<your_github_account_name>/<directory>`.
-    - When you're creating a command-line app as a test and won't publish the app, the `<module_path>` doesn't need to refer to an actual location. For example, `mqsqlgo`.
+    - When you're creating a command-line app as a test and won't publish the app, the `<module_path>` doesn't need to refer to an actual location. For example, `postgresqlgo`.
 1. Install the [Pure Go Postgres driver (pq)](https://github.com/lib/pq) by running the `go get github.com/lib/pq` command.
 
    In summary, install Go, then run these bash commands:
@@ -100,7 +100,7 @@ Install [Go](https://go.dev/doc/install) and the [Pure Go Postgres driver (pq)](
    mkdir -p ~/go/src/postgresqlgo/
    cd ~/go/src/postgresqlgo/
    export GOPATH=~/go/
-   go mod init mysqlgo
+   go mod init postgresqlgo
    go get github.com/lib/pq
    ```
 
@@ -111,18 +111,18 @@ Install [Go](https://go.dev/doc/install) and the [Pure Go Postgres driver (pq)](
 Get the connection information needed to connect to the Azure Database for PostgreSQL. You need the fully qualified server name and login credentials.
 
 1. Log in to the [Azure portal](https://portal.azure.com/).
-2. From the left-hand menu in Azure portal, select **All resources**, and then search for the server you have created (such as **mydemoserver**).
-3. Select the server name.
-4. From the server's **Overview** panel, make a note of the **Server name** and **Server admin login name**. If you forget your password, you can also reset the password from this panel.
+1. From the left-hand menu in Azure portal, select **All resources**, and then search for the server you have created (such as **mydemoserver**).
+1. Select the server name.
+1. From the server's **Overview** panel, make a note of the **Server name** and **Server admin login name**. If you forget your password, you can also reset the password from this panel.
 
 ## Build and run Go code
 
 1. To write Golang code, you can use a plain text editor, such as Notepad in Microsoft Windows, [vi](https://manpages.ubuntu.com/manpages/xenial/man1/nvi.1.html#contenttoc5) or [Nano](https://www.nano-editor.org/) in Ubuntu, or TextEdit in macOS. If you prefer a richer Interactive Development Environment (IDE) try [GoLand](https://www.jetbrains.com/go/) by Jetbrains, [Visual Studio Code](https://code.visualstudio.com/) by Microsoft, or [Atom](https://atom.io/).
-2. Paste the Golang code from the following sections into text files, and save into your project folder with file extension \*.go, such as Windows path `%USERPROFILE%\go\src\postgresqlgo\createtable.go` or Linux path `~/go/src/postgresqlgo/createtable.go`.
-3. Locate the `HOST`, `DATABASE`, `USER`, and `PASSWORD` constants in the code, and replace the example values with your own values.  
-4. Launch the command prompt or bash shell. Change directory into your project folder. For example, on Windows `cd %USERPROFILE%\go\src\postgresqlgo\`. On Linux `cd ~/go/src/postgresqlgo/`. Some of the IDE environments mentioned offer debug and runtime capabilities without requiring shell commands.
-5. Run the code by typing the command `go run createtable.go` to compile the application and run it. 
-6. Alternatively, to build the code into a native application, `go build createtable.go`, then launch `createtable.exe` to run the application.
+1. Paste the Golang code from the following sections into text files, and save into your project folder with file extension \*.go, such as Windows path `%USERPROFILE%\go\src\postgresqlgo\createtable.go` or Linux path `~/go/src/postgresqlgo/createtable.go`.
+1. Locate the `HOST`, `DATABASE`, `USER`, and `PASSWORD` constants in the code, and replace the example values with your own values. A database named *postgres* is created when you create your Azure Database for MySQL server instance. You can use that database or another one that you've created. 
+1. Launch the command prompt or bash shell. Change directory into your project folder. For example, on Windows `cd %USERPROFILE%\go\src\postgresqlgo\`. On Linux `cd ~/go/src/postgresqlgo/`. Some of the IDE environments mentioned offer debug and runtime capabilities without requiring shell commands.
+1. Run the code by typing the command `go run createtable.go` to compile the application and run it. 
+1. Alternatively, to build the code into a native application, `go build createtable.go`, then launch `createtable.exe` to run the application.
 
 ## Connect and create a table
 
@@ -146,7 +146,7 @@ import (
 const (
 	// Initialize connection constants.
 	HOST     = "mydemoserver.postgres.database.azure.com"
-	DATABASE = "mypgsqldb"
+	DATABASE = "postgres"
 	USER     = "mylogin@mydemoserver"
 	PASSWORD = "<server_admin_password>"
 )
@@ -214,7 +214,7 @@ import (
 const (
 	// Initialize connection constants.
 	HOST     = "mydemoserver.postgres.database.azure.com"
-	DATABASE = "mypgsqldb"
+	DATABASE = "postgres"
 	USER     = "mylogin@mydemoserver"
 	PASSWORD = "<server_admin_password>"
 )
@@ -282,7 +282,7 @@ import (
 const (
 	// Initialize connection constants.
 	HOST     = "mydemoserver.postgres.database.azure.com"
-	DATABASE = "mypgsqldb"
+	DATABASE = "postgres"
 	USER     = "mylogin@mydemoserver"
 	PASSWORD = "<server_admin_password>"
 )
@@ -336,7 +336,7 @@ import (
 const (
 	// Initialize connection constants.
 	HOST     = "mydemoserver.postgres.database.azure.com"
-	DATABASE = "mypgsqldb"
+	DATABASE = "postgres"
 	USER     = "mylogin@mydemoserver"
 	PASSWORD = "<server_admin_password>"
 )
