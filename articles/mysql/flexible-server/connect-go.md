@@ -47,7 +47,7 @@ Install [Go](https://go.dev/doc/install) and the [go-sql-driver for MySQL](https
 1. Set the environment variable for GOPATH to point to the source code directory: `set GOPATH=%USERPROFILE%\go`.
 1. Run [go mod init](https://go.dev/ref/mod#go-mod-init) to create a module in the current directory. For example: `go mod init mysqlgo`.
     - The `<module_path>` parameter is generally a location in a GitHub repo - such as `github.com/<your_github_account_name>/<directory>`.
-    - When you're creating a command-line app as a test and won't publish the app, the `<module_path>` doesn't need to refer to an actual location. For example, `mqsqlgo`.
+    - When you're creating a command-line app as a test and won't publish the app, the `<module_path>` doesn't need to refer to an actual location. For example, `mysqlgo`.
 1. Install the [go-sql-driver for mysql](https://github.com/go-sql-driver/mysql#installation) by running the `go get github.com/go-sql-driver/mysql` command.
 
    In summary, install Go, then run these commands in the command prompt:
@@ -69,7 +69,7 @@ Install [Go](https://go.dev/doc/install) and the [go-sql-driver for MySQL](https
 1. Set the GOPATH environment variable to point to a valid source directory, such as your current home directory's go folder. At the Bash shell, run `export GOPATH=~/go` to add the go directory as the GOPATH for the current shell session.
 1. Run [go mod init](https://go.dev/ref/mod#go-mod-init) to create a module in the current directory. For example: `go mod init mysqlgo`.
     - The `<module_path>` parameter is generally a location in a GitHub repo - such as `github.com/<your_github_account_name>/<directory>`.
-    - When you're creating a command-line app as a test and won't publish the app, the `<module_path>` doesn't need to refer to an actual location. For example, `mqsqlgo`.
+    - When you're creating a command-line app as a test and won't publish the app, the `<module_path>` doesn't need to refer to an actual location. For example, `mysqlgo`.
 1. Install the [go-sql-driver for mysql](https://github.com/go-sql-driver/mysql#installation) by running the `go get github.com/go-sql-driver/mysql` command.
 
    In summary, run these bash commands:
@@ -92,7 +92,7 @@ Install [Go](https://go.dev/doc/install) and the [go-sql-driver for MySQL](https
 1. Set the GOPATH environment variable to point to a valid source directory, such as your current home directory's go folder. At the Bash shell, run `export GOPATH=~/go` to add the go directory as the GOPATH for the current shell session.
 1. Run [go mod init](https://go.dev/ref/mod#go-mod-init) to create a module in the current directory. For example: `go mod init mysqlgo`.
     - The `<module_path>` parameter is generally a location in a GitHub repo - such as `github.com/<your_github_account_name>/<directory>`.
-    - When you're creating a command-line app as a test and won't publish the app, the `<module_path>` doesn't need to refer to an actual location. For example, `mqsqlgo`.
+    - When you're creating a command-line app as a test and won't publish the app, the `<module_path>` doesn't need to refer to an actual location. For example, `mysqlgo`.
 1. Install the [go-sql-driver for mysql](https://github.com/go-sql-driver/mysql#installation) by running the `go get github.com/go-sql-driver/mysql` command.
 
    In summary, install Go, then run these bash commands:
