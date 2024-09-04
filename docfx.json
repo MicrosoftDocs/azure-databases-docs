@@ -25,6 +25,13 @@
         ],
         "src": "breadcrumb/azure-databases",
         "dest": "breadcrumb/azure-databases"
+      },
+      {
+        "files": [
+          "zone-pivot-groups.yml"
+        ],
+        "src": "zone-pivots",
+        "dest": "zone-pivots/azure-databases"
       }
     ],
     "resource": [
@@ -127,7 +134,8 @@
         "Certification"
       ],
       "uhfHeaderId": "azure",
-      "ms.suite": "office"
+      "ms.suite": "office",
+      "zone_pivot_group_filename": "zone-pivots/azure-databases/zone-pivot-groups.json"
     },
     "fileMetadata": {
       "adobe-target": {
