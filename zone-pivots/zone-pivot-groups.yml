@@ -5,7 +5,7 @@ groups:
   prompt: Choose an API
   pivots:
   - id: api-nosql
-    title: NoSQL TEST PR 177
+    title: NoSQL
   - id: api-mongodb
     title: MongoDB
   - id: api-apache-cassandra
