@@ -148,7 +148,7 @@ import (
 const (
 	host     = "mydemoserver.mysql.database.azure.com"
 	database = "quickstartdb"
-	user     = "myadmin@mydemoserver"
+	user     = "myadmin"
 	password = "yourpassword"
 )
 
@@ -161,7 +161,7 @@ func checkError(err error) {
 func main() {
 
 	// Initialize connection string.
-	var connectionString = fmt.Sprintf("%s:%s@tcp(%s:3306)/%s?allowNativePasswords=true", user, password, host, database)
+	var connectionString = fmt.Sprintf("%s:%s@tcp(%s:3306)/%s?allowNativePasswords=true&tls=true", user, password, host, database)
 
 	// Initialize connection object.
 	db, err := sql.Open("mysql", connectionString)
@@ -226,7 +226,7 @@ import (
 const (
 	host     = "mydemoserver.mysql.database.azure.com"
 	database = "quickstartdb"
-	user     = "myadmin@mydemoserver"
+	user     = "myadmin"
 	password = "yourpassword"
 )
 
@@ -239,7 +239,7 @@ func checkError(err error) {
 func main() {
 
 	// Initialize connection string.
-	var connectionString = fmt.Sprintf("%s:%s@tcp(%s:3306)/%s?allowNativePasswords=true", user, password, host, database)
+	var connectionString = fmt.Sprintf("%s:%s@tcp(%s:3306)/%s?allowNativePasswords=true&tls=true", user, password, host, database)
 
 	// Initialize connection object.
 	db, err := sql.Open("mysql", connectionString)
@@ -296,7 +296,7 @@ import (
 const (
 	host     = "mydemoserver.mysql.database.azure.com"
 	database = "quickstartdb"
-	user     = "myadmin@mydemoserver"
+	user     = "myadmin"
 	password = "yourpassword"
 )
 
@@ -309,7 +309,7 @@ func checkError(err error) {
 func main() {
 
 	// Initialize connection string.
-	var connectionString = fmt.Sprintf("%s:%s@tcp(%s:3306)/%s?allowNativePasswords=true", user, password, host, database)
+	var connectionString = fmt.Sprintf("%s:%s@tcp(%s:3306)/%s?allowNativePasswords=true&tls=true", user, password, host, database)
 
 	// Initialize connection object.
 	db, err := sql.Open("mysql", connectionString)
@@ -351,7 +351,7 @@ import (
 const (
 	host     = "mydemoserver.mysql.database.azure.com"
 	database = "quickstartdb"
-	user     = "myadmin@mydemoserver"
+	user     = "myadmin"
 	password = "yourpassword"
 )
 
@@ -364,7 +364,7 @@ func checkError(err error) {
 func main() {
 
 	// Initialize connection string.
-	var connectionString = fmt.Sprintf("%s:%s@tcp(%s:3306)/%s?allowNativePasswords=true", user, password, host, database)
+	var connectionString = fmt.Sprintf("%s:%s@tcp(%s:3306)/%s?allowNativePasswords=true&tls=true", user, password, host, database)
 
 	// Initialize connection object.
 	db, err := sql.Open("mysql", connectionString)
