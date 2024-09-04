@@ -252,8 +252,8 @@ One advantage of running your workload in Azure is its global reach. Azure Datab
 | Norway West | :heavy_check_mark: | :heavy_check_mark: | :x: | :x: |
 | Poland Central | :heavy_check_mark: | :heavy_check_mark: | :x: | :x: |
 | Qatar Central | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :x: |
-| South Africa North | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :x: |
-| South Africa West | :heavy_check_mark: | :heavy_check_mark: | :x: | :x: |
+| South Africa North | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| South Africa West | :heavy_check_mark: | :heavy_check_mark: | :x: | :heavy_check_mark: |
 | South Central US | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | South India | :heavy_check_mark: | :heavy_check_mark: | :x: | :heavy_check_mark: |
 | Southeast Asia | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
