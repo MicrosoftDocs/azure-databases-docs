@@ -147,7 +147,7 @@ const (
 	// Initialize connection constants.
 	HOST     = "mydemoserver.postgres.database.azure.com"
 	DATABASE = "postgres"
-	USER     = "mylogin@mydemoserver"
+	USER     = "mylogin"
 	PASSWORD = "<server_admin_password>"
 )
 
@@ -215,7 +215,7 @@ const (
 	// Initialize connection constants.
 	HOST     = "mydemoserver.postgres.database.azure.com"
 	DATABASE = "postgres"
-	USER     = "mylogin@mydemoserver"
+	USER     = "mylogin"
 	PASSWORD = "<server_admin_password>"
 )
 
@@ -283,7 +283,7 @@ const (
 	// Initialize connection constants.
 	HOST     = "mydemoserver.postgres.database.azure.com"
 	DATABASE = "postgres"
-	USER     = "mylogin@mydemoserver"
+	USER     = "mylogin"
 	PASSWORD = "<server_admin_password>"
 )
 
@@ -337,7 +337,7 @@ const (
 	// Initialize connection constants.
 	HOST     = "mydemoserver.postgres.database.azure.com"
 	DATABASE = "postgres"
-	USER     = "mylogin@mydemoserver"
+	USER     = "mylogin"
 	PASSWORD = "<server_admin_password>"
 )
 
