@@ -57,7 +57,7 @@ Following described are the ways to check and configure automigration notificati
 - Configure **service health alerts** to receive in-place migration schedule and progress notifications via email/SMS by following steps [here](../single-server/concepts-planned-maintenance-notification.md#to-receive-planned-maintenance-notification).
 - Check the in-place migration **notification on the Azure portal** by following steps [here](../single-server/concepts-planned-maintenance-notification.md#check-planned-maintenance-notification-from-azure-portal).
 
-## Review migration schedule
+## Review and configure migration schedule and details
 
 Following described are the ways to review your migration schedule once you receive the in-place automigration notification:
 
