@@ -28,7 +28,7 @@ To complete this how-to guide, you need:
 1. On the Azure Database for MySQL flexible server page, under the **Settings** heading, choose **Maintenance** to open scheduled maintenance options.
 2. The default (system-managed) schedule is a random day of the week, and 60-minute window for maintenance start between 11pm and 7am local server time. If you want to customize this schedule, choose **Custom schedule**. You can then select a preferred day of the week, and a 60-minute window for maintenance start time.
 
-## Reschedule Maintenance (Public Preview)
+## Reschedule Maintenance
 
 1. In the Maintenance window, you'll notice a new button labeled Reschedule.
 2. Upon clicking **Reschedule**, a "Maintenance Reschedule" window appears where you can select a new date and time for the scheduled maintenance activity.
@@ -48,6 +48,7 @@ Be aware of the following when using this feature:
 
 - **Demand Constraints:** Your rescheduled maintenance might be canceled due to a high number of maintenance activities occurring simultaneously in the same region.
 - **Lock-in Period:** Rescheduling is unavailable 15 minutes prior to the initially scheduled maintenance time to maintain the reliability of the service.
+- **Reschedule Throttle:** If too many servers in the same region are scheduled for maintenance during the same time, rescheduling requests may fail. Users will receive an error notification if this occurs and are advised to choose an alternative time slot. Successfully rescheduled maintenance is unlikely to be canceled.
 
 There's no limitation on how many times a maintenance can be rescheduled, as long as the maintenance hasn't entered into the "In preparation" state, you can always reschedule your maintenance to another time.
 
