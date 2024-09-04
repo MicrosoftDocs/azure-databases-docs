@@ -4,7 +4,7 @@ description: This quickstart provides several Go code samples you can use to con
 author: shreyaaithal
 ms.author: shaithal
 ms.reviewer: maghan
-ms.date: 08/21/2024
+ms.date: 09/04/2024
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: quickstart
@@ -120,7 +120,7 @@ Get the connection information needed to connect to the Azure Database for MySQL
 
 1. To write Golang code, you can use a simple text editor, such as Notepad in Microsoft Windows, [vi](https://manpages.ubuntu.com/manpages/xenial/man1/nvi.1.html#contenttoc5) or [Nano](https://www.nano-editor.org/) in Ubuntu, or TextEdit in macOS. If you prefer a richer Interactive Development Environment (IDE), try [Gogland](https://www.jetbrains.com/go/) by Jetbrains, [Visual Studio Code](https://code.visualstudio.com/) by Microsoft, or [Atom](https://atom.io/).
 2. Paste the Go code from the sections below into text files, and then save them into your project folder with file extension \*.go (such as Windows path `%USERPROFILE%\go\src\mysqlgo\createtable.go` or Linux path `~/go/src/mysqlgo/createtable.go`).
-3. Locate the `HOST`, `DATABASE`, `USER`, and `PASSWORD` constants in the code, and then replace the example values with your own values.
+3. Locate the `HOST`, `DATABASE`, `USER`, and `PASSWORD` constants in the code, and then replace the example values with your own values. A database named *flexibleserverdb* is created when you create your Azure Database for MySQL server instance. You can use that database or another one that you've created for the value of the `DATABASE` constant.
 4. Launch the command prompt or Bash shell. Change directory into your project folder. For example, on Windows `cd %USERPROFILE%\go\src\mysqlgo\`. On Linux `cd ~/go/src/mysqlgo/`.  Some of the IDE editors mentioned offer debug and runtime capabilities without requiring shell commands.
 5. Run the code by typing the command `go run createtable.go` to compile the application and run it.
 6. Alternatively, to build the code into a native application, `go build createtable.go`, then launch `createtable.exe` to run the application.
@@ -147,7 +147,7 @@ import (
 
 const (
 	host     = "mydemoserver.mysql.database.azure.com"
-	database = "quickstartdb"
+	database = "flexibleserverdb"
 	user     = "myadmin"
 	password = "yourpassword"
 )
@@ -225,7 +225,7 @@ import (
 
 const (
 	host     = "mydemoserver.mysql.database.azure.com"
-	database = "quickstartdb"
+	database = "flexibleserverdb"
 	user     = "myadmin"
 	password = "yourpassword"
 )
@@ -295,7 +295,7 @@ import (
 
 const (
 	host     = "mydemoserver.mysql.database.azure.com"
-	database = "quickstartdb"
+	database = "flexibleserverdb"
 	user     = "myadmin"
 	password = "yourpassword"
 )
@@ -350,7 +350,7 @@ import (
 
 const (
 	host     = "mydemoserver.mysql.database.azure.com"
-	database = "quickstartdb"
+	database = "flexibleserverdb"
 	user     = "myadmin"
 	password = "yourpassword"
 )
