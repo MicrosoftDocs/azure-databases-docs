@@ -455,11 +455,11 @@ The use of Azure Cosmos DB role-based access control within Data Explorer (eithe
 The setting has three possible values:
 - **Automatic (default)**: In this mode, role-based access control will be automatically used if the account has [disabled the use of keys](#disable-local-auth). Otherwise, Data Explorer will use account keys for data requests.
 
-- **True**: In this mode, role-based access will always be used for Data Explorer data requests. If the account has not been enabled for role-based access , then the requests will fail.
+- **True**: In this mode, role-based access will always be used for Data Explorer data requests. If the account has not been enabled for role-based access, then the requests will fail.
 
 - **False**: In this mode, account keys will always be used for Data Explorer data requests. If the account has disabled the use of keys, then the requests will fail.
 
-When using modes that enable role-based access in the Azure Portal Data Explorer, you must click on the **Login for Entra ID RBAC** button (located on the Data Explorer command bar) prior to making any data requests. This is not necessary when using the Cosmos Explorer at cosmos.azure.com. Please ensure that the signed in identity has been [assigned with proper role definitions](#role-assignments) to enable data access.
+When using modes that enable role-based access in the Azure Portal, Data Explorer will sign in automatically using your account from Azure Portal. This might show a brief popup window without asking you for a credential entry. If automatic sign in fails or if popups are blocked in your browser, you must use the **Login for Entra ID RBAC** button (located on the Data Explorer command bar) and allow popups for Data Explorer prior to making any data requests. This is not necessary when using the Cosmos Explorer at cosmos.azure.com. Please ensure that the signed in identity has been [assigned with proper role definitions](#role-assignments) to enable data access.
 
 Also note that changing the mode to one that uses account keys may trigger a request to fetch the primary key on behalf of the identity that is signed in.
 
