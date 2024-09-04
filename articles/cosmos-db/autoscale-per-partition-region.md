@@ -58,7 +58,7 @@ Dynamic scaling feature is enabled by default for all Azure Cosmos DB accounts c
 
 1. Use [Azure Monitor metrics](monitor-reference.md#supported-metrics-for-microsoftdocumentdbdatabaseaccounts) - `Autoscaled RU` to analyze how the new autoscaling is applied across partitions and regions. Filter to your desired database account and container, then filter or split by the `PhysicalPartitionID` metric. This metric shows all partitions across their various regions.
 
-    Then, use `NormalizedRUConsumption` to see which partitions and regions scale independently. You can use the `ProvisionedThroughput` metric to see what throughput value is emitted to our billing service.When using dynamic scaling, the Provisioned Throughput metric reflects the sum of each partition’s highest RU/s scaled to within the hour. Because of the hour boundary, the value resets at the start of each hour. 
+    Then, use `NormalizedRUConsumption` to see which partitions and regions scale independently. You can use the `ProvisionedThroughput` metric to see what throughput value is emitted to our billing service. With dynamic scaling, the Provisioned Throughput metric reflects the sum of each partition’s highest RU/s scaled to within the hour. Because of the hour boundary, the value resets at the start of each hour. 
 
 
 
