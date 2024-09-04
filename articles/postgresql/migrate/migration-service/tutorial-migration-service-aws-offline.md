@@ -73,7 +73,7 @@ The user needs to provide multiple details related to the migration, such as the
 
 - **Source Server Type** - Depending on your PostgreSQL source, you can select Amazon RDS for PostgreSQL.
 
-- **Migration Option** - Allows you to perform validations before triggering a migration. You can pick any of the following options
+- **Migration Option** - Allows you to perform validations before triggering a migration. You can pick any of the following options:
     - **Validate** - Checks your server and database readiness for migration to the target.
     - **Migrate** - Skips validations and starts migrations.
     - **Validate and Migrate—Performs validation before triggering a migration. If there are no validation failures, the migration is triggered.

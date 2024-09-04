@@ -192,7 +192,7 @@ Below are the essential networking steps for migrating from a Single Server with
 
 ## Scenario 9: PostgreSQL source with private IPs to Azure Database for PostgreSQL flexible server with private endpoint
 
-Below are the networking steps for migrating a PostgreSQL database from an cloud-based PostgreSQL service, an on-premises setup, or a virtual machine, all of which are configured with private IPs to an Azure Database for PostgreSQL Flexible Server that is secured with a private endpoint. The migration ensures secure data transfer within a private network space, using Azure's VPN or ExpressRoute for on-premises connections and virtual network peering or VPN for cloud-to-cloud migrations. For more information about the Runtime Server, visit the [Migration Runtime Server](concepts-migration-service-runtime-server.md).
+Below are the networking steps for migrating a PostgreSQL database from a cloud-based PostgreSQL service, an on-premises setup, or a virtual machine, all of which are configured with private IPs to an Azure Database for PostgreSQL Flexible Server that is secured with a private endpoint. The migration ensures secure data transfer within a private network space, using Azure's VPN or ExpressRoute for on-premises connections and virtual network peering or VPN for cloud-to-cloud migrations. For more information about the Runtime Server, visit the [Migration Runtime Server](concepts-migration-service-runtime-server.md).
 
 - **Establish Network Connectivity:**
    - For on-premises sources, set up a Site-to-Site VPN or ExpressRoute to connect your local network to Azure's virtual network.

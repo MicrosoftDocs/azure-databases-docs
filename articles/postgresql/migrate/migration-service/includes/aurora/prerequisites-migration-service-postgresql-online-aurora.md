@@ -26,7 +26,7 @@ The source PostgreSQL server version must be 9.5 or later.
 
 If the source PostgreSQL version is less than 9.5, upgrade it to 9.5 or higher before you start the migration.
 
-### Install test_decoding - Source Setup
+### Install test_decoding - source setup
 
 - **test_decoding** receives WAL through the logical decoding mechanism and decodes it into text representations of the operations performed.
 - In Amazon RDS for PostgreSQL, the test_decoding plugin is preinstalled and ready for logical replication. This allows you to easily set up logical replication slots and stream WAL changes, facilitating use cases such as change data capture (CDC) or replication to external systems.
