@@ -18,6 +18,7 @@ This page provides latest news and updates regarding feature additions, engine v
 
 ## Release: September 2024
 * Support for new [minor versions](concepts-supported-versions.md) 16.4, 15.8, 14.13, 13.16, and 12.20 <sup>$</sup>
+* Support for [Reserved pricing](concepts-reserved-pricing.md) for Intel and AMD V5 Skus for Azure Database for PostgreSQL flexible server.
 
 ## Release: Aug 2024
 * General availability of [Database Size Metrics](./concepts-monitoring.md) for Azure Database for PostgreSQL flexible server.
