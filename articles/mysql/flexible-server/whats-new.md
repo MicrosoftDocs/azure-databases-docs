@@ -24,6 +24,10 @@ This article summarizes new releases and features in the Azure Database for MySQ
 > [!NOTE]  
 > This article references the term slave, which Microsoft no longer uses. When the term is removed from the software, we'll remove it from this article.
 
+## September 2024
+- **Azure Database for MySQL Flexible Server Flexible Maintenance is now Generally Available**
+  Azure Database for MySQL Flexible Server has officially released the Flexible Maintenance feature to General Availability (GA). With this feature, users can now reschedule maintenance activities via the Azure CLI, providing enhanced control and flexibility. The reschedule window has also been expanded to cover all available maintenance dates within the region, instead of being limited to the 14-day window around the instance's originally scheduled date.[Learn more](./concepts-maintenance.md#maintenance-reschedule)
+
 ## August 2024
 
 
