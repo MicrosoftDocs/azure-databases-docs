@@ -75,7 +75,7 @@ param serverEdition string = 'Burstable'
 ])
 param version string = '8.0.21'
 
-@description('The availability zone information for the server. (If you don't have a preference, leave blank.)')
+@description('The availability zone information for the server. (If you don`t have a preference, leave blank.)')
 param availabilityZone string = '1'
 
 @description('High availability mode for a server: Disabled, SameZone, or ZoneRedundant.')
