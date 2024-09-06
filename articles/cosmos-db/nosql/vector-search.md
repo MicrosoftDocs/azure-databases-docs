@@ -165,7 +165,7 @@ Here are examples of valid vector index policies:
             "path": "/_etag/?"
         },
         {
-            "path": "/vector1"
+            "path": "/vector1/*"
         }
     ],
     "vectorIndexes": [
@@ -191,10 +191,10 @@ Here are examples of valid vector index policies:
             "path": "/_etag/?"
         },
         {
-            "path": "/vector1",
+            "path": "/vector1/*",
         },
         {
-            "path": "/vector2",
+            "path": "/vector2/*",
         }
     ],
     "vectorIndexes": [
