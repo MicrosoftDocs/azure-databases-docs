@@ -1,7 +1,7 @@
 ---
 title: $skip (Aggregation Pipeline Stage)
 titleSuffix: Azure Cosmos DB for MongoDB vCore
-description: The $skip stage in MongoDB's aggregation pipeline is used to skip a specified number of documents from the input and pass the remaining documents to the next stage in the pipeline.
+description: The $skip stage in the aggregation pipeline is used to skip a specified number of documents from the input and pass the remaining documents to the next stage in the pipeline.
 author: gahl.levy
 ms.author: gahllevy
 ms.service: azure-cosmos-db
