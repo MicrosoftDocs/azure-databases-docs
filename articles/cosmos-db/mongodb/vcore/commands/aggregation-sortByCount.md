@@ -11,7 +11,7 @@ ms.date: 08/27/2024
 ---
 
 # $sortByCount (Aggregation Pipeline Stage)
-The $sortByCount stage in MongoDB's aggregation pipeline is used to group documents by a specified expression and then sort the count of documents in each group in descending order. This stage is particularly useful for quickly identifying the most common values within a dataset.
+The $sortByCount stage in the aggregation pipeline is used to group documents by a specified expression and then sort the count of documents in each group in descending order. This stage is particularly useful for quickly identifying the most common values within a dataset.
 
 ## Syntax
 The syntax for the $sortByCount stage is:

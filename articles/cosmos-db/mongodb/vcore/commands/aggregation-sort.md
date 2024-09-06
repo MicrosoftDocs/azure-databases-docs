@@ -11,7 +11,7 @@ ms.date: 08/27/2024
 ---
 
 # $sort (as Aggregation Pipeline stage)
-The $sort stage in MongoDB's aggregation pipeline is used to order the documents in the pipeline by a specified field or fields. This is particularly useful when you need to present data in a specific order, such as sorting sales data by total sales or ordering events by their start dates.
+The $sort stage in the aggregation pipeline is used to order the documents in the pipeline by a specified field or fields. This is particularly useful when you need to present data in a specific order, such as sorting sales data by total sales or ordering events by their start dates.
 
 ## Syntax
 The syntax for the $sort stage is as follows:
