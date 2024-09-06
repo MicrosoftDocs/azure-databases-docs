@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Connect qusing Go'
+title: 'Quickstart: Connect using Go'
 description: This quickstart provides a Go programming language sample you can use to connect and query data from Azure Database for PostgreSQL - Flexible Server.
 author: agapovm
 ms.author: maximagapov
