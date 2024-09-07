@@ -49,7 +49,7 @@
     - name: Indexing
       href: indexing.md
     - name: Change Stream
-      href: change-stream.md
+      href: change-streams.md
     - name: Reliability
       href: /azure/reliability/reliability-cosmos-mongodb?toc=/azure/cosmos-db/mongodb/vcore/toc.json
     - name: Scalability

@@ -104,6 +104,8 @@ public class ChangeStreamExample {
 }
 ```
 
+---
+
 > [!IMPORTANT]
 > Change streams are resumable by specifying a resume token to `resumeAfter` when opening the cursor. Though it is expected that there is enough history to locate the operation associated with the token. The document observed in changestream in `_id` field represents the resumable token.
 > `cursor = db.inventory.watch(resume_after=resume_token)`
