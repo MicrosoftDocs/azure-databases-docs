@@ -7,5 +7,5 @@ ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
 ---
-13.15
+13.16
 
