@@ -1,21 +1,21 @@
 ---
-title: "Tutorial: Migrate offline from Amazon RDS for PostgreSQL using the migration service with the Azure portal and Azure CLI"
-description: "Learn to migrate offline seamlessly from Amazon RDS for PostgreSQL to Azure Database for PostgreSQL using the new migration service in Azure, simplifying the transition while ensuring data integrity and efficient deployment."
+title: "Tutorial: Migrate offline from Amazon Aurora using the migration service with the Azure portal and Azure CLI"
+description: "Learn to migrate offline seamlessly from Amazon Aurora to Azure Database for PostgreSQL using the new migration service in Azure, simplifying the transition while ensuring data integrity and efficient deployment."
 author: apduvuri
 ms.author: adityaduvuri
 ms.reviewer: maghan
-ms.date: 06/19/2024
+ms.date: 08/30/2024
 ms.service: azure-database-postgresql
 ms.subservice: migration-guide
 ms.topic: tutorial
 ms.custom:
   - devx-track-azurecli
-# customer intent: As a developer, I want to learn how to migrate from Amazon RDS for PostgreSQL to Azure Database for PostgreSQL using the migration service, so that I can simplify the transition and ensure data integrity.
+# customer intent: As a developer, I want to learn how to migrate from Amazon Aurora to Azure Database for PostgreSQL using the migration service, so that I can simplify the transition and ensure data integrity.
 ---
 
-# Tutorial: Migrate offline from Amazon RDS for PostgreSQL to Azure Database for PostgreSQL with the migration service
+# Tutorial: Migrate offline from Amazon Aurora PostgreSQL to Azure Database for PostgreSQL with the migration service
 
-This article explores how to migrate your PostgreSQL database from Amazon RDS for PostgreSQL to Azure Database for PostgreSQL offline.
+This article explores how to migrate your PostgreSQL database from Amazon Aurora to Azure Database for PostgreSQL offline.
 
 The migration service in Azure Database for PostgreSQL is a fully managed service integrated into the Azure portal and Azure CLI. It's designed to simplify your migration journey to Azure Database for PostgreSQL server.
 
@@ -30,7 +30,7 @@ The migration service in Azure Database for PostgreSQL is a fully managed servic
 
 To complete the migration, you need the following prerequisites:
 
-[!INCLUDE [prerequisites-migration-service-postgresql-offline-aws](includes/aws/prerequisites-migration-service-postgresql-offline-aws.md)]
+[!INCLUDE [prerequisites-migration-service-postgresql-offline-aurora](includes/aurora/prerequisites-migration-service-postgresql-offline-aurora.md)]
 
 ## Perform the migration
 
@@ -52,9 +52,9 @@ The migration service comes with a simple, wizard-based experience on the Azure 
 
 1. In the **Overview** tab of the flexible server, on the left menu, scroll down to **Migration** and select it.
 
-    :::image type="content" source="media/tutorial-migration-service-aws-offline/offline-portal-select-migration-pane.png" alt-text="Screenshot of the migration selection in the Azure portal." lightbox="media/tutorial-migration-service-aws-offline/offline-portal-select-migration-pane.png":::
+    :::image type="content" source="media/tutorial-migration-service-aurora-offline/offline-portal-select-migration-pane.png" alt-text="Screenshot of the migration selection in the Azure portal." lightbox="media/tutorial-migration-service-aurora-offline/offline-portal-select-migration-pane.png":::
 
-1. Select the **Create** button to migrate from Amazon RDS for PostgreSQL to a flexible server.
+1. Select the **Create** button to migrate from Amazon Aurora to a flexible server.
 
     > [!NOTE]  
     > The first time you use the migration service, an empty grid appears with a prompt to begin your first migration.
@@ -63,7 +63,7 @@ The migration service comes with a simple, wizard-based experience on the Azure 
 
 1. Select the **Create** button to go through a wizard-based series of tabs to perform a migration.
 
-    :::image type="content" source="media/tutorial-migration-service-aws-offline/portal-offline-create-migration.png" alt-text="Screenshot of the create migration page." lightbox="media/tutorial-migration-service-aws-offline/portal-offline-create-migration.png":::
+    :::image type="content" source="media/tutorial-migration-service-aurora-offline/portal-offline-create-migration.png" alt-text="Screenshot of the create migration page." lightbox="media/tutorial-migration-service-aurora-offline/portal-offline-create-migration.png":::
 
 #### Setup
 
@@ -71,12 +71,12 @@ The user needs to provide multiple details related to the migration, such as the
 
 - **Migration name** is the unique identifier for each migration to this Flexible Server target. This field accepts only alphanumeric characters and doesn't accept any special characters except a hyphen (-). The name can't start with a hyphen and should be unique for a target server. No two migrations to the same Flexible Server target can have the same name.
 
-- **Source Server Type** - Depending on your PostgreSQL source, you can select Amazon RDS for PostgreSQL.
+- **Source Server Type** - Depending on your PostgreSQL source, you can select the corresponding source type, such as a cloud-based PostgreSQL service, an on-premises setup, or a virtual machine.
 
-- **Migration Option** - Allows you to perform validations before triggering a migration. You can pick any of the following options:
+- **Migration Option** - Allows you to perform validations before triggering a migration. You can pick any of the following options
     - **Validate** - Checks your server and database readiness for migration to the target.
     - **Migrate** - Skips validations and starts migrations.
-    - **Validate and Migrate—Performs validation before triggering a migration. If there are no validation failures, the migration is triggered.
+    - **Validate and Migrate** — Performs validation before triggering a migration. If there are no validation failures, the migration is triggered.
 
 Choosing the **Validate** or **Validate and Migrate** option is always a good practice for performing premigration validations before running the migration.
 
@@ -86,7 +86,7 @@ To learn more about the premigration validation, visit [premigration](concepts-p
 
 Select the **Next: Connect to source** button.
 
-:::image type="content" source="media/tutorial-migration-service-aws-offline/01-portal-offline-setup-aws.png" alt-text="Screenshot of the Setup Migration page to get started.":::
+:::image type="content" source="media/tutorial-migration-service-aurora-offline/01-portal-offline-setup-aurora.png" alt-text="Screenshot of the Setup Migration page to get started.":::
 
 #### Select Runtime Server
 
@@ -94,7 +94,7 @@ The migration Runtime Server is a specialized feature within the migration servi
 
 For more information about the Runtime Server, visit the [Migration Runtime Server](concepts-migration-service-runtime-server.md).
 
-:::image type="content" source="media/tutorial-migration-service-aws-offline/02-portal-offline-runtime-server-aws.png" alt-text="Screenshot of the Migration Runtime Server page.":::
+:::image type="content" source="media/tutorial-migration-service-aurora-offline/02-portal-offline-runtime-server-aurora.png" alt-text="Screenshot of the Migration Runtime Server page.":::
 
 #### Connect to source
 
@@ -114,7 +114,7 @@ The **Connect to Source** tab prompts you to give details related to the source 
 
 After the successful test connection, select the **Next: Select Migration target** button.
 
-:::image type="content" source="media/tutorial-migration-service-aws-offline/03-portal-offline-connect-source-aws.png" alt-text="Screenshot of the connect to source page." lightbox="media/tutorial-migration-service-aws-offline/03-portal-offline-connect-source-aws.png":::
+:::image type="content" source="media/tutorial-migration-service-aurora-offline/03-portal-offline-connect-source-aurora.png" alt-text="Screenshot of the connect to source page." lightbox="media/tutorial-migration-service-aurora-offline/03-portal-offline-connect-source-aurora.png":::
 
 #### Select migration target
 
@@ -128,26 +128,26 @@ The **select migration target** tab displays metadata for the Flexible Server ta
 
 After the successful test connection, select the **Next: Select Database(s) for Migration**
 
-:::image type="content" source="media/tutorial-migration-service-aws-offline/04-portal-offline-select-migration-target-aws.png" alt-text="Screenshot of the connect target migration page.":::
+:::image type="content" source="media/tutorial-migration-service-aurora-offline/04-portal-offline-select-migration-target-aurora.png" alt-text="Screenshot of the connect target migration page.":::
 
 #### Select database for migration
 
 Under the **Select database for migration** tab, you can choose a list of user databases to migrate from your source PostgreSQL server.  
 After selecting the databases, select the **Next: Summary**
 
-:::image type="content" source="media/tutorial-migration-service-aws-offline/05-portal-offline-select-database-aws.png" alt-text="Screenshot of the fetchDB migration page.":::
+:::image type="content" source="media/tutorial-migration-service-aurora-offline/05-portal-offline-select-database-aurora.png" alt-text="Screenshot of the fetchDB migration page.":::
 
 #### Summary
 
 The Summary tab summarizes all the source and target details for creating the validation or migration. Review the details and select the Start Validation and Migration button.
 
-:::image type="content" source="media/tutorial-migration-service-aws-offline/06-portal-offline-summary-aws.png" alt-text="Screenshot of the summary migration page.":::
+:::image type="content" source="media/tutorial-migration-service-aurora-offline/06-portal-offline-summary-aurora.png" alt-text="Screenshot of the summary migration page.":::
 
 ### Monitor the migration
 
 After you select the **Start Validation and Migration** button, a notification appears in a few seconds to say that the validation or migration creation is successful. You're redirected to the flexible server **Migration** page instance. The entry is in the **InProgress** state and **PerformingPreRequisiteSteps** substate. The workflow takes 2-3 minutes to set up the migration infrastructure and check network connections.
 
-:::image type="content" source="media/tutorial-migration-service-aws-offline/portal-offline-monitor-migration-aws.png" alt-text="Screenshot of the monitor migration page." lightbox="media/tutorial-migration-service-aws-offline/portal-offline-monitor-migration-aws.png":::
+:::image type="content" source="media/tutorial-migration-service-aurora-offline/portal-offline-monitor-migration-aurora.png" alt-text="Screenshot of the monitor migration page." lightbox="media/tutorial-migration-service-aurora-offline/portal-offline-monitor-migration-aurora.png":::
 
 The grid that displays the migrations has these columns: **Name**, **Status**, **Migration mode**, **Migration type**, **Source server**, **Source server type**, **Databases**, **Duration, and **Start time**. The entries are displayed in the descending order of the start time, with the most recent entry on the top. You can use the refresh button to refresh the status of the validation or migration run.
 
@@ -171,7 +171,7 @@ Validation details are available at the instance and database level.
 
 You can see the **validation** and the **migration** status under the migration details page.
 
-:::image type="content" source="media/tutorial-migration-service-aws-offline/portal-offline-details-migration-aws.png" alt-text="Screenshot of the details showing validation and migration." lightbox="media/tutorial-migration-service-aws-offline/portal-offline-details-migration-aws.png":::
+:::image type="content" source="media/tutorial-migration-service-aurora-offline/portal-offline-details-migration-aurora.png" alt-text="Screenshot of the details showing validation and migration." lightbox="media/tutorial-migration-service-aurora-offline/portal-offline-details-migration-aurora.png":::
 
 Some possible migration states:
 
@@ -213,7 +213,7 @@ You can cancel any ongoing validations or migrations. The workflow must be in th
 
 #### [CLI](#tab/cli)
 
-This article explores using the Azure CLI to migrate your PostgreSQL database from Amazon RDS for PostgreSQL to Azure Database for PostgreSQL. The Azure CLI provides a powerful and flexible command-line interface that allows you to perform various tasks, including database migration. Following the steps outlined in this article, you can seamlessly transfer your database to Azure and take advantage of its powerful features and scalability.
+This article explores using the Azure CLI to migrate your PostgreSQL database from Amazon Aurora to Azure Database for PostgreSQL. The Azure CLI provides a powerful and flexible command-line interface that allows you to perform various tasks, including database migration. Following the steps outlined in this article, you can seamlessly transfer your database to Azure and take advantage of its powerful features and scalability.
 
 To learn more about Azure CLI with the migration service, visit [How to set up Azure CLI for the migration service](how-to-setup-azure-cli-commands-postgresql.md).
 
@@ -242,7 +242,7 @@ To begin the migration, you need to create a JSON file with the migration detail
         },
         "DBsToMigrate": "<<comma separated list of databases in a array like - ["ticketdb","timedb","inventorydb"]>>",
         "OverwriteDBsInTarget": "true",
-        "sourceType": "AWS_RDS",
+        "sourceType": "AWS_AURORA",
         "sslMode": "Require"
     }
 }
@@ -293,7 +293,7 @@ After migration, you can perform the following tasks:
 
 ## Related content
 
-- [Migrate online from Amazon RDS for PostgreSQL](tutorial-migration-service-aws-online.md)
+- [Migrate online from Amazon Aurora PostgreSQL](tutorial-migration-service-aurora-online.md)
 - [Migration service](concepts-migration-service-postgresql.md)
 - [Migrate from on-premises and Azure VMs](tutorial-migration-service-iaas.md)
 - [Known Issues and limitations](concepts-known-issues-migration-service.md)
