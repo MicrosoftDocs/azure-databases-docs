@@ -2,7 +2,7 @@
 title: $count (aggregation pipeline stage)
 titleSuffix: Azure Cosmos DB for MongoDB vCore
 description: The $count stage in the aggregation pipeline is used to count the number of documents that pass through the pipeline.
-author: gahl.levy
+author: gahl-levy
 ms.author: gahllevy
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
