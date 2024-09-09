@@ -5,7 +5,7 @@ author: Rodrigossz
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: how-to
-ms.date: 03/28/2022
+ms.date: 09/09/2024
 ms.author: rosouz
 ---
 
@@ -14,7 +14,11 @@ ms.author: rosouz
 
 This article describes the steps required to connect Azure Cosmos DB data to [Power BI](https://powerbi.microsoft.com/) Desktop. 
 
-You can connect to Azure Cosmos DB from Power BI desktop by using one of these options: 
+You can connect to Azure Cosmos DB from Power BI desktop by using one of these options:
+* Use [Mirroring in Microsoft Fabric](/fabric/database/mirrored-database/azure-cosmos-db?context=/azure/cosmos-db/context/context) to seamlessly, incrementally replicate Azure Cosmos DB data into Fabric OneLake. 
+  Any new changes to your database are automatically replicated to Fabric OneLake, in near real-time, with no performance or RU/cost impact on the source database.
+
+  Power BI reports use DirectLake mode to seamlessly access data from OneLake. Using Copilot enhancements to Power BI in Fabric, you can leverage the power of generative AI to get key business insights.
 
 * Use [Azure Synapse Link](../synapse-link.md) to build Power BI reports with no performance or cost impact to your transactional workloads, and no ETL pipelines.
    
