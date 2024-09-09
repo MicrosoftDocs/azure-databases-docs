@@ -5,5 +5,5 @@ ms.topic: include
 ms.date: 09/09/2024
 ---
 
-- [Migration path](../../migrations-options.md)
+- [Migration path](../../migration-options.md)
 - [Compatibility](../../compatibility.md)
