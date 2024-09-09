@@ -29,9 +29,9 @@ db.collection.update(
 | | Description |
 | --- | --- |
 | **`<query>`** | The selection criteria for the documents to update. |
-| **`<field>`** | The array field to which the value will be appended. |
+| **`<field>`** | The array field to which the value is appended. |
 | **`<value>`** | The value to append to the array field. |
-| **`<options>`** | *(Optional)*. Additional options for the update operation. |
+| **`<options>`** | *(Optional)*. Extra options for the update operation. |
 
 ## Related content
 

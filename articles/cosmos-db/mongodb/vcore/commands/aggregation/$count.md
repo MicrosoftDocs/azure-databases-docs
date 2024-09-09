@@ -12,7 +12,7 @@ ms.date: 09/09/2024
 
 # `$count` (as aggregation pipeline stage)
 
-The `$count` stage in the aggregation pipeline is used to count the number of documents that pass through the pipeline. This stage outputs a document with a single field containing the count of the documents. It is particularly useful when you need to determine the number of documents that match certain criteria or have passed through various stages of transformation in the pipeline.
+The `$count` stage in the aggregation pipeline is used to count the number of documents that pass through the pipeline. This stage outputs a document with a single field containing the count of the documents. It's useful when you need to determine the number of documents that match certain criteria or passed through various stages of transformation in the pipeline.
 
 ## Syntax
 
@@ -26,7 +26,7 @@ The `$count` stage in the aggregation pipeline is used to count the number of do
 
 | | Description |
 | --- | --- |
-| **`<field>`** | The name of the field in the output document where the count will be stored. |
+| **`<field>`** | The name of the field in the output document where the count is stored. |
 
 ## Related content
 

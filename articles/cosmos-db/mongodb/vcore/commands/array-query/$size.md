@@ -12,7 +12,7 @@ ms.date: 09/09/2024
 
 # `$size` (array query operator)
 
-The `$size` operator in MongoDB is used to query documents where an array field has a specified number of elements. This operator is particularly useful when you need to find documents based on the size of an array field, such as finding documents with a certain number of items in a list.
+The `$size` operator in MongoDB is used to query documents where an array field has a specified number of elements. This operator is useful when you need to find documents based on the size of an array field, such as finding documents with some items in a list.
 
 ## Syntax
 
