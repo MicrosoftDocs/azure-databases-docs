@@ -34,14 +34,13 @@ Here are common limitations that apply to migration scenarios:
 - The migration service only works with preferred or required SSLMODE values.
 - The migration service doesn't support superuser privileges and objects.
 - Azure Database for PostgreSQL - Flexible Server doesn't support the creation of custom tablespaces because of superuser privilege restrictions. During migration, data from custom tablespaces in the source PostgreSQL instance is migrated into the default tablespaces of the target Azure Database for PostgreSQL - Flexible Server instance.
-
+- Currently, online migration from Amazon Aurora PostgreSQL 13 to Azure Database for PostgreSQL - Flexible Server is not supported and will fail.
 - The following PostgreSQL objects can't be migrated into the PostgreSQL flexible server target:
 
     - Create casts
     - Creation of FTS parsers and FTS templates
     - Users with superuser roles
     - Create TYPE
-
 - The migration service doesn't support migration at the object level, that is, at the table level or schema level.
 - Migration into Burstable SKU is supported only in West Europe region currently. In all other regions, the Databases can first be migrated into a General Purpose or Memory Optimized SKU and then scaled down if needed.
 - The Migration Runtime Server is designed to operate with the default DNS servers/private DNS zones, for example, `privatelink.postgres.database.azure.com`. Custom DNS names/DNS servers aren't supported by the migration service when you use the Migration Runtime Server feature. When you're configuring private endpoints for both the source and target databases, it's imperative to use the default private DNS zone provided by Azure for the private link service. The use of custom DNS configurations isn't yet supported and might lead to connectivity issues during the migration process.
