@@ -12,6 +12,8 @@ ms.date: 09/09/2024
 
 # `$count` (as aggregation pipeline stage)
 
+[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
+
 The `$count` stage in the aggregation pipeline is used to count the number of documents that pass through the pipeline. This stage outputs a document with a single field containing the count of the documents. It's useful when you need to determine the number of documents that match certain criteria or passed through various stages of transformation in the pipeline.
 
 ## Syntax
@@ -30,5 +32,4 @@ The `$count` stage in the aggregation pipeline is used to count the number of do
 
 ## Related content
 
-- [Migration path](migrations-options.md)
-- [Compatibility](compatibility.md)
+[!INCLUDE[Related content](../includes/related-content.md)]

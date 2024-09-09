@@ -12,6 +12,8 @@ ms.date: 09/09/2024
 
 # `$size` (array query operator)
 
+[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
+
 The `$size` operator in MongoDB is used to query documents where an array field has a specified number of elements. This operator is useful when you need to find documents based on the size of an array field, such as finding documents with some items in a list.
 
 ## Syntax
@@ -29,5 +31,4 @@ db.collection.find({ <field>: { $size: <number> } })
 
 ## Related content
 
-- [Migration path](migrations-options.md)
-- [Compatibility](compatibility.md)
+[!INCLUDE[Related content](../includes/related-content.md)]

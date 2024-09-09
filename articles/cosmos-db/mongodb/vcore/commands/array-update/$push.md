@@ -12,6 +12,8 @@ ms.date: 09/09/2024
 
 # `$push` (array update operator)
 
+[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
+
 The `$push` operator is used to append a specified value to an array within a document. This operator is useful when you need to add new elements to an existing array field without affecting the other elements in the array. It can be used in various scenarios such as adding new sales categories, promotional events, or staff members to a store's document.
 
 ## Syntax
@@ -35,5 +37,4 @@ db.collection.update(
 
 ## Related content
 
-- [Migration path](migrations-options.md)
-- [Compatibility](compatibility.md)
+[!INCLUDE[Related content](../includes/related-content.md)]

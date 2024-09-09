@@ -12,6 +12,8 @@ ms.date: 09/09/2024
 
 # `$slice` (projection)
 
+[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
+
 The `$slice` operator is used to return a subset of an array. It can be used to limit the number of elements in an array to a specified number or to return elements from a specified position in the array. This operator is useful when dealing with large arrays where only a portion of the data is needed for processing or display.
 
 The `$slice` operator in MongoDB is used within a projection to return a subset of an array field. It allows you to limit the number of elements returned from an array, either by specifying the number of elements to include or by specifying a range.
@@ -48,5 +50,4 @@ db.collection.find({},
 
 ## Related content
 
-- [Migration path](migrations-options.md)
-- [Compatibility](compatibility.md)
+[!INCLUDE[Related content](../includes/related-content.md)]
