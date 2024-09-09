@@ -1,6 +1,10 @@
 - name: Index
   href: index.yml
+- name: Aggregation
+  href: aggregation/toc.yml
 - name: Array query
   href: array-query/toc.yml
+- name: Array update
+  href: array-update/toc.yml
 - name: Projection
   href: projection/toc.yml
