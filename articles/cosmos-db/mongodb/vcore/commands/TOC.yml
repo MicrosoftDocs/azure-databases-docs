@@ -1,12 +1,6 @@
 - name: Index
   href: index.yml
 - name: Array query
-  items:
-    - name: $elemMatch
-      href: array-query-elemmatch.md
-    - name: $size
-      href: array-query-size.md
+  href: array-query/toc.yml
 - name: Projection
-  items:
-    - name: $elemMatch
-      href: projection-elemmatch.md
+  href: projection/toc.yml

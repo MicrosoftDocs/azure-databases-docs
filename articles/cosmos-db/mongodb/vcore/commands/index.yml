@@ -11,19 +11,29 @@ metadata:
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: landing-page
-  ms.date: 08/27/2024
+  ms.date: 09/09/2024
 landingContent:
-  - title: Array query commands
+  - title: Array query
     linkLists:
       - linkListType: reference
         links:
-          - text: $elemMatch
-            url: array-query-elemmatch.md
           - text: $size
-            url: array-query-size.md
-  - title: Projection commands
+            url: array-query/$size.md
+  - title: Array update
     linkLists:
       - linkListType: reference
         links:
-          - text: $elemMatch
-            url: projection-elemmatch.md
+          - text: $push
+            url: array-update/$push.md
+  - title: Projection
+    linkLists:
+      - linkListType: reference
+        links:
+          - text: $slice
+            url: projection/$slice.md
+  - title: Aggregation
+    linkLists:
+      - linkListType: reference
+        links:
+          - text: $count
+            url: aggregation/$count.md
