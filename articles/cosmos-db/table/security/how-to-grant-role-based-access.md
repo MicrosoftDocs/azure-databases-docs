@@ -1,7 +1,7 @@
 ---
-title: Grant role-based access
+title: Use role-based access control (RBAC)
 titleSuffix: Azure Cosmos DB for Table
-description: Grant access to run queries, manage entities, and perform operations using role-based access control, Microsoft Entra, and Azure Cosmos DB for Table.
+description: Grant access to run queries, manage entities, and perform operations using role-based access control (RBAC), Microsoft Entra, and Azure Cosmos DB for Table.
 author: seesharprun
 ms.author: sidandrews
 ms.service: azure-cosmos-db
@@ -11,7 +11,7 @@ ms.date: 09/09/2024
 #Customer Intent: As a security user, I want to grant an identity data-plane access to Azure Cosmos DB for Table, so that my developer team can use the SDK of their choice with minimal code change.
 ---
 
-# Grant role-based access to Azure Cosmos DB for Table
+# Use role-based access control with Azure Cosmos DB for Table
 
 [!INCLUDE[Table](../../includes/appliesto-table.md)]
 
