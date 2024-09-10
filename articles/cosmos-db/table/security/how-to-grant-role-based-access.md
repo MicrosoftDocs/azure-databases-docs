@@ -167,4 +167,4 @@ TODO
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Secure full-stack sample solution with Azure Cosmos DB for Table](/samples/azure-samples/cosmos-db-table-role-based-access-control/template/)
+> [Secure full-stack sample solution with Azure Cosmos DB for Table](/samples/)
