@@ -13,7 +13,8 @@ ms.topic: conceptual
 We're pleased to announce the September 2024 maintenance for Azure Database for MySQL Flexible Server. This maintenance is to upgrade servers who are still on TLS 1.0/1.1 to TLS 1.2 version
 
 ## Engine version changes
-No engine version upgrade in this maintenance
+No engine version upgrade in this maintenance.
+
 To check your engine version, run `SELECT VERSION();` command at the MySQL prompt
 
 ## Features
