@@ -4,7 +4,7 @@ description: Learn about the release notes for Azure Database for MySQL Flexible
 author: xboxeer
 ms.author: yuzheng1
 ms.date: 09/01/2024
-ms.service: mysql
+ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: conceptual
 ---
@@ -20,7 +20,7 @@ To check your engine version, run `SELECT VERSION();` command at the MySQL promp
 No new features are being introduced in this maintenance update.
 
 ## Improvement
-- Mandatory upgrade of all servers currently using TLS 1.0 or 1.1 to TLS 1.2. [Learn more](./how-to-connect-tls-ssl.md)
+- Mandatory upgrade of all servers currently using TLS 1.0 or 1.1 to TLS 1.2. [Learn more](../how-to-connect-tls-ssl.md)
     
 ## Known Issues Fix
 No known issue fix are being introduced in this maintenance update.
