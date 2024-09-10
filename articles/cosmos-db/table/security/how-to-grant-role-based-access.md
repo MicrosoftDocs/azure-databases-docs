@@ -116,8 +116,8 @@ TODO
     }
     ```
 
-  > [!NOTE]
-  > This is a subset of the typical JSON outputted from the deployment for clarity.
+    > [!NOTE]
+    > This is a subset of the typical JSON outputted from the deployment for clarity.
 
 ## Assign role-based access control permission
 
