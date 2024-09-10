@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" version="1.1" viewBox="0 0 2407.5 142">
   <style>
     .shp{fill-rule:evenodd;clip-rule:evenodd}
-    .active{fill:#f4364c}a
+    .active{fill:#f4364c}
     .inactive{fill:#0078d4}
     .txt{fill:#fff;font-family:Aptos,SegoeUI,ArialMT,Arial,Helvetica,sans-serif;font-size:55px}
   </style>
