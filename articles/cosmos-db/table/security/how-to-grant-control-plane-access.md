@@ -50,7 +50,7 @@ TODO
 
     ```azurecli-interactive
     az group deployment create `
-        --resource-group "<name-of-destination-resource-group>" `
+        --resource-group "<name-of-existing-resource-group>" `
         --template-file control-plane-definition.bicep
     ```
 
@@ -78,7 +78,7 @@ TODO
 
     ```azurecli-interactive
     az group deployment create `
-        --resource-group "<name-of-destination-resource-group>" `
+        --resource-group "<name-of-existing-resource-group>" `
         --parameters @data-plane-assignment-params.json `
         --template-file data-plane-assignment.bicep
     ```

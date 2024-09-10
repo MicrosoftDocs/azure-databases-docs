@@ -12,6 +12,8 @@
       href: how-to-get-signed-in-identity.md
     - name: Create managed identities
       href: managed-identities.md
+    - name: Disable local auth
+      href: how-to-disable-local-auth.md
 - name: Role-based access control
   expanded: true
   items:

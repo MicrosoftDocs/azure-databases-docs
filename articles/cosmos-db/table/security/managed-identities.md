@@ -25,4 +25,4 @@ This article reviews the steps required to create managed identities to use with
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Grant your identity control-plane access](how-to-grant-control-plane-access.md)
+> [Disable local authentication with Azure Cosmos DB for Table](how-to-disable-local-auth.md)
