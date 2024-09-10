@@ -15,7 +15,7 @@ ms.date: 09/09/2024
 
 [!INCLUDE[Table](../../includes/appliesto-table.md)]
 
-:::image type="complex" source="media/how-to-grant-rbac-access/map.svg" border="false" alt-text="Diagram of the current location ('Role-based access control') in the sequence of the deployment guide.":::
+:::image type="complex" source="media/how-to-grant-role-based-access/map.svg" border="false" alt-text="Diagram of the current location ('Role-based access control') in the sequence of the deployment guide.":::
 Diagram of the sequence of the deployment guide including these locations, in order: Overview, Concepts, Prepare, Role-based access control, and Solution. The 'Role-based access control' location is currently highlighted.
 :::image-end:::
 
