@@ -4,6 +4,8 @@ titleSuffix: Azure Cosmos DB for Table
 description: Grant access to run queries and perform operations on items using role-based access control, Microsoft Entra, and Azure Cosmos DB for Table.
 author: seesharprun
 ms.author: sidandrews
+ms.service: azure-cosmos-db
+ms.subservice: table
 ms.topic: how-to
 ms.date: 09/09/2024
 ms.custom: subject-msia
@@ -24,7 +26,7 @@ This article walks through the steps to grant an identity access to manage data 
 
 - An Azure account with an active subscription. [Create an account for free](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - An existing Azure Cosmos DB for Table account.
-- An existing identity in Microsoft Entra ID.
+- One or more existing identities in Microsoft Entra ID.
 
 ## Get the account's unique identifier
 

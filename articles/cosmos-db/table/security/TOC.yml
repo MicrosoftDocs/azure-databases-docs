@@ -8,6 +8,8 @@
 - name: Prepare
   expanded: true
   items:
+    - name: Get signed-in identity
+      href: how-to-get-signed-in-identity.md
     - name: Create managed identities
       href: managed-identities.md
 - name: Role-based access control

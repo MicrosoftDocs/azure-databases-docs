@@ -4,6 +4,8 @@ titleSuffix: Azure Cosmos DB for Table
 description: Explore common glossary terminology used when describing how to managed role-based access control within Azure Cosmos DB for Table.
 author: seesharprun
 ms.author: sidandrews
+ms.service: azure-cosmos-db
+ms.subservice: table
 ms.topic: glossary
 ms.date: 09/09/2024
 ---
@@ -33,4 +35,4 @@ TODO
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Create managed identities](managed-identities.md)
+> [Get signed in account's identity](how-to-get-signed-in-identity.md)
