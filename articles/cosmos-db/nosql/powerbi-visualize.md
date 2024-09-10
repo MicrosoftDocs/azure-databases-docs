@@ -5,7 +5,7 @@ author: Rodrigossz
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: how-to
-ms.date: 03/28/2022
+ms.date: 09/09/2024
 ms.author: rosouz
 ---
 
@@ -14,8 +14,12 @@ ms.author: rosouz
 
 This article describes the steps required to connect Azure Cosmos DB data to [Power BI](https://powerbi.microsoft.com/) Desktop. 
 
-You can connect to Azure Cosmos DB from Power BI desktop by using one of these options: 
+You can connect to Azure Cosmos DB from Power BI desktop by using one of these options:
+* Use [Mirroring in Microsoft Fabric](/fabric/database/mirrored-database/azure-cosmos-db?context=/azure/cosmos-db/context/context) to replicate Azure Cosmos DB data into Fabric OneLake. 
+  Any changes to your database are automatically synced to Fabric OneLake in near real-time, without affecting the performance of your source database or consuming Resource Units (RUs).
 
+  Power BI reports can then access data directly from OneLake using DirectLake mode. With the enhanced Copilot features in Power BI within Fabric, you can tap into generative AI to gain key business insights.
+  
 * Use [Azure Synapse Link](../synapse-link.md) to build Power BI reports with no performance or cost impact to your transactional workloads, and no ETL pipelines.
    
    You can either use [DirectQuery](/power-bi/connect-data/service-dataset-modes-understand#directquery-mode) or [import](/power-bi/connect-data/service-dataset-modes-understand#import-mode) mode. With [DirectQuery](/power-bi/connect-data/service-dataset-modes-understand#directquery-mode), you can build dashboards/reports    using live data from your Azure Cosmos DB accounts, without importing or copying the data into Power BI.
@@ -35,6 +39,11 @@ Before following the instructions in this Power BI tutorial, ensure that you hav
 To share your reports in PowerBI.com, you must have an account in PowerBI.com.  To learn more about Power BI and Power BI Pro, see [https://powerbi.microsoft.com/pricing](https://powerbi.microsoft.com/pricing).
 
 ## Let's get started
+### Building BI reports using Mirroring in Microsoft Fabric
+
+You can enable mirroring on your existing Azure Cosmos DB containers and build BI reports/dashboards on this data, in near real-time.
+For instructions to get started with Fabric and mirroring, visit [mirroring tutorial for Azure Cosmos DB.](/fabric/database/mirrored-database/azure-cosmos-db-tutorial?context=/azure/cosmos-db/context/context)
+
 ### Building BI reports using Azure Synapse Link
 
 You can enable Azure Synapse Link on your existing Azure Cosmos DB containers and build BI reports on this data, in just a few clicks using Azure Cosmos DB portal. Power BI will connect to Azure Cosmos DB using Direct Query mode, allowing you to query your live Azure Cosmos DB data, without impacting your transactional workloads. 
