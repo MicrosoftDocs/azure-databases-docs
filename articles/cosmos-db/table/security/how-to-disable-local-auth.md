@@ -1,7 +1,7 @@
 ---
 title: Disable local authentication
 titleSuffix: Azure Cosmos DB for Table
-description: 
+description: Learn how to disable local auth with Azure Cosmos DB for Table to prevent an account from being used with insecure authentication methods.
 author: seesharprun
 ms.author: sidandrews
 ms.service: azure-cosmos-db
