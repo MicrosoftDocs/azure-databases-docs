@@ -14,7 +14,7 @@ The current Azure CLI session could be signed in with a human identity (your acc
 
 ## Sign in to Azure CLI
 
-Sign in to the Azure CLI interactively for a flexible experience that supports the most possible authentication scenarios in an intuitive manner. 
+Sign in to the Azure CLI interactively for a flexible experience that supports the most possible authentication scenarios in an intuitive manner.
 
 1. Open a command prompt with access to the Azure CLI.
 

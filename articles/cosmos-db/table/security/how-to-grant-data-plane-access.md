@@ -40,9 +40,48 @@ TODO
 
 1. TODO
 
+1. TODO. Name file *data-plane-definition.bicep*.
+
+    ```bicep
+
+    ```
+
+1. TODO
+
+    ```azurecli-interactive
+    az group deployment create `
+        --resource-group "<name-of-destination-resource-group>" `
+        --template-file data-plane-definition.bicep
+    ```
+
+1. TODO
+
 ## Assign role-based access control permission
 
 TODO
+
+1. TODO
+
+1. TODO. Name file *data-plane-assignment.bicep*.
+
+    ```bicep
+
+    ```
+
+1. TODO. Name file *data-plane-assignment-params.json*.
+
+    ```json
+
+    ```
+
+1. TODO. [`az group deployment create`](/cli/azure/group/deployment#az-group-deployment-create)
+
+    ```azurecli-interactive
+    az group deployment create `
+        --resource-group "<name-of-destination-resource-group>" `
+        --parameters @data-plane-assignment-params.json `
+        --template-file data-plane-assignment.bicep
+    ```
 
 1. TODO
 

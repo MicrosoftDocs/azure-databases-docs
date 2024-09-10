@@ -21,11 +21,19 @@ Diagram of the sequence of the deployment guide including these locations, in or
 
 TODO
 
-## Subject A
+## Managing access
 
 TODO
 
-## Subject B
+## Granting access in production
+
+TODO
+
+## Granting access in development
+
+TODO
+
+## Streamlining authentication code
 
 TODO
 

@@ -20,15 +20,39 @@ Diagram of the sequence of the deployment guide including these locations, in or
 
 TODO
 
-## Term 1
+## Control plane
 
 TODO
 
-## Term 2
+## Data plane
 
 TODO
 
-## Term 3
+## Role-based access control
+
+TODO
+
+## Identity/Principal
+
+TODO
+
+## Definition
+
+TODO
+
+## Assignment
+
+TODO
+
+## Actions
+
+TODO
+
+## Portable authentication
+
+TODO
+
+## Unique identifier
 
 TODO
 

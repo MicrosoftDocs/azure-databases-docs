@@ -14,11 +14,11 @@ ms.custom: subject-msia
 
 [!INCLUDE[Table](../../includes/appliesto-table.md)]
 
-:::image type="complex" source="media/glossary/map.svg" border="false" alt-text="Diagram of the current location ('Prepare') in the sequence of the deployment guide.":::
+:::image type="complex" source="media/managed-identities/map.svg" border="false" alt-text="Diagram of the current location ('Prepare') in the sequence of the deployment guide.":::
 Diagram of the sequence of the deployment guide including these locations, in order: Overview, Concepts, Prepare, Role-based access control, and Solution. The 'Prepare' location is currently highlighted.
 :::image-end:::
 
-This article reviews the steps required to create managed identities to use with a deployed application connected to Azure Cosmos DB for Table. 
+This article reviews the steps required to create managed identities to use with a deployed application connected to Azure Cosmos DB for Table.
 
 [!INCLUDE[Managed identities](../../includes/managed-identities.md)]
 
