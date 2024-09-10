@@ -14,11 +14,11 @@ ms.custom: subject-msia
 
 [!INCLUDE[Table](../../includes/appliesto-table.md)]
 
-:::image type="complex" source="media/how-to-grant-data-plane-access/map.svg" border="false" alt-text="Diagram of the current location ('RBAC') in the sequence of the deployment guide.":::
-Diagram of the sequence of the deployment guide including these locations, in order: Overview, Concepts, Prepare, RBAC, and Solution. The 'RBAC' location is currently highlighted.
+:::image type="complex" source="media/how-to-grant-data-plane-access/map.svg" border="false" alt-text="Diagram of the current location ('Role-based access control') in the sequence of the deployment guide.":::
+Diagram of the sequence of the deployment guide including these locations, in order: Overview, Concepts, Prepare, Role-based access control, and Solution. The 'Role-based access control' location is currently highlighted.
 :::image-end:::
 
-This article walks through the steps to grant an identity access to manage data in an Azure Cosmos DB for Table account. The steps in this article only covers data plane access to perform operations on individual items and run queries.
+This article walks through the steps to grant an identity access to manage data in an Azure Cosmos DB for Table account. The steps in this article only cover data plane access to perform operations on individual items and run queries.
 
 ## Prerequisites
 

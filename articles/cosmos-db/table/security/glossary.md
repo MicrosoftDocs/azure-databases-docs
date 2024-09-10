@@ -13,7 +13,7 @@ ms.date: 09/09/2024
 [!INCLUDE[Table](../../includes/appliesto-table.md)]
 
 :::image type="complex" source="media/glossary/map.svg" border="false" alt-text="Diagram of the current location ('Concepts') in the sequence of the deployment guide.":::
-Diagram of the sequence of the deployment guide including these locations, in order: Overview, Concepts, Prepare, RBAC, and Solution. The 'Concepts' location is currently highlighted.
+Diagram of the sequence of the deployment guide including these locations, in order: Overview, Concepts, Prepare, Role-based access control, and Solution. The 'Concepts' location is currently highlighted.
 :::image-end:::
 
 TODO

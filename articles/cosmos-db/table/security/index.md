@@ -14,16 +14,16 @@ ms.date: 09/09/2024
 [!INCLUDE[Table](../../includes/appliesto-table.md)]
 
 :::image type="complex" source="media/index/map.svg" border="false" alt-text="Diagram of the current location ('Overview') in the sequence of the deployment guide.":::
-Diagram of the sequence of the deployment guide including these locations, in order: Overview, Concepts, Prepare, RBAC, and Solution. The 'Overview' location is currently highlighted.
+Diagram of the sequence of the deployment guide including these locations, in order: Overview, Concepts, Prepare, Role-based access control, and Solution. The 'Overview' location is currently highlighted.
 :::image-end:::
 
 TODO
 
-## Topic A
+## Subject A
 
 TODO
 
-## Topic B
+## Subject B
 
 TODO
 
