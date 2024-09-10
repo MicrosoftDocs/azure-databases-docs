@@ -39,6 +39,11 @@ Before following the instructions in this Power BI tutorial, ensure that you hav
 To share your reports in PowerBI.com, you must have an account in PowerBI.com.  To learn more about Power BI and Power BI Pro, see [https://powerbi.microsoft.com/pricing](https://powerbi.microsoft.com/pricing).
 
 ## Let's get started
+### Building BI reports using Mirroring in Microsoft Fabric
+
+You can enable mirroring on your existing Azure Cosmos DB containers and build BI reports/dashboards on this data, in near real-time.
+For instructions to get started with Fabric and mirroring, visit [mirroring tutorial for Azure Cosmos DB.](/fabric/database/mirrored-database/azure-cosmos-db-tutorial?context=/azure/cosmos-db/context/context)
+
 ### Building BI reports using Azure Synapse Link
 
 You can enable Azure Synapse Link on your existing Azure Cosmos DB containers and build BI reports on this data, in just a few clicks using Azure Cosmos DB portal. Power BI will connect to Azure Cosmos DB using Direct Query mode, allowing you to query your live Azure Cosmos DB data, without impacting your transactional workloads. 

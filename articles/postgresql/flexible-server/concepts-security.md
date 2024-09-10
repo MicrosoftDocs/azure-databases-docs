@@ -135,7 +135,7 @@ oid            | 24827
 ```
 
 > [!IMPORTANT]
-> Recently, we have enabled the ability to create **[CAST commands](https://www.postgresql.org/docs/current/sql-createcast.html)** in Azure Database for PostgreSQL Flexible Server. Please be aware that currently, the functionality is operating as expected with the exception of the DROP statement. In other words, it is currently not possible to drop a CAST once it has been created. We are actively working on adding this functionality and anticipate its availability in the near future.
+> Recently, the ability to create **[CAST commands](https://www.postgresql.org/docs/current/sql-createcast.html)** was enabled in Azure Database for PostgreSQL Flexible Server. To run the CREATE CAST statement, the user must be a member of the *azure_pg_admin* group. Please be aware that it is not currently possible to drop a CAST once it has been created. 
 
 
 [Audit logging in Azure Database for PostgreSQL - Flexible Server](concepts-audit.md) is also available with Azure Database for PostgreSQL - Flexible Server to track activity in your databases.
