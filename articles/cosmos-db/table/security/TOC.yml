@@ -13,12 +13,12 @@
 - name: Role-based access control
   expanded: true
   items:
-    - name: Use control plane role-based access control in Azure
+    - name: Grant control plane role-based access control access
       href: how-to-grant-control-plane-access.md
-    - name: Use data plane role-based access control in Azure Cosmos DB for NoSQL
+    - name: Grant data plane role-based access control access
       href: how-to-grant-data-plane-access.md
 - name: Sample solution
   expanded: true
   items:
-    - name: Full-stack sample Azure Container Apps and Azure Cosmos DB for Table solution
+    - name: Secure full-stack sample solution
       href: /samples/azure-samples/cosmos-db-table-role-based-access-control/template/
