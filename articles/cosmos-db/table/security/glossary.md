@@ -20,15 +20,15 @@ Diagram of the sequence of the deployment guide including these locations, in or
 
 TODO
 
+## Role-based access control
+
+TODO
+
 ## Control plane
 
 TODO
 
 ## Data plane
-
-TODO
-
-## Role-based access control
 
 TODO
 
