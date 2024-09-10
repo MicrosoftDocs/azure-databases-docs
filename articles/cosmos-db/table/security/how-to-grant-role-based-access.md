@@ -101,7 +101,10 @@ TODO
         --template-file rbac-definition.bicep
     ```
 
-1. TODO
+1. Repeat these steps to grant access to the account from other identities.
+
+    > [!TIP]
+    > You can repeat these steps for as many identities as you'd like. Typically, these steps are at least repeated to allow developers access to an account using their human identity and to allow applications access using a managed identity.
 
 ## Assign role-based access control permission
 
