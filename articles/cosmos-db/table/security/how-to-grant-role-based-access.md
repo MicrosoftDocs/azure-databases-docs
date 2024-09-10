@@ -101,10 +101,23 @@ TODO
         --template-file rbac-definition.bicep
     ```
 
-1. Repeat these steps to grant access to the account from other identities.
+1. TODO
 
-    > [!TIP]
-    > You can repeat these steps for as many identities as you'd like. Typically, these steps are at least repeated to allow developers access to an account using their human identity and to allow applications access using a managed identity.
+    ```json
+    {
+      "properties": {
+        "outputs": {
+          "definitionId": {
+            "type": "String",
+            "value": "<id-of-new-role-definition>"
+          }
+        }
+      }
+    }
+    ```
+
+  > [!NOTE]
+  > This is a subset of the typical JSON outputted from the deployment for clarity.
 
 ## Assign role-based access control permission
 
@@ -149,7 +162,7 @@ TODO
     using './rbac-assignment.bicep'
     
     param accountName = '<name-of-existing-table-account>'
-    param roleDefinitionId = '<id-of-existing-role-definition>'
+    param roleDefinitionId = '<id-of-new-role-definition>'
     param identityId = '<id-of-existing-identity>'
     ```
 

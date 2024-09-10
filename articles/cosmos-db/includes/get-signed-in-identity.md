@@ -65,4 +65,4 @@ Use the Azure CLI to query the graph for information about your account's unique
     ```
 
     > [!TIP]
-    > Record the value of the `id` field. This value can be used in various scripts to grant your current account role-based access control permissions to Azure resources.
+    > Record the value of the `id` field. In this example, that value would be `aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb`. This value can then be used in various scripts to grant your current account role-based access control permissions to Azure resources.
