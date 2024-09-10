@@ -61,7 +61,7 @@ TODO
     }
     ```
 
-1. TODO
+1. TODO. [`az deployment group create`](/cli/azure/deployment/group#az-deployment-group-create).
 
     ```azurecli-interactive
     az deployment group create `

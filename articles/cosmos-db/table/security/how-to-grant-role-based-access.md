@@ -92,7 +92,7 @@ TODO
     param roleDefinitionDescription = 'Grants permission to read metadata and perform all actions on tables, containers, and entities.'
     ```
 
-1. TODO
+1. Deploy the Bicep template using [`az deployment group create`](/cli/azure/deployment/group#az-deployment-group-create).
 
     ```azurecli-interactive
     az deployment group create `
@@ -101,7 +101,7 @@ TODO
         --template-file rbac-definition.bicep
     ```
 
-1. TODO
+1. Review the output from the deployment
 
     ```json
     {
@@ -166,7 +166,7 @@ TODO
     param identityId = '<id-of-existing-identity>'
     ```
 
-1. TODO. [`az deployment group create`](/cli/azure/group/deployment#az-group-deployment-create)
+1. TODO. [`az deployment group create`](/cli/azure/group/deployment#az-group-deployment-create).
 
     ```azurecli-interactive
     az deployment group create `
@@ -175,7 +175,10 @@ TODO
         --template-file rbac-assignment.bicep
     ```
 
-1. TODO
+1. Repeat these steps to grant access to the account from other identities.
+
+    > [!TIP]
+    > You can repeat these steps for as many identities as you'd like. Typically, these steps are at least repeated to allow developers access to an account using their human identity and to allow applications access using a managed identity.
 
 ## Next step
 
