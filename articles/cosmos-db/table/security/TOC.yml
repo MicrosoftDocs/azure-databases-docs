@@ -1,0 +1,24 @@
+- name: Azure Cosmos DB for Table security guide
+  href: index.md
+- name: Concepts
+  expanded: true
+  items:
+    - name: Glossary
+      href: glossary.md
+- name: Prepare
+  expanded: true
+  items:
+    - name: Create managed identities
+      href: managed-identities.md
+- name: Role-based access control
+  expanded: true
+  items:
+    - name: Use control plane role-based access control in Azure
+      href: how-to-grant-control-plane-access.md
+    - name: Use data plane role-based access control in Azure Cosmos DB for NoSQL
+      href: how-to-grant-data-plane-access.md
+- name: Sample solution
+  expanded: true
+  items:
+    - name: Full-stack sample Azure Container Apps and Azure Cosmos DB for Table solution
+      href: /samples/azure-samples/cosmos-db-table-role-based-access-control/template/
