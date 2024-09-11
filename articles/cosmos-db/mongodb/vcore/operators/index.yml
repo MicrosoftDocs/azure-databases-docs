@@ -60,7 +60,7 @@ landingContent:
       - linkListType: reference
         links:
           - text: $geoIntersect
-            url: geospatial/$geoIntersect.md
+            url: geospatial/$geoIntersects.md
   - title: Logical-query
     linkLists:
       - linkListType: reference

@@ -5841,23 +5841,23 @@
       "redirect_document_id": true
     },
     {
-      "source_path_from_root": "/azure/cosmos-db/mongodb/vcore/commands/array-query/$size",
-      "redirect_url": "/azure/cosmos-db/mongodb/vcore/operators/array-query/$size",
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/commands/array-query/$size",
+      "redirect_url": "/articles/cosmos-db/mongodb/vcore/operators/array-query/$size",
       "redirect_document_id": true
     },
     {
-      "source_path_from_root": "/azure/cosmos-db/mongodb/vcore/commands/array-update/$push",
-      "redirect_url": "/azure/cosmos-db/mongodb/vcore/operators/array-update/$push",
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/commands/array-update/$push",
+      "redirect_url": "/articles/cosmos-db/mongodb/vcore/operators/array-update/$push",
       "redirect_document_id": true
     },
     {
-      "source_path_from_root": "/azure/cosmos-db/mongodb/vcore/commands/index",
-      "redirect_url": "/azure/cosmos-db/mongodb/vcore/operators/index",
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/commands/index",
+      "redirect_url": "/articles/cosmos-db/mongodb/vcore/operators/index",
       "redirect_document_id": true
     },
     {
-      "source_path_from_root": "/azure/cosmos-db/mongodb/vcore/commands/projection/$slice",
-      "redirect_url": "/azure/cosmos-db/mongodb/vcore/operators/projection/$slice",
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/commands/projection/$slice",
+      "redirect_url": "/articles/cosmos-db/mongodb/vcore/operators/projection/$slice",
       "redirect_document_id": true
     }
   ]
