@@ -2,8 +2,8 @@
 title: $push (array update)
 titleSuffix: Azure Cosmos DB for MongoDB vCore
 description: The $push operator is used to add new elements to an existing array field within a document without affecting the other elements in the array.
-author: sandeepsnairms
-ms.author: sandnair
+author: avijitgupta
+ms.author: avijitgupta
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: reference
