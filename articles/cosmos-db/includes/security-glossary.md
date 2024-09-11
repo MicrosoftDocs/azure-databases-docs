@@ -79,6 +79,7 @@ For more information, see [role definition concepts](/azure/role-based-access-co
 A role assignment grants an identity access to a specific Azure resource. Role assignments consist of the following components:
 
 | | Description |
+| --- | --- |
 | **Principal** | What identity is assigned this role |
 | **Role** | The role that is assigned to the identity |
 | **Scope** | The target Azure resource or group of the assignment |
@@ -99,7 +100,7 @@ For example:
 - A scope set at the resource group level applies the permissions to all relevant resources within the group
 - Scopes at the management group or subscription levels apply to all child groups and resources
 
-For more information, see [scope overview](/role-based-access-control/scope-overview).
+For more information, see [scope overview](/azure/role-based-access-control/scope-overview).
 
 ## Actions
 
