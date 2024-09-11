@@ -11,8 +11,8 @@
   <text class="txt" transform="translate(614.59 86.114)">Concepts</text>
   <path class="shp inactive" d="M937.8-.1h452l71 71-71 71h-452l71-71-71-71z"/>
   <text class="txt" transform="translate(1107.185 86.114)">Prepare</text>
-  <path class="shp active" d="M1410.6-.1h452l71 71-71 71h-452l71-71-71-71z"/>
+  <path class="shp inactive" d="M1410.6-.1h452l71 71-71 71h-452l71-71-71-71z"/>
   <text class="txt" transform="translate(1604.43 86.114)">RBAC</text>
-  <path class="shp inactive" d="M1880.9-.1h452l71 71-71 71h-452l71-71-71-71z"/>
+  <path class="shp active" d="M1880.9-.1h452l71 71-71 71h-452l71-71-71-71z"/>
   <text class="txt" transform="translate(2035 86.114)">Reference</text>
 </svg>

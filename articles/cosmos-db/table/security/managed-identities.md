@@ -5,7 +5,7 @@ description: Review the steps required to create user-assigned or system-assigne
 author: seesharprun
 ms.author: sidandrews
 ms.topic: how-to
-ms.date: 09/09/2024
+ms.date: 09/11/2024
 ms.custom: subject-msia
 #Customer Intent: As a security user, I want to create managed identities for use with Azure Cosmos DB for Table, so that my developer team can write portable authentication code for their client.
 ---

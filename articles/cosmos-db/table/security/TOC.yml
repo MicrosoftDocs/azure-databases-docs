@@ -24,9 +24,9 @@
     - name: Grant control and data plane access
       displayName: rbac
       href: how-to-grant-role-based-access.md
-- name: Sample solution
+- name: Reference
   expanded: true
   items:
-    - name: Secure full-stack sample solution
-      displayName: example
-      href: /samples/
+    - name: Data actions
+      displayName: example, permissions, rbac, role, definition
+      href: reference-data-actions.md

@@ -7,7 +7,7 @@ ms.author: sidandrews
 ms.service: azure-cosmos-db
 ms.subservice: table
 ms.topic: how-to
-ms.date: 09/09/2024
+ms.date: 09/11/2024
 #Customer Intent: As a security user, I want to disable local auth in an Azure Cosmos DB for Table account, so that my developers or applications can no longer access the account in an insecure manner.
 ---
 
