@@ -31,10 +31,10 @@ This section creates an [Azure Container Instances](/azure/container-instances) 
 1. Use [`az container create`](/cli/azure/container#az-container-create) to create a new Azure Cosmos DB account. Configure the account to use a system-assigned managed identity by using the `assign-identity` parameter.
 
     ```azurecli-interactive
-    az container create `
-        --resource-group "<name-of-existing-resource-group>" `
-        --name "<name-of-new-container>" `
-        --image mcr.microsoft.com/dotnet/samples:aspnetapp-chiseled
+    az container create \
+        --resource-group "<name-of-existing-resource-group>" \
+        --name "<name-of-new-container>" \
+        --image mcr.microsoft.com/dotnet/samples:aspnetapp-chiseled \
         --assign-identity
     ```
 
@@ -44,9 +44,9 @@ This section creates an [Azure Container Instances](/azure/container-instances) 
 1. Get the details for the system-assigned managed identity using [`az container show`](/cli/azure/container#az-container-show) and a JMESPath query.
 
     ```azurecli-interactive
-    az container show `
-        --resource-group "<name-of-existing-resource-group>" `
-        --name "<name-of-existing-container>" `
+    az container show \
+        --resource-group "<name-of-existing-resource-group>" \
+        --name "<name-of-existing-container>" \
         --query "identity"
     ```
 
@@ -68,15 +68,15 @@ Create a user-assigned managed identity that can be used with one or more Azure 
 1. Use [`az identity create`](/cli/azure/identity#az-identity-create) to create a new user-assigned managed identity in your Azure resource group.
 
     ```azurecli-interactive
-    az identity create `
-        --resource-group "<name-of-existing-resource-group>" `
+    az identity create \
+        --resource-group "<name-of-existing-resource-group>" \
         --name "<name-of-new-managed-identity>"
     ```
 
 1. Get the list of user-assigned managed identities in your resource group using [`az identity list`](/cli/azure/identity#az-identity-list)
 
     ```azurecli-interactive
-    az identity list `
+    az identity list \
         --resource-group "<name-of-existing-resource-group>"    
     ```
 
@@ -109,27 +109,27 @@ This section creates an [Azure App Services](/azure/app-service) web app resourc
 1. Create a new app service plan using [`az appservice plan create`](/cli/azure/appservice/plan#az-appservice-plan-create).
 
     ```azurecli-interactive
-    az appservice plan create `
-        --resource-group "<name-of-existing-resource-group>" `
+    az appservice plan create \
+        --resource-group "<name-of-existing-resource-group>" \
         --name "<name-of-new-plan>"
     ```
 
 1. Assign the user-assigned managed identity to a new web app with [`az webapp create`](/cli/azure/webapp#az-webapp-create). Use the `id` field recorded earlier in this guide as the value of the `ssign-identity` parameter.
 
     ```azurecli-interactive
-    az webapp create `
-        --resource-group "<name-of-existing-resource-group>" `
-        --name "<name-of-existing-web-app>" `
-        --plan "<name-of-existing-plan>" `
+    az webapp create \
+        --resource-group "<name-of-existing-resource-group>" \
+        --name "<name-of-existing-web-app>" \
+        --plan "<name-of-existing-plan>" \
         --assign-identity "<resource-id-recorded-earlier>"
     ```
 
 1. Get the details for all identities assigned to this account using [`az webapp show`](/cli/azure/webapp#az-webapp-show) and a JMESPath query.
 
     ```azurecli-interactive
-    az webapp show `
-        --resource-group "<name-of-existing-resource-group>" `
-        --name "<name-of-existing-account>" `
+    az webapp show \
+        --resource-group "<name-of-existing-resource-group>" \
+        --name "<name-of-existing-account>" \
         --query "identity"   
     ```
 

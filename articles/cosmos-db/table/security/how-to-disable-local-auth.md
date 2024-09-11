@@ -66,8 +66,8 @@ First, disable key-based authentication to your account so that applications are
 1. Use [`az deployment group create`](/cli/azure/deployment/group#az-deployment-group-create) to deploy the Bicep file with the new account.
 
     ```azurecli-interactive
-    az deployment group create `
-        --resource-group "<name-of-existing-resource-group>" `
+    az deployment group create \
+        --resource-group "<name-of-existing-resource-group>" \
         --template-file deploy-new-account.bicep
     ```
 
@@ -86,11 +86,11 @@ First, disable key-based authentication to your account so that applications are
 1. Patch the existing account using [`az resource patch`](/cli/azure/resource#az-resource-patch). Provide the name of your existing resource group and Azure Cosmos DB for Table account.
 
     ```azurecli-interactive
-    az resource patch `
-        --resource-group "<name-of-existing-resource-group>" `
-        --name "<name-of-existing-table-account>" `
-        --resource-type "Microsoft.DocumentDB/databaseAccounts" `
-        --properties @update-existing-account-props.json `
+    az resource patch \
+        --resource-group "<name-of-existing-resource-group>" \
+        --name "<name-of-existing-table-account>" \
+        --resource-type "Microsoft.DocumentDB/databaseAccounts" \
+        --properties @update-existing-account-props.json \
         --is-full-object
     ```
 

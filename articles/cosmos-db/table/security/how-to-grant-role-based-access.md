@@ -89,9 +89,9 @@ First, you must create a role definition with a list of `dataActions` to grant a
 1. Deploy the Bicep template using [`az deployment group create`](/cli/azure/deployment/group#az-deployment-group-create). Specify the name of the Bicep template, parameters file, and Azure resource group.
 
     ```azurecli-interactive
-    az deployment group create `
-        --resource-group "<name-of-existing-resource-group>" `
-        --parameters rbac-definition.bicepparam `
+    az deployment group create \
+        --resource-group "<name-of-existing-resource-group>" \
+        --parameters rbac-definition.bicepparam \
         --template-file rbac-definition.bicep
     ```
 
@@ -164,9 +164,9 @@ Now, assign the newly defined role to an identity so that your applications can 
 1. Deploy this Bicep template using `az deployment group create`.
 
     ```azurecli-interactive
-    az deployment group create `
-        --resource-group "<name-of-existing-resource-group>" `
-        --parameters rbac-assignment.bicepparam `
+    az deployment group create \
+        --resource-group "<name-of-existing-resource-group>" \
+        --parameters rbac-assignment.bicepparam \
         --template-file rbac-assignment.bicep
     ```
 
