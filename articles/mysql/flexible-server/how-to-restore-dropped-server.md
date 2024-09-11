@@ -32,7 +32,7 @@ To restore a deleted Azure Database for MySQL flexible server instance, you need
     - **Resource Type** = Azure Database for MySQL flexible servers (Microsoft.DBforMySQL/flexibleServers)
     - **Operation** = Delete MySQL Server (Microsoft.DBforMySQL/flexibleServers/delete)
 
-     [:::image type="content" source="media/how-to-restore-dropped-server/monitor-log-delete-server.png" alt-text="Screenshot of Activity log filtered for delete MySQL server operation." lightbox="media/how-to-restore-dropped-server/monitor-log-delete-server.png":::](./media/how-to-restore-dropped-server/monitor-log-delete-server.png#lightbox)
+     [:::image type="content" source="media/how-to-restore-dropped-server/monitor-log-delete-server.png" alt-text="Screenshot of Activity Log filtered for delete MySQL server operation." lightbox="media/how-to-restore-dropped-server/monitor-log-delete-server.png":::]
 
 1. Select the **Delete MySQL Server** event, select the JSON tab, and note the "resourceId" and "submissionTimestamp" attributes in JSON output. The resourceId is in the following format: `/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/TargetResourceGroup/providers/Microsoft.DBforMySQL/flexibleServers/deletedserver`.
 
@@ -40,7 +40,7 @@ To restore a deleted Azure Database for MySQL flexible server instance, you need
 
 1. Provide the resourceGroupName, serverName (deleted Azure Database for MySQL flexible server instance name), subscriptionId, derived from "resourceId" attribute captured in Step 3. At the same time, api-version is prepopulated as shown in image.
 
-     [:::image type="content" source="media/how-to-restore-dropped-server/server-create-rest-api.png" alt-text="Screenshot of Create server using REST API." lightbox="media/how-to-restore-dropped-server/server-create-rest-api.png":::](./media/how-to-restore-dropped-server/server-create-rest-api.png#lightbox)
+     [:::image type="content" source="media/how-to-restore-dropped-server/server-create-rest-api.png" alt-text="Screenshot of Create server using REST API." lightbox="media/how-to-restore-dropped-server/server-create-rest-api.png":::]
 
 1. Scroll below on the Request Body section and paste the following:
 

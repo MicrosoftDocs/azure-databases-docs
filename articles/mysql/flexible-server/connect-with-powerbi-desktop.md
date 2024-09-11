@@ -75,7 +75,7 @@ You can connect to Azure Database for MySQL flexible server with Power BI deskto
 
 1. In the **MySQL database** dialog, provide the name of the Azure Database for MySQL flexible server instance and database.
 
-   :::image type="content" source="media/connect-with-powerbi-desktop/signin.png" alt-text="Screenshot of Screeshot of Signing in to Power BI." lightbox="media/connect-with-powerbi-desktop/signin.png":::
+   :::image type="content" source="media/connect-with-powerbi-desktop/signin.png" alt-text="Screenshot of signing into Power BI Desktop." lightbox="media/connect-with-powerbi-desktop/signin.png":::
 
 1. Select the **Database** authentication type and input your MySQL credentials in the **User name** and **Password** boxes. Make sure to select the level to apply your credentials to.
 
