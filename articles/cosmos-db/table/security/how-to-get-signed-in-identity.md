@@ -26,4 +26,4 @@ This article gives simple steps to get the identity of the currently signed in a
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Create managed identities](managed-identities.md)
+> [Create managed identities](how-to-create-managed-identities.md)

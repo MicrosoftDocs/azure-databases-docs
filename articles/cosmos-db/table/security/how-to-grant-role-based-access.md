@@ -27,19 +27,19 @@ This article walks through the steps to grant an identity access to manage data 
 - An existing Azure Cosmos DB for Table account.
 - One or more existing identities in Microsoft Entra ID.
 
-## Get the account's unique identifier
-
-TODO
-
-1. TODO
+[!INCLUDE[Sign in Azure CLI](../../includes/sign-in-azure-cli.md)]
 
 ## Create role-based access control definition
 
-TODO
+First, you must create a role definition with a list of `dataActions` to grant access to read, query, and manage data in Azure Cosmos DB for Table.
 
-1. TODO
+1. Create a new Bicep file to define your role definition. Name the file *rbac-definition.bicep*. Add these `dataActions` to the definition:
 
-1. TODO. Name file *rbac-definition.bicep*.
+    | | Description |
+    | --- | --- |
+    | **`Microsoft.DocumentDB/databaseAccounts/readMetadata`** | |
+    | **`Microsoft.DocumentDB/databaseAccounts/tables/*`** | |
+    | **`Microsoft.DocumentDB/databaseAccounts/tables/containers/entities/*`** | |
 
     ```bicep
     metadata description = 'Create RBAC definition for data plane access to Azure Cosmos DB for Table.'
@@ -48,11 +48,8 @@ TODO
     param accountName string
     
     @description('Name of the role definition.')
-    param roleDefinitionName string
-    
-    @description('Description of the role definition.')
-    param roleDefinitionDescription string
-    
+    param roleDefinitionName string = 'API for Table Data Plane Owner'
+        
     resource account 'Microsoft.DocumentDB/databaseAccounts@2023-04-15' existing = {
       name: accountName
     }
@@ -62,7 +59,6 @@ TODO
       parent: account
       properties: {
         roleName: roleDefinitionName
-        description: roleDefinitionDescription
         type: 'CustomRole'
         assignableScopes: [
           account.id
@@ -82,17 +78,15 @@ TODO
     output definitionId string = definition.id
     ```
 
-1. TODO. Name file *`rbac-definition.bicepparam`*.
+1. Create a new Bicep parameters file named *`rbac-definition.bicepparam`*. In this parameters file, assign the name of your existing Azure Cosmos DB for Table account to the `accountName` parameter.
 
     ```bicep
     using './rbac-definition.bicep'
     
     param accountName = '<name-of-existing-table-account>'
-    param roleDefinitionName = 'API for Table Data Plane Owner'
-    param roleDefinitionDescription = 'Grants permission to read metadata and perform all actions on tables, containers, and entities.'
     ```
 
-1. Deploy the Bicep template using [`az deployment group create`](/cli/azure/deployment/group#az-deployment-group-create).
+1. Deploy the Bicep template using [`az deployment group create`](/cli/azure/deployment/group#az-deployment-group-create). Specify the name of the Bicep template, parameters file, and Azure resource group.
 
     ```azurecli-interactive
     az deployment group create `
@@ -101,7 +95,7 @@ TODO
         --template-file rbac-definition.bicep
     ```
 
-1. Review the output from the deployment
+1. Review the output from the deployment. The output contains the unique identifier of the role definition in the `properties.outputs.definitionId.value` property. Record this value as it is required to use in the assignment step later in this guide.
 
     ```json
     {
@@ -109,7 +103,7 @@ TODO
         "outputs": {
           "definitionId": {
             "type": "String",
-            "value": "<id-of-new-role-definition>"
+            "value": "/subscriptions/5e6451f0-384a-4ec0-a4a1-bff59cf4837d/resourceGroups/sidandrews-rbac/providers/Microsoft.DocumentDB/databaseAccounts/msdocs-identity-example-table-account/tableRoleDefinitions/dddddddd-9999-0000-1111-eeeeeeeeeeee"
           }
         }
       }
@@ -117,15 +111,16 @@ TODO
     ```
 
     > [!NOTE]
-    > This is a subset of the typical JSON outputted from the deployment for clarity.
+    > In this example, the `id` value would be `/subscriptions/5e6451f0-384a-4ec0-a4a1-bff59cf4837d/resourceGroups/sidandrews-rbac/providers/Microsoft.DocumentDB/databaseAccounts/msdocs-identity-example-table-account/tableRoleDefinitions/dddddddd-9999-0000-1111-eeeeeeeeeeee`. This example uses fictituous data and your identifier would be distinct from this example. This is a subset of the typical JSON outputted from the deployment for clarity.
 
 ## Assign role-based access control permission
 
-TODO
+Now, assign the newly defined role to an identity so that your applications can access data in Azure Cosmos DB for Table.
 
-1. TODO
+> [!IMPORTANT]
+> This assignment task requires you to have the unique identifier of any identity you want to grant role-based access control permissions. If you do not have a unique identifier for an identity, follow the instructions in the [create managed identity](how-to-create-managed-identities.md) or [get signed-in identity](how-to-get-signed-in-identity.md) guides.
 
-1. TODO. Name file *rbac-assignment.bicep*.
+1. Create another Bicep file to assign a role to an identity. Name this file *rbac-assignment.bicep*.
 
     ```bicep
     metadata description = 'Assign RBAC role for data plane access to Azure Cosmos DB for Table.'
@@ -156,7 +151,7 @@ TODO
     output id string = assignment.id
     ```
 
-1. TODO. Name file *`rbac-assignment.bicepparam`*.
+1. Create a new Bicep parameters file named *`rbac-assignment.bicepparam`*. In this parameters file; assign the name of your existing Azure Cosmos DB for Table account to the `accountName` parameter, the previously recorded role definition identifiers to the `roleDefinitionId` parameter, and the unique identifier for your identity to the `identityId` parameter.
 
     ```bicep
     using './rbac-assignment.bicep'
@@ -166,7 +161,7 @@ TODO
     param identityId = '<id-of-existing-identity>'
     ```
 
-1. TODO. [`az deployment group create`](/cli/azure/group/deployment#az-group-deployment-create).
+1. Deploy this Bicep template using `az deployment group create`.
 
     ```azurecli-interactive
     az deployment group create `
@@ -175,10 +170,84 @@ TODO
         --template-file rbac-assignment.bicep
     ```
 
-1. Repeat these steps to grant access to the account from other identities.
+1. Repeat these steps to grant access to the account from any other identities you would like to use.
 
     > [!TIP]
     > You can repeat these steps for as many identities as you'd like. Typically, these steps are at least repeated to allow developers access to an account using their human identity and to allow applications access using a managed identity.
+
+## Validate role-based access control in code
+
+Finally, validate that you correctly granted access using application code and the Azure SDK in your preferred programming language.
+
+### [C#](#tab/csharp)
+
+```csharp
+using Azure.Identity;
+using Azure.Data.Tables;
+using Azure.Core;
+
+string endpoint = "<account-endpoint>";
+
+TokenCredential credential = new DefaultAzureCredential();
+
+TableServiceClient client = new(new Uri(endpoint), credential);
+```
+
+> [!IMPORTANT]
+> This code sample uses the [`Azure.Data.Tables`](https://www.nuget.org/packages/Azure.Data.Tables/) and [`Azure.Identity`](https://www.nuget.org/packages/Azure.Identity) libraries from NuGet.
+
+### [JavaScript](#tab/javascript)
+
+```javascript
+const { TableServiceClient } = require('@azure/data-tables');
+const { DefaultAzureCredential } = require('@azure/identity');
+
+const endpoint = '<account-endpoint>';
+
+const credential = new DefaultAzureCredential();
+
+const client = new TableServiceClient(endpoint, credential);
+```
+
+> [!IMPORTANT]
+> This code sample uses the [`@azure/data-tables`](https://www.npmjs.com/package/@azure/data-tables) and [`@azure/identity`](https://www.npmjs.com/package/@azure/identity) packages from npm.
+
+### [TypeScript](#tab/typescript)
+
+```typescript
+import { TableServiceClient } from '@azure/data-tables';
+import { TokenCredential, DefaultAzureCredential } from '@azure/identity';
+
+let endpoint: string = '<account-endpoint>';
+
+let credential: TokenCredential = new DefaultAzureCredential();
+
+const client: TableServiceClient = new TableServiceClient(endpoint, credential);
+```
+
+> [!IMPORTANT]
+> This code sample uses the [`@azure/data-tables`](https://www.npmjs.com/package/@azure/data-tables) and [`@azure/identity`](https://www.npmjs.com/package/@azure/identity) packages from npm.
+
+### [Python](#tab/python)
+
+```python
+from azure.data.tables import TableServiceClient
+from azure.identity import DefaultAzureCredential
+
+endpoint = "<account-endpoint>"
+
+credential = DefaultAzureCredential()
+
+client = TableServiceClient(endpoint, credential=credential)
+```
+
+> [!IMPORTANT]
+> This code sample uses the [`azure-data-tables`](https://pypi.org/project/azure-data-tables/) and [`azure-identity`](https://pypi.org/project/azure-identity/) packages from PyPI.
+
+---
+
+> [!WARNING]
+> If you are using a user-assigned managed identity, you will need to specify the unique identifier of the managed identity as part of creating the credentials object.
 
 ## Next step
 

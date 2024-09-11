@@ -23,13 +23,15 @@ This article covers the process of disabling local auth for an Azure Cosmos DB f
 
 - An Azure account with an active subscription. [Create an account for free](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
+[!INCLUDE[Sign in Azure CLI](../../includes/sign-in-azure-cli.md)]
+
 ## Disable key-based authentication
 
-TODO
+First, disable key-based authentication to your account so that applications are required to use Microsoft Entra authentication.
 
 ### [New account](#tab/new-account)
 
-1. TODO. Name file *deploy-new-account.bicep*.
+1. Create a new Bicep file to deploy your new account with key-based authentication disabled. Name the file *deploy-new-account.bicep*.
 
     ```bicep
     metadata description = 'Deploys a new Azure Cosmos DB for Table account with local auth disabled.'
@@ -61,7 +63,7 @@ TODO
     }
     ```
 
-1. TODO. [`az deployment group create`](/cli/azure/deployment/group#az-deployment-group-create).
+1. Use [`az deployment group create`](/cli/azure/deployment/group#az-deployment-group-create) to deploy the Bicep file with the new account.
 
     ```azurecli-interactive
     az deployment group create `
@@ -71,7 +73,7 @@ TODO
 
 ### [Existing account](#tab/existing-account)
 
-1. TODO. Name file *update-existing-account-props.json*.
+1. Create a JSON file named *update-existing-account-props.json* with the changes you wish to make to the properties of the existing account. In this example, we're setting the `properties.disableLocalAuth` property to `true`.
 
     ```json
     {
@@ -81,7 +83,7 @@ TODO
     }
     ```
 
-1. TODO. Use [`az resource patch`](/cli/azure/resource#az-resource-patch).
+1. Patch the existing account using [`az resource patch`](/cli/azure/resource#az-resource-patch). Provide the name of your existing resource group and Azure Cosmos DB for Table account.
 
     ```azurecli-interactive
     az resource patch `
@@ -144,7 +146,7 @@ from azure.data.tables import TableServiceClient
 
 connection_string = "<account-ropc-connection-string>"
 
-with TableServiceClient.from_connection_string(conn_str=connection_string) as table_service_client:
+client = TableServiceClient.from_connection_string(conn_str=connection_string)
 ```
 
 > [!IMPORTANT]

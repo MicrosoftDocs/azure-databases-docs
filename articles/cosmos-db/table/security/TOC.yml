@@ -14,7 +14,7 @@
       href: how-to-get-signed-in-identity.md
     - name: Create managed identities
       displayName: principals
-      href: managed-identities.md
+      href: how-to-create-managed-identities.md
     - name: Disable local auth
       displayName: key, ropc, connection string
       href: how-to-disable-local-auth.md
