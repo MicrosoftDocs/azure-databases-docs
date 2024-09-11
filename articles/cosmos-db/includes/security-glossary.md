@@ -106,11 +106,12 @@ For more information, see [scope overview](/azure/role-based-access-control/scop
 
 Actions define what specific permissions a [role](#role) has for a target resource. Actions are strings that typically include the resource type and a descriptive name detailing what permissions the action grants. Here are a few common examples:
 
-| | Description |
-| --- | --- |
-| **`Microsoft.DocumentDB/databaseAccounts/listKeys/action`** | Read account keys only |
-| **`Microsoft.DocumentDB/databaseAccounts/backup/action`** | Perform backups |
-| **``** | |
+| | Description | Plane |
+| --- | --- | --- |
+| **`Microsoft.DocumentDB/databaseAccounts/listKeys/action`** | Read account keys only | Control plane |
+| **`Microsoft.DocumentDB/databaseAccounts/backup/action`** | Perform backups | Control plane |
+| **`Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/replace`** | Entirely replace an existing item | Data plane |
+| **`Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/executeQuery`** | Execute a NoSQL query | Data plane |
 
 Actions can also contain `*` (wildcard) characters so you don't have to manually detail every specific subpermission. Here's a few examples of actions with wildcards:
 
