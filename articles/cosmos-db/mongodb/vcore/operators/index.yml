@@ -6,7 +6,7 @@ summary: Review the details for various supported commands and operators you can
 metadata:
   title: Azure Cosmos DB for MongoDB (vCore) commands
   description: Review the details for various supported commands and operators you can use with Azure Cosmos DB for MongoDB vCore.
-  author: avijitkgupta
+  author: avijitgupta
   ms.author: avijitgupta
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
@@ -24,7 +24,7 @@ landingContent:
       - linkListType: reference
         links:
           - text: $slice
-            url: aggregation/$slice.md
+            url: array-expression/$slice.md
   - title: Array query
     linkLists:
       - linkListType: reference
@@ -42,31 +42,31 @@ landingContent:
       - linkListType: reference
         links:
           - text: $bitsAllClear
-            url: aggregation/$bitsAllClear.md
+            url: bitwise-query/$bitsAllClear.md
   - title: Comparison-query
     linkLists:
       - linkListType: reference
         links:
           - text: $eq
-            url: aggregation/$eq.md
+            url: comparison-query/$eq.md
   - title: Evaluation-query
     linkLists:
       - linkListType: reference
         links:
           - text: $expr
-            url: aggregation/$expr.md
+            url: evaluation-query/$expr.md
   - title: Geospatial
     linkLists:
       - linkListType: reference
         links:
           - text: $geoIntersect
-            url: aggregation/$geoIntersect.md
+            url: geospatial/$geoIntersect.md
   - title: Logical-query
     linkLists:
       - linkListType: reference
         links:
           - text: $and
-            url: aggregation/$and.md
+            url: logical-query/$and.md
   - title: Projection
     linkLists:
       - linkListType: reference
