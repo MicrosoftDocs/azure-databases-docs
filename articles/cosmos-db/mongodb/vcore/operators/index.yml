@@ -1,0 +1,75 @@
+### YamlMime:Landing
+
+title: Azure Cosmos DB for MongoDB (vCore) commands
+summary: Review the details for various supported commands and operators you can use with Azure Cosmos DB for MongoDB vCore.
+
+metadata:
+  title: Azure Cosmos DB for MongoDB (vCore) commands
+  description: Review the details for various supported commands and operators you can use with Azure Cosmos DB for MongoDB vCore.
+  author: avijitkgupta
+  ms.author: avijitgupta
+  ms.service: azure-cosmos-db
+  ms.subservice: mongodb-vcore
+  ms.topic: landing-page
+  ms.date: 09/11/2024
+landingContent:
+  - title: Aggregation
+    linkLists:
+      - linkListType: reference
+        links:
+          - text: $count
+            url: aggregation/$count.md
+  - title: Array-expression
+    linkLists:
+      - linkListType: reference
+        links:
+          - text: $slice
+            url: aggregation/$slice.md
+  - title: Array query
+    linkLists:
+      - linkListType: reference
+        links:
+          - text: $size
+            url: array-query/$size.md
+  - title: Array update
+    linkLists:
+      - linkListType: reference
+        links:
+          - text: $push
+            url: array-update/$push.md
+  - title: Bitwise-query
+    linkLists:
+      - linkListType: reference
+        links:
+          - text: $bitsAllClear
+            url: aggregation/$bitsAllClear.md
+  - title: Comparison-query
+    linkLists:
+      - linkListType: reference
+        links:
+          - text: $eq
+            url: aggregation/$eq.md
+  - title: Evaluation-query
+    linkLists:
+      - linkListType: reference
+        links:
+          - text: $expr
+            url: aggregation/$expr.md
+  - title: Geospatial
+    linkLists:
+      - linkListType: reference
+        links:
+          - text: $geoIntersect
+            url: aggregation/$geoIntersect.md
+  - title: Logical-query
+    linkLists:
+      - linkListType: reference
+        links:
+          - text: $and
+            url: aggregation/$and.md
+  - title: Projection
+    linkLists:
+      - linkListType: reference
+        links:
+          - text: $slice
+            url: projection/$slice.md

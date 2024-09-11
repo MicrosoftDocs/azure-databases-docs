@@ -7,10 +7,10 @@ ms.author: gahllevy
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: reference
-ms.date: 09/09/2024
+ms.date: 09/11/2024
 ---
 
-# `$count` (as aggregation pipeline stage)
+# `$count` (aggregation pipeline stage)
 
 [!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 
@@ -28,7 +28,7 @@ The `$count` stage in the aggregation pipeline is used to count the number of do
 
 | | Description |
 | --- | --- |
-| **`<field>`** | The name of the field in the output document where the count is stored. |
+| **`field`** | The name of the field in the output document where the count is stored. |
 
 ## Related content
 
