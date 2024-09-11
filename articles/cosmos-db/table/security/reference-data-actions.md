@@ -25,7 +25,7 @@ TODO
 TODO
 
 | | TODO | TODO |
-| --- | --- | TODO |
+| --- | --- | --- |
 | **`TODO`** | TODO | TODO |
 
 ## Related content
