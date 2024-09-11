@@ -17,7 +17,7 @@ ai-usage: ai-assisted
 [!INCLUDE[Table](../../includes/appliesto-table.md)]
 
 :::image type="complex" source="media/index/map.svg" border="false" alt-text="Diagram of the current location ('Overview') in the sequence of the deployment guide.":::
-Diagram of the sequence of the deployment guide including these locations, in order: Overview, Concepts, Prepare, Role-based access control, and Solution. The 'Overview' location is currently highlighted.
+Diagram of the sequence of the deployment guide including these locations, in order: Overview, Concepts, Prepare, Role-based access control, and Reference. The 'Overview' location is currently highlighted.
 :::image-end:::
 
 When working with Azure Cosmos DB for Table, it's important to ensure that authorized users and applications have access to data while preventing unintentional or unauthorized access. While using keys and resource owner password credentials might seem like a convenient option, it isn't recommended due to several reasons. Firstly, these methods lack the robustness and flexibility provided by Microsoft Entra authentication. Microsoft Entra offers enhanced security features such as multifactor authentication and conditional access policies, which greatly reduce the risk of unauthorized access. By using Microsoft Entra, you can significantly enhance the security posture of your applications and protect sensitive data from potential threats.

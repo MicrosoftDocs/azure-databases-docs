@@ -14,7 +14,7 @@ ms.date: 09/11/2024
 # Disable local authentication with Azure Cosmos DB for Table
 
 :::image type="complex" source="media/how-to-disable-local-auth/map.svg" border="false" alt-text="Diagram of the current location ('Prepare') in the sequence of the deployment guide.":::
-Diagram of the sequence of the deployment guide including these locations, in order: Overview, Concepts, Prepare, Role-based access control, and Solution. The 'Prepare' location is currently highlighted.
+Diagram of the sequence of the deployment guide including these locations, in order: Overview, Concepts, Prepare, Role-based access control, and Reference. The 'Prepare' location is currently highlighted.
 :::image-end:::
 
 This article covers the process of disabling local auth for an Azure Cosmos DB for Table account. This procedure is a step that should be performed on new accounts in secure workloads. Alternatively, perform this procedure on existing accounts being migrated to a secure workload pattern.

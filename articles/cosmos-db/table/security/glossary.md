@@ -16,7 +16,7 @@ ai-usage: ai-assisted
 [!INCLUDE[Table](../../includes/appliesto-table.md)]
 
 :::image type="complex" source="media/glossary/map.svg" border="false" alt-text="Diagram of the current location ('Concepts') in the sequence of the deployment guide.":::
-Diagram of the sequence of the deployment guide including these locations, in order: Overview, Concepts, Prepare, Role-based access control, and Solution. The 'Concepts' location is currently highlighted.
+Diagram of the sequence of the deployment guide including these locations, in order: Overview, Concepts, Prepare, Role-based access control, and Reference. The 'Concepts' location is currently highlighted.
 :::image-end:::
 
 This article includes a glossary of common terminology used in this security guide.
