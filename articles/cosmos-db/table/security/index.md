@@ -4,6 +4,7 @@ titleSuffix: Azure Cosmos DB for Table
 description: Review the fundamentals of securing Azure Cosmos DB for Table using role-based access control and Microsoft Entra.
 author: seesharprun
 ms.author: sidandrews
+ms.reviewer: stefarroyo
 ms.service: azure-cosmos-db
 ms.subservice: table
 ms.topic: solution-overview

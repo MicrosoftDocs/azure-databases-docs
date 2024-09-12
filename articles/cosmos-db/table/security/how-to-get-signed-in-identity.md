@@ -4,6 +4,7 @@ titleSuffix: Azure CLI
 description: Get the unique identifier for the currently signed in account for Azure CLI so that you can use this identity with role-based access control in Azure.
 author: seesharprun
 ms.author: sidandrews
+ms.reviewer: stefarroyo
 ms.service: azure-cosmos-db
 ms.subservice: table
 ms.topic: how-to

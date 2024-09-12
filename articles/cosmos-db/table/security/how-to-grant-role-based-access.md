@@ -4,6 +4,7 @@ titleSuffix: Azure Cosmos DB for Table
 description: Grant access to run queries, manage entities, and perform operations using role-based access control (RBAC), Microsoft Entra, and Azure Cosmos DB for Table.
 author: seesharprun
 ms.author: sidandrews
+ms.reviewer: stefarroyo
 ms.service: azure-cosmos-db
 ms.subservice: table
 ms.topic: how-to

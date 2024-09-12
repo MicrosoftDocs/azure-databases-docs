@@ -4,6 +4,7 @@ titleSuffix: Azure Cosmos DB for Table
 description: This article includes a list of all potential data actions for use with role-based access control (RBAC) in Azure Cosmos DB for Table.
 author: seesharprun
 ms.author: sidandrews
+ms.reviewer: stefarroyo
 ms.service: azure-cosmos-db
 ms.subservice: table
 ms.topic: reference
@@ -35,7 +36,7 @@ Here's a list of data actions that can be individually set in a role definition.
 | **`Microsoft.DocumentDB/databaseAccounts/tables/containers/entities/upsert`** | Creates an entity (item) if it doesn't exist or replaces the entity if it already exists |
 | **`Microsoft.DocumentDB/databaseAccounts/tables/containers/entities/delete`** | Deletes an entity (item) |
 
-## Wildcards
+### Wildcards
 
 The wildcard (`*`) operator is supported at the `tables`, `containers`, and `entities` levels for actions. Use the wildcard to grant broad access to a specific resource type.
 

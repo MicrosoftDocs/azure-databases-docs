@@ -4,6 +4,7 @@ titleSuffix: Azure Cosmos DB for Table
 description: Explore common glossary terminology used when describing how to managed role-based access control within Azure Cosmos DB for Table.
 author: seesharprun
 ms.author: sidandrews
+ms.reviewer: stefarroyo
 ms.service: azure-cosmos-db
 ms.subservice: table
 ms.topic: glossary
