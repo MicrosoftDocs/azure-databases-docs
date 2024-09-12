@@ -1,5 +1,5 @@
 ---
-  title: $slice (Array Expression) usage on Azure Cosmos DB for MongoDB vCore
+  title: $slice (array expression) usage on Azure Cosmos DB for MongoDB vCore
   titleSuffix: Azure Cosmos DB for MongoDB vCore
   description: The $slice operator returns a subset of an array from any element onwards in the array.
   author: avijitgupta
@@ -47,7 +47,7 @@ Let's understand the usage with sample json from `stores` dataset.
 ```json
 {
   "_id": "988d2dd1-2faa-4072-b420-b91b95cbfd60",
-  "name": "Breanna's Bed and Bath Stop",
+  "name": "Lakeshore Retail",
   "sales": {
     "salesByCategory": [
       {
@@ -122,6 +122,6 @@ The query response reverts with first three array elements for the sample json.
 }
 ```
 
-## Related Content
+## Related content
 
 [!INCLUDE[Related content](../includes/related-content.md)]

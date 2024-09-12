@@ -1,7 +1,7 @@
 ---
-title: $bitsAllClear (Bitwise Query)
+title: $bitsallclear (bitwise query)
 titleSuffix: Azure Cosmos DB for MongoDB vCore
-description: The $bitsAllClear operator is used to match documents where all the bit positions specified in a bitmask are clear.
+description: The $bitsallclear operator is used to match documents where all the bit positions specified in a bitmask are clear.
 author: avijitgupta
 ms.author: avijitgupta
 ms.service: azure-cosmos-db

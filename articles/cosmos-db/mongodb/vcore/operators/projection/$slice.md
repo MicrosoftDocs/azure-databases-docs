@@ -53,7 +53,7 @@ Let's understand the usage with sample json from `stores` dataset.
 ```json
 {
   "_id": "988d2dd1-2faa-4072-b420-b91b95cbfd60",
-  "name": "Breanna's Bed and Bath Stop",
+  "name": "Lakeshore Retail",
   "sales": {
     "salesByCategory": [
       {
@@ -97,11 +97,11 @@ Let's understand the usage with sample json from `stores` dataset.
 
 ### Example 1: Returns the first matching element from an array
 
-The example queries `stores` data for "Breanna's Bed and Bath Stop", and finds the first document from "sales.salesByCategory" array.
+The example queries `stores` data for "Lakeshore Retail", and finds the first document from "sales.salesByCategory" array.
 
 ```javascript
 db.stores.find(
-  { "name": "Breanna's Bed and Bath Stop"},
+  { "name": "Lakeshore Retail"},
   { "_id":1,"name":1,"sales.salesByCategory": { $slice: 1 } } // restricts the fields to be returned
 )
 ```
@@ -111,7 +111,7 @@ This query will return document from the `stores` collection, with first `catego
 ```json
 {
   "_id": "988d2dd1-2faa-4072-b420-b91b95cbfd60",
-  "name": "Breanna's Bed and Bath Stop",
+  "name": "Lakeshore Retail",
   "sales": {
     "salesByCategory": [
       {
@@ -125,11 +125,11 @@ This query will return document from the `stores` collection, with first `catego
 
 ### Example 2: Return the last element from an array
 
-The example queries `stores` data for "Breanna's Bed and Bath Stop", and finds the last document from "sales.salesByCategory" array.
+The example queries `stores` data for "Lakeshore Retail", and finds the last document from "sales.salesByCategory" array.
 
 ```javascript
 db.stores.find(
-  { "name": "Breanna's Bed and Bath Stop"},
+  { "name": "Lakeshore Retail"},
   { "_id":1,"name":1,"sales.salesByCategory": { $slice: -1 } } 
 )
 ```
@@ -139,7 +139,7 @@ This query will return document from the `stores` collection, with last `categor
 ```json
 {
   "_id": "988d2dd1-2faa-4072-b420-b91b95cbfd60",
-  "name": "Breanna's Bed and Bath Stop",
+  "name": "Lakeshore Retail",
   "sales": {
     "salesByCategory": [
       {
@@ -153,11 +153,11 @@ This query will return document from the `stores` collection, with last `categor
 
 ### Example 3: Returns a range of elements from an array
 
-The example queries `stores` data for "Breanna's Bed and Bath Stop", and finds a subset range from "sales.salesByCategory" array.
+The example queries `stores` data for "Lakeshore Retail", and finds a subset range from "sales.salesByCategory" array.
 
 ```javascript
 db.stores.find(
-  { "name": "Breanna's Bed and Bath Stop"},
+  { "name": "Lakeshore Retail"},
   { "_id":1,"name":1,"sales.salesByCategory": { $slice: [3, 2] } }
 )
 ```
@@ -167,7 +167,7 @@ This query returns document from the `stores` collection, with two elements star
 ```json
 {
   "_id": "988d2dd1-2faa-4072-b420-b91b95cbfd60",
-  "name": "Breanna's Bed and Bath Stop",
+  "name": "Lakeshore Retail",
   "sales": {
     "salesByCategory": [
       {

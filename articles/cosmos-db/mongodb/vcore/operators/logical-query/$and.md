@@ -1,5 +1,5 @@
 ---
-title: $and (Bitwise Query)
+title: $and (logical query)
 titleSuffix: Azure Cosmos DB for MongoDB vCore
 description: The $and operator  is used to perform a logical AND operation on an array of one or more expressions and selects the documents that satisfy all the expressions in the array.
 author: avijitgupta

@@ -36,7 +36,7 @@ Let's understand the usage with sample json from `stores` dataset.
 ```json
 {
   "_id": "988d2dd1-2faa-4072-b420-b91b95cbfd60",
-  "name": "Breanna's Bed and Bath Stop",
+  "name": "Lakeshore Retail",
   "sales": {
     "salesByCategory": [
       {
@@ -93,7 +93,7 @@ This query returns the two documents from the `stores` collection as restricted 
 ```json
 {
   "_id": "7ed4b356-1290-433e-bd96-bf95f817eaaa",
-  "name": "Lue's Electronics",
+  "name": "Wide World Importers",
   "sales": {
     "salesByCategory": [
       {
@@ -129,7 +129,7 @@ This query returns the two documents from the `stores` collection as restricted 
 }
 {
   "_id": "988d2dd1-2faa-4072-b420-b91b95cbfd60",
-  "name": "Breanna's Bed and Bath Stop",
+  "name": "Lakeshore Retail",
   "sales": {
     "salesByCategory": [
       {

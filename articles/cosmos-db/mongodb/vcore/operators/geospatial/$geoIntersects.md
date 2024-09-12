@@ -1,7 +1,7 @@
 ---
-title: $geoIntersects (Geospatial)
+title: $geointersects (geospatial)
 titleSuffix: Azure Cosmos DB for MongoDB vCore
-description: The $geoIntersects (Geospatial) operator to select documents with geospatial data that intersects with a specified geometry.
+description: The $geointersects operator to select documents with geospatial data that intersects with a specified geometry.
 author: avijitgupta
 ms.author: avijitgupta
 ms.service: azure-cosmos-db

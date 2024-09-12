@@ -1,5 +1,5 @@
 ---
-title: $expr (Evaluation Query)
+title: $expr (evaluation query)
 titleSuffix: Azure Cosmos DB for MongoDB vCore
 description: The $expr operator allows the use of aggregation expressions within the query language.
 author: avijitkgupta

@@ -42,7 +42,7 @@ landingContent:
       - linkListType: reference
         links:
           - text: $bitsAllClear
-            url: bitwise-query/$bitsAllClear.md
+            url: bitwise-query/$bitsallclear.md
   - title: Comparison-query
     linkLists:
       - linkListType: reference
@@ -60,7 +60,7 @@ landingContent:
       - linkListType: reference
         links:
           - text: $geoIntersect
-            url: geospatial/$geoIntersects.md
+            url: geospatial/$geointersects.md
   - title: Logical-query
     linkLists:
       - linkListType: reference
