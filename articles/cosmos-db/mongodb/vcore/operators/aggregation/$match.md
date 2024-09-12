@@ -30,7 +30,7 @@ The basic syntax for the `$match` stage is as follows:
 
 | | Description |
 | --- | --- |
-| ** `<query>`**| A standard MongoDB query document that specifies the conditions that the documents must meet.|
+| **`<query>`**| A standard MongoDB query document that specifies the conditions that the documents must meet.|
 
 ## Examples
 
