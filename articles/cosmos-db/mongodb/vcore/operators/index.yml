@@ -87,7 +87,5 @@ landingContent:
             url: projection/$elemmatch.md
           - text: $meta
             url: projection/$meta.md
-      - linkListType: reference
-        links:
           - text: $slice
             url: projection/$slice.md
