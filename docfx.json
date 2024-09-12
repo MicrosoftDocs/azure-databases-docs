@@ -7,14 +7,9 @@
           "**/*.yml"
         ],
         "exclude": [
-          "iot-edge/**",
-          "ai-services/document-intelligence/**",
           "**/_themes/**",
           "**/includes/**",
           "**/obj/**",
-          "**/*.graffle",
-          "machine-learning/**",
-          "machine-learning/v1/**"
         ],
         "src": "articles",
         "dest": "."
@@ -44,12 +39,8 @@
           "**/*.svg"
         ],
         "exclude": [
-          "iot-edge/**",
-          "ai-services/document-intelligence/**",
           "**/_themes/**",
           "**/obj/**",
-          "machine-learning/**",
-          "machine-learning/v1/**"
         ],
         "src": "articles",
         "dest": "."
