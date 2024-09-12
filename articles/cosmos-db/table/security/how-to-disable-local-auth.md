@@ -13,6 +13,8 @@ ms.date: 09/11/2024
 
 # Disable local authentication with Azure Cosmos DB for Table
 
+[!INCLUDE[Table](../../includes/appliesto-table.md)]
+
 :::image type="complex" source="media/how-to-disable-local-auth/map.svg" border="false" alt-text="Diagram of the current location ('Prepare') in the sequence of the deployment guide.":::
 Diagram of the sequence of the deployment guide including these locations, in order: Overview, Concepts, Prepare, Role-based access control, and Reference. The 'Prepare' location is currently highlighted.
 :::image-end:::
