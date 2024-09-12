@@ -3,7 +3,6 @@
   "customizations": {
     "vscode": {
       "extensions": [
-        "acrolinx.vscode-sidebar",
         "docsmsft.learnlinter",
         "docsmsft.docs-authoring-pack"
       ]
