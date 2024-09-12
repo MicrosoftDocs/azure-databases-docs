@@ -31,12 +31,8 @@ landingContent:
         links:
           - text: $all
             url: array-query/$all.md
-      - linkListType: reference
-        links:
           - text: $elemMatch
             url: array-query/$elemmatch.md
-      - linkListType: reference
-        links:
           - text: $size
             url: array-query/$size.md
   - title: Array update
@@ -87,12 +83,8 @@ landingContent:
         links:
           - text: $
             url: projection/$.md
-      - linkListType: reference
-        links:
           - text: $elemMatch
             url: projection/$elemmatch.md
-      - linkListType: reference
-        links:
           - text: $meta
             url: projection/$meta.md
       - linkListType: reference
