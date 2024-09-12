@@ -13,7 +13,8 @@ ms.date: 06/24/2022
 
 [!INCLUDE [applies-to-postgresql-single-server](../includes/applies-to-postgresql-single-server.md)]
 
-[!INCLUDE [azure-database-for-postgresql-single-server-deprecation](../includes/azure-database-for-postgresql-single-server-deprecation.md)]
+[!INCLUDE [azure-database-for-postgresql-single-server-deprecation
+After the final migration to Flexible Server, the source Single Server will be shut down, and rolling back from Flexible Server to Single Server will not be possible. Additionally, once the Single Server is deleted, it cannot be recovered](../includes/azure-database-for-postgresql-single-server-deprecation.md)]
 
 When a server is dropped, the database server backup will be retained for five days in the service. The database backup can be accessed and restored only from the Azure subscription where the server originally resided. The following recommended steps can be followed to recover a dropped PostgreSQL server resource within five days from the time of server deletion. The recommended steps will work only if the backup for the server is still available and not deleted from the system.
 
