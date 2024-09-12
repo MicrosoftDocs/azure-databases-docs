@@ -17,12 +17,12 @@ ms.custom:
 
 [!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
-This tutorial shows you how to set up and manage data encryption for Azure Database for MySQL flexible server using Azure CLI.
+This tutorial shows you how to set up and manage data encryption for Azure Database for MySQL Flexible Server using Azure CLI.
 
 In this tutorial, you learn how to:
 
-- Create an Azure Database for MySQL flexible server instance with data encryption
-- Update an existing Azure Database for MySQL flexible server instance with data encryption
+- Create an Azure Database for MySQL Flexible Server instance with data encryption
+- Update an existing Azure Database for MySQL Flexible Server instance with data encryption
 - Using an Azure Resource Manager template to enable data encryption
 
 ## Prerequisites
@@ -32,7 +32,7 @@ In this tutorial, you learn how to:
 - If you don't have an Azure subscription, create an [Azure free account](https://azure.microsoft.com/free) before you begin.
 
     > [!NOTE]  
-    > With an Azure free account, you can now try Azure Database for MySQL flexible server for free for 12 months. For more information, see [Try Azure Database for MySQL flexible server for free](how-to-deploy-on-azure-free-account.md).
+    > With an Azure free account, you can now try Azure Database for MySQL Flexible Server for free for 12 months. For more information, see [Try Azure Database for MySQL Flexible Server for free](how-to-deploy-on-azure-free-account.md).
 
 - Install or upgrade Azure CLI to the latest version. See [Install Azure CLI](/cli/azure/install-azure-cli).
 
@@ -82,7 +82,7 @@ You can verify the above attributes of the key by using the following command:
 az keyvault key show --vault-name \<key\_vault\_name\> -n \<key\_name\>
 ```
 
-## Update an existing Azure Database for MySQL flexible server instance with data encryption
+## Update an existing Azure Database for MySQL Flexible Server instance with data encryption
 
 Set or change key and identity for data encryption:
 
@@ -90,13 +90,13 @@ Set or change key and identity for data encryption:
 az mysql flexible-server update --resource-group testGroup --name testserver \\ --key \<key identifier of newKey\> --identity newIdentity
 ```
 
-Disable data encryption for Azure Database for MySQL flexible server:
+Disable data encryption for Azure Database for MySQL Flexible Server:
 
 ```azurecli-interactive
 az mysql flexible-server update --resource-group testGroup --name testserver --disable-data-encryption
 ```
 
-## Create an Azure Database for MySQL flexible server instance with geo redundant backup and data encryption enabled
+## Create an Azure Database for MySQL Flexible Server instance with geo redundant backup and data encryption enabled
 
 ```azurecli-interactive
 az mysql flexible-server create -g testGroup -n testServer --location testLocation \\
