@@ -5834,6 +5834,31 @@
       "source_path_from_root": "/articles/cosmos-db/how-to-move-regions.md",
       "redirect_url": "/azure/operational-excellence/relocation-cosmos-db",
       "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/commands/aggregation/$count.md",
+      "redirect_url": "/azure/cosmos-db/mongodb/vcore/operators/aggregation/$count",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/commands/array-query/$size.md",
+      "redirect_url": "/azure/cosmos-db/mongodb/vcore/operators/array-query/$size",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/commands/array-update/$push.md",
+      "redirect_url": "/azure/cosmos-db/mongodb/vcore/operators/array-update/$push",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/commands/index.yml",
+      "redirect_url": "/azure/cosmos-db/mongodb/vcore/operators/index",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/commands/projection/$slice.md",
+      "redirect_url": "/azure/cosmos-db/mongodb/vcore/operators/projection/$slice",
+      "redirect_document_id": true
     }
   ]
 }
