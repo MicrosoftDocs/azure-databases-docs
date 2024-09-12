@@ -4,6 +4,8 @@ titleSuffix: Azure Cosmos DB for Table
 description: Review the steps required to create user-assigned or system-assigned managed identities for use with Azure Cosmos DB for Table.
 author: seesharprun
 ms.author: sidandrews
+ms.service: azure-cosmos-db
+ms.subservice: table
 ms.topic: how-to
 ms.date: 09/11/2024
 ms.custom: subject-msia
