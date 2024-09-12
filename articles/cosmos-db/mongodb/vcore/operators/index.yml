@@ -19,7 +19,7 @@ landingContent:
         links:
           - text: $count
             url: aggregation/$count.md
-  - title: Array-expression
+  - title: Array expression
     linkLists:
       - linkListType: reference
         links:
@@ -27,6 +27,14 @@ landingContent:
             url: array-expression/$slice.md
   - title: Array query
     linkLists:
+      - linkListType: reference
+        links:
+          - text: $all
+            url: array-query/$all.md
+      - linkListType: reference
+        links:
+          - text: $elemMatch
+            url: array-query/$elemmatch.md
       - linkListType: reference
         links:
           - text: $size
@@ -75,6 +83,18 @@ landingContent:
             url: object-expression/$mergeobjects.md
   - title: Projection
     linkLists:
+      - linkListType: reference
+        links:
+          - text: $
+            url: projection/$.md
+      - linkListType: reference
+        links:
+          - text: $elemMatch
+            url: projection/$elemmatch.md
+      - linkListType: reference
+        links:
+          - text: $meta
+            url: projection/$meta.md
       - linkListType: reference
         links:
           - text: $slice
