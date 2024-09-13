@@ -5851,11 +5851,6 @@
       "redirect_document_id": true
     },
     {
-      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/commands/index.yml",
-      "redirect_url": "/azure/cosmos-db/mongodb/vcore/operators/index",
-      "redirect_document_id": true
-    },
-    {
       "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/commands/projection/$slice.md",
       "redirect_url": "/azure/cosmos-db/mongodb/vcore/operators/projection/$slice",
       "redirect_document_id": true
