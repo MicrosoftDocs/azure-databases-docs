@@ -2,8 +2,8 @@
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: include
-ms.date: 09/09/2024
+ms.date: 09/12/2024
 ---
 
-- [Migration path](../../migration-options.md)
-- [Compatibility](../../compatibility.md)
+- Review options for [Migrating from MongoDB to Azure Cosmos DB for MongoDB (vCore)](../../migration-options.md)
+- Read more about [Feature compatibility with MongoDB](../../compatibility.md)
