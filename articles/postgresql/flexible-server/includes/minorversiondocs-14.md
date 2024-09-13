@@ -7,5 +7,5 @@ ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
 ---
-11.22
+[PostgreSQL documentation](https://www.postgresql.org/docs/release/14.13/)
 
