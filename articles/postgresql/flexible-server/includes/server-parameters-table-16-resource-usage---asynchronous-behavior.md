@@ -1,8 +1,8 @@
 ---
-author: akashraokm
-ms.author: akashrao
+author: nachoalonsoportillo
+ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 06/18/2024
+ms.date: 09/13/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
@@ -51,7 +51,7 @@ ms.topic: include
 | Default value  | `10`          |
 | Allowed values | `10`           |
 | Parameter type | read-only      |
-| Documentation  | [maintenance_io_concurrency](https://www.postgresql.org/docs/16/runtime-config-logging.html#GUC-MAINTENANCE-IO-CONCURRENCY)              |
+| Documentation  | [maintenance_io_concurrency](https://www.postgresql.org/docs/16/runtime-config-resource.html#GUC-MAINTENANCE-IO-CONCURRENCY)             |
 
 
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
@@ -140,6 +140,5 @@ ms.topic: include
 
 
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
 
 
