@@ -1,12 +1,12 @@
 ---
-  title: $reverseArray (as Array Expression Operator) usage on Azure Cosmos DB for MongoDB vCore
+  title: $reverseArray (array expression operator) usage on Azure Cosmos DB for MongoDB vCore
   titleSuffix: Azure Cosmos DB for MongoDB vCore
-  description: Learn the syntax and see examples of how to use of $reverseArray (as Array Expression) operator.
+  description: The $reverseArray operator is used to reverse the order of elements in an array. 
   author: sandeep-nair
   ms.author: sandnair
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
-  ms.topic: how-to
+  ms.topic: reference
   ms.date: 09/02/2024
 ---
 
@@ -184,5 +184,5 @@ This query would return the following document.
 
 ```
 
-## Related Content
+## Related content
 [!INCLUDE[Related content](../includes/related-content.md)]
