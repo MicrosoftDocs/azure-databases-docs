@@ -1,7 +1,7 @@
 ---
-  title: $elemmatch (projection) usage on Azure Cosmos DB for MongoDB vCore
+  title: $elemMatch (projection) usage on Azure Cosmos DB for MongoDB vCore
   titleSuffix: Azure Cosmos DB for MongoDB vCore
-  description: The $elemmatch projection operator returns only the first element from an array.
+  description: The $elemMatch operator returns only the first element from an array.
   author: avijitgupta
   ms.author: avijitgupta
   ms.service: azure-cosmos-db
@@ -14,7 +14,7 @@
 
 [!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 
-The `$elemMatch` projection operator is used to project the first element in an array that matches the specified query condition. This operator is particularly useful when you want to retrieve only the matching elements from an array within a document, rather than the entire array.
+The `$elemMatch` projection operator is used to project the first element in an array that matches the specified query condition. This operator is useful when you want to retrieve only the matching elements from an array within a document, rather than the entire array.
 
 ## Syntax
 
@@ -174,7 +174,7 @@ The query returned the requested `_id` document with only "Incredible Savings Sh
 
 ## Limitation
 
-- `$elemMatch` does not support text query expression.
+- `$elemMatch` doesn't support text query expression.
 
 ## Related content
 

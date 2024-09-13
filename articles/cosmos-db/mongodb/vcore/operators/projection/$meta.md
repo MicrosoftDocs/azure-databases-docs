@@ -14,7 +14,7 @@
 
 [!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 
-The `$meta` projection operator is used to include metadata in the results of a query. It is particularly useful for including metadata such as text search scores or other computed values in the output documents.
+The `$meta` projection operator is used to include metadata in the results of a query. It's useful for including metadata such as text search scores or other computed values in the output documents.
 
 ## Syntax
 
@@ -31,12 +31,12 @@ db.collection.find( {$text: { $search: <string> } },
 
 | | Description |
 | --- | --- |
-| **`field`** | The name of the field in the output documents where the metadata will be included. |
-| **`metaDataKeyword`** | The type of metadata to includes common keywords like `textScore` for text search scores. |
+| **`field`** | The name of the field in the output documents where the metadata gets included. |
+| **`metaDataKeyword`** | The type of metadata to include common keywords like `textScore` for text search scores. |
 
 ## Example
 
-Here is the example to illustrate the usage of the `$meta` projection operator.
+Here's the example to illustrate the usage of the `$meta` projection operator.
 
 ### Example 1: Including text search scores
 
@@ -52,7 +52,7 @@ db.stores.find(
 
 ```
 
-This query will return documents from the `stores` collection that match the text search criteria and include a `score` field containing the text search score.
+This query returns documents from the `stores` collection that match the text search criteria and include a `score` field containing the text search score.
 
 ```json
 {
@@ -69,7 +69,7 @@ This query will return documents from the `stores` collection that match the tex
 
 ## Limitation
 
-- If no index is used, the { $meta: "indexKey" } does not return anything.
+- If no index is used, the { $meta: "indexKey" } doesn't return anything.
 
 ## Related content
 

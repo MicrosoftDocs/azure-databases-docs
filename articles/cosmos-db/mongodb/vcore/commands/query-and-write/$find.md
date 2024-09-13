@@ -10,7 +10,7 @@
   ms.date: 09/12/2024
 ---
 
-# find
+# $find
 
 [!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 

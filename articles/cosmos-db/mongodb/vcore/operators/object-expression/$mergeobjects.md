@@ -1,7 +1,7 @@
 ---
-  title: $mergeobjects (object expression) usage on Azure Cosmos DB for MongoDB vCore
+  title: $mergeObjects (object expression) usage on Azure Cosmos DB for MongoDB vCore
   titleSuffix: Azure Cosmos DB for MongoDB vCore
-  description: The $mergeobjects operator is used to combine multiple documents into a single document.
+  description: The $mergeObjects operator is used to combine multiple documents into a single document.
   author: avijitgupta
   ms.author: avijitgupta
   ms.service: azure-cosmos-db
@@ -14,7 +14,7 @@
 
 [!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 
-The `$mergeObjects` operator is used to combine multiple documents into a single document. This operator is particularly useful in aggregation pipelines when you need to merge fields from different documents or add additional fields to an existing document. The behavior of `$mergeObjects` is to overwrite fields in the target document with fields from the source document when there are conflicts.
+The `$mergeObjects` operator is used to combine multiple documents into a single document. This operator is useful in aggregation pipelines when you need to merge fields from different documents or add another field to an existing document. The behavior of `$mergeObjects` is to overwrite fields in the target document with fields from the source document when there are conflicts.
 
 ## Syntax
 
@@ -26,7 +26,7 @@ The `$mergeObjects` operator is used to combine multiple documents into a single
 
 | | Description |
 | --- | --- |
-| **`document1, document2`** | These are the documents that you want to merge. The documents can be specified as field paths, sub-documents, or constants. |
+| **`document1, document2`** | These documents are targeted for merge. The documents can be specified as field paths, subdocuments, or constants. |
 
 ## Related content
 
