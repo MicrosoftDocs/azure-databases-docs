@@ -1,8 +1,8 @@
 ---
-author: akashraokm
-ms.author: akashrao
+author: nachoalonsoportillo
+ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 06/18/2024
+ms.date: 09/13/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
@@ -83,8 +83,8 @@ ms.topic: include
 | Description    | Sets the maximum memory to be used for logical decoding.                                                                                                                            |
 | Data type      | integer     |
 | Default value  | `65536`                                                                    |
-| Allowed values | `65536`          |
-| Parameter type | read-only      |
+| Allowed values | `64-2147483647`  |
+| Parameter type | dynamic        |
 | Documentation  | [logical_decoding_work_mem](https://www.postgresql.org/docs/13/runtime-config-resource.html#GUC-LOGICAL-DECODING-WORK-MEM)   |
 
 
@@ -208,6 +208,5 @@ ms.topic: include
 
 
 [!INCLUDE [server-parameters-azure-notes-work_mem](./server-parameters-azure-notes-work_mem.md)]
-
 
 
