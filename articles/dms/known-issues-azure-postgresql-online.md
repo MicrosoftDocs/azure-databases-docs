@@ -20,7 +20,7 @@ Known issues and limitations associated with online migrations from PostgreSQL t
 
 ## Online migration configuration
 
-- The source PostgreSQL server must be running version 9.4, 9.5, 9.6, 10, or 11. For more information, see [Supported PostgreSQL database versions](../postgresql/concepts-supported-versions.md).
+- The PostgreSQL source versions supported start from 9.4, and the target version supported is till 14.9.
 - Only migrations to the same or a higher version are supported. For example, migrating PostgreSQL 9.5 to Azure Database for PostgreSQL 9.6 or 10 is supported. Migrating from PostgreSQL 11 to PostgreSQL 9.6 isn't supported.
 - To enable logical replication in the *source PostgreSQL postgresql.conf* file, set the following parameters:
 
