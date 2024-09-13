@@ -16,7 +16,7 @@
 
 The `$pullAll` operator is used to remove all instances of the specified values from an array. This operator is useful when you need to clean up arrays by removing multiple specific elements in a single operation.
 
-In MongoDB, both $pull and $pullAll are used to remove elements from an array, but they differ in how they identify the elements to be removed. $pull removes all elements from an array that match a specific condition, which can be a simple value or a more complex query (like matching sub-document fields). On the other hand, $pullAll removes specific values provided as an array of exact matches, but it doesn't support conditions or queries. Essentially, $pull is more flexible as it allows conditional removal based on various criteria, while $pullAll is simpler, working only with a fixed set of values.
+Both `$pull` and `$pullAll` are used to remove elements from an array, but they differ in how they identify the elements to be removed. `$pull` removes all elements from an array that match a specific condition, which can be a simple value or a more complex query (like matching sub-document fields). On the other hand, `$pullAll` removes specific values provided as an array of exact matches, but it doesn't support conditions or queries. Essentially, `$pull` is more flexible as it allows conditional removal based on various criteria, while `$pullAll` is simpler, working only with a fixed set of values.
 
 ## Syntax
 
