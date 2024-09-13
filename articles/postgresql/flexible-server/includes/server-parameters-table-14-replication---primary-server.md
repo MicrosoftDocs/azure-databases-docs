@@ -29,7 +29,7 @@ ms.topic: include
 | Attribute      | Value                                                      |
 |----------------|------------------------------------------------------------|
 | Category       | Replication / Primary Server |
-| Description    | Specifies the number of transactions by which VACUUM and HOT updates will defer cleanup of dead row versions. |
+| Description    | Specifies the number of transactions by which VACUUM and HOT updates defer cleanup of dead row versions. |
 | Data type      | integer   |
 | Default value  | `0`           |
 | Allowed values | `0-1000000`    |
