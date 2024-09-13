@@ -1,8 +1,8 @@
 ---
-author: akashraokm
-ms.author: akashrao
+author: nachoalonsoportillo
+ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 06/18/2024
+ms.date: 09/13/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
@@ -68,7 +68,7 @@ ms.topic: include
 | Default value  | `on`          |
 | Allowed values | `on,off`       |
 | Parameter type | dynamic        |
-| Documentation  | [enable_hashagg](https://www.postgresql.org/docs/16/runtime-config-query.html#GUC-ENABLE-HASHJOIN)                                |
+| Documentation  | [enable_hashagg](https://www.postgresql.org/docs/16/runtime-config-query.html#GUC-ENABLE-HASHAGG)                                 |
 
 
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
@@ -100,8 +100,8 @@ ms.topic: include
 | Description    | Enables the planner's use of incremental sort steps.                                                                                                                                        |
 | Data type      | boolean   |
 | Default value  | `on`          |
-| Allowed values | `on`           |
-| Parameter type | read-only      |
+| Allowed values | `on,off`       |
+| Parameter type | dynamic        |
 | Documentation  | [enable_incremental_sort](https://www.postgresql.org/docs/16/runtime-config-query.html#GUC-ENABLE-INCREMENTAL-SORT)               |
 
 
@@ -204,7 +204,7 @@ ms.topic: include
 | Default value  | `on`          |
 | Allowed values | `on,off`       |
 | Parameter type | dynamic        |
-| Documentation  | [enable_nestloop](https://www.postgresql.org/docs/16/runtime-config-query.html#GUC-ENABLE-NESTEDLOOP)                             |
+| Documentation  | [enable_nestloop](https://www.postgresql.org/docs/16/runtime-config-query.html#GUC-ENABLE-NESTLOOP)                               |
 
 
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
@@ -344,6 +344,5 @@ ms.topic: include
 
 
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
 
 
