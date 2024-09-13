@@ -2,12 +2,12 @@
   title: $match (aggregation pipeline stage) usage on Azure Cosmos DB for MongoDB vCore
   titleSuffix: Azure Cosmos DB for MongoDB vCore
   description: The $match stage in the aggregation pipeline is used to filter documents that match a specified condition.
-  author: sandeep-nair
+  author: sandeepsnairms
   ms.author: sandnair
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: reference
-  ms.date: 09/02/2024
+  ms.date: 09/11/2024
 ---
 
 # $match (as Aggregation Pipeline Stage)

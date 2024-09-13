@@ -2,12 +2,12 @@
   title: $lookup (aggregation pipeline stage) usage on Azure Cosmos DB for MongoDB vCore
   titleSuffix: Azure Cosmos DB for MongoDB vCore
   description: The $lookup stage in the Aggregation Framework is used to perform left outer joins with other collections.
-  author: sandeep-nair
+  author: sandeepsnairms
   ms.author: sandnair
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: reference
-  ms.date: 09/02/2024
+  ms.date: 09/11/2024
 ---
 
 # $lookup (as Aggregation Pipeline Stage)
