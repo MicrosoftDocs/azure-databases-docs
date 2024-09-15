@@ -68,6 +68,8 @@
           href: flexible-server/connect-java.md
         - name: .NET
           href: flexible-server/connect-csharp.md
+        - name: Go
+          href: flexible-server/connect-go.md
     - name: Database deployment
       items:
       - name: GitHub Actions
@@ -555,10 +557,14 @@
         href: migrate/migration-service/tutorial-migration-service-iaas-offline.md
       - name: Migrate from an Azure VM or an on-premises PostgreSQL server online
         href: migrate/migration-service/tutorial-migration-service-iaas-online.md
-      - name: Migrate from AWS RDS offline
+      - name: Migrate from Amazon RDS offline
         href: migrate/migration-service/tutorial-migration-service-aws-offline.md
-      - name: Migrate from AWS RDS online
+      - name: Migrate from Amazon RDS online
         href: migrate/migration-service/tutorial-migration-service-aws-online.md
+      - name: Migrate from Amazon Aurora offline
+        href: migrate/migration-service/tutorial-migration-service-aurora-offline.md
+      - name: Migrate from Amazon Aurora online
+        href: migrate/migration-service/tutorial-migration-service-aurora-online.md
     - name: Concepts
       items:
       - name: Premigration validation

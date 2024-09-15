@@ -6,11 +6,9 @@ summary: Select your development language to learn how to connect to Azure Cosmo
 metadata:
   title: Azure Cosmos DB for PostgreSQL documentation
   description: Select your development language to learn how to connect to Azure Cosmos DB for PostgreSQL to create, read, update, and delete data.
-  services: service
   ms.service: azure-cosmos-db
   ms.subservice: postgresql
   ms.topic: landing-page
-
   author: jonels-msft
   ms.author: jonels
   ms.date: 10/04/2022

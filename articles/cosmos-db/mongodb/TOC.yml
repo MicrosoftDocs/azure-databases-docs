@@ -432,8 +432,6 @@
             - name: Distribute reads globally
               displayName: read preference
               href: readpreference-global-distribution.md
-            - name: Request quota increase
-              href: ../sql/create-support-request-quota-increase.md
             - name: Configure account capabilities
               href: how-to-configure-capabilities.md
         - name: Troubleshooting and performance
@@ -505,8 +503,6 @@
               href: ../how-to-configure-vnet-service-endpoint.md
             - name: Configure access from private endpoints
               href: ../how-to-configure-private-endpoints.md
-            - name: Connect privately to an Azure Cosmos DB account
-              href: /azure/private-link/tutorial-private-endpoint-cosmosdb-portal?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
             - name: Store credentials in Azure Key Vault
               href: ../store-credentials-key-vault.md
             - name: Access Azure Key Vault with managed identity

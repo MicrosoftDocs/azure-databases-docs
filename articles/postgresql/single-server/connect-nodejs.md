@@ -1,14 +1,19 @@
 ---
-title: 'Quickstart: Use Node.js to connect to Azure Database for PostgreSQL - Single Server'
+title: "Quickstart: Use Node.js to connect to Azure Database for PostgreSQL - Single Server"
 description: This quickstart provides a Node.js code sample you can use to connect and query data from Azure Database for PostgreSQL  - Single Server.
+author: sunilagarwal
+ms.author: sunila
+ms.reviewer: maghan
+ms.date: 09/10/2024
 ms.service: azure-database-postgresql
 ms.subservice: single-server
-ms.author: sunila
-author: sunilagarwal
-ms.custom: mvc, devcenter, devx-track-js, mode-api
-ms.devlang: javascript
 ms.topic: quickstart
-ms.date: 06/24/2022
+ms.custom:
+  - mvc
+  - devcenter
+  - devx-track-js
+  - mode-api
+ms.devlang: javascript
 ---
 
 # Quickstart: Use Node.js to connect and query data in Azure Database for PostgreSQL - Single Server
@@ -32,11 +37,13 @@ In this quickstart, you connect to an Azure Database for PostgreSQL using a Node
 Install [pg](https://www.npmjs.com/package/pg), which is a PostgreSQL client for Node.js.
 
 To do so, run the node package manager (npm) for JavaScript from your command line to install the pg client.
+
 ```bash
 npm install pg
 ```
 
 Verify the installation by listing the packages installed.
+
 ```bash
 npm list
 ```
@@ -49,15 +56,15 @@ Get the connection information needed to connect to the Azure Database for Postg
 
 1. From the server's **Overview** panel, make a note of the **Server name** and **Admin username**. If you forget your password, you can also reset the password from this panel.
 
-   :::image type="content" source="./media/connect-nodejs/server-details-azure-database-postgresql.png" alt-text="Azure Database for PostgreSQL connection string":::
+   :::image type="content" source="media/connect-nodejs/server-details-azure-database-postgresql.png" alt-text="Screenshot of Azure Database for PostgreSQL connection string." lightbox="media/connect-nodejs/server-details-azure-database-postgresql.png":::
 
-## Running the JavaScript code in Node.js
+## Run the JavaScript code in Node.js
 
-You may launch Node.js from the Bash shell, Terminal, or Windows Command Prompt by typing `node`, then run the example JavaScript code interactively by copy and pasting it onto the prompt. Alternatively, you may save the JavaScript code into a text file and launch `node filename.js` with the file name as a parameter to run it.
+You might launch Node.js from the Bash shell, Terminal, or Windows Command Prompt by typing `node`, then run the example JavaScript code interactively by copy and pasting it onto the prompt. Alternatively, you might save the JavaScript code into a text file and launch `node filename.js` with the file name as a parameter to run it.
 
 ## Connect, create table, and insert data
 
-Use the following code to connect and load the data using **CREATE TABLE** and  **INSERT INTO** SQL statements.
+Use the following code to connect and load the data using **CREATE TABLE** and **INSERT INTO** SQL statements.
 The [pg.Client](https://github.com/brianc/node-postgres/wiki/Client) object is used to interface with the PostgreSQL server. The [pg.Client.connect()](https://github.com/brianc/node-postgres/wiki/Client#method-connect) function is used to establish the connection to the server. The [pg.Client.query()](https://github.com/brianc/node-postgres/wiki/Query) function is used to execute the SQL query against PostgreSQL database.
 
 Replace the host, dbname, user, and password parameters with the values that you specified when you created the server and database.
@@ -69,7 +76,7 @@ const config = {
     host: '<your-db-server-name>.postgres.database.azure.com',
     // Do not hard code your username and password.
     // Consider using Node environment variables.
-    user: '<your-db-username>',     
+    user: '<your-db-username>',
     password: '<your-password>',
     database: '<name-of-database>',
     port: 5432,
@@ -121,7 +128,7 @@ const config = {
     host: '<your-db-server-name>.postgres.database.azure.com',
     // Do not hard code your username and password.
     // Consider using Node environment variables.
-    user: '<your-db-username>',     
+    user: '<your-db-username>',
     password: '<your-password>',
     database: '<name-of-database>',
     port: 5432,
@@ -170,7 +177,7 @@ const config = {
     host: '<your-db-server-name>.postgres.database.azure.com',
     // Do not hard code your username and password.
     // Consider using Node environment variables.
-    user: '<your-db-username>',     
+    user: '<your-db-username>',
     password: '<your-password>',
     database: '<name-of-database>',
     port: 5432,
@@ -188,7 +195,7 @@ client.connect(err => {
 
 function queryDatabase() {
     const query = `
-        UPDATE inventory 
+        UPDATE inventory
         SET quantity= 1000 WHERE name='banana';
     `;
 
@@ -218,7 +225,7 @@ const config = {
     host: '<your-db-server-name>.postgres.database.azure.com',
     // Do not hard code your username and password.
     // Consider using Node environment variables.
-    user: '<your-db-username>',     
+    user: '<your-db-username>',
     password: '<your-password>',
     database: '<name-of-database>',
     port: 5432,
@@ -237,7 +244,7 @@ client.connect(err => {
 
 function queryDatabase() {
     const query = `
-        DELETE FROM inventory 
+        DELETE FROM inventory
         WHERE name = 'apple';
     `;
 
@@ -264,7 +271,7 @@ az group delete \
     --yes
 ```
 
-## Next steps
+## Next step
 
 > [!div class="nextstepaction"]
 > [Migrate your database using Export and Import](./how-to-migrate-using-export-and-import.md)

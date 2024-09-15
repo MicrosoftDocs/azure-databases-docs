@@ -1,13 +1,7 @@
 ---
- title: include file
- description: include file
- services: cosmos-db
- author: LuisBosquez
  ms.service: azure-cosmos-db
  ms.topic: include
- ms.date: 04/15/2020
- ms.author: lbosq
- ms.custom: include file
+ ms.date: 08/23/2024
 ---
 
 You can now use the Data Explorer tool in the Azure portal to create an Azure Cosmos DB's API for MongoDB database and container. 

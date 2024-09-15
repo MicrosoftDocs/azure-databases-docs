@@ -1,9 +1,7 @@
 ---
-  author: kanshiG
-  ms.author: govindk
   ms.service: azure-cosmos-db
   ms.topic: include
-  ms.date: 04/19/2023
+  ms.date: 08/23/2024
 ---
 
 At any point in time, an Azure Cosmos DB account's `accountName` property is globally unique while it's alive. After the account is deleted, it's possible to create another account with the same name. If that happens, `accountName` is no longer enough to identify an instance of an account.

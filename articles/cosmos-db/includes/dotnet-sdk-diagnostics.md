@@ -1,9 +1,7 @@
 ---
-author: ealsur
 ms.service: azure-cosmos-db
 ms.topic: include
-ms.date: 08/30/2022
-ms.author: maquaran
+ms.date: 08/23/2024
 ---
 All the responses in the SDK, including `CosmosException`, have a `Diagnostics` property. This property records all the information related to the single request, including if there were retries or any transient failures.
 
