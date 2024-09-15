@@ -86,32 +86,6 @@ use cosmicworks
 db.products.find({"launchDate": {$gt: ISODate("2024-06-01T00:00:00.000Z")}})
 ```
 
-Compounded indexes on nested fields aren't supported by default due to limitations with arrays. If your nested field doesn't contain an array, the index works as intended. If your nested field contains an array (anywhere on the path), that value is ignored in the index.
-
-As an example, a compound index containing `author.lastName` works in this case since there's no array on the path:
-
-```json
-{
-  "_id": ObjectId("617a34e7a867530bff1b2346"),
-  "title": "The Culmination",
-  "author": {lastName: "Lindsay", firstName: "Joseph"},
-  "launchDate": ISODate("2024-06-24T10:08:20.000Z"),
-  "published": true
-}
-```
-
-This same compound index doesn't work in this case since there's an array in the path:
-
-```json
-{
-  "_id": ObjectId("617a34e7a867530bff1b2346"),
-  "title": "Beautiful Creatures",
-  "author": [ {lastName: "Garcia", firstName: "Kami"}, {lastName: "Stohl", firstName: "Margaret"} ],
-  "launchDate": ISODate("2024-06-24T10:08:20.000Z"),
-  "published": true
-}
-```
-
 ### Limitations
 
 - Maximum of 32 fields\paths within a compound index.
