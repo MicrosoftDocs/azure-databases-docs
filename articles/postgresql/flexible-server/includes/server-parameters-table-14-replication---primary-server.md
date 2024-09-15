@@ -1,8 +1,8 @@
 ---
-author: akashraokm
-ms.author: akashrao
+author: nachoalonsoportillo
+ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 06/18/2024
+ms.date: 09/13/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
@@ -29,7 +29,7 @@ ms.topic: include
 | Attribute      | Value                                                      |
 |----------------|------------------------------------------------------------|
 | Category       | Replication / Primary Server |
-| Description    | Specifies the number of transactions by which VACUUM and HOT updates will defer cleanup of dead row versions. |
+| Description    | Specifies the number of transactions by which VACUUM and HOT updates defer cleanup of dead row versions. |
 | Data type      | integer   |
 | Default value  | `0`           |
 | Allowed values | `0-1000000`    |
@@ -38,6 +38,5 @@ ms.topic: include
 
 
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
 
 

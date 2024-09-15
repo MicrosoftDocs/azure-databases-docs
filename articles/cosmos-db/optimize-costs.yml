@@ -7,7 +7,6 @@ metadata:
   title: Optimize your Azure Cosmos DB costs
   description: |
     Optimize your costs for applications in development or production using Azure Cosmos DB.
-  services: service
   ms.service: azure-cosmos-db
   ms.subservice: nosql
   ms.topic: landing-page

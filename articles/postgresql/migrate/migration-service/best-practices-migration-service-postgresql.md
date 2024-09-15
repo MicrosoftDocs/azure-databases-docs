@@ -65,7 +65,7 @@ Although a migration often runs without any problems, it's good practice to plan
 
 ## Migration speed benchmarking
 
-The following table shows the time it takes to perform migrations for databases of various sizes by using the migration service. The migration was performed by using a flexible server with the SKU Standard_D4ds_v4 (4 cores, 16-GB memory, 128-GB disk, and 500 IOPS).
+The following table shows the time it takes to perform migrations for databases of various sizes by using the migration service. The migration was performed by using a flexible server with the SKU Standard_D4ds_v4 (4 cores, 16-GB memory).
 
 | Database size | Approximate time taken (HH:MM) |
 | :--- | :--- |
@@ -81,6 +81,9 @@ The preceding numbers give you an approximation of the time taken to complete th
 
 > [!IMPORTANT]  
 > Choose a higher SKU for your flexible server to perform faster migrations. Azure Database for PostgreSQL - Flexible Server supports near-zero downtime compute and IOPS scaling, so the SKU can be updated with minimal downtime. You can always change the SKU to match the application needs post-migration.
+
+> [!NOTE]
+> Migration into Burstable SKU is supported only in West Europe region currently. In all other regions, the Databases can first be migrated into a General Purpose or Memory Optimized SKU and then scaled down if needed.
 
 ### Improve migration speed: Parallel migration of tables
 

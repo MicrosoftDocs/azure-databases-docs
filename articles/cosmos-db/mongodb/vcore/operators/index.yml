@@ -1,0 +1,91 @@
+### YamlMime:Landing
+
+title: Azure Cosmos DB for MongoDB (vCore) commands
+summary: Review the details for various supported operators you can use with Azure Cosmos DB for MongoDB vCore.
+
+metadata:
+  title: Azure Cosmos DB for MongoDB (vCore) commands
+  description: Review the details for various supported operators you can use with Azure Cosmos DB for MongoDB vCore.
+  author: avijitgupta
+  ms.author: avijitgupta
+  ms.service: azure-cosmos-db
+  ms.subservice: mongodb-vcore
+  ms.topic: landing-page
+  ms.date: 09/12/2024
+landingContent:
+  - title: Aggregation
+    linkLists:
+      - linkListType: reference
+        links:
+          - text: $count
+            url: aggregation/$count.md
+  - title: Array expression
+    linkLists:
+      - linkListType: reference
+        links:
+          - text: $slice
+            url: array-expression/$slice.md
+  - title: Array query
+    linkLists:
+      - linkListType: reference
+        links:
+          - text: $all
+            url: array-query/$all.md
+          - text: $elemMatch
+            url: array-query/$elemmatch.md
+          - text: $size
+            url: array-query/$size.md
+  - title: Array update
+    linkLists:
+      - linkListType: reference
+        links:
+          - text: $push
+            url: array-update/$push.md
+  - title: Bitwise query
+    linkLists:
+      - linkListType: reference
+        links:
+          - text: $bitsAllClear
+            url: bitwise-query/$bitsallclear.md
+  - title: Comparison query
+    linkLists:
+      - linkListType: reference
+        links:
+          - text: $eq
+            url: comparison-query/$eq.md
+  - title: Evaluation query
+    linkLists:
+      - linkListType: reference
+        links:
+          - text: $expr
+            url: evaluation-query/$expr.md
+  - title: Geospatial
+    linkLists:
+      - linkListType: reference
+        links:
+          - text: $geoIntersect
+            url: geospatial/$geointersects.md
+  - title: Logical query
+    linkLists:
+      - linkListType: reference
+        links:
+          - text: $and
+            url: logical-query/$and.md
+  - title: Object expression
+    linkLists:
+      - linkListType: reference
+        links:
+          - text: $mergeObjects
+            url: object-expression/$mergeobjects.md
+  - title: Projection
+    linkLists:
+      - linkListType: reference
+        links:
+          - text: $
+            url: projection/$.md
+          - text: $elemMatch
+            url: projection/$elemmatch.md
+          - text: $meta
+            url: projection/$meta.md
+          - text: $slice
+            url: projection/$slice.md

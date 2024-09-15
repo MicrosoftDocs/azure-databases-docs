@@ -1,9 +1,7 @@
 ---
- author: markjbrown
  ms.service: azure-cosmos-db
  ms.topic: include
- ms.date: 03/15/2023
- ms.author: mjbrown
+ ms.date: 08/23/2024
 ---
 
 ## Capacity planner modes

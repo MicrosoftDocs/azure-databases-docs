@@ -12,7 +12,8 @@
       "monikers": [],
       "open_to_public_contributors": true,
       "type_mapping": {
-        "Conceptual": "Content"
+        "Conceptual": "Content",
+        "ZonePivotGroups": "Toc"
       },
       "build_entry_point": "docs"
     }
@@ -23,6 +24,8 @@
   "git_repository_url_open_to_public_contributors": "https://github.com/MicrosoftDocs/azure-databases-docs",
   "git_repository_branch_open_to_public_contributors": "main",
   "need_preview_pull_request": true,
+  "skip_source_output_uploading": false,
+  "need_pr_comments": true,
   "dependent_repositories": [
     {
       "path_to_root": "_themes",

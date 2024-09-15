@@ -86,6 +86,7 @@ To restore from an existing backup, file a [support request](https://portal.azur
 
     :::image type="content" source="./media/management-operations/backup.png" alt-text="Screenshot of backup schedule configuration page highlighting backup ID." lightbox="./media/management-operations/backup.png" border="true":::
     
+1. Let us know if the source datacenter was deleted. This will be important to identify the correct backup account to restore from.
 1. If restore of the whole cluster is not required, provide the keyspace and table (if applicable) that needs to be restored.
 1. Advise whether you want the backup to be restored in the existing cluster, or in a new cluster.
 1. If you want to restore to a new cluster, you need to create the new cluster first. Ensure that the target cluster matches the source cluster in terms of the number of data centers, and that corresponding data center has the same number of nodes. You can also decide whether to keep the credentials (username/password) in the new target cluster, or allow restore to override username/password with what was originally created.

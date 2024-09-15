@@ -1,9 +1,7 @@
 ---
-  author: kanshiG
-  ms.author: govindk
   ms.service: azure-cosmos-db
   ms.topic: include
-  ms.date: 04/19/2023
+  ms.date: 08/23/2024
 ---
 
 After you submit the restore command and wait on the page, the status bar shows a message about a successfully restored account when the operation finishes. You can also search for the restored account and [track its status](../restore-account-continuous-backup.md#track-restore-status). While the restore is in progress, the account status is **Creating**. After the restore operation finishes, the account status changes to **Online**.

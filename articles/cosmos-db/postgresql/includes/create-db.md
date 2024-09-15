@@ -1,13 +1,8 @@
 ---
- title: include file
- description: include file
- author: jonels-msft
  ms.service: azure-cosmos-db
  ms.subservice: postgresql
  ms.topic: include
- ms.date: 06/06/2023
- ms.author: jonels
-ms.custom: include file
+ ms.date: 08/23/2024
 ---
 
 If you don't have an Azure subscription, create a [free](https://azure.microsoft.com/free/) account before you begin.

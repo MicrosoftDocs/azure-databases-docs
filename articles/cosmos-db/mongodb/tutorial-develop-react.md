@@ -31,6 +31,8 @@ Want to do build this same app with Angular? See the [Angular tutorial video ser
 
 ## Prerequisites
 * [Node.js](https://www.nodejs.org)
+* An HTTP testing tool
+  * We recommend Insomnia, `curl`, Visual Studio, or `Invoke-RestMethod`
 
 ### Finished Project
 Get the completed application [from GitHub](https://github.com/Azure-Samples/react-cosmosdb).
@@ -64,7 +66,7 @@ This video shows how to create an Azure Cosmos DB account in the Azure portal, i
 
 ## Read and create heroes in the app
 
-This video shows how to read heroes and create heroes in the Azure Cosmos DB database, as well as how to test those methods using Postman and the React UI. 
+This video shows how to read heroes and create heroes in the Azure Cosmos DB database, as well as how to test those methods using a HTTP testing utility and the React UI. 
 
 > [!VIDEO https://www.youtube.com/embed/AQK9n_8fsQI] 
 
@@ -95,7 +97,7 @@ In this tutorial, you've learned how to:
 > * Create an app with React, Node, Express, and Azure Cosmos DB 
 > * Create an Azure Cosmos DB account
 > * Connect the app to the Azure Cosmos DB account
-> * Test the app using Postman
+> * Test the app using an HTTP testing utility
 > * Run the application and add heroes to the database
 
 You can proceed to the next tutorial and learn how to import MongoDB data into Azure Cosmos DB.  
