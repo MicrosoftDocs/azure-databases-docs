@@ -6,7 +6,7 @@
   ms.author: avijitgupta
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
-  ms.topic: concepts
+  ms.topic: conceptual
   ms.date: 09/17/2024
 ---
 
