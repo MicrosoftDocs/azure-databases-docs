@@ -120,9 +120,13 @@ For example, if you have 1 TB of data in two regions then:
 * 30-day retention tier is charged for backup storage. 7-day retention tier isn't charged.
 * Restore is always charged in either tier
 
+## Time to live 
+
+* The default restore process restores all the properties of a container including its TTL configuration by default, this can result in deletion of data. To prevent the deletion please pass parameter to disable TTL in [powershell](./restore-account-continuous-backup#trigger-restore-ps) (-DisableTtl $true) or [cli](./restore-account-continuous-backup#trigger-restore-cli) (--disable-ttl True) while doing the restore.  
+
 ## Customer-managed keys
 
-See [How do customer-managed keys affect continuous backups?](./how-to-setup-cmk.md#how-do-customer-managed-keys-affect-continuous-backups) to learn:
+See [How do customer-managed keys affect continuous backups](./how-to-setup-cmk.md#how-do-customer-managed-keys-affect-continuous-backups) to learn:
 
 * How to configure your Azure Cosmos DB account when using customer-managed keys with continuous backups.
 * How do customer-managed keys affect restores?
@@ -148,8 +152,6 @@ Currently the point in time restore functionality has the following limitations:
 * Azure Cosmos DB for MongoDB accounts with continuous backup don't support creating a unique index for an existing collection. For such an account, unique indexes must be created along with their collection; it can be done using the create collection [extension commands](mongodb/custom-commands.md).
 
 * After restoring, it's possible that for certain collections the consistent index may be rebuilding. You can check the status of the rebuild operation via the [IndexTransformationProgress](how-to-manage-indexing-policy.md) property.
-
-* The restore process restores all the properties of a container including its TTL configuration by default, you can pass parameter to disable TTL while doing the restore. As a result, it's possible that the data restored is deleted immediately if you configured that way. In order to prevent this situation, the restore timestamp must be before the TTL properties were added into the container.
 
 * Unique indexes in API for MongoDB can't be added, updated, or dropped when you create a continuous backup mode account. They also can't be modified when you migrate an account from periodic to continuous mode.
 
