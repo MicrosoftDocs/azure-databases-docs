@@ -10,7 +10,7 @@
   ms.date: 09/12/2024
 ---
 
-# $elemMatch (projection operator)
+# $elemMatch (projection)
 
 [!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 
