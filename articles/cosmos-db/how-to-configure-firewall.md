@@ -41,7 +41,18 @@ When IP access control is turned on, the Azure portal provides the ability to sp
 
 ### Allow requests from the Azure portal
 
-When you enable an IP access control policy programmatically, you need to add the IP address for the Azure portal to the **ipRangeFilter** property to maintain access. The portal IP addresses are:
+When you enable an IP access control policy programmatically, you need to add the IP address for the Azure portal to the **ipRangeFilter** property to maintain access. 
+
+Portal scenarios that require this option to be enabled include:
+
+- Accessing MongoDB / Apache Cassandra API accounts with Data Explorer or cosmos.azure.com
+- Using the following Cosmos DB blades within the Azure Portal:
+  - Replicate Data Globally
+  - Browse Collections
+  - Power BI
+  - Azure Synapse
+
+The portal IP addresses are:
 
 |Region|IP address|
 |------|----------|
