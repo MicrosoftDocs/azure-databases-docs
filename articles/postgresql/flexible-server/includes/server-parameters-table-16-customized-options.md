@@ -1,8 +1,8 @@
 ---
-author: akashraokm
-ms.author: akashrao
+author: nachoalonsoportillo
+ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 08/19/2024
+ms.date: 09/13/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
@@ -201,7 +201,7 @@ ms.topic: include
 | Category       | Customized Options |
 | Description    | Fraction of queries to process.                                                                                                                                                             |
 | Data type      | numeric     |
-| Default value  | `1`                 |
+| Default value  | `1.0`               |
 | Allowed values | `0.0-1.0`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 | Parameter type | dynamic        |
 | Documentation  | [auto_explain.sample_rate](https://www.postgresql.org/docs/16/auto-explain.html#AUTO-EXPLAIN-CONFIGURATION-PARAMETERS-SAMPLE-RATE)                     |
@@ -721,6 +721,23 @@ ms.topic: include
 
 
 
+### max_parallel_apply_workers_per_subscription
+
+| Attribute      | Value                                                      |
+|----------------|------------------------------------------------------------|
+| Category       | Customized Options |
+| Description    | Sets the maximum number of parallel apply workers that can be used per subscription in logical replication.                                                                                 |
+| Data type      | integer     |
+| Default value  | `2`                 |
+| Allowed values | `0-1024`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| Parameter type | dynamic        |
+| Documentation  | [max_parallel_apply_workers_per_subscription](https://www.postgresql.org/docs/16/runtime-config-replication.html)                                      |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
 ### pgaudit.log
 
 | Attribute      | Value                                                      |
@@ -1068,7 +1085,7 @@ ms.topic: include
 | Category       | Customized Options |
 | Description    | The role that run_maintenance() will run as. Default is postgres. Only a single role name is allowed.                                                                                       |
 | Data type      | string      |
-| Default value  | `postgres`          |
+| Default value  |                     |
 | Allowed values | `[A-Za-z\\._]*`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | Parameter type | dynamic        |
 | Documentation  | [pg_partman_bgw.role](https://github.com/pgpartman/pg_partman)                                                                                         |
@@ -1296,6 +1313,5 @@ ms.topic: include
 
 
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
 
 

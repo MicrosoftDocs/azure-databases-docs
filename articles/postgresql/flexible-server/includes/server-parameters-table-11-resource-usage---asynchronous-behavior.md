@@ -1,8 +1,8 @@
 ---
-author: akashraokm
-ms.author: akashrao
+author: nachoalonsoportillo
+ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 06/18/2024
+ms.date: 09/13/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
@@ -63,7 +63,7 @@ ms.topic: include
 | Attribute      | Value                                                      |
 |----------------|------------------------------------------------------------|
 | Category       | Resource Usage / Asynchronous Behavior |
-| Description    | Sets the maximum number of workers than can be supported for parallel operations.                         |
+| Description    | Sets the maximum number of workers that can be supported for parallel operations.                         |
 | Data type      | integer   |
 | Default value  | `8`           |
 | Allowed values | `0-1024`       |
@@ -123,6 +123,5 @@ ms.topic: include
 
 
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
 
 

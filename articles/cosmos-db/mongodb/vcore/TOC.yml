@@ -120,6 +120,8 @@
       href: how-to-private-link.md
 - name: Reference
   items:
+    - name: Commands
+      href: commands/toc.yml
     - name: Operators
       href: operators/toc.yml
     - name: Release notes
