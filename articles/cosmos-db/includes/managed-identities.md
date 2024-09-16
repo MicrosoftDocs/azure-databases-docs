@@ -1,11 +1,32 @@
 ---
 ms.service: azure-cosmos-db
 ms.topic: include
-ms.date: 09/11/2024
+ms.date: 09/16/2024
 ms.custom: subject-msia
 ---
 
-Managed identities are one of many types of identity resources in Microsoft Entra ID for applications to use when connecting to services that support Microsoft Entra authentication. Managed identities can be used in lieu of traditional resource-owned credentials like keys. In Azure, managed identities provide a way for your applications to obtain a Microsoft Entra token to authenticate to Azure Cosmos DB without you needing to write a large amount of authentication code. For more information, see [managed identities for Azure resources](/entra/identity/managed-identities-azure-resources/overview).
+Managed identities are one of many types of identity resources in Microsoft Entra ID for applications to use when connecting to services that support Microsoft Entra authentication. Managed identities can be used in lieu of traditional resource-owned credentials like keys. In Azure, managed identities provide a way for your applications to obtain a Microsoft Entra token to authenticate to Azure services without you needing to write a large amount of authentication code.
+
+You can use Microsoft Entra to authenticate to Azure services including, but not limited to:
+
+- Azure SQL
+- Azure AI
+- Azure Cosmos DB
+- Azure Storage
+- Azure Event Hubs
+- Azure Container Registry
+
+You can use managed identities to represent the principal that wishes to authenticate to an Azure data service from Azure host services including, but not limited to:
+
+- Azure Kubernetes Service
+- Azure Container Apps
+- Azure Virtual Machines
+- Azure Functions
+- Azure App Service
+- Azure Spring Apps
+- Azure Service Fabric
+
+For more information, see [managed identities for Azure resources](/entra/identity/managed-identities-azure-resources/overview).
 
 ## Prerequisites
 
@@ -15,20 +36,9 @@ Managed identities are one of many types of identity resources in Microsoft Entr
 
 ## Create an Azure service with a system-assigned managed identity
 
-Create a new Azure service with a system-assigned managed identity. You can use any type of Azure host service including, but not limited to:
+Create a new Azure service with a system-assigned managed identity. This section creates an [Azure Container Instances](/azure/container-instances) resource.
 
-- Azure Container Apps
-- Azure Container Instances
-- Azure Virtual Machines
-- Azure Service Fabric
-- Azure App Service
-- Azure Spring Apps
-- Azure Functions
-- Azure Kubernetes Service
-
-This section creates an [Azure Container Instances](/azure/container-instances) resource.
-
-1. Use [`az container create`](/cli/azure/container#az-container-create) to create a new Azure Cosmos DB account. Configure the account to use a system-assigned managed identity by using the `assign-identity` parameter.
+1. Use [`az container create`](/cli/azure/container#az-container-create) to create a new container instance. Configure the account to use a system-assigned managed identity by using the `assign-identity` parameter.
 
     ```azurecli-interactive
     az container create \
@@ -37,9 +47,6 @@ This section creates an [Azure Container Instances](/azure/container-instances) 
         --image mcr.microsoft.com/dotnet/samples:aspnetapp-chiseled \
         --assign-identity
     ```
-
-    > [!NOTE]
-    > Use the `capabilities` parameter to enable features or change the API for your account. For example, if you are creating an Azure Cosmos DB for Table account, use `--capabilities EnableTable`.
 
 1. Get the details for the system-assigned managed identity using [`az container show`](/cli/azure/container#az-container-show) and a JMESPath query.
 
@@ -80,7 +87,7 @@ Create a user-assigned managed identity that can be used with one or more Azure 
         --resource-group "<name-of-existing-resource-group>"    
     ```
 
-1. Review the output from the command. Record the value of the `id` field as this fully qualified resource identifier is used to assign the user-assigned managed identity to your Azure Cosmos DB account.
+1. Review the output from the command. Record the value of the `id` field as this fully qualified resource identifier is used to assign the user-assigned managed identity to your Azure resource.
 
     ```json
     {
@@ -102,9 +109,7 @@ Create a user-assigned managed identity that can be used with one or more Azure 
 
 ## Create an Azure service with a user-assigned managed identity
 
-Assign the previously created user-assigned managed identity to a new Azure host service.
-
-This section creates an [Azure App Services](/azure/app-service) web app resource.
+Assign the previously created user-assigned managed identity to a new Azure host service. This section creates an [Azure App Services](/azure/app-service) web app resource.
 
 1. Create a new app service plan using [`az appservice plan create`](/cli/azure/appservice/plan#az-appservice-plan-create).
 

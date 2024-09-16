@@ -1,7 +1,7 @@
 ---
 ms.service: azure-cosmos-db
 ms.topic: include
-ms.date: 09/11/2024
+ms.date: 09/16/2024
 ---
 
 ## Sign in to Azure CLI

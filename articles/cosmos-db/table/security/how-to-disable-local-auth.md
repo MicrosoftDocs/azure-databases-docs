@@ -8,7 +8,7 @@ ms.reviewer: stefarroyo
 ms.service: azure-cosmos-db
 ms.subservice: table
 ms.topic: how-to
-ms.date: 09/11/2024
+ms.date: 09/16/2024
 #Customer Intent: As a security user, I want to disable local auth in an Azure Cosmos DB for Table account, so that my developers or applications can no longer access the account in an insecure manner.
 ---
 
@@ -20,7 +20,7 @@ ms.date: 09/11/2024
 Diagram of the sequence of the deployment guide including these locations, in order: Overview, Concepts, Prepare, Role-based access control, and Reference. The 'Prepare' location is currently highlighted.
 :::image-end:::
 
-This article covers the process of disabling local auth for an Azure Cosmos DB for Table account. This procedure is a step that should be performed on new accounts in secure workloads. Alternatively, perform this procedure on existing accounts being migrated to a secure workload pattern.
+This article covers the process of disabling key-based authorization (or resource owner password credential auth) for an Azure Cosmos DB for Table account. Disabling key-based authorization prevents your account from being used without the more secure Microsoft Entra authentication method. This procedure is a step that should be performed on new accounts in secure workloads. Alternatively, perform this procedure on existing accounts being migrated to a secure workload pattern.
 
 ## Prerequisites
 
