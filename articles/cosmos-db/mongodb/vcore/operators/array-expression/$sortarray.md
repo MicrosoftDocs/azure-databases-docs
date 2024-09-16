@@ -33,7 +33,7 @@ The syntax for the `$sortArray` operator is as follows:
 
 | | Description |
 | --- | --- |
-| **`input`** | The array to be sorted.. |
+| **`input`** | The array to be sorted. |
 | **`sortBy`** | Specifies the sort order. This can be a single field or multiple fields with their corresponding sort order (1 for ascending, -1 for descending). |
 
 ## Example
