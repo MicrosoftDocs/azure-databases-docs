@@ -23,8 +23,20 @@ landingContent:
     linkLists:
       - linkListType: reference
         links:
+          - text: $in
+            url: array-expression/$in.md
+          - text: $map
+            url: array-expression/$map.md
+          - text: $range
+            url: array-expression/$range.md
+          - text: $reduce
+            url: array-expression/$reduce.md
+          - text: $size
+            url: array-expression/$size.md
           - text: $slice
             url: array-expression/$slice.md
+          - text: $zip
+            url: array-expression/$zip.md
   - title: Array query
     linkLists:
       - linkListType: reference
