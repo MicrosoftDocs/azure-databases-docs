@@ -1,6 +1,18 @@
-# MongoDB `count` Command
+---
+  title: Count command usage in Azure Cosmos DB for MongoDB vCore
+  titleSuffix: Azure Cosmos DB for MongoDB vCore
+  description: is used to count the number of documents in a collection that match a specified query.
+  author: avijitgupta
+  ms.author: avijitgupta
+  ms.service: azure-cosmos-db
+  ms.subservice: mongodb-vcore
+  ms.topic: reference
+  ms.date: 09/12/2024
+---
 
-The `count` command in MongoDB is used to count the number of documents in a collection that match a specified query. This command is particularly useful for obtaining quick statistics about the data stored in your collections, such as the number of documents that meet certain criteria.
+# count
+
+The `count` command is used to count the number of documents in a collection that match a specified query. This command is particularly useful for obtaining quick statistics about the data stored in your collections, such as the number of documents that meet certain criteria.
 
 ## Syntax
 
@@ -25,6 +37,12 @@ Here are some examples to demonstrate the usage of the `count` command:
    db.stores.count({})
    ```
 
+
+#### Sample output
+
+```javascript
+```
+
 2. **Counting documents with specific criteria**
 
    To count the number of stores with a specific `_id` store ID:
@@ -32,6 +50,12 @@ Here are some examples to demonstrate the usage of the `count` command:
    ```javascript
    db.stores.count({ "store._id": "e5767a9f-cd95-439c-9ec4-7ddc13d22926" })
    ```
+
+
+#### Sample output
+
+```javascript
+```
 
 3. **Counting documents with nested criteria**
 
@@ -41,6 +65,11 @@ Here are some examples to demonstrate the usage of the `count` command:
    db.stores.count({ "promotionEvents.eventName": "Incredible Discount Days" })   
    ```
 
+#### Sample output
+
+```javascript
+```
+
 4. **Counting documents with multiple criteria**
 
    To count the number of stores located at a specific latitude and longitude:
@@ -49,11 +78,11 @@ Here are some examples to demonstrate the usage of the `count` command:
    db.stores.count({ "location.lat": -2.4111, "location.lon": 72.1041 })
    ```
 
+#### Sample output
 
-## Limitations
-
-Delete if no limitations/deviations from standard Mongo command, else update as necessary.
+```javascript
+```
 
 ## Related content
 
-Manually add content as necessary.
+[!INCLUDE[Related content](../includes/related-content.md)]

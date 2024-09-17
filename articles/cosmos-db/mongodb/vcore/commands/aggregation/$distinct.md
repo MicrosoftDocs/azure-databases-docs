@@ -14,7 +14,7 @@
 
 [!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 
-The `distinct` command is used to find the unique values for a specified field across a single collection. This command is particularly useful when you need to identify the set of distinct values for a field without retrieving all the documents or when you need to perform operations like filtering or grouping based on unique values.
+The `distinct` command is used to find the unique values for a specified field across a single collection. This command is useful when you need to identify the set of distinct values for a field without retrieving all the documents or when you need to perform operations like filtering or grouping based on unique values.
 
 ## Syntax
 
@@ -24,13 +24,13 @@ The basic syntax of the `distinct` command is as follows:
 db.collection.distinct(field, query, options)
 ```
 
-- `field`: The field for which to return the distinct values.
+- `field`: The field that receives the returned distinct values.
 - `query`: Optional. A query that specifies the documents from which to retrieve the distinct values.
-- `options`: Optional. Additional options for the command.
+- `options`: Optional. Other options for the command.
 
 ## Examples
 
-Below are examples using the provided sample JSON structure.
+Here are examples using the provided sample JSON structure.
 
 ### Example 1: Find distinct categories in sales
 
@@ -38,6 +38,12 @@ To find the distinct `categoryName` in the `salesByCategory` array:
 
 ```javascript
 db.stores.distinct("sales.salesByCategory.categoryName")
+```
+
+
+#### Sample output
+
+```javascript
 ```
 
 ### Example 2: Find distinct event names in promotion events
@@ -48,12 +54,23 @@ To find the distinct `eventName` in the `promotionEvents` array:
 db.stores.distinct("promotionEvents.eventName")
 ```
 
+#### Sample output
+
+```javascript
+```
+
 ### Example 3: Find distinct discount percentages for a specific event
 
 To find the distinct `discountPercentage` in the `discounts` array for the "Summer Sale" event:
 
 ```javascript
 db.stores.distinct("promotionEvents.discounts.discountPercentage", { "promotionEvents.eventName": "Incredible Discount Days" })
+```
+
+
+#### Sample output
+
+```javascript
 ```
 
 ## Related content

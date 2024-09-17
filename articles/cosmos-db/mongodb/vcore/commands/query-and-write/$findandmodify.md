@@ -10,7 +10,7 @@
   ms.date: 09/12/2024
 ---
 
-# findAndModify Command
+# findAndModify
 
 [!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 
@@ -56,6 +56,11 @@ db.stores.findAndModify({
 })
 ```
 
+#### Sample output
+
+```javascript
+```
+
 ### Example 2: Add a New Promotional Event
 
 Let's add a new promotional event called "Back to School" to the store with `storeId` "e5767a9f-cd95-439c-9ec4-7ddc13d22926" and return the updated document.
@@ -84,6 +89,11 @@ db.stores.findAndModify({
 })
 ```
 
+#### Sample output
+
+```javascript
+```
+
 ### Example 3: Remove a promotional event
 
 Suppose we want to remove the "Summer Sale" promotional event from the store with `storeId` "12345" and return the original document.
@@ -94,6 +104,11 @@ db.stores.findAndModify({
    update: { $pull: { "promotionEvents": { "eventName": "Electronics For All Days" } } },
    new: false
 })
+```
+
+#### Sample output
+
+```javascript
 ```
 
 ## Related content
