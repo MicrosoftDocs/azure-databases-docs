@@ -116,7 +116,7 @@ using (FeedIterator<MyItem> feedIterator = container.GetItemQueryIterator<MyItem
 }
 ```
 > [!IMPORTANT] 
-> On clients running a non-Windows OS, such as Linux and MacOS, the partition key should **always** be specified in the request options.
+> On clients running a non-Windows OS, such as Linux and MacOS, the partition key should **always** be specified in the request options object.
 
 
 # [V2 .NET SDK](#tab/v2)
