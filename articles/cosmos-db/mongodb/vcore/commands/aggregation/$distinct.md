@@ -40,10 +40,28 @@ To find the distinct `categoryName` in the `salesByCategory` array:
 db.stores.distinct("sales.salesByCategory.categoryName")
 ```
 
-
 #### Sample output
 
 ```javascript
+[mongos] StoreData> db.stores.distinct("sales.salesByCategory.categoryName")
+[
+  {
+    _id: 'Discount Derby',
+    discounts: [
+      { categoryName: 'Bath Sheets', discountPercentage: 25 },
+      { categoryName: 'Tablecloths', discountPercentage: 25 },
+      { categoryName: 'Drapes', discountPercentage: 25 }
+    ]
+  }
+]
+[mongos] StoreData> db.stores.distinct("sales.salesByCategory.categoryName")
+[
+  'Music Theory Books',
+  'Superfoods',
+  'Harmonicas',
+  'Garden Tools',
+  ... 883 more items
+]  
 ```
 
 ### Example 2: Find distinct event names in promotion events
@@ -57,6 +75,17 @@ db.stores.distinct("promotionEvents.eventName")
 #### Sample output
 
 ```javascript
+[mongos] StoreData> db.stores.distinct("promotionEvents.eventName")
+[
+{
+    _id: 'Super Saver Celebration',
+    discounts: [
+      { categoryName: 'Face Towels', discountPercentage: 25 },
+      { categoryName: 'Printer Ribbons', discountPercentage: 25 },
+      { categoryName: 'Chromebooks', discountPercentage: 25 }
+    ]
+    }
+]
 ```
 
 ### Example 3: Find distinct discount percentages for a specific event
@@ -66,11 +95,15 @@ To find the distinct `discountPercentage` in the `discounts` array for the "Summ
 ```javascript
 db.stores.distinct("promotionEvents.discounts.discountPercentage", { "promotionEvents.eventName": "Incredible Discount Days" })
 ```
-
-
 #### Sample output
 
 ```javascript
+[mongos] StoreData> db.stores.distinct("promotionEvents.discounts.discountPercentage", { "promotionEvents.eventName": "Incredible Discount Days" })
+[
+   6, 17, 22, 25,  9, 15, 14,
+   7, 12, 19, 24,  5, 20, 10,
+  23, 16, 18, 21, 13, 11,  8
+]
 ```
 
 ## Related content
