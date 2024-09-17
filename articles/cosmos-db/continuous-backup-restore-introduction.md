@@ -122,7 +122,7 @@ For example, if you have 1 TB of data in two regions then:
 
 ## Time to live 
 
-* The default restore process restores all the properties of a container including its TTL configuration by default, this can result in deletion of data. To prevent the deletion please pass parameter to disable TTL in [powershell](./restore-account-continuous-backup.md#trigger-restore-ps) (-DisableTtl $true) or [cli](./restore-account-continuous-backup.md#trigger-restore-cli) (--disable-ttl True) while doing the restore.  
+* The default restore process restores all the properties of a container including its TTL configuration by default, this can result in deletion of data if restore is done without way to disable the TTL. To prevent the deletion please pass parameter to disable TTL in [powershell](./restore-account-continuous-backup.md#trigger-restore-ps) (-DisableTtl $true) or [cli](./restore-account-continuous-backup.md#trigger-restore-cli) (--disable-ttl True) while doing the restore.  
 
 ## Customer-managed keys
 
