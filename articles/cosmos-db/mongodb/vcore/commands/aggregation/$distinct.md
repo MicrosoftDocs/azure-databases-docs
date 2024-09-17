@@ -97,7 +97,7 @@ db.stores.distinct("promotionEvents.discounts.discountPercentage", { "promotionE
 ```
 #### Sample output
 
-```javascript
+```nosql
 [mongos] StoreData> db.stores.distinct("promotionEvents.discounts.discountPercentage", { "promotionEvents.eventName": "Incredible Discount Days" })
 [
    6, 17, 22, 25,  9, 15, 14,

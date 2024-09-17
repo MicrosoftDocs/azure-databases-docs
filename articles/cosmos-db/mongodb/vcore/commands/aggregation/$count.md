@@ -29,7 +29,7 @@ db.collection.count(query, options)
 
 Here are some examples to demonstrate the usage of the `count` command:
 
-1. **Counting all documents in a collection**
+### Example 1. Counting all documents in a collection
 
    To count all documents in the `stores` collection:
 
@@ -44,7 +44,7 @@ Here are some examples to demonstrate the usage of the `count` command:
 60570
 ```
 
-2. **Counting documents with specific criteria**
+### Example 2. Counting documents with specific criteria
 
    To count the number of stores with a specific `_id` store ID:
 
@@ -59,7 +59,7 @@ Here are some examples to demonstrate the usage of the `count` command:
 1
 ```
 
-3. **Counting documents with nested criteria**
+### Example 3. Counting documents with nested criteria
 
    To count the number of stores that have a specific promotion event:
 
@@ -74,7 +74,7 @@ Here are some examples to demonstrate the usage of the `count` command:
 2156
 ```
 
-4. **Counting documents with multiple criteria**
+### Example 4. Counting documents with multiple criteria
 
    To count the number of stores located at a specific latitude and longitude:
 

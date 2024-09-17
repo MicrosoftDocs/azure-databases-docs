@@ -59,29 +59,70 @@ db.stores.findAndModify({
 #### Sample output
 
 ```javascript
+[mongos] StoreData> db.stores.findAndModify({
+...    query: { "_id": "e5767a9f-cd95-439c-9ec4-7ddc13d22926" },
+...    update: { $set: { "sales.totalSales": 550000.00 } },
+...    new: true
+... })
+{
+  _id: 'e5767a9f-cd95-439c-9ec4-7ddc13d22926',
+  name: "Marina's Eyewear Bargains",
+  location: { lat: -87.4376, lon: 42.2928 },
+  staff: { totalStaff: { fullTime: 20, partTime: 6 } },
+  sales: {
+    totalSales: 550000,
+    salesByCategory: [
+      { categoryName: 'Round Sunglasses', totalSales: 39621 },
+      { categoryName: 'Reading Glasses', totalSales: 1146 },
+      { categoryName: 'Aviators', totalSales: 9385 }
+    ]
+  },
+  promotionEvents: [
+    {
+      eventName: 'Incredible Discount Days',
+      promotionalDates: {
+        startDate: { Year: 2024, Month: 2, Day: 11 },
+        endDate: { Year: 2024, Month: 2, Day: 18 }
+      },
+      discounts: [
+        { categoryName: 'Square Sunglasses', discountPercentage: 16 },
+        { categoryName: 'Safety Glasses', discountPercentage: 17 },
+        { categoryName: 'Wayfarers', discountPercentage: 7 },
+        { categoryName: 'Eyewear Accessories', discountPercentage: 12 }
+      ]
+    }
+],
+  tag: [
+    '#ShopLocal',
+    '#FashionStore',
+    '#SeasonalSale',
+    '#FreeShipping',
+    '#MembershipDeals'
+  ]
+}
 ```
 
 ### Example 2: Add a New Promotional Event
 
-Let's add a new promotional event called "Back to School" to the store with `storeId` "e5767a9f-cd95-439c-9ec4-7ddc13d22926" and return the updated document.
+Let's add a new promotional event called "Electronics Super Saver" to the store with `_id_` "e5767a9f-cd95-439c-9ec4-7ddc13d22926" and return the updated document.
 
 ```javascript
 db.stores.findAndModify({
-   query: { "store.storeId": "e5767a9f-cd95-439c-9ec4-7ddc13d22926" },
+   query: { "_id": "e5767a9f-cd95-439c-9ec4-7ddc13d22926" },
    update: { $push: { "promotionEvents": {
-       "eventName": "Electronics For All Days",
+       "eventName": "Electronics Super Saver",
        "promotionalDates": {
-         "startDate": "2024-09-01",
-         "endDate": "2024-09-31"
+         "startDate": "2025-09-31",
+         "endDate": "2025-09-31"
        },
        "discounts": [
          {
            "categoryName": "Laptops",
-           "discountPercentage": 10
+           "discountPercentage": 45
          },
          {
            "categoryName": "Smartphones",
-           "discountPercentage": 5
+           "discountPercentage": 25
          }
        ]
    }}},
@@ -92,23 +133,123 @@ db.stores.findAndModify({
 #### Sample output
 
 ```javascript
+[mongos] StoreData> db.stores.findAndModify({
+...    query: { "_id": "e5767a9f-cd95-439c-9ec4-7ddc13d22926" },
+...    update: { $push: { "promotionEvents": {
+...        "eventName": "Electronics Super Saver",
+...        "promotionalDates": {
+...          "startDate": "2025-09-31",
+...          "endDate": "2025-09-31"
+...        },
+...        "discounts": [
+...          {
+...            "categoryName": "Laptops",
+...            "discountPercentage": 45
+...          },
+...          {
+...            "categoryName": "Smartphones",
+...            "discountPercentage": 25
+...          }
+...        ]
+...    }}},
+...    new: true
+... })
+
+{
+  _id: 'e5767a9f-cd95-439c-9ec4-7ddc13d22926',
+  name: "Marina's Eyewear Bargains",
+  location: { lat: -87.4376, lon: 42.2928 },
+  staff: { totalStaff: { fullTime: 20, partTime: 6 } },
+  sales: {
+    totalSales: 550000,
+    salesByCategory: [
+      { categoryName: 'Round Sunglasses', totalSales: 39621 },
+      { categoryName: 'Reading Glasses', totalSales: 1146 },
+      { categoryName: 'Aviators', totalSales: 9385 }
+    ]
+  },
+  promotionEvents: [
+    {
+      eventName: 'Electronics Super Saver',
+      promotionalDates: { startDate: '2025-09-31', endDate: '2025-09-31' },
+      discounts: [
+        { categoryName: 'Laptops', discountPercentage: 45 },
+        { categoryName: 'Smartphones', discountPercentage: 25 }
+      ]
+    }
+  ],
+  tag: [
+    '#ShopLocal',
+    '#FashionStore',
+    '#SeasonalSale',
+    '#FreeShipping',
+    '#MembershipDeals'
+  ]
+}
 ```
 
 ### Example 3: Remove a promotional event
 
-Suppose we want to remove the "Summer Sale" promotional event from the store with `storeId` "12345" and return the original document.
+Suppose we want to remove the "Electronics Super Saver" promotional event from the store with `_id` "e5767a9f-cd95-439c-9ec4-7ddc13d22926" and return the original document.
 
 ```javascript
 db.stores.findAndModify({
-   query: { "store.storeId": "e5767a9f-cd95-439c-9ec4-7ddc13d22926" },
-   update: { $pull: { "promotionEvents": { "eventName": "Electronics For All Days" } } },
-   new: false
+   query: { "_id": "e5767a9f-cd95-439c-9ec4-7ddc13d22926" },
+   update: { $pull: { "promotionEvents": { "eventName": "Electronics Super Saver" } } },
+   new: true
 })
 ```
 
 #### Sample output
 
 ```javascript
+[mongos] StoreData> db.stores.findAndModify({
+...    query: { "_id_": "e5767a9f-cd95-439c-9ec4-7ddc13d22926" },
+...    update: { $pull: { "promotionEvents": { "eventName": "Electronics Super Saver" } } },
+...    new: true
+... })
+null
+[mongos] StoreData> db.stores.findAndModify({
+...    query: { "_id": "e5767a9f-cd95-439c-9ec4-7ddc13d22926" },
+...    update: { $pull: { "promotionEvents": { "eventName": "Electronics Super Saver" } } },
+...    new: true
+... })
+{
+  _id: 'e5767a9f-cd95-439c-9ec4-7ddc13d22926',
+  name: "Marina's Eyewear Bargains",
+  location: { lat: -87.4376, lon: 42.2928 },
+  staff: { totalStaff: { fullTime: 20, partTime: 6 } },
+  sales: {
+    totalSales: 550000,
+    salesByCategory: [
+      { categoryName: 'Round Sunglasses', totalSales: 39621 },
+      { categoryName: 'Reading Glasses', totalSales: 1146 },
+      { categoryName: 'Aviators', totalSales: 9385 }
+    ]
+  },
+  promotionEvents: [
+    {
+      eventName: 'Incredible Discount Days',
+      promotionalDates: {
+        startDate: { Year: 2024, Month: 2, Day: 11 },
+        endDate: { Year: 2024, Month: 2, Day: 18 }
+      },
+      discounts: [
+        { categoryName: 'Square Sunglasses', discountPercentage: 16 },
+        { categoryName: 'Safety Glasses', discountPercentage: 17 },
+        { categoryName: 'Wayfarers', discountPercentage: 7 },
+        { categoryName: 'Eyewear Accessories', discountPercentage: 12 }
+      ]
+    }
+  ],
+  tag: [
+    '#ShopLocal',
+    '#FashionStore',
+    '#SeasonalSale',
+    '#FreeShipping',
+    '#MembershipDeals'
+  ]
+}
 ```
 
 ## Related content
