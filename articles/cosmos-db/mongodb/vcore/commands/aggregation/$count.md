@@ -1,7 +1,7 @@
 ---
   title: Count command usage in Azure Cosmos DB for MongoDB vCore
   titleSuffix: Azure Cosmos DB for MongoDB vCore
-  description: is used to count the number of documents in a collection that match a specified query.
+  description: Count commend is used to count the number of documents in a collection that match a specified query.
   author: avijitgupta
   ms.author: avijitgupta
   ms.service: azure-cosmos-db
@@ -12,7 +12,7 @@
 
 # count
 
-The `count` command is used to count the number of documents in a collection that match a specified query. This command is particularly useful for obtaining quick statistics about the data stored in your collections, such as the number of documents that meet certain criteria.
+The `count` command is used to count the number of documents in a collection that match a specified query. This command is useful for obtaining quick statistics about the data stored in your collections, such as the number of documents that meet certain criteria.
 
 ## Syntax
 
@@ -31,16 +31,17 @@ Here are some examples to demonstrate the usage of the `count` command:
 
 1. **Counting all documents in a collection**
 
-   To count all documents in the `store` collection:
+   To count all documents in the `stores` collection:
 
    ```javascript
    db.stores.count({})
    ```
 
-
 #### Sample output
 
 ```javascript
+[mongos] StoreData> db.stores.countDocuments({})
+60570
 ```
 
 2. **Counting documents with specific criteria**
@@ -48,13 +49,14 @@ Here are some examples to demonstrate the usage of the `count` command:
    To count the number of stores with a specific `_id` store ID:
 
    ```javascript
-   db.stores.count({ "store._id": "e5767a9f-cd95-439c-9ec4-7ddc13d22926" })
+   db.stores.count({ "_id": "e5767a9f-cd95-439c-9ec4-7ddc13d22926" })
    ```
-
 
 #### Sample output
 
 ```javascript
+[mongos] StoreData> db.stores.count({ "_id": "e5767a9f-cd95-439c-9ec4-7ddc13d22926" })
+1
 ```
 
 3. **Counting documents with nested criteria**
@@ -68,6 +70,8 @@ Here are some examples to demonstrate the usage of the `count` command:
 #### Sample output
 
 ```javascript
+[mongos] StoreData> db.stores.count({ "promotionEvents.eventName": "Incredible Discount Days" })
+2156
 ```
 
 4. **Counting documents with multiple criteria**
@@ -81,6 +85,8 @@ Here are some examples to demonstrate the usage of the `count` command:
 #### Sample output
 
 ```javascript
+[mongos] StoreData> db.stores.count({ "location.lat": -2.4111, "location.lon": 72.1041 })
+1
 ```
 
 ## Related content
