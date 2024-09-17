@@ -14,7 +14,7 @@
 
 [!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 
-The `getMore` command is used to retrieve extra batches of documents from an existing cursor. This command is useful when dealing with large datasets that can't be fetched in a single query due to size limitations. The command allows clients to paginate through the results in manageable chunks.
+The `getMore` command is used to retrieve extra batches of documents from an existing cursor. This command is useful when dealing with large datasets that can't be fetched in a single query due to size limitations. The command allows clients to paginate through the results in manageable chunks in conjunction with commands that return a cursor. For example, [find](./$find.md) and [aggregate](../aggregation/$aggregate.md), to return subsequent batches of documents currently pointed to by the cursor.
 
 ## Syntax
 
@@ -38,18 +38,12 @@ The syntax for the `getMore` command is as follows:
 
 Assume you have a cursor with the ID `1234567890` from the `stores` collection. The following command retrieves the next batch of documents:
 
-```json
+```javascript
 {
    getMore: 1234567890,
    collection: "stores",
    batchSize: 5
 }
-```
-
-
-#### Sample output
-
-```javascript
 ```
 
 ### Example 2: Retrieve more documents without specifying batch size
@@ -61,11 +55,6 @@ If you don't specify the `batchSize`, the server uses the default batch size:
    getMore: 1234567890,
    collection: "stores"
 }
-```
-
-#### Sample output
-
-```javascript
 ```
 
 ## Related content

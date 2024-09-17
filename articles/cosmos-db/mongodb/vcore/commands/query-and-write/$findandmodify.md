@@ -46,7 +46,7 @@ db.collection.findAndModify({
 
 ### Example 1: Update total sales
 
-Suppose we want to update the total sales for the store with `storeId` "e5767a9f-cd95-439c-9ec4-7ddc13d22926" to `550000.00` and return the updated document.
+Suppose we want to update the total sales for the store with `_id` "e5767a9f-cd95-439c-9ec4-7ddc13d22926" to `550000.00` and return the updated document.
 
 ```javascript
 db.stores.findAndModify({
@@ -102,7 +102,7 @@ db.stores.findAndModify({
 }
 ```
 
-### Example 2: Add a New Promotional Event
+### Example 2: Add a new promotional event
 
 Let's add a new promotional event called "Electronics Super Saver" to the store with `_id_` "e5767a9f-cd95-439c-9ec4-7ddc13d22926" and return the updated document.
 
