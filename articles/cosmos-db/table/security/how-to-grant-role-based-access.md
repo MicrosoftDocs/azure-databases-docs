@@ -104,7 +104,7 @@ First, you must create a role definition with a list of `dataActions` to grant a
         "outputs": {
           "definitionId": {
             "type": "String",
-            "value": "/subscriptions/5e6451f0-384a-4ec0-a4a1-bff59cf4837d/resourceGroups/sidandrews-rbac/providers/Microsoft.DocumentDB/databaseAccounts/msdocs-identity-example-table-account/tableRoleDefinitions/dddddddd-9999-0000-1111-eeeeeeeeeeee"
+            "value": "/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourcegroups/msdocs-identity-example/providers/Microsoft.DocumentDB/databaseAccounts/msdocs-identity-example-table-account/tableRoleDefinitions/dddddddd-9999-0000-1111-eeeeeeeeeeee"
           }
         }
       }
@@ -112,7 +112,7 @@ First, you must create a role definition with a list of `dataActions` to grant a
     ```
 
     > [!NOTE]
-    > In this example, the `id` value would be `/subscriptions/5e6451f0-384a-4ec0-a4a1-bff59cf4837d/resourceGroups/sidandrews-rbac/providers/Microsoft.DocumentDB/databaseAccounts/msdocs-identity-example-table-account/tableRoleDefinitions/dddddddd-9999-0000-1111-eeeeeeeeeeee`. This example uses fictituous data and your identifier would be distinct from this example. This is a subset of the typical JSON outputted from the deployment for clarity.
+    > In this example, the `id` value would be `/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourcegroups/msdocs-identity-example/providers/Microsoft.DocumentDB/databaseAccounts/msdocs-identity-example-table-account/tableRoleDefinitions/dddddddd-9999-0000-1111-eeeeeeeeeeee`. This example uses fictituous data and your identifier would be distinct from this example. This is a subset of the typical JSON outputted from the deployment for clarity.
 
 ## Assign role-based access control permission
 
