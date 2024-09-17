@@ -29,7 +29,7 @@ sections:
       - question: |
           What source/target pairs does Azure Database Migration Service currently support?
         answer: |
-          The service currently supports various source/target pairs, or migration scenarios. For a complete listing of the status of each available migration scenario, see the article [Status of migration scenarios supported by the Azure Database Migration Service](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/dms/resource-scenario-status.md).
+          The service currently supports various source/target pairs, or migration scenarios. For a complete listing of the status of each available migration scenario, see the article [Status of migration scenarios supported by the Azure Database Migration Service](/azure/dms/resource-scenario-status).
           
       - question: |
           What versions of SQL Server does Azure Database Migration Service support as a source?
