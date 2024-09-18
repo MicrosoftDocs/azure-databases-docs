@@ -19,11 +19,11 @@ Azure Database for PostgreSQL Single Server planning the root certificate change
 
 ## Why root certificate update is required?
 
-Historically, Azure database for PostgreSQL users could only use the predefined certificate to connect to their PostgreSQL server, which is located [here](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem). However, [Certificate Authority (CA) Browser forum](https://cabforum.org/) recently published reports of multiple certificates issued by CA vendors to be non-compliant.
+Historically, Azure database for PostgreSQL users could only use the predefined certificate to connect to their PostgreSQL server, which is located [here](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem). However, [Certificate Authority (CA) Browser forum](https://cabforum.org/) recently published reports of multiple certificates issued by CA vendors to be noncompliant.
 
-As per the industry's compliance requirements, CA vendors began revoking CA certificates for non-compliant CAs, requiring servers to use certificates issued by compliant CAs, and signed by CA certificates from those compliant CAs. Since Azure Database for PostgreSQL used one of these non-compliant certificates, we needed to rotate the certificate to the compliant version to minimize the potential threat to your Postgres servers.
+As per the industry's compliance requirements, CA vendors began revoking CA certificates for noncompliant CAs, requiring servers to use certificates issued by compliant CAs, and signed by CA certificates from those compliant CAs. Since Azure Database for PostgreSQL used one of these noncompliant certificates, we needed to rotate the certificate to the compliant version to minimize the potential threat to your Postgres servers.
 
-The new certificate is rolled out and in effect starting December, 2022 (12/2022).
+The new certificate is rolled out and in effect starting December  2022 (12/2022).
 
 ## What change was scheduled to be performed starting December 2022 (12/2022)?
 
@@ -87,11 +87,11 @@ You might start receiving connectivity errors while connecting to your Azure Dat
 
 ## Frequently asked questions
 
-### 1. If I am not using SSL/TLS, do I still need to update the root CA?
+### 1. If I'm not using SSL/TLS, do I still need to update the root CA?
 
 No actions required if you aren't using SSL/TLS.
 
-### 2. If I am using SSL/TLS, do I need to restart my database server to update the root CA?
+### 2. If I'm using SSL/TLS, do I need to restart my database server to update the root CA?
 
 No, you don't need to restart the database server to start using the new certificate. This is a client-side change and the incoming client connections need to use the new certificate to ensure that they can connect to the database server.
 
@@ -99,20 +99,20 @@ No, you don't need to restart the database server to start using the new certifi
 
 You can identify whether your connections verify the root certificate by reviewing your connection string.
 -  If your connection string includes `sslmode=verify-ca` or `sslmode=verify-full`, you need to update the certificate.
--  If your connection string includes `sslmode=disable`, `sslmode=allow`, `sslmode=prefer`, or `sslmode=require`, you do not need to update certificates.
+-  If your connection string includes `sslmode=disable`, `sslmode=allow`, `sslmode=prefer`, or `sslmode=require`, you don't need to update certificates.
 -  If your connection string doesn't specify sslmode, you don't need to update certificates.
 
-If you are using a client that abstracts the connection string away, review the client's documentation to understand whether it verifies certificates. To understand PostgreSQL sslmode, review the [SSL mode descriptions](https://www.postgresql.org/docs/11/libpq-ssl.html#ssl-mode-descriptions) in PostgreSQL documentation.
+If you're using a client that abstracts the connection string away, review the client's documentation to understand whether it verifies certificates. To understand PostgreSQL sslmode, review the [SSL mode descriptions](https://www.postgresql.org/docs/11/libpq-ssl.html#ssl-mode-descriptions) in PostgreSQL documentation.
 
 ### 4. What is the impact if using App Service with Azure Database for PostgreSQL?
 
-For Azure app services, connecting to Azure Database for PostgreSQL, we can have two possible scenarios and it depends on how on you are using SSL with your application.
-- This new certificate has been added to App Service at platform level. If you are using the SSL certificates included on App Service platform in your application, then no action is needed.
-- If you are explicitly including the path to SSL cert file in your code, then you would need to download the new cert and update the code to use the new cert. A good example of this scenario is when you use custom containers in App Service as shared in the [App Service documentation](/azure/app-service/tutorial-multi-container-app#configure-database-variables-in-wordpress)
+For Azure app services, connecting to Azure Database for PostgreSQL, we can have two possible scenarios and it depends on how on you're using SSL with your application.
+- This new certificate has been added to App Service at platform level. If you're using the SSL certificates included on App Service platform in your application, then no action is needed.
+- If you're explicitly including the path to SSL cert file in your code, then you would need to download the new cert and update the code to use the new cert. A good example of this scenario is when you use custom containers in App Service as shared in the [App Service documentation](/azure/app-service/tutorial-multi-container-app#configure-database-variables-in-wordpress)
 
 ### 5. What is the impact if using Azure Kubernetes Services (AKS) with Azure Database for PostgreSQL?
 
-If you are trying to connect to the Azure Database for PostgreSQL using Azure Kubernetes Services (AKS), it's similar to access from a dedicated customers host environment. Refer to the steps [here](/azure/aks/ingress-own-tls).
+If you're trying to connect to the Azure Database for PostgreSQL using Azure Kubernetes Services (AKS), it's similar to access from a dedicated customers host environment. Refer to the steps [here](/azure/aks/ingress-own-tls).
 
 ### 6. What is the impact if using Azure Data Factory to connect to Azure Database for PostgreSQL?
 
@@ -122,7 +122,7 @@ For connector using Self-hosted Integration Runtime where you explicitly include
 
 ### 7. Do I need to plan a database server maintenance downtime for this change?
 
-No. Since the change here is only on the client side to connect to the database server, there's no maintenance downtime needed for the database server for this change.
+No. Since the change here's only on the client side to connect to the database server, there's no maintenance downtime needed for the database server for this change.
 
 ### 8. If I create a new server after November 30, 2022, will I be affected?
 
@@ -132,13 +132,13 @@ For servers created after November 30, 2022, you'll continue to use the [Baltimo
 
 These certificates used by Azure Database for PostgreSQL are provided by trusted Certificate Authorities (CA). So the support of these certificates is tied to the support of these certificates by CA. The [BaltimoreCyberTrustRoot](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) certificate is scheduled to expire in 2025 so Microsoft need to perform a certificate change before the expiry. Also in case if there are unforeseen bugs in these predefined certificates, Microsoft needs to make the certificate rotation at the earliest similar to the change performed on February 15, 2021 to ensure the service is secure and compliant always.
 
-### 10. If I am using read replicas, do I need to perform this update only on the primary server , or the read replicas?
+### 10. If I'm using read replicas, do I need to perform this update only on the primary server, or the read replicas?
 
 Since this update is a client-side change, if the client used to read data from the replica server, you need to apply the changes for those clients as well.
 
 ### 11. Do we have server-side query to verify if SSL is being used?
 
-To verify if you are using SSL connection to connect to the server refer [SSL verification](concepts-ssl-connection-security.md#applications-that-require-certificate-verification-for-tls-connectivity).
+To verify if you're using SSL connection to connect to the server refer [SSL verification](concepts-ssl-connection-security.md#applications-that-require-certificate-verification-for-tls-connectivity).
 
 ### 12. Is there an action needed if I already have the DigiCertGlobalRootG2 in my certificate file?
 
@@ -146,7 +146,7 @@ No. There's no action needed if your certificate file already has the **DigiCert
 
 ### 13. How can I check the certificate that is sent by the server?
 
-There are many tools that you can use. For example, DigiCert has a handy [tool](https://www.digicert.com/help/) that shows you the certificate chain of any server name. (This tool works with publicly accessible server; it cannot connect to server that is contained in a virtual network (VNET)).  
+There are many tools that you can use. For example, DigiCert has a handy [tool](https://www.digicert.com/help/) that shows you the certificate chain of any server name. (This tool works with publicly accessible server; it can't connect to server that is contained in a virtual network (virtual network)).  
 Another tool you can use is OpenSSL in the command line, you can use this syntax to check certificates:
 
 ```bash
@@ -155,7 +155,7 @@ openssl s_client -starttls postgres -showcerts -connect <your-postgresql-server-
 
 ### 14. What if I have further questions?
 
-If you have questions, get answers from community experts in [Microsoft Q&A](mailto:AzureDatabaseforPostgreSQL@service.microsoft.com). If you have a support plan and you need technical help, please create a [support request](/azure/azure-portal/supportability/how-to-create-azure-support-request):
+If you have questions, get answers from community experts in [Microsoft Q&A](mailto:AzureDatabaseforPostgreSQL@service.microsoft.com). If you have a support plan and you need technical help, create a [support request](/azure/azure-portal/supportability/how-to-create-azure-support-request):
 - For *Issue type*, select *Technical*.
 - For *Subscription*, select your *subscription*.
 - For *Service*, select *My Services*, then select *Azure Database for PostgreSQL – Single Server*.

@@ -15,11 +15,11 @@ ms.date: 06/24/2022
 
 [!INCLUDE [azure-database-for-postgresql-single-server-deprecation](../includes/azure-database-for-postgresql-single-server-deprecation.md)]
 
-When a server is dropped, the database server backup will be retained for five days in the service. The database backup can be accessed and restored only from the Azure subscription where the server originally resided. The following recommended steps can be followed to recover a dropped PostgreSQL server resource within five days from the time of server deletion. The recommended steps will work only if the backup for the server is still available and not deleted from the system.
+When a server is dropped, the database server backup is retained for five days in the service. The database backup can be accessed and restored only from the Azure subscription where the server originally resided. The following recommended steps can be followed to recover a dropped PostgreSQL server resource within five days from the time of server deletion. The recommended steps work only if the backup for the server is still available and not deleted from the system.
 
-## Pre-requisites
+## Prerequisites
 
-To restore a dropped Azure Database for PostgreSQL server, you need following:
+To restore a dropped Azure Database for PostgreSQL server, you need to follow:
 - Azure Subscription name hosting the original server
 - Location where the server was created
 
@@ -39,9 +39,9 @@ To restore a dropped Azure Database for PostgreSQL server, you need following:
 
 1. Browse to the PostgreSQL [Create Server REST API Page](/rest/api/postgresql/singleserver/servers/create) and select the **Try It** tab highlighted in green. Sign in with your Azure account.
 
-2. Provide the **resourceGroupName**, **serverName** (deleted server name), **subscriptionId** properties, based on the resourceId attribute JSON value captured in the preceding step 3. The api-version property is pre-populated and can be left as-is, as shown in the following image.
+2. Provide the **resourceGroupName**, **serverName** (deleted server name), **subscriptionId** properties, based on the resourceId attribute JSON value captured in the preceding step 3. The api-version property is prepopulated and can be left as-is, as shown in the following image.
 
-3. Scroll below on Request Body section and paste the following replacing the "Dropped server Location"(e.g. CentralUS, EastUS etc.), "submissionTimestamp", and "resourceId". For "restorePointInTime", specify a value of "submissionTimestamp" minus **15 minutes** to ensure the command doesn't error out.
+3. Scroll below on Request Body section and paste the following replacing the "Dropped server Location"(for example, CentralUS, EastUS etc.), "submissionTimestamp", and "resourceId". For "restorePointInTime", specify a value of "submissionTimestamp" minus **15 minutes** to ensure the command doesn't error out.
 
     ```json
     {
@@ -81,5 +81,5 @@ To restore a dropped Azure Database for PostgreSQL server, you need following:
 
 ## Next steps
 
-- If you're trying to restore a server within five days, and still receive an error after accurately following the steps discussed earlier, open a support incident for assistance. If you're trying to restore a dropped server after five days, an error is expected since the backup file cannot be found. Don't open a support ticket in this scenario. The support team cannot provide any assistance if the backup is deleted from the system. 
+- If you're trying to restore a server within five days, and still receive an error after accurately following the steps discussed earlier, open a support incident for assistance. If you're trying to restore a dropped server after five days, an error is expected since the backup file can't be found. Don't open a support ticket in this scenario. The support team can't provide any assistance if the backup is deleted from the system. 
 - To prevent accidental deletion of servers, we highly recommend using [Resource Locks](https://techcommunity.microsoft.com/t5/azure-database-for-postgresql/preventing-the-disaster-of-accidental-deletion-for-your-PostgreSQL/ba-p/825222).

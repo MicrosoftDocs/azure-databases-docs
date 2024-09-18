@@ -14,7 +14,7 @@ ms.topic: how-to
 
 [!INCLUDE [applies-to-postgresql-Flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
-When a server is dropped, the Azure Database for PostgreSQL flexible server backup is retained for five days in the service. The database backup can be accessed and restored only from the Azure subscription where the server originally resided. The following recommended steps can be followed to recover a dropped Azure Database for PostgreSQL flexible server resource within five days from the time of server deletion. The recommended steps work only if the backup for the server is still available and not deleted from the system. While restoring a deleted server often succeeds, it is not always guaranteed, as restoring a deleted server depends on several other factors.
+When a server is dropped, the Azure Database for PostgreSQL flexible server backup is retained for five days in the service. The database backup can be accessed and restored only from the Azure subscription where the server originally resided. The following recommended steps can be followed to recover a dropped Azure Database for PostgreSQL flexible server resource within five days from the time of server deletion. The recommended steps work only if the backup for the server is still available and not deleted from the system. While restoring a deleted server often succeeds, it isn't always guaranteed, as restoring a deleted server depends on several other factors.
 
 ## Prerequisites
 
@@ -43,7 +43,7 @@ To restore a dropped Azure Database for PostgreSQL flexible server instance, you
 
 1. Provide the **resourceGroupName**, **serverName** (Target server name), **subscriptionId** properties, based on the resourceId attribute JSON value captured in the preceding step 3. The api-version property is prepopulated and can be left as-is, as shown in the following image.
 
-1. Go to **Request Body** section and paste the following replacing the "Dropped server Location"(e.g. CentralUS, EastUS etc.), "submissionTimestamp", and "resourceId". For "pointInTimeUTC", specify a value of "submissionTimestamp" plus **5 minutes** to ensure the command doesn't error out.
+1. Go to **Request Body** section and paste the following replacing the "Dropped server Location"(for example, CentralUS, EastUS etc.), "submissionTimestamp", and "resourceId". For "pointInTimeUTC", specify a value of "submissionTimestamp" plus **5 minutes** to ensure the command doesn't error out.
 
     ```json
       {
@@ -81,9 +81,9 @@ To restore a dropped Azure Database for PostgreSQL flexible server instance, you
    - **Resource Type** = Azure Database for PostgreSQL Flexible servers (Microsoft.DBforPostgreSQL/flexibleServers)
    - **Operation** = Update PostgreSQL Server Create
 
-## Restore a dropped VNET enabled Server
+## Restore a dropped virtual network enabled Server
 
-Restoring a dropped VNET enabled server involves specifying additional network properties such as the delegated subnet resource ID and the private DNS zone ARM resource ID. Follow the steps below to restore your server with the necessary network configurations.
+Restoring a dropped virtual network enabled server involves specifying additional network properties such as the delegated subnet resource ID and the private DNS zone Azure Resource Manager resource ID. Follow the steps below to restore your server with the necessary network configurations.
 
 ```json
 {
@@ -102,8 +102,8 @@ Restoring a dropped VNET enabled server involves specifying additional network p
 
 ## Common Errors
 
-1. If you utilize the incorrect API version, you might experience restore failures or timeouts. Please use 2023-03-01-preview API to avoid such issues.
-1. To avoid potential DNS errors, it is recommended to use a different name when initiating the restore process, as some restore operations might fail with the same name.
+1. If you utilize the incorrect API version, you might experience restore failures or timeouts. Use 2023-03-01-preview API to avoid such issues.
+1. To avoid potential DNS errors, it's recommended to use a different name when initiating the restore process, as some restore operations might fail with the same name.
 
 ## Next step
 
