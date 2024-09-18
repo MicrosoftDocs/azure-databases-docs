@@ -1,24 +1,21 @@
 ---
-title: Quickstart - Create Azure Cosmos DB resources from the Azure portal
-description: Use this quickstart to learn how to create an Azure Cosmos DB database, container, and items by using the Azure portal.
-author: deborahc
-ms.author: dech
+title: Quickstart - Azure portal
+titleSuffix: Azure Cosmos DB for NoSQL
+description: Deploy an Azure Cosmos DB account, database, and container using the Azure portal and Data Explorer.
+author: seesharprun
+ms.author: sidandrews
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: quickstart
-ms.date: 03/03/2023
-ms.custom: mode-ui
+ms.date: 09/18/2024
+# CustomerIntent: As a cloud user, I want to create a new Azure Cosmos DB account, so I can manage resources and data.
 ---
-# Quickstart: Create an Azure Cosmos DB account, database, container, and items from the Azure portal
+
+# Quickstart: Create an Azure Cosmos DB for NoSQL account using the Azure portal
+
 [!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
 
-> [!div class="op_single_selector"]
-> - [Azure portal](quickstart-portal.md)
-> - [.NET](quickstart-dotnet.md)
-> - [Java](quickstart-java.md)
-> - [Node.js](quickstart-nodejs.md)
-> - [Python](quickstart-python.md)
->  
+[!INCLUDE[Developer Quickstart selector](includes/quickstart/dev-selector.md)]
 
 Azure Cosmos DB is Microsoft's globally distributed multi-model database service. You can use Azure Cosmos DB to quickly create and query key/value databases, document databases, and graph databases. This approach benefits from the global distribution and horizontal scale capabilities at the core of Azure Cosmos DB.
 
