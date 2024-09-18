@@ -5862,17 +5862,17 @@
     },
     {
       "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/commands/query-and-write/$find.md",
-      "redirect_url": "/azure/cosmos-db/mongodb/vcore/commands/aggregation/find",
+      "redirect_url": "/azure/cosmos-db/mongodb/vcore/commands/query-and-write/find",
       "redirect_document_id": true
     },
     {
       "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/commands/query-and-write/$findandmodify.md",
-      "redirect_url": "/azure/cosmos-db/mongodb/vcore/commands/aggregation/findandmodify",
+      "redirect_url": "/azure/cosmos-db/mongodb/vcore/commands/query-and-write/findandmodify",
       "redirect_document_id": true
     },
     {
       "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/commands/query-and-write/$getmore.md",
-      "redirect_url": "/azure/cosmos-db/mongodb/vcore/commands/aggregation/getmore",
+      "redirect_url": "/azure/cosmos-db/mongodb/vcore/commands/query-and-write/getmore",
       "redirect_document_id": true
     },
     {
