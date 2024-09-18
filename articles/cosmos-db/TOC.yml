@@ -50,7 +50,7 @@
         - name: Ingest and vectorize document files
           href: gen-ai/document-ingestion.md
         - name: Cosmos AI Graph - Graph RAG
-          href: gen-ai/cosmosai-graph.md
+          href: gen-ai/cosmos-ai-graph.md
         - name: AI agent
           href: ai-agents.md
         - name: Real-time custom content generation

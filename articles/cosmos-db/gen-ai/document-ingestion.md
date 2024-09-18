@@ -1,6 +1,6 @@
 ---
 
-title: Ingest and vectorize document files
+title: Ingest and vectorize document files in Azure Cosmos DB
 description: Learn how to ingest document files into Azure Cosmos DB for NoSQL
 author: jcodella
 ms.service: azure-cosmos-db
@@ -11,7 +11,7 @@ ms.author: jacodel
 
 ---
 
-# Load document files from a Storage Account into Azure Cosmos DB for NoSQL
+# Load document files into Azure Cosmos DB
 
 [!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
 
@@ -22,7 +22,7 @@ We introduce Doc2CDB for Azure Cosmos DB, a powerful accelerator designed to str
 - Retrieval-Augmented Generation (RAG) over Documents. Personalize your Small and Large Language Models to your data with RAG. By extracting text from document files, chunking and vectorizing the data, then storing it in Azure Cosmos DB, you’re then set up to empower the chatbot to generate more accurate and contextually relevant responses to your scenarios. When you ask a question, the chatbot retrieves the most relevant text chunks through vector search and uses them to generate an answer, grounded in your document data.
 
 
-:::image type="content" source="../media/gen-ai/document-ingestion/DocIngestionPipeline.png" alt-text="Diagram of the Cosmos AI Graph infrastructure, components, and flow.":::
+:::image type="content" source="../media/gen-ai/document-ingestion/document-ingestion-pipeline.png" alt-text="Diagram of the Cosmos AI Graph infrastructure, components, and flow.":::
 
 
 ## The end-to-end pipeline
@@ -39,17 +39,17 @@ Doc2CDB includes several key stages in its pipeline:
 5. Text Storage
    - Finally, each text chunk, along with its corresponding vector embedding, is stored in an Azure Cosmos DB for NoSQL container as a unique document. This container is configured to perform efficient vector searches and, eventually, full-text searches. By using Azure Cosmos DB’s powerful vector indexing and search capabilities, users can quickly and easily retrieve relevant information from their text data.
 
-## Benefits of the Doc2CDB Solution Accelerator
+## Benefits of the Doc2CDB solution accelerator
 - Scalability: Handle large volumes of text data with ease, thanks to the scalable nature of Azure AI services and Azure Cosmos DB
 - Efficiency: Streamline the text processing pipeline, reducing the time and effort required to manage and search text data. This is preconfigured for you
 - Advanced Search Capabilities: Utilize ultra-fast and efficient Vector Indexing in Azure Cosmos DB perform vector search to find the most semantically relevant data from your documents
 
-## Get Started!
+## Get started!
 
 The Doc2CDB accelerator designed to help you parse, process, and store your document data more easily to take advantage of Azure Cosmos DB’s rich query language and powerful Vector Similarity Search.  Visit https://aka.ms/Doc2CDB and give it a try today!
 
 
-## Next Steps
+## Next steps
 
 Now that your documents are parsed, chunked, vectorized, and stored in Azure Cosmos DB for NoSQL, check out these resources here to get started with vector search and building AI apps:
 
