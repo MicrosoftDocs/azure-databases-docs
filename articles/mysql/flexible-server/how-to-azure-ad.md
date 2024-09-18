@@ -61,7 +61,7 @@ To create a Microsoft Entra Admin user, follow the following steps.
     - [Application.Read.ALL](/graph/permissions-reference#application-resource-permissions): Allows access to Microsoft Entra service principal (application) information.
 
 > [!IMPORTANT]  
-> Only a [Global Administrator](/azure/active-directory/roles/permissions-reference#global-administrator) or [Privileged Role Administrator](/azure/active-directory/roles/permissions-reference#privileged-role-administrator) can grant these permissions.
+> Only a user with at least the [Privileged Role Administrator](/azure/active-directory/roles/permissions-reference#privileged-role-administrator) can grant these permissions.
 
 - Select a valid Microsoft Entra user or a Microsoft Entra group in the customer tenant to be **Microsoft Entra administrator**. Once Microsoft Entra authentication support has been enabled, Microsoft Entra Admins can be added as security principals with permission to add Microsoft Entra users to the MySQL server.
 
