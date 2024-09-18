@@ -17,12 +17,12 @@ ms.devlang: azurecli
 
 [!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
-Azure Database for MySQL flexible server supports two mutually exclusive network connectivity methods to connect to your flexible server. The two options are:
+Azure Database for MySQL Flexible Server supports two mutually exclusive network connectivity methods to connect to your Flexible Server. The two options are:
 
 - Public access (allowed IP addresses)
 - Private access (VNet Integration)
 
-In this article, we focus on the creation of an Azure Database for MySQL flexible server instance with **Public access (allowed IP addresses)** using Azure CLI. This article provides an overview of Azure CLI commands you can use to create, update, delete, list, and show firewall rules after creating a server. With *Public access (allowed IP addresses)*, the connections to the Azure Database for MySQL flexible server instance are restricted to allowed IP addresses only. The client IP addresses need to be allowed in the firewall rules. To learn more about it, refer to [Public access (allowed IP addresses)](./concepts-networking-public.md#public-access-allowed-ip-addresses). The firewall rules can be defined at the time of server creation (recommended) but can be added later as well.
+In this article, we focus on the creation of an Azure Database for MySQL Flexible Server instance with **Public access (allowed IP addresses)** using Azure CLI. This article provides an overview of Azure CLI commands you can use to create, update, delete, list, and show firewall rules after creating a server. With *Public access (allowed IP addresses)*, the connections to the Azure Database for MySQL Flexible Server instance are restricted to allowed IP addresses only. The client IP addresses need to be allowed in the firewall rules. To learn more about it, refer to [Public access (allowed IP addresses)](./concepts-networking-public.md#public-access-allowed-ip-addresses). The firewall rules can be defined at the time of server creation (recommended) but can be added later as well.
 
 ## Launch Azure Cloud Shell
 
@@ -46,25 +46,25 @@ Select the specific subscription under your account using the [az account set](/
 az account set --subscription <subscription id>
 ```
 
-## Create firewall rule during flexible server using Azure CLI
+## Create firewall rule during Flexible Server using Azure CLI
 
-You can use the `az mysql flexible-server --public access` command to create the Azure Database for MySQL flexible server instance with *Public access (allowed IP addresses)* and configure the firewall rules while creating the server. You can use the **--public-access** switch to provide the allowed IP addresses that can connect to the server. You can provide single or range of IP addresses to be included in the allowed list of IPs. IP address range must be dash-separated and doesn't contain any spaces. There are various options to create an Azure Database for MySQL flexible server instance using Azure CLI, as shown in the following examples.
+You can use the `az mysql flexible-server --public access` command to create the Azure Database for MySQL Flexible Server instance with *Public access (allowed IP addresses)* and configure the firewall rules while creating the server. You can use the **--public-access** switch to provide the allowed IP addresses that can connect to the server. You can provide single or range of IP addresses to be included in the allowed list of IPs. IP address range must be dash-separated and doesn't contain any spaces. There are various options to create an Azure Database for MySQL Flexible Server instance using Azure CLI, as shown in the following examples.
 
 Refer to the Azure CLI [reference documentation](/cli/azure/mysql/flexible-server) for the complete list of configurable CLI parameters. For example, you can optionally specify the resource group in the following commands.
 
-- Create an Azure Database for MySQL flexible server instance with public access and add the client IP address to have access to the server.
+- Create an Azure Database for MySQL Flexible Server instance with public access and add the client IP address to have access to the server.
 
     ```azurecli-interactive
     az mysql flexible-server create --public-access <my_client_ip>
     ```
 
-- Create an Azure Database for MySQL flexible server instance with public access and add the range of IP address to have access to this server.
+- Create an Azure Database for MySQL Flexible Server instance with public access and add the range of IP address to have access to this server.
 
     ```azurecli-interactive
     az mysql flexible-server create --public-access <start_ip_address-end_ip_address>
     ```
 
-- Create an Azure Database for MySQL flexible server instance with public access and allow applications from Azure IP addresses to connect to your server.
+- Create an Azure Database for MySQL Flexible Server instance with public access and allow applications from Azure IP addresses to connect to your server.
 
     ```azurecli-interactive
     az mysql flexible-server create --public-access 0.0.0.0
@@ -73,7 +73,7 @@ Refer to the Azure CLI [reference documentation](/cli/azure/mysql/flexible-serve
     > [!IMPORTANT]  
     > This option configures the firewall to allow public access from Azure services and resources within Azure to this server, including connections from the subscriptions of other customers. When selecting this option, ensure your login and user permissions limit access to only authorized users.
 
-- Create an Azure Database for MySQL flexible server instance with public access and allow all IP address.
+- Create an Azure Database for MySQL Flexible Server instance with public access and allow all IP address.
 
     ```azurecli-interactive
     az mysql flexible-server create --public-access all
@@ -82,7 +82,7 @@ Refer to the Azure CLI [reference documentation](/cli/azure/mysql/flexible-serve
     > [!NOTE]  
     > The above command creates a firewall rule with start IP address=0.0.0.0, end IP address=255.255.255.255 and no IP addresses are blocked. Any host on the Internet can access this server. It is strongly recommended to use this rule only temporarily and only on test servers that do not contain sensitive data.
 
-- Create an Azure Database for MySQL flexible server instance with public access and with no IP address.
+- Create an Azure Database for MySQL Flexible Server instance with public access and with no IP address.
 
     ```azurecli-interactive
     az mysql flexible-server create --public-access none
@@ -97,11 +97,11 @@ The **az mysql flexible-server firewall-rule** command is used from the Azure CL
 
 Commands:
 
-- **create**: Create an Azure Database for MySQL flexible server firewall rule.
-- **list**: List the Azure Database for MySQL flexible server firewall rules.
-- **update**: Update an Azure Database for MySQL flexible server firewall rule.
-- **show**: Show the details of an Azure Database for MySQL flexible server firewall rule.
-- **delete**: Delete an Azure Database for MySQL flexible server firewall rule.
+- **create**: Create an Azure Database for MySQL Flexible Server firewall rule.
+- **list**: List the Azure Database for MySQL Flexible Server firewall rules.
+- **update**: Update an Azure Database for MySQL Flexible Server firewall rule.
+- **show**: Show the details of an Azure Database for MySQL Flexible Server firewall rule.
+- **delete**: Delete an Azure Database for MySQL Flexible Server firewall rule.
 
 Refer to the Azure CLI [reference documentation](/cli/azure/mysql/flexible-server) for the complete list of configurable CLI parameters. For example, in the following commands, you can optionally specify the resource group.
 
@@ -120,7 +120,7 @@ To allow access for a single IP address, provide the single IP address, as in th
 az mysql flexible-server firewall-rule create --resource-group testGroup --name mydemoserver --start-ip-address 1.1.1.1
 ```
 
-To allow applications from Azure IP addresses to connect to your Azure Database for MySQL flexible server instance, provide the IP address 0.0.0.0 as the Start IP, as in this example.
+To allow applications from Azure IP addresses to connect to your Azure Database for MySQL Flexible Server instance, provide the IP address 0.0.0.0 as the Start IP, as in this example.
 
 ```azurecli-interactive
 az mysql flexible-server firewall-rule create --resource-group testGroup --name mydemoserver --start-ip-address 0.0.0.0
@@ -180,6 +180,6 @@ Upon success, there's no output. Upon failure, an error message text is displaye
 
 ## Next steps
 
-- Learn more about [Networking in Azure Database for MySQL flexible server](./concepts-networking.md)
-- Understand more about [Azure Database for MySQL flexible server firewall rules](./concepts-networking-public.md#public-access-allowed-ip-addresses)
-- [Create and manage Azure Database for MySQL flexible server firewall rules using the Azure portal](./how-to-manage-firewall-portal.md)
+- Learn more about [Networking in Azure Database for MySQL Flexible Server](./concepts-networking.md)
+- Understand more about [Azure Database for MySQL Flexible Server firewall rules](./concepts-networking-public.md#public-access-allowed-ip-addresses)
+- [Create and manage Azure Database for MySQL Flexible Server firewall rules using the Azure portal](./how-to-manage-firewall-portal.md)
