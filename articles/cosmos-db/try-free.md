@@ -98,7 +98,7 @@ From the [Try Azure Cosmos DB home page](https://aka.ms/trycosmosdb), select an 
 
 Launch the Quickstart in Data Explorer in Azure portal to start using Azure Cosmos DB or get started with our documentation.
 
-* [API for NoSQL](nosql/quickstart-portal.md#create-container-database)
+* [API for NoSQL](nosql/quickstart-portal.md)
 * [API for PostgreSQL](postgresql/quickstart-create-portal.md)
 * [API for MongoDB](mongodb/quickstart-python.md#object-model)
 * [API for Apache Cassandra](cassandra/adoption.md)
@@ -200,7 +200,7 @@ After you create a Try Azure Cosmos DB sandbox account, you can start building a
 * [Create a notebook](nosql/tutorial-create-notebook-vscode.md) and analyze your data.
 * Learn more about [understanding your Azure Cosmos DB bill](understand-your-bill.md)
 * Get started with Azure Cosmos DB with one of our quickstarts:
-  * [Get started with Azure Cosmos DB for NoSQL](nosql/quickstart-portal.md#create-container-database)
+  * [Get started with Azure Cosmos DB for NoSQL](nosql/quickstart-portal.md)
   * [Get started with Azure Cosmos DB for PostgreSQL](postgresql/quickstart-create-portal.md)
   * [Get started with Azure Cosmos DB for MongoDB](mongodb/quickstart-python.md#object-model)
   * [Get started with Azure Cosmos DB for Cassandra](cassandra/adoption.md)
