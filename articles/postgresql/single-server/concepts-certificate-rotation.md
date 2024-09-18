@@ -3,7 +3,7 @@ title: Certificate rotation for Azure Database for PostgreSQL Single server
 description: Learn about the upcoming changes of root certificate changes that affect Azure Database for PostgreSQL Single server
 author: GennadNY
 ms.author: gennadyk
-ms.date: 06/22/2022
+ms.date: 09/20/2022
 ms.service: azure-database-postgresql
 ms.subservice: single-server
 ms.topic: conceptual
@@ -31,7 +31,7 @@ Starting December 2022, the [BaltimoreCyberTrustRoot root certificate](https://w
 
 ## Do I need to make any changes on my client to maintain connectivity?
 
-There are no code or application changes required on client side. if you follow our certificate update recommendation below, you'll still be able to continue to connect as long as **BaltimoreCyberTrustRoot certificate isn't removed** from the combined CA certificate. **We recommend to not remove the BaltimoreCyberTrustRoot from your combined CA certificate until further notice to maintain connectivity.**
+There are no code or application changes required on client side. If you follow our certificate update recommendation below, you'll still be able to continue to connect as long as **BaltimoreCyberTrustRoot certificate isn't removed** from the combined CA certificate. **We recommend to not remove the BaltimoreCyberTrustRoot from your combined CA certificate until further notice to maintain connectivity.**
 
 ## Do I need to make any changes to client certificates
 
@@ -108,7 +108,7 @@ If you're using a client that abstracts the connection string away, review the c
 
 For Azure app services, connecting to Azure Database for PostgreSQL, we can have two possible scenarios and it depends on how on you're using SSL with your application.
 - This new certificate has been added to App Service at platform level. If you're using the SSL certificates included on App Service platform in your application, then no action is needed.
-- If you're explicitly including the path to SSL cert file in your code, then you would need to download the new cert and update the code to use the new cert. A good example of this scenario is when you use custom containers in App Service as shared in the [App Service documentation](/azure/app-service/tutorial-multi-container-app#configure-database-variables-in-wordpress)
+- If you're explicitly including the path to SSL cert file in your code, then you would need to download the new cert and update the code to use the new cert. A good example of this scenario is when you use custom containers in App Service as shared in the [App Service documentation](/azure/app-service/tutorial-multi-container-app#configure-database-variables-in-wordpress).
 
 ### 5. What is the impact if using Azure Kubernetes Services (AKS) with Azure Database for PostgreSQL?
 
@@ -116,7 +116,7 @@ If you're trying to connect to the Azure Database for PostgreSQL using Azure Kub
 
 ### 6. What is the impact if using Azure Data Factory to connect to Azure Database for PostgreSQL?
 
-For connector using Azure Integration Runtime, the connector use certificates in the Windows Certificate Store in the Azure-hosted environment. These certificates are already compatible to the newly applied certificates and therefore no action is needed.
+For connector using Azure Integration Runtime, the connector uses certificates in the Windows Certificate Store in the Azure-hosted environment. These certificates are already compatible to the newly applied certificates and therefore no action is needed.
 
 For connector using Self-hosted Integration Runtime where you explicitly include the path to SSL cert file in your connection string, you need to download the [new certificate](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem) and update the connection string to use it.
 
@@ -146,7 +146,7 @@ No. There's no action needed if your certificate file already has the **DigiCert
 
 ### 13. How can I check the certificate that is sent by the server?
 
-There are many tools that you can use. For example, DigiCert has a handy [tool](https://www.digicert.com/help/) that shows you the certificate chain of any server name. (This tool works with publicly accessible server; it can't connect to server that is contained in a virtual network (virtual network)).  
+There are many tools that you can use. For example, DigiCert has a handy [tool](https://www.digicert.com/help/) that shows you the certificate chain of any server name. (This tool works with publicly accessible server; it can't connect to server that is contained in a virtual network.  
 Another tool you can use is OpenSSL in the command line, you can use this syntax to check certificates:
 
 ```bash
