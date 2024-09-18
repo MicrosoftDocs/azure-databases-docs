@@ -24,7 +24,7 @@ Virtual Network (VNet) services endpoints and rules extend the private address s
 
 1. Ensure that the Allowed access to Azure services control is set to **OFF**.
 
-1. Next, select on **+ Adding existing virtual network**. If you don't have an existing virtual network, you can select **+ Create new virtual network** to create one. See [Quickstart: Create a virtual network using the Azure portal](/azure/virtual-network/quick-create-portal).
+1. Next, select **+ Adding existing virtual network**. If you don't have an existing virtual network, you can select **+ Create new virtual network** to create one. See [Quickstart: Create a virtual network using the Azure portal](/azure/virtual-network/quick-create-portal).
 
    :::image type="content" source="media/how-to-manage-vnet-using-portal/1-connection-security.png" alt-text="Screenshot of Azure portal - select Connection security." lightbox="media/how-to-manage-vnet-using-portal/1-connection-security.png":::
 

@@ -28,7 +28,7 @@ To restore a dropped Azure Database for PostgreSQL server:
 
 1. Browse to the [Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_ActivityLog/ActivityLogBlade). Select the **Azure Monitor** service, then select **Activity Log**.
 
-1. In Activity Log, select on **Add filter** as shown and set following filters for the following
+1. In Activity Log, select **Add filter** as shown and set filters for the following:
 
     - **Subscription** = Your Subscription hosting the deleted server
     - **Resource Type** = Azure Database for PostgreSQL servers (Microsoft.DBforPostgreSQL/servers)
@@ -40,9 +40,9 @@ To restore a dropped Azure Database for PostgreSQL server:
 
 1. Browse to the PostgreSQL [Create Server REST API Page](/rest/api/postgresql/singleserver/servers/create) and select the **Try It** tab highlighted in green. Sign in with your Azure account.
 
-1. Provide the **resourceGroupName**, **serverName** (deleted server name), **subscriptionId** properties, based on the resourceId attribute JSON value captured in the preceding step 3. The api-version property is prepopulated and can be left as-is, as shown in the following image.
+1. Provide the **resourceGroupName**, **serverName** (deleted server name), **subscriptionId** properties, based on the resourceId attribute JSON value captured in the preceding step 3. The api-version property is prepopulated and can be left alone.
 
-1. Scroll below on Request Body section and paste the following replacing the "Dropped server Location"(for example, CentralUS, EastUS etc.), "submissionTimestamp", and "resourceId". For "restorePointInTime", specify a value of "submissionTimestamp" minus **15 minutes** to ensure the command doesn't error out.
+1. Scroll below on Request Body section and paste the following replacing the "Dropped server Location" (for example, CentralUS, EastUS etc.), "submissionTimestamp", and "resourceId". For "restorePointInTime", specify a value of "submissionTimestamp" minus **15 minutes** to ensure the command doesn't error out.
 
     ```json
     {

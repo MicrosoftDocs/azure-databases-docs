@@ -40,7 +40,7 @@ Get the connection information needed to connect to the Azure Database for Postg
 1. Switch to **Database** tab to provide the username and password for your database server.
 
    > [!NOTE]
-   > Windows authentication is not supported for Azure Database for PostgreSQL flexible server.**
+   > Windows authentication is not supported for Azure Database for PostgreSQL flexible server.
 
    :::image type="content" source="./media/connect-with-power-bi-desktop/connector-power-bi-ap-3.png" alt-text="Screenshot of entering credentials to connect with Azure Database for PostgreSQL flexible server database.":::
 

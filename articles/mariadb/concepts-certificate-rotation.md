@@ -77,7 +77,7 @@ No actions are required if you aren't using SSL/TLS.
 
 ## What if we removed the BaltimoreCyberTrustRoot certificate?
 
-You'll start to connectivity errors while connecting to your Azure Database for MariaDB server. You'll need to [configure SSL](howto-configure-ssl.md) with [BaltimoreCyberTrustRoot](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) certificate again to maintain connectivity.
+You'll start to see connectivity errors while connecting to your Azure Database for MariaDB server. You'll need to [configure SSL](howto-configure-ssl.md) with [BaltimoreCyberTrustRoot](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) certificate again to maintain connectivity.
 
 ## Frequently asked questions
 

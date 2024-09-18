@@ -146,7 +146,7 @@ No. There's no action needed if your certificate file already has the **DigiCert
 
 ### 13. How can I check the certificate that is sent by the server?
 
-There are many tools that you can use. For example, DigiCert has a handy [tool](https://www.digicert.com/help/) that shows you the certificate chain of any server name. (This tool works with publicly accessible server; it can't connect to server that is contained in a virtual network.  
+There are many tools that you can use. For example, DigiCert has a handy [tool](https://www.digicert.com/help/) that shows you the certificate chain of any server name. (This tool works with publicly accessible server; it can't connect to server that is contained in a virtual network.)
 Another tool you can use is OpenSSL in the command line, you can use this syntax to check certificates:
 
 ```bash
