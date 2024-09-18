@@ -29,7 +29,7 @@ We introduce Doc2CDB for Azure Cosmos DB, a powerful accelerator designed to str
 
 Doc2CDB includes several key stages in its pipeline:
 1. File Upload to Azure Blob Storage
-   - The process begins with uploading documents to Azure Blob Storage. This stage ensures that your files are securely stored and easily accessible for further processing. This is compatible with PDFs, Microsoft Office documents (DOCX, XLSX, PPTX, HTML), and Images (JPEG, PNG, BMP, TIFF, HEIF). Check the [Azure Document Intelligence documentation](https://learn.microsoft.com/azure/ai-services/document-intelligence/concept-read?view=doc-intel-4.0.0&tabs=sample-code#input-requirements) for full details.
+   - The process begins with uploading documents to Azure Blob Storage. This stage ensures that your files are securely stored and easily accessible for further processing. This is compatible with PDFs, Microsoft Office documents (DOCX, XLSX, PPTX, HTML), and Images (JPEG, PNG, BMP, TIFF, HEIF). Check the [Azure Document Intelligence documentation](../../../ai-services/document-intelligence/concept-read#input-requirements) for full details.
 2. Text Extraction
    - Once the files are uploaded, the next step is text extraction. This involves parsing text data and performing OCR on documents using Azure Document Intelligence, to extract text that can be processed and indexed in Azure Cosmos DB. This stage is crucial for preparing the data for subsequent processing.
 3. Text Chunking
