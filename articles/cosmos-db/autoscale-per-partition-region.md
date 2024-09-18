@@ -45,7 +45,7 @@ With dynamic scaling, you can optimize your throughput. The total consumption wo
 
 ## Get started
 
-Dynamic scaling is enabled by default for all Azure Cosmos DB accounts created after **September 25, 2024**. For customers who wish to enable this feature for their older accounts can do so [programmatically](https://review.learn.microsoft.com/en-us/azure/cosmos-db/autoscale-faq?branch=pr-en-us-165&tabs=azure-powerShell#how-can-i-enable-dynamic-autoscale-on-an-account-programatically-) through Azure PowerShell/CLI/Rest API or from the features pane of Azure portal as shown below:
+Dynamic scaling is enabled by default for all Azure Cosmos DB accounts created after **September 25, 2024**. For customers who wish to enable this feature for their older accounts can do so [programmatically](https://review.learn.microsoft.com/en-us/azure/cosmos-db/autoscale-faq?branch=pr-en-us-165&tabs=azure-powerShell#how-can-i-enable-dynamic-autoscale-on-an-account-programatically-) through Azure PowerShell/CLI/Rest API or from the features pane of Azure portal as shown:
 
 1. Navigate to your Azure Cosmos DB account in the [Azure portal](https://portal.azure.com).
 1. Navigate to the **Features** page.
@@ -56,17 +56,17 @@ Dynamic scaling is enabled by default for all Azure Cosmos DB accounts created a
     > [!IMPORTANT]
     > The feature is enabled at the account level, so all autoscale containers and shared throughput databases within the account will automatically have this capability applied. Enabling this feature does not affect resources in the account that are using manual throughput. Manual resources will need to be changed to autoscale to take advantage of dynamic scaling. Enabling this feature has zero downtime or performance impact. This feature is not applicable for serverless accounts
 
-1. Below 3 metrics are used to understand the dynamic scaling behaviour better:
+1. The three metrics that are used to understand the dynamic scaling behavior better:
 
     |Metric Name|Definition|Use Case|
     |-------------|------|-------|
-    |Autoscaled RU|Shows the dynamically scaled provisioned throughput at each partiion and region level only for dynamic autosacle enabled accounts.|Use this metric to verify if the paritions and regions independently scale based on their actual usage.|
+    |Autoscaled RU|Shows the dynamically scaled provisioned throughput at each partition and region level only for dynamic autoscale enabled accounts.|Use this metric to verify if the variations and regions independently scale based on their actual usage.|
     |Provisioned Throughput|Shows the static or dynamically scaled provisioned throughput.|Use this metric to verify that the provisioned throughput matches the workload's needs.|
     |Normalized RU Consumption|This metric represents the ratio of consumed RU/s to provisioned RU/s at each partition and region level.|Use this metric to provide insights into whether the provisioned throughput is under or over-utilized.|
 
     Use [Azure Monitor metrics](monitor-reference.md#supported-metrics-for-microsoftdocumentdbdatabaseaccounts) - `Autoscaled RU` to analyze how the new autoscaling is applied across partitions and regions. Filter to your desired database account and container, then filter or split by the `Physical PartitionID` metric. This metric shows all partitions across their various regions.
 
-    Then, use `Normalized RU Consumption` to see how partitions and regions scale independently. With dynamic scaling, Normalized RU Consumption metric reflects RU/s consumed in secondary regions due to write replication in addition to the read/write RU/s and customers have to provision the RU/s accordingly. You can use the `Provisioned Throughput` metric to see what throughput value is emitted. With dynamic scaling, the Provisioned Throughput metric reflects the sum of each partition’s highest RU/s scaled to within the hour. Because of the hour boundary, the value resets at the start of each hour. 
+    Then, use `Normalized RU Consumption` to see how partitions and regions scale independently. With dynamic scaling, Normalized RU Consumption metric reflects RU/s consumed in secondary regions due to write replication in addition to the read/write RU/s and customers have to set the RU/s accordingly. You can use the `Provisioned Throughput` metric to see what throughput value is emitted. With dynamic scaling, the Provisioned Throughput metric reflects the sum of each partition’s highest RU/s scaled to within the hour. Because of the hour boundary, the value resets at the start of each hour. 
 
 
 

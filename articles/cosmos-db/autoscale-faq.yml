@@ -105,7 +105,7 @@ sections:
       - question: |
           Is autoscale supported for multi-region write accounts?
         answer: |
-          Yes. The maximum RU/s is available in each region that's added to the Azure Cosmos DB account. 
+          Yes. The maximum RU/s is available in each region that we add to the Azure Cosmos DB account. 
 
       - question: |
           How do I enable autoscale on new databases or containers?
@@ -140,7 +140,7 @@ sections:
           
           Example: You have an autoscale database or container that has a maximum RU/s of 20,000 RU/s (scales between 2,000 RU/s and 20,000 RU/s). When you update to use manual provisioned throughput, the initial throughput is 20,000 RU/s. 
 
-          If you need to migrate a large number of throughput resources, consider using this [Azure CLI script - Convert to Autoscale](./scripts/cli/common/convert-to-autoscale.md).
+          If you need to migrate a large number of throughput resources, consider using [Azure CLI script - Convert to Autoscale](./scripts/cli/common/convert-to-autoscale.md).
           
       - question: |
           Can I use the Azure CLI, PowerShell, or Azure Resource Manager to manage databases or containers that use autoscale?
@@ -203,7 +203,7 @@ sections:
           
           For a shared throughput database, when you lower the maximum RU/s, the minimum value you can set it to is `MAX(1,000, highest maximum RU/s ever provisioned / 10, current storage in GB × 10,  1,000 + (MAX(Container count - 25, 0) × 1,000))` rounded to the nearest 1,000 RU/s.  
           
-          These formulas and examples apply to the minimum autoscale maximum RU/s you can set. They are separate from the 0.1 × `Tmax` to `Tmax` range that the system automatically scales to. Regardless of the maximum RU/s, the system always scales between 0.1 × `Tmax` and `Tmax`. 
+          These formulas and examples apply to the minimum autoscale maximum RU/s you can set. They're separate from the 0.1 × `Tmax` to `Tmax` range that the system automatically scales to. Regardless of the maximum RU/s, the system always scales between 0.1 × `Tmax` and `Tmax`. 
           
       - question: |
           How does TTL work with autoscale?
@@ -213,7 +213,7 @@ sections:
           For example, for an autoscale container that has 400 RU/s to 4,000 RU/s:
           - Hour 1: T=0: The container has no usage (no TTL or workload requests). The billable RU/s is 400 RU/s.
           - Hour 1: T=1: TTL is enabled.
-          - Hour 1: T=2: The container starts to get requests. The requests consume 1,000 RUs in 1 second. 200 RUs worth of TTL are used. 
+          - Hour 1: T=2: The container starts to get requests. The requests consume 1,000 RU/s in 1 second. 200 RU/s worth of TTL are used. 
           The billable RU/s is still 1,000 RU/s. Regardless of when the TTL deletes occur, they don't affect the autoscale scaling logic.
           
       - question: |
