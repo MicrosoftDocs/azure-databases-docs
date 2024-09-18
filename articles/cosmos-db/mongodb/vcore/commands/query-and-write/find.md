@@ -1,7 +1,7 @@
 ---
-  title: $find usage on Azure Cosmos DB for MongoDB vCore
+  title: Find command usage on Azure Cosmos DB for MongoDB vCore
   titleSuffix: Azure Cosmos DB for MongoDB vCore
-  description: The $find command is used to query documents within a collection.
+  description: The find command is used to query documents within a collection.
   author: avijitgupta
   ms.author: avijitgupta
   ms.service: azure-cosmos-db
@@ -10,7 +10,7 @@
   ms.date: 09/12/2024
 ---
 
-# $find
+# find
 
 [!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 

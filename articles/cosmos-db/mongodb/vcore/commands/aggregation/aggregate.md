@@ -23,7 +23,7 @@ db.collection.aggregate(pipeline, options)
 ```
 
 - **pipeline**: An array of aggregation stages that process and transform the data.
-- **options**: Optional. Specifies additional options for the aggregation, such as `explain`, `allowDiskUse`, and `cursor`.
+- **options**: Optional. Specifies more options for the aggregation, such as `explain`, `allowDiskUse`, and `cursor`.
 
 ## Examples
 
