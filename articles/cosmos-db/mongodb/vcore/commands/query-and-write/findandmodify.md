@@ -1,5 +1,5 @@
 ---
-  title: findAndModify command usage in Azure Cosmos DB for MongoDB vCore
+  title: FindAndModify command usage in Azure Cosmos DB for MongoDB vCore
   titleSuffix: Azure Cosmos DB for MongoDB vCore
   description: The findAndModify command is used to atomically modify and return a single document.
   author: avijitgupta
