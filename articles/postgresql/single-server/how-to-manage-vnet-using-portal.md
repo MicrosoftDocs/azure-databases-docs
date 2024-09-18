@@ -54,8 +54,6 @@ Virtual Network (VNet) services endpoints and rules extend the private address s
 
 5. Once enabled, select **OK** and you will see that VNet service endpoints are enabled along with a VNet rule.
 
-   :::image type="content" source="./media/how-to-manage-vnet-using-portal/3-vnet-service-endpoints-enabled-vnet-rule-created.png" alt-text="VNet service endpoints enabled and VNet rule created":::
-
 ## Next steps
 
 - Similarly, you can script to [Enable VNet service endpoints and create a VNET rule for Azure Database for PostgreSQL using Azure CLI](how-to-manage-vnet-using-cli.md).
