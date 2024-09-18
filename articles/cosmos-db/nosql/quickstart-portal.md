@@ -58,18 +58,18 @@ Start by creating a new Azure Cosmos DB for NoSQL account
     | **Resource Group** | Create a new resource group or select an existing resource group |
     | **Account Name** | Provide a globally unique name |
     | **Availability Zones** | *Disable* |
-    | **Location** | Select an Azure region that's supported by your subscription |
+    | **Location** | Select a supported Azure region for your subscription |
 
     :::image source="media/quickstart-portal/basics-pane.png" alt-text="Screenshot of the Azure Cosmos DB for NoSQL resource creation 'Basics' pane.":::
 
     > [!TIP]
-    > You can leave any unspecified options to their default values.
+    > You can leave any unspecified options to their default values. You can also configure the account to limit total account throughput to 1,000 request units per second (RU/s) and enable free tier to minimize your costs.
 
 1. On the **Review + create** pane, wait for validation of your account to finish successfully, and then select **Create**.
 
     :::image source="media/quickstart-portal/resource-validation.png" alt-text="Screenshot of the resource validation step in the creation experience.":::
 
-1. The portal will automatically navigate to the **Deployment** pane. Wait for the deployment to complete.
+1. The portal automatically navigates to the **Deployment** pane. Wait for the deployment to complete.
 
     :::image source="media/quickstart-portal/deployment-pending.png" alt-text="Screenshot of the deployment pane with a currently pending deployment.":::
 
@@ -81,13 +81,36 @@ Start by creating a new Azure Cosmos DB for NoSQL account
 
 Next, use the Data Explorer to create a database and container in-portal.
 
-1. TODO
+1. In the account resource pane, select **Data Explorer** in the service menu.
 
-    :::image source="media/quickstart-portal/" alt-text="TODO4":::
+    :::image source="media/quickstart-portal/service-menu-data-explorer.png" alt-text="Screenshot of the Data Explorer option in the service menu for the account.":::
 
-1. TODO
+1. In the **Data Explorer** pane, select the **New Container** option.
 
-    :::image source="media/quickstart-portal/" alt-text="TODO5":::
+    :::image source="media/quickstart-portal/new-container-option.png" alt-text="Screenshot of the 'New Container' option in the Data Explorer.":::
+
+1. In the **New Container** dialog, configure the following values and then select **OK**:
+
+    | | Value |
+    | --- | --- |
+    | **Database** | *Create new* |
+    | **Database id** | `cosmicworks` |
+    | **Share throughput across containers** | Don't select |
+    | **Container id** | `employees` |
+    | **Partition key** | `department/name` |
+    | **Container throughput (autoscale)** | *Autoscale* |
+    | **Container Max RU/s** | `1000` |
+
+    :::image source="media/quickstart-portal/new-container-dialog.png" alt-text="Screenshot of the dialog to create a new database and container with the specified options filled.":::
+
+1. Create a new file named *demo.bicepparam* or (`demo.bicepparam`).
+
+1. Observe the newly created database and container in the Data Explorer's hierarchy.
+
+    :::image source="media/quickstart-portal/data-explorer-tree.png" alt-text="Screenshot of the Data Explorer hierarchy with a database container present.":::
+
+    > [!TIP]
+    > Optionally, you can expand the container node to observe additional properties and configuration settings.
 
 ## Add and query sample data
 
@@ -95,11 +118,43 @@ Finally, use the Data Explorer to create a sample item and then issue a basic qu
 
 1. TODO
 
-    :::image source="media/quickstart-portal/" alt-text="TODO6":::
+    :::image source="media/quickstart-portal/" alt-text="Screenshot of the 'Items' option within a container in the Data Exploer hierarchy.":::
 
 1. TODO
 
-    :::image source="media/quickstart-portal/" alt-text="TODO7":::
+    :::image source="media/quickstart-portal/" alt-text="":::
+
+1. TODO
+
+    :::image source="media/quickstart-portal/" alt-text="":::
+
+1. TODO
+
+    :::image source="media/quickstart-portal/" alt-text="":::
+
+1. TODO
+
+    :::image source="media/quickstart-portal/" alt-text="":::
+
+1. TODO
+
+    :::image source="media/quickstart-portal/" alt-text="":::
+
+1. TODO:
+
+    ```nosql
+
+    ```
+
+    :::image source="media/quickstart-portal/" alt-text="":::
+
+1. TODO
+
+    ```output
+
+    ```
+
+    :::image source="media/quickstart-portal/" alt-text="":::
 
 ## Related content
 
