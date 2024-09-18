@@ -1,5 +1,5 @@
 ---
-  title: find usage on Azure Cosmos DB for MongoDB vCore
+  title: find command usage on Azure Cosmos DB for MongoDB vCore
   titleSuffix: Azure Cosmos DB for MongoDB vCore
   description: The find command is used to query documents within a collection.
   author: avijitgupta

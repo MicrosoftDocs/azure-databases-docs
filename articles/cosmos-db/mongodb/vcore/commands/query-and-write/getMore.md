@@ -1,5 +1,5 @@
 ---
-  title: GetMore command usage in Azure Cosmos DB for MongoDB vCore
+  title: getMore command usage in Azure Cosmos DB for MongoDB vCore
   titleSuffix: Azure Cosmos DB for MongoDB vCore
   description: The getMore command is used to retrieve extra batches of documents from an existing cursor.
   author: avijitgupta
@@ -14,7 +14,7 @@
 
 [!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 
-The `getMore` command is used to retrieve extra batches of documents from an existing cursor. This command is useful when dealing with large datasets that can't be fetched in a single query due to size limitations. The command allows clients to paginate through the results in manageable chunks in conjunction with commands that return a cursor. For example, [find](./find.md) and [aggregate](../aggregation/aggregate.md), to return subsequent batches of documents currently pointed to by the cursor.
+The `getMore` command is used to retrieve extra batches of documents from an existing cursor. This command is useful when dealing with large datasets that can't be fetched in a single query due to size limitations. The command allows clients to paginate through the results in manageable chunks with commands that return a cursor. For example, [find](./find.md) and [aggregate](../aggregation/aggregate.md), to return subsequent batches of documents currently pointed to by the cursor.
 
 ## Syntax
 

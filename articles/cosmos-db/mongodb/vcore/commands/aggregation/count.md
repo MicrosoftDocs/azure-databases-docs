@@ -1,5 +1,5 @@
 ---
-  title: Count command usage in Azure Cosmos DB for MongoDB vCore
+  title: count command usage in Azure Cosmos DB for MongoDB vCore
   titleSuffix: Azure Cosmos DB for MongoDB vCore
   description: Count command is used to count the number of documents in a collection that match a specified query.
   author: avijitgupta

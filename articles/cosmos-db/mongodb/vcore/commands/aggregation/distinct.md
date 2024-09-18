@@ -1,5 +1,5 @@
 ---
-  title: Distinct command usage in Azure Cosmos DB for MongoDB vCore
+  title: distinct command usage in Azure Cosmos DB for MongoDB vCore
   titleSuffix: Azure Cosmos DB for MongoDB vCore
   description: The distinct command is used to find the unique values for a specified field across a single collection.
   author: avijitgupta

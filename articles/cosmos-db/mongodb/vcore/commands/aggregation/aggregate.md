@@ -1,5 +1,5 @@
 ---
-  title: Aggregate command usage in Azure Cosmos DB for MongoDB vCore
+  title: aggregate command usage in Azure Cosmos DB for MongoDB vCore
   titleSuffix: Azure Cosmos DB for MongoDB vCore
   description: The aggregate command is used to process data records and return computed results.
   author: avijitgupta
@@ -23,7 +23,7 @@ db.collection.aggregate(pipeline, options)
 ```
 
 - **pipeline**: An array of aggregation stages that process and transform the data.
-- **options**: Optional. Specifies additional options for the aggregation, such as `explain`, `allowDiskUse`, and `cursor`.
+- **options**: Optional. Specifies more options for the aggregation, such as `explain`, `allowDiskUse`, and `cursor`.
 
 ## Examples
 
