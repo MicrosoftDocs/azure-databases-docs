@@ -7,8 +7,8 @@ ms.date: 09/18/2024
 
 > [!div class="op_single_selector"]
 >
-> - [Azure portal](quickstart-portal.md)
-> - [Bicep](quickstart-template-bicep.md)
-> - [Terraform](quickstart-terraform.md)
-> - [Azure Resource Manager (JSON)](quickstart-template-json.md)
+> - [Azure portal](../../quickstart-portal.md)
+> - [Bicep](../../quickstart-template-bicep.md)
+> - [Terraform](../../quickstart-terraform.md)
+> - [Azure Resource Manager (JSON)](../../quickstart-template-json.md)
 >
