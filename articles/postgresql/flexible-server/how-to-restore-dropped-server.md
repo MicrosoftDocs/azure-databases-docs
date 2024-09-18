@@ -38,40 +38,38 @@ To restore a dropped Azure Database for PostgreSQL flexible server instance, you
 
 1. Browse to the Azure Database for PostgreSQL flexible server [Create Server REST API Page](/rest/api/postgresql/flexibleserver/servers/create) and select the **Try It** tab highlighted in green. Sign in with your Azure account.
 
-   > [!IMPORTANT]  
-   > Use this api-version **_2023-03-01-preview_** rather than the default before running to enable this API function as expected as detailed in the following step.
+  > [!IMPORTANT]  
+  > Use this api-version **_2023-03-01-preview_** rather than the default before running to enable this API function as expected as detailed in the following step.
 
 1. Provide the **resourceGroupName**, **serverName** (Target server name), **subscriptionId** properties, based on the resourceId attribute JSON value captured in the preceding step 3. The api-version property is prepopulated and can be left as-is, as shown in the following image.
-
-    :::image type="content" source="media/how-to-restore-dropped-server/create-server-from-rest-api-azure.png" alt-text="Screenshot showing the REST API Try It page.":::
 
 1. Go to **Request Body** section and paste the following replacing the "Dropped server Location"(e.g. CentralUS, EastUS etc.), "submissionTimestamp", and "resourceId". For "pointInTimeUTC", specify a value of "submissionTimestamp" plus **5 minutes** to ensure the command doesn't error out.
 
     ```json
-    {
-      "location": "Dropped Server Location",
-      "properties":
       {
-        "pointInTimeUTC": "submissionTimestamp + 05 minutes",
-        "createMode": "ReviveDropped",
-        "sourceServerResourceId": "resourceId"
+        "location": "Dropped Server Location",
+        "properties":
+        {
+          "pointInTimeUTC": "submissionTimestamp + 05 minutes",
+          "createMode": "ReviveDropped",
+          "sourceServerResourceId": "resourceId"
+        }
       }
-    }
     ```
-
+    
     For example, if the submission timestamp is 2023-06-15T15:58:02Z, we recommend adding a minimum of 5 minutes to restore point in time 2023-06-15T16:05:02Z and ensure that you're changing three parameters (location,pointInTimeUTC,sourceServerResourceId) as per your restore requirements.
-
-    ```json
-    {
-      "location": "EastUS",
-      "properties":
-      {
-        "pointInTimeUTC": "2023-06-15T16:05:02Z",
-        "createMode": "ReviveDropped",
-        "sourceServerResourceId": "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/SourceResourceGroup-Name/providers/Microsoft.DBforPostgreSQL/flexibleServers/SourceServer-Name"
-      }
-    }
-    ```
+    
+      ```json
+          {
+          "location": "WestUS",
+          "properties":
+          {
+            "pointInTimeUTC": "2023-06-15T16:05:02Z",
+            "createMode": "ReviveDropped",
+            "sourceServerResourceId": "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/SourceResourceGroup-Name/providers/Microsoft.DBforPostgreSQL/flexibleServers/SourceServer-Name"
+          }
+        }
+      ```
 
     > [!IMPORTANT]  
     > There is a time limit of five days after the server was dropped. After five days, an error is expected since the backup file cannot be found.
@@ -100,7 +98,7 @@ Restoring a dropped VNET enabled server involves specifying additional network p
     }
   }
 }
- ```
+```
 
 ## Common Errors
 
