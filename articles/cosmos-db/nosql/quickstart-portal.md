@@ -116,45 +116,69 @@ Next, use the Data Explorer to create a database and container in-portal.
 
 Finally, use the Data Explorer to create a sample item and then issue a basic query to the container.
 
-1. TODO
+1. Expand the node for the **employees** container in the tree of the Data Explorer. Then, select the **Items** option.
 
-    :::image source="media/quickstart-portal/" alt-text="Screenshot of the 'Items' option within a container in the Data Exploer hierarchy.":::
+    :::image source="media/quickstart-portal/data-explorer-container-items.png" alt-text="Screenshot of the 'Items' option within a container in the Data Exploer hierarchy.":::
 
-1. TODO
+1. In the Data Explorer's menu, select **New Item**.
 
-    :::image source="media/quickstart-portal/" alt-text="":::
+    :::image source="media/quickstart-portal/data-explorer-container-new-item.png" alt-text="Screenshot of the 'New Item' option within the Data Explorer menu.":::
 
-1. TODO
+1. Now, insert the following JSON for a new item in the **employees** container and then select **Save**:
 
-    :::image source="media/quickstart-portal/" alt-text="":::
+    ```json
+    {
+      "id": "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb",
+      "name": {
+        "first": "Kai",
+        "last": "Carter"
+      },
+      "email": "<kai@adventure-works.com>",
+      "department": {
+        "name": "Logistics"
+      }
+    }
+    ```
 
-1. TODO
+    :::image source="media/quickstart-portal/data-explorer-new-item.png" alt-text="Screenshot of the JSON content for a new item within the Data Explorer.":::
 
-    :::image source="media/quickstart-portal/" alt-text="":::
+1. In the Data Explorer's menu, select **New SQL Query**.
 
-1. TODO
+    :::image source="media/quickstart-portal/data-explorer-new-query.png" alt-text="Screenshot of the 'New SQL Query' option within the Data Explorer menu.":::
 
-    :::image source="media/quickstart-portal/" alt-text="":::
-
-1. TODO
-
-    :::image source="media/quickstart-portal/" alt-text="":::
-
-1. TODO:
+1. Now, insert the following NoSQL query to get all items for the `logistics` department using a case-insensitive search. The query then formats the output as a structured JSON object. Run the query by selecting **Execute Query**:
 
     ```nosql
-
+    SELECT VALUE {
+        "name": CONCAT(e.name.last, " ", e.name.first),
+        "department": e.department.name,
+        "emailAddresses": [
+            e.email
+        ]
+    }
+    FROM
+        employees e
+    WHERE
+        STRINGEQUALS(e.department.name, "logistics", true)
     ```
 
-    :::image source="media/quickstart-portal/" alt-text="":::
+    :::image source="media/quickstart-portal/data-explorer-query.png" alt-text="Screenshot of NoSQL query text within the Data Explorer.":::
 
-1. TODO
+1. Observe the JSON array output from the query.
 
-    ```output
-
+    ```json
+    [
+      {
+        "name": "Carter Kai",
+        "department": "Logistics",
+        "emailAddresses": [
+          "kai@adventure-works.com"
+        ]
+      }
+    ]
     ```
 
-    :::image source="media/quickstart-portal/" alt-text="":::
+    :::image source="media/quickstart-portal/data-explorer-query-results.png" alt-text="Screenshot of the results of the previous NoSQL query's execution in the Data Explorer.":::
 
 ## Related content
 
