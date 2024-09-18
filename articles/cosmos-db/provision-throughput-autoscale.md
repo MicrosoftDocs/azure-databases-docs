@@ -13,7 +13,7 @@ ms.date: 09/25/2024
 
 In Azure Cosmos DB, you can configure either standard (manual) or autoscale provisioned throughput on your databases and containers. Autoscale provisioned throughput in Azure Cosmos DB allows you to **scale the throughput (RU/s) of your database or container automatically and instantly**. The throughput is scaled based on the usage, without impacting the availability, latency, throughput, or performance of the workload.
 
-Autoscale provisioned throughput is well suited for mission-critical workloads that have variable or unpredictable traffic patterns, and require SLAs on high performance and scale. This article describes the benefits and use cases of autoscale provisioned throughput.
+Autoscale provisioned throughput is well suited for mission-critical workloads that have variable or unpredictable traffic patterns, and require SLAs on high performance and scale. [Dynamic autoscale](autoscale-per-partition-region.md) is recommended for scaling the throughput (RU/s) of the workloads independently based on usage, at per region and per partition level. This article describes the benefits and use cases of autoscale provisioned throughput.
 
 ## Benefits of autoscale
 
@@ -23,7 +23,7 @@ Azure Cosmos DB databases and containers that are configured with autoscale prov
 
 * **Scalable:** Databases and containers automatically scale the provisioned throughput as needed. There's no disruption to client connections, applications, or to Azure Cosmos DB SLAs.
 
-* **Cost-effective:** Autoscale helps optimize your RU/s usage and cost usage by scaling down when not in use. You only pay for the resources that your workloads need on a per-hour basis. Of all hours in a month, if you set autoscale max RU/s(Tmax) and use the full amount Tmax for 66% of the hours or less, you can save with autoscale. To learn more, see the [how to choose between standard (manual) and autoscale provisioned throughput](how-to-choose-offer.md) article.
+* **Cost-effective:** Autoscale helps optimize your RU/s usage and cost usage by scaling down when not in use. You only pay for the resources that your workloads need on a per-hour basis. Of all hours in a month, if you set autoscale max RU/s(Tmax) and use the full amount Tmax for 66% of the hours or less, you can save with autoscale. Adding secondary regions has become more cost-efficient because each region now scales independently based on actual usage with dynamic autoscale. To learn more, see the [how to choose between standard (manual) and autoscale provisioned throughput](how-to-choose-offer.md) article.
 
 * **Highly available:** Databases and containers using autoscale use the same globally distributed, fault-tolerant, highly available Azure Cosmos DB backend to ensure data durability and high availability.
 
@@ -47,7 +47,7 @@ Building a custom solution to these problems not only requires an enormous amoun
 
 When configuring containers and databases with autoscale, you specify the maximum throughput `Tmax` required. Azure Cosmos DB scales the throughput `T` such `0.1*Tmax <= T <= Tmax`. For example, if you set the maximum throughput to 20,000 RU/s, the throughput scales between 2000 to 20,000 RU/s. Because scaling is automatic and instantaneous, at any point in time, you can consume up to the provisioned `Tmax` with no delay. 
 
-Each hour, you're billed for the highest throughput `T` the system scaled to within the hour and the same highest throughput is applied across all paritions and regions. For dynamic autoscale enabled accounts, maximum RU/s utilized per hour for each region and partition is summed up to arrive at the hourly bill. With dynamic scaling, each partition and region scales independently providing cost optimizations.
+Each hour, you're billed for the highest throughput `T` the system scaled to within the hour. When dynamic scaling is enabled, scaling is determined by the RU/s usage on each physical partition and region. As each partition and region scale independently, this can lead to cost savings for non-uniform workloads, as unnecessary scale-ups are avoided.
 
 The entry point for autoscale maximum throughput `Tmax` starts at 1000 RU/s, which scales between 100 - 1000 RU/s. You can set `Tmax` in increments of 1000 RU/s and change the value at any time.  
 
@@ -69,9 +69,9 @@ For more detail, see this [documentation](how-to-choose-offer.md) on how to choo
 || Containers with standard (manual) throughput  | Containers with autoscale throughput |
 |---------|---------|---------|
 | **Provisioned throughput (RU/s)** | Manually provisioned. | Automatically and instantaneously scaled based on the workload usage patterns. |
-| **Rate-limiting of requests/operations (429)**  | May happen, if consumption exceeds provisioned capacity. | doesn't happen if you consume RU/s within the autoscale throughput range that is configured.    |
+| **Rate-limiting of requests/operations (429)**  | May happen, if consumption exceeds provisioned capacity. | Doesn't happen if you consume RU/s within the autoscale throughput range that is configured.    |
 | **Capacity planning** |  You have to do capacity planning and set the exact throughput you need. |    The system automatically takes care of capacity planning and capacity management. |
-| **Pricing** | You pay for the manually provisioned RU/s per hour, using the [standard (manual) RU/s per hour rate](https://azure.microsoft.com/pricing/details/cosmos-db/). | You pay per hour for the highest RU/s the system scaled up to within the hour. <br/><br/> For single write region accounts, you pay for the RU/s used on an hourly basis, using the [autoscale RU/s per hour rate](https://azure.microsoft.com/pricing/details/cosmos-db/). <br/><br/>For accounts with multiple write regions, there's no extra charge for autoscale. You pay for the throughput used on hourly basis using the same [multi-region write RU/s per hour rate](https://azure.microsoft.com/pricing/details/cosmos-db/). <br/><br/>For dynamic autoscale enabled accounts, maximum RU/s utilized per hour for each region and partition is summed up to arrive at the bill |
+| **Pricing** | You pay for the manually provisioned RU/s per hour, using the [standard (manual) RU/s per hour rate](https://azure.microsoft.com/pricing/details/cosmos-db/). | You pay per hour for the highest RU/s the system scaled up to within the hour. <br/><br/> For single write region accounts, you pay for the RU/s used on an hourly basis, using the [autoscale RU/s per hour rate](https://azure.microsoft.com/pricing/details/cosmos-db/). <br/><br/>For accounts with multiple write regions, there's no extra charge for autoscale. You pay for the throughput used on hourly basis using the same [multi-region write RU/s per hour rate](https://azure.microsoft.com/pricing/details/cosmos-db/). <br/><br/>|
 | **Best suited for workload types** |  Predictable and stable workloads|   Unpredictable and variable workloads  |
 
 ## Migrate standard provisioned throughput to autoscale
@@ -81,10 +81,9 @@ Users that want to migrate a large number of resources from standard provisioned
 ## Next steps
 
 * Review the [autoscale FAQ](autoscale-faq.yml).
-* Review the [dynamic autoscale](autoscale-per-partition-region.md)
 * Learn how to [choose between manual and autoscale throughput](how-to-choose-offer.md).
 * Learn how to [provision autoscale throughput on an Azure Cosmos DB database or container](how-to-provision-autoscale-throughput.md).
 * Learn more about [partitioning](partitioning-overview.md) in Azure Cosmos DB.
 * Trying to do capacity planning for a migration to Azure Cosmos DB? You can use information about your existing database cluster for capacity planning.
-    * If all you know is the number of scores and servers in your existing database cluster, read about [estimating request units using vCores or vCPUs](convert-vcore-to-request-unit.md) 
+    * If all you know is the number of vCores and servers in your existing database cluster, read about [estimating request units using vCores or vCPUs](convert-vcore-to-request-unit.md) 
     * If you know typical request rates for your current database workload, read about [estimating request units using Azure Cosmos DB capacity planner](estimate-ru-with-capacity-planner.md)
