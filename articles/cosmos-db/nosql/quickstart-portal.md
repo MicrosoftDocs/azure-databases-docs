@@ -13,16 +13,9 @@ ms.date: 09/18/2024
 
 # Quickstart: Create an Azure Cosmos DB for NoSQL account using the Azure portal
 
-APPLIES TO: :::image type="icon" source="~/reusable-content/ce-skilling/azure/media/cosmos-db/yes-icon.svg" border="false":::
-NoSQL
+[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
 
-> [!div class="op_single_selector"]
->
-> - [Azure portal](quickstart-portal.md)
-> - [Bicep](quickstart-template-bicep.md)
-> - [Terraform](quickstart-terraform.md)
-> - [Azure Resource Manager (JSON)](quickstart-template-json.md)
->
+[!INCLUDE[Interface Quickstart selector](includes/quickstart/interface-selector.md)]
 
 In this quickstart, you create a new Azure Cosmos DB for NoSQL account in the Azure portal. You then use the Data Explorer experience within the Azure portal to create a database and container configuring all required settings. Finally, you add sample data to the container and issue a basic query.
 
