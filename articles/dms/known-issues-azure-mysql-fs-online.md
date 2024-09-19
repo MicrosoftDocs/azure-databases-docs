@@ -7,9 +7,10 @@ ms.reviewer: sanjaymi, randolphwest
 ms.date: 09/18/2024
 ms.service: azure-database-migration-service
 ms.topic: troubleshooting
+ms.collection:
+  - sql-migration-content
 ms.custom:
   - mvc
-  - sql-migration-content
 ---
 
 # Known Issues With Migrations To Azure Database for MySQL
