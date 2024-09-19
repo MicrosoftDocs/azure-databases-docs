@@ -47,6 +47,10 @@ With dynamic scaling, you can optimize your throughput. The total consumption wo
 
 You can use the following metrics to monitor dynamic autoscale:
 
+| Metric Name | Definition | Metric Usage |
+| --- | --- | --- |
+| Autoscaled RU | Shows the dynamically scaled provisioned throughput at each partition and region level only for dynamic autoscale enabled accounts. | Use this metric to see how partitions in each region scale independently based on their usage. |
+
 |Metric Name|Definition|Metric Usage|
 |-------------|------|-------|
 |Autoscaled RU|Shows the dynamically scaled provisioned throughput at each partition and region level only for dynamic autoscale enabled accounts.|Use this metric to see how partitions in each region scale independently based on their usage.|
