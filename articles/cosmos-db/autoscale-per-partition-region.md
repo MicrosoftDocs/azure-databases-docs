@@ -48,14 +48,10 @@ With dynamic scaling, you can optimize your throughput. The total consumption wo
 You can use the following metrics to monitor dynamic autoscale:
 
 | Metric Name | Definition | Metric Usage |
-| --- | --- | --- |
+| --- | ----- | --- |
 | Autoscaled RU | Shows the dynamically scaled provisioned throughput at each partition and region level only for dynamic autoscale enabled accounts. | Use this metric to see how partitions in each region scale independently based on their usage. <br/><br/> Use [Azure Monitor metrics](monitor-reference.md#supported-metrics-for-microsoftdocumentdbdatabaseaccounts) - `Autoscaled RU` to analyze how the new autoscaling is applied across partitions and regions. Filter to your desired database account and container, then filter or split by the Physical PartitionID metric. This metric shows all partitions across their various regions. |
 | Provisioned Throughput | Shows the aggregated highest RU/s scaled to across the hour, and represents the total RU/s scaled to for the hour. | Use this metric to verify that the provisioned throughput matches the workload's needs. <br/><br/> You can use the `Provisioned Throughput` metric to see the throughput value emitted in your bill. |
-| Normalized RU Consumption | This metric represents the ratio of consumed RU/s to provisioned RU/s at each partition and region level. |Use this metric to provide insights into whether the autoscale max throughput is under or over-utilized. <br/><br/> If the metric value is 100% and there are 429s, then that may be a sign you need more RU/s. In contrast, if this metric value is low and there are no 429s, then there could be room to right-size. Learn how to [interpret and debug code 429 rate limiting errors](sql/troubleshoot-request-rate-too-large.md). <br/><br/> The Normalized RU Consumption metric reflects the RU/s consumed in secondary region due to write replication traffic from the primary, in addition to any read traffic on the secondary. |
-
-|Metric Name|Definition|Metric Usage|
-|-------------|------|-------|
-|Autoscaled RU|Shows the dynamically scaled provisioned throughput at each partition and region level only for dynamic autoscale enabled accounts.|Use this metric to see how partitions in each region scale independently based on their usage. <br/><br/> Use [Azure Monitor metrics](monitor-reference.md#supported-metrics-for-microsoftdocumentdbdatabaseaccounts) - Autoscaled RU to analyze how the new autoscaling is applied across partitions and regions. Filter to your desired database account and container, then filter or split by the Physical PartitionID metric. This metric shows all partitions across their various regions.<br/><br/>  |
+| Normalized RU Consumption | This metric represents the ratio of consumed RU/s to provisioned RU/s at each partition and region level. |Use this metric to provide insights into whether the autoscale max throughput is under or over-utilized. <br/><br/> If the metric value is 100% and there are 429 error codes, then that might be a sign you need more RU/s. In contrast, if this metric value is low and there are no 429 error codes, then there could be room to right-size. Learn how to [interpret and debug code 429 rate limiting errors](sql/troubleshoot-request-rate-too-large.md). <br/><br/> The `Normalized RU Consumption` metric reflects the RU/s consumed in secondary region due to write replication traffic from the primary, in addition to any read traffic on the secondary. |
 
 ## Get started
 
@@ -70,8 +66,6 @@ Dynamic scaling is enabled by default for all Azure Cosmos DB accounts created a
 
     > [!IMPORTANT]
     > The feature is enabled at the account level, so all autoscale containers and shared throughput databases within the account will automatically have this capability applied. Enabling this feature does not affect resources in the account that are using manual throughput. Manual resources will need to be changed to autoscale to take advantage of dynamic scaling. Enabling this feature has zero downtime or performance impact. This feature is not applicable for serverless accounts.
-
-
 
 
 
