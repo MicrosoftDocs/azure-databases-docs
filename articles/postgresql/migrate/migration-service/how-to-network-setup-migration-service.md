@@ -55,7 +55,7 @@ The table summarizes the scenarios for connecting a source database to an Azure 
 
 ## Scenario 3: Managed PostgreSQL Services (AWS/GCP) to Azure Database for PostgreSQL
 
-:::image type="content" source="media/how-to-network-setup-migration-service/aws-to-azure-vpn.png" alt-text="Screenshot of a PostgreSQL database from managed PostgreSQL services (AWS, GCP, etc.) connecting to Azure Database for PostgreSQL through the internet or a direct connect service like ExpressRoute or private connection methods." lightbox="media/how-to-network-setup-migration-service/aws-to-azure-vpn.png":::
+:::image type="content" source="media/how-to-network-setup-migration-service/aws-to-azure-vpn.png" alt-text="Screenshot of a PostgreSQL database from managed services (AWS, GCP, etc.) connecting to Azure Database for PostgreSQL via internet or private methods." lightbox="media/how-to-network-setup-migration-service/aws-to-azure-vpn.png":::
 
 The source PostgreSQL instance in a cloud provider (AWS, GCP, etc.) must have a public IP or a direct connection to Azure.
 

@@ -61,7 +61,7 @@ The migration service comes with a simple, wizard-based experience on the Azure 
 
     If you've already created migrations to your Azure Database for PostgreSQL target, the grid contains information about attempted migrations.
 
-1. Select the **Create ** button. Then, you go through a wizard-based series of tabs to create a migration into this Azure Database for PostgreSQL target from the PostgreSQL source instance.
+1. Select the **Create** button. Then, you go through a wizard-based series of tabs to create a migration into this Azure Database for PostgreSQL target from the PostgreSQL source instance.
 
 #### Setup
 
