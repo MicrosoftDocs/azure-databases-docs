@@ -221,7 +221,7 @@ On the migration activity screen, select **Refresh** to update the display until
 > [!NOTE]  
 > You can select the activity to get details of database- and collection-level migration metrics.
 
-:::image type="content" source="media/tutorial-mongodb-to-cosmosdb/dms-activity-completed.png" alt-text="Screenshot of Screnshot that shows the activity status completed.":::
+:::image type="content" source="media/tutorial-mongodb-to-cosmosdb/dms-activity-completed.png" alt-text="Screenshot that shows the activity status completed.":::
 
 ## Verify data in Azure Cosmos DB
 

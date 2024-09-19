@@ -80,4 +80,4 @@ If you're unable to connect to the file share, configure permissions with these 
 
 1. Add the SQL Server service account, and assign it full control access. Check the **SQL Server Configuration Manager** for the SQL Server service account if you're not sure which account is being used.
 
-   :::image type="content" source="media/known-issues-azure-sql-db-managed-instance-online/assign-fileshare-permissions.png" alt-text="Give full control access to the Windows accounts used for migration and for the SQL Server service account. ":::
+   :::image type="content" source="media/known-issues-azure-sql-db-managed-instance-online/assign-fileshare-permissions.png" alt-text="Screenshot showing Give full control access to the Windows accounts used for migration and for the SQL Server service account. ":::
