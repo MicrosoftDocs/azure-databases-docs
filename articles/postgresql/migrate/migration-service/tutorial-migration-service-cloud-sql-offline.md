@@ -30,7 +30,7 @@ The migration service in Azure Database for PostgreSQL is a fully managed servic
 
 To complete the migration, you need the following prerequisites:
 
-[!INCLUDE [prerequisites-migration-service-postgresql-offline-cloudsql](includes/gcp-cloudsql/prerequisites-migration-service-postgresql-offline-cloudsql.md)]
+[!INCLUDE [prerequisites-migration-service-postgresql-offline-cloud-sql](includes/cloud-sql/prerequisites-migration-service-postgresql-offline-cloud-sql.md)]
 
 ## Perform the migration
 
@@ -52,7 +52,7 @@ The migration service comes with a simple, wizard-based experience on the Azure 
 
 1. In the **Overview** tab of the flexible server, on the left menu, scroll down to **Migration** and select it.
 
-    :::image type="content" source="media/tutorial-migration-service-cloudsql-offline/offline-portal-select-migration-pane.png" alt-text="Screenshot of the migration selection in the Azure portal." lightbox="media/tutorial-migration-service-cloudsql-offline/offline-portal-select-migration-pane.png":::
+    :::image type="content" source="media/tutorial-migration-service-cloud-sql-offline/offline-portal-select-migration-pane.png" alt-text="Screenshot of the migration selection in the Azure portal." lightbox="media/tutorial-migration-service-cloud-sql-offline/offline-portal-select-migration-pane.png":::
 
 1. Select the **Create** button to migrate from Google Cloud SQL for PostgreSQL to a flexible server.
 
@@ -63,7 +63,7 @@ The migration service comes with a simple, wizard-based experience on the Azure 
 
 1. Select the **Create** button to go through a wizard-based series of tabs to perform a migration.
 
-    :::image type="content" source="media/tutorial-migration-service-cloudsql-offline/portal-offline-create-migration.png" alt-text="Screenshot of the create migration page." lightbox="media/tutorial-migration-service-cloudsql-offline/portal-offline-create-migration.png":::
+    :::image type="content" source="media/tutorial-migration-service-cloud-sql-offline/portal-offline-create-migration.png" alt-text="Screenshot of the create migration page." lightbox="media/tutorial-migration-service-cloud-sql-offline/portal-offline-create-migration.png":::
 
 #### Setup
 
@@ -86,7 +86,7 @@ To learn more about the premigration validation, visit [premigration](concepts-p
 
 Select the **Next: Connect to source** button.
 
-:::image type="content" source="media/tutorial-migration-service-cloudsql-offline/01-portal-offline-setup-cloudsql.png" alt-text="Screenshot of the Setup Migration page to get started.":::
+:::image type="content" source="media/tutorial-migration-service-cloud-sql-offline/01-portal-offline-setup-cloud-sql.png" alt-text="Screenshot of the Setup Migration page to get started.":::
 
 #### Select Runtime Server
 
@@ -94,7 +94,7 @@ The migration Runtime Server is a specialized feature within the migration servi
 
 For more information about the Runtime Server, visit the [Migration Runtime Server](concepts-migration-service-runtime-server.md).
 
-:::image type="content" source="media/tutorial-migration-service-cloudsql-offline/02-portal-offline-runtime-server-cloudsql.png" alt-text="Screenshot of the Migration Runtime Server page.":::
+:::image type="content" source="media/tutorial-migration-service-cloud-sql-offline/02-portal-offline-runtime-server-cloud-sql.png" alt-text="Screenshot of the Migration Runtime Server page.":::
 
 #### Connect to source
 
@@ -114,7 +114,7 @@ The **Connect to Source** tab prompts you to give details related to the source 
 
 After the successful test connection, select the **Next: Select Migration target** button.
 
-:::image type="content" source="media/tutorial-migration-service-cloudsql-offline/03-portal-offline-connect-source-cloudsql.png" alt-text="Screenshot of the connect to source page." lightbox="media/tutorial-migration-service-cloudsql-offline/03-portal-offline-connect-source-cloudsql.png":::
+:::image type="content" source="media/tutorial-migration-service-cloud-sql-offline/03-portal-offline-connect-source-cloud-sql.png" alt-text="Screenshot of the connect to source page." lightbox="media/tutorial-migration-service-cloud-sql-offline/03-portal-offline-connect-source-cloud-sql.png":::
 
 #### Select migration target
 
@@ -128,26 +128,26 @@ The **select migration target** tab displays metadata for the Flexible Server ta
 
 After the successful test connection, select the **Next: Select Database(s) for Migration**
 
-:::image type="content" source="media/tutorial-migration-service-cloudsql-offline/04-portal-offline-select-migration-target-cloudsql.png" alt-text="Screenshot of the connect target migration page.":::
+:::image type="content" source="media/tutorial-migration-service-cloud-sql-offline/04-portal-offline-select-migration-target-cloud-sql.png" alt-text="Screenshot of the connect target migration page.":::
 
 #### Select database for migration
 
 Under the **Select database for migration** tab, you can choose a list of user databases to migrate from your source PostgreSQL server.  
 After selecting the databases, select the **Next: Summary**
 
-:::image type="content" source="media/tutorial-migration-service-cloudsql-offline/05-portal-offline-select-database-cloudsql.png" alt-text="Screenshot of the fetchDB migration page.":::
+:::image type="content" source="media/tutorial-migration-service-cloud-sql-offline/05-portal-offline-select-database-cloud-sql.png" alt-text="Screenshot of the fetchDB migration page.":::
 
 #### Summary
 
 The Summary tab summarizes all the source and target details for creating the validation or migration. Review the details and select the Start Validation and Migration button.
 
-:::image type="content" source="media/tutorial-migration-service-cloudsql-offline/06-portal-offline-summary-cloudsql.png" alt-text="Screenshot of the summary migration page.":::
+:::image type="content" source="media/tutorial-migration-service-cloud-sql-offline/06-portal-offline-summary-cloud-sql.png" alt-text="Screenshot of the summary migration page.":::
 
 ### Monitor the migration
 
 After you select the **Start Validation and Migration** button, a notification appears in a few seconds to say that the validation or migration creation is successful. You're redirected to the flexible server **Migration** page instance. The entry is in the **InProgress** state and **PerformingPreRequisiteSteps** substate. The workflow takes 2-3 minutes to set up the migration infrastructure and check network connections.
 
-:::image type="content" source="media/tutorial-migration-service-cloudsql-offline/portal-offline-monitor-migration-cloudsql.png" alt-text="Screenshot of the monitor migration page." lightbox="media/tutorial-migration-service-cloudsql-offline/portal-offline-monitor-migration-cloudsql.png":::
+:::image type="content" source="media/tutorial-migration-service-cloud-sql-offline/portal-offline-monitor-migration-cloud-sql.png" alt-text="Screenshot of the monitor migration page." lightbox="media/tutorial-migration-service-cloud-sql-offline/portal-offline-monitor-migration-cloud-sql.png":::
 
 The grid that displays the migrations has these columns: **Name**, **Status**, **Migration mode**, **Migration type**, **Source server**, **Source server type**, **Databases**, **Duration, and **Start time**. The entries are displayed in the descending order of the start time, with the most recent entry on the top. You can use the refresh button to refresh the status of the validation or migration run.
 
@@ -171,7 +171,7 @@ Validation details are available at the instance and database level.
 
 You can see the **validation** and the **migration** status under the migration details page.
 
-:::image type="content" source="media/tutorial-migration-service-cloudsql-offline/portal-offline-details-migration-cloudsql.png" alt-text="Screenshot of the details showing validation and migration." lightbox="media/tutorial-migration-service-cloudsql-offline/portal-offline-details-migration-cloudsql.png":::
+:::image type="content" source="media/tutorial-migration-service-cloud-sql-offline/portal-offline-details-migration-cloud-sql.png" alt-text="Screenshot of the details showing validation and migration." lightbox="media/tutorial-migration-service-cloud-sql-offline/portal-offline-details-migration-cloud-sql.png":::
 
 Some possible migration states:
 
@@ -293,7 +293,7 @@ After migration, you can perform the following tasks:
 
 ## Related content
 
-- [Migrate online from Google Cloud SQL for PostgreSQL](tutorial-migration-service-cloudsql-online.md)
+- [Migrate online from Google Cloud SQL for PostgreSQL](tutorial-migration-service-cloud-sql-online.md)
 - [Migration service](concepts-migration-service-postgresql.md)
 - [Migrate from on-premises and Azure VMs](tutorial-migration-service-iaas.md)
 - [Known Issues and limitations](concepts-known-issues-migration-service.md)
