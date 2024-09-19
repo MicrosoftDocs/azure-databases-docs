@@ -6,6 +6,8 @@ ms.reviewer: randolphwest, adityaduvuri
 ms.date: 09/18/2024
 ms.service: azure-database-migration-service
 ms.topic: include
+ms.collection:
+  - sql-migration-content
 ---
 
 > [!IMPORTANT]  

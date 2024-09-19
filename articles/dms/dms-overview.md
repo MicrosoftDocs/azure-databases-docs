@@ -7,7 +7,7 @@ ms.reviewer: randolphwest
 ms.date: 09/18/2024
 ms.service: azure-database-migration-service
 ms.topic: overview
-ms.custom:
+ms.collection:
   - sql-migration-content
 ---
 # What is Azure Database Migration Service?

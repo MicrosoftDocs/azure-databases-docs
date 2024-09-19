@@ -7,9 +7,10 @@ ms.reviewer: randolphwest
 ms.date: 09/18/2024
 ms.service: azure-database-migration-service
 ms.topic: reference
+ms.collection:
+  - sql-migration-content
 ms.custom:
   - mvc
-  - sql-migration-content
 ---
 
 # Services and tools available for data migration scenarios
