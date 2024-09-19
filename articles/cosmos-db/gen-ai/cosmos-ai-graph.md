@@ -34,8 +34,7 @@ ms.author: jacodel
 
 When it comes to [Retrieval Augmented Generation (RAG)](rag.md), combining **Knowledge Graphs** and **Vector Search** can offer powerful capabilities that expand the range of questions that can be answered about the data. Graph RAG enhances the retrieval process by using the structured relationships within a graph, making it ideal for applications that require contextual understanding and complex querying, such as knowledge management systems and personalized content delivery. On the other hand, Vector Search excels in handling unstructured data and finding similarities based on vector embeddings, which is useful for tasks like image and document retrieval. Together, these technologies can provide a comprehensive solution that combines the strengths of both structured and unstructured data processing.
 
-
-:::image type="content" source="../media/gen-ai/cosmos-ai-graph/cosmos-ai-graph-architecture.png" alt-text="Diagram of the Cosmos AI Graph infrastructure, components, and flow.":::
+:::image type="content" source="../media/gen-ai/cosmos-ai-graph/solution-architecture.png" alt-text="Diagram of the Cosmos AI Graph infrastructure, components, and flow.":::
 
 ## OmniRAG
 
@@ -45,12 +44,14 @@ CosmosAIGraph features *OmniRAG*, a versatile approach to data retrieval that dy
 
 | User Questions    | Strategy       |
 |----------------|----------------|
-|What is the Python Flask Library | Database RAG |
-| What are its dependencies  | Graph RAG |
-| What are its dependencies | Vector RAG |
-| Who is the author | DB RAG  |
-| What other libraries did she write | Graph RAG |
+| What is the Python Flask Library? | Database RAG |
+| What are its dependencies? | Graph RAG |
+| What are its dependencies? | Vector RAG |
+| Who is the author? | DB RAG  |
+| What other libraries did she write? | Graph RAG |
 | Display a graph of all her libraries and their dependencies | Graph RAG |
+| What are some of the web development libraries? | Vector RAG |
+| Suggest one that is good for auto generation of code | Vector RAG |
 
 
 ## Get started
