@@ -13,7 +13,7 @@ ms.date: 9/19/2024
 
 [!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
-Azure Cosmos DB has started to enable TLS 1.3 support on public endpoints across its platform globally to align with security best practices. Azure Cosmos DB currently supports TLS 1.0, 1.1 [**scheduled for deprecation by October 2024**](https://azure.microsoft.com/updates/azure-support-tls-will-end-by-31-october-2024-2/), and TLS 1.2 on public endpoints. This provides extra guidance on how to prepare for upcoming support for TLS 1.3 for Azure Cosmos DB. 
+Azure Cosmos DB has started to enable TLS 1.3 support on public endpoints across its platform globally to align with security best practices. [**Starting Oct 31 2024, we are officially deprecating TLS 1.0/1.1.**](https://azure.microsoft.com/updates/azure-support-tls-will-end-by-31-october-2024-2/). Only TLS 1.2 or higher will be supported. This article provides extra guidance on how to prepare for upcoming support for TLS 1.3 for Azure Cosmos DB. 
 
 TLS 1.3 introduces substantial enhancements compared to its predecessors. TLS 1.3 improvements focus on both performance and security, featuring faster handshakes and a streamlined set of more secure cipher suites, namely TLS_AES_256_GCM_SHA384 and TLS_AES_128_GCM_SHA256. Notably, TLS 1.3 prioritizes Perfect Forward Secrecy (PFS) by eliminating key exchange algorithms that don't support it.  
 
@@ -23,7 +23,7 @@ These are some of the known issues with TLS 1.3 enablement, potential impact, an
 
 ## Known issues, impact, and mitigation
 
-- **JDK Related Issues**: Certain Java clients running with Java runtime version older than 1.8.0_292 and using direct mode connections are incapable of handling TLS handshake. Client applications may fail with the error along the following lines. Caused by `io.netty.handler.codec.DecoderException: javax.net.ssl.SSLHandshakeException: General OpenSslEngine`.
+- **JDK Related Issues**: Certain Java clients running with Java runtime version older than 1.8.0_292 and using direct mode connections are incapable of handling TLS handshake. Client applications might fail with the error along the following lines. Caused by `io.netty.handler.codec.DecoderException: javax.net.ssl.SSLHandshakeException: General OpenSslEngine`.
 
 -  **Recommendations for mitigation**:
 
