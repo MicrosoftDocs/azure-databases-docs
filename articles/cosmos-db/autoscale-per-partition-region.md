@@ -53,7 +53,7 @@ You can use the following metrics to monitor dynamic autoscale:
 
 |Metric Name|Definition|Metric Usage|
 |-------------|------|-------|
-|Autoscaled RU|Shows the dynamically scaled provisioned throughput at each partition and region level only for dynamic autoscale enabled accounts.|Use this metric to see how partitions in each region scale independently based on their usage. <br/><br/> Use [Azure Monitor metrics](monitor-reference.md#supported-metrics-for-microsoftdocumentdbdatabaseaccounts) - Autoscaled RU to analyze how the new autoscaling is applied across partitions and regions. Filter to your desired database account and container, then filter or split by the Physical PartitionID metric. This metric shows all partitions across their various regions.<br/><br/> |
+|Autoscaled RU|Shows the dynamically scaled provisioned throughput at each partition and region level only for dynamic autoscale enabled accounts.|Use this metric to see how partitions in each region scale independently based on their usage. <br/><br/> Use [Azure Monitor metrics](monitor-reference.md#supported-metrics-for-microsoftdocumentdbdatabaseaccounts) - Autoscaled RU to analyze how the new autoscaling is applied across partitions and regions. Filter to your desired database account and container, then filter or split by the Physical PartitionID metric. This metric shows all partitions across their various regions.<br/><br/>  |
 
 ## Get started
 
