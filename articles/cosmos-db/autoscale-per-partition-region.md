@@ -53,7 +53,7 @@ You can use the following metrics to monitor dynamic autoscale:
 
 ## Get started
 
-Dynamic scaling is enabled by default for all Azure Cosmos DB accounts created after **September 25, 2024**. Customers who wish to enable this feature for their older accounts can do so [programmatically](autoscale-faq.yml#how-can-i-enable-dynamic-autoscale-on-an-account-programatically)
+Dynamic scaling is enabled by default for all Azure Cosmos DB accounts created after **September 25, 2024**. Customers who wish to enable this feature for their older accounts can do so [programmatically](autoscale-faq.yml#how-can-i-enable-dynamic-autoscale-on-an-account-programatically-)
  through Azure PowerShell/CLI/Rest API or from the features pane of Azure portal as shown:
 
 1. Navigate to your Azure Cosmos DB account in the [Azure portal](https://portal.azure.com).
