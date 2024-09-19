@@ -80,6 +80,7 @@ The following table lists the various sources supported by the migration service
 | On-premises | [supported](tutorial-migration-service-iaas-offline.md) | [supported](tutorial-migration-service-iaas-online.md) |
 | Azure virtual machine(s) | [supported](tutorial-migration-service-iaas-offline.md) | [supported](tutorial-migration-service-iaas-online.md) |
 | Amazon Aurora PostgreSQL | [supported](tutorial-migration-service-aurora-offline.md) | [supported](tutorial-migration-service-aurora-online.md) |
+| Google Cloud SQL for PostgreSQL | [supported](tutorial-migration-service-cloudsql-offline.md) | [supported](tutorial-migration-service-cloudsql-online.md) |
 
 :::image type="content" source="media/overview-migration-service-postgresql/migrate-different-sources-option.png" alt-text="Screenshot of the migration setup showing different sources." lightbox="media/overview-migration-service-postgresql/migrate-different-sources-option.png":::
 
