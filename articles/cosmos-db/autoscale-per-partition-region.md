@@ -49,8 +49,8 @@ You can use the following metrics to monitor dynamic autoscale:
 
     |Metric Name|Definition|Metric Usage|
     |-------------|------|-------|
-    |Autoscaled RU|Shows the dynamically scaled provisioned throughput at each partition and region level only for dynamic autoscale enabled accounts.|Use this metric to see how partitions in each region scale independently based on their usage. <br/><br/>Use [Azure Monitor metrics](monitor-reference.md#supported-metrics-for-microsoftdocumentdbdatabaseaccounts)|
-
+    |Autoscaled RU|Shows the dynamically scaled provisioned throughput at each partition and region level only for dynamic autoscale enabled accounts.|Use this metric to see how partitions in each region scale independently based on their usage.|
+    
 ## Get started
 
 Dynamic scaling is enabled by default for all Azure Cosmos DB accounts created after **September 25, 2024**. Customers who wish to enable this feature for their older accounts can do so [programmatically](autoscale-faq.yml#how-can-i-enable-dynamic-autoscale-on-an-account-programatically-)
