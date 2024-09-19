@@ -8,9 +8,10 @@ ms.reviewer: randolphwest
 ms.date: 09/18/2024
 ms.service: azure-database-migration-service
 ms.topic: troubleshooting
+ms.collection:
+  - sql-migration-content
 ms.custom:
   - kr2b-contr-experiment
-  - sql-migration-content
 ---
 
 # Known issues with migrations from MongoDB to Azure Cosmos DB (RU)

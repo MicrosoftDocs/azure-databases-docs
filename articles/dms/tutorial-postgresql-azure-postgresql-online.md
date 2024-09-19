@@ -8,9 +8,10 @@ ms.reviewer: randolphwest
 ms.date: 09/18/2024
 ms.service: azure-database-migration-service
 ms.topic: tutorial
+ms.collection:
+  - sql-migration-content
 ms.custom:
   - devx-track-azurecli
-  - sql-migration-content
 ---
 
 # Tutorial: Migrate PostgreSQL to Azure Database for PostgreSQL online using DMS (classic) via the Azure CLI

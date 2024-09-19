@@ -7,9 +7,10 @@ ms.reviewer: randolphwest
 ms.date: 09/18/2024
 ms.service: azure-database-migration-service
 ms.topic: conceptual
+ms.collection:
+  - sql-migration-content
 ms.custom:
   - references_regions
-  - sql-migration-content
 ---
 
 # Get Azure recommendations to migrate your SQL Server database
