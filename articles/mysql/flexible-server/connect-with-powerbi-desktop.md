@@ -1,6 +1,6 @@
 ---
 title: Connect with Power BI
-description: This topic shows how to build Power BI reports from data on Azure Database for MySQL - Flexible Server.
+description: This article shows how to build Power BI reports from data on Azure Database for MySQL - Flexible Server.
 author: SudheeshGH
 ms.author: sunaray
 ms.reviewer: maghan
@@ -10,14 +10,14 @@ ms.subservice: flexible-server
 ms.topic: quickstart
 ---
 
-# Import data from Azure Database for MySQL - Flexible Server in Power BI
+# Quickstart: Import data from Azure Database for MySQL - Flexible Server in Power BI
 
 [!INCLUDE [applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 > [!NOTE]  
 > This article applies to Power BI Desktop only. Currently Power Query online or Power BI Service is **not supported**.
 
-With Power BI Desktop you can visually explore your data through a free-form drag-and-drop canvas, a broad range of modern data visualizations, and an easy-to-use report authoring experiences. You can import directly from the tables or import from a SELECT query. In this quickstart you will learn how to connect with Azure Database for MySQL flexible server with Power BI Desktop.
+With Power BI Desktop you can visually explore your data through a free-form drag-and-drop canvas, a broad range of modern data visualizations, and an easy-to-use report authoring experiences. You can import directly from the tables or import from a SELECT query. In this quickstart, you learn how to connect with Azure Database for MySQL flexible server with Power BI Desktop.
 
 ## Prerequisites
 
@@ -113,7 +113,7 @@ Power Query Desktop provides a set of advanced options that you can add to your 
 | --- | --- |
 | Command timeout in minutes | If your connection lasts longer than 10 minutes (the default timeout), you can enter another value in minutes to keep the connection open longer. This option is only available in Power Query Desktop. |
 | SQL statement | For information, go to [Import data from a database using native database query](/power-query/native-database-query). |
-| Include relationship columns | If checked, includes columns that might have relationships to other tables. If this box is cleared, you cannot see those columns. |
+| Include relationship columns | If checked, includes columns that might have relationships to other tables. If this box is cleared, you can't see those columns. |
 | Navigate using full hierarchy | If checked, the navigator displays the complete hierarchy of tables in the database you're connecting to. If cleared, the navigator displays only the tables whose columns and rows contain data. |
 
 Once you've selected the advanced options you require, select **OK** in Power Query Desktop to connect to your MySQL database.
