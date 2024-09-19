@@ -1,5 +1,5 @@
 ---
-title: "Migration service - Migration of users/roles, ownerships, and privileges"
+title: "Migrate users, roles, ownerships, and privileges"
 description: Learn about the migration of user roles, ownerships, and privileges along with schema and data for the migration service in Azure Database for PostgreSQL.
 author: shriramm
 ms.author: shriramm
@@ -9,7 +9,7 @@ ms.service: azure-database-postgresql
 ms.topic: conceptual
 ---
 
-# Migration of user roles, ownerships, and privileges for the migration service in Azure Database for PostgreSQL
+# Migrate users, roles, ownerships, and privileges by using the migration service
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
