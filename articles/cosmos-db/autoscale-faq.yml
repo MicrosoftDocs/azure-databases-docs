@@ -17,9 +17,9 @@ sections:
   - name: General
     questions:
       - question: |
-          What is the difference between autoscale and dynamic Autoscale in Azure Cosmos DB?
+          What is the difference between autoscale and dynamic autoscale in Azure Cosmos DB?
         answer: |
-          *Autoscale* or *autoscale provisioned throughput* scales workloads based on the most active region and partition. Whereas *dynamic autoscale* on the other hand allows your workloads’ regions and partitions to scale independently based on usage. We recommend dynamic autoscale feature to all customers interested in autoscale.
+          *Autoscale* or *autoscale provisioned throughput* scales workloads based on the most active region and partition. In contrast, *dynamic autoscale* allows your workloads’ regions and partitions to scale independently based on usage. We recommend dynamic autoscale to all customers who plan to use autoscale.
       - question: |          
           How can I enable dynamic autoscale on an account programatically?
         answer: |
@@ -105,7 +105,7 @@ sections:
       - question: |
           Is autoscale supported for multi-region write accounts?
         answer: |
-          Yes. The maximum RU/s is available in each region that we add to the Azure Cosmos DB account. 
+          Yes. The maximum RU/s is available in each region that you add to the Azure Cosmos DB account. 
 
       - question: |
           How do I enable autoscale on new databases or containers?
