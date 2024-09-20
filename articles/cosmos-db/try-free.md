@@ -104,14 +104,10 @@ Your Try Azure Cosmos DB sandbox account is free for 30 days. After expiration, 
 
 ### Create a new account
 
-#### [NoSQL / MongoDB / Cassandra / Gremlin / Table](#tab/nosql+mongodb+cassandra+gremlin+table)
-
 > [!NOTE]
 > While this example uses API for NoSQL, the steps are similar for the APIs for MongoDB, Cassandra, Gremlin, or Table.
 
 [!INCLUDE[Create NoSQL account](includes/create-nosql-account.md)]
-
----
 
 ### Move data to new account
 
