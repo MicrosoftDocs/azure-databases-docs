@@ -35,13 +35,14 @@ The following table lists the limits for the [Try Azure Cosmos DB](https://aka.m
 
 | Resource | Limit |
 | --- | --- |
-| Duration of the trial | 30 days¹²  |
+| Duration of the trial | 30 days¹² |
 | Maximum containers per subscription | 1 |
 | Maximum throughput per container | 5,000 |
 | Maximum throughput per shared-throughput database | 20,000 |
 | Maximum total storage per account | 10 GB |
 
 ¹ A new Try Azure Cosmos DB sandbox account can be requested after expiration.
+
 ² After expiration, the information stored in your account is deleted. You can upgrade your account prior to expiration and migrate the information stored to an enterprise subscription.
 
 > [!NOTE]
