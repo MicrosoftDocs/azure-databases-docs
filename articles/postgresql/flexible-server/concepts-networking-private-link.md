@@ -4,7 +4,7 @@ description: Learn about connectivity and networking options for Azure Database 
 author: gbowerman
 ms.author: guybo
 ms.reviewer: maghan
-ms.date: 09/19/2024
+ms.date: 09/20/2024
 ms.service: azure-database-postgresql
 ms.subservice: 
 ms.topic: conceptual
@@ -107,7 +107,7 @@ Private DNS zones provide separate DNS zone names for each Azure service. For ex
 
 > [!NOTE]
 > Private endpoint Private DNS zone configurations automatically generate only if you use the recommended naming scheme: `privatelink.postgres.database.azure.com`.
-> On newly provisioned public access (non-virtual network injected) servers, there will be a change in DNS layout. The server's FQDN now becomes a CName record in the formm `servername.postgres.database.azure.com` which will point to an A record in one of the following formats:
+> On newly provisioned public access (non-virtual network injected) servers, there will be a change in DNS layout. The server's FQDN now becomes a CName record in the form `servername.postgres.database.azure.com` which will point to an A record in one of the following formats:
 >  1. If the server has a Private Endpoint with a default private dns zone linked, the A record will be in this format: `server_name.privatelink.postgres.database.azure.com`.
 >  2. If the server has no Private Endpoints then the A record will be in this format `server_name.rs-<15 semi-random bytes>.postgres.database.azure.com`.
 
