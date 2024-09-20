@@ -94,19 +94,22 @@ The structure of the JSON is:
 
 ```bash
 {
-  "properties": {
-    "sourceDbServerResourceId": "/subscriptions/<subscriptionid>/resourceGroups/<sourceServerResourceGroup>/providers/Microsoft.DBforPostgreSQL/servers/<sourceServer>",
-    "secretParameters": {
-      "adminCredentials": {
-        "sourceServerPassword": "<password>",
-        "targetServerPassword": "<password>"
-      }
-    },
-    "sourceServerUserName": "<username>@<servername>",
-    "targetServerUserName": "<username>",
-    "dbsToMigrate": ["<db1>", "<db2>"],
-    "overwriteDbsInTarget": "true"
-  }
+	"properties": {
+		"sourceDbServerResourceId": "/subscriptions/<subscriptionid>/resourceGroups/<sourceServerResourceGroup>/providers/Microsoft.DBforPostgreSQL/servers/<sourceServer>",
+		"secretParameters": {
+			"adminCredentials": {
+				"sourceServerPassword": "<password>",
+				"targetServerPassword": "<password>"
+			},
+			"sourceServerUserName": "<username>@<servername>",
+			"targetServerUserName": "<username>"
+		},
+		"dbsToMigrate": [
+			"<db1>",
+			"<db2>"
+		],
+		"overwriteDbsInTarget": "true"
+	}
 }
 ```
 
