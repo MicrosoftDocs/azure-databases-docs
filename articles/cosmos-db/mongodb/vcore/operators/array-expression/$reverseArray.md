@@ -37,16 +37,15 @@ Let's understand the usage with the following sample json.
 ```json
 {
   "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5",
-  "name": "Lenore's New DJ Equipment Store",
+  "name": "Lakeshore Retail | DJ Equipment Stop - Port Cecile",
   "location": {
-    "lat": -9.9399
+    "lat": 60.1441,
+    "lon": -141.5012
   },
   "staff": {
     "totalStaff": {
-      "fullTime": 14,
-      "partTime": 18,
-      "temporary": 3,
-      "parTime": 0
+      "fullTime": 2,
+      "partTime": 0
     }
   },
   "sales": {
@@ -97,17 +96,7 @@ Let's understand the usage with the following sample json.
           "Month": 5,
           "Day": 18
         }
-      },
-      "discounts": [
-        {
-          "categoryName": "DJ Lighting",
-          "discountPercentage": 14
-        },
-        {
-          "categoryName": "DJ Cases",
-          "discountPercentage": 20
-        }
-      ]
+      }
     }
   ],
   "tag": [
@@ -145,43 +134,28 @@ db.stores.aggregate([
 This query would return the following document.
 
 ```json
-{
-  "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5",
-  "name": "Lenore's New DJ Equipment Store",
-  "promotionEventsReversed": [
-    {
-      "eventName": "Discount Delight Days",
-      "promotionalDates": {
-        "startDate": {
-          "Year": 2024,
-          "Month": 5,
-          "Day": 11
-        },
-        "endDate": {
-          "Year": 2024,
-          "Month": 5,
-          "Day": 18
+[
+  {
+    "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5",
+    "name": "Lakeshore Retail | DJ Equipment Stop - Port Cecile",
+    "promotionEventsReversed": [
+      {
+        "eventName": "Discount Delight Days",
+        "promotionalDates": {
+          "startDate": { "Year": 2024, "Month": 5, "Day": 11 },
+          "endDate": { "Year": 2024, "Month": 5, "Day": 18 }
+        }
+      },
+      {
+        "eventName": "Bargain Blitz Days",
+        "promotionalDates": {
+          "startDate": { "Year": 2024, "Month": 3, "Day": 11 },
+          "endDate": { "Year": 2024, "Month": 2, "Day": 18 }
         }
       }
-    },
-    {
-      "eventName": "Bargain Blitz Days",
-      "promotionalDates": {
-        "startDate": {
-          "Year": 2024,
-          "Month": 3,
-          "Day": 11
-        },
-        "endDate": {
-          "Year": 2024,
-          "Month": 2,
-          "Day": 18
-        }
-      }
-    }
-  ]
-}
-
+    ]
+  }
+]
 ```
 
 ## Related content

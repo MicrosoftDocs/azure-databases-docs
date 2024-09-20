@@ -36,16 +36,15 @@ Let's understand the usage with the following sample json.
 ```json
 {
   "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5",
-  "name": "Lenore's New DJ Equipment Store",
+   "name": "Lakeshore Retail | DJ Equipment Stop - Port Cecile",
   "location": {
-    "lat": -9.9399
+    "lat": 60.1441,
+    "lon": -141.5012
   },
   "staff": {
     "totalStaff": {
-      "fullTime": 14,
-      "partTime": 18,
-      "temporary": 3,
-      "parTime": 0
+      "fullTime": 2,
+      "partTime": 0
     }
   },
   "sales": {
@@ -86,7 +85,6 @@ Let's understand the usage with the following sample json.
   ],
   "tag": [
     "#ShopLocal",
-    "#FashionStore",
     "#SeasonalSale",
     "#FreeShipping",
     "#MembershipDeals"
@@ -116,32 +114,18 @@ This query would return the following document.
 
 ```json
 [
-{
-  "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5",
-  "locationArray": [
-    {
-      "k": "lat",
-      "v": -9.9399
-    }
-  ]
-},
-{
-  "_id": "66d7cc1674d12223cc1b5a41",
-  "locationArray": null
-},
-{
-  "_id": "fe239ccd-15e2-4d53-9d5b-ffc95a36fbe1",
-  "locationArray": [
-    {
-      "k": "lat",
-      "v": -6.3542
-    },
-    {
-      "k": "lon",
-      "v": 21.6768
-    }
-  ]
-}
+  {
+    "_id": "649626c9-eda1-46c0-a27f-dcee19d97f41",
+    "locationArray": [ { "k": "lat", "v": -85.0867 }, { "k": "lon", "v": -165.3524 } ]
+  },
+  {
+    "_id": "8345de34-73ec-4a99-9cb6-a81f7b145c34",
+    "locationArray": [ { "k": "lat", "v": -22.5751 }, { "k": "lon", "v": -12.4458 } ]
+  },
+  {
+    "_id": "57cc4095-77d9-4345-af20-f8ead9ef0197",
+    "locationArray": [ { "k": "lat", "v": -41.287 }, { "k": "lon", "v": -76.0176 } ]
+  }
 ]
 
 ```
@@ -166,46 +150,19 @@ This query would return the following document.
 
 ```json
 [
-{
-  "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5",
-  "staffArray": [
-    {
-      "k": "fullTime",
-      "v": 14
-    },
-    {
-      "k": "partTime",
-      "v": 18
-    },
-    {
-      "k": "temporary",
-      "v": 3
-    },
-    {
-      "k": "parTime",
-      "v": 0
-    }
-  ]
-},
-{
-  "_id": "66d7cc1674d12223cc1b5a41",
-  "staffArray": null
-},
-{
-  "_id": "fe239ccd-15e2-4d53-9d5b-ffc95a36fbe1",
-  "staffArray": [
-    {
-      "k": "fullTime",
-      "v": 8
-    },
-    {
-      "k": "partTime",
-      "v": 8
-    }
-  ]
-}
+  {
+    "_id": "649626c9-eda1-46c0-a27f-dcee19d97f41",
+    "staffArray": [ { "k": "fullTime", "v": 15 }, { "k": "partTime", "v": 9 } ]
+  },
+  {
+    "_id": "8345de34-73ec-4a99-9cb6-a81f7b145c34",
+    "staffArray": [ { "k": "fullTime", "v": 12 }, { "k": "partTime", "v": 14 } ]
+  },
+  {
+    "_id": "57cc4095-77d9-4345-af20-f8ead9ef0197",
+    "staffArray": [ { "k": "fullTime", "v": 4 }, { "k": "partTime", "v": 8 } ]
+  }
 ]
-
 ```
 
 ### Example 3: Converting datetime field to an array.
@@ -236,79 +193,27 @@ db.stores.aggregate([
 This query would return the following document.
 
 ```json
-{
-  "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5",
-  "promotionEvents": [
-    {
-      "eventName": "Bargain Blitz Days",
-      "promotionalDatesArray": [
-        {
-          "k": "startDate",
-          "v": {
-            "Year": 2024,
-            "Month": 3,
-            "Day": 11
-          }
-        },
-        {
-          "k": "endDate",
-          "v": {
-            "Year": 2024,
-            "Month": 2,
-            "Day": 18
-          }
-        }
-      ]
-    },
-    {
-      "eventName": "Discount Delight Days",
-      "promotionalDatesArray": [
-        {
-          "k": "startDate",
-          "v": {
-            "Year": 2024,
-            "Month": 5,
-            "Day": 11
-          }
-        },
-        {
-          "k": "endDate",
-          "v": {
-            "Year": 2024,
-            "Month": 5,
-            "Day": 18
-          }
-        }
-      ]
-    },
-    {
-      "eventName": "Grand Savings",
-      "promotionalDatesArray": [
-        {
-          "k": "startDate",
-          "v": "2024-08-01"
-        },
-        {
-          "k": "endDate",
-          "v": "2024-08-31"
-        }
-      ]
-    },
-    {
-      "eventName": "Big Bargain",
-      "promotionalDatesArray": [
-        {
-          "k": "startDate",
-          "v": "2024-11-25"
-        },
-        {
-          "k": "endDate",
-          "v": "2024-11-30"
-        }
-      ]
-    }
-  ]
-}
+[
+  {
+    "_id": "649626c9-eda1-46c0-a27f-dcee19d97f41",
+    "promotionEvents": [
+      {
+        "eventName": "Markdown Mayhem",
+        "promotionalDatesArray": [
+          { "k": "startDate", "v": { "Year": 2024, "Month": 3, "Day": 24 } },
+          { "k": "endDate", "v": { "Year": 2024, "Month": 4, "Day": 3 } }
+        ]
+      },
+      {
+        "eventName": "Spectacular Savings Showcase",
+        "promotionalDatesArray": [
+          { "k": "startDate", "v": { "Year": 2024, "Month": 6, "Day": 22 } },
+          { "k": "endDate", "v": { "Year": 2024, "Month": 7, "Day": 1 } }
+        ]
+      }
+    ]
+  }
+]
 ```
 
 ## Related content

@@ -44,16 +44,15 @@ Let's understand the usage with the following sample json.
 ```json
 {
   "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5",
-  "name": "Lenore's New DJ Equipment Store",
+   "name": "Lakeshore Retail | DJ Equipment Stop - Port Cecile",
   "location": {
-    "lat": -9.9399
+    "lat": 60.1441,
+    "lon": -141.5012
   },
   "staff": {
     "totalStaff": {
-      "fullTime": 14,
-      "partTime": 18,
-      "temporary": 3,
-      "parTime": 0
+      "fullTime": 2,
+      "partTime": 0
     }
   },
   "sales": {
@@ -94,7 +93,6 @@ Let's understand the usage with the following sample json.
   ],
   "tag": [
     "#ShopLocal",
-    "#FashionStore",
     "#SeasonalSale",
     "#FreeShipping",
     "#MembershipDeals"
@@ -151,11 +149,10 @@ This query would return the following document.
 {
   "acknowledged": true,
   "insertedId": null,
-  "matchedCount": 1,
-  "modifiedCount": 1,
+  "matchedCount": "0",
+  "modifiedCount": "0",
   "upsertedCount": 0
 }
-
 ```
 
 ## Related content

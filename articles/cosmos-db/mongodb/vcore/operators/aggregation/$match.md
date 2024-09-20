@@ -38,16 +38,15 @@ Let's understand the usage with the following sample json.
 ```json
 {
   "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5",
-  "name": "Lenore's New DJ Equipment Store",
+   "name": "Lakeshore Retail | DJ Equipment Stop - Port Cecile",
   "location": {
-    "lat": -9.9399
+    "lat": 60.1441,
+    "lon": -141.5012
   },
   "staff": {
     "totalStaff": {
-      "fullTime": 14,
-      "partTime": 18,
-      "temporary": 3,
-      "parTime": 0
+      "fullTime": 2,
+      "partTime": 0
     }
   },
   "sales": {
@@ -88,7 +87,6 @@ Let's understand the usage with the following sample json.
   ],
   "tag": [
     "#ShopLocal",
-    "#FashionStore",
     "#SeasonalSale",
     "#FreeShipping",
     "#MembershipDeals"
@@ -132,17 +130,20 @@ db.stores.aggregate([
 This query would return the following document.
 
 ```json
-{
-   "_id":"3db06cf7-a6a0-4cc0-bb6b-a7e44896a6b3",
-   "name":"Monserrat's Books"
-}{
-   "_id":"36375751-060e-46ad-974a-c834d1aeb6e1",
-   "name":"Marlen's Kitchen Appliances"
-}{
-   "_id":"55925ade-5b78-46a1-99ba-e20ff154dac4",
-   "name":"Una's Party Goods"
-}
-
+[
+  {
+    "_id": "8345de34-73ec-4a99-9cb6-a81f7b145c34",
+    "name": "Northwind Traders | Bed and Bath Place - West Oraland"
+  },
+  {
+    "_id": "57cc4095-77d9-4345-af20-f8ead9ef0197",
+    "name": "Wide World Importers | Bed and Bath Store - West Vitafort"
+  },
+  {
+    "_id": "560099f8-325f-4c35-a4e5-2e0879eb95af",
+    "name": "Wide World Importers | Bed and Bath Depot - North Maritzaberg"
+  }
+]
 ```
 
 ### Example 3: Match documents within sub documents
@@ -172,18 +173,18 @@ This query would return the following document.
 
 ```json
 [
-{
-  "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5",
-  "name": "Lenore's New DJ Equipment Store"
-},
-{
-  "_id": "4748bb29-99ba-4232-85c8-e3ac2084fa60",
-  "name": "Adaline's DJ Equipment Boutique"
-},
-{
-  "_id": "fd1c4f7f-e3af-41fb-9c78-9c7472e1b885",
-  "name": "Clemmie's DJ Equipment Hub"
-}
+  {
+    "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5",
+    "name": "Lakeshore Retail | DJ Equipment Stop - Port Cecile"
+  },
+  {
+    "_id": "3c7eda41-23a1-4226-abf6-17ee9e851b5b",
+    "name": "Boulder Innovations | DJ Equipment Bazaar - New Ceasarview"
+  },
+  {
+    "_id": "63831a7d-13a9-4d8b-bf1d-ac004057f96d",
+    "name": "Contoso, Ltd. | DJ Equipment Shop - Reillyfurt"
+  }
 ]
 ```
 

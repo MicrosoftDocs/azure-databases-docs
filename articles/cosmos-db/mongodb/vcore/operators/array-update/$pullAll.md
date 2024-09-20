@@ -40,16 +40,15 @@ Let's understand the usage with the following sample json.
 ```json
 {
   "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5",
-  "name": "Lenore's New DJ Equipment Store",
+   "name": "Lakeshore Retail | DJ Equipment Stop - Port Cecile",
   "location": {
-    "lat": -9.9399
+    "lat": 60.1441,
+    "lon": -141.5012
   },
   "staff": {
     "totalStaff": {
-      "fullTime": 14,
-      "partTime": 18,
-      "temporary": 3,
-      "parTime": 0
+      "fullTime": 2,
+      "partTime": 0
     }
   },
   "sales": {
@@ -90,7 +89,6 @@ Let's understand the usage with the following sample json.
   ],
   "tag": [
     "#ShopLocal",
-    "#FashionStore",
     "#SeasonalSale",
     "#FreeShipping",
     "#MembershipDeals"
@@ -99,7 +97,7 @@ Let's understand the usage with the following sample json.
 ```
 
 
-To remove the discounts for "#FashionStore" and "#ShopLocal" from the 'tag' array.
+To remove the discounts for "#MembershipDeals" and "#SeasonalSale" from the 'tag' array.
 
 ```javascript
 db.stores.updateMany(
@@ -107,7 +105,7 @@ db.stores.updateMany(
     { "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5"},
     {
       $pullAll: {
-        "tag": ["#FashionStore","#ShopLocal" ]
+        "tag": ["#MembershipDeals","#SeasonalSale" ]
       }
     }
 )

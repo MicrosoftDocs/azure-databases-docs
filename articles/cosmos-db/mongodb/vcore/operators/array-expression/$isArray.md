@@ -35,16 +35,15 @@ Let's understand the usage with the following sample json.
 ```json
 {
   "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5",
-  "name": "Lenore's New DJ Equipment Store",
+   "name": "Lakeshore Retail | DJ Equipment Stop - Port Cecile",
   "location": {
-    "lat": -9.9399
+    "lat": 60.1441,
+    "lon": -141.5012
   },
   "staff": {
     "totalStaff": {
-      "fullTime": 14,
-      "partTime": 18,
-      "temporary": 3,
-      "parTime": 0
+      "fullTime": 2,
+      "partTime": 0
     }
   },
   "sales": {
@@ -85,7 +84,6 @@ Let's understand the usage with the following sample json.
   ],
   "tag": [
     "#ShopLocal",
-    "#FashionStore",
     "#SeasonalSale",
     "#FreeShipping",
     "#MembershipDeals"
@@ -115,18 +113,18 @@ This query would return the following document.
 
 ```json
 [
-{
-  "_id": "66d7cc1674d12223cc1b5a41",
-  "isSalesByCategoryArray": false
-},
-{
-  "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5",
-  "isSalesByCategoryArray": true
-},
-{
-  "_id": "66d7cc1674d12223cc1b5a41",
-  "isSalesByCategoryArray": false
-}
+  {
+    "_id": "649626c9-eda1-46c0-a27f-dcee19d97f41",
+    "isSalesByCategoryArray": true
+  },
+  {
+    "_id": "8345de34-73ec-4a99-9cb6-a81f7b145c34",
+    "isSalesByCategoryArray": true
+  },
+  {
+    "_id": "57cc4095-77d9-4345-af20-f8ead9ef0197",
+    "isSalesByCategoryArray": true
+  }
 ]
 ```
 
@@ -154,18 +152,18 @@ This query would return the following document.
 
 ```json
 [
-{
-  "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5",
-  "name": "Lenore's New DJ Equipment Store"
-},
-{
-  "_id": "fe239ccd-15e2-4d53-9d5b-ffc95a36fbe1",
-  "name": "Serena's Musical Instruments"
-},
-{
-  "_id": "3db06cf7-a6a0-4cc0-bb6b-a7e44896a6b3",
-  "name": "Monserrat's Books"
-}
+  {
+    "_id": "649626c9-eda1-46c0-a27f-dcee19d97f41",
+    "name": "VanArsdel, Ltd. | Musical Instrument Outlet - East Cassie"
+  },
+  {
+    "_id": "8345de34-73ec-4a99-9cb6-a81f7b145c34",
+    "name": "Northwind Traders | Bed and Bath Place - West Oraland"
+  },
+  {
+    "_id": "57cc4095-77d9-4345-af20-f8ead9ef0197",
+    "name": "Wide World Importers | Bed and Bath Store - West Vitafort"
+  }
 ]
 
 ```

@@ -37,16 +37,15 @@ Let's understand the usage with the following sample json.
 ```json
 {
   "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5",
-  "name": "Lenore's New DJ Equipment Store",
+   "name": "Lakeshore Retail | DJ Equipment Stop - Port Cecile",
   "location": {
-    "lat": -9.9399
+    "lat": 60.1441,
+    "lon": -141.5012
   },
   "staff": {
     "totalStaff": {
-      "fullTime": 14,
-      "partTime": 18,
-      "temporary": 3,
-      "parTime": 0
+      "fullTime": 2,
+      "partTime": 0
     }
   },
   "sales": {
@@ -87,7 +86,6 @@ Let's understand the usage with the following sample json.
   ],
   "tag": [
     "#ShopLocal",
-    "#FashionStore",
     "#SeasonalSale",
     "#FreeShipping",
     "#MembershipDeals"
@@ -120,18 +118,9 @@ This query would return the following document.
 
 ```json
 [
-{
-  "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5",
-  "index": 0
-},
-{
-  "_id": "66d7cc1674d12223cc1b5a41",
-  "index": null
-},
-{
-  "_id": "fe239ccd-15e2-4d53-9d5b-ffc95a36fbe1",
-  "index": -1
-}
+  { "_id": "649626c9-eda1-46c0-a27f-dcee19d97f41", "index": -1 },
+  { "_id": "8345de34-73ec-4a99-9cb6-a81f7b145c34", "index": -1 },
+  { "_id": "57cc4095-77d9-4345-af20-f8ead9ef0197", "index": -1 }
 ]
 ```
 
@@ -170,18 +159,9 @@ This query would return the following document.
 
 ```json
 [
-{
-  "_id": "0a6720a1-ac0f-4a75-9a53-c2ef2576f228",
-  "index": 4
-},
-{
-  "_id": "fe117ac3-b0c2-4c83-aa51-6a9f05da2705",
-  "index": 4
-},
-{
-  "_id": "e51f8a06-6a7e-403a-9ff1-6442f0ac6ed1",
-  "index": 3
-}
+  { "_id": "ced8caf0-051a-48ce-88d3-2935815261c3", "index": 3 },
+  { "_id": "509be7ce-539a-41b5-8fde-b85fb3ef3faa", "index": 3 },
+  { "_id": "d06e8136-9a7f-4b08-92c8-dc8eac73bad3", "index": 3 }
 ]
 
 ```
