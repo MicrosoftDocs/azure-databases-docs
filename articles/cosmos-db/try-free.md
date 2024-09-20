@@ -111,6 +111,8 @@ Your Try Azure Cosmos DB sandbox account is free for 30 days. After expiration, 
 
 [!INCLUDE[Create NoSQL account](includes/create-nosql-account.md)]
 
+---
+
 ### Move data to new account
 
 If you desire, you can migrate your existing data from the free sandbox account to the newly created account.
