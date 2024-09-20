@@ -149,7 +149,7 @@ After you select the **Start Validation and Migration** button, a notification a
 
 :::image type="content" source="media/tutorial-migration-service-cloud-sql-offline/portal-offline-monitor-migration-cloud-sql.png" alt-text="Screenshot of the monitor migration page." lightbox="media/tutorial-migration-service-cloud-sql-offline/portal-offline-monitor-migration-cloud-sql.png":::
 
-The grid that displays the migrations has these columns: **Name**, **Status**, **Migration mode**, **Migration type**, **Source server**, **Source server type**, **Databases**, **Duration, and **Start time**. The entries are displayed in the descending order of the start time, with the most recent entry on the top. You can use the refresh button to refresh the status of the validation or migration run.
+The grid that displays the migrations has these columns: **Name**, **Status**, **Migration mode**, **Migration type**, **Source server**, **Source server type**, **Databases**, **Duration**, and **Start time**. The entries are displayed in the descending order of the start time, with the most recent entry on the top. You can use the refresh button to refresh the status of the validation or migration run.
 
 ### Migration details
 
