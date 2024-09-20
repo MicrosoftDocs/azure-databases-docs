@@ -36,7 +36,7 @@ The in-place migration provides a highly resilient and self-healing offline migr
 
 ## Eligibility
 
-If you own a Single Server workload with no complex features (Read Replica, Virtual Network, Double Infra encryption, Service endpoint/VNet Rules) enabled, you can now nominate yourself (if not already scheduled by the service) for automigration by submitting your server details through this [form](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR4lhLelkCklCuumNujnaQ-ZUQzRKSVBBV0VXTFRMSDFKSUtLUDlaNTA5Wi4u).
+If you own a Single Server workload with no complex features (Read Replica, Virtual Network, Double Infra encryption, Service endpoint/VNet Rules) enabled, you can now nominate yourself (if not already scheduled by the service) for automigration by submitting your server details through an Azure Support ticket.
 
 In order to make your ineligible server eligible for auto-migration perform the following steps :
 
@@ -57,7 +57,7 @@ Following described are the ways to check and configure automigration notificati
 - Configure **service health alerts** to receive in-place migration schedule and progress notifications via email/SMS by following steps [here](../single-server/concepts-planned-maintenance-notification.md#to-receive-planned-maintenance-notification).
 - Check the in-place migration **notification on the Azure portal** by following steps [here](../single-server/concepts-planned-maintenance-notification.md#check-planned-maintenance-notification-from-azure-portal).
 
-## Review migration schedule
+## Review and configure migration schedule and details
 
 Following described are the ways to review your migration schedule once you receive the in-place automigration notification:
 
@@ -73,7 +73,7 @@ Following described are the ways to review your migration schedule once you rece
   - Navigate to the **Migration blade** of your Single Server instance and select **edit** scheduled migration.
   - In the **Auto-migration details section** click on **Authenticate** button to authenticate and save ARM API connection to migrate your server.
   - If your server has **Microsoft Entra Admin** configured, you can provide inputs under the Microsoft Entra Admin section in the auto-migration wizard :
-    - Migrating Microsoft Entra admin for target server requires an **Identity** to be added to Azure Database for MySQL – Flexible Server. The Identity requires the following privileges – **User.Read.All, GroupMember.Read.All and Application.Read.All** to be granted. Please select an appropriate **user assigned managed identity**.  
+    - Migrating Microsoft Entra admin for target server requires an **Identity** to be added to Azure Database for MySQL – Flexible Server. The Identity requires the following privileges – **User.Read.All, GroupMember.Read.All and Application.Read.All** to be granted. Please select an appropriate **user assigned managed identity** and grant the right permissions by following steps [here](../flexible-server/how-to-azure-ad.md#grant-permissions-to-user-assigned-managed-identity).  
   - If your server has **Customer Managed Key** configured, you can provide inputs under the Data Encryption section in the auto-migration wizard :
     - Migrating customer managed key encryption requires an **Identity** to be added to Azure Database for MySQL – Flexible Server. Please select an appropriate **user assigned managed identity**. The listed **key identifier/key** would be migrated from the source to target server and should be granted the following privileges – **Get, Wrap Key, Unwrap Key** in order to access the key vault.
   - If your Single Server has **private endpoints**, perform the following **mandatory** steps when reviewing the migration schedule at least 2 days before the scheduled migration:

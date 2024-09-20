@@ -17,7 +17,7 @@ ms.custom:
 
 [!INCLUDE [applies-to-postgresql-single-server](../includes/applies-to-postgresql-single-server.md)]
 
-**Automigration** from Azure Database for Postgresql – Single Server to Flexible Server is a service-initiated migration during a planned downtime window for Single Server running PostgreSQL 11 and database workloads with **Basic, General Purpose or Memory Optimized SKU**, data storage used **<= 5 GiB** and **no complex features (CMK, Microsoft Entra ID, Read Replica, Private Link) enabled**. The eligible servers are identified by the service and are sent advance notifications detailing steps to review migration details and make modifications if necessary.
+**Automigration** from Azure Database for Postgresql – Single Server to Flexible Server is a service-initiated migration during a planned downtime window for Single Server running PostgreSQL 11 and database workloads with **Basic, General Purpose or Memory Optimized SKU**, data storage used **<= 5 GiB** and **no complex features (CMK, Microsoft Entra ID, Read Replica, Private Link or VNet rules) enabled**. The eligible servers are identified by the service and are sent advance notifications detailing steps to review migration details and make modifications if necessary.
 
 The automigration provides a highly resilient and self-healing offline migration experience during a planned migration window, with up to **20 mins** of downtime. The migration service is a hosted solution using the [pgcopydb](https://github.com/dimitri/pgcopydb) binary and provides a fast and efficient way of copying databases from the source PostgreSQL instance to the target. This migration removes the overhead to manually migrate your server. Post migration, you can take advantage of the benefits of Flexible Server, including better price & performance, granular control over database configuration, and custom maintenance windows. Following described are the key phases of the migration:
 
@@ -36,8 +36,8 @@ The automigration provides a highly resilient and self-healing offline migration
 > [!NOTE]
 > The Automigration service selects Single server to migrate based on the following criteria:
 > - The server runs PostgreSQL version 11
-> - Servers with no complex feature such as CMK, Microsoft Entra ID, Read Replica and Private end-point
-> - Size of data <= 1GB
+> - Servers with no complex feature such as CMK, Microsoft Entra ID, Read Replica, VNet rules and Private end-point
+> - Size of data <= 5GB
 > - Public access is enabled
 
 The preceding filters are used to select servers to be Automigrated. Servers can also be nominated for Automigration by the user. The nomination process is more flexible and not all filters are applicable.

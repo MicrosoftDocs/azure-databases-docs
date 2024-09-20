@@ -12,7 +12,7 @@ ms.custom: devx-track-azurecli, devx-track-azurepowershell
 # Configure IP firewall in Azure Cosmos DB
 [!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
-To secure the data stored in your account, Azure Cosmos DB supports a secret based authorization model that utilizes a strong Hash-based Message Authentication Code (HMAC). Additionally, Azure Cosmos DB supports IP-based access controls for inbound firewall support. This model is similar to the firewall rules of a traditional database system and provides an additional level of security to your account. With firewalls, you can configure your Azure Cosmos DB account to be accessible only from an approved set of machines and/or cloud services. Access to data stored in your Azure Cosmos DB database from these approved sets of machines and services will still require the caller to present a valid authorization token.
+To secure the data stored in your account, Azure Cosmos DB supports a secret based authorization model that utilizes a strong Hash-based Message Authentication Code (HMAC). Additionally, Azure Cosmos DB supports IP-based access controls for inbound firewall support. This model is similar to the firewall rules of a traditional database system and provides another level of security to your account. With firewalls, you can configure your Azure Cosmos DB account to be accessible only from an approved set of machines and/or cloud services. Access to data stored in your Azure Cosmos DB database from these approved sets of machines and services will still require the caller to present a valid authorization token.
 
 ## <a id="ip-access-control-overview"></a>IP access control
 
@@ -41,7 +41,18 @@ When IP access control is turned on, the Azure portal provides the ability to sp
 
 ### Allow requests from the Azure portal
 
-When you enable an IP access control policy programmatically, you need to add the IP address for the Azure portal to the **ipRangeFilter** property to maintain access. The portal IP addresses are:
+When you enable an IP access control policy programmatically, you need to add the IP address for the Azure portal to the **ipRangeFilter** property to maintain access. 
+
+Portal scenarios that require this option to be enabled include:
+
+- Accessing API for MongoDB or API for Apache Cassandra accounts with Data Explorer or <cosmos.azure.com>
+- Using the following Azure Cosmos DB blades within the Azure portal:
+  - Replicate Data Globally
+  - Browse Collections
+  - Power BI
+  - Azure Synapse
+
+The portal IP addresses are:
 
 |Region|IP address|
 |------|----------|

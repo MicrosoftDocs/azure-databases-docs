@@ -76,16 +76,13 @@ To achieve the optimal performance promised by this feature, certain conditions 
  - **Low Workload During Maintenance Times:** Maintenance periods should coincide with times of low workload on the server to ensure the downtime remains minimal. We encourage you to use the [custom maintenance window](how-to-maintenance-portal.md#specify-maintenance-schedule-options) feature to schedule maintenance during off-peak hours.
  - **Downtime Guarantees：** While we strive to keep the maintenance downtime as low as possible, we do not guarantee that it will always be less than 60 seconds in all circumstances. Various factors, such as high workload or specific server configurations, can lead to longer downtime. In the worst-case scenario, downtime might be similar to that of a standalone server.
 
-## Maintenance reschedule (Public preview)
-
-> [!IMPORTANT]
-> The maintenance reschedule feature is currently in preview. It is subject to limitations and ongoing development. We value your feedback to help enhance this feature. Please note that this feature is not available for servers using the burstable SKU.
+## Maintenance reschedule
 
 The **maintenance reschedule** feature grants you greater control over the timing of maintenance activities on your Azure Database for MySQL flexible server instance. After receiving a maintenance notification, you can reschedule it to a more convenient time, irrespective of whether it was system or custom managed.
 
 ### Reschedule parameters and notifications
 
-Rescheduling isn't confined to fixed time slots; it depends on the earliest and latest permissible times in the current maintenance cycle. Upon rescheduling, a notification will be sent out to confirm the changes, following the standard notification policies.
+Rescheduling isn't confined to fixed time slots; it depends on the earliest and latest permissible times in the current maintenance cycle, which typically spans from the first to the last day of the maintenance window for the region. Upon rescheduling, a notification will be sent out to confirm the changes, following the standard notification policies.
 
 ### Considerations and limitations
 
@@ -93,6 +90,7 @@ Be aware of the following when using this feature:
 
 - **Demand Constraints:** Your rescheduled maintenance might be canceled due to a high number of maintenance activities occurring simultaneously in the same region.
 - **Lock-in Period:** Rescheduling is unavailable 15 minutes prior to the initially scheduled maintenance time to maintain the reliability of the service.
+- **Reschedule Throttle** If too many servers in the same region are scheduled for maintenance during the same time, rescheduling requests may fail. Users will receive an error notification if this occurs and are advised to choose an alternative time slot. Successfully rescheduled maintenance is unlikely to be canceled.
 
 There's no limitation on how many times a maintenance can be rescheduled, as long as the maintenance hasn't entered into the "In preparation" state, you can always reschedule your maintenance to another time.
 

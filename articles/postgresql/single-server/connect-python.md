@@ -1,15 +1,19 @@
 ---
-title: 'Quickstart: Connect with Python - Azure Database for PostgreSQL - Single Server'
+title: "Quickstart: Connect with Python - Azure Database for PostgreSQL - Single Server"
 description: This quickstart provides Python code samples that you can use to connect and query data from Azure Database for PostgreSQL - Single Server.
+author: sunilagarwal
+ms.author: sunila
+ms.reviewer: maghan
+ms.date: 09/10/2024
 ms.service: azure-database-postgresql
 ms.subservice: single-server
-ms.author: sunila
-author: sunilagarwal
-ms.reviewer: ""
-ms.custom: mvc, devcenter, devx-track-python, mode-api
-ms.devlang: python
 ms.topic: quickstart
-ms.date: 06/24/2022
+ms.custom:
+  - mvc
+  - devcenter
+  - devx-track-python
+  - mode-api
+ms.devlang: python
 ---
 
 # Quickstart: Use Python to connect and query data in Azure Database for PostgreSQL - Single Server
@@ -20,7 +24,7 @@ ms.date: 06/24/2022
 
 In this quickstart, you will learn how to connect to the database on Azure Database for PostgreSQL Single Server and run SQL statements to query using Python on macOS, Ubuntu Linux, or Windows.
 
-> [!TIP]
+> [!TIP]  
 > If you are looking to build a Django Application with PostgreSQL then checkout the tutorial, [Deploy a Django web app with PostgreSQL](/azure/app-service/tutorial-python-postgresql-app) tutorial.
 
 ## Prerequisites
@@ -31,11 +35,11 @@ For this quickstart you need:
 - Create an Azure Database for PostgreSQL single server using [Azure portal](./quickstart-create-server-database-portal.md) <br/> or [Azure CLI](./quickstart-create-server-database-azure-cli.md) if you do not have one.
 - Based on whether you are using public or private access, complete **ONE** of the actions below to enable connectivity.
 
-  |Action| Connectivity method|How-to guide|
-  |:--------- |:--------- |:--------- |
-  | **Configure firewall rules** | Public | [Portal](./how-to-manage-firewall-using-portal.md) <br/> [CLI](./quickstart-create-server-database-azure-cli.md#configure-a-server-based-firewall-rule)|
-  | **Configure Service Endpoint** | Public | [Portal](./how-to-manage-vnet-using-portal.md) <br/> [CLI](./how-to-manage-vnet-using-cli.md)|
-  | **Configure private link** | Private | [Portal](./how-to-configure-privatelink-portal.md) <br/> [CLI](./how-to-configure-privatelink-cli.md) |
+  | Action | Connectivity method | How-to guide |
+  | :--- | :--- | :--- |
+  | **Configure firewall rules** | Public | [Portal](./how-to-manage-firewall-using-portal.md)<br />[CLI](./quickstart-create-server-database-azure-cli.md#configure-a-server-based-firewall-rule) |
+  | **Configure Service Endpoint** | Public | [Portal](./how-to-manage-vnet-using-portal.md)<br />[CLI](./how-to-manage-vnet-using-cli.md) |
+  | **Configure private link** | Private | [Portal](./how-to-configure-privatelink-portal.md)<br />[CLI](./how-to-configure-privatelink-cli.md) |
 
 - [Python](https://www.python.org/downloads/) 2.7 or 3.6+.
 
@@ -51,13 +55,13 @@ Connecting to an Azure Database for PostgreSQL database requires the fully quali
 
    You also need your admin password. If you forget it, you can reset it from this page.
 
-   :::image type="content" source="./media/connect-python/1-connection-string.png" alt-text="Azure Database for PostgreSQL server name":::
+   :::image type="content" source="media/connect-python/1-connection-string.png" alt-text="Screenshot of Azure Database for PostgreSQL server name.":::
 
-> [!IMPORTANT]
->  Replace the following values:
->   - `<server-name>` and `<admin-username>` with the values you copied from the Azure portal.
->   - `<admin-password>` with your server password.
->   - `<database-name>` a default database named *postgres* was automatically created when you created your server. You can rename that database or [create a new database](https://www.postgresql.org/docs/current/sql-createdatabase.html) by using SQL commands.
+> [!IMPORTANT]  
+> Replace the following values:
+> - `<server-name>` and `<admin-username>` with the values you copied from the Azure portal.
+> - `<admin-password>` with your server password.
+> - `<database-name>` a default database named *postgres* was automatically created when you created your server. You can rename that database or [create a new database](https://www.postgresql.org/docs/current/sql-createdatabase.html) by using SQL commands.
 
 ## Step 1: Connect and insert data
 
@@ -110,7 +114,7 @@ conn.close()
 
 When the code runs successfully, it produces the following output:
 
-:::image type="content" source="media/connect-python/2-example-python-output.png" alt-text="Command-line output":::
+:::image type="content" source="media/connect-python/2-example-python-output.png" alt-text="Screenshot of Command-line output.":::
 
 ## Step 2: Read data
 
@@ -119,7 +123,6 @@ The following code example connects to your Azure Database for PostgreSQL databa
 - [cursor.fetchall()](https://www.psycopg.org/docs/cursor.html#cursor.fetchall) accepts a query and returns a result set to iterate over by using
 
 ```Python
-
 # Fetch all rows from table
 
 cursor.execute("SELECT * FROM inventory;")
@@ -136,7 +139,6 @@ for row in rows:
 The following code example uses [cursor.execute](https://www.psycopg.org/docs/cursor.html#execute) with the SQL **UPDATE** statement to update data.
 
 ```Python
-
 # Update a data row in the table
 
 cursor.execute("UPDATE inventory SET quantity = %s WHERE name = %s;", (200, "banana"))
@@ -148,7 +150,6 @@ print("Updated 1 row of data")
 The following code example runs [cursor.execute](https://www.psycopg.org/docs/cursor.html#execute) with the SQL **DELETE** statement to delete an inventory item that you previously inserted.
 
 ```Python
-
 # Delete data row from table
 
 cursor.execute("DELETE FROM inventory WHERE name = %s;", ("orange",))
@@ -165,10 +166,7 @@ az group delete \
     --yes
 ```
 
-## Next steps
+## Related content
 
-> [!div class="nextstepaction"]
-> [Manage Azure Database for MySQL server using Portal](./how-to-create-manage-server-portal.md)<br/>
-
-> [!div class="nextstepaction"]
-> [Manage Azure Database for MySQL server using CLI](./how-to-manage-server-cli.md)<br/>
+- [Manage Azure Database for MySQL server using Portal](./how-to-create-manage-server-portal.md)
+- [Manage Azure Database for MySQL server using CLI](./how-to-manage-server-cli.md)
