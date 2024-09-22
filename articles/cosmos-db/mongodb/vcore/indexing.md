@@ -7,14 +7,14 @@ ms.author: avijitgupta
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: conceptual
-ms.date: 07/01/2024
+ms.date: 09/23/2024
 ---
 
-# Manage indexing in Azure Cosmos DB for MongoDB vcore
+# Manage indexing in Azure Cosmos DB for MongoDB vCore
 
 [!INCLUDE[MongoDB vCore](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 
-Indexes are structures that improve data retrieval speed by providing quick access to fields in a collection. They work by creating an ordered set of pointers to data, often based on key fields. Azure Cosmos DB for MongoDB vcore utilizes indexes in multiple contexts, including query push down, unique constraints and sharding.
+Indexes are structures that improve data retrieval speed by providing quick access to fields in a collection. They work by creating an ordered set of pointers to data, often based on key fields. Azure Cosmos DB for MongoDB vCore utilizes indexes in multiple contexts, including query push down, unique constraints and sharding.
 
 > [!IMPORTANT]
 > The "_id" field is the **only** field indexed by default & maximum size of the field can be `2 KB`. It is recommended to add additional indexes based on query filters & predicates to optimize performance.
@@ -44,7 +44,7 @@ This example application stores articles as documents with the following structu
 
 Single field indexes store information from a single field in a collection. The sort order of the single field index doesn't matter. `_id` field remains indexed by default.
 
-Azure Cosmos DB for MongoDB vcore supports creating index at following
+Azure Cosmos DB for MongoDB vCore supports creating index at following
 
 - Top-level document fields.
 - Embedded document.
@@ -64,7 +64,7 @@ db.products.createIndex({"author.firstName": -1})
 One query can use multiple single field indexes where available.
 
 > [!NOTE]
-> Azure Cosmos DB for MongoDB vcore allows creating maximum of 64 indexes on a collection. Depending on the tier, we can plan extension up to 300 indexes upon request.
+> Azure Cosmos DB for MongoDB vCore allows creating maximum of 64 indexes on a collection. Depending on the tier, we can plan extension up to 300 indexes upon request.
 
 ## Compound indexes
 
@@ -84,32 +84,6 @@ db.products.createIndex({"author":1, "launchDate":-1})
 use cosmicworks
 
 db.products.find({"launchDate": {$gt: ISODate("2024-06-01T00:00:00.000Z")}})
-```
-
-Compounded indexes on nested fields aren't supported by default due to limitations with arrays. If your nested field doesn't contain an array, the index works as intended. If your nested field contains an array (anywhere on the path), that value is ignored in the index.
-
-As an example, a compound index containing `author.lastName` works in this case since there's no array on the path:
-
-```json
-{
-  "_id": ObjectId("617a34e7a867530bff1b2346"),
-  "title": "The Culmination",
-  "author": {lastName: "Lindsay", firstName: "Joseph"},
-  "launchDate": ISODate("2024-06-24T10:08:20.000Z"),
-  "published": true
-}
-```
-
-This same compound index doesn't work in this case since there's an array in the path:
-
-```json
-{
-  "_id": ObjectId("617a34e7a867530bff1b2346"),
-  "title": "Beautiful Creatures",
-  "author": [ {lastName: "Garcia", firstName: "Kami"}, {lastName: "Stohl", firstName: "Margaret"} ],
-  "launchDate": ISODate("2024-06-24T10:08:20.000Z"),
-  "published": true
-}
 ```
 
 ### Limitations
@@ -137,7 +111,7 @@ db.products.createIndex (
 
 Text indexes are special data structures that optimize text-based queries, making them faster and more efficient.
 
-Use the `createIndex` method with the `text` option to create a text index on the `title` field.
+Use the `createIndex` method with the `text` option for creating a text index on the `title` field.
 
 ```javascript
 use cosmicworks;
@@ -150,7 +124,7 @@ db.products.createIndex({ title: "text" })
 
 ### Configure text index options
 
-Text indexes in Azure Cosmos DB for MongoDB vcore come with several options to customize their behavior. For example, you can specify the language for text analysis, set weights to prioritize certain fields, and configure case-insensitive searches. Here's an example of creating a text index with options:
+Text indexes in Azure Cosmos DB for MongoDB vCore come with several options to customize their behavior. For example, you can specify the language for text analysis, set weights to prioritize certain fields, and configure case-insensitive searches. Here's an example of creating a text index with options:
 
 - Create an index to support search on both the `title` and `content` fields with English language support. Also, assign higher weights to the `title` field to prioritize it in search results.
 
@@ -164,7 +138,7 @@ Text indexes in Azure Cosmos DB for MongoDB vcore come with several options to c
     ```
 
 > [!NOTE]
-> When a client performs a text search query with the term "Cosmos DB," the score for each document in the collection will be calculated based on the presence and frequency of the term in both the "title" and "content" fields, with higher importance given to the "title" field due to its higher weight.
+> When a client performs a text search query with the term "Cosmos DB", the score for each document in the collection will be calculated based on the presence and frequency of the term in both the "title" and "content" fields, with higher importance given to the "title" field due to its higher weight.
 
 ### Perform a text search using a text index
 
@@ -213,20 +187,20 @@ Index on single field, indexes all paths beneath the `field` , excluding other f
 }
 ```
 
-Creating an index on { "pets.$**": 1 }, creates index on details & sub-document properties but doesn't create an index on “familyName”.
+Creating an index on { "pets.$**": 1 }, creates index on details & subdocument properties but doesn't create an index on "familyName".
 
 ### Limitations
 
 - Wildcard indexes can't support unique indexes.
 - Wildcard indexes don't support push downs of `ORDER BY` unless the filter includes only paths present in the wildcard (since they don't index undefined elements)
-- A compound wildcard index can only have 1 wildcard term and 1 or more additional index terms.
+- A compound wildcard index can only have `one` wildcard term and `one` or more index terms.
 `{ "pets.$**": 1, “familyName”: 1 }`
 
 ## Geospatial indexes
 
 Geospatial indexes support queries on data stored as GeoJSON objects or legacy coordinate pairs. You can use geospatial indexes to improve performance for queries on geospatial data or to run certain geospatial queries.
 
-Azure Cosmos DB for MongoDB vcore provides two types of geospatial indexes:
+Azure Cosmos DB for MongoDB vCore provides two types of geospatial indexes:
 
 - 2dsphere Indexes, which support queries that interpret geometry on a sphere.
 - 2d Indexes, which support queries that interpret geometry on a flat surface.
@@ -235,7 +209,7 @@ Azure Cosmos DB for MongoDB vcore provides two types of geospatial indexes:
 
 2d indexes are supported only with legacy coordinate pair style of storing geospatial data.
 
-Use the `createIndex` method with the `2d` option to create a geospatial index on the `location` field.
+Use the `createIndex` method with the `2d` option for creating a geospatial index on the `location` field.
 
 ```javascript
 db.places.createIndex({ "location": "2d"});
@@ -243,14 +217,14 @@ db.places.createIndex({ "location": "2d"});
 
 ### Limitations
 
-- Only 1 location field can be part of the `2d` index and only 1 other non-geospatial field can be part of the `compound 2d` index
+- Only `one` location field can be part of the `2d` index and only `one` other non-geospatial field can be part of the `compound 2d` index
 `db.places.createIndex({ "location": "2d", "non-geospatial-field": 1 / -1 })`
 
 ### 2dsphere indexes
 
-`2dsphere` indexes support geospatial queries on an earth-like sphere. It can support both GeoJSON objects or legacy coordinate pairs. `2dSphere` indexes work with the GeoJSON style of storing data, if legacy points are encountered then these are converted to GeoJSON point.
+`2dsphere` indexes support geospatial queries on an earth-like sphere. It can support both GeoJSON objects or legacy coordinate pairs. `2dSphere` indexes work with the GeoJSON style of storing data, if legacy points are encountered then it would convert to GeoJSON point.
 
-Use the `createIndex` method with the `2dsphere` option to create a geospatial index on the `location` field.
+Use the `createIndex` method with the `2dsphere` option for creating a geospatial index on the `location` field.
 
 ```javascript
 db.places.createIndex({ "location": "2dsphere"});
@@ -272,7 +246,7 @@ db.places.createIndex({ "location": "2dsphere"});
     ```
 
 - Polygons with holes don't work. Inserting a Polygon with hole isn't restricted though `$geoWithin` query fails for scenarios:
-  1. If the query itself has polygon with holes.
+  1. If the query itself has polygon with holes
 
       ```javascript
       coll.find(
