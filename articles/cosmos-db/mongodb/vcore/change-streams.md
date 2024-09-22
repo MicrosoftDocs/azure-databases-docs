@@ -1,5 +1,5 @@
 ---
-  title: Change Streams on Azure Cosmos DB for MongoDB vCore
+  title: Change Stream on Azure Cosmos DB for MongoDB vCore
   titleSuffix: Azure Cosmos DB for MongoDB vCore
   description: Learn how to configure and use change streams to track the real-time changes made on targeted collection\database.
   author: avijitgupta
@@ -10,14 +10,14 @@
   ms.date: 09/17/2024
 ---
 
-# Change Streams on Azure Cosmos DB for MongoDB vCore (Preview)
+# Change Stream on Azure Cosmos DB for MongoDB vCore (Preview)
 
-Change streams is a real-time stream of database changes that flows from your database to your application. This feature enables you to build reactive applications by subscribing to database changes, eliminating the need for continuous polling to detect changes.
+Change streams are a real-time stream of database changes that flows from your database to your application. This feature enables you to build reactive applications by subscribing to database changes, eliminating the need for continuous polling to detect changes.
 
 > [!NOTE]
 > Please register to enrol your interest using [Form](https://forms.office.com/r/G76XDQ6YSE).
 
-## Configuring Change Streams
+## Configuring Change Stream
 
 This example code initiates a change stream on the `exampleCollection` collection, continuously monitoring for any changes. When a change is detected, it retrieves the change event and prints it in JSON format.
 
@@ -161,7 +161,7 @@ if __name__ == "__main__":
 >
 > `cursor = db.inventory.watch(resume_after=resume_token)`
 
-## Monitoring database changes with Change Streams
+## Monitoring database changes with Change Stream
 
 Let's understand the change stream output through the example.
 
@@ -171,7 +171,7 @@ In this change stream event, we see that a new record was `inserted` into the `e
 
 ```json
 {
-  "_id": { "_data": "AeARBpQ/AAAA" }, // resume_token
+  "_id": { "_data": "AeARBpQ/AAAA" }, // "resume_token"
   "operationType": "insert",
   "fullDocument": {
     "_id": { "$oid": "66e6f63e6f49ecaabf794958" },
@@ -240,11 +240,11 @@ Customize your change stream output by specifying an array of one or more pipeli
 ## Limitations
 
 - `Replace` event is yet not supported.
-- `pre-image` is an unsupported option.
-- Change stream cursors need to be reinitialized after a fail-over event.
-- Historical changestream events from past timeline are unsupported.
-- `Update` event doesn't support Update description.
-- Change stream events on multi-shard cluster is unsupported.
-- Changestream on a sharded collection is unsupported.
-- `showexpandedevents` isn't supported yet. This includes `createIndex`, `dropIndex`, `createCollection`, `rename` etc.
+- `pre-image` is yet an unsupported option.
+- Change stream cursors need to be reinitialized after a fail-over event at current state.
+- Historical change stream events from past timeline are yet not supported.
+- `Update` event yet doesn't support Update description.
+- Change stream events on multi-shard cluster are yet not supported.
+- Change stream on a sharded collection is yet not supported.
+- `showexpandedevents` isn't supported yet. It includes `createIndex`, `dropIndex`, `createCollection`, `rename` etc.
 - `$changestream` as a nested pipeline of another stage is yet not supported.
