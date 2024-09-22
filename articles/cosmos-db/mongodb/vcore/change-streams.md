@@ -17,7 +17,7 @@ Change streams are a real-time stream of database changes that flows from your d
 > [!NOTE]
 > Please register to enrol your interest using [Form](https://forms.office.com/r/G76XDQ6YSE).
 
-## Configuring Change Stream
+## Configuring change streams
 
 This example code initiates a change stream on the `exampleCollection` collection, continuously monitoring for any changes. When a change is detected, it retrieves the change event and prints it in JSON format.
 
