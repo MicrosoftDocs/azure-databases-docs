@@ -159,7 +159,7 @@ if __name__ == "__main__":
 > [!IMPORTANT]
 > Change streams are resumable by specifying a resume token to `resumeAfter` when opening the cursor. Though it is expected that there is enough history to locate the operation associated with the token. The document observed in changestream in `_id` field represents the resumable token.
 >
-> `cursor = db.inventory.watch(resume_after=resume_token)`
+> `cursor = db.exampleCollection.watch(resume_after=resume_token)`
 
 ## Monitoring database changes with Change Stream
 
@@ -167,7 +167,7 @@ Let's understand the change stream output through the example.
 
 # [Insert](#tab/Insert)
 
-In this change stream event, we see that a new record was `inserted` into the `employee` collection within the `cs` database, and the event details include the full content of the newly added document.
+In this change stream event, we see that a new record was `inserted` into the `exampleCollection` collection within the `cs` database, and the event details include the full content of the newly added document.
 
 ```json
 {
@@ -181,14 +181,14 @@ In this change stream event, we see that a new record was `inserted` into the `e
     "department": "IT",
     "rating": 4
   },
-  "ns": { "db": "cs", "coll": "employee" },
+  "ns": { "db": "cs", "coll": "exampleCollection" },
   "documentKey": { "_id": { "$oid": "66e6f63e6f49ecaabf794958" } }
 }
 ```
 
 # [Update](#tab/Update)
 
-In this update event, the `position` & `rating` for John are modified. The change stream reflects an `update` in the `employee` collection with post update state of the document.
+In this update event, the `position` & `rating` for John are modified. The change stream reflects an `update` in the `exampleCollection` collection with post update state of the document.
 
 ```json
 {
@@ -203,7 +203,7 @@ In this update event, the `position` & `rating` for John are modified. The chang
     "rating": 5
   },
   "ns": {
-    "db": "cs", "coll": "employee"
+    "db": "cs", "coll": "exampleCollection"
   },
   "documentKey": {
     "_id": { "$oid": "66e6f63e6f49ecaabf794958" }
@@ -214,13 +214,13 @@ In this update event, the `position` & `rating` for John are modified. The chang
 
 # [Delete](#tab/Delete)
 
-The change stream event indicates that a document was `deleted` from the `employee` collection in the `cs` database. The event captures the unique identifier of the removed document.
+The change stream event indicates that a document was `deleted` from the `exampleCollection` collection in the `cs` database. The event captures the unique identifier of the removed document.
 
 ```json
 {
   "_id": { "_data": "ASgBAJs/AAAA" },
   "operationType": "delete",
-  "ns": { "db": "cs", "coll": "employee" },
+  "ns": { "db": "cs", "coll": "exampleCollection" },
   "documentKey": { "_id": { "$oid": "66e6f63e6f49ecaabf794958" } }
 }
 ```
