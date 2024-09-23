@@ -1,9 +1,9 @@
 ---
 ms.service: azure-cosmos-db
 ms.topic: include
-ms.date: 09/17/2024
+ms.date: 09/23/2024
 ms.custom: subject-msia
-zone_pivot_groups: azure-interface-portal-cli-powershell-bicep
+zone_pivot_groups: azure-interface-cli-powershell-bicep
 ---
 
 Managed identities are one of many types of identity resources in Microsoft Entra ID for applications to use when connecting to services that support Microsoft Entra authentication. Managed identities can be used in lieu of traditional resource-owned credentials like keys. In Azure, managed identities provide a way for your applications to obtain a Microsoft Entra token to authenticate to Azure services without you needing to write a large amount of authentication code.
@@ -42,10 +42,6 @@ For more information, see [managed identities for Azure resources](/entra/identi
 ::: zone pivot="azure-interface-cli,azure-interface-bicep"
 
 [!INCLUDE [Azure CLI prerequisites](~/reusable-content/azure-cli/azure-cli-prepare-your-environment-no-header.md)]
-
-::: zone-end
-
-::: zone pivot="azure-interface-portal"
 
 ::: zone-end
 
@@ -170,38 +166,6 @@ Create a new Azure service with a system-assigned managed identity. This section
       "type": "SystemAssigned"
     }
     ```
-
-::: zone-end
-
-::: zone pivot="azure-interface-portal"
-
-1. TODO
-
-1. TODO
-
-1. TODO
-
-    :::image source="media/managed-identities/<todo>.png" lightbox="media/managed-identities/<todo>.png" alt-text="Screenshot of [TODO].":::
-
-1. TODO
-
-    :::image source="media/managed-identities/<todo>.png" alt-text="Screenshot of [TODO].":::
-
-1. TODO
-
-    :::image source="media/managed-identities/<todo>.png" alt-text="Screenshot of [TODO].":::
-
-1. TODO
-
-    :::image source="media/managed-identities/<todo>.png" alt-text="Screenshot of [TODO].":::
-
-1. TODO
-
-    :::image source="media/managed-identities/<todo>.png" alt-text="Screenshot of [TODO].":::
-
-1. TODO
-
-    :::image source="media/managed-identities/<todo>.png" alt-text="Screenshot of [TODO].":::
 
 ::: zone-end
 
@@ -336,32 +300,6 @@ Create a user-assigned managed identity that can be used with one or more Azure 
 
     > [!NOTE]
     > In this example, the `name.value` would be `msdocs-identity-example-user-assigned`. This example uses fictituous data and your identifier would be distinct from this example.
-
-::: zone-end
-
-::: zone pivot="azure-interface-portal"
-
-1. TODO
-
-1. TODO
-
-    :::image source="media/managed-identities/<todo>.png" alt-text="Screenshot of [TODO].":::
-
-1. TODO
-
-    :::image source="media/managed-identities/<todo>.png" alt-text="Screenshot of [TODO].":::
-
-1. TODO
-
-    :::image source="media/managed-identities/<todo>.png" alt-text="Screenshot of [TODO].":::
-
-1. TODO
-
-    :::image source="media/managed-identities/<todo>.png" alt-text="Screenshot of [TODO].":::
-
-1. TODO
-
-    :::image source="media/managed-identities/<todo>.png" alt-text="Screenshot of [TODO].":::
 
 ::: zone-end
 
@@ -535,32 +473,6 @@ Assign the previously created user-assigned managed identity to a new Azure host
       }
     }
     ```
-
-::: zone-end
-
-::: zone pivot="azure-interface-portal"
-
-1. TODO
-
-1. TODO
-
-    :::image source="media/managed-identities/<todo>.png" alt-text="Screenshot of [TODO].":::
-
-1. TODO
-
-    :::image source="media/managed-identities/<todo>.png" alt-text="Screenshot of [TODO].":::
-
-1. TODO
-
-    :::image source="media/managed-identities/<todo>.png" alt-text="Screenshot of [TODO].":::
-
-1. TODO
-
-    :::image source="media/managed-identities/<todo>.png" alt-text="Screenshot of [TODO].":::
-
-1. TODO
-
-    :::image source="media/managed-identities/<todo>.png" alt-text="Screenshot of [TODO].":::
 
 ::: zone-end
 

@@ -9,6 +9,7 @@ ms.service: azure-cosmos-db
 ms.subservice: table
 ms.topic: how-to
 ms.date: 09/23/2024
+zone_pivot_groups: azure-interface-cli-powershell
 #Customer Intent: As a developer, I want to get my current signed-in identity for Azure CLI, so that my security team can grant me role-based access control permissions to access Azure resources.
 ---
 

@@ -26,7 +26,17 @@ This article covers the process of disabling key-based authorization (or resourc
 
 - An Azure account with an active subscription. [Create an account for free](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-[!INCLUDE[Sign in Azure CLI](../../includes/sign-in-azure-cli.md)]
+::: zone pivot="azure-interface-cli,azure-interface-bicep"
+
+[!INCLUDE [Azure CLI prerequisites](~/reusable-content/azure-cli/azure-cli-prepare-your-environment-no-header.md)]
+
+::: zone-end
+
+::: zone pivot="azure-interface-powershell"
+
+[!INCLUDE [Azure PowerShell prerequisites](~/reusable-content/azure-powershell/azure-powershell-requirements-no-header.md)]
+
+::: zone-end
 
 ## Disable key-based authentication
 
@@ -160,4 +170,4 @@ client = TableServiceClient.from_connection_string(conn_str=connection_string)
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Grant your identity data plane role-based access](how-to-grant-data-plane-role-based-access)
+> [Grant your identity data plane role-based access](how-to-grant-data-plane-role-based-access.md)
