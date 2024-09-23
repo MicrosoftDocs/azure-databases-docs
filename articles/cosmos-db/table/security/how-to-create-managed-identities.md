@@ -29,4 +29,4 @@ This article reviews the steps required to create managed identities to use with
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Disable local authentication with Azure Cosmos DB for Table](how-to-disable-key-based-auth.md)
+> [Disable key-based authentication with Azure Cosmos DB for Table](how-to-disable-key-based-auth.md)
