@@ -902,6 +902,8 @@
               href: ../how-to-always-encrypted.md
             - name: Self-serve minimum transport-layer security (TLS) version enforcement
               href: ../self-serve-minimum-tls-enforcement.md
+            - name: Prepare for upcoming TLS 1.3 support for Azure Cosmos DB
+              href: ../tls-support.md
             - name: Configure customer-managed keys with Azure Key Vault
               href: ../how-to-setup-customer-managed-keys.md
             - name: Configure customer-managed keys on existing accounts with Azure Key Vault

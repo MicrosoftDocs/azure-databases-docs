@@ -5,6 +5,8 @@ ms.reviewer: randolphwest
 ms.date: 09/18/2024
 ms.service: sql-database
 ms.topic: include
+ms.collection:
+  - sql-migration-content
 ---
 ## Register the resource provider
 

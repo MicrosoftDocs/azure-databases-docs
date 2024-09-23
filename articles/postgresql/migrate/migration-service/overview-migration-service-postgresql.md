@@ -82,6 +82,7 @@ The following table lists the various sources supported by the migration service
 | On-premises | [supported](tutorial-migration-service-iaas-offline.md) | [supported](tutorial-migration-service-iaas-online.md) |
 | Azure virtual machine(s) | [supported](tutorial-migration-service-iaas-offline.md) | [supported](tutorial-migration-service-iaas-online.md) |
 | Amazon Aurora PostgreSQL | [supported](tutorial-migration-service-aurora-offline.md) | [supported](tutorial-migration-service-aurora-online.md) |
+| Google Cloud SQL for PostgreSQL | [supported](tutorial-migration-service-cloud-sql-offline.md) | [supported](tutorial-migration-service-cloud-sql-online.md) |
 
 :::image type="content" source="media/overview-migration-service-postgresql/migrate-different-sources-option.png" alt-text="Screenshot of the migration setup showing different sources." lightbox="media/overview-migration-service-postgresql/migrate-different-sources-option.png":::
 
@@ -94,7 +95,7 @@ Below are the key benefits of using this service for your PostgreSQL migrations:
 - **Ease of setup**: Designed to be user-friendly, eliminating complex setup procedures that can often be a barrier to starting a migration project.
 - **No data size constraints**: With the ability to handle databases of any size, the service surpasses the 1-TB data migration limit of Azure DMS (Classic), making it suitable for all types of database migrations.
 - **Addressing DMS (Classic) limitations**: The migration service resolves many of the issues and limitations encountered with Azure DMS (Classic), leading to a more reliable migration process.
-- **Interface options**: Users can choose between a portal-based interface for an intuitive experience or a command-line interface (CLI) for automation and scripting, accommodating various user preferences.
+- **Interface options**: Users can choose between a portal-based interface for an intuitive experience or a command-line interface (CLI) for automation and scripting and to accommodate various user preferences.
 
 ## Get started
 

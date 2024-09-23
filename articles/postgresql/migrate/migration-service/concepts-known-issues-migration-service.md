@@ -43,8 +43,8 @@ The following list describes common limitations that apply to migration scenario
   - Create TYPE
 
 - The migration service doesn't support migration at the object level. That is, you can't migrate a table or a schema.
-- Migration to the Burstable SKU currently is supported only in the West Europe region. In all other Azure regions, you can migrate databases first to a General Purpose SKU or to a Memory Optimized SKU, and then scale down if needed.
-- The Migration Runtime Server is designed to operate with the default DNS servers/private DNS zones, for example, `privatelink.postgres.database.azure.com`. Custom DNS names/DNS servers aren't supported by the migration service when you use the Migration Runtime Server feature. When you're configuring private endpoints for both the source and target databases, it's imperative to use the default private DNS zone provided by Azure for the private link service. The use of custom DNS configurations isn't yet supported and might lead to connectivity issues during the migration process.
+- Currently, migrating to the Burstable SKU is supported only in the West Europe region. In all other Azure regions, you can migrate databases first to a General Purpose SKU or to a Memory Optimized SKU, and then scale down if needed.
+- The migration runtime server is designed to operate with default DNS servers or private DNS zones, for example, with `privatelink.postgres.database.azure.com`. Custom DNS names and custom DNS servers aren't supported by the migration service when you use the migration runtime server feature. When you configure private endpoints for both the source database and the target database, it's imperative to use the default private DNS zone that's provided by Azure for the private link service. Using a custom DNS configuration isn't yet supported and might lead to connectivity issues during the migration process.
 
 ## Limitations migrating from Azure Database for PostgreSQL - Single Server
 

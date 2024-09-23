@@ -1,6 +1,6 @@
 ---
-title: "Migration service - networking scenarios"
-titleSuffix: Azure Database for PostgreSQL Flexible Server
+title: "Networking scenarios in the migration service"
+titleSuffix: Azure Database for PostgreSQL - Flexible Server
 description: Network scenarios for connecting source and target
 author: apduvuri
 ms.author: adityaduvuri
@@ -14,95 +14,100 @@ ms.topic: how-to
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
-This document outlines various scenarios for connecting a source database to an Azure Database for PostgreSQL using the migration service. Each scenario presents different networking requirements and configurations to establish a successful connection for migration. Specific details vary based on the actual network setup and requirements of the source and target environments.
+This article outlines various scenarios for connecting a source database to an instance of Azure Database for PostgreSQL by using the migration service in Azure Database for PostgreSQL. Each scenario has different networking requirements and configurations to establish a successful connection for migration. Specific details vary based on the actual network setup and requirements of the source environment and the target environment.
 
-The table summarizes the scenarios for connecting a source database to an Azure Database for PostgreSQL using the migration service. It indicates whether each scenario is supported based on the configurations of the source and target environments.
+The following table summarizes the migration scenarios. It indicates whether each scenario is supported based on the configurations of the source and target environments.
 
-| PostgreSQL Source | Target | Supported |
+| PostgreSQL source | Target | Supported |
 | --- | --- | --- |
-| On-premises with public IP | Azure Database for PostgreSQL - Flexible Server with public access | Yes |
-| On-premises with private IP via VPN/ExpressRoute | VNet-integrated Azure Database for PostgreSQL - Flexible Server | Yes |
-| Amazon RDS for PostgreSQL/Amazon Aurora PostgreSQL with public IP | Azure Database for PostgreSQL - Flexible Server with public access | Yes |
-| Amazon RDS for PostgreSQL/Amazon Aurora PostgreSQL with private access via VPN/ExpressRoute | VNet-integrated Azure Database for PostgreSQL - Flexible Server | Yes |
-| PostgreSQL installed Azure VM in same/different virtual network | VNet-integrated Azure Database for PostgreSQL - Flexible Server in same/different virtual network | Yes |
+| On-premises with a public IP address | Azure Database for PostgreSQL - Flexible Server with public access | Yes |
+| On-premises with a private IP address via a virtual private network (VPN) or Azure ExpressRoute | Virtual network (VNet)-integrated Azure Database for PostgreSQL - Flexible Server | Yes |
+| Amazon Relational Database Service (Amazon RDS) for PostgreSQL or Amazon Aurora PostgreSQL with a public IP address | Azure Database for PostgreSQL - Flexible Server with public access | Yes |
+| Amazon RDS for PostgreSQL or Amazon Aurora PostgreSQL with private access via a VPN or ExpressRoute | VNet-integrated Azure Database for PostgreSQL - Flexible Server | Yes |
+| Google Cloud SQL for PostgreSQL | Azure Database for PostgreSQL - Flexible Server with public access | Yes |
+| Google Cloud SQL for PostgreSQL with private access via a VPN or ExpressRoute | VNet-integrated Azure Database for PostgreSQL - Flexible Server | Yes |
+| PostgreSQL installed on an Azure virtual machine (VM) in the same or in a different virtual network | VNet-integrated Azure Database for PostgreSQL - Flexible Server in the same or in a different virtual network | Yes |
 | Azure Database for PostgreSQL - Single Server with public access | VNet-integrated Azure Database for PostgreSQL - Flexible Server | Yes |
-| Azure Database for PostgreSQL - Single Server with private endpoint | VNet-integrated Azure Database for PostgreSQL - Flexible Server | Yes |
-| Azure Database for PostgreSQL - Single Server with private endpoint | Azure Database for PostgreSQL - Flexible Server with private endpoint | Yes |
+| Azure Database for PostgreSQL - Single Server with a private endpoint | VNet-integrated Azure Database for PostgreSQL - Flexible Server | Yes |
+| Azure Database for PostgreSQL - Single Server with a private endpoint | Azure Database for PostgreSQL - Flexible Server with a private endpoint | Yes |
 | PostgreSQL sources with private access | Azure Database for PostgreSQL - Flexible Server with private endpoint | Yes |
 | PostgreSQL sources with private access | Azure Database for PostgreSQL - Flexible Server with public access | No |
 
 ## Scenario 1: On-premises source to Azure Database for PostgreSQL with public access
 
-**Networking Steps:**
+**Networking steps:**
 
-- The source database server must have a public IP address.
-- Configure the firewall to allow outbound connections on the PostgreSQL port (default 5432).
-- Ensure the source database server is accessible over the internet.
-- Verify the network configuration by testing connectivity from the target Azure Database for PostgreSQL to the source database, confirming that the migration service can access the source data.
+1. Ensure that the source database server has a public IP address.
+1. Configure the firewall to allow outbound connections on the PostgreSQL port (the default port is 5432).
+1. Ensure that the source database server is accessible over the internet.
+1. Verify the network configuration by testing connectivity from the target instance of Azure Database for PostgreSQL to the source database. Confirm that the migration service can access the source data.
 
-## Scenario 2: Private IP on-premises source to virtual network-Integrated Azure Database for PostgreSQL via Express Route/IPSec VPN
+## Scenario 2: Private IP address on-premises source to a VNet-integrated instance of Azure Database for PostgreSQL via ExpressRoute or an IPSec VPN
 
-:::image type="content" source="media/how-to-network-setup-migration-service/on-premises-to-azure-vpn.png" alt-text="Screenshot of an on-premises data center connected to Azure via ExpressRoute or VPN Gateway, with the on-premises PostgreSQL server connecting through the secure link to the Azure Database for PostgreSQL." lightbox="media/how-to-network-setup-migration-service/on-premises-to-azure-vpn.png":::
+:::image type="content" source="media/how-to-network-setup-migration-service/on-premises-to-azure-vpn.png" alt-text="Screenshot of an on-premises data center connected to Azure via ExpressRoute or Azure VPN Gateway, with the on-premises PostgreSQL server connecting through the secure link to the Azure Database for PostgreSQL." lightbox="media/how-to-network-setup-migration-service/on-premises-to-azure-vpn.png":::
 
-**Networking Steps:**
+**Networking steps:**
 
-- Set up a Site-to-Site VPN or ExpressRoute for a secure, reliable connection between the on-premises network and Azure.
-- Configure Azure's Virtual Network (virtual network) to allow access from the on-premises IP range.
-- Set up Network Security Group (NSG) rules to allow traffic on the PostgreSQL port (default 5432) from the on-premises network.
-- Verify the network configuration by testing connectivity from the target Azure Database for PostgreSQL to the source database, confirming that the migration service can access the source data.
+1. Set up a site-to-site VPN or ExpressRoute instance for a secure, reliable connection between the on-premises network and Azure.
+1. Configure Azure's Virtual Network (virtual network) to allow access from the on-premises IP range.
+1. Set up Network Security Group (NSG) rules to allow traffic on the PostgreSQL port (default 5432) from the on-premises network.
+1. Verify the network configuration by testing connectivity from the target Azure Database for PostgreSQL to the source database, confirming that the migration service can access the source data.
 
-## Scenario 3: Amazon RDS for PostgreSQL/Amazon Aurora PostgreSQL to Azure Database for PostgreSQL
+## Scenario 3: Managed PostgreSQL Services (AWS/GCP) to Azure Database for PostgreSQL
 
-:::image type="content" source="media/how-to-network-setup-migration-service/aws-to-azure-vpn.png" alt-text="Screenshot of an Amazon RDS for PostgreSQL/Amazon Aurora PostgreSQL connects to Azure Database for PostgreSQL through the internet or a direct connect service like Express Route or AWS Direct Connect." lightbox="media/how-to-network-setup-migration-service/aws-to-azure-vpn.png":::
+:::image type="content" source="media/how-to-network-setup-migration-service/aws-to-azure-vpn.png" alt-text="Screenshot of a PostgreSQL database from managed services (AWS, GCP, etc.) connecting to Azure Database for PostgreSQL via internet or private methods." lightbox="media/how-to-network-setup-migration-service/aws-to-azure-vpn.png":::
 
-The source database in another cloud provider (AWS) must have a public IP or a direct connection to Azure.
+The source PostgreSQL instance in a cloud provider (AWS, GCP, etc.) must have a public IP or a direct connection to Azure.
 
-**Networking Steps:**
+**Networking steps:**
 
-- **Public Access:**
-    - If your Amazon RDS/Amazon Aurora instance isn't publicly accessible, you can modify the instance to allow connections from Azure. This can be done through the AWS Management Console by changing the Publicly Accessible setting to Yes.
-    - In the Amazon RDS/Amazon Aurora security group, add an inbound rule to allow traffic from the Azure Database for PostgreSQL's public IP address/domain.
+- **Public access**
 
-- **Private Access**
-    - Establish a secure connection using the express route or a VPN from Amazon to Azure.
-    - In the Amazon RDS/Amazon Aurora security group, add an inbound rule to allow traffic from the Azure Database for PostgreSQL's public IP address/domain or the range of IP addresses in the Azure virtual network on the PostgreSQL port (default 5432).
-    - Create an Azure Virtual Network (virtual network) where your Azure Database for PostgreSQL resides. Configure the virtual network's Network Security Group (NSG) to allow outbound connections to the Amazon RDS/Amazon Aurora instance's IP address on the PostgreSQL port.
-    - Set up NSG rules in Azure to permit incoming connections from the cloud provider, Amazon RDS/Amazon Aurora IP range.
-    - Test the connectivity between Amazon RDS/Amazon Aurora and Azure Database for PostgreSQL to ensure no network issues.
+  1. If your PostgreSQL instance in AWS, GCP, or other managed PostgreSQL services isn't publicly accessible, modify the instance to allow connections from Azure. This can be done by changing the Publicly Accessible setting to Yes within the respective cloud provider's console (e.g., AWS Management Console, GCP Console).
+  1. In the cloud provider's security settings (e.g., security groups in AWS or firewall rules in GCP), add an inbound rule to allow traffic from Azure Database for PostgreSQL's public IP address/domain.
 
-## Scenario 4: Azure VMs to Azure Database for PostgreSQL (different virtual networks)
+- **Private access**
 
-This scenario describes the connectivity between an Azure VM and an Azure Database for PostgreSQL, which are located in different virtual networks. Virtual network peering and appropriate NSG rules are required to facilitate traffic between the VNets.
+  1. Establish a secure connection using ExpressRoute, IPSec VPN, or equivalent private connection services from the cloud provider (e.g., Azure Express route, AWS Direct Connect, GCP Interconnect) to Azure.
+  1. In the source cloud provider's security settings (AWS security groups, GCP firewall rules), add an inbound rule to allow traffic from Azure Database for PostgreSQL's public IP address/domain or the IP range of the Azure virtual network on the PostgreSQL port (default 5432).
+  1. Create an Azure Virtual Network where your Azure Database for PostgreSQL resides. Configure the Network Security Group (NSG) to allow outbound connections to the source cloud provider’s PostgreSQL instance’s IP address on port 5432.
+  1. Set up NSG rules in Azure to permit incoming connections from the cloud provider (AWS, GCP) to the Azure PostgreSQL IP range.
+  1. Test the connectivity between your PostgreSQL instance in the managed PostgreSQL service (AWS, GCP, Heroku, etc.) and Azure Database for PostgreSQL to ensure no network issues.
+
+## Scenario 4: Azure VMs to Azure Database for PostgreSQL (in different virtual networks)
+
+This scenario describes connectivity between an instance of Azure Virtual Machines and an instance of Azure Database for PostgreSQL that are in different virtual networks. Virtual network peering and appropriate NSG rules are required to facilitate traffic between the VNets.
 
 :::image type="content" source="media/how-to-network-setup-migration-service/vm-to-azure-peering.png" alt-text="Screenshot of an Azure VM in one virtual network connects to the Azure Database for PostgreSQL in another virtual network." lightbox="media/how-to-network-setup-migration-service/vm-to-azure-peering.png":::
 
-**Networking Steps:**
+**Networking steps:**
 
-- Set up virtual network peering between the two VNets to enable direct network connectivity.
-- Configure NSG rules to allow traffic between the VNets on the PostgreSQL port.
+1. Set up virtual network peering between the two VNets to enable direct network connectivity.
+1. Configure NSG rules to allow traffic between the VNets on the PostgreSQL port.
 
-## Scenario 5: Azure VMs to Azure PostgreSQL (same virtual network)
+## Scenario 5: Azure VMs to Azure PostgreSQL (in the same virtual network)
 
-The configuration is straightforward when an Azure VM and Azure Database for PostgreSQL are within the same virtual network. NSG rules should be set to allow internal traffic on the PostgreSQL port, and no additional firewall rules are necessary for the Azure Database for PostgreSQL since the traffic remains within the virtual network.
+Configuration is straightforward when an Azure VM and Azure Database for PostgreSQL are within the same virtual network. NSG rules should be set to allow internal traffic on the PostgreSQL port, and no additional firewall rules are necessary for the Azure Database for PostgreSQL since the traffic remains within the virtual network.
 
 :::image type="content" source="media/how-to-network-setup-migration-service/vm-to-azure-same-vnet.png" alt-text="Screenshot of an Azure VM in the same virtual network connects directly to the Azure Database for PostgreSQL." lightbox="media/how-to-network-setup-migration-service/vm-to-azure-same-vnet.png":::
 
-**Networking Steps:**
+**Networking steps:**
 
-- Ensure that the VM and the PostgreSQL server are in the same virtual network.
-- Configure NSG rules to allow traffic within the virtual network on the PostgreSQL port.
-- No other firewall rules are needed for the Azure Database for PostgreSQL since the traffic is internal to the virtual network.
+1. Ensure that the VM and the PostgreSQL server are in the same virtual network.
+1. Configure NSG rules to allow traffic within the virtual network on the PostgreSQL port.
+1. No other firewall rules are needed for the Azure Database for PostgreSQL since the traffic is internal to the virtual network.
 
-## Scenario 6: Azure Database for PostgreSQL - Single server to VNet-Integrated Azure Database for PostgreSQL - Flexible server
+## Scenario 6: Azure Database for PostgreSQL - Single server to VNet-Integrated Azure Database for PostgreSQL - Flexible Server
 
-To facilitate connectivity between an Azure Database for PostgreSQL - Single Server with public access and a Vnet-Integrated Flexible Server, you need to configure the Single Server to allow connections from the subnet where the Flexible Server is deployed. Here's a brief outline of the steps to set up this connectivity:
+To facilitate connectivity between an instance of Azure Database for PostgreSQL - Single Server with public access and a VNet-integrated flexible server, you need to configure the Single Server to allow connections from the subnet where the Flexible Server is deployed. Here's a brief outline of the steps to set up this connectivity:
 
-**Add VNet Rule to Single Server:**
+**Add a VNet rule to a single server:**
 
-- Navigate to the Azure portal and open your PostgreSQL Single Server instance.
-- Go to the "Connection Security" settings.
-- Locate the "virtual network rules" section and select "Add existing virtual network".
-- This action lets you specify which virtual network can connect to your Single Server.
+1. In the Azure portal, go your Azure Database for PostgreSQL - Single Server instance.
+1. Go to the **Connection Security** settings.
+1. In the **Virtual network rules** section, and select **Add existing virtual network**.
+
+   This action lets you specify which virtual network can connect to your Single Server.
 
     :::image type="content" source="media/how-to-network-setup-migration-service/add-vnet-rule-single-server.png" alt-text="Screenshot of adding a virtual network rule in single server." lightbox="media/how-to-network-setup-migration-service/add-vnet-rule-single-server.png":::
 
@@ -117,7 +122,7 @@ To facilitate connectivity between an Azure Database for PostgreSQL - Single Ser
 
 After completing these steps, the Single Server will be configured to accept connections from the Flexible Server's subnet, enabling secure communication between the two servers.
 
-## Scenario 7: Azure Database for PostgreSQL - Single server with private endpoint to VNet-Integrated Azure Database for PostgreSQL - Flexible server
+## Scenario 7: Azure Database for PostgreSQL - Single Server with private endpoint to VNet-Integrated Azure Database for PostgreSQL - Flexible server
 
 To facilitate connectivity from an Azure Database for PostgreSQL Single Server with a private endpoint to a VNet-integrated Flexible Server, follow these steps:
 
@@ -150,7 +155,7 @@ If not, select the **Add** button and create a link to this private DNS zone for
 
     :::image type="content" source="media/how-to-network-setup-migration-service/private-dns-zone-record.png" alt-text="Screenshot showing a private IP address assigned to private end point." lightbox="media/how-to-network-setup-migration-service/private-dns-zone-record.png":::
 
-Completing these steps enables the Azure Database for PostgreSQL - Flexible Server to connect to the Azure Database for PostgreSQL - Single Server.
+Completing these steps enables the instance of Azure Database for PostgreSQL - Flexible Server to connect to the instance of Azure Database for PostgreSQL - Single Server.
 
 ## Scenario 8: Azure Database for PostgreSQL single server with private endpoint to Azure Database for PostgreSQL flexible server with private endpoint
 
@@ -178,13 +183,14 @@ Below are the essential networking steps for migrating from a Single Server with
     - Enable virtual network peering if the servers are in different VNets; no peering is needed in the same virtual network but with different subnets.
     - Ensure no NSGs block traffic between the source, migration runtime, and target servers.
 
-- **Private DNS Zone Configuration**
-    - Verify the use of a private DNS zone on the networking page of the Migration Runtime Server.
-    - Ensure both source Azure Database for PostgreSQL - Single Server and target Azure Database for PostgreSQL - Flexible Server VNets are linked to the private DNS zone of the migration runtime server
+- **Private DNS zone configuration**
 
-    :::image type="content" source="media/how-to-network-setup-migration-service/instance-dns-zone.png" alt-text="Screenshot of private DNS zone of runtime server." lightbox="media/how-to-network-setup-migration-service/instance-dns-zone.png":::
+  1. Verify the use of a private DNS zone on the networking page of the migration runtime server.
+  1. Ensure that the VNets of both the source instance of Azure Database for PostgreSQL - Single Server and the target instance of Azure Database for PostgreSQL - Flexible Server are linked to the private DNS zone of the migration runtime server.
 
-    - Attach a private DNS zone to the Single Server's private endpoint if not already configured.
+     :::image type="content" source="media/how-to-network-setup-migration-service/instance-dns-zone.png" alt-text="Screenshot of private DNS zone of runtime server." lightbox="media/how-to-network-setup-migration-service/instance-dns-zone.png":::
+
+  1. Attach a private DNS zone to the Single Server's private endpoint if not already configured.
     - Add virtual network links for the Single Server and Migration Runtime Server to the private DNS zone.
     - Repeat the DNS zone attachment and virtual network linking process for the Flexible Server's private endpoint.
 
@@ -223,3 +229,4 @@ Below are the networking steps for migrating a PostgreSQL database from a cloud-
 - [Migration service](concepts-migration-service-postgresql.md)
 - [Known issues and limitations](concepts-known-issues-migration-service.md)
 - [Premigration validations](concepts-premigration-migration-service.md)
+
