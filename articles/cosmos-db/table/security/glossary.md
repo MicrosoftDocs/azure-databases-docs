@@ -8,7 +8,7 @@ ms.reviewer: stefarroyo
 ms.service: azure-cosmos-db
 ms.subservice: table
 ms.topic: glossary
-ms.date: 09/16/2024
+ms.date: 09/23/2024
 ai-usage: ai-assisted
 ---
 

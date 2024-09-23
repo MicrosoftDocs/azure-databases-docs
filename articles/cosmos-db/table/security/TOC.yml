@@ -15,18 +15,21 @@
     - name: Create managed identities
       displayName: principals
       href: how-to-create-managed-identities.md
-    - name: Disable local auth
+    - name: Disable key-based authentication
       displayName: key, ropc, connection string
-      href: how-to-disable-local-auth.md
+      href: how-to-disable-key-based-auth.md
 - name: Role-based access control
   expanded: true
   items:
-    - name: Grant control and data plane access
-      displayName: rbac
-      href: how-to-grant-role-based-access.md
+    - name: Grant data plane access
+      displayName: rbac, role, permissions, dataActions
+      href: how-to-grant-data-plane-role-based-access.md
 - name: Reference
   expanded: true
   items:
-    - name: Data actions
-      displayName: example, permissions, rbac, role, definition
+    - name: Data plane actions
+      displayName: example, permissions, rbac, role, definition, dataActions
       href: reference-data-actions.md
+    - name: Frequently asked questions
+      displayName: faq, questions, answers
+      href: faq.yml
