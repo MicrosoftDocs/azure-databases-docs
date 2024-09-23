@@ -32,7 +32,7 @@ This article covers the process of disabling key-based authorization (or resourc
 
 ::: zone-end
 
-::: zone pivot="azure-interface-powershell"
+::: zone pivot="azure-interface-shell"
 
 [!INCLUDE [Azure PowerShell prerequisites](~/reusable-content/azure-powershell/azure-powershell-requirements-no-header.md)]
 

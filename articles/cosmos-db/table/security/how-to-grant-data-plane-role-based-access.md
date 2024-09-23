@@ -34,7 +34,7 @@ This article walks through the steps to grant an identity access to manage data 
 
 ::: zone-end
 
-::: zone pivot="azure-interface-powershell"
+::: zone pivot="azure-interface-shell"
 
 [!INCLUDE [Azure PowerShell prerequisites](~/reusable-content/azure-powershell/azure-powershell-requirements-no-header.md)]
 
