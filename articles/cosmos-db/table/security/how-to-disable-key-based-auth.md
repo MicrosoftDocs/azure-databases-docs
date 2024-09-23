@@ -26,17 +26,7 @@ This article covers the process of disabling key-based authorization (or resourc
 
 - An Azure account with an active subscription. [Create an account for free](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-::: zone pivot="azure-interface-cli,azure-interface-bicep"
-
 [!INCLUDE [Azure CLI prerequisites](~/reusable-content/azure-cli/azure-cli-prepare-your-environment-no-header.md)]
-
-::: zone-end
-
-::: zone pivot="azure-interface-shell"
-
-[!INCLUDE [Azure PowerShell prerequisites](~/reusable-content/azure-powershell/azure-powershell-requirements-no-header.md)]
-
-::: zone-end
 
 ## Disable key-based authentication
 

@@ -28,17 +28,7 @@ This article walks through the steps to grant an identity access to manage data 
 - An existing Azure Cosmos DB for NoSQL account.
 - One or more existing identities in Microsoft Entra ID.
 
-::: zone pivot="azure-interface-cli,azure-interface-bicep"
-
 [!INCLUDE [Azure CLI prerequisites](~/reusable-content/azure-cli/azure-cli-prepare-your-environment-no-header.md)]
-
-::: zone-end
-
-::: zone pivot="azure-interface-shell"
-
-[!INCLUDE [Azure PowerShell prerequisites](~/reusable-content/azure-powershell/azure-powershell-requirements-no-header.md)]
-
-::: zone-end
 
 ## Create role-based access control definition
 
