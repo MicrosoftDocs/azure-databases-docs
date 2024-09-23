@@ -1,7 +1,7 @@
 ---
-title: Disable local authentication
+title: Disable key-based authentication
 titleSuffix: Azure Cosmos DB for Table
-description: Learn how to disable local auth with Azure Cosmos DB for Table to prevent an account from being used with insecure authentication methods.
+description: Learn how to disable key-based auth with Azure Cosmos DB for Table to prevent an account from being used with insecure authentication methods.
 author: seesharprun
 ms.author: sidandrews
 ms.reviewer: stefarroyo
@@ -9,14 +9,14 @@ ms.service: azure-cosmos-db
 ms.subservice: table
 ms.topic: how-to
 ms.date: 09/23/2024
-#Customer Intent: As a security user, I want to disable local auth in an Azure Cosmos DB for Table account, so that my developers or applications can no longer access the account in an insecure manner.
+#Customer Intent: As a security user, I want to disable key-based auth in an Azure Cosmos DB for Table account, so that my developers or applications can no longer access the account in an insecure manner.
 ---
 
-# Disable local authentication with Azure Cosmos DB for Table
+# Disable key-based authentication with Azure Cosmos DB for Table
 
 [!INCLUDE[Table](../../includes/appliesto-table.md)]
 
-:::image type="complex" source="media/how-to-disable-local-auth/map.svg" border="false" alt-text="Diagram of the current location ('Prepare') in the sequence of the deployment guide.":::
+:::image type="complex" source="media/how-to-disable-key-based-auth/map.svg" border="false" alt-text="Diagram of the current location ('Prepare') in the sequence of the deployment guide.":::
 Diagram of the sequence of the deployment guide including these locations, in order: Overview, Concepts, Prepare, Role-based access control, and Reference. The 'Prepare' location is currently highlighted.
 :::image-end:::
 
@@ -37,7 +37,7 @@ First, disable key-based authentication to your account so that applications are
 1. Create a new Bicep file to deploy your new account with key-based authentication disabled. Name the file *deploy-new-account.bicep*.
 
     ```bicep
-    metadata description = 'Deploys a new Azure Cosmos DB for Table account with local auth disabled.'
+    metadata description = 'Deploys a new Azure Cosmos DB for Table account with key-based auth disabled.'
     
     @description('Name of the API for Table account.')
     param name string = 'table-${uniqueString(resourceGroup().id)}'
@@ -160,4 +160,4 @@ client = TableServiceClient.from_connection_string(conn_str=connection_string)
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Grant your identity role-based access](how-to-grant-role-based-access.md)
+> [Grant your identity data plane role-based access](how-to-grant-data-plane-role-based-access)

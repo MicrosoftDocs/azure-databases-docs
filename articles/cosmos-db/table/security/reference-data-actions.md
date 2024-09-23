@@ -35,6 +35,14 @@ Here's a list of data actions that can be individually set in a role definition.
 | **`Microsoft.DocumentDB/databaseAccounts/tables/containers/entities/replace`** | Entirely replaces an existing entity (item) |
 | **`Microsoft.DocumentDB/databaseAccounts/tables/containers/entities/upsert`** | Creates an entity (item) if it doesn't exist or replaces the entity if it already exists |
 | **`Microsoft.DocumentDB/databaseAccounts/tables/containers/entities/delete`** | Deletes an entity (item) |
+| **`Microsoft.DocumentDB/databaseAccounts/throughputSettings/read`** | Read the current throughput |
+| **`Microsoft.DocumentDB/databaseAccounts/throughputSettings/write`** | Modify the current throughput |
+| **`Microsoft.DocumentDB/databaseAccounts/tables/write`** | Create or update a table |
+| **`Microsoft.DocumentDB/databaseAccounts/tables/delete`** | Delete a table |
+| **`Microsoft.DocumentDB/databaseAccounts/tables/containers/write`** | Create or update a container |
+| **`Microsoft.DocumentDB/databaseAccounts/tables/containers/delete`** | Delete a container |
+| **`Microsoft.DocumentDB/databaseAccounts/tables/containers/readChangeFeed`** | Read from the container's change feed |
+| **`Microsoft.DocumentDB/databaseAccounts/tables/containers/manageConflicts`** | Manage conflicts for multi-write region accounts (list and delete items from the conflict feed) |
 
 ### Data action wildcards
 
@@ -45,6 +53,7 @@ The wildcard (`*`) operator is supported at the `tables`, `containers`, and `ent
 | **`Microsoft.DocumentDB/databaseAccounts/tables/*`** | Perform all operations on tables |
 | **`Microsoft.DocumentDB/databaseAccounts/tables/containers/*`** | Perform all operations on containers |
 | **`Microsoft.DocumentDB/databaseAccounts/tables/containers/entities/*`** | Perform all operations on entities (items) |
+| **`Microsoft.DocumentDB/databaseAccounts/throughputSettings/*`** | Perform all operations related to throughput |
 
 ## Related content
 

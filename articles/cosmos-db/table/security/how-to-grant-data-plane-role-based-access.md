@@ -1,5 +1,5 @@
 ---
-title: Use role-based access control (RBAC)
+title: Use data plane role-based access control
 titleSuffix: Azure Cosmos DB for Table
 description: Grant access to run queries, manage entities, and perform operations using role-based access control (RBAC), Microsoft Entra, and Azure Cosmos DB for Table.
 author: seesharprun
@@ -16,7 +16,7 @@ ms.date: 09/23/2024
 
 [!INCLUDE[Table](../../includes/appliesto-table.md)]
 
-:::image type="complex" source="media/how-to-grant-role-based-access/map.svg" border="false" alt-text="Diagram of the current location ('Role-based access control') in the sequence of the deployment guide.":::
+:::image type="complex" source="media/how-to-grant-data-plane-role-based-access/map.svg" border="false" alt-text="Diagram of the current location ('Role-based access control') in the sequence of the deployment guide.":::
 Diagram of the sequence of the deployment guide including these locations, in order: Overview, Concepts, Prepare, Role-based access control, and Reference. The 'Role-based access control' location is currently highlighted.
 :::image-end:::
 

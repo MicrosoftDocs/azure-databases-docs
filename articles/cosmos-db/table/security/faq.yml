@@ -2,7 +2,7 @@
 metadata:
   title: Security frequently asked questions
   titleSuffix: Azure Cosmos DB for Table
-  description: Get answers to frequently asked questions about security in Azure Cosmos DB for NoSQL.
+  description: Get answers to frequently asked questions about security in Azure Cosmos DB for Table.
   author: seesharprun
   ms.author: sidandrews
   ms.reviewer: stefarroyo
@@ -10,19 +10,24 @@ metadata:
   ms.subservice: table
   ms.topic: faq
   ms.date: 09/23/2024
-title: Frequently asked questions about security in Azure Cosmos DB for NoSQL
+  ai-usage: ai-assisted
+title: Frequently asked questions about security in Azure Cosmos DB for Table
 summary: |
-  [!INCLUDE[NoSQL](../../includes/appliesto-nosql.md)]
+  [!INCLUDE[Table](../../includes/appliesto-table.md)]
+
+  :::image type="complex" source="media/faq/map.svg" border="false" alt-text="Diagram of the current location ('Reference') in the sequence of the deployment guide.":::
+  Diagram of the sequence of the deployment guide including these locations, in order: Overview, Concepts, Prepare, Role-based access control, and Reference. The 'Reference' location is currently highlighted.
+  :::image-end:::
 sections:
   - name: General
     questions:
       - question: |
-          TODO
+          What is role-based access control (RBAC)?
         answer: |
-          TODO
+          Role-based access control (RBAC) is a method of regulating access to computer or network resources based on the roles of individual users within an enterprise. In Azure Cosmos DB, RBAC is used to grant data-plane access to users and applications. For more information about various terms in role-based access control, see [glossary](glossary.md).
   - name: Role-based access control
     questions:
       - question: |
-          TODO
+          How do I enable data-plane role-based access control for Azure Cosmos DB for Table?
         answer: |
-          TODO
+          Use the Azure Cosmos DB native role-based access control (RBAC) feature to grant data-plane access to users and applications. For more information, see [Grant data-plane role-based access](how-to-grant-data-plane-role-based-access.md).

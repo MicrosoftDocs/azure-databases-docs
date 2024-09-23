@@ -10,6 +10,7 @@ ms.subservice: table
 ms.topic: how-to
 ms.date: 09/23/2024
 ms.custom: subject-msia
+zone_pivot_groups: azure-interface-portal-cli-powershell-bicep
 #Customer Intent: As a security user, I want to create managed identities for use with Azure Cosmos DB for Table, so that my developer team can write portable authentication code for their client.
 ---
 
@@ -28,4 +29,4 @@ This article reviews the steps required to create managed identities to use with
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Disable local authentication with Azure Cosmos DB for Table](how-to-disable-local-auth.md)
+> [Disable local authentication with Azure Cosmos DB for Table](how-to-disable-key-based-auth.md)
