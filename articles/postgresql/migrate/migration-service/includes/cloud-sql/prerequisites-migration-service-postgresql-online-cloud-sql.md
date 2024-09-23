@@ -1,5 +1,5 @@
 ---
-title: "Prerequisites using the migration service from Amazon Aurora PostgreSQL (online)"
+title: "Prerequisites using the migration service from Google Cloud SQL PostgreSQL (online)"
 description: Providing the online prerequisites for the migration service in Azure Database for PostgreSQL.
 author: apduvuri
 ms.author: adityaduvuri
@@ -26,10 +26,13 @@ The source PostgreSQL server version must be 9.5 or later.
 
 If the source PostgreSQL version is less than 9.5, upgrade it to 9.5 or higher before you start the migration.
 
+> [!NOTE]
+> The migration service in Azure Database for PostgreSQL supports connections using the IP address for source Google Cloud SQL for PostgreSQL. The format `myproject:myregion:myinstance` is not supported.
+
 ### Install test_decoding - source setup
 
 - **test_decoding** receives WAL through the logical decoding mechanism and decodes it into text representations of the operations performed.
-- In Amazon RDS for PostgreSQL, the test_decoding plugin is preinstalled and ready for logical replication. This allows you to easily set up logical replication slots and stream WAL changes, facilitating use cases such as change data capture (CDC) or replication to external systems.
+- In Google Cloud SQL for PostgreSQL, the test_decoding plugin is preinstalled and ready for logical replication. This allows you to easily set up logical replication slots and stream WAL changes, facilitating use cases such as change data capture (CDC) or replication to external systems.
 - For more information about the test-decoding plugin, see the [PostgreSQL documentation](https://www.postgresql.org/docs/16/test-decoding.html)
 
 ### Configure target setup
@@ -41,15 +44,16 @@ If the source PostgreSQL version is less than 9.5, upgrade it to 9.5 or higher b
 ### Enable CDC as a source
 
 - `test_decoding` logical decoding plugin captures the changed records from the source.
-- To allow the migration user to access replication privileges, execute the following command:
+- To ensure the migration user has the necessary replication privileges, execute the following SQL command:
 ```bash
-GRANT rds_replication TO <<username>>;
+Alter user <<username>> with REPLICATION;
 ```
-- In the source, PostgreSQL instance, modify the following parameters (DB Clusters parameter group) by creating a new parameter group:
-    - Set `rds.logical_replication = 1`
-    - Set `max_replication_slots` to a value greater than one; the value should be greater than the number of databases selected for migration.
-    - Set `max_wal_senders` to a value greater than one. It should be at least the same as `max_replication_slots`, plus the number of senders already used on your instance.
-    - The `wal_sender_timeout` parameter ends inactive replication connections longer than the specified number of milliseconds. The default for an Amazon Aurora PostgreSQL instance is `30000 milliseconds (30 seconds)`. Setting the value to 0 (zero) disables the timeout mechanism and is a valid setting for migration.
+- Go to the Google Cloud SQL PostgreSQL instance in the Google Cloud Console, click on the instance name to open its details page, click on the Edit button, and in the Flags section, modify the following flags:
+    - Set flag `cloudsql.logical_decoding = on`
+    - Set flag `max_replication_slots` to a value greater than one; the value should be greater than the number of databases selected for migration.
+    - Set flag `max_wal_senders` to a value greater than one. It should be at least the same as `max_replication_slots`, plus the number of senders already used on your instance.
+    - The flag `wal_sender_timeout` ends inactive replication connections longer than the specified number of milliseconds. Setting the value to 0 (zero) disables the timeout mechanism and is a valid setting for migration.
+    
 
 - In the target Flexible Server, to prevent the Online migration from running out of storage to store the logs, ensure that you have sufficient tablespace space using a provisioned managed disk. To achieve this, disable the server parameter `azure.enable_temp_tablespaces_on_local_ssd` for the duration of the migration, and restore it to the original state after the migration.
 

@@ -24,6 +24,8 @@ The table summarizes the scenarios for connecting a source database to an Azure 
 | On-premises with private IP via VPN/ExpressRoute | VNet-integrated Azure Database for PostgreSQL - Flexible Server | Yes |
 | Amazon RDS for PostgreSQL/Amazon Aurora PostgreSQL with public IP | Azure Database for PostgreSQL - Flexible Server with public access | Yes |
 | Amazon RDS for PostgreSQL/Amazon Aurora PostgreSQL with private access via VPN/ExpressRoute | VNet-integrated Azure Database for PostgreSQL - Flexible Server | Yes |
+| Google Cloud SQL for PostgreSQL | Azure Database for PostgreSQL - Flexible Server with public access | Yes |
+| Google Cloud SQL for PostgreSQL with private access via VPN/ExpressRoute | VNet-integrated Azure Database for PostgreSQL - Flexible Server | Yes |
 | PostgreSQL installed Azure VM in same/different virtual network | VNet-integrated Azure Database for PostgreSQL - Flexible Server in same/different virtual network | Yes |
 | Azure Database for PostgreSQL - Single Server with public access | VNet-integrated Azure Database for PostgreSQL - Flexible Server | Yes |
 | Azure Database for PostgreSQL - Single Server with private endpoint | VNet-integrated Azure Database for PostgreSQL - Flexible Server | Yes |
@@ -51,24 +53,24 @@ The table summarizes the scenarios for connecting a source database to an Azure 
 - Set up Network Security Group (NSG) rules to allow traffic on the PostgreSQL port (default 5432) from the on-premises network.
 - Verify the network configuration by testing connectivity from the target Azure Database for PostgreSQL to the source database, confirming that the migration service can access the source data.
 
-## Scenario 3: Amazon RDS for PostgreSQL/Amazon Aurora PostgreSQL to Azure Database for PostgreSQL
+## Scenario 3: Managed PostgreSQL Services (AWS/GCP) to Azure Database for PostgreSQL
 
-:::image type="content" source="media/how-to-network-setup-migration-service/aws-to-azure-vpn.png" alt-text="Screenshot of an Amazon RDS for PostgreSQL/Amazon Aurora PostgreSQL connects to Azure Database for PostgreSQL through the internet or a direct connect service like Express Route or AWS Direct Connect." lightbox="media/how-to-network-setup-migration-service/aws-to-azure-vpn.png":::
+:::image type="content" source="media/how-to-network-setup-migration-service/aws-to-azure-vpn.png" alt-text="Screenshot of a PostgreSQL database from managed services (AWS, GCP, etc.) connecting to Azure Database for PostgreSQL via internet or private methods." lightbox="media/how-to-network-setup-migration-service/aws-to-azure-vpn.png":::
 
-The source database in another cloud provider (AWS) must have a public IP or a direct connection to Azure.
+The source PostgreSQL instance in a cloud provider (AWS, GCP, etc.) must have a public IP or a direct connection to Azure.
 
 **Networking Steps:**
 
 - **Public Access:**
-    - If your Amazon RDS/Amazon Aurora instance isn't publicly accessible, you can modify the instance to allow connections from Azure. This can be done through the AWS Management Console by changing the Publicly Accessible setting to Yes.
-    - In the Amazon RDS/Amazon Aurora security group, add an inbound rule to allow traffic from the Azure Database for PostgreSQL's public IP address/domain.
+    - If your PostgreSQL instance in AWS, GCP, or other managed PostgreSQL services isn't publicly accessible, modify the instance to allow connections from Azure. This can be done by changing the Publicly Accessible setting to Yes within the respective cloud provider's console (e.g., AWS Management Console, GCP Console).
+    - In the cloud provider's security settings (e.g., security groups in AWS or firewall rules in GCP), add an inbound rule to allow traffic from Azure Database for PostgreSQL's public IP address/domain.
 
 - **Private Access**
-    - Establish a secure connection using the express route or a VPN from Amazon to Azure.
-    - In the Amazon RDS/Amazon Aurora security group, add an inbound rule to allow traffic from the Azure Database for PostgreSQL's public IP address/domain or the range of IP addresses in the Azure virtual network on the PostgreSQL port (default 5432).
-    - Create an Azure Virtual Network (virtual network) where your Azure Database for PostgreSQL resides. Configure the virtual network's Network Security Group (NSG) to allow outbound connections to the Amazon RDS/Amazon Aurora instance's IP address on the PostgreSQL port.
-    - Set up NSG rules in Azure to permit incoming connections from the cloud provider, Amazon RDS/Amazon Aurora IP range.
-    - Test the connectivity between Amazon RDS/Amazon Aurora and Azure Database for PostgreSQL to ensure no network issues.
+    - Establish a secure connection using ExpressRoute, IPSec VPN, or equivalent private connection services from the cloud provider (e.g., Azure Express route, AWS Direct Connect, GCP Interconnect) to Azure.
+    - In the source cloud provider's security settings (AWS security groups, GCP firewall rules), add an inbound rule to allow traffic from Azure Database for PostgreSQL's public IP address/domain or the IP range of the Azure virtual network on the PostgreSQL port (default 5432).
+    - Create an Azure Virtual Network where your Azure Database for PostgreSQL resides. Configure the Network Security Group (NSG) to allow outbound connections to the source cloud provider’s PostgreSQL instance’s IP address on port 5432.
+    - Set up NSG rules in Azure to permit incoming connections from the cloud provider (AWS, GCP) to the Azure PostgreSQL IP range.
+    - Test the connectivity between your PostgreSQL instance in the managed PostgreSQL service (AWS, GCP, Heroku, etc.) and Azure Database for PostgreSQL to ensure no network issues.
 
 ## Scenario 4: Azure VMs to Azure Database for PostgreSQL (different virtual networks)
 
