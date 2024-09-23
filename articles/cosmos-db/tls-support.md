@@ -23,7 +23,7 @@ These are some of the known issues with TLS 1.3 enablement, potential impact, an
 
 ## Known issues, impact, and mitigation
 
-- **JDK Related Issues**: The io.netty versions between 4.1.68.Final and 4.1.86.Final  inclusive contain a bug that causes the client to fail the TLS handshake in Direct mode connection when TLS 1.3 is not supported by the Java runtime engine. Cosmos DB Java SDK versions ranging from 4.20.0 to 4.40.0 inclusive have a transitive dependency on io.netty with this bug. The client will fail with the below exceptions.
+- **JDK Related Issues**: The io.netty versions between 4.1.68.Final and 4.1.86.Final inclusive contain a bug that causes the client to fail the TLS handshake in Direct mode connection when TLS 1.3 is not supported by the Java runtime engine. Cosmos DB Java SDK versions ranging from 4.20.0 to 4.40.0 inclusive have a transitive dependency on io.netty with this bug. The client will fail with the below exceptions.
 
      Caused by: io.netty.handler.codec.DecoderException: javax.net.ssl.SSLHandshakeException: General OpenSslEngine problem
       at 
@@ -36,7 +36,7 @@ These are some of the known issues with TLS 1.3 enablement, potential impact, an
 
 -  **Recommendations for mitigation**:
 
-    - Option 1: **(Required)** Upgrade Azure Cosmos DB Java SDK at least to [minimum recommended version](../cosmos-db/nosql/sdk-java-v4#recommended-version).
+    - Option 1: **(Required)** Upgrade Azure Cosmos DB Java SDK at least to [minimum recommended version](../cosmos-db/nosql/sdk-java-v4.md4#recommended-version).
     - Option 2: We recognize that upgrading to the latest SDK version might not always be feasible. While transitioning your application to the newest SDK, you can address this issue by switching the connection to [Gateway Mode](./nosql/tune-connection-configurations-net-sdk-v3.md#customizing-gateway-connection-mode). Make sure to thoroughly test the application before deploying it in the production environment.
 
     **Note:** Enabling client to use TLS 1.3 requires Java runtime to support TLS 1.3
