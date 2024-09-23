@@ -23,11 +23,11 @@ Diagram of the sequence of the deployment guide including these locations, in or
 
 When working with Azure Cosmos DB for Table, it's important to ensure that authorized users and applications have access to data while preventing unintentional or unauthorized access. While using keys and resource owner password credentials might seem like a convenient option, it isn't recommended due to several reasons. Firstly, these methods lack the robustness and flexibility provided by Microsoft Entra authentication. Microsoft Entra offers enhanced security features such as multifactor authentication and conditional access policies, which greatly reduce the risk of unauthorized access. By using Microsoft Entra, you can significantly enhance the security posture of your applications and protect sensitive data from potential threats.
 
-## Managing access
+## Manage access
 
 Role-based access control using Microsoft Entra gives you the ability to manage which users, devices, or workloads can access your data and to what extent they can access that data. Using fine-grained permissions in a role definition gives you the flexibility to enforce the security principal of "least privilege" while keeping data access simple and streamlined for development.
 
-## Granting access in production
+## Grant access in production
 
 In production applications, Microsoft Entra offers many identity types including, but not limited to:
 
@@ -39,13 +39,13 @@ In production applications, Microsoft Entra offers many identity types including
 
 With these identities, you can grant specific production applications or workloads fine-grained access to query, read, or manipulate data and resources in Azure Cosmos DB for Table.
 
-## Granting access in development
+## Grant access in development
 
 In development, Microsoft Entra offers the same level of flexibility to your developer's human identities. You can use the same role-based access control definitions and assignment techniques to grant your developers access to test, staging, or development database accounts.
 
 Your security team has a single suite of tools to manage identities and permissions for your accounts across all of your environments.
 
-## Streamlining authentication code
+## Streamline authentication code
 
 With the Azure SDK, the techniques used to access Azure Cosmos DB for Table data programatically across many different scenarios:
 

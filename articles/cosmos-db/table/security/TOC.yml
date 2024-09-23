@@ -17,7 +17,7 @@
       href: how-to-create-managed-identities.md
     - name: Disable key-based authentication
       displayName: key, ropc, connection string
-      href: how-to-disable-key-based-auth.md
+      href: how-to-disable-key-based-authentication.md
 - name: Role-based access control
   expanded: true
   items:
