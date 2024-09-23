@@ -10,7 +10,7 @@
   ms.date: 09/11/2024
 ---
 
-# $pullAll (Array Update Operator)
+# $pullAll (array update operator)
 
 [!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 

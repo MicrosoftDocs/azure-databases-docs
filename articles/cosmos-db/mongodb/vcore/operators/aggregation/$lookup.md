@@ -10,7 +10,7 @@
   ms.date: 09/11/2024
 ---
 
-# $lookup (as Aggregation Pipeline Stage)
+# $lookup (as aggregation pipeline stage)
 [!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 
 The `$lookup` stage in the Aggregation Framework is used to perform left outer joins with other collections. It allows you to combine documents from different collections based on a specified condition. This operator is useful for enriching documents with related data from other collections without having to perform multiple queries.
@@ -160,5 +160,5 @@ This query would return the following document.
 
 - let isn't supported as part of pipeline
 
-## Related Content
+## Related content
 [!INCLUDE[Related content](../includes/related-content.md)]

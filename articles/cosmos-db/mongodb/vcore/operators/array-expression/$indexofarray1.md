@@ -10,7 +10,7 @@
   ms.date: 09/11/2024
 ---
 
-# $indexOfArray (Array Expression Operator)
+# $indexOfArray (array expression operator)
 
 [!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 
@@ -93,7 +93,7 @@ Let's understand the usage with the following sample json.
 }
 ```
 
-### Example 1: Finding the index of the first occurrence.
+### Example 1: Finding the index of the first occurrence
 
 To find the index of the category "DJ Headphones" in the `salesByCategory` array across all documents:
 
@@ -124,7 +124,7 @@ This query would return the following document.
 ]
 ```
 
-### Example 2: Finding the index in a range.
+### Example 2: Finding the index in a range
 
 To find documents having index between 3 and 5 for "Bargain Blitz Days" event in the `promotionEvents` array:
 

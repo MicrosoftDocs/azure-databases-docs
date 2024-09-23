@@ -10,7 +10,7 @@
   ms.date: 09/11/2024
 ---
 
-# $isArray (Array Expression Operator)
+# $isArray (array expression operator)
 
 [!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 
@@ -93,7 +93,7 @@ Let's understand the usage with the following sample json.
 
 Here are some examples demonstrating the usage of the `$isArray` operator.
 
-### Example 1: Checking if a field is an array.
+### Example 1: Checking if a field is an array
 
 To check if the `salesByCategory` field in the `sales` subdocument is an array across all documents.
 
@@ -130,7 +130,7 @@ This query would return the following document.
 
 
 
-### Example 2: Filtering documents based on array fields.
+### Example 2: Filtering documents based on array fields
 
 We can also use `$isArray` to filter documents where the `promotionEvents` field is an array.
 

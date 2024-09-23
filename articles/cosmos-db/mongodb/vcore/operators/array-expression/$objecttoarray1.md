@@ -10,7 +10,7 @@
   ms.date: 09/11/2024
 ---
 
-# $objectToArray (as Array Expression Operator)
+# $objectToArray (array expression operator)
 
 [!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 
@@ -94,7 +94,7 @@ Let's understand the usage with the following sample json.
 
 Here are some examples of how to use the `$objectToArray` operator with the provided sample JSON.
 
-### Example 1: Converting a geospatial field to an array.
+### Example 1: Converting a geospatial field to an array
 
 The following aggregation pipeline converts the `location` field of the `store` document into an array of key-value pairs.
 
@@ -130,7 +130,7 @@ This query would return the following document.
 
 ```
 
-### Example 2: Converting a sub document to an array.
+### Example 2: Converting a sub document to an array
 
 This example converts the `totalStaff` field of the `staff` document into an array of key-value pairs.
 
@@ -165,7 +165,7 @@ This query would return the following document.
 ]
 ```
 
-### Example 3: Converting datetime field to an array.
+### Example 3: Converting datetime field to an array
 
 This pipeline converts the `promotionalDates` field for each promotion event into an array of key-value pairs.
 

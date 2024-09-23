@@ -9,7 +9,7 @@
   ms.topic: reference
   ms.date: 09/11/2024
 ---
-# $each (as Array Update Operator)
+# $each (array update operator)
 
 [!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 

@@ -10,7 +10,7 @@
   ms.date: 09/11/2024
 ---
 
-# $match (as Aggregation Pipeline Stage)
+# $match (aggregation pipeline stage)
 
 [!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 
