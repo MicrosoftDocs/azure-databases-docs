@@ -1,6 +1,6 @@
 ---
 title: Certificate rotation for Azure Database for MariaDB
-description: Learn about the upcoming changes of root certificate changes that will affect Azure Database for MariaDB
+description: Learn about the upcoming changes of root certificate changes that affect Azure Database for MariaDB
 ms.service: azure-database-mariadb
 author: mksuni
 ms.author: sumuth
@@ -12,7 +12,7 @@ ms.date: 06/24/2022
 
 [!INCLUDE [azure-database-for-mariadb-deprecation](includes/azure-database-for-mariadb-deprecation.md)]
 
-Azure database for MariaDB as part of standard maintenance and security best practices will complete the root certificate change starting March 2023. This article gives you more details about the changes, the resources affected, and the steps needed to ensure that your application maintains connectivity to your database server.
+Azure database for MariaDB as part of standard maintenance and security best practices complete the root certificate change starting March 2023. This article gives you more details about the changes, the resources affected, and the steps needed to ensure that your application maintains connectivity to your database server.
 
 > [!NOTE]
 > This article contains references to the term *slave*, a term that Microsoft no longer uses. When the term is removed from the software, we'll remove it from this article.
@@ -20,9 +20,9 @@ Azure database for MariaDB as part of standard maintenance and security best pra
 
 ## Why root certificate update is required?
 
-Azure Database for MariaDB users can only use the predefined certificate to connect to their MariaDB server, which is located [here](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem). However, [Certificate Authority (CA) Browser forum](https://cabforum.org/) recently published reports of multiple certificates issued by CA vendors to be non-compliant.
+Azure Database for MariaDB users can only use the predefined certificate to connect to their MariaDB server, which is located [here](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem). However, [Certificate Authority (CA) Browser forum](https://cabforum.org/) recently published reports of multiple certificates issued by CA vendors to be noncompliant.
 
-As per the industry's compliance requirements, CA vendors began revoking CA certificates for non-compliant CAs, requiring servers to use certificates issued by compliant CAs, and signed by CA certificates from those compliant CAs. Since Azure Database for MariaDB used one of these non-compliant certificates, we needed to rotate the certificate to the compliant version to minimize the potential threat to your MySQL servers.
+As per the industry's compliance requirements, CA vendors began revoking CA certificates for noncompliant CAs, requiring servers to use certificates issued by compliant CAs, and signed by CA certificates from those compliant CAs. Since Azure Database for MariaDB used one of these noncompliant certificates, we needed to rotate the certificate to the compliant version to minimize the potential threat to your MySQL servers.
 
 
 ## Do I need to make any changes on my client to maintain connectivity?
@@ -55,8 +55,6 @@ If you followed steps mentioned under [Create a combined CA certificate](#create
 
   - For .NET (MariaDB Connector/NET, MariaDBConnector) users, make sure **BaltimoreCyberTrustRoot** and **DigiCertGlobalRootG2** both exist in Windows Certificate Store, Trusted Root Certification Authorities. If any certificates don't exist, import the missing certificate.
 
-    [![Azure Database for MariaDB .net cert](media/overview/netconnecter-cert.png)](media/overview/netconnecter-cert.png#lightbox)
-
   - For .NET users on Linux using SSL_CERT_DIR, make sure **BaltimoreCyberTrustRoot** and **DigiCertGlobalRootG2** both exist in the directory indicated by SSL_CERT_DIR. If any certificates don't exist, create the missing certificate file.
 
   - For other (MariaDB Client/MariaDB Workbench/C/C++/Go/Python/Ruby/PHP/NodeJS/Perl/Swift) users, you can merge two CA certificate files like this format below
@@ -79,7 +77,7 @@ No actions are required if you aren't using SSL/TLS.
 
 ## What if we removed the BaltimoreCyberTrustRoot certificate?
 
-You will start to connectivity errors while connecting to your Azure Database for MariaDB server. You will need to [configure SSL](howto-configure-ssl.md) with [BaltimoreCyberTrustRoot](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) certificate again to maintain connectivity.
+You'll start to see connectivity errors while connecting to your Azure Database for MariaDB server. You'll need to [configure SSL](howto-configure-ssl.md) with [BaltimoreCyberTrustRoot](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) certificate again to maintain connectivity.
 
 ## Frequently asked questions
 
@@ -116,7 +114,7 @@ If you're trying to connect to the Azure Database for MariaDB using Azure Kubern
 
 For connector using Azure Integration Runtime, the connector uses certificates in the Windows Certificate Store in the Azure-hosted environment. These certificates are already compatible to the newly applied certificates and so no action is needed.
 
-For connector using Self-hosted Integration Runtime where you explicitly include the path to SSL cert file in your connection string, you'll need to download the [new certificate](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem) and update the connection string to use it.
+For connector using Self-hosted Integration Runtime where you explicitly include the path to SSL cert file in your connection string, you need to download the [new certificate](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem) and update the connection string to use it.
 
 ### 7. Do I need to plan a database server maintenance downtime for this change?
 
@@ -124,11 +122,11 @@ No. Since the change here's only on the client side to connect to the database s
 
 ### 8. How often does Microsoft update their certificates or what is the expiry policy?
 
-These certificates used by Azure Database for MariaDB are provided by trusted Certificate Authorities (CA). So the support of these certificates is tied to the support of these certificates by CA. The [BaltimoreCyberTrustRoot](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) certificate is scheduled to expire in 2025 so Microsoft will need to perform a certificate change before the expiry. 
+These certificates used by Azure Database for MariaDB are provided by trusted Certificate Authorities (CA). So the support of these certificates is tied to the support of these certificates by CA. The [BaltimoreCyberTrustRoot](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) certificate is scheduled to expire in 2025 so Microsoft needs to perform a certificate change before the expiry. 
 
 ### 9. If I'm using read replicas, do I need to perform this update only on source server or the read replicas?
 
-Since this update is a client-side change, if the client used to read data from the replica server, you'll need to apply the changes for those clients as well.
+Since this update is a client-side change, if the client used to read data from the replica server, you need to apply the changes for those clients as well.
 
 ### 10. If I'm using Data-in replication, do I need to perform any action?
 
@@ -156,9 +154,9 @@ If you're using [Data-in replication](concepts-data-in-replication.md) to connec
   Master_SSL_Key                : ~\azure_mysqlclient_key.pem
   ```
 
-  If you do see the certificate is provided for the CA_file, SSL_Cert and SSL_Key, you will need to update the file by adding the [new certificate](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem) and create a combined cert file.
+  If you do see the certificate is provided for the CA_file, SSL_Cert and SSL_Key, you'll need to update the file by adding the [new certificate](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem) and create a combined cert file.
 
-- If the data-replication is between two Azure Database for MySQL, then you'll need to reset the replica by executing **CALL mysql.az_replication_change_master** and provide the new dual root certificate as last parameter [master_ssl_ca](howto-data-in-replication.md#link-the-source-and-replica-servers-to-start-data-in-replication).
+- If the data-replication is between two Azure Database for MySQL, then you need to reset the replica by executing **CALL mysql.az_replication_change_master** and provide the new dual root certificate as last parameter [master_ssl_ca](howto-data-in-replication.md#link-the-source-and-replica-servers-to-start-data-in-replication).
 
 ### 11. Do we have server-side query to verify if SSL is being used?
 

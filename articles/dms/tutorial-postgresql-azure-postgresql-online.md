@@ -5,12 +5,13 @@ description: Learn to perform an online migration from PostgreSQL on-premises to
 author: apduvuri
 ms.author: adityaduvuri
 ms.reviewer: randolphwest
-ms.date: 09/13/2024
+ms.date: 09/18/2024
 ms.service: azure-database-migration-service
 ms.topic: tutorial
+ms.collection:
+  - sql-migration-content
 ms.custom:
   - devx-track-azurecli
-  - sql-migration-content
 ---
 
 # Tutorial: Migrate PostgreSQL to Azure Database for PostgreSQL online using DMS (classic) via the Azure CLI
@@ -160,7 +161,7 @@ To complete all the database objects like table schemas, indexes, and stored pro
 
    - If you have multiple Azure subscriptions, run the following command to set the subscription that you want to use to provision an instance of the DMS service.
 
-     ```azureclii
+     ```azurecli
      az account set -s <SubscriptionID>
      ```
 
@@ -311,7 +312,7 @@ To complete all the database objects like table schemas, indexes, and stored pro
        ```
 
      - Create the database options JSON file, with one entry for each database with the source and target database names, and the list of selected tables to be migrated. You can use the output of the previous SQL query to populate the `selectedTables` array.
-     
+
        > [!NOTE]  
        > If the selected tables list is empty, then the service will include all the tables for migration which have matching schema and table names.
 
@@ -514,6 +515,6 @@ If you need to cancel or delete any DMS task, project, or service, perform the c
 
 ## Related content
 
-- [Known issues/limitations with online migrations from PostgreSQL to Azure Database for PostgreSQL](known-issues-azure-postgresql-online.md)
+- [Known issues and limitations with online migrations from PostgreSQL to Azure Database for PostgreSQL](known-issues-azure-postgresql-online.md)
 - [What is Azure Database Migration Service?](dms-overview.md)
 - [What is Azure Database for PostgreSQL?](../postgresql/overview.md)

@@ -32,7 +32,7 @@ Azure Cosmos DB NoSQL has an optimization called Optimistic Direct Execution (OD
 >[!NOTE]
 > Optimistic Direct Execution (ODE), which offers improved performance for queries that don't require distribution, should not to be confused with [Direct Mode](sdk-connection-modes.md), which is a path for connecting your application to backend replicas. 
 
-ODE is now available and enabled by default in the .NET SDK version 3.38.0 and later. When you execute a query and specify a partition key in the request or query itself, or your database has only one physical partition, your query execution can leverage the benefits of ODE. To disable ODE, set EnableOptimisticDirectExecution to false in the QueryRequestOptions. 
+ODE is now available in the .NET SDK version 3.38.0 and later. When you execute a query and specify a partition key in the request or query itself, or your database has only one physical partition, your query execution can leverage the benefits of ODE. To enable ODE, set EnableOptimisticDirectExecution to true in the QueryRequestOptions. 
 
 Single partition queries that feature GROUP BY, ORDER BY, DISTINCT, and aggregation functions (like sum, mean, min, and max) can significantly benefit from using ODE. However, in scenarios where the query is targeting multiple partitions or still requires pagination, the latency of the query response and RU cost might be higher than without using ODE. Therefore, when using ODE, we recommend to:
 -	Specify the partition key in the call or query itself. 
@@ -115,6 +115,9 @@ using (FeedIterator<MyItem> feedIterator = container.GetItemQueryIterator<MyItem
     // ...
 }
 ```
+> [!IMPORTANT] 
+> On clients running a non-Windows OS, such as Linux and MacOS, the partition key should **always** be specified in the request options object.
+
 
 # [V2 .NET SDK](#tab/v2)
 

@@ -8,7 +8,7 @@ ms.reviewer: randolphwest, maghan
 ms.date: 09/13/2024
 ms.service: azure-database-migration-service
 ms.topic: troubleshooting
-ms.custom:
+ms.collection:
   - sql-migration-content
 ---
 
