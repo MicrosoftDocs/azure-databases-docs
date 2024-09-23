@@ -10,7 +10,7 @@ ms.subservice: table
 ms.topic: how-to
 ms.date: 09/23/2024
 ms.custom: subject-msia
-zone_pivot_groups: azure-interface-portal-cli-powershell-bicep
+zone_pivot_groups: azure-interface-cli-powershell-bicep
 #Customer Intent: As a security user, I want to create managed identities for use with Azure Cosmos DB for Table, so that my developer team can write portable authentication code for their client.
 ---
 
