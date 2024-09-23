@@ -84,3 +84,36 @@ groups:
     title: PostgreSQL 12
   - id: postgresql-11
     title: PostgreSQL 11
+# Owner: sidandrews
+- id: azure-interface-portal-cli-powershell-bicep
+  title: Azure interface
+  prompt: Choose an Azure interface
+  pivots:
+  - id: azure-interface-cli
+    title: Azure CLI
+  - id: azure-interface-bicep
+    title: Bicep
+  - id: azure-interface-portal
+    title: Azure portal
+  - id: azure-interface-powershell
+    title: Azure PowerShell
+# Owner: sidandrews
+- id: azure-interface-cli-powershell-bicep
+  title: Azure interface
+  prompt: Choose an Azure interface
+  pivots:
+  - id: azure-interface-cli
+    title: Azure CLI
+  - id: azure-interface-bicep
+    title: Bicep
+  - id: azure-interface-powershell
+    title: Azure PowerShell
+# Owner: sidandrews
+- id: azure-interface-cli-powershell
+  title: Azure interface
+  prompt: Choose an Azure interface
+  pivots:
+  - id: azure-interface-cli
+    title: Azure CLI
+  - id: azure-interface-powershell
+    title: Azure PowerShell

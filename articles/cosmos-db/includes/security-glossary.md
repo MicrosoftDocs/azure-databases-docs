@@ -1,7 +1,7 @@
 ---
 ms.service: azure-cosmos-db
 ms.topic: include
-ms.date: 09/16/2024
+ms.date: 09/17/2024
 ms.custom: subject-msia
 ---
 
