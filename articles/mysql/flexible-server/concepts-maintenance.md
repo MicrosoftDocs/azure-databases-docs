@@ -14,9 +14,9 @@ ms.topic: conceptual
 
 [!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
-Azure Database for MySQL flexible server performs periodic maintenance to keep your managed database secure, stable, and up-to-date. During maintenance, the server gets new features, updates, and patches.
+Azure Database for MySQL Flexible Server performs periodic maintenance to keep your managed database secure, stable, and up-to-date. During maintenance, the server gets new features, updates, and patches.
 > [!IMPORTANT]
-> Please avoid all server operations (modifications, configuration changes, starting/stopping server) during Azure Database for MySQL flexible server maintenance. Engaging in these activities can lead to unpredictable outcomes, possibly affecting server performance and stability. Wait until maintenance concludes before conducting server operations.
+> Please avoid all server operations (modifications, configuration changes, starting/stopping server) during Azure Database for MySQL Flexible Server maintenance. Engaging in these activities can lead to unpredictable outcomes, possibly affecting server performance and stability. Wait until maintenance concludes before conducting server operations.
 
 ## Maintenance Cycle
 
@@ -44,11 +44,11 @@ Notifications about upcoming scheduled maintenance can be:
 * Pushed as a notification to an Azure app
 * Delivered as a voice message
 
-When specifying preferences for the maintenance schedule, you can pick a day of the week and a time window. If you don't specify, the system will pick times between 11pm and 7am in your server's region time. You can define different schedules for each flexible server in your Azure subscription.
+When specifying preferences for the maintenance schedule, you can pick a day of the week and a time window. If you don't specify, the system will pick times between 11pm and 7am in your server's region time. You can define different schedules for each Flexible Server in your Azure subscription.
 
 You can update scheduling settings at any time. If there is a maintenance scheduled for your Flexible server and you update scheduling preferences, the current rollout will proceed as scheduled and the scheduling settings change will become effective upon its successful completion for the next scheduled maintenance.
 
-You can define system-managed schedule or custom schedule for each flexible server in your Azure subscription.
+You can define system-managed schedule or custom schedule for each Flexible Server in your Azure subscription.
 * With custom schedule, you can specify your maintenance window for the server by choosing the day of the week and a one-hour time window.
 * With system-managed schedule, the system will pick any one-hour window between 11pm and 7am in your server's region time.
 
@@ -78,7 +78,7 @@ To achieve the optimal performance promised by this feature, certain conditions 
 
 ## Maintenance reschedule
 
-The **maintenance reschedule** feature grants you greater control over the timing of maintenance activities on your Azure Database for MySQL flexible server instance. After receiving a maintenance notification, you can reschedule it to a more convenient time, irrespective of whether it was system or custom managed.
+The **maintenance reschedule** feature grants you greater control over the timing of maintenance activities on your Azure Database for MySQL Flexible Server instance. After receiving a maintenance notification, you can reschedule it to a more convenient time, irrespective of whether it was system or custom managed.
 
 ### Reschedule parameters and notifications
 
