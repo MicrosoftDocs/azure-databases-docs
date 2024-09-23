@@ -565,6 +565,10 @@
         href: migrate/migration-service/tutorial-migration-service-aurora-offline.md
       - name: Migrate from Amazon Aurora online
         href: migrate/migration-service/tutorial-migration-service-aurora-online.md
+      - name: Migrate from Google Cloud SQL for PostgreSQL offline
+        href: migrate/migration-service/tutorial-migration-service-cloud-sql-offline.md
+      - name: Migrate from Google Cloud SQL for PostgreSQL online
+        href: migrate/migration-service/tutorial-migration-service-cloud-sql-online.md
     - name: Concepts
       items:
       - name: Premigration validation

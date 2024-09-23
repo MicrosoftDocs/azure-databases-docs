@@ -5,65 +5,75 @@ description: Learn about known issues and migration limitations with online migr
 author: apduvuri
 ms.author: adityaduvuri
 ms.reviewer: randolphwest, maghan
-ms.date: 02/20/2020
+ms.date: 09/13/2024
 ms.service: azure-database-migration-service
 ms.topic: troubleshooting
-ms.custom:
+ms.collection:
   - sql-migration-content
 ---
 
-# Known issues/limitations with online migrations from PostgreSQL to Azure Database for PostgreSQL
+# Known issues and limitations with online migrations from PostgreSQL to Azure Database for PostgreSQL
 
 [!INCLUDE [postgresql-migration-service](includes/postgresql-migration-service.md)]
 
-Known issues and limitations associated with online migrations from PostgreSQL to Azure Database for PostgreSQL are described in the following sections.
+This article describes known issues and limitations associated with online migrations from PostgreSQL to Azure Database for PostgreSQL using Azure Database Migration Service (DMS).
 
 ## Online migration configuration
 
-- The source PostgreSQL server must be running version 9.4, 9.5, 9.6, 10, or 11. For more information, see [Supported PostgreSQL database versions](../postgresql/concepts-supported-versions.md).
+- The lowest PostgreSQL *source* versions supported is 9.4, and the highest *target* version supported is 14.9.
+
 - Only migrations to the same or a higher version are supported. For example, migrating PostgreSQL 9.5 to Azure Database for PostgreSQL 9.6 or 10 is supported. Migrating from PostgreSQL 11 to PostgreSQL 9.6 isn't supported.
-- To enable logical replication in the *source PostgreSQL postgresql.conf* file, set the following parameters:
 
-  - **wal_level**: Set as logical.
-  - **max_replication_slots**: Set at least the maximum number of databases for migration. If you want to migrate four databases, set the value to at least 4.
-  - **max_wal_senders**: Set the number of databases running concurrently. The recommended value is 10.
-- Add DMS agent IP to the source PostgreSQL *pg_hba.conf*.
+- To enable logical replication in the *source* PostgreSQL `postgresql.conf` file, set the following parameters:
+
+  | Parameter | Description |
+  | --- | --- |
+  | `wal_level` | Set as logical. |
+  | `max_replication_slots` | Set at least the maximum number of databases for migration. If you want to migrate four databases, set the value to at least `4`. |
+  | `max_wal_senders` | Set the number of databases running concurrently. The recommended value is `10`. |
+
+- Add the DMS agent IP to the source PostgreSQL `pg_hba.conf`.
+
   1. Make a note of the DMS IP address after you finish provisioning an instance of Azure Database Migration Service.
-  1. Add the IP address to the *pg_hba.conf* file:
 
-      ```
-          host    all    172.16.136.18/10    md5
-          host    replication postgres    172.16.136.18/10     md5
-      ```
+  1. Add the IP address to the `pg_hba.conf` file:
+
+     ```output
+     host    all    172.16.136.18/10    md5
+     host    replication postgres    172.16.136.18/10     md5
+     ```
 
 - The user must have the REPLICATION role on the server hosting the source database.
+
 - The source and target database schemas must match.
 
 ## Size limitations
 
 - You can migrate up to 1 TB of data from PostgreSQL to Azure Database for PostgreSQL, using a single DMS service.
 - DMS allows the users to pick tables inside a database that they want to migrate.
-:::image type="content" source="./media/known-issues-azure-postgresql-online/dms-table-selection-screen.png" alt-text="Screenshot of D M S screen that shows the option to pick tables."::: 
 
-Behind the scenes, there is a **pg_dump** command that is used to take the dump of the selected tables using one of the following options:
- - **-T** to include the table names picked in the UI
- - **-t** to exclude the table names not picked by the user
- 
-There is a max limit of 7500 characters that can be included as part of the pg_dump command following the **-t** or **-T** option. The pg_dump command uses the count of the characters for selected or unselected tables , whichever is lower. If the count of characters for the selected and unselected tables exceed 7500, the pg_dump command fails with an error.
+:::image type="content" source="media/known-issues-azure-postgresql-online/dms-table-selection-screen.png" alt-text="Screenshot of DMS screen that shows the option to pick tables." lightbox="media/known-issues-azure-postgresql-online/dms-table-selection-screen.png":::
 
-For the previous example, the pg_dump command would be:
+Behind the scenes, the `pg_dump` command takes the dump of the selected tables using one of the following options:
 
-```
+- `-T` to include the table names picked in the UI
+- `-t` to exclude the table names not picked by the user
+
+There's a max limit of 7,500 characters that can be included as part of the `pg_dump` command following the `-t` or `-T` option. The `pg_dump` command uses the count of the characters for selected or unselected tables, whichever is lower. If the count of characters for the selected and unselected tables exceed 7500, the `pg_dump` command fails with an error.
+
+For the previous example, the `pg_dump` command would be:
+
+```bash
 pg_dump -h hostname -u username -d databasename -T "\"public\".\"table_1\"" -T "\"public\".\"table_2\""
 ```
 
-In the previous command, the number of characters is 55 (includes double quotes, spaces, -T and slash)
- 
-## Datatype limitations
+In the previous command, the number of characters is 55 (includes double quotes, spaces, `-T`, and slash)
 
-  **Limitation**: If there's no primary key on tables, changes might not be synced to the target database.
+## Data type limitations
 
-  **Workaround**: Temporarily set a primary key for the table for migration to continue. Remove the primary key after data migration is finished.
+**Limitation**: If there's no primary key on tables, changes might not be synced to the target database.
+
+**Workaround**: Temporarily set a primary key for the table for migration to continue. Remove the primary key after data migration is finished.
 
 ## Limitations with online migration from AWS RDS PostgreSQL
 
@@ -95,11 +105,22 @@ When you try to perform an online migration from Amazon Web Service (AWS) Relati
 
 ## Other limitations
 
-- The database name can't include a semicolon (;).
-- A captured table must have a primary key. If a table doesn't have a primary key, the result of DELETE and UPDATE record operations will be unpredictable.
-- Updating a primary key segment is ignored. Applying such an update will be identified by the target as an update that didn't update any rows. The result is a record written to the exceptions table.
-- If your table has a **JSON** column, any DELETE or UPDATE operations on this table can lead to a failed migration. 
+- The database name can't include a semicolon (`;`).
+
+- A captured table must have a primary key. If a table doesn't have a primary key, the result of DELETE and UPDATE record operations are unpredictable.
+
+- Updating a primary key segment is ignored. Applying such an update is identified by the target as an update that didn't update any rows. The result is a record written to the exceptions table.
+
+- If your table has a `JSON` column, any DELETE or UPDATE operations on this table can lead to a failed migration.
+
 - Migration of multiple tables with the same name but a different case might cause unpredictable behavior and isn't supported. An example is the use of table1, TABLE1, and Table1.
-- Change processing of [CREATE | ALTER | DROP | TRUNCATE] table DDLs isn't supported.
+
+- Change processing of [ CREATE | ALTER | DROP | TRUNCATE ] table DDLs isn't supported.
+
 - In Database Migration Service, a single migration activity can only accommodate up to four databases.
+
 - Migration of the pg_largeobject table isn't supported.
+
+## Related content
+
+- [What is Azure Database Migration Service?](dms-overview.md)

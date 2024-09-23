@@ -5,10 +5,10 @@ description: Known issues, limitations, and troubleshooting guide for Azure SQL 
 author: abhims14
 ms.author: abhishekum
 ms.reviewer: maghan, randolphwest
-ms.date: 11/30/2023
+ms.date: 09/18/2024
 ms.service: azure-database-migration-service
 ms.topic: troubleshooting
-ms.custom:
+ms.collection:
   - sql-migration-content
 ---
 
@@ -29,13 +29,13 @@ This article provides a list of known issues and troubleshooting steps associate
 
 - **Message**: `Cutover failed or cancelled for database '{databaseName}'. Error details: 'errorCode: Ext_RestoreSettingsError, message: RestoreId: {RestoreId}, OperationId: {operationId}, Detail: Failed to complete restore., RestoreJobState: Restoring, CompleteRestoreErrorMessage: The database contains incompatible physical layout. Too many full text catalog files.`
 
-- **Cause**:  SQL Vm restore currently does not support restoring databases with full text catalog files as Azure SQL Vm does not support them at the moment.
+- **Cause**: SQL VM restore currently doesn't support restoring databases with full text catalog files as Azure SQL Vm doesn't support them at the moment.
 
 - **Recommendation**: Remove full text catalog files from database when creating the restore
 
 - **Message**: `Cutover failed or cancelled for database '{databaseName}'. Error details: 'Migration cannot be completed because provided backup file name '{providedFileName}' should be the last restore backup file '{lastRestoredFileName}'.'`
 
-- **Cause**:  This error occurs due to a known limitation in SqlMi. It means the '{providedFileName}' is different from '{lastRestoredFileName}'. SqlMi will automatically restore all valid backup files in the container based on the LSN sequence. A typical failure case could be: the '{providedFileName}' is "log1", but the files in container has other files, like "log2", which have largest LSN number than "log1". In this case, SqlMi will automatically restore all files in the container. In the end of completing the migration, SqlMi will report this error message.
+- **Cause**: This error occurs due to a known limitation in SqlMi. It means the '{providedFileName}' is different from '{lastRestoredFileName}'. SqlMi will automatically restore all valid backup files in the container based on the LSN sequence. A typical failure case could be: the '{providedFileName}' is "log1", but the files in container has other files, like "log2", which have largest LSN number than "log1". In this case, SqlMi will automatically restore all files in the container. In the end of completing the migration, SqlMi will report this error message.
 
 - **Recommendation**: For offline migration mode, please provide the "lastBackupName" with the largest LSN. For online migration scenario this warning/error can be ignored if the migration status is succeeded.
 
@@ -97,7 +97,8 @@ This article provides a list of known issues and troubleshooting steps associate
 
   ```sql
   -- Enable "contained database authentication"
-  EXEC sp_configure 'contained', 1;
+  EXECUTE sp_configure 'contained', 1;
+
   RECONFIGURE;
   ```
 
@@ -187,11 +188,14 @@ This article provides a list of known issues and troubleshooting steps associate
 - **Recommendation**: If desired, the target database can be returned to its original state by running the first query and all of the returned queries, then running the second query and doing the same.
 
   ```sql
-  SELECT [ROLLBACK] FROM [dbo].[__migration_status]
-  WHERE STEP in (3,4,6);
-  
-  SELECT [ROLLBACK] FROM [dbo].[__migration_status]
-  WHERE STEP in (5,7,8) ORDER BY STEP DESC;
+  SELECT [ROLLBACK]
+  FROM [dbo].[__migration_status]
+  WHERE STEP IN (3, 4, 6);
+
+  SELECT [ROLLBACK]
+  FROM [dbo].[__migration_status]
+  WHERE STEP IN (5, 7, 8)
+  ORDER BY STEP DESC;
   ```
 
 ## Error code: 2042 - PreCopyStepsCompletedDuringCancel
@@ -203,8 +207,9 @@ This article provides a list of known issues and troubleshooting steps associate
 - **Recommendation**: If desired, target database can be returned to its original state by running the following query and all of the returned queries.
 
   ```sql
-  SELECT [ROLLBACK] FROM [dbo].[__migration_status]
-  WHERE STEP in (3,4,6);
+  SELECT [ROLLBACK]
+  FROM [dbo].[__migration_status]
+  WHERE STEP IN (3, 4, 6);
   ```
 
 ## Error code: 2043 - CreateContainerFailed
@@ -230,9 +235,9 @@ This article provides a list of known issues and troubleshooting steps associate
 
 - **Message**: `A database operation failed with the following error: 'VIEW SERVER PERFORMANCE STATE permission was denied on object 'server', database 'master'. The user does not have permission to perform this action.`
 
-- **Cause**: The login used for target server(Azure SQL DB) does not has ##MS_ServerStateReader## server role.
+- **Cause**: The login used for target server(Azure SQL DB) doesn't has ##MS_ServerStateReader## server role.
 
-- **Recommendation**: Provide ##MS_ServerStateReader## role to the login for Azure SQL Target. 
+- **Recommendation**: Provide ##MS_ServerStateReader## role to the login for Azure SQL Target.
 Query:
 ALTER SERVER ROLE ##MS_ServerStateReader## ADD MEMBER login.
 
@@ -251,8 +256,11 @@ Note: This query should be run in context of master DB
 - **Cause**: The source database table column's collation isn't the same as the target database table column's collation.
 
 - **Recommendation**:
-  1) Make sure to migrate the Schema to target Azure SQL Database using Database Migration Service. Refer [blog](https://techcommunity.microsoft.com/t5/microsoft-data-migration-blog/public-preview-schema-migration-for-target-azure-sql-db/ba-p/3990463).
-  2) Follow this [article](/sql/relational-databases/collations/set-or-change-the-column-collation) to manually change collation. 
+
+  1. Make sure to migrate the Schema to target Azure SQL Database using Database Migration Service. Refer [blog](https://techcommunity.microsoft.com/t5/microsoft-data-migration-blog/public-preview-schema-migration-for-target-azure-sql-db/ba-p/3990463).
+
+  1. Follow this [article](/sql/relational-databases/collations/set-or-change-the-column-collation) to manually change collation.
+
   For more information, see [Collation and Unicode support](/sql/relational-databases/collations/collation-and-unicode-support)
 
 - **Message**: `DatabaseSizeMoreThanMax: No tables were found in the target Azure SQL Database. Check if schema migration was completed beforehand.`
@@ -286,16 +294,7 @@ Note: This query should be run in context of master DB
 - **Recommendation**: Check if the selected tables exist in the target Azure SQL Database. If this migration is called from a PowerShell script, check if the table list parameter includes the correct table names and is passed into the migration.
 
 ## Error code: 2060 - SqlSchemaCopyFailed
-<!-- Comment:Now supported by SHIR 5.37 onwards--
-- **Message**: `Login failed for user 'Domain\MachineName$`.
 
-- **Cause**: This error generally happens when customer uses Windows authentication to login the source. The customer provides Windows authentication credential but SHIR converts it to machine account (Domain\MachineName$).
-
-- **Recommendation**: Possible solutions for this issue are:
-  1) Add login for machine account "Domain\MachineName$" to the source SQL Server. [How to Create a SQL Server Computer Account Login](https://stackoverflow.com/questions/38680366/how-to-add-a-new-sql-server-machine-account).
-  2) Or Use SQL login to connect to source SQL Server in Azure Data Studio.
-  3) Or As an alternative, Migrate the database schema from source to target by using [PowerShell](/powershell/module/az.datamigration/new-azdatamigrationsqlserverschema) or  the [SQL Server dacpac extension](/azure-data-studio/extensions/sql-server-dacpac-extension) or the [SQL Database Projects](/azure-data-studio/extensions/sql-database-project-extension) extension in Azure Data Studio.-->
-  
 - **Message**: `The SELECT permission was denied on the object 'sql_logins', database 'master', schema 'sys'.`
 
 - **Cause**: The account customers use to connect Azure SQL Database lacks the permission to access `sys.sql_logins` table.
@@ -307,20 +306,24 @@ Note: This query should be run in context of master DB
   1. If customers can't use sysadmin account or can't grant sysadmin permission to the account, then minimum permission on source SQL Server required is "db_owner" and on target Azure SQL DB create a user in master and grant **##MS_DatabaseManager##**,**##MS_DatabaseConnector##**, **##MS_DefinitionReader##** and **##MS_LoginManager##** fixed server roles to the user. For example,
 
      ```sql
-     -- Run the script in the master
-     -- Please run the script on Master database
-     CREATE LOGIN testuser with Password = '*********';
-     ALTER SERVER ROLE ##MS_DefinitionReader## ADD MEMBER [testuser]; 
-      GO
-     ALTER SERVER ROLE ##MS_DatabaseConnector## ADD MEMBER [testuser]; 
-      GO
-     ALTER SERVER ROLE ##MS_DatabaseManager## ADD MEMBER [testuser]; 
-      GO
-     ALTER SERVER ROLE ##MS_LoginManager## ADD MEMBER [testuser]; 
-      GO
-     CREATE USER testuser from login testuser;
-     EXEC sp_addRoleMember 'dbmanager', 'testuser';
-     EXEC sp_addRoleMember 'loginmanager', 'testuser';
+     -- Run the script in the master database
+     CREATE LOGIN testuser WITH PASSWORD = '*********';
+
+     ALTER SERVER ROLE ##MS_DefinitionReader## ADD MEMBER [testuser];
+     GO
+
+     ALTER SERVER ROLE ##MS_DatabaseConnector## ADD MEMBER [testuser];
+     GO
+
+     ALTER SERVER ROLE ##MS_DatabaseManager## ADD MEMBER [testuser];
+     GO
+
+     ALTER SERVER ROLE ##MS_LoginManager## ADD MEMBER [testuser];
+     GO
+
+     CREATE USER testuser FOR LOGIN testuser;
+     EXECUTE sp_addRoleMember 'dbmanager', 'testuser';
+     EXECUTE sp_addRoleMember 'loginmanager', 'testuser';
      ```
 
 - **Message**: `Failed to get service token from ADF service.`
@@ -341,29 +344,19 @@ Note: This query should be run in context of master DB
 
 - **Recommendation**: Customers need to check the assessment results ([Assessment rules](/azure/azure-sql/migration-guides/database/sql-server-to-sql-database-assessment-rules)). This is the list of assessment issues that might fail the schema migration:
 
-  [BULK INSERT](/azure/azure-sql/migration-guides/database/sql-server-to-sql-database-assessment-rules#BulkInsert)
+  - [BULK INSERT](/azure/azure-sql/migration-guides/database/sql-server-to-sql-database-assessment-rules#BulkInsert)
+  - [COMPUTE clause](/azure/azure-sql/migration-guides/database/sql-server-to-sql-database-assessment-rules#ComputeClause)
+  - [Cryptographic provider](/azure/azure-sql/migration-guides/database/sql-server-to-sql-database-assessment-rules#CryptographicProvider)
+  - [Cross database references](/azure/azure-sql/migration-guides/database/sql-server-to-sql-database-assessment-rules#CrossDatabaseReferences)
+  - [Database principal alias](/azure/azure-sql/migration-guides/database/sql-server-to-sql-database-assessment-rules#DatabasePrincipalAlias)
+  - [DISABLE_DEF_CNST_CHK option](/azure/azure-sql/migration-guides/database/sql-server-to-sql-database-assessment-rules#DisableDefCNSTCHK)
+  - [FASTFIRSTROW hint](/azure/azure-sql/migration-guides/database/sql-server-to-sql-database-assessment-rules#FastFirstRowHint)
+  - [FILESTREAM](/azure/azure-sql/migration-guides/database/sql-server-to-sql-database-assessment-rules#FileStream)
+  - [MS DTC](/azure/azure-sql/migration-guides/database/sql-server-to-sql-database-assessment-rules#MSDTCTransactSQL)
+  - [OPENROWSET (bulk)](/azure/azure-sql/migration-guides/database/sql-server-to-sql-database-assessment-rules#OpenRowsetWithNonBlobDataSourceBulk)
+  - [OPENROWSET (provider)](/azure/azure-sql/migration-guides/database/sql-server-to-sql-database-assessment-rules#OpenRowsetWithSQLAndNonSQLProvider)
 
-  [COMPUTE clause](/azure/azure-sql/migration-guides/database/sql-server-to-sql-database-assessment-rules#ComputeClause)
-
-  [Cryptographic provider](/azure/azure-sql/migration-guides/database/sql-server-to-sql-database-assessment-rules#CryptographicProvider)
-
-  [Cross database references](/azure/azure-sql/migration-guides/database/sql-server-to-sql-database-assessment-rules#CrossDatabaseReferences)
-
-  [Database principal alias](/azure/azure-sql/migration-guides/database/sql-server-to-sql-database-assessment-rules#DatabasePrincipalAlias)
-
-  [DISABLE_DEF_CNST_CHK option](/azure/azure-sql/migration-guides/database/sql-server-to-sql-database-assessment-rules#DisableDefCNSTCHK)
-
-  [FASTFIRSTROW hint](/azure/azure-sql/migration-guides/database/sql-server-to-sql-database-assessment-rules#FastFirstRowHint)
-
-  [FILESTREAM](/azure/azure-sql/migration-guides/database/sql-server-to-sql-database-assessment-rules#FileStream)
-
-  [MS DTC](/azure/azure-sql/migration-guides/database/sql-server-to-sql-database-assessment-rules#MSDTCTransactSQL)
-
-  [OPENROWSET (bulk)](/azure/azure-sql/migration-guides/database/sql-server-to-sql-database-assessment-rules#OpenRowsetWithNonBlobDataSourceBulk)
-
-  [OPENROWSET (provider)](/azure/azure-sql/migration-guides/database/sql-server-to-sql-database-assessment-rules#OpenRowsetWithSQLAndNonSQLProvider)
-
-  > [!NOTE]
+  > [!NOTE]  
   > To view error detail, Open the Microsoft Integration runtime configuration manager, and navigate to **Diagnostics > Logging > View logs**. In the Event viewer, navigate to **Application and Service logs > Connectors - Integration runtime**, and filter for errors.
 
 - **Message**: `Deployed failure: Index cannot be created on computed column '{0}' of table '{1}' because the underlying object '{2}' has a different owner. Object element: {3}.`
@@ -380,13 +373,13 @@ Note: This query should be run in context of master DB
 
 - **Cause**: The Azure SQL target is unable to connect to blob storage.
 
-- **Recommendation**: Confirm that target network settings allow access to blob storage.  For example, if you're migrating to a SQL Server on Azure VM target, ensure that outbound connections on the Virtual Machine aren't being blocked.
+- **Recommendation**: Confirm that target network settings allow access to blob storage. For example, if you're migrating to a SQL Server on Azure VM target, ensure that outbound connections on the Virtual Machine aren't being blocked.
 
 - **Message**: `Failed to create restore job. Unable to read blobs in storage container, exception: The remote name could not be resolved.`
 
 - **Cause**: The Azure SQL target is unable to connect to blob storage.
 
-- **Recommendation**: Confirm that target network settings allow access to blob storage.  For example, if migrating to SQL VM, ensure that outbound connections on VM aren't being blocked.
+- **Recommendation**: Confirm that target network settings allow access to blob storage. For example, if migrating to SQL VM, ensure that outbound connections on VM aren't being blocked.
 
 - **Message**: `Migration for Database <Database Name> failed with error 'Migration cannot be completed because provided backup file name <Backup File Name> should be the last restore backup file <Last Restore Backup File Name>'`.
 
@@ -407,8 +400,10 @@ Note: This query should be run in context of master DB
 - **Cause**: While migrating logins using PowerShell command [New-AzDataMigrationLoginsMigration](/powershell/module/az.datamigration/new-azdatamigrationloginsmigration), it fails with the previous message.
 
 - **Recommendation**: To resolve this issue, upgrade the Microsoft Azure PowerShell - Database Migration Service cmdlets - Az.DataMigration above minimum 0.14.5 version.
-  Latest version of Az.Datamigration can be downloaded from [the PowerShell gallery](https://www.powershellgallery.com/packages/Az.DataMigration/) or the following command can be used to upgrade.
-```Command
+
+  Latest version of Az.Datamigration can be downloaded from [the PowerShell gallery](https://www.powershellgallery.com/packages/Az.DataMigration/0.14.7) or the following command can be used to upgrade.
+
+```powershell
  Update-Module -Name Az.DataMigration
 ```
 - **Message**: `urlopen error [Errno 11001] getaddrinfo failed`
@@ -416,13 +411,14 @@ Note: This query should be run in context of master DB
 - **Cause**: While migrating logins using Azure CLI [Az dataMigration login-migration](/cli/azure/datamigration), it fails with the previous message.
 
 - **Recommendation**: To resolve this issue, upgrade the Microsoft Azure CLI - Database Migration Service extension - az dataMigration to 1.0.0b1 or a later version. Run the following command to upgrade.
-```Command
+
+```azurecli
  az extension update -n datamigration
 ```
 
 ## Azure Database Migration Service Naming Rules
 
-If your DMS service failed with "Error: Service name 'x_y_z' is not valid", then you need to follow the Azure Database Migration Service Naming Rules. As Azure Database Migration Service uses Azure Data factory for its compute, it follows the exact same naming rules as mentioned [here](/azure/data-factory/naming-rules).
+If your DMS service failed with "Error: Service name 'x_y_z' is not valid", then you need to follow the Azure Database Migration Service Naming Rules. As Azure Database Migration Service uses Azure Data factory for its compute, it follows the exact same naming rules as mentioned in the [naming rules](/azure/data-factory/naming-rules).
 
 ## Azure SQL Database limitations
 
@@ -444,7 +440,7 @@ Migrating to SQL Server on Azure VMs by using the Azure SQL extension for Azure 
 
 ## Azure Data Studio limitations
 
-### Failed to start Sql Migration Service: Error: Request error:
+### Failed to start Sql Migration Service: Error: Request error
 
 - **Message**: `Error at ClientRequest.<anonymous> (c:\Users\MyUser\.azuredatastudio\extensions\microsoft.sql-migration-1.4.2\dist\main.js:2:7448) at ClientRequest.emit (node:events:538:35) at TLSSocket.socketOnEnd (node:_http_client:466:9) at TLSSocket.emit (node:events:538:35) at endReadableNT (node:internal/streams/readable:1345:12) at process.processTicksAndRejections (node:internal/process/task_queues:83:21)`
 

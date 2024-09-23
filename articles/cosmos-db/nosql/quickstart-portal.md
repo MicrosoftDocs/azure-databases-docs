@@ -1,113 +1,180 @@
 ---
-title: Quickstart - Create Azure Cosmos DB resources from the Azure portal
-description: Use this quickstart to learn how to create an Azure Cosmos DB database, container, and items by using the Azure portal.
-author: deborahc
-ms.author: dech
+title: Quickstart - Azure portal
+titleSuffix: Azure Cosmos DB for NoSQL
+description: Deploy an Azure Cosmos DB account, database, and container using the Azure portal and Data Explorer.
+author: seesharprun
+ms.author: sidandrews
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: quickstart
-ms.date: 03/03/2023
-ms.custom: mode-ui
+ms.date: 09/18/2024
+# CustomerIntent: As a cloud user, I want to create a new Azure Cosmos DB account, so that I can manage resources and data.
 ---
-# Quickstart: Create an Azure Cosmos DB account, database, container, and items from the Azure portal
+
+# Quickstart: Create an Azure Cosmos DB for NoSQL account using the Azure portal
+
 [!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
 
-> [!div class="op_single_selector"]
-> - [Azure portal](quickstart-portal.md)
-> - [.NET](quickstart-dotnet.md)
-> - [Java](quickstart-java.md)
-> - [Node.js](quickstart-nodejs.md)
-> - [Python](quickstart-python.md)
->  
+[!INCLUDE[Interface Quickstart selector](includes/quickstart/interface-selector.md)]
 
-Azure Cosmos DB is Microsoft's globally distributed multi-model database service. You can use Azure Cosmos DB to quickly create and query key/value databases, document databases, and graph databases. This approach benefits from the global distribution and horizontal scale capabilities at the core of Azure Cosmos DB.
-
-This quickstart demonstrates how to use the Azure portal to create an Azure Cosmos DB [API for NoSQL](../introduction.md) account. In that account, you create a document database, and container, and add data to the container. Without a credit card or an Azure subscription, you can set up a free [Try Azure Cosmos DB account](https://aka.ms/trycosmosdb).
+In this quickstart, you create a new Azure Cosmos DB for NoSQL account in the Azure portal. You then use the Data Explorer experience within the Azure portal to create a database and container configuring all required settings. Finally, you add sample data to the container and issue a basic query.
 
 ## Prerequisites
 
-An Azure subscription or free Azure Cosmos DB trial account.
+- An Azure account with an active subscription. [Create an account for free](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-- [!INCLUDE [quickstarts-free-trial-note](~/reusable-content/ce-skilling/azure/includes/quickstarts-free-trial-note.md)]
+## Create an account
 
-- [!INCLUDE [cosmos-db-emulator-docdb-api](../includes/cosmos-db-emulator-docdb-api.md)]  
+Start by creating a new Azure Cosmos DB for NoSQL account
 
-## <a id="create-account"></a>Create an Azure Cosmos DB account
+1. Sign in to the Azure portal (<https://portal.azure.com>).
 
-[!INCLUDE [cosmos-db-create-dbaccount](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/cosmos-db-create-dbaccount.md)]
+1. Enter *Azure Cosmos DB* in the global search bar.
 
-## <a id="create-container-database"></a>Add a database and a container
+    :::image source="media/quickstart-portal/search-bar.png" lightbox="media/quickstart-portal/search-bar.png" alt-text="Screenshot of the global search bar in the Azure portal.":::
 
-You can use the Data Explorer in the Azure portal to create a database and container.
+1. Within **Services**, select **Azure Cosmos DB**.
 
-1. Select **Data Explorer** from the left navigation on your Azure Cosmos DB account page, and then select **New Container** > **New Container**.
+    :::image source="media/quickstart-portal/search-menu.png" alt-text="Screenshot of the Azure Cosmos DB option selected in the search menu.":::
 
-    You may need to scroll right to see the **New Container** window.
+1. In the **Azure Cosmos DB** pane, select **Create**, and then **Azure Cosmos DB for NoSQL**.
 
-    :::image type="content" source="./media/quickstart-portal/add-database-container.png" alt-text="Screenshot shows the Azure portal Data Explorer page with the New Container pane open." lightbox="./media/quickstart-portal/add-database-container.png":::
+    :::image source="media/quickstart-portal/create-resource-option.png" alt-text="Screenshot of the Create option within the pane for an Azure service.":::
 
-1. In the **New Container** pane, enter the settings for the new container.
+    :::image source="media/quickstart-portal/api-nosql-option.png" alt-text="Screenshot of the Azure Cosmos DB API selection pane with the API for NoSQL highlighted.":::
 
-    |Setting|Suggested value|Description|
-    |---|---|---|
-    |**Database id**|ToDoList|Enter *ToDoList* as the name for the new database. Database names must contain 1-255 characters, and they can't contain `/`, `\`, `#`, `?`, or a trailing space. Check the **Share throughput across containers** option. It allows you to share the throughput provisioned on the database across all the containers within the database. This option also helps with cost savings. |
-    | **Database throughput**|**Autoscale** or **Manual**|Manual throughput allows you to scale request units per second (RU/s) yourself whereas  autoscale throughput allows the system to scale RU/s based on usage. Select **Manual** for this example.|
-    |**Database Max RU/s**| 400 RU/s|If you want to reduce latency, you can scale up the throughput later by estimating the required RU/s with the [capacity calculator](estimate-ru-with-capacity-planner.md). **Note**: This setting isn't available when creating a new container in a serverless account. |
-    |**Container id**|Items|Enter *Items* as the name for your new container. Container IDs have the same character requirements as database names.|
-    |**Partition key**| /category| The sample described in this article uses */category* as the partition key.|
+1. Within the **Basics** pane, configure the following options, and then select **Review + create**:
 
-    Don't add **Unique keys** or turn on **Analytical store** for this example.
+    | | Value |
+    | --- | --- |
+    | **Subscription** | Select your Azure subscription |
+    | **Resource Group** | Create a new resource group or select an existing resource group |
+    | **Account Name** | Provide a globally unique name |
+    | **Availability Zones** | *Disable* |
+    | **Location** | Select a supported Azure region for your subscription |
 
-    - Unique keys let you add a layer of data integrity to the database by ensuring the uniqueness of one or more values per partition key. For more information, see [Unique keys in Azure Cosmos DB](../unique-keys.md).
-    - [Analytical store](../analytical-store-introduction.md) is used to enable large-scale analytics against operational data without any effect on your transactional workloads.
+    :::image source="media/quickstart-portal/basics-pane.png" alt-text="Screenshot of the Azure Cosmos DB for NoSQL resource creation 'Basics' pane.":::
 
-1. Select **OK**. The Data Explorer displays the new database and the container that you created.
+    > [!TIP]
+    > You can leave any unspecified options to their default values. You can also configure the account to limit total account throughput to 1,000 request units per second (RU/s) and enable free tier to minimize your costs.
 
-## Add data to your database
+1. On the **Review + create** pane, wait for validation of your account to finish successfully, and then select **Create**.
 
-Add data to your new database using Data Explorer.
+    :::image source="media/quickstart-portal/resource-validation.png" alt-text="Screenshot of the resource validation step in the creation experience.":::
 
-1. In **Data Explorer**, expand the **ToDoList** database, and expand the **Items** container.
+1. The portal automatically navigates to the **Deployment** pane. Wait for the deployment to complete.
 
-1. Next, select **Items**, and then select **New Item**.
+    :::image source="media/quickstart-portal/deployment-pending.png" alt-text="Screenshot of the deployment pane with a currently pending deployment.":::
 
-   :::image type="content" source="./media/quickstart-portal/azure-cosmosdb-new-document.png" alt-text="Screenshot shows the New Item option in Data Explorer in the Azure portal." lightbox="./media/quickstart-portal/azure-cosmosdb-new-document.png":::
+1. Once the deployment is complete, select **Go to resource** to navigate to the new Azure Cosmos DB for NoSQL account.
 
-1. Add the following structure to the document on the right side of the **Documents** pane:
+    :::image source="media/quickstart-portal/deployment-finalized.png" alt-text="Screenshot of a fully deployed resource with the 'Go to resource' option highlighted.":::
 
-   ```json
-   {
-       "id": "1",
-       "category": "personal",
-       "name": "groceries",
-       "description": "Pick up apples and strawberries.",
-       "isComplete": false
-   }
-   ```
+## Create a database and container
 
-1. Select **Save**.
+Next, use the Data Explorer to create a database and container in-portal.
 
-   :::image type="content" source="./media/quickstart-portal/azure-cosmosdb-save-document.png" alt-text="Screenshot shows where you can copy json data and select Save in Data Explorer in the Azure portal." lightbox="./media/quickstart-portal/azure-cosmosdb-save-document.png":::
+1. In the account resource pane, select **Data Explorer** in the service menu.
 
-1. Select **New Item** again, and create and save another document with a unique `id`, and any other properties and values you want. Your documents can have any structure, because Azure Cosmos DB doesn't impose any schema on your data.
+    :::image source="media/quickstart-portal/service-menu-data-explorer.png" alt-text="Screenshot of the Data Explorer option in the service menu for the account.":::
 
-## Query your data
+1. In the **Data Explorer** pane, select the **New Container** option.
 
-[!INCLUDE [cosmos-db-create-sql-api-query-data](../includes/cosmos-db-create-sql-api-query-data.md)]
+    :::image source="media/quickstart-portal/new-container-option.png" alt-text="Screenshot of the 'New Container' option in the Data Explorer.":::
 
-## Clean up resources
+1. In the **New Container** dialog, configure the following values and then select **OK**:
 
-[!INCLUDE [cosmosdb-delete-resource-group](../includes/cosmos-db-delete-resource-group.md)]
+    | | Value |
+    | --- | --- |
+    | **Database** | *Create new* |
+    | **Database id** | `cosmicworks` |
+    | **Share throughput across containers** | Don't select |
+    | **Container id** | `employees` |
+    | **Partition key** | `department/name` |
+    | **Container throughput (autoscale)** | *Autoscale* |
+    | **Container Max RU/s** | `1000` |
 
-If you wish to delete just the database and use the Azure Cosmos DB account in future, you can delete the database with the following steps:
+    :::image source="media/quickstart-portal/new-container-dialog.png" alt-text="Screenshot of the dialog to create a new database and container with the specified options filled.":::
 
-1. Go to your Azure Cosmos DB account.
-1. Open **Data Explorer**, select the **More** (**...**) for the database that you want to delete and select **Delete Database**.
-1. Enter the database ID or database name to confirm the delete operation.
+1. Create a new file named *demo.bicepparam* or (`demo.bicepparam`).
 
-## Next steps
+1. Observe the newly created database and container in the Data Explorer's hierarchy.
 
-You can now import more data to your Azure Cosmos DB account.
+    :::image source="media/quickstart-portal/data-explorer-tree.png" alt-text="Screenshot of the Data Explorer hierarchy with a database container present.":::
 
-- [Convert the number of vCores or vCPUs in your nonrelational database to Azure Cosmos DB RU/s](../convert-vcore-to-request-unit.md)
-- [Estimate RU/s using the Azure Cosmos DB capacity planner - API for NoSQL](estimate-ru-with-capacity-planner.md)
+    > [!TIP]
+    > Optionally, you can expand the container node to observe additional properties and configuration settings.
+
+## Add and query sample data
+
+Finally, use the Data Explorer to create a sample item and then issue a basic query to the container.
+
+1. Expand the node for the **employees** container in the tree of the Data Explorer. Then, select the **Items** option.
+
+    :::image source="media/quickstart-portal/data-explorer-container-items.png" alt-text="Screenshot of the 'Items' option within a container in the Data Exploer hierarchy.":::
+
+1. In the Data Explorer's menu, select **New Item**.
+
+    :::image source="media/quickstart-portal/data-explorer-container-new-item.png" alt-text="Screenshot of the 'New Item' option within the Data Explorer menu.":::
+
+1. Now, insert the following JSON for a new item in the **employees** container and then select **Save**:
+
+    ```json
+    {
+      "id": "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb",
+      "name": {
+        "first": "Kai",
+        "last": "Carter"
+      },
+      "email": "<kai@adventure-works.com>",
+      "department": {
+        "name": "Logistics"
+      }
+    }
+    ```
+
+    :::image source="media/quickstart-portal/data-explorer-new-item.png" alt-text="Screenshot of the JSON content for a new item within the Data Explorer.":::
+
+1. In the Data Explorer's menu, select **New SQL Query**.
+
+    :::image source="media/quickstart-portal/data-explorer-new-query.png" alt-text="Screenshot of the 'New SQL Query' option within the Data Explorer menu.":::
+
+1. Now, insert the following NoSQL query to get all items for the `logistics` department using a case-insensitive search. The query then formats the output as a structured JSON object. Run the query by selecting **Execute Query**:
+
+    ```nosql
+    SELECT VALUE {
+        "name": CONCAT(e.name.last, " ", e.name.first),
+        "department": e.department.name,
+        "emailAddresses": [
+            e.email
+        ]
+    }
+    FROM
+        employees e
+    WHERE
+        STRINGEQUALS(e.department.name, "logistics", true)
+    ```
+
+    :::image source="media/quickstart-portal/data-explorer-query.png" alt-text="Screenshot of NoSQL query text within the Data Explorer.":::
+
+1. Observe the JSON array output from the query.
+
+    ```json
+    [
+      {
+        "name": "Carter Kai",
+        "department": "Logistics",
+        "emailAddresses": [
+          "kai@adventure-works.com"
+        ]
+      }
+    ]
+    ```
+
+    :::image source="media/quickstart-portal/data-explorer-query-results.png" alt-text="Screenshot of the results of the previous NoSQL query's execution in the Data Explorer.":::
+
+## Related content
+
+- [Data Explorer](../data-explorer.md)
+- [NoSQL query syntax](query/index.yml)
+- [Resource model](../resource-model.md)

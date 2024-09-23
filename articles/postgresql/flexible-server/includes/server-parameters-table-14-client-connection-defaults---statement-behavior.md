@@ -1,8 +1,8 @@
 ---
-author: akashraokm
-ms.author: akashrao
+author: nachoalonsoportillo
+ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 06/18/2024
+ms.date: 09/13/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
@@ -202,8 +202,8 @@ ms.topic: include
 | Description    | Sets the maximum allowed idle time between queries, when not in a transaction.                                                                                                             |
 | Data type      | integer     |
 | Default value  | `0`                 |
-| Allowed values | `0`                                                            |
-| Parameter type | read-only      |
+| Allowed values | `0-2147483647`                                                 |
+| Parameter type | dynamic        |
 | Documentation  | [idle_session_timeout](https://www.postgresql.org/docs/14/runtime-config-client.html#GUC-IDLE-SESSION-TIMEOUT)                               |
 
 
@@ -425,7 +425,7 @@ ms.topic: include
 | Default value  | `1600000000`        |
 | Allowed values | `1600000000`                                                   |
 | Parameter type | read-only      |
-| Documentation  |                                                                                                                                              |
+| Documentation  | [vacuum_multixact_failsafe_age](https://www.postgresql.org/docs/14/runtime-config-client.html#GUC-VACUUM-FREEZE-TABLE-AGE)                   |
 
 
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
@@ -497,6 +497,5 @@ ms.topic: include
 
 
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
 
 

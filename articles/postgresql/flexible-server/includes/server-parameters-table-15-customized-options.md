@@ -1,8 +1,8 @@
 ---
-author: akashraokm
-ms.author: akashrao
+author: nachoalonsoportillo
+ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 08/19/2024
+ms.date: 09/13/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
@@ -201,7 +201,7 @@ ms.topic: include
 | Category       | Customized Options |
 | Description    | Fraction of queries to process.                                                                                                                                                             |
 | Data type      | numeric     |
-| Default value  | `1`                 |
+| Default value  | `1.0`               |
 | Allowed values | `0.0-1.0`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | Parameter type | dynamic        |
 | Documentation  | [auto_explain.sample_rate](https://www.postgresql.org/docs/15/auto-explain.html#id-1.11.7.13.5.3.12.1.3)           |
@@ -256,6 +256,23 @@ ms.topic: include
 | Allowed values | `address_standardizer,address_standardizer_data_us,amcheck,azure_ai,azure_storage,bloom,btree_gin,btree_gist,citext,cube,dblink,dict_int,dict_xsyn,earthdistance,fuzzystrmatch,hstore,hypopg,intagg,intarray,isn,lo,login_hook,ltree,orafce,pageinspect,pg_buffercache,pg_cron,pg_freespacemap,pg_hint_plan,pg_partman,pg_prewarm,pg_repack,pg_squeeze,pg_stat_statements,pg_trgm,pg_visibility,pgaudit,pgcrypto,pglogical,pgrouting,pgrowlocks,pgstattuple,plpgsql,plv8,postgis,postgis_raster,postgis_sfcgal,postgis_tiger_geocoder,postgis_topology,postgres_fdw,postgres_protobuf,semver,session_variable,sslinfo,tablefunc,tds_fdw,timescaledb,tsm_system_rows,tsm_system_time,unaccent,uuid-ossp,vector` |
 | Parameter type | dynamic        |
 | Documentation  | [azure.extensions](https://go.microsoft.com/fwlink/?linkid=2274269)                                                |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### azure.fabric_mirror_enabled
+
+| Attribute      | Value                                                      |
+|----------------|------------------------------------------------------------|
+| Category       | Customized Options |
+| Description    | Sepcifies the flag indicating if mirroring is enabled on server.                                                                                                                            |
+| Data type      | boolean     |
+| Default value  | `off`               |
+| Allowed values | `off`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| Parameter type | read-only      |
+| Documentation  |                                                                                                                    |
 
 
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
@@ -1068,7 +1085,7 @@ ms.topic: include
 | Category       | Customized Options |
 | Description    | The role that run_maintenance() will run as. Default is postgres. Only a single role name is allowed.                                                                                       |
 | Data type      | string      |
-| Default value  | `postgres`          |
+| Default value  |                     |
 | Allowed values | `[A-Za-z\\._]*`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 | Parameter type | dynamic        |
 | Documentation  | [pg_partman_bgw.role](https://github.com/pgpartman/pg_partman)                                                     |
@@ -1296,6 +1313,5 @@ ms.topic: include
 
 
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
 
 
