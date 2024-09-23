@@ -18,7 +18,7 @@ The current Azure CLI session could be signed in with a human identity (your acc
 
 ::: zone-end
 
-::: zone pivot="azure-interface-powershell"
+::: zone pivot="azure-interface-shell"
 
 [!INCLUDE [Azure PowerShell prerequisites](~/reusable-content/azure-powershell/azure-powershell-requirements-no-header.md)]
 
@@ -60,7 +60,7 @@ Use the command line to query the graph for information about your account's uni
 
 ::: zone-end
 
-::: zone pivot="azure-interface-powershell"
+::: zone pivot="azure-interface-shell"
 
 1. Get the details for the currently logged-in account using [`Get-AzADUser`](/powershell/module/az.resources/get-azaduser).
 

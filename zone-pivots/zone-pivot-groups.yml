@@ -95,7 +95,7 @@ groups:
     title: Bicep
   - id: azure-interface-portal
     title: Azure portal
-  - id: azure-interface-powershell
+  - id: azure-interface-shell
     title: Azure PowerShell
 # Owner: sidandrews
 - id: azure-interface-cli-powershell-bicep
@@ -106,7 +106,7 @@ groups:
     title: Azure CLI
   - id: azure-interface-bicep
     title: Bicep
-  - id: azure-interface-powershell
+  - id: azure-interface-shell
     title: Azure PowerShell
 # Owner: sidandrews
 - id: azure-interface-cli-powershell
@@ -115,5 +115,5 @@ groups:
   pivots:
   - id: azure-interface-cli
     title: Azure CLI
-  - id: azure-interface-powershell
+  - id: azure-interface-shell
     title: Azure PowerShell

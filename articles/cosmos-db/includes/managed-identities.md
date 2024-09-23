@@ -49,7 +49,7 @@ For more information, see [managed identities for Azure resources](/entra/identi
 
 ::: zone-end
 
-::: zone pivot="azure-interface-powershell"
+::: zone pivot="azure-interface-shell"
 
 [!INCLUDE [Azure PowerShell prerequisites](~/reusable-content/azure-powershell/azure-powershell-requirements-no-header.md)]
 
@@ -144,7 +144,7 @@ Create a new Azure service with a system-assigned managed identity. This section
     output systemAssignedIdentity object = instance.identity    
     ```
 
-1. Create a new Bicep parameters file named *container-instance.bicepparam*. In this parameters file, create a unique name for your container instance using the `instanceName` parameter.
+1. Create a new Bicep parameters file named *container-instance.`bicepparam`*. In this parameters file, create a unique name for your container instance using the `instanceName` parameter.
 
     ```bicep
     using './container-instance.bicep'
@@ -205,7 +205,7 @@ Create a new Azure service with a system-assigned managed identity. This section
 
 ::: zone-end
 
-::: zone pivot="azure-interface-powershell"
+::: zone pivot="azure-interface-shell"
 
 1. Create an object representing a container using [`New-AzContainerInstanceObject`](/powershell/module/az.containerinstance/new-azcontainerinstanceobject) and store it in a variable named `$container`. Then, use that container object to create a new container instance with [`New-AzContainerGroup`](/powershell/module/az.containerinstance/new-azcontainergroup). Configure the account to use a system-assigned managed identity by setting the `IdentityType` parameter to `SystemAssigned`.
 
@@ -365,7 +365,7 @@ Create a user-assigned managed identity that can be used with one or more Azure 
 
 ::: zone-end
 
-::: zone pivot="azure-interface-powershell"
+::: zone pivot="azure-interface-shell"
 
 1. Create a new user-assigned managed identity using [`New-AzUserAssignedIdentity`](/powershell/module/az.managedserviceidentity/new-azuserassignedidentity) in your Azure resource group.
 
@@ -503,7 +503,7 @@ Assign the previously created user-assigned managed identity to a new Azure host
     output userAssignedIdentity object = webApp.identity
     ```
 
-1. Create a Bicep parameters file named *app-service-web-app.bicepparam*. In this parameters file, create a unique name for your web app and plan using the `planName` and `webAppName` parameters respectively. Then, provide the name of the user-assigned managed identity as the value of the `identityName` parameter.
+1. Create a Bicep parameters file named *app-service-web-app.`bicepparam`*. In this parameters file, create a unique name for your web app and plan using the `planName` and `webAppName` parameters respectively. Then, provide the name of the user-assigned managed identity as the value of the `identityName` parameter.
 
     ```bicep
     using './app-service-web-app.bicep'
@@ -564,7 +564,7 @@ Assign the previously created user-assigned managed identity to a new Azure host
 
 ::: zone-end
 
-::: zone pivot="azure-interface-powershell"
+::: zone pivot="azure-interface-shell"
 
 1. Use [`New-AzWebApp`](/powershell/module/az.websites/new-azwebapp) to create a new Azure App Service web app.
 
@@ -577,7 +577,7 @@ Assign the previously created user-assigned managed identity to a new Azure host
     New-AzWebApp @parameters
     ```
 
-1. Patch the newly created web app to set the `identity.type` property to `UserAssigned` and add your existing user-assigned managed identity to the `identity.userAssignedIdentities` property. To accomplish this, first provide the `id` field recorded earlier in this guide as the value of the `identityId` shell variable. Then, construct a payload object and convert it to JSON. Finally, use [`Invoke-AzRestMethod`](/powershell/module/az.accounts/invoke-azrestmethod) with the `PATCH` HTTP verb to update the existing web app.
+1. Patch the newly created web app to set the `identity.type` property to `UserAssigned` and add your existing user-assigned managed identity to the `identity.userAssignedIdentities` property. To accomplish this task, first provide the `id` field recorded earlier in this guide as the value of the `identityId` shell variable. Then, construct a payload object and convert it to JSON. Finally, use [`Invoke-AzRestMethod`](/powershell/module/az.accounts/invoke-azrestmethod) with the `PATCH` HTTP verb to update the existing web app.
 
     ```azurepowershell-interactive
     $identityId = "<resource-id-recorded-earlier>"
