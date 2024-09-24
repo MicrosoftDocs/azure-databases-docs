@@ -1,7 +1,7 @@
 ---
 title: Get signed in identity
-titleSuffix: Azure CLI
-description: Get the unique identifier for the currently signed in account for Azure CLI so that you can use this identity with role-based access control in Azure.
+titleSuffix: Azure Cosmos DB for Table
+description: Get the unique identifier for the currently signed in account for Azure CLI so that you can use this identity with role-based access control in Azure to connect to Azure Cosmos DB for NoSQL.
 author: seesharprun
 ms.author: sidandrews
 ms.reviewer: stefarroyo
@@ -13,7 +13,7 @@ zone_pivot_groups: azure-interface-portal-cli-powershell
 #Customer Intent: As a developer, I want to get my current signed-in identity for Azure CLI, so that my security team can grant me role-based access control permissions to access Azure resources.
 ---
 
-# Get the signed in account's identity for Azure CLI
+# Get the signed in account's identity to use with Azure services to connect to Azure Cosmos DB for Table
 
 [!INCLUDE[Table](../../includes/appliesto-table.md)]
 
