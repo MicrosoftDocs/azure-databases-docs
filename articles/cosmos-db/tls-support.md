@@ -23,7 +23,7 @@ These are some of the known issues with TLS 1.3 enablement, potential impact, an
 
 ## Known issues, impact, and mitigation
 
-- **JDK Related Issues**: The io.netty versions between 4.1.68.Final and 4.1.86.Final inclusive contain a bug that causes the client to fail the TLS handshake in Direct mode connection when TLS 1.3 is not supported by the Java runtime engine. Cosmos DB Java SDK versions ranging from 4.20.0 to 4.40.0 inclusive have a transitive dependency on io.netty with this bug. The client will fail with  **java.lang.IllegalArgumentException** exceptions as shown below.
+- **JDK Related Issues**: The io.netty versions between 4.1.68.Final and 4.1.86.Final inclusive contain a bug that causes the client to fail the TLS handshake in Direct mode connection when TLS 1.3 is not supported by the Java runtime engine. Cosmos DB Java SDK versions ranging from 4.20.0 to 4.40.0 inclusive have a transitive dependency on io.netty with this bug. The client fails with  `java.lang.IllegalArgumentException` exceptions as shown below.
     
     ```output
      Caused by: io.netty.handler.codec.DecoderException: javax.net.ssl.SSLHandshakeException: General OpenSslEngine problem at 
