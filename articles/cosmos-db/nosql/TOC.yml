@@ -441,6 +441,8 @@
           displayName: RBAC, Entra
           expanded: true
           items:
+            - name: Security glossary
+              href: security/glossary.md
             - name: Get signed-in identity
               href: security/how-to-get-signed-in-identity.md
             - name: Create managed identities
