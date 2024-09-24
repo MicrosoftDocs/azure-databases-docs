@@ -1,9 +1,9 @@
 ---
 ms.service: azure-cosmos-db
 ms.topic: include
-ms.date: 09/23/2024
+ms.date: 09/24/2024
 ms.custom: subject-msia
-zone_pivot_groups: azure-interface-cli-powershell-bicep
+zone_pivot_groups: azure-interface-portal-cli-powershell-bicep
 ---
 
 Managed identities are one of many types of identity resources in Microsoft Entra ID for applications to use when connecting to services that support Microsoft Entra authentication. Managed identities can be used in lieu of traditional resource-owned credentials like keys. In Azure, managed identities provide a way for your applications to obtain a Microsoft Entra token to authenticate to Azure services without you needing to write a large amount of authentication code.
@@ -42,6 +42,10 @@ For more information, see [managed identities for Azure resources](/entra/identi
 ::: zone pivot="azure-interface-cli,azure-interface-bicep"
 
 [!INCLUDE [Azure CLI prerequisites](~/reusable-content/azure-cli/azure-cli-prepare-your-environment-no-header.md)]
+
+::: zone-end
+
+::: zone pivot="azure-interface-portal"
 
 ::: zone-end
 
@@ -166,6 +170,63 @@ Create a new Azure service with a system-assigned managed identity. This section
       "type": "SystemAssigned"
     }
     ```
+
+::: zone-end
+
+::: zone pivot="azure-interface-portal"
+
+1. Sign in to the Azure portal (<https://portal.azure.com>).
+
+1. Enter *Azure Container Instances* in the global search bar.
+
+    :::image source="media/managed-identities/global-search.png" lightbox="media/managed-identities/global-search-full.png" alt-text="Screenshot of the global search bar in the Azure portal.":::
+
+1. Within **Services**, select **Container instances**.
+
+    :::image source="media/managed-identities/search-results-container-instances.png" alt-text="Screenshot of the 'Container instances' option selected in the search menu.":::
+
+1. In the **Container instances** pane, select **Create**.
+
+    :::image source="media/managed-identities/create-container-instance.png" alt-text="Screenshot of the 'Create' option within the pane for Azure Container Instances.":::
+
+1. Within the **Basics** pane, configure the following options, and then select **Review + create**:
+
+    | | Value |
+    | --- | --- |
+    | **Subscription** | Select your Azure subscription |
+    | **Resource Group** | Create a new resource group or select an existing resource group |
+    | **Container name** | Provide a globally unique name |
+    | **Region** | Select a supported Azure region for your subscription |
+
+    :::image source="media/managed-identities/basics-pane-container-instance.png" alt-text="Screenshot of the Azure Container Instances resource creation 'Basics' pane.":::
+
+    > [!TIP]
+    > You can leave any unspecified options to their default values.
+
+1. On the **Review + create** pane, wait for validation of your account to finish successfully, and then select **Create**.
+
+    :::image source="media/managed-identities/review-pane-container-instance.png" alt-text="Screenshot of the resource validation step in the creation experience for a container instance.":::
+
+1. The portal automatically navigates to the **Deployment** pane. Wait for the deployment to complete.
+
+1. Once the deployment is complete, select **Go to resource** to navigate to the new Azure Container Instances resource.
+
+    :::image source="media/managed-identities/deployment-finalized-container-instance.png" alt-text="Screenshot of a fully deployed Azure Container Instances resource with the 'Go to resource' option highlighted.":::
+
+1. Within the pane for the new container instance, select **Identity** inside the **Settings** section of the service menu.
+
+    :::image source="media/managed-identities/settings-identity-option-container-instance.png" alt-text="Screenshot of the 'Identity' option in the service menu for the container instance.":::
+
+1. In the **Identity** pane, enable the system-assigned managed identity by setting the **Status** option to **On**. Then, select **Save** and resolve any prompts to commit the change.
+
+    :::image source="media/managed-identities/enable-system-assigned-managed-identity.png" alt-text="Screenshot of setting the 'Status' option to 'On' for a system-assigned managed identity.":::
+
+1. Once the system-assigned managed identity is ready, review the value of the **Object (principal) ID** property. This property's value is the unique identifier for the identity.
+
+    :::image source="media/managed-identities/system-assigned-managed-identity-details.png" alt-text="Screenshot of the details for an enabled system-assigned managed identity.":::
+
+    > [!TIP]
+    > In this example screenshot, the unique identifier for the system-assigned managed identity is `bbbbbbbb-1111-2222-3333-cccccccccccc`.
 
 ::: zone-end
 
@@ -300,6 +361,41 @@ Create a user-assigned managed identity that can be used with one or more Azure 
 
     > [!NOTE]
     > In this example, the `name.value` would be `msdocs-identity-example-user-assigned`. This example uses fictituous data and your identifier would be distinct from this example.
+
+::: zone-end
+
+::: zone pivot="azure-interface-portal"
+
+1. Enter *Managed identity* in the global search bar.
+
+1. Within **Services**, select **Managed identities**.
+
+    :::image source="media/managed-identities/search-results-managed-identities.png" alt-text="Screenshot of the 'Managed identities' option selected in the search menu.":::
+
+1. In the **Container instances** pane, select **Create**.
+
+    :::image source="media/managed-identities/create-managed-identity.png" alt-text="Screenshot of the 'Create' option within the pane for Managed Identities.":::
+
+1. Within the **Basics** pane, configure the following options, and then select **Review + create**:
+
+    | | Value |
+    | --- | --- |
+    | **Subscription** | Select your Azure subscription |
+    | **Resource Group** | Create a new resource group or select an existing resource group |
+    | **Region** | Select a supported Azure region for your subscription |
+    | **Name** | Provide a globally unique name |
+
+    :::image source="media/managed-identities/basics-pane-managed-identity.png" alt-text="Screenshot of the managed identity resource creation 'Basics' pane.":::
+
+1. On the **Review + create** pane, wait for validation of your account to finish successfully, and then select **Create**.
+
+    :::image source="media/managed-identities/review-pane-managed-identity.png" alt-text="Screenshot of the resource validation step in the creation experience for a managed identity.":::
+
+1. The portal automatically navigates to the **Deployment** pane. Wait for the deployment to complete.
+
+1. Wait for the deployment of the managed identity to complete.
+
+    :::image source="media/managed-identities/deployment-finalized-managed-identity.png" alt-text="Screenshot of a fully deployed managed identity resource.":::
 
 ::: zone-end
 
@@ -473,6 +569,57 @@ Assign the previously created user-assigned managed identity to a new Azure host
       }
     }
     ```
+
+::: zone-end
+
+::: zone pivot="azure-interface-portal"
+
+1. Enter *Web app* in the global search bar.
+
+1. Within **Services**, select **App Services**.
+
+    :::image source="media/managed-identities/search-results-app-services.png" alt-text="Screenshot of the 'App Services' option selected in the search menu.":::
+
+1. In the **App Services** pane, select **Create**, and then **Web App**.
+
+    :::image source="media/managed-identities/create-app-service-web-app.png" alt-text="Screenshot of the 'Create' and 'Web App' options within the pane for Azure App Service.":::
+
+1. Within the **Basics** pane, configure the following options, and then select **Review + create**:
+
+    | | Value |
+    | --- | --- |
+    | **Subscription** | Select your Azure subscription |
+    | **Resource Group** | Create a new resource group or select an existing resource group |
+    | **Name** | Provide a globally unique name |
+    | **Plan** | Create a new plan or select an existing plan |
+
+    :::image source="media/managed-identities/basics-pane-web-app.png" alt-text="Screenshot of a web app's resource creation 'Basics' pane.":::
+
+1. On the **Review + create** pane, wait for validation of your account to finish successfully, and then select **Create**.
+
+    :::image source="media/managed-identities/review-pane-web-app.png" alt-text="Screenshot of the resource validation step in the creation experience for a web app resource.":::
+
+1. The portal automatically navigates to the **Deployment** pane. Wait for the deployment to complete.
+
+1. Once the deployment is complete, select **Go to resource** to navigate to the new Azure Container Instances resource.
+
+    :::image source="media/managed-identities/deployment-finalized-web-app.png" alt-text="Screenshot of a fully deployed Azure App Service web app resource with the 'Go to resource' option highlighted.":::
+
+1. Within the pane for the new container instance, select **Identity** inside the **Settings** section of the service menu.
+
+    :::image source="media/managed-identities/settings-identity-option-web-app.png" alt-text="Screenshot of the 'Identity' option in the service menu for the web app.":::
+
+1. In the **Identity** pane, select the **User assigned** option.
+
+    :::image source="media/managed-identities/user-assigned-managed-identity-option.png" alt-text="Screenshot of the 'User assigned' option in the 'Identity' pane for the web app.":::
+
+1. Select **Add** to open a dialog to assign existing user-assigned managed identities. In the dialog, select your existing user-assigned managed identity and then select **Add**.
+
+    :::image source="media/managed-identities/existing-user-assigned-managed-identity.png" alt-text="Screenshot of the 'Add' option and the 'Add user assigned managed identity' dialog in the 'Identity' pane for the web app.":::
+
+1. Finally, review the list of user-assigned managed identities associated with your web app. It should include the identity's name, resource group name, and subscription identifier.
+
+    :::image source="media/managed-identities/user-assigned-managed-identities-list.png" alt-text="Screenshot of the list of user-assigned managed identities associated with the current web app.":::
 
 ::: zone-end
 
