@@ -147,7 +147,7 @@ SELECT COUNT(1) FROM (SELECT TOP 4 * FROM EMP) E
 
 * For the AVG aggregate function, Cosmos DB returns undefined as result set if any of the arguments in SUM are string, boolean, or null. The connector exposes a connection property to disable passing down the AVG aggregate function to Cosmos DB in case this default Cosmos DB behavior needs to be overridden. When AVG passdown is disabled, it isn't passed down to Cosmos DB, and the connector handles performing the AVG aggregation operation itself. For more information, go to "Enable AVERAGE function Passdown" in Advanced options.
 
-* Azure Cosmos DB Containers with large partition key are not currently supported in the Connector.
+* Azure Cosmos DB Containers with large partition key are not currently supported in the connector.
 
 * Aggregation passdown is disabled for the following syntax due to server limitations:
 
@@ -155,7 +155,7 @@ SELECT COUNT(1) FROM (SELECT TOP 4 * FROM EMP) E
 
   * When the query has one or more partition keys appear in an IS NOT NULL clause in the WHERE clause.
 
-* The V2 connector doesn't support complex data types such as arrays, objects, and hierarchical structures. We recommend Fabric Mirroring for those scenarios.
+* The V2 connector doesn't support complex data types such as arrays, objects, and hierarchical structures. We recommend [Fabric Mirroring](articles/cosmos-db/analytics-and-business-intelligence-overview.md) for those scenarios.
 
 * The V2 connector uses sampling of the first 1,000 documents to come up with the inferred schema. It's not recommended for schema evolution scenarios when only part of the documents are updated. As an example, a newly added property to one document in a container with thousants of documents may not be inlcuded in the inferred schema. We recommend "Cosmos DB Mirroring in Fabric" feature for schema evolution scenarios.
 
