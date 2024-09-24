@@ -155,7 +155,7 @@ SELECT COUNT(1) FROM (SELECT TOP 4 * FROM EMP) E
 
   * When the query has one or more partition keys appear in an IS NOT NULL clause in the WHERE clause.
 
-* The V2 connector doesn't support complex data types such as arrays, objects, and hierarchical structures. We recommend [Fabric Mirroring](articles/cosmos-db/analytics-and-business-intelligence-overview.md) for those scenarios.
+* The V2 connector doesn't support complex data types such as arrays, objects, and hierarchical structures. We recommend [Fabric Mirroring](./articles/cosmos-db/analytics-and-business-intelligence-overview.md) for those scenarios.
 
 * The V2 connector uses sampling of the first 1,000 documents to come up with the inferred schema. It's not recommended for schema evolution scenarios when only part of the documents are updated. As an example, a newly added property to one document in a container with thousants of documents may not be inlcuded in the inferred schema. We recommend "Cosmos DB Mirroring in Fabric" feature for schema evolution scenarios.
 
