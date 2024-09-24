@@ -24,6 +24,23 @@ ms.topic: include
 
 
 
+### max_parallel_apply_workers_per_subscription
+
+| Attribute      | Value                                                      |
+|----------------|------------------------------------------------------------|
+| Category       | Replication / Subscribers |
+| Description    | Sets the maximum number of parallel apply workers that can be used per subscription in logical replication.                  |
+| Data type      | integer   |
+| Default value  | `2`           |
+| Allowed values | `0-1024`       |
+| Parameter type | dynamic        |
+| Documentation  | [max_parallel_apply_workers_per_subscription](https://www.postgresql.org/docs/16/runtime-config-replication.html)                             |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
 ### max_sync_workers_per_subscription
 
 | Attribute      | Value                                                      |
@@ -38,5 +55,4 @@ ms.topic: include
 
 
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
 
