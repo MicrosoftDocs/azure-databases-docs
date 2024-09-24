@@ -8,7 +8,7 @@ ms.reviewer: randolphwest
 ms.date: 09/13/2024
 ms.service: azure-database-migration-service
 ms.topic: tutorial
-ms.custom:
+ms.collection:
   - sql-migration-content
 ---
 # Tutorial: Migrate RDS PostgreSQL to Azure Database for PostgreSQL online using DMS

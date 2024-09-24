@@ -36,7 +36,7 @@ For the previous document, one option is to set /deviceId or /date as the partit
 }
 ```
 
-In real-time scenarios, you can have thousands of items in a database. Instead of adding the synthetic key manually, define client-side logic to concatenate values and insert the synthetic key into the items in your Azure Cosmos DB containers.
+In real-world scenarios, you can have thousands of items in a database. Instead of adding the synthetic key manually, define client-side logic to concatenate values and insert the synthetic key into the items in your Azure Cosmos DB containers.
 
 ## Use a partition key with a random suffix
 

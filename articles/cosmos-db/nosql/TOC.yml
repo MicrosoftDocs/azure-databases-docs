@@ -437,6 +437,17 @@
       items:
         - name: Security overview
           href: ../database-security.md
+        - name: Role-based access control
+          displayName: RBAC, Entra
+          expanded: true
+          items:
+            - name: Security glossary
+              href: security/glossary.md
+            - name: Get signed-in identity
+              href: security/how-to-get-signed-in-identity.md
+            - name: Create managed identities
+              displayName: principals
+              href: security/how-to-create-managed-identities.md
         - name: Secure access to data
           displayName: primary key, resource token, users, roles
           href: ../secure-access-to-data.md
@@ -902,6 +913,8 @@
               href: ../how-to-always-encrypted.md
             - name: Self-serve minimum transport-layer security (TLS) version enforcement
               href: ../self-serve-minimum-tls-enforcement.md
+            - name: Prepare for upcoming TLS 1.3 support for Azure Cosmos DB
+              href: ../tls-support.md
             - name: Configure customer-managed keys with Azure Key Vault
               href: ../how-to-setup-customer-managed-keys.md
             - name: Configure customer-managed keys on existing accounts with Azure Key Vault
