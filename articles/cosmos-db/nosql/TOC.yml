@@ -437,6 +437,17 @@
       items:
         - name: Security overview
           href: ../database-security.md
+        - name: Role-based access control
+          displayName: RBAC, Entra
+          expanded: true
+          items:
+            - name: Security glossary
+              href: security/glossary.md
+            - name: Get signed-in identity
+              href: security/how-to-get-signed-in-identity.md
+            - name: Create managed identities
+              displayName: principals
+              href: security/how-to-create-managed-identities.md
         - name: Secure access to data
           displayName: primary key, resource token, users, roles
           href: ../secure-access-to-data.md
