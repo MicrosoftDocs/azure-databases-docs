@@ -21,8 +21,3 @@ zone_pivot_groups: azure-interface-portal-cli-powershell-bicep
 This article reviews the steps required to create managed identities to use with a deployed application connected to Azure Cosmos DB for NoSQL.
 
 [!INCLUDE[Managed identities](../../includes/managed-identities.md)]
-
-## Next step
-
-> [!div class="nextstepaction"]
-> [Disable local authentication with Azure Cosmos DB for NoSQL](how-to-disable-key-based-authentication.md)
