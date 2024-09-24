@@ -1,20 +1,20 @@
 ---
 title: Create managed identities
 titleSuffix: Azure Cosmos DB for Table
-description: Review the steps required to create user-assigned or system-assigned managed identities for use with Azure Cosmos DB for Table.
+description: Review the steps required to create user-assigned or system-assigned managed identities for use with Azure hosting services that connect to Azure Cosmos DB for Table.
 author: seesharprun
 ms.author: sidandrews
 ms.reviewer: stefarroyo
 ms.service: azure-cosmos-db
 ms.subservice: table
 ms.topic: how-to
-ms.date: 09/23/2024
+ms.date: 09/24/2024
 ms.custom: subject-msia
-zone_pivot_groups: azure-interface-cli-powershell-bicep
-#Customer Intent: As a security user, I want to create managed identities for use with Azure Cosmos DB for Table, so that my developer team can write portable authentication code for their client.
+zone_pivot_groups: azure-interface-portal-cli-powershell-bicep
+#Customer Intent: As a security user, I want to create managed identities for use with Azure hosting services, so that my developer team can write portable authentication code for their client.
 ---
 
-# How to use managed identities with Azure Cosmos DB for Table
+# How to use managed identities with Azure services to connect to Azure Cosmos DB for Table
 
 [!INCLUDE[Table](../../includes/appliesto-table.md)]
 

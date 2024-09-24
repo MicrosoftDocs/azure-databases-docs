@@ -16,11 +16,11 @@ ms.topic: conceptual
 
 [!INCLUDE[azure-database-for-mysql-single-server-deprecation](~/reusable-content/ce-skilling/azure/includes/mysql/includes/azure-database-for-mysql-single-server-deprecation.md)]
 
-Learn about the best practices for working with Azure Database for MySQL flexible server. As we add new capabilities to the platform, we continue to focus on refining the best practices detailed in this section.
+Learn about the best practices for working with Azure Database for MySQL Flexible Server. As we add new capabilities to the platform, we continue to focus on refining the best practices detailed in this section.
 
-## Azure Database for MySQL flexible server operational guidelines
+## Azure Database for MySQL Flexible Server operational guidelines
 
-The following are operational guidelines that should be followed when working with Azure Database for MySQL flexible server to improve the performance of your database: 
+The following are operational guidelines that should be followed when working with Azure Database for MySQL Flexible Server to improve the performance of your database: 
 
 * **Co-location**: To reduce network latency, place the client and the database server in the same Azure region.
 
@@ -36,7 +36,7 @@ The following are operational guidelines that should be followed when working wi
 
     * Use Autoscale IOPS: [Autoscale IOPS](./concepts-service-tiers-storage.md#autoscale-iops) eliminates the need to pre-provision a specific number of I/O operations per second. Instead, it allows your server to automatically adjust IOPS based on workload requirements1. This means that your server can scale IOPS up or down automatically depending on workload needs. 
 
-    * Azure Database for MySQL flexible server provides IOPS scaling at the rate of three IOPS per GB storage provisioned. [Increase the provisioned storage](../single-server/how-to-create-manage-server-portal.md#scale-storage-up) to scale the IOPS for better performance. 
+    * Azure Database for MySQL Flexible Server provides IOPS scaling at the rate of three IOPS per GB storage provisioned. [Increase the provisioned storage](../single-server/how-to-create-manage-server-portal.md#scale-storage-up) to scale the IOPS for better performance. 
 
     * If you're already using Provisioned IOPS storage, provision [additional throughput capacity](../single-server/how-to-create-manage-server-portal.md#scale-storage-up). 
 
@@ -44,7 +44,7 @@ The following are operational guidelines that should be followed when working wi
 
 * **Test for failover**: Manually test failover for your server instance to understand how long the process takes for your use case and to ensure that the application that accesses your server instance can automatically connect to the new server instance after failover.
 
-* **Use primary key**: Make sure your tables have a primary or unique key as you operate on the Azure Database for MySQL flexible server instance. This helps in a lot taking backups, replica etc. and improves performance.
+* **Use primary key**: Make sure your tables have a primary or unique key as you operate on the Azure Database for MySQL Flexible Server instance. This helps in a lot taking backups, replica etc. and improves performance.
 
 * **Configure TTL value**: If your client application is caching the Domain Name Service (DNS) data of your server instances, set a time-to-live (TTL) value of less than 30 seconds. Because the underlying IP address of a server instance can change after a failover, caching the DNS data for an extended time can lead to connection failures if your application tries to connect to an IP address that no longer is in service.
 
@@ -52,15 +52,15 @@ The following are operational guidelines that should be followed when working wi
 
 * If you're using replica, use [ProxySQL to balance off load](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/scaling-an-azure-database-for-mysql-workload-running-on/ba-p/1105847) between the primary server and the readable secondary replica server. See the setup steps here.
 
-* When provisioning the resource, make sure you [enabled the autogrow](../single-server/how-to-auto-grow-storage-portal.md) for your Azure Database for MySQL flexible server instance. This doesn't add any extra cost and protects the database from any storage bottlenecks that you might run into.
+* When provisioning the resource, make sure you [enabled the autogrow](../single-server/how-to-auto-grow-storage-portal.md) for your Azure Database for MySQL Flexible Server instance. This doesn't add any extra cost and protects the database from any storage bottlenecks that you might run into.
 
-### Using InnoDB with Azure Database for MySQL flexible server
+### Using InnoDB with Azure Database for MySQL Flexible Server
 
 *	If using `ibdata1` feature, which is a system tablespace data file can't shrink or be purged by dropping the data from the table, or moving the table to file-per-table `tablespaces`.
 
 * For a database greater than 1 TB in size, you should create the table in **innodb_file_per_table** `tablespace`. For a single table that is larger than 1 TB in size, you should the [partition](https://dev.mysql.com/doc/refman/5.7/en/partitioning.html) table.
 
-*	For a server that has a large number of `tablespace`, the engine startup is very slow due to the sequential tablespace scan during Azure Database for MySQL flexible server startup or failover. 
+*	For a server that has a large number of `tablespace`, the engine startup is very slow due to the sequential tablespace scan during Azure Database for MySQL Flexible Server startup or failover. 
 
 * Set innodb_file_per_table = ON before you create a table, if the total table number is less than 500.
 
@@ -74,8 +74,8 @@ The following are operational guidelines that should be followed when working wi
 
 * [Partition](https://dev.mysql.com/doc/refman/5.7/en/partitioning.html) your table at table creation if you have a large table might potentially grow beyond 1 TB.
 
-* Use multiple Azure Database for MySQL flexible server instances and spread the tables across those servers. Avoid putting too many tables on a single server if you have around 10,000 tables or more. 
+* Use multiple Azure Database for MySQL Flexible Server instances and spread the tables across those servers. Avoid putting too many tables on a single server if you have around 10,000 tables or more. 
 
 ## Next steps
-- [Best practice for performance of Azure Database for MySQL flexible server](concept-performance-best-practices.md)
-- [Best practice for monitoring Azure Database for MySQL flexible server](concept-monitoring-best-practices.md)
+- [Best practice for performance of Azure Database for MySQL Flexible Server](concept-performance-best-practices.md)
+- [Best practice for monitoring Azure Database for MySQL Flexible Server](concept-monitoring-best-practices.md)

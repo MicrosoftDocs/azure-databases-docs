@@ -1,7 +1,7 @@
 ---
-  title: $push (array update operator) usage on Azure Cosmos DB for MongoDB vCore
+  title: $pullAll (array update operator) usage on Azure Cosmos DB for MongoDB vCore
   titleSuffix: Azure Cosmos DB for MongoDB vCore
-  description: The $push operator is used to append a specified value to an array within a document. 
+  description: The $pullAll operator is used to remove all instances of the specified values from an array.  
   author: sandeepsnairms
   ms.author: sandnair
   ms.service: azure-cosmos-db
@@ -10,36 +10,33 @@
   ms.date: 09/11/2024
 ---
 
-# $push (array update operator)
+# $pullAll (array update operator)
 
 [!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 
-The `$push` operator is used to append a specified value to an array within a document. This operator is useful when you need to add new elements to an existing array field without affecting the other elements in the array. It can be used in various scenarios such as adding new sales categories, promotional events, or staff members to a store's document.
+The `$pullAll` operator is used to remove all instances of the specified values from an array. This operator is useful when you need to clean up arrays by removing multiple specific elements in a single operation.
+
+Both `$pull` and `$pullAll` are used to remove elements from an array, but they differ in how they identify the elements to be removed. `$pull` removes all elements from an array that match a specific condition, which can be a simple value or a more complex query (like matching sub-document fields). On the other hand, `$pullAll` removes specific values provided as an array of exact matches, but it doesn't support conditions or queries. Essentially, `$pull` is more flexible as it allows conditional removal based on various criteria, while `$pullAll` is simpler, working only with a fixed set of values.
 
 ## Syntax
 
-The basic syntax of the `$push` operator is as follows:
+The syntax for the `$pullAll` operator is as follows:
 
 ```javascript
-db.collection.update(
-   { <query> },
-   { $push: { <field>: <value> } },
-   { <options> }
-)
+{
+  $pullAll: { <field1>: [ <value1>, <value2>, ... ], ... }
+}
 ```
-
 ## Parameters
+
 | | Description |
 | --- | --- |
-| **`<query>`**| The selection criteria for the documents to update.|
-| **`<field>`**| The array field to which the value will be appended.|
-| **`<value>`**| The value to append to the array field.|
-| **`<options>`**| Optional. Additional options for the update operation.|
+| **`<field1>`**| The field where the specified values will be removed.|
+| **`[ <value1>, <value2>, ... ]`**| An array of values to be removed from the specified field.|
 
 ## Example
 
 Let's understand the usage with the following sample json.
-
 ```json
 {
   "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5",
@@ -99,12 +96,18 @@ Let's understand the usage with the following sample json.
 }
 ```
 
-To add a new sales category "DJ Cables" with total sales of 1000.00 to the `salesByCategory` array.
+
+To remove the discounts for "#MembershipDeals" and "#SeasonalSale" from the 'tag' array.
 
 ```javascript
-db.stores.update(
-   { _id: "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5" },
-   { $push: { "sales.salesByCategory": { "categoryName": "DJ Cables", "totalSales": 1000.00 } } }
+db.stores.updateMany(
+    //filter
+    { "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5"},
+    {
+      $pullAll: {
+        "tag": ["#MembershipDeals","#SeasonalSale" ]
+      }
+    }
 )
 ```
 This query would return the following document.
@@ -113,11 +116,11 @@ This query would return the following document.
 {
   "acknowledged": true,
   "insertedId": null,
-  "matchedCount": "1",
-  "modifiedCount": "1",
+  "matchedCount": 1,
+  "modifiedCount": 1,
   "upsertedCount": 0
 }
-```
 
+```
 ## Related content
 [!INCLUDE[Related content](../includes/related-content.md)]
