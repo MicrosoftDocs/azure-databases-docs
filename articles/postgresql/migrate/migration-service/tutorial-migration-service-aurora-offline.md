@@ -1,6 +1,6 @@
 ---
-title: "Tutorial: Migrate offline from Amazon Aurora using the migration service with the Azure portal and Azure CLI"
-description: "Learn to migrate offline seamlessly from Amazon Aurora to Azure Database for PostgreSQL using the new migration service in Azure, simplifying the transition while ensuring data integrity and efficient deployment."
+title: "Migrate offline from Amazon Aurora using the migration service"
+description: Learn how to migrate offline seamlessly from Amazon Aurora to Azure Database for PostgreSQL by using the new migration service in Azure. Simplify the migration while ensuring data integrity and efficient deployment."
 author: apduvuri
 ms.author: adityaduvuri
 ms.reviewer: maghan
@@ -17,14 +17,14 @@ ms.custom:
 
 This article explores how to migrate your PostgreSQL database from Amazon Aurora to Azure Database for PostgreSQL offline.
 
-The migration service in Azure Database for PostgreSQL is a fully managed service integrated into the Azure portal and Azure CLI. It's designed to simplify your migration journey to Azure Database for PostgreSQL server.
+The migration service in Azure Database for PostgreSQL is a fully managed service that's integrated into the Azure portal and Azure CLI. It's designed to simplify your migration journey to Azure Database for PostgreSQL server.
 
 > [!div class="checklist"]
->  
+>
 > - Prerequisites
-> - Perform the migration
+> - Initiate the migration
 > - Monitor the migration
-> - Check the migration when completed
+> - Verify the migration
 
 ## Prerequisites
 
@@ -32,48 +32,49 @@ To complete the migration, you need the following prerequisites:
 
 [!INCLUDE [prerequisites-migration-service-postgresql-offline-aurora](includes/aurora/prerequisites-migration-service-postgresql-offline-aurora.md)]
 
-## Perform the migration
+## Initiate the migration
 
 You can migrate by using the Azure portal or the Azure CLI.
 
 #### [Portal](#tab/portal)
 
-The Azure portal provides a simple and intuitive wizard-based experience that guides you through migration. Following the steps outlined in this tutorial, you can seamlessly transfer your database to Azure Database for PostgreSQL - Flexible Server and take advantage of its powerful features and scalability.
+The Azure portal offers a simple and intuitive wizard-based experience to guide you through migration. Following the steps that are outlined in this tutorial, you can seamlessly transfer your database to Azure Database for PostgreSQL - Flexible Server and take advantage of its powerful features and scalability.
 
-To migrate with the Azure portal, you first configure the migration task, connect to the source and target, and then perform the migration.
+To migrate by using the Azure portal, first configure the migration task, then connect to the source and target, and finally, initiate the migration.
 
 ### Configure the migration task
 
-The migration service comes with a simple, wizard-based experience on the Azure portal.
+The migration service offers a simple, wizard-based experience in the Azure portal.
 
-1. Open your web browser and go to the [portal](https://portal.azure.com/). Enter your credentials to sign in. The default view is your service dashboard.
+1. Open your web browser and go to the [Azure portal](https://portal.azure.com/). Enter your credentials to sign in.
 
-1. Go to your Azure Database for the PostgreSQL flexible server.
+1. Go to your instance of Azure Database for PostgreSQL - Flexible Server.
 
-1. In the **Overview** tab of the flexible server, on the left menu, scroll down to **Migration** and select it.
+1. On the service menu, select **Migration**.
 
     :::image type="content" source="media/tutorial-migration-service-aurora-offline/offline-portal-select-migration-pane.png" alt-text="Screenshot of the migration selection in the Azure portal." lightbox="media/tutorial-migration-service-aurora-offline/offline-portal-select-migration-pane.png":::
 
-1. Select the **Create** button to migrate from Amazon Aurora to a flexible server.
+1. Select **Create** to migrate from Amazon Aurora to a flexible server.
 
     > [!NOTE]  
     > The first time you use the migration service, an empty grid appears with a prompt to begin your first migration.
 
-    If migrations to your flexible server target are already created, the grid now contains information about attempted migrations.
+    If migrations to your flexible server target are already created, the grid contains information about attempted migrations.
 
-1. Select the **Create** button to go through a wizard-based series of tabs to perform a migration.
+1. Select **Create** to go through a wizard-based series of tabs to perform a migration.
 
     :::image type="content" source="media/tutorial-migration-service-aurora-offline/portal-offline-create-migration.png" alt-text="Screenshot of the create migration page." lightbox="media/tutorial-migration-service-aurora-offline/portal-offline-create-migration.png":::
 
 #### Setup
 
-The user needs to provide multiple details related to the migration, such as the migration name, source server type, option, and mode.
+Enter or select the following information:
 
-- **Migration name** is the unique identifier for each migration to this Flexible Server target. This field accepts only alphanumeric characters and doesn't accept any special characters except a hyphen (-). The name can't start with a hyphen and should be unique for a target server. No two migrations to the same Flexible Server target can have the same name.
+- **Migration name**: Enter a unique identifier for each migration to this flexible server target. Use only alphanumeric characters and hyphens (`-`). The name can't start with a hyphen, and it must be unique for a target server. No two migrations to the same flexible server target can have the same name.
 
-- **Source Server Type** - Depending on your PostgreSQL source, you can select the corresponding source type, such as a cloud-based PostgreSQL service, an on-premises setup, or a virtual machine.
+- **Source server type**: Select the source type that corresponds to your PostgreSQL source, such as a cloud-based PostgreSQL service, an on-premises setup, or a virtual machine.
 
-- **Migration Option** - Allows you to perform validations before triggering a migration. You can pick any of the following options
+- **Migration option**: Allows you to perform validations before triggering a migration. You can pick any of the following options:
+
     - **Validate** - Checks your server and database readiness for migration to the target.
     - **Migrate** - Skips validations and starts migrations.
     - **Validate and Migrate** — Performs validation before triggering a migration. If there are no validation failures, the migration is triggered.
