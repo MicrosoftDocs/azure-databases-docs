@@ -11,7 +11,7 @@ ms.topic: how-to
 ms.date: 09/24/2024
 ms.custom: subject-msia
 zone_pivot_groups: azure-interface-portal-cli-powershell-bicep
-#Customer Intent: As a security user, I want to create managed identities for use with Azure Cosmos DB for Table, so that my developer team can write portable authentication code for their client.
+#Customer Intent: As a security user, I want to create managed identities for use with Azure hosting services, so that my developer team can write portable authentication code for their client.
 ---
 
 # How to use managed identities with Azure services to connect to Azure Cosmos DB for Table
