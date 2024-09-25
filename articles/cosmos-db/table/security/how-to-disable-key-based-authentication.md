@@ -8,7 +8,8 @@ ms.reviewer: stefarroyo
 ms.service: azure-cosmos-db
 ms.subservice: table
 ms.topic: how-to
-ms.date: 09/23/2024
+ms.date: 09/25/2024
+zone_pivot_groups: azure-interface-cli-powershell-bicep
 #Customer Intent: As a security user, I want to disable key-based auth in an Azure Cosmos DB for Table account, so that my developers or applications can no longer access the account in an insecure manner.
 ---
 
@@ -30,9 +31,23 @@ This article covers the process of disabling key-based authorization (or resourc
 
 ## Disable key-based authentication
 
-First, disable key-based authentication to your account so that applications are required to use Microsoft Entra authentication.
+::: zone pivot="azure-interface-cli"
 
-### [New account](#tab/new-account)
+First, disable key-based authentication to your existing account so that applications are required to use Microsoft Entra authentication. Use [`az resource update`](/cli/azure/resource#az-resource-update) to modify `properties.disableLocalAuth` of the existing account.
+
+```azurecli-interactive
+az resource update \
+    --resource-group "<name-of-existing-resource-group>" \
+    --name "<name-of-existing-table-account>" \
+    --resource-type "Microsoft.DocumentDB/databaseAccounts" \
+    --set properties.disableLocalAuth=true
+```
+
+::: zone-end
+
+::: zone pivot="azure-interface-bicep"
+
+First, create a new account with key-based authentication disabled so that applications are required to use Microsoft Entra authentication.
 
 1. Create a new Bicep file to deploy your new account with key-based authentication disabled. Name the file *deploy-new-account.bicep*.
 
@@ -74,30 +89,26 @@ First, disable key-based authentication to your account so that applications are
         --template-file deploy-new-account.bicep
     ```
 
-### [Existing account](#tab/existing-account)
+::: zone-end
 
-1. Create a JSON file named *update-existing-account-props.json* with the changes you wish to make to the properties of the existing account. In this example, we're setting the `properties.disableLocalAuth` property to `true`.
+::: zone pivot="azure-interface-shell"
 
-    ```json
-    {
-      "properties": {
-        "disableLocalAuth": true
-      }
-    }
-    ```
+First, disable key-based authentication to your existing account so that applications are required to use Microsoft Entra authentication. Use [`Get-AzResource`](/powershell/module/az.resources/get-azresource) and [`Set-AzResource`](/powershell/module/az.resources/set-azresource) to respectively read and update the existing account.
 
-1. Patch the existing account using [`az resource patch`](/cli/azure/resource#az-resource-patch). Provide the name of your existing resource group and Azure Cosmos DB for Table account.
+```azurepowershell-interactive
+$parameters = @{
+    ResourceGroupName = "<name-of-existing-resource-group>"
+    ResourceName = "<name-of-existing-table-account>"
+    ResourceType = "Microsoft.DocumentDB/databaseAccounts"
+}
+$resource = Get-AzResource @parameters
 
-    ```azurecli-interactive
-    az resource patch \
-        --resource-group "<name-of-existing-resource-group>" \
-        --name "<name-of-existing-table-account>" \
-        --resource-type "Microsoft.DocumentDB/databaseAccounts" \
-        --properties @update-existing-account-props.json \
-        --is-full-object
-    ```
+$resource.Properties.DisableLocalAuth = $true
 
----
+$resource | Set-AzResource -Force
+```
+
+::: zone-end
 
 ## Validate that authentication is disabled
 
@@ -108,7 +119,7 @@ Attempt to use the Azure SDK to connect to Azure Cosmos DB for Table using a res
 ```csharp
 using Azure.Data.Tables;
 
-string connectionString = "<account-ropc-connection-string>";
+string connectionString = "DefaultEndpointsProtocol=https;AccountName=<account-name>;AccountKey=<key>;EndpointSuffix=<suffix>;";
 
 TableServiceClient client = new(connectionString);
 ```
@@ -121,7 +132,7 @@ TableServiceClient client = new(connectionString);
 ```javascript
 const { TableServiceClient } = require('@azure/data-tables');
 
-const connectionString = '<account-ropc-connection-string>';
+const connectionString = 'DefaultEndpointsProtocol=https;AccountName=<account-name>;AccountKey=<key>;EndpointSuffix=<suffix>;';
 
 const client = new TableServiceClient(connectionString);
 ```
@@ -134,7 +145,7 @@ const client = new TableServiceClient(connectionString);
 ```typescript
 import { TableServiceClient } from '@azure/data-tables';
 
-let connectionString: string = '<account-ropc-connection-string>';
+let connectionString: string = 'DefaultEndpointsProtocol=https;AccountName=<account-name>;AccountKey=<key>;EndpointSuffix=<suffix>;';
 
 const client: TableServiceClient = TableServiceClient.fromConnectionString(connectionString);
 ```
@@ -147,13 +158,52 @@ const client: TableServiceClient = TableServiceClient.fromConnectionString(conne
 ```python
 from azure.data.tables import TableServiceClient
 
-connection_string = "<account-ropc-connection-string>"
+connection_string = "DefaultEndpointsProtocol=https;AccountName=<account-name>;AccountKey=<key>;EndpointSuffix=<suffix>;"
 
 client = TableServiceClient.from_connection_string(conn_str=connection_string)
 ```
 
 > [!IMPORTANT]
 > This code sample uses the [`azure-data-tables`](https://pypi.org/project/azure-data-tables/) package from PyPI.
+
+### [Go](#tab/go)
+
+```go
+package main
+
+import(
+  "github.com/Azure/azure-sdk-for-go/sdk/data/aztables"
+)
+
+const (
+  connectionString = "DefaultEndpointsProtocol=https;AccountName=<account-name>;AccountKey=<key>;EndpointSuffix=<suffix>;"
+)
+
+func main() {
+  client, _ := aztables.NewServiceClientFromConnectionString(connectionString, nil)
+}
+```
+
+> [!IMPORTANT]
+> This code sample uses the [`azure/azure-sdk-for-go/sdk/data/aztables`](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/sdk/data/aztables) package from Go.
+
+### [Java](#tab/java)
+
+```java
+import com.azure.data.tables.TableServiceClient;
+import com.azure.data.tables.TableServiceClientBuilder;
+
+public class Table{
+    public static void main(String[] args){
+        TableServiceClient client = new TableServiceClientBuilder()
+            .connectionString("DefaultEndpointsProtocol=https;AccountName=<account-name>;AccountKey=<key>;EndpointSuffix=<suffix>;")
+            .buildClient();
+    }
+}
+```
+
+> [!IMPORTANT]
+> This code samples uses the [`com.azure/azure-data-tables`](https://mvnrepository.com/artifact/com.azure/azure-data-tables) package from Maven.
 
 ---
 
