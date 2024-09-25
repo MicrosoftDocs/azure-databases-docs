@@ -80,7 +80,7 @@ ms.topic: include
 | Attribute      | Value                                                      |
 |----------------|------------------------------------------------------------|
 | Category       | Resource Usage / Asynchronous Behavior |
-| Description    | Sets the maximum number of workers than can be supported for parallel operations.                         |
+| Description    | Sets the maximum number of workers that can be supported for parallel operations.                         |
 | Data type      | integer   |
 | Default value  | `8`           |
 | Allowed values | `0-1024`       |
