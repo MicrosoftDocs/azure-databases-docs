@@ -44,7 +44,7 @@ For information about network setup, see the [network guide for the migration se
 
 These parameters aren't automatically migrated to the target environment and must be manually configured.
 
-- Match server parameter values from the source PostgreSQL database to the instance of Azure Database for PostgreSQL. Go to the **Server parameters** section in the Azure portal, and manually update the values accordingly.
+- Match server parameter values from the source PostgreSQL database to the instance of Azure Database for PostgreSQL. In the Azure portal, go **Server parameters** and manually update the values accordingly.
 
 - Save the parameter changes and restart the instance Azure Database for PostgreSQL to apply the new configuration if necessary.
 
