@@ -1,4 +1,3 @@
-
 ---
 author: nachoalonsoportillo
 ms.author: ialonso
