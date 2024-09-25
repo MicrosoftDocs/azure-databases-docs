@@ -2,7 +2,7 @@
 title: "Quickstart: Create with Azure libraries (SDK) for Python"
 description: In this Quickstart, learn how to create an Azure Database for PostgreSQL - Flexible Server instance using Azure libraries (SDK) for Python.
 author: gkasar
-ms.author: akashrao, gkasar
+ms.author: gkasar
 ms.reviewer: maghan
 ms.date: 04/27/2024
 ms.service: azure-database-postgresql
