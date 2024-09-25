@@ -1,5 +1,5 @@
 ---
-title: "Migrate offline from Amazon Aurora using the migration service"
+title: "Migrate from Amazon Aurora offline by using the migration service"
 description: Learn how to migrate offline seamlessly from Amazon Aurora to Azure Database for PostgreSQL by using the new migration service in Azure. Simplify the migration while ensuring data integrity and efficient deployment."
 author: apduvuri
 ms.author: adityaduvuri
@@ -15,7 +15,7 @@ ms.custom:
 
 # Tutorial: Migrate offline from Amazon Aurora PostgreSQL to Azure Database for PostgreSQL with the migration service
 
-This article explores how to migrate your PostgreSQL database from Amazon Aurora to Azure Database for PostgreSQL offline.
+This article describes how to migrate your PostgreSQL database from Amazon Aurora to Azure Database for PostgreSQL offline.
 
 The migration service in Azure Database for PostgreSQL is a fully managed service that's integrated into the Azure portal and Azure CLI. It's designed to simplify your migration journey to Azure Database for PostgreSQL server.
 
@@ -131,7 +131,7 @@ After the successful test connection, select **Next: Select Database(s) for Migr
 
 :::image type="content" source="media/tutorial-migration-service-aurora-offline/04-portal-offline-select-migration-target-aurora.png" alt-text="Screenshot of the connect target migration pane.":::
 
-#### Select database for migration
+#### Select databases for migration
 
 On the **Select database for migration** tab, you can choose a list of user databases to migrate from your source PostgreSQL server.  
 After you select the databases, select **Next: Summary**.
@@ -146,7 +146,7 @@ The **Summary** tab summarizes all the source and target details for creating th
 
 ### Monitor the migration
 
-After you select **Start Validation and Migration**, a notification appears within a few seconds to say that the validation or migration creation is successful. You're redirected to the flexible server instance **Migration** pane. The entry is in the **InProgress** state and **PerformingPreRequisiteSteps** substate. The workflow takes 2 to 3 minutes to set up the migration infrastructure and check network connections.
+After you select **Start Validation and Migration**, a notification appears within a few seconds to say that the validation or migration creation is successful. You're redirected to the Flexible Server instance **Migration** pane. The entry is in the **InProgress** state and **PerformingPreRequisiteSteps** substate. The workflow takes 2 to 3 minutes to set up the migration infrastructure and check network connections.
 
 :::image type="content" source="media/tutorial-migration-service-aurora-offline/portal-offline-monitor-migration-aurora.png" alt-text="Screenshot of the monitor migration pane." lightbox="media/tutorial-migration-service-aurora-offline/portal-offline-monitor-migration-aurora.png":::
 
@@ -164,7 +164,7 @@ The grid that displays the migrations has these columns:
 
 The entries are displayed in the descending order of the start time, with the most recent entry on the top. You can select **Refresh** in the menu bar to refresh the status of the validation or migration run.
 
-### Migration details
+#### Migration details
 
 In the list of migrations, select the name of a migration to see associated details.
 
@@ -190,7 +190,7 @@ You can see the current status for the migration and validation on the migration
 
 Some possible migration states:
 
-### Migration states
+#### Migration states
 
 | State | Description |
 | --- | --- |
@@ -201,7 +201,7 @@ Some possible migration states:
 | **Succeeded** | The migration succeeded and is completed. |
 | **WaitingForUserAction** | Applicable only for online migration. Waiting for user action to perform cutover. |
 
-### Migration substates
+#### Migration substates
 
 | Substate | Description |
 | --- | --- |
@@ -212,7 +212,7 @@ Some possible migration states:
 | **Completed** | Migration is completed. |
 | **Failed** | Migration failed. |
 
-### Validation substates
+#### Validation substates
 
 | Substate | Description |
 | --- | --- |
@@ -242,20 +242,20 @@ az login
 
 1. To begin the migration, create a JSON file to hold the migration details. Save the JSON file on your local computer as *[filename].json*. For example, you can save the file as *C:\migration-CLI\migration_body.json*.
 
-   Copy the following JSON and paste it in the JSON file. Replace [placeholders] with relevant information from your scenario.
+   Copy the following JSON and paste it in the JSON file. Replace `<placeholders>` with relevant information from your scenario.
 
     ```json
     {
     "properties": {
-    "SourceDBServerResourceId": "[source host name or IP address]:[port]@[username]",
+    "SourceDBServerResourceId": "<source host name or IP address>:<port>@<username>",
             "SecretParameters": {
                 "AdminCredentials": {
-                    "SourceServerPassword": "[source password]",
-                    "TargetServerPassword": "[target password]"
+                    "SourceServerPassword": "<source password>",
+                    "TargetServerPassword": "<target password>"
                 },
-                "targetServerUserName": "[target username]"
+                "targetServerUserName": "<target username>"
             },
-            "DBsToMigrate": "[a comma-separated list of databases in an array, similar to the example "ticketdb","timedb","inventorydb"]",
+            "DBsToMigrate": "<a comma-separated list of databases in an array, similar to the example "ticketdb","timedb","inventorydb">",
             "OverwriteDBsInTarget": "true",
             "sourceType": "AWS_AURORA",
             "sslMode": "Require"
