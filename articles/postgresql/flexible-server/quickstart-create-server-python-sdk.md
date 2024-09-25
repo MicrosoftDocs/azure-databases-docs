@@ -57,7 +57,7 @@ pip install azure-mgmt-postgresqlflexibleservers
 
 Create a `create_postgres_flexible_server.py` file and include the following code.
 
-```powershell
+```python
 # coding=utf-8
 # --------------------------------------------------------------------------
 # Copyright (c) Microsoft Corporation. All rights reserved.
@@ -129,7 +129,7 @@ You can use the Python SDK, Azure portal, Azure CLI, Azure PowerShell, and vario
 
 Add the `check_server_created` function to your existing script to use the servers attribute of the [PostgreSQLManagementClient](/python/api/azure-mgmt-rdbms/azure.mgmt.rdbms.postgresql_flexibleservers.postgresqlmanagementclient?view=azure-python&preserve-view=true) instance to check if the Azure Database for PostgreSQL flexible server instance was created:
 
-```powershell
+```python
 def check_server_created(subscription_id, resource_group, server_name):
     # Authenticate with your Azure account
     credential = DefaultAzureCredential()
@@ -160,7 +160,7 @@ Call it with the appropriate parameters.
 
 Create a database in your flexible server with this sample code
 
-```powershell
+```python
 from azure.identity import DefaultAzureCredential
 from azure.mgmt.postgresqlflexibleservers import PostgreSQLManagementClient
 
