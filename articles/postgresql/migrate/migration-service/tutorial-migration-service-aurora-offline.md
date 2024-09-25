@@ -63,7 +63,7 @@ The migration service offers a simple, wizard-based experience in the Azure port
 
 1. Select **Create** to go through a wizard-based series of tabs to perform a migration.
 
-    :::image type="content" source="media/tutorial-migration-service-aurora-offline/portal-offline-create-migration.png" alt-text="Screenshot of the create migration pane." lightbox="media/tutorial-migration-service-aurora-offline/portal-offline-create-migration.png":::
+    :::image type="content" source="media/tutorial-migration-service-aurora-offline/portal-offline-create-migration.png" alt-text="Screenshot of the Create migration pane." lightbox="media/tutorial-migration-service-aurora-offline/portal-offline-create-migration.png":::
 
 #### Setup
 
@@ -115,7 +115,7 @@ On the **Connect to Source** tab, enter or select the following information for 
 
 After the successful test connection, select **Next: Select Migration target**.
 
-:::image type="content" source="media/tutorial-migration-service-aurora-offline/03-portal-offline-connect-source-aurora.png" alt-text="Screenshot of the connect to source pane." lightbox="media/tutorial-migration-service-aurora-offline/03-portal-offline-connect-source-aurora.png":::
+:::image type="content" source="media/tutorial-migration-service-aurora-offline/03-portal-offline-connect-source-aurora.png" alt-text="Screenshot of the Connect to source pane." lightbox="media/tutorial-migration-service-aurora-offline/03-portal-offline-connect-source-aurora.png":::
 
 #### Select the migration target
 
@@ -129,26 +129,26 @@ The **select migration target** tab displays metadata for the Flexible Server ta
 
 After the successful test connection, select **Next: Select Database(s) for Migration**.
 
-:::image type="content" source="media/tutorial-migration-service-aurora-offline/04-portal-offline-select-migration-target-aurora.png" alt-text="Screenshot of the connect target migration pane.":::
+:::image type="content" source="media/tutorial-migration-service-aurora-offline/04-portal-offline-select-migration-target-aurora.png" alt-text="Screenshot of the Connect target migration pane.":::
 
 #### Select databases for migration
 
 On the **Select database for migration** tab, you can choose a list of user databases to migrate from your source PostgreSQL server.  
 After you select the databases, select **Next: Summary**.
 
-:::image type="content" source="media/tutorial-migration-service-aurora-offline/05-portal-offline-select-database-aurora.png" alt-text="Screenshot of the fetchDB migration pane.":::
+:::image type="content" source="media/tutorial-migration-service-aurora-offline/05-portal-offline-select-database-aurora.png" alt-text="Screenshot of the FetchDB migration pane.":::
 
 #### Summary
 
 The **Summary** tab summarizes all the source and target details for creating the validation or migration. Review the details and select **Start Validation and Migration**.
 
-:::image type="content" source="media/tutorial-migration-service-aurora-offline/06-portal-offline-summary-aurora.png" alt-text="Screenshot of the summary migration pane.":::
+:::image type="content" source="media/tutorial-migration-service-aurora-offline/06-portal-offline-summary-aurora.png" alt-text="Screenshot of the Summary migration pane.":::
 
 ### Monitor the migration
 
 After you select **Start Validation and Migration**, a notification appears within a few seconds to say that the validation or migration creation is successful. You're redirected to the Flexible Server instance **Migration** pane. The entry is in the **InProgress** state and **PerformingPreRequisiteSteps** substate. The workflow takes 2 to 3 minutes to set up the migration infrastructure and check network connections.
 
-:::image type="content" source="media/tutorial-migration-service-aurora-offline/portal-offline-monitor-migration-aurora.png" alt-text="Screenshot of the monitor migration pane." lightbox="media/tutorial-migration-service-aurora-offline/portal-offline-monitor-migration-aurora.png":::
+:::image type="content" source="media/tutorial-migration-service-aurora-offline/portal-offline-monitor-migration-aurora.png" alt-text="Screenshot of the Monitor migration pane." lightbox="media/tutorial-migration-service-aurora-offline/portal-offline-monitor-migration-aurora.png":::
 
 The grid that displays the migrations has these columns:
 
@@ -186,7 +186,7 @@ You can check validation details at the instance level and at the database level
 
 You can see the current status for the migration and validation on the migration details pane.
 
-:::image type="content" source="media/tutorial-migration-service-aurora-offline/portal-offline-details-migration-aurora.png" alt-text="Screenshot of the details showing validation and migration." lightbox="media/tutorial-migration-service-aurora-offline/portal-offline-details-migration-aurora.png":::
+:::image type="content" source="media/tutorial-migration-service-aurora-offline/portal-offline-details-migration-aurora.png" alt-text="Screenshot of the details that show validation and migration." lightbox="media/tutorial-migration-service-aurora-offline/portal-offline-details-migration-aurora.png":::
 
 Some possible migration states:
 

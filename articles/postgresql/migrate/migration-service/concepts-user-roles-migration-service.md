@@ -65,7 +65,7 @@ Another important consideration is the deprecation of the pg_pltemplate system t
 
 #### Effects
 
-These are important effects of pg_pltemplate deprecation:
+The following list describes important effects of pg_pltemplate deprecation:
 
 - If your application is designed to directly query the relevant tables and views, it encounters issues when you migrate to a flexible server. We strongly recommend that you refactor your application to avoid direct queries to these system tables.
 - If you granted or revoked permissions to any users or roles for the relevant pg_catalog tables and views, an error occurs during the migration process. You can identify this error by the following pattern:
