@@ -28,7 +28,7 @@ If the source PostgreSQL version is earlier than 9.5, upgrade the version to 9.5
 ### Configure the target setup
 
 - Before you begin the migration, you must create an instance of [Azure Database for PostgreSQL](/azure/postgresql/flexible-server/) in Azure.
-- The SKU that's provisioned for Azure Database for PostgreSQL – Flexible Server should match the source.
+- The SKU that's provisioned for Azure Database for PostgreSQL - Flexible Server should match the source.
 
 ### Configure the network setup
 
@@ -44,7 +44,7 @@ For information about network setup, see the [network guide for the migration se
 
 These parameters aren't automatically migrated to the target environment and must be manually configured.
 
-- Match server parameter values from the source PostgreSQL database to the Azure Database for PostgreSQL. Go to the **Server parameters** section in the Azure portal, and manually update the values accordingly.
+- Match server parameter values from the source PostgreSQL database to the instance of Azure Database for PostgreSQL. Go to the **Server parameters** section in the Azure portal, and manually update the values accordingly.
 
 - Save the parameter changes and restart the instance Azure Database for PostgreSQL to apply the new configuration if necessary.
 
@@ -52,13 +52,13 @@ These parameters aren't automatically migrated to the target environment and mus
 
 When you migrate to Azure Database for PostgreSQL, it's essential to address the migration of users and roles separately because they require manual intervention:
 
-- **Manual Migration of Users and Roles**: Users and their associated roles must be manually migrated to the instance of Azure Database for PostgreSQL. To facilitate this process, you can use the pg_dumpall utility with the `--globals-only` flag to export global objects such as roles and user accounts. Execute the following command, replacing `<username>` with the actual username and `<filename>` with the name of the output file you want:
+- **Manual migration of users and roles**: Users and their associated roles must be manually migrated to the instance of Azure Database for PostgreSQL. To facilitate this process, you can use the pg_dumpall utility with the `--globals-only` flag to export global objects such as roles and user accounts. Execute the following command, replacing `<username>` with the actual username and `<filename>` with the name of the output file you want:
 
   ```sql
   pg_dumpall --globals-only -U <username> -f <filename>.sql
   ```
 
-- **Restriction on Superuser Roles**: Azure Database for PostgreSQL doesn't support superuser roles. Therefore, users with superuser privileges must have those permissions removed before migration. Ensure that you adjust the permissions and roles accordingly.
+- **Restriction on superuser roles**: Azure Database for PostgreSQL doesn't support superuser roles. Therefore, users with superuser privileges must have those permissions removed before migration. Ensure that you adjust the permissions and roles accordingly.
 
 By following these steps, you can ensure that user accounts and roles are correctly migrated to Azure Database for PostgreSQL without encountering issues related to superuser restrictions.
 

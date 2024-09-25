@@ -36,8 +36,8 @@ For more information about the test-decoding plugin, see the [PostgreSQL documen
 ### Configure the target setup
 
 - Before you begin the migration, you must create an instance of [Azure Database for PostgreSQL](/azure/postgresql/flexible-server/) in Azure.
-- The SKU that's provisioned for Azure Database for PostgreSQL – Flexible Server should match the source.
-- To create a new instance of Azure Database for PostgreSQL, see [Create an Azure Database for PostgreSQL](../../../../flexible-server/quickstart-create-server-portal.md).
+- The SKU that's provisioned for Azure Database for PostgreSQL - Flexible Server should match the source.
+- To create a new instance of Azure Database for PostgreSQL, see [Create an instance of Azure Database for PostgreSQL](../../../../flexible-server/quickstart-create-server-portal.md).
 
 ### Enable CDC as a source
 
