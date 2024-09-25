@@ -187,6 +187,24 @@ func main() {
 > [!IMPORTANT]
 > This code sample uses the [`azure/azure-sdk-for-go/sdk/data/aztables`](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/sdk/data/aztables) package from Go.
 
+### [Java](#tab/java)
+
+```java
+import com.azure.data.tables.TableServiceClient;
+import com.azure.data.tables.TableServiceClientBuilder;
+
+public class Table{
+    public static void main(String[] args){
+        TableServiceClient client = new TableServiceClientBuilder()
+            .connectionString("DefaultEndpointsProtocol=https;AccountName=<account-name>;AccountKey=<key>;EndpointSuffix=<suffix>;")
+            .buildClient();
+    }
+}
+```
+
+> [!IMPORTANT]
+> This code samples uses the [`com.azure/azure-data-tables`](https://mvnrepository.com/artifact/com.azure/azure-data-tables) package from Maven.
+
 ---
 
 ## Next step
