@@ -4,7 +4,7 @@ description: In this Quickstart, learn how to create an Azure Database for Postg
 author: gkasar
 ms.author: gkasar
 ms.reviewer: maghan
-ms.date: 04/27/2024
+ms.date: 09/24/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: quickstart
