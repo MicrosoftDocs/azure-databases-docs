@@ -91,7 +91,7 @@ Let's understand the usage with the following sample json.
 
 To calculate the BSON size of the document, adding it as a new field called `bsonSize`,
 
-```mongodb
+```JavaScript
 db.stores.aggregate([
   {
     $project: {

@@ -94,7 +94,7 @@ Let's understand the usage with the following sample json.
 
 To ensure that the `$staff.totalStaff.intern` field is always a number, you can use `$ifNull` to replace `null` values with `0`.
 
-```json
+```JavaScript
 db.stores.aggregate([
   {
     $project: {

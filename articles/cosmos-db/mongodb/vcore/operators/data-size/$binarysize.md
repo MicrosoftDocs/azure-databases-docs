@@ -95,7 +95,7 @@ Let's understand the usage with the following sample json.
 To project the size of a binary field
 
 
-```json
+```JavaScript
 db.stores.aggregate([
   {
     $project: {

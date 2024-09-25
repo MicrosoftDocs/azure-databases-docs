@@ -36,7 +36,7 @@ The basic syntax for the `$cond` operator is:
 | **then**| The expression to return if the `if` condition evaluates to true.|
 | **else**| The expression to return if the `if` condition evaluates to false.|
 
-## Example
+## Examples
 
 Let's understand the usage with the following sample json.
 

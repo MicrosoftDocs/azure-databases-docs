@@ -19,7 +19,7 @@ The `$switch` operator is used to evaluate a series of conditions and return a v
 
 The syntax for the `$switch` operator is as follows:
 
-```json
+```JavaScript
 {
   $switch: {
     branches: [
@@ -106,7 +106,7 @@ Let's understand the usage with the following sample json.
 
 To determine the type of staff based on their count.
 
-```json
+```JavaScript
 db.stores.aggregate([
   {
     $project: {
