@@ -29,13 +29,13 @@ You can perform the following operations with this library:
 5. Backup and Restore
 
 Previously this was a module called 'postgresql_flexibleservers' in the library 'azure-mgmt-rdbms'. A new version of this library is added which is 'azure-mgmt-postgresqlflexibleservers' library, the old way of using this module from rdbms is deprecated and you can now use in this new version of this library. If you have used this library before, all you need to do now is change the import statement and use this library. 
-## [Previous import statement ] 
+## [Old library's module] 
 ```python
 from azure.mgmt.rdbms.postgresql_flexibleservers import PostgreSQLManagementClient
 
 ```
 
-## [Current ]
+## [New library's module]
 ```python
 from azure.mgmt.postgresqlflexibleservers import PostgreSQLManagementClient
 ```
