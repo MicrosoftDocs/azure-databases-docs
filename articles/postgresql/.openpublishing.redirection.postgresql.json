@@ -1756,11 +1756,6 @@
         "redirect_document_id": false
     },
     {
-        "source_path_from_root": "/articles/postgresql/flexible-server/server-parameters-table-query-tuning---other-planner-options.md",
-        "redirect_url": "/articles/postgresql/flexible-server/server-parameters-table-query-tuning-other-planner-options.md",
-        "redirect_document_id": false
-    },
-    {
         "source_path_from_root": "/articles/postgresql/flexible-server/server-parameters-table-write-ahead-log---archiving.md",
         "redirect_url": "/articles/postgresql/flexible-server/server-parameters-table-write-ahead-log-archiving.md",
         "redirect_document_id": false
