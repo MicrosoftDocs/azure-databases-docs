@@ -186,8 +186,6 @@
         href: flexible-server/server-parameters-table-replication-standby-servers.md?pivots=postgresql-16
       - name: Replication / Subscribers
         href: flexible-server/server-parameters-table-replication-subscribers.md?pivots=postgresql-16
-      - name: Reporting and Logging / Process Title
-        href: flexible-server/server-parameters-table-reporting-and-logging-process-title.md?pivots=postgresql-16
       - name: Reporting and Logging / What to Log
         href: flexible-server/server-parameters-table-reporting-and-logging-what-to-log.md?pivots=postgresql-16
       - name: Reporting and Logging / When to Log
