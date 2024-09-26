@@ -170,6 +170,8 @@
         href: flexible-server/server-parameters-table-pgbouncer.md?pivots=postgresql-16
       - name: Preset Options
         href: flexible-server/server-parameters-table-preset-options.md?pivots=postgresql-16
+      - name: Process Title
+        href: flexible-server/server-parameters-table-process-title.md?pivots=postgresql-16
       - name: Query Tuning / Genetic Query Optimizer
         href: flexible-server/server-parameters-table-query-tuning-genetic-query-optimizer.md?pivots=postgresql-16
       - name: Query Tuning / Other Planner Options
