@@ -1894,6 +1894,66 @@
         "source_path_from_root": "/articles/postgresql/flexible-server/server-parameters-table-write-ahead-log---recovery-target.md",
         "redirect_url": "/articles/postgresql/flexible-server/server-parameters-table-write-ahead-log-recovery-target.md",
         "redirect_document_id": false
+    },
+    {
+        "source_path_from_root": "/articles/postgresql/flexible-server/server-parameters-table-write-ahead-log---recovery.md",
+        "redirect_url": "/articles/postgresql/flexible-server/server-parameters-table-write-ahead-log-recovery.md",
+        "redirect_document_id": false
+    },
+    {
+        "source_path_from_root": "/articles/postgresql/flexible-server/server-parameters-table-write-ahead-log---settings.md",
+        "redirect_url": "/articles/postgresql/flexible-server/server-parameters-table-write-ahead-log-settings.md",
+        "redirect_document_id": false
+    },
+    {
+        "source_path_from_root": "/articles/postgresql/flexible-server/server-parameters-table-client-connection-defaults---locale-and-formatting.md",
+        "redirect_url": "/articles/postgresql/flexible-server/server-parameters-table-client-connection-defaults-locale-and-formatting.md",
+        "redirect_document_id": false
+    },
+    {
+        "source_path_from_root": "/articles/postgresql/flexible-server/server-parameters-table-client-connection-defaults---other-defaults.md",
+        "redirect_url": "/articles/postgresql/flexible-server/server-parameters-table-client-connection-defaultsother-defaults.md",
+        "redirect_document_id": false
+    },
+    {
+        "source_path_from_root": "/articles/postgresql/flexible-server/server-parameters-table-client-connection-defaults---shared-library-preloading.md",
+        "redirect_url": "/articles/postgresql/flexible-server/server-parameters-table-client-connection-defaults-shared-library-preloading.md",
+        "redirect_document_id": false
+    },
+    {
+        "source_path_from_root": "/articles/postgresql/flexible-server/server-parameters-table-client-connection-defaults---statement-behavior.md",
+        "redirect_url": "/articles/postgresql/flexible-server/server-parameters-table-client-connection-defaults-statement-behavior.md",
+        "redirect_document_id": false
+    },
+    {
+        "source_path_from_root": "/articles/postgresql/flexible-server/server-parameters-table-connections-and-authentication---authentication.md",
+        "redirect_url": "/articles/postgresql/flexible-server/server-parameters-table-connections-and-authentication-authentication.md",
+        "redirect_document_id": false
+    },
+    {
+        "source_path_from_root": "/articles/postgresql/flexible-server/server-parameters-table-connections-and-authentication---connection-settings.md",
+        "redirect_url": "/articles/postgresql/flexible-server/server-parameters-table-connections-and-authentication-connection-settings.md",
+        "redirect_document_id": false
+    },
+    {
+        "source_path_from_root": "/articles/postgresql/flexible-server/server-parameters-table-connections-and-authentication---ssl.md",
+        "redirect_url": "/articles/postgresql/flexible-server/server-parameters-table-connections-and-authentication-ssl.md",
+        "redirect_document_id": false
+    },
+    {
+        "source_path_from_root": "/articles/postgresql/flexible-server/server-parameters-table-connections-and-authentication---tcp-settings.md",
+        "redirect_url": "/articles/postgresql/flexible-server/server-parameters-table-connections-and-authentication-tcp-settings.md",
+        "redirect_document_id": false
+    },
+    {
+        "source_path_from_root": "/articles/postgresql/flexible-server/server-parameters-table-version-and-platform-compatibility---other-platforms-and-clients.md",
+        "redirect_url": "/articles/postgresql/flexible-server/server-parameters-table-version-and-platform-compatibility-other-platforms-and-clients.md",
+        "redirect_document_id": false
+    },
+    {
+        "source_path_from_root": "/articles/postgresql/flexible-server/server-parameters-table-version-and-platform-compatibility---previous-postgresql-versions.md",
+        "redirect_url": "/articles/postgresql/flexible-server/server-parameters-table-version-and-platform-compatibility-previous-postgresql-versions.md",
+        "redirect_document_id": false
     }
 ]
 }
