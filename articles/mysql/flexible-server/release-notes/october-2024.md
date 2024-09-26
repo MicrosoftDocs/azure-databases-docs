@@ -23,6 +23,7 @@ No new features are being introduced in this maintenance update.
 ## Improvement
 - The default value of the server parameter tls_version change to "TLSv1.2, TLSv1.3" on MySQL 8.0, which means connections with TLSv1.3 are accepted by default.
 - Expose the server parameters innodb_ddl_buffer_size and innodb_ddl_threads
+- US and small non-US region servers will be upgraded to a FIPS-compliant version by default. [Learn more](https://learn.microsoft.com/en-us/azure/compliance/offerings/offering-fips-140-2)
 
 ## Known Issues Fix
 - Fix the issue that if the authentication plugin of the admin user changed, resetting password feature doesn't work.
