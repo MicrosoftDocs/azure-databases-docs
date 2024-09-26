@@ -532,7 +532,7 @@ The possible ATTL configurations are:
 
 * If the value is set to `0`: the analytical store is disabled and no data is replicated from transactional store to analytical store. Please open a support case to disable analytical store in your containers.
   
-* If the value is set to `null`: Analytical store is disabled. If `null` is set, nothing happens and the previous value is kept.
+* If the field is omitted, nothing happens and the previous value is kept.
 
 * If the value is set to `-1`: the analytical store retains all historical data, irrespective of the retention of the data in the transactional store. This setting indicates that the analytical store has infinite retention of your operational data
 
