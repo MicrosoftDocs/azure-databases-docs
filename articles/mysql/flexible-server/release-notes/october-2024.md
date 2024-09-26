@@ -21,11 +21,11 @@ To check your engine version, run `SELECT VERSION();` command at the MySQL promp
 No new features are being introduced in this maintenance update.
 
 ## Improvement
-- The default value of the server parameter tls_version has been changed to "TLSv1.2,TLSv1.3" on MySQL 8.0, which means connections with TLSv1.3 are accepted by default.
+- The default value of the server parameter tls_version change to "TLSv1.2, TLSv1.3" on MySQL 8.0, which means connections with TLSv1.3 are accepted by default.
 - Expose the server parameters innodb_ddl_buffer_size and innodb_ddl_threads
 
 ## Known Issues Fix
-- Fix the issue that if the authentication plugin of the admin user has been changed, resetting password feature doesn't work.
+- Fix the issue that if the authentication plugin of the admin user changed, resetting password feature doesn't work.
 - Fix the issue that Servers configured with high max_connections may not work as expected.
 - Fix the issue that if a server start/stop more than 120 times the server would unable to be deleted.
 - Fix the issue that major version upgrade validate function may stuck and block upcoming management operations such as server stop/start/update/delete.
