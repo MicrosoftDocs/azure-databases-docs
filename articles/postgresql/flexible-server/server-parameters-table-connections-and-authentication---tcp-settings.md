@@ -1,10 +1,10 @@
 ---
 title: Connections and Authentication / TCP Settings server parameters
 description: Connections and Authentication / TCP Settings server parameters for Azure Database for PostgreSQL - Flexible Server.
-author: akashraokm
-ms.author: akashrao
+author: nachoalonsoportillo
+ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 06/18/2024
+ms.date: 09/26/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
@@ -53,3 +53,5 @@ zone_pivot_groups: postgresql-server-version
 [!INCLUDE [server-parameters-table-11-connections-and-authentication---tcp-settings](./includes/server-parameters-table-11-connections-and-authentication---tcp-settings.md)]
 
 ::: zone-end
+
+
