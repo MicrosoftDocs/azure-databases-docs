@@ -1,4 +1,3 @@
-
 ---
 author: nachoalonsoportillo
 ms.author: ialonso
@@ -175,5 +174,4 @@ ms.topic: include
 
 
 [!INCLUDE [server-parameters-azure-notes-pgbouncer_stats_users](./server-parameters-azure-notes-pgbouncer_stats_users.md)]
-
 
