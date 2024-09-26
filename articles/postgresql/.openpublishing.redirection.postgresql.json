@@ -1839,6 +1839,11 @@
         "source_path_from_root": "/articles/postgresql/flexible-server/server-parameters-table-version-and-platform-compatibility---previous-postgresql-versions.md",
         "redirect_url": "/articles/postgresql/flexible-server/server-parameters-table-version-and-platform-compatibility-previous-postgresql-versions.md",
         "redirect_document_id": false
+    },
+    {
+        "source_path_from_root": "/articles/postgresql/flexible-server/server-parameters-table-log-files.md",
+        "redirect_url": "/articles/postgresql/flexible-server/server-parameters-table-customized-options.md",
+        "redirect_document_id": false
     }
 ]
 }

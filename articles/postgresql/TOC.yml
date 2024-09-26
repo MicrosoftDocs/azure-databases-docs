@@ -153,7 +153,7 @@
       - name: Connections and Authentication / SSL
         href: flexible-server/server-parameters-table-connections-and-authentication-ssl.md?pivots=postgresql-16
       - name: Connections and Authentication / TCP Settings
-        href: server-parameters-table-connections-and-authentication-tcp-settings.md?pivots=postgresql-16
+        href: flexible-server/server-parameters-table-connections-and-authentication-tcp-settings.md?pivots=postgresql-16
       - name: Customized Options
         href: flexible-server/server-parameters-table-customized-options.md?pivots=postgresql-16
       - name: Developer Options
