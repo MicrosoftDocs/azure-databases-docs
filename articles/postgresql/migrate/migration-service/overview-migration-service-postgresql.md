@@ -16,7 +16,7 @@ ms.topic: overview
 
 The migration service in Azure Database for PostgreSQL simplifies the process of moving your PostgreSQL databases to Azure. The migration service offers migration options from various PostgreSQL-supported sources, including migrating from a cloud service, from an on-premises environment, or from a virtual machine in Azure. The migration service is designed to help you move your PostgreSQL databases to Azure Database for PostgreSQL - Flexible Server with ease and confidence.
 
-The migration service offers several advantages, including:
+Some of the advantages of using the migration service include:
 
 - Managed migration service
 - Support for schema and data migrations
@@ -24,7 +24,7 @@ The migration service offers several advantages, including:
 - Simple-to-use migration experiences by using the Azure portal or the Azure CLI
 - Unlimited database size
 
-The following figure is a visual representation of the PostgreSQL sources you can migrate by using the migration service in Azure Database for PostgreSQL. The figure highlights the diversity of source environments, which include on-premises databases, Azure virtual machines, and cloud-hosted instances. All supported environments can be seamlessly transitioned to Azure Database for PostgreSQL.
+The following figure shows the PostgreSQL sources you can migrate by using the migration service in Azure Database for PostgreSQL. All supported environments can be seamlessly transitioned to Azure Database for PostgreSQL.
 
 :::image type="content" source="media/overview-migration-service-postgresql/migrate-postgresql-sources.png" alt-text="Diagram that shows different PostgreSQL sources." border="false" lightbox="media/overview-migration-service-postgresql/migrate-postgresql-sources.png":::
 
@@ -34,13 +34,13 @@ The next figure depicts the detailed steps that are involved in migrating from A
 
 ## Why use a flexible server?
 
-Azure Database for PostgreSQL - Flexible Server is the next-generation managed PostgreSQL service in Azure. Azure Database for PostgreSQL powered by the PostgreSQL community edition is available in this deployment mode.
+Azure Database for PostgreSQL - Flexible Server is the next-generation managed PostgreSQL service in Azure. Azure Database for PostgreSQL powered by the PostgreSQL community edition is available in a flexible server deployment.
 
-Azure Database for PostgreSQL - Flexible Server provides maximum flexibility over your database and built-in cost-optimizations. It offers several advantages over peer products:
+Azure Database for PostgreSQL - Flexible Server provides maximum flexibility over your database and built-in cost optimizations. Advantages over peer products include:
 
-- [Superior performance](../../flexible-server/overview.md): Azure Database for PostgreSQL - Flexible Server runs on a Linux VM, which is best suited to run the PostgreSQL engine.
+- [Superior performance](../../flexible-server/overview.md): Azure Database for PostgreSQL - Flexible Server runs on a Linux VM, the VM that's best suited to run the PostgreSQL engine.
 
-- [Cost savings](../../flexible-server/how-to-deploy-on-azure-free-account.md): You can stop and start Azure Database for PostgreSQL - Flexible Server on an on-demand server to lower your total cost of operations (TCO). Your compute tier billing is stopped immediately, which gives significant cost savings during development and testing and for time-bound predictable production workloads.
+- [Cost savings](../../flexible-server/how-to-deploy-on-azure-free-account.md): You can stop and start Azure Database for PostgreSQL - Flexible Server on an on-demand server to lower your total cost of operation (TCO). Your compute tier billing is stopped immediately, for significant cost savings during development and testing and for time-bound predictable production workloads.
 
 - [Support for new versions of PostgreSQL](../../flexible-server/concepts-supported-versions.md): Azure Database for PostgreSQL - Flexible Server supports all major PostgreSQL versions beginning with version 11.
 
@@ -60,18 +60,18 @@ Azure Database for PostgreSQL - Flexible Server provides maximum flexibility ove
 
 ## Migrate to Azure Database for PostgreSQL - Flexible Server
 
-You can choose from the following options to migrate from a source PostgreSQL instance to a flexible server:
+You can choose from the following options to migrate from a source PostgreSQL server to a flexible server:
 
-**Offline migration**: In an offline migration, all applications that connect to your source instance are stopped. Then the database(s) are copied to a flexible server.
+**Offline migration**: In an offline migration, all applications that connect to your source instance are stopped. Then, databases are copied to a flexible server.
 
-**Online migration**: In an online migration, applications that connect to your source instance aren't stopped while database(s) are copied to a flexible server. The initial copy of the databases is followed by replication to keep the flexible server in sync with the source instance. A cutover is performed when the flexible server completely syncs with the source instance, resulting in minimal downtime.
+**Online migration**: In an online migration, applications that connect to your source server aren't stopped while databases are copied to a flexible server. The initial database copy is followed by replication to keep the flexible server in sync with the source instance. A cutover is performed and the flexible server completely syncs with the source instance, resulting in minimal downtime.
 
-The following table gives an overview of offline and online options:
+The following table describes offline and online options:
 
 | Option | Advantages | Considerations | Recommended scenarios |
 | --- | --- | --- | --- |
-| Offline | - Simple, easy, and less complex to execute.<br />- Far fewer chances of failure.<br />- No restrictions regarding database objects it can handle. | Downtime for applications. | - Best for scenarios in which simplicity and a high success rate are essential.<br />- Ideal for scenarios in which the database can be taken offline without significant impact on business operations.<br />- Suitable for databases in which the migration process can be completed within a planned maintenance window. |
-| Online | - Very minimal downtime to application.<br />- Ideal for large databases and customers who have requirements for limited downtime. | - Replication used in online migration has a few [restrictions](https://pgcopydb.readthedocs.io/en/latest/ref/pgcopydb_follow.html#pgcopydb-follow) (for example, primary keys are required in all tables).<br />- More complex to execute than offline migration.<br />- Greater chances of failure due to the complexity of the migration process.<br />- There's an impact on the source instance's storage and computing if the migration runs for a long time. The impact needs to be monitored closely during migration. | - Best suited for businesses where continuity is critical and downtime must be kept to an absolute minimum.<br />- Recommended for databases in which the migration process needs to occur without interrupting ongoing operations. |
+| Offline | - Simple, easy, and less complex to execute.<br />- Far fewer chances of failure.<br />- No restrictions on the number of database objects it can handle. | - Downtime for applications. | - Best for scenarios in which simplicity and a high success rate are essential.<br />- Ideal when a database can be taken offline without significant impact on business operations.<br />- Suitable when databases can be migrated  within a planned maintenance window. |
+| Online | - Very minimal downtime for your application.<br />- Ideal for large databases and for customers who have requirements for limited downtime. | - Replication used in online migration has a few [restrictions](https://pgcopydb.readthedocs.io/en/latest/ref/pgcopydb_follow.html#pgcopydb-follow). For example, primary keys are required in all tables.<br />- More complex to execute than offline migration.<br />- Greater chances of failure due to the complexity of the migration process.<br />- There's an impact on the source instance storage and computing if the migration runs for a long time. The impact needs to be monitored closely during migration. | - Best suited for businesses where continuity is critical and downtime must be kept to an absolute minimum.<br />- Recommended when database migration needs to occur without interrupting ongoing operations. |
 
 The following table lists the sources that the migration service supports:
 
@@ -80,34 +80,34 @@ The following table lists the sources that the migration service supports:
 | [Azure Database for PostgreSQL - Single Server](../how-to-migrate-single-to-flexible-portal.md) | Supported | Supported |
 | Amazon RDS for PostgreSQL | [Supported](tutorial-migration-service-aws-offline.md) | [Supported](tutorial-migration-service-aws-online.md) |
 | On-premises | [Supported](tutorial-migration-service-iaas-offline.md) | [Supported](tutorial-migration-service-iaas-online.md) |
-| Azure virtual machine(s) | [Supported](tutorial-migration-service-iaas-offline.md) | [Supported](tutorial-migration-service-iaas-online.md) |
+| Azure virtual machine | [Supported](tutorial-migration-service-iaas-offline.md) | [Supported](tutorial-migration-service-iaas-online.md) |
 | Amazon Aurora PostgreSQL | [Supported](tutorial-migration-service-aurora-offline.md) | [Supported](tutorial-migration-service-aurora-online.md) |
 | Google Cloud SQL for PostgreSQL | [Supported](tutorial-migration-service-cloud-sql-offline.md) | [Supported](tutorial-migration-service-cloud-sql-online.md) |
 
 :::image type="content" source="media/overview-migration-service-postgresql/migrate-different-sources-option.png" alt-text="Screenshot of the migration setup showing different sources." lightbox="media/overview-migration-service-postgresql/migrate-different-sources-option.png":::
 
-## Advantages of the migration service in Azure Database for PostgreSQL vs. Azure Database Migration Service (Classic)
+## Advantages of using the migration service vs. Azure Database Migration Service (Classic)
 
-The following list describes the key benefits of using Azure Database for PostgreSQL for your PostgreSQL migrations:
+The following list describes the key benefits of using the migration service in Azure Database for PostgreSQL for your PostgreSQL migrations:
 
 - **Fully managed service**: The migration service in Azure Database for PostgreSQL is a fully managed service. We handle the complexities of the migration process.
-- **Comprehensive migration**: Supports both schema and data migrations for a complete and accurate transfer of your entire database environment to Azure.
-- **Ease of setup**: Designed to be user-friendly, the service eliminates complex setup procedures that can often be a barrier to starting a migration project.
-- **No data size constraints**: With the ability to handle databases of any size, the service surpasses the 1-TB data migration limit of Azure Database Migration Service (Classic), making it suitable for all types of database migrations.
-- **Addressing Azure Database Migration Service (Classic) limitations**: The migration service resolves many of the issues and limitations encountered with Azure Database Migration Service (Classic), leading to a more reliable migration process.
-- **Interface options**: Users can choose between an Azure portal-based interface for an intuitive experience or a command-line interface (the Azure CLI) for automation and scripting and to accommodate user preferences.
+- **Comprehensive migration**: Supports both schema and data migrations. A complete and accurate transfer of your entire database environment to Azure.
+- **Ease of setup**: Designed to be user-friendly, the service eliminates complex setup procedures that might be a barrier to starting a migration project.
+- **No data size constraints**: With the ability to handle databases of any size, the service surpasses the 1-TB data migration limit of Azure Database Migration Service (Classic), so it's suitable for all types of database migrations.
+- **Addressing Azure Database Migration Service (Classic) limitations**: The migration service resolves many of the issues and limitations in Azure Database Migration Service (Classic), for a more reliable migration process.
+- **Interface options**: You can choose between an Azure portal-based interface for an intuitive experience or a command-line interface (the Azure CLI) for automation and scripting.
 
 ## Get started
 
 Get started with the migration service by using one of the following methods:
 
 - [Migrate from Azure Database for PostgreSQL - Single Server](tutorial-migration-service-single-to-flexible.md)
-- [Migrate from on-premises or an infrastructure as a service (IaaS)](tutorial-migration-service-iaas.md)
+- [Migrate from an on-premises or infrastructure as a service (IaaS) environment](tutorial-migration-service-iaas.md)
 - [Migrate from Amazon RDS for PostgreSQL](tutorial-migration-service-aws.md)
 
 ## Get more information
 
-The migration service for Azure Database for PostgreSQL is a hosted solution. We use a binary called [pgcopydb](https://github.com/dimitri/pgcopydb) to provide a fast and efficient way of copying databases from the source PostgreSQL instance to the target.
+The migration service for Azure Database for PostgreSQL is a hosted solution. It uses a binary called [pgcopydb](https://github.com/dimitri/pgcopydb) to quickly and efficiently copy databases from your source PostgreSQL instance to Azure.
 
 ## Related content
 

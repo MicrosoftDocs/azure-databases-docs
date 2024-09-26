@@ -24,7 +24,7 @@ The following table summarizes the migration scenarios. The table indicates whet
 | On-premises with a private IP address via a virtual private network (VPN) or Azure ExpressRoute | Virtual network (VNet)-integrated Azure Database for PostgreSQL - Flexible Server | Yes |
 | Amazon Relational Database Service (Amazon RDS) for PostgreSQL or Amazon Aurora PostgreSQL with a public IP address | Azure Database for PostgreSQL - Flexible Server with public access | Yes |
 | Amazon RDS for PostgreSQL or Amazon Aurora PostgreSQL with private access via a VPN or ExpressRoute | VNet-integrated Azure Database for PostgreSQL - Flexible Server | Yes |
-| Google Cloud SQL for PostgreSQL | Azure Database for PostgreSQL - Flexible Server that has public access | Yes |
+| Google Cloud SQL for PostgreSQL | Azure Database for PostgreSQL - Flexible Server with public access | Yes |
 | Google Cloud SQL for PostgreSQL with private access via a VPN or ExpressRoute | VNet-integrated Azure Database for PostgreSQL - Flexible Server | Yes |
 | PostgreSQL installed on an Azure virtual machine (VM) in the same virtual network or in a different virtual network | VNet-integrated Azure Database for PostgreSQL - Flexible Server in the same virtual network or in a different virtual network | Yes |
 | Azure Database for PostgreSQL - Single Server with public access | VNet-integrated Azure Database for PostgreSQL - Flexible Server | Yes |
@@ -33,7 +33,7 @@ The following table summarizes the migration scenarios. The table indicates whet
 | PostgreSQL sources with private access | Azure Database for PostgreSQL - Flexible Server with a private endpoint | Yes |
 | PostgreSQL sources with private access | Azure Database for PostgreSQL - Flexible Server with public access | No |
 
-## On-premises (public IP) to Flexible Server (public access)
+## On-premises (public IP) to flexible server (public access)
 
 Networking steps:
 
@@ -42,7 +42,7 @@ Networking steps:
 1. Ensure that the source database server is accessible over the internet.
 1. Test the setup by verifying connectivity from the target instance of Azure Database for PostgreSQL to the source database. Confirm that the migration service can access the source data.
 
-## On-premises (private IP) to VNet-integrated Flexible Server (ExpressRoute or VPN)
+## On-premises (private IP) to VNet-integrated flexible server (ExpressRoute or VPN)
 
 :::image type="content" source="media/how-to-network-setup-migration-service/on-premises-to-azure-vpn.png" alt-text="Screenshot of an on-premises datacenter connected to Azure via ExpressRoute or Azure VPN Gateway. The on-premises PostgreSQL server connects through the secure link to Azure Database for PostgreSQL." lightbox="media/how-to-network-setup-migration-service/on-premises-to-azure-vpn.png":::
 
@@ -53,7 +53,7 @@ Networking steps:
 1. Set up network security group rules to allow traffic on the PostgreSQL port (the default port is 5432) from the on-premises network.
 1. Test the setup by verifying connectivity from the target instance of Azure Database for PostgreSQL to the source database. Confirm that the migration service can access the source data.
 
-## Managed PostgreSQL service (public IP) to Flexible Server (public/private)
+## Managed PostgreSQL service (public IP) to flexible server (public/private access)
 
 :::image type="content" source="media/how-to-network-setup-migration-service/aws-to-azure-vpn.png" alt-text="Screenshot of a PostgreSQL database from managed services (for example, from Amazon or Google) connecting to Azure Database for PostgreSQL via internet or private methods." lightbox="media/how-to-network-setup-migration-service/aws-to-azure-vpn.png":::
 
@@ -96,7 +96,7 @@ Networking steps:
 1. Ensure that the VM and the PostgreSQL server are in the same virtual network.
 1. Configure network security group rules to allow traffic within the virtual network on the PostgreSQL port.
 
-## Single Server (public access) to VNet-integrated Flexible Server
+## Single Server (public access) to VNet-integrated flexible server
 
 To facilitate connectivity between an instance of Azure Database for PostgreSQL - Single Server that has public access and a VNet-integrated flexible server, configure the single server to allow connections from the subnet where the flexible server is deployed.
 
@@ -123,7 +123,7 @@ Configure rule settings:
 
 After you complete these steps, the single server is set up to accept connections from the flexible server's subnet for secure communication between the two servers.
 
-## Single Server (private endpoint) to VNet-integrated Flexible Server
+## Single Server (private endpoint) to VNet-integrated flexible server
 
 To facilitate connectivity from an instance of Azure Database for PostgreSQL - Single Server that has a private endpoint to a VNet-integrated flexible server:
 
@@ -160,7 +160,7 @@ Configure the private DNS zone:
 
 Completing these steps enables the instance of Azure Database for PostgreSQL - Flexible Server to connect to the instance of Azure Database for PostgreSQL - Single Server.
 
-## Single Server (private endpoint) to Flexible Server (private endpoint)
+## Single Server (private endpoint) to flexible server (private endpoint)
 
 This section describes the essential networking steps to migrate from a single server that has a private endpoint to a flexible server that has a private endpoint in Azure Database for PostgreSQL. It includes the integration of a runtime server virtual network with a private endpoint. For more information, see [Migration runtime server](concepts-migration-service-runtime-server.md).
 
@@ -204,7 +204,7 @@ This section describes the essential networking steps to migrate from a single s
 
      :::image type="content" source="media/how-to-network-setup-migration-service/source-dns-zone.png" alt-text="Screenshot of a private DNS zone of that includes the source server and the target server." lightbox="media/how-to-network-setup-migration-service/source-dns-zone.png":::
 
-## PostgreSQL source (private IP) to Flexible Server (private endpoint)
+## PostgreSQL source (private IP) to flexible server (private endpoint)
 
 This section describes the networking steps to migrate a PostgreSQL database from a cloud-based PostgreSQL service, an on-premises setup, or a VM, all with private IP addresses, to an instance of Azure Database for PostgreSQL - Flexible Server that is secured with a private endpoint. The migration ensures secure data transfer within a private network space by using an Azure VPN or ExpressRoute for on-premises connections and virtual network peering or a VPN for cloud-to-cloud migrations. For more information, see [Migration runtime server](concepts-migration-service-runtime-server.md).
 
