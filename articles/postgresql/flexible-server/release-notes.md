@@ -21,7 +21,7 @@ This page provides latest news and updates regarding feature additions, engine v
 * Support for [Reserved pricing](concepts-reserved-pricing.md) for Intel and AMD V5 Skus for Azure Database for PostgreSQL flexible server.
 * Public preview of [postgresql_anonymizer (anon)](./concepts-extensions.md#extension-versions) extension.
 * Support for MD5 is disabled in favor of [SCRAM authentication](how-to-connect-scram.md) authentication for new PostgreSQL 14+ new server deployments.
-* Collation sort order may change due to an underlying glibc 2.28 update. See [PostgreSQL Wiki](https://wiki.postgresql.org/wiki/Locale_data_changes) for details.
+* Collation sort order may change due to an underlying glibc update from 2.27 to 2.35. See [PostgreSQL Wiki](https://wiki.postgresql.org/wiki/Locale_data_changes) for details.
 
 ## Release: Aug 2024
 * General availability of [Database Size Metrics](./concepts-monitoring.md) for Azure Database for PostgreSQL flexible server.
