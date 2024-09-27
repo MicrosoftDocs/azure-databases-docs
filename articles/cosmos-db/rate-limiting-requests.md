@@ -9,6 +9,7 @@ ms.author: pelasne
 ---
 
 # Optimize your Azure Cosmos DB application using rate limiting
+
 [!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
 This article provides developers with a methodology to rate limit requests to Azure Cosmos DB. Implementing this pattern can reduce errors and improve overall performance for workloads that exceed the provisioned throughput of the target database or container.
@@ -19,11 +20,11 @@ Optimal system performance, as measured by cost and time, can be achieved by mat
 
 Consider the following scenario:
 
-* You provision Azure Cosmos DB with 20 K RU/second.
-* Your application processes an ingestion job that contains 10 K records, each of which
-costs 10 RU. The total capacity required to complete this job is 100 K RU.
-* If you send the entire job to Azure Cosmos DB, you should expect a large number of transient faults and a large buffer of requests that you must retry. This condition is because the total number of RUs needed for the job (100 K) is much greater than the provisioned maximum (20 K). ~2 K of the records will be accepted into the database, but ~8 K will be rejected. You will send ~8 K records to Azure Cosmos DB on retry, of which ~2 K will be accepted, and so on. You should expect this pattern would send ~30 K records instead of 10 K records.
-* Instead if you send those requests evenly across 5 seconds, you should expect no faults and overall faster throughput as each batch would be at or under the provisioned 20 K.
+* You create an Azure Cosmos DB account with 20,000 RU/second.
+* Your application processes an ingestion job that contains 10,000 records, each of which
+costs 10 request units (RUs). The total capacity required to complete this job is 100,000 RU.
+* You send an entire job to Azure Cosmos DB, and you expect a large number of transient faults and a large buffer of requests that you must retry. This condition is because the total number of request units needed for the job (100,000) is greater than the provisioned maximum (20,000). Approximately 2,000 of the records are accepted into the database, but about 8,000 are rejected. You send approximately 8,000 records to Azure Cosmos DB on retry, of which about 2,000 are accepted, and so on. You should expect this pattern would send about 30,000 records instead of 10,000 records.
+* You instead elect to send those requests evenly across five seconds, you should expect no faults and overall faster throughput as each batch would be at or under the provisioned 20,000.
 
 Spreading the requests across a period of time can be accomplished by introducing a rate limiting mechanism in your code.
 
@@ -56,7 +57,7 @@ The default indexing policy can lower latency in read-heavy systems where query 
 
 You might want to exclude properties that are never searched against from being indexed. Removing properties from the index could improve overall system performance (cost and time) for systems that are write-heavy and record retrieval patterns are more constrained.
 
-Before measuring any costs, you should intentionally configure an appropriate index policy for your use-cases. Also, if you later change indexes, you will need to rerun all cost calculations. 
+Before measuring any costs, you should intentionally configure an appropriate index policy for your use-cases. Also, if you later change indexes, you will need to rerun all cost calculations.
 
 Where possible, testing a system under development with a load reflecting typical queries at normal and peak demand conditions will help reveal what indexing policy to use.
 
@@ -74,7 +75,7 @@ There are some key concepts when measuring cost:
   * These are documents and queries that you think are close to what the operational system will come across.
   * The best way to get these representative documents and queries is to instrument the usage of your application. It is always better to make a data-driven decision.
 * Measure costs periodically.
-  * Index changes, the size of indexes can affect the cost. 
+  * Index changes, the size of indexes can affect the cost.
   * It will be helpful to create some repeatable (maybe even automated) test of the representative documents and queries.
   * Ensure your representative documents and queries are still representative.
 
@@ -152,17 +153,8 @@ You might prepopulate views into other collections after storing the data in Azu
 
 For more information, see [Materialized View pattern](/azure/architecture/patterns/materialized-view).
 
-## Next steps
+## Related content
 
-* Explore an example implemented in Go, available on [GitHub](https://github.com/mspnp/go-batcher).
-* Learn more about the [Rate Limiting pattern](/azure/architecture/patterns/rate-limiting-pattern) in the Azure Architecture Center.
-* Learn how to [troubleshoot TooManyRequests errors](troubleshoot-request-rate-too-large.md) in Azure Cosmos DB.
-* Learn how to [troubleshoot Timeout errors](troubleshoot-request-timeout.md) in Azure Cosmos DB.
-* Learn how to [troubleshoot ServiceUnavailable errors](troubleshoot-service-unavailable.md) in Azure Cosmos DB.
-* Learn more about [Request Units](request-units.md) in Azure Cosmos DB.
-* Learn more about [Partitioning and horizontal scaling](partitioning-overview.md) in Azure Cosmos DB.
-* Learn about [Indexing policies](index-policy.md) in Azure Cosmos DB.
-* Learn about [Autoscaling](provision-throughput-autoscale.md) in Azure Cosmos DB.
-* Trying to do capacity planning for a migration to Azure Cosmos DB? You can use information about your existing database cluster for capacity planning.
-    * If all you know is the number of vCores and servers in your existing database cluster, read about [estimating request units using vCores or vCPUs](convert-vcore-to-request-unit.md) 
-    * If you know typical request rates for your current database workload, read about [estimating request units using Azure Cosmos DB capacity planner](estimate-ru-with-capacity-planner.md)
+* [Go example](https://github.com/mspnp/go-batcher)
+* [Rate Limiting pattern](/azure/architecture/patterns/rate-limiting-pattern)
+* [Troubleshoot TooManyRequests errors](troubleshoot-request-rate-too-large.md)
