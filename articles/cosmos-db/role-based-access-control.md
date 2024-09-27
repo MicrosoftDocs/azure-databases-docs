@@ -51,7 +51,7 @@ In addition to the built-in roles, users may also create [custom roles](/azure/r
 > [!WARNING]
 > Account keys are not automatically rotated or revoked after management RBAC changes. These keys give access to data plane operations. When removing access to the keys from an user, it is recommended to rotate the keys as well. For RBAC Data Plane, the Cosmos DB backend will reject requests once the roles/claims no longer match. If an user requires temporary access to data plane operations, it's recommended to use [Azure Cosmos DB RBAC](how-to-setup-rbac.md) Data Plane. 
 
-## <a id="prevent-sdk-changes"></a>Preventing changes from the Azure Cosmos DB SDKs
+## Preventing changes from the Azure Cosmos DB SDKs
 
 The Azure Cosmos DB resource provider can be locked down to prevent any changes to resources from a client connecting using the account keys (that is applications connecting via the Azure Cosmos DB SDK). This feature may be desirable for users who want higher degrees of control and governance for production environments. Preventing changes from the SDK also enables features such as resource locks and diagnostic logs for control plane operations. The clients connecting from Azure Cosmos DB SDK will be prevented from changing any property for the Azure Cosmos DB accounts, databases, containers, and throughput. The operations involving reading and writing data to Azure Cosmos DB containers themselves are not impacted.
 
