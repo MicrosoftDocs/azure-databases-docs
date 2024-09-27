@@ -27,7 +27,7 @@ Azure Database for PostgreSQL flexible server supports the following database ve
 
 | Version | Azure Database for PostgreSQL single server | Azure Database for PostgreSQL flexible server |
 | ----- | :------: | :----: |
-| PostgreSQL 17 |   | X |
+| PostgreSQL 17 (preview) |   | X |
 | PostgreSQL 16 |   | X |
 | PostgreSQL 15 |   | X |
 | PostgreSQL 14 |   | X |

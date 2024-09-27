@@ -18,7 +18,7 @@ ms.custom:
 
 Azure Database for PostgreSQL flexible server currently supports the following major versions.
 
-## PostgreSQL version 17
+## PostgreSQL version 17 (preview)
 
 PostgreSQL version 17 preview is now available in all Azure regions. Refer to the [PostgreSQL documentation](https://www.postgresql.org/docs/17/release-17.html) to learn more about new feature and improvements in this latest postgres release.
 
