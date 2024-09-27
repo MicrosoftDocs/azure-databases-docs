@@ -5879,6 +5879,11 @@
       "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/commands/projection/$slice.md",
       "redirect_url": "/azure/cosmos-db/mongodb/vcore/operators/projection/$slice",
       "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/nosql/migrate-passwordless.md",
+      "redirect_url": "/azure/cosmos-db/nosql/security/how-to-grant-data-plane-role-based-access",
+      "redirect_document_id": false
     }
   ]
 }
