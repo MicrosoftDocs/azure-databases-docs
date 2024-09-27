@@ -1,0 +1,17 @@
+- name: Glossary
+  displayName: terms
+  href: glossary.md
+- name: Get signed-in identity
+  href: how-to-get-signed-in-identity.md
+- name: Create managed identities
+  displayName: principals
+  href: how-to-create-managed-identities.md
+- name: Control plane actions
+  href: /azure/role-based-access-control/permissions/databases#microsoftdocumentdb
+- name: Control plane built-in roles
+  href: /azure/role-based-access-control/built-in-roles#databases
+- name: Frequently asked questions
+  displayName: faq, questions, answers
+  href: ../faq.yml#security
+- name: Code sample
+  href: /samples/azure-samples/cosmos-db-nosql-role-based-access-control/template
