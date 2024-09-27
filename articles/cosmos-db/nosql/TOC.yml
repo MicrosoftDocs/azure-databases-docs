@@ -929,10 +929,6 @@
         - name: Use managed identities with Azure services
           href: ../how-to-setup-managed-identity.md
           displayName: msi, managed service identity, aad, azure active directory, identity
-        - name: Role-based access control
-          items:
-            - name: Restrict user access to data operations only
-              href: ../how-to-restrict-user-data.md
         - name: Configure Cross Origin Resource Sharing (CORS)
           href: how-to-configure-cross-origin-resource-sharing.md
         - name: Use Azure Key Vault to store keys
