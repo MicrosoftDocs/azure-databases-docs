@@ -184,5 +184,4 @@ select * from weather.data_by_station where station_id IN ('station-2', 'station
 ## Next steps
 
 * [Provision throughput on containers and databases](../set-throughput.md) 
-* [Partition key best practices](../partitioning-overview.md#choose-a-partition-key)
 * [Estimate RU/s using the Azure Cosmos DB capacity planner](../estimate-ru-with-capacity-planner.md) articles
