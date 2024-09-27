@@ -73,6 +73,8 @@ The following image shows how logical partitions are mapped to physical partitio
 
 :::image type="content" source="./media/partitioning-overview/logical-partitions.png" alt-text="An image that demonstrates Azure Cosmos DB partitioning" border="false":::
 
+<a id="choose-partitionkey"></a>
+
 ## Choose a partition key
 
 A partition key has two components: **partition key path** and the **partition key value**. For example, consider an item `{ "userId" : "Andrew", "worksFor": "Microsoft" }` if you choose "userId" as the partition key, the following are the two partition key components:
