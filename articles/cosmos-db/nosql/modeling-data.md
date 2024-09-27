@@ -294,7 +294,7 @@ In this example, we've dropped the unbounded collection on the publisher documen
 
 ### How do I model many-to-many relationships?
 
-In a relational database many-to-many relationship are often modeled with join tables, which just join records from other tables together.
+In a relational database many-to-many relationships are often modeled with join tables, which just join records from other tables together.
 
 :::image type="content" source="./media/modeling-data/join-table.png" alt-text="Join tables" border="false":::
 
@@ -528,7 +528,7 @@ What to do?
 
 * The engineering team decided to use Change Feed to populate three new containers: `Customers`, `Orders`, and `Items`. With Change Feed they're normalizing and flattening the data. Unnecessary information is removed from the data model and each container has close to 100 properties, avoiding data loss due to automatic schema inference limits. 
 * These new containers have analytical store enabled and now the Analytics Department is using Synapse Analytics to read the data, reducing the request units usage since the analytical queries are happening in Synapse Apache Spark and serverless SQL pools.
-* Container `CustomersOrdersAndItems` now has tttl set to keep data for six months only, which allows for another request units usage reduction, since there's a minimum of one request units per GB in Azure Cosmos DB. Less data, fewer request units.
+* Container `CustomersOrdersAndItems` now has tttl set to keep data for six months only, which allows for another request units usage reduction, since there's a minimum of one request unit per GB in Azure Cosmos DB. Less data, fewer request units.
 
 
 ## Takeaways
