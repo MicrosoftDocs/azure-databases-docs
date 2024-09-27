@@ -6,7 +6,7 @@ metadata:
   ms.author: dech
   ms.service: cosmos-db
   ms.topic: faq
-  ms.date: 09/25/2024
+  ms.date: 09/26/2024
 title: Frequently asked questions about autoscale provisioned throughput in Azure Cosmos DB
 summary: |
   [!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
@@ -239,7 +239,7 @@ sections:
           
           First, when the overall consumed RU/s exceeds the maximum RU/s of the database or container, the service throttles requests accordingly. 
           
-          Second, if a logical partition key value has a disproportionately higher number of requests compared to other partition key values, like in a hot partition, the underlying physical partition might exceed its RU/s budget. As a best practice, to avoid hot partitions, [choose a good partition key](partitioning-overview.md#choose-partitionkey) that results in an even distribution of both storage and throughput. 
+          Second, if a logical partition key value has a disproportionately higher number of requests compared to other partition key values, like in a hot partition, the underlying physical partition might exceed its RU/s budget. As a best practice, to avoid hot partitions, [choose a good partition key](partitioning-overview.md#choose-a-partition-key) that results in an even distribution of both storage and throughput. 
           
           For example, if you select the 20,000 RU/s maximum throughput option and you have 200 GB of storage, if you have four physical partitions, each physical partition can be autoscaled up to 5,000 RU/s. If a hot partition is on a specific logical partition key, you'll see code 429 errors when the underlying physical partition it resides in exceeds 5,000 RU/s or 100 percent normalized utilization.
 
