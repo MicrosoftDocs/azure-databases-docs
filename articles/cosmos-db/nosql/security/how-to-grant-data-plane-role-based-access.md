@@ -8,7 +8,7 @@ ms.reviewer: iriaosara
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: how-to
-ms.date: 09/27/2024
+ms.date: 10/01/2024
 zone_pivot_groups: azure-interface-cli-powershell-bicep
 #Customer Intent: As a security user, I want to grant an identity data-plane access to Azure Cosmos DB for NoSQL, so that my developer team can use the SDK of their choice with minimal code change.
 ---
