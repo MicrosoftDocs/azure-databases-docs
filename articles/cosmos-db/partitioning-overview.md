@@ -5,8 +5,8 @@ description: Learn about partitioning, logical, physical partitions in Azure Cos
 author: markjbrown
 ms.author: mjbrown
 ms.service: azure-cosmos-db
-ms.topic: conceptual
-ms.date: 02/27/2023
+ms.topic: concept-article
+ms.date: 09/26/2024
 ms.custom: cosmos-db-video
 ---
 
@@ -73,8 +73,6 @@ The following image shows how logical partitions are mapped to physical partitio
 
 :::image type="content" source="./media/partitioning-overview/logical-partitions.png" alt-text="An image that demonstrates Azure Cosmos DB partitioning" border="false":::
 
-<a id="choose-partitionkey"></a>
-
 ## Choose a partition key
 
 A partition key has two components: **partition key path** and the **partition key value**. For example, consider an item `{ "userId" : "Andrew", "worksFor": "Microsoft" }` if you choose "userId" as the partition key, the following are the two partition key components:
@@ -139,8 +137,8 @@ Some things to consider when selecting the *item ID* as the partition key includ
 * If you have a read-heavy container with many [physical partitions](partitioning-overview.md#physical-partitions), queries are more efficient if they have an equality filter with the *item ID*.
 * You can't run stored procedures or triggers that target multiple logical partitions.
 
-## Next steps
+## Related content
 
-* Learn about [provisioned throughput in Azure Cosmos DB](request-units.md).
-* Learn about [global distribution in Azure Cosmos DB](distribute-data-globally.md).
-* See the training module on how to [Model and partition your data in Azure Cosmos DB.](/training/modules/model-partition-data-azure-cosmos-db/)
+* [Provisioned throughput in Azure Cosmos DB](request-units.md).
+* [Global distribution in Azure Cosmos DB](distribute-data-globally.md).
+* [Training: model and partition your data in Azure Cosmos DB.](/training/modules/model-partition-data-azure-cosmos-db/)

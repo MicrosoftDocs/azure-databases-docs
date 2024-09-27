@@ -2,7 +2,7 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 09/13/2024
+ms.date: 09/26/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
@@ -80,7 +80,7 @@ ms.topic: include
 | Attribute      | Value                                                      |
 |----------------|------------------------------------------------------------|
 | Category       | PgBouncer |
-| Description    | When this is set to a non-zero value, PgBouncer tracks protocol-level named prepared statements related commands sent by the client in transaction and statement pooling mode. |
+| Description    | When this is set to a non-zero value PgBouncer tracks protocol-level named prepared statements related commands sent by the client in transaction and statement pooling mode. |
 | Data type      | integer     |
 | Default value  | `0`           |
 | Allowed values | `0-5000`                        |
@@ -174,5 +174,6 @@ ms.topic: include
 
 
 [!INCLUDE [server-parameters-azure-notes-pgbouncer_stats_users](./server-parameters-azure-notes-pgbouncer_stats_users.md)]
+
 
 
