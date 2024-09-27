@@ -57,7 +57,7 @@ You can choose to restore any combination of provisioned throughput containers, 
 The following configurations aren't restored after the point-in-time recovery:
 
 * A subset of containers under a shared throughput database can't be restored. The entire database can be restored as a whole.
-* Firewall, Virtual Network [VNET](how-to-configure-vnet-service-endpoint.md), Data plane Role based access control [RBAC](role-based-access-control.md),  or private endpoint settings. 
+* Firewall, Virtual Network [VNET](how-to-configure-vnet-service-endpoint.md), Data plane Role based access control RBAC,  or private endpoint settings. 
 * All the Regions from the source account.
 * Stored procedures, triggers, UDFs.
 * Role-based access control assignments. 

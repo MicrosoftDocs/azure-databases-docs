@@ -78,8 +78,6 @@ sections:
           - Reading or replacing database throughput
           - Reading or replacing container throughput
 
-          For more information, see [Azure Cosmos DB control-plane role-based access control](../role-based-access-control.md).
-
           Data-plane authentication uses a custom API for NoSQL-native role-based access control implementation. With this native implementation, you can also use preconfigured or custom roles. With native role-based access control, you can execute queries, manage items, or perform other common operations. The data-plane includes operations including, but not limited to these examples.
 
           - Creating, replacing, updating, or deleting items

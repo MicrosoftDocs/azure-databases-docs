@@ -15,7 +15,7 @@ ms.subservice: mongodb
 
 This article is about role-based access control for data plane operations in Azure Cosmos DB for MongoDB.
 
-If you're using management plane operations, see [role-based access control](../role-based-access-control.md) applied to your management plane operations article.
+If you're using management plane operations, see [role-based access control](security/index.md) applied to your management plane operations article.
 
 Azure Cosmos DB for MongoDB exposes a built-in role-based access control (RBAC) system that lets you authorize your data requests with a fine-grained, role-based permission model. Users and roles reside within a database and are managed using the Azure CLI, Azure PowerShell, or Azure Resource Manager (ARM).
 
@@ -301,4 +301,4 @@ Versions 3.6 and higher support RBAC.
 ## Next steps
 
 - Get an overview of [secure access to data in Azure Cosmos DB](../secure-access-to-data.md).
-- Learn more about [RBAC for Azure Cosmos DB management](../role-based-access-control.md).
+- Learn more about [RBAC for Azure Cosmos DB management](security/index.md).

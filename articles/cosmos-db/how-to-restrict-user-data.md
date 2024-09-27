@@ -99,5 +99,4 @@ $cdba | Set-AzResource -Force
 
 ## Next steps
 
-- Learn more about [Azure Cosmos DB's role-based access control](role-based-access-control.md)
 - Get an overview of [secure access to data in Azure Cosmos DB](secure-access-to-data.md)

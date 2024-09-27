@@ -14,7 +14,7 @@ ms.date: 09/26/2024
 [!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 > [!NOTE]
-> This article is about role-based access control for data plane operations in Azure Cosmos DB. If you are using management plane operations, see [role-based access control](role-based-access-control.md) applied to your management plane operations article.
+> This article is about role-based access control for data plane operations in Azure Cosmos DB.
 
 Azure Cosmos DB exposes a built-in role-based access control system that lets you:
 
@@ -46,7 +46,7 @@ The Azure Cosmos DB data plane role-based access control is built on concepts th
 > - Create/Replace/Delete/Read Triggers
 > - Create/Replace/Delete/Read User Defined Functions
 >
-> You *cannot use any Azure Cosmos DB data plane SDK* to authenticate management operations with a Microsoft Entra identity. Instead, you must use [Azure role-based access control](role-based-access-control.md) through one of the following options:
+> You *cannot use any Azure Cosmos DB data plane SDK* to authenticate management operations with a Microsoft Entra identity. Instead, you must use Azure role-based access control through one of the following options:
 >
 > - [Azure Resource Manager templates (ARM templates)](./sql/manage-with-templates.md)
 > - [Azure PowerShell scripts](./sql/manage-with-powershell.md)
@@ -528,4 +528,3 @@ Yes, see [Enforcing role-based access control as the only authentication method]
 ## Related content
 
 - [Secure access to data in Azure Cosmos DB](secure-access-to-data.md).
-- [Role-based access control for Azure Cosmos DB management](role-based-access-control.md).

@@ -276,9 +276,6 @@
           items:
             - name: Security overview
               href: ../database-security.md
-            - name: Azure role-based access control
-              displayName: rbac
-              href: ../role-based-access-control.md
             - name: Configure role-based access control for API for MongoDB
               href: how-to-setup-rbac.md
             - name: Data encryption
