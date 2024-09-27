@@ -26,8 +26,8 @@ Azure Cosmos DB exposes a built-in role-based access control system that lets yo
 The Azure Cosmos DB data plane role-based access control is built on concepts that are commonly found in other role-based access control systems like [Azure role-based access control](/azure/role-based-access-control/overview):
 
 - The [permission model](#permission-model) is composed of a set of **actions**; each of these actions maps to one or multiple database operations. Some examples of actions include reading an item, writing an item, or executing a query.
-- Azure Cosmos DB users create **[role definitions](#role-definitions)** containing a list of allowed actions.
-- Role definitions get assigned to specific Microsoft Entra identities through **[role assignments](#role-assignments)**. A role assignment also defines the scope that the role definition applies to; currently, three scopes are currently:
+- Azure Cosmos DB users create **[role definitions](#create-custom-role-definitions)** containing a list of allowed actions.
+- Role definitions get assigned to specific Microsoft Entra identities through **[role assignments](#create-role-assignments)**. A role assignment also defines the scope that the role definition applies to; currently, three scopes are currently:
   - An Azure Cosmos DB account,
   - An Azure Cosmos DB database,
   - An Azure Cosmos DB container.
@@ -448,16 +448,16 @@ When constructing the [REST API authorization header](/rest/api/cosmos-db/access
 
 ## Use data explorer
 
-The use of Azure Cosmos DB role-based access control within Data Explorer (either exposed in the Azure portal or at [https://cosmos.azure.com](https://cosmos.azure.com)) is governed by the **Enable Entra ID RBAC** setting. You can access this setting via the "wheel" icon at the upper right-hand side of the Data Explorer interface. 
+The use of Azure Cosmos DB role-based access control within Data Explorer (either exposed in the Azure portal or at [https://cosmos.azure.com](https://cosmos.azure.com)) is governed by the **Enable Entra ID RBAC** setting. You can access this setting via the "wheel" icon at the upper right-hand side of the Data Explorer interface.
 
 The setting has three possible values:
-- **Automatic (default)**: In this mode, role-based access control is automatically used if the account has [disabled the use of keys](#disable-local-auth). Otherwise, Data Explorer uses account keys for data requests.
+- **Automatic (default)**: In this mode, role-based access control is automatically used if the account has [disabled the use of keys](#enforcing-role-based-access-control-as-the-only-authentication-method). Otherwise, Data Explorer uses account keys for data requests.
 
 - **True**: In this mode, role-based access will always be used for Data Explorer data requests. If the account hasn't been enabled for role-based access, then the requests fail.
 
 - **False**: In this mode, account keys will always be used for Data Explorer data requests. If the account has disabled the use of keys, then the requests fail.
 
-When using modes that enable role-based access in the Azure portal Data Explorer, you must select on the **Login for Entra ID RBAC** button (located on the Data Explorer command bar) prior to making any data requests. This isn't necessary when using the Cosmos Explorer at cosmos.azure.com. Ensure that the signed in identity has been [assigned with proper role definitions](#role-assignments) to enable data access.
+When using modes that enable role-based access in the Azure portal Data Explorer, you must select on the **Login for Entra ID RBAC** button (located on the Data Explorer command bar) prior to making any data requests. This isn't necessary when using the Cosmos Explorer at cosmos.azure.com. Ensure that the signed in identity has been [assigned with proper role definitions](#create-role-assignments) to enable data access.
 
 Also note that changing the mode to one that uses account keys could trigger a request to fetch the primary key on behalf of the identity that is signed in.
 
@@ -470,7 +470,7 @@ Also note that changing the mode to one that uses account keys could trigger a r
 This additional information flows in the **DataPlaneRequests** log category and consists of two extra columns:
 
 - `aadPrincipalId_g` shows the principal ID of the Microsoft Entra identity that was used to authenticate the request.
-- `aadAppliedRoleAssignmentId_g` shows the [role assignment](#role-assignments) that was honored when authorizing the request.
+- `aadAppliedRoleAssignmentId_g` shows the [role assignment](#create-role-assignments) that was honored when authorizing the request.
 
 ## Enforcing role-based access control as the only authentication method
 
@@ -523,7 +523,7 @@ Yes.
 
 ### Is it possible to disable the usage of the account primary/secondary keys when using role-based access control?
 
-Yes, see [Enforcing role-based access control as the only authentication method](#disable-local-auth).
+Yes, see [Enforcing role-based access control as the only authentication method](#enforcing-role-based-access-control-as-the-only-authentication-method).
 
 ## Related content
 
