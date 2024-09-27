@@ -18,7 +18,7 @@ Data in Apache Kafka (topics) is only useful when consumed by other applications
 
 In this article, we will be using the open-source [DataStax Apache Kafka connector](https://docs.datastax.com/en/kafka/doc/kafka/kafkaIntro.html), that works on top of Kafka Connect framework to ingest records from a Kafka topic into rows of one or more Cassandra tables. The example provides a reusable setup using Docker Compose. This is quite convenient since it enables you to bootstrap all the required components locally with a single command. These components include Kafka, Zookeeper, Kafka Connect worker, and the sample data generator application.
 
-Here is a breakdown of the components and their service definitions - you can refer to the complete `docker-compose` file [in the GitHub repo](https://github.com/Azure-Samples/cosmosdb-cassandra-kafka/blob/main/docker-compose.yaml).
+Here's a breakdown of the components and their service definitions - you can refer to the complete `docker-compose` file [in the GitHub repo](https://github.com/Azure-Samples/cosmosdb-cassandra-kafka/blob/main/docker-compose.yaml).
 
 - Kafka and Zookeeper use [debezium](https://hub.docker.com/r/debezium/kafka/) images.
 - To run as a Docker container, the DataStax Apache Kafka Connector is baked on top of an existing Docker image - [debezium/connect-base](https://github.com/debezium/docker-images/tree/master/connect-base/1.2). This image includes an installation of Kafka and its Kafka Connect libraries, thus making it really convenient to add custom connectors. You can refer to the [Dockerfile](https://github.com/Azure-Samples/cosmosdb-cassandra-kafka/blob/main/connector/Dockerfile).
@@ -118,7 +118,7 @@ Copy the JSON contents below to a file (you can name it `cassandra-sink-config.j
 }
 ```
 
-Here is a summary of the attributes:
+Here's a summary of the attributes:
 
 **Basic connectivity**
 
@@ -141,7 +141,7 @@ Azure Cosmos DB enforces [secure connectivity over SSL](../database-security.md)
 
 - `key.converter`: We use the string converter `org.apache.kafka.connect.storage.StringConverter`
 - `value.converter`: since the data in Kafka topics is JSON, we make use of `org.apache.kafka.connect.json.JsonConverter`
-- `value.converter.schemas.enable`: Since our JSON payload doesn't have a schema associated with it (for the purposes of the demo app), we need to instruct Kafka Connect to not look for a schema by setting this attribute to `false`. Not doing so will result in failures.
+- `value.converter.schemas.enable`: Since our JSON payload doesn't have a schema associated with it (for the purposes of the demo app), we need to instruct Kafka Connect to not look for a schema by setting this attribute to `false`. Not doing so results in failures.
 
 ### Install the connector
 
@@ -165,7 +165,7 @@ You can now query data in the tables. Head over to the Azure portal, bring up th
 
 ## Query data from Azure Cosmos DB
 
-Check the `data_by_state` and `data_by_station` tables. Here is some sample queries to get you started:
+Check the `data_by_state` and `data_by_station` tables. Here's some sample queries to get you started:
 
 ```sql
 select * from weather.data_by_state where state = 'state-1';
@@ -184,5 +184,4 @@ select * from weather.data_by_station where station_id IN ('station-2', 'station
 ## Next steps
 
 * [Provision throughput on containers and databases](../set-throughput.md) 
-* [Partition key best practices](../partitioning-overview.md#choose-partitionkey)
 * [Estimate RU/s using the Azure Cosmos DB capacity planner](../estimate-ru-with-capacity-planner.md) articles
