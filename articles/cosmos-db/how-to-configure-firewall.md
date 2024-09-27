@@ -107,6 +107,9 @@ If you access your Azure Cosmos DB account from services that don’t provide a 
 When you enable this option, the IP address `0.0.0.0` is added to the list of allowed IP addresses. The `0.0.0.0` IP address restricts requests to your Azure Cosmos DB account from Azure datacenter IP range. This setting doesn't allow access for any other IP ranges to your Azure Cosmos DB account.
 
 > [!NOTE]
+> Setting publicNetworkAccess to Disabled takes precedence over this **Accept connection from within Azure datacenters** option. See [blocking-public-network-access-during-account-creation](https://learn.microsoft.com/en-us/azure/cosmos-db/how-to-configure-private-endpoints?tabs=arm-bicep#blocking-public-network-access-during-account-creation)
+
+> [!NOTE]
 > This option configures the firewall to allow all requests from Azure, including requests from the subscriptions of other customers deployed in Azure. The list of IPs allowed by this option is wide, so it limits the effectiveness of a firewall policy. Use this option only if your requests don’t originate from static IPs or subnets in virtual networks. Choosing this option automatically allows access from the Azure portal because the Azure portal is deployed in Azure.
 
 ### Requests from your current IP
