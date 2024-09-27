@@ -55,4 +55,3 @@ Once the copy is complete, you can start using the new container with desired pa
 ## Next steps
 
 - Explore more about [container copy jobs](../container-copy.md).
-- Learn further about [how to choose a partition key](../partitioning-overview.md#choose-partitionkey).
