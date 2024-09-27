@@ -5,11 +5,13 @@ author: iriaosara
 ms.author: iriaosara
 ms.service: azure-cosmos-db
 ms.subservice: nosql
-ms.topic: conceptual
-ms.date: 05/26/2022
+ms.topic: concept-article
+ms.date: 09/26/2024
 ms.custom: devx-track-csharp, subject-rbac-steps
 ---
+
 # Secure access to data in Azure Cosmos DB
+
 [!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 This article provides an overview of data access control in Azure Cosmos DB.
@@ -22,7 +24,7 @@ Azure Cosmos DB provides three ways to control access to your data.
 | [Role-based access control (RBAC)](#rbac) | Fine-grained, role-based permission model using Microsoft Entra identities for authentication. |
 | [Resource tokens](#resource-tokens)| Fine-grained permission model based on native Azure Cosmos DB users and permissions. |
 
-## <a id="primary-keys"></a> Primary/secondary keys
+##  Primary/secondary keys
 
 Primary/secondary keys provide access to all the administrative resources for the database account. Each account consists of two keys: a primary key and secondary key. The purpose of dual keys is to let you regenerate, or roll, keys, providing continuous access to your account and data. To learn more about primary/secondary keys, see [Overview of database security in Azure Cosmos DB](database-security.md#primary-keys).
 
@@ -30,7 +32,7 @@ To see your account keys, on the left menu select **Keys**. Then, select the **V
 
 :::image type="content" source="./media/database-security/view-account-key.png" alt-text="Screenshot of the View account key for Azure Cosmos DB.":::
 
-### <a id="key-rotation"></a> Key rotation and regeneration
+###  Key rotation and regeneration
 
 > [!NOTE]
 > The following section describes the steps to rotate and regenerate keys for the API for NoSQL. If you're using a different API, see the [API for MongoDB](database-security.md?tabs=mongo-api#key-rotation), [API for Cassandra](database-security.md?tabs=cassandra-api#key-rotation), [API for Gremlin](database-security.md?tabs=gremlin-api#key-rotation), or [API for Table](database-security.md?tabs=table-api#key-rotation) sections.
@@ -88,7 +90,7 @@ private static readonly string authorizationKey = ConfigurationManager.AppSettin
 CosmosClient client = new CosmosClient(endpointUrl, authorizationKey);
 ```
 
-## <a id="rbac"></a> Role-based access control
+##  Role-based access control
 
 Azure Cosmos DB exposes a built-in RBAC system that lets you:
 
@@ -106,14 +108,14 @@ To learn more about Azure Cosmos DB RBAC, see [Configure role-based access contr
 
 For information and sample code to configure RBAC for the Azure Cosmos DB for MongoDB, see [Configure role-based access control for your Azure Cosmos DB for MongoDB](mongodb/how-to-setup-rbac.md).
 
-## <a id="resource-tokens"></a> Resource tokens
+##  Resource tokens
 
 Resource tokens provide access to the application resources within a database. Resource tokens:
 
 - Provide access to specific containers, partition keys, documents, and attachments.
 - Are created when a [user](#users) is granted [permissions](#permissions) to a specific resource.
 - Are re-created when a permission resource is acted upon by a POST, GET, or PUT call.
-- Use a hash resource token specifically constructed for the user, resource, and permission.
+- Use a hash resource token constructed for the user, resource, and permission.
 - Are time bound with a customizable validity period. The default valid time span is one hour. Token lifetime, however, might be explicitly specified, up to a maximum of 24 hours.
 - Provide a safe alternative to giving out the primary key.
 - Enable clients to read, write, and delete resources in the Azure Cosmos DB account according to the permissions they were granted.
@@ -139,7 +141,7 @@ Resource token generation and management are handled by the native Azure Cosmos 
 
 For an example of a middle-tier service used to generate or broker resource tokens, see the [ResourceTokenBroker app](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples/xamarin/UserItems/ResourceTokenBroker/ResourceTokenBroker/Controllers).
 
-### Users<a id="users"></a>
+### Users
 
 Azure Cosmos DB users are associated with an Azure Cosmos DB database. Each database can contain zero or more Azure Cosmos DB users. The following code sample shows how to create an Azure Cosmos DB user by using the [Azure Cosmos DB .NET SDK v3](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/UserManagement).
 
@@ -152,7 +154,7 @@ User user = await database.CreateUserAsync("User 1");
 > [!NOTE]
 > Each Azure Cosmos DB user has a `ReadAsync()` method that you can use to retrieve the list of [permissions](#permissions) associated with the user.
 
-### Permissions<a id="permissions"></a>
+### Permissions
 
 A permission resource is associated with a user and assigned to a specific resource. Each user can contain zero or more permissions. A permission resource provides access to a security token that the user needs when trying to access a specific container or data in a specific partition key. There are two available access levels that can be provided by a permission resource:
 
@@ -170,7 +172,7 @@ If you enable the [diagnostic logs on data-plane requests](monitor-resource-logs
 
 #### Code sample to create permission
 
-The following code sample shows how to create a permission resource, read the resource token of the permission resource, and associate the permissions with the [user](#users) you just created.
+The following code sample shows how to create a permission resource, read the resource token of the permission resource, and associate the permissions with the [user](#users) you created.
 
 ```csharp
 // Create a permission on a container and specific partition key value
@@ -233,9 +235,8 @@ Each multi-model API (SQL, MongoDB, Gremlin, Cassandra, or Table) provides diffe
 
 [!INCLUDE [GDPR-related guidance](~/reusable-content/ce-skilling/azure/includes/gdpr-dsr-and-stp-note.md)]
 
-## Next steps
+## Related content
 
-- To learn more about Azure Cosmos DB database security, see [Azure Cosmos DB database security](database-security.md).
-- To learn how to construct Azure Cosmos DB authorization tokens, see [Access control on Azure Cosmos DB resources](/rest/api/cosmos-db/access-control-on-cosmosdb-resources).
-- For user management samples with users and permissions, see [.NET SDK v3 user management samples](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/UserManagement/UserManagementProgram.cs).
-- For information and sample code to configure RBAC for the Azure Cosmos DB for MongoDB, see [Configure role-based access control for your Azure Cosmos DB for MongoDB](mongodb/how-to-setup-rbac.md).
+- [Azure Cosmos DB database security](database-security.md)
+- [Access control on Azure Cosmos DB resources](/rest/api/cosmos-db/access-control-on-cosmosdb-resources)
+- [.NET SDK user management samples](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/UserManagement/UserManagementProgram.cs)
