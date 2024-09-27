@@ -212,7 +212,7 @@ After the service is created, locate it within the Azure portal, open it, and th
 
    Perform the database migration and collection in parallel using multiple instances of Azure Database Migration Service, if necessary, to speed up the run.
 
-   You can also specify a shard key to take advantage of [partitioning in Azure Cosmos DB](../cosmos-db/partitioning-overview.md) for optimal scalability. Be sure to review the [best practices for selecting a shard/partition key](../cosmos-db/partitioning-overview.md#choose-partitionkey). If you don't have a partition key, you can always use **_id** as the shard key for better throughput.
+   You can also specify a shard key to take advantage of [partitioning in Azure Cosmos DB](../cosmos-db/partitioning-overview.md) for optimal scalability. Be sure to review the [best practices for selecting a shard/partition key](../cosmos-db/partitioning-overview.md). If you don't have a partition key, you can always use **_id** as the shard key for better throughput.
 
    :::image type="content" source="media/tutorial-mongodb-to-cosmosdb-online/dms-collection-setting1.png" alt-text="Screenshot of Select collections tables." lightbox="media/tutorial-mongodb-to-cosmosdb-online/dms-collection-setting1.png":::
 
