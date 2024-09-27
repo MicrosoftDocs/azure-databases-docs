@@ -94,7 +94,6 @@ The rate of container copy job progress is determined by these factors:
 
 Container copy jobs don't work with accounts that have the following capabilities enabled. Disable these features before you run container copy jobs:
 
-* [Disable local auth](how-to-setup-rbac.md#use-azure-resource-manager-templates)
 * [Merge partition](merge.md)
 
 ### Account configurations
@@ -160,7 +159,7 @@ Currently, container copy is supported in the following regions:
 
 * Error - Request is unauthorized.
 
-    If the request fails and displays the error *Unauthorized* (error code 401), local authorization might be disabled. Learn how to [enable local authorization](how-to-setup-rbac.md#use-azure-resource-manager-templates).
+    If the request fails and displays the error *Unauthorized* (error code 401), local authorization might be disabled.
 
     Container copy jobs use primary keys to authenticate. If local authorization is disabled, the job creation fails. Local authorization must be enabled for container copy jobs to work.
 

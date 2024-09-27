@@ -931,8 +931,6 @@
           displayName: msi, managed service identity, aad, azure active directory, identity
         - name: Role-based access control
           items:
-            - name: Configure role-based access control to data
-              href: ../how-to-setup-rbac.md
             - name: Restrict user access to data operations only
               href: ../how-to-restrict-user-data.md
         - name: Configure Cross Origin Resource Sharing (CORS)

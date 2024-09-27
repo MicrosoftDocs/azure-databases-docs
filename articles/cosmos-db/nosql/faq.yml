@@ -83,8 +83,6 @@ sections:
           - Creating, replacing, updating, or deleting items
           - Patching items
           - Executing queries
-
-          For more information, see [Azure Cosmos DB data-plane role-based access control](../how-to-setup-rbac.md).
       - question: |
           Does Azure Cosmos DB for NoSQL support the SQL query language?
         answer: |

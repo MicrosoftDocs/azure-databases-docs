@@ -351,7 +351,7 @@ In your *app.py*:
 :::code language="python" source="~/cosmos-db-nosql-python-samples/003-how-to/app_aad_default.py" id="credential":::
 
 > [!IMPORTANT]
-> For details on how to add the correct role to enable `DefaultAzureCredential` to work, see [Configure role-based access control with Microsoft Entra ID for your Azure Cosmos DB account](../how-to-setup-rbac.md). In particular, see the section on creating roles and assigning them to a principal ID.
+> For details on how to add the correct role to enable `DefaultAzureCredential` to work, see [Configure role-based access control with Microsoft Entra ID for your Azure Cosmos DB account](security/how-to-grant-data-plane-role-based-access.md). In particular, see the section on creating roles and assigning them to a principal ID.
 
 #### Create CosmosClient with a custom credential implementation
 

@@ -93,7 +93,7 @@ Like nodes within a cluster, dedicated gateway nodes across regions are independ
 The dedicated gateway has the following limitations:
 
 - Dedicated gateways are only supported on API for NoSQL accounts
-- You can't use [role-based access control (RBAC)](how-to-setup-rbac.md) to authenticate data plane requests routed through the dedicated gateway
+- You can't use [role-based access control (RBAC)](security/index.md) to authenticate data plane requests routed through the dedicated gateway
 
 
 ## Next steps
