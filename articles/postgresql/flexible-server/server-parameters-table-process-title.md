@@ -1,10 +1,10 @@
 ---
 title: Process Title server parameters
 description: Process Title server parameters for Azure Database for PostgreSQL - Flexible Server.
-author: akashraokm
-ms.author: akashrao
+author: nachoalonsoportillo
+ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 06/18/2024
+ms.date: 09/26/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
@@ -53,3 +53,5 @@ zone_pivot_groups: postgresql-server-version
 [!INCLUDE [server-parameters-table-11-process-title](./includes/server-parameters-table-11-process-title.md)]
 
 ::: zone-end
+
+
