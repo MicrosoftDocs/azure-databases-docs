@@ -2,10 +2,10 @@
 title: Optimize your Azure Cosmos DB application using rate limiting
 description: This article provides developers with a methodology to rate limit requests to Azure Cosmos DB. Implementing this pattern can reduce errors and improve overall performance for workloads that exceed the provisioned throughput of the target database or container.
 author: plasne
+ms.author: pelasne
 ms.service: azure-cosmos-db
 ms.topic: how-to
-ms.date: 08/26/2021
-ms.author: pelasne
+ms.date: 09/26/2024
 ---
 
 # Optimize your Azure Cosmos DB application using rate limiting
@@ -28,7 +28,7 @@ costs 10 request units (RUs). The total capacity required to complete this job i
 
 Spreading the requests across a period of time can be accomplished by introducing a rate limiting mechanism in your code.
 
-The RUs provisioned for a container will be evenly shared across the number of physical partitions. In the above example, if Azure Cosmos DB provisioned two physical partitions, each would have 10 K RU.
+The RUs provisioned for a container will be evenly shared across the number of physical partitions. In the previous example, if Azure Cosmos DB provisioned two physical partitions, each would have 10 K RU.
 
 For more information about Request Units, see [Request Units in Azure Cosmos DB
 ](request-units.md).
@@ -45,21 +45,21 @@ An approach to implementing rate limiting might look like this:
 1. Write your representative documents and record the RU cost.
 1. Run your representative queries and record the RU cost.
 1. Implement a function in your application to determine the cost of any given request based on your findings.
-1. Implement a rate limiting mechanism in your code to ensure that the sum of all operations sent to Azure Cosmos DB in a second do not exceed your provisioned throughput.
+1. Implement a rate limiting mechanism in your code to ensure that the sum of all operations sent to Azure Cosmos DB in a second don't exceed your provisioned throughput.
 1. Load test your application and verify that you don't exceed the provisioned throughput.
 1. Retest the RU costs periodically and update your cost function as needed.
 
 ## Indexing
 
-Unlike other SQL and NoSQL databases you may be familiar with, Azure Cosmos DB's default indexing policy for newly created containers indexes **every** property. Each property indexed increases the RU cost of writes.
+Unlike other SQL and NoSQL databases you might be familiar with, Azure Cosmos DB's default indexing policy for newly created containers indexes **every** property. Each property indexed increases the RU cost of writes.
 
 The default indexing policy can lower latency in read-heavy systems where query filter conditions are well distributed across all of the stored fields. For example, systems where Azure Cosmos DB is spending most of its time serving end-user crafted ad-hoc searches might benefit.
 
 You might want to exclude properties that are never searched against from being indexed. Removing properties from the index could improve overall system performance (cost and time) for systems that are write-heavy and record retrieval patterns are more constrained.
 
-Before measuring any costs, you should intentionally configure an appropriate index policy for your use-cases. Also, if you later change indexes, you will need to rerun all cost calculations.
+Before measuring any costs, you should intentionally configure an appropriate index policy for your use-cases. Also, if you later change indexes, you need to rerun all cost calculations. 
 
-Where possible, testing a system under development with a load reflecting typical queries at normal and peak demand conditions will help reveal what indexing policy to use.
+Where possible, testing a system under development with a load reflecting typical queries at normal and peak demand conditions help reveal what indexing policy to use.
 
 For more information about indexes, see [Indexing policies in Azure Cosmos DB](index-policy.md).
 
@@ -73,10 +73,10 @@ There are some key concepts when measuring cost:
 * The partition strategy for a collection can have a significant impact on the cost of a system. For more information, see [Partitioning and horizontal scaling in Azure Cosmos DB](partitioning-overview.md#choose-partitionkey).
 * Use representative documents and representative queries.
   * These are documents and queries that you think are close to what the operational system will come across.
-  * The best way to get these representative documents and queries is to instrument the usage of your application. It is always better to make a data-driven decision.
+  * The best way to get these representative documents and queries is to instrument the usage of your application. It's always better to make a data-driven decision.
 * Measure costs periodically.
-  * Index changes, the size of indexes can affect the cost.
-  * It will be helpful to create some repeatable (maybe even automated) test of the representative documents and queries.
+  * Index changes, the size of indexes can affect the cost. 
+  * It's helpful to create some repeatable (might be even automated) test of the representative documents and queries.
   * Ensure your representative documents and queries are still representative.
 
 The method to determine the cost of a request, is different for each API:
@@ -89,31 +89,31 @@ The method to determine the cost of a request, is different for each API:
 
 ## Write requests
 
-The cost of write operations tends to be easy to predict. You will insert records and document the cost that Azure Cosmos DB reported.
+The cost of write operations tends to be easy to predict. You insert records and document the cost that Azure Cosmos DB reported.
 
-If you have documents of different size and/or documents that will use different indexes, it is important to measure all of them.
-You may find that your representative documents are close enough in cost that you can assign a single value across all writes.
+If you have documents of different size and/or documents that use different indexes, it's important to measure all of them.
+You might find that your representative documents are close enough in cost that you can assign a single value across all writes.
 For example, if you found costs of 13.14 RU, 16.01 RU, and 12.63 RU, you might average those costs to 14 RU.
 
 ## Read requests
 
-The cost of query operations can be much harder to predict for the following reasons:
+The cost of query operations can be harder to predict for the following reasons:
 
-* If your system supports user-defined queries, you will need to map the incoming queries to the representative queries to help determine the cost. There are various forms this process might take:
-  * It may be possible to match the queries exactly. If there is no direct match, you may have to find the representative query that it is closest to.
-  * You may find that you can calculate a cost based on characteristics of the query. For example, you may find that each clause of the query has a certain cost,
+* If your system supports user-defined queries, you need to map the incoming queries to the representative queries to help determine the cost. There are various forms this process might take:
+  * It might be possible to match the queries exactly. If there's no direct match, you might have to find the representative query that it's closest to.
+  * You might find that you can calculate a cost based on characteristics of the query. For example, you might find that each clause of the query has a certain cost,
   or that an indexed property costs "x" while one not indexed costs "y", etc.
-* The number of results can vary and unless you have statistics, you cannot predict the RU impact from the return payload.
+* The number of results can vary and unless you have statistics, you can't predict the RU impact from the return payload.
 
-It is likely you will not have a single cost of query operations, but rather some function that evaluates the query and calculates a cost.
-If you are using the API for NoSQL, you could then evaluate the actual cost of the operation and determine how accurate your estimation was
+It's likely you won't have a single cost of query operations, but rather some function that evaluates the query and calculates a cost.
+If you're using the API for NoSQL, you could then evaluate the actual cost of the operation and determine how accurate your estimation was
 (tuning of this estimation could even happen automatically within the code).
 
 ## Transient fault handling
 
 Your application will still need transient fault handling even if you implement a rate limiting mechanism for the following reasons:
 
-* The actual cost of a request may be different than your projected cost.
+* The actual cost of a request might be different than your projected cost.
 * Transient faults can occur for reasons other than TooManyRequests.
 
 However, properly implementing a rate limiting mechanism in your application will substantially reduce the number of transient faults.
@@ -126,10 +126,9 @@ While this article describes client-side coordination and batching of workloads,
 
 Autoscale provisioned throughput in Azure Cosmos DB allows you to scale the throughput (RU/s) of your database or container automatically and instantly. The throughput is scaled based on the usage, without impacting the availability, latency, throughput, or performance of the workload.
 
-Autoscale provisioned throughput is well suited for mission-critical workloads that have variable or unpredictable traffic patterns, and require SLAs on high performance and scale.
+Autoscale provisioned throughput is well suited for mission-critical workloads that have variable or unpredictable traffic patterns, and require service level agreements (SLAs) on high performance and scale.
 
-For more information on autoscaling, see [Create Azure Cosmos DB containers and databases with autoscale throughput
-](provision-throughput-autoscale.md).
+For more information on autoscaling, see [Create Azure Cosmos DB containers and databases with autoscale throughput](provision-throughput-autoscale.md).
 
 ### Queue-Based Load Leveling pattern
 
