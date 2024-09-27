@@ -20,11 +20,11 @@ Azure Cosmos DB provides three ways to control access to your data.
 
 | Access control type | Characteristics |
 |---|---|
-| [Primary/secondary keys](#primary-keys) | Shared secret allowing any management or data operation. It comes in both read-write and read-only variants. |
-| [Role-based access control (RBAC)](#rbac) | Fine-grained, role-based permission model using Microsoft Entra identities for authentication. |
+| [Primary/secondary keys](#primarysecondary-keys) | Shared secret allowing any management or data operation. It comes in both read-write and read-only variants. |
+| [Role-based access control (RBAC)](#role-based-access-control) | Fine-grained, role-based permission model using Microsoft Entra identities for authentication. |
 | [Resource tokens](#resource-tokens)| Fine-grained permission model based on native Azure Cosmos DB users and permissions. |
 
-##  Primary/secondary keys
+## Primary/secondary keys
 
 Primary/secondary keys provide access to all the administrative resources for the database account. Each account consists of two keys: a primary key and secondary key. The purpose of dual keys is to let you regenerate, or roll, keys, providing continuous access to your account and data. To learn more about primary/secondary keys, see [Overview of database security in Azure Cosmos DB](database-security.md#primary-keys).
 
@@ -32,10 +32,10 @@ To see your account keys, on the left menu select **Keys**. Then, select the **V
 
 :::image type="content" source="./media/database-security/view-account-key.png" alt-text="Screenshot of the View account key for Azure Cosmos DB.":::
 
-###  Key rotation and regeneration
+### Key rotation and regeneration
 
 > [!NOTE]
-> The following section describes the steps to rotate and regenerate keys for the API for NoSQL. If you're using a different API, see the [API for MongoDB](database-security.md?tabs=mongo-api#key-rotation), [API for Cassandra](database-security.md?tabs=cassandra-api#key-rotation), [API for Gremlin](database-security.md?tabs=gremlin-api#key-rotation), or [API for Table](database-security.md?tabs=table-api#key-rotation) sections.
+> The following section describes the steps to rotate and regenerate keys for the API for NoSQL. If you're using a different API, see the [API for MongoDB](database-security.md?tabs=mongo-api), [API for Cassandra](database-security.md?tabs=cassandra-api), [API for Gremlin](database-security.md?tabs=gremlin-api), or [API for Table](database-security.md?tabs=table-api) sections.
 >
 > To monitor your account for key updates and key regeneration, see [Monitor your Azure Cosmos DB account for key updates and key regeneration](monitor-account-key-updates.md).
 
@@ -90,7 +90,7 @@ private static readonly string authorizationKey = ConfigurationManager.AppSettin
 CosmosClient client = new CosmosClient(endpointUrl, authorizationKey);
 ```
 
-##  Role-based access control
+## Role-based access control
 
 Azure Cosmos DB exposes a built-in RBAC system that lets you:
 
@@ -108,7 +108,7 @@ To learn more about Azure Cosmos DB RBAC, see [Configure role-based access contr
 
 For information and sample code to configure RBAC for the Azure Cosmos DB for MongoDB, see [Configure role-based access control for your Azure Cosmos DB for MongoDB](mongodb/how-to-setup-rbac.md).
 
-##  Resource tokens
+## Resource tokens
 
 Resource tokens provide access to the application resources within a database. Resource tokens:
 
