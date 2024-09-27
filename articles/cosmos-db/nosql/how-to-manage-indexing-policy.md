@@ -20,7 +20,7 @@ In Azure Cosmos DB, data is indexed following [indexing policies](../index-polic
 
 ## Indexing policy examples
 
-Here are some examples of indexing policies shown in [their JSON format](../index-policy.md#include-exclude-paths). They're exposed on the Azure portal in JSON format. The same parameters can be set through the Azure CLI or any SDK.
+Here are some examples of indexing policies shown in [their JSON format](../index-policy.md). They're exposed on the Azure portal in JSON format. The same parameters can be set through the Azure CLI or any SDK.
 
 ### <a id="range-index"></a>Opt-out policy to selectively exclude some property paths
 

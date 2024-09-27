@@ -6,7 +6,7 @@ author: iriaosara
 ms.author: iriaosara
 ms.service: azure-cosmos-db
 ms.topic: how-to
-ms.date: 07/12/2023
+ms.date: 09/26/2024
 ---
 
 # Configure role-based access control with Microsoft Entra ID for your Azure Cosmos DB account
@@ -26,15 +26,15 @@ Azure Cosmos DB exposes a built-in role-based access control system that lets yo
 The Azure Cosmos DB data plane role-based access control is built on concepts that are commonly found in other role-based access control systems like [Azure role-based access control](/azure/role-based-access-control/overview):
 
 - The [permission model](#permission-model) is composed of a set of **actions**; each of these actions maps to one or multiple database operations. Some examples of actions include reading an item, writing an item, or executing a query.
-- Azure Cosmos DB users create **[role definitions](#role-definitions)** containing a list of allowed actions.
-- Role definitions get assigned to specific Microsoft Entra identities through **[role assignments](#role-assignments)**. A role assignment also defines the scope that the role definition applies to; currently, three scopes are currently:
+- Azure Cosmos DB users create **[role definitions](#create-custom-role-definitions)** containing a list of allowed actions.
+- Role definitions get assigned to specific Microsoft Entra identities through **[role assignments](#create-role-assignments)**. A role assignment also defines the scope that the role definition applies to; currently, three scopes are currently:
   - An Azure Cosmos DB account,
   - An Azure Cosmos DB database,
   - An Azure Cosmos DB container.
 
 :::image type="content" source="./media/how-to-setup-rbac/concepts.svg" alt-text="Diagram of common role-based access control concepts including role definitions, role assignments, and principals.":::
 
-## <a id="permission-model"></a> Permission model
+## Permission model
 
 > [!IMPORTANT]
 > This permission model covers only database operations that involve reading and writing data. It **does not** cover any kind of management operations on management resources, including:
@@ -60,7 +60,7 @@ The Azure Cosmos DB data plane role-based access control is built on concepts th
 
 This table lists all the actions exposed by the permission model.
 
-| Name | Corresponding database operation(s) |
+| Name | Corresponding database operations |
 |---|---|
 | `Microsoft.DocumentDB/databaseAccounts/readMetadata` | Read account metadata. See [Metadata requests](#metadata-requests) for details. |
 | `Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/create` | Create a new item. |
@@ -69,7 +69,7 @@ This table lists all the actions exposed by the permission model.
 | `Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/upsert` | "Upsert" an item. This operation creates an item if it doesn't already exist, or to replace the item if it does exist. |
 | `Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/delete` | Delete an item. |
 | `Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/executeQuery` | Execute a [SQL query](nosql/query/getting-started.md). |
-| `Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/readChangeFeed` | Read from the container's [change feed](read-change-feed.md). Execute [SQL queries](nosql/query/getting-started.md) using the SDKs. |
+| `Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/readChangeFeed` | Read from the container's [change feed](read-change-feed.md). Execute [SQL queries](nosql/query/getting-started.md) using the software development kits (SDKs). |
 | `Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/executeStoredProcedure` | Execute a [stored procedure](stored-procedures-triggers-udfs.md). |
 | `Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/manageConflicts` | Manage [conflicts](conflict-resolution-policies.md) for multi-write region accounts (that is, list and delete items from the conflict feed). |
 
@@ -81,7 +81,7 @@ Wildcards are supported at both *containers* and *items* levels:
 - `Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/*`
 - `Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/*`
 
-### <a id="metadata-requests"></a> Metadata requests
+### Metadata requests
 
 The Azure Cosmos DB SDKs issue read-only metadata requests during initialization and to serve specific data requests. These requests fetch various configuration details such as:
 
@@ -116,7 +116,7 @@ Azure Cosmos DB exposes two built-in role definitions:
 | 00000000-0000-0000-0000-000000000001 | Cosmos DB Built-in Data Reader | `Microsoft.DocumentDB/databaseAccounts/readMetadata`<br />`Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/read`<br />`Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/executeQuery`<br />`Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/readChangeFeed` |
 | 00000000-0000-0000-0000-000000000002 | Cosmos DB Built-in Data Contributor | `Microsoft.DocumentDB/databaseAccounts/readMetadata`<br />`Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/*`<br />`Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/*` |
 
-## <a id="role-definitions"></a> Create custom role definitions
+## Create custom role definitions
 
 When creating a custom role definition, you need to provide:
 
@@ -125,7 +125,7 @@ When creating a custom role definition, you need to provide:
 - The type of the role definition: `CustomRole`.
 - The name of the role definition.
 - A list of [actions](#permission-model) that you want the role to allow.
-- One or multiple scope(s) that the role definition can be assigned at; supported scopes are:
+- One or multiple scopes that the role definition can be assigned at; supported scopes are:
   - `/` (account-level),
   - `/dbs/<database-name>` (database-level),
   - `/dbs/<database-name>/colls/<container-name>` (container-level).
@@ -298,7 +298,7 @@ az cosmosdb sql role definition list --account-name $accountName --resource-grou
 
 For a reference and examples of using Azure Resource Manager templates to create role definitions, see [``Microsoft.DocumentDB`` ``databaseAccounts/sqlRoleDefinitions``](/azure/templates/microsoft.documentdb/2021-10-15/databaseaccounts/sqlroledefinitions).
 
-## <a id="role-assignments"></a> Create role assignments
+## Create role assignments
 
 You can associate built-in or custom role definitions with your Microsoft Entra identities. When creating a role assignment, you need to provide:
 
@@ -370,8 +370,6 @@ resource sqlRoleAssignment 'Microsoft.DocumentDB/databaseAccounts/sqlRoleAssignm
 ```
 
 For a reference and examples of using Azure Resource Manager templates to create role assignments, see [``Microsoft.DocumentDB`` ``databaseAccounts/sqlRoleAssignments``](/azure/templates/microsoft.documentdb/2021-10-15/databaseaccounts/sqlroleassignments).
-
-<a name='initialize-the-sdk-with-azure-ad'></a>
 
 ## Initialize the SDK with Microsoft Entra ID
 
@@ -450,21 +448,21 @@ When constructing the [REST API authorization header](/rest/api/cosmos-db/access
 
 ## Use data explorer
 
-The use of Azure Cosmos DB role-based access control within Data Explorer (either exposed in the Azure Portal or at [https://cosmos.azure.com](https://cosmos.azure.com)) is governed by the **Enable Entra ID RBAC** setting. You can access this setting via the "wheel" icon at the upper right-hand side of the Data Explorer interface. 
+The use of Azure Cosmos DB role-based access control within Data Explorer (either exposed in the Azure portal or at [https://cosmos.azure.com](https://cosmos.azure.com)) is governed by the **Enable Entra ID RBAC** setting. You can access this setting via the "wheel" icon at the upper right-hand side of the Data Explorer interface.
 
 The setting has three possible values:
-- **Automatic (default)**: In this mode, role-based access control will be automatically used if the account has [disabled the use of keys](#disable-local-auth). Otherwise, Data Explorer will use account keys for data requests.
+- **Automatic (default)**: In this mode, role-based access control is automatically used if the account has [disabled the use of keys](#enforcing-role-based-access-control-as-the-only-authentication-method). Otherwise, Data Explorer uses account keys for data requests.
 
-- **True**: In this mode, role-based access will always be used for Data Explorer data requests. If the account has not been enabled for role-based access , then the requests will fail.
+- **True**: In this mode, role-based access will always be used for Data Explorer data requests. If the account hasn't been enabled for role-based access, then the requests fail.
 
-- **False**: In this mode, account keys will always be used for Data Explorer data requests. If the account has disabled the use of keys, then the requests will fail.
+- **False**: In this mode, account keys will always be used for Data Explorer data requests. If the account has disabled the use of keys, then the requests fail.
 
-When using modes that enable role-based access in the Azure Portal Data Explorer, you must click on the **Login for Entra ID RBAC** button (located on the Data Explorer command bar) prior to making any data requests. This is not necessary when using the Cosmos Explorer at cosmos.azure.com. Please ensure that the signed in identity has been [assigned with proper role definitions](#role-assignments) to enable data access.
+When using modes that enable role-based access in the Azure portal Data Explorer, you must select on the **Login for Entra ID RBAC** button (located on the Data Explorer command bar) prior to making any data requests. This isn't necessary when using the Cosmos Explorer at cosmos.azure.com. Ensure that the signed in identity has been [assigned with proper role definitions](#create-role-assignments) to enable data access.
 
-Also note that changing the mode to one that uses account keys may trigger a request to fetch the primary key on behalf of the identity that is signed in.
+Also note that changing the mode to one that uses account keys could trigger a request to fetch the primary key on behalf of the identity that is signed in.
 
 > [!NOTE]
-> Previously, role-based access was only supported in Cosmos Explorer using `https://cosmos.azure.com/?feature.enableAadDataPlane=true`. This is still supported and will override the value of the **Enable Entra ID RBAC** setting. Using this query parameter is equivalent to using the 'True' mode mentioned above.
+> Previously, role-based access was only supported in Cosmos Explorer using `https://cosmos.azure.com/?feature.enableAadDataPlane=true`. This is still supported and will override the value of the **Enable Entra ID RBAC** setting. Using this query parameter is equivalent to using the 'True' mode mentioned previously.
 ## Audit data requests
 
 [Diagnostic logs](monitor-resource-logs.md) get augmented with identity and authorization information for each data operation when using Azure Cosmos DB role-based access control. This augmentation lets you perform detailed auditing and retrieve the Microsoft Entra identity used for every data request sent to your Azure Cosmos DB account.
@@ -472,9 +470,9 @@ Also note that changing the mode to one that uses account keys may trigger a req
 This additional information flows in the **DataPlaneRequests** log category and consists of two extra columns:
 
 - `aadPrincipalId_g` shows the principal ID of the Microsoft Entra identity that was used to authenticate the request.
-- `aadAppliedRoleAssignmentId_g` shows the [role assignment](#role-assignments) that was honored when authorizing the request.
+- `aadAppliedRoleAssignmentId_g` shows the [role assignment](#create-role-assignments) that was honored when authorizing the request.
 
-## <a id="disable-local-auth"></a> Enforcing role-based access control as the only authentication method
+## Enforcing role-based access control as the only authentication method
 
 In situations where you want to force clients to connect to Azure Cosmos DB through role-based access control exclusively, you can disable the account's primary/secondary keys. When doing so, any incoming request using either a primary/secondary key or a resource token is actively rejected.
 
@@ -517,9 +515,7 @@ Azure portal support for role management isn't available yet.
 
 ### Which SDKs in Azure Cosmos DB API for NoSQL support role-based access control?
 
-The [.NET V3](nosql/sdk-dotnet-v3.md), [Java V4](nosql/sdk-java-v4.md), [JavaScript V3](nosql/sdk-nodejs.md) and [Python V4.3+](nosql/sdk-python.md) SDKs are currently supported.
-
-<a name='is-the-azure-ad-token-automatically-refreshed-by-the-azure-cosmos-db-sdks-when-it-expires'></a>
+The [.NET V3](nosql/sdk-dotnet-v3.md), [Java V4](nosql/sdk-java-v4.md), [JavaScript V3](nosql/sdk-nodejs.md), and [Python V4.3+](nosql/sdk-python.md) SDKs are currently supported.
 
 ### Is the Microsoft Entra token automatically refreshed by the Azure Cosmos DB SDKs when it expires?
 
@@ -527,9 +523,9 @@ Yes.
 
 ### Is it possible to disable the usage of the account primary/secondary keys when using role-based access control?
 
-Yes, see [Enforcing role-based access control as the only authentication method](#disable-local-auth).
+Yes, see [Enforcing role-based access control as the only authentication method](#enforcing-role-based-access-control-as-the-only-authentication-method).
 
-## Next steps
+## Related content
 
-- Get an overview of [secure access to data in Azure Cosmos DB](secure-access-to-data.md).
-- Learn more about [role-based access control for Azure Cosmos DB management](role-based-access-control.md).
+- [Secure access to data in Azure Cosmos DB](secure-access-to-data.md).
+- [Role-based access control for Azure Cosmos DB management](role-based-access-control.md).
