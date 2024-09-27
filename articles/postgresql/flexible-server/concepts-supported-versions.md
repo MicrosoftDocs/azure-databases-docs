@@ -24,7 +24,7 @@ PostgreSQL version 17 preview is now available in all Azure regions. Refer to th
 
 ## PostgreSQL version 16
 
-The current minor release is **[!INCLUDE [minorversions-16](./includes/minorversion-16.md)]**. Refer to the [PostgreSQL documentation](https://www.postgresql.org/docs/release/16.4/) to learn more about improvements and fixes in this release. New servers are created with this minor version. 
+The current minor release is **[!INCLUDE [minorversions-16](./includes/minor-version-16.md)]**. Refer to the [PostgreSQL documentation](https://www.postgresql.org/docs/release/16.4/) to learn more about improvements and fixes in this release. New servers are created with this minor version. 
 
 ## PostgreSQL version 15
 
