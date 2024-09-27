@@ -5,8 +5,8 @@ description: Azure Cosmos DB has five consistency levels to help balance eventua
 author: markjbrown
 ms.author: mjbrown
 ms.service: azure-cosmos-db
-ms.topic: conceptual
-ms.date: 02/27/2023
+ms.topic: concept-article
+ms.date: 09/26/2024
 ms.custom: cosmos-db-video
 ---
 
@@ -185,7 +185,7 @@ The exact RTT latency is a function of speed-of-light distance and the Azure net
 > [!NOTE]
 > The RUs cost of reads for Local Minority reads is twice that of weaker consistency levels because reads are made from two replicas to provide consistency guarantees for the Strong and Bounded Staleness consistency levels.
 
-## <a id="rto"></a>Consistency levels and data durability
+## Consistency levels and data durability
 
 Within a globally distributed database environment, there's a direct relationship between the consistency level and data durability in the presence of a region-wide outage. As you develop your business continuity plan, you need to understand the maximum period of recent data updates the application can tolerate losing when recovering after a disruptive event. The time period of updates that you might afford to lose is known as **recovery point objective** (**RPO**).
 
@@ -222,9 +222,7 @@ To learn more about consistency concepts, read the following articles:
 - [Probabilistic Bounded Staleness (PBS) for Practical Partial Quorums](https://vldb.org/pvldb/vol5/p776_peterbailis_vldb2012.pdf)
 - [Eventually Consistent - Revisited](https://www.allthingsdistributed.com/2008/12/eventually_consistent.html)
 
-## Next steps
-
-To learn more about consistency levels in Azure Cosmos DB, read the following articles:
+## Related content
 
 - [Configure the default consistency level](how-to-manage-consistency.md#configure-the-default-consistency-level)
 - [Override the default consistency level](how-to-manage-consistency.md#override-the-default-consistency-level)
