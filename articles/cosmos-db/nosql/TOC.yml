@@ -928,8 +928,6 @@
               href: ../access-key-vault-managed-identity.md
         - name: Use managed identities with Azure services
           href: ../how-to-setup-managed-identity.md
-        - name: Use managed identities to access data
-          href: ../managed-identity-based-authentication.yml
           displayName: msi, managed service identity, aad, azure active directory, identity
         - name: Role-based access control
           items:
