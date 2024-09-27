@@ -13,9 +13,9 @@ ms.topic: how-to
 
 # How to enable and use diskann extension for Azure Database for PostgreSQL - Flexible Server (Preview)
 
-DiskANN is a scalable approximate nearest neighbor search algorithm designed for efficient vector search at any scale. It offers high recall, high queries per second (QPS), and low query latency even for billion-point datasets. This makes it a powerful tool for handling large volumes of data. [Learn more about DiskANN from Microsoft](https://www.microsoft.com/en-us/research/project/project-akupara-approximate-nearest-neighbor-search-for-large-scale-semantic-search/)
+DiskANN is a scalable approximate nearest neighbor search algorithm for efficient vector search at any scale. It offers high recall, high queries per second (QPS), and low query latency, even for billion-point datasets. This makes it a powerful tool for handling large volumes of data. [Learn more about DiskANN from Microsoft](https://www.microsoft.com/en-us/research/project/project-akupara-approximate-nearest-neighbor-search-for-large-scale-semantic-search/)
 
-The `pg_diskann` extension for Azure Database for PostgreSQL flexible server adds support for using the DiskANN for efficient vectors indexing and searching.
+The `pg_diskann` extension for Azure Database for PostgreSQL flexible server adds support for using the DiskANN for efficient vector indexing and searching.
 
 ## Enable `pg_diskann` extension
 
@@ -24,17 +24,17 @@ Before you can enable `pg_diskann` on your Azure Database for PostgreSQL flexibl
 :::image type="content" source="media/how-to-use-pgdiskann/select-diskann-azure-extension.png" alt-text="Screenshot of selecting pg_diskann in server parameters." lightbox="media/how-to-use-pgdiskann/select-diskann-azure-extension.png":::
 
 > [!WARNING]
-> As of October 9th, 2024, this extension is only available on databases created after October 9th, 2024, this extension will roll out to existing server in Mid November.
+> As of October 9th, 2024, this extension is only available on databases created after October 9th, 2024; this extension will roll out to existing servers in November.
 
-Then you can install the extension, by connecting to your target database and running the [CREATE EXTENSION](https://www.postgresql.org/docs/current/static/sql-createextension.html) command. You need to repeat the command separately for every database you want the extension to be available in.
+Then, you can install the extension by connecting to your target database and running the [CREATE EXTENSION](https://www.postgresql.org/docs/current/static/sql-createextension.html) command. You need to repeat the command separately for every database in which you want the extension to be available.
 
 ```sql
 CREATE EXTENSION IF NOT EXISTS pg_diskann CASCADE;
 ```
-*This command will enable `pgvector` if it is not already installed in your PostgreSQL database.*
+*This command enables `pgvector` if it hasn't already been installed in your PostgreSQL database.*
 
-> [!NOTE]  
-> To remove the extension from the currently connected database use `DROP EXTENSION vector;`.
+> [!NOTE]  
+> To remove the extension from the currently connected database, use `DROP EXTENSION vector;`.
 
 ## Using `diskann` Index Access Method
 
@@ -42,16 +42,16 @@ Once the extension is installed, you can create a `diskann` index on a table col
 
 ```sql
 CREATE TABLE my_table (
-    id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    embedding public.vector(3)
-    -- other columns
+ id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+ embedding public.vector(3)
+    -- other columns
 );
 -- insert dummy data
 INSERT INTO my_table (embedding) VALUES
 ('[1.0, 2.0, 3.0]'),
 ('[4.0, 5.0, 6.0]'),
 ('[7.0, 8.0, 9.0]');
--- create a diskann index by using L2 distance operator
+-- create a diskann index by using the L2 distance operator
 CREATE INDEX my_table_embedding_diskann_idx ON my_table USING diskann (embedding vector_l2_ops)
 ```
 
@@ -60,14 +60,14 @@ CREATE INDEX my_table_embedding_diskann_idx ON my_table USING diskann (embedding
 When creating an index with `diskann`, you can specify various parameters to control its behavior. Here are the options that we currently have:
 
 - `max_neighbors`: Maximum number of edges per node in the graph. (Defaults to 32)
-- `l_value_ib`: The size of search list during index build (Defaults to 50)
+- `l_value_ib`: The size of the search list during index build (Defaults to 50)
 
 ```sql
 CREATE INDEX my_table_embedding_diskann_custom_idx ON my_table USING diskann (embedding vector_l2_ops)
 WITH (
-    max_neighbors = 48,
-    l_value_ib = 100
-    );
+ max_neighbors = 48,
+ l_value_ib = 100
+ );
 ```
 
 The L value for index scanning (`l_value_is`) can be set for the whole connection or per transaction (using `SET LOCAL` within a transaction block):
@@ -75,7 +75,7 @@ The L value for index scanning (`l_value_is`) can be set for the whole connectio
 ```sql
 SET diskann.l_value_is = 100;
 SELECT * FROM my_table ORDER BY embedding <=> '[1,2,3]' LIMIT 5; -- uses 100 candidates
-SELECT * FROM my_table  ORDER BY embedding <=> '[1,2,3]' LIMIT 5; -- uses 100 candidates
+SELECT * FROM my_table  ORDER BY embedding <=> '[1,2,3]' LIMIT 5; -- uses 100 candidates
 ```
 
 ## Indexing progress
@@ -92,7 +92,7 @@ Phases for building DiskANN indexes are:
 
 ### Selecting the index access function
 
-The vector type allows you to perform three types of searches on the stored vectors. You need to select the correct access function for your index in order to have the database consider your index when executing your queries.
+The vector type allows you to perform three types of searches on the stored vectors. You need to select the correct access function for your index so the database can consider your index when executing your queries.
 
 `pg_diskann` supports following distance operators
 - `vector_l2_ops`: `<->` Euclidean distance
