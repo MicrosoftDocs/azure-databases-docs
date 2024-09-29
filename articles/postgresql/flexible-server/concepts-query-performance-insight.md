@@ -44,9 +44,17 @@ Query Performance Insight provides intelligent query analysis for Azure Database
 
 You need the following [Azure role-based access control (Azure RBAC)](/azure/role-based-access-control/overview) permissions to use Query Performance Insight:
 
-- On the Log Analytics workspace, **Microsoft.Insights/Components/read**, **Microsoft.Insights/DiagnosticSettings/read**, **Microsoft.Insights/DiagnosticSettingsCategories/read**, **Microsoft.Insights/Logs/AzureDiagnostics/read**, and **Microsoft.Insights/Logs/read**.
-- On the Azure Database for PostgreSQL flexible server, **Microsoft.DBforPostgreSQL/flexibleServers/configurations/read**, **Microsoft.DBforPostgreSQL/flexibleServers/providers/Microsoft.Insights/diagnosticSettings/read**, and **Microsoft.DBforPostgreSQL/flexibleServers/read**.
-  
+- On the Log Analytics workspace
+    - **Microsoft.Insights/Logs/read**
+- On the Azure Database for PostgreSQL flexible server:
+    - **Microsoft.DBforPostgreSQL/flexibleServers/configurations/read**
+    - **Microsoft.DBforPostgreSQL/flexibleServers/providers/Microsoft.Insights/diagnosticSettings/read**
+    - **Microsoft.DBforPostgreSQL/flexibleServers/read**
+    - **Microsoft.Insights/Components/read**
+    - **Microsoft.Insights/DiagnosticSettings/read**
+    - **Microsoft.Insights/DiagnosticSettingsCategories/read**
+    - **Microsoft.Insights/Logs/AzureDiagnostics/read**
+
 ## Using Query Performance Insight
 
 The Query Performance Insight view in the Azure portal surfaces visualizations on key information from Query Store. Query Performance Insight is easy to use:
