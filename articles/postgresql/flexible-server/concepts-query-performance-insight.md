@@ -1,10 +1,10 @@
 ---
 title: Query Performance Insight
 description: This article describes the Query Performance Insight feature in  Azure Database for PostgreSQL - Flexible Server.
-author: varun-dhawan
-ms.author: varundhawan
+author: nachoalonsoportillo
+ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 04/27/2024
+ms.date: 09/29/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: conceptual
@@ -40,6 +40,13 @@ Query Performance Insight provides intelligent query analysis for Azure Database
 > [!NOTE]
 > The **Query Store data is not being transmitted to the log analytics workspace**. The Azure Database for PostgreSQL flexible server logs (Sessions data / Query Store Runtime / Query Store Wait Statistics) is not being sent to the log analytics workspace, which is necessary to use Query Performance Insight. To configure the logging settings for category Azure Database for PostgreSQL flexible server sessions and send the data to a log analytics workspace.
 
+## Permissions
+
+You need the following [Azure role-based access control (Azure RBAC)](/azure/role-based-access-control/overview) permissions to use Query Performance Insight:
+
+- On the Log Analytics workspace, **Microsoft.Insights/Components/read**, **Microsoft.Insights/DiagnosticSettings/read**, **Microsoft.Insights/DiagnosticSettingsCategories/read**, **Microsoft.Insights/Logs/AzureDiagnostics/read**, and **Microsoft.Insights/Logs/read**.
+- On the Azure Database for PostgreSQL flexible server, **Microsoft.DBforPostgreSQL/flexibleServers/configurations/read**, **Microsoft.DBforPostgreSQL/flexibleServers/providers/Microsoft.Insights/diagnosticSettings/read**, and **Microsoft.DBforPostgreSQL/flexibleServers/read**.
+  
 ## Using Query Performance Insight
 
 The Query Performance Insight view in the Azure portal will surface visualizations on key information from Query Store. Query Performance Insight is easy to use:
