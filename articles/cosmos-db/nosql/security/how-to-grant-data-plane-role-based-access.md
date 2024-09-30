@@ -477,7 +477,7 @@ Now, assign the newly defined role to an identity so that your applications can 
 
 ::: zone-end
 
-## Validate role-based access control in code
+## Validate data plane access in code
 
 Finally, validate that you correctly granted access using application code and the Azure SDK in your preferred programming language.
 
