@@ -47,13 +47,70 @@ This article walks through the steps to grant an identity access to manage data 
 
 ::: zone pivot="azure-interface-cli,azure-interface-bicep"
 
-1. TODO
+List all of the role definitions associated with your Azure Cosmos DB for NoSQL account using [`az cosmosdb sql role definition list`](/cli/azure/cosmosdb/sql/role/definition#az-cosmosdb-sql-role-definition-list). Review the output and locate the role definition named **Cosmos DB Built-in Data Contributor**. The output contains the unique identifier of the role definition in the `id` property. Record this value as it is required to use in the assignment step later in this guide.
+
+```azurecli-interactive
+az cosmosdb sql role definition list \
+    --resource-group "<name-of-existing-resource-group>" \
+    --account-name "<name-of-existing-nosql-account>"
+```
+
+```json
+[
+  ...,
+  {
+    "assignableScopes": [
+      "/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/msdocs-identity-example/providers/Microsoft.DocumentDB/databaseAccounts/msdocs-identity-example-nosql"
+    ],
+    "id": "/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/msdocs-identity-example/providers/Microsoft.DocumentDB/databaseAccounts/msdocs-identity-example-nosql/sqlRoleDefinitions/00000000-0000-0000-0000-000000000002",
+    "name": "00000000-0000-0000-0000-000000000002",
+    "permissions": [
+      {
+        "dataActions": [
+          "Microsoft.DocumentDB/databaseAccounts/readMetadata",
+          "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/*",
+          "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/*"
+        ],
+        "notDataActions": []
+      }
+    ],
+    "resourceGroup": "msdocs-identity-example",
+    "roleName": "Cosmos DB Built-in Data Contributor",
+    "type": "Microsoft.DocumentDB/databaseAccounts/sqlRoleDefinitions",
+    "typePropertiesType": "BuiltInRole"
+  }
+  ...
+]
+```
+
+> [!NOTE]
+> In this example, the `id` value would be `/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/msdocs-identity-example/providers/Microsoft.DocumentDB/databaseAccounts/msdocs-identity-example-nosql/sqlRoleDefinitions/00000000-0000-0000-0000-000000000002`. This example uses fictituous data and your identifier would be distinct from this example.
 
 ::: zone-end
 
 ::: zone pivot="azure-interface-shell"
 
-1. TODO
+Use [`Get-AzCosmosDBSqlRoleDefinition`](/powershell/module/az.cosmosdb/get-azcosmosdbsqlroledefinition) to list all of the role definitions associated with your Azure Cosmos DB for NoSQL account. Review the output and locate the role definition named **Cosmos DB Built-in Data Contributor**. The output contains the unique identifier of the role definition in the `Id` property. Record this value as it is required to use in the assignment step later in this guide.
+
+```azurepowershell-interactive
+$parameters = @{
+    ResourceGroupName = "<name-of-existing-resource-group>"
+    AccountName = "<name-of-existing-nosql-account>"
+}
+Get-AzCosmosDBSqlRoleDefinition @parameters
+```
+
+```output
+Id                         : /subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/msdocs-identity-example/providers/Microsoft.DocumentDB/databaseAccounts/msdocs-identity-example-nosql/sqlRoleDefinitions/00000000-0000-0000-0000-000000000002
+RoleName                   : Cosmos DB Built-in Data Contributor
+Type                       : BuiltInRole
+AssignableScopes           : {/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/msdocs-identity-example/providers/Microsoft.DocumentDB/databaseAccountsmsdocs-identity-example-nosql}
+Permissions.DataActions    : {Microsoft.DocumentDB/databaseAccounts/readMetadata, Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/*, Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/*}
+Permissions.NotDataActions : 
+```
+
+> [!NOTE]
+> In this example, the `Id` value would be `/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/msdocs-identity-example/providers/Microsoft.DocumentDB/databaseAccounts/msdocs-identity-example-nosql/sqlRoleDefinitions/00000000-0000-0000-0000-000000000002`. This example uses fictituous data and your identifier would be distinct from this example.
 
 ::: zone-end
 
