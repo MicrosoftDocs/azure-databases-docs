@@ -83,7 +83,7 @@
       href: manage-with-bicep.md
     - name: Manage using Resource Manager templates
       href: resource-manager-template-samples.md
-    - name: Azure Resource Graph queries
+    - name: Queries for Azure Resource Graph
       href: ../resource-graph-samples.md
 - name: Concepts
   items:
