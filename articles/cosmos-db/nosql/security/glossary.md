@@ -24,6 +24,28 @@ This article includes a glossary of common terminology used in this security gui
 
 [!INCLUDE[Security glossary](../../includes/security-glossary.md)]
 
+## Scope (Azure Cosmos DB native)
+
+In Azure Cosmos DB's native implementation of role-based access control, scope refers to the granularity of resources within an account for which you want permission applied.
+
+At the highest level, you can scope a data plane role-based access control assignment to the entire account using the largest scope. This scope includes all databases and containers within the account:
+
+```output
+/
+```
+
+Or, you can scope your data plane role assignment to a specific database:
+
+```output
+/dbs/<database-name>
+```
+
+Finally, you can scope the assignment to a single container, the most granular scope:
+
+```output
+/dbs/<database-name>/colls/<container-name>
+```
+
 ## Next step
 
 > [!div class="nextstepaction"]

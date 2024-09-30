@@ -187,3 +187,21 @@ Each modern Azure SDK library supports a constructor for their respective client
 ## Unique identifier
 
 Each [identity](#identityprincipal) in Microsoft Entra has a unique identifier. You sometimes see this unique identifier referred to as the `id`, `objectId`, or `principalId`. When creating [role assignments](#role-assignment), you need the unique identifier for the identity that you with to use with the assignment.
+
+## Scope
+
+In Azure role-based access control, scope refers to the hierarchy of resources that the permissions you grant applies to. When you assign a role, you set the scope of that assignment to include as little or as many resources as possible. For example, you can set the scope of an assignment to a resource group:
+
+```output
+/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>
+```
+
+That resource group scope includes all Azure Cosmos DB accounts within the resource group.
+
+Alternatively, you can set the scope to a single Azure Cosmos DB account and make your assignment of permissions more granular and narrow:
+
+```output
+/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.DocumentDB/databaseAccounts/<account-name>
+```
+
+For more information, see [Azure role-based access control scope](/azure/role-based-access-control/scope-overview).
