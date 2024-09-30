@@ -147,7 +147,7 @@ az role definition list \
 
 1. In the **Cosmos DB Operator** role definition dialog, observe the actions assigned as part of this role definition.
 
-    :::image source="media/how-to-grant-control-plane-role-based-access/role-definition-dialog" alt-text="Screenshot of the 'Cosmos DB Operator' dialog with details about the built-in role definition.":::
+    :::image source="media/how-to-grant-control-plane-role-based-access/role-definition-dialog.png" alt-text="Screenshot of the 'Cosmos DB Operator' dialog with details about the built-in role definition.":::
 
 1. Close the **Cosmos DB Operator** role definition dialog.
 
