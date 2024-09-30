@@ -46,9 +46,9 @@ This article walks through the steps to grant an identity access to manage data 
 
 ## Prepare role definition
 
-### [Built-in definition](#tab/built-in-definition)
-
 First, you must prepare a role definition with a list of `dataActions` to grant access to read, query, and manage data in Azure Cosmos DB for NoSQL.
+
+### [Built-in definition](#tab/built-in-definition)
 
 ::: zone pivot="azure-interface-cli,azure-interface-bicep"
 
