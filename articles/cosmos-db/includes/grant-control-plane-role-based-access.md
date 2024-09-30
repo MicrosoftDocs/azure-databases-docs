@@ -6,9 +6,6 @@ ms.custom: subject-msia
 zone_pivot_groups: azure-interface-portal-cli-powershell-bicep
 ---
 
-> [!IMPORTANT]
-> The steps in this article only cover control plane access to perform operations on the account itself of any resources in the account's hierarchy. To learn how to manage roles, definitions, and assignments for the control plane, see [grant data plane role-based access](how-to-grant-data-plane-role-based-access.md).
-
 ## Prerequisites
 
 - An Azure account with an active subscription. [Create an account for free](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
@@ -424,7 +421,7 @@ AssignableScopes : {/}
 Now, assign the newly defined role to an identity so that your applications can access resources in Azure Cosmos DB.
 
 > [!IMPORTANT]
-> This assignment task requires you to have the unique identifier of any identity you want to grant role-based access control permissions. If you do not have a unique identifier for an identity, follow the instructions in the [create managed identity](how-to-create-managed-identities.md) or [get signed-in identity](how-to-get-signed-in-identity.md) guides.
+> This assignment task requires you to already have the unique identifier of any identity you want to grant role-based access control permissions.
 
 ::: zone pivot="azure-interface-cli"
 
