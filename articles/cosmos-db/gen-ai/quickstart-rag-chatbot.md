@@ -205,7 +205,7 @@ def generate_embeddings(text):
 
 ### 5. Load Data from the JSON File
 
-Extract the MovieLens dataset from the zip file.
+Extract the pre-vectorized MovieLens dataset from the zip file (see it's location in notebook repo [here](https://github.com/microsoft/AzureDataRetrievalAugmentedGenerationSamples/tree/main/DataSet/Movies)).
 
 ```python
 # Unzip the data file
