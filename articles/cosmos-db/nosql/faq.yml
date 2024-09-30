@@ -8,7 +8,7 @@ metadata:
   ms.service: azure-cosmos-db
   ms.subservice: nosql
   ms.topic: faq
-  ms.date: 09/24/2024
+  ms.date: 10/01/2024
 title: Frequently asked questions about Azure Cosmos DB for NoSQL
 summary: |
   [!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
@@ -124,11 +124,31 @@ sections:
       - question: |
           What is role-based access control (RBAC)?
         answer: |
-          Role-based access control (RBAC) is a method of regulating access to computer or network resources based on the roles of individual users within an enterprise. In Azure Cosmos DB, RBAC is used to grant data-plane access to users and applications.
+          Role-based access control (RBAC) is a method of regulating access to computer or network resources based on the roles of individual users within an enterprise. In Azure Cosmos DB, RBAC is used to grant data-plane access to users and applications. For more information about various terms in role-based access control, see the [security glossary](security/glossary.md).
       - question: |
           How do I enable data-plane role-based access control for Azure Cosmos DB for NoSQL?
         answer: |
-          Use the Azure Cosmos DB native role-based access control (RBAC) feature to grant data-plane access to users and applications.
+          Use the Azure Cosmos DB native role-based access control (RBAC) feature to grant data-plane access to users and applications. For more information, see [Grant data-plane role-based access](security/how-to-grant-data-plane-role-based-access.md).  
+      - question: |
+          Which Azure Cosmos DB APIs support data-plane role-based access control?
+        answer: |
+          As of now, only the NoSQL API is supported.
+      - question: |
+          Is it possible to manage role definitions and role assignments from the Azure portal?
+        answer: |
+          Azure portal support for role management isn't available yet.
+      - question: |
+          Which SDKs in Azure Cosmos DB API for NoSQL support role-based access control?
+        answer: |
+          The .NET V3, Java V4, JavaScript V3, and Python V4.3+ SDKs are currently supported.
+      - question: |
+          Is the Microsoft Entra token automatically refreshed by the Azure Cosmos DB SDKs when it expires?
+        answer: |
+          Yes.
+      - question: |
+          Is it possible to disable the usage of the account primary/secondary keys when using role-based access control?
+        answer: |
+          Yes. For more information, see [disable key-based authentication](security/how-to-disable-key-based-authentication.md).
 additionalContent: |
   ## Related content
 

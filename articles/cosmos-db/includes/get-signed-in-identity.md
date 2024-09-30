@@ -1,7 +1,7 @@
 ---
 ms.service: azure-cosmos-db
 ms.topic: include
-ms.date: 09/24/2024
+ms.date: 10/01/2024
 ms.custom: subject-msia
 zone_pivot_groups: azure-interface-portal-cli-powershell
 ---
