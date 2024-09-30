@@ -86,7 +86,7 @@ This page provides latest news and updates regarding feature additions, engine v
 * Public preview of [private endpoints](concepts-networking-private-link.md).
 * Public preview of [virtual endpoints and new promote to primary server](concepts-read-replicas.md) operation for read replica.
 * Public preview of Postgres [azure_ai](generative-ai-azure-overview.md) extension.
-* Public preview of [pg_failover_slots](concepts-extensions.md#pg_failover_slots-preview) extension.
+* Public preview of [pg_failover_slots](concepts-extensions.md#pg_failover_slots) extension.
 * Public preview of [long-term backup retention](concepts-backup-restore.md).
 
 ## Release: October 2023
