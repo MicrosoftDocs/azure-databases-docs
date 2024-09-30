@@ -116,4 +116,4 @@ public class NoSQL {
 ```
 
 > [!IMPORTANT]
-> This code sample uses the [`com.azure.resourcemanager/azure-resourcemanager-cosmos`](https://mvnrepository.com/artifact/com.azure.resourcemanager/azure-resourcemanager-cosmos) and [`com.azureazure-identity`](https://mvnrepository.com/artifact/com.azure/azure-identity) libraries from Maven.
+> This code sample uses the [`com.azure.resourcemanager/azure-resourcemanager-cosmos`](https://mvnrepository.com/artifact/com.azure.resourcemanager/azure-resourcemanager-cosmos) and [`com.azure/azure-identity`](https://mvnrepository.com/artifact/com.azure/azure-identity) libraries from Maven.
