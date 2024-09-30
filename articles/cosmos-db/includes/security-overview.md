@@ -2,6 +2,7 @@
 ms.service: azure-cosmos-db
 ms.topic: include
 ms.date: 10/01/2024
+ai-usage: ai-assisted
 ---
 
 While using keys and resource owner password credentials might seem like a convenient option, it isn't recommended due to several reasons. Firstly, these methods lack the robustness and flexibility provided by Microsoft Entra authentication. Microsoft Entra offers enhanced security features such as multifactor authentication and conditional access policies, which greatly reduce the risk of unauthorized access. By using Microsoft Entra, you can significantly enhance the security posture of your applications and protect sensitive data from potential threats.
