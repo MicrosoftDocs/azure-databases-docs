@@ -21,7 +21,10 @@ zone_pivot_groups: azure-interface-cli-powershell-bicep
 Diagram of the sequence of the deployment guide including these locations, in order: Overview, Concepts, Prepare, Role-based access control, Network, and Reference. The 'Role-based access control' location is currently highlighted.
 :::image-end:::
 
-This article walks through the steps to grant an identity access to manage data in an Azure Cosmos DB for NoSQL account. The steps in this article only cover data plane access to perform operations on individual items and run queries.
+This article walks through the steps to grant an identity access to manage data in an Azure Cosmos DB for NoSQL account.
+
+> [!IMPORTANT]
+> The steps in this article only cover data plane access to perform operations on individual items and run queries. To learn how to manage roles, definitions, and assignments for the control plane, see [grant control plane role-based access](how-to-grant-control-plane-role-based-access.md).
 
 ## Prerequisites
 
