@@ -51,12 +51,6 @@ This article walks through the steps to grant an identity access to manage data 
 
 ::: zone-end
 
-::: zone pivot="azure-interface-portal"
-
-1. TODO
-
-::: zone-end
-
 ::: zone pivot="azure-interface-shell"
 
 1. TODO
