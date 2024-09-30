@@ -107,7 +107,7 @@
               displayName: ARM
             - name: Bicep syntax templates
               href: manage-with-bicep.md
-        - name: Azure Resource Graph queries
+        - name: Queries for Azure Resource Graph
           href: ../resource-graph-samples.md
     - name: Concepts
       items:
@@ -193,6 +193,9 @@
           items:
             - name: Security overview
               href: ../database-security.md
+            - name: Role-based access control guide
+              displayName: RBAC, Entra
+              href: security/index.md
             - name: Data encryption
               href: ../database-encryption-at-rest.md
             - name: Service tags
@@ -366,6 +369,9 @@
               href: ../how-to-setup-cross-tenant-customer-managed-keys.md
             - name: Use managed identities with Azure services
               href: ../how-to-setup-managed-identity.md
+            - name: Disable key-based authentication
+              displayName: key, ropc, connection string
+              href: security/how-to-disable-key-based-authentication.md?context=/azure/cosmos-db/context/context
         - name: Monitor
           items:
             - name: Monitor
