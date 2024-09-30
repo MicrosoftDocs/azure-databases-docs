@@ -53,19 +53,131 @@ First, you must prepare a role definition with a list of `actions` to grant acce
 
 ::: zone pivot="azure-interface-cli,azure-interface-bicep"
 
-1. TODO
+List all of the role definitions associated with your Azure Cosmos DB for NoSQL account using [`az role definition list`](/cli/azure/role/definition#az-role-definition-list). Review the output and locate the role definition named **Cosmos DB Built-in Data Contributor**. The output contains the unique identifier of the role definition in the `id` property. Record this value as it is required to use in the assignment step later in this guide.
+
+```azurecli-interactive
+az role definition list \
+    --name "Cosmos DB Operator"
+```
+
+```json
+[
+  {
+    "assignableScopes": [
+      "/"
+    ],
+    "description": "Lets you manage Azure Cosmos DB accounts, but not access data in them. Prevents access to account keys and connection strings.",
+    "id": "/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/providers/Microsoft.Authorization/roleDefinitions/230815da-be43-4aae-9cb4-875f7bd000aa",
+    "name": "230815da-be43-4aae-9cb4-875f7bd000aa",
+    "permissions": [
+      {
+        "actions": [
+          "Microsoft.DocumentDb/databaseAccounts/*",
+          "Microsoft.Insights/alertRules/*",
+          "Microsoft.Authorization/*/read",
+          "Microsoft.ResourceHealth/availabilityStatuses/read",
+          "Microsoft.Resources/deployments/*",
+          "Microsoft.Resources/subscriptions/resourceGroups/read",
+          "Microsoft.Support/*",
+          "Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action"
+        ],
+        "condition": null,
+        "conditionVersion": null,
+        "dataActions": [],
+        "notActions": [
+          "Microsoft.DocumentDB/databaseAccounts/dataTransferJobs/*",
+          "Microsoft.DocumentDB/databaseAccounts/readonlyKeys/*",
+          "Microsoft.DocumentDB/databaseAccounts/regenerateKey/*",
+          "Microsoft.DocumentDB/databaseAccounts/listKeys/*",
+          "Microsoft.DocumentDB/databaseAccounts/listConnectionStrings/*",
+          "Microsoft.DocumentDB/databaseAccounts/sqlRoleDefinitions/write",
+          "Microsoft.DocumentDB/databaseAccounts/sqlRoleDefinitions/delete",
+          "Microsoft.DocumentDB/databaseAccounts/sqlRoleAssignments/write",
+          "Microsoft.DocumentDB/databaseAccounts/sqlRoleAssignments/delete",
+          "Microsoft.DocumentDB/databaseAccounts/mongodbRoleDefinitions/write",
+          "Microsoft.DocumentDB/databaseAccounts/mongodbRoleDefinitions/delete",
+          "Microsoft.DocumentDB/databaseAccounts/mongodbUserDefinitions/write",
+          "Microsoft.DocumentDB/databaseAccounts/mongodbUserDefinitions/delete"
+        ],
+        "notDataActions": []
+      }
+    ],
+    "roleName": "Cosmos DB Operator",
+    "roleType": "BuiltInRole",
+    "type": "Microsoft.Authorization/roleDefinitions",
+  }
+]
+```
+
+> [!NOTE]
+> In this example, the `id` value would be `/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/providers/Microsoft.Authorization/roleDefinitions/230815da-be43-4aae-9cb4-875f7bd000aa`. This example uses fictituous data and your identifier would be distinct from this example. However, the identifier (`230815da-be43-4aae-9cb4-875f7bd000aa`) is globally unique across all role definitions in Azure.
 
 ::: zone-end
 
 ::: zone pivot="azure-interface-portal"
 
-1. TODO
+1. Sign in to the Azure portal (<https://portal.azure.com>).
+
+1. Enter *Resource group* in the global search bar.
+
+    :::image source="media/how-to-grant-control-plane-role-based-access/global-search.png" lightbox="media/how-to-grant-control-plane-role-based-access/global-search-full.png" alt-text="Screenshot of the global search bar in the Azure portal.":::
+
+1. Within **Services**, select **Resource groups**.
+
+    :::image source="media/how-to-grant-control-plane-role-based-access/search-results.png" alt-text="Screenshot of the 'Resource groups' option selected in the search menu.":::
+
+1. In the **Resource groups** pane, select your existing resource group.
+
+    :::image source="media/how-to-grant-control-plane-role-based-access/resource-group.png" alt-text="Screenshot of an existing resource group in the list of resource groups for the subscription.":::
+
+    > [!NOTE]
+    > This example screenshot includes the `msdocs-identity-example` resource group. Your actual resource group name may be different.
+
+1. Within the pane for the resource group, select **Access control (IAM)** in the service menu.
+
+    :::image source="media/how-to-grant-control-plane-role-based-access/access-control-service-menu.png" alt-text="Screenshot of the 'Access Control (IAM)' option in the service menu for a resource group.":::
+
+1. In the **Access control (IAM)** pane, select **Roles**.
+
+    :::image source="media/how-to-grant-control-plane-role-based-access/access-control-roles-option.png" alt-text="Screenshot of the 'Roles' option in the 'Access Control (IAM)' pane.":::
+
+1. In the **Roles** section, use the search phrase **Cosmos DB** and locate the **Cosmos DB Operator** role definition. Then, select the **View** option associated with that definition.
+
+    :::image source="media/how-to-grant-control-plane-role-based-access/role-definitions-list.png" alt-text="Screenshot of a list of role definitions at the current assignable scope filtered to include only definitions with 'Cosmos DB' in the title.":::
+
+1. In the **Cosmos DB Operator** role definition dialog, observe the actions assigned as part of this role definition.
+
+    :::image source="media/how-to-grant-control-plane-role-based-access/role-definition-dialog" alt-text="Screenshot of the 'Cosmos DB Operator' dialog with details about the built-in role definition.":::
+
+1. Close the **Cosmos DB Operator** role definition dialog.
 
 ::: zone-end
 
 ::: zone pivot="azure-interface-shell"
 
-1. TODO
+Use [`Get-AzRoleDefinition`](/powershell/module/az.resources/get-azroledefinition) to list all of the role definitions associated with your Azure Cosmos DB for NoSQL account. Review the output and locate the role definition named **Cosmos DB Built-in Data Contributor**. The output contains the unique identifier of the role definition in the `Id` property. Record this value as it is required to use in the assignment step later in this guide.
+
+```azurepowershell-interactive
+$parameters = @{
+    Name = "Cosmos DB Operator"
+}
+Get-AzRoleDefinition @parameters
+```
+
+```output
+Name             : Cosmos DB Operator
+Id               : 230815da-be43-4aae-9cb4-875f7bd000aa
+IsCustom         : False
+Description      : Lets you manage Azure Cosmos DB accounts, but not access data in them. Prevents access to account keys and connection strings.
+Actions          : {Microsoft.DocumentDb/databaseAccounts/*, Microsoft.Insights/alertRules/*, Microsoft.Authorization/*/read, Microsoft.ResourceHealth/availabilityStatuses/read…}
+NotActions       : {Microsoft.DocumentDB/databaseAccounts/dataTransferJobs/*, Microsoft.DocumentDB/databaseAccounts/readonlyKeys/*, Microsoft.DocumentDB/databaseAccounts/regenerateKey/*, Microsoft.DocumentDB/databaseAccounts/listKeys/*…}
+DataActions      : {}
+NotDataActions   : {}
+AssignableScopes : {/}
+```
+
+> [!NOTE]
+> In this example, the `Id` value would be `230815da-be43-4aae-9cb4-875f7bd000aa`. The identifier is globally unique across all role definitions in Azure.
 
 ::: zone-end
 
@@ -216,27 +328,6 @@ First, you must prepare a role definition with a list of `actions` to grant acce
 ::: zone-end
 
 ::: zone pivot="azure-interface-portal"
-
-1. Sign in to the Azure portal (<https://portal.azure.com>).
-
-1. Enter *Resource group* in the global search bar.
-
-    :::image source="media/how-to-grant-control-plane-role-based-access/global-search.png" lightbox="media/how-to-grant-control-plane-role-based-access/global-search-full.png" alt-text="Screenshot of the global search bar in the Azure portal.":::
-
-1. Within **Services**, select **Resource groups**.
-
-    :::image source="media/how-to-grant-control-plane-role-based-access/search-results.png" alt-text="Screenshot of the 'Resource groups' option selected in the search menu.":::
-
-1. In the **Resource groups** pane, select your existing resource group.
-
-    :::image source="media/how-to-grant-control-plane-role-based-access/resource-group.png" alt-text="Screenshot of an existing resource group in the list of resource groups for the subscription.":::
-
-    > [!NOTE]
-    > This example screenshot includes the `msdocs-identity-example` resource group. Your actual resource group name may be different.
-
-1. Within the pane for the resource group, select **Access control (IAM)** in the service menu.
-
-    :::image source="media/how-to-grant-control-plane-role-based-access/access-control-service-menu.png" alt-text="Screenshot of the 'Access Control (IAM)' option in the service menu for a resource group.":::
 
 1. In the **Access control (IAM)** pane, select **Add** and then **Add custom role**.
 

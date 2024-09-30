@@ -110,7 +110,7 @@ Permissions.NotDataActions :
 ```
 
 > [!NOTE]
-> In this example, the `Id` value would be `/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/msdocs-identity-example/providers/Microsoft.DocumentDB/databaseAccounts/msdocs-identity-example-nosql/sqlRoleDefinitions/00000000-0000-0000-0000-000000000002`. This example uses fictituous data and your identifier would be distinct from this example.
+> In this example, the `Id` value would be `/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/msdocs-identity-example/providers/Microsoft.DocumentDB/databaseAccounts/msdocs-identity-example-nosql/sqlRoleDefinitions/00000000-0000-0000-0000-000000000002`. This example uses fictituous data and your identifier would be distinct from this example. However, the identifier (`00000000-0000-0000-0000-000000000002`) is unique across all role definitions in your account.
 
 ::: zone-end
 
