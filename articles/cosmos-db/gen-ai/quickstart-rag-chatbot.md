@@ -227,8 +227,10 @@ len(data)
 Upsert data into Azure Cosmos DB for NoSQL. Records are written asynchronously.
 
 ```python
-#The following code to get raw movies data is commented out in favour of getting pre-vectorised data
-#If you want to vectorize the raw data from storage_file_url, uncomment the below, and set vectorizeFlag=True
+#The following code to get raw movies data is commented out in favour of
+#getting pre-vectorised data. If you want to vectorize the raw data from
+#storage_file_url, uncomment the below, and set vectorizeFlag=True
+
 #data = urllib.request.urlopen(storage_file_url)
 #data = json.load(data)
 
