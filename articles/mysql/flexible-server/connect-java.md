@@ -127,7 +127,7 @@ az identity create \
 ```
 
 > [!IMPORTANT]
-> After creating the user-assigned identity, ask your *Global Administrator* or *Privileged Role Administrator* to grant the following permissions for this identity: `User.Read.All`, `GroupMember.Read.All`, and `Application.Read.ALL`. For more information, see the [Permissions](./concepts-azure-ad-authentication.md#permissions) section of [Active Directory authentication](./concepts-azure-ad-authentication.md).
+> After creating the user-assigned identity, ask a user with at least the [Privileged Role Administrator](/azure/active-directory/roles/permissions-reference#privileged-role-administrator) role to grant the following permissions for this user-assigned managed identity: `User.Read.All`, `GroupMember.Read.All`, and `Application.Read.ALL`. Alternatively, give the user-assigned managed identity the [Directory Readers](/azure/active-directory/roles/permissions-reference#directory-readers) role. For more information, see the [Permissions](./concepts-azure-ad-authentication.md#permissions) section of [Active Directory authentication](./concepts-azure-ad-authentication.md).
 
 Run the following command to assign the identity to Azure Database for MySQL flexible server for creating Microsoft Entra admin:
 
