@@ -42,13 +42,6 @@
         - name: MongoDB
           tocHref: /azure/cosmos-db/mongodb/
           topicHref: /azure/cosmos-db/mongodb/index
-        - name: NoSQL
-          tocHref: /azure/cosmos-db/nosql/
-          topicHref: /azure/cosmos-db/nosql/index
-          items:
-            - name: Security guide
-              tocHref: /azure/cosmos-db/nosql/security/
-              topicHref: /azure/cosmos-db/nosql/security/index
 - name: Azure
   tocHref: /azure/developer/
   topicHref: /azure/index
@@ -82,33 +75,3 @@
         - name: Apache Cassandra
           tocHref: /azure/managed-instance-apache-cassandra/
           topicHref: /azure/cosmos-db/cassandra/index
-- name: Azure
-  tocHref: /azure/
-  topicHref: /azure/index
-  items:
-    - name: Cosmos DB
-      tocHref: /azure/role-based-access-control/
-      topicHref: /azure/cosmos-db/index
-      items:
-        - name: NoSQL
-          tocHref: /samples/role-based-access-control/
-          topicHref: /azure/cosmos-db/nosql/index
-          items:
-            - name: Security guide
-              tocHref: /samples/role-based-access-control/
-              topicHref: /azure/cosmos-db/nosql/security/index
-- name: Azure
-  tocHref: /samples/
-  topicHref: /azure/index
-  items:
-    - name: Cosmos DB
-      tocHref: /samples/azure-samples/
-      topicHref: /azure/cosmos-db/index
-      items:
-        - name: NoSQL
-          tocHref: /samples/azure-samples/
-          topicHref: /azure/cosmos-db/nosql/index
-          items:
-            - name: Security guide
-              tocHref: /samples/azure-samples/
-              topicHref: /azure/cosmos-db/nosql/security/index
