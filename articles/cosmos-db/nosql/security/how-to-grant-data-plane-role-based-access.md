@@ -118,7 +118,7 @@ Permissions.NotDataActions :
 
 ### [Custom definition](#tab/custom-definition)
 
-> [!IMPORTANT]
+> [!WARNING]
 > Azure Cosmos DB for NoSQL's native role-based access control doesn't support the `notDataActions` property. Any action that is not specified as an allowed `dataAction` is excluded automatically.
 
 ::: zone pivot="azure-interface-cli"

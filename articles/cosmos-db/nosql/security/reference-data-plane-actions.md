@@ -21,7 +21,7 @@ Diagram of the sequence of the deployment guide including these locations, in or
 
 Azure Cosmos DB for NoSQL exposes a unique set of data actions within its native role-based access control implementation. This article includes a list of those actions and descriptions on what permissions are granted for each action.
 
-> [!IMPORTANT]
+> [!WARNING]
 > Azure Cosmos DB for NoSQL's native role-based access control doesn't support the `notDataActions` property. Any action that is not specified as an allowed `dataAction` is excluded automatically.
 
 ## Data actions
