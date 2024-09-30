@@ -476,3 +476,123 @@ Now, assign the newly defined role to an identity so that your applications can 
     ```
 
 ::: zone-end
+
+## Validate role-based access control in code
+
+Finally, validate that you correctly granted access using application code and the Azure SDK in your preferred programming language.
+
+### [C#](#tab/csharp)
+
+```csharp
+using Azure.Core;
+using Azure.Identity;
+using Microsoft.Azure.Cosmos;
+
+string endpoint = "<account-endpoint>";
+
+TokenCredential credential = new DefaultAzureCredential();
+
+CosmosClient client = new(endpoint, credential);
+```
+
+> [!IMPORTANT]
+> This code sample uses the [`Microsoft.Azure.Cosmos`](https://www.nuget.org/packages/Microsoft.Azure.Cosmos) and [`Azure.Identity`](https://www.nuget.org/packages/Azure.Identity) libraries from NuGet.
+
+### [JavaScript](#tab/javascript)
+
+```javascript
+const { CosmosClient } = require('@azure/cosmos');
+const { DefaultAzureCredential } = require('@azure/identity');
+
+const endpoint = '<account-endpoint>';
+
+const credential = new DefaultAzureCredential();
+
+const client = new CosmosClient({ endpoint, aadCredentials:credential})
+```
+
+> [!IMPORTANT]
+> This code sample uses the [`@azure/cosmos`](https://www.npmjs.com/package/@azure/cosmos) and [`@azure/identity`](https://www.npmjs.com/package/@azure/identity) packages from npm.
+
+### [TypeScript](#tab/typescript)
+
+```typescript
+import { CosmosClient, CosmosClientOptions } from '@azure/cosmos'
+import { TokenCredential, DefaultAzureCredential } from '@azure/identity'
+
+let endpoint: string = '<account-endpoint>';
+
+let credential: TokenCredential = new DefaultAzureCredential();
+
+let options: CosmosClientOptions = {
+  endpoint: endpoint,
+  aadCredentials: credential
+};
+
+const client: CosmosClient = new CosmosClient(options);
+```
+
+> [!IMPORTANT]
+> This code sample uses the [`@azure/cosmos`](https://www.npmjs.com/package/@azure/cosmos) and [`@azure/identity`](https://www.npmjs.com/package/@azure/identity) packages from npm.
+
+### [Python](#tab/python)
+
+```python
+from azure.cosmos import CosmosClient
+from azure.identity import DefaultAzureCredential
+
+endpoint = "<account-endpoint>"
+
+credential = DefaultAzureCredential()
+
+client = CosmosClient(endpoint, credential=credential)
+```
+
+> [!IMPORTANT]
+> This code sample uses the [`azure-cosmos`](https://pypi.org/project/azure-cosmos/) and [`azure-identity`](https://pypi.org/project/azure-identity/) packages from PyPI.
+
+### [Go](#tab/go)
+
+```go
+package main
+
+import (
+    "github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+    "github.com/Azure/azure-sdk-for-go/sdk/data/azcosmos"
+)
+
+const endpoint = "<account-endpoint>"
+
+func main() {
+    credential, _ := azidentity.NewDefaultAzureCredential(nil)
+    client, _ := azcosmos.NewClient(endpoint, credential, nil)
+```
+
+> [!IMPORTANT]
+> This code sample uses the [`azure/azure-sdk-for-go/sdk/data/azcosmos`](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/sdk/data/azcosmos) [`azure/azure-sdk-for-go/azidentity`](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/sdk/azidentity) packages from Go.
+
+### [Java](#tab/java)
+
+```java
+import com.azure.cosmos.CosmosClient;
+import com.azure.cosmos.CosmosClientBuilder;
+import com.azure.identity.DefaultAzureCredential;
+import com.azure.identity.DefaultAzureCredentialBuilder;
+
+public class NoSQL{
+    public static void main(String[] args){
+        DefaultAzureCredential credential = new DefaultAzureCredentialBuilder()
+            .build();
+        
+        CosmosClient client = new CosmosClientBuilder()
+            .endpoint("<account-endpoint>")
+            .credential(credential);
+            .buildClient();
+    }
+}
+```
+
+> [!IMPORTANT]
+> This code samples uses the [`com.azure/azure-cosmos`](https://mvnrepository.com/artifact/com.azure/azure-cosmos) and [`com.azure/azure-identity`](https://mvnrepository.com/artifact/com.azure/azure-identity) packages from Maven.
+
+---
