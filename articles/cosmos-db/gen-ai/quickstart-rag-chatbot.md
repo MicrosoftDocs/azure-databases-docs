@@ -128,7 +128,7 @@ vector_embedding_policy = {
         { 
             "path":"/" + cosmos_vector_property,
             "dataType":"float32",
-            "distanceFunction":"dotproduct",
+            "distanceFunction":"cosine",
             "dimensions":openai_embeddings_dimensions
         }, 
     ]
@@ -136,6 +136,17 @@ vector_embedding_policy = {
 
 # Create the vector index policy to specify vector details
 indexing_policy = {
+    "includedPaths": [ 
+    { 
+        "path": "/*" 
+    } 
+    ], 
+    "excludedPaths": [ 
+    { 
+        "path": "/\"_etag\"/?",
+        "path": "/" + cosmos_vector_property + "/*",
+    } 
+    ], 
     "vectorIndexes": [ 
         {
             "path": "/"+cosmos_vector_property, 
@@ -174,17 +185,22 @@ except exceptions.CosmosHttpResponseError:
 This function vectorizes the user input for vector search. Ensure the dimensionality and model used match the sample data provided, or else regenerate vectors with your desired model.
 
 ```python
-from tenacity import retry, stop_after_attempt, wait_random_exponential
-
+from tenacity import retry, stop_after_attempt, wait_random_exponential 
+import logging
 @retry(wait=wait_random_exponential(min=2, max=300), stop=stop_after_attempt(20))
 def generate_embeddings(text):
-    response = openai_client.embeddings.create(
-        input=text,
-        model=openai_embeddings_deployment,
-        dimensions=openai_embeddings_dimensions
-    )
-    embeddings = response.model_dump()
-    return embeddings['data'][0]['embedding']
+    try:        
+        response = openai_client.embeddings.create(
+            input=text,
+            model=openai_embeddings_deployment,
+            dimensions=openai_embeddings_dimensions
+        )
+        embeddings = response.model_dump()
+        return embeddings['data'][0]['embedding']
+    except Exception as e:
+        # Log the exception with traceback for easier debugging
+        logging.error("An error occurred while generating embeddings.", exc_info=True)
+        raise
 ```
 
 ### 5. Load Data from the JSON File
@@ -211,22 +227,51 @@ len(data)
 Upsert data into Azure Cosmos DB for NoSQL. Records are written asynchronously.
 
 ```python
+#The following code to get raw movies data is commented out in favour of getting pre-vectorised data
+#If you want to vectorize the raw data from storage_file_url, uncomment the below, and set vectorizeFlag=True
+#data = urllib.request.urlopen(storage_file_url)
+#data = json.load(data)
+
+vectorizeFlag=False
+
 import asyncio
 import time
 from concurrent.futures import ThreadPoolExecutor
 
 async def generate_vectors(items, vector_property):
-    for item in items:
-        vectorArray = await generate_embeddings(item['overview'])
-        item[vector_property] = vectorArray
+    # Create a thread pool executor for the synchronous generate_embeddings
+    loop = asyncio.get_event_loop()
+    
+    # Define a function to call generate_embeddings using run_in_executor
+    async def generate_embedding_for_item(item):
+        try:
+            # Offload the sync generate_embeddings to a thread
+            vectorArray = await loop.run_in_executor(None, generate_embeddings, item['overview'])
+            item[vector_property] = vectorArray
+        except Exception as e:
+            # Log or handle exceptions if needed
+            logging.error(f"Error generating embedding for item: {item['overview'][:50]}...", exc_info=True)
+    
+    # Create tasks for all the items to generate embeddings concurrently
+    tasks = [generate_embedding_for_item(item) for item in items]
+    
+    # Run all the tasks concurrently and wait for their completion
+    await asyncio.gather(*tasks)
+    
     return items
 
-async def insert_data():
+async def insert_data(vectorize=False):
     start_time = time.time()  # Record the start time
     
+    # If vectorize flag is True, generate vectors for the data
+    if vectorize:
+        print("Vectorizing data, please wait...")
+        global data
+        data = await generate_vectors(data, "vector")
+
     counter = 0
     tasks = []
-    max_concurrency = 20  # Adjust this value to control the level of concurrency
+    max_concurrency = 5  # Adjust this value to control the level of concurrency
     semaphore = asyncio.Semaphore(max_concurrency)
     print("Starting doc load, please wait...")
     
@@ -253,8 +298,8 @@ async def insert_data():
     print(f"All {counter} documents inserted!")
     print(f"Time taken: {duration:.2f} seconds ({duration:.3f} milliseconds)")
 
-# Run the async function
-await insert_data()
+# Run the async function with the vectorize flag set to True or False as needed
+await insert_data(vectorizeFlag)  # or await insert_data() for default
 ```
 
 
