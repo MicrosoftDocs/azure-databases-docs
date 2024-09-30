@@ -15,4 +15,8 @@ zone_pivot_groups: azure-interface-cli-powershell-bicep
 
 # Disable key-based authentication with Azure Cosmos DB for MongoDB
 
-TODO
+[!INCLUDE[MongoDB](../../includes/appliesto-mongodb.md)]
+
+This article covers the process of disabling key-based authorization (or resource owner password credential auth) for an Azure Cosmos DB for MongoDB account.
+
+[!INCLUDE[Disable key-based authentication](../../includes/disable-key-based-authentication.md)]

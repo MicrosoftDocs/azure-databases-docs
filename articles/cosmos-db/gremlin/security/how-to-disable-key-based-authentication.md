@@ -15,7 +15,7 @@ zone_pivot_groups: azure-interface-cli-powershell-bicep
 
 # Disable key-based authentication with Azure Cosmos DB for Apache Gremlin
 
-[!INCLUDE[Gremlin](../includes/appliesto-gremlin.md)]
+[!INCLUDE[Gremlin](../../includes/appliesto-gremlin.md)]
 
 This article covers the process of disabling key-based authorization (or resource owner password credential auth) for an Azure Cosmos DB for Gremlin account.
 

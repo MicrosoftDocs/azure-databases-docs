@@ -15,7 +15,7 @@ ai-usage: ai-assisted
 
 # Security guidance for Azure Cosmos DB for Apache Gremlin
 
-[!INCLUDE[Gremlin](../includes/appliesto-gremlin.md)]
+[!INCLUDE[Gremlin](../../includes/appliesto-gremlin.md)]
 
 When working with Azure Cosmos DB for Gremlin, it's important to ensure that authorized users and applications have access to data while preventing unintentional or unauthorized access.
 
@@ -24,4 +24,4 @@ When working with Azure Cosmos DB for Gremlin, it's important to ensure that aut
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Disable key-based authentication with Azure Cosmos DB for Gremlin](how-to-disable-key-based-authentication.md)
+> [Disable key-based authentication with Azure Cosmos DB for Apache Gremlin](how-to-disable-key-based-authentication.md)

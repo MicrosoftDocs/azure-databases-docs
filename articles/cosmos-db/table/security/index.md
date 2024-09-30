@@ -15,4 +15,13 @@ ai-usage: ai-assisted
 
 # Security guidance for Azure Cosmos DB for Table
 
-TODO
+[!INCLUDE[Table](../../includes/appliesto-gremlin.md)]
+
+When working with Azure Cosmos DB for Table, it's important to ensure that authorized users and applications have access to data while preventing unintentional or unauthorized access.
+
+[!INCLUDE[Security overview](../../includes/security-overview.md)]
+
+## Next step
+
+> [!div class="nextstepaction"]
+> [Disable key-based authentication with Azure Cosmos DB for Table](how-to-disable-key-based-authentication.md)

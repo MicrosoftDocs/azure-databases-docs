@@ -15,4 +15,8 @@ zone_pivot_groups: azure-interface-cli-powershell-bicep
 
 # Disable key-based authentication with Azure Cosmos DB for Apache Cassandra
 
-TODO
+[!INCLUDE[Cassandra](../../includes/appliesto-cassandra.md)]
+
+This article covers the process of disabling key-based authorization (or resource owner password credential auth) for an Azure Cosmos DB for Cassandra account.
+
+[!INCLUDE[Disable key-based authentication](../../includes/disable-key-based-authentication.md)]
