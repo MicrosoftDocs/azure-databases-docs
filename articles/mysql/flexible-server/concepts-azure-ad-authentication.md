@@ -73,10 +73,10 @@ Methods of authentication for accessing the Flexible Server include:
 
 ## Permissions
 
-The following permissions are required to allow the UMI to read from the Microsoft Graph as the server identity. Alternatively, give the UMI the [Directory Readers](/azure/active-directory/roles/permissions-reference#directory-readers) role.
+The following permissions are required to allow the UMI to read from the Microsoft Graph as the server identity. Alternatively, give the user-assigned managed identity the [Directory Readers](/azure/active-directory/roles/permissions-reference#directory-readers) role.
 
 > [!IMPORTANT]  
-> Only a [Global Administrator](/azure/active-directory/roles/permissions-reference#global-administrator) or [Privileged Role Administrator](/azure/active-directory/roles/permissions-reference#privileged-role-administrator) can grant these permissions.
+> Only a user with at least the [Privileged Role Administrator](/azure/active-directory/roles/permissions-reference#privileged-role-administrator) role can grant these permissions. 
 
 - [User.Read.All](/graph/permissions-reference#user-permissions): Allows access to Microsoft Entra user information.
 - [GroupMember.Read.All](/graph/permissions-reference#group-permissions): Allows access to Microsoft Entra group information.
