@@ -31,19 +31,19 @@ In Azure Cosmos DB's native implementation of role-based access control, scope r
 At the highest level, you can scope a data plane role-based access control assignment to the entire account using the largest scope. This scope includes all databases and containers within the account:
 
 ```output
-/
+/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.DocumentDB/databaseAccounts/<account-name>/
 ```
 
 Or, you can scope your data plane role assignment to a specific database:
 
 ```output
-/dbs/<database-name>
+/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.DocumentDB/databaseAccounts/<account-name>/dbs/<database-name>
 ```
 
 Finally, you can scope the assignment to a single container, the most granular scope:
 
 ```output
-/dbs/<database-name>/colls/<container-name>
+/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.DocumentDB/databaseAccounts/<account-name>/dbs/<database-name>/colls/<container-name>
 ```
 
 ## Next step

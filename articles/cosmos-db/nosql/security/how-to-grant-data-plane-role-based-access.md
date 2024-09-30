@@ -45,6 +45,8 @@ This article walks through the steps to grant an identity access to manage data 
 
 ### [Built-in definition](#tab/built-in-definition)
 
+First, you must prepare a role definition with a list of `dataActions` to grant access to read, query, and manage data in Azure Cosmos DB for NoSQL.
+
 ::: zone pivot="azure-interface-cli,azure-interface-bicep"
 
 List all of the role definitions associated with your Azure Cosmos DB for NoSQL account using [`az cosmosdb sql role definition list`](/cli/azure/cosmosdb/sql/role/definition#az-cosmosdb-sql-role-definition-list). Review the output and locate the role definition named **Cosmos DB Built-in Data Contributor**. The output contains the unique identifier of the role definition in the `id` property. Record this value as it is required to use in the assignment step later in this guide.
@@ -116,7 +118,8 @@ Permissions.NotDataActions :
 
 ### [Custom definition](#tab/custom-definition)
 
-First, you must prepare a role definition with a list of `dataActions` to grant access to read, query, and manage data in Azure Cosmos DB for NoSQL.
+> [!IMPORTANT]
+> Azure Cosmos DB for NoSQL's native role-based access control doesn't support the `notDataActions` property. Any action that is not specified as an allowed `dataAction` is excluded automatically.
 
 ::: zone pivot="azure-interface-cli"
 
