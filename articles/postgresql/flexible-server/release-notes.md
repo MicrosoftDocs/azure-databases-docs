@@ -6,7 +6,7 @@ ms.author: varundhawan
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: overview
-ms.date: 9/26/2024
+ms.date: 9/30/2024
 #customer intent: As a reader, I want the title and description to meet the required length and include the relevant information about the release notes for Azure DB for PostgreSQL - Flexible Server.
 ---
 
@@ -17,11 +17,14 @@ ms.date: 9/26/2024
 This page provides latest news and updates regarding feature additions, engine versions support, extensions, and any other announcements relevant to Azure Database for PostgreSQL flexible server.
 
 ## Release: September 2024
+* Public preview of [PostgreSQL 17](./concepts-supported-versions.md#postgresql-version-17-preview) for Azure Database for PostgreSQL flexible server. <sup>^</sup>
 * Support for new [minor versions](concepts-supported-versions.md) 16.4, 15.8, 14.13, 13.16, and 12.20 <sup>$</sup>
 * Support for [Reserved pricing](concepts-reserved-pricing.md) for Intel and AMD V5 Skus for Azure Database for PostgreSQL flexible server.
 * Public preview of [postgresql_anonymizer (anon)](./concepts-extensions.md#extension-versions) extension.
 * Support for MD5 is disabled in favor of [SCRAM authentication](how-to-connect-scram.md) authentication for new PostgreSQL 14+ new server deployments.
 * Collation sort order may change due to an underlying glibc update from 2.27 to 2.35. See [PostgreSQL Wiki](https://wiki.postgresql.org/wiki/Locale_data_changes) for details.
+
+<sup>**^**</sup> Postgres 17 preview is available in "East Asia" starting immediately with more regions coming soon.
 
 ## Release: Aug 2024
 * General availability of [Database Size Metrics](./concepts-monitoring.md) for Azure Database for PostgreSQL flexible server.
@@ -86,7 +89,7 @@ This page provides latest news and updates regarding feature additions, engine v
 * Public preview of [private endpoints](concepts-networking-private-link.md).
 * Public preview of [virtual endpoints and new promote to primary server](concepts-read-replicas.md) operation for read replica.
 * Public preview of Postgres [azure_ai](generative-ai-azure-overview.md) extension.
-* Public preview of [pg_failover_slots](concepts-extensions.md#pg_failover_slots-preview) extension.
+* Public preview of [pg_failover_slots](concepts-extensions.md#pg_failover_slots) extension.
 * Public preview of [long-term backup retention](concepts-backup-restore.md).
 
 ## Release: October 2023

@@ -4,7 +4,7 @@ description: Learn about the available PostgreSQL extensions in Azure Database f
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 06/27/2024
+ms.date: 09/30/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: conceptual
@@ -212,7 +212,7 @@ To update or change the database name for the existing schedule
 SELECT cron.alter_job(job_id:=MyJobID,database:='NewDBName');
 ```
 
-### pg_failover_slots (preview)
+### pg_failover_slots
 
 The PG Failover Slots extension enhances Azure Database for PostgreSQL flexible server when operating with both logical replication and high availability enabled servers. It effectively addresses the challenge within the standard PostgreSQL engine that doesn't preserve logical replication slots after a failover. Maintaining these slots is critical to prevent replication pauses or data mismatches during primary server role changes, ensuring operational continuity and data integrity.
 
