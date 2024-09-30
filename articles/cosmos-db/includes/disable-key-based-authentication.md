@@ -32,7 +32,7 @@ First, disable key-based authentication to your existing account so that applica
 ```azurecli-interactive
 az resource update \
     --resource-group "<name-of-existing-resource-group>" \
-    --name "<name-of-existing-nosql-account>" \
+    --name "<name-of-existing-account>" \
     --resource-type "Microsoft.DocumentDB/databaseAccounts" \
     --set properties.disableLocalAuth=true \
     --set properties.disableKeyBasedMetadataWriteAccess=true
@@ -47,12 +47,12 @@ First, create a new account with key-based authentication disabled so that appli
 1. Create a new Bicep file to deploy your new account with key-based authentication disabled. Name the file *deploy-new-account.bicep*.
 
     ```bicep
-    metadata description = 'Deploys a new Azure Cosmos DB for NoSQL account with key-based auth disabled.'
+    metadata description = 'Deploys a new Azure Cosmos DB account with key-based auth disabled.'
     
-    @description('Name of the API for NoSQL account.')
-    param name string = 'nosql-${uniqueString(resourceGroup().id)}'
+    @description('Name of the Azure Cosmos DB account.')
+    param name string = 'csms-${uniqueString(resourceGroup().id)}'
     
-    @description('Primary location for the API for NoSQL account.')
+    @description('Primary location for the Azure Cosmos DB account.')
     param location string = resourceGroup().location
     
     resource account 'Microsoft.DocumentDB/databaseAccounts@2024-05-15' = {
@@ -89,7 +89,7 @@ First, disable key-based authentication to your existing account so that applica
 ```azurepowershell-interactive
 $parameters = @{
     ResourceGroupName = "<name-of-existing-resource-group>"
-    ResourceName = "<name-of-existing-nosql-account>"
+    ResourceName = "<name-of-existing-account>"
     ResourceType = "Microsoft.DocumentDB/databaseAccounts"
 }
 $resource = Get-AzResource @parameters
