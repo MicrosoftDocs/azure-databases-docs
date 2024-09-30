@@ -63,7 +63,7 @@ This error means that your current [partitioning design](../partitioning-overvie
 
 ## Nondata operations aren't allowed
 
-This scenario happens when [attempting to perform nondata operations](../how-to-setup-rbac.md#permission-model) using Microsoft Entra identities. On this scenario, it's common to see errors like the ones here:
+This scenario happens when [attempting to perform nondata operations](security/reference-data-actions.md) using Microsoft Entra identities. On this scenario, it's common to see errors like the ones here:
 
 ```output
 Operation 'POST' on resource 'calls' is not allowed through Azure Cosmos DB endpoint
