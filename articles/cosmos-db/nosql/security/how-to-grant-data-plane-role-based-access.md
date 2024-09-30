@@ -41,9 +41,31 @@ This article walks through the steps to grant an identity access to manage data 
 
 ::: zone-end
 
-## Create role definition
+## Prepare role definition
 
-First, you must create a role definition with a list of `dataActions` to grant access to read, query, and manage data in Azure Cosmos DB for NoSQL.
+### [Built-in definition](#tab/built-in-definition)
+
+::: zone pivot="azure-interface-cli,azure-interface-bicep"
+
+1. TODO
+
+::: zone-end
+
+::: zone pivot="azure-interface-portal"
+
+1. TODO
+
+::: zone-end
+
+::: zone pivot="azure-interface-shell"
+
+1. TODO
+
+::: zone-end
+
+### [Custom definition](#tab/custom-definition)
+
+First, you must prepare a role definition with a list of `dataActions` to grant access to read, query, and manage data in Azure Cosmos DB for NoSQL.
 
 ::: zone pivot="azure-interface-cli"
 
@@ -241,6 +263,8 @@ First, you must create a role definition with a list of `dataActions` to grant a
     > In this example, the `Id` value would be `/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourcegroups/msdocs-identity-example/providers/Microsoft.DocumentDB/databaseAccounts/msdocs-identity-example-nosql/sqlRoleDefinitions/bbbbbbbb-1111-2222-3333-cccccccccccc`. This example uses fictituous data and your identifier would be distinct from this example.
 
 ::: zone-end
+
+---
 
 ## Assign role to identity
 

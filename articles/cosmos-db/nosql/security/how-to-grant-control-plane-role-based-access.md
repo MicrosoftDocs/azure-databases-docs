@@ -45,9 +45,31 @@ This article walks through the steps to grant an identity access to manage an Az
 
 ::: zone-end
 
-## Create role definition
+## Prepare role definition
 
-First, you must create a role definition with a list of `actions` to grant access to manage account resources in Azure Cosmos DB for NoSQL.
+First, you must prepare a role definition with a list of `actions` to grant access to manage account resources in Azure Cosmos DB for NoSQL.
+
+### [Built-in definition](#tab/built-in-definition)
+
+::: zone pivot="azure-interface-cli,azure-interface-bicep"
+
+1. TODO
+
+::: zone-end
+
+::: zone pivot="azure-interface-portal"
+
+1. TODO
+
+::: zone-end
+
+::: zone pivot="azure-interface-shell"
+
+1. TODO
+
+::: zone-end
+
+### [Custom definition](#tab/custom-definition)
 
 ::: zone pivot="azure-interface-cli"
 
@@ -317,6 +339,8 @@ First, you must create a role definition with a list of `actions` to grant acces
     > In this example, the `Name` value would be `Azure Cosmos DB for NoSQL Control Plane Owner`. This is a subset of the typical output of the deployment for clarity.
 
 ::: zone-end
+
+---
 
 ## Assign role to identity
 
