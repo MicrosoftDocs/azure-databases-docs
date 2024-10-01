@@ -21,15 +21,28 @@
 - name: Role-based access control
   expanded: true
   items:
+    - name: Grant control plane access
+      href: how-to-grant-control-plane-role-based-access.md
     - name: Grant data plane access
       displayName: rbac, role, permissions, dataActions
       href: how-to-grant-data-plane-role-based-access.md
 - name: Reference
   expanded: true
   items:
-    - name: Data plane actions
+    - name: Control plane
+      displayName: example, permissions, rbac, role, definition
+      expanded: true
+      items:
+        - name: Actions
+          href: /azure/role-based-access-control/permissions/databases?context=/azure/cosmos-db/table/security/context/context#microsoftdocumentdb
+        - name: Built-in roles
+          href: /azure/role-based-access-control/built-in-roles?context=/azure/cosmos-db/table/security/context/context#databases
+    - name: Data plane
       displayName: example, permissions, rbac, role, definition, dataActions
-      href: reference-data-actions.md
+      expanded: true
+      items:
+        - name: Actions
+          href: reference-data-plane-actions.md
     - name: Frequently asked questions
       displayName: faq, questions, answers
-      href: ../faq.yml#security
+      href: ../faq.yml?context=/azure/cosmos-db/table/security/context/context#security
