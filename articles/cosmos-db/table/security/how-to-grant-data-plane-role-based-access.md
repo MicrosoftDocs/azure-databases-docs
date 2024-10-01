@@ -295,8 +295,3 @@ public class Table{
 
 > [!WARNING]
 > If you are using a user-assigned managed identity, you will need to specify the unique identifier of the managed identity as part of creating the credentials object.
-
-## Next step
-
-> [!div class="nextstepaction"]
-> [Data actions reference](reference-data-plane-actions.md)
