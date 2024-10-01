@@ -4,57 +4,26 @@ titleSuffix: Azure Cosmos DB for Table
 description: Review the fundamentals of securing Azure Cosmos DB for Table using role-based access control and Microsoft Entra.
 author: seesharprun
 ms.author: sidandrews
-ms.reviewer: stefarroyo
+ms.reviewer: iriaosara
 ms.service: azure-cosmos-db
 ms.subservice: table
 ms.topic: solution-overview
-ms.date: 09/23/2024
+ms.date: 10/01/2024
 ai-usage: ai-assisted
 #Customer Intent: As a developer, I want to review the major security areas related to Azure Cosmos DB for Table, so that I can build secure applications using the API for Table.
 ---
 
-# Build secure applications with Azure Cosmos DB for Table
+# Security guidance for Azure Cosmos DB for Table
 
-[!INCLUDE[Table](../../includes/appliesto-table.md)]
+[!INCLUDE[Table](../../includes/appliesto-gremlin.md)]
 
 :::image type="complex" source="media/index/map.svg" border="false" alt-text="Diagram of the current location ('Overview') in the sequence of the deployment guide.":::
-Diagram of the sequence of the deployment guide including these locations, in order: Overview, Concepts, Prepare, Role-based access control, and Reference. The 'Overview' location is currently highlighted.
+Diagram of the sequence of the deployment guide including these locations, in order: Overview, Concepts, Prepare, Role-based access control, Network, and Reference. The 'Overview' location is currently highlighted.
 :::image-end:::
 
-When working with Azure Cosmos DB for Table, it's important to ensure that authorized users and applications have access to data while preventing unintentional or unauthorized access. While using keys and resource owner password credentials might seem like a convenient option, it isn't recommended due to several reasons. Firstly, these methods lack the robustness and flexibility provided by Microsoft Entra authentication. Microsoft Entra offers enhanced security features such as multifactor authentication and conditional access policies, which greatly reduce the risk of unauthorized access. By using Microsoft Entra, you can significantly enhance the security posture of your applications and protect sensitive data from potential threats.
+When working with Azure Cosmos DB for Table, it's important to ensure that authorized users and applications have access to data while preventing unintentional or unauthorized access.
 
-## Manage access
-
-Role-based access control using Microsoft Entra gives you the ability to manage which users, devices, or workloads can access your data and to what extent they can access that data. Using fine-grained permissions in a role definition gives you the flexibility to enforce the security principal of "least privilege" while keeping data access simple and streamlined for development.
-
-## Grant access in production
-
-In production applications, Microsoft Entra offers many identity types including, but not limited to:
-
-- Workload identities for specific application workloads
-- System-assigned managed identities native to an Azure service
-- User-assigned managed identities that can be flexibly reused between multiple Azure services
-- Service principals for custom and more sophisticated scenarios
-- Device identities for edge workloads
-
-With these identities, you can grant specific production applications or workloads fine-grained access to query, read, or manipulate data and resources in Azure Cosmos DB for Table.
-
-## Grant access in development
-
-In development, Microsoft Entra offers the same level of flexibility to your developer's human identities. You can use the same role-based access control definitions and assignment techniques to grant your developers access to test, staging, or development database accounts.
-
-Your security team has a single suite of tools to manage identities and permissions for your accounts across all of your environments.
-
-## Streamline authentication code
-
-With the Azure SDK, the techniques used to access Azure Cosmos DB for Table data programatically across many different scenarios:
-
-- If your application is in development or production
-- If you're using human, workload, managed, or device identities
-- If your team prefers using Azure CLI, Azure PowerShell, Azure Developer CLI, Visual Studio, or Visual Studio Code
-- If your team uses Python, JavaScript, TypeScript, .NET, Go, or Java
-
-The Azure SDK provides an identity library that's compatible with many platforms, development language, and authentication techniques. Once you learn how to enable Microsoft Entra authentication, the technique remains the same across all of your scenarios. There's no need to build distinct authentication stacks for each environment.
+[!INCLUDE[Security overview](../../includes/security-overview.md)]
 
 ## Next step
 
