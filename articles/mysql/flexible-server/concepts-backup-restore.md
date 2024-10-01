@@ -35,6 +35,9 @@ These backup files cannot be exported. The backups can only be used for restore 
 Backups on Flexible Servers are snapshot-based. The first snapshot backup is scheduled immediately after a server is created. Snapshot backups are taken daily once. Transaction log backups occur every five minutes.
 If a scheduled backup fails, our backup service tries every 20 minutes to take a backup until a successful backup is taken. These backup failures may occur due to heavy transactional production loads on the server instance.
 
+> [!NOTE]
+> If the server experiences a high transaction load, resulting in larger and faster-growing binlog files, then the backup service will perform multiple backups per day to ensure reliable and quicker restoration using these backups.
+
 ## Backup redundancy options
 
 Azure Database for MySQL Flexible Server stores multiple copies of your backups so that your data is protected from planned and unplanned events, including transient hardware failures, network or power outages, and massive natural disasters. Azure Database for MySQL Flexible Server provides the flexibility to choose between locally redundant, zone-redundant or geo-redundant backup storage in Basic, General Purpose and Business Critical tiers. By default, Azure Database for MySQL Flexible Server backup storage is locally redundant for servers with same-zone high availability (HA) or no high availability configuration, and zone redundant for servers with zone-redundant HA configuration.
