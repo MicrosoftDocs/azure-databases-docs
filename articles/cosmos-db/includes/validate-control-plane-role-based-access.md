@@ -104,7 +104,7 @@ import com.azure.identity.DefaultAzureCredential;
 import com.azure.identity.DefaultAzureCredentialBuilder;
 import com.azure.resourcemanager.cosmos.CosmosManager;
 
-public class NoSQL {
+public class CosmosDB {
     public static void main(String[] args) {
         AzureProfile profile = new AzureProfile(AzureEnvironment.AZURE);
         DefaultAzureCredential credential = new DefaultAzureCredentialBuilder()
