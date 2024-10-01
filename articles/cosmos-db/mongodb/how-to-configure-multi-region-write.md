@@ -50,4 +50,3 @@ We recommend applications deployed to different regions to use the region-specif
 ## Next steps
 
 - Get an overview of [secure access to data in Azure Cosmos DB](../secure-access-to-data.md).
-- Learn more about [RBAC for Azure Cosmos DB management](../role-based-access-control.md).

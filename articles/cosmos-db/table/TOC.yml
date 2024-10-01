@@ -206,13 +206,10 @@
     - name: Security
       items:
         - name: Security overview
-          href: ../database-security.md            
+          href: ../database-security.md        
         - name: Role-based access control guide
           displayName: RBAC, Entra
           href: security/index.md
-        - name: Azure role-based access control
-          displayName: rbac
-          href: ../role-based-access-control.md
         - name: Data encryption
           href: ../database-encryption-at-rest.md
         - name: Service tags
@@ -332,8 +329,6 @@
           href: ../store-credentials-key-vault.md
         - name: Access Azure Key Vault with managed identity
           href: ../access-key-vault-managed-identity.md
-        - name: Restrict user access to data operations only
-          href: ../how-to-restrict-user-data.md
         - name: Configure customer-managed keys
           href: ../how-to-setup-customer-managed-keys.md
         - name: Configure cross-tenant customer-managed keys
