@@ -11,6 +11,9 @@ ms.date:
 # Understanding the changes in the Root CA rotation for Azure Database for MySQL - Flexible Server
 
 Azure Database for MySQL - Flexible Server as part of standard maintenance and security best practices will complete the root certificate change starting July 2025. This article gives you more details about the changes, the resources affected, and the steps needed to ensure that your application maintains connectivity to your database server. 
+
+[!NOTE]
+If SHA-1 is a current blocker, follow the instructions below for creating a combined CA certificate on the client and open a support request to rotate your Azure Database for MySQL – Flexible Server root CA.  
 >
 
 ## Why is a root certificate update required?
@@ -22,8 +25,6 @@ Azure Database for MySQL - Flexible Server users can only use the predefined cer
 
 Upon completing the root CA rotation, there will be a transition where the old DigiCertGlobalRoot CA will no longer be accepted, and the new DigiCertGlobalRootG2 CA will be authorized. **To maintain connectivity before and after this transition, we recommend following the steps outlined below in [Create a combined CA certificate](#create-a-combined-ca-certificate) to bundle both CAs into a single certificate file.** 
 
-[!NOTE]
-If SHA-1 is a current blocker, follow the instructions for creating a combined CA certificate on the client and open a support request to rotate your Azure Database for MySQL – Flexible Server root CA.  
 
 ### Create a combined CA certificate
 
