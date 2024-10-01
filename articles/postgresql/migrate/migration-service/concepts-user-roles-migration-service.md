@@ -78,7 +78,7 @@ The following list describes important effects of pg_pltemplate deprecation:
 
 To resolve a pg_catalog error, remove the permissions that you granted to users and roles related to the relevant pg_catalog tables and views.
 
-Step 1: Identify permissions
+##### Step 1: Identify permissions
 
 Execute the following query on your single server by logging in as the admin user.
 
@@ -107,7 +107,7 @@ GROUP BY
 
 ```
 
-Step 2: Review the output
+##### Step 2: Review the output
 
 The output of the query shows the list of permissions that are granted to roles on the relevant tables and views.
 
@@ -118,7 +118,7 @@ For example:
 | SELECT | pg_authid | adminuser1 |
 | SELECT, UPDATE | pg_shadow | adminuser2 |
 
-Step 3: Revoke the permissions
+##### Step 3: Revoke the permissions
 
 To revoke the permissions, run `REVOKE` statements for each permission on the table or view from the grantee.
 
@@ -130,7 +130,7 @@ REVOKE SELECT ON pg_shadow FROM adminuser2;
 REVOKE UPDATE ON pg_shadow FROM adminuser2;
 ```
 
-Step 4: Final verification
+##### Step 4: Final verification
 
 Run the query from step 1 again to ensure that the resulting output set is empty.
 
