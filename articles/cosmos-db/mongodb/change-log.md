@@ -38,7 +38,7 @@ Azure Cosmos DB for MongoDB vCore supports many new features such as distributed
 
 Azure Cosmos DB for MongoDB now offers a built-in role-based access control (RBAC) that allows you to authorize your data requests with a fine-grained, role-based permission model. Using this role-based access control (RBAC) allows you access with more options for control, security, and auditability of your database account data.
 
-[Learn more](./how-to-setup-rbac.md)
+[Learn more](security/index.md)
 
 ### 16-MB limit per document in Cosmos DB for MongoDB (GA)
 
@@ -72,7 +72,7 @@ The 16-MB document limit in the Azure Cosmos DB for MongoDB provides developers 
 
 Azure Cosmos DB for MongoDB now offers a built-in role-based access control (RBAC) that allows you to authorize your data requests with a fine-grained, role-based permission model. Using this role-based access control (RBAC) allows you access with more options for control, security, and auditability of your database account data.
 
-[Learn more](./how-to-setup-rbac.md)
+[Learn more](security/index.md)
 
 ### Azure Cosmos DB for MongoDB supports version 4.2
 

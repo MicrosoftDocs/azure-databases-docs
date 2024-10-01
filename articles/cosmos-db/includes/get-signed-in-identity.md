@@ -1,7 +1,7 @@
 ---
 ms.service: azure-cosmos-db
 ms.topic: include
-ms.date: 09/24/2024
+ms.date: 10/01/2024
 ms.custom: subject-msia
 zone_pivot_groups: azure-interface-portal-cli-powershell
 ---
@@ -46,16 +46,16 @@ Use the command line to query the graph for information about your account's uni
     {
       "@odata.context": "<https://graph.microsoft.com/v1.0/$metadata#users/$entity>",
       "businessPhones": [],
-      "displayName": "Jayden Philips",
-      "givenName": "Jayden",
+      "displayName": "Kai Carter",
+      "givenName": "Kai",
       "id": "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb",
       "jobTitle": "Senior Sales Representative",
-      "mail": "<jayden@adventure-works.com>",
+      "mail": "<kai@adventure-works.com>",
       "mobilePhone": null,
       "officeLocation": "Redmond",
       "preferredLanguage": null,
-      "surname": "Philips",
-      "userPrincipalName": "<jayden@adventure-works.com>"
+      "surname": "Carter",
+      "userPrincipalName": "<kai@adventure-works.com>"
     }
     ```
 
@@ -110,9 +110,9 @@ Use the in-portal panes for Microsoft Entra ID to get details of your currently 
 
     ```output
     Id                : aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb
-    DisplayName       : Jayden Philips
-    Mail              : jayden@adventure-works.com
-    UserPrincipalName : jayden@adventure-works.com
+    DisplayName       : Kai Carter
+    Mail              : kai@adventure-works.com
+    UserPrincipalName : kai@adventure-works.com
     ```
 
     > [!TIP]

@@ -143,5 +143,4 @@ To learn more on the data migration to destination, real-time migration, see the
 ## Next steps
 
 * [Provision throughput on containers and databases](../set-throughput.md) 
-* [Partition key best practices](../partitioning-overview.md#choose-partitionkey)
 * [Estimate RU/s using the Azure Cosmos DB capacity planner](../estimate-ru-with-capacity-planner.md) articles
