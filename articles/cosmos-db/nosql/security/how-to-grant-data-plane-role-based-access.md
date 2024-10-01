@@ -566,6 +566,7 @@ const endpoint = "<account-endpoint>"
 func main() {
     credential, _ := azidentity.NewDefaultAzureCredential(nil)
     client, _ := azcosmos.NewClient(endpoint, credential, nil)
+}
 ```
 
 > [!IMPORTANT]
