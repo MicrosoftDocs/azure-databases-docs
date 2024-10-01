@@ -9,6 +9,7 @@ ms.service: azure-cosmos-db
 ms.subservice: table
 ms.topic: how-to
 ms.date: 10/01/2024
+zone_pivot_groups: azure-interface-cli-powershell-bicep
 #Customer Intent: As a security user, I want to grant an identity data-plane access to Azure Cosmos DB for Table, so that my developer team can use the SDK of their choice with minimal code change.
 ---
 
@@ -38,17 +39,124 @@ First, you must prepare a role definition with a list of `dataActions` to grant 
 
 ::: zone pivot="azure-interface-cli,azure-interface-bicep"
 
+First, get the resource identifier of the existing Azure Cosmos DB for Table account using [`az cosmsodb show`](/cli/azure/cosmosdb#az-cosmosdb-show) and store it in a variable. Then, list all of the role definitions associated with your Azure Cosmos DB for Table account using [`az rest`](/cli/azure/reference-index#az-rest). Finally, review the output and locate the role definition named **Cosmos DB Built-in Data Contributor**. The output contains the unique identifier of the role definition in the `id` property. Record this value as it is required to use in the assignment step later in this guide.
 
+```azurecli-interactive
+resourceId=$( \
+    az cosmosdb show \
+        --resource-group "<name-of-existing-resource-group>" \
+        --name "<name-of-existing-table-account>" \
+        --query "id" \
+        --output tsv \
+)
+
+az rest \
+    --method "GET" \
+    --url $resourceId/tableRoleDefinitions?api-version=2023-04-15
+```
+
+```json
+[
+  ...,
+  {
+    "id": "/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/msdocs-identity-example/providers/Microsoft.DocumentDB/databaseAccounts/msdocs-identity-example-nosql/tableRoleDefinitions/00000000-0000-0000-0000-000000000002",
+    "name": "00000000-0000-0000-0000-000000000002",
+    "properties": {
+      "assignableScopes": [
+        "/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/msdocs-identity-example/providers/Microsoft.DocumentDB/databaseAccounts/msdocs-identity-example-nosql"
+      ],
+      "permissions": [
+        {
+          "dataActions": [
+            "Microsoft.DocumentDB/databaseAccounts/readMetadata",
+            "Microsoft.DocumentDB/databaseAccounts/tables/*",
+            "Microsoft.DocumentDB/databaseAccounts/tables/containers/entities/*"
+          ],
+          "notDataActions": []
+        }
+      ],
+      "roleName": "Cosmos DB Built-in Data Contributor",
+      "type": "BuiltInRole"
+    },
+    "type": "Microsoft.DocumentDB/databaseAccounts/tableRoleDefinitions"
+  }
+  ...
+]
+```
+
+> [!NOTE]
+> In this example, the `id` value would be `/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/msdocs-identity-example/providers/Microsoft.DocumentDB/databaseAccounts/msdocs-identity-example-nosql/tableRoleDefinitions/00000000-0000-0000-0000-000000000002`. This example uses fictitious data and your identifier would be distinct from this example. This example output is truncated.
 
 ::: zone-end
 
 ::: zone pivot="azure-interface-shell"
 
+Use [`Get-AzCosmosDBAccount`](/powershell/module/az.cosmosdb/get-azcosmosdbaccount) to get the resource identifier of the existing Azure Cosmos DB for Table account and store it in a variable. Then, use [`Invoke-AzRestMethod`](/powershell/module/az.accounts/invoke-azrestmethod) to list all of the role definitions associated with your Azure Cosmos DB for Table account. Review the output and locate the role definition named **Cosmos DB Built-in Data Contributor**. The output contains the unique identifier of the role definition in the `Id` property. Record this value as it is required to use in the assignment step later in this guide.
 
+```azurepowershell-interactive
+$parameters = @{
+    ResourceGroupName = "<name-of-existing-resource-group>"
+    Name = "<name-of-existing-table-account>"
+}
+$resourceId = (
+    Get-AzCosmosDBAccount @parameters |
+        Select-Object -Property Id -First 1
+).Id
+
+$parameters = @{
+  Path = "$resourceId/tableRoleDefinitions?api-version=2023-04-15"
+  Method = "GET"
+}
+Invoke-AzRestMethod @parameters
+```
+
+```output
+StatusCode : 200
+Content    : {
+               "value": [
+                ...,
+                {
+                  "id": "/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/msdocs-identity-example/providers/Microsoft.DocumentDB/databaseAccounts/msdocs-identity-example-nosql/tableRoleDefinitions/00000000-0000-0000-0000-000000000002",
+                  "name": "00000000-0000-0000-0000-000000000002",
+                  "properties": {
+                    "assignableScopes": [
+                      "/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/msdocs-identity-example/providers/Microsoft.DocumentDB/databaseAccounts/msdocs-identity-example-nosql"
+                    ],
+                    "permissions": [
+                      {
+                        "dataActions": [
+                          "Microsoft.DocumentDB/databaseAccounts/readMetadata",
+                          "Microsoft.DocumentDB/databaseAccounts/tables/*",
+                          "Microsoft.DocumentDB/databaseAccounts/tables/containers/entities/*"
+                        ],
+                        "notDataActions": []
+                      }
+                    ],
+                    "roleName": "Cosmos DB Built-in Data Contributor",
+                    "type": "BuiltInRole"
+                  },
+                  "type": "Microsoft.DocumentDB/databaseAccounts/tableRoleDefinitions"
+                }
+                ...
+               ]
+             }
+...
+```
+
+> [!NOTE]
+> In this example, the `Id` value would be `/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/msdocs-identity-example/providers/Microsoft.DocumentDB/databaseAccounts/msdocs-identity-example-nosql/tableRoleDefinitions/00000000-0000-0000-0000-000000000002`. This example uses fictitious data and your identifier would be distinct from this example. This example output is truncated.
 
 ::: zone-end
 
 ### [Custom definition](#tab/custom-definition)
+
+::: zone pivot="azure-interface-cli"
+
+1. TODO
+
+::: zone-end
+
+::: zone pivot="azure-interface-bicep"
 
 1. Create a new Bicep file to define your role definition. Name the file *data-plane-role-definition.bicep*. Add these `dataActions` to the definition:
 
@@ -130,6 +238,14 @@ First, you must prepare a role definition with a list of `dataActions` to grant 
     > [!NOTE]
     > In this example, the `id` value would be `/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourcegroups/msdocs-identity-example/providers/Microsoft.DocumentDB/databaseAccounts/msdocs-identity-example-table-account/tableRoleDefinitions/dddddddd-9999-0000-1111-eeeeeeeeeeee`. This example uses fictitious data and your identifier would be distinct from this example. This is a subset of the typical JSON outputted from the deployment for clarity.
 
+::: zone-end
+
+::: zone pivot="azure-interface-shell"
+
+1. TODO
+
+::: zone-end
+
 ---
 
 ## Assign role to identity
@@ -138,6 +254,14 @@ Now, assign the newly defined role to an identity so that your applications can 
 
 > [!IMPORTANT]
 > This assignment task requires you to have the unique identifier of any identity you want to grant role-based access control permissions. If you do not have a unique identifier for an identity, follow the instructions in the [create managed identity](how-to-create-managed-identities.md) or [get signed-in identity](how-to-get-signed-in-identity.md) guides.
+
+::: zone pivot="azure-interface-cli"
+
+1. TODO
+
+::: zone-end
+
+::: zone pivot="azure-interface-bicep"
 
 1. Create another Bicep file to assign a role to an identity. Name this file *data-plane-role-assignment.bicep*.
 
@@ -193,6 +317,14 @@ Now, assign the newly defined role to an identity so that your applications can 
 
     > [!TIP]
     > You can repeat these steps for as many identities as you'd like. Typically, these steps are at least repeated to allow developers access to an account using their human identity and to allow applications access using a managed identity.
+
+::: zone-end
+
+::: zone pivot="azure-interface-shell"
+
+1. TODO
+
+::: zone-end
 
 ## Validate data plane access in code
 
