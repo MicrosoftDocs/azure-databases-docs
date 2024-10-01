@@ -104,9 +104,9 @@ Azure Cosmos DB RBAC is the ideal access control method in situations where:
 - You need a fine-grained permission model to tightly restrict which database operations your identities are allowed to perform.
 - You want to materialize your access control policies as "roles" that you can assign to multiple identities.
 
-To learn more about Azure Cosmos DB RBAC, see [Configure role-based access control for your Azure Cosmos DB account](how-to-setup-rbac.md).
+To learn more about Azure Cosmos DB RBAC, see [Configure role-based access control for your Azure Cosmos DB account](nosql/security/index.md).
 
-For information and sample code to configure RBAC for the Azure Cosmos DB for MongoDB, see [Configure role-based access control for your Azure Cosmos DB for MongoDB](mongodb/how-to-setup-rbac.md).
+For information and sample code to configure RBAC for the Azure Cosmos DB for MongoDB, see [Configure role-based access control for your Azure Cosmos DB for MongoDB](mongodb/security/index.md).
 
 ## Resource tokens
 
