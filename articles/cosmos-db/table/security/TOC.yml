@@ -43,6 +43,8 @@
       items:
         - name: Actions
           href: reference-data-plane-actions.md
+        - name: Built-in roles
+          href: reference-data-plane-roles.md
     - name: Frequently asked questions
       displayName: faq, questions, answers
       href: ../faq.yml?context=/azure/cosmos-db/table/security/context/context#security
