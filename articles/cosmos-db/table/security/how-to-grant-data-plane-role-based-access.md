@@ -152,7 +152,78 @@ Content    : {
 
 ::: zone pivot="azure-interface-cli"
 
-1. TODO
+1. Create a new JSON file named *role-definition.json*. In this file, create a resource definition specifying the data actions listed here:
+
+    | | Description |
+    | --- | --- |
+    | **`Microsoft.DocumentDB/databaseAccounts/readMetadata`** | Can read account-level metadata |
+    | **`Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/*`** | Can perform any container-level data operations |
+    | **`Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/*`** | Can perform any operation on items with containers |
+
+    ```json
+    {
+      "properties": {
+          "roleName": "Azure Cosmos DB for Table Data Plane Owner",
+        "type": "CustomRole",
+        "assignableScopes": [
+          "/subscriptions/5e6451f0-384a-4ec0-a4a1-bff59cf4837d/resourceGroups/sidandrews-rbac/providers/Microsoft.DocumentDB/databaseAccounts/sidandrews-rbac-table/"
+        ],
+        "permissions": [
+          {
+            "dataActions": [
+              "Microsoft.DocumentDB/databaseAccounts/readMetadata",
+              "Microsoft.DocumentDB/databaseAccounts/tables/*",
+              "Microsoft.DocumentDB/databaseAccounts/tables/containers/entities/*"
+            ]
+          }
+        ]
+      }
+    }
+    ```
+
+1. Next, use `az cosmosdb show` and `az rest` together to issues a HTTP `PUT` request to create or update a role definition. As part of this request, specify a unique GUID for your role definition.
+
+    ```azurecli-interactive
+    resourceId=$( \
+        az cosmosdb show \
+            --resource-group "<name-of-existing-resource-group>" \
+            --name "<name-of-existing-table-account>" \
+            --query "id" \
+            --output tsv \
+    )
+    
+    az rest \
+        --method "PUT" \
+        --url $resourceId/tableRoleDefinitions/d3d3d3d3-eeee-ffff-aaaa-b4b4b4b4b4b4?api-version=2023-04-15 \
+        --body @role-table.json
+    ```
+
+    > [!NOTE]
+    > In this example, the unique GUID specified was `d3d3d3d3-eeee-ffff-aaaa-b4b4b4b4b4b4`. You can specify any unique GUID for your own role definition.
+
+1. The output should now indicate that the request is queued. Now, wait for the enqueued role definition deployment to finish. This can take a few minutes.
+
+    ```json
+    {
+      "status": "Enqueued"
+    }
+    ```
+
+1. Finally, check the list of role definitions using `az rest` again.
+
+    ```azurecli-interactive
+    resourceId=$( \
+        az cosmosdb show \
+            --resource-group "<name-of-existing-resource-group>" \
+            --name "<name-of-existing-table-account>" \
+            --query "id" \
+            --output tsv \
+    )
+    
+    az rest \
+        --method "GET" \
+        --url $resourceId/tableRoleDefinitions?api-version=2023-04-15
+    ```
 
 ::: zone-end
 
@@ -242,7 +313,79 @@ Content    : {
 
 ::: zone pivot="azure-interface-shell"
 
-1. TODO
+1. Use `Get-AzCosmosDBAccount` and `Invoke-AzRestMethod` together to issues a HTTP `PUT` request to create or update a role definition. Also, as part of this request, specify a unique GUID for your role definition. Finally, create a resource definition payload specifying the data actions listed here:
+
+    | | Description |
+    | --- | --- |
+    | **`Microsoft.DocumentDB/databaseAccounts/readMetadata`** | Can read account-level metadata |
+    | **`Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/*`** | Can perform any container-level data operations |
+    | **`Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/*`** | Can perform any operation on items with containers |
+
+    ```azurepowershell-interactive
+    $parameters = @{
+        ResourceGroupName = "<name-of-existing-resource-group>"
+        Name = "<name-of-existing-table-account>"
+    }
+    $resourceId = (
+        Get-AzCosmosDBAccount @parameters |
+            Select-Object -Property Id -First 1
+    ).Id
+
+    $payload = @{
+      properties = @{
+        roleName = "Azure Cosmos DB for Table Data Plane Owner"
+        type = "CustomRole"
+        assignableScopes = @(
+          "/subscriptions/5e6451f0-384a-4ec0-a4a1-bff59cf4837d/resourceGroups/sidandrews-rbac/providers/Microsoft.DocumentDB/databaseAccounts/sidandrews-rbac-table/"
+        )
+        permissions = @(
+          @{
+            dataActions = @(
+              "Microsoft.DocumentDB/databaseAccounts/readMetadata",
+              "Microsoft.DocumentDB/databaseAccounts/tables/*",
+              "Microsoft.DocumentDB/databaseAccounts/tables/containers/entities/*"
+            )
+          }
+        )
+      }
+    }
+
+    $parameters = @{
+      Path = "$resourceId/tableRoleDefinitions/d3d3d3d3-eeee-ffff-aaaa-b4b4b4b4b4b4?api-version=2023-04-15"
+      Method = "PUT"
+      Payload = $payload | ConvertTo-Json -Depth 4
+    }
+    Invoke-AzRestMethod @parameters
+    ```
+
+    > [!NOTE]
+    > In this example, the unique GUID specified was `d3d3d3d3-eeee-ffff-aaaa-b4b4b4b4b4b4`. You can specify any unique GUID for your own role definition.
+
+1. The output should return with a status code of **200**. Now, wait for the enqueued role definition deployment to finish. This can take a few minutes.
+
+    ```output
+    StatusCode : 200
+    ...
+    ```
+
+1. Finally, check the list of role definitions using `Invoke-AzRestMethod` again.
+
+    ```azurepowershell-interactive
+    $parameters = @{
+        ResourceGroupName = "<name-of-existing-resource-group>"
+        Name = "<name-of-existing-table-account>"
+    }
+    $resourceId = (
+        Get-AzCosmosDBAccount @parameters |
+            Select-Object -Property Id -First 1
+    ).Id
+    
+    $parameters = @{
+      Path = "$resourceId/tableRoleDefinitions?api-version=2023-04-15"
+      Method = "GET"
+    }
+    Invoke-AzRestMethod @parameters
+    ```
 
 ::: zone-end
 
