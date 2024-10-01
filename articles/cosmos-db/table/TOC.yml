@@ -210,9 +210,6 @@
         - name: Role-based access control guide
           displayName: RBAC, Entra
           href: security/index.md
-        - name: Azure role-based access control
-          displayName: rbac
-          href: ../role-based-access-control.md
         - name: Data encryption
           href: ../database-encryption-at-rest.md
         - name: Service tags

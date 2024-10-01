@@ -16,7 +16,7 @@ ms.date: 09/23/2020
 Azure Policy provides built-in policy definitions. You can create custom policy definitions for scenarios that are not addressed by the built-in policy definitions. See the [Azure Policy documentation](/azure/governance/policy/overview) for more details.
 
 > [!IMPORTANT]
-> Azure Policy is enforced at the resource provider level for Azure services. Azure Cosmos DB SDKs can perform most management operations on database, container and throughput resources that bypass Azure Cosmos DB's resource provider, thus ignoring any policies created using Azure Policy. To ensure enforcement of policies see, [Preventing changes from the Azure Cosmos DB SDKs](role-based-access-control.md#prevent-sdk-changes)
+> Azure Policy is enforced at the resource provider level for Azure services. Azure Cosmos DB SDKs can perform most management operations on database, container and throughput resources that bypass Azure Cosmos DB's resource provider, thus ignoring any policies created using Azure Policy.
 
 ## Assign a built-in policy definition
 

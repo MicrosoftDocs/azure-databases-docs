@@ -145,7 +145,7 @@
               href: resource-manager-template-samples.md
             - name: Bicep syntax templates
               href: manage-with-bicep.md
-        - name: Azure Resource Graph queries
+        - name: Queries for Azure Resource Graph
           href: ../resource-graph-samples.md
     - name: Concepts
       items:
@@ -275,12 +275,10 @@
         - name: Security
           items:
             - name: Security overview
-              href: ../database-security.md
-            - name: Azure role-based access control
-              displayName: rbac
-              href: ../role-based-access-control.md
-            - name: Configure role-based access control for API for MongoDB
-              href: how-to-setup-rbac.md
+              href: ../database-security.md       
+            - name: Role-based access control guide
+              displayName: RBAC, Entra
+              href: security/index.md
             - name: Data encryption
               href: ../database-encryption-at-rest.md
             - name: Service tags
@@ -494,8 +492,6 @@
                   href: ../periodic-backup-modify-interval-retention.md
         - name: Security
           items:
-            - name: Configure role-based access control for API for MongoDB
-              href: how-to-setup-rbac.md
             - name: Configure IP firewall
               href: ../how-to-configure-firewall.md
             - name: Configure access from virtual networks
@@ -507,14 +503,15 @@
               href: ../store-credentials-key-vault.md
             - name: Access Azure Key Vault with managed identity
               href: ../access-key-vault-managed-identity.md
-            - name: Restrict user access to data operations only
-              href: ../how-to-restrict-user-data.md
             - name: Configure customer-managed keys
               href: ../how-to-setup-customer-managed-keys.md
             - name: Configure cross-tenant customer-managed keys
               href: ../how-to-setup-cross-tenant-customer-managed-keys.md
             - name: Use managed identities with Azure services
               href: ../how-to-setup-managed-identity.md
+            - name: Disable key-based authentication
+              displayName: key, ropc, connection string
+              href: security/how-to-disable-key-based-authentication.md?context=/azure/cosmos-db/context/context
         - name: Monitor
           items:
             - name: Monitor
