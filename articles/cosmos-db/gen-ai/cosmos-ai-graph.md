@@ -14,7 +14,6 @@ ms.author: jacodel
 # Retrieval Augmented Generated (RAG) with vector search and knowledge graphs using Azure Cosmos DB
 
 [!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
-[!INCLUDEMongoDB vCore]
 
 [Cosmos AI Graph](https://aka.ms/cosmosaigraph) is an innovative solution that applies the power of Azure Cosmos DB to create AI-powered knowledge graphs. This technology integrates advanced graph database capabilities with AI to provide a robust platform for managing and querying complex data relationships. By utilizing Cosmos DB's scalability and performance, Cosmos AI Graph enables the creation of sophisticated data models that can answer various data questions and uncover hidden relationships and concepts in text data.
 
