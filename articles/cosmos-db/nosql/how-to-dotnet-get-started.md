@@ -90,20 +90,6 @@ Create a new instance of the **CosmosClient** class with the ``COSMOS_ENDPOINT``
 
 :::code language="csharp" source="~/cosmos-db-nosql-dotnet-samples/103-client-default-credential/Program.cs" id="default_credential" highlight="4":::
 
-### Create CosmosClient with a custom credential implementation
-
-If you plan to deploy the application out of Azure, you can obtain an OAuth token by using other classes in the [Azure.Identity client library for .NET](/dotnet/api/overview/azure/identity-readme). These other classes also derive from the ``TokenCredential`` class.
-
-For this example, we create a [``ClientSecretCredential``](/dotnet/api/azure.identity.clientsecretcredential) instance by using client and tenant identifiers, along with a client secret.
-
-:::code language="csharp" source="~/cosmos-db-nosql-dotnet-samples/104-client-secret-credential/Program.cs" id="credential" highlight="3-5":::
-
-You can obtain the client ID, tenant ID, and client secret when you register an application in Microsoft Entra ID. For more information about registering Microsoft Entra applications, see [Register an application with the Microsoft identity platform](/azure/active-directory/develop/quickstart-register-app).
-
-Create a new instance of the **CosmosClient** class with the ``COSMOS_ENDPOINT`` environment variable and the **TokenCredential** object as parameters.
-
-:::code language="csharp" source="~/cosmos-db-nosql-dotnet-samples/104-client-secret-credential/Program.cs" id="secret_credential" highlight="4":::
-
 ## Build your application
 
 As you build your application, your code will primarily interact with four types of resources:

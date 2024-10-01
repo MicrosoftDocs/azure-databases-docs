@@ -105,22 +105,6 @@ In your *app.py*:
 > [!IMPORTANT]
 > For details on how to add the correct role to enable `DefaultAzureCredential` to work, see [Configure role-based access control with Microsoft Entra ID for your Azure Cosmos DB account](security/how-to-grant-data-plane-role-based-access.md). In particular, see the section on creating roles and assigning them to a principal ID.
 
-### Create CosmosClient with a custom credential implementation
-
-If you plan to deploy the application out of Azure, you can obtain an OAuth token by using other classes in the [Azure.Identity client library for Python](/python/api/overview/azure/identity-readme). These other classes also derive from the ``TokenCredential`` class.
-
-For this example, we create a [``ClientSecretCredential``](/python/api/azure-identity/azure.identity.clientsecretcredential) instance by using client and tenant identifiers, along with a client secret.
-
-In your *app.py*:
-
-- Get the credential information from environment variables for a service principal. You can obtain the client ID, tenant ID, and client secret when you register an application in Microsoft Entra ID. For more information about registering Microsoft Entra applications, see [Register an application with the Microsoft identity platform](/azure/active-directory/develop/quickstart-register-app).
-
-- Import the [ClientSecretCredential](/python/api/azure-identity/azure.identity.clientsecretcredential) and create an instance with the ``TENANT_ID``, ``CLIENT_ID``, and ``CLIENT_SECRET`` environment variables as parameters.
-
-- Create a new instance of the **CosmosClient** class with the **ENDPOINT** and **credential** as parameters.
-
-:::code language="python" source="~/cosmos-db-nosql-python-samples/003-how-to/app_aad_principal.py" id="credential":::
-
 ## Build your application
 
 As you build your application, your code will primarily interact with four types of resources:

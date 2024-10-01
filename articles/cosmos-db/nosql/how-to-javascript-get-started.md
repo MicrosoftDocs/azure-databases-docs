@@ -90,32 +90,6 @@ const cosmosClient = new CosmosClient({
 });
 ```
 
-### Create CosmosClient with a custom credential implementation
-
-If you plan to deploy the application out of Azure, you can obtain an OAuth token by using other classes in the [@azure/identity client library for JavaScript](/javascript/api/@azure/identity/). These other classes also derive from the ``TokenCredential`` class.
-
-For this example, we create a [``ClientSecretCredential``](/javascript/api/@azure/identity/tokencredential) instance by using client and tenant identifiers, along with a client secret.
-
-You can obtain the client ID, tenant ID, and client secret when you register an application in Microsoft Entra ID. For more information about registering Microsoft Entra applications, see [Register an application with the Microsoft identity platform](/azure/active-directory/develop/quickstart-register-app).
-
-Create a new instance of the **CosmosClient** class with the ``COSMOS_ENDPOINT`` environment variable and the **TokenCredential** object as parameters.
-
-```javascript
-const { CosmosClient } = require("@azure/cosmos");
-const { DefaultAzureCredential } = require("@azure/identity");
-
-const credential = new ClientSecretCredential(
-    tenantId: process.env.AAD_TENANT_ID,
-    clientId: process.env.AAD_CLIENT_ID,
-    clientSecret: process.env.AAD_CLIENT_SECRET
-);
-
-const cosmosClient = new CosmosClient({ 
-    endpoint, 
-    aadCredentials: credential
-});
-```
-
 ## Build your application
 
 As you build your application, your code will primarily interact with four types of resources:
