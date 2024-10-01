@@ -23,7 +23,7 @@ In this tutorial, you:
 
 > [!div class="checklist"]
 >
-> - Review prerequisites
+> - Complete prerequisites
 > - Initiate the migration
 > - Monitor the migration
 > - Verify the migration
