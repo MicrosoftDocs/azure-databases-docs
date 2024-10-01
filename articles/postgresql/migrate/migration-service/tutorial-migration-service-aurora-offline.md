@@ -19,9 +19,11 @@ This article describes how to migrate your PostgreSQL database from Amazon Auror
 
 The migration service in Azure Database for PostgreSQL is a fully managed service that's integrated into the Azure portal and the Azure CLI. It's designed to simplify your migration journey to Azure Database for PostgreSQL.
 
+In this tutorial, you:
+
 > [!div class="checklist"]
 >
-> - Prerequisites
+> - Review prerequisites
 > - Initiate the migration
 > - Monitor the migration
 > - Verify the migration

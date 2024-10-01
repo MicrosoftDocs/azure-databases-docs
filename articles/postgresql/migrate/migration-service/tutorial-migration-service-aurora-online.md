@@ -19,9 +19,11 @@ This article describes how to migrate your PostgreSQL database from Amazon Auror
 
 The migration service in Azure Database for PostgreSQL is a fully managed service that's integrated into the Azure portal and the Azure CLI. It's designed to simplify your migration journey to Azure Database for PostgreSQL.
 
+In this tutorial, you:
+
 > [!div class="checklist"]
 >
-> - Prerequisites
+> - Review prerequisites
 > - Initiate the migration
 > - Monitor the migration
 > - Initiate a cutover
@@ -232,7 +234,7 @@ You can get the `latency` value on the migration details pane:
 
 The `latency` value indicates when the target last synced with the source. At this point, writing to the source can be stopped, and cutover can be initiated. If there's heavy traffic on the source server, we recommend that you stop writes first so that `latency` can come close to 0. Then, initiate a cutover.
 
-The cutover operation applies all pending changes from the source to the target and completes the migration. If you trigger a cutover, even with a nonzero value for `latency`, the replication stops at that point in time. All the data is on the source until the cutover point is applied to the target. For example, if latency is 15 minutes at the cutover point, all the changed data in the last 15 minutes is applied to the target. The time it takes to cut over depends on the backlog of changes that occurred in those 15 minutes. So, we recommend that latency go to zero or near zero before you trigger the cutover.
+The cutover operation applies all pending changes from the source to the target and completes the migration. If you trigger a cutover, even with a nonzero value for `latency`, the replication stops at that point in time. All the data is on the source until the cutover point is applied to the target. For example, if latency is 15 minutes at the cutover point, all the changed data in the last 15 minutes is applied to the target. The time it takes the cutover to finish depends on the backlog of changes that occurred during those 15 minutes. So, we recommend that latency go to zero or near zero before you trigger the cutover.
 
 :::image type="content" source="media/tutorial-migration-service-aurora-online/aurora-confirm-cutover.png" alt-text="Screenshot that shows the dialog where you confirm a cutover during migration." lightbox="media/tutorial-migration-service-aurora-online/aurora-confirm-cutover.png":::
 
