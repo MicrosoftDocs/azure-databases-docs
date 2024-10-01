@@ -34,6 +34,22 @@ This article walks through the steps to grant an identity access to manage data 
 
 First, you must prepare a role definition with a list of `dataActions` to grant access to read, query, and manage data in Azure Cosmos DB for Table.
 
+### [Built-in definition](#tab/built-in-definition)
+
+::: zone pivot="azure-interface-cli,azure-interface-bicep"
+
+
+
+::: zone-end
+
+::: zone pivot="azure-interface-shell"
+
+
+
+::: zone-end
+
+### [Custom definition](#tab/custom-definition)
+
 1. Create a new Bicep file to define your role definition. Name the file *data-plane-role-definition.bicep*. Add these `dataActions` to the definition:
 
     | | Description |
@@ -113,6 +129,8 @@ First, you must prepare a role definition with a list of `dataActions` to grant 
 
     > [!NOTE]
     > In this example, the `id` value would be `/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourcegroups/msdocs-identity-example/providers/Microsoft.DocumentDB/databaseAccounts/msdocs-identity-example-table-account/tableRoleDefinitions/dddddddd-9999-0000-1111-eeeeeeeeeeee`. This example uses fictitious data and your identifier would be distinct from this example. This is a subset of the typical JSON outputted from the deployment for clarity.
+
+---
 
 ## Assign role to identity
 
