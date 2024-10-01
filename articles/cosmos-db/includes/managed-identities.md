@@ -315,7 +315,7 @@ Create a user-assigned managed identity that can be used with one or more Azure 
     ```
 
     > [!NOTE]
-    > In this example, the `id` value would be `/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourcegroups/msdocs-identity-example/providers/Microsoft.ManagedIdentity/userAssignedIdentities/msdocs-identity-example-user-assigned`. This example uses fictituous data and your identifier would be distinct from this example.
+    > In this example, the `id` value would be `/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourcegroups/msdocs-identity-example/providers/Microsoft.ManagedIdentity/userAssignedIdentities/msdocs-identity-example-user-assigned`. This example uses fictitious data and your identifier would be distinct from this example.
 
 ::: zone-end
 
@@ -360,7 +360,7 @@ Create a user-assigned managed identity that can be used with one or more Azure 
     ```
 
     > [!NOTE]
-    > In this example, the `name.value` would be `msdocs-identity-example-user-assigned`. This example uses fictituous data and your identifier would be distinct from this example.
+    > In this example, the `name.value` would be `msdocs-identity-example-user-assigned`. This example uses fictitious data and your identifier would be distinct from this example.
 
 ::: zone-end
 
@@ -429,7 +429,7 @@ Create a user-assigned managed identity that can be used with one or more Azure 
     ```
 
     > [!NOTE]
-    > In this example, the `Id` value would be `/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourcegroups/msdocs-identity-example/providers/Microsoft.ManagedIdentity/userAssignedIdentities/msdocs-identity-example-user-assigned`. This example uses fictituous data and your identifier would be distinct from this example.
+    > In this example, the `Id` value would be `/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourcegroups/msdocs-identity-example/providers/Microsoft.ManagedIdentity/userAssignedIdentities/msdocs-identity-example-user-assigned`. This example uses fictitious data and your identifier would be distinct from this example.
 
 ::: zone-end
 
