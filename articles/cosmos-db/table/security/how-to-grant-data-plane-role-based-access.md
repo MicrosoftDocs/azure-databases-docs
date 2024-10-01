@@ -9,6 +9,7 @@ ms.service: azure-cosmos-db
 ms.subservice: table
 ms.topic: how-to
 ms.date: 10/01/2024
+zone_pivot_groups: azure-interface-cli-powershell-bicep
 #Customer Intent: As a security user, I want to grant an identity data-plane access to Azure Cosmos DB for Table, so that my developer team can use the SDK of their choice with minimal code change.
 ---
 
@@ -33,6 +34,200 @@ This article walks through the steps to grant an identity access to manage data 
 ## Prepare role definition
 
 First, you must prepare a role definition with a list of `dataActions` to grant access to read, query, and manage data in Azure Cosmos DB for Table.
+
+### [Built-in definition](#tab/built-in-definition)
+
+::: zone pivot="azure-interface-cli,azure-interface-bicep"
+
+First, get the resource identifier of the existing Azure Cosmos DB for Table account using [`az cosmsodb show`](/cli/azure/cosmosdb#az-cosmosdb-show) and store it in a variable. Then, list all of the role definitions associated with your Azure Cosmos DB for Table account using [`az rest`](/cli/azure/reference-index#az-rest). Finally, review the output and locate the role definition named **Cosmos DB Built-in Data Contributor**. The output contains the unique identifier of the role definition in the `id` property. Record this value as it is required to use in the assignment step later in this guide.
+
+```azurecli-interactive
+resourceId=$( \
+    az cosmosdb show \
+        --resource-group "<name-of-existing-resource-group>" \
+        --name "<name-of-existing-table-account>" \
+        --query "id" \
+        --output tsv \
+)
+
+az rest \
+    --method "GET" \
+    --url $resourceId/tableRoleDefinitions?api-version=2023-04-15
+```
+
+```json
+[
+  ...,
+  {
+    "id": "/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/msdocs-identity-example/providers/Microsoft.DocumentDB/databaseAccounts/msdocs-identity-example-nosql/tableRoleDefinitions/00000000-0000-0000-0000-000000000002",
+    "name": "00000000-0000-0000-0000-000000000002",
+    "properties": {
+      "assignableScopes": [
+        "/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/msdocs-identity-example/providers/Microsoft.DocumentDB/databaseAccounts/msdocs-identity-example-nosql"
+      ],
+      "permissions": [
+        {
+          "dataActions": [
+            "Microsoft.DocumentDB/databaseAccounts/readMetadata",
+            "Microsoft.DocumentDB/databaseAccounts/tables/*",
+            "Microsoft.DocumentDB/databaseAccounts/tables/containers/entities/*"
+          ],
+          "notDataActions": []
+        }
+      ],
+      "roleName": "Cosmos DB Built-in Data Contributor",
+      "type": "BuiltInRole"
+    },
+    "type": "Microsoft.DocumentDB/databaseAccounts/tableRoleDefinitions"
+  }
+  ...
+]
+```
+
+> [!NOTE]
+> In this example, the `id` value would be `/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/msdocs-identity-example/providers/Microsoft.DocumentDB/databaseAccounts/msdocs-identity-example-nosql/tableRoleDefinitions/00000000-0000-0000-0000-000000000002`. This example uses fictitious data and your identifier would be distinct from this example. This example output is truncated.
+
+::: zone-end
+
+::: zone pivot="azure-interface-shell"
+
+Use [`Get-AzCosmosDBAccount`](/powershell/module/az.cosmosdb/get-azcosmosdbaccount) to get the resource identifier of the existing Azure Cosmos DB for Table account and store it in a variable. Then, use [`Invoke-AzRestMethod`](/powershell/module/az.accounts/invoke-azrestmethod) to list all of the role definitions associated with your Azure Cosmos DB for Table account. Review the output and locate the role definition named **Cosmos DB Built-in Data Contributor**. The output contains the unique identifier of the role definition in the `Id` property. Record this value as it is required to use in the assignment step later in this guide.
+
+```azurepowershell-interactive
+$parameters = @{
+    ResourceGroupName = "<name-of-existing-resource-group>"
+    Name = "<name-of-existing-table-account>"
+}
+$resourceId = (
+    Get-AzCosmosDBAccount @parameters |
+        Select-Object -Property Id -First 1
+).Id
+
+$parameters = @{
+  Path = "$resourceId/tableRoleDefinitions?api-version=2023-04-15"
+  Method = "GET"
+}
+Invoke-AzRestMethod @parameters
+```
+
+```output
+StatusCode : 200
+Content    : {
+               "value": [
+                ...,
+                {
+                  "id": "/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/msdocs-identity-example/providers/Microsoft.DocumentDB/databaseAccounts/msdocs-identity-example-nosql/tableRoleDefinitions/00000000-0000-0000-0000-000000000002",
+                  "name": "00000000-0000-0000-0000-000000000002",
+                  "properties": {
+                    "assignableScopes": [
+                      "/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/msdocs-identity-example/providers/Microsoft.DocumentDB/databaseAccounts/msdocs-identity-example-nosql"
+                    ],
+                    "permissions": [
+                      {
+                        "dataActions": [
+                          "Microsoft.DocumentDB/databaseAccounts/readMetadata",
+                          "Microsoft.DocumentDB/databaseAccounts/tables/*",
+                          "Microsoft.DocumentDB/databaseAccounts/tables/containers/entities/*"
+                        ],
+                        "notDataActions": []
+                      }
+                    ],
+                    "roleName": "Cosmos DB Built-in Data Contributor",
+                    "type": "BuiltInRole"
+                  },
+                  "type": "Microsoft.DocumentDB/databaseAccounts/tableRoleDefinitions"
+                }
+                ...
+               ]
+             }
+...
+```
+
+> [!NOTE]
+> In this example, the `Id` value would be `/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/msdocs-identity-example/providers/Microsoft.DocumentDB/databaseAccounts/msdocs-identity-example-nosql/tableRoleDefinitions/00000000-0000-0000-0000-000000000002`. This example uses fictitious data and your identifier would be distinct from this example. This example output is truncated.
+
+::: zone-end
+
+### [Custom definition](#tab/custom-definition)
+
+::: zone pivot="azure-interface-cli"
+
+1. Create a new JSON file named *role-definition.json*. In this file, create a resource definition specifying the data actions listed here:
+
+    | | Description |
+    | --- | --- |
+    | **`Microsoft.DocumentDB/databaseAccounts/readMetadata`** | Can read account-level metadata |
+    | **`Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/*`** | Can perform any container-level data operations |
+    | **`Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/*`** | Can perform any operation on items with containers |
+
+    ```json
+    {
+      "properties": {
+        "roleName": "Azure Cosmos DB for Table Data Plane Owner",
+        "type": "CustomRole",
+        "assignableScopes": [
+          "/subscriptions/5e6451f0-384a-4ec0-a4a1-bff59cf4837d/resourceGroups/sidandrews-rbac/providers/Microsoft.DocumentDB/databaseAccounts/sidandrews-rbac-table/"
+        ],
+        "permissions": [
+          {
+            "dataActions": [
+              "Microsoft.DocumentDB/databaseAccounts/readMetadata",
+              "Microsoft.DocumentDB/databaseAccounts/tables/*",
+              "Microsoft.DocumentDB/databaseAccounts/tables/containers/entities/*"
+            ]
+          }
+        ]
+      }
+    }
+    ```
+
+1. Now create or update a role definition using `az cosmosdb show` and `az rest` together to issue an HTTP `PUT` request. As part of this request, specify a unique GUID for your role definition.
+
+    ```azurecli-interactive
+    resourceId=$( \
+        az cosmosdb show \
+            --resource-group "<name-of-existing-resource-group>" \
+            --name "<name-of-existing-table-account>" \
+            --query "id" \
+            --output tsv \
+    )
+    
+    az rest \
+        --method "PUT" \
+        --url $resourceId/tableRoleDefinitions/d3d3d3d3-eeee-ffff-aaaa-b4b4b4b4b4b4?api-version=2023-04-15 \
+        --body @role-definition.json
+    ```
+
+    > [!NOTE]
+    > In this example, the unique GUID specified was `d3d3d3d3-eeee-ffff-aaaa-b4b4b4b4b4b4`. You can specify any unique GUID for your own role definition.
+
+1. The output should now indicate that the request is queued. Now, wait for the enqueued role definition deployment to finish. This task can take a few minutes.
+
+    ```json
+    {
+      "status": "Enqueued"
+    }
+    ```
+
+1. Finally, check the list of role definitions using `az rest` again.
+
+    ```azurecli-interactive
+    resourceId=$( \
+        az cosmosdb show \
+            --resource-group "<name-of-existing-resource-group>" \
+            --name "<name-of-existing-table-account>" \
+            --query "id" \
+            --output tsv \
+    )
+    
+    az rest \
+        --method "GET" \
+        --url $resourceId/tableRoleDefinitions?api-version=2023-04-15
+    ```
+
+::: zone-end
+
+::: zone pivot="azure-interface-bicep"
 
 1. Create a new Bicep file to define your role definition. Name the file *data-plane-role-definition.bicep*. Add these `dataActions` to the definition:
 
@@ -114,12 +309,155 @@ First, you must prepare a role definition with a list of `dataActions` to grant 
     > [!NOTE]
     > In this example, the `id` value would be `/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourcegroups/msdocs-identity-example/providers/Microsoft.DocumentDB/databaseAccounts/msdocs-identity-example-table-account/tableRoleDefinitions/dddddddd-9999-0000-1111-eeeeeeeeeeee`. This example uses fictitious data and your identifier would be distinct from this example. This is a subset of the typical JSON outputted from the deployment for clarity.
 
+::: zone-end
+
+::: zone pivot="azure-interface-shell"
+
+1. Create or update your role definition using `Get-AzCosmosDBAccount` and `Invoke-AzRestMethod` together to issue an HTTP `PUT` request. Also, as part of this request, specify a unique GUID for your role definition. Finally, create a resource definition payload specifying the data actions listed here:
+
+    | | Description |
+    | --- | --- |
+    | **`Microsoft.DocumentDB/databaseAccounts/readMetadata`** | Can read account-level metadata |
+    | **`Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/*`** | Can perform any container-level data operations |
+    | **`Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/*`** | Can perform any operation on items with containers |
+
+    ```azurepowershell-interactive
+    $parameters = @{
+        ResourceGroupName = "<name-of-existing-resource-group>"
+        Name = "<name-of-existing-table-account>"
+    }
+    $resourceId = (
+        Get-AzCosmosDBAccount @parameters |
+            Select-Object -Property Id -First 1
+    ).Id
+
+    $payload = @{
+      properties = @{
+        roleName = "Azure Cosmos DB for Table Data Plane Owner"
+        type = "CustomRole"
+        assignableScopes = @(
+          "/subscriptions/5e6451f0-384a-4ec0-a4a1-bff59cf4837d/resourceGroups/sidandrews-rbac/providers/Microsoft.DocumentDB/databaseAccounts/sidandrews-rbac-table/"
+        )
+        permissions = @(
+          @{
+            dataActions = @(
+              "Microsoft.DocumentDB/databaseAccounts/readMetadata",
+              "Microsoft.DocumentDB/databaseAccounts/tables/*",
+              "Microsoft.DocumentDB/databaseAccounts/tables/containers/entities/*"
+            )
+          }
+        )
+      }
+    }
+
+    $parameters = @{
+      Path = "$resourceId/tableRoleDefinitions/d3d3d3d3-eeee-ffff-aaaa-b4b4b4b4b4b4?api-version=2023-04-15"
+      Method = "PUT"
+      Payload = $payload | ConvertTo-Json -Depth 4
+    }
+    Invoke-AzRestMethod @parameters
+    ```
+
+    > [!NOTE]
+    > In this example, the unique GUID specified was `d3d3d3d3-eeee-ffff-aaaa-b4b4b4b4b4b4`. You can specify any unique GUID for your own role definition.
+
+1. The output should return with a status code of **200**. Now, wait for the enqueued role definition deployment to finish. This task can take a few minutes.
+
+    ```output
+    StatusCode : 200
+    ...
+    ```
+
+1. Finally, check the list of role definitions using `Invoke-AzRestMethod` again.
+
+    ```azurepowershell-interactive
+    $parameters = @{
+        ResourceGroupName = "<name-of-existing-resource-group>"
+        Name = "<name-of-existing-table-account>"
+    }
+    $resourceId = (
+        Get-AzCosmosDBAccount @parameters |
+            Select-Object -Property Id -First 1
+    ).Id
+    
+    $parameters = @{
+      Path = "$resourceId/tableRoleDefinitions?api-version=2023-04-15"
+      Method = "GET"
+    }
+    Invoke-AzRestMethod @parameters
+    ```
+
+::: zone-end
+
+---
+
 ## Assign role to identity
 
 Now, assign the newly defined role to an identity so that your applications can access data in Azure Cosmos DB for Table.
 
 > [!IMPORTANT]
 > This assignment task requires you to have the unique identifier of any identity you want to grant role-based access control permissions. If you do not have a unique identifier for an identity, follow the instructions in the [create managed identity](how-to-create-managed-identities.md) or [get signed-in identity](how-to-get-signed-in-identity.md) guides.
+
+::: zone pivot="azure-interface-cli"
+
+1. Use `az cosmosdb show` to get the unique identifier for your current account.
+
+    ```azurecli-interactive
+    az cosmosdb show \
+        --resource-group "<name-of-existing-resource-group>" \
+        --name "<name-of-existing-resource-group>" \
+        --query "{id:id}"
+    ```
+
+1. Observe the output of the previous command. Record the value of the `id` property for this account as it is required to use in the next step.
+
+    ```json
+    {
+      "id": "/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/msdocs-identity-example/providers/Microsoft.DocumentDB/databaseAccounts/msdocs-identity-example-nosql"
+    }
+    ```
+
+    > [!NOTE]
+    > In this example, the `id` value would be `/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/msdocs-identity-example/providers/Microsoft.DocumentDB/databaseAccounts/msdocs-identity-example-nosql`. This example uses fictitious data and your identifier would be distinct from this example.
+
+1. Create a new JSON file named *role-assignment.json*. In the JSON file, add the unique identifier for your identity and unique identifier for the account resource.
+
+    ```json
+    {
+      "properties": {
+        "roleDefinitionId": "<account-resource-id>/tableRoleDefinitions/d3d3d3d3-eeee-ffff-aaaa-b4b4b4b4b4b4",
+        "scope": "<account-resource-id>",
+        "principalId": "<id-of-existing-identity>"
+      }
+    }
+    ```
+
+    > [!NOTE]
+    > In this example, the unique GUID specified was `d3d3d3d3-eeee-ffff-aaaa-b4b4b4b4b4b4`. You can use the unique GUID you used previously for your own role definition.
+
+1. Now create or update a role assignment using `az cosmosdb show` and `az rest` together to issue an HTTP `PUT` request. As part of this request, specify a unique GUID for your role assignment.
+
+    ```azurecli-interactive
+    resourceId=$( \
+        az cosmosdb show \
+            --resource-group "<name-of-existing-resource-group>" \
+            --name "<name-of-existing-table-account>" \
+            --query "id" \
+            --output tsv \
+    )
+    
+    az rest \
+        --method "PUT" \
+        --url $resourceId/tableRoleAssignments/e4e4e4e4-ffff-aaaa-bbbb-c5c5c5c5c5c5?api-version=2023-04-15 \
+        --body @role-assignment.json
+    ```
+
+    > [!NOTE]
+    > In this example, the unique GUID specified was `e4e4e4e4-ffff-aaaa-bbbb-c5c5c5c5c5c5`. You can specify any unique GUID for your own role assignment.
+
+::: zone-end
+
+::: zone pivot="azure-interface-bicep"
 
 1. Create another Bicep file to assign a role to an identity. Name this file *data-plane-role-assignment.bicep*.
 
@@ -175,6 +513,64 @@ Now, assign the newly defined role to an identity so that your applications can 
 
     > [!TIP]
     > You can repeat these steps for as many identities as you'd like. Typically, these steps are at least repeated to allow developers access to an account using their human identity and to allow applications access using a managed identity.
+
+::: zone-end
+
+::: zone pivot="azure-interface-shell"
+
+1. Use `Get-AzCosmosDBAccount to get the unique identifier for your current account.
+
+    ```azurepowershell-interactive
+    $parameters = @{
+        ResourceGroupName = "<name-of-existing-resource-group>"
+        Name = "<name-of-existing-nosql-account>"
+    }
+    Get-AzCosmosDBAccount @parameters | Select -Property Id
+    ```
+
+1. Observe the output of the previous command. Record the value of the `Id` property for this account as it is required to use in the next step.
+
+    ```output
+    Id
+    --    
+    /subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/msdocs-identity-example/providers/Microsoft.DocumentDB/databaseAccounts/msdocs-identity-example-nosql
+    ```
+
+    > [!NOTE]
+    > In this example, the `Id` value would be `/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/msdocs-identity-example/providers/Microsoft.DocumentDB/databaseAccounts/msdocs-identity-example-nosql`. This example uses fictitious data and your identifier would be distinct from this example.
+
+1. Now create or update a role assignment using `az cosmosdb show` and `az rest` together to issue an HTTP `PUT` request. As part of this request, specify a unique GUID for your role assignment. Finally, create a resource assignment payload specifying the unique identifier for your identity.
+
+    ```azurecli-interactive
+    $parameters = @{
+        ResourceGroupName = "<name-of-existing-resource-group>"
+        Name = "<name-of-existing-table-account>"
+    }
+    $resourceId = (
+        Get-AzCosmosDBAccount @parameters |
+            Select-Object -Property Id -First 1
+    ).Id    
+
+    $payload = @{
+      properties = @{
+        roleDefinitionId = "$resourceId/tableRoleDefinitions/00000000-0000-0000-0000-000000000002"
+        scope = "$resourceId"
+        principalId = "<id-of-existing-identity>"
+      }
+    }
+
+    $parameters = @{
+      Path = "$resourceId/tableRoleAssignments/e4e4e4e4-ffff-aaaa-bbbb-c5c5c5c5c5c5?api-version=2023-04-15"
+      Method = "PUT"
+      Payload = $payload | ConvertTo-Json -Depth 2
+    }
+    Invoke-AzRestMethod @parameters
+    ```
+
+    > [!NOTE]
+    > In this example, the unique GUID specified was `e4e4e4e4-ffff-aaaa-bbbb-c5c5c5c5c5c5`. You can specify any unique GUID for your own role assignment.
+
+::: zone-end
 
 ## Validate data plane access in code
 

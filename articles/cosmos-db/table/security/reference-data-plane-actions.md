@@ -85,3 +85,7 @@ The action can be assigned at any level in an Azure Cosmos DB account's hierarch
 
 > [!IMPORTANT]
 > You cannot manage throughput with the `Microsoft.DocumentDB/databaseAccounts/readMetadata` data action.
+
+## Related content
+
+[Data plane roles](reference-data-plane-roles.md)
