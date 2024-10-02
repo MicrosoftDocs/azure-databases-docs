@@ -13,9 +13,9 @@ metadata:
   ms.topic: concept-article
   ms.date: 10/02/2024
 landingContent:
-  - title: Azure Cosmos DB for NoSQL
+  - title: General guidance
     linkLists:
-      - linkListType: best-practices
+      - linkListType: architecture
         links:
           - text: Security guidance
             url: /azure/well-architected/service-guides/cosmos-db?context=/azure/cosmos-db/context/context#security
@@ -30,7 +30,7 @@ landingContent:
           - text: Glossary
             url: nosql/security/glossary.md
           - text: Frequently asked questions
-            url: /nosql/faq.md#security
+            url: /nosql/faq.yml#security
       - linkListType: how-to-guide
         links:
           - text: Get signed-in identity
@@ -57,6 +57,8 @@ landingContent:
         links:
           - text: Overview
             url: mongodb/security/index.md
+      - linkListType: how-to-guide
+        links:
           - text: Disable key-based authentication
             url: mongodb/security/how-to-disable-key-based-authentication.md
   - title: Azure Cosmos DB for Apache Cassandra (RU-based)
@@ -65,6 +67,8 @@ landingContent:
         links:
           - text: Overview
             url: cassandra/security/index.md
+      - linkListType: how-to-guide
+        links:
           - text: Disable key-based authentication
             url: cassandra/security/how-to-disable-key-based-authentication.md
   - title: Azure Cosmos DB for Apache Gremlin
@@ -73,6 +77,8 @@ landingContent:
         links:
           - text: Overview
             url: gremlin/security/index.md
+      - linkListType: how-to-guide
+        links:
           - text: Disable key-based authentication
             url: gremlin/security/how-to-disable-key-based-authentication.md
   - title: Azure Cosmos DB for Table
@@ -81,6 +87,8 @@ landingContent:
         links:
           - text: Overview
             url: table/security/index.md
+      - linkListType: how-to-guide
+        links:
           - text: Disable key-based authentication
             url: table/security/how-to-disable-key-based-authentication.md
   - title: Legacy authentication methods (not recommended)
