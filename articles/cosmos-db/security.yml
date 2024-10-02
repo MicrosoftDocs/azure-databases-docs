@@ -75,3 +75,13 @@ landingContent:
             url: table/security/index.md
           - text: Disable key-based authentication
             url: table/security/how-to-disable-key-based-authentication.md
+  - title: Legacy authentication methods (not recommended)
+    linkLists:
+      - linkListType: how-to-guide
+        links:
+          - text: Use primary and secondary keys
+            url: /previous-versions/azure/cosmos-db/how-to-configure-keys
+          - text: Implement key rotation
+            url: /previous-versions/azure/cosmos-db/how-to-implement-key-rotation
+          - text: Use resource tokens
+            url: /previous-versions/azure/cosmos-db/how-to-use-resource-tokens
