@@ -5912,12 +5912,12 @@
     },
     {
       "source_path_from_root": "/articles/cosmos-db/database-security.md",
-      "redirect_url": "/azure/cosmos-db/security",
+      "redirect_url": "/azure/cosmos-db/security.yml",
       "redirect_document_id": false
     },
     {
       "source_path_from_root": "/articles/cosmos-db/secure-access-to-data.md",
-      "redirect_url": "/azure/cosmos-db/security",
+      "redirect_url": "/azure/cosmos-db/security.yml",
       "redirect_document_id": false
     }
   ]
