@@ -5904,6 +5904,11 @@
       "source_path_from_root": "/articles/cosmos-db/role-based-access-control.md",
       "redirect_url": "/azure/cosmos-db/nosql/security/how-to-grant-control-plane-role-based-access",
       "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/gremlin/how-to-use-resource-tokens.md",
+      "redirect_url": "/previous-versions/azure/cosmos-db/how-to-use-resource-tokens",
+      "redirect_document_id": false
     }
   ]
 }
