@@ -348,7 +348,7 @@ There are various methods to migrate data offline, but here we will introduce ho
 | --------- | -------- | ------- |
 | Azure Data Factory    | HBase < 2 | Easy to set up. Suitable for large datasets. Doesn’t support HBase 2 or later. |
 | Apache Spark | All versions | Support all versions of HBase. Suitable for large datasets. Spark setup required. |
-| Custom tool with Azure Cosmos DB bulk executor library | All versions | Most flexible to create custom data migration tools using libraries. Requires more effort to setup. |
+| Custom tool with Azure Cosmos DB bulk executor library | All versions | Most flexible to create custom data migration tools using libraries. Requires more effort to set up. |
 
 The following flowchart uses some conditions to reach the available data migration methods.
 :::image type="content" source="./media/migrate-hbase-to-cosmos-db/flowchart-hbase-migration-tools.png" alt-text="Flowchart for options to migrate data to Azure Cosmos DB.":::
@@ -629,7 +629,7 @@ CosmosPagedIterable<Family> filteredFamilies = container.queryItems(sql, new Cos
 
 **HBase**
 
-For HBase, use the append method and checkAndPut method to update the value. append is the process of appending a value atomically to the end of the current value, and checkAndPut atomically compares the current value with the expected value and updates only if they match.
+For HBase, use the append method and checkAndPut method to update the value. Append is the process of appending a value atomically to the end of the current value, and checkAndPut atomically compares the current value with the expected value and updates only if they match.
 
 ```java
 // append
