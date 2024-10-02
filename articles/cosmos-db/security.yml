@@ -15,6 +15,14 @@ metadata:
 landingContent:
   - title: Azure Cosmos DB for NoSQL
     linkLists:
+      - linkListType: best-practices
+        links:
+          - text: Security guidance
+            url: /azure/well-architected/service-guides/cosmos-db?context=/azure/cosmos-db/context/context#security
+          - text: Security baseline
+            url: /security/benchmark/azure/baselines/azure-cosmos-db-security-baseline?context=/azure/cosmos-db/context/context
+  - title: Azure Cosmos DB for NoSQL
+    linkLists:
       - linkListType: overview
         links:
           - text: Overview
