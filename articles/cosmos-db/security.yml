@@ -17,10 +17,12 @@ landingContent:
     linkLists:
       - linkListType: architecture
         links:
-          - text: Security guidance
+          - text: Well Architected Framework security guidance
             url: /azure/well-architected/service-guides/cosmos-db?context=/azure/cosmos-db/context/context#security
           - text: Security baseline
             url: /security/benchmark/azure/baselines/azure-cosmos-db-security-baseline?context=/azure/cosmos-db/context/context
+          - text: Security considerations
+            url: security-considerations.md
   - title: Azure Cosmos DB for NoSQL
     linkLists:
       - linkListType: overview
