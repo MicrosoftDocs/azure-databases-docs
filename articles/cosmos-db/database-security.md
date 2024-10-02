@@ -287,6 +287,5 @@ After you rotate or regenerate a key, you can track its status from the activity
 
 ## Next steps
 
-* For more information about primary keys and resource tokens, see [Secure access to Azure Cosmos DB data](secure-access-to-data.md).
 * For more information about audit logging, see [Azure Cosmos DB diagnostic logging](./monitor.md).
 * For more information about Microsoft certifications, see [Azure Trust Center](https://azure.microsoft.com/support/trust-center/).

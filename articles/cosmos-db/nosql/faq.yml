@@ -63,10 +63,6 @@ sections:
             - [Terraform](/azure/templates/microsoft.documentdb/databaseaccounts?pivots=deployment-language-terraform)
           - [REST API](/rest/api/cosmos-db/)
       - question: |
-          How do I configure Azure Cosmos DB for NoSQL database-native users and permissions?
-        answer: |
-          You can create users and permissions by using one of the Azure Cosmos DB for NoSQL SDKs or the [REST API](/rest/api/cosmos-db/). For more information, see [configure users and resource tokens](../secure-access-to-data.md#resource-tokens). Creating permissions by using resource tokens is allowed at the container level and its descendants (such as documents, attachments). Creating a permission at the database or an account level isn't currently allowed.
-      - question: |
           Can I authenticate to Azure Cosmos DB for NoSQL using my existing Microsoft Entra ID accounts?
         answer:
           Yes! Azure Cosmos DB supports Microsoft Entra authentication to manage the service and its resources (control-plane) and to execute data, operations, and queries (data-plane).
