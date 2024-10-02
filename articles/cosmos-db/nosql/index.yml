@@ -1,7 +1,8 @@
 ### YamlMime:Landing
 
 title: Azure Cosmos DB for NoSQL documentation
-summary: Azure Cosmos DB for NoSQL accounts provides support for querying items with flexible schemas and native support for JSON.
+summary: Microsoft Entra authentication using role-based access control is the **recommended** way to implement authentication in Azure Cosmos DB. There are alsoalternative, less recommended options for security for existing or legacy workloads.
+
 
 metadata:
   title: Azure Cosmos DB for NoSQL

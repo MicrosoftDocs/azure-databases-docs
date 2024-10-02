@@ -275,7 +275,7 @@
         - name: Security
           items:
             - name: Security overview
-              href: ../database-security.md       
+              href: ../security.yml       
             - name: Role-based access control guide
               displayName: RBAC, Entra
               href: security/index.md
