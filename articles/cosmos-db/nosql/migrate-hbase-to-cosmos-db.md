@@ -827,8 +827,6 @@ Data security is a shared responsibility of the customer and the database provid
 | Physical  protection of servers in protected data centers    | It depends on the  data center where the system is located.  | For a list of the latest certifications,  see the global [Azure compliance site](/compliance/regulatory/offering-home?view=o365-worldwide&preserve-view=true). |
 | Certifications     | Depends on the Hadoop  distribution.      | See [Azure compliance documentation](../compliance.md) |
 
-For more information on security, please refer to [Security in Azure Cosmos DB - overview](../database-security.md)
-
 ## Monitoring
 
 HBase typically monitors the cluster using the cluster metric web UI or with Ambari, Cloudera Manager, or other monitoring tools. Azure Cosmos DB allows you to use the monitoring mechanism built into the Azure platform. For more information on Azure Cosmos DB monitoring, see [Monitor Azure Cosmos DB](../monitor.md).

@@ -14,7 +14,7 @@ ms.custom: devx-track-csharp
 # Use Azure Cosmos DB resource tokens with the Gremlin SDK
 [!INCLUDE[Gremlin](../includes/appliesto-gremlin.md)]
 
-This article explains how to use [Azure Cosmos DB resource tokens](../secure-access-to-data.md) to access the Graph database through the Gremlin SDK.
+This article explains how to use Azure Cosmos DB resource tokens to access the Graph database through the Gremlin SDK.
 
 ## Create a resource token
 

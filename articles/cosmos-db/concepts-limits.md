@@ -237,7 +237,7 @@ Azure Cosmos DB supports execution of triggers during writes. The service suppor
 
 Once an operation like query reaches the execution timeout or response size limit, it returns a page of results and a continuation token to the client to resume execution. There's no practical limit on the duration a single query can run across pages/continuations.
 
-Azure Cosmos DB uses HMAC for authorization. You can use either a primary key, or a [resource token](secure-access-to-data.md) for fine-grained access control to resources. These resources can include containers, partition keys, or items. The following table lists limits for authorization tokens in Azure Cosmos DB.
+Azure Cosmos DB uses HMAC for authorization. You can use a primary key for fine-grained access control to resources. These resources can include containers, partition keys, or items. The following table lists limits for authorization tokens in Azure Cosmos DB.
 
 | Resource | Limit |
 | --- | --- |

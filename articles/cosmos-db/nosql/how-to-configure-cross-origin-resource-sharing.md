@@ -81,7 +81,7 @@ module.exports = {
  
 Here's a [code sample](https://github.com/christopheranderson/cosmos-browser-sample) that uses TypeScript and Webpack with the Azure Cosmos DB JavaScript SDK library. The sample builds a Todo app that sends real time updates when new items are created.
 
-As a best practice, don't use the primary key to communicate with Azure Cosmos DB from the browser. Instead, use resource tokens to communicate. For more information about resource tokens, see [Securing access to Azure Cosmos DB](../secure-access-to-data.md#resource-tokens) article.
+As a best practice, don't use the primary key to communicate with Azure Cosmos DB from the browser. Instead, use resource tokens to communicate.
 
 ## Next steps
 
