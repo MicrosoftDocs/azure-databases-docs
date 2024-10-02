@@ -215,8 +215,8 @@ The following table lists properties of resource logs in Azure Cosmos DB. The re
 | **duration** | **duration_d** | The duration of the operation, in milliseconds. |
 | **requestLength** | **requestLength_s** | The length of the request, in bytes. |
 | **responseLength** | **responseLength_s** | The length of the response, in bytes.|
-| **resourceTokenPermissionId** | **resourceTokenPermissionId_s** | This property indicates the resource token permission ID that you have specified. To learn more about permissions, see the [Secure access to your data](./secure-access-to-data.md#permissions) article. |
-| **resourceTokenPermissionMode** | **resourceTokenPermissionMode_s** | This property indicates the permission mode that you have set when creating the resource token. The permission mode can have values such as "all" or "read". To learn more about permissions, see the [Secure access to your data](./secure-access-to-data.md#permissions) article. |
+| **resourceTokenPermissionId** | **resourceTokenPermissionId_s** | This property indicates the resource token permission ID that you have specified. To learn more about permissions, see the [Secure access to your data](./secure-access-to-data.md) article. |
+| **resourceTokenPermissionMode** | **resourceTokenPermissionMode_s** | This property indicates the permission mode that you have set when creating the resource token. The permission mode can have values such as "all" or "read". To learn more about permissions, see the [Secure access to your data](./secure-access-to-data.md) article. |
 | **resourceTokenUserRid** | **resourceTokenUserRid_s** | The value points to the resource ID of the user when alternative authentication mechanisms are used. |
 | **responseLength** | **responseLength_s** | The length of the response, in bytes.|
 
