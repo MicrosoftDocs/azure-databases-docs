@@ -1,20 +1,21 @@
 ---
 title: Certificate rotation for Azure Database for MySQL Flexible - Server
 description: Learn about the upcoming changes of root certificate rotation that will affect Azure Database for MySQL - Flexible Server
-ms.service: azure-database-mysql-flexible-server
-author: 
-ms.author: 
+ms.service: azure-database-mysql
+ms.subservice: flexible-server
+author: shih-che, tameikal-msft
+ms.author: shihche, talawren
+ms.reviewer: talawren
 ms.topic: conceptual
-ms.date: 
+ms.date: 10/01/2024
 ---
 
 # Understanding the changes in the Root CA rotation for Azure Database for MySQL - Flexible Server
 
 Azure Database for MySQL - Flexible Server as part of standard maintenance and security best practices will complete the root certificate change starting July 2025. This article gives you more details about the changes, the resources affected, and the steps needed to ensure that your application maintains connectivity to your database server. 
 
-[!NOTE]
-If SHA-1 is a current blocker, follow the instructions below for creating a combined CA certificate on the client and open a support request to rotate your Azure Database for MySQL – Flexible Server root CA.  
->
+> [!NOTE]
+> If SHA-1 is a current blocker, follow the instructions below for creating a combined CA certificate on the client and open a support request to rotate your Azure Database for MySQL – Flexible Server root CA.  
 
 ## Why is a root certificate update required?
 
@@ -52,7 +53,7 @@ Upon completing the root CA rotation, there will be a transition where the old D
 
   - For .NET (MariaDB Connector/NET, MariaDBConnector) users, make sure **BaltimoreCyberTrustRoot** and **DigiCertGlobalRootG2** both exist in the Windows Certificate Store, Trusted Root Certification Authorities. If any certificates don't exist, import the missing certificate.
 
-    [![Azure Database for MariaDB .net cert](media/overview/netconnecter-cert.png)](media/overview/netconnecter-cert.png#lightbox) UPDATE!!!!
+    :::image type="content" source="media/concepts-root-certificate-rotation/netconnecter-certs.png" alt-text="Screenshot of Azure Database for MySQL .net cert.":::
 
   - For .NET users on Linux using SSL_CERT_DIR, make sure **DigiCertGlobalRootCA** and **DigiCertGlobalRootG2** both exist in the directory indicated by SSL_CERT_DIR. If any certificates don't exist, create the missing certificate file. 
 
