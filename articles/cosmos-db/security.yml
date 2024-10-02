@@ -80,7 +80,7 @@ landingContent:
       - linkListType: how-to-guide
         links:
           - text: Use primary and secondary keys
-            url: /previous-versions/azure/cosmos-db/how-to-configure-keys
+            url: /previous-versions/azure/cosmos-db/how-to-obtain-keys
           - text: Implement key rotation
             url: /previous-versions/azure/cosmos-db/how-to-implement-key-rotation
           - text: Use resource tokens
