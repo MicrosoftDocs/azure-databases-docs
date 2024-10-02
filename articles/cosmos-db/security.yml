@@ -30,7 +30,7 @@ landingContent:
           - text: Glossary
             url: nosql/security/glossary.md
           - text: Frequently asked questions
-            url: /nosql/faq.yml#security
+            url: nosql/faq.yml#security
       - linkListType: how-to-guide
         links:
           - text: Get signed-in identity
