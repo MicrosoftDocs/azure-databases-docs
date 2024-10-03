@@ -100,6 +100,9 @@ After you make the **Subscription** and **Resource Group** selections, the dropd
 
 After you choose the Single Server source, the **Location**, and **PostgreSQL version** boxes are populated automatically. Make sure you provide the credentials of an admin role, since that is required for the migration service to successfuly migrate the databases.
 
+The **Custom FQDN/IP** field is **optional** and can be used when the source is behind a custom DNS server or has custom DNS namespaces, making it accessible only via specific FQDNs or IP addresses. For example, this could include entries like singleserver.example.com, 198.1.0.2, or a PostgreSQL FQDN such as singleserver.postgres.database.azure.com, if the custom DNS server contains the DNS zone postgres.database.azure.com or forwards queries for this zone to 168.63.129.16, where the FQDN is resolved in the Azure public or private DNS zone.
+
+
 After filling out all the fields, select the **Connect to source** link. This validates that the source server details entered are correct and that the source server is reachable.
 
 :::image type="content" source="../../media/tutorial-migration-service-single-to-flexible/flexible-migration-source.png" alt-text="Screenshot of source database server details." lightbox="../../media/tutorial-migration-service-single-to-flexible/flexible-migration-source.png":::
@@ -109,6 +112,8 @@ Select the **Next: Select migration target** button to continue.
 ### Select migration target
 
 The **Select migration target** section displays metadata for the Flexible Server target, such as **Subscription**, **Resource group**, **Server name**, **Location**, and **PostgreSQL version**.
+
+The **Custom FQDN/IP** field is **optional** and can be used when the target is behind a custom DNS server or has custom DNS namespaces, making it accessible only via specific FQDNs or IP addresses. For example, this could include entries like flexibleserver.example.com, 198.1.0.2, or a PostgreSQL FQDN such as flexibleserver.postgres.database.azure.com, if the custom DNS server contains the DNS zone postgres.database.azure.com or forwards queries for this zone to 168.63.129.16, where the FQDN is resolved in the Azure public or private DNS zone.
 
 :::image type="content" source="../../media/tutorial-migration-service-single-to-flexible/flexible-migration-target.png" alt-text="Screenshot of target database server details." lightbox="../../media/tutorial-migration-service-single-to-flexible/flexible-migration-target.png":::
 
