@@ -128,4 +128,9 @@ No. There's no action needed if your certificate file already has the DigiCert
 
 ### 11. What if I have further questions?
 
-If you have questions, get answers from community experts in [Microsoft Q&A](https://learn.microsoft.com/en-us/answers/questions/). If you have a support plan and you need technical help, [contact us](mailto:AskAzureDBforMySQL@service.microsoft.com).
+If you have questions, get answers from community experts in [Microsoft Q&A](https://learn.microsoft.com/answers/questions/).
+
+## Related content
+
+- [Create a combined CA certificate](#create-a-combined-ca-certificate)
+- [Configure SSL](how-to-connect-tls-ssl.md)
