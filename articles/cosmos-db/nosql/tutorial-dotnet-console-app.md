@@ -632,10 +632,3 @@ To wrap up things, you use the Data Explorer in the Azure portal to view the dat
 ## Clean up resources
 
 When no longer needed, delete the database used in this tutorial. To do so, navigate to the account page, select **Data Explorer**, select the `cosmicworks` database, and then select **Delete**.
-
-## Next steps
-
-Now that you've created your first .NET console application using Azure Cosmos DB, try the next tutorial where you'll update an existing web application to use Azure Cosmos DB data.
-
-> [!div class="nextstepaction"]
-> [Tutorial: Develop an ASP.NET web application with Azure Cosmos DB for NoSQL](tutorial-dotnet-web-app.md)

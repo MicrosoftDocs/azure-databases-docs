@@ -23,7 +23,6 @@ ms.custom: devx-track-dotnet
 |**Samples**|[.NET code samples](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage)|
 |**Get started**|[Get started with the Azure Cosmos DB .NET SDK](quickstart-dotnet.md)|
 |**Best Practices**|[Best Practices for Azure Cosmos DB .NET SDK](best-practice-dotnet.md)|
-|**Web app tutorial**|[Web application development with Azure Cosmos DB](tutorial-dotnet-web-app.md)|
 |**Entity Framework Core tutorial**|[Entity Framework Core with Azure Cosmos DB Provider](/ef/core/providers/cosmos/#get-started)|
 |**Current supported framework**|[Microsoft .NET Standard 2.0](/dotnet/standard/net-standard)|
 
