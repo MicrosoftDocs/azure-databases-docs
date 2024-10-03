@@ -83,7 +83,7 @@
       href: manage-with-bicep.md
     - name: Manage using Resource Manager templates
       href: resource-manager-template-samples.md
-    - name: Azure Resource Graph queries
+    - name: Queries for Azure Resource Graph
       href: ../resource-graph-samples.md
 - name: Concepts
   items:
@@ -200,10 +200,16 @@
     - name: Security
       items:
         - name: Security overview
-          href: ../database-security.md
-        - name: Azure role-based access control
-          displayName: rbac
-          href: ../role-based-access-control.md
+          href: ../security.yml
+        - name: Role-based access control guide
+          displayName: RBAC, Entra
+          href: security/index.md
+        - name: Considerations and guidance
+          href: ../security-considerations.md
+        - name: Well Architected Framework security guidance
+          href: /azure/well-architected/service-guides/cosmos-db?context=/azure/cosmos-db/context/context#security
+        - name: Security baseline
+          href: /security/benchmark/azure/baselines/cosmos-db-security-baseline?bc=/azure/cosmos-db/breadcrumb/toc.json&toc=/azure/cosmos-db/toc.json
         - name: Data encryption
           href: ../database-encryption-at-rest.md
         - name: Service tags
@@ -213,8 +219,6 @@
         - name: Security controls by Azure Policy
           displayName: regulatory, compliance, standards, domains
           href: ../security-controls-policy.md
-        - name: Security baseline
-          href: /security/benchmark/azure/baselines/cosmos-db-security-baseline?bc=/azure/cosmos-db/breadcrumb/toc.json&toc=/azure/cosmos-db/toc.json
     - name: Optimize your Azure Cosmos DB costs
       href: ../optimize-costs.yml
     - name: Enterprise readiness
@@ -322,14 +326,15 @@
           href: ../store-credentials-key-vault.md
         - name: Access Azure Key Vault with managed identity
           href: ../access-key-vault-managed-identity.md
-        - name: Restrict user access to data operations only
-          href: ../how-to-restrict-user-data.md
         - name: Configure customer-managed keys
           href: ../how-to-setup-customer-managed-keys.md
         - name: Configure cross-tenant customer-managed keys
           href: ../how-to-setup-cross-tenant-customer-managed-keys.md
         - name: Use managed identities with Azure services
           href: ../how-to-setup-managed-identity.md
+        - name: Disable key-based authentication
+          displayName: key, ropc, connection string
+          href: security/how-to-disable-key-based-authentication.md?context=/azure/cosmos-db/context/context
     - name: Manage Azure Cosmos DB resources
       items:
         - name: Manage an Azure Cosmos DB account

@@ -5879,6 +5879,36 @@
       "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/commands/projection/$slice.md",
       "redirect_url": "/azure/cosmos-db/mongodb/vcore/operators/projection/$slice",
       "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/nosql/migrate-passwordless.md",
+      "redirect_url": "/azure/cosmos-db/nosql/security/how-to-grant-data-plane-role-based-access",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/how-to-restrict-user-data.md",
+      "redirect_url": "/azure/cosmos-db/nosql/security/how-to-disable-key-based-authentication",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/how-to-setup-rbac.md",
+      "redirect_url": "/azure/cosmos-db/nosql/security/how-to-grant-data-plane-role-based-access",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/managed-identity-based-authentication.yml",
+      "redirect_url": "/azure/cosmos-db/nosql/security/how-to-grant-data-plane-role-based-access",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/role-based-access-control.md",
+      "redirect_url": "/azure/cosmos-db/nosql/security/how-to-grant-control-plane-role-based-access",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/gremlin/how-to-use-resource-tokens.md",
+      "redirect_url": "/previous-versions/azure/cosmos-db/how-to-use-resource-tokens",
+      "redirect_document_id": false
     }
   ]
 }
