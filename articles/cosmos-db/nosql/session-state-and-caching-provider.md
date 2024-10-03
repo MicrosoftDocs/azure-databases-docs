@@ -11,13 +11,13 @@ ms.date: 07/06/2022
 # Use Azure Cosmos DB as an ASP.NET session state and caching provider
 [!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
 
-The Azure Cosmos DB session and cache provider allows you to use Azure Cosmos DB and leverage its low latency and global scale capabilities for storing session state data and as a distributed cache within your application.
+The Azure Cosmos DB session and cache provider allows you to use Azure Cosmos DB and apply its low latency and global scale capabilities for storing session state data and as a distributed cache within your application.
 
 ## What is session state?
 
-[Session state](/aspnet/core/fundamentals/app-state?view=aspnetcore-5.0#configure-session-state&preserve-view=true) is user data that tracks a user browsing through a web application during a period of time, within the same browser. The session state expires, and it's limited to the interactions a particular browser is having which does not extend across browsers. It is considered ephemeral data, if it is not present it will not break the application. However, when it exists, it makes the experience faster for the user because the web application does not need to fetch it on every browser request for the same user.
+[Session state](/aspnet/core/fundamentals/app-state?view=aspnetcore-5.0#configure-session-state&preserve-view=true) is user data that tracks a user browsing through a web application during a period of time, within the same browser. The session state expires, and it's limited to the interactions a particular browser is having which doesn't extend across browsers. It's considered ephemeral data, if it isn't present it will not break the application. However, when it exists, it makes the experience faster for the user because the web application doesn't need to fetch it on every browser request for the same user.
 
-It is often backed by some storage mechanism, that can in some cases, be external to the current web server and enable load-balancing requests of the same browser across multiple web servers to achieve higher scalability.
+It's often backed by some storage mechanism, that can in some cases, be external to the current web server and enable load-balancing requests of the same browser across multiple web servers to achieve higher scalability.
 
 The simplest session state provider is the in-memory provider that only stores data on the local web server memory and requires the application to use [Application Request Routing](/iis/extensions/planning-for-arr/using-the-application-request-routing-module). This makes the browser session sticky to a particular web server (all requests for that browser need to always land on the same web server). The provider works well on simple scenarios but the stickiness requirement can bring load-balancing problems when web applications scale.
 
@@ -35,7 +35,10 @@ public void ConfigureServices(IServiceCollection services)
   /* Other service configurations */
   services.AddCosmosCache((CosmosCacheOptions cacheOptions) =>
   {
-      CosmosClientBuilder clientBuilder = new CosmosClientBuilder("myConnectionString")
+      CosmosClientBuilder clientBuilder = new CosmosClientBuilder(
+        "<nosql-account-endpoint>",
+        tokenCredential
+      )
         .WithApplicationRegion("West US");
       cacheOptions.ContainerName = "myContainer";
       cacheOptions.DatabaseName = "myDatabase";
