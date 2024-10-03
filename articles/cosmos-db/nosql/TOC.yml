@@ -37,8 +37,6 @@
   items:
     - name: Build web applications
       items:
-        - name: .NET
-          href: tutorial-dotnet-web-app.md
         - name: Java
           href: tutorial-java-web-app.md
         - name: Node.js
