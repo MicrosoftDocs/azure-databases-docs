@@ -541,7 +541,7 @@ Now, assign the newly defined role to an identity so that your applications can 
 
 1. Now create or update a role assignment using `Get-AzCosmosDBAccount` and `Invoke-AzRestMethod` together to issue an HTTP `PUT` request. As part of this request, specify a unique GUID for your role assignment. Finally, create a resource assignment payload specifying the unique identifier for your identity.
 
-    ```azurecli-interactive
+    ```azurepowershell-interactive
     $parameters = @{
         ResourceGroupName = "<name-of-existing-resource-group>"
         Name = "<name-of-existing-table-account>"
