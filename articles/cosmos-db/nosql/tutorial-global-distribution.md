@@ -1,7 +1,7 @@
 ---
 title: Configure Azure Cosmos DB global distribution
 titleSuffix: Azure Cosmos DB for NoSQL
-description: Learn how to set up Azure Cosmos DB global distribution using the API for NoSQL with .NET, Java, Python and various other SDKs
+description: Learn how to set up Azure Cosmos DB global distribution using the API for NoSQL with .NET, Java, Python, and various other SDKs
 author: markjbrown
 ms.author: mjbrown
 ms.service: azure-cosmos-db
@@ -31,7 +31,7 @@ In order to take advantage of [global distribution](../distribute-data-globally.
 
 This preference list is specified when initializing a connection using the SQL SDKs. The SDKs accept an optional parameter `PreferredLocations` that is an ordered list of Azure regions.
 
-The SDK will automatically send all writes to the current write region. All reads will be sent to the first available region in the preferred locations list. If the request fails, the client will fail down the list to the next region.
+The SDK will automatically send all writes to the current write region. All reads are sent to the first available region in the preferred locations list. If the request fails, the client will fail down the list to the next region.
 
 The SDK will only attempt to read from the regions specified in preferred locations. So, for example, if the Azure Cosmos DB account is available in four regions, but the client only specifies two read(non-write) regions within the `PreferredLocations`, then no reads will be served out of the read region that is not specified in `PreferredLocations`. If the read regions specified in the `PreferredLocations` list are not available, reads will be served out of write region.
 
@@ -239,7 +239,7 @@ Example response
 }
 ```
 
-* All PUT, POST and DELETE requests must go to the indicated write URI
+* All PUT, POST, and DELETE requests must go to the indicated write URI
 * All GETs and other read-only requests (for example queries) may go to any endpoint of the client's choice
 
 Write requests to read-only regions will fail with HTTP error code 403 ("Forbidden").
