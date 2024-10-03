@@ -35,7 +35,10 @@ public void ConfigureServices(IServiceCollection services)
   /* Other service configurations */
   services.AddCosmosCache((CosmosCacheOptions cacheOptions) =>
   {
-      CosmosClientBuilder clientBuilder = new CosmosClientBuilder("myConnectionString")
+      CosmosClientBuilder clientBuilder = new CosmosClientBuilder(
+        "<nosql-account-endpoint>",
+        tokenCredential
+      )
         .WithApplicationRegion("West US");
       cacheOptions.ContainerName = "myContainer";
       cacheOptions.DatabaseName = "myDatabase";
