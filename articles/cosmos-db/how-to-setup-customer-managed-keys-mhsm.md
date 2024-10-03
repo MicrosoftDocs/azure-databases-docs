@@ -119,4 +119,3 @@ az keyvault role assignment delete --hsm-name $hsmName --role "Managed HSM Crypt
 ## Next steps
 
 - Learn more about [data encryption in Azure Cosmos DB](./database-encryption-at-rest.md).
-- Get an overview of [secure access to data in Azure Cosmos DB](secure-access-to-data.md).

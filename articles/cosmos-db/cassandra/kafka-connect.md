@@ -130,7 +130,7 @@ Here's a summary of the attributes:
 
 **SSL configuration**
 
-Azure Cosmos DB enforces [secure connectivity over SSL](../database-security.md) and Kafka Connect connector supports SSL as well.
+Azure Cosmos DB enforces secure connectivity over SSL and Kafka Connect connector supports SSL as well.
 
 - `ssl.keystore.path`: path to the JDK keystore in the container - `/etc/alternatives/jre/lib/security/cacerts/`
 - `ssl.keystore.password`: JDK keystore (default) password
