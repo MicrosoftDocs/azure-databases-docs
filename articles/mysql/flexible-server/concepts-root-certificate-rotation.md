@@ -100,7 +100,7 @@ If you're using a client that abstracts the connection string away, review the c
 
 ### 4. Do we have a server-side query to verify if SSL is being used?
 
-To verify if you're using an SSL connection to connect to the server refer to [SSL verification](https://learn.microsoft.com/en-us/azure/mysql/flexible-server/how-to-connect-tls-ssl#verify-the-tlsssl-connection).
+To verify if you're using an SSL connection to connect to the server refer to [SSL verification](/azure/mysql/flexible-server/how-to-connect-tls-ssl#verify-the-tlsssl-connection).
 
 ### 5. Do I need to plan a database server maintenance downtime for this change?
 
@@ -120,7 +120,7 @@ Since this update is a client-side change, if multiple clients read data from th
 
 ### 9. If I'm using Data-in replication, do I need to perform any action?
 
-If you're using [Data-in replication](https://learn.microsoft.com/en-us/azure/mysql/flexible-server/concepts-data-in-replication) to connect to Azure Database for MySQL, and the data-replication is between two Azure Database for MySQL, then you need to reset the replica by executing CALL mysql.az_replication_change_master and provide the new dual root certificate as last parameter [master_ssl_ca](https://learn.microsoft.com/en-us/azure/mysql/flexible-server/how-to-data-in-replication?tabs=bash%2Ccommand-line#link-source-and-replica-servers-to-start-data-in-replication).
+If you're using [Data-in replication](/azure/mysql/flexible-server/concepts-data-in-replication) to connect to Azure Database for MySQL, and the data-replication is between two Azure Database for MySQL, then you need to reset the replica by executing CALL mysql.az_replication_change_master and provide the new dual root certificate as last parameter [master_ssl_ca](/azure/mysql/flexible-server/how-to-data-in-replication?tabs=bash%2Ccommand-line#link-source-and-replica-servers-to-start-data-in-replication).
 
 ### 10. Is there an action needed if I already have the DigiCertGlobalRootG2 in my certificate file?
 
@@ -128,7 +128,7 @@ No. There's no action needed if your certificate file already has the DigiCert
 
 ### 11. What if I have further questions?
 
-If you have questions, get answers from community experts in [Microsoft Q&A](https://learn.microsoft.com/answers/questions/).
+If you have questions, get answers from community experts in [Microsoft Q&A](/answers/questions/).
 
 ## Related content
 
