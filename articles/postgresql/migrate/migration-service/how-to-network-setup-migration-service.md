@@ -213,7 +213,7 @@ This section describes the networking steps to migrate a PostgreSQL database fro
 - Establish network connectivity:
 
   1. For on-premises sources, set up a site-to-site VPN or set up ExpressRoute to connect your local network to Azure's virtual network.
-  1. For an Azure VM or an Amazon instance or an Google Compute Engine, ensure that virtual network peering, a VPN gateway, or an instance of ExpressRoute is in place for secure connectivity to Azure's virtual network.
+  1. For an Azure VM or an Amazon instance or a Google Compute Engine, ensure that virtual network peering, a VPN gateway, or an instance of ExpressRoute is in place for secure connectivity to Azure's virtual network.
 
 - Gather VNet details for the migration runtime server:
 
