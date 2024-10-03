@@ -1,26 +1,28 @@
 ---
-title: 'Tutorial: Azure Cosmos DB global distribution tutorial for the API for NoSQL'
-description: 'Tutorial: Learn how to set up Azure Cosmos DB global distribution using the API for NoSQL with .NET, Java, Python and various other SDKs'
+title: Configure Azure Cosmos DB global distribution
+titleSuffix: Azure Cosmos DB for NoSQL
+description: Learn how to set up Azure Cosmos DB global distribution using the API for NoSQL with .NET, Java, Python and various other SDKs
 author: markjbrown
 ms.author: mjbrown
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: tutorial
-ms.date: 04/03/2022
+ms.date: 10/03/2024
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp, devx-track-dotnet, devx-track-extended-java
 ---
-# Tutorial: Set up Azure Cosmos DB global distribution using the API for NoSQL
+
+# Tutorial: Set up global distribution using Azure Cosmos DB for NoSQL
+
 [!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
 
 In this article, we show how to use the Azure portal to set up Azure Cosmos DB global distribution and then connect using the API for NoSQL.
 
-This article covers the following tasks: 
+This article covers the following tasks:
 
 > [!div class="checklist"]
 > * Configure global distribution using the Azure portal
 > * Configure global distribution using the [API for NoSQLs](../introduction.md)
 
-<a id="portal"></a>
 [!INCLUDE [cosmos-db-tutorial-global-distribution-portal](../includes/cosmos-db-tutorial-global-distribution-portal.md)]
 
 ## <a id="preferred-locations"></a> Connecting to a preferred region using the API for NoSQL
@@ -40,12 +42,60 @@ If you don't specify the preferred locations but used the `setCurrentLocation` m
 ## .NET SDK
 
 The SDK can be used without any code changes. In this case, the SDK automatically directs both reads and writes to the current write region.
+In version 1.8 and later of the .NET SDK, the ConnectionPolicy parameter for the DocumentClient constructor has a property called Microsoft.Azure.Documents.ConnectionPolicy.PreferredLocations. This property is of type Collection `<string>` and should contain a list of region names. The string values are formatted per the region name column on the [Azure Regions][regions] page, with no spaces before or after the first and last character respectively.
 
-In version 1.8 and later of the .NET SDK, the ConnectionPolicy parameter for the DocumentClient constructor has a property called Microsoft.Azure.Documents.ConnectionPolicy.PreferredLocations. This property is of type Collection `<string>` and should contain a list of region names. The string values are formatted per the region name column on the [Azure Regions](/azure/reliability/availability-zones-service-support) page, with no spaces before or after the first and last character respectively.
+The current write and read endpoints are available in DocumentClient.WriteEndpoint and DocumentClient.ReadEndpoint respectively.
 
 > [!NOTE]
 > The URLs for the endpoints should not be considered as long-lived constants. The service may update these at any point. The SDK handles this change automatically.
 >
+# [.NET SDK V2](#tab/dotnetv2)
+
+If you are using the .NET V2 SDK, use the `PreferredLocations` property to set the preferred region.
+
+```csharp
+// Getting endpoints from application settings or other configuration location
+Uri accountEndPoint = new Uri(Properties.Settings.Default.GlobalDatabaseUri);
+
+ConnectionPolicy connectionPolicy = new ConnectionPolicy();
+
+//Setting read region selection preference
+connectionPolicy.PreferredLocations.Add(LocationNames.WestUS); // first preference
+connectionPolicy.PreferredLocations.Add(LocationNames.EastUS); // second preference
+connectionPolicy.PreferredLocations.Add(LocationNames.NorthEurope); // third preference
+// initialize connection
+DocumentClient docClient = new DocumentClient(
+    accountEndPoint,
+    credential,
+    connectionPolicy);
+
+// connect to DocDB
+await docClient.OpenAsync().ConfigureAwait(false);
+```
+
+Alternatively, you can use the `SetCurrentLocation` property and let the SDK choose the preferred location based on proximity.
+
+```csharp
+// Getting endpoints from application settings or other configuration location
+Uri accountEndPoint = new Uri(Properties.Settings.Default.GlobalDatabaseUri);
+
+ConnectionPolicy connectionPolicy = new ConnectionPolicy();
+
+connectionPolicy.SetCurrentLocation("West US 2"); /
+
+// initialize connection
+DocumentClient docClient = new DocumentClient(
+    accountEndPoint,
+    credential,
+    connectionPolicy);
+
+// connect to DocDB
+await docClient.OpenAsync().ConfigureAwait(false);
+```
+
+# [.NET SDK V3](#tab/dotnetv3)
+
+If you are using the .NET V3 SDK, use the `ApplicationPreferredRegions` property to set the preferred region.
 
 ```csharp
 CosmosClientOptions options = new CosmosClientOptions();
@@ -101,7 +151,7 @@ client = cosmos_client.CosmosClient(ENDPOINT, credential=token_credential, conne
 
 The following code shows how to set preferred locations by using the Java SDK:
 
-[Java SDK V4](sdk-java-v4.md) (Maven [com.azure::azure-cosmos](https://mvnrepository.com/artifact/com.azure/azure-cosmos)) Async API
+# [Async](#tab/api-async)
 
 ```java
 ArrayList<String> preferredRegions = new ArrayList<String>();
@@ -116,6 +166,23 @@ CosmosAsyncClient client =
                 .preferredRegions(preferredRegions)
                 .contentResponseOnWriteEnabled(true)
                 .buildAsyncClient();
+```
+
+# [Sync](#tab/api-sync)
+
+```java
+ArrayList<String> preferredRegions = new ArrayList<String>();
+preferredRegions.add("East US");
+preferredRegions.add( "West US");
+preferredRegions.add("Canada Central");
+
+CosmosClient client =
+        new CosmosClientBuilder()
+                .endpoint(HOST)
+                .credential(tokenCredential)
+                .preferredRegions(preferredRegions)
+                .contentResponseOnWriteEnabled(true)
+                .buildClient();
 ```
 
 ---
