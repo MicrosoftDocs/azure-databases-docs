@@ -5909,6 +5909,16 @@
       "source_path_from_root": "/articles/cosmos-db/gremlin/how-to-use-resource-tokens.md",
       "redirect_url": "/previous-versions/azure/cosmos-db/how-to-use-resource-tokens",
       "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/database-security.md",
+      "redirect_url": "/azure/cosmos-db/security",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/secure-access-to-data.md",
+      "redirect_url": "/azure/cosmos-db/security",
+      "redirect_document_id": false
     }
   ]
 }
