@@ -22,10 +22,10 @@ In Azure Database for MySQL - Flexible Server, enabling the error log under [Ser
 ## Enabling error logs (Preview)
 
 Users can access and configure the error logs in Azure Database for MySQL – Flexible Server via the Server logs feature, which can be enabled using the [Azure portal](./how-to-server-logs-portal.md#enable-server-logs) or [Azure CLI](./how-to-server-logs-cli.md). 
-After the feature is enabled, your MySQL flexible server starts capturing events and writes them to a series of files saved as activity occurs.
+After the feature is enabled, your MySQL Flexible Server  starts capturing events and writes them to a series of files saved as activity occurs.
 
 To enable Error logs, perform the following steps.
-1.	In the Azure portal, navigate to your flexible server, and then, under Monitoring, select Server logs.
+1.	In the Azure portal, navigate to your Flexible Server , and then, under Monitoring, select Server logs.
 2.	Under Server logs, select the Enable check box, which enables the server logs features
 3.	Under Select logs to enable, select the Error logs check box.
 
@@ -34,12 +34,12 @@ To enable Error logs, perform the following steps.
 4.	Select Save to proceed with deployment.
 
 
-You can also enable Error logs on your Azure Database for MySQL flexible server by [enabling the server parameter](./how-to-configure-server-parameters-portal.md) named *“error_server_log_file”*  via the Server parameters pane or via the [Azure CLI](./how-to-configure-server-parameters-cli.md). 
+You can also enable Error logs on your Azure Database for MySQL Flexible Server  by [enabling the server parameter](./how-to-configure-server-parameters-portal.md) named *“error_server_log_file”*  via the Server parameters pane or via the [Azure CLI](./how-to-configure-server-parameters-cli.md). 
 
-Ensure that the [Server logs feature](./how-to-server-logs-portal.md#enable-server-logs) is activated by selecting the *Enable* checkbox in the Server logs pane. Alternatively, set the server parameter "log_output" to FILE to enable server logs. Failure to perform either of these actions result in FILE logging not being enabled for your Azure Database for MySQL flexible server.
+Ensure that the [Server logs feature](./how-to-server-logs-portal.md#enable-server-logs) is activated by selecting the *Enable* checkbox in the Server logs pane. Alternatively, set the server parameter "log_output" to FILE to enable server logs. Failure to perform either of these actions result in FILE logging not being enabled for your Azure Database for MySQL Flexible Server .
 
 ## Accessing error logs 
-You can download the error logs for further analysis of your Azure Database for MySQL flexible server.  To download the logs, in the Azure portal, navigate to the Server logs section, and then select the Error logs tab, as shown.
+You can download the error logs for further analysis of your Azure Database for MySQL Flexible Server .  To download the logs, in the Azure portal, navigate to the Server logs section, and then select the Error logs tab, as shown.
  - Under **Name**, select the log file you want to download, and then, under **Action**, select **Download**. 
  
     :::image type="content" source="./media/concepts-error-logs/2-concepts-error-logs.png" alt-text="Screenshot of portal view showing Error Logs - Download.":::
@@ -50,7 +50,7 @@ You can download the error logs for further analysis of your Azure Database for 
     
 
 ### Access error logs using Azure CLI
-You can list the server logs from your flexible server by using the following command.
+You can list the server logs from your Flexible Server  by using the following command.
 ```azurecli
 az mysql flexible-server server-logs list --resource-group <myresourcegroup>  --server-name <server_name> --out table 
 ```
@@ -83,7 +83,7 @@ For more information on how to access and interpret the audit logs, please refer
 `[Note] [Server] Access denied for user ''@'xx.xx.xx.X' (using password: NO).`
 
 *Answer*: This note indicates that an attempt to connect to your MySQL server was unsuccessful due to incorrect or missing authentication details. Specifically, the username provided is empty(''@'xx.xx.xx.X') and no password was entered (using password: NO). This note could indicate an unauthorized attempt to access your database.
-If your server is publicly accessible, it remains exposed to the internet and can be a target for unauthorized access attempts. To enhance the security of your Azure Database for MySQL flexible server, [disable public access](./concepts-networking-private-link.md#deny-public-access) or [limit access using firewall rules.](./concepts-networking-public.md#firewall-rules).
+If your server is publicly accessible, it remains exposed to the internet and can be a target for unauthorized access attempts. To enhance the security of your Azure Database for MySQL Flexible Server , [disable public access](./concepts-networking-private-link.md#deny-public-access) or [limit access using firewall rules.](./concepts-networking-public.md#firewall-rules).
 
 ## Next steps
 - How to enable server logs feature via Azure portal. [Learn more](./how-to-server-logs-portal.md)
