@@ -77,13 +77,13 @@ When working with a multitenant system that uses Azure Cosmos DB, you need to ma
 
 When you use a single container for multiple tenants, you can make use of Azure Cosmos DB partitioning support. By using separate partition keys for each tenant, you can easily query the data for a single tenant. You can also query across multiple tenants, even if they are in separate partitions. However, [cross-partition queries](/azure/cosmos-db/sql/how-to-query-container#cross-partition-query) have a higher request unit (RU) cost than single-partition queries.
 
-This approach tends to work well when the amount of data stored for each tenant is small. It can be a good choice for building a [pricing model](/azure/architecture/guide/multitenant/considerations/pricing-models.md) that includes a free tier, and for business-to-consumer (B2C) solutions. In general, by using shared containers, you achieve the highest density of tenants and therefore the lowest price per tenant.
+This approach tends to work well when the amount of data stored for each tenant is small. It can be a good choice for building a [pricing model](/azure/architecture/guide/multitenant/considerations/pricing-models) that includes a free tier, and for business-to-consumer (B2C) solutions. In general, by using shared containers, you achieve the highest density of tenants and therefore the lowest price per tenant.
 
 It's important to consider the throughput of your container. All of the tenants will share the container's throughput, so the [Noisy Neighbor problem](/azure/architecture/antipatterns/noisy-neighbor/noisy-neighbor) can cause performance challenges if your tenants have high or overlapping workloads. This problem can sometimes be mitigated by grouping subsets of tenants into different containers, and by ensuring that each tenant group has compatible usage patterns. Alternatively, you can consider a hybrid multi- and single-tenant model. Group smaller tenants into shared partitioned containers, and give large customers dedicated containers. Also, there are features that can help control the noisy neighbor problem when modeling tenant by partition, such as [throughput reallocation](/azure/cosmos-db/nosql/distribute-throughput-across-partitions), [burst capacity](/azure/cosmos-db/burst-capacity), and [throughput control](/azure/cosmos-db/nosql/throughput-control-spark) in the [Java SDK](/azure/cosmos-db/nosql/sdk-java-v4).
 
 It's also important to consider the amount of data you store in each logical partition. Azure Cosmos DB allows each logical partition to grow to up to 20 GB. If you have a single tenant that needs to store more than 20 GB of data, consider spreading the data across multiple logical partitions. For example, instead of having a single partition key of `Contoso`, you might *salt* the partition keys by creating multiple partition keys for a tenant, such as `Contoso1`, `Contoso2`, and so forth. When you query the data for a tenant, you can use the `WHERE IN` clause to match all of the partition keys. [Hierarchical partition keys](/azure/cosmos-db/hierarchical-partition-keys) can also be used to support large tenants, with storage greater than 20 GB, without having to use synthetic partition keys or multiple partition key values per tenant.
 
-Consider the operational aspects of your solution, and the different phases of the [tenant lifecycle](/azure/architecture/guide/multitenant/considerations/tenant-lifecycle.md). For example, when a tenant moves to a dedicated pricing tier, you'll likely need to move the data to a different container. When a tenant is deprovisioned, you need to run a delete query on the container to remove the data, and for large tenants, this query might consume a significant amount of throughput while it executes.
+Consider the operational aspects of your solution, and the different phases of the [tenant lifecycle](/azure/architecture/guide/multitenant/considerations/tenant-lifecycle). For example, when a tenant moves to a dedicated pricing tier, you'll likely need to move the data to a different container. When a tenant is deprovisioned, you need to run a delete query on the container to remove the data, and for large tenants, this query might consume a significant amount of throughput while it executes.
 
 ### Container per tenant
 
@@ -115,7 +115,7 @@ If you allow tenants to migrate from a shared account to a dedicated Azure Cosmo
 
 ### Hybrid approaches
 
-You can consider a combination of the above approaches to suit different tenants' requirements and [your pricing model](/azure/architecture/guide/multitenant/considerations/pricing-models.md). For example:
+You can consider a combination of the above approaches to suit different tenants' requirements and [your pricing model](/azure/architecture/guide/multitenant/considerations/pricing-models). For example:
 
 - Provision all free trial customers within a shared container, and use the tenant ID or a [synthetic key partition key](/azure/cosmos-db/sql/synthetic-partition-keys).
 - Offer a paid *Bronze* tier that deploys a dedicated container per tenant, but with [shared throughput on a database](/azure/cosmos-db/set-throughput#set-throughput-on-a-database).
@@ -124,7 +124,7 @@ You can consider a combination of the above approaches to suit different tenants
 
 ## Next steps
 
-Review [storage and data approaches for multitenancy](/azure/architecture/guide/multitenant/approaches/storage-data.yml).
+Review [storage and data approaches for multitenancy](/azure/architecture/guide/multitenant/approaches/storage-data).
 
 Learn more about multitenancy and Azure Cosmos DB:
 
