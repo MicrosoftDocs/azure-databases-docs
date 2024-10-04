@@ -1,5 +1,5 @@
 ---
-title: esigning multitenant applications with Azure Cosmos DB
+title: Designing multitenant applications with Azure Cosmos DB
 titleSuffix: Azure Architecture Center
 description: This article describes the features of Azure Cosmos DB that are useful when working with multitenant systems, and links to guidance and examples for how to use Azure Cosmos DB in a multitenant solution.
 author: tarabhatiamsft
