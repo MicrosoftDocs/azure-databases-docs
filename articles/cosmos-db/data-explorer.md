@@ -83,7 +83,7 @@ Use either the **read-write** or **read-only** key to give another user access t
 
 In the Explorer, you can configure a limit to the request units per second (RU/s) that queries use. Use this functionality to control the cost and performance in request units (RU) of your queries. This functionality can also cancel high-cost queries automatically.
 
-1. Start in the Explorer for the target Azure Cosmos DB account.
+1. Start in the explorer for the target Azure Cosmos DB account.
 
 1. Select the **Settings** menu option.
 
@@ -95,6 +95,32 @@ In the Explorer, you can configure a limit to the request units per second (RU/s
 
     > [!TIP]
     > The RU threshold is enabled automatically with a default value of **5,000** RUs.
+
+## Use with Microsoft Entra authentication
+
+You can use Microsoft Entra-based authentication within the explorer by enabling it via configuration. For more information about role-based access control, see the [security guide](security.yml).
+
+1. Start in the explorer for the target Azure Cosmos DB account.
+
+1. Select the **Settings** menu option.
+
+1. In the **Settings** dialog, configure whether you want to **Enable Entra ID (RBAC)** using one of three possible values:
+
+    | | Description |
+    | --- | --- |
+    | **Automatic (default)** | Role-based access control (RBAC) is automatically used if the account has disabled key-based authentication. Otherwise, Data Explorer uses key-based authentication for data requests. |
+    | **True** | Role-based access control is always used for data requests. If role-based access control is not configured correctly for the account or identity, then the requests fail. |
+    | **False** | Key-based authentication is always used for data requests. If key-based authentication is disabled, then the requests fail. |
+
+    ![Screenshot of the Microsoft Entra ID role-based access control setting and three potential values.](media/data-explorer/enable-entra-auth.png)
+
+    > [!NOTE]
+    > Changing this setting to an option that uses key-based authentication could trigger a request to retrieve the primary key on behalf of the identity that is signed in.
+
+1. Now, select the **Login for Entra ID RBAC** option in the command bar of the explorer.
+
+    > [!TIP]
+    > This step is not necessary when using the Cosmos Explorer (<https://cosmos.azure.com>). The Cosmos Explorer also supports the option to manually set the value of the **Enable Entra ID (RBAC)** to `True` using the <https://cosmos.azure.com?feature.enableAadDataPlane=true> URL.
 
 ## Known issues
 
