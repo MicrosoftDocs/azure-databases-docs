@@ -53,7 +53,7 @@ Alternatively, you can initiate the migration process from the Azure Database fo
 
 1. You're taken to a page with two options. If you've already created a Flexible Server and want to use that as the target, choose **Select existing**, and select the corresponding **Subscription**, **Resource group**, and **Server name** details. Once the selections are made, select **Go to migration wizard** and follow the instructions under the **Setup** section.
 
-    :::image type="content" source="../../media/tutorial-migration-service-single-to-flexible/single-click-banner.png" alt-text="Screenshot to choose to exist flexible server option." lightbox="../../media/tutorial-migration-service-single-to-flexible/single-click-banner.png":::
+    :::image type="content" source="../../media/tutorial-migration-service-single-to-flexible/single-click-banner.png" alt-text="Screenshot showing how to choose the existing flexible server option." lightbox="../../media/tutorial-migration-service-single-to-flexible/single-click-banner.png":::
 
 1. Should you choose to create a new Flexible Server, select **Create new** and select **Go to create wizard**. This action takes you through the Flexible Server creation process and deploys the Flexible Server.
 
@@ -98,7 +98,7 @@ The **Source** section prompts you to give details related to the Single Server,
 
 After you make the **Subscription** and **Resource Group** selections, the dropdown list for server names shows Single Servers under that resource group across regions. Select the source that you want to migrate databases from. You can migrate databases from a Single Server to a target Flexible Server in the same region. Cross-region migrations are enabled only for India, China, and UAE servers.
 
-After you choose the Single Server source, the **Location**, and **PostgreSQL version** boxes are populated automatically. Make sure you provide the credentials of an admin role, since that is required for the migration service to successfuly migrate the databases.
+After you choose the Single Server source, the **Location**, and **PostgreSQL version** boxes are populated automatically. Make sure you provide the credentials of an admin role, since that is required for the migration service to successfully migrate the databases.
 
 The **Custom FQDN/IP** field is **optional** and can be used when the source is behind a custom DNS server or has custom DNS namespaces, making it accessible only via specific FQDNs or IP addresses. For example, this could include entries like `singleserver.example.com`, `198.1.0.2`, or a PostgreSQL FQDN such as `singleserver.postgres.database.azure.com`, if the custom DNS server contains the DNS zone `postgres.database.azure.com` or forwards queries for this zone to `168.63.129.16`, where the FQDN is resolved in the Azure public or private DNS zone.
 
@@ -232,7 +232,7 @@ The migration service comes with a simple, wizard-based experience on the Azure 
 
     If you've already created migrations to your Flexible Server target, the grid contains information about migrations that were attempted to this target from the Single Server.
 
-1. You go through a wizard-based series of tabs to create a migration into this Flexible Server target from different possible sources. By default, **Source server type** is set to **Azure Database for PostgreSQL Single Server**, which is the one we're interested in this scenario.
+1. You go through a wizard-based series of tabs to create a migration into this Flexible Server target from different possible sources. By default, **Source server type** is set to **Azure Database for PostgreSQL Single Server**, which is the one we're interested in for this scenario.
 
 Alternatively, you can initiate the migration process from the Azure Database for PostgreSQL Single Server.
 
@@ -244,7 +244,7 @@ Alternatively, you can initiate the migration process from the Azure Database fo
 
 1. You're taken to a page with two options. If you've already created a Flexible Server and want to use that as the target, choose **Select existing**, and select the corresponding **Subscription**, **Resource group**, and **Server name** details. Once the selections are made, select **Go to migration wizard** and follow the instructions under the **Setup** section.
 
-    :::image type="content" source="../../media/tutorial-migration-service-single-to-flexible/single-click-banner.png" alt-text="Screenshot to choose to exist flexible server option." lightbox="../../media/tutorial-migration-service-single-to-flexible/single-click-banner.png":::
+    :::image type="content" source="../../media/tutorial-migration-service-single-to-flexible/single-click-banner.png" alt-text="Screenshot showing how to choose the existing flexible server option." lightbox="../../media/tutorial-migration-service-single-to-flexible/single-click-banner.png":::
 
 1. Should you choose to create a new Flexible Server, select **Create new** and select **Go to create wizard**. This action takes you through the Flexible Server creation process and deploys the Flexible Server.
 
