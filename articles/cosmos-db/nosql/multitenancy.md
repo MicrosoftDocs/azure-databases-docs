@@ -122,26 +122,6 @@ You can consider a combination of the above approaches to suit different tenants
 - Offer a higher *Silver* tier that provisions dedicated throughput for the tenant's container.
 - Offer the highest *Gold* tier, and provide a dedicated database account for the tenant, which also allows tenants to select the geography for their deployment.
 
-## Contributors
-
-*This article is maintained by Microsoft. It was originally written by the following contributors.*
-
-Principal authors:
-
-- [Paul Burpo](https://linkedin.com/in/paul-burpo) | Principal Customer Engineer, FastTrack for Azure
-- [John Downs](https://linkedin.com/in/john-downs) | Principal Software Engineer
-
-Other contributors:
-
-- [Mark Brown](https://www.linkedin.com/in/markjbrown1) | Principal PM Manager, Azure Cosmos DB
-- [Deborah Chen](https://www.linkedin.com/in/deborah-chen-62212437) | Principal Program Manager
-- [Theo van Kraay](https://www.linkedin.com/in/theo-van-kraay-3388b130) | Senior Program Manager, Azure Cosmos DB
-- [Arsen Vladimirskiy](https://linkedin.com/in/arsenv) | Principal Customer Engineer, FastTrack for Azure
-- Thomas Weiss | Principal Program Manager
-- [Vic Perdana](https://www.linkedin.com/in/vperdana) | Cloud Solution Architect, Azure ISV
-
-*To see non-public LinkedIn profiles, sign in to LinkedIn.*
-
 ## Next steps
 
 Review [storage and data approaches for multitenancy](/azure/architecture/guide/multitenant/approaches/storage-data.yml).
