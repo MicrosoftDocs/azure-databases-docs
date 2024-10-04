@@ -1,22 +1,22 @@
 ---
-title: Use the Explorer to manage your data
+title: Use the Data Explorer to manage your data
 titleSuffix: Azure Cosmos DB
-description: Learn about the Azure Cosmos DB Explorer, a standalone web-based interface that allows you to view and manage the data stored in Azure Cosmos DB.
+description: Learn about the Azure Cosmos DB Data Explorer, a standalone web-based interface that allows you to view and manage the data stored in Azure Cosmos DB.
 author: meredithmooreux
 ms.author: merae
 ms.service: azure-cosmos-db
 ms.topic: how-to
-ms.date: 04/26/2024
-# CustomerIntent: As a database developer, I want to access the Explorer so that I can observe my data and make queries against my data.
+ms.date: 10/04/2024
+# CustomerIntent: As a database developer, I want to access the Data Explorer so that I can observe my data and make queries against my data.
 ---
 
-# Use the Azure Cosmos DB Explorer to manage your data
+# Use the Azure Cosmos DB Data Explorer to manage your data
 
 [!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
-Azure Cosmos DB Explorer is a standalone web-based interface that allows you to view and manage the data stored in Azure Cosmos DB. Azure Cosmos DB Explorer is equivalent to the existing **Data Explorer** section that is available in Azure portal for Azure Cosmos DB accounts.
+Azure Cosmos DB Data Explorer is a web-based interface that allows you to view and manage the data stored in Azure Cosmos DB.
 
-The Azure Cosmos DB Explorer has a few key advantages when compared to the Data explorer, including:
+The dedicated Azure Cosmos DB Data Explorer (<https://cosmos.azure.com>) has a few key advantages when compared to the Azure portal's Data Explorer experience, including:
 
 - Full screen real-estate to browse data, run queries, and observe query results
 - Ability to provide users without access to the Azure portal or an Azure subscription read or read-write capabilities over data in containers
@@ -27,9 +27,9 @@ The Azure Cosmos DB Explorer has a few key advantages when compared to the Data 
 - An existing Azure Cosmos DB account.
   - If you don't have an Azure subscription, [Try Azure Cosmos DB free](https://cosmos.azure.com/try/).
 
-## Access the Explorer directly using your Azure subscription
+## Access the Data Explorer directly using your Azure subscription
 
-You can use access the Explorer directly and use your existing credentials to quickly get started with the tool.
+You can use access the Data Explorer directly and use your existing credentials to quickly get started with the tool.
 
 1. Navigate to <https://cosmos.azure.com>.
 
@@ -37,11 +37,11 @@ You can use access the Explorer directly and use your existing credentials to qu
 
 1. Next, select your Azure subscription and target account from the **Select a Database Account** menu.
 
-    ![Screenshot of the 'Select a Database Account' menu in the Explorer.](media/data-explorer/select-database-account.png)
+    ![Screenshot of the 'Select a Database Account' menu in the Data Explorer.](media/data-explorer/select-database-account.png)
 
-## Access the Explorer from the Azure portal using your Azure subscription
+## Access the Data Explorer from the Azure portal using your Azure subscription
 
-If you're already comfortable with the Azure portal, you can navigate directly from the in-portal Data Explorer to the standalone Explorer.
+If you're already comfortable with the Azure portal, you can navigate directly from the in-portal Data Explorer to the standalone Data Explorer.
 
 1. Sign in to [Azure portal](https://portal.azure.com/).
 
@@ -55,33 +55,9 @@ If you're already comfortable with the Azure portal, you can navigate directly f
 
 1. In the **Open Full Screen** dialog, select **Open**.
 
-## Grant someone else access to the Explorer using a connection string
-
-Use either the **read-write** or **read-only** key to give another user access to your Azure Cosmos DB account. This method works even if the user doesn't have access to an Azure subscription or the Azure portal.
-
-1. Sign in to [Azure portal](https://portal.azure.com/).
-
-1. Navigate to your existing Azure Cosmos DB account.
-
-1. In the resource menu, select **Keys**.
-
-1. On the **keys** page, select either the **Read-write Keys** or **Read-only Keys** option. Then, copy the value of the **Primary Connection String** field. You use this value in a later step.
-
-    | | Description |
-    | --- | --- |
-    | **Read-write key** | Provides access to view and modify the databases, containers, queries, and other resources associated with that specific account |
-    | **Read-only key** | Provides access to view databases, containers, queries, and other resources associated with that specific account |
-
-    > [!TIP]
-    > If you want to share results of a query with your teammates who don't have access to an Azure Subscription or the Azure portal, you can provide them with the read-only .
-
-1. Now, have the other user navigate to <https://cosmos.azure.com>.
-
-1. Select **Connect to your account with connection string**. Then, have the user enter the connection string copied earlier and select **Connect**.
-
 ## Configure request unit threshold
 
-In the Explorer, you can configure a limit to the request units per second (RU/s) that queries use. Use this functionality to control the cost and performance in request units (RU) of your queries. This functionality can also cancel high-cost queries automatically.
+In the Data Explorer, you can configure a limit to the request units per second (RU/s) that queries use. Use this functionality to control the cost and performance in request units (RU) of your queries. This functionality can also cancel high-cost queries automatically.
 
 1. Start in the explorer for the target Azure Cosmos DB account.
 
@@ -104,12 +80,12 @@ You can use Microsoft Entra-based authentication within the explorer by enabling
 
 1. Select the **Settings** menu option.
 
-1. In the **Settings** dialog, configure whether you want to **Enable Entra ID (RBAC)** using one of three possible values:
+1. In the **Settings** dialog, configure whether you want to **`Enable Entra ID (RBAC)`** using one of three possible values:
 
     | | Description |
     | --- | --- |
-    | **Automatic (default)** | Role-based access control (RBAC) is automatically used if the account has disabled key-based authentication. Otherwise, Data Explorer uses key-based authentication for data requests. |
-    | **True** | Role-based access control is always used for data requests. If role-based access control is not configured correctly for the account or identity, then the requests fail. |
+    | **Automatic (default)** | Role-based access control (RBAC) is automatically used if key-based authentication is disabled for your account. Otherwise, Data Explorer uses key-based authentication for data requests. |
+    | **True** | Role-based access control is always used for data requests. If role-based access control isn't configured correctly for the account or identity, then the requests fail. |
     | **False** | Key-based authentication is always used for data requests. If key-based authentication is disabled, then the requests fail. |
 
     ![Screenshot of the Microsoft Entra ID role-based access control setting and three potential values.](media/data-explorer/enable-entra-auth.png)
@@ -120,7 +96,7 @@ You can use Microsoft Entra-based authentication within the explorer by enabling
 1. Now, select the **Login for Entra ID RBAC** option in the command bar of the explorer.
 
     > [!TIP]
-    > This step is not necessary when using the Cosmos Explorer (<https://cosmos.azure.com>). The Cosmos Explorer also supports the option to manually set the value of the **Enable Entra ID (RBAC)** to `True` using the <https://cosmos.azure.com?feature.enableAadDataPlane=true> URL.
+    > This step is not necessary when using the Azure Cosmos DB Data Explorer (<https://cosmos.azure.com>). The Azure Cosmos DB Data Explorer also supports the option to manually set the value of the **`Enable Entra ID (RBAC)`** to `True` using the <https://cosmos.azure.com?feature.enableAadDataPlane=true> URL.
 
 ## Known issues
 
@@ -128,7 +104,7 @@ Here are a few currently known issues:
 
 - Browsing items that contain a UUID isn't supported in Data Explorer. This limitation doesn't affect loading containers, only viewing individual items or queries that include these items. To view and manage these items, users should continue to use the same tooling/SDKs that was originally used to create these items.
 
-- HTTP 401 errors could occur due to insufficient role-based access control permissions for your Microsoft Entra ID account. This condition can be true particularly if the account has a custom role. Any custom roles must have the `Microsoft.DocumentDB/databaseAccounts/listKeys/*` action included to use the Explorer.
+- HTTP 401 errors could occur due to insufficient role-based access control permissions for your Microsoft Entra ID account. This condition can be true particularly if the account has a custom role. Any custom roles must have the `Microsoft.DocumentDB/databaseAccounts/listKeys/*` action included to use the Data Explorer.
 
 ## Next step
 
