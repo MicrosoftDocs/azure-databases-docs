@@ -67,7 +67,7 @@ In the Data Explorer, you can configure a limit to the request units per second 
 
 1. In the **Settings** dialog, configure whether you want to **Enable RU threshold** and the actual **RU threshold** value.
 
-    ![Screenshot of the individual settings to configure the request unit threshold](media/data-explorer/configure-ru-threshold.png)
+    ![Screenshot of the individual settings to configure the request unit threshold.](media/data-explorer/configure-ru-threshold.png)
 
     > [!TIP]
     > The RU threshold is enabled automatically with a default value of **5,000** RUs.
