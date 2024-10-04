@@ -1,25 +1,28 @@
 ---
 author: pehewitt
+ms.author: pehewitt
+ms.reviewer: randolphwest
+ms.date: 09/18/2024
 ms.service: sql-database
 ms.topic: include
-ms.date: 02/14/2023
-ms.author: pehewitt
+ms.collection:
+  - sql-migration-content
 ---
 ## Create an Azure Database Migration Service instance
 
 1. In the Azure portal menu or on the **Home** page, select **Create a resource**. Search for and select **Azure Database Migration Service**.
 
-    ![Azure Marketplace](../media/portal-marketplace.png)
+    :::image type="content" source="../media/portal-marketplace.png" alt-text="Screenshot of Azure Marketplace.":::
 
-2. On the **Azure Database Migration Service** screen, select **Create**.
+1. On the **Azure Database Migration Service** screen, select **Create**.
 
-    ![Create Azure Database Migration Service instance](../media/dms-create-1.png)
+    :::image type="content" source="../media/dms-create-1.png" alt-text="Screenshot of Create Azure Database Migration Service instance." lightbox="../media/dms-create-1.png":::
 
     Select the appropriate **Source server type** and **Target server type**, and choose the **Database Migration Service (Classic)** option.
 
-    ![Select Database Migration Service (Classic) scenario](../media/dms-classic-create-2.png)
+    :::image type="content" source="../media/dms-classic-create-2.png" alt-text="Screenshot of Select Database Migration Service (Classic) scenario." lightbox="../media/dms-classic-create-2.png":::
 
-3. On the **Create Migration Service** basics screen:
+1. On the **Create Migration Service** basics screen:
 
      - Select the subscription.
      - Create a new resource group or choose an existing one.
@@ -28,15 +31,15 @@ ms.author: pehewitt
      - Choose **Azure** as the service mode.
      - Select a pricing tier. For more information on costs and pricing tiers, see the [pricing page](https://aka.ms/dms-pricing).
 
-    ![Configure Azure Database Migration Service instance basics settings](../media/dms-settings-1.png)
+    :::image type="content" source="../media/dms-settings-1.png" alt-text="Screenshot of Configure Azure Database Migration Service instance basics settings.":::
 
      - Select **Next: Networking**.
 
-4. On the **Create Migration Service** networking screen:
+1. On the **Create Migration Service** networking screen:
 
     - Select an existing virtual network or create a new one. The virtual network provides Azure Database Migration Service with access to the source server and the target instance. For more information about how to create a virtual network in the Azure portal, see the article [Create a virtual network using the Azure portal](/azure/virtual-network/quick-create-portal).
 
-    ![Configure Azure Database Migration Service instance networking settings](../media/dms-settings-2.png)
+    :::image type="content" source="../media/dms-settings-2.png" alt-text="Screenshot of Configure Azure Database Migration Service instance networking settings.":::
 
     - Select **Review + Create** to review the details and then select **Create** to create the service.
 

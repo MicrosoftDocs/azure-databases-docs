@@ -18,9 +18,6 @@ ms.custom: query-reference, build-2024
 
 Returns the similarity score between two specified vectors.
 
-> [!NOTE]
-> For more information, see [Geospatial and GeoJSON location data](geospatial-intro.md).
-
 ## Syntax
 
 ```nosql

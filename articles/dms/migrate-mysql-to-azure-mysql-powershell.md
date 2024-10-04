@@ -4,29 +4,27 @@ titleSuffix: Azure Database Migration Service
 description: Learn to migrate an on-premises MySQL database to Azure Database for MySQL by using Azure Database Migration Service through PowerShell script.
 author: abhims14
 ms.author: abhishekum
-ms.reviewer: arthiaga
-ms.date: 04/11/2021
+ms.reviewer: arthiaga, randolphwest
+ms.date: 09/18/2024
 ms.service: azure-database-migration-service
 ms.topic: tutorial
+ms.collection:
+  - sql-migration-content
 ms.custom:
   - devx-track-azurepowershell
-  - sql-migration-content
 ---
 
 # Migrate MySQL to Azure Database for MySQL offline with PowerShell & Azure Database Migration Service
 
 In this article, you migrate a MySQL database restored to an on-premises instance to Azure Database for MySQL by using the offline migration capability of Azure Database Migration Service through Microsoft Azure PowerShell. The article documents a collection of PowerShell scripts which can be executed in sequence to perform the offline migration of MySQL database to Azure. You can download the complete PowerShell script described in this tutorial from our [GitHub repository](https://github.com/Azure/azure-mysql/tree/master/Azure%20DMS%20-%20MySQL%20Offline%20Migration%20Script).
 
+> [!NOTE]  
+> Currently it isn't possible to run complete database migration using the Az.DataMigration module. In the meantime, the sample PowerShell script is provided "as-is" that uses the [DMS REST API](/rest/api/datamigration/tasks/get) and allows you to automate migration. This script will be modified or deprecated, once official support is added in the Az.DataMigration module and Azure CLI.
 
-> [!NOTE]
-> Currently it is not possible to run complete database migration using the Az.DataMigration module. In the meantime, the sample PowerShell script is provided "as-is" that uses the [DMS REST API](/rest/api/datamigration/tasks/get) and allows you to automate migration. This script will be modified or deprecated, once official support is added in the Az.DataMigration module and Azure CLI.
+Amazon Relational Database Service (RDS) for MySQL and Amazon Aurora (MySQL-based) are also supported as sources for migration.
 
-> [!NOTE]
-> Amazon Relational Database Service (RDS) for MySQL and Amazon Aurora (MySQL-based) are also supported as sources for migration.
-
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > For online migrations, you can use open-source tools such as [MyDumper/MyLoader](https://centminmod.com/mydumper.html) with [data-in replication](../mysql/concepts-data-in-replication.md).
-
 
 The article helps to automate the scenario where source and target database names can be same or different and as part of migration either all or few of the tables in the target database need to be migrated which have the same name and table structure. Although the articles assumes the source to be a MySQL database instance and target to be Azure Database for MySQL, it can be used to migrate from one Azure Database for MySQL to another just by changing the source server name and credentials. Also, migration from lower version MySQL servers (v5.6 and above) to higher versions is also supported.
 
@@ -34,52 +32,62 @@ The article helps to automate the scenario where source and target database name
 
 In this article, you learn how to:
 > [!div class="checklist"]
->
-> * Migrate database schema.
-> * Create a resource group.
-> * Create an instance of the Azure Database Migration Service.
-> * Create a migration project in an Azure Database Migration Service instance.
-> * Configure the migration project to use the offline migration capability for MySQL.
-> * Run the migration.
+> - Migrate database schema.
+> - Create a resource group.
+> - Create an instance of the Azure Database Migration Service.
+> - Create a migration project in an Azure Database Migration Service instance.
+> - Configure the migration project to use the offline migration capability for MySQL.
+> - Run the migration.
 
 ## Prerequisites
 
 To complete these steps, you need:
 
-* Have an Azure account with an active subscription. [Create an account for free](https://azure.microsoft.com/free).
-* Have an on-premises MySQL database with version 5.6 or above. If not, then download and install [MySQL community edition](https://dev.mysql.com/downloads/mysql/) 5.6 or above.
-* [Create an instance in Azure Database for MySQL](../mysql/quickstart-create-mysql-server-database-using-azure-portal.md). Refer to the article [Use MySQL Workbench to connect and query data](../mysql/connect-workbench.md) for details about how to connect and create a database using the Workbench application. The Azure Database for MySQL version should be equal to or higher than the on-premises MySQL version . For example, MySQL 5.7 can migrate to Azure Database for MySQL 5.7 or upgraded to 8.
-* Create a Microsoft Azure Virtual Network for Azure Database Migration Service by using Azure Resource Manager deployment model, which provides site-to-site connectivity to your on-premises source servers by using either [ExpressRoute](/azure/expressroute/expressroute-introduction) or [VPN](/azure/vpn-gateway/vpn-gateway-about-vpngateways). For more information about creating a virtual network, see the [Virtual Network Documentation](/azure/virtual-network/), and especially the quickstart articles with step-by-step details.
+- Have an Azure account with an active subscription. [Create an account for free](https://azure.microsoft.com/free).
 
-    > [!NOTE]
-    > During virtual networkNet setup, if you use ExpressRoute with network peering to Microsoft, add the *Microsoft.Sql* service [endpoint](/azure/virtual-network/virtual-network-service-endpoints-overview) to the subnet in which the service will be provisioned. This configuration is necessary because Azure Database Migration Service lacks internet connectivity.
+- Have an on-premises MySQL database with version 5.6 or above. If not, then download and install [MySQL community edition](https://dev.mysql.com/downloads/mysql/) 5.6 or above.
 
-* Ensure that your virtual network Network Security Group rules don't block the outbound port 443 of ServiceTag for Storage and AzureMonitor. For more detail on virtual network NSG traffic filtering, see the article [Filter network traffic with network security groups](/azure/virtual-network/virtual-network-vnet-plan-design-arm).
-* Open your Windows firewall to allow connections from Virtual Network for Azure Database Migration Service to access the source MySQL Server, which by default is TCP port 3306.
-* When using a firewall appliance in front of your source database(s), you may need to add firewall rules to allow connections from Virtual Network for Azure Database Migration Service to access the source database(s) for migration.
-* Create a server-level [firewall rule](/azure/azure-sql/database/firewall-configure) or [configure VNET service endpoints](../mysql/howto-manage-vnet-using-portal.md) for target Azure Database for MySQL to allow Virtual Network for Azure Database Migration Service access to the target databases.
-* The source MySQL must be on supported MySQL community edition. To determine the version of MySQL instance, in the MySQL utility or MySQL Workbench, run the following command:
+- [Create an instance in Azure Database for MySQL](../mysql/quickstart-create-mysql-server-database-using-azure-portal.md). Refer to the article [Use MySQL Workbench to connect and query data](../mysql/connect-workbench.md) for details about how to connect and create a database using the Workbench application. The Azure Database for MySQL version should be equal to or higher than the on-premises MySQL version . For example, MySQL 5.7 can migrate to Azure Database for MySQL 5.7 or upgraded to 8.
 
-    ```
-    SELECT @@version;
-    ```
+- Create a Microsoft Azure Virtual Network for Azure Database Migration Service by using Azure Resource Manager deployment model, which provides site-to-site connectivity to your on-premises source servers by using either [ExpressRoute](/azure/expressroute/expressroute-introduction) or [VPN](/azure/vpn-gateway/vpn-gateway-about-vpngateways). For more information about creating a virtual network, see the [Virtual Network Documentation](/azure/virtual-network/), and especially the quickstart articles with step-by-step details.
 
-* Azure Database for MySQL supports only InnoDB tables. To convert MyISAM tables to InnoDB, see the article [Converting Tables from MyISAM to InnoDB](https://dev.mysql.com/doc/refman/5.7/en/converting-tables-to-innodb.html)
-* The user must have the privileges to read data on the source database.
-* The guide uses PowerShell v7.2, which can be installed as per the [installation guide](/powershell/scripting/install/installing-powershell)
-* Download and install following modules from the PowerShell Gallery by using [Install-Module PowerShell cmdlet](/powershell/module/powershellget/Install-Module); be sure to open the PowerShell command window using run as an Administrator:
-    * Az.Resources
-    * Az.Network
-    * Az.DataMigration
+  > [!NOTE]  
+  > During virtual networkNet setup, if you use ExpressRoute with network peering to Microsoft, add the *Microsoft.Sql* service [endpoint](/azure/virtual-network/virtual-network-service-endpoints-overview) to the subnet in which the service will be provisioned. This configuration is necessary because Azure Database Migration Service lacks internet connectivity.
 
-```powershell
-Install-Module Az.Resources
-Install-Module Az.Network
-Install-Module Az.DataMigration
-Import-Module Az.Resources
-Import-Module Az.Network
-Import-Module Az.DataMigration
-```
+- Ensure that your virtual network Network Security Group rules don't block the outbound port 443 of ServiceTag for Storage and AzureMonitor. For more detail on virtual network NSG traffic filtering, see the article [Filter network traffic with network security groups](/azure/virtual-network/virtual-network-vnet-plan-design-arm).
+
+- Open your Windows firewall to allow connections from Virtual Network for Azure Database Migration Service to access the source MySQL Server, which by default is TCP port 3306.
+
+- When using a firewall appliance in front of your source database(s), you might need to add firewall rules to allow connections from Virtual Network for Azure Database Migration Service to access the source database(s) for migration.
+
+- Create a server-level [firewall rule](/azure/azure-sql/database/firewall-configure) or [configure VNET service endpoints](../mysql/howto-manage-vnet-using-portal.md) for target Azure Database for MySQL to allow Virtual Network for Azure Database Migration Service access to the target databases.
+
+- The source MySQL must be on supported MySQL community edition. To determine the version of MySQL instance, in the MySQL utility or MySQL Workbench, run the following command:
+
+  ```sql
+  SELECT @@VERSION;
+  ```
+
+- Azure Database for MySQL supports only InnoDB tables. To convert MyISAM tables to InnoDB, see the article [Converting Tables from MyISAM to InnoDB](https://dev.mysql.com/doc/refman/5.7/en/converting-tables-to-innodb.html)
+
+- The user must have the privileges to read data on the source database.
+
+- The guide uses PowerShell v7.2, which can be installed as per the [installation guide](/powershell/scripting/install/installing-powershell)
+
+- Download and install following modules from the PowerShell Gallery by using [Install-Module PowerShell cmdlet](/powershell/module/powershellget/Install-Module); be sure to open the PowerShell command window using run as an Administrator:
+
+  - `Az.Resources`
+  - `Az.Network`
+  - `Az.DataMigration`
+
+  ```powershell
+  Install-Module Az.Resources
+  Install-Module Az.Network
+  Install-Module Az.DataMigration
+  Import-Module Az.Resources
+  Import-Module Az.Network
+  Import-Module Az.DataMigration
+  ```
 
 ## Migrate database schema
 
@@ -87,29 +95,29 @@ To transfer all the database objects like table schemas, indexes and stored proc
 
 To export the schema using mysqldump, run the following command:
 
-```
+```cmd
 mysqldump -h [servername] -u [username] -p[password] --databases [db name] --no-data > [schema file path]
 ```
 
 For example:
 
-```
+```cmd
 mysqldump -h 10.10.123.123 -u root -p --databases migtestdb --no-data > d:\migtestdb.sql
 ```
 
 To import schema to target Azure Database for MySQL, run the following command:
 
-```
+```cmd
 mysql.exe -h [servername] -u [username] -p[password] [database]< [schema file path]
  ```
 
 For example:
 
-```
+```cmd
 mysql.exe -h mysqlsstrgt.mysql.database.azure.com -u docadmin@mysqlsstrgt -p migtestdb < d:\migtestdb.sql
  ```
 
-If you have foreign keys in your schema, the parallel data load during migration will be handled by the migration task. There is no need to drop foreign keys during schema migration.
+If you have foreign keys in your schema, the parallel data load during migration will be handled by the migration task. There's no need to drop foreign keys during schema migration.
 
 If you have triggers in the database, it will enforce data integrity in the target ahead of full data migration from the source. The recommendation is to disable triggers on all the tables in the target during migration, and then enable the triggers after migration is done.
 
@@ -119,20 +127,20 @@ Execute the following script in MySQL Workbench on the target database to extrac
 SELECT
     SchemaName,
     GROUP_CONCAT(DropQuery SEPARATOR ';\n') as DropQuery,
-    Concat('DELIMITER $$ \n\n', GROUP_CONCAT(AddQuery SEPARATOR '$$\n'), '$$\n\nDELIMITER ;') as AddQuery
+    CONCAT('DELIMITER $$ \n\n', GROUP_CONCAT(AddQuery SEPARATOR '$$\n'), '$$\n\nDELIMITER ;') as AddQuery
 FROM
 (
 SELECT
     TRIGGER_SCHEMA as SchemaName,
-    Concat('DROP TRIGGER `', TRIGGER_NAME, "`") as DropQuery,
-    Concat('CREATE TRIGGER `', TRIGGER_NAME, '` ', ACTION_TIMING, ' ', EVENT_MANIPULATION,
+    CONCAT('DROP TRIGGER `', TRIGGER_NAME, "`") as DropQuery,
+    CONCAT('CREATE TRIGGER `', TRIGGER_NAME, '` ', ACTION_TIMING, ' ', EVENT_MANIPULATION,
             '\nON `', EVENT_OBJECT_TABLE, '`\n' , 'FOR EACH ', ACTION_ORIENTATION, ' ',
             ACTION_STATEMENT) as AddQuery
 FROM
     INFORMATION_SCHEMA.TRIGGERS
 ORDER BY EVENT_OBJECT_SCHEMA, EVENT_OBJECT_TABLE, ACTION_TIMING, EVENT_MANIPULATION, ACTION_ORDER ASC
 ) AS Queries
-GROUP BY SchemaName
+GROUP BY SchemaName;
 ```
 
 Run the generated drop trigger query (DropQuery column) in the result to drop triggers in the target database. The add trigger query can be saved, to be used post data migration completion.
@@ -163,7 +171,7 @@ function LogMessage([string] $Message, [bool] $IsProcessing = $false) {
 
 ## Register the Microsoft.DataMigration resource provider
 
-Registration of the resource provider needs to be done on each Azure subscription only once. Without the registration, you will not be able to create an instance of **Azure Database Migration Service**.
+Registration of the resource provider needs to be done on each Azure subscription only once. Without the registration, you'll not be able to create an instance of **Azure Database Migration Service**.
 
 Register the resource provider by using the [Register-AzResourceProvider](/powershell/module/az.resources/register-azresourceprovider) command. The following script registers the resource provider required for **Azure Database Migration Service**
 
@@ -196,11 +204,16 @@ else { LogMessage -Message "Resource group $ResourceGroupName exists." }
 ## Create an instance of Azure Database Migration Service
 
 You can create new instance of Azure Database Migration Service by using the [New-AzDataMigrationService](/powershell/module/az.datamigration/new-azdatamigrationservice) command. This command expects the following required parameters:
-* *Azure Resource Group name*. You can use [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) command to create Azure Resource group as previously shown and provide its name as a parameter.
-* *Service name*. String that corresponds to the desired unique service name for Azure Database Migration Service
-* *Location*. Specifies the location of the service. Specify an Azure data center location, such as West US or Southeast Asia
-* *Sku*. This parameter corresponds to DMS Sku name. The currently supported Sku name are *Standard_1vCore*, *Standard_2vCores*, *Standard_4vCores*, *Premium_4vCores*.
-* *Virtual Subnet Identifier*. You can use [Get-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/get-azvirtualnetworksubnetconfig) command to get the information of a subnet.
+
+- *Azure Resource Group name*. You can use [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) command to create Azure Resource group as previously shown and provide its name as a parameter.
+
+- *Service name*. String that corresponds to the desired unique service name for Azure Database Migration Service
+
+- *Location*. Specifies the location of the service. Specify an Azure data center location, such as West US or Southeast Asia
+
+- *Sku*. This parameter corresponds to DMS Sku name. The currently supported Sku name are *Standard_1vCore*, *Standard_2vCores*, *Standard_4vCores*, *Premium_4vCores*.
+
+- *Virtual Subnet Identifier*. You can use [Get-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/get-azvirtualnetworksubnetconfig) command to get the information of a subnet.
 
 The following script expects that the *myVirtualNetwork* virtual network exists with a subnet named *default* and then creates a Database Migration Service with the name *myDmService* under the resource group created in **Step 3** and in the same region.
 
@@ -238,7 +251,7 @@ else { LogMessage -Message "Azure Data Migration Service $ServiceName exists." }
 
 ## Create a migration project
 
-After creating an Azure Database Migration Service instance, you will create a migration project. A migration project specifies the type of migration that needs to be done.
+After creating an Azure Database Migration Service instance, you'll create a migration project. A migration project specifies the type of migration that needs to be done.
 
 The following script creates a migration project named *myfirstmysqlofflineproject* for offline migration from MySQL to Azure Database for MySQL under the Database Migration Service instance created in **Step 4** and in the same region.
 
@@ -268,7 +281,7 @@ else { LogMessage -Message "Azure DMS project $projectName exists." }
 
 ## Create a Database Connection Info object for the source and target connections
 
-After creating the migration project, you will create the database connection information. This connection information will be used to connect to the source and target servers during the migration process.
+After creating the migration project, you'll create the database connection information. This connection information will be used to connect to the source and target servers during the migration process.
 
 The following script takes the server name, user name and password for the source and target MySQL instances and creates the connection information objects. The script prompts the user to enter the password for the source and target MySQL instances. For silent scripts, the credentials can be fetched from Azure Key Vault.
 
@@ -437,14 +450,13 @@ $getSourceTablesTask = RunScenario -MigrationService $dmsService `
 
 if (-not ($getSourceTablesTask)) { throw "ERROR: Could not get source database $SourceDatabaseName table information." }
 LogMessage -Message "List of tables from the source database acquired."
-
 ```
 
 ## Build table mapping based on user configuration
 
-As part of configuring the migration task, you will create a mapping between the source and target tables. The mapping is at the table name level but the assumption is that the table structure (column count, column names, data types etc.) of the mapped tables is exactly the same.
+As part of configuring the migration task, you'll create a mapping between the source and target tables. The mapping is at the table name level but the assumption is that the table structure (column count, column names, data types etc.) of the mapped tables is exactly the same.
 
-The following script creates a mapping based on the target and source table list extracted in **Step 7**. For partial data load, the user can provide a list of table to filter out the tables. If no user input is provided, then all target tables are mapped. The script also checks if a table with the same name exists in the source or not. If table name does not exists in the source, then the target table is ignored for migration.
+The following script creates a mapping based on the target and source table list extracted in **Step 7**. For partial data load, the user can provide a list of table to filter out the tables. If no user input is provided, then all target tables are mapped. The script also checks if a table with the same name exists in the source or not. If table name doesn't exists in the source, then the target table is ignored for migration.
 
 ```powershell
 # Create the source to target table map
@@ -498,7 +510,7 @@ LogMessage -Message "Migration table mapping created for $($tableMap.Count) tabl
 
 ## Create and configure the migration task inputs
 
-After building the table mapping, you will create the inputs for migration task of type *Migrate.MySql.AzureDbForMySql* and configure the properties.
+After building the table mapping, you'll create the inputs for migration task of type *Migrate.MySql.AzureDbForMySql* and configure the properties.
 
 The following script creates the migration task and sets the connections, database names and table mapping.
 
@@ -540,13 +552,15 @@ $offlineMigTaskProperties.input.startedOn = [System.DateTimeOffset]::UtcNow.ToSt
 
 ## Configure performance tuning parameters
 
-As pert of the PowerShell module, there are few optional parameters available, which can be tuned based on the environment. These parameters can be used to improve the performance of the migration task. All these parameters are optional and their default value is NULL.
+As pert of the PowerShell module, there are few optional parameters available, which can be tuned based on the environment. These parameters can be used to improve the performance of the migration task. All these parameters are optional and their default value is `NULL`.
 
-> [!NOTE]
-> The following performance configurations have shown increased throughput during migration on Premium SKU.
-> * WriteDataRangeBatchTaskCount = 12
-> * DelayProgressUpdatesInStorageInterval = 30 seconds
-> * ThrottleQueryTableDataRangeTaskAtBatchCount = 36
+The following performance configurations have shown increased throughput during migration on Premium SKU.
+
+- WriteDataRangeBatchTaskCount = 12
+
+- DelayProgressUpdatesInStorageInterval = 30 seconds
+
+- ThrottleQueryTableDataRangeTaskAtBatchCount = 36
 
 The following script takes the user values of the parameters and sets the parameters in the migration task properties.
 
@@ -605,7 +619,9 @@ AddOptionalSetting $offlineMigTaskProperties.input.optionalAgentSettings "Thrott
 AddOptionalSetting $offlineMigTaskProperties.input.optionalAgentSettings "DelayProgressUpdatesInStorageInterval" $DelayProgressUpdatesInStorageInterval;
 ```
 
-## Creating and running the migration task
+<a id="creating-and-running-the-migration-task"></a>
+
+## Create and running the migration task
 
 After configuring the input for the task, now the task will be created and executed on the agent. The script triggers the task execution and wait for the migration to complete.
 
@@ -648,7 +664,9 @@ if ($migrationResult.errors.details) {
 }
 ```
 
-## Deleting the Database Migration Service
+<a id="deleting-the-database-migration-service"></a>
+
+## Delete the Database Migration Service
 
 The same Database Migration Service can be used for multiple migrations so the instance once created can be re-used. If you're not going to continue to use the Database Migration Service, then you can delete the service using the [Remove-AzDataMigrationService](/powershell/module/az.datamigration/remove-azdatamigrationservice?) command.
 
@@ -658,10 +676,10 @@ The following script deletes the Azure Database Migration Service instance and i
 Remove-AzDataMigrationService -ResourceId $($dmsService.ResourceId)
 ```
 
-## Next steps
+## Related content
 
-* For information about known issues and limitations when performing migrations using DMS, see the article [Common issues - Azure Database Migration Service](./known-issues-troubleshooting-dms.md).
-* For troubleshooting source database connectivity issues while using DMS, see the article [Issues connecting source databases](./known-issues-troubleshooting-dms-source-connectivity.md).
-* For information about Azure Database Migration Service, see the article [What is Azure Database Migration Service?](./dms-overview.md).
-* For information about Azure Database for MySQL, see the article [What is Azure Database for MySQL?](../mysql/overview.md).
-* For tutorial about using DMS via portal, see the article [Tutorial: Migrate MySQL to Azure Database for MySQL offline using DMS](./tutorial-mysql-azure-mysql-offline-portal.md)
+- [Troubleshoot common Azure Database Migration Service (classic) issues and errors](known-issues-troubleshooting-dms.md)
+- [Troubleshoot DMS errors when connecting to source databases](known-issues-troubleshooting-dms-source-connectivity.md)
+- [What is Azure Database Migration Service?](dms-overview.md)
+- [What is Azure Database for MySQL?](../mysql/overview.md)
+- [Tutorial: Migrate MySQL to Azure Database for MySQL offline using DMS](tutorial-mysql-azure-mysql-offline-portal.md)

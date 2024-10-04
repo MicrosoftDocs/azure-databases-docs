@@ -348,7 +348,7 @@ There are various methods to migrate data offline, but here we will introduce ho
 | --------- | -------- | ------- |
 | Azure Data Factory    | HBase < 2 | Easy to set up. Suitable for large datasets. Doesn’t support HBase 2 or later. |
 | Apache Spark | All versions | Support all versions of HBase. Suitable for large datasets. Spark setup required. |
-| Custom tool with Azure Cosmos DB bulk executor library | All versions | Most flexible to create custom data migration tools using libraries. Requires more effort to setup. |
+| Custom tool with Azure Cosmos DB bulk executor library | All versions | Most flexible to create custom data migration tools using libraries. Requires more effort to set up. |
 
 The following flowchart uses some conditions to reach the available data migration methods.
 :::image type="content" source="./media/migrate-hbase-to-cosmos-db/flowchart-hbase-migration-tools.png" alt-text="Flowchart for options to migrate data to Azure Cosmos DB.":::
@@ -629,7 +629,7 @@ CosmosPagedIterable<Family> filteredFamilies = container.queryItems(sql, new Cos
 
 **HBase**
 
-For HBase, use the append method and checkAndPut method to update the value. append is the process of appending a value atomically to the end of the current value, and checkAndPut atomically compares the current value with the expected value and updates only if they match.
+For HBase, use the append method and checkAndPut method to update the value. Append is the process of appending a value atomically to the end of the current value, and checkAndPut atomically compares the current value with the expected value and updates only if they match.
 
 ```java
 // append
@@ -815,7 +815,7 @@ Data security is a shared responsibility of the customer and the database provid
 |   **Security control**           | **HBase**        | **Azure Cosmos DB**    |
 | -------- | ----- | ------- |
 | Network Security  and firewall setting   | Control traffic  using security functions such as network devices. | Supports  policy-based IP-based access control on the inbound firewall. |
-| User  authentication and fine-grained user controls   | Fine-grained  access control by combining LDAP with security components such as Apache  Ranger. | You can use the  account primary key to create user and permission resources for each  database. Resource tokens are associated with permissions in the database to  determine how users can access application resources in the database (read/write, read-only, or no access). You can also use your Microsoft Entra ID to authenticate your data requests. This allows you to authorize data requests using a fine-grained RBAC model.|
+| User  authentication and fine-grained user controls   | Fine-grained  access control by combining LDAP with security components such as Apache  Ranger. | You can use the  account primary key to create user and permission resources for each  database. You can also use your Microsoft Entra ID to authenticate your data requests. This allows you to authorize data requests using a fine-grained RBAC model.|
 | Ability to  replicate data globally for regional failures    | Make a database  replica in a remote data center using HBase's replication. | Azure Cosmos DB  performs configuration-free global distribution and allows you to replicate  data to data centers around the world in Azure with the select of a button. In  terms of security, global replication ensures that your data is protected  from local failures. |
 | Ability to fail  over from one data center to another        | You need to implement  failover yourself.       | If you're  replicating data to multiple data centers and the region's data center goes  offline, Azure Cosmos DB automatically rolls over the operation. |
 | Local data  replication within a data center                 | The HDFS  mechanism allows you to have multiple replicas across nodes within a single  file system. | Azure Cosmos DB  automatically replicates data to maintain high availability, even within a  single data center. You can choose the consistency level yourself. |
@@ -826,8 +826,6 @@ Data security is a shared responsibility of the customer and the database provid
 | Ability to  geo-fence data to adhere to data governance restrictions | You need to check  the restrictions of each country/region and implement it yourself. | Guarantees data  governance for sovereign regions (Germany, China, US Gov, etc.). |
 | Physical  protection of servers in protected data centers    | It depends on the  data center where the system is located.  | For a list of the latest certifications,  see the global [Azure compliance site](/compliance/regulatory/offering-home?view=o365-worldwide&preserve-view=true). |
 | Certifications     | Depends on the Hadoop  distribution.      | See [Azure compliance documentation](../compliance.md) |
-
-For more information on security, please refer to [Security in Azure Cosmos DB - overview](../database-security.md)
 
 ## Monitoring
 

@@ -83,7 +83,7 @@ az managed-cassandra cluster show \
 
 ### <a id="get-cluster-status"></a>Get the cluster node status
 
-Get the status of cluster nodes by using the [az managed-cassandra cluster node-status](/cli/azure/managed-cassandra/cluster#az-managed-cassandra-cluster-node-status) command:
+Get the status of cluster nodes by using the [az managed-cassandra cluster status](/cli/azure/managed-cassandra/cluster#az-managed-cassandra-cluster-status) command:
 
 ```azurecli-interactive
 clusterName='cassandra-hybrid-cluster'

@@ -2,10 +2,10 @@
 title: Configure Azure Private Link for Azure Cosmos DB
 description: Learn how to set up Azure Private Link to access an Azure Cosmos DB account by using a private IP address in a virtual network.
 author: jawelton74
+ms.author: jawelton
 ms.service: azure-cosmos-db
 ms.topic: how-to
 ms.date: 04/24/2023
-ms.author: jawelton
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
 ---
 
@@ -13,7 +13,7 @@ ms.custom: devx-track-azurecli, devx-track-azurepowershell
 
 [!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
-By using Azure Private Link, you can connect to an Azure Cosmos DB account through a private endpoint. The private endpoint is a set of private IP addresses in a subnet within your virtual network. You can then limit access to an Azure Cosmos DB account over private IP addresses. When Private Link is combined with restrictive NSG policies, it helps reduce the risk of data exfiltration. To learn more about private endpoints, see [What is Azure Private Link?](/azure/private-link/private-link-overview)
+By using Azure Private Link, you can connect to an Azure Cosmos DB account through a private endpoint. The private endpoint is a set of private IP addresses in a subnet within your virtual network. You can then limit access to an Azure Cosmos DB account over private IP addresses. When Private Link is combined with restrictive network security group (NSG) policies, it helps reduce the risk of data exfiltration. To learn more about private endpoints, see [What is Azure Private Link?](/azure/private-link/private-link-overview)
 
 > [!NOTE]
 > Private Link doesn't prevent your Azure Cosmos DB endpoints from being resolved by public DNS. Filtering of incoming requests happens at application level, not transport or network level.
@@ -81,9 +81,9 @@ Follow these steps to create a private endpoint for an existing Azure Cosmos DB 
 
 When you have an approved Private Link for an Azure Cosmos DB account, in the Azure portal, the **All networks** option in the **Firewall and virtual networks** pane is unavailable.
 
-## <a id="private-zone-name-mapping"></a>API types and private zone names
+## API types and private zone names
 
-Please review [Azure Private Endpoint DNS configuration](/azure/private-link/private-endpoint-dns) for a more detailed explanation about private zones and DNS configurations for private endpoint. The following table shows the mapping between different Azure Cosmos DB account API types, supported subresources, and the corresponding private zone names. You can also access the Gremlin and API for Table accounts through the API for NoSQL, so there are two entries for these APIs. There's also an extra entry for the API for NoSQL for accounts using the [dedicated gateway](./dedicated-gateway.md).
+Review [Azure Private Endpoint DNS configuration](/azure/private-link/private-endpoint-dns) for a more detailed explanation about private zones and DNS configurations for private endpoint. The following table shows the mapping between different Azure Cosmos DB account API types, supported subresources, and the corresponding private zone names. You can also access the Gremlin and API for Table accounts through the API for NoSQL, so there are two entries for these APIs. There's also an extra entry for the API for NoSQL for accounts using the [dedicated gateway](./dedicated-gateway.md).
 
 |Azure Cosmos DB account API type  |Supported subresources or group IDs |Private zone name  |
 |---------|---------|---------|
@@ -371,8 +371,6 @@ output privateEndpointNetworkInterface string = privateEndpoint.properties.netwo
 
 ---
 
-**Define the parameters file for the template**
-
 Create a parameters file for the template, and name it *PrivateEndpoint_parameters.json*. Add the following code to the parameters file:
 
 ### [Bicep / JSON](#tab/arm-bicep+arm-json)
@@ -399,8 +397,6 @@ Create a parameters file for the template, and name it *PrivateEndpoint_paramete
 ```
 
 ---
-
-**Deploy the template by using a PowerShell script**
 
 Create a PowerShell script by using the following code. Before you run the script, replace the subscription ID, resource group name, and other variable values with the details for your environment.
 
@@ -509,8 +505,6 @@ Use the following code to create a Resource Manager template named *PrivateZone_
 }
 ```
 
-**Define the parameters file for the template**
-
 Create the following two parameters file for the template. Create the *PrivateZone_parameters.json* with the following code:
 
 ```json
@@ -570,9 +564,7 @@ Use the following code to create a Resource Manager template named *PrivateZoneG
 }
 ```
 
-**Define the parameters file for the template**
-
-Create the following two parameters file for the template. Create the *PrivateZoneGroup_parameters.json*. with the following code:
+Create the following two parameters file for the template. Create the *PrivateZoneGroup_parameters.json* with the following code:
 
 ```json
 {
@@ -591,8 +583,6 @@ Create the following two parameters file for the template. Create the *PrivateZo
     }
 }
 ```
-
-**Deploy the template by using a PowerShell script**
 
 Create a PowerShell script by using the following code. Before you run the script, replace the subscription ID, resource group name, and other variable values with the details for your environment.
 
@@ -695,7 +685,7 @@ The following situations and outcomes are possible when you use Private Link in 
 
 ## Blocking public network access during account creation
 
-As described in the previous section, and unless specific firewall rules have been set, adding a private endpoint makes your Azure Cosmos DB account accessible through private endpoints only. This means that the Azure Cosmos DB account could be reached from public traffic after it's created and before a private endpoint gets added. To make sure that public network access is disabled even before the creation of private endpoints, you can set the `publicNetworkAccess` flag to *Disabled* during account creation. Note that this flag takes precedence over any IP or virtual network rule. All public and virtual network traffic is blocked when the flag is set to *Disabled*, even if the source IP or virtual network is allowed in the firewall configuration.
+As described in the previous section, and unless specific firewall rules have been set, adding a private endpoint makes your Azure Cosmos DB account accessible through private endpoints only. This means that the Azure Cosmos DB account could be reached from public traffic after it's created and before a private endpoint gets added. To make sure that public network access is disabled even before the creation of private endpoints, you can set the `publicNetworkAccess` flag to *Disabled* during account creation. This flag takes precedence over any IP or virtual network rule. All public and virtual network traffic is blocked when the flag is set to *Disabled*, even if the source IP or virtual network is allowed in the firewall configuration.
 
 For an example showing how to use this flag, see [this Azure Resource Manager template](https://azure.microsoft.com/resources/templates/cosmosdb-private-endpoint).
 
@@ -719,15 +709,15 @@ When you use Private Link with an Azure Cosmos DB account through a direct mode 
 
 There are three regions for Azure Cosmos DB account deployments: *West US*, *Central US*, and *West Europe*. When you create a private endpoint for your account, four private IPs are reserved in the subnet. There's one IP for each of the three regions, and there's one IP for the global region-agnostic endpoint. Later, you might add a new region to the Azure Cosmos DB account. The private DNS zone is updated as follows:
 
-- **If private DNS zone group is used:**
+* **If private DNS zone group is used:**
 
-  If you use a private DNS zone group, the private DNS zone is automatically updated when the private endpoint is updated. In the previous example, after adding a new region, the private DNS zone is automatically updated.
+  * If you use a private DNS zone group, the private DNS zone is automatically updated when the private endpoint is updated. In the previous example, after adding a new region, the private DNS zone is automatically updated.
 
-- **If private DNS zone group isn't used:**
+* **If private DNS zone group isn't used:**
 
-  If you don't use a private DNS zone group, adding or removing regions to an Azure Cosmos DB account requires you to add or remove DNS entries for that account. After regions have been added or removed, you can update the subnet's private DNS zone to reflect the added or removed DNS entries and their corresponding private IP addresses.
+  * If you don't use a private DNS zone group, adding or removing regions to an Azure Cosmos DB account requires you to add or remove DNS entries for that account. After regions have been added or removed, you can update the subnet's private DNS zone to reflect the added or removed DNS entries and their corresponding private IP addresses.
 
-  In the previous example, after adding the new region, you need to add a corresponding DNS record to either your private DNS zone or your custom DNS. You can use the same steps when you remove a region. After removing the region, you need to remove the corresponding DNS record from either your private DNS zone or your custom DNS.
+  * In the previous example, after adding the new region, you need to add a corresponding DNS record to either your private DNS zone or your custom DNS. You can use the same steps when you remove a region. After removing the region, you need to remove the corresponding DNS record from either your private DNS zone or your custom DNS.
 
 ## Current limitations
 
@@ -754,12 +744,8 @@ Unless you're using a private DNS zone group, DNS records in the private DNS zon
 
 If you don't clean up the DNS records, unexpected data plane issues might happen. These issues include data outage to regions added after private endpoint removal or region removal.
 
-## Next steps
+## Related content
 
-To learn more about Azure Cosmos DB security features, see the following articles:
-
-* To configure a firewall for Azure Cosmos DB, see [Firewall support](how-to-configure-firewall.md).
-
-* To learn how to configure a virtual network service endpoint for your Azure Cosmos DB account, see [Configure access from virtual networks](how-to-configure-vnet-service-endpoint.md).
-
-* To learn more about Private Link, see the [Azure Private Link](/azure/private-link/private-link-overview) documentation.
+* [Firewall support](how-to-configure-firewall.md)
+* [Configure access from virtual networks](how-to-configure-vnet-service-endpoint.md)
+* [Azure Private Link](/azure/private-link/private-link-overview)

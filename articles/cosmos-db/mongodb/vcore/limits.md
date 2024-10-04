@@ -6,7 +6,7 @@ ms.author: gahllevy
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: conceptual
-ms.date: 08/27/2024
+ms.date: 09/22/2024
 ---
 
 # Service Limits in Azure Cosmos DB for MongoDB vCore
@@ -73,7 +73,7 @@ db.collection.find({ field: "value" }).maxTimeMS(5000)
 - Maximum: M200. [Reach out to our team](mailto:mongodb-feedback@microsoft.com) for higher tiers.
 
 ### Shards
-- Maximum: 6 (in preview). [Reach out to our team](mailto:mongodb-feedback@microsoft.com) for more shards.
+- Maximum: 5 (in preview). [Reach out to our team](mailto:mongodb-feedback@microsoft.com) for more shards.
 
 ### Collection and index limits
 -	Collections per cluster: 1,000
@@ -92,20 +92,19 @@ The following limitations can be overridden by upgrading to a paid tier
 - Backup / Restore not supported (available in M25+)
 - High availability (HA) not supported (available in M30+)
 - HNSW vector indexes not supported (available in M40+)
-- Diagnostic logging not supported (available in M30+)
+- Diagnostic logging not supported (available in M40+)
 - No service-level-agreement provided (requires HA to be enabled)
 - Free tier clusters are paused after 60 days of inactivity where there are no connections to the cluster.
 
 ## Replication and HA (high availability) Limits
 
 ### Cross-Region Replication (preview)
-- Supported only on single shard (node) vCore clusters.
 - The following configurations are the same on both primary and replica clusters and can't be changed on the replica cluster:
   - Compute configuration
   - Storage and shard count
   - User accounts
 - HA isn't supported on replica clusters.
-- The following features aren't available when cross-replication preview is enabled:
+- The following features aren't available on replica clusters when cross-replication preview is enabled:
   - Private endpoints (Private Link).
   - Diagnostic settings.
   - Point-in-time restore preview.
