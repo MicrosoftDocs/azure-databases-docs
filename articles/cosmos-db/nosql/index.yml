@@ -39,8 +39,6 @@ landingContent:
             url: quickstart-template-bicep.md
       - linkListType: tutorial
         links:
-          - text: Build a .NET web app
-            url: tutorial-dotnet-web-app.md
           - text: Build a Java console app with Async SDK
             url: quickstart-java.md?tabs=async
       - linkListType: how-to-guide

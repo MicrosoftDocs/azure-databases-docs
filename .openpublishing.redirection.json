@@ -1,4 +1,9 @@
 {
   "redirections": [
+    {
+      "source_path": "articles/cosmos-db/monitor-account-key-updates.md",
+      "redirect_url": "/previous-versions/azure/cosmos-db/monitor-account-key-updates",
+      "redirect_document_id": false
+    }
   ]
 }
