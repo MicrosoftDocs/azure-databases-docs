@@ -192,7 +192,3 @@ $getParameters = @{
 Invoke-AzRestMethod @getParameters
 ```
 
-## Next steps
-
-For more information about security in Azure Cosmos DB, see [Overview of database security in Azure Cosmos DB
-](./database-security.md).
