@@ -541,6 +541,8 @@
           href: how-to-python-create-container.md
     - name: Designing resilient applications
       href: conceptual-resilient-sdk-applications.md
+    - name: Designing multitenant applications
+      href: multitenancy.md
     - name: Connectivity modes
       href: sdk-connection-modes.md
   - name: Operations on containers and items
