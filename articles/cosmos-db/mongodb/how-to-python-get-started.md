@@ -1,8 +1,8 @@
 ---
 title: Get started with Azure Cosmos DB for MongoDB and Python
 description: Get started developing a Python application that works with Azure Cosmos DB for MongoDB. This article helps you learn how to set up a project and configure access to an Azure Cosmos DB for MongoDB database.
-author: diberry
-ms.author: diberry
+author: seesharprun
+ms.author: sidandrews
 ms.service: azure-cosmos-db
 ms.subservice: mongodb
 ms.devlang: python
