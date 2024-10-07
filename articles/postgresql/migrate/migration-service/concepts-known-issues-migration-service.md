@@ -40,7 +40,9 @@ The following list describes common limitations that apply to migration scenario
   - Users that have superuser roles
   - Create TYPE
 - The migration service doesn't support migration at the object level. That is, you can't migrate a table or a schema.
-- Currently, migrating to the Burstable SKU is supported only in the West Europe region. In all other Azure regions, you can migrate databases first to a General Purpose SKU or to a Memory Optimized SKU, and then scale down if needed.
+
+  > [!IMPORTANT]
+  > Though the Burstable SKU is not a limitation, it is recommended to choose a higher SKU for your flexible server to perform faster migrations. Azure Database for PostgreSQL - Flexible Server supports near-zero downtime compute and IOPS scaling, so the SKU can be updated with minimal downtime. You can always change the SKU to match the application needs post-migration.
 
 ## Limitations in migrating from Azure Database for PostgreSQL - Single Server
 
