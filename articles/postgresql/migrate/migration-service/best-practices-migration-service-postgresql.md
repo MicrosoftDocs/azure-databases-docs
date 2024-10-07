@@ -79,11 +79,8 @@ The following table shows the time it takes to perform migrations for databases 
 
 The preceding numbers give you an approximation of the time taken to complete the migration. We strongly recommend running a test migration with your workload to get a precise value for migrating your server.
 
-> [!IMPORTANT]  
-> Choose a higher SKU for your flexible server to perform faster migrations. Azure Database for PostgreSQL - Flexible Server supports near-zero downtime compute and IOPS scaling, so the SKU can be updated with minimal downtime. You can always change the SKU to match the application needs post-migration.
-
-> [!NOTE]
-> Migration into Burstable SKU is supported only in West Europe region currently. In all other regions, the Databases can first be migrated into a General Purpose or Memory Optimized SKU and then scaled down if needed.
+  > [!IMPORTANT]
+  > Though the Burstable SKU is not a limitation, it is recommended to choose a higher SKU for your flexible server to perform faster migrations. Azure Database for PostgreSQL - Flexible Server supports near-zero downtime compute and IOPS scaling, so the SKU can be updated with minimal downtime. You can always change the SKU to match the application needs post-migration.
 
 ### Improve migration speed: Parallel migration of tables
 
