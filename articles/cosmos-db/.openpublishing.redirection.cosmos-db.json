@@ -5924,6 +5924,11 @@
       "source_path_from_root": "/articles/cosmos-db/nosql/tutorial-dotnet-web-app.md",
       "redirect_url": "/azure/cosmos-db/nosql/tutorial-dotnet-console-app",
       "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/attachments.md",
+      "redirect_url": "/previous-versions/azure/cosmos-db/attachments.md",
+      "redirect_document_id": false
     }
   ]
 }
