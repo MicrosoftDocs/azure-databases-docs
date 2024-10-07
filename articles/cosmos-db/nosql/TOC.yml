@@ -541,6 +541,8 @@
           href: how-to-python-create-container.md
     - name: Designing resilient applications
       href: conceptual-resilient-sdk-applications.md
+    - name: Designing multitenant applications
+      href: multitenancy.md
     - name: Connectivity modes
       href: sdk-connection-modes.md
   - name: Operations on containers and items
@@ -671,9 +673,9 @@
         href: migrate-dotnet-v2.md
     - name: Set up CI/CD with Azure Pipelines
       href: ../tutorial-setup-ci-cd.md
-    - name: Azure Cosmos DB Explorer
+    - name: Azure Cosmos DB Data Explorer
       items:
-      - name: Use explorer
+      - name: Use Data Explorer
         href: ../data-explorer.md
       - name: Manage multiple items
         href: ../how-to-data-explorer-manage-items.md
