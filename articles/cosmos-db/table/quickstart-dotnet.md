@@ -7,7 +7,7 @@ ms.service: azure-cosmos-db
 ms.subservice: table
 ms.devlang: csharp
 ms.topic: quickstart
-ms.date: 08/22/2022
+ms.date: 10/07/2024
 ms.custom: devx-track-csharp, ignite-2022, devguide-csharp, cosmos-db-dev-journey, devx-track-dotnet, devx-track-extended-azdevcli
 zone_pivot_groups: azure-cosmos-db-quickstart-env
 ---
@@ -33,7 +33,7 @@ This quickstart shows how to get started with the Azure Cosmos DB for Table from
 
 ## Prerequisites
 
-[!INCLUDE[Developer Quickstart prerequisites](includes/dev-prereqs.md)]
+[!INCLUDE[Developer Quickstart prerequisites](includes/quickstart/dev-prereqs.md)]
 
 ## Setting up
 
@@ -51,7 +51,7 @@ Deploy this project's development container to your environment. Then, use the A
 
 ::: zone-end
 
-[!INCLUDE[Developer Quickstart setup](includes/dev-setup.md)]
+[!INCLUDE[Developer Quickstart setup](includes/quickstart/dev-setup.md)]
 
 ### Install the client library
 
@@ -99,7 +99,7 @@ From the project directory, open the *Program.cs* file. In your editor, add a us
 
 :::code language="csharp" source="~/azure-cosmos-tableapi-dotnet/001-quickstart/Program.cs" id="using_directives":::
 
-Define a new instance of the ``TableServiceClient`` class using the constructor, and [``Environment.GetEnvironmentVariable``](/dotnet/api/system.environment.getenvironmentvariables) to read the connection string you set earlier.
+Define a new instance of the ``TableServiceClient`` class using the constructor, and [``Environment.GetEnvironmentVariable``](/dotnet/api/system.environment.getenvironmentvariables) to read the credentials.
 
 :::code language="csharp" source="~/azure-cosmos-tableapi-dotnet/001-quickstart/Program.cs"  id="client_credentials":::
 
