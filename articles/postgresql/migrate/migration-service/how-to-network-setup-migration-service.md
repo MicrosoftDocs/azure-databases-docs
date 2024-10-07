@@ -204,6 +204,8 @@ This section describes the essential networking steps to migrate from a single s
 
      :::image type="content" source="media/how-to-network-setup-migration-service/source-dns-zone.png" alt-text="Screenshot of a private DNS zone of that includes the source server and the target server." lightbox="media/how-to-network-setup-migration-service/source-dns-zone.png":::
 
+Alternatively, when a custom DNS server or custom DNS namespaces are in use, you can use the custom FQDN/IP field instead of linking a private DNS zone. This setup allows you to directly resolve FQDNs or IPs without requiring private DNS zone integration.
+
 ## PostgreSQL source (private IP) to flexible server (private endpoint)
 
 This section describes the networking steps to migrate a PostgreSQL database from a cloud-based PostgreSQL service, an on-premises setup, or a VM, all with private IP addresses, to an instance of Azure Database for PostgreSQL - Flexible Server that is secured with a private endpoint. The migration ensures secure data transfer within a private network space by using an Azure VPN or ExpressRoute for on-premises connections and virtual network peering or a VPN for cloud-to-cloud migrations. For more information, see [Migration runtime server](concepts-migration-service-runtime-server.md).
@@ -211,7 +213,7 @@ This section describes the networking steps to migrate a PostgreSQL database fro
 - Establish network connectivity:
 
   1. For on-premises sources, set up a site-to-site VPN or set up ExpressRoute to connect your local network to Azure's virtual network.
-  1. For an Azure VM or an Amazon instance, ensure that virtual network peering, a VPN gateway, or an instance of ExpressRoute is in place for secure connectivity to Azure's virtual network.
+  1. For an Azure VM or an Amazon instance or a Google Compute Engine, ensure that virtual network peering, a VPN gateway, or an instance of ExpressRoute is in place for secure connectivity to Azure's virtual network.
 
 - Gather VNet details for the migration runtime server:
 
@@ -229,6 +231,8 @@ This section describes the networking steps to migrate a PostgreSQL database fro
   1. Ensure that both the VNets for the source and the target flexible server are linked to the private DNS zone of the migration runtime server.
   1. Attach a private DNS zone to the flexible server's private endpoint if it's not already configured.
   1. Add virtual network links for the flexible server and for the migration runtime server to the private DNS zone.
+
+Alternatively, when a custom DNS server or custom DNS namespaces are in use, you can use the custom FQDN/IP field instead of linking a private DNS zone. This setup allows you to directly resolve FQDNs or IPs without requiring private DNS zone integration.
 
 ## Related content
 

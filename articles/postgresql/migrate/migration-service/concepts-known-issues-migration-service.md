@@ -35,15 +35,14 @@ The following list describes common limitations that apply to migration scenario
 - The migration service doesn't support superuser permissions and objects.
 - Azure Database for PostgreSQL - Flexible Server doesn't support the creation of custom tablespaces due to restrictions on superuser permissions. During migration, data from custom tablespaces in the source PostgreSQL instance is migrated to the default tablespaces of the target instance of Azure Database for PostgreSQL - Flexible Server.
 - The following PostgreSQL objects can't be migrated to a Flexible Server target:
-
   - Create casts
   - Creation of full-text search (FTS) parsers and FTS templates
   - Users that have superuser roles
   - Create TYPE
-
 - The migration service doesn't support migration at the object level. That is, you can't migrate a table or a schema.
-- Currently, migrating to the Burstable SKU is supported only in the West Europe region. In all other Azure regions, you can migrate databases first to a General Purpose SKU or to a Memory Optimized SKU, and then scale down if needed.
-- The migration runtime server is designed to operate with default DNS servers or private DNS zones, for example, with `privatelink.postgres.database.azure.com`. Custom DNS names and custom DNS servers aren't supported by the migration service when you use the migration runtime server feature. When you configure private endpoints for both the source database and the target database, it's imperative that you use the default private DNS zone that's provided by Azure for the Azure Private Link service. Using a custom DNS configuration isn't currently supported and might lead to connectivity issues during the migration process.
+
+  > [!IMPORTANT]
+  > Though the Burstable SKU is not a limitation, it is recommended to choose a higher SKU for your flexible server to perform faster migrations. Azure Database for PostgreSQL - Flexible Server supports near-zero downtime compute and IOPS scaling, so the SKU can be updated with minimal downtime. You can always change the SKU to match the application needs post-migration.
 
 ## Limitations in migrating from Azure Database for PostgreSQL - Single Server
 
