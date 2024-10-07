@@ -334,7 +334,7 @@ Now, assign the newly defined role to an identity so that your applications can 
     ```azurecli-interactive
     az cosmosdb show \
         --resource-group "<name-of-existing-resource-group>" \
-        --name "<name-of-existing-resource-group>" \
+        --name "<name-of-existing-nosql-account>" \
         --query "{id:id}"
     ```
 
