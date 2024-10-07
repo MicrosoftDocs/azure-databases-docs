@@ -71,66 +71,23 @@ import com.azure.data.tables.models.TableTransactionAction;
 import com.azure.data.tables.models.TableTransactionActionType;
 ```
 
-## Add your connection string
-
-You can either connect to the Azure storage account or the Azure Cosmos DB for Table account. Get the connection string based on the type of account you are using.
-
-### Add an Azure Storage connection string
-
-An Azure Tables client can use a storage connection string to store endpoints and credentials for accessing data management services. When running in a client app, you must provide the Storage connection string in the following format, using the name of your Storage account and the Primary access key for the Storage account listed in the [Azure portal](https://portal.azure.com) for the **AccountName** and **AccountKey** values.
-
-This example shows how you can declare a static field to hold the connection string:
-
-```java
-// Define the connection-string with your values.
-public final String connectionString =
-    "DefaultEndpointsProtocol=http;" +
-    "AccountName=your_storage_account;" +
-    "AccountKey=your_storage_account_key;" +
-    "EndpointSuffix=core.windows.net";
-```
-
-### Add an Azure Cosmos DB for Table connection string
-
-An Azure Cosmos DB account uses a connection string to store the table endpoint and your credentials. When running in a client app, you must provide the Azure Cosmos DB connection string in the following format, using the name of your Azure Cosmos DB account and the primary access key for the account listed in the [Azure portal](https://portal.azure.com) for the **AccountName** and **AccountKey** values.
-
-This example shows how you can declare a static field to hold the Azure Cosmos DB connection string:
-
-```java
-public final String connectionString =
-    "DefaultEndpointsProtocol=https;" + 
-    "AccountName=your_cosmosdb_account;" + 
-    "AccountKey=your_account_key;" + 
-    "TableEndpoint=https://your_endpoint;";
-```
-
-In an app running within a role in Azure, you can store this string in the service configuration file, *ServiceConfiguration.cscfg*. You can access it with a call to the `System.getenv` method. Here's an example of getting the connection string from a **Setting** element named *ConnectionString* in the service configuration file:
-
-```java
-// Retrieve storage account from connection-string.
-String connectionString = System.getenv("ConnectionString");
-```
-
-You can also store your connection string in your project's config.properties file:
-
-```java
-connectionString = DefaultEndpointsProtocol=https;AccountName=your_account;AccountKey=your_account_key;TableEndpoint=https://your_table_endpoint/
-```
-
-The following samples assume that you have used one of these methods to get the storage connection string.
-
 ## Create a table
 
-A `TableServiceClient` object allows you to interact with the Tables service in order to create, list, and delete tables. The following code creates a `TableServiceClient` object and uses it to create a new `TableClient` object, which represents a table named `Employees`.
+A `TableServiceClient` object allows you to interact with the Tables service in order to create, list, and delete tables. The following code creates a `TableServiceClient` object and uses it to create a new `TableClient` object, which represents a table named `Employees`. The `TableServiceClient` object is created using a credential of type `TokenCredential`. The `DefaultAzureCredential` class creates a chained token credential that works for most applications that use the Azure SDK by trying multiple types of credentials. For more information, see [`DefaultAzureCredential`](/javascript/api/@azure/identity/defaultazurecredential).
 
 ```java
 try
 {
     final String tableName = "Employees";
 
-    // Create a TableServiceClient with a connection string.
+    // Create a chained token credential
+    TokenCredential credential = new DefaultAzureCredentialBuilder()
+      .build();
+
+    // Create a TableServiceClient with the token credential.
     TableServiceClient tableServiceClient = new TableServiceClientBuilder()
-        .connectionString(connectionString)
+        .endpoint("<endpoint>")
+        .credential(credential)
         .buildClient();
 
     // Create the table if it not exists.
@@ -151,9 +108,14 @@ To get a list of tables, call the `TableServiceClient.listTables` method to retr
 ```java
 try
 {
-    // Create a TableServiceClient with a connection string.
+    // Create a chained token credential
+    TokenCredential credential = new DefaultAzureCredentialBuilder()
+      .build();
+
+    // Create a TableServiceClient with the token credential.
     TableServiceClient tableServiceClient = new TableServiceClientBuilder()
-        .connectionString(connectionString)
+        .endpoint("<endpoint>")
+        .credential(credential)
         .buildClient();
 
     // Loop through a collection of table names.
@@ -177,9 +139,14 @@ try
 {
     final String tableName = "Employees";
 
-    // Create a TableClient with a connection string and a table name.
-     TableClient tableClient = new TableClientBuilder()
-        .connectionString(connectionString)
+    // Create a chained token credential
+    TokenCredential credential = new DefaultAzureCredentialBuilder()
+      .build();
+
+    // Create a TableServiceClient with the token credential.
+    TableServiceClient tableServiceClient = new TableServiceClientBuilder()
+        .endpoint("<endpoint>")
+        .credential(credential)
         .tableName(tableName)
         .buildClient();
 
@@ -212,9 +179,14 @@ try
 {
     final String tableName = "Employees";
 
-    // Create a TableClient with a connection string and a table name.
-    TableClient tableClient = new TableClientBuilder()
-        .connectionString(connectionString)
+    // Create a chained token credential
+    TokenCredential credential = new DefaultAzureCredentialBuilder()
+      .build();
+
+    // Create a TableServiceClient with the token credential.
+    TableServiceClient tableServiceClient = new TableServiceClientBuilder()
+        .endpoint("<endpoint>")
+        .credential(credential)
         .tableName(tableName)
         .buildClient();
 
@@ -288,9 +260,14 @@ try
     final String PARTITION_KEY = "PartitionKey";
     final String tableName = "Employees";
 
-    // Create a TableClient with a connection string and a table name.
-    TableClient tableClient = new TableClientBuilder()
-        .connectionString(connectionString)
+    // Create a chained token credential
+    TokenCredential credential = new DefaultAzureCredentialBuilder()
+      .build();
+
+    // Create a TableServiceClient with the token credential.
+    TableServiceClient tableServiceClient = new TableServiceClientBuilder()
+        .endpoint("<endpoint>")
+        .credential(credential)
         .tableName(tableName)
         .buildClient();
 
@@ -326,10 +303,14 @@ try
     final String ROW_KEY = "RowKey";
     final String tableName = "Employees";
 
-    // Create a TableServiceClient with a connection string.
-    // Create a TableClient with a connection string and a table name.
-    TableClient tableClient = new TableClientBuilder()
-        .connectionString(connectionString)
+    // Create a chained token credential
+    TokenCredential credential = new DefaultAzureCredentialBuilder()
+      .build();
+
+    // Create a TableServiceClient with the token credential.
+    TableServiceClient tableServiceClient = new TableServiceClientBuilder()
+        .endpoint("<endpoint>")
+        .credential(credential)
         .tableName(tableName)
         .buildClient();
 
@@ -362,9 +343,14 @@ try
 {
     final String tableName = "Employees";
 
-    // Create a TableClient with a connection string and a table name.
-    TableClient tableClient = new TableClientBuilder()
-        .connectionString(connectionString)
+    // Create a chained token credential
+    TokenCredential credential = new DefaultAzureCredentialBuilder()
+      .build();
+
+    // Create a TableServiceClient with the token credential.
+    TableServiceClient tableServiceClient = new TableServiceClientBuilder()
+        .endpoint("<endpoint>")
+        .credential(credential)
         .tableName(tableName)
         .buildClient();
 
@@ -398,9 +384,14 @@ try
 {
     final String tableName = "Employees";
 
-    // Create a TableClient with a connection string and a table name.
-    TableClient tableClient = new TableClientBuilder()
-        .connectionString(connectionString)
+    // Create a chained token credential
+    TokenCredential credential = new DefaultAzureCredentialBuilder()
+      .build();
+
+    // Create a TableServiceClient with the token credential.
+    TableServiceClient tableServiceClient = new TableServiceClientBuilder()
+        .endpoint("<endpoint>")
+        .credential(credential)
         .tableName(tableName)
         .buildClient();
 
@@ -429,9 +420,14 @@ try
 {
     final String tableName = "Employees";
 
-    // Create a TableClient with a connection string and a table name.
-    TableClient tableClient = new TableClientBuilder()
-        .connectionString(connectionString)
+    // Create a chained token credential
+    TokenCredential credential = new DefaultAzureCredentialBuilder()
+      .build();
+
+    // Create a TableServiceClient with the token credential.
+    TableServiceClient tableServiceClient = new TableServiceClientBuilder()
+        .endpoint("<endpoint>")
+        .credential(credential)
         .tableName(tableName)
         .buildClient();
 
@@ -462,9 +458,14 @@ try
 {
     final String tableName = "Employees";
 
-    // Create a TableClient with a connection string and a table name.
-    TableClient tableClient = new TableClientBuilder()
-        .connectionString(connectionString)
+    // Create a chained token credential
+    TokenCredential credential = new DefaultAzureCredentialBuilder()
+      .build();
+
+    // Create a TableServiceClient with the token credential.
+    TableServiceClient tableServiceClient = new TableServiceClientBuilder()
+        .endpoint("<endpoint>")
+        .credential(credential)
         .tableName(tableName)
         .buildClient();
 
@@ -497,9 +498,14 @@ try
 {
     final String tableName = "Employees";
 
-    // Create a TableClient with a connection string and a table name.
-    TableClient tableClient = new TableClientBuilder()
-        .connectionString(connectionString)
+    // Create a chained token credential
+    TokenCredential credential = new DefaultAzureCredentialBuilder()
+      .build();
+
+    // Create a TableServiceClient with the token credential.
+    TableServiceClient tableServiceClient = new TableServiceClientBuilder()
+        .endpoint("<endpoint>")
+        .credential(credential)
         .tableName(tableName)
         .buildClient();
 
@@ -522,9 +528,14 @@ try
 {
     final String tableName = "Employees";
 
-    // Create a TableClient with a connection string and a table name.
-    TableClient tableClient = new TableClientBuilder()
-        .connectionString(connectionString)
+    // Create a chained token credential
+    TokenCredential credential = new DefaultAzureCredentialBuilder()
+      .build();
+
+    // Create a TableServiceClient with the token credential.
+    TableServiceClient tableServiceClient = new TableServiceClientBuilder()
+        .endpoint("<endpoint>")
+        .credential(credential)
         .tableName(tableName)
         .buildClient();
 

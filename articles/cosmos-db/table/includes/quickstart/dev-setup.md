@@ -57,4 +57,4 @@ zone_pivot_groups: azure-cosmos-db-quickstart-env
 
 1. Use the URL in the console to navigate to your web application in the browser. Observe the output of the running app.
 
-    :::image type="content" source="../media/cosmos-table-app.png" alt-text="Screenshot of the running web application.":::
+    :::image type="content" source="../media/quickstart/dev-web-application.png" alt-text="Screenshot of the running web application.":::

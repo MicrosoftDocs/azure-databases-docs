@@ -16,15 +16,15 @@ ms.topic: quickstart
 
 [!INCLUDE [logic-apps-sku-consumption](~/reusable-content/ce-skilling/azure/includes/logic-apps-sku-consumption.md)]
 
-This quickstart shows how to create an automated workflow using Azure Logic Apps with Azure Database for MySQL flexible server Connector (Preview). 
+This quickstart shows how to create an automated workflow using Azure Logic Apps with Azure Database for MySQL Flexible Server Connector (Preview). 
 
 ## Prerequisites
 
 * An Azure account and subscription. If you don't have a subscription, [sign up for a free Azure account](https://azure.microsoft.com/free).
 
-- Create an Azure Database for MySQL flexible server instance using [Azure portal](./quickstart-create-server-portal.md) <br/> or [Azure CLI](./quickstart-create-server-cli.md) if you don't have one.
+- Create an Azure Database for MySQL Flexible Server instance using [Azure portal](./quickstart-create-server-portal.md) <br/> or [Azure CLI](./quickstart-create-server-cli.md) if you don't have one.
 - Get the [inbound](/azure/logic-apps/logic-apps-limits-and-config#inbound) and [outbound](/azure/logic-apps/logic-apps-limits-and-config#outbound) IP addresses used by the Logic Apps service in the Azure region where you create your logic app workflow.
-- Configure networking settings of Azure Database for MySQL flexible server to make sure your logic Apps IP address have access to it. If you're using Azure App Service or Azure Kubernetes service, enable **Allow public access from any Azure service within Azure to this server** setting in the Azure portal.
+- Configure networking settings of Azure Database for MySQL Flexible Server to make sure your logic Apps IP address have access to it. If you're using Azure App Service or Azure Kubernetes service, enable **Allow public access from any Azure service within Azure to this server** setting in the Azure portal.
 -  Populate the database server with a new database `orderdb` and a table `orders` using the SQL script.
 
 ```sql
@@ -67,7 +67,7 @@ CREATE TABLE `orders` (
 8. On the validation page that appears, confirm all the information that you provided, and select **Create**.
      
 ## Select HTTP request trigger template 
-Follow this section to create a new logic app starting with a **When an HTTP Request is received** trigger to perform a data operation on the Azure Database for MySQL flexible server database.
+Follow this section to create a new logic app starting with a **When an HTTP Request is received** trigger to perform a data operation on the Azure Database for MySQL Flexible Server database.
 
 1. After Azure successfully deploys your app, select **Go to resource**. Or, find and select your logic app resource by typing the name in the Azure search box.
     
@@ -95,8 +95,8 @@ Follow this section to create a new logic app starting with a **When an HTTP Req
     
    :::image type="content" source="./media/tutorial-logic-apps-with-mysql/https-request-body-payload-generated.png" alt-text="Screenshot showing sample payload is generated.":::
     
-## Add am Azure Database for MySQL flexible server database action
-You can add an action as the next step after the HTTP request trigger to run subsequent operations in your workflow. You can add an action to get, insert or update or delete data in the Azure Database for MySQL flexible server database. For this tutorial we will insert a new row into the `orders` table.
+## Add am Azure Database for MySQL Flexible Server database action
+You can add an action as the next step after the HTTP request trigger to run subsequent operations in your workflow. You can add an action to get, insert or update or delete data in the Azure Database for MySQL Flexible Server database. For this tutorial we will insert a new row into the `orders` table.
 
 1. Add a **New Step** in the workflow
 
@@ -104,17 +104,17 @@ You can add an action as the next step after the HTTP request trigger to run sub
     
    :::image type="content" source="./media/tutorial-logic-apps-with-mysql/search-for-azure-db-for-mysql.png" alt-text="Screenshot searching for azure database for mysql.":::
 
-3. View all the actions for Azure Database for MySQL flexible server connector. 
+3. View all the actions for Azure Database for MySQL Flexible Server connector. 
     
-   :::image type="content" source="./media/tutorial-logic-apps-with-mysql/azure-db-for-mysql-connector-actions.png" alt-text="Screenshot Azure Database for MySQL flexible server action listed.":::
+   :::image type="content" source="./media/tutorial-logic-apps-with-mysql/azure-db-for-mysql-connector-actions.png" alt-text="Screenshot Azure Database for MySQL Flexible Server action listed.":::
 
 4. Select the **Insert Row** action. Select **Change connection** to add a new connection. 
    
-   :::image type="content" source="./media/tutorial-logic-apps-with-mysql/insert-row-action-mysql-database.png" alt-text="Screenshot Insert row action for Azure Database for MySQL flexible server.":::
+   :::image type="content" source="./media/tutorial-logic-apps-with-mysql/insert-row-action-mysql-database.png" alt-text="Screenshot Insert row action for Azure Database for MySQL Flexible Server.":::
     
-5. Add a new connection to the existing Azure Database for MySQL flexible server database. 
+5. Add a new connection to the existing Azure Database for MySQL Flexible Server database. 
      
-   :::image type="content" source="./media/tutorial-logic-apps-with-mysql/azure-mysql-database-add-connection.png" alt-text="Screenshot add new connection for Azure Database for MySQL flexible server.":::
+   :::image type="content" source="./media/tutorial-logic-apps-with-mysql/azure-mysql-database-add-connection.png" alt-text="Screenshot add new connection for Azure Database for MySQL Flexible Server.":::
    
 ## Run your workflow
 Select **Run Trigger** to execute the workflow and test if it actually inserts the row into the table. You can use any MySQL client to check if the row was inserted into the table. 

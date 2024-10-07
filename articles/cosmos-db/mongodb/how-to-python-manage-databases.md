@@ -1,8 +1,8 @@
 ---
 title: Manage a MongoDB database using Python
 description: Learn how to manage your Azure Cosmos DB resource when it provides the API for MongoDB with a Python SDK.
-author: diberry
-ms.author: diberry
+author: seesharprun
+ms.author: sidandrews
 ms.service: azure-cosmos-db
 ms.subservice: mongodb
 ms.devlang: python
