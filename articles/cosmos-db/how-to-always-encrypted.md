@@ -350,5 +350,4 @@ If you have flexibility in the way new encrypted properties can be added from a 
 
 ## Next steps
 
-- Get an overview of [secure access to data in Azure Cosmos DB](secure-access-to-data.md).
 - Learn more about [customer-managed keys for encryption-at-rest](how-to-setup-cmk.md)
