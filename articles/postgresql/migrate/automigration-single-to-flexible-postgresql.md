@@ -36,7 +36,7 @@ The automigration provides a highly resilient and self-healing offline migration
 > [!NOTE]
 > The Automigration service selects Single server to migrate based on the following criteria:
 > - The server runs PostgreSQL version 11
-> - Servers with no complex feature such as CMK, Microsoft Entra ID, Read Replica, VNet rules and Private end-point
+> - Servers with no complex feature such as CMK, Microsoft Entra ID, Read Replica and Private end-point
 > - Size of data <= 10 GB
 > - Public access is enabled
 
