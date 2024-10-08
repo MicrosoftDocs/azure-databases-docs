@@ -267,7 +267,7 @@ ms.topic: include
 | Attribute      | Value                                                      |
 |----------------|------------------------------------------------------------|
 | Category       | Customized Options |
-| Description    | Sepcifies the flag indicating if mirroring is enabled on server.                                                                                                                            |
+| Description    | Specifies the flag indicating if mirroring is enabled on server.                                                                                                                            |
 | Data type      | boolean     |
 | Default value  | `off`               |
 | Allowed values | `off`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
@@ -326,7 +326,7 @@ ms.topic: include
 | Documentation  | [azure_storage.blob_block_size_mb](/rest/api/storageservices/put-block?tabs=azure-ad#remarks)                      |
 
 
-[!INCLUDE [server-parameters-azure-notes-azure_storage_blob_block_size_mb](./server-parameters-azure-notes-azure_storage_blob_block_size_mb.md)]
+[!INCLUDE [server-parameters-azure-notes-azure-storage-blob-block-size-mb](./server-parameters-azure-notes-azure-storage-blob-block-size-mb.md)]
 
 
 

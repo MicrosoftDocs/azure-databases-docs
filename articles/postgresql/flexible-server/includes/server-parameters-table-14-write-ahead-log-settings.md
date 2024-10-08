@@ -105,7 +105,7 @@ ms.topic: include
 | Documentation  | [wal_buffers](https://www.postgresql.org/docs/14/runtime-config-wal.html#GUC-WAL-BUFFERS)                       |
 
 
-[!INCLUDE [server-parameters-azure-notes-wal_buffers](./server-parameters-azure-notes-wal_buffers.md)]
+[!INCLUDE [server-parameters-azure-notes-wal-buffers](./server-parameters-azure-notes-wal-buffers.md)]
 
 
 

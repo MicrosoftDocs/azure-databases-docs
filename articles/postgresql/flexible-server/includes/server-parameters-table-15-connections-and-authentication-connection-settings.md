@@ -71,7 +71,7 @@ ms.topic: include
 | Documentation  | [max_connections](https://www.postgresql.org/docs/15/runtime-config-connection.html#GUC-MAX-CONNECTIONS)                               |
 
 
-[!INCLUDE [server-parameters-azure-notes-max_connections](./server-parameters-azure-notes-max_connections.md)]
+[!INCLUDE [server-parameters-azure-notes-max-connections](./server-parameters-azure-notes-max-connections.md)]
 
 
 

@@ -71,7 +71,7 @@ ms.topic: include
 | Documentation  | [effective_cache_size](https://www.postgresql.org/docs/13/runtime-config-query.html#GUC-EFFECTIVE-CACHE-SIZE)                 |
 
 
-[!INCLUDE [server-parameters-azure-notes-effective_cache_size](./server-parameters-azure-notes-effective_cache_size.md)]
+[!INCLUDE [server-parameters-azure-notes-effective-cache-size](./server-parameters-azure-notes-effective-cache-size.md)]
 
 
 
