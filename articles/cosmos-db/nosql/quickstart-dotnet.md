@@ -113,13 +113,13 @@ The client library is available through NuGet, as the `Microsoft.Azure.Cosmos` p
 1. If not already installed, install the `Microsoft.Azure.Cosmos` package using `dotnet add package`.
 
     ```bash
-    dotnet add package Microsoft.Azure.Cosmos
+    dotnet add package Microsoft.Azure.Cosmos --version 3.*
     ```
 
 1. Also, install the `Azure.Identity` package if not already installed.
 
     ```bash
-    dotnet add package Azure.Identity
+    dotnet add package Azure.Identity --version 1.*
     ```
 
 1. Open and review the **src/web/Cosmos.Samples.NoSQL.Quickstart.Web.csproj** file to validate that the `Microsoft.Azure.Cosmos` and `Azure.Identity` entries both exist.
@@ -156,13 +156,13 @@ This sample creates a new instance of the `CosmosClient` class and authenticates
 
 Use `client.GetDatabase` to retrieve the existing database named *`cosmicworks`*.
 
-:::code language="csharp" source="~/cosmos-db-nosql-dotnet-quickstart/src/web/Services/CosmosDbService.cs" id="get_database":::
+:::code language="csharp" source="~/cosmos-db-nosql-dotnet-quickstart/src/web/Services/DemoService.cs" id="get_database":::
 
 ### Get a container
 
 Retrieve the existing *`products`* container using `database.GetContainer`.
 
-:::code language="csharp" source="~/cosmos-db-nosql-dotnet-quickstart/src/web/Services/CosmosDbService.cs" id="get_container":::
+:::code language="csharp" source="~/cosmos-db-nosql-dotnet-quickstart/src/web/Services/DemoService.cs" id="get_container":::
 
 ### Create an item
 
@@ -172,13 +172,13 @@ Build a C# record type with all of the members you want to serialize into JSON. 
 
 Create an item in the container using `container.UpsertItem`. This method "upserts" the item effectively replacing the item if it already exists.
 
-:::code language="csharp" source="~/cosmos-db-nosql-dotnet-quickstart/src/web/Services/CosmosDbService.cs" id="create_item" highlight="10":::
+:::code language="csharp" source="~/cosmos-db-nosql-dotnet-quickstart/src/web/Services/DemoService.cs" id="create_item" highlight="10":::
 
 ### Read an item
 
 Perform a point read operation by using both the unique identifier (`id`) and partition key fields. Use `container.ReadItem` to efficiently retrieve the specific item.
 
-:::code language="csharp" source="~/cosmos-db-nosql-dotnet-quickstart/src/web/Services/CosmosDbService.cs" id="read_item" highlight="1":::
+:::code language="csharp" source="~/cosmos-db-nosql-dotnet-quickstart/src/web/Services/DemoService.cs" id="read_item" highlight="1":::
 
 ### Query items
 
@@ -188,11 +188,11 @@ Perform a query over multiple items in a container using `container.GetItemQuery
 SELECT * FROM products p WHERE p.category = @category
 ```
 
-:::code language="csharp" source="~/cosmos-db-nosql-dotnet-quickstart/src/web/Services/CosmosDbService.cs" id="query_items" highlight="6":::
+:::code language="csharp" source="~/cosmos-db-nosql-dotnet-quickstart/src/web/Services/DemoService.cs" id="query_items" highlight="6":::
 
 Parse the paginated results of the query by looping through each page of results using `feed.ReadNextAsync`. Use `feed.HasMoreResults` to determine if there are any results left at the start of each loop.
 
-:::code language="csharp" source="~/cosmos-db-nosql-dotnet-quickstart/src/web/Services/CosmosDbService.cs" id="parse_results" highlight="3,5":::
+:::code language="csharp" source="~/cosmos-db-nosql-dotnet-quickstart/src/web/Services/DemoService.cs" id="parse_results" highlight="3,5":::
 
 ## Clean up resources
 
@@ -201,8 +201,8 @@ Parse the paginated results of the query by looping through each page of results
 ## Related content
 
 - [Node.js Quickstart](quickstart-nodejs.md)
-- [Java Quickstart](quickstart-java.md)
 - [Python Quickstart](quickstart-python.md)
+- [Java Quickstart](quickstart-java.md)
 - [Go Quickstart](quickstart-go.md)
 
 ## Next step
