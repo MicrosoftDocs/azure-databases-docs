@@ -209,8 +209,6 @@
       href: ../unique-keys.md
     - name: Transactions and optimistic concurrency control
       href: database-transactions-optimistic-concurrency.md
-    - name: Attachments
-      href: ../attachments.md
   - name: Global distribution
     items:
     - name: Global distribution overview
