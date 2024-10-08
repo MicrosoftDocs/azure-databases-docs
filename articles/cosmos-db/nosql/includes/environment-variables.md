@@ -1,14 +1,7 @@
 ---
-title: include file
-description: include file
-services: cosmos-db
-author: seesharprun
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.topic: include
-ms.date: 09/22/2022
-ms.author: sidandrews
-ms.reviewer: mjbrown
-ms.custom: include file
+ms.date: 08/23/2024
 ---
 
 To use the **URI** and **PRIMARY KEY** values within your code, persist them to new environment variables on the local machine running the application. To set the environment variable, use your preferred terminal to run the following commands:

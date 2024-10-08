@@ -1,13 +1,7 @@
 ---
-title: "include file"
-description: "include file"
-services: cosmos-db
-author: MarkMcGeeAtAquent
-ms.service: cosmos-db
-ms.topic: "include"
-ms.date: 04/06/2018
-ms.author: mimig
-ms.custom: "include file"
+ms.service: azure-cosmos-db
+ms.topic: include
+ms.date: 08/23/2024
 ---
 The easiest way to create an Azure storage account is by using the [Azure portal](https://portal.azure.com). To learn more, see [Create a storage account](/azure/storage/common/storage-account-create).
 

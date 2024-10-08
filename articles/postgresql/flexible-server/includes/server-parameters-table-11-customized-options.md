@@ -1,8 +1,8 @@
 ---
-author: akashraokm
-ms.author: akashrao
+author: nachoalonsoportillo
+ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 08/19/2024
+ms.date: 09/26/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
@@ -150,7 +150,7 @@ ms.topic: include
 | Category       | Customized Options |
 | Description    | Fraction of queries to process.                                                                                                                                                             |
 | Data type      | numeric     |
-| Default value  | `1`            |
+| Default value  | `1.0`          |
 | Allowed values | `0.0-1.0`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
 | Parameter type | dynamic        |
 | Documentation  | [auto_explain.sample_rate](https://www.postgresql.org/docs/11/auto-explain.html#id-1.11.7.13.5.3.9.1.3)           |
@@ -432,204 +432,119 @@ ms.topic: include
 
 
 
-### index_tuning.analysis_interval
+### intelligent_tuning
 
 | Attribute      | Value                                                      |
 |----------------|------------------------------------------------------------|
 | Category       | Customized Options |
-| Description    | Sets the frequency at which each index optimization session is triggered when index_tuning.mode is set to 'REPORT'.                                                                         |
-| Data type      | integer     |
-| Default value  | `720`          |
-| Allowed values | `60-10080`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
-| Parameter type | dynamic        |
-| Documentation  | [index_tuning.analysis_interval](https://go.microsoft.com/fwlink/?linkid=2274149)                                 |
-
-
-[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
-
-### index_tuning.max_columns_per_index
-
-| Attribute      | Value                                                      |
-|----------------|------------------------------------------------------------|
-| Category       | Customized Options |
-| Description    | Maximum number of columns that can be part of the index key for any recommended index.                                                                                                      |
-| Data type      | integer     |
-| Default value  | `2`            |
-| Allowed values | `1-10`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
-| Parameter type | dynamic        |
-| Documentation  | [index_tuning.max_columns_per_index](https://go.microsoft.com/fwlink/?linkid=2274149)                             |
-
-
-[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
-
-### index_tuning.max_index_count
-
-| Attribute      | Value                                                      |
-|----------------|------------------------------------------------------------|
-| Category       | Customized Options |
-| Description    | Maximum number of indexes that can be recommended for each database during one optimization session.                                                                                        |
-| Data type      | integer     |
-| Default value  | `10`           |
-| Allowed values | `1-25`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
-| Parameter type | dynamic        |
-| Documentation  | [index_tuning.max_index_count](https://go.microsoft.com/fwlink/?linkid=2274149)                                   |
-
-
-[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
-
-### index_tuning.max_indexes_per_table
-
-| Attribute      | Value                                                      |
-|----------------|------------------------------------------------------------|
-| Category       | Customized Options |
-| Description    | Maximum number of indexes that can be recommended for each table.                                                                                                                           |
-| Data type      | integer     |
-| Default value  | `10`           |
-| Allowed values | `1-25`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
-| Parameter type | dynamic        |
-| Documentation  | [index_tuning.max_indexes_per_table](https://go.microsoft.com/fwlink/?linkid=2274149)                             |
-
-
-[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
-
-### index_tuning.max_queries_per_database
-
-| Attribute      | Value                                                      |
-|----------------|------------------------------------------------------------|
-| Category       | Customized Options |
-| Description    | Number of slowest queries per database for which indexes can be recommended.                                                                                                                |
-| Data type      | integer     |
-| Default value  | `25`           |
-| Allowed values | `5-100`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-| Parameter type | dynamic        |
-| Documentation  | [index_tuning.max_queries_per_database](https://go.microsoft.com/fwlink/?linkid=2274149)                          |
-
-
-[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
-
-### index_tuning.max_regression_factor
-
-| Attribute      | Value                                                      |
-|----------------|------------------------------------------------------------|
-| Category       | Customized Options |
-| Description    | Acceptable regression introduced by a recommended index on any of the queries analyzed during one optimization session.                                                                     |
-| Data type      | numeric     |
-| Default value  | `0.1`          |
-| Allowed values | `0.05-0.2`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
-| Parameter type | dynamic        |
-| Documentation  | [index_tuning.max_regression_factor](https://go.microsoft.com/fwlink/?linkid=2274149)                             |
-
-
-[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
-
-### index_tuning.max_total_size_factor
-
-| Attribute      | Value                                                      |
-|----------------|------------------------------------------------------------|
-| Category       | Customized Options |
-| Description    | Maximum total size, in percentage of total disk space, that all recommended indexes for any given database can use.                                                                         |
-| Data type      | numeric     |
-| Default value  | `0.1`          |
-| Allowed values | `0-1.0`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-| Parameter type | dynamic        |
-| Documentation  | [index_tuning.max_total_size_factor](https://go.microsoft.com/fwlink/?linkid=2274149)                             |
-
-
-[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
-
-### index_tuning.min_improvement_factor
-
-| Attribute      | Value                                                      |
-|----------------|------------------------------------------------------------|
-| Category       | Customized Options |
-| Description    | Cost improvement that a recommended index must provide to at least one of the queries analyzed during one optimization session.                                                             |
-| Data type      | numeric     |
-| Default value  | `0.2`          |
-| Allowed values | `0-20.0`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
-| Parameter type | dynamic        |
-| Documentation  | [index_tuning.min_improvement_factor](https://go.microsoft.com/fwlink/?linkid=2274149)                            |
-
-
-[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
-
-### index_tuning.mode
-
-| Attribute      | Value                                                      |
-|----------------|------------------------------------------------------------|
-| Category       | Customized Options |
-| Description    | Configures index optimization as disabled ('OFF') or enabled to only emit recommendation. Requires Query Store to be enabled by setting pg_qs.query_capture_mode to 'TOP' or 'ALL'.         |
-| Data type      | enumeration |
+| Description    | Enables intelligent tuning                                                                                                                                                                  |
+| Data type      | boolean     |
 | Default value  | `off`          |
-| Allowed values | `off,report`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| Allowed values | `on,off`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | Parameter type | dynamic        |
-| Documentation  | [index_tuning.mode](https://go.microsoft.com/fwlink/?linkid=2274149)                                              |
+| Documentation  | [intelligent_tuning](https://go.microsoft.com/fwlink/?linkid=2274150)                                             |
 
 
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
 
 
 
-### index_tuning.unused_dml_per_table
+### intelligent_tuning.metric_targets
 
 | Attribute      | Value                                                      |
 |----------------|------------------------------------------------------------|
 | Category       | Customized Options |
-| Description    | Minimum number of daily average DML operations affecting the table, so that their unused indexes are considered for dropping.                                                               |
-| Data type      | integer     |
-| Default value  | `1000`         |
-| Allowed values | `0-9999999`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| Description    | Specifies which metrics will be adjusted by intelligent tuning.                                                                                                                             |
+| Data type      | set         |
+| Default value  | `none`         |
+| Allowed values | `none,Storage-checkpoint_completion_target,Storage-min_wal_size,Storage-max_wal_size,Storage-bgwriter_delay,tuning-autovacuum,all`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | Parameter type | dynamic        |
-| Documentation  | [index_tuning.unused_dml_per_table](https://go.microsoft.com/fwlink/?linkid=2274149)                              |
+| Documentation  | [intelligent_tuning.metric_targets](https://go.microsoft.com/fwlink/?linkid=2274150)                              |
 
 
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
 
 
 
-### index_tuning.unused_min_period
+### logfiles.download_enable
 
 | Attribute      | Value                                                      |
 |----------------|------------------------------------------------------------|
 | Category       | Customized Options |
-| Description    | Minimum number of days the index has not been used, based on system statistics, so that it is considered for dropping.                                                                      |
-| Data type      | integer     |
-| Default value  | `35`           |
-| Allowed values | `30-720`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| Description    | Enables or disables server logs functionality.                                                                                                                                              |
+| Data type      | boolean     |
+| Default value  | `off`          |
+| Allowed values | `on,off`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | Parameter type | dynamic        |
-| Documentation  | [index_tuning.unused_min_period](https://go.microsoft.com/fwlink/?linkid=2274149)                                 |
+| Documentation  | [logfiles.download_enable](https://go.microsoft.com/fwlink/?linkid=2274270)                                       |
 
 
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
 
 
 
-### index_tuning.unused_reads_per_table
+### logfiles.retention_days
 
 | Attribute      | Value                                                      |
 |----------------|------------------------------------------------------------|
 | Category       | Customized Options |
-| Description    | Minimum number of daily average read operations affecting the table, so that their unused indexes are considered for dropping.                                                              |
+| Description    | Sets the retention period window in days for server logs - after this time data will be deleted.                                                                                            |
 | Data type      | integer     |
-| Default value  | `1000`         |
-| Allowed values | `0-9999999`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| Default value  | `3`            |
+| Allowed values | `1-7`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | Parameter type | dynamic        |
-| Documentation  | [index_tuning.unused_reads_per_table](https://go.microsoft.com/fwlink/?linkid=2274149)                            |
+| Documentation  | [logfiles.retention_days](https://go.microsoft.com/fwlink/?linkid=2274270)                                        |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### metrics.autovacuum_diagnostics
+
+| Attribute      | Value                                                      |
+|----------------|------------------------------------------------------------|
+| Category       | Customized Options |
+| Description    | Enables metrics collection for all table statistics within a database                                                                                                                       |
+| Data type      | boolean     |
+| Default value  | `off`          |
+| Allowed values | `on,off`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| Parameter type | dynamic        |
+| Documentation  | [metrics.autovacuum_diagnostics](https://go.microsoft.com/fwlink/?linkid=2274151)                                 |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### metrics.collector_database_activity
+
+| Attribute      | Value                                                      |
+|----------------|------------------------------------------------------------|
+| Category       | Customized Options |
+| Description    | Enables metrics collection for database and activity statistics                                                                                                                             |
+| Data type      | boolean     |
+| Default value  | `off`          |
+| Allowed values | `on,off`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| Parameter type | dynamic        |
+| Documentation  | [metrics.collector_database_activity](https://go.microsoft.com/fwlink/?linkid=2274151)                            |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### metrics.pgbouncer_diagnostics
+
+| Attribute      | Value                                                      |
+|----------------|------------------------------------------------------------|
+| Category       | Customized Options |
+| Description    | Enables metrics collection for PgBouncer.                                                                                                                                                   |
+| Data type      | boolean     |
+| Default value  | `off`          |
+| Allowed values | `on,off`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| Parameter type | dynamic        |
+| Documentation  | [metrics.pgbouncer_diagnostics](https://go.microsoft.com/fwlink/?linkid=2274151)                                  |
 
 
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
@@ -766,6 +681,176 @@ ms.topic: include
 | Allowed values | `[A-Za-z\\._]*`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 | Parameter type | dynamic        |
 | Documentation  | [pgaudit.role](https://github.com/pgaudit/pgaudit/blob/master/README.md)                                          |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### pgbouncer.default_pool_size
+
+| Attribute      | Value                                                      |
+|----------------|------------------------------------------------------------|
+| Category       | Customized Options |
+| Description    | How many server connections to allow per user/database pair.                                                                                                                                |
+| Data type      | integer     |
+| Default value  | `50`           |
+| Allowed values | `1-4950`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| Parameter type | dynamic        |
+| Documentation  | [pgbouncer.default_pool_size](https://www.pgbouncer.org/config.html)                                              |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### pgbouncer.enabled
+
+| Attribute      | Value                                                      |
+|----------------|------------------------------------------------------------|
+| Category       | Customized Options |
+| Description    | Denotes if pgBouncer service is enabled.                                                                                                                                                    |
+| Data type      | boolean     |
+| Default value  | `false`        |
+| Allowed values | `true, false`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| Parameter type | dynamic        |
+| Documentation  | [pgbouncer.enabled](https://www.pgbouncer.org/config.html)                                                        |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### pgbouncer.ignore_startup_parameters
+
+| Attribute      | Value                                                      |
+|----------------|------------------------------------------------------------|
+| Category       | Customized Options |
+| Description    | Comma-separated list of parameters that PgBouncer can ignore because they are going to be handled by the admin.                                                                             |
+| Data type      | string      |
+| Default value  |                |
+| Allowed values | `[A-Za-z0-9_\\.,]*`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| Parameter type | dynamic        |
+| Documentation  | [pgbouncer.ignore_startup_parameters](https://www.pgbouncer.org/config.html)                                      |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### pgbouncer.max_client_conn
+
+| Attribute      | Value                                                      |
+|----------------|------------------------------------------------------------|
+| Category       | Customized Options |
+| Description    | Maximum number of client connections allowed.                                                                                                                                               |
+| Data type      | integer     |
+| Default value  | `5000`         |
+| Allowed values | `1-50000`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| Parameter type | dynamic        |
+| Documentation  | [pgbouncer.max_client_conn](https://www.pgbouncer.org/config.html)                                                |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### pgbouncer.max_prepared_statements
+
+| Attribute      | Value                                                      |
+|----------------|------------------------------------------------------------|
+| Category       | Customized Options |
+| Description    | When this is set to a non-zero value PgBouncer tracks protocol-level named prepared statements related commands sent by the client in transaction and statement pooling mode.               |
+| Data type      | integer     |
+| Default value  | `0`            |
+| Allowed values | `0-5000`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| Parameter type | dynamic        |
+| Documentation  | [pgbouncer.max_prepared_statements](https://www.pgbouncer.org/config.html#max_prepared_statements)                |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### pgbouncer.min_pool_size
+
+| Attribute      | Value                                                      |
+|----------------|------------------------------------------------------------|
+| Category       | Customized Options |
+| Description    | Add more server connections to pool if below this number.                                                                                                                                   |
+| Data type      | integer     |
+| Default value  | `0`            |
+| Allowed values | `0-4950`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| Parameter type | dynamic        |
+| Documentation  | [pgbouncer.min_pool_size](https://www.pgbouncer.org/config.html)                                                  |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### pgbouncer.pool_mode
+
+| Attribute      | Value                                                      |
+|----------------|------------------------------------------------------------|
+| Category       | Customized Options |
+| Description    | Specifies when a server connection can be reused by other clients.                                                                                                                          |
+| Data type      | enumeration |
+| Default value  | `transaction`  |
+| Allowed values | `session,transaction,statement`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| Parameter type | dynamic        |
+| Documentation  | [pgbouncer.pool_mode](https://www.pgbouncer.org/config.html)                                                      |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### pgbouncer.query_wait_timeout
+
+| Attribute      | Value                                                      |
+|----------------|------------------------------------------------------------|
+| Category       | Customized Options |
+| Description    | Maximum time (in seconds) queries are allowed to spend waiting for execution. If the query is not assigned to a server during that time, the client is disconnected.                        |
+| Data type      | integer     |
+| Default value  | `120`          |
+| Allowed values | `0-86400`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| Parameter type | dynamic        |
+| Documentation  | [pgbouncer.query_wait_timeout](https://www.pgbouncer.org/config.html)                                             |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### pgbouncer.server_idle_timeout
+
+| Attribute      | Value                                                      |
+|----------------|------------------------------------------------------------|
+| Category       | Customized Options |
+| Description    | If a server connection has been idle more than this many seconds it will be dropped. If 0 then timeout is disabled.                                                                         |
+| Data type      | integer     |
+| Default value  | `600`          |
+| Allowed values | `0-86400`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| Parameter type | dynamic        |
+| Documentation  | [pgbouncer.server_idle_timeout](https://www.pgbouncer.org/config.html)                                            |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### pgbouncer.stats_users
+
+| Attribute      | Value                                                      |
+|----------------|------------------------------------------------------------|
+| Category       | Customized Options |
+| Description    | Comma-separated list of database users that are allowed to connect and run read-only queries on the pgBouncer console.                                                                      |
+| Data type      | string      |
+| Default value  |                |
+| Allowed values | `[A-Za-z0-9,@_\\-\\.]*`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| Parameter type | dynamic        |
+| Documentation  | [pgbouncer.stats_users](https://www.pgbouncer.org/config.html)                                                    |
 
 
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
@@ -983,7 +1068,7 @@ ms.topic: include
 | Category       | Customized Options |
 | Description    | The role that run_maintenance() will run as. Default is postgres. Only a single role name is allowed.                                                                                       |
 | Data type      | string      |
-| Default value  | `postgres`     |
+| Default value  |                |
 | Allowed values | `[A-Za-z\\._]*`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 | Parameter type | dynamic        |
 | Documentation  | [pg_partman_bgw.role](https://github.com/pgpartman/pg_partman)                                                    |
@@ -1208,6 +1293,23 @@ ms.topic: include
 | Allowed values | `DISABLE_ALL,ENABLE_ALL`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | Parameter type | dynamic        |
 | Documentation  | [postgis.gdal_enabled_drivers](https://postgis.net/docs/postgis_gdal_enabled_drivers.html)                        |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### require_secure_transport
+
+| Attribute      | Value                                                      |
+|----------------|------------------------------------------------------------|
+| Category       | Customized Options |
+| Description    | Whether client connections to the server are required to use some form of secure transport.                                                                                                 |
+| Data type      | boolean     |
+| Default value  | `on`           |
+| Allowed values | `on,off`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| Parameter type | dynamic        |
+| Documentation  | [require_secure_transport](https://go.microsoft.com/fwlink/?linkid=2282200)                                       |
 
 
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]

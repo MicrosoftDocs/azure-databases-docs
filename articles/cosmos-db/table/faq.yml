@@ -3,10 +3,9 @@ metadata:
   title: Frequently asked questions
   titleSuffix: Azure Cosmos DB for Table
   description: Get answers to frequently asked questions about Azure Cosmos DB for Table.
-  author: seesharprun
-  ms.author: sidandrews
-  ms.reviewer: akshanka
-  ms.service: cosmos-db
+  author: sajeetharan
+  ms.author: sasinnat
+  ms.service: azure-cosmos-db
   ms.subservice: apache-gremlin
   ms.topic: faq
   ms.date: 02/23/2024
@@ -152,7 +151,7 @@ sections:
       - question: |
           How do I add replication of the data in the API for Table across more than one region of Azure?
         answer: |
-          You can use the Azure Cosmos DB portal's [global replication settings](../nosql/tutorial-global-distribution.md#portal) to add regions that are suitable for your application. To develop a globally distributed application, you should also add your application with the PreferredLocation information set to the local region for providing low read latency.
+          You can use the Azure Cosmos DB portal's global replication settings to add regions that are suitable for your application. To develop a globally distributed application, you should also add your application with the PreferredLocation information set to the local region for providing low read latency.
 
       - question: |
           How do I change the primary write region for the account in the API for Table?

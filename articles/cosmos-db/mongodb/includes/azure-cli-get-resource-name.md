@@ -1,10 +1,8 @@
 ---
-author: diberry
 ms.service: azure-cosmos-db
 ms.subservice: mongodb
 ms.topic: include
-ms.date: 06/13/2019
-ms.author: diberry
+ms.date: 08/23/2024
 ---
 1. Create a shell variable for *resourceGroupName*.
 

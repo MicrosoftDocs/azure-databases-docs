@@ -4,7 +4,6 @@ titleSuffix: Azure Cosmos DB for NoSQL
 description: Use vector store in Azure Cosmos DB for NoSQL to enhance AI-based applications.
 author: jcodella
 ms.author: jacodel
-ms.reviewer: sidandrews
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.custom:
@@ -57,9 +56,6 @@ Vector search for Azure Cosmos DB for NoSQL requires preview feature registratio
 
 > [!NOTE]  
 > The registration request will be autoapproved, however it may take several minutes to take effect.
-
-> [!NOTE]  
-> DiskANN is available in early gated-preview and requires filling out [this form](https://aka.ms/DiskANNSignUp). You'll be contacted by a member of the Azure Cosmos DB team when your resource has been onboarded to use the DiskANN index.
 
 > [!TIP]
 > Alternatively, use the Azure CLI to update the capabilities of your account to support NoSQL vector search.
@@ -145,7 +141,7 @@ A few points to note:
 
   - The `quantizedFlat` index stores quantized (compressed) vectors on the index. Vector searches with `quantizedFlat` index are also brute-force searches, however their accuracy might be slightly less than 100% since the vectors are quantized before adding to the index. However, vector searches with `quantized flat` should have lower latency, higher throughput, and lower RU cost than vector searches on a `flat` index. This is a good option for smaller scenarios, or scenarios where you're using query filters to narrow down the vector search to a relatively small set of vectors. `quantizedFlat` should be used when there are at least 1,000 vectors and fewer than 100,000 vectors in the container.
 
-  - The `diskANN` index is a separate index defined specifically for vectors using [DiskANN](https://www.microsoft.com/research/publication/diskann-fast-accurate-billion-point-nearest-neighbor-search-on-a-single-node/), a suite of high performance vector indexing algorithms developed by Microsoft Research. DiskANN indexes can offer some of the lowest latency, highest throughput, and lowest RU cost queries, while still maintaining high accuracy. However, since DiskANN is an approximate nearest neighbors (ANN) index, the accuracy can be lower than `quantizedFlat` or `flat`. DiskANN is available in early gated-preview and requires filling out [this form](https://aka.ms/DiskANNSignUp).
+  - The `diskANN` index is a separate index defined specifically for vectors using [DiskANN](https://www.microsoft.com/research/publication/diskann-fast-accurate-billion-point-nearest-neighbor-search-on-a-single-node/), a suite of high performance vector indexing algorithms developed by Microsoft Research. DiskANN indexes can offer some of the lowest latency, highest throughput, and lowest RU cost queries, while still maintaining high accuracy. 
 
 > [!IMPORTANT]
 > During early preview, vector indexes can't be modified once created. Instead, you'll have to create a new container with a new vector index policy, if a change is needed.
@@ -166,7 +162,7 @@ Here are examples of valid vector index policies:
             "path": "/_etag/?"
         },
         {
-            "path": "/vector1"
+            "path": "/vector1/*"
         }
     ],
     "vectorIndexes": [
@@ -192,10 +188,10 @@ Here are examples of valid vector index policies:
             "path": "/_etag/?"
         },
         {
-            "path": "/vector1",
+            "path": "/vector1/*",
         },
         {
-            "path": "/vector2",
+            "path": "/vector2/*",
         }
     ],
     "vectorIndexes": [
@@ -223,7 +219,7 @@ Here are examples of valid vector index policies:
 Once you created a container with the desired vector policy, and inserted vector data into the container, you can conduct a vector search using the [Vector Distance](query/vectordistance.md) system function in a query. An example of a NoSQL query that projects the similarity score as the alias `SimilarityScore`, and sorts in order of most-similar to least-similar:
 
 ```sql
-SELECT c.title, VectorDistance(c.contentVector, [1,2,3]) AS SimilarityScore   
+SELECT TOP 10 c.title, VectorDistance(c.contentVector, [1,2,3]) AS SimilarityScore   
 FROM c  
 ORDER BY VectorDistance(c.contentVector, [1,2,3])   
 ```

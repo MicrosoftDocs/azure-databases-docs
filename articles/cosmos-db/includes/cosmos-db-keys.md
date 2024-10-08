@@ -1,10 +1,7 @@
 ---
-author: seesharprun
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.topic: include
-ms.date: 11/09/2018
-ms.author: sidandrews
-ms.reviewer: mjbrown
+ms.date: 08/23/2024
 ---
   Go to the Azure Cosmos DB account page, and select **Keys**. Copy the values to use in the web application you create next.
 

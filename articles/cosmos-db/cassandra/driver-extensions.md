@@ -1,7 +1,7 @@
 ---
 title: Azure Cosmos DB Extension Driver Recommended settings
 description: Learn about Azure Cosmos DB for Apache Cassandra extension driver and the recommended settings.
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.subservice: apache-cassandra
 author: iriaosara
 ms.author: iriaosara

@@ -2,10 +2,9 @@
 title: Container copy jobs
 titleSuffix: Azure Cosmos DB
 description: Learn how to copy data from one container to another in Azure Cosmos DB (preview).
-author: seesharprun
-ms.author: sidandrews
-ms.reviewer: sidandrews
-ms.service: cosmos-db
+author: richagaur
+ms.author: richagaur
+ms.service: azure-cosmos-db
 ms.topic: conceptual
 ms.date: 11/30/2022
 ms.custom: references_regions, build-2023, ignite-2023
@@ -21,7 +20,7 @@ You might need to copy data within your Azure Cosmos DB account if you want to a
 
 * Copy all items from one container to another.
 * Change the [granularity at which throughput is provisioned, from database to container](set-throughput.md) and vice versa.
-* Change the [partition key](partitioning-overview.md#choose-partitionkey) of a container.
+* Change the [partition key](partitioning-overview.md#choose-a-partition-key) of a container.
 * Update the [unique keys](unique-keys.md) for a container.
 * Rename a container or database.
 * Change capacity mode of an account from serverless to provisioned or vice-versa.
@@ -95,7 +94,6 @@ The rate of container copy job progress is determined by these factors:
 
 Container copy jobs don't work with accounts that have the following capabilities enabled. Disable these features before you run container copy jobs:
 
-* [Disable local auth](how-to-setup-rbac.md#use-azure-resource-manager-templates)
 * [Merge partition](merge.md)
 
 ### Account configurations
@@ -161,7 +159,7 @@ Currently, container copy is supported in the following regions:
 
 * Error - Request is unauthorized.
 
-    If the request fails and displays the error *Unauthorized* (error code 401), local authorization might be disabled. Learn how to [enable local authorization](how-to-setup-rbac.md#use-azure-resource-manager-templates).
+    If the request fails and displays the error *Unauthorized* (error code 401), local authorization might be disabled.
 
     Container copy jobs use primary keys to authenticate. If local authorization is disabled, the job creation fails. Local authorization must be enabled for container copy jobs to work.
 

@@ -4,7 +4,6 @@ titleSuffix: Azure Cosmos DB for MongoDB vCore
 description: Use vector store in Azure Cosmos DB for MongoDB vCore to enhance AI-based applications.
 author: gahl-levy
 ms.author: gahllevy
-ms.reviewer: sidandrews
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.custom:
@@ -487,7 +486,7 @@ Use LangChain and Azure Cosmos DB for MongoDB (vCore) to orchestrate Semantic Ca
 ## Features and limitations
 
 - Supported distance metrics: L2 (Euclidean), inner product, and cosine.
-- Supported indexing methods: IVFFLAT (GA), and HSNW (preview)
+- Supported indexing methods: IVFFLAT (GA) and HSNW (preview)
 - Indexing vectors up to 2,000 dimensions in size.
 - Indexing applies to only one vector per path.
 - Only one index can be created per vector path.

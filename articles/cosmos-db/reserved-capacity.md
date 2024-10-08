@@ -1,12 +1,11 @@
 ---
 title: Azure Cosmos DB pricing & discounts with Reserved Capacity
 description: Azure Cosmos DB pricing allows for various forms of optimization. You may receive discounts of up to 63% savings with Reserved Capacity.
-author: seesharprun
-ms.service: cosmos-db
+author: rodrigossz
+ms.service: azure-cosmos-db
 ms.topic: conceptual
-ms.date: 03/20/2024
-ms.author: sidandrews
-ms.reviewer: rosouz
+ms.date: 10/02/2024
+ms.author: rosouz
 ---
 
 # Azure Cosmos DB pricing & discounts with Reserved Capacity
@@ -14,8 +13,7 @@ ms.reviewer: rosouz
 
 Azure Cosmos DB Reserved Capacity allows you to benefit from discounted prices on the throughput provisioned for your Azure Cosmos DB resources. You can enjoy up to 63% savings by committing to a reservation for Azure Cosmos DB resources for either one year or three years. Examples of resources are databases and containers (tables, collections, and graphs).
 
-> [!IMPORTANT]
-> Currently, Azure Pricing Calculator is only showing reservations bigger than one million RU/s. This temporary limitation is being fixed and reservations of any size, starting with 100 RU/s, will soon be available. The Azure Portal isn't affected by this issue.
+
 
 ## How Azure Cosmos DB pricing and discounts work with Reserved Capacity
 

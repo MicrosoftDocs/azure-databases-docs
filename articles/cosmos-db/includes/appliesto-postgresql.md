@@ -1,10 +1,7 @@
 ---
-author: seesharprun
-ms.author: sidandrews
-ms.reviewer: mjbrown
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.topic: include
-ms.date: 01/30/2023
+ms.date: 08/23/2024
 ---
 
 APPLIES TO:

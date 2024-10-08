@@ -3,7 +3,7 @@ title: Introduction/Overview
 titleSuffix: Azure Cosmos DB for Table
 description: Use Azure Cosmos DB for Table to store, manage, and query massive volumes of key-value typed NoSQL data.
 author: seesharprun
-ms.author: sidandrews
+ms.author: sasinnat
 ms.service: azure-cosmos-db
 ms.subservice: table
 ms.topic: overview

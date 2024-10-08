@@ -1,9 +1,8 @@
 ---
 title: PowerShell script to create resource lock for Azure Cosmos DB Table API table
 description: Create resource lock for Azure Cosmos DB Table API table
-author: seesharprun
-ms.author: sidandrews
-ms.reviewer: mjbrown
+author: markjbrown
+ms.author: mjbrown
 ms.service: azure-cosmos-db
 ms.subservice: table
 ms.topic: sample
@@ -22,7 +21,7 @@ If you need to install, see [Install Azure PowerShell module](/powershell/azure/
 Run [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) to sign in to Azure.
 
 > [!IMPORTANT]
-> Resource locks do not work for changes made by users connecting using any Azure Cosmos DB SDK, any tools that connect via account keys, or the Azure Portal unless the Azure Cosmos DB account is first locked with the `disableKeyBasedMetadataWriteAccess` property enabled. To learn more about how to enable this property see, [Preventing changes from SDKs](../../../role-based-access-control.md#prevent-sdk-changes).
+> Resource locks do not work for changes made by users connecting using any Azure Cosmos DB SDK, any tools that connect via account keys, or the Azure Portal unless the Azure Cosmos DB account is first locked with the `disableKeyBasedMetadataWriteAccess` property enabled. To learn more about how to enable this property see, [Preventing changes from SDKs](../../../table/security/how-to-disable-key-based-authentication.md).
 
 ## Sample script
 

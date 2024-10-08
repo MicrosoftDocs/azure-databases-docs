@@ -7,14 +7,9 @@
           "**/*.yml"
         ],
         "exclude": [
-          "iot-edge/**",
-          "ai-services/document-intelligence/**",
           "**/_themes/**",
           "**/includes/**",
           "**/obj/**",
-          "**/*.graffle",
-          "machine-learning/**",
-          "machine-learning/v1/**"
         ],
         "src": "articles",
         "dest": "."
@@ -25,6 +20,13 @@
         ],
         "src": "breadcrumb/azure-databases",
         "dest": "breadcrumb/azure-databases"
+      },
+      {
+        "files": [
+          "zone-pivot-groups.yml"
+        ],
+        "src": "zone-pivots",
+        "dest": "zone-pivots/azure-databases"
       }
     ],
     "resource": [
@@ -37,12 +39,8 @@
           "**/*.svg"
         ],
         "exclude": [
-          "iot-edge/**",
-          "ai-services/document-intelligence/**",
           "**/_themes/**",
           "**/obj/**",
-          "machine-learning/**",
-          "machine-learning/v1/**"
         ],
         "src": "articles",
         "dest": "."
@@ -127,7 +125,8 @@
         "Certification"
       ],
       "uhfHeaderId": "azure",
-      "ms.suite": "office"
+      "ms.suite": "office",
+      "zone_pivot_group_filename": "zone-pivots/azure-databases/zone-pivot-groups.json"
     },
     "fileMetadata": {
       "adobe-target": {
@@ -161,13 +160,26 @@
           "azure"
         ]
       },
+      "ms.service": {
+        "articles/cosmos-db/**/*.md": "azure-cosmos-db"
+      },
       "ms.subservice": {
-        "articles/cosmos-db/nosql/*.md": "nosql",
-        "articles/cosmos-db/mongodb/*.md": "mongodb",
-        "articles/cosmos-db/mongodb/vcore/*.md": "mongodb-vcore",
-        "articles/cosmos-db/postgresql/*.md": "postgresql",
-        "articles/cosmos-db/cassandra/*.md": "apache-cassandra",
-        "articles/cosmos-db/table/*.md": "table"
+        "articles/cosmos-db/nosql/**/*.md": "nosql",
+        "articles/cosmos-db/mongodb/**/*.md": "mongodb",
+        "articles/cosmos-db/mongodb/vcore/**/*.md": "mongodb-vcore",
+        "articles/cosmos-db/postgresql/**/*.md": "postgresql",
+        "articles/cosmos-db/cassandra/**/*.md": "apache-cassandra",
+        "articles/cosmos-db/table/**/*.md": "table"
+      },
+      "author": {
+        "articles/cosmos-db/**/includes/**/*.md": "markjbrown"
+      },
+      "ms.author": {
+        "articles/cosmos-db/**/includes/**/*.md": "mjbrown"
+      },
+      "ms.reviewer": {
+        "articles/cosmos-db/**/*.md": "mjbrown",
+        "articles/cosmos-db/**/*.yml": "mjbrown"
       },
       "searchScope": {
         "articles/cosmos-db/**/*.md": [
@@ -221,7 +233,7 @@
     "overwrite": [],
     "externalReference": [],
     "template": [],
-	"rules": {
+    "rules": {
       "sensitive-language-ma": {
         "exclude": [
           "articles/mariadb/**/*.md",

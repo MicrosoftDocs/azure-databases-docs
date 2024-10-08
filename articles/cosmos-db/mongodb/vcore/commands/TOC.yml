@@ -1,0 +1,6 @@
+- name: Index
+  href: index.yml
+- name: Aggregation
+  href: aggregation/toc.yml
+- name: Query and Write
+  href: query-and-write/toc.yml

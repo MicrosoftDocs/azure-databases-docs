@@ -22,7 +22,7 @@ Azure Database for PostgreSQL flexible server supports encrypted connections usi
 > By default, secured connectivity between the client and the server is enforced. If you want to disable TLS/SSL for connecting to Azure Database for PostgreSQL flexible server, you can change the server parameter *require_secure_transport* to *OFF*. You can also set TLS version by setting *ssl_max_protocol_version* server parameters.
 
 ## Applications that require certificate verification for TLS/SSL connectivity
-In some cases, applications require a local certificate file generated from a trusted Certificate Authority (CA) certificate file to connect securely. For more information on downloading root CA certificates you can **[visit this document](./concepts-networking-ssl-tls.md#configuring-ssl-on-the-client)**.
+In some cases, applications require a local certificate file generated from a trusted Certificate Authority (CA) certificate file to connect securely. For more information on downloading root CA certificates you can **[visit this document](./concepts-networking-ssl-tls.md#configure-ssl-on-the-client)**.
 **Detailed information on updating client applications certificate stores with new Root CA certificates has been documented in this [how-to document](../flexible-server/how-to-update-client-certificates-java.md)**. 
 
 > [!NOTE]

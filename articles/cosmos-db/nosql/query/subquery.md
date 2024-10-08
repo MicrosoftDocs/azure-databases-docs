@@ -2,14 +2,13 @@
 title: Subqueries
 titleSuffix: Azure Cosmos DB for NoSQL
 description: Use different types of subqueries for complex query statements in Azure Cosmos DB for NoSQL.
-author: jcodella
-ms.author: jacodel
-ms.reviewer: sidandrews
+author: seesharprun
+ms.author: sidandrews
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: reference
 ms.devlang: nosql
-ms.date: 06/05/2024
+ms.date: 08/22/2024
 ms.custom: query-reference
 ---
 
@@ -235,14 +234,14 @@ FROM
 ```json
 [
   {
-    "id": "03230",
+    "id": "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb",
     "name": "Winter glove"
   },
   {
-    "id": "03238"
+    "id": "bbbbbbbb-1111-2222-3333-cccccccccccc"
   },
   {
-    "id": "03229"
+    "id": "cccccccc-2222-3333-4444-dddddddddddd"
   }
 ]
 ```

@@ -1,8 +1,8 @@
 ---
 title: Create a container in Azure Cosmos DB for NoSQL using Python
 description: Learn how to create a container in your Azure Cosmos DB for NoSQL database using the Python SDK.
-author: seesharprun
-ms.author: sidandrews
+author: markjbrown
+ms.author: mjbrown
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.devlang: python
@@ -20,12 +20,6 @@ Containers in Azure Cosmos DB store sets of items. Before you can create, query,
 ## Name a container
 
 In Azure Cosmos DB, a container is analogous to a table in a relational database. When you create a container, the container name forms a segment of the URI used to access the container resource and any child items.
-
-Here are some quick rules when naming a container:
-
-- Keep container names between 3 and 63 characters long
-- Container names can only contain lowercase letters, numbers, or the dash (-) character.
-- Container names must start with a lowercase letter or number.
 
 Once created, the URI for a container is in this format:
 

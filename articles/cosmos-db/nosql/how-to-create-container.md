@@ -1,13 +1,12 @@
 ---
 title: Create a container in Azure Cosmos DB for NoSQL
 description: Learn how to create a container in Azure Cosmos DB for NoSQL by using Azure portal, .NET, Java, Python, Node.js, and other SDKs.
-author: seesharprun
+author: markjbrown
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: how-to
 ms.date: 01/03/2022
-ms.author: sidandrews
-ms.reviewer: mjbrown
+ms.author: mjbrown
 ms.devlang: csharp
 ms.custom: devx-track-csharp, devx-track-azurecli, devx-track-dotnet, devx-track-extended-java, devx-track-python
 ---
@@ -51,8 +50,16 @@ This article explains the different ways to create a container in Azure Cosmos D
 If you encounter timeout exception when creating a collection, do a read operation to validate if the collection was created successfully. The read operation throws an exception until the collection create operation is successful. For the list of status codes supported by the create operation see the [HTTP Status Codes for Azure Cosmos DB](/rest/api/cosmos-db/http-status-codes-for-cosmosdb) article.
 
 ```csharp
+TokenCredential credential = new DefaultAzureCredential();
+
+CosmosClient client = new (
+    accountEndpoint: "<nosql-account-endpoint>",
+    tokenCredential: credential
+);
+```
+
+```csharp
 // Create a container with a partition key and provision 400 RU/s manual throughput.
-CosmosClient client = new CosmosClient(connectionString, clientOptions);
 Database database = await client.CreateDatabaseIfNotExistsAsync(databaseId);
 
 ContainerProperties containerProperties = new ContainerProperties()

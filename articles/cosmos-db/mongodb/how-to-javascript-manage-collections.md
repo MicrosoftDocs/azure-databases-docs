@@ -1,8 +1,8 @@
 ---
 title: Create a collection in Azure Cosmos DB for MongoDB using JavaScript
 description: Learn how to work with a collection in your Azure Cosmos DB for MongoDB database using the JavaScript SDK.
-author: seesharprun
-ms.author: sidandrews
+author: gahl-levy
+ms.author: gahllevy
 ms.service: azure-cosmos-db
 ms.subservice: mongodb
 ms.devlang: javascript
@@ -25,12 +25,6 @@ Manage your MongoDB collection stored in Azure Cosmos DB with the native MongoDB
 ## Name a collection
 
 In Azure Cosmos DB, a collection is analogous to a table in a relational database. When you create a collection, the collection name forms a segment of the URI used to access the collection resource and any child docs.
-
-Here are some quick rules when naming a collection:
-
-- Keep collection names between 3 and 63 characters long
-- Collection names can only contain lowercase letters, numbers, or the dash (-) character.
-- Container names must start with a lowercase letter or number.
 
 ## Get collection instance
 

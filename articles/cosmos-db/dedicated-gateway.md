@@ -1,9 +1,8 @@
 ---
 title: Azure Cosmos DB dedicated gateway
 description: A dedicated gateway is compute that is a front-end to your Azure Cosmos DB account. When you connect to the dedicated gateway, it routes requests and caches data.
-author: seesharprun
-ms.author: sidandrews
-ms.reviewer: jucocchi
+author: jcocchi
+ms.author: jucocchi
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: conceptual
@@ -94,7 +93,7 @@ Like nodes within a cluster, dedicated gateway nodes across regions are independ
 The dedicated gateway has the following limitations:
 
 - Dedicated gateways are only supported on API for NoSQL accounts
-- You can't use [role-based access control (RBAC)](how-to-setup-rbac.md) to authenticate data plane requests routed through the dedicated gateway
+- You can't use [role-based access control (RBAC)](nosql/security/index.md) to authenticate data plane requests routed through the dedicated gateway
 
 
 ## Next steps

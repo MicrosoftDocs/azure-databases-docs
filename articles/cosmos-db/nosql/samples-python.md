@@ -1,9 +1,8 @@
 ---
 title: Examples for Azure Cosmos DB for NoSQL SDK for Python
 description: Find Python examples on GitHub for common tasks in Azure Cosmos DB, including CRUD operations.
-author: seesharprun
-ms.author: sidandrews
-ms.reviewer: rosouz
+author: markjbrown
+ms.author: mjbrown
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.devlang: python
@@ -81,7 +80,7 @@ The [document_management.py](https://github.com/Azure/azure-sdk-for-python/blob/
 
 ## Indexing examples
 
-The [index_management.py](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/index_management.py) Python sample shows how to do the following tasks. To learn about indexing in Azure Cosmos DB before running the following samples, see [indexing policies](../index-policy.md), [indexing types](../index-overview.md#types-of-indexes), and [indexing paths](../index-policy.md#include-exclude-paths) conceptual articles.
+The [index_management.py](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/index_management.py) Python sample shows how to do the following tasks. To learn about indexing in Azure Cosmos DB before running the following samples, see [indexing policies](../index-policy.md), [indexing types](../index-overview.md#types-of-indexes), and [indexing paths](../index-policy.md) conceptual articles.
 
 | Task | API reference |
 | --- | --- |

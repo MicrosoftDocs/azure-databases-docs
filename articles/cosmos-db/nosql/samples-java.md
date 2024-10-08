@@ -2,15 +2,14 @@
 
 title: 'Azure Cosmos DB for NoSQL: Java SDK v4 examples'
 description: Find Java examples on GitHub for common tasks using the Azure Cosmos DB for NoSQL, including CRUD operations.
-author: seesharprun
+author: markjbrown
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: sample
 ms.date: 08/26/2021
 ms.devlang: java
 ms.custom: devx-track-java, devx-track-extended-java
-ms.author: sidandrews
-ms.reviewer: mjbrown
+ms.author: mjbrown
 ---
 # Azure Cosmos DB for NoSQL: Java SDK v4 examples
 [!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
@@ -168,7 +167,7 @@ The Document CRUD Samples files for [sync](https://github.com/Azure-Samples/azur
 | Transactional batch | [batch samples](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/main/src/main/java/com/azure/cosmos/examples/batch/async/SampleBatchQuickStartAsync.java) |
 
 ## Indexing examples
-The [Collection CRUD Samples](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/CollectionCrudSamples.java) file shows how to perform the following tasks. To learn about indexing in Azure Cosmos DB before running the following samples, see [indexing policies](../index-policy.md), [indexing types](../index-overview.md#types-of-indexes), and [indexing paths](../index-policy.md#include-exclude-paths) conceptual articles. 
+The [Collection CRUD Samples](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/CollectionCrudSamples.java) file shows how to perform the following tasks. To learn about indexing in Azure Cosmos DB before running the following samples, see [indexing policies](../index-policy.md), [indexing types](../index-overview.md#types-of-indexes), and [indexing paths](../index-policy.md) conceptual articles. 
 
 | Task | API reference |
 | --- | --- |

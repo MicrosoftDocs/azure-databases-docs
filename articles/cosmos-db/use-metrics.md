@@ -3,7 +3,6 @@ title: Monitor and debug with insights in Azure Cosmos DB
 description: Learn how to use metrics and insights in Azure Cosmos DB to debug common issues and monitor the database.
 ms.author: esarroyo
 author: StefArroyo
-ms.reviewer: mjbrown
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: how-to
@@ -35,7 +34,7 @@ Having a good cardinality of your partition keys is essential for any scalable a
 
 :::image type="content" source="media/use-metrics/throughput-consumption-partition-key-range.png" alt-text="Screenshot of the Throughput tab, showing the RU/s consumption." lightbox="media/use-metrics/throughput-consumption-partition-key-range.png":::
 
-With the help of this chart, you can identify if there's a hot partition. An uneven throughput distribution might cause *hot* partitions, which can result in throttled requests and might require repartitioning. After identifying which partition key is causing the skew in distribution, you might have to repartition your container with a more distributed partition key. For more information about partitioning in Azure Cosmos DB, see [Partitioning and horizontal scaling in Azure Cosmos DB](./partitioning-overview.md).
+With the help of this chart, you can identify if there's a hot partition. The PartitionKeyRangeIDs corresponds to physical partitions. The [Normalized RU Consumption metric](./monitor-normalized-request-units.md#metric-definition) is a value between 0% and 100% that helps measure the utilization of provisioned throughput on a database or container. An uneven throughput distribution might cause *hot* partitions, which can result in throttled requests and might require repartitioning. After identifying which partition key is causing the skew in distribution, you might have to repartition your container with a more distributed partition key. For more information about partitioning in Azure Cosmos DB, see [Partitioning and horizontal scaling in Azure Cosmos DB](./partitioning-overview.md).
 
 ## Determine the data and index usage
 

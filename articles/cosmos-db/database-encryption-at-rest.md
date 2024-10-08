@@ -1,9 +1,9 @@
 ---
 title: Encryption at rest in Azure Cosmos DB
 description: Learn how Azure Cosmos DB provides encryption of data at rest and how it's implemented.
-author: seesharprun
-ms.author: sidandrews
-ms.service: cosmos-db
+author: iriaosara
+ms.author: iriaosara
+ms.service: azure-cosmos-db
 ms.topic: conceptual
 ms.date: 10/26/2021
 ---
@@ -82,5 +82,4 @@ The emulator is a standalone dev/test tool and doesn't use the key management se
 ## Next steps
 
 * To learn more about adding a second layer of encryption with your own keys, see the [customer-managed keys](how-to-setup-cmk.md) article.
-* For an overview of Azure Cosmos DB security and the latest improvements, see [Azure Cosmos DB database security](database-security.md).
 * For more information about Microsoft certifications, see the [Azure Trust Center](https://azure.microsoft.com/support/trust-center/).

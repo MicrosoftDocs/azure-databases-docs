@@ -4,8 +4,7 @@ titleSuffix: Azure Cosmos DB
 description: Review the keyboard shortcuts available to make it easier to navigate the Data Explorer for Azure Cosmos DB.
 author: meredithmooreux
 ms.author: merae
-ms.reviewer: markjbrown
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.topic: reference
 ms.date: 05/02/2024
 ---

@@ -4,10 +4,11 @@ titleSuffix: Azure Database Migration Service
 description: Learn to use the custom roles for MySQL to Azure Database for MySQL migrations.
 author: karlaescobar
 ms.author: karlaescobar
-ms.date: 08/07/2023
+ms.reviewer: randolphwest
+ms.date: 09/18/2024
 ms.service: azure-database-migration-service
 ms.topic: conceptual
-ms.custom:
+ms.collection:
   - sql-migration-content
 ---
 
@@ -59,6 +60,7 @@ The role has no permission to create a new Database Migration Service and no per
     }
 }
 ```
+
 You can use either the Azure portal, AZ PowerShell, Azure CLI or Azure REST API to create the roles.
 
 For more information, see the articles [Create custom roles using the Azure portal](/azure/role-based-access-control/custom-roles-portal) and [Azure custom roles](/azure/role-based-access-control/custom-roles).
@@ -69,14 +71,14 @@ To assign a role to users, open the Azure portal, perform the following steps:
 
 1. Navigate to the resource, go to **Access Control**, and then scroll to find the custom roles you created.
 
-2. Select the appropriate role, select the User, and then save the changes.
+1. Select the appropriate role, select the User, and then save the changes.
 
-  The user now appears listed on the **Role assignments** tab.
+The user now appears listed on the **Role assignments** tab.
 
-## Next steps
+## Related content
 
-* For information about Azure Database for MySQL - Flexible Server, see [Overview - Azure Database for MySQL Flexible Server](./../mysql/flexible-server/overview.md).
-* For information about Azure Database Migration Service, see [What is Azure Database Migration Service?](./dms-overview.md).
-* For information about known issues and limitations when migrating to Azure Database for MySQL - Flexible Server using DMS, see [Known Issues With Migrations To Azure Database for MySQL - Flexible Server](./known-issues-azure-mysql-fs-online.md).
-* For information about known issues and limitations when performing migrations using DMS, see [Common issues - Azure Database Migration Service](./known-issues-troubleshooting-dms.md).
-* For troubleshooting source database connectivity issues while using DMS, see article [Issues connecting source databases](./known-issues-troubleshooting-dms-source-connectivity.md).
+- [What is Azure Database for MySQL - Flexible Server?](../mysql/flexible-server/overview.md)
+- [What is Azure Database Migration Service?](dms-overview.md)
+- [Known Issues With Migrations To Azure Database for MySQL](known-issues-azure-mysql-fs-online.md)
+- [Troubleshoot common Azure Database Migration Service (classic) issues and errors](known-issues-troubleshooting-dms.md)
+- [Troubleshoot DMS errors when connecting to source databases](known-issues-troubleshooting-dms-source-connectivity.md)

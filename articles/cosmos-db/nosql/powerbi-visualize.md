@@ -5,7 +5,7 @@ author: Rodrigossz
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: how-to
-ms.date: 03/28/2022
+ms.date: 09/09/2024
 ms.author: rosouz
 ---
 
@@ -14,8 +14,12 @@ ms.author: rosouz
 
 This article describes the steps required to connect Azure Cosmos DB data to [Power BI](https://powerbi.microsoft.com/) Desktop. 
 
-You can connect to Azure Cosmos DB from Power BI desktop by using one of these options: 
+You can connect to Azure Cosmos DB from Power BI desktop by using one of these options:
+* Use [Mirroring in Microsoft Fabric](/fabric/database/mirrored-database/azure-cosmos-db?context=/azure/cosmos-db/context/context) to replicate Azure Cosmos DB data into Fabric OneLake. 
+  Any changes to your database are automatically synced to Fabric OneLake in near real-time, without affecting the performance of your source database or consuming Resource Units (RUs).
 
+  Power BI reports can then access data directly from OneLake using DirectLake mode. With the enhanced Copilot features in Power BI within Fabric, you can tap into generative AI to gain key business insights.
+  
 * Use [Azure Synapse Link](../synapse-link.md) to build Power BI reports with no performance or cost impact to your transactional workloads, and no ETL pipelines.
    
    You can either use [DirectQuery](/power-bi/connect-data/service-dataset-modes-understand#directquery-mode) or [import](/power-bi/connect-data/service-dataset-modes-understand#import-mode) mode. With [DirectQuery](/power-bi/connect-data/service-dataset-modes-understand#directquery-mode), you can build dashboards/reports    using live data from your Azure Cosmos DB accounts, without importing or copying the data into Power BI.
@@ -30,11 +34,16 @@ Before following the instructions in this Power BI tutorial, ensure that you hav
 
 * [Download the latest version of Power BI Desktop](https://powerbi.microsoft.com/desktop).
 
-* [Create an Azure Cosmos DB database account](quickstart-portal.md#create-container-database) and add data to your Azure Cosmos DB containers.
+* [Create an Azure Cosmos DB database account](quickstart-portal.md) and add data to your Azure Cosmos DB containers.
 
 To share your reports in PowerBI.com, you must have an account in PowerBI.com.  To learn more about Power BI and Power BI Pro, see [https://powerbi.microsoft.com/pricing](https://powerbi.microsoft.com/pricing).
 
 ## Let's get started
+### Building BI reports using Mirroring in Microsoft Fabric
+
+You can enable mirroring on your existing Azure Cosmos DB containers and build BI reports/dashboards on this data, in near real-time.
+For instructions to get started with Fabric and mirroring, visit [mirroring tutorial for Azure Cosmos DB.](/fabric/database/mirrored-database/azure-cosmos-db-tutorial?context=/azure/cosmos-db/context/context)
+
 ### Building BI reports using Azure Synapse Link
 
 You can enable Azure Synapse Link on your existing Azure Cosmos DB containers and build BI reports on this data, in just a few clicks using Azure Cosmos DB portal. Power BI will connect to Azure Cosmos DB using Direct Query mode, allowing you to query your live Azure Cosmos DB data, without impacting your transactional workloads. 
@@ -48,7 +57,7 @@ To build a Power BI report/dashboard:
    > [!NOTE]
    > Currently, this option is only available for API for NoSQL accounts. You can create T-SQL views directly in Synapse serverless SQL pools and build BI dashboards for Azure Cosmos DB for MongoDB. See ["Use Power BI and serverless Synapse SQL pool to analyze Azure Cosmos DB data with Synapse"](../synapse-link-power-bi.md) for more information. 
 
-1. From the **Enable Azure Synapse Link** tab, you can enable Synapse Link on your account from **Enable Azure Synapse link for this account** section. If Synapse Link is already enabled for your account, you will not see this tab. This step is a pre-requisite to start enabling Synapse Link on your containers.
+1. From the **Enable Azure Synapse Link** tab, you can enable Synapse Link on your account from **Enable Azure Synapse link for this account** section. If Synapse Link is already enabled for your account, you won't see this tab. This step is a prerequisite to start enabling Synapse Link on your containers.
 
    > [!NOTE]
    > Enabling Azure Synapse Link has cost implications. See [Azure Synapse Link pricing](../synapse-link.md#pricing) section for more details.
@@ -59,7 +68,7 @@ To build a Power BI report/dashboard:
 
    * If Synapse Link isn't enabled, you can enable this on your existing containers. 
 
-     If enabling Synapse Link is in progress on any of the containers, the data from those containers will not be included. You should come back to this tab later and import data when the containers are enabled.
+     If enabling Synapse Link is in progress on any of the containers, the data from those containers won't be included. You should come back to this tab later and import data when the containers are enabled.
 
    :::image type="content" source="../media/integrated-power-bi-synapse-link/synapse-link-progress-existing-containers.png" alt-text="Progress of Synapse Link enabled on existing containers." border="true" lightbox="../media/integrated-power-bi-synapse-link/synapse-link-progress-existing-containers.png":::
 
@@ -110,7 +119,7 @@ To build a Power BI report/dashboard:
 
 6. Specify the Azure Cosmos DB account endpoint URL you would like to retrieve the data from as shown below, and then click **OK**. To use your own account, you can retrieve the URL from the URI box in the **Keys** blade of the Azure portal. Optionally you can provide the database name, collection name or use the navigator to select the database and collection to identify where the data comes from.
    
-7. If you are connecting to this endpoint for the first time, you are prompted for the account key. For your own account, retrieve the key from the **Primary Key** box in the **Read-only Keys** blade of the Azure portal. Enter the appropriate key and then click **Connect**.
+7. If you're connecting to this endpoint for the first time, you're prompted for the account key. For your own account, retrieve the key from the **Primary Key** box in the **Read-only Keys** blade of the Azure portal. Enter the appropriate key and then click **Connect**.
    
    We recommend that you use the read-only key when building reports. This prevents unnecessary exposure of the primary key to potential security risks. The read-only key is available from the **Keys** blade of the Azure portal. 
     
@@ -118,11 +127,43 @@ To build a Power BI report/dashboard:
 
 9. Click and expand on the database where the data for the report comes from. Now, select a collection that contains the data to retrieve.
     
-    The Preview pane shows a list of **Record** items.  A Document is represented as a **Record** type in Power BI. Similarly, a nested JSON block inside a document is also a **Record**. To view the properties documents as columns, click on the grey button with 2 arrows in opposite directions that symbolize the expansion of the record. It's located on the right of the container's name, in the same preview pane.
+    The Preview pane shows a list of **Record** items.  A Document is represented as a **Record** type in Power BI. Similarly, a nested JSON block inside a document is also a **Record**. To view the properties documents as columns, click on the grey button with two arrows in opposite directions that symbolize the expansion of the record. It's located on the right of the container's name, in the same preview pane.
 
 10. Power BI Desktop Report view is where you can start creating reports to visualize data.  You can create reports by dragging and dropping fields into the **Report** canvas.
 
 11. There are two ways to refresh data: ad hoc and scheduled. Simply click **Refresh Now** to refresh the data. Check Power BI documentation for more information about the scheduled refresh option.
+
+## Known issues and limitations
+
+* For partitioned Cosmos DB containers, a SQL query with an aggregate function is passed down to Cosmos DB if the query also contains a filter (WHERE clause) on the Partition Key. If the aggregate query doesn't contain a filter on the Partition Key, the aggregation is performed by the connector.
+
+* The connector doesn't pass down an aggregate function if it's called upon after TOP or LIMIT is applied. Cosmos DB processes the TOP operation at the end when processing a query. For example, in the following query, TOP is applied in the subquery, while the aggregate function is applied on top of that result set:
+
+   SELECT COUNT(1) FROM (SELECT TOP 4 * FROM EMP) E
+
+* If DISTINCT is provided in an aggregate function, the connector doesn't pass the aggregate function down to Cosmos DB if a DISTINCT clause is provided in an aggregate function. When present in an aggregate function, DISTINCT isn't supported by the Cosmos DB SQL API.
+
+* For the SUM aggregate function, Cosmos DB returns undefined as the result set if any of the arguments in SUM are string, boolean, or null. However, if there are null values, the connector passes the query to Cosmos DB in such a way that it asks the data source to replace a null value with zero as part of the SUM calculation.
+
+* For the AVG aggregate function, Cosmos DB returns undefined as result set if any of the arguments in SUM are string, boolean, or null. The connector exposes a connection property to disable passing down the AVG aggregate function to Cosmos DB in case this default Cosmos DB behavior needs to be overridden. When AVG passdown is disabled, it isn't passed down to Cosmos DB, and the connector handles performing the AVG aggregation operation itself. For more information, go to "Enable AVERAGE function Passdown" in Advanced options.
+
+* Azure Cosmos DB Containers with large partition key aren't currently supported in the connector.
+
+* Aggregation passdown is disabled for the following syntax due to server limitations:
+
+  * When the query isn't filtering on a partition key or when the partition key filter uses the OR operator with another predicate at the top level in the WHERE clause.
+
+  * When the query has one or more partition keys appear in an IS NOT NULL clause in the WHERE clause.
+
+* The V2 connector doesn't support complex data types such as arrays, objects, and hierarchical structures. We recommend the [Fabric Mirroring for Azure Cosmos DB]([/articles/cosmos-db/analytics-and-business-intelligence-overview.md](/fabric/database/mirrored-database/azure-cosmos-db) feature for those scenarios.
+
+* The V2 connector uses sampling of the first 1,000 documents to come up with the inferred schema. It's not recommended for schema evolution scenarios when only part of the documents are updated. As an example, a newly added property to one document in a container with thousands of documents may not be included in the inferred schema. We recommend the [Fabric Mirroring for Azure Cosmos DB](/fabric/database/mirrored-database/azure-cosmos-db) feature for those scenarios.
+
+* Currently the V2 connector doesn't support non-string values in object properties.
+
+* Filter passdown is disabled for the following syntax due to server limitations:
+
+* When the query containing one or more aggregate columns is referenced in the WHERE clause.
                            
 ## Next steps
 * To learn more about Power BI, see [Get started with Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/).

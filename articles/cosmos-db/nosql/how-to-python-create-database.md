@@ -1,8 +1,8 @@
 ---
 title: Create a database in Azure Cosmos DB for NoSQL using Python
 description: Learn how to create a database in your Azure Cosmos DB for NoSQL account using the Python SDK.
-author: seesharprun
-ms.author: sidandrews
+author: markjbrown
+ms.author: mjbrown
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.devlang: python
@@ -20,12 +20,6 @@ Databases in Azure Cosmos DB are units of management for one or more containers.
 ## Name a database
 
 In Azure Cosmos DB, a database is analogous to a namespace. When you create a database, the database name forms a segment of the URI used to access the database resource and any child resources.
-
-Here are some quick rules when naming a database:
-
-- Keep database names between 3 and 63 characters long
-- Database names can only contain lowercase letters, numbers, or the dash (-) character.
-- Database names must start with a lowercase letter or number.
 
 Once created, the URI for a database is in this format:
 

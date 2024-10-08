@@ -1,8 +1,8 @@
 ---
 title: Manage a MongoDB database using .NET
 description: Learn how to manage your Azure Cosmos DB resource when it provides the API for MongoDB with a .NET SDK.
-author: seesharprun
-ms.author: sidandrews
+author: gahl-levy
+ms.author: gahllevy
 ms.service: azure-cosmos-db
 ms.subservice: mongodb
 ms.devlang: csharp
@@ -25,12 +25,6 @@ Your MongoDB server in Azure Cosmos DB is available from the [MongoDB](https://w
 ## Name a database
 
 In Azure Cosmos DB, a database is analogous to a namespace. When you create a database, the database name forms a segment of the URI used to access the database resource and any child resources.
-
-Here are some quick rules when naming a database:
-
-- Keep database names between 3 and 63 characters long
-- Database names can only contain lowercase letters, numbers, or the dash (-) character.
-- Database names must start with a lowercase letter or number.
 
 Once created, the URI for a database is in this format:
 

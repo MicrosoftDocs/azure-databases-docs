@@ -1,12 +1,11 @@
 ---
 title: Azure Cosmos DB compliance
 description: This article describes compliance coverage for Azure Cosmos DB.
-author: seesharprun
-ms.author: sidandrews
-ms.service: cosmos-db
+author: markjbrown
+ms.author: mjbrown
+ms.service: azure-cosmos-db
 ms.topic: conceptual
 ms.date: 09/11/2021
-ms.reviewer: mjbrown
 ---
 
 # Compliance in Azure Cosmos DB 
@@ -34,7 +33,6 @@ To find out the latest compliance certifications for Azure Cosmos DB, see [Micro
 To learn more about Azure compliance coverage, see the following articles:
 
 - To find out the latest compliance certifications for Azure Cosmos DB, see [Microsoft Azure Compliance offerings](https://servicetrust.microsoft.com/DocumentPage/7adf2d9e-d7b5-4e71-bad8-713e6a183cf3), Appendix A & B.  
-- For an overview of Azure Cosmos DB security and the latest improvements, see [Security in Azure Cosmos DB](database-security.md).
 - For recommendations to improve the security posture of your Azure Cosmos DB deployment, see [Azure Cosmos DB security baseline](/security/benchmark/azure/baselines/cosmos-db-security-baseline). 
 - For more information about Azure certifications, see [Azure compliance documentation](/azure/compliance/).
 - For FedRAMP and DoD compliance audit scope, see [Cloud services by audit scope](/azure/azure-government/compliance/azure-services-in-fedramp-auditscope).

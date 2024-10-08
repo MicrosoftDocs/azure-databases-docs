@@ -3,7 +3,6 @@ title: Working with Azure Cosmos DB for MongoDB vCore from Azure Databricks
 description: This article is the main page for Azure Cosmos DB for MongoDB vCore integration from Azure Databricks.
 author: Gary3207Lee
 ms.author: yongl
-ms.reviewer: krmeht
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.custom: devx-track-python

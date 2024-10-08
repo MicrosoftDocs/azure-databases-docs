@@ -4,7 +4,6 @@ titleSuffix: Azure Cosmos DB for MongoDB vCore
 description: Sample to create wildcard indexes in Azure Cosmos DB for MongoDB vCore.
 author: abinav2307
 ms.author: abramees
-ms.reviewer: sidandrews
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: conceptual

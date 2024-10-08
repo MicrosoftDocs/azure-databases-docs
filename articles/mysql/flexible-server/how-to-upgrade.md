@@ -25,6 +25,7 @@ This feature enables customers to perform in-place upgrades of their MySQL 5.7 s
 >[!Important]
 > - Duration of downtime varies based on the size of the database instance and the number of tables it contains.
 > - When initiating a major version upgrade for Azure Database for MySQL flexible server via Rest API or SDK, please avoid modifying other properties of the service in the same request. The simultaneous changes are not permitted and may lead to unintended results or request failure. Please conduct property modifications in separate operations post-upgrade completion.
+> - Some workloads may not exhibit enhanced performance after upgrading from 5.7 to 8.0. We suggest that you evaluate the performance of your workload by first creating a replica server (as a test server), then promoting it to a standalone server and then running the workload on the test server prior to implementing the upgrade in a production environment.
 > - Upgrading the major MySQL version is irreversible. Your deployment might fail if validation identifies that the server is configured with any features that are [removed](https://dev.mysql.com/doc/refman/8.0/en/mysql-nutshell.html#mysql-nutshell-removals) or [deprecated](https://dev.mysql.com/doc/refman/8.0/en/mysql-nutshell.html#mysql-nutshell-deprecations). You can make necessary configuration changes on the server and try the upgrade again.
 
 ## Prerequisites

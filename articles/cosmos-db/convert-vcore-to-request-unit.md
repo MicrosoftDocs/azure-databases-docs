@@ -1,9 +1,8 @@
 ---
 title: 'Convert the number of vCores or vCPUs in your nonrelational database to Azure Cosmos DB RU/s'
 description: 'Convert the number of vCores or vCPUs in your nonrelational database to Azure Cosmos DB RU/s'
-author: seesharprun
-ms.author: sidandrews
-ms.reviewer: mjbrown
+author: markjbrown
+ms.author: mjbrown
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: tutorial

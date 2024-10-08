@@ -1,8 +1,8 @@
 ---
-author: akashraokm
-ms.author: akashrao
+author: nachoalonsoportillo
+ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 08/19/2024
+ms.date: 09/26/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
@@ -201,7 +201,7 @@ ms.topic: include
 | Category       | Customized Options |
 | Description    | Fraction of queries to process.                                                                                                                                                             |
 | Data type      | numeric     |
-| Default value  | `1`                 |
+| Default value  | `1.0`               |
 | Allowed values | `0.0-1.0`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | Parameter type | dynamic        |
 | Documentation  | [auto_explain.sample_rate](https://www.postgresql.org/docs/15/auto-explain.html#id-1.11.7.13.5.3.12.1.3)           |
@@ -256,6 +256,23 @@ ms.topic: include
 | Allowed values | `address_standardizer,address_standardizer_data_us,amcheck,azure_ai,azure_storage,bloom,btree_gin,btree_gist,citext,cube,dblink,dict_int,dict_xsyn,earthdistance,fuzzystrmatch,hstore,hypopg,intagg,intarray,isn,lo,login_hook,ltree,orafce,pageinspect,pg_buffercache,pg_cron,pg_freespacemap,pg_hint_plan,pg_partman,pg_prewarm,pg_repack,pg_squeeze,pg_stat_statements,pg_trgm,pg_visibility,pgaudit,pgcrypto,pglogical,pgrouting,pgrowlocks,pgstattuple,plpgsql,plv8,postgis,postgis_raster,postgis_sfcgal,postgis_tiger_geocoder,postgis_topology,postgres_fdw,postgres_protobuf,semver,session_variable,sslinfo,tablefunc,tds_fdw,timescaledb,tsm_system_rows,tsm_system_time,unaccent,uuid-ossp,vector` |
 | Parameter type | dynamic        |
 | Documentation  | [azure.extensions](https://go.microsoft.com/fwlink/?linkid=2274269)                                                |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### azure.fabric_mirror_enabled
+
+| Attribute      | Value                                                      |
+|----------------|------------------------------------------------------------|
+| Category       | Customized Options |
+| Description    | Sepcifies the flag indicating if mirroring is enabled on server.                                                                                                                            |
+| Data type      | boolean     |
+| Default value  | `off`               |
+| Allowed values | `off`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| Parameter type | read-only      |
+| Documentation  |                                                                                                                    |
 
 
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
@@ -721,6 +738,125 @@ ms.topic: include
 
 
 
+### intelligent_tuning
+
+| Attribute      | Value                                                      |
+|----------------|------------------------------------------------------------|
+| Category       | Customized Options |
+| Description    | Enables intelligent tuning                                                                                                                                                                  |
+| Data type      | boolean     |
+| Default value  | `off`               |
+| Allowed values | `on,off`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| Parameter type | dynamic        |
+| Documentation  | [intelligent_tuning](https://go.microsoft.com/fwlink/?linkid=2274150)                                              |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### intelligent_tuning.metric_targets
+
+| Attribute      | Value                                                      |
+|----------------|------------------------------------------------------------|
+| Category       | Customized Options |
+| Description    | Specifies which metrics will be adjusted by intelligent tuning.                                                                                                                             |
+| Data type      | set         |
+| Default value  | `none`              |
+| Allowed values | `none,Storage-checkpoint_completion_target,Storage-min_wal_size,Storage-max_wal_size,Storage-bgwriter_delay,tuning-autovacuum,all`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| Parameter type | dynamic        |
+| Documentation  | [intelligent_tuning.metric_targets](https://go.microsoft.com/fwlink/?linkid=2274150)                               |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### logfiles.download_enable
+
+| Attribute      | Value                                                      |
+|----------------|------------------------------------------------------------|
+| Category       | Customized Options |
+| Description    | Enables or disables server logs functionality.                                                                                                                                              |
+| Data type      | boolean     |
+| Default value  | `off`               |
+| Allowed values | `on,off`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| Parameter type | dynamic        |
+| Documentation  | [logfiles.download_enable](https://go.microsoft.com/fwlink/?linkid=2274270)                                        |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### logfiles.retention_days
+
+| Attribute      | Value                                                      |
+|----------------|------------------------------------------------------------|
+| Category       | Customized Options |
+| Description    | Sets the retention period window in days for server logs - after this time data will be deleted.                                                                                            |
+| Data type      | integer     |
+| Default value  | `3`                 |
+| Allowed values | `1-7`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| Parameter type | dynamic        |
+| Documentation  | [logfiles.retention_days](https://go.microsoft.com/fwlink/?linkid=2274270)                                         |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### metrics.autovacuum_diagnostics
+
+| Attribute      | Value                                                      |
+|----------------|------------------------------------------------------------|
+| Category       | Customized Options |
+| Description    | Enables metrics collection for all table statistics within a database                                                                                                                       |
+| Data type      | boolean     |
+| Default value  | `off`               |
+| Allowed values | `on,off`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| Parameter type | dynamic        |
+| Documentation  | [metrics.autovacuum_diagnostics](https://go.microsoft.com/fwlink/?linkid=2274151)                                  |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### metrics.collector_database_activity
+
+| Attribute      | Value                                                      |
+|----------------|------------------------------------------------------------|
+| Category       | Customized Options |
+| Description    | Enables metrics collection for database and activity statistics                                                                                                                             |
+| Data type      | boolean     |
+| Default value  | `off`               |
+| Allowed values | `on,off`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| Parameter type | dynamic        |
+| Documentation  | [metrics.collector_database_activity](https://go.microsoft.com/fwlink/?linkid=2274151)                             |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### metrics.pgbouncer_diagnostics
+
+| Attribute      | Value                                                      |
+|----------------|------------------------------------------------------------|
+| Category       | Customized Options |
+| Description    | Enables metrics collection for PgBouncer.                                                                                                                                                   |
+| Data type      | boolean     |
+| Default value  | `off`               |
+| Allowed values | `on,off`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| Parameter type | dynamic        |
+| Documentation  | [metrics.pgbouncer_diagnostics](https://go.microsoft.com/fwlink/?linkid=2274151)                                   |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
 ### pgaudit.log
 
 | Attribute      | Value                                                      |
@@ -851,6 +987,176 @@ ms.topic: include
 | Allowed values | `[A-Za-z\\._]*`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 | Parameter type | dynamic        |
 | Documentation  | [pgaudit.role](https://github.com/pgaudit/pgaudit/blob/master/README.md)                                           |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### pgbouncer.default_pool_size
+
+| Attribute      | Value                                                      |
+|----------------|------------------------------------------------------------|
+| Category       | Customized Options |
+| Description    | How many server connections to allow per user/database pair.                                                                                                                                |
+| Data type      | integer     |
+| Default value  | `50`                |
+| Allowed values | `1-4950`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| Parameter type | dynamic        |
+| Documentation  | [pgbouncer.default_pool_size](https://www.pgbouncer.org/config.html)                                               |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### pgbouncer.enabled
+
+| Attribute      | Value                                                      |
+|----------------|------------------------------------------------------------|
+| Category       | Customized Options |
+| Description    | Denotes if pgBouncer service is enabled.                                                                                                                                                    |
+| Data type      | boolean     |
+| Default value  | `false`             |
+| Allowed values | `true, false`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| Parameter type | dynamic        |
+| Documentation  | [pgbouncer.enabled](https://www.pgbouncer.org/config.html)                                                         |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### pgbouncer.ignore_startup_parameters
+
+| Attribute      | Value                                                      |
+|----------------|------------------------------------------------------------|
+| Category       | Customized Options |
+| Description    | Comma-separated list of parameters that PgBouncer can ignore because they are going to be handled by the admin.                                                                             |
+| Data type      | string      |
+| Default value  |                     |
+| Allowed values | `[A-Za-z0-9_\\.,]*`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| Parameter type | dynamic        |
+| Documentation  | [pgbouncer.ignore_startup_parameters](https://www.pgbouncer.org/config.html)                                       |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### pgbouncer.max_client_conn
+
+| Attribute      | Value                                                      |
+|----------------|------------------------------------------------------------|
+| Category       | Customized Options |
+| Description    | Maximum number of client connections allowed.                                                                                                                                               |
+| Data type      | integer     |
+| Default value  | `5000`              |
+| Allowed values | `1-50000`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| Parameter type | dynamic        |
+| Documentation  | [pgbouncer.max_client_conn](https://www.pgbouncer.org/config.html)                                                 |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### pgbouncer.max_prepared_statements
+
+| Attribute      | Value                                                      |
+|----------------|------------------------------------------------------------|
+| Category       | Customized Options |
+| Description    | When this is set to a non-zero value PgBouncer tracks protocol-level named prepared statements related commands sent by the client in transaction and statement pooling mode.               |
+| Data type      | integer     |
+| Default value  | `0`                 |
+| Allowed values | `0-5000`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| Parameter type | dynamic        |
+| Documentation  | [pgbouncer.max_prepared_statements](https://www.pgbouncer.org/config.html#max_prepared_statements)                 |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### pgbouncer.min_pool_size
+
+| Attribute      | Value                                                      |
+|----------------|------------------------------------------------------------|
+| Category       | Customized Options |
+| Description    | Add more server connections to pool if below this number.                                                                                                                                   |
+| Data type      | integer     |
+| Default value  | `0`                 |
+| Allowed values | `0-4950`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| Parameter type | dynamic        |
+| Documentation  | [pgbouncer.min_pool_size](https://www.pgbouncer.org/config.html)                                                   |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### pgbouncer.pool_mode
+
+| Attribute      | Value                                                      |
+|----------------|------------------------------------------------------------|
+| Category       | Customized Options |
+| Description    | Specifies when a server connection can be reused by other clients.                                                                                                                          |
+| Data type      | enumeration |
+| Default value  | `transaction`       |
+| Allowed values | `session,transaction,statement`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| Parameter type | dynamic        |
+| Documentation  | [pgbouncer.pool_mode](https://www.pgbouncer.org/config.html)                                                       |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### pgbouncer.query_wait_timeout
+
+| Attribute      | Value                                                      |
+|----------------|------------------------------------------------------------|
+| Category       | Customized Options |
+| Description    | Maximum time (in seconds) queries are allowed to spend waiting for execution. If the query is not assigned to a server during that time, the client is disconnected.                        |
+| Data type      | integer     |
+| Default value  | `120`               |
+| Allowed values | `0-86400`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| Parameter type | dynamic        |
+| Documentation  | [pgbouncer.query_wait_timeout](https://www.pgbouncer.org/config.html)                                              |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### pgbouncer.server_idle_timeout
+
+| Attribute      | Value                                                      |
+|----------------|------------------------------------------------------------|
+| Category       | Customized Options |
+| Description    | If a server connection has been idle more than this many seconds it will be dropped. If 0 then timeout is disabled.                                                                         |
+| Data type      | integer     |
+| Default value  | `600`               |
+| Allowed values | `0-86400`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| Parameter type | dynamic        |
+| Documentation  | [pgbouncer.server_idle_timeout](https://www.pgbouncer.org/config.html)                                             |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### pgbouncer.stats_users
+
+| Attribute      | Value                                                      |
+|----------------|------------------------------------------------------------|
+| Category       | Customized Options |
+| Description    | Comma-separated list of database users that are allowed to connect and run read-only queries on the pgBouncer console.                                                                      |
+| Data type      | string      |
+| Default value  |                     |
+| Allowed values | `[A-Za-z0-9,@_\\-\\.]*`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| Parameter type | dynamic        |
+| Documentation  | [pgbouncer.stats_users](https://www.pgbouncer.org/config.html)                                                     |
 
 
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
@@ -1068,7 +1374,7 @@ ms.topic: include
 | Category       | Customized Options |
 | Description    | The role that run_maintenance() will run as. Default is postgres. Only a single role name is allowed.                                                                                       |
 | Data type      | string      |
-| Default value  | `postgres`          |
+| Default value  |                     |
 | Allowed values | `[A-Za-z\\._]*`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 | Parameter type | dynamic        |
 | Documentation  | [pg_partman_bgw.role](https://github.com/pgpartman/pg_partman)                                                     |
@@ -1293,6 +1599,23 @@ ms.topic: include
 | Allowed values | `DISABLE_ALL,ENABLE_ALL`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 | Parameter type | dynamic        |
 | Documentation  | [postgis.gdal_enabled_drivers](https://postgis.net/docs/postgis_gdal_enabled_drivers.html)                         |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### require_secure_transport
+
+| Attribute      | Value                                                      |
+|----------------|------------------------------------------------------------|
+| Category       | Customized Options |
+| Description    | Whether client connections to the server are required to use some form of secure transport.                                                                                                 |
+| Data type      | boolean     |
+| Default value  | `on`                |
+| Allowed values | `on,off`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| Parameter type | dynamic        |
+| Documentation  | [require_secure_transport](https://go.microsoft.com/fwlink/?linkid=2282200)                                        |
 
 
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]

@@ -1,13 +1,12 @@
 ---
 title: Migrate data from PostgreSQL to Azure Cosmos DB for Apache Cassandra account using Apache Kafka
 description: Learn how to use Kafka Connect to synchronize data from PostgreSQL to Azure Cosmos DB for Apache Cassandra in real time.
-author: seesharprun
-ms.service: cosmos-db
+author: theovankraay
+ms.service: azure-cosmos-db
 ms.subservice: apache-cassandra
 ms.topic: how-to
 ms.date: 04/02/2022
-ms.author: sidandrews
-ms.reviewer: abhishgu
+ms.author: thvankra
 ---
 
 # Migrate data from PostgreSQL to Azure Cosmos DB for Apache Cassandra account using Apache Kafka
@@ -256,5 +255,4 @@ You can continue to insert more data into PostgreSQL and confirm that the record
 * [Integrate Apache Kafka Connect on Azure Event Hubs (Preview) with Debezium for Change Data Capture](/azure/event-hubs/event-hubs-kafka-connect-debezium)
 * [Migrate data from Oracle to Azure Cosmos DB for Apache Cassandra using Arcion](oracle-migrate-cosmos-db-arcion.md)
 * [Provision throughput on containers and databases](../set-throughput.md)
-* [Partition key best practices](../partitioning-overview.md#choose-partitionkey)
 * [Estimate RU/s using the Azure Cosmos DB capacity planner](../estimate-ru-with-capacity-planner.md) articles

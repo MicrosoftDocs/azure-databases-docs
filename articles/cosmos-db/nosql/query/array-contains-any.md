@@ -4,12 +4,11 @@ titleSuffix: Azure Cosmos DB for NoSQL
 description: An Azure Cosmos DB for NoSQL system function that returns a boolean indicating whether the array contains any of the specified values.
 author: seesharprun
 ms.author: sidandrews
-ms.reviewer: jacodel
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: reference
 ms.devlang: nosql
-ms.date: 08/06/2024
+ms.date: 08/22/2024
 ms.custom: query-reference
 ---
 

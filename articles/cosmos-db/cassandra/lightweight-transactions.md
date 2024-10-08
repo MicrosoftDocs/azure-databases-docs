@@ -3,7 +3,7 @@ title: Lightweight Transactions in Azure Cosmos DB for Apache Cassandra
 description: Learn about Lightweight Transaction support in Azure Cosmos DB for Apache Cassandra
 author: IriaOsara
 ms.author: IriaOsara
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.subservice: apache-cassandra
 ms.topic: how-to
 ms.date: 11/19/2021

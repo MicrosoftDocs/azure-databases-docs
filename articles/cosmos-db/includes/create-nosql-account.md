@@ -1,13 +1,8 @@
 ---
-services: cosmos-db
-author: seesharprun
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: include
-ms.date: 11/07/2022
-ms.author: sidandrews
-ms.reviewer: mjbrown
-ms.custom: include file
+ms.date: 08/23/2024
 ---
 
 1. Sign in to the [Azure portal](https://portal.azure.com).

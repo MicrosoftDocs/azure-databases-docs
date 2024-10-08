@@ -1,8 +1,8 @@
 ---
 title: Create a table in Azure Cosmos DB for Table using .NET
 description: Learn how to create a table in your Azure Cosmos DB for Table account using the .NET SDK
-author: seesharprun
-ms.author: sidandrews
+author: sajeetharan
+ms.author: sasinnat
 ms.service: azure-cosmos-db
 ms.subservice: table
 ms.devlang: csharp
@@ -23,12 +23,6 @@ In Azure Cosmos DB, a table is analogous to a table in a relational database.
 
 > [!NOTE]
 > With API for Table accounts, when you create your first table, a default database is automatically created in your Azure Cosmos DB account.
-
-Here are some quick rules when naming a table:
-
-- Keep table names between 3 and 63 characters long
-- Table names can only contain lowercase letters, numbers, or the dash (-) character.
-- Table names must start with a lowercase letter or number.
 
 ## Create a table
 

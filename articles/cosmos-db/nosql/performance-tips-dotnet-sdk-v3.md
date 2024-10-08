@@ -1,12 +1,12 @@
 ---
 title: Azure Cosmos DB performance tips for .NET SDK v3
 description: Learn client configuration options to help improve Azure Cosmos DB .NET v3 SDK performance.
-author: seesharprun
+author: markjbrown
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: how-to
 ms.date: 07/12/2023
-ms.author: sidandrews
+ms.author: mjbrown
 ms.devlang: csharp
 ms.custom: devx-track-dotnet
 ---
@@ -93,12 +93,14 @@ Edit your `app.config` or `web.config` files:
 .NET V3 SDK default connection mode is direct with TCP protocol. You configure the connection mode when you create the `CosmosClient` instance in `CosmosClientOptions`.  To learn more about different connectivity options, see the [connectivity modes](sdk-connection-modes.md) article.
 
 ```csharp
-string connectionString = "<your-account-connection-string>";
-CosmosClient client = new CosmosClient(connectionString,
-new CosmosClientOptions
-{
-    ConnectionMode = ConnectionMode.Gateway // ConnectionMode.Direct is the default
-});
+CosmosClient client = new CosmosClient(
+  "<nosql-account-endpoint>",
+  tokenCredential
+  new CosmosClientOptions
+  {
+      ConnectionMode = ConnectionMode.Gateway // ConnectionMode.Direct is the default
+  }
+);
 ```
 
 **Ephemeral port exhaustion**

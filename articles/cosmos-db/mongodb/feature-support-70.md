@@ -3,7 +3,6 @@ title: 7.0 server version supported features and syntax in Azure Cosmos DB for M
 description: Learn about Azure Cosmos DB for MongoDB 7.0 server version supported features and syntax. Learn about supported database commands, query language support, data types, aggregation pipeline commands, and operators.
 author: avijitgupta
 ms.author: avijitgupta
-ms.reviewer: gahllevy
 ms.service: azure-cosmos-db
 ms.subservice: mongodb
 ms.topic: release-notes

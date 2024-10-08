@@ -4,7 +4,6 @@ titleSuffix: Azure Cosmos DB for MongoDB vCore
 description: Steps to upgrade Azure Cosmos DB for MongoDB vCore cluster from a lower version to latest version.
 author: suvishodcitus
 ms.author: suvishod
-ms.reviewer: gahllevy
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.custom:

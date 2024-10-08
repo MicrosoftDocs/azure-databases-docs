@@ -4,8 +4,7 @@ titleSuffix: Azure Cosmos DB
 description: Request the restoration of your Azure Cosmos DB data from a backup if you've lost or accidentally deleted a database or container.
 author: kanshiG
 ms.author: govindk
-ms.reviewer: sidandrews
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.topic: conceptual
 ms.date: 03/21/2023
 ---

@@ -1,9 +1,8 @@
 ---
 title: Change feed processor in Azure Cosmos DB 
 description: Learn how to use the Azure Cosmos DB change feed processor to read the change feed, and learn about the components of the change feed processor.
-author: seesharprun
-ms.author: sidandrews
-ms.reviewer: jucocchi
+author: markjbrown
+ms.author: mjbrown
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.devlang: csharp
@@ -271,7 +270,7 @@ Although the change feed processor can run in short-lived environments because t
 
 ## Role-based access requirements
 
-When using Microsoft Entra ID as authentication mechanism, make sure the identity has the proper [permissions](../how-to-setup-rbac.md#permission-model):
+When using Microsoft Entra ID as authentication mechanism, make sure the identity has the proper [permissions](security/reference-data-plane-actions.md):
 
 * On the monitored container:
   * `Microsoft.DocumentDB/databaseAccounts/readMetadata`

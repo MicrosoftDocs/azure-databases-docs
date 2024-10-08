@@ -3,7 +3,7 @@ title: Configure customer-managed keys on existing accounts
 titleSuffix: Azure Cosmos DB
 description: Store customer-managed keys in Azure Key Vault to use for encryption in your existing Azure Cosmos DB account with access control.
 author: dileepraotv-github
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.topic: how-to
 ms.date: 08/17/2023
 ms.author: turao
@@ -162,5 +162,4 @@ Yes. Go through the prerequisite section thoroughly. We recommend testing all sc
 
 * Learn more about [data encryption in Azure Cosmos DB](database-encryption-at-rest.md).
 * You can choose to add a second layer of encryption with your own keys, to learn more, see the [customer-managed keys](how-to-setup-cmk.md) article.
-* For an overview of Azure Cosmos DB security and the latest improvements, see [Azure Cosmos DB database security](database-security.md).
 * For more information about Microsoft certifications, see the [Azure Trust Center](https://azure.microsoft.com/support/trust-center/).

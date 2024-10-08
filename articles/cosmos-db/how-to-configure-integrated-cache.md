@@ -1,13 +1,12 @@
 ---
 title: How to configure the Azure Cosmos DB integrated cache
 description: Learn how to configure the Azure Cosmos DB integrated cache
-author: seesharprun
+author: jcocchi
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: conceptual
-ms.date: 08/29/2022
-ms.author: sidandrews
-ms.reviewer: jucocchi
+ms.date: 09/30/2024
+ms.author: jucocchi
 ---
 
 # How to configure the Azure Cosmos DB integrated cache
@@ -61,9 +60,6 @@ When you create a dedicated gateway, an integrated cache is automatically provis
 ## Adjust request consistency
 
 You must ensure the request consistency is session or eventual. If not, the request will always bypass the integrated cache. The easiest way to configure a specific consistency for all read operations is to [set it at the account-level](consistency-levels.md#configure-the-default-consistency-level). You can also configure consistency at the [request-level](how-to-manage-consistency.md#override-the-default-consistency-level), which is recommended if you only want a subset of your reads to utilize the integrated cache.
-
-> [!NOTE]
-> If you are using the Python SDK, you **must** explicitly set the consistency level for each request. The default account-level setting will not automatically apply.
 
 ## Adjust MaxIntegratedCacheStaleness
 
@@ -142,7 +138,7 @@ Bypassing the cache is supported in these versions of each SDK:
 | --- | ------------------ |
 | **.NET SDK v3** | *>= 3.39.0* |
 | **Java SDK v4** | *>= 4.49.0* |
-| **Node.js SDK** | Not supported |
+| **Node.js SDK** | *>= 4.1.0* |
 | **Python SDK**  | Not supported |
 
 ### [.NET](#tab/dotnet)
@@ -172,7 +168,16 @@ CosmosPagedFlux<MyClass> pagedFluxResponse = container.queryItems(
 
 ### [Node.js](#tab/nodejs)
 
-The bypass integrated cache request option isn't available in the Node.js SDK.
+```javascript
+    const queryRequestOptions = {
+      bypassIntegratedCache: true };
+    const querySpec = {
+      query: "SELECT * from c"
+    };
+    const { resources: items, requestCharge: queryCharge } = await container.items
+      .query(querySpec, queryRequestOptions)
+      .fetchAll();
+```
 
 ### [Python](#tab/python)
 

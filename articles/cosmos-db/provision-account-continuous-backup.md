@@ -2,11 +2,10 @@
 title: Provision an account with continuous backup and point in time restore in Azure Cosmos DB
 description: Learn how to provision an account with continuous backup and point in time restore using Azure portal, PowerShell, CLI and Resource Manager templates.
 author: kanshiG
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.topic: how-to
 ms.date: 05/02/2023
 ms.author: govindk
-ms.reviewer: mjbrown
 ms.custom: devx-track-azurepowershell, devx-track-azurecli, build-2023
 ms.devlang: azurecli
 ---

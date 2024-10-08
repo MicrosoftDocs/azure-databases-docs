@@ -1,11 +1,11 @@
 ---
 title: Use client-side encryption with Always Encrypted for Azure Cosmos DB
 description: Learn how to use client-side encryption with Always Encrypted for Azure Cosmos DB
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.topic: how-to
 ms.date: 04/04/2022
-ms.author: sidandrews
-author: seesharprun
+author: iriaosara
+ms.author: iriaosara
 ---
 
 # Use client-side encryption with Always Encrypted for Azure Cosmos DB
@@ -350,5 +350,4 @@ If you have flexibility in the way new encrypted properties can be added from a 
 
 ## Next steps
 
-- Get an overview of [secure access to data in Azure Cosmos DB](secure-access-to-data.md).
 - Learn more about [customer-managed keys for encryption-at-rest](how-to-setup-cmk.md)
