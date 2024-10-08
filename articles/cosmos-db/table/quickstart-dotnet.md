@@ -133,26 +133,6 @@ Parse the paginated results of the query by looping through each page of results
 
 :::code language="csharp" source="~/cosmos-db-table-dotnet-quickstart/src/web/Services/DemoService.cs" id="parse_results":::
 
-## Run the code
-
-This app creates an Azure Cosmos DB Table API table. The example then creates an item and then reads the exact same item back. Finally, the example creates a second item and then performs a query that should return multiple items. With each step, the example outputs metadata to the console about the steps it performed.
-
-To run the app, use a terminal to navigate to the application directory and run the application.
-
-```dotnetcli
-dotnet run
-```
-
-The output of the app should be similar to this example:
-
-```output
-Single product name: 
-Yamba Surfboard
-Multiple products:
-Yamba Surfboard
-Sand Surfboard
-```
-
 ## Clean up resources
 
 When you no longer need the Azure Cosmos DB for Table account, you can delete the corresponding resource group.
@@ -192,9 +172,13 @@ Remove-AzResourceGroup @parameters
 
 ---
 
-## Next steps
+## Related content
 
-In this quickstart, you learned how to create an Azure Cosmos DB for Table account, create a table, and manage entries using the .NET SDK. You can now dive deeper into the SDK to learn how to perform more advanced data queries and management tasks in your Azure Cosmos DB for Table resources.
+- [Node.js Quickstart](quickstart-nodejs.md)
+- [Python Quickstart](quickstart-python.md)
+- [Java Quickstart](quickstart-java.md)
+
+## Next step
 
 > [!div class="nextstepaction"]
 > [Get started with Azure Cosmos DB for Table and .NET](./how-to-dotnet-get-started.md)
