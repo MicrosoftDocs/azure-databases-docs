@@ -38,7 +38,7 @@ You can use access the Data Explorer directly and use your existing credentials 
 1. Next, select your Azure subscription and target account from the **Select a Database Account** menu.
 
     ![Screenshot of the 'Select a Database Account' menu in the Data Explorer.](media/data-explorer/select-database-account.png)
-
+   
 ## Access the Data Explorer from the Azure portal using your Azure subscription
 
 If you're already comfortable with the Azure portal, you can navigate directly from the in-portal Data Explorer to the standalone Data Explorer.
@@ -52,10 +52,10 @@ If you're already comfortable with the Azure portal, you can navigate directly f
 1. Next, select the **Open Full Screen** menu option.
 
     ![Screenshot of the Data Explorer page with the 'Open Full Screen' option highlighted.](media/data-explorer/open-full-screen.png)
-
+   
 1. In the **Open Full Screen** dialog, select **Open**.
 
-## Customize your data views with the Custom Column Selecor
+## Customize your data views with the Custom Column Selector
 
 The Custom Column Selector in Azure Cosmos DB Data Explorer allows you to customize your data views by selecting specific columns that are most relevant to your analysis when using the NoSQL API. Previously, in the Data Explorer items view, you could only see the partition key and ID columns. Now, with this new feature, you can select one or many properties from your document and create additional columns to easily view your data. 
 
@@ -153,12 +153,12 @@ In the Data Explorer, you can configure a limit to the request units per second 
 1. Select the **Settings** menu option.
 
     ![Screenshot of an Data Explorer page with the 'Open Settings' option highlighted.](media/data-explorer/open-settings.png)
-
+   
 1. In the **Settings** dialog, configure whether you want to **Enable RU threshold** and the actual **RU threshold** value.
 
     ![Screenshot of the individual settings to configure the request unit threshold.](media/data-explorer/configure-ru-threshold.png)
-
-    > [!TIP]
+   
+       > [!TIP]
     > The RU threshold is enabled automatically with a default value of **5,000** RUs.
 
 ## Use with Microsoft Entra authentication
@@ -171,21 +171,21 @@ You can use Microsoft Entra-based authentication within the explorer by enabling
 
 1. In the **Settings** dialog, configure whether you want to **`Enable Entra ID (RBAC)`** using one of three possible values:
 
-    | | Description |
-    | --- | --- |
-    | **Automatic (default)** | Role-based access control (RBAC) is automatically used if key-based authentication is disabled for your account. Otherwise, Data Explorer uses key-based authentication for data requests. |
-    | **True** | Role-based access control is always used for data requests. If role-based access control isn't configured correctly for the account or identity, then the requests fail. |
-    | **False** | Key-based authentication is always used for data requests. If key-based authentication is disabled, then the requests fail. |
+ | | Description |
+ | --- | --- |
+ | **Automatic (default)** | Role-based access control (RBAC) is automatically used if key-based authentication is disabled for your account. Otherwise, Data Explorer uses key-based authentication for data requests. |
+ | **True** | Role-based access control is always used for data requests. If role-based access control isn't configured correctly for the account or identity, then the requests fail. |
+ | **False** | Key-based authentication is always used for data requests. If key-based authentication is disabled, then the requests fail. |
 
-    ![Screenshot of the Microsoft Entra ID role-based access control setting and three potential values.](media/data-explorer/enable-entra-auth.png)
+```
+![Screenshot of the Microsoft Entra ID role-based access control setting and three potential values.](media/data-explorer/enable-entra-auth.png)
 
-    > [!NOTE]
-    > Changing this setting to an option that uses key-based authentication could trigger a request to retrieve the primary key on behalf of the identity that is signed in.
+   > [!NOTE]
+> Changing this setting to an option that uses key-based authentication could trigger a request to retrieve the primary key on behalf of the identity that is signed in.
+```1. Data Explorer will sign in automatically using your account. This might show a brief popup window without asking you for a credential entry. If automatic sign in fails or if popups are blocked in your browser, you must use the **Login for Entra ID RBAC** button (located on the Data Explorer command bar) and allow popups for Data Explorer prior to making any data requests.
 
-1. Now, select the **Login for Entra ID RBAC** option in the command bar of the explorer.
-
-    > [!TIP]
-    > This step is not necessary when using the Azure Cosmos DB Data Explorer (<https://cosmos.azure.com>). The Azure Cosmos DB Data Explorer also supports the option to manually set the value of the **`Enable Entra ID (RBAC)`** to `True` using the <https://cosmos.azure.com?feature.enableAadDataPlane=true> URL.
+       > [!TIP]
+    > The Azure Cosmos DB Data Explorer also supports the option to manually set the value of the **`Enable Entra ID (RBAC)`** to `True` using the <https://cosmos.azure.com?feature.enableAadDataPlane=true> URL.
 
 ## Known issues
 
