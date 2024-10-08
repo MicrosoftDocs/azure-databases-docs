@@ -5927,7 +5927,7 @@
     },
     {
       "source_path_from_root": "/articles/cosmos-db/attachments.md",
-      "redirect_url": "/previous-versions/azure/cosmos-db/attachments.md",
+      "redirect_url": "/previous-versions/azure/cosmos-db/attachments",
       "redirect_document_id": false
     }
   ]
