@@ -12,7 +12,7 @@ zone_pivot_groups: postgresql-server-version
 #### Azure-specific notes
 The default value for the `max_wal_size` server parameter is calculated when you provision the instance of Azure Database for PostgreSQL flexible server, based on the product name that you select for its compute. Any subsequent changes of product selection to the compute that supports the flexible server won't have any effect on the default value for the `max_wal_size` server parameter of that instance.
 
-Every time you change the product assigned to an instance, you should also adjust the value for the `max_wal_size` parameter according to the values listed in the following table.
+Every time you change the size of the disk assigned to the instance, you should also adjust the value for the `max_wal_size` parameter according to the values listed in the following table.
 
 The value is computed based on the size of the disk chosen for the instance, as indicated in the following table:
 
