@@ -6,7 +6,7 @@ author: meredithmooreux
 ms.author: merae
 ms.service: azure-cosmos-db
 ms.topic: how-to
-ms.date: 10/04/2024
+ms.date: 10/07/2024
 # CustomerIntent: As a database developer, I want to access the Data Explorer so that I can observe my data and make queries against my data.
 ---
 
@@ -54,6 +54,95 @@ If you're already comfortable with the Azure portal, you can navigate directly f
     ![Screenshot of the Data Explorer page with the 'Open Full Screen' option highlighted.](media/data-explorer/open-full-screen.png)
 
 1. In the **Open Full Screen** dialog, select **Open**.
+
+## Customize your data views with the Custom Column Selecor
+
+The Custom Column Selector in Azure Cosmos DB Data Explorer allows you to customize your data views by selecting specific columns that are most relevant to your analysis when using the NoSQL API. Previously, in the Data Explorer items view, you could only see the partition key and ID columns. Now, with this new feature, you can select one or many properties from your document and create additional columns to easily view your data. 
+
+1. Sign in to [Azure portal](https://portal.azure.com/).
+
+1. Navigate to your existing Azure Cosmos DB account.
+
+1. In the resource menu, select **Data Explorer**.
+
+1. Next, (Optional) select the **Open Full Screen** menu option.
+
+    ![Screenshot of the Data Explorer page with the 'Open Full Screen' option highlighted.](media/data-explorer/open-full-screen.png)
+
+1. In the **Open Full Screen** dialog, select **Open**.
+
+1. Once in Data Explorer, open the collection you want to query, select Items.
+
+1. Click on the ellipsis menu on the top right of any Column, select Edit Column
+
+1. Select the columns you want to display and save your settings.
+
+1. Your data view will now reflect only the selected columns, making it easier to focus on relevant data.
+
+1. **Remove a Custom Column**
+
+1. Once in Data Explorer, open the collection you want to query, select Items.
+
+1. Click on the ellipsis menu on the top right of any Column, select Remove Column.
+
+1. **Sort your Column View ascending or descending**
+ 
+1. Once in Data Explorer, open the collection you want to query, select Items.
+
+1. Click on the ellipsis menu on the top right of any Column, select Remove Column.
+
+1. **Reset your Column View**
+
+1. Once in Data Explorer, open the collection you want to query, select Items.
+
+1. Click on the ellipsis menu on the top right of any Column, select Edit Column.
+
+1. Select Reset to return to the default view. Or you can Clear your Filter History, Columns, and Viewport settings by selecting the gear icon in the top right Data Explorer Global menu and select Clear History.
+
+## Using Filter History
+
+Filter History enables you to quickly revisit and apply previous filters. This saves you from the repetitive task of manually reconstructing filters for recurring queries. With Filter History, you can access a log of your past filters and reapply them with a simple click.  This feature is particularly beneficial for users who perform regular analyses on similar datasets.
+
+1. **Apply a Saved Filter**
+
+1. Once in Data Explorer, open the collection you want to query, select Items.
+
+1. Click Edit Filter.
+
+1. Apply a filter to your data as you normally would.
+
+After applying the filter, your filter will be automatically saved and added to the Default filter list in the filter window Drop Down.
+
+1. To reapply a previous filter, click on the Edit Filter button.
+
+1. Clear any Filter from the filter window. This step is required to be able to view your saved Filters.
+
+1. Click the Drop Down in the filter window, and select teh desired filter from the list.
+
+1. Select Apply Filter
+
+1. **Clear your Filter History**
+
+1. In Data Explorer, click the gear icon in the top right corner of Data Explorer to access settings
+
+1. Select the Clear History button
+
+1. Confirm you want to clear your history.  This included filter column splitter positions, custom columns, and your tab layout.
+
+## Change your Query Window view
+
+We have introduced a new feature in the query view that allows you to switch between horizontal and vertical views for the query and results panel. You can easily toggle between these views by selecting the "Views" option in the command bar menu. 
+
+1. **Save your Query Window view preferences**
+
+1. In Data Explorer, click the gear icon in the top right corner of Data Explorer to access settings.
+
+1. Select "Default Query Results View" from the dropdown menu.
+
+1. Select either horizontal or vertical as your default view.
+
+1. Click Save to apply your settings.
+
 
 ## Configure request unit threshold
 
