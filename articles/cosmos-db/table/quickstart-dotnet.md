@@ -86,15 +86,14 @@ The client library is available through NuGet, as the `Microsoft.Azure.Cosmos` p
 
 ## Code examples
 
-* [Authenticate the client](#authenticate-the-client)
-* [Create a table](#create-a-table)
+* [Authenticate the clients](#authenticate-the-clients)
 * [Create an item](#create-an-item)
 * [Get an item](#get-an-item)
 * [Query items](#query-items)
 
 The sample code in the template uses a table named `cosmicworks-products`. The table contains details such as name, category, quantity, a unique identifier, and a sale flag for each product.
 
-### Authenticate the client
+### Authenticate the clients
 
 Application requests to most Azure services must be authorized. Use the `DefaultAzureCredential` type as the preferred way to implement a passwordless connection between your applications and Azure Cosmos DB for NoSQL. `DefaultAzureCredential` supports multiple authentication methods and determines which method should be used at runtime.
 
@@ -103,7 +102,7 @@ Application requests to most Azure services must be authorized. Use the `Default
 
 This sample creates a new instance of the `TableServiceClient` and `TableClient` classes and authenticates using a `DefaultAzureCredential` instance.
 
-:::code language="csharp" source="~/cosmos-db-table-dotnet-quickstart/src/web/Services/DemoService.cs" id="create_client":::
+:::code language="csharp" source="~/cosmos-db-table-dotnet-quickstart/src/web/Program.cs" id="create_client":::
 
 ### Create an item
 
