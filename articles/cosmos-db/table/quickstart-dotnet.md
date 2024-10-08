@@ -66,16 +66,23 @@ The client library is available through NuGet, as the `Microsoft.Azure.Cosmos` p
 1. If not already installed, install the `Azure.Data.Tables` package using `dotnet add package`.
 
     ```bash
-    dotnet add package Azure.Data.Tables
+    dotnet add package Azure.Data.Tables --version 12.*
     ```
 
 1. Also, install the `Azure.Identity` package if not already installed.
 
     ```bash
-    dotnet add package Azure.Identity
+    dotnet add package Azure.Identity --version 1.*
     ```
 
-1. Open and review the **src/web/Cosmos.Samples.Table.Quickstart.Web.csproj** file to validate that the `Microsoft.Azure.Cosmos` and `Azure.Identity` entries both exist.
+1. Open and review the **src/web/Cosmos.Samples.Table.Quickstart.Web.csproj** file to validate that the `Azure.Data.Tables` and `Azure.Identity` entries both exist.
+
+## Object model
+
+| Name | Description |
+| --- | --- |
+| <xref:Azure.Data.Tables.TableServiceClient> | This class is the primary client class and is used to manage account-wide metadata or databases. |
+| <xref:Azure.Data.Tables.TableClient> | This class represents the client for a table within the account. |
 
 ## Code examples
 
@@ -85,45 +92,34 @@ The client library is available through NuGet, as the `Microsoft.Azure.Cosmos` p
 * [Get an item](#get-an-item)
 * [Query items](#query-items)
 
-The sample code described in this article creates a table named ``adventureworks``. Each table row contains the details of a product such as name, category, quantity, and a sale indicator. Each product also contains a unique identifier.
-
-You use the following API for Table classes to interact with these resources:
-
-* [``TableServiceClient``](/dotnet/api/azure.data.tables.tableserviceclient) - This class provides methods to perform service level operations with Azure Cosmos DB for Table.
-* [``TableClient``](/dotnet/api/azure.data.tables.tableclient) - This class allows you to interact with tables hosted in the Azure Cosmos DB table API.
-* [``TableEntity``](/dotnet/api/azure.data.tables.tableentity) - This class is a reference to a row in a table that allows you to manage properties and column data.
+The sample code in the template uses a table named `cosmicworks-products`. The table contains details such as name, category, quantity, a unique identifier, and a sale flag for each product.
 
 ### Authenticate the client
 
-From the project directory, open the *Program.cs* file. In your editor, add a using directive for ``Azure.Data.Tables``.
+Application requests to most Azure services must be authorized. Use the `DefaultAzureCredential` type as the preferred way to implement a passwordless connection between your applications and Azure Cosmos DB for NoSQL. `DefaultAzureCredential` supports multiple authentication methods and determines which method should be used at runtime.
 
-:::code language="csharp" source="~/azure-cosmos-tableapi-dotnet/001-quickstart/Program.cs" id="using_directives":::
+> [!IMPORTANT]
+> You can also authorize requests to Azure services using passwords, connection strings, or other credentials directly. However, this approach should be used with caution. Developers must be diligent to never expose these secrets in an unsecure location. Anyone who gains access to the password or secret key is able to authenticate to the database service. `DefaultAzureCredential` offers improved management and security benefits over the account key to allow passwordless authentication without the risk of storing keys.
 
-Define a new instance of the ``TableServiceClient`` class using the constructor, and [``Environment.GetEnvironmentVariable``](/dotnet/api/system.environment.getenvironmentvariables) to read the credentials.
+This sample creates a new instance of the `TableServiceClient` and `TableClient` classes and authenticates using a `DefaultAzureCredential` instance.
 
-:::code language="csharp" source="~/azure-cosmos-tableapi-dotnet/001-quickstart/Program.cs"  id="client_credentials":::
-
-### Create a table
-
-Retrieve an instance of the `TableClient` using the `TableServiceClient` class. Create a new table if it doesn't already exist using the [``TableClient.CreateIfNotExistsAsync``](/dotnet/api/azure.data.tables.tableclient.createifnotexistsasync) method on the `TableClient`. This method returns a reference to the existing or newly created table.
-
-:::code language="csharp" source="~/azure-cosmos-tableapi-dotnet/001-quickstart/Program.cs" id="create_table" :::
+:::code language="csharp" source="~/cosmos-db-table-dotnet-quickstart/src/web/Services/DemoService.cs" id="create_client":::
 
 ### Create an item
 
 The easiest way to create a new item in a table is to create a class that implements the [``ITableEntity``](/dotnet/api/azure.data.tables.itableentity) interface. You can then add your own properties to the class to populate columns of data in that table row.
 
-:::code language="csharp" source="~/azure-cosmos-tableapi-dotnet/001-quickstart/Product.cs" id="type" :::
+:::code language="csharp" source="~/cosmos-db-table-dotnet-quickstart/src/web/Models/Product.cs" id="model":::
 
 Create an item in the collection using the `Product` class by calling [``TableClient.AddEntityAsync<T>``](/dotnet/api/azure.data.tables.tableclient.addentityasync).
 
-:::code language="csharp" source="~/azure-cosmos-tableapi-dotnet/001-quickstart/Program.cs" id="create_object_add" :::
+:::code language="csharp" source="~/cosmos-db-table-dotnet-quickstart/src/web/Services/DemoService.cs" id="create_entity":::
 
 ### Get an item
 
 You can retrieve a specific item from a table using the [``TableClient.GetEntityAsync<T>``](/dotnet/api/azure.data.tables.tableclient.getentity) method. Provide the `partitionKey` and `rowKey` as parameters to identify the correct row to perform a quick *point read* of that item.
 
-:::code language="csharp" source="~/azure-cosmos-tableapi-dotnet/001-quickstart/Program.cs" id="read_item" :::
+:::code language="csharp" source="~/cosmos-db-table-dotnet-quickstart/src/web/Services/DemoService.cs" id="read_entity":::
 
 ### Query items
 
@@ -132,7 +128,11 @@ After you insert an item, you can also run a query to get all items that match a
 > [!NOTE]
 > You can also query items using [OData](/rest/api/storageservices/querying-tables-and-entities) syntax. You can see an example of this approach in the [Query Data](./tutorial-query.md) tutorial.
 
-:::code language="csharp" source="~/azure-cosmos-tableapi-dotnet/001-quickstart/Program.cs" id="query_items" :::
+:::code language="csharp" source="~/cosmos-db-table-dotnet-quickstart/src/web/Services/DemoService.cs" id="query_entities":::
+
+Parse the paginated results of the query by looping through each page of results using asynchronous loop to determine if there are any results left at the start of each loop.
+
+:::code language="csharp" source="~/cosmos-db-table-dotnet-quickstart/src/web/Services/DemoService.cs" id="parse_results":::
 
 ## Run the code
 
