@@ -17,6 +17,15 @@ DiskANN is a scalable approximate nearest neighbor search algorithm for efficien
 
 The `pg_diskann` extension for Azure Database for PostgreSQL flexible server adds support for using the DiskANN for efficient vector indexing and searching.
 
+## Enroll in the `pg_diskann` Preview Feature
+`pg_diskann` for Azure Database for PostgreSQL - Flexible Server requires users to sign up via our Preview form. Follow the below steps to register:
+
+1. Open the [preview form](https://aka.ms/pg-diskann-form)
+2. Fill out all relevant details. We will need your Azure subscription ID for enablement.
+
+> [!NOTE]
+> After fill out the preview form it will take some time for your request to be approved. Confirmation will be sent to the email your signed up with.
+
 ## Enable `pg_diskann` extension
 
 Before you can enable `pg_diskann` on your Azure Database for PostgreSQL flexible server instance, you need to add it to your allowlist as described in [how to use PostgreSQL extensions](./concepts-extensions.md#how-to-use-postgresql-extensions) and check if correctly added by running `SHOW azure.extensions;`.
@@ -33,8 +42,8 @@ CREATE EXTENSION IF NOT EXISTS pg_diskann CASCADE;
 ```
 *This command enables `pgvector` if it hasn't already been installed in your PostgreSQL database.*
 
-> [!NOTE]  
-> To remove the extension from the currently connected database, use `DROP EXTENSION vector;`.
+> [!NOTE]
+> To remove the extension from the currently connected database use `DROP EXTENSION vector;`.
 
 ## Using `diskann` Index Access Method
 
@@ -51,6 +60,8 @@ INSERT INTO my_table (embedding) VALUES
 ('[1.0, 2.0, 3.0]'),
 ('[4.0, 5.0, 6.0]'),
 ('[7.0, 8.0, 9.0]');
+-- create a diskann index by using Cosine distance operator
+CREATE INDEX my_table_embedding_diskann_idx ON my_table USING diskann (embedding vector_cosine_ops)
 -- create a diskann index by using the L2 distance operator
 CREATE INDEX my_table_embedding_diskann_idx ON my_table USING diskann (embedding vector_l2_ops)
 ```
@@ -63,7 +74,7 @@ When creating an index with `diskann`, you can specify various parameters to con
 - `l_value_ib`: The size of the search list during index build (Defaults to 50)
 
 ```sql
-CREATE INDEX my_table_embedding_diskann_custom_idx ON my_table USING diskann (embedding vector_l2_ops)
+CREATE INDEX my_table_embedding_diskann_custom_idx ON my_table USING diskann (embedding vector_cosine_ops)
 WITH (
  max_neighbors = 48,
  l_value_ib = 100
