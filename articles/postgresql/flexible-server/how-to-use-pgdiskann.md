@@ -33,7 +33,7 @@ Before you can enable `pg_diskann` on your Azure Database for PostgreSQL flexibl
 :::image type="content" source="media/how-to-use-pgdiskann/select-diskann-azure-extension.png" alt-text="Screenshot of selecting pg_diskann in server parameters." lightbox="media/how-to-use-pgdiskann/select-diskann-azure-extension.png":::
 
 > [!IMPORTANT]
-> This preview feature is only available for newly deployed Azure Database for PostgreSQL Flexible Server instances. [Supplemental Terms of Use: Limited Access AI Services (Previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
+> This preview feature is only available for newly deployed Azure Database for PostgreSQL Flexible Server instances.
 
 Then, you can install the extension by connecting to your target database and running the [CREATE EXTENSION](https://www.postgresql.org/docs/current/static/sql-createextension.html) command. You need to repeat the command separately for every database in which you want the extension to be available.
 
