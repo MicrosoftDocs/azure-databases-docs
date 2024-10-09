@@ -42,7 +42,7 @@ If TCP connect to port 10260 fails, an environment firewall may be blocking the 
 
 
 #### Verify your connection string: 
-Only use the connection string provided in the portal. Avoid using any variations. Particularly, the connection string using mongodb+srv:// protocol and the c. prefixes aren't recommended. If the issue persists, share application/client-side driver logs for debugging connectivity issues with the team by submitting a support ticket.
+Only use the connection string provided in the Azure portal. Ensure that it includes the mongodb+srv:// protocol, as this is required for proper connectivity. Avoid using any variations or prefixes like c.. If you encounter issues with connectivity, share the application or client-side driver logs for debugging by submitting a support ticket.
 
 
 ## Next steps
