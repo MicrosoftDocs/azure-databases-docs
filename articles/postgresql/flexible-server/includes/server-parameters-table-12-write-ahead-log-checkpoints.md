@@ -88,8 +88,7 @@ ms.topic: include
 | Documentation  | [max_wal_size](https://www.postgresql.org/docs/12/runtime-config-wal.html#GUC-MAX-WAL-SIZE)                                 |
 
 
-[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
+[!INCLUDE [server-parameters-azure-notes-max-wal-size](./server-parameters-azure-notes-max-wal-size.md)]
 
 
 ### min_wal_size
