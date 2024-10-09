@@ -20,18 +20,18 @@ Based on the previous formula, the following table lists the values this server 
 
 | Memory size | azure_storage.blob_block_size_mb |
 | ----------- | -------------------------------- |
-|       2 GiB |                              128 |
-|       4 GiB |                              128 |
-|       8 GiB |                              256 |
-|      16 GiB |                              512 |
-|      32 GiB |                             1024 |
-|      48 GiB |                             1536 |
-|      64 GiB |                             2048 |
-|      80 GiB |                             2560 |
-|     128 GiB |                             3072 |
-|     160 GiB |                             3072 |
-|     192 GiB |                             3072 |
-|     256 GiB |                             3072 |
-|     384 GiB |                             3072 |
-|     432 GiB |                             3072 |
-|     672 GiB |                             3072 |
+|       2 GiB |                         128  MiB |
+|       4 GiB |                         128  MiB |
+|       8 GiB |                         256  MiB |
+|      16 GiB |                         512  MiB |
+|      32 GiB |                        1024  MiB |
+|      48 GiB |                        1536  MiB |
+|      64 GiB |                        2048  MiB |
+|      80 GiB |                        2560  MiB |
+|     128 GiB |                        3072  MiB |
+|     160 GiB |                        3072  MiB |
+|     192 GiB |                        3072  MiB |
+|     256 GiB |                        3072  MiB |
+|     384 GiB |                        3072  MiB |
+|     432 GiB |                        3072  MiB |
+|     672 GiB |                        3072  MiB |
