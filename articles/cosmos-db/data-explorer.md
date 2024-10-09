@@ -181,7 +181,8 @@ You can use Microsoft Entra-based authentication within the explorer by enabling
 
    > [!NOTE]
 > Changing this setting to an option that uses key-based authentication could trigger a request to retrieve the primary key on behalf of the identity that is signed in.
-```1. Data Explorer will sign in automatically using your account. This might show a brief popup window without asking you for a credential entry. If automatic sign in fails or if popups are blocked in your browser, you must use the **Login for Entra ID RBAC** button (located on the Data Explorer command bar) and allow popups for Data Explorer prior to making any data requests.
+
+1. Data Explorer will sign in automatically using your account. This might show a brief popup window without asking you for a credential entry. If automatic sign in fails or if popups are blocked in your browser, you must use the **Login for Entra ID RBAC** button (located on the Data Explorer command bar) and allow popups for Data Explorer prior to making any data requests.
 
     > [!TIP]
     > The Azure Cosmos DB Data Explorer also supports the option to manually set the value of the **`Enable Entra ID (RBAC)`** to `True` using the <https://cosmos.azure.com?feature.enableAadDataPlane=true> URL.
