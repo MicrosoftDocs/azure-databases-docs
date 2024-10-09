@@ -17,3 +17,19 @@ Every time you change the product assigned to an instance, you should also adjus
 In virtual machines with up to 4 vCores, the value computed for `wal_buffers` is `2048`.
 
 In virtual machines with more than 4 vCores, the value computed for `wal_buffers` is `16384`.
+
+Based on the previous formula, the following table lists the values this server parameter would be set to depending on the amount of memory provisioned:
+
+| vCores | wal_buffers |
+| ------ | ----------- |
+|      1 |        2048 |
+|      2 |        2048 |
+|      4 |        2048 |
+|      8 |       16384 |
+|     12 |       16384 |
+|     16 |       16384 |
+|     20 |       16384 |
+|     32 |       16384 |
+|     48 |       16384 |
+|     64 |       16384 |
+|     96 |       16384 |

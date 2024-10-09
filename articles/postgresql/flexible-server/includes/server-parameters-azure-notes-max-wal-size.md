@@ -16,17 +16,17 @@ Every time you change the size of the disk assigned to the instance, you should 
 
 The value is computed based on the size of the disk chosen for the instance, as indicated in the following table:
 
-| For disks of up-to | max_wal_size |
-| ------------------ | ------------ |
-|             32 GiB |         2048 |
-|             64 GiB |         4096 |
-|            128 GiB |        12288 |
-|            256 GiB |        20480 |
-|            512 GiB |        25600 |
-|            512 GiB |        25600 |
-|              1 TiB |        30720 |
-|              2 TiB |        40960 |
-|              4 TiB |        40960 |
-|              8 TiB |        65536 |
-|             16 TiB |        65536 |
-|             32 TiB |        65536 |
+| Disks size | max_wal_size |
+| ---------- | ------------ |
+|     32 GiB |    2048  MiB |
+|     64 GiB |    4096  MiB |
+|    128 GiB |   12288  MiB |
+|    256 GiB |   20480  MiB |
+|    512 GiB |   25600  MiB |
+|    512 GiB |   25600  MiB |
+|      1 TiB |   30720  MiB |
+|      2 TiB |   40960  MiB |
+|      4 TiB |   40960  MiB |
+|      8 TiB |   65536  MiB |
+|     16 TiB |   65536  MiB |
+|     32 TiB |   65536  MiB |
