@@ -26,7 +26,7 @@ The code examples in this article require the [pg](https://rubygems.org/gems/pg)
 
 Use the following code to connect and create a table by using the CREATE TABLE SQL statement, then add rows to the table by using the INSERT INTO SQL statement. The code uses a `PG::Connection` object with constructor to connect to Azure Cosmos DB for PostgreSQL. Then it calls method `exec()` to run the DROP, CREATE TABLE, and INSERT INTO commands. The code checks for errors using the `PG::Error` class. Then it calls method `close()` to close the connection before terminating.
 
-In the code, replace \<cluster> with your cluster name and \<password> with your administrator password.
+In the code, replace \<cluster> with your cluster name and \<password> with your administrator password or Microsoft Entra ID token.
 
 ```ruby
 require 'pg'

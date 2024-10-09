@@ -40,7 +40,7 @@ Your cluster has a default database named `citus`. To connect to the database, y
 
 1. Paste your psql connection string into the shell.
 
-1. In the connection string, replace `{your_password}` with your cluster password, and then press Enter.
+1. In the connection string, replace `{your_password}` with your cluster password or Microsoft Entra ID token, and then press Enter.
 
    :::image type="content" source="media/quickstart-connect-psql/cloud-shell-run-psql.png" alt-text="Screenshot that shows running psql in the Cloud Shell.":::
 
