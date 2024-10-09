@@ -6,7 +6,7 @@ ms.author: jucocchi
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: conceptual
-ms.date: 08/29/2022
+ms.date: 10/08/2024
 ---
 
 # Azure Cosmos DB dedicated gateway - Overview
@@ -90,10 +90,7 @@ Like nodes within a cluster, dedicated gateway nodes across regions are independ
 
 ## Limitations
 
-The dedicated gateway has the following limitations:
-
-- Dedicated gateways are only supported on API for NoSQL accounts
-- You can't use [role-based access control (RBAC)](nosql/security/index.md) to authenticate data plane requests routed through the dedicated gateway
+Dedicated gateways are only supported on API for NoSQL accounts.
 
 
 ## Next steps
