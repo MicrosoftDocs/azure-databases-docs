@@ -10,8 +10,6 @@ ms.date: 10/09/2024
 # CustomerIntent: As a developer, I want to use the Azure Cosmos DB emulator so that I can develop my application against a database during development.
 ---
 
-> [!Tip] 
-> Visit our new **[Samples Gallery](https://aka.ms/AzureCosmosDB/Gallery)** for the latest samples for building new apps
 
 # What is the Azure Cosmos DB emulator?
 
@@ -19,6 +17,10 @@ The Azure Cosmos DB emulator provides a local environment that emulates the Azur
 
 > [!IMPORTANT]
 > We do not recommend the use of the emulator for production workloads.
+
+> [!Tip] 
+> Visit our new **[Samples Gallery](https://aka.ms/AzureCosmosDB/Gallery)** for the latest samples for building new apps
+
 
 ## Differences between the emulator and cloud service
 
