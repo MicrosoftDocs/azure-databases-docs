@@ -71,7 +71,7 @@ ms.topic: include
 | Documentation  | [huge_pages](https://www.postgresql.org/docs/13/runtime-config-resource.html#GUC-HUGE-PAGES)                                 |
 
 
-[!INCLUDE [server-parameters-azure-notes-huge_pages](./server-parameters-azure-notes-huge_pages.md)]
+[!INCLUDE [server-parameters-azure-notes-huge-pages](./server-parameters-azure-notes-huge-pages.md)]
 
 
 
@@ -105,7 +105,7 @@ ms.topic: include
 | Documentation  | [maintenance_work_mem](https://www.postgresql.org/docs/13/runtime-config-resource.html#GUC-MAINTENANCE-WORK-MEM)             |
 
 
-[!INCLUDE [server-parameters-azure-notes-maintenance_work_mem](./server-parameters-azure-notes-maintenance_work_mem.md)]
+[!INCLUDE [server-parameters-azure-notes-maintenance-work-mem](./server-parameters-azure-notes-maintenance-work-mem.md)]
 
 
 
@@ -156,7 +156,7 @@ ms.topic: include
 | Documentation  | [shared_buffers](https://www.postgresql.org/docs/13/runtime-config-resource.html#GUC-SHARED-BUFFERS)                         |
 
 
-[!INCLUDE [server-parameters-azure-notes-shared_buffers](./server-parameters-azure-notes-shared_buffers.md)]
+[!INCLUDE [server-parameters-azure-notes-shared-buffers](./server-parameters-azure-notes-shared-buffers.md)]
 
 
 
@@ -207,7 +207,7 @@ ms.topic: include
 | Documentation  | [work_mem](https://www.postgresql.org/docs/13/runtime-config-resource.html#GUC-WORK-MEM)                                     |
 
 
-[!INCLUDE [server-parameters-azure-notes-work_mem](./server-parameters-azure-notes-work_mem.md)]
+[!INCLUDE [server-parameters-azure-notes-work-mem](./server-parameters-azure-notes-work-mem.md)]
 
 
 
