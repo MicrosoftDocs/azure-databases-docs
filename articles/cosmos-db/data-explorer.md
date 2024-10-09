@@ -177,7 +177,6 @@ You can use Microsoft Entra-based authentication within the explorer by enabling
  | **True** | Role-based access control is always used for data requests. If role-based access control isn't configured correctly for the account or identity, then the requests fail. |
  | **False** | Key-based authentication is always used for data requests. If key-based authentication is disabled, then the requests fail. |
 
-```
 ![Screenshot of the Microsoft Entra ID role-based access control setting and three potential values.](media/data-explorer/enable-entra-auth.png)
 
    > [!NOTE]
