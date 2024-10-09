@@ -23,4 +23,24 @@ The default value for the `maintenance_work_mem` server parameter is calculated 
 
 Every time you change the product assigned to an instance, you should also adjust the value for the `maintenance_work_mem` parameter according to the values in the following formula.
 
-The formula used to compute the value of `maintenance_work_mem` is `(82.5 + log(maintenance_work_mem) + 40) * 1024`.
+The formula used to compute the value of `maintenance_work_mem` is `(long)(82.5 * ln(memoryGiB) + 40) * 1024`.
+
+Based on the previous formula, the following table lists the values this server parameter would be set to depending on the amount of memory provisioned:
+
+| Memory size | maintenance_work_mem |
+| ----------- | -------------------- |
+|       2 GiB |                99328 |
+|       4 GiB |               157696 |
+|       8 GiB |               216064 |
+|      16 GiB |               274432 |
+|      32 GiB |               332800 |
+|      48 GiB |               367616 |
+|      64 GiB |               392192 |
+|      80 GiB |               410624 |
+|     128 GiB |               450560 |
+|     160 GiB |               468992 |
+|     192 GiB |               484352 |
+|     256 GiB |               508928 |
+|     384 GiB |               542720 |
+|     432 GiB |               552960 |
+|     672 GiB |               590848 |
