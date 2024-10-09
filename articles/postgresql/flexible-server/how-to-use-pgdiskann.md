@@ -24,7 +24,7 @@ The `pg_diskann` extension for Azure Database for PostgreSQL flexible server add
 2. Fill out all relevant details. We will need your Azure subscription ID for enablement.
 
 > [!NOTE]
-> After fill out the preview form it will take some time for your request to be approved. Confirmation will be sent to the email your signed up with.
+> After fill out the preview form it will take some time for your request to be approved. Confirmation will be sent to your email.
 
 ## Enable `pg_diskann` extension
 
