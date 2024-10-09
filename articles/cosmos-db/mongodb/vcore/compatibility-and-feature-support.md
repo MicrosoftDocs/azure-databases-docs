@@ -22,21 +22,19 @@ The following table lists commands not supported/restricted by the database. As 
 ## Aggregation Pipeline Stages & Aggregators
 
 <table>
-<tr><td><b>Category</b></td><td><b>Command</b></td><td><b>Reason</b></td></tr>
+<tr><td><b>Command</b></td><td><b>Reason</b></td></tr>
 
-<tr><td rowspan="7">Aggregation Pipeline Stages</td><td>$listLocalSessions</td><td rowspan="5">Restricted to Azure Portal/CLI.</td></tr>
-<tr><td>$listSessions</td></tr>
+<tr><td>$planCacheStats</td><td rowspan="1">Obsolete on MongoDB vCore, as the query plan cache is automatically managed by the service.</td></tr>
+
+
+<tr><td>$accumulator</td><td rowspan="3">These commands require a JavaScript engine to be hosted on the database server, enabling users to run arbitrary commands. This can pose significant security risks, including the potential for injection attacks or execution of malicious code. Due to the associated security risks and low demand from customers, these commands are currently not supported. </td></tr>
+<tr><td>$function</td></tr>
+<tr><td>$where</td></tr>
+
+<tr><td>$searchMeta</td><td rowspan="4">Not prioritized yet due to weak demand—support will be added in the future.</td></tr>
 <tr><td>$listSearchIndexes</td></tr>
 <tr><td>$listSampledQueries</td></tr>
-<tr><td>$$searchMeta</td></tr>
-<tr><td>$planCacheStats</td><td rowspan="2">Privileged operations. Will be managed by the service.</td></tr>
 <tr><td>$shardedDataDistribution</td></tr>
-
-<tr><td rowspan="1">Accumulators</td><td>$accumulator</td><td rowspan="1">Not supported. Require JS engine to be hosted on DB and allows CX to run arbitrary JS commands.</td></tr>
-
-<tr><td rowspan="1">Custom Aggregation Expression Operators</td><td>$function</td><td rowspan="1">Not supported. Require JS engine to be hosted on DB and allows CX to run arbitrary JS commands.</td></tr>
-
-<tr><td rowspan="1">Query & Projection Operators</td><td>$where</td><td rowspan="1">Not supported. Require JS engine to be hosted on DB and allows CX to run arbitrary JS commands.</td></tr>
 
 </table>
 
@@ -44,26 +42,26 @@ The following table lists commands not supported/restricted by the database. As 
 ## Database Commands
 
 <table>
-<tr><td><b>Category</b></td><td><b>Command</b></td><td><b>Reason</b></td></tr>
+<tr><td><b>Command Type</b></td><td><b>Reason</b></td></tr>
 
-<tr><td rowspan="1">Query Plan Cache Commands</td><td>All</td><td rowspan="1">These commands will be managed by service.</td></tr>
+<tr><td rowspan="1">Query plan cache commands</td><td rowspan="1">Obsolete on MongoDB vCore, as the query plan cache is automatically managed by the service.</td></tr>
 
-<tr><td rowspan="1">User/Role Management Commands</td><td>All</td><td rowspan="1">Restricted via. Azure Portal/CLI. (AAD/RBAC)</td></tr>
+<tr><td rowspan="1">User/Role management commands</td><td rowspan="1">User and role management will be supported using Microsoft Entra ID (formerly Azure Active Directory) and RBAC, eliminating the need for database commands.</td></tr>
 
-<tr><td rowspan="1">Replication Commands</td><td>All</td><td rowspan="1">Replication will be managed by the service.</td></tr>
+<tr><td rowspan="1">Replication commands</td><td rowspan="1">Obsolete on MongoDB vCore, as replication is fully managed by the service.</td></tr>
 
-<tr><td rowspan="1">Sharding Commands</td><td>All (Except $enableSharding, $isdbgrid, $reshardCollection and $shardCollection) </td><td rowspan="1">Sharding will be managed by the service.</td></tr>
+<tr><td rowspan="1">Sharding commands (except: getShardMap, balancerStart, balancerStatus, balancerStop)</td><td rowspan="1">With MongoDB vCore, we manage sharding for you, so you can focus on more critical tasks. However, you still have control over adding new shards, rebalancing shards, and retrieving a shard map whenever you need it.</td></tr>
 
-<tr><td rowspan="2">Session Commands</td><td>$killAllSessionsByPattern</td><td rowspan="2">Restricted via. Azure Portal/CLI.</td></tr>
-<tr><td>$killSessions</td></tr>
+<tr><td rowspan="1">Session commands ($killAllSessionsByPattern, $killSessions) </td><td rowspan="1">While most session commands are supported, a few have been excluded due to low demand and potential security risks.</td></tr>
 
-<tr><td rowspan="1">Administration Commands</td><td>All</td><td rowspan="1">High privilege operations. Will not be supported due to security concerns.</td></tr>
+<tr><td rowspan="1">Administration commands</td><td rowspan="1">As a PaaS service, MongoDB vCore fully manages all high privilege operations on your behalf.</td></tr>
 
-<tr><td rowspan="1">Diagnostic Commands</td><td>All</td><td rowspan="1">Offered using Azure Diagnostic Logging.</td></tr>
+<tr><td rowspan="1">Diagnostic commands</td><td rowspan="2">MongoDB vCore comes pre-loaded with <a href="https://learn.microsoft.com/azure/cosmos-db/mongodb/vcore/how-to-monitor-diagnostics-logs" target="_blank">Azure Diagnostic Logging</a>. Simply enable it for your cluster, and you'll be all set to explore server logs using Kusto Query Language (KQL).</td></tr>
 
-<tr><td rowspan="1">Free Monitoring Commands</td><td>All</td><td rowspan="1">Offered using Azure Monitor.</td></tr>
+<tr><td>Auditing commands</td></tr>
 
-<tr><td rowspan="1">Auditing Commands</td><td>All</td><td rowspan="1">Offered using Azure Diagnostic Logging.</td></tr>
+<tr><td rowspan="1">Monitoring commands</td><td rowspan="1">Monitoring server utilization metrics such as CPU, memory, storage, IOPS etc. is now easy with the integrated <a href="https://learn.microsoft.com/en-us/azure/cosmos-db/mongodb/vcore/monitor-metrics" target="_blank">Azure Monitor</a>, all at no additional cost.</td></tr>
+
 
 </table>
 
