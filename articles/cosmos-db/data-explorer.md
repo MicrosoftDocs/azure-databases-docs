@@ -68,7 +68,7 @@ The Custom Column Selector in Azure Cosmos DB Data Explorer allows you to custom
 1. Next, (Optional) select the **Open Full Screen** menu option.
 
     ![Screenshot of the Data Explorer page with the 'Open Full Screen' option highlighted.](media/data-explorer/open-full-screen.png)
-
+   
 1. In the **Open Full Screen** dialog, select **Open**.
 
 1. Once in Data Explorer, open the collection you want to query, select Items.
@@ -158,7 +158,7 @@ In the Data Explorer, you can configure a limit to the request units per second 
 
     ![Screenshot of the individual settings to configure the request unit threshold.](media/data-explorer/configure-ru-threshold.png)
    
-    > [!TIP]
+       > [!TIP]
     > The RU threshold is enabled automatically with a default value of **5,000** RUs.
 
 ## Use with Microsoft Entra authentication
@@ -180,7 +180,7 @@ You can use Microsoft Entra-based authentication within the explorer by enabling
 ![Screenshot of the Microsoft Entra ID role-based access control setting and three potential values.](media/data-explorer/enable-entra-auth.png)
 
    > [!NOTE]
-    > Changing this setting to an option that uses key-based authentication could trigger a request to retrieve the primary key on behalf of the identity that is signed in.
+   > Changing this setting to an option that uses key-based authentication could trigger a request to retrieve the primary key on behalf of the identity that is signed in.
 
 1. Data Explorer will sign in automatically using your account. This might show a brief popup window without asking you for a credential entry. If automatic sign in fails or if popups are blocked in your browser, you must use the **Login for Entra ID RBAC** button (located on the Data Explorer command bar) and allow popups for Data Explorer prior to making any data requests.
 
