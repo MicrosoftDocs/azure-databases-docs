@@ -7,10 +7,13 @@ ms.service: azure-cosmos-db
 ms.custom:
   - build-2024
 ms.topic: conceptual
-ms.date: 07/23/2024
+ms.date: 10/09/2024
 ---
 
 # Vector database
+
+> [!Tip] 
+> Visit our new **[Samples Gallery](https://aka.ms/AzureCosmosDB/Gallery/AI)** for the latest Vector Database and RAG Pattern App Samples
 
 [!INCLUDE[NoSQL, MongoDB vCore, PostgreSQL](includes/appliesto-nosql-mongodbvcore-postgresql.md)]
 

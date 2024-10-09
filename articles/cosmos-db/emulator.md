@@ -6,9 +6,12 @@ author: sajeetharan
 ms.author: sasinnat
 ms.service: azure-cosmos-db
 ms.topic: concept-article
-ms.date: 06/20/2024
+ms.date: 10/09/2024
 # CustomerIntent: As a developer, I want to use the Azure Cosmos DB emulator so that I can develop my application against a database during development.
 ---
+
+> [!Tip] 
+> Visit our new **[Samples Gallery](https://aka.ms/AzureCosmosDB/Gallery)** for the latest samples for building new apps
 
 # What is the Azure Cosmos DB emulator?
 

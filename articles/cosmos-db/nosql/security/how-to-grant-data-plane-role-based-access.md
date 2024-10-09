@@ -8,7 +8,7 @@ ms.reviewer: iriaosara
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: how-to
-ms.date: 10/01/2024
+ms.date: 10/09/2024
 zone_pivot_groups: azure-interface-cli-powershell-bicep
 #Customer Intent: As a security user, I want to grant an identity data-plane access to Azure Cosmos DB for NoSQL, so that my developer team can use the SDK of their choice with minimal code change.
 ---
@@ -20,6 +20,9 @@ zone_pivot_groups: azure-interface-cli-powershell-bicep
 :::image type="complex" source="media/how-to-grant-control-plane-role-based-access/map.svg" border="false" alt-text="Diagram of the current location ('Role-based access control') in the sequence of the deployment guide.":::
 Diagram of the sequence of the deployment guide including these locations, in order: Overview, Concepts, Prepare, Role-based access control, Network, and Reference. The 'Role-based access control' location is currently highlighted.
 :::image-end:::
+
+> [!Tip] 
+> Visit our new **[Samples Gallery](https://aka.ms/AzureCosmosDB/Gallery)** for the latest samples for building new apps
 
 This article walks through the steps to grant an identity access to manage data in an Azure Cosmos DB for NoSQL account.
 
