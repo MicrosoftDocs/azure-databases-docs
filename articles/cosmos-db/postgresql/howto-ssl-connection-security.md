@@ -43,8 +43,12 @@ Below is an example of the psql connection string:
 ```
 psql "sslmode=verify-full sslrootcert=DigiCertGlobalRootG2.crt.pem host=c-mydemocluster.12345678901234.postgres.cosmos.azure.com dbname=citus user=citus password=your_pass"
 ```
+
 > [!TIP]
 > Confirm that the value passed to `sslrootcert` matches the file path for the certificate you saved.
+
+> [!NOTE]
+> For the password, use your connection password or Microsoft Entra ID token. For more information, see [authentication options](how-to-configure-authentication.md).
 
 ## Next steps
 Increase security further with [Firewall rules in Azure Cosmos DB for PostgreSQL](concepts-firewall-rules.md).
