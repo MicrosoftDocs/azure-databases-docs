@@ -230,7 +230,7 @@ The time taken for step #2 depends on the transactions that occur on the source.
     - For Problem type, select Migrating to Azure DB for PostgreSQL.
     - For Problem subtype, select migrating from single to flexible server.
 
-> **WARNING:**  
+> [!WARNING]
 > This article is not for Azure Database for PostgreSQL - Flexible Server users. It is for Azure Database for PostgreSQL - Single Server customers who need to upgrade to Azure Database for PostgreSQL - Flexible Server.
 
 We know migrating services can be frustrating, and we apologize in advance for any inconvenience this might cause you. You can choose what scenario best works for you and your environment.
