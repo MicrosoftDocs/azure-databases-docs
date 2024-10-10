@@ -46,7 +46,7 @@ The following table lists commands not supported/restricted by the database. As 
 
 <tr><td rowspan="1">Query plan cache commands</td><td rowspan="1">Obsolete on MongoDB vCore, as the query plan cache is automatically managed by the service.</td></tr>
 
-<tr><td rowspan="1">User/Role management commands</td><td rowspan="1">User and role management will be supported using Microsoft Entra ID (formerly Azure Active Directory) and RBAC, eliminating the need for database commands.</td></tr>
+<tr><td rowspan="1">User/Role management commands</td><td rowspan="1">As a native Azure service, user and role management are integrated in the Azure ecosystem across services, eliminating the need for these database commands from the community version.</td></tr>
 
 <tr><td rowspan="1">Replication commands</td><td rowspan="1">Obsolete on MongoDB vCore, as replication is fully managed by the service.</td></tr>
 
