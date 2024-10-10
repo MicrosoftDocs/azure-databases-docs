@@ -540,7 +540,7 @@
     - name: Designing resilient applications
       href: conceptual-resilient-sdk-applications.md
     - name: Designing multitenant applications
-      href: /azure/architecture/guide/multitenant/service/cosmos-db?toc=/azure/cosmos-db/nosql/toc.yml&bc=/azure/cosmos-db/breadcrumb/toc.yml
+      href: /azure/architecture/guide/multitenant/service/cosmos-db?toc=/azure/cosmos-db/nosql/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
     - name: Connectivity modes
       href: sdk-connection-modes.md
   - name: Operations on containers and items
