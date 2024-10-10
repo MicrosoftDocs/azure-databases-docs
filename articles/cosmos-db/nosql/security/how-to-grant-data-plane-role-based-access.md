@@ -53,6 +53,13 @@ First, you must prepare a role definition with a list of `dataActions` to grant 
 
 ### [Built-in definition](#tab/built-in-definition)
 
+> [!IMPORTANT]
+> Obtaining an existing data plane role definition requires these control plane permissions:
+>
+> - `Microsoft.DocumentDB/databaseAccounts/sqlRoleDefinitions/read`
+>
+> For more information, see [grant control plane role-based access](how-to-grant-control-plane-role-based-access.md).
+
 ::: zone pivot="azure-interface-cli,azure-interface-bicep"
 
 List all of the role definitions associated with your Azure Cosmos DB for NoSQL account using [`az cosmosdb sql role definition list`](/cli/azure/cosmosdb/sql/role/definition#az-cosmosdb-sql-role-definition-list). Review the output and locate the role definition named **Cosmos DB Built-in Data Contributor**. The output contains the unique identifier of the role definition in the `id` property. Record this value as it is required to use in the assignment step later in this guide.
@@ -123,6 +130,14 @@ Permissions.NotDataActions :
 ::: zone-end
 
 ### [Custom definition](#tab/custom-definition)
+
+> [!IMPORTANT]
+> Creating a new data plane role definition requires these control plane permissions:
+>
+> - `Microsoft.DocumentDB/databaseAccounts/sqlRoleDefinitions/read`
+> - `Microsoft.DocumentDB/databaseAccounts/sqlRoleDefinitions/write`
+>
+> For more information, see [grant control plane role-based access](how-to-grant-control-plane-role-based-access.md).
 
 > [!WARNING]
 > Azure Cosmos DB for NoSQL's native role-based access control doesn't support the `notDataActions` property. Any action that is not specified as an allowed `dataAction` is excluded automatically.
@@ -329,6 +344,15 @@ Permissions.NotDataActions :
 ## Assign role to identity
 
 Now, assign the newly defined role to an identity so that your applications can access data in Azure Cosmos DB for NoSQL.
+
+> [!IMPORTANT]
+> Creating a new data plane role assignment requires these control plane permissions:
+>
+> - `Microsoft.DocumentDB/databaseAccounts/sqlRoleDefinitions/read`
+> - `Microsoft.DocumentDB/databaseAccounts/sqlRoleAssignments/read`
+> - `Microsoft.DocumentDB/databaseAccounts/sqlRoleAssignments/write`
+>
+> For more information, see [grant control plane role-based access](how-to-grant-control-plane-role-based-access.md).
 
 ::: zone pivot="azure-interface-cli"
 
