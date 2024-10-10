@@ -7,7 +7,7 @@ ms.author: nlarin
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: conceptual
-ms.date: 10/03/2024
+ms.date: 10/08/2024
 ---
 
 # Compute and storage configurations for Azure Cosmos DB for MongoDB vCore clusters
@@ -47,7 +47,7 @@ available to each shard in the cluster.
 | 512               | 3,500†       |
 | 1,024             | 5,000        |
 | 2,048             | 7,500        |
-| 4,096             | 7,500        |
+| 4,095             | 7,500        |
 | 8,192*            | 16,000       |
 | 16,384*           | 18,000       |
 | 32,767*           | 20,000       |
