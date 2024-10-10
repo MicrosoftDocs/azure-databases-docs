@@ -55,12 +55,12 @@ The following table lists commands not supported/restricted by the database. As 
 
 <tr><td rowspan="1">Administration commands</td><td rowspan="1">As a PaaS service, Azure Cosmos DB handles database administration, making these commands unnecessary.</td></tr>
 
-<tr><td rowspan="1">Diagnostic commands</td><td rowspan="2">Azure Cosmos DB is seamlessly integrated with [Azure Log Analytics,](how-to-monitor-diagnostics-logs.md) offering a unified experience across Azure services. This enables in-depth analysis of server logs, giving you valuable insights into the performance and health of your database. With Azure’s built-in tools, you gain a powerful and scalable diagnostic solution, eliminating the need for extra configurations or third-party tools.
+<tr><td rowspan="1">Diagnostic commands</td><td rowspan="2">Azure Cosmos DB is seamlessly integrated with Azure Log Analytics, offering a unified experience across Azure services. This enables in-depth analysis of server logs, giving you valuable insights into the performance and health of your database. With Azure’s built-in tools, you gain a powerful and scalable diagnostic solution, eliminating the need for extra configurations or third-party tools.
 </td></tr>
 
 <tr><td>Auditing commands</td></tr>
 
-<tr><td rowspan="1">Monitoring commands</td><td rowspan="1">Azure Cosmos DB is fully integrated with [Azure Monitor,](monitor-metrics.md) making it easy to track server utilization metrics like CPU, memory, storage, IOPS etc. This seamless integration across Azure services ensures a scalable and unified monitoring solution, providing real-time insights into your system's performance without the need for external monitoring tools.
+<tr><td rowspan="1">Monitoring commands</td><td rowspan="1">Azure Cosmos DB is fully integrated with Azure Monitor, making it easy to track server utilization metrics like CPU, memory, storage, IOPS etc. This seamless integration across Azure services ensures a scalable and unified monitoring solution, providing real-time insights into your system's performance without the need for external monitoring tools.
 </td></tr>
 
 
