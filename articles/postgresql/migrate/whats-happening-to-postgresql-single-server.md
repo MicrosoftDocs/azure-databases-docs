@@ -87,7 +87,7 @@ Offline migrations are less complex and have few chances of failure. They're the
 
 **A.** We recommend you migrate to Flexible Server if you must run on the latest PostgreSQL engine versions. We continue to deploy minor versions released by the community for Postgres version 11 until it's retired by the community in Nov'2023.
 
-> [!NOTE]  
+> [!NOTE]
 > We're extending support for Postgres version 11 past the community retirement date and will support PostgreSQL version 11 on both [Single Server](https://azure.microsoft.com/updates/singlepg11-retirement/) and [Flexible Server](https://azure.microsoft.com/updates/flexpg11-retirement/) to ease this transition. Consider migrating to Flexible Server to use the benefits of the latest Postgres engine versions.
 
 **Q. How does the Flexible Server 99.99% availability SLA differ from the Single Server?**
@@ -192,7 +192,7 @@ The following table gives an overview of offline and online options.
 | 500 GB | 04:00 |
 | 1,000 GB | 07:00 |
 
-> [!NOTE]  
+> [!NOTE]
 > The numbers above approximate the time taken to complete the migration. To get the precise time required to migrate to your server, we strongly recommend taking a PITR (point in time restore) of your single server and migrating it with the PostgreSQL migration service.
 
 **Q. How long does performing an online migration from Single Server to Flexible Server take with the migration service?**
@@ -230,7 +230,7 @@ The time taken for step #2 depends on the transactions that occur on the source.
     - For Problem type, select Migrating to Azure DB for PostgreSQL.
     - For Problem subtype, select migrating from single to flexible server.
 
-> [!WARNING]  
+> **WARNING:**  
 > This article is not for Azure Database for PostgreSQL - Flexible Server users. It is for Azure Database for PostgreSQL - Single Server customers who need to upgrade to Azure Database for PostgreSQL - Flexible Server.
 
 We know migrating services can be frustrating, and we apologize in advance for any inconvenience this might cause you. You can choose what scenario best works for you and your environment.
