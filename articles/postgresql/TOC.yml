@@ -555,6 +555,8 @@
         displayName: pg_partman
 - name: Migrate to Azure Database for PostgreSQL
   items:
+  - name: What's happening to Azure Database for PostgreSQL - Single Server?
+    href: migrate/whats-happening-to-postgresql-single-server.md
   - name: Migration Service
     items:
     - name: Overview
@@ -614,8 +616,6 @@
   items:
   - name: Overview
     href: single-server/overview-single-server.md
-  - name: What's happening to Azure Database for PostgreSQL - Single Server?
-    href: single-server/whats-happening-to-postgresql-single-server.md
   - name: Quickstarts
     expanded: true
     items:

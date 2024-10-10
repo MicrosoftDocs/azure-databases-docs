@@ -1844,6 +1844,11 @@
         "source_path_from_root": "/articles/postgresql/flexible-server/server-parameters-table-log-files.md",
         "redirect_url": "/azure/postgresql/flexible-server/server-parameters-table-customized-options",
         "redirect_document_id": false
+    },
+    {
+        "source_path_from_root": "/articles/postgresql/single-server/whats-happening-to-postgresql-single-server.md",
+        "redirect_url": "/azure/postgresql/migrate/whats-happening-to-postgresql-single-server",
+        "redirect_document_id": true
     }
 ]
 }
