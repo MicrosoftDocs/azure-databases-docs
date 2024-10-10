@@ -54,7 +54,7 @@ The following table lists commands not supported/restricted by the database. As 
 
 <tr><td rowspan="1">Session commands ($killAllSessionsByPattern, $killSessions) </td><td rowspan="1">While most session commands are supported, a few have been excluded due to low demand and potential security risks.</td></tr>
 
-<tr><td rowspan="1">Administration commands</td><td rowspan="1">As a PaaS service, MongoDB vCore fully manages all high privilege operations on your behalf.</td></tr>
+<tr><td rowspan="1">Administration commands</td><td rowspan="1">As a PaaS service, Azure Cosmos DB handles database administration, making these commands unnecessary.</td></tr>
 
 <tr><td rowspan="1">Diagnostic commands</td><td rowspan="2">MongoDB vCore comes pre-loaded with <a href="https://learn.microsoft.com/azure/cosmos-db/mongodb/vcore/how-to-monitor-diagnostics-logs" target="_blank">Azure Diagnostic Logging</a>. Simply enable it for your cluster, and you'll be all set to explore server logs using Kusto Query Language (KQL).</td></tr>
 
