@@ -16,7 +16,7 @@ ms.date: 04/09/2024
 
 Azure Cosmos DB for MongoDB vCore implements the MongoDB wire protocol, supporting nearly all MongoDB workloads with no application changes, giving you better TCO, superior performance, and next-gen AI features in a native Azure service.
 
-The following table lists commands not supported/restricted by the database. As a PaaS service, Azure Cosmos DB subsumes or restricts the functionality of these commands to ensure cluster stability, security and performance, rendering them unnecessary.
+The following table lists commands not supported/restricted by the database. As a Platform as a service (PaaS), Azure Cosmos DB subsumes or restricts the functionality of these commands to ensure cluster stability, security and performance, rendering them unnecessary.
 
 
 ## Aggregation Pipeline Stages & Aggregators
