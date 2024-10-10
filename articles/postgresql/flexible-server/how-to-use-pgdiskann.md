@@ -53,7 +53,7 @@ Once the extension is installed, you can create a `diskann` index on a table col
 CREATE TABLE my_table (
  id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
  embedding public.vector(3)
-    -- other columns
+ -- other columns
 );
 -- insert dummy data
 INSERT INTO my_table (embedding) VALUES
@@ -62,8 +62,6 @@ INSERT INTO my_table (embedding) VALUES
 ('[7.0, 8.0, 9.0]');
 -- create a diskann index by using Cosine distance operator
 CREATE INDEX my_table_embedding_diskann_idx ON my_table USING diskann (embedding vector_cosine_ops)
--- create a diskann index by using the L2 distance operator
-CREATE INDEX my_table_embedding_diskann_idx ON my_table USING diskann (embedding vector_l2_ops)
 ```
 
 ## Index options
@@ -86,7 +84,12 @@ The L value for index scanning (`l_value_is`) can be set for the whole connectio
 ```sql
 SET diskann.l_value_is = 100;
 SELECT * FROM my_table ORDER BY embedding <=> '[1,2,3]' LIMIT 5; -- uses 100 candidates
-SELECT * FROM my_table  ORDER BY embedding <=> '[1,2,3]' LIMIT 5; -- uses 100 candidates
+```
+
+Postgres will automatically decide when to use the DiskANN index. If there are sceanrios you always want to use the index, use the following command:
+```sql
+SET LOCAL enable_seqscan TO OFF;
+SELECT * FROM my_table ORDER BY embedding <=> '[1,2,3]' LIMIT 5; -- forces the use of index
 ```
 
 ## Indexing progress
@@ -100,6 +103,9 @@ SELECT phase, round(100.0 * blocks_done / nullif(blocks_total, 0), 1) AS "%" FRO
 Phases for building DiskANN indexes are:
 1. `initializing`
 1. `loading tuples`
+
+> [!WARNING]
+> Users may experience slow index build times in some cases.
 
 ### Selecting the index access function
 
