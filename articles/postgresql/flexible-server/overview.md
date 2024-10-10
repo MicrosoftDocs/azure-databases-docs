@@ -117,7 +117,7 @@ Refer to Microsoft's current policy [here](../../postgresql/flexible-server/conc
 
 ## Contacts
 
-For any questions or suggestions you might have on Azure Database for PostgreSQL flexible server, send an email to the Azure Database for PostgreSQL flexible server team ([@Ask Azure DB for PostgreSQL](mailto:AskAzureDBforPostgreSQL@service.microsoft.com)).
+For any questions or suggestions you might have on Azure Database for PostgreSQL flexible server, send an email to the Azure Database for PostgreSQL flexible server team ([@Ask Azure DB for PostgreSQL](mailto:AskAzurePostgreSQL@microsoft.com)).
 
 > [!NOTE]  
 > This email address isn't a technical support alias.
