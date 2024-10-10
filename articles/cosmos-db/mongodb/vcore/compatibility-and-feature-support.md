@@ -24,7 +24,7 @@ The following table lists commands not supported/restricted by the database. As 
 <table>
 <tr><td><b>Command</b></td><td><b>Reason</b></td></tr>
 
-<tr><td>$planCacheStats</td><td rowspan="1">Obsolete on MongoDB vCore, as the query plan cache is automatically managed by the service.</td></tr>
+<tr><td>$planCacheStats</td><td rowspan="1">Not applicable, as the query plan cache is automatically managed by the service.</td></tr>
 
 
 <tr><td>$accumulator</td><td rowspan="3">These commands require a JavaScript engine to be hosted on the database server, enabling users to run arbitrary commands. This can pose significant security risks, including the potential for injection attacks or execution of malicious code. Due to the associated security risks and low demand from customers, these commands are currently not supported. </td></tr>
