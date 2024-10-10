@@ -6,7 +6,7 @@
       "redirect_document_id": false
     },
     {
-      "source_path": "articls/cosmos-db/nosql/multitenancy.md",
+      "source_path": "articles/cosmos-db/nosql/multitenancy.md",
       "redirect_url": "/azure/architecture/guide/multitenant/service/cosmos-db?toc=/azure/cosmos-db/nosql/toc.yml&bc=/azure/cosmos-db/breadcrumb/toc.yml",
       "redirect_document_id": true
     }
