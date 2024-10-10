@@ -327,15 +327,7 @@ Customers using PostgreSQL versions 11 through 13 on Azure Database for Flexible
 
 In PostgreSQL 16 and 17, the `pg_read_all_data` role is automatically granted to `azure_pg_admin`, allowing `pgstattuple` to function correctly. In PostgreSQL 14 and 15, customers can manually grant the `pg_read_all_data` role to `azure_pg_admin` to achieve the same result. However, in PostgreSQL 11 through 13, the `pg_read_all_data` role does not exist.
 
-Customers cannot directly grant the necessary permissions. To resolve this issue, customers need to open a support ticket requesting to be granted the necessary permissions so that `pgstattuple` extension can access objects under the ` pg_toast` schema on every database on which they require this functionality.
-
-Altering permissions to be more permissive is generally not considered a best practice from a security standpoint. This workaround should be applied with caution and only if strictly necessary.
-
-The action that will be taken consists in executing the following command in the context of the databases for which this is requested:
-
-```sql
-GRANT USAGE ON SCHEMA pg_toast TO azure_pg_admin WITH GRANT OPTION;
-```
+Customers cannot directly grant the necessary permissions. If you need to be able to run `pgstattuple` to access objects under the `pg_toast` schema, please proceed to [create an Azure support request](../../azure-portal/supportability/how-to-create-azure-support-request.md).
 
 ### TimescaleDB
 
