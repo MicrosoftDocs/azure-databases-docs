@@ -110,7 +110,7 @@ The Cosmos DB portal services recently transitioned to new infrastructure that r
 
 If you access your Azure Cosmos DB account from services that don’t provide a static IP (for example, Azure Stream Analytics and Azure Functions), you can still use the IP firewall to limit access. You can enable access from other sources within the Azure by selecting the **Accept connections from within Azure datacenters** option, as shown in the following screenshot:
 
-:::image type="content" source="./media/how-to-configure-firewall/enable-azure-services.png" alt-text="Screenshot showing how to accept connections from Azure datacenters" border="true":::
+![networking-add-azure-datacenters](media/how-to-configure-firewall/networking-add-azure-datacenters.png)
 
 When you enable this option, the IP address `0.0.0.0` is added to the list of allowed IP addresses. The `0.0.0.0` IP address restricts requests to your Azure Cosmos DB account from Azure datacenter IP range. This setting doesn't allow access for any other IP ranges to your Azure Cosmos DB account.
 
@@ -128,7 +128,7 @@ The portal automatically detects the client IP address. It might be the client I
 
 To add your current IP to the list of IPs, select **Add my current IP**. Then select **Save**.
 
-:::image type="content" source="./media/how-to-configure-firewall/enable-current-ip.png" alt-text="Screenshot showing a how to configure firewall settings for the current IP" border="true":::
+![networking-add-current-ip](media/how-to-configure-firewall/networking-add-current-ip.png)
 
 ### Requests from cloud services
 
