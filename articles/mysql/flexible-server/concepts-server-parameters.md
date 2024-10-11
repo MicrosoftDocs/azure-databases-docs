@@ -61,7 +61,7 @@ The information provided for `innodb_tmpdir` is applicable to the parameters [in
 
 ### log_bin_trust_function_creators
 
-In Azure Database for MySQL - Flexible Server, binary logs are always enabled (that is, `log_bin` is set to `ON`). The [`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators) parameter is set to `ON` by default in Flexible Servers.
+In Azure Database for MySQL - Flexible Server, binary logs are always enabled (that is, `log_bin` is set to `ON`). The [`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators) parameter is set to `ON` by default in flexible servers.
 
 The binary logging format is always `ROW`, and connections to the server always use row-based binary logging. With row-based binary logging, security issues don't exist and binary logging can't break, so you can safely allow `log_bin_trust_function_creators` to remain as `ON`.
 
