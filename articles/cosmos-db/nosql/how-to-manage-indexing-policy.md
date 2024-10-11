@@ -159,9 +159,8 @@ This example indexing policy defines a tuple index on events.name and events.cat
     "automatic":true,
     "indexingMode":"Consistent",
     "includedPaths":[  
-{"path":"/*"}, 
-{"path":"/events/[]/{name,category}/?"} 
-
+        {"path":"/*"}, 
+        {"path":"/events/[]/{name,category}/?"} 
     ],
     "excludedPaths":[],
     "compositeIndexes":[]
