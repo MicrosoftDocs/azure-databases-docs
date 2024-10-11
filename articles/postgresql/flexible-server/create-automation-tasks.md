@@ -1,22 +1,18 @@
 ---
 title: Stop/start automation tasks
 description: This article describes how to stop/start an Azure Database for PostgreSQL - Flexible Server instance by using automation tasks.
-author: varun-dhawan # GitHub alias
-ms.author: varundhawan # Microsoft alias
+author: danyal-bukhari # GitHub alias
+ms.author: dabukhari # Microsoft alias
 ms.reviewer: maghan
-ms.date: 04/27/2024
+ms.date: 10/10/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: quickstart
 ---
 
-# Manage Azure Database for PostgreSQL - Flexible Server using automation tasks (preview)
+# Manage Azure Database for PostgreSQL - Flexible Server using automation tasks
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
-
-> [!IMPORTANT]
-> This capability is in preview and is subject to the 
-> [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 To help you manage [Azure Database for PostgreSQL flexible server](./overview.md) resources more efficiently, you can create automation tasks for your Azure Database for PostgreSQL flexible server instance. One example of such tasks can be starting or stopping the Azure Database for PostgreSQL flexible server instance on a predefined schedule. You can set this task to automatically start or stop the server a specific number of times every day, week, or month by setting the Interval and Frequency values on the task's Configure tab. The automation task continues to work until you delete or disable the task.
 
@@ -40,13 +36,13 @@ Creating an automation task doesn't immediately incur charges. Underneath, an au
 ## Create an automation task to stop server
 
 1. In the [Azure portal](https://portal.azure.com), find the Azure Database for PostgreSQL flexible server resource that you want to manage.
-1. On the resource navigation menu, in the **Automation** section, select **Tasks (preview)**.
-![Screenshot showing Azure portal and Azure Database for PostgreSQL flexible server resource menu with "Tasks (preview)" selected.](media/create-automation-tasks/azure-postgres-menu-automation-section.png)
+1. On the resource navigation menu, in the **Automation** section, select **Tasks**.
+![Screenshot showing Azure portal and Azure Database for PostgreSQL flexible server resource menu with "Tasks" selected.](media/create-automation-tasks/azure-postgres-menu-automation-section.png)
 
 1. On the **Tasks** pane, select **Add a task** to select a task template.
-![Screenshot that shows the "Tasks (preview)" pane with "Add a task" selected.](media/create-automation-tasks/add-automation-task.png)
+![Screenshot that shows the "Tasks" pane with "Add a task" selected.](media/create-automation-tasks/add-automation-task.png)
 
-1. Under **Select a template**, select the task for starting or stopping your Azure Database for PostgreSQL flexible server instance.
+1. Under **Select a template**, select the task for stopping your Azure Database for PostgreSQL flexible server instance.
 ![Screenshot that shows the "Add a task" pane with "Stop PostgreSQL Flexible Server" template selected.](media/create-automation-tasks/select-task-template.png)
 
 1. Under **Authenticate**, in the **Connections** section, select **Create** for every connection that appears in the task so that you can provide authentication credentials for all the connections.  The types of connections in each task vary based on the task.
@@ -87,7 +83,7 @@ You can apply the same steps outlined above to create a seperate automation task
 To view a task's history of runs along with their status:
 
 1. In the [Azure portal](https://portal.azure.com), find the Azure Database for PostgreSQL flexible server resource that you want to manage.
-2. On the resource navigation menu, in the **Automation** section, select **Tasks (preview)**.
+2. On the resource navigation menu, in the **Automation** section, select **Tasks**.
 3. In the tasks list, find the task that you want to review. In that task's **Runs** column, select **View**.
 
 Here the possible statuses for a run:
@@ -113,7 +109,7 @@ To change a task, you have these options:
 ### Edit the task inline
 
 1. In the [Azure portal](https://portal.azure.com), find the Azure Database for PostgreSQL flexible server resource that you want to manage.
-1. On the resource navigation menu, in the **Automation** section, select **Tasks (preview)**.
+1. On the resource navigation menu, in the **Automation** section, select **Tasks**.
 1. In the tasks list, find the task that you want to update. Open the task's ellipses (**...**) menu, and select **Edit in-line**.
 1. By default, the **Authenticate** tab appears and shows the existing connections.
 1. To add new authentication credentials or select different existing authentication credentials for a connection, open the connection's ellipses (**...**) menu, and select either **Add new connection** or if available, different authentication credentials.
