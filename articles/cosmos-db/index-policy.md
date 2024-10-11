@@ -182,6 +182,12 @@ When you define a spatial path in the indexing policy, you should define which i
 
 Azure Cosmos DB, by default, won't create any spatial indexes. If you would like to use spatial SQL built-in functions, you should create a spatial index on the required properties. See [this section](sql-query-geospatial-index.md) for indexing policy examples for adding spatial indexes.
 
+## Tuple indexes
+Tuple Indexes are useful when performing filtering on multiple fields within an array element. Tuple indexes are defined in the includedPaths section of the indexing policy using the tuple specifier “[]”. 
+
+Unlike with included or excluded paths, you can't create a path with the /* wildcard. Every tuple path needs to end with “/?”. If a tuple in a tuple path doesn't exist in an item, a value will be added to the index to indicate that the tuple is undefined.
+
+
 ## Composite indexes
 
 Queries that have an `ORDER BY` clause with two or more properties require a composite index. You can also define a composite index to improve the performance of many equality and range queries. By default, no composite indexes are defined so you should [add composite indexes](how-to-manage-indexing-policy.md#composite-index) as needed.
