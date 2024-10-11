@@ -1,12 +1,12 @@
 ---
 title: Release notes for Azure DB for PostgreSQL - Flexible Server
 description: Release notes for Azure DB for PostgreSQL - Flexible Server, including feature additions, engine versions support, extensions, and other announcements.
-author: varun-dhawan
-ms.author: varundhawan
+author: danyal-bukhari
+ms.author: dabukhari
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: overview
-ms.date: 9/30/2024
+ms.date: 10/11/2024
 #customer intent: As a reader, I want the title and description to meet the required length and include the relevant information about the release notes for Azure DB for PostgreSQL - Flexible Server.
 ---
 
@@ -15,6 +15,9 @@ ms.date: 9/30/2024
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
 This page provides latest news and updates regarding feature additions, engine versions support, extensions, and any other announcements relevant to Azure Database for PostgreSQL flexible server.
+
+## Release: October 2024
+* General Availability of [Task Automation](create-automation-tasks.md). <sup>^</sup>
 
 ## Release: September 2024
 * Public preview of [PostgreSQL 17](./concepts-supported-versions.md#postgresql-version-17-preview) for Azure Database for PostgreSQL flexible server. <sup>^</sup>
