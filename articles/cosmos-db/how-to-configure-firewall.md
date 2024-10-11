@@ -126,7 +126,7 @@ To simplify development, the Azure portal helps you identify and add the IP of y
 
 The portal automatically detects the client IP address. It might be the client IP address of your machine, or the IP address of your network gateway. Make sure to remove this IP address before you take your workloads to production.
 
-To add your current IP to the list of IPs, select **Add my current IP**. Then select **Save**.
+To add your current IP to the list of IPs, select **Add your current IP**. Then select **Save**.
 
 ![networking-add-current-ip](media/how-to-configure-firewall/networking-add-current-ip.png)
 
