@@ -53,19 +53,27 @@ Portal scenarios that require this option to be enabled include:
   - Power BI
   - Azure Synapse
 
-The portal IP addresses are:
+You can enable requests to access the Azure portal by selecting the **Add Azure Portal Middleware IPs** option, as shown in the following screenshot:
+
+![networking-add-middleware](media/how-to-configure-firewall/networking-add-middleware1.png)
 
 
 
-You can enable requests to access the Azure portal by selecting the **Allow access from Azure portal** option, as shown in the following screenshot:
+The Azure Portal Middleware IP addresses will be added to a separate list, as shown in the following screenshot. Click on **Save** to add these addresses to your database account. More details on the Middleware IP addresses can be found further below in this article.
 
-:::image type="content" source="./media/how-to-configure-firewall/enable-azure-portal.png" alt-text="Screenshot showing how to enable Azure portal access" border="true":::
+![networking-middleware-list](media/how-to-configure-firewall/networking-middleware-list.png)
 
-#### New Azure portal IP Addresses
+The Azure Portal Middleware IP addresses can be removed by clicking on the **Remove Azure Portal Middleware IPs** option and then selecting **Save**.
 
-Cosmos DB portal services are transitioning to new infrastructure in 2024. As part of this transition, accounts with firewall enabled will require new IP addresses to be allowed to continue access to some portal functionality, such as Data Explorer. This move also introduces dedicated IP addresses for Mongo DB and Apache Cassandra API accounts.
+#### Azure Portal Middleware IP Addresses
 
-During this transition, the **Allow access from Azure portal** option adds both current and new IP addresses to account firewall settings (including MongoDB and Cassandra specific addresses for those accounts) When the transition is complete, a portal option is made available to remove the old IP addresses.
+The Azure Portal Middleware IP addresses are listed below. Some IP addresses are only required for specific Database Account APIs. When you add the Middleware IP Addresses in the portal, as described above, only the IP addresses required for your account will be added.  
+  
+For example:
+
+- For an API for NoSQL account, the IP addresses from the **All** category will be added. 
+
+- For an API for MongoDB account, the IP addresses from the **All** and **MongoDB only** categories will be added.
 
 ##### Azure Public
 
@@ -90,6 +98,10 @@ During this transition, the **Allow access from Azure portal** option adds both 
 |All|52.247.163.6, 52.244.134.181|
 |MongoDB only|52.244.176.112, 52.247.148.42|
 |Apache Cassandra only|52.244.50.101, 52.227.165.24|
+
+#### Legacy Middleware IP Addresses
+
+The Cosmos DB portal services recently transitioned to new infrastructure that required new Middleware IP addresses. With the completion of that transition, the legacy IP addresses used by the old infrastructure can now be safely removed. If your account has legacy Middleware IP addresses, the XXX option will be displayed. Select that option and then Save to remove the legacy IP addresses.
 
 > [!NOTE]
 > If you are experiencing challenges connecting to your Azure Cosmos DB account from the Data Explorer, review the [Data Explorer troubleshooting guide](/troubleshoot/azure/cosmos-db/data-explorer).
