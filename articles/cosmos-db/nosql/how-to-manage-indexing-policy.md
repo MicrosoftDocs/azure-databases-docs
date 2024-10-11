@@ -150,7 +150,7 @@ The `quantizedFlat` index stores quantized or compressed vectors on the index. V
 
 The `diskANN` index is a separate index defined specifically for vectors leveraging [DiskANN](https://www.microsoft.com/research/publication/diskann-fast-accurate-billion-point-nearest-neighbor-search-on-a-single-node/), a suite of highly performant vector indexing algorithms developed by Microsoft Research. DiskANN indexes can offer some of the lowest latency, highest query-per-second (QPS), and lowest RU cost queries at high accuracy. However, since DiskANN is an approximate nearest neighbors (ANN) index, the accuracy may be lower than `quantizedFlat` or `flat`.
 
-### Tuple index policy examples:
+### Tuple indexing policy examples
 
 This example indexing policy defines a tuple index on events.name and events.category
 
