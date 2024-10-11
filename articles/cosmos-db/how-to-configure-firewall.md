@@ -31,9 +31,9 @@ You can secure the data stored in your Azure Cosmos DB account by using IP firew
 
 ## Configure an IP firewall by using the Azure portal
 
-To set the IP access control policy in the Azure portal, go to the Azure Cosmos DB account page and select **Firewall and virtual networks** on the navigation menu. Change the **Allow access from** value to **Selected networks**, and then select **Save**. If you change the public access network settings, either by disabling it or allowing it for all networks, you lose the firewall IP that you might have set up before.
+To set the IP access control policy in the Azure portal, go to the Azure Cosmos DB account page and select **Networking** on the navigation menu. Change the **Allow access from** value to **Selected networks**, and then select **Save**. If you are not adding any IP addresses yet, you will also have to **check the box to acknowledge that all VNets and IPs will be blocked**. If you change the public access network settings, either by disabling it or allowing it for all networks, you lose the firewall IP that you might have set up before.
 
-:::image type="content" source="./media/how-to-configure-firewall/azure-portal-firewall.png" alt-text="Screenshot showing how to open the Firewall page in the Azure portal" border="true":::
+![networking-firewall](media/how-to-configure-firewall/networking-firewall.png)
 
 When IP access control is turned on, the Azure portal provides the ability to specify IP addresses, IP address ranges, and switches. Switches enable access to other Azure services and the Azure portal. The following sections give details about these switches.
 
@@ -42,7 +42,7 @@ When IP access control is turned on, the Azure portal provides the ability to sp
 
 ### Allow requests from the Azure portal
 
-When you enable an IP access control policy programmatically, you need to add the IP address for the Azure portal to the **ipRangeFilter** property to maintain access. 
+When you enable an IP access control policy programmatically, you may need to add the IP addresses for the Azure portal services to the **ipRangeFilter** property to keep using some portal functionality. 
 
 Portal scenarios that require this option to be enabled include:
 
@@ -55,11 +55,7 @@ Portal scenarios that require this option to be enabled include:
 
 The portal IP addresses are:
 
-|Region|IP address|
-|------|----------|
-|China|139.217.8.252|
-|US Gov|52.244.48.71|
-|All other regions|104.42.195.92|
+
 
 You can enable requests to access the Azure portal by selecting the **Allow access from Azure portal** option, as shown in the following screenshot:
 
