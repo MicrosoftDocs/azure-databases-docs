@@ -17,7 +17,7 @@ ms.date: 9/30/2024
 This page provides latest news and updates regarding feature additions, engine versions support, extensions, and any other announcements relevant to Azure Database for PostgreSQL flexible server.
 
 ## Release: October 2024
-* General Availability of [Task Automation](concepts-create-automation-tasks.md). <sup>^</sup>
+* General Availability of [Task Automation](create-automation-tasks.md). <sup>^</sup>
 
 ## Release: September 2024
 * Public preview of [PostgreSQL 17](./concepts-supported-versions.md#postgresql-version-17-preview) for Azure Database for PostgreSQL flexible server. <sup>^</sup>
