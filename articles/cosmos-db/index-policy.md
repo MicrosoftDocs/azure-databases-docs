@@ -188,12 +188,9 @@ Tuple Indexes are useful when performing filtering on multiple fields within an 
 > [!NOTE]
 > Unlike with included or excluded paths, you can't create a path with the /* wildcard. Every tuple path needs to end with “/?”. If a tuple in a tuple path doesn't exist in an item, a value will be added to the index to indicate that the tuple is undefined.
 
-**Array Tuple Path Syntax**
 Array tuple paths will be defined in the includedPaths section and will be using the following notation.
 
-```json
-<path prefix>/[]/{<tuple 1>, <tuple 2> … <tuple n>}/?
-```
+`<path prefix>/[]/{<tuple 1>, <tuple 2> … <tuple n>}/?`
 
 Note that:
 - The first part, the path Prefix, is the path that is common between the tuples. It is the path from root to array.  In our example it is “/events”.
@@ -208,9 +205,7 @@ Note that:
 
 For example, 
 
-```json
-/events/[]/{name, category}/?
-```
+`/events/[]/{name, category}/?`
 
 These are a few examples of of *valid* array tuple paths: 
 “includedPaths”:[  
