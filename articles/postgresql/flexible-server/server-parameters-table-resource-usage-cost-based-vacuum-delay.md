@@ -4,13 +4,20 @@ description: Resource Usage / Cost-Based Vacuum Delay server parameters for Azur
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 09/26/2024
+ms.date: 10/11/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
 zone_pivot_groups: postgresql-server-version
 ---
 # Resource Usage / Cost-Based Vacuum Delay
+
+
+::: zone pivot="postgresql-17"
+
+[!INCLUDE [server-parameters-table-17-resource-usage-cost-based-vacuum-delay](./includes/server-parameters-table-17-resource-usage-cost-based-vacuum-delay.md)]
+
+::: zone-end
 
 
 ::: zone pivot="postgresql-16"

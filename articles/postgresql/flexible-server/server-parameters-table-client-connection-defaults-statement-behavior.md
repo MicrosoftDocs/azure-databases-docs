@@ -4,13 +4,20 @@ description: Client Connection Defaults / Statement Behavior server parameters f
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 09/26/2024
+ms.date: 10/11/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
 zone_pivot_groups: postgresql-server-version
 ---
 # Client Connection Defaults / Statement Behavior
+
+
+::: zone pivot="postgresql-17"
+
+[!INCLUDE [server-parameters-table-17-client-connection-defaults-statement-behavior](./includes/server-parameters-table-17-client-connection-defaults-statement-behavior.md)]
+
+::: zone-end
 
 
 ::: zone pivot="postgresql-16"

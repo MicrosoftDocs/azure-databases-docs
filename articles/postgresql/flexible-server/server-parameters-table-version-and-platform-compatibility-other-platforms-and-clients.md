@@ -4,13 +4,20 @@ description: Version and Platform Compatibility / Other Platforms and Clients se
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 09/26/2024
+ms.date: 10/11/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
 zone_pivot_groups: postgresql-server-version
 ---
 # Version and Platform Compatibility / Other Platforms and Clients
+
+
+::: zone pivot="postgresql-17"
+
+[!INCLUDE [server-parameters-table-17-version-and-platform-compatibility-other-platforms-and-clients](./includes/server-parameters-table-17-version-and-platform-compatibility-other-platforms-and-clients.md)]
+
+::: zone-end
 
 
 ::: zone pivot="postgresql-16"

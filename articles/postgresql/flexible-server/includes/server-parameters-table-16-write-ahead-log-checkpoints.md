@@ -2,7 +2,7 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 09/26/2024
+ms.date: 10/11/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
@@ -89,6 +89,7 @@ ms.topic: include
 
 
 [!INCLUDE [server-parameters-azure-notes-max-wal-size](./server-parameters-azure-notes-max-wal-size.md)]
+
 
 
 ### min_wal_size

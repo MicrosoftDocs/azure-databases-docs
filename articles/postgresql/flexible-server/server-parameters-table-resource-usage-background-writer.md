@@ -4,13 +4,20 @@ description: Resource Usage / Background Writer server parameters for Azure Data
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 09/26/2024
+ms.date: 10/11/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
 zone_pivot_groups: postgresql-server-version
 ---
 # Resource Usage / Background Writer
+
+
+::: zone pivot="postgresql-17"
+
+[!INCLUDE [server-parameters-table-17-resource-usage-background-writer](./includes/server-parameters-table-17-resource-usage-background-writer.md)]
+
+::: zone-end
 
 
 ::: zone pivot="postgresql-16"

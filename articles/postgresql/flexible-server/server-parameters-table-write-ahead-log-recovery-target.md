@@ -4,13 +4,20 @@ description: Write-Ahead Log / Recovery Target server parameters for Azure Datab
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 09/26/2024
+ms.date: 10/11/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
 zone_pivot_groups: postgresql-server-version
 ---
 # Write-Ahead Log / Recovery Target
+
+
+::: zone pivot="postgresql-17"
+
+[!INCLUDE [server-parameters-table-17-write-ahead-log-recovery-target](./includes/server-parameters-table-17-write-ahead-log-recovery-target.md)]
+
+::: zone-end
 
 
 ::: zone pivot="postgresql-16"

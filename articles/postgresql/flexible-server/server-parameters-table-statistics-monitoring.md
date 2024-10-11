@@ -4,13 +4,20 @@ description: Statistics / Monitoring server parameters for Azure Database for Po
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 09/26/2024
+ms.date: 10/11/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
 zone_pivot_groups: postgresql-server-version
 ---
 # Statistics / Monitoring
+
+
+::: zone pivot="postgresql-17"
+
+[!INCLUDE [server-parameters-table-17-statistics-monitoring](./includes/server-parameters-table-17-statistics-monitoring.md)]
+
+::: zone-end
 
 
 ::: zone pivot="postgresql-16"

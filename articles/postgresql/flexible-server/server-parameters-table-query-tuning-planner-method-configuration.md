@@ -4,13 +4,20 @@ description: Query Tuning / Planner Method Configuration server parameters for A
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 09/26/2024
+ms.date: 10/11/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
 zone_pivot_groups: postgresql-server-version
 ---
 # Query Tuning / Planner Method Configuration
+
+
+::: zone pivot="postgresql-17"
+
+[!INCLUDE [server-parameters-table-17-query-tuning-planner-method-configuration](./includes/server-parameters-table-17-query-tuning-planner-method-configuration.md)]
+
+::: zone-end
 
 
 ::: zone pivot="postgresql-16"
