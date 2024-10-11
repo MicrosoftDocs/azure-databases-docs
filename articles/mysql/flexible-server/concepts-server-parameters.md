@@ -26,7 +26,7 @@ In Azure Database for MySQL - Flexible Server, you can change the value of vario
 
 ## Configurable server parameters
 
-You can manage the configuration of an Azure Database for MySQL flexible server by using server parameters. The server parameters are configured with the default and recommended values when you create the server. The **Server parameters** pane in the Azure portal shows both the modifiable and nonmodifiable parameters. The nonmodifiable server parameters are unavailable.
+You can manage the configuration of an Azure Database for MySQL Flexible Server by using server parameters. The server parameters are configured with the default and recommended values when you create the server. The **Server parameters** pane in the Azure portal shows both the modifiable and nonmodifiable parameters. The nonmodifiable server parameters are unavailable.
 
 The list of supported server parameters is constantly growing. You can use the Azure portal to periodically view the full list of server parameters and configure the values.
 
@@ -50,7 +50,7 @@ You use the [innodb_tmpdir](https://dev.mysql.com/doc/refman/8.0/en/innodb-param
 
 The default value of `innodb_tmpdir` is `/mnt/temp`. This location corresponds to the [temporary storage (SSD)](./concepts-service-tiers-storage.md#service-tiers-size-and-server-types) and is available in gibibytes (GiB) with each server compute size. This location is ideal for operations that don't require a large amount of space.
 
-If you need more space, you can set `innodb_tmpdir` to `/app/work/tmpdir`. This setting utilizes the available storage capacity on your Azure Database for MySQL flexible server. This setting can be useful for larger operations that require more temporary storage.
+If you need more space, you can set `innodb_tmpdir` to `/app/work/tmpdir`. This setting utilizes the available storage capacity on your Azure Database for MySQL Flexible Server. This setting can be useful for larger operations that require more temporary storage.
 
 Keep in mind that using `/app/work/tmpdir` results in slower performance compared to the [default temporary storage (SSD)](./concepts-service-tiers-storage.md#service-tiers-size-and-server-types) `/mnt/temp` value. Make the choice based on the specific requirements of the operations.
 
@@ -61,7 +61,7 @@ The information provided for `innodb_tmpdir` is applicable to the parameters [in
 
 ### log_bin_trust_function_creators
 
-In Azure Database for MySQL - Flexible Server, binary logs are always enabled (that is, `log_bin` is set to `ON`). The [`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators) parameter is set to `ON` by default in flexible servers.
+In Azure Database for MySQL - Flexible Server, binary logs are always enabled (that is, `log_bin` is set to `ON`). The [`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators) parameter is set to `ON` by default in Flexible Servers.
 
 The binary logging format is always `ROW`, and connections to the server always use row-based binary logging. With row-based binary logging, security issues don't exist and binary logging can't break, so you can safely allow `log_bin_trust_function_creators` to remain as `ON`.
 
@@ -71,7 +71,7 @@ If `log_bin_trust_function_creators` is set to `OFF` and you try to create trigg
 
 To learn about the `innodb_buffer_pool_size` parameter, review the [MySQL documentation](https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html#sysvar_innodb_buffer_pool_size).
 
-The [physical memory size](./concepts-service-tiers-storage.md#physical-memory-size-gb) in the following table represents the available random-access memory (RAM), in gigabytes (GB), on your Azure Database for MySQL flexible server.
+The [physical memory size](./concepts-service-tiers-storage.md#physical-memory-size-gb) in the following table represents the available random-access memory (RAM), in gigabytes (GB), on your Azure Database for MySQL Flexible Server.
 
 |Pricing tier|vCores|Physical memory size (GB)|Default value (bytes)|Min value (bytes)|Max value (bytes)|
 |---|---|---|---|---|---|
@@ -121,7 +121,7 @@ You can configure `innodb_log_size` to 256 megabytes (MB), 512 MB, 1 GB, or 2 GB
 
 ### max_connections
 
-The memory size of the server determines the value of `max_connections`. The [physical memory size](./concepts-service-tiers-storage.md#physical-memory-size-gb) in the following table represents the available RAM, in gigabytes, on your Azure Database for MySQL flexible server.
+The memory size of the server determines the value of `max_connections`. The [physical memory size](./concepts-service-tiers-storage.md#physical-memory-size-gb) in the following table represents the available RAM, in gigabytes, on your Azure Database for MySQL Flexible Server.
 
 |Pricing tier|vCores|Physical memory size (GB)|Default value|Min value|Max value|
 |---|---|---|---|---|---|
