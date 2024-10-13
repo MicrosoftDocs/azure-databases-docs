@@ -13,6 +13,13 @@ zone_pivot_groups: postgresql-server-version
 # Statistics / Monitoring
 
 
+::: zone pivot="postgresql-17"
+
+[!INCLUDE [server-parameters-table-17-statistics-monitoring](./includes/server-parameters-table-17-statistics-monitoring.md)]
+
+::: zone-end
+
+
 ::: zone pivot="postgresql-16"
 
 [!INCLUDE [server-parameters-table-16-statistics-monitoring](./includes/server-parameters-table-16-statistics-monitoring.md)]

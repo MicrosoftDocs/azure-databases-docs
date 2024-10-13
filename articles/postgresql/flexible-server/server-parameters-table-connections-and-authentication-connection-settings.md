@@ -13,6 +13,13 @@ zone_pivot_groups: postgresql-server-version
 # Connections and Authentication / Connection Settings
 
 
+::: zone pivot="postgresql-17"
+
+[!INCLUDE [server-parameters-table-17-connections-and-authentication-connection-settings](./includes/server-parameters-table-17-connections-and-authentication-connection-settings.md)]
+
+::: zone-end
+
+
 ::: zone pivot="postgresql-16"
 
 [!INCLUDE [server-parameters-table-16-connections-and-authentication-connection-settings](./includes/server-parameters-table-16-connections-and-authentication-connection-settings.md)]

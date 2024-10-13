@@ -13,6 +13,13 @@ zone_pivot_groups: postgresql-server-version
 # Replication / Primary Server
 
 
+::: zone pivot="postgresql-17"
+
+[!INCLUDE [server-parameters-table-17-replication-primary-server](./includes/server-parameters-table-17-replication-primary-server.md)]
+
+::: zone-end
+
+
 ::: zone pivot="postgresql-16"
 
 [!INCLUDE [server-parameters-table-16-replication-primary-server](./includes/server-parameters-table-16-replication-primary-server.md)]

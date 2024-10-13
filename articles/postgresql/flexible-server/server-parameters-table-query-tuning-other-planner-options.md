@@ -13,6 +13,13 @@ zone_pivot_groups: postgresql-server-version
 # Query Tuning / Other Planner Options
 
 
+::: zone pivot="postgresql-17"
+
+[!INCLUDE [server-parameters-table-17-query-tuning-other-planner-options](./includes/server-parameters-table-17-query-tuning-other-planner-options.md)]
+
+::: zone-end
+
+
 ::: zone pivot="postgresql-16"
 
 [!INCLUDE [server-parameters-table-16-query-tuning-other-planner-options](./includes/server-parameters-table-16-query-tuning-other-planner-options.md)]

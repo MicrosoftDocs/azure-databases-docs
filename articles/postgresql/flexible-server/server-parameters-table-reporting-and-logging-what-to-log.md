@@ -13,6 +13,13 @@ zone_pivot_groups: postgresql-server-version
 # Reporting and Logging / What to Log
 
 
+::: zone pivot="postgresql-17"
+
+[!INCLUDE [server-parameters-table-17-reporting-and-logging-what-to-log](./includes/server-parameters-table-17-reporting-and-logging-what-to-log.md)]
+
+::: zone-end
+
+
 ::: zone pivot="postgresql-16"
 
 [!INCLUDE [server-parameters-table-16-reporting-and-logging-what-to-log](./includes/server-parameters-table-16-reporting-and-logging-what-to-log.md)]
