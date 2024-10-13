@@ -13,6 +13,13 @@ zone_pivot_groups: postgresql-server-version
 # Version and Platform Compatibility / Other Platforms and Clients
 
 
+::: zone pivot="postgresql-17"
+
+[!INCLUDE [server-parameters-table-17-version-and-platform-compatibility-other-platforms-and-clients](./includes/server-parameters-table-17-version-and-platform-compatibility-other-platforms-and-clients.md)]
+
+::: zone-end
+
+
 ::: zone pivot="postgresql-16"
 
 [!INCLUDE [server-parameters-table-16-version-and-platform-compatibility-other-platforms-and-clients](./includes/server-parameters-table-16-version-and-platform-compatibility-other-platforms-and-clients.md)]

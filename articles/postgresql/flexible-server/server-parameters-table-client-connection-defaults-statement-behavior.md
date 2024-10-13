@@ -13,6 +13,13 @@ zone_pivot_groups: postgresql-server-version
 # Client Connection Defaults / Statement Behavior
 
 
+::: zone pivot="postgresql-17"
+
+[!INCLUDE [server-parameters-table-17-client-connection-defaults-statement-behavior](./includes/server-parameters-table-17-client-connection-defaults-statement-behavior.md)]
+
+::: zone-end
+
+
 ::: zone pivot="postgresql-16"
 
 [!INCLUDE [server-parameters-table-16-client-connection-defaults-statement-behavior](./includes/server-parameters-table-16-client-connection-defaults-statement-behavior.md)]

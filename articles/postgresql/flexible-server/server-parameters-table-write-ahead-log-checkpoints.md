@@ -13,6 +13,13 @@ zone_pivot_groups: postgresql-server-version
 # Write-Ahead Log / Checkpoints
 
 
+::: zone pivot="postgresql-17"
+
+[!INCLUDE [server-parameters-table-17-write-ahead-log-checkpoints](./includes/server-parameters-table-17-write-ahead-log-checkpoints.md)]
+
+::: zone-end
+
+
 ::: zone pivot="postgresql-16"
 
 [!INCLUDE [server-parameters-table-16-write-ahead-log-checkpoints](./includes/server-parameters-table-16-write-ahead-log-checkpoints.md)]

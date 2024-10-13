@@ -13,6 +13,13 @@ zone_pivot_groups: postgresql-server-version
 # Client Connection Defaults / Locale and Formatting
 
 
+::: zone pivot="postgresql-17"
+
+[!INCLUDE [server-parameters-table-17-client-connection-defaults-locale-and-formatting](./includes/server-parameters-table-17-client-connection-defaults-locale-and-formatting.md)]
+
+::: zone-end
+
+
 ::: zone pivot="postgresql-16"
 
 [!INCLUDE [server-parameters-table-16-client-connection-defaults-locale-and-formatting](./includes/server-parameters-table-16-client-connection-defaults-locale-and-formatting.md)]
