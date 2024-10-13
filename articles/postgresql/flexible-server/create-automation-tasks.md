@@ -7,7 +7,7 @@ ms.reviewer: maghan
 ms.date: 10/12/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
-ms.topic: quickstart 
+ms.topic: quickstart
 ---
 
 # Quickstart: Manage Azure Database for PostgreSQL - Flexible Server using automation tasks
@@ -23,13 +23,13 @@ You can also set up automation tasks for other routine tasks such as 'Send month
 
 ## How do automation tasks differ from Azure Automation?
 
-Automation tasks are more basic and lightweight than [Azure Automation](/azure/automation/overview). You can only create an automation task at the Azure resource level. An automation task is a logic app resource that runs a workflow powered by the [multi-tenant Azure Logic Apps service](/azure/logic-apps/logic-apps-overview). You can view and edit the underlying workflow by opening the task in the workflow designer after it has completed at least one run.
+Automation tasks are more basic and lightweight than [Azure Automation](/azure/automation/overview). You can only create an automation task at the Azure resource level. An automation task is a logic app resource that runs a workflow powered by the [multitenant Azure Logic Apps service](/azure/logic-apps/logic-apps-overview). You can view and edit the underlying workflow by opening the task in the workflow designer after it has completed at least one run.
 
 In contrast, Azure Automation is a comprehensive cloud-based automation and configuration service providing consistent management across Azure and non-Azure environments.
 
 ## Pricing
 
-Creating an automation task doesn't immediately incur charges. Underneath, an automation task is powered by a workflow in a logic app resource hosted in multi-tenant Azure Logic Apps; thus, the [Consumption pricing model](/azure/logic-apps/logic-apps-pricing) applies to automation tasks. Metering and billing are based on the trigger and action executions in the underlying logic app workflow.
+Creating an automation task doesn't immediately incur charges. Underneath, an automation task is powered by a workflow in a logic app resource hosted in multitenant Azure Logic Apps; thus, the [Consumption pricing model](/azure/logic-apps/logic-apps-pricing) applies to automation tasks. Metering and billing are based on the trigger and action executions in the underlying logic app workflow.
 
 ## Prerequisites
 
@@ -69,7 +69,7 @@ Creating an automation task doesn't immediately incur charges. Underneath, an au
 >  
 > For example, if you name your task `Stop-Instance-Weekly` but later edit the underlying workflow to run daily, you can't change it to `Stop-Instance-Daily`.
 
-The task you've created, which is automatically live and running, will appear on the **Tasks** list.
+The task you've created, which is automatically live and running, appears on the **Tasks** list.
 
 :::image type="content" source="media/create-automation-tasks/automation-tasks-list.png" alt-text="Screenshot that shows the automation tasks list." lightbox="media/create-automation-tasks/automation-tasks-list.png":::
 
@@ -120,7 +120,7 @@ Edit the task "inline" to change its properties, such as connection information 
 
 ### Edit the task's underlying workflow
 
-- For details on editing the underlying workflow, please refer to [Edit the task's underlying workflow](/azure/logic-apps/create-automation-tasks-azure-resources#edit-the-tasks-underlying-workflow)
+- For details on editing the underlying workflow, refer to [Edit the task's underlying workflow](/azure/logic-apps/create-automation-tasks-azure-resources#edit-the-tasks-underlying-workflow)
 
 ## Next step
 
