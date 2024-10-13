@@ -7,7 +7,7 @@ ms.reviewer: maghan
 ms.date: 10/12/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
-ms.topic: quickstart
+ms.topic: quickstart 
 ---
 
 # Quickstart: Manage Azure Database for PostgreSQL - Flexible Server using automation tasks
