@@ -30,7 +30,7 @@ Azure Cosmos DB seamlessly integrates with leading large language model (LLM) or
 - [.NET](https://learn.microsoft.com/semantic-kernel/concepts/vector-store-connectors/out-of-the-box-connectors/azure-cosmosdb-mongodb-connector?pivots=programming-language-csharp)
 
 ## LangChain
-[LangChain](https://www.langchain.com/) is a framework designed to simplify the development of applications powered by large language models (LLMs), providing modular components and tools for building, deploying, and monitoring context-aware reasoning applications. LangChain is supported in Python, JavaScript, and Java (through a 3rd party effort)
+[LangChain](https://www.langchain.com/) is a framework designed to simplify the development of applications powered by large language models (LLMs), providing modular components and tools for building, deploying, and monitoring context-aware reasoning applications. LangChain is supported in Python, JavaScript, and Java (through a third party effort)
 
 **Azure Cosmos DB for NoSQL**
 - [Python](https://python.langchain.com/docs/integrations/vectorstores/azure_cosmos_db_no_sql/)
@@ -52,7 +52,7 @@ Azure Cosmos DB seamlessly integrates with leading large language model (LLM) or
 - [Python](https://docs.llamaindex.ai/en/stable/examples/vector_stores/AzureCosmosDBMongoDBvCoreDemo/)
 
 ## CosmosAIGraph
-[CosmosAIGraph](https://aka.ms/cosmosaigraph) leverages Azure Cosmos DB to create AI-powered knowledge graphs, integrating advanced graph database capabilities with AI for robust data management and querying. It utilizes Cosmos DB’s scalability and performance to build sophisticated data models, uncovering hidden relationships and concepts in semi-structured data.
+[CosmosAIGraph](https://aka.ms/cosmosaigraph) uses Azure Cosmos DB to create AI-powered knowledge graphs, integrating advanced graph database capabilities with AI for robust data management and querying. It utilizes Cosmos DB’s scalability and performance to build sophisticated data models, uncovering hidden relationships and concepts in semi-structured data.
 
 **Azure Cosmos DB for NoSQL**
 - [Quickstart](https://github.com/AzureCosmosDB/CosmosAIGraph/tree/main/impl/docs#quick-start)
