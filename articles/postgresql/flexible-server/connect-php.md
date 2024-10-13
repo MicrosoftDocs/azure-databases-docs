@@ -20,8 +20,8 @@ This quickstart demonstrates connecting to an Azure Database for PostgreSQL usin
 
 This quickstart uses the resources created in either of these guides as a starting point:
 
-- [Create DB - Portal](quickstart-create-server-database-portal.md)
-- [Create DB - Azure CLI](quickstart-create-server-database-azure-cli.md)
+- [Create DB - Portal](quickstart-create-server-portal.md)
+- [Create DB - Azure CLI](qquickstart-create-server-cli.md)
 
 ## Install PHP
 
@@ -234,7 +234,7 @@ az group delete \
  --yes
 ```
 
-## Next step
+## Related content
 
-> [!div class="nextstepaction"]
-> [Migrate your database using Export and Import](./how-to-migrate-using-export-and-import.md)
+- [Connect with python](connect-python.md)
+- 
