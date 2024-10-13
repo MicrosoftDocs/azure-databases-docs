@@ -13,6 +13,13 @@ zone_pivot_groups: postgresql-server-version
 # Resource Usage / Asynchronous Behavior
 
 
+::: zone pivot="postgresql-17"
+
+[!INCLUDE [server-parameters-table-17-resource-usage-asynchronous-behavior](./includes/server-parameters-table-17-resource-usage-asynchronous-behavior.md)]
+
+::: zone-end
+
+
 ::: zone pivot="postgresql-16"
 
 [!INCLUDE [server-parameters-table-16-resource-usage-asynchronous-behavior](./includes/server-parameters-table-16-resource-usage-asynchronous-behavior.md)]

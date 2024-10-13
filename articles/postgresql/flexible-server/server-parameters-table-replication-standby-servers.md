@@ -13,6 +13,13 @@ zone_pivot_groups: postgresql-server-version
 # Replication / Standby Servers
 
 
+::: zone pivot="postgresql-17"
+
+[!INCLUDE [server-parameters-table-17-replication-standby-servers](./includes/server-parameters-table-17-replication-standby-servers.md)]
+
+::: zone-end
+
+
 ::: zone pivot="postgresql-16"
 
 [!INCLUDE [server-parameters-table-16-replication-standby-servers](./includes/server-parameters-table-16-replication-standby-servers.md)]

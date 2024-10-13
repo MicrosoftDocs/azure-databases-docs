@@ -13,6 +13,13 @@ zone_pivot_groups: postgresql-server-version
 # Write-Ahead Log / Settings
 
 
+::: zone pivot="postgresql-17"
+
+[!INCLUDE [server-parameters-table-17-write-ahead-log-settings](./includes/server-parameters-table-17-write-ahead-log-settings.md)]
+
+::: zone-end
+
+
 ::: zone pivot="postgresql-16"
 
 [!INCLUDE [server-parameters-table-16-write-ahead-log-settings](./includes/server-parameters-table-16-write-ahead-log-settings.md)]

@@ -20,6 +20,26 @@ The default value for the `shared_buffers` server parameter is calculated when y
 
 Every time you change the product assigned to an instance, you should also adjust the value for the `shared_buffers` parameter according to the values in the following formulas.
 
-For virtual machines with up to 2 GiB of memory, the formula used to compute the value of `shared_buffers` is `memoryGb * 16`.
+For virtual machines with up to 2 GiB of memory, the formula used to compute the value of `shared_buffers` is `memoryGib * 16384`.
 
-For virtual machines with more than 2 GiB, the formula used to compute the value of `shared_buffers` is `memoryGb * 32`.
+For virtual machines with more than 2 GiB, the formula used to compute the value of `shared_buffers` is `memoryGib * 32768`.
+
+Based on the previous formula, the following table lists the values this server parameter would be set to depending on the amount of memory provisioned:
+
+| Memory size | shared_buffers |
+| ----------- | -------------- |
+|       2 GiB |         32768  |
+|       4 GiB |        131072  |
+|       8 GiB |        262144  |
+|      16 GiB |        524288  |
+|      32 GiB |       1048576  |
+|      48 GiB |       1572864  |
+|      64 GiB |       2097152  |
+|      80 GiB |       2621440  |
+|     128 GiB |       4194304  |
+|     160 GiB |       5242880  |
+|     192 GiB |       6291456  |
+|     256 GiB |       8388608  |
+|     384 GiB |      12582912  |
+|     432 GiB |      14155776  |
+|     672 GiB |      22020096  |

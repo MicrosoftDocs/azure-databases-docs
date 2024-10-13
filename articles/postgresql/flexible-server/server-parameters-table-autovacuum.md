@@ -13,6 +13,13 @@ zone_pivot_groups: postgresql-server-version
 # Autovacuum
 
 
+::: zone pivot="postgresql-17"
+
+[!INCLUDE [server-parameters-table-17-autovacuum](./includes/server-parameters-table-17-autovacuum.md)]
+
+::: zone-end
+
+
 ::: zone pivot="postgresql-16"
 
 [!INCLUDE [server-parameters-table-16-autovacuum](./includes/server-parameters-table-16-autovacuum.md)]
