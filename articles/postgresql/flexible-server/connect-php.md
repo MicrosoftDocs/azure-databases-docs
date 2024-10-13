@@ -21,7 +21,7 @@ This quickstart demonstrates connecting to an Azure Database for PostgreSQL usin
 This quickstart uses the resources created in either of these guides as a starting point:
 
 - [Create DB - Portal](quickstart-create-server-portal.md)
-- [Create DB - Azure CLI](qquickstart-create-server-cli.md)
+- [Create DB - Azure CLI](quickstart-create-server-cli.md)
 
 ## Install PHP
 
