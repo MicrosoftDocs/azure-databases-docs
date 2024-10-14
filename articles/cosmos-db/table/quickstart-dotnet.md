@@ -7,7 +7,7 @@ ms.service: azure-cosmos-db
 ms.subservice: table
 ms.devlang: csharp
 ms.topic: quickstart
-ms.date: 08/22/2022
+ms.date: 10/07/2024
 ms.custom: devx-track-csharp, ignite-2022, devguide-csharp, cosmos-db-dev-journey, devx-track-dotnet, devx-track-extended-azdevcli
 zone_pivot_groups: azure-cosmos-db-quickstart-env
 ---
@@ -24,7 +24,7 @@ zone_pivot_groups: azure-cosmos-db-quickstart-env
 > * [Python](quickstart-python.md)
 >
 
-This quickstart shows how to get started with the Azure Cosmos DB for Table from a .NET application. The Azure Cosmos DB for Table is a schemaless data store allowing applications to store structured table data in the cloud. You'll learn how to create tables, rows, and perform basic tasks within your Azure Cosmos DB resource using the [Azure.Data.Tables Package (NuGet)](https://www.nuget.org/packages/Azure.Data.Tables/).
+This quickstart shows how to get started with the Azure Cosmos DB for Table from a .NET application. The Azure Cosmos DB for Table is a schemaless data store allowing applications to store structured table data in the cloud. You learn how to create tables, rows, and perform basic tasks within your Azure Cosmos DB resource using the [Azure.Data.Tables Package (NuGet)](https://www.nuget.org/packages/Azure.Data.Tables/).
 
 > [!NOTE]
 > The [example code snippets](https://github.com/Azure-Samples/cosmos-db-table-api-dotnet-samples) are available on GitHub as a .NET project.
@@ -33,7 +33,7 @@ This quickstart shows how to get started with the Azure Cosmos DB for Table from
 
 ## Prerequisites
 
-[!INCLUDE[Developer Quickstart prerequisites](includes/dev-prereqs.md)]
+[!INCLUDE[Developer Quickstart prerequisites](includes/quickstart/dev-prereqs.md)]
 
 ## Setting up
 
@@ -51,7 +51,7 @@ Deploy this project's development container to your environment. Then, use the A
 
 ::: zone-end
 
-[!INCLUDE[Developer Quickstart setup](includes/dev-setup.md)]
+[!INCLUDE[Developer Quickstart setup](includes/quickstart/dev-setup.md)]
 
 ### Install the client library
 
@@ -66,64 +66,59 @@ The client library is available through NuGet, as the `Microsoft.Azure.Cosmos` p
 1. If not already installed, install the `Azure.Data.Tables` package using `dotnet add package`.
 
     ```bash
-    dotnet add package Azure.Data.Tables
+    dotnet add package Azure.Data.Tables --version 12.*
     ```
 
 1. Also, install the `Azure.Identity` package if not already installed.
 
     ```bash
-    dotnet add package Azure.Identity
+    dotnet add package Azure.Identity --version 1.*
     ```
 
-1. Open and review the **src/web/Cosmos.Samples.Table.Quickstart.Web.csproj** file to validate that the `Microsoft.Azure.Cosmos` and `Azure.Identity` entries both exist.
+1. Open and review the **src/web/Cosmos.Samples.Table.Quickstart.Web.csproj** file to validate that the `Azure.Data.Tables` and `Azure.Identity` entries both exist.
+
+## Object model
+
+| Name | Description |
+| --- | --- |
+| <xref:Azure.Data.Tables.TableServiceClient> | This class is the primary client class and is used to manage account-wide metadata or databases. |
+| <xref:Azure.Data.Tables.TableClient> | This class represents the client for a table within the account. |
 
 ## Code examples
 
-* [Authenticate the client](#authenticate-the-client)
-* [Create a table](#create-a-table)
+* [Authenticate the clients](#authenticate-the-clients)
 * [Create an item](#create-an-item)
 * [Get an item](#get-an-item)
 * [Query items](#query-items)
 
-The sample code described in this article creates a table named ``adventureworks``. Each table row contains the details of a product such as name, category, quantity, and a sale indicator. Each product also contains a unique identifier.
+The sample code in the template uses a table named `cosmicworks-products`. The table contains details such as name, category, quantity, a unique identifier, and a sale flag for each product.
 
-You'll use the following API for Table classes to interact with these resources:
+### Authenticate the clients
 
-* [``TableServiceClient``](/dotnet/api/azure.data.tables.tableserviceclient) - This class provides methods to perform service level operations with Azure Cosmos DB for Table.
-* [``TableClient``](/dotnet/api/azure.data.tables.tableclient) - This class allows you to interact with tables hosted in the Azure Cosmos DB table API.
-* [``TableEntity``](/dotnet/api/azure.data.tables.tableentity) - This class is a reference to a row in a table that allows you to manage properties and column data.
+Application requests to most Azure services must be authorized. Use the `DefaultAzureCredential` type as the preferred way to implement a passwordless connection between your applications and Azure Cosmos DB for NoSQL. `DefaultAzureCredential` supports multiple authentication methods and determines which method should be used at runtime.
 
-### Authenticate the client
+> [!IMPORTANT]
+> You can also authorize requests to Azure services using passwords, connection strings, or other credentials directly. However, this approach should be used with caution. Developers must be diligent to never expose these secrets in an unsecure location. Anyone who gains access to the password or secret key is able to authenticate to the database service. `DefaultAzureCredential` offers improved management and security benefits over the account key to allow passwordless authentication without the risk of storing keys.
 
-From the project directory, open the *Program.cs* file. In your editor, add a using directive for ``Azure.Data.Tables``.
+This sample creates a new instance of the `TableServiceClient` and `TableClient` classes and authenticates using a `DefaultAzureCredential` instance.
 
-:::code language="csharp" source="~/azure-cosmos-tableapi-dotnet/001-quickstart/Program.cs" id="using_directives":::
-
-Define a new instance of the ``TableServiceClient`` class using the constructor, and [``Environment.GetEnvironmentVariable``](/dotnet/api/system.environment.getenvironmentvariables) to read the connection string you set earlier.
-
-:::code language="csharp" source="~/azure-cosmos-tableapi-dotnet/001-quickstart/Program.cs"  id="client_credentials":::
-
-### Create a table
-
-Retrieve an instance of the `TableClient` using the `TableServiceClient` class. Use the [``TableClient.CreateIfNotExistsAsync``](/dotnet/api/azure.data.tables.tableclient.createifnotexistsasync) method on the `TableClient` to create a new table if it doesn't already exist. This method will return a reference to the existing or newly created table.
-
-:::code language="csharp" source="~/azure-cosmos-tableapi-dotnet/001-quickstart/Program.cs" id="create_table" :::
+:::code language="csharp" source="~/cosmos-db-table-dotnet-quickstart/src/web/Program.cs" id="create_client":::
 
 ### Create an item
 
 The easiest way to create a new item in a table is to create a class that implements the [``ITableEntity``](/dotnet/api/azure.data.tables.itableentity) interface. You can then add your own properties to the class to populate columns of data in that table row.
 
-:::code language="csharp" source="~/azure-cosmos-tableapi-dotnet/001-quickstart/Product.cs" id="type" :::
+:::code language="csharp" source="~/cosmos-db-table-dotnet-quickstart/src/web/Models/Product.cs" id="model":::
 
 Create an item in the collection using the `Product` class by calling [``TableClient.AddEntityAsync<T>``](/dotnet/api/azure.data.tables.tableclient.addentityasync).
 
-:::code language="csharp" source="~/azure-cosmos-tableapi-dotnet/001-quickstart/Program.cs" id="create_object_add" :::
+:::code language="csharp" source="~/cosmos-db-table-dotnet-quickstart/src/web/Services/DemoService.cs" id="create_entity":::
 
 ### Get an item
 
 You can retrieve a specific item from a table using the [``TableClient.GetEntityAsync<T>``](/dotnet/api/azure.data.tables.tableclient.getentity) method. Provide the `partitionKey` and `rowKey` as parameters to identify the correct row to perform a quick *point read* of that item.
 
-:::code language="csharp" source="~/azure-cosmos-tableapi-dotnet/001-quickstart/Program.cs" id="read_item" :::
+:::code language="csharp" source="~/cosmos-db-table-dotnet-quickstart/src/web/Services/DemoService.cs" id="read_entity":::
 
 ### Query items
 
@@ -132,27 +127,11 @@ After you insert an item, you can also run a query to get all items that match a
 > [!NOTE]
 > You can also query items using [OData](/rest/api/storageservices/querying-tables-and-entities) syntax. You can see an example of this approach in the [Query Data](./tutorial-query.md) tutorial.
 
-:::code language="csharp" source="~/azure-cosmos-tableapi-dotnet/001-quickstart/Program.cs" id="query_items" :::
+:::code language="csharp" source="~/cosmos-db-table-dotnet-quickstart/src/web/Services/DemoService.cs" id="query_entities":::
 
-## Run the code
+Parse the paginated results of the query by looping through each page of results using asynchronous loop to determine if there are any results left at the start of each loop.
 
-This app creates an Azure Cosmos DB Table API table. The example then creates an item and then reads the exact same item back. Finally, the example creates a second item and then performs a query that should return multiple items. With each step, the example outputs metadata to the console about the steps it has performed.
-
-To run the app, use a terminal to navigate to the application directory and run the application.
-
-```dotnetcli
-dotnet run
-```
-
-The output of the app should be similar to this example:
-
-```output
-Single product name: 
-Yamba Surfboard
-Multiple products:
-Yamba Surfboard
-Sand Surfboard
-```
+:::code language="csharp" source="~/cosmos-db-table-dotnet-quickstart/src/web/Services/DemoService.cs" id="parse_results":::
 
 ## Clean up resources
 
@@ -185,17 +164,21 @@ Remove-AzResourceGroup @parameters
     > In this quickstart, we recommended the name ``msdocs-cosmos-quickstart-rg``.
 1. Select **Delete resource group**.
 
-   :::image type="content" source="media/dotnet-quickstart/delete-resource-group-option.png"  alt-text="Screenshot of the Delete resource group option in the navigation bar for a resource group.":::
+   :::image type="content" source="media/dotnet-quickstart/delete-resource-group-option.png"  alt-text="Screenshot of the resource group deletion option in the navigation bar for a resource group.":::
 
 1. On the **Are you sure you want to delete** dialog, enter the name of the resource group, and then select **Delete**.
 
-   :::image type="content" source="media/dotnet-quickstart/delete-confirmation.png" alt-text="Screenshot of the delete confirmation page for a resource group.":::
+   :::image type="content" source="media/dotnet-quickstart/delete-confirmation.png" alt-text="Screenshot of the confirmation page for the deletion of a resource group.":::
 
 ---
 
-## Next steps
+## Related content
 
-In this quickstart, you learned how to create an Azure Cosmos DB for Table account, create a table, and manage entries using the .NET SDK. You can now dive deeper into the SDK to learn how to perform more advanced data queries and management tasks in your Azure Cosmos DB for Table resources.
+- [Node.js Quickstart](quickstart-nodejs.md)
+- [Python Quickstart](quickstart-python.md)
+- [Java Quickstart](quickstart-java.md)
+
+## Next step
 
 > [!div class="nextstepaction"]
 > [Get started with Azure Cosmos DB for Table and .NET](./how-to-dotnet-get-started.md)

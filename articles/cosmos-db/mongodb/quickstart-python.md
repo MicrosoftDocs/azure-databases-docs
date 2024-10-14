@@ -1,8 +1,8 @@
 ---
 title: Quickstart - Azure Cosmos DB for MongoDB for Python with MongoDB driver
 description: Learn how to build a Python app to manage Azure Cosmos DB for MongoDB account resources in this quickstart.
-author: diberry
-ms.author: diberry
+author: seesharprun
+ms.author: sidandrews
 ms.service: azure-cosmos-db
 ms.subservice: mongodb
 ms.devlang: python

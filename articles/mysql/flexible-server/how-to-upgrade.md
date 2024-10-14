@@ -38,6 +38,7 @@ This feature enables customers to perform in-place upgrades of their MySQL 5.7 s
   >`mysql.az_add_action_history - PROCEDURE uses obsolete NO_AUTO_CREATE_USER sql_mode`
   >You can safely ignore these warnings. They refer to built-in stored procedures prefixed with mysql., which are used to support Azure MySQL features. These warnings do not affect the functionality of your database.
 - Trigger [on-demand backup](./how-to-trigger-on-demand-backup.md) before you perform a major version upgrade on your production server, which can be used to [rollback to version 5.7](./how-to-restore-server-portal.md) from the full on-demand backup taken.
+- Before proceeding with the major version upgrade, please ensure there are no active or pending XA transactions on the database, as ongoing XA transactions can potentially cause the upgrade process to fail. To avoid this issue, first check for any XA transactions in the "prepared" state by running `XA RECOVER;`. For any transactions identified, use `XA ROLLBACK '{xid}'`; to rollback each transaction, replacing {xid} with the transaction ID. Ensure all XA transactions are either committed or rolled back before initiating the upgrade to maintain transaction consistency and reduce the risk of upgrade failures.
 
 ## Perform a planned major version upgrade from MySQL 5.7 to MySQL 8.0 using the Azure portal for Burstable SKU servers
 
