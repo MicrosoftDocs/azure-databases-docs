@@ -581,13 +581,19 @@ Finally, validate that you correctly granted access using application code and t
 ```csharp
 using Azure.Identity;
 using Azure.Data.Tables;
-using Azure.Core;
 
 string endpoint = "<account-endpoint>";
 
-TokenCredential credential = new DefaultAzureCredential();
+DefaultAzureCredential credential = new();
 
-TableServiceClient client = new(new Uri(endpoint), credential);
+TableServiceClient client = new(
+    endpoint: new Uri(endpoint),
+    tokenCredential: credential
+);
+
+TableClient table = client.GetTableClient(
+    tableName: "<name-of-table>"
+);
 ```
 
 > [!IMPORTANT]
@@ -596,14 +602,16 @@ TableServiceClient client = new(new Uri(endpoint), credential);
 ### [JavaScript](#tab/javascript)
 
 ```javascript
-const { TableServiceClient } = require('@azure/data-tables');
+const { TableServiceClient, TableClient } = require('@azure/data-tables');
 const { DefaultAzureCredential } = require('@azure/identity');
 
 const endpoint = '<account-endpoint>';
 
-const credential = new DefaultAzureCredential();
+let credential = new DefaultAzureCredential();
 
-const client = new TableServiceClient(endpoint, credential);
+let client = new TableServiceClient(endpoint, credential);
+
+let table = new TableClient(endpoint, "<table-name>", credential);
 ```
 
 > [!IMPORTANT]
@@ -612,14 +620,16 @@ const client = new TableServiceClient(endpoint, credential);
 ### [TypeScript](#tab/typescript)
 
 ```typescript
-import { TableServiceClient } from '@azure/data-tables';
+import { TableServiceClient, TableClient } from '@azure/data-tables';
 import { TokenCredential, DefaultAzureCredential } from '@azure/identity';
 
-let endpoint: string = '<account-endpoint>';
+const endpoint: string = '<account-endpoint>';
 
 let credential: TokenCredential = new DefaultAzureCredential();
 
-const client: TableServiceClient = new TableServiceClient(endpoint, credential);
+let client: TableServiceClient = new TableServiceClient(endpoint, credential);
+
+let table: TableClient = new TableClient(endpoint, "<table-name>", credential);
 ```
 
 > [!IMPORTANT]
@@ -628,7 +638,7 @@ const client: TableServiceClient = new TableServiceClient(endpoint, credential);
 ### [Python](#tab/python)
 
 ```python
-from azure.data.tables import TableServiceClient
+from azure.data.tables import TableServiceClient, TableClient
 from azure.identity import DefaultAzureCredential
 
 endpoint = "<account-endpoint>"
@@ -636,6 +646,8 @@ endpoint = "<account-endpoint>"
 credential = DefaultAzureCredential()
 
 client = TableServiceClient(endpoint, credential=credential)
+
+table = client.get_table_client("<table-name>")
 ```
 
 > [!IMPORTANT]
@@ -655,7 +667,8 @@ const endpoint = "<account-endpoint>"
 
 func main() {
     credential, _ := azidentity.NewDefaultAzureCredential(nil)
-    client, _ := aztables.NewClient(endpoint, credential, nil)
+    client, _ := aztables.NewServiceClient(endpoint, credential, nil)
+    table, _ := client.NewClient("<table-name>")
 }
 ```
 
@@ -665,6 +678,7 @@ func main() {
 ### [Java](#tab/java)
 
 ```java
+import com.azure.data.tables.TableClient;
 import com.azure.data.tables.TableServiceClient;
 import com.azure.data.tables.TableServiceClientBuilder;
 import com.azure.identity.DefaultAzureCredential;
@@ -675,13 +689,15 @@ public class Table{
         DefaultAzureCredential credential = new DefaultAzureCredentialBuilder()
             .build();
         
-        TableServiceClient tableServiceClient = new TableServiceClientBuilder()
+        TableServiceClient client = new TableServiceClientBuilder()
             .endpoint("<nosql-endpoint>")
             .credential(credential)
             .buildClient();
+
+        TableClient table = client
+            .getTableClient("<table-name>");
     }
 }
-
 ```
 
 > [!IMPORTANT]
