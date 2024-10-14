@@ -13,6 +13,13 @@ zone_pivot_groups: postgresql-server-version
 # Resource Usage / Background Writer
 
 
+::: zone pivot="postgresql-17"
+
+[!INCLUDE [server-parameters-table-17-resource-usage-background-writer](./includes/server-parameters-table-17-resource-usage-background-writer.md)]
+
+::: zone-end
+
+
 ::: zone pivot="postgresql-16"
 
 [!INCLUDE [server-parameters-table-16-resource-usage-background-writer](./includes/server-parameters-table-16-resource-usage-background-writer.md)]

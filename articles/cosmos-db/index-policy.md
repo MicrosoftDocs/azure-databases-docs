@@ -182,6 +182,60 @@ When you define a spatial path in the indexing policy, you should define which i
 
 Azure Cosmos DB, by default, won't create any spatial indexes. If you would like to use spatial SQL built-in functions, you should create a spatial index on the required properties. See [this section](sql-query-geospatial-index.md) for indexing policy examples for adding spatial indexes.
 
+## Tuple indexes
+Tuple Indexes are useful when performing filtering on multiple fields within an array element. Tuple indexes are defined in the includedPaths section of the indexing policy using the tuple specifier “[]”. 
+
+> [!NOTE]
+> Unlike with included or excluded paths, you can't create a path with the /* wildcard. Every tuple path needs to end with “/?”. If a tuple in a tuple path doesn't exist in an item, a value will be added to the index to indicate that the tuple is undefined.
+
+Array tuple paths will be defined in the includedPaths section and will be using the following notation.
+
+`<path prefix>/[]/{<tuple 1>, <tuple 2> … <tuple n>}/?`
+
+Note that:
+- The first part, the path Prefix, is the path that is common between the tuples. It is the path from root to array.  In our example it is “/events”.
+- Next is the array wildcard specifier “[]”. All array tuple paths should have an array wildcard specifier before the tuple specifier “{}”. 
+- Next is specifying the tuples using the tuple specifier “{}”. 
+- Tuples will be separated by comma.  
+- Tuple needs to use the same path specification as other index paths with a few exceptions:  
+- Tuples should not start with the leading “/”. 
+- Tuples should not have array wildcards. 
+- Tuples should not end “?” or “*”
+- “?” is the last segment in a tuple path and should be specified immediately after the tuple specifier segment. 
+
+For example, 
+
+`/events/[]/{name, category}/?`
+
+These are a few examples of of *valid* array tuple paths: 
+“includedPaths”:[  
+    {“path”: “/events/[]/{name/first, name/last}/?”}, 
+    {“path”: “/events/[]/{name/first, category}/?”}, 
+    {“path”: “/events/[]/{name/first, category/subcategory}/?”}, 
+    {“path”: “/events/[]/{name/[1]/first, category}/?”}, 
+    {“path”: “/events/[]/{[1], [3]}/?”}, 
+    {“path”: “/city/[1]/events/[]/{name, category}/?”} 
+] 
+
+These are a few examples of *invalid* array tuple paths
+- `/events/[]/{name/[]/first, category}/?`
+    - One of the tuples has array wildcard
+- `/events/[]/{name, category}/*`
+    - The last segment in array tuple path should be “?” and not * 
+-  `/events/[]/{{name, first},category}/?`
+    - The tuple specifier is nested
+- `/events/{name, category}/?`
+    - The array wildcard is missing before the tuple specifier 
+- `/events/[]/{/name,/category}/?`
+    - Tuples start with leading `/` 
+- /events/[]/{name/?,category/?}/?`
+    - Tuples end with an `?` 
+- /city/[]/events/[]/{name, category}/?`
+    - The path prefix as 2 array wildcards 
+
+
+
+
 ## Composite indexes
 
 Queries that have an `ORDER BY` clause with two or more properties require a composite index. You can also define a composite index to improve the performance of many equality and range queries. By default, no composite indexes are defined so you should [add composite indexes](how-to-manage-indexing-policy.md#composite-index) as needed.
@@ -369,6 +423,36 @@ The following considerations apply when creating composite indexes to optimize a
 | ```(name ASC, timestamp ASC)```          | ```SELECT AVG(c.timestamp) FROM c WHERE c.name > "John"``` | `No` |
 | ```(name ASC, age ASC, timestamp ASC)```          | ```SELECT AVG(c.timestamp) FROM c WHERE c.name = "John" AND c.age = 25``` | `Yes` |
 | ```(age ASC, timestamp ASC)```          | ```SELECT AVG(c.timestamp) FROM c WHERE c.name = "John" AND c.age > 25``` | `No` |
+
+### Composite indexes with an array wildcard
+
+Below is an example for a composite index that contains an array wildcard.
+```json
+{  
+    "automatic":true,
+    "indexingMode":"Consistent",
+    "includedPaths":[  
+        {  
+            "path":"/*"
+        }
+    ],
+    "excludedPaths":[],
+    "compositeIndexes":[  
+        [  
+            {"path":"/familyname", "order":"ascending"},
+            {"path":"/children/[]/age", "order":"descending"}
+        ]
+    ]
+}
+```
+
+An example query that can benefits from this composite index is:
+```sql
+SELECT r.id
+FROM root r
+JOIN ch IN r.children
+WHERE r.familyname = 'Anderson' AND ch.age > 20
+```
 
 ## <a id=index-transformation></a>Modifying the indexing policy
 
