@@ -10,7 +10,7 @@ ms.subservice: flexible-server
 ms.topic: quickstart
 ---
 
-# Quickstart: Mange Azure Database for PostgreSQL - Flexible Server using automation tasks
+# Quickstart: Manage Azure Database for PostgreSQL - Flexible Server using automation tasks
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
