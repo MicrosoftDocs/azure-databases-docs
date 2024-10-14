@@ -64,7 +64,7 @@ Creating an automation task doesn't immediately incur charges. Underneath, an au
 
 1. Tasks that send email notifications require an email address.
 
-> [!NOTE]  
+> [!NOTE]
 > You can't change the task name after creation, so consider a name that still applies if you edit the underlying workflow. Changes you make to the underlying workflow apply only to the task you created, not the task template.
 >  
 > For example, if you name your task `Stop-Instance-Weekly` but later edit the underlying workflow to run daily, you can't change it to `Stop-Instance-Daily`.
