@@ -668,7 +668,7 @@ const endpoint = "<account-endpoint>"
 func main() {
     credential, _ := azidentity.NewDefaultAzureCredential(nil)
     client, _ := aztables.NewServiceClient(endpoint, credential, nil)
-  table, _ := client.NewClient("<table-name>")
+    table, _ := client.NewClient("<table-name>")
 }
 ```
 
