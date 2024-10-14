@@ -4,13 +4,13 @@ description: This article describes how to stop/start an Azure Database for Post
 author: danyal-bukhari # GitHub alias
 ms.author: dabukhari # Microsoft alias
 ms.reviewer: maghan
-ms.date: 10/12/2024
+ms.date: 10/13/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: quickstart
 ---
 
-# Quickstart: Manage Azure Database for PostgreSQL - Flexible Server using automation tasks
+# Quickstart: Mange Azure Database for PostgreSQL - Flexible Server using automation tasks
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
