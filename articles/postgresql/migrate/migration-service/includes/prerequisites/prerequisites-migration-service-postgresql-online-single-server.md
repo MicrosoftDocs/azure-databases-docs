@@ -44,6 +44,7 @@ To prevent the Online migration from running out of storage to store the logs, e
 
 - ALTER SYSTEM SET max_replication_slots = `number of databases to migrate` + 1;
 
+
 > [!IMPORTANT]  
 > [Change the **password_encryption** server parameter on your flexible server](../../../../flexible-server/how-to-configure-server-parameters-using-portal.md) from SCRAM-SHA-256 to MD5 before initating the migration. This is essential for the existing credentials on single server to work on your flexible server.
 
