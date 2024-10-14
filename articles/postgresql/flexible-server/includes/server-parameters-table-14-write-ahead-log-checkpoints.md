@@ -91,6 +91,7 @@ ms.topic: include
 [!INCLUDE [server-parameters-azure-notes-max-wal-size](./server-parameters-azure-notes-max-wal-size.md)]
 
 
+
 ### min_wal_size
 
 | Attribute      | Value                                                      |
