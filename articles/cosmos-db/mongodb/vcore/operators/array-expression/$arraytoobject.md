@@ -28,7 +28,7 @@ The syntax for the `$arrayToObject` operator is as follows:
 
 | | Description |
 | --- | --- |
-| **`<array>`**| The array to be converted into a document.Each element in the array must be either: a) A two-element array where the first element is the field name and the second element is the field value. b) A document with exactly two fields, "k" and "v", where "k" is the field name and "v" is the field value.|
+| **`<array>`**| The array to be converted into a document. Each element in the array must be either: a) A two-element array where the first element is the field name and the second element is the field value. b) A document with exactly two fields, "k" and "v", where "k" is the field name and "v" is the field value.|
 
 ## Example
 
@@ -77,9 +77,9 @@ Let's understand the usage with sample json from `stores` dataset.
 }
 ```
 
-### Example 1: Convert the array to a key:value document
+### Example 1: Convert the array to a key: value document
 
-The above aggregation query converts the `salesByCategory` array into an object where each `categoryName` is a key and `totalSales` is the corresponding value. This transformation simplifies access to sales data by category directly from an object structure.
+The example aggregation query converts the `salesByCategory` array into an object where each `categoryName` is a key and `totalSales` is the corresponding value. This transformation simplifies access to sales data by category directly from an object structure.
 
 ```javascript
 db.stores.aggregate([

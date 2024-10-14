@@ -14,7 +14,7 @@
 
 [!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 
-The `$filter` operator is used to filter elements from an array based on a specified condition. This operator is particularly useful when you need to manipulate or retrieve specific array elements within documents.
+The `$filter` operator is used to filter elements from an array based on a specified condition. This operator is useful when you need to manipulate or retrieve specific array elements within documents.
 
 ## Syntax
 
@@ -96,7 +96,7 @@ db.yourCollection.aggregate([
 ])
 ```
 
-The resulting document will have an additional field, `filteredSalesByCategory`, which will include only the items from `salesByCategory` that have `totalSales` greater than 10000.
+The resulting document has an extra field, `filteredSalesByCategory`, which include the items from `salesByCategory` that have `totalSales` greater than 10000.
 
 ```json
 {

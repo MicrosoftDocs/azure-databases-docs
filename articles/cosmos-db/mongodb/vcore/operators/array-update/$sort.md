@@ -14,7 +14,7 @@
 
 [!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 
-The `$sort` operator is used to sort an array in ascending or descending order within a document during an update operation. This operator is particularly useful for maintaining ordered arrays based on specific fields.
+The `$sort` operator is used to sort an array in ascending or descending order within a document during an update operation. This operator is useful for maintaining ordered arrays based on specific fields.
 
 ## Syntax
 
@@ -36,7 +36,7 @@ The `$sort` operator is used to sort an array in ascending or descending order w
 
 ## Example
 
-Let's review the usage with an sample json document from `stores` collection.
+Let's review the usage with a sample json document from `stores` collection.
 
 ```json
 {

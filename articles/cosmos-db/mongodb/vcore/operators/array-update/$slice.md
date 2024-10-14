@@ -14,7 +14,7 @@
 
 [!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 
-The `$slice` operator is used to limit the number of elements in an array that are returned in a query. It can be particularly useful when dealing with large arrays where only a subset of the elements is needed. This operator can be applied to arrays to either return the first N elements, the last N elements, or a specific range of elements.
+The `$slice` operator is used to limit the number of elements in an array that are returned in a query. It can be useful when dealing with large arrays where only a subset of the elements is needed. This operator can be applied to arrays to either return the first N elements, the last N elements, or a specific range of elements.
 
 ## Syntax
 
@@ -37,11 +37,11 @@ The general syntax for the `$slice` operator is as follows:
 | --- | --- |
 | **`field`**| The array field to which the `$slice` operator is applied.|
 | **`<value1>, <value2>`**| The values to be inserted into the array. We can keep an empty array for slicing through existing values in array field.|
-| **`<num>`**| Zero value means update the array to be empty, negative means retain the elements from the end of array & a positive number means retaining the elements from the front of the array.|
+| **`<num>`**| A value of zero clears the array, a negative value retains that many elements from the end of the array, and a positive value retains that many elements from the beginning of the array.|
 
 ## Example
 
-Let's review the usage with an sample json document from `stores` collection.
+Let's review the usage with a sample json document from `stores` collection.
 
 ```json
 {
@@ -96,7 +96,7 @@ Let's review the usage with an sample json document from `stores` collection.
 
 ### Example 1: Slice for the first N or last N elements from an array field
 
-The example uses $push with $each to add new elements to the `promotionEvents` array and `$slice` to retain only the first N (positive slice) or last N (negative slice) elements. This ensures the array keeps the most recent entries after the update.
+The example uses `$push` with `$each` to add new elements to the `promotionEvents` array and `$slice` to retain only the first N (positive slice) or last N (negative slice) elements. This way ensures the array keeps the most recent entries after the update.
 
 ```javascript
 db.stores.updateOne(

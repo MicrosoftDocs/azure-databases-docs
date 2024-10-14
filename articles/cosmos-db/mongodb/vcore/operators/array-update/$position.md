@@ -97,7 +97,7 @@ db.stores.update(
 )
 ```
 
-The example document updated `tag` field will have following values.
+The example document updated `tag` field has following values.
 
 ```json
 {

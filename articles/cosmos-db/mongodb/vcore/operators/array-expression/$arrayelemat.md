@@ -26,7 +26,7 @@ The `$arrayElemAt` operator is used to return the element at the specified array
 
 | | Description |
 | --- | --- |
-| **`<array>`**| The array from which to retrieve the element.|
+| **`<array>`**| The array reference from which the element is retrieved.|
 | **`<idx>`**| The index of the element to return. The index is zero-based. A negative index counts from the end of the array.|
 
 ## Example

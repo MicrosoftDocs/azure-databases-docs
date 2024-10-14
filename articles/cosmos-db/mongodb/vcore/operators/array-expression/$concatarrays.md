@@ -14,7 +14,7 @@
 
 [!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 
-The `$concatArrays` operator is used to combine multiple arrays into a single array. This operator is particularly useful when you need to merge arrays from different documents or fields in a document.
+The `$concatArrays` operator is used to combine multiple arrays into a single array. This operator is useful when you need to merge arrays from different documents or fields in a document.
 
 ## Syntax
 

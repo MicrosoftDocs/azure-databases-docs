@@ -14,7 +14,7 @@
 
 [!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 
-The `$facet` stage aggregation pipelines allows for multiple parallel aggregations to be executed within a single pipeline stage. This is useful for performing multiple analyses on the same dataset in a single query.
+The `$facet` stage aggregation pipelines allow for multiple parallel aggregations to be executed within a single pipeline stage. It's useful for performing multiple analyses on the same dataset in a single query.
 
 ## Syntax
 
@@ -42,7 +42,7 @@ The example accesses all the associated records to product categories like `Lapt
 
 ### Example 1: Faceted search on sales and promotions
 
-The example uses the `$facet` stage to perform simultaneous analyses on sales and promotions, for specified product categories. The `salesAnalysis` pipeline unwinds the `salesByCategory`, filters for certain categories, and groups them to sum `totalSales`. The promotion analysis pipeline unwinds promotional events and their discounts, filters for specific categories like `Laptops`, `Smartphones` etc, and groups them to calculate the average discount percentage. The input documents from `stores` collection are fetched from the database only once, at the beginning of this operation.
+The example uses the `$facet` stage to perform simultaneous analyses on sales and promotions, for specified product categories. The `salesAnalysis` pipeline unwinds the `salesByCategory`, filters for certain categories, and groups them to sum `totalSales`. The promotion analysis pipeline unwinds promotional events and their discounts, filters for specific categories like `Laptops`, `Smartphones` etc., and groups them to calculate the average discount percentage. The input documents from `stores` collection are fetched from the database only once, at the beginning of this operation.
 
 ```javascript
 db.stores.aggregate([
