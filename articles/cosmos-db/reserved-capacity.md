@@ -144,7 +144,7 @@ In this case, your total on-demand charges are for 500 quantity of 100 RU/s mete
 
 For example, assume that you need Azure Cosmos DB standard throughput deployments in the US North Central and US West regions. Each region has a throughput consumption of 50,000 RU/s. A reservation purchase of 100,000 RU/s would completely balance your on-demand charges. The discount that a reservation covers is computed as: throughput consumption * reservation_discount_ratio_for_that_region. For the US North Central and US West regions, the reservation discount ratio is 1.0. So, the total discounted RU/s are 100,000. This value is computed as: 50,000 * 1.0 + 50,000 * 1.0 = 100,000 RU/s. You don't have to pay any other charges at the regular pay-as-you-go rates.
 
-|Meter description | Quantity|Region |Region Ratio |Throughput consumption (RU/s) |Formula| Reservation discount applied to RU/s | Pay as you Go RU/s|
+|Meter description | Quantity|Region |Region ratio |Throughput consumption (RU/s) |Reservation usage formula| Reservation discount applied to RU/s | Pay as you go RU/s|
 |---------|---------|---------|---------|---------|---------|---------|---------|
 |Azure Cosmos DB - 100 RU/s/Hour - US North Central  | 500|US North Central| 1.0  | 50,000   |50,000 * 1.0 = 50,000 | 50,000 of the reservation| 0 |
 |Azure Cosmos DB - 100 RU/s/Hour - US West  | 500  | US West               |1.0   |  50,000  |50,000 * 1.0 = 50,000 | The remaining 50,000 of the reservation | 0 |
@@ -153,7 +153,7 @@ For example, assume that you need Azure Cosmos DB standard throughput deployment
 
 For example, assume that you need Azure Cosmos DB standard throughput deployments in the AU Central 2 and FR South regions. Each region has a throughput consumption of 50,000 RU/s. A reservation purchase of 100,000 RU/s would be applicable as follows (assuming that AU Central 2 usage was added first to the database account):
 
-|Meter description | Quantity|Region |Region Ratio |Throughput consumption (RU/s) |Formula|Final reservation discount applied to RU/s |  Pay as You Go RU/s|
+|Meter description | Quantity|Region |Region ratio |Throughput consumption (RU/s) |Reservation usage formula|Final reservation discount applied to RU/s |  Pay as You go RU/s|
 |---------|---------|---------|---------|---------|---------|---------|---------|
 |Azure Cosmos DB - 100 RU/s/Hour - AU Central 2  | 500 | AU Central 2 |1.5  |  50,000 | 50,000 * 1.5 = 75,000 | 75,000 of the 100,000 reservation   | 0 |
 |Azure Cosmos DB - 100 RU/s/Hour - FR South  | 500 |FR South   |1.625 | 50,000 | 50,000 * 1.625 = 81,250 | The remaining 25,000 of the reservation| (81,250 - 25,000) / 1.625 = 34,616|
@@ -172,12 +172,12 @@ For example, assume that you need Azure Cosmos DB standard throughput deployment
 
 For example, assume that you need Azure Cosmos DB autoscale throughput deployments in the US North Central and US West regions. Each region has a throughput consumption of 50,000 RU/s. A reservation purchase of 100,000 RU/s won't completely balance your on-demand charges. The discount that a reservation covers is computed as: throughput consumption * reservation_discount_ratio_for_that_region * autoscale_ratio. For the US North Central and US West regions, the reservation discount ratio is 1.0.
 
-|Meter description | Quantity|Region |Region Ratio |Autoscale Ratio |Throughput consumption (RU/s) |Formula| Reservation discount applied to RU/s | Pay as you Go RU/s|
+|Meter description | Quantity|Region |Region ratio |Autoscale ratio |Throughput consumption (RU/s) |Reservation usage formula| Reservation discount applied to RU/s | Pay as you go RU/s|
 |---------|---------|---------|---------|---------|---------|---------|---------|---------|
 |Azure Cosmos DB - 100 RU/s/Hour - US North Central  | 500|US North Central| 1.0  | 1.5 |50,000  |50,000 * 1.0 * 1.5 = 75,000 |75,000 of the 100,000 reservation | 0 |
 |Azure Cosmos DB - 100 RU/s/Hour - US West  | 500  | US West               |1.0   | 1.5 |50,000  |50,000 * 1.0 * 1.5 = 75,000| The remaining 25,000  of the reservation | (75,000-25,000)/1.0 = 50,000 |
 
-## Sample scenario 1
+## Purchase sample scenario 1
 
 Imagine this hypothetical scenario: A company is working on a new application but isn't sure about the throughput requirements, they purchased RU/s on 3 different days.
 
@@ -197,7 +197,7 @@ Imagine this hypothetical scenario: A company is working on a new application bu
   * Three-years term, to maximize the discounts.
   * They choose to pay monthly too.
 
-## Sample scenario 2
+## Purchase sample scenario 2
 
 Imagine this hypothetical scenario: A company needs a 10,950,000 three-years reservation. In the same purchase they got:
 
