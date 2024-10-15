@@ -187,6 +187,7 @@ Azure Database for MySQL - Flexible Server handles managed features, like backup
 ### event_scheduler
 
 In Azure Database for MySQL - Flexible Server, the `event_scheduler` server parameter manages creating, scheduling, and running events. That is, the parameter manages tasks that run according to a schedule by a special MySQL Event Scheduler thread. When the `event_scheduler` parameter is set to `ON`, the Event Scheduler thread is listed as a daemon process in the output of `SHOW PROCESSLIST`.
+
 For MySQL version 5.7 servers, the server parameter `event_scheduler` is automatically turned 'OFF' when [backup](./concepts-backup-restore.md#backup-overview) is initiated and server parameter `event_scheduler` is turned back 'ON' after the backup completes successfully. In MySQL version 8.0 for Azure Database for MySQL - Flexible Server, the event_scheduler remains unaffected during [backups](./concepts-backup-restore.md#backup-overview). To ensure smoother operations, it's recommended to upgrade your MySQL 5.7 servers to version 8.0 using a [major version upgrade](./how-to-upgrade.md).
 
 
