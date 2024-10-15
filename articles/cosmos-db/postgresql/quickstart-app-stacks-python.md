@@ -29,7 +29,7 @@ The following code example creates a [connection pool](https://www.psycopg.org/d
 
 [!INCLUDE[why-connection-pooling](includes/why-connection-pooling.md)]
 
-In the following code, replace \<cluster> with your cluster name and \<password> with your administrator password.
+In the following code, replace \<cluster> with your cluster name and \<password> with your administrator password or Microsoft Entra ID token.
 
 > [!NOTE]
 >  This example closes the connection at the end, so if you want to run the other samples in the article in the same session, don't include the `# Clean up` section when you run this sample.

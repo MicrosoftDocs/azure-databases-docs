@@ -50,8 +50,16 @@ This article explains the different ways to create a container in Azure Cosmos D
 If you encounter timeout exception when creating a collection, do a read operation to validate if the collection was created successfully. The read operation throws an exception until the collection create operation is successful. For the list of status codes supported by the create operation see the [HTTP Status Codes for Azure Cosmos DB](/rest/api/cosmos-db/http-status-codes-for-cosmosdb) article.
 
 ```csharp
+TokenCredential credential = new DefaultAzureCredential();
+
+CosmosClient client = new (
+    accountEndpoint: "<nosql-account-endpoint>",
+    tokenCredential: credential
+);
+```
+
+```csharp
 // Create a container with a partition key and provision 400 RU/s manual throughput.
-CosmosClient client = new CosmosClient(connectionString, clientOptions);
 Database database = await client.CreateDatabaseIfNotExistsAsync(databaseId);
 
 ContainerProperties containerProperties = new ContainerProperties()

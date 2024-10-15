@@ -13,6 +13,13 @@ zone_pivot_groups: postgresql-server-version
 # TLS
 
 
+::: zone pivot="postgresql-17"
+
+[!INCLUDE [server-parameters-table-17-tls](./includes/server-parameters-table-17-tls.md)]
+
+::: zone-end
+
+
 ::: zone pivot="postgresql-16"
 
 [!INCLUDE [server-parameters-table-16-tls](./includes/server-parameters-table-16-tls.md)]

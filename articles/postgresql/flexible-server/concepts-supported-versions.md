@@ -20,11 +20,13 @@ Azure Database for PostgreSQL flexible server currently supports the following m
 
 ## PostgreSQL version 17 (preview)
 
-PostgreSQL 17 preview is now available available in "East Asia" starting immediately with more regions coming soon. Refer to the [PostgreSQL documentation](https://www.postgresql.org/docs/17/release-17.html) to learn more about new feature and improvements in this latest postgres release.
+PostgreSQL 17 (preview) is now available in "East Asia" starting immediately, with more regions coming soon.
+
+The current minor release is **[!INCLUDE [minor-versions-17](./includes/minor-version-17.md)]**. Refer to the [!INCLUDE [minor-versions-docs-17](./includes/minor-version-docs-17.md)] to learn more about new features and improvements in this latest release. New servers are created with this minor version. 
 
 ## PostgreSQL version 16
 
-The current minor release is **[!INCLUDE [minorversions-16](./includes/minor-version-16.md)]**. Refer to the [PostgreSQL documentation](https://www.postgresql.org/docs/release/16.4/) to learn more about improvements and fixes in this release. New servers are created with this minor version. 
+The current minor release is **[!INCLUDE [minor-versions-16](./includes/minor-version-16.md)]**. Refer to the [!INCLUDE [minor-versions-docs-16](./includes/minor-version-docs-16.md)] to learn more about improvements and fixes in this release. New servers are created with this minor version. 
 
 ## PostgreSQL version 15
 
