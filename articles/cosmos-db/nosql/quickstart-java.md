@@ -150,35 +150,84 @@ The client library is available through Maven, as the `azure-spring-data-cosmos`
 
 First, this sample creates a new class that inherits from `AbstractCosmosConfiguration` to configure the connection to Azure Cosmos DB for NoSQL.
 
-:::code language="java" source="~/cosmos-db-nosql-java-quickstart/src/web/src/main/java/com/microsoft/learn/azure/cosmosdb/nosql/quickstart/CosmosConfiguration.java" id="repository_configuration":::
+```java
+@Configuration
+@EnableCosmosRepositories
+public class CosmosConfiguration extends AbstractCosmosConfiguration {
+
+}
+```
 
 Within the configuration class, this sample creates a new instance of the `CosmosClientBuilder` class and configures authentication using a `DefaultAzureCredential` instance.
 
-:::code language="java" source="~/cosmos-db-nosql-java-quickstart/src/web/src/main/java/com/microsoft/learn/azure/cosmosdb/nosql/quickstart/CosmosConfiguration.java" id="create_client" highlight="6-8":::
+```java
+    @Bean
+    public CosmosClientBuilder getCosmosClientBuilder() {
+        DefaultAzureCredential credential = new DefaultAzureCredentialBuilder()
+            .build();
+            
+        return new CosmosClientBuilder()
+            .endpoint("<azure-cosmos-db-nosql-account-endpoint>")
+            .credential(credential);
+    }
+```
 
 ### Get a database
 
 In the configuration class, the sample implements a method to return the name of the existing database named *`cosmicworks`*.
 
-:::code language="java" source="~/cosmos-db-nosql-java-quickstart/src/web/src/main/java/com/microsoft/learn/azure/cosmosdb/nosql/quickstart/CosmosConfiguration.java" id="get_database":::
+```java
+@Override
+protected String getDatabaseName() {
+    return "cosmicworks";
+}
+```
 
 ### Get a container
 
 Use the `Container` method decorator to configure a class to represent items in a container. Author the class to include all of the members you want to serialize into JSON. In this example, the type has a unique identifier, and fields for category, name, quantity, price, and clearance.
 
-:::code language="java" source="~/cosmos-db-nosql-java-quickstart/src/web/src/main/java/com/microsoft/learn/azure/cosmosdb/nosql/quickstart/Item.java" id="get_container" highlight="1":::
+```java
+@Container(containerName = "products", autoCreateContainer = false)
+public class Item {
+    private String id;
+    private String name;
+    private Integer quantity;
+    private Boolean sale;
+
+    @PartitionKey
+    private String category;
+
+    // Extra members omitted for brevity
+}
+```
 
 ### Create an item
 
 Create an item in the container using `repository.save`.
 
-:::code language="java" source="~/cosmos-db-nosql-java-quickstart/src/web/src/main/java/com/microsoft/learn/azure/cosmosdb/nosql/quickstart/StartController.java" id="create_item" highlight="8":::
+```java
+Item item = new Item(
+    "70b63682-b93a-4c77-aad2-65501347265f",
+    "gear-surf-surfboards",
+    "Yamba Surfboard",
+    12,
+    false
+);
+Item created_item = repository.save(item);
+```
 
 ### Read an item
 
 Perform a point read operation by using both the unique identifier (`id`) and partition key fields. Use `repository.findById` to efficiently retrieve the specific item.
 
-:::code language="java" source="~/cosmos-db-nosql-java-quickstart/src/web/src/main/java/com/microsoft/learn/azure/cosmosdb/nosql/quickstart/StartController.java" id="read_item" highlight="2":::
+```java
+PartitionKey partitionKey = new PartitionKey("gear-surf-surfboards");
+Optional<Item> existing_item = repository.findById("70b63682-b93a-4c77-aad2-65501347265f", partitionKey);
+if (existing_item.isPresent()) {
+    // Do something
+}
+```
 
 ### Query items
 
@@ -188,11 +237,24 @@ Perform a query over multiple items in a container by defining a query in the re
 SELECT * FROM products p WHERE p.category = @category
 ```
 
-:::code language="java" source="~/cosmos-db-nosql-java-quickstart/src/web/src/main/java/com/microsoft/learn/azure/cosmosdb/nosql/quickstart/ItemRepository.java" id="repository_implementation" highlight="3":::
+```java
+@Repository
+public interface ItemRepository extends CosmosRepository<Item, String> {
+
+    @Query("SELECT * FROM products p WHERE p.category = @category")
+    List<Item> getItemsByCategory(@Param("category") String category);
+
+}
+```
 
 Fetch all of the results of the query using `repository.getItemsByCategory`. Loop through the results of the query.
 
-:::code language="java" source="~/cosmos-db-nosql-java-quickstart/src/web/src/main/java/com/microsoft/learn/azure/cosmosdb/nosql/quickstart/StartController.java" id="query_items" highlight="1":::
+```java
+List<Item> items = repository.getItemsByCategory("gear-surf-surfboards");
+for (Item item : items) {
+    // Do something
+}
+```
 
 ## Related content
 

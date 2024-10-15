@@ -150,35 +150,110 @@ The client library is available through Go, as the `azcosmos` package.
 
 This sample creates a new instance of `CosmosClient` using `azcosmos.NewClient` and authenticates using a `DefaultAzureCredential` instance.
 
-:::code language="go" source="~/cosmos-db-nosql-go-quickstart/src/cosmos.go" id="create_client" highlight="1,10":::
+```go
+credential, err := azidentity.NewDefaultAzureCredential(nil)
+if err != nil {
+    return err
+}
+
+clientOptions := azcosmos.ClientOptions{
+    EnableContentResponseOnWrite: true,
+}
+
+client, err := azcosmos.NewClient("<azure-cosmos-db-nosql-account-endpoint>", credential, &clientOptions)
+if err != nil {
+    return err
+}
+```
 
 ### Get a database
 
 Use `client.NewDatabase` to retrieve the existing database named *`cosmicworks`*.
 
-:::code language="go" source="~/cosmos-db-nosql-go-quickstart/src/cosmos.go" id="get_database":::
+```go
+database, err := client.NewDatabase("cosmicworks")
+if err != nil {
+    return err
+}
+```
 
 ### Get a container
 
 Retrieve the existing *`products`* container using `database.NewContainer`.
 
-:::code language="go" source="~/cosmos-db-nosql-go-quickstart/src/cosmos.go" id="get_container":::
+```go
+container, err := database.NewContainer("products")
+if err != nil {
+    return err
+}
+```
 
 ### Create an item
 
 Build a Go type with all of the members you want to serialize into JSON. In this example, the type has a unique identifier, and fields for category, name, quantity, price, and sale.
 
-:::code language="go" source="~/cosmos-db-nosql-go-quickstart/src/item.go" id="model":::
+```go
+type Item struct {
+  Id        string  `json:"id"`
+  Category  string  `json:"category"`
+  Name      string  `json:"name"`
+  Quantity  int     `json:"quantity"`
+  Price     float32 `json:"price"`
+  Clearance bool    `json:"clearance"`
+}
+```
 
 Create an item in the container using `container.UpsertItem`. This method "upserts" the item effectively replacing the item if it already exists.
 
-:::code language="go" source="~/cosmos-db-nosql-go-quickstart/src/cosmos.go" id="create_item" highlight="19":::
+```go
+item := Item {
+    Id:        "70b63682-b93a-4c77-aad2-65501347265f",
+    Category:  "gear-surf-surfboards",
+    Name:      "Yamba Surfboard",
+    Quantity:  12,
+    Price:     850.00,
+    Clearance: false,
+}
+
+partitionKey := azcosmos.NewPartitionKeyString("gear-surf-surfboards")
+
+context := context.TODO()
+
+bytes, err := json.Marshal(item)
+if err != nil {
+    return err
+}
+
+response, err := container.UpsertItem(context, partitionKey, bytes, nil)
+if err != nil {
+    return err
+}
+```
 
 ### Read an item
 
 Perform a point read operation by using both the unique identifier (`id`) and partition key fields. Use `container.ReadItem` to efficiently retrieve the specific item.
 
-:::code language="go" source="~/cosmos-db-nosql-go-quickstart/src/cosmos.go" id="read_item" highlight="7":::
+```go
+partitionKey := azcosmos.NewPartitionKeyString("gear-surf-surfboards")
+
+context := context.TODO()
+
+itemId := "70b63682-b93a-4c77-aad2-65501347265f"
+
+response, err := container.ReadItem(context, partitionKey, itemId, nil)
+if err != nil {
+    return err
+}
+
+if response.RawResponse.StatusCode == 200 {
+    read_item := Item{}
+    err := json.Unmarshal(response.Value, &read_item)
+    if err != nil {
+        return err
+    }
+}
+```
 
 ### Query items
 
@@ -188,11 +263,41 @@ Perform a query over multiple items in a container using `container.NewQueryItem
 SELECT * FROM products p WHERE p.category = @category
 ```
 
-:::code language="go" source="~/cosmos-db-nosql-go-quickstart/src/cosmos.go" id="query_items" highlight="3,11":::
+```go
+partitionKey := azcosmos.NewPartitionKeyString("gear-surf-surfboards")
+
+query := "SELECT * FROM products p WHERE p.category = @category"
+
+queryOptions := azcosmos.QueryOptions{
+    QueryParameters: []azcosmos.QueryParameter{
+        {Name: "@category", Value: "gear-surf-surfboards"},
+    },
+}
+
+pager := container.NewQueryItemsPager(query, partitionKey, &queryOptions)
+```
 
 Parse the paginated results of the query by looping through each page of results using `pager.NextPage`. Use `pager.More` to determine if there are any results left at the start of each loop.
 
-:::code language="go" source="~/cosmos-db-nosql-go-quickstart/src/cosmos.go" id="parse_results" highlight="7-8":::
+```go
+items := []Item{}
+
+for pager.More() {
+    response, err := pager.NextPage(context.TODO())
+    if err != nil {
+        return err
+    }
+
+    for _, bytes := range response.Items {
+        item := Item{}
+        err := json.Unmarshal(bytes, &item)
+        if err != nil {
+            return err
+        }
+        items = append(items, item)
+    }
+}
+```
 
 ## Clean up resources
 

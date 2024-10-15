@@ -153,11 +153,25 @@ This sample creates a new instance of the `CosmosClient` type and authenticates 
 
 ### [JavaScript](#tab/javascript)
 
-:::code language="javascript" source="~/cosmos-db-nosql-nodejs-quickstart/src/js/cosmos.js" id="create_client" highlight="1,3":::
+```javascript
+const credential = new DefaultAzureCredential();
+
+const client = new CosmosClient({
+    '<azure-cosmos-db-nosql-account-endpoint>',
+    aadCredentials: credential
+});
+```
 
 ### [TypeScript](#tab/typescript)
 
-:::code language="typescript" source="~/cosmos-db-nosql-nodejs-quickstart/src/ts/cosmos.ts" id="create_client" highlight="1,3":::
+```typescript
+const credential = new DefaultAzureCredential();
+
+const client = new CosmosClient({
+    '<azure-cosmos-db-nosql-account-endpoint>',
+    aadCredentials: credential
+});
+```
 
 ---
 
@@ -167,11 +181,15 @@ Use `client.database` to retrieve the existing database named *`cosmicworks`*.
 
 ### [JavaScript](#tab/javascript)
 
-:::code language="javascript" source="~/cosmos-db-nosql-nodejs-quickstart/src/js/cosmos.js" id="get_database":::
+```javascript
+const database = client.database('cosmicworks');
+```
 
 ### [TypeScript](#tab/typescript)
 
-:::code language="typescript" source="~/cosmos-db-nosql-nodejs-quickstart/src/ts/cosmos.ts" id="get_database":::
+```typescript
+const database: Database = client.database('cosmicworks');
+```
 
 ---
 
@@ -181,11 +199,15 @@ Retrieve the existing *`products`* container using `database.container`.
 
 ### [JavaScript](#tab/javascript)
 
-:::code language="javascript" source="~/cosmos-db-nosql-nodejs-quickstart/src/js/cosmos.js" id="get_container":::
+```javascript
+const container = database.container('products');
+```
 
 ### [TypeScript](#tab/typescript)
 
-:::code language="typescript" source="~/cosmos-db-nosql-nodejs-quickstart/src/ts/cosmos.ts" id="get_container":::
+```typescript
+const container: Container = database.container('products');
+```
 
 ---
 
@@ -195,11 +217,33 @@ Build a new object with all of the members you want to serialize into JSON. In t
 
 ### [JavaScript](#tab/javascript)
 
-:::code language="javascript" source="~/cosmos-db-nosql-nodejs-quickstart/src/js/cosmos.js" id="create_item" highlight="10":::
+```javascript
+const item = {
+    'id': '70b63682-b93a-4c77-aad2-65501347265f',
+    'category': 'gear-surf-surfboards',
+    'name': 'Yamba Surfboard',
+    'quantity': 12,
+    'price': 850.00,
+    'clearance': false
+};
+
+let response = await container.items.upsert(item);
+```
 
 ### [TypeScript](#tab/typescript)
 
-:::code language="typescript" source="~/cosmos-db-nosql-nodejs-quickstart/src/ts/cosmos.ts" id="create_item" highlight="10":::
+```typescript
+const item: Product = {
+    'id': '70b63682-b93a-4c77-aad2-65501347265f',
+    'category': 'gear-surf-surfboards',
+    'name': 'Yamba Surfboard',
+    'quantity': 12,
+    'price': 850.00,
+    'clearance': false
+};
+
+let response: ItemResponse<Product> = await container.items.upsert<Product>(item);
+```
 
 ---
 
@@ -209,11 +253,23 @@ Perform a point read operation by using both the unique identifier (`id`) and pa
 
 ### [JavaScript](#tab/javascript)
 
-:::code language="javascript" source="~/cosmos-db-nosql-nodejs-quickstart/src/js/cosmos.js" id="read_item" highlight="4":::
+```javascript
+const id = '70b63682-b93a-4c77-aad2-65501347265f';
+const partitionKey = 'gear-surf-surfboards';
+
+let response = await container.item(id, partitionKey).read();
+let read_item = response.resource;
+```
 
 ### [TypeScript](#tab/typescript)
 
-:::code language="typescript" source="~/cosmos-db-nosql-nodejs-quickstart/src/ts/cosmos.ts" id="read_item" highlight="4":::
+```typescript
+const id = '70b63682-b93a-4c77-aad2-65501347265f';
+const partitionKey = 'gear-surf-surfboards';
+
+let response: ItemResponse<Product> = await container.item(id, partitionKey).read<Product>();
+let read_item: Product = response.resource!;
+```
 
 ---
 
@@ -229,11 +285,41 @@ Fetch all of the results of the query using `query.fetchAll`. Loop through the r
 
 ### [JavaScript](#tab/javascript)
 
-:::code language="javascript" source="~/cosmos-db-nosql-nodejs-quickstart/src/js/cosmos.js" id="query_items" highlight="2,11":::
+```javascript
+const querySpec = {
+    query: 'SELECT * FROM products p WHERE p.category = @category',
+    parameters: [
+        {
+            name: '@category',
+            value: 'gear-surf-surfboards'
+        }
+    ]
+};
+
+let response = await container.items.query(querySpec).fetchAll();
+for (let item of response.resources) {
+    // Do something
+}
+```
 
 ### [TypeScript](#tab/typescript)
 
-:::code language="typescript" source="~/cosmos-db-nosql-nodejs-quickstart/src/ts/cosmos.ts" id="query_items" highlight="2,11":::
+```typescript
+const querySpec: SqlQuerySpec = {
+    query: 'SELECT * FROM products p WHERE p.category = @category',
+    parameters: [
+        {
+            name: '@category',
+            value: 'gear-surf-surfboards'
+        }
+    ]
+};
+
+let response: FeedResponse<Product> = await container.items.query<Product>(querySpec).fetchAll();
+for (let item of response.resources) {
+    // Do something
+}
+```
 
 ---
 
