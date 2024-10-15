@@ -142,7 +142,7 @@ In this case, your total on-demand charges are for 500 quantity of 100 RU/s mete
 
 #### Example 1 - Two regions with a 1.0 ratio
 
-For example, assume that you need Azure Cosmos DB standard throughput deployments in the US North Central and US West regions. Each region has a throughput consumption of 50,000 RU/s. A reservation purchase of 100,000 RU/s would completely balance your on-demand charges. The discount that a reservation covers is computed as: throughput consumption * reservation_discount_ratio_for_that_region. For the US North Central and US West regions, the reservation discount ratio is 1. So, the total discounted RU/s are 100,000. This value is computed as: 50,000 * 1 + 50,000 * 1 = 100,000 RU/s. You don't have to pay any other charges at the regular pay-as-you-go rates.
+For example, assume that you need Azure Cosmos DB standard throughput deployments in the US North Central and US West regions. Each region has a throughput consumption of 50,000 RU/s. A reservation purchase of 100,000 RU/s would completely balance your on-demand charges. The discount that a reservation covers is computed as: throughput consumption * reservation_discount_ratio_for_that_region. For the US North Central and US West regions, the reservation discount ratio is 1.0. So, the total discounted RU/s are 100,000. This value is computed as: 50,000 * 1.0 + 50,000 * 1.0 = 100,000 RU/s. You don't have to pay any other charges at the regular pay-as-you-go rates.
 
 |Meter description | Quantity|Region |Ratio |Throughput consumption (RU/s) |Formula|Final reservation discount applied to RU/s | Pay as you Go RU/s|
 |---------|---------|---------|---------|---------|---------|---------|---------|
