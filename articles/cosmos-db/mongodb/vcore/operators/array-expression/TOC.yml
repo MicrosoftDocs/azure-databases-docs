@@ -1,3 +1,11 @@
+- name: $arrayElemAt
+  href: $arrayelemat.md
+- name: $arrayToObject
+  href: $arraytoobject.md
+- name: $concatArrays
+  href: $concatarrays.md
+- name: $filter
+  href: $filter.md
 - name: $in
   href: $in.md
 - name: $map
