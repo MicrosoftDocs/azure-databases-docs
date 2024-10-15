@@ -12,7 +12,7 @@ ms.date: 01/26/2022
 
 # Enable and download server slow query logs of an Azure Database for PostgreSQL - Flexible Server instance using Azure CLI
 
-[!INCLUDE[applies-to-postgres-single-flexible-server](../includes/applies-to-postgresql-single-flexible-server.md)]
+[!INCLUDE [applies-to-postgresql-flexible-server](../includes/applies-to-postgresql-flexible-server.md)]
 
 This sample CLI script enables and downloads the slow query logs of a single Azure Database for PostgreSQL flexible server instance.
 
