@@ -7,9 +7,9 @@ ms.author: sidandrews
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.devlang: csharp
-ms.custom: devx-track-dotnet, devx-track-extended-azdevcli
 ms.topic: quickstart-sdk
 ms.date: 10/15/2024
+ms.custom: devx-track-csharp, devx-track-dotnet, devx-track-extended-azdevcli
 zone_pivot_groups: azure-cosmos-db-quickstart-env
 # CustomerIntent: As a developer, I want to learn the basics of the .NET library so that I can build applications with Azure Cosmos DB for NoSQL.
 ---

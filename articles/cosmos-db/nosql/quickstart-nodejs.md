@@ -7,9 +7,9 @@ ms.author: sidandrews
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.devlang: typescript
-ms.custom: devx-track-js, devx-track-ts, devx-track-extended-azdevcli
 ms.topic: quickstart-sdk
-ms.date: 08/01/2024
+ms.date: 10/15/2024
+ms.custom: devx-track-js, devx-track-ts, devx-track-extended-azdevcli
 zone_pivot_groups: azure-cosmos-db-quickstart-env
 # CustomerIntent: As a developer, I want to learn the basics of the Node.js library so that I can build applications with Azure Cosmos DB for NoSQL.
 ---

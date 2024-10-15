@@ -7,9 +7,9 @@ ms.author: sidandrews
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.devlang: java
-ms.custom: devx-track-extended-java, devx-track-extended-azdevcli
 ms.topic: quickstart-sdk
-ms.date: 06/14/2024
+ms.date: 10/15/2024
+ms.custom: devx-track-extended-java, devx-track-extended-azdevcli
 zone_pivot_groups: azure-cosmos-db-quickstart-env
 # CustomerIntent: As a developer, I want to learn the basics of the Java library so that I can build applications with Azure Cosmos DB for NoSQL.
 ---
