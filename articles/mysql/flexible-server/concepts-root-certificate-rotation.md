@@ -80,15 +80,15 @@ After the root certificate change, the newly generated certificate is pushed dow
 
 ## Frequently asked questions
 
-### 1. If I'm not using SSL/TLS, do I still need to update the root CA?
+### If I'm not using SSL/TLS, do I still need to update the root CA?
 
 No. There are no actions required if you aren't using SSL/TLS.
 
-### 2. If I'm using SSL/TLS, do I need to restart my database server to update the root CA?
+### If I'm using SSL/TLS, do I need to restart my database server to update the root CA?
 
 No. IF you're using SSL/TLS, you don't need to restart the database server to start using the new certificate. Certificate update is a client-side change, and the incoming client connections need to use the new certificate to ensure that they can connect to the database server.
 
-### 3. How do I know if I'm using SSL/TLS with root certificate verification?
+### How do I know if I'm using SSL/TLS with root certificate verification?
 
 You can identify whether your connections verify the root certificate by reviewing your connection string.
 
@@ -98,35 +98,35 @@ You can identify whether your connections verify the root certificate by reviewi
 
 If you're using a client that abstracts the connection string away, review the client's documentation to understand whether it verifies certificates.
 
-### 4. Do we have a server-side query to verify if SSL is being used?
+### Do we have a server-side query to verify if SSL is being used?
 
 To verify if you're using an SSL connection to connect to the server refer to [SSL verification](/azure/mysql/flexible-server/how-to-connect-tls-ssl#verify-the-tlsssl-connection).
 
-### 5. Do I need to plan a database server maintenance downtime for this change?
+### Do I need to plan a database server maintenance downtime for this change?
 
 No. Since the change is only on the client side to connect to the database server, there's no maintenance downtime needed for the database server for this change.
 
-### 6. How often does Microsoft update their certificates or what is the expiry policy?
+### How often does Microsoft update their certificates or what is the expiry policy?
 
 These certificates used by Azure Database for MySQL are provided by trusted Certificate Authorities (CA). Our support of these certificates is based on the support the CA provides for these certificates. The DigiCertGlobalRootCA certificate's use of the less secure SHA-1 hashing algorithm compromises the security of applications connecting to Azure Database for MySQL so Microsoft needs to perform a certificate change.
 
-### 7. Is DigiCertGlobalRootG2 CA the same certificate used for Single Server?
+### Is DigiCertGlobalRootG2 CA the same certificate used for Single Server?
 
 Yes. DigiCertGlobalRootG2 CA, the new root CA of SHA-2 for Azure Database for MySQL is the same as Single Server.
 
-### 8. If I'm using read replicas, do I need to perform this update only on the source server or the read replicas?
+### If I'm using read replicas, do I need to perform this update only on the source server or the read replicas?
 
 Since this update is a client-side change, if multiple clients read data from the replica server, you need to apply the changes for those clients as well.
 
-### 9. If I'm using Data-in replication, do I need to perform any action?
+### If I'm using Data-in replication, do I need to perform any action?
 
 If you're using [Data-in replication](/azure/mysql/flexible-server/concepts-data-in-replication) to connect to Azure Database for MySQL, and the data-replication is between two Azure Database for MySQL, then you need to reset the replica by executing CALL mysql.az_replication_change_master and provide the new dual root certificate as last parameter [master_ssl_ca](/azure/mysql/flexible-server/how-to-data-in-replication?tabs=bash%2Ccommand-line#link-source-and-replica-servers-to-start-data-in-replication).
 
-### 10. Is there an action needed if I already have the DigiCertGlobalRootG2 in my certificate file?
+### Is there an action needed if I already have the DigiCertGlobalRootG2 in my certificate file?
 
 No. There's no action needed if your certificate file already has the DigiCertGlobalRootG2.
 
-### 11. What if I have further questions?
+### What if I have further questions?
 
 If you have questions, get answers from community experts in [Microsoft Q&A](/answers/questions/).
 
