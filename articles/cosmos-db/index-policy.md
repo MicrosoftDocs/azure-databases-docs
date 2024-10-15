@@ -209,7 +209,7 @@ For example,
 
 These are a few examples of of *valid* array tuple paths:
 
-```json
+```
     “includedPaths”:[  
         {“path”: “/events/[]/{name/first, name/last}/?”}, 
         {“path”: “/events/[]/{name/first, category}/?”}, 
