@@ -207,7 +207,7 @@ For example,
 
 `/events/[]/{name, category}/?`
 
-These are a few examples of of *valid* array tuple paths:
+These are a few examples of *valid* array tuple paths:
 
 ```
     “includedPaths”:[  
