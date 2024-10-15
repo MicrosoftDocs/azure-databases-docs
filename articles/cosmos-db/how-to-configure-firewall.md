@@ -101,7 +101,17 @@ For example:
 
 #### Legacy Middleware IP Addresses
 
-The Cosmos DB portal services recently transitioned to new infrastructure that required new Middleware IP addresses. With the completion of that transition, the legacy IP addresses used by the old infrastructure can now be safely removed. If your account has legacy Middleware IP addresses, the XXX option will be displayed. Select that option and then Save to remove the legacy IP addresses.
+The Cosmos DB portal services recently transitioned to new infrastructure that required new Middleware IP addresses. With the completion of that transition, the legacy IP addresses used by the old infrastructure can now be safely removed. If your account has legacy Middleware IP addresses present in the firewall rules, the **Remove Azure Portal Legacy Middleware IPs** option will be displayed. Select that option and then Save to remove the legacy IP addresses.
+
+![networking-remove-legacy](media/how-to-configure-firewall/networking-remove-legacy.png)
+
+The legacy IP addresses are dependent on cloud environment:
+
+|Azure Environment| IP Addresses|
+| -------- | -------- |
+|Azure Public|104.42.195.92, 40.76.54.131, 52.176.6.30, 52.169.50.45, 52.187.184.26|
+|Azure China|139.217.8.252, 52.176.6.30, 52.169.50.45, 52.187.184.26|
+|Azure US Government|52.244.48.71, 52.176.6.30, 52.169.50.45, 52.187.184.26|
 
 > [!NOTE]
 > If you are experiencing challenges connecting to your Azure Cosmos DB account from the Data Explorer, review the [Data Explorer troubleshooting guide](/troubleshoot/azure/cosmos-db/data-explorer).
