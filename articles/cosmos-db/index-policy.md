@@ -207,15 +207,18 @@ For example,
 
 `/events/[]/{name, category}/?`
 
-These are a few examples of of *valid* array tuple paths: 
-“includedPaths”:[  
-    {“path”: “/events/[]/{name/first, name/last}/?”}, 
-    {“path”: “/events/[]/{name/first, category}/?”}, 
-    {“path”: “/events/[]/{name/first, category/subcategory}/?”}, 
-    {“path”: “/events/[]/{name/[1]/first, category}/?”}, 
-    {“path”: “/events/[]/{[1], [3]}/?”}, 
-    {“path”: “/city/[1]/events/[]/{name, category}/?”} 
-] 
+These are a few examples of *valid* array tuple paths:
+
+```
+    “includedPaths”:[  
+        {“path”: “/events/[]/{name/first, name/last}/?”}, 
+        {“path”: “/events/[]/{name/first, category}/?”}, 
+        {“path”: “/events/[]/{name/first, category/subcategory}/?”}, 
+        {“path”: “/events/[]/{name/[1]/first, category}/?”}, 
+        {“path”: “/events/[]/{[1], [3]}/?”}, 
+        {“path”: “/city/[1]/events/[]/{name, category}/?”} 
+    ]
+```
 
 These are a few examples of *invalid* array tuple paths
 - `/events/[]/{name/[]/first, category}/?`
