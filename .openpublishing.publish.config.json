@@ -196,12 +196,6 @@
       "branch_mapping": {}
     },
     {
-      "path_to_root": "cosmos-db-table-dotnet-quickstart",
-      "url": "https://github.com/azure-samples/cosmos-db-table-dotnet-quickstart",
-      "branch": "main",
-      "branch_mapping": {}
-    },
-    {
       "path_to_root": "cosmos-dotnet-bulk-import",
       "url": "https://github.com/Azure-Samples/cosmos-dotnet-bulk-import-throughput-optimizer",
       "branch": "main",
