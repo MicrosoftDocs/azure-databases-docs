@@ -51,7 +51,7 @@ Upon completing the root CA rotation, there's a transition where the old DigiCer
 
   - For .NET (MariaDB Connector/NET, MariaDBConnector) users, make sure **BaltimoreCyberTrustRoot** and **DigiCertGlobalRootG2** both exist in the Windows Certificate Store, Trusted Root Certification Authorities. If any certificates don't exist, import the missing certificate.
 
-    :::image type="content" source="media/concepts-root-certificate-rotation/netconnecter-certs.png" alt-text="Screenshot of Azure Database for MySQL .NET cert." lightbox="media/concepts-root-certificate-rotation/netconnecter-certs.png":::
+    :::image type="content" source="media/concepts-root-certificate-rotation/net-connecter-certificates.png" alt-text="Screenshot of Azure Database for MySQL .NET cert." lightbox="media/concepts-root-certificate-rotation/net-connecter-certificates.png":::
 
   - For .NET users on Linux using SSL_CERT_DIR, make sure **DigiCertGlobalRootCA** and **DigiCertGlobalRootG2** both exist in the directory indicated by SSL_CERT_DIR. If any certificates don't exist, create the missing certificate file.
 
