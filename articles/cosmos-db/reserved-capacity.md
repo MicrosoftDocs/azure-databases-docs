@@ -131,7 +131,7 @@ Please note that single write region autoscale database operations use RU/s with
  * Single region autoscale throughput: RUs * 1.5 * Regional Ratio
  * Multi region autoscale throughput: RUs * 1.5 * Regional Ratio for each region, in the order that the regions were added to the database account.
 
-### Examples
+### Consumption examples
 
 Consider the following requirements for a reservation:
 
