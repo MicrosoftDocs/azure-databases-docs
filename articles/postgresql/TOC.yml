@@ -70,6 +70,8 @@
           href: flexible-server/connect-csharp.md
         - name: Go
           href: flexible-server/connect-go.md
+        - name: PHP
+          href: flexible-server/connect-php.md
     - name: Database deployment
       items:
       - name: GitHub Actions
