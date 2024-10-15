@@ -1,2 +1,8 @@
 - name: $count
   href: $count.md
+- name: $facet
+  href: $facet.md
+- name: $lookup
+  href: $lookup.md
+- name: $match
+  href: $match.md
