@@ -146,8 +146,8 @@ For example, assume that you need Azure Cosmos DB standard throughput deployment
 
 |Meter description | Quantity|Region |Region Ratio |Throughput consumption (RU/s) |Formula| Reservation discount applied to RU/s | Pay as you Go RU/s|
 |---------|---------|---------|---------|---------|---------|---------|---------|
-|Azure Cosmos DB - 100 RU/s/Hour - US North Central  | 500|US North Central| 1.0  | 50,000   |50,000 * 1.0 = 50,000 | 50,000 | 0 |
-|Azure Cosmos DB - 100 RU/s/Hour - US West  | 500  | US West               |1.0   |  50,000  |50,000 * 1.0 = 50,000 | 50,000 | 0 |
+|Azure Cosmos DB - 100 RU/s/Hour - US North Central  | 500|US North Central| 1.0  | 50,000   |50,000 * 1.0 = 50,000 | 50,000 of the reservation| 0 |
+|Azure Cosmos DB - 100 RU/s/Hour - US West  | 500  | US West               |1.0   |  50,000  |50,000 * 1.0 = 50,000 | The remaining 50,000 of the reservation | 0 |
 
 #### Example 2 - Two regions with different ratios and standard throughput
 
@@ -155,8 +155,8 @@ For example, assume that you need Azure Cosmos DB standard throughput deployment
 
 |Meter description | Quantity|Region |Region Ratio |Throughput consumption (RU/s) |Formula|Final reservation discount applied to RU/s |  Pay as You Go RU/s|
 |---------|---------|---------|---------|---------|---------|---------|---------|
-|Azure Cosmos DB - 100 RU/s/Hour - AU Central 2  | 500 | AU Central 2 |1.5  |  50,000 | 50,000 * 1.5 = 75,000 | 75,000   | 0 |
-|Azure Cosmos DB - 100 RU/s/Hour - FR South  | 500 |FR South   |1.625 | 50,000 | 50,000 * 1.625 = 81,250 | 25,000 | (81,250 - 25,000) / 1.625 = 34,616|
+|Azure Cosmos DB - 100 RU/s/Hour - AU Central 2  | 500 | AU Central 2 |1.5  |  50,000 | 50,000 * 1.5 = 75,000 | 75,000 of the 100,000 reservation   | 0 |
+|Azure Cosmos DB - 100 RU/s/Hour - FR South  | 500 |FR South   |1.625 | 50,000 | 50,000 * 1.625 = 81,250 | The remaining 25,000 of the reservation| (81,250 - 25,000) / 1.625 = 34,616|
 
 *  A usage of 50,000 units in the AU Central 2 region corresponds to 75,000 RU/s of billable reservation usage (or normalized usage). This value is computed as: throughput consumption * reservation_discount_ratio_for_that_region. The computation equals 75,000 RU/s of billable or normalized usage. This value is computed as: 50,000 * 1.5 = 75,000 RU/s.
 
@@ -170,12 +170,12 @@ For example, assume that you need Azure Cosmos DB standard throughput deployment
 
 #### Example 3 - Two regions with a 1.0 ratio and autoscale throughput
 
-For example, assume that you need Azure Cosmos DB standard throughput deployments in the US North Central and US West regions. Each region has a throughput consumption of 50,000 RU/s. A reservation purchase of 100,000 RU/s would completely balance your on-demand charges. The discount that a reservation covers is computed as: throughput consumption * reservation_discount_ratio_for_that_region. For the US North Central and US West regions, the reservation discount ratio is 1.0. So, the total discounted RU/s are 100,000. This value is computed as: 50,000 * 1.0 + 50,000 * 1.0 = 100,000 RU/s. You don't have to pay any other charges at the regular pay-as-you-go rates.
+For example, assume that you need Azure Cosmos DB autoscale throughput deployments in the US North Central and US West regions. Each region has a throughput consumption of 50,000 RU/s. A reservation purchase of 100,000 RU/s won't completely balance your on-demand charges. The discount that a reservation covers is computed as: throughput consumption * reservation_discount_ratio_for_that_region * autoscale_ratio. For the US North Central and US West regions, the reservation discount ratio is 1.0.
 
 |Meter description | Quantity|Region |Region Ratio |Autoscale Ratio |Throughput consumption (RU/s) |Formula| Reservation discount applied to RU/s | Pay as you Go RU/s|
 |---------|---------|---------|---------|---------|---------|---------|---------|---------|
-|Azure Cosmos DB - 100 RU/s/Hour - US North Central  | 500|US North Central| 1.0  | 1.5 |50,000   |50,000 * 1.0 * 1.5 = 75,000 |75,000  | 0 |
-|Azure Cosmos DB - 100 RU/s/Hour - US West  | 500  | US West               |1.0   | 1.5 |50,000  |50,000 * 1.0 * 1.5 = 75,000| 25,000 | (75,000-25,000)/1.0 = 50,000 |
+|Azure Cosmos DB - 100 RU/s/Hour - US North Central  | 500|US North Central| 1.0  | 1.5 |50,000  |50,000 * 1.0 * 1.5 = 75,000 |75,000 of the 100,000 reservation | 0 |
+|Azure Cosmos DB - 100 RU/s/Hour - US West  | 500  | US West               |1.0   | 1.5 |50,000  |50,000 * 1.0 * 1.5 = 75,000| The remaining 25,000  of the reservation | (75,000-25,000)/1.0 = 50,000 |
 
 ## Sample scenario 1
 
