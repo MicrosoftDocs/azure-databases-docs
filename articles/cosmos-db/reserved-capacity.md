@@ -144,7 +144,7 @@ In this case, your total on-demand charges are for 500 quantity of 100 RU/s mete
 
 For example, assume that you need Azure Cosmos DB standard throughput deployments in the US North Central and US West regions. Each region has a throughput consumption of 50,000 RU/s. A reservation purchase of 100,000 RU/s would completely balance your on-demand charges. The discount that a reservation covers is computed as: throughput consumption * reservation_discount_ratio_for_that_region. For the US North Central and US West regions, the reservation discount ratio is 1.0. So, the total discounted RU/s are 100,000. This value is computed as: 50,000 * 1.0 + 50,000 * 1.0 = 100,000 RU/s. You don't have to pay any other charges at the regular pay-as-you-go rates.
 
-|Meter description | Quantity|Region |Ratio |Throughput consumption (RU/s) |Formula|Final reservation discount applied to RU/s | Pay as you Go RU/s|
+|Meter description | Quantity|Region |Region Ratio |Throughput consumption (RU/s) |Formula|Final reservation discount applied to RU/s | Pay as you Go RU/s|
 |---------|---------|---------|---------|---------|---------|---------|---------|
 |Azure Cosmos DB - 100 RU/s/Hour - US North Central  | 500|US North Central| 1.0  | 50,000   |50,000 * 1 |50,000  | 0 |
 |Azure Cosmos DB - 100 RU/s/Hour - US West  | 500  | US West               |1.0   |  50,000  |50,000 * 1 | 50,000 | 0 |
@@ -153,7 +153,7 @@ For example, assume that you need Azure Cosmos DB standard throughput deployment
 
 For example, assume that you need Azure Cosmos DB standard throughput deployments in the AU Central 2 and FR South regions. Each region has a throughput consumption of 50,000 RU/s. A reservation purchase of 100,000 RU/s would be applicable as follows (assuming that AU Central 2 usage was added first to the database account):
 
-|Meter description | Quantity|Region |Ratio |Throughput consumption (RU/s) |Formula|Final reservation discount applied to RU/s |  Pay as You Go RU/s|
+|Meter description | Quantity|Region |Region Ratio |Throughput consumption (RU/s) |Formula|Final reservation discount applied to RU/s |  Pay as You Go RU/s|
 |---------|---------|---------|---------|---------|---------|---------|---------|
 |Azure Cosmos DB - 100 RU/s/Hour - AU Central 2  | 500 | AU Central 2 |1.5  |  50,000 | 50,000 * 1.5 = 75,000 | 75,000   | 0 |
 |Azure Cosmos DB - 100 RU/s/Hour - FR South  | 500 |FR South   |1.625 | 50,000 | 50,000 * 1.625 = 81,250 | 25,000 | (81,250 - 25,000) / 1.625 = 34,616|
@@ -167,33 +167,6 @@ For example, assume that you need Azure Cosmos DB standard throughput deployment
 * For the FR south region, a 25,000 RU/s reservation purchase is used and it leaves 56,250 reservation RU/s (81,250 – 25,000 = 56,250 Ru/s).
 
 * 56,250 RU/s are required when using reservation. To pay for the RU/s with regular pricing, you need to convert it into regular RU/s by dividing with the reservation ratio 56,250 / 1.625 = 34,616 RU/s. Regular RU/s are charged at the normal pay-as-you-go rates.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 ## Sample scenario 1
