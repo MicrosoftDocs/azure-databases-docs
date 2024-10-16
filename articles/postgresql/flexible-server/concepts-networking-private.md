@@ -61,7 +61,8 @@ Here are some concepts to be familiar with when you're using virtual networks wh
   * Add a rule with the destination IP range the same as the Azure Database for PostgreSQL - Flexible Server subnet range and the next hop `Virtual Network`.
 
   > [!IMPORTANT]
-  > The names `AzureFirewallSubnet`, `AzureFirewallManagementSubnet`, `AzureBastionSubnet`, and `GatewaySubnet` are reserved within Azure. Don't use any of these names as your subnet name.
+  > The names `AzureFirewallSubnet`, `AzureFirewallManagementSubnet`, `AzureBastionSubnet`, and `GatewaySubnet` are reserved within Azure. Don't use any of these names as your subnet name. Additionally, virtual networks should not have overlapping address space for creating cross-region replicas.
+
 
 - **Network security group (NSG)**: Security rules in NSGs enable you to filter the type of network traffic that can flow in and out of virtual network subnets and network interfaces. For more information, see the [NSG overview](/azure/virtual-network/network-security-groups-overview).
 
