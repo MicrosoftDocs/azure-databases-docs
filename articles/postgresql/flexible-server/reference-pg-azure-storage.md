@@ -28,7 +28,7 @@ CREATE EXTENSION azure_storage;
 
 ## Permissions
 
-Your Azure blob storage (ABS) access keys are similar to a root password for your storage account. Always be careful to protect your access keys. Use Azure Key Vault to manage and rotate your keys securely. The account key is stored in a table that is accessible only by the superuser.
+Your Azure blob storage access keys are similar to a root password for your storage account. Always be careful to protect your access keys. Use Azure Key Vault to manage and rotate your keys securely. The account key is stored in a table that is accessible only by the superuser.
 
 Users granted the `azure_storage_admin` role can interact with this table using the following functions:
 * account_add
@@ -56,11 +56,11 @@ azure_storage.account_add(account_name_p text, account_key_p text);
 
 #### account_name_p
 
-`text` the name of the Azure blob storage (ABS) account that contains all of your ABS objects: blobs, files, queues, and tables. The storage account provides a unique namespace for your ABS, that is accessible from anywhere in the world over HTTPS.
+`text` the name of the Azure blob storage account that contains all of your objects: blobs, files, queues, and tables. The storage account provides a unique namespace that is accessible from anywhere in the world over HTTPS.
 
 #### account_key_p
 
-`text` the value of one of the access keys for the storage account. Your Azure blob storage (ABS) access keys are similar to a root password for your storage account. Always be careful to protect your access keys. Use Azure Key Vault to manage and rotate your keys securely. The account key is stored in a table that is accessible only by the superuser. Users granted the `azure_storage_admin` role can interact with this table via functions. To see which storage accounts are added, use the function [account_list](#azure_storageaccount_list).
+`text` the value of one of the access keys for the storage account. Your Azure blob storage access keys are similar to a root password for your storage account. Always be careful to protect your access keys. Use Azure Key Vault to manage and rotate your keys securely. The account key is stored in a table that is accessible only by the superuser. Users granted the `azure_storage_admin` role can interact with this table via functions. To see which storage accounts are added, use the function [account_list](#azure_storageaccount_list).
 
 ## azure_storage.account_remove
 
@@ -74,7 +74,7 @@ azure_storage.account_remove(account_name_p text);
 
 #### account_name_p
 
-`text` the name of the Azure blob storage (ABS) account that contains all of your ABS objects: blobs, files, queues, and tables. The storage account provides a unique namespace for your ABS, that is accessible from anywhere in the world over HTTPS.
+`text` the name of the Azure blob storage account that contains all of your objects: blobs, files, queues, and tables. The storage account provides a unique namespace that is accessible from anywhere in the world over HTTPS.
 
 ## azure_storage.account_user_add
 
@@ -91,7 +91,7 @@ azure_storage.account_add(account_name_p text, user_p regrole);
 
 #### account_name_p
 
-`text` the name of the Azure blob storage (ABS) account that contains all of your ABS objects: blobs, files, queues, and tables. The storage account provides a unique namespace for your ABS, that is accessible from anywhere in the world over HTTPS.
+`text` the name of the Azure blob storage account that contains all of your objects: blobs, files, queues, and tables. The storage account provides a unique namespace that is accessible from anywhere in the world over HTTPS.
 
 #### user_p
 
@@ -113,7 +113,7 @@ azure_storage.account_remove(account_name_p text, user_p regrole);
 
 #### account_name_p
 
-`text` the name of the Azure blob storage (ABS) account that contains all of your ABS objects: blobs, files, queues, and tables. The storage account provides a unique namespace for your ABS, that is accessible from anywhere in the world over HTTPS.
+`text` the name of the Azure blob storage account that contains all of your objects: blobs, files, queues, and tables. The storage account provides a unique namespace that is accessible from anywhere in the world over HTTPS.
 
 #### user_p
 
@@ -147,7 +147,7 @@ azure_storage.blob_list(account_name text, container_name text, prefix text DEFA
 
 #### account_name
 
-`text` the name of the Azure blob storage (ABS) account that contains all of your ABS objects: blobs, files, queues, and tables. The storage account provides a unique namespace for your ABS, that is accessible from anywhere in the world over HTTPS.
+`text` the name of the Azure blob storage account that contains all of your objects: blobs, files, queues, and tables. The storage account provides a unique namespace that is accessible from anywhere in the world over HTTPS.
 
 #### container_name
 
@@ -216,7 +216,7 @@ azure_storage.blob_get(account_name text, container_name text, path text, rec an
 
 #### account_name
 
-`text` the name of the Azure blob storage (ABS) account that contains all of your ABS objects: blobs, files, queues, and tables. The storage account provides a unique namespace for your ABS, that is accessible from anywhere in the world over HTTPS.
+`text` the name of the Azure blob storage account that contains all of your objects: blobs, files, queues, and tables. The storage account provides a unique namespace that is accessible from anywhere in the world over HTTPS.
 
 #### container_name
 
