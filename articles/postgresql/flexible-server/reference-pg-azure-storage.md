@@ -448,7 +448,7 @@ There are some pre-requisites you have to meet before you can run the following 
    cp events.csv events_pipe.csv
    cp events.csv.gz events_compressed
    sed 's/,/|/g' events_pipe.csv
-   az storage blob upload-batch --account-name $storage_account --destination $blob_container --source . --pattern events* --account-key $access_key --overwrite
+   az storage blob upload-batch --account-name $storage_account --destination $blob_container --source . --pattern events* --account-key $access_key --overwrite --output none
    ```
 
 > [!NOTE]  
