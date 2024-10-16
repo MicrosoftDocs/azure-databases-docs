@@ -417,7 +417,7 @@ There are some pre-requisites you have to meet before you can run the following 
 
 1. You need to create an Azure storage account.
    Customize the values of `<resource_group>`, `<location>`, `<storage_account>`, and `<blob_container>`, and run the following Azure CLI command to create that account if you don't have one already:
-   ```dotnetcli
+   ```azurecli
    resource_group=<resource_group>
    location=<location>
    storage_account=<storage_account>
@@ -427,19 +427,19 @@ There are some pre-requisites you have to meet before you can run the following 
    ```
 1. You need a blob container.
    Run the following Azure CLI command to create the blob container:
-   ```dotnetcli
+   ```azurecli
    az storage container create --account-name $storage_account --name $blob_container -o tsv
    ```
 1. You need to fetch one of the two access keys assigned to the storage account. Make sure you copy the value of your access_key as you'll need to pass it as an argument to [account_add](#azure_storageaccount_add) in a subsequent step.
    Run the following Azure CLI command to fetch the first of the two access keys:
-   ```dotnetcli
+   ```azurecli
    access_key=$(az storage account keys list --resource-group $resource_group --account-name $storage_account --query [0].value)
    echo "Following is the value of your access key:"
    echo $access_key
    ```
 1. You need to download the file with the data set that is used during the examples, and upload it to your blob container.
    Run the following Azure CLI command to fetch the first of the two access keys:
-   ```dotnetcli
+   ```azurecli   
    mkdir azure_storage_examples
    cd azure_storage_examples
    curl -O https://examples.citusdata.com/tutorial/events.csv
