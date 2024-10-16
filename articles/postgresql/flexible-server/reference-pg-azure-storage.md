@@ -16,7 +16,7 @@ ms.custom:
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
-The [pg_azure_storage extension](./concepts-storage-extension.md) allows you to import  or export data in multiple file formats directly between Azure Blob Storage and your Azure Database for PostgreSQL flexible server instance. Containers with access level "Private" or "Blob" requires adding private access key.  Examples of data export and import using this extension can be found in this [doc](./concepts-storage-extension.md#import-data-from-azure-blob-storage-to-azure-database-for-postgresql-flexible-server)
+The [pg_azure_storage extension](./concepts-storage-extension.md) allows you to import  or export data in multiple file formats directly between Azure blob storage and your Azure Database for PostgreSQL flexible server instance. Containers with access level "Private" or "Blob" requires adding private access key.  Examples of data export and import using this extension can be found in this [doc](./concepts-storage-extension.md#import-data-from-azure-blob-storage-to-azure-database-for-postgresql-flexible-server)
 
 Before you can enable `azure_storage` on your Azure Database for PostgreSQL flexible server instance, you need to add the extension to your allowlist as described in [how to use PostgreSQL extensions](./concepts-extensions.md#how-to-use-postgresql-extensions) and check if correctly added by running `SHOW azure.extensions;`.
 
@@ -28,7 +28,7 @@ CREATE EXTENSION azure_storage;
 
 ## Permissions
 
-Your Azure Blob Storage access keys are similar to a root password for your storage account. Always be careful to protect your access keys. Use Azure Key Vault to manage and rotate your keys securely. The account key is stored in a table that is accessible only by the superuser.
+Your Azure blob storage (ABS) access keys are similar to a root password for your storage account. Always be careful to protect your access keys. Use Azure Key Vault to manage and rotate your keys securely. The account key is stored in a table that is accessible only by the superuser.
 
 Users granted the `azure_storage_admin` role can interact with this table using the following functions:
 * account_add
@@ -53,11 +53,11 @@ azure_storage.account_add
 
 #### account_name_p
 
-Azure Blob Storage account contains all of your objects: blobs, files, queues, and tables. The storage account provides a unique namespace that is accessible from anywhere in the world over HTTPS.
+An Azure blob storage (ABS) account contains all of your ABS objects: blobs, files, queues, and tables. The storage account provides a unique namespace for your ABS that is accessible from anywhere in the world over HTTPS.
 
 #### account_key_p
 
-Your Azure Blob Storage access keys are similar to a root password for your storage account. Always be careful to protect your access keys. Use Azure Key Vault to manage and rotate your keys securely. The account key is stored in a table that is accessible only by the superuser. Users granted the `azure_storage_admin` role can interact with this table via functions. To see which storage accounts exist, use the function account_list.
+Your Azure blob storage (ABS) access keys are similar to a root password for your storage account. Always be careful to protect your access keys. Use Azure Key Vault to manage and rotate your keys securely. The account key is stored in a table that is accessible only by the superuser. Users granted the `azure_storage_admin` role can interact with this table via functions. To see which storage accounts exist, use the function account_list.
 
 ## azure_storage.account_remove
 
@@ -72,7 +72,7 @@ azure_storage.account_remove
 
 #### account_name_p
 
-Azure Blob Storage account contains all of your objects: blobs, files, queues, and tables. The storage account provides a unique namespace that is accessible from anywhere in the world over HTTPS.
+Azure blob storage (ABS) account contains all of your ABS objects: blobs, files, queues, and tables. The storage account provides a unique namespace for your ABS that is accessible from anywhere in the world over HTTPS.
 
 ## azure_storage.account_user_add
 
@@ -88,7 +88,7 @@ azure_storage.account_add
 
 #### account_name_p
 
-Azure Blob Storage account contains all of your objects: blobs, files, queues, and tables. The storage account provides a unique namespace that is accessible from anywhere in the world over HTTPS.
+An Azure blob storage (ABS) account contains all of your ABS objects: blobs, files, queues, and tables. The storage account provides a unique namespace for your ABS that is accessible from anywhere in the world over HTTPS.
 
 #### user_p
 
@@ -108,7 +108,7 @@ azure_storage.account_remove
 
 #### account_name_p
 
-Azure Blob Storage account contains all of your objects: blobs, files, queues, and tables. The storage account provides a unique namespace that is accessible from anywhere in the world over HTTPS.
+An Azure blob storage (ABS) account contains all of your ABS objects: blobs, files, queues, and tables. The storage account provides a unique namespace for your ABS that is accessible from anywhere in the world over HTTPS.
 
 #### user_p
 
@@ -116,7 +116,7 @@ Role created by user visible on the cluster.
 
 ## azure_storage.account_list
 
-The function lists the account & role having access to Azure Blob Storage.
+The function lists the account & role having access to Azure blob storage.
 
 ```sql
 azure_storage.account_list
@@ -130,11 +130,11 @@ Returns TABLE;
 
 #### account_name
 
-Azure Blob Storage account contains all of your objects: blobs, files, queues, and tables. The storage account provides a unique namespace that is accessible from anywhere in the world over HTTPS.
+Azure blob storage (ABS) account contains all of your ABS objects: blobs, files, queues, and tables. The storage account provides a unique namespace for your ABS that is accessible from anywhere in the world over HTTPS.
 
 #### allowed_users
 
-Lists the users having access to the Azure Blob Storage.
+Lists the users having access to the Azure blob storage.
 
 ### Return type
 
@@ -500,19 +500,19 @@ The example illustrates removing the access key for a storage account. This acti
 SELECT azure_storage.account_remove('pgquickstart');
 ```
 
-### Add access for a role to Azure Blob Storage
+### Add access for a role to Azure Blob storage
 
 ```sql
 SELECT * FROM azure_storage.account_user_add('pgquickstart', 'support');
 ```
 
-### List all the roles with access on Azure Blob Storage
+### List all the roles with access on Azure Blob storage
 
 ```sql
 SELECT * FROM azure_storage.account_list();
 ```
 
-### Remove the roles with access on Azure Blob Storage
+### Remove the roles with access on Azure Blob storage
 
 ```sql
 SELECT * FROM azure_storage.account_user_remove('pgquickstart', 'support');
