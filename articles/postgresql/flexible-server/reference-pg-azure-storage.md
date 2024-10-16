@@ -295,7 +295,7 @@ azure_storage.options_csv_get(delimiter text DEFAULT NULL::text, null_string tex
 
 #### quote
 
-`text` the quoting character to be used when a data value is quoted. The default is double-quote. It must be a single 1-byte character.Although this function supports delimiters of any number of characters, if you try to use more than a single 1-byte character, PostgreSQL reports back a `COPY quote must be a single one-byte character` error.
+`text` the quoting character to be used when a data value is quoted. The default is double-quote. It must be a single 1-byte character. Although this function supports delimiters of any number of characters, if you try to use more than a single 1-byte character, PostgreSQL reports back a `COPY quote must be a single one-byte character` error.
 
 #### escape
 
@@ -341,7 +341,7 @@ azure_storage.options_copy(delimiter text DEFAULT NULL::text, null_string text D
 
 #### quote
 
-`text` the quoting character to be used when a data value is quoted. The default is double-quote. It must be a single 1-byte character.Although this function supports delimiters of any number of characters, if you try to use more than a single 1-byte character, PostgreSQL reports back a `COPY quote must be a single one-byte character` error.
+`text` the quoting character to be used when a data value is quoted. The default is double-quote. It must be a single 1-byte character. Although this function supports delimiters of any number of characters, if you try to use more than a single 1-byte character, PostgreSQL reports back a `COPY quote must be a single one-byte character` error.
 
 #### escape
 
