@@ -452,7 +452,7 @@ There are some pre-requisites you have to meet before you can run the following 
    ```
 
 > [!NOTE]  
-> You can list containers set to Private and Blob access levels for a storage account, but only if your PostgreSQL user is granted the `azure_storage_admin` role. By default, only members of `azure_pg_admin` are granted that role.
+> You can list containers set to Private and Blob access levels for a storage account, but only if your PostgreSQL user is granted the `azure_storage_admin` role or you're granted permission on a specific storage account by using [account_user_add](#azure_storageaccount_user_add). By default, only members of `azure_pg_admin` are granted the `azure_storage_admin` role.
 
 ### Create table in which data is loaded
 
