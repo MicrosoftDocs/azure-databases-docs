@@ -12,7 +12,7 @@ ms.date: 10/15/2024
 
 # $pull
 
-The `$pull` operator is used to remove all instances of a specified value or values that match a condition from an array. This is particularly useful when you need to clean up or modify array data within your documents.
+The `$pull` operator is used to remove all instances of a specified value or values that match a condition from an array. This is useful when you need to clean up or modify array data within your documents.
 
 ## Syntax
 
@@ -24,10 +24,10 @@ The `$pull` operator is used to remove all instances of a specified value or val
 
 | | Description |
 | --- | --- |
-| **`<field>`** | The field from which to remove the value(s). |
+| **`<field>`** | The field from which to remove one or more values. |
 | **`<value|condition>`** | The value or condition to remove from the array. |
 
-## Example(s)
+## Examples
 
 Let's understand the usage with the following sample json.
 
@@ -112,7 +112,7 @@ This query would return the following document.
 }
 ```
 
-### Example 2: Remove all promotion events that have ended before a certain date
+### Example 2: Remove all events from the `promotionEvents` array that end before a certain date
 
 ```mongodb
 db.stores.update(
@@ -140,5 +140,3 @@ Delete if no limitations/deviations from standard Mongo command, else update as 
 ## Related content
 
 [!INCLUDE[Related content](../includes/related-content.md)]
-```
-```

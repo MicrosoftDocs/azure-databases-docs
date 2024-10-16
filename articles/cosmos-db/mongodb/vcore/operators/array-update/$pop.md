@@ -12,7 +12,7 @@ ms.date: 10/15/2024
 
 # $pop
 
-The `$pop` operator in MongoDB is used to remove the first or last element of an array. This operator is particularly useful when you need to manage arrays by removing elements from either end. The `$pop` operator can be used in update operations.
+The `$pop` operator in MongoDB is used to remove the first or last element of an array. This operator is useful when you need to manage arrays by removing elements from either end. The `$pop` operator can be used in update operations.
 
 ## Syntax
 
@@ -30,7 +30,7 @@ The `$pop` operator in MongoDB is used to remove the first or last element of an
 | **`<field>`** | The field that contains the array from which you want to remove an element. |
 | **`<value>`** | Use `1` to remove the last element, and `-1` to remove the first element. |
 
-## Example(s)
+## Examples
 
 Let's understand the usage with the following sample json.
 

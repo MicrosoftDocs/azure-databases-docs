@@ -1,7 +1,7 @@
 --- 
 title: $addToSet (array update operator) usage on Azure Cosmos DB for MongoDB vCore
 titleSuffix: Azure Cosmos DB for MongoDB vCore
-description: Adds elements to an array only if they do not already exist in the array.
+description: Adds elements to an array only if they don't already exist in the array.
 author: sandeepsnairms
 ms.author: sandnair
 ms.service: azure-cosmos-db
@@ -12,7 +12,7 @@ ms.date: 10/15/2024
 
 # $addToSet
 
-The `$addToSet` operator adds elements to an array only if they do not already exist in the array. This operator ensures that there are no duplicate items in the array.
+The `$addToSet` operator adds elements to an array only if they don't already exist in the array. This operator ensures that there are no duplicate items in the array.
 
 ## Syntax
 
@@ -93,7 +93,7 @@ Let's understand the usage with the following sample json.
 
 ```
 
-### Example 1: Adding a New Tag
+### Example 1: Adding a new tag to the `tag` array
 
 
 ```json
@@ -117,9 +117,9 @@ This query would return the following document as `#ShopLocal` already existed.
 
 ```
 
-### Example 2: Adding a New Promotional Event
+### Example 2: Adding a new promotional event to the `promotionEvents` array
 
-To add a new promotional event to the `promotionEvents` array if it does not already exist.
+Add a new promotional event to the `promotionEvents` array, only if it doesn't already exist.
 
 ```json
 db.stores.update(
@@ -138,7 +138,6 @@ db.stores.update(
 )
 ```
 
-```
 This query would return the following document as it was a unique entry.
 
 ```json
