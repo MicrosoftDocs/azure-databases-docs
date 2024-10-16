@@ -440,15 +440,15 @@ There are some pre-requisites you have to meet before you can run the following 
 1. You need to download the file with the data set that is used during the examples, and upload it to your blob container.
    Run the following Azure CLI command to fetch the first of the two access keys:
    ```azurecli   
-   mkdir azure_storage_examples
+   mkdir --parents azure_storage_examples
    cd azure_storage_examples
    curl -O https://examples.citusdata.com/tutorial/events.csv
    gzip -k events.csv
    cp events.csv events_blob_without_extension
    cp events.csv events_pipe.csv
    cp events.csv.gz events_compressed
-   sed 's/,/|/g' events_pipe.csv
-   az storage blob upload-batch --account-name $storage_account --destination $blob_container --source . --pattern events* --account-key $access_key --overwrite --output none
+   sed -i 's/,/|/g' events_pipe.csv
+   az storage blob upload-batch --account-name $storage_account --destination $blob_container --source . --pattern "events*" --account-key $access_key --overwrite --output none
    ```
 
 > [!NOTE]  
