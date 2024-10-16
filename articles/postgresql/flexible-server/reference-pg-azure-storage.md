@@ -129,7 +129,7 @@ azure_storage.account_list();
 
 ### Arguments
 
-N/A
+This function doesn't take any arguments.
 
 ### Return type
 
@@ -428,20 +428,27 @@ There are some pre-requisites you have to meet before you can run the following 
 1. You need a blob container.
    Run the following Azure CLI command to create the blob container:
    ```dotnetcli
-   az storage container create --account-name $storage_account --name $blob_container value -o tsv
+   az storage container create --account-name $storage_account --name $blob_container -o tsv
    ```
 1. You need to fetch one of the two access keys assigned to the storage account. Make sure you copy the value of your access_key as you'll need to pass it as an argument to [account_add](#azure_storageaccount_add) in a subsequent step.
    Run the following Azure CLI command to fetch the first of the two access keys:
    ```dotnetcli
-   access_key=$(az storage account keys list --resource-group $resource_group --account-name $storage_account --query [0].)
+   access_key=$(az storage account keys list --resource-group $resource_group --account-name $storage_account --query [0].value)
    echo "Following is the value of your access key:"
    echo $access_key
    ```
 1. You need to download the file with the data set that is used during the examples, and upload it to your blob container.
    Run the following Azure CLI command to fetch the first of the two access keys:
    ```dotnetcli
+   mkdir azure_storage_examples
+   cd azure_storage_examples
    curl -O https://examples.citusdata.com/tutorial/events.csv
-   az storage blob upload-batch --account-name $storage_account --destination $blob_container --source . --pattern events.csv --account-key $access_key --overwrite
+   gzip -k events.csv
+   cp events.csv events_blob_without_extension
+   cp events.csv events_pipe.csv
+   cp events.csv.gz events_compressed
+   sed 's/,/|/g' events_pipe.csv
+   az storage blob upload-batch --account-name $storage_account --destination $blob_container --source . --pattern events* --account-key $access_key --overwrite
    ```
 
 > [!NOTE]  
@@ -620,7 +627,7 @@ This example shows how to enforce using the gzip compression on a gzip compresse
 SELECT * FROM azure_storage.blob_get
         ('<storage_account>'
         ,'<blob_container>'
-        ,'events-compressed'
+        ,'events_compressed'
         , NULL::events
         , decoder := 'csv'
         , compression := 'gzip')
