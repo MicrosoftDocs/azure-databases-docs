@@ -519,17 +519,17 @@ Here's an example of running a query that includes all the levels of subpartitio
 ```csharp
 // Define a single-partition query that specifies the full partition key path
 QueryDefinition query = new QueryDefinition(
-    "SELECT * FROM c WHERE c.TenantId = @tenant-id AND c.UserId = @user-id AND c.SessionId = @session-id")
-    .WithParameter("@tenant-id", "Microsoft")
-    .WithParameter("@user-id", "8411f20f-be3e-416a-a3e7-dcd5a3c1f28b")
-    .WithParameter("@session-id", "0000-11-0000-1111");
+    "SELECT * FROM c WHERE c.TenantId = @tenantId AND c.UserId = @userId AND c.SessionId = @sessionId")
+    .WithParameter("@tenantId", "Microsoft")
+    .WithParameter("@userId", "8411f20f-be3e-416a-a3e7-dcd5a3c1f28b")
+    .WithParameter("@sessionId", "0000-11-0000-1111");
 
 // Retrieve an iterator for the result set
 using FeedIterator<PaymentEvent> results = container.GetItemQueryIterator<PaymentEvent>(query);
 
 while (results.HasMoreResults)
 {
-    FeedResponse<UserSession> resultsPage = await resultSet.ReadNextAsync();
+    FeedResponse<UserSession> resultsPage = await results.ReadNextAsync();
     foreach(UserSession result in resultsPage)
     {
         // Process result
@@ -599,15 +599,15 @@ Here's an example of a query that includes a subset of the levels of subpartitio
 ```csharp
 // Define a targeted cross-partition query specifying prefix path[s]
 QueryDefinition query = new QueryDefinition(
-    "SELECT * FROM c WHERE c.TenantId = @tenant-id")
-    .WithParameter("@tenant-id", "Microsoft")
+    "SELECT * FROM c WHERE c.TenantId = @tenantId")
+    .WithParameter("@tenantId", "Microsoft")
 
 // Retrieve an iterator for the result set
 using FeedIterator<PaymentEvent> results = container.GetItemQueryIterator<PaymentEvent>(query);
 
 while (results.HasMoreResults)
 {
-    FeedResponse<UserSession> resultsPage = await resultSet.ReadNextAsync();
+    FeedResponse<UserSession> resultsPage = await results.ReadNextAsync();
     foreach(UserSession result in resultsPage)
     {
         // Process result
