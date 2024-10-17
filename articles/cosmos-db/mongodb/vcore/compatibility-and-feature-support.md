@@ -38,7 +38,7 @@ The following table lists commands not supported/restricted by the database. As 
 </table>
 
 
-## Database Commands
+### Database Commands
 
 <table>
 <tr><td><b>Command Type</b></td><td><b>Reason</b></td></tr>
