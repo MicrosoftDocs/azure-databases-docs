@@ -1,8 +1,8 @@
 ---
 title: Versioning policy
 description: Describes the policy around Postgres major and minor versions in Azure Database for PostgreSQL - Single Server and Azure Database for PostgreSQL - Flexible Server.
-author: akashraokm
-ms.author: akashrao
+author: varun-dhawan
+ms.author: varundhawan
 ms.reviewer: maghan
 ms.date: 9/30/2024
 ms.service: azure-database-postgresql
@@ -50,7 +50,7 @@ The table below provides the retirement details for PostgreSQL major versions. T
 
 |Version|What's New                   |Azure support start date|Retirement date (Azure)                      |
 |-------|-----------------------------|------------------------|---------------------------------------------|
-|[PostgreSQL 17](https://www.postgresql.org/about/news/postgresql-17-released-2936/)|[Features](https://www.postgresql.org/docs/17/release-17.html)|26-Sep-24               |8-Nov-29                                     |
+|[PostgreSQL 17](https://www.postgresql.org/about/news/postgresql-17-released-2936/)|[Features](https://www.postgresql.org/docs/17/release-17.html)|30-Sep-24               |8-Nov-29                                     |
 |[PostgreSQL 16](https://www.postgresql.org/about/news/postgresql-16-released-2715/)|[Features](https://www.postgresql.org/docs/16/release-16.html)|15-Oct-23               |9-Nov-28                                     |
 |[PostgreSQL 15](https://www.postgresql.org/about/news/postgresql-15-released-2526/)|[Features](https://www.postgresql.org/docs/15/release-15.html)|15-May-23               |11-Nov-27                                    |
 |[PostgreSQL 14](https://www.postgresql.org/about/news/postgresql-14-released-2318/)|[Features](https://www.postgresql.org/docs/14/release-14.html)|29-Jun-22               |12-Nov-26                                    |
