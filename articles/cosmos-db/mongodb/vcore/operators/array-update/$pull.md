@@ -10,7 +10,7 @@ ms.topic: reference
 ms.date: 10/15/2024
 ---
 
-# $pull
+# $pull (array update operator)
 
 The `$pull` operator is used to remove all instances of a specified value or values that match a condition from an array. This is useful when you need to clean up or modify array data within your documents.
 

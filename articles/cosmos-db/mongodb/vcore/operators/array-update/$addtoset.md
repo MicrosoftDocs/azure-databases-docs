@@ -10,7 +10,7 @@ ms.topic: reference
 ms.date: 10/15/2024
 ---
 
-# $addToSet
+# $addToSet (array update operator)
 
 The `$addToSet` operator adds elements to an array only if they don't already exist in the array. This operator ensures that there are no duplicate items in the array.
 

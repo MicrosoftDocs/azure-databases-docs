@@ -10,7 +10,7 @@ ms.topic: reference
 ms.date: 10/15/2024
 ---
 
-# $pop
+# $pop  (array update operator)
 
 The `$pop` operator in MongoDB is used to remove the first or last element of an array. This operator is useful when you need to manage arrays by removing elements from either end. The `$pop` operator can be used in update operations.
 
