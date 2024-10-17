@@ -49,7 +49,7 @@ The following table lists commands not supported/restricted by the database. As 
 
 <tr><td rowspan="1">Replication commands</td><td rowspan="1">Obsolete, as a Platform as a service (PaaS) replication is fully managed by the service.</td></tr>
 
-<tr><td rowspan="1">Sharding commands (except: getShardMap, balancerStart, balancerStatus, balancerStop)</td><td rowspan="1">With MongoDB vCore, we manage sharding for you, so you can focus on more critical tasks. However, you still have control over adding new shards, rebalancing shards, and retrieving a shard map whenever you need it.</td></tr>
+<tr><td rowspan="1">Sharding commands (except: getShardMap, balancerStart, balancerStatus, balancerStop)</td><td rowspan="1">We manage sharding for you, so you can focus on more critical tasks. However, you still have control over adding new shards, rebalancing shards, and retrieving a shard map whenever you need it.</td></tr>
 
 <tr><td rowspan="1">Session commands ($killAllSessionsByPattern, $killSessions) </td><td rowspan="1">Most session commands are supported, but a couple of them have been excluded due to low demand and inherent security risks. These commands could allow unauthorized users to terminate active sessions, risking service disruptions. Furthermore, they could be exploited to target specific users or usage patterns, potentially impacting normal operations. Without proper security measures, these commands could also create vulnerabilities by enabling the termination of multiple sessions simultaneously, increasing the likelihood of denial of service (DoS) attacks.</td></tr>
 
