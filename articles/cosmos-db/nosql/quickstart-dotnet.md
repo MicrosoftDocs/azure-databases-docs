@@ -7,9 +7,9 @@ ms.author: sidandrews
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.devlang: csharp
-ms.custom: devx-track-dotnet, devx-track-extended-azdevcli
 ms.topic: quickstart-sdk
-ms.date: 06/14/2024
+ms.date: 10/15/2024
+ms.custom: devx-track-csharp, devx-track-dotnet, devx-track-extended-azdevcli
 zone_pivot_groups: azure-cosmos-db-quickstart-env
 # CustomerIntent: As a developer, I want to learn the basics of the .NET library so that I can build applications with Azure Cosmos DB for NoSQL.
 ---
@@ -150,35 +150,74 @@ The client library is available through NuGet, as the `Microsoft.Azure.Cosmos` p
 
 This sample creates a new instance of the `CosmosClient` class and authenticates using a `DefaultAzureCredential` instance.
 
-:::code language="csharp" source="~/cosmos-db-nosql-dotnet-quickstart/src/web/Program.cs" id="create_client" highlight="2-3":::
+```csharp
+DefaultAzureCredential credential = new();
+
+CosmosClient client = new(
+    accountEndpoint: "<azure-cosmos-db-nosql-account-endpoint>",
+    tokenCredential: new DefaultAzureCredential()
+);
+```
 
 ### Get a database
 
 Use `client.GetDatabase` to retrieve the existing database named *`cosmicworks`*.
 
-:::code language="csharp" source="~/cosmos-db-nosql-dotnet-quickstart/src/web/Services/DemoService.cs" id="get_database":::
+```csharp
+Database database = client.GetDatabase("cosmicworks");
+```
 
 ### Get a container
 
 Retrieve the existing *`products`* container using `database.GetContainer`.
 
-:::code language="csharp" source="~/cosmos-db-nosql-dotnet-quickstart/src/web/Services/DemoService.cs" id="get_container":::
+```csharp
+Container container = database.GetContainer("products");
+```
 
 ### Create an item
 
 Build a C# record type with all of the members you want to serialize into JSON. In this example, the type has a unique identifier, and fields for category, name, quantity, price, and sale.
 
-:::code language="csharp" source="~/cosmos-db-nosql-dotnet-quickstart/src/web/Models/Product.cs" id="model":::
+```csharp
+public record Product(
+    string id,
+    string category,
+    string name,
+    int quantity,
+    decimal price,
+    bool clearance
+);
+```
 
 Create an item in the container using `container.UpsertItem`. This method "upserts" the item effectively replacing the item if it already exists.
 
-:::code language="csharp" source="~/cosmos-db-nosql-dotnet-quickstart/src/web/Services/DemoService.cs" id="create_item" highlight="10":::
+```csharp
+Product item = new(
+    id: "68719518391",
+    category: "gear-surf-surfboards",
+    name: "Yamba Surfboard",
+    quantity: 12,
+    price: 850.00m,
+    clearance: false
+);
+
+ItemResponse<Product> response = await container.UpsertItemAsync<Product>(
+    item: item,
+    partitionKey: new PartitionKey("gear-surf-surfboards")
+);
+```
 
 ### Read an item
 
 Perform a point read operation by using both the unique identifier (`id`) and partition key fields. Use `container.ReadItem` to efficiently retrieve the specific item.
 
-:::code language="csharp" source="~/cosmos-db-nosql-dotnet-quickstart/src/web/Services/DemoService.cs" id="read_item" highlight="1":::
+```csharp
+ItemResponse<Product> response = await container.ReadItemAsync<Product>(
+    id: "68719518391",
+    partitionKey: new PartitionKey("gear-surf-surfboards")
+);
+```
 
 ### Query items
 
@@ -188,11 +227,30 @@ Perform a query over multiple items in a container using `container.GetItemQuery
 SELECT * FROM products p WHERE p.category = @category
 ```
 
-:::code language="csharp" source="~/cosmos-db-nosql-dotnet-quickstart/src/web/Services/DemoService.cs" id="query_items" highlight="6":::
+```csharp
+string query = "SELECT * FROM products p WHERE p.category = @category"
+
+var query = new QueryDefinition(query)
+  .WithParameter("@category", "gear-surf-surfboards");
+
+using FeedIterator<Product> feed = container.GetItemQueryIterator<Product>(
+    queryDefinition: query
+);
+```
 
 Parse the paginated results of the query by looping through each page of results using `feed.ReadNextAsync`. Use `feed.HasMoreResults` to determine if there are any results left at the start of each loop.
 
-:::code language="csharp" source="~/cosmos-db-nosql-dotnet-quickstart/src/web/Services/DemoService.cs" id="parse_results" highlight="3,5":::
+```csharp
+List<Product> items = new();
+while (feed.HasMoreResults)
+{
+    FeedResponse<Product> response = await feed.ReadNextAsync();
+    foreach (Product item in response)
+    {
+        items.Add(item);
+    }
+}
+```
 
 ## Clean up resources
 
