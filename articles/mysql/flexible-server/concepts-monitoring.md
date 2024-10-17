@@ -19,7 +19,7 @@ ms.topic: concept-article
 
 Azure Database for MySQL Flexible Server provides monitoring of servers through Azure Monitor. Monitoring data about your servers helps you troubleshoot and optimize for your workload.
 
-In this article, you learn about the various metrics available and Server logs for your Flexible Server, which give insight into its behavior.
+In this article, you learn about the various metrics available and Server logs for your flexible server, which give insight into its behavior.
 
 ## Metrics
 
