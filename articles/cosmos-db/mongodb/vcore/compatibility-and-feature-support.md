@@ -67,6 +67,18 @@ The following table lists commands not supported/restricted by the database. As 
 </table>
 
 
+### Features
+
+<table>
+<tr><td><b>Feature</b></td><td><b>Reason</b></td></tr>
+
+<tr><td rowspan="1">Time series collections</td><td rowspan="3">Not prioritized yet due to weak demand—support will be added in the future.</td></tr>
+
+<tr><td>Capped collections</td></tr>
+<tr><td>Clustered collections</td></tr>
+
+</table>
+
 
 ## Next steps
 
