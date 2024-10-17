@@ -22,6 +22,8 @@
       href: nosql/vector-search.md
     - name: Vector database in Azure Cosmos DB for MongoDB
       href: mongodb/vcore/vector-search.md
+    - name: AI Integrations
+      href: gen-ai/integrations.md
     - name: Related concepts
       items:
       - name: Vector search overview
@@ -36,8 +38,6 @@
         href: gen-ai/distance-functions.md
       - name: kNN vs ANN
         href: gen-ai/knn-vs-ann.md
-      - name: AI Integrations
-        href: gen-ai/integrations.md
       - name: Semantic cache
         href: gen-ai/semantic-cache.md
       - name: Multi-tenancy for vector search

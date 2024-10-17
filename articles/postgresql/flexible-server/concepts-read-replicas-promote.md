@@ -1,8 +1,8 @@
 ---
 title: Promote read replicas
 description: This article describes the promote action for read replica feature in Azure Database for PostgreSQL - Flexible Server.
-author: akashraokm
-ms.author: akashrao
+author: kabharati
+ms.author: kabharati
 ms.reviewer: maghan
 ms.date: 04/27/2024
 ms.service: azure-database-postgresql
@@ -81,6 +81,11 @@ Note that if the former primary server fails beyond recovery during the promotio
 
 When dealing with multiple replicas and if the primary region lacks a [paired region](concepts-read-replicas-geo.md#paired-regions-for-disaster-recovery-purposes), a special consideration must be considered. In the event of a regional outage affecting the primary, any other replicas won't be automatically recognized by the newly promoted replica. While applications can still be directed to the promoted replica for continued operation, the unrecognized replicas remain disconnected during the outage. These extra replicas will only reassociate and resume their roles once the original primary region has been restored.
 
+### Point-In-Time-Restore during promotion
+In both the Planned and Forced promotion scenarios, it's required that the latest automated backups are available to ensure PITR operations are successful. We are aware of an issue where the PITR operation may encounter the following error after failover and failback operations. This issue is scheduled to be resolved in an upcoming release. To ensure successful PITR operations to the latest time you can wait for the automated backup to complete after a promotion operation.
+
+``Error : Point-in-time-restore of server to the period when the siteswap operation for this server was in-progress or when the server was replica is not allowed.``
+
 ## Frequently asked questions
 
 * **Can I promote a replica if my primary server has high availability (HA) enabled?**
@@ -90,6 +95,9 @@ When dealing with multiple replicas and if the primary region lacks a [paired re
 * **If I have an HA-enabled primary and a read replica, and I promote the replica, then switch back to the original primary, will the server still be in HA?**
  
     No, we disable HA during the initial promotion since we don't support HA-enabled read replicas. Promoting a read replica to a primary means that the original primary is changing its role to a replica. If you're switching back, you need to enable HA on your original primary server.
+
+
+    
 
 ## Related content
 

@@ -11,7 +11,7 @@ ms.date: 03/18/2021
 
 # Migrate Oracle to Azure Database for PostgreSQL
 
-[!INCLUDE[applies-to-postgres-single-flexible-server](../includes/applies-to-postgresql-single-flexible-server.md)]
+[!INCLUDE [applies-to-postgresql-flexible-server](../includes/applies-to-postgresql-flexible-server.md)]
 
 This guide helps you to migrate your Oracle schema to Azure Database for PostgreSQL. 
 
