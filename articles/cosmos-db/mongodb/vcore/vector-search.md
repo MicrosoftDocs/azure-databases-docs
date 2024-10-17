@@ -29,7 +29,6 @@ In a vector store, vector search algorithms are used to index and query embeddin
 In the Integrated Vector Database in Azure Cosmos DB for MongoDB vCore, embeddings can be stored, indexed, and queried alongside the original data. This approach eliminates the extra cost of replicating data in a separate pure vector database. Moreover, this architecture keeps the vector embeddings and original data together, which better facilitates multi-modal data operations, and enables greater data consistency, scale, and performance.
 
 ### When to Use Each Index Type
-
 | **Index Type**        | **When to Use**                                                                                                               |
 |-----------------------|-------------------------------------------------------------------------------------------------------------------------------|
 | **SSD DiskANN**       | Use for **large-scale datasets** (tens of millions to billions of vectors) where **memory is constrained**. DiskANN can handle datasets that exceed memory limits by storing most of the index on SSDs while maintaining **low-latency searches** and **high accuracy**. Best for workloads requiring **scalability** and **efficient memory usage**. |
