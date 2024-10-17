@@ -45,6 +45,8 @@ If you don't have an Azure subscription, create a [free account](https://azure.m
    * **Virtual Network** - Select an Exiting Virtual Network and Subnet, or create a new one. 
    * **Assign roles** - Virtual Networks require special permissions in order to allow managed Cassandra clusters to be deployed. Keep this box checked if you're creating a new Virtual Network, or using an existing Virtual Network without permissions applied. If using a Virtual network where you have already deployed Azure SQL Managed Instance Cassandra clusters, uncheck this option.
 
+   :::image type="content" source="./media/create-cluster-portal/create-cluster-page.png" alt-text="Fill out the create cluster form." lightbox="./media/create-cluster-portal/create-cluster-page.png" border="true":::
+
    > [!TIP]
    > If you use [VPN](use-vpn.md) then you don't need to open any other connection.
 
@@ -96,7 +98,11 @@ If you don't have an Azure subscription, create a [free account](https://azure.m
    > [!NOTE]
    > It can take up to 15 minutes for the cluster to be created.
 
+   :::image type="content" source="./media/create-cluster-portal/review-create.png" alt-text="Review summary to create the cluster." lightbox="./media/create-cluster-portal/review-create.png" border="true":::
+
 1. After the deployment has finished, check your resource group to see the newly created managed instance cluster:
+
+   :::image type="content" source="./media/create-cluster-portal/managed-instance.png" alt-text="Overview page after the cluster is created." lightbox="./media/create-cluster-portal/managed-instance.png" border="true":::
 
 1. To browse through the cluster nodes, navigate to the cluster resource and open the **Data Center** pane to view them:
 

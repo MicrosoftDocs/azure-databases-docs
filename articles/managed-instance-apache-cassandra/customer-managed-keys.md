@@ -73,12 +73,14 @@ This article requires Azure CLI version 2.30.0 or later. If you're using Azure C
 
 1. For **Key permissions**, select **get**, **wrap**, and **unwrap**. Select the **Select principal** box to open the **Principal** pane. Enter the cluster's `principalId` value that you retrieved earlier, and then select the **Select** button. (In the portal, you can also look up the principal ID of the cluster by the cluster's name.)
 
+   :::image type="content" source="./media/cmk/key-vault-access-policy-2.png" alt-text="Screenshot that shows an example of adding a principal for an access policy." lightbox="./media/cmk/key-vault-access-policy-2.png" border="true":::
+
    > [!WARNING]
    > Make sure that the key vault has purge protection turned on. Datacenter deployments will fail without it.
 
 1. Select **Add** to add the access policy, and then select **Save**.
 
-   :::image type="content" source="./media/cmk/save.png" alt-text="Screenshot that shows the button for saving an access policy." border="true":::
+   :::image type="content" source="./media/cmk/save.png" alt-text="Screenshot that shows the button for saving an access policy." lightbox="./media/cmk/key-vault-access-policy-2.png" border="true":::
 
 1. To get the key identifier, select **Keys**, and then select your key.
 
@@ -89,6 +91,8 @@ This article requires Azure CLI version 2.30.0 or later. If you're using Azure C
    :::image type="content" source="./media/cmk/current-version.png" alt-text="Screenshot that shows the box for selecting the current version of a key." lightbox="./media/cmk/key-identifier-1.png" border="true":::
 
 1. Save the key identifier for later use.
+
+   :::image type="content" source="./media/cmk/key-identifier-2.png" alt-text="Screenshot that shows copying a key identifier to the clipboard." lightbox="./media/cmk/key-identifier-1.png" border="true":::
 
 1. Create the datacenter by replacing `<key identifier>` with the same key (the URI that you copied in the previous step) for both managed disk (`managed-disk-customer-key-uri`) and backup storage (`backup-storage-customer-key-uri`) encryption. Use the same value for `subnet` that you used earlier.
 
