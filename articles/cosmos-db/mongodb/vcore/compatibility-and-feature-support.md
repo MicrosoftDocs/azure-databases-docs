@@ -19,7 +19,7 @@ Azure Cosmos DB for MongoDB vCore implements the MongoDB wire protocol, supporti
 The following table lists commands not supported/restricted by the database. As a Platform as a service (PaaS), Azure Cosmos DB subsumes or restricts the functionality of these commands to ensure cluster stability, security and performance, rendering them unnecessary.
 
 
-## Aggregation Pipeline Stages & Aggregators
+### Aggregation Pipeline Stages & Aggregators
 
 <table>
 <tr><td><b>Command</b></td><td><b>Reason</b></td></tr>
