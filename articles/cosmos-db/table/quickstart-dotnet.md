@@ -104,7 +104,7 @@ TableServiceClient serviceClient = new(
 
 ### Get a table
 
-This samples creates an instance of the `TableClient` class using the `GetTableClient` method of the `TableServiceClient` class.
+This sample creates an instance of the `TableClient` class using the `GetTableClient` method of the `TableServiceClient` class.
 
 ```csharp
 TableClient client = serviceClient.GetTableClient(
