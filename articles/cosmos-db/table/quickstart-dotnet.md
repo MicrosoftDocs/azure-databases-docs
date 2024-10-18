@@ -17,13 +17,7 @@ zone_pivot_groups: azure-cosmos-db-quickstart-env
 
 [!INCLUDE[Table](../includes/appliesto-table.md)]
 
-> [!div class="op_single_selector"]
->
-> * [.NET](quickstart-dotnet.md)
-> * [Java](quickstart-java.md)
-> * [Node.js](quickstart-nodejs.md)
-> * [Python](quickstart-python.md)
->
+[!INCLUDE[Developer language selector](includes/quickstart/dev-selector.md)]
 
 This quickstart shows how to get started with the Azure Cosmos DB for Table from a .NET application. The Azure Cosmos DB for Table is a schemaless data store allowing applications to store structured table data in the cloud. You learn how to create tables, rows, and perform basic tasks within your Azure Cosmos DB resource using the [Azure.Data.Tables Package (NuGet)](https://www.nuget.org/packages/Azure.Data.Tables/).
 
@@ -87,10 +81,10 @@ The client library is available through NuGet, as the `Microsoft.Azure.Cosmos` p
 
 ## Code examples
 
-* [Authenticate the clients](#authenticate-the-clients)
-* [Create an item](#create-an-item)
-* [Get an item](#get-an-item)
-* [Query items](#query-items)
+- [Authenticate the clients](#authenticate-the-clients)
+- [Create an item](#create-an-item)
+- [Get an item](#get-an-item)
+- [Query items](#query-items)
 
 The sample code in the template uses a table named `cosmicworks-products`. The table contains details such as name, category, quantity, a unique identifier, and a sale flag for each product.
 
@@ -186,50 +180,23 @@ AsyncPageable<Product> results = client.QueryAsync<Product>(
 );
 ```
 
-Parse the paginated results of the query by looping through each page of results using asynchronous loop to determine if there are any results left at the start of each loop.
+Parse the paginated results of the query by looping through each page of results using asynchronous loop.
 
 ```csharp
-
+List<Product> entities = new();
+await foreach (Product product in results)
+{
+    entities.Add(product);
+}
 ```
 
 ## Clean up resources
 
-When you no longer need the Azure Cosmos DB for Table account, you can delete the corresponding resource group.
-
-### [Azure CLI](#tab/azure-cli)
-
-Use the [``az group delete``](/cli/azure/group#az-group-delete) command to delete the resource group.
+When you no longer need the Azure Cosmos DB for Table account, you can delete the corresponding resource group. Use the `azd down` command to delete the resource group and any deployed resources.
 
 ```azurecli-interactive
 az group delete --name $resourceGroupName
 ```
-
-### [PowerShell](#tab/azure-powershell)
-
-Use the [``Remove-AzResourceGroup``](/powershell/module/az.resources/remove-azresourcegroup) cmdlet to delete the resource group.
-
-```azurepowershell-interactive
-$parameters = @{
-    Name = $RESOURCE_GROUP_NAME
-}
-Remove-AzResourceGroup @parameters
-```
-
-### [Portal](#tab/azure-portal)
-
-1. Navigate to the resource group you previously created in the Azure portal.
-
-    > [!TIP]
-    > In this quickstart, we recommended the name ``msdocs-cosmos-quickstart-rg``.
-1. Select **Delete resource group**.
-
-   :::image type="content" source="media/dotnet-quickstart/delete-resource-group-option.png"  alt-text="Screenshot of the resource group deletion option in the navigation bar for a resource group.":::
-
-1. On the **Are you sure you want to delete** dialog, enter the name of the resource group, and then select **Delete**.
-
-   :::image type="content" source="media/dotnet-quickstart/delete-confirmation.png" alt-text="Screenshot of the confirmation page for the deletion of a resource group.":::
-
----
 
 ## Related content
 
