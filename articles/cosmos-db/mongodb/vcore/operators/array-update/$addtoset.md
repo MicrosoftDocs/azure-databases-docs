@@ -1,5 +1,5 @@
 --- 
-title: $addToSet (array update operator) usage on Azure Cosmos DB for MongoDB vCore
+title: $addToSet (array update) usage on Azure Cosmos DB for MongoDB vCore
 titleSuffix: Azure Cosmos DB for MongoDB vCore
 description: Adds elements to an array only if they don't already exist in the array.
 author: sandeepsnairms
@@ -10,7 +10,7 @@ ms.topic: reference
 ms.date: 10/15/2024
 ---
 
-# $addToSet (array update operator)
+# $addToSet (array update)
 
 The `$addToSet` operator adds elements to an array only if they don't already exist in the array. This operator ensures that there are no duplicate items in the array.
 

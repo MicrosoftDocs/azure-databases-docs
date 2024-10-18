@@ -1,5 +1,5 @@
 ---
-  title: $ifNull (conditional expression operator) usage on Azure Cosmos DB for MongoDB vCore
+  title: $ifNull (conditional expression) usage on Azure Cosmos DB for MongoDB vCore
   titleSuffix: Azure Cosmos DB for MongoDB vCore
   description: The $ifNull operator is used to evaluate an expression and return a specified value if the expression resolves to null.  
   author: sandeepsnairms
@@ -10,7 +10,7 @@
   ms.date: 09/27/2024
 ---
 
-# $ifNull (conditional expression operator)
+# $ifNull (conditional expression)
 
 The `$ifNull` operator is used to evaluate an expression and return a specified value if the expression resolves to `null`. This operator is useful in scenarios where you want to provide a default value for fields that may not exist or may have `null` values.
 
