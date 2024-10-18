@@ -6,7 +6,7 @@
   href: $position.md
 - name: $pop
   href: $pop.md
-- name: $pull.md
+- name: $pull
   href: $pull.md
 - name: $pullAll
   href: $pullall.md
