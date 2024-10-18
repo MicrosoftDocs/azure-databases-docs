@@ -19,15 +19,15 @@ ms.author: jacodel
 Azure Cosmos DB seamlessly integrates with leading large language model (LLM) orchestration packages like [Semantic Kernel](https://github.com/microsoft/semantic-kernel) and [LangChain](https://www.langchain.com/), enabling developers to harness the power of advanced AI capabilities within their applications. These orchestration packages can streamline the management and use of LLMs, embedding models, and databases, making it even easier to develop Generative AI applications.
 
 ## Semantic Kernel
-[Semantic Kernel](https://learn.microsoft.com/semantic-kernel/overview/) is an open-source framework, developed by Microsoft, that allows developers to build advanced AI applications by integrating AI agents with conventional programming languages like C#, Python, and Java, enabling seamless orchestration of code and AI models.
+[Semantic Kernel](/semantic-kernel/overview/) is an open-source framework, developed by Microsoft, that allows developers to build advanced AI applications by integrating AI agents with conventional programming languages like C#, Python, and Java, enabling seamless orchestration of code and AI models.
 
 **Azure Cosmos DB for NoSQL**
-- [Python](https://learn.microsoft.com/semantic-kernel/concepts/vector-store-connectors/out-of-the-box-connectors/azure-cosmosdb-nosql-connector?pivots=programming-language-python)
-- [.NET](https://learn.microsoft.com/semantic-kernel/concepts/vector-store-connectors/out-of-the-box-connectors/azure-cosmosdb-nosql-connector?pivots=programming-language-csharp)
+- [Python](/semantic-kernel/concepts/vector-store-connectors/out-of-the-box-connectors/azure-cosmosdb-nosql-connector?pivots=programming-language-python)
+- [.NET](/semantic-kernel/concepts/vector-store-connectors/out-of-the-box-connectors/azure-cosmosdb-nosql-connector?pivots=programming-language-csharp)
 
 **Azure Cosmos DB for MongoDB vCore**
-- [Python](https://learn.microsoft.com/semantic-kernel/concepts/vector-store-connectors/out-of-the-box-connectors/azure-cosmosdb-mongodb-connector?pivots=programming-language-python)
-- [.NET](https://learn.microsoft.com/semantic-kernel/concepts/vector-store-connectors/out-of-the-box-connectors/azure-cosmosdb-mongodb-connector?pivots=programming-language-csharp)
+- [Python](/semantic-kernel/concepts/vector-store-connectors/out-of-the-box-connectors/azure-cosmosdb-mongodb-connector?pivots=programming-language-python)
+- [.NET](/semantic-kernel/concepts/vector-store-connectors/out-of-the-box-connectors/azure-cosmosdb-mongodb-connector?pivots=programming-language-csharp)
 
 ## LangChain
 [LangChain](https://www.langchain.com/) is a framework designed to simplify the development of applications powered by large language models (LLMs), providing modular components and tools for building, deploying, and monitoring context-aware reasoning applications. LangChain is supported in Python, JavaScript, and Java (through a third party effort)
