@@ -1,14 +1,14 @@
 ---
 title: Quickstart - Python client library
 titleSuffix: Azure Cosmos DB for NoSQL
-description: Deploy a Python Flask web application that uses the client library to interact with Azure Cosmos DB for NoSQL data in this quickstart.
+description: Deploy a Python Flask web application that uses the Azure SDK for Python to interact with Azure Cosmos DB for NoSQL data in this quickstart.
 author: seesharprun
 ms.author: sidandrews
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.devlang: python
 ms.topic: quickstart-sdk
-ms.date: 10/15/2024
+ms.date: 10/21/2024
 ms.custom: devx-track-python, devx-track-extended-azdevcli
 zone_pivot_groups: azure-cosmos-db-quickstart-env
 # CustomerIntent: As a developer, I want to learn the basics of the Python library so that I can build applications with Azure Cosmos DB for NoSQL.
@@ -51,54 +51,7 @@ Deploy this project's development container to your environment. Then, use the A
 
 ::: zone-end
 
-::: zone pivot="devcontainer-vscode"
-
-::: zone-end
-
-1. Open a terminal in the root directory of the project.
-
-1. Authenticate to the Azure Developer CLI using `azd auth login`. Follow the steps specified by the tool to authenticate to the CLI using your preferred Azure credentials.
-
-    ```azurecli
-    azd auth login
-    ```
-
-1. Use `azd init` to initialize the project.
-
-    ```azurecli
-    azd init --template cosmos-db-nosql-python-quickstart
-    ```
-
-    > [!NOTE]
-    > This quickstart uses the [azure-samples/cosmos-db-nosql-python-quickstart](https://github.com/azure-samples/cosmos-db-nosql-python-quickstart) template GitHub repository. The Azure Developer CLI will automatically clone this project to your machine if it is not already there.
-
-1. During initialization, configure a unique environment name.
-
-    > [!TIP]
-    > The environment name will also be used as the target resource group name. For this quickstart, consider using `msdocs-cosmos-db`.
-
-1. Deploy the Azure Cosmos DB account using `azd up`. The Bicep templates also deploy a sample web application.
-
-    ```azurecli
-    azd up
-    ```
-
-1. During the provisioning process, select your subscription and desired location. Wait for the provisioning process to complete. The process can take **approximately five minutes**.
-
-1. Once the provisioning of your Azure resources is done, a URL to the running web application is included in the output.
-
-    ```output
-    Deploying services (azd deploy)
-    
-      (✓) Done: Deploying service web
-    - Endpoint: <https://[container-app-sub-domain].azurecontainerapps.io>
-    
-    SUCCESS: Your application was provisioned and deployed to Azure in 5 minutes 0 seconds.
-    ```
-
-1. Use the URL in the console to navigate to your web application in the browser. Observe the output of the running app.
-
-    :::image type="content" source="media/quickstart/dev-web-application.png" alt-text="Screenshot of the running web application.":::
+[!INCLUDE[Developer Quickstart setup](includes/quickstart/dev-setup.md)]
 
 ### Install the client library
 
@@ -236,8 +189,3 @@ output = json.dumps(items, indent=True)
 - [Node.js Quickstart](quickstart-nodejs.md)
 - [Java Quickstart](quickstart-java.md)
 - [Go Quickstart](quickstart-go.md)
-
-## Next step
-
-> [!div class="nextstepaction"]
-> [PyPI package](https://pypi.org/project/azure-cosmos)
