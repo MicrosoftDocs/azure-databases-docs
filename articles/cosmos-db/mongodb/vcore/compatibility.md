@@ -1,13 +1,13 @@
 ---
-title: Compatibility and feature support
+title: Compatibility and feature support v1
 titleSuffix: Azure Cosmos DB for MongoDB vCore
 description: Review Azure Cosmos DB for MongoDB vCore supported features and syntax including; commands, query support, datatypes, aggregation, operators and indexes.
 author: suvishodcitus
 ms.author: suvishod
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
-ms.topic: conceptual
-ms.date: 10/21/2023
+ms.topic: reference
+ms.date: 11/10/2024
 ---
 
 # MongoDB compatibility and feature support with Azure Cosmos DB for MongoDB vCore
