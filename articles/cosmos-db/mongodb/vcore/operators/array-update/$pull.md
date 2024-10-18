@@ -1,5 +1,5 @@
 ---
-title: $pull (array update operator) usage on Azure Cosmos DB for MongoDB vCore
+title: $pull (array update) usage on Azure Cosmos DB for MongoDB vCore
 titleSuffix: Azure Cosmos DB for MongoDB vCore
 description: Removes all instances of a value from an array.
 author: sandeepsnairms
@@ -10,7 +10,7 @@ ms.topic: reference
 ms.date: 10/15/2024
 ---
 
-# $pull (array update operator)
+# $pull (array update)
 
 The `$pull` operator is used to remove all instances of a specified value or values that match a condition from an array. This is useful when you need to clean up or modify array data within your documents.
 
