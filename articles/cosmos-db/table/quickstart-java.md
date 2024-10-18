@@ -9,7 +9,7 @@ ms.service: azure-cosmos-db
 ms.subservice: table
 ms.devlang: java
 ms.topic: quickstart-sdk
-ms.date: 10/07/2024
+ms.date: 10/21/2024
 ms.custom: devx-track-java, devx-track-extended-azdevcli
 ---
 

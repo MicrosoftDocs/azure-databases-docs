@@ -8,7 +8,7 @@ ms.service: azure-cosmos-db
 ms.subservice: table
 ms.devlang: csharp
 ms.topic: quickstart
-ms.date: 10/15/2024
+ms.date: 10/21/2024
 ms.custom: devx-track-csharp, devx-track-dotnet, devx-track-extended-azdevcli
 zone_pivot_groups: azure-cosmos-db-quickstart-env
 ---
