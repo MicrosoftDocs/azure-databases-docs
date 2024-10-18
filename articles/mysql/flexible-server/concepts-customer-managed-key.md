@@ -100,7 +100,7 @@ As you configure Key Vault or Managed HSM to use data encryption using a custome
 - If Key Vault generates the key, create a key backup before using the key for the first time. You can only restore the backup to Key Vault. For more information about the backup command, see [Backup-AzKeyVaultKey](/powershell/module/az.keyVault/backup-azkeyVaultkey).
 
 > [!NOTE]
-> * It is advised to use a key vault from the same region, but if necessary, you can use a key vault from another region by specifying the "enter key identifier" information. The key vault managed HSM must be in the same region as the MySQL Flexible Server.
+> * It is advised to use a key vault from the same region, but if necessary, you can use a key vault from another region by specifying the "enter key identifier" information. The key vault managed HSM must be in the same region as the MySQL flexible server.
 
 
 ## Inaccessible customer-managed key condition
