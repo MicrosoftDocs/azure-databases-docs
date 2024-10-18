@@ -7,24 +7,22 @@ ms.author: sidandrews
 ms.service: azure-cosmos-db
 ms.subservice: table
 ms.devlang: csharp
-ms.topic: quickstart
+ms.topic: quickstart-sdk
 ms.date: 10/21/2024
 ms.custom: devx-track-csharp, devx-track-dotnet, devx-track-extended-azdevcli
 zone_pivot_groups: azure-cosmos-db-quickstart-env
+# CustomerIntent: As a developer, I want to learn the basics of the .NET library so that I can build applications with Azure Cosmos DB for Table.
 ---
 
-# Quickstart: Azure Cosmos DB for Table for .NET
+# Quickstart: Azure Cosmos DB for Table library for .NET
 
 [!INCLUDE[Table](../includes/appliesto-table.md)]
 
-[!INCLUDE[Developer language selector](includes/quickstart/dev-selector.md)]
+[!INCLUDE[Developer Quickstart selector](includes/quickstart/dev-selector.md)]
 
 This quickstart shows how to get started with the Azure Cosmos DB for Table from a .NET application. The Azure Cosmos DB for Table is a schemaless data store allowing applications to store structured table data in the cloud. You learn how to create tables, rows, and perform basic tasks within your Azure Cosmos DB resource using the [Azure.Data.Tables Package (NuGet)](https://www.nuget.org/packages/Azure.Data.Tables/).
 
-> [!NOTE]
-> The [example code snippets](https://github.com/Azure-Samples/cosmos-db-table-api-dotnet-samples) are available on GitHub as a .NET project.
-
-[API for Table reference documentation](/azure/storage/tables/) | [Azure.Data.Tables Package (NuGet)](https://www.nuget.org/packages/Azure.Data.Tables/)
+[API reference documentation](/dotnet/api/azure.data.tables) | [Library source code](https://github.com/Azure/azure-sdk-for-net/tree/main/sdk/tables/Azure.Data.Tables) | [Package (NuGet)](https://www.nuget.org/packages/Azure.Data.Tables/) | [Azure Developer CLI](/azure/developer/azure-developer-cli/overview)
 
 ## Prerequisites
 
@@ -32,7 +30,7 @@ This quickstart shows how to get started with the Azure Cosmos DB for Table from
 
 ## Setting up
 
-Deploy this project's development container to your environment. Then, use the Azure Developer CLI (azd) to create an Azure Cosmos DB for Table account and deploy a containerized sample application. The sample application uses the client library to manage, create, read, and query sample data.
+Deploy this project's development container to your environment. Then, use the Azure Developer CLI (`azd`) to create an Azure Cosmos DB for Table account and deploy a containerized sample application. The sample application uses the client library to manage, create, read, and query sample data.
 
 ::: zone pivot="devcontainer-codespace"
 
@@ -50,7 +48,7 @@ Deploy this project's development container to your environment. Then, use the A
 
 ### Install the client library
 
-The client library is available through NuGet, as the `Microsoft.Azure.Cosmos` package.
+The client library is available through NuGet, as the `Azure.Data.Tables` package.
 
 1. Open a terminal and navigate to the `/src/web` folder.
 
@@ -82,20 +80,18 @@ The client library is available through NuGet, as the `Microsoft.Azure.Cosmos` p
 ## Code examples
 
 - [Authenticate the clients](#authenticate-the-clients)
+- [Get a table](#get-a-table)
 - [Create an item](#create-an-item)
 - [Get an item](#get-an-item)
 - [Query items](#query-items)
 
-The sample code in the template uses a table named `cosmicworks-products`. The table contains details such as name, category, quantity, a unique identifier, and a sale flag for each product.
+[!INCLUDE[Developer Quickstart sample explanation](includes/quickstart/dev-sample-primer.md)]
 
 ### Authenticate the clients
 
-Application requests to most Azure services must be authorized. Use the `DefaultAzureCredential` type as the preferred way to implement a passwordless connection between your applications and Azure Cosmos DB for NoSQL. `DefaultAzureCredential` supports multiple authentication methods and determines which method should be used at runtime.
+[!INCLUDE[Developer Quickstart authentication explanation](includes/quickstart/dev-auth-primer.md)]
 
-> [!IMPORTANT]
-> You can also authorize requests to Azure services using passwords, connection strings, or other credentials directly. However, this approach should be used with caution. Developers must be diligent to never expose these secrets in an unsecure location. Anyone who gains access to the password or secret key is able to authenticate to the database service. `DefaultAzureCredential` offers improved management and security benefits over the account key to allow passwordless authentication without the risk of storing keys.
-
-This sample creates a new instance of the `TableServiceClient` and `TableClient` classes and authenticates using a `DefaultAzureCredential` instance.
+This sample creates a new instance of the `TableServiceClient` class and authenticates using a `DefaultAzureCredential` instance.
 
 ```csharp
 DefaultAzureCredential credential = new();
@@ -104,7 +100,13 @@ TableServiceClient serviceClient = new(
     endpoint: new Uri("<azure-cosmos-db-table-account-endpoint>"),
     tokenCredential: credential
 );
+```
 
+### Get a table
+
+This samples creates an instance of the `TableClient` class using the `GetTableClient` method of the `TableServiceClient` class.
+
+```csharp
 TableClient client = serviceClient.GetTableClient(
     tableName: "<azure-cosmos-db-table-name>"
 );
@@ -192,19 +194,11 @@ await foreach (Product product in results)
 
 ## Clean up resources
 
-When you no longer need the Azure Cosmos DB for Table account, you can delete the corresponding resource group. Use the `azd down` command to delete the resource group and any deployed resources.
-
-```azurecli-interactive
-az group delete --name $resourceGroupName
-```
+[!INCLUDE[Developer Quickstart cleanup](includes/quickstart/dev-cleanup.md)]
 
 ## Related content
 
 - [Node.js Quickstart](quickstart-nodejs.md)
 - [Python Quickstart](quickstart-python.md)
 - [Java Quickstart](quickstart-java.md)
-
-## Next step
-
-> [!div class="nextstepaction"]
-> [Get started with Azure Cosmos DB for Table and .NET](./how-to-dotnet-get-started.md)
+- [Go Quickstart](quickstart-go.md)

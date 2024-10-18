@@ -13,4 +13,29 @@ ms.date: 10/21/2024
 ms.custom: devx-track-go, devx-track-extended-azdevcli
 ---
 
-# Quickstart: Azure Cosmos DB for Table for Go
+# Quickstart: Azure Cosmos DB for Table library for Go
+
+[!INCLUDE[Table](../includes/appliesto-table.md)]
+
+[!INCLUDE[Developer Quickstart selector](includes/quickstart/dev-selector.md)]
+
+
+
+[Library source code](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/sdk/data/aztables#pkg-types) | [Package (Go)](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/sdk/data/aztables) | [Azure Developer CLI](/azure/developer/azure-developer-cli/overview)
+
+## Prerequisites
+
+[!INCLUDE[Developer Quickstart prerequisites](includes/quickstart/dev-prereqs.md)]
+
+
+
+## Clean up resources
+
+[!INCLUDE[Developer Quickstart cleanup](includes/quickstart/dev-cleanup.md)]
+
+## Related content
+
+- [.NET Quickstart](quickstart-dotnet.md)
+- [Node.js Quickstart](quickstart-nodejs.md)
+- [Python Quickstart](quickstart-python.md)
+- [Java Quickstart](quickstart-java.md)
