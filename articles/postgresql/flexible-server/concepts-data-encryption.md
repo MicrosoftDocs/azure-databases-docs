@@ -4,12 +4,10 @@ description: Learn how data encryption with a customer-managed key in Azure Data
 author: techlake
 ms.author: hganten
 ms.reviewer: maghan
-ms.date: 06/24/2024
+ms.date: 10/15/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: conceptual
-ms.custom:
-  - ignite-2023
 ---
 
 # Data encryption with a customer-managed key in Azure Database for PostgreSQL - Flexible Server
@@ -168,6 +166,7 @@ When you configure data encryption with a CMK in Key Vault, continuous access to
 
 Some of the reasons why the server state becomes **Inaccessible** are:
 
+- If you rotate the key and forget to update the instance of Azure Database for PostgreSQL flexible server so that it points to the new version of the key. The old key, to which the instance was pointing, will eventually expire and will turn the server state into **Inaccessible**. To avoid this, every time you rotate the key, make sure you also update the instance of your server to point to the new version. To do that, you can use the `az postgres flexible-server update`, following the example that describes ["Change key/identity for data encryption. Data encryption cannot be enabled post server creation, this will only update the key/identity."](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-update-examples) As an alternative, you can invoke the [Servers - Update](/rest/api/postgresql/flexibleserver/servers/update) REST API of the service.
 - If you delete the Key Vault instance, the Azure Database for PostgreSQL flexible server instance can't access the key and moves to an **Inaccessible** state. To make the server **Available**, [recover the Key Vault instance](/azure/key-vault/general/key-vault-recovery) and revalidate the data encryption.
 - If you delete the key from Key Vault, the Azure Database for PostgreSQL flexible server instance can't access the key and moves to an **Inaccessible** state. To make the server **Available**, [recover the key](/azure/key-vault/general/key-vault-recovery) and revalidate the data encryption.
 - If you delete, from Microsoft Entra ID, a [managed identity](/azure/active-directory/managed-identities-azure-resources/how-manage-user-assigned-managed-identities) that's used to retrieve a key from Key Vault,  or by delete Azure RBAC role assignment with the role [Key Vault Crypto Service Encryption User](/azure/key-vault/general/rbac-guide#azure-built-in-roles-for-key-vault-data-plane-operations). the Azure Database for PostgreSQL flexible server instance can't access the key and moves to an **Inaccessible** state. To make the server **Available**, [recover the identity](/azure/active-directory/fundamentals/recover-from-deletions) and revalidate data encryption.

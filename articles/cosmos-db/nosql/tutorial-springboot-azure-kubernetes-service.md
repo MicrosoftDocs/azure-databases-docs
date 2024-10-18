@@ -5,7 +5,7 @@ author: markjbrown
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.devlang: java
-ms.topic: quickstart
+ms.topic: how-to
 ms.date: 10/01/2021
 ms.author: mjbrown
 ms.custom: mode-api, devx-track-azurecli, build-2023, build-2023-dataai

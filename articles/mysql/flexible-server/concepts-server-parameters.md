@@ -180,13 +180,16 @@ The binary log contains events that describe database changes, such as table cre
 
 Usually, the binary logs are deleted as soon as the handle is free from the service, backup, or replica set. If there are multiple replicas, the binary logs wait for the slowest replica to read the changes before they're deleted.
 
-If you want to persist binary logs for a longer duration, you can configure the `binlog_expire_logs_seconds` parameter. If `binlog_expire_logs_seconds` is set to the default value of `0`, a binary log is deleted as soon as the handle to it is freed. If the value of `binlog_expire_logs_seconds` is greater than `0`, the binary log is deleted after the configured number of seconds.
+If you want to persist binary logs for a longer duration, you can configure the `binlog_expire_logs_seconds` parameter. If `binlog_expire_logs_seconds` is set to the default value of `0`, a binary log is deleted as soon as the handle to it's freed. If the value of `binlog_expire_logs_seconds` is greater than `0`, the binary log is deleted after the configured number of seconds.
 
 Azure Database for MySQL - Flexible Server handles managed features, like backup and read replica deletion of binary files, internally. When you replicate the data-out from Azure Database for MySQL - Flexible Server, this parameter needs to be set in the primary to avoid deletion of binary logs before the replica reads from the changes in the primary. If you set `binlog_expire_logs_seconds` to a higher value, the binary logs won't be deleted soon enough. That delay can lead to an increase in the storage billing.
 
 ### event_scheduler
 
 In Azure Database for MySQL - Flexible Server, the `event_scheduler` server parameter manages creating, scheduling, and running events. That is, the parameter manages tasks that run according to a schedule by a special MySQL Event Scheduler thread. When the `event_scheduler` parameter is set to `ON`, the Event Scheduler thread is listed as a daemon process in the output of `SHOW PROCESSLIST`.
+
+For MySQL version 5.7 servers, the server parameter `event_scheduler` is automatically turned 'OFF' when [backup](./concepts-backup-restore.md#backup-overview) is initiated and server parameter `event_scheduler` is turned back 'ON' after the backup completes successfully. In MySQL version 8.0 for Azure Database for MySQL - Flexible Server, the event_scheduler remains unaffected during [backups](./concepts-backup-restore.md#backup-overview). To ensure smoother operations, it's recommended to upgrade your MySQL 5.7 servers to version 8.0 using a [major version upgrade](./how-to-upgrade.md).
+
 
 You can create and schedule events by using the following SQL syntax:
 
@@ -208,6 +211,7 @@ For more information about creating an event, see the following documentation ab
 #### Configuring the event_scheduler server parameter
 
 The following scenario illustrates one way to use the `event_scheduler` parameter in Azure Database for MySQL - Flexible Server.
+
 
 To demonstrate the scenario, consider the following example of a simple table:
 

@@ -4,12 +4,11 @@ titleSuffix: Azure Cosmos DB for Table
 description: Deploy a .NET web application that uses the client library to interact with Azure Cosmos DB for Table data in this quickstart.
 author: seesharprun
 ms.author: sidandrews
-ms.reviewer: sasinnat
 ms.service: azure-cosmos-db
 ms.subservice: table
 ms.devlang: csharp
-ms.topic: quickstart-sdk
-ms.date: 10/07/2024
+ms.topic: quickstart
+ms.date: 10/15/2024
 ms.custom: devx-track-csharp, devx-track-dotnet, devx-track-extended-azdevcli
 zone_pivot_groups: azure-cosmos-db-quickstart-env
 ---
@@ -104,23 +103,73 @@ Application requests to most Azure services must be authorized. Use the `Default
 
 This sample creates a new instance of the `TableServiceClient` and `TableClient` classes and authenticates using a `DefaultAzureCredential` instance.
 
-:::code language="csharp" source="~/cosmos-db-table-dotnet-quickstart/src/web/Program.cs" id="create_client":::
+```csharp
+DefaultAzureCredential credential = new();
+
+TableServiceClient serviceClient = new(
+    endpoint: new Uri("<azure-cosmos-db-table-account-endpoint>"),
+    tokenCredential: credential
+);
+
+TableClient client = serviceClient.GetTableClient(
+    tableName: "<azure-cosmos-db-table-name>"
+);
+```
 
 ### Create an item
 
 The easiest way to create a new item in a table is to create a class that implements the [``ITableEntity``](/dotnet/api/azure.data.tables.itableentity) interface. You can then add your own properties to the class to populate columns of data in that table row.
 
-:::code language="csharp" source="~/cosmos-db-table-dotnet-quickstart/src/web/Models/Product.cs" id="model":::
+```csharp
+public record Product : ITableEntity
+{
+    public string RowKey { get; set; } = $"{Guid.NewGuid()}";
+
+    public string PartitionKey { get; set; } = String.Empty;
+
+    public string Name { get; set; } = String.Empty;
+
+    public int Quantity { get; set; } = 0;
+
+    public decimal Price { get; set; } = 0.0m;
+
+    public bool Clearance { get; set; } = false;
+
+    public ETag ETag { get; set; } = ETag.All;
+
+    public DateTimeOffset? Timestamp { get; set; }
+};
+```
 
 Create an item in the collection using the `Product` class by calling [``TableClient.AddEntityAsync<T>``](/dotnet/api/azure.data.tables.tableclient.addentityasync).
 
-:::code language="csharp" source="~/cosmos-db-table-dotnet-quickstart/src/web/Services/DemoService.cs" id="create_entity":::
+```csharp
+Product entity = new()
+{
+    RowKey = "68719518391",
+    PartitionKey = "gear-surf-surfboards",
+    Name = "Surfboard",
+    Quantity = 10,
+    Price = 300.00m,
+    Clearance = true
+};
+
+Response response = await client.UpsertEntityAsync<Product>(
+    entity: entity,
+    mode: TableUpdateMode.Replace
+);
+```
 
 ### Get an item
 
 You can retrieve a specific item from a table using the [``TableClient.GetEntityAsync<T>``](/dotnet/api/azure.data.tables.tableclient.getentity) method. Provide the `partitionKey` and `rowKey` as parameters to identify the correct row to perform a quick *point read* of that item.
 
-:::code language="csharp" source="~/cosmos-db-table-dotnet-quickstart/src/web/Services/DemoService.cs" id="read_entity":::
+```csharp
+Response<Product> response = await client.GetEntityAsync<Product>(
+    rowKey: "68719518391",
+    partitionKey: "gear-surf-surfboards"
+);
+```
 
 ### Query items
 
@@ -129,11 +178,19 @@ After you insert an item, you can also run a query to get all items that match a
 > [!NOTE]
 > You can also query items using [OData](/rest/api/storageservices/querying-tables-and-entities) syntax. You can see an example of this approach in the [Query Data](./tutorial-query.md) tutorial.
 
-:::code language="csharp" source="~/cosmos-db-table-dotnet-quickstart/src/web/Services/DemoService.cs" id="query_entities":::
+```csharp
+string category = "gear-surf-surfboards";
+
+AsyncPageable<Product> results = client.QueryAsync<Product>(
+    product => product.PartitionKey == category
+);
+```
 
 Parse the paginated results of the query by looping through each page of results using asynchronous loop to determine if there are any results left at the start of each loop.
 
-:::code language="csharp" source="~/cosmos-db-table-dotnet-quickstart/src/web/Services/DemoService.cs" id="parse_results":::
+```csharp
+
+```
 
 ## Clean up resources
 
