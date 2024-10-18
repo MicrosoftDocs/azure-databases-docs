@@ -5,7 +5,7 @@ description: Learn about integrations with AI/LLM orchestration packages
 author: jcodella
 ms.service: azure-cosmos-db
 ms.subservice: nosql
-ms.topic: quickstart
+ms.topic: how-to
 ms.date: 9/16/2024
 ms.author: jacodel
 
