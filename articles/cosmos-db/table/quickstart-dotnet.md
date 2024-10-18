@@ -1,7 +1,7 @@
 ---
 title: Quickstart - .NET client library
 titleSuffix: Azure Cosmos DB for Table
-description: Deploy a .NET web application that uses the client library to interact with Azure Cosmos DB for Table data in this quickstart.
+description: Deploy a .NET web application that uses the Azure SDK for .NET to interact with Azure Cosmos DB for Table data in this quickstart.
 author: seesharprun
 ms.author: sidandrews
 ms.service: azure-cosmos-db

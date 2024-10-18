@@ -1,7 +1,7 @@
 ---
 title: Quickstart - Java client library
 titleSuffix: Azure Cosmos DB for Table
-description: Deploy a Java web application that uses the client library to interact with Azure Cosmos DB for Table data in this quickstart.
+description: Deploy a Java web application that uses the Azure SDK for Java to interact with Azure Cosmos DB for Table data in this quickstart.
 author: seesharprun
 ms.author: sidandrews
 ms.reviewer: sasinnat
@@ -11,6 +11,8 @@ ms.devlang: java
 ms.topic: quickstart-sdk
 ms.date: 10/21/2024
 ms.custom: devx-track-java, devx-track-extended-azdevcli
+zone_pivot_groups: azure-cosmos-db-quickstart-env
+# CustomerIntent: As a developer, I want to learn the basics of the Java library so that I can build applications with Azure Cosmos DB for Table.
 ---
 
 # Quickstart: Azure Cosmos DB for Table library for Java
