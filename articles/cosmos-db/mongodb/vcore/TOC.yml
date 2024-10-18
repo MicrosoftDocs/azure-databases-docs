@@ -38,8 +38,8 @@
           href: vector-search-ai.md
         - name: RAG with Langchain & OpenAI
           href: rag.md
-    - name: MongoDB feature support
-      href: compatibility.md
+    - name: MongoDB compatibility and feature support
+      href: compatibility-and-feature-support.md
     - name: Support for Geospatial Queries
       href: geospatial-support.md
     - name: High availability (HA)
@@ -126,6 +126,8 @@
       href: commands/toc.yml
     - name: Operators
       href: operators/toc.yml
+    - name: MongoDB feature reference
+      href: compatibility.md
     - name: Release notes
       href: release-notes.md
     - name: Troubleshoot common issues
