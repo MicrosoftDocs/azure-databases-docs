@@ -61,4 +61,4 @@ ms.date: 10/21/2024
 
 1. Use the URL in the console to navigate to your web application in the browser. Observe the output of the running app.
 
-    :::image type="content" source="../media/quickstart/dev-web-application.png" alt-text="Screenshot of the running web application.":::
+    :::image type="content" source="../../media/quickstart/dev-web-application.png" alt-text="Screenshot of the running web application.":::
