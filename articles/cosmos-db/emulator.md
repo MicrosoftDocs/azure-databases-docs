@@ -63,8 +63,8 @@ The next generation of the Azure Cosmos DB Emulator is entirely linux based. As 
 
 ### Components
 
-* **Data explorer** - interactively explore the data in the emulator. By default this runs on port 1234, e.g. https://localhost:1234.
-* **Cosmos DB emulator** - a local version of the Cosmos DB database service.By default, this runs on port 8081, e.g. https://localhost:8081.
+* **Data explorer** - interactively explore the data in the emulator. By default this runs on port 1234, for example https://localhost:1234.
+* **Cosmos DB emulator** - a local version of the Cosmos DB database service.By default, this runs on port 8081, for example https://localhost:8081.
 
 ### Prerequisites
 
@@ -99,14 +99,14 @@ CONTAINER ID   IMAGE                                                            
 c1bb8cf53f8a   microsoft/azure-cosmosdb-emulator:2.0   "/bin/bash -c /home/…"   5 seconds ago   Up 5 seconds   0.0.0.0:1234->1234/tcp, :::1234->1234/tcp, 0.0.0.0:8081->8081/tcp, :::8081->8081/tcp   wonderful_tu
 ```
 
-This will start the Cosmos DB server on port 8081 and the data explorer on port 1234. Copy `https://localhost:1234` into your browser to access the data explorer. It may take a few seconds for data explorer to come up. The gatewat endpoint should be available immediately. 
+The emulator server on port 8081 and the data explorer on port 1234. Copy `https://localhost:1234` into your browser to access the data explorer. It may take a few seconds for data explorer to come up. The gatewat endpoint should be available immediately. 
 
 > [!IMPORTANT] This version of the emulator currently supports [gateway mode](https://learn.microsoft.com/azure/cosmos-db/nosql/sdk-connection-modes#available-connectivity-modes) only, with a select subset of features (see [below](#feature-support-matrix)).
 
 
 ### HTTP support
 
-By default, the V2 emulator runs on standard https port 443 using a self-signed certificat. However, you can disable this and run with http, e.g. http://localhost:8081. To disable https and run in http mode, start the container using the below command:
+By default, the V2 emulator runs on standard https port 443 using a self-signed certificat. However, you can disable https and run with http, using the below command:
 
 ```shell
 docker run -d  -p 8081:8081 -p 1234:1234 -e GATEWAY_TLS_ENABLED="False"   microsoft/azure-cosmosdb-emulator:2.0
@@ -120,7 +120,6 @@ We support the following environment variables. Specify with `-e`, for example: 
 | `GATEWAY_CERTIFICATE_PATH`      | path to a user supplied  certificate in pfx format  |
 | `GATEWAY_CERTIFICATE_PASSWORD` | password for that certificate    |
 
-Feel free to add issues to this repo and we'll investigate!
 
 ### Feature support matrix
 
