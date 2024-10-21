@@ -132,7 +132,7 @@ This query would return the following document. The OR of 0 and 1 is 1 hence the
 }
 ```
 
-### Example 3:Perform a bitwise XOR operation on the `partTime` field in `totalStaff`.
+### Example 3: Perform a bitwise XOR operation on the `partTime` field in `totalStaff`.
 ```shell
 db.stores.updateOne(
   { "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5" },
