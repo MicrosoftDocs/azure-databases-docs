@@ -1,7 +1,7 @@
 ---
 title: Configure Network Security Perimeter for an Azure Cosmos DB account
 description: Learn how to secure your Cosmos DB account using Network Service Perimeter.
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.topic: how-to
 ms.date: 04/25/2024
 ms.author: iriaosara
@@ -49,7 +49,8 @@ In cases where you have existing Azure Cosmos DB account and looking to add secu
 
 * Then select **Associate NSP** to associate this resource with your network security perimeter to enable communication with other Azure resources in the same perimeter while restricting public access to only allow the connections you specify.
 
-## Next steps
-
+<!---## Next steps
+ToDO: Get aka.ms links from network team  and update
 * Overview of [network service perimeter](../private-link/network-security-perimeter-overview.md)
 * Learn to monitor with [diagnostic logs in network security perimeter](../private-link/network-security-perimeter-diagnostic-logs.md)
+--->
