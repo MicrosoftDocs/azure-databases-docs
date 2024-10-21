@@ -1,7 +1,7 @@
----
-title: $pop (array update) usage on Azure Cosmos DB for MongoDB vCore
+--- 
+title: $bit(bitwise update) usage on Azure Cosmos DB for MongoDB vCore
 titleSuffix: Azure Cosmos DB for MongoDB vCore
-description: Removes the first or last element of an array.
+description: The `$bit` operator is used to perform bitwise operations on integer values.
 author: sandeepsnairms
 ms.author: sandnair
 ms.service: azure-cosmos-db
@@ -10,25 +10,21 @@ ms.topic: reference
 ms.date: 10/15/2024
 ---
 
-# $pop  (array update)
 
-The `$pop` operator in MongoDB is used to remove the first or last element of an array. This operator is useful when you need to manage arrays by removing elements from either end. The `$pop` operator can be used in update operations.
+# $bit(bitwise update)
+The `$bit` operator is used to perform bitwise operations on integer values. It can be used to update integer fields in documents by applying bitwise AND, OR, and XOR operations. Bitwise operators like $bit aren't designed for incrementing values, but for manipulating bits directly (like checking, setting, or clearing specific bits).
 
 ## Syntax
-
 ```javascript
-{ $pop: { <field>: <value> } }
+{ $bit: { <field>: { <operator>: <number> } } }
 ```
 
-- `<field>`: The field that contains the array from which you want to remove an element.
-- `<value>`: Use `1` to remove the last element, and `-1` to remove the first element.
-
-## Parameters
-
+## Parameters  
 | | Description |
 | --- | --- |
-| **`<field>`** | The field that contains the array from which you want to remove an element. |
-| **`<value>`** | Use `1` to remove the last element, and `-1` to remove the first element. |
+| **`<field>`** | The field to perform the bitwise operation on. |
+| **`<operator>`** | The bitwise operation to perform. Can be one of: `and`, `or`, `xor`. |
+| **`<number>`** | The number to use for the bitwise operation. |
 
 ## Examples
 
@@ -91,19 +87,18 @@ Let's understand the usage with the following sample json.
     "#MembershipDeals"
   ]
 }
-
 ```
 
-### Example 1: Removing the last tag from the `tag` array
+### Example 1: Perform a bitwise AND operation on the `partTime` field in `totalStaff`.
 
 ```shell
-db.stores.update(
+db.stores.updateOne(
   { "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5" },
-  { $pop: { "tag": 1 } }
+  { $bit: { "staff.totalStaff.partTime": { and: 1 } } }
 )
 ```
 
-This query would return the following document. The last element from the array is removed.
+This query would return the following document. The AND of 0 and 1 is 0 hence the new value of the field is 0.
 
 ```json
 {
@@ -113,19 +108,19 @@ This query would return the following document. The last element from the array 
   "modifiedCount": "1",
   "upsertedCount": 0
 }
-
 ```
 
-### Example 2: Removing the last discount from the `promotionEvents` array
+
+### Example 2:  Perform a bitwise OR operation on the `partTime` field in `totalStaff`.
 
 ```shell
-db.stores.update(
+db.stores.updateOne(
   { "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5" },
-  { $pop: { "promotionEvents": -1 } }
+  { $bit: { "staff.totalStaff.partTime": { "or" : 1 } } }
 )
 ```
 
-This query would return the following document. The first element from the array is removed.
+This query would return the following document. The OR of 0 and 1 is 1 hence the new value of the field is 1.
 
 ```json
 {
@@ -135,10 +130,27 @@ This query would return the following document. The first element from the array
   "modifiedCount": "1",
   "upsertedCount": 0
 }
+```
 
+### Example 3: Perform a bitwise XOR operation on the `partTime` field in `totalStaff`.
+```shell
+db.stores.updateOne(
+  { "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5" },
+  { $bit: { "staff.totalStaff.partTime": { "xor" : 1 } } }
+)
+```
+This query would return the following document. The XOR of 1 and 1 is 0 hence the new value of the field is 0.
+
+```json
+{
+  "acknowledged": true,
+  "insertedId": null,
+  "matchedCount": "1",
+  "modifiedCount": "1",
+  "upsertedCount": 0
+}
 ```
 
 
 ## Related content
-
 [!INCLUDE[Related content](../includes/related-content.md)]
