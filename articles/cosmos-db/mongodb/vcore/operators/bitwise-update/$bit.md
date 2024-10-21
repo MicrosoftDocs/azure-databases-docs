@@ -10,7 +10,8 @@ ms.topic: reference
 ms.date: 10/15/2024
 ---
 
-# $bit(bitwise update) usage on Azure Cosmos DB for MongoDB vCore
+
+# $bit(bitwise update)
 The `$bit` operator is used to perform bitwise operations on integer values. It can be used to update integer fields in documents by applying bitwise AND, OR, and XOR operations. Bitwise operators like $bit aren't designed for incrementing values, but for manipulating bits directly (like checking, setting, or clearing specific bits).
 
 ## Syntax
@@ -86,6 +87,7 @@ Let's understand the usage with the following sample json.
     "#MembershipDeals"
   ]
 }
+```
 
 ### Example 1: Perform a bitwise AND operation on the `partTime` field in `totalStaff`.
 
@@ -130,7 +132,7 @@ This query would return the following document. The OR of 0 and 1 is 1 hence the
 }
 ```
 
-### Example 3:Perform a bitwise XOR operation on the `partTime` field in `salesByCategory`.
+### Example 3:Perform a bitwise XOR operation on the `partTime` field in `totalStaff`.
 ```shell
 db.stores.updateOne(
   { "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5" },
