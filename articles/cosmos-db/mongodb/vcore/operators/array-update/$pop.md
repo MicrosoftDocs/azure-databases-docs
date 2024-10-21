@@ -16,7 +16,7 @@ The `$pop` operator in MongoDB is used to remove the first or last element of an
 
 ## Syntax
 
-```shell
+```javascript
 { $pop: { <field>: <value> } }
 ```
 
