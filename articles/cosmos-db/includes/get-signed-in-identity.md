@@ -93,7 +93,7 @@ Use the in-portal panes for Microsoft Entra ID to get details of your currently 
     :::image source="media/get-signed-in-identity/user-details.png" alt-text="Screenshot of the details pane for a specific user in a Microsoft Entra ID tenant with their unique 'Object ID' highlighted.":::
 
     > [!TIP]
-    > Record the value of the **Object ID** property. In this example, that value would be `aaaaaaaa-bbbb-cccc-1111-222222222222`. This value can then be used in various scripts to grant your current account role-based access control permissions to Azure resources.
+    > Record the value of the **Object ID** property. In this example, that value would be `aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb`. This value can then be used in various scripts to grant your current account role-based access control permissions to Azure resources.
 
 ::: zone-end
 

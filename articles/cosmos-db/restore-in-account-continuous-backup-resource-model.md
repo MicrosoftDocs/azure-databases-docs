@@ -52,7 +52,7 @@ The following JSON is a sample MongoDB collection restore request in a subscript
         "resource": { 
             "id": "legacy-records-coll", 
             "restoreParameters": { 
-                "restoreSource": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.DocumentDB/locations/westus/restorableDatabaseAccounts/abcd1234-d1c0-4645-a699-abcd1234", 
+                "restoreSource": "/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/providers/Microsoft.DocumentDB/locations/westus/restorableDatabaseAccounts/abcd1234-d1c0-4645-a699-abcd1234", 
                 "restoreTimestampInUtc": "2023-02-01T00:00:00Z"
       }         
     }     

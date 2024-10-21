@@ -186,7 +186,7 @@ Make sure <b>Vault access policy</b> is selected under Permission model and then
                     "type": "UserAssigned",
                     "userAssignedIdentities":
                     {
-                        "/subscriptions/04b0358b-392b-41d6-899e-b75cb292321e/resourcegroups/yogkuleuapcmkmarlintest/providers/Microsoft.ManagedIdentity/userAssignedIdentities/marlincmktesteus2euapuai1": {}
+                        "/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourcegroups/yogkuleuapcmkmarlintest/providers/Microsoft.ManagedIdentity/userAssignedIdentities/marlincmktesteus2euapuai1": {}
                     }
                 },
                 "location": "[parameters('location')]",
@@ -299,7 +299,7 @@ Encryption configuration can be changed from service-managed encryption to custo
                     "type": "UserAssigned",
                     "userAssignedIdentities":
                     {
-                        "/subscriptions/04b0358b-392b-41d6-899e-b75cb292321e/resourcegroups/yogkuleuapcmkmarlintest/providers/Microsoft.ManagedIdentity/userAssignedIdentities/marlincmktesteus2euapuai1": {}
+                        "/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourcegroups/yogkuleuapcmkmarlintest/providers/Microsoft.ManagedIdentity/userAssignedIdentities/marlincmktesteus2euapuai1": {}
                     }
                 },
                 "properties": {

@@ -278,7 +278,7 @@ When the Azure Cosmos DB account is created, the Azure CLI shows information sim
 {
   "databaseAccountOfferType": "Standard",
   "documentEndpoint": "https://<cosmosdb-name>.documents.azure.com:443/",
-  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Document
+  "id": "/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/myResourceGroup/providers/Microsoft.Document
 DB/databaseAccounts/<cosmosdb-name>",
   "kind": "MongoDB",
   "location": "West Europe",

@@ -74,7 +74,7 @@ Blob Storage into Azure Cosmos DB for PostgreSQL.
          "EventEnqueuedUtcTime": "2022-04-25T13:49:12.1820000Z",
          "IoTHub": {
            "MessageId": null,
-           "CorrelationId": "990407b8-4332-4cb6-a8f4-d47f304397d8",
+           "CorrelationId": "aaaa0000-bb11-2222-33cc-444444dddddd",
            "ConnectionDeviceId": "sim000001",
            "ConnectionDeviceGenerationId": "637842405470327268",
            "EnqueuedTime": "2022-04-25T13:49:11.7060000Z"
