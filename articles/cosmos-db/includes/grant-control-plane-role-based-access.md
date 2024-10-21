@@ -222,7 +222,7 @@ AssignableScopes : {/}
         "/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourcegroups/msdocs-identity-example"
       ],
       "description": "Can perform all control plane actions for an Azure Cosmos DB account.",
-      "id": "/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourcegroups/msdocs-identity-example/providers/Microsoft.Authorization/roleDefinitions/e4e4e4e4-ffff-aaaa-bbbb-c5c5c5c5c5c5",
+      "id": "/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourcegroups/msdocs-identity-example/providers/Microsoft.Authorization/roleDefinitions/ffffffff-eeee-dddd-cccc-bbbbbbbbbbb0",
       "name": "e4e4e4e4-ffff-aaaa-bbbb-c5c5c5c5c5c5",
       "permissions": [
         {
@@ -237,7 +237,7 @@ AssignableScopes : {/}
     ```
 
     > [!NOTE]
-    > In this example, the `id` value would be `/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourcegroups/msdocs-identity-example/providers/Microsoft.Authorization/roleDefinitions/e4e4e4e4-ffff-aaaa-bbbb-c5c5c5c5c5c5`. This example uses fictitious data and your identifier would be distinct from this example. This is a subset of the typical JSON outputted from the deployment for clarity.
+    > In this example, the `id` value would be `/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourcegroups/msdocs-identity-example/providers/Microsoft.Authorization/roleDefinitions/ffffffff-eeee-dddd-cccc-bbbbbbbbbbb0`. This example uses fictitious data and your identifier would be distinct from this example. This is a subset of the typical JSON outputted from the deployment for clarity.
 
 ::: zone-end
 
@@ -297,7 +297,7 @@ AssignableScopes : {/}
         "outputs": {
           "definitionId": {
             "type": "String",
-            "value": "/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourcegroups/msdocs-identity-example/providers/Microsoft.Authorization/roleDefinitions/e4e4e4e4-ffff-aaaa-bbbb-c5c5c5c5c5c5"
+            "value": "/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourcegroups/msdocs-identity-example/providers/Microsoft.Authorization/roleDefinitions/ffffffff-eeee-dddd-cccc-bbbbbbbbbbb0"
           }
         }
       }
@@ -305,7 +305,7 @@ AssignableScopes : {/}
     ```
 
     > [!NOTE]
-    > In this example, the `id` value would be `/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourcegroups/msdocs-identity-example/providers/Microsoft.Authorization/roleDefinitions/e4e4e4e4-ffff-aaaa-bbbb-c5c5c5c5c5c5`. This example uses fictitious data and your identifier would be distinct from this example. This is a subset of the typical JSON outputted from the deployment for clarity.
+    > In this example, the `id` value would be `/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourcegroups/msdocs-identity-example/providers/Microsoft.Authorization/roleDefinitions/ffffffff-eeee-dddd-cccc-bbbbbbbbbbb0`. This example uses fictitious data and your identifier would be distinct from this example. This is a subset of the typical JSON outputted from the deployment for clarity.
 
 ::: zone-end
 
@@ -450,29 +450,29 @@ Now, assign the newly defined role to an identity so that your applications can 
     ```azurecli-interactive
     az role assignment create \
         --assignee "<your-principal-identifier>" \
-        --role "subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourcegroups/msdocs-identity-example/providers/Microsoft.Authorization/roleDefinitions/e4e4e4e4-ffff-aaaa-bbbb-c5c5c5c5c5c5" \
+        --role "subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourcegroups/msdocs-identity-example/providers/Microsoft.Authorization/roleDefinitions/ffffffff-eeee-dddd-cccc-bbbbbbbbbbb0" \
         --scope "/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourcegroups/msdocs-identity-example"
     ```
 
     > [!NOTE]
-    > In this example command, the `scope` was set to the fictitious example `/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourcegroups/msdocs-identity-example` from the previous step's example. Your resource group's identifier would be distinct from this example. The `role` was also set to the fictitious `/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourcegroups/msdocs-identity-example/providers/Microsoft.Authorization/roleDefinitions/e4e4e4e4-ffff-aaaa-bbbb-c5c5c5c5c5c5`. Again, your role identifier would be distinct.
+    > In this example command, the `scope` was set to the fictitious example `/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourcegroups/msdocs-identity-example` from the previous step's example. Your resource group's identifier would be distinct from this example. The `role` was also set to the fictitious `/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourcegroups/msdocs-identity-example/providers/Microsoft.Authorization/roleDefinitions/ffffffff-eeee-dddd-cccc-bbbbbbbbbbb0`. Again, your role identifier would be distinct.
 
 1. Observe the output from the command. The output includes a unique identifier for the assignment in the `id` property.
 
     ```json
     {
-      "id": "/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourcegroups/msdocs-identity-example/providers/Microsoft.Authorization/roleAssignments/ffffffff-5555-6666-7777-aaaaaaaaaaaa",
+      "id": "/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourcegroups/msdocs-identity-example/providers/Microsoft.Authorization/roleAssignments/ffffffff-eeee-dddd-cccc-bbbbbbbbbbb0",
       "name": "ffffffff-5555-6666-7777-aaaaaaaaaaaa",
-      "principalId": "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb",
+      "principalId": "aaaaaaaa-bbbb-cccc-1111-222222222222",
       "resourceGroup": "msdocs-identity-example",
-      "roleDefinitionId": "/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourcegroups/msdocs-identity-example/providers/Microsoft.Authorization/roleDefinitions/e4e4e4e4-ffff-aaaa-bbbb-c5c5c5c5c5c5",
+      "roleDefinitionId": "/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourcegroups/msdocs-identity-example/providers/Microsoft.Authorization/roleDefinitions/ffffffff-eeee-dddd-cccc-bbbbbbbbbbb0",
       "scope": "/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourcegroups/msdocs-identity-example",
       "type": "Microsoft.Authorization/roleAssignments"
     }
     ```
 
     > [!NOTE]
-    > In this example, the `id` property is `/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourcegroups/msdocs-identity-example/providers/Microsoft.Authorization/roleAssignments/ffffffff-5555-6666-7777-aaaaaaaaaaaa` which is another fictitious example.
+    > In this example, the `id` property is `/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourcegroups/msdocs-identity-example/providers/Microsoft.Authorization/roleAssignments/ffffffff-eeee-dddd-cccc-bbbbbbbbbbb0` which is another fictitious example.
 
 1. Repeat these steps to grant access to the account from any other identities you would like to use.
 
@@ -580,7 +580,7 @@ Now, assign the newly defined role to an identity so that your applications can 
 
     ```output
     RoleAssignmentName : ffffffff-5555-6666-7777-aaaaaaaaaaaa
-    RoleAssignmentId   : /subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourcegroups/msdocs-identity-example/providers/Microsoft.Authorization/roleAssignments/ffffffff-5555-6666-7777-aaaaaaaaaaaa
+    RoleAssignmentId   : /subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourcegroups/msdocs-identity-example/providers/Microsoft.Authorization/roleAssignments/ffffffff-eeee-dddd-cccc-bbbbbbbbbbb0
     Scope              : /subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourcegroups/msdocs-identity-example
     DisplayName        : Kai Carter
     SignInName         : <kai@adventure-works.com>
@@ -589,7 +589,7 @@ Now, assign the newly defined role to an identity so that your applications can 
     ```
 
     > [!NOTE]
-    > In this example, the `RoleAssignmentId` property is `/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourcegroups/msdocs-identity-example/providers/Microsoft.Authorization/roleAssignments/ffffffff-5555-6666-7777-aaaaaaaaaaaa` which is another fictitious example. This is a subset of the typical output of the deployment for clarity.
+    > In this example, the `RoleAssignmentId` property is `/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourcegroups/msdocs-identity-example/providers/Microsoft.Authorization/roleAssignments/ffffffff-eeee-dddd-cccc-bbbbbbbbbbb0` which is another fictitious example. This is a subset of the typical output of the deployment for clarity.
 
 1. Repeat these steps to grant access to the account from any other identities you would like to use.
 
