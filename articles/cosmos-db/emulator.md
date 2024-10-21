@@ -57,6 +57,131 @@ Every request made against the emulator must be authenticated using a key over T
 
 In some cases, you may wish to manually import the TLS/SS certificate from the emulator's running container into your host machine. This step avoids bad practices like disabling TLS/SSL validation in the SDK. For more information, see [import certificate](how-to-develop-emulator.md#import-the-emulators-tlsssl-certificate).
 
+## Linux based V2 Emulator (Preview)
+
+The next generation of the Azure Cosmos DB Emulator is entirely linux based. As such, it supports running on Apple silicon series or Microsoft ARM chip, without requiring any workarounds to install a Windows virtual machine.
+
+### Components
+
+* **Data explorer** - interactively explore the data in the emulator. By default this runs on port 1234, e.g. https://localhost:1234.
+* **Cosmos DB emulator** - a local version of the Cosmos DB database service.By default, this runs on port 8081, e.g. https://localhost:8081.
+
+### Prerequisites
+
+The v2 emulator is provided as a docker container. You must have [docker](https://www.docker.com/) installed in your operating system. 
+
+### Installation
+
+Execute the following to download the docker image:
+
+```shell
+docker pull docker pull microsoft/azure-cosmosdb-emulator:2.0
+```
+
+### Running
+
+To run the container, execute the below:
+
+```shell
+docker run -d -p 8081:8081 -p 1234:1234 docker pull microsoft/azure-cosmosdb-emulator:2.0
+```
+
+Check the image is running:
+
+```shell
+docker ps
+```
+
+You should see an output like the below. 
+
+```shell
+CONTAINER ID   IMAGE                                                             COMMAND                  CREATED         STATUS         PORTS                                                                                  NAMES
+c1bb8cf53f8a   microsoft/azure-cosmosdb-emulator:2.0   "/bin/bash -c /home/…"   5 seconds ago   Up 5 seconds   0.0.0.0:1234->1234/tcp, :::1234->1234/tcp, 0.0.0.0:8081->8081/tcp, :::8081->8081/tcp   wonderful_tu
+```
+
+This will start the Cosmos DB server on port 8081 and the data explorer on port 1234. Copy `https://localhost:1234` into your browser to access the data explorer. It may take a few seconds for data explorer to come up. The gatewat endpoint should be available immediately. 
+
+> [!IMPORTANT] This version of the emulator currently supports [gateway mode](https://learn.microsoft.com/azure/cosmos-db/nosql/sdk-connection-modes#available-connectivity-modes) only, with a select subset of features (see [below](#feature-support-matrix)).
+
+
+### HTTP support
+
+By default, the V2 emulator runs on standard https port 443 using a self-signed certificat. However, you can disable this and run with http, e.g. http://localhost:8081. To disable https and run in http mode, start the container using the below command:
+
+```shell
+docker run -d  -p 8081:8081 -p 1234:1234 -e GATEWAY_TLS_ENABLED="False"   microsoft/azure-cosmosdb-emulator:2.0
+```
+
+We support the following environment variables. Specify with `-e`, for example: `-e GATEWAY_TLS_ENABLED="True"`:
+
+| Environment Variable     | Description                              |
+|--------------------------|------------------------------------------|
+| `GATEWAY_TLS_ENABLED`    | Enable TLS for the gateway (True/False)  |
+| `GATEWAY_CERTIFICATE_PATH`      | path to a user supplied  certificate in pfx format  |
+| `GATEWAY_CERTIFICATE_PASSWORD` | password for that certificate    |
+
+Feel free to add issues to this repo and we'll investigate!
+
+### Feature support matrix
+
+The V2 emulator is a re-architecture based on Linux. As a result, not all features are supported, and some features will also not be supported in the future. The below table shows the current status of key feature support.
+
+| Test Name                                      | Status                   |
+|------------------------------------------------|--------------------------|
+| CreateDatabase                                 | Supported                |
+| ReadDatabase                                   | Supported                |
+| DeleteDatabase                                 | Supported                |
+| ReadDatabaseFeed                               | Supported                |
+| CreateDatabaseTwiceConflict                    | Supported but untested   |
+| CreateCollection                               | Supported                |
+| ReadCollection                                 | Supported                |
+| UpdateCollection                               | Supported                |
+| DeleteCollection                               | Supported                |
+| ReadCollectionFeed                             | Supported                |
+| CreateCollectionTwiceConflict                  | Supported but untested   |
+| CreateCollectionWithCustomIndexPolicy          | Supported but untested   |
+| CreateCollectionWithTtlExpiration              | Supported but untested   |
+| CreatePartitionedCollection                    | Supported but untested   |
+| GetAndChangeCollectionPerformance              | Supported but untested   |
+| CreateDocument                                 | Supported                |
+| ReadDocument                                   | Supported                |
+| UpdateDocument                                 | Supported                |
+| Delete Document                                | Supported                |
+| ReadDocumentFeed                               | Supported                |
+| InsertLargeDocument                            | Supported but untested   |
+| CreateAndReadDocumentWithUTFData               | Supported but untested   |
+| QueryWithSqlQuerySpec                          | Supported but untested   |
+| QueryWithEquality                              | Supported but untested   |
+| QueryWithAndFilterAndProjection                | Not yet implemented      |
+| QueryWithAndFilter                             | Not yet implemented      |
+| QueryWithEqualsOnId                            | Supported but untested   |
+| QueryWithInequality                            | Not yet implemented      |
+| QueryWithRangeOperatorsOnNumbers               | Not yet implemented      |
+| QueryWithRangeOperatorsOnStrings               | Not yet implemented      |
+| QueryWithRangeOperatorsDateTimes               | Not yet implemented      |
+| QueryWithOrderBy                               | Supported but untested   |
+| QueryWithOrderByNumbers                        | Supported but untested   |
+| QueryWithOrderByStrings                        | Not yet implemented      |
+| QueryWithAggregates                            | Not yet implemented      |
+| QueryWithSubdocuments                          | Not yet implemented      |
+| QueryWithJoins                                 | Not yet implemented      |
+| QueryWithTwoJoins                              | Not yet implemented      |
+| QueryWithTwoJoinsAndFilter                     | Not yet implemented      |
+| QueryWithSingleJoin                            | Not yet implemented      |
+| QueryWithStringMathAndArrayOperators           | Not yet implemented      |
+| QueryWithPaging                                | Not yet implemented      |
+| QueryPartitionedCollectionInParallel           | Not yet implemented      |
+| QueryWithOrderByForPartitionedCollection       | Not yet implemented      |
+| CreateStoredProcedure                          | Will not be supported    |
+| ExecuteStoredProcedure                         | Will not be supported    |
+| DeleteStoredProcedure                          | Will not be supported    |
+| ReplaceStoredProcedure                         | Will not be supported    |
+| ReadStoredProcedureFeed                        | Will not be supported    |
+
+## Raising issues
+
+If you encounter issues with using this version of the emulator, please open an issue in the repo [here](https://github.com/Azure/azure-cosmos-db-emulator-docker).
+
 ## Next step
 
 > [!div class="nextstepaction"]
