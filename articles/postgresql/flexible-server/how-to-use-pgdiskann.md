@@ -86,7 +86,7 @@ SET diskann.l_value_is = 100;
 SELECT * FROM my_table ORDER BY embedding <=> '[1,2,3]' LIMIT 5; -- uses 100 candidates
 ```
 
-Postgres will automatically decide when to use the DiskANN index. If there are sceanrios you always want to use the index, use the following command:
+Postgres will automatically decide when to use the DiskANN index. If there are scenarios you always want to use the index, use the following command:
 ```sql
 SET LOCAL enable_seqscan TO OFF;
 SELECT * FROM my_table ORDER BY embedding <=> '[1,2,3]' LIMIT 5; -- forces the use of index
