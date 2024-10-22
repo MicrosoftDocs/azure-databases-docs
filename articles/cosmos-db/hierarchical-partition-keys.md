@@ -290,7 +290,7 @@ UserSession item = new UserSession()
 {
     id = "f7da01b0-090b-41d2-8416-dacae09fbb4a",
     TenantId = "Microsoft",
-    UserId = "8411f20f-be3e-416a-a3e7-dcd5a3c1f28b",
+    UserId = "00aa00aa-bb11-cc22-dd33-44ee44ee44ee",
     SessionId = "0000-11-0000-1111"
 };
 
@@ -305,7 +305,7 @@ ItemResponse<UserSession> createResponse = await container.CreateItemAsync(item)
 UserSession item = new UserSession();
 item.setId("f7da01b0-090b-41d2-8416-dacae09fbb4a");
 item.setTenantId("Microsoft");
-item.setUserId("8411f20f-be3e-416a-a3e7-dcd5a3c1f28b");
+item.setUserId("00aa00aa-bb11-cc22-dd33-44ee44ee44ee");
 item.setSessionId("0000-11-0000-1111");
    
 // Pass in the object, and the SDK automatically extracts the full partition key path
@@ -319,7 +319,7 @@ Mono<CosmosItemResponse<UserSession>> createResponse = container.createItem(item
 const item: UserSession = {
     Id: 'f7da01b0-090b-41d2-8416-dacae09fbb4a',
     TenantId: 'Microsoft',
-    UserId: '8411f20f-be3e-416a-a3e7-dcd5a3c1f28b',
+    UserId: '00aa00aa-bb11-cc22-dd33-44ee44ee44ee',
     SessionId: '0000-11-0000-1111'
 }
 
@@ -334,7 +334,7 @@ const { resource: document } = await = container.items.create(item);
 # specify values for all fields on partition key path
 item_definition = {'id': 'f7da01b0-090b-41d2-8416-dacae09fbb4a',
                         'tenantId': 'Microsoft',
-                        'userId': '8411f20f-be3e-416a-a3e7-dcd5a3c1f28b',
+                        'userId': '00aa00aa-bb11-cc22-dd33-44ee44ee44ee',
                         'sessionId': '0000-11-0000-1111'}
 
 item = container.create_item(body=item_definition)
@@ -356,7 +356,7 @@ PaymentEvent item = new PaymentEvent()
 {
     id = Guid.NewGuid().ToString(),
     TenantId = "Microsoft",
-    UserId = "8411f20f-be3e-416a-a3e7-dcd5a3c1f28b",
+    UserId = "00aa00aa-bb11-cc22-dd33-44ee44ee44ee",
     SessionId = "0000-11-0000-1111"
 };
 
@@ -377,7 +377,7 @@ ItemResponse<PaymentEvent> createResponse = await container.CreateItemAsync(item
 // Create a new item object
 UserSession item = new UserSession();
 item.setTenantId("Microsoft");
-item.setUserId("8411f20f-be3e-416a-a3e7-dcd5a3c1f28b");
+item.setUserId("00aa00aa-bb11-cc22-dd33-44ee44ee44ee");
 item.setSessionId("0000-11-0000-1111");
 item.setId(UUID.randomUUID().toString());
 
@@ -398,7 +398,7 @@ Mono<CosmosItemResponse<UserSession>> createResponse = container.createItem(item
 const item: UserSession = {
     Id: 'f7da01b0-090b-41d2-8416-dacae09fbb4a',
     TenantId: 'Microsoft',
-    UserId: '8411f20f-be3e-416a-a3e7-dcd5a3c1f28b',
+    UserId: '00aa00aa-bb11-cc22-dd33-44ee44ee44ee',
     SessionId: '0000-11-0000-1111'
 }
 
@@ -421,7 +421,7 @@ For python, just make sure that values for all the fields in the partition key p
 # specify values for all fields on partition key path
 item_definition = {'id': 'f7da01b0-090b-41d2-8416-dacae09fbb4a',
                         'tenantId': 'Microsoft',
-                        'userId': '8411f20f-be3e-416a-a3e7-dcd5a3c1f28b',
+                        'userId': '00aa00aa-bb11-cc22-dd33-44ee44ee44ee',
                         'sessionId': '0000-11-0000-1111'}
 
 item = container.create_item(body=item_definition)
@@ -441,7 +441,7 @@ string id = "f7da01b0-090b-41d2-8416-dacae09fbb4a";
 // Build the full partition key path
 PartitionKey partitionKey = new PartitionKeyBuilder()
     .Add("Microsoft") //TenantId
-    .Add("8411f20f-be3e-416a-a3e7-dcd5a3c1f28b") //UserId
+    .Add("00aa00aa-bb11-cc22-dd33-44ee44ee44ee") //UserId
     .Add("0000-11-0000-1111") //SessionId
     .Build();
 
@@ -461,7 +461,7 @@ String id = "f7da01b0-090b-41d2-8416-dacae09fbb4a";
 // Build the full partition key path
 PartitionKey partitionKey = new PartitionKeyBuilder()
     .add("Microsoft") //TenantId
-    .add("8411f20f-be3e-416a-a3e7-dcd5a3c1f28b") //UserId
+    .add("00aa00aa-bb11-cc22-dd33-44ee44ee44ee") //UserId
     .add("0000-11-0000-1111") //SessionId
     .build();
     
@@ -489,7 +489,7 @@ const { resource: document } = await container.item(id, partitionKey).read();
 
 ```python
 item_id = "f7da01b0-090b-41d2-8416-dacae09fbb4a"
-pk = ["Microsoft", "8411f20f-be3e-416a-a3e7-dcd5a3c1f28b", "0000-11-0000-1111"]
+pk = ["Microsoft", "00aa00aa-bb11-cc22-dd33-44ee44ee44ee", "0000-11-0000-1111"]
 container.read_item(item=item_id, partition_key=pk)
 ```
 ---
@@ -504,10 +504,10 @@ For example, consider a hierarchical partition key that's composed of `TenantId`
 
 | Query | Routing |
 | --- | --- |
-| `SELECT * FROM c WHERE c.TenantId = 'Microsoft' AND c.UserId = '8411f20f-be3e-416a-a3e7-dcd5a3c1f28b' AND c.SessionId = '0000-11-0000-1111'` | Routed to the **single logical and physical partition** that contains the data for the specified values of `TenantId`, `UserId`, and `SessionId`. |
-| `SELECT * FROM c WHERE c.TenantId = 'Microsoft' AND c.UserId = '8411f20f-be3e-416a-a3e7-dcd5a3c1f28b'` | Routed to only the **targeted subset of logical and physical partition(s)** that contain data for the specified values of `TenantId` and `UserId`. This query is a targeted cross-partition query that returns data for a specific user in the tenant. |
+| `SELECT * FROM c WHERE c.TenantId = 'Microsoft' AND c.UserId = '00aa00aa-bb11-cc22-dd33-44ee44ee44ee' AND c.SessionId = '0000-11-0000-1111'` | Routed to the **single logical and physical partition** that contains the data for the specified values of `TenantId`, `UserId`, and `SessionId`. |
+| `SELECT * FROM c WHERE c.TenantId = 'Microsoft' AND c.UserId = '00aa00aa-bb11-cc22-dd33-44ee44ee44ee'` | Routed to only the **targeted subset of logical and physical partition(s)** that contain data for the specified values of `TenantId` and `UserId`. This query is a targeted cross-partition query that returns data for a specific user in the tenant. |
 | `SELECT * FROM c WHERE c.TenantId = 'Microsoft'` | Routed to only the **targeted subset of logical and physical partition(s)** that contain data for the specified value of `TenantId`. This query is a targeted cross-partition query that returns data for all users in a tenant. |
-| `SELECT * FROM c WHERE c.UserId = '8411f20f-be3e-416a-a3e7-dcd5a3c1f28b'` | Routed to **all physical partitions**, resulting in a fan-out cross-partition query. |
+| `SELECT * FROM c WHERE c.UserId = '00aa00aa-bb11-cc22-dd33-44ee44ee44ee'` | Routed to **all physical partitions**, resulting in a fan-out cross-partition query. |
 | `SELECT * FROM c WHERE c.SessionId = '0000-11-0000-1111'` | Routed to **all physical partitions**, resulting in a fan-out cross-partition query. |
 
 #### Single-partition query on a subpartitioned container
@@ -521,7 +521,7 @@ Here's an example of running a query that includes all the levels of subpartitio
 QueryDefinition query = new QueryDefinition(
     "SELECT * FROM c WHERE c.TenantId = @tenant-id AND c.UserId = @user-id AND c.SessionId = @session-id")
     .WithParameter("@tenant-id", "Microsoft")
-    .WithParameter("@user-id", "8411f20f-be3e-416a-a3e7-dcd5a3c1f28b")
+    .WithParameter("@user-id", "00aa00aa-bb11-cc22-dd33-44ee44ee44ee")
     .WithParameter("@session-id", "0000-11-0000-1111");
 
 // Retrieve an iterator for the result set
@@ -544,7 +544,7 @@ while (results.HasMoreResults)
 String query = String.format(
     "SELECT * FROM c WHERE c.TenantId = '%s' AND c.UserId = '%s' AND c.SessionId = '%s'",
     "Microsoft",
-    "8411f20f-be3e-416a-a3e7-dcd5a3c1f28b",
+    "00aa00aa-bb11-cc22-dd33-44ee44ee44ee",
     "0000-11-0000-1111"
 );
 
@@ -563,7 +563,7 @@ pagedResponse.byPage().flatMap(fluxResponse -> {
 
 ```javascript
 // Define a single-partition query that specifies the full partition key path
-const query: string = "SELECT * FROM c WHERE c.TenantId = 'Microsoft' AND c.UserId = '8411f20f-be3e-416a-a3e7-dcd5a3c1f28b' AND c.SessionId = '0000-11-0000-1111'";
+const query: string = "SELECT * FROM c WHERE c.TenantId = 'Microsoft' AND c.UserId = '00aa00aa-bb11-cc22-dd33-44ee44ee44ee' AND c.SessionId = '0000-11-0000-1111'";
 
 // Retrieve an iterator for the result set
 const queryIterator = container.items.query(query);
@@ -577,7 +577,7 @@ while (queryIterator.hasMoreResults()) {
 #### [Python SDK](#tab/python)
 
 ```python
-pk = ["Microsoft", "8411f20f-be3e-416a-a3e7-dcd5a3c1f28b", "0000-11-0000-1111"]
+pk = ["Microsoft", "00aa00aa-bb11-cc22-dd33-44ee44ee44ee", "0000-11-0000-1111"]
 items = list(container.query_items(
     query="SELECT * FROM r WHERE r.tenantId=@tenant_id and r.userId=@user_id and r.sessionId=@session_id",
     parameters=[
@@ -654,7 +654,7 @@ while (queryIterator.hasMoreResults()) {
 #### [Python SDK](#tab/python)
 
 ```python
-pk = ["Microsoft", "8411f20f-be3e-416a-a3e7-dcd5a3c1f28b", "0000-11-0000-1111"]
+pk = ["Microsoft", "00aa00aa-bb11-cc22-dd33-44ee44ee44ee", "0000-11-0000-1111"]
 # enable_cross_partition_query should be set to True as the container is partitioned
 items = list(container.query_items(
     query="SELECT * FROM r WHERE r.tenantId=@tenant_id and r.userId=@user_id",

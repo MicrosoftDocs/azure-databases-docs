@@ -86,7 +86,7 @@ Create a new Azure service with a system-assigned managed identity. This section
 
     ```json
     {
-      "principalId": "bbbbbbbb-1111-2222-3333-cccccccccccc",
+      "principalId": "aaaaaaaa-bbbb-cccc-1111-222222222222",
       "tenantId": "aaaabbbb-0000-cccc-1111-dddd2222eeee",
       "type": "SystemAssigned",
       "userAssignedIdentities": null
@@ -165,7 +165,7 @@ Create a new Azure service with a system-assigned managed identity. This section
 
     ```json
     {
-      "principalId": "bbbbbbbb-1111-2222-3333-cccccccccccc",
+      "principalId": "aaaaaaaa-bbbb-cccc-1111-222222222222",
       "tenantId": "aaaabbbb-0000-cccc-1111-dddd2222eeee",
       "type": "SystemAssigned"
     }
@@ -268,7 +268,7 @@ Create a new Azure service with a system-assigned managed identity. This section
 
     ```output
     Identity : {
-                 "principalId": "bbbbbbbb-1111-2222-3333-cccccccccccc",
+                 "principalId": "aaaaaaaa-bbbb-cccc-1111-222222222222",
                  "tenantId": "aaaabbbb-0000-cccc-1111-dddd2222eeee",
                  "type": "SystemAssigned"
                }

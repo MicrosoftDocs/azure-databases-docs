@@ -49,8 +49,8 @@ ms.topic: include
 | Description    | Multiple of work_mem to use for hash tables.                                                                                                                                        |
 | Data type      | numeric     |
 | Default value  | `2`                                                                        |
-| Allowed values | `2`              |
-| Parameter type | read-only      |
+| Allowed values | `1-1000`         |
+| Parameter type | dynamic        |
 | Documentation  | [hash_mem_multiplier](https://www.postgresql.org/docs/16/runtime-config-resource.html#GUC-HASH-MEM-MULTIPLIER)               |
 
 
@@ -222,6 +222,23 @@ ms.topic: include
 | Allowed values | `100-1073741823` |
 | Parameter type | dynamic        |
 | Documentation  | [temp_buffers](https://www.postgresql.org/docs/16/runtime-config-resource.html#GUC-TEMP-BUFFERS)                             |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### vacuum_buffer_usage_limit
+
+| Attribute      | Value                                                      |
+|----------------|------------------------------------------------------------|
+| Category       | Resource Usage / Memory |
+| Description    | Sets the buffer pool size for VACUUM, ANALYZE, and autovacuum.                                                                                                                      |
+| Data type      | integer     |
+| Default value  | `256`                                                                      |
+| Allowed values | `0-16777216`     |
+| Parameter type | dynamic        |
+| Documentation  | [vacuum_buffer_usage_limit](https://www.postgresql.org/docs/16/runtime-config-resource.html#GUC-VACUUM-BUFFER-USAGE-LIMIT)   |
 
 
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]

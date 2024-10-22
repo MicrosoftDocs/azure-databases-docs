@@ -61,13 +61,13 @@ Here's a document with nested JSON:
 
 In this case, the ``sku``, ``colors``, and ``sizes`` properties are all nested within the ``metadata`` property. The ``name`` property is also nested within the ``manufacturer`` property.
 
-This first example projects two nested properties.
+This first example projects three nested properties.
 
 ```nosql
 SELECT
-    p.name,
+    p.manufacturer.name,
     p.metadata.sku,
-    p.sizes.small.inches AS size
+    p.metadata.sizes.small.inches AS size
 FROM
     products p
 ```
@@ -75,8 +75,9 @@ FROM
 ```json
 [
   {
-    "name": "Teapo rainbow surfboard",
-    "sku": "72109"
+    "name": "AdventureWorks",
+    "sku": "72109",
+    "size": 76
   }
 ]
 ```

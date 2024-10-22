@@ -49,15 +49,15 @@ If you have multiple subscriptions, select the subscription in which you want th
 az account set --subscription <subscription ID>
 ```
 
-## Create an Azure Database for MySQL flexible server
+## Create an Azure Database for MySQL Flexible Server
 
-Create an [Azure resource group](/azure/azure-resource-manager/management/overview) by using the `az group create` command. Then create your Azure Database for MySQL flexible server inside the resource group. Be sure to provide a unique name. The following example creates a resource group named `myresourcegroup` in the `eastus2` location.
+Create an [Azure resource group](/azure/azure-resource-manager/management/overview) by using the `az group create` command. Then create your Azure Database for MySQL Flexible Server inside the resource group. Be sure to provide a unique name. The following example creates a resource group named `myresourcegroup` in the `eastus2` location.
 
 ```azurecli-interactive
 az group create --name myresourcegroup --location eastus2
 ```
 
-Create an Azure Database for MySQL flexible server by using the `az mysql flexible-server create` command. A server can contain multiple databases. The following command creates a server by using service defaults and values from the local context of the Azure CLI:
+Create an Azure Database for MySQL Flexible Server by using the `az mysql flexible-server create` command. A server can contain multiple databases. The following command creates a server by using service defaults and values from the local context of the Azure CLI:
 
 ```azurecli-interactive
 az mysql flexible-server create
@@ -199,13 +199,13 @@ To learn more about using `az mysql flexible-server connect`, see [Azure CLI con
 
 ## Connect by using the MySQL command-line client
 
-If you created your Azure Database for MySQL flexible server by using private access with virtual network integration, connect to your server from a resource that's in the same virtual network as your server. You can create a virtual machine and add it to the virtual network that was created when you created your Azure Database for MySQL - Flexible Server instance. To learn more, see [Configure private access](how-to-manage-virtual-network-portal.md).
+If you created your Azure Database for MySQL Flexible Server by using private access with virtual network integration, connect to your server from a resource that's in the same virtual network as your server. You can create a virtual machine and add it to the virtual network that was created when you created your Azure Database for MySQL - Flexible Server instance. To learn more, see [Configure private access](how-to-manage-virtual-network-portal.md).
 
 If you created your Azure Database for MySQL - Flexible Server instance by using public access (allowed IP addresses), you can add your local IP address to the list of firewall rules on your server. For detailed guidance, see [Create or manage firewall rules](how-to-manage-firewall-portal.md).
 
-To connect to the server from your local environment, you can use either [mysql.exe](https://dev.mysql.com/doc/refman/8.0/en/mysql.html) or [MySQL Workbench](./connect-workbench.md). Azure Database for MySQL - Flexible Server supports connecting your client applications to the Azure Database for MySQL - Flexible Server service by using Transport Layer Security (TLS), previously known as Secure Sockets Layer (SSL). TLS is an industry-standard protocol that ensures encrypted network connections between your database server and client applications, so you can adhere to compliance requirements. To connect by  using your Azure Database for MySQL flexible server, download the [public SSL certificate](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem) for certificate authority verification. To learn more about connecting by using encrypted connections or disabling SSL, see [Connect to Azure Database for MySQL - Flexible Server by using encrypted connections](how-to-connect-tls-ssl.md).
+To connect to the server from your local environment, you can use either [mysql.exe](https://dev.mysql.com/doc/refman/8.0/en/mysql.html) or [MySQL Workbench](./connect-workbench.md). Azure Database for MySQL - Flexible Server supports connecting your client applications to the Azure Database for MySQL - Flexible Server service by using Transport Layer Security (TLS), previously known as Secure Sockets Layer (SSL). TLS is an industry-standard protocol that ensures encrypted network connections between your database server and client applications, so you can adhere to compliance requirements. To connect by  using your Azure Database for MySQL Flexible Server, download the [public SSL certificate](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem) for certificate authority verification. To learn more about connecting by using encrypted connections or disabling SSL, see [Connect to Azure Database for MySQL - Flexible Server by using encrypted connections](how-to-connect-tls-ssl.md).
 
-The following example shows how to connect to your Azure Database for MySQL flexible server by using the MySQL command-line client tool. You can install the tool if it's not already installed. Download the DigiCertGlobalRootCA certificate that's required for SSL connections. Use the `--ssl-mode=REQUIRED` connection string setting to enforce TLS/SSL certificate verification. Pass the local certificate file path to the `--ssl-ca` parameter. Replace values with your actual server name and password.
+The following example shows how to connect to your Azure Database for MySQL Flexible Server by using the MySQL command-line client tool. You can install the tool if it's not already installed. Download the DigiCertGlobalRootCA certificate that's required for SSL connections. Use the `--ssl-mode=REQUIRED` connection string setting to enforce TLS/SSL certificate verification. Pass the local certificate file path to the `--ssl-ca` parameter. Replace values with your actual server name and password.
 
 ```bash
 sudo apt-get install mysql-client
@@ -213,16 +213,16 @@ wget --no-check-certificate https://dl.cacerts.digicert.com/DigiCertGlobalRootCA
 mysql -h mydemoserver.mysql.database.azure.com -u mydemouser -p --ssl-mode=REQUIRED --ssl-ca=DigiCertGlobalRootCA.crt.pem
 ```
 
-If you provisioned your Azure Database for MySQL flexible server by using public access, you can also use [Azure Cloud Shell](https://shell.azure.com/bash) to connect to your Azure Database for MySQL flexible server by using the preinstalled MySQL client.
+If you provisioned your Azure Database for MySQL Flexible Server by using public access, you can also use [Azure Cloud Shell](https://shell.azure.com/bash) to connect to your Azure Database for MySQL Flexible Server by using the preinstalled MySQL client.
 
-To use Azure Cloud Shell to connect to your Azure Database for MySQL flexible server, allow networking access from Azure Cloud Shell to your Azure Database for MySQL flexible server. To allow access, go to the Azure portal **Networking** pane for your Azure Database for MySQL flexible server. Under **Firewall**, select the **Allow public access from any Azure service within Azure to this server** checkbox as shown in the following screenshot. Then select **Save** to persist the setting.
+To use Azure Cloud Shell to connect to your Azure Database for MySQL Flexible Server, allow networking access from Azure Cloud Shell to your Azure Database for MySQL Flexible Server. To allow access, go to the Azure portal **Networking** pane for your Azure Database for MySQL Flexible Server. Under **Firewall**, select the **Allow public access from any Azure service within Azure to this server** checkbox as shown in the following screenshot. Then select **Save** to persist the setting.
 
-:::image type="content" source="./media/quickstart-create-server-portal/allow-access-to-any-azure-service.png" alt-text="Screenshot that shows how to grant Azure Cloud Shell access to an Azure Database for MySQL flexible server for public access network configuration.":::
+:::image type="content" source="./media/quickstart-create-server-portal/allow-access-to-any-azure-service.png" alt-text="Screenshot that shows how to grant Azure Cloud Shell access to an Azure Database for MySQL Flexible Server for public access network configuration.":::
 
 > [!NOTE]
 > Select **Allow public access from any Azure service within Azure to this server** only for development or testing. This setting configures the firewall to allow connections from IP addresses that are allocated to any Azure service or asset, including connections from other Azure subscriptions.
 
-Select **Try it** to open Azure Cloud Shell. In Cloud Shell, use the following commands to connect to your Azure Database for MySQL flexible server. Use your server name, username, and password in the command.
+Select **Try it** to open Azure Cloud Shell. In Cloud Shell, use the following commands to connect to your Azure Database for MySQL Flexible Server. Use your server name, username, and password in the command.
 
 ```azurecli-interactive
 wget --no-check-certificate https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem
@@ -230,11 +230,11 @@ mysql -h mydemoserver.mysql.database.azure.com -u mydemouser -p --ssl=true --ssl
 ```
 
 > [!IMPORTANT]
-> When you connect to your Azure Database for MySQL flexible server by using Cloud Shell, use the `--ssl=true` parameter. Do not use `--ssl-mode=REQUIRED`.
+> When you connect to your Azure Database for MySQL Flexible Server by using Cloud Shell, use the `--ssl=true` parameter. Do not use `--ssl-mode=REQUIRED`.
 >
 > The primary reason that this guidance is important is that Azure Cloud Shell is preinstalled with the *mysql.exe* client from the MariaDB distribution. The *mysql.exe* client requires the `--ssl` parameter. The MySQL client from the Oracle distribution requires the `--ssl-mode` parameter.
 >
-> If you see the following error message when you connect to your Azure Database for MySQL flexible server, either you didn't select the **Allow public access from any Azure service within Azure to this server** checkbox when you set up your firewall rules, or the option isn't saved. Set the firewall rules, and then try again.
+> If you see the following error message when you connect to your Azure Database for MySQL Flexible Server, either you didn't select the **Allow public access from any Azure service within Azure to this server** checkbox when you set up your firewall rules, or the option isn't saved. Set the firewall rules, and then try again.
 >
 > `ERROR 2002 (HY000): Can't connect to MySQL server on <servername> (115)`
 
