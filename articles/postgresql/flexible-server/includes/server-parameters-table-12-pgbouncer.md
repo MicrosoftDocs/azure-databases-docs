@@ -2,7 +2,7 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 09/26/2024
+ms.date: 10/22/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
@@ -20,7 +20,7 @@ ms.topic: include
 | Documentation  | [pgbouncer.default_pool_size](https://www.pgbouncer.org/config.html)                               |
 
 
-[!INCLUDE [server-parameters-azure-notes-pgbouncer-default-pool-size](./server-parameters-azure-notes-pgbouncer-default-pool-size.md)]
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
 
 
 
@@ -37,7 +37,7 @@ ms.topic: include
 | Documentation  | [pgbouncer.enabled](https://www.pgbouncer.org/config.html)                                         |
 
 
-[!INCLUDE [server-parameters-azure-notes-pgbouncer-enabled](./server-parameters-azure-notes-pgbouncer-enabled.md)]
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
 
 
 
@@ -54,7 +54,7 @@ ms.topic: include
 | Documentation  | [pgbouncer.ignore_startup_parameters](https://www.pgbouncer.org/config.html)                       |
 
 
-[!INCLUDE [server-parameters-azure-notes-pgbouncer-ignore-startup-parameters](./server-parameters-azure-notes-pgbouncer-ignore-startup-parameters.md)]
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
 
 
 
@@ -71,7 +71,7 @@ ms.topic: include
 | Documentation  | [pgbouncer.max_client_conn](https://www.pgbouncer.org/config.html)                                 |
 
 
-[!INCLUDE [server-parameters-azure-notes-pgbouncer-max-client-conn](./server-parameters-azure-notes-pgbouncer-max-client-conn.md)]
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
 
 
 
@@ -88,7 +88,7 @@ ms.topic: include
 | Documentation  | [pgbouncer.max_prepared_statements](https://www.pgbouncer.org/config.html#max_prepared_statements) |
 
 
-[!INCLUDE [server-parameters-azure-notes-pgbouncer-max-prepared-statements](./server-parameters-azure-notes-pgbouncer-max-prepared-statements.md)]
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
 
 
 
@@ -105,7 +105,7 @@ ms.topic: include
 | Documentation  | [pgbouncer.min_pool_size](https://www.pgbouncer.org/config.html)                                   |
 
 
-[!INCLUDE [server-parameters-azure-notes-pgbouncer-min-pool-size](./server-parameters-azure-notes-pgbouncer-min-pool-size.md)]
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
 
 
 
@@ -122,7 +122,7 @@ ms.topic: include
 | Documentation  | [pgbouncer.pool_mode](https://www.pgbouncer.org/config.html)                                       |
 
 
-[!INCLUDE [server-parameters-azure-notes-pgbouncer-pool-mode](./server-parameters-azure-notes-pgbouncer-pool-mode.md)]
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
 
 
 
@@ -139,7 +139,7 @@ ms.topic: include
 | Documentation  | [pgbouncer.query_wait_timeout](https://www.pgbouncer.org/config.html)                              |
 
 
-[!INCLUDE [server-parameters-azure-notes-pgbouncer-query-wait-timeout](./server-parameters-azure-notes-pgbouncer-query-wait-timeout.md)]
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
 
 
 
@@ -156,7 +156,7 @@ ms.topic: include
 | Documentation  | [pgbouncer.server_idle_timeout](https://www.pgbouncer.org/config.html)                             |
 
 
-[!INCLUDE [server-parameters-azure-notes-pgbouncer-server-idle-timeout](./server-parameters-azure-notes-pgbouncer-server-idle-timeout.md)]
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
 
 
 
@@ -173,7 +173,7 @@ ms.topic: include
 | Documentation  | [pgbouncer.stats_users](https://www.pgbouncer.org/config.html)                                     |
 
 
-[!INCLUDE [server-parameters-azure-notes-pgbouncer-stats-users](./server-parameters-azure-notes-pgbouncer-stats-users.md)]
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
 
 
 
