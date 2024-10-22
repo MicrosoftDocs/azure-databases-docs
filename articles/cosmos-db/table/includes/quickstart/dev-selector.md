@@ -2,7 +2,7 @@
 ms.service: azure-cosmos-db
 ms.subservice: table
 ms.topic: include
-ms.date: 10/21/2024
+ms.date: 10/23/2024
 ---
 
 > [!div class="op_single_selector"]
