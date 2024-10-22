@@ -55,7 +55,7 @@ This script uses the following commands. Each command in the table links to comm
 | [az cosmosdb keys list](/cli/azure/cosmosdb/keys#az-cosmosdb-keys-list) | List the keys for an Azure Cosmos DB account. |
 | [az cosmosdb keys list --type read-only-keys](/cli/azure/cosmosdb/keys#az-cosmosdb-keys-list) | List the read only keys for an Azure Cosmos DB account. |
 | [az cosmosdb keys list --type connection-strings](/cli/azure/cosmosdb/keys#az-cosmosdb-keys-list) | List the connection strings for an Azure Cosmos DB account. |
-| [az cosmosdb keys regenerate](/cli/azure/cosmosdb/keys#az-cosmosdb-keys-regenerate) | Regenerate an access key for a Azure Cosmos DB database account. |
+| [az cosmosdb keys regenerate](/cli/azure/cosmosdb/keys#az-cosmosdb-keys-regenerate) | Regenerate an access key for an Azure Cosmos DB database account. |
 | [az group delete](/cli/azure/resource#az-resource-delete) | Deletes a resource group including all nested resources. |
 
 ## Next steps
