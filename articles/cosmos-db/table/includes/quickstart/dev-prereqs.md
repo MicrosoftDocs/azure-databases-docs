@@ -2,7 +2,7 @@
 ms.service: azure-cosmos-db
 ms.subservice: table
 ms.topic: include
-ms.date: 10/22/2024
+ms.date: 10/23/2024
 zone_pivot_groups: azure-cosmos-db-quickstart-env
 ---
 
