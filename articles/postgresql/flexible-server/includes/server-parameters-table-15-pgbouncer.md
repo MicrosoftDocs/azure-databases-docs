@@ -173,7 +173,7 @@ ms.topic: include
 | Documentation  | [pgbouncer.stats_users](https://www.pgbouncer.org/config.html)                                     |
 
 
-[!INCLUDE [server-parameters-azure-notes-pgbouncer-stats-users](./server-parameters-azure-notes-pgbouncer-stats-user.md)]
+[!INCLUDE [server-parameters-azure-notes-pgbouncer-stats-users](./server-parameters-azure-notes-pgbouncer-stats-users.md)]
 
 
 
