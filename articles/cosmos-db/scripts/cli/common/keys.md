@@ -20,7 +20,7 @@ The script in this article demonstrates four operations.
 - List connection strings
 - Regenerate account keys
 
- This script uses a API for NoSQL account, but these operations are identical across all database APIs in Azure Cosmos DB.
+ This script shows Azure Cosmos DB for NoSQL examples, but these operations are identical across all database APIs in Azure Cosmos DB.
 
 [!INCLUDE [quickstarts-free-trial-note](~/reusable-content/ce-skilling/azure/includes/quickstarts-free-trial-note.md)]
 
