@@ -49,8 +49,7 @@ In cases where you have existing Azure Cosmos DB account and looking to add secu
 
 * Then select **Associate NSP** to associate this resource with your network security perimeter to enable communication with other Azure resources in the same perimeter while restricting public access to only allow the connections you specify.
 
-<!---## Next steps
-ToDO: Get aka.ms links from network team  and update
-* Overview of [network service perimeter](../private-link/network-security-perimeter-overview.md)
-* Learn to monitor with [diagnostic logs in network security perimeter](../private-link/network-security-perimeter-diagnostic-logs.md)
---->
+## Next steps
+
+* Overview of [network service perimeter](https://aka.ms/networksecurityperimeter)
+* Learn to monitor with [diagnostic logs in network security perimeter](https://aka.ms/networksecurityperimeter)
