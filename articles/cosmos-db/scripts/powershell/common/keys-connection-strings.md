@@ -1,5 +1,5 @@
 ---
-title: Work with account keys for an Azure Cosmos DB account
+title: PowerShell account keys for an Azure Cosmos DB account
 description: Azure PowerShell script sample - Account key and connection string operations for an Azure Cosmos DB account
 author: markjbrown
 ms.service: azure-cosmos-db
