@@ -16,7 +16,7 @@ The `$addToSet` operator adds elements to an array only if they don't already ex
 
 ## Syntax
 
-```json
+```javascript
 {
   $addToSet: { <field1>: <value1>, ... }
 }

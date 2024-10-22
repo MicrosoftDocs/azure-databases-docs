@@ -166,7 +166,7 @@ Content    : {
         "roleName": "Azure Cosmos DB for Table Data Plane Owner",
         "type": "CustomRole",
         "assignableScopes": [
-          "/subscriptions/5e6451f0-384a-4ec0-a4a1-bff59cf4837d/resourceGroups/sidandrews-rbac/providers/Microsoft.DocumentDB/databaseAccounts/sidandrews-rbac-table/"
+          "/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/sidandrews-rbac/providers/Microsoft.DocumentDB/databaseAccounts/sidandrews-rbac-table/"
         ],
         "permissions": [
           {
@@ -336,7 +336,7 @@ Content    : {
         roleName = "Azure Cosmos DB for Table Data Plane Owner"
         type = "CustomRole"
         assignableScopes = @(
-          "/subscriptions/5e6451f0-384a-4ec0-a4a1-bff59cf4837d/resourceGroups/sidandrews-rbac/providers/Microsoft.DocumentDB/databaseAccounts/sidandrews-rbac-table/"
+          "/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/sidandrews-rbac/providers/Microsoft.DocumentDB/databaseAccounts/sidandrews-rbac-table/"
         )
         permissions = @(
           @{

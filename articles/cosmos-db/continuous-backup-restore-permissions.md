@@ -44,9 +44,9 @@ To perform a restore, a user or a principal need the permission to restore (that
 
 |Scope  |Example  |
 |---------|---------|
-|Subscription | /subscriptions/00000000-0000-0000-0000-000000000000 |
-|Resource group | /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/Example-cosmosdb-rg |
-|CosmosDB restorable account resource | /subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.DocumentDB/locations/West US/restorableDatabaseAccounts/23e99a35-cd36-4df4-9614-f767a03b9995|
+|Subscription | /subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e |
+|Resource group | /subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/Example-cosmosdb-rg |
+|CosmosDB restorable account resource | /subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/providers/Microsoft.DocumentDB/locations/West US/restorableDatabaseAccounts/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e|
 
 The restorable account resource can be extracted from the output of the `az cosmosdb restorable-database-account list --account-name <accountname>` command in CLI or `Get-AzCosmosDBRestorableDatabaseAccount -DatabaseAccountName <accountname>` cmdlet in PowerShell. The name attribute in the output represents the `instanceID` of the restorable account. 
 
@@ -109,7 +109,7 @@ The RestorableAction below represents a custom role. You have to explicitly crea
 ```json
 {
   "assignableScopes": [
-    "/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744"
+    "/subscriptions/bbbb1b1b-cc2c-dd3d-ee4e-ffffff5f5f5f"
   ],
   "description": "Can do a restore request for any Azure Cosmos DB database account with continuous backup",
   "permissions": [

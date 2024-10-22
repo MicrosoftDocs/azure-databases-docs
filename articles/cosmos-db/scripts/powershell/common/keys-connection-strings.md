@@ -1,10 +1,10 @@
 ---
-title: PowerShell script to get key and connection string operations for an Azure Cosmos DB account
+title: PowerShell account keys for an Azure Cosmos DB account
 description: Azure PowerShell script sample - Account key and connection string operations for an Azure Cosmos DB account
 author: markjbrown
 ms.service: azure-cosmos-db
 ms.topic: sample
-ms.date: 03/18/2020
+ms.date: 10/22/2024
 ms.author: mjbrown
 ms.custom: devx-track-azurepowershell
 ---
