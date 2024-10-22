@@ -43,7 +43,7 @@ ms.date: 02/27/2024
 | Support for MongoDB multi-document ACID transactions | Yes, with [vCore-based Azure Cosmos DB for MongoDB](./vcore/introduction.md) | Yes | 
 | JSON data type support | BSON (Binary JSON) | BSON (Binary JSON) |
 | Support for MongoDB aggregation pipeline | Yes. Supporting MongoDB wire protocol v7, v6, and v5 in vCore and RU architectures.​ | Yes |
-| Maximum document size | 16 MB | 16 MB |
+| Maximum document size | 16 MB in vCore and RU architecture | 16 MB |
 | JSON schema for data governance controls | Currently in development | Yes |
 | Integrated text search | Yes | Yes |
 | Integrated querying of data in cloud object storage | Yes, with Synapse Link | Yes |
