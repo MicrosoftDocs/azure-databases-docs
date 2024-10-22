@@ -305,7 +305,7 @@ Consider the following query:
 ```sql
 SELECT location
 FROM location IN company.locations
-WHERE location.country = 'France'`
+WHERE location.country = 'France'
 ```
 
 The query predicate (filtering on items where any location has "France" as its country/region) would match the path highlighted in this diagram:
