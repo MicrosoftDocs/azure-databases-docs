@@ -73,7 +73,7 @@ The client library is available through NuGet, as the `Microsoft.Azure.Cosmos` p
 1. Also, install the `Azure.Identity` package if not already installed.
 
     ```bash
-    dotnet add package Azure.Identity --version 1.*
+    dotnet add package Azure.Identity --version 1.12.*
     ```
 
 1. Open and review the **src/web/Cosmos.Samples.Table.Quickstart.Web.csproj** file to validate that the `Azure.Data.Tables` and `Azure.Identity` entries both exist.
