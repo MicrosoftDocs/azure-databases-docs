@@ -1,12 +1,12 @@
 ---
-title: Work with account keys and connection strings for an Azure Cosmos DB account
-description: Work with account keys and connection strings for an Azure Cosmos DB account
+title: Work with account keys for an Azure Cosmos DB account
+description: Work with account keys and connection strings for an Azure Cosmos DB account including listing and regenerating
 author: markjbrown
 ms.author: mjbrown
 ms.service: azure-cosmos-db
 ms.custom: devx-track-azurecli
 ms.topic: sample
-ms.date: 02/21/2022
+ms.date: 10/22/2024
 ---
 
 # Work with account keys and connection strings for an Azure Cosmos DB account using Azure CLI
@@ -53,9 +53,9 @@ This script uses the following commands. Each command in the table links to comm
 | [az group create](/cli/azure/group#az-group-create) | Creates a resource group in which all resources are stored. |
 | [az cosmosdb create](/cli/azure/cosmosdb#az-cosmosdb-create) | Creates an Azure Cosmos DB account. |
 | [az cosmosdb keys list](/cli/azure/cosmosdb/keys#az-cosmosdb-keys-list) | List the keys for an Azure Cosmos DB account. |
-| [az cosmosdb list-read-only-keys](/cli/azure/cosmosdb#az-cosmosdb-list-read-only-keys) | List the read only keys for an Azure Cosmos DB account. |
-| [az cosmosdb list-connection-strings](/cli/azure/cosmosdb#az-cosmosdb-list-connection-strings) | List the connection strings for an Azure Cosmos DB account. |
-| [az cosmosdb regenerate-key](/cli/azure/cosmosdb#az-cosmosdb-regenerate-key) | Regenerate keys for an Azure Cosmos DB account. |
+| [az cosmosdb keys list --type read-only-keys](/cli/azure/cosmosdb/keys#az-cosmosdb-keys-list) | List the read only keys for an Azure Cosmos DB account. |
+| [az cosmosdb keys list --type connection-strings](/cli/azure/cosmosdb/keys#az-cosmosdb-keys-list) | List the connection strings for an Azure Cosmos DB account. |
+| [az cosmosdb keys regenerate](/cli/azure/cosmosdb/keys#az-cosmosdb-keys-regenerate) | Regenerate an access key for a Azure Cosmos DB database account. |
 | [az group delete](/cli/azure/resource#az-resource-delete) | Deletes a resource group including all nested resources. |
 
 ## Next steps
