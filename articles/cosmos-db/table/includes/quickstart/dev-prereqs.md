@@ -1,8 +1,8 @@
 ---
 ms.service: azure-cosmos-db
-ms.subservice: nosql
+ms.subservice: table
 ms.topic: include
-ms.date: 08/23/2024
+ms.date: 10/22/2024
 zone_pivot_groups: azure-cosmos-db-quickstart-env
 ---
 
