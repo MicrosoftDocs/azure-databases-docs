@@ -29,7 +29,7 @@ This quickstart shows how to get started with the Azure Cosmos DB for Table from
 - An Azure account with an active subscription. [Create an account for free](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Azure Developer CLI](/azure/developer/azure-developer-cli/install-azd)
 - [Docker Desktop](https://www.docker.com/products/docker-desktop/)
-- [Go 1.21 or newer](https://go.dev/dl/)
+- [`Go` 1.21 or newer](https://go.dev/dl/)
 
 ## Initialize the project
 
