@@ -97,8 +97,8 @@ The client library is available through Maven, as the `azure-data-tables` packag
 
 | Name | Description |
 | --- | --- |
-| <xref:com.azure.data.tables.TableServiceClient> | This type is the primary client type and is used to manage account-wide metadata or databases. |
-| <xref:com.azure.data.tables.TableClient> | This type represents the client for a table within the account. |
+| [`TableServiceClient`](/java/api/com.azure.data.tables.tableserviceclient) | This type is the primary client type and is used to manage account-wide metadata or databases. |
+| [`TableClient`](/java/api/com.azure.data.tables.tableclient) | This type represents the client for a table within the account. |
 
 ## Code examples
 
