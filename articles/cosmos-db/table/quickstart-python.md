@@ -101,7 +101,65 @@ The client library is available through PyPi, as the `azure-data-tables` package
 
 ## Code examples
 
+- [Authenticate the client](#authenticate-the-client)
+- [Get a table](#get-a-table)
+- [Create an item](#create-an-item)
+- [Get an item](#get-an-item)
+- [Query items](#query-items)
+
+The sample code in the template uses a table named `cosmicworks-products`. The `cosmicworks-products` table contains details such as name, category, quantity, price, a unique identifier, and a sale flag for each product. The container uses a *unique identifier** as the row key and *category* as a partition key.
+
+### Authenticate the client
+
+This sample creates a new instance of the `TableServiceClient` type.
+
+```python
 TODO
+```
+
+### Get a table
+
+This sample creates an instance of the `TableClient` type using the `GetTableClient` function of the `TableServiceClient` type.
+
+```python
+TODO
+```
+
+### Create an item
+
+The easiest way to create a new item in a table is to TODO
+
+```python
+TODO
+```
+
+Create an item in the collection using TODO
+
+```python
+TODO
+```
+
+### Get an item
+
+You can retrieve a specific item from a table using TODO
+
+```python
+TODO
+```
+
+### Query items
+
+After you insert an item, you can also run a query to get all items that match a specific filter by using TODO
+
+```python
+TODO
+```
+
+Parse the paginated results of the query by TODO
+
+```python
+TODO
+```
 
 ## Clean up resources
 

@@ -102,7 +102,65 @@ The client library is available through Maven, as the `azure-data-tables` packag
 
 ## Code examples
 
+- [Authenticate the client](#authenticate-the-client)
+- [Get a table](#get-a-table)
+- [Create an item](#create-an-item)
+- [Get an item](#get-an-item)
+- [Query items](#query-items)
+
+The sample code in the template uses a table named `cosmicworks-products`. The `cosmicworks-products` table contains details such as name, category, quantity, price, a unique identifier, and a sale flag for each product. The container uses a *unique identifier** as the row key and *category* as a partition key.
+
+### Authenticate the client
+
+This sample creates a new instance of the `TableServiceClient` class.
+
+```java
 TODO
+```
+
+### Get a table
+
+This sample creates an instance of the `TableClient` class using the `GetTableClient` method of the `TableServiceClient` class.
+
+```java
+TODO
+```
+
+### Create an item
+
+The easiest way to create a new item in a table is to TODO.
+
+```java
+TODO
+```
+
+Create an item in the collection using TODO
+
+```java
+TODO
+```
+
+### Get an item
+
+You can retrieve a specific item from a table using TODO
+
+```java
+TODO
+```
+
+### Query items
+
+After you insert an item, you can also run a query to get all items that match a specific filter by using TODO
+
+```java
+TODO
+```
+
+Parse the paginated results of the query by TODO
+
+```java
+TODO
+```
 
 ## Clean up resources
 

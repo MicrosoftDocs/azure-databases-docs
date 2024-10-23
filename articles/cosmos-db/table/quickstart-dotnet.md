@@ -110,8 +110,6 @@ The sample code in the template uses a table named `cosmicworks-products`. The `
 
 ### Authenticate the client
 
-[!INCLUDE[Developer Quickstart authentication explanation](includes/quickstart/dev-auth-primer.md)]
-
 This sample creates a new instance of the `TableServiceClient` class.
 
 ```csharp
