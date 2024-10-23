@@ -8,7 +8,7 @@ ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.devlang: csharp
 ms.topic: quickstart-sdk
-ms.date: 10/21/2024
+ms.date: 10/22/2024
 ms.custom: devx-track-csharp, devx-track-dotnet, devx-track-extended-azdevcli
 zone_pivot_groups: azure-cosmos-db-quickstart-env
 # CustomerIntent: As a developer, I want to learn the basics of the .NET library so that I can build applications with Azure Cosmos DB for NoSQL.
@@ -65,7 +65,7 @@ The client library is available through NuGet, as the `Microsoft.Azure.Cosmos` p
 1. Also, install the `Azure.Identity` package if not already installed.
 
     ```bash
-    dotnet add package Azure.Identity --version 1.*
+    dotnet add package Azure.Identity --version 1.12.*
     ```
 
 1. Open and review the **src/web/Cosmos.Samples.NoSQL.Quickstart.Web.csproj** file to validate that the `Microsoft.Azure.Cosmos` and `Azure.Identity` entries both exist.
