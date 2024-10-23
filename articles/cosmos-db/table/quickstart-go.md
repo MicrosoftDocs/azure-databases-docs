@@ -114,7 +114,10 @@ The sample code in the template uses a table named `cosmicworks-products`. The `
 This sample creates a new instance of the `ServiceClient` type.
 
 ```go
-TODO
+client, err := aztables.NewServiceClient("<azure-cosmos-db-table-account-endpoint>", credential)
+if err != nil {
+    log.Fatal(err)
+}
 ```
 
 ### Get a table
@@ -122,7 +125,10 @@ TODO
 This sample creates an instance of the `Client` type using the `NewClient` function of the `ServiceClient` type.
 
 ```go
-TODO
+table, err := client.NewClient("<azure-cosmos-db-table-name>")
+if err != nil {
+    log.Fatal(err)
+}
 ```
 
 ### Create an item

@@ -139,7 +139,7 @@ This sample creates a new instance of the `TableServiceClient` type.
 ::: zone pivot="programming-language-ts"
 
 ```typescript
-TODO
+let client: TableServiceClient = new TableServiceClient("<azure-cosmos-db-table-account-endpoint>", credential);
 ```
 
 ::: zone-end
@@ -147,7 +147,7 @@ TODO
 ::: zone pivot="programming-language-js"
 
 ```javascript
-TODO
+let client = new TableServiceClient("<azure-cosmos-db-table-account-endpoint>", credential);
 ```
 
 ::: zone-end
@@ -159,7 +159,7 @@ This sample creates an instance of the `TableClient` type using the `GetTableCli
 ::: zone pivot="programming-language-ts"
 
 ```typescript
-TODO
+let table: TableClient = new TableClient("<azure-cosmos-db-table-account-endpoint>", "<azure-cosmos-db-table-name>", credential);
 ```
 
 ::: zone-end
@@ -167,7 +167,7 @@ TODO
 ::: zone pivot="programming-language-js"
 
 ```javascript
-TODO
+let table = new TableClient("<azure-cosmos-db-table-account-endpoint>", "<azure-cosmos-db-table-name>", credential);
 ```
 
 ::: zone-end

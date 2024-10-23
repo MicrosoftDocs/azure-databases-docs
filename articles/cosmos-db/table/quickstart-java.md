@@ -115,7 +115,10 @@ The sample code in the template uses a table named `cosmicworks-products`. The `
 This sample creates a new instance of the `TableServiceClient` class.
 
 ```java
-TODO
+TableServiceClient client = new TableServiceClientBuilder()
+    .endpoint("<azure-cosmos-db-table-account-endpoint>")
+    .credential(credential)
+    .buildClient();
 ```
 
 ### Get a table
@@ -123,7 +126,8 @@ TODO
 This sample creates an instance of the `TableClient` class using the `GetTableClient` method of the `TableServiceClient` class.
 
 ```java
-TODO
+TableClient table = client
+    .getTableClient("<azure-cosmos-db-table-name>");
 ```
 
 ### Create an item

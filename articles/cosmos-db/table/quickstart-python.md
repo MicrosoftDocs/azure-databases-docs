@@ -114,7 +114,7 @@ The sample code in the template uses a table named `cosmicworks-products`. The `
 This sample creates a new instance of the `TableServiceClient` type.
 
 ```python
-TODO
+client = TableServiceClient("<azure-cosmos-db-table-account-endpoint>", credential=credential)
 ```
 
 ### Get a table
@@ -122,7 +122,7 @@ TODO
 This sample creates an instance of the `TableClient` type using the `GetTableClient` function of the `TableServiceClient` type.
 
 ```python
-TODO
+table = client.get_table_client("<azure-cosmos-db-table-name>")
 ```
 
 ### Create an item
