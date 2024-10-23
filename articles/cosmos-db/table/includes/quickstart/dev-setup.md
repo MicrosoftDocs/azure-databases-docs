@@ -25,11 +25,19 @@ zone_pivot_groups: azure-cosmos-db-quickstart-env
     azd auth login
     ```
 
+::: zone pivot="devcontainer-codespace"
+
 1. Use `azd init` to initialize the project.
 
     ```azurecli
     azd init
     ```
+
+::: zone-end
+
+::: zone pivot="devcontainer-vscode"
+
+::: zone-end
 
 1. During initialization, configure a unique environment name.
 
