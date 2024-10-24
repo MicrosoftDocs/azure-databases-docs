@@ -222,4 +222,3 @@ azd down
 - [Node.js Quickstart](quickstart-nodejs.md)
 - [Python Quickstart](quickstart-python.md)
 - [Java Quickstart](quickstart-java.md)
-- [Go Quickstart](quickstart-go.md)
