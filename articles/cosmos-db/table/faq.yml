@@ -302,7 +302,7 @@ sections:
       - question: |
           How do I enable data-plane role-based access control for Azure Cosmos DB for Table?
         answer: |
-          Use the Azure Cosmos DB native role-based access control (RBAC) feature to grant data-plane access to users and applications.
+          Use the Azure Cosmos DB native role-based access control (RBAC) feature to grant data-plane access to users and applications. For more information, see [Grant data-plane role-based access](security/how-to-grant-data-plane-role-based-access.md).
 additionalContent: |
   ## Related content
 
