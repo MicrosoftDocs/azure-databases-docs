@@ -11,7 +11,7 @@ ms.topic: glossary
 ms.date: 10/24/2024
 ai-usage: ai-assisted
 hidden: true
-ROBOTOS: NOINDEX, NOFOLLOW
+ROBOTS: NOINDEX, NOFOLLOW
 ---
 
 # Security glossary for Azure Cosmos DB for Table

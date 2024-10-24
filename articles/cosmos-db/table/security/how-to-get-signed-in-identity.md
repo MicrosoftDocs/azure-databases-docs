@@ -11,7 +11,7 @@ ms.topic: how-to
 ms.date: 10/24/2024
 zone_pivot_groups: azure-interface-portal-cli-powershell
 hidden: true
-ROBOTOS: NOINDEX, NOFOLLOW
+ROBOTS: NOINDEX, NOFOLLOW
 #Customer Intent: As a developer, I want to get my current signed-in identity for Azure CLI, so that my security team can grant me role-based access control permissions to access Azure resources.
 ---
 
