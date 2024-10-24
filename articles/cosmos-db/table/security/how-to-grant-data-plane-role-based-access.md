@@ -1,5 +1,5 @@
 ---
-title: Use data plane role-based access control
+title: Use data plane role-based access control (preview)
 titleSuffix: Azure Cosmos DB for Table
 description: Grant access to run queries, manage entities, and perform operations using role-based access control (RBAC), Microsoft Entra, and Azure Cosmos DB for Table.
 author: seesharprun
@@ -15,7 +15,7 @@ ROBOTOS: NOINDEX, NOFOLLOW
 #Customer Intent: As a security user, I want to grant an identity data-plane access to Azure Cosmos DB for Table, so that my developer team can use the SDK of their choice with minimal code change.
 ---
 
-# Use role-based access control with Azure Cosmos DB for Table
+# Use role-based access control with Azure Cosmos DB for Table (preview)
 
 [!INCLUDE[Table](../../includes/appliesto-table.md)]
 

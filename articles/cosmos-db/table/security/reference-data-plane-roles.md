@@ -1,5 +1,5 @@
 ---
-title: Data plane built-in roles reference
+title: Data plane built-in roles reference (preview)
 titleSuffix: Azure Cosmos DB for Table
 description: This article includes a list of all built-in data plane roles for use with role-based access control (RBAC) in Azure Cosmos DB for Table.
 author: seesharprun
@@ -13,7 +13,7 @@ hidden: true
 ROBOTOS: NOINDEX, NOFOLLOW
 ---
 
-# Azure Cosmos DB for Table data plane built-in roles reference
+# Azure Cosmos DB for Table data plane built-in roles reference (preview)
 
 [!INCLUDE[Table](../../includes/appliesto-table.md)]
 
