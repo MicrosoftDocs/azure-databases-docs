@@ -176,7 +176,7 @@ let table = new TableClient("<azure-cosmos-db-table-account-endpoint>", "<azure-
 
 ::: zone pivot="programming-language-ts"
 
-The easiest way to create a new item in a table is to dervie a new interface from `TableEntity` and then create a new object of that type.
+The easiest way to create a new item in a table is to derive a new interface from `TableEntity` and then create a new object of that type.
 
 ```typescript
 export interface Product extends TableEntity {
@@ -289,7 +289,7 @@ const entities = table.listEntities({
 
 ::: zone-end
 
-Parse the paginated results of the query by using an asynchornous `for await` loop on the paginated set of `entities`.
+Parse the paginated results of the query by using an asynchronous `for await` loop on the paginated set of `entities`.
 
 ::: zone pivot="programming-language-ts"
 
