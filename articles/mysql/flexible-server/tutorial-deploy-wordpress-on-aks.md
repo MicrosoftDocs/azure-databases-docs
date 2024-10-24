@@ -144,10 +144,6 @@ Results:
 Azure Database for MySQL flexible server is a managed service that you can use to run, manage, and scale highly available MySQL servers in the cloud. Create an Azure Database for MySQL flexible server instance with the [az mysql flexible-server create](/cli/azure/mysql/flexible-server) command. A server can contain multiple databases. The following command creates a server using service defaults and variable values from your Azure CLI's local context:
 
 ```bash
-echo "Your MySQL user $MY_MYSQL_ADMIN_USERNAME password is: $MY_WP_ADMIN_PW" 
-```
-
-```bash
 az mysql flexible-server create \
     --admin-password $MY_MYSQL_ADMIN_PW \
     --admin-user $MY_MYSQL_ADMIN_USERNAME \
