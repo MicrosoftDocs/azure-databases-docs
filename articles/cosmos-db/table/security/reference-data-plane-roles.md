@@ -8,7 +8,9 @@ ms.reviewer: iriaosara
 ms.service: azure-cosmos-db
 ms.subservice: table
 ms.topic: reference
-ms.date: 10/01/2024
+ms.date: 10/24/2024
+hidden: true
+ROBOTOS: NOINDEX, NOFOLLOW
 ---
 
 # Azure Cosmos DB for Table data plane built-in roles reference
