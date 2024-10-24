@@ -324,4 +324,4 @@ azd down
 - [.NET Quickstart](quickstart-dotnet.md)
 - [Python Quickstart](quickstart-python.md)
 - [Java Quickstart](quickstart-java.md)
-- [Java Quickstart](quickstart-java.md)
+- [Go Quickstart](quickstart-go.md)
