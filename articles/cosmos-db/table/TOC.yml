@@ -10,12 +10,12 @@
   items:
   - name: .NET
     href: quickstart-dotnet.md
-  - name: Java
-    href: quickstart-java.md
-  - name: Node.js
-    href: quickstart-nodejs.md
   - name: Python
     href: quickstart-python.md
+  - name: Node.js
+    href: quickstart-nodejs.md
+  - name: Java
+    href: quickstart-java.md
 - name: Tutorials
   items:
   - name: Query data
