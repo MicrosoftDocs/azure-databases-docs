@@ -5929,6 +5929,26 @@
       "source_path_from_root": "/articles/cosmos-db/attachments.md",
       "redirect_url": "/previous-versions/azure/cosmos-db/nosql/attachments",
       "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/security/how-to-disable-key-based-authentication.md",
+      "redirect_url": "/previous-versions/azure/cosmos-db/nosql/security/how-to-disable-key-based-authentication",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/gremlin/security/how-to-disable-key-based-authentication.md",
+      "redirect_url": "/previous-versions/azure/cosmos-db/nosql/security/how-to-disable-key-based-authentication",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/cassandra/security/how-to-disable-key-based-authentication.md",
+      "redirect_url": "/previous-versions/azure/cosmos-db/nosql/security/how-to-disable-key-based-authentication",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/table/security/data-actions-reference.md",
+      "redirect_url": "/previous-versions/azure/cosmos-db/table/security/data-plane-actions-reference",
+      "redirect_document_id": false
     }
   ]
 }
