@@ -9,7 +9,7 @@ ms.service: azure-cosmos-db
 ms.subservice: table
 ms.devlang: golang
 ms.topic: quickstart-sdk
-ms.date: 10/23/2024
+ms.date: 10/28/2024
 ms.custom: devx-track-go, devx-track-extended-azdevcli
 # CustomerIntent: As a developer, I want to learn the basics of the Go library so that I can build applications with Azure Cosmos DB for Table.
 ---

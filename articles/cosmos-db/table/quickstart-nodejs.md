@@ -9,7 +9,7 @@ ms.service: azure-cosmos-db
 ms.subservice: table
 ms.devlang: typescript
 ms.topic: quickstart-sdk
-ms.date: 10/24/2024
+ms.date: 10/28/2024
 ms.custom: devx-track-js, devx-track-ts, devx-track-extended-azdevcli
 zone_pivot_groups: azure-devlang-nodejs
 # CustomerIntent: As a developer, I want to learn the basics of the Node.js library so that I can build applications with Azure Cosmos DB for Table.
