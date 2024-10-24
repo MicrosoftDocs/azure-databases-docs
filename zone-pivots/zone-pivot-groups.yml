@@ -130,3 +130,12 @@ groups:
     title: Azure CLI
   - id: azure-interface-shell
     title: Azure PowerShell
+# Owner: sidandrews
+- id: azure-devlang-nodejs
+  title: Programming languages
+  prompt: Choose a programming language
+  pivots:
+  - id: programming-language-ts
+    title: TypeScript
+  - id: programming-language-js
+    title: JavaScript
