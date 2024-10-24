@@ -24,6 +24,22 @@ This article summarizes new releases and features in the Azure Database for MySQ
 > [!NOTE]  
 > This article references the term slave, which Microsoft no longer uses. When the term is removed from the software, we'll remove it from this article.
 
+## October 2024
+**New B1s Servers are unavailable**
+
+To ensure performance and reliability in light of ongoing security improvements, the creation of new B1s servers will be limited starting 11/1/2024. We recommend exploring alternative SKUs designed to better support your needs while maintaining high service reliability. Thank you for your understanding as we work to improve your experience.
+
+**What does this mean for you?**
+
+- Limited Access: New B1s instances will be temporarily unavailable after 10/31/24.
+- Existing Deployments: Any current B1s instances will remain unaffected.
+- Alternative Options: Explore and consider using other SKUs, such as B1ms and B2s, which provide enhanced compute power and memory while supporting greater performance. 
+
+**Next Steps:**
+- Review recommended alternative SKUs 
+- Access our upgrade guide for seamless transitions [Migration Guide](how-to-upgrade.md)
+- Review the Usage Dashboard to monitor your current usage
+
 ## September 2024
 - **Azure Database for MySQL Flexible Server Flexible Maintenance is now Generally Available**
   
