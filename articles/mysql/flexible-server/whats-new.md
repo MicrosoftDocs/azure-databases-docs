@@ -37,7 +37,7 @@ To ensure performance and reliability in light of ongoing security improvements,
 
 **Next Steps:**
 - Review recommended alternative SKUs 
-- Access our upgrade guide for seamless transitions [Migration Guide]
+- Access our upgrade guide for seamless transitions [Migration Guide](how-to-upgrade.md)
 - Review the Usage Dashboard to monitor your current usage
 
 ## September 2024
