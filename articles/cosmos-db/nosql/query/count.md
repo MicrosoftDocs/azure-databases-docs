@@ -54,7 +54,7 @@ In this example, the function counts the number of times the specified scalar fi
 
 In this final example, the function is used to count every item within a contianer.
 
-:::code language="nosql" source="~/cosmos-db-nosql-query-samples/scripts/count-items/query.sql" highlight="2":::
+:::code language="nosql" source="~/cosmos-db-nosql-query-samples/scripts/count-items/query.novalidate.sql" highlight="2":::
 
 ## Remarks
 
