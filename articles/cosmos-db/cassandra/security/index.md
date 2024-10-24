@@ -20,8 +20,3 @@ ai-usage: ai-assisted
 When working with Azure Cosmos DB for Cassandra, it's important to ensure that authorized users and applications have access to data while preventing unintentional or unauthorized access.
 
 [!INCLUDE[Security overview](../../includes/security-overview.md)]
-
-## Next step
-
-> [!div class="nextstepaction"]
-> [Disable key-based authentication with Azure Cosmos DB for Apache Cassandra](how-to-disable-key-based-authentication.md)

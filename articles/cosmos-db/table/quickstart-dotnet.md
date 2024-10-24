@@ -8,9 +8,8 @@ ms.service: azure-cosmos-db
 ms.subservice: table
 ms.devlang: csharp
 ms.topic: quickstart-sdk
-ms.date: 10/22/2024
+ms.date: 10/24/2024
 ms.custom: devx-track-csharp, devx-track-dotnet, devx-track-extended-azdevcli
-zone_pivot_groups: azure-cosmos-db-quickstart-env
 # CustomerIntent: As a developer, I want to learn the basics of the .NET library so that I can build applications with Azure Cosmos DB for Table.
 ---
 
@@ -20,31 +19,59 @@ zone_pivot_groups: azure-cosmos-db-quickstart-env
 
 [!INCLUDE[Developer Quickstart selector](includes/quickstart/dev-selector.md)]
 
-This quickstart shows how to get started with the Azure Cosmos DB for Table from a .NET application. The Azure Cosmos DB for Table is a schemaless data store allowing applications to store structured table data in the cloud. You learn how to create tables, rows, and perform basic tasks within your Azure Cosmos DB resource using the [Azure.Data.Tables Package (NuGet)](https://www.nuget.org/packages/Azure.Data.Tables/).
+This quickstart shows how to get started with the Azure Cosmos DB for Table from a .NET application. The Azure Cosmos DB for Table is a schemaless data store allowing applications to store structured table data in the cloud. You learn how to create tables, rows, and perform basic tasks within your Azure Cosmos DB resource using the Azure SDK for .NET
 
 [API reference documentation](/dotnet/api/azure.data.tables) | [Library source code](https://github.com/Azure/azure-sdk-for-net/tree/main/sdk/tables/Azure.Data.Tables) | [Package (NuGet)](https://www.nuget.org/packages/Azure.Data.Tables/) | [Azure Developer CLI](/azure/developer/azure-developer-cli/overview)
 
 ## Prerequisites
 
-[!INCLUDE[Developer Quickstart prerequisites](includes/quickstart/dev-prereqs.md)]
+- An Azure account with an active subscription. [Create an account for free](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- [Azure Developer CLI](/azure/developer/azure-developer-cli/install-azd)
+- [Docker Desktop](https://www.docker.com/products/docker-desktop/)
+- [.NET 9.0](https://dotnet.microsoft.com/download/dotnet/9.0)
 
-## Setting up
+## Initialize the project
 
-Deploy this project's development container to your environment. Then, use the Azure Developer CLI (`azd`) to create an Azure Cosmos DB for Table account and deploy a containerized sample application. The sample application uses the client library to manage, create, read, and query sample data.
+Use the Azure Developer CLI (`azd`) to create an Azure Cosmos DB for Table account and deploy a containerized sample application. The sample application uses the client library to manage, create, read, and query sample data.
 
-::: zone pivot="devcontainer-codespace"
+1. Open a terminal in an empty directory.
 
-[![Open in GitHub Codespaces](https://img.shields.io/static/v1?style=for-the-badge&label=GitHub+Codespaces&message=Open&color=brightgreen&logo=github)](https://codespaces.new/Azure-Samples/cosmos-db-table-dotnet-quickstart?template=false&quickstart=1&azure-portal=true)
+1. If you're not already authenticated, authenticate to the Azure Developer CLI using `azd auth login`. Follow the steps specified by the tool to authenticate to the CLI using your preferred Azure credentials.
 
-::: zone-end
+    ```azurecli
+    azd auth login
+    ```
 
-::: zone pivot="devcontainer-vscode"
+1. Use `azd init` to initialize the project.
 
-[![Open in Dev Container](https://img.shields.io/static/v1?style=for-the-badge&label=Dev+Containers&message=Open&color=blue&logo=visualstudiocode)](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/Azure-Samples/cosmos-db-table-dotnet-quickstart)
+    ```azurecli
+    azd init --template cosmos-db-table-dotnet-quickstart
+    ```
 
-::: zone-end
+1. During initialization, configure a unique environment name.
 
-[!INCLUDE[Developer Quickstart setup](includes/quickstart/dev-setup.md)]
+1. Deploy the Azure Cosmos DB account using `azd up`. The Bicep templates also deploy a sample web application.
+
+    ```azurecli
+    azd up
+    ```
+
+1. During the provisioning process, select your subscription, desired location, and target resource group. Wait for the provisioning process to complete. The process can take **approximately five minutes**.
+
+1. Once the provisioning of your Azure resources is done, a URL to the running web application is included in the output.
+
+    ```output
+    Deploying services (azd deploy)
+    
+      (✓) Done: Deploying service web
+    - Endpoint: <https://[container-app-sub-domain].azurecontainerapps.io>
+    
+    SUCCESS: Your application was provisioned and deployed to Azure in 5 minutes 0 seconds.
+    ```
+
+1. Use the URL in the console to navigate to your web application in the browser. Observe the output of the running app.
+
+    :::image type="content" source="media/quickstart/dev-web-application.png" alt-text="Screenshot of the running web application.":::
 
 ### Install the client library
 
@@ -59,16 +86,10 @@ The client library is available through NuGet, as the `Azure.Data.Tables` packag
 1. If not already installed, install the `Azure.Data.Tables` package using `dotnet add package`.
 
     ```bash
-    dotnet add package Azure.Data.Tables --version 12.*
+    dotnet add package Azure.Data.Tables
     ```
 
-1. Also, install the `Azure.Identity` package if not already installed.
-
-    ```bash
-    dotnet add package Azure.Identity --version 1.12.*
-    ```
-
-1. Open and review the **src/web/Cosmos.Samples.Table.Quickstart.Web.csproj** file to validate that the `Azure.Data.Tables` and `Azure.Identity` entries both exist.
+1. Open and review the **src/web/Microsoft.Samples.Cosmos.Table.Quickstart.Web.csproj** file to validate that the `Azure.Data.Tables` entry exists.
 
 ## Object model
 
@@ -79,26 +100,22 @@ The client library is available through NuGet, as the `Azure.Data.Tables` packag
 
 ## Code examples
 
-- [Authenticate the clients](#authenticate-the-clients)
+- [Authenticate the client](#authenticate-the-client)
 - [Get a table](#get-a-table)
 - [Create an item](#create-an-item)
 - [Get an item](#get-an-item)
 - [Query items](#query-items)
 
-[!INCLUDE[Developer Quickstart sample explanation](includes/quickstart/dev-sample-primer.md)]
+The sample code in the template uses a table named `cosmicworks-products`. The `cosmicworks-products` table contains details such as name, category, quantity, price, a unique identifier, and a sale flag for each product. The container uses a *unique identifier** as the row key and *category* as a partition key.
 
-### Authenticate the clients
+### Authenticate the client
 
-[!INCLUDE[Developer Quickstart authentication explanation](includes/quickstart/dev-auth-primer.md)]
-
-This sample creates a new instance of the `TableServiceClient` class and authenticates using a `DefaultAzureCredential` instance.
+This sample creates a new instance of the `TableServiceClient` class.
 
 ```csharp
-DefaultAzureCredential credential = new();
-
 TableServiceClient serviceClient = new(
     endpoint: new Uri("<azure-cosmos-db-table-account-endpoint>"),
-    tokenCredential: credential
+    credential
 );
 ```
 
@@ -194,7 +211,11 @@ await foreach (Product product in results)
 
 ## Clean up resources
 
-[!INCLUDE[Developer Quickstart cleanup](includes/quickstart/dev-cleanup.md)]
+When you no longer need the sample application or resources, remove the corresponding deployment and all resources.
+
+```azurecli
+azd down
+```
 
 ## Related content
 
