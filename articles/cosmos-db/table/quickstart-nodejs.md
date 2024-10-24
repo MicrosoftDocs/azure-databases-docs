@@ -9,7 +9,7 @@ ms.service: azure-cosmos-db
 ms.subservice: table
 ms.devlang: typescript
 ms.topic: quickstart-sdk
-ms.date: 10/23/2024
+ms.date: 10/24/2024
 ms.custom: devx-track-js, devx-track-ts, devx-track-extended-azdevcli
 zone_pivot_groups: azure-devlang-nodejs
 # CustomerIntent: As a developer, I want to learn the basics of the Node.js library so that I can build applications with Azure Cosmos DB for Table.
@@ -174,12 +174,55 @@ let table = new TableClient("<azure-cosmos-db-table-account-endpoint>", "<azure-
 
 ### Create an item
 
-The easiest way to create a new item in a table is to TODO.
+::: zone pivot="programming-language-ts"
+
+The easiest way to create a new item in a table is to derive a new interface from `TableEntity` and then create a new object of that type.
+
+```typescript
+export interface Product extends TableEntity {
+    name: string;
+    quantity: number;
+    price: number;
+    clearance: boolean;
+}
+```
+
+```typescript
+const entity: Product = {
+    rowKey: '70b63682-b93a-4c77-aad2-65501347265f',
+    partitionKey: 'gear-surf-surfboards',
+    name: 'Yamba Surfboard',
+    quantity: 12,
+    price: 850.00,
+    clearance: false
+};
+```
+
+::: zone-end
+
+::: zone pivot="programming-language-js"
+
+The easiest way to create a new item in a table is to build a JSON object.
+
+```javascript
+const entity = {
+    rowKey: '70b63682-b93a-4c77-aad2-65501347265f',
+    partitionKey: 'gear-surf-surfboards',
+    name: 'Yamba Surfboard',
+    quantity: 12,
+    price: 850.00,
+    clearance: false
+};
+```
+
+::: zone-end
+
+Create an item in the collection using the `upsertEntity` method from the `TableService` instance.
 
 ::: zone pivot="programming-language-ts"
 
 ```typescript
-TODO
+await table.upsertEntity<Product>(entity, "Replace"); 
 ```
 
 ::: zone-end
@@ -187,37 +230,21 @@ TODO
 ::: zone pivot="programming-language-js"
 
 ```javascript
-TODO
-```
-
-::: zone-end
-
-Create an item in the collection using TODO
-
-::: zone pivot="programming-language-ts"
-
-```typescript
-TODO
-```
-
-::: zone-end
-
-::: zone pivot="programming-language-js"
-
-```javascript
-TODO
+await table.upsertEntity(entity, "Replace");
 ```
 
 ::: zone-end
 
 ### Get an item
 
-You can retrieve a specific item from a table using TODO
+You can retrieve a specific item from a table using the `getEntity` method, the **row key** for the item, and **partition key** of the item.
 
 ::: zone pivot="programming-language-ts"
 
 ```typescript
-TODO
+const response: GetTableEntityResponse<TableEntityResult<Product>> = await table.getEntity<Product>(partitionKey, rowKey);
+
+const entity: Product = response as Product;
 ```
 
 ::: zone-end
@@ -225,19 +252,25 @@ TODO
 ::: zone pivot="programming-language-js"
 
 ```javascript
-TODO
+const entity = await table.getEntity(partitionKey, rowKey);
 ```
 
 ::: zone-end
 
 ### Query items
 
-After you insert an item, you can also run a query to get all items that match a specific filter by using TODO
+After you insert an item, you can also run a query to get all items that match a specific filter by using `listEntities` with an OData filter.
 
 ::: zone pivot="programming-language-ts"
 
 ```typescript
-TODO
+const partitionKey: string = 'gear-surf-surfboards';
+
+const filter: string = `PartitionKey eq '${partitionKey}'`
+
+const queryOptions: TableEntityQueryOptions = { filter: filter }
+
+const entities: PagedAsyncIterableIterator<TableEntityResult<Product>, TableEntityResultPage<Product>> = table.listEntities<Product>({ queryOptions: queryOptions });
 ```
 
 ::: zone-end
@@ -245,17 +278,25 @@ TODO
 ::: zone pivot="programming-language-js"
 
 ```javascript
-TODO
+const partitionKey = 'gear-surf-surfboards';
+
+const entities = table.listEntities({
+    queryOptions: {
+        filter: `PartitionKey eq '${partitionKey}'`
+    }
+});
 ```
 
 ::: zone-end
 
-Parse the paginated results of the query by TODO
+Parse the paginated results of the query by using an asynchronous `for await` loop on the paginated set of `entities`.
 
 ::: zone pivot="programming-language-ts"
 
 ```typescript
-TODO
+for await(const entity of entities) {
+    // Do something
+}
 ```
 
 ::: zone-end
@@ -263,7 +304,9 @@ TODO
 ::: zone pivot="programming-language-js"
 
 ```javascript
-TODO
+for await(const entity of entities) {
+    // Do something
+}
 ```
 
 ::: zone-end
@@ -281,4 +324,4 @@ azd down
 - [.NET Quickstart](quickstart-dotnet.md)
 - [Python Quickstart](quickstart-python.md)
 - [Java Quickstart](quickstart-java.md)
-- [Go Quickstart](quickstart-go.md)
+- [Java Quickstart](quickstart-java.md)
