@@ -5932,22 +5932,22 @@
     },
     {
       "source_path_from_root": "/articles/cosmos-db/mongodb/security/how-to-disable-key-based-authentication.md",
-      "redirect_url": "/previous-versions/azure/cosmos-db/nosql/security/how-to-disable-key-based-authentication",
+      "redirect_url": "/azure/cosmos-db/nosql/security/how-to-disable-key-based-authentication",
       "redirect_document_id": false
     },
     {
       "source_path_from_root": "/articles/cosmos-db/gremlin/security/how-to-disable-key-based-authentication.md",
-      "redirect_url": "/previous-versions/azure/cosmos-db/nosql/security/how-to-disable-key-based-authentication",
+      "redirect_url": "/azure/cosmos-db/nosql/security/how-to-disable-key-based-authentication",
       "redirect_document_id": false
     },
     {
       "source_path_from_root": "/articles/cosmos-db/cassandra/security/how-to-disable-key-based-authentication.md",
-      "redirect_url": "/previous-versions/azure/cosmos-db/nosql/security/how-to-disable-key-based-authentication",
+      "redirect_url": "/azure/cosmos-db/nosql/security/how-to-disable-key-based-authentication",
       "redirect_document_id": false
     },
     {
       "source_path_from_root": "/articles/cosmos-db/table/security/reference-data-actions.md ",
-      "redirect_url": "/previous-versions/azure/cosmos-db/table/security/reference-data-plane-actions",
+      "redirect_url": "/azure/cosmos-db/table/security/reference-data-plane-actions",
       "redirect_document_id": false
     }
   ]
