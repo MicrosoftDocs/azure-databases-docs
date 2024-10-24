@@ -5946,8 +5946,8 @@
       "redirect_document_id": false
     },
     {
-      "source_path_from_root": "/articles/cosmos-db/table/security/data-actions-reference.md",
-      "redirect_url": "/previous-versions/azure/cosmos-db/table/security/data-plane-actions-reference",
+      "source_path_from_root": "/articles/cosmos-db/table/security/reference-data-actions.md ",
+      "redirect_url": "/previous-versions/azure/cosmos-db/table/security/reference-data-plane-actions",
       "redirect_document_id": false
     }
   ]
