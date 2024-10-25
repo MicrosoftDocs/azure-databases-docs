@@ -13,7 +13,7 @@ ms.custom:
   - mode-api
   - devx-track-python
   - passwordless-python
-ms.devlang: python
+ms.devlang: python   
 ---
 
 # Quickstart: Use Python to connect and query data in Azure Database for PostgreSQL - Flexible Server
