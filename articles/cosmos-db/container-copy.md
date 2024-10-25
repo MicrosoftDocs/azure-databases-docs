@@ -11,9 +11,9 @@ ms.custom: references_regions, build-2023, ignite-2023, ignite-2024
 zone_pivot_groups: azure-cosmos-db-apis-nosql-mongodb-cassandra
 ---
 
-# Container copy jobs in Azure Cosmos DB (preview)
+# Copy jobs in Azure Cosmos DB (preview)
 
-You can perform container copy in Azure Cosmos DB by using container copy jobs.
+You can perform data copy in Azure Cosmos DB by using container copy jobs.
 
 You might need to copy data from your Azure Cosmos DB account if you want to achieve any of these scenarios:
 
