@@ -25,64 +25,64 @@ You might need to copy data from your Azure Cosmos DB account if you want to ach
 * Change capacity mode of an account from serverless to provisioned or vice-versa.
 * Adopt new features that are supported only for new containers, e.g. [Hierarchical partition keys](hierarchical-partition-keys.md).
 
-Container copy jobs can be [created and managed by using Azure CLI commands](how-to-container-copy.md).
+Copy jobs can be [created and managed by using Azure CLI commands](how-to-container-copy.md).
 
 ::: zone pivot="api-nosql"
 
 ## Get started
 
-### [Online container copy](#tab/online-copy)
+### [Online copy](#tab/online-copy)
 
 To get started with online container copy for Azure Cosmos DB for NoSQL API accounts, register for the **Online container copy (NoSQL)** preview feature flag in [Preview Features](access-previews.md) in the Azure portal. Once the registration is complete, the preview is effective for all NoSQL API accounts in the subscription.
 
 #### Prerequisites
-1.	Enable [continuous backup](https://learn.microsoft.com/azure/cosmos-db/continuous-backup-restore-introduction) on source Azure Cosmos DB account. 
-1.	Register for [All version and delete change feed mode](https://learn.microsoft.com/azure/cosmos-db/nosql/change-feed-modes?tabs=all-versions-and-deletes%23all-versions-and-deletes-change-feed-mode-preview%20) preview feature on the source account’s subscription.
+1.	Enable [continuous backup](continuous-backup-restore-introduction.md) on source Azure Cosmos DB account. 
+1.	Register for [All version and delete change feed mode](nosql/change-feed-modes.md?tabs=latest-version#all-versions-and-deletes-change-feed-mode-preview) preview feature on the source account’s subscription.
 
 > [!Important]
 All write operations to the source container will be charged double RUs in order to preserve both the previous and current versions of changes to items in the container. This RU charge increase is subject to change in the future.
 
-### [Offline container copy](#tab/offline-copy)
+### [Offline copy](#tab/offline-copy)
 
-Start using offline container copy by following [how to create, monitor, and manage container copy jobs.](how-to-container-copy.md)
+Start using offline copy by following [how to create, monitor, and manage copy jobs.](how-to-container-copy.md)
 
 <a name="how-to-do-container-copy"></a>
 
 ## Copy a container's data 
 
-### [Online container copy](#tab/online-copy)
+### [Online copy](#tab/online-copy)
 
 1. Create the target Azure Cosmos DB container by using the settings that you want to use (partition key, throughput granularity, request units, unique key, and so on).
 1. [Create the container copy job](how-to-container-copy.md).
-1. [Monitor the progress of the container copy job](how-to-container-copy.md#monitor-the-progress-of-a-container-copy-job).
-1. Once all documents have been copied, stop the updates on source container and call the completion API to mark job as completed.
+1. [Monitor the progress of the copy job](how-to-container-copy.md#monitor-the-progress-of-a-copy-job).
+1. Once all documents have been copied, stop the updates on source container and then call the completion API to mark job as completed.
 1. Resume the operations by appropriately pointing the application or client to the source or target container as intended.
 
-### [Offline container copy](#tab/offline-copy)
+### [Offline copy](#tab/offline-copy)
 
 1. Create the target Azure Cosmos DB container by using the settings that you want to use (partition key, throughput granularity, request units, unique key, and so on).
 1. Stop the operations on the source container by pausing the application instances or any clients that connect to it.
 1. [Create the container copy job](how-to-container-copy.md).
-1. [Monitor the progress of the container copy job](how-to-container-copy.md#monitor-the-progress-of-a-container-copy-job) and wait until it's completed.
+1. [Monitor the progress of the container copy job](how-to-container-copy.md#monitor-the-progress-of-a-copy-job) and wait until it's completed.
 1. Resume the operations by appropriately pointing the application or client to the source or target container as intended.
 
 ## How does container copy work?
 
-### [Online container copy](#tab/online-copy)
+### [Online copy](#tab/online-copy)
 
 1. The platform allocates server-side compute instances for the destination Azure Cosmos DB account to run the container copy jobs.
 1. A single job is executed across all instances at any time.
-1. The online copy jobs utilize [all version and delete change feed mode](nosql/change-feed-modes?tabs=latest-version#all-versions-and-deletes-change-feed-mode-preview) to copy the data and replicate incremental changes from the source container to the destination container. 
+1. The online copy jobs utilize [all version and delete change feed mode](nosql/change-feed-modes.md?tabs=latest-version#all-versions-and-deletes-change-feed-mode-preview) to copy the data and replicate incremental changes from the source container to the destination container. 
 1. Once the job is completed, the platform de-allocates these instances after 15 minutes of inactivity.
 
-### [Offline container copy](#tab/offline-copy)
+### [Offline copy](#tab/offline-copy)
 
 1. The platform allocates server-side compute instances for the destination Azure Cosmos DB account.
 1. These instances are allocated when one or more container copy jobs are created within the account.
 1. The container copy jobs run on these instances.
 1. A single job is executed across all instances at any time.
 1. The instances are shared by all the container copy jobs that are running within the same account.
-1. The offline copy jobs utilize [Latest version change feed mode](nosql/change-feed-modes?tabs=latest-version#latest-version-change-feed-mode) to copy the data and replicate incremental changes from the source container to the destination container.
+1. The offline copy jobs utilize [Latest version change feed mode](nosql/change-feed-modes.md?tabs=latest-version#latest-version-change-feed-mode) to copy the data and replicate incremental changes from the source container to the destination container.
 1. The platform might de-allocate the instances if they're idle for longer than 15 minutes.
 
 > [!NOTE]
@@ -99,7 +99,7 @@ You can perform offline collection copy jobs to copy data within the same Azure 
 1. Create the target Azure Cosmos DB collection by using the settings that you want to use (partition key, throughput granularity, request units, unique key, and so on).
 1. Stop the operations on the source collection by pausing the application instances or any clients that connect to it.
 1. [Create the copy job](how-to-container-copy.md).
-1. [Monitor the progress of the copy job](how-to-container-copy.md#monitor-the-progress-of-a-container-copy-job) and wait until it's completed.
+1. [Monitor the progress of the copy job](how-to-container-copy.md#monitor-the-progress-of-a-copy-job) and wait until it's completed.
 1. Resume the operations by appropriately pointing the application or client to the source or target collection as intended.
 
 ## How does collection copy work?
@@ -109,7 +109,7 @@ You can perform offline collection copy jobs to copy data within the same Azure 
 1. The copy jobs run on these instances.
 1. A single job is executed across all instances at any time.
 1. The instances are shared by all the copy jobs that are running within the same account.
-1. The offline copy jobs utilize [Change streams](mongodb/change-streams?tabs=javascript) to copy the data and replicate incremental changes from the source collection to the destination collection.
+1. The offline copy jobs utilize [Change streams](mongodb/change-streams.md?tabs=javascript) to copy the data and replicate incremental changes from the source collection to the destination collection.
 1. The platform might de-allocate the instances if they're idle for longer than 15 minutes.
 
 > [!NOTE]
@@ -126,7 +126,7 @@ You can perform offline table copy to copy data of one table to another table wi
 1. Create the target Azure Cosmos DB table by using the settings that you want to use (partition key, throughput granularity, request units, unique key, and so on).
 1. Stop the operations on the source table by pausing the application instances or any clients that connect to it.
 1. [Create the copy job](how-to-container-copy.md).
-1. [Monitor the progress of the copy job](how-to-container-copy.md#monitor-the-progress-of-a-container-copy-job) and wait until it's completed.
+1. [Monitor the progress of the copy job](how-to-container-copy.md#monitor-the-progress-of-a-copy-job) and wait until it's completed.
 1. Resume the operations by appropriately pointing the application or client to the source or target table as intended.
 
 ## How does table copy work?
@@ -136,7 +136,7 @@ You can perform offline table copy to copy data of one table to another table wi
 1. The copy jobs run on these instances.
 1. A single job is executed across all instances at any time.
 1. The instances are shared by all the copy jobs that are running within the same account.
-1. The offline copy jobs utilize [Change feed](cassandra/change-feed) to copy the data and replicate incremental changes from the source table to the destination table.
+1. The offline copy jobs utilize [Change feed](cassandra/change-feed.md) to copy the data and replicate incremental changes from the source table to the destination table.
 1. The platform might de-allocate the instances if they're idle for longer than 15 minutes.
 
 > [!NOTE]
@@ -181,7 +181,7 @@ Container copy jobs are currently supported on a best-effort basis. We don't pro
 
 ### Can I create multiple container copy jobs within an account?
 
-Yes, you can create multiple jobs within the same account. The jobs run consecutively. You can [list all the jobs](how-to-container-copy.md#list-all-the-container-copy-jobs-created-in-an-account) that are created within an account, and monitor their progress.
+Yes, you can create multiple jobs within the same account. The jobs run consecutively. You can [list all the jobs](how-to-container-copy.md#list-all-the-copy-jobs-created-in-an-account) that are created within an account, and monitor their progress.
 
 ### Can I copy an entire database within the Azure Cosmos DB account?
 

@@ -37,6 +37,17 @@ groups:
   - id: api-mongodb
     title: MongoDB
 # Owner: sidandrews
+- id: azure-cosmos-db-apis-nosql-mongodb-cassandra
+  title: Azure Cosmos DB APIs
+  prompt: Choose an API
+  pivots:
+  - id: api-nosql
+    title: NoSQL
+  - id: api-mongodb
+    title: MongoDB
+  - id: api-apache-cassandra
+    title: Apache Cassandra
+# Owner: sidandrews
 - id: azure-cosmos-db-quickstart-env
   title: Azure Cosmos DB Quickstart environment
   prompt: Choose a development environment

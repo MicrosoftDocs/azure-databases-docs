@@ -12,9 +12,9 @@ zone_pivot_groups: azure-cosmos-db-apis-nosql-mongodb-cassandra
 
 # Create and manage container copy jobs in Azure Cosmos DB (Preview)
 
-[Container copy jobs](container-copy.md) help create copies of containers in Azure Cosmos DB accounts.
+[Copy jobs](container-copy.md) help create copies of containers in Azure Cosmos DB accounts.
 
-This article describes how to create, monitor, and manage container copy jobs using Azure CLI commands.
+This article describes how to create, monitor, and manage copy jobs using Azure CLI commands.
 
 ## Prerequisites
 
@@ -51,7 +51,7 @@ $destinationContainer = ""
 >[!Note]
 > This step is not required if you're copying data within same Azure Cosmos DB account.
 
-While copying data from one account's container to another account's container. It is required to give read access of source container to destination account's identity to perform the copy operation. Follow the steps below to assign requisite read permission to destination account.
+While copying data from one account's container to another account's container, it is required to give read access of source container to destination account's identity to perform the copy operation. Follow the steps below to assign requisite read permission to destination account.
 
 **Using System managed identity**
 
@@ -116,28 +116,28 @@ While copying data from one account's container to another account's container. 
     az account set --subscription $destinationSubId
     ```
 
-### Create container copy job
+### Create copy job
 
-    ```azurecli-interactive
-    az cosmosdb copy create `
-        --resource-group $destinationAccountRG `
-        --job-name $jobName `
-        --dest-account $destinationAccount `
-        --src-account $sourceAccount `
-        --dest-nosql database=$destinationDatabase container=$destinationContainer `
-        --src-nosql database=$sourceDatabase container=$sourceContainer
-        --mode Online
-    ```
+```azurecli-interactive
+az cosmosdb copy create `
+    --resource-group $destinationAccountRG `
+    --job-name $jobName `
+    --dest-account $destinationAccount `
+    --src-account $sourceAccount `
+    --dest-nosql database=$destinationDatabase container=$destinationContainer `
+    --src-nosql database=$sourceDatabase container=$sourceContainer
+    --mode Online
+```
 ### Monitor progress 
 
 Monitor the progress using below command.
 
-    ```azurecli-interactive
-    az cosmosdb copy show `
-        --resource-group $destinationAccountRG `
-        --account-name $destinationAccount `
-        --job-name $jobName
-    ```
+```azurecli-interactive
+az cosmosdb copy show `
+    --resource-group $destinationAccountRG `
+    --account-name $destinationAccount `
+    --job-name $jobName
+```
 1.	Total count – It represents the total number of changes (total document + any new changes) in the source container at any given time.
 2.	Processed count – It represents the total number of events coming from source container’s change feed which have been processed by the copy job.
 
@@ -146,12 +146,12 @@ Monitor the progress using below command.
 1. When the processed count becomes greater than or equal to the total count, turn off any updates on the source container and wait for 5-10 minutes to flush any remaining changes. 
 1. Run the completion API to finish the copy job and free compute resources, this will also write remaining changes (if any) to the destination container.
 
-    ```azurecli-interactive
+```azurecli-interactive
     az cosmosdb copy complete `
         --resource-group $destinationAccountRG `
         --account-name $destinationAccount `
         --job-name $jobName
-    ```
+```
 1. Update the client applications to start using the new (destination) container if needed.
 
 ### [Offline container copy](#tab/offline-copy)
@@ -179,7 +179,7 @@ $destinationContainer = ""
 >[!Note]
 > This step is not required if you're copying data within same Azure Cosmos DB account.
 
-While copying data from one account's container to another account's container. It is required to give read access of source container to destination account's identity to perform the copy operation. Follow the steps below to assign requisite read permission to destination account.
+While copying data from one account's container to another account's container, it is required to give read access of source container to destination account's identity to perform the copy operation. Follow the steps below to assign requisite read permission to destination account.
 
 **Using System managed identity**
 
@@ -244,7 +244,7 @@ While copying data from one account's container to another account's container. 
     az account set --subscription $destinationSubId
     ```
 
-### Create container copy job
+### Create copy job
 
 ```azurecli-interactive
 az cosmosdb copy create `
@@ -393,4 +393,4 @@ For issues related to a copy job, raise a **New Support Request** from the Azure
 
 ## Next steps
 
-- For more information about container copy jobs, see [Container copy jobs](container-copy.md).
+- For more information about container copy jobs, see [Copy jobs](container-copy.md).
