@@ -88,7 +88,7 @@ Start using offline copy by following [how to create, monitor, and manage copy j
 
 You can perform offline collection copy jobs to copy data within the same Azure Cosmos DB for Mongo DB account.
 
-## Copy a collections's data 
+## Copy a collection's data 
 
 1. Create the target Azure Cosmos DB collection by using the settings that you want to use (partition key, throughput granularity, request units, unique key, and so on).
 1. Stop the operations on the source collection by pausing the application instances or any clients that connect to it.
