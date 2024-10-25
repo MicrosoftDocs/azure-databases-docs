@@ -45,7 +45,7 @@ Benefits of accelerated logs include:
 
 - You can't enable the accelerated logs feature on servers that use [customer-managed keys](./concepts-customer-managed-key.md).
 
-- After you activate the accelerated logs feature, any previously configured value for the [`binlog_expire_logs_seconds`](https://dev.mysql.com/doc/refman/8.0/en/replication-options-binary-log.html#sysvar_binlog_expire_logs_seconds) server parameter is disregarded.
+- Once the accelerated logs feature is enabled, **the [`binlog_expire_logs_seconds`](https://dev.mysql.com/doc/refman/8.0/en/replication-options-binary-log.html#sysvar_binlog_expire_logs_seconds) server parameter is disregarded entirely, and any configured value will no longer have any effect**.
 
 - The accelerated logs feature is currently available only in the following regions:
 
