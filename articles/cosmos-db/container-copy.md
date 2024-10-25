@@ -217,7 +217,7 @@ Currently, container copy is supported in the following regions:
 
     If the job creation fails and displays the error *Owner resource doesn't exist* (error code 404), either the target container hasn't been created yet or the container name that's used to create the job doesn't match an actual container name.
 
-    Make sure that the target container is created before you run the job as specified in the [overview](#how-to-do-container-copy), and ensure that the container name in the job matches an actual container name.
+    Make sure that the target container is created before you run the job and ensure that the container name in the job matches an actual container name.
 
     ```output
     "code": "404",
