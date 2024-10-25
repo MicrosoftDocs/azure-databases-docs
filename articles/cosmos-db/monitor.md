@@ -76,7 +76,6 @@ For more information and detailed instructions, see the following articles:
 - [Monitor server-side latency](monitor-server-side-latency.md)
 - [Monitor request unit usage](monitor-request-unit-usage.md)
 - [Monitor normalized request unit usage](monitor-normalized-request-units.md)
-- [Monitor key updates](monitor-account-key-updates.md)
 
 For a list of all resource metrics supported in Azure Monitor, see [Supported Azure Monitor metrics](/azure/azure-monitor/essentials/metrics-supported). For a list of the platform metrics collected for Azure Cosmos DB, see [Monitoring Azure Cosmos DB data reference metrics](monitor-reference.md#metrics).
 

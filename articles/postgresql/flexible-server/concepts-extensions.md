@@ -4,7 +4,7 @@ description: Learn about the available PostgreSQL extensions in Azure Database f
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 06/27/2024
+ms.date: 09/30/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: conceptual
@@ -212,7 +212,7 @@ To update or change the database name for the existing schedule
 SELECT cron.alter_job(job_id:=MyJobID,database:='NewDBName');
 ```
 
-### pg_failover_slots (preview)
+### pg_failover_slots
 
 The PG Failover Slots extension enhances Azure Database for PostgreSQL flexible server when operating with both logical replication and high availability enabled servers. It effectively addresses the challenge within the standard PostgreSQL engine that doesn't preserve logical replication slots after a failover. Maintaining these slots is critical to prevent replication pauses or data mismatches during primary server role changes, ensuring operational continuity and data integrity.
 
@@ -287,7 +287,7 @@ A typical question people ask when they first try to use this extension is: Is p
 
 The answer to that is that it is actually both. [pg_repack/lib](https://github.com/reorg/pg_repack/tree/master/lib) holds the code for the extension, including the schema and SQL artifacts it creates, and the C library implementing the code of several of those functions. On the other hand, [pg_repack/bin](https://github.com/reorg/pg_repack/tree/master/bin) keeps the code for the client application, which knows how to interact with the programmability artifacts created by the extension. This client application aims to ease the complexity of interacting with the different interfaces surfaced by the server-side extension, by means of offering the user some command-line options which are easier to understand. The client application without the extension created on the database it is pointed to, is useless. The server-side extension on its own would be fully functional, but would require the user to understand a complicated interaction pattern consisting on executing queries to retrieve data that is used as input to functions implemented by the extension.
 
-### Permission denied for schema repack
+#### Permission denied for schema repack
 
 As of now, because of the way in which we grant permissions to the repack schema created by this extension, it is only supported to run pg_repack functionality from the context of `azure_pg_admin`.
 
@@ -316,6 +316,18 @@ There's a tradeoff between the query execution information `pg_stat_statements` 
 [postgres_fdw](https://www.postgresql.org/docs/current/postgres-fdw.html) allows you to connect from one Azure Database for PostgreSQL flexible server instance to another, or to another database in the same server. Azure Database for PostgreSQL flexible server supports both incoming and outgoing connections to any PostgreSQL server. The sending server needs to allow outbound connections to the receiving server. Similarly, the receiving server needs to allow connections from the sending server.
 
 We recommend deploying your servers with [virtual network integration](concepts-networking.md) if you plan to use this extension. By default virtual network integration allows connections between servers in the virtual network. You can also choose to use [virtual network network security groups](/azure/virtual-network/manage-network-security-group) to customize access.
+
+### pgstattuple
+
+When using 'pgstattuple' extension to try to obtain tuple statistics from objects kept in the `pg_toast` schema in versions of Postgres 11 through 13, you will receive a "permission denied for schema pg_toast" error.
+
+#### Permission denied for schema pg_toast
+
+Customers using PostgreSQL versions 11 through 13 on Azure Database for Flexible Server cannot use the `pgstattuple` extension on objects within the `pg_toast` schema.
+
+In PostgreSQL 16 and 17, the `pg_read_all_data` role is automatically granted to `azure_pg_admin`, allowing `pgstattuple` to function correctly. In PostgreSQL 14 and 15, customers can manually grant the `pg_read_all_data` role to `azure_pg_admin` to achieve the same result. However, in PostgreSQL 11 through 13, the `pg_read_all_data` role does not exist.
+
+Customers cannot directly grant the necessary permissions. If you need to be able to run `pgstattuple` to access objects under the `pg_toast` schema, please proceed to [create an Azure support request](/azure/azure-portal/supportability/how-to-create-azure-support-request).
 
 ### TimescaleDB
 

@@ -54,14 +54,14 @@ To create a Microsoft Entra Admin user, follow the following steps.
 
     - **MySQL and Microsoft Entra authentication** – Allows authentication using a native MySQL password or a Microsoft Entra account. Turns _OFF_ the server parameter aad_auth_only
 
-- **Select Identity** – Select/Add User assigned managed identity. The following permissions are required to allow the UMI to read from Microsoft Graph as the server identity. Alternatively, give the UMI the [Directory Readers](/azure/active-directory/roles/permissions-reference#directory-readers) role.
+- **Select Identity** – Select/Add User assigned managed identity. The following permissions are required to allow the UMI to read from Microsoft Graph as the server identity. Alternatively, give the user-assigned managed identity the [Directory Readers](/azure/active-directory/roles/permissions-reference#directory-readers) role.
 
     - [User.Read.All](/graph/permissions-reference#user-permissions): Allows access to Microsoft Entra user information.
     - [GroupMember.Read.All](/graph/permissions-reference#group-permissions): Allows access to Microsoft Entra group information.
     - [Application.Read.ALL](/graph/permissions-reference#application-resource-permissions): Allows access to Microsoft Entra service principal (application) information.
 
 > [!IMPORTANT]  
-> Only a [Global Administrator](/azure/active-directory/roles/permissions-reference#global-administrator) or [Privileged Role Administrator](/azure/active-directory/roles/permissions-reference#privileged-role-administrator) can grant these permissions.
+> Only a user with at least the [Privileged Role Administrator](/azure/active-directory/roles/permissions-reference#privileged-role-administrator) role can grant these permissions.
 
 - Select a valid Microsoft Entra user or a Microsoft Entra group in the customer tenant to be **Microsoft Entra administrator**. Once Microsoft Entra authentication support has been enabled, Microsoft Entra Admins can be added as security principals with permission to add Microsoft Entra users to the MySQL server.
 

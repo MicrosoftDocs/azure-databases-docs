@@ -70,6 +70,8 @@
           href: flexible-server/connect-csharp.md
         - name: Go
           href: flexible-server/connect-go.md
+        - name: PHP
+          href: flexible-server/connect-php.md
     - name: Database deployment
       items:
       - name: GitHub Actions
@@ -139,19 +141,21 @@
       - name: Autovacuum
         href: flexible-server/server-parameters-table-autovacuum.md?pivots=postgresql-16
       - name: Client Connection Defaults / Locale and Formatting
-        href: flexible-server/server-parameters-table-client-connection-defaults---locale-and-formatting.md?pivots=postgresql-16
+        href: flexible-server/server-parameters-table-client-connection-defaults-locale-and-formatting.md?pivots=postgresql-16
       - name: Client Connection Defaults / Other Defaults
-        href: flexible-server/server-parameters-table-client-connection-defaults---other-defaults.md?pivots=postgresql-16
+        href: flexible-server/server-parameters-table-client-connection-defaults-other-defaults.md?pivots=postgresql-16
       - name: Client Connection Defaults / Shared Library Preloading
-        href: flexible-server/server-parameters-table-client-connection-defaults---shared-library-preloading.md?pivots=postgresql-16
+        href: flexible-server/server-parameters-table-client-connection-defaults-shared-library-preloading.md?pivots=postgresql-16
       - name: Client Connection Defaults / Statement Behavior
-        href: flexible-server/server-parameters-table-client-connection-defaults---statement-behavior.md?pivots=postgresql-16
+        href: flexible-server/server-parameters-table-client-connection-defaults-statement-behavior.md?pivots=postgresql-16
       - name: Connections and Authentication / Authentication
-        href: flexible-server/server-parameters-table-connections-and-authentication---authentication.md?pivots=postgresql-16
+        href: flexible-server/server-parameters-table-connections-and-authentication-authentication.md?pivots=postgresql-16
       - name: Connections and Authentication / Connection Settings
-        href: flexible-server/server-parameters-table-connections-and-authentication---connection-settings.md?pivots=postgresql-16
+        href: flexible-server/server-parameters-table-connections-and-authentication-connection-settings.md?pivots=postgresql-16
       - name: Connections and Authentication / SSL
-        href: flexible-server/server-parameters-table-connections-and-authentication---ssl.md?pivots=postgresql-16
+        href: flexible-server/server-parameters-table-connections-and-authentication-ssl.md?pivots=postgresql-16
+      - name: Connections and Authentication / TCP Settings
+        href: flexible-server/server-parameters-table-connections-and-authentication-tcp-settings.md?pivots=postgresql-16
       - name: Customized Options
         href: flexible-server/server-parameters-table-customized-options.md?pivots=postgresql-16
       - name: Developer Options
@@ -170,64 +174,68 @@
         href: flexible-server/server-parameters-table-pgbouncer.md?pivots=postgresql-16
       - name: Preset Options
         href: flexible-server/server-parameters-table-preset-options.md?pivots=postgresql-16
+      - name: Process Title
+        href: flexible-server/server-parameters-table-process-title.md?pivots=postgresql-16
       - name: Query Tuning / Genetic Query Optimizer
-        href: flexible-server/server-parameters-table-query-tuning---genetic-query-optimizer.md?pivots=postgresql-16
+        href: flexible-server/server-parameters-table-query-tuning-genetic-query-optimizer.md?pivots=postgresql-16
       - name: Query Tuning / Other Planner Options
-        href: flexible-server/server-parameters-table-query-tuning---other-planner-options.md?pivots=postgresql-16
+        href: flexible-server/server-parameters-table-query-tuning-other-planner-options.md?pivots=postgresql-16
       - name: Query Tuning / Planner Cost Constants
-        href: flexible-server/server-parameters-table-query-tuning---planner-cost-constants.md?pivots=postgresql-16
+        href: flexible-server/server-parameters-table-query-tuning-planner-cost-constants.md?pivots=postgresql-16
       - name: Query Tuning / Planner Method Configuration
-        href: flexible-server/server-parameters-table-query-tuning---planner-method-configuration.md?pivots=postgresql-16
+        href: flexible-server/server-parameters-table-query-tuning-planner-method-configuration.md?pivots=postgresql-16
+      - name: Replication / Master Server
+        href: flexible-server/server-parameters-table-replication-master-server.md?pivots=postgresql-16
       - name: Replication / Primary Server
-        href: flexible-server/server-parameters-table-replication---primary-server.md?pivots=postgresql-16
+        href: flexible-server/server-parameters-table-replication-primary-server.md?pivots=postgresql-16
       - name: Replication / Sending Servers
-        href: flexible-server/server-parameters-table-replication---sending-servers.md?pivots=postgresql-16
+        href: flexible-server/server-parameters-table-replication-sending-servers.md?pivots=postgresql-16
       - name: Replication / Standby Servers
-        href: flexible-server/server-parameters-table-replication---standby-servers.md?pivots=postgresql-16
+        href: flexible-server/server-parameters-table-replication-standby-servers.md?pivots=postgresql-16
       - name: Replication / Subscribers
-        href: flexible-server/server-parameters-table-replication---subscribers.md?pivots=postgresql-16
-      - name: Reporting and Logging / Process Title
-        href: flexible-server/server-parameters-table-reporting-and-logging---process-title.md?pivots=postgresql-16
+        href: flexible-server/server-parameters-table-replication-subscribers.md?pivots=postgresql-16
       - name: Reporting and Logging / What to Log
-        href: flexible-server/server-parameters-table-reporting-and-logging---what-to-log.md?pivots=postgresql-16
+        href: flexible-server/server-parameters-table-reporting-and-logging-what-to-log.md?pivots=postgresql-16
       - name: Reporting and Logging / When to Log
-        href: flexible-server/server-parameters-table-reporting-and-logging---when-to-log.md?pivots=postgresql-16
+        href: flexible-server/server-parameters-table-reporting-and-logging-when-to-log.md?pivots=postgresql-16
       - name: Reporting and Logging / Where to Log
-        href: flexible-server/server-parameters-table-reporting-and-logging---where-to-log.md?pivots=postgresql-16
+        href: flexible-server/server-parameters-table-reporting-and-logging-where-to-log.md?pivots=postgresql-16
       - name: Resource Usage / Asynchronous Behavior
-        href: flexible-server/server-parameters-table-resource-usage---asynchronous-behavior.md?pivots=postgresql-16
+        href: flexible-server/server-parameters-table-resource-usage-asynchronous-behavior.md?pivots=postgresql-16
       - name: Resource Usage / Background Writer
-        href: flexible-server/server-parameters-table-resource-usage---background-writer.md?pivots=postgresql-16
+        href: flexible-server/server-parameters-table-resource-usage-background-writer.md?pivots=postgresql-16
       - name: Resource Usage / Cost-Based Vacuum Delay
-        href: flexible-server/server-parameters-table-resource-usage---cost-based-vacuum-delay.md?pivots=postgresql-16
+        href: flexible-server/server-parameters-table-resource-usage-cost-based-vacuum-delay.md?pivots=postgresql-16
       - name: Resource Usage / Disk
-        href: flexible-server/server-parameters-table-resource-usage---disk.md?pivots=postgresql-16
+        href: flexible-server/server-parameters-table-resource-usage-disk.md?pivots=postgresql-16
       - name: Resource Usage / Kernel Resources
-        href: flexible-server/server-parameters-table-resource-usage---kernel-resources.md?pivots=postgresql-16
+        href: flexible-server/server-parameters-table-resource-usage-kernel-resources.md?pivots=postgresql-16
       - name: Resource Usage / Memory
-        href: flexible-server/server-parameters-table-resource-usage---memory.md?pivots=postgresql-16
+        href: flexible-server/server-parameters-table-resource-usage-memory.md?pivots=postgresql-16
       - name: Statistics / Cumulative Query and Index Statistics
-        href: flexible-server/server-parameters-table-statistics---cumulative-query-and-index-statistics.md?pivots=postgresql-16
+        href: flexible-server/server-parameters-table-statistics-cumulative-query-and-index-statistics.md?pivots=postgresql-16
       - name: Statistics / Monitoring
-        href: flexible-server/server-parameters-table-statistics---monitoring.md?pivots=postgresql-16
+        href: flexible-server/server-parameters-table-statistics-monitoring.md?pivots=postgresql-16
+      - name: Statistics / Query and Index Statistics Collector
+        href: flexible-server/server-parameters-table-statistics-query-and-index-statistics-collector.md?pivots=postgresql-16
       - name: TLS
         href: flexible-server/server-parameters-table-tls.md?pivots=postgresql-16
       - name: Version and Platform Compatibility / Other Platforms and Clients
-        href: flexible-server/server-parameters-table-version-and-platform-compatibility---other-platforms-and-clients.md?pivots=postgresql-16
+        href: flexible-server/server-parameters-table-version-and-platform-compatibility-other-platforms-and-clients.md?pivots=postgresql-16
       - name: Version and Platform Compatibility / Previous PostgreSQL Versions
-        href: flexible-server/server-parameters-table-version-and-platform-compatibility---previous-postgresql-versions.md?pivots=postgresql-16
+        href: flexible-server/server-parameters-table-version-and-platform-compatibility-previous-postgresql-versions.md?pivots=postgresql-16
       - name: Write-Ahead Log / Archive Recovery
-        href: flexible-server/server-parameters-table-write-ahead-log---archive-recovery.md?pivots=postgresql-16
+        href: flexible-server/server-parameters-table-write-ahead-log-archive-recovery.md?pivots=postgresql-16
       - name: Write-Ahead Log / Archiving
-        href: flexible-server/server-parameters-table-write-ahead-log---archiving.md?pivots=postgresql-16
+        href: flexible-server/server-parameters-table-write-ahead-log-archiving.md?pivots=postgresql-16
       - name: Write-Ahead Log / Checkpoints
-        href: flexible-server/server-parameters-table-write-ahead-log---checkpoints.md?pivots=postgresql-16
+        href: flexible-server/server-parameters-table-write-ahead-log-checkpoints.md?pivots=postgresql-16
       - name: Write-Ahead Log / Recovery Target
-        href: flexible-server/server-parameters-table-write-ahead-log---recovery-target.md?pivots=postgresql-16
+        href: flexible-server/server-parameters-table-write-ahead-log-recovery-target.md?pivots=postgresql-16
       - name: Write-Ahead Log / Recovery
-        href: flexible-server/server-parameters-table-write-ahead-log---recovery.md?pivots=postgresql-16
+        href: flexible-server/server-parameters-table-write-ahead-log-recovery.md?pivots=postgresql-16
       - name: Write-Ahead Log / Settings
-        href: flexible-server/server-parameters-table-write-ahead-log---settings.md?pivots=postgresql-16
+        href: flexible-server/server-parameters-table-write-ahead-log-settings.md?pivots=postgresql-16
     - name: Troubleshooting guides
       href: flexible-server/concepts-troubleshooting-guides.md
     - name: Logical replication and logical decoding
@@ -528,6 +536,10 @@
         href: flexible-server/azure-local-ai.md
       - name: Create embeddings with azure_local_ai
         href: flexible-server/generative-ai-azure-local-ai.md
+    - name: Vector indexing (pg_diskann)
+      items:
+      - name: Overview  
+        href: flexible-server/how-to-use-pgdiskann.md
     - name: Azure Storage (pg_azure_storage)
       href: flexible-server/reference-pg-azure-storage.md
     - name: Vector similarity search (pgvector)
@@ -545,6 +557,8 @@
         displayName: pg_partman
 - name: Migrate to Azure Database for PostgreSQL
   items:
+  - name: What's happening to Azure Database for PostgreSQL - Single Server?
+    href: migrate/whats-happening-to-postgresql-single-server.md
   - name: Migration Service
     items:
     - name: Overview
@@ -604,8 +618,6 @@
   items:
   - name: Overview
     href: single-server/overview-single-server.md
-  - name: What's happening to Azure Database for PostgreSQL - Single Server?
-    href: single-server/whats-happening-to-postgresql-single-server.md
   - name: Quickstarts
     expanded: true
     items:

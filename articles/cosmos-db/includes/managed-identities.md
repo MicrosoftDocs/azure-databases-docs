@@ -1,7 +1,7 @@
 ---
 ms.service: azure-cosmos-db
 ms.topic: include
-ms.date: 09/24/2024
+ms.date: 10/01/2024
 ms.custom: subject-msia
 zone_pivot_groups: azure-interface-portal-cli-powershell-bicep
 ---
@@ -86,7 +86,7 @@ Create a new Azure service with a system-assigned managed identity. This section
 
     ```json
     {
-      "principalId": "bbbbbbbb-1111-2222-3333-cccccccccccc",
+      "principalId": "aaaaaaaa-bbbb-cccc-1111-222222222222",
       "tenantId": "aaaabbbb-0000-cccc-1111-dddd2222eeee",
       "type": "SystemAssigned",
       "userAssignedIdentities": null
@@ -165,7 +165,7 @@ Create a new Azure service with a system-assigned managed identity. This section
 
     ```json
     {
-      "principalId": "bbbbbbbb-1111-2222-3333-cccccccccccc",
+      "principalId": "aaaaaaaa-bbbb-cccc-1111-222222222222",
       "tenantId": "aaaabbbb-0000-cccc-1111-dddd2222eeee",
       "type": "SystemAssigned"
     }
@@ -268,7 +268,7 @@ Create a new Azure service with a system-assigned managed identity. This section
 
     ```output
     Identity : {
-                 "principalId": "bbbbbbbb-1111-2222-3333-cccccccccccc",
+                 "principalId": "aaaaaaaa-bbbb-cccc-1111-222222222222",
                  "tenantId": "aaaabbbb-0000-cccc-1111-dddd2222eeee",
                  "type": "SystemAssigned"
                }
@@ -315,7 +315,7 @@ Create a user-assigned managed identity that can be used with one or more Azure 
     ```
 
     > [!NOTE]
-    > In this example, the `id` value would be `/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourcegroups/msdocs-identity-example/providers/Microsoft.ManagedIdentity/userAssignedIdentities/msdocs-identity-example-user-assigned`. This example uses fictituous data and your identifier would be distinct from this example.
+    > In this example, the `id` value would be `/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourcegroups/msdocs-identity-example/providers/Microsoft.ManagedIdentity/userAssignedIdentities/msdocs-identity-example-user-assigned`. This example uses fictitious data and your identifier would be distinct from this example.
 
 ::: zone-end
 
@@ -360,7 +360,7 @@ Create a user-assigned managed identity that can be used with one or more Azure 
     ```
 
     > [!NOTE]
-    > In this example, the `name.value` would be `msdocs-identity-example-user-assigned`. This example uses fictituous data and your identifier would be distinct from this example.
+    > In this example, the `name.value` would be `msdocs-identity-example-user-assigned`. This example uses fictitious data and your identifier would be distinct from this example.
 
 ::: zone-end
 
@@ -429,7 +429,7 @@ Create a user-assigned managed identity that can be used with one or more Azure 
     ```
 
     > [!NOTE]
-    > In this example, the `Id` value would be `/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourcegroups/msdocs-identity-example/providers/Microsoft.ManagedIdentity/userAssignedIdentities/msdocs-identity-example-user-assigned`. This example uses fictituous data and your identifier would be distinct from this example.
+    > In this example, the `Id` value would be `/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourcegroups/msdocs-identity-example/providers/Microsoft.ManagedIdentity/userAssignedIdentities/msdocs-identity-example-user-assigned`. This example uses fictitious data and your identifier would be distinct from this example.
 
 ::: zone-end
 

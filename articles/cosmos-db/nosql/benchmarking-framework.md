@@ -19,7 +19,7 @@ There are more choices, now than ever, on the type of database to use with your 
 
 - An Azure account with an active subscription. [Create an account for free](https://azure.microsoft.com/free).
 - Azure Cosmos DB for NoSQL account. [Create a API for NoSQL account](how-to-create-account.md).
-  - Make sure you note the endpoint URI and primary key for the account. [API for NoSQL primary keys](../database-security.md?tabs=sql-api#primary-keys).
+  - Make sure you note the endpoint URI and primary key for the account.
 - Azure Storage account. [Create an Azure Storage account](/azure/storage/common/storage-account-create).
   - Make sure you note the connection string for the storage account. [Vies Azure Storage connection string](/azure/storage/common/storage-account-keys-manage?tabs=azure-portal#view-account-access-keys).
 - Second empty resource group. [Create a resource group](/azure/azure-resource-manager/management/manage-resource-groups-portal#create-resource-groups).

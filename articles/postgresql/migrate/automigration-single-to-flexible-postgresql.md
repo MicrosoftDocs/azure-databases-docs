@@ -17,7 +17,7 @@ ms.custom:
 
 [!INCLUDE [applies-to-postgresql-single-server](../includes/applies-to-postgresql-single-server.md)]
 
-**Automigration** from Azure Database for Postgresql – Single Server to Flexible Server is a service-initiated migration during a planned downtime window for Single Server running PostgreSQL 11 and database workloads with **Basic, General Purpose or Memory Optimized SKU**, data storage used **<= 5 GiB** and **no complex features (CMK, Microsoft Entra ID, Read Replica, Private Link or VNet rules) enabled**. The eligible servers are identified by the service and are sent advance notifications detailing steps to review migration details and make modifications if necessary.
+**Automigration** from Azure Database for Postgresql – Single Server to Flexible Server is a service-initiated migration during a planned downtime window for Single Server running PostgreSQL 11 and database workloads with **Basic, General Purpose or Memory Optimized SKU**, data storage used **<= 10 GiB** and **no complex features (CMK, Microsoft Entra ID, Read Replica or Private Link) enabled**. The eligible servers are identified by the service and are sent advance notifications detailing steps to review migration details and make modifications if necessary.
 
 The automigration provides a highly resilient and self-healing offline migration experience during a planned migration window, with up to **20 mins** of downtime. The migration service is a hosted solution using the [pgcopydb](https://github.com/dimitri/pgcopydb) binary and provides a fast and efficient way of copying databases from the source PostgreSQL instance to the target. This migration removes the overhead to manually migrate your server. Post migration, you can take advantage of the benefits of Flexible Server, including better price & performance, granular control over database configuration, and custom maintenance windows. Following described are the key phases of the migration:
 
@@ -36,8 +36,8 @@ The automigration provides a highly resilient and self-healing offline migration
 > [!NOTE]
 > The Automigration service selects Single server to migrate based on the following criteria:
 > - The server runs PostgreSQL version 11
-> - Servers with no complex feature such as CMK, Microsoft Entra ID, Read Replica, VNet rules and Private end-point
-> - Size of data <= 5GB
+> - Servers with no complex feature such as CMK, Microsoft Entra ID, Read Replica and Private end-point
+> - Size of data <= 10 GB
 > - Public access is enabled
 
 The preceding filters are used to select servers to be Automigrated. Servers can also be nominated for Automigration by the user. The nomination process is more flexible and not all filters are applicable.
@@ -110,6 +110,14 @@ Here's the info you need to know post automigration:
 - To enable [query perf insights](../flexible-server/concepts-query-performance-insight.md), you need to enable query store on the Flexible server which isn't enabled by default
 - If [High Availability](/azure/reliability/reliability-postgresql-flexible-server) is needed, you can enable it with zero downtime.
 
+### Handling VNet rules in Flexible server
+
+In Azure Database for PostgreSQL Single Server, a virtual network (VNet) rule is a subnet listed in the server’s access control list (ACL). This rule allows the Single Server to accept communication from nodes within that particular subnet.
+For Flexible Server, VNet rules are not supported. Instead, Flexible Server allows the creation of [private endpoints](../flexible-server/concepts-networking-private-link.md), enabling the server to function within your virtual network. A private endpoint assigns a private IP to the Flexible Server, and all traffic between your virtual network and the server travels securely via the Azure backbone network, eliminating the need for public internet exposure.
+
+After the migration, you must add a private endpoint to your Flexible Server for all subnets previously covered by VNet rules on your Single Server. You can complete this process using either the [Azure Portal](../flexible-server/how-to-manage-virtual-network-private-endpoint-portal.md) or the [Azure CLI](../flexible-server/how-to-manage-virtual-network-private-endpoint-cli.md).
+Once this step is completed, your network connectivity will remain intact on the Flexible Server after the migration from Single Server.
+
 ## Frequently Asked Questions (FAQs)
 
 **Q. Why am I being auto-migrated​?**
@@ -141,7 +149,7 @@ Here's the info you need to know post automigration:
 
 **Q. I see a pricing difference on my potential move from postgresql Basic Single Server to postgresql Flexible Server??​**
 
-**A.** Few servers might see a small price revision after migration as the minimum storage limit on both offerings is different (5 GiB on Single Server and 32 GiB on Flexible Server). Storage cost for Flexible Server is marginally higher than Single Server. Any price increase is offset through better throughput and performance compared to Single Server. For more information on Flexible server pricing, click [here](https://azure.microsoft.com/pricing/details/postgresql/flexible-server/)
+**A.** Few servers might see a minor price revision after migration as the minimum storage limit on both offerings is different (5 GiB on Single Server and 32 GiB on Flexible Server). Storage cost for Flexible Server is marginally higher than Single Server. Any price increase is offset through better throughput and performance compared to Single Server. For more information on Flexible server pricing, click [here](https://azure.microsoft.com/pricing/details/postgresql/flexible-server/)
 
 ## Related content
 

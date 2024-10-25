@@ -57,7 +57,7 @@ You can choose to restore any combination of provisioned throughput containers, 
 The following configurations aren't restored after the point-in-time recovery:
 
 * A subset of containers under a shared throughput database can't be restored. The entire database can be restored as a whole.
-* Firewall, Virtual Network [VNET](how-to-configure-vnet-service-endpoint.md), Data plane Role based access control [RBAC](role-based-access-control.md),  or private endpoint settings. 
+* Firewall, Virtual Network [VNET](how-to-configure-vnet-service-endpoint.md), Data plane Role based access control RBAC,  or private endpoint settings. 
 * All the Regions from the source account.
 * Stored procedures, triggers, UDFs.
 * Role-based access control assignments. 
@@ -122,7 +122,7 @@ For example, if you have 1 TB of data in two regions then:
 
 ## Time to live 
 
-* The default restore process restores all the properties of a container including its TTL configuration by default, this can result in deletion of data if restore is done without way to disable the TTL. To prevent the deletion please pass parameter to disable TTL in [powershell](./restore-account-continuous-backup.md#trigger-restore-ps) (-DisableTtl $true) or [cli](./restore-account-continuous-backup.md#trigger-restore-cli) (--disable-ttl True) while doing the restore.  
+* The default restore process restores all the properties of a container including its TTL configuration by default, this can result in deletion of data if restore is done without way to disable the TTL. To prevent the deletion please pass parameter to disable TTL in [PowerShell](./restore-account-continuous-backup.md#trigger-restore-ps) (-DisableTtl $true) or [cli](./restore-account-continuous-backup.md#trigger-restore-cli) (--disable-ttl True) while doing the restore.  
 
 ## Customer-managed keys
 
@@ -139,7 +139,7 @@ Currently the point in time restore functionality has the following limitations:
 
 * `Multi region write` accounts aren't supported. 
 
-* Synapse Link for database accounts using continuous backup mode is GA. The opposiste situation, continuous backup mode for Synapse Link enabled accounts, is in public preview. Currently, customers that disabled Synapse Link from containers can't migrate to continuous backup. And analytical store isn't included in backups. For more information about backup and analytical store, see [analytical store backup](analytical-store-introduction.md#backup).
+* Synapse Link for database accounts using continuous backup mode is GA. The opposite situation, continuous backup mode for Synapse Link enabled accounts, is in public preview. Currently, customers that disabled Synapse Link from containers can't migrate to continuous backup. And analytical store isn't included in backups. For more information about backup and analytical store, see [analytical store backup](analytical-store-introduction.md#backup).
 
 * The restored account is created in the same region where your source account exists. You can't restore an account into a region where the source account didn't exist.
 

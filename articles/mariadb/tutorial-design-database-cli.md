@@ -88,7 +88,7 @@ The result is in JSON format. Make a note of the **fullyQualifiedDomainName** an
   "administratorLogin": "myadmin",
   "administratorLoginPassword": null,
   "fullyQualifiedDomainName": "mydemoserver.mariadb.database.azure.com",
-  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.DBforMariaDB/servers/mydemoserver",
+  "id": "/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/myresourcegroup/providers/Microsoft.DBforMariaDB/servers/mydemoserver",
   "location": "westus",
   "name": "mydemoserver",
   "resourceGroup": "myresourcegroup",

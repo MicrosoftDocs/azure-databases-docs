@@ -7,7 +7,7 @@ author: niklarin
 ms.author: nlarin
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
-ms.topic: quickstart
+ms.topic: how-to
 ms.date: 06/12/2024
 ---
 

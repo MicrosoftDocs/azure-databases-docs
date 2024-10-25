@@ -287,7 +287,7 @@ To change the number of containers available in the emulator, run the following 
 
 1. Exit all open instances by right-clicking the **emulator** icon on the system tray, and then clicking **Exit**. It might take a minute for all instances to exit.
 
-1. Install the latest version of the [emulator](https://cosmosdbportalstorage.azureedge.net/emulator/2023_01_30_2.14.11-dfad83c1/azure-cosmosdb-emulator-2.14.11-dfad83c1.msi).
+1. Install the latest version of the [emulator](https://aka.ms/cosmosdb-emulator).
 
 1. Launch the emulator with the PartitionCount flag by setting a value <= 250. For example: `C:\Program Files\emulator> Microsoft.Azure.Cosmos.Emulator.exe /PartitionCount=100`.
 

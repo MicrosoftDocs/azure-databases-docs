@@ -226,14 +226,16 @@ ORDER BY VectorDistance(c.contentVector, [1,2,3])  
 
 ## Current limits and constraints
 Vector indexing and search in Azure Cosmos DB for NoSQL has some limitations while in early stages of public preview.
-- You can specify, at most, one index type per path in the vector index policy
 - You can specify, at most, one DiskANN index type per container
 - Vector indexing is only supported on new containers.
 - Vectors indexed with the `flat` index type can be at most 505 dimensions. Vectors indexed with the `quantizedFlat` or `DiskANN` index type can be at most 4,096 dimensions.
-- `quantizedFlat` utilizes the same quantization method as DiskANN and isn't configurable at this time. 
-- Shared throughput databases can't use the vector search preview feature at this time.
-- Ingestion rate should be limited while using an early preview of DiskANN.
-- At this time in the preview, Vector Search is not supported on accounts with Analytical Store, Shared Throughput, Customer Managed Keys, Continuous Backup, Storage Analytics, and All Versions and Deletes Change Feed.
+- The`quantizedFlat` utilizes the same quantization method as DiskANN.
+- The rate of vector insertions should be limited while using an early preview of DiskANN. Very large ingestion (in excess of 5M vectors) may require additional index build time. 
+- Shared throughput databases are unsupported.
+- At this time in the preview, Vector Search is not supported on accounts with Analytical Store (and Synapse Link), Shared Throughput, Customer Managed Keys, Continuous Backup, Storage Analytics, and All Versions and Deletes Change Feed. Once the Vector Search Preview is enabled, it cannot be disabled.
+
+  > [!IMPORTANT]
+> At this time in the preview, Vector Search is not supported on accounts with Analytical Store (and Synapse Link), Shared Throughput, Customer Managed Keys, Continuous Backup, Storage Analytics, and All Versions and Deletes Change Feed. Once the Vector Search Preview is enabled, it cannot be disabled.
 
 ## Next step
 - [DiskANN + Azure Cosmos DB - Microsoft Mechanics Video](https://www.youtube.com/watch?v=MlMPIYONvfQ)

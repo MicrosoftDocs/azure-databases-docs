@@ -5,22 +5,23 @@ author: iriaosara
 ms.author: iriaosara
 ms.service: azure-cosmos-db
 ms.topic: how-to
-ms.date: 02/18/2022
+ms.date: 10/24/2024
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
 ---
 
 # Configure IP firewall in Azure Cosmos DB
+
 [!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
 To secure the data stored in your account, Azure Cosmos DB supports a secret based authorization model that utilizes a strong Hash-based Message Authentication Code (HMAC). Additionally, Azure Cosmos DB supports IP-based access controls for inbound firewall support. This model is similar to the firewall rules of a traditional database system and provides another level of security to your account. With firewalls, you can configure your Azure Cosmos DB account to be accessible only from an approved set of machines and/or cloud services. Access to data stored in your Azure Cosmos DB database from these approved sets of machines and services will still require the caller to present a valid authorization token.
 
-## <a id="ip-access-control-overview"></a>IP access control
+## IP access control
 
-By default, your Azure Cosmos DB account is accessible from internet, as long as the request is accompanied by a valid authorization token. To configure IP policy-based access control, the user must provide the set of IP addresses or IP address ranges in CIDR (Classless Inter-Domain Routing) form to be included as the allowed list of client IPs to access a given Azure Cosmos DB account. Once this configuration is applied, any requests originating from machines outside this allowed list receive 403 (Forbidden) response. When using IP firewall, it is recommended to allow Azure portal to access your account. Access is required to allow use of data explorer as well as to retrieve metrics for your account that show up on the Azure portal. When using data explorer, in addition to allowing Azure portal to access your account, you also need to update your firewall settings to add your current IP address to the firewall rules. Note that firewall changes may take up to 15 minutes to propagate and the firewall may exhibit an inconsistent behavior during this period.
+By default, your Azure Cosmos DB account is accessible from internet, as long as the request is accompanied by a valid authorization token. To configure IP policy-based access control, the user must provide the set of IP addresses or IP address ranges in CIDR (Classless Inter-Domain Routing) form to be included as the allowed list of client IPs to access a given Azure Cosmos DB account. Once this configuration is applied, any requests originating from machines outside this allowed list receive 403 (Forbidden) response. When using IP firewall, it's recommended to allow Azure portal to access your account. Access is required to allow use of data explorer and to retrieve metrics for your account that show up on the Azure portal. When using data explorer, in addition to allowing Azure portal to access your account, you also need to update your firewall settings to add your current IP address to the firewall rules. Firewall changes may take up to 15 minutes to propagate and the firewall may exhibit an inconsistent behavior during this period.
 
-You can combine IP-based firewall with subnet and VNET access control. By combining them, you can limit access to any source that has a public IP and/or from a specific subnet within VNET. To learn more about using subnet and VNET-based access control see [Access Azure Cosmos DB resources from virtual networks](./how-to-configure-vnet-service-endpoint.md).
+You can combine IP-based firewall with subnet and virtual network access control. By combining them, you can limit access to any source that has a public IP and/or from a specific subnet within virtual network. To learn more about using subnet and virtual network-based access control see [Access Azure Cosmos DB resources from virtual networks](./how-to-configure-vnet-service-endpoint.md).
 
-To summarize, authorization token is always required to access an Azure Cosmos DB account. If IP firewall and VNET Access Control List (ACLs) are not set up, the Azure Cosmos DB account can be accessed with the authorization token. After the IP firewall or VNET ACLs or both are set up on the Azure Cosmos DB account, only requests originating from the sources you have specified (and with the authorization token) get valid responses. 
+To summarize, authorization token is always required to access an Azure Cosmos DB account. If IP firewall and virtual network Access Control List (ACLs) aren't set up, the Azure Cosmos DB account can be accessed with the authorization token. After the IP firewall or virtual network ACLs or both are set up on the Azure Cosmos DB account, only requests originating from the sources you have specified (and with the authorization token) get valid responses.
 
 You can secure the data stored in your Azure Cosmos DB account by using IP firewalls. Azure Cosmos DB supports IP-based access controls for inbound firewall support. You can set an IP firewall on the Azure Cosmos DB account by using one of the following ways:
 
@@ -28,11 +29,11 @@ You can secure the data stored in your Azure Cosmos DB account by using IP firew
 * Declaratively by using an Azure Resource Manager template
 * Programmatically through the Azure CLI or Azure PowerShell by updating the **ipRangeFilter** property
 
-## <a id="configure-ip-policy"></a> Configure an IP firewall by using the Azure portal
+## Configure an IP firewall by using the Azure portal
 
-To set the IP access control policy in the Azure portal, go to the Azure Cosmos DB account page and select **Firewall and virtual networks** on the navigation menu. Change the **Allow access from** value to **Selected networks**, and then select **Save**. If you change the public access network settings, either by disabling it or allowing it for all networks, you will lose the firewall IP that you may have set up before. 
+To set the IP access control policy in the Azure portal, go to the Azure Cosmos DB account page and select **Networking** on the navigation menu. Change the **Allow access from** value to **Selected networks**, and then select **Save**. If you are not adding any IP addresses yet, you will also have to **check the box to acknowledge that all VNets and IPs will be blocked**. If you change the public access network settings, either by disabling it or allowing it for all networks, you lose the firewall IP that you might have set up before.
 
-:::image type="content" source="./media/how-to-configure-firewall/azure-portal-firewall.png" alt-text="Screenshot showing how to open the Firewall page in the Azure portal" border="true":::
+![Screenshot of the Azure Cosmos DB networking firewall settings in the Azure portal.](media/how-to-configure-firewall/networking-firewall.png)
 
 When IP access control is turned on, the Azure portal provides the ability to specify IP addresses, IP address ranges, and switches. Switches enable access to other Azure services and the Azure portal. The following sections give details about these switches.
 
@@ -41,7 +42,7 @@ When IP access control is turned on, the Azure portal provides the ability to sp
 
 ### Allow requests from the Azure portal
 
-When you enable an IP access control policy programmatically, you need to add the IP address for the Azure portal to the **ipRangeFilter** property to maintain access. 
+When you enable an IP access control policy programmatically, you may need to add the IP addresses for the Azure portal services to the **ipRangeFilter** property to keep using some portal functionality. 
 
 Portal scenarios that require this option to be enabled include:
 
@@ -52,23 +53,27 @@ Portal scenarios that require this option to be enabled include:
   - Power BI
   - Azure Synapse
 
-The portal IP addresses are:
+You can enable requests to access the Azure portal by selecting the **Add Azure Portal Middleware IPs** option, as shown in the following screenshot:
 
-|Region|IP address|
-|------|----------|
-|China|139.217.8.252|
-|US Gov|52.244.48.71|
-|All other regions|104.42.195.92|
+![Screenshot of the options to add middleware IP addresses to networking in the Azure portal.](media/how-to-configure-firewall/networking-add-middleware1.png)
 
-You can enable requests to access the Azure portal by selecting the **Allow access from Azure portal** option, as shown in the following screenshot:
 
-:::image type="content" source="./media/how-to-configure-firewall/enable-azure-portal.png" alt-text="Screenshot showing how to enable Azure portal access" border="true":::
 
-#### New Azure portal IP Addresses
+The Azure Portal Middleware IP addresses will be added to a separate list, as shown in the following screenshot. Click on **Save** to add these addresses to your database account. More details on the Middleware IP addresses can be found further below in this article.
 
-Cosmos DB portal services are transitioning to new infrastructure in 2024. As part of this transition, accounts with firewall enabled will require new IP addresses to be allowed to continue access to some portal functionality, such as Data Explorer. This move also introduces dedicated IP addresses for Mongo DB and Apache Cassandra API accounts.
+![Screenshot of the list of middleware IP addresses for networking in the Azure portal.](media/how-to-configure-firewall/networking-middleware-list.png)
 
-During this transition, the **Allow access from Azure portal** option adds both current and new IP addresses to account firewall settings (including MongoDB and Cassandra specific addresses for those accounts) When the transition is complete, a portal option will be made available to remove the old IP addresses.
+The Azure Portal Middleware IP addresses can be removed by clicking on the **Remove Azure Portal Middleware IPs** option and then selecting **Save**.
+
+#### Azure Portal Middleware IP Addresses
+
+The Azure Portal Middleware IP addresses are listed below. Some IP addresses are only required for specific Database Account APIs. When you add the Middleware IP Addresses in the portal, as described above, only the IP addresses required for your account will be added.  
+  
+For example:
+
+- For an API for NoSQL account, the IP addresses from the **All** category will be added. 
+
+- For an API for MongoDB account, the IP addresses from the **All** and **MongoDB only** categories will be added.
 
 ##### Azure Public
 
@@ -94,6 +99,20 @@ During this transition, the **Allow access from Azure portal** option adds both 
 |MongoDB only|52.244.176.112, 52.247.148.42|
 |Apache Cassandra only|52.244.50.101, 52.227.165.24|
 
+#### Legacy Middleware IP Addresses
+
+The Cosmos DB portal services recently transitioned to new infrastructure that required new Middleware IP addresses. With the completion of that transition, the legacy IP addresses used by the old infrastructure can now be safely removed. If your account has legacy Middleware IP addresses present in the firewall rules, the **Remove Azure Portal Legacy Middleware IPs** option will be displayed. Select that option and then Save to remove the legacy IP addresses.
+
+![Screenshot of the option to remove legacy middleware IPs for networking in the Azure portal.](media/how-to-configure-firewall/networking-remove-legacy.png)
+
+The legacy IP addresses are dependent on cloud environment:
+
+|Azure Environment| IP Addresses|
+| -------- | -------- |
+|Azure Public|104.42.195.92, 40.76.54.131, 52.176.6.30, 52.169.50.45, 52.187.184.26|
+|Azure China|139.217.8.252, 52.176.6.30, 52.169.50.45, 52.187.184.26|
+|Azure US Government|52.244.48.71, 52.176.6.30, 52.169.50.45, 52.187.184.26|
+
 > [!NOTE]
 > If you are experiencing challenges connecting to your Azure Cosmos DB account from the Data Explorer, review the [Data Explorer troubleshooting guide](/troubleshoot/azure/cosmos-db/data-explorer).
 
@@ -101,9 +120,12 @@ During this transition, the **Allow access from Azure portal** option adds both 
 
 If you access your Azure Cosmos DB account from services that don’t provide a static IP (for example, Azure Stream Analytics and Azure Functions), you can still use the IP firewall to limit access. You can enable access from other sources within the Azure by selecting the **Accept connections from within Azure datacenters** option, as shown in the following screenshot:
 
-:::image type="content" source="./media/how-to-configure-firewall/enable-azure-services.png" alt-text="Screenshot showing how to accept connections from Azure datacenters" border="true":::
+![Screenshot of the option to accept connections from within public Azure datacenters in the Azure portal.](media/how-to-configure-firewall/networking-add-azure-datacenters.png)
 
-When you enable this option, the IP address `0.0.0.0` is added to the list of allowed IP addresses. The `0.0.0.0` IP address restricts requests to your Azure Cosmos DB account from Azure datacenter IP range. This setting does not allow access for any other IP ranges to your Azure Cosmos DB account.
+When you enable this option, the IP address `0.0.0.0` is added to the list of allowed IP addresses. The `0.0.0.0` IP address restricts requests to your Azure Cosmos DB account from Azure datacenter IP range. This setting doesn't allow access for any other IP ranges to your Azure Cosmos DB account.
+
+> [!NOTE]
+> Setting publicNetworkAccess to Disabled takes precedence over this **Accept connection from within Azure datacenters** option. See [blocking-public-network-access-during-account-creation](/azure/cosmos-db/how-to-configure-private-endpoints?tabs=arm-bicep#blocking-public-network-access-during-account-creation)
 
 > [!NOTE]
 > This option configures the firewall to allow all requests from Azure, including requests from the subscriptions of other customers deployed in Azure. The list of IPs allowed by this option is wide, so it limits the effectiveness of a firewall policy. Use this option only if your requests don’t originate from static IPs or subnets in virtual networks. Choosing this option automatically allows access from the Azure portal because the Azure portal is deployed in Azure.
@@ -114,13 +136,13 @@ To simplify development, the Azure portal helps you identify and add the IP of y
 
 The portal automatically detects the client IP address. It might be the client IP address of your machine, or the IP address of your network gateway. Make sure to remove this IP address before you take your workloads to production.
 
-To add your current IP to the list of IPs, select **Add my current IP**. Then select **Save**.
+To add your current IP to the list of IPs, select **Add your current IP**. Then select **Save**.
 
-:::image type="content" source="./media/how-to-configure-firewall/enable-current-ip.png" alt-text="Screenshot showing a how to configure firewall settings for the current IP" border="true":::
+![Screenshot of the option to add your current IP address to networking in the Azure portal.](media/how-to-configure-firewall/networking-add-current-ip.png)
 
 ### Requests from cloud services
 
-In Azure, cloud services are a common way for hosting middle-tier service logic by using Azure Cosmos DB. To enable access to your Azure Cosmos DB account from a cloud service, you must add the public IP address of the cloud service to the allowed list of IP addresses associated with your Azure Cosmos DB account by [configuring the IP access control policy](#configure-ip-policy). This ensures that all role instances of cloud services have access to your Azure Cosmos DB account.
+In Azure, cloud services are a common way for hosting middle-tier service logic by using Azure Cosmos DB. To enable access to your Azure Cosmos DB account from a cloud service, you must add the public IP address of the cloud service to the allowed list of IP addresses associated with your Azure Cosmos DB account by [configuring the IP access control policy](#configure-an-ip-firewall-by-using-the-azure-portal). This ensures that all role instances of cloud services have access to your Azure Cosmos DB account.
 
 You can retrieve IP addresses for your cloud services in the Azure portal, as shown in the following screenshot:
 
@@ -130,7 +152,7 @@ When you scale out your cloud service by adding role instances, those new instan
 
 ### Requests from virtual machines
 
-You can also use [virtual machines](https://azure.microsoft.com/services/virtual-machines/) or [virtual machine scale sets](/azure/virtual-machine-scale-sets/overview) to host middle-tier services by using Azure Cosmos DB. To configure your Azure Cosmos DB account such that it allows access from virtual machines, you must configure the public IP address of the virtual machine and/or virtual machine scale set as one of the allowed IP addresses for your Azure Cosmos DB account by [configuring the IP access control policy](#configure-ip-policy).
+You can also use [virtual machines](https://azure.microsoft.com/services/virtual-machines/) or [virtual machine scale sets](/azure/virtual-machine-scale-sets/overview) to host middle-tier services by using Azure Cosmos DB. To configure your Azure Cosmos DB account such that it allows access from virtual machines, you must configure the public IP address of the virtual machine and/or virtual machine scale set as one of the allowed IP addresses for your Azure Cosmos DB account by [configuring the IP access control policy](#configure-an-ip-firewall-by-using-the-azure-portal).
 
 You can retrieve IP addresses for virtual machines in the Azure portal, as shown in the following screenshot:
 
@@ -144,18 +166,18 @@ When you access your Azure Cosmos DB account from a computer on the internet, th
 
 ### Add outbound rules to the firewall
 
-To access a current list of outbound IP ranges to add to your firewall settings, please see [Download Azure IP Ranges and Service Tags](https://www.microsoft.com/download/details.aspx?id=56519).
+To access a current list of outbound IP ranges to add to your firewall settings, see [Download Azure IP Ranges and Service Tags](https://www.microsoft.com/download/details.aspx?id=56519).
 
-To automate the list, please see [Use the Service Tag Discovery API](/azure/virtual-network/service-tags-overview#use-the-service-tag-discovery-api).
+To automate the list, see [Use the Service Tag Discovery API](/azure/virtual-network/service-tags-overview#use-the-service-tag-discovery-api).
 
-## <a id="configure-ip-firewall-arm"></a>Configure an IP firewall by using a Resource Manager template
+## Configure an IP firewall by using a Resource Manager template
 
-To configure access control to your Azure Cosmos DB account, make sure that the Resource Manager template specifies the **ipRules** property with an array of allowed IP ranges. If configuring IP Firewall to an already deployed Azure Cosmos DB account, ensure the `locations` array matches what is currently deployed. You cannot simultaneously modify the `locations` array and other properties. For more information and samples of Azure Resource Manager templates for Azure Cosmos DB see, [Azure Resource Manager templates for Azure Cosmos DB](./nosql/samples-resource-manager-templates.md)
+To configure access control to your Azure Cosmos DB account, make sure that the Resource Manager template specifies the **ipRules** property with an array of allowed IP ranges. If configuring IP Firewall to an already deployed Azure Cosmos DB account, ensure the `locations` array matches what is currently deployed. You can't simultaneously modify the `locations` array and other properties. For more information and samples of Azure Resource Manager templates for Azure Cosmos DB, see, [Azure Resource Manager templates for Azure Cosmos DB](./nosql/samples-resource-manager-templates.md)
 
 > [!IMPORTANT]
 > The **ipRules** property has been introduced with API version 2020-04-01. Previous versions exposed an **ipRangeFilter** property instead, which is a list of comma-separated IP addresses.
 
-The example below shows how the **ipRules** property is exposed in API version 2020-04-01 or later:
+The example shows how the **ipRules** property is exposed in API version 2020-04-01 or later:
 
 ```json
 {
@@ -187,7 +209,7 @@ The example below shows how the **ipRules** property is exposed in API version 2
 }
 ```
 
-Here's the same example for any API version prior to 2020-04-01:
+Here's the same example for any API version before 2020-04-01:
 
 ```json
 {
@@ -206,7 +228,7 @@ Here's the same example for any API version prior to 2020-04-01:
 }
 ```
 
-## <a id="configure-ip-firewall-cli"></a>Configure an IP access control policy by using the Azure CLI
+## Configure an IP access control policy by using the Azure CLI
 
 The following command shows how to create an Azure Cosmos DB account with IP access control:
 
@@ -225,7 +247,7 @@ az cosmosdb create \
     --ip-range-filter $ipRangeFilter
 ```
 
-## <a id="configure-ip-firewall-ps"></a>Configure an IP access control policy by using PowerShell
+## Configure an IP access control policy by using PowerShell
 
 The following script shows how to create an Azure Cosmos DB account with IP access control:
 
@@ -252,7 +274,7 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
     -Name $accountName -PropertyObject $CosmosDBProperties
 ```
 
-## <a id="troubleshoot-ip-firewall"></a>Troubleshoot issues with an IP access control policy
+## Troubleshoot issues with an IP access control policy
 
 You can troubleshoot issues with an IP access control policy by using the following options:
 
@@ -262,7 +284,7 @@ By enabling an IP access control policy for your Azure Cosmos DB account, you bl
 
 ### SDKs
 
-When you access Azure Cosmos DB resources by using SDKs from machines that are not in the allowed list, a generic **403 Forbidden** response is returned with no additional details. Verify the allowed IP list for your account, and make sure that the correct policy configuration is applied to your Azure Cosmos DB account.
+When you access Azure Cosmos DB resources by using SDKs from machines that aren't in the allowed list, a generic **403 Forbidden** response is returned with no extra details. Verify the allowed IP list for your account, and make sure that the correct policy configuration is applied to your Azure Cosmos DB account.
 
 ### Source IPs in blocked requests
 
@@ -270,15 +292,13 @@ Enable diagnostic logging on your Azure Cosmos DB account. These logs show each 
 
 ### Requests from a subnet with a service endpoint for Azure Cosmos DB enabled
 
-Requests from a subnet in a virtual network that has a service endpoint for Azure Cosmos DB enabled sends the virtual network and subnet identity to Azure Cosmos DB accounts. These requests don't have the public IP of the source, so IP filters reject them. To allow access from specific subnets in virtual networks, add an access control list as outlined in [How to configure virtual network and subnet-based access for your Azure Cosmos DB account](how-to-configure-vnet-service-endpoint.md). It can take up to 15 minutes for firewall rules to apply and the firewall may exhibit an inconsistent behavior during this period.
+Requests from a subnet in a virtual network that has a service endpoint for Azure Cosmos DB enabled sends the virtual network and subnet identity to Azure Cosmos DB accounts. These requests don't have the public IP of the source, so IP filters reject them. To allow access from specific subnets in virtual networks, add an access control list as outlined in [How to configure virtual network and subnet-based access for your Azure Cosmos DB account](how-to-configure-vnet-service-endpoint.md). It can take up to 15 minutes for firewall rules to apply and the firewall could exhibit an inconsistent behavior during this period.
 
 ### Private IP addresses in list of allowed addresses
 
-Creating or updating an Azure Cosmos DB account with a list of allowed addresses containing private IP addresses will fail. Make sure that no private IP address is specified in the list.
+Creating or updating an Azure Cosmos DB account with a list of allowed addresses containing private IP addresses fail. Make sure that no private IP address is specified in the list.
 
-## Next steps
-
-To configure a virtual network service endpoint for your Azure Cosmos DB account, see the following articles:
+## Related content
 
 * [Virtual network and subnet access control for your Azure Cosmos DB account](how-to-configure-vnet-service-endpoint.md)
 * [Configure virtual network and subnet-based access for your Azure Cosmos DB account](how-to-configure-vnet-service-endpoint.md)

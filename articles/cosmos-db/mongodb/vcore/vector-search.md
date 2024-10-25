@@ -481,7 +481,7 @@ https://github.com/microsoft/semantic-kernel/tree/main/python/semantic_kernel/co
 Use LangChain to orchestrate your information retrieval from Azure Cosmos DB for MongoDB vCore and your LLM. Learn more [here](https://python.langchain.com/docs/integrations/vectorstores/azure_cosmos_db).
 
 ### Use as a semantic cache with LangChain
-Use LangChain and Azure Cosmos DB for MongoDB (vCore) to orchestrate Semantic Caching, using previously recocrded LLM respones that can save you LLM API costs and reduce latency for responses. Learn more [here](https://python.langchain.com/docs/integrations/llms/llm_caching#azure-cosmos-db-semantic-cache)
+Use LangChain and Azure Cosmos DB for MongoDB (vCore) to orchestrate Semantic Caching, using previously recocrded LLM respones that can save you LLM API costs and reduce latency for responses. Learn more [here](https://python.langchain.com/docs/integrations/vectorstores/azure_cosmos_db/)
 
 ## Features and limitations
 
@@ -502,7 +502,7 @@ This guide demonstrates how to create a vector index, add documents that have ve
 - [C# RAG pattern - Integrate Open AI Services with Cosmos](https://github.com/microsoft/AzureDataRetrievalAugmentedGenerationSamples/tree/main/C%23/CosmosDB-MongoDBvCore)
 - [Python RAG pattern - Azure product chatbot](https://github.com/microsoft/AzureDataRetrievalAugmentedGenerationSamples/tree/main/Python/CosmosDB-MongoDB-vCore)
 - [Python notebook tutorial - Vector database integration through LangChain](https://python.langchain.com/docs/integrations/vectorstores/azure_cosmos_db)
-- [Python notebook tutorial - LLM Caching integration through LangChain](https://python.langchain.com/docs/integrations/llms/llm_caching#azure-cosmos-db-semantic-cache)
+- [Python notebook tutorial - LLM Caching integration through LangChain](https://python.langchain.com/docs/integrations/vectorstores/azure_cosmos_db/)
 - [Python - LlamaIndex integration](https://docs.llamaindex.ai/en/stable/examples/vector_stores/AzureCosmosDBMongoDBvCoreDemo.html)
 - [Python - Semantic Kernel memory integration](https://github.com/microsoft/semantic-kernel/tree/main/python/semantic_kernel/connectors/memory/azure_cosmosdb)
 

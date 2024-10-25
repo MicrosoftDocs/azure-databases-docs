@@ -202,7 +202,7 @@ If you encounter errors when you run `az role assignment create`, you might not 
     resourceGroupName='cassandra-mi-multi-region'
     clusterName='test-multi-region'
 
-    az managed-cassandra cluster node-status \
+    az managed-cassandra cluster status\
        --cluster-name $clusterName \
        --resource-group $resourceGroupName
     ```

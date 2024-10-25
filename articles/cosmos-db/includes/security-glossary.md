@@ -1,7 +1,7 @@
 ---
 ms.service: azure-cosmos-db
 ms.topic: include
-ms.date: 09/24/2024
+ms.date: 10/01/2024
 ms.custom: subject-msia
 ---
 
@@ -90,18 +90,6 @@ A role assignment grants an identity access to a specific Azure resource. Role a
 
 For more information, see [role assignment concepts](/azure/role-based-access-control/role-assignments).
 
-## Scope
-
-When you assign a role, you must decide what Azure resources or groups to grant access to. The scope of a role assignment defines the level at which an assignment is made.
-
-For example:
-
-- A single resource scope applies permissions to just that singular resource
-- A scope set at the resource group level applies the permissions to all relevant resources within the group
-- Scopes at the management group or subscription levels apply to all child groups and resources
-
-For more information, see [scope overview](/azure/role-based-access-control/scope-overview).
-
 ## Actions
 
 Actions define what specific permissions a [role](#role) has for a target resource. Actions are strings that typically include the resource type and a descriptive name detailing what permissions the action grants. Here are a few common examples:
@@ -187,3 +175,27 @@ Each modern Azure SDK library supports a constructor for their respective client
 ## Unique identifier
 
 Each [identity](#identityprincipal) in Microsoft Entra has a unique identifier. You sometimes see this unique identifier referred to as the `id`, `objectId`, or `principalId`. When creating [role assignments](#role-assignment), you need the unique identifier for the identity that you with to use with the assignment.
+
+## Scope
+
+When you assign a role, you must decide what Azure resources or groups to grant access to. The scope of a role assignment defines the level at which an assignment is made.
+
+For example:
+
+- A single resource scope applies permissions to just that singular resource
+- A scope set at the resource group level applies the permissions to all relevant resources within the group
+- Scopes at the management group or subscription levels apply to all child groups and resources
+
+When you assign a role in Azure role-based access control, it's ideal to set the scope of that assignment to include as little resources as required for your workload. For example, you can set the scope of an assignment to a resource group. That resource group scope includes all Azure Cosmos DB resources within the resource group:
+
+```output
+/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>
+```
+
+Alternatively, you can set the scope to a single Azure resource and make your assignment of permissions more granular and narrow. In this example, the provider and name of the Azure Cosmos DB resource are used to narrow the scope:
+
+```output
+/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.DocumentDB/databaseAccounts/<account-name>
+```
+
+For more information, see [Azure role-based access control scope](/azure/role-based-access-control/scope-overview).

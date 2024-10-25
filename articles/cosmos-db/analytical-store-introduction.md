@@ -240,10 +240,11 @@ The well-defined schema representation creates a simple tabular representation o
 
 ```SQL
 SELECT CAST (num as float) as num
-FROM OPENROWSET(PROVIDER = 'CosmosDB',
-                CONNECTION = '<your-connection',
-                OBJECT = 'IntToFloat',
-                SERVER_CREDENTIAL = 'your-credential'
+FROM OPENROWSET( 
+       PROVIDER = 'CosmosDB',
+       CONNECTION = 'Account=<account-name>;Database=<database-name>;Region=<region-name>',
+       OBJECT = '<container-name>',
+       [ CREDENTIAL | SERVER_CREDENTIAL ] = '<credential-name>'
 ) 
 WITH (num varchar(100)) AS [IntToFloat]
 ```
@@ -412,11 +413,12 @@ You can use the following syntax example, with the same documents of the Spark e
 
 ```SQL
 SELECT rating,timestamp_string,timestamp_utc
-FROM OPENROWSET(PROVIDER = 'CosmosDB',
-                CONNECTION = 'Account=<your-database-account-name';Database=<your-database-name>',
-                OBJECT = '<your-collection-name>',
-                SERVER_CREDENTIAL = '<your-synapse-sql-server-credential-name>')
-WITH ( 
+FROM OPENROWSET( 
+       PROVIDER = 'CosmosDB',
+       CONNECTION = 'Account=<account-name>;Database=<database-name>;Region=<region-name>',
+       OBJECT = '<container-name>',
+       [ CREDENTIAL | SERVER_CREDENTIAL ] = '<credential-name>'
+) WITH ( 
 rating integer '$.rating.int32',    
 timestamp varchar(50) '$.timestamp.string',
 timestamp_utc float '$.timestamp.float64' 
@@ -429,22 +431,24 @@ You can implement transformations using `cast`, `convert` or any other T-SQL fun
 ```SQL
 create view MyView as
 SELECT MyRating=rating,MyTimestamp = convert(varchar(50),timestamp_utc)
-FROM OPENROWSET(PROVIDER = 'CosmosDB',
-                CONNECTION = 'Account=<your-database-account-name';Database=<your-database-name>',
-                OBJECT = '<your-collection-name>',
-                SERVER_CREDENTIAL = '<your-synapse-sql-server-credential-name>')
-WITH ( 
+FROM OPENROWSET( 
+       PROVIDER = 'CosmosDB',
+       CONNECTION = 'Account=<account-name>;Database=<database-name>;Region=<region-name>',
+       OBJECT = '<container-name>',
+       [ CREDENTIAL | SERVER_CREDENTIAL ] = '<credential-name>'
+) ( 
 rating integer '$.rating.int32',    
 timestamp_utc float '$.timestamp.float64' 
 ) as HTAP 
 WHERE  timestamp_utc is not null
 union all 
 SELECT MyRating=convert(integer,rating_string),MyTimestamp = timestamp_string
-FROM OPENROWSET(PROVIDER = 'CosmosDB',
-                CONNECTION = 'Account=<your-database-account-name';Database=<your-database-name>',
-                OBJECT = '<your-collection-name>',
-                SERVER_CREDENTIAL = '<your-synapse-sql-server-credential-name>')
-WITH ( 
+FROM OPENROWSET( 
+       PROVIDER = 'CosmosDB',
+       CONNECTION = 'Account=<account-name>;Database=<database-name>;Region=<region-name>',
+       OBJECT = '<container-name>',
+       [ CREDENTIAL | SERVER_CREDENTIAL ] = '<credential-name>'
+) WITH ( 
 rating_string varchar(50) '$.rating.string',    
 timestamp_string varchar(50) '$.timestamp.string' 
 ) as HTAP 
@@ -481,9 +485,12 @@ display(dfConverted)
 
 ```SQL
 SELECT TOP 100 id=CAST(_id as VARBINARY(1000))
-FROM OPENROWSET('CosmosDB',
-                'Your-account;Database=your-database;Key=your-key',
-                HTAP) WITH (_id VARCHAR(1000)) as HTAP
+FROM OPENROWSET( 
+       PROVIDER = 'CosmosDB',
+       CONNECTION = 'Account=<account-name>;Database=<database-name>;Region=<region-name>',
+       OBJECT = '<container-name>',
+       [ CREDENTIAL | SERVER_CREDENTIAL ] = '<credential-name>'
+HTAP) WITH (_id VARCHAR(1000)) as HTAP
 ```
 
 ##### Working with MongoDB `id` field
@@ -532,7 +539,7 @@ The possible ATTL configurations are:
 
 * If the value is set to `0`: the analytical store is disabled and no data is replicated from transactional store to analytical store. Please open a support case to disable analytical store in your containers.
   
-* If the value is set to `null`: Analytical store is disabled. If `null` is set, nothing happens and the previous value is kept.
+* If the field is omitted, nothing happens and the previous value is kept.
 
 * If the value is set to `-1`: the analytical store retains all historical data, irrespective of the retention of the data in the transactional store. This setting indicates that the analytical store has infinite retention of your operational data
 
@@ -636,7 +643,7 @@ Analytical store partitioning is completely independent of partitioning in�
 
 ## Security
 
-* **Authentication with the analytical store** is the same as the transactional store for a given database. You can use primary, secondary, or read-only keys for authentication. You can leverage linked service in Synapse Studio to prevent pasting the Azure Cosmos DB keys in the Spark notebooks. For Azure Synapse SQL serverless, you can use SQL credentials to also prevent pasting the Azure Cosmos DB keys in the SQL notebooks. The Access to these Linked Services or to these SQL credentials are available to anyone who has access to the workspace. Please note that the Azure Cosmos DB read only key can also be used.
+* **Authentication with the analytical store** is the same as the transactional store for a given database.
 
 * **Network isolation using private endpoints** - You can control network access to the data in the transactional and analytical stores independently. Network isolation is done using separate managed private endpoints for each store, within managed virtual networks in Azure Synapse workspaces. To learn more, see how to [Configure private endpoints for analytical store](analytical-store-private-endpoints.md) article.
 

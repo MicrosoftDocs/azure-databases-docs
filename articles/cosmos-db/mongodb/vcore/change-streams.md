@@ -55,7 +55,7 @@ import org.json.JSONObject;
  
 public class ChangeStreamExample {
     public static void main(String[] args) {
-        MongoClient mongoClient = MongoClients.create("mongodb://<username>:<pwd>@<clustername>.pgmongo-dev.cosmos.windows-int.net:10260/?tls=true");
+        MongoClient mongoClient = MongoClients.create("mongodb://<username>:<pwd>@<clustername>.global.mongocluster.cosmos.azure.com/?tls=true");
         MongoDatabase database = mongoClient.getDatabase("test");
         MongoCollection<Document> collection = database.getCollection("test");
  
@@ -103,55 +103,6 @@ public class ChangeStreamExample {
         }
     }
 }
-```
-
-# [Python](#tab/python)
-
-```python
-from pgmongo import MongoClient
-from pgmongo.errors import PyMongoError
-import json
-from bson import json_util
-
-def main():
-    uri = "mongodb://<username>:<pwd>@<clustername>.pgmongo-dev.cosmos.windows-int.net:10260/?tls=true"
-    client = MongoClient(uri)
-    database = client['test']
-    collection = database['test']
-
-    # Open a change stream
-    try:
-        with collection.watch() as stream:
-            for change in stream:
-                # Create a JSON object from the fields of the ChangeStreamDocument
-                json_data = {}
-
-                # Add fields to the JSON object
-                json_data['operationType'] = change['operationType']
-                json_data['namespace'] = change['ns']['db'] + '.' + change['ns']['coll']
-
-                if 'documentKey' in change:
-                    json_data['documentKey'] = json_util.dumps(change['documentKey'])
-
-                if '_id' in change:
-                    json_data['resumeToken'] = json_util.dumps(change['_id'])
-
-                if 'fullDocument' in change:
-                    json_data['fullDocument'] = json_util.dumps(change['fullDocument'])
-
-                if 'clusterTime' in change:
-                    json_data['wallTime'] = str(change['clusterTime'].as_datetime())
-
-                # Pretty-print the JSON object with 4-space indent
-                print(json.dumps(json_data, indent=4, default=json_util.default))
-
-    except PyMongoError as e:
-        print(f"Error processing change stream: {e}")
-    finally:
-        client.close()
-
-if __name__ == "__main__":
-    main()
 ```
 
 ---

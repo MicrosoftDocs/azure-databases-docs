@@ -227,7 +227,7 @@ One advantage of running your workload in Azure is its global reach. Azure Datab
 | Canada Central | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | Canada East | :heavy_check_mark: | :heavy_check_mark: | :x: | :heavy_check_mark: |
 | Central India | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Central US | :heavy_check_mark: | :heavy_check_mark: | :x: | :heavy_check_mark: |
+| Central US | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | China East 2 | :heavy_check_mark: | :heavy_check_mark: | :x: | :heavy_check_mark: |
 | China East 3 | :heavy_check_mark: | :heavy_check_mark: | :x: | :heavy_check_mark: |
 | China North 2 | :heavy_check_mark: | :heavy_check_mark: | :x: | :heavy_check_mark: |
@@ -250,7 +250,7 @@ One advantage of running your workload in Azure is its global reach. Azure Datab
 | North Europe | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | Norway East | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | Norway West | :heavy_check_mark: | :heavy_check_mark: | :x: | :x: |
-| Poland Central | :heavy_check_mark: | :heavy_check_mark: | :x: | :x: |
+| Poland Central | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :x: |
 | Qatar Central | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :x: |
 | South Africa North | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | South Africa West | :heavy_check_mark: | :heavy_check_mark: | :x: | :heavy_check_mark: |

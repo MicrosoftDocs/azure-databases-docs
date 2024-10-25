@@ -1,5 +1,5 @@
 ---
-  title: $pullAll (array update operator) usage on Azure Cosmos DB for MongoDB vCore
+  title: $pullAll (array update) usage on Azure Cosmos DB for MongoDB vCore
   titleSuffix: Azure Cosmos DB for MongoDB vCore
   description: The $pullAll operator is used to remove all instances of the specified values from an array.  
   author: sandeepsnairms
@@ -10,7 +10,7 @@
   ms.date: 09/11/2024
 ---
 
-# $pullAll (array update operator)
+# $pullAll (array update)
 
 [!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 

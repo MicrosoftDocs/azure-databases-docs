@@ -18,12 +18,12 @@ MySQL is one of the popular database engines for running internet-scale web and 
 
 On the applications side, the application is typically developed in Java or PHP and migrated to run on Azure Virtual Machine Scale Sets or Azure App Services or are containerized to run on Azure Kubernetes Service (AKS). With Virtual Machine Scale Set, App Service, or AKS as underlying infrastructure, application scaling is simplified by instantaneously provisioning new VMs and replicating the stateless components of applications to cater to the requests but often, database ends up being a bottleneck as centralized stateful component.
 
-The read replica feature allows you to replicate data from an Azure Database for MySQL flexible server instance to a read-only server. You can replicate from the source server to up to **10** replicas. Replicas are updated asynchronously using the MySQL engine's native binary log (binlog) file position-based replication technology. To learn more about binlog replication, see the [MySQL binlog replication overview](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html).
+The read replica feature allows you to replicate data from an Azure Database for MySQL Flexible Server instance to a read-only server. You can replicate from the source server to up to **10** replicas. Replicas are updated asynchronously using the MySQL engine's native binary log (binlog) file position-based replication technology. To learn more about binlog replication, see the [MySQL binlog replication overview](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html).
 
-Replicas are new servers that you manage similarly to your source Azure Database for MySQL flexible server instances. You incur billing charges for each read replica based on the provisioned compute in vCores and storage in GB/ month. For more information, see [pricing](./concepts-compute-storage.md#pricing).
+Replicas are new servers that you manage similarly to your source Azure Database for MySQL Flexible Server instances. You incur billing charges for each read replica based on the provisioned compute in vCores and storage in GB/ month. For more information, see [pricing](./concepts-compute-storage.md#pricing).
 
 > [!NOTE]  
-> The read replica feature is only available for Azure Database for MySQL flexible server instances in the General Purpose or Business Critical pricing tiers. Ensure the source server is in one of these pricing tiers.
+> The read replica feature is only available for Azure Database for MySQL Flexible Server instances in the General Purpose or Business Critical pricing tiers. Ensure the source server is in one of these pricing tiers.
 
 To learn more about MySQL replication features and issues, see the [MySQL replication documentation](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html).
 
@@ -46,13 +46,13 @@ The read replica feature uses MySQL asynchronous replication. The feature isn't 
 
 ## Cross-region replication
 
-You can create a read replica in a different region from your source server. Cross-region replication can be helpful for scenarios like disaster recovery planning or bringing data closer to your users. Azure Database for MySQL flexible server allows you to provision read-replica in any [Azure supported regions](/azure/reliability/cross-region-replication-azure) where Azure Database for MySQL flexible server is available. Using this feature, a source server can have a replica in its paired region or the universal replica regions. Please refer [here](./overview.md#azure-regions) to find the list of Azure regions where Azure Database for MySQL flexible server is available today.
+You can create a read replica in a different region from your source server. Cross-region replication can be helpful for scenarios like disaster recovery planning or bringing data closer to your users. Azure Database for MySQL Flexible Server allows you to provision read-replica in any [Azure supported regions](/azure/reliability/cross-region-replication-azure) where Azure Database for MySQL Flexible Server is available. Using this feature, a source server can have a replica in its paired region or the universal replica regions. Please refer [here](./overview.md#azure-regions) to find the list of Azure regions where Azure Database for MySQL Flexible Server is available today.
 
 ## Create a replica
 
 If a source server has no existing replica servers, the source first restarts to prepare itself for replication.
 
-When you start the create replica workflow, a blank Azure Database for MySQL flexible server instance is created. The new server is filled with the data that was on the source server. The creation time depends on the amount of data on the source and the time since the last weekly full backup. The time can range from a few minutes to several hours.
+When you start the create replica workflow, a blank Azure Database for MySQL Flexible Server instance is created. The new server is filled with the data that was on the source server. The creation time depends on the amount of data on the source and the time since the last weekly full backup. The time can range from a few minutes to several hours.
 
 > [!NOTE]  
 > Read replicas are created with the same server configuration as the source. The replica server configuration can be changed after it has been created. The replica server is always created in the same resource group and same subscription as the source server. If you want to create a replica server to a different resource group or different subscription, you can [move the replica server](/azure/azure-resource-manager/management/move-resource-group-and-subscription) after creation. It is recommended that the replica server's configuration should be kept at equal or greater values than the source to ensure the replica is able to keep up with the source.
@@ -65,7 +65,7 @@ At creation, a replica inherits the connectivity method of the source server. Yo
 
 The replica inherits the admin account from the source server. All user accounts on the source server are replicated to the read replicas. You can only connect to a read replica by using the user accounts that are available on the source server.
 
-You can connect to the replica by using its hostname and a valid user account, as you would on a regular Azure Database for MySQL flexible server instance. For a server named **myreplica** with the admin username **myadmin**, you can connect to the replica by using the mysql CLI:
+You can connect to the replica by using its hostname and a valid user account, as you would on a regular Azure Database for MySQL Flexible Server instance. For a server named **myreplica** with the admin username **myadmin**, you can connect to the replica by using the mysql CLI:
 
 ```bash
 mysql -h myreplica.mysql.database.azure.com -u myadmin -p
@@ -75,7 +75,7 @@ At the prompt, enter the password for the user account.
 
 ## Monitor replication
 
-Azure Database for MySQL flexible server provides the **Replication lag in seconds** metric in Azure Monitor. This metric is available for replicas only. This metric is calculated using the `seconds_behind_master` metric available in MySQL's `SHOW SLAVE STATUS` command. Set an alert to inform you when the replication lag reaches a value that isn't acceptable for your workload.
+Azure Database for MySQL Flexible Server provides the **Replication lag in seconds** metric in Azure Monitor. This metric is available for replicas only. This metric is calculated using the `seconds_behind_master` metric available in MySQL's `SHOW SLAVE STATUS` command. Set an alert to inform you when the replication lag reaches a value that isn't acceptable for your workload.
 
 If you see increased replication lag, refer to [troubleshooting replication latency](./../howto-troubleshoot-replication-latency.md) to troubleshoot and understand possible causes.
 
@@ -117,7 +117,7 @@ After your application is successfully processing reads and writes, you've compl
 
 ## Global transaction identifier (GTID)
 
-Global transaction identifier (GTID) is a unique identifier created with each committed transaction on a source server and is OFF by default in Azure Database for MySQL flexible server. GTID is supported on versions 5.7 and 8.0. To learn more about GTID and how it's used in replication, refer to MySQL's [replication with GTID](https://dev.mysql.com/doc/refman/5.7/en/replication-gtids.html) documentation.
+Global transaction identifier (GTID) is a unique identifier created with each committed transaction on a source server and is OFF by default in Azure Database for MySQL Flexible Server. GTID is supported on versions 5.7 and 8.0. To learn more about GTID and how it's used in replication, refer to MySQL's [replication with GTID](https://dev.mysql.com/doc/refman/5.7/en/replication-gtids.html) documentation.
 
 The following server parameters are available for configuring GTID:
 
@@ -126,7 +126,7 @@ The following server parameters are available for configuring GTID:
 | `gtid_mode` | Indicates if GTIDs are used to identify transactions. Changes between modes can only be done one step at a time in ascending order (ex. `OFF` -> `OFF_PERMISSIVE` -> `ON_PERMISSIVE` -> `ON`) | `OFF*` | `OFF`: Both new and replication transactions must be anonymous<br />`OFF_PERMISSIVE`: New transactions are anonymous. Replicated transactions can either be anonymous or GTID transactions.<br />`ON_PERMISSIVE`: New transactions are GTID transactions. Replicated transactions can either be anonymous or GTID transactions.<br />`ON`: Both new and replicated transactions must be GTID transactions. |
 | `enforce_gtid_consistency` | Enforces GTID consistency by allowing execution of only those statements that can be logged in a transactionally safe manner. This value must be set to `ON` before enabling GTID replication. | `OFF*` | `OFF`: All transactions are allowed to violate GTID consistency.<br />`ON`: No transaction is allowed to violate GTID consistency.<br />`WARN`: All transactions are allowed to violate GTID consistency, but a warning is generated. |
 
-**For Azure Database for MySQL flexible server instances that have the High Availability feature enabled, the default value is set to `ON`**.
+**For Azure Database for MySQL Flexible Server instances that have the High Availability feature enabled, the default value is set to `ON`**.
 
 > [!NOTE]  
 > - After GTID is enabled, you can't turn it back off. If you need to turn GTID OFF, please contact support.
@@ -145,7 +145,7 @@ If GTID is enabled on a source server (`gtid_mode` = ON), newly created replicas
 | Replica on server in Burstable Pricing Tier | Not supported |
 | Pricing | The cost of running the replica server is based on the region where the replica server is running |
 | Source server restart | When you create a replica for a source that has no existing replicas, the source will first restart to prepare itself for replication. Take this into consideration and perform these operations during an off-peak period |
-| New replicas | A read replica is created as a new Azure Database for MySQL flexible server instance. An existing server can't be made into a replica. You can't create a replica of another read replica. |
+| New replicas | A read replica is created as a new Azure Database for MySQL Flexible Server instance. An existing server can't be made into a replica. You can't create a replica of another read replica. |
 | Replica configuration | A replica is created by using the same server configuration as the source. After a replica is created, several settings can be changed independently from the source server: compute generation, vCores, storage, and backup retention period. The compute tier can also be changed independently.<br><br>**IMPORTANT** - Before a source server configuration is updated to new values, update the replica configuration to equal or greater values. This action ensures the replica can keep up with any changes made to the source. <br/> Connectivity method and parameter settings are inherited from the source server to the replica when the replica is created. Afterwards, the replica's rules are independent. |
 | Stopped replicas | If you stop replication between a source server and a read replica, the stopped replica becomes a standalone server that accepts both reads and writes. The standalone server can't be made into a replica again. |
 | Deleted source and standalone servers | When a source server is deleted, replication is stopped to all read replicas. These replicas automatically become standalone servers and can accept both reads and writes. The source server itself is deleted. |

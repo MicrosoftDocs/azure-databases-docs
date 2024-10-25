@@ -56,31 +56,19 @@ const { TableServiceClient, TableClient, AzureNamedKeyCredential, odata } = requ
 
 ## Connect to Azure Table service
 
-You can either connect to the Azure storage account or the Azure Cosmos DB for Table account. Get the shared key or connection string based on the type of account you are using.
+You can either connect to the Azure storage account or the Azure Cosmos DB for Table account. Get the credentials based on the type of account you are using.
 
-### Creating the Table service client from a shared key
+### Creating the Table service client
 
-The Azure module reads the environment variables AZURE_ACCOUNT and AZURE_ACCESS_KEY and AZURE_TABLES_ENDPOINT for information required to connect to your Azure Storage account or Azure Cosmos DB. If these environment variables are not set, you must specify the account information when calling `TableServiceClient`. For example, the following code creates a `TableServiceClient` object:
+The following code creates a `TableServiceClient` object using a credential of type `TokenCredential`. The `DefaultAzureCredential` class creates a chained token credential that works for most applications that use the Azure SDK by trying multiple types of credentials. For more information, see [`DefaultAzureCredential`](/javascript/api/@azure/identity/defaultazurecredential).
 
 ```javascript
-const endpoint = "<table-endpoint-uri>";
-const credential = new AzureNamedKeyCredential(
-  "<account-name>",
-  "<account-key>"
-);
+TokenCredential credential = new DefaultAzureCredential();
 
 const tableService = new TableServiceClient(
-  endpoint,
+  new Uri("<table-endpoint>"),
   credential
 );
-```
-
-### Creating the Table service client from a connection string
-
-To add an Azure Cosmos DB or Storage account connection, create a `TableServiceClient` object and specify your account name, primary key, and endpoint. You can copy these values from **Settings** > **Connection String** in the Azure portal for your Azure Cosmos DB account or Storage account. For example:
-
-```javascript
-const tableService = TableServiceClient.fromConnectionString("<connection-string>");
 ```
 
 ## Create a table

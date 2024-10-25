@@ -1,5 +1,5 @@
 ---
-title: Prepare for upcoming TLS 1.3 support for Azure Cosmos DB
+title: Prepare for upcoming Transport Layer Security (TLS) 1.3 support for Azure Cosmos DB
 titleSuffix: Azure Cosmos DB
 description: Learn how to enable TLS 1.3 for your Azure Cosmos DB account to improve your security posture.
 author: iriaosara
@@ -13,17 +13,17 @@ ms.date: 9/23/2024
 
 [!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
-Azure Cosmos DB will enable TLS 1.3 support on public endpoints across its platform globally to align with security best practices by **October 10, 2024**. [**Starting October 31, 2024, we are officially deprecating TLS 1.0/1.1.**](https://azure.microsoft.com/updates/azure-support-tls-will-end-by-31-october-2024-2/). Only TLS 1.2 or higher will be supported. This article provides extra guidance on how to prepare for the upcoming support of TLS 1.3 for Azure Cosmos DB. 
+Azure Cosmos DB will enable TLS 1.3 support on public endpoints across its platform globally to align with security best practices by **October 10, 2024**. [**Starting October 31, 2024, we are officially deprecating TLS 1.0/1.1.**](https://azure.microsoft.com/updates/azure-support-tls-will-end-by-31-october-2024-2/). Only TLS 1.2 or higher is supported. This article provides extra guidance on how to prepare for the upcoming support of TLS 1.3 for Azure Cosmos DB. 
 
 TLS 1.3 introduces substantial enhancements compared to its predecessors. TLS 1.3 improvements focus on both performance and security, featuring faster handshakes and a streamlined set of more secure cipher suites, namely TLS_AES_256_GCM_SHA384 and TLS_AES_128_GCM_SHA256. Notably, TLS 1.3 prioritizes Perfect Forward Secrecy (PFS) by eliminating key exchange algorithms that don't support it.  
 
-Clients that utilize the latest available TLS version will automatically pick TLS 1.3 when it's available. Azure Cosmos DB continues to support TLS 1.2 in addition to TLS 1.3.  
+Clients that utilize the latest available TLS version automatically pick TLS 1.3 when it's available. Azure Cosmos DB continues to support TLS 1.2 in addition to TLS 1.3.  
 
-These are some of the known issues with TLS 1.3 enablement, potential impact, and mitigation.
+These issues are some of the known issues with TLS 1.3 enablement, potential effect, and mitigation.
 
-## Known issues, impact, and mitigation
+## Known issues, affect, and mitigation
 
-- **JDK Related Issues**: The io.netty versions between 4.1.68.Final and 4.1.86.Final inclusive contain a bug that causes the client to fail the TLS handshake in Direct mode connection when TLS 1.3 is not supported by the Java runtime engine. Cosmos DB Java SDK versions ranging from 4.20.0 to 4.40.0 inclusive have a transitive dependency on io.netty with this bug. The client fails with  `java.lang.IllegalArgumentException` exceptions as shown below.
+- **JDK Related Issues**: The io.netty versions between `4.1.68.Final` and `4.1.86.Final` inclusive contain a bug that causes the client to fail the TLS handshake in Direct mode connection when the Java runtime engine doesn't support TLS 1.3. Azure Cosmos DB Java SDK versions ranging from 4.20.0 to 4.40.0 inclusive have a transitive dependency on io.netty with this bug. The client fails with  `java.lang.IllegalArgumentException` exceptions as shown here.
     
     ```output
      Caused by: io.netty.handler.codec.DecoderException: javax.net.ssl.SSLHandshakeException: General OpenSslEngine problem at 
@@ -38,7 +38,3 @@ These are some of the known issues with TLS 1.3 enablement, potential impact, an
 
 > [!NOTE]
 > Enabling client to use TLS 1.3 requires Java runtime to support TLS 1.3
-## Next steps
-
-For more information about security in Azure Cosmos DB, see [Overview of database security in Azure Cosmos DB
-](./database-security.md).

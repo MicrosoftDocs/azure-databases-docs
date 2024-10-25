@@ -20,7 +20,7 @@ In Azure Cosmos DB, data is indexed following [indexing policies](../index-polic
 
 ## Indexing policy examples
 
-Here are some examples of indexing policies shown in [their JSON format](../index-policy.md#include-exclude-paths). They're exposed on the Azure portal in JSON format. The same parameters can be set through the Azure CLI or any SDK.
+Here are some examples of indexing policies shown in [their JSON format](../index-policy.md). They're exposed on the Azure portal in JSON format. The same parameters can be set through the Azure CLI or any SDK.
 
 ### <a id="range-index"></a>Opt-out policy to selectively exclude some property paths
 
@@ -149,6 +149,33 @@ The `flat` and `quantizedFlat` index types leverage Azure Cosmos DB's index to s
 The `quantizedFlat` index stores quantized or compressed vectors on the index. Vector searches with `quantizedFlat` index are also brute-force searches, however their accuracy might be slightly less than 100% since the vectors are quantized before adding to the index. However, vector searches with `quantized flat` should have lower latency, higher throughput, and lower RU cost than vector searches on a `flat` index. This is a good option for scenarios where you are using query filters to narrow down the vector search to a relatively small set of vectors. 
 
 The `diskANN` index is a separate index defined specifically for vectors leveraging [DiskANN](https://www.microsoft.com/research/publication/diskann-fast-accurate-billion-point-nearest-neighbor-search-on-a-single-node/), a suite of highly performant vector indexing algorithms developed by Microsoft Research. DiskANN indexes can offer some of the lowest latency, highest query-per-second (QPS), and lowest RU cost queries at high accuracy. However, since DiskANN is an approximate nearest neighbors (ANN) index, the accuracy may be lower than `quantizedFlat` or `flat`.
+
+### Tuple indexing policy examples
+
+This example indexing policy defines a tuple index on events.name and events.category
+
+```json
+{  
+    "automatic":true,
+    "indexingMode":"Consistent",
+    "includedPaths":[  
+        {"path":"/*"}, 
+        {"path":"/events/[]/{name,category}/?"} 
+    ],
+    "excludedPaths":[],
+    "compositeIndexes":[]
+}
+```
+
+The above index is used for the below query.
+
+```sql
+SELECT * 
+FROM root r 
+WHERE 
+   EXISTS (SELECT VALUE 1 FROM ev IN r.events 
+           WHERE ev.name = ‘M&M’ AND ev.category = ‘Candy’) 
+```
 
 
 ## <a id="composite-index"></a>Composite indexing policy examples

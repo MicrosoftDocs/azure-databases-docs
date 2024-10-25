@@ -35,6 +35,10 @@ These backup files cannot be exported. The backups can only be used for restore 
 Backups on Flexible Servers are snapshot-based. The first snapshot backup is scheduled immediately after a server is created. Snapshot backups are taken daily once. Transaction log backups occur every five minutes.
 If a scheduled backup fails, our backup service tries every 20 minutes to take a backup until a successful backup is taken. These backup failures may occur due to heavy transactional production loads on the server instance.
 
+> [!NOTE]
+> - If the server experiences a high transaction load, resulting in larger and faster-growing binlog files, then the backup service will perform multiple backups per day to ensure reliable and quicker restoration using these backups.
+> - For 5.7 servers, long-running/Large transactions can prevent global instance level lock acquisition which is required for successful daily backup. In such scenarios, daily backups can fail. To resolve this, either terminate the long-running transaction OR restart the server. To ensure smoother operations, it's recommended to upgrade your MySQL 5.7 servers to version 8.0 using a [major version upgrade](./how-to-upgrade.md).
+
 ## Backup redundancy options
 
 Azure Database for MySQL Flexible Server stores multiple copies of your backups so that your data is protected from planned and unplanned events, including transient hardware failures, network or power outages, and massive natural disasters. Azure Database for MySQL Flexible Server provides the flexibility to choose between locally redundant, zone-redundant or geo-redundant backup storage in Basic, General Purpose and Business Critical tiers. By default, Azure Database for MySQL Flexible Server backup storage is locally redundant for servers with same-zone high availability (HA) or no high availability configuration, and zone redundant for servers with zone-redundant HA configuration.
@@ -107,7 +111,7 @@ In Azure Database for MySQL Flexible Server, performing a point-in-time restore 
 > [!NOTE]
 > There are two server parameters which are reset to default values (and aren't copied over from the primary server) after the restore operation
 > - time_zone - This value to set to DEFAULT value SYSTEM
-> - event_scheduler - The event_scheduler is set to OFF on the restored server
+> - event_scheduler - For MySQL version 5.7 servers, the server parameter `event_scheduler` is automatically turned 'OFF' when backup is initiated, and server parameter `event_scheduler` is turned back 'ON' after the backup completes successfully. In MySQL version 8.0 for Azure Database for MySQL - Flexible Server, the event_scheduler remains unaffected during backups. To ensure smoother operations, it's recommended to upgrade your MySQL 5.7 servers to version 8.0 using a [major version upgrade](./how-to-upgrade.md).
 
 Point-in-time restore is useful in multiple scenarios. Some of the use cases that are common include -
 -   When a user accidentally deletes data in the database

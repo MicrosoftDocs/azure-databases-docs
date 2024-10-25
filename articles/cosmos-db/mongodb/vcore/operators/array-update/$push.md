@@ -1,5 +1,5 @@
 ---
-  title: $push (array update operator) usage on Azure Cosmos DB for MongoDB vCore
+  title: $push (array update) usage on Azure Cosmos DB for MongoDB vCore
   titleSuffix: Azure Cosmos DB for MongoDB vCore
   description: The $push operator is used to append a specified value to an array within a document. 
   author: sandeepsnairms
@@ -10,7 +10,7 @@
   ms.date: 09/11/2024
 ---
 
-# $push (array update operator)
+# $push (array update)
 
 [!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 

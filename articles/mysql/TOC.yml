@@ -40,6 +40,8 @@
             href: flexible-server/release-notes/august-2024.md
           - name: September 2024
             href: flexible-server/release-notes/september-2024.md
+          - name: October 2024
+            href: flexible-server/release-notes/october-2024.md
       - name: Service tiers
         href: flexible-server/concepts-service-tiers-storage.md
   - name: Quickstarts
@@ -129,6 +131,8 @@
       items:
       - name: Scheduled maintenance
         href: flexible-server/concepts-maintenance.md
+      - name: Root certificate change
+        href: flexible-server/concepts-root-certificate-rotation.md
     - name: High availability
       items:
       - name: Business continuity overview

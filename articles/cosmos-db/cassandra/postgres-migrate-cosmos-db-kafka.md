@@ -255,5 +255,4 @@ You can continue to insert more data into PostgreSQL and confirm that the record
 * [Integrate Apache Kafka Connect on Azure Event Hubs (Preview) with Debezium for Change Data Capture](/azure/event-hubs/event-hubs-kafka-connect-debezium)
 * [Migrate data from Oracle to Azure Cosmos DB for Apache Cassandra using Arcion](oracle-migrate-cosmos-db-arcion.md)
 * [Provision throughput on containers and databases](../set-throughput.md)
-* [Partition key best practices](../partitioning-overview.md#choose-partitionkey)
 * [Estimate RU/s using the Azure Cosmos DB capacity planner](../estimate-ru-with-capacity-planner.md) articles

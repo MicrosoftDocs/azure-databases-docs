@@ -5,7 +5,7 @@ description: Apply Knowledge Graphs to expand the capability of AI apps.
 author: jcodella
 ms.service: azure-cosmos-db
 ms.subservice: nosql
-ms.topic: quickstart
+ms.topic: how-to
 ms.date: 9/16/2024
 ms.author: jacodel
 
@@ -14,15 +14,14 @@ ms.author: jacodel
 # Retrieval Augmented Generated (RAG) with vector search and knowledge graphs using Azure Cosmos DB
 
 [!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
-[!INCLUDEMongoDB vCore]
 
-[Cosmos AI Graph](https://aka.ms/cosmosaigraph) is an innovative solution that applies the power of Azure Cosmos DB to create AI-powered knowledge graphs. This technology integrates advanced graph database capabilities with AI to provide a robust platform for managing and querying complex data relationships. By utilizing Cosmos DB's scalability and performance, Cosmos AI Graph enables the creation of sophisticated data models that can answer various data questions and uncover hidden relationships and concepts in text data.
+[CosmosAIGraph](https://aka.ms/cosmosaigraph) is an innovative solution that applies the power of Azure Cosmos DB to create AI-powered knowledge graphs. This technology integrates advanced graph database capabilities with AI to provide a robust platform for managing and querying complex data relationships. By utilizing Cosmos DB's scalability and performance in both document and vector form, Cosmos AI Graph enables the creation of sophisticated data models that can answer various data questions and uncover hidden relationships and concepts in semi-structured data.
 
 ## What types of questions can knowledge graphs help to answer?
 
 - **Complex Relationship Queries**: 
    - *Question*: "What are the direct and indirect connections between Person A and Person B within a social network?"
-   - *Explanation*: Graph RAG can traverse the graph to find all paths and relationships between two nodes, providing a detailed map of connections, which is difficult for Vector Search as it doesn't inherently understand relationships between entities.
+   - *Explanation*: Graph RAG can traverse the graph to find all paths and relationships between two nodes, providing a detailed map of connections, which is difficult for Vector Search as it doesn't have authoritative/curated view of relationships between entities.
 
 - **Hierarchical Data Queries**:
    - *Question*: "What is the organizational hierarchy from the CEO down to the entry-level employees in this company?"
@@ -40,7 +39,7 @@ When it comes to [Retrieval Augmented Generation (RAG)](rag.md), combining **Kno
 
 ## OmniRAG
 
-CosmosAIGraph features *OmniRAG*, a versatile approach to data retrieval that dynamically selects the most suitable method—be it database queries, vector searches, or knowledge graph searches—to answer user queries effectively. This ensures that each query is addressed using the optimal technique, enhancing accuracy and efficiency. For instance, a user query about hierarchical relationships would utilize graph traversal, while a query about similar documents would employ vector search, all within a unified framework provided by CosmosAIGraph. This holistic approach maximizes the strengths of each retrieval method, delivering comprehensive and contextually relevant answers.
+CosmosAIGraph features *OmniRAG*, a versatile approach to data retrieval that dynamically selects the most suitable method — be it database queries, vector matching, or knowledge graph traversal — to answer user queries effectively and with utmost accuracy, as it likely will gather more context and more authoritative conext than any one of these sources could on its own. The key to this dynamic selection is the user intent - determined from the user question using simple utterance analysis and/or AI. This ensures that each query is addressed using the optimal technique, enhancing accuracy and efficiency. For instance, a user query about hierarchical relationships would utilize graph traversal, while a query about similar documents would employ vector search, all within a unified framework provided by CosmosAIGraph. Moreover, with the help of orchestration of within RAG process, more than one source could be used to collect the context for AI, for example the graph could be consulted with first and then for each of the entities found the actual database records could be pulled as well and if no results were found, vector searh would likely return closely matching results. This holistic approach maximizes the strengths of each retrieval method, delivering comprehensive and contextually relevant answers.
 
 ### Example user questions and strategy used
 
@@ -48,9 +47,10 @@ CosmosAIGraph features *OmniRAG*, a versatile approach to data retrieval that dy
 |----------------|----------------|
 |What is the Python Flask Library | DB RAG |
 | What are its dependencies  | Graph Rag |
-| What are its dependencies | Vector RAG |
+|What is the Python Flask Library | Database RAG |
+| What are its dependencies  | Graph RAG |
 | Who is the author | DB RAG  |
-| What other libraries did she write | Graph Rag |
+| What other libraries did she write | Graph RAG |
 | Display a graph of all her libraries and their dependencies | Graph RAG |
 
 
@@ -59,7 +59,7 @@ CosmosAIGraph features *OmniRAG*, a versatile approach to data retrieval that dy
 CosmosAIGraph applies Azure Cosmos DB to create AI-powered graphs and knowledge graphs, enabling sophisticated data models for applications like recommendation systems and fraud detection. It combines traditional database, vector database, and graph database capabilities with AI to manage and query complex data relationships efficiently. Get started [here!](https://aka.ms/cosmosaigraph)
 
 ## Next steps
-- [Cosmos AI Graph on Azure Cosmos DB TV - YouTube](https://www.youtube.com/watch?v=0alvRmEgIpQ)
+- [CosmosAIGraph on Azure Cosmos DB TV - YouTube](https://www.youtube.com/watch?v=0alvRmEgIpQ)
 - [Vector Search with Azure Cosmos DB for NoSQL](vector-search-overview.md)
 - [Tokens](tokens.md)
 - [Vector Embeddings](vector-embeddings.md)
