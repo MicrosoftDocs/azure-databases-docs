@@ -31,7 +31,8 @@ To ensure performance and reliability in light of ongoing security improvements,
 
 **What does this mean for you?**
 
-- Limited Access: New B1s instances will be temporarily unavailable after 10/31/24.
+- Limited Access: New B1s instances will be unavailable after 10/28/24.
+
 - Existing Deployments: Any current B1s instances will remain unaffected.
 - Alternative Options: Explore and consider using other SKUs, such as B1ms and B2s, which provide enhanced compute power and memory while supporting greater performance. 
 
