@@ -20,7 +20,7 @@ ms.custom:
 
 [!INCLUDE[azure-database-for-mysql-single-server-deprecation](~/reusable-content/ce-skilling/azure/includes/mysql/includes/azure-database-for-mysql-single-server-deprecation.md)]
 
-Get started with [GitHub Actions](https://docs.github.com/en/actions) by using a workflow to deploy database updates to [Azure Database for MySQL flexible server](https://azure.microsoft.com/services/mysql/).
+Get started with [GitHub Actions](https://docs.github.com/en/actions) by using a workflow to deploy database updates to [Azure Database for MySQL Flexible Server](https://azure.microsoft.com/services/mysql/).
 
 ## Prerequisites
 
@@ -33,8 +33,8 @@ You'll need:
     > [!IMPORTANT]
     > This quickstart assumes that you have cloned a GitHub repository to your computer so that you can add the associated IP address to a firewall rule, if necessary.
 
-- An Azure Database for MySQL flexible server instance.
-  - [Quickstart: Create an Azure Database for MySQL flexible server instance in the Azure portal](../single-server/quickstart-create-mysql-server-database-using-azure-portal.md)
+- An Azure Database for MySQL Flexible Server instance.
+  - [Quickstart: Create an Azure Database for MySQL Flexible Server instance in the Azure portal](../single-server/quickstart-create-mysql-server-database-using-azure-portal.md)
 
 ## Workflow file overview
 
@@ -53,12 +53,12 @@ The file has two sections:
 
 ## Copy the MySQL connection string
 
-In the Azure portal, go to your Azure Database for MySQL flexible server instance and open **Settings** > **Connection strings**. Copy the **ADO.NET** connection string. Replace the placeholder values for `your_database` and `your_password`. The connection string looks similar to the following.
+In the Azure portal, go to your Azure Database for MySQL Flexible Server instance and open **Settings** > **Connection strings**. Copy the **ADO.NET** connection string. Replace the placeholder values for `your_database` and `your_password`. The connection string looks similar to the following.
 
 > [!IMPORTANT]
 >
 > - For Azure Database for MySQL single server, use **Uid=adminusername@servername**. Note the **@servername** is required.
-> - For Azure Database for MySQL flexible server, use **Uid= adminusername** without the @servername.
+> - For Azure Database for MySQL Flexible Server, use **Uid= adminusername** without the @servername.
 
 ```output
    Server=my-mysql-server.mysql.database.azure.com; Port=3306; Database={your_database}; Uid=adminname@my-mysql-server; Pwd={your_password}; SslMode=Preferred;
@@ -221,7 +221,7 @@ You'll use the connection string as a GitHub secret.
 
 ## Clean up resources
 
-When your Azure Database for MySQL flexible server database and repository are no longer needed, clean up the resources you deployed by deleting the resource group and your GitHub repository.
+When your Azure Database for MySQL Flexible Server database and repository are no longer needed, clean up the resources you deployed by deleting the resource group and your GitHub repository.
 
 ## Next steps
 
