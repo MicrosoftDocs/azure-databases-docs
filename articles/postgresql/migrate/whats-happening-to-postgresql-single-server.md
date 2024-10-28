@@ -101,7 +101,7 @@ Offline migrations are less complex and have few chances of failure. They're the
 - China East (CE and CE2),
 - China North (CN and CN2)
 - West India
-- Sweden North
+- Sweden Central
 
 We recommend migrating to CN3/CE3, Central India, Sweden Central, and Sweden South regions.
 **Q. I have a private link configured for my single server. How do I migrate?**
