@@ -83,7 +83,7 @@ docker pull docker pull microsoft/azure-cosmosdb-emulator:vnext-preview
 To run the container, execute the below:
 
 ```shell
-docker run -d -p 8081:8081 -p 1234:1234 docker pull microsoft/azure-cosmosdb-emulator:vnext-preview
+docker run -d -p 8081:8081 -p 1234:1234 microsoft/azure-cosmosdb-emulator:vnext-preview
 ```
 
 Check the image is running:
