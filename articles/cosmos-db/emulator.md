@@ -75,7 +75,7 @@ The v2 emulator is provided as a docker container. You must have [docker](https:
 Execute the following to download the docker image:
 
 ```shell
-docker pull docker pull microsoft/azure-cosmosdb-emulator:2.0
+docker pull docker pull microsoft/azure-cosmosdb-emulator:vnext-preview
 ```
 
 ### Running
@@ -83,7 +83,7 @@ docker pull docker pull microsoft/azure-cosmosdb-emulator:2.0
 To run the container, execute the below:
 
 ```shell
-docker run -d -p 8081:8081 -p 1234:1234 docker pull microsoft/azure-cosmosdb-emulator:2.0
+docker run -d -p 8081:8081 -p 1234:1234 docker pull microsoft/azure-cosmosdb-emulator:vnext-preview
 ```
 
 Check the image is running:
@@ -96,7 +96,7 @@ You should see an output like the below.
 
 ```shell
 CONTAINER ID   IMAGE                                                             COMMAND                  CREATED         STATUS         PORTS                                                                                  NAMES
-c1bb8cf53f8a   microsoft/azure-cosmosdb-emulator:2.0   "/bin/bash -c /home/…"   5 seconds ago   Up 5 seconds   0.0.0.0:1234->1234/tcp, :::1234->1234/tcp, 0.0.0.0:8081->8081/tcp, :::8081->8081/tcp   wonderful_tu
+c1bb8cf53f8a   microsoft/azure-cosmosdb-emulator:vnext-preview   "/bin/bash -c /home/…"   5 seconds ago   Up 5 seconds   0.0.0.0:1234->1234/tcp, :::1234->1234/tcp, 0.0.0.0:8081->8081/tcp, :::8081->8081/tcp   wonderful_tu
 ```
 
 The emulator gateway endpoint runs on port 8081 and the data explorer on port 1234. Copy `https://localhost:1234` into your browser to access the data explorer. It may take a few seconds for data explorer to come up. The gatewat endpoint should be available immediately. 
@@ -110,7 +110,7 @@ The emulator gateway endpoint runs on port 8081 and the data explorer on port 12
 By default, the V2 emulator runs on standard https port 443. However, you can disable https and run with http, using the below command:
 
 ```shell
-docker run -d  -p 8081:8081 -p 1234:1234 -e GATEWAY_TLS_ENABLED="False"   microsoft/azure-cosmosdb-emulator:2.0
+docker run -d  -p 8081:8081 -p 1234:1234 -e GATEWAY_TLS_ENABLED="False"   microsoft/azure-cosmosdb-emulator:vnext-preview
 ```
 
 We support the following environment variables. Specify with `-e`, for example: `-e GATEWAY_TLS_ENABLED="True"`:
