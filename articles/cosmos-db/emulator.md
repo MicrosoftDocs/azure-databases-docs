@@ -68,7 +68,7 @@ The next generation of the Azure Cosmos DB Emulator is entirely linux based. As 
 
 ### Prerequisites
 
-The v2 emulator is provided as a docker container. You must have [docker](https://www.docker.com/) installed in your operating system. 
+This emulator is provided as a docker container. You must have [docker](https://www.docker.com/) installed in your operating system. 
 
 ### Installation
 
