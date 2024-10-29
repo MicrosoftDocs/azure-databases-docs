@@ -74,10 +74,9 @@ Install the Python libraries needed to run the code examples.
 
 #### [Passwordless (Recommended)](#tab/passwordless)
 
-Install the [psycopg](https://pypi.org/project/psycopg/) module, which enables connecting to and querying a PostgreSQL database, and the [azure-identity](https://pypi.org/project/azure-identity/) library, which provides Microsoft Entra token authentication support across the Azure SDK.                                                                                                                                      
+Install the [azure-identity](https://pypi.org/project/azure-identity/) library, which provides Microsoft Entra token authentication support across the Azure SDK.                                                                                                                                      
 
 ```Console
-pip install psycopg
 pip install azure-identity
 ```
 
