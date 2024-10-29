@@ -57,7 +57,7 @@ Every request made against the emulator must be authenticated using a key over T
 
 In some cases, you may wish to manually import the TLS/SS certificate from the emulator's running container into your host machine. This step avoids bad practices like disabling TLS/SSL validation in the SDK. For more information, see [import certificate](how-to-develop-emulator.md#import-the-emulators-tlsssl-certificate).
 
-## Linux based V2 Emulator (Preview)
+## Linux based Emulator (Preview)
 
 The next generation of the Azure Cosmos DB Emulator is entirely linux based. As such, it supports running on Apple silicon series or Microsoft ARM chip, without requiring any workarounds to install a Windows virtual machine.
 
