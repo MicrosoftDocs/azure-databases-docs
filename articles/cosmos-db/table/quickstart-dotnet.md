@@ -11,7 +11,7 @@ ms.topic: quickstart-sdk
 ms.date: 10/30/2024
 ms.custom: devx-track-csharp, devx-track-dotnet, devx-track-extended-azdevcli
 appliesto:
-  - '✅ :::image type="icon" source="~/reusable-content/ce-skilling/azure/media/cosmos-db/yes-icon.svg" border="false"::: Table'
+  - ✅ Table
 # CustomerIntent: As a developer, I want to learn the basics of the .NET library so that I can build applications with Azure Cosmos DB for Table.
 ---
 
