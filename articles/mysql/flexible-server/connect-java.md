@@ -21,13 +21,13 @@ ms.devlang: java
 
 [!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
-This topic demonstrates creating a sample application that uses Java and [JDBC](https://en.wikipedia.org/wiki/Java_Database_Connectivity) to store and retrieve information in [Azure Database for MySQL flexible server](../index.yml).
+This topic demonstrates creating a sample application that uses Java and [JDBC](https://en.wikipedia.org/wiki/Java_Database_Connectivity) to store and retrieve information in [Azure Database for MySQL Flexible Server](../index.yml).
 
 JDBC is the standard Java API to connect to traditional relational databases.
 
 In this article, we'll include two authentication methods: Microsoft Entra authentication and MySQL authentication. The **Passwordless** tab shows the Microsoft Entra authentication and the **Password** tab shows the MySQL authentication.
 
-Microsoft Entra authentication is a mechanism for connecting to Azure Database for MySQL flexible server using identities defined in Microsoft Entra ID. With Microsoft Entra authentication, you can manage database user identities and other Microsoft services in a central location, which simplifies permission management.
+Microsoft Entra authentication is a mechanism for connecting to Azure Database for MySQL Flexible Server using identities defined in Microsoft Entra ID. With Microsoft Entra authentication, you can manage database user identities and other Microsoft services in a central location, which simplifies permission management.
 
 MySQL authentication uses accounts stored in MySQL. If you choose to use passwords as credentials for the accounts, these credentials will be stored in the `user` table. Because these passwords are stored in MySQL, you'll need to manage the rotation of the passwords by yourself.
 
@@ -57,7 +57,7 @@ export CURRENT_USER_OBJECTID=$(az ad signed-in-user show --query id -o tsv)
 
 Replace the placeholders with the following values, which are used throughout this article:
 
-- `<YOUR_DATABASE_NAME>`: The name of your Azure Database for MySQL flexible server instance, which should be unique across Azure.
+- `<YOUR_DATABASE_NAME>`: The name of your Azure Database for MySQL Flexible Server instance, which should be unique across Azure.
 - `<YOUR_AZURE_REGION>`: The Azure region you'll use. You can use `eastus` by default, but we recommend that you configure a region closer to where you live. You can see the full list of available regions by entering `az account list-locations`.
 - `<YOUR_USER_ASSIGNED_MANAGED_IDENTITY_NAME>`: The name of your user assigned managed identity server, which should be unique across Azure.
 
@@ -75,7 +75,7 @@ export AZ_MYSQL_NON_ADMIN_PASSWORD=<YOUR_MYSQL_NON_ADMIN_PASSWORD>
 
 Replace the placeholders with the following values, which are used throughout this article:
 
-- `<YOUR_DATABASE_NAME>`: The name of your Azure Database for MySQL flexible server instance, which should be unique across Azure.
+- `<YOUR_DATABASE_NAME>`: The name of your Azure Database for MySQL Flexible Server instance, which should be unique across Azure.
 - `<YOUR_AZURE_REGION>`: The Azure region you'll use. You can use `eastus` by default, but we recommend that you configure a region closer to where you live. You can see the full list of available regions by entering `az account list-locations`.
 - `<YOUR_MYSQL_ADMIN_PASSWORD>` and `<YOUR_MYSQL_NON_ADMIN_PASSWORD>`: The password of your MySQL database server. That password should have a minimum of eight characters. The characters should be from three of the following categories: English uppercase letters, English lowercase letters, numbers (0-9), and non-alphanumeric characters (!, $, #, %, and so on).
 
@@ -92,12 +92,12 @@ az group create \
 
 ## Create an Azure Database for MySQL instance
 
-### Create Azure Database for MySQL flexible server instance and set up an admin user
+### Create Azure Database for MySQL Flexible Server instance and set up an admin user
 
-The first thing you create is a managed Azure Database for MySQL flexible server instance.
+The first thing you create is a managed Azure Database for MySQL Flexible Server instance.
 
 > [!NOTE]
-> You can read more detailed information about creating MySQL servers in [Create an Azure Database for MySQL flexible server instance by using the Azure portal](./quickstart-create-server-portal.md).
+> You can read more detailed information about creating MySQL servers in [Create an Azure Database for MySQL Flexible Server instance by using the Azure portal](./quickstart-create-server-portal.md).
 
 #### [Passwordless connection (Recommended)](#tab/passwordless)
 
@@ -129,7 +129,7 @@ az identity create \
 > [!IMPORTANT]
 > After creating the user-assigned identity, ask a user with at least the [Privileged Role Administrator](/azure/active-directory/roles/permissions-reference#privileged-role-administrator) role to grant the following permissions for this user-assigned managed identity: `User.Read.All`, `GroupMember.Read.All`, and `Application.Read.ALL`. Alternatively, give the user-assigned managed identity the [Directory Readers](/azure/active-directory/roles/permissions-reference#directory-readers) role. For more information, see the [Permissions](./concepts-azure-ad-authentication.md#permissions) section of [Active Directory authentication](./concepts-azure-ad-authentication.md).
 
-Run the following command to assign the identity to Azure Database for MySQL flexible server for creating Microsoft Entra admin:
+Run the following command to assign the identity to Azure Database for MySQL Flexible Server for creating Microsoft Entra admin:
 
 ```azurecli-interactive
 az mysql flexible-server identity assign \
@@ -150,9 +150,9 @@ az mysql flexible-server ad-admin create \
 ```
 
 > [!IMPORTANT]
-> When setting the administrator, a new user is added to the Azure Database for MySQL flexible server instance with full administrator permissions. Only one Microsoft Entra admin can be created per Azure Database for MySQL flexible server instance and selection of another one will overwrite the existing Microsoft Entra admin configured for the server.
+> When setting the administrator, a new user is added to the Azure Database for MySQL Flexible Server instance with full administrator permissions. Only one Microsoft Entra admin can be created per Azure Database for MySQL Flexible Server instance and selection of another one will overwrite the existing Microsoft Entra admin configured for the server.
 
-This command creates a small Azure Database for MySQL flexible server instance and sets the Active Directory admin to the signed-in user.
+This command creates a small Azure Database for MySQL Flexible Server instance and sets the Active Directory admin to the signed-in user.
 
 #### [Password](#tab/password)
 
@@ -167,21 +167,21 @@ az mysql flexible-server create \
     --output tsv
 ```
 
-This command creates a small Azure Database for MySQL flexible server instance.
+This command creates a small Azure Database for MySQL Flexible Server instance.
 
 ---
 
-The Azure Database for MySQL flexible server instance that you created has an empty database called `flexibleserverdb`.
+The Azure Database for MySQL Flexible Server instance that you created has an empty database called `flexibleserverdb`.
 
 [Having any issues? Let us know.](https://github.com/MicrosoftDocs/azure-docs/issues)
 
-### Configure a firewall rule for your Azure Database for MySQL flexible server instance
+### Configure a firewall rule for your Azure Database for MySQL Flexible Server instance
 
-Azure Database for MySQL flexible server instances are secured by default. They have a firewall that doesn't allow any incoming connection.
+Azure Database for MySQL Flexible Server instances are secured by default. They have a firewall that doesn't allow any incoming connection.
 
 You can skip this step if you're using Bash because the `flexible-server create` command already detected your local IP address and set it on MySQL server.
 
-If you're connecting to your Azure Database for MySQL flexible server instance from Windows Subsystem for Linux (WSL) on a Windows computer, you'll need to add the WSL host ID to your firewall. Obtain the IP address of your host machine by running the following command in WSL:
+If you're connecting to your Azure Database for MySQL Flexible Server instance from Windows Subsystem for Linux (WSL) on a Windows computer, you'll need to add the WSL host ID to your firewall. Obtain the IP address of your host machine by running the following command in WSL:
 
 ```bash
 sudo cat /etc/resolv.conf
@@ -470,7 +470,7 @@ public class DemoApplication {
 
 [Having any issues? Let us know.](https://github.com/MicrosoftDocs/azure-docs/issues)
 
-This Java code will use the *database.properties* and the *schema.sql* files that you created earlier, in order to connect to the Azure Database for MySQL flexible server instance and create a schema that will store your data.
+This Java code will use the *database.properties* and the *schema.sql* files that you created earlier, in order to connect to the Azure Database for MySQL Flexible Server instance and create a schema that will store your data.
 
 In this file, you can see that we commented methods to insert, read, update and delete data: you'll code those methods in the rest of this article, and you'll be able to uncomment them one after each other.
 
@@ -486,7 +486,7 @@ You can now execute this main class with your favorite tool:
 - Using your IDE, you should be able to right-click on the *DemoApplication* class and execute it.
 - Using Maven, you can run the application by executing: `mvn exec:java -Dexec.mainClass="com.example.demo.DemoApplication"`.
 
-The application should connect to the Azure Database for MySQL flexible server instance, create a database schema, and then close the connection, as you should see in the console logs:
+The application should connect to the Azure Database for MySQL Flexible Server instance, create a database schema, and then close the connection, as you should see in the console logs:
 
 ```output
 [INFO   ] Loading application properties
@@ -648,7 +648,7 @@ Executing the main class should now produce the following output:
 
 [Having any issues? Let us know.](https://github.com/MicrosoftDocs/azure-docs/issues)
 
-### Updating data in Azure Database for MySQL flexible server
+### Updating data in Azure Database for MySQL Flexible Server
 
 Next, update the data you previously inserted.
 
@@ -692,7 +692,7 @@ Executing the main class should now produce the following output:
 [INFO   ] Closing database connection
 ```
 
-### Deleting data in Azure Database for MySQL flexible server
+### Deleting data in Azure Database for MySQL Flexible Server
 
 Finally, delete the data you previously inserted.
 
@@ -735,7 +735,7 @@ Executing the main class should now produce the following output:
 
 ## Clean up resources
 
-Congratulations! You've created a Java application that uses JDBC to store and retrieve data from Azure Database for MySQL flexible server.
+Congratulations! You've created a Java application that uses JDBC to store and retrieve data from Azure Database for MySQL Flexible Server.
 
 To clean up all resources used during this quickstart, delete the resource group using the following command:
 
