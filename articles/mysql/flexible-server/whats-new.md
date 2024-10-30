@@ -38,7 +38,7 @@ To ensure performance and reliability in light of ongoing security improvements,
 
 **Next Steps:**
 - Review recommended alternative SKUs 
-- Access our upgrade guide for seamless transitions [Migration Guide](how-to-upgrade.md)
+- Access documentation for changing your SKU here: ([Manage server - Azure portal - Azure Database for MySQL - Flexible Server | Microsoft Learn](/azure/mysql/flexible-server/how-to-manage-server-portal) or [Manage server - Azure CLI - Azure Database for MySQL - Flexible Server | Microsoft Learn](/azure/mysql/flexible-server/how-to-manage-server-cli))
 - Review the Usage Dashboard to monitor your current usage
 
 ## September 2024
