@@ -31,13 +31,16 @@ To ensure performance and reliability in light of ongoing security improvements,
 
 **What does this mean for you?**
 
-- Limited Access: New B1s instances will be temporarily unavailable after 10/31/24.
+- Limited Access: New B1s instances will be unavailable after 10/28/24.
+
 - Existing Deployments: Any current B1s instances will remain unaffected.
 - Alternative Options: Explore and consider using other SKUs, such as B1ms and B2s, which provide enhanced compute power and memory while supporting greater performance. 
 
 **Next Steps:**
 - Review recommended alternative SKUs 
-- Access our upgrade guide for seamless transitions [Migration Guide](how-to-upgrade.md)
+- Access documentation for changing your SKU here: 
+  - [Azure portal](/azure/mysql/flexible-server/how-to-manage-server-portal)
+  - [Azure CLI](/azure/mysql/flexible-server/how-to-manage-server-cli)
 - Review the Usage Dashboard to monitor your current usage
 
 ## September 2024
