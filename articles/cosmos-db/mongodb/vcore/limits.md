@@ -100,14 +100,11 @@ The following limitations can be overridden by upgrading to a paid tier
 
 ### Cross-Region Replication (preview)
 - The following configurations are the same on both primary and replica clusters and can't be changed on the replica cluster:
-  - Compute configuration
   - Storage and shard count
   - User accounts
-- HA isn't supported on replica clusters.
-- The following features aren't available on replica clusters when cross-replication preview is enabled:
-  - Private endpoints (Private Link).
-  - Diagnostic settings.
-  - Point-in-time restore preview.
+- The following features aren't available on replica clusters:
+  - Point-in-time restore
+  - High availability (HA)
 - Cross-region replication isn't available on clusters with burstable compute or Free tier clusters.
 
 ## Miscellaneous Limits
