@@ -85,8 +85,10 @@ Using [Azure CLI](/cli/azure/):
    ```azurecli
 az postgres flexible-server parameter set --resource-group <resource_group>  --server-name <server> --subscription <subscription_id> --name shared_preload_libraries --value <extension_name>,<extension_name>
    ```
-
-After extensions are allowlisted and loaded, they must be installed in each database on which you plan to use them. To install a particular extension, you should run the [CREATE EXTENSION](https://www.postgresql.org/docs/current/sql-createextension.html) command. This command loads the packaged objects into your database.
+## Create Extension
+After extensions are allowlisted and loaded, they must be installed in each database on which you plan to use them. 
+1. A user must be a member of `azure_pg_admin` role to create an extension. A member of the `azure_pg_admin` role can grant privileges to other users to create extensions. 
+1. To install a particular extension, you should run the [CREATE EXTENSION](https://www.postgresql.org/docs/current/sql-createextension.html) command. This command loads the packaged objects into your database.
 
 > [!NOTE]  
 > Third party extensions offered in Azure Database for PostgreSQL flexible server are open source licensed code. Currently, we don't offer any third party extensions or extension versions with premium or proprietary licensing models.

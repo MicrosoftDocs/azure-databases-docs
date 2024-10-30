@@ -1,10 +1,10 @@
 ---
 title: Release notes for Azure DB for PostgreSQL - Flexible Server
 description: Release notes for Azure DB for PostgreSQL - Flexible Server, including feature additions, engine versions support, extensions, and other announcements.
-author: danyal-bukhari
-ms.author: dabukhari
+author: varun-dhawan
+ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 10/12/2024
+ms.date: 10/29/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: overview
@@ -21,6 +21,7 @@ This article highlights the latest updates and enhancements for Azure Database f
 ## Release: October 2024
 
 - General Availability of [Task Automation](create-automation-tasks.md). <sup>^</sup>
+- Preview of [Fabric Mirroring](https://techcommunity.microsoft.com/t5/azure-database-for-postgresql/mirroring-azure-database-for-postgresql-flexible-server-in/ba-p/4251876) for Azure Database for PostgreSQL flexible server.
 
 ## Release: September 2024
 
