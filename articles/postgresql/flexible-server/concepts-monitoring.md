@@ -252,6 +252,13 @@ In addition to the metrics, you can use Azure Database for PostgreSQL flexible s
 |---------|---------|--------|
 |[Log Analytics](/azure/azure-monitor/logs/log-analytics-overview)|With Log Analytics, you can create log queries to interactively work with log data and create log query alerts.| Some training is required for you to become familiar with the query language, although you can use prebuilt queries for common requirements. |
 
+## Server Logs
+
+The Server Logs feature in Azure Database for PostgreSQL Flexible Server allows users to enable, configure, and **download server logs**, which are essential for troubleshooting and performing historical analyses of server activity. By default, the server logs feature in Azure Database for PostgreSQL flexible server is disabled. However, after you enable the feature, Azure Database for PostgreSQL flexible server starts capturing events of the selected log type and writes them to a file. You can then use the Azure portal or the Azure CLI to download the files to assist with your troubleshooting efforts.
+
+### Server logs retention
+
+Server logs have minimum retention 1 days and maximum retention is 7 days. If this limit is exceeded, the oldest logs are deleted to make room for new ones. For details on enabling and managing server logs, refer to the guide on setting up [server logs](./how-to-server-logs-portal.md).
 
 ## Next steps
 
