@@ -22,7 +22,7 @@
     },
     {
         "source_path_from_root": "/articles/mariadb/security-baseline.md",
-        "redirect_url": "azure/security/benchmark/azure/baselines/mariadb-security-baseline",
+        "redirect_url": "/azure/security/benchmark/azure/baselines/mariadb-security-baseline",
         "redirect_document_id": false
     },
     {
