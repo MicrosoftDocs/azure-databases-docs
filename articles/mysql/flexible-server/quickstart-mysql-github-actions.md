@@ -4,7 +4,7 @@ description: Use Azure Database for MySQL - Flexible Server from a GitHub Action
 author: juliakm
 ms.author: jukullam
 ms.reviewer: maghan
-ms.date: 06/18/2024
+ms.date: 10/30/2024
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: quickstart
@@ -53,16 +53,12 @@ The file has two sections:
 
 ## Copy the MySQL connection string
 
-In the Azure portal, go to your Azure Database for MySQL flexible server instance and open **Settings** > **Connection strings**. Copy the **ADO.NET** connection string. Replace the placeholder values for `your_database` and `your_password`. The connection string looks similar to the following.
+In the Azure portal, go to your Azure Database for MySQL flexible server instance and open **Settings** > **Connection strings**. Copy the **ADO.NET** connection string. Replace the placeholder values for `your_database` and `your_password`. 
 
 > [!IMPORTANT]
 >
 > - For Azure Database for MySQL single server, use **Uid=adminusername@servername**. Note the **@servername** is required.
-> - For Azure Database for MySQL flexible server, use **Uid= adminusername** without the @servername.
-
-```output
-   Server=my-mysql-server.mysql.database.azure.com; Port=3306; Database={your_database}; Uid=adminname@my-mysql-server; Pwd={your_password}; SslMode=Preferred;
-```
+> - For Azure Database for MySQL flexible server, use **Uid=adminusername** without the @servername.
 
 You'll use the connection string as a GitHub secret.
 
