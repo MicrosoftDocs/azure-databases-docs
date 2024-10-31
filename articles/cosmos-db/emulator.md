@@ -111,16 +111,16 @@ The following table summarizes the available Docker commands for configuring the
 
 | Requirement | Arg | Env | Allowed values | Default | Description |
 |--------------|--------------|--------------|----------------|---------|-------------|
-| Print the settings to stdout from the container | --help -h |  |  |  | Display information on available configuration |
+| Print the settings to stdout from the container | --help -h | N/A | N/A  | N/A  | Display information on available configuration |
 | Set the port of the cosmos endpoint | --port [INT] | PORT | INT | 8081 | The port of the Cosmos endpoint on the container. You still need to publish this port (e.g. -p 8081:8081). |
-| Specify the protocol used by the cosmos endpoint | --protocol | PROTOCOL | https |http | https-insecure | http | The protocol of the Cosmos endpoint on the container. |
+| Specify the protocol used by the cosmos endpoint | --protocol | PROTOCOL | https/http/https-insecure | http | The protocol of the Cosmos endpoint on the container. |
 | Enable the data explorer | --enable-explorer | ENABLE_EXPLORER | true | false | true | Enable running the Cosmos Data Explorer on the same container. |
 | Set the port used by the data explorer | --explorer-port | EXPLORER_PORT | INT | 1234 | The port of the Cosmos Data Explorer on the container. You still need to publish this port (e.g. -p 1234:1234) |
-| User should be able lo specify the protocol used by the explorer, otherwise default to what the cosmos endpoint is using | --explorer-protocol | EXPLORER_PROTOCOL | https | http| https-insecure | <the value of PROTOCOL> | The protocol of the Cosmos Data Explorer on the container. Defaults to the protocol setting on the Cosmos endpoint. |
-| Specify the key via file | --key-file [PATH] | KEY_FILE | PATH | <default secret> | Override default key with key in key file. You need to mount this file into the container (e.g. if KEY_FILE=/mykey, you'd add an option like the following to your docker run: --mount type=bind,source=./myKey,target=/myKey) |
+| User should be able lo specify the protocol used by the explorer, otherwise default to what the cosmos endpoint is using | --explorer-protocol | EXPLORER_PROTOCOL | https/http/https-insecure | `<the value of --protocol>` | The protocol of the Cosmos Data Explorer on the container. Defaults to the protocol setting on the Cosmos endpoint. |
+| Specify the key via file | --key-file [PATH] | KEY_FILE | PATH | `<default secret>` | Override default key with key in key file. You need to mount this file into the container (e.g. if KEY_FILE=/mykey, you'd add an option like the following to your docker run: --mount type=bind,source=./myKey,target=/myKey) |
 | Set the data path | --data-path [PATH] | DATA_PATH | PATH | /data | Specify a directory for data.  Frequently used with docker run --mount option (e.g. if DATA_PATH=/usr/cosmos/data, you'd add an option like the following to your docker run: --mount type=bind,source=./.local/data,target=/usr/cosmos/data) |
-| Specify the cert path to be used for https | `--cert-path [PATH] | CERT_PATH | PATH | <default cert> | Specify a path to a certificate for securing traffic. You need to mount this file into the container (e.g. if CERT_PATH=/mycert.pfx, you'd add an option like the following to your docker run: --mount type=bind,source=./mycert.pfx,target=/mycert.pfx) |
-| Specify the cert secret to be used for https | <N/A> | CERT_SECRET | string | <default secret> | The secret for the certificate specified on CERT_PATH |
+| Specify the cert path to be used for https | `--cert-path [PATH] | CERT_PATH | PATH | `<default cert>` | Specify a path to a certificate for securing traffic. You need to mount this file into the container (e.g. if CERT_PATH=/mycert.pfx, you'd add an option like the following to your docker run: --mount type=bind,source=./mycert.pfx,target=/mycert.pfx) |
+| Specify the cert secret to be used for https | <N/A> | CERT_SECRET | string | `<default secret>` | The secret for the certificate specified on CERT_PATH |
 | Set the log level | --log-level [LEVEL] | LOG_LEVEL | quiet | error | warn | info | debug | trace | info | The verbosity of logs that will be emitted by the emulator and data explorer. |
 | Enable diagnostic info being sent to microsoft | --enable-telemetry | ENABLE_TELEMETRY | true|false | true | Enable sending telemetry to Microsoft to help us improve the product. <TBD privacy statement> |
 
