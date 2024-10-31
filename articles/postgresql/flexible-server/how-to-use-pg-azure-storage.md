@@ -1,10 +1,10 @@
 ---
-title: Copy data with Azure Storage Extension on Azure Database for PostgreSQL.
-description: Copy, export or read data from Azure Blob Storage with the Azure Storage extension for Azure Database for PostgreSQL - Flexible Server.
-author: techlake
-ms.author: hganten
+title: Copy data with pg_azure_storage extension in Azure Database for PostgreSQL - Flexible Server
+description: Learn how to use the pg_azure_storage extension in Azure Database for PostgreSQL - Flexible Server to import and export data
+author: nachoalonsoportillo
+ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 04/27/2024
+ms.date: 10/31/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: reference
@@ -12,13 +12,19 @@ ms.custom:
   - ignite-2023
 ---
 
-# pg_azure_storage extension on Azure Database for PostgreSQL - Flexible Server reference
+# How to import and export data using Azure Storage in Azure Database for PostgreSQL - Flexible Server
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
-The [pg_azure_storage](./concepts-storage-extension.md) extension allows you to import or export data in multiple file formats, directly between Azure blob storage and your Azure Database for PostgreSQL flexible server instance. Azure blob storage containers with access level "Private" or "Blob" require adding private access key. Examples of data export and import using this extension can be found in [Import data from Azure Blob Storage to Azure Database for PostgreSQL flexible server](./concepts-storage-extension.md#import-data-from-azure-blob-storage-to-azure-database-for-postgresql-flexible-server)
+The [pg_azure_storage](./concepts-storage-extension.md) extension allows you to import or export data in multiple file formats, directly between Azure Storage accounts and an instance of Azure Database for PostgreSQL Flexible Server.
 
-Before you can enable `pg_azure_storage` on your Azure Database for PostgreSQL flexible server instance, you need to add the extension to your allowlist as described in [how to use PostgreSQL extensions](./concepts-extensions.md#how-to-use-postgresql-extensions), and check if correctly added by running `SHOW azure.extensions;`, and confirming that the extension name is part of the comma-separated value returned by the `SHOW` statement.
+Examples of data export and import using this extension can be found in the [Examples](#examples) section of this article.
+
+To use the `pg_azure_storage` extension on your Azure Database for PostgreSQL flexible server instance, you need to add the extension to the `shared_preload_libraries`, and also add it to the `azure.extensions` server parameter, as described in [how to use PostgreSQL extensions](./concepts-extensions.md#how-to-use-postgresql-extensions). 
+
+Because `shared_preload_library` is a static server parameter, it requires a restart of the server for the change to take effect.
+
+Once the server has been restarted, connect to your instance of PostgreSQL using the client of your preference (ie psql, pgAdmin, etc). Confirm that `SHOW azure.extensions;`, and `SHOW shared_preload_libraries;`, both include the value `azure_storage` in the list of the comma-separated values returned by each of the the `SHOW` statements.
 
 Only then you can install the extension, by connecting to your target database, and running the [CREATE EXTENSION](https://www.postgresql.org/docs/current/static/sql-createextension.html) statement. You need to repeat the command separately for each database in which you want the extension to be available.
 
@@ -52,6 +58,10 @@ If a previous invocation of this function already added the reference to this st
 azure_storage.account_add(account_name_p text, account_key_p text);
 ```
 
+### Permissions
+
+Must be a member of `azure_storage_admin`.
+
 ### Arguments
 
 #### account_name_p
@@ -70,6 +80,10 @@ Function that allows removing a storage account and its associated access key fr
 azure_storage.account_remove(account_name_p text);
 ```
 
+### Permissions
+
+Must be a member of `azure_storage_admin`.
+
 ### Arguments
 
 #### account_name_p
@@ -86,6 +100,10 @@ Function that allows granting a PostgreSQL user or role access to a storage acco
 ```sql
 azure_storage.account_add(account_name_p text, user_p regrole);
 ```
+
+### Permissions
+
+Must be a member of `azure_storage_admin`.
 
 ### Arguments
 
@@ -109,6 +127,10 @@ Function that allows revoking a PostgreSQL user or role access to a storage acco
 azure_storage.account_remove(account_name_p text, user_p regrole);
 ```
 
+### Permissions
+
+Must be a member of `azure_storage_admin`.
+
 ### Arguments
 
 #### account_name_p
@@ -127,6 +149,10 @@ Function that lists the names of the storage accounts that were configured via t
 azure_storage.account_list();
 ```
 
+### Permissions
+
+Must be a member of `azure_storage_admin`.
+
 ### Arguments
 
 This function doesn't take any arguments.
@@ -143,6 +169,10 @@ Function that lists the names and other properties (size, lastModified, eTag, co
 azure_storage.blob_list(account_name text, container_name text, prefix text DEFAULT ''::text);
 ```
 
+### Permissions
+
+User or role invoking this function must be added to the allowed list for the `account_name` referred, by executing [azure_storage.account_user_add](#azure_storageaccount_user_add). Members of `azure_storage_admin` are automatically allowed to reference all Azure Storage accounts whose references were added using [azure_storage.account_add](#azure_storageaccount_add).
+
 ### Arguments
 
 #### account_name
@@ -152,7 +182,7 @@ azure_storage.blob_list(account_name text, container_name text, prefix text DEFA
 #### container_name
 
 `text` the name of a container. A container organizes a set of blobs, similar to a directory in a file system. A storage account can include an unlimited number of containers, and a container can store an unlimited number of blobs.
-A container name must be a valid DNS name, as it forms part of the unique URI used to address the container or its blobs.
+A container name must be a valid Domain Name System (DNS) name, as it forms part of the unique URI used to address the container or its blobs.
 When naming a container, make sure to follow [these rules](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names).
 
 The URI for a container is similar to:
@@ -184,11 +214,11 @@ The URI for a container is similar to:
 
 #### content_type
 
-`text` the content type specified for the blob. The default content type is 'application/octet-stream'.
+`text` the content type specified for the blob. The default content type is `application/octet-stream`.
 
 #### content_encoding
 
-`text` the Content-Encoding property of a blob that Azure Storage allows you to define. For compressed content, you could set the property to be GZIP.  When the browser accesses the content, it automatically decompresses the content.
+`text` the Content-Encoding property of a blob that Azure Storage allows you to define. For compressed content, you could set the property to be Gzip. When the browser accesses the content, it automatically decompresses the content.
 
 #### content_hash
 
@@ -197,7 +227,7 @@ The URI for a container is similar to:
 
 ## azure_storage.blob_get
 
-Function that downloads the content of the blobs stored within the referred container. This function supports filtering and some data manipulation prior to import.
+Function that allows importing data. It downloads one or more files from a blob container in an Azure Storage account. Then it translates the contents into rows, which can be consumed and processed with SQL language constructs. This function adds support to filter and manipulate the data fetched from the blob container before importing it.
 
 > [!NOTE]  
 > Before trying to access the container for the referred storage account, this function checks if the names of the storage account and container passed as arguments are valid according to the naming validation rules imposed on Azure storage accounts. If either of them is invalid, an error is raised.
@@ -212,6 +242,10 @@ There's an overloaded version of this function, which accepts a `rec` parameter 
 azure_storage.blob_get(account_name text, container_name text, path text, rec anyelement, decoder text DEFAULT 'auto'::text, compression text DEFAULT 'auto'::text, options jsonb DEFAULT NULL::jsonb);
 ```
 
+### Permissions
+
+User or role invoking this function must be added to the allowed list for the `account_name` referred, by executing [azure_storage.account_user_add](#azure_storageaccount_user_add). Members of `azure_storage_admin` are automatically allowed to reference all Azure Storage accounts whose references were added using [azure_storage.account_add](#azure_storageaccount_add).
+
 ### Arguments
 
 #### account_name
@@ -221,7 +255,7 @@ azure_storage.blob_get(account_name text, container_name text, path text, rec an
 #### container_name
 
 `text` the name of a container. A container organizes a set of blobs, similar to a directory in a file system. A storage account can include an unlimited number of containers, and a container can store an unlimited number of blobs.
-A container name must be a valid DNS name, as it forms part of the unique URI used to address the container or its blobs.
+A container name must be a valid Domain Name System (DNS) name, as it forms part of the unique URI used to address the container or its blobs.
 When naming a container, make sure to follow [these rules](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names).
 
 The URI for a container is similar to:
@@ -237,11 +271,11 @@ The URI for a container is similar to:
 
 #### decoder
 
-`text`the specification of the blob format. Can be set to any of the following values:
+`text` the specification of the blob format. Can be set to any of the following values:
 
 | **Format** | **Default** | **Description** |
 | --- | --- | --- |
-| `auto` | `true`      | Infers the value based on the last series of characters assigned to the name of the blob. If the blob name ends with `.csv` or `.csv.gz`, it's considered `csv`. If ends with `.tsv` or `.tsv.gz`, is considered `tsv`. If ends with `.json`, `.json.gz`, `.xml`, `.xml.gz`, `.txt`, or `.txt.gz`, is considered `text`. |
+| `auto` | `true`      | Infers the value based on the last series of characters assigned to the name of the blob. If the blob name ends with `.csv` or `.csv.gz`, it assumes `csv`. If ends with `.tsv` or `.tsv.gz`, it assumes it's `tsv`. If ends with `.json`, `.json.gz`, `.xml`, `.xml.gz`, `.txt`, or `.txt.gz`, it assumes it's `text`. |
 | `csv` | | Comma-separated values format used by PostgreSQL COPY. |
 | `tsv` | | Tab-separated values, the default PostgreSQL COPY format. |
 | `binary` | | Binary PostgreSQL COPY format. |
@@ -253,7 +287,7 @@ The URI for a container is similar to:
 
 | **Format** | **Default** | **Description**                                                                                                                                                                      |
 | --- | --- | --- |
-| `auto` | `true` | Infers the value based on the last series of characters assigned to the name of the blob. If the blob name ends with `.gz`, it's considered `gzip`. Otherwise, is considered `none`. |
+| `auto` | `true` | Infers the value based on the last series of characters assigned to the name of the blob. If the blob name ends with `.gz`, it assumes it's `gzip`. Otherwise, it assumes it's `none`. |
 | `gzip` | | Forces using gzip decoder to decompress the blob. |
 | `none` | | Forces to treat the blob as one which doesn't require decompression. |
 
@@ -268,12 +302,102 @@ The extension doesn't support any other compression types.
 `SETOF record` 
 `SETOF  anyelement`
 
+## azure_storage.blob_put
+
+Function that allows exporting data, by uploading files to a blob container in an Azure Storage account. The content of the files is produced from rows in PostgreSQL.
+
 > [!NOTE]  
-> There are four utility functions, called as a parameter within `blob_get`, that help building values for it. Each utility function is designated for the decoder matching its name.
+> Before trying to access the container for the referred storage account, this function checks if the names of the storage account and container passed as arguments are valid according to the naming validation rules imposed on Azure storage accounts. If either of them is invalid, an error is raised.
+
+```sql
+azure_storage.blob_put(account_name text, container_name text, path text, tuple record)
+RETURNS VOID;
+```
+
+There's an overloaded version of function, containing `encoder` parameter that allows you to specify the encoder to use when it can't be inferred from the extension of the `path` parameter, or when you want to override the one inferred.
+
+```sql
+azure_storage.blob_put(account_name text, container_name text, path text, tuple record, encoder text)
+RETURNS VOID;
+```
+
+There's an overloaded version of function that also contains a `compression` parameter that allows you to specify the compression to use when it can't be inferred from the extension of the `path` parameter, or when you want to override the one inferred.
+
+```sql
+azure_storage.blob_put(account_name text, container_name text, path text, tuple record, encoder text, compression text)
+RETURNS VOID;
+```
+
+There's an overloaded version of function that also contains an `options` parameter for handling custom headers, custom separators, escape characters etc. `options` works in similar fashion to the options that can be passed to the `COPY` command in PostgreSQL.
+
+```sql
+azure_storage.blob_put(account_name text, container_name text, path text, tuple record, encoder text, compression text, options jsonb)
+RETURNS VOID;
+```
+
+### Permissions
+
+User or role invoking this function must be added to the allowed list for the `account_name` referred, by executing [azure_storage.account_user_add](#azure_storageaccount_user_add). Members of `azure_storage_admin` are automatically allowed to reference all Azure Storage accounts whose references were added using [azure_storage.account_add](#azure_storageaccount_add).
+
+### Arguments
+
+#### account_name
+
+`text` the name of the Azure blob storage account that contains all of your objects: blobs, files, queues, and tables. The storage account provides a unique namespace that is accessible from anywhere in the world over HTTPS.
+
+#### container_name
+
+`text` the name of a container. A container organizes a set of blobs, similar to a directory in a file system. A storage account can include an unlimited number of containers, and a container can store an unlimited number of blobs.
+A container name must be a valid Domain Name System (DNS) name, as it forms part of the unique URI used to address the container or its blobs.
+When naming a container, make sure to follow [these rules](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names).
+
+The URI for a container is similar to:
+`https://myaccount.blob.core.windows.net/mycontainer`
+
+#### path
+
+`text` the full name of the blob.
+
+#### tuple
+
+`record` the definition of the record output structure.
+
+#### encoder
+
+`text` the specification of the blob format. Can be set to any of the following values:
+
+| **Format** | **Default** | **Description** |
+| --- | --- | --- |
+| `auto` | `true`      | Infers the value based on the last series of characters assigned to the name of the blob. If the blob name ends with `.csv` or `.csv.gz`, it assumes  it's `csv`. If ends with `.tsv` or `.tsv.gz`, it assumes it's `tsv`. If ends with `.json`, `.json.gz`, `.xml`, `.xml.gz`, `.txt`, or `.txt.gz`, it assumes it's `text`. |
+| `csv` | | Comma-separated values format used by PostgreSQL COPY. |
+| `tsv` | | Tab-separated values, the default PostgreSQL COPY format. |
+| `binary` | | Binary PostgreSQL COPY format. |
+| `text` \| `xml` \| `json` | | A file containing a single text value. |
+
+#### compression
+
+`text` the specification of compression type. Can be set to any of the following values:
+
+| **Format** | **Default** | **Description**                                                                                                                                                                      |
+| --- | --- | --- |
+| `auto` | `true` | Infers the value based on the last series of characters assigned to the name of the blob. If the blob name ends with `.gz`, it assumes it's `gzip`. Otherwise, it assumes it's `none`. |
+| `gzip` | | Forces using gzip decoder to decompress the blob. |
+| `none` | | Forces to treat the blob as one which doesn't require decompression. |
+
+The extension doesn't support any other compression types.
+
+#### options
+
+`jsonb` the settings that define handling of custom headers, custom separators, escape characters, etc. `options` affects the behavior of this function in a way similar to how the options you can pass to the [`COPY`](https://www.postgresql.org/docs/current/sql-copy.html) command in PostgreSQL affect its behavior.
+
+### Return type
+
+`SETOF record` 
+`SETOF  anyelement`
 
 ## azure_storage.options_csv_get
 
-Function that acts as a utility function, called as a parameter within `blob_get`, which is useful for decoding the content of a csv file.
+Function that acts as a utility function, which can be called as a parameter within `blob_get`, and is useful for decoding the content of a csv file.
 
 ```sql
 azure_storage.options_csv_get(delimiter text DEFAULT NULL::text, null_string text DEFAULT NULL::text, header boolean DEFAULT NULL::boolean, quote text DEFAULT NULL::text, escape text DEFAULT NULL::text, force_not_null text[] DEFAULT NULL::text[], force_null text[] DEFAULT NULL::text[], content_encoding text DEFAULT NULL::text);
@@ -319,7 +443,7 @@ azure_storage.options_csv_get(delimiter text DEFAULT NULL::text, null_string tex
 
 ## azure_storage.options_copy
 
-Function that acts as a utility function, called as a parameter within `blob_get`, which is invoked by [options_csv_get](#azure_storageoptions_csv_get), [options_tsv](#azure_storageoptions_tsv), and [options_binary](#azure_storageoptions_binary).
+Function that acts as a utility function, which can be called as a parameter within `blob_get`. It acts as a helper function for [options_csv_get](#azure_storageoptions_csv_get), [options_tsv](#azure_storageoptions_tsv), and [options_binary](#azure_storageoptions_binary).
 
 ```sql
 azure_storage.options_copy(delimiter text DEFAULT NULL::text, null_string text DEFAULT NULL::text, header boolean DEFAULT NULL::boolean, quote text DEFAULT NULL::text, escape text DEFAULT NULL::text, force_quote text[] DEFAULT NULL::text[], force_not_null text[] DEFAULT NULL::text[], force_null text[] DEFAULT NULL::text[], content_encoding text DEFAULT NULL::text);
@@ -369,7 +493,7 @@ azure_storage.options_copy(delimiter text DEFAULT NULL::text, null_string text D
 
 ## azure_storage.options_tsv
 
-Function that acts as a utility function, called as a parameter within `blob_get`, which is useful for decoding the content of a tsv file.
+Function that acts as a utility function, which can be called as a parameter within `blob_get`, and is useful for decoding the content of a tsv file.
 
 ```sql
 azure_storage.options_tsv(delimiter text DEFAULT NULL::text, null_string text DEFAULT NULL::text, content_encoding text DEFAULT NULL::text);
@@ -395,7 +519,7 @@ azure_storage.options_tsv(delimiter text DEFAULT NULL::text, null_string text DE
 
 ## azure_storage.options_binary
 
-Function that acts as a utility function, called as a parameter within `blob_get`, which is useful for decoding the content of a binary file.
+Function that acts as a utility function, which can be called as a parameter within `blob_get`, and is useful for decoding the content of a binary file.
 
 ```sql
 azure_storage.options_binary(content_encoding text DEFAULT NULL::text);
@@ -413,10 +537,10 @@ azure_storage.options_binary(content_encoding text DEFAULT NULL::text);
 
 ## Examples
 
-There are some pre-requisites you have to meet before you can run the following examples.
+You must meet the following prerequistes before you can run the following examples:
 
-1. You need to create an Azure storage account.
-   Customize the values of `<resource_group>`, `<location>`, `<storage_account>`, and `<blob_container>`, and run the following Azure CLI command to create that account if you don't have one already:
+1. Create an Azure Storage account.
+   To create an Azure Storage account, if you don't have one already, customize the values of `<resource_group>`, `<location>`, `<storage_account>`, and `<blob_container>`, and run the following Azure CLI command:
    ```azurecli
    resource_group=<resource_group>
    location=<location>
@@ -425,20 +549,20 @@ There are some pre-requisites you have to meet before you can run the following 
    az group create --name $resource_group --location $location
    az storage account create --resource-group $resource_group --name $storage_account --location $location --sku Standard_LRS --kind BlobStorage --public-network-access enabled --access-tier hot
    ```
-1. You need a blob container.
-   Run the following Azure CLI command to create the blob container:
+1. Create a blob container.
+   To create the blob container, run the following Azure CLI:
    ```azurecli
    az storage container create --account-name $storage_account --name $blob_container -o tsv
    ```
-1. You need to fetch one of the two access keys assigned to the storage account. Make sure you copy the value of your access_key as you need to pass it as an argument to [account_add](#azure_storageaccount_add) in a subsequent step.
-   Run the following Azure CLI command to fetch the first of the two access keys:
+1. Fetch one of the two access keys assigned to the storage account. Make sure you copy the value of your access_key as you need to pass it as an argument to [account_add](#azure_storageaccount_add) in a subsequent step.
+   To fetch the first of the two access keys, run the following Azure CLI command:
    ```azurecli
    access_key=$(az storage account keys list --resource-group $resource_group --account-name $storage_account --query [0].value)
    echo "Following is the value of your access key:"
    echo $access_key
    ```
-1. You need to download the file with the data set that is used during the examples, and upload it to your blob container.
-   Run the following Azure CLI command to fetch the first of the two access keys:
+1. Download the file with the data set that is used during the examples, and upload it to your blob container.
+   To download the file with the data set, run the following Azure CLI command:
    ```azurecli   
    mkdir --parents azure_storage_examples
    cd azure_storage_examples
@@ -452,11 +576,11 @@ There are some pre-requisites you have to meet before you can run the following 
    ```
 
 > [!NOTE]  
-> You can list containers set to Private and Blob access levels for a storage account, but only if your PostgreSQL user is granted the `azure_storage_admin` role or you're granted permission on a specific storage account by using [account_user_add](#azure_storageaccount_user_add). By default, only members of `azure_pg_admin` are granted the `azure_storage_admin` role.
+> You can list containers or the blobs stored in them for a specific storage account, but only if your PostgreSQL user or role is granted permission on on the reference to that storage account by using [account_user_add](#azure_storageaccount_user_add). Members of the `azure_storage_admin` role are granted this privilege over all Azure Storage accounts that have been added using [azure_storage.account_add](#azure_storageaccount_add). By default, only members of `azure_pg_admin` are granted the `azure_storage_admin` role.
 
 ### Create table in which data is loaded
 
-Let's create the table into which we import the contents of the CSV file that we uploaded to the storage account. To do so, connect to your instance of Azure Database for PostgreSQL flexible server using `PgAdmin`, `psql` or the client of your preference, and execute the following statement:
+Let's create the table into which we import the contents of the CSV file that we uploaded to the storage account. To do so, connect to your instance of Azure Database for PostgreSQL flexible server using `PgAdmin`, `psql`, or the client of your preference, and execute the following statement:
 
 ```sql
 CREATE TABLE IF NOT EXISTS public.events
@@ -511,7 +635,7 @@ SELECT * FROM azure_storage.account_user_add('<storage_account>', '<regular_user
 
 ### List all the references to Azure storage accounts
 
-This example illustrates how to find out which Azure storage accounts can be referenced by the `pg_azure_storage` extension in this database, together with the type of authentication that is used to access each storage account, and which users or roles are granted permission, via the [account_user_add](#azure_storageaccount_user_add) function, to access that Azure storage account through the functionality provided by the extension.
+This example illustrates how to find out which Azure storage accounts the `pg_azure_storage` extension can reference in this database, together with the type of authentication that is used to access each storage account, and which users or roles are granted permission, via the [account_user_add](#azure_storageaccount_user_add) function, to access that Azure storage account through the functionality provided by the extension.
 
 ```sql
 SELECT * FROM azure_storage.account_list();
@@ -519,7 +643,7 @@ SELECT * FROM azure_storage.account_list();
 
 ### Revoke access from a user or role on the Azure Blob storage reference
 
-This example illustrates how to revoke access from a user or role named `<regular_user>`, so that such PostgreSQL user cannot use the `pg_azure_storage` extension to access the blobs stored in containers hosted by the referred Azure storage account. 
+This example illustrates how to revoke access from a user or role named `<regular_user>`, so that such PostgreSQL user can't use the `pg_azure_storage` extension to access the blobs stored in containers hosted by the referred Azure storage account. 
 
 `<storage_account>` must be set to the name of your storage account. If you used the previous scripts, this value should match whatever value you set to the storage_account environment variable in those scripts.
 
@@ -549,7 +673,7 @@ This example illustrates how to list all existing blobs inside container `<blob_
 
 `<blob_container>` must be set to the name of your blob container. If you used the previous scripts, this value should match whatever value you set to the blob_container environment variable in those scripts.
 
-`<blob_name_prefix>` should be set to the whatever prefix you want the blobs enumerated to include in their names. If you want to return all blobs, despite of their name, you can set this to an empty string or don't even specify a value for this parameter, in which case the value defaults to an empty string.
+`<blob_name_prefix>` should be set to the whatever prefix you want the blobs enumerated to include in their names. If you want to return all blobs, you can set this parameter to an empty string or don't even specify a value for this parameter, in which case the value defaults to an empty string.
 
 ```sql
 SELECT * FROM azure_storage.blob_list('<storage_account>','<blob_container>','<blob_name_prefix>');
@@ -569,7 +693,7 @@ The `blob_get` function retrieves the contents of one specific blob (`events.csv
 
 `<blob_container>` must be set to the name of your blob container. If you used the previous scripts, this value should match whatever value you set to the blob_container environment variable in those scripts.
 
-`<blob_name_prefix>` should be set to the whatever prefix you want the blobs enumerated to include in their names. If you want to return all blobs, despite of their name, you can set this to an empty string or don't even specify a value for this parameter, in which case the value defaults to an empty string.
+`<blob_name_prefix>` should be set to the whatever prefix you want the blobs enumerated to include in their names. If you want to return all blobs, you can set this parameter to an empty string or don't even specify a value for this parameter, in which case the value defaults to an empty string.
 
 ```sql
 SELECT * FROM azure_storage.blob_get
@@ -689,7 +813,27 @@ ORDER BY 2 DESC
 LIMIT 5;
 ```
 
+### Write content to a blob in a container
+
+The `blob_put` function composes the contents of one specific blob (`eventscopy.csv` in this case), and uploads it to the referred container `<blob_container>` of the `<storage_account>` storage. This example uses `blob_get` to construct a set of five rows, which are then passed to the `blob_put` aggregate function which uploads them as a blob named `eventscopy.csv`.
+
+`<storage_account>` must be set to the name of your storage account. If you used the previous scripts, this value should match whatever value you set to the storage_account environment variable in those scripts.
+
+`<blob_container>` must be set to the name of your blob container. If you used the previous scripts, this value should match whatever value you set to the blob_container environment variable in those scripts.
+
+```sql
+SELECT azure_storage.blob_put
+        ('<storage_account>'
+        ,'<blob_container>'
+        ,'eventscopy.csv'
+        , top_5_events)
+FROM (SELECT * FROM azure_storage.blob_get
+                     ('<storage_account>'
+                     ,'<blob_container>'
+                     ,'events.csv'
+                     , NULL::events) LIMIT 5) AS top_5_events;
+```
+
 ## Related content
 
-- [overview](concepts-storage-extension.md)
-- [feedback forum](https://aka.ms/pgfeedback)
+- [Import and export data using Azure Storage in Azure Database for PostgreSQL - Flexible Server](concepts-storage-extension.md)
