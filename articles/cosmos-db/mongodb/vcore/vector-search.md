@@ -94,7 +94,7 @@ To perform a vector search, use the `$search` aggregation pipeline stage, and qu
 },
 ```
 
-## Example using a DiskANN Index with Geospatial Filtering
+## Example using a DiskANN Index with Filtering
 
 The following examples demonstrate how to index vectors, add documents with vector properties, perform a vector search with DiskANN, and incorporate geospatial filtering.
 
@@ -113,11 +113,17 @@ db.runCommand({
             },
             "cosmosSearchOptions": {
                 "kind": "vector-diskann",
-                "dimensions": 1536,
+                "dimensions": 3,
                 "similarity": "L2",
                 "maxDegree": 32,
                 "lBuild": 64
             }
+        },
+        { 
+            "name": "is_open",
+            "key": { 
+                "is_open": 1 
+            }      
         },
         {
             "name": "locationIndex",
@@ -146,7 +152,7 @@ db.exampleCollection.insertMany([
 
 ### Perform a Vector Search with Geospatial Filter
 
-To find documents with similar vectors within a specific geographic radius, specify the `queryVector` for similarity search and include a geospatial filter. In this example, the search is limited to businesses within a 1-mile radius of the provided coordinates (longitude 119° W, latitude 34° N).
+To find documents with similar vectors within a specific geographic radius, specify the `queryVector` for similarity search and include a geospatial filter. In this example, the search is limited to businesses within a 100-mile radius of the provided coordinates (longitude 119° W, latitude 34° N).
 
 ```javascript
 const queryVector = [0.52, 0.28, 0.12];
@@ -160,7 +166,7 @@ db.exampleCollection.aggregate([
                 "filter": {
                     "$and": [
                         { "is_open": { "$eq": 1 } },
-                        { "location": { "$geoWithin": { "$centerSphere": [[-119.7192861804, 34.4102485028], 1 / 3963.2] }}}
+                        { "location": { "$geoWithin": { "$centerSphere": [[-119.7192861804, 34.4102485028], 100 / 3963.2] }}}
                     ]
                 }
             }
@@ -170,12 +176,12 @@ db.exampleCollection.aggregate([
 ]);
 ```
 
-In this example, a vector similarity search is performed with DiskANN, filtered to return only open businesses within a 1-mile radius. The `k` parameter limits the results to the top 5 closest vectors based on the specified `L2` similarity metric.
+In this example, a vector similarity search is performed with DiskANN, filtered to return only open businesses within a 100-mile radius. The `k` parameter limits the results to the top 5 closest vectors based on the specified `L2` similarity metric.
 
 ```javascript
 [
   {
-    similarityScore: 0.9465376,
+    similarityScore: 0.9442221868359402,
     document: {
       _id: ObjectId("645acb54413be5502badff94"),
       name: 'Eugenia Lopez',
@@ -186,7 +192,7 @@ In this example, a vector similarity search is performed with DiskANN, filtered 
     }
   },
   {
-    similarityScore: 0.9006955,
+    similarityScore: 0.9415944018246962,
     document: {
       _id: ObjectId("645acb54413be5502badff97"),
       name: 'Rory Nguyen',
@@ -199,7 +205,7 @@ In this example, a vector similarity search is performed with DiskANN, filtered 
 ]
 ```
 
-This result shows the top similar documents to `queryVector`, constrained to a 1-mile radius. Each result includes the similarity score and metadata, demonstrating how DiskANN in Cosmos DB for MongoDB supports combined vector and geospatial queries for enriched, location-sensitive search experiences.
+This result shows the top similar documents to `queryVector`, constrained to a 100-mile radius. Each result includes the similarity score and metadata, demonstrating how DiskANN in Cosmos DB for MongoDB supports combined vector and geospatial queries for enriched, location-sensitive search experiences.
 
 
 ### [HNSW](#tab/hnsw)
