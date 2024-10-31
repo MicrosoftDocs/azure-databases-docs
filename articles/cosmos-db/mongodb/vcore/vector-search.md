@@ -29,12 +29,16 @@ In a vector store, vector search algorithms are used to index and query embeddin
 In the Integrated Vector Database in Azure Cosmos DB for MongoDB vCore, embeddings can be stored, indexed, and queried alongside the original data. This approach eliminates the extra cost of replicating data in a separate pure vector database. Moreover, this architecture keeps the vector embeddings and original data together, which better facilitates multi-modal data operations, and enables greater data consistency, scale, and performance.
 
 
-## Create a vector index
-To perform vector similiarity search over vector properties in your documents, you'll have to first create a _vector index_.
+## Perform Vector Similarity search
+Azure Cosmos DB for MongoDB (vCore) provides robust vector search capabilities, allowing you to perform high-speed similarity searches across complex datasets. To perform vector search in Azure Cosmos DB for MongoDB, you first need to create a vector index. Cosmos DB currently supports three types of vector indexes:
 
-### [Create a vector index using DiskANN (preview)](#tab/diskann)
+- DiskANN: Ideal for large-scale datasets, leveraging SSDs for efficient memory usage while maintaining high recall in approximate nearest-neighbor (ANN) searches.
+- HNSW: Suited for moderate-sized datasets needing high recall, with a graph-based structure that balances accuracy and resource efficiency.
+- IVF: Uses clustering to optimize search speed in expansive datasets, focusing searches within targeted clusters to accelerate performance.
 
-DiskANN allows efficient indexing and search on large-scale vector datasets using SSDs to optimize memory usage. To create the DiskANN index, set the `"kind"` parameter to `"vector-diskann"` following the template below:
+### [DiskANN (preview)](#tab/diskann)
+
+To create the DiskANN index, set the `"kind"` parameter to `"vector-diskann"` following the template below:
 
 ```javascript
 { 
@@ -90,7 +94,115 @@ To perform a vector search, use the `$search` aggregation pipeline stage, and qu
 },
 ```
 
-### [Create a vector index using HNSW](#tab/hnsw)
+## Example using a DiskANN Index with Geospatial Filtering
+
+The following examples demonstrate how to index vectors, add documents with vector properties, perform a vector search with DiskANN, and incorporate geospatial filtering.
+
+```javascript
+use test;
+
+db.createCollection("exampleCollection");
+
+db.runCommand({
+    "createIndexes": "exampleCollection",
+    "indexes": [
+        {
+            "name": "DiskANNVectorIndex",
+            "key": {
+                "contentVector": "cosmosSearch"
+            },
+            "cosmosSearchOptions": {
+                "kind": "vector-diskann",
+                "dimensions": 1536,
+                "similarity": "L2",
+                "maxDegree": 32,
+                "lBuild": 64
+            }
+        },
+        {
+            "name": "locationIndex",
+            "key": {
+                "location": 1
+            }
+        }
+    ]
+});
+```
+
+This command creates a DiskANN vector index on the `contentVector` field in `exampleCollection` for similarity searches. Additionally, it creates a geospatial index on the `location` field, allowing you to combine vector search with location-based filtering.
+
+### Add Vectors with Geolocation Data
+
+To use vector search with geospatial filters, add documents that include both vector embeddings and location coordinates. You can create the vector embeddings through services like Azure OpenAI or other embedding providers.
+
+```javascript
+db.exampleCollection.insertMany([
+  { name: "Eugenia Lopez", bio: "CEO of AdventureWorks", is_open: 1, location: [-118.9865, 34.0145], contentVector: [0.51, 0.12, 0.23] },
+  { name: "Cameron Baker", bio: "CFO of AdventureWorks", is_open: 1, location: [-0.1278, 51.5074], contentVector: [0.55, 0.89, 0.44] },
+  { name: "Jessie Irwin", bio: "Director of Our Planet initiative", is_open: 0, location: [-118.9865, 33.9855], contentVector: [0.13, 0.92, 0.85] },
+  { name: "Rory Nguyen", bio: "President of Our Planet initiative", is_open: 1, location: [-119.0000, 33.9855], contentVector: [0.91, 0.76, 0.83] }
+]);
+```
+
+### Perform a Vector Search with Geospatial Filter
+
+To find documents with similar vectors within a specific geographic radius, specify the `queryVector` for similarity search and include a geospatial filter. In this example, the search is limited to businesses within a 1-mile radius of the provided coordinates (longitude 119° W, latitude 34° N).
+
+```javascript
+const queryVector = [0.52, 0.28, 0.12];
+db.exampleCollection.aggregate([
+    {
+        "$search": {
+            "cosmosSearch": {
+                "path": "contentVector",
+                "vector": queryVector,
+                "k": 5,  
+                "filter": {
+                    "$and": [
+                        { "is_open": { "$eq": 1 } },
+                        { "location": { "$geoWithin": { "$centerSphere": [[-119.7192861804, 34.4102485028], 1 / 3963.2] }}}
+                    ]
+                }
+            }
+        }
+    },
+    { "$limit": 5 }  
+]);
+```
+
+In this example, a vector similarity search is performed with DiskANN, filtered to return only open businesses within a 1-mile radius. The `k` parameter limits the results to the top 5 closest vectors based on the specified `L2` similarity metric.
+
+```javascript
+[
+  {
+    similarityScore: 0.9465376,
+    document: {
+      _id: ObjectId("645acb54413be5502badff94"),
+      name: 'Eugenia Lopez',
+      bio: 'CEO of AdventureWorks',
+      is_open: 1,
+      location: [-118.9865, 34.0145],
+      contentVector: [0.51, 0.12, 0.23]
+    }
+  },
+  {
+    similarityScore: 0.9006955,
+    document: {
+      _id: ObjectId("645acb54413be5502badff97"),
+      name: 'Rory Nguyen',
+      bio: 'President of Our Planet initiative',
+      is_open: 1,
+      location: [-119.7302, 34.4005],
+      contentVector: [0.91, 0.76, 0.83]
+    }
+  }
+]
+```
+
+This result shows the top similar documents to `queryVector`, constrained to a 1-mile radius. Each result includes the similarity score and metadata, demonstrating how DiskANN in Cosmos DB for MongoDB supports combined vector and geospatial queries for enriched, location-sensitive search experiences.
+
+
+### [HNSW](#tab/hnsw)
 
 You can create (Hierarchical Navigable Small World) indexes on M40 cluster tiers and higher. To create the HSNW index, you need to create a vector index with the `"kind"` parameter set to `"vector-hnsw"` following the template below:
 
@@ -142,69 +254,6 @@ To perform a vector search, use the `$search` aggregation pipeline stage the que
 
 > [!NOTE]
 > Creating an HSNW index with large datasets can result in your Azure Cosmos DB for MongoDB vCore resource running out of memory, or can limit the performance of other operations running on your database. If you encounter such issues, these can be mitigated by scaling your resource to a higher cluster tier, or reducing the size of the dataset.
-
-### [Create an vector index using IVF](#tab/IVF)
-
-To create a vector index using the IVF (Inverted File) algorithm, use the following `createIndexes` template and set the `"kind"` paramter to `"vector-ivf"`:
-
-```json
-{
-  "createIndexes": "<collection_name>",
-  "indexes": [
-    {
-      "name": "<index_name>",
-      "key": {
-        "<path_to_property>": "cosmosSearch"
-      },
-      "cosmosSearchOptions": {
-        "kind": "vector-ivf",
-        "numLists": <integer_value>,
-        "similarity": "<string_value>",
-        "dimensions": <integer_value>
-      }
-    }
-  ]
-}
-```
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `numLists` | integer | This integer is the number of clusters that the inverted file (IVF) index uses to group the vector data. We recommend that `numLists` is set to `documentCount/1000` for up to 1 million documents and to `sqrt(documentCount)` for more than 1 million documents. Using a `numLists` value of `1` is akin to performing brute-force search, which has limited performance. |
-
-> [!IMPORTANT]
-> Setting the _numLists_ parameter correctly is important for achieving good accuracy and performance. We recommend that `numLists` is set to `documentCount/1000` for up to 1 million documents. For more than 1 million documents, we recommend using DiskANN vector index for optimal results. 
->
-> As the number of items in your database grows, you should tune _numLists_ to be larger in order to achieve good latency performance for vector search.
->
-> If you're experimenting with a new scenario or creating a small demo, you can start with `numLists` set to `1` to perform a brute-force search across all vectors. This should provide you with the most accurate results from the vector search, however be aware that the search speed and latency will be slow. After your initial setup, you should go ahead and tune the `numLists` parameter using the above guidance.
-
-### Perform a vector search with IVF
-
-To perform a vector search, use the `$search` aggregation pipeline stage in a MongoDB query. To use the `cosmosSearch` index, use the new `cosmosSearch` operator.
-
-```json
-{
-  {
-  "$search": {
-    "cosmosSearch": {
-        "vector": <query_vector>,
-        "path": "<path_to_property>",
-        "k": <num_results_to_return>,
-      },
-      "returnStoredSource": True }},
-  {
-    "$project": { "<custom_name_for_similarity_score>": {
-           "$meta": "searchScore" },
-            "document" : "$$ROOT"
-        }
-  }
-}
-```
-To retrieve the similarity score (`searchScore`) along with the documents found by the vector search, use the `$project` operator to include `searchScore` and rename it as `<custom_name_for_similarity_score>` in the results. Then the document is also projected as nested object. Note that the similarity score is calculated using the metric defined in the vector index.
-
-
-> [!IMPORTANT]
-> Vectors must be a `number[]` to be indexed. Using another type, such as `double[]`,  prevents the document from being indexed. Non-indexed documents won't be returned in the result of a vector search.
 
 ## Example using an HNSW index.
 
@@ -295,34 +344,70 @@ In this example, a vector search is performed by using `queryVector` as an input
 ]
 ```
 
-### Get vector index definitions
 
-To retrieve your vector index definition from the collection, use the `listIndexes` command:
+### [IVF](#tab/IVF)
 
-``` javascript
-db.exampleCollection.getIndexes();
+To create a vector index using the IVF (Inverted File) algorithm, use the following `createIndexes` template and set the `"kind"` paramter to `"vector-ivf"`:
+
+```json
+{
+  "createIndexes": "<collection_name>",
+  "indexes": [
+    {
+      "name": "<index_name>",
+      "key": {
+        "<path_to_property>": "cosmosSearch"
+      },
+      "cosmosSearchOptions": {
+        "kind": "vector-ivf",
+        "numLists": <integer_value>,
+        "similarity": "<string_value>",
+        "dimensions": <integer_value>
+      }
+    }
+  ]
+}
 ```
 
-In this example, `vectorIndex` is returned with all the `cosmosSearch` parameters that were used to create the index:
+| Field | Type | Description |
+| --- | --- | --- |
+| `numLists` | integer | This integer is the number of clusters that the inverted file (IVF) index uses to group the vector data. We recommend that `numLists` is set to `documentCount/1000` for up to 1 million documents and to `sqrt(documentCount)` for more than 1 million documents. Using a `numLists` value of `1` is akin to performing brute-force search, which has limited performance. |
 
-```javascript
-[
-  { v: 2, key: { _id: 1 }, name: '_id_', ns: 'test.exampleCollection' },
+> [!IMPORTANT]
+> Setting the _numLists_ parameter correctly is important for achieving good accuracy and performance. We recommend that `numLists` is set to `documentCount/1000` for up to 1 million documents. For more than 1 million documents, we recommend using DiskANN vector index for optimal results. 
+>
+> As the number of items in your database grows, you should tune _numLists_ to be larger in order to achieve good latency performance for vector search.
+>
+> If you're experimenting with a new scenario or creating a small demo, you can start with `numLists` set to `1` to perform a brute-force search across all vectors. This should provide you with the most accurate results from the vector search, however be aware that the search speed and latency will be slow. After your initial setup, you should go ahead and tune the `numLists` parameter using the above guidance.
+
+### Perform a vector search with IVF
+
+To perform a vector search, use the `$search` aggregation pipeline stage in a MongoDB query. To use the `cosmosSearch` index, use the new `cosmosSearch` operator.
+
+```json
+{
   {
-    v: 2,
-    key: { contentVector: 'cosmosSearch' },
-    name: 'vectorSearchIndex',
-    cosmosSearch: {
-      kind: 'vector-hnsw',
-      m: 40,
-      efConstruction: 64,
-      similarity: 'COS',
-      dimensions: 3
-    },
-    ns: 'test.exampleCollection'
+  "$search": {
+    "cosmosSearch": {
+        "vector": <query_vector>,
+        "path": "<path_to_property>",
+        "k": <num_results_to_return>,
+      },
+      "returnStoredSource": True }},
+  {
+    "$project": { "<custom_name_for_similarity_score>": {
+           "$meta": "searchScore" },
+            "document" : "$$ROOT"
+        }
   }
-]
+}
 ```
+To retrieve the similarity score (`searchScore`) along with the documents found by the vector search, use the `$project` operator to include `searchScore` and rename it as `<custom_name_for_similarity_score>` in the results. Then the document is also projected as nested object. Note that the similarity score is calculated using the metric defined in the vector index.
+
+
+> [!IMPORTANT]
+> Vectors must be a `number[]` to be indexed. Using another type, such as `double[]`,  prevents the document from being indexed. Non-indexed documents won't be returned in the result of a vector search.
+
 
 ## Example using an IVF Index
 
@@ -450,6 +535,7 @@ In this example, a vector search is performed by using `queryVector` as an input
   }
 ]
 ```
+---
 
 ### Get vector index definitions
 
@@ -469,7 +555,7 @@ In this example, `vectorIndex` is returned with all the `cosmosSearch` parameter
     key: { vectorContent: 'cosmosSearch' },
     name: 'vectorSearchIndex',
     cosmosSearch: {
-      kind: 'vector-ivf',
+      kind: <index_type>, // options are `vector-ivf`, `vector-hnsw`, and `vector-diskann`
       numLists: 3,
       similarity: 'COS',
       dimensions: 3
@@ -479,7 +565,6 @@ In this example, `vectorIndex` is returned with all the `cosmosSearch` parameter
 ]
 ```
 
----
 
 ## Filtered vector search (preview)
 You can now execute vector searches with any supported query filter such as `$lt`, `$lte`, `$eq`, `$neq`, `$gte`, `$gt`, `$in`, `$nin`, and `$regex`. Enable the "filtering vector search" feature in the "Preview Features" tab of your Azure Subscription. Learn more about preview features [here](/azure/azure-resource-manager/management/preview-features).
