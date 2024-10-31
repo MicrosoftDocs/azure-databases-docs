@@ -3466,21 +3466,6 @@
       "redirect_document_id": true
     },
     {
-      "source_path_from_root": "/articles/cosmos-db/kafka-connector-v2.md",
-      "redirect_url": "/azure/cosmos-db/sql/kafka-connector-v2",
-      "redirect_document_id": true
-    },
-    {
-      "source_path_from_root": "/articles/cosmos-db/kafka-connector-sink-v2.md",
-      "redirect_url": "/azure/cosmos-db/sql/kafka-connector-sink-v2",
-      "redirect_document_id": true
-    },
-    {
-      "source_path_from_root": "/articles/cosmos-db/kafka-connector-source-v2.md",
-      "redirect_url": "/azure/cosmos-db/sql/kafka-connector-source-v2",
-      "redirect_document_id": true
-    },
-    {
       "source_path_from_root": "/articles/cosmos-db/manage-with-cli.md",
       "redirect_url": "/azure/cosmos-db/sql/manage-with-cli",
       "redirect_document_id": true
