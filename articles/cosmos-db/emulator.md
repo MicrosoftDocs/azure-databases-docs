@@ -57,25 +57,25 @@ Every request made against the emulator must be authenticated using a key over T
 
 In some cases, you may wish to manually import the TLS/SS certificate from the emulator's running container into your host machine. This step avoids bad practices like disabling TLS/SSL validation in the SDK. For more information, see [import certificate](how-to-develop-emulator.md#import-the-emulators-tlsssl-certificate).
 
-## Linux based V2 Emulator (Preview)
+## Linux based Emulator (Preview)
 
 The next generation of the Azure Cosmos DB Emulator is entirely linux based. As such, it supports running on Apple silicon series or Microsoft ARM chip, without requiring any workarounds to install a Windows virtual machine.
 
 ### Components
 
-* **Data explorer** - interactively explore the data in the emulator. By default this runs on port 1234, for example https://localhost:1234.
-* **Azure Cosmos DB emulator** - a local version of the Azure Cosmos DB database service. By default, this runs on port 8081, for example https://localhost:8081.
+* **Data explorer** - interactively explore the data in the emulator. By default this runs on port 1234, for example http://localhost:1234.
+* **Azure Cosmos DB emulator** - a local version of the Azure Cosmos DB database service. By default, this runs on port 8081, for example http://localhost:8081.
 
 ### Prerequisites
 
-The v2 emulator is provided as a docker container. You must have [docker](https://www.docker.com/) installed in your operating system. 
+This emulator is provided as a docker container. You must have [docker](https://www.docker.com/) installed in your operating system. 
 
 ### Installation
 
 Execute the following to download the docker image:
 
 ```shell
-docker pull docker pull microsoft/azure-cosmosdb-emulator:2.0
+docker pull docker pull microsoft/azure-cosmosdb-emulator:vnext-preview
 ```
 
 ### Running
@@ -83,7 +83,7 @@ docker pull docker pull microsoft/azure-cosmosdb-emulator:2.0
 To run the container, execute the below:
 
 ```shell
-docker run -d -p 8081:8081 -p 1234:1234 docker pull microsoft/azure-cosmosdb-emulator:2.0
+docker run -d -p 8081:8081 -p 1234:1234 microsoft/azure-cosmosdb-emulator:vnext-preview
 ```
 
 Check the image is running:
@@ -96,30 +96,33 @@ You should see an output like the below.
 
 ```shell
 CONTAINER ID   IMAGE                                                             COMMAND                  CREATED         STATUS         PORTS                                                                                  NAMES
-c1bb8cf53f8a   microsoft/azure-cosmosdb-emulator:2.0   "/bin/bash -c /home/…"   5 seconds ago   Up 5 seconds   0.0.0.0:1234->1234/tcp, :::1234->1234/tcp, 0.0.0.0:8081->8081/tcp, :::8081->8081/tcp   wonderful_tu
+c1bb8cf53f8a   microsoft/azure-cosmosdb-emulator:vnext-preview   "/bin/bash -c /home/…"   5 seconds ago   Up 5 seconds   0.0.0.0:1234->1234/tcp, :::1234->1234/tcp, 0.0.0.0:8081->8081/tcp, :::8081->8081/tcp   wonderful_tu
 ```
 
-The emulator gateway endpoint runs on port 8081 and the data explorer on port 1234. Copy `https://localhost:1234` into your browser to access the data explorer. It may take a few seconds for data explorer to come up. The gatewat endpoint should be available immediately. 
+The emulator gateway endpoint runs on port 8081 and the data explorer on port 1234. Copy `http://localhost:1234` into your browser to access the data explorer. It may take a few seconds for data explorer to come up. The gatewat endpoint should be available immediately. 
 
 > [!IMPORTANT] 
 > This version of the emulator currently supports [gateway mode](./nosql/sdk-connection-modes.md#available-connectivity-modes) only, with a select subset of features (see [below](#feature-support-matrix)). It only supports the NoSQL API.
 
 
-### HTTP support
+## Docker Commands
 
-By default, the V2 emulator runs on standard https port 443. However, you can disable https and run with http, using the below command:
+The following table summarizes the available Docker commands for configuring the Cosmos DB Emulator, detailing the corresponding arguments, environment variables, allowed values, default settings, and descriptions of their functionalities.
 
-```shell
-docker run -d  -p 8081:8081 -p 1234:1234 -e GATEWAY_TLS_ENABLED="False"   microsoft/azure-cosmosdb-emulator:2.0
-```
-
-We support the following environment variables. Specify with `-e`, for example: `-e GATEWAY_TLS_ENABLED="True"`:
-
-| Environment Variable     | Description                              |
-|--------------------------|------------------------------------------|
-| `GATEWAY_TLS_ENABLED`    | Enable TLS for the gateway (True/False)  |
-| `GATEWAY_CERTIFICATE_PATH`      | path to a user supplied  certificate in pfx format  |
-| `GATEWAY_CERTIFICATE_PASSWORD` | password for that certificate    |
+| Requirement                                                                                                  | Arg                       | Env              | Allowed values                               | Default                          | Description                                                                                                                         |
+|--------------------------------------------------------------------------------------------------------------|---------------------------|------------------|---------------------------------------------|----------------------------------|-------------------------------------------------------------------------------------------------------------------------------------|
+| Print the settings to stdout from the container                                                             | `--help`, `-h`           | N/A              | N/A                                         | N/A                              | Display information on available configuration                                                                                     |
+| Set the port of the Cosmos endpoint                                                                          | `--port [INT]`           | PORT             | INT                                         | 8081                             | The port of the Cosmos endpoint on the container. You still need to publish this port (e.g. `-p 8081:8081`).                     |
+| Specify the protocol used by the Cosmos endpoint                                                             | `--protocol`             | PROTOCOL         | `https`, `http`, `https-insecure`         | `http`                           | The protocol of the Cosmos endpoint on the container.                                                                               |
+| Enable the data explorer                                                                                     | `--enable-explorer`       | ENABLE_EXPLORER  | `true`, `false`                            | `true`                           | Enable running the Cosmos Data Explorer on the same container.                                                                      |
+| Set the port used by the data explorer                                                                        | `--explorer-port`         | EXPLORER_PORT    | INT                                         | 1234                             | The port of the Cosmos Data Explorer on the container. You still need to publish this port (e.g. `-p 1234:1234`).                 |
+| User should be able to specify the protocol used by the explorer, otherwise default to what the Cosmos endpoint is using | `--explorer-protocol`     | EXPLORER_PROTOCOL | `https`, `http`, `https-insecure`         | `<the value of --protocol>`     | The protocol of the Cosmos Data Explorer on the container. Defaults to the protocol setting on the Cosmos endpoint.                |
+| Specify the key via file                                                                                    | `--key-file [PATH]`      | KEY_FILE         | PATH                                        | `<default secret>`              | Override default key with key in key file. You need to mount this file into the container (e.g. if KEY_FILE=/mykey, you'd add an option like the following to your docker run: `--mount type=bind,source=./myKey,target=/myKey`) |
+| Set the data path                                                                                           | `--data-path [PATH]`      | DATA_PATH        | PATH                                        | `/data`                          | Specify a directory for data. Frequently used with `docker run --mount` option (e.g. if DATA_PATH=/usr/cosmos/data, you'd add an option like the following to your docker run: `--mount type=bind,source=./.local/data,target=/usr/cosmos/data`) |
+| Specify the cert path to be used for https                                                                   | `--cert-path [PATH]`     | CERT_PATH        | PATH                                        | `<default cert>`                | Specify a path to a certificate for securing traffic. You need to mount this file into the container (e.g. if CERT_PATH=/mycert.pfx, you'd add an option like the following to your docker run: `--mount type=bind,source=./mycert.pfx,target=/mycert.pfx`) |
+| Specify the cert secret to be used for https                                                                | N/A                       | CERT_SECRET      | string                                      | `<default secret>`              | The secret for the certificate specified on CERT_PATH.                                                                             |
+| Set the log level                                                                                           | `--log-level [LEVEL]`    | LOG_LEVEL        | `quiet`, `error`, `warn`, `info`, `debug`, `trace` | `info`                          | The verbosity of logs that will be emitted by the emulator and data explorer.                                                      |
+| Enable diagnostic info being sent to Microsoft                                                              | `--enable-telemetry`      | ENABLE_TELEMETRY | `true`, `false`                           | `true`                           | Enable sending telemetry to Microsoft to help us improve the product.                                                               |
 
 
 ### Feature support matrix
