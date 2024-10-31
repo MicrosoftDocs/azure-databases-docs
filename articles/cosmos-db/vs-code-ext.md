@@ -7,7 +7,7 @@ ms.author: khelanmodi
 ms.reviewer: gahllevy, sasinnat, esarroyo
 ms.date: 10/17/2024
 ms.service: azure-cosmos-db
-ms.topic: quickstart
+ms.topic: how-to
 keywords: connect to cosmos db for nosql or cosmos db for mongodb database
 ---
 
@@ -26,7 +26,7 @@ Before you begin, ensure you have the following:
 | Action | Azure Cosmos DB for NoSQL | vCore-based Azure Cosmos DB for MongoDB |
 | :--- | :--- | :--- |
 | Create Database | [Portal](./nosql/quickstart-portal.md) | [Portal](./mongodb/vcore/quickstart-portal.md) |
-| | [Azure CLI](./nosql/quickstart-cli.md) | [Azure CLI](./mongodb/vcore/quickstart-cli.md) |
+| | [Azure CLI](./nosql/quickstart-template-bicep.md) | [Azure CLI](./mongodb/vcore/quickstart-bicep.md) |
 
 - To connect and manage data in Azure Cosmos DB, you’ll need to install the **Azure Databases** extension for Visual Studio Code.
 
@@ -91,7 +91,7 @@ The following steps will populate the **People** collection with a sample data s
     > The import operation may take a few minutes to finish.
 
 
-### [Connecting to an Azure Cosmos DB for Mongo DB vCore](#tab/Mongo DB vCore)
+### [Connecting to an Azure Cosmos DB for Mongo DB vCore](#tab/MongoDB)
 
 1. **Install the Azure Databases Extension**  
    Begin by installing the [Azure Databases extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb) from the VS Code Marketplace to manage your databases directly from Visual Studio Code.
@@ -122,17 +122,6 @@ Azure Cosmos DB for MongoDB and any MongoDB clusters you add are now convenientl
 
 ## Querying and Managing Data
 
-With the **Azure Databases** extension, you can perform essential database operations directly from Visual Studio Code.
-
-1. **Open a Query Editor**: Right-click on your connected database and select **New Query**.
-2. **Execute Queries**:
-   - **NoSQL**: Use SQL-like syntax for querying JSON data.
-   - **MongoDB**: Use MongoDB query operators to interact with collections.
-3. **View and Modify Data**:
-   - Query results are displayed in an interactive grid, where you can view, edit, or delete records as needed.
-   - Use commands like **Insert**, **Update**, and **Delete** to manage data directly from the editor.
-
-Supported query languages and operations may differ depending on whether you’re connected to a NoSQL or MongoDB instance. Refer to [Azure Cosmos DB SQL syntax](./nosql-sql-query-syntax.md) and [MongoDB query syntax](./mongodb-query-syntax.md) for details.
 
 
 ## Extension Features
