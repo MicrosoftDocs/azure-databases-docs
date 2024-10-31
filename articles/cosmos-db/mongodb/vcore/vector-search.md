@@ -64,7 +64,7 @@ DiskANN indexes are available on M40 tiers and above. To create the DiskANN inde
 |Field               |Type     |Description  |
 |--------------------|---------|---------|
 | `index_name`       | string  | Unique name of the index. |
-| `path_to_property` | string  | Path to the property that contains the vector. This path can be a top-level property or a dot notation path to the property. Vectors must be a `number[]` to be indexed and used in vector search results. |
+| `path_to_property` | string  | Path to the property that contains the vector. This path can be a top-level property or a dot notation path to the property. Vectors must be a `number[]` to be indexed and used in vector search results. Using another type, such as `double[]`,  prevents the document from being indexed. Non-indexed documents won't be returned in the result of a vector search. |
 | `kind`             | string  | Type of vector index to create. The options are `vector-ivf`, `vector-hnsw`, and `vector-diskann`. |
 | `dimensions`       | integer | Number of dimensions for vector similarity. DiskANN supports up to 2000 dimensions, with future support planned for 40,000+. |
 | `similarity`       | string  | Similarity metric to use with the index. Possible options are `COS` (cosine distance), `L2` (Euclidean distance), and `IP` (inner product). |
@@ -96,15 +96,34 @@ To perform a vector search, use the `$search` aggregation pipeline stage, and qu
 
 ## Example using a DiskANN Index with Filtering
 
+### Add vectors to your database
+
+To use vector search with geospatial filters, add documents that include both vector embeddings and location coordinates. You can create the [embeddings](/azure/ai-services/openai/concepts/understand-embeddings) by using your own model, [Azure OpenAI Embeddings](/azure/cognitive-services/openai/tutorials/embeddings), or another API (such as [Hugging Face on Azure](https://azure.microsoft.com/solutions/hugging-face-on-azure/)).
+
+```python
+from pymongo import MongoClient
+
+client = MongoClient("<your_connection_string>")
+db = client["test"]
+collection = db["testCollection"]
+
+documents = [
+    {"name": "Eugenia Lopez", "bio": "CEO of AdventureWorks", "is_open": 1, "location": [-118.9865, 34.0145], "contentVector": [0.52, 0.20, 0.23]},
+    {"name": "Cameron Baker", "bio": "CFO of AdventureWorks", "is_open": 1, "location": [-0.1278, 51.5074], "contentVector": [0.55, 0.89, 0.44]},
+    {"name": "Jessie Irwin", "bio": "Director of Our Planet initiative", "is_open": 0, "location": [-118.9865, 33.9855], "contentVector": [0.13, 0.92, 0.85]},
+    {"name": "Rory Nguyen", "bio": "President of Our Planet initiative", "is_open": 1, "location": [-119.0000, 33.9855], "contentVector": [0.91, 0.76, 0.83]}
+]
+
+collection.insert_many(documents)
+```
+
+### Create a DiskANN vector index
+
 The following example demonstrates how to set up a DiskANN vector index with filtering capabilities. This includes creating the vector index for similarity search, adding documents with vector and geospatial properties, and indexing fields for additional filtering.
 
-```javascript
-use test;
-
-db.createCollection("exampleCollection");
-
-db.runCommand({
-    "createIndexes": "exampleCollection",
+```python
+db.command({
+    "createIndexes": "testCollection",
     "indexes": [
         {
             "name": "DiskANNVectorIndex",
@@ -132,54 +151,45 @@ db.runCommand({
             }
         }
     ]
-});
+})
 ```
 
 This command creates a DiskANN vector index on the `contentVector` field in `exampleCollection`, enabling similarity searches. It also adds:
 - An index on the `is_open` field, allowing you to filter results based on whether businesses are open.
 - A geospatial index on the `location` field to filter by geographic proximity.
 
-### Add Vectors with Geolocation Data
-
-To use vector search with geospatial filters, add documents that include both vector embeddings and location coordinates. You can create the [embeddings](/azure/ai-services/openai/concepts/understand-embeddings) by using your own model, [Azure OpenAI Embeddings](/azure/cognitive-services/openai/tutorials/embeddings), or another API (such as [Hugging Face on Azure](https://azure.microsoft.com/solutions/hugging-face-on-azure/)).
-
-```javascript
-db.exampleCollection.insertMany([
-  { name: "Eugenia Lopez", bio: "CEO of AdventureWorks", is_open: 1, location: [-118.9865, 34.0145], contentVector: [0.52, 0.20, 0.23] },
-  { name: "Cameron Baker", bio: "CFO of AdventureWorks", is_open: 1, location: [-0.1278, 51.5074], contentVector: [0.55, 0.89, 0.44] },
-  { name: "Jessie Irwin", bio: "Director of Our Planet initiative", is_open: 0, location: [-118.9865, 33.9855], contentVector: [0.13, 0.92, 0.85] },
-  { name: "Rory Nguyen", bio: "President of Our Planet initiative", is_open: 1, location: [-119.0000, 33.9855], contentVector: [0.91, 0.76, 0.83] }
-]);
-```
-
-### Perform a Vector Search with Geospatial Filter
+### Perform a Vector Search
 
 To find documents with similar vectors within a specific geographic radius, specify the `queryVector` for similarity search and include a geospatial filter. 
 
-```javascript
-const queryVector = [0.52, 0.28, 0.12];
-db.exampleCollection.aggregate([
+```python
+query_vector = [0.52, 0.28, 0.12]
+pipeline = [
     {
         "$search": {
             "cosmosSearch": {
                 "path": "contentVector",
-                "vector": queryVector,
-                "k": 5,  
+                "vector": query_vector,
+                "k": 5,
                 "filter": {
                     "$and": [
-                        { "is_open": { "$eq": 1 } },
-                        { "location": { "$geoWithin": { "$centerSphere": [[-119.7192861804, 34.4102485028], 100 / 3963.2] }}}
+                        {"is_open": {"$eq": 1}},
+                        {"location": {"$geoWithin": {"$centerSphere": [[-119.7192861804, 34.4102485028], 100 / 3963.2]}}}
                     ]
                 }
             }
         }
     }
-]);
+]
+
+results = list(collection.aggregate(pipeline))
+for result in results:
+    print(result)
 ```
 
 In this example, the vector similarity search returns the top `k` closest vectors based on the specified `COS` similarity metric, while filtering results to include only open businesses within a 100-mile radius.
 
-```javascript
+```
 [
   {
     similarityScore: 0.9745354109084544,
@@ -257,7 +267,7 @@ To perform a vector search, use the `$search` aggregation pipeline stage the que
 |`efSearch`     |integer    |The size of the dynamic candidate list for search (`40` by default). A higher value provides better recall at the cost of speed.     |
 
 > [!NOTE]
-> Creating an HSNW index with large datasets can result in your Azure Cosmos DB for MongoDB vCore resource running out of memory, or can limit the performance of other operations running on your database. If you encounter such issues, these can be mitigated by scaling your resource to a higher cluster tier, or reducing the size of the dataset.
+> Creating an HSNW index with large datasets can result in your Azure Cosmos DB for MongoDB vCore resource running out of memory, or can limit the performance of other operations running on your database. If you encounter such issues, these can be mitigated by scaling your resource to a higher cluster tier, or creating a new DiskANN vector index.
 
 ## Example using an HNSW index.
 
