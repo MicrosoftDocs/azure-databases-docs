@@ -38,7 +38,7 @@ Azure Cosmos DB for MongoDB (vCore) provides robust vector search capabilities, 
 
 ### [DiskANN (preview)](#tab/diskann)
 
-To create the DiskANN index, set the `"kind"` parameter to `"vector-diskann"` following the template below:
+You can create DiskANN indexes on M40 cluster tiers and higher. To create the DiskANN index, set the `"kind"` parameter to `"vector-diskann"` following the template below:
 
 ```javascript
 { 
@@ -96,7 +96,7 @@ To perform a vector search, use the `$search` aggregation pipeline stage, and qu
 
 ## Example using a DiskANN Index with Filtering
 
-The following examples demonstrate how to index vectors, add documents with vector properties, perform a vector search with DiskANN, and incorporate geospatial filtering.
+The following example demonstrates how to set up a DiskANN vector index with filtering capabilities. This includes creating the vector index for similarity search, adding documents with vector and geospatial properties, and indexing fields for additional filtering.
 
 ```javascript
 use test;
@@ -114,7 +114,7 @@ db.runCommand({
             "cosmosSearchOptions": {
                 "kind": "vector-diskann",
                 "dimensions": 3,
-                "similarity": "L2",
+                "similarity": "COS",
                 "maxDegree": 32,
                 "lBuild": 64
             }
@@ -135,7 +135,9 @@ db.runCommand({
 });
 ```
 
-This command creates a DiskANN vector index on the `contentVector` field in `exampleCollection` for similarity searches. Additionally, it creates a geospatial index on the `location` field, allowing you to combine vector search with location-based filtering.
+This command creates a DiskANN vector index on the contentVector field in exampleCollection, enabling similarity searches. It also adds:
+- An index on the **is_open** field, allowing you to filter results based on whether businesses are open.
+- A geospatial index on the **location** field to filter by geographic proximity.
 
 ### Add Vectors with Geolocation Data
 
@@ -143,7 +145,7 @@ To use vector search with geospatial filters, add documents that include both ve
 
 ```javascript
 db.exampleCollection.insertMany([
-  { name: "Eugenia Lopez", bio: "CEO of AdventureWorks", is_open: 1, location: [-118.9865, 34.0145], contentVector: [0.51, 0.12, 0.23] },
+  { name: "Eugenia Lopez", bio: "CEO of AdventureWorks", is_open: 1, location: [-118.9865, 34.0145], contentVector: [0.52, 0.20, 0.23] },
   { name: "Cameron Baker", bio: "CFO of AdventureWorks", is_open: 1, location: [-0.1278, 51.5074], contentVector: [0.55, 0.89, 0.44] },
   { name: "Jessie Irwin", bio: "Director of Our Planet initiative", is_open: 0, location: [-118.9865, 33.9855], contentVector: [0.13, 0.92, 0.85] },
   { name: "Rory Nguyen", bio: "President of Our Planet initiative", is_open: 1, location: [-119.0000, 33.9855], contentVector: [0.91, 0.76, 0.83] }
@@ -176,23 +178,23 @@ db.exampleCollection.aggregate([
 ]);
 ```
 
-In this example, a vector similarity search is performed with DiskANN, filtered to return only open businesses within a 100-mile radius. The `k` parameter limits the results to the top 5 closest vectors based on the specified `L2` similarity metric.
+In this example, a vector similarity search is performed with DiskANN, filtered to return only open businesses within a 100-mile radius. The `k` parameter limits the results to the top 5 closest vectors based on the specified `COS` similarity metric.
 
 ```javascript
 [
   {
-    similarityScore: 0.9442221868359402,
+    similarityScore: 0.9745354109084544,
     document: {
       _id: ObjectId("645acb54413be5502badff94"),
       name: 'Eugenia Lopez',
       bio: 'CEO of AdventureWorks',
       is_open: 1,
       location: [-118.9865, 34.0145],
-      contentVector: [0.51, 0.12, 0.23]
+      contentVector: [0.52, 0.20, 0.23]
     }
   },
   {
-    similarityScore: 0.9415944018246962,
+    similarityScore: 0.9006955671333992,
     document: {
       _id: ObjectId("645acb54413be5502badff97"),
       name: 'Rory Nguyen',
@@ -210,7 +212,7 @@ This result shows the top similar documents to `queryVector`, constrained to a 1
 
 ### [HNSW](#tab/hnsw)
 
-You can create (Hierarchical Navigable Small World) indexes on M40 cluster tiers and higher. To create the HSNW index, you need to create a vector index with the `"kind"` parameter set to `"vector-hnsw"` following the template below:
+You can create HNSW (Hierarchical Navigable Small World) indexes on M40 cluster tiers and higher. To create the HSNW index, you need to create a vector index with the `"kind"` parameter set to `"vector-hnsw"` following the template below:
 
 ```javascript
 { 
@@ -250,9 +252,7 @@ To perform a vector search, use the `$search` aggregation pipeline stage the que
             "efSearch": <integer_value>
         },
     }
-  }
 }
-
 ```
 |Field    |Type     |Description  |
 |---------|---------|---------|
