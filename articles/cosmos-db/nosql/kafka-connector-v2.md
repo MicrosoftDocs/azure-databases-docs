@@ -1,15 +1,15 @@
 ---
-title: Use Kafka Connect for Azure Cosmos DB to read and write data
-description: Kafka Connect for Azure Cosmos DB is a connector to read from and write data to Azure Cosmos DB. Kafka Connect is a tool for scalable and reliably streaming data between Apache Kafka and other systems
+title: Use Kafka Connect V2 for Azure Cosmos DB to read and write data
+description: Kafka Connect V2 for Azure Cosmos DB is a connector to read from and write data to Azure Cosmos DB. Kafka Connect is a tool for scalable and reliably streaming data between Apache Kafka and other systems
 author: xinlian
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: conceptual
 ms.date: 10/31/2024
 ms.author: xinlian
 ---
 
-# Kafka Connect for Azure Cosmos DB
+# Kafka Connect for Azure Cosmos DB - V2
 [!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
 
 [Kafka Connect](http://kafka.apache.org/documentation.html#connect) is a tool for scalable and reliably streaming data between Apache Kafka and other systems. Using Kafka Connect you can define connectors that move large data sets into and out of Kafka. Kafka Connect for Azure Cosmos DB is a connector to read from and write data to Azure Cosmos DB.
