@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 11/1/2023
 ---
 
-# Vector Store in Azure Cosmos DB for MongoDB vCore
+# Vector Store in vCore-based Azure Cosmos DB for MongoDB
 
 [!INCLUDE[MongoDB vCore](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 
-Use the Integrated Vector Database in Azure Cosmos DB for MongoDB vCore to seamlessly connect your AI-based applications with your data that's stored in Azure Cosmos DB. This integration can include apps that you built by using [Azure OpenAI embeddings](/azure/ai-services/openai/tutorials/embeddings). The natively integrated vector database enables you to efficiently store, index, and query high-dimensional vector data that's stored directly in Azure Cosmos DB for MongoDB vCore, along with the original data from which the vector data is created. It eliminates the need to transfer your data to alternative vector stores and incur additional costs.
+Use the Integrated Vector Database in Azure Cosmos DB for MongoDB (vCore) to seamlessly connect your AI-based applications with your data that's stored in Azure Cosmos DB. This integration can include apps that you built by using [Azure OpenAI embeddings](/azure/ai-services/openai/tutorials/embeddings). The natively integrated vector database enables you to efficiently store, index, and query high-dimensional vector data that's stored directly in Azure Cosmos DB for MongoDB (vCore), along with the original data from which the vector data is created. It eliminates the need to transfer your data to alternative vector stores and incur additional costs.
 
 ## What is a vector store?
 
@@ -26,19 +26,19 @@ A vector store or [vector database](../../vector-database.md) is a database desi
 
 In a vector store, vector search algorithms are used to index and query embeddings. Some well-known vector search algorithms include Hierarchical Navigable Small World (HNSW), Inverted File (IVF), DiskANN, etc. Vector search is a method that helps you find similar items based on their data characteristics rather than by exact matches on a property field. This technique is useful in applications such as searching for similar text, finding related images, making recommendations, or even detecting anomalies. It is used to query the [vector embeddings](/azure/ai-services/openai/concepts/understand-embeddings) (lists of numbers) of your data that you created by using a machine learning model by using an embeddings API. Examples of embeddings APIs are [Azure OpenAI Embeddings](/azure/ai-services/openai/how-to/embeddings) or [Hugging Face on Azure](https://azure.microsoft.com/solutions/hugging-face-on-azure/). Vector search measures the distance between the data vectors and your query vector. The data vectors that are closest to your query vector are the ones that are found to be most similar semantically.
 
-In the Integrated Vector Database in Azure Cosmos DB for MongoDB vCore, embeddings can be stored, indexed, and queried alongside the original data. This approach eliminates the extra cost of replicating data in a separate pure vector database. Moreover, this architecture keeps the vector embeddings and original data together, which better facilitates multi-modal data operations, and enables greater data consistency, scale, and performance.
+In the Integrated Vector Database in Azure Cosmos DB for MongoDB (vCore), embeddings can be stored, indexed, and queried alongside the original data. This approach eliminates the extra cost of replicating data in a separate pure vector database. Moreover, this architecture keeps the vector embeddings and original data together, which better facilitates multi-modal data operations, and enables greater data consistency, scale, and performance.
 
 
 ## Perform Vector Similarity search
 Azure Cosmos DB for MongoDB (vCore) provides robust vector search capabilities, allowing you to perform high-speed similarity searches across complex datasets. To perform vector search in Azure Cosmos DB for MongoDB, you first need to create a vector index. Cosmos DB currently supports three types of vector indexes:
 
-- DiskANN: Ideal for large-scale datasets, leveraging SSDs for efficient memory usage while maintaining high recall in approximate nearest-neighbor (ANN) searches.
-- HNSW: Suited for moderate-sized datasets needing high recall, with a graph-based structure that balances accuracy and resource efficiency.
-- IVF: Uses clustering to optimize search speed in expansive datasets, focusing searches within targeted clusters to accelerate performance.
+- **DiskANN (Recommended)**: Ideal for large-scale datasets, leveraging SSDs for efficient memory usage while maintaining high recall in approximate nearest-neighbor (ANN) searches.
+- **HNSW**: Suited for moderate-sized datasets needing high recall, with a graph-based structure that balances accuracy and resource efficiency.
+- **IVF**: Uses clustering to optimize search speed in expansive datasets, focusing searches within targeted clusters to accelerate performance.
 
 ### [DiskANN (preview)](#tab/diskann)
 
-You can create DiskANN indexes on M40 cluster tiers and higher. To create the DiskANN index, set the `"kind"` parameter to `"vector-diskann"` following the template below:
+DiskANN indexes are available on M40 tiers and above. To create the DiskANN index, set the `"kind"` parameter to `"vector-diskann"` following the template below:
 
 ```javascript
 { 
@@ -68,8 +68,8 @@ You can create DiskANN indexes on M40 cluster tiers and higher. To create the Di
 | `kind`             | string  | Type of vector index to create. The options are `vector-ivf`, `vector-hnsw`, and `vector-diskann`. |
 | `dimensions`       | integer | Number of dimensions for vector similarity. DiskANN supports up to 2000 dimensions, with future support planned for 40,000+. |
 | `similarity`       | string  | Similarity metric to use with the index. Possible options are `COS` (cosine distance), `L2` (Euclidean distance), and `IP` (inner product). |
-| `maxDegree`       | integer  |  Maximum number of edges per node in the graph. (Defaults to 32) |
-| `lBuild`       | integer  | Specifies the number of candidate neighbors considered during DiskANN index construction, influencing the trade-off between accuracy and computational overhead. (Defaults to 64) |
+| `maxDegree`       | integer  |  Maximum number of edges per node in the graph. This parameter ranges from 20 to 2048 (default is 32). Higher `maxDegree` is suitable for datasets with high dimensionality and/or high accuracy requirements. |
+| `lBuild`       | integer  | Sets the number of candidate neighbors evaluated during DiskANN index construction. This parameter, which ranges from 10 to 500 (default is 50), balances accuracy and computational overhead: higher values improve index quality and accuracy but increase build time |
 
 > [!Note]
 > Enable the "DiskANN Vector Index for vCore-based Azure Cosmos DB for MongoDB" feature in the "Preview Features" tab of your Azure Subscription. Learn more about preview features [here](/azure/azure-resource-manager/management/preview-features).
@@ -135,13 +135,13 @@ db.runCommand({
 });
 ```
 
-This command creates a DiskANN vector index on the contentVector field in exampleCollection, enabling similarity searches. It also adds:
-- An index on the **is_open** field, allowing you to filter results based on whether businesses are open.
-- A geospatial index on the **location** field to filter by geographic proximity.
+This command creates a DiskANN vector index on the `contentVector` field in `exampleCollection`, enabling similarity searches. It also adds:
+- An index on the `is_open` field, allowing you to filter results based on whether businesses are open.
+- A geospatial index on the `location` field to filter by geographic proximity.
 
 ### Add Vectors with Geolocation Data
 
-To use vector search with geospatial filters, add documents that include both vector embeddings and location coordinates. You can create the vector embeddings through services like Azure OpenAI or other embedding providers.
+To use vector search with geospatial filters, add documents that include both vector embeddings and location coordinates. You can create the [embeddings](/azure/ai-services/openai/concepts/understand-embeddings) by using your own model, [Azure OpenAI Embeddings](/azure/cognitive-services/openai/tutorials/embeddings), or another API (such as [Hugging Face on Azure](https://azure.microsoft.com/solutions/hugging-face-on-azure/)).
 
 ```javascript
 db.exampleCollection.insertMany([
@@ -154,7 +154,7 @@ db.exampleCollection.insertMany([
 
 ### Perform a Vector Search with Geospatial Filter
 
-To find documents with similar vectors within a specific geographic radius, specify the `queryVector` for similarity search and include a geospatial filter. In this example, the search is limited to businesses within a 100-mile radius of the provided coordinates (longitude 119° W, latitude 34° N).
+To find documents with similar vectors within a specific geographic radius, specify the `queryVector` for similarity search and include a geospatial filter. 
 
 ```javascript
 const queryVector = [0.52, 0.28, 0.12];
@@ -173,12 +173,11 @@ db.exampleCollection.aggregate([
                 }
             }
         }
-    },
-    { "$limit": 5 }  
+    }
 ]);
 ```
 
-In this example, a vector similarity search is performed with DiskANN, filtered to return only open businesses within a 100-mile radius. The `k` parameter limits the results to the top 5 closest vectors based on the specified `COS` similarity metric.
+In this example, the vector similarity search returns the top `k` closest vectors based on the specified `COS` similarity metric, while filtering results to include only open businesses within a 100-mile radius.
 
 ```javascript
 [
@@ -207,8 +206,7 @@ In this example, a vector similarity search is performed with DiskANN, filtered 
 ]
 ```
 
-This result shows the top similar documents to `queryVector`, constrained to a 100-mile radius. Each result includes the similarity score and metadata, demonstrating how DiskANN in Cosmos DB for MongoDB supports combined vector and geospatial queries for enriched, location-sensitive search experiences.
-
+This result shows the top similar documents to `queryVector`, constrained to a 100-mile radius and open businesses. Each result includes the similarity score and metadata, demonstrating how DiskANN in Cosmos DB for MongoDB supports combined vector and geospatial queries for enriched, location-sensitive search experiences.
 
 ### [HNSW](#tab/hnsw)
 
