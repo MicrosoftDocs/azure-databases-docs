@@ -91,7 +91,7 @@ The following steps will populate the **People** collection with a sample data s
     > The import operation may take a few minutes to finish.
 
 
-### [Connecting to an Azure Cosmos DB for Mongo DB vCore](#tab/MongoDB)
+### [Connecting to an vCore-based Azure Cosmos DB for Mongo DB](#tab/CBDMongoDBvCore)
 
 1. **Install the Azure Databases Extension**  
    Begin by installing the [Azure Databases extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb) from the VS Code Marketplace to manage your databases directly from Visual Studio Code.
@@ -107,7 +107,7 @@ After signing in to your Azure account, select the subscription you wish to work
    - **Running queries**: Execute and test queries using MongoDB syntax.
    - **Browsing collections**: Navigate through collections and inspect documents easily.
 
-#### Connecting to External MongoDB Clusters
+#### [Connecting to External MongoDB Clusters](#tab/MongoDB)
 
 1. **Install the Azure Databases Extension**  
    If not already installed, download the Azure Databases extension from the VS Code Marketplace to enable MongoDB connections.
