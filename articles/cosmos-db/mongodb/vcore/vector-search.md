@@ -28,20 +28,13 @@ In a vector store, vector search algorithms are used to index and query embeddin
 
 In the Integrated Vector Database in Azure Cosmos DB for MongoDB vCore, embeddings can be stored, indexed, and queried alongside the original data. This approach eliminates the extra cost of replicating data in a separate pure vector database. Moreover, this architecture keeps the vector embeddings and original data together, which better facilitates multi-modal data operations, and enables greater data consistency, scale, and performance.
 
-### When to Use Each Index Type
-| **Index Type**        | **When to Use**                                                                                                               |
-|-----------------------|-------------------------------------------------------------------------------------------------------------------------------|
-| **SSD DiskANN**       | Use for **large-scale datasets** (tens of millions to billions of vectors) where **memory is constrained**. DiskANN can handle datasets that exceed memory limits by storing most of the index on SSDs while maintaining **low-latency searches** and **high accuracy**. Best for workloads requiring **scalability** and **efficient memory usage**. |
-| **HNSW**              | Use for **small to medium datasets** (up to millions of vectors) that need **high recall** and **in-memory performance**. However, be cautious with large datasets as it requires the entire index to fit into memory. HNSW is suited for workloads where **memory availability** is not a concern, but **scalability** beyond millions of vectors can become problematic. |
-| **IVFFlat**           | Use for **large datasets** with **moderate accuracy** requirements where **scalability** is needed but **memory** is a constraint. IVFFlat works well for datasets up to **tens of millions** of vectors, trading off some accuracy for **faster search times** and **lower memory usage** than HNSW. It’s a good option when **exact recall** isn’t critical, and the priority is to handle larger datasets efficiently. |
-
 
 ## Create a vector index
 To perform vector similiarity search over vector properties in your documents, you'll have to first create a _vector index_.
 
-### Create a vector index using DiskANN (preview)
+### [Create a vector index using DiskANN (preview)](#tab/diskann)
 
-DiskANN allows efficient indexing and search on large-scale vector datasets using SSDs to optimize memory usage. To create the DiskANN index, use the `"kind"` parameter set to `"vector-diskann"` following the template below:
+DiskANN allows efficient indexing and search on large-scale vector datasets using SSDs to optimize memory usage. To create the DiskANN index, set the `"kind"` parameter to `"vector-diskann"` following the template below:
 
 ```javascript
 { 
@@ -55,9 +48,9 @@ DiskANN allows efficient indexing and search on large-scale vector datasets usin
             "cosmosSearchOptions": { 
                 "kind": "vector-diskann", 
                 "dimensions": <integer_value>,
-                "similarity": "<string_value>", 
-                "ssdCachePercentage": <integer_value>,
-                "quantization": "<boolean_value>"
+                "similarity": <string_value>,
+                "maxDegree" : <integer_value>, 
+                "lBuild" : <integer_value>, 
             } 
         } 
     ] 
@@ -68,51 +61,36 @@ DiskANN allows efficient indexing and search on large-scale vector datasets usin
 |--------------------|---------|---------|
 | `index_name`       | string  | Unique name of the index. |
 | `path_to_property` | string  | Path to the property that contains the vector. This path can be a top-level property or a dot notation path to the property. Vectors must be a `number[]` to be indexed and used in vector search results. |
-| `kind`             | string  | Type of vector index to create. The options are `vector-ivf`, `vector-hnsw`, and `vector-diskann`. DiskANN is designed for SSD-based storage to efficiently manage large-scale vector data. |
+| `kind`             | string  | Type of vector index to create. The options are `vector-ivf`, `vector-hnsw`, and `vector-diskann`. |
 | `dimensions`       | integer | Number of dimensions for vector similarity. DiskANN supports up to 2000 dimensions, with future support planned for 40,000+. |
 | `similarity`       | string  | Similarity metric to use with the index. Possible options are `COS` (cosine distance), `L2` (Euclidean distance), and `IP` (inner product). |
-| `ssdCachePercentage`| integer | The percentage of SSD storage used to cache frequently accessed vectors. A higher percentage can improve search performance, but uses more storage. |
-| `quantization`     | boolean | Enable or disable vector quantization. Quantization reduces memory usage by compressing vectors, improving search speed, especially on large datasets. |
+| `maxDegree`       | integer  |  Maximum number of edges per node in the graph. (Defaults to 32) |
+| `lBuild`       | integer  | Specifies the number of candidate neighbors considered during DiskANN index construction, influencing the trade-off between accuracy and computational overhead. (Defaults to 64) |
 
 > [!Note]
-> Enable the "DiskANN Vector Index" feature in the "Preview Features" tab of your Azure Subscription. Learn more about preview features [here](/azure/azure-resource-manager/management/preview-features).
+> Enable the "DiskANN Vector Index for vCore-based Azure Cosmos DB for MongoDB" feature in the "Preview Features" tab of your Azure Subscription. Learn more about preview features [here](/azure/azure-resource-manager/management/preview-features).
 
 ### **Perform a vector search with DiskANN**
 
-To perform a vector search, use the `$search` aggregation pipeline stage, and query with the `cosmosSearch` operator. DiskANN allows high-performance searches across massive datasets with optional filtering such as geospatial or text-based filters.
+To perform a vector search, use the `$search` aggregation pipeline stage, and query with the `cosmosSearch` operator. DiskANN allows high-performance searches across massive datasets with **optional** filtering such as geospatial or text-based filters.
 
-```javascript
+```
 {
-    "$search": {
-        "cosmosSearch": {
-            "vector": <query_vector>,
-            "path": "<path_to_property>",
-            "k": <num_results_to_return>,
-            "filter": {
-                "geoWithin": {
-                    "path": "<geospatial_field>",
-                    "geometry": {
-                        "type": "Polygon",
-                        "coordinates": <polygon_coordinates>
-                    }
-                }
-            },
-            "ssdCachePercentage": <integer_value>
-        }
+  "$search": {
+    "cosmosSearch": {
+      "path": "<path_to_property>",
+      "query": "<query_vector>",  
+      "k": <num_results_to_return>,  
+      "filter": {"$and": [
+        { "<attribute_1>": { "$eq": <value> } },
+        {"<location_attribute>": {"$geoWithin": {"$centerSphere":[[<longitude_integer_value>, <latitude_integer_value>], <radius>]}}}
+      ]}
     }
-}
+  }
+},
 ```
 
-|Field               |Type     |Description  |
-|--------------------|---------|---------|
-| `ssdCachePercentage`| integer | The percentage of SSD used for caching frequently accessed vectors during search. |
-| `filter`            | object  | Optional filter to narrow the search results based on additional criteria (e.g., geospatial, text, or range filters). |
-| `k`                 | integer | The number of results to return. |
-
-> [!NOTE]  
-> DiskANN is optimized for large datasets stored on SSD, offering better scalability than HNSW. If your dataset exceeds memory capacity, DiskANN will continue to perform efficiently using SSD caching. For best performance, configure the SSD cache percentage appropriately based on workload size and frequency of access.
-
-### Create a vector index using HNSW
+### [Create a vector index using HNSW](#tab/hnsw)
 
 You can create (Hierarchical Navigable Small World) indexes on M40 cluster tiers and higher. To create the HSNW index, you need to create a vector index with the `"kind"` parameter set to `"vector-hnsw"` following the template below:
 
@@ -139,13 +117,8 @@ You can create (Hierarchical Navigable Small World) indexes on M40 cluster tiers
 
 |Field    |Type     |Description  |
 |---------|---------|---------|
-| `index_name` | string | Unique name of the index. |
-| `path_to_property` | string | Path to the property that contains the vector. This path can be a top-level property or a dot notation path to the property. If a dot notation path is used, then all the nonleaf elements can't be arrays. Vectors must be a `number[]` to be indexed and return in vector search results.|
-| `kind` | string | Type of vector index to create. The options are `vector-ivf` and `vector-hnsw`. Note `vector-ivf` is available on all cluster tiers whereas `vector-hnsw` and `vector-diskann` is available on M40 cluster tiers and higher. |
 |`m`        |integer    |The max number of connections per layer (`16` by default, minimum value is `2`, maximum value is `100`). Higher m is suitable for datasets with high dimensionality and/or high accuracy requirements.    |
 |`efConstruction` |integer    |the size of the dynamic candidate list for constructing the graph (`64` by default, minimum value is `4`, maximum value is `1000`). Higher `efConstruction` will result in better index quality and higher accuracy, but it will also increase the time required to build the index. `efConstruction` has to be at least `2 * m`    |
-|`similarity`     |string     |Similarity metric to use with the index. Possible options are `COS` (cosine distance), `L2` (Euclidean distance), and `IP` (inner product).    |
-|`dimensions`     |integer     |Number of dimensions for vector similarity. The maximum number of supported dimensions is `2000`.     |
 
 ### Perform a vector search with HNSW
 To perform a vector search, use the `$search` aggregation pipeline stage the query with the `cosmosSearch` operator.
@@ -166,12 +139,11 @@ To perform a vector search, use the `$search` aggregation pipeline stage the que
 |Field    |Type     |Description  |
 |---------|---------|---------|
 |`efSearch`     |integer    |The size of the dynamic candidate list for search (`40` by default). A higher value provides better recall at the cost of speed.     |
-|`k`        |integer    |The number of results to return. it should be less than or equal to `efSearch`    |
 
 > [!NOTE]
 > Creating an HSNW index with large datasets can result in your Azure Cosmos DB for MongoDB vCore resource running out of memory, or can limit the performance of other operations running on your database. If you encounter such issues, these can be mitigated by scaling your resource to a higher cluster tier, or reducing the size of the dataset.
 
-### Create an vector index using IVF
+### [Create an vector index using IVF](#tab/IVF)
 
 To create a vector index using the IVF (Inverted File) algorithm, use the following `createIndexes` template and set the `"kind"` paramter to `"vector-ivf"`:
 
@@ -197,15 +169,10 @@ To create a vector index using the IVF (Inverted File) algorithm, use the follow
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `index_name` | string | Unique name of the index. |
-| `path_to_property` | string | Path to the property that contains the vector. This path can be a top-level property or a dot notation path to the property. If a dot notation path is used, then all the nonleaf elements can't be arrays. Vectors must be a `number[]` to be indexed and return in vector search results.|
-| `kind` | string | Type of vector index to create. The options are `vector-ivf` and `vector-hnsw`. Note `vector-ivf` is available on all cluster tiers and `vector-hnsw` is available on M40 cluster tiers and higher.  |
 | `numLists` | integer | This integer is the number of clusters that the inverted file (IVF) index uses to group the vector data. We recommend that `numLists` is set to `documentCount/1000` for up to 1 million documents and to `sqrt(documentCount)` for more than 1 million documents. Using a `numLists` value of `1` is akin to performing brute-force search, which has limited performance. |
-| `similarity` | string | Similarity metric to use with the index. Possible options are `COS` (cosine distance), `L2` (Euclidean distance), and `IP` (inner product). |
-| `dimensions` | integer | Number of dimensions for vector similarity. The maximum number of supported dimensions is `2000`. |
 
 > [!IMPORTANT]
-> Setting the _numLists_ parameter correctly is important for achieving good accuracy and performance. We recommend that `numLists` is set to `documentCount/1000` for up to 1 million documents and to `sqrt(documentCount)` for more than 1 million documents.
+> Setting the _numLists_ parameter correctly is important for achieving good accuracy and performance. We recommend that `numLists` is set to `documentCount/1000` for up to 1 million documents. For more than 1 million documents, we recommend using DiskANN vector index for optimal results. 
 >
 > As the number of items in your database grows, you should tune _numLists_ to be larger in order to achieve good latency performance for vector search.
 >
@@ -512,6 +479,8 @@ In this example, `vectorIndex` is returned with all the `cosmosSearch` parameter
 ]
 ```
 
+---
+
 ## Filtered vector search (preview)
 You can now execute vector searches with any supported query filter such as `$lt`, `$lte`, `$eq`, `$neq`, `$gte`, `$gt`, `$in`, `$nin`, and `$regex`. Enable the "filtering vector search" feature in the "Preview Features" tab of your Azure Subscription. Learn more about preview features [here](/azure/azure-resource-manager/management/preview-features).
 
@@ -567,7 +536,7 @@ Use LangChain and Azure Cosmos DB for MongoDB (vCore) to orchestrate Semantic Ca
 ## Features and limitations
 
 - Supported distance metrics: L2 (Euclidean), inner product, and cosine.
-- Supported indexing methods: IVFFLAT (GA) and HSNW (preview)
+- Supported indexing methods: IVFFLAT (GA), HNSW (GA), and DiskANN (Preview)
 - Indexing vectors up to 2,000 dimensions in size.
 - Indexing applies to only one vector per path.
 - Only one index can be created per vector path.
