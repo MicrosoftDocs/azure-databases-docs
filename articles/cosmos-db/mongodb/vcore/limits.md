@@ -70,10 +70,10 @@ db.collection.find({ field: "value" }).maxTimeMS(5000)
 ## Cluster and Shard Limits
 
 ### Cluster Tier
-- Maximum: M200. [Reach out to our team](mailto:mongodb-feedback@microsoft.com) for higher tiers.
+- Maximum: M200 / 64 vCores / 256 GiB RAM per physical shard. [Reach out to our team](mailto:mongodb-feedback@microsoft.com) for higher tiers.
 
-### Shards
-- Maximum: 5 (in preview). [Reach out to our team](mailto:mongodb-feedback@microsoft.com) for more shards.
+### Physical shards
+- Maximum: 10 (in preview). [Reach out to our team](mailto:mongodb-feedback@microsoft.com) for more shards.
 
 ### Collection and index limits
 -	Collections per cluster: 1,000
