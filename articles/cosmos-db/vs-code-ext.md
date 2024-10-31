@@ -91,6 +91,35 @@ The following steps will populate the **People** collection with a sample data s
     > The import operation may take a few minutes to finish.
 
 
+### [Connecting to an Azure Cosmos DB for Mongo DB vCore](#tab/Mongo DB vCore)
+
+1. **Install the Azure Databases Extension**  
+   Begin by installing the [Azure Databases extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb) from the VS Code Marketplace to manage your databases directly from Visual Studio Code.
+
+2. **Sign in to Your Azure Account**  
+After signing in to your Azure account, select the subscription you wish to work with and go to the **Azure Cosmos DB for MongoDB (vCore)** section in the side panel. When connecting, you’ll be prompted to enter your password. Once authenticated, you’ll gain access to your cluster. 
+
+*Note: Your password is only used for authentication and is not stored.*
+
+3. **Manage Your Databases**  
+   From this interface, you can view, query, and manage your Cosmos DB databases in VS Code. Perform essential tasks like:
+   - **Editing documents**: Update document content in real-time.
+   - **Running queries**: Execute and test queries using MongoDB syntax.
+   - **Browsing collections**: Navigate through collections and inspect documents easily.
+
+#### Connecting to External MongoDB Clusters
+
+1. **Install the Azure Databases Extension**  
+   If not already installed, download the Azure Databases extension from the VS Code Marketplace to enable MongoDB connections.
+
+2. **Add Your MongoDB Cluster**  
+   - Select the **Azure Databases** icon in the **Resource** panel.
+   - Choose **MongoDB** from the list of database types, then enter your MongoDB connection string when prompted.
+
+Azure Cosmos DB for MongoDB and any MongoDB clusters you add are now conveniently accessible in one unified interface!
+
+---
+
 ## Querying and Managing Data
 
 With the **Azure Databases** extension, you can perform essential database operations directly from Visual Studio Code.
@@ -104,9 +133,6 @@ With the **Azure Databases** extension, you can perform essential database opera
    - Use commands like **Insert**, **Update**, and **Delete** to manage data directly from the editor.
 
 Supported query languages and operations may differ depending on whether you’re connected to a NoSQL or MongoDB instance. Refer to [Azure Cosmos DB SQL syntax](./nosql-sql-query-syntax.md) and [MongoDB query syntax](./mongodb-query-syntax.md) for details.
-
----
-### [Connecting to an Azure Cosmos DB for Mongo DB vCore](#tab/Mongo DB vCore)
 
 
 ## Extension Features
