@@ -12,7 +12,7 @@ ms.custom:
   - ignite-2023
 ---
 
-# How to import and export data using Azure Storage in Azure Database for PostgreSQL - Flexible Server
+# How to import and export data using pg_azure_storage extension in Azure Database for PostgreSQL - Flexible Server
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 

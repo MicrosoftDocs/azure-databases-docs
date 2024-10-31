@@ -55,3 +55,6 @@ Azure Blob Storage can provide following benefits:
 - It communicates with other Azure services and partner applications. It's a versatile solution for a wide range of use cases, such as backup and disaster recovery, archiving, and data analysis.
 - It's a cost-effective solution for managing and storing massive amounts of data in the cloud, whether the organization is a small business or a large enterprise. You pay only for the storage that you need.
 
+## Related content
+
+- [How to import and export data using pg_azure_storage extension in Azure Database for PostgreSQL - Flexible Server](how-to-use-pg-azure-storage.md)
