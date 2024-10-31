@@ -63,8 +63,8 @@ The next generation of the Azure Cosmos DB Emulator is entirely linux based. As 
 
 ### Components
 
-* **Data explorer** - interactively explore the data in the emulator. By default this runs on port 1234, for example https://localhost:1234.
-* **Azure Cosmos DB emulator** - a local version of the Azure Cosmos DB database service. By default, this runs on port 8081, for example https://localhost:8081.
+* **Data explorer** - interactively explore the data in the emulator. By default this runs on port 1234, for example http://localhost:1234.
+* **Azure Cosmos DB emulator** - a local version of the Azure Cosmos DB database service. By default, this runs on port 8081, for example http://localhost:8081.
 
 ### Prerequisites
 
@@ -99,7 +99,7 @@ CONTAINER ID   IMAGE                                                            
 c1bb8cf53f8a   microsoft/azure-cosmosdb-emulator:vnext-preview   "/bin/bash -c /home/…"   5 seconds ago   Up 5 seconds   0.0.0.0:1234->1234/tcp, :::1234->1234/tcp, 0.0.0.0:8081->8081/tcp, :::8081->8081/tcp   wonderful_tu
 ```
 
-The emulator gateway endpoint runs on port 8081 and the data explorer on port 1234. Copy `https://localhost:1234` into your browser to access the data explorer. It may take a few seconds for data explorer to come up. The gatewat endpoint should be available immediately. 
+The emulator gateway endpoint runs on port 8081 and the data explorer on port 1234. Copy `http://localhost:1234` into your browser to access the data explorer. It may take a few seconds for data explorer to come up. The gatewat endpoint should be available immediately. 
 
 > [!IMPORTANT] 
 > This version of the emulator currently supports [gateway mode](./nosql/sdk-connection-modes.md#available-connectivity-modes) only, with a select subset of features (see [below](#feature-support-matrix)). It only supports the NoSQL API.
