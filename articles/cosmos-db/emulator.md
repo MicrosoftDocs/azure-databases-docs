@@ -122,7 +122,7 @@ The following table summarizes the available Docker commands for configuring the
 | Specify the cert path to be used for https | `--cert-path [PATH] | CERT_PATH | PATH | `<default cert>` | Specify a path to a certificate for securing traffic. You need to mount this file into the container (e.g. if CERT_PATH=/mycert.pfx, you'd add an option like the following to your docker run: --mount type=bind,source=./mycert.pfx,target=/mycert.pfx) |
 | Specify the cert secret to be used for https | <N/A> | CERT_SECRET | string | `<default secret>` | The secret for the certificate specified on CERT_PATH |
 | Set the log level | --log-level [LEVEL] | LOG_LEVEL | quiet / error / warn / info / debug / trace | info | The verbosity of logs that will be emitted by the emulator and data explorer. |
-| Enable diagnostic info being sent to microsoft | --enable-telemetry | ENABLE_TELEMETRY | true / false | true | Enable sending telemetry to Microsoft to help us improve the product. `<TBD privacy statement>` |
+| Enable diagnostic info being sent to microsoft | --enable-telemetry | ENABLE_TELEMETRY | true / false | true | Enable sending telemetry to Microsoft to help us improve the product. |
 
 
 ### Feature support matrix
