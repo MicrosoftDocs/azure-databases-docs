@@ -21,7 +21,7 @@ This article walks through common use cases and how Azure Cosmos DB insights can
 The following sections explain common scenarios where you can use Azure Cosmos DB metrics.
 
 >[!NOTE]
-> When filtering by database or collections in metrics, it is possible that you may see __Empty or <Empty> as the resourceName. This is because metric data is being collected at an account-level for that particular request. Therefore, there is no associated database or collection as the metric value.
+> When filtering by database or collections in metrics, it is possible that you may see "__Empty" or "\<Empty>\" as the resourceName. This is because metric data is being collected at an account-level for that particular request. Therefore, there is no associated database or collection as the metric value.
 
 ## Understand how many requests are succeeding or causing errors
 
