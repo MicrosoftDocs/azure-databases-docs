@@ -22,7 +22,7 @@ Before installing extensions in Azure Database for PostgreSQL flexible server, y
 
 Using the [Azure portal](https://portal.azure.com):
 
-   1. Select your Azure Database for PostgreSQL flexible server instance.
+1. Select your Azure Database for PostgreSQL flexible server instance.
    1. From the resource menu, under **Settings** section, select **Server parameters**.
    1. Search for the `azure.extensions` parameter.
    1. Select the extensions you wish to allowlist.
@@ -72,13 +72,13 @@ az postgres flexible-server parameter set --resource-group <resource_group>  --s
 
 Using the [Azure portal](https://portal.azure.com):
 
-   1. Select your Azure Database for PostgreSQL flexible server instance.
+1. Select your Azure Database for PostgreSQL flexible server instance.
    1. From the resource menu, under **Settings** section, select **Server parameters**.
    1. Search for the `shared_preload_libraries` parameter.
    1. Select the libraries you wish to add.
-     :::image type="content" source="./media/concepts-extensions/shared-libraries.png" alt-text="Screenshot showing Azure Database for PostgreSQL -setting shared preload libraries parameter setting for extensions installation." lightbox="./media/concepts-extensions/shared-libraries.png":::
-
-Using [Azure CLI](/cli/azure/):
+```
+ :::image type="content" source="./media/concepts-extensions/shared-libraries.png" alt-text="Screenshot showing Azure Database for PostgreSQL -setting shared preload libraries parameter setting for extensions installation." lightbox="./media/concepts-extensions/shared-libraries.png":::
+```Using [Azure CLI](/cli/azure/):
 
    You can set `shared_preload_libraries` via CLI [parameter set](/cli/azure/postgres/flexible-server/parameter?view=azure-cli-latest&preserve-view=true) command.
 
@@ -384,7 +384,7 @@ For more details on restore method with Timescale enabled database, see [Timesca
 
 While running `SELECT timescaledb_post_restore()` procedure listed above you might get permissions denied error updating timescaledb.restoring flag. This is due to limited ALTER DATABASE permission in Cloud PaaS database services. In this case you can perform alternative method using `timescaledb-backup` tool to back up and restore Timescale database. Timescaledb-backup is a program for making dumping and restoring a TimescaleDB database simpler, less error-prone, and more performant.  
 To do so, you should do following
-   1. Install  tools as detailed [here](https://github.com/timescale/timescaledb-backup#installing-timescaledb-backup)
+1. Install  tools as detailed [here](https://github.com/timescale/timescaledb-backup#installing-timescaledb-backup)
    1. Create a target Azure Database for PostgreSQL flexible server instance and database
    1. Enable Timescale extension as shown above
    1. Grant `azure_pg_admin` role to user that will be used by [ts-restore](https://github.com/timescale/timescaledb-backup#using-ts-restore)
@@ -394,7 +394,7 @@ More details on these utilities can be found [here](https://github.com/timescale
 
 ## Extensions and Major Version Upgrade
 
-Azure Database for PostgreSQL flexible server has introduced an [in-place major version upgrade](./concepts-major-version-upgrade.md) feature that performs an in-place upgrade of the Azure Database for PostgreSQL flexible server instance with just a click. In-place major version upgrade simplifies the Azure Database for PostgreSQL flexible server upgrade process, minimizing the disruption to users and applications accessing the server. In-place major version upgrade doesn't support specific extensions, and there are some limitations to upgrading certain extensions. The extensions **Timescaledb**, **pgaudit**, **dblink**, **orafce**, and **postgres_fdw** are unsupported for all Azure Database for PostgreSQL flexible server versions when using [in-place major version update feature](./concepts-major-version-upgrade.md).
+Azure Database for PostgreSQL flexible server has introduced an [in-place major version upgrade](./concepts-major-version-upgrade.md) feature that performs an in-place upgrade of the Azure Database for PostgreSQL flexible server instance with just a click. In-place major version upgrade simplifies the Azure Database for PostgreSQL flexible server upgrade process, minimizing the disruption to users and applications accessing the server. In-place major version upgrade doesn't support specific extensions, and there are some limitations to upgrading certain extensions. The extensions **anon, Apache AGE, dblink, orafce, pgaudit, postgres_fdw,** and **Timescaledb** are unsupported for all Azure Database for PostgreSQL flexible server versions when using [in-place major version update feature](./concepts-major-version-upgrade.md).
 
 ## Related content
 
