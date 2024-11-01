@@ -24,7 +24,7 @@ To use the `pg_azure_storage` extension on your Azure Database for PostgreSQL fl
 
 Because `shared_preload_library` is a static server parameter, it requires a restart of the server for the change to take effect.
 
-Once the server has been restarted, connect to your instance of PostgreSQL using the client of your preference (ie psql, pgAdmin, etc). Confirm that `SHOW azure.extensions;`, and `SHOW shared_preload_libraries;`, both include the value `azure_storage` in the list of the comma-separated values returned by each of the `SHOW` statements.
+Once the server restarts, connect to your instance of PostgreSQL using the client of your preference (for example psql, pgAdmin, etc). Confirm that `SHOW azure.extensions;`, and `SHOW shared_preload_libraries;`, both include the value `azure_storage` in the list of the comma-separated values returned by each of the `SHOW` statements.
 
 Only then you can install the extension, by connecting to your target database, and running the [CREATE EXTENSION](https://www.postgresql.org/docs/current/static/sql-createextension.html) statement. You need to repeat the command separately for each database in which you want the extension to be available.
 
