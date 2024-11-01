@@ -583,7 +583,7 @@ You must meet the following prerequistes before you can run the following exampl
 Let's create the table into which we import the contents of the CSV file that we uploaded to the storage account. To do so, connect to your instance of Azure Database for PostgreSQL flexible server using `PgAdmin`, `psql`, or the client of your preference, and execute the following statement:
 
 ```sql
-CREATE TABLE IF NOT EXISTS public.events
+CREATE TABLE IF NOT EXISTS events
         (
          event_id bigint
         ,event_type text
@@ -813,6 +813,35 @@ ORDER BY 2 DESC
 LIMIT 5;
 ```
 
+### Import data using a COPY statement
+
+The following example shows the import of data from a blob called `events.csv`  that resides in the blob container `<blob_container>` in the Azure Storage account `<storage_account>`, via the `COPY` command:
+
+1. Create a table that matches the schema of the source file:
+
+   ```sql
+CREATE TABLE IF NOT EXISTS events
+        (
+         event_id bigint
+        ,event_type text
+        ,event_public boolean
+        ,repo_id bigint
+        ,payload jsonb
+        ,repo jsonb
+        ,user_id bigint
+        ,org jsonb
+        ,created_at timestamp without time zone
+        );
+   ```
+
+2. Use a `COPY` statement to copy data into the target table. Specify that the first row contains column headers.
+
+   ```sql
+   COPY events
+   FROM 'https://<storage_account>.blob.core.windows.net/<blob_container>/events.csv'
+   WITH (FORMAT 'csv', header);
+   ```
+
 ### Write content to a blob in a container
 
 The `blob_put` function composes the contents of one specific blob (`eventscopy.csv` in this case), and uploads it to the referred container `<blob_container>` of the `<storage_account>` storage. This example uses `blob_get` to construct a set of five rows, which are then passed to the `blob_put` aggregate function which uploads them as a blob named `eventscopy.csv`.
@@ -833,6 +862,37 @@ FROM (SELECT * FROM azure_storage.blob_get
                      ,'events.csv'
                      , NULL::events) LIMIT 5) AS top_5_events;
 ```
+
+### Export data using a COPY statement
+
+The following example shows the export of data from a table called `events`, to a blob called `events_exported.csv` that resides in the blob container `<blob_container>` in the Azure Storage account `<storage_account>`, via the `COPY` command:
+
+1. Create a table that matches the schema of the source file:
+
+   ```sql
+CREATE TABLE IF NOT EXISTS events
+        (
+         event_id bigint
+        ,event_type text
+        ,event_public boolean
+        ,repo_id bigint
+        ,payload jsonb
+        ,repo jsonb
+        ,user_id bigint
+        ,org jsonb
+        ,created_at timestamp without time zone
+        );
+   ```
+
+2. Load data into the table. Either run INSERT statements to populate it with several synthetic rows, or use the [Import data using a COPY statement](#import-data-using-a-copy-statement) example to populate it with the contents of the sample data set.
+
+3. Use a `COPY` statement to copy data into the target table. Specify that the first row contains column headers.
+
+   ```sql
+   COPY events
+   TO 'https://<storage_account>.blob.core.windows.net/<blob_container>/events_exported.csv'
+   WITH (FORMAT 'csv', header);
+   ```
 
 ## Related content
 
