@@ -75,7 +75,7 @@ This emulator is provided as a docker container. You must have [docker](https://
 Execute the following to download the docker image:
 
 ```shell
-docker pull microsoft/azure-cosmosdb-emulator:vnext-preview
+docker pull mcr.microsoft.com/cosmosdb/linux/azure-cosmos-emulator:vnext-preview
 ```
 
 ### Running
@@ -83,7 +83,7 @@ docker pull microsoft/azure-cosmosdb-emulator:vnext-preview
 To run the container, execute the below:
 
 ```shell
-docker run -d -p 8081:8081 -p 1234:1234 microsoft/azure-cosmosdb-emulator:vnext-preview
+docker run -d -p 8081:8081 -p 1234:1234 mcr.microsoft.com/cosmosdb/linux/azure-cosmos-emulator:vnext-preview
 ```
 
 Check the image is running:
@@ -96,7 +96,7 @@ You should see an output like the below.
 
 ```shell
 CONTAINER ID   IMAGE                                                             COMMAND                  CREATED         STATUS         PORTS                                                                                  NAMES
-c1bb8cf53f8a   microsoft/azure-cosmosdb-emulator:vnext-preview   "/bin/bash -c /home/…"   5 seconds ago   Up 5 seconds   0.0.0.0:1234->1234/tcp, :::1234->1234/tcp, 0.0.0.0:8081->8081/tcp, :::8081->8081/tcp   wonderful_tu
+c1bb8cf53f8a   mcr.microsoft.com/cosmosdb/linux/azure-cosmos-emulator:vnext-preview  "/bin/bash -c /home/…"   5 seconds ago   Up 5 seconds   0.0.0.0:1234->1234/tcp, :::1234->1234/tcp, 0.0.0.0:8081->8081/tcp, :::8081->8081/tcp   wonderful_tu
 ```
 
 The emulator gateway endpoint runs on port 8081 and the data explorer on port 1234. Copy `http://localhost:1234` into your browser to access the data explorer. It may take a few seconds for data explorer to come up. The gatewat endpoint should be available immediately. 
