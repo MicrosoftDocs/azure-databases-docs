@@ -16,9 +16,9 @@ ms.topic: troubleshooting
 
 [!INCLUDE[azure-database-for-mysql-single-server-deprecation](~/reusable-content/ce-skilling/azure/includes/mysql/includes/azure-database-for-mysql-single-server-deprecation.md)]
 
-To help ensure that an Azure Database for MySQL flexible server instance performs optimally, it's very important to have the appropriate memory allocation and utilization. By default, when you create an instance of Azure Database for MySQL flexible server, the available physical memory is dependent on the tier and size you select for your workload. In addition, memory is allocated for buffers and caches to improve database operations. For more information, see [How MySQL Uses Memory](https://dev.mysql.com/doc/refman/5.7/en/memory-use.html).
+To help ensure that an Azure Database for MySQL Flexible Server instance performs optimally, it's very important to have the appropriate memory allocation and utilization. By default, when you create an instance of Azure Database for MySQL Flexible Server, the available physical memory is dependent on the tier and size you select for your workload. In addition, memory is allocated for buffers and caches to improve database operations. For more information, see [How MySQL Uses Memory](https://dev.mysql.com/doc/refman/5.7/en/memory-use.html).
 
-Note that Azure Database for MySQL flexible server consumes memory to achieve as much cache hit as possible. As a result, memory utilization can often hover between 80- 90% of the available physical memory of an instance. Unless there's an issue with the progress of the query workload, it isn't a concern. However, you may run into out of memory issues for reasons such as that you have:
+Note that Azure Database for MySQL Flexible Server consumes memory to achieve as much cache hit as possible. As a result, memory utilization can often hover between 80- 90% of the available physical memory of an instance. Unless there's an issue with the progress of the query workload, it isn't a concern. However, you may run into out of memory issues for reasons such as that you have:
 
 * Configured too large buffers.
 * Sub optimal queries running.
@@ -31,7 +31,7 @@ The value of the **innodb_buffer_pool_size** parameter specifies the area of mem
 
 ## Monitoring memory usage
 
-Azure Database for MySQL flexible server provides a range of metrics to gauge the performance of your database instance. To better understand the memory utilization for your database server, view the **Host Memory Percent** or **Memory Percent** metrics.
+Azure Database for MySQL Flexible Server provides a range of metrics to gauge the performance of your database instance. To better understand the memory utilization for your database server, view the **Host Memory Percent** or **Memory Percent** metrics.
 
 ![Viewing memory utilization metrics.](media/how-to-troubleshoot-low-memory-issues/average-host-memory-percentage.png)
 
@@ -45,7 +45,7 @@ Let’s look at some more causes of high memory utilization in MySQL. These caus
 
 ### An increase in temporary tables
 
-MySQL uses “temporary tables”, which are a special type of table designed to store a temporary result set. Temporary tables can be reused several times during a session. Since any temporary tables created are local to a session, different sessions can have different temporary tables. In production systems with many sessions performing compilations of large temporary result sets, you should regularly check the global status counter created_tmp_tables, which tracks the number of temporary tables being created during peak hours. A large number of in-memory temporary tables can quickly lead to low available memory in an instance of Azure Database for MySQL flexible server.
+MySQL uses “temporary tables”, which are a special type of table designed to store a temporary result set. Temporary tables can be reused several times during a session. Since any temporary tables created are local to a session, different sessions can have different temporary tables. In production systems with many sessions performing compilations of large temporary result sets, you should regularly check the global status counter created_tmp_tables, which tracks the number of temporary tables being created during peak hours. A large number of in-memory temporary tables can quickly lead to low available memory in an instance of Azure Database for MySQL Flexible Server.
 
 With MySQL, temporary table size is determined by the values of two parameters, as described in the following table.
 
@@ -75,7 +75,7 @@ As a multi-threaded system, MySQL maintains a cache of table file descriptors so
 To troubleshoot low memory issues related to the table cache, consider the following recommendations.
 
 * The parameter table_open_cache specifies the number of open tables for all threads. Increasing this value increases the number of file descriptors that mysqld requires. You can check whether you need to increase the table cache by checking the opened_tables status variable in the show global status counter. Increase the value of this parameter in increments to accommodate your workload.
-* Setting table_open_cache too low may cause Azure Database for MySQL flexible server to spend more time in opening and closing tables needed for query processing.
+* Setting table_open_cache too low may cause Azure Database for MySQL Flexible Server to spend more time in opening and closing tables needed for query processing.
 * Setting this value too high may cause usage of more memory and the operating system running of file descriptors leading to refused connections or failing to process queries.
 
 ### Other buffers and the query cache
@@ -102,7 +102,7 @@ The query cache is an area of memory that is used for caching query result sets.
 
 ### Calculating buffer cache hit ratio
 
-Buffer cache hit ratio is important in the Azure Database for MySQL flexible server environment to understand if the buffer pool can accommodate the workload requests or not, and as a general rule of thumb it’s a good practice to always have a buffer pool cache hit ratio more than 99%.
+Buffer cache hit ratio is important in the Azure Database for MySQL Flexible Server environment to understand if the buffer pool can accommodate the workload requests or not, and as a general rule of thumb it’s a good practice to always have a buffer pool cache hit ratio more than 99%.
 
 To compute the InnoDB buffer pool hit ratio for read requests, you can run the SHOW GLOBAL STATUS to retrieve counters “Innodb_buffer_pool_read_requests” and “Innodb_buffer_pool_reads” and then compute the value using the formula shown below.
 
