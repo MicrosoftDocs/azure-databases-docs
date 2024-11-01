@@ -75,7 +75,7 @@ This emulator is provided as a docker container. You must have [docker](https://
 Execute the following to download the docker image:
 
 ```shell
-docker pull docker pull microsoft/azure-cosmosdb-emulator:vnext-preview
+docker pull docker microsoft/azure-cosmosdb-emulator:vnext-preview
 ```
 
 ### Running
