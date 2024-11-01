@@ -187,9 +187,11 @@ Azure Backup and Azure Database for PostgreSQL flexible server services have bui
 
 #### Limitations and considerations
 
-- In preview, LTR restore is currently available as RestoreasFiles to storage accounts. RestoreasServer capability will be added in the future.
-- In preview, you can perform LTR backups for all databases, single db backup support will be added in the future.
-- LTR backup is currently not supported on geo-replicas. You can still perform LTR backups from the primary servers.
+- LTR restores are currently available only as 'Restore as Files' to storage accounts, with 'Restore as Server' capability planned for the future.
+- LTR backs up all databases in flexible server instances, and individual databases cannot be selected for LTR configuration.
+- LTR backup is not supported on geo-replicas, but it can be performed from primary servers.
+- The maximum supported database size for LTR backup is 4 TiB.
+- LTR backups can be scheduled weekly, monthly, or yearly. The daily backup schedule is currently unsupported.
 
 
 For more information about performing a long term backup, visit the [how-to guide](/azure/backup/backup-azure-database-postgresql-flex).
