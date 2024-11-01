@@ -16,11 +16,11 @@ ms.custom:
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
-You can import data that is being stored as blobs in Azure Storage accounts to insert it into tables in PostgreSQL, or you can simply query, filter, transform or aggregate it, using the power of SQL language.
+You can import data that is being stored as blobs in Azure Storage accounts to insert it into tables in PostgreSQL. Or you can query, filter, transform or aggregate it, using the power of SQL language.
 
 You can also export data stored in PostgreSQL tables onto blobs stored in any of your Azure Storage accounts.
 
-To do so, you need to install the `pg_azure_storage` extension in your instance of Azure Database for PostgreSQL Flexible Server, and leverage the functionality it incorporates.
+To do so, you need to install the `pg_azure_storage` extension in your instance of Azure Database for PostgreSQL Flexible Server, and use the functionality it incorporates.
 
 ## Azure Blob Storage
 
