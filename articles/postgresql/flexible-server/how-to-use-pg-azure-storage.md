@@ -819,28 +819,28 @@ The following example shows the import of data from a blob called `events.csv`  
 
 1. Create a table that matches the schema of the source file:
 
-   ```sql
-CREATE TABLE IF NOT EXISTS events
-        (
-         event_id bigint
-        ,event_type text
-        ,event_public boolean
-        ,repo_id bigint
-        ,payload jsonb
-        ,repo jsonb
-        ,user_id bigint
-        ,org jsonb
-        ,created_at timestamp without time zone
-        );
-   ```
+    ```sql
+    CREATE TABLE IF NOT EXISTS events
+            (
+             event_id bigint
+            ,event_type text
+            ,event_public boolean
+            ,repo_id bigint
+            ,payload jsonb
+            ,repo jsonb
+            ,user_id bigint
+            ,org jsonb
+            ,created_at timestamp without time zone
+            );
+    ```
 
 2. Use a `COPY` statement to copy data into the target table. Specify that the first row contains column headers.
 
-   ```sql
-   COPY events
-   FROM 'https://<storage_account>.blob.core.windows.net/<blob_container>/events.csv'
-   WITH (FORMAT 'csv', header);
-   ```
+    ```sql
+    COPY events
+    FROM 'https://<storage_account>.blob.core.windows.net/<blob_container>/events.csv'
+    WITH (FORMAT 'csv', header);
+    ```
 
 ### Write content to a blob in a container
 
@@ -869,20 +869,20 @@ The following example shows the export of data from a table called `events`, to 
 
 1. Create a table that matches the schema of the source file:
 
-   ```sql
-CREATE TABLE IF NOT EXISTS events
-        (
-         event_id bigint
-        ,event_type text
-        ,event_public boolean
-        ,repo_id bigint
-        ,payload jsonb
-        ,repo jsonb
-        ,user_id bigint
-        ,org jsonb
-        ,created_at timestamp without time zone
-        );
-   ```
+    ```sql
+    CREATE TABLE IF NOT EXISTS events
+            (
+             event_id bigint
+            ,event_type text
+            ,event_public boolean
+            ,repo_id bigint
+            ,payload jsonb
+            ,repo jsonb
+            ,user_id bigint
+            ,org jsonb
+            ,created_at timestamp without time zone
+            );
+    ```
 
 2. Load data into the table. Either run INSERT statements to populate it with several synthetic rows, or use the [Import data using a COPY statement](#import-data-using-a-copy-statement) example to populate it with the contents of the sample data set.
 
