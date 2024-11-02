@@ -10,7 +10,7 @@
   ms.date: 11/02/2024
 ---
 
-# bitsAllSet (as bitwise query operator)
+# $bitsAllSet as bitwise query operator
 
 [!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 

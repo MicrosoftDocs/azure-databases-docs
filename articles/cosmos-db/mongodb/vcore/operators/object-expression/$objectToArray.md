@@ -10,7 +10,7 @@
   ms.date: 11/01/2024
 ---
 
-# objectToArray (as object expression operator)
+# $objectToArray as object expression operator
 
 [!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 

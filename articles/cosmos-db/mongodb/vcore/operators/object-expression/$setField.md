@@ -10,11 +10,11 @@
   ms.date: 1/01/2024
 ---
 
-# setField (as object expression operator)
+# $setField as object expression operator
 
 [!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 
-The `$setField` operator is used to add, update, or remove fields in embedded documents. This operator allows for precise manipulation of document fields, making it useful for tasks such as updating nested fields, restructuring documents, or even removing fields entirely.
+The `$setField` operator is used to add, update, or remove fields in embedded documents. This operator allows for precise manipulation of document fields. This makes it useful for tasks such as updating nested fields, restructuring documents, or even removing fields entirely.
 
 ## Syntax
 
