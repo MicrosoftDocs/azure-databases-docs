@@ -1,5 +1,5 @@
 ---
-  title: bitsAllSet bitwise query object expression in Azure Cosmos DB for MongoDB vCore
+  title: $bitsAllSet bitwise query object expression in Azure Cosmos DB for MongoDB vCore
   titleSuffix: Azure Cosmos DB for MongoDB vCore
   description: The bitsAllSet command is used to match documents where all the specified bit positions are set.
   author: avijitgupta
