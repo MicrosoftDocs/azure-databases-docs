@@ -125,8 +125,6 @@ landingContent:
     linkLists:
       - linkListType: reference
         links:
-          - text: $
-            url: projection/$.md
           - text: $elemMatch
             url: projection/$elemmatch.md
           - text: $meta
