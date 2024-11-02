@@ -1,2 +1,8 @@
 - name: $bitsAllClear
   href: $bitsallclear.md
+- name: $bitsAllSet
+  href: $bitsAllSet.md
+- name: $bitsAnyClear
+  href: $bitsAnyClear.md
+-name: $bitsAnySet
+  href: $bitsAnySet.md
