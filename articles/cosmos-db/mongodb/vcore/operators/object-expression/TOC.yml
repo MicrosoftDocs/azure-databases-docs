@@ -1,6 +1,6 @@
 - name: $mergeObjects
   href: $mergeobjects.md
--name: $objectToArray
+- name: $objectToArray
   href: $objectToArray.md
--name: $setField
+- name: $setField
   href: $setField.md

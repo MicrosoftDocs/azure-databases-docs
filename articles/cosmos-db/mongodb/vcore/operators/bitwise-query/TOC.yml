@@ -4,5 +4,5 @@
   href: $bitsAllSet.md
 - name: $bitsAnyClear
   href: $bitsAnyClear.md
--name: $bitsAnySet
+- name: $bitsAnySet
   href: $bitsAnySet.md

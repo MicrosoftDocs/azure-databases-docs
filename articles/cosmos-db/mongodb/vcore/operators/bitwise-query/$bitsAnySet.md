@@ -1,6 +1,6 @@
 ---
   title: bitsAnySet bitwise query object expression in Azure Cosmos DB for MongoDB vCore
-    titleSuffix: Azure Cosmos DB for MongoDB vCore
+  titleSuffix: Azure Cosmos DB for MongoDB vCore
   description: The bitsAnySet command is used to select documents where any of the bit positions specified are set to `1`.
   author: avijitgupta
   ms.author: avijitgupta
@@ -12,7 +12,7 @@
 
 # bitsAnySet (Bitwise Query Operator)
 
-This command is used to select documents where any of the bit positions specified are set to `1`. It is particularly useful for querying documents with fields that store bitmask values. This operator can be handy when working with fields that represent multiple boolean flags in a single integer.
+This command is used to select documents where any of the bit positions specified are set to `1`. It is useful for querying documents with fields that store bitmask values. This operator can be handy when working with fields that represent multiple boolean flags in a single integer.
 
 ## Syntax
 

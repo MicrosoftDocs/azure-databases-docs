@@ -14,7 +14,7 @@
 
 [!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 
-The `$bitsAllSet` operator is used to match documents where all the specified bit positions are set (i.e., are 1). This operator is particularly useful for performing bitwise operations on fields that store integer values. It can be used in scenarios where you need to filter documents based on specific bits being set within an integer field.
+The `$bitsAllSet` operator is used to match documents where all the specified bit positions are set (that is, are 1). This operator is useful for performing bitwise operations on fields that store integer values. It can be used in scenarios where you need to filter documents based on specific bits being set within an integer field.
 
 ## Syntax
 
@@ -27,7 +27,7 @@ The `$bitsAllSet` operator is used to match documents where all the specified bi
 - `<field>`: The field in the document on which the bitwise operation is to be performed.
 - `<bitmask>`: A bitmask indicating which bits must be set in the field's value.
 
-## Example(s)
+## Example
 
 Consider a collection named `stores` that contains documents with various fields. To find documents where the `storeId` field has specific bits set, you can use the `$bitsAllSet` operator.
 
@@ -39,7 +39,7 @@ db.stores.find({
 })
 ```
 
-This query will return documents where the `storeId` field has both the first and second bits set.
+This query would return documents where the `storeId` field has both the first and second bits set.
 
 ### Example 2: Find stores with specific bits set in `totalStaff.fullTime`
 
@@ -49,7 +49,7 @@ db.stores.find({
 })
 ```
 
-This query will return documents where the `fullTime` field in `totalStaff` has the first four bits set.
+This query would return documents where the `fullTime` field in `totalStaff` has the first 4 bits set.
 
 
 ## Related content
