@@ -1,5 +1,5 @@
 ---
-  title: bitsAnyClear bitwise query object expression in Azure Cosmos DB for MongoDB vCore
+  title: $bitsAnyClear bitwise query object expression in Azure Cosmos DB for MongoDB vCore
   titleSuffix: Azure Cosmos DB for MongoDB vCore
   description: The bitsAnyClear command is used to match documents where any of the bit positions specified in a bitmask are clear.
   author: avijitgupta

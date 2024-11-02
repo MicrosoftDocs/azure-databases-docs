@@ -1,5 +1,5 @@
 ---
-  title: setField object expression usage in Azure Cosmos DB for MongoDB vCore
+  title: $setField object expression usage in Azure Cosmos DB for MongoDB vCore
   titleSuffix: Azure Cosmos DB for MongoDB vCore
   description: The setField command is used to add, update, or remove fields in embedded documents.
   author: avijitgupta

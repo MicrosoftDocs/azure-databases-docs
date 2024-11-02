@@ -1,5 +1,5 @@
 ---
-  title: objectToArray object expression in Azure Cosmos DB for MongoDB vCore
+  title: $objectToArray object expression in Azure Cosmos DB for MongoDB vCore
   titleSuffix: Azure Cosmos DB for MongoDB vCore
   description: The objectToArray command is used to transform a document (object) into an array of key-value pairs.
   author: avijitgupta
