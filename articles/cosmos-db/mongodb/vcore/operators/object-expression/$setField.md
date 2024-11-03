@@ -78,11 +78,6 @@ db.collection.updateOne(
 )
 ```
 
-#### Sample output
-
-```javascript
-```
-
 ### Example 2: Removing a field
 
 Suppose you want to remove the `totalStaff` field from the `staff` object.
@@ -102,11 +97,6 @@ db.collection.updateOne(
     }
   }]
 )
-```
-
-#### Sample output
-
-```javascript
 ```
 
 ## Related content
