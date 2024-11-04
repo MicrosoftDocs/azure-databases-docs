@@ -60,12 +60,13 @@ Each HA state is monitored through various internal signals that represent speci
 You can set up Resource Health alerts to receive real-time notifications when any changes occur in the health status of your HA-enabled PostgreSQL instance. Configurations are available through the Azure portal or using an ARM template, helping you stay informed of HA status updates without actively monitoring the portal.
 
 For more details on setting up alerts, follow these guides:
-- [Configure Resource Health Alerts via Portal](https://learn.microsoft.com/en-us/azure/azure-monitor/alerts/alerts-create-activity-log-alert-rule)
-- [Create Resource Health Alerts using ARM Template](https://learn.microsoft.com/en-us/azure/service-health/resource-health-alert-arm-template-guide)
+- [Configure Resource Health Alerts via Portal](/azure/azure-monitor/alerts/alerts-create-activity-log-alert-rule)
+- [Create Resource Health Alerts using ARM Template](/azure/service-health/resource-health-alert-arm-template-guide)
 
 By leveraging HA Health Status Monitoring, you gain essential insights into your PostgreSQL server’s HA performance, enabling a proactive approach to managing uptime and availability.
 
 ## Related Content
-- [Get an overview of Resource Health](https://learn.microsoft.com/en-us/azure/service-health/resource-health-overview)
-- [Review Resource Health FAQ](https://learn.microsoft.com/en-us/azure/service-health/resource-health-faq)
-- [Learn more about Resource Health alerts](https://learn.microsoft.com/en-us/azure/service-health/resource-health-alert-monitor-guide)
+- [Get an overview of Resource Health](/azure/service-health/resource-health-overview)
+- [Review Resource Health FAQ](/azure/service-health/resource-health-faq)
+- [Learn more about Resource Health alerts](/azure/service-health/resource-health-alert-monitor-guide)
+
