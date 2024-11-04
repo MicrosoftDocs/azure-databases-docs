@@ -20,5 +20,7 @@
   href: geospatial/toc.yml
 - name: Logical query
   href: logical-query/toc.yml
+- name: Object expression
+  href: object-expression/TOC.yml 
 - name: Projection
   href: projection/toc.yml
