@@ -59,7 +59,10 @@ In some cases, you may wish to manually import the TLS/SS certificate from the e
 
 ## Linux based Emulator (Preview)
 
-The next generation of the Azure Cosmos DB Emulator is entirely linux based. As such, it supports running on Apple silicon series or Microsoft ARM chip, without requiring any workarounds to install a Windows virtual machine.
+The next generation of the Azure Cosmos DB Emulator is entirely linux based. It supports running on Apple silicon series or Microsoft ARM chips, without requiring any workarounds to install a Windows virtual machine.
+
+> [!IMPORTANT] 
+> This version of the emulator currently supports [gateway mode](./nosql/sdk-connection-modes.md#available-connectivity-modes) only, with a select subset of features (see [below](#feature-support)). It only supports the NoSQL API.
 
 ### Components
 
@@ -101,9 +104,6 @@ c1bb8cf53f8a   mcr.microsoft.com/cosmosdb/linux/azure-cosmos-emulator:vnext-prev
 
 The emulator gateway endpoint runs on port 8081 and the data explorer on port 1234. Copy `http://localhost:1234` into your browser to access the data explorer. It may take a few seconds for data explorer to come up. The gatewat endpoint should be available immediately. 
 
-> [!IMPORTANT] 
-> This version of the emulator currently supports [gateway mode](./nosql/sdk-connection-modes.md#available-connectivity-modes) only, with a select subset of features (see [below](#feature-support)). It only supports the NoSQL API.
-
 
 ### Docker Commands
 
@@ -127,7 +127,7 @@ The following table summarizes the available Docker commands for configuring the
 
 ### Feature support
 
-The new emulator is a re-architecture based on Linux. As a result, not all features are supported, and some features will also not be supported in the future. The below table shows the current status of key feature support.
+The new vNext emulator is a re-architecture based on Linux. As a result, not all features are supported, and some features will also not be supported in the future. The below table shows current status of feature support.
 
 | Feature/operation name                       | Status                   |
 |----------------------------------------------|--------------------------|
@@ -181,7 +181,7 @@ The new emulator is a re-architecture based on Linux. As a result, not all featu
 
 ### Limitations
 
-In addition to features not yet supported or not planned as above, the following are current limitations of the emulator.
+In addition to features not yet supported or not planned as above, the following are current limitations of the vNext emulator.
 
 - The .NET SDK for Azure Cosmos DB does not support bulk execution API in the new emulator.
 - The .NET SDK does not support http mode in the new emulator in the new emulator.
