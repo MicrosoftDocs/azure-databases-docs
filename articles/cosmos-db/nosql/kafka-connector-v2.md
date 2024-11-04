@@ -167,7 +167,7 @@ For source connector-specific configuration, see the [Source Connector Documenta
 
 ## Common configuration errors
 
-If you misconfigure the converters in Kafka Connect, it can result in errors. These errors show up at the Kafka Connector sink because you try to deserialize the messages already stored in Kafka. Converter problems don’t usually occur in source because serialization is set at the source.
+If you misconfigure the converters in Kafka Connect, it can result in errors. These errors show up at the Kafka Connect Sink Connector because you try to deserialize the messages already stored in Kafka. Converter problems don’t usually occur in source because serialization is set at the source.
 
 For more information, see [common configuration errors](https://www.confluent.io/blog/kafka-connect-deep-dive-converters-serialization-explained/#common-errors) doc.
 

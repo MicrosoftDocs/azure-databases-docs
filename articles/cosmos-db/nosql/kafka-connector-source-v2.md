@@ -132,7 +132,7 @@ curl -H "Content-Type: application/json" -X POST -d @<path-to-JSON-config-file> 
 
 ### Cleanup
 
-To delete the connector from the Confluent Control Center, navigate to the source connector you created and select the **Delete** icon.
+To delete the connector from the Confluent Control Center, navigate to the source connector you created and select the **Deletion** icon.
 
 :::image type="content" source="./media/kafka-connector-source-v2/delete-source-connector.png" lightbox="./media/kafka-connector-source-v2/delete-source-connector.png" alt-text="Screenshot of delete option in the source connector dialog.":::
 
