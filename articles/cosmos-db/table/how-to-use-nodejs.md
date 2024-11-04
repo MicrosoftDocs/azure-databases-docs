@@ -63,7 +63,7 @@ You can either connect to the Azure storage account or the Azure Cosmos DB for T
 The following code creates a `TableServiceClient` object using a credential of type `TokenCredential`. The `DefaultAzureCredential` class creates a chained token credential that works for most applications that use the Azure SDK by trying multiple types of credentials. For more information, see [`DefaultAzureCredential`](/javascript/api/@azure/identity/defaultazurecredential).
 
 ```javascript
-TokenCredential credential = new DefaultAzureCredential();
+const credential: TokenCredential = new DefaultAzureCredential();
 
 const tableService = new TableServiceClient(
   new Uri("<table-endpoint>"),
