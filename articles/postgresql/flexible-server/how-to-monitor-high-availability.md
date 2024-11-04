@@ -10,7 +10,7 @@ ms.subservice: flexible-server
 ms.topic: how-to
 ---
 
-# High Availability (HA) Health Status Monitoring for Azure Database for PostgreSQL - Flexible Server
+# High Availability (HA) health status monitoring for Azure Database for PostgreSQL - Flexible Server
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
