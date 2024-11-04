@@ -92,7 +92,7 @@ The resulting message to Kafka would look like the example below, with schema an
 
 ### <a id="avro"></a>AVRO
 
-The Kafka Connector supports AVRO data format. To use AVRO format, configure a `AvroConverter` so that Kafka Connect knows how to work with AVRO data. Azure Cosmos DB Kafka Connect is tested with the [AvroConverter](https://www.confluent.io/hub/confluentinc/kafka-connect-avro-converter) supplied by Confluent, under Apache 2.0 license. You can also use a different custom converter if you prefer.
+The Kafka Connector supports AVRO data format. To use AVRO format, configure a `AvroConverter` so that connector knows how to work with AVRO data. Azure Cosmos DB Kafka Connect is tested with the [AvroConverter](https://www.confluent.io/hub/confluentinc/kafka-connect-avro-converter) supplied by Confluent, under Apache 2.0 license. You can also use a different custom converter if you prefer.
 
 Kafka deals with keys and values independently. Specify the `key.converter` and `value.converter` properties as required in the worker configuration. When using `AvroConverter`, add an extra converter property that provides the URL for the schema registry. The following example shows the AvroConverter key and value properties that are added to the configuration:
 
@@ -120,7 +120,7 @@ The following are some considerations on how to choose a conversion format:
     * If it was written with JSON serializer, set Kafka Connect to use the JSON converter `(org.apache.kafka.connect.json.JsonConverter)`.
 
         * If the JSON data was written as a plain string, determine if the data includes a nested schema or  payload. If it does, set [JSON with schema](#json-with-schema) configuration.
-        * However, if you’re consuming JSON data and it doesn’t have the schema or payload construct, then you must tell Kafka Connect **not** to look for a schema by setting `schemas.enable=false` as per [Plain JSON](#json-plain) configuration.
+        * However, if you’re consuming JSON data and it doesn’t have the schema or payload construct, then you must tell the connector **not** to look for a schema by setting `schemas.enable=false` as per [Plain JSON](#json-plain) configuration.
 
     * If it was written with AVRO serializer, set Kafka Connect to use the AVRO converter `(io.confluent.connect.avro.AvroConverter)` as per [AVRO](#avro) configuration.
 
@@ -167,7 +167,7 @@ For source connector-specific configuration, see the [Source Connector Documenta
 
 ## Common configuration errors
 
-If you misconfigure the converters in Kafka Connect, it can result in errors. These errors show up at the Kafka Connect Sink Connector because you try to deserialize the messages already stored in Kafka. Converter problems don’t usually occur in source because serialization is set at the source.
+If you misconfigure the converters in Kafka Connect, it can result in errors. These errors show up at the connector because you try to deserialize the messages already stored in Kafka. Converter problems don’t usually occur in source because serialization is set at the source.
 
 For more information, see [common configuration errors](https://www.confluent.io/blog/kafka-connect-deep-dive-converters-serialization-explained/#common-errors) doc.
 

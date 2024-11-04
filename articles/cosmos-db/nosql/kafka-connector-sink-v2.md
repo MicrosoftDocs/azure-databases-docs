@@ -313,7 +313,7 @@ org.apache.kafka.common.errors.SerializationException: Unknown magic byte!
 
 ```
 
-**Solution**: Check the source topic’s serialization format. Then, either switch Kafka Connect Sink Connector to use the right converter or switch the upstream format to Avro.
+**Solution**: Check the source topic’s serialization format. Then, either switch the connector to use the right converter or switch the upstream format to Avro.
 
 ### Read a JSON message without the expected schema/payload structure
 
