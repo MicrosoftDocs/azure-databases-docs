@@ -102,7 +102,7 @@ CONTAINER ID   IMAGE                                                            
 c1bb8cf53f8a   mcr.microsoft.com/cosmosdb/linux/azure-cosmos-emulator:vnext-preview  "/bin/bash -c /home/…"   5 seconds ago   Up 5 seconds   0.0.0.0:1234->1234/tcp, :::1234->1234/tcp, 0.0.0.0:8081->8081/tcp, :::8081->8081/tcp   wonderful_tu
 ```
 
-The emulator gateway endpoint runs on port 8081 and the data explorer on port 1234. Copy `http://localhost:1234` into your browser to access the data explorer. It may take a few seconds for data explorer to come up. The gatewat endpoint should be available immediately. 
+The emulator gateway endpoint runs on port 8081 and the data explorer on port 1234. Copy `http://localhost:1234` into your browser to access the data explorer. It may take a few seconds for data explorer to come up. The gateway endpoint should be available immediately. 
 
 
 ### Docker Commands
