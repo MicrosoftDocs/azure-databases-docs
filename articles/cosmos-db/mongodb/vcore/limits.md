@@ -75,11 +75,9 @@ db.collection.find({ field: "value" }).maxTimeMS(5000)
 ### Physical shards
 - Maximum: 10 (in preview). [Reach out to our team](mailto:mongodb-feedback@microsoft.com) for more shards.
 
-### Collection and index limits
+### Collection limits
 -	Collections per cluster: 1,000
--	Collection size: 4 TiB
--	Indexes per cluster: 100
--	Total index size: 100 GiB
+-	Unsharded collection size: 4 TiB
 
 [Reach out to our team](mailto:mongodb-feedback@microsoft.com) for the higher values support.
 
