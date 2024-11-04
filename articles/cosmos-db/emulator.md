@@ -105,7 +105,7 @@ The emulator gateway endpoint runs on port 8081 and the data explorer on port 12
 > This version of the emulator currently supports [gateway mode](./nosql/sdk-connection-modes.md#available-connectivity-modes) only, with a select subset of features (see [below](#feature-support-matrix)). It only supports the NoSQL API.
 
 
-## Docker Commands
+### Docker Commands
 
 The following table summarizes the available Docker commands for configuring the Cosmos DB Emulator, detailing the corresponding arguments, environment variables, allowed values, default settings, and descriptions of their functionalities.
 
@@ -125,65 +125,70 @@ The following table summarizes the available Docker commands for configuring the
 | Enable diagnostic info being sent to Microsoft                                                              | `--enable-telemetry`      | ENABLE_TELEMETRY | `true`, `false`                           | `true`                           | Enable sending telemetry to Microsoft to help us improve the product.                                                               |
 
 
-### Feature support matrix
+### Feature support
 
-The V2 emulator is a re-architecture based on Linux. As a result, not all features are supported, and some features will also not be supported in the future. The below table shows the current status of key feature support.
+The new emulator is a re-architecture based on Linux. As a result, not all features are supported, and some features will also not be supported in the future. The below table shows the current status of key feature support.
 
-| Test Name                                      | Status                   |
-|------------------------------------------------|--------------------------|
-| CreateDatabase                                 | Supported                |
-| ReadDatabase                                   | Supported                |
-| DeleteDatabase                                 | Supported                |
-| ReadDatabaseFeed                               | Supported                |
-| CreateDatabaseTwiceConflict                    | Supported but untested   |
-| CreateCollection                               | Supported                |
-| ReadCollection                                 | Supported                |
-| UpdateCollection                               | Supported                |
-| DeleteCollection                               | Supported                |
-| ReadCollectionFeed                             | Supported                |
-| CreateCollectionTwiceConflict                  | Supported but untested   |
-| CreateCollectionWithCustomIndexPolicy          | Supported but untested   |
-| CreateCollectionWithTtlExpiration              | Supported but untested   |
-| CreatePartitionedCollection                    | Supported but untested   |
-| GetAndChangeCollectionPerformance              | Supported but untested   |
-| CreateDocument                                 | Supported                |
-| ReadDocument                                   | Supported                |
-| UpdateDocument                                 | Supported                |
-| Delete Document                                | Supported                |
-| ReadDocumentFeed                               | Supported                |
-| InsertLargeDocument                            | Supported but untested   |
-| CreateAndReadDocumentWithUTFData               | Supported but untested   |
-| QueryWithSqlQuerySpec                          | Supported but untested   |
-| QueryWithEquality                              | Supported but untested   |
-| QueryWithAndFilterAndProjection                | Not yet implemented      |
-| QueryWithAndFilter                             | Not yet implemented      |
-| QueryWithEqualsOnId                            | Supported but untested   |
-| QueryWithInequality                            | Not yet implemented      |
-| QueryWithRangeOperatorsOnNumbers               | Not yet implemented      |
-| QueryWithRangeOperatorsOnStrings               | Not yet implemented      |
-| QueryWithRangeOperatorsDateTimes               | Not yet implemented      |
-| QueryWithOrderBy                               | Supported but untested   |
-| QueryWithOrderByNumbers                        | Supported but untested   |
-| QueryWithOrderByStrings                        | Not yet implemented      |
-| QueryWithAggregates                            | Not yet implemented      |
-| QueryWithSubdocuments                          | Not yet implemented      |
-| QueryWithJoins                                 | Not yet implemented      |
-| QueryWithTwoJoins                              | Not yet implemented      |
-| QueryWithTwoJoinsAndFilter                     | Not yet implemented      |
-| QueryWithSingleJoin                            | Not yet implemented      |
-| QueryWithStringMathAndArrayOperators           | Not yet implemented      |
-| QueryWithPaging                                | Not yet implemented      |
-| QueryPartitionedCollectionInParallel           | Not yet implemented      |
-| QueryWithOrderByForPartitionedCollection       | Not yet implemented      |
-| CreateStoredProcedure                          | Will not be supported    |
-| ExecuteStoredProcedure                         | Will not be supported    |
-| DeleteStoredProcedure                          | Will not be supported    |
-| ReplaceStoredProcedure                         | Will not be supported    |
-| ReadStoredProcedureFeed                        | Will not be supported    |
+| Feature/operation name                       | Status                   |
+|----------------------------------------------|--------------------------|
+| Create database                              | Supported                |
+| Read database                                | Supported                |
+| Delete database                              | Supported                |
+| Read database feed                           | Supported                |
+| Create database twice conflict               | Supported                |
+| Create collection                            | Supported                |
+| Read collection                              | Supported                |
+| Update collection                            | Supported                |
+| Delete collection                            | Supported                |
+| Read collection feed                         | Supported                |
+| Create collection twice conflict             | Supported                |
+| Create collection with custom index policy   | Supported                |
+| Create collection with ttl expiration        | Supported                |
+| Create partitioned collection                | Supported                |
+| Get and change collection performance        | Supported                |
+| Create document                              | Supported                |
+| Read document                                | Supported                |
+| Update document                              | Supported                |
+| Delete document                              | Supported                |
+| Read document feed                           | Supported                |
+| Insert large document                        | Supported                |
+| Create and read document with utf data       | Supported                |
+| Query with sql query spec                    | Supported                |
+| Query with equality                          | Supported                |
+| Query with and filter and projection         | Not yet implemented      |
+| Query with and filter                        | Not yet implemented      |
+| Query with equals on id                      | Supported                |
+| Query with inequality                        | Not yet implemented      |
+| Query with range operators on numbers        | Not yet implemented      |
+| Query with range operators on strings        | Not yet implemented      |
+| Query with range operators date times        | Not yet implemented      |
+| Query with order by                          | Supported                |
+| Query with order by numbers                  | Supported                |
+| Query with order by strings                  | Not yet implemented      |
+| Query with aggregates                        | Not yet implemented      |
+| Query with subdocuments                      | Not yet implemented      |
+| Query with joins                             | Not yet implemented      |
+| Query with two joins                         | Not yet implemented      |
+| Query with two joins and filter              | Not yet implemented      |
+| Query with single join                       | Not yet implemented      |
+| Query with string math and array operators   | Not yet implemented      |
+| Query with paging                            | Not yet implemented      |
+| Query partitioned collection in parallel     | Not yet implemented      |
+| Query with order by for partitioned collection | Not yet implemented    |
+| Stored procedure                             | Will not be supported    |
+| Triggers                                     | Will not be supported    |
+| UDFs                                         | Will not be supported    |
+
+### Limitations
+
+In addition to features not yet supported or not planned as above, the following are current limitations of the emulator.
+
+- The .NET SDK for Azure Cosmos DB does not support bulk execution API in the new emulator.
+- The .NET SDK does not support http mode in the new emulator in the new emulator.
 
 ## Raising issues
 
-If you encounter issues with using this version of the emulator, please open an issue in the repo [here](https://github.com/Azure/azure-cosmos-db-emulator-docker) and tag it with label `emulatorv2`.
+If you encounter issues with using this version of the emulator, please open an issue in the repo [here](https://github.com/Azure/azure-cosmos-db-emulator-docker) and tag it with label `cosmosEmulatorVnextPreview`.
 
 ## Next step
 
