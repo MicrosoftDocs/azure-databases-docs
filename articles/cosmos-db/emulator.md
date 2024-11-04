@@ -149,7 +149,7 @@ The new vNext emulator is a re-architecture based on Linux. As a result, not all
 | Create document                              | Supported                |
 | Read document                                | Supported                |
 | Update document                              | Supported                |
-| Patch document                               | Not yet implemented      |
+| Patch document                               | Supported                |
 | Delete document                              | Supported                |
 | Read document feed                           | Supported                |
 | Insert large document                        | Supported                |
