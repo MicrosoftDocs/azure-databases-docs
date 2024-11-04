@@ -2,7 +2,7 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 09/26/2024
+ms.date: 11/04/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
@@ -1157,6 +1157,23 @@ ms.topic: include
 | Allowed values | `100-10000`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | Parameter type | dynamic        |
 | Documentation  | [pg_qs.max_query_text_length](https://go.microsoft.com/fwlink/?linkid=2274607)                                     |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### pg_qs.parameters_capture_mode
+
+| Attribute      | Value                                                      |
+|----------------|------------------------------------------------------------|
+| Category       | Customized Options |
+| Description    | Whether and when to capture query positional parameters.                                                                                                                                    |
+| Data type      | enumeration |
+| Default value  | `capture_parameterless_only`                                               |
+| Allowed values | `capture_parameterless_only,capture_first_sample`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| Parameter type | dynamic        |
+| Documentation  | [pg_qs.parameters_capture_mode](https://go.microsoft.com/fwlink/?linkid=2274607)                                   |
 
 
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
