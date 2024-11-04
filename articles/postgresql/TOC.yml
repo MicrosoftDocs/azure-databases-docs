@@ -260,6 +260,8 @@
         displayName: monitor, metrics
       - name: Workbooks
         href: flexible-server/concepts-workbooks.md 
+      - name: Monitor High-availability
+        href: flexible-server/how-to-monitor-high-availability.md
       - name: Logs
         href: flexible-server/concepts-logging.md
         displayName: monitor, server logs
