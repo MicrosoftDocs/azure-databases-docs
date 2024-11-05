@@ -114,7 +114,7 @@ Before you begin, ensure you have the following:
 
 ## Connecting to a MongoDB workload
 
-## [Connecting to Azure Cosmos DB for MongoDB (vCore) account](#tab/CBDMongovCore)
+## [Connecting to Azure Cosmos DB for MongoDB (vCore) cluster](#tab/CBDMongovCore)
 
 1. In the **Azure Databases** extension, expand the **Azure Resources** section.
 1. Locate **Subscription** you have your MongoDB workload. Under the desired subscription, you will notice **Azure Cosmos DB for MongoDB (vCore)** branch. Expand the branch to view your clusters and databases.
@@ -130,7 +130,7 @@ Before you begin, ensure you have the following:
 
 :::image type="content" source="./mongodb/vcore/media/quickstart-portal/networking-settings-at-provisioning.png" alt-text="Screenshot of networking and firewall options for a cluster.":::
 
-## [Connecting to any MongoDB Cluster](#tab/MongoDB)
+## [Connecting to any MongoDB cluster](#tab/MongoDB)
 
 1. In the **Workspace** panel, expand the **MongoDB accounts** section.
 2. Here, you can view all your MongoDB accounts. To connect to a new MongoDB account using a connection string, click **New Connection** and enter the connection string when prompted. 
