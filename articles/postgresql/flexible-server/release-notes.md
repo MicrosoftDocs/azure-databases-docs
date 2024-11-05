@@ -15,7 +15,7 @@ ms.topic: overview
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
-This article highlights the latest updates and enhancements for Azure Database for PostgreSQL - Flexible Server, service including new feature releases, supported engine versions, available extensions, and other important announcements."
+This article highlights the latest updates and enhancements for Azure Database for PostgreSQL - Flexible Server, service including new feature releases, supported engine versions, available extensions, and other important announcements.
 
 
 ## Release: October 2024
