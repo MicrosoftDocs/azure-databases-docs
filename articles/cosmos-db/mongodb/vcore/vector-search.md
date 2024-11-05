@@ -78,7 +78,7 @@ DiskANN indexes are available on M40 tiers and above. To create the DiskANN inde
 
 To perform a vector search, use the `$search` aggregation pipeline stage, and query with the `cosmosSearch` operator. DiskANN allows high-performance searches across massive datasets with **optional** filtering such as geospatial or text-based filters.
 
-```
+```javascript
 {
   "$search": {
     "cosmosSearch": {
@@ -189,7 +189,7 @@ for result in results:
 
 In this example, the vector similarity search returns the top `k` closest vectors based on the specified `COS` similarity metric, while filtering results to include only open businesses within a 100-mile radius.
 
-```
+```python
 [
   {
     similarityScore: 0.9745354109084544,
