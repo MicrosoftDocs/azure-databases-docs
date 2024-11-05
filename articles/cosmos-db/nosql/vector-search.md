@@ -208,7 +208,7 @@ Here are examples of valid vector index policies:
 > The vector path added to the "excludedPaths" section of the indexing policy to ensure optimized performance for insertion. Not adding the vector path to "excludedPaths" will result in higher RU charge and latency for vector insertions.
 
 > [!IMPORTANT]
-> Nested paths and wild card characters are not supported in the vector policy or vector indexing policy.
+> Wild card characters (*, []) are not currently supported in the vector policy or vector index.
 
 
 ## Perform vector search with queries using VectorDistance()

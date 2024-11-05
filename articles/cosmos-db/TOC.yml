@@ -18,8 +18,12 @@
     items:
     - name: What is a vector database
       href: vector-database.md
-    - name: Vector database in Azure Cosmos DB NoSQL
+    - name: Vector database in Azure Cosmos DB for NoSQL
       href: nosql/vector-search.md
+    - name: Full text search in Azure Cosmos DB for NoSQL
+      href: gen-ai/full-text-search.md
+    - name: Hybrid search in Azure Cosmos DB for NoSQL
+      href: gen-ai/hybrid-search.md
     - name: Vector database in Azure Cosmos DB for MongoDB
       href: mongodb/vcore/vector-search.md
     - name: AI Integrations
@@ -51,7 +55,7 @@
       href: gen-ai/document-ingestion.md
     - name: Cosmos AI Graph - Graph RAG
       href: gen-ai/cosmos-ai-graph.md
-    - name: AI agent
+    - name: AI agents
       href: ai-agents.md
     - name: Real-time custom content generation
       href: mongodb/vcore/ai-advertisement-generation.md
