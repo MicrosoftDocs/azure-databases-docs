@@ -100,17 +100,14 @@ In this tutorial, you've learned how to query data in VS Code, export query resu
 ## Prerequisites
 
 Before you begin, ensure you have the following:
-
 - An Azure Cosmos DB account configured with a database in Azure Cosmos DB for MongoDB. Use one of these quickstarts to set up a database:
     - [Portal](./mongodb/vcore/quickstart-portal.md) 
     - [Azure CLI](./mongodb/vcore/quickstart-bicep.md)
-
 - To connect and manage data in Azure Cosmos DB, you need to install the **Azure Databases** extension for Visual Studio Code.
-1. Open Visual Studio Code.
-2. Access the **Extensions** pane by selecting **View > Extensions** or using the shortcut **Ctrl + Shift + X**.
-3. In the search bar, type [Azure Databases extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb) and select the extension. Then, click **Install**.
-4. After installation, reload Visual Studio Code if prompted.
-
+    1. Open Visual Studio Code.
+    2. Access the **Extensions** pane by selecting **View > Extensions** or using the shortcut **Ctrl + Shift + X**.
+    3. In the search bar, type [Azure Databases extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb) and select the extension. Then, click **Install**.
+    4. After installation, reload Visual Studio Code if prompted.
 - MongoDB shell (mongosh) installed for command-line interactions (optional but recommended).
 
 ---
