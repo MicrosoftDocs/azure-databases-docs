@@ -16,7 +16,7 @@ zone_pivot_groups: azure-cosmos-db-apis-nosql-mongodb
 
 [!INCLUDE[NoSQL, MongoDB](includes/appliesto-nosql-mongodb.md)]
 
-[Visual Studio Code](https://code.visualstudio.com/docs) is a versatile code editor for Linux, macOS, and Windows, supporting numerous extensions. This quickstart shows you how to connect to Azure Cosmos DB for NoSQL and Azure Cosmos DB for MongoDB Instance and then use Visual Studio Code to perform core database operations, including querying, inserting, updating, and deleting data.
+[Visual Studio Code](https://code.visualstudio.com/docs) is a versatile code editor for Linux, macOS, and Windows, supporting numerous extensions. This quickstart shows you how to connect to Azure Cosmos DB for NoSQL and Azure Cosmos DB for MongoDB Instance using Visual Studio Code. It covers performing core database operations, including querying, inserting, updating, and deleting data.
 
 ::: zone pivot="api-nosql"
 
@@ -71,7 +71,7 @@ Within the query editor, view additional query and index metrics to better help 
 2. For more information on the metric definitions view the [query metrics documentation](./nosql/query-metrics).
 
 
-## Insert, Edit and Delete documents
+## Insert, Edit, and Delete documents
 - **Real-time document editing**: Add, view, edit, and delete documents instantly, with changes reflected in real-time.
 - **Import from JSON**: Load your data quickly from JSON files.
 - **Export Data**: Save entire collections or query results as JSON for backup or sharing.
@@ -101,7 +101,7 @@ Before you begin, ensure you have the following:
     - [Portal](./mongodb/vcore/quickstart-portal.md) 
     - [Azure CLI](./mongodb/vcore/quickstart-bicep.md)
 
-- To connect and manage data in Azure Cosmos DB, you’ll need to install the **Azure Databases** extension for Visual Studio Code.
+- To connect and manage data in Azure Cosmos DB, you need to install the **Azure Databases** extension for Visual Studio Code.
 1. Open Visual Studio Code.
 2. Access the **Extensions** pane by selecting **View > Extensions** or using the shortcut **Ctrl + Shift + X**.
 3. In the search bar, type [Azure Databases extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb) and select the extension. Then, click **Install**.
@@ -118,7 +118,7 @@ Before you begin, ensure you have the following:
 ### Explore Your Resources
 
 1. In the **Azure Databases** extension, expand the **Azure Resources** section.
-2. Locate **Subscription** you have your MongoDB workload. Under the desired subscription you will notice **Azure Cosmos DB for MongoDB (vCore)** and expand it to view your clusters and databases.
+2. Locate **Subscription** you have your MongoDB workload. Under the desired subscription, you will notice **Azure Cosmos DB for MongoDB (vCore)** branch. Expand the branch to view your clusters and databases.
 
 ### Select and Access Your Cluster
 
@@ -152,11 +152,10 @@ Before you begin, ensure you have the following:
 
 Azure Cosmos DB for MongoDB and any MongoDB clusters you add are now conveniently accessible in one unified interface!
 
-## Features Supported
 
-### Intuitive Data Management
+## Intuitive Data Management
 Manage your databases effortlessly:
-- **Create and Drop Databases/Collections**: No need to switch tools—create or delete databases and collections right in VS Code just by right-clicking on your account in the resource panel. 
+- **Create and Drop Databases/Collections**: No need to switch tools—create or delete databases and collections right in Visual Studio Code just by right-clicking on your account in the resource panel. 
 - **Real-time Document Editing**: Add, view, edit, and delete documents instantly, with changes reflected in real-time.
 - **Import from JSON**: Load your data quickly from JSON files.
 - **Export Data**: Save entire collections or query results as JSON for backup or sharing.
@@ -164,25 +163,25 @@ Manage your databases effortlessly:
     > [!TIP]
     > If the database does not appear in the list, select **Refresh**.
 
-### Powerful Query Tools
+## Powerful Query Tools
 Run and refine your queries with ease:
 - **Execute Queries Directly**: Write and run MongoDB queries with helpful features like syntax highlighting and auto-completion.
 - **Instant Results**: View query results immediately in a format that works best for you—Table, JSON, or Tree view.
 
-### Flexible Data Views
+## Flexible Data Views
 Explore your data in multiple ways:
 - **JSON View**: See the raw data structure.
 - **Tree View**: Navigate nested data with ease.
 - **Table View**: Quickly scan through data and drill down into details with just a double-click.
 
-### Mongo Shell Integration
+## Mongo Shell Integration
 Need the command line? You’re covered:
 - **Launch `mongosh`**: Run advanced commands directly from VS Code.
 
     > [!NOTE]
     > We dont ship Mongo shell with the extension, you would have to install `mongosh` and sync it manually. 
 
-### Cluster Management at Your Fingertips
+## Cluster Management at Your Fingertips
 Stay on top of your resources:
 - **View Cluster Details**: Check your cluster’s tier, server version, and resource usage.
 - **Manage Tags**: Organize your clusters with tags that sync with the Azure Portal.
