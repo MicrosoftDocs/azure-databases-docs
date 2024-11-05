@@ -111,6 +111,8 @@ Before you begin, ensure you have the following:
 
 ---
 
+## Connecting to a MongoDB workload
+
 ## [Connecting to a vCore-based Azure Cosmos DB for MongoDB Cluster](#tab/CBDMongovCore)
 
 ### Explore Your Resources
