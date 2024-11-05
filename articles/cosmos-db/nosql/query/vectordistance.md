@@ -69,7 +69,7 @@ ORDER BY VectorDistance(c.vector1, <query_vector>, true, {'distanceFunction':'co
 ## Remarks
 
 ##TODO##
-- This function requires enabling the [Azure Cosmos DB NoSQL Vector Search feature](../vector-search.md#enroll-in-the-vector-search-feature).
+- This function requires enabling the [Azure Cosmos DB NoSQL Vector Search feature](../vector-search.md#enable-the-vector-indexing-and-search-feature).
 - This function benefits from a [vector index](../../index-policy.md#vector-indexes)
 - if `false` is given as the optional `bool_expr`, then the vector index defined on the path is used, if one exists. If no index is defined on the vector path, then this function reverts to full scan and incurs higher RU charges and higher latency than if using a vector index.
 - When `VectorDistance` is used in an `ORDER BY` clause, no direction needs to be specified for the `ORDER BY` as the results are always sorted in order of most similar (first) to least similar (last) based on the similarity metric used.

@@ -57,7 +57,7 @@ ORDER BY RANK FullTextScore(c.text, ["keyword1", "keyword2"])
 ## Remarks
 
 ##TODO##
-- This function requires enrollment in the [Azure Cosmos DB NoSQL Full Text Search preview feature](../full-text-search.md).
+- This function requires enrollment in the [Azure Cosmos DB NoSQL Full Text Search preview feature](../../gen-ai/full-text-search.md).
 - This function requires a [Full Text Index](../../index-policy.md)
 - This function can only be used in an `ORDER BY RANK` clause, or as an argument in an `RRF` system function.
 - This function can’t be part of a projection (for example, `SELECT FullTextScore(c.text, "keyword") AS Score FROM c` is invalid.
@@ -65,5 +65,5 @@ ORDER BY RANK FullTextScore(c.text, ["keyword1", "keyword2"])
 ## Related content
 
 - [System functions](system-functions.yml)
-- [Setup Full Text Search in Azure Cosmos DB for NoSQL](../full-text-search.md).
+- [Setup Full Text Search in Azure Cosmos DB for NoSQL](../../gen-ai/full-text-search.md).
 - [Full Text Index](../../index-policy.md)
