@@ -130,7 +130,7 @@ Before you begin, ensure you have the following:
 
 :::image type="content" source="./mongodb/vcore/media/quickstart-portal/networking-settings-at-provisioning.png" alt-text="Screenshot of networking and firewall options for a cluster.":::
 
-## [Connecting to any MongoDB Cluster](#tab/MongoDB)
+## [Connecting to any MongoDB cluster](#tab/MongoDB)
 
 1. In the **Workspace** panel, expand the **MongoDB accounts** section.
 2. Here, you can view all your MongoDB accounts. To connect to a new MongoDB account using a connection string, click **New Connection** and enter the connection string when prompted. 
