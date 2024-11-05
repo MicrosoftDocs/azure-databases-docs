@@ -165,7 +165,7 @@ Run and refine your queries with ease:
 Explore your data in multiple ways:
 - **JSON View**: See the raw data structure.
 - **Tree View**: Navigate nested data with ease.
-- **Table View**: Quickly scan through data and drill down into details with just a double-click.
+- **Table View**: Quickly scan through data and drill down into nested data with just a double-click.
 
 ## Mongo Shell Integration
 Need the command line? You’re covered:
