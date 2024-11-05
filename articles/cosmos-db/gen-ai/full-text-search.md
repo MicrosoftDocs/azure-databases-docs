@@ -40,10 +40,10 @@ Full text search, full text scoring, and hybrid search all require enabling the 
 4. Read the description of the feature to confirm you want to enable it.
 5. Select "Enable" to turn on the vector indexing and search capability
 
-:::image type="content" source="../nosql/media/full-text-search/full-text-search-feature.png" ../nosql/media/full-text-search/full-text-search-feature.png"  alt-text="Screenshot of full text & hybrid search preview feature in the Azure Portal.":::
+:::image type="content" source="../nosql/media/full-text-search/full-text-search-feature.png" alt-text="Screenshot of full text & hybrid search preview feature in the Azure Portal.":::
 
 ### Configure a container policies and indexes for hybrid search
-To use full text search capabilities, you'll need to define two policies:
+To use full text search capabilities, you'll first need to define two policies:
 - A container-level full text policy, that defines what paths will contain text for the new full text query system functions.
 - A full text index added to the indexing policy that enables efficient search.
 
