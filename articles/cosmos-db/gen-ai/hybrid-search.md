@@ -29,7 +29,7 @@ The results from vector search and full text search are then combined using the 
 ## How to use hybrid search
 
 1. Enable the [Vector Search in Azure Cosmos DB for NoSQL feature](../nosql/vector-search.md#enable-the-vector-indexing-and-search-feature).
-2. Enable the [Full Text & Hybrid Search for NoSQL preview feature](../gen-ai/full-text-search#enable-the-full-text--hybrid-search-for-nosql-preview-feature.md).
+2. Enable the [Full Text & Hybrid Search for NoSQL preview feature](../gen-ai/full-text-search.md#enable-the-full-text-and-hybrid-search-for-nosql-preview-feature).
 3. Create a container with a vector policy, full text policy, vector index, and full text index.
 4. Insert your data with text and vector properties.
 5. Run hybrid queries against the data.

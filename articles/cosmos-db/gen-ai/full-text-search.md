@@ -30,7 +30,7 @@ Full Text Search is ideal for a variety of scenarios, including:
 3. Insert your data with text properties
 4. Run hybrid queries against the data
 
-## Enable the full text & hybrid search for NoSQL preview feature
+## Enable the full text and hybrid search for NoSQL preview feature
 
 Full text search, full text scoring, and hybrid search all require enabling the preview feature on your Azure Cosmos DB for NoSQL account before using. Follow the below steps to register: 
 

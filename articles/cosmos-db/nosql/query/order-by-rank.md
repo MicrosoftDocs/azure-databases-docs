@@ -54,9 +54,9 @@ ORDER BY RANK RRF(FullTextScore(c.text, ["keyword1", "keyword2"]), VectorDistanc
 
 ## Remarks  
 
-- This function requires enrollment in the [Azure Cosmos DB NoSQL Full Text Search preview feature](../../gen-ai/full-text-search.md).
+- This function requires enrollment in the [Azure Cosmos DB NoSQL Full Text Search preview feature](../../gen-ai/full-text-search.md)
 - This function requires a [Full Text Index](../../index-policy.md)
-- Hybrid Search also requires enrollment in [Azure Cosmos DB NoSQL Vector Search](../vector-search.md).
+- Hybrid Search also requires enrollment in [Azure Cosmos DB NoSQL Vector Search](../vector-search.md)
 
 ## Related content
 - [``RRF`` system function](rrf.md)

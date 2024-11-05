@@ -55,8 +55,8 @@ WHERE FullTextContains(c.text, "keyword1") AND  FullTextContains(c.text, "keywor
 
 ## Remarks
 
-- This function requires enrollment in the [Azure Cosmos DB NoSQL Full Text Search preview feature](../../gen-ai/full-text-search.md).
-- This function benefits from a [Full Text Index](../../index-policy.md).
+- This function requires enrollment in the [Azure Cosmos DB NoSQL Full Text Search preview feature](../../gen-ai/full-text-search.md)
+- This function benefits from a [Full Text Index](../../index-policy.md)
 
 ## Related content
 

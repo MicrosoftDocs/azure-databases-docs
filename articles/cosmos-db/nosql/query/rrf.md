@@ -61,11 +61,11 @@ ORDER BY RANK RRF(VectorDistance(c.vector1, [1,2,3]),VectorDistance(c.vector2, [
 ## Remarks
 
 ##TODO##
-- This function requires enrollment in the [Azure Cosmos DB NoSQL Full Text Search preview feature](../../gen-ai/full-text-search.md).
-- Hybrid Search also requires enrollment in [Azure Cosmos DB NoSQL Vector Search](../vector-search.md).
+- This function requires enrollment in the [Azure Cosmos DB NoSQL Full Text Search preview feature](../../gen-ai/full-text-search.md)
+- Hybrid Search also requires enrollment in [Azure Cosmos DB NoSQL Vector Search](../vector-search.md)
 - This function requires a [Full Text Index](../../index-policy.md)
-- This function can only be used in an `ORDER BY RANK` clause.
-- This function can’t be part of a projection (for example, `SELECT FullTextScore(c.text, "keyword") AS Score FROM c` is invalid.
+- This function can only be used in an `ORDER BY RANK` clause
+- This function can’t be part of a projection (for example, `SELECT FullTextScore(c.text, "keyword") AS Score FROM c` is invalid
 
 ## Related content
 
