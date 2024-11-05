@@ -93,6 +93,7 @@ The following steps will populate the **People** collection with a sample data s
 
 
 ### [Connecting to Azure Cosmos DB for Mongo DB](#tab/CBDMongoDBvCore)
+
 ## Connecting to a vCore-based Azure Cosmos DB for MongoDB Cluster
 
 ### Explore Your Resources
@@ -112,6 +113,7 @@ The following steps will populate the **People** collection with a sample data s
 *Note: Your password is only used for authentication and is not stored.*
 
 ## Connecting to an External MongoDB Cluster
+
 1. Select the **Attached Database accounts** in the **Workspace** panel.
 1. Choose **MongoDB** from the list of database types, then enter your MongoDB connection string when prompted.
 
@@ -120,6 +122,7 @@ Azure Cosmos DB for MongoDB and any MongoDB clusters you add are now convenientl
 :::image type="content" source="./media/dev-tooling/VS-code/vCore-vs-code-screenshot.png" alt-text="Screenshot of VS-code extension of a CosmosDB for MongoDB (vCore) cluster":::
 
 ## Features Supported
+
 ### Intuitive Data Management
 Manage your databases effortlessly:
 - **Create and Drop Databases/Collections**: No need to switch tools—create or delete databases and collections right in VS Code.
