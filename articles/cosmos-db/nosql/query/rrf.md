@@ -16,7 +16,7 @@ ms.custom: query-reference, ingite-2024
 
 [!INCLUDE[NoSQL](../../includes/appliesto-nosql.md)]
 
-This system function is used to combine the order of two or more scored ordering provided by other functions.
+This system function is used to combine two or more scores provided by other functions.
 
 ## Syntax
 
@@ -29,7 +29,7 @@ RRF(<function1>, <function2, ...>)
 | | Description |
 | --- | --- |
 | **`property_path`** | The property path to search. |
-| **`array_expr`** | A non-empty array of string literals. |
+| **`array_expr`** | A nonempty array of string literals. |
 
 ## Examples
 
@@ -61,14 +61,14 @@ ORDER BY RANK RRF(VectorDistance(c.vector1, [1,2,3]),VectorDistance(c.vector2, [
 ## Remarks
 
 ##TODO##
-- This function requires enrollment in the [Azure Cosmos DB NoSQL Full Text Search preview feature](../full-text-search.md).
+- This function requires enrollment in the [Azure Cosmos DB NoSQL Full Text Search preview feature](../../gen-ai/full-text-search.md).
 - Hybrid Search also requires enrollment in [Azure Cosmos DB NoSQL Vector Search](../vector-search.md).
 - This function requires a [Full Text Index](../../index-policy.md)
 - This function can only be used in an `ORDER BY RANK` clause.
-- This function can not be part of a projection (e.g., `SELECT FullTextScore(c.text, "keyword") AS Score FROM c` is invalid.
+- This function can’t be part of a projection (for example, `SELECT FullTextScore(c.text, "keyword") AS Score FROM c` is invalid.
 
 ## Related content
 
 - [System functions](system-functions.yml)
-- [Setup Full Text Search in Azure Cosmos DB for NoSQL](../full-text-search.md).
+- [Setup Full Text Search in Azure Cosmos DB for NoSQL](../../gen-ai/full-text-search.md).
 - [Full Text Index](../../index-policy.md)

@@ -169,7 +169,7 @@ In place of all the standalone databases, Azure Cosmos DB can serve as a unified
 
 Azure Cosmos DB provides single-digit millisecond latency. This capability makes it suitable for processes that require rapid data access and management. These processes include caching (both traditional and [semantic caching](https://techcommunity.microsoft.com/t5/azure-architecture-blog/optimize-azure-openai-applications-with-semantic-caching/ba-p/4106867)), transactions, and operational workloads.
 
-Low latency is crucial for AI agents that need to perform complex reasoning, make real-time decisions, and provide immediate responses. In addition, the service's [use of the DiskANN algorithm](nosql/vector-search.md#enroll-in-the-vector-search-preview-feature) provides accurate and fast vector search with minimal memory consumption.
+Low latency is crucial for AI agents that need to perform complex reasoning, make real-time decisions, and provide immediate responses. In addition, the service's [use of the DiskANN algorithm](nosql/vector-search.md#enable-the-vector-indexing-and-search-feature) provides accurate and fast vector search with minimal memory consumption.
 
 ### Scale
 

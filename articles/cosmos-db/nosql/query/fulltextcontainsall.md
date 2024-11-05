@@ -56,12 +56,11 @@ WHERE FullTextContainsAll(c.text, "keywords1", "keywords2", "keywords3")
 
 ## Remarks
 
-##TODO##
-- This function requires enrollment in the [Azure Cosmos DB NoSQL Full Text Search preview feature](../full-text-search.md).
+- This function requires enrollment in the [Azure Cosmos DB NoSQL Full Text Search preview feature](../../gen-ai/full-text-search.md).
 - This function benefits from a [Full Text Index](../../index-policy.md)
 
 ## Related content
 
 - [System functions](system-functions.yml)
-- [Setup Full Text Search in Azure Cosmos DB for NoSQL](../full-text-search.md).
+- [Setup Full Text Search in Azure Cosmos DB for NoSQL](../../gen-ai/full-text-search.md)
 - [Full Text Index](../../index-policy.md)

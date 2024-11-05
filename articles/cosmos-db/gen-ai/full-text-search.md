@@ -2,7 +2,7 @@
 title: Full text search overview
 description: Full text search overview
 author: jcodella
-ms.author: jcodella
+ms.author: jacodel
 ms.service: azure-cosmos-db
 ms.topic: conceptual
 ms.date: 11/04/2024
@@ -25,12 +25,12 @@ Full Text Search is ideal for a variety of scenarios, including:
 
 ## How to use full text search
 
-1. Enable the [Full Text & Hybrid Search for NoSQL preview feature](../nosql/fulltext-search.md).
-3. Create a container with a full text policy and full text index.
-4. Insert your data with text properties
-5. Run hybrid queries against the data.
+1. Enable the Full Text & Hybrid Search for NoSQL preview feature.
+2. Create a container with a full text policy and full text index.
+3. Insert your data with text properties
+4. Run hybrid queries against the data.
 
-### Setup a policies and indexes for hybrid search
+### Setup container policies and indexes for hybrid search
 To use full text search capabilities, you'll need to define two policies:
 - A container-level full text policy, that defines what paths will contain text for the new full text query system functions.
 - A full text index added to the indexing policy that enables efficient search.

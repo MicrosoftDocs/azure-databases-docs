@@ -16,7 +16,7 @@ ms.custom: query-reference, ingite-2024
 
 [!INCLUDE[NoSQL](../../includes/appliesto-nosql.md)]
 
-This function resturns a BM25 score value that can only be used in an `ORDER BY RANK` clause to sort results from highest relevancy to lowest relevancy.
+This function returns a BM25 score value that can only be used in an `ORDER BY RANK` clause to sort results from highest relevancy to lowest relevancy.
 
 ## Syntax
 
@@ -29,7 +29,7 @@ FullTextScore(<property_path>, <array_expr>)
 | | Description |
 | --- | --- |
 | **`property_path`** | The property path to search. |
-| **`array_expr`** | A non-empty array of string literals. |
+| **`array_expr`** | A nonempty array of string literals. |
 
 ## Return types
 
@@ -60,7 +60,7 @@ ORDER BY RANK FullTextScore(c.text, ["keyword1", "keyword2"])
 - This function requires enrollment in the [Azure Cosmos DB NoSQL Full Text Search preview feature](../full-text-search.md).
 - This function requires a [Full Text Index](../../index-policy.md)
 - This function can only be used in an `ORDER BY RANK` clause, or as an argument in an `RRF` system function.
-- This function can not be part of a projection (e.g., `SELECT FullTextScore(c.text, "keyword") AS Score FROM c` is invalid.
+- This function can’t be part of a projection (for example, `SELECT FullTextScore(c.text, "keyword") AS Score FROM c` is invalid.
 
 ## Related content
 

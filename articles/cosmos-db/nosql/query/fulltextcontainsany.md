@@ -1,5 +1,5 @@
 ---
-title: FullTextContains
+title: FullTextContainsAny
 titleSuffix: Azure Cosmos DB for NoSQL
 description: An Azure Cosmos DB for NoSQL system function for full text search, finding any of the specified terms in a path.
 author: jcodella
@@ -39,8 +39,6 @@ Returns a boolean expression.
 
 ## Examples
 
-## Examples
-
 This example finds all documents that contain either "keywords1" or "keywords2" in the path `c.text`, projects the path, and returns only the TOP 10.
 
 ```nosql
@@ -59,12 +57,11 @@ WHERE FullTextContainsAll(c.text, "keywords1", "keywords2", "keywords3")
 
 ## Remarks
 
-##TODO##
-- This function requires enrollment in the [Azure Cosmos DB NoSQL Full Text Search preview feature](../full-text-search.md).
-- This function benefits from a [Full Text Index](../../index-policy.md)
+- This function requires enrollment in the [Azure Cosmos DB NoSQL Full Text Search preview feature](../../gen-ai/full-text-search.md).
+- This function benefits from a [Full Text Index](../../index-policy.md).
 - 
 ## Related content
 
 - [System functions](system-functions.yml)
-- [Setup Full Text Search in Azure Cosmos DB for NoSQL](../full-text-search.md).
+- [Setup Full Text Search in Azure Cosmos DB for NoSQL](../../gen-ai/full-text-search.md)
 - [Full Text Index](../../index-policy.md)
