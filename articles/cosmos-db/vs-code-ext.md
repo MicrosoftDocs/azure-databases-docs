@@ -127,7 +127,8 @@ Before you begin, ensure you have the following:
 1. When prompted, enter the admin password for your cluster.
 2. Once authenticated, you’ll gain access to your cluster. 
 
-*Note: Your password is only used for authentication and is not stored.*
+    > [!NOTE]
+    > Your password is only used for authentication and is not stored.
 
 ## Connecting to an External MongoDB Cluster
 
@@ -170,7 +171,8 @@ Move data in and out seamlessly:
 Need the command line? You’re covered:
 - **Launch `mongosh`**: Run advanced commands directly from VS Code.
 
-*Note: We dont ship Mongo shell with the extension, you would have to install `mongosh` and sync it manually. 
+    > [!NOTE]
+    > We dont ship Mongo shell with the extension, you would have to install `mongosh` and sync it manually. 
 
 ### Cluster Management at Your Fingertips
 Stay on top of your resources:
