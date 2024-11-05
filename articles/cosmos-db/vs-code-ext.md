@@ -37,7 +37,8 @@ Before you begin, ensure you have the following:
 
 - MongoDB shell (mongosh) installed for command-line interactions (optional but recommended).
 
-### [Connecting to an Azure Cosmos DB for NoSQL](#tab/nosql)
+::: zone pivot="api-nosql"
+### Connecting to an Azure Cosmos DB for NoSQL
 
 1. In Visual Studio Code, go to the **Azure** pane (select the **Azure** icon in the Activity Bar).
 2. Sign in to your Azure account via Entra ID:
@@ -92,7 +93,11 @@ The following steps will populate the **People** collection with a sample data s
     > The import operation may take a few minutes to finish.
 
 
-### [Connecting to Azure Cosmos DB for Mongo DB](#tab/CBDMongoDBvCore)
+::: zone-end
+
+::: zone pivot="api-mongodb"
+
+### Connecting to Azure Cosmos DB for Mongo DB
 
 ## Connecting to a vCore-based Azure Cosmos DB for MongoDB Cluster
 
@@ -155,7 +160,7 @@ Stay on top of your resources:
 - **View Cluster Details**: Check your cluster’s tier, server version, and resource usage.
 - **Manage Tags**: Organize your clusters with tags that sync with the Azure Portal.
 
----
+::: zone-end
 
 ## TODO
 
