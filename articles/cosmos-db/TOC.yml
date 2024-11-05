@@ -59,8 +59,8 @@
       href: ai-advantage.md
     expanded: true
   expanded: true
-- name: VS Code extension
-  href: vs-code-ext.md
+- name: Visual Studio Code extension
+  href: visual-studio-code-extension.md
 - name: NoSQL
   href: nosql/toc.yml
 - name: MongoDB

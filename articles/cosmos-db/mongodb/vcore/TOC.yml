@@ -86,8 +86,8 @@
           href: how-to-connect-studio-3t.md
         - name: Connect using MongoDB Shell
           href: how-to-connect-mongo-shell.md
-        - name: Connect using VS code
-          href: /azure/cosmos/vs-code-ext      
+        - name: Connect using Visual Studio Code
+          href: ../../visual-studio-code-extension.md?pivots=api-mongodb      
     - name: Develop applications
       items:
         - name: Create transactions
