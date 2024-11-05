@@ -18,15 +18,15 @@ zone_pivot_groups: azure-cosmos-db-apis-nosql-mongodb
 
 [Visual Studio Code](https://code.visualstudio.com/docs) is a versatile code editor for Linux, macOS, and Windows, supporting numerous extensions. This quickstart shows you how to connect to Azure Cosmos DB for NoSQL and Azure Cosmos DB for MongoDB Instance and then use Visual Studio Code to perform core database operations, including querying, inserting, updating, and deleting data.
 
+::: zone pivot="api-nosql"
+
 ## Prerequisites
 
 Before you begin, ensure you have the following:
 
-- An Azure Cosmos DB account configured with a database in either Azure Cosmos DB for NoSQL or Azure Cosmos DB for MongoDB. Use one of these quickstarts to set up a database:
-| Action | Azure Cosmos DB for NoSQL | vCore-based Azure Cosmos DB for MongoDB |
-| :--- | :--- | :--- |
-| Create Database | [Portal](./nosql/quickstart-portal.md) | [Portal](./mongodb/vcore/quickstart-portal.md) |
-| | [Azure CLI](./nosql/quickstart-template-bicep.md) | [Azure CLI](./mongodb/vcore/quickstart-bicep.md) |
+- An Azure Cosmos DB account configured with a database in either Azure Cosmos DB for NoSQL. Use one of these quickstarts to set up a database:
+    - [Portal](./nosql/quickstart-portal.md) 
+    - [Azure CLI](./nosql/quickstart-template-bicep.md) 
 
 - To connect and manage data in Azure Cosmos DB, you’ll need to install the **Azure Databases** extension for Visual Studio Code.
 
@@ -34,10 +34,6 @@ Before you begin, ensure you have the following:
 2. Access the **Extensions** pane by selecting **View > Extensions** or using the shortcut **Ctrl + Shift + X**.
 3. In the search bar, type [Azure Databases extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb) and select the extension. Then, click **Install**.
 4. After installation, reload Visual Studio Code if prompted.
-
-- MongoDB shell (mongosh) installed for command-line interactions (optional but recommended).
-
-::: zone pivot="api-nosql"
 
 ### Connecting to an Azure Cosmos DB for NoSQL
 
@@ -93,11 +89,25 @@ The following steps will populate the **People** collection with a sample data s
     > [!TIP]
     > The import operation may take a few minutes to finish.
 
----
-
 ::: zone-end
 
 ::: zone pivot="api-mongodb"
+
+## Prerequisites
+
+Before you begin, ensure you have the following:
+
+- An Azure Cosmos DB account configured with a database in Azure Cosmos DB for MongoDB. Use one of these quickstarts to set up a database:
+    - [Portal](./mongodb/vcore/quickstart-portal.md) 
+    - [Azure CLI](./mongodb/vcore/quickstart-bicep.md)
+
+- To connect and manage data in Azure Cosmos DB, you’ll need to install the **Azure Databases** extension for Visual Studio Code.
+1. Open Visual Studio Code.
+2. Access the **Extensions** pane by selecting **View > Extensions** or using the shortcut **Ctrl + Shift + X**.
+3. In the search bar, type [Azure Databases extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb) and select the extension. Then, click **Install**.
+4. After installation, reload Visual Studio Code if prompted.
+
+- MongoDB shell (mongosh) installed for command-line interactions (optional but recommended).
 
 ### Connecting to Azure Cosmos DB for Mongo DB
 
@@ -162,12 +172,12 @@ Stay on top of your resources:
 - **View Cluster Details**: Check your cluster’s tier, server version, and resource usage.
 - **Manage Tags**: Organize your clusters with tags that sync with the Azure Portal.
 
----
-
-::: zone-end
-
 ## Next steps
 
 > [!div class="nextstepaction"]
 > [Migrate your MongoDB workload to Azure Cosmos DB](migration-options.md)
+
+::: zone-end
+
+
 
