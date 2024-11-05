@@ -141,7 +141,7 @@ Before you begin, ensure you have the following:
 
 ---
 
-Azure Cosmos DB for MongoDB and any MongoDB clusters you add are now conveniently accessible in one unified interface!
+Azure Cosmos DB for MongoDB (vCore) and any MongoDB clusters you add are now conveniently accessible in one unified interface!
 
 :::image type="content" source="./media/dev-tooling/VS-code/vCore-vs-code-screenshot.png" alt-text="Screenshot of VS-code extension of a CosmosDB for MongoDB (vCore) cluster" lightbox="./media/dev-tooling/VS-code/vCore-vs-code-screenshot.png":::
 
