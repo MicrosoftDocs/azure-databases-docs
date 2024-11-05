@@ -117,7 +117,7 @@ The following steps will populate the **People** collection with a sample data s
 
 Azure Cosmos DB for MongoDB and any MongoDB clusters you add are now conveniently accessible in one unified interface!
 
-    :::image type="content" source="./media/dev-tooling/VS-code/vCore-vs-code-screenshot.png" alt-text="Screenshot of VS-code extension of a CosmosDB for MongoDB (vCore) cluster":::
+:::image type="content" source="./media/dev-tooling/VS-code/vCore-vs-code-screenshot.png" alt-text="Screenshot of VS-code extension of a CosmosDB for MongoDB (vCore) cluster":::
 
 ## Features Supported
 ### Intuitive Data Management
