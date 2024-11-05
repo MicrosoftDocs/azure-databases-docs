@@ -85,7 +85,9 @@
         - name: Connect using Studio 3T
           href: how-to-connect-studio-3t.md
         - name: Connect using MongoDB Shell
-          href: how-to-connect-mongo-shell.md      
+          href: how-to-connect-mongo-shell.md
+        - name: Connect using VS code
+          href: cosmos-db/vs-code-ext.md      
     - name: Develop applications
       items:
         - name: Create transactions
