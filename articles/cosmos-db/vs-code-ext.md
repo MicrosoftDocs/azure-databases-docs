@@ -22,7 +22,6 @@ keywords: connect to cosmos db for nosql or cosmos db for mongodb database
 Before you begin, ensure you have the following:
 
 - An Azure Cosmos DB account configured with a database in either Azure Cosmos DB for NoSQL or Azure Cosmos DB for MongoDB. Use one of these quickstarts to set up a database:
-
 | Action | Azure Cosmos DB for NoSQL | vCore-based Azure Cosmos DB for MongoDB |
 | :--- | :--- | :--- |
 | Create Database | [Portal](./nosql/quickstart-portal.md) | [Portal](./mongodb/vcore/quickstart-portal.md) |
@@ -38,6 +37,7 @@ Before you begin, ensure you have the following:
 - MongoDB shell (mongosh) installed for command-line interactions (optional but recommended).
 
 ::: zone pivot="api-nosql"
+
 ### Connecting to an Azure Cosmos DB for NoSQL
 
 1. In Visual Studio Code, go to the **Azure** pane (select the **Azure** icon in the Activity Bar).
@@ -92,6 +92,7 @@ The following steps will populate the **People** collection with a sample data s
     > [!TIP]
     > The import operation may take a few minutes to finish.
 
+---
 
 ::: zone-end
 
@@ -159,6 +160,9 @@ Need the command line? You’re covered:
 Stay on top of your resources:
 - **View Cluster Details**: Check your cluster’s tier, server version, and resource usage.
 - **Manage Tags**: Organize your clusters with tags that sync with the Azure Portal.
+
+---
+
 
 ::: zone-end
 
