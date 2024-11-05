@@ -32,7 +32,7 @@ ms.topic: include
 | Description    | Sets the Bonjour service name.                                                       |
 | Data type      | string    |
 | Default value  |                                                                            |
-| Allowed values |                            |
+| Allowed values |                |
 | Parameter type | read-only      |
 | Documentation  | [bonjour_name](https://www.postgresql.org/docs/13/runtime-config-connection.html#GUC-BONJOUR-NAME)                                     |
 
@@ -151,7 +151,7 @@ ms.topic: include
 | Description    | Sets the owning group of the Unix-domain socket.                                     |
 | Data type      | string    |
 | Default value  |                                                                            |
-| Allowed values |                            |
+| Allowed values |                |
 | Parameter type | read-only      |
 | Documentation  | [unix_socket_group](https://www.postgresql.org/docs/13/runtime-config-connection.html#GUC-UNIX-SOCKET-GROUP)                           |
 
@@ -168,7 +168,7 @@ ms.topic: include
 | Description    | Sets the access permissions of the Unix-domain socket.                               |
 | Data type      | integer   |
 | Default value  | `0777`                                                                     |
-| Allowed values | `0777`                     |
+| Allowed values | `0777`         |
 | Parameter type | read-only      |
 | Documentation  | [unix_socket_permissions](https://www.postgresql.org/docs/13/runtime-config-connection.html#GUC-UNIX-SOCKET-PERMISSIONS)               |
 
