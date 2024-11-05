@@ -92,90 +92,70 @@ The following steps will populate the **People** collection with a sample data s
     > The import operation may take a few minutes to finish.
 
 
-### [Connecting to an vCore-based Azure Cosmos DB for Mongo DB](#tab/CBDMongoDBvCore)
+### [Connecting to Azure Cosmos DB for Mongo DB](#tab/CBDMongoDBvCore)
+## Connecting to a vCore-based Azure Cosmos DB for MongoDB Cluster
 
-# Setting Up and Using Azure Cosmos DB for MongoDB (vCore) with Visual Studio Code
-
-## Connecting to a vCore Cluster
-
-### 3. Explore Your Resources
+### Explore Your Resources
 
 1. In the **Azure Databases** extension, expand the **Azure Resources** section.
 2. Locate **Subscription** you have your MongoDB workload. Under the desired subscription you will notice **Azure Cosmos DB for MongoDB (vCore)** and expand it to view your clusters and databases.
 
-### 4. Select and Access Your Cluster
+### Select and Access Your Cluster
 
 1. Choose your Azure Cosmos DB for MongoDB (vCore) cluster from the expanded list.
 
-### 5. Authenticate with Your Admin Password
+### Authenticate with Your Admin Password
 
 1. When prompted, enter the admin password for your cluster.
 2. Once authenticated, you’ll gain access to your cluster. 
 
 *Note: Your password is only used for authentication and is not stored.*
 
-
 ## Connecting to an External MongoDB Cluster
-
-**Add Your MongoDB Cluster**  
-   - Select the **Attached Database accounts** in the **Workspace** panel.
-   - Choose **MongoDB** from the list of database types, then enter your MongoDB connection string when prompted.
+1. Select the **Attached Database accounts** in the **Workspace** panel.
+1. Choose **MongoDB** from the list of database types, then enter your MongoDB connection string when prompted.
 
 Azure Cosmos DB for MongoDB and any MongoDB clusters you add are now conveniently accessible in one unified interface!
 
     :::image type="content" source="./media/dev-tooling/VS-code/vCore-vs-code-screenshot.png" alt-text="Screenshot of VS-code extension of a CosmosDB for MongoDB (vCore) cluster":::
 
-## Features Supported Today
-### 1. **Intuitive Data Management**
-
+## Features Supported
+### Intuitive Data Management
 Manage your databases effortlessly:
 - **Create and Drop Databases/Collections**: No need to switch tools—create or delete databases and collections right in VS Code.
 - **Real-time Document Editing**: Add, view, edit, and delete documents instantly, with changes reflected in real-time.
 
-### 2. **Powerful Query Tools**
-
+### Powerful Query Tools
 Run and refine your queries with ease:
 - **Execute Queries Directly**: Write and run MongoDB queries with helpful features like syntax highlighting and auto-completion.
 - **Instant Results**: View query results immediately in a format that works best for you—Table, JSON, or Tree view.
 
-### 3. **Flexible Data Views**
-
+### Flexible Data Views
 Explore your data in multiple ways:
 - **JSON View**: See the raw data structure.
 - **Tree View**: Navigate nested data with ease.
 - **Table View**: Quickly scan through data and drill down into details with just a double-click.
 
-### 4. **Easy Import and Export**
-
+### Easy Import and Export
 Move data in and out seamlessly:
 - **Import from JSON**: Load your data quickly from JSON files.
 - **Export Data**: Save entire collections or query results as JSON for backup or sharing.
 
-### 5. **Mongo Shell Integration**
-
+### Mongo Shell Integration
 Need the command line? You’re covered:
 - **Launch `mongosh`**: Run advanced commands directly from VS Code.
 
 *Note: We dont ship Mongo shell with the extension, you would have to install `mongosh` and sync it manually. 
 
-### 6. **Cluster Management at Your Fingertips**
-
+### Cluster Management at Your Fingertips
 Stay on top of your resources:
 - **View Cluster Details**: Check your cluster’s tier, server version, and resource usage.
 - **Manage Tags**: Organize your clusters with tags that sync with the Azure Portal.
 
 ---
 
-
-### Key Features
-
-The Azure Databases extension offers several key features for working with Azure Cosmos DB:
-
-- **Integrated Connection Management**: Save and manage multiple workloads.
-- **Query and Data Manipulation**: Execute queries, insert, update, or delete data 
-- **Export Options**: 
-- **Customizable Settings**: table, json, 
-
-## Feedback
+## TODO
 
 We value your feedback. If you encounter any issues or have suggestions, please contact us at 
+
+
