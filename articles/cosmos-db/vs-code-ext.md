@@ -109,8 +109,6 @@ Before you begin, ensure you have the following:
 
 - MongoDB shell (mongosh) installed for command-line interactions (optional but recommended).
 
-### Connecting to Azure Cosmos DB for Mongo DB
-
 ## Connecting to a vCore-based Azure Cosmos DB for MongoDB Cluster
 
 ### Explore Your Resources
@@ -145,7 +143,7 @@ Azure Cosmos DB for MongoDB and any MongoDB clusters you add are now convenientl
 
 ### Intuitive Data Management
 Manage your databases effortlessly:
-- **Create and Drop Databases/Collections**: No need to switch tools—create or delete databases and collections right in VS Code.
+- **Create and Drop Databases/Collections**: No need to switch tools—create or delete databases and collections right in VS Code just by right-clicking on your account in the resource panel. 
 - **Real-time Document Editing**: Add, view, edit, and delete documents instantly, with changes reflected in real-time.
 
     > [!TIP]
