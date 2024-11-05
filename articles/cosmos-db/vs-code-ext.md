@@ -111,7 +111,7 @@ Before you begin, ensure you have the following:
 
 ---
 
-## [Connecting to a vCore-based Azure Cosmos DB for MongoDB Cluster](#tabs/CBDMongovCore)
+## [Connecting to a vCore-based Azure Cosmos DB for MongoDB Cluster](#tab/CBDMongovCore)
 
 ### Explore Your Resources
 
@@ -132,7 +132,7 @@ Before you begin, ensure you have the following:
 
 ---
 
-## [Connecting to an External MongoDB Cluster](#tabs/MongoDB)
+## [Connecting to an External MongoDB Cluster](#tab/MongoDB)
 
 1. Select the **Attached Database accounts** in the **Workspace** panel.
 1. Choose **MongoDB** from the list of database types, then enter your MongoDB connection string when prompted.
