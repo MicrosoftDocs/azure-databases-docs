@@ -694,7 +694,7 @@ ms.topic: include
 | Category       | Customized Options |
 | Description    | Set the frequency, in milliseconds, at which wait events are sampled.                                                                                                                       |
 | Data type      | integer     |
-| Default value  | `100`                        |
+| Default value  | `100`          |
 | Allowed values | `1-600000`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | Parameter type | dynamic        |
 | Documentation  | [pgms_wait_sampling.history_period](https://go.microsoft.com/fwlink/?linkid=2274607)                              |
@@ -779,7 +779,7 @@ ms.topic: include
 | Category       | Customized Options |
 | Description    | Number of seconds between calls to run_maintenance().                                                                                                                                       |
 | Data type      | integer     |
-| Default value  | `3600`                       |
+| Default value  | `3600`         |
 | Allowed values | `1-315360000`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | Parameter type | dynamic        |
 | Documentation  | [pg_partman_bgw.interval](https://github.com/pgpartman/pg_partman)                                                |
@@ -830,7 +830,7 @@ ms.topic: include
 | Category       | Customized Options |
 | Description    | Sets the query_store capture interval in minutes for pg_qs - this is the frequency of data persistence.                                                                                     |
 | Data type      | integer     |
-| Default value  | `15`                         |
+| Default value  | `15`           |
 | Allowed values | `1-30`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 | Parameter type | static         |
 | Documentation  | [pg_qs.interval_length_minutes](https://go.microsoft.com/fwlink/?linkid=2274607)                                  |
@@ -864,7 +864,7 @@ ms.topic: include
 | Category       | Customized Options |
 | Description    | Sets the maximum number of bytes that will be saved for query plan text  for pg_qs; longer plans will be truncated.                                                                         |
 | Data type      | integer     |
-| Default value  | `7500`                       |
+| Default value  | `7500`         |
 | Allowed values | `100-10000`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 | Parameter type | dynamic        |
 | Documentation  | [pg_qs.max_plan_size](https://go.microsoft.com/fwlink/?linkid=2274607)                                            |
@@ -881,7 +881,7 @@ ms.topic: include
 | Category       | Customized Options |
 | Description    | Sets the maximum query text length that will be saved; longer queries will be truncated.                                                                                                    |
 | Data type      | integer     |
-| Default value  | `6000`                       |
+| Default value  | `6000`         |
 | Allowed values | `100-10000`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 | Parameter type | dynamic        |
 | Documentation  | [pg_qs.max_query_text_length](https://go.microsoft.com/fwlink/?linkid=2274607)                                    |
@@ -932,7 +932,7 @@ ms.topic: include
 | Category       | Customized Options |
 | Description    | Sets the retention period window in days for pg_qs - after this time data will be deleted.                                                                                                  |
 | Data type      | integer     |
-| Default value  | `7`                          |
+| Default value  | `7`            |
 | Allowed values | `1-30`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 | Parameter type | dynamic        |
 | Documentation  | [pg_qs.retention_period_in_days](https://go.microsoft.com/fwlink/?linkid=2274607)                                 |
@@ -983,7 +983,7 @@ ms.topic: include
 | Category       | Customized Options |
 | Description    | Sets the maximum number of statements tracked by pg_stat_statements.                                                                                                                        |
 | Data type      | integer     |
-| Default value  | `5000`                       |
+| Default value  | `5000`         |
 | Allowed values | `100-2147483647`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | Parameter type | static         |
 | Documentation  | [pg_stat_statements.max](https://www.postgresql.org/docs/11/pgstatstatements.html)                                |
