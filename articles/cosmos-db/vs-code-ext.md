@@ -109,7 +109,9 @@ Before you begin, ensure you have the following:
 
 - MongoDB shell (mongosh) installed for command-line interactions (optional but recommended).
 
-## Connecting to a vCore-based Azure Cosmos DB for MongoDB Cluster
+---
+
+## [Connecting to a vCore-based Azure Cosmos DB for MongoDB Cluster](#tabs/CBDMongovCore)
 
 ### Explore Your Resources
 
@@ -128,7 +130,9 @@ Before you begin, ensure you have the following:
     > [!NOTE]
     > Your password is only used for authentication and is not stored.
 
-## Connecting to an External MongoDB Cluster
+---
+
+## [Connecting to an External MongoDB Cluster](#tabs/MongoDB)
 
 1. Select the **Attached Database accounts** in the **Workspace** panel.
 1. Choose **MongoDB** from the list of database types, then enter your MongoDB connection string when prompted.
