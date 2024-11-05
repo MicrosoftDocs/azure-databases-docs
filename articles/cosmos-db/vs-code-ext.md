@@ -168,6 +168,6 @@ Stay on top of your resources:
 
 ## Next steps
 
-We value your feedback. If you encounter any issues or have suggestions, please contact us at 
-
+> [!div class="nextstepaction"]
+> [Migrate your MongoDB workload to Azure Cosmos DB](migration-options.md)
 
