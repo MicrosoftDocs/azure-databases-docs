@@ -45,13 +45,9 @@ In the Integrated Vector Database in Azure Cosmos DB for NoSQL, embeddings can b
 Vector indexing and search in Azure Cosmos DB for NoSQL requires enabling on the Features page of your Azure Cosmos DB. Follow the below steps to register: 
 
 1. Navigate to your Azure Cosmos DB for NoSQL resource page.
-   
 2. Select the "Features" pane under the "Settings" menu item.
-
 3. Select for “Vector Search in Azure Cosmos DB for NoSQL”.
-
 4. Read the description of the feature to confirm you want to enable it.
-
 5. Select "Enable" to turn on the vector indexing and search capability
 
 > [!NOTE]  
