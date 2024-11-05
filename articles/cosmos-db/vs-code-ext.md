@@ -9,6 +9,7 @@ ms.date: 10/17/2024
 ms.service: azure-cosmos-db
 ms.topic: how-to
 keywords: connect to cosmos db for nosql or cosmos db for mongodb database
+zone_pivot_groups: azure-cosmos-db-apis-nosql-mongodb
 ---
 
 # Quickstart: Use Visual Studio Code to connect and query Azure Cosmos DB instances
@@ -163,10 +164,9 @@ Stay on top of your resources:
 
 ---
 
-
 ::: zone-end
 
-## TODO
+## Next steps
 
 We value your feedback. If you encounter any issues or have suggestions, please contact us at 
 
