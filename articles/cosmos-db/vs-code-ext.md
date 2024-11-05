@@ -1,5 +1,5 @@
 ---
-title: Use Visual Studio Code to connect and query Azure Cosmos DB resources 
+title: Use Visual Studio Code to connect and Manage Azure Cosmos DB resources 
 titleSuffix: Azure Cosmos DB for NoSQL & vCore-based Azure Cosmos DB for MongoDB
 description: Learn how to connect to Azure Cosmos DB for NoSQL or Azure Cosmos DB for MongoDB Instance by using Visual Studio Code. 
 author: khelanmodi
@@ -129,14 +129,22 @@ Before you begin, ensure you have the following:
 1. When prompted, enter the admin password for your cluster.
 2. Once authenticated, you’ll gain access to your cluster. 
 
-    > [!NOTE]
-    > Your password is only used for authentication and is not stored.
+> [!NOTE]
+> Your password is only used for authentication and is not stored.
 
+>[!NOTE]
+>In many corporate environments, developer machine IP addresses are hidden due to a VPN or other corporate network settings. In these cases, it's recommended to start with [allowing access to all IP addresses](./mongodb/vcore/quickstart-portal.md) by adding the 0.0.0.0 - 255.255.255.255 firewall rule for connection testing initially before refining the allow-list.
 
-## [Connecting to an External MongoDB Cluster](#tab/MongoDB)
+:::image type="content" source="./mongodb/vcore/media/quickstart-portal/networking-settings-at-provisioning.png" alt-text="Screenshot of networking and firewall options for a cluster.":::
 
-1. Select the **Attached Database accounts** in the **Workspace** panel.
-1. Choose **MongoDB** from the list of database types, then enter your MongoDB connection string when prompted.
+## [Connecting to a MongoDB Cluster](#tab/MongoDB)
+
+1. In the **Workspace** panel, expand the **MongoDB accounts** section.
+2. Here, you can view all your MongoDB accounts. To connect to a new MongoDB account using a connection string, click **New Connection** and enter the connection string when prompted. 
+   - Optionally, you may be asked to provide your username and password for authentication. 
+
+>[!Note]
+>All successfully connected MongoDB clusters will remain listed in the MongoDB accounts section, even after closing VS Code.
 
 ---
 
