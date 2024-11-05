@@ -18,7 +18,7 @@ Azure Cosmos DB for MongoDB vCore now supports secondary users with specialized 
 ## Configuring Secondary Users 
 
  > [!NOTE]
->  Enable this feature before creating a cluster. It can only be enabled using an ARM template during the preview phase.
+>  You can enable/disable this feature by using an ARM template or via Azure CLI during the preview phase.
 
 
 ```powershell
@@ -30,9 +30,9 @@ Azure Cosmos DB for MongoDB vCore now supports secondary users with specialized 
 
 ```
  
-# Supported commands and examples
+## Supported commands and examples
 
- The MongoDB vCore  now supports Role-Based Access Control (RBAC) for secondary users with read and write privileges. This allows administrators to assign roles that grant access to secondary databases for essential read operations while protecting primary data integrity.
+ The MongoDB vCore  now supports Role-Based Access Control (RBAC) for secondary users with read and write privileges.This allows administrators to assign roles that grant access to secondary databases for essential read operations while protecting primary data integrity.
 
  > [!NOTE]
 >  You can use any of the MongoDB drivers or mongotools such as mongosh to perform these operations.
@@ -44,7 +44,7 @@ mongosh mongodb+srv://<YOUR_USERNAME>:<YOUR_PASSWORD>@>YOUR_HOST>?tls=true&authM
 
 ```
  > [!NOTE]
->  Make sure you whitelist your client IP under the networking settings on azure portal. 
+>  Make sure you allowlist your client IP under the networking settings on azure portal. 
 
 ### CreateUser
 
