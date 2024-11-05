@@ -16,7 +16,7 @@ zone_pivot_groups: azure-cosmos-db-apis-nosql-mongodb
 
 [!INCLUDE[NoSQL, MongoDB](includes/appliesto-nosql-mongodb.md)]
 
-[Visual Studio Code](https://code.visualstudio.com/docs) is a versatile code editor for Linux, macOS, and Windows, supporting numerous extensions. This quickstart shows you how to connect to Azure Cosmos DB for NoSQL and Azure Cosmos DB for MongoDB Instance using Visual Studio Code. It covers performing core database operations, including querying, inserting, updating, and deleting data.
+[Visual Studio Code](https://code.visualstudio.com/docs) is a versatile code editor for Linux, macOS, and Windows, supporting numerous extensions. This quickstart shows you how to connect to Azure Cosmos DB for NoSQL and Azure Cosmos DB for MongoDB (vCore) cluster using Visual Studio Code. It covers performing core database operations, including querying, inserting, updating, and deleting data.
 
 ::: zone pivot="api-nosql"
 
@@ -141,19 +141,15 @@ Before you begin, ensure you have the following:
 
 ---
 
-Azure Cosmos DB for MongoDB (vCore) and any MongoDB clusters you add are now conveniently accessible in one unified interface!
-
-:::image type="content" source="./media/dev-tooling/VS-code/vCore-vs-code-screenshot.png" alt-text="Screenshot of VS-code extension of a CosmosDB for MongoDB (vCore) cluster" lightbox="./media/dev-tooling/VS-code/vCore-vs-code-screenshot.png":::
-
 ## Intuitive Data Management
 Manage your databases effortlessly:
 - **Create and Drop Databases/Collections**: Create or delete databases and collections directly in Visual Studio Code by right-clicking on your account in the resource panel.
-- **Real-time Document Editing**: Add, view, edit, and delete documents instantly, with changes reflected in real-time.
 - **Import from JSON**: Load your data quickly from JSON files.
 - **Export Data**: Save entire collections or query results as JSON for backup or sharing.
+- **Real-time Document Editing**: Add, view, edit, and delete documents instantly, with changes reflected in real-time.
+:::image type="content" source="./media/dev-tooling/VS-code/vCore-vs-code-screenshot.png" alt-text="Screenshot of VS-code extension of a CosmosDB for MongoDB (vCore) cluster" lightbox="./media/dev-tooling/VS-code/vCore-vs-code-screenshot.png":::
 
-> [!TIP]
-> If the database does not appear in the list, select **Refresh**.
+Azure Cosmos DB for MongoDB (vCore) and any MongoDB clusters you add are now conveniently accessible in one unified interface!
 
 ## Powerful Query Tools
 Run and refine your queries with ease:
@@ -163,8 +159,11 @@ Run and refine your queries with ease:
 ## Flexible Data Views
 Explore your data in multiple ways:
 - **JSON View**: See the raw data structure.
+:::image type="content" source="./media/dev-tooling/VS-code/vCore-vs-code-json-view.png" alt-text="Screenshot of VS-code extension of a CosmosDB for MongoDB (vCore) cluster in JSON view" lightbox="./media/dev-tooling/VS-code/vCore-vs-code-json-view.png":::
 - **Tree View**: Navigate nested data with ease.
+:::image type="content" source="./media/dev-tooling/VS-code/vCore-vs-code-tree-view.png" alt-text="Screenshot of VS-code extension of a CosmosDB for MongoDB (vCore) cluster in Tree view" lightbox="./media/dev-tooling/VS-code/vCore-vs-code-tree-view.png":::
 - **Table View**: Quickly scan through data and drill down into nested data with just a double-click.
+:::image type="content" source="./media/dev-tooling/VS-code/vCore-vs-code-table-view.png" alt-text="Screenshot of VS-code extension of a CosmosDB for MongoDB (vCore) cluster in Table view" lightbox="./media/dev-tooling/VS-code/vCore-vs-code-table-view.png":::
 
 ## Mongo Shell Integration
 
