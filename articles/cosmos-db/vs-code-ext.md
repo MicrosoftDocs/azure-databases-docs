@@ -184,7 +184,7 @@ Stay on top of your resources:
 ## Next steps
 
 > [!div class="nextstepaction"]
-> [Migrate your MongoDB workload to Azure Cosmos DB](migration-options.md)
+> [Migrate your MongoDB workload to Azure Cosmos DB](./mongodb/vcore/migration-options.md)
 
 ::: zone-end
 
