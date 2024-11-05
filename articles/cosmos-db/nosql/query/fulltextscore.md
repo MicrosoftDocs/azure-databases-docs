@@ -33,7 +33,7 @@ FullTextScore(<property_path>, <array_expr>)
 
 ## Return types
 
-Returns a BM25 score value.  
+Returns a BM25 scoring.  
 
 ## Examples
 
@@ -56,7 +56,6 @@ ORDER BY RANK FullTextScore(c.text, ["keyword1", "keyword2"])
 
 ## Remarks
 
-##TODO##
 - This function requires enrollment in the [Azure Cosmos DB NoSQL Full Text Search preview feature](../../gen-ai/full-text-search.md).
 - This function requires a [Full Text Index](../../index-policy.md)
 - This function can only be used in an `ORDER BY RANK` clause, or as an argument in an `RRF` system function.

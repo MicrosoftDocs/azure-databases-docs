@@ -39,7 +39,7 @@ Returns a boolean expression.
 
 ## Examples
 
-This example finds all documents that contain either "keyword1" or "keyword2" in the path `c.text`, projects the path, and returns only the TOP 10.
+This example returns all documents that contain either "keyword1" or "keyword2" in the path `c.text`, projects the path, and returns only the TOP 10.
 
 ```nosql
 SELECT TOP 10 c.text
