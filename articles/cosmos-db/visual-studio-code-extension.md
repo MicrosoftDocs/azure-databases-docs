@@ -158,6 +158,8 @@ Azure Cosmos DB for MongoDB and any MongoDB clusters you add are now convenientl
 Manage your databases effortlessly:
 - **Create and Drop Databases/Collections**: No need to switch tools—create or delete databases and collections right in VS Code just by right-clicking on your account in the resource panel. 
 - **Real-time Document Editing**: Add, view, edit, and delete documents instantly, with changes reflected in real-time.
+- **Import from JSON**: Load your data quickly from JSON files.
+- **Export Data**: Save entire collections or query results as JSON for backup or sharing.
 
     > [!TIP]
     > If the database does not appear in the list, select **Refresh**.
@@ -172,11 +174,6 @@ Explore your data in multiple ways:
 - **JSON View**: See the raw data structure.
 - **Tree View**: Navigate nested data with ease.
 - **Table View**: Quickly scan through data and drill down into details with just a double-click.
-
-### Easy Import and Export
-Move data in and out seamlessly:
-- **Import from JSON**: Load your data quickly from JSON files.
-- **Export Data**: Save entire collections or query results as JSON for backup or sharing.
 
 ### Mongo Shell Integration
 Need the command line? You’re covered:
