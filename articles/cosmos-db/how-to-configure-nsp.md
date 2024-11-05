@@ -19,7 +19,7 @@ This article explains how to configure Network Security Perimeter on your Azure 
 > For more information, see [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## Feature overview
-Network administrators can define a network isolation boundary for their PaaS services, which allows communication between their Azure Cosmos DB account and Keyvault, SQL, and other services using Network Security Perimeter. Securing public access on Azure Service can be accomplished in several ways:
+Network administrators can define a network isolation boundary for their PaaS services, which allows communication between their Azure Cosmos DB account and Keyvault, SQL, and other services using Azure Network Security Perimeter. Securing public access on Azure Service can be accomplished in several ways:
 
 - Securing inbound connections: Restrict public exposure of your Azure Cosmos DB account by explicitly granting ingress access to resources inside the perimeter. By default, access from unauthorized networks is denied, and access from private endpoints into the perimeter or resources in a subscription can be configured.
 - Securing service-to-service communication: All resources inside the perimeter can communicate with any other resources within the perimeter, preventing data exfiltration.
@@ -30,7 +30,7 @@ Network administrators can define a network isolation boundary for their PaaS se
 All of these communications are taken care of automatically once Network Security Perimeter is set up, and users don't have to manage them. Instead of setting up a private endpoint for each resource to enable communication or configure virtual network, Network Security Perimeter at the top level enables this functionality. 
 
 > [!NOTE]
-> Network security perimeter complements what we currently have in place today, including private endpoint, which allows access to a private resource within the perimeter, and VNet injection, which enables managed VNet offerings to access resources within the perimeter.
+> Azure Network security perimeter complements what we currently have in place today, including private endpoint, which allows access to a private resource within the perimeter, and VNet injection, which enables managed VNet offerings to access resources within the perimeter.
 > We currently do not support the combination of network security perimeter, customer-managed keys (CMK), and log store features. If you need to perform restores on a CMK with a network security perimeter account, you'll temporarily need to relax the perimeter settings in the key vault to allow your Cosmos DB account access to the key.
 
 ## Getting started
