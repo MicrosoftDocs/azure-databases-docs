@@ -136,11 +136,11 @@ Before you begin, ensure you have the following:
 1. Select the **Attached Database accounts** in the **Workspace** panel.
 1. Choose **MongoDB** from the list of database types, then enter your MongoDB connection string when prompted.
 
-Azure Cosmos DB for MongoDB and any MongoDB clusters you add are now conveniently accessible in one unified interface!
-
 ---
 
 :::image type="content" source="./media/dev-tooling/VS-code/vCore-vs-code-screenshot.png" alt-text="Screenshot of VS-code extension of a CosmosDB for MongoDB (vCore) cluster" lightbox="./media/dev-tooling/VS-code/vCore-vs-code-screenshot.png":::
+
+Azure Cosmos DB for MongoDB and any MongoDB clusters you add are now conveniently accessible in one unified interface!
 
 ## Features Supported
 

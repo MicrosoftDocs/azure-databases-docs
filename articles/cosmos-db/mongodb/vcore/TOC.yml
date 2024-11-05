@@ -87,7 +87,7 @@
         - name: Connect using MongoDB Shell
           href: how-to-connect-mongo-shell.md
         - name: Connect using VS code
-          href: /cosmos/vs-code-ext.md      
+          href: /articles/cosmos/vs-code-ext.md      
     - name: Develop applications
       items:
         - name: Create transactions
