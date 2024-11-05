@@ -94,6 +94,11 @@ To perform a vector search, use the `$search` aggregation pipeline stage, and qu
 },
 ```
 
+|Field    |Type     |Description  |
+|---------|---------|---------|
+| `lSearch` | integer | Specifies the size of the dynamic candidate list for search. The default value is `40`, with a configurable range from `10` to `1000`. Increasing the value enhances recall but may reduce search speed. |
+| `k` | integer | Defines the number of search results to return. The `k` value must be less than or equal to `lSearch`. |
+
 ## Example using a DiskANN Index with Filtering
 
 ### Add vectors to your database
