@@ -48,7 +48,7 @@ To use full text search capabilities, you'll need to define two policies:
 - A full text index added to the indexing policy that enables efficient search.
 
 ### Full text policy
-For every text property you'd like to configure for full text search, you must declare both `path` and the `language` of the text in that path. A simple full text policy can be:
+For every text property you'd like to configure for full text search, you must declare both the `path` of the property with text and the `language` of the text. A simple full text policy can be:
 
  ```json
 {
@@ -83,7 +83,7 @@ Defining multiple text paths is easily done by adding another element to the `fu
 > Wild card characters (*, []) are not currently supported in the full text policy or full text index.
 
 ### Full text index
-Any full text search operations should make use of a [*full text index*](../index-policy.md). A full text index can easily be defined in any Azure Cosmos DB for NoSQL index policy per the example below.
+Any full text search operations should make use of a [*full text index*](../index-policy.md#full-text-indexes). A full text index can easily be defined in any Azure Cosmos DB for NoSQL index policy per the example below.
 
 ```json
 {

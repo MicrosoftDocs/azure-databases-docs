@@ -38,20 +38,20 @@ Returns a boolean expression.
 
 ## Examples
 
-This example finds all documents that contain both "keywords1" and "keywords2" in the path `c.text`, projects the path, and returns only the TOP 10.
+This example finds all documents that contain both "keyword1" and "keyword2" in the path `c.text`, projects the path, and returns only the TOP 10.
 
 ```nosql
 SELECT TOP 10 c.text
 FROM c
-WHERE FullTextContainsAll(c.text, "keywords1", "keywords2")
+WHERE FullTextContainsAll(c.text, "keyword1", "keyword2")
 ```
 
-This example returns all documents that contain  "keywords1", "keywords2", and "keywords3" in the path `c.text`.
+This example returns all documents that contain  "keyword1", "keyword2", and "keyword3" in the path `c.text`.
 
 ```nosql
 SELECT *
 FROM c
-WHERE FullTextContainsAll(c.text, "keywords1", "keywords2", "keywords3") 
+WHERE FullTextContainsAll(c.text, "keyword1", "keyword2", "keyword3") 
 ```
 
 ## Remarks

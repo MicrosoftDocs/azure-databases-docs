@@ -16,7 +16,7 @@ ms.custom: query-reference, ingite-2024
 
 [!INCLUDE[NoSQL](../../includes/appliesto-nosql.md)]
 
-Returns a boolean indicating whether the string expression is contained in a specified property path.
+Returns a boolean indicating whether the keyword string expression is contained in a specified property path.
 
 ## Syntax
 
@@ -37,15 +37,15 @@ Returns a boolean expression.
 
 ## Examples
 
-This exampl
+This is a simple query returning 10 results that contain "keyword" in the `c.text` property. 
 
 ```nosql
-SELECT TOP 10 c.text
+SELECT TOP 10 *
 FROM c
-WHERE FullTextContains(c.text, "keywords")
+WHERE FullTextContains(c.text, "keyword")
 ```
 
-This next example shows logical operators used for ensuring multiple keywords are included. 
+This next example shows logical operators used for ensuring multiple keyword are included. 
 
 ```nosql
 SELECT *
