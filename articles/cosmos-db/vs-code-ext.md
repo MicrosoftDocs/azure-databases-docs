@@ -39,55 +39,55 @@ Before you begin, ensure you have the following:
 
 1. In Visual Studio Code, go to the **Azure** pane (select the **Azure** icon in the Activity Bar).
 2. Sign in to your Azure account via Entra ID:
-**Note**: It is recommended to use Microsoft Entra ID when accessing your Azure Cosmos DB resources (instead of account keys) for the most secure authentication method.
+**Note**: It is recommended to always use Microsoft Entra ID RBAC when accessing your Azure Cosmos DB resources (instead of account keys) for the most secure authentication method.
 3. Once you are signed in, in the Azure tree view, find your Azure Subscription and drill down to Azure Cosmos DB. 
 4. Select an existing account or right-click to create a new resource.
 
+## Query and display your data
+The following steps will use the Query Editor to execute a query and view the results of the query:
 
-## Create a database and collection
+1. In the menu for your collection, right-click on the collection to open the Query Editor in Preview.
 
-The following steps will create a database named **SourceDatabase** and a collection named **People**:
+     :::image type="content" source="/media/dev-tooling/VS-code/open-query-editor.png" lightbox="media/dev-tooling/VS-code/open-query-editor.png" alt-text="Screenshot of the query editor in VS Code.":::
 
-1. In the tree view for your account, right-click select **Create Database**.
+2. Run the query provided in the query editor to display your data in **Table View**:
 
-    :::image type="content" source="media/quickstart-azure-cosmos-db-mongodb/create-database-menu-option.png" lightbox="media/quickstart-azure-cosmos-db-mongodb/create-database-menu-option.png" alt-text="Screenshot of the create database option in the Mongo DB context menu.":::
+    :::image type="content" source="/media/dev-tooling/VS-code/view-query-editor-results.png" lightbox="media/dev-tooling/VS-code/view-query-editor-results.png" alt-text="Screenshot of the query editor results in VS Code.":::
 
-1. In the **Database** and **Collection** popup dialogs, use the details in this table.
+3. Explore your data in other supported views:
 
-    | Prompt | Value |
-    | --- | --- |
-    | **Database name** | *SourceDatabase* |
-    | **Collection name** | *People* |
+- **JSON View**: See the raw data structure.
+    :::image type="content" source="/media/dev-tooling/VS-code/view-json-view.png" lightbox="media/dev-tooling/VS-code/view-json-views.png" alt-text="Screenshot of the query editor results in json view.":::
+- **Tree View**: Navigate nested data with ease.
+    :::image type="content" source="/media/dev-tooling/VS-code/view-tree-view.png" lightbox="media/dev-tooling/VS-code/view-tree-view.png" alt-text="Screenshot of the query editor results in tree view.":::
 
-1. After the operation completes, the new database should appear in the list of databases.
 
-    > [!TIP]
-    > If the database does not appear in the list, select **Refresh**.
+## View query and index metrics
+Within the query editor, view additional query and index metrics to better help optimize your query performance.
 
-1. Expand the **SourceDatabase** and **People** nodes in the **SERVERS** sidebar.
+1. Select the **Stats** tab next to the  query **Results**.
+    :::image type="content" source="/media/dev-tooling/VS-code/view-query-stats.png" lightbox="media/dev-tooling/VS-code/view-query-stats.png" alt-text="Screenshot of the query stats in VS Code.":::
 
-    :::image type="content" source="media/quickstart-azure-cosmos-db-mongodb/servers-sidebar-tree.png" lightbox="media/quickstart-azure-cosmos-db-mongodb/servers-sidebar-tree.png" alt-text="Screenshot of database and collection hierarchy under the Mongo account note in the SERVERS sidebar.":::
+2. For more information on the metric definitions view the [query metrics documentation](./nosql/query-metrics).
 
-## Create a sample collection
 
-The following steps will populate the **People** collection with a sample data set:
+## Insert, Edit and Delete documents
+- **Real-time document editing**: Add, view, edit, and delete documents instantly, with changes reflected in real-time.
+- **Import from JSON**: Load your data quickly from JSON files.
+- **Export Data**: Save entire collections or query results as JSON for backup or sharing.
 
-1. Select **Databases** to navigate to the list of databases in your account.
 
-    :::image type="content" source="media/quickstart-azure-cosmos-db-mongodb/navigate-databases.png" lightbox="media/quickstart-azure-cosmos-db-mongodb/navigate-databases.png" alt-text="Screenshot of option to navigate to databases view.":::
+ ## Export query results
+Move data in and out seamlessly:
+- **Import from JSON**: Load your data quickly from JSON files.
+- **Export Data**: Save entire collections or query results as JSON for backup or sharing.
 
-1. Select the **SourceDatabase** item in the list of databases.
 
-    :::image type="content" source="media/quickstart-azure-cosmos-db-mongodb/database-list-item.png" lightbox="media/quickstart-azure-cosmos-db-mongodb/database-list-item.png" alt-text="Screenshot of database list item named Source Database within databases list.":::
 
-1. In the header menu, select **Import Sample Data**. In the confirmation dialog, select **Yes**.
+## Next steps
+In this tutorial, you've learned how to query data in VS Code, export query results, view query and index metrics for tuning query performance and displaying data in the multiple supported views. You can now use the Azure Databases VS Code Extension to review real data in your database.
 
-    :::image type="content" source="media/quickstart-azure-cosmos-db-mongodb/navigate-import.png" lightbox="media/quickstart-azure-cosmos-db-mongodb/navigate-import.png" alt-text="Screenshot of dialog option to perform an import.":::
 
-1. Wait for the import operation to complete.
-
-    > [!TIP]
-    > The import operation may take a few minutes to finish.
 
 ::: zone-end
 
