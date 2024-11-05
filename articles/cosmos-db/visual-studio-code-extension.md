@@ -141,14 +141,13 @@ Before you begin, ensure you have the following:
 
 ---
 
-:::image type="content" source="./media/dev-tooling/VS-code/vCore-vs-code-screenshot.png" alt-text="Screenshot of VS-code extension of a CosmosDB for MongoDB (vCore) cluster" lightbox="./media/dev-tooling/VS-code/vCore-vs-code-screenshot.png":::
-
 Azure Cosmos DB for MongoDB and any MongoDB clusters you add are now conveniently accessible in one unified interface!
 
+:::image type="content" source="./media/dev-tooling/VS-code/vCore-vs-code-screenshot.png" alt-text="Screenshot of VS-code extension of a CosmosDB for MongoDB (vCore) cluster" lightbox="./media/dev-tooling/VS-code/vCore-vs-code-screenshot.png":::
 
 ## Intuitive Data Management
 Manage your databases effortlessly:
-- **Create and Drop Databases/Collections**: No need to switch tools—create or delete databases and collections right in Visual Studio Code just by right-clicking on your account in the resource panel. 
+- **Create and Drop Databases/Collections**: Create or delete databases and collections directly in Visual Studio Code by right-clicking on your account in the resource panel.
 - **Real-time Document Editing**: Add, view, edit, and delete documents instantly, with changes reflected in real-time.
 - **Import from JSON**: Load your data quickly from JSON files.
 - **Export Data**: Save entire collections or query results as JSON for backup or sharing.
@@ -168,11 +167,11 @@ Explore your data in multiple ways:
 - **Table View**: Quickly scan through data and drill down into nested data with just a double-click.
 
 ## Mongo Shell Integration
-Need the command line? You’re covered:
-- **Launch `mongosh`**: Run advanced commands directly from VS Code.
 
-> [!NOTE]
-> We dont ship Mongo shell with the extension, you would have to install `mongosh` and sync it manually. 
+Command-line functionality is available:
+- **Launch `mongosh`**: Execute advanced MongoDB commands directly from Visual Studio Code.
+> [!Note] 
+>The MongoDB shell (`mongosh`) is not included with the extension. It must be installed separately and configured manually.
 
 ## Cluster Management at Your Fingertips
 Stay on top of your resources:
