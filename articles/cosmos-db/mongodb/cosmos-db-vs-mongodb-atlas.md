@@ -33,7 +33,7 @@ ms.date: 02/27/2024
 | Multi-region writes (also known as multi-master) | ​​Yes. With multi-region writes, customers can update any document in any region, enabling 99.999% availability SLA  | ​​​Yes. With multi-region zones, customers can configure different write regions per shard. Data within a single shard is writable in a single region.​​  |
 | Limitless scale | ​​Azure Cosmos DB provides ability to scale RUs up to and beyond a billion requests per second, with unlimited storage, fully managed, as a service​. ​​vCore-based Azure Cosmos DB for MongoDB deployments support scaling through sharding | ​​​​MongoDB Atlas deployments support scaling through sharding​. |
 | Independent scaling for throughput and storage | Yes, with RU-based Azure Cosmos DB for MongoDB | No |
-| Vector Search for AI applications | Yes, with [vCore-based Azure Cosmos DB for MongoDB](./vcore/vector-search.md) | Yes, with MongoDB Atlas dedicated instances |
+| Vector Search for AI applications | Yes, with [vCore-based Azure Cosmos DB for MongoDB](./vcore/vector-search.md). You can seamlessly combine geospatial filtering and/ or text filtering with your vector search, enhancing the efficiency of your vector search queries. | Yes, with MongoDB Atlas dedicated instances |
 | Integrated text search, geospatial processing | Yes | Yes |
 | Free tier | [1,000 request units (RUs) and 25 GB storage forever](../try-free.md). Prevents you from exceeding limits if you want. vCore-based Azure Cosmos DB for MongoDB offers Free Tier with 32GB storage forever. | Yes, with 512 MB storage |
 | Live migration | Yes | Yes |

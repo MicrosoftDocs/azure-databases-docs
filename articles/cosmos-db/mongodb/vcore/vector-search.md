@@ -635,7 +635,7 @@ Use LangChain and Azure Cosmos DB for MongoDB (vCore) to orchestrate Semantic Ca
 ## Features and limitations
 
 - Supported distance metrics: L2 (Euclidean), inner product, and cosine.
-- Supported indexing methods: IVFFLAT (GA), HNSW (GA), and DiskANN (Preview)
+- Supported indexing methods: IVFFLAT, HNSW, and DiskANN (Preview)
 - Indexing vectors up to 2,000 dimensions in size.
 - Indexing applies to only one vector per path.
 - Only one index can be created per vector path.
