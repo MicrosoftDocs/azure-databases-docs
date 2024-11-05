@@ -114,7 +114,7 @@ Before you begin, ensure you have the following:
 
 ## Connecting to a MongoDB workload
 
-## [Connecting to Azure Cosmos DB for MongoDB (vCore) account](#tab/CBDMongovCore)
+## [Connecting to Azure Cosmos DB for MongoDB (vCore) cluster](#tab/CBDMongovCore)
 
 1. In the **Azure Databases** extension, expand the **Azure Resources** section.
 1. Locate **Subscription** you have your MongoDB workload. Under the desired subscription, you will notice **Azure Cosmos DB for MongoDB (vCore)** branch. Expand the branch to view your clusters and databases.
