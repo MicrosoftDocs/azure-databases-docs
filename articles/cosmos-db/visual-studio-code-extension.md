@@ -48,30 +48,30 @@ The following steps will use the Query Editor to execute a query and view the re
 
 1. In the menu for your collection, right-click on the collection to open the Query Editor in Preview.
 
-     :::image type="content" source="/media/dev-tooling/VS-code/open-query-editor.png" lightbox="media/dev-tooling/VS-code/open-query-editor.png" alt-text="Screenshot of the query editor in VS Code.":::
+     :::image type="content" source="media/dev-tooling/VS-code/open-query-editor.png" lightbox="media/dev-tooling/VS-code/open-query-editor.png" alt-text="Screenshot of the query editor in VS Code.":::
 
 2. Run the query provided in the query editor to display your data in **Table View**:
 
-    :::image type="content" source="/media/dev-tooling/VS-code/view-query-editor-results.png" lightbox="media/dev-tooling/VS-code/view-query-editor-results.png" alt-text="Screenshot of the query editor results in VS Code.":::
+    :::image type="content" source="media/dev-tooling/VS-code/view-query-editor-results.png" lightbox="media/dev-tooling/VS-code/view-query-editor-results.png" alt-text="Screenshot of the query editor results in VS Code.":::
 
 3. Explore your data in other supported views:
 
 - **JSON View**: See the raw data structure.
-    :::image type="content" source="/media/dev-tooling/VS-code/view-json-view.png" lightbox="media/dev-tooling/VS-code/view-json-views.png" alt-text="Screenshot of the query editor results in json view.":::
+    :::image type="content" source="media/dev-tooling/VS-code/view-json-view.png" lightbox="media/dev-tooling/VS-code/view-json-views.png" alt-text="Screenshot of the query editor results in json view.":::
 - **Tree View**: Navigate nested data with ease.
-    :::image type="content" source="/media/dev-tooling/VS-code/view-tree-view.png" lightbox="media/dev-tooling/VS-code/view-tree-view.png" alt-text="Screenshot of the query editor results in tree view.":::
+    :::image type="content" source="media/dev-tooling/VS-code/view-tree-view.png" lightbox="media/dev-tooling/VS-code/view-tree-view.png" alt-text="Screenshot of the query editor results in tree view.":::
 
 
 ## View query and index metrics
 Within the query editor, view additional query and index metrics to better help optimize your query performance.
 
 1. Select the **Stats** tab next to the  query **Results**.
-    :::image type="content" source="/media/dev-tooling/VS-code/view-query-stats.png" lightbox="media/dev-tooling/VS-code/view-query-stats.png" alt-text="Screenshot of the query stats in VS Code.":::
+    :::image type="content" source="media/dev-tooling/VS-code/view-query-stats.png" lightbox="media/dev-tooling/VS-code/view-query-stats.png" alt-text="Screenshot of the query stats in VS Code.":::
 
-2. For more information on the metric definitions view the [query metrics documentation](./nosql/query-metrics).
+2. For more information on the metric definitions view the [query metrics documentation](./nosql/query-metrics.md).
 
 
-## Insert, Edit, and Delete documents
+## Insert, Edit and Delete documents
 - **Real-time document editing**: Add, view, edit, and delete documents instantly, with changes reflected in real-time.
 - **Import from JSON**: Load your data quickly from JSON files.
 - **Export Data**: Save entire collections or query results as JSON for backup or sharing.
@@ -85,9 +85,13 @@ Move data in and out seamlessly:
 
 
 ## Next steps
-In this tutorial, you've learned how to query data in VS Code, export query results, view query and index metrics for tuning query performance and displaying data in the multiple supported views. You can now use the Azure Databases VS Code Extension to review real data in your database.
+In this tutorial, you've learned how to query data in VS Code, export query results, view query and index metrics for tuning query performance and display data in the multiple supported views. You can now use the Azure Databases VS Code Extension to review real data in your database.
 
-
+- [Get started with the API for NoSQL](nosql/quickstart-dotnet.md)
+- [Node.js Quickstart](quickstart-nodejs.md)
+- [Python Quickstart](quickstart-python.md)
+- [Java Quickstart](quickstart-java.md)
+- [Go Quickstart](quickstart-go.md)
 
 ::: zone-end
 
@@ -115,19 +119,11 @@ Before you begin, ensure you have the following:
 
 ## [Connecting to a vCore-based Azure Cosmos DB for MongoDB Cluster](#tab/CBDMongovCore)
 
-### Explore Your Resources
-
 1. In the **Azure Databases** extension, expand the **Azure Resources** section.
-2. Locate **Subscription** you have your MongoDB workload. Under the desired subscription, you will notice **Azure Cosmos DB for MongoDB (vCore)** branch. Expand the branch to view your clusters and databases.
-
-### Select and Access Your Cluster
-
+1. Locate **Subscription** you have your MongoDB workload. Under the desired subscription, you will notice **Azure Cosmos DB for MongoDB (vCore)** branch. Expand the branch to view your clusters and databases.
 1. Choose your Azure Cosmos DB for MongoDB (vCore) cluster from the expanded list.
-
-### Authenticate with Your Admin Password
-
 1. When prompted, enter the admin password for your cluster.
-2. Once authenticated, you’ll gain access to your cluster. 
+1. Once authenticated, you’ll gain access to your cluster. 
 
 > [!NOTE]
 > Your password is only used for authentication and is not stored.
@@ -137,7 +133,7 @@ Before you begin, ensure you have the following:
 
 :::image type="content" source="./mongodb/vcore/media/quickstart-portal/networking-settings-at-provisioning.png" alt-text="Screenshot of networking and firewall options for a cluster.":::
 
-## [Connecting to a MongoDB Cluster](#tab/MongoDB)
+## [Connecting to any MongoDB Cluster](#tab/MongoDB)
 
 1. In the **Workspace** panel, expand the **MongoDB accounts** section.
 2. Here, you can view all your MongoDB accounts. To connect to a new MongoDB account using a connection string, click **New Connection** and enter the connection string when prompted. 
@@ -160,8 +156,8 @@ Manage your databases effortlessly:
 - **Import from JSON**: Load your data quickly from JSON files.
 - **Export Data**: Save entire collections or query results as JSON for backup or sharing.
 
-    > [!TIP]
-    > If the database does not appear in the list, select **Refresh**.
+> [!TIP]
+> If the database does not appear in the list, select **Refresh**.
 
 ## Powerful Query Tools
 Run and refine your queries with ease:
@@ -178,8 +174,8 @@ Explore your data in multiple ways:
 Need the command line? You’re covered:
 - **Launch `mongosh`**: Run advanced commands directly from VS Code.
 
-    > [!NOTE]
-    > We dont ship Mongo shell with the extension, you would have to install `mongosh` and sync it manually. 
+> [!NOTE]
+> We dont ship Mongo shell with the extension, you would have to install `mongosh` and sync it manually. 
 
 ## Cluster Management at Your Fingertips
 Stay on top of your resources:
