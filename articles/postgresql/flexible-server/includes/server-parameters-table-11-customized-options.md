@@ -14,7 +14,7 @@ ms.topic: include
 | Category       | Customized Options |
 | Description    | Use EXPLAIN ANALYZE for plan logging.                                                                                                                                                       |
 | Data type      | boolean     |
-| Default value  | `off`                        |
+| Default value  | `off`          |
 | Allowed values | `on,off`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | Parameter type | dynamic        |
 | Documentation  | [auto_explain.log_analyze](https://www.postgresql.org/docs/11/auto-explain.html#id-1.11.7.13.5.3.2.1.3)           |
@@ -31,7 +31,7 @@ ms.topic: include
 | Category       | Customized Options |
 | Description    | Log buffers usage.                                                                                                                                                                          |
 | Data type      | boolean     |
-| Default value  | `off`                        |
+| Default value  | `off`          |
 | Allowed values | `on,off`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | Parameter type | dynamic        |
 | Documentation  | [auto_explain.log_buffers](https://www.postgresql.org/docs/11/auto-explain.html#id-1.11.7.13.5.3.3.1.3)           |
@@ -82,7 +82,7 @@ ms.topic: include
 | Category       | Customized Options |
 | Description    | Log nested statements.                                                                                                                                                                      |
 | Data type      | boolean     |
-| Default value  | `off`                        |
+| Default value  | `off`          |
 | Allowed values | `on,off`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | Parameter type | dynamic        |
 | Documentation  | [auto_explain.log_nested_statements](https://www.postgresql.org/docs/11/auto-explain.html#id-1.11.7.13.5.3.8.1.3) |
@@ -116,7 +116,7 @@ ms.topic: include
 | Category       | Customized Options |
 | Description    | Include trigger statistics in plans. This has no effect unless log_analyze is also set.                                                                                                     |
 | Data type      | boolean     |
-| Default value  | `off`                        |
+| Default value  | `off`          |
 | Allowed values | `on,off`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | Parameter type | dynamic        |
 | Documentation  | [auto_explain.log_triggers](https://www.postgresql.org/docs/11/auto-explain.html#id-1.11.7.13.5.3.5.1.3)          |
@@ -133,7 +133,7 @@ ms.topic: include
 | Category       | Customized Options |
 | Description    | Use EXPLAIN VERBOSE for plan logging.                                                                                                                                                       |
 | Data type      | boolean     |
-| Default value  | `off`                        |
+| Default value  | `off`          |
 | Allowed values | `on,off`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | Parameter type | dynamic        |
 | Documentation  | [auto_explain.log_verbose](https://www.postgresql.org/docs/11/auto-explain.html#id-1.11.7.13.5.3.6.1.3)           |
@@ -184,7 +184,7 @@ ms.topic: include
 | Category       | Customized Options |
 | Description    | Specifies if hostname is allowed in the username for Azure Database for PostgreSQL Flexible Server.                                                                                         |
 | Data type      | boolean     |
-| Default value  | `off`                        |
+| Default value  | `off`          |
 | Allowed values | `off`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | Parameter type | read-only      |
 | Documentation  |                                                                                                                   |
@@ -201,7 +201,7 @@ ms.topic: include
 | Category       | Customized Options |
 | Description    | Create temp tablespace on ephemeral disk.                                                                                                                                                   |
 | Data type      | boolean     |
-| Default value  | `off`                        |
+| Default value  | `off`          |
 | Allowed values | `on,off`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | Parameter type | dynamic        |
 | Documentation  |                                                                                                                   |
@@ -235,7 +235,7 @@ ms.topic: include
 | Category       | Customized Options |
 | Description    | Specifies if this is a server created for migrating from Azure Database for PostgreSQL Single Server to Flexible Server.                                                                    |
 | Data type      | boolean     |
-| Default value  | `off`                        |
+| Default value  | `off`          |
 | Allowed values | `off`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | Parameter type | read-only      |
 | Documentation  |                                                                                                                   |
@@ -269,7 +269,7 @@ ms.topic: include
 | Category       | Customized Options |
 | Description    | Enables temporary connection throttling per IP for too many login failures.                                                                                                                 |
 | Data type      | boolean     |
-| Default value  | `off`                        |
+| Default value  | `off`          |
 | Allowed values | `on,off`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | Parameter type | dynamic        |
 | Documentation  |                                                                                                                   |
@@ -439,7 +439,7 @@ ms.topic: include
 | Category       | Customized Options |
 | Description    | Enables or disables server logs functionality.                                                                                                                                              |
 | Data type      | boolean     |
-| Default value  | `off`                        |
+| Default value  | `off`          |
 | Allowed values | `on,off`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | Parameter type | dynamic        |
 | Documentation  | [logfiles.download_enable](https://go.microsoft.com/fwlink/?linkid=2274270)                                       |
@@ -507,7 +507,7 @@ ms.topic: include
 | Category       | Customized Options |
 | Description    | Specifies whether audit messages should be visible to client.                                                                                                                               |
 | Data type      | boolean     |
-| Default value  | `off`                        |
+| Default value  | `off`          |
 | Allowed values | `on,off`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | Parameter type | dynamic        |
 | Documentation  | [pgaudit.log_client](https://github.com/pgaudit/pgaudit/blob/master/README.md)                                    |
@@ -541,7 +541,7 @@ ms.topic: include
 | Category       | Customized Options |
 | Description    | Specifies that audit logging should include the parameters that were passed with the statement.                                                                                             |
 | Data type      | boolean     |
-| Default value  | `off`                        |
+| Default value  | `off`          |
 | Allowed values | `on,off`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | Parameter type | dynamic        |
 | Documentation  | [pgaudit.log_parameter](https://github.com/pgaudit/pgaudit/blob/master/README.md)                                 |
@@ -558,7 +558,7 @@ ms.topic: include
 | Category       | Customized Options |
 | Description    | Specifies whether session audit logging should create a separate log entry for each relation referenced in a SELECT or DML statement.                                                       |
 | Data type      | boolean     |
-| Default value  | `off`                        |
+| Default value  | `off`          |
 | Allowed values | `on,off`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | Parameter type | dynamic        |
 | Documentation  | [pgaudit.log_relation](https://github.com/pgaudit/pgaudit/blob/master/README.md)                                  |
@@ -575,7 +575,7 @@ ms.topic: include
 | Category       | Customized Options |
 | Description    | Specifies whether logging will include the statement text and parameters with the first log entry for a statement/substatement combination or with every entry.                             |
 | Data type      | boolean     |
-| Default value  | `off`                        |
+| Default value  | `off`          |
 | Allowed values | `on,off`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | Parameter type | dynamic        |
 | Documentation  | [pgaudit.log_statement_once](https://github.com/pgaudit/pgaudit/blob/master/README.md)                            |
@@ -660,7 +660,7 @@ ms.topic: include
 | Category       | Customized Options |
 | Description    | Tells PGLogical to use SPI interface to form actual SQL (INSERT, UPDATE, DELETE) statements to apply incoming changes instead of using internal low level interface.                        |
 | Data type      | boolean     |
-| Default value  | `off`                        |
+| Default value  | `off`          |
 | Allowed values | `on,off`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | Parameter type | dynamic        |
 | Documentation  | [pglogical.use_spi](https://github.com/ArmMbedCloud/pglogical)                                                    |
@@ -745,7 +745,7 @@ ms.topic: include
 | Category       | Customized Options |
 | Description    | Same purpose as the p_analyze argument to run_maintenance().                                                                                                                                |
 | Data type      | boolean     |
-| Default value  | `off`                        |
+| Default value  | `off`          |
 | Allowed values | `on,off`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | Parameter type | dynamic        |
 | Documentation  | [pg_partman_bgw.analyze](https://github.com/pgpartman/pg_partman)                                                 |
@@ -949,7 +949,7 @@ ms.topic: include
 | Category       | Customized Options |
 | Description    | Turns saving query plans on or off for pg_qs                                                                                                                                                |
 | Data type      | boolean     |
-| Default value  | `off`                        |
+| Default value  | `off`          |
 | Allowed values | `on,off`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | Parameter type | dynamic        |
 | Documentation  | [pg_qs.store_query_plans](https://go.microsoft.com/fwlink/?linkid=2274607)                                        |
