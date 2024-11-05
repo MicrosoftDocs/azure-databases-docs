@@ -130,7 +130,6 @@ Before you begin, ensure you have the following:
     > [!NOTE]
     > Your password is only used for authentication and is not stored.
 
----
 
 ## [Connecting to an External MongoDB Cluster](#tab/MongoDB)
 
