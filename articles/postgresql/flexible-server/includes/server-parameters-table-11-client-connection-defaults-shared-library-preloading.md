@@ -31,7 +31,7 @@ ms.topic: include
 | Category       | Client Connection Defaults / Shared Library Preloading |
 | Description    | Lists unprivileged shared libraries to preload into each backend. |
 | Data type      | string    |
-| Default value  |                              |
+| Default value  |                |
 | Allowed values |                                                                                                                                                           |
 | Parameter type | read-only      |
 | Documentation  | [local_preload_libraries](https://www.postgresql.org/docs/11/runtime-config-client.html#GUC-LOCAL-PRELOAD-LIBRARIES)     |
@@ -48,7 +48,7 @@ ms.topic: include
 | Category       | Client Connection Defaults / Shared Library Preloading |
 | Description    | Lists shared libraries to preload into each backend.              |
 | Data type      | set       |
-| Default value  |                              |
+| Default value  |                |
 | Allowed values | `login_hook`                                                                                                                                              |
 | Parameter type | dynamic        |
 | Documentation  | [session_preload_libraries](https://www.postgresql.org/docs/11/runtime-config-client.html#GUC-SESSION-PRELOAD-LIBRARIES) |
