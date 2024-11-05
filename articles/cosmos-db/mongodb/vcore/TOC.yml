@@ -50,6 +50,8 @@
       href: indexing.md
     - name: Change Stream
       href: change-streams.md
+    - name: Data api
+      href: data-api.md
     - name: Reliability
       href: /azure/reliability/reliability-cosmos-mongodb?toc=/azure/cosmos-db/mongodb/vcore/toc.json
     - name: Scalability
