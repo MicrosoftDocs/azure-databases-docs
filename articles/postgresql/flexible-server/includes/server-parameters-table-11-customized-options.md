@@ -1051,7 +1051,7 @@ ms.topic: include
 | Category       | Customized Options |
 | Description    | Controls postgis GDAL enabled driver settings.                                                                                                                                              |
 | Data type      | enumeration |
-| Default value  | `DISABLE_ALL`                |
+| Default value  | `DISABLE_ALL`  |
 | Allowed values | `DISABLE_ALL,ENABLE_ALL`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | Parameter type | dynamic        |
 | Documentation  | [postgis.gdal_enabled_drivers](https://postgis.net/docs/postgis_gdal_enabled_drivers.html)                        |

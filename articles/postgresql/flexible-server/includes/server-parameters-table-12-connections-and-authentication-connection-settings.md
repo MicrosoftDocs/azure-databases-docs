@@ -15,7 +15,7 @@ ms.topic: include
 | Description    | Enables advertising the server via Bonjour.                                          |
 | Data type      | boolean   |
 | Default value  | `off`                                                                      |
-| Allowed values | `off`                      |
+| Allowed values | `off`          |
 | Parameter type | read-only      |
 | Documentation  | [bonjour](https://www.postgresql.org/docs/12/runtime-config-connection.html#GUC-BONJOUR)                                               |
 
@@ -49,7 +49,7 @@ ms.topic: include
 | Description    | Sets the host name or IP address(es) to listen to.                                   |
 | Data type      | string    |
 | Default value  | `*`                                                                        |
-| Allowed values | `*`                        |
+| Allowed values | `*`            |
 | Parameter type | read-only      |
 | Documentation  | [listen_addresses](https://www.postgresql.org/docs/12/runtime-config-connection.html#GUC-LISTEN-ADDRESSES)                             |
 
@@ -66,7 +66,7 @@ ms.topic: include
 | Description    | Sets the maximum number of concurrent connections to the database server.            |
 | Data type      | integer   |
 | Default value  | Depends on resources (vCores, RAM, or disk space) allocated to the server. |
-| Allowed values | `25-5000`                  |
+| Allowed values | `25-5000`      |
 | Parameter type | static         |
 | Documentation  | [max_connections](https://www.postgresql.org/docs/12/runtime-config-connection.html#GUC-MAX-CONNECTIONS)                               |
 
@@ -83,7 +83,7 @@ ms.topic: include
 | Description    | Sets the TCP port the server listens on.                                             |
 | Data type      | integer   |
 | Default value  | `5432`                                                                     |
-| Allowed values | `5432`                     |
+| Allowed values | `5432`         |
 | Parameter type | read-only      |
 | Documentation  | [port](https://www.postgresql.org/docs/12/runtime-config-connection.html#GUC-PORT)                                                     |
 
@@ -100,7 +100,7 @@ ms.topic: include
 | Description    | Sets the number of connections slots reserved for replication users and super users. |
 | Data type      | integer   |
 | Default value  | `5`                                                                        |
-| Allowed values | `5`                        |
+| Allowed values | `5`            |
 | Parameter type | read-only      |
 | Documentation  |                                                                                                                                        |
 
@@ -117,7 +117,7 @@ ms.topic: include
 | Description    | Sets the number of connection slots reserved for superusers.                         |
 | Data type      | integer   |
 | Default value  | `10`                                                                       |
-| Allowed values | `10`                       |
+| Allowed values | `10`           |
 | Parameter type | read-only      |
 | Documentation  | [superuser_reserved_connections](https://www.postgresql.org/docs/12/runtime-config-connection.html#GUC-SUPERUSER-RESERVED-CONNECTIONS) |
 
