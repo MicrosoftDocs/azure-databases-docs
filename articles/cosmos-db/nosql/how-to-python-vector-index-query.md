@@ -14,16 +14,16 @@ ms.custom: query-reference, devx-track-python, build-2024
 # Index and query vectors in Azure Cosmos DB for NoSQL in Python. 
 
 [!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
-Vector search in Azure Cosmos DB for NoSQL is currently a preview feature. You are required to register for the preview before use. This article covers the following steps: 
+Before you use vector indexing and search, you must first enable the feature. This article covers the following steps:
 
-1. Registering for the preview of Vector Search in Azure Cosmos DB for NoSQL 
-2. Setting up the Azure Cosmos DB container for vector search 
-3. Authoring vector embedding policy 
-4. Adding vector indexes to the container indexing policy 
-5. Creating a container with vector indexes and vector embedding policy 
-6. Performing a vector search on the stored data. 
-7. This guide walks through the process of creating vector data, indexing the data, and then querying the data in a container.
+1. Enabling the Vector Search in Azure Cosmos DB for NoSQL feature.
+2. Setting up the Azure Cosmos DB container for vector search
+3. Authoring vector embedding policy
+4. Adding vector indexes to the container indexing policy
+5. Creating a container with vector indexes and vector embedding policy
+6. Performing a vector search on the stored data
 
+This guide walks through the process of creating vector data, indexing the data, and then querying the data in a container.
 
 ## Prerequisites
 - An existing Azure Cosmos DB for NoSQL account.
@@ -31,21 +31,28 @@ Vector search in Azure Cosmos DB for NoSQL is currently a preview feature. You a
   - If you have an existing Azure subscription, [create a new Azure Cosmos DB for NoSQL account](how-to-create-account.md).
 - Latest version of the Azure Cosmos DB [Python](sdk-python.md) SDK.
 
-## Registering for the preview
-Vector search for Azure Cosmos DB for NoSQL requires preview feature registration. Follow the below steps to register: 
+## Enable the feature
+Vector search for Azure Cosmos DB for NoSQL requires enabling the feature by completing the following steps:
 
 1. Navigate to your Azure Cosmos DB for NoSQL resource page.
-   
 2. Select the "Features" pane under the "Settings" menu item.
+3. Select for "Vector Search in Azure Cosmos DB for NoSQL."
+4. Read the description of the feature to confirm you want to enable it. 
+5. Select "Enable" to turn on vector search in Azure Cosmos DB for NoSQL.
 
-3. Select for “Vector Search in Azure Cosmos DB for NoSQL”.
+> [!TIP]
+> Alternatively, use the Azure CLI to update the capabilities of your account to support NoSQL vector search.
+>
+> ```azurecli
+> az cosmosdb update \
+>      --resource-group <resource-group-name> \
+>      --name <account-name> \
+>      --capabilities EnableNoSQLVectorSearch
+> ```
 
-5. Read the description of the feature to confirm you want to enroll in the preview.
 
-6. Select "Enable" to enroll in the preview. 
-
-> [!NOTE]  
-> The registration request will be autoapproved, however it may take several minutes to take effect.  
+> [!NOTE]
+> The registration request will be autoapproved, however it may take 15 minutes to take effect.
 
 ## Understanding the steps involved in vector search 
 

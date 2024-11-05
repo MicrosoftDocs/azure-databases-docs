@@ -116,7 +116,7 @@ Here are some rules for included and excluded paths precedence in Azure Cosmos D
 ## Vector indexes
 
 > [!NOTE]
->  You must enroll in the [Azure Cosmos DB NoSQL Vector Index preview feature](nosql/vector-search.md#enroll-in-the-vector-search-preview-feature) to specify a vector indexing policy.> 
+>  You must enable the [Azure Cosmos DB NoSQL Vector Search feature](nosql/vector-search.md#enroll-in-the-vector-search-feature) to specify a vector indexing policy.
 
 **Vector** indexes increase the efficiency when performing vector searches using the `VectorDistance` system function. Vectors searches have lower latency, higher throughput, and less RU consumption when applying a vector index.  You can specify the following types of vector index policies:
 
@@ -132,6 +132,9 @@ A few points to note:
   - The `quantizedFlat` index stores quantized (compressed) vectors on the index. Vector searches with `quantizedFlat` index are also brute-force searches, however their accuracy might be slightly less than 100% since the vectors are quantized before adding to the index. However, vector searches with `quantized flat` should have lower latency, higher throughput, and lower RU cost than vector searches on a `flat` index. This is a good option for scenarios where you're using query filters to narrow down the vector search to a relatively small set of vectors, and high accuracy is required.
 
   - The `diskANN` index is a separate index defined specifically for vectors applying [DiskANN](https://www.microsoft.com/research/publication/diskann-fast-accurate-billion-point-nearest-neighbor-search-on-a-single-node/), a suite of high performance vector indexing algorithms developed by Microsoft Research. DiskANN indexes can offer some of the lowest latency, highest throughput, and lowest RU cost queries, while still maintaining high accuracy. However, since DiskANN is an approximate nearest neighbors (ANN) index, the accuracy might be lower than `quantizedFlat` or `flat`.
+    - `diskANN` also can take two optional index build parameters that can be used to tune the accuracy vs latency trade off that applies to every Approximate Nearest Neighbors vector index.
+      - `quantizationByteSize`: Sets the size (in bytes) for product quantization. Min=1, Default=dynamic (system decides), Max=512. Setting this larger may result in higher accuracy vector searches at expense of higher RU cost and higher latency. 
+      - `indexingSearchListSize`: Sets how many vectors to search over during index build construction. Min=10, Default=100, Max=500. Setting this larger may result in higher accuracy vector searches at the expense of longer index build times and higher vector ingest latencies. 
 
 Here's an example of an indexing policy with a vector index:
 
@@ -163,10 +166,13 @@ Here's an example of an indexing policy with a vector index:
 
 > [!IMPORTANT]
 > A vector indexing policy must be on the path defined in the container's vector policy. [Learn more about container vector policies](nosql/vector-search.md#container-vector-policies).
-> Vector indexes must also be defined at the time of Container creation and cannot be modified once created. In a future release, vector indexes will be modifiable.
 
 >[!IMPORTANT]
 > The vector path added to the "excludedPaths" section of the indexing policy to ensure optimized performance for insertion. Not adding the vector path to "excludedPaths" will result in higher RU charge and latency for vector insertions.
+
+### The DiskANN vector index
+
+DiskANN enabled fast and cost-efficient vector search at any scale. Defining a DiskANN vector index is easy:
 
 ## Spatial indexes
 
@@ -235,9 +241,6 @@ These are a few examples of *invalid* array tuple paths
     - Tuples end with an `?` 
 - /city/[]/events/[]/{name, category}/?`
     - The path prefix as 2 array wildcards 
-
-
-
 
 ## Composite indexes
 

@@ -190,7 +190,7 @@ To learn how to configure vector indexes, see [vector indexing policy examples](
 - `ORDER BY` vector search queries:
 
     ```sql
-    SELECT c.name
+    SELECT TOP 10 *
     FROM c
     ORDER BY VectorDistance(c.vector1, c.vector2)
     ```
@@ -199,23 +199,18 @@ To learn how to configure vector indexes, see [vector indexing policy examples](
 -  Projection of the similarity score in vector search queries:
    
     ```sql
-    SELECT c.name, VectorDistance(c.vector1, c.vector2) AS SimilarityScore
+    SELECT TOP 10 c.name, VectorDistance(c.vector1, c.vector2) AS SimilarityScore
     FROM c
     ORDER BY VectorDistance(c.vector1, c.vector2)
     ```
 
 - Range filters on the similarity score.
     ```sql
-    SELECT c.name
+    SELECT TOP 10 *
     FROM c
     WHERE VectorDistance(c.vector1, c.vector2) > 0.8
     ORDER BY VectorDistance(c.vector1, c.vector2)
     ```
-
-  > [!IMPORTANT]
-  > Vector indexes must be defined at the time of container creation and cannot be modified once created. In a future release, vector indexes will be modifiable.
-
-
 
 ## Index usage
 
