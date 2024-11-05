@@ -138,12 +138,17 @@ Azure Cosmos DB for MongoDB and any MongoDB clusters you add are now convenientl
 
 :::image type="content" source="./media/dev-tooling/VS-code/vCore-vs-code-screenshot.png" alt-text="Screenshot of VS-code extension of a CosmosDB for MongoDB (vCore) cluster":::
 
+---
+
 ## Features Supported
 
 ### Intuitive Data Management
 Manage your databases effortlessly:
 - **Create and Drop Databases/Collections**: No need to switch tools—create or delete databases and collections right in VS Code.
 - **Real-time Document Editing**: Add, view, edit, and delete documents instantly, with changes reflected in real-time.
+
+    > [!TIP]
+    > If the database does not appear in the list, select **Refresh**.
 
 ### Powerful Query Tools
 Run and refine your queries with ease:
