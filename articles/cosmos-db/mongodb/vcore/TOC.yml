@@ -120,6 +120,8 @@
         href: how-to-monitor-diagnostics-logs.md
     - name: Use Azure Private Link
       href: how-to-private-link.md
+    - name: Create secondary users
+      href: secondary-users.md
 - name: Reference
   items:
     - name: Commands
