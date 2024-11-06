@@ -154,20 +154,20 @@ Easily manage your databases within Visual Studio Code:
         1. Confirm to start the import process.
 
 - **Export Data**: Save collections or query results as JSON for backup or sharing.
-    - **Initiate Export**  
+    - **Initiate Export**:  
         - **Option 1**  
             1. Right-click on the collection name in the resource view and select **Export Documents from Collection** to export the entire collection.
         - **Option 2**  
             1. Open the "Collection View" by clicking on the **Documents** entry of your collection, then click the **Export** button.
             1. Choose to export either the entire collection or the results of the current query.
-    - **Specify Destination File**  
+    - **Specify Destination File**:  
         1. Enter the name and location for the destination *.json file.
         1. Confirm export to start saving the data.
 
 - **Real-Time Document Editing**: Instantly add, view, edit, and delete documents with real-time updates.
-    - **Open Document Editing**  
+    - **Open Document Editing**:  
         - Access document editing options directly within the "Collection View." These controls are conveniently located above the data view for easy access.
-    - **Available Actions**  
+    - **Available Actions**:  
         - **Add**: Create new documents within the collection.
         - **View**: View the content of the selected document.
         - **Edit**: Edit the content of selected documents.
@@ -205,7 +205,7 @@ Command-line functionality is available:
 > [!Note] 
 >The MongoDB shell (`mongosh`) is not included with the extension. It must be installed separately and configured manually.
 
-## Cluster Management at Your Fingertips
+## Cluster Management
 Stay on top of your resources:
 - **View Cluster Details**: Check your cluster’s tier, server version, and resource usage.
 
