@@ -69,7 +69,7 @@ The first step to get started with Always Encrypted is to create your CMKs in Az
 
 1. Create a new Azure Key Vault instance or browse to an existing one.
 1. Create a new key in the **Keys** section.
-1. Once the key is created, browse to its current version, and copy its full key identifier:<br>`https://<my-key-vault>.vault.azure.net/keys/<key>/<version>`. If you omit the key version at the end of the key identifier, the latest version of the key is used.
+1. Once the key is created, browse to its current version, and copy its full key identifier:<br>`https://<my-key-vault>.vault.azure.net/keys/<key>/<version>`.
 
 Next, you need to configure how the Azure Cosmos DB SDK will access your Azure Key Vault instance. This authentication is done through a Microsoft Entra identity. Most likely, you'll use the identity of a Microsoft Entra application or a [managed identity](/azure/active-directory/managed-identities-azure-resources/overview) as the proxy between your client code and your Azure Key Vault instance, although any kind of identity could be used. Use the following steps to use your Microsoft Entra identity as the proxy:
 
