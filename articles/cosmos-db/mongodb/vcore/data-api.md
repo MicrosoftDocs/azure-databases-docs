@@ -1,5 +1,5 @@
 ---
-  title: Data api for Azure Cosmos DB for MongoDB vCore
+  title: Data API for Azure Cosmos DB for MongoDB vCore
   titleSuffix: Azure Cosmos DB for MongoDB vCore
   description: Explains how to interact with your MongoDB vCore data over HTTPS with simple RESTful endpoints
   author: sajeetharan
@@ -10,19 +10,19 @@
   ms.date: 11/03/2024
 ---
 
-# Data api for Azure Cosmos DB for MongoDB vCore (Preview)
+# Data API for Azure Cosmos DB for MongoDB vCore (Preview)
 
-The Data api for Azure Cosmos DB for MongoDB vCore is a https interface that allows developers to access and interact with their MongoDB vCore data without needing a database driver. It simplifies data operations by enabling CRUD and aggregation operations through HTTP requests. This API is ideal for web applications, providing secure and scalable access to MongoDB vCore databases.  
+The Data API for Azure Cosmos DB for MongoDB vCore is an https interface that allows developers to access and interact with their MongoDB vCore data without needing a database driver. It simplifies data operations by enabling CRUD and aggregation operations through HTTP requests. This API is ideal for web applications, providing secure and scalable access to MongoDB vCore databases.  
  
 
-## Enabling Data api on MongoDB vCore
+## Enabling Data API on MongoDB vCore
 
 You can enable or disable this feature using the Azure CLI or an ARM template. Portal support will be added soon.
 
 ### Steps to Enable Data API on vCore Cluster via ARM template
 
 1. **Get Connection String**:
-   - Obtain the connection string of your vCore cluster from the Azure Portal.
+   - Obtain the connection string of your vCore cluster from the Azure portal.
 
 2. **Retrieve Authentication Token**:
    - Run the following commands in Windows PowerShell:
@@ -32,7 +32,7 @@ You can enable or disable this feature using the Azure CLI or an ARM template. P
      ```
 
 3. **Send PATCH Request**:
-   - Use the connection string from the Azure Portal and send a PATCH request with:
+   - Use the connection string from the Azure portal and send a PATCH request with:
      - **Authentication Token**: Use the token retrieved from PowerShell.
      - **Body**:
        ```json
@@ -47,7 +47,7 @@ You can enable or disable this feature using the Azure CLI or an ARM template. P
 
 4. **Verify Result**:
    - Ensure the response payload includes `"dataApi": {"mode": "Enabled"}`.
-   - If you encounter the error "Data Api is not supported on this cluster," note that only newly provisioned clusters support Data Api.
+   - If you encounter the error "Data API isn't supported on this cluster," note that only newly provisioned clusters support Data API.
 
 ## Update MongoDB vCore Cluster Configuration
 
@@ -77,23 +77,16 @@ To obtain the connection string for your MongoDB vCore cluster, follow these ste
 2. Go to **Settings** and select **Connection Strings**.
 3. Copy the **Data API endpoint** provided.
 
-## How to use Data Api
+## How to use Data API
 
-Let's explore the supported operations, how to use the Data api.
+Let's explore the supported operations, how to use the Data API.
 
 #### Aggregate
 
 Use this command to perform an aggregation operation on a collection.
 
 ```bash
-curl {cluster-name}.data.global.mongocluster.cosmos.azure.com:443/data/v1/action/aggregate \
--H "Content-Type: application/ejson" \
--H "Accept:application/ejson" \
--d '{
-      "database": "newDB",
-      "collection": "newCollection",
-      "pipeline": [{"$limit": 500}]
-    }'
+curl {cluster-name}.data.global.mongocluster.cosmos.azure.com:443/data/v1/action/aggregate -H "Content-Type: application/ejson" -H "Accept:application/ejson" -d '{"database": "newDB", "collection": "newCollection", "pipeline": [{"$limit": 500}]}'
 ```
 
 #### List Databases
@@ -101,10 +94,8 @@ curl {cluster-name}.data.global.mongocluster.cosmos.azure.com:443/data/v1/action
 List all databases in the specified MongoDB vCore cluster.
 
 ```bash
-curl {cluster-name}.data.global.mongocluster.cosmos.azure.com:443/data/v1/action/listDatabases \
--H "Content-Type: application/ejson" \
--H "Accept:application/ejson" \
--d '{}'
+curl {cluster-name}.data.global.mongocluster.cosmos.azure.com:443/data/v1/action/listDatabases -H "Content-Type: application/ejson" -H "Accept:application/ejson" -d '{}'
+
 ```
 
 #### List Collections
@@ -112,12 +103,7 @@ curl {cluster-name}.data.global.mongocluster.cosmos.azure.com:443/data/v1/action
 List all collections within a specific database.
 
 ```bash
-curl {cluster-name}.data.global.mongocluster.cosmos.azure.com:443/data/v1/action/listCollections \
--H "Content-Type: application/ejson" \
--H "Accept:application/ejson" \
--d '{
-      "database": "newDB"
-    }'
+curl {cluster-name}.data.global.mongocluster.cosmos.azure.com:443/data/v1/action/listCollections -H "Content-Type: application/ejson" -H "Accept:application/ejson" -d '{"database": "newDB"}'
 ```
 
 ### Get Schema
@@ -127,20 +113,13 @@ Retrieve the schema details of a specific database.
 
 Here's the formatted version for your .md file:
 
-markdown
-Copy code
-```curl
-curl {cluster-name}.data.global.mongocluster.cosmos.azure.com:443/data/v1/action/getSchema \
--H "Content-Type: application/ejson" \
--H "Accept:application/ejson" \
--d '{
-      "database": "newDB"
-    }'
+```bash
+curl {cluster-name}.data.global.mongocluster.cosmos.azure.com:443/data/v1/action/getSchema -H "Content-Type: application/ejson" -H "Accept:application/ejson" -d '{"database": "newDB"}'
 ```
 
 ### Limitations
 
-- Data api works on newly created MongoDB vCore cluster.
-- Data api does not support access using reusable access token.
-- Only support aggregate and few additional list control plane actions.
+- Data API works on newly created MongoDB vCore cluster.
+- Data API doesn't support access using reusable access token.
+- Only support aggregate and few other list control plane actions.
 
