@@ -7,7 +7,7 @@ ms.subservice: nosql
 ms.devlang: java
 ms.topic: reference
 ms.date: 04/06/2021
-ms.author: mjbrown
+ms.author: kuthapar
 ms.custom: devx-track-java, devx-track-extended-java
 ---
 
