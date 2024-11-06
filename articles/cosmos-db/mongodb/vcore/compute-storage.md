@@ -7,7 +7,7 @@ ms.author: nlarin
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: conceptual
-ms.date: 10/08/2024
+ms.date: 10/29/2024
 ---
 
 # Compute and storage configurations for Azure Cosmos DB for MongoDB vCore clusters
@@ -32,6 +32,7 @@ selected number of vCores.
 | M50          | 8             | 32                 |
 | M60          | 16            | 64                 |
 | M80          | 32            | 128                |
+| M200         | 64            | 256                |
 
 ## Storage in Azure Cosmos DB for MongoDB vCore
 

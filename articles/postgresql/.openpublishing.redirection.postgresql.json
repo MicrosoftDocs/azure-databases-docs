@@ -1849,6 +1849,11 @@
         "source_path_from_root": "/articles/postgresql/single-server/whats-happening-to-postgresql-single-server.md",
         "redirect_url": "/azure/postgresql/migrate/whats-happening-to-postgresql-single-server",
         "redirect_document_id": true
+    },
+    {
+        "source_path_from_root": "/articles/postgresql/flexible-server/reference-pg-azure-storage.md",
+        "redirect_url": "/azure/postgresql/flexible-server/how-to-use-pg-azure-storage",
+        "redirect_document_id": false
     }
 ]
 }
