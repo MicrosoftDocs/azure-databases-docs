@@ -4,7 +4,7 @@ description: Release notes for Azure DB for PostgreSQL - Flexible Server, includ
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 11/5/2024
+ms.date: 11/6/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: overview
@@ -18,6 +18,8 @@ ms.topic: overview
 This article highlights the latest updates and enhancements for Azure Database for PostgreSQL - Flexible Server, service including new feature releases, supported engine versions, available extensions, and other important announcements.
 
 ## Release: November 2024
+
+- General availability of [High-Availability Health Status Monitoring](./how-to-monitor-high-availability.md) for Azure Database for PostgreSQL - Flexible Server.
 - [PostgreSQL 12](./concepts-version-policy.md) will retire on November 14, 2024. Please upgrade to a supported version before retirement to ensure continued support and security.
 
 ## Release: October 2024
