@@ -12,12 +12,12 @@
 
 # Data api for Azure Cosmos DB for MongoDB vCore (Preview)
 
-The Data api for Azure Cosmos DB for MongoDB vCore is a RESTful interface that allows developers to access and interact with their MongoDB vCore data without needing a database driver. It simplifies data operations by enabling CRUD and aggregation operations through HTTP requests. This API is ideal for web applications, providing secure and scalable access to MongoDB vCore databases.  
+The Data api for Azure Cosmos DB for MongoDB vCore is a https interface that allows developers to access and interact with their MongoDB vCore data without needing a database driver. It simplifies data operations by enabling CRUD and aggregation operations through HTTP requests. This API is ideal for web applications, providing secure and scalable access to MongoDB vCore databases.  
  
 
 ## Enabling Data api on MongoDB vCore
 
-You can Enable/Disable this feature using Azure CLI or an ARM template.  
+You can enable/disable this feature using Azure CLI or an ARM template. We will be adding the support to enable/disable this feature soon.
 
 ### Steps to Enable Data API on vCore Cluster via ARM template
 
@@ -54,7 +54,7 @@ You can Enable/Disable this feature using Azure CLI or an ARM template.
 ### Request
 
 **Method:** `PATCH`  
-**Endpoint:** `https://eastus2euap.management.azure.com/subscriptions/7becce9d-b7ae-4daf-8b8b-e0544927ed88/resourceGroups/wilwangresourcegroup/providers/Microsoft.DocumentDB/mongoClusters/wilwangcluster?api-version=2024-10-01-preview`
+**Endpoint:** `https://eastus2euap.management.azure.com/subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.DocumentDB/mongoClusters/<ClusterName>?api-version=2024-10-01-preview`
 
 
 ### Request Body
@@ -62,62 +62,6 @@ You can Enable/Disable this feature using Azure CLI or an ARM template.
 ```json
 {
   "properties": {
-    "dataApi": {
-      "mode": "Enabled"
-    }
-  }
-}
-```
-### Response
-
-```
-{
-  "id": "/subscriptions/7becce9d-b7ae-4daf-8b8b-e0544927ed88/resourceGroups/wilwangresourcegroup/providers/Microsoft.DocumentDB/mongoClusters/wilwangcluster",
-  "name": "wilwangcluster",
-  "type": "Microsoft.DocumentDB/mongoClusters",
-  "tags": {},
-  "location": "eastus2",
-  "systemData": {
-    "createdAt": "2024-10-03T22:52:53.4411804Z",
-    "createdBy": "wilwang@microsoft.com",
-    "createdByType": "User",
-    "lastModifiedAt": "2024-10-18T17:46:06.0179756Z",
-    "lastModifiedBy": "wilwang@microsoft.com",
-    "lastModifiedByType": "User"
-  },
-  "properties": {
-    "provisioningState": "Succeeded",
-    "clusterStatus": "Ready",
-    "administrator": {
-      "userName": "wilwang"
-    },
-    "serverVersion": "7.0",
-    "compute": {
-      "tier": "M40"
-    },
-    "storage": {
-      "sizeGb": 128
-    },
-    "sharding": {
-      "shardCount": 1
-    },
-    "highAvailability": {
-      "targetMode": "ZoneRedundantPreferred"
-    },
-    "connectionString": "mongodb+srv://<user>:<password>@wilwangcluster.mongocluster.cosmos.azure.com/?tls=true&authMechanism=SCRAM-SHA-256&retrywrites=false&maxIdleTimeMS=120000",
-    "backup": {
-      "earliestRestoreTime": "2024-10-03T23:00:37Z"
-    },
-    "privateEndpointConnections": [],
-    "publicNetworkAccess": "Enabled",
-    "previewFeatures": [
-      "GeoReplicas"
-    ],
-    "replica": {
-      "role": "Primary",
-      "replicationState": "Active"
-    },
-    "infrastructureVersion": "2.0",
     "dataApi": {
       "mode": "Enabled"
     }
@@ -133,15 +77,9 @@ To obtain the connection string for your MongoDB vCore cluster, follow these ste
 2. Go to **Settings** and select **Connection Strings**.
 3. Copy the **Data API endpoint** provided.
 
-# How to use Data Api
+## How to use Data Api
 
-# Sample Curl Commands for Azure Cosmos DB MongoDB Cluster
 
-Run the following `curl` commands with the format:
-
-```bash
-curl <connection-string> -H "Content-Type: application/ejson" -H "Accept:application/ejson" -d '{<parameters>}'
-```
 ### Aggregate
 
 Use this command to perform an aggregation operation on a collection.
@@ -194,7 +132,7 @@ curl {cluster-name}.data.global.mongocluster.cosmos.azure.com:443/data/v1/action
     }'
 ```
 
-## Limitations
+### Limitations
 
 - Data api works on newly created MongoDB vCore cluster.
 - Data api does not support access using reusable access token.
