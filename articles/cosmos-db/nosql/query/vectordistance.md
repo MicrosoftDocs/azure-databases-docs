@@ -26,14 +26,17 @@ VectorDistance(<vector_expr_1>, <vector_expr_2>, <bool_expr>, <obj_expr>)
 
 ## Arguments
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **`vector_expr_1`** | An array of `float32` or smaller. |
 | **`vector_expr_2`** | An array of `float32` or smaller. |
 | **`bool_expr`** | An optional boolean specifying how the computed value is used in an ORDER BY expression. If `true`, then brute force is used. A value of `false` uses any index defined on the vector property, if it exists. Default value is `false`. |
 |**`obj_expr`**| An optional JSON formatted object literal used to specify options for the vector distance calculation. Valid items include `distanceFunction` and `dataType`, and `searchListSizeMultiplier`. |
 
-Supported parameters for the optional `obj_expr` 
+Supported parameters for the optional `obj_expr`
+
+| Parameter | Description |
+| --- | --- | 
 | **`distanceFunction`** | The metric used to compute distance/similarity. |
 | **`dataType`** | The data type of the vectors. `float32`, `int8`, `uint8` values. Default value is `float32`. |
 | **`searchListSizeMultiplier`** | An integer specifying the size of the search list when conducting a vector search.  Increasing this may improve accuracy at the expense of RU cost and latency. Min=1, Default=5, Max=100. |
@@ -73,7 +76,7 @@ ORDER BY VectorDistance(c.vector1, <query_vector>, true, {'distanceFunction':'co
 
 - This function requires enabling the [Azure Cosmos DB NoSQL Vector Search feature](../vector-search.md#enable-the-vector-indexing-and-search-feature).
 - This function benefits from a [vector index](../../index-policy.md#vector-indexes)
-- if `false` is given as the optional `bool_expr`, then the vector index defined on the path is used, if one exists. If no index is defined on the vector path, then this function reverts to full scan and incurs higher RU charges and higher latency than if using a vector index.
+- If `false` is given as the optional `bool_expr`, then the vector index defined on the path is used, if one exists. If no index is defined on the vector path, then this function reverts to full scan and incurs higher RU charges and higher latency than if using a vector index.
 - When `VectorDistance` is used in an `ORDER BY` clause, no direction needs to be specified for the `ORDER BY` as the results are always sorted in order of most similar (first) to least similar (last) based on the similarity metric used.
 - The result is expressed as a similarity score.
 

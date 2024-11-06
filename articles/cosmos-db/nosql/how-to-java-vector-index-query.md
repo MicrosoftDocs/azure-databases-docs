@@ -1,5 +1,5 @@
 ---
-title: Index and query vector data in Java
+title: Indexing and querying vector data in Java
 titleSuffix: Azure Cosmos DB for NoSQL
 description: Add vector data Azure Cosmos DB for NoSQL and then query the data efficiently in your Java application.
 author: jcodella
@@ -15,7 +15,7 @@ ms.custom: query-reference, devx-track-java, build-2024, devx-track-extended-jav
 
 Before you use vector indexing and search, you must first enable the feature. This article covers the following steps:
 
-1. Enabling the Vector Search in Azure Cosmos DB for NoSQL feature.
+1. Enabling the Vector Search in Azure Cosmos DB for NoSQL feature
 2. Setting up the Azure Cosmos DB container for vector search
 3. Authoring vector embedding policy
 4. Adding vector indexes to the container indexing policy
@@ -50,7 +50,7 @@ Vector search for Azure Cosmos DB for NoSQL requires feature enablement. Follow 
 > ```
 
 > [!NOTE]
-> The registration request will be autoapproved, however it may take 15 minutes to take effect.
+> The registration request will be autoapproved; however, it may take 15 minutes to take effect.
 
 ## Understanding the steps involved in vector search 
 
@@ -80,7 +80,7 @@ First, create the `CosmosContainerProperties` object.
 CosmosContainerProperties collectionDefinition = new CosmosContainerProperties(UUID.randomUUID().toString(), "Partition_Key_Def");
 ```
 
-## Creating a vector embedding policy for your container.
+## Creating a vector embedding policy for your container
 Next, you need to define a container vector policy. This policy provides information that is used to inform the Azure Cosmos DB query engine how to handle vector properties in the VectorDistance system functions. This also informs the vector indexing policy of necessary information, should you choose to specify one.
 The following information is included in the contained vector policy:
 

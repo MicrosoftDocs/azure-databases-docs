@@ -1,5 +1,5 @@
 ---
-title: Index and query vector data in JavaScript
+title: Indexing and querying vector data in JavaScript
 titleSuffix: Azure Cosmos DB for NoSQL
 description: Add vector data Azure Cosmos DB for NoSQL and then query the data efficiently in your JavaScript application
 author: jcodella
@@ -17,7 +17,7 @@ ms.custom: query-reference, build-2024, devx-track-js
 
 Before you use Vector Indexing and Search, you must first enable the feature. This article covers the following steps:
 
-1. Enabling the Vector Search in Azure Cosmos DB for NoSQL feature.
+1. Enabling the Vector Search in Azure Cosmos DB for NoSQL feature
 
 2. Setting up the Azure Cosmos DB container for vector search
 
@@ -62,9 +62,8 @@ Vector search for Azure Cosmos DB for NoSQL requires enabling the feature by com
 >      --capabilities EnableNoSQLVectorSearch
 > ```
 
-
 > [!NOTE]
-> The registration request will be autoapproved, however it may take 15 minutes to take effect.
+> The registration request will be autoapproved; however, it may take 15 minutes to take effect.
 
 ## Understand the steps involved in vector search
 

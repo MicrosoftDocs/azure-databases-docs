@@ -45,7 +45,7 @@ FROM c
 WHERE FullTextContains(c.text, "keyword")
 ```
 
-This next example shows logical operators used for ensuring multiple keyword are included. 
+This next example shows logical operators used for ensuring multiple keywords are included. 
 
 ```nosql
 SELECT *

@@ -1,5 +1,5 @@
 ---
-title: Hybrid search overview
+title: Hybrid search in Azure Cosmos DB for NoSQL
 description: Hybrid search overview 
 author: jcodella
 ms.author: jacodel
@@ -9,18 +9,19 @@ ms.date: 11/04/2024
 ---
 
 # Hybrid search in Azure Cosmos DB for NoSQL (preview)
+Azure Cosmos DB for NoSQL now supports a powerful hybrid search capability that combines Vector Search with Full Text Search scoring (BM25) using the Reciprocal Rank Fusion (RRF) function.
 
 ## What is hybrid search?
 
-Azure Cosmos DB for NoSQL now supports a powerful hybrid search capability that combines Vector Search with Full Text Search scoring (BM25) using the Reciprocal Rank Fusion (RRF) function. This hybrid approach leverages the strengths of both vector-based and traditional keyword-based search methods to deliver more relevant and accurate search results. Hybrid search is easy to do in Azure Cosmos DB for NoSQL due to the ability to store both metadata and vectors within the same document. 
+ Hybrid search leverages the strengths of both vector-based and traditional keyword-based search methods to deliver more relevant and accurate search results. Hybrid search is easy to do in Azure Cosmos DB for NoSQL due to the ability to store both metadata and vectors within the same document. 
 
 Hybrid search in Azure Cosmos DB for NoSQL integrates two distinct search methodologies:
 
-1. **Vector search**: Utilizes machine learning models to understand the semantic meaning of queries and documents. This allows for more nuanced and context-aware search results, especially useful for complex queries where traditional keyword search might fall short.
-   
-2. **Full text search (BM25)**: A well-established algorithm that scores documents based on the presence and frequency of words and terms. BM25 is particularly effective for straightforward keyword searches, providing a robust baseline for search relevance.
+- **Vector search**: Utilizes machine learning models to understand the semantic meaning of queries and documents. This allows for more nuanced and context-aware search results, especially useful for complex queries where traditional keyword search might fall short.
+  
+-  **Full text search (BM25)**: A well-established algorithm that scores documents based on the presence and frequency of words and terms. BM25 is particularly effective for straightforward keyword searches, providing a robust baseline for search relevance.
 
-The results from vector search and full text search are then combined using the Reciprocal Rank Fusion (RRF) function. RRF is a rank aggregation method that merges the rankings from multiple search algorithms to produce a single, unified ranking. This ensures that the final search results benefit from the strengths of both search approaches and offers multiple benefits
+The results from vector search and full text search are then combined using the Reciprocal Rank Fusion (RRF) function. RRF is a rank aggregation method that merges the rankings from multiple search algorithms to produce a single, unified ranking. This ensures that the final search results benefit from the strengths of both search approaches and offers multiple benefits.
 
 - **Enhanced Relevance**: By combining semantic understanding with keyword matching, hybrid search delivers more relevant results for a wide range of queries.
 - **Improved Accuracy**: The RRF function ensures that the most pertinent results from both search methods are prioritized.
@@ -34,7 +35,7 @@ The results from vector search and full text search are then combined using the 
 4. Insert your data with text and vector properties.
 5. Run hybrid queries against the data.
 
-## Setup a policies and indexes for hybrid search
+## Configure policies and indexes for hybrid search
 
 ### A sample vector policy
  ```json
@@ -103,7 +104,7 @@ FROM c
 ORDER BY RANK RRF(VectorDistance(c.vector, @queryVector), FullTextScore(c.content, [@searchTerm1, @searchTerm2, ...]))
 ```
 
-Suppose you have a document that has vector embeddings stored in each document in the property `c.vector` and text data contained in the property c.text. To get the 10 most relevant documents using Hybrid search, the following query would look:
+Suppose you have a document that has vector embeddings stored in each document in the property `c.vector` and text data contained in the property c.text. To get the 10 most relevant documents using Hybrid search, the query can be written as:
 
 ```sql
 SELECT TOP 10 * 
@@ -111,10 +112,9 @@ FROM c
 ORDER BY RANK RRF(VectorDistance(c.vector, [1,2,3]), FullTextScore(c.text, ["text", "to", "search", "goes" ,"here])
 ```
 
-
 ## Related content
 - [Vector search](../nosql/vector-search.md)
-- [``VectorDistance`` system function](../nosql/query/vectordistance.md)
-- [`FullTextScore`` system function](../nosql/query/fulltextscore.md)
-- [`RRF` system function](../nosql/query/rrf.md)
-- [`ORDER BY RANK` clause](../nosql/query/order-by-rank.md)
+- [VectorDistance system function](../nosql/query/vectordistance.md)
+- [FullTextScore system function](../nosql/query/fulltextscore.md)
+- [RRF system function](../nosql/query/rrf.md)
+- [ORDER BY RANK clause](../nosql/query/order-by-rank.md)

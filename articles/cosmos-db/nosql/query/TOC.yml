@@ -13,7 +13,7 @@
       href: ../../gen-ai/full-text-search.md
     - name: FullTextContains
       href: fulltextcontains.md
-    - name: FullTextContainsAkk
+    - name: FullTextContainsAll
       href: fulltextcontainsall.md
     - name: FullTextContainsAny
       href: fulltextcontainsany.md
@@ -206,10 +206,10 @@
           displayName: FullTextContainsAll function
           href: fulltextcontainsall.md
         - name: FullTextContainsAny
-          displayName: FullTextContainsany function
+          displayName: FullTextContainsAny function
           href: fulltextcontainsany.md
         - name: FullTextScore
-          displayName: FullTextScore functions
+          displayName: FullTextScore function
           href: fulltextscore.md
     - name: Item functions
       items:

@@ -35,7 +35,7 @@ This article shows you how to create tables, store your data, and perform CRUD o
 To use Azure Storage or Azure Cosmos DB, you need the Azure Tables SDK for Node.js, which includes a set of convenience libraries that
 communicate with the Storage REST services.
 
-### Use Node Package Manager (NPM) to install the package
+### Use Node Package Manager (npm) to install the package
 
 1. Use a command-line interface such as **PowerShell** (Windows), **Terminal** (Mac), or **Bash** (Unix), and navigate to the folder where you created your application.
 2. Type the following in the command window:
@@ -203,7 +203,7 @@ After this operation is complete, `result` contains the entity.
 
 ## Query a set of entities
 
-The following example builds a query that returns the top five items with a PartitionKey of 'hometasks' and  list all the entities in the table.
+The following example builds a query that returns the top five items with a PartitionKey of 'hometasks' and lists all the entities in the table.
 
 ```javascript
 const topN = 5;
@@ -308,7 +308,7 @@ const page = await tableClient
 
 ## Work with shared access signatures
 
-Shared access signatures (SAS) are a secure way to provide granular access to tables without providing your Storage account name or keys. SAS are often used to provide limited access to your data, such as allowing a mobile app to query records.
+A shared access signatures (SAS) is a secure way to provide granular access to tables without providing your Storage account name or keys. A SAS is often used to provide limited access to your data, such as allowing a mobile app to query records.
 
 A trusted application such as a cloud-based service generates a SAS using the **generateTableSas** of the **TableClient**, and provides it to an untrusted or semi-trusted application such as a mobile app. The SAS is generated using a policy, which describes the start and end dates during which the SAS is valid, as well as the access level granted to the SAS holder.
 

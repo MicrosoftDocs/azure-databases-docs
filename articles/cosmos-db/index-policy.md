@@ -117,7 +117,7 @@ Here are some rules for included and excluded paths precedence in Azure Cosmos D
 > [!NOTE]
 >  You must enable the [Full Text  & Hybrid Search for NoSQL API](nosql/vector-search.md#enable-the-vector-indexing-and-search-feature) preview feature to specify a full text index.
 
-**Full text** indexes enable full text search and scoring efficiently using the index. Defining a full text path in an indexing policy can easily be done by including a `fullTextIndexes` section of the indexing policy that contains all of the the text paths to be indexed. For example:
+**Full text** indexes enable full text search and scoring efficiently using the index. Defining a full text path in an indexing policy can easily be done by including a `fullTextIndexes` section of the indexing policy that contains all of the text paths to be indexed. For example:
 
 ```json
 {
@@ -142,7 +142,7 @@ Here are some rules for included and excluded paths precedence in Azure Cosmos D
 ```
 
 > [!IMPORTANT]
-> A full text policy indexing policy must be on the path defined in the container's vector policy. [Learn more about container vector policies](nosql/vector-search.md#container-vector-policies).
+> A full text indexing policy must be on the path defined in the container's full text policy. [Learn more about container vector policies](gen-ai/full-text-search.md).
 
 
 ## Vector indexes
@@ -165,9 +165,9 @@ A few points to note:
 
   - The `diskANN` index is a separate index defined specifically for vectors applying [DiskANN](https://www.microsoft.com/research/publication/diskann-fast-accurate-billion-point-nearest-neighbor-search-on-a-single-node/), a suite of high performance vector indexing algorithms developed by Microsoft Research. DiskANN indexes can offer some of the lowest latency, highest throughput, and lowest RU cost queries, while still maintaining high accuracy. However, since DiskANN is an approximate nearest neighbors (ANN) index, the accuracy might be lower than `quantizedFlat` or `flat`.
 
- The `diskANN` and `quantizedFlat`indexes can take optional index build parameters that can be used to tune the accuracy vs latency trade off that applies to every Approximate Nearest Neighbors vector index.
-      - `quantizationByteSize`: Sets the size (in bytes) for product quantization. Min=1, Default=dynamic (system decides), Max=512. Setting this larger may result in higher accuracy vector searches at expense of higher RU cost and higher latency. This applies to both `quantizedFlat` and `DiskANN` index types.
-      - `indexingSearchListSize`: Sets how many vectors to search over during index build construction. Min=10, Default=100, Max=500. Setting this larger may result in higher accuracy vector searches at the expense of longer index build times and higher vector ingest latencies. This applies to `DiskANN` indexes only.
+ The `diskANN` and `quantizedFlat` indexes can take optional index build parameters that can be used to tune the accuracy versus latency trade-off that applies to every Approximate Nearest Neighbors vector index.
+  - `quantizationByteSize`: Sets the size (in bytes) for product quantization. Min=1, Default=dynamic (system decides), Max=512. Setting this larger may result in higher accuracy vector searches at expense of higher RU cost and higher latency. This applies to both `quantizedFlat` and `DiskANN` index types.
+  - `indexingSearchListSize`: Sets how many vectors to search over during index build construction. Min=10, Default=100, Max=500. Setting this larger may result in higher accuracy vector searches at the expense of longer index build times and higher vector ingest latencies. This applies to `DiskANN` indexes only.
 
 Here's an example of an indexing policy with a vector index:
 
@@ -202,10 +202,6 @@ Here's an example of an indexing policy with a vector index:
 
 >[!IMPORTANT]
 > The vector path added to the "excludedPaths" section of the indexing policy to ensure optimized performance for insertion. Not adding the vector path to "excludedPaths" will result in higher RU charge and latency for vector insertions.
-
-### The DiskANN vector index
-
-DiskANN enabled fast and cost-efficient vector search at any scale. Defining a DiskANN vector index is easy:
 
 ## Spatial indexes
 
@@ -270,9 +266,9 @@ These are a few examples of *invalid* array tuple paths
     - The array wildcard is missing before the tuple specifier 
 - `/events/[]/{/name,/category}/?`
     - Tuples start with leading `/` 
-- /events/[]/{name/?,category/?}/?`
+- `/events/[]/{name/?,category/?}/?`
     - Tuples end with an `?` 
-- /city/[]/events/[]/{name, category}/?`
+- `/city/[]/events/[]/{name, category}/?`
     - The path prefix as 2 array wildcards 
 
 ## Composite indexes
@@ -292,7 +288,7 @@ When defining a composite index, you specify:
 
 ### ORDER BY queries on multiple properties:
 
-The following considerations are used when using composite indexes for queries with an `ORDER BY` clause with two or more properties:
+The following considerations are used when using composite indexes for queries with an `ORDER BY` clause with two or more properties.
 
 - If the composite index paths don't match the sequence of the properties in the `ORDER BY` clause, then the composite index can't support the query.
 
@@ -485,7 +481,7 @@ Below is an example for a composite index that contains an array wildcard.
 }
 ```
 
-An example query that can benefits from this composite index is:
+An example query that can benefit from this composite index is:
 ```sql
 SELECT r.id
 FROM root r

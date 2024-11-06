@@ -1,5 +1,5 @@
 ---
-title: Index and query vector data in Python
+title: Indexing and querying vector data in Python
 titleSuffix: Azure Cosmos DB for NoSQL
 description: Add vector data Azure Cosmos DB for NoSQL and then query the data efficiently in your Python application.
 author: jcodella
@@ -11,12 +11,12 @@ ms.date: 08/01/2023
 ms.custom: query-reference, devx-track-python, build-2024
 ---
 
-# Index and query vectors in Azure Cosmos DB for NoSQL in Python. 
+# Index and query vectors in Azure Cosmos DB for NoSQL in Python
 
 [!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
 Before you use vector indexing and search, you must first enable the feature. This article covers the following steps:
 
-1. Enabling the Vector Search in Azure Cosmos DB for NoSQL feature.
+1. Enabling the Vector Search in Azure Cosmos DB for NoSQL feature
 2. Setting up the Azure Cosmos DB container for vector search
 3. Authoring vector embedding policy
 4. Adding vector indexes to the container indexing policy
@@ -52,7 +52,7 @@ Vector search for Azure Cosmos DB for NoSQL requires enabling the feature by com
 
 
 > [!NOTE]
-> The registration request will be autoapproved, however it may take 15 minutes to take effect.
+> The registration request will be autoapproved; however, it may take 15 minutes to take effect.
 
 ## Understanding the steps involved in vector search 
 
@@ -77,7 +77,7 @@ For subsequent sections of this article, we consider the below structure for the
 } 
 ```
 
-## Creating a vector embedding policy for your container.
+## Creating a vector embedding policy for your container
 Next, you need to define a container vector policy. This policy provides information that is used to inform the Azure Cosmos DB query engine how to handle vector properties in the VectorDistance system functions. This also informs the vector indexing policy of necessary information, should you choose to specify one.
 The following information is included in the contained vector policy:
 
@@ -186,6 +186,7 @@ for item in container.query_items(
             enable_cross_partition_query=True): 
     print(json.dumps(item, indent=True)) 
 ``` 
+## Related content
 
 - [VectorDistance system function](query/vectordistance.md)
 - [Vector indexing](../index-policy.md)

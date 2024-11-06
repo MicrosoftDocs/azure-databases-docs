@@ -31,7 +31,7 @@ ORDER BY RANK <scoring function>
 | **``<scoring function>``** | Specifies a scoring function like `VectorDistance`, `FullTextScore`, or RRF. |
 
 > [!NOTE]
-> For more information on scalar expressions, see [scalar expressions](scalar-expressions.md)
+> For more information on scalar expressions, see [scalar expressions](scalar-expressions.md).
 
 ## Examples
 

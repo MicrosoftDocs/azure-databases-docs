@@ -1,5 +1,5 @@
 ---
-title: Index and query vector data in .NET
+title: Indexing and querying vector data in .NET
 titleSuffix: Azure Cosmos DB for NoSQL
 description: Add vector data Azure Cosmos DB for NoSQL and then query the data efficiently in your .NET application.
 author: jcodella
@@ -11,7 +11,7 @@ ms.date: 08/01/2023
 ms.custom: query-reference, devx-track-dotnet, build-2024
 ---
 
-# Index and query vectors in Azure Cosmos DB for NoSQL in .NET. 
+# Index and query vectors in Azure Cosmos DB for NoSQL in .NET
 
 [!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
 Before you use vector indexing and search, you must first enable the feature. This article covers the following steps:
@@ -29,7 +29,7 @@ This guide walks through the process of creating vector data, indexing the data,
 - An existing Azure Cosmos DB for NoSQL account.
   - If you don't have an Azure subscription, [Try Azure Cosmos DB for NoSQL free](https://cosmos.azure.com/try/).
   - If you have an existing Azure subscription, [create a new Azure Cosmos DB for NoSQL account](how-to-create-account.md).
-- Latest version of the Azure Cosmos DB [.NET](sdk-dotnet-v3.md) SDK (Release: 3.45.0 or later, Preview: 3.46.0-preview.0 or later.)
+- Latest version of the Azure Cosmos DB [.NET](sdk-dotnet-v3.md) SDK (Release: 3.45.0 or later, Preview: 3.46.0-preview.0 or later).
 
 ## Enable the feature
 
@@ -53,7 +53,7 @@ Vector search for Azure Cosmos DB for NoSQL requires enabling the feature by com
 
 
 > [!NOTE]
-> The registration request will be autoapproved, however it may take 15 minutes to take effect.
+> The registration request will be autoapproved; however, it may take 15 minutes to take effect.
 
 ## Understanding the steps involved in vector search 
 
