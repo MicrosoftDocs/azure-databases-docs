@@ -12,7 +12,7 @@
 
 # Data api for Azure Cosmos DB for MongoDB vCore (Preview)
 
-The Data API for for Azure Cosmos DB for MongoDB vCore is a RESTful interface that allows developers to access and interact with their MongoDB vCore data without needing a database driver. It simplifies data operations by enabling CRUD and aggregation operations through HTTP requests. This API is ideal for web applications, providing secure and scalable access to MongoDB vCore databases.  
+The Data api for Azure Cosmos DB for MongoDB vCore is a RESTful interface that allows developers to access and interact with their MongoDB vCore data without needing a database driver. It simplifies data operations by enabling CRUD and aggregation operations through HTTP requests. This API is ideal for web applications, providing secure and scalable access to MongoDB vCore databases.  
  
 
 ## Enabling Data api on MongoDB vCore
