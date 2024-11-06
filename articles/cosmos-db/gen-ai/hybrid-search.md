@@ -54,11 +54,13 @@ The results from vector search and full text search are then combined using the 
 ### A sample full text policy
  ```json
 {
-    "fullTextPolicy": [
+    "defaultLanguage": "en-US",
+    "fullTextPaths": [
         {
-            "path":"/text",
-            "language":"en-us",
-        },
+            "path": "/text",
+            "language": "en-US"
+        }
+    ]
 }
 ```
 
