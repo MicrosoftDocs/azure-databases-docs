@@ -23,14 +23,14 @@ zone_pivot_groups: azure-cosmos-db-apis-nosql-mongodb
 
 Before you begin, ensure you have the following:
 
-- An Azure Cosmos DB account configured with a database in either Azure Cosmos DB for NoSQL. Use one of these quickstarts to set up a database:
+- An Azure Cosmos DB account configured with a database and collection for NoSQL API. Use any of these quickstarts below to set up a resource:
     - [Portal](./nosql/quickstart-portal.md) 
     - [Azure CLI](./nosql/quickstart-template-bicep.md) 
 
-- To connect and manage data in Azure Cosmos DB, you’ll need to install the **Azure Databases** extension for Visual Studio Code.
+- To connect and manage data in Azure Cosmos DB within Visual Studio, first install the **Azure Databases** extension.
 
 1. Open Visual Studio Code.
-2. Access the **Extensions** pane by selecting **View > Extensions** or using the shortcut **Ctrl + Shift + X**.
+2. Access the **Extensions** pane by selecting **View > Extensions**  or using the shortcut **Ctrl + Shift + X** on Windows and **Command + Shift + X** on MacOS.
 3. In the search bar, type [Azure Databases extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb) and select the extension. Then, click **Install**.
 4. After installation, reload Visual Studio Code if prompted.
 
@@ -57,30 +57,28 @@ The following steps will use the Query Editor to execute a query and view the re
 
 - **JSON View**: See the raw data structure.
     :::image type="content" source="./media/dev-tooling/VS-code/view-json-view.png" lightbox="./media/dev-tooling/VS-code/view-json-view.png" alt-text="Screenshot of the query editor results in json view.":::
-- **Tree View**: Navigate nested data with ease.
+- **Tree View**: Easily explore nested data.
     :::image type="content" source="./media/dev-tooling/VS-code/view-tree-view.png" lightbox="./media/dev-tooling/VS-code/view-tree-view.png" alt-text="Screenshot of the query editor results in tree view.":::
 
 
 ## View query and index metrics
 Within the query editor, view additional query and index metrics to better help optimize your query performance.
 
-1. Select the **Stats** tab next to the  query **Results**.
+1. Select the **Stats** tab next to the query **Results**.
     :::image type="content" source="./media/dev-tooling/VS-code/view-query-stats.png" lightbox="./media/dev-tooling/VS-code/view-query-stats.png" alt-text="Screenshot of the query stats in VS Code.":::
 
-2. For more information on the metric definitions view the [query metrics documentation](./nosql/query-metrics.md).
+2. For more information on the metric definitions see the [query metrics documentation](./nosql/query-metrics.md).
 
 
 ## Insert, Edit and Delete documents
 - **Real-time document editing**: Add, view, edit, and delete documents instantly, with changes reflected in real-time.
 - **Import from JSON**: Load your data quickly from JSON files.
-- **Export Data**: Save entire collections or query results as JSON for backup or sharing.
+    :::image type="content" source="./media/dev-tooling/VS-code/edit-documents.png" lightbox="./media/dev-tooling/VS-code/edit-documents.png" alt-text="Screenshot of edit documents in VS Code.":::
 
 
  ## Export query results
-Move data in and out seamlessly:
-- **Import from JSON**: Load your data quickly from JSON files.
-- **Export Data**: Save entire collections or query results as JSON for backup or sharing.
-
+- **Download results**: Download query results to CSV or JSON files.
+   :::image type="content" source="./media/dev-tooling/VS-code/export-results.png" lightbox="./media/dev-tooling/VS-code/export-results.png" alt-text="Screenshot of export results in VS Code.":::
 
 
 ## Next steps
@@ -104,7 +102,7 @@ Before you begin, ensure you have the following:
     - [Azure CLI](./mongodb/vcore/quickstart-bicep.md)
 - To connect and manage data in Azure Cosmos DB, you need to install the **Azure Databases** extension for Visual Studio Code.
     1. Open Visual Studio Code.
-    2. Access the **Extensions** pane by selecting **View > Extensions** or using the shortcut **Ctrl + Shift + X**.
+    2. Access the **Extensions** pane by selecting **View > Extensions** or using the shortcut **Ctrl + Shift + X** on Windows and **Command + Shift + X** on MacOS.
     3. In the search bar, type [Azure Databases extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb) and select the extension. Then, click **Install**.
     4. After installation, reload Visual Studio Code if prompted.
 - MongoDB shell (mongosh) installed for command-line interactions (optional but recommended).
