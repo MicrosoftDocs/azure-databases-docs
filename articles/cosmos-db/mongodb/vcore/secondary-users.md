@@ -41,7 +41,6 @@ Azure Cosmos DB for MongoDB vCore now supports secondary users with specialized 
 
 ```powershell
 mongosh mongodb+srv://<YOUR_USERNAME>:<YOUR_PASSWORD>@>YOUR_HOST>?tls=true&authMechanism=SCRAM-SHA-256&retrywrites=false&maxIdleTimeMS=120000
-
 ```
  > [!NOTE]
 >  Make sure you allowlist your client IP under the networking settings on azure portal. 
@@ -51,7 +50,7 @@ mongosh mongodb+srv://<YOUR_USERNAME>:<YOUR_PASSWORD>@>YOUR_HOST>?tls=true&authM
 Creates a new user on the database where you run the command. The `createUser` 
 command returns a duplicate user error if the user exists. 
 
-#### Admin Role 
+#### Data Admin Role 
 
 ```powershell
 use admin
@@ -101,7 +100,6 @@ db.runCommand(
 
 Removes the user from the database on which you run the command. 
 
-
 ```powershell
 use admin
 db.runCommand(
@@ -113,7 +111,9 @@ db.runCommand(
 
 ### List Users
 
-Returns information about one or more users.
+Returns information about one or more users. It also support passing in a single user to usersInfo, in that case it returns information about the user, it's role etc.
+
+
 
 ```powershell
 use admin
@@ -126,5 +126,6 @@ db.runCommand(
 
 ## Limitations
 
--  You can create up to 10 users/roles per database.
+-  You can create up to 10 users/roles per cluster. if you have a requirement to add more users, please open a [support ticket](/azure/azure-portal/supportability/how-to-create-azure-support-request)
 -  The `Updateuser` command now only supports password updates and cannot modify other object fields.
+-  The `Roleinfo` command is not supported in preview. Alternatively you can use `usersInfo`
