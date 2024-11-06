@@ -74,9 +74,9 @@ The following features can't be force-migrated as they require customer input fo
 - Infrastructure Double encryption
 - Read Replicas
 
-**Important** : Single Servers with networking and security features enabled will be force-migrated to a Flexible Server instance with public access in the disabled state to protect customer data. You must enable appropriate access after the forced migration to ensure business continuity.
-
 ### Action required post forced migration
+
+**Important** : Single Servers with networking, security and data encryption features enabled will be force-migrated to a Flexible Server instance with public access in the disabled state to protect customer data. You must enable appropriate access after the forced migration to ensure business continuity.
 
 After the forced migration, you must reconfigure the features listed above on the migrated Flexible Server instance to ensure business continuity:
 
@@ -87,10 +87,9 @@ After the forced migration, you must reconfigure the features listed above on th
 - Infrastructure Double encryption – Infrastructure Double encryption isn't supported on Azure Database for MySQL Flexible Server. We recommend configuring Data encryption to meet feature parity. Read more about how to configure Data encryption (CMK) [here](../flexible-server/how-to-data-encryption-portal.md)
 - Read Replicas - The read replicas will be migrated as separate standalone servers . Configure read replicas for your primary server by referring to the migrated secondary standalone server, which can be deleted post configuration. Read more about how to configure [here](../flexible-server/how-to-read-replicas-portal.md)
 
-
 > [!NOTE]  
-> If your server is in a region where Azure Database for MySQL - Flexible Server isn't supported, then post the sunset date, your Single Server instance will be available with limited operations to access data and to be able to migrate to Flexible Server until Nov 15th, 2024. Your instance will not be force-migrated to Flexible Server until Nov 15th, 2024. Post this date, servers will be deleted in order to retire the platform. We strongly recommend that you use one of the following options to migrate before Nov 15th, 2024 to avoid any disruptions in business continuity:
-> 
+> If your server is in a region where Azure Database for MySQL - Flexible Server isn't supported, then post the sunset date, your Single Server instance will be available with limited operations to access data and to be able to migrate to Flexible Server until Nov 15th, 2024. Your instance will not be force-migrated to Flexible Server until Nov 15th, 2024. Your servers will be stopped in the first week of December, 2024. You can restart your server via Azure Portal or CLI and migrate within 7 days. If your server is not migrated in the above mentioned grace period, it will be force migrated in the second week of December, 2024. Post 31st December, servers will be deleted in order to retire the platform. We strongly recommend that you use one of the following options to migrate before Nov 22nd, 2024 to avoid any disruptions in business continuity:
+
 > - Use Azure DMS to perform a cross-region migration to Flexible Server in a suitable Azure region.
 > - Migrate to MySQL Server hosted on a VM in the region, if you're unable to change regions due to compliance issues.
 
