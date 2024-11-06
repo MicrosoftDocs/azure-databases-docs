@@ -251,14 +251,14 @@ This article highlights the latest updates and enhancements for Azure Database f
 - Support for [latest PostgreSQL minors](./concepts-supported-versions.md) 13.4, 12.8 and 11.13 with new server creates<sup>$</sup>.
 - Support for [Geo-redundant backup and restore](concepts-backup-restore.md) feature in preview in selected paired regions - East US 2, Central US, North Europe, West Europe, Japan East, and Japan West.
 - Support for [new regions](overview.md#azure-regions) North Central US, Sweden Central, and West US 3.
-- Support for [Azure Stream Analytics (ASA) connector in Preview](https://techcommunity.microsoft.com/t5/analytics-on-azure/stream-analytics-updates-ignite-fall-2021-new-outputs-new/ba-p/2919170) to ingest high throughput streaming data to existing table.
+- Support for [Azure Stream Analytics (ASA) connector in Preview](https://techcommunity.microsoft.com/blog/analyticsonazure/stream-analytics-updates---ignite-fall-2021-new-outputs-new-security-options-and/2919170) to ingest high throughput streaming data to existing table.
 - Several bug fixes, stability, and performance improvements<sup>$</sup>.
 
 <sup>**$**</sup> New servers get these features automatically. These features are enabled on your existing servers during your server's future maintenance window.
 
 ## Release: October 2021
 
-- Support for [Ddsv4 and Edsv4 SKUs](https://techcommunity.microsoft.com/t5/azure-database-for-postgresql/flexible-server-now-supports-v4-compute-series-in-postgresql-on/ba-p/2815092).
+- Support for [Ddsv4 and Edsv4 SKUs](https://techcommunity.microsoft.com/blog/adforpostgresql/flexible-server-now-supports-v4-compute-series-in-postgresql-on-azure/2815092).
 - Ability to choose local disk for temporary tablespace using `azure.enable_temp_tablespaces_on_local_ssd` server parameter.
 The server parameters page in the Azure portal shows a unit of measurement and the PostgreSQL doc link for most parameters.
 - Several bug fixes, stability, and performance improvements.
