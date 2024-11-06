@@ -132,7 +132,7 @@ if err != nil {
 
 ### Create an entity
 
-The easiest way to create a new entity in a table is to create an instance of type `aztables.EDMEntity`. Set the `RowKey` and `PartitionKey` properties using the `aztables.Entity` type and then set any additional properties using a string map.
+The easiest way to create a new entity in a table is to create an instance of type `aztables.EDMEntity`. Set the `RowKey` and `PartitionKey` properties using the `aztables.Entity` type and then set any extra properties using a string map.
 
 ```go
 entity := aztables.EDMEntity{
@@ -185,7 +185,7 @@ if err != nil {
 
 ### Query entities
 
-After you insert an entity, you can also run a query to get all enities that match a specific filter by using `NewListEntitiesPager` along with a string filter.
+After you insert an entity, you can also run a query to get all entities that match a specific filter by using `NewListEntitiesPager` along with a string filter.
 
 ```go
 filter := "PartitionKey eq 'gear-surf-surfboards'"

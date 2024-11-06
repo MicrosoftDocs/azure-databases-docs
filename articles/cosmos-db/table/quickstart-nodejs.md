@@ -268,7 +268,7 @@ const entity = await table.getEntity(partitionKey, rowKey);
 
 ### Query entities
 
-After you insert an entity, you can also run a query to get all enities that match a specific filter by using `listEntities` with an OData filter.
+After you insert an entity, you can also run a query to get all entities that match a specific filter by using `listEntities` with an OData filter.
 
 ::: zone pivot="programming-language-ts"
 

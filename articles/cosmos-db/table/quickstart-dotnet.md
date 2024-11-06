@@ -185,7 +185,7 @@ Response<Product> response = await client.GetEntityAsync<Product>(
 
 ### Query entities
 
-After you insert an entity, you can also run a query to get all enities that match a specific filter by using the `TableClient.Query<T>` method. This example filters products by category using Language Integrated Query (LINQ) syntax, which is a benefit of using typed `ITableEntity` models like the `Product` class.
+After you insert an entity, you can also run a query to get all entities that match a specific filter by using the `TableClient.Query<T>` method. This example filters products by category using Language Integrated Query (LINQ) syntax, which is a benefit of using typed `ITableEntity` models like the `Product` class.
 
 ```csharp
 string category = "gear-surf-surfboards";
