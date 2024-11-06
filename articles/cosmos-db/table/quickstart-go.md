@@ -1,5 +1,5 @@
 ---
-title: Quickstart - Go client library
+title: Quickstart - Azure SDK for Go
 titleSuffix: Azure Cosmos DB for Table
 description: Deploy a Go web application that uses the Azure SDK for Go to interact with Azure Cosmos DB for Table data in this quickstart.
 author: seesharprun
@@ -9,27 +9,26 @@ ms.service: azure-cosmos-db
 ms.subservice: table
 ms.devlang: golang
 ms.topic: quickstart-sdk
-ms.date: 10/28/2024
+ms.date: 11/06/2024
 ms.custom: devx-track-go, devx-track-extended-azdevcli
+appliesto:
+  - ✅ Table
 # CustomerIntent: As a developer, I want to learn the basics of the Go library so that I can build applications with Azure Cosmos DB for Table.
 ---
 
-# Quickstart: Azure Cosmos DB for Table library for Go
+# Quickstart: Use Azure Cosmos DB for Table with Azure SDK for Go
 
-[!INCLUDE[Table](../includes/appliesto-table.md)]
-
-[!INCLUDE[Developer Quickstart selector](includes/quickstart/dev-selector.md)]
-
-This quickstart shows how to get started with the Azure Cosmos DB for Table from a Go application. The Azure Cosmos DB for Table is a schemaless data store allowing applications to store structured table data in the cloud. You learn how to create tables, rows, and perform basic tasks within your Azure Cosmos DB resource using the Azure SDK for Go.
+In this quickstart, you deploy a basic Azure Cosmos DB for Table application using the Azure SDK for Go. Azure Cosmos DB for Table is a schemaless data store allowing applications to store structured table data in the cloud. You learn how to create tables, rows, and perform basic tasks within your Azure Cosmos DB resource using the Azure SDK for Go
 
 [Library source code](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/sdk/data/aztables#pkg-types) | [Package (Go)](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/sdk/data/aztables) | [Azure Developer CLI](/azure/developer/azure-developer-cli/overview)
 
 ## Prerequisites
 
-- An Azure account with an active subscription. [Create an account for free](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- [Azure Developer CLI](/azure/developer/azure-developer-cli/install-azd)
-- [Docker Desktop](https://www.docker.com/products/docker-desktop/)
-- [`Go` 1.21 or newer](https://go.dev/dl/)
+- Azure Developer CLI
+- Docker Desktop
+- `Go` 1.21 or newer
+
+If you don't have an Azure account, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
 
 ## Initialize the project
 
@@ -72,7 +71,7 @@ Use the Azure Developer CLI (`azd`) to create an Azure Cosmos DB for Table accou
 
 1. Use the URL in the console to navigate to your web application in the browser. Observe the output of the running app.
 
-    :::image type="content" source="media/quickstart/dev-web-application.png" alt-text="Screenshot of the running web application.":::
+:::image type="content" source="media/quickstart-go/running-application.png" alt-text="Screenshot of the running web application.":::
 
 ### Install the client library
 
@@ -103,9 +102,9 @@ The client library is available through Go, as the `aztables` package.
 
 - [Authenticate the client](#authenticate-the-client)
 - [Get a table](#get-a-table)
-- [Create an item](#create-an-item)
-- [Get an item](#get-an-item)
-- [Query items](#query-items)
+- [Create an entity](#create-an-entity)
+- [Get an entity](#get-an-entity)
+- [Query entities](#query-entities)
 
 The sample code in the template uses a table named `cosmicworks-products`. The `cosmicworks-products` table contains details such as name, category, quantity, price, a unique identifier, and a sale flag for each product. The container uses a *unique identifier** as the row key and *category* as a partition key.
 
@@ -131,40 +130,91 @@ if err != nil {
 }
 ```
 
-### Create an item
+### Create an entity
 
-The easiest way to create a new item in a table is to TODO.
+The easiest way to create a new entity in a table is to create an instance of type `aztables.EDMEntity`. Set the `RowKey` and `PartitionKey` properties using the `aztables.Entity` type and then set any additional properties using a string map.
 
 ```go
-TODO
+entity := aztables.EDMEntity{
+    Entity: aztables.Entity{
+        RowKey:       "70b63682-b93a-4c77-aad2-65501347265f",
+        PartitionKey: "gear-surf-surfboards",
+    },
+    Properties: map[string]any{
+        "Name":      "Yamba Surfboard",
+        "Quantity":  12,
+        "Price":     850.00,
+        "Clearance": false,
+    },
+}
 ```
 
-Create an item in the collection using TODO
+Conver the entity into a byte array using `json.Marshal` and then create the entity in the table using `UpsertEntity`.
 
 ```go
-TODO
+bytes, err := json.Marshal(entity)
+if err != nil {
+    panic(err)
+}
+
+_, err = table.UpsertEntity(context.TODO(), bytes, nil)
+if err != nil {
+    panic(err)
+}
 ```
 
-### Get an item
+### Get an entity
 
-You can retrieve a specific item from a table using TODO
+You can retrieve a specific entity from a table using `GetEntity`. You can then use `json.Unmarshal` to parse it using the `aztables.EDMEntity` type.
 
 ```go
-TODO
+rowKey := "70b63682-b93a-4c77-aad2-65501347265f"
+partitionKey := "gear-surf-surfboards"
+
+response, err := table.GetEntity(context.TODO(), partitionKey, rowKey, nil)
+if err != nil {
+    panic(err)
+}
+
+var entity aztables.EDMEntity
+err = json.Unmarshal(response.Value, &entity)
+if err != nil {
+    panic(err)
+}
 ```
 
-### Query items
+### Query entities
 
-After you insert an item, you can also run a query to get all items that match a specific filter by using TODO
+After you insert an entity, you can also run a query to get all enities that match a specific filter by using `NewListEntitiesPager` along with a string filter.
 
 ```go
-TODO
+filter := "PartitionKey eq 'gear-surf-surfboards'"
+
+options := &aztables.ListEntitiesOptions{
+    Filter: &filter,
+}
+
+pager := table.NewListEntitiesPager(options)
 ```
 
-Parse the paginated results of the query by TODO
+Parse the paginated results of the query by using the `More` function of the pager to determine if there are more pages, and then the `NextPage` function to get the next page of results.
 
 ```go
-TODO
+for pager.More() {
+    response, err := pager.NextPage(context.TODO())
+    if err != nil {
+        panic(err)
+    }
+    for _, entityBytes := range response.Entities {
+        var entity aztables.EDMEntity
+        err := json.Unmarshal(entityBytes, &entity)
+        if err != nil {
+            panic(err)
+        }
+        
+        writeOutput(fmt.Sprintf("Found entity:\t%s\t%s", entity.Properties["Name"], entity.RowKey))
+    }
+}
 ```
 
 ## Clean up resources

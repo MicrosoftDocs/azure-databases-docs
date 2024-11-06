@@ -1,5 +1,5 @@
 ---
-title: Quickstart - Node.js client library
+title: Quickstart - Azure SDK for Node.js
 titleSuffix: Azure Cosmos DB for Table
 description: Deploy a Node.js web application that uses the Azure SDK for Table to interact with Azure Cosmos DB for Table data in this quickstart.
 author: seesharprun
@@ -9,28 +9,27 @@ ms.service: azure-cosmos-db
 ms.subservice: table
 ms.devlang: typescript
 ms.topic: quickstart-sdk
-ms.date: 10/28/2024
+ms.date: 11/06/2024
 ms.custom: devx-track-js, devx-track-ts, devx-track-extended-azdevcli
+appliesto:
+  - ✅ Table
 zone_pivot_groups: azure-devlang-nodejs
 # CustomerIntent: As a developer, I want to learn the basics of the Node.js library so that I can build applications with Azure Cosmos DB for Table.
 ---
 
-# Quickstart: Azure Cosmos DB for Table library for Node.js
+# Quickstart: Use Azure Cosmos DB for Table with Azure SDK for Node.js
 
-[!INCLUDE[Table](../includes/appliesto-table.md)]
-
-[!INCLUDE[Developer Quickstart selector](includes/quickstart/dev-selector.md)]
-
-This quickstart shows how to get started with the Azure Cosmos DB for Table from a Node.js application. The Azure Cosmos DB for Table is a schemaless data store allowing applications to store structured table data in the cloud. You learn how to create tables, rows, and perform basic tasks within your Azure Cosmos DB resource using the Azure SDK for Node.js.
+In this quickstart, you deploy a basic Azure Cosmos DB for Table application using the Azure SDK for Node.js. Azure Cosmos DB for Table is a schemaless data store allowing applications to store structured table data in the cloud. You learn how to create tables, rows, and perform basic tasks within your Azure Cosmos DB resource using the Azure SDK for Node.js
 
 [API reference documentation](/javascript/api/%40azure/data-tables) | [Library source code](https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/tables/data-tables) | [Package (npm)](https://www.npmjs.com/package/@azure/data-tables) | [Azure Developer CLI](/azure/developer/azure-developer-cli/overview)
 
 ## Prerequisites
 
-- An Azure account with an active subscription. [Create an account for free](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- [Azure Developer CLI](/azure/developer/azure-developer-cli/install-azd)
-- [Docker Desktop](https://www.docker.com/products/docker-desktop/)
-- [Node.js 22 or newer](https://nodejs.org/)
+- Azure Developer CLI
+- Docker Desktop
+- Node.js 22 or newer
+
+If you don't have an Azure account, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
 
 ## Initialize the project
 
@@ -73,7 +72,17 @@ Use the Azure Developer CLI (`azd`) to create an Azure Cosmos DB for Table accou
 
 1. Use the URL in the console to navigate to your web application in the browser. Observe the output of the running app.
 
-    :::image type="content" source="media/quickstart/dev-web-application.png" alt-text="Screenshot of the running web application.":::
+::: zone pivot="programming-language-js"
+
+:::image type="content" source="media/quickstart-nodejs/running-application-javascript.png" alt-text="Screenshot of the running web application.":::
+
+::: zone-end
+
+::: zone pivot="programming-language-ts"
+
+:::image type="content" source="media/quickstart-nodejs/running-application-typescript.png" alt-text="Screenshot of the running web application.":::
+
+::: zone-end
 
 ### Install the client library
 
@@ -126,9 +135,9 @@ The client library is available through npm, as the `@azure/data-tables` package
 
 - [Authenticate the client](#authenticate-the-client)
 - [Get a table](#get-a-table)
-- [Create an item](#create-an-item)
-- [Get an item](#get-an-item)
-- [Query items](#query-items)
+- [Create an entity](#create-an-entity)
+- [Get an entity](#get-an-entity)
+- [Query entities](#query-entities)
 
 The sample code in the template uses a table named `cosmicworks-products`. The `cosmicworks-products` table contains details such as name, category, quantity, price, a unique identifier, and a sale flag for each product. The container uses a *unique identifier** as the row key and *category* as a partition key.
 
@@ -172,11 +181,11 @@ let table = new TableClient("<azure-cosmos-db-table-account-endpoint>", "<azure-
 
 ::: zone-end
 
-### Create an item
+### Create an entity
 
 ::: zone pivot="programming-language-ts"
 
-The easiest way to create a new item in a table is to derive a new interface from `TableEntity` and then create a new object of that type.
+The easiest way to create a new entity in a table is to derive a new interface from `TableEntity` and then create a new object of that type.
 
 ```typescript
 export interface Product extends TableEntity {
@@ -217,7 +226,7 @@ const entity = {
 
 ::: zone-end
 
-Create an item in the collection using the `upsertEntity` method from the `TableService` instance.
+Create an entity in the table using the `upsertEntity` method from the `TableService` instance.
 
 ::: zone pivot="programming-language-ts"
 
@@ -235,9 +244,9 @@ await table.upsertEntity(entity, "Replace");
 
 ::: zone-end
 
-### Get an item
+### Get an entity
 
-You can retrieve a specific item from a table using the `getEntity` method, the **row key** for the item, and **partition key** of the item.
+You can retrieve a specific entity from a table using the `getEntity` method, the **row key** for the entity, and **partition key** of the entity.
 
 ::: zone pivot="programming-language-ts"
 
@@ -257,9 +266,9 @@ const entity = await table.getEntity(partitionKey, rowKey);
 
 ::: zone-end
 
-### Query items
+### Query entities
 
-After you insert an item, you can also run a query to get all items that match a specific filter by using `listEntities` with an OData filter.
+After you insert an entity, you can also run a query to get all enities that match a specific filter by using `listEntities` with an OData filter.
 
 ::: zone pivot="programming-language-ts"
 

@@ -1,5 +1,5 @@
 ---
-title: Quickstart - Python client library
+title: Quickstart - Azure SDK for Python
 titleSuffix: Azure Cosmos DB for Table
 description: Deploy a Python web application that uses the Azure SDK for Python to interact with Azure Cosmos DB for Table data in this quickstart.
 author: seesharprun
@@ -9,27 +9,26 @@ ms.service: azure-cosmos-db
 ms.subservice: table
 ms.devlang: python
 ms.topic: quickstart-sdk
-ms.date: 10/28/2024
+ms.date: 11/06/2024
 ms.custom: devx-track-python, devx-track-extended-azdevcli
+appliesto:
+  - ✅ Table
 # CustomerIntent: As a developer, I want to learn the basics of the Python library so that I can build applications with Azure Cosmos DB for Table.
 ---
 
-# Quickstart: Azure Cosmos DB for Table library for Python
+# Quickstart: Use Azure Cosmos DB for Table with Azure SDK for Python
 
-[!INCLUDE[Table](../includes/appliesto-table.md)]
-
-[!INCLUDE[Developer Quickstart selector](includes/quickstart/dev-selector.md)]
-
-This quickstart shows how to get started with the Azure Cosmos DB for Table from a Python application. The Azure Cosmos DB for Table is a schemaless data store allowing applications to store structured table data in the cloud. You learn how to create tables, rows, and perform basic tasks within your Azure Cosmos DB resource using the Azure SDK for Python.
+In this quickstart, you deploy a basic Azure Cosmos DB for Table application using the Azure SDK for Python. Azure Cosmos DB for Table is a schemaless data store allowing applications to store structured table data in the cloud. You learn how to create tables, rows, and perform basic tasks within your Azure Cosmos DB resource using the Azure SDK for Python.
 
 [API reference documentation](/python/api/azure-data-tables) | [Library source code](https://github.com/Azure/azure-sdk-for-python/blob/main/sdk/tables/azure-data-tables) | [Package (PyPI)](https://pypi.org/project/azure-data-tables) | [Azure Developer CLI](/azure/developer/azure-developer-cli/overview)
 
 ## Prerequisites
 
-- An Azure account with an active subscription. [Create an account for free](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- [Azure Developer CLI](/azure/developer/azure-developer-cli/install-azd)
-- [Docker Desktop](https://www.docker.com/products/docker-desktop/)
-- [Python 3.12](https://www.python.org/downloads/)
+- Azure Developer CLI
+- Docker Desktop
+- Python 3.12
+
+If you don't have an Azure account, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
 
 ## Initialize the project
 
@@ -103,9 +102,9 @@ The client library is available through PyPi, as the `azure-data-tables` package
 
 - [Authenticate the client](#authenticate-the-client)
 - [Get a table](#get-a-table)
-- [Create an item](#create-an-item)
-- [Get an item](#get-an-item)
-- [Query items](#query-items)
+- [Create an entity](#create-an-entity)
+- [Get an entity](#get-an-entity)
+- [Query entities](#query-entities)
 
 The sample code in the template uses a table named `cosmicworks-products`. The `cosmicworks-products` table contains details such as name, category, quantity, price, a unique identifier, and a sale flag for each product. The container uses a *unique identifier** as the row key and *category* as a partition key.
 
@@ -125,31 +124,31 @@ This sample creates an instance of the `TableClient` type using the `GetTableCli
 table = client.get_table_client("<azure-cosmos-db-table-name>")
 ```
 
-### Create an item
+### Create an entity
 
-The easiest way to create a new item in a table is to TODO
-
-```python
-TODO
-```
-
-Create an item in the collection using TODO
+The easiest way to create a new entity in a table is to TODO
 
 ```python
 TODO
 ```
 
-### Get an item
-
-You can retrieve a specific item from a table using TODO
+Create an entity in the collection using TODO
 
 ```python
 TODO
 ```
 
-### Query items
+### Get an entity
 
-After you insert an item, you can also run a query to get all items that match a specific filter by using TODO
+You can retrieve a specific entity from a table using TODO
+
+```python
+TODO
+```
+
+### Query entities
+
+After you insert an entity, you can also run a query to get all entities that match a specific filter by using TODO
 
 ```python
 TODO

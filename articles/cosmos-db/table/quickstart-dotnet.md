@@ -8,7 +8,7 @@ ms.service: azure-cosmos-db
 ms.subservice: table
 ms.devlang: csharp
 ms.topic: quickstart-sdk
-ms.date: 10/30/2024
+ms.date: 11/06/2024
 ms.custom: devx-track-csharp, devx-track-dotnet, devx-track-extended-azdevcli
 appliesto:
   - ✅ Table
@@ -17,7 +17,9 @@ appliesto:
 
 # Quickstart: Use Azure Cosmos DB for Table with Azure SDK for .NET
 
-In this quickstart, you deploy a basic Azure Cosmos DB for Table application using the Azure SDK for .NET. The Azure Cosmos DB for Table is a schemaless data store allowing applications to store structured table data in the cloud. You learn how to create tables, rows, and perform basic tasks within your Azure Cosmos DB resource using the Azure SDK for .NET
+In this quickstart, you deploy a basic Azure Cosmos DB for Table application using the Azure SDK for .NET. Azure Cosmos DB for Table is a schemaless data store allowing applications to store structured table data in the cloud. You learn how to create tables, rows, and perform basic tasks within your Azure Cosmos DB resource using the Azure SDK for .NET
+
+[API reference documentation](/dotnet/api/azure.data.tables) | [Library source code](https://github.com/Azure/azure-sdk-for-net/tree/main/sdk/tables/Azure.Data.Tables) | [Package (NuGet)](https://www.nuget.org/packages/Azure.Data.Tables/) | [Azure Developer CLI](/azure/developer/azure-developer-cli/overview)
 
 ## Prerequisites
 
@@ -68,7 +70,7 @@ Use the Azure Developer CLI (`azd`) to create an Azure Cosmos DB for Table accou
 
 1. Use the URL in the console to navigate to your web application in the browser. Observe the output of the running app.
 
-    :::image type="content" source="media/quickstart/dev-web-application.png" alt-text="Screenshot of the running web application.":::
+:::image type="content" source="media/quickstart-dotnet/running-application.png" alt-text="Screenshot of the running web application.":::
 
 ### Install the client library
 
@@ -97,6 +99,12 @@ The client library is available through NuGet, as the `Azure.Data.Tables` packag
 
 ## Code examples
 
+- [Authenticate the client](#authenticate-the-client)
+- [Get a table](#get-a-table)
+- [Create an entity](#create-an-entity)
+- [Get an entity](#get-an-entity)
+- [Query entities](#query-entities)
+
 The sample code in the template uses a table named `cosmicworks-products`. The `cosmicworks-products` table contains details such as name, category, quantity, price, a unique identifier, and a sale flag for each product. The container uses a *unique identifier** as the row key and *category* as a partition key.
 
 ### Authenticate the client
@@ -120,9 +128,9 @@ TableClient client = serviceClient.GetTableClient(
 );
 ```
 
-### Create an item
+### Create an entity
 
-The easiest way to create a new item in a table is to create a class that implements the `ITableEntity` interface. You can then add your own properties to the class to populate columns of data in that table row.
+The easiest way to create a new entity in a table is to create a class that implements the `ITableEntity` interface. You can then add your own properties to the class to populate columns of data in that table row.
 
 ```csharp
 public record Product : ITableEntity
@@ -145,7 +153,7 @@ public record Product : ITableEntity
 };
 ```
 
-Create an item in the collection using the `Product` class by calling `TableClient.AddEntityAsync<T>`.
+Create an entity in the table using the `Product` class by calling `TableClient.AddEntityAsync<T>`.
 
 ```csharp
 Product entity = new()
@@ -164,9 +172,9 @@ Response response = await client.UpsertEntityAsync<Product>(
 );
 ```
 
-### Get an item
+### Get an entity
 
-You can retrieve a specific item from a table using the `TableClient.GetEntityAsync<T>` method. Provide the `partitionKey` and `rowKey` as parameters to identify the correct row to perform a quick *point read* of that item.
+You can retrieve a specific entity from a table using the `TableClient.GetEntityAsync<T>` method. Provide the `partitionKey` and `rowKey` as parameters to identify the correct row to perform a quick *point read* of that entity.
 
 ```csharp
 Response<Product> response = await client.GetEntityAsync<Product>(
@@ -175,9 +183,9 @@ Response<Product> response = await client.GetEntityAsync<Product>(
 );
 ```
 
-### Query items
+### Query entities
 
-After you insert an item, you can also run a query to get all items that match a specific filter by using the `TableClient.Query<T>` method. This example filters products by category using Language Integrated Query (LINQ) syntax, which is a benefit of using typed `ITableEntity` models like the `Product` class.
+After you insert an entity, you can also run a query to get all enities that match a specific filter by using the `TableClient.Query<T>` method. This example filters products by category using Language Integrated Query (LINQ) syntax, which is a benefit of using typed `ITableEntity` models like the `Product` class.
 
 ```csharp
 string category = "gear-surf-surfboards";
@@ -209,4 +217,5 @@ azd down
 
 - [Node.js Quickstart](quickstart-nodejs.md)
 - [Python Quickstart](quickstart-python.md)
+- [Java Quickstart](quickstart-java.md)
 - [Go Quickstart](quickstart-go.md)
