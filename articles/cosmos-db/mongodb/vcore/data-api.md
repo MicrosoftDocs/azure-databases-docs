@@ -1,7 +1,7 @@
 ---
   title: Data API for Azure Cosmos DB for MongoDB vCore
   titleSuffix: Azure Cosmos DB for MongoDB vCore
-  description: Explains how to interact with your MongoDB vCore data over HTTPS with simple RESTful endpoints
+  description: Explains how to interact with your MongoDB vCore data over HTTPS with simple RESTful endpoints.
   author: sajeetharan
   ms.author: sasinnat
   ms.service: azure-cosmos-db
@@ -19,19 +19,19 @@ The Data API for Azure Cosmos DB for MongoDB vCore is an https interface that al
 
 You can enable or disable this feature using the Azure CLI or an ARM template. Portal support will be added soon.
 
-### Steps to Enable Data API on vCore Cluster via ARM template
+### Steps to enable Data API on vCore cluster via ARM template
 
-1. **Get Connection String**:
+1. **Get connection string**:
    - Obtain the connection string of your vCore cluster from the Azure portal.
 
-2. **Retrieve Authentication Token**:
+2. **Retrieve authentication token**:
    - Run the following commands in Windows PowerShell:
      ```powershell
      az login
      az account get-access-token --resource-type arm
      ```
 
-3. **Send PATCH Request**:
+3. **Send PATCH request**:
    - Use the connection string from the Azure portal and send a PATCH request with:
      - **Authentication Token**: Use the token retrieved from PowerShell.
      - **Body**:
@@ -45,11 +45,11 @@ You can enable or disable this feature using the Azure CLI or an ARM template. P
        }
        ```
 
-4. **Verify Result**:
+4. **Verify result**:
    - Ensure the response payload includes `"dataApi": {"mode": "Enabled"}`.
    - If you encounter the error "Data API isn't supported on this cluster," note that only newly provisioned clusters support Data API.
 
-## Update MongoDB vCore Cluster Configuration
+## Update MongoDB vCore cluster configuration
 
 ### Request
 
@@ -57,7 +57,7 @@ You can enable or disable this feature using the Azure CLI or an ARM template. P
 **Endpoint:** `https://eastus2euap.management.azure.com/subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.DocumentDB/mongoClusters/<ClusterName>?api-version=2024-10-01-preview`
 
 
-### Request Body
+### Request body
 
 ```json
 {
@@ -69,7 +69,7 @@ You can enable or disable this feature using the Azure CLI or an ARM template. P
 }
 ```
 
-## Obtain Connection String
+## Obtain connection string
 
 To obtain the connection string for your MongoDB vCore cluster, follow these steps:
 
@@ -89,7 +89,7 @@ Use this command to perform an aggregation operation on a collection.
 curl {cluster-name}.data.global.mongocluster.cosmos.azure.com:443/data/v1/action/aggregate -H "Content-Type: application/ejson" -H "Accept:application/ejson" -d '{"database": "newDB", "collection": "newCollection", "pipeline": [{"$limit": 500}]}'
 ```
 
-#### List Databases
+#### List databases
 
 List all databases in the specified MongoDB vCore cluster.
 
@@ -98,7 +98,7 @@ curl {cluster-name}.data.global.mongocluster.cosmos.azure.com:443/data/v1/action
 
 ```
 
-#### List Collections
+#### List collections
 
 List all collections within a specific database.
 
@@ -106,7 +106,7 @@ List all collections within a specific database.
 curl {cluster-name}.data.global.mongocluster.cosmos.azure.com:443/data/v1/action/listCollections -H "Content-Type: application/ejson" -H "Accept:application/ejson" -d '{"database": "newDB"}'
 ```
 
-### Get Schema
+### Get schema
 
 Retrieve the schema details of a specific database.
 
