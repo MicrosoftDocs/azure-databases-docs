@@ -366,7 +366,7 @@ In this example, a vector search is performed by using `queryVector` as an input
 
 ### [IVF](#tab/IVF)
 
-To create a vector index using the IVF (Inverted File) algorithm, use the following `createIndexes` template and set the `"kind"` paramter to `"vector-ivf"`:
+To create a vector index using the IVF (Inverted File) algorithm, use the following `createIndexes` template and set the `"kind"` parameter to `"vector-ivf"`:
 
 ```json
 {
@@ -635,7 +635,7 @@ https://github.com/microsoft/semantic-kernel/tree/main/python/semantic_kernel/co
 Use LangChain to orchestrate your information retrieval from Azure Cosmos DB for MongoDB vCore and your LLM. Learn more [here](https://python.langchain.com/docs/integrations/vectorstores/azure_cosmos_db).
 
 ### Use as a semantic cache with LangChain
-Use LangChain and Azure Cosmos DB for MongoDB (vCore) to orchestrate Semantic Caching, using previously recocrded LLM respones that can save you LLM API costs and reduce latency for responses. Learn more [here](https://python.langchain.com/docs/integrations/vectorstores/azure_cosmos_db/)
+Use LangChain and Azure Cosmos DB for MongoDB (vCore) to orchestrate Semantic Caching, using previously recorded LLM responses that can save you LLM API costs and reduce latency for responses. Learn more [here](https://python.langchain.com/docs/integrations/vectorstores/azure_cosmos_db/)
 
 ## Features and limitations
 
@@ -653,7 +653,7 @@ This guide demonstrates how to create a vector index, add documents that have ve
 
 - [.NET RAG Pattern retail reference solution](https://github.com/Azure/Vector-Search-AI-Assistant-MongoDBvCore)
 - [.NET tutorial - recipe chatbot](https://github.com/microsoft/AzureDataRetrievalAugmentedGenerationSamples/tree/main/C%23/CosmosDB-MongoDBvCore)
-- [C# RAG pattern - Integrate Open AI Services with Cosmos](https://github.com/microsoft/AzureDataRetrievalAugmentedGenerationSamples/tree/main/C%23/CosmosDB-MongoDBvCore)
+- [C# RAG pattern - Integrate OpenAI Services with Cosmos](https://github.com/microsoft/AzureDataRetrievalAugmentedGenerationSamples/tree/main/C%23/CosmosDB-MongoDBvCore)
 - [Python RAG pattern - Azure product chatbot](https://github.com/microsoft/AzureDataRetrievalAugmentedGenerationSamples/tree/main/Python/CosmosDB-MongoDB-vCore)
 - [Python notebook tutorial - Vector database integration through LangChain](https://python.langchain.com/docs/integrations/vectorstores/azure_cosmos_db)
 - [Python notebook tutorial - LLM Caching integration through LangChain](https://python.langchain.com/docs/integrations/vectorstores/azure_cosmos_db/)
