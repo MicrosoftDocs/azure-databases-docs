@@ -141,27 +141,61 @@ Before you begin, ensure you have the following:
 ---
 
 ## Intuitive Data Management
-Manage your databases effortlessly:
-- **Create and Drop Databases/Collections**: Create or delete databases and collections directly in Visual Studio Code by right-clicking on your account in the resource panel.
-- **Import from JSON**: Load your data quickly from JSON files.
-- **Export Data**: Save entire collections or query results as JSON for backup or sharing.
-- **Real-time Document Editing**: Add, view, edit, and delete documents instantly, with changes reflected in real-time.
+Easily manage your databases within Visual Studio Code:
+
+- **Create and Drop Databases/Collections**: Right-click on your account, database, or collection in the resource panel to create or delete databases and collections.
+
+- **Import from JSON**: Quickly import data from JSON files into your collection.
+    - **Initiate Import**
+        1. Right-click on the collection name in the resource view and select **Import Documents into Collection**.
+        1. Alternatively, open the "Collection View" by clicking on the **Documents** entry of your collection, then click the **Import** button.
+    - **Select JSON File**
+        1. Browse to locate the *.json file containing your data.
+        1. Confirm to start the import process.
+
+- **Export Data**: Save collections or query results as JSON for backup or sharing.
+    - **Initiate Export**  
+        - **Option 1**  
+            1. Right-click on the collection name in the resource view and select **Export Documents from Collection** to export the entire collection.
+        - **Option 2**  
+            1. Open the "Collection View" by clicking on the **Documents** entry of your collection, then click the **Export** button.
+            1. Choose to export either the entire collection or the results of the current query.
+    - **Specify Destination File**  
+        1. Enter the name and location for the destination *.json file.
+        1. Confirm export to start saving the data.
+
+- **Real-Time Document Editing**: Instantly add, view, edit, and delete documents with real-time updates.
+    - **Open Document Editing**  
+        - Access document editing options directly within the "Collection View." These controls are conveniently located above the data view for easy access.
+    - **Available Actions**  
+        - **Add**: Create new documents within the collection.
+        - **View**: View the content of the selected document.
+        - **Edit**: Edit the content of selected documents.
+        - **Delete**: Remove selected documents with changes reflected immediately.
+
 :::image type="content" source="./media/dev-tooling/VS-code/vCore-vs-code-screenshot.png" alt-text="Screenshot of VS-code extension of a CosmosDB for MongoDB (vCore) cluster" lightbox="./media/dev-tooling/VS-code/vCore-vs-code-screenshot.png":::
 
-Azure Cosmos DB for MongoDB (vCore) and any MongoDB clusters you add are now conveniently accessible in one unified interface!
-
 ## Powerful Query Tools
-Run and refine your queries with ease:
-- **Execute Queries Directly**: Write and run MongoDB queries with helpful features like syntax highlighting and auto-completion.
-- **Instant Results**: View query results immediately in a format that works best for you—Table, JSON, or Tree view.
+Run and refine your queries seamlessly:
+- **Instant Results**: Immediately view query results in your preferred format—Table, JSON, or Tree view.
+    - Switch views easily using the **View** dropdown menu.
+
+- **Execute Queries Directly**: Write and execute MongoDB queries with features like syntax highlighting and auto-completion.
+    - To run your query, click the **Find Query** button or press `Ctrl/Cmd+Enter` in the query editor.
+> [!NOTE]  
+> Currently, only find filter queries are supported, with expanded query capabilities coming soon.
 
 ## Flexible Data Views
-Explore your data in multiple ways:
-- **JSON View**: See the raw data structure.
+Explore your data using multiple views for different perspectives:
+- **JSON View**: See the raw JSON data structure.
 :::image type="content" source="./media/dev-tooling/VS-code/vCore-vs-code-json-view.png" alt-text="Screenshot of VS-code extension of a CosmosDB for MongoDB (vCore) cluster in JSON view" lightbox="./media/dev-tooling/VS-code/vCore-vs-code-json-view.png":::
-- **Tree View**: Navigate nested data with ease.
+
+- **Tree View**: Navigate and explore nested data effortlessly.
 :::image type="content" source="./media/dev-tooling/VS-code/vCore-vs-code-tree-view.png" alt-text="Screenshot of VS-code extension of a CosmosDB for MongoDB (vCore) cluster in Tree view" lightbox="./media/dev-tooling/VS-code/vCore-vs-code-tree-view.png":::
-- **Table View**: Quickly scan through data and drill down into nested data with just a double-click.
+
+- **Table View**: Quickly scan data and drill down into nested documents.
+    - **To drill down**: Find entries with the `{}` icon, which indicate embedded objects. Double-click to expand and view contents.
+    - **To go back**: Use the navigation breadcrumbs below the Table View to return to previous levels.
 :::image type="content" source="./media/dev-tooling/VS-code/vCore-vs-code-table-view.png" alt-text="Screenshot of VS-code extension of a CosmosDB for MongoDB (vCore) cluster in Table view" lightbox="./media/dev-tooling/VS-code/vCore-vs-code-table-view.png":::
 
 ## Mongo Shell Integration
@@ -174,6 +208,7 @@ Command-line functionality is available:
 ## Cluster Management at Your Fingertips
 Stay on top of your resources:
 - **View Cluster Details**: Check your cluster’s tier, server version, and resource usage.
+
 - **Manage Tags**: Organize your clusters with tags that sync with the Azure Portal.
 
 ## Next steps
