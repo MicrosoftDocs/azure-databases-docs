@@ -47,25 +47,25 @@ The following steps will use the Query Editor to execute a query and view the re
 
 1. In the menu for your collection, right-click on the collection to open the Query Editor in Preview.
 
-     :::image type="content" source="./media/dev-tooling/VS-code/open-query-editor.png" lightbox="media/dev-tooling/VS-code/open-query-editor.png" alt-text="Screenshot of the query editor in VS Code.":::
+     :::image type="content" source="./media/dev-tooling/VS-code/open-query-editor.png" lightbox="./media/dev-tooling/VS-code/open-query-editor.png" alt-text="Screenshot of the query editor in VS Code.":::
 
 2. Run the query provided in the query editor to display your data in **Table View**:
 
-    :::image type="content" source="./media/dev-tooling/VS-code/view-query-editor-results.png" lightbox="media/dev-tooling/VS-code/view-query-editor-results.png" alt-text="Screenshot of the query editor results in VS Code.":::
+    :::image type="content" source="./media/dev-tooling/VS-code/view-query-editor-results.png" lightbox="./media/dev-tooling/VS-code/view-query-editor-results.png" alt-text="Screenshot of the query editor results in VS Code.":::
 
 3. Explore your data in other supported views:
 
 - **JSON View**: See the raw data structure.
-    :::image type="content" source="./media/dev-tooling/VS-code/view-json-view.png" lightbox="media/dev-tooling/VS-code/view-json-views.png" alt-text="Screenshot of the query editor results in json view.":::
+    :::image type="content" source="./media/dev-tooling/VS-code/view-json-view.png" lightbox="./media/dev-tooling/VS-code/view-json-views.png" alt-text="Screenshot of the query editor results in json view.":::
 - **Tree View**: Navigate nested data with ease.
-    :::image type="content" source="./media/dev-tooling/VS-code/view-tree-view.png" lightbox="media/dev-tooling/VS-code/view-tree-view.png" alt-text="Screenshot of the query editor results in tree view.":::
+    :::image type="content" source="./media/dev-tooling/VS-code/view-tree-view.png" lightbox="./media/dev-tooling/VS-code/view-tree-view.png" alt-text="Screenshot of the query editor results in tree view.":::
 
 
 ## View query and index metrics
 Within the query editor, view additional query and index metrics to better help optimize your query performance.
 
 1. Select the **Stats** tab next to the  query **Results**.
-    :::image type="content" source="media/dev-tooling/VS-code/view-query-stats.png" lightbox="media/dev-tooling/VS-code/view-query-stats.png" alt-text="Screenshot of the query stats in VS Code.":::
+    :::image type="content" source="./media/dev-tooling/VS-code/view-query-stats.png" lightbox="./media/dev-tooling/VS-code/view-query-stats.png" alt-text="Screenshot of the query stats in VS Code.":::
 
 2. For more information on the metric definitions view the [query metrics documentation](./nosql/query-metrics.md).
 
