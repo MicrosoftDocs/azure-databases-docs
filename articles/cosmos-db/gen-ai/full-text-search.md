@@ -57,7 +57,7 @@ For every text property you'd like to configure for full text search, you must d
     "defaultLanguage": "en-US",
     "fullTextPaths": [
         {
-            "path": "/text1",
+            "path": "/text",
             "language": "en-US"
         }
     ]
