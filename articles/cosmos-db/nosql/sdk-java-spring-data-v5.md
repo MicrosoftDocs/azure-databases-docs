@@ -80,7 +80,7 @@ Release history is maintained in the azure-sdk-for-java repo, for detailed list 
 
 ## Recommended version
 
-It's strongly recommended to use version 5.3.0 and above.
+It's strongly recommended to use version 5.18.0 and above.
 
 ## Additional notes
 
