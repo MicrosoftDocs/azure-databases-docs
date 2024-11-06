@@ -32,7 +32,7 @@ Azure Cosmos DB for MongoDB vCore now supports secondary users with specialized 
  
 ## Supported commands and examples
 
- The MongoDB vCore  now supports Role-Based Access Control (RBAC) for secondary users with read and write privileges.This allows administrators to assign roles that grant access to secondary databases for essential read operations while protecting primary data integrity.
+ The MongoDB vCore  now supports Role-Based Access Control (RBAC) for secondary users with read and write privileges. This allows administrators to assign roles that grant access to secondary databases for essential read operations while protecting primary data integrity.
 
  > [!NOTE]
 >  You can use any of the MongoDB drivers or mongotools such as mongosh to perform these operations.
@@ -111,7 +111,7 @@ db.runCommand(
 
 ### List Users
 
-Returns information about one or more users. It also support passing in a single user to usersInfo, in that case it returns information about the user, it's role etc.
+Returns information about one or more users. It also supports passing in a single user to usersInfo. In that case it returns information about the user, its role etc.
 
 
 
@@ -126,6 +126,6 @@ db.runCommand(
 
 ## Limitations
 
--  You can create up to 10 users/roles per cluster. if you have a requirement to add more users, please open a [support ticket](/azure/azure-portal/supportability/how-to-create-azure-support-request)
+-  You can create up to 10 users/roles per cluster. If you have a requirement to add more users, please open a [support ticket](/azure/azure-portal/supportability/how-to-create-azure-support-request).
 -  The `Updateuser` command now only supports password updates and cannot modify other object fields.
--  The `Roleinfo` command is not supported in preview. Alternatively you can use `usersInfo`
+-  The `Roleinfo` command is not supported in preview. Alternatively you can use `usersInfo`.
