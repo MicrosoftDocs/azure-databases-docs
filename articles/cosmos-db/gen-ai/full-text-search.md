@@ -54,11 +54,13 @@ For every text property you'd like to configure for full text search, you must d
 
  ```json
 {
-    "fullTextPolicy": [
+    "defaultLanguage": "en-US",
+    "fullTextPaths": [
         {
-            "path":"/text",
-            "language":"en-us",
-        },
+            "path": "/text",
+            "language": "en-US"
+        }
+    ]
 }
 ```
 
@@ -66,15 +68,17 @@ Defining multiple text paths is easily done by adding another element to the `fu
 
  ```json
 {
-    "fullTextPolicy": [
+    "defaultLanguage": "en-US",
+    "fullTextPaths": [
         {
-            "path":"/text",
-            "language":"en-us",
+            "path": "/text1",
+            "language": "en-US"
         },
         {
-            "path":"/text2",
-            "language":"en-us",
-        },
+            "path": "/text2",
+            "language": "en-US"
+        }
+    ]
 }
 ```
 
