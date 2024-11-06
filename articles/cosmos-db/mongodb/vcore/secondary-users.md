@@ -12,7 +12,7 @@
 
 # Read and Read/Write Privileges with Secondary Users on Azure Cosmos DB for MongoDB vCore (Preview)
 
-Azure Cosmos DB for MongoDB vCore now supports secondary users with specialized read-write roles. This feature enables secondary users to access and modify data without requiring full administrative privileges, making it easier to delegate responsibilities while enhancing data security. By allowing granular access control, teams can confidently extend data access to various stakeholders, such as developers and analysts, without compromising system integrity.
+Azure Cosmos DB for MongoDB vCore now supports secondary users with specialized read-write roles. This feature enables secondary users to access and modify data, making it easier to delegate responsibilities while enhancing data security. By allowing granular access control, teams can confidently extend data access to various stakeholders, such as developers and analysts, without compromising system integrity.
 
 
 ## Configuring Secondary Users 
