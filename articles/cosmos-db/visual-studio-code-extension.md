@@ -56,7 +56,7 @@ The following steps will use the Query Editor to execute a query and view the re
 3. Explore your data in other supported views:
 
 - **JSON View**: See the raw data structure.
-    :::image type="content" source="./media/dev-tooling/VS-code/view-json-view.png" lightbox="./media/dev-tooling/VS-code/view-json-views.png" alt-text="Screenshot of the query editor results in json view.":::
+    :::image type="content" source="./media/dev-tooling/VS-code/view-json-view.png" lightbox="./media/dev-tooling/VS-code/view-json-view.png" alt-text="Screenshot of the query editor results in json view.":::
 - **Tree View**: Navigate nested data with ease.
     :::image type="content" source="./media/dev-tooling/VS-code/view-tree-view.png" lightbox="./media/dev-tooling/VS-code/view-tree-view.png" alt-text="Screenshot of the query editor results in tree view.":::
 
