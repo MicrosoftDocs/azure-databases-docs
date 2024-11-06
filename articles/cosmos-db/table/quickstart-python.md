@@ -113,7 +113,7 @@ The sample code in the template uses a table named `cosmicworks-products`. The `
 This sample creates a new instance of the `TableServiceClient` type.
 
 ```python
-client = TableServiceClient("<azure-cosmos-db-table-account-endpoint>", credential=credential)
+client = TableServiceClient(endpoint="<azure-cosmos-db-table-account-endpoint>", credential=credential)
 ```
 
 ### Get a table
@@ -126,38 +126,50 @@ table = client.get_table_client("<azure-cosmos-db-table-name>")
 
 ### Create an entity
 
-The easiest way to create a new entity in a table is to TODO
+The easiest way to create a new entity in a table is to create a new object ensuring that you specify the mandatory `RowKey` and `PartitionKey` properties.
 
 ```python
-TODO
+new_entity = {
+    "RowKey": "70b63682-b93a-4c77-aad2-65501347265f",
+    "PartitionKey": "gear-surf-surfboards",
+    "Name": "Yamba Surfboard",
+    "Quantity": 12,
+    "Sale": False,
+}
 ```
 
-Create an entity in the collection using TODO
+Create an entity in the table using `upsert_entity`.
 
 ```python
-TODO
+created_entity = table.upsert_entity(new_entity)
 ```
 
 ### Get an entity
 
-You can retrieve a specific entity from a table using TODO
+You can retrieve a specific entity from a table using `get_entity`.
 
 ```python
-TODO
+existing_entity = table.get_entity(
+    row_key="70b63682-b93a-4c77-aad2-65501347265f",
+    partition_key="gear-surf-surfboards",
+)
 ```
 
 ### Query entities
 
-After you insert an entity, you can also run a query to get all entities that match a specific filter by using TODO
+After you insert an entity, you can also run a query to get all entities that match a specific filter by using `query_entities` with a string OData filter.
 
 ```python
-TODO
+category = "gear-surf-surfboards"
+filter = f"PartitionKey eq '{category}'"
+entities = table.query_entities(query_filter=filter)
 ```
 
-Parse the paginated results of the query by TODO
+Parse the paginated results of the query by using a `for` loop.
 
 ```python
-TODO
+for entity in entities:
+    # Do something
 ```
 
 ## Clean up resources
