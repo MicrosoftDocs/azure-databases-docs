@@ -47,18 +47,18 @@ The following steps will use the Query Editor to execute a query and view the re
 
 1. In the menu for your collection, right-click on the collection to open the Query Editor in Preview.
 
-     :::image type="content" source="media/dev-tooling/VS-code/open-query-editor.png" lightbox="media/dev-tooling/VS-code/open-query-editor.png" alt-text="Screenshot of the query editor in VS Code.":::
+     :::image type="content" source="./media/dev-tooling/VS-code/open-query-editor.png" lightbox="media/dev-tooling/VS-code/open-query-editor.png" alt-text="Screenshot of the query editor in VS Code.":::
 
 2. Run the query provided in the query editor to display your data in **Table View**:
 
-    :::image type="content" source="media/dev-tooling/VS-code/view-query-editor-results.png" lightbox="media/dev-tooling/VS-code/view-query-editor-results.png" alt-text="Screenshot of the query editor results in VS Code.":::
+    :::image type="content" source="./media/dev-tooling/VS-code/view-query-editor-results.png" lightbox="media/dev-tooling/VS-code/view-query-editor-results.png" alt-text="Screenshot of the query editor results in VS Code.":::
 
 3. Explore your data in other supported views:
 
 - **JSON View**: See the raw data structure.
-    :::image type="content" source="media/dev-tooling/VS-code/view-json-view.png" lightbox="media/dev-tooling/VS-code/view-json-views.png" alt-text="Screenshot of the query editor results in json view.":::
+    :::image type="content" source="./media/dev-tooling/VS-code/view-json-view.png" lightbox="media/dev-tooling/VS-code/view-json-views.png" alt-text="Screenshot of the query editor results in json view.":::
 - **Tree View**: Navigate nested data with ease.
-    :::image type="content" source="media/dev-tooling/VS-code/view-tree-view.png" lightbox="media/dev-tooling/VS-code/view-tree-view.png" alt-text="Screenshot of the query editor results in tree view.":::
+    :::image type="content" source="./media/dev-tooling/VS-code/view-tree-view.png" lightbox="media/dev-tooling/VS-code/view-tree-view.png" alt-text="Screenshot of the query editor results in tree view.":::
 
 
 ## View query and index metrics
@@ -87,10 +87,10 @@ Move data in and out seamlessly:
 In this tutorial, you've learned how to query data in VS Code, export query results, view query and index metrics for tuning query performance and display data in the multiple supported views. You can now use the Azure Databases VS Code Extension to review real data in your database.
 
 - [Get started with the API for NoSQL](nosql/quickstart-dotnet.md)
-- [Node.js Quickstart](quickstart-nodejs.md)
-- [Python Quickstart](quickstart-python.md)
-- [Java Quickstart](quickstart-java.md)
-- [Go Quickstart](quickstart-go.md)
+- [Node.js Quickstart](nosql/quickstart-nodejs.md)
+- [Python Quickstart](nosql/quickstart-python.md)
+- [Java Quickstart](nosql/quickstart-java.md)
+- [Go Quickstart](nosql/quickstart-go.md)
 
 ::: zone-end
 
