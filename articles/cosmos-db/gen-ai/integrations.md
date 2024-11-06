@@ -1,14 +1,12 @@
 ---
-
 title: Integrations with Azure Cosmos DB for AI apps
 description: Learn about integrations with AI/LLM orchestration packages
 author: jcodella
 ms.service: azure-cosmos-db
-ms.subservice: nosql
+ms.subservice: nosql, mongodb
 ms.topic: how-to
 ms.date: 9/16/2024
 ms.author: jacodel
-
 ---
 
 # Integrations
@@ -19,7 +17,7 @@ ms.author: jacodel
 Azure Cosmos DB seamlessly integrates with leading large language model (LLM) orchestration packages like [Semantic Kernel](https://github.com/microsoft/semantic-kernel) and [LangChain](https://www.langchain.com/), enabling developers to harness the power of advanced AI capabilities within their applications. These orchestration packages can streamline the management and use of LLMs, embedding models, and databases, making it even easier to develop Generative AI applications.
 
 
-| Integration Tool | Description | Azure Cosmos DB for NoSQL | Azure Cosmos DB for MongoDB vCore |
+| Integration Tool | Description | Azure Cosmos DB for NoSQL | Azure Cosmos DB for MongoDB (vCore) |
 |------------------|-------------|---------------------------|-----------------------------------|
 | **[Semantic Kernel](https://github.com/microsoft/semantic-kernel)** | An open-source framework by Microsoft that combines AI agents with languages like C#, Python, and Java, enabling seamless orchestration of code and AI models. | [Python Connector](https://learn.microsoft.com/semantic-kernel/concepts/vector-store-connectors/out-of-the-box-connectors/azure-cosmosdb-nosql-connector?pivots=programming-language-python) <br> [.NET Connector](https://learn.microsoft.com/semantic-kernel/concepts/vector-store-connectors/out-of-the-box-connectors/azure-cosmosdb-nosql-connector?pivots=programming-language-csharp) | [Python Connector](https://learn.microsoft.com/semantic-kernel/concepts/vector-store-connectors/out-of-the-box-connectors/azure-cosmosdb-mongodb-connector?pivots=programming-language-python) <br> [.NET Connector](https://learn.microsoft.com/semantic-kernel/concepts/vector-store-connectors/out-of-the-box-connectors/azure-cosmosdb-mongodb-connector?pivots=programming-language-csharp) |
 | **[LangChain](https://www.langchain.com/)** | A framework that simplifies the creation of applications powered by large language models (LLMs), offering tools for context-aware reasoning applications in Python, JavaScript, and Java. | [Python](https://python.langchain.com/docs/integrations/vectorstores/azure_cosmos_db_no_sql/) <br> [JavaScript](https://js.langchain.com/docs/integrations/vectorstores/azure_cosmosdb_nosql/) <br> [Java](https://docs.langchain4j.dev/integrations/embedding-stores/azure-cosmos-nosql/) | [Python](https://python.langchain.com/docs/integrations/vectorstores/azure_cosmos_db/) <br> [JavaScript](https://js.langchain.com/docs/integrations/vectorstores/azure_cosmosdb_mongodb/) <br> [Java](https://docs.langchain4j.dev/integrations/embedding-stores/azure-cosmos-mongo-vcore/) |
