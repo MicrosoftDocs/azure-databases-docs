@@ -2,7 +2,7 @@
 ms.service: azure-cosmos-db
 ms.subservice: table
 ms.topic: include
-ms.date: 10/22/2024
+ms.date: 10/28/2024
 ---
 
 > [!div class="op_single_selector"]
@@ -11,4 +11,5 @@ ms.date: 10/22/2024
 > - [Python](../../quickstart-python.md)
 > - [Node.js](../../quickstart-nodejs.md)
 > - [Java](../../quickstart-java.md)
+> - [Go](../../quickstart-go.md)
 >

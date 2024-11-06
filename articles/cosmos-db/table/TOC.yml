@@ -16,6 +16,8 @@
     href: quickstart-nodejs.md
   - name: Java
     href: quickstart-java.md
+  - name: Go
+    href: quickstart-go.md
 - name: Tutorials
   items:
   - name: Query data
