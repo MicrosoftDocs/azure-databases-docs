@@ -106,6 +106,10 @@ To verify if you're using an SSL connection to connect to the server refer to [S
 
 No. Since the change is only on the client side to connect to the database server, there's no maintenance downtime needed for the database server for this change.
 
+###  Is there a rollback plan for the root CA rotation? 
+
+If your application experiences issues after the CA rotation, replace the CA file by reinstalling the combined CA or SHA-2 based CA depending on your use case. We recommend you don't rollback the change as this change is mandatory.
+
 ### How often does Microsoft update their certificates or what is the expiry policy?
 
 These certificates used by Azure Database for MySQL are provided by trusted Certificate Authorities (CA). Our support of these certificates is based on the support the CA provides for these certificates. The DigiCertGlobalRootCA certificate's use of the less secure SHA-1 hashing algorithm compromises the security of applications connecting to Azure Database for MySQL so Microsoft needs to perform a certificate change.
