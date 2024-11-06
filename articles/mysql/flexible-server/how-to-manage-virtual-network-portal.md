@@ -21,8 +21,8 @@ Azure Database for MySQL Flexible Server supports two types of mutually exclusiv
 
 This article focuses on creation of MySQL server with **Private access (VNet Integration)** using Azure portal. With Private access (virtual network integration), you can deploy your Azure Database for MySQL Flexible Server instance into your own [Azure Virtual Network](/azure/virtual-network/virtual-networks-overview). Azure Virtual Networks provide private and secure network communication. With private access, connections to the MySQL server are restricted to your virtual network. To learn more about it, refer to [Private access (virtual network Integration)](./concepts-networking-vnet.md#private-access-virtual-network-integration).
 
->[!Note]
->You can deploy your Azure Database for MySQL Flexible Server instance into a virtual network and subnet during server creation. After the Azure Database for MySQL Flexible Server instance is deployed, you cannot move it into another virtual network, subnet or to *Public access (allowed IP addresses)*.
+> [!Note]
+> You can deploy your Azure Database for MySQL Flexible Server instance into a virtual network and subnet during server creation. After the Azure Database for MySQL Flexible Server instance is deployed, you cannot move it into another virtual network or subnet. 
 
 ## Prerequisites
 

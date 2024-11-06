@@ -116,8 +116,10 @@
         href: flexible-server/generative-ai-recommendation-system.md
       - name: Integrate Azure AI capabilities
         href: flexible-server/how-to-integrate-azure-ai.md
-    - name: Azure Storage Extension
-      href: flexible-server/concepts-storage-extension.md
+    - name: Import and export data
+      items:
+      - name: pg_azure_storage extension
+        href: flexible-server/concepts-storage-extension.md
     - name: Microsoft Entra authentication
       href: flexible-server/concepts-azure-ad-authentication.md
     - name: Major version upgrade 
@@ -258,6 +260,8 @@
         displayName: monitor, metrics
       - name: Workbooks
         href: flexible-server/concepts-workbooks.md 
+      - name: Monitor High-availability
+        href: flexible-server/how-to-monitor-high-availability.md
       - name: Logs
         href: flexible-server/concepts-logging.md
         displayName: monitor, server logs
@@ -541,7 +545,7 @@
       - name: Overview  
         href: flexible-server/how-to-use-pgdiskann.md
     - name: Azure Storage (pg_azure_storage)
-      href: flexible-server/reference-pg-azure-storage.md
+      href: flexible-server/how-to-use-pg-azure-storage.md
     - name: Vector similarity search (pgvector)
       items:
       - name: Basics of pgvector
