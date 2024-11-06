@@ -253,7 +253,7 @@ ms.topic: include
 | Description    | Specifies which extensions are allowed to be created in the server.                                                                                                                         |
 | Data type      | set         |
 | Default value  |                                                                            |
-| Allowed values | `address_standardizer,address_standardizer_data_us,age,amcheck,anon,azure_ai,azure_storage,bloom,btree_gin,btree_gist,citext,cube,dblink,dict_int,dict_xsyn,earthdistance,fuzzystrmatch,hstore,hypopg,intagg,intarray,isn,lo,login_hook,ltree,oracle_fdw,orafce,pageinspect,pg_buffercache,pg_cron,pg_freespacemap,pg_hint_plan,pg_partman,pg_prewarm,pg_repack,pg_squeeze,pg_stat_statements,pg_trgm,pg_visibility,pgaudit,pgcrypto,pglogical,pgrowlocks,pgstattuple,plpgsql,plv8,postgis,postgis_raster,postgis_sfcgal,postgis_tiger_geocoder,postgis_topology,postgres_fdw,postgres_protobuf,semver,session_variable,sslinfo,tablefunc,tds_fdw,timescaledb,tsm_system_rows,tsm_system_time,unaccent,uuid-ossp,vector` |
+| Allowed values | `address_standardizer,address_standardizer_data_us,age,amcheck,anon,azure_ai,azure_storage,bloom,btree_gin,btree_gist,citext,cube,dblink,dict_int,dict_xsyn,earthdistance,fuzzystrmatch,hstore,hypopg,intagg,intarray,isn,lo,login_hook,ltree,oracle_fdw,orafce,pageinspect,pg_buffercache,pg_cron,pg_diskann,pg_freespacemap,pg_hint_plan,pg_partman,pg_prewarm,pg_repack,pg_squeeze,pg_stat_statements,pg_trgm,pg_visibility,pgaudit,pgcrypto,pglogical,pgrowlocks,pgstattuple,plpgsql,plv8,postgis,postgis_raster,postgis_sfcgal,postgis_tiger_geocoder,postgis_topology,postgres_fdw,postgres_protobuf,semver,session_variable,sslinfo,tablefunc,tds_fdw,timescaledb,tsm_system_rows,tsm_system_time,unaccent,uuid-ossp,vector` |
 | Parameter type | dynamic        |
 | Documentation  | [azure.extensions](https://go.microsoft.com/fwlink/?linkid=2274269)                                                                                    |
 
@@ -1174,6 +1174,23 @@ ms.topic: include
 | Allowed values | `100-10000`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | Parameter type | dynamic        |
 | Documentation  | [pg_qs.max_query_text_length](https://go.microsoft.com/fwlink/?linkid=2274607)                                                                         |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### pg_qs.parameters_capture_mode
+
+| Attribute      | Value                                                      |
+|----------------|------------------------------------------------------------|
+| Category       | Customized Options |
+| Description    | Whether and when to capture query positional parameters.                                                                                                                                    |
+| Data type      | enumeration |
+| Default value  | `capture_parameterless_only`                                               |
+| Allowed values | `capture_parameterless_only,capture_first_sample`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| Parameter type | dynamic        |
+| Documentation  | [pg_qs.parameters_capture_mode](https://go.microsoft.com/fwlink/?linkid=2274607)                                                                       |
 
 
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]

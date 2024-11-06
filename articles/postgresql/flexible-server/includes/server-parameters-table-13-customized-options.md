@@ -1180,6 +1180,23 @@ ms.topic: include
 
 
 
+### pg_qs.parameters_capture_mode
+
+| Attribute      | Value                                                      |
+|----------------|------------------------------------------------------------|
+| Category       | Customized Options |
+| Description    | Whether and when to capture query positional parameters.                                                                                                                                    |
+| Data type      | enumeration |
+| Default value  | `capture_parameterless_only`                                               |
+| Allowed values | `capture_parameterless_only,capture_first_sample`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| Parameter type | dynamic        |
+| Documentation  | [pg_qs.parameters_capture_mode](https://go.microsoft.com/fwlink/?linkid=2274607)                                   |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
 ### pg_qs.query_capture_mode
 
 | Attribute      | Value                                                      |
