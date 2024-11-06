@@ -17,7 +17,7 @@ The Data api for Azure Cosmos DB for MongoDB vCore is a https interface that all
 
 ## Enabling Data api on MongoDB vCore
 
-You can enable/disable this feature using Azure CLI or an ARM template. We will be adding the support to enable/disable this feature soon.
+You can enable or disable this feature using the Azure CLI or an ARM template. Portal support will be added soon.
 
 ### Steps to Enable Data API on vCore Cluster via ARM template
 
@@ -79,8 +79,9 @@ To obtain the connection string for your MongoDB vCore cluster, follow these ste
 
 ## How to use Data Api
 
+Let's explore the supported operations, how to use the Data api.
 
-### Aggregate
+#### Aggregate
 
 Use this command to perform an aggregation operation on a collection.
 
@@ -95,9 +96,9 @@ curl {cluster-name}.data.global.mongocluster.cosmos.azure.com:443/data/v1/action
     }'
 ```
 
-### List Databases
+#### List Databases
 
-List all databases in the cluster.
+List all databases in the specified MongoDB vCore cluster.
 
 ```bash
 curl {cluster-name}.data.global.mongocluster.cosmos.azure.com:443/data/v1/action/listDatabases \
@@ -106,7 +107,7 @@ curl {cluster-name}.data.global.mongocluster.cosmos.azure.com:443/data/v1/action
 -d '{}'
 ```
 
-### List Collections
+#### List Collections
 
 List all collections within a specific database.
 
@@ -121,9 +122,14 @@ curl {cluster-name}.data.global.mongocluster.cosmos.azure.com:443/data/v1/action
 
 ### Get Schema
 
-Get the schema of a specific database.
+Retrieve the schema details of a specific database.
 
-```bash
+
+Here's the formatted version for your .md file:
+
+markdown
+Copy code
+```curl
 curl {cluster-name}.data.global.mongocluster.cosmos.azure.com:443/data/v1/action/getSchema \
 -H "Content-Type: application/ejson" \
 -H "Accept:application/ejson" \
