@@ -13,9 +13,7 @@ ms.author: jacodel
 
 [!INCLUDE[NoSQL, MongoDB](../includes/appliesto-nosql-mongodb.md)]
 
-
 Azure Cosmos DB seamlessly integrates with leading large language model (LLM) orchestration packages like [Semantic Kernel](https://github.com/microsoft/semantic-kernel) and [LangChain](https://www.langchain.com/), enabling developers to harness the power of advanced AI capabilities within their applications. These orchestration packages can streamline the management and use of LLMs, embedding models, and databases, making it even easier to develop Generative AI applications.
-
 
 | Integration Tool | Description | Azure Cosmos DB for NoSQL | Azure Cosmos DB for MongoDB (vCore) |
 |------------------|-------------|---------------------------|-----------------------------------|
