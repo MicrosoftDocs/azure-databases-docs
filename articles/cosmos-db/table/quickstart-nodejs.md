@@ -19,6 +19,8 @@ zone_pivot_groups: azure-devlang-nodejs
 
 # Quickstart: Use Azure Cosmos DB for Table with Azure SDK for Node.js
 
+[!INCLUDE[Developer Quickstart selector](includes/quickstart/dev-selector.md)]
+
 In this quickstart, you deploy a basic Azure Cosmos DB for Table application using the Azure SDK for Node.js. Azure Cosmos DB for Table is a schemaless data store allowing applications to store structured table data in the cloud. You learn how to create tables, rows, and perform basic tasks within your Azure Cosmos DB resource using the Azure SDK for Node.js
 
 [API reference documentation](/javascript/api/%40azure/data-tables) | [Library source code](https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/tables/data-tables) | [Package (npm)](https://www.npmjs.com/package/@azure/data-tables) | [Azure Developer CLI](/azure/developer/azure-developer-cli/overview)

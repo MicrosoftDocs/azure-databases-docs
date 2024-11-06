@@ -18,6 +18,8 @@ appliesto:
 
 # Quickstart: Use Azure Cosmos DB for Table with Azure SDK for Go
 
+[!INCLUDE[Developer Quickstart selector](includes/quickstart/dev-selector.md)]
+
 In this quickstart, you deploy a basic Azure Cosmos DB for Table application using the Azure SDK for Go. Azure Cosmos DB for Table is a schemaless data store allowing applications to store structured table data in the cloud. You learn how to create tables, rows, and perform basic tasks within your Azure Cosmos DB resource using the Azure SDK for Go
 
 [Library source code](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/sdk/data/aztables#pkg-types) | [Package (Go)](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/sdk/data/aztables) | [Azure Developer CLI](/azure/developer/azure-developer-cli/overview)
