@@ -150,9 +150,7 @@ This sample creates a new instance of the `TableServiceClient` type.
 ::: zone pivot="programming-language-ts"
 
 ```typescript
-const credential: TokenCredential = new DefaultAzureCredential();
-
-let client: TableServiceClient = new TableServiceClient("<azure-cosmos-db-table-account-endpoint>", credential);
+let client: TableServiceClient = new TableServiceClient("<azure-cosmos-db-table-account-endpoint>", "<credential>");
 ```
 
 ::: zone-end
