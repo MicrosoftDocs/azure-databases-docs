@@ -328,6 +328,8 @@
       href: change-feed-pull-model.md
   - name: Emulator
     href: ../emulator.md
+  - name: Linux emulator (preview)
+    href: ../emulator-linux.md
   - name: Integrated cache
     items:
     - name: Dedicated gateway overview

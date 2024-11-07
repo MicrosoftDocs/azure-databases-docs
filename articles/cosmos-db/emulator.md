@@ -6,7 +6,7 @@ author: sajeetharan
 ms.author: sasinnat
 ms.service: azure-cosmos-db
 ms.topic: concept-article
-ms.date: 10/09/2024
+ms.date: 11/07/2024
 # CustomerIntent: As a developer, I want to use the Azure Cosmos DB emulator so that I can develop my application against a database during development.
 ---
 
@@ -56,6 +56,10 @@ Every request made against the emulator must be authenticated using a key over T
 ## Import emulator certificate
 
 In some cases, you may wish to manually import the TLS/SS certificate from the emulator's running container into your host machine. This step avoids bad practices like disabling TLS/SSL validation in the SDK. For more information, see [import certificate](how-to-develop-emulator.md#import-the-emulators-tlsssl-certificate).
+
+## Related content
+
+- [Linux-based Azure Cosmos DB emulator (preview)](emulator-linux.md)
 
 ## Next step
 
