@@ -8,6 +8,8 @@ ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: conceptual
 ms.date: 07/08/2024
+ms.collection:
+  - ce-skilling-ai-copilot
 ---
 
 # RAG with vCore-based Azure Cosmos DB for MongoDB
