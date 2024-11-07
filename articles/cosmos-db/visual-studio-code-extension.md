@@ -29,10 +29,10 @@ Before you begin, ensure you have the following:
 
 - To connect and manage data in Azure Cosmos DB within Visual Studio, first install the **Azure Databases** extension.
 
-1. Open Visual Studio Code.
-2. Access the **Extensions** pane by selecting **View > Extensions**  or using the shortcut **Ctrl + Shift + X** on Windows and **Command + Shift + X** on MacOS.
-3. In the search bar, type [Azure Databases extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb) and select the extension. Then, click **Install**.
-4. After installation, reload Visual Studio Code if prompted.
+    1. Open Visual Studio Code.
+    2. Access the **Extensions** pane by selecting **View > Extensions**  or using the shortcut **Ctrl + Shift + X** on Windows and **Command + Shift + X** on MacOS.
+    3. In the search bar, type [Azure Databases extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb) and select the extension. Then, click **Install**.
+    4. After installation, reload Visual Studio Code if prompted.
 
 ### Connecting to an Azure Cosmos DB for NoSQL
 
@@ -47,25 +47,25 @@ The following steps will use the Query Editor to execute a query and view the re
 
 1. In the menu for your collection, right-click on the collection to open the Query Editor in Preview.
 
-     :::image type="content" source="./media/dev-tooling/VS-code/open-query-editor.png" lightbox="./media/dev-tooling/VS-code/open-query-editor.png" alt-text="Screenshot of the query editor in VS Code.":::
+     :::image type="content" source="./media/dev-tooling/VS-code/open-query-editor.png" lightbox="./media/dev-tooling/vs-code/open-query-editor.png" alt-text="Screenshot of the query editor in VS Code.":::
 
 2. Run the query provided in the query editor to display your data in **Table View**:
 
-    :::image type="content" source="./media/dev-tooling/VS-code/view-query-editor-results.png" lightbox="./media/dev-tooling/VS-code/view-query-editor-results.png" alt-text="Screenshot of the query editor results in VS Code.":::
+    :::image type="content" source="./media/dev-tooling/VS-code/view-query-editor-results.png" lightbox="./media/dev-tooling/vs-code/view-query-editor-results.png" alt-text="Screenshot of the query editor results in VS Code.":::
 
 3. Explore your data in other supported views:
 
 - **JSON View**: See the raw data structure.
-    :::image type="content" source="./media/dev-tooling/VS-code/view-json-view.png" lightbox="./media/dev-tooling/VS-code/view-json-view.png" alt-text="Screenshot of the query editor results in json view.":::
+    :::image type="content" source="./media/dev-tooling/VS-code/view-json-view.png" lightbox="./media/dev-tooling/vs-code/view-json-view.png" alt-text="Screenshot of the query editor results in json view.":::
 - **Tree View**: Easily explore nested data.
-    :::image type="content" source="./media/dev-tooling/VS-code/view-tree-view.png" lightbox="./media/dev-tooling/VS-code/view-tree-view.png" alt-text="Screenshot of the query editor results in tree view.":::
+    :::image type="content" source="./media/dev-tooling/VS-code/view-tree-view.png" lightbox="./media/dev-tooling/vs-code/view-tree-view.png" alt-text="Screenshot of the query editor results in tree view.":::
 
 
 ## View query and index metrics
 Within the query editor, view additional query and index metrics to better help optimize your query performance.
 
 1. Select the **Stats** tab next to the query **Results**.
-    :::image type="content" source="./media/dev-tooling/VS-code/view-query-stats.png" lightbox="./media/dev-tooling/VS-code/view-query-stats.png" alt-text="Screenshot of the query stats in VS Code.":::
+    :::image type="content" source="./media/dev-tooling/VS-code/view-query-stats.png" lightbox="./media/dev-tooling/vs-code/view-query-stats.png" alt-text="Screenshot of the query stats in VS Code.":::
 
 2. For more information on the metric definitions see the [query metrics documentation](./nosql/query-metrics.md).
 
@@ -73,12 +73,12 @@ Within the query editor, view additional query and index metrics to better help 
 ## Insert, Edit and Delete documents
 - **Real-time document editing**: Add, view, edit, and delete documents instantly, with changes reflected in real-time.
 - **Import from JSON**: Load your data quickly from JSON files.
-    :::image type="content" source="./media/dev-tooling/VS-code/edit-documents.png" lightbox="./media/dev-tooling/VS-code/edit-documents.png" alt-text="Screenshot of edit documents in VS Code.":::
+    :::image type="content" source="./media/dev-tooling/VS-code/edit-documents.png" lightbox="./media/dev-tooling/vs-code/edit-documents.png" alt-text="Screenshot of edit documents in VS Code.":::
 
 
  ## Export query results
 - **Download results**: Download query results to CSV or JSON files.
-   :::image type="content" source="./media/dev-tooling/VS-code/export-results.png" lightbox="./media/dev-tooling/VS-code/export-results.png" alt-text="Screenshot of export results in VS Code.":::
+   :::image type="content" source="./media/dev-tooling/VS-code/export-results.png" lightbox="./media/dev-tooling/vs-code/export-results.png" alt-text="Screenshot of export results in VS Code.":::
 
 
 ## Next steps
@@ -171,7 +171,7 @@ Easily manage your databases within Visual Studio Code:
         - **Edit**: Edit the content of selected documents.
         - **Delete**: Remove selected documents with changes reflected immediately.
 
-:::image type="content" source="./media/dev-tooling/VS-code/vCore-vs-code-screenshot.png" alt-text="Screenshot of VS-code extension of a CosmosDB for MongoDB (vCore) cluster" lightbox="./media/dev-tooling/VS-code/vCore-vs-code-screenshot.png":::
+:::image type="content" source="./media/dev-tooling/vs-code/vcore-vs-code-screenshot.png" alt-text="Screenshot of VS-code extension of a CosmosDB for MongoDB (vCore) cluster." lightbox="./media/dev-tooling/vs-code/vcore-vs-code-screenshot.png":::
 
 ## Powerful Query Tools
 Run and refine your queries seamlessly:
@@ -186,15 +186,15 @@ Run and refine your queries seamlessly:
 ## Flexible Data Views
 Explore your data using multiple views for different perspectives:
 - **JSON View**: See the raw JSON data structure.
-:::image type="content" source="./media/dev-tooling/VS-code/vCore-vs-code-json-view.png" alt-text="Screenshot of VS-code extension of a CosmosDB for MongoDB (vCore) cluster in JSON view" lightbox="./media/dev-tooling/VS-code/vCore-vs-code-json-view.png":::
+:::image type="content" source="./media/dev-tooling/vs-code/vcore-vs-code-json-view.png" alt-text="Screenshot of VS-code extension of a CosmosDB for MongoDB (vCore) cluster in JSON view." lightbox="./media/dev-tooling/vs-code/vcore-vs-code-json-view.png":::
 
 - **Tree View**: Navigate and explore nested data effortlessly.
-:::image type="content" source="./media/dev-tooling/VS-code/vCore-vs-code-tree-view.png" alt-text="Screenshot of VS-code extension of a CosmosDB for MongoDB (vCore) cluster in Tree view" lightbox="./media/dev-tooling/VS-code/vCore-vs-code-tree-view.png":::
+:::image type="content" source="./media/dev-tooling/vs-code/vcore-vs-code-tree-view.png" alt-text="Screenshot of VS-code extension of a CosmosDB for MongoDB (vCore) cluster in Tree view." lightbox="./media/dev-tooling/vs-code/vcore-vs-code-tree-view.png":::
 
 - **Table View**: Quickly scan data and drill down into nested documents.
     - **To drill down**: Find entries with the `{}` icon, which indicate embedded objects. Double-click to expand and view contents.
     - **To go back**: Use the navigation breadcrumbs below the Table View to return to previous levels.
-:::image type="content" source="./media/dev-tooling/VS-code/vCore-vs-code-table-view.png" alt-text="Screenshot of VS-code extension of a CosmosDB for MongoDB (vCore) cluster in Table view" lightbox="./media/dev-tooling/VS-code/vCore-vs-code-table-view.png":::
+:::image type="content" source="./media/dev-tooling/vs-code/vcore-vs-code-table-view.png" alt-text="Screenshot of VS-code extension of a CosmosDB for MongoDB (vCore) cluster in Table view." lightbox="./media/dev-tooling/vs-code/vcore-vs-code-table-view.png":::
 
 ## Mongo Shell Integration
 
