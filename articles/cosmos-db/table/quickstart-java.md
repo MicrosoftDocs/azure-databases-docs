@@ -111,7 +111,7 @@ The sample code in the template uses a table named `cosmicworks-products`. The `
 
 ### Authenticate the client
 
-This sample creates a new instance of the `TableServiceClient` class.
+This sample creates a new instance of the `TableServiceAsyncClient` class.
 
 ```java
 AzureNamedKeyCredential credential = new AzureNamedKeyCredential("<azure-cosmos-db-table-account-name>", "<credential>");
@@ -124,7 +124,7 @@ TableServiceClient client = new TableServiceClientBuilder()
 
 ### Get a table
 
-This sample creates an instance of the `TableClient` class using the `GetTableClient` method of the `TableServiceClient` class.
+This sample creates an instance of the `TableAsyncClient` class using the `GetTableClient` method of the `TableServiceClient` class.
 
 ```java
 TableClient table = client
@@ -133,10 +133,18 @@ TableClient table = client
 
 ### Create an entity
 
-The easiest way to create a new entity in a table is to TODO.
+The easiest way to create a new entity in a table is to use `createEntity`.
 
 ```java
-TODO
+String rowKey = "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb";
+String partitionKey = "gear-surf-surfboards";
+
+TableEntity entity = new TableEntity(partitionKey, rowKey)
+        .addProperty("Name", "Yamba Surfboard")
+        .addProperty("Quantity", 12)
+        .addProperty("Sale", false);
+
+Response<Void> response = table.upsertEntityWithResponse(entity, TableEntityUpdateMode.REPLACE, null, null);
 ```
 
 Create an entity in the collection using TODO
