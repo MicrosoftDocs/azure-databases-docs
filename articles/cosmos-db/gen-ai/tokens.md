@@ -6,6 +6,8 @@ ms.author: wangwilliam
 ms.service: azure-cosmos-db
 ms.topic: conceptual
 ms.date: 07/01/2024
+ms.collection:
+  - ce-skilling-ai-copilot
 ---
 
 # What are tokens?

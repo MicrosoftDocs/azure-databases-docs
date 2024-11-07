@@ -6,6 +6,8 @@ ms.service: azure-cosmos-db
 ms.topic: how-to
 ms.date: 9/16/2024
 ms.author: jacodel
+ms.collection:
+  - ce-skilling-ai-copilot
 ---
 
 # Integrations
