@@ -145,14 +145,12 @@ TableEntity entity = new TableEntity(partitionKey, rowKey)
         .addProperty("Name", "Yamba Surfboard")
         .addProperty("Quantity", 12)
         .addProperty("Sale", false);
-
-Response<Void> response = table.upsertEntityWithResponse(entity, TableEntityUpdateMode.REPLACE, null, null);
 ```
 
-Create an entity in the collection using TODO
+Create an entity in the collection using `upsertEntityWithResponse` in the `REPLACE` mode.
 
 ```java
-TODO
+Response<Void> response = table.upsertEntityWithResponse(entity, TableEntityUpdateMode.REPLACE, null, null);
 ```
 
 ### Get an entity
