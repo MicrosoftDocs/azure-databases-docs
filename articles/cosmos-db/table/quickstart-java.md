@@ -10,10 +10,7 @@ ms.subservice: table
 ms.devlang: java
 ms.topic: quickstart-sdk
 ms.date: 11/07/2024
-ms.date: 11/07/2024
 ms.custom: devx-track-java, devx-track-extended-azdevcli
-appliesto:
-  - ✅ Table
 appliesto:
   - ✅ Table
 # CustomerIntent: As a developer, I want to learn the basics of the Java library so that I can build applications with Azure Cosmos DB for Table.
@@ -76,7 +73,7 @@ Use the Azure Developer CLI (`azd`) to create an Azure Cosmos DB for Table accou
 
 1. Use the URL in the console to navigate to your web application in the browser. Observe the output of the running app.
 
-    :::image type="content" source="media/quickstart/dev-web-application.png" alt-text="Screenshot of the running web application.":::
+:::image type="content" source="media/quickstart-java/running-application.png" alt-text="Screenshot of the running web application.":::
 
 ### Install the client library
 
