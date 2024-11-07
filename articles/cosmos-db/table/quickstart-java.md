@@ -10,7 +10,10 @@ ms.subservice: table
 ms.devlang: java
 ms.topic: quickstart-sdk
 ms.date: 11/07/2024
+ms.date: 11/07/2024
 ms.custom: devx-track-java, devx-track-extended-azdevcli
+appliesto:
+  - ✅ Table
 appliesto:
   - ✅ Table
 # CustomerIntent: As a developer, I want to learn the basics of the Java library so that I can build applications with Azure Cosmos DB for Table.

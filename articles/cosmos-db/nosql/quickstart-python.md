@@ -8,15 +8,15 @@ ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.devlang: python
 ms.topic: quickstart-sdk
-ms.date: 10/21/2024
+ms.date: 11/07/2024
 ms.custom: devx-track-python, devx-track-extended-azdevcli
 zone_pivot_groups: azure-cosmos-db-quickstart-env
+appliesto:
+  - ✅ NoSQL
 # CustomerIntent: As a developer, I want to learn the basics of the Python library so that I can build applications with Azure Cosmos DB for NoSQL.
 ---
 
 # Quickstart: Azure Cosmos DB for NoSQL library for Python
-
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
 
 [!INCLUDE[Developer Quickstart selector](includes/quickstart/dev-selector.md)]
 
@@ -131,7 +131,7 @@ Build a new object with all of the members you want to serialize into JSON. In t
 
 ```python
 new_item = {
-    "id": "70b63682-b93a-4c77-aad2-65501347265f",
+    "id": "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb",
     "category": "gear-surf-surfboards",
     "name": "Yamba Surfboard",
     "quantity": 12,
@@ -147,7 +147,7 @@ Perform a point read operation by using both the unique identifier (`id`) and pa
 
 ```python
 existing_item = container.read_item(
-    item="70b63682-b93a-4c77-aad2-65501347265f",
+    item="aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb",
     partition_key="gear-surf-surfboards",
 )
 ```
