@@ -28,7 +28,7 @@ Azure Cosmos DB for MongoDB vCore allows continuous data streaming to a replica 
 
 To enable cross-region replication on a new cluster *during cluster creation*, follow these steps:
 
-1. Follow the steps to [create a new Azure Cosmos DB for MongoDB vCore cluster](./quickstart-portal.md#create-a-cluster).
+1. Follow the steps to [start cluster creation and complete the **Basics** tab for a new Azure Cosmos DB for MongoDB vCore cluster](./quickstart-portal.md#create-a-cluster).
 1. On the **Global distribution** tab, select **Enable** for the **Read replica in another region**.
 1. Provide a replica cluster name in the **Read replica name** field. 
 1. Select a region in the **Read replica region**. The replica cluster is hosted in the selected Azure region.
@@ -41,9 +41,8 @@ To enable cross-region replication on a new cluster *during cluster creation*, f
 To enable cross-region replication on a new cluster *at any time after cluster creation*, follow these steps:
 
 1. Follow the steps to [create a new Azure Cosmos DB for MongoDB vCore cluster](./quickstart-portal.md#create-a-cluster).
-1. On the **Basics** tab, select **Enable global distribution** flag.
 1. Skip **Global distribution** tab. This tab is used to create a cluster replica during primary cluster provisioning.
-1. Once cluster is created, on the cluster sidebar, under **Settings**, select **Global distribution**.
+1. *Once cluster is created*, on the cluster sidebar, under **Settings**, select **Global distribution**.
 1. Select **Add new read replica**.
 1. Provide a replica cluster name in the **Read replica name** field. 
 1. Select a region in the **Read replica region**. The replica cluster is hosted in the selected Azure region.
@@ -96,5 +95,5 @@ Connection strings are preserved after [the cluster replica promotion](./cross-r
 ## Related content
 
 - [Learn more about cross-region replication in Azure Cosmos DB for MongoDB vCore](./cross-region-replication.md)
-- [See cross-region replication limits and limitations](./limits.md#cross-region-replication-preview)
+- [See cross-region replication limits and limitations](./limits.md#cross-region-replication)
 - [Learn about reliability in Azure Cosmos DB for MongoDB vCore](/azure/reliability/reliability-cosmos-mongodb)

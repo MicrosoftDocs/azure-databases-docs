@@ -8,7 +8,7 @@ ms.author: gahllevy
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: quickstart
-ms.date: 08/08/2024
+ms.date: 11/06/2024
 ---
 
 # Quickstart: Create an Azure Cosmos DB for MongoDB vCore cluster by using the Azure portal
@@ -68,9 +68,7 @@ Create a MongoDB cluster by using Azure Cosmos DB for MongoDB vCore.
 
     :::image type="content" source="media/quickstart-portal/configure-cluster.png" alt-text="Screenshot of various configuration options for a cluster.":::
 
-1. Leave **Access to global distribution (preview)** and **Free tier** unselected.
-
-1. Select **Next: Global distribution (preview)**.
+1. Select **Next: Global distribution**.
 
 1. Select **Next: Networking**.
 

@@ -8,7 +8,7 @@ ms.author: nlarin
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: how-to
-ms.date: 06/12/2024
+ms.date: 11/06/2024
 ---
 
 # Quickstart: Create and use a cross-region cluster replica in Azure Cosmos DB for MongoDB vCore
@@ -16,12 +16,6 @@ ms.date: 06/12/2024
 [!INCLUDE[MongoDB vCore](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 
 In this quickstart, you create a cluster replica in another region for an Azure Cosmos DB for MongoDB vCore cluster for disaster recovery (DR) purposes. This replica cluster stores a copy of all of your MongoDB resources - databases, collections, and documents - in another Azure region. The replica cluster provides a unique endpoint for various tools and SDKs to connect to and could be promoted to become available for writes if there's a primary region outage.
-
-> [!IMPORTANT]
-> Cross-region replication in Azure Cosmos DB for MongoDB vCore is currently in preview.
-> This preview version is provided without a service level agreement (SLA), and it's not recommended
-> for production workloads. Certain features might not be supported or might have constrained
-> capabilities.
 
 ## Prerequisites
 
@@ -49,12 +43,12 @@ Create a MongoDB cluster with a cluster read replica in another region by using 
 
     :::image type="content" source="media/quickstart-portal/select-resource-type.png" alt-text="Screenshot of the select resource type option page for Azure Cosmos DB for MongoDB.":::
 
-1. On the **Create Azure Cosmos DB for MongoDB cluster** page, select the **Access to global distribution (preview)** option within the **Cluster details** section.
+1. On the **Create Azure Cosmos DB for MongoDB cluster** page, select the **Access to global distribution** option within the **Cluster details** section.
 
     :::image type="content" source="media/quickstart-cross-region-replication/select-access-to-cross-region-replication-preview.png" alt-text="Screenshot of the access to global distribution preview.":::
   
     > [!IMPORTANT]
-   > You should select **Access to global distribution (preview)** during provisioning to be able to create a preview replica cluster.
+   > You should select **Access to global distribution** during provisioning to be able to create a preview replica cluster.
 
 1. On the **Create Azure Cosmos DB for MongoDB cluster** page, select the **Configure** option within the **Cluster tier** section.
 
@@ -88,9 +82,9 @@ Create a MongoDB cluster with a cluster read replica in another region by using 
 
     :::image type="content" source="media/quickstart-cross-region-replication/configure-cluster.png" alt-text="Screenshot of various configuration options for a cluster.":::
 
-1. Select **Next: Global distribution (preview)**.
+1. Select **Next: Global distribution**.
 
-1. On the **Global distribution (preview)** tab, select **Enable** for **Read replica in another region (preview)** to create a cluster read replica as a part of this new primary cluster provisioning.
+1. On the **Global distribution** tab, select **Enable** for **Read replica in another region** to create a cluster read replica as a part of this new primary cluster provisioning.
 
 1. In the **Read replica name** field, enter a name for the cluster read replica. It should be a globally unique cluster name.
 
@@ -203,7 +197,7 @@ db.cats.find();
 > [!IMPORTANT]
 > Replica clusters are always created with networking access disabled. You should add firewall rules on the replica cluster after it is created to enable read operations.
 
-1. From the Azure Cosmos DB for MongoDB vCore *primary* cluster page, select the **Global distribution (preview)** page under **Settings**.
+1. From the Azure Cosmos DB for MongoDB vCore *primary* cluster page, select the **Global distribution** page under **Settings**.
 
    :::image type="content" source="media/quickstart-cross-region-replication/global-distribution-page-on-primary-cluster.png" alt-text="Screenshot of the global distribution preview page in the primary cluster properties.":::
 
@@ -251,9 +245,9 @@ To promote a cluster read replica to a read-write cluster, follow these steps:
 
 1. Select the *read replica cluster* in the portal.
 
-1. On the cluster sidebar, under **Cluster management**, select **Global distribution (preview)**.
+1. On the cluster sidebar, under **Cluster management**, select **Global distribution**.
 
-1. On the **Global distribution (preview)** page, select **Promote** on the toolbar to initiate read replica promotion to read-write cluster. 
+1. On the **Global distribution** page, select **Promote** on the toolbar to initiate read replica promotion to read-write cluster. 
 
       :::image type="content" source="media/quickstart-cross-region-replication/replica-cluster-promotion.png" alt-text="Screenshot of the read replica cluster global distribution preview page with the promote button.":::
 

@@ -54,5 +54,5 @@ If a region outage occurs, you can perform disaster recovery operation by promot
 ## Related content
 
 - [Learn how to enable cross-region replication and promote replica cluster](./how-to-cluster-replica.md)
-- [See cross-region replication limits and limitations](./limits.md#cross-region-replication-preview)
+- [See cross-region replication limits and limitations](./limits.md#cross-region-replication)
 - [Learn about reliability in Azure Cosmos DB for MongoDB vCore](/azure/reliability/reliability-cosmos-mongodb)
