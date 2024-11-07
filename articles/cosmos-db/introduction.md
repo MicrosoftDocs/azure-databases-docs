@@ -8,6 +8,8 @@ ms.service: azure-cosmos-db
 ms.topic: overview
 ms.date: 04/03/2024
 adobe-target: true
+ms.collection:
+  - ce-skilling-ai-copilot
 ---
 
 # Azure Cosmos DB - Database for the AI Era
