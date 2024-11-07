@@ -28,7 +28,7 @@ This quickstart shows how to get started with the Azure Cosmos DB for Table from
 
 - Azure Developer CLI
 - Docker Desktop
-- Python 3.12
+- Java 21
 
 If you don't have an Azure account, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
 
