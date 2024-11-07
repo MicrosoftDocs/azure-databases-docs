@@ -123,5 +123,5 @@ You can enable the feature during creation of a flexible server or on an existin
 
 ## Related content
 
-- [Create an Azure Database for MySQL flexible server by using the Azure portal](quickstart-create-server-portal.md)
+- [Create an Azure Database for MySQL Flexible Server by using the Azure portal](quickstart-create-server-portal.md)
 - [Limitations in Azure Database for MySQL](concepts-limitations.md)

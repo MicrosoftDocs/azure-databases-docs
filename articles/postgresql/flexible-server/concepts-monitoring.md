@@ -4,7 +4,7 @@ description: Review the monitoring and metrics features in Azure Database for Po
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 07/31/2024
+ms.date: 10/30/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: conceptual
@@ -127,9 +127,12 @@ You can choose from the following categories of enhanced metrics:
 
 ##### Traffic
 
-|Display name|Metric ID|Unit|Description|Dimension|Default enabled|
-|---|---|---|---|---|---|
-|**Max Connections** ^|`max_connections`|Count|Number of maximum connections. |Doesn't apply|Yes |
+|Display name                              |Metric ID                             |Unit   |Description                                                                                                   |Dimension    |Default enabled|
+|------------------------------------------|--------------------------------------|-------|--------------------------------------------------------------------------------------------------------------|-------------|---------------|
+|**Max Connections** ^                     |`max_connections`                     |Count  |Number of maximum connections.                                                                                |Doesn't apply|Yes            |
+|**TCP Connection Backlog (preview)**      |`tcp_connection_backlog`              |Count  |Number of pending connections that exceed the PostgreSQL server's capacity. Applicable for 8 vCores and above.|State        |No             |
+|**Postmaster Process cpu usage (preview)**|`postmaster_process_cpu_usage_percent`|Percent|CPU utilization of Postmaster process. Not applicable for Burstable SKU.                                      |Doesn't apply|No             |
+
 
 ^ **Max Connections** represents the configured value for the `max_connections` server parameter. This metric is polled every 30 minutes.
 
@@ -249,6 +252,13 @@ In addition to the metrics, you can use Azure Database for PostgreSQL flexible s
 |---------|---------|--------|
 |[Log Analytics](/azure/azure-monitor/logs/log-analytics-overview)|With Log Analytics, you can create log queries to interactively work with log data and create log query alerts.| Some training is required for you to become familiar with the query language, although you can use prebuilt queries for common requirements. |
 
+## Server Logs
+
+The Server Logs feature in Azure Database for PostgreSQL Flexible Server allows users to enable, configure, and **download server logs**, which are essential for troubleshooting and performing historical analyses of server activity. By default, the server logs feature in Azure Database for PostgreSQL flexible server is disabled. However, after you enable the feature, Azure Database for PostgreSQL flexible server starts capturing events of the selected log type and writes them to a file. You can then use the Azure portal or the Azure CLI to download the files to assist with your troubleshooting efforts.
+
+### Server logs retention
+
+Server logs have minimum retention 1 days and maximum retention is 7 days. If this limit is exceeded, the oldest logs are deleted to make room for new ones. For details on enabling and managing server logs, refer to the guide on setting up [server logs](./how-to-server-logs-portal.md).
 
 ## Next steps
 

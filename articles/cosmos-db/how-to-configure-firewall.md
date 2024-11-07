@@ -46,9 +46,8 @@ When you enable an IP access control policy programmatically, you may need to ad
 
 Portal scenarios that require this option to be enabled include:
 
-- Accessing API for MongoDB or API for Apache Cassandra accounts with Data Explorer or <cosmos.azure.com>
-- Using the following Azure Cosmos DB blades within the Azure portal:
-  - Replicate Data Globally
+- Specifically for the API for the MongoDB or API for Apache Cassandra, accessing accounts with Data Explorer or <cosmos.azure.com>
+- For all APIs, using the following Azure Cosmos DB blades within the Azure portal:
   - Browse Collections
   - Power BI
   - Azure Synapse

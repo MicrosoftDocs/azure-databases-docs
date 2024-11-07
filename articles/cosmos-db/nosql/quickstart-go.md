@@ -8,15 +8,15 @@ ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.devlang: golang
 ms.topic: quickstart-sdk
-ms.date: 10/21/2024
+ms.date: 11/07/2024
 ms.custom: devx-track-go, devx-track-extended-azdevcli
 zone_pivot_groups: azure-cosmos-db-quickstart-env
+appliesto:
+  - ✅ NoSQL
 # CustomerIntent: As a developer, I want to learn the basics of the Go library so that I can build applications with Azure Cosmos DB for NoSQL.
 ---
 
 # Quickstart: Azure Cosmos DB for NoSQL library for Go
-
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
 
 [!INCLUDE[Developer Quickstart selector](includes/quickstart/dev-selector.md)]
 
@@ -153,7 +153,7 @@ Create an item in the container using `container.UpsertItem`. This method "upser
 
 ```go
 item := Item {
-    Id:        "70b63682-b93a-4c77-aad2-65501347265f",
+    Id:        "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb",
     Category:  "gear-surf-surfboards",
     Name:      "Yamba Surfboard",
     Quantity:  12,
@@ -185,7 +185,7 @@ partitionKey := azcosmos.NewPartitionKeyString("gear-surf-surfboards")
 
 context := context.TODO()
 
-itemId := "70b63682-b93a-4c77-aad2-65501347265f"
+itemId := "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb"
 
 response, err := container.ReadItem(context, partitionKey, itemId, nil)
 if err != nil {
