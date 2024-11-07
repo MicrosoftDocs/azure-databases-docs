@@ -1,13 +1,13 @@
 ---
 title: 'Spring Data Azure Cosmos DB v2 for API for NoSQL release notes and resources'
 description: Learn about the Spring Data Azure Cosmos DB v2 for API for NoSQL, including release dates, retirement dates, and changes made between each version of the Azure Cosmos DB SQL Async Java SDK.
-author: markjbrown
+author: kushagrathapar
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.devlang: java
 ms.topic: reference
 ms.date: 04/06/2021
-ms.author: mjbrown
+ms.author: kuthapar
 ms.custom: devx-track-java, devx-track-extended-java
 ---
 
@@ -19,7 +19,7 @@ ms.custom: devx-track-java, devx-track-extended-java
  Spring Data Azure Cosmos DB version 2 for NoSQL allows developers to use Azure Cosmos DB in Spring applications. Spring Data Azure Cosmos DB exposes the Spring Data interface for manipulating databases and collections, working with documents, and issuing queries. Both Sync and Async (Reactive) APIs are supported in the same Maven artifact. 
 
 > [!WARNING]
-> This version of Spring Data Azure Cosmos DB SDK depends on a retired version of Azure Cosmos DB Java SDK. This Spring Data Azure Cosmos DB SDK will be announced as retiring in the near future! This is *not* the latest Azure Spring Data Azure Cosmos DB SDK for Azure Cosmos DB and is outdated. Because of performance issues and instability in Azure Spring Data Azure Cosmos DB SDK V2, we highly recommend to use [Azure Spring Data Azure Cosmos DB v3](sdk-java-spring-data-v3.md) for your project. To upgrade, follow the instructions in the [Migrate to Azure Cosmos DB Java SDK v4](migrate-java-v4-sdk.md) guide to understand the difference in the underlying Java SDK V4.
+> This version of Spring Data Azure Cosmos DB SDK depends on a retired version of Azure Cosmos DB Java SDK. This Spring Data Azure Cosmos DB SDK will be announced as retiring in the near future! This is *not* the latest Azure Spring Data Azure Cosmos DB SDK for Azure Cosmos DB and is outdated. Because of performance issues and instability in Azure Spring Data Azure Cosmos DB SDK V2, we highly recommend to use [Azure Spring Data Azure Cosmos DB v5](sdk-java-spring-data-v5.md) for your project. To upgrade, follow the instructions in the [Migrate to Azure Cosmos DB Java SDK v4](migrate-java-v4-sdk.md) guide to understand the difference in the underlying Java SDK V4.
 >
 
 The [Spring Framework](https://spring.io/projects/spring-framework) is a programming and configuration model that streamlines Java application development. Spring streamlines the "plumbing" of applications by using dependency injection. Many developers like Spring because it makes building and testing applications more straightforward. [Spring Boot](https://spring.io/projects/spring-boot) extends this handling of the plumbing with an eye toward web application and microservices development. [Spring Data](https://spring.io/projects/spring-data) is a programming model for accessing datastores like Azure Cosmos DB from the context of a Spring or Spring Boot application. 

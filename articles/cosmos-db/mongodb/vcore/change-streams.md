@@ -190,6 +190,8 @@ Customize your change stream output by specifying an array of one or more pipeli
 
 ## Limitations
 
+- Debezium connector is yet not supported.
+- Pymongo driver is yet not a supported option.
 - `Replace` event is yet not supported.
 - `pre-image` is yet an unsupported option.
 - Change stream cursors need to be reinitialized after a fail-over event at current state.

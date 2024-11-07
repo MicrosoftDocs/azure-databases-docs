@@ -1,7 +1,7 @@
 ---
 title: 'Spring Data Azure Cosmos DB v5 for API for NoSQL release notes and resources'
 description: Learn about the Spring Data Azure Cosmos DB v5 for API for NoSQL, including release dates, retirement dates, and changes made between each version of the Azure Cosmos DB SQL Async Java SDK.
-author: rinatmini
+author: kushagrathapar
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.devlang: java
@@ -34,7 +34,7 @@ This project supports different spring-data-commons versions. Visit [spring data
 
 ### Which version of Azure Spring Data Azure Cosmos DB should I use
 
-Azure Spring Data Azure Cosmos DB library supports multiple versions of Spring Boot / Spring Cloud. Refer to [azure Spring Data Azure Cosmos DB version mapping](https://github.com/Azure/azure-sdk-for-java/tree/feature/spring-boot-3/sdk/spring/azure-spring-data-cosmos#which-version-of-azure-spring-data-cosmos-should-i-use) for detailed information on which version of Azure Spring Data Azure Cosmos DB to use with Spring Boot / Spring Cloud version.
+Azure Spring Data Azure Cosmos DB library supports multiple versions of Spring Boot / Spring Cloud. Refer to [Azure Spring Data Azure Cosmos DB version mapping](https://github.com/Azure/azure-sdk-for-java/tree/feature/spring-boot-3/sdk/spring/azure-spring-data-cosmos#which-version-of-azure-spring-data-cosmos-should-i-use) for detailed information on which version of Azure Spring Data Azure Cosmos DB to use with Spring Boot / Spring Cloud version.
 
 > [!IMPORTANT]  
 > These release notes are for version 5 of Spring Data Azure Cosmos DB. 
@@ -80,7 +80,7 @@ Release history is maintained in the azure-sdk-for-java repo, for detailed list 
 
 ## Recommended version
 
-It's strongly recommended to use version 5.3.0 and above.
+It's strongly recommended to use version 5.18.0 and above.
 
 ## Additional notes
 
