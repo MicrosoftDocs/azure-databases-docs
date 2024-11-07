@@ -114,8 +114,7 @@ The sample code in the template uses a table named `cosmicworks-products`. The `
 This sample creates a new instance of the `TableServiceClient` class.
 
 ```java
-DefaultAzureCredential credential = new DefaultAzureCredentialBuilder()
-    .build();
+AzureNamedKeyCredential credential = new AzureNamedKeyCredential("<azure-cosmos-db-table-account-name>", "<credential>");
 
 TableServiceClient client = new TableServiceClientBuilder()
     .endpoint("<azure-cosmos-db-table-account-endpoint>")
