@@ -9,14 +9,16 @@ ms.service: azure-cosmos-db
 ms.subservice: table
 ms.devlang: java
 ms.topic: quickstart-sdk
-ms.date: 11/06/2024
+ms.date: 11/07/2024
 ms.custom: devx-track-java, devx-track-extended-azdevcli
 appliesto:
   - ✅ Table
 # CustomerIntent: As a developer, I want to learn the basics of the Java library so that I can build applications with Azure Cosmos DB for Table.
 ---
 
-# Quickstart: Use Azure Cosmos DB for Table with Azure SDK for java
+# Quickstart: Use Azure Cosmos DB for Table with Azure SDK for Java
+
+[!INCLUDE[Developer Quickstart selector](includes/quickstart/dev-selector.md)]
 
 In this quickstart, you deploy a basic Azure Cosmos DB for Table application using the Azure SDK for Java. Azure Cosmos DB for Table is a schemaless data store allowing applications to store structured table data in the cloud. You learn how to create tables, rows, and perform basic tasks within your Azure Cosmos DB resource using the Azure SDK for Java.
 
