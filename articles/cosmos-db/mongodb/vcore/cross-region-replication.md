@@ -1,5 +1,5 @@
 ---
-title: Cross-region replication (preview)
+title: Cross-region replication
 titleSuffix: Azure Cosmos DB for MongoDB vCore
 description: Learn about Azure Cosmos DB for MongoDB vCore cross-region disaster recovery (DR) and read replicas.
 author: niklarin
@@ -8,20 +8,15 @@ ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.custom:
   - build-2024
+  - ignite-2024
 ms.topic: concept-article
-ms.date: 08/26/2024
+ms.date: 11/06/2024
 #Customer Intent: As a database adminstrator, I want to configure cross-region replication, so that I can have disaster recovery plans in the event of a regional outage.
 ---
 
-# Cross-region replication in Azure Cosmos DB for MongoDB vCore (preview)
+# Cross-region replication in Azure Cosmos DB for MongoDB vCore
 
 [!INCLUDE[MongoDB vCore](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
-
-> [!IMPORTANT]
-> Cross-region replication in Azure Cosmos DB for MongoDB vCore is currently in preview.
-> This preview version is provided without a service level agreement (SLA), and it's not recommended
-> for production workloads. Certain features might not be supported or might have constrained
-> capabilities.
 
 This article discusses cross-region disaster recovery (DR) for Azure Cosmos DB for MongoDB vCore. It also covers read capabilities of the cluster replicas in other regions for read operations scalability.
 
@@ -59,5 +54,5 @@ If a region outage occurs, you can perform disaster recovery operation by promot
 ## Related content
 
 - [Learn how to enable cross-region replication and promote replica cluster](./how-to-cluster-replica.md)
-- [See cross-region replication preview limits and limitations](./limits.md#cross-region-replication-preview)
+- [See cross-region replication limits and limitations](./limits.md#cross-region-replication-preview)
 - [Learn about reliability in Azure Cosmos DB for MongoDB vCore](/azure/reliability/reliability-cosmos-mongodb)
