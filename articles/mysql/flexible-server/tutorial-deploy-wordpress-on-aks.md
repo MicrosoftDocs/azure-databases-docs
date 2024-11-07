@@ -19,8 +19,8 @@ ms.custom:
 
 [!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
-In this tutorial, you deploy a scalable WordPress application secured via HTTPS on an Azure Kubernetes Service (AKS) cluster with Azure Database for MySQL flexible server using the Azure CLI.
-**[AKS](/azure/aks/intro-kubernetes)** is a managed Kubernetes service that lets you quickly deploy and manage clusters. **[Azure Database for MySQL flexible server](overview.md)** is a fully managed database service designed to provide more granular control and flexibility over database management functions and configuration settings.
+In this tutorial, you deploy a scalable WordPress application secured via HTTPS on an Azure Kubernetes Service (AKS) cluster with Azure Database for MySQL Flexible Server using the Azure CLI.
+**[AKS](/azure/aks/intro-kubernetes)** is a managed Kubernetes service that lets you quickly deploy and manage clusters. **[Azure Database for MySQL Flexible Server](overview.md)** is a fully managed database service designed to provide more granular control and flexibility over database management functions and configuration settings.
 
 > [!NOTE]
 > This tutorial assumes a basic understanding of Kubernetes concepts, WordPress, and MySQL.
@@ -139,9 +139,9 @@ Results:
 }
 ```
 
-## Create an Azure Database for MySQL flexible server instance
+## Create an Azure Database for MySQL Flexible Server instance
 
-Azure Database for MySQL flexible server is a managed service that you can use to run, manage, and scale highly available MySQL servers in the cloud. Create an Azure Database for MySQL flexible server instance with the [az mysql flexible-server create](/cli/azure/mysql/flexible-server) command. A server can contain multiple databases. The following command creates a server using service defaults and variable values from your Azure CLI's local context:
+Azure Database for MySQL Flexible Server is a managed service that you can use to run, manage, and scale highly available MySQL servers in the cloud. Create an Azure Database for MySQL Flexible Server instance with the [az mysql flexible-server create](/cli/azure/mysql/flexible-server) command. A server can contain multiple databases. The following command creates a server using service defaults and variable values from your Azure CLI's local context:
 
 ```bash
 az mysql flexible-server create \
@@ -524,5 +524,5 @@ To avoid Azure charges, you should clean up unneeded resources. When you no long
 
 - Learn how to [access the Kubernetes web dashboard](/azure/aks/kubernetes-dashboard) for your AKS cluster
 - Learn how to [scale your cluster](/azure/aks/tutorial-kubernetes-scale)
-- Learn how to manage your [Azure Database for MySQL flexible server instance](./quickstart-create-server-cli.md)
+- Learn how to manage your [Azure Database for MySQL Flexible Server instance](./quickstart-create-server-cli.md)
 - Learn how to [configure server parameters](./how-to-configure-server-parameters-cli.md) for your database server
