@@ -10,6 +10,8 @@ ms.custom:
   - ignite-2023
 ms.topic: conceptual
 ms.date: 11/1/2023
+ms.collection:
+  - ce-skilling-ai-copilot
 ---
 
 # Vector Store in Azure Cosmos DB for MongoDB vCore

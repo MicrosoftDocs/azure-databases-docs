@@ -9,6 +9,8 @@ ms.custom:
   - ignite-2023
 ms.topic: overview
 ms.date: 11/08/2023
+ms.collection:
+  - ce-skilling-ai-copilot
 ---
 
 # Try Azure Cosmos DB free with Azure AI Advantage

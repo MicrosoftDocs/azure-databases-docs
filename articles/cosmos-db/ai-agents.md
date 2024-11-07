@@ -6,6 +6,8 @@ ms.author: wangwilliam
 ms.service: azure-cosmos-db
 ms.topic: conceptual
 ms.date: 06/26/2024
+ms.collection:
+  - ce-skilling-ai-copilot
 ---
 
 # AI agent

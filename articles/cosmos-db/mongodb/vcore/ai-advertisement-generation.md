@@ -8,6 +8,8 @@ ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: concept-article
 ms.date: 03/12/2024
+ms.collection:
+  - ce-skilling-ai-copilot
 ---
 
 # AI-Enhanced Advertisement Generation using Azure Cosmos DB for MongoDB vCore
