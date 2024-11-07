@@ -141,7 +141,7 @@ The client library is available through npm, as the `@azure/data-tables` package
 - [Get an entity](#get-an-entity)
 - [Query entities](#query-entities)
 
-The sample code in the template uses a table named `cosmicworks-products`. The `cosmicworks-products` table contains details such as name, category, quantity, price, a unique identifier, and a sale flag for each product. The container uses a *unique identifier** as the row key and *category* as a partition key.
+The sample code in the template uses a table named `cosmicworks-products`. The `cosmicworks-products` table contains details such as name, category, quantity, price, a unique identifier, and a sale flag for each product. The container uses a *unique identifier* as the row key and *category* as a partition key.
 
 ### Authenticate the client
 
