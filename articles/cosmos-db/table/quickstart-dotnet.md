@@ -8,7 +8,7 @@ ms.service: azure-cosmos-db
 ms.subservice: table
 ms.devlang: csharp
 ms.topic: quickstart-sdk
-ms.date: 11/06/2024
+ms.date: 11/07/2024
 ms.custom: devx-track-csharp, devx-track-dotnet, devx-track-extended-azdevcli
 appliesto:
   - ✅ Table
@@ -139,17 +139,17 @@ The easiest way to create a new entity in a table is to create a class that impl
 ```csharp
 public record Product : ITableEntity
 {
-    public string RowKey { get; set; } = $"{Guid.NewGuid()}";
+    public required string RowKey { get; set; }
 
-    public string PartitionKey { get; set; } = String.Empty;
+    public required string PartitionKey { get; set; }
 
-    public string Name { get; set; } = String.Empty;
+    public required string Name { get; set; }
 
-    public int Quantity { get; set; } = 0;
+    public required int Quantity { get; set; }
 
-    public decimal Price { get; set; } = 0.0m;
+    public required decimal Price { get; set; }
 
-    public bool Clearance { get; set; } = false;
+    public required bool Clearance { get; set; }
 
     public ETag ETag { get; set; } = ETag.All;
 
@@ -162,7 +162,7 @@ Create an entity in the table using the `Product` class by calling `TableClient.
 ```csharp
 Product entity = new()
 {
-    RowKey = "68719518391",
+    RowKey = "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb",
     PartitionKey = "gear-surf-surfboards",
     Name = "Surfboard",
     Quantity = 10,
@@ -182,7 +182,7 @@ You can retrieve a specific entity from a table using the `TableClient.GetEntity
 
 ```csharp
 Response<Product> response = await client.GetEntityAsync<Product>(
-    rowKey: "68719518391",
+    rowKey: "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb",
     partitionKey: "gear-surf-surfboards"
 );
 ```

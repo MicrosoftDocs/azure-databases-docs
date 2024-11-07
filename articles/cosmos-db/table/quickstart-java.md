@@ -9,14 +9,14 @@ ms.service: azure-cosmos-db
 ms.subservice: table
 ms.devlang: java
 ms.topic: quickstart-sdk
-ms.date: 10/24/2024
+ms.date: 11/07/2024
 ms.custom: devx-track-java, devx-track-extended-azdevcli
+appliesto:
+  - ✅ Table
 # CustomerIntent: As a developer, I want to learn the basics of the Java library so that I can build applications with Azure Cosmos DB for Table.
 ---
 
 # Quickstart: Azure Cosmos DB for Table library for Java
-
-[!INCLUDE[Table](../includes/appliesto-table.md)]
 
 [!INCLUDE[Developer Quickstart selector](includes/quickstart/dev-selector.md)]
 
@@ -26,9 +26,11 @@ This quickstart shows how to get started with the Azure Cosmos DB for Table from
 
 ## Prerequisites
 
-- An Azure account with an active subscription. [Create an account for free](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- [Azure Developer CLI](/azure/developer/azure-developer-cli/install-azd)
-- [Docker Desktop](https://www.docker.com/products/docker-desktop/)
+- Azure Developer CLI
+- Docker Desktop
+- Python 3.12
+
+If you don't have an Azure account, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
 
 ## Initialize the project
 
@@ -86,3 +88,4 @@ azd down
 - [.NET Quickstart](quickstart-dotnet.md)
 - [Node.js Quickstart](quickstart-nodejs.md)
 - [Python Quickstart](quickstart-python.md)
+- [Go Quickstart](quickstart-go.md)
