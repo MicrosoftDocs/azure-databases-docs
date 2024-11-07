@@ -67,10 +67,10 @@ Within the query editor, view additional query and index metrics to better help 
 1. Select the **Stats** tab next to the query **Results**.
     :::image type="content" source="./media/dev-tooling/VS-code/view-query-stats.png" lightbox="./media/dev-tooling/vs-code/view-query-stats.png" alt-text="Screenshot of the query stats in VS Code.":::
 
-2. For more information on the metric definitions see the [query metrics documentation](./nosql/query-metrics.md).
+2. For more information on the metric definitions, see the [query metrics documentation](./nosql/query-metrics.md).
 
 
-## Insert, Edit and Delete documents
+## Insert, Edit, and Delete documents
 - **Real-time document editing**: Add, view, edit, and delete documents instantly, with changes reflected in real-time.
 - **Import from JSON**: Load your data quickly from JSON files.
     :::image type="content" source="./media/dev-tooling/VS-code/edit-documents.png" lightbox="./media/dev-tooling/vs-code/edit-documents.png" alt-text="Screenshot of edit documents in VS Code.":::
@@ -123,7 +123,7 @@ Before you begin, ensure you have the following:
 > Your password is only used for authentication and is not stored.
 
 >[!NOTE]
->In many corporate environments, developer machine IP addresses are hidden due to a VPN or other corporate network settings. In these cases, it's recommended to start with [allowing access to all IP addresses](./mongodb/vcore/quickstart-portal.md) by adding the 0.0.0.0 - 255.255.255.255 firewall rule for connection testing initially before refining the allow-list.
+>In many corporate environments, developer machine IP addresses are hidden due to a VPN or other corporate network settings. In these cases, it is recommended to start with [allowing access to all IP addresses](./mongodb/vcore/quickstart-portal.md) by adding the 0.0.0.0 - 255.255.255.255 firewall rule for connection testing initially before refining the allow-list.
 
 :::image type="content" source="./mongodb/vcore/media/quickstart-portal/networking-settings-at-provisioning.png" alt-text="Screenshot of networking and firewall options for a cluster.":::
 
@@ -178,7 +178,7 @@ Run and refine your queries seamlessly:
 - **Instant Results**: Immediately view query results in your preferred format—Table, JSON, or Tree view.
     - Switch views easily using the **View** dropdown menu.
 
-- **Execute Queries Directly**: Write and execute MongoDB queries with features like syntax highlighting and auto-completion.
+- **Execute Queries Directly**: Write and execute MongoDB queries with features like syntax highlighting and autocompletion.
     - To run your query, click the **Find Query** button or press `Ctrl/Cmd+Enter` in the query editor.
 > [!NOTE]  
 > Currently, only find filter queries are supported, with expanded query capabilities coming soon.
