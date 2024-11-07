@@ -1,5 +1,5 @@
 ---
-title: Quickstart - Python client library
+title: Quickstart - Azure SDK for Python
 titleSuffix: Azure Cosmos DB for NoSQL
 description: Deploy a Python Flask web application that uses the Azure SDK for Python to interact with Azure Cosmos DB for NoSQL data in this quickstart.
 author: seesharprun
@@ -10,17 +10,16 @@ ms.devlang: python
 ms.topic: quickstart-sdk
 ms.date: 11/07/2024
 ms.custom: devx-track-python, devx-track-extended-azdevcli
-zone_pivot_groups: azure-cosmos-db-quickstart-env
 appliesto:
   - ✅ NoSQL
 # CustomerIntent: As a developer, I want to learn the basics of the Python library so that I can build applications with Azure Cosmos DB for NoSQL.
 ---
 
-# Quickstart: Azure Cosmos DB for NoSQL library for Python
+# Quickstart: Use Azure Cosmos DB for NoSQL with Azure SDK for Python
 
 [!INCLUDE[Developer Quickstart selector](includes/quickstart/dev-selector.md)]
 
-Get started with the Azure Cosmos DB for NoSQL client library for Python to query data in your containers and perform common operations on individual items. Follow these steps to deploy a minimal solution to your environment using the Azure Developer CLI.
+In this quickstart, you deploy a basic Azure Cosmos DB for Table application using the Azure SDK for Python. Azure Cosmos DB for Table is a schemaless data store allowing applications to store structured table data in the cloud. You learn how to create tables, rows, and perform basic tasks within your Azure Cosmos DB resource using the Azure SDK for Python.
 
 [API reference documentation](/python/api/overview/azure/cosmos-readme) | [Library source code](https://github.com/azure/azure-sdk-for-python/tree/main/sdk/cosmos/azure-cosmos) | [Package (PyPI)](https://pypi.org/project/azure-cosmos) | [Azure Developer CLI](/azure/developer/azure-developer-cli/overview)
 
@@ -73,7 +72,7 @@ Use the Azure Developer CLI (`azd`) to create an Azure Cosmos DB for Table accou
 
 1. Use the URL in the console to navigate to your web application in the browser. Observe the output of the running app.
 
-    :::image type="content" source="media/quickstart/dev-web-application.png" alt-text="Screenshot of the running web application.":::
+:::image type="content" source="media/quickstart/dev-web-application.png" alt-text="Screenshot of the running web application.":::
 
 ### Install the client library
 
@@ -203,6 +202,14 @@ Loop through the results of the query.
 items = [item for item in results]
 
 output = json.dumps(items, indent=True)
+```
+
+## Clean up resources
+
+When you no longer need the sample application or resources, remove the corresponding deployment and all resources.
+
+```azurecli
+azd down
 ```
 
 ## Related content

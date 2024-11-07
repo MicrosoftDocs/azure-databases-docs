@@ -1,5 +1,5 @@
 ---
-title: Quickstart - Node.js client library
+title: Quickstart - Azure SDK for Node.js
 titleSuffix: Azure Cosmos DB for NoSQL
 description: Deploy a Node.js Express web application that uses the Azure SDK for Node.js to interact with Azure Cosmos DB for NoSQL data in this quickstart.
 author: seesharprun
@@ -10,16 +10,17 @@ ms.devlang: typescript
 ms.topic: quickstart-sdk
 ms.date: 11/07/2024
 ms.custom: devx-track-js, devx-track-ts, devx-track-extended-azdevcli
+zone_pivot_groups: azure-devlang-nodejs
 appliesto:
   - ✅ NoSQL
 # CustomerIntent: As a developer, I want to learn the basics of the Node.js library so that I can build applications with Azure Cosmos DB for NoSQL.
 ---
 
-# Quickstart: Azure Cosmos DB for NoSQL library for Node.js
+# Quickstart: Use Azure Cosmos DB for NoSQL with Azure SDK for Node.js
 
 [!INCLUDE[Developer Quickstart selector](includes/quickstart/dev-selector.md)]
 
-Get started with the Azure Cosmos DB for NoSQL client library for Node.js to query data in your containers and perform common operations on individual items. Follow these steps to deploy a minimal solution to your environment using the Azure Developer CLI.
+In this quickstart, you deploy a basic Azure Cosmos DB for Table application using the Azure SDK for Node.js. Azure Cosmos DB for Table is a schemaless data store allowing applications to store structured table data in the cloud. You learn how to create tables, rows, and perform basic tasks within your Azure Cosmos DB resource using the Azure SDK for Node.js.
 
 [API reference documentation](/javascript/api/overview/azure/cosmos-readme) | [Library source code](https://github.com/azure/azure-sdk-for-js/tree/main/sdk/cosmosdb/cosmos) | [Package (npm)](https://www.npmjs.com/package/@azure/cosmos) | [Azure Developer CLI](/azure/developer/azure-developer-cli/overview)
 
@@ -72,7 +73,11 @@ Use the Azure Developer CLI (`azd`) to create an Azure Cosmos DB for Table accou
 
 1. Use the URL in the console to navigate to your web application in the browser. Observe the output of the running app.
 
-    :::image type="content" source="media/quickstart/dev-web-application.png" alt-text="Screenshot of the running web application.":::
+::: zone pivot="programming-language-js,programming-language-ts"
+
+:::image type="content" source="media/quickstart/dev-web-application.png" alt-text="Screenshot of the running web application.":::
+
+:::zone-end
 
 ### Install the client library
 
@@ -125,7 +130,7 @@ The client library is available through the Node Package Manager, as the `@azure
 
 This sample creates a new instance of the `CosmosClient` type and authenticates using a `DefaultAzureCredential` instance.
 
-### [JavaScript](#tab/javascript)
+::: zone pivot="programming-language-js"
 
 ```javascript
 const credential = new DefaultAzureCredential();
@@ -136,7 +141,9 @@ const client = new CosmosClient({
 });
 ```
 
-### [TypeScript](#tab/typescript)
+:::zone-end
+
+::: zone pivot="programming-language-js"
 
 ```typescript
 const credential: TokenCredential = new DefaultAzureCredential();
@@ -147,49 +154,53 @@ const client = new CosmosClient({
 });
 ```
 
----
+:::zone-end
 
 ### Get a database
 
 Use `client.database` to retrieve the existing database named *`cosmicworks`*.
 
-### [JavaScript](#tab/javascript)
+::: zone pivot="programming-language-js"
 
 ```javascript
 const database = client.database('cosmicworks');
 ```
 
-### [TypeScript](#tab/typescript)
+:::zone-end
+
+::: zone pivot="programming-language-js"
 
 ```typescript
 const database: Database = client.database('cosmicworks');
 ```
 
----
+:::zone-end
 
 ### Get a container
 
 Retrieve the existing *`products`* container using `database.container`.
 
-### [JavaScript](#tab/javascript)
+::: zone pivot="programming-language-js"
 
 ```javascript
 const container = database.container('products');
 ```
 
-### [TypeScript](#tab/typescript)
+:::zone-end
+
+::: zone pivot="programming-language-js"
 
 ```typescript
 const container: Container = database.container('products');
 ```
 
----
+:::zone-end
 
 ### Create an item
 
 Build a new object with all of the members you want to serialize into JSON. In this example, the type has a unique identifier, and fields for category, name, quantity, price, and sale. Create an item in the container using `container.items.upsert`. This method "upserts" the item effectively replacing the item if it already exists.
 
-### [JavaScript](#tab/javascript)
+::: zone pivot="programming-language-js"
 
 ```javascript
 const item = {
@@ -204,7 +215,9 @@ const item = {
 let response = await container.items.upsert(item);
 ```
 
-### [TypeScript](#tab/typescript)
+:::zone-end
+
+::: zone pivot="programming-language-js"
 
 ```typescript
 const item: Product = {
@@ -219,13 +232,13 @@ const item: Product = {
 let response: ItemResponse<Product> = await container.items.upsert<Product>(item);
 ```
 
----
+:::zone-end
 
 ### Read an item
 
 Perform a point read operation by using both the unique identifier (`id`) and partition key fields. Use `container.item` to get a pointer to an item and `item.read` to efficiently retrieve the specific item.
 
-### [JavaScript](#tab/javascript)
+::: zone pivot="programming-language-js"
 
 ```javascript
 const id = 'aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb';
@@ -235,7 +248,9 @@ let response = await container.item(id, partitionKey).read();
 let read_item = response.resource;
 ```
 
-### [TypeScript](#tab/typescript)
+:::zone-end
+
+::: zone pivot="programming-language-js"
 
 ```typescript
 const id = 'aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb';
@@ -245,7 +260,7 @@ let response: ItemResponse<Product> = await container.item(id, partitionKey).rea
 let read_item: Product = response.resource!;
 ```
 
----
+:::zone-end
 
 ### Query items
 
@@ -257,7 +272,7 @@ SELECT * FROM products p WHERE p.category = @category
 
 Fetch all of the results of the query using `query.fetchAll`. Loop through the results of the query.
 
-### [JavaScript](#tab/javascript)
+::: zone pivot="programming-language-js"
 
 ```javascript
 const querySpec = {
@@ -276,7 +291,9 @@ for (let item of response.resources) {
 }
 ```
 
-### [TypeScript](#tab/typescript)
+:::zone-end
+
+::: zone pivot="programming-language-js"
 
 ```typescript
 const querySpec: SqlQuerySpec = {
@@ -295,7 +312,15 @@ for (let item of response.resources) {
 }
 ```
 
----
+:::zone-end
+
+## Clean up resources
+
+When you no longer need the sample application or resources, remove the corresponding deployment and all resources.
+
+```azurecli
+azd down
+```
 
 ## Related content
 

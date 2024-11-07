@@ -1,5 +1,5 @@
 ---
-title: Quickstart - .NET client library
+title: Quickstart - Azure SDK for .NET
 titleSuffix: Azure Cosmos DB for NoSQL
 description: Deploy a .NET web application that uses the Azure SDK for .NET to interact with Azure Cosmos DB for NoSQL data in this quickstart.
 author: seesharprun
@@ -15,11 +15,11 @@ appliesto:
 # CustomerIntent: As a developer, I want to learn the basics of the .NET library so that I can build applications with Azure Cosmos DB for NoSQL.
 ---
 
-# Quickstart: Azure Cosmos DB for NoSQL library for .NET
+# Quickstart: Use Azure Cosmos DB for NoSQL with Azure SDK for .NET
 
 [!INCLUDE[Developer Quickstart selector](includes/quickstart/dev-selector.md)]
 
-Get started with the Azure Cosmos DB for NoSQL client library for .NET to query data in your containers and perform common operations on individual items. Follow these steps to deploy a minimal solution to your environment using the Azure Developer CLI.
+In this quickstart, you deploy a basic Azure Cosmos DB for Table application using the Azure SDK for .NET. Azure Cosmos DB for Table is a schemaless data store allowing applications to store structured table data in the cloud. You learn how to create tables, rows, and perform basic tasks within your Azure Cosmos DB resource using the Azure SDK for .NET.
 
 [API reference documentation](/dotnet/api/microsoft.azure.cosmos) | [Library source code](https://github.com/Azure/azure-cosmos-dotnet-v3) | [Package (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Cosmos) | [Azure Developer CLI](/azure/developer/azure-developer-cli/overview)
 
@@ -72,7 +72,7 @@ Use the Azure Developer CLI (`azd`) to create an Azure Cosmos DB for Table accou
 
 1. Use the URL in the console to navigate to your web application in the browser. Observe the output of the running app.
 
-    :::image type="content" source="media/quickstart/dev-web-application.png" alt-text="Screenshot of the running web application.":::
+:::image type="content" source="media/quickstart/dev-web-application.png" alt-text="Screenshot of the running web application.":::
 
 ### Install the client library
 
@@ -228,7 +228,11 @@ while (feed.HasMoreResults)
 
 ## Clean up resources
 
-[!INCLUDE[Developer Quickstart cleanup](includes/quickstart/dev-cleanup.md)]
+When you no longer need the sample application or resources, remove the corresponding deployment and all resources.
+
+```azurecli
+azd down
+```
 
 ## Related content
 
