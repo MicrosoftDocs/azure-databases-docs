@@ -9,7 +9,7 @@ ms.service: azure-cosmos-db
 ms.subservice: table
 ms.devlang: golang
 ms.topic: quickstart-sdk
-ms.date: 11/06/2024
+ms.date: 11/07/2024
 ms.custom: devx-track-go, devx-track-extended-azdevcli
 appliesto:
   - ✅ Table
@@ -139,7 +139,7 @@ The easiest way to create a new entity in a table is to create an instance of ty
 ```go
 entity := aztables.EDMEntity{
     Entity: aztables.Entity{
-        RowKey:       "70b63682-b93a-4c77-aad2-65501347265f",
+        RowKey:       "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb",
         PartitionKey: "gear-surf-surfboards",
     },
     Properties: map[string]any{
@@ -170,7 +170,7 @@ if err != nil {
 You can retrieve a specific entity from a table using `GetEntity`. You can then use `json.Unmarshal` to parse it using the `aztables.EDMEntity` type.
 
 ```go
-rowKey := "70b63682-b93a-4c77-aad2-65501347265f"
+rowKey := "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb"
 partitionKey := "gear-surf-surfboards"
 
 response, err := table.GetEntity(context.TODO(), partitionKey, rowKey, nil)
