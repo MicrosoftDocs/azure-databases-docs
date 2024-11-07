@@ -8,6 +8,8 @@ ms.custom:
   - build-2024
 ms.topic: conceptual
 ms.date: 10/09/2024
+ms.collection:
+  - ce-skilling-ai-copilot
 ---
 
 # Vector database
