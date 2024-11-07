@@ -100,22 +100,21 @@ First, this sample creates a new class that inherits from `AbstractCosmosConfigu
 @Configuration
 @EnableCosmosRepositories
 public class CosmosConfiguration extends AbstractCosmosConfiguration {
-
 }
 ```
 
 Within the configuration class, this sample creates a new instance of the `CosmosClientBuilder` class and configures authentication using a `DefaultAzureCredential` instance.
 
 ```java
-    @Bean
-    public CosmosClientBuilder getCosmosClientBuilder() {
-        DefaultAzureCredential credential = new DefaultAzureCredentialBuilder()
-            .build();
-            
-        return new CosmosClientBuilder()
-            .endpoint("<azure-cosmos-db-nosql-account-endpoint>")
-            .credential(credential);
-    }
+@Bean
+public CosmosClientBuilder getCosmosClientBuilder() {
+    DefaultAzureCredential credential = new DefaultAzureCredentialBuilder()
+        .build();
+        
+    return new CosmosClientBuilder()
+        .endpoint("<azure-cosmos-db-nosql-account-endpoint>")
+        .credential(credential);
+}
 ```
 
 ### Get a database

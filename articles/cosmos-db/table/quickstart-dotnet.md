@@ -114,6 +114,8 @@ The sample code in the template uses a table named `cosmicworks-products`. The `
 This sample creates a new instance of the `TableServiceClient` class.
 
 ```csharp
+DefaultAzureCredential credential = new();
+
 TableServiceClient serviceClient = new(
     endpoint: new Uri("<azure-cosmos-db-table-account-endpoint>"),
     credential

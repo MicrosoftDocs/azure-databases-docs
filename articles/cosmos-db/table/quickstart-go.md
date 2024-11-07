@@ -115,6 +115,11 @@ The sample code in the template uses a table named `cosmicworks-products`. The `
 This sample creates a new instance of the `ServiceClient` type.
 
 ```go
+credential, err := azidentity.NewDefaultAzureCredential(nil)
+if err != nil {
+    return err
+}
+
 client, err := aztables.NewServiceClient("<azure-cosmos-db-table-account-endpoint>", credential)
 if err != nil {
     log.Fatal(err)
