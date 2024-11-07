@@ -105,7 +105,7 @@ const client = new CosmosClient({
 ### [TypeScript](#tab/typescript)
 
 ```typescript
-const credential = new DefaultAzureCredential();
+const credential: TokenCredential = new DefaultAzureCredential();
 
 const client = new CosmosClient({
     '<azure-cosmos-db-nosql-account-endpoint>',

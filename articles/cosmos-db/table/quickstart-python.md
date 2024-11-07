@@ -113,6 +113,8 @@ The sample code in the template uses a table named `cosmicworks-products`. The `
 This sample creates a new instance of the `TableServiceClient` type.
 
 ```python
+credential = DefaultAzureCredential()
+
 client = TableServiceClient(endpoint="<azure-cosmos-db-table-account-endpoint>", credential=credential)
 ```
 
