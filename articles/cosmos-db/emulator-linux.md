@@ -2,8 +2,8 @@
 title: Linux-based emulator (preview)
 titleSuffix: Azure Cosmos DB for NoSQL
 description: Use the Azure Cosmos DB Linux-based emulator to test your applications against API for NoSQL endpoints.
-author: sajeetharan
-ms.author: sasinnat
+author: TheovanKraay
+ms.author: thvankra
 ms.service: azure-cosmos-db
 ms.topic: how-to
 ms.date: 11/07/2024
