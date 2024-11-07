@@ -25,7 +25,7 @@ The next generation of the Azure Cosmos DB emulator is entirely Linux-based and 
 
 Get the Docker container image using `docker pull`. The container image is published to the [Microsoft Artifact Registry](https://mcr.microsoft.com/) as `mcr.microsoft.com/cosmosdb/linux/azure-cosmos-emulator:vnext-preview`.
 
-```shell
+```bash
 docker pull mcr.microsoft.com/cosmosdb/linux/azure-cosmos-emulator:vnext-preview
 ```
 
@@ -33,7 +33,7 @@ docker pull mcr.microsoft.com/cosmosdb/linux/azure-cosmos-emulator:vnext-preview
 
 To run the container, use `docker run`. Afterwards, use `docker ps` to validate that the container is running.
 
-```shell
+```bash
 docker run --detach --publish 8081:8081 --publish 1234:1234 mcr.microsoft.com/cosmosdb/linux/azure-cosmos-emulator:vnext-preview
 
 docker ps

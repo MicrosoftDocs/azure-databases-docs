@@ -10,7 +10,6 @@ ms.date: 11/07/2024
 # CustomerIntent: As a developer, I want to use the Azure Cosmos DB emulator so that I can develop my application against a database during development.
 ---
 
-
 # What is the Azure Cosmos DB emulator?
 
 The Azure Cosmos DB emulator provides a local environment that emulates the Azure Cosmos DB service designed for development purposes. Using the emulator, you can develop and test your application locally, without creating an Azure subscription or incurring any service costs. When you're satisfied with how your application is working with the emulator, you can transition to using an Azure Cosmos DB account with minimal friction.
@@ -18,9 +17,8 @@ The Azure Cosmos DB emulator provides a local environment that emulates the Azur
 > [!IMPORTANT]
 > We do not recommend the use of the emulator for production workloads.
 
-> [!Tip] 
+> [!TIP]
 > Visit our new **[Samples Gallery](https://aka.ms/AzureCosmosDB/Gallery)** for the latest samples for building new apps
-
 
 ## Differences between the emulator and cloud service
 
@@ -28,6 +26,8 @@ The emulator provides an environment on your developer workspace that isn't capa
 
 > [!IMPORTANT]
 > The Linux emulator currently doesn't support developer machines running on Apple silicon series or Microsoft ARM chips. A temporary workaround is to install a Windows virtual machine and run the emulator on that platform.
+>
+> Alternatively, you can used the new [Linux-based Azure Cosmos DB emulator (preview)](emulator-linux.md).
 
 - The emulator's **Data Explorer** pane is only supported in the API for NoSQL and API for MongoDB.
 - The emulator only supports **provisioned throughput**. The emulator doesn't support **serverless** throughput.
