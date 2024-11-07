@@ -116,11 +116,9 @@ The client library is available through Maven, as the `azure-spring-data-cosmos`
 - [Get an item](#read-an-item)
 - [Query items](#query-items)
 
-[!INCLUDE[Developer Quickstart sample explanation](includes/quickstart/dev-sample-primer.md)]
+The sample code in the template uses a database named `cosmicworks` and container named `products`. The `products` container contains details such as name, category, quantity, a unique identifier, and a sale flag for each product. The container uses the `/category` property as a logical partition key.
 
 ### Authenticate the client
-
-[!INCLUDE[Developer Quickstart authentication explanation](includes/quickstart/dev-auth-primer.md)]
 
 First, this sample creates a new class that inherits from `AbstractCosmosConfiguration` to configure the connection to Azure Cosmos DB for NoSQL.
 
