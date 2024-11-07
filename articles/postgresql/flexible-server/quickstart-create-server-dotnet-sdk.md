@@ -70,7 +70,7 @@ using Azure.ResourceManager.PostgreSql.FlexibleServers.Models;
 namespace CreatePostgreSqlFlexibleServer
 {
     class Program   
-    {
+    {  
         static async Task Main(string[] args)
         {
 
