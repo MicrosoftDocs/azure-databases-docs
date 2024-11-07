@@ -117,7 +117,7 @@ Before you begin, ensure you have the following:
 1. Locate **Subscription** you have your MongoDB workload. Under the desired subscription, you will notice **Azure Cosmos DB for MongoDB (vCore)** branch. Expand the branch to view your clusters and databases.
 1. Choose your Azure Cosmos DB for MongoDB (vCore) cluster from the expanded list.
 1. When prompted, enter the admin password for your cluster.
-1. Once authenticated, you’ll gain access to your cluster. 
+1. Once authenticated, you will gain access to your cluster. 
 
 > [!NOTE]
 > Your password is only used for authentication and is not stored.
