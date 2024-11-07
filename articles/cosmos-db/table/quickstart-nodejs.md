@@ -9,7 +9,7 @@ ms.service: azure-cosmos-db
 ms.subservice: table
 ms.devlang: typescript
 ms.topic: quickstart-sdk
-ms.date: 11/06/2024
+ms.date: 11/07/2024
 ms.custom: devx-track-js, devx-track-ts, devx-track-extended-azdevcli
 appliesto:
   - ✅ Table
@@ -150,7 +150,7 @@ This sample creates a new instance of the `TableServiceClient` type.
 ::: zone pivot="programming-language-ts"
 
 ```typescript
-let client: TableServiceClient = new TableServiceClient("<azure-cosmos-db-table-account-endpoint>", credential);
+let client: TableServiceClient = new TableServiceClient("<azure-cosmos-db-table-account-endpoint>", "<credential>");
 ```
 
 ::: zone-end
@@ -158,6 +158,8 @@ let client: TableServiceClient = new TableServiceClient("<azure-cosmos-db-table-
 ::: zone pivot="programming-language-js"
 
 ```javascript
+const credential = new DefaultAzureCredential();
+
 let client = new TableServiceClient("<azure-cosmos-db-table-account-endpoint>", credential);
 ```
 
@@ -200,7 +202,7 @@ export interface Product extends TableEntity {
 
 ```typescript
 const entity: Product = {
-    rowKey: '70b63682-b93a-4c77-aad2-65501347265f',
+    rowKey: 'aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb',
     partitionKey: 'gear-surf-surfboards',
     name: 'Yamba Surfboard',
     quantity: 12,
@@ -217,7 +219,7 @@ The easiest way to create a new item in a table is to build a JSON object.
 
 ```javascript
 const entity = {
-    rowKey: '70b63682-b93a-4c77-aad2-65501347265f',
+    rowKey: 'aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb',
     partitionKey: 'gear-surf-surfboards',
     name: 'Yamba Surfboard',
     quantity: 12,

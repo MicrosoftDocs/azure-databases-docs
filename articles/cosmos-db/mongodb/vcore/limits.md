@@ -38,11 +38,10 @@ db.collection.find({ field: "value" }).maxTimeMS(5000)
   - Configurable up to: 300 indexes per collection.
 - Sorting is done in memory and doesn't push down to the index.
 - Maximum level of nesting for embedded objects/arrays on index definitions: 6.
-- Background index builds are in preview. To enable, [reach out to our team](mailto:mongodb-feedback@microsoft.com) for assistance.
-  - A single index build can be in progress on the same collection.
-  - The number of simultaneous index builds on different collections is configurable (default: 2).
-  - Use the `currentOp` command to view the progress of long-running index builds.
-  - Unique index builds are done in the foreground and block writes in the collection.
+- A single index build can be in progress on the same collection.
+- The number of simultaneous index builds on different collections is configurable (default: 2).
+- Use the `currentOp` command to view the progress of long-running index builds.
+- Unique index builds are done in the foreground and block writes in the collection.
 
 ### Wildcard Indexing Limits
 - For wildcard indexes, if the indexed field is an array of arrays, the entire embedded array is taken as a value instead of traversing its contents.
