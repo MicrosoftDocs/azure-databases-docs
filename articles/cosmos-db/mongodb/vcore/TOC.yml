@@ -87,7 +87,9 @@
         - name: Connect using Studio 3T
           href: how-to-connect-studio-3t.md
         - name: Connect using MongoDB Shell
-          href: how-to-connect-mongo-shell.md      
+          href: how-to-connect-mongo-shell.md
+        - name: Connect using Visual Studio Code
+          href: ../../visual-studio-code-extension.md?pivots=api-mongodb      
     - name: Develop applications
       items:
         - name: Create transactions
