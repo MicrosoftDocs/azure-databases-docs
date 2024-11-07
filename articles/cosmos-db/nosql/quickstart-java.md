@@ -8,15 +8,15 @@ ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.devlang: java
 ms.topic: quickstart-sdk
-ms.date: 10/15/2024
+ms.date: 11/07/2024
 ms.custom: devx-track-extended-java, devx-track-extended-azdevcli
 zone_pivot_groups: azure-cosmos-db-quickstart-env
+appliesto:
+  - ✅ NoSQL
 # CustomerIntent: As a developer, I want to learn the basics of the Java library so that I can build applications with Azure Cosmos DB for NoSQL.
 ---
 
 # Quickstart: Azure Cosmos DB for NoSQL library for Java
-
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
 
 [!INCLUDE[Developer Quickstart selector](includes/quickstart/dev-selector.md)]
 
@@ -100,22 +100,21 @@ First, this sample creates a new class that inherits from `AbstractCosmosConfigu
 @Configuration
 @EnableCosmosRepositories
 public class CosmosConfiguration extends AbstractCosmosConfiguration {
-
 }
 ```
 
 Within the configuration class, this sample creates a new instance of the `CosmosClientBuilder` class and configures authentication using a `DefaultAzureCredential` instance.
 
 ```java
-    @Bean
-    public CosmosClientBuilder getCosmosClientBuilder() {
-        DefaultAzureCredential credential = new DefaultAzureCredentialBuilder()
-            .build();
-            
-        return new CosmosClientBuilder()
-            .endpoint("<azure-cosmos-db-nosql-account-endpoint>")
-            .credential(credential);
-    }
+@Bean
+public CosmosClientBuilder getCosmosClientBuilder() {
+    DefaultAzureCredential credential = new DefaultAzureCredentialBuilder()
+        .build();
+        
+    return new CosmosClientBuilder()
+        .endpoint("<azure-cosmos-db-nosql-account-endpoint>")
+        .credential(credential);
+}
 ```
 
 ### Get a database
@@ -154,7 +153,7 @@ Create an item in the container using `repository.save`.
 
 ```java
 Item item = new Item(
-    "70b63682-b93a-4c77-aad2-65501347265f",
+    "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb",
     "gear-surf-surfboards",
     "Yamba Surfboard",
     12,
@@ -169,7 +168,7 @@ Perform a point read operation by using both the unique identifier (`id`) and pa
 
 ```java
 PartitionKey partitionKey = new PartitionKey("gear-surf-surfboards");
-Optional<Item> existing_item = repository.findById("70b63682-b93a-4c77-aad2-65501347265f", partitionKey);
+Optional<Item> existing_item = repository.findById("aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb", partitionKey);
 if (existing_item.isPresent()) {
     // Do something
 }
