@@ -8,15 +8,15 @@ ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.devlang: csharp
 ms.topic: quickstart-sdk
-ms.date: 10/22/2024
+ms.date: 11/07/2024
 ms.custom: devx-track-csharp, devx-track-dotnet, devx-track-extended-azdevcli
 zone_pivot_groups: azure-cosmos-db-quickstart-env
+appliesto:
+  - ✅ NoSQL
 # CustomerIntent: As a developer, I want to learn the basics of the .NET library so that I can build applications with Azure Cosmos DB for NoSQL.
 ---
 
 # Quickstart: Azure Cosmos DB for NoSQL library for .NET
-
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
 
 [!INCLUDE[Developer Quickstart selector](includes/quickstart/dev-selector.md)]
 
@@ -140,7 +140,7 @@ Create an item in the container using `container.UpsertItem`. This method "upser
 
 ```csharp
 Product item = new(
-    id: "68719518391",
+    id: "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb",
     category: "gear-surf-surfboards",
     name: "Yamba Surfboard",
     quantity: 12,
@@ -160,7 +160,7 @@ Perform a point read operation by using both the unique identifier (`id`) and pa
 
 ```csharp
 ItemResponse<Product> response = await container.ReadItemAsync<Product>(
-    id: "68719518391",
+    id: "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb",
     partitionKey: new PartitionKey("gear-surf-surfboards")
 );
 ```

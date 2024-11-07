@@ -9,7 +9,7 @@ ms.service: azure-cosmos-db
 ms.subservice: table
 ms.devlang: python
 ms.topic: quickstart-sdk
-ms.date: 11/06/2024
+ms.date: 11/07/2024
 ms.custom: devx-track-python, devx-track-extended-azdevcli
 appliesto:
   - ✅ Table
@@ -17,6 +17,8 @@ appliesto:
 ---
 
 # Quickstart: Use Azure Cosmos DB for Table with Azure SDK for Python
+
+[!INCLUDE[Developer Quickstart selector](includes/quickstart/dev-selector.md)]
 
 In this quickstart, you deploy a basic Azure Cosmos DB for Table application using the Azure SDK for Python. Azure Cosmos DB for Table is a schemaless data store allowing applications to store structured table data in the cloud. You learn how to create tables, rows, and perform basic tasks within your Azure Cosmos DB resource using the Azure SDK for Python.
 
@@ -113,6 +115,8 @@ The sample code in the template uses a table named `cosmicworks-products`. The `
 This sample creates a new instance of the `TableServiceClient` type.
 
 ```python
+credential = DefaultAzureCredential()
+
 client = TableServiceClient(endpoint="<azure-cosmos-db-table-account-endpoint>", credential=credential)
 ```
 
@@ -130,7 +134,7 @@ The easiest way to create a new entity in a table is to create a new object ensu
 
 ```python
 new_entity = {
-    "RowKey": "70b63682-b93a-4c77-aad2-65501347265f",
+    "RowKey": "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb",
     "PartitionKey": "gear-surf-surfboards",
     "Name": "Yamba Surfboard",
     "Quantity": 12,
@@ -150,7 +154,7 @@ You can retrieve a specific entity from a table using `get_entity`.
 
 ```python
 existing_entity = table.get_entity(
-    row_key="70b63682-b93a-4c77-aad2-65501347265f",
+    row_key="aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb",
     partition_key="gear-surf-surfboards",
 )
 ```
