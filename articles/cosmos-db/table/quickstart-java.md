@@ -144,6 +144,7 @@ String partitionKey = "gear-surf-surfboards";
 TableEntity entity = new TableEntity(partitionKey, rowKey)
         .addProperty("Name", "Yamba Surfboard")
         .addProperty("Quantity", 12)
+        .addProperty("Price", 850.00)
         .addProperty("Sale", false);
 ```
 
@@ -155,24 +156,32 @@ Response<Void> response = table.upsertEntityWithResponse(entity, TableEntityUpda
 
 ### Get an entity
 
-You can retrieve a specific entity from a table using TODO
+You can retrieve a specific entity from a table using `getEntity`.
 
 ```java
-TODO
+String rowKey = "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb";
+String partitionKey = "gear-surf-surfboards";
+
+TableEntity entity = table.getEntity(partitionKey, rowKey);
 ```
 
 ### Query entities
 
-After you insert an entity, you can also run a query to get all entities that match a specific filter by using TODO
+After you insert an entity, you can also run a query to get all entities that match a specific filter by using `listEntities` and the `ListEntitiesOptions` class. Use the `setFilter` method to specify a string OData filter.
 
 ```java
-TODO
+ListEntitiesOptions options = new ListEntitiesOptions()
+    .setFilter("PartitionKey eq 'gear-surf-surfboards'");
+
+PagedIterable<TableEntity> tableEntities = table.listEntities(options, null, null);
 ```
 
-Parse the paginated results of the query by TODO
+Parse the paginated results of the query by using a for loop.
 
 ```java
-TODO
+for (TableEntity entity : tableEntities) {
+    // Do something
+}
 ```
 
 ## Clean up resources
