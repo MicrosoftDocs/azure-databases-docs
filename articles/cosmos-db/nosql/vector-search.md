@@ -11,6 +11,8 @@ ms.custom:
   - build-2024
 ms.topic: conceptual
 ms.date: 5/7/2024
+ms.collection:
+  - ce-skilling-ai-copilot
 ---
 
 # Vector Search in Azure Cosmos DB for NoSQL

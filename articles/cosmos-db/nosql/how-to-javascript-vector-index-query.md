@@ -9,6 +9,8 @@ ms.subservice: nosql
 ms.topic: how-to
 ms.date: 08/08/2024
 ms.custom: query-reference, build-2024, devx-track-js
+ms.collection:
+  - ce-skilling-ai-copilot
 ---
 
 # Index and query vectors in Azure Cosmos DB for NoSQL in JavaScript

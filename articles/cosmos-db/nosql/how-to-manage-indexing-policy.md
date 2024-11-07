@@ -8,6 +8,8 @@ ms.topic: how-to
 ms.date: 03/08/2023
 ms.author: mjbrown
 ms.custom: devx-track-csharp, build-2024
+ms.collection:
+  - ce-skilling-ai-copilot
 ---
 
 # Manage indexing policies in Azure Cosmos DB

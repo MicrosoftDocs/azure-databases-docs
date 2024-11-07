@@ -8,7 +8,8 @@ ms.subservice: nosql
 ms.topic: how-to
 ms.date: 9/16/2024
 ms.author: jacodel
-
+ms.collection:
+  - ce-skilling-ai-copilot
 ---
 
 # Load and process document files into Azure Cosmos DB for search

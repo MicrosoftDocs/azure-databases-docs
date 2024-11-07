@@ -1070,7 +1070,7 @@
       href: sdk-java-async-v2.md
     - name: Spring Data Connector v2 (legacy)
       href: sdk-java-spring-data-v2.md
-    - name: Spring Data Connector v3
+    - name: Spring Data Connector v3 (legacy)
       href: sdk-java-spring-data-v3.md
     - name: Spring Data Connector v5
       href: sdk-java-spring-data-v5.md
