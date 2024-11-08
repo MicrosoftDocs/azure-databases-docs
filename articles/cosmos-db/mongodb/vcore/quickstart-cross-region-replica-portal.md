@@ -189,7 +189,7 @@ db.cats.find();
 
 1. From the Azure Cosmos DB for MongoDB vCore *primary* cluster page, select the **Global distribution** page under **Settings**.
 
-   :::image type="content" source="media/quickstart-cross-region-replication/global-distribution-page-on-primary-cluster.png" alt-text="Screenshot of the global distribution preview page in the primary cluster properties.":::
+   :::image type="content" source="media/quickstart-cross-region-replication/global-distribution-page-on-primary-cluster.png" alt-text="Screenshot of the global distribution page in the primary cluster properties.":::
 
 1. Select *cluster replica name* in the **Read replica** field to open the read cluster replica properties in the Azure portal.
  
@@ -239,11 +239,11 @@ To promote a cluster read replica to a read-write cluster, follow these steps:
 
 1. On the **Global distribution** page, select **Promote** on the toolbar to initiate read replica promotion to read-write cluster. 
 
-      :::image type="content" source="media/quickstart-cross-region-replication/replica-cluster-promotion.png" alt-text="Screenshot of the read replica cluster global distribution preview page with the promote button.":::
+      :::image type="content" source="media/quickstart-cross-region-replication/replica-cluster-promotion.png" alt-text="Screenshot of the read replica cluster global distribution page with the promote button.":::
 
 1. In the **Promote cluster** pop-up window, confirm that you understand how replica promotion works, and select **Promote**. Replica promotion might take a few minutes to complete.
 
-    :::image type="content" source="media/quickstart-cross-region-replication/replica-cluster-promotion-confirmation.png" alt-text="Screenshot of the read replica cluster global distribution preview page with the promote confirmation pop-up window.":::
+    :::image type="content" source="media/quickstart-cross-region-replication/replica-cluster-promotion-confirmation.png" alt-text="Screenshot of the read replica cluster global distribution page with the promote confirmation pop-up window.":::
 
 ### Write to promoted cluster replica
 
