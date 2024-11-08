@@ -36,7 +36,7 @@ The global read-write connection string in Azure Cosmos DB for MongoDB consisten
 
 Replica clusters are also available for reads. It helps offload intensive read operations from the primary cluster or deliver reduced latency for read operations to the clients that are located closer to the replication region. When cross-region replication is enabled, applications can use the replica cluster self connection string to perform reads from the cluster replica. The primary cluster is available for read and write operations using its own self connection string. 
 
-    :::image type="content" source="media/cross-region-replication/global-read-write-connection-string-in-azure-portal.png" alt-text="Screenshot of the cluster connection strings a Azure Cosmos DB for MongoDB (vCore) cluster including global read-write connection string and self connection string.":::
+:::image type="content" source="media/cross-region-replication/global-read-write-connection-string-in-azure-portal.png" alt-text="Screenshot of the cluster connection strings a Azure Cosmos DB for MongoDB (vCore) cluster including global read-write connection string and self connection string.":::
 
 When you create a replica by enabling cross-region replication, it doesn't inherit networking settings such as firewall rules of the primary cluster. These settings must be set up independently for the replica. The replica inherits the admin account from the primary cluster. User accounts need to be managed on the primary cluster. You can connect to the primary cluster and its replica cluster using the same user accounts.
 
