@@ -261,7 +261,7 @@ In the MongoDB shell session, perform a write operation.
 db.createCollection('foxes')
 ```
 
-Use the MongDB shell in command line to connect to *the new replica cluster* (former primary cluster) using its connection string.
+Use the MongDB shell in command line to connect to *the new replica cluster* (former primary cluster) using its connection string. You can use self connection string or the global read-write connection string.
 
 ```cmd
 mongosh "mongodb+srv://<user>@<new_replica_cluster_name>.mongocluster.cosmos.azure.com/?tls=true&authMechanism=SCRAM-SHA-256&retrywrites=false&maxIdleTimeMS=120000"

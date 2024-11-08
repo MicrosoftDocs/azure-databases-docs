@@ -98,7 +98,7 @@ Get the connection string you need to connect to this cluster using your applica
 1. Copy or record the value from the **Connection string** field.
 
     > [!IMPORTANT]
-    > The connection string in the portal does not include the username and password values. You must replace the `<user>` and `<password>` placeholders with the credentials you entered when you created the cluster.
+    > The connection string in the portal does not include the password value. You must replace the `<password>` placeholder with the credentials you entered when you created the cluster or enter password interactively.
 
 ## Clean up resources
 
