@@ -48,6 +48,8 @@ To enable cross-region replication on a new cluster *at any time after cluster c
 1. Select a region in the **Read replica region**. The replica cluster is hosted in the selected Azure region.
 1. Verify your selection and select the **Save** button to confirm replica creation.
 
+To make the replica cluster accessible for read operations, adjust its networking settings by configuring firewall rules for public access or by adding private endpoints for secure, private access.
+
 ## Promote a replica
 
 To [promote a cluster replica](./cross-region-replication.md#replica-cluster-promotion) to a read-write cluster, follow these steps:
@@ -57,7 +59,7 @@ To [promote a cluster replica](./cross-region-replication.md#replica-cluster-pro
 1. On the **Global distribution** page, select **Promote**.
 1. On the **Promote \<cluster name>** screen, double check the cluster replica's name, read the warning text, and select **Promote**.
 
-After the cluster replica is promoted, it becomes a readable and writable cluster.
+After the cluster replica is promoted, it becomes a readable and writable cluster. If [high availability (HA)](./high-availability.md) is enabled on the primary (read-write) cluster, it needs to be re-enabled on the replica cluster after promotion.
 
 ## Check cluster replication role and replication region
 
@@ -84,13 +86,16 @@ If you need to delete the primary and replica clusters, you would need to delete
 ## Use connection strings
 
 You can connect to the cluster replica as you would to a regular read-write cluster. 
-Follow these steps to [get the connection strings for different cases](./cross-region-replication.md#read-operations-on-cluster-replicas-and-connection-strings):
+Follow these steps to [get the connection strings for different cases](./cross-region-replication.md#continuous-writes-read-operations-on-cluster-replicas-and-connection-strings):
 
 1. Select the primary cluster or its cluster replica in the portal.
 1. On the cluster sidebar, under **Settings**, select **Connection strings**.
-1. Copy the connection string for currently selected cluster to connect to that cluster.
+1. Copy the self connection string for currently selected cluster to connect to that cluster.
+1. (optionally, on the primary cluster only) Copy the global read-write connection string that always points to the cluster available for writes.
 
-Connection strings are preserved after [the cluster replica promotion](./cross-region-replication.md#replica-cluster-promotion). You can continue to use either string for read operations. You need to change connection string to point to the promoted replica cluster to continue writes to the database after promotion is completed.
+    :::image type="content" source="media/cross-region-replication/global-read-write-connection-string-in-azure-portal.png" alt-text="Screenshot of the cluster connection strings a Azure Cosmos DB for MongoDB (vCore) cluster including global read-write connection string and self connection string.":::
+
+Self connection strings are preserved after [the cluster replica promotion](./cross-region-replication.md#replica-cluster-promotion). You can continue to use either string or global read-write connection string for read operations. If you use self connectoin string for write operations, you need to update connection string in your application to point to the promoted replica cluster to continue writes to the database after promotion is completed.
 
 ## Related content
 
