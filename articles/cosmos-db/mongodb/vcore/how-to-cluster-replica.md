@@ -93,9 +93,9 @@ Follow these steps to [get the connection strings for different cases](./cross-r
 1. Copy the self connection string for currently selected cluster to connect to that cluster.
 1. (optionally, on the primary cluster only) Copy the global read-write connection string that always points to the cluster available for writes.
 
-:::image type="content" source="media/cross-region-replication/global-read-write-connection-string-in-azure-portal.png" alt-text="Screenshot of the cluster connection strings a Azure Cosmos DB for MongoDB (vCore) cluster including global read-write connection string and self connection string.":::
+:::image type="content" source="media/cross-region-replication/global-read-write-connection-string-in-azure-portal.png" alt-text="Screenshot of the cluster connection strings an Azure Cosmos DB for MongoDB (vCore) cluster including global read-write connection string and self connection string.":::
 
-Self connection strings are preserved after [the cluster replica promotion](./cross-region-replication.md#replica-cluster-promotion). You can continue to use either string or global read-write connection string for read operations. If you use self connectoin string for write operations, you need to update connection string in your application to point to the promoted replica cluster to continue writes to the database after promotion is completed.
+Self connection strings are preserved after [the cluster replica promotion](./cross-region-replication.md#replica-cluster-promotion). You can continue to use either string or global read-write connection string for read operations. If you use self connection string for write operations, you need to update connection string in your application to point to the promoted replica cluster to continue writes to the database after promotion is completed.
 
 ## Related content
 
