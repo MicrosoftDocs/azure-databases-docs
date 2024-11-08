@@ -43,13 +43,6 @@ Create a MongoDB cluster with a cluster read replica in another region by using 
 
     :::image type="content" source="media/quickstart-portal/select-resource-type.png" alt-text="Screenshot of the select resource type option page for Azure Cosmos DB for MongoDB.":::
 
-1. On the **Create Azure Cosmos DB for MongoDB cluster** page, select the **Access to global distribution** option within the **Cluster details** section.
-
-    :::image type="content" source="media/quickstart-cross-region-replication/select-access-to-cross-region-replication-preview.png" alt-text="Screenshot of the access to global distribution preview.":::
-  
-    > [!IMPORTANT]
-   > You should select **Access to global distribution** during provisioning to be able to create a preview replica cluster.
-
 1. On the **Create Azure Cosmos DB for MongoDB cluster** page, select the **Configure** option within the **Cluster tier** section.
 
     :::image type="content" source="media/quickstart-portal/select-cluster-option.png" alt-text="Screenshot of the cluster configuration option for a new Azure Cosmos DB for MongoDB cluster.":::
@@ -120,15 +113,12 @@ Get the connection string you need to connect to the primary (read-write) cluste
 
    :::image type="content" source="media/quickstart-cross-region-replication/select-connection-strings-option.png" alt-text="Screenshot of the connection strings page in the cluster properties.":::
 
-1. Copy the value from the **Connection string** field.
+1. Copy the value from the **Self (always this cluster)** field.
    
-    > [!IMPORTANT]
-   > The connection string in the portal does not include the username and password values. You must replace the `<user>` and `<password>` placeholders with the credentials you entered when you created the cluster.
-
 1. In command line, use the MongoDB shell to connect to the primary cluster using the connection string.
 
 ```cmd
-mongosh mongodb+srv://<user>@<primary_cluster_name>.mongocluster.cosmos.azure.com/?tls=true&authMechanism=SCRAM-SHA-256&retrywrites=false&maxIdleTimeMS=120000
+mongosh "mongodb+srv://<user>@<primary_cluster_name>.mongocluster.cosmos.azure.com/?tls=true&authMechanism=SCRAM-SHA-256&retrywrites=false&maxIdleTimeMS=120000"
 ```
 
 ### Ingest data
@@ -195,7 +185,7 @@ db.cats.find();
 ## Enable access to replica cluster
 
 > [!IMPORTANT]
-> Replica clusters are always created with networking access disabled. You should add firewall rules on the replica cluster after it is created to enable read operations.
+> Replica clusters are always created with networking access disabled. You should add firewall rules or create private endpoints on the replica cluster after it is created to enable read operations.
 
 1. From the Azure Cosmos DB for MongoDB vCore *primary* cluster page, select the **Global distribution** page under **Settings**.
 
@@ -227,7 +217,7 @@ Get the connection string for the read cluster replica in another region.
 1. In command line, use the MongDB shell to connect to the read replica cluster using its connection string.
 
 ```cmd
-mongosh mongodb+srv://<user>@<cluster_replica_name>.mongocluster.cosmos.azure.com/?tls=true&authMechanism=SCRAM-SHA-256&retrywrites=false&maxIdleTimeMS=120000
+mongosh "mongodb+srv://<user>@<cluster_replica_name>.mongocluster.cosmos.azure.com/?tls=true&authMechanism=SCRAM-SHA-256&retrywrites=false&maxIdleTimeMS=120000"
 ```
 
 ### Read data from replica cluster
@@ -262,7 +252,7 @@ Once replica promotion is completed, the promoted replica becomes available for 
 Use the MongDB shell in command line to connect to *the promoted replica cluster* using its connection string.
 
 ```cmd
-mongosh mongodb+srv://<user>@<promoted_replica_cluster_name>.mongocluster.cosmos.azure.com/?tls=true&authMechanism=SCRAM-SHA-256&retrywrites=false&maxIdleTimeMS=120000
+mongosh "mongodb+srv://<user>@<promoted_replica_cluster_name>.mongocluster.cosmos.azure.com/?tls=true&authMechanism=SCRAM-SHA-256&retrywrites=false&maxIdleTimeMS=120000"
 ```
 
 In the MongoDB shell session, perform a write operation.
@@ -274,7 +264,7 @@ db.createCollection('foxes')
 Use the MongDB shell in command line to connect to *the new replica cluster* (former primary cluster) using its connection string.
 
 ```cmd
-mongosh mongodb+srv://<user>@<new_replica_cluster_name>.mongocluster.cosmos.azure.com/?tls=true&authMechanism=SCRAM-SHA-256&retrywrites=false&maxIdleTimeMS=120000
+mongosh "mongodb+srv://<user>@<new_replica_cluster_name>.mongocluster.cosmos.azure.com/?tls=true&authMechanism=SCRAM-SHA-256&retrywrites=false&maxIdleTimeMS=120000"
 ```
 
 In the MongoDB shell, confirm that writes are now disabled on the new replica (former primary cluster).
