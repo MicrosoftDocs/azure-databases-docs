@@ -11,9 +11,9 @@ ms.devlang: typescript
 ms.topic: quickstart-sdk
 ms.date: 11/07/2024
 ms.custom: devx-track-js, devx-track-ts, devx-track-extended-azdevcli
+zone_pivot_groups: azure-devlang-nodejs
 appliesto:
   - ✅ Table
-zone_pivot_groups: azure-devlang-nodejs
 # CustomerIntent: As a developer, I want to learn the basics of the Node.js library so that I can build applications with Azure Cosmos DB for Table.
 ---
 
@@ -21,7 +21,7 @@ zone_pivot_groups: azure-devlang-nodejs
 
 [!INCLUDE[Developer Quickstart selector](includes/quickstart/dev-selector.md)]
 
-In this quickstart, you deploy a basic Azure Cosmos DB for Table application using the Azure SDK for Node.js. Azure Cosmos DB for Table is a schemaless data store allowing applications to store structured table data in the cloud. You learn how to create tables, rows, and perform basic tasks within your Azure Cosmos DB resource using the Azure SDK for Node.js
+In this quickstart, you deploy a basic Azure Cosmos DB for Table application using the Azure SDK for Node.js. Azure Cosmos DB for Table is a schemaless data store allowing applications to store structured table data in the cloud. You learn how to create tables, rows, and perform basic tasks within your Azure Cosmos DB resource using the Azure SDK for Node.js.
 
 [API reference documentation](/javascript/api/%40azure/data-tables) | [Library source code](https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/tables/data-tables) | [Package (npm)](https://www.npmjs.com/package/@azure/data-tables) | [Azure Developer CLI](/azure/developer/azure-developer-cli/overview)
 
@@ -141,7 +141,7 @@ The client library is available through npm, as the `@azure/data-tables` package
 - [Get an entity](#get-an-entity)
 - [Query entities](#query-entities)
 
-The sample code in the template uses a table named `cosmicworks-products`. The `cosmicworks-products` table contains details such as name, category, quantity, price, a unique identifier, and a sale flag for each product. The container uses a *unique identifier** as the row key and *category* as a partition key.
+The sample code in the template uses a table named `cosmicworks-products`. The `cosmicworks-products` table contains details such as name, category, quantity, price, a unique identifier, and a sale flag for each product. The container uses a *unique identifier* as the row key and *category* as a partition key.
 
 ### Authenticate the client
 
