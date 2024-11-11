@@ -6,6 +6,8 @@ ms.author: jacodel
 ms.service: azure-cosmos-db
 ms.topic: conceptual
 ms.date: 11/04/2024
+ms.collection:
+  - ce-skilling-ai-copilot
 ---
 
 # Hybrid search in Azure Cosmos DB for NoSQL (preview)
