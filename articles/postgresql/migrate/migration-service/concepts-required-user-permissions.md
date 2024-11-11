@@ -71,3 +71,9 @@ If you want to grant permissions specifically for creating and monitoring migrat
 If a runtime server is part of your migration setup, ensure the permissions Microsoft.DBforPostgreSQL/flexibleServers/migrations/* are included in the scope of the runtime server.
 
 By setting up these permissions, you ensure that your migration process is both secure and aligned with PostgreSQL Migration Service requirements.
+
+## Related content
+
+- [Migration service](concepts-migration-service-postgresql.md)
+- [Network setup](how-to-network-setup-migration-service.md)
+- [Premigration validations](concepts-premigration-migration-service.md)
