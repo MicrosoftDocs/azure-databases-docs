@@ -6,7 +6,7 @@ ms.author: jucocchi
 ms.service: azure-cosmos-db
 ms.custom: build-2023
 ms.topic: conceptual
-ms.date: 07/25/2024
+ms.date: 11/11/2024
 ---
 # Change feed modes in Azure Cosmos DB
 
@@ -85,7 +85,7 @@ In addition to the [common features across all change feed modes](../change-feed
 
 * Change feed items come in the order of their modification time. Deletes from TTL expirations aren't guaranteed to appear in the feed immediately after the item expires. They appear when the item is purged from the container.
 
-* All changes that occurred within the retention window that's set for continuous backups on the account can be read. Attempting to read changes that occurred outside of the retention window results in an error. For example, if your container was created eight days ago and your continuous backup period retention period is seven days, then you can only read changes from the last seven days.
+* All changes that occurred within the retention window for continuous backups on the account can be read. Attempting to read changes that occurred outside of the retention window results in an error. For example, if your container was created eight days ago and your continuous backup period retention period is seven days, then you can only read changes from the last seven days.
 
 * The change feed starting point can be from "now" or from a specific checkpoint within your retention period. You can't read changes from the beginning of the container or from a specific point in time by using this mode.
 
@@ -107,7 +107,7 @@ You can use the following ways to consume changes from change feed in latest ver
 
 ### Parse the response object
 
-In latest version mode, the default response object is an array of items that have changed. Each item contains the standard metadata for any Azure Cosmos DB item, including `_etag` and `_ts`, with the addition of a new property, `_lsn`.
+In latest version mode, the default response object is an array of items that changed. Each item contains the standard metadata for any Azure Cosmos DB item, including `_etag` and `_ts`, with the addition of a new property, `_lsn`.
 
 The `_etag` format is internal and you shouldn't take dependency on it because it can change anytime. `_ts` is a modification or a creation time stamp. You can use `_ts` for chronological comparison. `_lsn` is a batch ID that is added for change feed only that represents the transaction ID. Many items can have same `_lsn`.
 
@@ -132,13 +132,13 @@ To get started using all versions and deletes change feed mode, enroll in the pr
 
 :::image type="content" source="media/change-feed-modes/enroll-in-preview.png" alt-text="Screenshot of All versions and deletes change feed mode feature in Preview Features page in Subscriptions overview in Azure portal.":::
 
-Before you submit your request, ensure that you have at least one Azure Cosmos DB account in the subscription. This account can be an existing account or a new account that you created to try out the preview feature. If you have no accounts in the subscription when the Azure Cosmos DB team receives your request, the request is declined because there are no accounts to apply the feature to.
+Before you submit your request, ensure that you have at least one Azure Cosmos DB account in the subscription. This account can be an existing account or a new account that you created to try out the preview feature. If you have no accounts in the subscription when your request is received, the request is declined because there are no accounts to apply the feature to.
 
 The Azure Cosmos DB team reviews your request and contacts you via email to confirm which Azure Cosmos DB accounts in the subscription you want to enroll in the preview. To use the preview, you must have [continuous backups](../continuous-backup-restore-introduction.md) configured for your Azure Cosmos DB account. Continuous backups can be enabled either before or after being admitted to the preview, but continuous backups must be enabled before you attempt to read from the change feed in all versions and deletes mode.
 
 ### Parse the response object
 
-The response object is an array of items that represent each change. Different properties will be populated depending on the change type. There is currently no way to get the previous version of items for either replace or delete operations.
+The response object is an array of items that represent each change. Different properties will be populated depending on the change type. There's currently no way to get the previous version of items for either replace or delete operations.
 
 * Create operations
     ```json
@@ -195,9 +195,9 @@ The response object is an array of items that represent each change. Different p
 
 * The ability to start reading the change feed from the beginning or to select a start time based on a past time stamp isn't currently supported. You can either start from "now" or from a previous [lease](change-feed-processor.md#components-of-the-change-feed-processor) or [continuation token](change-feed-pull-model.md#save-continuation-tokens).
 
-* Receiving the previous version of items that have been deleted or updated isn't currently available.
+* Receiving the previous version of items that were deleted or updated isn't currently available.
 
-* Accounts that have enabled [merging partitions](../merge.md) aren't supported.
+* Accounts that enabled [merging partitions](../merge.md) aren't supported.
 
 ---
 
