@@ -120,7 +120,7 @@ During the preview, the following methods to read the change feed are available 
 | **Method to read change feed** | **.NET** | **Java** | **Python** | **Node.js** |
 | --- | --- | --- | --- | --- |
 | [Change feed pull model](change-feed-pull-model.md) | [>= 3.32.0-preview](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/3.32.0-preview) | [>= 4.42.0](https://mvnrepository.com/artifact/com.azure/azure-cosmos/4.37.0) |  No  |  [>= 4.1.0](https://www.npmjs.com/package/@azure/cosmos?activeTab=versions)  |
-| [Change feed processor](change-feed-processor.md) | No | [>= 4.42.0](https://mvnrepository.com/artifact/com.azure/azure-cosmos/4.42.0) | No | No |
+| [Change feed processor](change-feed-processor.md) | [>= 3.40.0-preview.0](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/3.40.0-preview.0) | [>= 4.42.0](https://mvnrepository.com/artifact/com.azure/azure-cosmos/4.42.0) | No | No |
 | Azure Functions trigger | No | No | No | No |
 
 > [!NOTE]
@@ -138,27 +138,52 @@ The Azure Cosmos DB team reviews your request and contacts you via email to conf
 
 ### Parse the response object
 
-The response object is an array of items that represent each change. The array looks like the following example:
+The response object is an array of items that represent each change. Different properties will be populated depending on the change type. There is currently no way to get the previous version of items for either replace or delete operations.
 
-```json
-[
-    {  
-        "current": { 
-            <The current version of the item that changed. All the properties of your item will appear here. This will be empty for delete operations.>
-         },  
-        "previous" : { 
-            <The previous version of the item that changed. If the change was a delete operation, the item that was deleted will appear here. This will be empty for create and replace operations.>
-         },  
-        "metadata": {
-            "lsn": <A number that represents the batch ID. Many items can have the same lsn.>, 
-            "operationType": <The type of change, either 'create', 'replace', or 'delete'.>, 
-            "previousImageLSN" : <A number that represents the batch ID of the change prior to this one.>, 
-            "timeToLiveExpired" : <For delete changes, it will be 'true' if it was deleted due to a TTL expiration and 'false' if it wasn't.>, 
-            "crts": <A number that represents the Conflict Resolved Timestamp. It has the same format as _ts.> 
-        } 
+* Create operations
+    ```json
+    {
+      "current": {
+        <The current version of the item that changed. All the properties of your item will appear here.>
+      },
+      "metadata": {
+        "operationType": "create",
+        "lsn": <A number that represents the batch ID. Many items can have the same lsn.>,
+        "crts": <A number that represents the Conflict Resolved Timestamp. It has the same format as _ts.>
+      }
     }
-]
-```
+    ```
+
+* Replace operations
+    ```json
+    {
+      "current": {
+        <The current version of the item that changed. All the properties of your item will appear here.>
+      },
+      "metadata": {
+        "operationType": "replace",
+        "lsn": <A number that represents the batch ID. Many items can have the same lsn.>,
+        "crts": <A number that represents the Conflict Resolved Timestamp. It has the same format as _ts.>,
+        "previousImageLSN" : <A number that represents the batch ID of the change prior to this one.>,
+      }
+    }
+    ```
+
+* Delete operations
+    ```json
+    {
+      "metadata": {
+        "operationType": "delete",
+        "lsn": <A number that represents the batch ID. Many items can have the same lsn.>,
+        "crts": <A number that represents the Conflict Resolved Timestamp. It has the same format as _ts.>,
+        "previousImageLSN" : <A number that represents the batch ID of the change prior to this one.>,
+        "id": "<Id of the deleted item.>",
+        "partitionKey": {
+          "<Partition key property name>": "<Partition key property value>"
+        }
+      }
+    }
+    ```
 
 ### Limitations
 
@@ -170,7 +195,7 @@ The response object is an array of items that represent each change. The array l
 
 * The ability to start reading the change feed from the beginning or to select a start time based on a past time stamp isn't currently supported. You can either start from "now" or from a previous [lease](change-feed-processor.md#components-of-the-change-feed-processor) or [continuation token](change-feed-pull-model.md#save-continuation-tokens).
 
-* Receiving the previous version of items that have been updated isn't currently available.
+* Receiving the previous version of items that have been deleted or updated isn't currently available.
 
 * Accounts that have enabled [merging partitions](../merge.md) aren't supported.
 
