@@ -4,12 +4,12 @@ description: Learn how to use the pg_azure_storage extension in Azure Database f
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 10/31/2024
+ms.date: 11/03/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: reference
 ms.custom:
-  - ignite-2023
+  - ignite-2024
 ---
 
 # How to import and export data using pg_azure_storage extension in Azure Database for PostgreSQL - Flexible Server
@@ -32,22 +32,135 @@ Only then you can install the extension, by connecting to your target database, 
 CREATE EXTENSION azure_storage;
 ```
 
-## Permissions
+## Overview of the procedure
 
-Your Azure blob storage access keys are similar to a root password for your storage account. Always be careful to protect your access keys. Use Azure Key Vault to manage and rotate your keys securely. The account key is stored in a table that is accessible only by the superuser.
+1. Identify the Azure Storage accounts with which you want users of the `pg_azure_storage` extension to interact with.
+2. Decide which type of authorization you want to use for the requests made against the blob service of each of those Azure Storage accounts. `pg_azure_storage` extension supports [authorization with Shared Key](/rest/api/storageservices/authorize-with-shared-key), and [authorization with Microsoft Entra ID](/rest/api/storageservices/authorize-with-azure-active-directory). Of these two types of authorization, Microsoft Entra ID provides superior security and ease of use over Shared Key, and is the one Microsoft recommends. To meet the prerequisites needed in each case, follow the instructions in the corresponding sections:
+    - [Authorization with Microsoft Entra ID](#to-use-authorization-with-microsoft-entra-id), or
+    - [Authorization with Shared Key](#to-use-authorization-with-shared-key).
+3. Include `azure_storage` in `shared_preload_libraries`:
 
-Users granted the `azure_storage_admin` role can interact with this table using the following functions:
-* account_add
-* account_list
-* account_remove
-* account_user_add
-* account_user_remove
+# [Azure portal](#tab/portal-01)
+
+:::image type="content" source="media/how-to-use-pg-azure-storage/shared-preload-libraries-portal.png" alt-text="Screenshot of selecting azure_storage in shared_preload_libraries in server parameters." lightbox="media/how-to-use-pg-azure-storage/shared-preload-libraries-portal.png":::
+Because the `shared_preload_libraries` is static, the server must be restarted for a change to take effect:
+:::image type="content" source="media/how-to-use-pg-azure-storage/save-and-restart-shared-preload-libraries-portal.png" alt-text="Screenshot of dialog that pops up when changing shared_preload_libraries, to save and restart." lightbox="media/how-to-use-pg-azure-storage/save-and-restart-shared-preload-libraries-portal.png":::
+
+# [Azure CLI](#tab/cli-01)
+
+```azurecli
+az postgres flexible-server parameter set --resource-group <flexible_server_resource_group> --server-name <flexible_server_name> --name shared_preload_libraries --source user-override --value azure_storage,$(az postgres flexible-server parameter show --resource-group <flexible_server_resource_group> --server-name <flexible_server_name> --name shared_preload_libraries --query value --output tsv)
+```
+Because the `shared_preload_libraries` is static, the server must be restarted for a change to take effect:
+```azurecli
+az postgres flexible-server restart --resource-group <flexible_server_resource_group> --name <flexible_server_name>
+```
+
+# [REST API](#tab/rest-01)
+
+Using [Configurations - Put](/rest/api/postgresql/flexibleserver/configurations/put) REST API.
+
+Because the `shared_preload_libraries` is static, the server must be restarted for a change to take effect. For restarting the server, you can use the [Server - Restart](/rest/api/postgresql/flexibleserver/servers/restart) REST API.
+
+---
+4. Include `azure_storage` in `azure.extensions`:
+
+# [Azure portal](#tab/portal-02)
+
+:::image type="content" source="media/how-to-use-pg-azure-storage/azure-extensions-portal.png" alt-text="Screenshot of selecting azure_storage in azure.extensions in server parameters." lightbox="media/how-to-use-pg-azure-storage/azure-extensions-portal.png":::
+
+# [Azure CLI](#tab/cli-02)
+
+```azurecli
+az postgres flexible-server parameter set --resource-group <flexible_server_resource_group> --server-name <flexible_server_name> --name azure.extensions --source user-override --value azure_storage,$(az postgres flexible-server parameter show --resource-group <flexible_server_resource_group> --server-name <flexible_server_name> --name azure.extensions --query value --output tsv)
+```
+
+# [REST API](#tab/rest-02)
+
+Using [Configurations - Put](/rest/api/postgresql/flexibleserver/configurations/put) REST API.
+
+---
+
+5. Using the client of your preference (for example, psql, pgAdmin, etc.), connect to any database in your instance of Azure Database for PostgreSQL Flexible Server. To create all SQL objects (tables, types, functions, views, etc.) with which you can use the `pg_azure_storage` extension to interact with instances of Azure Storage accounts, execute the following statement:
+    ```sql
+    CREATE EXTENSION azure_storage;
+    ```
+6. Using the `azure_storage.account_*` functions, add references to Azure Storage accounts that you want to let PostgreSQL users or roles access with the `pg_azure_storage` extension. Those references include the name of the Azure Storage account being referenced, and the authentication type to use when interacting with the Azure Storage account. Depending on the authentication type selected you might need to also provide some other parameters, like the Azure Storage account access key or the SAS token.
+
+> [!IMPORTANT]
+> For authentication types for which you must provide an Azure Storage account access key, notice that your Azure Storage access keys are similar to a root password for your storage account. Always be careful to protect them. Use Azure Key Vault to manage and rotate your keys securely. `pg_azure_storage` extension stores those keys in a table `azure_storage.accounts` that can be read by members of the `pg_read_all_data` role.
+
+Users granted the `azure_storage_admin` role can interact with the `azure_storage.accounts` table using the following functions:
+* [azure_storage.account_add](#azure_storageaccount_add)
+* [azure_storage.account_list](#azure_storageaccount_list)
+* [azure_storage.account_remove](#azure_storageaccount_remove)
+* [azure_storage.account_user_add](#azure_storageaccount_user_add)
+* [azure_storage.account_user_remove](#azure_storageaccount_user_remove)
 
 The `azure_storage_admin` role is, by default, granted to the `azure_pg_admin` role.
 
+
+### To use authorization with Microsoft Entra ID
+
+1. [Enable System Assigned Managed Identity](concepts-identity.md) on your instance of Azure Database for PostgreSQL Flexible Server.
+
+# [Azure portal](#tab/portal-03)
+
+:::image type="content" source="media/how-to-use-pg-azure-storage/enable-system-assigned-managed-identity-portal.png" alt-text="Screenshot of enabling System Assigned Managed Identity." lightbox="media/how-to-use-pg-azure-storage/enable-system-assigned-managed-identity-portal.png":::
+
+# [Azure CLI](#tab/cli-03)
+
+```azurecli
+az rest --method patch --url https://management.azure.com/subscriptions/<subscriptionId>/resourceGroups/<flexible_server_resource_group>/providers/Microsoft.DBforPostgreSQL/flexibleServers/<flexible_server_name>?api-version=2024-08-01 --body '{"identity":{"type":"SystemAssigned"}}'
+```              
+
+# [REST API](#tab/rest-03)
+
+Using the [Servers - Update](/rest/api/postgresql/flexibleserver/servers/update) REST API.
+
+---
+1. [Restart the instance of Azure Database for PostgreSQL Flexible Server](how-to-restart-server-portal.md), after enabling a system assigned managed identity on it.
+1. [Assign role-based access control (RBAC) permissions for access to blob data](/azure/storage/blobs/assign-azure-role-data-access), on the Azure Storage account, to the System Assigned Managed Identity of your instance of Azure Database for PostgreSQL Flexible Server.
+
+### To use authorization with Shared Key
+
+1. Your Azure Storage account must have **Allow storage account key access** enabled (that is, it can't have its [AllowSharedKeyAccess](/azure/storage/common/shared-key-authorization-prevent) property set to **false**).
+
+# [Azure portal](#tab/portal-04)
+
+:::image type="content" source="media/how-to-use-pg-azure-storage/AllowSharedKeyAccess-enabled-portal.png" alt-text="Screenshot of confirming that Allow storage account key access is enabled." lightbox="media/how-to-use-pg-azure-storage/AllowSharedKeyAccess-enabled-portal.png":::
+
+# [Azure CLI](#tab/cli-04)
+
+```azurecli
+az storage account update --resource-group <storage_account_resource_group> --name <storage_account> --allow-shared-key-access true
+```
+
+# [REST API](#tab/rest-04)
+
+Using [Storage Accounts - Update](/rest/api/storagerp/storage-accounts/update) REST API.
+
+---
+1. To pass it to the [azure_storage.account_add](#azure_storageaccount_add) function, [fetch either of the two access keys](/azure/storage/common/storage-account-keys-manage?tabs=azure-portal#view-account-access-keys) of the Azure Storage account.
+
+# [Azure portal](#tab/portal-05)
+
+:::image type="content" source="media/how-to-use-pg-azure-storage/copy-access-key-portal.png" alt-text="Screenshot of copying storage account access key." lightbox="media/how-to-use-pg-azure-storage/copy-access-key-portal.png":::
+
+# [Azure CLI](#tab/cli-05)
+
+```azurecli
+az storage account keys list --resource-group <storage_account_resource_group> --account-name <storage_account> --query [0].value -o tsv
+```
+
+# [REST API](#tab/rest-05)
+
+Using [Storage Accounts - List Keys](/rest/api/storagerp/storage-accounts/list-keys) REST API.
+---
+
 ## azure_storage.account_add
 
-Function that allows adding a storage account and its associated access key, to the list of storage accounts that the `pg_azure_storage` extension can access.
+Function that allows adding a storage account, and its associated access key, to the list of storage accounts that the `pg_azure_storage` extension can access.
 
 If a previous invocation of this function already added the reference to this storage account, it doesn't add a new entry but instead updates the access key of the existing entry.
 
@@ -56,6 +169,12 @@ If a previous invocation of this function already added the reference to this st
 
 ```sql
 azure_storage.account_add(account_name_p text, account_key_p text);
+```
+
+There's an overloaded version of this function, which accepts an `account_config` parameter that encapsulates the name of the referenced Azure Storage account, and all the required settings like authentication type, account type, or storage credentials.
+
+```sql
+azure_storage.account_add(account_config jsonb);
 ```
 
 ### Permissions
@@ -70,7 +189,105 @@ Must be a member of `azure_storage_admin`.
 
 #### account_key_p
 
-`text` the value of one of the access keys for the storage account. Your Azure blob storage access keys are similar to a root password for your storage account. Always be careful to protect your access keys. Use Azure Key Vault to manage and rotate your keys securely. The account key is stored in a table that is accessible only by the superuser. Users granted the `azure_storage_admin` role can interact with this table via functions. To see which storage accounts are added, use the function [account_list](#azure_storageaccount_list).
+`text` the value of one of the access keys for the storage account. Your Azure blob storage access keys are similar to a root password for your storage account. Always be careful to protect your access keys. Use Azure Key Vault to manage and rotate your keys securely. The account key is stored in a table that is accessible only by the superuser. Users granted the `azure_storage_admin` role can interact with this table via functions. To see which storage accounts are added, use the function [azure_storage.account_list](#azure_storageaccount_list).
+
+#### account_config
+
+`jsonb` the name of the Azure Storage account and all the required settings like authentication type, account type, or storage credentials. We recommend the use of the utility functions [azure_storage.account_options_managed_identity](#azure_storageaccount_options_managed_identity), [azure_storage.account_options_credentials](#azure_storageaccount_options_credentials), or [azure_storage.account_options](#azure_storageaccount_options) to create any of the valid values that must be passed as this argument.
+
+### Return type
+
+`VOID`
+
+## azure_storage.account_options_managed_identity
+
+Function that acts as a utility function, which can be called as a parameter within [azure_storage.account_add](#azure_storageaccount_add), and is useful to produce a valid value for the `account_config` argument, when using a system assigned managed identity to interact with the Azure Storage account.
+
+```sql
+azure_storage.account_options_managed_identity(name text, type azure_storage.storage_type);
+```
+
+### Permissions
+
+Any user or role can invoke this function.
+
+### Arguments
+
+#### name
+
+`text` the name of the Azure blob storage account that contains all of your objects: blobs, files, queues, and tables. The storage account provides a unique namespace that is accessible from anywhere in the world over HTTPS.
+
+#### type
+
+`azure_storage.storage_type` the value of one of the types of storage supported. Only supported value is `blob`.
+
+### Return type
+
+`jsonb` 
+
+## azure_storage.account_options_credentials
+
+Function that acts as a utility function, which can be called as a parameter within [azure_storage.account_add](#azure_storageaccount_add), and is useful to produce a valid value for the `account_config` argument, when using an Azure Storage access key to interact with the Azure Storage account.
+
+```sql
+azure_storage.account_options_credentials(name text, credentials text, type azure_storage.storage_type);
+```
+
+### Permissions
+
+Any user or role can invoke this function.
+
+### Arguments
+
+#### name
+
+`text` the name of the Azure blob storage account that contains all of your objects: blobs, files, queues, and tables. The storage account provides a unique namespace that is accessible from anywhere in the world over HTTPS.
+
+#### credentials
+
+`text` the value of one of the access keys for the storage account. Your Azure blob storage access keys are similar to a root password for your storage account. Always be careful to protect your access keys. Use Azure Key Vault to manage and rotate your keys securely. The account key is stored in a table that is accessible only by the superuser. Users granted the `azure_storage_admin` role can interact with this table via functions. To see which storage accounts are added, use the function [azure_storage.account_list](#azure_storageaccount_list).
+
+#### type
+
+`azure_storage.storage_type` the value of one of the types of storage supported. Only supported value is `blob`.
+
+### Return type
+
+`jsonb` 
+
+## azure_storage.account_options
+
+Function that acts as a utility function, which can be called as a parameter within [azure_storage.account_add](#azure_storageaccount_add), and is useful to produce a valid value for the `account_config` argument, when using an Azure Storage access key or a system assigned managed identity to interact with the Azure Storage account.
+
+```sql
+azure_storage.account_options(name text, auth_type azure_storage.auth_type, storage_type azure_storage.storage_type, credentials text DEFAULT NULL);
+```
+
+### Permissions
+
+Any user or role can invoke this function.
+
+### Arguments
+
+#### name
+
+`text` the name of the Azure blob storage account that contains all of your objects: blobs, files, queues, and tables. The storage account provides a unique namespace that is accessible from anywhere in the world over HTTPS.
+
+#### auth_type
+
+`azure_storage.auth_type` the value of one of the types of storage supported. Only supported values are `access-key`, and `managed-identity`.
+
+#### storage_type
+
+`azure_storage.storage_type` the value of one of the types of storage supported. Only supported value is `blob`.
+
+#### credentials
+
+`text` the value of one of the access keys for the storage account. Your Azure blob storage access keys are similar to a root password for your storage account. Always be careful to protect your access keys. Use Azure Key Vault to manage and rotate your keys securely. The account key is stored in a table that is accessible only by the superuser. Users granted the `azure_storage_admin` role can interact with this table via functions. To see which storage accounts are added, use the function [azure_storage.account_list](#azure_storageaccount_list).
+
+### Return type
+
+`jsonb` 
 
 ## azure_storage.account_remove
 
@@ -90,12 +307,16 @@ Must be a member of `azure_storage_admin`.
 
 `text` the name of the Azure blob storage account that contains all of your objects: blobs, files, queues, and tables. The storage account provides a unique namespace that is accessible from anywhere in the world over HTTPS.
 
+### Return type
+
+`VOID` 
+
 ## azure_storage.account_user_add
 
 Function that allows granting a PostgreSQL user or role access to a storage account through the functions provided by the `pg_azure_storage` extension.
 
 > [!NOTE]  
-> The execution of this function only succeeds if the storage account, whose name is being passed as the first argument, was already created using [account_add](#azure_storageaccount_add), and if the user or role, whose name is passed as the second argument, already exists.
+> The execution of this function only succeeds if the storage account, whose name is being passed as the first argument, was already created using [azure_storage.account_add](#azure_storageaccount_add), and if the user or role, whose name is passed as the second argument, already exists.
 
 ```sql
 azure_storage.account_add(account_name_p text, user_p regrole);
@@ -115,16 +336,20 @@ Must be a member of `azure_storage_admin`.
 
 `regrole` the name of a PostgreSQL user or role available on the server.
 
+### Return type
+
+`VOID` 
+
 ## azure_storage.account_user_remove
 
 Function that allows revoking a PostgreSQL user or role access to a storage account through the functions provided by the `pg_azure_storage` extension.
 
 > [!NOTE]
-> The execution of this function only succeeds if the storage account whose name is being passed as the first argument has already been created using [account_add](#azure_storageaccount_add), and if the user or role whose name is passed as the second argument still exists.
-> When a user or role is dropped from the server, by executing `DROP USER | ROLE`, the permissions that were granted on any reference to Azure storage accounts are also automatically eliminated.
+> The execution of this function only succeeds if the storage account whose name is being passed as the first argument has already been created using [azure_storage.account_add](#azure_storageaccount_add), and if the user or role whose name is passed as the second argument still exists.
+> When a user or role is dropped from the server, by executing `DROP USER | ROLE`, the permissions that were granted on any reference to Azure Storage accounts are also automatically eliminated.
 
 ```sql
-azure_storage.account_remove(account_name_p text, user_p regrole);
+azure_storage.account_user_remove(account_name_p text, user_p regrole);
 ```
 
 ### Permissions
@@ -141,9 +366,13 @@ Must be a member of `azure_storage_admin`.
 
 `regrole` the name of a PostgreSQL user or role available on the server.
 
+### Return type
+
+`VOID` 
+
 ## azure_storage.account_list
 
-Function that lists the names of the storage accounts that were configured via the [account_add](#azure_storageaccount_add) function, together with the PostgreSQL users or roles that are granted permissions to interact with that storage account through the functions provided by the `pg_azure_storage` extension.
+Function that lists the names of the storage accounts that were configured via the [azure_storage.account_add](#azure_storageaccount_add) function, together with the PostgreSQL users or roles that are granted permissions to interact with that storage account through the functions provided by the `pg_azure_storage` extension.
 
 ```sql
 azure_storage.account_list();
@@ -159,7 +388,7 @@ This function doesn't take any arguments.
 
 ### Return type
 
-`TABLE(account_name text, allowed_users regrole[])` a two-column table with the list of Azure blob storage accounts added, and the list of PostgreSQL users or roles that are granted access to it.
+`TABLE(account_name text, auth_type azure_storage.auth_type, azure_storage_type azure_storage.storage_type, allowed_users regrole[])` a four-column table with the list of Azure Storage accounts added, the type of authentication used to interact with each account, the type of storage, and the list of PostgreSQL users or roles that are granted access to it.
 
 ## azure_storage.blob_list
 
@@ -275,7 +504,7 @@ The URI for a container is similar to:
 
 | **Format** | **Default** | **Description** |
 | --- | --- | --- |
-| `auto` | `true`      | Infers the value based on the last series of characters assigned to the name of the blob. If the blob name ends with `.csv` or `.csv.gz`, it assumes `csv`. If ends with `.tsv` or `.tsv.gz`, it assumes it's `tsv`. If ends with `.json`, `.json.gz`, `.xml`, `.xml.gz`, `.txt`, or `.txt.gz`, it assumes it's `text`. |
+| `auto` | `true`      | Infers the value based on the last series of characters assigned to the name of the blob. If the blob name ends with `.csv` or `.csv.gz`, it assumes `csv`. If ends with `.tsv` or `.tsv.gz`, it assumes `tsv`. If ends with `.json`, `.json.gz`, `.xml`, `.xml.gz`, `.txt`, or `.txt.gz`, it assumes `text`. |
 | `csv` | | Comma-separated values format used by PostgreSQL COPY. |
 | `tsv` | | Tab-separated values, the default PostgreSQL COPY format. |
 | `binary` | | Binary PostgreSQL COPY format. |
@@ -287,7 +516,7 @@ The URI for a container is similar to:
 
 | **Format** | **Default** | **Description**                                                                                                                                                                      |
 | --- | --- | --- |
-| `auto` | `true` | Infers the value based on the last series of characters assigned to the name of the blob. If the blob name ends with `.gz`, it assumes it's `gzip`. Otherwise, it assumes it's `none`. |
+| `auto` | `true` | Infers the value based on the last series of characters assigned to the name of the blob. If the blob name ends with `.gz`, it assumes `gzip`. Otherwise, it assumes `none`. |
 | `gzip` | | Forces using gzip decoder to decompress the blob. |
 | `none` | | Forces to treat the blob as one which doesn't require decompression. |
 
@@ -368,7 +597,7 @@ The URI for a container is similar to:
 
 | **Format** | **Default** | **Description** |
 | --- | --- | --- |
-| `auto` | `true`      | Infers the value based on the last series of characters assigned to the name of the blob. If the blob name ends with `.csv` or `.csv.gz`, it assumes  it's `csv`. If ends with `.tsv` or `.tsv.gz`, it assumes it's `tsv`. If ends with `.json`, `.json.gz`, `.xml`, `.xml.gz`, `.txt`, or `.txt.gz`, it assumes it's `text`. |
+| `auto` | `true`      | Infers the value based on the last series of characters assigned to the name of the blob. If the blob name ends with `.csv` or `.csv.gz`, it assumes  `csv`. If ends with `.tsv` or `.tsv.gz`, it assumes `tsv`. If ends with `.json`, `.json.gz`, `.xml`, `.xml.gz`, `.txt`, or `.txt.gz`, it assumes `text`. |
 | `csv` | | Comma-separated values format used by PostgreSQL COPY. |
 | `tsv` | | Tab-separated values, the default PostgreSQL COPY format. |
 | `binary` | | Binary PostgreSQL COPY format. |
@@ -380,7 +609,7 @@ The URI for a container is similar to:
 
 | **Format** | **Default** | **Description**                                                                                                                                                                      |
 | --- | --- | --- |
-| `auto` | `true` | Infers the value based on the last series of characters assigned to the name of the blob. If the blob name ends with `.gz`, it assumes it's `gzip`. Otherwise, it assumes it's `none`. |
+| `auto` | `true` | Infers the value based on the last series of characters assigned to the name of the blob. If the blob name ends with `.gz`, it assumes `gzip`. Otherwise, it assumes `none`. |
 | `gzip` | | Forces using gzip decoder to decompress the blob. |
 | `none` | | Forces to treat the blob as one which doesn't require decompression. |
 
@@ -392,8 +621,7 @@ The extension doesn't support any other compression types.
 
 ### Return type
 
-`SETOF record` 
-`SETOF  anyelement`
+`VOID`
 
 ## azure_storage.options_csv_get
 
@@ -402,6 +630,10 @@ Function that acts as a utility function, which can be called as a parameter wit
 ```sql
 azure_storage.options_csv_get(delimiter text DEFAULT NULL::text, null_string text DEFAULT NULL::text, header boolean DEFAULT NULL::boolean, quote text DEFAULT NULL::text, escape text DEFAULT NULL::text, force_not_null text[] DEFAULT NULL::text[], force_null text[] DEFAULT NULL::text[], content_encoding text DEFAULT NULL::text);
 ```
+
+### Permissions
+
+Any user or role can invoke this function.
 
 ### Arguments
 
@@ -448,6 +680,10 @@ Function that acts as a utility function, which can be called as a parameter wit
 ```sql
 azure_storage.options_copy(delimiter text DEFAULT NULL::text, null_string text DEFAULT NULL::text, header boolean DEFAULT NULL::boolean, quote text DEFAULT NULL::text, escape text DEFAULT NULL::text, force_quote text[] DEFAULT NULL::text[], force_not_null text[] DEFAULT NULL::text[], force_null text[] DEFAULT NULL::text[], content_encoding text DEFAULT NULL::text);
 ```
+
+### Permissions
+
+Any user or role can invoke this function.
 
 ### Arguments
 
@@ -499,6 +735,10 @@ Function that acts as a utility function, which can be called as a parameter wit
 azure_storage.options_tsv(delimiter text DEFAULT NULL::text, null_string text DEFAULT NULL::text, content_encoding text DEFAULT NULL::text);
 ```
 
+### Permissions
+
+Any user or role can invoke this function.
+
 ### Arguments
 
 #### delimiter
@@ -525,6 +765,10 @@ Function that acts as a utility function, which can be called as a parameter wit
 azure_storage.options_binary(content_encoding text DEFAULT NULL::text);
 ```
 
+### Permissions
+
+Any user or role can invoke this function.
+
 ### Arguments
 
 #### content_encoding
@@ -534,6 +778,30 @@ azure_storage.options_binary(content_encoding text DEFAULT NULL::text);
 ### Return type
 
 `jsonb`
+
+## Possible errors
+
+### ERROR: azure_storage: Permission is no sufficient to perform requested operation
+
+When executing any of the functions that interact with Azure Storage (`azure_storage.blob_list`, `azure_storage.blob_get` or `azure_storage.blob_put`) and the System Assigned Managed Identity is not granted the adequate data plane roles or permissions (typically a minimum of **Storage Blob Data Contributor** for azure_storage.blob_put, and a minimum of **Storage Blob Data Reader** for the other two functions).
+
+It may also be the case that you have already granted the minimum required permissions but they are not yet in effect. It can take a few minutes until those permissions get propagated.
+
+### ERROR: azure_storage: missing storage credentials
+
+When executing any of the functions that interact with Azure Storage (`azure_storage.blob_list`, `azure_storage.blob_get` or `azure_storage.blob_put`) and the credentials with which you want the extension to authenticate with the storage account aren't registered using `azure_storage.account_add`.
+
+### ERROR: azure_storage: internal error while connecting
+
+When the System Assigned Managed Identity is not enabled in the instance of Flexible Server.
+
+### ERROR: azure_storage: storage credentials invalid format
+
+When the System Assigned Managed Identity is enabled on the instance of Flexible Server, but the server has not been restarted after enabling it.
+
+### ERROR:  azure_storage: current user <user_or_role> is not allowed to use storage account <storage_account>
+
+When executing any of the functions that interact with Azure Storage (`azure_storage.blob_list`, `azure_storage.blob_get` or `azure_storage.blob_put`) with a user or role which is not member of `azure_storage_admin` and is not granted permissions, using `azure_storage.account_user_add`, to use the referred storage account.
 
 ## Examples
 
@@ -554,7 +822,7 @@ You must meet the following prerequisites before you can run the following examp
    ```azurecli
    az storage container create --account-name $storage_account --name $blob_container -o tsv
    ```
-1. Fetch one of the two access keys assigned to the storage account. Make sure you copy the value of your access_key as you need to pass it as an argument to [account_add](#azure_storageaccount_add) in a subsequent step.
+1. Fetch one of the two access keys assigned to the storage account. Make sure you copy the value of your access_key as you need to pass it as an argument to [azure_storage.account_add](#azure_storageaccount_add) in a subsequent step.
    To fetch the first of the two access keys, run the following Azure CLI command:
    ```azurecli
    access_key=$(az storage account keys list --resource-group $resource_group --account-name $storage_account --query [0].value)
@@ -576,7 +844,7 @@ You must meet the following prerequisites before you can run the following examp
    ```
 
 > [!NOTE]  
-> You can list containers or the blobs stored in them for a specific storage account, but only if your PostgreSQL user or role is granted permission on on the reference to that storage account by using [account_user_add](#azure_storageaccount_user_add). Members of the `azure_storage_admin` role are granted this privilege over all Azure Storage accounts that have been added using [azure_storage.account_add](#azure_storageaccount_add). By default, only members of `azure_pg_admin` are granted the `azure_storage_admin` role.
+> You can list containers or the blobs stored in them for a specific storage account, but only if your PostgreSQL user or role is granted permission on on the reference to that storage account by using [azure_storage.account_user_add](#azure_storageaccount_user_add). Members of the `azure_storage_admin` role are granted this privilege over all Azure Storage accounts that have been added using [azure_storage.account_add](#azure_storageaccount_add). By default, only members of `azure_pg_admin` are granted the `azure_storage_admin` role.
 
 ### Create table in which data is loaded
 
@@ -635,7 +903,7 @@ SELECT * FROM azure_storage.account_user_add('<storage_account>', '<regular_user
 
 ### List all the references to Azure storage accounts
 
-This example illustrates how to find out which Azure storage accounts the `pg_azure_storage` extension can reference in this database, together with the type of authentication that is used to access each storage account, and which users or roles are granted permission, via the [account_user_add](#azure_storageaccount_user_add) function, to access that Azure storage account through the functionality provided by the extension.
+This example illustrates how to find out which Azure storage accounts the `pg_azure_storage` extension can reference in this database, together with the type of authentication that is used to access each storage account, and which users or roles are granted permission, via the [azure_storage.account_user_add](#azure_storageaccount_user_add) function, to access that Azure storage account through the functionality provided by the extension.
 
 ```sql
 SELECT * FROM azure_storage.account_list();
