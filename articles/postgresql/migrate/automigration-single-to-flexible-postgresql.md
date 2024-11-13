@@ -56,7 +56,7 @@ To determine if your Single Server is selected for automigration, follow these s
 
  - **[Service Health Notifications](https://learn.microsoft.com/azure/service-health/service-health-portal-update)** -  In the Azure portal, go to **Service Health > Planned Maintenance** events. Look for events labeled **'Notification for Scheduled Auto Migration to Azure Database for PostgreSQL Single Server'**. The notifications are sent 30, 14, and 7 days before the migration date, and again during migration stages: in progress, completed, and six days before the Single Server is decommissioned. 
 > [!NOTE]  
-> These notifications do not land in your inbox by default. To receive them via email or SMS, you need to set up Service Health Alerts by following the steps [here](../single-server/concepts-planned-maintenance-notification.md#to-receive-planned-maintenance-notification)
+> These notifications do not land in your inbox by default. To receive them via email or SMS, you need to set up Service Health Alerts by following the steps [here](https://learn.microsoft.com/previous-versions/azure/postgresql/single-server/concepts-planned-maintenance-notification#to-receive-planned-maintenance-notification)
 
 
 - **Single Server Overview Page** - Navigate to your Single Server instance in the Azure portal and check the Overview page. If scheduled for automigration, you’ll find details here, including an option to defer the migration by one month at a time or reschedule within the current month.
