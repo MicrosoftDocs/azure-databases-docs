@@ -50,6 +50,8 @@
       href: indexing.md
     - name: Change Stream
       href: change-streams.md
+    - name: Data api
+      href: data-api.md
     - name: Reliability
       href: /azure/reliability/reliability-cosmos-mongodb?toc=/azure/cosmos-db/mongodb/vcore/toc.json
     - name: Scalability
@@ -85,7 +87,9 @@
         - name: Connect using Studio 3T
           href: how-to-connect-studio-3t.md
         - name: Connect using MongoDB Shell
-          href: how-to-connect-mongo-shell.md      
+          href: how-to-connect-mongo-shell.md
+        - name: Connect using Visual Studio Code
+          href: ../../visual-studio-code-extension.md?pivots=api-mongodb      
     - name: Develop applications
       items:
         - name: Create transactions
@@ -120,6 +124,8 @@
         href: how-to-monitor-diagnostics-logs.md
     - name: Use Azure Private Link
       href: how-to-private-link.md
+    - name: Create secondary users
+      href: secondary-users.md
 - name: Reference
   items:
     - name: Commands
