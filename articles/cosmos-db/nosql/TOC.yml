@@ -21,6 +21,9 @@
   - name: Go
     displayName: Quickstart, AZD, Azure Developer CLI
     href: quickstart-go.md
+  - name: Rust
+    displayName: Quickstart, AZD, Azure Developer CLI
+    href: quickstart-rust.md
   - name: Portal
     displayName: Quickstart, Azure portal
     href: quickstart-portal.md
