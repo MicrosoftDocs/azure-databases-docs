@@ -8,7 +8,7 @@ ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.devlang: golang
 ms.topic: quickstart-sdk
-ms.date: 11/07/2024
+ms.date: 11/18/2024
 ms.custom: devx-track-go, devx-track-extended-azdevcli
 appliesto:
   - ✅ NoSQL
@@ -285,3 +285,4 @@ azd down
 - [Node.js Quickstart](quickstart-nodejs.md)
 - [Java Quickstart](quickstart-java.md)
 - [Python Quickstart](quickstart-python.md)
+- [Rust Quickstart](quickstart-go.md)
