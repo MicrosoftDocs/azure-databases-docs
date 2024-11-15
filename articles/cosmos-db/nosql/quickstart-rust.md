@@ -120,26 +120,34 @@ The sample code in the template uses a database named `cosmicworks` and containe
 
 ### Authenticate the client
 
-This sample creates a new instance of `CosmosClient` using `azcosmos.NewClient` and authenticates using a `DefaultAzureCredential` instance.
+This sample creates a new instance of `CosmosClient` using `CosmosClient::new` and authenticates using a `DefaultAzureCredential` instance.
 
 ```rust
-TODO
+let credential = DefaultAzureCredential::new().unwrap();
+
+let client = match CosmosClient::new(&endpoint, credential, None) {
+    Ok(client) => client,
+    Err(e) => {
+        eprintln!("Error creating CosmosClient: {}", e);
+        return;
+    }
+};
 ```
 
 ### Get a database
 
-Use `client.NewDatabase` to retrieve the existing database named *`cosmicworks`*.
+Use `client.database` to retrieve the existing database named *`cosmicworks`*.
 
 ```rust
-TODO
+let database = client.database("database");
 ```
 
 ### Get a container
 
-Retrieve the existing *`products`* container using `database.NewContainer`.
+Retrieve the existing *`products`* container using `database.container`.
 
 ```rust
-TODO
+let container = database.container("products");
 ```
 
 ### Create an item
@@ -147,13 +155,31 @@ TODO
 Build a new type with all of the members you want to serialize into JSON. In this example, the type has a unique identifier, and fields for category, name, quantity, price, and sale.
 
 ```rust
-TODO
+struct Item {
+    id: String,
+    category: String,
+    name: String,
+    quantity: i32,
+    price: f64,
+    clearance: bool,
+}
 ```
 
 Create an item in the container using `container.UpsertItem`. This method "upserts" the item effectively replacing the item if it already exists.
 
 ```rust
-TODO
+let item = Item {
+    id: "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb".to_string(),
+    category: "gear-surf-surfboards".to_string(),
+    name: "Yamba Surfboard".to_string(),
+    quantity: 12,
+    price: 850.00,
+    clearance: false,
+};
+
+let partition_key = PartitionKey::from(item.category.clone());
+
+let _ = container.upsert_item(partition_key, item, None).await;
 ```
 
 ### Read an item
@@ -161,7 +187,26 @@ TODO
 Perform a point read operation by using both the unique identifier (`id`) and partition key fields. Use `container.ReadItem` to efficiently retrieve the specific item.
 
 ```rust
-TODO
+let item_id = "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb";
+let item_partition_key = "gear-surf-surfboards";
+
+match read_response {
+    Ok(r) => {
+        let deserialize_response = r.deserialize_body().await;
+        match deserialize_response {
+            Ok(i) => {
+                let read_item = i.unwrap();
+                // Do something
+            },
+            Err(e) => {
+                eprintln!("Error deserializing response: {}", e);
+            },
+        }
+    },
+    Err(e) => {
+        eprintln!("Error reading item: {}", e);
+    },
+}
 ```
 
 ### Query items
@@ -173,7 +218,41 @@ SELECT * FROM products p WHERE p.category = @category
 ```
 
 ```rust
-TODO
+let item_partition_key = "gear-surf-surfboards";
+
+let partition_key = PartitionKey::from(item_partition_key);
+
+let query = format!("SELECT * FROM c WHERE c.category = '{}'", item_partition_key);
+
+let page_response = container.query_items::<Item>(&query, partition_key, None);
+
+match page_response {
+    Ok(mut page) => {
+        while let Some(item) = page.next().await {
+            match item {
+                Ok(i) => {
+                    let deserialize_response = i.deserialize_body().await;
+                    match deserialize_response {
+                        Ok(page) => {
+                            for item in page.items {
+                                // Do something
+                            }
+                        },
+                        Err(e) => {
+                            eprintln!("Error deserializing item: {}", e);
+                        },
+                    }
+                },
+                Err(e) => {
+                    eprintln!("Error querying item: {}", e);
+                },
+            }
+        }
+    },
+    Err(e) => {
+        eprintln!("Error querying items: {}", e);
+    },
+}
 ```
 
 ## Clean up resources
