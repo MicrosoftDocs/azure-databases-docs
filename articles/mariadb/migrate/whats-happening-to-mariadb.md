@@ -66,7 +66,7 @@ A. As part of this retirement, we'll no longer support creating new MariaDB inst
 
 A. Yes, you can create read replicas and perform restores (PITR and geo-restore) for your existing MariaDB instances until the sunset date of **September 19, 2025**.
 
-**Q. How does the Azure Database for MySQL flexible server's 99.99% availability SLA differ from MariaDB?**
+**Q. How does the Azure Database for MySQL - Flexible Server 99.99% availability SLA differ from MariaDB?**
 
 A. Azure Database for MySQL - Flexible server zone-redundant deployment provides 99.99% availability with zonal-level resiliency, whereas MariaDB provides resiliency in a single availability zone. Flexible Server's High Availability (HA) architecture deploys a warm standby with redundant compute and storage (with each site's data stored in 3x copies) as compared to MariaDB's HA architecture, which doesn't have a passive hot standby to help recover from zonal failures. The flexible server's HA architecture enables reduced downtime during unplanned outages and planned maintenance.
 

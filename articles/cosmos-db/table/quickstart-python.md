@@ -73,7 +73,7 @@ Use the Azure Developer CLI (`azd`) to create an Azure Cosmos DB for Table accou
 
 1. Use the URL in the console to navigate to your web application in the browser. Observe the output of the running app.
 
-    :::image type="content" source="media/quickstart-python/running-application.png" alt-text="Screenshot of the running web application.":::
+:::image type="content" source="media/quickstart-python/running-application.png" alt-text="Screenshot of the running web application.":::
 
 ### Install the client library
 
@@ -108,7 +108,7 @@ The client library is available through PyPi, as the `azure-data-tables` package
 - [Get an entity](#get-an-entity)
 - [Query entities](#query-entities)
 
-The sample code in the template uses a table named `cosmicworks-products`. The `cosmicworks-products` table contains details such as name, category, quantity, price, a unique identifier, and a sale flag for each product. The container uses a *unique identifier** as the row key and *category* as a partition key.
+The sample code in the template uses a table named `cosmicworks-products`. The `cosmicworks-products` table contains details such as name, category, quantity, price, a unique identifier, and a sale flag for each product. The container uses a *unique identifier* as the row key and *category* as a partition key.
 
 ### Authenticate the client
 

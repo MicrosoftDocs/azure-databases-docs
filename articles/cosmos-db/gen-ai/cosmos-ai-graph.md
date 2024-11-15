@@ -8,7 +8,8 @@ ms.subservice: nosql
 ms.topic: how-to
 ms.date: 9/16/2024
 ms.author: jacodel
-
+ms.collection:
+  - ce-skilling-ai-copilot
 ---
 
 # Retrieval Augmented Generated (RAG) with vector search and knowledge graphs using Azure Cosmos DB
