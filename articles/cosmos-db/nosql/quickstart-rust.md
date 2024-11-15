@@ -21,13 +21,13 @@ appliesto:
 
 In this quickstart, you deploy a basic Azure Cosmos DB for Table application using the Azure SDK for Rust. Azure Cosmos DB for Table is a schemaless data store allowing applications to store structured table data in the cloud. You learn how to create tables, rows, and perform basic tasks within your Azure Cosmos DB resource using the Azure SDK for Rust.
 
-[API reference documentation](https://docs.rs/azure_data_cosmos/latest/azure_data_cosmos/index.html) | [Library source code](https://github.com/Azure/azure-sdk-for-rust/tree/main/sdk/cosmos/azure_data_cosmos#readme) | [Crate (Rust)](https://docs.rs/azure_data_cosmos/latest/azure_data_cosmos/) | [Azure Developer CLI](/azure/developer/azure-developer-cli/overview)
+[API reference documentation](https://docs.rs/azure_data_cosmos/latest/azure_data_cosmos/index.html) | [Library source code](https://github.com/Azure/azure-sdk-for-rust/tree/main/sdk/cosmos/azure_data_cosmos#readme) | [Crate (Rust)](https://docs.rs/azure_data_cosmos) | [Azure Developer CLI](/azure/developer/azure-developer-cli/overview)
 
 ## Prerequisites
 
 - Azure Developer CLI
 - Docker Desktop
-- `Rust` 1
+- Rust 1+
 
 If you don't have an Azure account, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
 
