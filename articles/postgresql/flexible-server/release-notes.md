@@ -4,7 +4,7 @@ description: Release notes for Azure DB for PostgreSQL - Flexible Server, includ
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 11/6/2024
+ms.date: 11/8/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: overview
@@ -36,7 +36,7 @@ This article highlights the latest updates and enhancements for Azure Database f
 - Support for MD5 is disabled in favor of [SCRAM authentication](how-to-connect-scram.md) authentication for new PostgreSQL 14+ new server deployments.
 - Collation sort order might change due to an underlying `glibc` update from 2.27 to 2.35. See [PostgreSQL Wiki](https://wiki.postgresql.org/wiki/Locale_data_changes) for details.
 
-<sup>**^**</sup> Postgres 17 preview is available in "East Asia" starting immediately, with more regions coming soon.
+<sup>**^**</sup> Postgres 17 preview is available in "East Asia, West Central US, Canada Central" starting immediately with more regions coming soon.
 
 ## Release: Aug 2024
 
