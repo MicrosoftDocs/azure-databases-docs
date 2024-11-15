@@ -20,8 +20,6 @@ Query optimizations in Azure Cosmos DB are broadly categorized as follows:
 
 If you reduce the RU charge of a query, you'll typically decrease latency as well.
 
-This article provides examples that you can re-create by using the [nutrition dataset](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json).
-
 ## Common SDK issues
 
 Before reading this guide, it is helpful to consider common SDK issues that aren't related to the query engine.
@@ -130,8 +128,6 @@ Your indexing policy should cover any properties included in `WHERE` clauses, `O
 
 > [!NOTE]
 > Properties in Azure Cosmos DB indexing policy are case-sensitive
-
-If you run the following simple query on the [nutrition](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json) dataset, you will observe a much lower RU charge when the property in the `WHERE` clause is indexed:
 
 #### Original
 
@@ -323,7 +319,7 @@ If you plan to frequently run the same aggregate queries, it may be more efficie
 
 ### Optimize queries that have both a filter and an ORDER BY clause
 
-Although queries that have a filter and an `ORDER BY` clause will normally use a range index, they'll be more efficient if they can be served from a composite index. In addition to modifying the indexing policy, you should add all properties in the composite index to the `ORDER BY` clause. This change to the query will ensure that it uses the composite index.  You can observe the impact by running a query on the [nutrition](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json) dataset:
+Although queries that have a filter and an `ORDER BY` clause will normally use a range index, they'll be more efficient if they can be served from a composite index. In addition to modifying the indexing policy, you should add all properties in the composite index to the `ORDER BY` clause. This change to the query will ensure that it uses the composite index.  
 
 #### Original
 
