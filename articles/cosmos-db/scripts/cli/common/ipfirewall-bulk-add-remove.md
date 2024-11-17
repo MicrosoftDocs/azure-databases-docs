@@ -1,6 +1,6 @@
 ---
-title: Bulk Add or Remove Firewall Rule IP Addresses
-description: Add or Remove Firewall Rule IP Addresses in bulk for one or all accounts in a subscription or resource group
+title: Bulk add or remove firewall rule IP addresses
+description: Add or remove rirewall rule IP addresses in bulk for one or all accounts in a subscription or resource group
 author: markjbrown
 ms.author: mjbrown
 ms.service: azure-cosmos-db
@@ -9,12 +9,12 @@ ms.topic: sample
 ms.date: 11/14/2024
 ---
 
-# Add or Remove IP Firewall Rules in bulk
+# Add or remove IP firewall rules in bulk
 
 [!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](../../../includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
 The scripts in this article demonstrate how to add and remove IP Firewall Rules in bulk for Azure Cosmos DB accounts. 
-There are two separate scripts on this page, one for adding IP Addresses, and another for removing. 
+There are two separate scripts on this page, one for adding IP addresses, and another for removing. 
 
 The scripts add or remove the following IP addresses for access.
 - Azure portal access to your accounts.
@@ -22,7 +22,7 @@ The scripts add or remove the following IP addresses for access.
 - Any custom IP address or CIDR (Classless Inter-Domain Routing) ranges.
 - Your local IP address.
 
-By default, this script adds or removes all listed IP Addresses to every account in every resource group in the current subscription. You can also specify a single resource group and one or more Cosmos DB accounts within that resource group to process.
+By default, this script adds or removes all listed IP addresses to every account in every resource group in the current subscription. You can also specify a single resource group and one or more Cosmos DB accounts within that resource group to process.
 
 
 [!INCLUDE [quickstarts-free-trial-note](~/reusable-content/ce-skilling/azure/includes/quickstarts-free-trial-note.md)]
