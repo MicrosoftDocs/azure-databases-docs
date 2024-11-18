@@ -73,6 +73,31 @@ This flexible pricing model helps reduce costs while maintaining optimal perform
 2. Autoscale applies only to compute resources. Storage capacity must still be scaled manually.
 3. Upgrades or downgrades between the General Tier and Autoscale Tier are not supported at this time.
 
+## Frequently Asked Questions (FAQs)
+
+1. Which clusters support Autoscale?
+
+Currently, Autoscale is only available for the M200 tier, with scaling capabilities from M80 to M200.
+
+2. Does Autoscale manage both compute and storage scaling?
+
+No, Autoscale only manages compute resources. Storage must be scaled manually.
+
+3. Can I switch between the General Tier and Autoscale Tier?
+
+No, upgrades or downgrades between the General Tier and Autoscale Tier are not supported at this time.
+
+4. Is there any downtime when Autoscale adjusts capacity?
+
+No, Autoscale adjusts capacity instantly and seamlessly, without any downtime or impact on performance.
+
+5. What happens if my workload exceeds the M200 tier limits?
+
+If your workload consistently exceeds the M200 limits, you may need to consider a higher tier or alternative scaling strategies, as Autoscale currently only supports up to M200.
+
+6. Is Autoscale available in all Azure regions?
+
+Autoscale support may vary by region. Please check the Azure portal for availability in your preferred region.
 
 ## Next steps
 
