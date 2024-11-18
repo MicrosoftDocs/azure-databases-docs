@@ -1,0 +1,82 @@
+---
+title: Autoscale on vCore based Azure Cosmos DB for MongoDB
+titleSuffix: Azure Cosmos DB for MongoDB (vCore)
+description: Autoscale on vCore based Azure Cosmos DB for MongoDB.
+author: suvishodcitus
+ms.author: suvishod
+ms.service: azure-cosmos-db
+ms.subservice: mongodb-vcore
+ms.topic: conceptual
+ms.date: 11/18/2024
+ms.custom: references_regions
+# CustomerIntent: As a PM, we wanted to offer our customers a feature that allows database adapts immediately to changing workloads, eliminating performance bottlenecks 
+---
+
+
+# Autoscale for vCore-based Azure Cosmos DB for MongoDB (public preview)
+
+[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
+
+Managing databases with fluctuating workloads can be complex and costly, especially when unpredictable traffic spikes require overprovisioning resources. To address this 
+challenge, Azure Cosmos DB for MongoDB introduces Autoscale for its vCore-based clusters. Autoscale is designed to handle variable workloads by dynamically adjusting capacity 
+in real-time, scaling up or down based on application demands.
+
+Unlike other managed MongoDB solutions, which often experience delays of several hours when scaling up and more than 24 hours 
+for scaling down, Azure Cosmos DB's Autoscale offers instant scalability. This feature ensures that your database adapts 
+immediately to changing workloads, eliminating performance bottlenecks and avoiding unnecessary costs.
+
+## Get started
+
+Follow this document to [create a new Azure Cosmos DB for MongoDB (vCore)](quickstart-portal.md) cluster and just select 'M200-Autoscale tier (Preview)' checkbox. 
+Alternatively, you can also use [Bicep template](quickstart-bicep.md) to provision the resource.
+
+:::image type="content" source="media/how-to-scale-cluster/provision-autoscale-tier.jpg" alt-text="Screenshot of the free tier provisioning.":::
+
+## Benefits
+
+1. Instant Scale
+
+* Automatically adjusts capacity without downtime, maintaining performance during unexpected workload spikes.
+* Eliminates the need for manual scaling, reducing the risk of service disruptions.
+
+2. Cost Efficiency
+
+* Reduces expenses by preventing overprovisioning, utilizing resources only when necessary.
+* Pay-as-you-use pricing ensures that you’re only billed for actual usage, maximizing resource utilization.
+
+3. Predictable Pricing
+
+* Core-based pricing with transparent cost calculations makes budgeting and forecasting easier.
+* Flexible pricing model adapts to workload demands, avoiding unexpected cost spikes.
+
+## Pricing Model
+
+For simplicity it uses a core-based pricing model, where charges are based on the higher of CPU or committed memory usage 
+in the last hour, compared to a 35% utilization threshold.
+
+* Below 35% Utilization: Minimum price applies.
+* Above 35% Utilization: Maximum price applies.
+* Autoscale clusters incur a 50% premium over the base tier due to their instant scaling capabilities.
+* Billing Frequency: Costs are calculated and billed hourly, ensuring you only pay for the capacity you use.
+
+### Example:
+In a scenario where an application experiences usage spikes for 10% of its runtime:
+
+* Without Autoscale: An overprovisioned M200 cluster would cost $1,185.24.
+* With Autoscale: An M200-Autoscale cluster would cost $968.41, offering a savings of 18.29%.
+
+This flexible pricing model helps reduce costs while maintaining optimal performance during peak demand.
+
+## Restrictions
+
+1. Currently, only the M200 Autoscale tier is supported, allowing scaling within the range of M80 to M200 tiers.
+2. Autoscale applies only to compute resources. Storage capacity must still be scaled manually.
+3. Upgrades or downgrades between the General Tier and Autoscale Tier are not supported at this time.
+
+
+## Next steps
+
+Having explored the capabilities of the Autoscale tier in Azure Cosmos DB for MongoDB (vCore), the next step is to dive into the migration journey. This involves understanding how to conduct a migration assessment and planning a seamless transfer of your existing MongoDB workloads to Azure.
+
+> [!div class="nextstepaction"]
+> [Migration options for Azure Cosmos DB for MongoDB (vCore)](migration-options.md)
