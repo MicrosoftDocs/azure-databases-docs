@@ -34,17 +34,17 @@ Alternatively, you can also use [Bicep template](quickstart-bicep.md) to provisi
 
 ## Benefits
 
-1. Instant Scale
+1. **Instant Scale**
 
 * Automatically adjusts capacity without downtime, maintaining performance during unexpected workload spikes.
 * Eliminates the need for manual scaling, reducing the risk of service disruptions.
 
-2. Cost Efficiency
+2. **Cost Efficiency**
 
 * Reduces expenses by preventing overprovisioning, utilizing resources only when necessary.
 * Pay-as-you-use pricing ensures that you’re only billed for actual usage, maximizing resource utilization.
 
-3. Predictable Pricing
+3. **Predictable Pricing**
 
 * Core-based pricing with transparent cost calculations makes budgeting and forecasting easier.
 * Flexible pricing model adapts to workload demands, avoiding unexpected cost spikes.
@@ -54,7 +54,7 @@ Alternatively, you can also use [Bicep template](quickstart-bicep.md) to provisi
 For simplicity it uses a core-based pricing model, where charges are based on the higher of CPU or committed memory usage 
 in the last hour, compared to a 35% utilization threshold.
 
-* Below 35% Utilization: Minimum price applies.
+* Upto 35% Utilization: Minimum price applies.
 * Above 35% Utilization: Maximum price applies.
 * Autoscale clusters incur a 50% premium over the base tier due to their instant scaling capabilities.
 * Billing Frequency: Costs are calculated and billed hourly, ensuring you only pay for the capacity you use.
