@@ -99,6 +99,10 @@ If your workload consistently exceeds the M200 limits, you may need to consider 
 
 Autoscale support may vary by region. Please check the Azure portal for availability in your preferred region.
 
+7. How can I verify the charges incurred with Autoscale?
+
+To provide cost transparency, we’ve introduced a new metric called “Autoscale Utilization Percentage.” This metric shows the maximum of CPU or committed memory usage over time, allowing you to compare it against the charges incurred.
+
 ## Next steps
 
 Having explored the capabilities of the Autoscale tier in Azure Cosmos DB for MongoDB (vCore), the next step is to dive into the migration journey. This involves understanding how to conduct a migration assessment and planning a seamless transfer of your existing MongoDB workloads to Azure.
