@@ -31,7 +31,8 @@ All of these communications are taken care of automatically once Network Securit
 
 > [!NOTE]
 > Azure Network security perimeter complements what we currently have in place today, including private endpoint, which allows access to a private resource within the perimeter, and VNet injection, which enables managed VNet offerings to access resources within the perimeter.
-> We currently do not support the combination of network security perimeter, customer-managed keys (CMK), and log store features. If you need to perform restores on a CMK with a network security perimeter account, you'll temporarily need to relax the perimeter settings in the key vault to allow your Cosmos DB account access to the key.
+> We currently do not support the combination of Azure Network Security Perimeter, customer-managed keys (CMK), and log store features like Analytical Store, All Versions and Deletes Change Feed Mode, Materialized Views, and Point-in-Time Restore.
+> If you need to perform restores on a CMK-enabled account with Azure Network Security Perimeter, you'll temporarily need to relax the perimeter settings in the key vault to allow your Cosmos DB account access to the key.
 
 ## Getting started
 > [!IMPORTANT]
