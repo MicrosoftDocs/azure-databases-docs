@@ -146,7 +146,7 @@ In addition to features not yet supported or not planned, the following list inc
 
 ## Installing certificates for Java SDK
 
-When using the [Java SDK for Azure Cosmos DB](/articles/cosmos-db/nosql/sdk-java-v4.md) with this version of the emulator in https mode, it is necessary to install it's certificates to your local Java trust store.
+When using the [Java SDK for Azure Cosmos DB](./nosql/sdk-java-v4.md) with this version of the emulator in https mode, it is necessary to install it's certificates to your local Java trust store.
 
 ### Get certificate
 
