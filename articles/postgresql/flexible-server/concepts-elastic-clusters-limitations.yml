@@ -8,6 +8,7 @@ metadata:
   ms.service: azure-database-postgresql
   ms.topic: faq
   ms.date: 11/19/2024
+  ms.custom: references_regions
 
 title: "Frequently asked questions about Elastic Clusters with Azure Database for PostgreSQL limitations"
 summary: |
@@ -26,31 +27,50 @@ sections:
           Elastic Clusters are currently available in the following regions:
             - East Asia
             - East US
-            - West US
             - North Europe
             - UK South
+            - West US
+            - West US 3
           
-      - question: Elastic Clusters are not available in the region I need, what can I do?
+      - question: Elastic Clusters aren't available in the region I need, what can I do?
         answer: |
           We're enabling other regions shortly, if you're interested in specific regions fill out [this form](https://aka.ms/preview-pg-citus).
 
       - question: Can I create more databases in an Elastic Cluster?
         answer: |
-          The Azure portal provides credentials to connect to exactly one database per cluster. Currently, creating another database isn't allowed, and the `CREATE DATABASE`` command fails with an error.
+          The Azure portal provides credentials to connect to exactly one database per cluster. Currently, creating another database isn't allowed, and the `CREATE DATABASE` command fails with an error.
 
-          This database is called `postgres' by default. After the public preview, custom database names at cluster provisioning time will be supported.
+          This database is called `postgres` by default. After the public preview, custom database names at cluster provisioning time will be supported.
       - question: What PostgreSQL version is supported with Elastic Clusters?
         answer: Elastic Clusters support PostgreSQL version 16 during the public preview.
       - question: Can I use Major Version Upgrades with Elastic Clusters?
         answer: Currently, Major Version Upgrades aren't supported during the preview.
-
+      - question: Can I download server logs?
+        answer: Currently, downloading server logs isn't supported during the preview. You can use Azure Metrics, Log Analytic Workspaces and PostgreSQL views to analyze cluster behavior.
+      - question: Can I use terraform to deploy Elastic Clusters?
+        answer: Currently, terraform isn't supported during the preview. ARM templates are supported.
+  - name: Backups
+    questions:
+      - question: Can I use GEO backups & GEO restore?
+        answer: Currently, GEO backups & GEO restore aren't supported during the preview.
+      - question: Is Long Term Retention (LTR) supported?
+        answer: Currently, Long Term Retention isn't supported during the preview.
   - name: Extensions
     questions:
-      - question: Can I use TimescaleDB with Elastic Clusters?
-        answer: No. TimescaleDB extension isn't supported on Elastic Cluster due to low-level conflicts with the Citus extension.
-      - question: Can I use the Query Store extension with Elastic Clusters?
-        answer: No. The Query Store extension isn't supported during the preview.
+      - question: Why is TimescaleDB not available with Elastic Clusters?
+        answer: TimescaleDB extension isn't supported on Elastic Cluster due to low-level conflicts with the Citus extension.
+      - question: What extensions aren't supported during preview?
+        answer: |
+          The following extensions aren't supported during the preview:
+            - anon
+            - pg_qs - Query Store
+            - postgis_topology
+            - TimescaleDB
 
+  - name: Migrations
+    questions:
+      - question: How can I migrate to/from Elastic Clusters?
+        answer: Currently, migrations to/from Elastic Clusters can be done with pg_dump, pg_restore, and pgcopydb. Any other tool working with standard PostgreSQL should work.
   - name: Networking
     questions:
       - question: Can I use PgBouncer for connection pooling with Elastic Clusters?
@@ -59,10 +79,15 @@ sections:
       - question: Can I use Virtual networks (VNet) with Elastic Clusters?
         answer: Currently, virtual networks aren't supported during the preview.
 
+      - question: Are Private Domain Name System (DNS) Zones supported with Elastic Clusters?
+        answer: Currently, Private DNS Zones aren't supported during the preview.
+
   - name: Storage
     questions:
       - question: Can I use customer-managed keys (CMK) for storage encryption?
         answer: Currently, customer-managed keys aren't supported during the preview.
+      - question: Is Storage Auto Scale available?
+        answer: Currently, Storage Auto Scale isn't supported during the preview.
 
   - name: Authentication
     questions:
