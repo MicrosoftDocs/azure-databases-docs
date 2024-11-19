@@ -26,9 +26,14 @@ sections:
           Elastic Clusters are currently available in the following regions:
             - East Asia
             - East US
+<<<<<<< HEAD
             - West US
+=======
+>>>>>>> 13a7941b6a (ec: another change in regions)
             - North Europe
             - UK South
+            - West US
+            - West US 3
           
       - question: Elastic Clusters aren't available in the region I need, what can I do?
         answer: |
