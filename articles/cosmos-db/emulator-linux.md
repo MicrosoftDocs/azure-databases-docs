@@ -101,7 +101,7 @@ This emulator is in active development and preview. As a result, not all Azure C
 | **Delete document** | ✅ Supported |
 | **Get and change collection performance** | ⚠️ Not yet implemented |
 | **Insert large document** | ✅ Supported |
-| **Patch document** | ✅ Supported |
+| **Patch document** | ⚠️ Not yet implemented |
 | **Query partitioned collection in parallel** | ⚠️ Not yet implemented |
 | **Query with aggregates** | ⚠️ Not yet implemented |
 | **Query with and filter** | ⚠️ Not yet implemented |
