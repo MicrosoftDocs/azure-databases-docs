@@ -27,27 +27,27 @@ immediately to changing workloads, eliminating performance bottlenecks and avoid
 
 ## Get started
 
-Follow this document to [create a new Azure Cosmos DB for MongoDB (vCore)](quickstart-portal.md) cluster and just select 'M200-Autoscale tier (Preview)' checkbox. 
+Follow this document to [create a new Azure Cosmos DB for MongoDB (vCore)](quickstart-portal.md) cluster and select the 'M200-Autoscale tier (Preview)' checkbox. 
 Alternatively, you can also use [Bicep template](quickstart-bicep.md) to provision the resource.
 
 :::image type="content" source="media/how-to-scale-cluster/provision-autoscale-tier.jpg" alt-text="Screenshot of the free tier provisioning.":::
 
 ## Benefits
 
-1. **Instant Scale**
+- **Instant Scale**
 
-* Automatically adjusts capacity without downtime, maintaining performance during unexpected workload spikes.
-* Eliminates the need for manual scaling, reducing the risk of service disruptions.
+  - Automatically adjusts capacity without downtime, maintaining performance during unexpected workload spikes.
+  - Eliminates the need for manual scaling, reducing the risk of service disruptions.
 
-2. **Cost Efficiency**
+- **Cost Efficiency**
 
-* Reduces expenses by preventing overprovisioning, utilizing resources only when necessary.
-* Pay-as-you-use pricing ensures that you’re only billed for actual usage, maximizing resource utilization.
+  - Reduces expenses by preventing overprovisioning, utilizing resources only when necessary.
+  - Pay-as-you-use pricing ensures that you’re only billed for actual usage, maximizing resource utilization.
 
-3. **Predictable Pricing**
+- **Predictable Pricing**
 
-* Core-based pricing with transparent cost calculations makes budgeting and forecasting easier.
-* Flexible pricing model adapts to workload demands, avoiding unexpected cost spikes.
+  - Core-based pricing with transparent cost calculations makes budgeting and forecasting easier.
+  - Flexible pricing model adapts to workload demands, avoiding unexpected cost spikes.
 
 ## Pricing Model
 
@@ -69,37 +69,37 @@ This flexible pricing model helps reduce costs while maintaining optimal perform
 
 ## Restrictions
 
-1. Currently, only the M200 Autoscale tier is supported, allowing scaling within the range of M80 to M200 tiers.
-2. Autoscale applies only to compute resources. Storage capacity must still be scaled manually.
-3. Upgrades or downgrades between the General Tier and Autoscale Tier are not supported at this time.
+- Currently, only the M200 Autoscale tier is supported, allowing scaling within the range of M80 to M200 tiers.
+- Autoscale applies only to compute resources. Storage capacity must still be scaled manually.
+- Upgrades or downgrades between the General Tier and Autoscale Tier are not supported at this time.
 
 ## Frequently Asked Questions (FAQs)
 
-1. Which clusters support Autoscale?
+- Which clusters support Autoscale?
 
 Currently, Autoscale is only available for the M200 tier, with scaling capabilities from M80 to M200.
 
-2. Does Autoscale manage both compute and storage scaling?
+- Does Autoscale manage both compute and storage scaling?
 
 No, Autoscale only manages compute resources. Storage must be scaled manually.
 
-3. Can I switch between the General Tier and Autoscale Tier?
+- Can I switch between the General Tier and Autoscale Tier?
 
 No, upgrades or downgrades between the General Tier and Autoscale Tier are not supported at this time.
 
-4. Is there any downtime when Autoscale adjusts capacity?
+- Is there any downtime when Autoscale adjusts capacity?
 
 No, Autoscale adjusts capacity instantly and seamlessly, without any downtime or impact on performance.
 
-5. What happens if my workload exceeds the M200 tier limits?
+- What happens if my workload exceeds the M200 tier limits?
 
 If your workload consistently exceeds the M200 limits, you may need to consider a higher tier or alternative scaling strategies, as Autoscale currently only supports up to M200.
 
-6. Is Autoscale available in all Azure regions?
+- Is Autoscale available in all Azure regions?
 
 Autoscale support may vary by region. Please check the Azure portal for availability in your preferred region.
 
-7. How can I verify the charges incurred with Autoscale?
+- How can I verify the charges incurred with Autoscale?
 
 To provide cost transparency, we’ve introduced a new metric called “Autoscale Utilization Percentage.” This metric shows the maximum of CPU or committed memory usage over time, allowing you to compare it against the charges incurred.
 
