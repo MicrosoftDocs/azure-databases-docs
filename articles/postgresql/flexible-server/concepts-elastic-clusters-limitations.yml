@@ -46,10 +46,14 @@ sections:
 
   - name: Extensions
     questions:
-      - question: Can I use TimescaleDB with Elastic Clusters?
-        answer: No. TimescaleDB extension isn't supported on Elastic Cluster due to low-level conflicts with the Citus extension.
-      - question: Can I use the Query Store extension with Elastic Clusters?
-        answer: No. The Query Store extension isn't supported during the preview.
+      - question: Why is TimescaleDB not available with Elastic Clusters?
+        answer: TimescaleDB extension isn't supported on Elastic Cluster due to low-level conflicts with the Citus extension.
+      - question: What extensions are not supported during preview?
+        answer: |
+          The following extensions aren't supported during the preview:
+            - anon
+            - pg_qs - Query Store
+            - postgis_topology
 
   - name: Networking
     questions:
