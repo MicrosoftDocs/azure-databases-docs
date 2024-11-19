@@ -6,7 +6,7 @@ ms.author: gahllevy
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: conceptual
-ms.date: 10/29/2024
+ms.date: 11/06/2024
 ---
 
 # Service Limits in Azure Cosmos DB for MongoDB vCore
@@ -38,11 +38,10 @@ db.collection.find({ field: "value" }).maxTimeMS(5000)
   - Configurable up to: 300 indexes per collection.
 - Sorting is done in memory and doesn't push down to the index.
 - Maximum level of nesting for embedded objects/arrays on index definitions: 6.
-- Background index builds are in preview. To enable, [reach out to our team](mailto:mongodb-feedback@microsoft.com) for assistance.
-  - A single index build can be in progress on the same collection.
-  - The number of simultaneous index builds on different collections is configurable (default: 2).
-  - Use the `currentOp` command to view the progress of long-running index builds.
-  - Unique index builds are done in the foreground and block writes in the collection.
+- A single index build can be in progress on the same collection.
+- The number of simultaneous index builds on different collections is configurable (default: 2).
+- Use the `currentOp` command to view the progress of long-running index builds.
+- Unique index builds are done in the foreground and block writes in the collection.
 
 ### Wildcard Indexing Limits
 - For wildcard indexes, if the indexed field is an array of arrays, the entire embedded array is taken as a value instead of traversing its contents.
@@ -66,6 +65,7 @@ db.collection.find({ field: "value" }).maxTimeMS(5000)
 - Indexing vectors up to 2,000 dimensions in size.
 - Indexing applies to only one vector per path.
 - Only one index can be created per vector path.
+- `HNSW` and `DiskANN` are available on M40 and above cluster tiers. 
 
 ## Cluster and Shard Limits
 
@@ -73,7 +73,7 @@ db.collection.find({ field: "value" }).maxTimeMS(5000)
 - Maximum: M200 / 64 vCores / 256 GiB RAM per physical shard. [Reach out to our team](mailto:mongodb-feedback@microsoft.com) for higher tiers.
 
 ### Physical shards
-- Maximum: 10 (in preview). [Reach out to our team](mailto:mongodb-feedback@microsoft.com) for more shards.
+- Maximum: 10. [Reach out to our team](mailto:mongodb-feedback@microsoft.com) for more shards.
 
 ### Collection limits
 -	Collections per cluster: 1,000
@@ -96,7 +96,7 @@ The following limitations can be overridden by upgrading to a paid tier
 
 ## Replication and HA (high availability) Limits
 
-### Cross-Region Replication (preview)
+### Cross-Region Replication
 - The following configurations are the same on both primary and replica clusters and can't be changed on the replica cluster:
   - Storage and shard count
   - User accounts

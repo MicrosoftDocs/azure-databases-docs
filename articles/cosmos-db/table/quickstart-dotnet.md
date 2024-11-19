@@ -1,5 +1,5 @@
 ---
-title: Quickstart - .NET client library
+title: Quickstart - Azure SDK for .NET
 titleSuffix: Azure Cosmos DB for Table
 description: Deploy a .NET web application that uses the Azure SDK for .NET to interact with Azure Cosmos DB for Table data in this quickstart.
 author: seesharprun
@@ -8,27 +8,28 @@ ms.service: azure-cosmos-db
 ms.subservice: table
 ms.devlang: csharp
 ms.topic: quickstart-sdk
-ms.date: 10/24/2024
+ms.date: 11/07/2024
 ms.custom: devx-track-csharp, devx-track-dotnet, devx-track-extended-azdevcli
+appliesto:
+  - ✅ Table
 # CustomerIntent: As a developer, I want to learn the basics of the .NET library so that I can build applications with Azure Cosmos DB for Table.
 ---
 
-# Quickstart: Azure Cosmos DB for Table library for .NET
-
-[!INCLUDE[Table](../includes/appliesto-table.md)]
+# Quickstart: Use Azure Cosmos DB for Table with Azure SDK for .NET
 
 [!INCLUDE[Developer Quickstart selector](includes/quickstart/dev-selector.md)]
 
-This quickstart shows how to get started with the Azure Cosmos DB for Table from a .NET application. The Azure Cosmos DB for Table is a schemaless data store allowing applications to store structured table data in the cloud. You learn how to create tables, rows, and perform basic tasks within your Azure Cosmos DB resource using the Azure SDK for .NET
+In this quickstart, you deploy a basic Azure Cosmos DB for Table application using the Azure SDK for .NET. Azure Cosmos DB for Table is a schemaless data store allowing applications to store structured table data in the cloud. You learn how to create tables, rows, and perform basic tasks within your Azure Cosmos DB resource using the Azure SDK for .NET.
 
 [API reference documentation](/dotnet/api/azure.data.tables) | [Library source code](https://github.com/Azure/azure-sdk-for-net/tree/main/sdk/tables/Azure.Data.Tables) | [Package (NuGet)](https://www.nuget.org/packages/Azure.Data.Tables/) | [Azure Developer CLI](/azure/developer/azure-developer-cli/overview)
 
 ## Prerequisites
 
-- An Azure account with an active subscription. [Create an account for free](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- [Azure Developer CLI](/azure/developer/azure-developer-cli/install-azd)
-- [Docker Desktop](https://www.docker.com/products/docker-desktop/)
-- [.NET 9.0](https://dotnet.microsoft.com/download/dotnet/9.0)
+- Azure Developer CLI
+- Docker Desktop
+- .NET 9.0
+
+If you don't have an Azure account, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
 
 ## Initialize the project
 
@@ -71,7 +72,7 @@ Use the Azure Developer CLI (`azd`) to create an Azure Cosmos DB for Table accou
 
 1. Use the URL in the console to navigate to your web application in the browser. Observe the output of the running app.
 
-    :::image type="content" source="media/quickstart/dev-web-application.png" alt-text="Screenshot of the running web application.":::
+:::image type="content" source="media/quickstart-dotnet/running-application.png" alt-text="Screenshot of the running web application.":::
 
 ### Install the client library
 
@@ -102,17 +103,19 @@ The client library is available through NuGet, as the `Azure.Data.Tables` packag
 
 - [Authenticate the client](#authenticate-the-client)
 - [Get a table](#get-a-table)
-- [Create an item](#create-an-item)
-- [Get an item](#get-an-item)
-- [Query items](#query-items)
+- [Create an entity](#create-an-entity)
+- [Get an entity](#get-an-entity)
+- [Query entities](#query-entities)
 
-The sample code in the template uses a table named `cosmicworks-products`. The `cosmicworks-products` table contains details such as name, category, quantity, price, a unique identifier, and a sale flag for each product. The container uses a *unique identifier** as the row key and *category* as a partition key.
+The sample code in the template uses a table named `cosmicworks-products`. The `cosmicworks-products` table contains details such as name, category, quantity, price, a unique identifier, and a sale flag for each product. The container uses a *unique identifier* as the row key and *category* as a partition key.
 
 ### Authenticate the client
 
 This sample creates a new instance of the `TableServiceClient` class.
 
 ```csharp
+DefaultAzureCredential credential = new();
+
 TableServiceClient serviceClient = new(
     endpoint: new Uri("<azure-cosmos-db-table-account-endpoint>"),
     credential
@@ -129,24 +132,24 @@ TableClient client = serviceClient.GetTableClient(
 );
 ```
 
-### Create an item
+### Create an entity
 
-The easiest way to create a new item in a table is to create a class that implements the [``ITableEntity``](/dotnet/api/azure.data.tables.itableentity) interface. You can then add your own properties to the class to populate columns of data in that table row.
+The easiest way to create a new entity in a table is to create a class that implements the `ITableEntity` interface. You can then add your own properties to the class to populate columns of data in that table row.
 
 ```csharp
 public record Product : ITableEntity
 {
-    public string RowKey { get; set; } = $"{Guid.NewGuid()}";
+    public required string RowKey { get; set; }
 
-    public string PartitionKey { get; set; } = String.Empty;
+    public required string PartitionKey { get; set; }
 
-    public string Name { get; set; } = String.Empty;
+    public required string Name { get; set; }
 
-    public int Quantity { get; set; } = 0;
+    public required int Quantity { get; set; }
 
-    public decimal Price { get; set; } = 0.0m;
+    public required decimal Price { get; set; }
 
-    public bool Clearance { get; set; } = false;
+    public required bool Clearance { get; set; }
 
     public ETag ETag { get; set; } = ETag.All;
 
@@ -154,12 +157,12 @@ public record Product : ITableEntity
 };
 ```
 
-Create an item in the collection using the `Product` class by calling [``TableClient.AddEntityAsync<T>``](/dotnet/api/azure.data.tables.tableclient.addentityasync).
+Create an entity in the table using the `Product` class by calling `TableClient.AddEntityAsync<T>`.
 
 ```csharp
 Product entity = new()
 {
-    RowKey = "68719518391",
+    RowKey = "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb",
     PartitionKey = "gear-surf-surfboards",
     Name = "Surfboard",
     Quantity = 10,
@@ -173,23 +176,20 @@ Response response = await client.UpsertEntityAsync<Product>(
 );
 ```
 
-### Get an item
+### Get an entity
 
-You can retrieve a specific item from a table using the [``TableClient.GetEntityAsync<T>``](/dotnet/api/azure.data.tables.tableclient.getentity) method. Provide the `partitionKey` and `rowKey` as parameters to identify the correct row to perform a quick *point read* of that item.
+You can retrieve a specific entity from a table using the `TableClient.GetEntityAsync<T>` method. Provide the `partitionKey` and `rowKey` as parameters to identify the correct row to perform a quick *point read* of that entity.
 
 ```csharp
 Response<Product> response = await client.GetEntityAsync<Product>(
-    rowKey: "68719518391",
+    rowKey: "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb",
     partitionKey: "gear-surf-surfboards"
 );
 ```
 
-### Query items
+### Query entities
 
-After you insert an item, you can also run a query to get all items that match a specific filter by using the `TableClient.Query<T>` method. This example filters products by category using [Linq](/dotnet/standard/linq) syntax, which is a benefit of using typed `ITableEntity` models like the `Product` class.
-
-> [!NOTE]
-> You can also query items using [OData](/rest/api/storageservices/querying-tables-and-entities) syntax. You can see an example of this approach in the [Query Data](./tutorial-query.md) tutorial.
+After you insert an entity, you can also run a query to get all entities that match a specific filter by using the `TableClient.Query<T>` method. This example filters products by category using Language Integrated Query (LINQ) syntax, which is a benefit of using typed `ITableEntity` models like the `Product` class.
 
 ```csharp
 string category = "gear-surf-surfboards";
@@ -222,3 +222,4 @@ azd down
 - [Node.js Quickstart](quickstart-nodejs.md)
 - [Python Quickstart](quickstart-python.md)
 - [Java Quickstart](quickstart-java.md)
+- [Go Quickstart](quickstart-go.md)
