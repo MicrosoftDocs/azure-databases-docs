@@ -82,7 +82,7 @@ sections:
       - question: Can I use Virtual networks (VNet) with Elastic Clusters?
         answer: Currently, virtual networks aren't supported during the preview.
 
-      - question: Is Private Domain Name System (DNS) Zones supported with Elastic Clusters?
+      - question: Are Private Domain Name System (DNS) Zones supported with Elastic Clusters?
         answer: Currently, Private DNS Zones aren't supported during the preview.
 
   - name: Storage
