@@ -1,13 +1,13 @@
 ---
-title: Import and export data using pg_azure_storage extension in Azure Database for PostgreSQL - Flexible Server
+title: Import and Export Data Using pg_azure_storage Extension in Azure Database for PostgreSQL - Flexible Server
 description: Learn about the pg_azure_storage extension in Azure Database for PostgreSQL - Flexible Server
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 10/31/2024
+ms.date: 11/18/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - ignite-2023
 ---
@@ -44,7 +44,7 @@ Blob Storage offers a hierarchy of three types of resources:
 
 The following diagram shows the relationship between these resources.
 
-:::image type="content" source="./media/concepts-extensions/blob-1.png" alt-text="Diagram that shows an example of storage resources.":::
+:::image type="content" source="media/concepts-storage-extension/blob-1.png" alt-text="Diagram that shows an example of storage resources.":::
 
 ## Key benefits of storing data as blobs in Azure Blob Storage
 
