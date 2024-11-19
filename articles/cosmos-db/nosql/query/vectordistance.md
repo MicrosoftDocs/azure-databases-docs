@@ -64,9 +64,9 @@ ORDER BY VectorDistance(c.vector1, <query_vector>)
 This next example also includes optional arguments for `VectorDistance`
 
 ```nosql
-SELECT TOP 10 s.name, VectorDistance(c.vector1, <query_vector>, true, {'distanceFunction':'cosine', 'dataType':'float32',})
+SELECT TOP 10 s.name, VectorDistance(c.vector1, <query_vector>, true, {'distanceFunction':'cosine', 'dataType':'float32'})
 FROM c
-ORDER BY VectorDistance(c.vector1, <query_vector>, true, {'distanceFunction':'cosine', 'dataType':'float32',})
+ORDER BY VectorDistance(c.vector1, <query_vector>, true, {'distanceFunction':'cosine', 'dataType':'float32'})
 ```
 
 >[!IMPORTANT]
