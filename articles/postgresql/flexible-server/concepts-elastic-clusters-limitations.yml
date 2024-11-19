@@ -30,7 +30,7 @@ sections:
             - North Europe
             - UK South
           
-      - question: Elastic Clusters are not available in the region I need, what can I do?
+      - question: Elastic Clusters aren't available in the region I need, what can I do?
         answer: |
           We're enabling other regions shortly, if you're interested in specific regions fill out [this form](https://aka.ms/preview-pg-citus).
 
@@ -43,12 +43,21 @@ sections:
         answer: Elastic Clusters support PostgreSQL version 16 during the public preview.
       - question: Can I use Major Version Upgrades with Elastic Clusters?
         answer: Currently, Major Version Upgrades aren't supported during the preview.
-
+      - question: Can I download server logs?
+        answer: Currently, downloading server logs isn't supported during the preview. You can use Azure Metrics, Log Analytic Workspaces and PostgreSQL views to analyze cluster behavior.
+      - question: Can I use terraform to deploy Elastic Clusters?
+        answer: Currently, terraform isn't supported during the preview. ARM templates are supported.
+  - name: Backups
+    questions:
+      - question: Can I use GEO backups & GEO restore?
+        answer: Currently, GEO backups & GEO restore aren't supported during the preview.
+      - question: Is Long Term Retention (LTR) supported?
+        answer: Currently, Long Term Retention isn't supported during the preview.
   - name: Extensions
     questions:
       - question: Why is TimescaleDB not available with Elastic Clusters?
         answer: TimescaleDB extension isn't supported on Elastic Cluster due to low-level conflicts with the Citus extension.
-      - question: What extensions are not supported during preview?
+      - question: What extensions aren't supported during preview?
         answer: |
           The following extensions aren't supported during the preview:
             - anon
@@ -56,6 +65,10 @@ sections:
             - postgis_topology
             - TimescaleDB
 
+  - name: Migrations
+    questions:
+      - question: How can I migrate to/from Elastic Clusters?
+        answer: Currently, migrations to/from Elastic Clusters can be done with pg_dump, pg_restore, and pgcopydb. Any other tool working with standard PostgreSQL should work.
   - name: Networking
     questions:
       - question: Can I use PgBouncer for connection pooling with Elastic Clusters?
@@ -64,10 +77,15 @@ sections:
       - question: Can I use Virtual networks (VNet) with Elastic Clusters?
         answer: Currently, virtual networks aren't supported during the preview.
 
+      - question: Is Private Domain Name System (DNS) Zones supported with Elastic Clusters?
+        answer: Currently, Private DNS Zones aren't supported during the preview.
+
   - name: Storage
     questions:
       - question: Can I use customer-managed keys (CMK) for storage encryption?
         answer: Currently, customer-managed keys aren't supported during the preview.
+      - question: Is Storage Auto Scale available?
+        answer: Currently, Storage Auto Scale isn't supported during the preview.
 
   - name: Authentication
     questions:
