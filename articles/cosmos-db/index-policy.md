@@ -159,14 +159,14 @@ Here are some rules for included and excluded paths precedence in Azure Cosmos D
 | **`diskANN`** | Creates an index based on DiskANN for fast and efficient approximate search. | 4096 |
 
 A few points to note:
-  - The `flat` and `quantizedFlat` index types apply Azure Cosmos DB's index to store and read each vector when performing a vector search. Vector searches with a `flat` index are brute-force searches and produce 100% accuracy or recall. That is, it's guaranteed to find the most similar vectors in the dataset. However, there's a limitation of `505` dimensions for vectors on a flat index.
+- The `flat` and `quantizedFlat` index types apply Azure Cosmos DB's index to store and read each vector when performing a vector search. Vector searches with a `flat` index are brute-force searches and produce 100% accuracy or recall. That is, it's guaranteed to find the most similar vectors in the dataset. However, there's a limitation of `505` dimensions for vectors on a flat index.
 
   - The `quantizedFlat` index stores quantized (compressed) vectors on the index. Vector searches with `quantizedFlat` index are also brute-force searches, however their accuracy might be slightly less than 100% since the vectors are quantized before adding to the index. However, vector searches with `quantized flat` should have lower latency, higher throughput, and lower RU cost than vector searches on a `flat` index. This is a good option for scenarios where you're using query filters to narrow down the vector search to a relatively small set of vectors, and high accuracy is required.
 
   - The `diskANN` index is a separate index defined specifically for vectors applying [DiskANN](https://www.microsoft.com/research/publication/diskann-fast-accurate-billion-point-nearest-neighbor-search-on-a-single-node/), a suite of high performance vector indexing algorithms developed by Microsoft Research. DiskANN indexes can offer some of the lowest latency, highest throughput, and lowest RU cost queries, while still maintaining high accuracy. However, since DiskANN is an approximate nearest neighbors (ANN) index, the accuracy might be lower than `quantizedFlat` or `flat`.
 
  The `diskANN` and `quantizedFlat` indexes can take optional index build parameters that can be used to tune the accuracy versus latency trade-off that applies to every Approximate Nearest Neighbors vector index.
-  - `quantizationByteSize`: Sets the size (in bytes) for product quantization. Min=1, Default=dynamic (system decides), Max=512. Setting this larger may result in higher accuracy vector searches at expense of higher RU cost and higher latency. This applies to both `quantizedFlat` and `DiskANN` index types.
+- `quantizationByteSize`: Sets the size (in bytes) for product quantization. Min=1, Default=dynamic (system decides), Max=512. Setting this larger may result in higher accuracy vector searches at expense of higher RU cost and higher latency. This applies to both `quantizedFlat` and `DiskANN` index types.
   - `indexingSearchListSize`: Sets how many vectors to search over during index build construction. Min=10, Default=100, Max=500. Setting this larger may result in higher accuracy vector searches at the expense of longer index build times and higher vector ingest latencies. This applies to `DiskANN` indexes only.
 
 Here's an example of an indexing policy with a vector index:
@@ -494,7 +494,7 @@ WHERE r.familyname = 'Anderson' AND ch.age > 20
 A container's indexing policy can be updated at any time [by using the Azure portal or one of the supported SDKs](how-to-manage-indexing-policy.md). An update to the indexing policy triggers a transformation from the old index to the new one, which is performed online and in-place (so no extra storage space is consumed during the operation). The old indexing policy is efficiently transformed to the new policy without affecting the write availability, read availability, or the throughput provisioned on the container. Index transformation is an asynchronous operation, and the time it takes to complete depends on the provisioned throughput, the number of items and their size. If multiple indexing policy updates have to be made, it's recommended to do all the changes as a single operation in order to have the index transformation complete as quickly as possible.
 
 > [!IMPORTANT]
-> Index transformation is an operation that consumes [request units](request-units.md).
+> Index transformation is an operation that consumes [request units](request-units.md) and updating the index policy is an RU bound operation. If any indexing term is missed, the customer will see queries consuming more overall RUs.
 
 > [!NOTE]
 > You can track the progress of index transformation in the [Azure portal](how-to-manage-indexing-policy.md#use-the-azure-portal) or by [using one of the SDKs](how-to-manage-indexing-policy.md#dotnet-sdk).
