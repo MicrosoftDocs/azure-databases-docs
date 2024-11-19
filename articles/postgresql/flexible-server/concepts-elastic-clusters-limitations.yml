@@ -37,9 +37,9 @@ sections:
 
       - question: Can I create more databases in an Elastic Cluster?
         answer: |
-          The Azure portal provides credentials to connect to exactly one database per cluster. Currently, creating another database isn't allowed, and the `CREATE DATABASE`` command fails with an error.
+          The Azure portal provides credentials to connect to exactly one database per cluster. Currently, creating another database isn't allowed, and the `CREATE DATABASE` command fails with an error.
 
-          This database is called `postgres' by default. After the public preview, custom database names at cluster provisioning time will be supported.
+          This database is called `postgres` by default. After the public preview, custom database names at cluster provisioning time will be supported.
       - question: What PostgreSQL version is supported with Elastic Clusters?
         answer: Elastic Clusters support PostgreSQL version 16 during the public preview.
       - question: Can I use Major Version Upgrades with Elastic Clusters?
