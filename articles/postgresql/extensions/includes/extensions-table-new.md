@@ -328,7 +328,7 @@ Use [dblink](https://www.postgresql.org/docs/current/dblink.html) to connect to 
 
 ### lo
 
-[https://www.postgresql.org/docs/current/lo.html] provides Large Object maintenance.
+[lo](https://www.postgresql.org/docs/current/lo.html) provides Large Object maintenance.
 
 | PostgreSQL version | Extension version |
 | --- | --- |

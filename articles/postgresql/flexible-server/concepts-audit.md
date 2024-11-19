@@ -61,10 +61,10 @@ Using the [Azure portal](https://portal.azure.com):
 
    1. You can check that `pgaudit`is loaded in shared_preload_libraries by executing the following query in psql:
 
-```sql
+    ```sql
       show shared_preload_libraries;
- ```
-You should see `pgaudit`in the query result that will return shared_preload_libraries.
+     ```
+     You should see `pgaudit`in the query result that will return shared_preload_libraries.
 
    1. Connect to your server using a client (like psql) and enable the `pgaudit` extension.
 
