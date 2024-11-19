@@ -54,6 +54,7 @@ sections:
             - anon
             - pg_qs - Query Store
             - postgis_topology
+            - TimescaleDB
 
   - name: Networking
     questions:
