@@ -41,7 +41,7 @@ The algorithm iterates over the target databases, searching for possible indexes
 
 ### CREATE INDEX recommendations
 
-For each database identified as a candidate to analyze for producing index recommendations, all SELECT queries executed during the lookup interval and in the context of that specific database are factored in.
+For each database identified as a candidate to analyze for producing index recommendations, all SELECT, UPDATE, INSERT, and DELETE queries executed during the lookup interval and in the context of that specific database are factored in.
 
 > [!NOTE]  
 > Index tuning analyzes not only SELECT statements, but also DML (UPDATE, INSERT, and DELETE) statements.
@@ -155,7 +155,7 @@ Index tuning is supported on all [currently available tiers](concepts-compute.md
 
 ### Supported versions of PostgreSQL
 
-Index tuning is supported on [major versions](concepts-supported-versions.md) **14 or greater** of Azure Database for PostgreSQL Flexible Server.
+Index tuning is supported on [major versions](concepts-supported-versions.md) **12 or greater** of Azure Database for PostgreSQL Flexible Server.
 
 ### Use of search_path
 

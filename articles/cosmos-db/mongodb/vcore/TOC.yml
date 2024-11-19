@@ -24,6 +24,8 @@
           href: tutorial-nodejs-web-app.md
 - name: Concepts
   items:
+    - name: Autoscale
+      href: autoscale.md
     - name: Free tier
       href: free-tier.md
     - name: Burstable tier
