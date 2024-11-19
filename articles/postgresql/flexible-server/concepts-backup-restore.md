@@ -183,6 +183,10 @@ On-demand backups can be taken in addition to scheduled automatic backups. These
  For more information about performing a on-demand backup, visit the [how-to guide](./how-to-perform-on-demand-backup-portal.md).
 
 
+#### Limitations
+
+On-demand backup feature is currently not supported with the Burstable server compute tier.
+
 ## Long-term retention
 
 Azure Backup and Azure Database for PostgreSQL flexible server services have built an enterprise-class long-term backup solution for Azure Database for PostgreSQL flexible server instances that retains backups for up to 10 years. You can use long-term retention (LTR) independently or in addition to the automated backup solution offered by Azure Database for PostgreSQL flexible server, which offers retention of up to 35 days. Automated backups are physical backups suited for operational recoveries, especially when you want to restore from the latest backups. Long-term backups help you with your compliance needs, are more granular, and are taken as logical backups using native pg_dump. In addition to long-term retention, the solution offers the following capabilities:
