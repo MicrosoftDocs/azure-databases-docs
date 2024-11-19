@@ -8,6 +8,7 @@ metadata:
   ms.service: azure-database-postgresql
   ms.topic: faq
   ms.date: 11/19/2024
+  ms.custom: references_regions
 
 title: "Frequently asked questions about Elastic Clusters with Azure Database for PostgreSQL limitations"
 summary: |
