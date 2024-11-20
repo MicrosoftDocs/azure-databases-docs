@@ -554,8 +554,12 @@
         href: flexible-server/how-to-read-replicas-virtual-endpoints-terraform.md
   - name: Extensions
     items:
-    - name: Overview
-      href: flexible-server/concepts-extensions.md
+    - name: Allow extensions
+      href: extensions/how-to-allow-extensions.md
+    - name: Extension considerations
+      href: extensions/concepts-extensions-considerations.md
+    - name: Extension versions
+      href: extensions/concepts-extensions-versions.md           
     - name: Azure AI (azure_ai)
       items:
       - name: Overview
