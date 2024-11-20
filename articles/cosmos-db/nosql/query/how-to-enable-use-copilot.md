@@ -11,6 +11,8 @@ ms.custom:
 ms.topic: how-to
 ms.devlang: nosql
 ms.date: 08/22/2024
+ms.collection:
+  - ce-skilling-ai-copilot
 # CustomerIntent: As a developer, I want to use Copilot so that I can write queries faster and easier.
 ---
 

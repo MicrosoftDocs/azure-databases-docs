@@ -12,6 +12,8 @@ metadata:
     - ignite-2023
   ms.topic: faq
   ms.date: 11/10/2023
+  ms.collection:
+    - ce-skilling-ai-copilot
 title: Frequently asked questions about Microsoft Copilot for Azure in Cosmos DB (preview).
 summary: |
   This article provides information on general and transparency frequently asked questions about Microsoft Copilot for Azure in Cosmos DB.

@@ -211,7 +211,7 @@ $db = new PDO('mysql:host=mydemoserver.mysql.database.azure.com;port=3306;dbname
 ```python
 try:
     conn = mysql.connector.connect(user='myadmin',
-                                   password='yourpassword',
+                                   password='<password>',
                                    database='quickstartdb',
                                    host='mydemoserver.mysql.database.azure.com',
                                    ssl_ca='/var/www/html/DigiCertGlobalRootCA.crt.pem')
@@ -223,7 +223,7 @@ except mysql.connector.Error as err:
 
 ```python
 conn = pymysql.connect(user='myadmin',
-                       password='yourpassword',
+                       password='<password>',
                        database='quickstartdb',
                        host='mydemoserver.mysql.database.azure.com',
                        ssl={'ca': '/var/www/html/DigiCertGlobalRootCA.crt.pem'})

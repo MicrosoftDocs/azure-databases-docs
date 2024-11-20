@@ -8,7 +8,8 @@ ms.subservice: nosql
 ms.topic: conceptual
 ms.date: 06/26/2024
 ms.author: thvankra
-
+ms.collection:
+  - ce-skilling-ai-copilot
 ---
 
 # Multitenancy for vector search in Azure Cosmos DB

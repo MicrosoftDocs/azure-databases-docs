@@ -116,6 +116,8 @@ The detailed specifications of the available server types are as follows for the
 | Standard_E64ds_v5 | 64 | 512 | 704 | 64000 | 87383 | 1208 |
 | Standard_E96ds_v5 | 96 | 672 | 924 | 80000 | 100000 | 2004 |
 
+**Default Zone-Resilience in Azure Database for MySQL – Flexible Server Business Critical Tier**: Starting mid-December 2024, all new servers provisioned in the Azure Database for MySQL – Flexible Server Business Critical tier will come with built-in zone-resilience—at no extra cost! This means your data and log files will automatically be stored on zone-redundant storage, ensuring rapid recovery from zonal outages. Even without High-Availability enabled, you'll benefit from seamless protection with zone-redundant backups. [Learn more](concepts-business-continuity.md).
+
 ## Memory management in Azure Database for MySQL flexible server
 
 In MySQL, memory plays a vital role throughout various operations, including query processing and caching. Azure Database for MySQL flexible server optimizes memory allocation for the MySQL server process ([mysqld](https://dev.mysql.com/doc/refman/8.0/en/mysqld.html)), ensuring it receives sufficient memory resources for efficient query processing, caching, client connection management, and thread handling. [Learn more on how MySQL uses memory](https://dev.mysql.com/doc/refman/8.0/en/memory-use.html).

@@ -23,8 +23,6 @@ Azure Database for MySQL - Flexible Server includes a feature called *accelerate
 
 This article describes the benefits and limitations of accelerated logs. It also outlines the steps to enable and disable the feature.  
 
-> [!IMPORTANT]  
-> The accelerated logs feature is available for Business Critical servers created after May 20, 2024. For servers that were under the Business Critical service tier before that date, you can enable the feature in an upcoming maintenance window. For details about the maintenance schedule, go to the **Maintenance** section in the Azure portal. For any further queries or assistance, create a [support ticket](https://azure.microsoft.com/support/create-ticket/).
 
 ## Key benefits
 
@@ -45,9 +43,11 @@ Benefits of accelerated logs include:
 
 - You can't enable the accelerated logs feature on servers that use [customer-managed keys](./concepts-customer-managed-key.md).
 
-- After you activate the accelerated logs feature, any previously configured value for the [`binlog_expire_logs_seconds`](https://dev.mysql.com/doc/refman/8.0/en/replication-options-binary-log.html#sysvar_binlog_expire_logs_seconds) server parameter is disregarded.
+- Once the accelerated logs feature is enabled, **the [`binlog_expire_logs_seconds`](https://dev.mysql.com/doc/refman/8.0/en/replication-options-binary-log.html#sysvar_binlog_expire_logs_seconds) server parameter is disregarded entirely, and any configured value will no longer have any effect**. However, if the accelerated logs feature is disabled, the server will once again adhere to the configured value of `binlog_expire_logs_seconds` for binary log retention.
 
-- The accelerated logs feature is currently available only in the following regions:
+## Availability of accelerated logs by region
+
+The accelerated logs feature is currently available only in the following regions:
 
   - Australia East
   - Brazil South
@@ -123,5 +123,5 @@ You can enable the feature during creation of a flexible server or on an existin
 
 ## Related content
 
-- [Create an Azure Database for MySQL flexible server by using the Azure portal](quickstart-create-server-portal.md)
+- [Create an Azure Database for MySQL Flexible Server by using the Azure portal](quickstart-create-server-portal.md)
 - [Limitations in Azure Database for MySQL](concepts-limitations.md)

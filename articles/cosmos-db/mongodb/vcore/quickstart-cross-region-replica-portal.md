@@ -10,7 +10,7 @@ ms.subservice: mongodb-vcore
 ms.custom:
   - ignite-2024
 ms.topic: how-to
-ms.date: 06/12/2024
+ms.date: 11/06/2024
 ---
 
 # Quickstart: Create and use a cross-region cluster replica in Azure Cosmos DB for MongoDB vCore
@@ -18,12 +18,6 @@ ms.date: 06/12/2024
 [!INCLUDE[MongoDB vCore](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 
 In this quickstart, you create a cluster replica in another region for an Azure Cosmos DB for MongoDB vCore cluster for disaster recovery (DR) purposes. This replica cluster stores a copy of all of your MongoDB resources - databases, collections, and documents - in another Azure region. The replica cluster provides a unique endpoint for various tools and SDKs to connect to and could be promoted to become available for writes if there's a primary region outage.
-
-> [!IMPORTANT]
-> Cross-region replication in Azure Cosmos DB for MongoDB vCore is currently in preview.
-> This preview version is provided without a service level agreement (SLA), and it's not recommended
-> for production workloads. Certain features might not be supported or might have constrained
-> capabilities.
 
 ## Prerequisites
 
@@ -51,13 +45,6 @@ Create a MongoDB cluster with a cluster read replica in another region by using 
 
     :::image type="content" source="media/quickstart-portal/select-resource-type.png" alt-text="Screenshot of the select resource type option page for Azure Cosmos DB for MongoDB.":::
 
-1. On the **Create Azure Cosmos DB for MongoDB cluster** page, select the **Access to global distribution (preview)** option within the **Cluster details** section.
-
-    :::image type="content" source="media/quickstart-cross-region-replication/select-access-to-cross-region-replication-preview.png" alt-text="Screenshot of the access to global distribution preview.":::
-  
-    > [!IMPORTANT]
-   > You should select **Access to global distribution (preview)** during provisioning to be able to create a preview replica cluster.
-
 1. On the **Create Azure Cosmos DB for MongoDB cluster** page, select the **Configure** option within the **Cluster tier** section.
 
     :::image type="content" source="media/quickstart-portal/select-cluster-option.png" alt-text="Screenshot of the cluster configuration option for a new Azure Cosmos DB for MongoDB cluster.":::
@@ -72,7 +59,7 @@ Create a MongoDB cluster with a cluster read replica in another region by using 
 
 1. Unselect the **High availability** option. In the high availability (HA) acknowledgment section, select **I understand**. Finally, select **Save** to persist your changes to the cluster configuration.
     
-    In-region high availablity provides an in-region solution where a copy of data from each shard in a cluster is streamed to its standby counterpart located in the same region but in a different availability zone (AZ). High availability uses synchronous replication with zero data loss and automatic failure detection and failover while preserving the connection string intact after failover. High availability might be enabled on the primary cluster for an additional layer of protection from failures.
+    In-region high availability provides an in-region solution where a copy of data from each shard in a cluster is streamed to its standby counterpart located in the same region but in a different availability zone (AZ). High availability uses synchronous replication with zero data loss and automatic failure detection and failover while preserving the connection string intact after failover. High availability might be enabled on the primary cluster for an additional layer of protection from failures.
 
     :::image type="content" source="media/quickstart-portal/configure-scale.png" alt-text="Screenshot of cluster tier and scale options for a cluster.":::
 
@@ -90,9 +77,9 @@ Create a MongoDB cluster with a cluster read replica in another region by using 
 
     :::image type="content" source="media/quickstart-cross-region-replication/configure-cluster.png" alt-text="Screenshot of various configuration options for a cluster.":::
 
-1. Select **Next: Global distribution (preview)**.
+1. Select **Next: Global distribution**.
 
-1. On the **Global distribution (preview)** tab, select **Enable** for **Read replica in another region (preview)** to create a cluster read replica as a part of this new primary cluster provisioning.
+1. On the **Global distribution** tab, select **Enable** for **Read replica in another region** to create a cluster read replica as a part of this new primary cluster provisioning.
 
 1. In the **Read replica name** field, enter a name for the cluster read replica. It should be a globally unique cluster name.
 
@@ -128,15 +115,12 @@ Get the connection string you need to connect to the primary (read-write) cluste
 
    :::image type="content" source="media/quickstart-cross-region-replication/select-connection-strings-option.png" alt-text="Screenshot of the connection strings page in the cluster properties.":::
 
-1. Copy the value from the **Connection string** field.
+1. Copy the value from the **Self (always this cluster)** field.
    
-    > [!IMPORTANT]
-   > The connection string in the portal does not include the username and password values. You must replace the `<user>` and `<password>` placeholders with the credentials you entered when you created the cluster.
-
 1. In command line, use the MongoDB shell to connect to the primary cluster using the connection string.
 
 ```cmd
-mongosh mongodb+srv://<user>@<primary_cluster_name>.mongocluster.cosmos.azure.com/?tls=true&authMechanism=SCRAM-SHA-256&retrywrites=false&maxIdleTimeMS=120000
+mongosh "mongodb+srv://<user>@<primary_cluster_name>.mongocluster.cosmos.azure.com/?tls=true&authMechanism=SCRAM-SHA-256&retrywrites=false&maxIdleTimeMS=120000"
 ```
 
 ### Ingest data
@@ -203,11 +187,11 @@ db.cats.find();
 ## Enable access to replica cluster
 
 > [!IMPORTANT]
-> Replica clusters are always created with networking access disabled. You should add firewall rules on the replica cluster after it is created to enable read operations.
+> Replica clusters are always created with networking access disabled. You should add firewall rules or create private endpoints on the replica cluster after it is created to enable read operations.
 
-1. From the Azure Cosmos DB for MongoDB vCore *primary* cluster page, select the **Global distribution (preview)** page under **Settings**.
+1. From the Azure Cosmos DB for MongoDB vCore *primary* cluster page, select the **Global distribution** page under **Settings**.
 
-   :::image type="content" source="media/quickstart-cross-region-replication/global-distribution-page-on-primary-cluster.png" alt-text="Screenshot of the global distribution preview page in the primary cluster properties.":::
+   :::image type="content" source="media/quickstart-cross-region-replication/global-distribution-page-on-primary-cluster.png" alt-text="Screenshot of the global distribution page in the primary cluster properties.":::
 
 1. Select *cluster replica name* in the **Read replica** field to open the read cluster replica properties in the Azure portal.
  
@@ -235,7 +219,7 @@ Get the connection string for the read cluster replica in another region.
 1. In command line, use the MongDB shell to connect to the read replica cluster using its connection string.
 
 ```cmd
-mongosh mongodb+srv://<user>@<cluster_replica_name>.mongocluster.cosmos.azure.com/?tls=true&authMechanism=SCRAM-SHA-256&retrywrites=false&maxIdleTimeMS=120000
+mongosh "mongodb+srv://<user>@<cluster_replica_name>.mongocluster.cosmos.azure.com/?tls=true&authMechanism=SCRAM-SHA-256&retrywrites=false&maxIdleTimeMS=120000"
 ```
 
 ### Read data from replica cluster
@@ -253,15 +237,15 @@ To promote a cluster read replica to a read-write cluster, follow these steps:
 
 1. Select the *read replica cluster* in the portal.
 
-1. On the cluster sidebar, under **Cluster management**, select **Global distribution (preview)**.
+1. On the cluster sidebar, under **Cluster management**, select **Global distribution**.
 
-1. On the **Global distribution (preview)** page, select **Promote** on the toolbar to initiate read replica promotion to read-write cluster. 
+1. On the **Global distribution** page, select **Promote** on the toolbar to initiate read replica promotion to read-write cluster. 
 
-      :::image type="content" source="media/quickstart-cross-region-replication/replica-cluster-promotion.png" alt-text="Screenshot of the read replica cluster global distribution preview page with the promote button.":::
+      :::image type="content" source="media/quickstart-cross-region-replication/replica-cluster-promotion.png" alt-text="Screenshot of the read replica cluster global distribution page with the promote button.":::
 
 1. In the **Promote cluster** pop-up window, confirm that you understand how replica promotion works, and select **Promote**. Replica promotion might take a few minutes to complete.
 
-    :::image type="content" source="media/quickstart-cross-region-replication/replica-cluster-promotion-confirmation.png" alt-text="Screenshot of the read replica cluster global distribution preview page with the promote confirmation pop-up window.":::
+    :::image type="content" source="media/quickstart-cross-region-replication/replica-cluster-promotion-confirmation.png" alt-text="Screenshot of the read replica cluster global distribution page with the promote confirmation pop-up window.":::
 
 ### Write to promoted cluster replica
 
@@ -270,7 +254,7 @@ Once replica promotion is completed, the promoted replica becomes available for 
 Use the MongDB shell in command line to connect to *the promoted replica cluster* using its connection string.
 
 ```cmd
-mongosh mongodb+srv://<user>@<promoted_replica_cluster_name>.mongocluster.cosmos.azure.com/?tls=true&authMechanism=SCRAM-SHA-256&retrywrites=false&maxIdleTimeMS=120000
+mongosh "mongodb+srv://<user>@<promoted_replica_cluster_name>.mongocluster.cosmos.azure.com/?tls=true&authMechanism=SCRAM-SHA-256&retrywrites=false&maxIdleTimeMS=120000"
 ```
 
 In the MongoDB shell session, perform a write operation.
@@ -279,10 +263,10 @@ In the MongoDB shell session, perform a write operation.
 db.createCollection('foxes')
 ```
 
-Use the MongDB shell in command line to connect to *the new replica cluster* (former primary cluster) using its connection string.
+Use the MongDB shell in command line to connect to *the new replica cluster* (former primary cluster) using its connection string. You can use self connection string or the global read-write connection string.
 
 ```cmd
-mongosh mongodb+srv://<user>@<new_replica_cluster_name>.mongocluster.cosmos.azure.com/?tls=true&authMechanism=SCRAM-SHA-256&retrywrites=false&maxIdleTimeMS=120000
+mongosh "mongodb+srv://<user>@<new_replica_cluster_name>.mongocluster.cosmos.azure.com/?tls=true&authMechanism=SCRAM-SHA-256&retrywrites=false&maxIdleTimeMS=120000"
 ```
 
 In the MongoDB shell, confirm that writes are now disabled on the new replica (former primary cluster).

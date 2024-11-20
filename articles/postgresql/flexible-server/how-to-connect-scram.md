@@ -34,7 +34,7 @@ Salted Challenge Response Authentication Mechanism (SCRAM) is a password-based m
 1. From your Azure Database for PostgreSQL flexible server client, connect to the Azure Database for PostgreSQL flexible server instance. For example,
 
     ```bash
-    psql "host=myPGServer.postgres.database.azure.com port=5432 dbname=postgres user=myDemoUser password=MyPassword sslmode=require"
+    psql "host=myPGServer.postgres.database.azure.com port=5432 dbname=postgres user=myDemoUser password=<password> sslmode=require"
 
     psql (12.3 (Ubuntu 12.3-1.pgdg18.04+1), server 12.6)
     SSL connection (protocol: TLSv1.3, cipher: TLS_AES_256_GCM_SHA384, bits: 256, compression: off)

@@ -8,6 +8,8 @@ ms.topic: how-to
 ms.date: 03/08/2023
 ms.author: mjbrown
 ms.custom: devx-track-csharp, build-2024, ignite-2024
+ms.collection:
+  - ce-skilling-ai-copilot
 ---
 
 # Manage indexing policies in Azure Cosmos DB
@@ -101,10 +103,10 @@ Here are some examples of indexing policies shown in [their JSON format](../inde
 In addition to including or excluding paths for individual properties, you can also specify a [vector index](../index-policy.md#vector-indexes). In general, vector indexes should be specified whenever the `VectorDistance` system function is used to measure similarity between a query vector and a vector property. 
 
 > [!NOTE]
-> You must enroll in the [Azure Cosmos DB NoSQL Vector Index preview feature](vector-search.md#enroll-in-the-vector-search-preview-feature) to use vector search in Azure Cosmos DB for NoSQL.> 
+> Before proceeding, you must enable the [Azure Cosmos DB NoSQL Vector Indexing and Search](vector-search.md#enable-the-vector-indexing-and-search-feature). 
 
 >[!IMPORTANT]
-> A vector indexing policy must be on the same path defined in the container's vector policy. [Learn more about container vector policies](vector-search.md#container-vector-policies).)
+> A vector indexing policy must be on the same path defined in the container's vector policy. [Learn more about container vector policies](vector-search.md#container-vector-policies).
 
 ```json
 {
@@ -149,6 +151,10 @@ The `flat` and `quantizedFlat` index types leverage Azure Cosmos DB's index to s
 The `quantizedFlat` index stores quantized or compressed vectors on the index. Vector searches with `quantizedFlat` index are also brute-force searches, however their accuracy might be slightly less than 100% since the vectors are quantized before adding to the index. However, vector searches with `quantized flat` should have lower latency, higher throughput, and lower RU cost than vector searches on a `flat` index. This is a good option for scenarios where you are using query filters to narrow down the vector search to a relatively small set of vectors. 
 
 The `diskANN` index is a separate index defined specifically for vectors leveraging [DiskANN](https://www.microsoft.com/research/publication/diskann-fast-accurate-billion-point-nearest-neighbor-search-on-a-single-node/), a suite of highly performant vector indexing algorithms developed by Microsoft Research. DiskANN indexes can offer some of the lowest latency, highest query-per-second (QPS), and lowest RU cost queries at high accuracy. However, since DiskANN is an approximate nearest neighbors (ANN) index, the accuracy may be lower than `quantizedFlat` or `flat`.
+
+The `diskANN` and `quantizedFlat` indexes can take optional index build parameters that can be used to tune the accuracy vs latency trade off that applies to every Approximate Nearest Neighbors vector index.
+* `quantizationByteSize`: Sets the size (in bytes) for product quantization. Min=1, Default=dynamic (system decides), Max=512. Setting this larger may result in higher accuracy vector searches at expense of higher RU cost and higher latency. This applies to both `quantizedFlat` and `DiskANN` index types.
+* `indexingSearchListSize`: Sets how many vectors to search over during index build construction. Min=10, Default=100, Max=500. Setting this larger may result in higher accuracy vector searches at the expense of longer index build times and higher vector ingest latencies. This applies to `DiskANN` indexes only.
 
 ### Tuple indexing policy examples
 

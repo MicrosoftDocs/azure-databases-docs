@@ -5,7 +5,7 @@ author: jcocchi
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: how-to
-ms.date: 06/02/2022
+ms.date: 11/07/2024
 ms.author: jucocchi
 ms.devlang: csharp
 # ms.devlang: csharp, java, javascript, python
@@ -157,7 +157,7 @@ The `Container` object from the [Python SDK](https://pypi.org/project/azure-cosm
 
 ```python
 new_item = {
-    "id": "70b63682-b93a-4c77-aad2-65501347265f",
+    "id": "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb",
     "partition_key": "61dba35b-4f02-45c5-b648-c6badc0cbd79",
     "name": "Yamba Surfboard"
 }
@@ -168,7 +168,7 @@ request_charge = container.client_connection.last_response_headers["x-ms-request
 
 ```python
 existing_item = container.read_item(
-    item="70b63682-b93a-4c77-aad2-65501347265f"
+    item="aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb"
     partition_key="61dba35b-4f02-45c5-b648-c6badc0cbd79"
 )
 

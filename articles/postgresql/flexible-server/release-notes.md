@@ -1,10 +1,10 @@
 ---
 title: Release notes for Azure DB for PostgreSQL - Flexible Server
 description: Release notes for Azure DB for PostgreSQL - Flexible Server, including feature additions, engine versions support, extensions, and other announcements.
-author: danyal-bukhari
-ms.author: dabukhari
+author: varun-dhawan
+ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 10/12/2024
+ms.date: 11/8/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: overview
@@ -15,12 +15,17 @@ ms.topic: overview
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
-This article highlights the latest updates and enhancements for Azure Database for PostgreSQL - Flexible Server, service including new feature releases, supported engine versions, available extensions, and other important announcements."
+This article highlights the latest updates and enhancements for Azure Database for PostgreSQL - Flexible Server, service including new feature releases, supported engine versions, available extensions, and other important announcements.
 
+## Release: November 2024
+
+- General availability of [High-Availability Health Status Monitoring](./how-to-monitor-high-availability.md) for Azure Database for PostgreSQL - Flexible Server.
+- [PostgreSQL 12](./concepts-version-policy.md) will retire on November 14, 2024. Please upgrade to a supported version before retirement to ensure continued support and security.
 
 ## Release: October 2024
 
 - General Availability of [Task Automation](create-automation-tasks.md). <sup>^</sup>
+- Preview of [Fabric Mirroring](https://techcommunity.microsoft.com/t5/azure-database-for-postgresql/mirroring-azure-database-for-postgresql-flexible-server-in/ba-p/4251876) for Azure Database for PostgreSQL flexible server.
 
 ## Release: September 2024
 
@@ -31,7 +36,7 @@ This article highlights the latest updates and enhancements for Azure Database f
 - Support for MD5 is disabled in favor of [SCRAM authentication](how-to-connect-scram.md) authentication for new PostgreSQL 14+ new server deployments.
 - Collation sort order might change due to an underlying `glibc` update from 2.27 to 2.35. See [PostgreSQL Wiki](https://wiki.postgresql.org/wiki/Locale_data_changes) for details.
 
-<sup>**^**</sup> Postgres 17 preview is available in "East Asia" starting immediately, with more regions coming soon.
+<sup>**^**</sup> Postgres 17 preview is available in "East Asia, West Central US, Canada Central" starting immediately with more regions coming soon.
 
 ## Release: Aug 2024
 
@@ -246,14 +251,14 @@ This article highlights the latest updates and enhancements for Azure Database f
 - Support for [latest PostgreSQL minors](./concepts-supported-versions.md) 13.4, 12.8 and 11.13 with new server creates<sup>$</sup>.
 - Support for [Geo-redundant backup and restore](concepts-backup-restore.md) feature in preview in selected paired regions - East US 2, Central US, North Europe, West Europe, Japan East, and Japan West.
 - Support for [new regions](overview.md#azure-regions) North Central US, Sweden Central, and West US 3.
-- Support for [Azure Stream Analytics (ASA) connector in Preview](https://techcommunity.microsoft.com/t5/analytics-on-azure/stream-analytics-updates-ignite-fall-2021-new-outputs-new/ba-p/2919170) to ingest high throughput streaming data to existing table.
+- Support for [Azure Stream Analytics (ASA) connector in Preview](https://techcommunity.microsoft.com/blog/analyticsonazure/stream-analytics-updates---ignite-fall-2021-new-outputs-new-security-options-and/2919170) to ingest high throughput streaming data to existing table.
 - Several bug fixes, stability, and performance improvements<sup>$</sup>.
 
 <sup>**$**</sup> New servers get these features automatically. These features are enabled on your existing servers during your server's future maintenance window.
 
 ## Release: October 2021
 
-- Support for [Ddsv4 and Edsv4 SKUs](https://techcommunity.microsoft.com/t5/azure-database-for-postgresql/flexible-server-now-supports-v4-compute-series-in-postgresql-on/ba-p/2815092).
+- Support for [Ddsv4 and Edsv4 SKUs](https://techcommunity.microsoft.com/blog/adforpostgresql/flexible-server-now-supports-v4-compute-series-in-postgresql-on-azure/2815092).
 - Ability to choose local disk for temporary tablespace using `azure.enable_temp_tablespaces_on_local_ssd` server parameter.
 The server parameters page in the Azure portal shows a unit of measurement and the PostgreSQL doc link for most parameters.
 - Several bug fixes, stability, and performance improvements.

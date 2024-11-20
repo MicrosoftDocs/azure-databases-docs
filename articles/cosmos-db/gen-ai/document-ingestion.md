@@ -10,11 +10,17 @@ ms.custom:
 ms.topic: how-to
 ms.date: 9/16/2024
 ms.author: jacodel
+ms.collection:
+  - ce-skilling-ai-copilot
 ---
 
-# Load document files into Azure Cosmos DB
+# Load and process document files into Azure Cosmos DB for search
 
 [!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+
+
+> [!NOTE]
+> Document ingestion for Azure Cosmos DB is in private preview. If you're interested to join the preview, we encourage you to join the wait list by signing this form: https://aka.ms/Doc2CDBSignup
 
 We introduce Doc2CDB for Azure Cosmos DB, a powerful accelerator designed to streamline the extraction, preprocessing, and management of large volumes of text data for vector similarity search. This solution uses the advanced vector indexing capabilities of Azure Cosmos DB and is powered by Azure AI Services to provide a robust and efficient pipeline that’s easily to set up and perfect for many use cases including:
 

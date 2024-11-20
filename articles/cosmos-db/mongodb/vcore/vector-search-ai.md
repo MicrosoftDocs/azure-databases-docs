@@ -8,6 +8,8 @@ ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: conceptual
 ms.date: 04/02/2024
+ms.collection:
+  - ce-skilling-ai-copilot
 ---
 
 # Open-source vector databases
