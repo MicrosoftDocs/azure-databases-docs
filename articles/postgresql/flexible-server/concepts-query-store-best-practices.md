@@ -10,8 +10,6 @@ ms.subservice: flexible-server
 ms.custom:
   - ignite-2024
 ms.topic: conceptual
-ms.custom:
-  - ignite-2024
 ---
 
 # Best practices for query store in Azure Database for PostgreSQL - Flexible Server
