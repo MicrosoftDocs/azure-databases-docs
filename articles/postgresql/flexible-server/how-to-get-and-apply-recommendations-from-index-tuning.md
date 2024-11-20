@@ -9,6 +9,7 @@ ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.custom:
   - build-2024
+  - ignite-2024
 ms.topic: how-to
 ---
 # Use index recommendations produced by index tuning in Azure Database for PostgreSQL - Flexible Server (Preview)

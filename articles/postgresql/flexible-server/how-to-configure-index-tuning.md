@@ -9,6 +9,7 @@ ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.custom:
   - build-2024
+  - ignite-2024
 ms.topic: how-to
 # customer intent: As a user, I want to learn about how to enable, disable and configure the index tuning feature in Azure Database for PostgreSQL - Flexible Server.
 ---
