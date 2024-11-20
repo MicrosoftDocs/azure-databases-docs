@@ -21,7 +21,7 @@ When a server is dropped, the Azure Database for PostgreSQL flexible server back
 To restore a dropped Azure Database for PostgreSQL flexible server instance, you need
 - Azure Subscription name hosting the original server
 - Location where the server was created
-- Use the 2023-03-01-preview **api-version** version
+- Use the 2024-08-01 **api-version** version
 
 ## Steps to restore
 
@@ -64,7 +64,7 @@ To restore a dropped Azure Database for PostgreSQL flexible server instance, you
           "location": "WestUS",
           "properties":
           {
-            "pointInTimeUTC": "2023-06-15T16:05:02Z",
+            "pointInTimeUTC": "2023-06-15T16:08:02Z",
             "createMode": "ReviveDropped",
             "sourceServerResourceId": "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/SourceResourceGroup-Name/providers/Microsoft.DBforPostgreSQL/flexibleServers/SourceServer-Name"
           }
