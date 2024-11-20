@@ -181,12 +181,16 @@ Azure Database for PostgreSQL Flexible Server automatically generates storage vo
 
 On-demand backups can be taken in addition to scheduled automatic backups. These backups are retained according to your backup retention window. You can delete these on-demand backups at any time if they are no longer needed. To initiate an on-demand backup, simply select the database instance you wish to back up and specify a backup name. These backups are stored alongside automated backups, but only on-demand backups can be deleted by users, as automated backups are managed and retained by the Flexible Server service to meet backup retention requirements.
 
- For more information about performing a on-demand backup, visit the [how-to guide](./how-to-perform-on-demand-backup-portal.md).
+ For more information about performing an on-demand backup, visit the [how-to guide](./how-to-perform-on-demand-backup-portal.md).
 
 
 #### Limitations
 
 On-demand backup feature is currently not supported with the Burstable server compute tier.
+
+#### Known Issues
+
+We are aware of an existing bug that allows taking on-demand backups on Replicas, even though Point-in-Time Restore (PITR) is not supported in this context. This issue will be addressed to ensure that on-demand backups can only be performed on the Primary server.
 
 ## Long-term retention
 
