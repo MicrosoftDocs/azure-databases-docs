@@ -5,6 +5,8 @@ description: Learn how to ingest document files into Azure Cosmos DB for NoSQL
 author: jcodella
 ms.service: azure-cosmos-db
 ms.subservice: nosql
+ms.custom:
+  - ignite-2024
 ms.topic: how-to
 ms.date: 9/16/2024
 ms.author: jacodel

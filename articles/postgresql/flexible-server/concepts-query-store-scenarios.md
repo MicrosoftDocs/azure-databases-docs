@@ -7,9 +7,9 @@ ms.reviewer: maghan
 ms.date: 11/05/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
-ms.topic: conceptual
 ms.custom:
   - ignite-2024
+ms.topic: conceptual
 ---
 
 # Usage scenarios for query store - Azure Database for PostgreSQL - Flexible Server

@@ -51,26 +51,27 @@ Using the [Azure portal](https://portal.azure.com):
 
    1. Select your Azure Database for PostgreSQL flexible server instance.
 
-   1. On the sidebar, select **Server Parameters**.
+1. On the sidebar, select **Server Parameters**.
 
-   1. Search for the `shared_preload_libraries` parameter.
+1. Search for the `shared_preload_libraries` parameter.
 
-   1. Select `pgaudit`.
+1. Select `pgaudit`.
 
-      :::image type="content" source="media/concepts-audit/shared-preload-libraries.png" alt-text="Screenshot showing Azure Database for PostgreSQL flexible server enabling shared_preload_libraries for `pgaudit`." lightbox="media/concepts-audit/shared-preload-libraries.png":::
+   :::image type="content" source="media/concepts-audit/shared-preload-libraries.png" alt-text="Screenshot showing Azure Database for PostgreSQL flexible server enabling shared_preload_libraries for `pgaudit`." lightbox="media/concepts-audit/shared-preload-libraries.png":::
 
-   1. You can check that `pgaudit`is loaded in shared_preload_libraries by executing the following query in psql:
+1. You can check that `pgaudit`is loaded in shared_preload_libraries by executing the following query in psql:
 
- ```sql
-      show shared_preload_libraries;
- ```
+    ```sql
+    show shared_preload_libraries;
+    ```
+       
     You should see `pgaudit`in the query result that will return shared_preload_libraries.
-
-   1. Connect to your server using a client (like psql) and enable the `pgaudit` extension.
-
-```sql
-      CREATE EXTENSION `pgaudit`;
- ```
+   
+1. Connect to your server using a client (like psql) and enable the `pgaudit` extension.
+   
+    ```sql
+    CREATE EXTENSION `pgaudit`;
+    ```
 
 > [!TIP]  
 > If you see an error, confirm that you restarted your server after saving `shared_preload_libraries`.

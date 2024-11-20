@@ -21,7 +21,7 @@ When a server is dropped, the Azure Database for PostgreSQL flexible server back
 To restore a dropped Azure Database for PostgreSQL flexible server instance, you need
 - Azure Subscription name hosting the original server
 - Location where the server was created
-- Use the 2023-03-01-preview **api-version** version
+- Use the 2024-08-01 **api-version** version
 
 ## Steps to restore
 
@@ -39,7 +39,7 @@ To restore a dropped Azure Database for PostgreSQL flexible server instance, you
 1. Browse to the Azure Database for PostgreSQL flexible server [Create Server REST API Page](/rest/api/postgresql/flexibleserver/servers/create) and select the **Try It** tab highlighted in green. Sign in with your Azure account.
 
   > [!IMPORTANT]  
-  > Use this api-version **_2023-03-01-preview_** rather than the default before running to enable this API function as expected as detailed in the following step.
+  > Use this api-version **2024-08-01** rather than the default before running to enable this API function as expected as detailed in the following step.
 
 1. Provide the **resourceGroupName**, **serverName** (Target server name), **subscriptionId** properties, based on the resourceId attribute JSON value captured in the preceding step 3. The api-version property is prepopulated and can be left alone.
 
@@ -50,21 +50,21 @@ To restore a dropped Azure Database for PostgreSQL flexible server instance, you
         "location": "Dropped Server Location",
         "properties":
         {
-          "pointInTimeUTC": "submissionTimestamp + 05 minutes",
+          "pointInTimeUTC": "submissionTimestamp + 10 minutes",
           "createMode": "ReviveDropped",
           "sourceServerResourceId": "resourceId"
         }
       }
     ```
     
-    For example, if the submission timestamp is 2023-06-15T15:58:02Z, we recommend adding a minimum of 5 minutes to restore point in time 2023-06-15T16:05:02Z and ensure that you're changing three parameters (location,pointInTimeUTC,sourceServerResourceId) as per your restore requirements.
+    For example, if the submission timestamp is 2023-06-15T15:58:02Z, we recommend adding a minimum of 10 minutes to restore point in time 2023-06-15T16:05:02Z and ensure that you're changing three parameters (location,pointInTimeUTC,sourceServerResourceId) as per your restore requirements. 
     
       ```json
           {
           "location": "WestUS",
           "properties":
           {
-            "pointInTimeUTC": "2023-06-15T16:05:02Z",
+            "pointInTimeUTC": "2023-06-15T16:08:02Z",
             "createMode": "ReviveDropped",
             "sourceServerResourceId": "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/SourceResourceGroup-Name/providers/Microsoft.DBforPostgreSQL/flexibleServers/SourceServer-Name"
           }
@@ -102,7 +102,7 @@ Restoring a dropped virtual network enabled server involves specifying additiona
 
 ## Common Errors
 
-1. If you utilize the incorrect API version, you might experience restore failures or timeouts. Use 2023-03-01-preview API to avoid such issues.
+1. If you utilize the incorrect API version, you might experience restore failures or timeouts. Use 2024-08-01 API to avoid such issues.
 1. To avoid potential DNS errors, it's recommended to use a different name when initiating the restore process, as some restore operations might fail with the same name.
 
 ## Next step

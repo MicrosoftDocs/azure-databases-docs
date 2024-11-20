@@ -10,6 +10,7 @@ ms.subservice: flexible-server
 ms.topic: conceptual
 ms.custom:
   - fasttrack-edit
+  - ignite-2024
 ---
 
 # Azure Database for MySQL version support policy

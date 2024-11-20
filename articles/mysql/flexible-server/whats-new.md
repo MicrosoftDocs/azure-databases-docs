@@ -11,6 +11,7 @@ ms.topic: overview
 ms.custom:
   - mvc
   - references_regions
+  - ignite-2024
 ---
 
 # What's new in Azure Database for MySQL - Flexible Server?
@@ -788,4 +789,3 @@ If you have questions about or suggestions for working with Azure Database for M
 - [Azure Database for MySQL Flexible Server pricing](https://azure.microsoft.com/pricing/details/mysql/server/)
 - [public documentation](index.yml)
 - [troubleshooting common migration errors](../howto-troubleshoot-common-errors.md)
-
