@@ -10,8 +10,6 @@ ms.subservice: flexible-server
 ms.custom:
   - ignite-2024
 ms.topic: conceptual
-ms.custom:
-  - ignite-2024
 ---
 # Monitor performance with query store
 
