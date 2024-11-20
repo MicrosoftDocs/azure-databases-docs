@@ -8,6 +8,7 @@ ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.custom:
   - build-2024
+  - ignite-2024
 ms.topic: conceptual
 ms.date: 04/03/2023
 ---

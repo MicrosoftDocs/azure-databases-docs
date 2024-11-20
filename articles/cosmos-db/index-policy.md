@@ -7,7 +7,7 @@ ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: concept-article
 ms.date: 09/26/2024
-ms.custom: build-2024
+ms.custom: build-2024, ignite-2024
 ---
 
 # Indexing policies in Azure Cosmos DB

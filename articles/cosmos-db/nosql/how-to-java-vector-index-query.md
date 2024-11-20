@@ -8,7 +8,7 @@ ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: how-to
 ms.date: 08/01/2023
-ms.custom: query-reference, devx-track-java, build-2024, devx-track-extended-java
+ms.custom: query-reference, devx-track-java, build-2024, devx-track-extended-java, ignite-2024
 ms.collection:
   - ce-skilling-ai-copilot
 ---

@@ -5,6 +5,8 @@ author: gahl-levy
 ms.author: gahllevy
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
+ms.custom:
+  - ignite-2024
 ms.topic: conceptual
 ms.date: 11/06/2024
 ---

@@ -1,12 +1,14 @@
 ---
 title: |
-  Quickstart: Create and us a cross-region replica in Azure Cosmos DB for MongoDB vCore 
+  Quickstart: Create and us a cross-region replica in Azure Cosmos DB for MongoDB vCore
 titleSuffix: Azure Cosmos DB for MongoDB vCore
 description: In this quickstart, create a new Azure Cosmos DB for MongoDB vCore cluster replica in another region for disaster recovery (DR) and read scaling purposes in the Azure portal.
 author: niklarin
 ms.author: nlarin
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
+ms.custom:
+  - ignite-2024
 ms.topic: how-to
 ms.date: 11/06/2024
 ---
