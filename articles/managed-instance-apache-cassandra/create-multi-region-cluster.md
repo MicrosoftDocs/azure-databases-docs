@@ -192,7 +192,7 @@ If you encounter errors when you run `az role assignment create`, you might not 
    > Note also that `--availability-zone` is set to `false`. To enable availability zones, set this to `true`. Availability zones increase the availability SLA of the service. For more information, see [SLA for Azure Managed Instance for Apache Cassandra](https://azure.microsoft.com/support/legal/sla/managed-instance-apache-cassandra/v1_0/).
 
    > [!WARNING]
-   > Availability zones are not supported in all regions. Deployments fail if you select a region where Availability zones are not supported. For supported regions, see [Azure regions with availability zones](/azure/availability-zones/az-overview#azure-regions-with-availability-zones).
+   > Availability zones are not supported in all regions. Deployments fail if you select a region where Availability zones are not supported. For supported regions, see [Azure regions with availability zones](/azure/reliability/availability-zones-region-support).
    >
    > The successful deployment of availability zones is also subject to the availability of compute resources in all of the zones in the given region. Deployments may fail if the SKU you have selected, or capacity, is not available across all zones.
 
