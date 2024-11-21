@@ -46,7 +46,7 @@ You can monitor storage IOPS utilization by using [metrics available for Azure D
 
 ### Get an I/O utilization overview for a selected time period
 
-1. In the Azure portal, go to your Azure Database for MySQL flexible server.
+1. In the Azure portal, go to your Azure Database for MySQL Flexible Server.
 1. On the **Overview** pane, select the **Monitoring** tab.
 1. In the **Show data for last** area, select a time period.
 
@@ -54,7 +54,7 @@ You can monitor storage IOPS utilization by using [metrics available for Azure D
 
 ### View a workbook for enhanced metrics
 
-1. In the Azure portal, go to your Azure Database for MySQL flexible server.
+1. In the Azure portal, go to your Azure Database for MySQL Flexible Server.
 1. Go to **Monitoring** > **Workbooks**.
 1. Select the **Enhanced Metrics** workbook.
 1. On the **Overview** tab of the workbook, check for **Storage IO Percentage** metrics.
@@ -63,7 +63,7 @@ You can monitor storage IOPS utilization by using [metrics available for Azure D
 
 ### Add metrics for storage I/O percentage and count
 
-1. In the Azure portal, go to your Azure Database for MySQL flexible server.
+1. In the Azure portal, go to your Azure Database for MySQL Flexible Server.
 1. Go to **Monitoring** > **Metrics**.
 1. Select **Add metric**.
 1. In the dropdown list of available metrics, select **Storage IO Percent** and **Storage IO Count**.
@@ -124,13 +124,13 @@ By using pre-provisioned IOPS, you have predictable performance without the need
 
 ### How do I move from pre-provisioned IOPS to autoscale IOPS?
 
-1. In the Azure portal, find the relevant Azure Database for MySQL flexible server.
+1. In the Azure portal, find the relevant Azure Database for MySQL Flexible Server.
 1. Go to the **Settings** pane, and then select **Compute + storage**.
 1. In the **IOPS** section, select **Auto Scale IOPS** and save the settings to apply the modifications.
 
 ### How soon does autoscale IOPS take effect after I make the change?
 
-After you enable autoscale IOPS for your Azure Database for MySQL flexible server and save the settings, the changes take effect immediately after the deployment to the resource finishes successfully. The autoscale IOPS feature is applied to your database without any delay.
+After you enable autoscale IOPS for your Azure Database for MySQL Flexible Server and save the settings, the changes take effect immediately after the deployment to the resource finishes successfully. The autoscale IOPS feature is applied to your database without any delay.
 
 ### How does a point-in-time restore operation affect IOPS usage?
 
