@@ -55,7 +55,7 @@ Azure Database for PostgreSQL flexible server offers three options:
 
   This option allows you to restore your server in a different region in the event of a disaster. It also provides at least 99.99999999999999 percent (16 nines) durability of backup objects over a year. 
   
-  Geo-redundancy is supported for servers hosted in any of the [Azure paired regions](/azure/availability-zones/cross-region-replication-azure). 
+  Geo-redundancy is supported for servers hosted in any of the [Azure paired regions](/azure/reliability/cross-region-replication-azure). 
 
 ## Moving from other backup storage options to geo-redundant backup storage 
 
@@ -124,7 +124,7 @@ To enable geo-redundant backup from the **Compute + storage** pane in the Azure 
 >[!IMPORTANT]
 > Geo-redundant backup can be configured only at the time of server creation. 
 
-After you configure your server with geo-redundant backup, you can restore it to a [geo-paired region](/azure/availability-zones/cross-region-replication-azure). For more information, see the [supported regions](overview.md#azure-regions) for geo-redundant backup.
+After you configure your server with geo-redundant backup, you can restore it to a [geo-paired region](/azure/reliability/cross-region-replication-azure). For more information, see the [supported regions](overview.md#azure-regions) for geo-redundant backup.
 
 When the server is configured with geo-redundant backup, the backup data and transaction logs are copied to the paired region asynchronously through storage replication. After you create a server, wait at least one hour before initiating a geo-restore. That allows the first set of backup data to be replicated to the paired region. 
 
