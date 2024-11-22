@@ -137,6 +137,8 @@ In addition to including or excluding paths for individual properties, you can a
 >[!IMPORTANT]
 > The vector path added to the "excludedPaths" section of the indexing policy to ensure optimized performance for insertion. Not adding the vector path to "excludedPaths" will result in higher RU charge and latency for vector insertions.
 
+> [!IMPORTANT]
+> Currently, vector policies and vector indexes are immutable after creation. To make changes, please create a new collection.
 
 You can define the following types of vector index policies:
 
