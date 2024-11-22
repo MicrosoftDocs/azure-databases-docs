@@ -213,6 +213,9 @@ To learn how to configure vector indexes, see [vector indexing policy examples](
     ORDER BY VectorDistance(c.vector1, c.vector2)
     ```
 
+> [!IMPORTANT]
+> Currently, vector policies and vector indexes are immutable after creation. To make changes, please create a new collection.
+
 ## Index usage
 
 There are five ways that the query engine can evaluate query filters, sorted by most-efficient to least-efficient:

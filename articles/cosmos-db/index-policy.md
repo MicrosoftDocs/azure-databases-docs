@@ -158,6 +158,9 @@ Here are some rules for included and excluded paths precedence in Azure Cosmos D
 | **`quantizedFlat`** | Quantizes (compresses) vectors before storing on the index. This can improve latency and throughput at the cost of a small amount of accuracy. | 4096 |
 | **`diskANN`** | Creates an index based on DiskANN for fast and efficient approximate search. | 4096 |
 
+> [!IMPORTANT]
+> Currently, vector policies and vector indexes are immutable after creation. To make changes, please create a new collection.
+
 A few points to note:
 - The `flat` and `quantizedFlat` index types apply Azure Cosmos DB's index to store and read each vector when performing a vector search. Vector searches with a `flat` index are brute-force searches and produce 100% accuracy or recall. That is, it's guaranteed to find the most similar vectors in the dataset. However, there's a limitation of `505` dimensions for vectors on a flat index.
 
