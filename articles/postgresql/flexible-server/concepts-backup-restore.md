@@ -10,6 +10,7 @@ ms.subservice: flexible-server
 ms.topic: conceptual
 ms.custom:
   - ignite-2023
+  - ignite-2024
 ---
 
 # Backup and restore in Azure Database for PostgreSQL - Flexible Server
@@ -30,9 +31,9 @@ These backup files can't be exported or used to create servers outside Azure Dat
 
 ## Backup frequency
 
-Backups on Azure Database for PostgreSQL flexible server instances are snapshot based. The first snapshot backup is scheduled immediately after a server is created. Snapshot backups are currently taken once daily. If none of the databases in the server receive any further modifications after the last snapshot backup is taken, snapshot backups are suspended until new modifications are made in any of the databases, point at which a new snapshot is immediately taken. **The first snapshot is a full backup and consecutive snapshots are differential backups.**
+Backups on Azure Database for PostgreSQL flexible server instances are snapshot based. The first snapshot backup is scheduled immediately after a server is created. Snapshot backups are currently taken once daily. If no further modifications are made to any databases on the server after the last snapshot backup, snapshot backups are temporarily suspended. As soon as any database on the server is modified, a new snapshot is immediately taken to capture the latest changes. **The first snapshot is a full backup and consecutive snapshots are differential backups.**
 
-Transaction log backups happen at varied frequencies, depending on the workload and when the WAL file is filled and ready to be archived. In general, the delay (recovery point objective, or RPO) can be up to 5 minutes.
+Transaction log backups happen at varied frequencies, depending on the workload and when the WAL file is filled and ready to be archived. In general, the delay RPO (recovery point objective) can be up to 5 minutes.
 
 ## Backup redundancy options
 
@@ -40,7 +41,7 @@ Azure Database for PostgreSQL flexible server stores multiple copies of your bac
 
 Azure Database for PostgreSQL flexible server offers three options: 
 
-- **Zone-redundant backup storage**: This option is automatically chosen for regions that support availability zones. When the backups are stored in zone-redundant backup storage, multiple copies are not only stored within the same availability zone, but also replicated to other availability zones within the same region. 
+- **Zone-redundant backup storage**: This option is automatically chosen for regions that support availability zones. When backups are stored in geo-redundant backup storage, three copies of the data are kept within the region where your server is hosted. Additionally, the data is replicated to a paired region for added protection. 
 
   This option provides backup data availability across availability zones and restricts replication of data to within a country/region to meet data residency requirements. This option provides at least 99.9999999999 percent (12 nines) durability of backup objects over a year.  
 
@@ -54,7 +55,7 @@ Azure Database for PostgreSQL flexible server offers three options:
 
   This option allows you to restore your server in a different region in the event of a disaster. It also provides at least 99.99999999999999 percent (16 nines) durability of backup objects over a year. 
   
-  Geo-redundancy is supported for servers hosted in any of the [Azure paired regions](/azure/availability-zones/cross-region-replication-azure). 
+  Geo-redundancy is supported for servers hosted in any of the [Azure paired regions](/azure/reliability/cross-region-replication-azure). 
 
 ## Moving from other backup storage options to geo-redundant backup storage 
 
@@ -70,9 +71,9 @@ All backups required to perform a PITR within the backup retention period are re
 
 ### Backup storage cost
 
-Azure Database for PostgreSQL flexible server provides up to 100 percent of your provisioned server storage as backup storage at no extra cost. Any additional backup storage that you use is charged in gigabytes per month. 
+Azure Database for PostgreSQL flexible server provides up to 100 percent of your provisioned server storage as backup storage at no extra cost. Any extra backup storage that you use is charged in gigabytes per month. 
 
-For example, if you have provisioned a server with 250 gibibytes (GiB) of storage, then you have 250 GiB of backup storage capacity at no additional charge. If the daily backup usage is 25 GiB, then you can have up to 10 days of free backup storage. Backup storage consumption that exceeds 250 GiB is charged as defined in the [pricing model](https://azure.microsoft.com/pricing/details/postgresql/flexible-server/).
+For example, if you have provisioned a server with 250 gibibytes (GiB) of storage, then you have 250 GiB of backup storage capacity at no more charge. If the daily backup usage is 25 GiB, then you can have up to 10 days of free backup storage. Backup storage consumption that exceeds 250 GiB is charged as defined in the [pricing model](https://azure.microsoft.com/pricing/details/postgresql/flexible-server/).
 
 If you configured your server with geo-redundant backup, the backup data is also copied to the Azure paired region. So, your backup size will be twice the size of the local backup copy. Billing is calculated as *( (2 x local backup size) - provisioned storage size ) x price @ gigabytes per month*. 
 
@@ -123,13 +124,13 @@ To enable geo-redundant backup from the **Compute + storage** pane in the Azure 
 >[!IMPORTANT]
 > Geo-redundant backup can be configured only at the time of server creation. 
 
-After you configure your server with geo-redundant backup, you can restore it to a [geo-paired region](/azure/availability-zones/cross-region-replication-azure). For more information, see the [supported regions](overview.md#azure-regions) for geo-redundant backup.
+After you configure your server with geo-redundant backup, you can restore it to a [geo-paired region](/azure/reliability/cross-region-replication-azure). For more information, see the [supported regions](overview.md#azure-regions) for geo-redundant backup.
 
 When the server is configured with geo-redundant backup, the backup data and transaction logs are copied to the paired region asynchronously through storage replication. After you create a server, wait at least one hour before initiating a geo-restore. That allows the first set of backup data to be replicated to the paired region. 
 
 Later, the transaction logs and the daily backups are asynchronously copied to the paired region. There might be up to one hour of delay in data transmission. So, you can expect up to one hour of RPO when you restore. You can restore only to the last available backup data that's available at the paired region. Currently, PITR of geo-redundant backups is not available.
 
-The estimated time to recover the server (recovery time objective, or RTO) depends on factors like the size of the database, the last database backup time, and the amount of WAL to process until the last received backup data. The overall recovery time usually takes from a few minutes up to a few hours.
+The estimated time to recover the server RTO (recovery time objective) depends on factors like the size of the database, the last database backup time, and the amount of WAL to process until the last received backup data. The overall recovery time usually takes from a few minutes up to a few hours.
 
 During the geo-restore, the server configurations that can be changed include virtual network settings and the ability to remove geo-redundant backup from the restored server. Changing other server configurations -such as compute, storage, or pricing tier (Burstable, General Purpose, or Memory Optimized)- during geo-restore is not supported.
 
@@ -162,7 +163,7 @@ After you restore the server, you can perform the following tasks to get your us
 
 - If the new server is meant to replace the original server, redirect clients and client applications to the new server. Change the server name of your connection string to point to the new server.
 
-- Ensure that appropriate server-level firewall, private endpoints and virtual network rules are in place for user connections. In *public access* network, rules are copied over from the original server, but those might not be the ones required in the restored environment. So, adjust them as per your requirements. Private endpoints are not carried over. Create any private endpoints you may need in the restored server. In *private access* virtual network, the restore doesn't copy over any network infrastructure artifacts from source to restored server networks. Anything related to configuration of VNET, subnets, or Network Security Groups, must be taken care of as a post-restore task.
+- Ensure that appropriate server-level firewall, private endpoints and virtual network rules are in place for user connections. In *public access* network, rules are copied over from the original server, but those might not be the ones required in the restored environment. So, adjust them as per your requirements. Private endpoints are not carried over. Create any private endpoints you may need in the restored server. In *private access* virtual network, the restore doesn't copy over any network infrastructure artifacts from source to restored server networks. Anything related to configuration of VNET(Virtual Network), subnets, or Network Security Groups, must be taken care of as a post-restore task.
   
 - Scale up or scale down the restored server's compute as needed.
 
@@ -174,9 +175,26 @@ After you restore the server, you can perform the following tasks to get your us
 
 - If the source server from which you restored was configured with read replicas, and you want to configure read replicas on the restored server, you can then follow [these steps](./how-to-read-replicas-portal.md).
  
-## Long-term retention (preview)
+## On-demand Backups (preview)
 
-Azure Backup and Azure Database for PostgreSQL flexible server services have built an enterprise-class long-term backup solution for Azure Database for PostgreSQL flexible server instances that retains backups for up to 10 years. You can use long-term retention independently or in addition to the automated backup solution offered by Azure Database for PostgreSQL flexible server, which offers retention of up to 35 days. Automated backups are physical backups suited for operational recoveries, especially when you want to restore from the latest backups. Long-term backups help you with your compliance needs, are more granular, and are taken as logical backups using native pg_dump. In addition to long-term retention, the solution offers the following capabilities:
+Azure Database for PostgreSQL Flexible Server automatically generates storage volume snapshots of your entire database instance, covering all databases, as part of its scheduled backups. Additionally, you can create an on-demand backup whenever needed which is ideal for scenarios such as preparing for a potentially risky operation or performing periodic refreshes outside the usual backup schedule.
+
+On-demand backups can be taken in addition to scheduled automatic backups. These backups are retained according to your backup retention window. You can delete these on-demand backups at any time if they are no longer needed. To initiate an on-demand backup, simply select the database instance you wish to back up and specify a backup name. These backups are stored alongside automated backups, but only on-demand backups can be deleted by users, as automated backups are managed and retained by the Flexible Server service to meet backup retention requirements.
+
+ For more information about performing an on-demand backup, visit the [how-to guide](./how-to-perform-on-demand-backup-portal.md).
+
+
+#### Limitations
+
+On-demand backup feature is currently not supported with the Burstable server compute tier.
+
+#### Known Issues
+
+We are aware of an existing bug that allows taking on-demand backups on Replicas, even though Point-in-Time Restore (PITR) is not supported in this context. This issue will be addressed to ensure that on-demand backups can only be performed on the Primary server.
+
+## Long-term retention
+
+Azure Backup and Azure Database for PostgreSQL flexible server services have built an enterprise-class long-term backup solution for Azure Database for PostgreSQL flexible server instances that retains backups for up to 10 years. You can use long-term retention (LTR) independently or in addition to the automated backup solution offered by Azure Database for PostgreSQL flexible server, which offers retention of up to 35 days. Automated backups are physical backups suited for operational recoveries, especially when you want to restore from the latest backups. Long-term backups help you with your compliance needs, are more granular, and are taken as logical backups using native pg_dump. In addition to long-term retention, the solution offers the following capabilities:
 
 -	Customer-controlled scheduled and on-demand backups at the individual database level.
 -	Central monitoring of all operations and jobs.
@@ -206,21 +224,20 @@ For more information about performing a long term backup, visit the [how-to guid
 
 * **Can I configure automated backups to retain data for the long term?**
   
-    No. Currently, Azure Database for PostgreSQL flexible server supports a maximum of 35 days of retention. You can use manual backups for a long-term retention requirement.
+    No. Currently, Azure Database for PostgreSQL flexible server supports a maximum of 35 days of retention. You can use manual backups for a long-term retention requirement using Azure Backup.
 
 * **How do I manually back up my Azure Database for PostgreSQL flexible server instances?**
   
-    You can manually take a backup by using the PostgreSQL tool [pg_dump](https://www.postgresql.org/docs/current/app-pgdump.html). For examples, see [Migrate your Azure Database for PostgreSQL flexible server database by using dump and restore](../howto-migrate-using-dump-and-restore.md). 
+    You can manually take a physical snapshot using on-demand backup feature, you can also take logical backups using the PostgreSQL tool [pg_dump](https://www.postgresql.org/docs/current/app-pgdump.html). For examples, see [Migrate your Azure Database for PostgreSQL flexible server database by using dump and restore](../howto-migrate-using-dump-and-restore.md). 
     
-    If you want to back up Azure Database for PostgreSQL flexible server to Blob Storage, see [Back up Azure Database for PostgreSQL to Blob Storage](https://techcommunity.microsoft.com/t5/azure-database-for-postgresql/backup-azure-database-for-postgresql-to-a-blob-storage/ba-p/803343) on our tech community blog. 
-
+    
 * **What are the backup windows for my server? Can I customize them?**
   
     Azure manages backup windows, and you can't customize them. The first full snapshot backup is scheduled immediately after a server is created. Subsequent snapshot backups are incremental and occur once a day.
 
 * **Are my backups encrypted?**
   
-    Yes. All Azure Database for PostgreSQL flexible server data, backups, and temporary files that are created during query execution are encrypted through AES 256-bit encryption. Storage encryption is always on and can't be disabled. 
+    Yes. All Azure Database for PostgreSQL flexible server data, backups, and temporary files that are created during query execution are encrypted through  AES (Advanced Encryption Standard) 256-bit encryption. Storage encryption is always on and can't be disabled. 
 
 * **Can I restore a single database or a few databases in a server?**
   

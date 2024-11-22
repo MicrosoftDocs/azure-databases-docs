@@ -1,6 +1,11 @@
 {
     "redirections": [
     {
+        "source_path_from_root": "/articles/mysql/flexible-server/concepts-supported-versions.md",
+        "redirect_url": "/azure/mysql/concepts-version-policy",
+        "redirect_document_id": false
+    },
+    {
         "source_path_from_root": "/articles/mysql/concepts-aad-authentication.md",
         "redirect_url": "/azure/mysql/single-server/concepts-azure-ad-authentication",
         "redirect_document_id": false

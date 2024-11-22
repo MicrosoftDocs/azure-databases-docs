@@ -8,6 +8,8 @@ ms.subservice: nosql
 ms.topic: conceptual
 ms.date: 08/21/2024
 ms.author: mjbrown
+ms.collection:
+  - ce-skilling-ai-copilot
 ---
 
 # Introduction to semantic cache

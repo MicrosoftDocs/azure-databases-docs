@@ -56,6 +56,13 @@
       - name: Bicep
         displayName: Resource Manager, ARM
         href: flexible-server/quickstart-create-server-bicep.md
+    - name: Create an Elastic Cluster
+      items:
+      - name: ARM template
+        displayName: Resource Manager
+        href: flexible-server/quickstart-create-elastic-cluster-arm-template.md
+      - name: Azure portal
+        href: flexible-server/quickstart-create-elastic-cluster-portal.md
     - name: Connect and query
       items:
         - name: Connect to a server in virtual network
@@ -90,6 +97,17 @@
       href: flexible-server/concepts-storage.md
     - name: Scaling resources
       href: flexible-server/concepts-scaling-resources.md
+    - name: Elastic Clusters (preview)
+      displayName: scale-out, sharding
+      items:
+      - name: Overview
+        href: flexible-server/concepts-elastic-clusters.md
+      - name: Sharding models
+        href: flexible-server/concepts-elastic-clusters-sharding-models.md
+      - name: Table types
+        href: flexible-server/concepts-elastic-clusters-table-types.md
+      - name: Limitations
+        href: flexible-server/concepts-elastic-clusters-limitations.yml
     - name: Prepay for reserved capacity
       href: flexible-server/concepts-reserved-pricing.md
     - name: Networking
@@ -260,6 +278,8 @@
         displayName: monitor, metrics
       - name: Workbooks
         href: flexible-server/concepts-workbooks.md 
+      - name: Monitor High-availability
+        href: flexible-server/how-to-monitor-high-availability.md
       - name: Logs
         href: flexible-server/concepts-logging.md
         displayName: monitor, server logs
@@ -267,17 +287,17 @@
         href: flexible-server/concepts-audit.md
       - name: Intelligent performance
         items:
-        - name: Query Store overview
+        - name: Query store overview
           href: flexible-server/concepts-query-store.md
           displayName: performance, optimize, query store
-        - name: Query Store usage scenarios
+        - name: Query store usage scenarios
           href: flexible-server/concepts-query-store-scenarios.md
           displayName: query store, performance, optimize
-        - name: Query Store best practices
+        - name: Query store best practices
           href: flexible-server/concepts-query-store-best-practices.md
         - name: Query Performance Insight
           href: flexible-server/concepts-query-performance-insight.md
-        - name: Index tuning (preview)
+        - name: Index tuning
           href: flexible-server/concepts-index-tuning.md
         - name: Intelligent tuning
           href: flexible-server/concepts-intelligent-tuning.md
@@ -367,6 +387,14 @@
         href: flexible-server/tutorial-webapp-server-vnet.md
       - name: Deploy a Django app on App Service
         href: /azure/app-service/tutorial-python-postgresql-app
+    - name: Build with Elastic Clusters
+      items:
+      - name: Design a multitenant database
+        href: flexible-server/tutorial-multitenant-database.md
+      - name: Design a real-time dashboard
+        href: flexible-server/tutorial-real-time-dashboard.md
+      - name: Design for microservices
+        href: flexible-server/tutorial-microservices.md
   - name: How-to guides
     items:
     - name: Server administration
@@ -401,6 +429,12 @@
           href: flexible-server/how-to-restart-server-portal.md
         - name: Azure CLI
           href: flexible-server/how-to-restart-server-cli.md
+      - name:  On-demand-backup 
+        items:
+        - name: Azure portal
+          href: flexible-server/how-to-perform-on-demand-backup-portal.md
+        - name: Azure CLI
+          href: flexible-server/how-to-perform-on-demand-backup-cli.md
       - name: Restore a server
         items:
         - name: Azure portal
@@ -520,8 +554,12 @@
         href: flexible-server/how-to-read-replicas-virtual-endpoints-terraform.md
   - name: Extensions
     items:
-    - name: Overview
-      href: flexible-server/concepts-extensions.md
+    - name: Allow extensions
+      href: extensions/how-to-allow-extensions.md
+    - name: Extension considerations
+      href: extensions/concepts-extensions-considerations.md
+    - name: Extension versions
+      href: extensions/concepts-extensions-versions.md           
     - name: Azure AI (azure_ai)
       items:
       - name: Overview
@@ -589,10 +627,12 @@
       items:
       - name: Premigration validation
         href: migrate/migration-service/concepts-premigration-migration-service.md
-      - name: User roles and permissions
+      - name: Migration of  roles, ownerships and permissions
         href: migrate/migration-service/concepts-user-roles-migration-service.md
       - name: Runtime Server
         href: migrate/migration-service/concepts-migration-service-runtime-server.md
+      - name: Required User Permissions
+        href: migrate/migration-service/concepts-required-user-permissions.md
       - name: Best practices
         href: migrate/migration-service/best-practices-migration-service-postgresql.md
       - name: Known issues and limitations

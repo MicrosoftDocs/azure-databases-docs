@@ -50,7 +50,7 @@ Azure Cosmos DB for PostgreSQL is available in the following Azure regions:
 | West US 2 | :heavy_check_mark: | :heavy_check_mark: | West Central US |
 | West US 3 | :heavy_check_mark: | :heavy_check_mark: | :x: |
 
-† This Azure region is a [restricted one](/azure/availability-zones/cross-region-replication-azure#azure-paired-regions). To use it, you need to request access to it by opening a [support request](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+† This Azure region is a [restricted one](/azure/reliability/cross-region-replication-azure#azure-paired-regions). To use it, you need to request access to it by opening a [support request](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
 Some of these regions may not be activated on all Azure
 subscriptions. If you want to use a region from the list and don't see it

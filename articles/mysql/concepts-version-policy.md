@@ -10,6 +10,7 @@ ms.subservice: flexible-server
 ms.topic: conceptual
 ms.custom:
   - fasttrack-edit
+  - ignite-2024
 ---
 
 # Azure Database for MySQL version support policy
@@ -28,12 +29,18 @@ Azure Database for MySQL currently supports the following major and minor versio
 | :--- | :--- |
 | MySQL Version 5.7 | [5.7.44](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-44.html) |
 | MySQL Version 8.0 | [8.0.37](https://dev.mysql.com/doc/relnotes/mysql/8.0/en/news-8-0-37.html) |
+| MySQL Version 8.4 | [8.4.2](https://dev.mysql.com/doc/relnotes/mysql/8.4/en/news-8-4-2.html)|
+| MySQL Version 9.1 | [9.1.0](https://dev.mysql.com/doc/relnotes/mysql/9.1/en/news-9-1-0.html) |
 
 Read the version support policy for retired versions in [version support policy documentation.](concepts-version-policy.md#retired-mysql-engine-versions-not-supported-in-azure-database-for-mysql)
 
 ## Major version support
 
 Azure Database for MySQL supports each major version of MySQL from the date Azure begins supporting it until the MySQL community retires it, as provided in the [versioning policy](https://www.mysql.com/support/eol-notice.html).
+
+## Innovation release version support
+
+The MySQL Innovation Release versions are provided to enable access to the latest MySQL features and capabilities. Support for these versions includes core functionalities, but excludes advanced features such as High Availability (HA), replicas, and automated backups. Innovation Release support is limited to the most current version, with previous versions not retained to ensure users have access to the newest advancements. Each Innovation Release server has a 30-day lifecycle from the date of creation, after which it is automatically removed. No monthly maintenance updates are applied during the lifecycle of these versions.
 
 ## Minor version support
 
