@@ -32,7 +32,7 @@ Updates that change cluster internals, such as installing a [new minor PostgreSQ
 
 ### May 2024
 * General availability: [The latest minor PostgreSQL version updates](reference-versions.md#postgresql-versions) (12.19, 13.15, 14.12, 15.7, and 16.3) are now available.
-    * [The last update for PostgreSQL 11](./reference-versions.md#postgresql-version-11-and-older) was released by community in November 2023.
+    * [The last update for PostgreSQL 11](./reference-versions.md#postgresql-version-12-and-older) was released by community in November 2023.
 
 
 ### March 2024
@@ -40,7 +40,7 @@ Updates that change cluster internals, such as installing a [new minor PostgreSQ
 
 ### February 2024
 * General availability: [The latest minor PostgreSQL version updates](reference-versions.md#postgresql-versions) (12.18, 13.14, 14.11, 15.6, and 16.2) are now available.
-    * [The last update for PostgreSQL 11](./reference-versions.md#postgresql-version-11-and-older) was released by community in November 2023.
+    * [The last update for PostgreSQL 11](./reference-versions.md#postgresql-version-12-and-older) was released by community in November 2023.
 * General availability: [Microsoft Entra authentication](./concepts-authentication.md#microsoft-entra-id-authentication-preview) is now supported in addition to Postgres roles in [all supported regions](./resources-regions.md).
 
 ### January 2024
