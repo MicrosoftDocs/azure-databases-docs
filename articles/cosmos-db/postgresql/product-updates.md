@@ -7,7 +7,7 @@ ms.custom: mvc, references_regions
 ms.service: azure-cosmos-db
 ms.subservice: postgresql
 ms.topic: conceptual
-ms.date: 07/07/2024
+ms.date: 11/21/2024
 ---
 
 # Product updates for Azure Cosmos DB for PostgreSQL
@@ -21,6 +21,11 @@ Azure Cosmos DB for PostgreSQL gets updated regularly.
 Updates that don’t directly affect the internals of a cluster are rolled out gradually to [all supported regions](resources-regions.md). Once such an update is rolled out to a region, it's available immediately on all new and existing Azure Cosmos DB for PostgreSQL clusters in that region.
 
 Updates that change cluster internals, such as installing a [new minor PostgreSQL version](https://www.postgresql.org/developer/roadmap/), are delivered to existing clusters as part of the next [scheduled maintenance](concepts-maintenance.md) event. Such updates are available immediately to newly created clusters.
+
+### November 2024
+* Retirement: As of November 21, 2024, PostgreSQL 12 is unsupported by PostgreSQL community.
+    * See [PostgreSQL community versioning policy](https://www.postgresql.org/support/versioning/).
+    * See [restrictions](./reference-versions.md#retired-postgresql-engine-versions-not-supported-in-azure-cosmos-db-for-postgresql) that apply to the retired PostgreSQL major versions in Azure Cosmos DB for PostgreSQL.
 
 ### July 2024
 * [MD5 hashing is disabled](./reference-limits.md#security) in Azure Cosmos DB for PostgreSQL.
