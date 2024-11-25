@@ -88,7 +88,7 @@ Example of how to run pg_repack on a table named info in a public schema within 
 1. Connect to the Azure Database for PostgreSQL flexible server instance. This article uses psql for simplicity.
 
     ```psql
-        psql "host=xxxxxxxxx.postgres.database.azure.com port=5432 dbname=foo user=xxxxxxxxxxxxx password=[my_password] sslmode=require"
+        psql "host=xxxxxxxxx.postgres.database.azure.com port=5432 dbname=foo user=xxxxxxxxxxxxx password=<password> sslmode=require"
     ```
 2. Create the pg_repack extension in the databases intended to be repacked.
 

@@ -9,7 +9,7 @@ ms.subservice: mongodb-vcore
 ms.custom:
   - ignite-2023
 ms.topic: how-to
-ms.date: 10/29/2024
+ms.date: 11/20/2024
 ---
 
 # Restore a cluster in Azure Cosmos DB for MongoDB vCore
@@ -40,7 +40,7 @@ In Azure regions that support availability zones, backup snapshots are stored in
 
 The restore process creates a new cluster with the same configuration in the same Azure region, subscription, and resource group as the original. Follow these steps to restore data.
 
-1. Select an existing Azure Cosmos DB for MongoDB vCore cluster in the subscription where the restore preview is enabled.
+1. Select an existing Azure Cosmos DB for MongoDB vCore cluster.
 1. On the cluster sidebar, under **Settings**, select **Point In Time Restore**.
 1. Select a date and provide a time (in UTC time zone) in the date and time fields.
 1. Enter a cluster name in the **Restore target cluster name** field. 

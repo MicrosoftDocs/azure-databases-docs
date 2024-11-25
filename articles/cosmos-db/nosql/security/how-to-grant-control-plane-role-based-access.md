@@ -24,7 +24,7 @@ Diagram of the sequence of the deployment guide including these locations, in or
 This article walks through the steps to grant an identity access to manage an Azure Cosmos DB for NoSQL account and its resources.
 
 > [!IMPORTANT]
-> The steps in this article only cover control plane access to perform operations on the account itself of any resources in the account's hierarchy. To learn how to manage roles, definitions, and assignments for the control plane, see [grant data plane role-based access](how-to-grant-data-plane-role-based-access.md).
+> The steps in this article only cover control plane access to perform operations on the account itself of any resources in the account's hierarchy. To learn how to manage items and execute queries for the data plane, see [grant data plane role-based access](how-to-grant-data-plane-role-based-access.md).
 
 [!INCLUDE[Grant control plane role-based access](../../includes/grant-control-plane-role-based-access.md)]
 

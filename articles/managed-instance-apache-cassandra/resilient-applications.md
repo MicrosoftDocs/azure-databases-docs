@@ -33,7 +33,7 @@ RTO ("how long you're down in an outage") will be low because the cluster will b
 
 ## Availability zones
 
-Cassandra's masterless architecture brings fault tolerance from the ground up, and Azure Managed Instance for Apache Cassandra provides support for [availability zones](/azure/availability-zones/az-overview#azure-regions-with-availability-zones) in selected regions to enhance resiliency at the infrastructure level. Given a replication factor of 3, availability zone support ensures that each replica is in a different availability zone, thus preventing a zonal outage from impacting your database/application. We recommend enabling availability zones where possible.
+Cassandra's masterless architecture brings fault tolerance from the ground up, and Azure Managed Instance for Apache Cassandra provides support for [availability zones](/azure/reliability/availability-zones-region-support) in selected regions to enhance resiliency at the infrastructure level. Given a replication factor of 3, availability zone support ensures that each replica is in a different availability zone, thus preventing a zonal outage from impacting your database/application. We recommend enabling availability zones where possible.
 
 
 ## Multi-region redundancy 
