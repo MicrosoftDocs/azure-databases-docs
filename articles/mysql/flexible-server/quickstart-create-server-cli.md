@@ -85,12 +85,12 @@ Your server 'serverXXXXXXXXX' is using SKU 'Standard_B1ms' (Paid Tier). For pric
 Creating MySQL database 'flexibleserverdb'...
 Make a note of your password. If you forget your password, reset the password by running 'az mysql flexible-server update -n serverXXXXXXXXX -g groupXXXXXXXXXX -p <new-password>'.
 {
-  "connectionString": "server=serverXXXXXXXXX.mysql.database.azure.com;database=flexibleserverdb;uid=secureusername;pwd=securepasswordstring",
+  "connectionString": "server=<server-name>.mysql.database.azure.com;database=flexibleserverdb;uid=secureusername;pwd=<password>",
   "databaseName": "flexibleserverdb",
   "host": "serverXXXXXXXXX.mysql.database.azure.com",
   "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/groupXXXXXXXXXX/providers/Microsoft.DBforMySQL/flexibleServers/serverXXXXXXXXX",
   "location": "East US 2",
-  "password": "securepasswordstring",
+  "password": "<password>",
   "resourceGroup": "groupXXXXXXXXXX",
   "skuname": "Standard_B1ms",
   "subnetId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/groupXXXXXXXXXX/providers/Microsoft.Network/virtualNetworks/serverXXXXXXXXXVNET/subnets/serverXXXXXXXXXSubnet",

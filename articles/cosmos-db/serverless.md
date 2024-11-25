@@ -65,7 +65,7 @@ You can use the same [chart in Azure Monitor](monitor-request-unit-usage.md). Wh
 
 ## High availability
 
-Azure Cosmos DB serverless extends high availability support with availability zones in [designated regions](/azure/reliability/availability-zones-service-support#azure-regions-with-availability-zone-support). The associated Service Level Agreements (SLAs) are aligned with the [Single-region writes with availability zone](../../articles/cosmos-db/high-availability.md#slas) configuration, ensuring reliability for your deployments.
+Azure Cosmos DB serverless extends high availability support with availability zones in [designated regions](/azure/reliability/availability-zones-region-support). The associated Service Level Agreements (SLAs) are aligned with the [Single-region writes with availability zone](../../articles/cosmos-db/high-availability.md#slas) configuration, ensuring reliability for your deployments.
 
 
 ## Next steps

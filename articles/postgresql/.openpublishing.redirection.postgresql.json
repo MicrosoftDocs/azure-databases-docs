@@ -1854,6 +1854,11 @@
         "source_path_from_root": "/articles/postgresql/flexible-server/reference-pg-azure-storage.md",
         "redirect_url": "/azure/postgresql/flexible-server/how-to-use-pg-azure-storage",
         "redirect_document_id": false
-    }
+    },
+    {
+        "source_path_from_root": "/articles/postgresql/flexible-server/concepts-extensions.md",
+        "redirect_url": "/azure/postgresql/extensions/how-to-allow-extensions",
+        "redirect_document_id": false
+    } 
 ]
 }
