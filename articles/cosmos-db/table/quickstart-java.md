@@ -9,7 +9,7 @@ ms.service: azure-cosmos-db
 ms.subservice: table
 ms.devlang: java
 ms.topic: quickstart-sdk
-ms.date: 11/11/2024
+ms.date: 11/25/2024
 ms.custom: devx-track-java, devx-track-extended-azdevcli
 appliesto:
   - ✅ Table
@@ -98,8 +98,8 @@ The client library is available through Maven, as the `azure-data-tables` packag
 
 | Name | Description |
 | --- | --- |
-| [`TableServiceClient`](/java/api/com.azure.data.tables.tableserviceclient) | This type is the primary client type and is used to manage account-wide metadata or databases. |
-| [`TableClient`](/java/api/com.azure.data.tables.tableclient) | This type represents the client for a table within the account. |
+| [`TableServiceAsyncClient`](/java/api/com.azure.data.tables.tableserviceasyncclient) | This type is the primary client type and is used to manage account-wide metadata or databases. |
+| [`TableAsyncClient`](/java/api/com.azure.data.tables.tableasyncclient) | This type represents the client for a table within the account. |
 
 ## Code examples
 
@@ -116,12 +116,13 @@ The sample code in the template uses a table named `cosmicworks-products`. The `
 This sample creates a new instance of the `TableServiceAsyncClient` class.
 
 ```java
-AzureNamedKeyCredential credential = new AzureNamedKeyCredential("<azure-cosmos-db-table-account-name>", "<credential>");
+DefaultAzureCredential azureTokenCredential = new DefaultAzureCredentialBuilder()
+    .build();
 
-TableServiceClient client = new TableServiceClientBuilder()
+TableServiceAsyncClient client = new TableServiceClientBuilder()
     .endpoint("<azure-cosmos-db-table-account-endpoint>")
     .credential(credential)
-    .buildClient();
+    .buildAsyncClient();
 ```
 
 ### Get a table
@@ -129,7 +130,7 @@ TableServiceClient client = new TableServiceClientBuilder()
 This sample creates an instance of the `TableAsyncClient` class using the `GetTableClient` method of the `TableServiceClient` class.
 
 ```java
-TableClient table = client
+TableAsyncClient table = client
     .getTableClient("<azure-cosmos-db-table-name>");
 ```
 
@@ -148,10 +149,10 @@ TableEntity entity = new TableEntity(partitionKey, rowKey)
         .addProperty("Sale", false);
 ```
 
-Create an entity in the collection using `upsertEntityWithResponse` in the `REPLACE` mode.
+Create an entity in the collection using `upsertEntity`.
 
 ```java
-Response<Void> response = table.upsertEntityWithResponse(entity, TableEntityUpdateMode.REPLACE, null, null);
+Mono<Void> response = table.upsertEntity(entity);
 ```
 
 ### Get an entity
@@ -173,15 +174,16 @@ After you insert an entity, you can also run a query to get all entities that ma
 ListEntitiesOptions options = new ListEntitiesOptions()
     .setFilter("PartitionKey eq 'gear-surf-surfboards'");
 
-PagedIterable<TableEntity> tableEntities = table.listEntities(options, null, null);
+PagedFlux<TableEntity> tableEntities = table.listEntities(options, null, null);
 ```
 
-Parse the paginated results of the query by using a for loop.
+Parse the paginated results of the query by using a subscription.
 
 ```java
-for (TableEntity entity : tableEntities) {
-    // Do something
-}
+tableEntities
+    .DoOnNext(entity -> {
+        // Do something
+    });
 ```
 
 ## Clean up resources
