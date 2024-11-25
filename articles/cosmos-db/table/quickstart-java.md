@@ -1,5 +1,5 @@
 ---
-title: Quickstart - Java client library
+title: Quickstart - Azure SDK for Java
 titleSuffix: Azure Cosmos DB for Table
 description: Deploy a Java web application that uses the Azure SDK for Java to interact with Azure Cosmos DB for Table data in this quickstart.
 author: seesharprun
@@ -9,18 +9,18 @@ ms.service: azure-cosmos-db
 ms.subservice: table
 ms.devlang: java
 ms.topic: quickstart-sdk
-ms.date: 11/07/2024
+ms.date: 11/25/2024
 ms.custom: devx-track-java, devx-track-extended-azdevcli
 appliesto:
   - ✅ Table
 # CustomerIntent: As a developer, I want to learn the basics of the Java library so that I can build applications with Azure Cosmos DB for Table.
 ---
 
-# Quickstart: Azure Cosmos DB for Table library for Java
+# Quickstart: Use Azure Cosmos DB for Table with Azure SDK for Java
 
 [!INCLUDE[Developer Quickstart selector](includes/quickstart/dev-selector.md)]
 
-This quickstart shows how to get started with the Azure Cosmos DB for Table from a Java application. The Azure Cosmos DB for Table is a schemaless data store allowing applications to store structured table data in the cloud. You learn how to create tables, rows, and perform basic tasks within your Azure Cosmos DB resource using the Azure SDK for Java.
+In this quickstart, you deploy a basic Azure Cosmos DB for Table application using the Azure SDK for Java. Azure Cosmos DB for Table is a schemaless data store allowing applications to store structured table data in the cloud. You learn how to create tables, rows, and perform basic tasks within your Azure Cosmos DB resource using the Azure SDK for Java.
 
 [API reference documentation](/java/api/com.azure.data.tables) | [Library source code](https://github.com/Azure/azure-sdk-for-java/tree/main/sdk/tables/azure-data-tables) | [Package (Maven)](https://mvnrepository.com/artifact/com.azure/azure-data-tables) | [Azure Developer CLI](/azure/developer/azure-developer-cli/overview)
 
@@ -74,6 +74,117 @@ Use the Azure Developer CLI (`azd`) to create an Azure Cosmos DB for Table accou
 1. Use the URL in the console to navigate to your web application in the browser. Observe the output of the running app.
 
 :::image type="content" source="media/quickstart-java/running-application.png" alt-text="Screenshot of the running web application.":::
+
+### Install the client library
+
+The client library is available through Maven, as the `azure-data-tables` package.
+
+1. Navigate to the `/src/web` folder and open the **pom.xml** file.
+
+    ```bash
+    cd ./src
+    ```
+
+1. If it doesn't already exist, add an entry for the `azure-data-tables` package.
+
+    ```xml
+    <dependency>
+        <groupId>com.azure</groupId>
+        <artifactId>azure-data-tables</artifactId>
+    </dependency>
+    ```
+
+## Object model
+
+| Name | Description |
+| --- | --- |
+| [`TableServiceAsyncClient`](/java/api/com.azure.data.tables.tableserviceasyncclient) | This type is the primary client type and is used to manage account-wide metadata or databases. |
+| [`TableAsyncClient`](/java/api/com.azure.data.tables.tableasyncclient) | This type represents the client for a table within the account. |
+
+## Code examples
+
+- [Authenticate the client](#authenticate-the-client)
+- [Get a table](#get-a-table)
+- [Create an entity](#create-an-entity)
+- [Get an entity](#get-an-entity)
+- [Query entities](#query-entities)
+
+The sample code in the template uses a table named `cosmicworks-products`. The `cosmicworks-products` table contains details such as name, category, quantity, price, a unique identifier, and a sale flag for each product. The container uses a *unique identifier** as the row key and *category* as a partition key.
+
+### Authenticate the client
+
+This sample creates a new instance of the `TableServiceAsyncClient` class.
+
+```java
+DefaultAzureCredential azureTokenCredential = new DefaultAzureCredentialBuilder()
+    .build();
+
+TableServiceAsyncClient client = new TableServiceClientBuilder()
+    .endpoint("<azure-cosmos-db-table-account-endpoint>")
+    .credential(credential)
+    .buildAsyncClient();
+```
+
+### Get a table
+
+This sample creates an instance of the `TableAsyncClient` class using the `GetTableClient` method of the `TableServiceClient` class.
+
+```java
+TableAsyncClient table = client
+    .getTableClient("<azure-cosmos-db-table-name>");
+```
+
+### Create an entity
+
+The easiest way to create a new entity in a table is to use `createEntity`.
+
+```java
+String rowKey = "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb";
+String partitionKey = "gear-surf-surfboards";
+
+TableEntity entity = new TableEntity(partitionKey, rowKey)
+        .addProperty("Name", "Yamba Surfboard")
+        .addProperty("Quantity", 12)
+        .addProperty("Price", 850.00)
+        .addProperty("Sale", false);
+```
+
+Create an entity in the collection using `upsertEntity`.
+
+```java
+Mono<Void> response = table.upsertEntity(entity);
+```
+
+### Get an entity
+
+You can retrieve a specific entity from a table using `getEntity`.
+
+```java
+String rowKey = "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb";
+String partitionKey = "gear-surf-surfboards";
+
+TableEntity entity = table.getEntity(partitionKey, rowKey);
+```
+
+### Query entities
+
+After you insert an entity, you can also run a query to get all entities that match a specific filter by using `listEntities` and the `ListEntitiesOptions` class. Use the `setFilter` method to specify a string OData filter.
+
+```java
+ListEntitiesOptions options = new ListEntitiesOptions()
+    .setFilter("PartitionKey eq 'gear-surf-surfboards'");
+
+PagedFlux<TableEntity> tableEntities = table.listEntities(options, null, null);
+```
+
+Parse the paginated results of the query by using a subscription.
+
+```java
+tableEntities
+    .DoOnNext(entity -> {
+        // Do something
+    });
+```
 
 ## Clean up resources
 
