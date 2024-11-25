@@ -331,6 +331,8 @@
       href: change-feed-pull-model.md
   - name: Emulator
     href: ../emulator.md
+  - name: Linux emulator (preview)
+    href: ../emulator-linux.md
   - name: Integrated cache
     items:
     - name: Dedicated gateway overview
@@ -904,6 +906,8 @@
         href: ../how-to-configure-vnet-service-endpoint.md
       - name: Configure access from private endpoints
         href: ../how-to-configure-private-endpoints.md
+      - name: Configure Network Security Perimeter
+        href: ../how-to-configure-nsp.md
     - name: Encryption
       items:
       - name: Use Always Encrypted

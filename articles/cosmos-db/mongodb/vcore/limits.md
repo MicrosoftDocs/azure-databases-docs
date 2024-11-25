@@ -5,8 +5,10 @@ author: gahl-levy
 ms.author: gahllevy
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
+ms.custom:
+  - ignite-2024
 ms.topic: conceptual
-ms.date: 10/29/2024
+ms.date: 11/06/2024
 ---
 
 # Service Limits in Azure Cosmos DB for MongoDB vCore
@@ -65,6 +67,7 @@ db.collection.find({ field: "value" }).maxTimeMS(5000)
 - Indexing vectors up to 2,000 dimensions in size.
 - Indexing applies to only one vector per path.
 - Only one index can be created per vector path.
+- `HNSW` and `DiskANN` are available on M40 and above cluster tiers. 
 
 ## Cluster and Shard Limits
 
@@ -72,7 +75,7 @@ db.collection.find({ field: "value" }).maxTimeMS(5000)
 - Maximum: M200 / 64 vCores / 256 GiB RAM per physical shard. [Reach out to our team](mailto:mongodb-feedback@microsoft.com) for higher tiers.
 
 ### Physical shards
-- Maximum: 10 (in preview). [Reach out to our team](mailto:mongodb-feedback@microsoft.com) for more shards.
+- Maximum: 10. [Reach out to our team](mailto:mongodb-feedback@microsoft.com) for more shards.
 
 ### Collection limits
 -	Collections per cluster: 1,000
@@ -95,7 +98,7 @@ The following limitations can be overridden by upgrading to a paid tier
 
 ## Replication and HA (high availability) Limits
 
-### Cross-Region Replication (preview)
+### Cross-Region Replication
 - The following configurations are the same on both primary and replica clusters and can't be changed on the replica cluster:
   - Storage and shard count
   - User accounts

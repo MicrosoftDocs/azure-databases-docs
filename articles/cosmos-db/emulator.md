@@ -5,11 +5,12 @@ description: Use the Azure Cosmos DB local or docker-based emulator to test your
 author: sajeetharan
 ms.author: sasinnat
 ms.service: azure-cosmos-db
+ms.custom:
+  - ignite-2024
 ms.topic: concept-article
-ms.date: 10/09/2024
+ms.date: 11/07/2024
 # CustomerIntent: As a developer, I want to use the Azure Cosmos DB emulator so that I can develop my application against a database during development.
 ---
-
 
 # What is the Azure Cosmos DB emulator?
 
@@ -18,9 +19,8 @@ The Azure Cosmos DB emulator provides a local environment that emulates the Azur
 > [!IMPORTANT]
 > We do not recommend the use of the emulator for production workloads.
 
-> [!Tip] 
+> [!TIP]
 > Visit our new **[Samples Gallery](https://aka.ms/AzureCosmosDB/Gallery)** for the latest samples for building new apps
-
 
 ## Differences between the emulator and cloud service
 
@@ -28,6 +28,8 @@ The emulator provides an environment on your developer workspace that isn't capa
 
 > [!IMPORTANT]
 > The Linux emulator currently doesn't support developer machines running on Apple silicon series or Microsoft ARM chips. A temporary workaround is to install a Windows virtual machine and run the emulator on that platform.
+>
+> Alternatively, you can used the new [Linux-based Azure Cosmos DB emulator (preview)](emulator-linux.md).
 
 - The emulator's **Data Explorer** pane is only supported in the API for NoSQL and API for MongoDB.
 - The emulator only supports **provisioned throughput**. The emulator doesn't support **serverless** throughput.
@@ -56,6 +58,10 @@ Every request made against the emulator must be authenticated using a key over T
 ## Import emulator certificate
 
 In some cases, you may wish to manually import the TLS/SS certificate from the emulator's running container into your host machine. This step avoids bad practices like disabling TLS/SSL validation in the SDK. For more information, see [import certificate](how-to-develop-emulator.md#import-the-emulators-tlsssl-certificate).
+
+## Related content
+
+- [Linux-based Azure Cosmos DB emulator (preview)](emulator-linux.md)
 
 ## Next step
 

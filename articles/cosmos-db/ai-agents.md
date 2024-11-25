@@ -4,6 +4,8 @@ description: Learn about key concepts for agents and step through the implementa
 author: wmwxwa
 ms.author: wangwilliam
 ms.service: azure-cosmos-db
+ms.custom:
+  - ignite-2024
 ms.topic: conceptual
 ms.date: 06/26/2024
 ms.collection:
@@ -169,9 +171,9 @@ In place of all the standalone databases, Azure Cosmos DB can serve as a unified
 
 ### Speed
 
-Azure Cosmos DB provides single-digit millisecond latency. This capability makes it suitable for processes that require rapid data access and management. These processes include caching (both traditional and [semantic caching](https://techcommunity.microsoft.com/t5/azure-architecture-blog/optimize-azure-openai-applications-with-semantic-caching/ba-p/4106867)), transactions, and operational workloads.
+Azure Cosmos DB provides single-digit millisecond latency. This capability makes it suitable for processes that require rapid data access and management. These processes include caching (both traditional and semantic caching, transactions, and operational workloads.
 
-Low latency is crucial for AI agents that need to perform complex reasoning, make real-time decisions, and provide immediate responses. In addition, the service's [use of the DiskANN algorithm](nosql/vector-search.md#enroll-in-the-vector-search-preview-feature) provides accurate and fast vector search with minimal memory consumption.
+Low latency is crucial for AI agents that need to perform complex reasoning, make real-time decisions, and provide immediate responses. In addition, the service's [use of the DiskANN algorithm](nosql/vector-search.md#enable-the-vector-indexing-and-search-feature) provides accurate and fast vector search with minimal memory consumption.
 
 ### Scale
 
@@ -314,7 +316,7 @@ Here's the output of *main.py*:
 
 ### Build the AI travel agent by using Python FastAPI
 
-The AI travel agent is hosted in a back end API through Python FastAPI, which facilitates integration with the front-end user interface. The API project processes agent requests by [grounding](https://techcommunity.microsoft.com/t5/fasttrack-for-azure/grounding-llms/ba-p/3843857) the LLM prompts against the data layer, specifically the vectors and documents in Azure Cosmos DB.
+The AI travel agent is hosted in a back end API through Python FastAPI, which facilitates integration with the front-end user interface. The API project processes agent requests by grounding the LLM prompts against the data layer, specifically the vectors and documents in Azure Cosmos DB.
 
 The agent makes use of various tools, particularly the Python functions provided at the API service layer. This article focuses on the code necessary for AI agents within the API code.
 

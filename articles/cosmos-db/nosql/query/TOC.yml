@@ -7,6 +7,24 @@
       href: how-to-enable-use-copilot.md
     - name: Copilot transparency FAQ
       href: ../../copilot-faq.yml
+- name: Full text & hybrid search
+  items:
+    - name: Full text search overview
+      href: ../../gen-ai/full-text-search.md
+    - name: FullTextContains
+      href: fulltextcontains.md
+    - name: FullTextContainsAll
+      href: fulltextcontainsall.md
+    - name: FullTextContainsAny
+      href: fulltextcontainsany.md
+    - name: FullTextScore
+      href: fulltextscore.md
+    - name: ORDER BY RANK
+      href: order-by-rank.md  
+    - name: Hybrid search overview
+      href: ../../gen-ai/hybrid-search.md
+    - name: RRF
+      href: rrf.md
 - name: Clauses
   items:
     - name: SELECT
@@ -21,6 +39,9 @@
     - name: ORDER BY
       displayName: order by, order by clause
       href: order-by.md
+    - name: ORDER BY RANK
+      displayName: order by rank, order by rank clause
+      href: order-by-rank.md
     - name: GROUP BY
       displayName: group by clause
       href: group-by.md
@@ -176,6 +197,20 @@
         - name: TimestampToDateTime
           displayName: TimestampToDateTime, timestamp to date time, date and time functions, datetime, timestamp
           href: timestamptodatetime.md
+    - name: Full Text Search functions
+      items:
+        - name: FullTextContains
+          displayName: FullTextContains function
+          href: fulltextcontains.md
+        - name: FullTextContainsAll
+          displayName: FullTextContainsAll function
+          href: fulltextcontainsall.md
+        - name: FullTextContainsAny
+          displayName: FullTextContainsAny function
+          href: fulltextcontainsany.md
+        - name: FullTextScore
+          displayName: FullTextScore function
+          href: fulltextscore.md
     - name: Item functions
       items:
         - name: DocumentId

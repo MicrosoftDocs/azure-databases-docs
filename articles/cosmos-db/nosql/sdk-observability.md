@@ -4,7 +4,7 @@ description: Learn how to monitor requests made using the Azure Cosmos DB SDKs w
 author: jcocchi
 ms.service: azure-cosmos-db
 ms.subservice: nosql
-ms.custom: build-2023
+ms.custom: build-2023, ignite-2024
 ms.topic: how-to
 ms.date: 02/27/2024
 ms.author: jucocchi
@@ -109,11 +109,7 @@ In addition to getting diagnostic logs for failed requests, you can configure di
 
 ## Configure OpenTelemetry
 
-This section describes the configuration required for Azure Cosmos DB Java SDK and .NET SDKs. 
-
-### [.NET](#tab/dotnet)
-
-To use OpenTelemetry with the Azure Cosmos DB .NET SDK, add the `Azure.Cosmos.Operation` source to your trace provider. OpenTelemetry is compatible with many exporters that can ingest your data. The following sample uses the `Azure Monitor OpenTelemetry Exporter`, but you can choose to configure any exporter you wish. Depending on your chosen exporter, you might see a delay ingesting data of up to a few minutes.
+To use OpenTelemetry with the Azure Cosmos DB SDKs, add the `Azure.Cosmos.Operation` source to your trace provider. OpenTelemetry is compatible with many exporters that can ingest your data. The following sample uses the `Azure Monitor OpenTelemetry Exporter`, but you can choose to configure any exporter you wish. Depending on your chosen exporter, you might see a delay ingesting data of up to a few minutes.
 
 > [!TIP]
 > If you use the `Azure.Monitor.OpenTelemetry.Exporter` package, ensure you're using version >= `1.0.0-beta.11`.
@@ -123,7 +119,7 @@ This sample shows how to configure OpenTelemetry for a .NET console app. See the
 
 [!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/OpenTelemetry/Program.cs?name=SetUpOpenTelemetry)]
 
-#### Configure the Application Insights SDK
+## Configure the Application Insights SDK
 
 There are many different ways to configure Application Insights depending on the language your application is written in and your compute environment. For more information, see the [Application Insights documentation](/azure/azure-monitor/app/app-insights-overview#how-do-i-use-application-insights). Ingestion of data into Application Insights can take up to a few minutes.
 
@@ -137,16 +133,6 @@ The following sample shows how to configure Application Insights for a .NET cons
 Once trace data is ingested into Application Insights, you can visualize it in the Azure portal to understand the request flow in your application. Here's an example of trace data from a cross partition query in the transaction search in the left navigation of the Azure portal.
 
 :::image type="content" source="./media/sdk-observability/app-insights-integration.png" lightbox="./media/sdk-observability/app-insights-integration.png" alt-text="Screenshot of distributed tracing of an Azure Cosmos DB cross-partition query in the Application Insights transaction search." border="true":::
-
-### [Java](#tab/java)
-
-1. Download the application insights jar file from the releases directory [here](https://github.com/microsoft/ApplicationInsights-Java/releases).
-1. Point your JVM to the jar file by adding -javaagent:"path/to/applicationinsights-agent-x.x.xx.jar" to your application's JVM args.
-1. Set an environment variable with your Application Insights connection string
-   ```shell
-   APPLICATIONINSIGHTS_CONNECTION_STRING=<Your Connection String>
-   ```
----
 
 ## Next Steps
 
