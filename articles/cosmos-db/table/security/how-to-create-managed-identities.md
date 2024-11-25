@@ -8,7 +8,7 @@ ms.reviewer: stefarroyo
 ms.service: azure-cosmos-db
 ms.subservice: table
 ms.topic: how-to
-ms.date: 10/24/2024
+ms.date: 11/25/2024
 ms.custom: subject-msia
 zone_pivot_groups: azure-interface-portal-cli-powershell-bicep
 #Customer Intent: As a security user, I want to create managed identities for use with Azure hosting services, so that my developer team can write portable authentication code for their client.

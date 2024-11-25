@@ -8,7 +8,7 @@ ms.reviewer: iriaosara
 ms.service: azure-cosmos-db
 ms.subservice: table
 ms.topic: how-to
-ms.date: 10/24/2024
+ms.date: 11/25/2024
 zone_pivot_groups: azure-interface-cli-powershell-bicep
 #Customer Intent: As a security user, I want to disable key-based auth in an Azure Cosmos DB for Table account, so that my developers or applications can no longer access the account in an insecure manner.
 ---

@@ -8,7 +8,7 @@ ms.reviewer: stefarroyo
 ms.service: azure-cosmos-db
 ms.subservice: table
 ms.topic: reference
-ms.date: 10/24/2024
+ms.date: 11/25/2024
 ---
 
 # Azure Cosmos DB for Table data plane actions reference (preview)

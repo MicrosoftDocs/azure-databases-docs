@@ -8,7 +8,7 @@ ms.reviewer: iriaosara
 ms.service: azure-cosmos-db
 ms.subservice: table
 ms.topic: how-to
-ms.date: 10/24/2024
+ms.date: 11/25/2024
 zone_pivot_groups: azure-interface-portal-cli-powershell-bicep
 #Customer Intent: As a security user, I want to grant an identity control-plane access to Azure Cosmos DB for Table, so that my developer team can use the SDK of their choice with minimal code change.
 ---
