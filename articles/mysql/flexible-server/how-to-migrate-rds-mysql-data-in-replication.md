@@ -12,9 +12,7 @@ ms.topic: how-to
 
 # Migrate Amazon RDS for MySQL to Azure Database for MySQL using data-in replication
 
-
-
-> [!NOTE]  
+> [!NOTE]
 > This article contains references to the term *slave*, a term that Microsoft no longer uses. When the term is removed from the software, we'll remove it from this article.
 
 You can use methods such as MySQL dump and restore, MySQL Workbench Export and Import, or Azure Database Migration Service to migrate your MySQL databases to Azure Database for MySQL Flexible Server. You can migrate your workloads with minimum downtime by using a combination of open-source tools such as mysqldump or mydumper and myloader with Data-in Replication.
@@ -239,7 +237,6 @@ To ensure a successful cutover:
 
 At this point, the migration is complete. Your applications are connected to the server running Azure Database for MySQL Flexible Server.
 
-## Next steps
+## Related content
 
 - For more information about migrating databases to Azure Database for MySQL Flexible Server, see the [Database Migration Guide](https://github.com/Azure/azure-mysql/tree/master/MigrationGuide).
-- View the video [Easily migrate MySQL/PostgreSQL apps to Azure managed service](https://medius.studios.ms/Embed/Video/THR2201?sid=THR2201). It contains a demo that shows how to migrate MySQL apps to Azure Database for MySQL Flexible Server.
