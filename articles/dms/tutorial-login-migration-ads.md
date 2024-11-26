@@ -5,7 +5,7 @@ description: Learn how to migrate on-premises SQL Server logins (preview) to Azu
 author: abhims14
 ms.author: abhishekum
 ms.reviewer: randolphwest
-ms.date: 09/18/2024
+ms.date: 11/26/2024
 ms.service: azure-database-migration-service
 ms.topic: tutorial
 ms.collection:
@@ -62,7 +62,7 @@ Before you begin the tutorial:
 
   Nevertheless, the login migration process can be performed at any time, to update the user mapping synchronization for recently migrated databases.
 
-- For Windows accounts, ensure that the target SQL managed instance has Microsoft Entra read access. This option can be configured via the Azure portal by a user with the Global Administrator role. For more information, see [Provision Microsoft Entra admin (SQL Managed Instance)](/azure/azure-sql/database/authentication-aad-configure#provision-azure-ad-admin-sql-managed-instance).
+- For Windows accounts, ensure that the target SQL managed instance has Microsoft Entra read access. This option can be configured via the Azure portal by a user with the Privileged Role Administrator role. For more information, see [Provision Microsoft Entra admin (SQL Managed Instance)](/azure/azure-sql/database/authentication-aad-configure#provision-azure-ad-admin-sql-managed-instance).
 
   Domain federation between local Active Directory Domain Services (AD DS) and Microsoft Entra ID has to be set up by an administrator. This configuration is required so that the on-premises Windows users can be synced with the company Microsoft Entra ID. The login migrations process would then be able to create an external login for the corresponding Microsoft Entra user in the target managed instance.
 
