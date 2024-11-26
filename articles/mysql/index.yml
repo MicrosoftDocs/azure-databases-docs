@@ -59,7 +59,7 @@ landingContent:
       - linkListType: how-to-guide
         links:
         - text: Connect and query reference guide
-          url:  flexible-server/how-to-connect-overview-flexible-server.md
+          url:  flexible-server/how-to-connect-tls-ssl.md
       - linkListType: quickstart
         links:
           - text: Connect using MySQL Workbench
