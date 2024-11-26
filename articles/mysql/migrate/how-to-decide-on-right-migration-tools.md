@@ -1,18 +1,16 @@
 ---
-title: Select the right tools for migration to Azure Database for MySQL
+title: Select the Right Tools for Migration to Azure Database for MySQL
 description: "This article provides a decision table, which helps customers in picking the right tools for migrating into Azure Database for MySQL"
 author: aditivgupta
 ms.author: adig
 ms.reviewer: maghan
-ms.date: 05/21/2024
+ms.date: 11/26/2024
 ms.service: azure-database-mysql
 ms.subservice: single-server
 ms.topic: how-to
 ---
 
 # Select the right tools for migration to Azure Database for MySQL
-
-[!INCLUDE [applies-to-mysql-single-flexible-server](../includes/applies-to-mysql-single-flexible-server.md)]
 
 Migrations are multi-step projects that can be tough to complete. Migrating database servers across platforms involves more than data and schema migration. There are also several other components, such as server configuration parameters, networking, access control rules, etc., to move. These are required to ensure that the functionality of the database server in the new target platform mimics the source.
 

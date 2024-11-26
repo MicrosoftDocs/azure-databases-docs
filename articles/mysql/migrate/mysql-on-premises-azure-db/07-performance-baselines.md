@@ -1,18 +1,16 @@
 ---
-title: "Migrate MySQL on-premises to Azure Database for MySQL: Performance Baselines"
+title: "Migrate MySQL On-Premises to Azure Database for MySQL: Performance Baselines"
 description: "Understanding the existing MySQL workload is one of the best investments that can be made to ensure a successful migration."
 author: SudheeshGH
 ms.author: sunaray
 ms.reviewer: maghan
-ms.date: 05/21/2024
+ms.date: 11/26/2024
 ms.service: azure-database-mysql
 ms.subservice: migration-guide
 ms.topic: how-to
 ---
 
 # Migrate MySQL on-premises to Azure Database for MySQL: Performance Baselines
-
-[!INCLUDE [applies-to-mysql-single-flexible-server](../../includes/applies-to-mysql-single-flexible-server.md)]
 
 ## Prerequisites
 

@@ -1,18 +1,16 @@
 ---
-title: Migrate large databases to Azure Database for MySQL using mydumper/myloader
+title: Migrate Large Databases to Azure Database for MySQL Using Mydumper/myloader
 description: This article explains two common ways to back up and restore databases in your Azure Database for MySQL, using tool mydumper/myloader
 author: SudheeshGH
 ms.author: sunaray
 ms.reviewer: maghan
-ms.date: 05/21/2024
+ms.date: 11/26/2024
 ms.service: azure-database-mysql
 ms.subservice: single-server
 ms.topic: conceptual
 ---
 
 # Migrate large databases to Azure Database for MySQL using mydumper/myloader
-
-[!INCLUDE [applies-to-mysql-single-flexible-server](../includes/applies-to-mysql-single-flexible-server.md)]
 
 Azure Database for MySQL is a managed service that you use to run, manage, and scale highly available MySQL databases in the cloud. To migrate MySQL databases larger than 1 TB to Azure Database for MySQL, consider using community tools such as [mydumper/myloader](https://centminmod.com/mydumper.html), which provide the following benefits:
 

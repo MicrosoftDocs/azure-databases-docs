@@ -1,19 +1,19 @@
 ---
-title: "Migrate MySQL on-premises to Azure Database for MySQL: Data Migration with MySQL Workbench"
+title: "Migrate MySQL On-Premises to Azure Database for MySQL: Data Migration With MySQL Workbench"
 description: "Follow all the steps in the Setup guide to create an environment to support the following steps."
 author: SudheeshGH
 ms.author: sunaray
 ms.reviewer: maghan
-ms.date: 05/21/2024
+ms.date: 11/26/2024
 ms.service: azure-database-mysql
 ms.subservice: migration-guide
 ms.topic: how-to
-ms.custom: devx-track-extended-java, devx-track-azurepowershell
+ms.custom:
+  - devx-track-extended-java
+  - devx-track-azurepowershell
 ---
 
 # Migrate MySQL on-premises to Azure Database for MySQL: Data Migration with MySQL Workbench
-
-[!INCLUDE [applies-to-mysql-single-flexible-server](../../includes/applies-to-mysql-single-flexible-server.md)]
 
 ## Prerequisites
 
@@ -69,7 +69,7 @@ To support the migration, set the target MySQL instance parameters to allow for 
 
 - `max\_connections` - If using a tool that generates multiple threads to increase throughput, increase the connections to support that tool. Default is `151`, max is `5000`.
 
-    > [!NOTE]
+    > [!NOTE]  
     > Take care when performing scaling. Some operations can't be undone, such as storage scaling.
 
 These settings can be updated using the Azure PowerShell cmdlets below:
@@ -113,7 +113,7 @@ With the database objects and users from the source system migrated, the migrati
 
 - Also, select the **Include Create Schema** checkbox. Refer to the image below to observe the correct mysqldump configuration.
 
-    :::image type="content" source="media/09-data-migration-with-mysql-workbench/image6.jpg" alt-text="Screenshot of the include create schema." lightbox="media/09-data-migration-with-mysql-workbench/image6.jpg":::
+    :::image type="content" source="media/09-data-migration-with-mysql-workbench/image6.jpg" alt-text="Screenshot of the include create schema.":::
 
     **Test**
 
@@ -131,7 +131,7 @@ With the database objects and users from the source system migrated, the migrati
 
 - Find any `DEFINER` statements and either change to a valid user or remove them completely.
 
-> [!NOTE]
+> [!NOTE]  
 > This can be done by passing the `--skip-definer` in the mysqldump command. This is not an option in the MySQL Workbench; therefore, the lines need to be manually removed in the export commands. Although we point out four items to remove here, there can be other items that could fail when migrating from one MySQL version to another (such as new reserved words).
 
 - Find `SET GLOBAL` statements and either change to a valid user or remove them completely.
@@ -154,7 +154,7 @@ With the database objects and users from the source system migrated, the migrati
 
     - Select **OK**.
 
-        :::image type="content" source="media/09-data-migration-with-mysql-workbench/image8.jpg" alt-text="Screenshot of the MySQL connection dialog box." lightbox="media/09-data-migration-with-mysql-workbench/image8.jpg":::
+        :::image type="content" source="media/09-data-migration-with-mysql-workbench/image8.jpg" alt-text="Screenshot of the MySQL connection dialog box.":::
 
         **MySQL connection dialog box is displayed.**
 
@@ -180,7 +180,7 @@ With the database objects and users from the source system migrated, the migrati
 
 The following parameters can be changed on the Azure Database for MySQL target instance. These parameters can be set through the Azure portal or by using the [Azure PowerShell for MySQL cmdlets.](../../howto-configure-server-parameters-using-powershell.md)
 
-```
+```sql
 $rgName = "YourRGName";
 $serverName = "servername";
 Update-AzMySqlConfiguration -Name max\_allowed\_packet -ResourceGroupName
@@ -209,7 +209,7 @@ az webapp config appsettings set -g $rgName -n $app_name
 
 - Restart the App Service API
 
-```
+```azurecli
 az webapp restart -g $rgName -n $app\_name
 ```
 You've successfully completed an on-premises to Azure Database for MySQL migration\!

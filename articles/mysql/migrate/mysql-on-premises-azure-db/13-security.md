@@ -1,18 +1,16 @@
 ---
-title: "Migrate MySQL on-premises to Azure Database for MySQL: Security"
+title: "Migrate MySQL On-Premises to Azure Database for MySQL: Security"
 description: "Moving to a cloud-based service doesn’t mean the entire internet has access to it always."
 author: SudheeshGH
 ms.author: sunaray
 ms.reviewer: maghan
-ms.date: 05/21/2024
+ms.date: 11/26/2024
 ms.service: azure-database-mysql
 ms.subservice: migration-guide
 ms.topic: how-to
 ---
 
 # Migrate MySQL on-premises to Azure Database for MySQL: Security
-
-[!INCLUDE [applies-to-mysql-single-flexible-server](../../includes/applies-to-mysql-single-flexible-server.md)]
 
 ## Prerequisites
 
@@ -41,7 +39,7 @@ MySQL has a robust built-in audit log feature. By default, this [audit log featu
 
 To query for user connection-related events, run the following KQL query:
 
-```
+```bash
 AzureDiagnostics
 | where ResourceProvider =="MICROSOFT.DBFORMYSQL"
 | where Category == 'MySqlAuditLogs' and event\_class\_s == "connection\_log"

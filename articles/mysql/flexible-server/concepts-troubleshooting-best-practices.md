@@ -12,8 +12,6 @@ ms.topic: conceptual
 
 # Best practices for troubleshooting Azure Database for MySQL - Flexible Server
 
-
-
 Use the following sections to keep your Azure Database for MySQL flexible server databases running smoothly and use this information as guiding principles for ensuring that the schemas are designed optimally and provide the best performance for your applications.
 
 ## Check the number of indexes

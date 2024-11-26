@@ -1,18 +1,16 @@
 ---
-title: "Migrate MySQL on-premises to Azure Database for MySQL: Migration Methods"
+title: "Migrate MySQL On-Premises to Azure Database for MySQL: Migration Methods"
 description: "Getting the data from the source to target will require using tools or features of MySQL to accomplish the migration."
 author: SudheeshGH
 ms.author: sunaray
 ms.reviewer: maghan
-ms.date: 05/21/2024
+ms.date: 11/26/2024
 ms.service: azure-database-mysql
 ms.subservice: migration-guide
 ms.topic: how-to
 ---
 
 # Migrate MySQL on-premises to Azure Database for MySQL: Migration Methods
-
-[!INCLUDE [applies-to-mysql-single-flexible-server](../../includes/applies-to-mysql-single-flexible-server.md)]
 
 ## Prerequisites
 

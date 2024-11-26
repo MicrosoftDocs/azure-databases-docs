@@ -1,18 +1,16 @@
 ---
-title: "Migrate MySQL on-premises to Azure Database for MySQL: Assessment"
+title: "Migrate MySQL On-Premises to Azure Database for MySQL: Assessment"
 description: "Before jumping right into migrating a MySQL workload, there's a fair amount of due diligence that must be performed."
 author: SudheeshGH
 ms.author: sunaray
 ms.reviewer: maghan
-ms.date: 05/21/2024
+ms.date: 11/26/2024
 ms.service: azure-database-mysql
 ms.subservice: migration-guide
 ms.topic: how-to
 ---
 
 # Migrate MySQL on-premises to Azure Database for MySQL: Assessment
-
-[!INCLUDE [applies-to-mysql-single-flexible-server](../../includes/applies-to-mysql-single-flexible-server.md)]
 
 ## Prerequisites
 
@@ -76,7 +74,7 @@ The MyISAM database and tables needs to be converted to InnoDB tables. After con
 
 To find useful table information, use this query:
 
-```dotnetcli
+```sql
     SELECT
         tab.table_schema,
         tab.table_name,
@@ -102,7 +100,7 @@ schema', 'sys')
 
 To convert a table from MyISAM to InnoDB, run the following:
 
-```
+```sql
 ALTER TABLE {table\_name} ENGINE=InnoDB;
 ```
 

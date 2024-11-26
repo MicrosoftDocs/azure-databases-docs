@@ -1,18 +1,16 @@
 ---
-title: "Migrate MySQL on-premises to Azure Database for MySQL: Post Migration Management"
+title: "Migrate MySQL On-Premises to Azure Database for MySQL: Post Migration Management"
 description: "Once the migration has been successfully completed, the next phase it to manage the new cloud-based data workload resources."
 author: SudheeshGH
 ms.author: sunaray
 ms.reviewer: maghan
-ms.date: 05/21/2024
+ms.date: 11/26/2024
 ms.service: azure-database-mysql
 ms.subservice: migration-guide
 ms.topic: how-to
 ---
 
 # Migrate MySQL on-premises to Azure Database for MySQL: Post Migration Management
-
-[!INCLUDE [applies-to-mysql-single-flexible-server](../../includes/applies-to-mysql-single-flexible-server.md)]
 
 ## Prerequisites
 
@@ -32,7 +30,7 @@ Once log data is flowing, use the [Kusto Query Language (KQL)](/azure/data-explo
 
 For example, to get the memory usage of the Azure Database for MySQL:
 
-```
+```bash
 AzureMetrics
 | where TimeGenerated \> ago(15m)
 | limit 10
@@ -43,7 +41,7 @@ AzureMetrics
 ```
 To get the CPU usage:
 
-```
+```bash
 AzureMetrics
 | where TimeGenerated \> ago(15m)
 | limit 10

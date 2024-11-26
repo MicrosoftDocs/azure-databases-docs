@@ -1,18 +1,16 @@
 ---
-title: "Migrate MySQL on-premises to Azure Database for MySQL: Data Migration"
+title: "Migrate MySQL On-Premises to Azure Database for MySQL: Data Migration"
 description: "As a prudent step before upgrade or migrate data, export the database before the upgrade using MySQL Workbench or manually via the mysqldump command."
 author: SudheeshGH
 ms.author: sunaray
 ms.reviewer: maghan
-ms.date: 05/21/2024
+ms.date: 11/26/2024
 ms.service: azure-database-mysql
 ms.subservice: migration-guide
 ms.topic: how-to
 ---
 
 # Migrate MySQL on-premises to Azure Database for MySQL: Data Migration
-
-[!INCLUDE [applies-to-mysql-single-flexible-server](../../includes/applies-to-mysql-single-flexible-server.md)]
 
 ## Prerequisites
 
@@ -249,11 +247,11 @@ CALL Migration_PerformInventory('reg_app');
 
   - Calling this procedure on the source DB reveals the following (truncated output):
 
-:::image type="content" source="media/08-data-migration/image4.jpg" alt-text="Screenshot of truncated output." lightbox="media/08-data-migration/image4.jpg":::
+:::image type="content" source="media/08-data-migration/image4.jpg" alt-text="Screenshot of truncated output.":::
 
   - The target database procedure result should resemble the image below after completing the migration. Notice there are no functions in the DB.Functions were eliminated before the migration.
 
-:::image type="content" source="media/08-data-migration/image5.jpg" alt-text="Screenshot of DB Functions." lightbox="media/08-data-migration/image5.jpg":::
+:::image type="content" source="media/08-data-migration/image5.jpg" alt-text="Screenshot of DB Functions.":::
 
 ## Users and permissions
 
