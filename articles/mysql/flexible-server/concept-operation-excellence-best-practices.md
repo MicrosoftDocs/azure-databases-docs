@@ -12,9 +12,7 @@ ms.topic: conceptual
 
 # Best practices for server operations on Azure Database for MySQL - Flexible Server
 
-[!INCLUDE[applies-to-mysql-single-flexible-server](../includes/applies-to-mysql-single-flexible-server.md)]
 
-[!INCLUDE[azure-database-for-mysql-single-server-deprecation](~/reusable-content/ce-skilling/azure/includes/mysql/includes/azure-database-for-mysql-single-server-deprecation.md)]
 
 Learn about the best practices for working with Azure Database for MySQL Flexible Server. As we add new capabilities to the platform, we continue to focus on refining the best practices detailed in this section.
 

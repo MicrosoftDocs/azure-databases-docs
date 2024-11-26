@@ -12,9 +12,7 @@ ms.topic: conceptual
 
 # Prepay for Azure Database for MySQL - Flexible Server compute resources with reserved instances
 
-[!INCLUDE[applies-to-mysql-single-flexible-server](../includes/applies-to-mysql-single-flexible-server.md)]
 
-[!INCLUDE[azure-database-for-mysql-single-server-deprecation](~/reusable-content/ce-skilling/azure/includes/mysql/includes/azure-database-for-mysql-single-server-deprecation.md)]
 
 Azure Database for MySQL Flexible Server now helps you save money by prepaying for compute resources compared to pay-as-you-go prices. With Azure Database for MySQL Flexible Server reserved instances, you make an upfront commitment on Azure Database for MySQL Flexible Server for a one or three year period to get a significant discount on the compute costs. To purchase Azure Database for MySQL Flexible Server reserved capacity, you need to specify the Azure region, deployment type, performance tier, and term.
 

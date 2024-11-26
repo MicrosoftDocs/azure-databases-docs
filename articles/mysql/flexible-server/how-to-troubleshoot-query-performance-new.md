@@ -12,9 +12,7 @@ ms.topic: troubleshooting
 
 # Troubleshoot query performance in Azure Database for MySQL - Flexible Server
 
-[!INCLUDE[applies-to-mysql-single-flexible-server](../includes/applies-to-mysql-single-flexible-server.md)]
 
-[!INCLUDE[azure-database-for-mysql-single-server-deprecation](~/reusable-content/ce-skilling/azure/includes/mysql/includes/azure-database-for-mysql-single-server-deprecation.md)]
 
 Query performance can be impacted by multiple factors, so it’s first important to look at the scope of the symptoms you’re experiencing in your Azure Database for MySQL Flexible Server instance. For example, is query performance slow for:
 

@@ -14,10 +14,6 @@ ms.custom:
 
 # Troubleshoot errors commonly encountered during or post migration to Azure Database for MySQL - Flexible Server
 
-[!INCLUDE [applies-to-mysql-single-flexible-server](../includes/applies-to-mysql-single-flexible-server.md)]
-
-[!INCLUDE [azure-database-for-mysql-single-server-deprecation](~/reusable-content/ce-skilling/azure/includes/mysql/includes/azure-database-for-mysql-single-server-deprecation.md)]
-
 Azure Database for MySQL Flexible Server is a fully managed service powered by the community version of MySQL. The MySQL experience in a managed service environment might differ from running MySQL in your own environment. In this article, you'll see some of the common errors users might encounter while migrating to or developing on Azure Database for MySQL Flexible Server for the first time.
 
 ## Common Connection Errors
@@ -55,7 +51,7 @@ BEGIN
 END;
 ```
 
-**Resolution**: To resolve the error, set `log_bin_trust_function_creators` to 1 from [server parameters](../single-server/how-to-server-parameters.md) blade in portal, execute the DDL statements or import the schema to create the desired objects. You can continue to maintain `log_bin_trust_function_creators` to 1 for your server to avoid the error in future. Our recommendation is to set `log_bin_trust_function_creators` as the security risk highlighted in [MySQL community documentation](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators) is minimal in Azure Database for MySQL Flexible Server as bin log isn't exposed to any threats.
+**Resolution**: To resolve the error, set `log_bin_trust_function_creators` to 1, execute the DDL statements or import the schema to create the desired objects. You can continue to maintain `log_bin_trust_function_creators` to 1 for your server to avoid the error in future. Our recommendation is to set `log_bin_trust_function_creators` as the security risk highlighted in [MySQL community documentation](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators) is minimal in Azure Database for MySQL Flexible Server as bin log isn't exposed to any threats.
 
 #### ERROR 1227 (42000) at line 101: Access denied; you need (at least one of) the SUPER privilege(s) for this operation. Operation failed with exitcode 1
 
@@ -126,8 +122,6 @@ The above error occurs if:
   ```sql
   select user from mysql.user;
   ```
-
-- If you can't sign in to the Azure Database for MySQL Flexible Server instance to execute the above query itself, we recommend you to [reset the admin password using Azure portal](../single-server/how-to-create-manage-server-portal.md). The reset password option from Azure portal will help recreate the user, reset the password, and restore the admin permissions, which will allow you to sign in using the server admin and perform further operations.
 
 ## Related content
 

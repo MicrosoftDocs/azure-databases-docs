@@ -16,9 +16,7 @@ ms.custom:
 
 # Quickstart: Use GitHub Actions to connect to Azure Database for MySQL - Flexible Server
 
-[!INCLUDE[applies-to-mysql-single-flexible-server](../includes/applies-to-mysql-single-flexible-server.md)]
 
-[!INCLUDE[azure-database-for-mysql-single-server-deprecation](~/reusable-content/ce-skilling/azure/includes/mysql/includes/azure-database-for-mysql-single-server-deprecation.md)]
 
 Get started with [GitHub Actions](https://docs.github.com/en/actions) by using a workflow to deploy database updates to [Azure Database for MySQL flexible server](https://azure.microsoft.com/services/mysql/).
 

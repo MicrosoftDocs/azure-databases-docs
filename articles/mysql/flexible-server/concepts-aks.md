@@ -12,9 +12,7 @@ ms.topic: conceptual
 
 # Best practices for Azure Kubernetes Service and Azure Database for MySQL - Flexible Server
 
-[!INCLUDE[applies-to-mysql-single-flexible-server](../includes/applies-to-mysql-single-flexible-server.md)]
 
-[!INCLUDE[azure-database-for-mysql-single-server-deprecation](~/reusable-content/ce-skilling/azure/includes/mysql/includes/azure-database-for-mysql-single-server-deprecation.md)]
 
 Azure Kubernetes Service (AKS) provides a managed Kubernetes cluster you can use in Azure. Consider the following options when using AKS and Azure Database for MySQL Flexible Server together to create an application.
 

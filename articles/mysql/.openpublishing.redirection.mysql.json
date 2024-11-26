@@ -1464,6 +1464,41 @@
         "source_path_from_root": "/articles/mysql/single-server/tutorial-provision-mysql-server-using-azure-resource-manager-templates.md",
         "redirect_url": "/previous-versions/azure/mysql/single-server/tutorial-provision-mysql-server-using-azure-resource-manager-templates",
         "redirect_document_id": false
+      },
+      {
+        "source_path_from_root": "/articles/mysql/migrate/whats-happening-to-mysql-single-server.md",
+        "redirect_url": "/azure/mysql/flexible-server/whats-new",
+        "redirect_document_id": false
+      },
+      {
+        "source_path_from_root": "/articles/mysql/migrate/how-to-migrate-single-flexible-minimum-downtime.md",
+        "redirect_url": "/azure/mysql/flexible-server/whats-new",
+        "redirect_document_id": false
+      },
+      {
+        "source_path_from_root": "/articles/mysql/migrate/migrate-single-flexible-in-place-auto-migration.md",
+        "redirect_url": "/azure/mysql/flexible-server/whats-new",
+        "redirect_document_id": false
+      },
+      {
+        "source_path_from_root": "/articles/mysql/migrate/migrate-single-flexible-mysql-import-cli.md",
+        "redirect_url": "/azure/mysql/flexible-server/whats-new",
+        "redirect_document_id": false
+      },
+      {
+        "source_path_from_root": "/articles/mysql/app-development-best-practices.md",
+        "redirect_url": "/azure/mysql/flexible-server/whats-new",
+        "redirect_document_id": false
+      },
+      {
+        "source_path_from_root": "/articles/mysql/select-right-deployment-type.md",
+        "redirect_url": "/azure/mysql/flexible-server/whats-new",
+        "redirect_document_id": false
+      },
+      {
+        "source_path_from_root": "/articles/mysql/scripts",
+        "redirect_url": "/azure/mysql/flexible-server/select-right-deployment-type",
+        "redirect_document_id": false
       }
   ]
 }
