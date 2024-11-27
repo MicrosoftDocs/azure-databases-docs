@@ -49,7 +49,7 @@ Log in to your account using az cli. To know more details on az cli follow this 
 az login
 ```
 ### 3. Follow the instructions that appear:
-It involves selecting an account which redirects you to the browser and then selecting a subscription id/name on the command line.
+It involves selecting an account which redirects you to the browser and then selecting a subscription ID/name on the command line.
 
 ## Install the required packages.
 
@@ -58,8 +58,8 @@ dotnet add package Azure.Identity
 dotnet add package Azure.ResourceManager
 dotnet add package Azure.ResourceManager.PostgreSql
 ```
-If you are having any issues related to initial setup for .NET follow this guide, [Link](https://learn.microsoft.com/dotnet/core/install/windows)
-Once you install these packages there is an entry of each of them in the '.csproj' file, do verify that before executing the build and run command. [Learn more about .csproj file](https://learn.microsoft.com/aspnet/web-forms/overview/deployment/web-deployment-in-the-enterprise/understanding-the-project-file)
+If you are having any issues related to initial setup for .NET follow this guide [Link](https://learn.microsoft.com/dotnet/core/install/windows)
+After installing these packages, ensure that each one them is listed in the .csproj file before you execute the build and run commands. [Learn more about .csproj file](https://learn.microsoft.com/aspnet/web-forms/overview/deployment/web-deployment-in-the-enterprise/understanding-the-project-file)
 
 ## Create the Server
 
@@ -208,7 +208,7 @@ namespace CreatePostgreSqlFlexibleServer
 ```
 Run the file and review the changes made in the resource with the 'UpdateServerData.cs' file.
 ## Clean up resources
-You can clean up the created flexible server instances by following the steps mentioned in the Delete Instance section:
+You can clean up the created flexible server instances by following the steps mentioned in the 'Delete Instance' section:
 
 ## Delete Instance
 
@@ -264,7 +264,7 @@ Replace the following parameters with your data:
 - **resource-group-name**: The name of the resource group you want to use. The script creates a new resource group if it doesn't exist.
 - **server-name**: The name of the Azure database flexible server instance that you created before
 
-You can also delete the resource group created through the Portal, CLI or PowerShell. Follow steps mentioned in CLI and Powershell section if you want to delete it using CLI or Powershell.
+You can also delete the resource group created through the Portal, CLI or PowerShell. Follow steps mentioned in CLI and PowerShell section if you want to delete it using CLI or PowerShell.
 
 ## CLI
 
