@@ -16,7 +16,7 @@ ms.devlang: azurecli
 
 # List and change server parameters of Azure Database for MySQL - Flexible Server using Azure CLI
 
-[!INCLUDE[applies-to-mysql-flexible-server](../../includes/applies-to-mysql-flexible-server.md)]
+[!INCLUDE [applies-to-mysql-flexible-server](../../includes/applies-to-mysql-flexible-server.md)]
 
 This sample CLI script lists all available [server parameters](../concepts-server-parameters.md) as well as their allowable values for Azure Database for MySQL - Flexible Server, and sets the *max_connections* and global *time_zone* parameters to values other than the default ones.
 
@@ -45,16 +45,16 @@ az group delete --name $resourceGroup
 This script uses the following commands. Each command in the table links to command specific documentation.
 
 | **Command** | **Notes** |
-|---|---|
-|[az group create](/cli/azure/group#az-group-create)|Creates a resource group in which all resources are stored|
-|[az mysql flexible-server create](/cli/azure/mysql/flexible-server#az-mysql-flexible-server-create)|Creates a Flexible Server that hosts the databases.|
-|[az mysql flexible-server parameter list](/cli/azure/mysql/flexible-server/parameter#az-mysql-flexible-server-parameter-list)|Lists the parameter values for a flexible server.|
-|[az mysql flexible-server parameter set](/cli/azure/mysql/flexible-server/parameter#az-mysql-flexible-server-parameter-set)|Updates the parameter of a flexible server.|
-|[az mysql flexible-server parameter show](/cli/azure/mysql/flexible-server/parameter#az-mysql-flexible-server-parameter-show)|Get a specific parameter value for a flexible server.|
-|[az mysql flexible-server delete](/cli/azure/mysql/flexible-server#az-mysql-flexible-server-delete)|Deletes a Flexible Server.|
-|[az group delete](/cli/azure/group#az-group-delete) | Deletes a resource group including all nested resources.|
+| --- | --- |
+| [az group create](/cli/azure/group#az-group-create) | Creates a resource group in which all resources are stored |
+| [az mysql flexible-server create](/cli/azure/mysql/flexible-server#az-mysql-flexible-server-create) | Creates a Flexible Server that hosts the databases. |
+| [az mysql flexible-server parameter list](/cli/azure/mysql/flexible-server/parameter#az-mysql-flexible-server-parameter-list) | Lists the parameter values for a flexible server. |
+| [az mysql flexible-server parameter set](/cli/azure/mysql/flexible-server/parameter#az-mysql-flexible-server-parameter-set) | Updates the parameter of a flexible server. |
+| [az mysql flexible-server parameter show](/cli/azure/mysql/flexible-server/parameter#az-mysql-flexible-server-parameter-show) | Get a specific parameter value for a flexible server. |
+| [az mysql flexible-server delete](/cli/azure/mysql/flexible-server#az-mysql-flexible-server-delete) | Deletes a Flexible Server. |
+| [az group delete](/cli/azure/group#az-group-delete) | Deletes a resource group including all nested resources. |
 
-## Next steps
+## Related content
 
-- Try additional scripts: [Azure CLI samples for Azure Database for MySQL - Flexible Server](../sample-scripts-azure-cli.md)
-- For more information on the Azure CLI, see [Azure CLI documentation](/cli/azure).
+- [Azure CLI samples for Azure Database for MySQL - Flexible Server](../sample-scripts-azure-cli.md)
+- [Azure CLI documentation](/cli/azure)

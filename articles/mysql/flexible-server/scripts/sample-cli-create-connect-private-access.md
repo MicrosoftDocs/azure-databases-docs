@@ -16,11 +16,11 @@ ms.devlang: azurecli
 
 # Create an Azure Database for MySQL - Flexible Server database in a VNet using Azure CLI
 
-[!INCLUDE[applies-to-mysql-flexible-server](../../includes/applies-to-mysql-flexible-server.md)]
+[!INCLUDE [applies-to-mysql-flexible-server](../../includes/applies-to-mysql-flexible-server.md)]
 
 This sample CLI script creates an Azure Database for MySQL - Flexible Server in a VNet ([private access connectivity method](../concepts-networking-vnet.md)) and connects to the server from a VM within the VNet.
 
-> [!NOTE]
+> [!NOTE]  
 > The connectivity method cannot be changed after creating the server. For example, if you create server using *Private access (VNet Integration)*, you cannot change to *Public access (allowed IP addresses)* after creation. To learn more about connectivity methods, see [Connectivity and networking concepts for Azure Database for MySQL - Flexible Server](../concepts-networking.md).
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/flexible-server-free-trial-note.md)]
@@ -43,7 +43,7 @@ Use the following steps to test connectivity to the MySQL server from the VM by 
 
    ```bash
    PUBLIC_IP=$(az vm list-ip-addresses --resource-group $RESOURCE_GROUP --name $VM --query "[].virtualMachine.network.publicIpAddresses[0].ipAddress" --output tsv)
-   
+
    ssh azureuser@$PUBLIC_IP
    ```
 
@@ -52,7 +52,7 @@ Use the following steps to test connectivity to the MySQL server from the VM by 
    ```bash
    sudo apt-get update
    sudo apt-get install mysql-client
-   
+
    wget --no-check-certificate https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem
 
    mysql -h <replace_with_server_name>.mysql.database.azure.com -u mysqladmin -p --ssl-mode=REQUIRED --ssl-ca=DigiCertGlobalRootCA.crt.pem
@@ -71,15 +71,15 @@ az group delete --name $RESOURCE_GROUP
 This script uses the following commands. Each command in the table links to command specific documentation.
 
 | **Command** | **Notes** |
-|---|---|
-|[az group create](/cli/azure/group#az-group-create)|Creates a resource group in which all resources are stored|
-|[az mysql flexible-server create](/cli/azure/mysql/flexible-server#az-mysql-flexible-server-create)|Creates a Flexible Server that hosts the databases.|
-|[az network vnet subnet create](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create)|Creates a subnet within the VNet.|
-|[az vm create](/cli/azure/vm#az-vm-create)|Creates an Azure Virtual Machine.|
-|[az vm open-port](/cli/azure/vm#az-vm-open-port)|Opens a VM to inbound traffic on specified ports.|
-|[az group delete](/cli/azure/group#az-group-delete) | Deletes a resource group including all nested resources.|
+| --- | --- |
+| [az group create](/cli/azure/group#az-group-create) | Creates a resource group in which all resources are stored |
+| [az mysql flexible-server create](/cli/azure/mysql/flexible-server#az-mysql-flexible-server-create) | Creates a Flexible Server that hosts the databases. |
+| [az network vnet subnet create](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create) | Creates a subnet within the VNet. |
+| [az vm create](/cli/azure/vm#az-vm-create) | Creates an Azure Virtual Machine. |
+| [az vm open-port](/cli/azure/vm#az-vm-open-port) | Opens a VM to inbound traffic on specified ports. |
+| [az group delete](/cli/azure/group#az-group-delete) | Deletes a resource group including all nested resources. |
 
-## Next steps
+## Related content
 
-- Try additional scripts: [Azure CLI samples for Azure Database for MySQL - Flexible Server](../sample-scripts-azure-cli.md)
-- For more information on the Azure CLI, see [Azure CLI documentation](/cli/azure).
+- [Azure CLI samples for Azure Database for MySQL - Flexible Server](../sample-scripts-azure-cli.md)
+- [Azure CLI documentation](/cli/azure)
