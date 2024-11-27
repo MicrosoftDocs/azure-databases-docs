@@ -351,15 +351,15 @@ In this tutorial, we'll use Azure CNI networking in AKS. If you'd like to config
 
     The following IP address ranges are also defined as part of the cluster create process:
 
-    - The **-service-cidr* is used to assign internal services in the AKS cluster an IP address. You can use any private address range that satisfies the following requirements:
+    - The *--service-cidr* is used to assign internal services in the AKS cluster an IP address. You can use any private address range that satisfies the following requirements:
         - Must not be within the virtual network IP address range of your cluster
         - Must not overlap with any other virtual networks with which the cluster virtual network peers
         - Must not overlap with any on-premises IPs
         - Must not be within the ranges 169.254.0.0/16, 172.30.0.0/16, 172.31.0.0/16, or 192.0.2.0/24
 
-    - The **-dns-service-ip* address is the IP address for the cluster's DNS service. This address must be within the *Kubernetes service address range*. Don't use the first IP address in your address range. The first address in your subnet range is used for the *kubernetes.default.svc.cluster.local* address.
+    - The *--dns-service-ip* address is the IP address for the cluster's DNS service. This address must be within the *Kubernetes service address range*. Don't use the first IP address in your address range. The first address in your subnet range is used for the *kubernetes.default.svc.cluster.local* address.
 
-    - The **-docker-bridge-address* is the Docker bridge network address which represents the default *docker0* bridge network address present in all Docker installations. You must pick an address space that does not collide with the rest of the CIDRs on your networks, including the cluster's service CIDR and pod CIDR.
+    - The *--docker-bridge-address* is the Docker bridge network address which represents the default *docker0* bridge network address present in all Docker installations. You must pick an address space that does not collide with the rest of the CIDRs on your networks, including the cluster's service CIDR and pod CIDR.
 
 ## Deploy the application to AKS cluster
 
