@@ -497,7 +497,7 @@ WHERE r.familyname = 'Anderson' AND ch.age > 20
 A container's indexing policy can be updated at any time [by using the Azure portal or one of the supported SDKs](how-to-manage-indexing-policy.md). An update to the indexing policy triggers a transformation from the old index to the new one, which is performed online and in-place (so no extra storage space is consumed during the operation). The old indexing policy is efficiently transformed to the new policy without affecting the write availability, read availability, or the throughput provisioned on the container. Index transformation is an asynchronous operation, and the time it takes to complete depends on the provisioned throughput, the number of items and their size. If multiple indexing policy updates have to be made, it's recommended to do all the changes as a single operation in order to have the index transformation complete as quickly as possible.
 
 > [!IMPORTANT]
-> Index transformation is an operation that consumes [request units](request-units.md) and updating the index policy is an RU bound operation. If any indexing term is missed, the customer will see queries consuming more overall RUs.
+> Index transformation is an operation that consumes [request units](request-units.md).
 
 > [!NOTE]
 > You can track the progress of index transformation in the [Azure portal](how-to-manage-indexing-policy.md#use-the-azure-portal) or by [using one of the SDKs](how-to-manage-indexing-policy.md#dotnet-sdk).
