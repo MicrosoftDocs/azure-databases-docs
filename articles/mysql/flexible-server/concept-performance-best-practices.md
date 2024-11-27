@@ -12,9 +12,7 @@ ms.topic: conceptual
 
 # Best practices for optimal performance of Azure Database for MySQL - Flexible Server
 
-[!INCLUDE[applies-to-mysql-single-flexible-server](../includes/applies-to-mysql-single-flexible-server.md)]
 
-[!INCLUDE[azure-database-for-mysql-single-server-deprecation](~/reusable-content/ce-skilling/azure/includes/mysql/includes/azure-database-for-mysql-single-server-deprecation.md)]
 
 Learn how to get best performance while working with Azure Database for MySQL Flexible Server. As we add new capabilities to the platform, we'll continue refining our recommendations in this section.
 

@@ -1,10 +1,10 @@
 ---
-title: "Migrate MySQL on-premises to Azure Database for MySQL: Summary"
+title: "Migrate MySQL On-Premises to Azure Database for MySQL: Summary"
 description: "This document has covered several topics related to migrating an application from on-premises MySQL to Azure Database for MySQL."
 author: SudheeshGH
 ms.author: sunaray
 ms.reviewer: maghan
-ms.date: 05/21/2024
+ms.date: 11/26/2024
 ms.service: azure-database-mysql
 ms.subservice: migration-guide
 ms.topic: how-to
@@ -12,7 +12,7 @@ ms.topic: how-to
 
 # Migrate MySQL on-premises to Azure Database for MySQL: Summary
 
-[!INCLUDE [applies-to-mysql-single-flexible-server](../../includes/applies-to-mysql-single-flexible-server.md)]
+Migrating MySQL databases from on-premises environments to Azure Database for MySQL offers numerous benefits, including enhanced scalability, security, and performance. This article comprehensively summarizes the key steps and considerations involved in the migration process. By understanding the assessment, planning, migration methods, testing, optimization, and post-migration management, you can ensure a smooth and successful transition to Azure. This guide will equip you with the insights and best practices needed to navigate each migration phase, leveraging Azure's robust features to achieve operational efficiency and cost savings. Whether modernizing your database infrastructure or improving disaster recovery capabilities, this summary will provide you with the essential knowledge to make informed decisions and achieve a seamless migration.
 
 ## Prerequisites
 

@@ -12,10 +12,6 @@ ms.topic: conceptual
 
 # Connection libraries for Azure Database for MySQL - Flexible Server
 
-[!INCLUDE[applies-to-mysql-single-flexible-server](../includes/applies-to-mysql-single-server.md)]
-
-[!INCLUDE[azure-database-for-mysql-single-server-deprecation](~/reusable-content/ce-skilling/azure/includes/mysql/includes/azure-database-for-mysql-single-server-deprecation.md)]
-
 This article lists each library or driver that client programs can use when connecting to Azure Database for MySQL Flexible Server.
 
 ## Client interfaces

@@ -12,10 +12,6 @@ ms.topic: troubleshooting
 
 # Troubleshoot connectivity issues in Azure Database for MySQL - Flexible Server
 
-[!INCLUDE[applies-to-mysql-single-flexible-server](../includes/applies-to-mysql-single-flexible-server.md)]
-
-[!INCLUDE[azure-database-for-mysql-single-server-deprecation](~/reusable-content/ce-skilling/azure/includes/mysql/includes/azure-database-for-mysql-single-server-deprecation.md)]
-
 The MySQL Community Edition manages connections using one thread per connection. As a result, each user connection gets a dedicated operating system thread in the mysqld process.
 
 There are potential issues associated with this type of connection handling. For example, memory use is relatively high if there's a large number of user connections, even if they're idle connections. In addition, there’s a higher level of internal server contention and context switching overhead when working with thousands of user connections.
@@ -36,30 +32,30 @@ As a result, whenever you’re diagnosing connectivity errors, be sure to consid
 
 It’s also important to determine whether the database connectivity issue is affecting a single client device or several client devices. If the errors are affecting only one of several clients, then it’s likely that the problem is with that client. However, if all clients are experiencing the same error, it’s more likely that the problem is on the database server side or with the networking in between.
 
-Be sure to consider the potential of workload overload as well, especially if an application opens a surge of connections in a very short amount of time. You can use metrics such as “Total Connections”, “Active Connections”, and “Aborted Connections” to investigate this.
+Be sure to consider the potential of workload overload as well, especially if an application opens a surge of connections in a short amount of time. You can use metrics such as “Total Connections”, “Active Connections”, and “Aborted Connections” to investigate this.
 
 When you establish connectivity from a client device or application, the first important call in mysql is to getaddrinfo, which performs the DNS translation from the endpoint provided to an IP address. If getting the address fails, MySQL shows an error message such as "ERROR 2005 (HY000): Unknown MySQL server host 'mysql-example.mysql.database.azure.com' (11)" and the number in the end (11, 110, etc.).
 
-### Client-side error 2005 codes
+### Client-side error 2,005 codes
 
-Quick reference notes for some client-side error 2005 codes appear in the following table.
+Quick reference notes for some client-side error 2,005 codes appear in the following table.
 
 | **ERROR 2005 code** | **Notes** |
 |----------|----------|
 | **(11) "EAI_SYSTEM - system error"** | There's an error on the DNS resolution on the client side. Not an Azure Database for MySQL Flexible Server issue. Use dig/nslookup on the client to troubleshoot. |
 | **(110) "ETIMEDOUT - Connection timed out"** | There was a timeout connecting to the client's DNS server. Not an Azure Database for MySQL Flexible Server issue. Use dig/nslookup on the client to troubleshoot. |
-| **(0) "name unknown"** | The name specified wasn't resolvable by DNS. Check the input on the client. This is very likely not an issue with Azure Database for MySQL Flexible Server. |
+| **(0) "name unknown"** | The name specified wasn't resolvable by DNS. Check the input on the client. This is likely not an issue with Azure Database for MySQL Flexible Server. |
 
 The second call in mysql is with socket connectivity and when looking at an error message like "ERROR 2003 (HY000): Can't connect to Azure Database for MySQL Flexible Server on 'mysql-example.mysql.database.azure.com' (111)", the number in the end (99, 110, 111, 113, etc.).
 
-### Client-side error 2003 codes
+### Client-side error 2,003 codes
 
-Quick reference notes for some client-side error 2003 codes appear in the following table.
+Quick reference notes for some client-side error 2,003 codes appear in the following table.
 
 | **ERROR 2003 code** | **Notes** |
 |----------|----------|
 | **(99) "EADDRNOTAVAIL - Cannot assign requested address"** | This error isn’t caused by Azure Database for MySQL Flexible Server, rather it is on the client side. |
-| **(110) "ETIMEDOUT - Connection timed out"** | TThere was a timeout connecting to the IP address provided. Likely a security (firewall rules) or networking (routing) issue. Usually, this isn’t an issue with Azure Database for MySQL Flexible Server. Use `nc/telnet/TCPtraceroute` on the client device to troubleshoot. |
+| **(110) "ETIMEDOUT - Connection timed out"** | There was a timeout connecting to the IP address provided. Likely a security (firewall rules) or networking (routing) issue. Usually, this isn’t an issue with Azure Database for MySQL Flexible Server. Use `nc/telnet/TCPtraceroute` on the client device to troubleshoot. |
 | **(111) "ECONNREFUSED - Connection refused"** | While the packets reached the target server, the server rejected the connection. This might be an attempt to connect to the wrong server or the wrong port. This also might relate to the target service (Azure Database for MySQL Flexible Server) being down, recovering from failover, or going through crash recovery, and not yet accepting connections. This issue could be on either the client side or the server side. Use `nc/telnet/TCPtraceroute` on the client device to troubleshoot. |
 | **(113) "EHOSTUNREACH - Host unreachable"** | The client device’s routing table doesn’t include a path to the network on which the database server is located. Check the client device's networking configuration. |
 

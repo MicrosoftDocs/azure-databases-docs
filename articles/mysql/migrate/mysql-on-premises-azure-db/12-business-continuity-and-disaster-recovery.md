@@ -4,7 +4,7 @@ description: "As with any mission critical system, having a backup and restore a
 author: SudheeshGH
 ms.author: sunaray
 ms.reviewer: maghan
-ms.date: 05/21/2024
+ms.date: 11/26/2024
 ms.service: azure-database-mysql
 ms.subservice: migration-guide
 ms.topic: how-to
@@ -12,7 +12,7 @@ ms.topic: how-to
 
 # Migrate MySQL on-premises to Azure Database for MySQL: Business Continuity and Disaster Recovery (BCDR)
 
-[!INCLUDE [applies-to-mysql-single-flexible-server](../../includes/applies-to-mysql-single-flexible-server.md)]
+Ensuring business continuity and disaster recovery (BCDR) is critical to migrating MySQL databases from on-premises environments to Azure Database for MySQL. This article delves into the strategies and best practices for maintaining uninterrupted operations and safeguarding data during and after migration. By using Azure's robust BCDR capabilities, you can minimize downtime, protect against data loss, and ensure rapid recovery during a disaster. This guide provides the insights needed to develop a comprehensive BCDR plan, address potential risks, and use Azure's advanced features to enhance resilience and reliability. Whether you aim to improve your disaster recovery capabilities or ensure continuous availability, this article equips you with the knowledge to achieve a seamless and secure migration.
 
 ## Prerequisites
 
@@ -24,7 +24,7 @@ As with any mission critical system, having a backup and restore and a disaster 
 
 ### Backup
 
-Azure Database for MySQL supports automatic backups for 7 days by default. It might be appropriate to modify this to the current maximum of 35 days. It's important to be aware that if the value is changed to 35 days, there are charges for any extra backup storage over 1x of the storage allocated.
+Azure Database for MySQL supports automatic backups for seven days by default. It might be appropriate to modify this to the current maximum of 35 days. It's important to be aware that if the value is changed to 35 days, there are charges for any extra backup storage over 1x of the storage allocated.
 
 There are several current limitations to the database backup feature as described in the [Backup and restore in Azure Database for MySQL](../../concepts-backup.md) docs article. It's important to understand them when deciding what additional strategies that should be implemented.
 
@@ -52,11 +52,11 @@ Review the migration process. See [Perform post-restore tasks](../../concepts-ba
 
 ## Deleted servers
 
-If an administrator or bad actor deletes the server in the Azure portal or via automated methods, all backups and read replicas are deleted. it's important that [resource locks](/azure/azure-resource-manager/management/lock-resources) are created on the Azure Database for MySQL resource group to add an extra layer of deletion prevention to the instances.
+If an administrator or bad actor deletes the server in the Azure portal or via automated methods, all backups and read replicas are deleted. It's important that [resource locks](/azure/azure-resource-manager/management/lock-resources) are created on the Azure Database for MySQL resource group to add an extra layer of deletion prevention to the instances.
 
 ## Regional failure
 
-Although rare, if a regional failure occurs geo-redundant backups or a read replica can be used to get the data workloads running again. it's best to have both geo-replication and a read replica available for the best protection against unexpected regional failures.
+Although rare, if a regional failure occurs geo-redundant backups or a read replica can be used to get the data workloads running again. It's best to have both geo-replication and a read replica available for the best protection against unexpected regional failures.
 
 > [!NOTE]  
 > Changing the database server region also means the endpoint does change and application configurations needs to be updated accordingly.

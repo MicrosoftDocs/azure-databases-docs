@@ -4,7 +4,7 @@ description: "In addition to the audit and activity logs, server performance can
 author: SudheeshGH
 ms.author: sunaray
 ms.reviewer: maghan
-ms.date: 05/21/2024
+ms.date: 11/26/2024
 ms.service: azure-database-mysql
 ms.subservice: migration-guide
 ms.topic: how-to
@@ -12,7 +12,7 @@ ms.topic: how-to
 
 # Migrate MySQL on-premises to Azure Database for MySQL: Optimization
 
-[!INCLUDE [applies-to-mysql-single-flexible-server](../../includes/applies-to-mysql-single-flexible-server.md)]
+Optimizing MySQL databases after migrating from on-premises environments to Azure Database for MySQL is essential for maximizing performance and efficiency. This article explores the key strategies and best practices for optimizing your databases in the Azure environment. You can ensure that your databases operate at their peak potential by focusing on query performance, indexing, resource allocation, and configuration tuning. This guide provides the insights and techniques needed to identify and address performance bottlenecks, use Azure's advanced features, and achieve optimal database performance. Whether you aim to enhance response times, improve scalability, or reduce operational costs, this article equips you with the knowledge to optimize your MySQL databases on Azure.
 
 ## Prerequisites
 
@@ -28,7 +28,7 @@ Additionally, if cpu and memory don't seem to be the issue, administrators can e
 
 To find poor performing queries, run the following:
 
-```
+```bash
 AzureDiagnostics
 | where ResourceProvider == "MICROSOFT.DBFORMYSQL"
 | where Category == 'MySqlSlowLogs'
@@ -45,7 +45,7 @@ The `slow\_query\_log` can be set to show slow queries in the MySQL log files (d
 
 ## Upgrade the tier
 
-The Azure portal can be used to scale between from `General Purpose` and `Memory Optimized`. If a `Basic` tier is chosen, there is no option to upgrade the tier to `General Purpose` or `Memory Optimized` later. However, it's possible to utilize other techniques to perform a migration/upgrade to a new Azure Database for MySQL instance.
+The Azure portal can be used to scale between from `General Purpose` and `Memory Optimized`. If a `Basic` tier is chosen, there's no option to upgrade the tier to `General Purpose` or `Memory Optimized` later. However, it's possible to utilize other techniques to perform a migration/upgrade to a new Azure Database for MySQL instance.
 
 For an example of a script that migrates from basic to another server tier, reference [Upgrade from Basic to General Purpose or Memory Optimized tiers in Azure Database for MySQL.](https://techcommunity.microsoft.com/t5/azure-database-for-mysql-blog/upgrade-from-basic-to-general-purpose-or-memory-optimized-tiers/ba-p/830404)
 
@@ -57,7 +57,7 @@ Within the tier, it's possible to scale cores and memory to the minimum and maxi
 
 Moving a database to a different Azure region depends on the approach and architecture. Depending on the approach, it could cause system downtime.
 
-The recommended process is the same as utilizing read replicas for maintenance failover. However, compared to the planned maintenance method mentioned above, the speed to failover is much faster when a failover layer has been implemented in the application. The application should only be down for a few moments during the read replica failover process. More details are covered in the Business Continuity and Disaster Recovery section.
+The recommended process is the same as utilizing read replicas for maintenance failover. However, compared to the planned maintenance method mentioned above, the speed to failover is faster when a failover layer has been implemented in the application. The application should only be down for a few moments during the read replica failover process. More details are covered in the Business Continuity and Disaster Recovery section.
 
 ## WWI scenario
 

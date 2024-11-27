@@ -1,19 +1,16 @@
 ---
-title: How to create users for Azure Database for MySQL
+title: How to Create Users for Azure Database for MySQL
 description: This article describes how to create new user accounts to interact with an Azure Database for MySQL server.
 author: SudheeshGH
 ms.author: sunaray
 ms.reviewer: maghan
-ms.date: 12/01/2023
+ms.date: 11/26/2024
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: how-to
 ---
+
 # Create users in Azure Database for MySQL
-
-[!INCLUDE [applies-to-mysql-single-flexible-server](includes/applies-to-mysql-single-flexible-server.md)]
-
-[!INCLUDE [azure-database-for-mysql-single-server-deprecation](~/reusable-content/ce-skilling/azure/includes/mysql/includes/azure-database-for-mysql-single-server-deprecation.md)]
 
 This article describes how to create users for Azure Database for MySQL.
 
@@ -39,12 +36,9 @@ After you create an Azure Database for the MySQL server, you can use the first s
 
    You need the full server name and admin sign-in credentials to connect to your database server. You can easily find the server name and sign-in information on the server **Overview** or the **Properties** page in the Azure portal.
 
-2. Use the admin account and password to connect to your database server. Use your preferred client tool, MySQL Workbench, mysql.exe, or HeidiSQL.
+1. Use the admin account and password to connect to your database server. Use your preferred client tool, MySQL Workbench, mysql.exe, or HeidiSQL.
 
-> [!NOTE]  
-> If you're not sure how to connect, see [connect and query data for Single Server](single-server/connect-workbench.md) or [connect and query data for Flexible Server](flexible-server/connect-workbench.md).
-
-3. Edit and run the following SQL code. Replace the placeholder value `db_user` with your intended new user name. Replace the placeholder value `testdb` with your database name.
+1. Edit and run the following SQL code. Replace the placeholder value `db_user` with your intended new user name. Replace the placeholder value `testdb` with your database name.
 
    This SQL code creates a new database named testdb. It then makes a new user in the MySQL service and grants that user all privileges for the new database schema (testdb.\*).
 
@@ -54,9 +48,9 @@ After you create an Azure Database for the MySQL server, you can use the first s
 
 ## Create a nonadmin user
 
- Now that you have created the database, you can start by creating a nonadmin user by using the ```CREATE USER``` MySQL statement.
+Now that you have created the database, you can start by creating a nonadmin user by using the ```CREATE USER``` MySQL statement.
 
-   ``` sql
+   ```sql
    CREATE USER 'db_user'@'%' IDENTIFIED BY 'StrongPassword!';
 
    GRANT ALL PRIVILEGES ON testdb . * TO 'db_user'@'%';
@@ -76,12 +70,11 @@ To view the privileges allowed for user **db_user** on **testdb** database, run 
 
 ## Connect to the database with the new user
 
-Sign in to the server, specifying the designated database and using the new username and password. This example shows the MySQL command line. When you use this command, you're prompted for the user's password. Use your own server name, database name, and user name. See how to connect the single server and the flexible  in the following table.
+Sign in to the server, specifying the designated database and using the new username and password. This example shows the MySQL command line. When you use this command, you're prompted for the user's password. Use your own server name, database name, and user name. See how to connect in the following table.
 
-| Server type | Usage |
-| --- | --- |
-| Single Server | ```mysql --host mydemoserver.mysql.database.azure.com --database testdb --user db_user@mydemoserver -p``` |
-| Flexible Server | ```mysql --host mydemoserver.mysql.database.azure.com --database testdb --user db_user -p``` |
+   ```sql
+      --host mydemoserver.mysql.database.azure.com --database testdb --user db_user -p
+   ```
 
 ## Limit privileges for a user
 
@@ -97,8 +90,10 @@ To restrict the type of operations a user can run on the database, you must expl
 
 ## About azure_superuser
 
-All Azure Database for MySQL servers are created with a user called "azure_superuser". Microsoft created a system account to manage the server to conduct monitoring, backups, and other regular maintenance. On-call engineers may also use this account to access the server during an incident with certificate authentication and must request access using just-in-time (JIT) processes.
+All Azure Database for MySQL servers are created with a user called "azure_superuser". Microsoft created a system account to manage the server to conduct monitoring, backups, and other regular maintenance. On-call engineers might also use this account to access the server during an incident with certificate authentication and must request access using just-in-time (JIT) processes.
 
-## Next steps
+## Related content
 
-- For more information about user account management, see the MySQL product documentation for [User account management](https://dev.mysql.com/doc/refman/5.7/en/access-control.html), [GRANT syntax](https://dev.mysql.com/doc/refman/5.7/en/grant.html), and [Privileges](https://dev.mysql.com/doc/refman/5.7/en/privileges-provided.html).
+- [User account management](https://dev.mysql.com/doc/refman/5.7/en/access-control.html)
+- [GRANT syntax](https://dev.mysql.com/doc/refman/5.7/en/grant.html)
+- [Privileges](https://dev.mysql.com/doc/refman/5.7/en/privileges-provided.html)
