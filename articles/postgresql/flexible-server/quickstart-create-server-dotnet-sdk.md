@@ -17,30 +17,39 @@ Azure Database for PostgreSQL flexible server is a managed service that you use 
 
 The `Azure.ResourceManager.PostgreSql` library is part of the Azure SDK for .NET and provides functionality for managing PostgreSQL flexible servers in Azure. With this library, you can perform various operations related to PostgreSQL flexible servers, including but not limited to:
 
-1. **Creating Azure PostgreSQL Flexible Servers**:
-   - You can create new Flexible Servers instances with specified configurations such as location, SKU, storage, and version.
+1. **Creating Azure PostgreSQL Flexible Servers**:\
+   You can create new Flexible Servers instances with specified configurations such as location, SKU, storage, and version.
 
-2. **Updating Azure PostgreSQL Flexible Servers**:
-   - You can update existing PostgreSQL flexible servers, including changing configurations like administrator login, password, SKU, storage, and version.
+2. **Updating Azure PostgreSQL Flexible Servers**:\
+   You can update existing PostgreSQL flexible servers, including changing configurations like administrator login, password, SKU, storage, and version.
 
-3. **Deleting Azure PostgreSQL Flexible Servers**:
-   - You can delete existing Azure PostgreSQL flexible server instances.
+3. **Deleting Azure PostgreSQL Flexible Servers**:\
+   You can delete existing Azure PostgreSQL flexible server instances.
 
-4. **Retrieving Azure PostgreSQL Flexible Server Information**:
-   - You can retrieve details about existing PostgreSQL flexible servers, including their configurations, status, and other metadata.
+4. **Retrieving Azure PostgreSQL Flexible Server Information**:\
+   You can retrieve details about existing PostgreSQL flexible servers, including their configurations, status, and other metadata.
 
-5. **Managing Databases**:
-   - You can create, update, delete, and retrieve databases within a Azure PostgreSQL flexible server.
+5. **Managing Databases**:\
+   You can create, update, delete, and retrieve databases within a Azure PostgreSQL flexible server.
 
-6. **Managing Firewall Rules**:
-   - You can create, update, delete, and retrieve firewall rules for an instance to control access.
+6. **Managing Firewall Rules**:\
+   You can create, update, delete, and retrieve firewall rules for an instance to control access.
 
-7. **Managing Configuration Settings**:
-   - You can manage configuration settings for a Azure PostgreSQL flexible server instance, including retrieving and updating server parameters.
+7. **Managing Configuration Settings**:\
+   You can manage configuration settings for a Azure PostgreSQL flexible server instance, including retrieving and updating server parameters.
 
 ## Prerequisites
 
 An Azure account with an active subscription. [Create one for free](https://azure.microsoft.com/free/).
+Login to your account using az cli. To know more details on az cli follow this [Link](https://learn.microsoft.com/en-us/cli/azure/authenticate-azure-cli-interactively)
+
+### 1. Open the Terminal
+### 2. Run the login command
+```bash
+az login
+```
+### 3. Follow the instructions that appear:
+This usually involves opening a browser and entering a code provided in the terminal to authenticate.
 
 Install the required packages.
 
@@ -49,6 +58,9 @@ dotnet add package Azure.Identity
 dotnet add package Azure.ResourceManager
 dotnet add package Azure.ResourceManager.PostgreSql
 ```
+If you are having any issues related to initial setup for donet follow this guide, [Link](https://learn.microsoft.com/en-us/dotnet/core/install/windows)
+Once you install these packages there will be entry of them in the .csproj file, do verify that before executing the build and run command. [Learn more about .csproj file](https://learn.microsoft.com/aspnet/web-forms/overview/deployment/web-deployment-in-the-enterprise/understanding-the-project-file)
+
 ## Create the Server
 
 Create a `CreateServer.cs` file and include the following code.
@@ -119,13 +131,23 @@ Replace the following parameters in the code with your data:
 - **SKU** : We use PostgreSqlFlexibleServerSku() constructor and in that we have to pass compute type and compute tier which is either Burstable, GeneralPurpose tier.
 You can also customize storage size to your desired usage.
 
+## Authentication
 > [!NOTE]  
 > The DefaultAzureCredential class will try to authenticate using various methods, such as environment variables, managed identities, or the Azure CLI.  
 > Make sure you have one of these methods set up. You can find more information on authentication in the [Azure SDK documentation](https://learn.microsoft.com/dotnet/api/overview/azure/identity-readme?view=azure-dotnet).
 
+
+## Run the file
+### Everytime you make any change in the .cs file please donot forget to build and then run the file:
+Run the .cs file with the below commands
+```bash
+dotnet build
+dotnet run
+```
+> [!NOTE]
+> Running this code will initiate the instance creation process, which may take a few minutes to complete.
 ## Review deployed resources
 You can review the deployed flexible server instance through Azure portal, Azure CLI, Azure PowerShell, and various other tools to validate the deployment and review the deployed resources.
-
 ## Update server data
 
 Firstly, create a `UpdateServerData.cs` file. 
@@ -183,6 +205,7 @@ namespace CreatePostgreSqlFlexibleServer
 }
 
 ```
+Run the file and review the changes made in the resource by using the code above
 ## Clean up resources
 You can clean up the created flexible server instances by following the steps mentioned below:
 
