@@ -1,10 +1,10 @@
 ---
-title: CLI script - Configure zone-redundant high availability
+title: CLI Script - Configure Zone-Redundant High Availability
 description: This Azure CLI sample script shows how to configure zone-redundant high availability in an Azure Database for MySQL - Flexible Server instance.
 author: shreyaaithal
 ms.author: shaithal
 ms.reviewer: maghan
-ms.date: 06/18/2024
+ms.date: 11/27/2024
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: sample
@@ -18,7 +18,7 @@ ms.devlang: azurecli
 
 [!INCLUDE[applies-to-mysql-flexible-server](../../includes/applies-to-mysql-flexible-server.md)]
 
-This sample CLI script configures and manages [Zone-Redundant high availability](../concepts-high-availability.md) in an Azure Database for MySQL - Flexible Server.
+This sample CLI script configures and manages [High availability concepts in Azure Database for MySQL - Flexible Server](../concepts-high-availability.md) in an Azure Database for MySQL - Flexible Server.
 You can enable Zone-Redundant high availability only during Flexible Server creation, and can disable it anytime. You can also choose the availability zone for the primary and the standby replica.
 
 Currently, Zone-Redundant high availability is supported only for the General purpose and Business Critical pricing tiers.

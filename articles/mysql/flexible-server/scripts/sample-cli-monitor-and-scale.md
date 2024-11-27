@@ -1,10 +1,10 @@
 ---
-title: CLI script - Monitor and scale
+title: CLI Script - Monitor and Scale
 description: This Azure CLI sample script shows how to monitor and scale a single Azure Database for MySQL - Flexible Server instance up or down to allow for changing performance needs.
 author: shreyaaithal
 ms.author: shaithal
 ms.reviewer: maghan
-ms.date: 06/18/2024
+ms.date: 11/27/2024
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: sample

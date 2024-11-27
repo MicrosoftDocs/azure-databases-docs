@@ -1,10 +1,10 @@
 ---
-title: CLI script - Configure audit logs
+title: CLI Script - Configure Audit Logs
 description: This Azure CLI sample script shows how to configure audit logs on Azure Database for MySQL - Flexible Server.
 author: shreyaaithal
 ms.author: shaithal
 ms.reviewer: maghan
-ms.date: 06/18/2024
+ms.date: 11/27/2024
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: sample
