@@ -15,7 +15,7 @@ ms.custom:
 
 # Azure Database for MySQL version support policy
 
-[!INCLUDE [applies-to-mysql-flexible-server](includes/applies-to-mysql-flexible-server.md)]
+Azure Database for MySQL provides a fully managed database service powered by the MySQL community edition, enabling developers to build and scale applications efficiently. This article outlines the version support policy for Azure Database for MySQL, detailing the lifecycle management, including version availability, updates, and end-of-support timelines. By understanding this policy, customers can ensure their applications remain secure, performant, and aligned with the latest MySQL innovations while minimizing disruption during version transitions.
 
 ## Supported MySQL versions
 
