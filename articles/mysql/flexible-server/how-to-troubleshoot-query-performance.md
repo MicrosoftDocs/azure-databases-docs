@@ -16,7 +16,7 @@ ms.topic: troubleshooting
 
 ```sql
 mysql> EXPLAIN SELECT * FROM tb1 WHERE id=100\G
-*************************** 1. row ***************************
+****************** 1. row ******************
            id: 1
   select_type: SIMPLE
         table: tb1
@@ -36,7 +36,7 @@ In this example, the value of *key* is NULL, which means that Azure Database for
 ```sql
 mysql> ALTER TABLE tb1 ADD KEY (id);
 mysql> EXPLAIN SELECT * FROM tb1 WHERE id=100\G
-*************************** 1. row ***************************
+****************** 1. row ******************
            id: 1
   select_type: SIMPLE
         table: tb1
@@ -59,7 +59,7 @@ A covering index includes of all columns of a query, which reduces value retriev
 
 ```sql
 mysql> EXPLAIN SELECT MAX(c1), c2 FROM tb1 WHERE c2 LIKE '%100' GROUP BY c1\G
-*************************** 1. row ***************************
+****************** 1. row ******************
            id: 1
   select_type: SIMPLE
         table: tb1
@@ -81,7 +81,7 @@ Creating an index only on column **c2** makes no difference, and Azure Database 
 ```sql
 mysql> ALTER TABLE tb1 ADD KEY (c2);
 mysql> EXPLAIN SELECT MAX(c1), c2 FROM tb1 WHERE c2 LIKE '%100' GROUP BY c1\G
-*************************** 1. row ***************************
+****************** 1. row ******************
            id: 1
   select_type: SIMPLE
         table: tb1
@@ -101,7 +101,7 @@ In this case, you can create a **covered index** on both **c1** and **c2** by ad
 ```sql
 mysql> ALTER TABLE tb1 ADD KEY covered(c1,c2);
 mysql> EXPLAIN SELECT MAX(c1), c2 FROM tb1 WHERE c2 LIKE '%100' GROUP BY c1\G
-*************************** 1. row ***************************
+****************** 1. row ******************
            id: 1
   select_type: SIMPLE
         table: tb1
@@ -124,7 +124,7 @@ A combined index consists values from multiple columns and can be considered an 
 
 ```sql
 mysql> EXPLAIN SELECT c1, c2 from tb1 WHERE c2 LIKE '%100' ORDER BY c1 DESC LIMIT 10\G
-*************************** 1. row ***************************
+****************** 1. row ******************
            id: 1
   select_type: SIMPLE
         table: tb1
@@ -144,7 +144,7 @@ Azure Database for MySQL flexible server performs a *file sort* operation that i
 ```sql
 mysql> ALTER TABLE tb1 ADD KEY my_sort2 (c1, c2);
 mysql> EXPLAIN SELECT c1, c2 from tb1 WHERE c2 LIKE '%100' ORDER BY c1 DESC LIMIT 10\G
-*************************** 1. row ***************************
+****************** 1. row ******************
            id: 1
   select_type: SIMPLE
         table: tb1

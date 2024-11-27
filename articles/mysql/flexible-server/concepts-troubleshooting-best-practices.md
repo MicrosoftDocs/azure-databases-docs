@@ -97,7 +97,7 @@ Consider, for example, a table that you're using to try to find all employees wh
 
 ```sql
 mysql> show create table employee\G
-*************************** 1. row ***************************
+****************** 1. row ******************
        Table: employee
 Create Table: CREATE TABLE `employee` (
   `empid` int(11) NOT NULL AUTO_INCREMENT,
@@ -116,7 +116,7 @@ If you run an EXPLAIN plan on this query, you'd observe that currently no indexe
 
 ```sql
 mysql> EXPLAIN select empid, fname, lname from employee where joindate > '2000-01-01'\G
-*************************** 1. row ***************************
+****************** 1. row ******************
            id: 1
   select_type: SIMPLE
         table: employee
@@ -140,7 +140,7 @@ Now, if you run EXPLAIN plan on the same query, the "Using Index" value appears 
 
 ```sql
 mysql> EXPLAIN select empid, fname, lname from employee where joindate > '2000-01-01'\G
-*************************** 1. row ***************************
+****************** 1. row ******************
            id: 1
   select_type: SIMPLE
         table: employee

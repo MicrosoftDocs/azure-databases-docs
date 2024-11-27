@@ -55,7 +55,7 @@ To set up the customer managed key, perform the following steps.
 
 1. On the **Data encryption** page, under **No identity assigned** , select **Change identity** ,
 
-1. In the **Select user assigned**** managed identity **dialog box, select the** demo-umi **identity, and then select** Add**.
+1. In the **Select user assigned*** managed identity **dialog box, select the** demo-umi **identity, and then select** Add**.
 
     :::image type="content" source="media/how-to-data-encryption-portal/4-mysql-assigned-managed-identity-demo-uni.jpeg" alt-text="Screenshot of selecting the demo-umi from the assigned managed identity page.":::
 

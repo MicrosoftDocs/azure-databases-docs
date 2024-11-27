@@ -58,8 +58,8 @@ az account set --subscription <subscription id>
 The following are the steps for using Percona XtraBackup to take a full backup:
   - Install Percona XtraBackup on the on-premises or VM workload. For MySQL engine version v5.7, install Percona XtraBackup version 2.4, see [Installing Percona XtraBackup 2.4]( https://docs.percona.com/percona-xtrabackup/2.4/installation.html). For MySQL engine version v8.0, install Percona XtraBackup version 8.0, see [Installing Percona XtraBackup 8.0]( https://docs.percona.com/percona-xtrabackup/8.0/installation.html).
   - For instructions for taking a Full backup with Percona XtraBackup 2.4, see [Full backup]( https://docs.percona.com/percona-xtrabackup/2.4/backup_scenarios/full_backup.html). For instructions for taking a Full backup with Percona XtraBackup 8.0, see [Full backup] (<https://docs.percona.com/percona-xtrabackup/8.0/create-full-backup.html>). While taking full backup, run the below commands in order:
-    - *** xtrabackup --backup --host={host} --user={user} --password={password} --target-dir={backup__dir_path}**
-    - *** xtrabackup --prepare --{backup_dir_path}** (Provide the same backup path here as in the previous command)
+    - ** xtrabackup --backup --host={host} --user={user} --password={password} --target-dir={backup__dir_path}**
+    - ** xtrabackup --prepare --{backup_dir_path}** (Provide the same backup path here as in the previous command)
   - **Considerations while taking the Percona XtraBackup:**
     - Make sure you run both the backup and prepare step.
     - Make sure there are no errors in the backup and prepare step.

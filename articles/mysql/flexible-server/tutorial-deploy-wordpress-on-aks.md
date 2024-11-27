@@ -243,7 +243,7 @@ Results:
 
 ## Create AKS cluster
 
-To create an AKS cluster with Container Insights, use the [az aks create](/cli/azure/aks#az-aks-create) command with the ***-enable-addons** monitoring parameter. The following example creates an autoscaling, availability zone-enabled cluster named **myAKSCluster**:
+To create an AKS cluster with Container Insights, use the [az aks create](/cli/azure/aks#az-aks-create) command with the **-enable-addons** monitoring parameter. The following example creates an autoscaling, availability zone-enabled cluster named **myAKSCluster**:
 
 This action takes a few minutes.
 
@@ -280,7 +280,7 @@ To manage a Kubernetes cluster, use [kubectl](https://kubernetes.io/docs/referen
     if ! [ -x "$(command -v kubectl)" ]; then az aks install-cli; fi
 ```
 
-Next, configure `kubectl` to connect to your Kubernetes cluster using the [az aks get-credentials](/cli/azure/aks#az-aks-get-credentials) command. This command downloads credentials and configures the Kubernetes CLI to use them. The command uses `~/.kube/config`, the default location for the [Kubernetes configuration file](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/). You can specify a different location for your Kubernetes configuration file using the ***-file** argument.
+Next, configure `kubectl` to connect to your Kubernetes cluster using the [az aks get-credentials](/cli/azure/aks#az-aks-get-credentials) command. This command downloads credentials and configures the Kubernetes CLI to use them. The command uses `~/.kube/config`, the default location for the [Kubernetes configuration file](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/). You can specify a different location for your Kubernetes configuration file using the **-file** argument.
 
 > [!WARNING]  
 > This command will overwrite any existing credentials with the same entry.
@@ -304,7 +304,7 @@ When you upgrade your ingress controller, you must pass a parameter to the Helm 
 export MY_STATIC_IP=$(az network public-ip create --resource-group MC_${MY_RESOURCE_GROUP_NAME}_${MY_AKS_CLUSTER_NAME}_${REGION} --location ${REGION} --name ${MY_PUBLIC_IP_NAME} --dns-name ${MY_DNS_LABEL} --sku Standard --allocation-method static --version IPv4 --zone 1 2 3 --query publicIp.ipAddress -o tsv)
 ```
 
-Next, you add the ingress-nginx Helm repository, update the local Helm Chart repository cache, and install ingress-nginx addon via Helm. You can set the DNS label with the ***-set controller.service.annotations."service\.beta\.kubernetes\.io/azure-dns-label-name"="<DNS_LABEL>"** parameter either when you first deploy the ingress controller or later. In this example, you specify your own public IP address that you created in the previous step with the ***-set controller.service.loadBalancerIP="<STATIC_IP>" parameter**.
+Next, you add the ingress-nginx Helm repository, update the local Helm Chart repository cache, and install ingress-nginx addon via Helm. You can set the DNS label with the **-set controller.service.annotations."service\.beta\.kubernetes\.io/azure-dns-label-name"="<DNS_LABEL>"** parameter either when you first deploy the ingress controller or later. In this example, you specify your own public IP address that you created in the previous step with the **-set controller.service.loadBalancerIP="<STATIC_IP>" parameter**.
 
 ```sql
     helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx

@@ -28,7 +28,7 @@ mysql> show databases;
 ERROR 2006 (HY000): MySQL server has gone away
 No connection. Trying to reconnect...
 Connection ID:    64897
-Current database: *** NONE ***
+Current database: ** NONE **
 ERROR 1184 (08S01): Aborted connection 22 to db: 'db-name' user: 'user' host: 'hostIP' (init_connect command failed)
 
 **Resolution**: Reset `init_connect` value in Server parameters tab in Azure portal and set only the supported server parameters using init_connect parameter.

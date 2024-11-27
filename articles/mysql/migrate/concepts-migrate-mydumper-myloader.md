@@ -80,14 +80,14 @@ To install mydumper/myloader, do the following steps.
 
 This command uses the following variables:
 
-- ***-host:** The host to connect to
-- ***-user:** Username with the necessary privileges
-- ***-password:** User password
-- ***-rows:** Try to split tables into chunks of this many rows
-- ***-outputdir:** Directory to dump output files to
-- ***-regex:** Regular expression for Database matching.
-- ***-trx-consistency-only:** Transactional consistency only
-- ***-threads:** Number of threads to use, default 4. Recommended a use a value equal to 2x of the vCore of the computer.
+- **-host:** The host to connect to
+- **-user:** Username with the necessary privileges
+- **-password:** User password
+- **-rows:** Try to split tables into chunks of this many rows
+- **-outputdir:** Directory to dump output files to
+- **-regex:** Regular expression for Database matching.
+- **-trx-consistency-only:** Transactional consistency only
+- **-threads:** Number of threads to use, default 4. Recommended a use a value equal to 2x of the vCore of the computer.
 
     > [!NOTE]  
     > For more information on other options, you can use with mydumper, run the following command:
@@ -104,12 +104,12 @@ This command uses the following variables:
 
 This command uses the following variables:
 
-- ***-host:** The host to connect to
-- ***-user:** Username with the necessary privileges
-- ***-password:** User password
-- ***-directory:** Location where the backup is stored.
-- ***-queries-per-transaction:** Recommend setting to value not more than 500
-- ***-threads:** Number of threads to use, default 4. Recommended a use a value equal to 2x of the vCore of the computer
+- **-host:** The host to connect to
+- **-user:** Username with the necessary privileges
+- **-password:** User password
+- **-directory:** Location where the backup is stored.
+- **-queries-per-transaction:** Recommend setting to value not more than 500
+- **-threads:** Number of threads to use, default 4. Recommended a use a value equal to 2x of the vCore of the computer
 
 > [!TIP]  
 > For more information on other options you can use with myloader, run the following command:

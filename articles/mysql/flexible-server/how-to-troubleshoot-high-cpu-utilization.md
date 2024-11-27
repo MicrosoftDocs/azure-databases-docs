@@ -93,7 +93,7 @@ mysql> select p.id as session_id, p.user, p.host, p.db, p.command, p.time, p.sta
 The following example shows the output from this query:
 
 ```output
-*************************** 1. row ***************************
+****************** 1. row ******************
         session_id: 11
                user: adminuser
                host: 172.31.19.159:53624
@@ -106,7 +106,7 @@ The following example shows the output from this query:
     trx_age_seconds: 2908
   trx_rows_modified: 17825792
 trx_isolation_level: REPEATABLE READ
-*************************** 2. row ***************************
+****************** 2. row ******************
          session_id: 12
                user: adminuser
                host: 172.31.19.159:53622

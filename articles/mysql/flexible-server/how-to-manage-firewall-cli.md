@@ -46,7 +46,7 @@ az account set --subscription <subscription id>
 
 ## Create firewall rule during flexible server using Azure CLI
 
-You can use the `az mysql flexible-server --public access` command to create the Azure Database for MySQL flexible server instance with *Public access (allowed IP addresses)* and configure the firewall rules while creating the server. You can use the ***-public-access** switch to provide the allowed IP addresses that can connect to the server. You can provide single or range of IP addresses to be included in the allowed list of IPs. IP address range must be dash-separated and doesn't contain any spaces. There are various options to create an Azure Database for MySQL flexible server instance using Azure CLI, as shown in the following examples.
+You can use the `az mysql flexible-server --public access` command to create the Azure Database for MySQL flexible server instance with *Public access (allowed IP addresses)* and configure the firewall rules while creating the server. You can use the **-public-access** switch to provide the allowed IP addresses that can connect to the server. You can provide single or range of IP addresses to be included in the allowed list of IPs. IP address range must be dash-separated and doesn't contain any spaces. There are various options to create an Azure Database for MySQL flexible server instance using Azure CLI, as shown in the following examples.
 
 Refer to the Azure CLI [reference documentation](/cli/azure/mysql/flexible-server) for the complete list of configurable CLI parameters. For example, you can optionally specify the resource group in the following commands.
 
@@ -131,13 +131,13 @@ Upon success, each create command output lists the details of the firewall rule 
 
 ### List firewall rules
 
-Use the `az mysql flexible-server firewall-rule list` command to list the existing server firewall rules on the server. The server name attribute is specified in the ***-name** switch.
+Use the `az mysql flexible-server firewall-rule list` command to list the existing server firewall rules on the server. The server name attribute is specified in the **-name** switch.
 
 ```azurecli-interactive
 az mysql flexible-server firewall-rule list --name mydemoserver
 ```
 
-The output lists the rules, if any, in JSON format (by default). You can use the ***-output table** switch to output the results in a more readable table format.
+The output lists the rules, if any, in JSON format (by default). You can use the **-output table** switch to output the results in a more readable table format.
 
 ```azurecli-interactive
 az mysql flexible-server firewall-rule list --name mydemoserver --output table

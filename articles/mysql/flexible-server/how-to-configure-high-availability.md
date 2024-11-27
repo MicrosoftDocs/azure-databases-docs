@@ -40,7 +40,7 @@ This section provides details specifically for HA-related fields. You can follow
     **General purpose** or **Business Critical** compute tiers.
 
     > [!IMPORTANT]  
-    > We only support zone redundant high availability for the ***General purpose*** and ***Business Critical*** pricing tiers.
+    > We only support zone redundant high availability for the **General purpose** and **Business Critical** pricing tiers.
 
 1. Select the **Compute size** for your choice from the dropdown list.
 

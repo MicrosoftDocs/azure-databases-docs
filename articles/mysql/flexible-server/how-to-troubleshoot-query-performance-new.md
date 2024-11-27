@@ -234,7 +234,7 @@ show engine innodb status\G
 ```
 
 ```output
-*************************** 1. row ***************************
+****************** 1. row ******************
 
 (...)
 
@@ -294,7 +294,7 @@ mysql> select * from information_schema.innodb_trx
 
 
 ```output
-*************************** 1. row ***************************
+****************** 1. row ******************
                     trx_id: 8150550
                  trx_state: RUNNING
                trx_started: 2021-11-13 20:50:11
@@ -315,7 +315,7 @@ mysql> select user, host, db, command, time, info
 ```
 
 ```output
-*************************** 1. row ***************************
+****************** 1. row ******************
    user: test
    host: 172.31.19.159:38004
      db: employees
