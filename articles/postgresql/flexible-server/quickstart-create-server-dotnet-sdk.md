@@ -41,7 +41,7 @@ The `Azure.ResourceManager.PostgreSql` library is part of the Azure SDK for .NET
 ## Prerequisites
 
 An Azure account with an active subscription. [Create one for free](https://azure.microsoft.com/free/).
-Login to your account using az cli. To know more details on az cli follow this [Link](https://learn.microsoft.com/en-us/cli/azure/authenticate-azure-cli-interactively)
+Login to your account using az cli. To know more details on az cli follow this [Link](https://learn.microsoft.com/cli/azure/authenticate-azure-cli-interactively)
 
 ### 1. Open the Terminal
 ### 2. Run the login command
@@ -58,7 +58,7 @@ dotnet add package Azure.Identity
 dotnet add package Azure.ResourceManager
 dotnet add package Azure.ResourceManager.PostgreSql
 ```
-If you are having any issues related to initial setup for donet follow this guide, [Link](https://learn.microsoft.com/en-us/dotnet/core/install/windows)
+If you are having any issues related to initial setup for donet follow this guide, [Link](https://learn.microsoft.com/dotnet/core/install/windows)
 Once you install these packages there will be entry of them in the .csproj file, do verify that before executing the build and run command. [Learn more about .csproj file](https://learn.microsoft.com/aspnet/web-forms/overview/deployment/web-deployment-in-the-enterprise/understanding-the-project-file)
 
 ## Create the Server
