@@ -1,10 +1,10 @@
 ---
-title: "Migrate MySQL on-premises to Azure Database for MySQL: Assessment"
+title: "Migrate MySQL On-Premises to Azure Database for MySQL: Assessment"
 description: "Before jumping right into migrating a MySQL workload, there's a fair amount of due diligence that must be performed."
 author: SudheeshGH
 ms.author: sunaray
 ms.reviewer: maghan
-ms.date: 11/26/2024
+ms.date: 11/27/2024
 ms.service: azure-database-mysql
 ms.subservice: migration-guide
 ms.topic: how-to
@@ -16,7 +16,7 @@ Assessing the migration of MySQL databases from on-premises environments to Azur
 
 ## Prerequisites
 
-[Representative Use Case](02-representative-use-case.md)
+[Migrate MySQL on-premises to Azure Database for MySQL: Representative Use Case](02-representative-use-case.md)
 
 ## Overview
 
@@ -279,4 +279,4 @@ For the first phase, WWI focused solely on the ConferenceDB database. The team n
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Planning](04-planning.md)
+> [Migrate MySQL on-premises to Azure Database for MySQL: Planning](04-planning.md)

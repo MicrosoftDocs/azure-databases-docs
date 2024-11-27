@@ -1,10 +1,10 @@
 ---
-title: "Migrate MySQL on-premises to Azure Database for MySQL: Data Migration"
+title: "Migrate MySQL On-Premises to Azure Database for MySQL: Data Migration"
 description: "As a prudent step before upgrade or migrate data, export the database before the upgrade using MySQL Workbench or manually via the mysqldump command."
 author: SudheeshGH
 ms.author: sunaray
 ms.reviewer: maghan
-ms.date: 11/26/2024
+ms.date: 11/27/2024
 ms.service: azure-database-mysql
 ms.subservice: migration-guide
 ms.topic: how-to
@@ -16,7 +16,7 @@ Data migration is a pivotal aspect of transitioning MySQL databases from on-prem
 
 ## Prerequisites
 
-[Performance baselines](07-performance-baselines.md)
+[Migrate MySQL on-premises to Azure Database for MySQL: Performance Baselines](07-performance-baselines.md)
 
 ## Back up the database
 
@@ -123,7 +123,7 @@ If the upgrade checker reports no issues, it's safe to do an in-place upgrade by
 
 ## WWI scenario
 
-After successfully migrating the MySQL instance to 8.0, the WWI migration team realized the original [Database Migration Service (DMS)](01-mysql-migration-guide-intro.md) migration path could no longer be used as the DMS tool currently only supports 5.6 and 5.7. DMS required network access. The WWI migration team wasn't ready to handle their complex network issues. These environmental issues narrowed their migration tool choice to MySQL Workbench.
+After successfully migrating the MySQL instance to 8.0, the WWI migration team realized the original [Migrate MySQL on-premises to Azure Database for MySQL](01-mysql-migration-guide-intro.md) migration path could no longer be used as the DMS tool currently only supports 5.6 and 5.7. DMS required network access. The WWI migration team wasn't ready to handle their complex network issues. These environmental issues narrowed their migration tool choice to MySQL Workbench.
 
 ## Database objects
 
@@ -320,4 +320,4 @@ With the basic migration components in place, it's now possible to proceed with 
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Data Migration with MySQL Workbench](09-data-migration-with-mySQL-workbench.md)
+> [Migrate MySQL on-premises to Azure Database for MySQL: Data Migration with MySQL Workbench](09-data-migration-with-mySQL-workbench.md)

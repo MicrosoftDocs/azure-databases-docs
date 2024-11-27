@@ -1,10 +1,10 @@
 ---
-title: "Migrate MySQL on-premises to Azure Database for MySQL Introduction"
+title: "Migrate MySQL On-Premises to Azure Database for MySQL Introduction"
 description: "Migration guide from MySQL on-premises to Azure Data base for MySQL"
 author: SudheeshGH
 ms.author: sunaray
 ms.reviewer: maghan
-ms.date: 11/26/2024
+ms.date: 11/27/2024
 ms.service: azure-database-mysql
 ms.subservice: migration-guide
 ms.topic: how-to
@@ -37,4 +37,4 @@ This guide focuses entirely on migrating the on-premises MySQL workloads to the 
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Representative Use Case](02-representative-use-case.md)
+> [Migrate MySQL on-premises to Azure Database for MySQL: Representative Use Case](02-representative-use-case.md)

@@ -4,7 +4,7 @@ description: "This document has covered several topics related to migrating an a
 author: SudheeshGH
 ms.author: sunaray
 ms.reviewer: maghan
-ms.date: 11/26/2024
+ms.date: 11/27/2024
 ms.service: azure-database-mysql
 ms.subservice: migration-guide
 ms.topic: how-to
@@ -16,7 +16,7 @@ Migrating MySQL databases from on-premises environments to Azure Database for My
 
 ## Prerequisites
 
-[Security](13-security.md)
+[Migrate MySQL on-premises to Azure Database for MySQL: Security](13-security.md)
 
 ## Overview
 
@@ -40,17 +40,17 @@ For any questions or suggestions you might have about working with Azure Databas
 
 ## Find a partner to help migrate
 
-This guide can be overwhelming, but don't fret\! There are many experts in the community with a proven migration track record. [Search for a Microsoft Partner](https://appsource.microsoft.com/en-us/marketplace/partner-dir) or [Microsoft MVP](https://mvp.microsoft.com/search?target=Profile&program=MVP) to help with finding the most appropriate migration strategy. You aren't alone\!
+This guide can be overwhelming, but don't fret\! There are many experts in the community with a proven migration track record. [Search for a Microsoft Partner](https://appsource.microsoft.com/marketplace/partner-dir) or [Microsoft MVP](https://mvp.microsoft.com/search?target=Profile&program=MVP) to help with finding the most appropriate migration strategy. You aren't alone\!
 
 You can also browse the technical forums and social groups for more detailed real-world information:
 
   - [Microsoft Community Forum ](/answers/topics/azure-database-mysql.html)
 
-  - [Azure Database for MySQL Tech Community ](https://techcommunity.microsoft.com/t5/azure-database-for-mysql-blog/bg-p/ADforMySQL)
+  - [Azure Database for MySQL Tech Community ](https://techcommunity.microsoft.com/category/azuredatabases/blog/adformysql)
 
   - [StackOverflow for Azure MySQL ](https://stackoverflow.com/questions/tagged/azure-database-mysql)
 
-  - [Azure Facebook Group ](https://m.facebook.com/groups/MsftAzure)
+  - [Azure Facebook Group ](https://www.facebook.com/groups/MsftAzure?_rdr)
 
   - [LinkedIn Azure Group ](https://www.linkedin.com/error_pages/unsupported-browser.html)
 

@@ -1,10 +1,10 @@
 ---
-title: "Migrate MySQL on-premises to Azure Database for MySQL: Security"
+title: "Migrate MySQL On-Premises to Azure Database for MySQL: Security"
 description: "Moving to a cloud-based service doesn’t mean the entire internet has access to it always."
 author: SudheeshGH
 ms.author: sunaray
 ms.reviewer: maghan
-ms.date: 11/26/2024
+ms.date: 11/27/2024
 ms.service: azure-database-mysql
 ms.subservice: migration-guide
 ms.topic: how-to
@@ -16,7 +16,7 @@ Ensuring robust security is paramount when migrating MySQL databases from on-pre
 
 ## Prerequisites
 
-[Business continuity and disaster recovery](12-business-continuity-and-disaster-recovery.md)
+[Migrate MySQL on-premises to Azure Database for MySQL: Business Continuity and Disaster Recovery (BCDR)](12-business-continuity-and-disaster-recovery.md)
 
 ## Overview
 
@@ -94,4 +94,4 @@ Review a set of potential [security baseline](/azure/mysql/security-baseline) ta
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Summary](14-summary.md)
+> [Migrate MySQL on-premises to Azure Database for MySQL: Summary](14-summary.md)

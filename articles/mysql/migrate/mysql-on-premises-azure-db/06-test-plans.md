@@ -1,10 +1,10 @@
 ---
-title: "Migrate MySQL on-premises to Azure Database for MySQL: Test Plans"
+title: "Migrate MySQL On-Premises to Azure Database for MySQL: Test Plans"
 description: "WWI created a test plan that included a set of IT and the Business tasks. Successful migrations require all the tests to be executed."
 author: SudheeshGH
 ms.author: sunaray
 ms.reviewer: maghan
-ms.date: 11/26/2024
+ms.date: 11/27/2024
 ms.service: azure-database-mysql
 ms.subservice: migration-guide
 ms.topic: how-to
@@ -16,7 +16,7 @@ Developing comprehensive test plans is critical in migrating MySQL databases fro
 
 ## Prerequisites
 
-[Migration methods](05-migration-methods.md)
+[Migrate MySQL on-premises to Azure Database for MySQL: Migration Methods](05-migration-methods.md)
 
 ## Overview
 
@@ -185,4 +185,4 @@ The source database schema information was used to verify the target migration o
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Performance Baselines](07-performance-baselines.md)
+> [Migrate MySQL on-premises to Azure Database for MySQL: Performance Baselines](07-performance-baselines.md)

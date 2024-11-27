@@ -1,10 +1,10 @@
 ---
-title: "Migrate MySQL on-premises to Azure Database for MySQL: Migration Methods"
+title: "Migrate MySQL On-Premises to Azure Database for MySQL: Migration Methods"
 description: "Getting the data from the source to target requires using tools or features of MySQL to accomplish the migration."
 author: SudheeshGH
 ms.author: sunaray
 ms.reviewer: maghan
-ms.date: 11/26/2024
+ms.date: 11/27/2024
 ms.service: azure-database-mysql
 ms.subservice: migration-guide
 ms.topic: how-to
@@ -16,7 +16,7 @@ Exploring the various methods for migrating MySQL databases from on-premises env
 
 ## Prerequisites
 
-[Planning](04-planning.md)
+[Migrate MySQL on-premises to Azure Database for MySQL: Planning](04-planning.md)
 
 ## Overview
 
@@ -119,4 +119,4 @@ WWI has selected its conference database as its first migration workload. The wo
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Test Plans](06-test-plans.md)
+> [Migrate MySQL on-premises to Azure Database for MySQL: Test Plans](06-test-plans.md)

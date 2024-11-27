@@ -1,10 +1,10 @@
 ---
-title: "Migrate MySQL on-premises to Azure Database for MySQL: Representative Use Case"
+title: "Migrate MySQL On-Premises to Azure Database for MySQL: Representative Use Case"
 description: "The following use case is based on a real-world customer scenario of an enterprise who migrated their MySQL workload to Azure Database for MySQL."
 author: SudheeshGH
 ms.author: sunaray
 ms.reviewer: maghan
-ms.date: 11/26/2024
+ms.date: 11/27/2024
 ms.service: azure-database-mysql
 ms.subservice: migration-guide
 ms.topic: how-to
@@ -16,7 +16,7 @@ Migrating MySQL databases from on-premises environments to Azure Database for My
 
 ## Prerequisites
 
-[Introduction](01-mysql-migration-guide-intro.md)
+[Migrate MySQL on-premises to Azure Database for MySQL](01-mysql-migration-guide-intro.md)
 
 ## Overview
 
@@ -63,4 +63,4 @@ WWI wants to start with a simple application for the first migration and then mo
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Assessment](03-assessment.md)
+> [Migrate MySQL on-premises to Azure Database for MySQL: Assessment](03-assessment.md)

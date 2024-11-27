@@ -1,10 +1,10 @@
 ---
-title: "Migrate MySQL on-premises to Azure Database for MySQL: Planning"
+title: "Migrate MySQL On-Premises to Azure Database for MySQL: Planning"
 description: "An Azure landing zone is the target environment defined as the final resting place of a cloud migration project."
 author: SudheeshGH
 ms.author: sunaray
 ms.reviewer: maghan
-ms.date: 11/26/2024
+ms.date: 11/27/2024
 ms.service: azure-database-mysql
 ms.subservice: migration-guide
 ms.topic: how-to
@@ -16,7 +16,7 @@ Planning the migration of MySQL databases from on-premises environments to Azure
 
 ## Prerequisites
 
-[Assessment](03-assessment.md)
+[Migrate MySQL on-premises to Azure Database for MySQL: Assessment](03-assessment.md)
 
 ## Land zone
 
@@ -94,4 +94,4 @@ WWI originally wanted to test an online migration, but the required network setu
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Migration Methods](05-migration-methods.md)
+> [Migrate MySQL on-premises to Azure Database for MySQL: Migration Methods](05-migration-methods.md)

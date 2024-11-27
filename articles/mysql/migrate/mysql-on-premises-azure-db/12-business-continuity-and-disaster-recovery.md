@@ -1,10 +1,10 @@
 ---
-title: "Migrate MySQL on-premises to Azure Database for MySQL: Business Continuity and Disaster Recovery (BCDR)"
+title: "Migrate MySQL On-Premises to Azure Database for MySQL: Business Continuity and Disaster Recovery (BCDR)"
 description: "As with any mission critical system, having a backup and restore and a disaster recovery (BCDR) strategy is an important part of your overall system design."
 author: SudheeshGH
 ms.author: sunaray
 ms.reviewer: maghan
-ms.date: 11/26/2024
+ms.date: 11/27/2024
 ms.service: azure-database-mysql
 ms.subservice: migration-guide
 ms.topic: how-to
@@ -16,7 +16,7 @@ Ensuring business continuity and disaster recovery (BCDR) is critical to migrati
 
 ## Prerequisites
 
-[Optimization](11-optimization.md)
+[Migrate MySQL on-premises to Azure Database for MySQL: Optimization](11-optimization.md)
 
 ## Back up and restore
 
@@ -119,4 +119,4 @@ Failover Steps:
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Security](13-security.md)
+> [Migrate MySQL on-premises to Azure Database for MySQL: Security](13-security.md)
