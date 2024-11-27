@@ -1,10 +1,10 @@
 ---
-title: Restore a server with Azure CLI
+title: Restore a Server With Azure CLI
 description: This article describes how to perform restore operations in Azure Database for MySQL - Flexible Server through the Azure CLI.
 author: VandhanaMehta
 ms.author: vamehta
 ms.reviewer: maghan
-ms.date: 06/18/2024
+ms.date: 11/27/2024
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: how-to
@@ -14,7 +14,7 @@ ms.custom:
 
 # Point-in-time restore in Azure Database for MySQL - Flexible Server with Azure CLI
 
-[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
+[!INCLUDE [applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 This article provides step-by-step procedure to perform point-in-time recoveries in Azure Database for MySQL flexible server using backups.
 
@@ -22,7 +22,8 @@ This article provides step-by-step procedure to perform point-in-time recoveries
 
 - An Azure account with an active subscription.
 
-    [!INCLUDE [flexible-server-free-trial-note](../includes/flexible-server-free-trial-note.md)]
+[!INCLUDE [flexible-server-free-trial-note](../includes/flexible-server-free-trial-note.md)]
+
 - Install or upgrade Azure CLI to the latest version. See [Install Azure CLI](/cli/azure/install-azure-cli).
 
 - Login to Azure account using [az login](/cli/azure/reference-index#az-login) command. Note the **id** property, which refers to **Subscription ID** for your Azure account.
@@ -109,6 +110,7 @@ After the restore is completed, you should perform the following tasks to get yo
 - Ensure appropriate logins and database level permissions are in place.
 - Configure alerts as appropriate for the newly restore server.
 
-## Next steps
+## Next step
 
-Learn more about [business continuity](concepts-business-continuity.md)
+> [!div class="nextstepaction"]
+> [business continuity](concepts-business-continuity.md)

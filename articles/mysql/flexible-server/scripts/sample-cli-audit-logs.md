@@ -16,8 +16,6 @@ ms.devlang: azurecli
 
 # Configure audit logs on Azure Database for MySQL - Flexible Server using Azure CLI
 
-
-
 This sample CLI script enables [audit logs](../concepts-audit-logs.md) on an Azure Database for MySQL - Flexible Server.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/flexible-server-free-trial-note.md)]

@@ -1,10 +1,10 @@
 ---
-title: Manage read replicas with Azure portal
+title: Manage Read Replicas With Azure Portal
 description: Learn how to set up and manage read replicas in Azure Database for MySQL - Flexible Server by using the Azure portal.
 author: VandhanaMehta
 ms.author: vamehta
 ms.reviewer: maghan
-ms.date: 06/18/2024
+ms.date: 11/27/2024
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: how-to
@@ -12,7 +12,7 @@ ms.topic: how-to
 
 # How to create and manage read replicas in Azure Database for MySQL - Flexible Server by using the Azure portal
 
-[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
+[!INCLUDE [applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 In this article, you learn how to create and manage read replicas in Azure Database for MySQL flexible server using the Azure portal.
 
@@ -22,10 +22,9 @@ In this article, you learn how to create and manage read replicas in Azure Datab
 
 ## Prerequisites
 
-- An [Azure Database for MySQL server flexible server instance](quickstart-create-server-portal.md) that is used as the source server.
+- An [Quickstart: Create an instance of Azure Database for MySQL with the Azure portal](quickstart-create-server-portal.md) that is used as the source server.
 
 ## Create a read replica
-
 
 A read replica server can be created using the following steps:
 
@@ -37,15 +36,15 @@ A read replica server can be created using the following steps:
 
 1. Select **Add Replica**.
 
-   :::image type="content" source="./media/how-to-read-replica-portal/add-replica.png" alt-text="Screenshot of adding a replica." lightbox="./media/how-to-read-replica-portal/add-replica.png":::
+   :::image type="content" source="media/how-to-read-replicas-portal/add-replica.png" alt-text="Screenshot of adding a replica." lightbox="media/how-to-read-replicas-portal/add-replica.png":::
 
 1. Enter a name for the replica server. If your region supports Availability Zones, you can select the Availability zone of your choice.
 
-    :::image type="content" source="./media/how-to-read-replica-portal/replica-name.png" alt-text="Screenshot of adding a replica name." lightbox="./media/how-to-read-replica-portal/replica-name.png":::
+    :::image type="content" source="media/how-to-read-replicas-portal/replica-name.png" alt-text="Screenshot of adding a replica name.":::
 
 1. Enter location based on your need to create an in-region or universal cross-region read-replica.
 
-    :::image type="content" source="media/how-to-read-replica-portal/select-cross-region.png" alt-text="Screenshot of selecting a cross region.":::
+    :::image type="content" source="media/how-to-read-replicas-portal/select-cross-region.png" alt-text="Screenshot of selecting a cross region.":::
 
 1. Select **OK** to confirm the creation of the replica.
 
@@ -54,7 +53,7 @@ A read replica server can be created using the following steps:
 
 Once the replica server has been created, it can be viewed from the **Replication** page.
 
-   [:::image type="content" source="./media/how-to-read-replica-portal/list-replica.png" alt-text="Screenshot of a list of replicas." lightbox="./media/how-to-read-replica-portal/list-replica.png":::
+   [:::image type="content" source="media/how-to-read-replicas-portal/list-replica.png" alt-text="Screenshot of a list of replicas." lightbox="media/how-to-read-replicas-portal/list-replica.png":::
 
 ## Stop replication to a replica server
 
@@ -69,15 +68,15 @@ To stop replication between a source and a replica server from the Azure portal,
 
 1. Select the replica server you wish to stop replication.
 
-   [:::image type="content" source="./media/how-to-read-replica-portal/list-replica.png" alt-text="Screenshot of a list of replicas." lightbox="./media/how-to-read-replica-portal/list-replica.png":::
+   [
 
 1. Select Promote. Promote action caused replication to stop and convert the replica into an independent, standalone read-writeable server.
 
-    :::image type="content" source="media/how-to-read-replica-portal/promote-action.png" alt-text="Screenshot of selecting promote." lightbox="media/how-to-read-replica-portal/promote-action.png":::
+    :::image type="content" source="media/how-to-read-replicas-portal/promote-action.png" alt-text="Screenshot of selecting promote." lightbox="media/how-to-read-replicas-portal/promote-action.png":::
 
 1. Confirm you want to stop replication by selecting **Promote**.
 
-   [:::image type="content" source="./media/how-to-read-replica-portal/stop-replication-confirm.png" alt-text="Screenshot of stopping replication by selecting promote." lightbox="./media/how-to-read-replica-portal/stop-replication-confirm.png":::
+   [:::image type="content" source="media/how-to-read-replicas-portal/stop-replication-confirm.png" alt-text="Screenshot of stopping replication by selecting promote." lightbox="media/how-to-read-replicas-portal/stop-replication-confirm.png":::
 
 ## Delete a replica server
 
@@ -89,15 +88,15 @@ To delete a read replica server from the Azure portal, use the following steps:
 
 1. Select the replica server you wish to delete.
 
-   [:::image type="content" source="./media/how-to-read-replica-portal/delete-replica-select.png" alt-text="Screenshot of deleting a selected server replica." lightbox="./media/how-to-read-replica-portal/delete-replica-select.png":::
+   [:::image type="content" source="media/how-to-read-replicas-portal/delete-replica-select.png" alt-text="Screenshot of deleting a selected server replica." lightbox="media/how-to-read-replicas-portal/delete-replica-select.png":::
 
 1. Select **Delete replica**
 
-   :::image type="content" source="./media/how-to-read-replica-portal/delete-replica.png" alt-text="Screenshot of deleting a replica." lightbox="./media/how-to-read-replica-portal/delete-replica.png":::
+   :::image type="content" source="media/how-to-read-replicas-portal/delete-replica.png" alt-text="Screenshot of deleting a replica." lightbox="media/how-to-read-replicas-portal/delete-replica.png":::
 
 1. Type the name of the replica and select **Delete** to confirm the deletion of the replica.
 
-   :::image type="content" source="./media/how-to-read-replica-portal/delete-replica-confirm.png" alt-text="Screenshot of confirmation of deleting a replica." lightbox="./media/how-to-read-replica-portal/delete-replica-confirm.png":::
+   :::image type="content" source="media/how-to-read-replicas-portal/delete-replica-confirm.png" alt-text="Screenshot of confirmation of deleting a replica." lightbox="media/how-to-read-replicas-portal/delete-replica-confirm.png":::
 
 ## Delete a source server
 
@@ -110,11 +109,11 @@ To delete a source server from the Azure portal, use the following steps:
 
 1. From the **Overview**, select **Delete**.
 
-   [:::image type="content" source="./media/how-to-read-replica-portal/delete-master-overview.png" alt-text="Screenshot of deleting the source." lightbox="./media/how-to-read-replica-portal/delete-master-overview.png":::
+   [:::image type="content" source="media/how-to-read-replicas-portal/delete-master-overview.png" alt-text="Screenshot of deleting the source." lightbox="media/how-to-read-replicas-portal/delete-master-overview.png":::
 
 1. Type the name of the source server and select **Delete** to confirm the deletion of the source server.
 
-   :::image type="content" source="./media/how-to-read-replica-portal/delete-master-confirm.png" alt-text="Screenshot of deleting the source confirmed.":::
+   :::image type="content" source="media/how-to-read-replicas-portal/delete-master-confirm.png" alt-text="Screenshot of deleting the source confirmed.":::
 
 ## Monitor replication
 
@@ -124,19 +123,18 @@ To delete a source server from the Azure portal, use the following steps:
 
 1. Select **Replication lag in seconds** from the dropdown list of available metrics.
 
-   [:::image type="content" source="./media/how-to-read-replica-portal/monitor-select-replication-lag.png" alt-text="Screenshot of selecting the replication lag." lightbox="./media/how-to-read-replica-portal/monitor-select-replication-lag.png":::
+   [:::image type="content" source="media/how-to-read-replicas-portal/monitor-select-replication-lag.png" alt-text="Screenshot of selecting the replication lag." lightbox="media/how-to-read-replicas-portal/monitor-select-replication-lag.png":::
 
 1. Select the time range you wish to view. The image below selects a 30-minute time range.
 
-   [:::image type="content" source="./media/how-to-read-replica-portal/monitor-replication-lag-time-range.png" alt-text="Screenshot of selecting time range." lightbox="./media/how-to-read-replica-portal/monitor-replication-lag-time-range.png":::
+   [:::image type="content" source="media/how-to-read-replicas-portal/monitor-replication-lag-time-range.png" alt-text="Screenshot of selecting time range." lightbox="media/how-to-read-replicas-portal/monitor-replication-lag-time-range.png":::
 
 1. View the replication lag for the selected time range. The image below displays the last 30 minutes.
 
-   [:::image type="content" source="./media/how-to-read-replica-portal/monitor-replication-lag-time-range-thirty-mins.png" alt-text="Screenshot of selecting time range 30 minutes." lightbox="./media/how-to-read-replica-portal/monitor-replication-lag-time-range-thirty-mins.png":::
+   [:::image type="content" source="media/how-to-read-replicas-portal/monitor-replication-lag-time-range-thirty-mins.png" alt-text="Screenshot of selecting time range 30 minutes." lightbox="media/how-to-read-replicas-portal/monitor-replication-lag-time-range-thirty-mins.png":::
 
-## Next steps
+## Related content
 
-- Learn more about [read replicas](concepts-read-replicas.md)
-- You can also monitor the replication latency by following the steps mentioned [here](../how-to-troubleshoot-replication-latency.md).
-- To troubleshoot high replication latency observed in Metrics, visit the [link](../how-to-troubleshoot-replication-latency.md#common-scenarios-for-high-replication-latency).
-
+- [read replicas](concepts-read-replicas.md)
+- [here](../how-to-troubleshoot-replication-latency.md)
+- [link](../how-to-troubleshoot-replication-latency.md#common-scenarios-for-high-replication-latency)

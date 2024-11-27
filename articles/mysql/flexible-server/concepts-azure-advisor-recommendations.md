@@ -4,7 +4,7 @@ description: Learn about how Azure Advisor is applied to Azure Database for MySQ
 author: SudheeshGH
 ms.author: sunaray
 ms.reviewer: maghan
-ms.date: 11/26/2024
+ms.date: 11/27/2024
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: conceptual

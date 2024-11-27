@@ -1,10 +1,10 @@
 ---
-title: "Quickstart: Create a flexible server by using Azure Resource Manager"
+title: "Quickstart: Create a Flexible Server By Using Azure Resource Manager"
 description: In this quickstart, learn how to deploy a database in an instance of Azure Database for MySQL - Flexible Server by using an Azure Resource Manager template.
 author: shreyaaithal
 ms.author: shaithal
 ms.reviewer: maghan
-ms.date: 06/18/2024
+ms.date: 11/27/2024
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: quickstart
@@ -16,7 +16,7 @@ ms.custom:
 
 # Quickstart: Create an instance of Azure Database for MySQL - Flexible Server by using Azure Resource Manager
 
-[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
+[!INCLUDE [applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 [!INCLUDE [azure-database-for-mysql-flexible-server-abstract](../includes/Azure-database-for-mysql-flexible-server-abstract.md)]
 
@@ -263,7 +263,6 @@ To create an Azure Database for MySQL - Flexible Server instance by using the pu
 Modify the following code examples to create an Azure Database for MySQL Flexible Server that has private access connectivity inside a virtual network:
 
 ```json
-
 {
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
@@ -592,7 +591,6 @@ To verify that your Azure Database for MySQL Flexible Server was created in the 
 
 ```azurecli
 az resource list --resource-group exampleRG
-
 ```
 
 # [Azure PowerShell](#tab/azure-powershell)
@@ -623,5 +621,5 @@ Remove-AzResourceGroup -Name exampleRG
 
 ## Related content
 
-- For a step-by-step tutorial that guides you through the process of creating an ARM template, see [Tutorial: Create and deploy your first ARM template](/azure/azure-resource-manager/templates/template-tutorial-create-first-template).
-- For a step-by-step tutorial that demonstrates how to build an app by using Azure App Service and MySQL, see [Build a PHP (Laravel) web app with MySQL](tutorial-php-database-app.md).
+- [Tutorial: Create and deploy your first ARM template](/azure/azure-resource-manager/templates/template-tutorial-create-first-template)
+- [Tutorial: Build a PHP (Laravel) and Azure Database for MySQL - Flexible Server app on Azure App Service](tutorial-php-database-app.md)

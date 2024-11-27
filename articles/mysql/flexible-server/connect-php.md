@@ -1,10 +1,10 @@
 ---
-title: "Quickstart: Connect using PHP"
+title: "Quickstart: Connect Using PHP"
 description: This quickstart provides several PHP code samples you can use to connect and query data from Azure Database for MySQL - Flexible Server.
 author: shreyaaithal
 ms.author: shaithal
 ms.reviewer: maghan
-ms.date: 06/18/2024
+ms.date: 11/27/2024
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: quickstart
@@ -15,40 +15,41 @@ ms.custom:
 
 # Use PHP with Azure Database for MySQL - Flexible Server
 
-[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
+[!INCLUDE [applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
+
 This quickstart demonstrates how to connect to Azure Database for MySQL flexible server using a [PHP](https://www.php.net/) application. It shows how to use SQL statements to query, insert, update, and delete data in the database. This article assumes that you're familiar with development using PHP and that you're new to working with Azure Database for MySQL flexible server.
 
 ## Prerequisites
 
 This quickstart uses the resources created in either of these guides as a starting point:
 
-- [Create an Azure Database for MySQL flexible server instance using Azure portal](./quickstart-create-server-portal.md)
-- [Create an Azure Database for MySQL flexible server instance using Azure CLI](./quickstart-create-server-cli.md)
+- [Quickstart: Create an instance of Azure Database for MySQL with the Azure portal](quickstart-create-server-portal.md)
+- [Quickstart: Create an instance of Azure Database for MySQL - Flexible Server by using the Azure CLI](quickstart-create-server-cli.md)
 
 ## Preparing your client workstation
 
-1. If you created your flexible server with *Private access (virtual network Integration)*, you'll need to connect to your server from a resource within the same virtual network as your server. You can create a virtual machine and add it to the virtual network created with your flexible server. Refer to [Create and manage an Azure Database for MySQL flexible server virtual network using Azure CLI](./how-to-manage-virtual-network-cli.md).
+1. If you created your flexible server with *Private access (virtual network Integration)*, you'll need to connect to your server from a resource within the same virtual network as your server. You can create a virtual machine and add it to the virtual network created with your flexible server. Refer to [Create and manage virtual networks for Azure Database for MySQL - Flexible Server using the Azure CLI](how-to-manage-virtual-network-cli.md).
 
-2. If you created your flexible server with *Public access (allowed IP addresses)*, you can add your local IP address to the list of firewall rules on your server. Refer to [Create and manage Azure Database for MySQL flexible server firewall rules using the Azure CLI](./how-to-manage-firewall-cli.md).
+1. If you created your flexible server with *Public access (allowed IP addresses)*, you can add your local IP address to the list of firewall rules on your server. Refer to [Manage firewall rules for Azure Database for MySQL - Flexible Server using Azure CLI](how-to-manage-firewall-cli.md).
 
 ### Install PHP
 
-Install PHP on your own server, or create an Azure [web app](/azure/app-service/overview) that includes PHP.  Refer to [create and manage firewall rules](./how-to-manage-firewall-portal.md) to learn how to create firewall rules.
+Install PHP on your own server, or create an Azure [web app](/azure/app-service/overview) that includes PHP. Refer to [create and manage firewall rules](how-to-manage-firewall-portal.md) to learn how to create firewall rules.
 
 #### [macOS](#tab/macos)
 
-1. Download [PHP 7.1.4 version](https://secure.php.net/downloads.php).
-2. Install PHP and refer to the [PHP manual](https://secure.php.net/manual/install.macosx.php) for further configuration.
+1. Download [PHP 7.1.4 version](https://www.php.net/downloads.php).
+1. Install PHP and refer to the [PHP manual](https://www.php.net/manual/en/install.macosx.php) for further configuration.
 
 #### [Linux](#tab/linux)
 
-1. Download [PHP 7.1.4 nonthread safe (x64) version](https://secure.php.net/downloads.php).
-2. Install PHP and refer to the [PHP manual](https://secure.php.net/manual/install.unix.php) for further configuration.
+1. Download [PHP 7.1.4 nonthread safe (x64) version](https://www.php.net/downloads.php).
+1. Install PHP and refer to the [PHP manual](https://www.php.net/manual/en/install.unix.php) for further configuration.
 
 #### [Windows](#tab/windows)
 
 1. Download [PHP 7.1.4 nonthread safe (x64) version](https://windows.php.net/download#php-7.1).
-2. Install PHP and refer to the [PHP manual](https://secure.php.net/manual/install.windows.php) for further configuration.
+1. Install PHP and refer to the [PHP manual](https://www.php.net/manual/en/install.windows.php) for further configuration.
 
 ---
 
@@ -57,10 +58,10 @@ Install PHP on your own server, or create an Azure [web app](/azure/app-service/
 Get the connection information needed to connect to the Azure Database for MySQL flexible server instance. You need the fully qualified server name and sign in credentials.
 
 1. Sign in to the [Azure portal](https://portal.azure.com/).
-2. From the left-hand menu in Azure portal, select **All resources**, and then search for the server you have created (such as **mydemoserver**).
-3. Select the server name.
-4. From the server's **Overview** panel, make a note of the **Server name** and **Server admin login name**. If you forget your password, you can also reset the password from this panel.
- <!---:::image type="content" source="./media/connect-php/1_server-overview-name-login.png" alt-text="Azure Database for MySQL flexible server instance name":::--->
+1. From the left-hand menu in Azure portal, select **All resources**, and then search for the server you have created (such as **mydemoserver**).
+1. Select the server name.
+1. From the server's **Overview** panel, make a note of the **Server name** and **Server admin login name**. If you forget your password, you can also reset the password from this panel.
+<!------>
 
 ## Connecting to flexible server using TLS/SSL in PHP
 
@@ -79,7 +80,7 @@ die('Failed to connect to MySQL: '.mysqli_connect_error());
 
 Use the following code to connect and create a table by using **CREATE TABLE** SQL statement.
 
-The code uses the **MySQL Improved extension** (mysqli) class included in PHP. The code calls methods [mysqli_init](https://secure.php.net/manual/mysqli.init.php) and [mysqli_real_connect](https://secure.php.net/manual/mysqli.real-connect.php) to connect to MySQL. Then it calls method [mysqli_query](https://secure.php.net/manual/mysqli.query.php) to run the query. Then it calls method [mysqli_close](https://secure.php.net/manual/mysqli.close.php) to close the connection.
+The code uses the **MySQL Improved extension** (mysqli) class included in PHP. The code calls methods [mysqli_init](https://www.php.net/manual/en/mysqli.init.php) and [mysqli_real_connect](https://www.php.net/manual/en/mysqli.real-connect.php) to connect to MySQL. Then it calls method [mysqli_query](https://www.php.net/manual/en/mysqli.query.php) to run the query. Then it calls method [mysqli_close](https://www.php.net/manual/en/mysqli.close.php) to close the connection.
 
 Replace the host, username, password, and db_name parameters with your own values.
 
@@ -119,7 +120,7 @@ mysqli_close($conn);
 
 Use the following code to connect and insert data by using an **INSERT** SQL statement.
 
-The code uses the **MySQL Improved extension** (mysqli) class included in PHP. The code uses method [mysqli_prepare](https://secure.php.net/manual/mysqli.prepare.php) to create a prepared insert statement, then binds the parameters for each inserted column value using method [mysqli_stmt_bind_param](https://secure.php.net/manual/mysqli-stmt.bind-param.php). The code runs the statement by using method [mysqli_stmt_execute](https://secure.php.net/manual/mysqli-stmt.execute.php) and afterwards closes the statement by using method [mysqli_stmt_close](https://secure.php.net/manual/mysqli-stmt.close.php).
+The code uses the **MySQL Improved extension** (mysqli) class included in PHP. The code uses method [mysqli_prepare](https://www.php.net/manual/en/mysqli.prepare.php) to create a prepared insert statement, then binds the parameters for each inserted column value using method [mysqli_stmt_bind_param](https://www.php.net/manual/en/mysqli-stmt.bind-param.php). The code runs the statement by using method [mysqli_stmt_execute](https://www.php.net/manual/en/mysqli-stmt.execute.php) and afterwards closes the statement by using method [mysqli_stmt_close](https://www.php.net/manual/en/mysqli-stmt.close.php).
 
 Replace the host, username, password, and db_name parameters with your own values.
 
@@ -155,7 +156,7 @@ mysqli_close($conn);
 
 ## Read data
 
-Use the following code to connect and read the data by using a **SELECT** SQL statement.  The code uses the **MySQL Improved extension** (mysqli) class included in PHP. The code uses method [mysqli_query](https://secure.php.net/manual/mysqli.query.php) perform the sql query and method [mysqli_fetch_assoc](https://secure.php.net/manual/mysqli-result.fetch-assoc.php) to fetch the resulting rows.
+Use the following code to connect and read the data by using a **SELECT** SQL statement. The code uses the **MySQL Improved extension** (mysqli) class included in PHP. The code uses method [mysqli_query](https://www.php.net/manual/en/mysqli.query.php) perform the sql query and method [mysqli_fetch_assoc](https://www.php.net/manual/en/mysqli-result.fetch-assoc.php) to fetch the resulting rows.
 
 Replace the host, username, password, and db_name parameters with your own values.
 
@@ -189,7 +190,7 @@ mysqli_close($conn);
 
 Use the following code to connect and update the data by using an **UPDATE** SQL statement.
 
-The code uses the **MySQL Improved extension** (mysqli) class included in PHP. The code uses method [mysqli_prepare](https://secure.php.net/manual/mysqli.prepare.php) to create a prepared update statement, then binds the parameters for each updated column value using method [mysqli_stmt_bind_param](https://secure.php.net/manual/mysqli-stmt.bind-param.php). The code runs the statement by using method [mysqli_stmt_execute](https://secure.php.net/manual/mysqli-stmt.execute.php) and afterwards closes the statement by using method [mysqli_stmt_close](https://secure.php.net/manual/mysqli-stmt.close.php).
+The code uses the **MySQL Improved extension** (mysqli) class included in PHP. The code uses method [mysqli_prepare](https://www.php.net/manual/en/mysqli.prepare.php) to create a prepared update statement, then binds the parameters for each updated column value using method [mysqli_stmt_bind_param](https://www.php.net/manual/en/mysqli-stmt.bind-param.php). The code runs the statement by using method [mysqli_stmt_execute](https://www.php.net/manual/en/mysqli-stmt.execute.php) and afterwards closes the statement by using method [mysqli_stmt_close](https://www.php.net/manual/en/mysqli-stmt.close.php).
 
 Replace the host, username, password, and db_name parameters with your own values.
 
@@ -227,7 +228,7 @@ mysqli_close($conn);
 
 Use the following code to connect and read the data by using a **DELETE** SQL statement.
 
-The code uses the **MySQL Improved extension** (mysqli) class included in PHP. The code uses method [mysqli_prepare](https://secure.php.net/manual/mysqli.prepare.php) to create a prepared delete statement, then binds the parameters for the where clause in the statement using method [mysqli_stmt_bind_param](https://secure.php.net/manual/mysqli-stmt.bind-param.php). The code runs the statement by using method [mysqli_stmt_execute](https://secure.php.net/manual/mysqli-stmt.execute.php) and afterwards closes the statement by using method [mysqli_stmt_close](https://secure.php.net/manual/mysqli-stmt.close.php).
+The code uses the **MySQL Improved extension** (mysqli) class included in PHP. The code uses method [mysqli_prepare](https://www.php.net/manual/en/mysqli.prepare.php) to create a prepared delete statement, then binds the parameters for the where clause in the statement using method [mysqli_stmt_bind_param](https://www.php.net/manual/en/mysqli-stmt.bind-param.php). The code runs the statement by using method [mysqli_stmt_execute](https://www.php.net/manual/en/mysqli-stmt.execute.php) and afterwards closes the statement by using method [mysqli_stmt_close](https://www.php.net/manual/en/mysqli-stmt.close.php).
 
 Replace the host, username, password, and db_name parameters with your own values.
 
@@ -259,9 +260,9 @@ mysqli_close($conn);
 ?>
 ```
 
-## Next steps
+## Related content
 
-- [Encrypted connectivity using Transport Layer Security (TLS 1.2) in Azure Database for MySQL flexible server](./how-to-connect-tls-ssl.md).
-- Learn more about [Networking in Azure Database for MySQL flexible server](./concepts-networking.md).
-- [Create and manage Azure Database for MySQL flexible server firewall rules using the Azure portal](./how-to-manage-firewall-portal.md).
-- [Create and manage Azure Database for MySQL flexible server virtual network using Azure portal](./how-to-manage-virtual-network-portal.md).
+- [Connect to Azure Database for MySQL - Flexible Server with encrypted connections](how-to-connect-tls-ssl.md)
+- [Connectivity and networking concepts for Azure Database for MySQL - Flexible Server](concepts-networking.md)
+- [Manage firewall rules for Azure Database for MySQL - Flexible Server using the Azure portal](how-to-manage-firewall-portal.md)
+- [Create and manage virtual networks for Azure Database for MySQL - Flexible Server using the Azure portal](how-to-manage-virtual-network-portal.md)

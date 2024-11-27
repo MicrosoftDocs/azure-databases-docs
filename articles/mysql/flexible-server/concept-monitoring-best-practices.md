@@ -4,7 +4,7 @@ description: This article describes the best practices to monitor Azure Database
 author: SudheeshGH
 ms.author: sunaray
 ms.reviewer: maghan
-ms.date: 11/26/2024
+ms.date: 11/27/2024
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: conceptual
@@ -47,5 +47,5 @@ The [amount of storage](../single-server/how-to-create-manage-server-portal.md#s
 
 ## Related content
 
-- [Best practice for performance of Azure Database for MySQL flexible server ](concept-performance-best-practices.md)
-- [Best practice for server operations using Azure Database for MySQL flexible server](concept-operation-excellence-best-practices.md)
+- [Best practices for optimal performance of Azure Database for MySQL - Flexible Server](concept-performance-best-practices.md)
+- [Best practices for server operations on Azure Database for MySQL - Flexible Server](concept-operation-excellence-best-practices.md)

@@ -1,10 +1,10 @@
 ---
-title: Set up data encryption by using the Azure CLI
+title: Set up Data Encryption By Using the Azure CLI
 description: Learn how to set up and manage data encryption for Azure Database for MySQL - Flexible Server by using Azure CLI.
 author: SudheeshGH
 ms.author: sunaray
 ms.reviewer: maghan
-ms.date: 06/18/2024
+ms.date: 11/27/2024
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: how-to
@@ -15,7 +15,7 @@ ms.custom:
 
 # Data encryption for Azure Database for MySQL - Flexible Server with Azure CLI
 
-[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
+[!INCLUDE [applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 This tutorial shows you how to set up and manage data encryption for Azure Database for MySQL Flexible Server using Azure CLI.
 
@@ -32,7 +32,7 @@ In this tutorial, you learn how to:
 - If you don't have an Azure subscription, create an [Azure free account](https://azure.microsoft.com/free) before you begin.
 
     > [!NOTE]  
-    > With an Azure free account, you can now try Azure Database for MySQL Flexible Server for free for 12 months. For more information, see [Try Azure Database for MySQL Flexible Server for free](how-to-deploy-on-azure-free-account.md).
+    > With an Azure free account, you can now try Azure Database for MySQL Flexible Server for free for 12 months. For more information, see [Use an Azure free account to try Azure Database for MySQL - Flexible Server for free](how-to-deploy-on-azure-free-account.md).
 
 - Install or upgrade Azure CLI to the latest version. See [Install Azure CLI](/cli/azure/install-azure-cli).
 
@@ -255,7 +255,7 @@ The params **identityUri** and **primaryKeyUri** are the resource ID of the user
 }
 ```
 
-## Next steps
+## Related content
 
-- [Customer managed keys data encryption](concepts-customer-managed-key.md)
-- [Data encryption with Azure portal](how-to-data-encryption-portal.md)
+- [Data encryption with customer managed keys for Azure Database for MySQL - Flexible Server](concepts-customer-managed-key.md)
+- [Data encryption for Azure Database for MySQL - Flexible Server by using the Azure portal](how-to-data-encryption-portal.md)

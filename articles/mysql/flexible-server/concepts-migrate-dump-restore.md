@@ -4,7 +4,7 @@ description: This article explains two common ways to back up and restore databa
 author: aditivgupta
 ms.author: adig
 ms.reviewer: maghan
-ms.date: 11/26/2024
+ms.date: 11/27/2024
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: conceptual
@@ -28,7 +28,7 @@ To step through this how-to guide, you need to have:
 - [MySQL Workbench](https://dev.mysql.com/downloads/workbench/) or another third-party MySQL tool to do dump and restore commands.
 
 > [!TIP]  
-> If you are looking to migrate large databases with database sizes more than 1 TBs, you might want to consider using community tools like **mydumper/myloader** which supports parallel export and import. Learn [how to migrate large MySQL databases](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/best-practices-for-migrating-large-databases-to-azure-database/ba-p/1362699).
+> If you are looking to migrate large databases with database sizes more than 1 TBs, you might want to consider using community tools like **mydumper/myloader** which supports parallel export and import. Learn [how to migrate large MySQL databases](https://techcommunity.microsoft.com/blog/adformysql/best-practices-for-migrating-large-databases-to-azure-database-for-mysql/1362699).
 
 ## Common use-cases for dump and restore
 
@@ -189,9 +189,9 @@ Importing your database is similar to exporting. Do the following actions:
 
 ## Known Issues
 
-For known issues, tips and tricks, we recommend you to look at our [techcommunity blog](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/tips-and-tricks-in-using-mysqldump-and-mysql-restore-to-azure/ba-p/916912).
+For known issues, tips and tricks, we recommend you to look at our [techcommunity blog](https://techcommunity.microsoft.com/blog/adformysql/tips-and-tricks-in-using-mysqldump-and-mysql-restore-to-azure-database-for-mysql/916912).
 
 ## Related content
 
 - [Database Migration Guide](https://github.com/Azure/azure-mysql/tree/master/MigrationGuide)
-- [How to migrate large MySQL databases](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/best-practices-for-migrating-large-databases-to-azure-database/ba-p/1362699)
+- [How to migrate large MySQL databases](https://techcommunity.microsoft.com/blog/adformysql/best-practices-for-migrating-large-databases-to-azure-database-for-mysql/1362699)

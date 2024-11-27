@@ -1,10 +1,10 @@
 ---
-title: Manage firewall rules - Azure CLI
+title: Manage Firewall Rules - Azure CLI
 description: Create and manage firewall rules for Azure Database for MySQL - Flexible Server using Azure CLI command line.
 author: SudheeshGH
 ms.author: sunaray
 ms.reviewer: maghan
-ms.date: 06/18/2024
+ms.date: 11/27/2024
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: how-to
@@ -15,7 +15,7 @@ ms.devlang: azurecli
 
 # Manage firewall rules for Azure Database for MySQL - Flexible Server using Azure CLI
 
-[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
+[!INCLUDE [applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 Azure Database for MySQL flexible server supports two mutually exclusive network connectivity methods to connect to your flexible server. The two options are:
 
@@ -28,7 +28,7 @@ In this article, we focus on the creation of an Azure Database for MySQL flexibl
 
 The [Azure Cloud Shell](/azure/cloud-shell/overview) is a free interactive shell that you can use to run the steps in this article. It has common Azure tools preinstalled and configured to use with your account.
 
-To open the Cloud Shell, just select **Try it** from the upper right corner of a code block. You can also open Cloud Shell in a separate browser tab by going to [https://shell.azure.com/bash](https://shell.azure.com/bash). Select **Copy** to copy the blocks of code, paste it into the Cloud Shell, and select **Enter** to run it.
+To open the Cloud Shell, just select **Try it** from the upper right corner of a code block. You can also open Cloud Shell in a separate browser tab by going to [https://shell.azure.com/bash](https://portal.azure.com/#cloudshell). Select **Copy** to copy the blocks of code, paste it into the Cloud Shell, and select **Enter** to run it.
 
 If you prefer to install and use the CLI locally, this quickstart requires Azure CLI version 2.0 or later. Run `az --version` to find the version. If you need to install or upgrade, see [Install Azure CLI](/cli/azure/install-azure-cli).
 
@@ -133,7 +133,7 @@ Upon success, each create command output lists the details of the firewall rule 
 
 ### List firewall rules
 
-Use the `az mysql flexible-server firewall-rule list` command to list the existing server firewall rules on the server. Notice that the server name attribute is specified in the **--name** switch.
+Use the `az mysql flexible-server firewall-rule list` command to list the existing server firewall rules on the server. The server name attribute is specified in the **--name** switch.
 
 ```azurecli-interactive
 az mysql flexible-server firewall-rule list --name mydemoserver
@@ -178,8 +178,8 @@ az mysql flexible-server firewall-rule delete --name mydemoserver --rule-name Fi
 
 Upon success, there's no output. Upon failure, an error message text is displayed.
 
-## Next steps
+## Related content
 
-- Learn more about [Networking in Azure Database for MySQL flexible server](./concepts-networking.md)
-- Understand more about [Azure Database for MySQL flexible server firewall rules](./concepts-networking-public.md#public-access-allowed-ip-addresses)
-- [Create and manage Azure Database for MySQL flexible server firewall rules using the Azure portal](./how-to-manage-firewall-portal.md)
+- [Connectivity and networking concepts for Azure Database for MySQL - Flexible Server](concepts-networking.md)
+- [Azure Database for MySQL flexible server firewall rules](./concepts-networking-public.md#public-access-allowed-ip-addresses)
+- [Manage firewall rules for Azure Database for MySQL - Flexible Server using the Azure portal](how-to-manage-firewall-portal.md)

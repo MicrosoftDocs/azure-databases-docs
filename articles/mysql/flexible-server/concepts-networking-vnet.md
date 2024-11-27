@@ -1,10 +1,10 @@
 ---
-title: Private Network Access overview
+title: Private Network Access Overview
 description: Learn about private access networking option in Azure Database for MySQL - Flexible Server.
 author: SudheeshGH
 ms.author: sunaray
 ms.reviewer: maghan
-ms.date: 07/08/2024
+ms.date: 11/27/2024
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: conceptual
@@ -134,6 +134,6 @@ The process is conducted in offline mode and consists of two steps:
 
 ## Related content
 
-- [Azure portal](how-to-manage-virtual-network-portal.md)
-- [Azure CLI](how-to-manage-virtual-network-cli.md)
-- [Use TLS](how-to-connect-tls-ssl.md)
+- [Create and manage virtual networks for Azure Database for MySQL - Flexible Server using the Azure portal](how-to-manage-virtual-network-portal.md)
+- [Create and manage virtual networks for Azure Database for MySQL - Flexible Server using the Azure CLI](how-to-manage-virtual-network-cli.md)
+- [Connect to Azure Database for MySQL - Flexible Server with encrypted connections](how-to-connect-tls-ssl.md)

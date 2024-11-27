@@ -1,18 +1,16 @@
 ---
-title: Profile query performance
+title: Profile Query Performance
 description: Learn how to profile query performance in Azure Database for MySQL - Flexible Server by using EXPLAIN.
 author: SudheeshGH
 ms.author: sunaray
 ms.reviewer: maghan
-ms.date: 06/18/2024
+ms.date: 11/27/2024
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: troubleshooting
 ---
 
 # Profile query performance in Azure Database for MySQL - Flexible Server by using EXPLAIN
-
-
 
 **EXPLAIN** is a handy tool that can help you optimize queries. You can use an EXPLAIN statement to get information about how SQL statements are run. The following shows example output from running an EXPLAIN statement.
 
@@ -167,6 +165,7 @@ The output of the EXPLAIN statement now shows that Azure Database for MySQL flex
 
 You can increase performance significantly by using EXPLAIN together with different types of indexes. Having an index on a table doesn't necessarily mean that Azure Database for MySQL flexible server can use it for your queries. Always validate your assumptions by using EXPLAIN and optimize your queries using indexes.
 
-## Next steps
+## Next step
 
-- To find peer answers to your most important questions or to post or answer a question, visit [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-database-mysql).
+> [!div class="nextstepaction"]
+> [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-database-mysql)

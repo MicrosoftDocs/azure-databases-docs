@@ -16,8 +16,6 @@ ms.devlang: azurecli
 
 # Restart/stop/start an Azure Database for MySQL - Flexible Server instance using Azure CLI
 
-
-
 This sample CLI script performs restart, start and stop operations on an Azure Database for MySQL - Flexible Server.
 
 > [!IMPORTANT]  

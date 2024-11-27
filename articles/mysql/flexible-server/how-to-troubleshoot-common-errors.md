@@ -1,10 +1,10 @@
 ---
-title: Troubleshoot common errors
+title: Troubleshoot Common Errors
 description: Learn how to troubleshoot common migration errors encountered by users new to Azure Database for MySQL - Flexible Server.
 author: sudheeshgh
 ms.author: sunaray
 ms.reviewer: maghan
-ms.date: 06/18/2024
+ms.date: 11/27/2024
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: troubleshooting

@@ -1,10 +1,10 @@
 ---
-title: Monitor by using workbooks
+title: Monitor By Using Workbooks
 description: This article describes how you can monitor Azure Database for MySQL - Flexible Server by using Azure Monitor workbooks.
 author: code-sidd
 ms.author: sisawant
 ms.reviewer: maghan
-ms.date: 06/18/2024
+ms.date: 11/27/2024
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: conceptual
@@ -12,7 +12,7 @@ ms.topic: conceptual
 
 # Monitor Azure Database for MySQL - Flexible Server by using Azure Monitor workbooks
 
-[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
+[!INCLUDE [applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 Azure Database for MySQL flexible server is now integrated with Azure Monitor workbooks. With workbooks, you get a flexible canvas for analyzing data and creating rich visual reports within the Azure portal. Workbooks allow you to tap into multiple data sources across Azure and combine them into unified interactive experiences. Workbook templates serve as curated reports that are designed for flexible reuse by multiple users and teams.
 
@@ -54,13 +54,13 @@ You can also edit and customize these templates according to your requirements. 
 
 To view the templates in the Azure portal, go to the **Monitoring** pane for Azure Database for MySQL flexible server, and then select **Workbooks**.
 
-:::image type="content" source="./media/concept-workbook/monitor-workbooks-all.png" alt-text="Screenshot showing the 'Overview', 'Auditing', and 'Query Performance Insight' templates on the Workbooks pane." lightbox="./media/concept-workbook/monitor-workbooks-all.png":::
+:::image type="content" source="media/concepts-workbooks/monitor-workbooks-all.png" alt-text="Screenshot showing the 'Overview', 'Auditing', and 'Query Performance Insight' templates on the Workbooks pane." lightbox="media/concepts-workbooks/monitor-workbooks-all.png":::
 
 You can also display the list of templates by going to the **Public Templates** pane.
 
-:::image type="content" source="./media/concept-workbook/monitor-workbooks-public.png" alt-text="Diagram that shows the 'Overview', 'Auditing', and 'Query Performance Insight' templates on the 'Public Templates' pane." lightbox="./media/concept-workbook/monitor-workbooks-public.png":::
+:::image type="content" source="media/concepts-workbooks/monitor-workbooks-public.png" alt-text="Diagram that shows the 'Overview', 'Auditing', and 'Query Performance Insight' templates on the 'Public Templates' pane." lightbox="media/concepts-workbooks/monitor-workbooks-public.png":::
 
-## Next steps
+## Related content
 
-- Learn about [Azure workbooks access control](/azure/azure-monitor/visualize/workbooks-overview#access-control).
-- Learn more about [Azure workbooks visualization options](/azure/azure-monitor/visualize/workbooks-visualizations).
+- [Azure workbooks access control](/azure/azure-monitor/visualize/workbooks-overview#access-control)
+- [Azure workbooks visualization options](/azure/azure-monitor/visualize/workbooks-visualizations)

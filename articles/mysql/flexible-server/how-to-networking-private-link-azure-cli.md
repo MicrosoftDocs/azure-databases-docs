@@ -1,10 +1,10 @@
 ---
-title: Private Link using Azure CLI
+title: Private Link Using Azure CLI
 description: Learn how to configure private link for Azure Database for MySQL - Flexible Server by using the Azure CLI.
 author: SudheeshGH
 ms.author: sunaray
 ms.reviewer: maghan
-ms.date: 06/18/2024
+ms.date: 11/27/2024
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: how-to
@@ -14,7 +14,7 @@ ms.custom:
 
 # Create and manage Private Link for Azure Database for MySQL - Flexible Server using Azure CLI
 
-[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
+[!INCLUDE [applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 In this article, you learn how to use Azure CLI to create a private endpoint for accessing Azure Database for MySQL Flexible Server from a VM in a VNet.
 
@@ -22,7 +22,7 @@ In this article, you learn how to use Azure CLI to create a private endpoint for
 
 The [Azure Cloud Shell](/azure/cloud-shell/overview) is a free interactive shell that you can use to run the steps in this article. It has standard Azure tools preinstalled and configured to use with your account.
 
-To open the Cloud Shell, select **Try it** from the upper right corner of a code block. You can also open Cloud Shell in a separate browser tab by going to [https://shell.azure.com/bash](https://shell.azure.com/bash). Select **Copy** to copy the blocks of code, paste it into the Cloud Shell, and select **Enter** to run it.
+To open the Cloud Shell, select **Try it** from the upper right corner of a code block. You can also open Cloud Shell in a separate browser tab by going to [https://shell.azure.com/bash](https://portal.azure.com/#cloudshell). Select **Copy** to copy the blocks of code, paste it into the Cloud Shell, and select **Enter** to run it.
 
 If you prefer to install and use the CLI locally, this quickstart requires Azure CLI version 2.0 or later. Run `az --version` to find the version. See [Install Azure CLI](/cli/azure/install-azure-cli) if you need to install or upgrade.
 
@@ -162,11 +162,11 @@ Connect to the VM *myVm* from the internet as follows:
     1. If prompted, select **Connect**.
 
 . Enter the username and password you specified when creating the VM.
-        > [!NOTE]
-        > You may need to select **More choices** **Use a different account**, to specify the credentials you entered when you created the VM.
+        > [!NOTE]  
+        > You might need to select **More choices** **Use a different account**, to specify the credentials you entered when you created the VM.
 1. Select **OK**.
 
-1. You may receive a certificate warning during the sign-in process. Select **Yes** or **Continue** if you receive a certificate warning.
+1. You might receive a certificate warning during the sign-in process. Select **Yes** or **Continue** if you receive a certificate warning.
 
 1. Once the VM desktop appears, minimize it to return to your local desktop.
 
@@ -245,9 +245,9 @@ Delete private endpoint connections on a given resource
 az network private-endpoint-connection delete --id {PrivateEndpointConnectionID}
 ```
 
-## Next steps
+## Related content
 
-- Learn how to [configure private link for Azure Database for MySQL Flexible Server from the [Azure portal](how-to-networking-private-link-portal.md).
-- Learn how to [manage connectivity](concepts-networking.md) to Azure Database for MySQL Flexible Server.
-- Learn how to add another layer of encryption to Azure Database for MySQL Flexible Server using [Customer Managed Keys](concepts-customer-managed-key.md).
-- Learn how to configure and use [Microsoft Entra authentication](concepts-azure-ad-authentication.md) on your Azure Database for MySQL Flexible Server instance.
+- [Create and manage Private Link for Azure Database for MySQL - Flexible Server using the portal](how-to-networking-private-link-portal.md)
+- [manage connectivity](concepts-networking.md)
+- [Data encryption with customer managed keys for Azure Database for MySQL - Flexible Server](concepts-customer-managed-key.md)
+- [Microsoft Entra authentication for Azure Database for MySQL - Flexible Server](concepts-azure-ad-authentication.md)
