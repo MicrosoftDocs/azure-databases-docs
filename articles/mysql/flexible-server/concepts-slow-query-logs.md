@@ -9,6 +9,7 @@ ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: conceptual
 ---
+
 # Slow query logs in Azure Database for MySQL - Flexible Server
 
 In Azure Database for MySQL Flexible Server, the slow query log is available to users to configure and access. Slow query logs are disabled by default and can be enabled to assist with identifying performance bottlenecks during troubleshooting.
@@ -130,4 +131,4 @@ Once your slow query logs are piped to Azure Monitor Logs through Diagnostic Log
 
 - [audit logs](concepts-audit-logs.md)
 - [Tutorial: Query Performance Insight for Azure Database for MySQL - Flexible Server](tutorial-query-performance-insights.md)
-- [How to configure slow query logs from the Azure CLI](howto-configure-server-logs-in-cli.md)
+- [How to configure slow query logs from the Azure CLI](scripts/sample-cli-slow-query-logs.md)

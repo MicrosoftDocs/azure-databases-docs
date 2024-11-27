@@ -20,9 +20,7 @@ Query performance can be affected by multiple factors, so it's first important t
 
 Also keep in mind that any recent changes to the structure or underlying data of the tables you're querying can affect performance.
 
-<a id="enabling-logging-functionality"></a>
-
-## Enable logging functionality
+## Enabling logging functionality
 
 Before analyzing individual queries, you need to define query benchmarks. With this information, you can implement logging functionality on the database server to trace queries that exceed a threshold you specify based on the needs of the application.
 
@@ -37,9 +35,7 @@ While the slow query log is a great tool for tracing long running queries, there
 - Negatively impacts performance if the number of queries is very high or if the query statement is very large. Adjust the value of the `long_query_time` parameter accordingly.
 - May not be helpful if you've also enabled the `log_queries_not_using_index` parameter, which specifies to log queries expected to retrieve all rows. Queries performing a full index scan take advantage of an index, but they'd be logged because the index doesn't limit the number of rows returned.
 
-<a id="retrieving-information-from-the-logs"></a>
-
-## Retrieve information from the logs
+## Retrieving information from the logs
 
 Logs are available for up to seven days from their creation. You can list and download slow query logs via the Azure portal or Azure CLI. In the Azure portal, navigate to your server, under **Monitoring**, select **Server logs**, and then select the downward arrow next to an entry to download the logs associated with the date and time you're investigating.
 
@@ -47,7 +43,7 @@ Logs are available for up to seven days from their creation. You can list and do
 
 In addition, if your slow query logs are integrated with Azure Monitor logs through Diagnostic logs, you can run queries in an editor to analyze them further:
 
-```kusto
+```kql
 AzureDiagnostics
 | where Resource == '<your server name>'
 | where Category == 'MySqlSlowLogs'
@@ -61,7 +57,7 @@ AzureDiagnostics
 
 The following snapshot depicts a sample slow query.
 
-```sql
+```kql
 # Time: 2021-11-13T10:07:52.610719Z
 # User@Host: root[root] @  [172.30.209.6]  Id: 735026
 # Query_time: 25.314811  Lock_time: 0.000000 Rows_sent: 126  Rows_examined: 443308
@@ -74,15 +70,13 @@ The query ran in 26 seconds, examined over 443k rows, and returned 126 rows of r
 
 Usually, you should focus on queries with high values for Query_time and Rows_examined. However, if you notice queries with a high Query_time but only a few Rows_examined, this often indicates the presence of a resource bottleneck. For these cases, you should check if there's any IO throttle or CPU usage.
 
-<a id="profiling-a-query"></a>
-
-## Profile a query
+## Profiling a query
 
 After you've identified a specific slow running query, you can use the EXPLAIN command and profiling to gather more detail.
 
 To check the query plan, run the following command:
 
-```bash
+```kql
 EXPLAIN <QUERY>
 ```
 
@@ -94,7 +88,7 @@ In addition to creating an EXPLAIN plan for a query, you can use the SHOW PROFIL
 
 To enable profiling and profile a specific query in a session, run the following set of commands:
 
-```bash
+```kql
 SET profiling = 1;
 <QUERY>;
 SHOW PROFILES;
@@ -107,14 +101,14 @@ SHOW PROFILE FOR QUERY <X>;
 
 Let's take a closer look at using these commands to profile a query. First, enable profiling for the current session, run the `SET PROFILING = 1` command:
 
-```bash
-mysql> SET PROFILING = 1;
+```sql
+SET PROFILING = 1;
 Query OK, 0 rows affected, 1 warning (0.00 sec)
 ```
 
 Next, execute a suboptimal query that performs a full table scan:
 
-```sql
+```output
 mysql> select * from sbtest8 where c like '%99098187165%';
 +----+---------+-------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------+
 | id | k | c | pad |
@@ -122,23 +116,24 @@ mysql> select * from sbtest8 where c like '%99098187165%';
 | 10 | 5035785 | 81674956652-89815953173-84507133182-62502329576-99098187165-62672357237-37910808188-52047270287-89115790749-78840418590 | 91637025586-81807791530-84338237594-90990131533-07427691758 |
 | +----+---------+-------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------+ |
 | 1 row in set (27.60 sec) |
-| ``` |
-| Then, display a list of all available query profiles by running the `SHOW PROFILES` command: |
 ```
-mysql> SHOW PROFILES;
 
+Then, display a list of all available query profiles by running the `SHOW PROFILES` command:
+
+```output
+SHOW PROFILES;
 +----------+-------------+----------------------------------------------------+
 | Query_ID | Duration | Query |
 | +----------+-------------+----------------------------------------------------+ |
 | 1 | 27.59450000 | select * from sbtest8 where c like '%99098187165%' |
 | +----------+-------------+----------------------------------------------------+ |
 | 1 row in set, 1 warning (0.00 sec) |
-| ``` |
+```
 
 Finally, to display the profile for query 1, run the `SHOW PROFILE FOR QUERY 1` command.
 
-```sql
-mysql> SHOW PROFILE FOR QUERY 1;
+```output
+SHOW PROFILE FOR QUERY 1;
 +----------------------+-----------+
 | Status | Duration |
 | +----------------------+-----------+ |
@@ -159,63 +154,63 @@ mysql> SHOW PROFILE FOR QUERY 1;
 | cleaning up | 0.000020 |
 | +----------------------+-----------+ |
 | 15 rows in set, 1 warning (0.00 sec) |
-| ``` |
-| ## Listing the most used queries on the database server |
+```
+
+## Listing the most used queries on the database server
 
 Whenever you're troubleshooting query performance, it's helpful to understand which queries are most often run on your Azure Database for MySQL Flexible Server instance. You can use this information to gauge if any of the top queries are taking longer than usual to run. In addition, a developer or DBA could use this information to identify if any query has a sudden increase in query execution count and duration.
 
 To list the top 10 most executed queries against your Azure Database for MySQL Flexible Server instance, run the following query:
-```
-SELECT digest_text AS normalized_query,
-
-count_star AS all_occurrences,
-Concat(Round(sum_timer_wait / 1000000000000, 3), ' s') AS total_time,
-Concat(Round(min_timer_wait / 1000000000000, 3), ' s') AS min_time,
-Concat(Round(max_timer_wait / 1000000000000, 3), ' s') AS max_time,
-Concat(Round(avg_timer_wait / 1000000000000, 3), ' s') AS avg_time,
-Concat(Round(sum_lock_time / 1000000000000, 3), ' s') AS total_locktime,
-sum_rows_affected AS sum_rows_changed,
-sum_rows_sent AS sum_rows_selected,
-sum_rows_examined AS sum_rows_scanned,
-sum_created_tmp_tables,
-sum_select_scan,
-sum_no_index_used,
-sum_no_good_index_used
-FROM performance_schema.events_statements_summary_by_digest
-ORDER BY sum_timer_wait DESC LIMIT 10;
 
 ```sql
-> [!NOTE]
+SELECT digest_text AS normalized_query,
+ count_star AS all_occurrences,
+ Concat(Round(sum_timer_wait / 1000000000000, 3), ' s') AS total_time,
+ Concat(Round(min_timer_wait / 1000000000000, 3), ' s') AS min_time,
+ Concat(Round(max_timer_wait / 1000000000000, 3), ' s') AS max_time,
+ Concat(Round(avg_timer_wait / 1000000000000, 3), ' s') AS avg_time,
+ Concat(Round(sum_lock_time / 1000000000000, 3), ' s') AS total_locktime,
+ sum_rows_affected AS sum_rows_changed,
+ sum_rows_sent AS sum_rows_selected,
+ sum_rows_examined AS sum_rows_scanned,
+ sum_created_tmp_tables,
+ sum_select_scan,
+ sum_no_index_used,
+ sum_no_good_index_used
+FROM performance_schema.events_statements_summary_by_digest
+ORDER BY sum_timer_wait DESC LIMIT 10;
+```
+
+> [!NOTE]  
 > Use this query to benchmark the top executed queries in your database server and determine if there's been a change in the top queries or if any existing queries in the initial benchmark have increased in run duration.
->
 
 ## Listing the 10 most expensive queries by total execution time
 
 The output from the following query provides information about the top 10 queries running against the database server and their number of executions on the database server. It also provides other useful information such as the query latencies, their lock times, the number of temp tables created as part of query runtime, etc. Use this query output to keep track of the top queries on the database and changes to factors such as latencies, which might indicate a chance to fine tune the query further to help avoid any future risks.
-```
-SELECT REPLACE(event_name, 'statement/sql/', '') AS statement,
-
-count_star AS all_occurrences ,
-Concat(Round(sum_timer_wait / 1000000000000, 2), ' s') AS total_latency,
-Concat(Round(avg_timer_wait / 1000000000000, 2), ' s') AS avg_latency,
-Concat(Round(sum_lock_time / 1000000000000, 2), ' s') AS total_lock_time ,
-sum_rows_affected AS sum_rows_changed,
-sum_rows_sent AS sum_rows_selected,
-sum_rows_examined AS sum_rows_scanned,
-sum_created_tmp_tables, sum_created_tmp_disk_tables,
-IF(sum_created_tmp_tables = 0, 0, Concat( Truncate(sum_created_tmp_disk_tables /
-sum_created_tmp_tables * 100, 0))) AS
-tmp_disk_tables_percent,
-sum_select_scan,
-sum_no_index_used,
-sum_no_good_index_used
-FROM performance_schema.events_statements_summary_global_by_event_name
-WHERE event_name LIKE 'statement/sql/%'
-AND count_star > 0
-ORDER BY sum_timer_wait DESC
-LIMIT 10;
 
 ```sql
+SELECT REPLACE(event_name, 'statement/sql/', '') AS statement,
+ count_star AS all_occurrences ,
+ Concat(Round(sum_timer_wait / 1000000000000, 2), ' s') AS total_latency,
+ Concat(Round(avg_timer_wait / 1000000000000, 2), ' s') AS avg_latency,
+ Concat(Round(sum_lock_time / 1000000000000, 2), ' s') AS total_lock_time  ,
+ sum_rows_affected AS sum_rows_changed,
+ sum_rows_sent AS  sum_rows_selected,
+ sum_rows_examined AS  sum_rows_scanned,
+ sum_created_tmp_tables,  sum_created_tmp_disk_tables,
+ IF(sum_created_tmp_tables = 0, 0, Concat( Truncate(sum_created_tmp_disk_tables /
+ sum_created_tmp_tables * 100, 0))) AS
+ tmp_disk_tables_percent,
+ sum_select_scan,
+ sum_no_index_used,
+ sum_no_good_index_used
+FROM performance_schema.events_statements_summary_global_by_event_name
+WHERE event_name LIKE 'statement/sql/%'
+ AND count_star > 0
+ORDER BY sum_timer_wait DESC
+LIMIT 10;
+```
+
 ## Monitoring InnoDB garbage collection
 
 When InnoDB garbage collection is blocked or delayed, the database can develop a substantial purge lag that can negatively affect storage utilization and query performance.
@@ -233,9 +228,12 @@ As a result, it's important to monitor HLL values, patterns, and trends.
 ### Finding HLL values
 
 You can find the HLL value by running the show engine innodb status command. The value will be listed in the output, under the TRANSACTIONS heading:
-```
-mysql> show engine innodb status\G
 
+```sql
+show engine innodb status\G
+```
+
+```output
 *************************** 1. row ***************************
 
 (...)
@@ -248,24 +246,25 @@ Purge done for trx's n:o < 52680802 undo n:o < 0 state: running but idle
 History list length 2964300
 
 (...)
-
 ```
+
 You can also determine the HLL value by querying the information_schema.innodb_metrics table:
-```
-mysql> select count from information_schema.innodb_metrics
 
+```sql
+mysql> select count from information_schema.innodb_metrics
     -> where name = 'trx_rseg_history_len';
+```
+
+```output
 +---------+
 | count |
 | +---------+ |
 | 2964300 |
 | +---------+ |
 | 1 row in set (0.00 sec) |
-| ``` |
+```
 
-<a id="interpreting-hll-values"></a>
-
-### Interpret HLL values
+### Interpreting HLL values
 
 When interpreting HLL values, consider the guidelines listed in the following table:
 
@@ -275,9 +274,7 @@ When interpreting HLL values, consider the guidelines listed in the following ta
 | Between ~10,000 and ~1,000,000 | These values indicate a minor lag in garbage collection. Such values might be acceptable if they remain steady and don't increase. |
 | Greater than ~1,000,000 | These values should be investigated and might require corrective actions |
 
-<a id="addressing-excessive-hll-values"></a>
-
-### Address excessive HLL values
+### Addressing excessive HLL values
 
 If the HLL shows large spikes or exhibits a pattern of periodic growth, investigate the queries and transactions running on your Azure Database for MySQL Flexible Server instance immediately. Then you can resolve any workload issues that might be preventing the progress of the garbage collection process. While it's not expected for the database to be free of purge lag, you must not let the lag grow uncontrollably.
 
@@ -293,6 +290,10 @@ The detail in the `trx_started` column will help you calculate the transaction a
 ```sql
 mysql> select * from information_schema.innodb_trx
     -> order by trx_started asc\G
+```
+
+
+```output
 *************************** 1. row ***************************
                     trx_id: 8150550
                  trx_state: RUNNING
@@ -311,6 +312,9 @@ For information about current database sessions, including the time spent in the
 mysql> select user, host, db, command, time, info
     -> from information_schema.processlist
     -> order by time desc\G
+```
+
+```output
 *************************** 1. row ***************************
    user: test
    host: 172.31.19.159:38004
@@ -327,9 +331,9 @@ command: Query
 - Ensure that your database has enough resources allocated to run your queries. At times, you might need to scale up the instance size to get more CPU cores and additional memory to accommodate your workload.
 - Avoid large or long-running transactions by breaking them into smaller transactions.
 - Configure innodb_purge_threads as per your workload to improve efficiency for background purge operations.
+
   > [!NOTE]  
   > Test any changes to this server variable for each environment to gauge the change in engine behavior.
-  >
 
 - Use alerts on "Host CPU Percent", "Host Memory Percent" and "Total Connections" so that you get notifications if the system exceeds any of the specified thresholds.
 - Use Query Performance Insights or Azure Workbooks to identify any problematic or slowly running queries, and then optimize them.

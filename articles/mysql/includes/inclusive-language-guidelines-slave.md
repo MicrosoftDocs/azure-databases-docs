@@ -6,5 +6,4 @@ ms.service: azure-database-mysql
 ms.topic: include
 ---
 
-> [!NOTE]  
-> This article references a term that Microsoft no longer uses. When the term is removed from the software, we'll remove it from this article.
+[!INCLUDE [inclusive-language-guidelines-slave](../includes/inclusive-language-guidelines-slave.md)]

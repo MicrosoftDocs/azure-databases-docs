@@ -27,19 +27,19 @@ This tutorial shows how to use the Azure Database for MySQL Import CLI command t
 
 The [Azure Cloud Shell](/azure/cloud-shell/overview) is a free interactive shell that you can use to run the steps in this article. It has common Azure tools preinstalled and configured to use with your account.
 
-To open the Cloud Shell, select **Try it*- from the upper right corner of a code block. You can also open Cloud Shell in a separate browser tab by going to [https://shell.azure.com/bash](https://portal.azure.com/#cloudshell). Select **Copy*- to copy the blocks of code, paste it into the Cloud Shell, and select **Enter*- to run it.
+To open the Cloud Shell, select **Try it** from the upper right corner of a code block. You can also open Cloud Shell in a separate browser tab by going to [https://shell.azure.com/bash](https://portal.azure.com/#cloudshell). Select **Copy** to copy the blocks of code, paste it into the Cloud Shell, and select **Enter** to run it.
 
 If you prefer to install and use the CLI locally, this tutorial requires Azure CLI version 2.54.0 or later. To find the version, run `az --version`. If you need to install or upgrade, see [Install Azure CLI](/cli/azure/install-azure-cli).
 
 ## Setup
 
-You must sign in to your account using the [az sign-in](/cli/azure/reference-index#az-login) command. Note the **id*- property, which refers to your Azure account's **Subscription ID**.
+You must sign in to your account using the [az sign-in](/cli/azure/reference-index#az-login) command. Note the **id** property, which refers to your Azure account's **Subscription ID**.
 
 ```azurecli-interactive
 az login
 ```
 
-Select the specific subscription under your account where you want to deploy the target Flexible Server using the [az account set](/cli/azure/account#az-account-set) command. Note the **id*- value from the **az login*- output to use as the value for the **subscription*- argument in the command. To get all your subscriptions, use [az account list](/cli/azure/account#az-account-list).
+Select the specific subscription under your account where you want to deploy the target Flexible Server using the [az account set](/cli/azure/account#az-account-set) command. Note the **id** value from the **az login** output to use as the value for the **subscription** argument in the command. To get all your subscriptions, use [az account list](/cli/azure/account#az-account-list).
 
 ```azurecli-interactive
 az account set --subscription <subscription id>
@@ -58,8 +58,8 @@ az account set --subscription <subscription id>
 The following are the steps for using Percona XtraBackup to take a full backup:
   - Install Percona XtraBackup on the on-premises or VM workload. For MySQL engine version v5.7, install Percona XtraBackup version 2.4, see [Installing Percona XtraBackup 2.4]( https://docs.percona.com/percona-xtrabackup/2.4/installation.html). For MySQL engine version v8.0, install Percona XtraBackup version 8.0, see [Installing Percona XtraBackup 8.0]( https://docs.percona.com/percona-xtrabackup/8.0/installation.html).
   - For instructions for taking a Full backup with Percona XtraBackup 2.4, see [Full backup]( https://docs.percona.com/percona-xtrabackup/2.4/backup_scenarios/full_backup.html). For instructions for taking a Full backup with Percona XtraBackup 8.0, see [Full backup] (<https://docs.percona.com/percona-xtrabackup/8.0/create-full-backup.html>). While taking full backup, run the below commands in order:
-    - **- xtrabackup --backup --host={host} --user={user} --password={password} --target-dir={backup__dir_path}**
-    - **- xtrabackup --prepare --{backup_dir_path}*- (Provide the same backup path here as in the previous command)
+    - *** xtrabackup --backup --host={host} --user={user} --password={password} --target-dir={backup__dir_path}**
+    - *** xtrabackup --prepare --{backup_dir_path}** (Provide the same backup path here as in the previous command)
   - **Considerations while taking the Percona XtraBackup:**
     - Make sure you run both the backup and prepare step.
     - Make sure there are no errors in the backup and prepare step.
@@ -68,9 +68,9 @@ The following are the steps for using Percona XtraBackup to take a full backup:
     > [!IMPORTANT]
     > Attempting to access corrupted tables imported from a source server can cause a flexible server to crash. As a result, before taking a backup using the Percona XtraBackup utility, it is strongly recommended to perform a "mysqlcheck / Optimize Table" operation on the source server.
 
-- [Create an Azure Blob container](/azure/storage/blobs/storage-quickstart-blobs-portal#create-a-container) and get the Shared Access Signature (SAS) Token ([Azure portal](/azure/ai-services/translator/document-translation/how-to-guides/create-sas-tokens?tabs=Containers#create-sas-tokens-in-the-azure-portal) or [Azure CLI](/azure/storage/blobs/storage-blob-user-delegation-sas-create-cli)) for the container. Ensure that you grant Add, Create, and Write in the **Permissions*- dropdown list. Copy and paste the Blob SAS token and URL values in a secure location. They're only displayed once and can't be retrieved once the window is closed.
+- [Create an Azure Blob container](/azure/storage/blobs/storage-quickstart-blobs-portal#create-a-container) and get the Shared Access Signature (SAS) Token ([Azure portal](/azure/ai-services/translator/document-translation/how-to-guides/create-sas-tokens?tabs=Containers#create-sas-tokens-in-the-azure-portal) or [Azure CLI](/azure/storage/blobs/storage-blob-user-delegation-sas-create-cli)) for the container. Ensure that you grant Add, Create, and Write in the **Permissions** dropdown list. Copy and paste the Blob SAS token and URL values in a secure location. They're only displayed once and can't be retrieved once the window is closed.
 - Upload the full backup file at {backup_dir_path} to your Azure Blob storage. Follow [these steps to upload a file](/azure/storage/common/storage-use-azcopy-blobs-upload#upload-a-file).
-- To perform an online migration, capture and store the bin-log position of the backup file taken using Percona XtraBackup by running the **cat xtrabackup_info*- command and copying the bin_log pos output.
+- To perform an online migration, capture and store the bin-log position of the backup file taken using Percona XtraBackup by running the **cat xtrabackup_info** command and copying the bin_log pos output.
 - The Azure storage account should be publicly accessible using SAS token. Azure storage account with virtual network configuration are not supported.
 
 ## Limitations
@@ -135,7 +135,7 @@ az mysql flexible-server import create --data-source-type "azure_blob" --data-so
 
 Here are the details for the arguments above:
 
-**Setting*- | **Sample value*- | **Description**
+**Setting** | **Sample value** | **Description**
 ---|---|---
 data-source-type | azure_blob | The type of data source that serves as the source destination for triggering Azure Database for MySQL Import. Accepted values: [azure_blob]. Description of accepted values- azure_blob: Azure Blob storage.
 data-source | {resourceID} | The resource ID of the Azure Blob container.

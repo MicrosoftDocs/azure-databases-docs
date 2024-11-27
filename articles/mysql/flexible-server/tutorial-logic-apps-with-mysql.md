@@ -50,7 +50,7 @@ CREATE TABLE `orders` (
 
 1. On the **Create Logic App** pane, on the **Basics** tab, provide the following basic information about your logic app:
     - **Subscription**: Your Azure subscription name.
-    -   **Resource Group**: The Azure resource group where you create your logic app and related resources. This name must be unique across regions and can contain only letters, numbers, hyphens (**-**), underscores (**_**), parentheses (**()**), and periods (**.**).
+    -   **Resource Group**: The Azure resource group where you create your logic app and related resources. This name must be unique across regions and can contain only letters, numbers, hyphens (*****), underscores (**_**), parentheses (**()**), and periods (**.**).
     -   **Logic App name**: Your logic app name, which must be unique across regions and can contain only letters, numbers, hyphens (`-`), underscores (`_`), parentheses (`(`, `)`), and periods (`.`).
 
 1. Before you continue making selections, go to the **Plan** section. For **Plan type**, select **Consumption** so that you view only the settings that apply to the Consumption plan-based logic app type. The **Plan type** property specifies the logic app type and billing model to use.

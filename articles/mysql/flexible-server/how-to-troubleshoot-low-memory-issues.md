@@ -25,9 +25,7 @@ A majority of a server's memory is used by InnoDB's global buffers and caches, w
 
 The value of the **innodb_buffer_pool_size** parameter specifies the area of memory in which InnoDB caches the database tables and index-related data. MySQL tries to accommodate as much table and index-related data in the buffer pool as possible. A larger buffer pool requires fewer I/O operations being diverted to the disk.
 
-<a id="monitoring-memory-usage"></a>
-
-## Monitor memory usage
+## Monitoring memory usage
 
 Azure Database for MySQL Flexible Server provides a range of metrics to gauge the performance of your database instance. To better understand the memory utilization for your database server, view the **Host Memory Percent** or **Memory Percent** metrics.
 
@@ -54,7 +52,6 @@ With MySQL, temporary table size is determined by the values of two parameters, 
 
 > [!NOTE]  
 > When determining the maximum size of an internal, in-memory temporary table, MySQL considers the lower of the values set for the tmp_table_size and max_heap_table_size parameters.
->
 
 #### Recommendations
 
@@ -98,44 +95,45 @@ Avoid arbitrarily increasing the sort_buffer_size value unless you have related 
 
 The query cache is an area of memory that is used for caching query result sets. The query_cache_size parameter determines the amount of memory that is allocated for caching query results. By default, the query cache is disabled. In addition, the query cache is deprecated in MySQL version 5.7.20 and removed in MySQL version 8.0. If the query cache is currently enabled in your solution, before disabling it, verify that there aren't any queries relying on it.
 
-<a id="calculating-buffer-cache-hit-ratio"></a>
-
-### Calculate buffer cache hit ratio
+### Calculating buffer cache hit ratio
 
 Buffer cache hit ratio is important in the Azure Database for MySQL Flexible Server environment to understand if the buffer pool can accommodate the workload requests or not, and as a general rule of thumb it's a good practice to always have a buffer pool cache hit ratio more than 99%.
 
 To compute the InnoDB buffer pool hit ratio for read requests, you can run the SHOW GLOBAL STATUS to retrieve counters "Innodb_buffer_pool_read_requests" and "Innodb_buffer_pool_reads" and then compute the value using the formula shown below.
 
-```cpp
+```sql
 InnoDB Buffer pool hit ratio = Innodb_buffer_pool_read_requests / (Innodb_buffer_pool_read_requests + Innodb_buffer_pool_reads) * 100
 ```
 
-Consider the following example.
+Consider the following examples.
 
-```csharp
-mysql> show global status like "innodb_buffer_pool_reads";
+```output
+show global status like "innodb_buffer_pool_reads";
 +--------------------------+-------+
 | Variable_name | Value |
 | +--------------------------+-------+ |
 | Innodb_buffer_pool_reads | 197 |
 | +--------------------------+-------+ |
 | 1 row in set (0.00 sec) |
+```
 
-mysql> show global status like "innodb_buffer_pool_read_requests";
+```output
+show global status like "innodb_buffer_pool_read_requests";
 +----------------------------------+----------+
 | Variable_name | Value |
 | +----------------------------------+----------+ |
 | Innodb_buffer_pool_read_requests | 22479167 |
 | +----------------------------------+----------+ |
 | 1 row in set (0.00 sec) |
-| ``` |
-| Using the above values, computing the InnoDB buffer pool hit ratio for read requests yields the following result: |
 ```
+
+Using the above values, computing the InnoDB buffer pool hit ratio for read requests yields the following result:
+
+```sql
 InnoDB Buffer pool hit ratio = 22479167/(22479167+197) * 100
-
 Buffer hit ratio = 99.99%
-
 ```
+
 In addition to select statements buffer cache hit ratio, for any DML statements, writes to the InnoDB Buffer Pool happen in the background. However, if it's necessary to read or create a page and no clean pages are available, it's also necessary to wait for pages to be flushed first.
 
 The Innodb_buffer_pool_wait_free counter counts how many times this has happened. Innodb_buffer_pool_wait_free greater than 0 is a strong indicator that the InnoDB Buffer Pool is too small and increase in buffer pool size or instance size is required to accommodate the writes coming into the database.

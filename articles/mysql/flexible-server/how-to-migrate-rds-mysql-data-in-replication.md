@@ -110,8 +110,8 @@ To prepare and configure the MySQL server hosted in Amazon RDS, which is the *so
 
 1. To check the binary log retention on the source Amazon RDS server to determine the number of hours the binary logs are retained, call the `mysql.rds_show_configuration` stored procedure:
 
-    ```sql
-    mysql> call mysql.rds_show_configuration;
+    ```output
+    call mysql.rds_show_configuration;
     +------------------------+-------+-----------------------------------------------------------------------------------------------------------+
     | name | value | description |
     | +------------------------+-------+-----------------------------------------------------------------------------------------------------------+ |
@@ -120,15 +120,16 @@ To prepare and configure the MySQL server hosted in Amazon RDS, which is the *so
     | target delay | 0 | target delay specifies replication delay in seconds between current instance and its future read-replica. |
     | +------------------------+------- +-----------------------------------------------------------------------------------------------------------+ |
     | 3 rows in set (0.00 sec) |
-    | ``` |
-| 1. To configure the binary log retention period, run the `rds_set_configuration` stored procedure to ensure that the binary logs are retained on the source server for the desired time. For example: |
     ```
-    Mysql> Call mysql.rds_set_configuration('binlog retention hours', 96);
+1. To configure the binary log retention period, run the `rds_set_configuration` stored procedure to ensure that the binary logs are retained on the source server for the desired time. For example:
 
     ```sql
+    Call mysql.rds_set_configuration('binlog retention hours', 96);
+    ```
+
     If you're creating a dump and restoring, the preceding command helps you catch up with the delta changes quickly.
 
-   > [!NOTE]
+   > [!NOTE]  
    > Ensure ample disk space to store the binary logs on the source server based on the defined retention period.
 
 There are two ways to capture a dump of data from the source Amazon RDS for MySQL server. One approach involves capturing a dump of data directly from the source server. The other approach involves capturing a dump from an Amazon RDS for MySQL read replica.
@@ -142,74 +143,81 @@ There are two ways to capture a dump of data from the source Amazon RDS for MySQ
     1. After you stop the writes on the source server, collect the binary log file name and offset by running the command `Mysql> Show master status;`.
     1. Save these values to start replication from your Azure Database for MySQL Flexible Server instance.
     1. To create a dump of the data, execute `mysqldump` by running the following command:
-        ```
-        $ mysqldump -h hostname -u username -p –single-transaction –databases dbnames –order-by-primary> dumpname.sql
 
-        ```cpp
+        ```sql
+        $ mysqldump -h hostname -u username -p –single-transaction –databases dbnames –order-by-primary> dumpname.sql
+        ```
+
 - If stopping writes on the source server isn't an option or the performance of dumping data isn't acceptable on the source server, capture a dump on a replica server:
 
     1. Create an Amazon MySQL read replica with the same configuration as the source server. Then create the dump there.
     1. Let the Amazon RDS for MySQL read replica catch up with the source Amazon RDS for MySQL server.
     1. When the replica lag reaches **0** on the read replica, stop replication by calling the stored procedure `mysql.rds_stop_replication`.
-        ```
-        Mysql> call mysql.rds_stop_replication;
 
         ```sql
+        call mysql.rds_stop_replication;
+        ```
+
     1. With replication stopped, connect to the replica. Then run the `SHOW SLAVE STATUS` command to retrieve the current binary log file name from the **Relay_Master_Log_File** field and the log file position from the **Exec_Master_Log_Pos** field.
     1. Save these values to start replication from your Azure Database for MySQL Flexible Server instance.
     1. To create a dump of the data from the Amazon RDS for MySQL read replica, execute `mysqldump` by running the following command:
-        ```
-        $ mysqldump -h hostname -u username -p –single-transaction –databases dbnames –order-by-primary> dumpname.sql
 
-        ```csharp
-    > [!NOTE]
+        ```sql
+        $ mysqldump -h hostname -u username -p –single-transaction –databases dbnames –order-by-primary> dumpname.sql
+        ```
+
+    > [!NOTE]  
     > You can also use mydumper for capturing a parallelized dump of your data from your source Amazon RDS for MySQL database. For more information, see [Migrate large databases to Azure Database for MySQL Flexible Server using mydumper/myloader](../single-server/concepts-migrate-mydumper-myloader.md).
 
 ## Link source and replica servers to start Data-in Replication
 
 1. To restore the database by using mysql native restore, run the following command:
-    ```
-    $ mysql -h <target_server> -u <targetuser> -p < dumpname.sql
 
     ```sql
-   > [!NOTE]
+    $ mysql -h <target_server> -u <targetuser> -p < dumpname.sql
+    ```
+
+   > [!NOTE]  
    > If you're instead using myloader, see [Migrate large databases to Azure Database for MySQL Flexible Server using mydumper/myloader](../single-server/concepts-migrate-mydumper-myloader.md).
 
 1. Sign in to the source Amazon RDS for MySQL server, and set up a replication user. Then grant the necessary privileges to this user.
 
     - If you're using SSL, run the following commands:
+
+        ```sql
+        CREATE USER 'syncuser'@'%' IDENTIFIED BY 'userpassword';
+        GRANT REPLICATION SLAVE, REPLICATION CLIENT on *.* to 'syncuser'@'%' REQUIRE SSL;
+        SHOW GRANTS FOR syncuser@'%';
         ```
-        Mysql> CREATE USER 'syncuser'@'%' IDENTIFIED BY 'userpassword';
 
-        Mysql> GRANT REPLICATION SLAVE, REPLICATION CLIENT on *.* to 'syncuser'@'%' REQUIRE SSL;
-        Mysql> SHOW GRANTS FOR syncuser@'%';
-
-        ```csharp
     - If you're not using SSL, run the following commands:
+
+        ```sql
+        CREATE USER 'syncuser'@'%' IDENTIFIED BY 'userpassword';
+        GRANT REPLICATION SLAVE, REPLICATION CLIENT on *.* to 'syncuser'@'%';
+        SHOW GRANTS FOR syncuser@'%';
         ```
-        Mysql> CREATE USER 'syncuser'@'%' IDENTIFIED BY 'userpassword';
 
-        Mysql> GRANT REPLICATION SLAVE, REPLICATION CLIENT on *.* to 'syncuser'@'%';
-        Mysql> SHOW GRANTS FOR syncuser@'%';
-
-        ```csharp
     Stored procedures do all Data-in Replication functions. For information about all procedures, see [Data-in Replication stored procedures](../single-server/reference-stored-procedures.md#data-in-replication-stored-procedures). You can run these stored procedures in the MySQL shell or MySQL Workbench.
 
 1. To link the Amazon RDS for MySQL source server and the Azure Database for MySQL Flexible Server target server, sign in to the target Azure Database for MySQL Flexible Server instance. Set the Amazon RDS for MySQL server as the source server by running the following command:
-    ```
+
+    ```azurecli
     CALL mysql.az_replication_change_master('source_server','replication_user_name','replication_user_password',3306,'<master_bin_log_file>',master_bin_log_position,'<master_ssl_ca>');
-
     ```
+
 1. To start replication between the source Amazon RDS for MySQL server and the target Azure Database for MySQL Flexible Server instance, run the following command:
-    ```
-    Mysql> CALL mysql.az_replication_start;
 
+    ```azurecli
+    CALL mysql.az_replication_start;
     ```
+
 1. To check the status of the replication on the replica server, run the following command:
-    ```
-    Mysql> show slave status\G
 
+    ```sql
+    show slave status\G
     ```
+
     If the state of the `Slave_IO_Running` and `Slave_SQL_Running` parameters is **Yes**, replication has started and is in a running state.
 
 1. Check the value of the `Seconds_Behind_Master` parameter to determine how delayed the target server is.

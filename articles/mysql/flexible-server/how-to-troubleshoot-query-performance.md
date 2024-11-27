@@ -53,9 +53,7 @@ possible_keys: id
 
 Now, the output shows that Azure Database for MySQL flexible server uses an index to limit the number of rows to 1, which dramatically shortens the search time.
 
-<a id="covering-index"></a>
-
-## Cover index
+## Covering index
 
 A covering index includes of all columns of a query, which reduces value retrieval from data tables. The following **GROUP BY** statement and related output illustrates this.
 

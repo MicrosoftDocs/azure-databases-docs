@@ -29,26 +29,24 @@ An increase in connections can lead to an increase in threads, which in turn can
 Current connected hosts
 
 ```sql
-   select HOST,CURRENT_CONNECTIONS From performance_schema.hosts
-   where CURRENT_CONNECTIONS > 0
-   and host not in ('NULL','localhost');
+select HOST,CURRENT_CONNECTIONS From performance_schema.hosts
+where CURRENT_CONNECTIONS > 0
+and host not in ('NULL','localhost');
 ```
 
 Current connected users
 
 ```sql
-   select USER,CURRENT_CONNECTIONS from performance_schema.users
-   where CURRENT_CONNECTIONS >0
-   and USER not in ('NULL','azure_superuser');
+select USER,CURRENT_CONNECTIONS from performance_schema.users
+where CURRENT_CONNECTIONS >0
+and USER not in ('NULL','azure_superuser');
 ```
 
 #### Poorly written SQL queries
 
 Queries that are expensive to execute and scan a large number of rows without an index, or those that perform temporary sorts along with other inefficient plans, can lead to CPU spikes. While some queries might execute quickly in a single session, they can cause CPU spikes when run in multiple sessions. Therefore, it's crucial to always explain your queries that you capture from the [show processlist](https://dev.mysql.com/doc/refman/5.7/en/show-processlist.html) and ensure their execution plans are efficient. This can be achieved by ensuring they scan a minimal number of rows by using filters/where clause, utilize indexes and avoid using large temporary sort along with other bad execution plans. For more information about execution plans, see [EXPLAIN Output Format](https://dev.mysql.com/doc/refman/5.7/en/explain-output.html).
 
-<a id="capturing-details-of-the-current-workload"></a>
-
-## Capture details of the current workload
+## Capturing details of the current workload
 
 The SHOW (FULL) PROCESSLIST command displays a list of all user sessions currently connected to the Azure Database for MySQL Flexible Server instance. It also provides details about the current state and activity of each session.
 
@@ -56,8 +54,8 @@ This command only produces a snapshot of the current session status and doesn't 
 
 Let's take a look at sample output from running this command.
 
-```sql
-mysql> SHOW FULL PROCESSLIST;
+```output
+SHOW FULL PROCESSLIST;
 +-------+------------------+--------------------+---------------+-------------+--------+-----------------------------+------------------------------------------+
 | Id | User | Host | db | Command | Time | State | Info |
 | +-------+------------------+--------------------+---------------+-------------+--------+-----------------------------+------------------------------------------+ |
@@ -68,8 +66,9 @@ mysql> SHOW FULL PROCESSLIST;
 | 24837 | adminuser | 10.1.1.4:38208 | NULL | Query | 0 | starting | SHOW FULL PROCESSLIST |
 | +-------+------------------+--------------------+---------------+-------------+--------+-----------------------------+------------------------------------------+ |
 | 5 rows in set (0.00 sec) |
-| ``` |
-| There are two sessions owned by customer owned user "adminuser", both from the same IP address: |
+```
+
+There are two sessions owned by customer owned user "adminuser", both from the same IP address:
 
 - Session 24835 has been executing a SELECT statement for the last seven seconds.
 - Session 24837 is executing "show full processlist" statement.
@@ -86,14 +85,15 @@ You need to use at least two sources of information to obtain accurate informati
 With information from only one of these sources, it's impossible to describe the connection and transaction state. For example, the process list doesn't inform you whether there's an open transaction associated with any of the sessions. On the other hand, the transaction metadata doesn't show session state and time spent in that state.
 
 The following example query that combines process list information with some of the important pieces of InnoDB transaction metadata:
-```
-mysql> select    p.id as session_id, p.user, p.host, p.db, p.command, p.time, p.state,    substring(p.info, 1, 50) as info,    t.trx_started, unix_timestamp(now()) - unix_timestamp(t.trx_started) as trx_age_seconds, t.trx_rows_modified, t.trx_isolation_level   from information_schema.processlist p    left join information_schema.innodb_trx t    on p.id = t.trx_mysql_thread_id \G
 
+```sql
+mysql> select p.id as session_id, p.user, p.host, p.db, p.command, p.time, p.state, substring(p.info, 1, 50) as info, t.trx_started, unix_timestamp(now()) - unix_timestamp(t.trx_started) as trx_age_seconds, t.trx_rows_modified, t.trx_isolation_level   from information_schema.processlist p left join information_schema.innodb_trx t on p.id = t.trx_mysql_thread_id \G
 ```
+
 The following example shows the output from this query:
-```
-*************************** 1. row ***************************
 
+```output
+*************************** 1. row ***************************
         session_id: 11
                user: adminuser
                host: 172.31.19.159:53624
@@ -119,8 +119,8 @@ trx_isolation_level: REPEATABLE READ
     trx_age_seconds: NULL
   trx_rows_modified: NULL
 trx_isolation_level: NULL
+```
 
-```sql
 An analysis of this information, by session, is listed in the following table.
 
 | **Area** | **Analysis** |
@@ -133,10 +133,11 @@ If a session is reported as idle, it's no longer executing any statements. At th
 ## Listing open transactions
 
 The output from the following query provides a list of all the transactions currently running against the database server in order of transaction start time so that you can easily identify if there are any long running and blocking transactions exceeding their expected runtime.
-```
-SELECT trx_id, trx_mysql_thread_id, trx_state, Unix_timestamp() - ( To_seconds(trx_started) - To_seconds('1970-01-01 00:00:00') ) AS trx_age_seconds, trx_weight, trx_query, trx_tables_in_use, trx_tables_locked, trx_lock_structs, trx_rows_locked, trx_rows_modified, trx_isolation_level, trx_unique_checks, trx_is_read_only FROM information_schema.innodb_trx ORDER BY trx_started ASC;
 
 ```sql
+SELECT trx_id, trx_mysql_thread_id, trx_state, Unix_timestamp() - ( To_seconds(trx_started) - To_seconds('1970-01-01 00:00:00') ) AS trx_age_seconds, trx_weight, trx_query, trx_tables_in_use, trx_tables_locked, trx_lock_structs, trx_rows_locked, trx_rows_modified, trx_isolation_level, trx_unique_checks, trx_is_read_only FROM information_schema.innodb_trx ORDER BY trx_started ASC;
+```
+
 ## Understanding thread states
 
 Transactions that contribute to higher CPU utilization during execution can have threads in various states, as described in the following sections. Use this information to better understand the query lifecycle and various thread states.
@@ -160,16 +161,19 @@ This state indicates that the thread is waiting for a second lock. In most cases
 ## Understanding and analyzing wait events
 
 It's important to understand the underlying wait events in MySQL engine, because long waits or a large number of waits in a database can lead to increased CPU utilization. The following example shows the appropriate command and sample output.
-```
-SELECT event_name AS wait_event,
 
+```sql
+SELECT event_name AS wait_event,
 count_star AS all_occurrences,
 Concat(Round(sum_timer_wait / 1000000000000, 2), ' s') AS total_wait_time,
-Concat(Round(avg_timer_wait / 1000000000, 2), ' ms') AS
+ Concat(Round(avg_timer_wait / 1000000000, 2), ' ms') AS
 avg_wait_time
 FROM performance_schema.events_waits_summary_global_by_event_name
 WHERE count_star > 0 AND event_name <> 'idle'
 ORDER BY sum_timer_wait DESC LIMIT 10;
+```
+
+```output
 +--------------------------------------+-----------------+-----------------+---------------+
 | wait_event | all_occurrences | total_wait_time | avg_wait_time |
 | +--------------------------------------+-----------------+-----------------+---------------+ |
@@ -185,7 +189,7 @@ ORDER BY sum_timer_wait DESC LIMIT 10;
 | wait/io/file/sql/slow_log | 2 | 0.05 s | 25.79 ms |
 | +--------------------------------------+-----------------+-----------------+---------------+ |
 | 10 rows in set (0.00 sec) |
-| ``` |
+```
 
 ## Restrict SELECT Statements execution time
 
@@ -200,7 +204,6 @@ If you don't know about the execution cost and execution time for database opera
 - Use Query Performance Insights or Azure Workbooks to identify any problematic or slowly running queries, and then optimize them.
 - For production database servers, collect diagnostics at regular intervals to ensure that everything is running smoothly. If not, troubleshoot and resolve any issues that you identify.
 
-## Next step
+## Related content
 
-> [!div class="nextstepaction"]
 > [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-database-mysql)

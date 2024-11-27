@@ -28,4 +28,4 @@ To broadly support your Azure Database for MySQL flexible server solution, you c
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Microsoft Partner site](https://partner.microsoft.com/en-CA)
+> [Microsoft Partner site](https://partner.microsoft.com/)
