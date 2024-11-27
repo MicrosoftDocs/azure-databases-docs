@@ -16,7 +16,7 @@ ms.devlang: azurecli
 
 # List and change server parameters of Azure Database for MySQL - Flexible Server using Azure CLI
 
-[!INCLUDE [applies-to-mysql-flexible-server](../../includes/applies-to-mysql-flexible-server.md)]
+
 
 This sample CLI script lists all available [server parameters](../concepts-server-parameters.md) as well as their allowable values for Azure Database for MySQL - Flexible Server, and sets the *max_connections* and global *time_zone* parameters to values other than the default ones.
 

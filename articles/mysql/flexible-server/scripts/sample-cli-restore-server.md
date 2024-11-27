@@ -16,7 +16,7 @@ ms.devlang: azurecli
 
 # Restore an Azure Database for MySQL - Flexible Server instance using Azure CLI
 
-[!INCLUDE [applies-to-mysql-flexible-server](../../includes/applies-to-mysql-flexible-server.md)]
+
 
 Azure Database for MySQL - Flexible Server, automatically creates server backups and securely stores them in local redundant storage within the region.
 
