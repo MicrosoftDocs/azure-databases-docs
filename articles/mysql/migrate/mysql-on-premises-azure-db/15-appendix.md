@@ -1,5 +1,5 @@
 ---
-title: "MySQL On-Premises to Azure Database for MySQL Sample Applications"
+title: "MySQL on-premises to Azure Database for MySQL Sample Applications"
 description: "Download extra documentation we created for this Migration Guide and learn how to configure."
 author: SudheeshGH
 ms.author: sunaray
@@ -13,6 +13,8 @@ ms.custom:
 ---
 
 # Migrate MySQL on-premises to Azure Database for MySQL sample applications
+
+Migrating MySQL databases from on-premises environments to Azure Database for MySQL can be a game-changer for your applications. This article explores the process through the lens of sample applications, providing practical insights and real-world examples. You can better understand the challenges and solutions involved by examining how different types of applications handle the migration. This guide walks you through preparing your applications, executing the migration, and optimizing performance post-migration. Whether you're dealing with web applications, enterprise systems, or data analytics platforms, this article equips you with the knowledge to ensure a smooth and successful transition to Azure.
 
 ## Overview
 
@@ -30,11 +32,11 @@ The ARM template deploys all resources with private endpoints. The ARM template 
 
 [Secure ARM template](https://github.com/Azure/azure-mysql/tree/master/MigrationGuide/arm-templates/ExampleWithMigration)
 
-### Non-secure
+### Nonsecure
 
 The ARM template deploys resources using standard deployment where all resources are available from the internet.
 
-[Non-secure ARM template](https://github.com/Azure/azure-mysql/tree/master/MigrationGuide/arm-templates/ExampleWithMigrationSecure)
+[Nonsecure ARM template](https://github.com/Azure/azure-mysql/tree/master/MigrationGuide/arm-templates/ExampleWithMigrationSecure)
 
 ## Default server parameters MySQL 5.5 and Azure Database for MySQL
 

@@ -1,5 +1,5 @@
 ---
-title: "Migrate MySQL On-Premises to Azure Database for MySQL Introduction"
+title: "Migrate MySQL on-premises to Azure Database for MySQL Introduction"
 description: "Migration guide from MySQL on-premises to Azure Data base for MySQL"
 author: SudheeshGH
 ms.author: sunaray

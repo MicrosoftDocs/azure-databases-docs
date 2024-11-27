@@ -1,5 +1,5 @@
 ---
-title: "Migrate MySQL On-Premises to Azure Database for MySQL: Representative Use Case"
+title: "Migrate MySQL on-premises to Azure Database for MySQL: Representative Use Case"
 description: "The following use case is based on a real-world customer scenario of an enterprise who migrated their MySQL workload to Azure Database for MySQL."
 author: SudheeshGH
 ms.author: sunaray
@@ -11,6 +11,8 @@ ms.topic: how-to
 ---
 
 # Migrate MySQL on-premises to Azure Database for MySQL: Representative Use Case
+
+Migrating MySQL databases from on-premises environments to Azure Database for MySQL is a strategic move that can significantly enhance scalability, security, and performance. This article delves into a representative use case, providing a comprehensive guide on seamlessly transitioning your MySQL workloads to Azure. By leveraging Azure's robust infrastructure and advanced features, organizations can achieve greater operational efficiency and cost savings. Whether you want to modernize your database infrastructure or improve disaster recovery capabilities, this guide equips you with the necessary insights and steps to ensure a successful migration.
 
 ## Prerequisites
 
@@ -48,7 +50,7 @@ These stages include:
 
 | Stage | Name | Activities |
 | --- | --- | --- |
-| 1 | Pre-migration | Assessment, Planning, Migration Method Evaluation, Application Implications, Test Plans, Performance Baselines |
+| 1 | Premigration | Assessment, Planning, Migration Method Evaluation, Application Implications, Test Plans, Performance Baselines |
 | 2 | Migration | Execute Migration, Execute Test Plans |
 | 3 | Post-migration | Business Continuity, Disaster Recovery, Management, Security, Performance Optimization, Platform modernization |
 
@@ -56,7 +58,7 @@ WWI has several instances of MySQL running with varying versions ranging from 5.
 
 They would also like to ensure that their data workloads are safe and available across multiple geographic regions if there's a failure and look at the available configuration options.
 
-WWI wants to start with a simple application for the first migration and then move to more business-critical applications in a later phase. This provides the team with the knowledge and experience they need to prepare and plan for those future migrations.
+WWI wants to start with a simple application for the first migration and then moves to more business-critical applications in a later phase. This provides the team with the knowledge and experience they need to prepare and plan for those future migrations.
 
 ## Next step
 

@@ -1,5 +1,5 @@
 ---
-title: "Migrate MySQL On-Premises to Azure Database for MySQL: Security"
+title: "Migrate MySQL on-premises to Azure Database for MySQL: Security"
 description: "Moving to a cloud-based service doesn’t mean the entire internet has access to it always."
 author: SudheeshGH
 ms.author: sunaray
@@ -11,6 +11,8 @@ ms.topic: how-to
 ---
 
 # Migrate MySQL on-premises to Azure Database for MySQL: Security
+
+Ensuring robust security is paramount when migrating MySQL databases from on-premises environments to Azure Database for MySQL. This article delves into the critical security considerations and best practices to safeguard your data throughout migration. By using Azure's comprehensive security features, such as advanced threat protection, encryption, and access controls, you can protect your databases against potential vulnerabilities and threats. This guide provides the insights needed to implement a secure migration strategy, addressing critical aspects like data encryption, network security, and compliance. Whether you aim to enhance data protection, meet regulatory requirements, or ensure the integrity of your databases, this article equips you with the knowledge to achieve a secure and successful migration.
 
 ## Prerequisites
 
@@ -31,7 +33,7 @@ This tight integration allows administrators and applications to take advantage 
 
 ## Threat protection
 
-if a user or application credentials are compromised, logs are not likely to reflect any failed login attempts. Compromised credentials can allow bad actors to access and download the data. [Azure Threat Protection](../../concepts-security.md#threat-protection) can watch for anomalies in logins (such as unusual locations, rare users or brute force attacks) and other suspicious activities. Administrators can be notified in the event something does not `look` right.
+If a user or application credentials are compromised, logs aren't likely to reflect any failed login attempts. Compromised credentials can allow bad actors to access and download the data. [Azure Threat Protection](../../concepts-security.md#threat-protection) can watch for anomalies in logins (such as unusual locations, rare users or brute force attacks) and other suspicious activities. Administrators can be notified in the event something doesn't `look` right.
 
 ## Audit logging
 
@@ -52,7 +54,7 @@ AzureDiagnostics
 
 Data in the MySQL instance is encrypted at rest by default. Any automated backups are also encrypted to prevent potential leakage of data to unauthorized parties. This encryption is typically performed with a key that is created when the instance is created. In addition to this default encryption key, administrators have the option to [bring your own key (BYOK).](../../concepts-data-encryption-mysql.md)
 
-When using a customer-managed key strategy, it's vital to understand responsibilities around key lifecycle management. Customer keys are stored in an [Azure Key Vault](/azure/key-vault/general/basic-concepts) and then accessed via policies. it's vital to follow all recommendations for key management, the loss of the encryption key equates to the loss of data access.
+When using a customer-managed key strategy, it's vital to understand responsibilities around key lifecycle management. Customer keys are stored in an [Azure Key Vault](/azure/key-vault/general/basic-concepts) and then accessed via policies. It's vital to follow all recommendations for key management, the loss of the encryption key equates to the loss of data access.
 
 In addition to a customer-managed key, use service-level keys to [add double encryption](../../concepts-infrastructure-double-encryption.md). Implementing this feature can provide highly encrypted data at rest, but it does come with encryption performance penalties. Testing should be performed.
 
@@ -62,7 +64,7 @@ Data can be encrypted during transit using SSL/TLS. As previously discussed, it 
 
 Once users are set up and the data is encrypted at rest, the migration team should review the network data flows. Azure Database for MySQL provides several mechanisms to secure the networking layers by limiting access to only authorized users, applications, and devices.
 
-The first line of defense for protecting the MySQL instance is to implement [firewall rules](../../concepts-firewall-rules.md). IP addresses can be limited to only valid locations when accessing the instance via internal or external IPs. If the MySQL instance is destined to only serve internal applications, then [restrict public access](../../howto-deny-public-network-access.md).
+The frontline of defense for protecting the MySQL instance is to implement [firewall rules](../../concepts-firewall-rules.md). IP addresses can be limited to only valid locations when accessing the instance via internal or external IPs. If the MySQL instance is destined to only serve internal applications, then [restrict public access](../../howto-deny-public-network-access.md).
 
 When moving an application to Azure along with the MySQL workload, it's likely there are been multiple virtual networks setup in a hub and spoke pattern that requires [Virtual Network Peering](/azure/virtual-network/virtual-network-peering-overview) to be configured.
 

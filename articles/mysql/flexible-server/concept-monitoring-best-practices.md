@@ -12,13 +12,13 @@ ms.topic: conceptual
 
 # Best practices for monitoring Azure Database for MySQL - Flexible Server
 
-Learn about the best practices that can be used to monitor your database operations and ensure that the performance is not compromised as data size grows. As we add new capabilities to the platform, we will continue to refine the best practices detailed in this section.
+Learn about the best practices that can be used to monitor your database operations and ensure that the performance isn't compromised as data size grows. As we add new capabilities to the platform, we'll continue to refine the best practices detailed in this section.
 
 ## Layout of the current monitoring toolkit
 
-Azure Database for MySQL flexible server provides tools and methods you can use to monitor usage easily, add, or remove resources (such as CPU, memory, or I/O), troubleshoot potential problems, and help improve the performance of a database. You can [monitor performance metrics](concepts-monitoring.md#metrics) on a regular basis to see the average, maximum, and minimum values for a variety of time ranges.
+Azure Database for MySQL flexible server provides tools and methods you can use to monitor usage easily, add, or remove resources (such as CPU, memory, or I/O), troubleshoot potential problems, and help improve the performance of a database. You can [monitor performance metrics](concepts-monitoring.md#metrics) regularly to see the average, maximum, and minimum values for various time ranges.
 
-You can [set up alerts](how-to-alert-on-metric.md#create-an-alert-rule-on-a-metric-from-the-azure-portal) for a metric threshold, so you are informed if the server has reached those limits and take appropriate actions.
+You can [set up alerts](how-to-alert-on-metric.md#create-an-alert-rule-on-a-metric-from-the-azure-portal) for a metric threshold, so you're informed if the server has reached those limits and take appropriate actions.
 
 Monitor the database server to make sure that the resources assigned to the database can handle the application workload. If the database is hitting resource limits, consider:
 
@@ -27,7 +27,7 @@ Monitor the database server to make sure that the resources assigned to the data
 
 ### CPU utilization
 
-Monitor CPU usage and if the database is exhausting CPU resources. If CPU usage is 90% or more then you should scale up your compute by increasing the number of vCores or scale to next pricing tier. Make sure that the throughput or concurrency is as expected as you scale up/down the CPU.
+Monitor CPU usage and if the database is exhausting CPU resources. If CPU usage is 90% or more, than you should scale up your compute by increasing the number of vCores or scale to next pricing tier. Make sure that the throughput or concurrency is as expected as you scale up/down the CPU.
 
 ### Memory
 
@@ -35,7 +35,7 @@ The amount of memory available for the Azure Database for MySQL flexible server 
 
 ### Storage
 
-The [amount of storage](../single-server/how-to-create-manage-server-portal.md#scale-compute-and-storage) provisioned for Azure Database for MySQL flexible server determines the IOPs for your server. The storage used by the service includes the database files, transaction logs, the server logs and backup snapshots. Ensure that the consumed disk space does not constantly exceed above 85 percent of the total provisioned disk space. If that is the case, you need to delete or archive data from the database server to free up some space.
+The [amount of storage](../single-server/how-to-create-manage-server-portal.md#scale-compute-and-storage) provisioned for Azure Database for MySQL flexible server determines the IOPs for your server. The storage used by the service includes the database files, transaction logs, the server logs and backup snapshots. Ensure that the consumed disk space doesn't constantly exceed above 85 percent of the total provisioned disk space. If that is the case, you need to delete or archive data from the database server to free up some space.
 
 ### Network traffic
 

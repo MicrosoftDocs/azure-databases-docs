@@ -1,5 +1,5 @@
 ---
-title: "Migrate MySQL On-Premises to Azure Database for MySQL: Data Migration"
+title: "Migrate MySQL on-premises to Azure Database for MySQL: Data Migration"
 description: "As a prudent step before upgrade or migrate data, export the database before the upgrade using MySQL Workbench or manually via the mysqldump command."
 author: SudheeshGH
 ms.author: sunaray
@@ -11,6 +11,8 @@ ms.topic: how-to
 ---
 
 # Migrate MySQL on-premises to Azure Database for MySQL: Data Migration
+
+Data migration is a pivotal aspect of transitioning MySQL databases from on-premises environments to Azure databases for MySQL. This article delves into the intricacies of data migration, offering a comprehensive guide on the various techniques and best practices to ensure a seamless data transfer. You can effectively plan and execute your migration strategy by understanding the different data migration methods, such as logical and physical migration, and addressing potential challenges like data integrity and downtime. This guide equips you with the knowledge to handle large datasets, minimize disruptions, and use Azure's robust features to optimize your database performance and reliability. Whether aiming to modernize your infrastructure or enhance your data management capabilities, this article will provide the insights needed for a successful data migration.
 
 ## Prerequisites
 
@@ -81,7 +83,7 @@ For example, if a numeric based primary key is present and the migration is impo
 
   - Reset Target Server Parameters
 
-  - Migrate the Application(s)
+  - Migrate one or more Applications
 
 ## Common steps
 
@@ -297,7 +299,7 @@ You can also create users in Azure Database for MySQL using PowerShell: /en-us/a
 
 ## Execute migration
 
-With the basic migration components in place, it's now possible to proceed with the data migration. There were several tools and methods introduced previously. For WWI, they are going to utilize the MySQL Workbench path to export the data and then import it into Azure Database for MySQL.
+With the basic migration components in place, it's now possible to proceed with the data migration. There were several tools and methods introduced previously. For WWI, they're going to utilize the MySQL Workbench path to export the data and then import it into Azure Database for MySQL.
 
 ## Data migration checklist
 
@@ -311,7 +313,7 @@ With the basic migration components in place, it's now possible to proceed with 
 
   - Test any migrations that have a different source version vs the target.
 
-  - Migrate any non-data based objects such as user names and privileges.
+  - Migrate any nondata based objects such as user names and privileges.
 
   - Make sure all tasks are documented and checked off as the migration is executed.
 

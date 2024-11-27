@@ -14,7 +14,7 @@ ms.custom:
 
 # Troubleshoot errors commonly encountered during or post migration to Azure Database for MySQL - Flexible Server
 
-Azure Database for MySQL Flexible Server is a fully managed service powered by the community version of MySQL. The MySQL experience in a managed service environment might differ from running MySQL in your own environment. In this article, you'll see some of the common errors users might encounter while migrating to or developing on Azure Database for MySQL Flexible Server for the first time.
+Azure Database for MySQL Flexible Server is a fully managed service powered by the community version of MySQL. The MySQL experience in a managed service environment might differ from running MySQL in your own environment. In this article, you see some of the common errors users might encounter while migrating to or developing on Azure Database for MySQL Flexible Server for the first time.
 
 ## Common Connection Errors
 
@@ -27,7 +27,7 @@ There are some server parameters like `require_secure_transport` that aren't sup
 mysql> show databases;
 ERROR 2006 (HY000): MySQL server has gone away
 No connection. Trying to reconnect...
-Connection id:    64897
+Connection ID:    64897
 Current database: *** NONE ***
 ERROR 1184 (08S01): Aborted connection 22 to db: 'db-name' user: 'user' host: 'hostIP' (init_connect command failed)
 
@@ -37,7 +37,7 @@ ERROR 1184 (08S01): Aborted connection 22 to db: 'db-name' user: 'user' host: 'h
 
 The SUPER privilege and DBA role aren't supported on the service. As a result, you might encounter some common errors listed below:
 
-### ERROR 1419: You do not have the SUPER privilege and binary logging is enabled (you *might* want to use the less safe log_bin_trust_function_creators variable)
+### ERROR 1419: You don't have the SUPER privilege and binary logging is enabled (you *might* want to use the less safe log_bin_trust_function_creators variable)
 
 The above error might occur while creating a function, trigger as below or importing a schema. The DDL statements like CREATE FUNCTION or CREATE TRIGGER are written to the binary log, so the secondary replica can execute them. The replica SQL thread has full privileges, which can be exploited to elevate privileges. To guard against this danger for servers that have binary logging enabled, the MySQL engine requires that stored function creators have the SUPER privilege, in addition to the usual CREATE ROUTINE privilege.
 
@@ -78,7 +78,7 @@ DELIMITER ;;
 DELIMITER ;
 ```
 
-#### ERROR 1227 (42000) at line 295: Access denied; you need (at least one of) the SUPER or SET_USER_ID privilege(s) for this operation
+#### ERROR 1227 (42000) at line 295: Access denied; you need (at least one of) the SUPER or SET_USER_ID privileges for this operation
 
 The above error might occur while executing CREATE VIEW with DEFINER statements as part of importing a dump file or running a script. Azure Database for MySQL Flexible Server doesn't allow SUPER privileges or the SET_USER_ID privilege to any user.
 

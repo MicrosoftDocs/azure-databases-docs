@@ -1,5 +1,5 @@
 ---
-title: "Migrate MySQL On-Premises to Azure Database for MySQL: Planning"
+title: "Migrate MySQL on-premises to Azure Database for MySQL: Planning"
 description: "An Azure landing zone is the target environment defined as the final resting place of a cloud migration project."
 author: SudheeshGH
 ms.author: sunaray
@@ -11,6 +11,8 @@ ms.topic: how-to
 ---
 
 # Migrate MySQL on-premises to Azure Database for MySQL: Planning
+
+Planning the migration of MySQL databases from on-premises environments to Azure Database for MySQL is a crucial phase that sets the foundation for a successful transition. This article explores the essential steps and considerations involved in the planning process. You can ensure a smooth and efficient migration by thoroughly analyzing your current database environment, defining clear migration goals, and developing a comprehensive migration strategy. This guide will provide you with the insights and best practices needed to effectively plan your migration, address potential challenges, and leverage Azure's robust features to optimize performance, scalability, and cost-efficiency. Whether you aim to modernize your infrastructure or enhance disaster recovery capabilities, this article equips you with the knowledge to make informed decisions and achieve a seamless migration.
 
 ## Prerequisites
 
@@ -58,7 +60,7 @@ The migration tool location determines the network connectivity requirements. As
 
 Other networking considerations include:
 
-- DMS located in a VNET is assigned a [dynamic public IP](../../../dms/faq.yml) to the service. At creation time, you can place the service inside a virtual network that has connectivity via a [ExpressRoute](/azure/expressroute/expressroute-introduction) or over [a site to site VPN](/azure/vpn-gateway/tutorial-site-to-site-portal).
+- DMS located in a virtual network is assigned a [dynamic public IP](../../../dms/faq.yml) to the service. At creation time, you can place the service inside a virtual network that has connectivity via a [ExpressRoute](/azure/expressroute/expressroute-introduction) or over [a site to site VPN](/azure/vpn-gateway/tutorial-site-to-site-portal).
 
 - When using an Azure Virtual Machine to run the migration tools, assign it a public IP address and then only allow it to connect to the on-premises MySQL instance.
 

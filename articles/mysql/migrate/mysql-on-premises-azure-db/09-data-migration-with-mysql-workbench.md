@@ -1,5 +1,5 @@
 ---
-title: "Migrate MySQL On-Premises to Azure Database for MySQL: Data Migration With MySQL Workbench"
+title: "Migrate MySQL on-premises to Azure Database for MySQL: Data Migration With MySQL Workbench"
 description: "Follow all the steps in the Setup guide to create an environment to support the following steps."
 author: SudheeshGH
 ms.author: sunaray
@@ -15,6 +15,8 @@ ms.custom:
 
 # Migrate MySQL on-premises to Azure Database for MySQL: Data Migration with MySQL Workbench
 
+Data migration is critical to moving MySQL databases from on-premises environments to Azure Database for MySQL. This article focuses on using MySQL Workbench, a powerful tool that simplifies migration. By using MySQL Workbench, you can efficiently transfer your data while minimizing downtime and ensuring data integrity. This guide walks you through the step-by-step process of setting up and executing a data migration using MySQL Workbench, highlighting best practices and potential pitfalls to avoid. Whether you're a seasoned database administrator or new to database migrations, this article provides the insights and techniques needed to achieve a seamless and successful migration to Azure.
+
 ## Prerequisites
 
 [Data migration](08-data-migration.md)
@@ -25,7 +27,7 @@ Follow all the steps in the Setup guide to create an environment to support the 
 
 ## Configure server parameters (Source)
 
-Depending on the type of migration You've chosen (offline vs. online), you want to evaluate if you are going to modify the server parameters to support a fast egress of the data. If you are doing online, it might not be necessary to do anything to server parameters as you are likely to perform a `binlog` replication and have the data syncing on its own. However, if you are doing an offline migration, once you stop application traffic, you can switch the server parameters from supporting the workload to supporting the export.
+Depending on the type of migration You've chosen (offline vs. online), you want to evaluate if you're going to modify the server parameters to support a fast egress of the data. If you're doing online, it might not be necessary to do anything to server parameters as you're likely to perform a `binlog` replication and have the data syncing on its own. However, if you're doing an offline migration, once you stop application traffic, you can switch the server parameters from supporting the workload to supporting the export.
 
 ## Configure server parameters (Target)
 
@@ -166,7 +168,7 @@ With the database objects and users from the source system migrated, the migrati
 
 ## Update applications to support SSL
 
-- Switch to the Java Server API in Visual Studio code.
+- Switch to the Java Server API in Visual Studio Code.
 
 - Open the **launch.json** file.
 

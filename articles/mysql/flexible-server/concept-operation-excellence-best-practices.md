@@ -12,8 +12,6 @@ ms.topic: conceptual
 
 # Best practices for server operations on Azure Database for MySQL - Flexible Server
 
-
-
 Learn about the best practices for working with Azure Database for MySQL Flexible Server. As we add new capabilities to the platform, we continue to focus on refining the best practices detailed in this section.
 
 ## Azure Database for MySQL Flexible Server operational guidelines

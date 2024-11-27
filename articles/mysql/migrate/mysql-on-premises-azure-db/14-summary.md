@@ -12,6 +12,8 @@ ms.topic: how-to
 
 # Migrate MySQL on-premises to Azure Database for MySQL: Summary
 
+Migrating MySQL databases from on-premises environments to Azure Database for MySQL offers numerous benefits, including enhanced scalability, security, and performance. This article comprehensively summarizes the key steps and considerations involved in the migration process. By understanding the assessment, planning, migration methods, testing, optimization, and post-migration management, you can ensure a smooth and successful transition to Azure. This guide will equip you with the insights and best practices needed to navigate each migration phase, leveraging Azure's robust features to achieve operational efficiency and cost savings. Whether modernizing your database infrastructure or improving disaster recovery capabilities, this summary will provide you with the essential knowledge to make informed decisions and achieve a seamless migration.
+
 ## Prerequisites
 
 [Security](13-security.md)
