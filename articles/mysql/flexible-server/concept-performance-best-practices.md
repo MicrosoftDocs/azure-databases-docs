@@ -44,7 +44,9 @@ Connection pooling is a mechanism that manages the creation and allocation of da
 
 If your application's development framework doesn't support connection pooling, instead use a connection proxy, such as ProxySQL or Heimdall proxy, between the application and database server.
 
-### Handling connection scaling
+<a id="handling-connection-scaling"></a>
+
+### Handle connection scaling
 
 A common approach for scaling web applications to meet fluctuating demand is to add and remove application servers. Each application server can use a connection pool with the database.
 This approach causes the total number of connections on a database server to grow in relation to the number of application servers. For example, if a database server has 10 application servers and each is configured for 100 database connections, that would provide for 1,000 database connections. If the application workload scales because of higher user activity or during peak hours and if an additional 50 application servers are added, the database connections would total 6,000. Typically, most of these connections will be idle, after being spawned by the application servers. Because idle connections consume resources (memory and CPU) to remain open, database scalability might be affected.
@@ -64,7 +66,9 @@ When designing your applications and environment for fault tolerance and faster 
 
 For example, consider a scenario in which your database server completes failover within a minute, but your application is down for several minutes longer because of things such as DNS TTL being too long on the application side. In these cases, simply reducing the TTL value will provide quicker recovery, or integrating a connection proxy between application and database server can help handle such failures.
 
-## Partitioning
+<a id="partitioning"></a>
+
+## Partition
 
 When your production workload uses extremely large tables, partitioning is a great method to improve database performance and ease maintenance. Partitioning makes it easier to manage large tables, this approach allows you to add and drop partitions to manage large tables effectively.   Partitioning can also help scale the engine by alleviating internal structure contention such as internal locks per table or per index (e.g., consider the btr_search_latch in InnoDB).
 
@@ -72,7 +76,9 @@ By adding five partitions, for example, you essentially break a large table with
 
 While partitioning has its benefits, it also has some limitations, such as the lack of support for foreign keys in partitioned tables, the lack of query cache, etc. For a full list of these limitations, in the MySQL reference manual, see the chapter [Restrictions and Limitations on Partitioning](https://dev.mysql.com/doc/refman/5.7/en/partitioning-limitations.html).
 
-## Segregating reads and writes
+<a id="segregating-reads-and-writes"></a>
+
+## Segregate reads and writes
 
 Most applications primarily read from the database, with only a small percentage of the interactions involving writes. The number of active connections on the primary database we calculated for the connection pools likely includes read traffic. Offloading as many queries to read replicas as possible and conserving access to the primary writable instance increases the amount of overall database activity performed by the application servers without increasing the load on the primary database. If you aren't already accessing read replicas at least for longer running queries such as reports, you should consider immediately moving reporting or analytics to read replicas.
 

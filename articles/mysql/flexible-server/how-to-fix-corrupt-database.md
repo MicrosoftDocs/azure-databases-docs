@@ -39,7 +39,7 @@ We recommend that you resolve corruption problems by using a *dump and restore* 
 
 Create a backup file from the command line by using mysqldump. Use this command:
 
-```
+```csharp
 $ mysqldump [--ssl-cert=/path/to/pem] -h [host] -u [uname] -p[pass] [dbname] > [backupfile.sql]
 ```
 
@@ -57,13 +57,13 @@ Parameter descriptions:
 
 If a specific table is corrupt, select specific tables in your database to back up:
 
-```
+```bash
 $ mysqldump --ssl-cert=</path/to/pem> -h mydemoserver.mysql.database.azure.com -u myserveradmin -p testdb table1 table2 > testdb_tables_backup.sql
 ```
 
 To back up one or more databases, use the `--database` switch and list the database names, separated by spaces:
 
-```
+```bash
 $ mysqldump --ssl-cert=</path/to/pem>  -h mydemoserver.mysql.database.azure.com -u myserveradmin -p --databases testdb1 testdb3 testdb5 > testdb135_backup.sql
 ```
 
@@ -71,7 +71,7 @@ $ mysqldump --ssl-cert=</path/to/pem>  -h mydemoserver.mysql.database.azure.com 
 
 The following steps show how to restore your database or tables. After you create the backup file, you can restore the tables or databases by using the mysql utility. Run this command:
 
-```
+```csharp
 mysql  --ssl-cert=</path/to/pem> -h [hostname] -u [uname] -p[pass] [db_to_restore] < [backupfile.sql]
 ```
 Here's an example that restores `testdb` from a backup file created with mysqldump:
@@ -80,7 +80,7 @@ Here's an example that restores `testdb` from a backup file created with mysqldu
 > - For Azure Database for MySQL single server, use the format `admin-user@servername` to replace `myserveradmin` in the following command.
 > - For Azure Database for MySQL Flexible Server, use the format ```admin-user``` to replace `myserveradmin` in the following command.
 
-```
+```bash
 $ mysql --ssl-cert=</path/to/pem> -h mydemoserver.mysql.database.azure.com -u myserveradmin -p testdb < testdb_backup.sql
 ```
 

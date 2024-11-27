@@ -13,8 +13,6 @@ ms.topic: how-to
 
 # Trigger on-demand backup of an Azure Database for MySQL - Flexible Server instance by using the Azure portal
 
-[!INCLUDE [applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
 This article provides a step-by-step procedure to trigger an on-demand backup from the Azure portal.
 
 ## Prerequisites

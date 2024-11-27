@@ -12,8 +12,6 @@ ms.topic: how-to
 
 # Restore a deleted Azure Database for MySQL - Flexible Server instance
 
-[!INCLUDE [applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
 When an Azure Database for MySQL Flexible Server instance is deleted, the server backup can be retained for up to five days in the service. The server backup can be accessed and restored only from the Azure subscription where the server initially resided. The following recommended steps can be followed to recover a deleted Azure Database for MySQL Flexible Server resource within five days from the time of server deletion. The recommended steps work only if the backup for the server is still available and not deleted from the system.
 
 ## Prerequisites

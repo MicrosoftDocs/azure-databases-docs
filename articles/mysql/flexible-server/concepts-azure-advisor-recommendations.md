@@ -38,7 +38,9 @@ Azure Database for MySQL Flexible Server prioritizes the following types of reco
 - **Reliability**: To ensure and improve the continuity of your business-critical databases. This includes storage limit and connection limit recommendations. For more information, see [Advisor Reliability recommendations](/azure/advisor/advisor-high-availability-recommendations).
 - **Cost**: To optimize and reduce your overall Azure spending. This includes server right-sizing recommendations. For more information, see [Advisor Cost recommendations](/azure/advisor/advisor-cost-recommendations).
 
-## Understanding your recommendations
+<a id="understanding-your-recommendations"></a>
+
+## Understand your recommendations
 
 - **Daily schedule**: For Azure Database for MySQL Flexible Server databases, we check server telemetry and issue recommendations on a daily schedule. If you make a change to your server configuration, existing recommendations will remain visible until we re-examine telemetry on the following day.
 - **Performance history**: Some of our recommendations are based on performance history. These recommendations will only appear after a server has been operating with the same configuration for 7 days. This allows us to detect patterns of heavy usage (e.g. high CPU activity or high connection volume) over a sustained time period. If you provision a new server or change to a new vCore configuration, these recommendations will be paused temporarily. This prevents legacy telemetry from triggering recommendations on a newly reconfigured server. However, this also means that performance history-based recommendations might not be identified immediately.

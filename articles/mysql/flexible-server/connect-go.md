@@ -18,8 +18,6 @@ ms.devlang: golang
 
 # Quickstart: Use Go language to connect and query data in Azure Database for MySQL
 
-[!INCLUDE [applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
 This quickstart demonstrates how to connect to an Azure Database for MySQL from Windows, Ubuntu Linux, and Apple macOS platforms by using code written in the [Go](https://go.dev/) language. It shows how to use SQL statements to query, insert, update, and delete data in the database. This topic assumes that you are familiar with development using Go and that you are new to working with Azure Database for MySQL.
 
 ## Prerequisites
@@ -135,7 +133,7 @@ The code calls method [sql.Open()](http://go-database-sql.org/accessing.html) to
 
 Replace the `host`, `database`, `user`, and `password` constants with your own values.
 
-```Go
+```cmd
 package main
 
 import (
@@ -212,7 +210,7 @@ The code calls method [sql.Open()](http://go-database-sql.org/accessing.html) to
 
 Replace the `host`, `database`, `user`, and `password` constants with your own values.
 
-```Go
+```sql
 package main
 
 import (
@@ -282,7 +280,7 @@ The code calls method [sql.Open()](http://go-database-sql.org/accessing.html) to
 
 Replace the `host`, `database`, `user`, and `password` constants with your own values.
 
-```Go
+```cmd
 package main
 
 import (
@@ -338,7 +336,7 @@ The code calls method [sql.Open()](http://go-database-sql.org/accessing.html) to
 
 Replace the `host`, `database`, `user`, and `password` constants with your own values.
 
-```Go
+```cmd
 package main
 
 import (

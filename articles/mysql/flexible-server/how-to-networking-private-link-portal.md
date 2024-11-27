@@ -12,8 +12,6 @@ ms.topic: how-to
 
 # Create and manage Private Link for Azure Database for MySQL - Flexible Server using the portal
 
-[!INCLUDE [applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
 This tutorial provides step-by-step instructions on configuring a connection to an Azure Database for MySQL Flexible Server instance through a private endpoint and establishing a connection from a VM located within a VNet.
 
 If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.

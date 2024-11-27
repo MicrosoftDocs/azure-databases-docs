@@ -15,8 +15,6 @@ ms.custom:
 
 # Quickstart: Create an instance of Azure Database for MySQL with the Azure portal
 
-[!INCLUDE [applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
 Azure Database for MySQL is a managed service for running, managing, and scaling highly available MySQL servers in the cloud. This article shows you how to use the Azure portal to create an Azure Database for MySQL flexible server instance. You create an instance of Azure Database for MySQL flexible server using a defined set of [compute and storage resources](./concepts-compute-storage.md).
 
 ## Prerequisites

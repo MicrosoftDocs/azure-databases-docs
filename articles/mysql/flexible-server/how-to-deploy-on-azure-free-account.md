@@ -14,8 +14,6 @@ ms.custom:
 
 # Use an Azure free account to try Azure Database for MySQL - Flexible Server for free
 
-[!INCLUDE [applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
 Azure Database for MySQL flexible server is a managed service that you use to run, manage, and scale highly available MySQL databases in the cloud. With an Azure free account, you can use Azure Database for MySQL flexible server for **free for 12 months** with **monthly limits** of up to:
 - **750 hours** of **Burstable B1MS** instance, enough hours to run a database instance continuously each month.
 - **32 GB storage and 32 GB backup storage.**
@@ -144,8 +142,8 @@ You're not charged for Azure Database for MySQL flexible server services include
     | Azure Database for MySQL flexible server Burstable BS Series Compute, B1MS | Tracks Compute usage in terms of number of hours of running | 750 Hours per month - Burstable B1MS Compute Tier |
     | Azure Database for MySQL flexible server Storage, Data Stored | Tracks Data Storage Provisioned in terms of GiB used per month | 32 GB per month |
     | - Meter: Identifies the unit of measure for the service being consumed. |
-    - Usage/Limit: Current month's usage and limit for the meter.
-    - Status: Usage status of the service. Based on your usage, you can have one of the following statutes:
+    | - Usage/Limit: Current month's usage and limit for the meter. |
+    | - Status: Usage status of the service. Based on your usage, you can have one of the following statutes: |
     - Not in use: You haven't used the meter or the usage for the meter hasn't reached the billing system.
     - Exceeded on \<Date\>: You've exceeded the limit for the meter on \<Date\>.
     - Unlikely to Exceed: You're unlikely to exceed the limit for the meter.

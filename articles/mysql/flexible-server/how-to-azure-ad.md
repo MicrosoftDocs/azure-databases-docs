@@ -15,8 +15,6 @@ ms.custom:
 
 # Set up Microsoft Entra authentication for Azure Database for MySQL - Flexible Server
 
-[!INCLUDE [applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
 This tutorial shows you how to set up Microsoft Entra authentication for Azure Database for MySQL Flexible Server.
 
 In this tutorial, you learn how to:
@@ -223,7 +221,7 @@ When using the CLI, you can use this shorthand to connect:
 
 **Example (Linux/macOS):**
 
-```
+```powershell
 mysql -h mydb.mysql.database.azure.com \
   --user user@tenant.onmicrosoft.com \
   --enable-cleartext-plugin \
@@ -232,7 +230,7 @@ mysql -h mydb.mysql.database.azure.com \
 
 **Example (PowerShell):**
 
-```
+```powershell
 mysql -h mydb.mysql.database.azure.com \
   --user user@tenant.onmicrosoft.com \
   --enable-cleartext-plugin \

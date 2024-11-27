@@ -12,8 +12,6 @@ ms.topic: conceptual
 
 # Public Network Access for Azure Database for MySQL - Flexible Server
 
-[!INCLUDE [applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
 This article describes the public connectivity option for Azure Database for MySQL Flexible Server. You learn in detail the concepts to create an Azure Database for MySQL Flexible Server instance that is accessible securely through the internet.
 
 ## Public access (allowed IP addresses)

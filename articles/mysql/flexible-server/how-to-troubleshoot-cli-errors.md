@@ -14,8 +14,6 @@ ms.custom:
 
 # Troubleshoot Azure Database for MySQL - Flexible Server CLI errors
 
-[!INCLUDE [applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
 This article helps you troubleshoot common issues with Azure CLI when using Azure Database for MySQL flexible server.
 
 ## Command not found

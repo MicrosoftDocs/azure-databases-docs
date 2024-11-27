@@ -12,8 +12,6 @@ ms.topic: how-to
 
 # Manage scheduled maintenance settings for Azure Database for MySQL - Flexible server
 
-[!INCLUDE [applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
 You can specify maintenance options for each Azure Database for MySQL flexible server instance in your Azure subscription. Options include the maintenance schedule and notification settings for upcoming and finished maintenance events.
 
 ## Prerequisites

@@ -15,8 +15,6 @@ ms.devlang: azurecli
 
 # Manage firewall rules for Azure Database for MySQL - Flexible Server using Azure CLI
 
-[!INCLUDE [applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
 Azure Database for MySQL flexible server supports two mutually exclusive network connectivity methods to connect to your flexible server. The two options are:
 
 - Public access (allowed IP addresses)

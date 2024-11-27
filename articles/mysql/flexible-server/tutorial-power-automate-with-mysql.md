@@ -12,8 +12,6 @@ ms.topic: quickstart
 
 # Tutorial: Create a Power Automate flow app with Azure Database for MySQL - Flexible Server
 
-[!INCLUDE [applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
 Power Automate is a service that helps you create automated workflows between your favorite apps and services to synchronize files, get notifications, collect data, and more. Here are a few examples of what you can do with Power Automate.
 
 - Automate business processes

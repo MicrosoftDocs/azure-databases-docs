@@ -12,8 +12,6 @@ ms.topic: how-to
 
 # Azure Pipelines for Azure Database for MySQL - Flexible Server
 
-[!INCLUDE [applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
 You can automatically deploy your database updates to Azure Database for MySQL Flexible Server after every successful build with **Azure Pipelines**. You can use Azure CLI task to update the database either with a SQL file or an inline SQL script against the database. This task can be run on cross-platform agents running on Linux, macOS, or Windows operating systems.
 
 ## Prerequisites
@@ -31,7 +29,7 @@ This quickstart uses the resources created in either of these guides as a starti
 
 The following example illustrates how to pass database arguments and run ```execute``` command
 
-```yaml
+```azurecli
 - task: AzureCLI@2
   displayName: Azure CLI
   inputs:
@@ -54,7 +52,7 @@ The following example illustrates how to pass database arguments and run ```exec
 
 The following example illustrates how to run an inline SQL script using ```execute``` command .
 
-```yaml
+```azurecli
 - task: AzureCLI@2
   displayName: Azure CLI
   inputs:

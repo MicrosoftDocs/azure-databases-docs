@@ -16,8 +16,6 @@ ms.custom:
 
 # Connect Azure Database for MySQL - Flexible Server with private access connectivity method
 
-[!INCLUDE [applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
 Azure Database for MySQL Flexible Server is a managed service that runs, manages, and scales highly available MySQL servers in the cloud. This quickstart shows you how to create an Azure Database for MySQL Flexible Server instance in a virtual network by using the Azure portal.
 
 [!INCLUDE [flexible-server-free-trial-note](../includes/flexible-server-free-trial-note.md)]

@@ -14,8 +14,6 @@ ms.custom:
 
 # Quickstart: Create an instance of Azure Database for MySQL - Flexible Server by using Terraform
 
-[!INCLUDE [applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
 This quickstart was tested by using the following Terraform and Terraform provider versions:
 
 - [Terraform v1.2.7](https://releases.hashicorp.com/terraform/)

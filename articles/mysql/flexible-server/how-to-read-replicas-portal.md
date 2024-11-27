@@ -12,8 +12,6 @@ ms.topic: how-to
 
 # How to create and manage read replicas in Azure Database for MySQL - Flexible Server by using the Azure portal
 
-[!INCLUDE [applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
 In this article, you learn how to create and manage read replicas in Azure Database for MySQL flexible server using the Azure portal.
 
 > [!NOTE]  

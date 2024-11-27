@@ -14,8 +14,6 @@ ms.custom:
 
 # How to create and manage read replicas in Azure Database for MySQL - Flexible Server using the Azure CLI
 
-[!INCLUDE [applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
 In this article, you will learn how to create and manage read replicas in Azure Database for MySQL flexible server using the Azure CLI. To learn more about read replicas, see the [overview](concepts-read-replicas.md).
 
 [!Note]

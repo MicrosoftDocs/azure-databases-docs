@@ -75,7 +75,9 @@ Add the connection information into your MySQL Workbench.
 
 :::image type="content" source="media/concepts-migrate-dump-restore/2-setup-new-connection.png" alt-text="Screenshot of MySQL Workbench Connection String." lightbox="media/concepts-migrate-dump-restore/2-setup-new-connection.png":::
 
-## Preparing the target Azure Database for MySQL Flexible Server instance for fast data loads
+<a id="preparing-the-target-azure-database-for-mysql-flexible-server-instance-for-fast-data-loads"></a>
+
+## Prepare the target Azure Database for MySQL Flexible Server instance for fast data loads
 
 To prepare the target Azure Database for MySQL Flexible Server instance for faster data loads, the following server parameters and configuration needs to be changed.
 

@@ -15,8 +15,6 @@ ms.custom:
 
 # Data encryption for Azure Database for MySQL - Flexible Server with Azure CLI
 
-[!INCLUDE [applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
 This tutorial shows you how to set up and manage data encryption for Azure Database for MySQL Flexible Server using Azure CLI.
 
 In this tutorial, you learn how to:
@@ -115,7 +113,7 @@ az mysql flexible-server update --resource-group testGroup --name testserver \\ 
 
 The params **identityUri** and **primaryKeyUri** are the resource ID of the user managed identity and the user managed key, respectively.
 
-```json
+```powershell
     "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {

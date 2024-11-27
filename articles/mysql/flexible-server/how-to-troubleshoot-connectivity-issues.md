@@ -16,7 +16,9 @@ The MySQL Community Edition manages connections using one thread per connection.
 
 There are potential issues associated with this type of connection handling. For example, memory use is relatively high if there's a large number of user connections, even if they're idle connections. In addition, there's a higher level of internal server contention and context switching overhead when working with thousands of user connections.
 
-## Diagnosing common connectivity errors
+<a id="diagnosing-common-connectivity-errors"></a>
+
+## Diagnose common connectivity errors
 
 Whenever your instance of Azure Database for MySQL Flexible Server is experiencing connectivity issues, remember that problems can exist in any of the three layers involved: the client device, the network, or your Azure Database for MySQL Flexible Server instance.
 

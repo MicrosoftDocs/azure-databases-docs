@@ -12,8 +12,6 @@ ms.topic: conceptual
 
 # Read replicas in Azure Database for MySQL - Flexible Server
 
-[!INCLUDE [applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
 MySQL is one of the popular database engines for running internet-scale web and mobile applications. Many of our customers use it for their online education services, video streaming services, digital payment solutions, e-commerce platforms, gaming services, news portals, government, and healthcare websites. These services are required to serve and scale as the traffic on the web or mobile application increases.
 
 On the applications side, the application is typically developed in Java or PHP and migrated to run on Azure Virtual Machine Scale Sets or Azure App Services or are containerized to run on Azure Kubernetes Service (AKS). With Virtual Machine Scale Set, App Service, or AKS as underlying infrastructure, application scaling is simplified by instantaneously provisioning new VMs and replicating the stateless components of applications to cater to the requests but often, database ends up being a bottleneck as centralized stateful component.

@@ -16,8 +16,6 @@ ms.devlang: azurecli
 
 # Tutorial: Connect an App Services Web app to Azure Database for MySQL - Flexible Server in a virtual network
 
-[!INCLUDE [applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
 This tutorial shows you how to create and connect an Azure App Service Web App to an Azure Database for MySQL Flexible Server instance isolated inside same or different [virtual networks](/azure/virtual-network/virtual-networks-overview).
 
 In this tutorial you will learn how to:

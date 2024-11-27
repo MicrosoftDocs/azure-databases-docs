@@ -70,7 +70,7 @@ You'll use the connection string as a GitHub secret.
 
 1. Delete everything after the `on:` section of your workflow file. For example, your remaining workflow might look like this.
 
-    ```yaml
+    ```csharp
     name: CI
 
     on:
@@ -84,7 +84,7 @@ You'll use the connection string as a GitHub secret.
 
     # [Service principal](#tab/userlevel)
 
-    ```yaml
+    ```powershell
     name: MySQL for GitHub Actions
 
     on:
@@ -105,7 +105,7 @@ You'll use the connection string as a GitHub secret.
 
     # [OpenID Connect](#tab/openid)
 
-    ```yaml
+    ```powershell
     name: MySQL for GitHub Actions
 
     on:
@@ -130,7 +130,7 @@ You'll use the connection string as a GitHub secret.
 
 1. Use the Azure MySQL Deploy action to connect to your MySQL instance. Replace `MYSQL_SERVER_NAME` with the name of your server. You should have a MySQL data file named `data.sql` at the root level of your repository.
 
-    ```yaml
+    ```powershell
     - uses: azure/mysql@v1
       with:
         server-name: MYSQL_SERVER_NAME
@@ -142,7 +142,7 @@ You'll use the connection string as a GitHub secret.
 
     # [Service principal](#tab/userlevel)
 
-    ```yaml
+    ```azurecli
     name: MySQL for GitHub Actions
 
     on:
@@ -172,7 +172,7 @@ You'll use the connection string as a GitHub secret.
     ```
     # [OpenID Connect](#tab/openid)
 
-    ```yaml
+    ```azurecli
     name: MySQL for GitHub Actions
 
     on:

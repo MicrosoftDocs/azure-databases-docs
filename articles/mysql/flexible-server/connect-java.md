@@ -19,8 +19,6 @@ ms.devlang: java
 
 # Use Java and JDBC with Azure Database for MySQL - Flexible Server
 
-[!INCLUDE [applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
 This article demonstrates creating a sample application that uses Java and [JDBC](https://en.wikipedia.org/wiki/Java_Database_Connectivity) to store and retrieve information in [Azure Database for MySQL Flexible Server](../index.yml).
 
 JDBC is the standard Java API to connect to traditional relational databases.
@@ -246,7 +244,7 @@ EOF
 
 Then, use the following command to run the SQL script to create the Microsoft Entra non-admin user:
 
-```bash
+```powershell
 mysql -h $AZ_DATABASE_NAME.mysql.database.azure.com --user $CURRENT_USERNAME --enable-cleartext-plugin --password=$(az account get-access-token --resource-type oss-rdbms --output tsv --query accessToken) < create_ad_user.sql
 ```
 
@@ -364,7 +362,7 @@ Run the following script in the project root directory to create a *src/main/res
 
 #### [Passwordless connection (Recommended)](#tab/passwordless)
 
-```bash
+```powershell
 mkdir -p src/main/resources && touch src/main/resources/database.properties
 
 cat << EOF > src/main/resources/database.properties
@@ -376,7 +374,7 @@ EOF
 > [!NOTE]  
 > If you are using MysqlConnectionPoolDataSource class as the datasource in your application, please remove "defaultAuthenticationPlugin=com.azure.identity.extensions.jdbc.mysql.AzureMysqlAuthenticationPlugin" in the url.
 
-```bash
+```powershell
 mkdir -p src/main/resources && touch src/main/resources/database.properties
 
 cat << EOF > src/main/resources/database.properties
@@ -387,7 +385,7 @@ EOF
 
 #### [Password](#tab/password)
 
-```bash
+```powershell
 mkdir -p src/main/resources && touch src/main/resources/database.properties
 
 cat << EOF > src/main/resources/database.properties
@@ -419,7 +417,7 @@ Next, add the Java code that will use JDBC to store and retrieve data from your 
 
 Create a *src/main/java/DemoApplication.java* file and add the following contents:
 
-```java
+```cmd
 package com.example.demo;
 
 import com.mysql.cj.jdbc.AbandonedConnectionCleanupThread;
@@ -501,7 +499,7 @@ The application should connect to the Azure Database for MySQL Flexible Server i
 
 Create a new `Todo` Java class, next to the `DemoApplication` class, and add the following code:
 
-```java
+```csharp
 package com.example.demo;
 
 public class Todo {
@@ -571,7 +569,7 @@ This class is a domain model mapped on the `todo` table that you created when ex
 
 In the *src/main/java/DemoApplication.java* file, after the main method, add the following method to insert data into the database:
 
-```java
+```cmd
 private static void insertData(Todo todo, Connection connection) throws SQLException {
     log.info("Insert data");
     PreparedStatement insertStatement = connection
@@ -587,7 +585,7 @@ private static void insertData(Todo todo, Connection connection) throws SQLExcep
 
 You can now uncomment the two following lines in the `main` method:
 
-```java
+```sql
 Todo todo = new Todo(1L, "configuration", "congratulations, you have set up JDBC correctly!", true);
 insertData(todo, connection);
 ```
@@ -603,13 +601,15 @@ Executing the main class should now produce the following output:
 [INFO   ] Closing database connection
 ```
 
-### Reading data from Azure Database for MySQL
+<a id="reading-data-from-azure-database-for-mysql"></a>
+
+### Read data from Azure Database for MySQL
 
 Next, read the data previously inserted to validate that your code works correctly.
 
 In the *src/main/java/DemoApplication.java* file, after the `insertData` method, add the following method to read data from the database:
 
-```java
+```cmd
 private static Todo readData(Connection connection) throws SQLException {
     log.info("Read data");
     PreparedStatement readStatement = connection.prepareStatement("SELECT * FROM todo;");
@@ -649,13 +649,15 @@ Executing the main class should now produce the following output:
 
 [Having any issues? Let us know.](https://github.com/MicrosoftDocs/azure-docs/issues)
 
-### Updating data in Azure Database for MySQL Flexible Server
+<a id="updating-data-in-azure-database-for-mysql-flexible-server"></a>
+
+### Update data in Azure Database for MySQL Flexible Server
 
 Next, update the data you previously inserted.
 
 Still in the *src/main/java/DemoApplication.java* file, after the `readData` method, add the following method to update data inside the database:
 
-```java
+```cmd
 private static void updateData(Todo todo, Connection connection) throws SQLException {
     log.info("Update data");
     PreparedStatement updateStatement = connection
@@ -672,7 +674,7 @@ private static void updateData(Todo todo, Connection connection) throws SQLExcep
 
 You can now uncomment the two following lines in the `main` method:
 
-```java
+```sql
 todo.setDetails("congratulations, you have updated data!");
 updateData(todo, connection);
 ```
@@ -693,13 +695,15 @@ Executing the main class should now produce the following output:
 [INFO   ] Closing database connection
 ```
 
-### Deleting data in Azure Database for MySQL Flexible Server
+<a id="deleting-data-in-azure-database-for-mysql-flexible-server"></a>
+
+### Delete data in Azure Database for MySQL Flexible Server
 
 Finally, delete the data you previously inserted.
 
 Still in the *src/main/java/DemoApplication.java* file, after the `updateData` method, add the following method to delete data inside the database:
 
-```java
+```cmd
 private static void deleteData(Todo todo, Connection connection) throws SQLException {
     log.info("Delete data");
     PreparedStatement deleteStatement = connection.prepareStatement("DELETE FROM todo WHERE id = ?;");
@@ -711,7 +715,7 @@ private static void deleteData(Todo todo, Connection connection) throws SQLExcep
 
 You can now uncomment the following line in the `main` method:
 
-```java
+```sql
 deleteData(todo, connection);
 ```
 

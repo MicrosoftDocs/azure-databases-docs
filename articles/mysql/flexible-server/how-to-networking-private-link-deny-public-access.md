@@ -12,8 +12,6 @@ ms.topic: how-to
 
 # Deny Public Network Access in Azure Database for MySQL - Flexible Server by using the Azure portal
 
-[!INCLUDE [applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
 This article describes how you can configure an Azure Database for MySQL Flexible Server instance to deny all public configurations and allow only connections through private endpoints to enhance network security further.
 
 ## Deny public access during the creation of MySQL flexible server

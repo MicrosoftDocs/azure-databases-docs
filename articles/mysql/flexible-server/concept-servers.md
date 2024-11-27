@@ -12,8 +12,6 @@ ms.topic: conceptual
 
 # Server concepts in Azure Database for MySQL - Flexible Server
 
-[!INCLUDE [applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
 This article provides considerations and guidelines for working with Azure Database for MySQL - Flexible Server.
 
 ## What is Azure Database for MySQL - Flexible Server?

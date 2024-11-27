@@ -15,8 +15,6 @@ ms.custom:
 
 # Use PHP with Azure Database for MySQL - Flexible Server
 
-[!INCLUDE [applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
 This quickstart demonstrates how to connect to Azure Database for MySQL flexible server using a [PHP](https://www.php.net/) application. It shows how to use SQL statements to query, insert, update, and delete data in the database. This article assumes that you're familiar with development using PHP and that you're new to working with Azure Database for MySQL flexible server.
 
 ## Prerequisites
@@ -26,7 +24,9 @@ This quickstart uses the resources created in either of these guides as a starti
 - [Quickstart: Create an instance of Azure Database for MySQL with the Azure portal](quickstart-create-server-portal.md)
 - [Quickstart: Create an instance of Azure Database for MySQL - Flexible Server by using the Azure CLI](quickstart-create-server-cli.md)
 
-## Preparing your client workstation
+<a id="preparing-your-client-workstation"></a>
+
+## Prepare your client workstation
 
 1. If you created your flexible server with *Private access (virtual network Integration)*, you'll need to connect to your server from a resource within the same virtual network as your server. You can create a virtual machine and add it to the virtual network created with your flexible server. Refer to [Create and manage virtual networks for Azure Database for MySQL - Flexible Server using the Azure CLI](how-to-manage-virtual-network-cli.md).
 
@@ -63,11 +63,13 @@ Get the connection information needed to connect to the Azure Database for MySQL
 1. From the server's **Overview** panel, make a note of the **Server name** and **Server admin login name**. If you forget your password, you can also reset the password from this panel.
 <!------>
 
-## Connecting to flexible server using TLS/SSL in PHP
+<a id="connecting-to-flexible-server-using-tlsssl-in-php"></a>
+
+## Connect to flexible server using TLS/SSL in PHP
 
 To establish an encrypted connection to your flexible server over TLS/SSL from your application, refer to the following code samples. You can download the certificate needed to communicate over TLS/SSL from [https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem)
 
-```php using SSL
+```powershell
 $conn = mysqli_init();
 mysqli_ssl_set($conn,NULL,NULL, "/var/www/html/DigiCertGlobalRootCA.crt.pem", NULL, NULL);
 mysqli_real_connect($conn, 'mydemoserver.mysql.database.azure.com', 'myadmin', 'yourpassword', 'quickstartdb', 3306, MYSQLI_CLIENT_SSL);

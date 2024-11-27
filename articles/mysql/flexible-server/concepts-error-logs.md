@@ -12,14 +12,14 @@ ms.topic: conceptual
 
 # Error logs in Azure Database for MySQL - Flexible Server (Preview)
 
-[!INCLUDE [applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
 In Azure Database for MySQL - Flexible Server, the error log is available to users to configure and access. Error logs in MySQL gather diagnostic messages during server startup and shutdown, and while the server is running, information that can help proactive troubleshooting. For more information about the MySQL error log, see the [Error log](https://dev.mysql.com/doc/refman/8.0/en/error-log.html) section in the MySQL documentation.  
 Under Preview phase, error logs are available under Server logs only, error logs **can't be emitted** to [Azure Diagnostic logs](/azure/azure-monitor/essentials/platform-logs-overview).
 
 In Azure Database for MySQL - Flexible Server, enabling the error log under [Server logs](./concepts-monitoring.md#server-logs) in the Azure portal records details in multiple files named using the syntax *mysql-error-servername-timestamp.log*. In the file name, the timestamp (in GMT/UTC) associated with when the file was generated is appended, identifying the specific time that that log entries were recorded. For more information, see [Server logs retention.](./concepts-monitoring.md#server-logs)
 
-## Enabling error logs (Preview)
+<a id="enabling-error-logs-preview"></a>
+
+## Enable error logs (Preview)
 
 Users can access and configure the error logs in Azure Database for MySQL – Flexible Server via the Server logs feature, which can be enabled using the [Azure portal](./how-to-server-logs-portal.md#enable-server-logs) or [List and download Azure Database for MySQL - Flexible Server logs by using the Azure CLI](how-to-server-logs-cli.md).  
 After the feature is enabled, your MySQL flexible server starts capturing events and writes them to a series of files saved as activity occurs.
@@ -37,7 +37,9 @@ You can also enable Error logs on your Azure Database for MySQL flexible server 
 
 Ensure that the [Server logs feature](./how-to-server-logs-portal.md#enable-server-logs) is activated by selecting the *Enable* checkbox in the Server logs pane. Alternatively, set the server parameter "log_output" to FILE to enable server logs. Failure to perform either of these actions result in FILE logging not being enabled for your Azure Database for MySQL flexible server.
 
-## Accessing error logs
+<a id="accessing-error-logs"></a>
+
+## Access error logs
 
 You can download the error logs for further analysis of your Azure Database for MySQL flexible server. To download the logs, in the Azure portal, navigate to the Server logs section, and then select the Error logs tab, as shown.
 - Under **Name**, select the log file you want to download, and then, under **Action**, select **Download**.
@@ -70,7 +72,9 @@ When logging is enabled for an Azure Database for MySQL - Flexible Server, logs 
 Importantly, you can download the logs before rotation, ensuring they have access to valuable server logs at any point within the retention period.
 For more detailed information on log rotation schedules and storage limits for various log types, refer to the [documentation on Server log retention](./concepts-monitoring.md#server-logs).
 
-### Handling of Personal Identifiable Information (PII) and Sensitive Data
+<a id="handling-of-personal-identifiable-information-pii-and-sensitive-data"></a>
+
+### Handle of Personal Identifiable Information (PII) and Sensitive Data
 
 In Azure MySQL Flexible Server, we prioritize the security of your data. As such, any Personal Identifiable Information (PII) or sensitive data such as hostnames, IP addresses, usernames, and database names in error logs are hashed out due to security reasons.
 This means that while you can gain insights into the operational status and potential issues of your server from the error logs, specific details that could compromise the security of your server are not directly accessible.

@@ -12,8 +12,6 @@ ms.topic: how-to
 
 # Create and manage virtual networks for Azure Database for MySQL - Flexible Server using the Azure portal
 
-[!INCLUDE [applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
 Azure Database for MySQL Flexible Server supports two types of mutually exclusive network connectivity methods to connect to your Azure Database for MySQL Flexible Server instance. The two options are:
 
 - Public access (allowed IP addresses)

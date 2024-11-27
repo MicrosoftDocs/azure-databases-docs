@@ -14,8 +14,6 @@ ms.custom:
 
 # Manage zone redundant high availability in Azure Database for MySQL - Flexible Server
 
-[!INCLUDE [applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
 This article describes how you can enable or disable zone redundant high availability configuration in Azure Database for MySQL Flexible Server.
 
 High availability feature provisions physically separate primary and standby replica in different zones. For more information, see the [high availability concepts documentation](concepts-high-availability.md).

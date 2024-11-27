@@ -14,8 +14,6 @@ ms.custom:
 
 # Storage IOPS in Azure Database for MySQL - Flexible Server
 
-[!INCLUDE [applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
 The number of read and write operations that the storage system can perform is measured in input/output operations per second (IOPS). Higher IOPS values indicate better storage performance, which allows your database to handle more simultaneous read and write operations. The result is faster data retrieval and improved overall efficiency.
 
 If the IOPS setting is too low, the database server might experience delays in processing requests, resulting in slow performance and reduced throughput. If the IOPS setting is too high, it might lead to unnecessary resource allocation and potentially increased costs without significant performance improvements.
@@ -98,7 +96,9 @@ Ultimately, the decision between autoscale and pre-provisioned IOPS depends on y
 
 If you have a fluctuating workload with unpredictable peaks, opting for autoscale IOPS might be more cost-effective. It ensures that you pay for only the higher IOPS that you use during peak periods, offering flexibility and cost savings. Although pre-provisioned IOPS provides consistent and maximum IOPS, it might come at a higher cost, depending on the workload. Consider the trade-off between cost and performance required from your server.
 
-### Testing and evaluation
+<a id="testing-and-evaluation"></a>
+
+### Test and evaluation
 
 If you're unsure about the optimal IOPS setting, consider running performance tests by using both autoscale IOPS and pre-provisioned IOPS. Assess the results and determine which setting meets your workload requirements and performance expectations.
 

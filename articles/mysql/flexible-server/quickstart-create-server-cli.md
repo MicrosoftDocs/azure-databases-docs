@@ -17,8 +17,6 @@ ms.devlang: azurecli
 
 # Quickstart: Create an instance of Azure Database for MySQL - Flexible Server by using the Azure CLI
 
-[!INCLUDE [applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
 This quickstart shows you how to use [Azure CLI](/cli/azure/get-started-with-azure-cli) commands in [Azure Cloud Shell](https://portal.azure.com/#cloudshell) to create an instance of Azure Database for MySQL - Flexible Server in five minutes.
 
 [!INCLUDE [flexible-server-free-trial-note](../includes/flexible-server-free-trial-note.md)]
@@ -76,7 +74,7 @@ If you want to change any defaults, see the Azure CLI [reference documentation](
 
 Here's sample output:
 
-```json
+```sql
 Creating Resource Group 'groupXXXXXXXXXX'...
 Creating new vnet "serverXXXXXXXXXVNET" in resource group "groupXXXXXXXXXX"...
 Creating new subnet "serverXXXXXXXXXSubnet" in resource group "groupXXXXXXXXXX" and delegating it to "Microsoft.DBforMySQL/flexibleServers"...

@@ -17,8 +17,6 @@ ms.custom:
 
 # Tutorial: Deploy a Spring Boot application on AKS cluster with Azure Database for MySQL - Flexible Server in a VNet
 
-[!INCLUDE [applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
 In this tutorial, you'll learn how to deploy a [Spring Boot](https://spring.io/projects/spring-boot) application on [Azure Kubernetes Service (AKS)](/azure/aks/intro-kubernetes) cluster with [What is Azure Database for MySQL - Flexible Server?](overview.md) in the backend, securely communicating with each other within an [Azure virtual network](/azure/virtual-network/virtual-networks-overview).
 
 > [!NOTE]  
@@ -131,7 +129,7 @@ In this section, we'll code the demo application. If you want to go faster, you 
 
     Open the src/main/resources/application.properties file, and add the below snippet. This code is reading the database host, database name, username, and password from the Kubernetes manifest file.
 
-    ```properties
+    ```powershell
     logging.level.org.springframework.jdbc.core=DEBUG
     spring.datasource.url=jdbc:mysql://${DATABASE_HOST}:3306/${DATABASE_NAME}?serverTimezone=UTC
     spring.datasource.username=${DATABASE_USERNAME}
@@ -156,7 +154,7 @@ In this section, we'll code the demo application. If you want to go faster, you 
 
     Add the Java code that will use JDBC to store and retrieve data from your MySQL server. Create a new `Todo` Java class, next to the `DemoApplication` class, and add the following code:
 
-    ```java
+    ```csharp
     package com.example.springbootmysqlaks;
 
     import org.springframework.data.annotation.Id;
@@ -231,7 +229,7 @@ In this section, we'll code the demo application. If you want to go faster, you 
 
     Finish the application by creating a controller that can store and retrieve data. Implement a `TodoController` class in the same package, and add the following code:
 
-    ```java
+    ```csharp
     package com.example.springbootmysqlaks;
 
     import org.springframework.http.HttpStatus;
@@ -262,7 +260,7 @@ In this section, we'll code the demo application. If you want to go faster, you 
 
 1. Create a new Dockerfile in the base directory *springboot-mysql-aks* and copy this code snippet.
 
-    ```dockerfile
+    ```powershell
     FROM openjdk:8-jdk-alpine
     RUN addgroup -S spring && adduser -S spring -G spring
     USER spring:spring
@@ -373,7 +371,7 @@ In this tutorial, we'll use Azure CNI networking in AKS. If you'd like to config
 
 1. Paste in the following YAML. Replace your values for Azure Database for MySQL flexible server admin username and password.
 
-    ```yml
+    ```sql
     apiVersion: apps/v1
     kind: Deployment
     metadata:
@@ -442,7 +440,7 @@ curl http://<AKS-service-external-ip>
 
 This command will return the list of "todo" items, including the item you've created.
 
-```json
+```csharp
 [{"id":1,"description":"configuration","details":"congratulations, you have deployed your application correctly!","done":true}]
 ```
 

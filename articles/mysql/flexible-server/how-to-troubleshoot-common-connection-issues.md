@@ -12,8 +12,6 @@ ms.topic: troubleshooting
 
 # Troubleshoot connection issues to Azure Database for MySQL - Flexible Server
 
-[!INCLUDE [applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
 Connection problems might be caused by a variety of things, including:
 
 - Firewall settings

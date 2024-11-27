@@ -50,7 +50,9 @@ The following are operational guidelines that should be followed when working wi
 
 - When provisioning the resource, make sure you [enabled the autogrow](../single-server/how-to-auto-grow-storage-portal.md) for your Azure Database for MySQL Flexible Server instance. This doesn't add any extra cost and protects the database from any storage bottlenecks that you might run into.
 
-### Using InnoDB with Azure Database for MySQL Flexible Server
+<a id="using-innodb-with-azure-database-for-mysql-flexible-server"></a>
+
+### Use InnoDB with Azure Database for MySQL Flexible Server
 
 -  If using `ibdata1` feature, which is a system tablespace data file can't shrink or be purged by dropping the data from the table, or moving the table to file-per-table `tablespaces`.
 

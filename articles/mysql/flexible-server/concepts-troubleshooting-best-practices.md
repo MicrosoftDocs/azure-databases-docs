@@ -49,7 +49,7 @@ and ((tables.table_rows / statistics.cardinality) > 1000));`
 
 The output from the following query provides information about the most used indexes across all tables and schemas on the database server. This information is helpful in identifying the ratio of writes to reads against each index and the latency numbers for reads as well as individual write operations, which can indicate that further tuning is required against the underlying table and dependent queries.
 
-```
+```sql
 SELECT
 object_schema AS table_schema,
 object_name AS table_name,
@@ -95,7 +95,7 @@ To avoid this extra random IO read on the primary key index to get the data row,
 
 Consider, for example, a table that you're using to try to find all employees who joined the company after January 1, 2000.
 
-```
+```sql
 mysql> show create table employee\G
 *************************** 1. row ***************************
        Table: employee
@@ -114,7 +114,7 @@ Create Table: CREATE TABLE `employee` (
 
 If you run an EXPLAIN plan on this query, you'd observe that currently no indexes are being used, and a where clause alone is being used to filter the employee records.
 
-```
+```sql
 mysql> EXPLAIN select empid, fname, lname from employee where joindate > '2000-01-01'\G
 *************************** 1. row ***************************
            id: 1
@@ -138,7 +138,7 @@ However, if you added an index that covers the column in the where clause, along
 
 Now, if you run EXPLAIN plan on the same query, the "Using Index" value appears in the "Extra" field, which means that InnoDB executes the query using the index we created earlier, which confirms this as a covering index.
 
-```
+```sql
 mysql> EXPLAIN select empid, fname, lname from employee where joindate > '2000-01-01'\G
 *************************** 1. row ***************************
            id: 1

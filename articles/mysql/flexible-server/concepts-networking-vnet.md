@@ -12,8 +12,6 @@ ms.topic: conceptual
 
 # Private Network Access using virtual network integration for Azure Database for MySQL - Flexible Server
 
-[!INCLUDE [applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
 This article describes the private connectivity option for Azure Database for MySQL Flexible Server. You learn in detail the virtual network concepts for Azure Database for MySQL Flexible Server to create a server securely in Azure.
 
 ## Private access (Virtual Network integration)

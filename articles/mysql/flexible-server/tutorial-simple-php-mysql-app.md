@@ -16,8 +16,6 @@ ms.devlang: php
 
 # Tutorial: Deploy a PHP and Azure Database for MySQL - Flexible Server app on Azure App Service
 
-[!INCLUDE [applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
 [Azure App Service](/azure/app-service/overview) provides a highly scalable, self-patching web hosting service using the Linux operating system.
 
 This tutorial shows how to build and deploy a sample PHP application to Azure App Service, and integrate it with Azure Database for MySQL flexible server on the back end. Here you'll use public access connectivity (allowed IP addresses) in the Azure Database for MySQL flexible server instance to connect to the App Service app.
@@ -214,7 +212,7 @@ Congratulations! You have successfully deployed a sample PHP application to Azur
 
 To update the Azure app, make the necessary code changes, commit all the changes in Git, and then push the code changes to Azure.
 
-```bash
+```sql
 git add .
 git commit -m "Update Azure app"
 git push azure main

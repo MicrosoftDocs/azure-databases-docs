@@ -15,8 +15,6 @@ ms.devlang: azurecli
 ---
 # Azure CLI samples for Azure Database for MySQL - Flexible Server
 
-[!INCLUDE [applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
 The following table includes links to sample Azure CLI scripts for Azure Database for MySQL Flexible Server.
 
 | Sample link | Description |

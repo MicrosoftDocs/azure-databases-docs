@@ -14,8 +14,6 @@ ms.custom:
 
 # Manage Azure Database for MySQL - Flexible Server using the Azure CLI
 
-[!INCLUDE [applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
 This article shows you how to manage your Azure Database for MySQL Flexible Server instance deployed in Azure. Management tasks include compute and storage scaling, admin password reset, and viewing server details.
 
 ## Prerequisites

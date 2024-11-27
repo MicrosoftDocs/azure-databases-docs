@@ -12,8 +12,6 @@ ms.topic: how-to
 
 # Data encryption for Azure Database for MySQL - Flexible Server by using the Azure portal
 
-[!INCLUDE [applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
 This tutorial shows you how to set up and manage data encryption for Azure Database for MySQL Flexible Server.
 
 In this tutorial, you learn how to:

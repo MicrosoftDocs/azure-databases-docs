@@ -12,8 +12,6 @@ ms.topic: conceptual
 
 # Backup and restore in Azure Database for MySQL - Flexible Server
 
-[!INCLUDE [applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
 Azure Database for MySQL Flexible Server automatically creates server backups and securely stores them in local redundant storage within the region. Backups can be used to restore your server to a point-in-time. Backup and restore are an essential part of any business continuity strategy because they protect your data from accidental corruption or deletion.
 
 ## Backup overview
@@ -54,7 +52,9 @@ Backup redundancy ensures that your database meets its availability and durabili
 > [!NOTE]  
 > Zone-redundant High Availability to support zone redundancy is current surfaced as a create time operation only. Currently, for a Zone-redundant High Availability server geo-redundancy can only be enabled/disabled at server create time.
 
-## Moving from other backup storage options to geo-redundant backup storage
+<a id="moving-from-other-backup-storage-options-to-geo-redundant-backup-storage"></a>
+
+## Move from other backup storage options to geo-redundant backup storage
 
 You can move your existing backups storage to geo-redundant storage using the following suggested ways:
 

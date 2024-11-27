@@ -15,8 +15,6 @@ ms.custom:
 
 # Use MySQL Workbench with Azure Database for MySQL - Flexible Server
 
-[!INCLUDE [applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
 This quickstart demonstrates how to connect to an Azure Database for MySQL flexible server instance using the MySQL Workbench application.
 
 ## Prerequisites
@@ -26,7 +24,9 @@ This quickstart uses the resources created in either of these guides as a starti
 - [Quickstart: Create an instance of Azure Database for MySQL with the Azure portal](quickstart-create-server-portal.md)
 - [Quickstart: Create an instance of Azure Database for MySQL - Flexible Server by using the Azure CLI](quickstart-create-server-cli.md)
 
-## Preparing your client workstation
+<a id="preparing-your-client-workstation"></a>
+
+## Prepare your client workstation
 
 - If you created your flexible server with *Private access (VNet Integration)*, you will need to connect to your server from a resource within the same VNet as your server. You can create a virtual machine and add it to the VNet created with your flexible server. Refer to [Create and manage virtual networks for Azure Database for MySQL - Flexible Server using the Azure CLI](how-to-manage-virtual-network-cli.md).
 - If you created your flexible server with *Public access (allowed IP addresses)*, you can add your local IP address to the list of firewall rules on your server. Refer to [Manage firewall rules for Azure Database for MySQL - Flexible Server using Azure CLI](how-to-manage-firewall-cli.md).

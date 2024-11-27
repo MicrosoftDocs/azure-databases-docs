@@ -12,8 +12,6 @@ ms.topic: conceptual
 
 # Microsoft Entra authentication for Azure Database for MySQL - Flexible Server
 
-[!INCLUDE [applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
 Microsoft Entra authentication is a mechanism of connecting to Azure Database for MySQL Flexible Server by using identities defined in Microsoft Entra ID. With Microsoft Entra authentication, you can manage database user identities and other Microsoft services in a central location, simplifying permission management.
 
 ## Benefits

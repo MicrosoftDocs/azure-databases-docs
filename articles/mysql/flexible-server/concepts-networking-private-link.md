@@ -12,8 +12,6 @@ ms.topic: conceptual
 
 # Private Link for Azure Database for MySQL - Flexible Server
 
-[!INCLUDE [applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
 Private Link allows you to connect to various PaaS services, such as Azure Database for MySQL flexible server, in Azure via a private endpoint. Azure Private Link essentially brings Azure services inside your private Virtual Network (VNet). Using the private IP address, the MySQL flexible server is accessible just like any other resource within the VNet.
 
 A private endpoint is a private IP address within a specific [VNet](/azure/virtual-network/virtual-networks-overview) and Subnet.

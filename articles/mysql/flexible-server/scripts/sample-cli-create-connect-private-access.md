@@ -39,7 +39,7 @@ Use the following steps to test connectivity to the MySQL server from the VM by 
 
 1. To SSH into the VM, start by getting the public IP address and then use MySQL tools to connect
 
-   ```bash
+   ```csharp
    PUBLIC_IP=$(az vm list-ip-addresses --resource-group $RESOURCE_GROUP --name $VM --query "[].virtualMachine.network.publicIpAddresses[0].ipAddress" --output tsv)
 
    ssh azureuser@$PUBLIC_IP

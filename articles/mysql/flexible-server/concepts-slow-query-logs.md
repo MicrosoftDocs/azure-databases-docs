@@ -11,8 +11,6 @@ ms.topic: conceptual
 ---
 # Slow query logs in Azure Database for MySQL - Flexible Server
 
-[!INCLUDE [applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
 In Azure Database for MySQL Flexible Server, the slow query log is available to users to configure and access. Slow query logs are disabled by default and can be enabled to assist with identifying performance bottlenecks during troubleshooting.
 
 For more information about the MySQL slow query log, see the [slow query log section](https://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html) in the MySQL engine documentation.
@@ -79,7 +77,7 @@ Once your slow query logs are piped to Azure Monitor Logs through Diagnostic Log
 
 - Queries longer than 10 seconds on a particular server
 
-    ```Kusto
+    ```kusto
     AzureDiagnostics
     | where Resource  == '<your server name>'
     | where Category == 'MySqlSlowLogs'
@@ -89,7 +87,7 @@ Once your slow query logs are piped to Azure Monitor Logs through Diagnostic Log
 
 - List top 5 longest queries on a particular server
 
-    ```Kusto
+    ```kusto
     AzureDiagnostics
     | where Resource  == '<your server name>'
     | where Category == 'MySqlSlowLogs'
@@ -100,7 +98,7 @@ Once your slow query logs are piped to Azure Monitor Logs through Diagnostic Log
 
 - Summarize slow queries by minimum, maximum, average, and standard deviation query time on a particular server
 
-    ```Kusto
+    ```kusto
     AzureDiagnostics
     | where Resource  == '<your server name>'
     | where Category == 'MySqlSlowLogs'
@@ -110,7 +108,7 @@ Once your slow query logs are piped to Azure Monitor Logs through Diagnostic Log
 
 - Graph the slow query distribution on a particular server
 
-    ```Kusto
+    ```kusto
     AzureDiagnostics
     | where Resource  == '<your server name>'
     | where Category == 'MySqlSlowLogs'
@@ -121,7 +119,7 @@ Once your slow query logs are piped to Azure Monitor Logs through Diagnostic Log
 
 - Display queries longer than 10 seconds across all Azure Database for MySQL Flexible Server instances with Diagnostic Logs enabled
 
-    ```Kusto
+    ```kusto
     AzureDiagnostics
     | where Category == 'MySqlSlowLogs'
     | project TimeGenerated, Resource , event_class_s, start_time_t , query_time_d, sql_text_s

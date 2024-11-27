@@ -17,8 +17,6 @@ ms.devlang: python
 
 # Quickstart: Use Python to connect and query data in Azure Database for MySQL - Flexible Server
 
-[!INCLUDE [applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
 In this quickstart, you connect to Azure Database for MySQL Flexible Server by using Python. You then use SQL statements to query, insert, update, and delete data in the database from Mac, Ubuntu Linux, and Windows platforms.
 
 This article assumes that you're familiar with developing using Python, but you're new to working with Azure Database for MySQL Flexible Server.
@@ -31,7 +29,9 @@ This article assumes that you're familiar with developing using Python, but you'
 
 - An Azure Database for MySQL Flexible Server instance. To create an Azure Database for MySQL Flexible Server instance, refer to [Quickstart: Create an instance of Azure Database for MySQL with the Azure portal](quickstart-create-server-portal.md) or [Quickstart: Create an instance of Azure Database for MySQL - Flexible Server by using the Azure CLI](quickstart-create-server-cli.md).
 
-## Preparing your client workstation
+<a id="preparing-your-client-workstation"></a>
+
+## Prepare your client workstation
 
 - If you created your flexible server with *Private access (VNet Integration)*, you will need to connect to your server from a resource within the same VNet as your server. You can create a virtual machine and add it to the VNet created with your flexible server. Refer to [Create and manage virtual networks for Azure Database for MySQL - Flexible Server using the Azure CLI](how-to-manage-virtual-network-cli.md).
 - If you created your flexible server with *Public access (allowed IP addresses)*, you can add your local IP address to the list of firewall rules on your server. Refer to [Manage firewall rules for Azure Database for MySQL - Flexible Server using Azure CLI](how-to-manage-firewall-cli.md).
@@ -93,7 +93,7 @@ Use the following code to connect to the server and database, create a table, an
 
 The code imports the mysql.connector library, and uses the [connect()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysql-connector-connect.html) function to connect to flexible server using the [arguments](https://dev.mysql.com/doc/connector-python/en/connector-python-connectargs.html) in the config collection. The code uses a cursor on the connection, and the [cursor.execute()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-execute.html) method executes the SQL query against the MySQL database.
 
-```python
+```cmd
 import mysql.connector
 from mysql.connector import errorcode
 
@@ -152,7 +152,7 @@ The code imports the mysql.connector library, and uses the [connect()](https://d
 
 The code reads the data rows using the [fetchall()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-fetchall.html) method, keeps the result set in a collection row, and uses a `for` iterator to loop over the rows.
 
-```python
+```cmd
 import mysql.connector
 from mysql.connector import errorcode
 
@@ -202,7 +202,7 @@ Use the following code to connect and update the data by using an **UPDATE** SQL
 
 The code imports the mysql.connector library, and uses the [connect()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysql-connector-connect.html) function to connect to flexible server using the [arguments](https://dev.mysql.com/doc/connector-python/en/connector-python-connectargs.html) in the config collection. The code uses a cursor on the connection, and the [cursor.execute()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-execute.html) method executes the SQL query against the MySQL database.
 
-```python
+```cmd
 import mysql.connector
 from mysql.connector import errorcode
 
@@ -247,7 +247,7 @@ Use the following code to connect and remove data by using a **DELETE** SQL stat
 
 The code imports the mysql.connector library, and uses the [connect()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysql-connector-connect.html) function to connect to flexible server using the [arguments](https://dev.mysql.com/doc/connector-python/en/connector-python-connectargs.html) in the config collection. The code uses a cursor on the connection, and the [cursor.execute()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-execute.html) method executes the SQL query against the MySQL database.
 
-```python
+```cmd
 import mysql.connector
 from mysql.connector import errorcode
 

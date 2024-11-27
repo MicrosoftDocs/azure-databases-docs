@@ -12,9 +12,8 @@ ms.custom:
   - devx-track-azurecli
 ms.devlang: azurecli
 ---
-# Configure server parameters in Azure Database for MySQL - Flexible Server using the Azure CLI
 
-[!INCLUDE [applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
+# Configure server parameters in Azure Database for MySQL - Flexible Server using the Azure CLI
 
 You can list, show, and update parameters for an Azure Database for MySQL Flexible Server instance by using Azure CLI, the Azure command-line utility. The server parameters are configured with the default and recommended value when you create the server.
 
@@ -74,7 +73,9 @@ az mysql flexible-server parameter set --name slow_query_log --resource-group my
 ```
 This code resets the **slow\_query\_log** to the default value **OFF**.
 
-## Setting non-modifiable server parameters
+<a id="setting-non-modifiable-server-parameters"></a>
+
+## Set non-modifiable server parameters
 
 If the Azure Database for MySQL Flexible Server parameter you want to update is non-modifiable, you can optionally set the parameter at the connection level using `init_connect`. This sets the server parameters for each client connecting to the server.
 
@@ -86,9 +87,13 @@ az mysql flexible-server parameter set --name init_connect --resource-group myre
 > [!NOTE]  
 > `init_connect` can be used to change parameters that do not require SUPER privilege(s) at the session level. To verify if you can set the parameter using `init_connect`, execute the `set session parameter_name=YOUR_DESIRED_VALUE;` command and if it errors out with **Access denied; you need SUPER privileges(s)** error, then you cannot set the parameter using `init_connect'.
 
-## Working with the time zone parameter
+<a id="working-with-the-time-zone-parameter"></a>
 
-### Setting the global level time zone
+## Work with the time zone parameter
+
+<a id="setting-the-global-level-time-zone"></a>
+
+### Set the global level time zone
 
 The global level time zone can be set using the [az mysql flexible-server parameter set](/cli/azure/mysql/flexible-server/parameter) command.
 
@@ -98,7 +103,9 @@ The following command updates the **time\_zone** server parameter of server **my
 az mysql flexible-server parameter set --name time_zone --resource-group myresourcegroup --server-name mydemoserver --value "US/Pacific"
 ```
 
-### Setting the session level time zone
+<a id="setting-the-session-level-time-zone"></a>
+
+### Set the session level time zone
 
 The session level time zone can be set by running the `SET time_zone` command from a tool like the MySQL command line or MySQL Workbench. The example below sets the time zone to the **US/Pacific** time zone.
 

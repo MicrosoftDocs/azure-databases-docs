@@ -16,8 +16,6 @@ ms.custom:
 
 # What's new in Azure Database for MySQL
 
-[!INCLUDE [applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
 [What is Azure Database for MySQL - Flexible Server?](overview.md) is a deployment mode designed to provide more granular control and flexibility over database management functions and configuration settings than the Azure Database for MySQL single server deployment mode. The service currently supports the community versions of MySQL 5.7 and 8.0.
 
 This article summarizes new releases and features in the Azure Database for MySQL Flexible Server, which will begin in January 2021. Listings appear in reverse chronological order, with the most recent updates first.

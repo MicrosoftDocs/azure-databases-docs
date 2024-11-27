@@ -12,8 +12,6 @@ ms.topic: how-to
 
 # Move from private access (virtual network integrated) to public access or Private Link with the Azure portal
 
-[!INCLUDE [applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
 This article describes moving an Azure Database for MySQL flexible server from Private access (virtual network integrated) to Public access or a Private Link with the Azure portal.
 
 ## Prerequisites

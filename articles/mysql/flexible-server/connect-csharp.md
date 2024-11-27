@@ -18,8 +18,6 @@ ms.devlang: csharp
 
 # Quickstart: Use .NET (C#) to connect and query data in Azure Database for MySQL - Flexible Server
 
-[!INCLUDE [applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
 This quickstart demonstrates how to connect to an Azure Database for MySQL Flexible Server instance by using a C# application. It shows how to use SQL statements to query, insert, update, and delete data in the database.
 
 ## Prerequisites

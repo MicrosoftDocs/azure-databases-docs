@@ -12,8 +12,6 @@ ms.topic: conceptual
 
 # Replicate data into Azure Database for MySQL - Flexible Server
 
-[!INCLUDE [applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
 Data-in replication allows you to synchronize data from an external MySQL server into an Azure Database for MySQL Flexible Server instance. The external server can be on-premises, in virtual machines, Azure Database for MySQL single server, or a database service hosted by other cloud providers. Data-in replication is based on the binary log (binlog) file position or GTID-based replication. To learn more about binlog replication, see the [MySQL Replication](https://dev.mysql.com/doc/refman/5.7/en/replication-configuration.html).
 
 > [!NOTE]  

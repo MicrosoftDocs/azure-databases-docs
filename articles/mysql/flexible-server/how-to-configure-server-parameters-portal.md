@@ -12,8 +12,6 @@ ms.topic: how-to
 
 # Configure server parameters in Azure Database for MySQL - Flexible Server using the Azure portal
 
-[!INCLUDE [applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
 You can manage Azure Database for MySQL Flexible Server configuration using server parameters. The server parameters are configured with the default and recommended value when you create the server.
 
 This article describes how to view and configure server parameters by using the Azure portal. The server parameter blade on Azure portal shows both the modifiable and nonmodifiable server parameters. The nonmodifiable server parameters are greyed out.
@@ -35,7 +33,9 @@ This article describes how to view and configure server parameters by using the 
 1. If you saved new values for the parameters, you can always revert everything back to the default values by selecting **Reset all to default**.
 [:::image type="content" source="./media/how-to-server-parameters/6-reset-parameters.png" alt-text="Reset all to default":::](./media/how-to-server-parameters/6-reset-parameters.png#lightbox)
 
-## Setting non-modifiable server parameters
+<a id="setting-non-modifiable-server-parameters"></a>
+
+## Set non-modifiable server parameters
 
 If the server parameter you want to update is nonmodifiable, you can optionally set the parameter at the connection level using `init_connect`. This sets the server parameters for each client connecting to the server.
 
@@ -49,15 +49,21 @@ If the server parameter you want to update is nonmodifiable, you can optionally 
 > [!NOTE]  
 > `init_connect` can be used to change parameters that do not require SUPER privilege(s) at the session level. To verify if you can set the parameter using `init_connect`, execute the `set session parameter_name=YOUR_DESIRED_VALUE;` command and if it errors out with **Access denied; you need SUPER privileges(s)** error, then you cannot set the parameter using `init_connect'.
 
-## Working with the time zone parameter
+<a id="working-with-the-time-zone-parameter"></a>
 
-### Setting the global level time zone
+## Work with the time zone parameter
+
+<a id="setting-the-global-level-time-zone"></a>
+
+### Set the global level time zone
 
 The global level time zone can be set from the **Server parameters** page in the Azure portal. The following example sets the global time zone to the value "US/Pacific".
 
 [:::image type="content" source="./media/how-to-server-parameters/timezone.png" alt-text="Set time zone parameter":::](./media/how-to-server-parameters/timezone.png#lightbox)
 
-### Setting the session level time zone
+<a id="setting-the-session-level-time-zone"></a>
+
+### Set the session level time zone
 
 The session level time zone can be set by running the `SET time_zone` command from a tool like the MySQL command line or MySQL Workbench. The following example sets the time zone to the **US/Pacific** time zone.
 

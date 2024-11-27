@@ -11,8 +11,6 @@ ms.topic: conceptual
 ---
 # Server parameters in Azure Database for MySQL - Flexible Server
 
-[!INCLUDE [applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
 This article provides considerations and guidelines for configuring server parameters in Azure Database for MySQL - Flexible Server.
 
 > [!NOTE]  
@@ -207,13 +205,15 @@ For more information about creating an event, see the following documentation ab
 - [Using the Event Scheduler in MySQL 5.7](https://dev.mysql.com/doc/refman/5.7/en/event-scheduler.html)
 - [Using the Event Scheduler in MySQL 8.0](https://dev.mysql.com/doc/refman/8.0/en/event-scheduler.html)
 
-#### Configuring the event_scheduler server parameter
+<a id="configuring-the-event_scheduler-server-parameter"></a>
+
+#### Configure the event_scheduler server parameter
 
 The following scenario illustrates one way to use the `event_scheduler` parameter in Azure Database for MySQL - Flexible Server.
 
 To demonstrate the scenario, consider the following example of a simple table:
 
-```azurecli
+```sql
 mysql> describe tab1;
 +-----------+-------------+------+-----+---------+----------------+
 | Field | Type | Null | Key | Default | Extra |
@@ -223,19 +223,18 @@ mysql> describe tab1;
 | CreatedBy | varchar(16) | YES | | NULL | |
 | +-----------+-------------+------+-----+---------+----------------+ |
 | 3 rows in set (0.23 sec) |
-```
-
-To configure the `event_scheduler` server parameter in Azure Database for MySQL - Flexible Server, perform the following steps:
+| ``` |
+| To configure the `event_scheduler` server parameter in Azure Database for MySQL - Flexible Server, perform the following steps: |
 
 1. In the Azure portal, go to your Azure Database for MySQL - Flexible Server instance. Under **Settings**, select **Server parameters**.
 1. On the **Server parameters** pane, search for `event_scheduler`. In the **VALUE** dropdown list, select **ON**, and then select **Save**.
 
-    > [!NOTE]  
+    > [!NOTE]
     > Deployment of the dynamic configuration change to the server parameter doesn't require a restart.
 
 1. To create an event, connect to the Azure Database for MySQL - Flexible Server instance and run the following SQL command:
-
     ```sql
+
     CREATE EVENT test_event_01
     ON SCHEDULE EVERY 1 MINUTE
     STARTS CURRENT_TIMESTAMP
@@ -244,17 +243,17 @@ To configure the `event_scheduler` server parameter in Azure Database for MySQL 
     DO
     INSERT INTO tab1(id,createdAt,createdBy)
     VALUES('',NOW(),CURRENT_USER());
-    ```
 
+    ```
 1. To view the Event Scheduler details, run the following SQL statement:
-
     ```sql
+
     SHOW EVENTS;
+
     ```
-
     The following output appears:
+    ```sql
 
-    ```azurecli
     mysql> show events;
     +-----+---------------+-------------+-----------+-----------+------------+----------------+----------------+---------------------+---------------------+---------+------------+----------------------+----------------------+--------------------+
     | Db | Name | Definer | Time zone | Type | Execute at | Interval value | Interval field | Starts | Ends | Status | Originator | character_set_client | collation_connection | Database Collation |
@@ -262,7 +261,7 @@ To configure the `event_scheduler` server parameter in Azure Database for MySQL 
     | db1 | test_event_01 | azureuser@% | SYSTEM | RECURRING | NULL | 1 | MINUTE | 2023-04-05 14:47:04 | 2023-04-05 15:47:04 | ENABLED | 3221153808 | latin1 | latin1_swedish_ci | latin1_swedish_ci |
     | +-----+---------------+-------------+-----------+-----------+------------+----------------+----------------+---------------------+---------------------+---------+------------+----------------------+----------------------+--------------------+ |
     | 1 row in set (0.23 sec) |
-    ```
+    | ``` |
 
 1. After a few minutes, query the rows from the table to begin viewing the rows inserted every minute according to the `event_scheduler` parameter that you configured:
 
@@ -277,11 +276,10 @@ To configure the `event_scheduler` server parameter in Azure Database for MySQL 
     | 4 | 2023-04-05 14:50:04 | azureuser@% |
     | +----+---------------------+-------------+ |
     | 4 rows in set (0.23 sec) |
-    ```
-
-1. After an hour, run a `select` statement on the table to view the complete result of the values inserted into table every minute for an hour (as `event_scheduler` is configured in this case):
-
+    | ``` |
+| 1. After an hour, run a `select` statement on the table to view the complete result of the values inserted into table every minute for an hour (as `event_scheduler` is configured in this case): |
     ```azurecli
+
     mysql> select * from tab1;
     +----+---------------------+-------------+
     | id | CreatedAt | CreatedBy |
@@ -301,7 +299,7 @@ To configure the `event_scheduler` server parameter in Azure Database for MySQL 
     | 61 | 2023-04-05 15:47:04 | azureuser@% |
     | +----+---------------------+-------------+ |
     | 61 rows in set (0.23 sec) |
-    ```
+    | ``` |
 
 #### Other scenarios
 

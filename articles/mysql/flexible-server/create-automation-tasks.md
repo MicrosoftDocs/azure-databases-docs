@@ -12,8 +12,6 @@ ms.topic: tutorial
 
 # Manage Azure Database for MySQL - Flexible Server using automation tasks (preview)
 
-[!INCLUDE [applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
 > [!IMPORTANT]  
 > This capability is in preview and is subject to [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
@@ -25,7 +23,9 @@ Automation tasks are more basic and lightweight than [Azure Automation](/azure/a
 
 In contrast, Azure Automation is a comprehensive cloud-based automation and configuration service that provides consistent management across your Azure and non-Azure environments.
 
-## Pricing
+<a id="pricing"></a>
+
+## Price
 
 Creating an automation task doesn't immediately incur charges. The automation task is powered by a workflow in a logic app resource hosted in multi-tenant Azure Logic Apps, hence the [Consumption pricing model](/azure/logic-apps/logic-apps-pricing) applies to automation tasks. Metering and billing are based on the trigger and action executions in the underlying logic app workflow.
 

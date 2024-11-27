@@ -15,8 +15,6 @@ ms.custom:
 
 # What is Azure Database for MySQL - Flexible Server?
 
-[!INCLUDE [applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
 > [!VIDEO https://aka.ms/docs/player?id=492c7a41-5f0a-4482-828b-72be1b38e691]
 
 This article provides an overview and introduction to the core concepts of the Flexible Server deployment model. For information on the appropriate deployment option for your workload, see [Choose the right MySQL Server option in Azure](../select-right-deployment-type.md).
@@ -174,7 +172,9 @@ Azure Database for MySQL - Flexible Server encrypts data in motion with Transpor
 
 Azure Database for MySQL - Flexible Server allows full private access to the servers through [virtual network](/azure/virtual-network/virtual-networks-overview) integration. Servers in a virtual network can be reached and connected only through private IP addresses. With virtual network integration, public access is denied and servers can't be reached through public endpoints. For more information, see [Connectivity and networking concepts for Azure Database for MySQL - Flexible Server](concepts-networking.md).
 
-## Monitoring and alerting
+<a id="monitoring-and-alerting"></a>
+
+## Monitor and alerting
 
 Azure Database for MySQL - Flexible Server has built-in performance monitoring and alerting features. All Azure metrics have a one-minute frequency. Each metric provides 30 days of history.
 

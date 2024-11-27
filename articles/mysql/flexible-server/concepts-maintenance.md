@@ -12,8 +12,6 @@ ms.topic: conceptual
 
 # Scheduled maintenance in Azure Database for MySQL - Flexible Server
 
-[!INCLUDE [applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
 Azure Database for MySQL Flexible Server performs periodic maintenance to keep your managed database secure, stable, and up-to-date. During maintenance, the server gets new features, updates, and patches.
 > [!IMPORTANT]  
 > Please avoid all server operations (modifications, configuration changes, starting/stopping server) during Azure Database for MySQL Flexible Server maintenance. Engaging in these activities can lead to unpredictable outcomes, possibly affecting server performance and stability. Wait until maintenance concludes before conducting server operations.
@@ -28,7 +26,9 @@ Our standard maintenance cycle is scheduled no less frequently than every 30 day
 
 In certain scenarios, such as the need to deploy urgent security fixes or updates critical to maintaining availability and data integrity, maintenance might be conducted more frequently. These exceptions are made to safeguard your data and ensure the continuous operation of your services.
 
-### Locating Maintenance Details
+<a id="locating-maintenance-details"></a>
+
+### Locate Maintenance Details
 
 For specific details about what each maintenance update entails, please refer to our release notes. These notes provide comprehensive information about the updates applied during maintenance, allowing you to understand and prepare for any changes affecting your environment.
 

@@ -14,8 +14,6 @@ ms.custom:
 
 # Create and manage Private Link for Azure Database for MySQL - Flexible Server using Azure CLI
 
-[!INCLUDE [applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
 In this article, you learn how to use Azure CLI to create a private endpoint for accessing Azure Database for MySQL Flexible Server from a VM in a VNet.
 
 ### Launch Azure Cloud Shell

@@ -12,8 +12,6 @@ ms.topic: conceptual
 
 # Replicate data from Azure Database for MySQL - Flexible Server
 
-[!INCLUDE [applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
 Data-out replication allows you to synchronize data out of an Azure Database for MySQL flexible server instance to another MySQL server using MySQL native replication. The MySQL server (replica) can be on-premises, in virtual machines, or a database service hosted by other cloud providers. While [Replicate data into Azure Database for MySQL - Flexible Server](concepts-data-in-replication.md) helps to move data into an Azure Database for MySQL flexible server instance (replica), Data-out replication would allow you to transfer data out of an Azure Database for MySQL flexible server instance (Primary). With Data-out replication, the binary log (binlog) is made community consumable, allowing the an Azure Database for MySQL flexible server instance to act as a Primary server for the external replicas. To learn more about binlog replication, see the [MySQL binlog replication overview](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html).
 
 > [!NOTE]  

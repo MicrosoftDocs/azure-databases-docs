@@ -17,8 +17,6 @@ ms.custom:
 
 # Accelerated logs feature in Azure Database for MySQL - Flexible Server
 
-[!INCLUDE [applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
 Azure Database for MySQL - Flexible Server includes a feature called *accelerated logs*, which is now generally available for servers that use the [Azure Database for MySQL - Flexible Server service tiers](concepts-service-tiers-storage.md). The feature boosts server performance by optimizing operations related to transactional logs. When you enable this feature, the server can automatically store transactional logs on faster storage to enhance server throughput without incurring any extra cost.
 
 This article describes the benefits and limitations of accelerated logs. It also outlines the steps to enable and disable the feature.
