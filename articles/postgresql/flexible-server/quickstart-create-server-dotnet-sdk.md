@@ -51,7 +51,7 @@ az login
 ### 3. Follow the instructions that appear:
 This usually involves opening a browser and entering a code provided in the terminal to authenticate.
 
-Install the required packages.
+## Install the required packages.
 
 ```bash
 dotnet add package Azure.Identity
@@ -100,7 +100,7 @@ namespace CreatePostgreSqlFlexibleServer
             {   
                 AdministratorLogin = "admin-username", 
                 AdministratorLoginPassword = "admin-password", 
-                Version = "pgversion", 
+                Version = "pgVersion", 
                 Storage  = new PostgreSqlFlexibleServerStorage() {StorageSizeInGB = 128},
                 Sku  = new PostgreSqlFlexibleServerSku("Standard_B1ms", PostgreSqlFlexibleServerSkuTier.Burstable), 
             };
@@ -130,6 +130,7 @@ Replace the following parameters in the code with your data:
 - **admin-password**: A password for the primary administrator for the server. It must contain between 8 and 128 characters. Your password must contain characters from three of the following categories: English uppercase letters, English lowercase letters, numbers (0 through 9), and nonalphanumeric characters (!, $, #, %, etc.).
 - **SKU** : We use PostgreSqlFlexibleServerSku() constructor and in that we have to pass compute type and compute tier which is either Burstable, GeneralPurpose tier.
 You can also customize storage size to your desired usage.
+- **pgVersion** : This represents the PostgreSQL version. The server can be created with any of the following versions: 11, 12, 13, 14, 15, or 16.
 
 ## Authentication
 > [!NOTE]  
