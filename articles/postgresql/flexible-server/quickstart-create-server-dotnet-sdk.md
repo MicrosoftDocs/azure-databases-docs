@@ -18,7 +18,7 @@ In this quickstart, you learn how to use the Azure SDK libraries in .NET to crea
 
 - [An Azure account with an active subscription](https://azure.microsoft.com/free/).
 - [Flexible Server instance](quickstart-create-server-portal.md).
-- [.NET Core SDK](https://dotnet.microsoft.com/download) installed on your local machine.
+- [.NET framework](https://dotnet.microsoft.com/download) installed on your local machine.
 - [Azure CLI](/cli/azure/install-azure-cli) installed on your local machine.
 
 ## Azure.ResourceManager.PostgreSql library
