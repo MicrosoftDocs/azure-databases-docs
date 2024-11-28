@@ -373,9 +373,6 @@
         href: ../how-to-setup-cross-tenant-customer-managed-keys.md
       - name: Use managed identities with Azure services
         href: ../how-to-setup-managed-identity.md
-      - name: Disable key-based authentication
-        displayName: key, ropc, connection string
-        href: security/how-to-disable-key-based-authentication.md?context=/azure/cosmos-db/context/context
     - name: Monitor
       items:
       - name: Monitor

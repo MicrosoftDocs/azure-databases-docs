@@ -11,6 +11,7 @@ ms.topic: overview
 ms.custom:
   - mvc
   - references_regions
+  - ignite-2024
 ---
 
 # What's new in Azure Database for MySQL - Flexible Server?
@@ -23,6 +24,35 @@ This article summarizes new releases and features in the Azure Database for MySQ
 
 > [!NOTE]  
 > This article references the term slave, which Microsoft no longer uses. When the term is removed from the software, we'll remove it from this article.
+
+## November 2024
+**MySQL 8.4 LTS version support - Public Preview**
+
+Azure MySQL Flexible Server now supports MySQL 8.4 LTS version, bringing the latest MySQL capabilities to Azure. MySQL 8.4 LTS version offers enhanced replication features, expanded monitoring, and long-term support, making it ideal for production environments requiring stability and advanced management. [Learn more](../concepts-version-policy.md)
+
+**MySQL 9.1 innovation version support - Public Prevew**
+
+Azure MySQL Flexible Server now supports MySQL 9.1 Innovation version, introduces experimental features, including JavaScript support for stored procedures and the new vector data type, designed for modern applications in machine learning and analytics. [Learn more](../concepts-version-policy.md)
+
+
+## October 2024
+**New B1s Servers are unavailable**
+
+To ensure performance and reliability in light of ongoing security improvements, the creation of new B1s servers will be limited starting 11/1/2024. We recommend exploring alternative SKUs designed to better support your needs while maintaining high service reliability. Thank you for your understanding as we work to improve your experience.
+
+**What does this mean for you?**
+
+- Limited Access: New B1s instances will be unavailable after 10/28/24.
+
+- Existing Deployments: Any current B1s instances will remain unaffected.
+- Alternative Options: Explore and consider using other SKUs, such as B1ms and B2s, which provide enhanced compute power and memory while supporting greater performance. 
+
+**Next Steps:**
+- Review recommended alternative SKUs 
+- Access documentation for changing your SKU here: 
+  - [Azure portal](/azure/mysql/flexible-server/how-to-manage-server-portal)
+  - [Azure CLI](/azure/mysql/flexible-server/how-to-manage-server-cli)
+- Review the Usage Dashboard to monitor your current usage
 
 ## September 2024
 - **Azure Database for MySQL Flexible Server Flexible Maintenance is now Generally Available**
@@ -759,4 +789,3 @@ If you have questions about or suggestions for working with Azure Database for M
 - [Azure Database for MySQL Flexible Server pricing](https://azure.microsoft.com/pricing/details/mysql/server/)
 - [public documentation](index.yml)
 - [troubleshooting common migration errors](../howto-troubleshoot-common-errors.md)
-

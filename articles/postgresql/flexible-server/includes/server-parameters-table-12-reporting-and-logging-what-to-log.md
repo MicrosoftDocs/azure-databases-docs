@@ -134,8 +134,8 @@ ms.topic: include
 | Description    | Causes each attempted connection to the server to be logged, as well as successful completion of client authentication. |
 | Data type      | boolean     |
 | Default value  | `on`          |
-| Allowed values | `on`                    |
-| Parameter type | read-only      |
+| Allowed values | `on,off`                |
+| Parameter type | dynamic        |
 | Documentation  | [log_connections](https://www.postgresql.org/docs/12/runtime-config-logging.html#GUC-LOG-CONNECTIONS)                   |
 
 
@@ -151,8 +151,8 @@ ms.topic: include
 | Description    | Logs end of a session, including duration.                                                                              |
 | Data type      | boolean     |
 | Default value  | `on`          |
-| Allowed values | `on`                    |
-| Parameter type | read-only      |
+| Allowed values | `on,off`                |
+| Parameter type | dynamic        |
 | Documentation  | [log_disconnections](https://www.postgresql.org/docs/12/runtime-config-logging.html#GUC-LOG-DISCONNECTIONS)             |
 
 

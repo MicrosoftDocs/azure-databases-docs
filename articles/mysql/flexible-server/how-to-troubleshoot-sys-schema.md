@@ -16,7 +16,7 @@ ms.topic: troubleshooting
 
 [!INCLUDE[azure-database-for-mysql-single-server-deprecation](~/reusable-content/ce-skilling/azure/includes/mysql/includes/azure-database-for-mysql-single-server-deprecation.md)]
 
-The MySQL performance_schema, first available in MySQL 5.5, provides instrumentation for many vital server resources such as memory allocation, stored programs, metadata locking, etc. However, the performance_schema contains more than 80 tables, and getting the necessary information often requires joining tables within the performance_schema, and tables from the information_schema. Building on both performance_schema and information_schema, the sys_schema provides a powerful collection of [user-friendly views](https://dev.mysql.com/doc/refman/5.7/en/sys-schema-views.html) in a read-only database and is fully enabled in Azure Database for MySQL flexible server version 5.7.
+The MySQL performance_schema, first available in MySQL 5.5, provides instrumentation for many vital server resources such as memory allocation, stored programs, metadata locking, etc. However, the performance_schema contains more than 80 tables, and getting the necessary information often requires joining tables within the performance_schema, and tables from the information_schema. Building on both performance_schema and information_schema, the sys_schema provides a powerful collection of [user-friendly views](https://dev.mysql.com/doc/refman/5.7/en/sys-schema-views.html) in a read-only database and is fully enabled in Azure Database for MySQL Flexible Server version 5.7.
 
 :::image type="content" source="./media/how-to-troubleshoot-sys-schema/sys-schema-views.png" alt-text="Views of sys_schema.":::
 
@@ -40,7 +40,7 @@ IO is the most expensive operation in the database. We can find out the average 
 
 :::image type="content" source="./media/how-to-troubleshoot-sys-schema/io-latency-125GB.png" alt-text="IO latency: 125 GB.":::
 
-Because Azure Database for MySQL flexible server scales IO with respect to storage, after increasing my provisioned storage to 1 TB, my IO latency reduces to 571 ms.
+Because Azure Database for MySQL Flexible Server scales IO with respect to storage, after increasing my provisioned storage to 1 TB, my IO latency reduces to 571 ms.
 
 :::image type="content" source="./media/how-to-troubleshoot-sys-schema/io-latency-1TB.png" alt-text="IO latency: 1TB.":::
 
@@ -56,7 +56,7 @@ To troubleshoot database performance issues, it may be beneficial to identify th
 
 :::image type="content" source="./media/how-to-troubleshoot-sys-schema/summary-by-statement.png" alt-text="Summary by statement.":::
 
-In this example, Azure Database for MySQL flexible server spent 53 minutes flushing the slow query log 44579 times. That's a long time and many IOs. You can reduce this activity by either disabling your slow query log or decreasing the frequency of slow query login to the Azure portal.
+In this example, Azure Database for MySQL Flexible Server spent 53 minutes flushing the slow query log 44579 times. That's a long time and many IOs. You can reduce this activity by either disabling your slow query log or decreasing the frequency of slow query login to the Azure portal.
 
 ## Database maintenance
 
@@ -81,7 +81,7 @@ Indexes are great tools to improve read performance, but they do incur additiona
 
 ## Conclusion
 
-In summary, the sys_schema is a great tool for both performance tuning and database maintenance. Make sure to take advantage of this feature in your Azure Database for MySQL flexible server instance. 
+In summary, the sys_schema is a great tool for both performance tuning and database maintenance. Make sure to take advantage of this feature in your Azure Database for MySQL Flexible Server instance. 
 
 ## Next steps
 

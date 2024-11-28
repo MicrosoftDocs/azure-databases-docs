@@ -30,13 +30,15 @@ After you buy a reservation, it's applied immediately to any existing Azure Cosm
 When your reservation expires, your Azure Cosmos DB instances continue to run and are billed at the regular pay-as-you-go rates.
 You can buy Azure Cosmos DB Reserved Capacity from the [Azure portal](https://portal.azure.com). Pay for the reservation [upfront or with monthly payments](/azure/cost-management-billing/reservations/prepare-buy-reservation). 
 
-## Unused Reserved Capacity
+## Unused Reserved Capacity and reservations exchange
 
 A reservation discount is *use-it-or-lose-it*. So, if you don't have matching resources for any hour, then you lose a reservation quantity for that hour. You can't carry forward unused reserved hours.
 
 When you shut down a resource, the reservation discount automatically applies to another matching resource in the specified scope. If no matching resources are found in the specified scope, then the reserved hours are *lost*.
 
 Stopped resources are billed and continue to use reservation hours. To use your available reservation hours with other workloads, deallocate or delete resources or scale-in other resources.
+
+Customers can use a self-service process to exchange reservations, migrating existing ones for bigger or smaller options. There is no penalty for an exchanges, that are processed as a refund and a repurchase. Different transactions are created for the cancellation and the new reservation purchase. The prorated reservation amount is refunded for the reservations that's traded-in. You're charged fully for the new purchase. The prorated reservation amount is the daily prorated residual value of the reservation being returned. For more information about reservations exchanges, click [here](/azure/cost-management-billing/reservations/exchange-and-refund-azure-reservations).
 
 
 ## Required permissions

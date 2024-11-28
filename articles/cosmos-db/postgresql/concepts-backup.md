@@ -89,4 +89,4 @@ In most cases, cluster restore takes up to 1 hour.
 * See the steps to [restore a cluster](howto-restore-portal.md)
   in the Azure portal.
 * See [backup and restore limits and limitations](./reference-limits.md#backup-and-restore).
-* Learn about  [Azure availability zones](/azure/availability-zones/az-overview).
+* Learn about  [Azure availability zones](/azure/reliability/availability-zones-overview).

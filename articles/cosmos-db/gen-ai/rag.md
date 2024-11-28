@@ -8,6 +8,8 @@ ms.subservice: nosql
 ms.topic: conceptual
 ms.date: 07/09/2024
 ms.author: thvankra
+ms.collection:
+  - ce-skilling-ai-copilot
 ---
 
 # Retrieval Augmented Generation (RAG) in Azure Cosmos DB

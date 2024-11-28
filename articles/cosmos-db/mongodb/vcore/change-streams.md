@@ -1,6 +1,6 @@
 ---
-  title: Change Stream on Azure Cosmos DB for MongoDB vCore
-  titleSuffix: Azure Cosmos DB for MongoDB vCore
+  title: Change Stream on vCore-based Azure Cosmos DB for MongoDB (Preview)
+  titleSuffix: vCore-based Azure Cosmos DB for MongoDB
   description: Learn how to configure and use change streams to track the real-time changes made on targeted collection\database.
   author: avijitgupta
   ms.author: avijitgupta
@@ -10,7 +10,7 @@
   ms.date: 09/17/2024
 ---
 
-# Change Stream on Azure Cosmos DB for MongoDB vCore (Preview)
+# Change Stream on vCore-based Azure Cosmos DB for MongoDB (Preview)
 
 Change streams are a real-time stream of database changes that flows from your database to your application. This feature enables you to build reactive applications by subscribing to database changes, eliminating the need for continuous polling to detect changes.
 
@@ -190,6 +190,8 @@ Customize your change stream output by specifying an array of one or more pipeli
 
 ## Limitations
 
+- Debezium connector is yet not supported.
+- Pymongo driver is yet not a supported option.
 - `Replace` event is yet not supported.
 - `pre-image` is yet an unsupported option.
 - Change stream cursors need to be reinitialized after a fail-over event at current state.

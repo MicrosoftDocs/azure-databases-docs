@@ -14,19 +14,19 @@ ms.topic: how-to
 
 [!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
-This article provides step-by-step procedure to perform point-in-time recoveries in Azure Database for MySQL flexible server using backups.
+This article provides step-by-step procedure to perform point-in-time recoveries in Azure Database for MySQL - Flexible Server using backups.
 
 ## Prerequisites
 
 To complete this how-to guide, you need:
 
-- You must have an Azure Database for MySQL flexible server instance.
+- You must have an Azure Database for MySQL - Flexible Server instance.
 
 ## Restore to the latest restore point
 
-Follow these steps to restore your Azure Database for MySQL flexible server instance using an earliest existing backup.
+Follow these steps to restore your Azure Database for MySQL - Flexible Server instance using an earliest existing backup.
 
-1. In the [Azure portal](https://portal.azure.com/), choose your Azure Database for MySQL flexible server instance that you want to restore the backup from.
+1. In the [Azure portal](https://portal.azure.com/), choose your Azure Database for MySQL - Flexible Server instance that you want to restore the backup from.
 
 1. Select **Overview** from the left panel.
 
@@ -46,9 +46,9 @@ Follow these steps to restore your Azure Database for MySQL flexible server inst
 
 ## Restore to a fastest restore point
 
-Follow these steps to restore your Azure Database for MySQL flexible server instance using an existing full backup as the fastest restore point.
+Follow these steps to restore your Azure Database for MySQL - Flexible Server instance using an existing full backup as the fastest restore point.
 
-1. In the [Azure portal](https://portal.azure.com/), choose your Azure Database for MySQL flexible server instance that you want to restore the backup from.
+1. In the [Azure portal](https://portal.azure.com/), choose your Azure Database for MySQL - Flexible Server instance that you want to restore the backup from.
 
 1. Select **Overview** from the left panel.
 
@@ -70,9 +70,9 @@ Follow these steps to restore your Azure Database for MySQL flexible server inst
 
 ## Restore from a full backup through the Backup and Restore page
 
-Follow these steps to restore your Azure Database for MySQL flexible server instance using an existing full backup.
+Follow these steps to restore your Azure Database for MySQL - Flexible Server instance using an existing full backup.
 
-1. In the [Azure portal](https://portal.azure.com/), choose your Azure Database for MySQL flexible server instance that you want to restore the backup from.
+1. In the [Azure portal](https://portal.azure.com/), choose your Azure Database for MySQL - Flexible Server instance that you want to restore the backup from.
 
 1. Select **Backup and Restore** from the left panel.
 
@@ -92,7 +92,7 @@ Follow these steps to restore your Azure Database for MySQL flexible server inst
 
 ## Geo restore to latest restore point
 
-1. In the [Azure portal](https://portal.azure.com/), choose your Azure Database for MySQL flexible server instance that you want to restore the backup from.
+1. In the [Azure portal](https://portal.azure.com/), choose your Azure Database for MySQL - Flexible Server instance that you want to restore the backup from.
 
 1. Select **Overview** from the left panel.
 
@@ -123,9 +123,9 @@ The new server created by geo restore has the same server admin sign-in name and
 
 ## Use restore to move a server from Public access to Private access
 
-Follow these steps to restore your Azure Database for MySQL flexible server instance using an earliest existing backup.
+Follow these steps to restore your Azure Database for MySQL - Flexible Server instance using an earliest existing backup.
 
-1. In the [Azure portal](https://portal.azure.com/), choose your Azure Database for MySQL flexible server instance that you want to restore the backup from.
+1. In the [Azure portal](https://portal.azure.com/), choose your Azure Database for MySQL - Flexible Server instance that you want to restore the backup from.
 
 1. From the overview page, select **Restore**.
 
@@ -142,7 +142,7 @@ Follow these steps to restore your Azure Database for MySQL flexible server inst
 1. In the **Connectivity method**, select **Private access (VNet Integration)**. Go to **Virtual Network** section, you can either select an already existing *virtual network* and *Subnet* that is delegated to *Microsoft.DBforMySQL/flexibleServers* or Create a new one by selecting the *create virtual network* link.
     > [!NOTE]  
     > Only virtual networks and subnets in the same region and subscription is listed in the dropdown list. </br>
-    > The chosen subnet is delegated to *Microsoft.DBforMySQL/flexibleServers*. It means that only Azure Database for MySQL flexible server instances can use that subnet.</br>
+    > The chosen subnet is delegated to *Microsoft.DBforMySQL/flexibleServers*. It means that only Azure Database for MySQL - Flexible Server instances can use that subnet.</br>
 
     :::image type="content" source="./media/how-to-manage-virtual-network-portal/vnet-creation.png" alt-text="Screenshot of Vnet configuration." lightbox="./media/how-to-manage-virtual-network-portal/vnet-creation.png":::
 
@@ -150,10 +150,10 @@ Follow these steps to restore your Azure Database for MySQL flexible server inst
     > [!NOTE]  
     > Private DNS zone names must end with `mysql.database.azure.com`. </br>
     > If you don't see the option to create a new private dns zone, enter the server name on the **Basics** tab.</br>
-    > After the Azure Database for MySQL flexible server instance is deployed to a virtual network and subnet, you can't move it to Public access (allowed IP addresses).</br>
+    > After the Azure Database for MySQL - Flexible Server instance is deployed to a virtual network and subnet, you can't move it to Public access (allowed IP addresses).</br>
 
     :::image type="content" source="./media/how-to-manage-virtual-network-portal/private-dns-zone.png" alt-text="Screenshot of dns configuration." lightbox="./media/how-to-manage-virtual-network-portal/private-dns-zone.png":::
-1. Select **Review + create** to review your Azure Database for MySQL flexible server configuration.
+1. Select **Review + create** to review your Azure Database for MySQL - Flexible Server configuration.
 1. Select **Create** to provision the server. Provisioning can take a few minutes.
 
 1. A notification is shown that the restore operation has been initiated.

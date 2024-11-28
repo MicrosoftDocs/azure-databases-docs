@@ -372,8 +372,8 @@ ms.topic: include
 | Description    | Age at which VACUUM should trigger failsafe to avoid a wraparound outage.                                                                                                                  |
 | Data type      | integer     |
 | Default value  | `1600000000`        |
-| Allowed values | `1600000000`                                                   |
-| Parameter type | read-only      |
+| Allowed values | `0-2100000000`                                                 |
+| Parameter type | dynamic        |
 | Documentation  | [vacuum_failsafe_age](https://www.postgresql.org/docs/15/runtime-config-client.html#GUC-VACUUM-FAILSAFE-AGE)                                 |
 
 
@@ -423,8 +423,8 @@ ms.topic: include
 | Description    | Multixact age at which VACUUM should trigger failsafe to avoid a wraparound outage.                                                                                                        |
 | Data type      | integer     |
 | Default value  | `1600000000`        |
-| Allowed values | `1600000000`                                                   |
-| Parameter type | read-only      |
+| Allowed values | `0-2100000000`                                                 |
+| Parameter type | dynamic        |
 | Documentation  | [vacuum_multixact_failsafe_age](https://www.postgresql.org/docs/15/runtime-config-client.html#GUC-VACUUM-FREEZE-TABLE-AGE)                   |
 
 

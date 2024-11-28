@@ -134,8 +134,8 @@ ms.topic: include
 | Description    | Causes each attempted connection to the server to be logged, as well as successful completion of client authentication.        |
 | Data type      | boolean     |
 | Default value  | `on`          |
-| Allowed values | `on`                    |
-| Parameter type | read-only      |
+| Allowed values | `on,off`                |
+| Parameter type | dynamic        |
 | Documentation  | [log_connections](https://www.postgresql.org/docs/15/runtime-config-logging.html#GUC-LOG-CONNECTIONS)                                     |
 
 
@@ -151,8 +151,8 @@ ms.topic: include
 | Description    | Logs end of a session, including duration.                                                                                     |
 | Data type      | boolean     |
 | Default value  | `on`          |
-| Allowed values | `on`                    |
-| Parameter type | read-only      |
+| Allowed values | `on,off`                |
+| Parameter type | dynamic        |
 | Documentation  | [log_disconnections](https://www.postgresql.org/docs/15/runtime-config-logging.html#GUC-LOG-DISCONNECTIONS)                               |
 
 
@@ -253,8 +253,8 @@ ms.topic: include
 | Description    | Sets the maximum length in bytes of data logged for bind parameter values when logging statements.                             |
 | Data type      | integer     |
 | Default value  | `-1`          |
-| Allowed values | `-1`                    |
-| Parameter type | read-only      |
+| Allowed values | `-1-1073741823`         |
+| Parameter type | dynamic        |
 | Documentation  | [log_parameter_max_length](https://www.postgresql.org/docs/15/runtime-config-logging.html#GUC-LOG-PARAMETER-MAX-LENGTH)                   |
 
 
@@ -270,8 +270,8 @@ ms.topic: include
 | Description    | Sets the maximum length in bytes of data logged for bind parameter values when logging statements, on error.                   |
 | Data type      | integer     |
 | Default value  | `0`           |
-| Allowed values | `0`                     |
-| Parameter type | read-only      |
+| Allowed values | `-1-1073741823`         |
+| Parameter type | dynamic        |
 | Documentation  | [log_parameter_max_length_on_error](https://www.postgresql.org/docs/15/runtime-config-logging.html#GUC-LOG-PARAMETER-MAX-LENGTH-ON-ERROR) |
 
 

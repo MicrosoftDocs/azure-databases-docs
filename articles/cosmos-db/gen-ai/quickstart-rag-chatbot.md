@@ -5,10 +5,11 @@ description: Learn how to build a RAG chatbot in Python
 author: TheovanKraay
 ms.service: azure-cosmos-db
 ms.subservice: nosql
-ms.topic: quickstart
+ms.topic: how-to
 ms.date: 06/26/2024
 ms.author: thvankra
-
+ms.collection:
+  - ce-skilling-ai-copilot
 ---
 
 # Quickstart - Build a RAG chatbot with Azure Cosmos DB NoSQL API

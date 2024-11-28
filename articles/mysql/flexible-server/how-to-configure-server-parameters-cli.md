@@ -16,7 +16,7 @@ ms.devlang: azurecli
 
 [!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
-You can list, show, and update parameters for an Azure Database for MySQL flexible server instance by using Azure CLI, the Azure command-line utility. The server parameters are configured with the default and recommended value when you create the server.
+You can list, show, and update parameters for an Azure Database for MySQL Flexible Server instance by using Azure CLI, the Azure command-line utility. The server parameters are configured with the default and recommended value when you create the server.
 
 This article describes how to list, show, and update server parameters by using the Azure CLI.
 
@@ -27,12 +27,12 @@ This article describes how to list, show, and update server parameters by using 
 
 To step through this how-to guide, you need:
 
-- [An Azure Database for MySQL flexible server instance](quickstart-create-server-cli.md)
+- [An Azure Database for MySQL Flexible Server instance](quickstart-create-server-cli.md)
 - [Azure CLI](/cli/azure/install-azure-cli) command-line utility or use the Azure Cloud Shell in the browser.
 
-## List server parameters for an Azure Database for MySQL flexible server instance
+## List server parameters for an Azure Database for MySQL Flexible Server instance
 
-To list all parameters in an Azure Database for MySQL flexible server instance and their values, run the [az mysql flexible-server parameter list](/cli/azure/mysql/flexible-server/parameter) command.
+To list all parameters in an Azure Database for MySQL Flexible Server instance and their values, run the [az mysql flexible-server parameter list](/cli/azure/mysql/flexible-server/parameter) command.
 
 You can list the server parameters for the server **mydemoserver.mysql.database.azure.com** under resource group **myresourcegroup**.
 ```azurecli-interactive
@@ -42,14 +42,14 @@ For the definition of each of the listed parameters, see the MySQL reference sec
 
 ## Show server parameter details
 
-To show details about a particular parameter for an Azure Database for MySQL flexible server instance, run the [az mysql flexible-server parameter show](/cli/azure/mysql/flexible-server/parameter) command.
+To show details about a particular parameter for an Azure Database for MySQL Flexible Server instance, run the [az mysql flexible-server parameter show](/cli/azure/mysql/flexible-server/parameter) command.
 
 This example shows details of the **slow\_query\_log** server parameter for server **mydemoserver.mysql.database.azure.com** under resource group **myresourcegroup.**
 ```azurecli-interactive
 az mysql flexible-server parameter show --name slow_query_log --resource-group myresourcegroup --server-name mydemoserver
 ```
 ## Modify a server parameter value
-You can also modify the value of a certain Azure Database for MySQL flexible server instance parameter, which updates the underlying configuration value for the MySQL server engine. To update the server parameter, use the [az mysql flexible-server parameter set](/cli/azure/mysql/flexible-server/parameter) command.
+You can also modify the value of a certain Azure Database for MySQL Flexible Server instance parameter, which updates the underlying configuration value for the MySQL server engine. To update the server parameter, use the [az mysql flexible-server parameter set](/cli/azure/mysql/flexible-server/parameter) command.
 
 To update the **slow\_query\_log** server parameter of server **mydemoserver.mysql.database.azure.com** under resource group **myresourcegroup.**
 ```azurecli-interactive
@@ -70,7 +70,7 @@ This code resets the **slow\_query\_log** to the default value **OFF**.
 
 ## Setting non-modifiable server parameters
 
-If the Azure Database for MySQL flexible server parameter you want to update is non-modifiable, you can optionally set the parameter at the connection level using `init_connect`. This sets the server parameters for each client connecting to the server.
+If the Azure Database for MySQL Flexible Server parameter you want to update is non-modifiable, you can optionally set the parameter at the connection level using `init_connect`. This sets the server parameters for each client connecting to the server.
 
 Update the **init\_connect** server parameter of server **mydemoserver.mysql.database.azure.com** under resource group **myresourcegroup** to set values such as character set.
 ```azurecli-interactive

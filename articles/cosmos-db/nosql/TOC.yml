@@ -328,6 +328,8 @@
       href: change-feed-pull-model.md
   - name: Emulator
     href: ../emulator.md
+  - name: Linux emulator (preview)
+    href: ../emulator-linux.md
   - name: Integrated cache
     items:
     - name: Dedicated gateway overview
@@ -633,12 +635,18 @@
     items:
     - name: Kafka Connect
       items:
-      - name: Kafka Connect overview
+      - name: Kafka Connect V1 overview
         href: kafka-connector.md
-      - name: Kafka Connect - Source
+      - name: Kafka Connect V1 - Source
         href: kafka-connector-source.md
-      - name: Kafka Connect - Sink
+      - name: Kafka Connect V1 - Sink
         href: kafka-connector-sink.md
+      - name: Kafka Connect V2 overview
+        href: kafka-connector-v2.md
+      - name: Kafka Connect V2 - Source
+        href: kafka-connector-source-v2.md
+      - name: Kafka Connect V2 - Sink
+        href: kafka-connector-sink-v2.md
     - name: Spark Connector
       items:
       - name: Spark 3.x online transaction processing (OLTP) connector
@@ -895,6 +903,8 @@
         href: ../how-to-configure-vnet-service-endpoint.md
       - name: Configure access from private endpoints
         href: ../how-to-configure-private-endpoints.md
+      - name: Configure Network Security Perimeter
+        href: ../how-to-configure-nsp.md
     - name: Encryption
       items:
       - name: Use Always Encrypted
@@ -1062,7 +1072,7 @@
       href: sdk-java-async-v2.md
     - name: Spring Data Connector v2 (legacy)
       href: sdk-java-spring-data-v2.md
-    - name: Spring Data Connector v3
+    - name: Spring Data Connector v3 (legacy)
       href: sdk-java-spring-data-v3.md
     - name: Spring Data Connector v5
       href: sdk-java-spring-data-v5.md

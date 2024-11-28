@@ -91,21 +91,21 @@ To configure Data in replication, perform the following steps:
     If you're using SSL, run the following command:
 
     ```sql
-    CREATE USER 'syncuser'@'%' IDENTIFIED BY 'yourpassword';
+    CREATE USER 'syncuser'@'%' IDENTIFIED BY '<password>';
     GRANT REPLICATION SLAVE ON *.* TO ' syncuser'@'%' REQUIRE SSL;
     ```
 
     If you're not using SSL, run the following command:
 
     ```sql
-    CREATE USER 'syncuser'@'%' IDENTIFIED BY 'yourpassword';
+    CREATE USER 'syncuser'@'%' IDENTIFIED BY '<password>';
     GRANT REPLICATION SLAVE ON *.* TO ' syncuser'@'%';
     ```
 
 1. To back up the database using mydumper, run the following command on the Azure VM where we installed the mydumper\myloader:
 
     ```bash
-    mydumper --host=<primary_server>.mysql.database.azure.com --user=<username>@<primary_server> --password=<Password> --outputdir=./backup --rows=100000 -G -E -R -z --trx-consistency-only --compress --build-empty-files --threads=16 --compress-protocol --ssl  --regex '^(classicmodels\.)' -L mydumper-logs.txt
+    mydumper --host=<primary_server>.mysql.database.azure.com --user=<username>@<primary_server> --password=<password> --outputdir=./backup --rows=100000 -G -E -R -z --trx-consistency-only --compress --build-empty-files --threads=16 --compress-protocol --ssl  --regex '^(classicmodels\.)' -L mydumper-logs.txt
     ```
 
     > [!TIP]  
@@ -143,7 +143,7 @@ To configure Data in replication, perform the following steps:
 1. Restore the database using myloader by running the following command:
 
     ```bash
-    myloader --host=<servername>.mysql.database.azure.com --user=<username> --password=<Password> --directory=./backup --queries-per-transaction=100 --threads=16 --compress-protocol --ssl --verbose=3 -e 2>myloader-logs.txt
+    myloader --host=<servername>.mysql.database.azure.com --user=<username> --password=<password> --directory=./backup --queries-per-transaction=100 --threads=16 --compress-protocol --ssl --verbose=3 -e 2>myloader-logs.txt
     ```
 
     The variables in this command are explained below:
@@ -169,7 +169,7 @@ To configure Data in replication, perform the following steps:
         iii. To configure Data in replication, run the following command:
 
         ```sql
-        CALL mysql.az_replication_change_master('<Primary_server>.mysql.database.azure.com', '<username>@<primary_server>', '<Password>', 3306, '<File_Name>', <Position>, @cert);
+        CALL mysql.az_replication_change_master('<Primary_server>.mysql.database.azure.com', '<username>@<primary_server>', '<password>', 3306, '<File_Name>', <Position>, @cert);
         ```
 
         > [!NOTE]  
@@ -178,7 +178,7 @@ To configure Data in replication, perform the following steps:
     - If SSL enforcement isn't enabled, then run the following command:
 
         ```sql
-        CALL mysql.az_replication_change_master('<Primary_server>.mysql.database.azure.com', '<username>@<primary_server>', '<Password>', 3306, '<File_Name>', <Position>, '');
+        CALL mysql.az_replication_change_master('<Primary_server>.mysql.database.azure.com', '<username>@<primary_server>', '<password>', 3306, '<File_Name>', <Position>, '');
         ```
 
 1. To start replication from the replica server, call the below stored procedure.

@@ -15,8 +15,8 @@ ms.topic: include
 | Description    | Sets the minimum execution time above which a sample of statements will be logged. Sampling is determined by log_statement_sample_rate. |
 | Data type      | integer     |
 | Default value  | `-1`          |
-| Allowed values | `-1`                                                                           |
-| Parameter type | read-only      |
+| Allowed values | `-1-2147483647`                                                                |
+| Parameter type | dynamic        |
 | Documentation  | [log_min_duration_sample](https://www.postgresql.org/docs/15/runtime-config-logging.html#GUC-LOG-MIN-DURATION-SAMPLE)             |
 
 
@@ -100,8 +100,8 @@ ms.topic: include
 | Description    | Fraction of statements exceeding log_min_duration_sample to be logged.                                                                  |
 | Data type      | numeric     |
 | Default value  | `1`           |
-| Allowed values | `1`                                                                            |
-| Parameter type | read-only      |
+| Allowed values | `0-1`                                                                          |
+| Parameter type | dynamic        |
 | Documentation  | [log_statement_sample_rate](https://www.postgresql.org/docs/15/runtime-config-logging.html#GUC-LOG-STATEMENT-SAMPLE-RATE)         |
 
 
