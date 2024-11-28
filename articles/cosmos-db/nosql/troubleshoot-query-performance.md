@@ -262,7 +262,7 @@ ORDER BY c.name, c.town
 ### Understand which aggregate queries use the index
 
 In most cases, aggregate system functions in Azure Cosmos DB uses the index. However, depending on the filters or another clauses in an aggregate query, the query engine may be required to load a high number of documents. Typically, the query engine applies equality and range filters first. After applying these filters,
-the query engine can evaluate additional filters and resort to loading remaining documents to compute the aggregate, if needed.
+the query engine can evaluate other filters and resort to loading remaining documents to compute the aggregate, if needed.
 
 For example, given these two sample queries, the query with both an equality and `CONTAINS` system function filter will generally be more efficient than a query with just a `CONTAINS` system function filter. This is because the equality filter is applied first and uses the index before documents need to be loaded for the more expensive `CONTAINS` filter.
 
@@ -437,7 +437,7 @@ Azure Cosmos DB uses [partitioning](../partitioning-overview.md) to scale indivi
 
 If you have a large number of provisioned RUs (more than 30,000) or a large amount of data stored (more than approximately 100 GB), you probably have a large enough container to see a significant reduction in query RU charges.
 
-For example, if you create a container with the partition key foodGroup, the following queries will need to check only a single physical partition:
+For example, if you create a container with the partition key foodGroup, the following queries need to check only a single physical partition:
 
 ```sql
 SELECT *
