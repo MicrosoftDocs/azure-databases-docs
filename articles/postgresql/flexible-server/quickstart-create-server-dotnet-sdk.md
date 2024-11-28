@@ -193,7 +193,7 @@ using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.PostgreSql.FlexibleServers;
 using Azure.ResourceManager.PostgreSql.FlexibleServers.Models;
 
-namespace CreatePostgreSqlFlexibleServer
+namespace UpdateServerData
 {
     class Program
  {
@@ -253,7 +253,7 @@ using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.PostgreSql.FlexibleServers;
 using Azure.ResourceManager.PostgreSql.FlexibleServers.Models;
 
-namespace CreatePostgreSqlFlexibleServer
+namespace DeleteServer
 {
     class Program
  {
