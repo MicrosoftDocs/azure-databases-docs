@@ -264,7 +264,7 @@ ORDER BY c.name, c.town
 In most cases, aggregate system functions in Azure Cosmos DB uses the index. However, depending on the filters or another clauses in an aggregate query, the query engine may be required to load a high number of documents. Typically, the query engine applies equality and range filters first. After applying these filters,
 the query engine can evaluate other filters and resort to loading remaining documents to compute the aggregate, if needed.
 
-For example, given these two sample queries, the query with both an equality and `CONTAINS` system function filter will generally be more efficient than a query with just a `CONTAINS` system function filter. This is because the equality filter is applied first and uses the index before documents need to be loaded for the more expensive `CONTAINS` filter.
+For example, given these two sample queries, the query with both an equality and `CONTAINS` system function filter is generally more efficient than a query with just a `CONTAINS` system function filter. This is because the equality filter is applied first and uses the index before documents need to be loaded for the more expensive `CONTAINS` filter.
 
 Query with only `CONTAINS` filter - higher RU charge:
 
@@ -306,7 +306,7 @@ WHERE udf.MyUDF("Sausages and Luncheon Meats")
 
 The RU charge of queries with `GROUP BY` increase as the cardinality of the properties in the `GROUP BY` clause increases. In the below query, for example, the RU charge of the query increase as the number unique descriptions increases.
 
-The RU charge of an aggregate function with a `GROUP BY` clause will be higher than the RU charge of an aggregate function alone. In this example, the query engine must load every document that matches the `c.foodGroup = "Sausages and Luncheon Meats"` filter so the RU charge is expected to be high.
+The RU charge of an aggregate function with a `GROUP BY` clause is higher than the RU charge of an aggregate function alone. In this example, the query engine must load every document that matches the `c.foodGroup = "Sausages and Luncheon Meats"` filter so the RU charge is expected to be high.
 
 ```sql
 SELECT COUNT(1)
@@ -445,7 +445,7 @@ FROM c
 WHERE c.foodGroup = "Soups, Sauces, and Gravies" and c.description = "Mushroom, oyster, raw"
 ```
 
-Queries that have an `IN` filter with the partition key will only check one or more relevant physical partitions and will not "fan-out":
+Queries that have an `IN` filter with the partition key only check one or more relevant physical partitions and will not "fan-out":
 
 ```sql
 SELECT *
