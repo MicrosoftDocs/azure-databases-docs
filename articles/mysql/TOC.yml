@@ -15,8 +15,6 @@
     href: flexible-server/concept-reserved-pricing.md
   - name: Version support policy
     href: concepts-version-policy.md
-  - name: Supported versions
-    href: flexible-server/concepts-supported-versions.md
 - name: Azure Database for MySQL - Flexible Server
   items:
   - name: Overview
@@ -131,6 +129,8 @@
       items:
       - name: Scheduled maintenance
         href: flexible-server/concepts-maintenance.md
+      - name: Root certificate change
+        href: flexible-server/concepts-root-certificate-rotation.md
     - name: High availability
       items:
       - name: Business continuity overview

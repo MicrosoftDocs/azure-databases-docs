@@ -7,19 +7,16 @@ ms.author: avijitgupta
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: conceptual
-ms.date: 07/01/2024
+ms.date: 11/07/2024
 ---
 
-# Background indexing (Preview)
+# Background indexing
 
 [!INCLUDE[MongoDB vCore](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 
-Background indexing is a technique that enables a database system to perform indexing operations on a collection without blocking other queries or updates. Azure Cosmos DB for Mongo vcore accepts the background indexing request and asynchronously performs it in background.
+Background indexing is a technique that enables a database system to perform indexing operations on a collection without blocking other queries or updates. Azure Cosmos DB for MongoDB vCore accepts the background indexing request and asynchronously performs it in background.
 
 If working with smaller tiers or workloads with higher I/O needs, it's recommended to predefine indexes on empty collections and avoid relying on background indexing.
-
-> [!NOTE]
-> Background indexing is a Preview feature. Enabling this feature requires raising a support request.
 
 > [!IMPORTANT]
 > It is advised to create `unique` indexes on an empty collection as those are created in foreground, which results in blocking of reads and writes.

@@ -1,5 +1,5 @@
 ---
-title: Use data plane role-based access control
+title: Use data plane role-based access control (preview)
 titleSuffix: Azure Cosmos DB for Table
 description: Grant access to run queries, manage entities, and perform operations using role-based access control (RBAC), Microsoft Entra, and Azure Cosmos DB for Table.
 author: seesharprun
@@ -8,12 +8,14 @@ ms.reviewer: stefarroyo
 ms.service: azure-cosmos-db
 ms.subservice: table
 ms.topic: how-to
-ms.date: 10/01/2024
+ms.date: 10/24/2024
 zone_pivot_groups: azure-interface-cli-powershell-bicep
+hidden: true
+ROBOTS: NOINDEX, NOFOLLOW
 #Customer Intent: As a security user, I want to grant an identity data-plane access to Azure Cosmos DB for Table, so that my developer team can use the SDK of their choice with minimal code change.
 ---
 
-# Use role-based access control with Azure Cosmos DB for Table
+# Use role-based access control with Azure Cosmos DB for Table (preview)
 
 [!INCLUDE[Table](../../includes/appliesto-table.md)]
 
@@ -166,7 +168,7 @@ Content    : {
         "roleName": "Azure Cosmos DB for Table Data Plane Owner",
         "type": "CustomRole",
         "assignableScopes": [
-          "/subscriptions/5e6451f0-384a-4ec0-a4a1-bff59cf4837d/resourceGroups/sidandrews-rbac/providers/Microsoft.DocumentDB/databaseAccounts/sidandrews-rbac-table/"
+          "/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/sidandrews-rbac/providers/Microsoft.DocumentDB/databaseAccounts/sidandrews-rbac-table/"
         ],
         "permissions": [
           {
@@ -336,7 +338,7 @@ Content    : {
         roleName = "Azure Cosmos DB for Table Data Plane Owner"
         type = "CustomRole"
         assignableScopes = @(
-          "/subscriptions/5e6451f0-384a-4ec0-a4a1-bff59cf4837d/resourceGroups/sidandrews-rbac/providers/Microsoft.DocumentDB/databaseAccounts/sidandrews-rbac-table/"
+          "/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/sidandrews-rbac/providers/Microsoft.DocumentDB/databaseAccounts/sidandrews-rbac-table/"
         )
         permissions = @(
           @{

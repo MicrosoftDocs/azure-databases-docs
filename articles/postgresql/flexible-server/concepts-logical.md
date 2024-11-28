@@ -189,7 +189,7 @@ Here's an example of configuring pglogical at the provider database server and t
 
    ```sql
    select pglogical.create_node( node_name := 'provider1',
-   dsn := ' host=myProviderServer.postgres.database.azure.com port=5432 dbname=myDB user=myUser password=myPassword');
+   dsn := ' host=myProviderServer.postgres.database.azure.com port=5432 dbname=myDB user=myUser password=<password>');
    ```
 
 1. Create a replication set.
@@ -214,7 +214,7 @@ Here's an example of configuring pglogical at the provider database server and t
 
    ```sql
    select pglogical.create_node( node_name := 'subscriber1',
-   dsn := ' host=mySubscriberServer.postgres.database.azure.com port=5432 dbname=myDB user=myUser password=myPasword' );
+   dsn := ' host=mySubscriberServer.postgres.database.azure.com port=5432 dbname=myDB user=myUser password=<password>' );
    ```
 
 1. Create a subscription to start the synchronization and the replication process.
@@ -223,7 +223,7 @@ Here's an example of configuring pglogical at the provider database server and t
    select pglogical.create_subscription (
    subscription_name := 'subscription1',
    replication_sets := array['myreplicationset'],
-   provider_dsn := 'host=myProviderServer.postgres.database.azure.com port=5432 dbname=myDB user=myUser password=myPassword');
+   provider_dsn := 'host=myProviderServer.postgres.database.azure.com port=5432 dbname=myDB user=myUser password=<password>');
    ```
 
 1. You can then verify the subscription status.

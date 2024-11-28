@@ -16,7 +16,7 @@ ms.custom:
 
 [!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
-In this article, you learn how to use Azure CLI to create a private endpoint for accessing Azure Database for MySQL flexible server from a VM in a VNet.
+In this article, you learn how to use Azure CLI to create a private endpoint for accessing Azure Database for MySQL Flexible Server from a VM in a VNet.
 
 ### Launch Azure Cloud Shell
 
@@ -85,9 +85,9 @@ az vm create \
 > [!NOTE]  
 > Record the VM's public IP address as it's needed to connect from the internet in the next step.
 
-### Create the Azure Database for MySQL flexible server instance with public access in the resource group
+### Create the Azure Database for MySQL Flexible Server instance with public access in the resource group
 
-Create an Azure Database for MySQL flexible server instance with public access and add the client IP address to access it.
+Create an Azure Database for MySQL Flexible Server instance with public access and add the client IP address to access it.
 
 ```azurecli-interactive
 az mysql flexible-server create \
@@ -100,13 +100,13 @@ az mysql flexible-server create \
 ```
 
 > [!NOTE]  
-> In some cases, the Azure Database for MySQL flexible server instance and the VNet-subnet are in different subscriptions. In these cases, you must ensure the following configurations:
+> In some cases, the Azure Database for MySQL Flexible Server instance and the VNet-subnet are in different subscriptions. In these cases, you must ensure the following configurations:
 >  
 > - Make sure that both subscriptions have the **Microsoft.DBforMySQL/flexibleServer** resource provider registered. For more information, refer to [resource-manager-registration](/azure/azure-resource-manager/management/resource-providers-and-types).
 
 ### Create the Private Endpoint
 
-Create a private endpoint for Azure Database for MySQL flexible server in your Virtual Network:
+Create a private endpoint for Azure Database for MySQL Flexible Server in your Virtual Network:
 
 ```azurecli-interactive
 az network private-endpoint create \
@@ -122,7 +122,7 @@ az network private-endpoint create \
 
 ### Configure the Private DNS Zone
 
-Create a Private DNS Zone for the Azure Database for MySQL flexible server domain and create an association link with the Virtual Network.
+Create a Private DNS Zone for the Azure Database for MySQL Flexible Server domain and create an association link with the Virtual Network.
 
 ```azurecli-interactive
 az network private-dns zone create --resource-group myResourceGroup \
@@ -170,7 +170,7 @@ Connect to the VM *myVm* from the internet as follows:
 
 1. Once the VM desktop appears, minimize it to return to your local desktop.
 
-### Access the Azure Database for MySQL flexible server instance privately from the VM
+### Access the Azure Database for MySQL Flexible Server instance privately from the VM
 
 1. In the Remote Desktop of *myVM*, open PowerShell.
 
@@ -186,7 +186,7 @@ Connect to the VM *myVm* from the internet as follows:
     Address:  10.1.3.4
     ```
 
-1. Test the private link connection for the Azure Database for MySQL flexible server instance using any available client. The following example uses [MySQL Workbench](https://dev.mysql.com/doc/workbench/en/wb-installing-windows.html) to do the operation.
+1. Test the private link connection for the Azure Database for MySQL Flexible Server instance using any available client. The following example uses [MySQL Workbench](https://dev.mysql.com/doc/workbench/en/wb-installing-windows.html) to do the operation.
 
 1. In **New connection**, enter or select this information:
 
@@ -194,14 +194,14 @@ Connect to the VM *myVm* from the internet as follows:
     | --- | --- |
     | Connection Name | Select the connection name of your choice. |
     | Hostname | Select *mydemoserver.privatelink.mysql.database.azure.com* |
-    | Username | Enter username as *username@servername* provided during the Azure Database for MySQL flexible server instance creation. |
-    | Password | Enter a password provided during the Azure Database for MySQL flexible server instance creation. |
+    | Username | Enter username as *username@servername* provided during the Azure Database for MySQL Flexible Server instance creation. |
+    | Password | Enter a password provided during the Azure Database for MySQL Flexible Server instance creation. |
 
 1. Select Connect.
 
 1. Browse databases from left menu.
 
-1. (Optionally) Create or query information from the Azure Database for MySQL flexible server database.
+1. (Optionally) Create or query information from the Azure Database for MySQL Flexible Server database.
 
 1. Close the remote desktop connection to myVm.
 
@@ -247,7 +247,7 @@ az network private-endpoint-connection delete --id {PrivateEndpointConnectionID}
 
 ## Next steps
 
-- Learn how to [configure private link for Azure Database for MySQL flexible server from the [Azure portal](how-to-networking-private-link-portal.md).
-- Learn how to [manage connectivity](concepts-networking.md) to Azure Database for MySQL flexible server.
-- Learn how to add another layer of encryption to Azure Database for MySQL flexible server using [Customer Managed Keys](concepts-customer-managed-key.md).
-- Learn how to configure and use [Microsoft Entra authentication](concepts-azure-ad-authentication.md) on your Azure Database for MySQL flexible server instance.
+- Learn how to [configure private link for Azure Database for MySQL Flexible Server from the [Azure portal](how-to-networking-private-link-portal.md).
+- Learn how to [manage connectivity](concepts-networking.md) to Azure Database for MySQL Flexible Server.
+- Learn how to add another layer of encryption to Azure Database for MySQL Flexible Server using [Customer Managed Keys](concepts-customer-managed-key.md).
+- Learn how to configure and use [Microsoft Entra authentication](concepts-azure-ad-authentication.md) on your Azure Database for MySQL Flexible Server instance.

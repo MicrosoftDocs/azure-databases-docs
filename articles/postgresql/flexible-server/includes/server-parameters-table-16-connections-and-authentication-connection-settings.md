@@ -133,8 +133,8 @@ ms.topic: include
 | Category       | Connections and Authentication / Connection Settings |
 | Description    | Sets the directories where Unix-domain sockets will be created.                      |
 | Data type      | string    |
-| Default value  | `/tmp`                                                                     |
-| Allowed values | `/tmp`         |
+| Default value  | `/tmp,/tmp/tuning_sockets`                                                 |
+| Allowed values | `/tmp,/tmp/tuning_sockets` |
 | Parameter type | read-only      |
 | Documentation  | [unix_socket_directories](https://www.postgresql.org/docs/16/runtime-config-connection.html#GUC-UNIX-SOCKET-DIRECTORIES)               |
 

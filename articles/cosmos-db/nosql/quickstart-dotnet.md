@@ -1,63 +1,43 @@
 ---
-title: Quickstart - .NET client library
+title: Quickstart - Azure SDK for .NET
 titleSuffix: Azure Cosmos DB for NoSQL
-description: Deploy a .NET web application that uses the client library to interact with Azure Cosmos DB for NoSQL data in this quickstart.
+description: Deploy a .NET web application that uses the Azure SDK for .NET to interact with Azure Cosmos DB for NoSQL data in this quickstart.
 author: seesharprun
 ms.author: sidandrews
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.devlang: csharp
-ms.custom: devx-track-dotnet, devx-track-extended-azdevcli
 ms.topic: quickstart-sdk
-ms.date: 06/14/2024
-zone_pivot_groups: azure-cosmos-db-quickstart-env
+ms.date: 11/07/2024
+ms.custom: devx-track-csharp, devx-track-dotnet, devx-track-extended-azdevcli
+appliesto:
+  - ✅ NoSQL
 # CustomerIntent: As a developer, I want to learn the basics of the .NET library so that I can build applications with Azure Cosmos DB for NoSQL.
 ---
 
-# Quickstart: Azure Cosmos DB for NoSQL library for .NET
-
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+# Quickstart: Use Azure Cosmos DB for NoSQL with Azure SDK for .NET
 
 [!INCLUDE[Developer Quickstart selector](includes/quickstart/dev-selector.md)]
 
-Get started with the Azure Cosmos DB for NoSQL client library for .NET to query data in your containers and perform common operations on individual items. Follow these steps to deploy a minimal solution to your environment using the Azure Developer CLI.
+In this quickstart, you deploy a basic Azure Cosmos DB for Table application using the Azure SDK for .NET. Azure Cosmos DB for Table is a schemaless data store allowing applications to store structured table data in the cloud. You learn how to create tables, rows, and perform basic tasks within your Azure Cosmos DB resource using the Azure SDK for .NET.
 
 [API reference documentation](/dotnet/api/microsoft.azure.cosmos) | [Library source code](https://github.com/Azure/azure-cosmos-dotnet-v3) | [Package (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Cosmos) | [Azure Developer CLI](/azure/developer/azure-developer-cli/overview)
 
 ## Prerequisites
 
-[!INCLUDE[Developer Quickstart prerequisites](includes/quickstart/dev-prereqs.md)]
+- Azure Developer CLI
+- Docker Desktop
+- .NET 9.0
 
-## Setting up
+If you don't have an Azure account, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
 
-Deploy this project's development container to your environment. Then, use the Azure Developer CLI (`azd`) to create an Azure Cosmos DB for NoSQL account and deploy a containerized sample application. The sample application uses the client library to manage, create, read, and query sample data.
+## Initialize the project
 
-::: zone pivot="devcontainer-codespace"
+Use the Azure Developer CLI (`azd`) to create an Azure Cosmos DB for Table account and deploy a containerized sample application. The sample application uses the client library to manage, create, read, and query sample data.
 
-[![Open in GitHub Codespaces](https://img.shields.io/static/v1?style=for-the-badge&label=GitHub+Codespaces&message=Open&color=brightgreen&logo=github)](https://codespaces.new/azure-samples/cosmos-db-nosql-dotnet-quickstart?template=false&quickstart=1&azure-portal=true)
+1. Open a terminal in an empty directory.
 
-::: zone-end
-
-::: zone pivot="devcontainer-vscode"
-
-[![Open in Dev Container](https://img.shields.io/static/v1?style=for-the-badge&label=Dev+Containers&message=Open&color=blue&logo=visualstudiocode)](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/azure-samples/cosmos-db-nosql-dotnet-quickstart)
-
-::: zone-end
-
-::: zone pivot="devcontainer-codespace"
-
-> [!IMPORTANT]
-> GitHub accounts include an entitlement of storage and core hours at no cost. For more information, see [included storage and core hours for GitHub accounts](https://docs.github.com/billing/managing-billing-for-github-codespaces/about-billing-for-github-codespaces#monthly-included-storage-and-core-hours-for-personal-accounts).
-
-::: zone-end
-
-::: zone pivot="devcontainer-vscode"
-
-::: zone-end
-
-1. Open a terminal in the root directory of the project.
-
-1. Authenticate to the Azure Developer CLI using `azd auth login`. Follow the steps specified by the tool to authenticate to the CLI using your preferred Azure credentials.
+1. If you're not already authenticated, authenticate to the Azure Developer CLI using `azd auth login`. Follow the steps specified by the tool to authenticate to the CLI using your preferred Azure credentials.
 
     ```azurecli
     azd auth login
@@ -69,13 +49,7 @@ Deploy this project's development container to your environment. Then, use the A
     azd init --template cosmos-db-nosql-dotnet-quickstart
     ```
 
-    > [!NOTE]
-    > This quickstart uses the [azure-samples/cosmos-db-nosql-dotnet-quickstart](https://github.com/azure-samples/cosmos-db-nosql-dotnet-quickstart) template GitHub repository. The Azure Developer CLI will automatically clone this project to your machine if it is not already there.
-
 1. During initialization, configure a unique environment name.
-
-    > [!TIP]
-    > The environment name will also be used as the target resource group name. For this quickstart, consider using `msdocs-cosmos-db`.
 
 1. Deploy the Azure Cosmos DB account using `azd up`. The Bicep templates also deploy a sample web application.
 
@@ -83,7 +57,7 @@ Deploy this project's development container to your environment. Then, use the A
     azd up
     ```
 
-1. During the provisioning process, select your subscription and desired location. Wait for the provisioning process to complete. The process can take **approximately five minutes**.
+1. During the provisioning process, select your subscription, desired location, and target resource group. Wait for the provisioning process to complete. The process can take **approximately five minutes**.
 
 1. Once the provisioning of your Azure resources is done, a URL to the running web application is included in the output.
 
@@ -98,7 +72,7 @@ Deploy this project's development container to your environment. Then, use the A
 
 1. Use the URL in the console to navigate to your web application in the browser. Observe the output of the running app.
 
-    :::image type="content" source="media/quickstart/dev-web-application.png" alt-text="Screenshot of the running web application.":::
+:::image type="content" source="media/quickstart-dotnet/running-application.png" alt-text="Screenshot of the running web application.":::
 
 ### Install the client library
 
@@ -119,7 +93,7 @@ The client library is available through NuGet, as the `Microsoft.Azure.Cosmos` p
 1. Also, install the `Azure.Identity` package if not already installed.
 
     ```bash
-    dotnet add package Azure.Identity --version 1.*
+    dotnet add package Azure.Identity --version 1.12.*
     ```
 
 1. Open and review the **src/web/Cosmos.Samples.NoSQL.Quickstart.Web.csproj** file to validate that the `Microsoft.Azure.Cosmos` and `Azure.Identity` entries both exist.
@@ -142,43 +116,80 @@ The client library is available through NuGet, as the `Microsoft.Azure.Cosmos` p
 - [Get an item](#read-an-item)
 - [Query items](#query-items)
 
-[!INCLUDE[Developer Quickstart sample explanation](includes/quickstart/dev-sample-primer.md)]
+The sample code in the template uses a database named `cosmicworks` and container named `products`. The `products` container contains details such as name, category, quantity, a unique identifier, and a sale flag for each product. The container uses the `/category` property as a logical partition key.
 
 ### Authenticate the client
 
-[!INCLUDE[Developer Quickstart authentication explanation](includes/quickstart/dev-auth-primer.md)]
-
 This sample creates a new instance of the `CosmosClient` class and authenticates using a `DefaultAzureCredential` instance.
 
-:::code language="csharp" source="~/cosmos-db-nosql-dotnet-quickstart/src/web/Program.cs" id="create_client" highlight="2-3":::
+```csharp
+DefaultAzureCredential credential = new();
+
+CosmosClient client = new(
+    accountEndpoint: "<azure-cosmos-db-nosql-account-endpoint>",
+    tokenCredential: new DefaultAzureCredential()
+);
+```
 
 ### Get a database
 
 Use `client.GetDatabase` to retrieve the existing database named *`cosmicworks`*.
 
-:::code language="csharp" source="~/cosmos-db-nosql-dotnet-quickstart/src/web/Services/DemoService.cs" id="get_database":::
+```csharp
+Database database = client.GetDatabase("cosmicworks");
+```
 
 ### Get a container
 
 Retrieve the existing *`products`* container using `database.GetContainer`.
 
-:::code language="csharp" source="~/cosmos-db-nosql-dotnet-quickstart/src/web/Services/DemoService.cs" id="get_container":::
+```csharp
+Container container = database.GetContainer("products");
+```
 
 ### Create an item
 
 Build a C# record type with all of the members you want to serialize into JSON. In this example, the type has a unique identifier, and fields for category, name, quantity, price, and sale.
 
-:::code language="csharp" source="~/cosmos-db-nosql-dotnet-quickstart/src/web/Models/Product.cs" id="model":::
+```csharp
+public record Product(
+    string id,
+    string category,
+    string name,
+    int quantity,
+    decimal price,
+    bool clearance
+);
+```
 
 Create an item in the container using `container.UpsertItem`. This method "upserts" the item effectively replacing the item if it already exists.
 
-:::code language="csharp" source="~/cosmos-db-nosql-dotnet-quickstart/src/web/Services/DemoService.cs" id="create_item" highlight="10":::
+```csharp
+Product item = new(
+    id: "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb",
+    category: "gear-surf-surfboards",
+    name: "Yamba Surfboard",
+    quantity: 12,
+    price: 850.00m,
+    clearance: false
+);
+
+ItemResponse<Product> response = await container.UpsertItemAsync<Product>(
+    item: item,
+    partitionKey: new PartitionKey("gear-surf-surfboards")
+);
+```
 
 ### Read an item
 
 Perform a point read operation by using both the unique identifier (`id`) and partition key fields. Use `container.ReadItem` to efficiently retrieve the specific item.
 
-:::code language="csharp" source="~/cosmos-db-nosql-dotnet-quickstart/src/web/Services/DemoService.cs" id="read_item" highlight="1":::
+```csharp
+ItemResponse<Product> response = await container.ReadItemAsync<Product>(
+    id: "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb",
+    partitionKey: new PartitionKey("gear-surf-surfboards")
+);
+```
 
 ### Query items
 
@@ -188,15 +199,38 @@ Perform a query over multiple items in a container using `container.GetItemQuery
 SELECT * FROM products p WHERE p.category = @category
 ```
 
-:::code language="csharp" source="~/cosmos-db-nosql-dotnet-quickstart/src/web/Services/DemoService.cs" id="query_items" highlight="6":::
+```csharp
+string query = "SELECT * FROM products p WHERE p.category = @category"
+
+var query = new QueryDefinition(query)
+  .WithParameter("@category", "gear-surf-surfboards");
+
+using FeedIterator<Product> feed = container.GetItemQueryIterator<Product>(
+    queryDefinition: query
+);
+```
 
 Parse the paginated results of the query by looping through each page of results using `feed.ReadNextAsync`. Use `feed.HasMoreResults` to determine if there are any results left at the start of each loop.
 
-:::code language="csharp" source="~/cosmos-db-nosql-dotnet-quickstart/src/web/Services/DemoService.cs" id="parse_results" highlight="3,5":::
+```csharp
+List<Product> items = new();
+while (feed.HasMoreResults)
+{
+    FeedResponse<Product> response = await feed.ReadNextAsync();
+    foreach (Product item in response)
+    {
+        items.Add(item);
+    }
+}
+```
 
 ## Clean up resources
 
-[!INCLUDE[Developer Quickstart cleanup](includes/quickstart/dev-cleanup.md)]
+When you no longer need the sample application or resources, remove the corresponding deployment and all resources.
+
+```azurecli
+azd down
+```
 
 ## Related content
 
@@ -204,8 +238,3 @@ Parse the paginated results of the query by looping through each page of results
 - [Python Quickstart](quickstart-python.md)
 - [Java Quickstart](quickstart-java.md)
 - [Go Quickstart](quickstart-go.md)
-
-## Next step
-
-> [!div class="nextstepaction"]
-> [Tutorial: Develop a .NET console application](tutorial-dotnet-console-app.md)

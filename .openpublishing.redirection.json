@@ -1,6 +1,956 @@
 {
   "redirections": [
     {
+      "source_path": "articles/mariadb/scripts/sample-change-server-configuration.md",
+      "redirect_url": "/previous-versions/azure/mariadb/scripts/sample-change-server-configuration",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/mariadb/scripts/sample-create-server-and-firewall-rule.md",
+      "redirect_url": "/previous-versions/azure/mariadb/scripts/sample-create-server-and-firewall-rule",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/mariadb/scripts/sample-create-server-with-vnet-rule.md",
+      "redirect_url": "/previous-versions/azure/mariadb/scripts/sample-create-server-with-vnet-rule",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/mariadb/scripts/sample-point-in-time-restore.md",
+      "redirect_url": "/previous-versions/azure/mariadb/scripts/sample-point-in-time-restore",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/mariadb/scripts/sample-scale-server.md",
+      "redirect_url": "/previous-versions/azure/mariadb/scripts/sample-scale-server",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/mariadb/scripts/sample-server-logs.md",
+      "redirect_url": "/previous-versions/azure/mariadb/scripts/sample-server-logs",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/mariadb/concepts-audit-logs.md",
+      "redirect_url": "/previous-versions/azure/mariadb/concepts-audit-logs",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/mariadb/concepts-azure-advisor-recommendations.md",
+      "redirect_url": "/previous-versions/azure/mariadb/concepts-azure-advisor-recommendations",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/mariadb/concepts-backup.md",
+      "redirect_url": "/previous-versions/azure/mariadb/concepts-backup",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/mariadb/concepts-business-continuity.md",
+      "redirect_url": "/previous-versions/azure/mariadb/concepts-business-continuity",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/mariadb/concepts-certificate-rotation.md",
+      "redirect_url": "/previous-versions/azure/mariadb/concepts-certificate-rotation",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/mariadb/concepts-compatibility.md",
+      "redirect_url": "/previous-versions/azure/mariadb/concepts-compatibility",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/mariadb/concepts-connectivity-architecture.md",
+      "redirect_url": "/previous-versions/azure/mariadb/concepts-connectivity-architecture",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/mariadb/concepts-connectivity.md",
+      "redirect_url": "/previous-versions/azure/mariadb/concepts-connectivity",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/mariadb/concepts-data-access-security-private-link.md",
+      "redirect_url": "/previous-versions/azure/mariadb/concepts-data-access-security-private-link",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/mariadb/concepts-data-access-security-vnet.md",
+      "redirect_url": "/previous-versions/azure/mariadb/concepts-data-access-security-vnet",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/mariadb/concepts-data-in-replication.md",
+      "redirect_url": "/previous-versions/azure/mariadb/concepts-data-in-replication",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/mariadb/concepts-firewall-rules.md",
+      "redirect_url": "/previous-versions/azure/mariadb/concepts-firewall-rules",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/mariadb/concepts-high-availability.md",
+      "redirect_url": "/previous-versions/azure/mariadb/concepts-high-availability",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/mariadb/concepts-limits.md",
+      "redirect_url": "/previous-versions/azure/mariadb/concepts-limits",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/mariadb/concepts-monitoring.md",
+      "redirect_url": "/previous-versions/azure/mariadb/concepts-monitoring",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/mariadb/concepts-planned-maintenance-notification.md",
+      "redirect_url": "/previous-versions/azure/mariadb/concepts-planned-maintenance-notification",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/mariadb/concepts-pricing-tiers.md",
+      "redirect_url": "/previous-versions/azure/mariadb/concepts-pricing-tiers",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/mariadb/concepts-query-performance-insight.md",
+      "redirect_url": "/previous-versions/azure/mariadb/concepts-query-performance-insight",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/mariadb/concepts-query-store.md",
+      "redirect_url": "/previous-versions/azure/mariadb/concepts-query-store",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/mariadb/concepts-read-replicas.md",
+      "redirect_url": "/previous-versions/azure/mariadb/concepts-read-replicas",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/mariadb/concepts-security.md",
+      "redirect_url": "/previous-versions/azure/mariadb/concepts-security",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/mariadb/concepts-server-logs.md",
+      "redirect_url": "/previous-versions/azure/mariadb/concepts-server-logs",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/mariadb/concepts-server-parameters.md",
+      "redirect_url": "/previous-versions/azure/mariadb/concepts-server-parameters",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/mariadb/concepts-servers.md",
+      "redirect_url": "/previous-versions/azure/mariadb/concepts-servers",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/mariadb/concepts-ssl-connection-security.md",
+      "redirect_url": "/previous-versions/azure/mariadb/concepts-ssl-connection-security",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/mariadb/concepts-supported-versions.md",
+      "redirect_url": "/previous-versions/azure/mariadb/concepts-supported-versions",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/mariadb/connect-workbench.md",
+      "redirect_url": "/previous-versions/azure/mariadb/connect-workbench",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/mariadb/howto-alert-metric.md",
+      "redirect_url": "/previous-versions/azure/mariadb/howto-alert-metric",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/mariadb/howto-auto-grow-storage-cli.md",
+      "redirect_url": "/previous-versions/azure/mariadb/howto-auto-grow-storage-cli",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/mariadb/howto-auto-grow-storage-portal.md",
+      "redirect_url": "/previous-versions/azure/mariadb/howto-auto-grow-storage-portal",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/mariadb/howto-auto-grow-storage-powershell.md",
+      "redirect_url": "/previous-versions/azure/mariadb/howto-auto-grow-storage-powershell",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/mariadb/howto-configure-audit-logs-cli.md",
+      "redirect_url": "/previous-versions/azure/mariadb/howto-configure-audit-logs-cli",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/mariadb/howto-configure-audit-logs-portal.md",
+      "redirect_url": "/previous-versions/azure/mariadb/howto-configure-audit-logs-portal",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/mariadb/howto-configure-privatelink-cli.md",
+      "redirect_url": "/previous-versions/azure/mariadb/howto-configure-privatelink-cli",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/mariadb/howto-configure-privatelink-portal.md",
+      "redirect_url": "/previous-versions/azure/mariadb/howto-configure-privatelink-portal",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/mariadb/howto-configure-server-logs-cli.md",
+      "redirect_url": "/previous-versions/azure/mariadb/howto-configure-server-logs-cli",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/mariadb/howto-configure-server-logs-portal.md",
+      "redirect_url": "/previous-versions/azure/mariadb/howto-configure-server-logs-portal",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/mariadb/howto-configure-server-parameters-cli.md",
+      "redirect_url": "/previous-versions/azure/mariadb/howto-configure-server-parameters-cli",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/mariadb/howto-configure-server-parameters-using-powershell.md",
+      "redirect_url": "/previous-versions/azure/mariadb/howto-configure-server-parameters-using-powershell",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/mariadb/howto-configure-ssl.md",
+      "redirect_url": "/previous-versions/azure/mariadb/howto-configure-ssl",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/mariadb/howto-connection-string-powershell.md",
+      "redirect_url": "/previous-versions/azure/mariadb/howto-connection-string-powershell",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/mariadb/howto-connection-string.md",
+      "redirect_url": "/previous-versions/azure/mariadb/howto-connection-string",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/mariadb/howto-create-manage-server-portal.md",
+      "redirect_url": "/previous-versions/azure/mariadb/howto-create-manage-server-portal",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/mariadb/howto-create-users.md",
+      "redirect_url": "/previous-versions/azure/mariadb/howto-create-users",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/mariadb/howto-data-in-replication.md",
+      "redirect_url": "/previous-versions/azure/mariadb/howto-data-in-replication",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/mariadb/howto-deny-public-network-access.md",
+      "redirect_url": "/previous-versions/azure/mariadb/howto-deny-public-network-access",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/mariadb/howto-manage-firewall-cli.md",
+      "redirect_url": "/previous-versions/azure/mariadb/howto-manage-firewall-cli",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/mariadb/howto-manage-firewall-portal.md",
+      "redirect_url": "/previous-versions/azure/mariadb/howto-manage-firewall-portal",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/mariadb/howto-manage-vnet-cli.md",
+      "redirect_url": "/previous-versions/azure/mariadb/howto-manage-vnet-cli",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/mariadb/howto-manage-vnet-portal.md",
+      "redirect_url": "/previous-versions/azure/mariadb/howto-manage-vnet-portal",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/mariadb/howto-migrate-dump-restore.md",
+      "redirect_url": "/previous-versions/azure/mariadb/howto-migrate-dump-restore",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/mariadb/howto-move-regions-portal.md",
+      "redirect_url": "/previous-versions/azure/mariadb/howto-move-regions-portal",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/mariadb/howto-read-replicas-cli.md",
+      "redirect_url": "/previous-versions/azure/mariadb/howto-read-replicas-cli",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/mariadb/howto-read-replicas-portal.md",
+      "redirect_url": "/previous-versions/azure/mariadb/howto-read-replicas-portal",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/mariadb/howto-read-replicas-powershell.md",
+      "redirect_url": "/previous-versions/azure/mariadb/howto-read-replicas-powershell",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/mariadb/howto-redirection.md",
+      "redirect_url": "/previous-versions/azure/mariadb/howto-redirection",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/mariadb/howto-restart-server-cli.md",
+      "redirect_url": "/previous-versions/azure/mariadb/howto-restart-server-cli",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/mariadb/howto-restart-server-portal.md",
+      "redirect_url": "/previous-versions/azure/mariadb/howto-restart-server-portal",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/mariadb/howto-restart-server-powershell.md",
+      "redirect_url": "/previous-versions/azure/mariadb/howto-restart-server-powershell",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/mariadb/howto-restore-dropped-server.md",
+      "redirect_url": "/previous-versions/azure/mariadb/howto-restore-dropped-server",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/mariadb/howto-restore-server-cli.md",
+      "redirect_url": "/previous-versions/azure/mariadb/howto-restore-server-cli",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/mariadb/howto-restore-server-portal.md",
+      "redirect_url": "/previous-versions/azure/mariadb/howto-restore-server-portal",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/mariadb/howto-restore-server-powershell.md",
+      "redirect_url": "/previous-versions/azure/mariadb/howto-restore-server-powershell",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/mariadb/howto-server-parameters.md",
+      "redirect_url": "/previous-versions/azure/mariadb/howto-server-parameters",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/mariadb/howto-tls-configurations.md",
+      "redirect_url": "/previous-versions/azure/mariadb/howto-tls-configurations",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/mariadb/howto-troubleshoot-common-connection-issues.md",
+      "redirect_url": "/previous-versions/azure/mariadb/howto-troubleshoot-common-connection-issues",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/mariadb/howto-troubleshoot-query-performance.md",
+      "redirect_url": "/previous-versions/azure/mariadb/howto-troubleshoot-query-performance",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/mariadb/index.yml",
+      "redirect_url": "/previous-versions/azure/mariadb/index",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/mariadb/overview.md",
+      "redirect_url": "/previous-versions/azure/mariadb/overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/mariadb/policy-reference.md",
+      "redirect_url": "/previous-versions/azure/mariadb/policy-reference",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/mariadb/quickstart-create-mariadb-server-database-arm-template.md",
+      "redirect_url": "/previous-versions/azure/mariadb/quickstart-create-mariadb-server-database-arm-template",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/mariadb/quickstart-create-mariadb-server-database-bicep.md",
+      "redirect_url": "/previous-versions/azure/mariadb/quickstart-create-mariadb-server-database-bicep",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/mariadb/quickstart-create-mariadb-server-database-using-azure-cli.md",
+      "redirect_url": "/previous-versions/azure/mariadb/quickstart-create-mariadb-server-database-using-azure-cli",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/mariadb/quickstart-create-mariadb-server-database-using-azure-portal.md",
+      "redirect_url": "/previous-versions/azure/mariadb/quickstart-create-mariadb-server-database-using-azure-portal",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/mariadb/quickstart-create-mariadb-server-database-using-azure-powershell.md",
+      "redirect_url": "/previous-versions/azure/mariadb/quickstart-create-mariadb-server-database-using-azure-powershell",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/mariadb/reference-stored-procedures.md",
+      "redirect_url": "/previous-versions/azure/mariadb/reference-stored-procedures",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/mariadb/sample-scripts-azure-cli.md",
+      "redirect_url": "/previous-versions/azure/mariadb/sample-scripts-azure-cli",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/mariadb/security-controls-policy.md",
+      "redirect_url": "/previous-versions/azure/mariadb/security-controls-policy",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/mariadb/select-right-deployment-type.md",
+      "redirect_url": "/previous-versions/azure/mariadb/select-right-deployment-type",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/mariadb/tutorial-design-database-cli.md",
+      "redirect_url": "/previous-versions/azure/mariadb/tutorial-design-database-cli",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/mariadb/tutorial-design-database-using-portal.md",
+      "redirect_url": "/previous-versions/azure/mariadb/tutorial-design-database-using-portal",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/mariadb/tutorial-design-database-using-powershell.md",
+      "redirect_url": "/previous-versions/azure/mariadb/tutorial-design-database-using-powershell",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/application-best-practices.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/application-best-practices",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/concepts-aks.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/concepts-aks",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/concepts-audit.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/concepts-audit",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/concepts-azure-ad-authentication.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/concepts-azure-ad-authentication",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/concepts-azure-advisor-recommendations.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/concepts-azure-advisor-recommendations",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/concepts-backup.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/concepts-backup",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/concepts-business-continuity.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/concepts-business-continuity",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/concepts-certificate-rotation.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/concepts-certificate-rotation",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/concepts-connection-libraries.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/concepts-connection-libraries",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/concepts-connectivity-architecture.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/concepts-connectivity-architecture",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/concepts-connectivity.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/concepts-connectivity",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/concepts-data-access-and-security-private-link.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/concepts-data-access-and-security-private-link",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/concepts-data-access-and-security-vnet.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/concepts-data-access-and-security-vnet",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/concepts-data-encryption-postgresql.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/concepts-data-encryption-postgresql",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/concepts-extensions.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/concepts-extensions",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/concepts-firewall-rules.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/concepts-firewall-rules",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/concepts-high-availability.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/concepts-high-availability",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/concepts-infrastructure-double-encryption.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/concepts-infrastructure-double-encryption",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/concepts-known-issues-limitations.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/concepts-known-issues-limitations",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/concepts-limits.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/concepts-limits",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/concepts-logical.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/concepts-logical",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/concepts-monitoring.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/concepts-monitoring",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/concepts-performance-recommendations.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/concepts-performance-recommendations",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/concepts-planned-maintenance-notification.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/concepts-planned-maintenance-notification",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/concepts-pricing-tiers.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/concepts-pricing-tiers",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/concepts-query-performance-insight.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/concepts-query-performance-insight",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/concepts-query-store-best-practices.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/concepts-query-store-best-practices",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/concepts-query-store-scenarios.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/concepts-query-store-scenarios",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/concepts-query-store.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/concepts-query-store",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/concepts-read-replicas.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/concepts-read-replicas",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/concepts-security.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/concepts-security",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/concepts-server-logs.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/concepts-server-logs",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/concepts-servers.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/concepts-servers",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/concepts-ssl-connection-security.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/concepts-ssl-connection-security",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/concepts-supported-versions.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/concepts-supported-versions",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/connect-csharp.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/connect-csharp",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/connect-go.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/connect-go",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/connect-java.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/connect-java",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/connect-nodejs.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/connect-nodejs",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/connect-php.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/connect-php",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/connect-python.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/connect-python",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/connect-ruby.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/connect-ruby",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/connect-rust.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/connect-rust",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/how-to-alert-on-metric.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/how-to-alert-on-metric",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/how-to-auto-grow-storage-cli.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/how-to-auto-grow-storage-cli",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/how-to-auto-grow-storage-portal.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/how-to-auto-grow-storage-portal",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/how-to-auto-grow-storage-powershell.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/how-to-auto-grow-storage-powershell",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/how-to-configure-privatelink-cli.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/how-to-configure-privatelink-cli",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/how-to-configure-privatelink-portal.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/how-to-configure-privatelink-portal",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/how-to-configure-server-logs-in-portal.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/how-to-configure-server-logs-in-portal",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/how-to-configure-server-logs-using-cli.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/how-to-configure-server-logs-using-cli",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/how-to-configure-server-parameters-using-cli.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/how-to-configure-server-parameters-using-cli",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/how-to-configure-server-parameters-using-portal.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/how-to-configure-server-parameters-using-portal",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/how-to-configure-server-parameters-using-powershell.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/how-to-configure-server-parameters-using-powershell",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/how-to-configure-sign-in-azure-ad-authentication.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/how-to-configure-sign-in-azure-ad-authentication",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/how-to-connect-query-guide.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/how-to-connect-query-guide",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/how-to-connect-with-managed-identity.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/how-to-connect-with-managed-identity",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/how-to-connection-string-powershell.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/how-to-connection-string-powershell",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/how-to-create-manage-server-portal.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/how-to-create-manage-server-portal",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/how-to-create-users.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/how-to-create-users",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/how-to-data-encryption-cli.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/how-to-data-encryption-cli",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/how-to-data-encryption-portal.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/how-to-data-encryption-portal",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/how-to-data-encryption-troubleshoot.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/how-to-data-encryption-troubleshoot",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/how-to-data-encryption-validation.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/how-to-data-encryption-validation",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/how-to-deny-public-network-access.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/how-to-deny-public-network-access",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/how-to-double-encryption.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/how-to-double-encryption",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/how-to-manage-firewall-using-portal.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/how-to-manage-firewall-using-portal",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/how-to-manage-server-cli.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/how-to-manage-server-cli",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/how-to-manage-vnet-using-cli.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/how-to-manage-vnet-using-cli",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/how-to-manage-vnet-using-portal.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/how-to-manage-vnet-using-portal",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/how-to-move-regions-portal.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/how-to-move-regions-portal",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/how-to-optimize-autovacuum.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/how-to-optimize-autovacuum",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/how-to-optimize-bulk-inserts.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/how-to-optimize-bulk-inserts",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/how-to-optimize-query-stats-collection.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/how-to-optimize-query-stats-collection",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/how-to-optimize-query-time-with-toast-table-storage-strategy.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/how-to-optimize-query-time-with-toast-table-storage-strategy",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/how-to-read-replicas-cli.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/how-to-read-replicas-cli",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/how-to-read-replicas-portal.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/how-to-read-replicas-portal",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/how-to-read-replicas-powershell.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/how-to-read-replicas-powershell",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/how-to-restart-server-cli.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/how-to-restart-server-cli",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/how-to-restart-server-portal.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/how-to-restart-server-portal",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/how-to-restart-server-powershell.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/how-to-restart-server-powershell",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/how-to-restore-dropped-server.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/how-to-restore-dropped-server",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/how-to-restore-server-cli.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/how-to-restore-server-cli",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/how-to-restore-server-portal.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/how-to-restore-server-portal",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/how-to-restore-server-powershell.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/how-to-restore-server-powershell",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/how-to-tls-configurations.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/how-to-tls-configurations",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/how-to-troubleshoot-common-connection-issues.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/how-to-troubleshoot-common-connection-issues",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/how-to-upgrade-using-dump-and-restore.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/how-to-upgrade-using-dump-and-restore",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/overview-single-server.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/overview-single-server",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/policy-reference.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/policy-reference",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/quickstart-create-postgresql-server-database-using-arm-template.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/quickstart-create-postgresql-server-database-using-arm-template",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/quickstart-create-postgresql-server-database-using-azure-powershell.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/quickstart-create-postgresql-server-database-using-azure-powershell",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/quickstart-create-postgresql-server-database-using-bicep.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/quickstart-create-postgresql-server-database-using-bicep",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/quickstart-create-server-database-azure-cli.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/quickstart-create-server-database-azure-cli",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/quickstart-create-server-database-portal.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/quickstart-create-server-database-portal",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/quickstart-create-server-up-azure-cli.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/quickstart-create-server-up-azure-cli",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/sample-scripts-azure-cli.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/sample-scripts-azure-cli",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/security-controls-policy.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/security-controls-policy",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/tutorial-design-database-using-azure-cli.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/tutorial-design-database-using-azure-cli",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/tutorial-design-database-using-azure-portal.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/tutorial-design-database-using-azure-portal",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/tutorial-design-database-using-powershell.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/tutorial-design-database-using-powershell",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/postgresql/single-server/tutorial-monitor-and-tune.md",
+      "redirect_url": "/previous-versions/azure/postgresql/single-server/tutorial-monitor-and-tune",
+      "redirect_document_id": false
+    },
+    {
       "source_path": "articles/cosmos-db/monitor-account-key-updates.md",
       "redirect_url": "/previous-versions/azure/cosmos-db/monitor-account-key-updates",
       "redirect_document_id": false

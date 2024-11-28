@@ -5,10 +5,11 @@ description: Apply Knowledge Graphs to expand the capability of AI apps.
 author: jcodella
 ms.service: azure-cosmos-db
 ms.subservice: nosql
-ms.topic: quickstart
+ms.topic: how-to
 ms.date: 9/16/2024
 ms.author: jacodel
-
+ms.collection:
+  - ce-skilling-ai-copilot
 ---
 
 # Retrieval Augmented Generated (RAG) with vector search and knowledge graphs using Azure Cosmos DB

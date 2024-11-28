@@ -61,7 +61,8 @@ Here are some concepts to be familiar with when you're using virtual networks wh
   * Add a rule with the destination IP range the same as the Azure Database for PostgreSQL - Flexible Server subnet range and the next hop `Virtual Network`.
 
   > [!IMPORTANT]
-  > The names `AzureFirewallSubnet`, `AzureFirewallManagementSubnet`, `AzureBastionSubnet`, and `GatewaySubnet` are reserved within Azure. Don't use any of these names as your subnet name.
+  > The names `AzureFirewallSubnet`, `AzureFirewallManagementSubnet`, `AzureBastionSubnet`, and `GatewaySubnet` are reserved within Azure. Don't use any of these names as your subnet name. Additionally, virtual networks should not have overlapping address space for creating cross-region replicas.
+
 
 - **Network security group (NSG)**: Security rules in NSGs enable you to filter the type of network traffic that can flow in and out of virtual network subnets and network interfaces. For more information, see the [NSG overview](/azure/virtual-network/network-security-groups-overview).
 
@@ -107,7 +108,7 @@ After you create a Private DNS zone in Azure, you need to [link](/azure/dns/priv
   > [!IMPORTANT]
   > We no longer validate virtual network link presence on server creation for Azure Database for PostgreSQL - Flexible Server with private networking. When you create a server through the portal, we provide customer choice to create a link on server creation via the checkbox **Link a Private DNS zone to your virtual network** in the Azure portal.
 
-[DNS private zones are resilient](/azure/dns/private-dns-overview) to regional outages because zone data is globally available. Resource records in a private zone are automatically replicated across regions. Azure Private DNS is an availability zone foundational, zone-reduntant service. For more information, see [Azure services with availability zone support](/azure/reliability/availability-zones-service-support#azure-services-with-availability-zone-support).
+[DNS private zones are resilient](/azure/dns/private-dns-overview) to regional outages because zone data is globally available. Resource records in a private zone are automatically replicated across regions. Azure Private DNS is an availability zone foundational, zone-redundant service. For more information, see [Azure services with availability zone support](/azure/reliability/availability-zones-service-support).
 
 ### Integration with a custom DNS server
 

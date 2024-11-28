@@ -37,7 +37,7 @@ ms.topic: include
 | Documentation  | [max_wal_senders](https://www.postgresql.org/docs/11/runtime-config-replication.html#GUC-MAX-WAL-SENDERS)               |
 
 
-[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+[!INCLUDE [server-parameters-azure-notes-max-wal-senders](./server-parameters-azure-notes-max-wal-senders.md)]
 
 
 
