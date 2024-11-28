@@ -28,7 +28,7 @@ Before reading this guide, it is helpful to consider common SDK issues that aren
 - Sometimes queries may have empty pages even when there are results on a future page. Reasons for this could be:
     - The SDK could be doing multiple network calls.
     - The query might be taking a long time to retrieve the documents.
-- All queries have a continuation token that will allow the query to continue. Be sure to drain the query completely. Learn more about [handling multiple pages of results](query/pagination.md#handle-multiple-pages-of-results)
+- All queries have a continuation token that allows the query to continue. Be sure to drain the query completely. Learn more about [handling multiple pages of results](query/pagination.md#handle-multiple-pages-of-results)
 
 ## Get query metrics
 
@@ -44,7 +44,7 @@ Refer to the following sections to understand the relevant query optimizations f
 
 ### Query's RU charge is too high
 
-#### Retrieved Document Count is significantly higher than Output Document Count
+#### Retrieved Document Count is higher than Output Document Count
 
 - [Include necessary paths in the indexing policy.](#include-necessary-paths-in-the-indexing-policy)
 
@@ -221,7 +221,7 @@ This optimization can improve execution for the following system functions:
 - RegexMatch
 - EndsWith
 
-For example, consider the below query with `CONTAINS`. `CONTAINS` will use indexes but sometimes, even after adding the relevant index, you may still observe a very high RU charge when running the below query.
+For example, consider the below query with `CONTAINS`. `CONTAINS` will use indexes but sometimes, even after adding the relevant index, you may still observe a high RU charge when running the below query.
 
 Original query:
 
@@ -240,7 +240,7 @@ WHERE CONTAINS(c.town, "Sea")
 ORDER BY c.town
 ```
 
-The same optimization can help in queries with additional filters. In this case, it's best to also add properties with equality filters to the `ORDER BY` clause.
+The same optimization can help in queries with other filters. In this case, it's best to also add properties with equality filters to the `ORDER BY` clause.
 
 Original query:
 
