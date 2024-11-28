@@ -28,22 +28,22 @@ The `Azure.ResourceManager.PostgreSql` library is part of the Azure SDK for .NET
 1. **Creating Azure PostgreSQL Flexible Servers**:\
 You can create new Flexible Servers instances with specified configurations such as location, SKU, storage, and version.
 
-1. **Updating Azure PostgreSQL Flexible Servers**:\
+2. **Updating Azure PostgreSQL Flexible Servers**:\
 You can update existing PostgreSQL flexible servers, including changing configurations like administrator login, password, SKU, storage, and version.
 
-1. **Deleting Azure PostgreSQL Flexible Servers**:\
+3. **Deleting Azure PostgreSQL Flexible Servers**:\
 You can delete existing Azure PostgreSQL flexible server instances.
 
-1. **Retrieving Azure PostgreSQL Flexible Server Information**:\
+4. **Retrieving Azure PostgreSQL Flexible Server Information**:\
 You can retrieve details about existing PostgreSQL flexible servers, including their configurations, status, and other metadata.
 
-1. **Managing Databases**:\
+5. **Managing Databases**:\
 You can create, update, delete, and retrieve databases within the Azure PostgreSQL flexible server instance.
 
-1. **Managing Firewall Rules**:\
+6. **Managing Firewall Rules**:\
 You can create, update, delete, and retrieve firewall rules for an instance to control access.
 
-1. **Managing Configuration Settings**:\
+7. **Managing Configuration Settings**:\
 You can manage configuration settings for an Azure PostgreSQL flexible server instance, including retrieving and updating server parameters.
 
 ## Log in to Azure
@@ -153,17 +153,6 @@ Replace the following parameters in the code with your data:
 
 The `DefaultAzureCredential` class tries to authenticate using methods like environment variables, managed identities, or Azure CLI. Ensure you have one of these methods configured.
 
-### Run the File
-
-Build and run the `.cs` file:
-
-```bash
-dotnet build
-dotnet run
-```
-
-This creates the PostgreSQL instance.
-
 ## Run the file
 
 To run the file, you must build and execute the .cs file using the .NET CLI. This initiates the creation, update, or deletion process for the PostgreSQL instance as per the code.
@@ -254,7 +243,7 @@ You can clean up the created flexible server instances by deleting the flexible 
 
 Create a `DeleteServer.cs` file and add the following code.
 
-```powershell
+```csharp
 using System;
 using System.Threading.Tasks;
 using Azure.Core;
