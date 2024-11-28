@@ -53,6 +53,8 @@
         href: flexible-server/quickstart-create-server-portal.md
       - name: Azure SDK for Python
         href: flexible-server/quickstart-create-server-python-sdk.md
+      - name: Azure SDK for .NET
+        href: flexible-server/quickstart-create-server-dotnet-sdk.md
       - name: Bicep
         displayName: Resource Manager, ARM
         href: flexible-server/quickstart-create-server-bicep.md
