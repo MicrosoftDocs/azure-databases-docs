@@ -15,7 +15,7 @@ ms.date: 10/15/2024
 The `$bit` operator is used to perform bitwise operations on integer values. It can be used to update integer fields in documents by applying bitwise AND, OR, and XOR operations. Bitwise operators like $bit aren't designed for incrementing values, but for manipulating bits directly (like checking, setting, or clearing specific bits).
 
 ## Syntax
-```javascript
+```
 { $bit: { <field>: { <operator>: <number> } } }
 ```
 
