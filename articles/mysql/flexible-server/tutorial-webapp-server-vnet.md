@@ -1,10 +1,10 @@
 ---
-title: "Tutorial: Connect an App Services Web app in a virtual network"
+title: "Tutorial: Connect an App Services Web App in a Virtual Network"
 description: Tutorial to create and connect a web app to Azure Database for MySQL - Flexible Server in a virtual network.
 author: SudheeshGH
 ms.author: sunaray
 ms.reviewer: maghan
-ms.date: 06/18/2024
+ms.date: 11/27/2024
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: tutorial
@@ -16,13 +16,11 @@ ms.devlang: azurecli
 
 # Tutorial: Connect an App Services Web app to Azure Database for MySQL - Flexible Server in a virtual network
 
-[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
 This tutorial shows you how to create and connect an Azure App Service Web App to an Azure Database for MySQL Flexible Server instance isolated inside same or different [virtual networks](/azure/virtual-network/virtual-networks-overview).
 
 In this tutorial you will learn how to:
->[!div class="checklist"]
->
+> [!div class="checklist"]
+>  
 > * Create an Azure Database for MySQL Flexible Server instance in a virtual network
 > * Create a subnet to delegate to App Service and create a web app
 > * Add the web app to the virtual network
@@ -50,10 +48,11 @@ az account set --subscription <subscription ID>
 ## Create an Azure Database for MySQL Flexible Server instance
 
 Create a private Azure Database for MySQL Flexible Server instance inside a virtual network (VNET) using the following command:
+
 ```azurecli
 az mysql flexible-server create --resource-group myresourcegroup --location westus2 --vnet VNETName
 ```
-Copy the connection string and the name of the newly created virtual network. This command performs the following actions, which may take a few minutes:
+Copy the connection string and the name of the newly created virtual network. This command performs the following actions, which might take a few minutes:
 
 - Create the resource group if it doesn't already exist.
 - Generates a server name if it is not provided.
@@ -61,10 +60,11 @@ Copy the connection string and the name of the newly created virtual network. Th
 - Creates admin username , password for your server if not provided.
 - Creates an empty database called **flexibleserverdb**.
 
-> [!NOTE]
+> [!NOTE]  
 > Make a note of your password that is generated for you if not provided. If you forget the password you have to reset the password by using the `az mysql flexible-server update` command.
 
 ## Create Subnet for App Service Endpoint
+
 You now need a subnet that is delegated to the App Service Web App endpoint. Run the following command to create a new subnet in the same virtual network as the Azure Database for MySQL Flexible Server instance was created.
 
 ```azurecli
@@ -82,12 +82,12 @@ Create an App Service app (the host process) with the az webapp up command.
 az webapp up --resource-group myresourcegroup --location westus2 --plan testappserviceplan --sku P2V2 --name mywebapp
 ```
 
-> [!NOTE]
+> [!NOTE]  
 > - For the --location argument, use the same location as you did for the database in the previous section.
 > - Replace _\<app-name\>_ with a unique name across all Azure (the server endpoint is `https://\<app-name>.azurewebsites.net`). Allowed characters for \<app-name\> are A-Z, 0-9, and -. A good pattern is to use a combination of your company name and an app identifier.
-> - App Service Basic tier does not support VNET integration. Please use Standard or Premium. 
+> - App Service Basic tier does not support VNET integration. Please use Standard or Premium.
 
-This command performs the following actions, which may take a few minutes:
+This command performs the following actions, which might take a few minutes:
 
 - Create the resource group if it doesn't already exist. (In this command you use the same resource group in which you created the database earlier.)
 - Create the App Service plan `testappserviceplan` in the Basic pricing tier (B1), if it doesn't exist. --plan and --sku are optional.
@@ -116,8 +116,8 @@ az webapp config appsettings set --settings DBHOST="<mysql-server-name>.mysql.da
 - The resource group and app name are drawn from the cached values in the .azure/config file.
 - The command creates settings named DBHOST, DBNAME, DBUSER, and DBPASS. If your application code is using different name for the database information then use those names for the app settings as mentioned in the code.
 
-
 Configure the web app to allow all outbound connections from within the virtual network.
+
 ```azurecli
 az webapp config set --name mywebapp --resource-group myresourcesourcegroup --generic-configurations '{"vnetRouteAllEnabled": true}'
 ```
@@ -137,7 +137,7 @@ Clean up all resources you created in the tutorial using the following command. 
 az group delete -n myresourcegroup
 ```
 
-## Next steps
+## Next step
 
 > [!div class="nextstepaction"]
 > [Map an existing custom DNS name to Azure App Service](/azure/app-service/app-service-web-tutorial-custom-domain)

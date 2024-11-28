@@ -2,7 +2,7 @@
 author: shreyaaithal
 ms.author: shaithal
 ms.reviewer: maghan
-ms.date: 06/18/2024
+ms.date: 11/27/2024
 ms.topic: include
 ---
 In the **Create Web App + Database** page, fill out the form as follows.
@@ -13,8 +13,8 @@ In the **Create Web App + Database** page, fill out the form as follows.
 1. *Runtime stack* &rarr; **PHP 8.0**.
 
     **MySQL - Flexible Server** is selected for you by default as the database engine. Azure Database for MySQL is a fully managed MySQL database as a service on Azure, compatible with the latest community editions.
- 
-1. Note the database name that's generated for you (*\<app-name>-database*). You'll need it later.
-1. Click **Review + create**.
 
-After validation completes, click **Create**.
+1. Note the database name that's generated for you (*\<app-name>-database*). You'll need it later.
+1. Select **Review + create**.
+
+After validation completes, select **Create**.

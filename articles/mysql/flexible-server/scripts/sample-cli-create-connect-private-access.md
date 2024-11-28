@@ -16,8 +16,6 @@ ms.devlang: azurecli
 
 # Create an Azure Database for MySQL - Flexible Server database in a VNet using Azure CLI
 
-
-
 This sample CLI script creates an Azure Database for MySQL - Flexible Server in a VNet ([private access connectivity method](../concepts-networking-vnet.md)) and connects to the server from a VM within the VNet.
 
 > [!NOTE]  
@@ -41,7 +39,7 @@ Use the following steps to test connectivity to the MySQL server from the VM by 
 
 1. To SSH into the VM, start by getting the public IP address and then use MySQL tools to connect
 
-   ```bash
+   ```csharp
    PUBLIC_IP=$(az vm list-ip-addresses --resource-group $RESOURCE_GROUP --name $VM --query "[].virtualMachine.network.publicIpAddresses[0].ipAddress" --output tsv)
 
    ssh azureuser@$PUBLIC_IP

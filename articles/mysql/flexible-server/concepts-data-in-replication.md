@@ -1,18 +1,16 @@
 ---
-title: Data-in replication
+title: Data-In Replication
 description: Learn about using Data-in replication to synchronize from an external server into an Azure Database for MySQL - Flexible Server instance.
 author: VandhanaMehta
 ms.author: vamehta
 ms.reviewer: maghan
-ms.date: 06/18/2024
+ms.date: 11/27/2024
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: conceptual
 ---
 
 # Replicate data into Azure Database for MySQL - Flexible Server
-
-[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 Data-in replication allows you to synchronize data from an external MySQL server into an Azure Database for MySQL Flexible Server instance. The external server can be on-premises, in virtual machines, Azure Database for MySQL single server, or a database service hosted by other cloud providers. Data-in replication is based on the binary log (binlog) file position or GTID-based replication. To learn more about binlog replication, see the [MySQL Replication](https://dev.mysql.com/doc/refman/5.7/en/replication-configuration.html).
 
@@ -61,22 +59,23 @@ The parameter `replicate_wild_ignore_table` creates a replication filter for tab
 
 ### Generated Invisible Primary Key
 
-For MySQL version 8.0 and above, [Generated Invisible Primary Keys (GIPK)](https://dev.mysql.com/doc/refman/8.0/en/create-table-gipks.html) is enabled by default for all the Azure Database for MySQL Flexible Server instances. MySQL 8.0+ servers adds the invisible column *my_row_id* to the tables and a primary key on that column, where the InnoDB table is created without an explicit primary key. This feature, when enabled may impact some of the data-in replication use cases, as described below:
+For MySQL version 8.0 and above, [Generated Invisible Primary Keys (GIPK)](https://dev.mysql.com/doc/refman/8.0/en/create-table-gipks.html) is enabled by default for all the Azure Database for MySQL Flexible Server instances. MySQL 8.0+ servers adds the invisible column *my_row_id* to the tables and a primary key on that column, where the InnoDB table is created without an explicit primary key. This feature, when enabled might affect some of the data-in replication use cases, as described below:
 
-- Data-in replication fails with replication error: “**ERROR 1068 (42000): Multiple primary key defined**” if source server creates a Primary key on the table without Primary Key. For mitigation, run the following sql command, skip replication error and restart [data-in replication](how-to-data-in-replication.md). 
+- Data-in replication fails with replication error: "**ERROR 1068 (42000): Multiple primary key defined**" if source server creates a Primary key on the table without Primary Key. For mitigation, run the following sql command, skip replication error and restart [data-in replication](how-to-data-in-replication.md).
 
    ```sql
    alter table <table name> drop column my_row_id, add primary key <primary key name>(<column name>);
    ```
 
 - Data-in replication fails with replication error: "**ERROR 1075 (42000): Incorrect table definition; there can be only one auto column and it must be defined as a key**" if source server adds an auto_increment column as Unique Key. For mitigation, run the following sql command, set "[sql_generate_invisible_primary_key](https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_sql_generate_invisible_primary_key)" as OFF, skip replication error and restart [data-in replication](how-to-data-in-replication.md).
+
    ```sql
    alter table <table name> drop column my_row_id, modify <column name> int auto_increment;
    ```
 
-- Data-in replication fails if source server runs any other SQL that isn't supported when "[sql_generate_invisible_primary_key](https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_sql_generate_invisible_primary_key)" is ON. For example, create a partition table. In such a scenario mitigation is to set "[sql_generate_invisible_primary_key](https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_sql_generate_invisible_primary_key)" as OFF and restart [data-in replication](how-to-data-in-replication.md). 
+- Data-in replication fails if source server runs any other SQL that isn't supported when "[sql_generate_invisible_primary_key](https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_sql_generate_invisible_primary_key)" is ON. For example, create a partition table. In such a scenario mitigation is to set "[sql_generate_invisible_primary_key](https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_sql_generate_invisible_primary_key)" as OFF and restart [data-in replication](how-to-data-in-replication.md).
 
-## Next steps
+## Related content
 
-- Learn more on how to [set up data-in replication](how-to-data-in-replication.md)
-- Learn more about [replicating in Azure with read replicas](concepts-read-replicas.md)
+- [set up data-in replication](how-to-data-in-replication.md)
+- [replicating in Azure with read replicas](concepts-read-replicas.md)

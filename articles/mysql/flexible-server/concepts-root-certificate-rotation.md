@@ -1,10 +1,10 @@
 ---
-title: Certificate rotation for Azure Database for MySQL - Flexible Server
+title: Certificate Rotation for Azure Database for MySQL - Flexible Server
 description: Learn about the upcoming changes of root certificate rotation that affects Azure Database for MySQL
 author: shih-che
 ms.author: shihche
 ms.reviewer: talawren, maghan
-ms.date: 10/02/2024
+ms.date: 11/27/2024
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: conceptual
@@ -106,7 +106,7 @@ To verify if you're using an SSL connection to connect to the server refer to [S
 
 No. Since the change is only on the client side to connect to the database server, there's no maintenance downtime needed for the database server for this change.
 
-###  Is there a rollback plan for the root CA rotation? 
+### Is there a rollback plan for the root CA rotation?
 
 If your application experiences issues after the CA rotation, replace the CA file by reinstalling the combined CA or SHA-2 based CA depending on your use case. We recommend you don't rollback the change as this change is mandatory.
 
@@ -137,4 +137,4 @@ If you have questions, get answers from community experts in [Microsoft Q&A](/an
 ## Related content
 
 - [Create a combined CA certificate](#create-a-combined-ca-certificate)
-- [Configure SSL](how-to-connect-tls-ssl.md)
+- [Connect to Azure Database for MySQL - Flexible Server with encrypted connections](how-to-connect-tls-ssl.md)

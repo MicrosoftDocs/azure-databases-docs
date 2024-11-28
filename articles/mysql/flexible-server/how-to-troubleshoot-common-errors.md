@@ -1,10 +1,10 @@
 ---
-title: Troubleshoot common errors
+title: Troubleshoot Common Errors
 description: Learn how to troubleshoot common migration errors encountered by users new to Azure Database for MySQL - Flexible Server.
 author: sudheeshgh
 ms.author: sunaray
 ms.reviewer: maghan
-ms.date: 06/18/2024
+ms.date: 11/27/2024
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: troubleshooting
@@ -28,7 +28,7 @@ mysql> show databases;
 ERROR 2006 (HY000): MySQL server has gone away
 No connection. Trying to reconnect...
 Connection ID:    64897
-Current database: *** NONE ***
+Current database: ** NONE **
 ERROR 1184 (08S01): Aborted connection 22 to db: 'db-name' user: 'user' host: 'hostIP' (init_connect command failed)
 
 **Resolution**: Reset `init_connect` value in Server parameters tab in Azure portal and set only the supported server parameters using init_connect parameter.

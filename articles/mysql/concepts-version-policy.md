@@ -1,10 +1,10 @@
 ---
-title: Version support policy - Azure Database for MySQL - Flexible Server
+title: Version Support Policy - Azure Database for MySQL - Flexible Server
 description: Describes the policy around MySQL major and minor versions in Azure Database for MySQL
 author: SudheeshGH
 ms.author: sunaray
 ms.reviewer: maghan
-ms.date: 08/09/2024
+ms.date: 11/27/2024
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: conceptual
@@ -15,7 +15,7 @@ ms.custom:
 
 # Azure Database for MySQL version support policy
 
-[!INCLUDE [applies-to-mysql-flexible-server](includes/applies-to-mysql-flexible-server.md)]
+Azure Database for MySQL provides a fully managed database service powered by the MySQL community edition, enabling developers to build and scale applications efficiently. This article outlines the version support policy for Azure Database for MySQL, detailing the lifecycle management, including version availability, updates, and end-of-support timelines. By understanding this policy, customers can ensure their applications remain secure, performant, and aligned with the latest MySQL innovations while minimizing disruption during version transitions.
 
 ## Supported MySQL versions
 
@@ -23,11 +23,11 @@ Azure Database for MySQL was developed from the [MySQL Community Edition](https:
 
 Azure Database for MySQL currently supports the following major and minor versions of MySQL:
 
-| Version | [Flexible Server](flexible-server/overview.md)<br />Current minor version |
+| Version | [Flexible Server?](flexible-server/overview.md)<br />Current minor version |
 | :--- | :--- |
 | MySQL Version 5.7 | [5.7.44](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-44.html) |
 | MySQL Version 8.0 | [8.0.37](https://dev.mysql.com/doc/relnotes/mysql/8.0/en/news-8-0-37.html) |
-| MySQL Version 8.4 | [8.4.2](https://dev.mysql.com/doc/relnotes/mysql/8.4/en/news-8-4-2.html)|
+| MySQL Version 8.4 | [8.4.2](https://dev.mysql.com/doc/relnotes/mysql/8.4/en/news-8-4-2.html) |
 | MySQL Version 9.1 | [9.1.0](https://dev.mysql.com/doc/relnotes/mysql/9.1/en/news-9-1-0.html) |
 
 Read the version support policy for retired versions in [version support policy documentation.](concepts-version-policy.md#retired-mysql-engine-versions-not-supported-in-azure-database-for-mysql)
@@ -63,13 +63,13 @@ Before we end our support of Azure Database for MySQL 5.7, you should pay attent
 
 __Azure MySQL 5.7 Deprecation Timelines__
 
-| Timelines | Azure MySQL 5.7 Flexible 
-| --- | --- | --- 
-| Creation of new servers using the Azure portal. | To Be Decided | 
+| Timelines | Azure MySQL 5.7 Flexible  
+| --- | --- | ---  
+| Creation of new servers using the Azure portal. | To Be Decided |
 | Creation of new servers using the Command Line Interface (CLI). | To Be Decided |
 | Creation of replica servers for existing servers. | September 2025 |
-| Creation of servers using restore workflow for the existing servers | September 2025 | 
-| Creation of new servers for migrating from Azure Database for MariaDB to Azure Database for MySQL - Flexible Server. | September 2025 | 
+| Creation of servers using restore workflow for the existing servers | September 2025 |
+| Creation of new servers for migrating from Azure Database for MariaDB to Azure Database for MySQL - Flexible Server. | September 2025 |
 | Extended support for Azure Database for MySQL v5.7 | September 2025 |
 
 > [!NOTE]  
@@ -79,7 +79,7 @@ __Azure MySQL 5.7 Deprecation Timelines__
 
 __Q: What is the process for upgrading the Azure database for MySQL - Flexible server from version v5.7 to v8.0?__
 
-A: Starting May 2023, Azure Database for MySQL - Flexible Server enables you to carry out an in-place upgrade from MySQL v5.7 to v8.0 utilizing the Major Version Upgrade (MVU) feature. Consult the [Major version upgrade](flexible-server/how-to-upgrade.md) document for more detailed information.
+A: Starting May 2023, Azure Database for MySQL - Flexible Server enables you to carry out an in-place upgrade from MySQL v5.7 to v8.0 utilizing the Major Version Upgrade (MVU) feature. Consult the [Major version upgrade in Azure Database for MySQL - Flexible Server](flexible-server/how-to-upgrade.md) document for more detailed information.
 
 __Q: Are there any expected downtime or performance impacts during the upgrade process?__
 
@@ -120,7 +120,6 @@ As the community won't release any further bug fixes or security fixes, Azure Da
 - Uptime S.L.A.s apply solely to Azure Database for MySQL service-related issues and not to any downtime caused by database engine-related bugs.
 In the extreme event of a serious threat to the service caused by the MySQL database engine vulnerability identified in the retired database version, Azure might choose to stop the compute node of your database server from securing the service first. You're asked to upgrade the server before bringing it online. During the upgrade process, your data is always protected using automatic backups performed on the service, which can be used to restore to the older version if desired.
 
-## Next step
+## Related content
 
-> [!div class="nextstepaction"]
-> [dump and restore](flexible-server/concepts-migrate-dump-restore.md)
+- [dump and restore](flexible-server/concepts-migrate-dump-restore.md)
