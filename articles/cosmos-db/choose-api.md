@@ -19,6 +19,8 @@ Azure Cosmos DB is a fully managed NoSQL, relational, and vector database for mo
 
 Azure Cosmos DB offers multiple database APIs, which include NoSQL, MongoDB, PostgreSQL, Cassandra, Gremlin, and Table. By using these APIs, you can model real world data using documents, key-value, graph, and column-family data models. These APIs allow your applications to treat Azure Cosmos DB as if it were various other databases technologies, without the overhead of management, and scaling approaches. Azure Cosmos DB helps you to use the ecosystems, tools, and skills you already have for data modeling and querying with its various APIs.
 
+You can use Azure Cosmos DB APIs for direct integration with other components. For example, you can integrate the Azure Cosmos DB [REST API](https://learn.microsoft.com/rest/api/cosmos-db/) with [Azure API Management](https://learn.microsoft.com/azure/api-management/api-management-key-concepts) to perform data operations, such as [CRUD operations](https://wikipedia.org/wiki/Create,_read,_update_and_delete), without requiring intermediate services like Azure Functions.
+
 All the APIs offer automatic scaling of storage and throughput, flexibility, and performance guarantees. There's no one best API, and you may choose any one of the APIs to build your application. This article will help you choose an API based on your workload and team requirements.
 
 ## Considerations when choosing an API
