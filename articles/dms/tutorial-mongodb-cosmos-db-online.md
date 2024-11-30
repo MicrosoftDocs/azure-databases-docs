@@ -19,9 +19,9 @@ ms.custom:
 [!INCLUDE [appliesto-mongodb-api](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb.md)]
 
 > [!IMPORTANT]  
-> Please read this entire guide before carrying out your migration steps. Azure Database Migration Service doesn't currently support migrations to an Azure Cosmos DB for MongoDB vCore account.
+> Migrations to Azure Cosmos DB for MongoDB vCore can be performed using the [MongoDB migration extension for Azure Data Studio](../cosmos-db/mongodb/vcore/migration-options.md#azure-data-studio-online). This extension leverages the Azure Database Migration Service in the background. Note that migrations to Azure Cosmos DB for MongoDB vCore cannot be done using the Database Migration Service on the Azure portal.
 
-This MongoDB migration guide is part of series on MongoDB migration. The critical MongoDB migration steps are [pre-migration](../cosmos-db/mongodb-pre-migration.md), migration, and [post-migration](../cosmos-db/mongodb-post-migration.md), as shown below.
+This MongoDB migration guide is part of series on MongoDB migration. The critical MongoDB migration steps are [pre-migration](../cosmos-db/mongodb-pre-migration.md), migration, and [post-migration](../cosmos-db/mongodb-post-migration.md).
 
 :::image type="content" source="~/reusable-content/ce-skilling/azure/media/cosmos-db/overall-migration-steps.png" alt-text="Diagram of migration steps.":::
 
@@ -74,12 +74,12 @@ To complete this tutorial, you need to:
   This configuration is necessary because Azure Database Migration Service lacks internet connectivity.
 
 - Ensure that your virtual network Network Security Group (NSG) rules don't block the following communication ports: 53, 443, 445, 9354, and 10000-20000. For more detail on virtual network NSG traffic filtering, see the article [Filter network traffic with network security groups](/azure/virtual-network/virtual-network-vnet-plan-design-arm).
-- Open your Windows firewall to allow Azure Database Migration Service to access the source MongoDB server, which by default is TCP port 27017.
-- When using a firewall appliance in front of your source database(s), you might need to add firewall rules to allow Azure Database Migration Service to access the source database(s) for migration.
+- Open your Windows Firewall to allow Azure Database Migration Service to access the source MongoDB server, which by default is TCP port 27017.
+- When using a firewall appliance in front of your source databases, you might need to add firewall rules to allow Azure Database Migration Service to access the source databases for migration.
 
 ## Configure Azure Cosmos DB Server Side Retries for efficient migration
 
-Customers migrating from MongoDB to Azure Cosmos DB benefit from resource governance capabilities, which guarantee the ability to fully utilize your provisioned RU/s of throughput. Azure Cosmos DB might throttle a given Data Migration Service request in the course of migration if that request exceeds the container provisioned RU/s; then that request needs to be retried. Data Migration Service is capable of performing retries, however the round-trip time involved in the network hop between Data Migration Service and Azure Cosmos DB impacts the overall response time of that request. Improving response time for throttled requests can shorten the total time needed for migration. The *Server Side Retry* feature of Azure Cosmos DB allows the service to intercept throttle error codes and retry with much lower round-trip time, dramatically improving request response times.
+Customers migrating from MongoDB to Azure Cosmos DB benefit from resource governance capabilities, which guarantee the ability to fully utilize your provisioned RU/s of throughput. Azure Cosmos DB might throttle a given Data Migration Service request in the course of migration if that request exceeds the container provisioned RU/s; then that request needs to be retried. Data Migration Service is capable of performing retries, however the round-trip time involved in the network hop between Data Migration Service and Azure Cosmos DB impacts the overall response time of that request. Improving response time for throttled requests can shorten the total time needed for migration. The *Server Side Retry* feature of Azure Cosmos DB allows the service to intercept throttle error codes and retry with lower round-trip time, dramatically improving request response times.
 
 You can find the Server Side Retry capability in the *Features* blade of the Azure Cosmos DB portal
 
