@@ -14,7 +14,7 @@ ms.topic: conceptual
 
 [!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
-Azure Database for MySQL flexible server provides users with the ability to configure audit logs. Audit logs can be used to track database-level activity including connection, admin, DDL, and DML events. These types of logs are commonly used for compliance purposes.
+Azure Database for MySQL Flexible Server provides users with the ability to configure audit logs. Audit logs can be used to track database-level activity including connection, admin, DDL, and DML events. These types of logs are commonly used for compliance purposes.
 
 ## Configure audit logging
 
@@ -198,7 +198,7 @@ Once your audit logs are piped to Azure Monitor Logs through Diagnostic Logs, yo
     | render timechart
     ```
 
-- List audited events across all Azure Database for MySQL flexible server instances with Diagnostic Logs enabled for audit logs
+- List audited events across all Azure Database for MySQL Flexible Server instances with Diagnostic Logs enabled for audit logs
 
     ```kusto
     AzureDiagnostics

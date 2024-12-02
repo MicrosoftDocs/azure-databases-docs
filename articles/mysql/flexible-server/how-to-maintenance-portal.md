@@ -15,17 +15,17 @@ ms.topic: how-to
 [!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 
-You can specify maintenance options for each Azure Database for MySQL flexible server instance in your Azure subscription. Options include the maintenance schedule and notification settings for upcoming and finished maintenance events.
+You can specify maintenance options for each Azure Database for MySQL Flexible Server instance in your Azure subscription. Options include the maintenance schedule and notification settings for upcoming and finished maintenance events.
 
 ## Prerequisites
 
 To complete this how-to guide, you need:
 
-- An [Azure Database for MySQL flexible server instance](quickstart-create-server-portal.md)
+- An [Azure Database for MySQL Flexible Server instance](quickstart-create-server-portal.md)
 
 ## Specify maintenance schedule options
 
-1. On the Azure Database for MySQL flexible server page, under the **Settings** heading, choose **Maintenance** to open scheduled maintenance options.
+1. On the Azure Database for MySQL Flexible Server page, under the **Settings** heading, choose **Maintenance** to open scheduled maintenance options.
 2. The default (system-managed) schedule is a random day of the week, and 60-minute window for maintenance start between 11pm and 7am local server time. If you want to customize this schedule, choose **Custom schedule**. You can then select a preferred day of the week, and a 60-minute window for maintenance start time.
 
 ## Reschedule Maintenance
@@ -54,9 +54,9 @@ There's no limitation on how many times a maintenance can be rescheduled, as lon
 
 ## Notifications about scheduled maintenance events
 
-You can use Azure Service Health to [view notifications](/azure/service-health/service-notifications) about upcoming and performed scheduled maintenance on your Azure Database for MySQL flexible server instance. You can also [set up](/azure/service-health/resource-health-alert-monitor-guide) alerts in Azure Service Health to get notifications about maintenance events.
+You can use Azure Service Health to [view notifications](/azure/service-health/service-notifications) about upcoming and performed scheduled maintenance on your Azure Database for MySQL Flexible Server instance. You can also [set up](/azure/service-health/resource-health-alert-monitor-guide) alerts in Azure Service Health to get notifications about maintenance events.
 
 ## Next steps
 
-* Learn about [scheduled maintenance in Azure Database for MySQL flexible server](concepts-maintenance.md)
+* Learn about [scheduled maintenance in Azure Database for MySQL Flexible Server](concepts-maintenance.md)
 * Lean about [Azure Service Health](/azure/service-health/overview)
