@@ -29,7 +29,7 @@ Currently, Azure CLI doesn't support turning on debug logging, but you can retri
 > - Replace `examplegroup` and `exampledeployment` with the correct resource group and deployment name for your Azure Database for MySQL flexible server instance.
 > - You can see the Deployment name in the deployments page in your resource group. See [how to find the deployment name](/azure/azure-resource-manager/templates/deployment-history?tabs=azure-portal).
 
-1. List the deployments in resource group to identify the Azure Database for MySQL flexible server deployment.
+1. List the deployments in resource group to identify the Azure Database for MySQL Flexible Server deployment.
 
     ```azurecli
     az deployment operation group list \
