@@ -7,7 +7,7 @@ ms.custom: mvc, references_regions
 ms.service: azure-cosmos-db
 ms.subservice: postgresql
 ms.topic: conceptual
-ms.date: 07/07/2024
+ms.date: 11/21/2024
 ---
 
 # Product updates for Azure Cosmos DB for PostgreSQL
@@ -22,12 +22,17 @@ Updates that don’t directly affect the internals of a cluster are rolled out g
 
 Updates that change cluster internals, such as installing a [new minor PostgreSQL version](https://www.postgresql.org/developer/roadmap/), are delivered to existing clusters as part of the next [scheduled maintenance](concepts-maintenance.md) event. Such updates are available immediately to newly created clusters.
 
+### November 2024
+* Retirement: As of November 21, 2024, PostgreSQL 12 is unsupported by PostgreSQL community.
+    * See [PostgreSQL community versioning policy](https://www.postgresql.org/support/versioning/).
+    * See [restrictions](./reference-versions.md#retired-postgresql-engine-versions-not-supported-in-azure-cosmos-db-for-postgresql) that apply to the retired PostgreSQL major versions in Azure Cosmos DB for PostgreSQL.
+
 ### July 2024
 * [MD5 hashing is disabled](./reference-limits.md#security) in Azure Cosmos DB for PostgreSQL.
 
 ### May 2024
 * General availability: [The latest minor PostgreSQL version updates](reference-versions.md#postgresql-versions) (12.19, 13.15, 14.12, 15.7, and 16.3) are now available.
-    * [The last update for PostgreSQL 11](./reference-versions.md#postgresql-version-11-and-older) was released by community in November 2023.
+    * [The last update for PostgreSQL 11](./reference-versions.md#postgresql-version-12-and-older) was released by community in November 2023.
 
 
 ### March 2024
@@ -35,7 +40,7 @@ Updates that change cluster internals, such as installing a [new minor PostgreSQ
 
 ### February 2024
 * General availability: [The latest minor PostgreSQL version updates](reference-versions.md#postgresql-versions) (12.18, 13.14, 14.11, 15.6, and 16.2) are now available.
-    * [The last update for PostgreSQL 11](./reference-versions.md#postgresql-version-11-and-older) was released by community in November 2023.
+    * [The last update for PostgreSQL 11](./reference-versions.md#postgresql-version-12-and-older) was released by community in November 2023.
 * General availability: [Microsoft Entra authentication](./concepts-authentication.md#microsoft-entra-id-authentication-preview) is now supported in addition to Postgres roles in [all supported regions](./resources-regions.md).
 
 ### January 2024

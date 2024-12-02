@@ -14,7 +14,7 @@ ms.topic: how-to
 
 [!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
-You can automatically deploy your database updates to Azure Database for MySQL flexible server after every successful build with **Azure Pipelines**. You can use Azure CLI task to update the database either with a SQL file or an inline SQL script against the database. This task  can be run on cross-platform agents running on Linux, macOS, or Windows operating systems.
+You can automatically deploy your database updates to Azure Database for MySQL Flexible Server after every successful build with **Azure Pipelines**. You can use Azure CLI task to update the database either with a SQL file or an inline SQL script against the database. This task  can be run on cross-platform agents running on Linux, macOS, or Windows operating systems.
 
 ## Prerequisites
 
@@ -25,7 +25,7 @@ You can automatically deploy your database updates to Azure Database for MySQL f
   
 This quickstart uses the resources created in either of these guides as a starting point:
 
-- Create an Azure Database for MySQL flexible server instance by using the [Azure portal](./quickstart-create-server-portal.md) or [Azure CLI](./quickstart-create-server-cli.md).
+- Create an Azure Database for MySQL Flexible Server instance by using the [Azure portal](./quickstart-create-server-portal.md) or [Azure CLI](./quickstart-create-server-cli.md).
 
 ## Use SQL file
 

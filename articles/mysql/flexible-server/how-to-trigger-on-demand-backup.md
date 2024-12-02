@@ -19,7 +19,7 @@ This article provides a step-by-step procedure to trigger an on-demand backup fr
 
 ## Prerequisites
 
-You need an Azure Database for MySQL flexible server instance to complete this how-to guide.
+You need an Azure Database for MySQL Flexible Server instance to complete this how-to guide.
 
 - Create a MySQL flexible server instance by following the steps in the article [Quickstart: Create an instance of Azure Database for MySQL - Flexible Server by using the Azure portal](quickstart-create-server-portal.md).
 
@@ -45,7 +45,7 @@ Follow these steps to trigger backup on demand:
 
 Follow these steps to trigger an on-demand backup and export:
 
-1. In the [Azure portal](https://portal.azure.com/), choose your Azure Database for MySQL flexible server instance to take a backup of and export.
+1. In the [Azure portal](https://portal.azure.com/), choose your Azure Database for MySQL Flexible Server instance to take a backup of and export.
 
 1. Under **Settings** select **Backup and restore** from the left panel.
 

@@ -17,12 +17,12 @@ ms.custom:
 
 [!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
-This tutorial shows you how to set up Microsoft Entra authentication for Azure Database for MySQL flexible server.
+This tutorial shows you how to set up Microsoft Entra authentication for Azure Database for MySQL Flexible Server.
 
 In this tutorial, you learn how to:
 
 - Configure the Microsoft Entra Admin.
-- Connect to Azure Database for MySQL flexible server using Microsoft Entra ID.
+- Connect to Azure Database for MySQL Flexible Server using Microsoft Entra ID.
 
 ## Prerequisites
 
@@ -31,7 +31,7 @@ In this tutorial, you learn how to:
 - If you don't have an Azure subscription, create an [Azure free account](https://azure.microsoft.com/free) before you begin.
 
     > [!NOTE]  
-    > With an Azure free account, you can now try Azure Database for MySQL flexible server for free for 12 months. For more information, see [Try Azure Database for MySQL flexible server for free](how-to-deploy-on-azure-free-account.md).
+    > With an Azure free account, you can now try Azure Database for MySQL Flexible Server for free for 12 months. For more information, see [Try Azure Database for MySQL Flexible Server for free](how-to-deploy-on-azure-free-account.md).
 
 - Install or upgrade Azure CLI to the latest version. See [Install Azure CLI](/cli/azure/install-azure-cli).
 
@@ -41,7 +41,7 @@ In this tutorial, you learn how to:
 
 To create a Microsoft Entra Admin user, follow the following steps.
 
-- In the Azure portal, select the instance of Azure Database for MySQL flexible server that you want to enable for Microsoft Entra ID.
+- In the Azure portal, select the instance of Azure Database for MySQL Flexible Server that you want to enable for Microsoft Entra ID.
 
 - Under the Security pane, select **Authentication**:
 :::image type="content" source="media//how-to-Azure-ad/Azure-ad-configuration.jpg" alt-text="Diagram of how to configure Microsoft Entra authentication.":::
@@ -54,14 +54,14 @@ To create a Microsoft Entra Admin user, follow the following steps.
 
     - **MySQL and Microsoft Entra authentication** – Allows authentication using a native MySQL password or a Microsoft Entra account. Turns _OFF_ the server parameter aad_auth_only
 
-- **Select Identity** – Select/Add User assigned managed identity. The following permissions are required to allow the UMI to read from Microsoft Graph as the server identity. Alternatively, give the UMI the [Directory Readers](/azure/active-directory/roles/permissions-reference#directory-readers) role.
+- **Select Identity** – Select/Add User assigned managed identity. The following permissions are required to allow the UMI to read from Microsoft Graph as the server identity. Alternatively, give the user-assigned managed identity the [Directory Readers](/azure/active-directory/roles/permissions-reference#directory-readers) role.
 
     - [User.Read.All](/graph/permissions-reference#user-permissions): Allows access to Microsoft Entra user information.
     - [GroupMember.Read.All](/graph/permissions-reference#group-permissions): Allows access to Microsoft Entra group information.
     - [Application.Read.ALL](/graph/permissions-reference#application-resource-permissions): Allows access to Microsoft Entra service principal (application) information.
 
 > [!IMPORTANT]  
-> Only a [Global Administrator](/azure/active-directory/roles/permissions-reference#global-administrator) or [Privileged Role Administrator](/azure/active-directory/roles/permissions-reference#privileged-role-administrator) can grant these permissions.
+> Only a user with at least the [Privileged Role Administrator](/azure/active-directory/roles/permissions-reference#privileged-role-administrator) role can grant these permissions.
 
 - Select a valid Microsoft Entra user or a Microsoft Entra group in the customer tenant to be **Microsoft Entra administrator**. Once Microsoft Entra authentication support has been enabled, Microsoft Entra Admins can be added as security principals with permission to add Microsoft Entra users to the MySQL server.
 
@@ -137,7 +137,7 @@ After you grant the permissions to the UMI, they're enabled for all servers crea
 
 <a name='connect-to-azure-database-for-mysql---flexible-server-using-azure-ad'></a>
 
-## Connect to Azure Database for MySQL flexible server using Microsoft Entra ID
+## Connect to Azure Database for MySQL Flexible Server using Microsoft Entra ID
 
 <a name='1---authenticate-with-azure-ad'></a>
 
@@ -164,7 +164,7 @@ The command launches a browser window to the Microsoft Entra authentication page
 
 ### 2 - Retrieve Microsoft Entra access token
 
-Invoke the Azure CLI tool to acquire an access token for the Microsoft Entra authenticated user from step 1 to access Azure Database for MySQL flexible server.
+Invoke the Azure CLI tool to acquire an access token for the Microsoft Entra authenticated user from step 1 to access Azure Database for MySQL Flexible Server.
 
 - Example (for Public Cloud):
 
@@ -205,7 +205,7 @@ After authentication is successful, Microsoft Entra ID returns an access token:
 
 The token is a Base 64 string that encodes all the information about the authenticated user and is targeted to the Azure Database for MySQL service.
 
-The access token validity is anywhere between 5 minutes to 60 minutes. We recommend you get the access token before initiating the sign-in to Azure Database for MySQL flexible server.
+The access token validity is anywhere between 5 minutes to 60 minutes. We recommend you get the access token before initiating the sign-in to Azure Database for MySQL Flexible Server.
 
 - You can use the following PowerShell command to see the token validity.
 
@@ -217,7 +217,7 @@ The access token validity is anywhere between 5 minutes to 60 minutes. We recomm
 
 You need to use the access token as the MySQL user password when connecting. You can use the method described above to retrieve the token using GUI clients such as MySQL workbench.
 
-## Connect to Azure Database for MySQL flexible server using MySQL CLI
+## Connect to Azure Database for MySQL Flexible Server using MySQL CLI
 
 When using the CLI, you can use this shorthand to connect:
 
@@ -245,7 +245,7 @@ mysql -h mydb.mysql.database.azure.com \
   --password=$((Get-AzAccessToken -ResourceUrl https://ossrdbms-aad.database.windows.net).Token)
 ```
 
-## Connect to Azure Database for MySQL flexible server using MySQL Workbench
+## Connect to Azure Database for MySQL Flexible Server using MySQL Workbench
 
 - Launch MySQL Workbench and Select the Database option, then select **Connect to database**.
 - In the hostname field, enter the MySQL FQDN for example, mysql.database.azure.com.
@@ -421,4 +421,4 @@ Most drivers are supported; however, make sure to use the settings for sending t
   
 ## Next steps
 
-- Review the concepts for [Microsoft Entra authentication with Azure Database for MySQL flexible server](concepts-azure-ad-authentication.md)
+- Review the concepts for [Microsoft Entra authentication with Azure Database for MySQL Flexible Server](concepts-azure-ad-authentication.md)

@@ -16,7 +16,7 @@ ms.topic: conceptual
 
 [!INCLUDE[azure-database-for-mysql-single-server-deprecation](~/reusable-content/ce-skilling/azure/includes/mysql/includes/azure-database-for-mysql-single-server-deprecation.md)]
 
-This article lists each library or driver that client programs can use when connecting to Azure Database for MySQL flexible server.
+This article lists each library or driver that client programs can use when connecting to Azure Database for MySQL Flexible Server.
 
 ## Client interfaces
 MySQL offers standard database driver connectivity for using MySQL with applications and tools that are compatible with industry standards ODBC and JDBC. Any system that works with ODBC or JDBC can use MySQL.
@@ -35,7 +35,7 @@ MySQL offers standard database driver connectivity for using MySQL with applicat
 
 
 ## Next steps
-Read these quickstarts on how to connect to and query Azure Database for MySQL flexible server by using your language of choice:
+Read these quickstarts on how to connect to and query Azure Database for MySQL Flexible Server by using your language of choice:
 
 - [PHP](./connect-php.md)
 - [Java](./connect-java.md)

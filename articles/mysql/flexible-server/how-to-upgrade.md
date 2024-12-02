@@ -25,6 +25,7 @@ This feature enables customers to perform in-place upgrades of their MySQL 5.7 s
 >[!Important]
 > - Duration of downtime varies based on the size of the database instance and the number of tables it contains.
 > - When initiating a major version upgrade for Azure Database for MySQL flexible server via Rest API or SDK, please avoid modifying other properties of the service in the same request. The simultaneous changes are not permitted and may lead to unintended results or request failure. Please conduct property modifications in separate operations post-upgrade completion.
+> - Some workloads may not exhibit enhanced performance after upgrading from 5.7 to 8.0. We suggest that you evaluate the performance of your workload by first creating a replica server (as a test server), then promoting it to a standalone server and then running the workload on the test server prior to implementing the upgrade in a production environment.
 > - Upgrading the major MySQL version is irreversible. Your deployment might fail if validation identifies that the server is configured with any features that are [removed](https://dev.mysql.com/doc/refman/8.0/en/mysql-nutshell.html#mysql-nutshell-removals) or [deprecated](https://dev.mysql.com/doc/refman/8.0/en/mysql-nutshell.html#mysql-nutshell-deprecations). You can make necessary configuration changes on the server and try the upgrade again.
 
 ## Prerequisites
@@ -37,6 +38,7 @@ This feature enables customers to perform in-place upgrades of their MySQL 5.7 s
   >`mysql.az_add_action_history - PROCEDURE uses obsolete NO_AUTO_CREATE_USER sql_mode`
   >You can safely ignore these warnings. They refer to built-in stored procedures prefixed with mysql., which are used to support Azure MySQL features. These warnings do not affect the functionality of your database.
 - Trigger [on-demand backup](./how-to-trigger-on-demand-backup.md) before you perform a major version upgrade on your production server, which can be used to [rollback to version 5.7](./how-to-restore-server-portal.md) from the full on-demand backup taken.
+- Before proceeding with the major version upgrade, please ensure there are no active or pending XA transactions on the database, as ongoing XA transactions can potentially cause the upgrade process to fail. To avoid this issue, first check for any XA transactions in the "prepared" state by running `XA RECOVER;`. For any transactions identified, use `XA ROLLBACK '{xid}'`; to rollback each transaction, replacing {xid} with the transaction ID. Ensure all XA transactions are either committed or rolled back before initiating the upgrade to maintain transaction consistency and reduce the risk of upgrade failures.
 
 ## Perform a planned major version upgrade from MySQL 5.7 to MySQL 8.0 using the Azure portal for Burstable SKU servers
 

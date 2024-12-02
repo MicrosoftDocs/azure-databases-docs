@@ -412,7 +412,7 @@ console.log(responseHeaders[Constants.HttpHeaders.ScriptLogResults]);
 ```csharp
 var response = await client.ExecuteStoredProcedureAsync(
 document.SelfLink,
-new RequestOptions { EnableScriptLogging = true } );
+new StoredProcedureRequestOptions { EnableScriptLogging = true } );
 Console.WriteLine(response.ScriptLog);
 ```
 ---

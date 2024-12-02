@@ -5834,6 +5834,146 @@
       "source_path_from_root": "/articles/cosmos-db/how-to-move-regions.md",
       "redirect_url": "/azure/operational-excellence/relocation-cosmos-db",
       "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/commands/array-query/$size.md",
+      "redirect_url": "/azure/cosmos-db/mongodb/vcore/operators/array-query/$size",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/commands/array-update/$push.md",
+      "redirect_url": "/azure/cosmos-db/mongodb/vcore/operators/array-update/$push",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/commands/aggregation/$aggregate.md",
+      "redirect_url": "/azure/cosmos-db/mongodb/vcore/commands/aggregation/aggregate",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/commands/aggregation/$count.md",
+      "redirect_url": "/azure/cosmos-db/mongodb/vcore/commands/aggregation/count",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/commands/aggregation/$distinct.md",
+      "redirect_url": "/azure/cosmos-db/mongodb/vcore/commands/aggregation/distinct",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/commands/query-and-write/$find.md",
+      "redirect_url": "/azure/cosmos-db/mongodb/vcore/commands/query-and-write/find",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/commands/query-and-write/$findandmodify.md",
+      "redirect_url": "/azure/cosmos-db/mongodb/vcore/commands/query-and-write/findandmodify",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/commands/query-and-write/$getmore.md",
+      "redirect_url": "/azure/cosmos-db/mongodb/vcore/commands/query-and-write/getmore",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/commands/projection/$slice.md",
+      "redirect_url": "/azure/cosmos-db/mongodb/vcore/operators/projection/$slice",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/nosql/migrate-passwordless.md",
+      "redirect_url": "/azure/cosmos-db/nosql/security/how-to-grant-data-plane-role-based-access",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/how-to-restrict-user-data.md",
+      "redirect_url": "/azure/cosmos-db/nosql/security/how-to-disable-key-based-authentication",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/how-to-setup-rbac.md",
+      "redirect_url": "/azure/cosmos-db/nosql/security/how-to-grant-data-plane-role-based-access",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/managed-identity-based-authentication.yml",
+      "redirect_url": "/azure/cosmos-db/nosql/security/how-to-grant-data-plane-role-based-access",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/role-based-access-control.md",
+      "redirect_url": "/azure/cosmos-db/nosql/security/how-to-grant-control-plane-role-based-access",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/gremlin/how-to-use-resource-tokens.md",
+      "redirect_url": "/previous-versions/azure/cosmos-db/how-to-use-resource-tokens",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/database-security.md",
+      "redirect_url": "/azure/cosmos-db/security",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/secure-access-to-data.md",
+      "redirect_url": "/azure/cosmos-db/security",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/nosql/tutorial-dotnet-web-app.md",
+      "redirect_url": "/azure/cosmos-db/nosql/tutorial-dotnet-console-app",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/attachments.md",
+      "redirect_url": "/previous-versions/azure/cosmos-db/nosql/attachments",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/security/how-to-disable-key-based-authentication.md",
+      "redirect_url": "/azure/cosmos-db/nosql/security/how-to-disable-key-based-authentication",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/gremlin/security/how-to-disable-key-based-authentication.md",
+      "redirect_url": "/azure/cosmos-db/nosql/security/how-to-disable-key-based-authentication",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/cassandra/security/how-to-disable-key-based-authentication.md",
+      "redirect_url": "/azure/cosmos-db/nosql/security/how-to-disable-key-based-authentication",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/table/security/reference-data-actions.md ",
+      "redirect_url": "/azure/cosmos-db/table/security/reference-data-plane-actions",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/table/how-to-use-c-plus.md",
+      "redirect_url": "/azure/cosmos-db/table",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/table/how-to-use-go.md",
+      "redirect_url": "/azure/cosmos-db/table/quickstart-go",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/table/how-to-use-java.md",
+      "redirect_url": "/azure/cosmos-db/table/quickstart-java",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/table/how-to-use-nodejs.md",
+      "redirect_url": "/azure/cosmos-db/table/quickstart-nodejs",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/table/samples-dotnet.md",
+      "redirect_url": "/azure/cosmos-db/table/quickstart-dotnet",
+      "redirect_document_id": false
     }
   ]
 }

@@ -260,8 +260,8 @@ Here's an example of an item:
 
 ```json
 {
-  "id": "08225A9E-F2B3-4FA3-AB08-8C70ADD6C3C2",
-  "categoryId": "75BF1ACB-168D-469C-9AA3-1FD26BB4EA4C",
+  "id": "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb",
+  "categoryId": "bbbbbbbb-1111-2222-3333-cccccccccccc",
   "categoryName": "Bikes, Touring Bikes",
   "sku": "BK-T79U-50",
   "name": "Touring-1000 Blue, 50",
@@ -269,7 +269,7 @@ Here's an example of an item:
   "price": 2384.07,
   "tags": [
     {
-      "id": "27B7F8D5-1009-45B8-88F5-41008A0F0393",
+      "id": "cccccccc-2222-3333-4444-dddddddddddd",
       "name": "Tag-61"
     }
   ],

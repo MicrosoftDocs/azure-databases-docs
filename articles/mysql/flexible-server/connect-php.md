@@ -16,7 +16,7 @@ ms.custom:
 # Use PHP with Azure Database for MySQL - Flexible Server
 
 [!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-This quickstart demonstrates how to connect to Azure Database for MySQL flexible server using a [PHP](https://secure.php.net/manual/intro-whatis.php) application. It shows how to use SQL statements to query, insert, update, and delete data in the database. This article assumes that you are familiar with development using PHP and that you are new to working with Azure Database for MySQL flexible server.
+This quickstart demonstrates how to connect to Azure Database for MySQL flexible server using a [PHP](https://www.php.net/) application. It shows how to use SQL statements to query, insert, update, and delete data in the database. This article assumes that you're familiar with development using PHP and that you're new to working with Azure Database for MySQL flexible server.
 
 ## Prerequisites
 
@@ -27,7 +27,7 @@ This quickstart uses the resources created in either of these guides as a starti
 
 ## Preparing your client workstation
 
-1. If you created your flexible server with *Private access (VNet Integration)*, you will need to connect to your server from a resource within the same VNet as your server. You can create a virtual machine and add it to the VNet created with your flexible server. Refer to [Create and manage an Azure Database for MySQL flexible server virtual network using Azure CLI](./how-to-manage-virtual-network-cli.md).
+1. If you created your flexible server with *Private access (virtual network Integration)*, you'll need to connect to your server from a resource within the same virtual network as your server. You can create a virtual machine and add it to the virtual network created with your flexible server. Refer to [Create and manage an Azure Database for MySQL flexible server virtual network using Azure CLI](./how-to-manage-virtual-network-cli.md).
 
 2. If you created your flexible server with *Public access (allowed IP addresses)*, you can add your local IP address to the list of firewall rules on your server. Refer to [Create and manage Azure Database for MySQL flexible server firewall rules using the Azure CLI](./how-to-manage-firewall-cli.md).
 
@@ -42,12 +42,12 @@ Install PHP on your own server, or create an Azure [web app](/azure/app-service/
 
 #### [Linux](#tab/linux)
 
-1. Download [PHP 7.1.4 non-thread safe (x64) version](https://secure.php.net/downloads.php).
+1. Download [PHP 7.1.4 nonthread safe (x64) version](https://secure.php.net/downloads.php).
 2. Install PHP and refer to the [PHP manual](https://secure.php.net/manual/install.unix.php) for further configuration.
 
 #### [Windows](#tab/windows)
 
-1. Download [PHP 7.1.4 non-thread safe (x64) version](https://windows.php.net/download#php-7.1).
+1. Download [PHP 7.1.4 nonthread safe (x64) version](https://windows.php.net/download#php-7.1).
 2. Install PHP and refer to the [PHP manual](https://secure.php.net/manual/install.windows.php) for further configuration.
 
 ---
@@ -64,7 +64,7 @@ Get the connection information needed to connect to the Azure Database for MySQL
 
 ## Connecting to flexible server using TLS/SSL in PHP
 
-To establish a encrypted connection to your flexible server over TLS/SSL from your application, refer to the following code samples. You can download the certificate needed to communicate over TLS/SSL from [https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem)
+To establish an encrypted connection to your flexible server over TLS/SSL from your application, refer to the following code samples. You can download the certificate needed to communicate over TLS/SSL from [https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem)
 
 ```php using SSL
 $conn = mysqli_init();
@@ -133,7 +133,7 @@ $db_name = 'your_database';
 //Establishes the connection
 $conn = mysqli_init();
 mysqli_real_connect($conn, $host, $username, $password, $db_name, 3306);
-if (mysqli_connect_errno($conn)) {
+if (mysqli_connect_errno($conn)) {f
 die('Failed to connect to MySQL: '.mysqli_connect_error());
 }
 

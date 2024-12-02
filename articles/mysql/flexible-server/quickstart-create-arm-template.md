@@ -260,7 +260,7 @@ To create an Azure Database for MySQL - Flexible Server instance by using the pu
 
 ## Create a server that has private access
 
-Modify the following code examples to create an Azure Database for MySQL flexible server that has private access connectivity inside a virtual network:
+Modify the following code examples to create an Azure Database for MySQL Flexible Server that has private access connectivity inside a virtual network:
 
 ```json
 
@@ -586,7 +586,7 @@ Complete the steps to enter the parameter values. When the deployment finishes, 
 
 ## Review deployed resources
 
-To verify that your Azure Database for MySQL flexible server was created in the resource group:
+To verify that your Azure Database for MySQL Flexible Server was created in the resource group:
 
 # [Azure CLI](#tab/azure-cli)
 

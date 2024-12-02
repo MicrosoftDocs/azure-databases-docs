@@ -26,7 +26,7 @@ Common geospatial use cases include, but aren't limited to:
 - **Location-based personalization**, for industries like retail and healthcare to improve user experience.
 - **Logistics enhancement**, for industries like transportation where optimization is critical.
 - **Risk Analysis**, for industries like insurance and finance to supplement other metadata.
-- **Situational awareness***, for proxmiity-based alerts and notifications.
+- **Situational awareness***, for proximity-based alerts and notifications.
 
 ## Introduction to spatial data
 
@@ -167,7 +167,7 @@ When you create items that contain GeoJSON values, they're automatically indexed
 
 ```javascript
 var userProfileitem = {
-    "id":"cosmosdb",
+    "id": "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb",
     "location":{
         "type":"Point",
         "coordinates":[ -122.12, 47.66 ]
@@ -200,7 +200,7 @@ public class UserProfile
 await container.CreateItemAsync(
     new UserProfile
     {
-        id = "cosmosdb",
+        id = "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb",
         Location = new Point (-122.12, 47.66)
     }
 );

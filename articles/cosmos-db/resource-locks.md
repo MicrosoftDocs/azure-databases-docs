@@ -34,13 +34,13 @@ As an administrator, you may need to lock an Azure Cosmos DB account, database o
 
 When you apply a lock at a parent scope, all resources within that scope inherit the same lock. Even resources you add later inherit the lock from the parent. The most restrictive lock in the inheritance takes precedence.
 
-Unlike Azure role-based access control, you use management locks to apply a restriction across all users and roles. To learn about role-based access control for Azure Cosmos DB see, [Azure role-based access control in Azure Cosmos DB](role-based-access-control.md).
+Unlike Azure role-based access control, you use management locks to apply a restriction across all users and roles.
 
 Resource Manager locks apply only to operations that happen in the management plane, which consists of operations sent to `https://management.azure.com`. The locks don't restrict how resources perform their own functions. Resource changes are restricted, but resource operations aren't restricted. For example, a ReadOnly lock on an Azure Cosmos DB container prevents you from deleting or modifying the container. It doesn't prevent you from creating, updating, or deleting data in the container. Data transactions are permitted because those operations aren't sent to `https://management.azure.com`.
 
 ## Manage locks
 
-Resource locks don't work for changes made by users accessing Azure Cosmos DB using account keys unless the Azure Cosmos DB account is first locked by enabling the `disableKeyBasedMetadataWriteAccess` property. Ensure this property doesn't break existing applications that make changes to resources using any SDK, Azure portal, or third party tools. Enabling this property breaks applications that connect via account keys to modify resources. These modifications can include changing throughput, updating index policies, etc. To learn more and to go through a checklist to ensure your applications continue to function, see [preventing changes from the Azure Cosmos DB SDKs](role-based-access-control.md#prevent-sdk-changes)
+Resource locks don't work for changes made by users accessing Azure Cosmos DB using account keys unless the Azure Cosmos DB account is first locked by enabling the `disableKeyBasedMetadataWriteAccess` property. Ensure this property doesn't break existing applications that make changes to resources using any SDK, Azure portal, or third party tools. Enabling this property breaks applications that connect via account keys to modify resources. These modifications can include changing throughput, updating index policies, etc.
 
 ### [PowerShell](#tab/powershell)
 

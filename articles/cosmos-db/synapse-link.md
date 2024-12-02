@@ -16,10 +16,11 @@ ms.custom: synapse-cosmos-db
 
 Azure Synapse Link for Azure Cosmos DB is a cloud-native hybrid transactional and analytical processing (HTAP) capability that enables near real time analytics over operational data in Azure Cosmos DB. Azure Synapse Link creates a tight seamless integration between Azure Cosmos DB and Azure Synapse Analytics.
 
-[Azure Cosmos DB analytical store](analytical-store-introduction.md), a fully isolated column store, can be used with Azure Synapse Link to enable Extract-Transform-Load (ETL) analytics in [Azure Synapse Analytics](/azure/synapse-analytics/overview-what-is) against your operational data at scale. Business analysts, data engineers, and data scientists can now use Synapse Spark or Synapse SQL interchangeably to run near real time business intelligence, analytics, and machine learning pipelines. You can analyze real time data without affecting the performance of your transactional workloads on Azure Cosmos DB.
-
 > [!IMPORTANT]
-> Mirroring Azure Cosmos DB in Microsoft Fabric is now available in preview for NoSql API. This feature provides all the capabilities of Azure Synapse Link with better analytical performance, ability to unify your data estate with Fabric OneLake and open access to your data in OneLake with Delta Parquet format. If you are considering Azure Synapse Link, we recommend that you try mirroring to assess overall fit for your organization. To get started with mirroring, click [here](/fabric/database/mirrored-database/azure-cosmos-db?context=/azure/cosmos-db/context/context). 
+> Mirroring Azure Cosmos DB in Microsoft Fabric is now available for NoSql API. This feature provides all the capabilities of Azure Synapse Link with better analytical performance, ability to unify your data estate with Fabric OneLake and open access to your data in Delta Parquet format. If you are considering Azure Synapse Link, we recommend that you try mirroring to assess overall fit for your organization.
+> [Get started with mirroring in Microsoft Fabric](/fabric/database/mirrored-database/azure-cosmos-db?context=/azure/cosmos-db/context/context).
+
+[Azure Cosmos DB analytical store](analytical-store-introduction.md), a fully isolated column store, can be used with Azure Synapse Link to enable Extract-Transform-Load (ETL) analytics in [Azure Synapse Analytics](/azure/synapse-analytics/overview-what-is) against your operational data at scale. Business analysts, data engineers, and data scientists can now use Synapse Spark or Synapse SQL interchangeably to run near real time business intelligence, analytics, and machine learning pipelines. You can analyze real time data without affecting the performance of your transactional workloads on Azure Cosmos DB.
 
 The following image shows the Azure Synapse Link integration with Azure Cosmos DB and Azure Synapse Analytics:
 

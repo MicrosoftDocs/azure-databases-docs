@@ -76,7 +76,7 @@ r = redis.Redis(
     port=6379, 
     password='azure-redis-primary-access-key')
     
-mysqlcnx = mysql.connector.connect(user='your-admin-username', password='db-user-password',
+mysqlcnx = mysql.connector.connect(user='your-admin-username', password='<password>',
                               host='database-servername.mysql.database.azure.com',
                               database='your-databsae-name')
 			      

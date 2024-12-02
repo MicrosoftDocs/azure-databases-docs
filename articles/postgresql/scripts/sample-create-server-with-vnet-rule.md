@@ -12,7 +12,7 @@ ms.date: 01/26/2022
 
 # Create an Azure Database for PostgreSQL - Flexible Server instance and configure a vNet rule using the Azure CLI
 
-[!INCLUDE[applies-to-postgres-single-flexible-server](../includes/applies-to-postgresql-single-flexible-server.md)]
+[!INCLUDE [applies-to-postgresql-flexible-server](../includes/applies-to-postgresql-flexible-server.md)]
 
 This sample CLI script creates an Azure Database for PostgreSQL flexible server instance and configures a vNet rule.
 

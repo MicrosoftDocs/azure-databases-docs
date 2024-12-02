@@ -12,9 +12,6 @@ ms.topic: conceptual
 
 # Migrate large databases to Azure Database for MySQL using mydumper/myloader
 
-> [!CAUTION]  
-> This article references CentOS, a Linux distribution that is End Of Life (EOL) status. Please consider your use and planning accordingly. For more information, see the [CentOS End Of Life guidance](/azure/virtual-machines/workloads/centos/centos-end-of-life).
-
 [!INCLUDE [applies-to-mysql-single-flexible-server](../includes/applies-to-mysql-single-flexible-server.md)]
 
 Azure Database for MySQL is a managed service that you use to run, manage, and scale highly available MySQL databases in the cloud. To migrate MySQL databases larger than 1 TB to Azure Database for MySQL, consider using community tools such as [mydumper/myloader](https://centminmod.com/mydumper.html), which provide the following benefits:
@@ -74,7 +71,7 @@ To install mydumper/myloader, do the following steps.
     ```
 
     > [!TIP]  
-    > The command you use to install the package will differ based on the Linux distribution you have as the installers are different. The mydumper/myloader is available for following distributions Fedora, RedHat , Ubuntu, Debian, CentOS , openSUSE and MacOSX. For more information, see **[How to install mydumper](https://github.com/maxbube/mydumper#how-to-install-mydumpermyloader)**
+    > The command you use to install the package will differ based on the Linux distribution you have as the installers are different. The mydumper/myloader is available for following distributions Fedora, RedHat , Ubuntu, Debian, openSUSE and MacOSX. For more information, see **[How to install mydumper](https://github.com/maxbube/mydumper#how-to-install-mydumpermyloader)**
 
 ## Create a backup using mydumper
 

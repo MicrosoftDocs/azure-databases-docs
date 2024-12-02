@@ -16,12 +16,12 @@ ms.custom:
 
 [!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
-This article describes how you can enable or disable zone redundant high availability configuration in Azure Database for MySQL flexible server.
+This article describes how you can enable or disable zone redundant high availability configuration in Azure Database for MySQL Flexible Server.
 
 High availability feature provisions physically separate primary and standby replica in different zones. For more information, see the [high availability concepts documentation](./concepts/../concepts-high-availability.md).
 
 > [!IMPORTANT]
-> You can enable zone redundant high availability only during Azure Database for MySQL flexible server instance creation.
+> You can enable zone redundant high availability only during Azure Database for MySQL Flexible Server instance creation.
 
 This page provides guidelines how you can enable or disable high availability. This operation doesn't change your other settings including VNET configuration, firewall settings, and backup retention. Similarly, disabling of high availability is an online operation and doesn't impact your application connectivity and operations.
 
@@ -30,9 +30,9 @@ This page provides guidelines how you can enable or disable high availability. T
 
 ## Enable high availability during server creation
 
-This section provides details specifically for HA-related fields. You can follow these steps to deploy high availability while creating your Azure Database for MySQL flexible server instance.
+This section provides details specifically for HA-related fields. You can follow these steps to deploy high availability while creating your Azure Database for MySQL Flexible Server instance.
 
-1. In the [Azure portal](https://portal.azure.com/), choose flexible Server and Select **Create**.  For information about how to fill in details such as **Subscription**, **Resource group**, **Server name**, **Region**, and other fields, see the how-to documentation for Azure Database for MySQL flexible server instance creation.
+1. In the [Azure portal](https://portal.azure.com/), choose flexible Server and Select **Create**.  For information about how to fill in details such as **Subscription**, **Resource group**, **Server name**, **Region**, and other fields, see the how-to documentation for Azure Database for MySQL Flexible Server instance creation.
 
 2. Select the checkbox for **Zone redundant high availability** in the Availability option.
 
@@ -50,11 +50,11 @@ This section provides details specifically for HA-related fields. You can follow
 
 ## Disable high availability
 
-Follow these steps to disable high availability for your Azure Database for MySQL flexible server instance that is already configured with zone redundancy.
+Follow these steps to disable high availability for your Azure Database for MySQL Flexible Server instance that is already configured with zone redundancy.
 
-1. In the [Azure portal](https://portal.azure.com/), select your existing Azure Database for MySQL flexible server instance.
+1. In the [Azure portal](https://portal.azure.com/), select your existing Azure Database for MySQL Flexible Server instance.
 
-2. On the Azure Database for MySQL flexible server instance page, select **High Availability** from the front panel to open the high availability page.
+2. On the Azure Database for MySQL Flexible Server instance page, select **High Availability** from the front panel to open the high availability page.
 
 3. Select the **zone redundant high availability** checkbox to disable the option and select **Save** to save the change.
 
@@ -64,11 +64,11 @@ Follow these steps to disable high availability for your Azure Database for MySQ
 
 ## Forced failover
 
-Follow these steps to force failover from your primary to a standby Azure Database for MySQL flexible server instance.
+Follow these steps to force failover from your primary to a standby Azure Database for MySQL Flexible Server instance.
 
-1. In the [Azure portal](https://portal.azure.com/), select your existing Azure Database for MySQL flexible server instance that has the high availability feature enabled.
+1. In the [Azure portal](https://portal.azure.com/), select your existing Azure Database for MySQL Flexible Server instance that has the high availability feature enabled.
 
-2. On the Azure Database for MySQL flexible server instance page, select **High Availability** from the front panel to open the high availability page.
+2. On the Azure Database for MySQL Flexible Server instance page, select **High Availability** from the front panel to open the high availability page.
 
 3. Check the **Primary availability zone** and the **Standby availability zone**.
 

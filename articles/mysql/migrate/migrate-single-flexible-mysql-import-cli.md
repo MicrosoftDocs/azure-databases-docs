@@ -54,6 +54,7 @@ az account set --subscription <subscription id>
 
 ## Limitations and pre-requisites
 
+- If your source Azure Database for MySQL Single Server has Basic SKU, consider specifying the SKU in the import command as General purpose to alleviate any out of memory issues. You can change the SKU back to Burstable on the migrated Flexible Server instance post migration.
 - If your source Azure Database for MySQL Single Server has engine version v8.x, ensure to upgrade your source server's .NET client driver version to 8.0.32 to avoid any encoding incompatibilities post migration to Flexible Server.
 - The source Azure Database for MySQL - Single Server and the target Azure Database for MySQL - Flexible Server must be in the same subscription, resource group, region, and on the same MySQL version. Import across subscriptions, resource groups, regions, and versions isn't possible.
 - MySQL versions supported by Azure Database for MySQL Import CLI are 5.7 and 8.0. If you are on a different major MySQL version on Single Server, make sure to upgrade your version on your Single Server instance before triggering the import command.

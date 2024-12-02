@@ -24,12 +24,6 @@ In Azure Cosmos DB, a table is analogous to a table in a relational database.
 > [!NOTE]
 > With API for Table accounts, when you create your first table, a default database is automatically created in your Azure Cosmos DB account.
 
-Here are some quick rules when naming a table:
-
-- Keep table names between 3 and 63 characters long
-- Table names can only contain lowercase letters, numbers, or the dash (-) character.
-- Table names must start with a lowercase letter or number.
-
 ## Create a table
 
 To create a table, call one of the following methods:

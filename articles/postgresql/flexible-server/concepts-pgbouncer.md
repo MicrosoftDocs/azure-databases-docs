@@ -38,7 +38,7 @@ For more information about PgBouncer configurations, see the [pgbouncer.ini docu
 
 ## Version of PgBouncer
 
-Currently, the version of PgBouncer deployed on all supported major versions of the engine ([!INCLUDE [pgbouncer-table](./includes/majorversionsascending.md)]), in Azure Database for PostgreSQL Flexible Server, is **[!INCLUDE [pgbouncer-table](./includes/pgbouncer-table.md)]**.
+Currently, the version of PgBouncer deployed on all supported major versions of the engine ([!INCLUDE [pgbouncer-table](./includes/major-versions-ascending.md)]), in Azure Database for PostgreSQL Flexible Server, is **[!INCLUDE [pgbouncer-table](./includes/pgbouncer-table.md)]**.
 
 ## Benefits
 
@@ -79,7 +79,7 @@ To connect to the `pgbouncer` database:
 1. Connect to the `pgbouncer` database as this user and set the port as `6432`:
 
    ```sql
-   psql "host=myPgServer.postgres.database.azure.com port=6432 dbname=pgbouncer user=myUser password=myPassword sslmode=require"
+   psql "host=myPgServer.postgres.database.azure.com port=6432 dbname=pgbouncer user=myUser password=<password> sslmode=require"
    ```
 
 After you're connected to the database, use `SHOW` commands to view PgBouncer statistics:
@@ -98,7 +98,7 @@ To start using PgBouncer, follow these steps:
 1. Connect to your database server, but use port 6432 instead of the regular port 5432. Verify that this connection works.
 
    ```azurecli-interactive
-   psql "host=myPgServer.postgres.database.azure.com port=6432 dbname=postgres user=myUser password=myPassword sslmode=require"
+   psql "host=myPgServer.postgres.database.azure.com port=6432 dbname=postgres user=myUser password=<password> sslmode=require"
    ```
 
 2. Test your application in a QA environment against PgBouncer, to make sure you don't have any compatibility problems. The PgBouncer project provides a compatibility matrix, and we recommend [transaction pooling](https://www.PgBouncer.org/features.html#sql-feature-map-for-pooling-modes) for most users.

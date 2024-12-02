@@ -16,9 +16,9 @@ ms.custom:
 
 [!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
-There are various scenarios for moving an existing Azure Database for MySQL flexible server instance from one region to another. For example, you might want to move a production server to another region as part of your disaster recovery planning.
+There are various scenarios for moving an existing Azure Database for MySQL Flexible Server instance from one region to another. For example, you might want to move a production server to another region as part of your disaster recovery planning.
 
-You can use Azure Database for MySQL flexible server's [geo restore](concepts-backup-restore.md#geo-restore) feature to complete the move to another region. To do so, first ensure geo-redundancy is enabled for your Azure Database for MySQL flexible server instance. Next, trigger geo-restore for your geo-redundant server and move your server to the geo-paired region.
+You can use Azure Database for MySQL Flexible Server's [geo restore](concepts-backup-restore.md#geo-restore) feature to complete the move to another region. To do so, first ensure geo-redundancy is enabled for your Azure Database for MySQL Flexible Server instance. Next, trigger geo-restore for your geo-redundant server and move your server to the geo-paired region.
 
 > [!NOTE]  
 > This article focuses on moving your server to a different region. If you want to move your server to a different resource group or subscription, refer to the [move](/azure/azure-resource-manager/management/move-resource-group-and-subscription) article.
@@ -27,13 +27,13 @@ You can use Azure Database for MySQL flexible server's [geo restore](concepts-ba
 
 - Ensure the source server has geo-redundancy enabled. You can enable geo-redundancy post server-create for locally redundant or same-zone redundant servers. Currently, for a Zone-redundant High Availability server geo-redundancy can only be enabled/disabled at server create time.
 
-- Make sure that your source Azure Database for MySQL flexible server instance is deployed in the Azure region that you want to move from.
+- Make sure that your source Azure Database for MySQL Flexible Server instance is deployed in the Azure region that you want to move from.
 
 ## Move
 
-To move the Azure Database for MySQL flexible server instance to the geo-paired region using the Azure portal, use the following steps:
+To move the Azure Database for MySQL Flexible Server instance to the geo-paired region using the Azure portal, use the following steps:
 
-1. In the [Azure portal](https://portal.azure.com/), choose your Azure Database for MySQL flexible server instance that you want to restore the backup from.
+1. In the [Azure portal](https://portal.azure.com/), choose your Azure Database for MySQL Flexible Server instance that you want to restore the backup from.
 
 1. Select **Overview** from the left panel.
 
@@ -63,17 +63,17 @@ The new server created by geo-restore has the same server admin sign-in name and
 
 ## Clean up source server
 
-You may want to delete the source Azure Database for MySQL flexible server instance. To do so, use the following steps:
+You may want to delete the source Azure Database for MySQL Flexible Server instance. To do so, use the following steps:
 
-1. Once the replica has been created, locate and select your Azure Database for MySQL flexible server source instance.
+1. Once the replica has been created, locate and select your Azure Database for MySQL Flexible Server source instance.
 1. In the **Overview** window, select **Delete**.
 1. Type in the name of the source server to confirm you want to delete.
 1. Select **Delete**.
 
 ## Next steps
 
-In this tutorial, you moved an Azure Database for MySQL flexible server instance from one region to another by using the Azure portal and then cleaned up the unneeded source resources.
+In this tutorial, you moved an Azure Database for MySQL Flexible Server instance from one region to another by using the Azure portal and then cleaned up the unneeded source resources.
 
 - Learn more about [geo-restore](concepts-backup-restore.md#geo-restore)
-- Learn more about [Azure paired regions](overview.md#azure-regions) supported for Azure Database for MySQL flexible server
+- Learn more about [Azure paired regions](overview.md#azure-regions) supported for Azure Database for MySQL Flexible Server
 - Learn more about [business continuity](concepts-business-continuity.md) options

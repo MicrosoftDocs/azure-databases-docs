@@ -15,8 +15,6 @@
     href: flexible-server/concept-reserved-pricing.md
   - name: Version support policy
     href: concepts-version-policy.md
-  - name: Supported versions
-    href: flexible-server/concepts-supported-versions.md
 - name: Azure Database for MySQL - Flexible Server
   items:
   - name: Overview
@@ -38,6 +36,10 @@
             href: flexible-server/release-notes/june-2024.md
           - name: August 2024
             href: flexible-server/release-notes/august-2024.md
+          - name: September 2024
+            href: flexible-server/release-notes/september-2024.md
+          - name: October 2024
+            href: flexible-server/release-notes/october-2024.md
       - name: Service tiers
         href: flexible-server/concepts-service-tiers-storage.md
   - name: Quickstarts
@@ -76,6 +78,8 @@
             href: flexible-server/connect-csharp.md
           - name: Node.js
             href: flexible-server/connect-nodejs.md
+          - name: Go
+            href: flexible-server/connect-go.md
           - name: Connect to server in VNET
             href: flexible-server/quickstart-create-connect-server-vnet.md
       - name: Connection libraries
@@ -125,6 +129,8 @@
       items:
       - name: Scheduled maintenance
         href: flexible-server/concepts-maintenance.md
+      - name: Root certificate change
+        href: flexible-server/concepts-root-certificate-rotation.md
     - name: High availability
       items:
       - name: Business continuity overview
