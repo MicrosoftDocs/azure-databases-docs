@@ -77,7 +77,7 @@ To Learn more about the `.csproj` file, visit [Web Deployment](/aspnet/web-forms
 
 ## Create the project
 
-Create a new .NET project using the following process.
+Create a new .NET project by following the steps mentioned in this [link](dotnet/core/tutorials/cli-templates-create-project-template)
 
 ### Create the Server
 
