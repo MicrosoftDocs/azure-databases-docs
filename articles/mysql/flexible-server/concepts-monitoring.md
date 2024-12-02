@@ -4,7 +4,7 @@ description: This article describes the metrics for monitoring and alerting for 
 author: code-sidd
 ms.author: sisawant
 ms.reviewer: maghan
-ms.date: 09/03/2024
+ms.date: 11/27/2024
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: concept-article
@@ -12,10 +12,8 @@ ms.topic: concept-article
 
 # Monitor Azure Database for MySQL - Flexible Server
 
-[!INCLUDE [applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
->[!NOTE]
-> This article contains references to the term *slave*, a term that Microsoft no longer uses. When the term is removed from the software, we’ll remove it from this article.
+> [!NOTE]  
+> This article contains references to the term *slave*, a term that Microsoft no longer uses. When the term is removed from the software, we'll remove it from this article.
 
 Azure Database for MySQL Flexible Server provides monitoring of servers through Azure Monitor. Monitoring data about your servers helps you troubleshoot and optimize for your workload.
 
@@ -27,7 +25,7 @@ Metrics are numerical values that describe some aspect of your server's resource
 
 Azure Database for MySQL Flexible Server provides various metrics to help you understand how your workload is performing. Based on this data, you can understand the impact on your server and application.
 
-All Azure metrics have a one-minute frequency, each providing 30 days of history. You can configure alerts on the metrics. See [How to set up alerts](./how-to-alert-on-metric.md). Other tasks include setting up automated actions, performing advanced analytics, and archiving history. For more information, see the [Azure Metrics Overview](/azure/azure-monitor/data-platform).
+All Azure metrics have a one-minute frequency, each providing 30 days of history. You can configure alerts on the metrics. See [Set up alerts on metrics for Azure Database for MySQL - Flexible Server](how-to-alert-on-metric.md). Other tasks include setting up automated actions, performing advanced analytics, and archiving history. For more information, see the [Azure Metrics Overview](/azure/azure-monitor/data-platform).
 
 ### Troubleshoot metrics
 
@@ -94,11 +92,11 @@ The table below lists the replication metrics available for Azure Database for M
 
 | Metric display name | Metric | Unit | Description |
 | --- | --- | --- | --- |
-| Replication Lag | replication_lag | Seconds | Replication lag is the number of seconds behind the replica in replaying the transactions received from the source server. This metric is calculated from "Seconds_behind_Master" from the command "SHOW SLAVE STATUS" command and is only available for replica servers. For more information, see "[Monitor replication latency](../how-to-troubleshoot-replication-latency.md)" |
+| Replication Lag | replication_lag | Seconds | Replication lag is the number of seconds behind the replica in replaying the transactions received from the source server. This metric is calculated from "Seconds_behind_Master" from the command "SHOW SLAVE STATUS" command and is only available for replica servers. For more information, see "[Troubleshoot replication latency in Azure Database for MySQL - Flexible Server](../how-to-troubleshoot-replication-latency.md)" |
 | Replica IO Status | replica_io_running | State | Replica IO Status indicates the state of [replication I/O thread](https://dev.mysql.com/doc/refman/8.0/en/replication-implementation-details.html). The metric value is 1 if the I/O thread runs and 0 if not. |
 | Replica SQL Status | replica_sql_running | State | Replica SQL Status indicates the state of [replication SQL thread](https://dev.mysql.com/doc/refman/8.0/en/replication-implementation-details.html). The metric value is 1 if the SQL thread runs and 0 if not. |
-| HA IO Status | ha_io_running | State | HA IO Status indicates the state of [HA replication](./concepts-high-availability.md). The metric value is 1 if the I/O thread runs and 0 if not. |
-| HA SQL Status | ha_sql_running | State | HA SQL Status indicates the state of [HA replication](./concepts-high-availability.md). The metric value is 1 if the SQL thread runs and 0 if not. |
+| HA IO Status | ha_io_running | State | HA IO Status indicates the state of [High availability concepts in Azure Database for MySQL - Flexible Server](concepts-high-availability.md). The metric value is 1 if the I/O thread runs and 0 if not. |
+| HA SQL Status | ha_sql_running | State | HA SQL Status indicates the state of [High availability concepts in Azure Database for MySQL - Flexible Server](concepts-high-availability.md). The metric value is 1 if the SQL thread runs and 0 if not. |
 | HA Replication Lag | ha_replication_lag | Seconds | HA Replication lag is the number of seconds the HA Standby server is behind in replaying the transactions received from the source server. This metric is calculated from "Seconds_behind_Master" from the command "SHOW SLAVE STATUS" command and is available only for HA standby servers. |
 
 ## Enhanced metrics
@@ -150,9 +148,9 @@ These enhanced metrics provide valuable information for optimizing your workload
 ## Server logs
 
 In Azure Database for MySQL Flexible Server, users can configure and download server logs to assist with troubleshooting efforts. With this feature enabled, an Azure Database for MySQL Flexible Server instance starts capturing events of the selected log type and writes them to a file. You can then use the Azure portal and Azure CLI to download the files to work with them.
-The server logs feature is disabled by default. For information about how to enable server logs, see [How to enable and download server logs for Azure Database for MySQL Flexible Server.](./how-to-server-logs-portal.md)
+The server logs feature is disabled by default. For information about how to enable server logs, see [Enable and download server logs for Azure Database for MySQL - Flexible Server](how-to-server-logs-portal.md)
 
-Server logs support enabling and downloading [slow query logs](./concepts-slow-query-logs.md) and [error logs](./concepts-error-logs.md).
+Server logs support enabling and downloading [slow query logs](concepts-slow-query-logs.md) and [error logs](concepts-error-logs.md).
 To perform a historical analysis of your data, in the Azure portal, on the Diagnostics settings pane for your server, add a diagnostic setting to send the logs to the Log Analytics workspace, Azure Storage, or event hubs. For more information, see [Set up diagnostics](./tutorial-query-performance-insights.md#set-up-diagnostics).
 
 ### Server logs retention
@@ -163,6 +161,6 @@ Logs are rotated every 24 hours or 500 MB, whichever comes first.
 
 ## Related content
 
-- [How to set up alerts](./how-to-alert-on-metric.md)
-- [Azure portal](./how-to-server-logs-portal.md)
-- [Azure CLI](./how-to-server-logs-cli.md)
+- [Set up alerts on metrics for Azure Database for MySQL - Flexible Server](how-to-alert-on-metric.md)
+- [Enable and download server logs for Azure Database for MySQL - Flexible Server](how-to-server-logs-portal.md)
+- [List and download Azure Database for MySQL - Flexible Server logs by using the Azure CLI](how-to-server-logs-cli.md)

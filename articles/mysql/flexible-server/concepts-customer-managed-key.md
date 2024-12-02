@@ -1,18 +1,16 @@
 ---
-title: Data encryption with customer managed keys
+title: Data Encryption With Customer Managed Keys
 description: Learn how data encryption with customer-managed keys for Azure Database for MySQL - Flexible Server enables you to bring your own key (BYOK) for data protection at rest.
 author: SudheeshGH
 ms.author: sunaray
 ms.reviewer: maghan
-ms.date: 06/18/2024
+ms.date: 11/27/2024
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: conceptual
 ---
 
 # Data encryption with customer managed keys for Azure Database for MySQL - Flexible Server
-
-[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 With data encryption with customer-managed keys for Azure Database for MySQL Flexible Server, you can bring your own key (BYOK) for data protection at rest and implement separation of duties for managing keys and data. With customer managed keys (CMKs), the customer is responsible for and ultimately controls the key lifecycle management (key creation, upload, rotation, deletion), key usage permissions, and auditing operations on keys.
 
@@ -45,10 +43,9 @@ If RBAC is enabled, the UMI must also be assigned the following role:
 
 - **Key Vault Crypto Service Encryption User** or the role with the permissions:
     - Microsoft.KeyVault/vaults/keys/wrap/action
-	- Microsoft.KeyVault/vaults/keys/unwrap/action
-	- Microsoft.KeyVault/vaults/keys/read like "Key Vault Crypto Service Encryption User"
-- For Managed HSM, assign the **Managed HSM Crypto Service Encryption User** role 
-
+    - Microsoft.KeyVault/vaults/keys/unwrap/action
+    - Microsoft.KeyVault/vaults/keys/read like "Key Vault Crypto Service Encryption User"
+- For Managed HSM, assign the **Managed HSM Crypto Service Encryption User** role
 
 ### Terminology and description
 
@@ -58,7 +55,7 @@ If RBAC is enabled, the UMI must also be assigned the following role:
 
 ### How it works
 
-Data encryption with CMKs is set at the server level. For a given server, a CMK, called the key encryption key (KEK), is used to encrypt the service's data encryption key (DEK). The KEK is an asymmetric key stored in a customer-owned and customer-managed [Azure Key Vault instance](/azure/key-vault/general/security-features). Key Vault is highly available and scalable secure storage for RSA cryptographic keys, optionally backed by [FIPS 140 validated](/azure/key-vault/keys/about-keys#compliance) hardware security modules (HSMs). Key Vault doesn't allow direct access to a stored key, but instead provides encryption/decryption services using the key to the authorized entities. The key vault, imported can generate the key, or  [transferred to the key vault from an on-premises HSM device](/azure/key-vault/keys/hsm-protected-keys).
+Data encryption with CMKs is set at the server level. For a given server, a CMK, called the key encryption key (KEK), is used to encrypt the service's data encryption key (DEK). The KEK is an asymmetric key stored in a customer-owned and customer-managed [Azure Key Vault instance](/azure/key-vault/general/security-features). Key Vault is highly available and scalable secure storage for RSA cryptographic keys, optionally backed by [FIPS 140 validated](/azure/key-vault/keys/about-keys#compliance) hardware security modules (HSMs). Key Vault doesn't allow direct access to a stored key, but instead provides encryption/decryption services using the key to the authorized entities. The key vault, imported can generate the key, or [transferred to the key vault from an on-premises HSM device](/azure/key-vault/keys/hsm-protected-keys).
 
 When you configure a flexible server to use a CMK stored in the key vault, the server sends the DEK to the key vault for encryption. Key Vault returns the encrypted DEK stored in the user database. Similarly, the flexible server will send the protected DEK to the key vault for decryption when needed.
 
@@ -67,7 +64,7 @@ When you configure a flexible server to use a CMK stored in the key vault, the s
 After logging is enabled, auditors can use Azure Monitor to review Key Vault audit event logs. To enable logging of [Key Vault auditing events](/azure/key-vault/key-vault-insights-overview), see Monitoring your key vault service with Key Vault insights.
 
 > [!NOTE]  
-> Permission changes can take up to 10 minutes to impact the key vault. This includes revoking access permissions to the TDE protector in AKV, and users within this time frame may still have access permissions.
+> Permission changes can take up to 10 minutes to impact the key vault. This includes revoking access permissions to the TDE protector in AKV, and users within this time frame might still have access permissions.
 
 ## Requirements for configuring data encryption for Azure Database for MySQL Flexible Server
 
@@ -83,12 +80,12 @@ Before you attempt to configure the CMK, be sure to address the following requir
 - The customer-managed key to encrypt the DEK can be only asymmetric, RSA\RSA-HSM(Vaults with Premium SKU) 2048,3072 or 4096.
 - The key activation date (if set) must be a date and time in the past. The expiration date not set.
 - The key must be in the **Enabled** state.
-- The key must have [soft delete](/azure/key-vault/general/soft-delete-overview) with retention period set to 90 days. This implicitly sets the required key attribute recoveryLevel: “Recoverable.”
+- The key must have [soft delete](/azure/key-vault/general/soft-delete-overview) with retention period set to 90 days. This implicitly sets the required key attribute recoveryLevel: "Recoverable."
 - The key must have [purge protection enabled](/azure/key-vault/general/soft-delete-overview#purge-protection).
 - If you're [importing an existing key](/rest/api/keyvault/keys/import-key/import-key?tabs=HTTP) into the key vault, make sure to provide it in the supported file formats (.pfx, .byok, .backup).
 
 > [!NOTE]  
-> For detailed, step-by-step instructions about how to configure date encryption for Azure Database for MySQL Flexible Server via the Azure portal, see [Configure data encryption for Azure Database for MySQL Flexible Server](how-to-data-encryption-portal.md).
+> For detailed, step-by-step instructions about how to configure date encryption for Azure Database for MySQL Flexible Server via the Azure portal, see [Data encryption for Azure Database for MySQL - Flexible Server by using the Azure portal](how-to-data-encryption-portal.md).
 
 ## Recommendations for configuring data encryption
 
@@ -99,9 +96,8 @@ As you configure Key Vault or Managed HSM to use data encryption using a custome
 - Keep a copy of the customer-managed key in a secure place or escrow it to the escrow service.
 - If Key Vault generates the key, create a key backup before using the key for the first time. You can only restore the backup to Key Vault. For more information about the backup command, see [Backup-AzKeyVaultKey](/powershell/module/az.keyVault/backup-azkeyVaultkey).
 
-> [!NOTE]
+> [!NOTE]  
 > * It is advised to use a key vault from the same region, but if necessary, you can use a key vault from another region by specifying the "enter key identifier" information. The key vault managed HSM must be in the same region as the MySQL flexible server.
-
 
 ## Inaccessible customer-managed key condition
 
@@ -144,11 +140,9 @@ To avoid issues while setting up customer-managed data encryption during restore
 > [!NOTE]  
 > Using the same identity and key as on the source server is not mandatory when performing a restore.
 
-## Next steps
+## Related content
 
-- [Data encryption with Azure CLI](how-to-data-encryption-cli.md)
-- [Data encryption with Azure portal](how-to-data-encryption-portal.md)
+- [Data encryption for Azure Database for MySQL - Flexible Server with Azure CLI](how-to-data-encryption-cli.md)
+- [Data encryption for Azure Database for MySQL - Flexible Server by using the Azure portal](how-to-data-encryption-portal.md)
 - [Security in encryption rest](/azure/security/fundamentals/encryption-atrest)
-- [Active Directory authentication](concepts-azure-ad-authentication.md)
-
-
+- [Microsoft Entra authentication for Azure Database for MySQL - Flexible Server](concepts-azure-ad-authentication.md)

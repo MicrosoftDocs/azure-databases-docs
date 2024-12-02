@@ -2,7 +2,7 @@
 author: akashraokm
 ms.author: akashrao
 ms.reviewer: maghan, randolphwest
-ms.date: 11/26/2024
+ms.date: 12/02/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
@@ -50,14 +50,14 @@ Below is the list of extensions available.
 | PostgreSQL version | Extension version |
 | --- | --- |
 | 17 | N/A                |
-| 16 | 1.5.0 <sup>1</sup>  |
-| 15 | 1.5.0 <sup>1</sup>  |
-| 14 | 1.5.0 <sup>1</sup>  |
-| 13 | 1.5.0 <sup>1</sup>  |
+| 16 | 1.5.0 <sup>*</sup>  |
+| 15 | 1.5.0 <sup>*</sup>  |
+| 14 | 1.5.0 <sup>*</sup>  |
+| 13 | 1.5.0 <sup>*</sup>  |
 | 12 | N/A                 |
 | 11 | N/A                |
 
-<sup>1</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
+<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
 
 ### amcheck
 
@@ -81,15 +81,15 @@ Below is the list of extensions available.
 
 | PostgreSQL version | Extension version |
 | --- | --- |
-| 17 | 1.3.2 <sup>1</sup> |
-| 16 | 1.3.2 <sup>1</sup>  |
-| 15 | 1.3.2 <sup>1</sup>  |
-| 14 | 1.3.2 <sup>1</sup>  |
-| 13 | 1.3.2 <sup>1</sup>  |
-| 12 | 1.3.2 <sup>1</sup>  |
-| 11 | 1.3.2 <sup>1</sup> |
+| 17 | 1.3.2 <sup>*</sup> |
+| 16 | 1.3.2 <sup>*</sup>  |
+| 15 | 1.3.2 <sup>*</sup>  |
+| 14 | 1.3.2 <sup>*</sup>  |
+| 13 | 1.3.2 <sup>*</sup>  |
+| 12 | 1.3.2 <sup>*</sup>  |
+| 11 | 1.3.2 <sup>*</sup> |
 
-<sup>1</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
+<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
 
 ### azure_ai
 
@@ -114,14 +114,14 @@ Below is the list of extensions available.
 | PostgreSQL version | Extension version |
 | --- | --- |
 | 17 | N/A                |
-| 16 | 1.5 <sup>1</sup>    |
-| 15 | 1.5 <sup>1</sup>    |
-| 14 | 1.5 <sup>1</sup>    |
-| 13 | 1.5 <sup>1</sup>    |
-| 12 | 1.5 <sup>1</sup>    |
+| 16 | 1.5 <sup>*</sup>    |
+| 15 | 1.5 <sup>*</sup>    |
+| 14 | 1.5 <sup>*</sup>    |
+| 13 | 1.5 <sup>*</sup>    |
+| 12 | 1.5 <sup>*</sup>    |
 | 11 | N/A                |
 
-<sup>1</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
+<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
 
 ### bloom
 
@@ -467,15 +467,15 @@ Below is the list of extensions available.
 
 | PostgreSQL version | Extension version |
 | --- | --- |
-| 17 | 16.0 <sup>1</sup>  |
-| 16 | 16.0 <sup>1</sup>   |
-| 15 | 1.7 <sup>1</sup>    |
-| 14 | 1.6.2 <sup>1</sup>  |
-| 13 | 1.5 <sup>1</sup>    |
-| 12 | 1.4.3 <sup>1</sup>  |
-| 11 | 1.3.2 <sup>1</sup> |
+| 17 | 16.0 <sup>*</sup>  |
+| 16 | 16.0 <sup>*</sup>   |
+| 15 | 1.7 <sup>*</sup>    |
+| 14 | 1.6.2 <sup>*</sup>  |
+| 13 | 1.5 <sup>*</sup>    |
+| 12 | 1.4.3 <sup>*</sup>  |
+| 11 | 1.3.2 <sup>*</sup> |
 
-<sup>1</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
+<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
 
 ### pg_buffercache
 
@@ -501,15 +501,15 @@ Below is the list of extensions available.
 
 | PostgreSQL version | Extension version |
 | --- | --- |
-| 17 | 1.6 <sup>1</sup>   |
-| 16 | 1.6 <sup>1</sup>    |
-| 15 | 1.6 <sup>1</sup>    |
-| 14 | 1.6 <sup>1</sup>    |
-| 13 | 1.6 <sup>1</sup>    |
-| 12 | 1.6 <sup>1</sup>    |
-| 11 | 1.4-1 <sup>1</sup> |
+| 17 | 1.6 <sup>*</sup>   |
+| 16 | 1.6 <sup>*</sup>    |
+| 15 | 1.6 <sup>*</sup>    |
+| 14 | 1.6 <sup>*</sup>    |
+| 13 | 1.6 <sup>*</sup>    |
+| 12 | 1.6 <sup>*</sup>    |
+| 11 | 1.4-1 <sup>*</sup> |
 
-<sup>1</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. 
+<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. 
 > [!NOTE]
 > Read the special considerations for extension [pg_cron](../concepts-extensions-considerations.md#pg_cron) in Flexible Server.
 
@@ -537,14 +537,14 @@ Below is the list of extensions available.
 | PostgreSQL version | Extension version |
 | --- | --- |
 | 17 | N/A                |
-| 16 | 1.0.1 <sup>1</sup>  |
-| 15 | 1.0.1 <sup>1</sup>  |
-| 14 | 1.0.1 <sup>1</sup>  |
-| 13 | 1.0.1 <sup>1</sup>  |
-| 12 | 1.0.1 <sup>1</sup>  |
-| 11 | 1.0.1 <sup>1</sup> |
+| 16 | 1.0.1 <sup>*</sup>  |
+| 15 | 1.0.1 <sup>*</sup>  |
+| 14 | 1.0.1 <sup>*</sup>  |
+| 13 | 1.0.1 <sup>*</sup>  |
+| 12 | 1.0.1 <sup>*</sup>  |
+| 11 | 1.0.1 <sup>*</sup> |
 
-<sup>1</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. 
+<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. 
 > [!NOTE]
 > Read the special considerations for extension [pg_failover_slots](../concepts-extensions-considerations.md#pg_failover_slots) in Flexible Server.
 
@@ -571,15 +571,15 @@ Below is the list of extensions available.
 
 | PostgreSQL version | Extension version |
 | --- | --- |
-| 17 | 1.7.0 <sup>1</sup> |
-| 16 | 1.6.0 <sup>1</sup>  |
-| 15 | 1.5 <sup>1</sup>    |
-| 14 | 1.4 <sup>1</sup>    |
-| 13 | 1.3.7 <sup>1</sup>  |
-| 12 | 1.3.7 <sup>1</sup>  |
-| 11 | 1.3.7 <sup>1</sup> |
+| 17 | 1.7.0 <sup>*</sup> |
+| 16 | 1.6.0 <sup>*</sup>  |
+| 15 | 1.5 <sup>*</sup>    |
+| 14 | 1.4 <sup>*</sup>    |
+| 13 | 1.3.7 <sup>*</sup>  |
+| 12 | 1.3.7 <sup>*</sup>  |
+| 11 | 1.3.7 <sup>*</sup> |
 
-<sup>1</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. 
+<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. 
 > [!NOTE]
 > Read the special considerations for extension [pg_hint_plan](../concepts-extensions-considerations.md#pg_hint_plan) in Flexible Server.
 
@@ -590,15 +590,15 @@ Below is the list of extensions available.
 
 | PostgreSQL version | Extension version |
 | --- | --- |
-| 17 | 2.4.5 <sup>1</sup> |
-| 16 | 2.4.4 <sup>1</sup>  |
-| 15 | 2.4.2 <sup>1</sup>  |
-| 14 | 2.4.1 <sup>1</sup>  |
-| 13 | 2.4.1 <sup>1</sup>  |
-| 12 | 2.4.1 <sup>1</sup>  |
-| 11 | 2.4.1 <sup>1</sup> |
+| 17 | 2.4.5 <sup>*</sup> |
+| 16 | 2.4.4 <sup>*</sup>  |
+| 15 | 2.4.2 <sup>*</sup>  |
+| 14 | 2.4.1 <sup>*</sup>  |
+| 13 | 2.4.1 <sup>*</sup>  |
+| 12 | 2.4.1 <sup>*</sup>  |
+| 11 | 2.4.1 <sup>*</sup> |
 
-<sup>1</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
+<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
 
 ### pg_partman
 
@@ -606,15 +606,15 @@ Below is the list of extensions available.
 
 | PostgreSQL version | Extension version |
 | --- | --- |
-| 17 | 5.0.1 <sup>1</sup> |
-| 16 | 5.0.1 <sup>1</sup>  |
-| 15 | 4.7.1 <sup>1</sup>  |
-| 14 | 4.6.1 <sup>1</sup>  |
-| 13 | 4.5.0 <sup>1</sup>  |
-| 12 | 4.5.0 <sup>1</sup>  |
-| 11 | 4.5.0 <sup>1</sup> |
+| 17 | 5.0.1 <sup>*</sup> |
+| 16 | 5.0.1 <sup>*</sup>  |
+| 15 | 4.7.1 <sup>*</sup>  |
+| 14 | 4.6.1 <sup>*</sup>  |
+| 13 | 4.5.0 <sup>*</sup>  |
+| 12 | 4.5.0 <sup>*</sup>  |
+| 11 | 4.5.0 <sup>*</sup> |
 
-<sup>1</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
+<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
 
 ### pg_prewarm
 
@@ -622,15 +622,15 @@ Below is the list of extensions available.
 
 | PostgreSQL version | Extension version |
 | --- | --- |
-| 17 | 1.2 <sup>1</sup>   |
-| 16 | 1.2 <sup>1</sup>    |
-| 15 | 1.2 <sup>1</sup>    |
-| 14 | 1.2 <sup>1</sup>    |
-| 13 | 1.2 <sup>1</sup>    |
-| 12 | 1.2 <sup>1</sup>    |
-| 11 | 1.2 <sup>1</sup>   |
+| 17 | 1.2 <sup>*</sup>   |
+| 16 | 1.2 <sup>*</sup>    |
+| 15 | 1.2 <sup>*</sup>    |
+| 14 | 1.2 <sup>*</sup>    |
+| 13 | 1.2 <sup>*</sup>    |
+| 12 | 1.2 <sup>*</sup>    |
+| 11 | 1.2 <sup>*</sup>   |
 
-<sup>1</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. 
+<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. 
 > [!NOTE]
 > Read the special considerations for extension [pg_prewarm](../concepts-extensions-considerations.md#pg_prewarm) in Flexible Server.
 
@@ -691,15 +691,15 @@ Below is the list of extensions available.
 
 | PostgreSQL version | Extension version |
 | --- | --- |
-| 17 | 1.7 <sup>1</sup>   |
-| 16 | 1.6 <sup>1</sup>    |
-| 15 | 1.6 <sup>1</sup>    |
-| 14 | 1.5 <sup>1</sup>    |
-| 13 | 1.5 <sup>1</sup>    |
-| 12 | 1.5 <sup>1</sup>    |
-| 11 | 1.5 <sup>1</sup>   |
+| 17 | 1.7 <sup>*</sup>   |
+| 16 | 1.6 <sup>*</sup>    |
+| 15 | 1.6 <sup>*</sup>    |
+| 14 | 1.5 <sup>*</sup>    |
+| 13 | 1.5 <sup>*</sup>    |
+| 12 | 1.5 <sup>*</sup>    |
+| 11 | 1.5 <sup>*</sup>   |
 
-<sup>1</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
+<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
 
 ### pg_stat_statements
 
@@ -707,15 +707,15 @@ Below is the list of extensions available.
 
 | PostgreSQL version | Extension version |
 | --- | --- |
-| 17 | 1.11 <sup>1</sup>  |
-| 16 | 1.10 <sup>1</sup>   |
-| 15 | 1.10 <sup>1</sup>   |
-| 14 | 1.9 <sup>1</sup>    |
-| 13 | 1.8 <sup>1</sup>    |
-| 12 | 1.7 <sup>1</sup>    |
-| 11 | 1.6 <sup>1</sup>   |
+| 17 | 1.11 <sup>*</sup>  |
+| 16 | 1.10 <sup>*</sup>   |
+| 15 | 1.10 <sup>*</sup>   |
+| 14 | 1.9 <sup>*</sup>    |
+| 13 | 1.8 <sup>*</sup>    |
+| 12 | 1.7 <sup>*</sup>    |
+| 11 | 1.6 <sup>*</sup>   |
 
-<sup>1</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. 
+<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. 
 > [!NOTE]
 > Read the special considerations for extension [pg_stat_statements](../concepts-extensions-considerations.md#pg_stat_statements) in Flexible Server.
 
@@ -1003,14 +1003,14 @@ Below is the list of extensions available.
 | PostgreSQL version | Extension version |
 | --- | --- |
 | 17 | N/A                |
-| 16 | 2.13.0 <sup>1</sup> |
-| 15 | 2.10.0 <sup>1</sup> |
-| 14 | 2.10.0 <sup>1</sup> |
-| 13 | 2.10.0 <sup>1</sup> |
-| 12 | 2.10.0 <sup>1</sup> |
-| 11 | 1.7.4 <sup>1</sup> |
+| 16 | 2.13.0 <sup>*</sup> |
+| 15 | 2.10.0 <sup>*</sup> |
+| 14 | 2.10.0 <sup>*</sup> |
+| 13 | 2.10.0 <sup>*</sup> |
+| 12 | 2.10.0 <sup>*</sup> |
+| 11 | 1.7.4 <sup>*</sup> |
 
-<sup>1</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
+<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
 
 ### tsm_system_rows
 

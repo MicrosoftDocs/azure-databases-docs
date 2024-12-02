@@ -1,20 +1,16 @@
 ---
-title: Migrate Amazon RDS for MySQL using data-in replication
+title: Migrate Amazon RDS for MySQL Using Data-In Replication
 description: This article describes how to migrate Amazon RDS for MySQL to Azure Database for MySQL - Flexible Server by using data-in replication.
 author: SudheeshGH
 ms.author: sunaray
 ms.reviewer: maghan
-ms.date: 06/18/2024
+ms.date: 11/27/2024
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: how-to
 ---
 
 # Migrate Amazon RDS for MySQL to Azure Database for MySQL using data-in replication
-
-[!INCLUDE[applies-to-mysql-single-flexible-server](../includes/applies-to-mysql-single-flexible-server.md)]
-
-[!INCLUDE[Azure-database-for-mysql-single-server-deprecation](~/reusable-content/ce-skilling/azure/includes/mysql/includes/azure-database-for-mysql-single-server-deprecation.md)]
 
 > [!NOTE]  
 > This article contains references to the term *slave*, a term that Microsoft no longer uses. When the term is removed from the software, we'll remove it from this article.
@@ -23,7 +19,7 @@ You can use methods such as MySQL dump and restore, MySQL Workbench Export and I
 
 Data-in Replication is a technique that replicates data changes from the source server to the destination server based on the binary log file position method. In this scenario, the MySQL instance operating as the source (on which the database changes originate) writes updates and changes as *events* to the binary log. The information in the binary log is stored in different logging formats according to the database changes being recorded. Replicas are configured to read the binary log from the source and execute the events in the binary log on the replica's local database.
 
-Set up [Data-in Replication](../flexible-server/concepts-data-in-replication.md) to synchronize data from a source MySQL server to a target MySQL server. You can do a selective cutover of your applications from the primary (or source database) to the replica (or target database).
+Set up [Replicate data into Azure Database for MySQL - Flexible Server](concepts-data-in-replication.md) to synchronize data from a source MySQL server to a target MySQL server. You can do a selective cutover of your applications from the primary (or source database) to the replica (or target database).
 
 In this tutorial, you'll learn how to set up Data-in Replication between a source server that runs Amazon Relational Database Service (RDS) for MySQL and a target server that runs Azure Database for MySQL Flexible Server.
 
@@ -61,7 +57,7 @@ To complete this tutorial, you need to:
 
     > [!IMPORTANT]  
     > If your target is Azure Database for MySQL Flexible Server with zone-redundant high availability (HA), note that Data-in Replication isn't supported for this configuration. As a workaround, during server creation set up zone-redundant HA:
-    >
+    >  
     > 1. Create the server with zone-redundant HA enabled.
     > 1. Disable HA.
     > 1. Follow the article to set up Data-in Replication.
@@ -114,21 +110,21 @@ To prepare and configure the MySQL server hosted in Amazon RDS, which is the *so
 
 1. To check the binary log retention on the source Amazon RDS server to determine the number of hours the binary logs are retained, call the `mysql.rds_show_configuration` stored procedure:
 
-    ```
-    mysql> call mysql.rds_show_configuration;
+    ```output
+    call mysql.rds_show_configuration;
     +------------------------+-------+-----------------------------------------------------------------------------------------------------------+
     | name | value | description |
-    +------------------------+-------+-----------------------------------------------------------------------------------------------------------+
+    | +------------------------+-------+-----------------------------------------------------------------------------------------------------------+ |
     | binlog retention hours | 24 | binlog retention hours specifies the duration in hours before binary logs are automatically deleted. |
     | source delay | 0 | source delay specifies replication delay in seconds between current instance and its master. |
     | target delay | 0 | target delay specifies replication delay in seconds between current instance and its future read-replica. |
-    +------------------------+-------            +-----------------------------------------------------------------------------------------------------------+
-    3 rows in set (0.00 sec)
+    | +------------------------+------- +-----------------------------------------------------------------------------------------------------------+ |
+    | 3 rows in set (0.00 sec) |
     ```
 1. To configure the binary log retention period, run the `rds_set_configuration` stored procedure to ensure that the binary logs are retained on the source server for the desired time. For example:
 
-    ```
-    Mysql> Call mysql.rds_set_configuration(‘binlog retention hours', 96);
+    ```sql
+    Call mysql.rds_set_configuration('binlog retention hours', 96);
     ```
 
     If you're creating a dump and restoring, the preceding command helps you catch up with the delta changes quickly.
@@ -148,7 +144,7 @@ There are two ways to capture a dump of data from the source Amazon RDS for MySQ
     1. Save these values to start replication from your Azure Database for MySQL Flexible Server instance.
     1. To create a dump of the data, execute `mysqldump` by running the following command:
 
-        ```
+        ```sql
         $ mysqldump -h hostname -u username -p –single-transaction –databases dbnames –order-by-primary> dumpname.sql
         ```
 
@@ -158,15 +154,15 @@ There are two ways to capture a dump of data from the source Amazon RDS for MySQ
     1. Let the Amazon RDS for MySQL read replica catch up with the source Amazon RDS for MySQL server.
     1. When the replica lag reaches **0** on the read replica, stop replication by calling the stored procedure `mysql.rds_stop_replication`.
 
-        ```
-        Mysql> call mysql.rds_stop_replication;
+        ```sql
+        call mysql.rds_stop_replication;
         ```
 
     1. With replication stopped, connect to the replica. Then run the `SHOW SLAVE STATUS` command to retrieve the current binary log file name from the **Relay_Master_Log_File** field and the log file position from the **Exec_Master_Log_Pos** field.
     1. Save these values to start replication from your Azure Database for MySQL Flexible Server instance.
     1. To create a dump of the data from the Amazon RDS for MySQL read replica, execute `mysqldump` by running the following command:
 
-        ```
+        ```sql
         $ mysqldump -h hostname -u username -p –single-transaction –databases dbnames –order-by-primary> dumpname.sql
         ```
 
@@ -177,7 +173,7 @@ There are two ways to capture a dump of data from the source Amazon RDS for MySQ
 
 1. To restore the database by using mysql native restore, run the following command:
 
-    ```
+    ```sql
     $ mysql -h <target_server> -u <targetuser> -p < dumpname.sql
     ```
 
@@ -188,38 +184,38 @@ There are two ways to capture a dump of data from the source Amazon RDS for MySQ
 
     - If you're using SSL, run the following commands:
 
-        ```
-        Mysql> CREATE USER 'syncuser'@'%' IDENTIFIED BY 'userpassword';
-        Mysql> GRANT REPLICATION SLAVE, REPLICATION CLIENT on *.* to 'syncuser'@'%' REQUIRE SSL;
-        Mysql> SHOW GRANTS FOR syncuser@'%';
+        ```sql
+        CREATE USER 'syncuser'@'%' IDENTIFIED BY 'userpassword';
+        GRANT REPLICATION SLAVE, REPLICATION CLIENT on *.* to 'syncuser'@'%' REQUIRE SSL;
+        SHOW GRANTS FOR syncuser@'%';
         ```
 
     - If you're not using SSL, run the following commands:
 
-        ```
-        Mysql> CREATE USER 'syncuser'@'%' IDENTIFIED BY 'userpassword';
-        Mysql> GRANT REPLICATION SLAVE, REPLICATION CLIENT on *.* to 'syncuser'@'%';
-        Mysql> SHOW GRANTS FOR syncuser@'%';
+        ```sql
+        CREATE USER 'syncuser'@'%' IDENTIFIED BY 'userpassword';
+        GRANT REPLICATION SLAVE, REPLICATION CLIENT on *.* to 'syncuser'@'%';
+        SHOW GRANTS FOR syncuser@'%';
         ```
 
     Stored procedures do all Data-in Replication functions. For information about all procedures, see [Data-in Replication stored procedures](../single-server/reference-stored-procedures.md#data-in-replication-stored-procedures). You can run these stored procedures in the MySQL shell or MySQL Workbench.
 
 1. To link the Amazon RDS for MySQL source server and the Azure Database for MySQL Flexible Server target server, sign in to the target Azure Database for MySQL Flexible Server instance. Set the Amazon RDS for MySQL server as the source server by running the following command:
 
-    ```
+    ```azurecli
     CALL mysql.az_replication_change_master('source_server','replication_user_name','replication_user_password',3306,'<master_bin_log_file>',master_bin_log_position,'<master_ssl_ca>');
     ```
 
 1. To start replication between the source Amazon RDS for MySQL server and the target Azure Database for MySQL Flexible Server instance, run the following command:
 
-    ```
-    Mysql> CALL mysql.az_replication_start;
+    ```azurecli
+    CALL mysql.az_replication_start;
     ```
 
 1. To check the status of the replication on the replica server, run the following command:
 
-    ```
-    Mysql> show slave status\G
+    ```sql
+    show slave status\G
     ```
 
     If the state of the `Slave_IO_Running` and `Slave_SQL_Running` parameters is **Yes**, replication has started and is in a running state.
@@ -241,7 +237,6 @@ To ensure a successful cutover:
 
 At this point, the migration is complete. Your applications are connected to the server running Azure Database for MySQL Flexible Server.
 
-## Next steps
+## Related content
 
-- For more information about migrating databases to Azure Database for MySQL Flexible Server, see the [Database Migration Guide](https://github.com/Azure/azure-mysql/tree/master/MigrationGuide).
-- View the video [Easily migrate MySQL/PostgreSQL apps to Azure managed service](https://medius.studios.ms/Embed/Video/THR2201?sid=THR2201). It contains a demo that shows how to migrate MySQL apps to Azure Database for MySQL Flexible Server.
+- [Database Migration Guide](https://github.com/Azure/azure-mysql/tree/master/MigrationGuide)
