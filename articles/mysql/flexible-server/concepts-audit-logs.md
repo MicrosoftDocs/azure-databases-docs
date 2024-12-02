@@ -195,7 +195,7 @@ Once your audit logs are piped to Azure Monitor Logs through Diagnostic Logs, yo
     | render timechart
     ```
 
-- List audited events across all Azure Database for MySQL flexible server instances with Diagnostic Logs enabled for audit logs
+- List audited events across all Azure Database for MySQL Flexible Server instances with Diagnostic Logs enabled for audit logs
 
     ```kusto
     AzureDiagnostics

@@ -18,7 +18,7 @@ ms.devlang: php
 
 [Azure App Service](/azure/app-service/overview) provides a highly scalable, self-patching web hosting service using the Linux operating system.
 
-This tutorial shows how to build and deploy a sample PHP application to Azure App Service, and integrate it with Azure Database for MySQL flexible server on the back end. Here you'll use public access connectivity (allowed IP addresses) in the Azure Database for MySQL flexible server instance to connect to the App Service app.
+This tutorial shows how to build and deploy a sample PHP application to Azure App Service, and integrate it with Azure Database for MySQL Flexible Server on the back end. Here you'll use public access connectivity (allowed IP addresses) in the Azure Database for MySQL Flexible Server instance to connect to the App Service app.
 
 In this tutorial, you'll learn how to:
 > [!div class="checklist"]
@@ -38,7 +38,7 @@ In this tutorial, you'll learn how to:
 
 ## Create an Azure Database for MySQL - Flexible Server
 
-First, we'll provision an Azure Database for MySQL flexible server instance with public access connectivity, configure firewall rules to allow the application to access the server, and create a production database.
+First, provision an Azure Database for MySQL flexible server instance with public access connectivity, configure firewall rules to allow the application to access the server, and create a production database.
 
 To learn how to use private access connectivity instead and isolate app and database resources in a virtual network, see [Tutorial: Connect an App Services Web app to Azure Database for MySQL - Flexible Server in a virtual network](tutorial-webapp-server-vnet.md).
 
@@ -63,9 +63,9 @@ An Azure resource group is a logical group in which Azure resources are deployed
     az group create --name rg-php-demo --location centralus
     ```
 
-### Create an Azure Database for MySQL flexible server instance
+### Create an Azure Database for MySQL Flexible Server instance
 
-1. To create an Azure Database for MySQL flexible server instance with public access connectivity, run the following [az flexible-server create](/cli/azure/mysql/server#az-mysql-flexible-server-create) command. Replace your values for server name, admin username, and password.
+1. To create an Azure Database for MySQL Flexible Server instance with public access connectivity, run the following [az flexible-server create](/cli/azure/mysql/server#az-mysql-flexible-server-create) command. Replace your values for server name, admin username, and password.
 
     ```azurecli-interactive
     az mysql flexible-server create \
@@ -78,7 +78,7 @@ An Azure resource group is a logical group in which Azure resources are deployed
 
     You've now created an Azure Database for MySQL flexible server instance in the CentralUS region. The server is based on the Burstable B1MS compute SKU, with 32 GB storage, a 7-day backup retention period, and configured with public access connectivity.
 
-1. Next, to create a firewall rule for your Azure Database for MySQL flexible server instance to allow client connections, run the following command. When both starting IP and end IP are set to 0.0.0.0, only other Azure resources (like App Services apps, VMs, AKS cluster, etc.) can connect to the Azure Database for MySQL flexible server instance.
+1. Next, to create a firewall rule for your Azure Database for MySQL Flexible Server instance to allow client connections, run the following command. When both starting IP and end IP are set to 0.0.0.0, only other Azure resources (like App Services apps, VMs, AKS cluster, etc.) can connect to the Azure Database for MySQL Flexible Server instance.
 
     ```azurecli-interactive
     az mysql flexible-server firewall-rule create \
@@ -89,7 +89,7 @@ An Azure resource group is a logical group in which Azure resources are deployed
      --end-ip-address 0.0.0.0
     ```
 
-1. To create a new Azure Database for MySQL flexible server production database *sampledb* to use with the PHP application, run the following command:
+1. To create a new Azure Database for MySQL Flexible Server production database *sampledb* to use with the PHP application, run the following command:
 
     ```azurecli-interactive
     az mysql flexible-server db create \
@@ -154,7 +154,7 @@ In Azure App Service (Web Apps, API Apps, or Mobile Apps), an app always runs in
     > [!IMPORTANT]  
     > In the Azure CLI output, the URL of the Git remote is displayed in the deploymentLocalGitUrl property, with the format `https://<username>@<app-name>.scm.azurewebsites.net/<app-name>.git`. Save this URL, as you'll need it later.
 
-1. Next we'll configure the Azure Database for MySQL flexible server database connection settings on the Web App.
+1. Next we'll configure the Azure Database for MySQL Flexible Server database connection settings on the Web App.
 
     The `config.php` file in the sample PHP application retrieves the database connection information (server name, database name, server username and password) from environment variables using the `getenv()` function. In App Service, to set environment variables as **Application Settings** (*appsettings*), run the following command:
 
@@ -206,7 +206,7 @@ Finally, test the application by browsing to `https://<app-name>.azurewebsites.n
 
 :::image type="content" source="media/tutorial-simple-php-mysql-app/sample-php-app.png" alt-text="Screenshot showing the sample Product Catalog PHP Web App." lightbox="media/tutorial-simple-php-mysql-app/sample-php-app.png":::
 
-Congratulations! You have successfully deployed a sample PHP application to Azure App Service and integrated it with Azure Database for MySQL flexible server on the back end.
+Congratulations! You have successfully deployed a sample PHP application to Azure App Service and integrated it with Azure Database for MySQL Flexible Server on the back end.
 
 ## Update and redeploy the app
 

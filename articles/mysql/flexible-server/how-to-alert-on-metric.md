@@ -69,6 +69,6 @@ Once you create an alert, you can select it and do the following actions:
 
 ## Related content
 
-- [setting alert on metrics](/azure/azure-monitor/alerts/alerts-metric)
-- [metrics in Azure Database for MySQL flexible server](concepts-monitoring.md)
+- [Setting alert on metrics](/azure/azure-monitor/alerts/alerts-metric)
+- [Metrics in Azure Database for MySQL flexible server](concepts-monitoring.md)
 - [Understand how metric alerts work in Azure Monitor](/azure/azure-monitor/alerts/alerts-metric-overview)
