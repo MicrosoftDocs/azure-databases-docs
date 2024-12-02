@@ -1,18 +1,16 @@
 ---
-title: Stop/start by using the Azure portal
+title: Stop/start By Using the Azure Portal
 description: This article describes how to stop/start operations in Azure Database for MySQL - Flexible Server by using the Azure portal.
 author: VandhanaMehta
 ms.author: vamehta
 ms.reviewer: maghan
-ms.date: 06/18/2024
+ms.date: 11/27/2024
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: how-to
 ---
 
 # Stop/Start an Azure Database for MySQL - Flexible Server instance
-
-[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 This article provides step-by-step procedure to perform Stop and Start of an Azure Database for MySQL Flexible Server instance.
 
@@ -22,17 +20,17 @@ To complete this how-to guide, you must have an Azure Database for MySQL Flexibl
 
 ## Stop a running server
 
-1.  In the [Azure portal](https://portal.azure.com/), choose your Azure Database for MySQL Flexible Server instance that you want to stop.
+1. In the [Azure portal](https://portal.azure.com/), choose your Azure Database for MySQL Flexible Server instance that you want to stop.
 
-2.  From the **Overview** page, click the **Stop** button in the toolbar.
+1. From the **Overview** page, select the **Stop** button in the toolbar.
 
-    :::image type="content" source="media/how-to-stop-start-server-portal/stop-server.png" alt-text="Stop Flexible Server.":::
+    :::image type="content" source="media/how-to-stop-start-server-portal/stop-server.png" alt-text="Screenshot of Stop Flexible Server." lightbox="media/how-to-stop-start-server-portal/stop-server.png":::
 
-3.  Click **Yes** to confirm stopping your server.
+1. Select **Yes** to confirm stopping your server.
 
-    :::image type="content" source="media/how-to-stop-start-server-portal/confirm-stop.png" alt-text="Confirm stopping Flexible Server.":::
+    :::image type="content" source="media/how-to-stop-start-server-portal/confirm-stop.png" alt-text="Screenshot of Confirm stopping Flexible Server." lightbox="media/how-to-stop-start-server-portal/confirm-stop.png":::
 
-> [!NOTE]
+> [!NOTE]  
 > Once the server is stopped, the other management operations are not available for the Azure Database for MySQL Flexible Server instance.
 
 ## Automatic server start for stopped servers after 30 days
@@ -41,21 +39,20 @@ To mitigate potential disruptions resulting from servers inadvertently remaining
 
 Upon this automatic start, the server status will update to "Available," and billing for the server will commence accordingly.
 
-Please be advised that it’s not permissible to stop servers for a duration exceeding 30 days. If you foresee the need to stop your server beyond this period, it’s advisable to create a backup of your server data by exporting the data and later you might want to delete the server instance to avoid unwarranted costs and enhance security. You can utilize our [Export Backup Feature (currently in preview)](how-to-trigger-on-demand-backup.md#trigger-an-on-demand-backup-and-export-preview), or employ a community tool such as [mysqldump](https://dev.mysql.com/doc/refman/8.0/en/mysqldump.html). 
-
+Please be advised that it's not permissible to stop servers for a duration exceeding 30 days. If you foresee the need to stop your server beyond this period, it's advisable to create a backup of your server data by exporting the data and later you might want to delete the server instance to avoid unwarranted costs and enhance security. You can utilize our [Export Backup Feature (currently in preview)](how-to-trigger-on-demand-backup.md#trigger-an-on-demand-backup-and-export-preview), or employ a community tool such as [mysqldump](https://dev.mysql.com/doc/refman/8.0/en/mysqldump.html).
 
 ## Start a stopped server
 
-1.  In the [Azure portal](https://portal.azure.com/), choose your Azure Database for MySQL Flexible Server instance that you want to start.
+1. In the [Azure portal](https://portal.azure.com/), choose your Azure Database for MySQL Flexible Server instance that you want to start.
 
-2.  From the **Overview** page, click the **Start** button in the toolbar.
+1. From the **Overview** page, select the **Start** button in the toolbar.
 
-    :::image type="content" source="media/how-to-stop-start-server-portal/start-server.png" alt-text="Start Flexible Server.":::
+    :::image type="content" source="media/how-to-stop-start-server-portal/start-server.png" alt-text="Screenshot of Start Flexible Server." lightbox="media/how-to-stop-start-server-portal/start-server.png":::
 
-> [!NOTE]
+> [!NOTE]  
 > Once the server is started, all management operations are now available for the Azure Database for MySQL Flexible Server instance.
 
-## Next steps
-- Learn more about [networking in Azure Database for MySQL Flexible Server](./concepts-networking.md)
-- [Create and manage Azure Database for MySQL Flexible Server instance virtual network using Azure portal](./how-to-manage-virtual-network-portal.md).
+## Related content
 
+- [networking in Azure Database for MySQL Flexible Server](concepts-networking.md)
+- [Create and manage virtual networks for Azure Database for MySQL - Flexible Server using the Azure portal](how-to-manage-virtual-network-portal.md)
