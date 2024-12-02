@@ -1481,6 +1481,11 @@
         "redirect_document_id": false
       },
       {
+        "source_path_from_root": "articles/mysql/migrate/migrate-single-flexible-mysql-import-cli.md",
+        "redirect_url": "/azure/mysql/flexible-server/whats-new",
+        "redirect_document_id": false
+      },
+      {
         "source_path_from_root": "/articles/mysql/migrate/how-to-decide-on-right-migration-tools.md",
         "redirect_url": "/azure/mysql/flexible-server/whats-new",
         "redirect_document_id": false
