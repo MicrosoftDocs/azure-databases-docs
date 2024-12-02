@@ -193,6 +193,8 @@
       href: flexible-server/concepts-azure-advisor-recommendations.md
     - name: Azure Data Factory
       href: /azure/data-factory/connector-azure-database-for-mysql
+    - name: Azure Functions
+      href: /azure/azure-functions/functions-bindings-azure-mysql
   - name: Tutorials
     items:
     - name: Application development
