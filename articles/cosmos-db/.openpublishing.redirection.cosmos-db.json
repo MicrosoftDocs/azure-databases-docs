@@ -5977,7 +5977,7 @@
     },
     {
       "source_path_from_root": "/articles/cosmos-db/gen-ai/quickstart-rag-chatbot.md",
-      "redirect_url": "/azure/cosmos-db/gen-ai/rag-chatbot.md",
+      "redirect_url": "/azure/cosmos-db/gen-ai/rag-chatbot",
       "redirect_document_id": true
     }
   ]
