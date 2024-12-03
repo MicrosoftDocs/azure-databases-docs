@@ -5979,6 +5979,11 @@
       "source_path_from_root": "/articles/cosmos-db/table/samples-dotnet.md",
       "redirect_url": "/azure/cosmos-db/table/quickstart-dotnet",
       "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/gen-ai/quickstart-rag-chatbot.md",
+      "redirect_url": "/azure/cosmos-db/gen-ai/rag-chatbot",
+      "redirect_document_id": true
     }
   ]
 }
