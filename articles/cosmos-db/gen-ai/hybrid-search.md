@@ -1,16 +1,20 @@
 ---
-title: Hybrid search in Azure Cosmos DB for NoSQL
-description: Hybrid search overview 
+title: Use hybrid search (preview)
+titleSuffix: Azure Cosmos DB for NoSQL
+description: Overview of hybrid search that combines vector search with full-text search scoring in Azure Cosmos DB for NoSQL.
 author: jcodella
 ms.author: jacodel
 ms.service: azure-cosmos-db
-ms.topic: conceptual
-ms.date: 11/04/2024
+ms.topic: how-to
+ms.date: 12/03/2024
 ms.collection:
   - ce-skilling-ai-copilot
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Hybrid search in Azure Cosmos DB for NoSQL (preview)
+
 Azure Cosmos DB for NoSQL now supports a powerful hybrid search capability that combines Vector Search with Full Text Search scoring (BM25) using the Reciprocal Rank Fusion (RRF) function.
 
 > [!NOTE]
@@ -18,13 +22,12 @@ Azure Cosmos DB for NoSQL now supports a powerful hybrid search capability that 
 
 ## What is hybrid search?
 
- Hybrid search leverages the strengths of both vector-based and traditional keyword-based search methods to deliver more relevant and accurate search results. Hybrid search is easy to do in Azure Cosmos DB for NoSQL due to the ability to store both metadata and vectors within the same document. 
+Hybrid search leverages the strengths of both vector-based and traditional keyword-based search methods to deliver more relevant and accurate search results. Hybrid search is easy to do in Azure Cosmos DB for NoSQL due to the ability to store both metadata and vectors within the same document.
 
 Hybrid search in Azure Cosmos DB for NoSQL integrates two distinct search methodologies:
 
 - **Vector search**: Utilizes machine learning models to understand the semantic meaning of queries and documents. This allows for more nuanced and context-aware search results, especially useful for complex queries where traditional keyword search might fall short.
-  
--  **Full text search (BM25)**: A well-established algorithm that scores documents based on the presence and frequency of words and terms. BM25 is particularly effective for straightforward keyword searches, providing a robust baseline for search relevance.
+- **Full text search (BM25)**: A well-established algorithm that scores documents based on the presence and frequency of words and terms. BM25 is particularly effective for straightforward keyword searches, providing a robust baseline for search relevance.
 
 The results from vector search and full text search are then combined using the Reciprocal Rank Fusion (RRF) function. RRF is a rank aggregation method that merges the rankings from multiple search algorithms to produce a single, unified ranking. This ensures that the final search results benefit from the strengths of both search approaches and offers multiple benefits.
 
@@ -35,10 +38,10 @@ The results from vector search and full text search are then combined using the 
 ## How to use hybrid search
 
 1. Enable the [Vector Search in Azure Cosmos DB for NoSQL feature](../nosql/vector-search.md#enable-the-vector-indexing-and-search-feature).
-2. Enable the [Full Text & Hybrid Search for NoSQL preview feature](../gen-ai/full-text-search.md#enable-the-full-text-and-hybrid-search-for-nosql-preview-feature).
-3. Create a container with a vector policy, full text policy, vector index, and full text index.
-4. Insert your data with text and vector properties.
-5. Run hybrid queries against the data.
+1. Enable the [Full Text & Hybrid Search for NoSQL preview feature](../gen-ai/full-text-search.md#enable-the-full-text-and-hybrid-search-for-nosql-preview-feature).
+1. Create a container with a vector policy, full text policy, vector index, and full text index.
+1. Insert your data with text and vector properties.
+1. Run hybrid queries against the data.
 
 ## Configure policies and indexes for hybrid search
 
@@ -46,6 +49,7 @@ The results from vector search and full text search are then combined using the 
 > Currently, vector policies and vector indexes are immutable after creation. To make changes, please create a new collection.
 
 ### A sample vector policy
+
  ```json
 {
     "vectorEmbeddings": [
@@ -58,9 +62,10 @@ The results from vector search and full text search are then combined using the 
 
 }
 ```
-     
+
 ### A sample full text policy
- ```json
+
+```json
 {
     "defaultLanguage": "en-US",
     "fullTextPaths": [
@@ -73,6 +78,7 @@ The results from vector search and full text search are then combined using the 
 ```
 
 ### A sample indexing policy with both full text and vector indexes
+
 ```json
 {
     "indexingMode": "consistent",
@@ -123,6 +129,7 @@ ORDER BY RANK RRF(VectorDistance(c.vector, [1,2,3]), FullTextScore(c.text, ["tex
 ```
 
 ## Related content
+
 - [Vector search](../nosql/vector-search.md)
 - [VectorDistance system function](../nosql/query/vectordistance.md)
 - [FullTextScore system function](../nosql/query/fulltextscore.md)

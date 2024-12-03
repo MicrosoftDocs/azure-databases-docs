@@ -1,13 +1,15 @@
 ---
-title: Distance functions
-description: Distance functions overview.
+title: Vector distance functions
+description: Overview of Manhattan, Euclidean, cosmine similarity, and dot product vector distance functions in Azure Cosmos DB for NoSQL.
 author: wmwxwa
 ms.author: wangwilliam
 ms.service: azure-cosmos-db
-ms.topic: conceptual
-ms.date: 07/01/2024
+ms.topic: concept-article
+ms.date: 12/03/2024
 ms.collection:
   - ce-skilling-ai-copilot
+appliesto:
+  - ✅ NoSQL
 ---
 
 # What are distance functions?
@@ -31,6 +33,7 @@ Cosine similarity measures the cosine of the angle between two vectors projected
 Two vectors are multiplied to return a single number. It combines the two vectors' magnitudes, as well as the cosine of the angle between them, showing how much one vector goes in the direction of another.
 
 ## Related content
+
 - [VectorDistance system function](../nosql/query/vectordistance.md) in Azure Cosmos DB NoSQL
 - [What is a vector database?](../vector-database.md)
 - [Retrieval Augmented Generation (RAG)](rag.md)
