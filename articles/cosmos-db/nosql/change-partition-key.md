@@ -6,7 +6,9 @@ author: richagaur
 ms.author: richagaur
 ms.service: azure-cosmos-db
 ms.topic: conceptual
+ms.date: 12/03/2024
 ---
+
 # Changing the partition key in Azure Cosmos DB (preview)
 
 [!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
