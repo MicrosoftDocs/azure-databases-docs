@@ -4,7 +4,7 @@ description: This article describes the automated index tuning feature in Azure 
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 11/06/2024
+ms.date: 11/29/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: concept-article
@@ -44,9 +44,6 @@ The algorithm iterates over the target databases, searching for possible indexes
 ### CREATE INDEX recommendations
 
 For each database identified as a candidate to analyze for producing index recommendations, all SELECT, UPDATE, INSERT, and DELETE queries executed during the lookup interval and in the context of that specific database are factored in.
-
-> [!NOTE]  
-> Index tuning analyzes not only SELECT statements, but also DML (UPDATE, INSERT, and DELETE) statements.
 
 The resulting set of queries is ranked based on their aggregated total execution time, and the top `index_tuning.max_queries_per_database` is analyzed for possible index recommendations.
 
@@ -149,7 +146,17 @@ Explore all the details about correct configuration of index tuning feature in [
 
 ## Limitations and supportability
 
-Following is the list of limitations and supportability scope for index tuning. 
+Following is the list of limitations and supportability scope for index tuning.
+
+### Dependency on hypopg extension
+
+For index tuning to produce CREATE INDEX recommendations, it uses the [hypopg](https://github.com/HypoPG/hypopg/) extension.
+
+If the extension already exists when a tuning session begins, it is used on the schema in which it was created. And when the tuning session finishes, the extension is not dropped. An exception to this is if the extension was created in the `pg_catalog` schema. If that's the case, index tuning drops the extension.
+
+If the extension didn't exist in the first place or we dropped it because it was created in `pg_catalog` schema, index tuning will create it under a schema called `ms_temp_recommendations709253` and, when the tuning session finishes successfully, it drops the extension and removes the schema.
+
+Users who are members of the `azure_pg_admin` role can drop the hypopg extension at any point in time, even when it was created by the index tuning feature. However, dropping it while an index tuning session is running might cause that session to fail and don't produce any recommendations.
 
 ### Supported compute tiers and SKUs
 

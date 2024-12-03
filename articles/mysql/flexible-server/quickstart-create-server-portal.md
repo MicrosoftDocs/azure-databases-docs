@@ -1,10 +1,10 @@
 ---
-title: "Quickstart: Create a flexible server using the Azure portal"
+title: "Quickstart: Create a Flexible Server Using the Azure Portal"
 description: In this quickstart, learn how to deploy a database in an instance of Azure Database for MySQL - Flexible Server by using the Azure portal.
 author: shreyaaithal
 ms.author: shaithal
 ms.reviewer: maghan
-ms.date: 07/31/2024
+ms.date: 11/27/2024
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: quickstart
@@ -14,8 +14,6 @@ ms.custom:
 ---
 
 # Quickstart: Create an instance of Azure Database for MySQL with the Azure portal
-
-[!INCLUDE [applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 Azure Database for MySQL is a managed service for running, managing, and scaling highly available MySQL servers in the cloud. This article shows you how to use the Azure portal to create an Azure Database for MySQL flexible server instance. You create an instance of Azure Database for MySQL flexible server using a defined set of [compute and storage resources](./concepts-compute-storage.md).
 
@@ -69,11 +67,11 @@ Complete these steps to create an Azure Database for MySQL flexible server:
    - Public access (allowed IP addresses)
    - Private access (virtual network integration)
 
-   When you use public access, access to your server is limited to the allowed IP addresses you add to a firewall rule. This method prevents external applications and tools from connecting to the server and any databases on the server unless you create a rule to open the firewall for a specific IP address or range of IP addresses. When you select **Create an azuredeploy.json file**, access to your server is limited to your virtual network. For more information about private access, see the [concepts](./concepts-networking.md) article.
+   When you use public access, access to your server is limited to the allowed IP addresses you add to a firewall rule. This method prevents external applications and tools from connecting to the server and any databases on the server unless you create a rule to open the firewall for a specific IP address or range of IP addresses. When you select **Create an azuredeploy.json file**, access to your server is limited to your virtual network. For more information about private access, see the [concepts](concepts-networking.md) article.
 
    In this quickstart, you learn how to set public access to connect to the server. On the **Networking tab**, for **Connectivity method**, select **Public access**. To set firewall rules, select **Add current client IP address**.
 
-    You can't change the connectivity method after you create the server. For example, if you select **Public access (allowed IP addresses)** when you create the server, you can't change the setting to **Private access (VNet Integration)** after the server is deployed. We highly recommend that you create your server to use private access to help secure access to your server via virtual network integration. For more information about private access, see the [concepts](./concepts-networking.md) article.
+    You can't change the connectivity method after you create the server. For example, if you select **Public access (allowed IP addresses)** when you create the server, you can't change the setting to **Private access (VNet Integration)** after the server is deployed. We highly recommend that you create your server to use private access to help secure access to your server via virtual network integration. For more information about private access, see the [concepts](concepts-networking.md) article.
 
     :::image type="content" source="media/quickstart-create-server-portal/networking.png" alt-text="Screenshot that shows the Networking tab.":::
 
@@ -112,5 +110,5 @@ When you no longer need the resources you created for this quickstart, you can d
 
 ## Related content
 
-- [Connect to an instance of Azure Database for MySQL - Flexible Server in a virtual network](./quickstart-create-connect-server-vnet.md)
+- [Connect Azure Database for MySQL - Flexible Server with private access connectivity method](quickstart-create-connect-server-vnet.md)
 - [Azure Database for MySQL learning path on Microsoft Learn](/training/paths/introduction-to-azure-database-for-mysql/)

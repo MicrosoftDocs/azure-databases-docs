@@ -1,10 +1,10 @@
 ---
-title: Connect with private access in the Azure portal
+title: Connect With Private Access in the Azure Portal
 description: This article walks you through using the Azure portal to create and connect to an Azure Database for MySQL - Flexible Server instance with private access.
 author: SudheeshGH
 ms.author: sunaray
 ms.reviewer: maghan
-ms.date: 09/11/2024
+ms.date: 11/27/2024
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: quickstart
@@ -15,8 +15,6 @@ ms.custom:
 ---
 
 # Connect Azure Database for MySQL - Flexible Server with private access connectivity method
-
-[!INCLUDE [applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 Azure Database for MySQL Flexible Server is a managed service that runs, manages, and scales highly available MySQL servers in the cloud. This quickstart shows you how to create an Azure Database for MySQL Flexible Server instance in a virtual network by using the Azure portal.
 
@@ -54,7 +52,7 @@ Complete these steps to create an Azure Database for MySQL Flexible Server insta
    :::image type="content" source="media/quickstart-create-connect-server-vnet/create-new-vnet-for-mysql-server.png" alt-text="Screenshot that shows the Networking tab with new VNET." lightbox="media/quickstart-create-connect-server-vnet/create-new-vnet-for-mysql-server.png":::
 
 1. Select **OK** once you've provided the virtual network name and subnet information.
-   
+
    :::image type="content" source="media/quickstart-create-connect-server-vnet/show-server-vnet-information.png" alt-text="Screenshot of Review VNET information." lightbox="media/quickstart-create-connect-server-vnet/show-server-vnet-information.png":::
 
 1. Select **Review + create** to review your Azure Database for MySQL Flexible Server configuration.
@@ -83,7 +81,7 @@ Since the server is in a virtual network, you can only connect to the server fro
 
 1. For **SSH public key source**, leave the default of **Generate new key pair**, and then type *myKey* for the **Key pair name**.
 
-1. Under **Inbound port rules** > **Public inbound ports**, choose **Allow selected ports** and then select **SSH (22)** and **HTTP (80)** from the dropdown.
+1. Under **Inbound port rules** > **Public inbound ports**, choose **Allow selected ports** and then select **SSH (22)** and **HTTP (80)** from the dropdown list.
 
 1. Select **Networking** page to configure the virtual network. For the virtual network, choose the **vnetenvironment1** created for the Azure Database for MySQL Flexible Server instance.
 
@@ -103,7 +101,7 @@ Since the server is in a virtual network, you can only connect to the server fro
 1. Select **Review + Create**.
 1. Select **Create**. When the **Generate new key pair** window opens, select **Download private key and create resource**. Your key file is downloaded as **myKey.pem**.
 
-   > [!IMPORTANT]
+   > [!IMPORTANT]  
    > Make sure you know where the `.pem` file was downloaded, you need the path to it in the next step.
 
 1. When the deployment is finished, select **Go to resource**.
@@ -120,9 +118,9 @@ Create an SSH connection with the VM using Bash or PowerShell. At your prompt, o
 ssh -i .\Downloads\myKey1.pem azureuser@10.111.12.123
 ```
 
-   > [!TIP]
+   > [!TIP]  
    > The SSH key you created can be used the next time you create a VM in Azure. Select the **Use a key stored in Azure** for **SSH public key source** the next time you create a VM. You already have the private key on your computer, so you won't need to download anything.
-    
+
 You need to install mysql-client tool to connect to the server.
 
 ```bash
@@ -156,4 +154,4 @@ You've created an Azure Database for MySQL Flexible Server instance in a resourc
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Build a PHP (Laravel) web app with MySQL](tutorial-php-database-app.md)
+> [Tutorial: Build a PHP (Laravel) and Azure Database for MySQL - Flexible Server app on Azure App Service](tutorial-php-database-app.md)

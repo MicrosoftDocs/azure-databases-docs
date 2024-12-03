@@ -1,18 +1,16 @@
 ---
-title: Troubleshoot connection issues
+title: Troubleshoot Connection Issues
 description: Learn how to troubleshoot connection issues to Azure Database for MySQL - Flexible Server.
 author: shreyaaithal
 ms.author: shaithal
 ms.reviewer: maghan
-ms.date: 06/18/2024
+ms.date: 11/27/2024
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: troubleshooting
 ---
 
 # Troubleshoot connection issues to Azure Database for MySQL - Flexible Server
-
-[!INCLUDE [applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 Connection problems might be caused by a variety of things, including:
 
@@ -27,9 +25,9 @@ In this article, we will discuss how you can troubleshoot some of the common err
 
 If the application persistently fails to connect to Azure Database for MySQL Flexible Server, it usually indicates an issue with one of the following:
 
-- Encrypted connection using TLS/SSL: Azure Database for MySQL Flexible Server supports encrypted connections using Transport Layer Security (TLS 1.2) and all **incoming connections with TLS 1.0 and TLS 1.1 will be denied by default**. You can disable enforcement of encrypted connections or change the TLS version. Learn more about [Encrypted connectivity using Transport Layer Security (TLS 1.2) in Azure Database for MySQL Flexible Server](how-to-connect-tls-ssl.md).
+- Encrypted connection using TLS/SSL: Azure Database for MySQL Flexible Server supports encrypted connections using Transport Layer Security (TLS 1.2) and all **incoming connections with TLS 1.0 and TLS 1.1 will be denied by default**. You can disable enforcement of encrypted connections or change the TLS version. Learn more about [Connect to Azure Database for MySQL - Flexible Server with encrypted connections](how-to-connect-tls-ssl.md).
 - Azure Database for MySQL Flexible Server in *Private access (VNet Integration)*: Make sure you are connecting from within the same virtual network as the Azure Database for MySQL Flexible Server instance. Refer to [virtual network in Azure Database for MySQL Flexible Server]<!--(./concepts-networking-virtual-network.md)-->
-- Azure Database for MySQL Flexible Server with *Public access (allowed IP addresses)*, make sure that the firewall is configured to allow connections from your client. Refer to [Create and manage Azure Database for MySQL Flexible Server firewall rules using the Azure portal](how-to-manage-firewall-portal.md).
+- Azure Database for MySQL Flexible Server with *Public access (allowed IP addresses)*, make sure that the firewall is configured to allow connections from your client. Refer to [Manage firewall rules for Azure Database for MySQL - Flexible Server using the Azure portal](how-to-manage-firewall-portal.md).
 - Client firewall configuration: The firewall on your client must allow connections to your Azure Database for MySQL Flexible Server instance. IP addresses and ports of the server that you connect to must be allowed as well as application names such as MySQL in some firewalls.
 - User error: You might have mistyped connection parameters, such as the server name in the connection string.
 
@@ -42,6 +40,6 @@ If the application persistently fails to connect to Azure Database for MySQL Fle
 
 ## Related content
 
-- [Use MySQL Workbench to connect and query data in Azure Database for MySQL Flexible Server](connect-workbench.md)
-- [Use PHP to connect and query data in Azure Database for MySQL Flexible Server](connect-php.md)
-- [Use Python to connect and query data in Azure Database for MySQL Flexible Server](connect-python.md)
+- [Use MySQL Workbench with Azure Database for MySQL - Flexible Server](connect-workbench.md)
+- [Use PHP with Azure Database for MySQL - Flexible Server](connect-php.md)
+- [Quickstart: Use Python to connect and query data in Azure Database for MySQL - Flexible Server](connect-python.md)

@@ -1,18 +1,16 @@
 ---
-title: Restore a deleted server
+title: Restore a Deleted Server
 description: This article describes how to restore a deleted server in Azure Database for MySQL - Flexible Server by using the Azure portal.
 author: VandhanaMehta
 ms.author: vamehta
 ms.reviewer: maghan
-ms.date: 09/11/2024
+ms.date: 11/27/2024
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: how-to
 ---
 
 # Restore a deleted Azure Database for MySQL - Flexible Server instance
-
-[!INCLUDE [applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 When an Azure Database for MySQL Flexible Server instance is deleted, the server backup can be retained for up to five days in the service. The server backup can be accessed and restored only from the Azure subscription where the server initially resided. The following recommended steps can be followed to recover a deleted Azure Database for MySQL Flexible Server resource within five days from the time of server deletion. The recommended steps work only if the backup for the server is still available and not deleted from the system.
 
@@ -64,7 +62,7 @@ To restore a deleted Azure Database for MySQL Flexible Server instance, you need
 
 1. If you see Response Code 201 or 202, the restore request is successfully submitted.
 
-1. The server creation can take time depending on the database size and compute resources provisioned on the original server. The restore status can be monitored from 
+1. The server creation can take time depending on the database size and compute resources provisioned on the original server. The restore status can be monitored from
 
 Activity log by filtering for:
 
@@ -75,4 +73,4 @@ Activity log by filtering for:
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Resource Locks](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/preventing-the-disaster-of-accidental-deletion-for-your-mysql/ba-p/825222)
+> [Resource Locks](https://techcommunity.microsoft.com/blog/adformysql/preventing-the-disaster-of-accidental-deletion-for-your-mysql-database-on-azure/825222)

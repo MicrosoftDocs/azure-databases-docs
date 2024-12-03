@@ -4,7 +4,7 @@ description: Learn how Private Link works for Azure Database for MySQL - Flexibl
 author: SudheeshGH
 ms.author: sunaray
 ms.reviewer: maghan
-ms.date: 06/18/2024
+ms.date: 11/27/2024
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: conceptual
@@ -12,15 +12,15 @@ ms.topic: conceptual
 
 # Private Link for Azure Database for MySQL - Flexible Server
 
-[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
 Private Link allows you to connect to various PaaS services, such as Azure Database for MySQL flexible server, in Azure via a private endpoint. Azure Private Link essentially brings Azure services inside your private Virtual Network (VNet). Using the private IP address, the MySQL flexible server is accessible just like any other resource within the VNet.
 
 A private endpoint is a private IP address within a specific [VNet](/azure/virtual-network/virtual-networks-overview) and Subnet.
 
-> [!NOTE]
-> - Enabling Private Link is exclusively possible for Azure Database for MySQL flexible server instances that are created with public access. Learn how to enable private endpoint using the [Azure portal](how-to-networking-private-link-portal.md) or [Azure CLI](how-to-networking-private-link-azure-cli.md).
+> [!NOTE]  
+> - Enabling Private Link is exclusively possible for Azure Database for MySQL flexible server instances that are created with public access. Learn how to enable private endpoint using the [Create and manage Private Link for Azure Database for MySQL - Flexible Server using the portal](how-to-networking-private-link-portal.md) or [Create and manage Private Link for Azure Database for MySQL - Flexible Server using Azure CLI](how-to-networking-private-link-azure-cli.md).
+
 ## Benefits of Private Link for MySQL flexible server
+
 > Here are some benefits for using the networking private link feature with Azure Database for MySQL flexible server.
 
 ### Data exfiltration prevention
@@ -43,7 +43,7 @@ With Private Link, you can enable cross-premises access to the private endpoint 
 
 Clients can connect to the private endpoint from the same VNet, peered VNet in the same region or across regions, or via VNet-to-VNet connection across regions. Additionally, clients can connect from on-premises using ExpressRoute, private peering, or VPN tunneling. Below is a simplified diagram showing the common use cases.
 
-:::image type="content" source="media/concepts-networking-private-link/diagram-of-private-link-mysql.png" alt-text="Diagram of private link.":::
+:::image type="content" source="media/concepts-networking-private-link/diagram-of-private-link-mysql.png" alt-text="Diagram of private link." lightbox="media/concepts-networking-private-link/diagram-of-private-link-mysql.png":::
 
 ### Connect from an Azure VM in peered virtual network (VNet)
 
@@ -75,25 +75,20 @@ Combining Private Link with firewall rules can result in several scenarios and o
 
 You can disable public access on your Azure Database for MySQL flexible server instance if you prefer to rely solely on private endpoints for access.
 
-:::image type="content" source="media/concepts-networking-private-link/screenshot-of-public-access-checkbox-mysql.png" alt-text="Screenshot of public access checkbox.":::
+:::image type="content" source="media/concepts-networking-private-link/screenshot-of-public-access-checkbox-mysql.png" alt-text="Screenshot of public access checkbox." lightbox="media/concepts-networking-private-link/screenshot-of-public-access-checkbox-mysql.png":::
 
 Clients can connect to the server based on the firewall configuration when this setting is enabled. If this setting is disabled, only connections through private endpoints are allowed, and users can't modify the firewall rules.
 
 > [!NOTE]  
-> This setting does not impact the SSL and TLS configurations for your Azure Database for MySQL flexible server instance.
+> This setting does not affect the SSL and TLS configurations for your Azure Database for MySQL flexible server instance.
 
-To learn how to set the **Deny Public Network Access** for your Azure Database for MySQL flexible server instance from the Azure portal, refer to [Deny Public Network Access using the Azure portal](how-to-networking-private-link-deny-public-access.md).
+To learn how to set the **Deny Public Network Access** for your Azure Database for MySQL flexible server instance from the Azure portal, refer to [Deny Public Network Access in Azure Database for MySQL - Flexible Server by using the Azure portal](how-to-networking-private-link-deny-public-access.md).
 
 ## Limitation
 
-When a user tries to delete both the Azure Database for MySQL flexible server instance and Private Endpoint simultaneously, they may encounter an Internal Server error. To avoid this issue, we recommend deleting the Private Endpoint(s) first and then proceeding to delete the Azure Database for MySQL flexible server instance after a short pause.
+When a user tries to delete both the Azure Database for MySQL flexible server instance and Private Endpoint simultaneously, they might encounter an Internal Server error. To avoid this issue, we recommend deleting the Private Endpoint(s) first and then proceeding to delete the Azure Database for MySQL flexible server instance after a short pause.
 
-## Next steps
+## Related content
 
-To learn more about Azure Database for MySQL flexible server security features, see the following articles:
-
-- To configure a firewall for Azure Database for MySQL flexible server, see [firewall support](concepts-networking-public.md)
-
-- For an overview of Azure Database for MySQL flexible server connectivity, see [Azure Database for MySQL Connectivity Architecture](concepts-networking.md)
-
-
+- [firewall support](concepts-networking-public.md)
+- [Connectivity and networking concepts for Azure Database for MySQL - Flexible Server](concepts-networking.md)

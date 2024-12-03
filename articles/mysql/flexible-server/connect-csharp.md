@@ -1,10 +1,10 @@
 ---
-title: "Quickstart: Connect using C#"
+title: "Quickstart: Connect Using C#"
 description: "This quickstart provides a C# (.NET) code sample you can use to connect and query data from Azure Database for MySQL - Flexible Server."
 author: shreyaaithal
 ms.author: shaithal
 ms.reviewer: maghan
-ms.date: 06/18/2024
+ms.date: 11/27/2024
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: quickstart
@@ -18,8 +18,6 @@ ms.devlang: csharp
 
 # Quickstart: Use .NET (C#) to connect and query data in Azure Database for MySQL - Flexible Server
 
-[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
 This quickstart demonstrates how to connect to an Azure Database for MySQL Flexible Server instance by using a C# application. It shows how to use SQL statements to query, insert, update, and delete data in the database.
 
 ## Prerequisites
@@ -28,8 +26,9 @@ For this quickstart you need:
 
 - An Azure account with an active subscription.
 
-    [!INCLUDE [flexible-server-free-trial-note](../includes/flexible-server-free-trial-note.md)]
-- Create an Azure Database for MySQL Flexible Server instance by using the [Azure portal](./quickstart-create-server-portal.md) <br/> or [Azure CLI](./quickstart-create-server-cli.md) if you do not have one.
+[!INCLUDE [flexible-server-free-trial-note](../includes/flexible-server-free-trial-note.md)]
+
+- Create an Azure Database for MySQL Flexible Server instance by using the [Quickstart: Create an instance of Azure Database for MySQL with the Azure portal](quickstart-create-server-portal.md) <br/> or [Quickstart: Create an instance of Azure Database for MySQL - Flexible Server by using the Azure CLI](quickstart-create-server-cli.md) if you do not have one.
 - Based on whether you are using public or private access, complete **ONE** of the actions below to enable connectivity.
 - [Create a database and non-admin user](../single-server/how-to-create-users.md)
 - Install the [.NET SDK for your platform](https://dotnet.microsoft.com/download) (Windows, Ubuntu Linux, or macOS) for your platform.
@@ -52,14 +51,14 @@ dotnet add package MySqlConnector
 Get the connection information needed to connect to the Azure Database for MySQL Flexible Server instance. You need the fully qualified server name and login credentials.
 
 1. Log in to the [Azure portal](https://portal.azure.com/).
-2. From the left-hand menu in Azure portal, select **All resources**, and then search for the server you have created (such as **mydemoserver**).
-3. Select the server name.
-4. From the server's **Overview** panel, make a note of the **Server name** and **Server admin login name**. If you forget your password, you can also reset the password from this panel.
- :::image type="content" source="./media/connect-csharp/server-overview-name-login.png" alt-text="Azure Database for MySQL Flexible Server instance name":::
+1. From the left-hand menu in Azure portal, select **All resources**, and then search for the server you have created (such as **mydemoserver**).
+1. Select the server name.
+1. From the server's **Overview** panel, make a note of the **Server name** and **Server admin login name**. If you forget your password, you can also reset the password from this panel.
+:::image type="content" source="media/connect-csharp/server-overview-name-login.png" alt-text="Screenshot of Azure Database for MySQL Flexible Server instance name." lightbox="media/connect-csharp/server-overview-name-login.png":::
 
 ## Step 1: Connect and insert data
 
-Use the following code to connect and load the data by using `CREATE TABLE` and  `INSERT INTO` SQL statements. The code uses the methods of the `MySqlConnection` class:
+Use the following code to connect and load the data by using `CREATE TABLE` and `INSERT INTO` SQL statements. The code uses the methods of the `MySqlConnection` class:
 
 - [OpenAsync()](/dotnet/api/system.data.common.dbconnection.openasync#System_Data_Common_DbConnection_OpenAsync) to establish a connection to MySQL.
 - [CreateCommand()](/dotnet/api/system.data.common.dbconnection.createcommand), sets the CommandText property
@@ -314,10 +313,7 @@ az group delete \
     --yes
 ```
 
-## Next steps
+## Related content
 
-> [!div class="nextstepaction"]
-> [Manage Azure Database for MySQL Flexible Server using the portal](./how-to-manage-server-portal.md)<br/>
-
-> [!div class="nextstepaction"]
-> [Manage Azure Database for MySQL Flexible Server using Azure CLI](./how-to-manage-server-cli.md)
+- [Manage Azure Database for MySQL - Flexible Server using the Azure portal](how-to-manage-server-portal.md)
+- [Manage Azure Database for MySQL - Flexible Server using the Azure CLI](how-to-manage-server-cli.md)
