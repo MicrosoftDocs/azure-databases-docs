@@ -83,7 +83,7 @@
 - name: How to
   items:
     - name: Create cross-region replica using Azure portal
-      href: cross-region-replica-portal.md
+      href: how-to-cross-region-replica-portal.md
     - name: Use community tools
       items:
         - name: Connect using Studio 3T
