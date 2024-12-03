@@ -1,6 +1,6 @@
 ---
 title: Vector distance functions
-description: Overview of Manhattan, Euclidean, cosmine similarity, and dot product vector distance functions in Azure Cosmos DB for NoSQL.
+description: Overview of Manhattan, Euclidean, cosine similarity, and dot product vector distance functions in Azure Cosmos DB for NoSQL.
 author: wmwxwa
 ms.author: wangwilliam
 ms.service: azure-cosmos-db
@@ -18,11 +18,11 @@ Distance functions are mathematical formulas used to measure the similarity or d
 
 ## Manhattan distance
 
-This measures the distance between two points by adding up the absolute differences of their coordinates. Imagine walking in a grid-like city, such as many neighborhoods in Manhattan; it is the total number of blocks you walk north-south and east-west.
+This measures the distance between two points by adding up the absolute differences of their coordinates. Imagine walking in a grid-like city, such as many neighborhoods in Manhattan; it's the total number of blocks you walk north-south and east-west.
 
 ## Euclidean distance
 
-Euclidean distance measures the straight-line distance between two points. It is named after the ancient Greek mathematician Euclid, who is often referred to as the “father of geometry”.
+Euclidean distance measures the straight-line distance between two points. It's named after the ancient mathematician Euclid, who is often referred to as the “father of geometry”.
 
 ## Cosine similarity
 
@@ -30,7 +30,7 @@ Cosine similarity measures the cosine of the angle between two vectors projected
 
 ## Dot product
 
-Two vectors are multiplied to return a single number. It combines the two vectors' magnitudes, as well as the cosine of the angle between them, showing how much one vector goes in the direction of another.
+Two vectors are multiplied to return a single number. It combines the two vectors' magnitudes, and the cosine of the angle between them, showing how much one vector goes in the direction of another.
 
 ## Related content
 
