@@ -1,5 +1,5 @@
 ---
-title: Query NoSQL with Microsoft Copilot for Azure (preview)
+title: Queries with Microsoft Copilot for Azure (preview)
 titleSuffix: Azure Cosmos DB for NoSQL
 description: Generate suggestions from natural language prompts to write NoSQL queries using Microsoft Copilot for Azure in Cosmos DB (preview).
 author: seesharprun
@@ -10,15 +10,15 @@ ms.custom:
   - ignite-2023
 ms.topic: how-to
 ms.devlang: nosql
-ms.date: 08/22/2024
+ms.date: 12/03/2024
 ms.collection:
   - ce-skilling-ai-copilot
 # CustomerIntent: As a developer, I want to use Copilot so that I can write queries faster and easier.
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Generate NoSQL queries with Microsoft Copilot for Azure in Cosmos DB (preview)
-
-[!INCLUDE[NoSQL](../../includes/appliesto-nosql.md)]
 
 Microsoft Copilot for Azure in Cosmos DB (preview) can assist with authoring Azure Cosmos DB for NoSQL queries by generating queries based on your natural English-language prompts. Copilot is available to use in the API for NoSQL's query editor within the Data Explorer. With Copilot in the API for NoSQL, you can:
 
@@ -27,7 +27,6 @@ Microsoft Copilot for Azure in Cosmos DB (preview) can assist with authoring Azu
 
 > [!NOTE]
 > You may see the database `CopilotSampleDb` appear in Data Explorer. This is a completely separate database managed by Microsoft and access is provided to you (at no cost) as a testbed to become familiar with Microsoft Copilot for Azure in Cosmos DB. This database consists of 100% synthetic data created by Microsoft and has has no interaction or relationships to any data you may have in Azure Cosmos DB.
-
 
 > [!WARNING]
 > Copilot is a preview feature that is powered by large language models (LLMs). Output produced by Copilot may contain inaccuracies, biases, or other unintended content. This occurs because the model powering Copilot was trained on information from the internet and other sources. As with any generative AI model, humans should review the output produced by Copilot before use.
@@ -38,11 +37,12 @@ Microsoft Copilot for Azure in Cosmos DB (preview) can assist with authoring Azu
   - If you don't have an Azure subscription, [create an account for free](https://azure.microsoft.com/free).
   - Once you have an existing Azure subscription, [create a new Azure Cosmos DB for NoSQL account](../quickstart-portal.md).
   - Enroll your Azure subscription, in the Microsoft Copilot for Azure in Cosmos DB [preview feature](/azure/azure-resource-manager/management/preview-features).
- 
+
 > [!IMPORTANT]
 > Review these [preview terms](https://azure.microsoft.com/support/legal/preview-supplemental-terms/#AzureOpenAI-PoweredPreviews) before using query Copilot for NoSQL.
 
 ## Access the feature
+
 As a preview feature, you'll have to add Microsoft Copilot for Azure in Cosmos DB preview to your Azure subscription. Once enrolled, you can find Microsoft Copilot for Azure integrated with the Data Explorer’s query editor.
 
 1. Navigate to any Azure Cosmos DB NoSQL resource.
@@ -53,7 +53,7 @@ As a preview feature, you'll have to add Microsoft Copilot for Azure in Cosmos D
 
 1. Next, open the query editor experience from one of two ways:
 
-   - Select the **Query faster with Copilot** card on the Data Explorer's welcome screen. This option will take you to the a query editor targeting the `CopilotSampleDb` database and `SampleContainer` container, which contains sample data for you to use with Copilot. This database is managed by Microsoft and does not interact or connect to your other databases. `CopoilotSampleDb` is free for all Azure Cosmos DB NoSQL customers.
+   - Select the **Query faster with Copilot** card on the Data Explorer's welcome screen. This option will take you to the query editor targeting the `CopilotSampleDb` database and `SampleContainer` container, which contains sample data for you to use with Copilot. This database is managed by Microsoft and does not interact or connect to your other databases. `CopoilotSampleDb` is free for all Azure Cosmos DB NoSQL customers.
 
    - Select an existing API for NoSQL database and container. Then, select **New SQL Query** from the menu bar.
 
