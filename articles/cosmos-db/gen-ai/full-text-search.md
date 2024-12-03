@@ -1,16 +1,19 @@
 ---
-title: Full text search in Azure Cosmos DB for NoSQL
-description: Full text search overview
+title: Use full-text search (preview)
+titleSuffix: Azure Cosmos DB for NoSQL
+description: Overview of full text search for querying data using "best matching 25" scoring in Azure Cosmos DB for NoSQL.
 author: jcodella
 ms.author: jacodel
 ms.service: azure-cosmos-db
-ms.topic: conceptual
-ms.date: 11/04/2024
+ms.topic: how-to
+ms.date: 12/03/2024
 ms.collection:
   - ce-skilling-ai-copilot
+appliesto:
+  - ✅ NoSQL
 ---
 
-# Full text search in Azure Cosmos DB for NoSQL (preview)
+# Full-text search in Azure Cosmos DB for NoSQL (preview)
 
 Azure Cosmos DB for NoSQL now offers a powerful Full Text Search feature in preview, designed to enhance the search capabilities of your applications.
 
@@ -42,7 +45,7 @@ Full Text Search is ideal for a variety of scenarios, including:
 
 ## Enable the full text and hybrid search for NoSQL preview feature
 
-Full text search, full text scoring, and hybrid search all require enabling the preview feature on your Azure Cosmos DB for NoSQL account before using. Follow the below steps to register: 
+Full text search, full text scoring, and hybrid search all require enabling the preview feature on your Azure Cosmos DB for NoSQL account before using. Follow the below steps to register:
 
 1. Navigate to your Azure Cosmos DB for NoSQL resource page.
 2. Select the "Features" pane under the "Settings" menu item.
@@ -53,11 +56,13 @@ Full text search, full text scoring, and hybrid search all require enabling the 
 :::image type="content" source="../nosql/media/full-text-search/full-text-search-feature.png" alt-text="Screenshot of full text and hybrid search preview feature in the Azure portal.":::
 
 ### Configure container policies and indexes for hybrid search
+
 To use full text search capabilities, you'll first need to define two policies:
 - A container-level full text policy that defines what paths will contain text for the new full text query system functions.
 - A full text index added to the indexing policy that enables efficient search.
 
 ### Full text policy
+
 For every text property you'd like to configure for full text search, you must declare both the `path` of the property with text and the `language` of the text. A simple full text policy can be:
 
  ```json
@@ -97,6 +102,7 @@ Defining multiple text paths is easily done by adding another element to the `fu
 > Wild card characters (*, []) are not currently supported in the full text policy or full text index.
 
 ### Full text index
+
 Any full text search operations should make use of a [*full text index*](../index-policy.md#full-text-indexes). A full text index can easily be defined in any Azure Cosmos DB for NoSQL index policy per the example below.
 
 ```json
@@ -121,7 +127,7 @@ Any full text search operations should make use of a [*full text index*](../inde
 }
 ```
 
-Just as with the full text policies, full text indexes can be defined on multiple paths. 
+Just as with the full text policies, full text indexes can be defined on multiple paths.
 
 ```json
 {
@@ -155,9 +161,9 @@ Full text search and scoring operations are performed using the following system
 - [`FullTextContains`](../nosql/query/fulltextcontains.md): Returns `true` if a given string is contained in the specified property of a document. This is useful in a `WHERE` clause when you want to ensure specific key words are included in the documents returned by your query.
 - [`FullTextContainsAll`](../nosql/query/fulltextcontainsall.md): Returns `true` if *all* of the given strings are contained in the specified property of a document. This is useful in a `WHERE` clause when you want to ensure that multiple key words are included in the documents returned by your query.
 - [`FullTextContainsAny`](../nosql/query/fulltextcontainsany.md): Returns `true` if *any* of the given strings are contained in the specified property of a document. This is useful in a `WHERE` clause when you want to ensure that at least one of the key words is included in the documents returned by your query.
-- [`FullTextScore`](../nosql/query/fulltextscore.md): Returns a score. This can only be used in an `ORDER BY RANK` clause, where the returned documents are ordered by the rank of the full text score, with most relevant (highest scoring) documents at the top, and least relevant (lowest scoring) documents at the bottom 
+- [`FullTextScore`](../nosql/query/fulltextscore.md): Returns a score. This can only be used in an `ORDER BY RANK` clause, where the returned documents are ordered by the rank of the full text score, with most relevant (highest scoring) documents at the top, and least relevant (lowest scoring) documents at the bottom.
 
-Here are a few examples of each function in use. 
+Here are a few examples of each function in use.
 
 #### FullTextContains
 
@@ -203,6 +209,7 @@ ORDER BY RANK FullTextScore(c.text, ["bicycle", "mountain"])
 > FullTextScore can only be used in the `ORDER BY RANK` clause and not projected in the `SELECT` statement or in a `WHERE` clause.
 
 ## Related content
+
 - [``FullTextContains`` system function](../nosql/query/fulltextcontains.md)
 - [``FullTextContainsAll`` system function](../nosql/query/fulltextcontainsall.md)
 - [``FullTextContainsAny`` system function](../nosql/query/fulltextcontainsany.md)
