@@ -1,23 +1,26 @@
 ---
-title: Vector database
-description: Vector database functionalities, implementation, and comparison.
+title: Integrated vector database
+titleSuffix: Azure Cosmos DB
+description: Review how to use Azure Cosmos DB as a vectror database in numerous domains and situations across analytical and generative AI.
 author: markjbrown
 ms.author: mjbrown
 ms.service: azure-cosmos-db
 ms.custom:
   - build-2024
-ms.topic: conceptual
-ms.date: 10/09/2024
+ms.topic: concept-article
+ms.date: 12/03/2024
 ms.collection:
   - ce-skilling-ai-copilot
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB vCore
+  - ✅ PostgreSQL
 ---
 
 # Vector database
 
-> [!Tip] 
+> [!TIP] 
 > Visit our new **[Samples Gallery](https://aka.ms/AzureCosmosDB/Gallery/AI)** for the latest Vector Database and RAG Pattern App Samples
-
-[!INCLUDE[NoSQL, MongoDB vCore, PostgreSQL](includes/appliesto-nosql-mongodbvcore-postgresql.md)]
 
 Vector databases are used in numerous domains and situations across analytical and generative AI, including natural language processing, video and image recognition, recommendation system, and search, among others.
 
@@ -26,7 +29,7 @@ In 2023, a notable trend in software was the integration of AI enhancements, oft
 > [!TIP]
 > Data consistency, scalability, and performance are critical for data-intensive applications, which is why OpenAI chose to build the ChatGPT service on top of Azure Cosmos DB. You, too, can take advantage of its integrated vector database, as well as its single-digit millisecond response times, automatic and instant scalability, and guaranteed speed at any scale. See [implementation samples](#how-to-implement-integrated-vector-database-functionalities) and [try](#next-step) it for free.
 
-## What is a vector database?
+## What is a vector database
 
 A vector database is a database designed to store and manage [vector embeddings](#embeddings), which are mathematical representations of data in a high-dimensional space. In this space, each dimension corresponds to a feature of the data, and tens of thousands of dimensions might be used to represent sophisticated data. A vector's position in this space represents its characteristics. Words, phrases, or entire documents, and images, audio, and other types of data can all be vectorized. These vector embeddings are used in similarity search, multi-modal search, recommendations engines, large languages models (LLMs), etc.
 
@@ -96,13 +99,13 @@ Retrieval-augmentated generation (RAG) is an architecture that augments the capa
 A simple RAG pattern using Azure Cosmos DB for NoSQL could be:
 
 1. Enroll in the [Azure Cosmos DB NoSQL Vector Index preview](nosql/vector-search.md)
-2. Setup a database and container with a container vector policy and vector index.
-3. Insert data into an Azure Cosmos DB for NoSQL database and container
-4. Create embeddings from a data property using Azure OpenAI Embeddings
-5. Link the Azure Cosmos DB for NoSQL.
-6. Create a vector index over the embeddings properties
-7. Create a function to perform vector similarity search based on a user prompt
-8. Perform question answering over the data using an Azure OpenAI Completions model
+1. Setup a database and container with a container vector policy and vector index.
+1. Insert data into an Azure Cosmos DB for NoSQL database and container
+1. Create embeddings from a data property using Azure OpenAI Embeddings
+1. Link the Azure Cosmos DB for NoSQL.
+1. Create a vector index over the embeddings properties
+1. Create a function to perform vector similarity search based on a user prompt
+1. Perform question answering over the data using an Azure OpenAI Completions model
 
 The RAG pattern, with prompt engineering, serves the purpose of enhancing response quality by offering more contextual information to the model. RAG enables the model to apply a broader knowledge base by incorporating relevant external sources into the generation process, resulting in more comprehensive and informed responses. For more information on "grounding" LLMs, see [grounding LLMs](https://techcommunity.microsoft.com/t5/fasttrack-for-azure/grounding-llms/ba-p/3843857). [[Go back](#vector-database-use-cases)]
 
@@ -153,18 +156,21 @@ Use the natively [integrated vector database in Azure Cosmos DB for MongoDB](mon
 Use the natively integrated vector database in [Azure Cosmos DB for PostgreSQL](postgresql/howto-use-pgvector.md), which offers an efficient way to store, index, and search high-dimensional vector data directly alongside other application data. This approach removes the necessity of migrating your data to costlier alternative vector databases and provides a seamless integration of your AI-driven applications.
 
 #### Code sample
+
 - Python: [Python notebook tutorial - food review chatbot](https://github.com/microsoft/AzureDataRetrievalAugmentedGenerationSamples/tree/main/Python/CosmosDB-PostgreSQL_CognitiveSearch)
 
-### Next step 
+## Vector database solutions
 
-[30-day Free Trial without Azure subscription](https://azure.microsoft.com/try/cosmosdb/)
+- [Azure PostgreSQL Server pgvector Extension](../postgresql/flexible-server/how-to-use-pgvector.md)
 
-[90-day Free Trial and up to $6,000 in throughput credits with Azure AI Advantage](ai-advantage.md)
+:::image type="content" source="media/vector-search/azure-databases-and-ai-search.png" lightbox="media/vector-search/azure-databases-and-ai-search.png" alt-text="Diagram of Vector indexing services for Azure Cosmos DB.":::
+
+## Related content
+
+- [30-day Free Trial without Azure subscription](https://azure.microsoft.com/try/cosmosdb/)
+- [90-day Free Trial and up to $6,000 in throughput credits with Azure AI Advantage](ai-advantage.md)
+
+## Next step
 
 > [!div class="nextstepaction"]
 > [Use the Azure Cosmos DB lifetime free tier](free-tier.md)
-
-## More vector database solutions
-- [Azure PostgreSQL Server pgvector Extension](../postgresql/flexible-server/how-to-use-pgvector.md)
-
-:::image type="content" source="media/vector-search/azure-databases-and-ai-search.png" lightbox="media/vector-search/azure-databases-and-ai-search.png" alt-text="Diagram of Vector indexing services.":::

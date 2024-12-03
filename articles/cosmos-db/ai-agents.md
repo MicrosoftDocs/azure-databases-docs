@@ -1,18 +1,21 @@
 ---
-title: AI agent
+title: AI agents and solutions
+titleSuffix: Azure Cosmos DB
 description: Learn about key concepts for agents and step through the implementation of an AI agent memory system.
 author: wmwxwa
 ms.author: wangwilliam
 ms.service: azure-cosmos-db
 ms.custom:
   - ignite-2024
-ms.topic: conceptual
-ms.date: 06/26/2024
+ms.topic: concept-article
+ms.date: 12/03/2024
 ms.collection:
   - ce-skilling-ai-copilot
+appliesto:
+  - ✅ MongoDB vCore
 ---
 
-# AI agent
+# AI agents in Azure Cosmos DB
 
 AI agents are designed to perform specific tasks, answer questions, and automate processes for users. These agents vary widely in complexity. They range from simple chatbots, to copilots, to advanced AI assistants in the form of digital or robotic systems that can run complex workflows autonomously.
 
@@ -843,11 +846,11 @@ export default function ChatLayout(messages) {
 
 User prompts are on the right side and colored blue. Responses from the AI travel agent are on the left side and colored green. As the following image shows, the HTML-formatted responses are accounted for in the conversation.
 
-:::image type="content" source="media/gen-ai/ai-agent/chat-screenshot.png" lightbox="media/gen-ai/ai-agent/chat-screenshot.png" alt-text="Screenshot of a chat.":::
+:::image type="content" source="media/gen-ai/ai-agent/chat-screenshot.png" lightbox="media/gen-ai/ai-agent/chat-screenshot.png" alt-text="Screenshot of a chat with an AI agent.":::
 
 When your AI agent is ready to go into production, you can use semantic caching to improve query performance by 80% and to reduce LLM inference and API call costs. To implement semantic caching, see [this post on the Stochastic Coder blog](https://stochasticcoder.com/2024/03/22/improve-llm-performance-using-semantic-cache-with-cosmos-db/).
 
-:::image type="content" source="media/gen-ai/ai-agent/semantic-caching.png" lightbox="media/gen-ai/ai-agent/semantic-caching.png" alt-text="Diagram of semantic caching.":::
+:::image type="content" source="media/gen-ai/ai-agent/semantic-caching.png" lightbox="media/gen-ai/ai-agent/semantic-caching.png" alt-text="Diagram of semantic caching for AI agents.":::
 
 ## Related content
 
