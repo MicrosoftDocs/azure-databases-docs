@@ -8,14 +8,20 @@ ms.service: azure-cosmos-db
 ms.custom:
   - ignite-2023
 ms.topic: overview
-ms.date: 11/08/2023
+ms.date: 12/03/2024
 ms.collection:
   - ce-skilling-ai-copilot
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ MongoDB vCore
+  - ✅ Cassanda
+  - ✅ Gremlin
+  - ✅ Table
+  - ✅ PostgreSQL
 ---
 
 # Try Azure Cosmos DB free with Azure AI Advantage
-
-[!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
 Azure offers a full, integrated stack purpose-built for AI-powered applications. If you build your AI application stack on Azure using Azure Cosmos DB, your design can lead to solutions that get to market faster, experience lower latency, and have comprehensive built-in security.
 

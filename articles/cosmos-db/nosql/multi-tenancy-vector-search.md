@@ -1,27 +1,30 @@
 ---
-
 title: Multitenancy in Azure Cosmos DB
-description: Learn concepts for building multitenant gen-ai apps in Azure Cosmos DB
+description: Review critical concepts required to build multitenant generative AI applications in Azure Cosmos DB.
 author: TheovanKraay
 ms.service: azure-cosmos-db
 ms.subservice: nosql
-ms.topic: conceptual
-ms.date: 06/26/2024
+ms.topic: concept-article
+ms.date: 12/03/2024
 ms.author: thvankra
 ms.collection:
   - ce-skilling-ai-copilot
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB vCore
+  - ✅ PostgreSQL
 ---
 
 # Multitenancy for vector search in Azure Cosmos DB
 
-> "OpenAI relies on Cosmos DB to dynamically scale their ChatGPT service – one of the fastest-growing consumer apps ever – enabling high reliability and low maintenance." 
+> "OpenAI relies on Cosmos DB to dynamically scale their ChatGPT service – one of the fastest-growing consumer apps ever – enabling high reliability and low maintenance."
 > — Satya Nadella
 
-Azure Cosmos DB stands out as the world's first full-featured serverless operational database with vector search, offering unparalleled scalability and performance. By using Azure Cosmos DB, users can enhance their vector search capabilities, ensuring high reliability and low maintenance for multitenant applications. 
+Azure Cosmos DB stands out as the world's first full-featured serverless operational database with vector search, offering unparalleled scalability and performance. By using Azure Cosmos DB, users can enhance their vector search capabilities, ensuring high reliability and low maintenance for multitenant applications.
 
 Multitenancy enables a single instance of a database to serve multiple customers, or tenants, simultaneously. This approach efficiently shares infrastructure and operational overhead, resulting in cost savings and simplified management. It's a crucial design consideration for SaaS applications and some internal enterprise solutions.
 
-Multitenancy introduces complexity. Your system must scale efficiently to maintain high performance across all tenants, who may have unique workloads, requirements, and service-level agreements (SLAs). 
+Multitenancy introduces complexity. Your system must scale efficiently to maintain high performance across all tenants, who may have unique workloads, requirements, and service-level agreements (SLAs).
 
 Imagine a fictional AI-assisted research platform called ResearchHub. Serving thousands of companies and individual researchers, ResearchHub manages varying user bases, data scales, and SLAs. Ensuring low query latency and high performance is vital for sustaining an excellent user experience.
 
@@ -39,7 +42,7 @@ For a higher density of tenants and lower isolation, the partition key-per-tenan
 - **Cost Efficiency:** Sharing a single Cosmos DB account across multiple tenants reduces overhead.
 - **Scalability:** Can manage a large number of tenants, each isolated within their partition key.
 - **Simplified Management:** Fewer Cosmos DB accounts to manage.
-- **Hierarchical Partition Keys (HPK):** Optimizes data organization and query performance in multi-tenant apps with a high number of tenants.
+- **Hierarchical Partition Keys (HPK):** Optimizes data organization and query performance in multitenant apps with a high number of tenants.
 
 **Drawbacks:**
 - **Resource Contention:** Shared resources can lead to contention during peak usage.
@@ -157,16 +160,16 @@ When designing a multitenant system with Cosmos DB, consider these factors:
 Azure Cosmos DB's support for DiskANN vector index capability makes it an excellent choice for applications that require fast, high-dimensional searches, such as AI-assisted research platforms like ResearchHub. Here’s how you can leverage these capabilities:
 
 **Efficient Storage and Retrieval:**
-   - **Vector Indexing:** Use the DiskANN vector index to efficiently store and retrieve high-dimensional vectors. This is useful for applications that involve similarity searches in large datasets, such as image recognition or document similarity.
-   - **Performance Optimization:** DiskANN’s vector search capabilities enable quick, accurate searches, ensuring low latency and high performance, which is critical for maintaining a good user experience.
+- **Vector Indexing:** Use the DiskANN vector index to efficiently store and retrieve high-dimensional vectors. This is useful for applications that involve similarity searches in large datasets, such as image recognition or document similarity.
+- **Performance Optimization:** DiskANN’s vector search capabilities enable quick, accurate searches, ensuring low latency and high performance, which is critical for maintaining a good user experience.
 
 **Scaling Across Tenants:**
-   - **Partition Key-Per-Tenant:** Utilize partition keys to logically isolate tenant data while benefiting from Cosmos DB’s scalable infrastructure.
-   - **Hierarchical Partitioning:** Implement hierarchical partitioning to further segment data within each tenant’s partition, improving query performance and resource distribution.
+- **Partition Key-Per-Tenant:** Utilize partition keys to logically isolate tenant data while benefiting from Cosmos DB’s scalable infrastructure.
+- **Hierarchical Partitioning:** Implement hierarchical partitioning to further segment data within each tenant’s partition, improving query performance and resource distribution.
 
 **Security and Compliance:**
-   - **Customer-Managed Keys:** Implement customer-managed keys for data encryption at rest, ensuring each tenant’s data is securely isolated.
-   - **Regular Key Rotation:** Enhance security by regularly rotating encryption keys stored in Azure Key Vault.
+- **Customer-Managed Keys:** Implement customer-managed keys for data encryption at rest, ensuring each tenant’s data is securely isolated.
+- **Regular Key Rotation:** Enhance security by regularly rotating encryption keys stored in Azure Key Vault.
 
 ### Real-world example: implementing ResearchHub
 
@@ -190,16 +193,18 @@ Multi-tenancy in Azure Cosmos DB, especially with its DiskANN vector index capab
 
 Azure Cosmos DB provides the tools necessary to build a robust, secure, and scalable multitenant environment. With the power of DiskANN vector indexing, you can deliver fast, high-dimensional searches that drive your AI applications.
 
-### Next steps
+## Vector database solutions
 
-[30-day Free Trial without Azure subscription](https://azure.microsoft.com/try/cosmosdb/)
+[Azure PostgreSQL Server pgvector Extension](../../postgresql/flexible-server/how-to-use-pgvector.md)
 
-[Multitenancy and Azure Cosmos DB](https://aka.ms/CosmosMultitenancy)
+:::image type="content" source="../media/vector-search/azure-databases-and-ai-search.png" lightbox="../media/vector-search/azure-databases-and-ai-search.png" alt-text="Diagram of Vector indexing services for Azure PostgreSQL.":::
+
+## Related content
+
+- [30-day Free Trial without Azure subscription](https://azure.microsoft.com/try/cosmosdb/)
+- [Multitenancy and Azure Cosmos DB](https://aka.ms/CosmosMultitenancy)
+
+## Next step
 
 > [!div class="nextstepaction"]
 > [Use the Azure Cosmos DB lifetime free tier](../free-tier.md)
-
-## More vector database solutions
-- [Azure PostgreSQL Server pgvector Extension](../../postgresql/flexible-server/how-to-use-pgvector.md)
-
-:::image type="content" source="../media/vector-search/azure-databases-and-ai-search.png" lightbox="../media/vector-search/azure-databases-and-ai-search.png" alt-text="Diagram of Vector indexing services.":::
