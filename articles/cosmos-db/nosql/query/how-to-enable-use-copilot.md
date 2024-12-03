@@ -53,7 +53,7 @@ As a preview feature, you'll have to add Microsoft Copilot for Azure in Cosmos D
 
 1. Next, open the query editor experience from one of two ways:
 
-   - Select the **Query faster with Copilot** card on the Data Explorer's welcome screen. This option will take you to the a query editor targeting the `CopilotSampleDb` database and `SampleContainer` container, which contains sample data for you to use with Copilot. This database is managed by Microsoft and does not interact or connect to your other databases. `CopoilotSampleDb` is free for all Azure Cosmos DB NoSQL customers.
+   - Select the **Query faster with Copilot** card on the Data Explorer's welcome screen. This option will take you to the query editor targeting the `CopilotSampleDb` database and `SampleContainer` container, which contains sample data for you to use with Copilot. This database is managed by Microsoft and does not interact or connect to your other databases. `CopoilotSampleDb` is free for all Azure Cosmos DB NoSQL customers.
 
    - Select an existing API for NoSQL database and container. Then, select **New SQL Query** from the menu bar.
 

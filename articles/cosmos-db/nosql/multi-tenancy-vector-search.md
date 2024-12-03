@@ -1,6 +1,6 @@
 ---
 title: Multitenancy in Azure Cosmos DB
-description: Review critical concepts required to build multi-tenant generative AI applications in Azure Cosmos DB.
+description: Review critical concepts required to build multitenant generative AI applications in Azure Cosmos DB.
 author: TheovanKraay
 ms.service: azure-cosmos-db
 ms.subservice: nosql
@@ -42,7 +42,7 @@ For a higher density of tenants and lower isolation, the partition key-per-tenan
 - **Cost Efficiency:** Sharing a single Cosmos DB account across multiple tenants reduces overhead.
 - **Scalability:** Can manage a large number of tenants, each isolated within their partition key.
 - **Simplified Management:** Fewer Cosmos DB accounts to manage.
-- **Hierarchical Partition Keys (HPK):** Optimizes data organization and query performance in multi-tenant apps with a high number of tenants.
+- **Hierarchical Partition Keys (HPK):** Optimizes data organization and query performance in multitenant apps with a high number of tenants.
 
 **Drawbacks:**
 - **Resource Contention:** Shared resources can lead to contention during peak usage.

@@ -156,7 +156,7 @@ The `quantizedFlat` index stores quantized or compressed vectors on the index. V
 
 The `diskANN` index is a separate index defined specifically for vectors leveraging [DiskANN](https://www.microsoft.com/research/publication/diskann-fast-accurate-billion-point-nearest-neighbor-search-on-a-single-node/), a suite of highly performant vector indexing algorithms developed by Microsoft Research. DiskANN indexes can offer some of the lowest latency, highest query-per-second (QPS), and lowest RU cost queries at high accuracy. However, since DiskANN is an approximate nearest neighbors (ANN) index, the accuracy may be lower than `quantizedFlat` or `flat`.
 
-The `diskANN` and `quantizedFlat` indexes can take optional index build parameters that can be used to tune the accuracy vs latency trade off that applies to every Approximate Nearest Neighbors vector index.
+The `diskANN` and `quantizedFlat` indexes can take optional index build parameters that can be used to tune the accuracy vs latency trade-off that applies to every Approximate Nearest Neighbors vector index.
 
 - `quantizationByteSize`: Sets the size (in bytes) for product quantization. Min=1, Default=dynamic (system decides), Max=512. Setting this larger may result in higher accuracy vector searches at expense of higher RU cost and higher latency. This applies to both `quantizedFlat` and `DiskANN` index types.
 - `indexingSearchListSize`: Sets how many vectors to search over during index build construction. Min=10, Default=100, Max=500. Setting this larger may result in higher accuracy vector searches at the expense of longer index build times and higher vector ingest latencies. This applies to `DiskANN` indexes only.
