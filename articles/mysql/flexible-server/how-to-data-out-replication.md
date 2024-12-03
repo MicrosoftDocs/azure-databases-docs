@@ -1,18 +1,16 @@
 ---
-title: Configure data-out replication
+title: Configure Data-Out Replication
 description: This article describes how to set up data-out replication for Azure Database for MySQL - Flexible Server.
 author: VandhanaMehta
 ms.author: vamehta
 ms.reviewer: maghan
-ms.date: 06/18/2024
+ms.date: 11/27/2024
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: how-to
 ---
 
 # How to configure Azure Database for MySQL - Flexible Server data-out replication
-
-[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]  
 
 This article describes how to set up data-out replication in Azure Database for MySQL Flexible Server by configuring the source and replica servers. This article assumes that you have some prior experience with MySQL servers and databases.
 
@@ -23,7 +21,7 @@ For data-out replication, the source is always Azure Database for MySQL Flexible
 
 ## Create an Azure Database for MySQL Flexible Server instance to use as a source.
 
-1. Create a new instance of Azure Database for MySQL Flexible Server (for example, sourceserver.mysql.database.Azure.com). Refer to [Create an Azure Database for MySQL Flexible Server instance using the Azure portal for server creation](quickstart-create-server-portal.md). This server is the "source" server for Data-out replication.
+1. Create a new instance of Azure Database for MySQL Flexible Server (for example, sourceserver.mysql.database.Azure.com). Refer to [Quickstart: Create an instance of Azure Database for MySQL with the Azure portal](quickstart-create-server-portal.md). This server is the "source" server for Data-out replication.
 
 1. Create duplicate user accounts and corresponding privileges.
    1. User accounts aren't replicated from the source server to the replica server. Suppose you plan on providing users with access to the replica server. In that case, you must manually create all accounts and corresponding privileges on this newly created Azure Database for MySQL Flexible Server instance.
@@ -37,28 +35,28 @@ The following steps prepare and configure the Azure Database for MySQL Flexible 
    Ensure that your network settings are established so that source and replica server can communicate seamlessly.  
    If the source server is on public access, then ensure that firewall rules allow the replica server IP address. If the replica server is hosted on Azure, please ensure that you select the option of allowing public access from any Azure service from the networking page in the Azure portal.
    If the source server is on private access, ensure that the replica server can connect to the source through Vnet peering or a VNet-to-VNet VPN gateway connection.
-   
+
    > [!NOTE]  
-   > For more information - [Networking overview - Azure Database for MySQL Flexible Server](concepts-networking.md).
-   
+   > For more information - [Connectivity and networking concepts for Azure Database for MySQL - Flexible Server](concepts-networking.md).
+
 1. **Turn on binary logging**
 
    Check to see if binary logging has been enabled on the source by running the following command:
-   
+
    ```sql
    SHOW VARIABLES LIKE 'log_bin';
    ```
-   
+
    If the variable log_bin is returned with the value 'ON', binary logging is enabled on your server.
-   
+
 1. **Create a new replication role and set up permission**
 
    Create a user account on the configured source server with replication privileges. This can be done through SQL commands or a tool such as MySQL Workbench. Consider whether you plan on replicating with SSL, as this will need to be specified when creating the user. Refer to the MySQL documentation to understand how to [add user accounts](https://dev.mysql.com/doc/refman/5.7/en/user-names.html) on your source server.
-   
+
    In the following commands, the new replication role can access the source from any machine, not just the one that hosts the source itself. This is done by specifying "syncuser@'%'" in the create user command. See the MySQL documentation to learn more about [setting account names](https://dev.mysql.com/doc/refman/5.7/en/account-names.html).
-   
+
    There are a few tools you can use to set account names. Select the one that best fits your environment.
-   
+
 #### [SQL Command](#tab/command-line)
 
 **Replication with SSL**
@@ -83,15 +81,15 @@ GRANT REPLICATION SLAVE ON *.* TO ' syncuser'@'%';
 
 To create the replication role in MySQL Workbench, open the Users and Privileges panel from the Management panel and select Add Account.
 
-:::image type="content" source="media/how-to-data-out-replication/mysql-workbench-add-account.png" alt-text="Screenshot of adding an account." lightbox="media/how-to-data-out-replication/mysql-workbench-add-account.png":::
+:::image type="content" source="media/how-to-data-out-replication/mysql-workbench-add-account.png" alt-text="Screenshot of adding an account.":::
 
 Type the username into the **Login Name** field.
 
-:::image type="content" source="media/how-to-data-out-replication/mysql-workbench-login.png" alt-text="Screenshot of logging in on MySQL Workbench." lightbox="media/how-to-data-out-replication/mysql-workbench-login.png":::
+:::image type="content" source="media/how-to-data-out-replication/mysql-workbench-login.png" alt-text="Screenshot of logging in on MySQL Workbench.":::
 
 Select the Administrative Roles panel and Replication Slave from the list of Global Privileges. Then select Apply to create the replication role.
 
-:::image type="content" source="media/how-to-data-out-replication/mysql-workbench-apply.png" alt-text="Screenshot of adding permissions." lightbox="media/how-to-data-out-replication/mysql-workbench-apply.png":::
+:::image type="content" source="media/how-to-data-out-replication/mysql-workbench-apply.png" alt-text="Screenshot of adding permissions.":::
 
 1. **Set the source server to read-only mode**
 
@@ -167,7 +165,7 @@ Restore the dump file to the server created in Azure Database for MySQL Flexible
 
    > [!NOTE]  
    > To use SSL for the connection, add the attribute SOURCE_SSL=1 to the command. For more information about using SSL in a replication context, visit - https://dev.mysql.com/doc/refman/8.0/en/change-replication-source-to.html
-   
+
 1. Activate the replica server using the following command.
 
    ```sql
@@ -186,13 +184,13 @@ Restore the dump file to the server created in Azure Database for MySQL Flexible
 
    If the state of Slave_IO_Running and Slave_SQL_Running are `yes` and the value of Seconds_Behind_Master is `0`, replication is working well. Seconds_Behind_Master indicates how late the replica is. The replica is processing updates if the value isn't `0`.
 
-   If the replica server is hosted in an Azure VM, set **Allow access to Azure services** to **ON** on the source to allow the source and replica servers to communicate. This setting can be changed from the connection security options. For more information, visit [Manage firewall rules using the portal](how-to-manage-firewall-portal.md).
-   
+   If the replica server is hosted in an Azure VM, set **Allow access to Azure services** to **ON** on the source to allow the source and replica servers to communicate. This setting can be changed from the connection security options. For more information, visit [Manage firewall rules for Azure Database for MySQL - Flexible Server using the Azure portal](how-to-manage-firewall-portal.md).
+
    If you used mydumper/myloader to dump the database, you could get the master_log_file and master_log_pos from the /backup/metadata file.
 
-## Next step
+## Related content
 
-- Learn more about [Data-out replication](concepts-data-out-replication.md)
-- Learn more about [Data-in replication](concepts-data-in-replication.md)
-- How to configure [Data-in replication](how-to-data-out-replication.md)
-- Learn more about [replicating in Azure with read replicas](concepts-read-replicas.md)
+- [Replicate data from Azure Database for MySQL - Flexible Server](concepts-data-out-replication.md)
+- [Replicate data into Azure Database for MySQL - Flexible Server](concepts-data-in-replication.md)
+- [How to configure Azure Database for MySQL - Flexible Server data-out replication](how-to-data-out-replication.md)
+- [replicating in Azure with read replicas](concepts-read-replicas.md)

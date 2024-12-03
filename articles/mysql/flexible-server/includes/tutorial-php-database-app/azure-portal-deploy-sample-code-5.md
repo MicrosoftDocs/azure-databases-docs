@@ -2,7 +2,7 @@
 author: shreyaaithal
 ms.author: shaithal
 ms.reviewer: maghan
-ms.date: 06/18/2024
+ms.date: 11/27/2024
 ms.topic: include
 ---
 
@@ -18,7 +18,6 @@ In the Deployment Center page:
 
 1. In **Branch**, select **main**.
 
-1. In the top menu, click **Save**.
+1. In the top menu, select **Save**.
 
-App Service commits a workflow file into the selected GitHub repository, in the `.github/workflows` directory. 
-
+App Service commits a workflow file into the selected GitHub repository, in the `.github/workflows` directory.

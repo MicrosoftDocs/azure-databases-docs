@@ -1,18 +1,16 @@
 ---
-title: Connect with Power BI
+title: Connect With Power BI
 description: This article shows how to build Power BI reports from data on Azure Database for MySQL - Flexible Server.
 author: SudheeshGH
 ms.author: sunaray
 ms.reviewer: maghan
-ms.date: 09/11/2024
+ms.date: 11/27/2024
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: quickstart
 ---
 
 # Quickstart: Import data from Azure Database for MySQL - Flexible Server in Power BI
-
-[!INCLUDE [applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 > [!NOTE]  
 > This article applies to Power BI Desktop only. Currently Power Query online or Power BI Service is **not supported**.
@@ -41,7 +39,7 @@ Get the connection information needed to connect to the Azure Database for MySQL
 
    :::image type="content" source="media/connect-with-powerbi-desktop/use-azure-db-for-mysql-with-power-bi-desktop.png" alt-text="Screenshot of viewing Power BI in Azure portal to connect to the database." lightbox="media/connect-with-powerbi-desktop/use-azure-db-for-mysql-with-power-bi-desktop.png":::
 
-1. Select a database from the dropdown, for example *contactsdb* and then select **Get started**.
+1. Select a database from the dropdown list, for example *contactsdb* and then select **Get started**.
 1. Download the Power BI desktop file *contactsdb.pbids*.
 
    :::image type="content" source="media/connect-with-powerbi-desktop/download-powerbi-desktop-file-for-database.png" alt-text="Screenshot of downloading Power BI file for the database." lightbox="media/connect-with-powerbi-desktop/download-powerbi-desktop-file-for-database.png":::
