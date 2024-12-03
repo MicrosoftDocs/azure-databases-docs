@@ -1,18 +1,16 @@
 ---
-title: Server concepts in Azure Database for MySQL - Flexible Server
+title: Server Concepts in Azure Database for MySQL - Flexible Server
 description: This topic provides considerations and guidelines for working with Azure Database for MySQL - Flexible Server.
 author: SudheeshGH
 ms.author: sunaray
 ms.reviewer: maghan
-ms.date: 06/18/2024
+ms.date: 11/27/2024
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: conceptual
 ---
 
 # Server concepts in Azure Database for MySQL - Flexible Server
-
-[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 This article provides considerations and guidelines for working with Azure Database for MySQL - Flexible Server.
 
@@ -44,11 +42,11 @@ Within an Azure Database for MySQL - Flexible Server instance, you can create on
 
 With Azure Database for MySQL - Flexible Server, you can stop the server when it's not in use and start the server when you resume activity. The purpose is to save costs on the database servers and pay for the resource only when it's in use. This ability becomes even more important for dev/test workloads and when you're using the server for only part of the day.
 
-When you stop the server, all active connections are dropped. Later, when you want to bring the server back online, you can use either the [Azure portal](how-to-stop-start-server-portal.md) or the Azure CLI.
+When you stop the server, all active connections are dropped. Later, when you want to bring the server back online, you can use either the [Stop/Start an Azure Database for MySQL - Flexible Server instance](how-to-stop-start-server-portal.md) or the Azure CLI.
 
 When the server is in the stopped state, the server's compute isn't billed. However, storage continues to be billed because the server's storage remains to ensure that data files are available when you start the server again.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > When you stop the server, it remains in that state for the next 30 days. If you don't manually start the server during that time, it's automatically started at the end of 30 days. You can chose to stop the server again if you're not using it.
 
 During the time that the server is stopped, you can't perform any management operations on it. Operations that aren't supported on stopped servers include changing the pricing tier, number of vCores, storage size or I/O operations, backup retention day, server tag, server password, server parameters, storage autogrow, geo-redundant backup, high availability, and user identity. These operations appear as inactive in the Azure portal.
@@ -57,17 +55,17 @@ To change any configuration settings on a stopped server, you need to [start the
 
 ## Manage a server
 
-You can manage the creation, deletion, server parameter configuration (*my.cnf*), scaling, networking, security, high availability, backup and restore, and monitoring of your Azure Database for MySQL - Flexible Server instance by using the [Azure portal](./quickstart-create-server-portal.md) or the [Azure CLI](./quickstart-create-server-cli.md).
+You can manage the creation, deletion, server parameter configuration (*my.cnf*), scaling, networking, security, high availability, backup and restore, and monitoring of your Azure Database for MySQL - Flexible Server instance by using the [Quickstart: Create an instance of Azure Database for MySQL with the Azure portal](quickstart-create-server-portal.md) or the [Quickstart: Create an instance of Azure Database for MySQL - Flexible Server by using the Azure CLI](quickstart-create-server-cli.md).
 
 In addition, the following stored procedures are available in Azure Database for MySQL - Flexible Server to perform certain required database administration tasks, because the server doesn't support `SUPER` user privileges.
 
-|Stored procedure name|Input parameters|Output parameters|Usage note|
-|-----|-----|-----|-----|
-|*mysql.az_kill*|`processlist_id`|Not applicable|Equivalent to the [`KILL CONNECTION`](https://dev.mysql.com/doc/refman/8.0/en/kill.html) command. Terminates the connection associated with the provided `processlist_id` value after terminating any statement that the connection is executing.|
-|*mysql.az_kill_query*|`processlist_id`|Not applicable|Equivalent to the [`KILL QUERY`](https://dev.mysql.com/doc/refman/8.0/en/kill.html) command. Terminates the statement that the connection is currently executing. Leaves the connection itself alive.|
-|*mysql.az_load_timezone*|Not applicable|Not applicable|Loads [time zone tables](../single-server/how-to-server-parameters.md#working-with-the-time-zone-parameter) to allow the `time_zone` parameter to be set to named values (for example, `US/Pacific`).|
+| Stored procedure name | Input parameters | Output parameters | Usage note |
+| --- | --- | --- | --- |
+| *mysql.az_kill* | `processlist_id` | Not applicable | Equivalent to the [`KILL CONNECTION`](https://dev.mysql.com/doc/refman/8.0/en/kill.html) command. Terminates the connection associated with the provided `processlist_id` value after terminating any statement that the connection is executing. |
+| *mysql.az_kill_query* | `processlist_id` | Not applicable | Equivalent to the [`KILL QUERY`](https://dev.mysql.com/doc/refman/8.0/en/kill.html) command. Terminates the statement that the connection is currently executing. Leaves the connection itself alive. |
+| *mysql.az_load_timezone* | Not applicable | Not applicable | Loads [time zone tables](../single-server/how-to-server-parameters.md#working-with-the-time-zone-parameter) to allow the `time_zone` parameter to be set to named values (for example, `US/Pacific`). |
 
 ## Related content
 
-- Learn about [creating a server](./quickstart-create-server-portal.md).
-- Learn about [monitoring and alerts](./how-to-alert-on-metric.md).
+- [creating a server](quickstart-create-server-portal.md)
+- [monitoring and alerts](how-to-alert-on-metric.md)
