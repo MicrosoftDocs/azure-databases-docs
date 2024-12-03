@@ -29,13 +29,13 @@ It's recommended to have [in-region high availability (HA)](./high-availability.
 
 When high availability is enabled, a standby physical shard (node) is created for each primary physical shard in the cluster. Each standby physical shard has the same compute and storage configuration as its primary counterpart. Synchronous replication is established between each primary and standby physical shards. When your application performs a write on an Azure Cosmos DB for MongoDB vCore cluster with high availability enabled, data is written on the primary physical shard and its standby physical shard before write acknowledgement is sent back to the application. In other words, a standby physical shard is a full replica of its primary node at all times providing strong consistency within the cluster with high availability enabled. 
 
-:::image type="content" source="media/availability-and-dr-under-the-hood/mongodb-vcore-cluster-with-replica.gif"" alt-text="Diagram of high availability enablement in an Azure Cosmos DB for MongoDB vCore cluster.":::
+:::image type="content" source="media/availability-and-dr-under-the-hood/mongodb-vcore-cluster-with-replica.gif" alt-text="Diagram of high availability enablement in an Azure Cosmos DB for MongoDB vCore cluster.":::
 
 If anything happens with a primary physical shard and it's rendered unavailable, Azure Cosmos DB for MongoDB vCore service detects unavailability and performs *failover* to standby physical shard. During failover all read and write requests are redirected to standby physical shard that now becomes a new primary thus preserving availability of the physical shard from application perspective. Write operations that could be in progress at the time of failover are retried inside the service to avoid unavailability. The old primary physical shard is discarded and replaced by a new one that establishes synchronous replication with the new primary physical shard and takes over the role of standby.
 
 ## Cross-region replication - Regional disaster recovery (DR)
 
-:::image type="content" source="media/availability-and-dr-under-the-hood/MongoDB-vCore-geo-cluster.gif"" alt-text="Diagram of a replica cluster promotion in an Azure Cosmos DB for MongoDB vCore cluster with cross-region replication enabled.":::
+:::image type="content" source="media/availability-and-dr-under-the-hood/MongoDB-vCore-geo-cluster.gif" alt-text="Diagram of a replica cluster promotion in an Azure Cosmos DB for MongoDB vCore cluster with cross-region replication enabled.":::
 
 ## Related content
 
