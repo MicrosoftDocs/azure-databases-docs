@@ -26,7 +26,7 @@ At the end, we create a simple UX using Gradio to allow users to type in questio
 > For more RAG samples, visit: [AzureDataRetrievalAugmentedGenerationSamples](https://github.com/microsoft/AzureDataRetrievalAugmentedGenerationSamples)
 
 > [!IMPORTANT]
-> This sample requires you to setup accounts for Azure Cosmos DB for NoSQL and Azure OpenAI. To get started, visit:
+> This sample requires you to set up accounts for Azure Cosmos DB for NoSQL and Azure OpenAI. To get started, visit:
 >
 > - [Azure Cosmos DB for NoSQL Python Quickstart](../nosql/quickstart-python.md)
 > - [Azure Cosmos DB for NoSQL Vector Search](../nosql/vector-search.md)
@@ -210,7 +210,7 @@ def generate_embeddings(text):
 
 ## 5. Load Data from the JSON File
 
-Extract the prevectorized MovieLens dataset from the zip file (see it's location in notebook repo [here](https://github.com/microsoft/AzureDataRetrievalAugmentedGenerationSamples/tree/main/DataSet/Movies)).
+Extract the prevectorized MovieLens dataset from the zip file (see its location in notebook repo [here](https://github.com/microsoft/AzureDataRetrievalAugmentedGenerationSamples/tree/main/DataSet/Movies)).
 
 ```python
 # Unzip the data file
