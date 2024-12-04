@@ -13,10 +13,8 @@ ms.custom:
 
 # What's happening to Azure Database for MySQL - Single Server?
 
-[!INCLUDE [applies-to-mysql-single-server](../includes/applies-to-mysql-single-server.md)]
-
 > [!IMPORTANT]
-> **Azure Database for MySQL - Single Server is on the retirement path** and has retired on **September 16, 2024**.
+> Azure Database for MySQL - Single Server retired on **September 16, 2024**.
 
 After years of evolving the Azure Database for MySQL - Single Server service, it can no longer handle all the new features, functions, and security needs. We recommend upgrading to Azure Database for MySQL - Flexible Server before Sept 16, 2024 to avoid involuntary forced-migration and server unavailability.
 
