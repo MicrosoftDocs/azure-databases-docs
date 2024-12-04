@@ -35,6 +35,8 @@ The Azure Cosmos DB serverless option best fits scenarios in which you expect *i
 - You're developing, testing, prototyping, or offering your users a new application, and you don't yet know the traffic pattern.
 - You're integrating with a serverless compute service, like [Azure Functions](/azure/azure-functions/functions-overview).
 
+Azure Cosmos DB's stateless, HTTP-based architecture ensures efficient and scalable data access without the constraints of traditional connection pooling. Unlike traditional databases, which may experience bottlenecks due to [connection pool](https://wikipedia.org/wiki/Connection_pool) limitations, Cosmos DB dynamically scales concurrent operations. This makes it an excellent choice for serverless computing scenarios, such as those leveraging Azure Functions, where high concurrency and elasticity are critical.
+
 For more information, see [Choose between provisioned throughput and serverless](throughput-serverless.md).
 
 ## Use serverless resources
