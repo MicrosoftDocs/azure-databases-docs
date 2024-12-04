@@ -54,10 +54,10 @@ With a replica in another Azure region, the primary cluster in region A accepts 
 
 The following table summarizes primary considerations for enabling and managing in-region high availability and cross-region disaster recovery strategy.
 
-|Scenario|Azure Cosmos DB for MongoDB vCore feature|No data loss|Protection from region-wide outages|Automatic|No connection string change|
-|--------------------|-----------------------------|-------------------|-----------------------------------|------------|---------------|
-|Node failure | In-region high availability (HA)| :heavy_check_mark: | :x: | :heavy_check_mark: | :heavy_check_mark: |
-|Regional outage | Cross-region replica cluster| :x: | :heavy_check_mark: | :x: | :heavy_check_mark:† |
+|Scenario |Azure Cosmos DB for MongoDB vCore feature|No data loss|Protection from region-wide outages|Automatic failover|No connection string change|
+|----------------|----------------------------------|--------------------|--------------------|--------------------|---------------------|
+|Node failure    | In-region high availability (HA) | :heavy_check_mark: | :x:                | :heavy_check_mark: | :heavy_check_mark:  |
+|Regional outage | Cross-region replica cluster     | :x:                | :heavy_check_mark: | :x:                | :heavy_check_mark:† |
 
 † When using global read-write connection string.
 
