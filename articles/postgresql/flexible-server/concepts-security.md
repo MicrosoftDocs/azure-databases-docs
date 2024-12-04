@@ -4,7 +4,7 @@ description: Learn about security in the Flexible Server deployment option for A
 author: techlake
 ms.author: hganten
 ms.reviewer: maghan
-ms.date: 08/02/2024
+ms.date: 12/03/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: conceptual
@@ -32,7 +32,7 @@ Azure Database for PostgreSQL - Flexible Server encrypts data in two ways:
 
 - **Data in transit**: Azure Database for PostgreSQL - Flexible Server encrypts in-transit data with Secure Sockets Layer and Transport Layer Security (SSL/TLS). Encryption is enforced by default. For more detailed information  on connection security with SSL\TLS, see this [documentation](../flexible-server/concepts-networking-ssl-tls.md). For better security, you might choose to enable [SCRAM authentication in Azure Database for PostgreSQL - Flexible Server](how-to-connect-scram.md).
 
-   Although **it's highly not recommended**, if needed, due to legacy client incompatibility, you have an option to disable TLS\SSL for connections to Azure Database for PostgreSQL - Flexible Server by updating the `require_secure_transport` server parameter to OFF. You can also set TLS version by setting `ssl_max_protocol_version` server parameters.
+   Although **it is not recommended**, if needed, due to legacy client incompatibility, you have an option to allow both TLS\SSL and non-TLS/SSL connections to Azure Database for PostgreSQL - Flexible Server by updating the `require_secure_transport` server parameter to OFF. You can also set the TLS version by setting `ssl_max_protocol_version` server parameters.
 - **Data at rest**: For storage encryption, Azure Database for PostgreSQL - Flexible Server uses the FIPS 140-2 validated cryptographic module. Data is encrypted on disk, including backups and the temporary files created while queries are running.
 
   The service uses [Galois/Counter Mode (GCM)](https://en.wikipedia.org/wiki/Galois/Counter_Mode) mode with AES 256-bit cipher included in Azure storage encryption, and the keys are system managed. This is similar to other at-rest encryption technologies, like transparent data encryption in SQL Server or Oracle databases. Storage encryption is always on and can't be disabled.
