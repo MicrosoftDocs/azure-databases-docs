@@ -15,7 +15,7 @@ ms.date: 12/01/2024
 
 [!INCLUDE[MongoDB vCore](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 
-This article discusses internals of high availability (HA) and cross-region disaster recovery (DR) for Azure Cosmos DB for MongoDB vCore. It covers the design of these features and provides an in-depth look at the capabilities for proper in-region and cross-region strategy planning.
+This article discusses internals of [high availability (HA)](./high-availability.md) and [cross-region disaster recovery (DR)](./cross-region-replication.md#disaster-recovery-using-cluster-read-replicas) for Azure Cosmos DB for MongoDB vCore. It covers the design of these features and provides an in-depth look at the capabilities for proper in-region and cross-region strategy planning.
 
 ## Azure Cosmos DB for MongoDB vCore cluster anatomy
 An Azure Cosmos DB for MongoDB vCore cluster can have one or multiple physical shards (nodes). Each physical shard consists of a compute node and remote premium SSD storage attached to it. All provisioned [compute cores and storage](./compute-storage.md) on a physical shard are dedicated to one database hosted on the cluster and aren't shared with any other cluster or database. When cluster has multiple physical shards, each of its shards has exactly the same compute and storage configuration. No matter how many physical shards are provisioned for a cluster, all cluster's compute and storage resources are always hosted in the same Azure region.
@@ -41,7 +41,7 @@ If anything happens with a primary physical shard and it is rendered unavailable
 
 ## Cross-region replication - Regional disaster recovery (DR)
 
-While Azure regional outages are becoming [less and less frequent](https://azure.status.microsoft/status/history/), an outage when the whole region is unavailable might occur. Keeping an up-to-date replica of your data in another region is a good strategy for disaster recovery (DR) during a regional outage. Having a cluster with a copy of your database that is up and running at all times in another region allows to prevent database access interruption even if large scale disasters that might impact your primary Azure region happen. This is a capability that cross-region replication provides in Azure Cosmos DB for MongoDB vCore.
+While Azure regional outages are becoming [less and less frequent](https://azure.status.microsoft/status/history/), an outage when the whole region is unavailable might occur. Keeping an up-to-date replica of your data in another region is a good strategy for disaster recovery (DR) during a regional outage. Having a cluster with a copy of your database up and running in another region allows to prevent database access interruption even if large scale disasters that might impact your primary Azure region happen. This is a capability that cross-region replication provides in Azure Cosmos DB for MongoDB vCore.
 
 You can create a replica cluster in another Azure region to prevent loss of database access in case of such a regional outage. Each physical shard of that cluster is going to have asynchronous replication established with its counterpart in the primary region. Asynchronous replication provides eventual consistency and is typically used for cross-region scenarios to avoid performance impact on the primary (read-write) cluster. Without asynchronous replication primary clusters would need to wait for each write to be delivered to replicas and get confirmed by the replicas before confirmation can be sent back to the application. Asynchronous replication means replication lag. Replication lag depends on intensity of write operations on the primary cluster and overall load of the primary and replica clusters.
 
@@ -64,5 +64,5 @@ The following table summarizes primary considerations for enabling and managing 
 ## Related content
 
 - [Learn about in-region high availability in Azure Cosmos DB for MongoDB vCore](./high-availability.md)
-- [Learn about cross-region replication and cross-region disaser recovery](./cross-region-replication.md)
+- [Learn about cross-region replication and cross-region disaster recovery](./cross-region-replication.md)
 - [Learn about reliability in Azure Cosmos DB for MongoDB vCore](/azure/reliability/reliability-cosmos-mongodb)
