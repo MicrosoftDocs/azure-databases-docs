@@ -11,41 +11,54 @@ ms.date: 12/01/2024
 #Customer Intent: As a database adminstrator, I want to configure availability and cross-region replication, so that I can have appropirtiate in-region and cross-region disaster recovery plans in the event of outages on different levels.
 ---
 
-# Availability (reliability) and disaster recovery (DR) in Azure Cosmos DB for MongoDB vCore - Under the hood
+# Availability (reliability) and disaster recovery (DR) in Azure Cosmos DB for MongoDB vCore: Behind the scenes
 
 [!INCLUDE[MongoDB vCore](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 
-This article discusses internals of [high availability (HA)](./high-availability.md) and [cross-region disaster recovery (DR)](./cross-region-replication.md#disaster-recovery-using-cluster-read-replicas) for Azure Cosmos DB for MongoDB vCore. It covers the design of these features and provides an in-depth look at the capabilities for proper in-region and cross-region strategy planning.
+This article delves into the internals of [high availability (HA)](./high-availability.md) and [cross-region disaster recovery (DR)](./cross-region-replication.md#disaster-recovery-using-cluster-read-replicas) for Azure Cosmos DB for MongoDB vCore, outlining the design and capabilities of these features. It provides insights for effective in-region and cross-region strategy planning to ensure reliability and business continuity.
 
 ## Azure Cosmos DB for MongoDB vCore cluster anatomy
-An Azure Cosmos DB for MongoDB vCore cluster can have one or multiple physical shards (nodes). Each physical shard consists of a compute node and remote premium SSD storage attached to it. All provisioned [compute cores and storage](./compute-storage.md) on a physical shard are dedicated to one database hosted on the cluster and aren't shared with any other cluster or database. When cluster has multiple physical shards, each of its shards has exactly the same compute and storage configuration. No matter how many physical shards are provisioned for a cluster, all cluster's compute and storage resources are always hosted in the same Azure region.
+An **Azure Cosmos DB for MongoDB vCore** cluster consists of one or more physical shards (nodes). Each physical shard includes a dedicated compute node and remote premium SSD storage. The [compute and storage resources](./compute-storage.md) of a physical shard are exclusive to a single database and not shared across clusters or databases.
 
-The remote premium SSD storage used in Azure Cosmos DB for MongoDB vCore is locally redundant. It means that all data written to the cluster's storage is synchronously replicate three times within the same physical location in the cluster's Azure region. Azure Storage service transparently maintains three synchronous replicas at all times on each Azure Cosmos DB for MongoDB vCore cluster node. Azure Storage regularly verifies the integrity of data stored using cyclic redundancy checks (CRCs). And detected data corruption is repaired using redundant data. Azure Storage also calculates checksums on all network traffic to detect corruption of data packets when storing or retrieving data.
+In clusters with multiple shards, every shard has an identical compute and storage configuration. Regardless of the number of shards, all cluster resources are hosted within the same Azure region.
+
+Azure Cosmos DB for MongoDB vCore uses *locally redundant storage* (LRS), ensuring all data is synchronously replicated three times within the cluster's physical location. Azure Storage transparently manages these replicas, verifies data integrity using cyclic redundancy checks (CRCs), and repairs any detected corruption using redundant data. Additionally, checksums are applied to network traffic to prevent data corruption during storage and retrieval.
 
 :::image type="content" source="media/availability-and-dr-under-the-hood/mongodb-vcore-cluster.png" alt-text="Diagram of the Azure Cosmos DB for MongoDB vCore cluster's components.":::
 *Figure 1. Azure Cosmos DB for MongoDB vCore cluster components.*
 
-Whether application connects to a single shard or multishard Azure Cosmos DB for MongoDB vCore cluster, it uses a single connection string and a single endpoint to connect to the database. It allows you to abstract complexity of distributed MongoDB database and let application  connect to it as it would to any other non-distributed MongoDB one.
+Whether your application connects to a single shard or multishard cluster, it uses a single connection string and endpoint. This abstraction simplifies distributed database operations, making it as straightforward to connect to a multi-shard setup as to a standalone MongoDB database.
 
 ## In-region high availability (HA)
-It is recommended to have [in-region high availability (HA)](./high-availability.md) always enabled on all production Azure Cosmos DB for MongoDB vCore clusters to ensure database availability consistent with typical modern requirements. Disabling high availability on development or experimental clusters allows you to reduce overall cost. High availability can be enabled and disabled on a cluster during cluster provisioning and at any time after the cluster is created. High availability is offered in all Azure regions where Azure Cosmos DB for MongoDB vCore is available regardless of the region's capabilities.
+For production workloads, it is highly recommended to enable [**in-region high availability (HA)**](./high-availability.md) to meet modern reliability standards. While HA can be disabled for development or experimental clusters to reduce costs, it is critical for maintaining database availability in production.
 
-When high availability is enabled, a standby physical shard (node) is created for each primary physical shard in the cluster. Each standby physical shard has the same compute and storage configuration as its primary counterpart. It means that when high availability is enabled on a cluster, six replicas of data are maintained on each physical shard (node) - three on the primary physical shard and three on its standby shard. When a region supports [availability zones (AZs)](/azure/reliability/availability-zones-overview), each primary-standby physical shard pair is provisioned in two different availability zones. 
+HA can be toggled during cluster provisioning or at any time after the cluster is created. It is available in all Azure regions that support Azure Cosmos DB for MongoDB vCore, regardless of specific regional capabilities.
 
-Synchronous replication is established between each primary and standby physical shards. When your application performs a write on an Azure Cosmos DB for MongoDB vCore cluster with high availability enabled, data is written on the primary physical shard and its standby physical shard before write acknowledgment is sent back to the application. In other words, a standby physical shard is an always up-to-date full replica of its primary node providing strong consistency within the highly available cluster. 
+When HA is enabled, each primary physical shard in the cluster is paired with a standby shard. The standby shard mirrors the compute and storage configuration of its primary counterpart. This results in **six data replicas per shard**—three on the primary shard and three on the standby. In regions with [availability zones (AZs)](/azure/reliability/availability-zones-overview), primary and standby shards are deployed in separate zones.
+
+Data is synchronously replicated between each primary and standby shard. Writes are acknowledged only after being successfully committed to both shards, ensuring strong consistency within the HA cluster. In other words, a standby physical shard is an always up-to-date full replica of its primary node providing *strong consistency* within the highly available cluster.
 
 :::image type="content" source="media/availability-and-dr-under-the-hood/mongodb-vcore-cluster-with-ha.gif" alt-text="Diagram of high availability enablement in an Azure Cosmos DB for MongoDB vCore cluster.":::
 *Figure 2. Azure Cosmos DB for MongoDB vCore cluster with and without in-region high availability (HA) enabled.*
 
-If anything happens with a primary physical shard and it is rendered unavailable, Azure Cosmos DB for MongoDB vCore service detects unavailability and performs *failover* to its standby physical shard. During failover all read and write requests for the primary physical shard are redirected to the corresponding standby physical shard. The former standby shard now becomes the new primary one thus preserving availability of the physical shard from application perspective. Write operations that could be in progress at the time of failover are retried inside the service to avoid unavailability. Azure Cosmos DB for MongoDB vCore services discards the old primary physical shard and replaces it with a new one. Once the new physical shard is (re)created, it establishes synchronous replication with the new primary physical shard and takes over the role of standby.
+In the event of a primary shard failure, the service automatically performs a *failover* to its standby shard. During failover, all read and write requests are redirected to the standby shard, which becomes the new primary. Write operations in progress during the failover are retried within the service to ensure continuity. A replacement shard is then created to re-establish synchronous replication, becoming the new standby.
 
-## Cross-region replication - Regional disaster recovery (DR)
+## Cross-region replication: Regional disaster recovery (DR)
 
-While Azure regional outages are becoming [less and less frequent](https://azure.status.microsoft/status/history/), an outage when the whole region is unavailable might occur. Keeping an up-to-date replica of your data in another region is a good strategy for disaster recovery (DR) during a regional outage. Having a cluster with a copy of your database up and running in another region allows to prevent database access interruption even if large scale disasters that might impact your primary Azure region happen. This is a capability that cross-region replication provides in Azure Cosmos DB for MongoDB vCore.
+[Although rare](https://azure.status.microsoft/status/history/), regional outages can disrupt access to your database. Cross-region replication provides a robust disaster recovery (DR) strategy, ensuring access to your data even during large-scale disruptions.
 
-You can create a replica cluster in another Azure region to prevent loss of database access in case of such a regional outage. Each physical shard of that cluster is going to have asynchronous replication established with its counterpart in the primary region. Asynchronous replication provides eventual consistency and is typically used for cross-region scenarios to avoid performance impact on the primary (read-write) cluster. Without asynchronous replication primary clusters would need to wait for each write to be delivered to replicas and get confirmed by the replicas before confirmation can be sent back to the application. Asynchronous replication means replication lag. Replication lag depends on intensity of write operations on the primary cluster and overall load of the primary and replica clusters.
+With cross-region replication, you can create a replica cluster in a different Azure region. Each shard in the replica cluster asynchronously replicates data from its counterpart in the primary cluster. This replication model ensures *eventual consistency* while minimizing performance impact on the primary cluster.
 
-With a replica in another Azure region, the primary cluster in region A accepts reads and writes and the replica cluster in region B can be open for reads (only). Applications can perform reads and writes to the primary cluster and intense read operations such as dashboards with tens of thousands of users can be pointed to the replica cluster. Single self connection string is provided for each cluster for maxium control of the operations. Self connection strings are permanent and always point to the same physical cluster regardless of its role (read-write or read-only). To facilitate uninterrupted writes without the need to reconfigure applications a dynamic *global read-write connection string* is provided in addition to the two permanent self connextion strings. Global read-write connection string always points to the cluster that is open for writes at the moment. During replica promotion global read-write connection string is updated to point to the promoted replica cluster that is now open for writes.
+Asynchronous replication avoids the need for each write operation to be immediately delivered to and confirmed by replicas before a "write complete" acknowledgment is sent back to the application. However, this means that some writes completed on the primary cluster may not yet be replicated to the replica cluster, resulting in replication lag. The extent of replication lag depends on the intensity of write operations on the primary cluster and the overall load on both the primary and replica clusters.
+
+In this setup:
+
+- The primary cluster in Region A handles all reads and writes.
+- The replica cluster in Region B supports read-only access, enabling high-performance read operations closer to applications or users in that region.
+
+Applications can perform reads and writes to the primary cluster in region A and intense read operations such as dashboards with tens of thousands of users can be pointed to the replica cluster in region B. 
+
+Applications can leverage a *dynamic global read-write connection string*, which always points to the cluster open for writes. During a regional outage, the replica cluster in Region B can be promoted to accept writes. The global connection string automatically updates to point to the promoted cluster, ensuring uninterrupted write operations.
 
 :::image type="content" source="media/availability-and-dr-under-the-hood/mongodb-vcore-cluster-with-replica.gif" alt-text="Diagram of a cross-region replica promotion for disaster recovery purpose in Azure Cosmos DB for MongoDB vCore.":::
 *Figure 3. Regional disaster recovery (DR) with an Azure Cosmos DB for MongoDB vCore cluster with cross-region replication enabled. Cluster in region B is promoted to become the new read-write cluster. Cluster in region A becomes a replica cluster.*
@@ -59,7 +72,7 @@ The following table summarizes primary considerations for enabling and managing 
 |Node failure    | In-region high availability (HA) | :heavy_check_mark: | :x:                | :heavy_check_mark: | :heavy_check_mark:  |
 |Regional outage | Cross-region replica cluster     | :x:                | :heavy_check_mark: | :x:                | :heavy_check_mark:† |
 
-† When using global read-write connection string.
+† When using the global read-write connection string.
 
 ## Related content
 
