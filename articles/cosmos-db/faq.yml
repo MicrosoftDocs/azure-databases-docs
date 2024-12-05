@@ -151,7 +151,7 @@ sections:
           How does connection pooling work with Azure Cosmos DB?
         answer: |
           [Connection pooling](https://wikipedia.org/wiki/Connection_pool) in Azure Cosmos DB is managed by the SDKs (e.g., .NET, Java, Python) rather than the service itself. These SDKs reuse HTTP connections to the database endpoint to optimize resource usage and performance. This feature applies to all Cosmos DB account types, including provisioned throughput and serverless models. The stateless, HTTP-based architecture of Cosmos DB enables scalable, concurrent operations without traditional connection pooling constraints.
-          Use a long-lived Cosmos DB SDK client instance to maximize connection reuse. Configure connection pooling settings in the SDK based on workload requirements. Monitor performance using metrics and logs to identify and adjust connection settings for optimal throughput and latency. Check best practices and performance tips for your specific SDK for further details; for example, see [Tuning connection configurations in Java SDK v4](nosql/tune-connection-configurations-java-sdk-v4.md).
+          To ensure optimal performance, use a long-lived Cosmos DB SDK client instance to maximize connection reuse. Configure connection pooling settings in the SDK based on workload requirements. Monitor performance using metrics and logs to identify and adjust connection settings for optimal throughput and latency. Check best practices and performance tips for your specific SDK for further details; for example, see [Tuning connection configurations in Java SDK v4](nosql/tune-connection-configurations-java-sdk-v4.md).
 
 
 additionalContent: |
