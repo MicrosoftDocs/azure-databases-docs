@@ -558,9 +558,9 @@
     items:
     - name: Allow extensions
       href: extensions/how-to-allow-extensions.md
-    - name: Extension considerations
+    - name: Special considerations
       href: extensions/concepts-extensions-considerations.md
-    - name: Extension versions
+    - name: List by name
       href: extensions/concepts-extensions-versions.md           
     - name: Azure AI (azure_ai)
       items:

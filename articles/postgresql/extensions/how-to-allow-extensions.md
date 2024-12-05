@@ -145,6 +145,6 @@ While updating extensions is straightforward, there are certain limitations:
 
 ## Related content
 
-- [Extension versions](concepts-extensions-versions.md)
-- [Extension considerations](concepts-extensions-considerations.md)
+- [List of extensions by name](concepts-extensions-versions.md)
+- [Special considerations with extensions](concepts-extensions-considerations.md)
 - [Feedback forum](https://aka.ms/pgfeedback)
