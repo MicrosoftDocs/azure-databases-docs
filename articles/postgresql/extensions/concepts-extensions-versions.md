@@ -9,7 +9,7 @@ ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: concept-article
 ---
-#List of extensions by name
+# List of extensions by name
 
 [!INCLUDE [extensions-table](includes/extensions-table-new.md)]
 
