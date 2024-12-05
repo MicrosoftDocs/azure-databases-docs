@@ -562,6 +562,8 @@
       href: extensions/concepts-extensions-considerations.md
     - name: List by name
       href: extensions/concepts-extensions-versions.md           
+    - name: List by version of PostgreSQL
+      href: extensions/concepts-extensions-by-engine.md           
     - name: Azure AI (azure_ai)
       items:
       - name: Overview

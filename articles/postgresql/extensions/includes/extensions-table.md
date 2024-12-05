@@ -2,12 +2,12 @@
 author: akashraokm
 ms.author: akashrao
 ms.reviewer: maghan, randolphwest
-ms.date: 12/04/2024
+ms.date: 12/05/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
+ms.custom: automatically generated
 ---
-
 ## address_standardizer
 
 [address_standardizer](http://postgis.net/docs/manual-2.5/Address_Standardizer.html) is used to parse an address into constituent elements. Generally used to support geocoding address normalization step.
@@ -21,6 +21,8 @@ ms.topic: include
 | 13 | 3.2.3 |
 | 12 | 3.2.3 |
 | 11 | 3.2.3 |
+
+
 
 ## address_standardizer_data_us
 
@@ -36,9 +38,11 @@ ms.topic: include
 | 12 | 3.2.3 |
 | 11 | 3.2.3 |
 
+
+
 ## age
 
-[age](https://age.apache.org/) (Preview) provides graph database capabilities
+[age](https://age.apache.org/) (Preview) provides graph database capabilities.
 
 | PostgreSQL version | Extension version |
 | --- | --- |
@@ -65,6 +69,8 @@ ms.topic: include
 | 13 | 1.2 |
 | 12 | 1.2 |
 | 11 | 1.1 |
+
+
 
 ## anon
 
@@ -96,9 +102,11 @@ ms.topic: include
 | 12 | 1.1.0 |
 | 11 | N/A |
 
+
+
 ## azure_storage
 
-[azure_storage](../../flexible-server/concepts-storage-extension.md) provides Azure integration for PostgreSQL.
+[azure_storage](../../flexible-server/concepts-storage-extension.md) provides Azure Storage integration for PostgreSQL.
 
 | PostgreSQL version | Extension version |
 | --- | --- |
@@ -126,6 +134,8 @@ ms.topic: include
 | 12 | 1.0 |
 | 11 | 1.0 |
 
+
+
 ## btree_gin
 
 [btree_gin](https://www.postgresql.org/docs/current/btree-gin.html) provides support for indexing common datatypes in GIN.
@@ -139,6 +149,8 @@ ms.topic: include
 | 13 | 1.3 |
 | 12 | 1.3 |
 | 11 | 1.3 |
+
+
 
 ## btree_gist
 
@@ -154,6 +166,8 @@ ms.topic: include
 | 12 | 1.5 |
 | 11 | 1.5 |
 
+
+
 ## citext
 
 [citext](https://www.postgresql.org/docs/current/citext.html) is a data type for case-insensitive character strings.
@@ -167,6 +181,8 @@ ms.topic: include
 | 13 | 1.6 |
 | 12 | 1.6 |
 | 11 | 1.5 |
+
+
 
 ## cube
 
@@ -182,6 +198,8 @@ ms.topic: include
 | 12 | 1.4 |
 | 11 | 1.4 |
 
+
+
 ## dblink
 
 [dblink](https://www.postgresql.org/docs/current/dblink.html) to connect to other PostgreSQL databases from within a database.
@@ -196,8 +214,9 @@ ms.topic: include
 | 12 | 1.2 |
 | 11 | 1.2 |
 
-> [!NOTE]  
+> [!NOTE]
 > Read the special considerations for extension [dblink](../concepts-extensions-considerations.md#dblink) in Flexible Server.
+
 
 ## dict_int
 
@@ -213,6 +232,8 @@ ms.topic: include
 | 12 | 1.0 |
 | 11 | 1.0 |
 
+
+
 ## dict_xsyn
 
 [dict_xsyn](https://www.postgresql.org/docs/current/dict-xsyn.html) provides a text search dictionary template for extended synonym processing.
@@ -226,6 +247,8 @@ ms.topic: include
 | 13 | 1.0 |
 | 12 | 1.0 |
 | 11 | 1.0 |
+
+
 
 ## earthdistance
 
@@ -241,6 +264,8 @@ ms.topic: include
 | 12 | 1.1 |
 | 11 | 1.1 |
 
+
+
 ## fuzzystrmatch
 
 [fuzzystrmatch](https://www.postgresql.org/docs/current/fuzzystrmatch.html) determines similarities and distance between strings.
@@ -254,6 +279,8 @@ ms.topic: include
 | 13 | 1.1 |
 | 12 | 1.1 |
 | 11 | 1.1 |
+
+
 
 ## hstore
 
@@ -269,6 +296,8 @@ ms.topic: include
 | 12 | 1.6 |
 | 11 | 1.5 |
 
+
+
 ## hypopg
 
 [hypopg](https://github.com/HypoPG/hypopg) provides hypothetical indexes for PostgreSQL.
@@ -282,6 +311,8 @@ ms.topic: include
 | 13 | 1.4.0 |
 | 12 | 1.4.0 |
 | 11 | 1.4.0 |
+
+
 
 ## intagg
 
@@ -297,6 +328,8 @@ ms.topic: include
 | 12 | 1.1 |
 | 11 | 1.1 |
 
+
+
 ## intarray
 
 [intarray](https://www.postgresql.org/docs/current/intarray.html) provides functions, operators, and index support for 1-D arrays of integers.
@@ -310,6 +343,8 @@ ms.topic: include
 | 13 | 1.3 |
 | 12 | 1.2 |
 | 11 | 1.2 |
+
+
 
 ## isn
 
@@ -325,6 +360,8 @@ ms.topic: include
 | 12 | 1.2 |
 | 11 | 1.2 |
 
+
+
 ## lo
 
 [lo](https://www.postgresql.org/docs/current/lo.html) provides data types for international product numbering standards.
@@ -338,6 +375,8 @@ ms.topic: include
 | 13 | 1.1 |
 | 12 | 1.1 |
 | 11 | 1.1 |
+
+
 
 ## login_hook
 
@@ -353,6 +392,8 @@ ms.topic: include
 | 12 | 1.4 |
 | 11 | 1.4 |
 
+
+
 ## ltree
 
 [ltree](https://www.postgresql.org/docs/current/ltree.html) is a data type for hierarchical tree-like structures.
@@ -366,6 +407,8 @@ ms.topic: include
 | 13 | 1.2 |
 | 12 | 1.1 |
 | 11 | 1.1 |
+
+
 
 ## oracle_fdw
 
@@ -381,6 +424,8 @@ ms.topic: include
 | 12 | 1.2 |
 | 11 | N/A |
 
+
+
 ## orafce
 
 [orafce](https://github.com/orafce/orafce) provides functions and operators that emulate a subset of functions and packages from the Oracle RDBMS.
@@ -395,6 +440,8 @@ ms.topic: include
 | 12 | 3.18 |
 | 11 | 3.7 |
 
+
+
 ## pageinspect
 
 [pageinspect](https://www.postgresql.org/docs/current/pageinspect.html) inspects the contents of database pages at a low level.
@@ -408,6 +455,8 @@ ms.topic: include
 | 13 | 1.8 |
 | 12 | 1.7 |
 | 11 | 1.7 |
+
+
 
 ## pgaudit
 
@@ -439,8 +488,9 @@ ms.topic: include
 | 12 | 1.3 |
 | 11 | 1.3 |
 
-> [!NOTE]  
+> [!NOTE]
 > Read the special considerations for extension [pg_buffercache](../concepts-extensions-considerations.md#pg_buffercache) in Flexible Server.
+
 
 ## pg_cron
 
@@ -456,9 +506,10 @@ ms.topic: include
 | 12 | 1.6 <sup>*</sup> |
 | 11 | 1.4-1 <sup>*</sup> |
 
-<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.  
-> [!NOTE]  
+<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
+> [!NOTE]
 > Read the special considerations for extension [pg_cron](../concepts-extensions-considerations.md#pg_cron) in Flexible Server.
+
 
 ## pgcrypto
 
@@ -474,6 +525,8 @@ ms.topic: include
 | 12 | 1.3 |
 | 11 | 1.3 |
 
+
+
 ## pg_failover_slots
 
 [pg_failover_slots](https://github.com/EnterpriseDB/pg_failover_slots) is a logical replication slot manager for failover purposes.
@@ -488,9 +541,10 @@ ms.topic: include
 | 12 | 1.0.1 <sup>*</sup> |
 | 11 | 1.0.1 <sup>*</sup> |
 
-<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.  
-> [!NOTE]  
+<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
+> [!NOTE]
 > Read the special considerations for extension [pg_failover_slots](../concepts-extensions-considerations.md#pg_failover_slots) in Flexible Server.
+
 
 ## pg_freespacemap
 
@@ -506,6 +560,8 @@ ms.topic: include
 | 12 | 1.2 |
 | 11 | 1.2 |
 
+
+
 ## pg_hint_plan
 
 [pg_hint_plan](https://github.com/ossc-db/pg_hint_plan) makes it possible to tweak PostgreSQL execution plans using so-called hints in SQL comments.
@@ -520,9 +576,10 @@ ms.topic: include
 | 12 | 1.3.7 <sup>*</sup> |
 | 11 | 1.3.7 <sup>*</sup> |
 
-<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.  
-> [!NOTE]  
+<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
+> [!NOTE]
 > Read the special considerations for extension [pg_hint_plan](../concepts-extensions-considerations.md#pg_hint_plan) in Flexible Server.
+
 
 ## pglogical
 
@@ -570,9 +627,10 @@ ms.topic: include
 | 12 | 1.2 <sup>*</sup> |
 | 11 | 1.2 <sup>*</sup> |
 
-<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.  
-> [!NOTE]  
+<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
+> [!NOTE]
 > Read the special considerations for extension [pg_prewarm](../concepts-extensions-considerations.md#pg_prewarm) in Flexible Server.
+
 
 ## pg_repack
 
@@ -588,12 +646,11 @@ ms.topic: include
 | 12 | 1.4.7 |
 | 11 | 1.4.7 |
 
-> [!NOTE]  
+> [!NOTE]
 > Read the special considerations for extension [pg_repack](../concepts-extensions-considerations.md#pg_repack) in Flexible Server.
 
-<a id="pgrouting"></a>
 
-## pgrout
+## pgrouting
 
 [pgrouting](https://pgrouting.org/) provides geospatial routing functionality.
 
@@ -606,6 +663,8 @@ ms.topic: include
 | 13 | 3.3.0 |
 | 12 | 3.3.0 |
 | 11 | 3.3.0 |
+
+
 
 ## pgrowlocks
 
@@ -620,6 +679,8 @@ ms.topic: include
 | 13 | 1.2 |
 | 12 | 1.2 |
 | 11 | 1.2 |
+
+
 
 ## pg_squeeze
 
@@ -651,9 +712,10 @@ ms.topic: include
 | 12 | 1.7 <sup>*</sup> |
 | 11 | 1.6 <sup>*</sup> |
 
-<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.  
-> [!NOTE]  
+<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
+> [!NOTE]
 > Read the special considerations for extension [pg_stat_statements](../concepts-extensions-considerations.md#pg_stat_statements) in Flexible Server.
+
 
 ## pgstattuple
 
@@ -669,8 +731,9 @@ ms.topic: include
 | 12 | 1.5 |
 | 11 | 1.5 |
 
-> [!NOTE]  
+> [!NOTE]
 > Read the special considerations for extension [pgstattuple](../concepts-extensions-considerations.md#pgstattuple) in Flexible Server.
+
 
 ## pg_trgm
 
@@ -686,6 +749,8 @@ ms.topic: include
 | 12 | 1.4 |
 | 11 | 1.4 |
 
+
+
 ## pg_visibility
 
 [pg_visibility](https://www.postgresql.org/docs/current/pgvisibility.html) examines the visibility map and page-level visibility info.
@@ -699,6 +764,8 @@ ms.topic: include
 | 13 | 1.2 |
 | 12 | 1.2 |
 | 11 | 1.2 |
+
+
 
 ## plpgsql
 
@@ -714,6 +781,8 @@ ms.topic: include
 | 12 | 1.0 |
 | 11 | 1.0 |
 
+
+
 ## plv8
 
 [plv8](https://github.com/plv8/plv8) pL/JavaScript (v8) is a trusted procedural language.
@@ -727,6 +796,8 @@ ms.topic: include
 | 13 | 3.0.0 |
 | 12 | 3.0.0 |
 | 11 | 3.0.0 |
+
+
 
 ## postgis
 
@@ -742,6 +813,8 @@ ms.topic: include
 | 12 | 3.2.3 |
 | 11 | 3.2.3 |
 
+
+
 ## postgis_raster
 
 [postgis_raster](https://www.postgis.net) raster types and functions.
@@ -755,6 +828,8 @@ ms.topic: include
 | 13 | 3.2.3 |
 | 12 | 3.2.3 |
 | 11 | 3.2.3 |
+
+
 
 ## postgis_sfcgal
 
@@ -770,6 +845,8 @@ ms.topic: include
 | 12 | 3.2.3 |
 | 11 | 3.2.3 |
 
+
+
 ## postgis_tiger_geocoder
 
 [postgis_tiger_geocoder](https://www.postgis.net) tiger geocoder and reverse geocoder.
@@ -783,6 +860,8 @@ ms.topic: include
 | 13 | 3.2.3 |
 | 12 | 3.2.3 |
 | 11 | 3.2.3 |
+
+
 
 ## postgis_topology
 
@@ -798,6 +877,8 @@ ms.topic: include
 | 12 | 3.2.3 |
 | 11 | 3.2.3 |
 
+
+
 ## postgres_fdw
 
 [postgres_fdw](https://www.postgresql.org/docs/current/postgres-fdw.html) is a foreign-data wrapper for remote PostgreSQL servers.
@@ -812,8 +893,9 @@ ms.topic: include
 | 12 | 1.0 |
 | 11 | 1.0 |
 
-> [!NOTE]  
+> [!NOTE]
 > Read the special considerations for extension [postgres_fdw](../concepts-extensions-considerations.md#postgres_fdw) in Flexible Server.
+
 
 ## postgres_protobuf
 
@@ -829,6 +911,8 @@ ms.topic: include
 | 12 | 0.2 |
 | 11 | N/A |
 
+
+
 ## semver
 
 [semver](https://pgxn.org/dist/semver/doc/semver.html) provides a semantic version data type.
@@ -842,6 +926,8 @@ ms.topic: include
 | 13 | 0.32.0 |
 | 12 | 0.32.0 |
 | 11 | 0.32.0 |
+
+
 
 ## session_variable
 
@@ -857,6 +943,8 @@ ms.topic: include
 | 12 | 3.3 |
 | 11 | 3.3 |
 
+
+
 ## sslinfo
 
 [sslinfo](https://www.postgresql.org/docs/current/sslinfo.html) provides information about SSL certificates.
@@ -870,6 +958,8 @@ ms.topic: include
 | 13 | 1.2 |
 | 12 | 1.2 |
 | 11 | 1.2 |
+
+
 
 ## tablefunc
 
@@ -885,6 +975,8 @@ ms.topic: include
 | 12 | 1.0 |
 | 11 | 1.0 |
 
+
+
 ## tds_fdw
 
 [tds_fdw](https://github.com/tds-fdw/tds_fdw) is a foreign data wrapper for querying a TDS database (SAP ASE or SQL Server).
@@ -898,6 +990,8 @@ ms.topic: include
 | 13 | 2.0.3 |
 | 12 | 2.0.3 |
 | 11 | 2.0.3 |
+
+
 
 ## timescaledb
 
@@ -929,6 +1023,8 @@ ms.topic: include
 | 12 | 1.0 |
 | 11 | 1.0 |
 
+
+
 ## tsm_system_time
 
 [tsm_system_time](https://www.postgresql.org/docs/current/tsm-system-time.html) is a `TABLESAMPLE` method which accepts time in milliseconds as a limit.
@@ -942,6 +1038,8 @@ ms.topic: include
 | 13 | 1.0 |
 | 12 | 1.0 |
 | 11 | 1.0 |
+
+
 
 ## unaccent
 
@@ -957,6 +1055,8 @@ ms.topic: include
 | 12 | 1.1 |
 | 11 | 1.1 |
 
+
+
 ## uuid-ossp
 
 [uuid-ossp](https://www.postgresql.org/docs/current/uuid-ossp.html) generates universally unique identifiers (UUIDs).
@@ -971,6 +1071,8 @@ ms.topic: include
 | 12 | 1.1 |
 | 11 | 1.1 |
 
+
+
 ## vector
 
 [vector](https://github.com/pgvector/pgvector) is a vector data type and `ivfflat` and `hnsw` access methods.
@@ -984,3 +1086,6 @@ ms.topic: include
 | 13 | 0.7.0 |
 | 12 | 0.7.0 |
 | 11 | 0.5.1 |
+
+
+
