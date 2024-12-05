@@ -13,6 +13,8 @@
     href: flexible-server/concept-reserved-pricing.md
   - name: Version support policy
     href: concepts-version-policy.md
+  - name: What happened to Single Server?
+    href: migrate/whats-happening-to-mysql-single-server.md
 - name: Azure Database for MySQL - Flexible Server
   items:
   - name: Overview
