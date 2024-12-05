@@ -16,7 +16,7 @@ The resources in Azure Database for MySQL - Flexible Server have default quotas/
 
 ## Create a new support request
 
-To request a quota increase, you must create a new support request with your workload details. The Azure Database for MySQL flexible server team then processes your request and approves or denies it. Use the following steps to create a new support request from the Azure portal:
+To request a quota increase, you must create a new support request with your workload details. The Azure Database for MySQL Flexible Server team then processes your request and approves or denies it. Use the following steps to create a new support request from the Azure portal:
 
 1. Sign into the Azure portal.
 

@@ -4,7 +4,7 @@ description: Learn about the concepts of backup and restore with Azure Database 
 author: kabharati
 ms.author: kabharati
 ms.reviewer: maghan
-ms.date: 05/06/2024
+ms.date: 11/28/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: conceptual
@@ -84,7 +84,7 @@ You can use the [Backup Storage Used](../concepts-monitoring.md) metric in the
 
 ## Point-in-time recovery
 
-In Azure Database for PostgreSQL flexible server, performing a PITR creates a new server in the same region as your source server, but you can choose the availability zone. It's created with the source server's configuration for the pricing tier, compute generation, number of virtual cores, storage size, backup retention period, and backup redundancy option. Also, tags and settings such as virtual networks and firewall settings are inherited from the source server.
+In Azure Database for PostgreSQL flexible server, performing a PITR creates a new server in the same region as your source server, but you can choose the availability zone. It's created with the source server's configuration for the pricing tier, compute generation, number of virtual cores, storage size, backup retention period, and backup redundancy option. 
 
 The physical database files are first restored from the snapshot backups to the server's data location. The appropriate backup that was taken earlier than the desired point in time is automatically chosen and restored. A recovery process then starts by using WAL files to bring the database to a consistent state. 
 
@@ -162,6 +162,8 @@ If your source server is configured with a *private access* virtual network, you
 After you restore the server, you can perform the following tasks to get your users and applications back up and running:
 
 - If the new server is meant to replace the original server, redirect clients and client applications to the new server. Change the server name of your connection string to point to the new server.
+
+- The values of all (server parameters)[./concepts-server-parameters.md] on the original server are not automatically applied to the new server. Ensure that all server parameters on the new server are re-configured as per the requirements of that new server.
 
 - Ensure that appropriate server-level firewall, private endpoints and virtual network rules are in place for user connections. In *public access* network, rules are copied over from the original server, but those might not be the ones required in the restored environment. So, adjust them as per your requirements. Private endpoints are not carried over. Create any private endpoints you may need in the restored server. In *private access* virtual network, the restore doesn't copy over any network infrastructure artifacts from source to restored server networks. Anything related to configuration of VNET(Virtual Network), subnets, or Network Security Groups, must be taken care of as a post-restore task.
   
@@ -241,7 +243,7 @@ For more information about performing a long term backup, visit the [how-to guid
 
 * **Can I restore a single database or a few databases in a server?**
   
-    Restoring a single database or a few databases or tables is not directly supported. However, you can restore the entire server to a new server, and then extract tables or databases and import them to the new server.
+    Restoring a single database or a few databases or tables is not directly supported. However, you can restore the entire server to a new server, and then drop tables or databases that you don't need on the new server.
 
 * **Is my server available while a backup is in progress?**
 
