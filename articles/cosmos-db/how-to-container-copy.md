@@ -139,7 +139,7 @@ az cosmosdb copy show `
     --job-name $jobName
 ```
 1.	Total count – It represents the total number of changes (total document + any new changes) in the source container at any given time.
-2.	Processed count – It represents the total number of events coming from source container’s change feed which have been processed by the copy job.
+2.	Processed count – It represents the total number of events coming from source container’s change feed that have been processed by the copy job.
 
 ### Complete copy job
 
