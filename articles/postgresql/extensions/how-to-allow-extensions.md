@@ -145,6 +145,7 @@ While updating extensions is straightforward, there are certain limitations:
 
 ## Related content
 
-- [List of extensions by name](concepts-extensions-versions.md)
 - [Special considerations with extensions](concepts-extensions-considerations.md)
+- [List of extensions by name](concepts-extensions-versions.md)
+- [List of extensions by version of PostgreSQL](extensions-tables-by-engine.md)
 - [Feedback forum](https://aka.ms/pgfeedback)
