@@ -558,10 +558,12 @@
     items:
     - name: Allow extensions
       href: extensions/how-to-allow-extensions.md
-    - name: Extension considerations
+    - name: Special considerations
       href: extensions/concepts-extensions-considerations.md
-    - name: Extension versions
+    - name: List by name
       href: extensions/concepts-extensions-versions.md           
+    - name: List by version of PostgreSQL
+      href: extensions/concepts-extensions-by-engine.md           
     - name: Azure AI (azure_ai)
       items:
       - name: Overview
