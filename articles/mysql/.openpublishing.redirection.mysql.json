@@ -1466,11 +1466,6 @@
         "redirect_document_id": false
       },
       {
-        "source_path_from_root": "/articles/mysql/migrate/whats-happening-to-mysql-single-server.md",
-        "redirect_url": "/azure/mysql/flexible-server/whats-new",
-        "redirect_document_id": false
-      },
-      {
         "source_path_from_root": "/articles/mysql/migrate/how-to-migrate-single-flexible-minimum-downtime.md",
         "redirect_url": "/azure/mysql/flexible-server/whats-new",
         "redirect_document_id": false
