@@ -40,7 +40,7 @@ To get started with online container copy for Azure Cosmos DB for NoSQL API acco
 1.	Register for [All version and delete change feed mode](nosql/change-feed-modes.md?tabs=latest-version#all-versions-and-deletes-change-feed-mode-preview) preview feature on the source account’s subscription.
 
 > [!Important]
-All write operations to the source container will be charged double RUs in order to preserve both the previous and current versions of changes to items in the container. This RU charge increase is subject to change in the future.
+> All write operations to the source container will be charged double RUs in order to preserve both the previous and current versions of changes to items in the container. This RU charge increase is subject to change in the future.
 
 ## Copy a container's data
 
