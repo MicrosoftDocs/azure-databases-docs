@@ -115,13 +115,13 @@ namespace CreatePostgreSqlFlexibleServer
             ResourceGroupResource resourceGroup = await armClient.GetResourceGroupResource(resourceGroupId).GetAsync();
             // Prepare server data
             var serverData = new PostgreSqlFlexibleServerData(location)
-    {
-            AdministratorLogin = "admin-username",
-            AdministratorLoginPassword = "admin-password",
-            Version = "pgVersion",
-            Storage = new PostgreSqlFlexibleServerStorage() { StorageSizeInGB = 128 },
-            Sku = new PostgreSqlFlexibleServerSku("Standard_B1ms", PostgreSqlFlexibleServerSkuTier.Burstable),
-    };
+            {
+              AdministratorLogin = "admin-username",
+              AdministratorLoginPassword = "admin-password",
+              Version = "pgVersion",
+              Storage = new PostgreSqlFlexibleServerStorage() { StorageSizeInGB = 128 },
+              Sku = new PostgreSqlFlexibleServerSku("Standard_B1ms", PostgreSqlFlexibleServerSkuTier.Burstable),
+           };
             try
             {
                ArmOperation<PostgreSqlFlexibleServerResource> operation = await resourceGroup.GetPostgreSqlFlexibleServers().CreateOrUpdateAsync(Azure.WaitUntil.Completed, serverName, serverData);
