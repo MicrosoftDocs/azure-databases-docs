@@ -8,5 +8,5 @@ ms.subservice: flexible-server
 ms.topic: include
 ms.custom: automatically generated
 ---
-17.0
+17.0 (preview)
 
