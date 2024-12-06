@@ -106,7 +106,7 @@ After extensions are allowlisted and loaded, they must be installed in each data
 > [!NOTE]  
 > Third-party extensions offered in Azure Database for PostgreSQL flexible server are open-source licensed code. We don't offer any third-party extensions or extension versions with premium or proprietary licensing models.
 
-Azure Database for PostgreSQL flexible server instance supports a subset of key PostgreSQL extensions, as listed in the following table. This information is also available by running `SHOW azure.extensions;`. Extensions not listed in this document aren't supported on Azure Database for PostgreSQL flexible server. You can't create or load your extension in Azure Database for PostgreSQL flexible server.
+Azure Database for PostgreSQL flexible server instance supports a subset of key PostgreSQL extensions, as listed in [supported extensions by name](concepts-extensions-versions.md) or in [supported extensions by version of PostgreSQL](concepts-extensions-by-engine.md). This information is also available by running `SHOW azure.extensions;`. Extensions not listed in this document aren't supported on Azure Database for PostgreSQL flexible server. You can't create or load your extension in Azure Database for PostgreSQL flexible server.
 
 ## Upgrade PostgreSQL extensions
 
