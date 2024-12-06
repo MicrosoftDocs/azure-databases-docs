@@ -26,8 +26,7 @@ Using the [Azure portal](https://portal.azure.com):
 
 1. Select your Azure Database for PostgreSQL flexible server instance.
 1. From the resource menu, under **Settings** section, select **Server parameters**.
-1. Search for the `azure.extensions` parameter.
-1. Select the extensions you wish to allow.
+1. Select the extensions that you want to allow list, from the ones available in the `azure.extensions` parameter, and select **Save**.
 
     :::image type="content" source="media/how-to-allow-extensions/allow-list.png" alt-text="Screenshot of allowlist." lightbox="media/how-to-allow-extensions/allow-list.png":::
 
@@ -84,7 +83,7 @@ Using the [Azure portal](https://portal.azure.com):
 
 1. Select your Azure Database for PostgreSQL flexible server instance.
 2. From the resource menu, under **Settings** section, select **Server parameters**.
-3. Include the libraries you wish to add in the value of `shared_preload_libraries`.
+3. Include the libraries you wish to add in the value of `shared_preload_libraries`, and select **Save**.
 
     :::image type="content" source="media/how-to-allow-extensions/shared-libraries.png" alt-text="Screenshot of Server parameters page while setting shared_preload_libraries." lightbox="media/how-to-allow-extensions/shared-libraries.png":::
 
