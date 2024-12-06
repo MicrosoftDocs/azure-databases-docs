@@ -2,10 +2,11 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 09/26/2024
+ms.date: 12/05/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
+ms.custom: automatically generated
 ---
 ### allow_in_place_tablespaces
 
