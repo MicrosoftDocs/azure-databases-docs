@@ -20,7 +20,7 @@ Azure Database for PostgreSQL flexible server allows you to extend the functiona
 
 Before installing extensions in Azure Database for PostgreSQL flexible server, you must allow these extensions to be listed for use.
 
-#### [Portal](#tab/portal)
+#### [Portal](#tab-allow-extensions/portal)
 
 Using the [Azure portal](https://portal.azure.com):
 
@@ -30,7 +30,7 @@ Using the [Azure portal](https://portal.azure.com):
 
     :::image type="content" source="media/how-to-allow-extensions/allow-list.png" alt-text="Screenshot of allowlist." lightbox="media/how-to-allow-extensions/allow-list.png":::
 
-#### [Azure CLI](#tab/cli)
+#### [Azure CLI](#tab-allow-extensions/cli)
 
 You can allow extensions via the CLI parameter set [command](/cli/azure/postgres/flexible-server/parameter?view=azure-cli-latest&preserve-view=true).
 
@@ -38,7 +38,7 @@ You can allow extensions via the CLI parameter set [command](/cli/azure/postgres
     az postgres flexible-server parameter set --resource-group <resource_group>  --server-name <server> --subscription <subscription_id> --name azure.extensions --value <extension_name>,<extension_name>
 ```
 
-#### [Resource Manager Template](#tab/azure-resource-manager)
+#### [Resource Manager Template](#tab-allow-extensions/azure-resource-manager)
 
 Using the [ARM Template](/azure/azure-resource-manager/templates/):
 
@@ -79,7 +79,7 @@ The following example adds extensions to the allowlist `dblink`, `dict_xsyn`, `p
 
 `shared_preload_libraries` is a server configuration parameter that determines which libraries have to be loaded when Azure Database for PostgreSQL flexible server starts. Any libraries that use shared memory must be loaded via this parameter. If your extension needs to be added to the shared preload libraries, follow these steps:
 
-#### [Portal](#tab/portal)
+#### [Portal](#tab-load-libraries/portal)
 
 Using the [Azure portal](https://portal.azure.com):
 
@@ -93,7 +93,7 @@ Using the [Azure portal](https://portal.azure.com):
 
     :::image type="content" source="media/how-to-allow-extensions/save-and-restart.png" alt-text="Screenshot of Server parameters page, showing the dialog from which you can save changes and restart." lightbox="media/how-to-allow-extensions/save-and-restart.png":::
 
-#### [Azure CLI](#tab/cli)
+#### [Azure CLI](#tab-load-libraries/cli)
 
 You can set `shared_preload_libraries` using the CLI [parameter set](/cli/azure/postgres/flexible-server/parameter?view=azure-cli-latest#az-postgres-flexible-server-parameter-set) command.
 
