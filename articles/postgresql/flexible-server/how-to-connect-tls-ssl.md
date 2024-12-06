@@ -4,7 +4,7 @@ description: Instructions and information on how to connect using TLS/SSL in Azu
 author: techlake
 ms.author: hganten
 ms.reviewer: maghan
-ms.date: 04/27/2024
+ms.date: 12/03/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: conceptual
@@ -19,10 +19,10 @@ Azure Database for PostgreSQL flexible server supports connecting your client ap
 Azure Database for PostgreSQL flexible server supports encrypted connections using Transport Layer Security (TLS 1.2+) and all incoming connections with TLS 1.0 and TLS 1.1 will be denied. For all Azure Database for PostgreSQL flexible server instances enforcement of TLS connections is enabled. 
 
 >[!Note]
-> By default, secured connectivity between the client and the server is enforced. If you want to disable TLS/SSL for connecting to Azure Database for PostgreSQL flexible server, you can change the server parameter *require_secure_transport* to *OFF*. You can also set TLS version by setting *ssl_max_protocol_version* server parameters.
+> By default, secured connectivity between the client and the server is enforced. If you want to disable the enforcement of TLS/SSL, allowing both encrypted and unencrypted client communications, you can change the server parameter *require_secure_transport* to *OFF*. You can also set TLS version by setting *ssl_max_protocol_version* server parameters.
 
 ## Applications that require certificate verification for TLS/SSL connectivity
-In some cases, applications require a local certificate file generated from a trusted Certificate Authority (CA) certificate file to connect securely. For more information on downloading root CA certificates you can **[visit this document](./concepts-networking-ssl-tls.md#configuring-ssl-on-the-client)**.
+In some cases, applications require a local certificate file generated from a trusted Certificate Authority (CA) certificate file to connect securely. For more information on downloading root CA certificates you can **[visit this document](./concepts-networking-ssl-tls.md#configure-ssl-on-the-client)**.
 **Detailed information on updating client applications certificate stores with new Root CA certificates has been documented in this [how-to document](../flexible-server/how-to-update-client-certificates-java.md)**. 
 
 > [!NOTE]

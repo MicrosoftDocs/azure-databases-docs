@@ -27,7 +27,7 @@ You can use following directions to update client root CA certificates for clien
 If necessary certificates aren't present in the java key store on the client, as can be checked in output, you should proceed with following directions:
    
 1. Make a backup copy of your custom keystore.
-2. Download [certificates](../flexible-server/concepts-networking-ssl-tls.md#downloading-root-ca-certificates-and-updating-application-clients-in-certificate-pinning-scenarios) and save these locally where you can reference these. 
+2. Download [certificates](../flexible-server/concepts-networking-ssl-tls.md#download-root-ca-certificates-and-update-application-clients-in-certificate-pinning-scenarios) and save these locally where you can reference these. 
 3. Generate a combined CA certificate store with all needed Root CA certificates are included. Example below shows using DefaultJavaSSLFactory for PostgreSQL JDBC users.
 
      
@@ -53,7 +53,7 @@ If necessary certificates aren't present in the java key store on the client, as
 For more information on configuring client certificates with PostgreSQL JDBC driver, see this [documentation.](https://jdbc.postgresql.org/documentation/ssl/)
 
 > [!NOTE]
-> To import certificates to client certificate stores you may have to convert certificate .crt files to .pem format. You can use **[OpenSSL utility to do these file conversions](./concepts-networking-ssl-tls.md#downloading-root-ca-certificates-and-updating-application-clients-in-certificate-pinning-scenarios)**.
+> To import certificates to client certificate stores you may have to convert certificate .crt files to .pem format. You can use **[OpenSSL utility to do these file conversions](./concepts-networking-ssl-tls.md#download-root-ca-certificates-and-update-application-clients-in-certificate-pinning-scenarios)**.
 
 ## Get list of trusted certificates in Java Key Store programmatically
 

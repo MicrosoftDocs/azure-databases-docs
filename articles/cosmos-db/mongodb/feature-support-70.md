@@ -105,6 +105,7 @@ Azure Cosmos DB for MongoDB supports the following database commands.
 | `dbStats`          | Yes       |
 | `explain`          | Yes       |
 | `features`         | No        |
+| `hello`            | Yes       |
 | `hostInfo`         | Yes       |
 | `listDatabases`    | Yes       |
 | `listCommands`     | No        |

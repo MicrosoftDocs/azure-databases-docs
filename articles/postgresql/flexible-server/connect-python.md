@@ -13,7 +13,7 @@ ms.custom:
   - mode-api
   - devx-track-python
   - passwordless-python
-ms.devlang: python
+ms.devlang: python   
 ---
 
 # Quickstart: Use Python to connect and query data in Azure Database for PostgreSQL - Flexible Server
@@ -74,19 +74,18 @@ Install the Python libraries needed to run the code examples.
 
 #### [Passwordless (Recommended)](#tab/passwordless)
 
-Install the [psycopg2](https://pypi.python.org/pypi/psycopg2/) module, which enables connecting to and querying a PostgreSQL database, and the [azure-identity](https://pypi.org/project/azure-identity/) library, which provides Microsoft Entra token authentication support across the Azure SDK.
+Install the [azure-identity](https://pypi.org/project/azure-identity/) library, which provides Microsoft Entra token authentication support across the Azure SDK.                                                                                                                                      
 
 ```Console
-pip install psycopg2
 pip install azure-identity
 ```
 
 #### [Password](#tab/password)
 
-Install the [psycopg2](https://pypi.python.org/pypi/psycopg2/) module, which enables connecting to and querying a PostgreSQL database.
+Install the [psycopg](https://pypi.org/project/psycopg/) module, which enables connecting to and querying a PostgreSQL database.
 
 ```Console
-pip install psycopg2
+pip install psycopg
 ```
 
 ---
@@ -190,9 +189,8 @@ In this section, you add authentication code to your working directory and perfo
         dbuser = urllib.parse.quote(os.environ['DBUSER'])
         password = os.environ['DBPASSWORD']
         sslmode = os.environ['SSLMODE']
-            
+        db_uri = f"host={dbhost} dbname={dbname} user={dbuser} password={password} sslmode ={sslmode}"
         # Construct connection URI
-        db_uri = f"postgresql://{dbuser}:{password}@{dbhost}/{dbname}?sslmode={sslmode}"
         return db_uri
     ```
 
@@ -251,15 +249,15 @@ For each code example in this article:
 
 ## Create a table and insert data
 
-The following code example connects to your Azure Database for PostgreSQL flexible server database using the `psycopg2.connect` function, and loads data with a SQL **INSERT** statement. The `cursor.execute` function executes the SQL query against the database.
+The following code example connects to your Azure Database for PostgreSQL flexible server database using the `psycopg.connect` function, and loads data with a SQL **INSERT** statement. The `cursor.execute` function executes the SQL query against the database.
 
 ```Python
-import psycopg2
+import psycopg
 from get_conn import get_connection_uri
 
 conn_string = get_connection_uri()
 
-conn = psycopg2.connect(conn_string) 
+conn = psycopg.connect(conn_string) 
 print("Connection established")
 cursor = conn.cursor()
 
@@ -297,12 +295,12 @@ Inserted 3 rows of data
 The following code example connects to your Azure Database for PostgreSQL flexible server database and uses cursor.execute with the SQL **SELECT** statement to read data. This function accepts a query and returns a result set to iterate over by using cursor.fetchall().
 
 ```Python
-import psycopg2
+import psycopg
 from get_conn import get_connection_uri
 
 conn_string = get_connection_uri()
 
-conn = psycopg2.connect(conn_string) 
+conn = psycopg.connect(conn_string) 
 print("Connection established")
 cursor = conn.cursor()
 
@@ -334,12 +332,12 @@ Data row = (3, apple, 100)
 The following code example connects to your Azure Database for PostgreSQL flexible server database and uses cursor.execute with the SQL **UPDATE** statement to update data.
 
 ```Python
-import psycopg2
+import psycopg
 from get_conn import get_connection_uri
 
 conn_string = get_connection_uri()
 
-conn = psycopg2.connect(conn_string) 
+conn = psycopg.connect(conn_string) 
 print("Connection established")
 cursor = conn.cursor()
 
@@ -358,12 +356,12 @@ conn.close()
 The following code example connects to your Azure Database for PostgreSQL flexible server database and uses cursor.execute with the SQL **DELETE** statement to delete an inventory item that you previously inserted.
 
 ```Python
-import psycopg2
+import psycopg
 from get_conn import get_connection_uri
 
 conn_string = get_connection_uri()
 
-conn = psycopg2.connect(conn_string) 
+conn = psycopg.connect(conn_string) 
 print("Connection established")
 cursor = conn.cursor()
 

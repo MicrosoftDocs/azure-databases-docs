@@ -58,7 +58,8 @@ az postgres flexible-server restore --restore-time
 ```
 
 **Example:**
-Restore a server from this ```2021-03-03T13:10:00Z``` backup snapshot.
+Restore a server from this ```2021-03-03T13:10:00Z``` backup snapshot (ISO8601 format).
+`--restore-time` is an optional parameter whose default corresponds to current date and time.
 
 ```azurecli
 az postgres flexible-server restore \

@@ -4,7 +4,7 @@ description: This article describes the storage options in Azure Database for Po
 author: kabharati
 ms.author: kabharati
 ms.reviewer: maghan
-ms.date: 05/30/2024
+ms.date: 11/19/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: conceptual
@@ -111,13 +111,13 @@ As an illustration, take a server with a storage capacity of 2 TiB (greater than
 
 The default behavior is to increase the disk size to the next premium SSD storage tier. This increase is always double in both size and cost, regardless of whether you start the storage scaling operation manually or through storage autogrow. Enabling storage autogrow is valuable when you're managing unpredictable workloads, because it automatically detects low-storage conditions and scales up the storage accordingly.
 
-The process of scaling storage is performed online without causing any downtime, except when the disk is provisioned at 4,096 GiB. This exception is a limitation of Azure Managed disks. If a disk is already 4,096 GiB, the storage scaling activity isn't triggered, even if storage autogrow is turned on. In such cases, you need to scale your storage manually. Manual scaling is an offline operation that you should plan according to your business requirements.
+The process of scaling storage is performed online without causing any downtime, except when the disk is provisioned at 4,096 GiB. This exception is a limitation of Azure Managed disks. If a disk is already 4,096 GiB, the storage scaling activity isn't triggered, even if storage autogrow is turned on. In such cases, you need to scale your storage manually. Please rememeber that in this specific case, manual scaling is an offline operation and should be scheduled in alignment with your business needs.
 
 Remember that storage can only be scaled up, not down.
 
 ## Storage Autogrow Limitations and Considerations
 
-- Disk scaling operations are always online, except in specific scenarios that involve the 4,096-GiB boundary. These scenarios include reaching, starting at, or crossing the 4,096-GiB limit. An example is when you're scaling from 2,048 GiB to 8,192 GiB.
+- Disk scaling operations are generally performed online, except in specific scenarios involving the 4,096-GiB boundary. These scenarios include reaching or crossing the 4,096-GiB limit. For instance, scaling from 2,048 GiB to 8,192 GiB will trigger an offline operation. In the Azure portal, moving to 4 TB, which is represented as 4,095 GiB, will keep the operation online. However, if you explicitly specify 4 TB as 4,096 GiB, such as in Azure CLI, the scaling operation will be offline since it reaches the 4,096-GiB limit.
 
 - Host Caching (ReadOnly and Read/Write) is supported on disk sizes less than 4 TiB. Any disk that is provisioned up to 4,095 GiB can take advantage of Host Caching. Host caching isn't supported for disk sizes more than or equal to 4,096 GiB. For example, a P50 premium disk provisioned at 4,095 GiB can take advantage of Host caching and a P50 disk provisioned at 4,096 GiB can't take advantage of Host Caching. Customers moving from lower disk size to 4,096 GiB or higher won't get   disk caching ability.
 
@@ -131,6 +131,7 @@ Remember that storage can only be scaled up, not down.
 ## IOPS scaling
 
 Azure Database for PostgreSQL flexible server supports provisioning of extra IOPS. This feature enables you to provision more IOPS above the complimentary IOPS limit. Using this feature, you can increase or decrease the number of IOPS provisioned based on your workload requirements at any time.
+
 
 The minimum and maximum IOPS are determined by the selected compute size. To learn more about the minimum and maximum IOPS per compute size refer to the [compute size](concepts-compute.md).
 

@@ -5,10 +5,11 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: azure-cosmos-db
 ms.subservice: nosql
-ms.topic: conceptual
-ms.date: 05/10/2023
+ms.topic: concept-article
+ms.date: 09/26/2024
 ms.custom: cosmos-db-video, build-2023
 ---
+
 # Change feed design patterns in Azure Cosmos DB
 
 [!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
@@ -52,7 +53,7 @@ In addition to reading from an Azure Cosmos DB container's change feed, you can 
 
 ### High availability
 
-Azure Cosmos DB offers up to 99.999% read and write availability. Unlike many message queues, Azure Cosmos DB data can be easily globally distributed and configured with an [recovery time objective (RTO)](../consistency-levels.md#rto) of zero.
+Azure Cosmos DB offers up to 99.999% read and write availability. Unlike many message queues, Azure Cosmos DB data can be easily globally distributed and configured with an [recovery time objective (RTO)](../consistency-levels.md#consistency-levels-and-data-durability) of zero.
 
 After you process items in the change feed, you can build a materialized view and persist aggregated values back in Azure Cosmos DB. If you're using Azure Cosmos DB to build a game, for example, you can use change feed to implement real-time leaderboards based on scores from completed games.
 
@@ -137,11 +138,8 @@ Here are some real-world change feed code examples for latest version mode that 
 - [IoT use case centered around the change feed](https://github.com/AzureCosmosDB/scenario-based-labs)
 - [Retail use case centered around the change feed](https://github.com/AzureCosmosDB/scenario-based-labs)
 
-## Next steps
+## Related content
 
-- Review the [change feed overview](../change-feed.md).
-- Learn more about [change feed modes](change-feed-modes.md).
-- Learn your [options to read your change feed](read-change-feed.md).
-- Trying to do capacity planning for a migration to Azure Cosmos DB? You can use information about your existing database cluster for capacity planning.
-  - If all you know is the number of vCores and servers in your existing database cluster, read about [estimating request units by using vCores or vCPUs](../convert-vcore-to-request-unit.md).
-  - If you know typical request rates for your current database workload, read about [estimating request units by using the Azure Cosmos DB capacity planner](estimate-ru-with-capacity-planner.md).
+- [Change feed overview](../change-feed.md)
+- [Change feed modes](change-feed-modes.md)
+- [Options to read your change feed](read-change-feed.md)

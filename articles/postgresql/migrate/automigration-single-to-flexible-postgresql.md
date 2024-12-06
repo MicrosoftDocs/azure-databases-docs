@@ -17,50 +17,53 @@ ms.custom:
 
 [!INCLUDE [applies-to-postgresql-single-server](../includes/applies-to-postgresql-single-server.md)]
 
-**Automigration** from Azure Database for Postgresql – Single Server to Flexible Server is a service-initiated migration during a planned downtime window for Single Server running PostgreSQL 11 and database workloads with **Basic, General Purpose or Memory Optimized SKU**, data storage used **<= 5 GiB** and **no complex features (CMK, Microsoft Entra ID, Read Replica, Private Link) enabled**. The eligible servers are identified by the service and are sent advance notifications detailing steps to review migration details and make modifications if necessary.
+**Automigration** from Azure Database for PostgreSQL – Single Server to Flexible Server is a service-initiated migration that takes place during a planned downtime window for Single Server, separate from its patching or maintenance window. The service identifies eligible servers and sends advance notifications with detailed steps about the automigration process. You can review and adjust the migration schedule if needed or submit a support request to opt out of automigration for your servers.
 
-The automigration provides a highly resilient and self-healing offline migration experience during a planned migration window, with up to **20 mins** of downtime. The migration service is a hosted solution using the [pgcopydb](https://github.com/dimitri/pgcopydb) binary and provides a fast and efficient way of copying databases from the source PostgreSQL instance to the target. This migration removes the overhead to manually migrate your server. Post migration, you can take advantage of the benefits of Flexible Server, including better price & performance, granular control over database configuration, and custom maintenance windows. Following described are the key phases of the migration:
-
-- **Target Flexible Server is deployed** and matches your Single server SKU in terms of performance and cost, inheriting all firewall rules from source Single Server.
-
-- **Date is migrated** during the migration window chosen by the service or elected by you. If the window is chosen by the service, it's typically outside business hours of the specific region the server is hosted in. Source Single Server is set to read-only and the data & schema is migrated from the source Single Server to the target Flexible Server. User roles, privileges, and ownership of all database objects are also migrated to the flexible server.
-
-- **DNS switch and cutover** are performed within the planned migration window with minimal downtime, allowing usage of the same connection string post-migration. Client applications seamlessly connect to the target flexible server without any user driven manual updates or changes. In addition to both connection string formats (Single and Flexible Server) being supported on migrated Flexible Server, both username formats – username@server_name and username are also supported on the migrated Flexible Server.
-
-- The **migrated Flexible Server is online** and can now be managed via Azure portal/CLI.
-
-- The **updated connection strings** to connect to your old single server are shared with you by email if you have enabled Service health notifications on the Azure portal. Alternatively, you can find the connection strings in the Single server portal page under **Settings->Connection strings**. The connection strings can be used to log in to the Single server if you want to copy any settings to your new Flexible server.
-
-- The **legacy Single Server** is deleted **seven days** after the migration.
-
-## Nomination Eligibility
+Automigration leverages the [Azure PostgreSQL migration service](../migrate/migration-service/overview-migration-service-postgresql.md) to deliver a resilient offline migration during the planned migration window. Downtime will vary based on workload characteristics, with larger workloads potentially requiring up to 20 minutes. For migration speed benchmarks, see [Azure PostgreSQL Migration Speed Benchmarking](../migrate/migration-service/best-practices-migration-service-postgresql.md#migration-speed-benchmarking). This migration eliminates the need for manual server migration, allowing you to benefit from Flexible Server features post-migration, including improved price-performance, granular database configuration control, and custom maintenance windows.
 
 > [!NOTE]
-> The nomination process is for users who want to voluntarily fast-track their migration to Flexible server.
+> The Automigration service selects Single server to migrate based on the following criteria:
+> - Single server version 11
+> - Servers with no complex feature such as CMK, Microsoft Entra ID, Read Replica and Private end-point
+> - Size of data <= 10 GB
+> - Public access is enabled
 
-If you own a Single Server workload, you can now nominate yourself (if not already scheduled by the service) for automigration. Submit your server details through this [form](https://forms.office.com/r/4pF55L8TxY).
+## Automigration Process
 
-## Configure migration alerts and review migration schedule
+The automigration process includes several key phases:
 
-Servers eligible for automigration are sent advance Azure health notifications by the service. The health notifications are sent **30 days, 14 days and 7 days** before the migration date. Notifications are also sent when the migration is **in progress, has completed, and 6 days after migration** before the legacy Single server is dropped. You can check and configure the Azure portal to receive the automigration notifications via email or SMS.
+ - **Target Flexible Server Creation** - A Flexible Server is created to match the performance and cost of your Single Server SKU. It inherits all firewall rules from the source Single Server.
 
-Following described are the ways to check and configure automigration notifications:
+ - **Data Migration** - Data migration occurs during the designated migration window, typically scheduled outside business hours for the server’s hosting region (if the window is chosen by the service). The source Single Server is set to read-only, and all data, schemas, user roles, privileges, and ownership of database objects are migrated to the Flexible Server.
 
-- Subscription owners for Single Servers scheduled for automigration receive an email notification.
-- Configure **service health alerts** to receive automigration schedule and progress notifications via email/SMS by following steps [here](../single-server/concepts-planned-maintenance-notification.md#to-receive-planned-maintenance-notification).
-- Check the automigration **notification on the Azure portal** by following steps [here](../single-server/concepts-planned-maintenance-notification.md#check-planned-maintenance-notification-from-azure-portal).
+ - **DNS Switch** - After data migration, a DNS switch is performed, allowing the existing Single Server connection string to seamlessly connect to the new Flexible Server. Both Single and Flexible Server connection string formats, as well as username formats (**username@server_name** and **username**), are supported on the migrated Flexible Server.
 
-Following described are the ways to review your migration schedule once you receive the automigration notification:
+ - **Flexible Server Visibility** - After a successful data migration and DNS switch, the new Flexible Server appears under your subscription and can be managed via the Azure portal or CLI.
 
+ - **Updated Single Server Connection Strings** - Updated connection strings for the legacy Single Server are sent via Service Health notifications on the Azure portal. They are also accessible on the Single Server portal page under **Settings -> Connection Strings**.
+
+ - **Single Server Deletion** - The Single Server is retained for seven days post-migration before it is deleted.
+
+
+
+## Nominate Single servers for Automigration
+
+The nomination process is for users who want to voluntarily fast-track their migration to Flexible server. If you own a Single Server workload, you can now nominate yourself (if not already scheduled by the service) for automigration. Submit your server details through this [form](https://forms.office.com/r/4pF55L8TxY).
+
+## How to check if your Single Server is scheduled for Automigration
+
+To determine if your Single Server is selected for automigration, follow these steps:
+
+ - **[Service Health Notifications](https://learn.microsoft.com/azure/service-health/service-health-portal-update)** -  In the Azure portal, go to **Service Health > Planned Maintenance** events. Look for events labeled **'Notification for Scheduled Auto Migration to Azure Database for PostgreSQL Single Server'**. The notifications are sent 30, 14, and 7 days before the migration date, and again during migration stages: in progress, completed, and six days before the Single Server is decommissioned. 
+> [!NOTE]  
+> These notifications do not land in your inbox by default. To receive them via email or SMS, you need to set up Service Health Alerts by following the steps [here](https://learn.microsoft.com/previous-versions/azure/postgresql/single-server/concepts-planned-maintenance-notification#to-receive-planned-maintenance-notification)
+
+
+- **Single Server Overview Page** - Navigate to your Single Server instance in the Azure portal and check the Overview page. If scheduled for automigration, you’ll find details here, including an option to defer the migration by one month at a time or reschedule within the current month.
 > [!NOTE]  
 > The migration schedule will be locked 7 days prior to the scheduled migration window during which you'll be unable to reschedule.
 
-- The **Single Server overview page** for your instance displays a portal banner with information about your migration schedule.
-- For Single Servers scheduled for automigration, the **Overview** page is updated with the relevant information. You can review the migration schedule by navigating to the Overview page of your Single Server instance.
-- If you wish to defer the migration, you can defer by a month at a time on the Azure portal. You can reschedule the migration by selecting another migration window within a month.
-
-> [!NOTE]  
-> Typically, candidate servers short-listed for automigration do not use cross region or Geo redundant backups. And these features can only be enabled during create time for a postgresql Flexible Server. In case you plan to use any of these features, it's recommended to opt out of the automigration schedule and migrate your server manually.
+- **Azure CXP email notifications** - Azure Customer Experience(CXP) also sends direct emails to classic roles and RBAC roles associated with the subscription containing the Single Server, providing information on upcoming automigrations.
 
 ## Prerequisite checks for automigration
 
@@ -104,6 +107,14 @@ Here's the info you need to know post automigration:
 - To enable [query perf insights](../flexible-server/concepts-query-performance-insight.md), you need to enable query store on the Flexible server which isn't enabled by default
 - If [High Availability](/azure/reliability/reliability-postgresql-flexible-server) is needed, you can enable it with zero downtime.
 
+### Handling VNet rules in Flexible server
+
+In Azure Database for PostgreSQL Single Server, a virtual network (VNet) rule is a subnet listed in the server’s access control list (ACL). This rule allows the Single Server to accept communication from nodes within that particular subnet.
+For Flexible Server, VNet rules are not supported. Instead, Flexible Server allows the creation of [private endpoints](../flexible-server/concepts-networking-private-link.md), enabling the server to function within your virtual network. A private endpoint assigns a private IP to the Flexible Server, and all traffic between your virtual network and the server travels securely via the Azure backbone network, eliminating the need for public internet exposure.
+
+After the migration, you must add a private endpoint to your Flexible Server for all subnets previously covered by VNet rules on your Single Server. You can complete this process using either the [Azure portal](../flexible-server/how-to-manage-virtual-network-private-endpoint-portal.md) or the [Azure CLI](../flexible-server/how-to-manage-virtual-network-private-endpoint-cli.md).
+Once this step is completed, your network connectivity will remain intact on the Flexible Server after the migration from Single Server.
+
 ## Frequently Asked Questions (FAQs)
 
 **Q. Why am I being auto-migrated​?**
@@ -135,7 +146,7 @@ Here's the info you need to know post automigration:
 
 **Q. I see a pricing difference on my potential move from postgresql Basic Single Server to postgresql Flexible Server??​**
 
-**A.** Few servers might see a small price revision after migration as the minimum storage limit on both offerings is different (5 GiB on Single Server and 32 GiB on Flexible Server). Storage cost for Flexible Server is marginally higher than Single Server. Any price increase is offset through better throughput and performance compared to Single Server. For more information on Flexible server pricing, click [here](https://azure.microsoft.com/pricing/details/postgresql/flexible-server/)
+**A.** Few servers might see a minor price revision after migration as the minimum storage limit on both offerings is different (5 GiB on Single Server and 32 GiB on Flexible Server). Storage cost for Flexible Server is marginally higher than Single Server. Any price increase is offset through better throughput and performance compared to Single Server. For more information on Flexible server pricing, please refer to [this document](https://azure.microsoft.com/pricing/details/postgresql/flexible-server/)
 
 ## Related content
 

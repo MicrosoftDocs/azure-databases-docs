@@ -22,7 +22,6 @@ ms.custom: devx-track-dotnet
 |**API documentation**|[.NET API reference documentation](/dotnet/api/microsoft.azure.documents)|
 |**Samples**|[.NET code samples](samples-dotnet.md)|
 |**Get started**|[Get started with the Azure Cosmos DB .NET](sdk-dotnet-v2.md)|
-|**Web app tutorial**|[Web application development with Azure Cosmos DB](tutorial-dotnet-web-app.md)|
 |**Current supported framework**|[.NET Standard 1.6 and .NET Standard 1.5](https://www.nuget.org/packages/NETStandard.Library)|
 
 > [!WARNING]

@@ -189,7 +189,7 @@ Here's an example of configuring pglogical at the provider database server and t
 
    ```sql
    select pglogical.create_node( node_name := 'provider1',
-   dsn := ' host=myProviderServer.postgres.database.azure.com port=5432 dbname=myDB user=myUser password=myPassword');
+   dsn := ' host=myProviderServer.postgres.database.azure.com port=5432 dbname=myDB user=myUser password=<password>');
    ```
 
 1. Create a replication set.
@@ -214,7 +214,7 @@ Here's an example of configuring pglogical at the provider database server and t
 
    ```sql
    select pglogical.create_node( node_name := 'subscriber1',
-   dsn := ' host=mySubscriberServer.postgres.database.azure.com port=5432 dbname=myDB user=myUser password=myPasword' );
+   dsn := ' host=mySubscriberServer.postgres.database.azure.com port=5432 dbname=myDB user=myUser password=<password>' );
    ```
 
 1. Create a subscription to start the synchronization and the replication process.
@@ -223,7 +223,7 @@ Here's an example of configuring pglogical at the provider database server and t
    select pglogical.create_subscription (
    subscription_name := 'subscription1',
    replication_sets := array['myreplicationset'],
-   provider_dsn := 'host=myProviderServer.postgres.database.azure.com port=5432 dbname=myDB user=myUser password=myPassword');
+   provider_dsn := 'host=myProviderServer.postgres.database.azure.com port=5432 dbname=myDB user=myUser password=<password>');
    ```
 
 1. You can then verify the subscription status.
@@ -333,7 +333,7 @@ SELECT * FROM pg_replication_slots;
 
 - **Logical replication** limitations apply as documented [here](https://www.postgresql.org/docs/current/logical-replication-restrictions.html).
 
-- **Slots and HA failover** - When using [high-availability (HA)](concepts-high-availability.md) enabled servers with Azure Database for PostgreSQL flexible server, be aware that logical replication slots aren't preserved during failover events. To maintain logical replication slots and ensure data consistency after a failover, it's recommended to use the PG Failover Slots extension. For more information on enabling this extension, please refer to the [documentation](concepts-extensions.md#pg_failover_slots-preview).
+- **Slots and HA failover** - When using [high-availability (HA)](concepts-high-availability.md) enabled servers with Azure Database for PostgreSQL flexible server, be aware that logical replication slots aren't preserved during failover events. To maintain logical replication slots and ensure data consistency after a failover, it's recommended to use the PG Failover Slots extension. For more information on enabling this extension, please refer to the [documentation](concepts-extensions.md#pg_failover_slots).
 
 > [!IMPORTANT]  
 > You must drop the logical replication slot in the primary server if the corresponding subscriber no longer exists. Otherwise, the WAL files accumulate in the primary, filling up the storage. Suppose the storage threshold exceeds a certain threshold, and the logical replication slot is not in use (due to a non-available subscriber). In that case, the Azure Database for PostgreSQL flexible server instance automatically drops that unused logical replication slot. That action releases accumulated WAL files and avoids your server becoming unavailable due to storage getting filled situation.
