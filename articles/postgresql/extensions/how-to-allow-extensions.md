@@ -119,7 +119,7 @@ Azure Database for PostgreSQL flexible server instance supports a subset of key 
 
 ## Drop extensions
 
-To drop an extension it's also required that it's [allowlisted](#allow-extensions).
+To drop an extension, first make sure to [allowlist](#allow-extensions) it.
 
 1. To drop an extension, a user must be a member of the `azure_pg_admin` role.
 
@@ -154,17 +154,17 @@ SELECT * FROM pg_extension;
 
 ## Possible errors
 
-### extension "%s" is not allow-listed for "azure_pg_admin" users in Azure Database for PostgreSQL
+### Extension "%s" is not allow-listed for "azure_pg_admin" users in Azure Database for PostgreSQL
 
-This error occurs when you run a `CREATE EXTENSION` or `DROP EXTENSION` command referring to an extension that is not [allowlisted](#allow-extensions), or an extension that isn't supported yet on the instance of Azure Database for flexible server on which you're running the command.
+This error occurs when you run a `CREATE EXTENSION` or `DROP EXTENSION` command referring to an extension that isn't [allowlisted](#allow-extensions), or an extension that isn't supported yet on the instance of Azure Database for flexible server on which you're running the command.
 
 ### Only members of "azure_pg_admin" are allowed to use CREATE EXTENSION
 
-This error occurs when the user that runs a `CREATE EXTENSION` command is not a member of `azure_pg_admin` role.
+This error occurs when the user that runs a `CREATE EXTENSION` command isn't a member of `azure_pg_admin` role.
 
 ### Only members of "azure_pg_admin" are allowed to use DROP EXTENSION 
 
-This error occurs when the user that runs a `DROP EXTENSION` command is not a member of `azure_pg_admin` role.
+This error occurs when the user that runs a `DROP EXTENSION` command isn't a member of `azure_pg_admin` role.
 
 [Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
 
