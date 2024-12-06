@@ -36,7 +36,7 @@ HA can be toggled during cluster provisioning or at any time after the cluster i
 
 When HA is enabled, each primary physical shard in the cluster is paired with a standby shard. The standby shard mirrors the compute and storage configuration of its primary counterpart. This results in **six data replicas per shard**—three on the primary shard and three on the standby. In regions with [availability zones (AZs)](/azure/reliability/availability-zones-overview), primary and standby shards are deployed in separate zones.
 
-Data is synchronously replicated between each primary and standby shard. Writes are acknowledged only after being successfully committed to both shards, ensuring strong consistency within the HA cluster. In other words, a standby physical shard is an always up-to-date full replica of its primary node providing *strong consistency* within the highly available cluster.
+Data is synchronously replicated between each primary and standby shard. Writes are acknowledged only after being successfully committed to both shards, ensuring strong consistency within the HA cluster. In other words, a standby physical shard is an always up-to-date full replica of its primary physical shard providing *strong consistency* within the highly available cluster.
 
 :::image type="content" source="media/availability-and-dr-under-the-hood/mongodb-vcore-cluster-with-ha.gif" alt-text="Diagram of high availability enablement in an Azure Cosmos DB for MongoDB vCore cluster.":::
 *Figure 2. Azure Cosmos DB for MongoDB vCore cluster with and without in-region high availability (HA) enabled.*
@@ -56,9 +56,9 @@ In this setup:
 - The primary cluster in Region A handles all reads and writes.
 - The replica cluster in Region B supports read-only access, enabling high-performance read operations closer to applications or users in that region.
 
-Applications can perform reads and writes to the primary cluster in region A and intense read operations such as dashboards with tens of thousands of users can be pointed to the replica cluster in region B. 
+Applications can perform OLTP queries on the primary cluster in region A and intense read operations such as OLAP/reporting queries can be pointed to the replica cluster in region B.
 
-Applications can leverage a *dynamic global read-write connection string*, which always points to the cluster open for writes. During a regional outage, the replica cluster in Region B can be promoted to accept writes. The global connection string automatically updates to point to the promoted cluster, ensuring uninterrupted write operations.
+Applications can use a *dynamic global read-write connection string*, which always points to the cluster open for writes. During a regional outage, the replica cluster in Region B can be promoted to accept writes. The global connection string automatically updates to point to the promoted cluster, ensuring uninterrupted write operations.
 
 :::image type="content" source="media/availability-and-dr-under-the-hood/mongodb-vcore-cluster-with-replica.gif" alt-text="Diagram of a cross-region replica promotion for disaster recovery purpose in Azure Cosmos DB for MongoDB vCore.":::
 *Figure 3. Regional disaster recovery (DR) with an Azure Cosmos DB for MongoDB vCore cluster with cross-region replication enabled. Cluster in region B is promoted to become the new read-write cluster. Cluster in region A becomes a replica cluster.*
@@ -68,9 +68,9 @@ Applications can leverage a *dynamic global read-write connection string*, which
 The following table summarizes primary considerations for enabling and managing in-region high availability and cross-region disaster recovery strategy.
 
 |Scenario |Azure Cosmos DB for MongoDB vCore feature|No data loss|Protection from region-wide outages|Automatic failover|No connection string change|
-|----------------|----------------------------------|--------------------|--------------------|--------------------|---------------------|
-|Node failure    | In-region high availability (HA) | :heavy_check_mark: | :x:                | :heavy_check_mark: | :heavy_check_mark:  |
-|Regional outage | Cross-region replica cluster     | :x:                | :heavy_check_mark: | :x:                | :heavy_check_mark:† |
+|-----------------------|----------------------------------|--------------------|--------------------|--------------------|---------------------|
+|Physical shard failure | In-region high availability (HA) | :heavy_check_mark: | :x:                | :heavy_check_mark: | :heavy_check_mark:  |
+|Regional outage        | Cross-region replica cluster     | :x:                | :heavy_check_mark: | :x:                | :heavy_check_mark:† |
 
 † When using the global read-write connection string.
 
