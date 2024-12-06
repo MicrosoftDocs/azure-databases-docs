@@ -7,7 +7,7 @@ ms.author: nlarin
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: concept-article
-ms.date: 12/01/2024
+ms.date: 12/03/2024
 #Customer Intent: As a database adminstrator, I want to configure availability and cross-region replication, so that I can have appropirtiate in-region and cross-region disaster recovery plans in the event of outages on different levels.
 ---
 
