@@ -1,12 +1,12 @@
 ---
-title: Bulk add or remove firewall rule IP addresses
-description: Add or remove rirewall rule IP addresses in bulk for one or all accounts in a subscription or resource group
+title: Bulk add or remove firewall rules for Azure Cosmos DB
+description: Add or remove firewall rule IP addresses in bulk for one or all accounts in a subscription or resource group
 author: markjbrown
 ms.author: mjbrown
 ms.service: azure-cosmos-db
 ms.custom: devx-track-azurecli
 ms.topic: sample
-ms.date: 11/14/2024
+ms.date: 12/06/2024
 ---
 
 # Add or remove IP firewall rules in bulk
