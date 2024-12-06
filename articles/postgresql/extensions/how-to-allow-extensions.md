@@ -96,7 +96,7 @@ az postgres flexible-server parameter set --resource-group <resource_group> --se
 
 4. Because `shared_preload_libraries`is a static server parameter, it requires a server restart so that the changes take effect.
 
-    :::image type="content" source="media/how-to-allow-extensions/save-and-restart.png" alt-text="Screenshot of Server parameters page showing the Save server parameter dialog from which you can save the parameter change and restart the server for the change to take effect." lightbox="media/how-to-allow-extensions/save-and-restart.png":::
+    :::image type="content" source="media/how-to-allow-extensions/save-and-restart.png" alt-text="Screenshot of Server parameters page, showing the dialog from which you can save changes and restart." lightbox="media/how-to-allow-extensions/save-and-restart.png":::
 
 You can restart the server via the CLI [parameter set](cli/azure/postgres/flexible-server?view=azure-cli-latest#az-postgres-flexible-server-restart) command.
 
