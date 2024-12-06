@@ -4,7 +4,7 @@ description: Introduction to the PostgreSQL Extensions for Azure Database for Po
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 11/19/2024
+ms.date: 12/06/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: how-to
@@ -79,6 +79,8 @@ The following example adds extensions to the allowlist `dblink`, `dict_xsyn`, `p
 
 `shared_preload_libraries` is a server configuration parameter that determines which libraries have to be loaded when Azure Database for PostgreSQL flexible server starts. Any libraries that use shared memory must be loaded via this parameter. If your extension needs to be added to the shared preload libraries, follow these steps:
 
+#### [Portal](#tab/portal)
+
 Using the [Azure portal](https://portal.azure.com):
 
 1. Select your Azure Database for PostgreSQL flexible server instance.
@@ -87,21 +89,25 @@ Using the [Azure portal](https://portal.azure.com):
 
     :::image type="content" source="media/how-to-allow-extensions/shared-libraries.png" alt-text="Screenshot of Server parameters page while setting shared_preload_libraries." lightbox="media/how-to-allow-extensions/shared-libraries.png":::
 
-You can set `shared_preload_libraries` via the CLI [parameter set](/cli/azure/postgres/flexible-server/parameter?view=azure-cli-latest#az-postgres-flexible-server-parameter-set) command.
+4. Because `shared_preload_libraries`is a static server parameter, it requires a server restart so that the changes take effect.
+
+    :::image type="content" source="media/how-to-allow-extensions/save-and-restart.png" alt-text="Screenshot of Server parameters page, showing the dialog from which you can save changes and restart." lightbox="media/how-to-allow-extensions/save-and-restart.png":::
+
+#### [Azure CLI](#tab/cli)
+
+You can set `shared_preload_libraries` using the CLI [parameter set](/cli/azure/postgres/flexible-server/parameter?view=azure-cli-latest#az-postgres-flexible-server-parameter-set) command.
 
 ```azurecli
 az postgres flexible-server parameter set --resource-group <resource_group> --server-name <server> --name shared_preload_libraries --value <extension_name>,<extension_name>
 ```
 
-4. Because `shared_preload_libraries`is a static server parameter, it requires a server restart so that the changes take effect.
-
-    :::image type="content" source="media/how-to-allow-extensions/save-and-restart.png" alt-text="Screenshot of Server parameters page, showing the dialog from which you can save changes and restart." lightbox="media/how-to-allow-extensions/save-and-restart.png":::
-
-You can restart the server via the CLI [parameter set](/cli/azure/postgres/flexible-server?view=azure-cli-latest#az-postgres-flexible-server-restart) command.
+And can restart the server using the CLI [parameter set](/cli/azure/postgres/flexible-server?view=azure-cli-latest#az-postgres-flexible-server-restart) command.
 
 ```azurecli
 az postgres flexible-server restart --resource-group <resource_group> --name <server>
 ```
+
+---
 
 ## Create extensions
 
