@@ -556,7 +556,7 @@
         href: flexible-server/how-to-read-replicas-virtual-endpoints-terraform.md
   - name: Extensions
     items:
-    - name: Allow, create, update
+    - name: Manage
       href: extensions/how-to-allow-extensions.md
     - name: Special considerations
       href: extensions/concepts-extensions-considerations.md
