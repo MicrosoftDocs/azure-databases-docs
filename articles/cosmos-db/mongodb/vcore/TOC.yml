@@ -44,10 +44,14 @@
       href: compatibility-and-feature-support.md
     - name: Support for Geospatial Queries
       href: geospatial-support.md
-    - name: High availability (HA)
-      href: high-availability.md
-    - name: Cross-region replication
-      href: cross-region-replication.md
+    - name: Availability and disaster recovery (DR)
+      items:
+        - name: High availability (HA)
+          href: high-availability.md
+        - name: Cross-region replication
+          href: cross-region-replication.md
+        - name: HA and DR - Behind the scene
+          href: availability-and-disaster-recovery-under-the-hood.md
     - name: Indexing
       href: indexing.md
     - name: Change Stream
