@@ -95,7 +95,7 @@ You can set `shared_preload_libraries` via the CLI [parameter set](/cli/azure/po
 az postgres flexible-server parameter set --resource-group <resource_group> --server-name <server> --subscription <subscription_id> --name shared_preload_libraries --value <extension_name>,<extension_name>
 ```
 
-## Create Extension
+## Create extensions
 
 After extensions are allowlisted and loaded, they must be installed in each database on which they're to be used.
 
@@ -106,13 +106,13 @@ After extensions are allowlisted and loaded, they must be installed in each data
 > [!NOTE]  
 > Third-party extensions offered in Azure Database for PostgreSQL flexible server are open-source licensed code. We don't offer any third-party extensions or extension versions with premium or proprietary licensing models.
 
-Azure Database for PostgreSQL flexible server instance supports a subset of key PostgreSQL extensions, as listed in the following table. This information is also available by running `SHOW azure.extensions;`. Extensions not listed in this document aren't supported on Azure Database for PostgreSQL flexible server. You can't create or load your extension in Azure Database for PostgreSQL flexible server.
+Azure Database for PostgreSQL flexible server instance supports a subset of key PostgreSQL extensions, as listed in [supported extensions by name](concepts-extensions-versions.md) or in [supported extensions by version of PostgreSQL](concepts-extensions-by-engine.md). This information is also available by running `SHOW azure.extensions;`. Extensions not listed in this document aren't supported on Azure Database for PostgreSQL flexible server. You can't create or load your extension in Azure Database for PostgreSQL flexible server.
 
-## Upgrading PostgreSQL extensions
+## Upgrade PostgreSQL extensions
 
 A simple command allows in-place upgrades of database extensions. This feature enables customers to automatically update their third-party extensions to the latest versions, maintaining current and secure systems without manual effort.
 
-### Updating extensions
+### Update extensions
 
 To update an installed extension to the latest available version supported by Azure, use the following SQL command:
 
@@ -122,7 +122,7 @@ ALTER EXTENSION <extension_name> UPDATE;
 
 This command simplifies the management of database extensions by allowing users to manually upgrade to the latest version approved by Azure, enhancing both compatibility and security.
 
-### Installed extensions
+### View installed extensions
 
 To list the extensions currently installed on your database, use the following SQL command:
 
