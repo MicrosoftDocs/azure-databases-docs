@@ -29,7 +29,7 @@ To check your engine version, run `SELECT VERSION();` command at the MySQL promp
 
 ### [Microsoft Defender for Cloud](/azure/defender-for-cloud/defender-for-databases-introduction)
 
-- Introducing Defender for Cloud support to simplify security management with threat protection from anomalous database activities in Azure Database for MySQL flexible server instances.
+- Introducing Defender for Cloud support to simplify security management with threat protection from anomalous database activities in Azure Database for MySQL Flexible Server instances.
 
 ## Improvement
 
