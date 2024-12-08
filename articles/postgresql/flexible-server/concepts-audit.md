@@ -30,7 +30,7 @@ To be able to use `pgaudit` extension, you need to [allowlist](../extensions/how
 
 ## Configure extension settings
 
-`pgaudit` allows you to configure session or object audit logging. [Session audit logging](https://github.com/`pgaudit`/`pgaudit`/blob/master/README.md#session-audit-logging) emits detailed logs of executed statements. [Object audit logging](https://github.com/`pgaudit`/`pgaudit`/blob/master/README.md#object-audit-logging) is audit scoped to specific relations. You can choose to set up one or both types of logging.
+`pgaudit` allows you to configure session or object audit logging. [Session audit logging](https://github.com/pgaudit/pgaudit/blob/master/README.md#session-audit-logging) emits detailed logs of executed statements. [Object audit logging](https://github.com/pgaudit/pgaudit/blob/master/README.md#object-audit-logging) is audit scoped to specific relations. You can choose to set up one or both types of logging.
 
 Once you [enable `pgaudit`](#installing-the-extension), you can configure its parameters to start logging.
 
@@ -48,7 +48,7 @@ Using the [Azure portal](https://portal.azure.com):
 
    1. Select **Save** button to save changes.
 
-Th official [documentation](https://github.com/`pgaudit`/`pgaudit`/blob/master/README.md#settings) of `pgaudit` provides the definition of each parameter. Test the parameters first and confirm that you're getting the expected behavior.
+Th official [documentation](https://github.com/pgaudit/pgaudit/blob/master/README.md#settings) of `pgaudit` provides the definition of each parameter. Test the parameters first and confirm that you're getting the expected behavior.
 
 For example, setting `pgaudit.log_client` to ON not only writes audit events to the server log, but also sends them to client processes (like psql). This setting should generally be left disabled. <br> <br>
 `pgaudit.log_level` is only enabled when `pgaudit.log_client` is on.
@@ -61,7 +61,7 @@ You can, however, use the `pgaudit` extension and set `pgaudit.log` to `DDL`, wh
 
 ## Audit log format
 
-Each audit entry begins with `AUDIT:`. The format of the rest of the entry is detailed in the [documentation](https://github.com/`pgaudit`/`pgaudit`/blob/master/README.md#format) of `pgaudit`.
+Each audit entry begins with `AUDIT:`. The format of the rest of the entry is detailed in the [documentation](https://github.com/pgaudit/pgaudit/blob/master/README.md#format) of `pgaudit`.
 
 ## Getting started
 
