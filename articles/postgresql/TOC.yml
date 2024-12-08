@@ -578,7 +578,7 @@
       items:
       - name: Overview  
         href: flexible-server/azure-local-ai.md
-      - name: Create embeddings with azure_local_ai
+      - name: How to enable and use
         href: flexible-server/generative-ai-azure-local-ai.md
     - name: Vector indexing (pg_diskann)
       items:
