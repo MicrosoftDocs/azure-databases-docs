@@ -32,9 +32,9 @@ To be able to use `pgaudit` extension, you need to [allowlist](../extensions/how
 
 `pgaudit` allows you to configure session or object audit logging. [Session audit logging](https://github.com/`pgaudit`/`pgaudit`/blob/master/README.md#session-audit-logging) emits detailed logs of executed statements. [Object audit logging](https://github.com/`pgaudit`/`pgaudit`/blob/master/README.md#object-audit-logging) is audit scoped to specific relations. You can choose to set up one or both types of logging.
 
-Once you have [enabled `pgaudit`](#installing-the-extension), you can configure its parameters to start logging.
+Once you [enable `pgaudit`](#installing-the-extension), you can configure its parameters to start logging.
 
-To configure `pgaudit` you can follow these instructions:
+To configure `pgaudit`, you can follow these instructions:
 
 Using the [Azure portal](https://portal.azure.com):
 
@@ -55,13 +55,13 @@ For example, setting `pgaudit.log_client` to ON not only writes audit events to 
 
 In Azure Database for PostgreSQL flexible server, `pgaudit.log` can't be set using a `-` (minus) sign shortcut as described in the `pgaudit` documentation. All required statement classes (READ, WRITE, etc.) should be individually specified.
 
-If you set the` log_statement` parameter to DDL or ALL and run a `CREATE ROLE/USER ... WITH PASSWORD ... ; ` or `ALTER ROLE/USER ... WITH PASSWORD ... ;`, command, then PostgreSQL creates an entry in the PostgreSQL logs where password is logged in clear text, which might cause a potential security risk. This is the expected behavior per the PostgreSQL engine design.
+If you set the` log_statement` parameter to `DDL` or `ALL` and run a `CREATE ROLE/USER ... WITH PASSWORD ... ; ` or `ALTER ROLE/USER ... WITH PASSWORD ... ;`, command, then PostgreSQL creates an entry in the PostgreSQL logs where password is logged in clear text, which might cause a potential security risk. It's the expected behavior per the PostgreSQL engine design.
 
 You can, however, use the `pgaudit` extension and set `pgaudit.log` to `DDL`, which doesn't record any `CREATE/ALTER ROLE` statement in Postgres server log, unlike it does when you set `log_statement` to `DDL`. If you need to log these statements, you can also set `pgaudit.log`to `ROLE`, which redacts the password from logs while logging `CREATE/ALTER ROLE`.
 
 ## Audit log format
 
-Each audit entry is indicated by `AUDIT:` near the beginning of the log line. The format of the rest of the entry is detailed in the [documentation](https://github.com/`pgaudit`/`pgaudit`/blob/master/README.md#format) of `pgaudit`.
+Each audit entry begins with `AUDIT:`. The format of the rest of the entry is detailed in the [documentation](https://github.com/`pgaudit`/`pgaudit`/blob/master/README.md#format) of `pgaudit`.
 
 ## Getting started
 
@@ -71,7 +71,7 @@ To start quickly, set `pgaudit.log` to `ALL`, and open your server logs to revie
 
 The way you access the logs depends on which endpoint you choose. See the [logs storage account](/azure/azure-monitor/essentials/resource-logs#send-to-azure-storage) article for Azure Storage. See the [stream Azure logs](/azure/azure-monitor/essentials/resource-logs#send-to-azure-event-hubs) article for Event Hubs.
 
-For Azure Monitor Logs, logs are sent to the workspace you selected. The Postgres logs use the **AzureDiagnostics** collection mode, so they can be queried from the AzureDiagnostics table. The fields in the table are described below. Learn more about querying and alerting in the [Azure Monitor Logs query](/azure/azure-monitor/logs/log-query-overview) overview.
+For Azure Monitor Logs, logs are sent to the workspace you selected. The Postgres logs use the **AzureDiagnostics** collection mode, so they can be queried from the AzureDiagnostics table. Learn more about querying and alerting in the [Azure Monitor Logs query](/azure/azure-monitor/logs/log-query-overview) overview.
 
 You can use this query to get started. You can configure alerts based on queries.
 
