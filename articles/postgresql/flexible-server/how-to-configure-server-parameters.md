@@ -23,6 +23,7 @@ You can list, show, and update configuration parameters for an Azure Database fo
 Using the [Azure portal](https://portal.azure.com):
 
     1. Select your Azure Database for PostgreSQL flexible server instance.
+
     2. In the resource menu, under the **Settings** section, select **Server parameters**. The page shows a list of parameters, their configured values, optional units, whether they are read-only/dynamic/static, and their descriptions.
 
     :::image type="content" source="./media/how-to-configure-server-parameters/server-parameters.png" alt-text="Screenshot of Server parameters page." lightbox="./media/how-to-configure-server-parameters/server-parameters.png":::
@@ -41,6 +42,8 @@ Using the [Azure portal](https://portal.azure.com):
 
 ### [CLI](#tab/cli-list)
 
+    1. something
+    
 ---
 
 7. Change the parameter values you would like to adjust. All changes you make in a session are highlighted in purple. Once you have changed the values, you can select **Save**. Or you can **Discard** your changes.
