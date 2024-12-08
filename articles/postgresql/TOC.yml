@@ -517,11 +517,7 @@
       - name: Connect with SCRAM authentication
         href: flexible-server/how-to-connect-scram.md
     - name: Major version upgrade
-      items:
-      - name: Azure portal
-        href: flexible-server/how-to-perform-major-version-upgrade-portal.md
-      - name: Azure CLI
-        href: flexible-server/how-to-perform-major-version-upgrade-cli.md
+      href: flexible-server/how-to-perform-major-version-upgrade.md
     - name: Manage high availability
       items:
       - name: Azure portal
