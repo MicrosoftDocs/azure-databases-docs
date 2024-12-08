@@ -24,7 +24,7 @@ ms.custom:
 
 1. You may want to enable the [vector](how-to-use-pgvector.md) extension, as it provides functionality to store and efficiently index text embeddings in your database.
 
-## Enable the `azure_local_ai` extension
+## Enable the extension
 
 Before you can enable azure_local_ai on your Azure Database for PostgreSQL flexible server instance, you need to allowlist the `azure_local_ai` extension as described in [allow an extension](how-to-allow-extensions.md#allow-extensions).
 
@@ -43,7 +43,7 @@ Installing the extension `azure_local_ai` creates a schema called `azure_local_a
 > [!IMPORTANT]  
 > You may want to enable the [vector extension](how-to-use-pgvector.md), as it is required to store text embeddings in your PostgreSQL database.
 
-## Functions provided by the azure_local_ai extension
+## Functions provided by the extension
 
 The `azure_local_ai` extension provides a set of functions. These functions allow you to create vector embeddings from text data, making it easier to develop generative AI applications. The extension offers functions for creating embeddings, getting settings, and more. By using these functions, you can simplify the development process and reduce latency by eliminating the need for additional remote API calls to AI embedding models hosted outside of the PostgreSQL boundary.
 
@@ -119,7 +119,7 @@ Valid values are:
 
 ## Examples
 
-### Use azure_local_ai and the locally deployed multilingual-e5-small model to create embeddings and store them as vectors
+### Create embeddings of existing texts
 
 Following is an example that can be used in your own environment to test embedding generation with the locally deployed multilingual-e5 model. 
 
@@ -158,7 +158,7 @@ SELECT azure_local_ai.create_embeddings('multilingual-e5-small:v1', array['Recom
 ```
 
 
-### Update embeddings upon insertion
+### Generate embeddings upon insertion of text
 
 Following is an example that can be used in your own environment to test embedding generation with the locally deployed multilingual-e5 model.
 
@@ -186,3 +186,10 @@ select all_documents.doc_id, all_docs.doc_contents , 1 - (all_documents.doc_vect
  order by similarity desc
  limit 2;
 ```
+
+
+[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
+
+## Related content
+- [What is the azure_local_ai extension for Azure Database for PostgreSQL - Flexible Server (Preview)](azure-local-ai.md)
+- [How to enable and use pgvector on Azure Database for PostgreSQL - Flexible Server](how-to-use-pgvector.md)
