@@ -42,7 +42,24 @@ Using the [Azure portal](https://portal.azure.com):
 
 ### [CLI](#tab/cli-list)
 
-    1. something
+You can list all server parameters in a server via the [az postgres flexible-server parameter list](/cli/azure/postgres/flexible-server/parameter#az-postgres-flexible-server-parameter-list) command.
+
+```azurecli-interactive
+az postgres flexible-server parameter list --resource-group <resource_group> --server-name <server>
+```
+
+Each parameter has the following attributes:
+
+| Attribute name | Description | Possible values |
+| --- | --- | --- |
+| **value** | Value currently assigned to the parameter. | Varies, depending on the data type and allowed values of the parameter. |
+| **description** | Brief explanation of what the parameter controls. | Textual description which is different for each parameter. |
+| **defaultValue** | Value assigned to the parameter when a new server is deployed. | Varies, depending on the data type and allowed values of the parameter. |
+| **source** | Source from which the value currently set for the parameter originates. | `system-default` or `user-override`, depending on whether **value** is set to the system default or the user has overriden it.  |
+| **isDynamicConfig** | Indicates whether a change in the value assigned to the parameter doesn't require or requires a server restart, for the change to take effect. | `true`: for parameters that, when their value changes, the change takes effect immediately. `false`: for parameters that, when their value changes, require a server restart for the change to take effect. |
+| **isReadOnly** | Indicates whether the default value assigned for the parameter can't be overridden by the user or can be overridden. | `true`: for parameters that are designated as read-only and the user can't change. `false`: for parameters that are designated as read-write and the user can set to a different value than their default. |
+| **isConfigPendingRestart** | Indicates whether a server restart is required for the value currently set in the **value** attribute to take effect. | `true`: for parameters whose value was changed and, because they aren't dynamic (that is, they're static), require a server restart that hasn't occurred yet for the change to take effect. `false`: for parameters whose value currently set in the **value** attribute is in effect, and aren't waiting for a server restart to take effect. |
+| **documentationLink** | URL address of the page pointing to the documentation of the parameter. | Some form of URL. |
 
 ---
 
