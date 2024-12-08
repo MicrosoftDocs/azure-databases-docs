@@ -4,7 +4,7 @@ description: This article describes how to perform a major version upgrade in Az
 author: rajsell
 ms.author: kabharati
 ms.reviewer: maghan
-ms.date: 04/27/2024
+ms.date: 12/08/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: how-to
@@ -19,20 +19,18 @@ This article provides a step-by-step procedure to perform a major version upgrad
 > [!NOTE]  
 > The major version upgrade action is irreversible. Please perform a Point-In-Time Recovery (PITR) of your production server and test the upgrade in the non-production environment.
 
-## Follow these steps to upgrade your Azure Database for PostgreSQL flexible server instance to the major version of your choice:
-
-
+## Upgrade to the major version of your choice
 
 1. In the [Azure portal](https://portal.azure.com/), choose the Azure Database for PostgreSQL flexible server instance that you want to upgrade.
 
-2. Select **Overview** from the left pane, and then select **Upgrade**.
+2. From the resource menu, select **Overview**, and then select **Upgrade**.
    
-   :::image type="content" source="media/how-to-perform-major-version-upgrade-portal/upgrade-tab.png" alt-text="Diagram of Upgrade tab to perform in-place major version upgrade.":::
+   :::image type="content" source="media/how-to-perform-major-version-upgrade-portal/upgrade-tab.png" alt-text="Screenshot of Overview page to demonstrate how to initiate major version upgrade of an instance of Azure Database for PostgreSQL Flexible Server.":::
 
 
-3. You see an option to select the major version of your choice, you have an option to skip versions to directly upgrade to higher versions. Choose the version and click **Upgrade** 
+3. Choose the major version to which you want to upgrade your instance, and click **Upgrade**.
 
-:::image type="content" source="media/how-to-perform-major-version-upgrade-portal/set-postgresql-version.png" alt-text="Diagram of PostgreSQL version to Upgrade."::: 
+:::image type="content" source="media/how-to-perform-major-version-upgrade-portal/set-postgresql-version.png" alt-text="Screenshot of the Upgrade pane from where you can select target major version to which you want to upgrade."::: 
 
 
 4. During upgrade, users have to wait for the process to complete. You can resume accessing the server once the server is back online.
@@ -40,19 +38,21 @@ This article provides a step-by-step procedure to perform a major version upgrad
 :::image type="content" source="media/how-to-perform-major-version-upgrade-portal/deployment-progress.png" alt-text="Diagram of deployment progress for Major Version Upgrade.":::
 
 
-5. Once the upgrade is successful,you can expand the Deployment details tab and click **Operation details** to see more information about upgrade process like duration, provisioning state etc.
+5. Once the upgrade completes successfully, you can expand **Deployment details**, and select **Operation details** to see more information about the upgrade process, like duration, provisioning state, etc. Then you can select the **Go to resource** button to validate your upgrade.
 
 
 :::image type="content" source="media/how-to-perform-major-version-upgrade-portal/deployment-success.png" alt-text="Diagram of successful deployment of for Major Version Upgrade.":::
  
 
-6. You can click on the **Go to resource** tab to validate your upgrade. You notice that server name remained unchanged and PostgreSQL version upgraded to desired higher version with the latest minor version
+6. Notice that the name of the server remains unchanged and PostgreSQL version upgraded to desired target version, with the latest minor version.
 
 
 :::image type="content" source="media/how-to-perform-major-version-upgrade-portal/upgrade-verification.png" alt-text="Diagram of Upgraded version to Azure Database for PostgreSQL flexible server after Major Version Upgrade.":::
 
-## Next steps
 
-- Learn about [business continuity](./concepts-business-continuity.md).
-- Learn about [zone-redundant high availability](./concepts-high-availability.md).
-- Learn about [backup and recovery](./concepts-backup-restore.md).
+## Related content
+
+- [business continuity](./concepts-business-continuity.md).
+- [major version upgrade](./concepts-major-version-upgrade.md).
+- [zone-redundant high availability](./concepts-high-availability.md).
+- [backup and recovery](./concepts-backup-restore.md).
