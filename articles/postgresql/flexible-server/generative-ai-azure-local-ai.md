@@ -119,7 +119,7 @@ Valid values are:
 
 ## Examples
 
-### Create embeddings of existing texts
+### Create embeddings from existing texts
 
 Following is an example that can be used in your own environment to test embedding generation with the locally deployed multilingual-e5 model. 
 
@@ -158,7 +158,7 @@ SELECT azure_local_ai.create_embeddings('multilingual-e5-small:v1', array['Recom
 ```
 
 
-### Generate embeddings upon insertion of text
+### Generate embeddings upon insertion of new text
 
 Following is an example that can be used in your own environment to test embedding generation with the locally deployed multilingual-e5 model.
 
