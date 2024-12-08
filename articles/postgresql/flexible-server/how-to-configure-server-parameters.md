@@ -22,21 +22,21 @@ You can list, show, and update configuration parameters for an Azure Database fo
 
 Using the [Azure portal](https://portal.azure.com):
 
-    1. Select your Azure Database for PostgreSQL flexible server instance.
+1. Select your Azure Database for PostgreSQL flexible server instance.
 
-    2. In the resource menu, under the **Settings** section, select **Server parameters**. The page shows a list of parameters, their configured values, optional units, whether they are read-only/dynamic/static, and their descriptions.
+2. In the resource menu, under the **Settings** section, select **Server parameters**. The page shows a list of parameters, their configured values, optional units, whether they are read-only/dynamic/static, and their descriptions.
 
     :::image type="content" source="./media/how-to-configure-server-parameters/server-parameters.png" alt-text="Screenshot of Server parameters page." lightbox="./media/how-to-configure-server-parameters/server-parameters.png":::
 
-    3. Select or hover over the **i** (information) icon, to see the allowed values to which each parameter can be set to. Depending on the data type of the parameter (string, enumeration, integer, boolean, numeric, set), the allowed values varies (regular expression, list of values, range of integers, on/off, range of decimals, list of values).
+3. Select or hover over the **i** (information) icon, to see the allowed values to which each parameter can be set to. Depending on the data type of the parameter (string, enumeration, integer, boolean, numeric, set), the allowed values varies (regular expression, list of values, range of integers, on/off, range of decimals, list of values).
 
     :::image type="content" source="./media/how-to-configure-server-parameters/information-icon.png" alt-text="Screenshot showing balloon that pops-up when hovering on the information icon." lightbox="./media/how-to-configure-server-parameters/information-icon.png":::
 
-    4. The list of server parameters supported by the instance consists of several hundred items, which are rendered in pages of 20 items each. At the bottom of the page, there's a visual control which informs you of the position in which you're, and paging control which you can use to navigate through the whole set of pages.
+4. The list of server parameters supported by the instance consists of several hundred items, which are rendered in pages of 20 items each. At the bottom of the page, there's a visual control which informs you of the position in which you're, and paging control which you can use to navigate through the whole set of pages.
 
     :::image type="content" source="./media/how-to-configure-server-parameters/paging.png" alt-text="Screenshot paging control in Server parameters page." lightbox="./media/how-to-configure-server-parameters/paging.png":::
 
-    5. If needed, use the **Search to filter items...** text box to narrow down the list to those containing the search term in the name or in the description of the parameter.
+5. If needed, use the **Search to filter items...** text box to narrow down the list to those containing the search term in the name or in the description of the parameter.
 
     :::image type="content" source="./media/how-to-configure-server-parameters/search.png" alt-text="Screenshot of search in Server parameters." lightbox="./media/how-to-configure-server-parameters/search.png":::
 
