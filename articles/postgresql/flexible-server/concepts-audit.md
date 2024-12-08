@@ -48,7 +48,7 @@ Using the [Azure portal](https://portal.azure.com):
 
    1. Select **Save** button to save changes.
 
-`pgaudit` [documentation](https://github.com/`pgaudit`/`pgaudit`/blob/master/README.md#settings) provides the definition of each parameter. Test the parameters first and confirm that you're getting the expected behavior.
+Th official [documentation](https://github.com/`pgaudit`/`pgaudit`/blob/master/README.md#settings) of `pgaudit` provides the definition of each parameter. Test the parameters first and confirm that you're getting the expected behavior.
 
 For example, setting `pgaudit.log_client` to ON not only writes audit events to the server log, but also sends them to client processes (like psql). This setting should generally be left disabled. <br> <br>
 `pgaudit.log_level` is only enabled when `pgaudit.log_client` is on.
