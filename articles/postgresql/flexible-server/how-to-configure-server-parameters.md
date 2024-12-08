@@ -76,7 +76,7 @@ Using the [Azure portal](https://portal.azure.com):
 
     :::image type="content" source="./media/how-to-configure-server-parameters/modified-parameters.png" alt-text="Screenshot of modified server parameters." lightbox="./media/how-to-configure-server-parameters/modified-parameters.png":::
 
-### [CLI](#tab/portal-list-modified)
+### [CLI](#tab/cli-list-modified)
 
 You can list all server parameters whose values have been modified from defaults, via the [az postgres flexible-server parameter list](/cli/azure/postgres/flexible-server/parameter#az-postgres-flexible-server-parameter-list) command.
 
@@ -93,7 +93,7 @@ az postgres flexible-server parameter list --resource-group <resource_group> --s
 :::image type="content" source="./media/how-to-configure-server-parameters/6-save-and-discard.png" alt-text="Screenshot of save or discard changes.":::
 
 8. List all the parameters that are modified from their _default_ value. 
-:::image type="content" source="./media/how-to-configure-server-parameters/8-modified-parameter-tab.png" alt-text="Screenshot of modified parameter tab.":::
+:::image type="content" source="./media/how-to-configure-server-parameters/modified-parameters.png" alt-text="Screenshot of modified parameter tab.":::
 
 9. If you have saved new values for the parameters, you can always revert everything back to the default values by selecting **Reset all to default**.
 :::image type="content" source="./media/how-to-configure-server-parameters/7-reset-to-default-button.png" alt-text="Screenshot of reset all to default.":::
