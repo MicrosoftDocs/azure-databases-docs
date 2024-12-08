@@ -43,7 +43,7 @@ Using the [Azure portal](https://portal.azure.com):
 ### [CLI](#tab/cli-list)
 
     1. something
-    
+
 ---
 
 7. Change the parameter values you would like to adjust. All changes you make in a session are highlighted in purple. Once you have changed the values, you can select **Save**. Or you can **Discard** your changes.
@@ -56,7 +56,7 @@ Using the [Azure portal](https://portal.azure.com):
 :::image type="content" source="./media/how-to-configure-server-parameters/7-reset-to-default-button.png" alt-text="Screenshot of reset all to default.":::
 
 ## Working with time zone parameters
-If you plan to work with date and time data in PostgreSQL, you’ll want to ensure that you’ve set the correct time zone for your location. All timezone-aware dates and times are stored internally in PostgreSQL in UTC. They are converted to local time in the zone specified by the **TimeZone** server parameter before being displayed to the client.  This parameter can be edited on **Server parameters** page as explained above. 
+If you plan to work with date and time data in PostgreSQL, you’ll want to ensure that you’ve set the correct time zone for your location. All timezone-aware dates and times are stored internally in PostgreSQL in UTC. They're converted to local time in the zone specified by the **TimeZone** server parameter before being displayed to the client. This parameter can be edited on **Server parameters** page as explained above. 
 PostgreSQL allows you to specify time zones in three different forms:
 1. A full time zone name, for example America/New_York. The recognized time zone names are listed in the [**pg_timezone_names**](https://www.postgresql.org/docs/9.2/view-pg-timezone-names.html) view.  
    Example to query this view in psql and get list of time zone names:
@@ -122,10 +122,11 @@ PostgreSQL allows you to specify time zones in three different forms:
         ART   |
     </pre>
 
-3. In addition to the timezone names and abbreviations, PostgreSQL will accept POSIX-style time zone specifications of the form STDoffset or STDoffsetDST, where STD is a zone abbreviation, offset is a numeric offset in hours west from UTC, and DST is an optional daylight-savings zone abbreviation, assumed to stand for one hour ahead of the given offset. 
-   
+3. In addition to the timezone names and abbreviations, PostgreSQL accepts POSIX-style time zone specifications of the form STDoffset or STDoffsetDST, where STD is a zone abbreviation, offset is a numeric offset in hours west from UTC, and DST is an optional daylight-savings zone abbreviation, assumed to stand for one hour ahead of the given offset. 
 
-## Next steps
+[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
+
+## Related contents
 Learn about:
 - [Overview of server parameters in Azure Database for PostgreSQL - Flexible Server](concepts-server-parameters.md)
 - [Configure Azure Database for PostgreSQL - Flexible Server parameters via CLI](how-to-configure-server-parameters-using-cli.md)
@@ -145,8 +146,8 @@ Each parameter has the following attributes:
 | **defaultValue** | Value assigned to the parameter when a new server is deployed. | Varies, depending on the data type and allowed values of the parameter. |
 | **source** | Source from which the value currently set for the parameter originates. | `system-default` or `user-override`, depending on whether **value** is set to the system default or the user has overriden it.  |
 | **isDynamicConfig** | Indicates whether a change in the value assigned to the parameter doesn't require or requires a server restart, for the change to take effect. | `true`: for parameters that, when their value changes, the change takes effect immediately. `false`: for parameters that, when their value changes, require a server restart for the change to take effect. |
-| **isReadOnly** | Indicates whether the default value assigned for the parameter cannot be overriden by the user or can be overriden. | `true`: for parameters that are designated as read-only and the user cannot change. `false`: for parameters that are designated as read-write and the user can set to a different value than their default. |
-| **isConfigPendingRestart** | Indicates whether a server restart is required for the value currently set in the **value** attribute to take effect. | `true`: for parameters whose value was changed and, because they aren't dynamic (that is, they're static), require a server restart that hasn't ocurred yet for the change to take effect. `false`: for parameters whose value currently set in the **value** attribute is in effect, and aren't waiting for a server restart to take effect. |
+| **isReadOnly** | Indicates whether the default value assigned for the parameter can't be overridden by the user or can be overridden. | `true`: for parameters that are designated as read-only and the user can't change. `false`: for parameters that are designated as read-write and the user can set to a different value than their default. |
+| **isConfigPendingRestart** | Indicates whether a server restart is required for the value currently set in the **value** attribute to take effect. | `true`: for parameters whose value was changed and, because they aren't dynamic (that is, they're static), require a server restart that hasn't occurred yet for the change to take effect. `false`: for parameters whose value currently set in the **value** attribute is in effect, and aren't waiting for a server restart to take effect. |
 | **documentationLink** | URL address of the page pointing to the documentation of the parameter. | Some form of URL. |
 
 

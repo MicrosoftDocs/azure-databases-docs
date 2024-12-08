@@ -331,4 +331,4 @@ The recommendations are:
 
 - [High CPU Utilization](how-to-high-cpu-utilization.md)
 - [High Memory Utilization](how-to-high-memory-utilization.md)
-- [Server Parameters](how-to-configure-server-parameters-using-portal.md)
+- [Server Parameters](how-to-configure-server-parameters.md)

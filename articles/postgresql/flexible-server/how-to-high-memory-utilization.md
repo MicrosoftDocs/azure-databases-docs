@@ -114,4 +114,4 @@ For more information on the **EXPLAIN** command, review [Explain Plan](https://w
 
 - [Autovacuum Tuning](how-to-autovacuum-tuning.md)
 - [High CPU Utilization](how-to-high-cpu-utilization.md)
-- [Server Parameters](how-to-configure-server-parameters-using-portal.md)
+- [Server Parameters](how-to-configure-server-parameters.md)

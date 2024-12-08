@@ -45,7 +45,7 @@ You can allowlist extensions via CLI parameter set [command](/cli/azure/postgres
  az postgres flexible-server parameter set --resource-group <your resource group>  --server-name <your server name> --subscription <your subscription id> --name azure.extensions --value `pgaudit`
  ```
 
-To install `pgaudit`, you must include it in the server's shared preload libraries. A change to Postgres's `shared_preload_libraries` parameter requires a server restart to take effect. You can change parameters using the [Azure portal](how-to-configure-server-parameters-using-portal.md), [Azure CLI](how-to-configure-server-parameters-using-cli.md), or [REST API](/rest/api/postgresql/singleserver/configurations/createorupdate).
+To install `pgaudit`, you must include it in the server's shared preload libraries. A change to Postgres's `shared_preload_libraries` parameter requires a server restart to take effect. You can change parameters using the [Azure portal](how-to-configure-server-parameters.md), [Azure CLI](how-to-configure-server-parameters-using-cli.md), or [REST API](/rest/api/postgresql/singleserver/configurations/createorupdate).
 
 Using the [Azure portal](https://portal.azure.com):
 
