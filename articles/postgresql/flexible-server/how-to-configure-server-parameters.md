@@ -63,6 +63,32 @@ Each parameter has the following attributes:
 
 ---
 
+
+## List server parameters with modified defaults
+
+### [Portal](#tab/portal-list-modified)
+
+Using the [Azure portal](https://portal.azure.com):
+
+1. Select your Azure Database for PostgreSQL flexible server instance.
+
+2. In the resource menu, under the **Settings** section, select **Server parameters**, and then select the **Modified** tab. The page shows a list of parameters whose currently set value deviates from the default.
+
+    :::image type="content" source="./media/how-to-configure-server-parameters/modified-parameters.png" alt-text="Screenshot of modified server parameters." lightbox="./media/how-to-configure-server-parameters/modified-parameters.png":::
+
+### [CLI](#tab/portal-list-modified)
+
+You can list all server parameters whose values have been modified from defaults, via the [az postgres flexible-server parameter list](/cli/azure/postgres/flexible-server/parameter#az-postgres-flexible-server-parameter-list) command.
+
+```azurecli-interactive
+az postgres flexible-server parameter list --resource-group <resource_group> --server-name <server> --query "[?value!=defaultValue && isReadOnly==\`false\` && name!='temp_tablespaces' && name!='vacuum_cost_page_miss'] | [].name"
+```
+
+> [!NOTE]  
+> Previous CLI command doesn't consider modified server parameters those which are designated as read-only, `temp_tablespaces` and  `vacuum_cost_page_miss`, following the exact same criteria as the **Server parameters** page in the Azure portal.
+
+---
+
 7. Change the parameter values you would like to adjust. All changes you make in a session are highlighted in purple. Once you have changed the values, you can select **Save**. Or you can **Discard** your changes.
 :::image type="content" source="./media/how-to-configure-server-parameters/6-save-and-discard.png" alt-text="Screenshot of save or discard changes.":::
 
