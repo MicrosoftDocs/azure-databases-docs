@@ -181,10 +181,10 @@ WITH all_documents AS (
 target_documents AS (
  SELECT azure_local_ai.create_embeddings('multilingual-e5-small:v1', 'Generate text embeddings in PostgreSQL.') doc_vector
 )
-select all_documents.doc_id, all_docs.doc_contents , 1 - (all_documents.doc_vector::vector <=> target_documents.doc_vector::vector) as similarity
- from target_documents, all_documents
- order by similarity desc
- limit 2;
+SELECT all_documents.doc_id, all_docs.doc_contents , 1 - (all_documents.doc_vector::vector <=> target_documents.doc_vector::vector) AS similarity
+ FROM target_documents, all_documents
+ ORDER BY similarity DESC
+ LIMIT 2;
 ```
 
 
