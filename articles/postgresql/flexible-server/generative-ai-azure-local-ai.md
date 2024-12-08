@@ -26,13 +26,13 @@ ms.custom:
 
 ## Enable the extension
 
-Before you can enable azure_local_ai on your Azure Database for PostgreSQL flexible server instance, you need to allowlist the `azure_local_ai` extension as described in [allow an extension](how-to-allow-extensions.md#allow-extensions).
+Before you can enable azure_local_ai on your Azure Database for PostgreSQL flexible server instance, you need to allowlist the `azure_local_ai` extension as described in [allow an extension](../extensions/how-to-allow-extensions.md#allow-extensions).
 
 > [!IMPORTANT]
 > Hosting language models in the database requires a large memory footprint. To support this requirement, `azure_local_ai` is only supported on **memory-optimized** Azure VM SKUs with a minimum of **4 vCores**.
 > If you are using a VM that does not meet the minimum requirements, the `azure_local_ai` extension will not appear in the list of allowed values for the `azure.extensions` server parameter.
 
-Once the extension is allowlisted, you can follow the instructions provided in [create extensions](how-to-allow-extensions.md#create-extensions) to install the extension in each  database from where you want to use it.
+Once the extension is allowlisted, you can follow the instructions provided in [create extensions](../extensions/how-to-allow-extensions.md#allow-extensions) to install the extension in each  database from where you want to use it.
 
 > [!NOTE]  
 > Enabling Azure Local AI will deploy the [multilingual-e5-small](https://huggingface.co/intfloat/multilingual-e5-small) model to your Azure Database for PostgreSQL Flexible Server instance. The linked documentation provides licensing terms from the e5 team.
