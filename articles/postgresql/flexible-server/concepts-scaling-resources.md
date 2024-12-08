@@ -3,7 +3,7 @@ title: Scaling resources
 description: This article describes the resource scaling in Azure Database for PostgreSQL flexible server.
 author: varun-dhawan
 ms.author: varundhawan
-ms.date: 10/28/2024
+ms.date: 12/7/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: conceptual
@@ -68,7 +68,6 @@ For read replica configured servers, scaling operations must follow a specific s
 - Near-zero downtime scaling doesn't work if a [virtual network-injected server with a delegated subnet](../flexible-server/concepts-networking-private.md#virtual-network-concepts) doesn't have sufficient usable IP addresses. If you have a standalone server, one extra IP address is necessary. For an HA-enabled server, two extra IP addresses are required.
 - Logical replication slots aren't preserved during a near-zero downtime failover event. To maintain logical replication slots and ensure data consistency after a scale operation, use the [pg_failover_slot](https://github.com/EnterpriseDB/pg_failover_slots) extension. For more information, see [Enabling extension in a flexible server](../flexible-server/concepts-extensions.md#pg_failover_slots).
 - Near-zero downtime scaling doesn't work with [unlogged tables](https://www.postgresql.org/docs/current/sql-createtable.html#SQL-CREATETABLE-UNLOGGED). Customers using unlogged tables for any of their data will lose all the data in those tables after the near-zero downtime scaling.
-- Near-zero downtime scaling is currently not supported for High Availability (HA) enabled servers.
 
 ## Related content
 
