@@ -1,50 +1,56 @@
 ---
-title: Configure server parameters - Azure portal
-description: This article describes how to configure the Postgres parameters in Azure Database for PostgreSQL - Flexible Server through the Azure portal.
+title: Configure server parameters
+description: This article describes how to configure the Postgres parameters in Azure Database for PostgreSQL - Flexible Server.
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 04/27/2024
+ms.date: 12/08/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: how-to
 ---
 
-# Configure server parameters in Azure Database for PostgreSQL - Flexible Server via the Azure portal 
+# Configure server parameters in Azure Database for PostgreSQL - Flexible Server
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
-You can list, show, and update configuration parameters for an Azure Database for PostgreSQL flexible server instance through the Azure portal. In addition, you can also click on the **Server Parameter Tabs** to easily view parameter group as **Modified**, **Static**, **Dynamic** and **Read-Only**.
+You can list, show, and update configuration parameters for an Azure Database for PostgreSQL flexible server instance.
 
-## Prerequisites
-To step through this how-to guide you need:
-- [An Azure Database for PostgreSQL flexible server instance](quickstart-create-server-portal.md)
+## List all server parameters
 
-## Viewing and editing parameters
-1. Open the [Azure portal](https://portal.azure.com).
+### [Portal](#tab/portal-list)
 
-2. Select your Azure Database for PostgreSQL flexible server instance.
+Using the [Azure portal](https://portal.azure.com):
 
-3. Under the **SETTINGS** section, select **Server parameters**. The page shows a list of parameters, their values, and descriptions.
-:::image type="content" source="./media/how-to-configure-server-parameters-in-portal/3-overview-of-parameters.png" alt-text="Screenshot of overview page for parameters.":::
+    1. Select your Azure Database for PostgreSQL flexible server instance.
+    2. In the resource menu, under the **Settings** section, select **Server parameters**. The page shows a list of parameters, their configured values, optional units, whether they are read-only/dynamic/static, and their descriptions.
 
-4. Select the **drop down** button to see the possible values for enumerated-type parameters like client_min_messages.
-:::image type="content" source="./media/how-to-configure-server-parameters-in-portal/4-enum-drop-down.png" alt-text="Screenshot of enumerate drop down.":::
+    :::image type="content" source="./media/how-to-configure-server-parameters/server-parameters.png" alt-text="Screenshot of Server parameters page." lightbox="./media/how-to-configure-server-parameters/server-parameters.png":::
 
-5. Select or hover over the **i** (information) button to see the range of possible values for numeric parameters like cpu_index_tuple_cost.
-:::image type="content" source="./media/how-to-configure-server-parameters-in-portal/4-information-button.png" alt-text="Screenshot of information button.":::
+    3. Select or hover over the **i** (information) icon, to see the allowed values to which each parameter can be set to. Depending on the data type of the parameter (string, enumeration, integer, boolean, numeric, set), the allowed values varies (regular expression, list of values, range of integers, on/off, range of decimals, list of values).
 
-6. If needed, use the **search box** to narrow down to a specific parameter. The search is on the name and description of the parameters.
-:::image type="content" source="./media/how-to-configure-server-parameters-in-portal/5-search.png" alt-text="Screenshot of search results.":::
+    :::image type="content" source="./media/how-to-configure-server-parameters/information-icon.png" alt-text="Screenshot showing balloon that pops-up when hovering on the information icon." lightbox="./media/how-to-configure-server-parameters/information-icon.png":::
+
+    4. The list of server parameters supported by the instance consists of several hundred items, which are rendered in pages of 20 items each. At the bottom of the page, there's a visual control which informs you of the position in which you're, and paging control which you can use to navigate through the whole set of pages.
+
+    :::image type="content" source="./media/how-to-configure-server-parameters/paging.png" alt-text="Screenshot paging control in Server parameters page." lightbox="./media/how-to-configure-server-parameters/paging.png":::
+
+    5. If needed, use the **Search to filter items...** text box to narrow down the list to those containing the search term in the name or in the description of the parameter.
+
+    :::image type="content" source="./media/how-to-configure-server-parameters/search.png" alt-text="Screenshot of search in Server parameters." lightbox="./media/how-to-configure-server-parameters/search.png":::
+
+### [CLI](#tab/cli-list)
+
+---
 
 7. Change the parameter values you would like to adjust. All changes you make in a session are highlighted in purple. Once you have changed the values, you can select **Save**. Or you can **Discard** your changes.
-:::image type="content" source="./media/how-to-configure-server-parameters-in-portal/6-save-and-discard.png" alt-text="Screenshot of save or discard changes.":::
+:::image type="content" source="./media/how-to-configure-server-parameters/6-save-and-discard.png" alt-text="Screenshot of save or discard changes.":::
 
 8. List all the parameters that are modified from their _default_ value. 
-:::image type="content" source="./media/how-to-configure-server-parameters-in-portal/8-modified-parameter-tab.png" alt-text="Screenshot of modified parameter tab.":::
+:::image type="content" source="./media/how-to-configure-server-parameters/8-modified-parameter-tab.png" alt-text="Screenshot of modified parameter tab.":::
 
 9. If you have saved new values for the parameters, you can always revert everything back to the default values by selecting **Reset all to default**.
-:::image type="content" source="./media/how-to-configure-server-parameters-in-portal/7-reset-to-default-button.png" alt-text="Screenshot of reset all to default.":::
+:::image type="content" source="./media/how-to-configure-server-parameters/7-reset-to-default-button.png" alt-text="Screenshot of reset all to default.":::
 
 ## Working with time zone parameters
 If you plan to work with date and time data in PostgreSQL, you’ll want to ensure that you’ve set the correct time zone for your location. All timezone-aware dates and times are stored internally in PostgreSQL in UTC. They are converted to local time in the zone specified by the **TimeZone** server parameter before being displayed to the client.  This parameter can be edited on **Server parameters** page as explained above. 
@@ -121,3 +127,55 @@ Learn about:
 - [Overview of server parameters in Azure Database for PostgreSQL - Flexible Server](concepts-server-parameters.md)
 - [Configure Azure Database for PostgreSQL - Flexible Server parameters via CLI](how-to-configure-server-parameters-using-cli.md)
   
+
+
+
+
+## Attributes of parameters
+
+Each parameter has the following attributes:
+
+| Attribute name | Description | Possible values |
+| --- | --- | --- |
+| **value** | Value currently assigned to the parameter. | Varies, depending on the data type and allowed values of the parameter. |
+| **description** | Brief explanation of what the parameter controls. | Textual description which is different for each parameter. |
+| **defaultValue** | Value assigned to the parameter when a new server is deployed. | Varies, depending on the data type and allowed values of the parameter. |
+| **source** | Source from which the value currently set for the parameter originates. | `system-default` or `user-override`, depending on whether **value** is set to the system default or the user has overriden it.  |
+| **isDynamicConfig** | Indicates whether a change in the value assigned to the parameter doesn't require or requires a server restart, for the change to take effect. | `true`: for parameters that, when their value changes, the change takes effect immediately. `false`: for parameters that, when their value changes, require a server restart for the change to take effect. |
+| **isReadOnly** | Indicates whether the default value assigned for the parameter cannot be overriden by the user or can be overriden. | `true`: for parameters that are designated as read-only and the user cannot change. `false`: for parameters that are designated as read-write and the user can set to a different value than their default. |
+| **isConfigPendingRestart** | Indicates whether a server restart is required for the value currently set in the **value** attribute to take effect. | `true`: for parameters whose value was changed and, because they aren't dynamic (that is, they're static), require a server restart that hasn't ocurred yet for the change to take effect. `false`: for parameters whose value currently set in the **value** attribute is in effect, and aren't waiting for a server restart to take effect. |
+| **documentationLink** | URL address of the page pointing to the documentation of the parameter. | Some form of URL. |
+
+
+* **Static**: When its value is changed, it requires a server restart to make the change effective.
+* **Dynamic**: These parameters can be altered without the need to restart the server instance. However, changes will apply only to new connections established after the modification.
+* **Read-only**: These parameters aren't user configurable because of their critical role in maintaining reliability, security, or other operational aspects of the service.
+
+To determine the parameter type, go to the Azure portal and open the **Server parameters** pane. The parameters are grouped into tabs for easy identification.
+
+## Parameter customization
+
+Various methods and levels are available to customize your parameters according to your specific needs.
+
+### Global level
+
+For altering settings globally at the instance or server level, go to the **Server parameters** pane in the Azure portal. You can also use other available tools such as the Azure CLI, the REST API, Azure Resource Manager templates, or partner tools.
+
+> [!NOTE]
+> Because Azure Database for PostgreSQL is a managed database service, users don't have host or operating system access to view or modify configuration files such as *postgresql.conf*. The content of the files is automatically updated based on parameter changes that you make.
+
+:::image type="content" source="./media/concepts-server-parameters/server-parameters-portal.png" alt-text="Screenshot of the pane for server parameters in the Azure portal.":::
+
+### Granular levels
+
+You can adjust parameters at more granular levels. These adjustments override globally set values. Their scope and duration depend on the level at which you make them:
+
+* **Database level**: Use the `ALTER DATABASE` command for database-specific configurations.
+* **Role or user level**: Use the `ALTER USER` command for user-centric settings.
+* **Function, procedure level**: When you're defining a function or procedure, you can specify or alter the configuration parameters that will be set when the function is called.
+* **Table level**: As an example, you can modify parameters related to autovacuum at this level.
+* **Session level**: For the duration of an individual database session, you can adjust specific parameters. PostgreSQL facilitates this adjustment with the following SQL commands:
+
+  * Use the `SET` command to make session-specific adjustments. These changes serve as the default settings during the current session. Access to these changes might require specific `SET` privileges, and the limitations for modifiable and read-only parameters described earlier don't apply. The corresponding SQL function is `set_config(setting_name, new_value, is_local)`.
+  * Use the `SHOW` command to examine existing parameter settings. Its SQL function equivalent is `current_setting(setting_name text)`.
+
