@@ -14,7 +14,7 @@ ms.custom:
 
 # Tutorial: Boost Azure Database for MySQL - Flexible Server performance with Azure Cache for Redis
 
-This article demonstrates how to boost the performance of an Azure Database for MySQL flexible server instance using [Azure Cache for Redis](/azure/azure-cache-for-redis/cache-overview). Azure Cache for Redis is a secure data cache and messaging broker that provides high throughput and low-latency access to data for applications.
+This article demonstrates how to boost the performance of an Azure Database for MySQL Flexible Server instance using [Azure Cache for Redis](/azure/azure-cache-for-redis/cache-overview). Azure Cache for Redis is a secure data cache and messaging broker that provides high throughput and low-latency access to data for applications.
 
 ## Prerequisites
 
@@ -24,8 +24,8 @@ For this quickstart you need:
 
 [!INCLUDE [flexible-server-free-trial-note](../includes/flexible-server-free-trial-note.md)]
 
-- Create an Azure Database for MySQL flexible server instance using [Quickstart: Create an instance of Azure Database for MySQL with the Azure portal](quickstart-create-server-portal.md) <br/> or [Quickstart: Create an instance of Azure Database for MySQL - Flexible Server by using the Azure CLI](quickstart-create-server-cli.md) if you don't have one.
-- Configure networking settings of the Azure Database for MySQL flexible server instance to make sure your IP has access to it. If you're using Azure App Service or Azure Kubernetes service, enable **Allow public access from any Azure service within Azure to this server** setting in the Azure portal.
+- Create an Azure Database for MySQL Flexible Server instance using [Quickstart: Create an instance of Azure Database for MySQL with the Azure portal](quickstart-create-server-portal.md) <br/> or [Quickstart: Create an instance of Azure Database for MySQL - Flexible Server by using the Azure CLI](quickstart-create-server-cli.md) if you don't have one.
+- Configure networking settings of the Azure Database for MySQL Flexible Server instance to make sure your IP has access to it. If you're using Azure App Service or Azure Kubernetes service, enable **Allow public access from any Azure service within Azure to this server** setting in the Azure portal.
 
 [Having issues? Let us know](https://github.com/MicrosoftDocs/azure-docs/issues)
 
@@ -99,7 +99,7 @@ mysqlcnx.close()
 
 ## Use Redis with PHP
 
-Install [PHP](https://www.php.net/manual/en/install.php) on your local environment. Follow the steps below to write a PHP script that caches a SQL query from the Azure Database for MySQL flexible server database. Here are a few prerequisites before running the script:
+Install [PHP](https://www.php.net/manual/en/install.php) on your local environment. Follow the steps below to write a PHP script that caches a SQL query from the Azure Database for MySQL Flexible Server database. Here are a few prerequisites before running the script:
 
 1. Install and enable [Redis PECL extension](https://pecl.php.net/package/redis) to use Azure Cache for Redis with your PHP script. See [how to install the extension locally](https://github.com/phpredis/phpredis/blob/develop/INSTALL.md)
 1. Install and enable [MySQL PDO extension](https://www.php.net/manual/en/ref.pdo-mysql.php)
