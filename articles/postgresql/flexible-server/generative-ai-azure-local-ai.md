@@ -191,5 +191,5 @@ SELECT all_documents.doc_id, all_docs.doc_contents , 1 - (all_documents.doc_vect
 [Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
 
 ## Related content
-- [What is the azure_local_ai extension for Azure Database for PostgreSQL - Flexible Server (Preview)](azure-local-ai.md)
-- [How to enable and use pgvector on Azure Database for PostgreSQL - Flexible Server](how-to-use-pgvector.md)
+- [overview of azure_local_ai extension (Preview)](azure-local-ai.md)
+- [enable and use pgvector extension](how-to-use-pgvector.md)

@@ -46,5 +46,5 @@ This preview feature is also only available for newly deployed Azure Database fo
 [Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
 
 ## Related content
-- [How to enable and use azure_local_ai on Azure Database for PostgreSQL - Flexible Server](generative-ai-azure-local-ai.md)
-- [How to enable and use pgvector on Azure Database for PostgreSQL - Flexible Server](how-to-use-pgvector.md)
+- [enable and use azure_local_ai extension](generative-ai-azure-local-ai.md)
+- [enable and use pgvector extension](how-to-use-pgvector.md)
