@@ -183,6 +183,28 @@ az postgres flexible-server parameter list --resource-group <resource_group> --s
 
 ---
 
+## List read-only server parameters
+
+### [Portal](#tab/portal-list-read-only)
+
+Using the [Azure portal](https://portal.azure.com):
+
+1. Select your Azure Database for PostgreSQL flexible server instance.
+
+2. In the resource menu, under the **Settings** section, select **Server parameters**, and then select the **Read-Only** tab. The page shows a list of read-only parameters.
+
+    :::image type="content" source="./media/how-to-configure-server-parameters/read-only-parameters.png" alt-text="Screenshot of read-only server parameters." lightbox="./media/how-to-configure-server-parameters/read-only-parameters.png":::
+
+### [CLI](#tab/cli-list-read-only)
+
+You can list all server parameters that are designated as read-only, whose values cannot be changed by users, via the [az postgres flexible-server parameter list](/cli/azure/postgres/flexible-server/parameter#az-postgres-flexible-server-parameter-list) command.
+
+```azurecli-interactive
+az postgres flexible-server parameter list --resource-group <resource_group> --server-name <server> --query "[?isReadOnly==\`true\`] | [].name"
+```
+
+---
+
 ## Set the value of one or more server parameters
 
 ### [Portal](#tab/portal-set-value)
@@ -384,6 +406,4 @@ PostgreSQL allows you to specify time zones in three different forms:
 [Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
 
 ## Related contents
-Learn about:
-- [Overview of server parameters in Azure Database for PostgreSQL - Flexible Server](concepts-server-parameters.md)
-- [Configure Azure Database for PostgreSQL - Flexible Server parameters via CLI](how-to-configure-server-parameters-using-cli.md)
+- [overview of server parameters](concepts-server-parameters.md)
