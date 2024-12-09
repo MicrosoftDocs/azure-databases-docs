@@ -163,7 +163,7 @@ After you restore the server, you can perform the following tasks to get your us
 
 - If the new server is meant to replace the original server, redirect clients and client applications to the new server. Change the server name of your connection string to point to the new server.
 
-- The values of all (server parameters)[./concepts-server-parameters.md] on the original server are not automatically applied to the new server. Ensure that all server parameters on the new server are re-configured as per the requirements of that new server.
+- The values of all [server parameters](./concepts-server-parameters.md) on the original server are not automatically applied to the new server. Ensure that all server parameters on the new server are re-configured as per the requirements of that new server.
 
 - Ensure that appropriate server-level firewall, private endpoints and virtual network rules are in place for user connections. In *public access* network, rules are copied over from the original server, but those might not be the ones required in the restored environment. So, adjust them as per your requirements. Private endpoints are not carried over. Create any private endpoints you may need in the restored server. In *private access* virtual network, the restore doesn't copy over any network infrastructure artifacts from source to restored server networks. Anything related to configuration of VNET(Virtual Network), subnets, or Network Security Groups, must be taken care of as a post-restore task.
   
