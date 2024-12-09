@@ -77,6 +77,7 @@ Using the [Azure portal](https://portal.azure.com):
 
 
 The **Parameter type** column can show any of the following values for each parameter:
+
 | Parameter type | Description |
 | --- | --- |
 | **Static** | Requires a server restart to make the change effective. |
