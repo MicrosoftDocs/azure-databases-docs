@@ -149,10 +149,10 @@ Using the [Azure portal](https://portal.azure.com):
 
 3. Locate the read-write parameter whose current value you want to revert to its default, select the elipsis at the right end side of the scree, and select **Reset to default**.
 
+    :::image type="content" source="./media/how-to-configure-server-parameters/reset-one-to-default.png" alt-text="Screenshot of resetting the value of one server parameter to its default." lightbox="./media/how-to-configure-server-parameters/reset-one-to-default.png":::
+
 > [!IMPORTANT]
 > For parameters designated as read-only, selecting the ellipsis doesn't pop up the **Reset to default** menu option.
-
-    :::image type="content" source="./media/how-to-configure-server-parameters/reset-one-to-default.png" alt-text="Screenshot of resetting the value of one server parameter to its default." lightbox="./media/how-to-configure-server-parameters/reset-one-to-default.png":::
 
 4. If the column **Parameter type** for the parameter you're trying to reset to default is equal to **Static**, the server requires a restart for the change to take effect. In that case, a dialog pops up so that you can select if you want to:
     - **Save and Restart**: In case you want to persist all changes made to all parameters whose values were modified, and immediately after restart the server for any changes to static parameters to take effect.
