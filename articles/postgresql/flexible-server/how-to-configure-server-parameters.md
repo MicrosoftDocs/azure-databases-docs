@@ -136,7 +136,6 @@ fi
 
 ---
 
-
 ## Revert one server parameter to its default
 
 ### [Portal](#tab/portal-revert-one-to-default)
@@ -181,15 +180,49 @@ fi
 
 ---
 
+## Revert all server parameters to their defaults
 
-7. Change the parameter values you would like to adjust. All changes you make in a session are highlighted in purple. Once you have changed the values, you can select **Save**. Or you can **Discard** your changes.
-:::image type="content" source="./media/how-to-configure-server-parameters/6-save-and-discard.png" alt-text="Screenshot of save or discard changes.":::
+### [Portal](#tab/portal-revert-all-to-default)
 
-8. List all the parameters that are modified from their _default_ value. 
-:::image type="content" source="./media/how-to-configure-server-parameters/modified-parameters.png" alt-text="Screenshot of modified parameter tab.":::
+Using the [Azure portal](https://portal.azure.com):
 
-9. If you have saved new values for the parameters, you can always revert everything back to the default values by selecting **Reset all to default**.
-:::image type="content" source="./media/how-to-configure-server-parameters/7-reset-to-default-button.png" alt-text="Screenshot of reset all to default.":::
+1. Select your Azure Database for PostgreSQL flexible server instance.
+
+2. In the resource menu, under the **Settings** section, select **Server parameters**.
+
+3. Select **Reset all to default**.
+
+    :::image type="content" source="./media/how-to-configure-server-parameters/reset-all-to-default.png" alt-text="Screenshot of resetting the value of all server parameters to their defaults." lightbox="./media/how-to-configure-server-parameters/reset-all-to-default.png":::
+
+4. If, for any of the parameters whose current value doesn't match their default, the column **Parameter type** is equal to **Static**, the server requires a restart for the change to take effect. In that case, a dialog pops up so that you can select if you want to:
+    - **Save and Restart**: In case you want to persist all changes made to all parameters whose values were modified, and immediately after restart the server for any changes to static parameters to take effect.
+    - **Save only**: In case you want to persist all changes made to all parameters whose set values changed, but want to defer the server restart to a later time. Until you don't complete the server restart action, changes made to any static server parameters don't take effect.
+    - **Cancel**: To not implement any changes yet.
+
+    :::image type="content" source="./media/how-to-configure-server-parameters/reset-all-to-default-save-restart-cancel.png" alt-text="Screenshot of dialog requesting a restart of the server after having reset all to default." lightbox="./media/how-to-configure-server-parameters/reset-all-to-default-save-restart-cancel.png":::
+
+### [CLI](#tab/cli-revert-all-to-default)
+
+You can revert the value of all read-write server parameters to their defaults via the [az postgres flexible-server parameter set](/cli/azure/postgres/flexible-server/parameter#az-postgres-flexible-server-parameter-set) command.
+
+```azurecli-interactive
+parameters_to_reset=$(az postgres flexible-server parameter list --resource-group <resource_group> --server-name <server> --query "[?value!=defaultValue && isReadOnly==\`false\`].name" -o tsv)
+for parameter_to_reset in $parameters_to_reset; do
+  az postgres flexible-server parameter set --resource-group <resource_group> --server-name <server> --name $parameter_to_reset --value $(az postgres flexible-server parameter show --resource-group <resource_group> --server-name <server> --name $parameter_to_reset --output tsv)
+done
+```
+
+And you can use the following script to conditionally restart the server, if any of the parameters changed require a restart for their change to take effect:
+
+```azurecli-interactive
+parameters_requiring_restart=$(az postgres flexible-server parameter list --resource-group <resource_group> --server-name <server> --query "[?isConfigPendingRestart==\`true\`] | length(@)")
+
+if [ "$parameters_requiring_restart" -gt 0 ]; then
+  az postgres flexible-server restart --resource-group <resource_group> --name <server>
+fi
+```
+
+---
 
 ## Working with time zone parameters
 If you plan to work with date and time data in PostgreSQL, you’ll want to ensure that you’ve set the correct time zone for your location. All timezone-aware dates and times are stored internally in PostgreSQL in UTC. They're converted to local time in the zone specified by the **TimeZone** server parameter before being displayed to the client. This parameter can be edited on **Server parameters** page as explained above. 
