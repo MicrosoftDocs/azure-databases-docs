@@ -32,7 +32,7 @@ In this same article you can find sections to interact with server parameters gl
 - [List all server parameters](#list-all-server-parameters).
 - [List server parameters with modified defaults](#list-server-parameters-with-modified-defaults).
 - [List read-write static server parameters](#list-read-write-static-server-parameters).
-- [List dynamic server parameters](#list-dynamic-server-parameters).
+- [List read-write dynamic server parameters](#list-read-write-dynamic-server-parameters).
 - [List read-only server parameters](#list-read-only-server-parameters).
 - [Set the value of one or more server parameters](#set-the-value-of-one-or-more-server-parameters).
 - [Revert one server parameter to its default](#revert-one-server-parameter-to-its-default).
@@ -114,7 +114,6 @@ Each parameter has the following attributes:
 
 ---
 
-
 ## List server parameters with modified defaults
 
 ### [Portal](#tab/portal-list-modified)
@@ -158,6 +157,28 @@ You can list all server parameters that require a restart after their values are
 
 ```azurecli-interactive
 az postgres flexible-server parameter list --resource-group <resource_group> --server-name <server> --query "[?isDynamicConfig==\`false\` && isReadOnly==\`false\`] | [].name"
+```
+
+---
+
+## List read-write dynamic server parameters
+
+### [Portal](#tab/portal-list-dynamic)
+
+Using the [Azure portal](https://portal.azure.com):
+
+1. Select your Azure Database for PostgreSQL flexible server instance.
+
+2. In the resource menu, under the **Settings** section, select **Server parameters**, and then select the **Dynamic** tab. The page shows a list of read-write parameters for which, if their value is changed, require a restart of the server for the new value to take effect.
+
+    :::image type="content" source="./media/how-to-configure-server-parameters/dynamic-parameters.png" alt-text="Screenshot of dynamic server parameters." lightbox="./media/how-to-configure-server-parameters/dynamic-parameters.png":::
+
+### [CLI](#tab/cli-list-dynamic)
+
+You can list all server parameters that don't require a restart after their values are changed for the changes to take effect, via the [az postgres flexible-server parameter list](/cli/azure/postgres/flexible-server/parameter#az-postgres-flexible-server-parameter-list) command.
+
+```azurecli-interactive
+az postgres flexible-server parameter list --resource-group <resource_group> --server-name <server> --query "[?isDynamicConfig==\`true\` && isReadOnly==\`false\`] | [].name"
 ```
 
 ---
