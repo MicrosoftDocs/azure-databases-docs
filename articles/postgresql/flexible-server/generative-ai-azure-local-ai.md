@@ -55,7 +55,7 @@ The `azure_local_ai` extension provides a set of functions. These functions allo
 | azure_local_ai  |  get_setting  |  text  |  key text, timeout_ms integer   DEFAULT 3600000  |  
 | azure_local_ai  |  model_metadata  |  jsonb  |  model_uri text  |  
 
-These can be displayed using the following psql meta-command:
+These functions can be displayed using the following psql meta-command:
 
 ```psql
 \df azure_local_ai.*
@@ -99,7 +99,7 @@ Used to obtain current values of configuration options.
 SELECT azure_local_ai.get_setting(key TEXT)
 ```
 
-`azure_local_ai` supports reviewing the configuration parameters of ONNX Runtime thread-pool within the ONNX Runtime Service. Changes are not allowed at this time. [See ONNX Runtime performance tuning.](https://onnxruntime.ai/docs/performance/tune-performance/threading.html)
+`azure_local_ai` supports reviewing the configuration parameters of ONNX Runtime thread-pool within the ONNX Runtime Service. Changes aren't allowed at this time. [See ONNX Runtime performance tuning.](https://onnxruntime.ai/docs/performance/tune-performance/threading.html)
 
 
 #### Arguments
@@ -110,7 +110,7 @@ Valid values are:
 
 - `intra_op_parallelism`: Sets total number of threads used for parallelizing single operator by ONNX Runtime thread-pool. By default, we maximize the number of intra ops threads as much as possible as it improves the overall throughput much (all available cpus by default).
 - `inter_op_parallelism`: Sets total number of threads used for computing multiple operators in parallel by ONNX Runtime thread-pool. By default, we set it to minimum possible thread, which is 1. Increasing it often hurts performance due to frequent context switches between threads.
-- `spin_control`: Switches ONNX Runtime thread-pool's spinning for requests. When disabled, it uses less cpu and hence causes more latency. By default, it is set to true (enabled).
+- `spin_control`: Switches ONNX Runtime thread-pool's spinning for requests. When disabled, it uses less cpu and hence causes more latency. By default, it's set to true (enabled).
 
 #### Return type
 
@@ -191,5 +191,5 @@ SELECT all_documents.doc_id, all_docs.doc_contents , 1 - (all_documents.doc_vect
 [Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
 
 ## Related content
-- [What is the azure_local_ai extension for Azure Database for PostgreSQL - Flexible Server (Preview)](azure-local-ai.md)
-- [How to enable and use pgvector on Azure Database for PostgreSQL - Flexible Server](how-to-use-pgvector.md)
+- [overview of azure_local_ai extension (Preview)](azure-local-ai.md)
+- [enable and use pgvector extension](how-to-use-pgvector.md)
