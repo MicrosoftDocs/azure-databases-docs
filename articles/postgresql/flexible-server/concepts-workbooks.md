@@ -49,7 +49,7 @@ Using the [Azure portal](https://portal.azure.com).
 
 2. In the resource menu, under **Monitoring**, select **Workbooks**.
 
-:::image type="content" source="./media/concepts-workbooks/monitor-workbooks-all.png" alt-text="Screenshot showing the Overview and Enhanced Metrics templates on the Workbooks page." lightbox="media/concepts-workbooks/monitor-workbooks-all.png":::
+    :::image type="content" source="./media/concepts-workbooks/monitor-workbooks-all.png" alt-text="Screenshot showing the Overview and Enhanced Metrics templates on the Workbooks page." lightbox="media/concepts-workbooks/monitor-workbooks-all.png":::
 
 [Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
 
