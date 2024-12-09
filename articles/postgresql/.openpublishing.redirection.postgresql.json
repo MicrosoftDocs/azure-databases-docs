@@ -1861,23 +1861,23 @@
         "redirect_document_id": false
     },
     {
-        "source_path_from_root": "/articles/postgresql/flexible-server/how-to-configure-server-parameters-using-portal.md",
-        "redirect_url": "/azure/postgresql/how-to-configure-server-parameters",
+        "source_path_from_root": "/articles/postgresql/flexible-server/how-to-configure-server-parameters.md",
+        "redirect_url": "/azure/postgresql/flexible-server/how-to-configure-server-parameters-using-portal",
         "redirect_document_id": false
     },
     {
-        "source_path_from_root": "/articles/postgresql/flexible-server/how-to-configure-server-parameters-using-cli.md",
-        "redirect_url": "/azure/postgresql/how-to-configure-server-parameters",
+        "source_path_from_root": "/articles/postgresql/flexible-server/how-to-configure-server-parameters.md",
+        "redirect_url": "/azure/postgresql//flexible-server/how-to-configure-server-parameters-using-cli",
         "redirect_document_id": false
     },
     {
-        "source_path_from_root": "/articles/postgresql/flexible-server/how-to-perform-major-version-upgrade-cli.md",
-        "redirect_url": "/azure/postgresql/flexible-server/how-to-perform-major-version-upgrade",
+        "source_path_from_root": "/articles/postgresql/flexible-server/how-to-perform-major-version-upgrade.md",
+        "redirect_url": "/azure/postgresql/flexible-server/how-to-perform-major-version-upgrade-cli",
         "redirect_document_id": false
     },
     {
-        "source_path_from_root": "/articles/postgresql/flexible-server/how-to-perform-major-version-upgrade-portal.md",
-        "redirect_url": "/azure/postgresql/flexible-server/how-to-perform-major-version-upgrade",
+        "source_path_from_root": "/articles/postgresql/flexible-server/how-to-perform-major-version-upgrade.md",
+        "redirect_url": "/azure/postgresql/flexible-server/how-to-perform-major-version-upgrade-portal",
         "redirect_document_id": false
     } 
 ]

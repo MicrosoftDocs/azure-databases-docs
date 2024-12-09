@@ -337,7 +337,8 @@ fi
 ## Working with time zone parameters
 If you plan to work with date and time data in PostgreSQL, make sure that you set the correct time zone for your location. All timezone-aware dates and times are stored internally in PostgreSQL in UTC. They're converted to local time in the zone specified by the **TimeZone** server parameter before being displayed to the client. This parameter can be edited on **Server parameters** page. 
 PostgreSQL allows you to specify time zones in three different forms:
-1. A full time zone name, for example America/New_York. The recognized time zone names are listed in the [**pg_timezone_names**](https://www.postgresql.org/docs/9.2/view-pg-timezone-names.html) view.  
+
+- A full time zone name, for example America/New_York. The recognized time zone names are listed in the [**pg_timezone_names**](https://www.postgresql.org/docs/9.2/view-pg-timezone-names.html) view.  
    Example to query this view in psql and get list of time zone names:
    <pre>select name FROM pg_timezone_names LIMIT 20;</pre>
 
@@ -369,7 +370,7 @@ PostgreSQL allows you to specify time zones in three different forms:
         (20 rows)
     </pre>
    
-2. A time zone abbreviation, for example PST. Such a specification merely defines a particular offset from UTC, in contrast to full time zone names which can imply a set of daylight savings transition-date rules as well. The recognized abbreviations are listed in the [**pg_timezone_abbrevs view**](https://www.postgresql.org/docs/current/view-pg-timezone-abbrevs.html)
+- A time zone abbreviation, for example PST. Such a specification merely defines a particular offset from UTC, in contrast to full time zone names which can imply a set of daylight savings transition-date rules as well. The recognized abbreviations are listed in the [**pg_timezone_abbrevs view**](https://www.postgresql.org/docs/current/view-pg-timezone-abbrevs.html)
    Example to query this view in psql and get list of time zone abbreviations:
 
    <pre> select abbrev from pg_timezone_abbrevs limit 20;</pre>
@@ -401,7 +402,7 @@ PostgreSQL allows you to specify time zones in three different forms:
         ART   |
     </pre>
 
-3. In addition to the timezone names and abbreviations, PostgreSQL accepts POSIX-style time zone specifications of the form STDoffset or STDoffsetDST, where STD is a zone abbreviation, offset is a numeric offset in hours west from UTC, and DST is an optional daylight-savings zone abbreviation, assumed to stand for one hour ahead of the given offset. 
+- In addition to the timezone names and abbreviations, PostgreSQL accepts POSIX-style time zone specifications of the form STDoffset or STDoffsetDST, where STD is a zone abbreviation, offset is a numeric offset in hours west from UTC, and DST is an optional daylight-savings zone abbreviation, assumed to stand for one hour ahead of the given offset. 
 
 [Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
 
