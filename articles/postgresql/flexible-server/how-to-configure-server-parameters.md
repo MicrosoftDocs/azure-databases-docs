@@ -23,7 +23,7 @@ Various methods and levels are available to customize your parameters according 
 
 ### Global level
 
-For viewing current configured values for server parameters or for altering them  globally at the instance or server level, you can use the **Server parameters** page in the Azure portal. You can also interact with server parameters globally by using the [CLI](cli/azure/postgres/flexible-server/parameter), the [REST API](/rest/api/postgresql/flexibleserver/configurations), [Azure Resource Manager templates](/azure/azure-resource-manager/templates/overview), or third-party IaC tools.
+For viewing current configured values for server parameters or for altering them  globally at the instance or server level, you can use the **Server parameters** page in the Azure portal. You can also interact with server parameters globally by using the [CLI](/cli/azure/postgres/flexible-server/parameter), the [REST API](/rest/api/postgresql/flexibleserver/configurations), [Azure Resource Manager templates](/azure/azure-resource-manager/templates/overview), or third-party IaC tools.
 
 > [!NOTE]
 > Because Azure Database for PostgreSQL is a managed database service, users don't have host or operating system access to view or modify configuration files such as *postgresql.conf*. The content of the files is automatically updated based on parameter changes that you make.
