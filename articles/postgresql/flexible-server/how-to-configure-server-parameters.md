@@ -16,6 +16,41 @@ ms.topic: how-to
 
 You can list, show, and update configuration parameters for an Azure Database for PostgreSQL flexible server instance.
 
+
+## Parameter customization
+
+Various methods and levels are available to customize your parameters according to your specific needs.
+
+### Global level
+
+For viewing current configured values for server parameters or for altering them  globally at the instance or server level, you can use the **Server parameters** page in the Azure portal. You can also interact with server parameters globally by using the [CLI](cli/azure/postgres/flexible-server/parameter.md), the [REST API](/rest/api/postgresql/flexibleserver/configurations.md), [Azure Resource Manager templates](/azure/azure-resource-manager/templates/overview.md), or third-party IaC tools.
+
+> [!NOTE]
+> Because Azure Database for PostgreSQL is a managed database service, users don't have host or operating system access to view or modify configuration files such as *postgresql.conf*. The content of the files is automatically updated based on parameter changes that you make.
+
+In this same article you can find sections to interact with server parameters globally to:
+- [List all server parameters](#list-all-server-parameters).
+- [List server parameters with modified defaults](#list-server-parameters-with-modified-defaults).
+- [List read-write static server parameters](#list-read-write-static-server-parameters).
+- [List dynamic server parameters](#list-dynamic-server-parameters).
+- [List read-only server parameters](#list-read-only-server-parameters).
+- [Set the value of one or more server parameters](#set-the-value-of-one-or-more-server-parameters).
+- [Revert one server parameter to its default](#revert-one-server-parameter-to-its-default).
+- [Revert all server parameter to their defaults](#revert-all-server-parameters-to-their-defaults).
+
+### Granular levels
+
+You can adjust parameters at more granular levels. These adjustments override globally set values. Their scope and duration depend on the level at which you make them:
+
+* **Database level**: Use the `ALTER DATABASE` command for database-specific configurations.
+* **Role or user level**: Use the `ALTER USER` command for user-centric settings.
+* **Function, procedure level**: When you're defining a function or procedure, you can specify or alter the configuration parameters that will be set when the function is called.
+* **Table level**: As an example, you can modify parameters related to autovacuum at this level.
+* **Session level**: For the duration of an individual database session, you can adjust specific parameters. PostgreSQL facilitates this adjustment with the following SQL commands:
+
+  * Use the `SET` command to make session-specific adjustments. These changes serve as the default settings during the current session. Access to these changes might require specific `SET` privileges, and the limitations for modifiable and read-only parameters described earlier don't apply. The corresponding SQL function is `set_config(setting_name, new_value, is_local)`.
+  * Use the `SHOW` command to examine existing parameter settings. Its SQL function equivalent is `current_setting(setting_name text)`.
+
 ## List all server parameters
 
 ### [Portal](#tab/portal-list)
@@ -39,6 +74,16 @@ Using the [Azure portal](https://portal.azure.com):
 5. If needed, use the **Search to filter items...** text box to narrow down the list to those containing the search term in the name or in the description of the parameter.
 
     :::image type="content" source="./media/how-to-configure-server-parameters/search.png" alt-text="Screenshot of search in Server parameters." lightbox="./media/how-to-configure-server-parameters/search.png":::
+
+
+The **Parameter type** column can show any of the following values for each parameter:
+| Parameter type | Description |
+| --- | --- |
+
+| **Static** | Requires a server restart to make the change effective. |
+| **Dynamic** | Can be altered without the need to restart the server instance. However, changes will apply only to new connections established after the modification. |
+| **Read-only** | Isn't user configurable, because of their critical role in maintaining reliability, security, or other operational aspects of the service. |
+
 
 ### [CLI](#tab/cli-list)
 
@@ -92,6 +137,28 @@ az postgres flexible-server parameter list --resource-group <resource_group> --s
 
 > [!NOTE]  
 > Previous CLI command doesn't consider modified server parameters those which are designated as read-only, `temp_tablespaces` and  `vacuum_cost_page_miss`, following the exact same criteria as the **Server parameters** page in the Azure portal.
+
+---
+
+## List read-write static server parameters
+
+### [Portal](#tab/portal-list-static)
+
+Using the [Azure portal](https://portal.azure.com):
+
+1. Select your Azure Database for PostgreSQL flexible server instance.
+
+2. In the resource menu, under the **Settings** section, select **Server parameters**, and then select the **Static** tab. The page shows a list of read-write parameters for which, if their value is changed, require a restart of the server for the new value to take effect.
+
+    :::image type="content" source="./media/how-to-configure-server-parameters/static-parameters.png" alt-text="Screenshot of static server parameters." lightbox="./media/how-to-configure-server-parameters/static-parameters.png":::
+
+### [CLI](#tab/cli-list-static)
+
+You can list all server parameters that require a restart after their values are changed, so that the changes take effect, via the [az postgres flexible-server parameter list](/cli/azure/postgres/flexible-server/parameter#az-postgres-flexible-server-parameter-list) command.
+
+```azurecli-interactive
+az postgres flexible-server parameter list --resource-group <resource_group> --server-name <server> --query "[?isDynamicConfig==\`false\` && isReadOnly==\`false\`] | [].name"
+```
 
 ---
 
@@ -299,56 +366,3 @@ PostgreSQL allows you to specify time zones in three different forms:
 Learn about:
 - [Overview of server parameters in Azure Database for PostgreSQL - Flexible Server](concepts-server-parameters.md)
 - [Configure Azure Database for PostgreSQL - Flexible Server parameters via CLI](how-to-configure-server-parameters-using-cli.md)
-  
-
-
-
-
-## Attributes of parameters
-
-Each parameter has the following attributes:
-
-| Attribute name | Description | Possible values |
-| --- | --- | --- |
-| **value** | Value currently assigned to the parameter. | Varies, depending on the data type and allowed values of the parameter. |
-| **description** | Brief explanation of what the parameter controls. | Textual description which is different for each parameter. |
-| **defaultValue** | Value assigned to the parameter when a new server is deployed. | Varies, depending on the data type and allowed values of the parameter. |
-| **source** | Source from which the value currently set for the parameter originates. | `system-default` or `user-override`, depending on whether **value** is set to the system default or the user has overriden it.  |
-| **isDynamicConfig** | Indicates whether a change in the value assigned to the parameter doesn't require or requires a server restart, for the change to take effect. | `true`: for parameters that, when their value changes, the change takes effect immediately. `false`: for parameters that, when their value changes, require a server restart for the change to take effect. |
-| **isReadOnly** | Indicates whether the default value assigned for the parameter can't be overridden by the user or can be overridden. | `true`: for parameters that are designated as read-only and the user can't change. `false`: for parameters that are designated as read-write and the user can set to a different value than their default. |
-| **isConfigPendingRestart** | Indicates whether a server restart is required for the value currently set in the **value** attribute to take effect. | `true`: for parameters whose value was changed and, because they aren't dynamic (that is, they're static), require a server restart that hasn't occurred yet for the change to take effect. `false`: for parameters whose value currently set in the **value** attribute is in effect, and aren't waiting for a server restart to take effect. |
-| **documentationLink** | URL address of the page pointing to the documentation of the parameter. | Some form of URL. |
-
-
-* **Static**: When its value is changed, it requires a server restart to make the change effective.
-* **Dynamic**: These parameters can be altered without the need to restart the server instance. However, changes will apply only to new connections established after the modification.
-* **Read-only**: These parameters aren't user configurable because of their critical role in maintaining reliability, security, or other operational aspects of the service.
-
-To determine the parameter type, go to the Azure portal and open the **Server parameters** pane. The parameters are grouped into tabs for easy identification.
-
-## Parameter customization
-
-Various methods and levels are available to customize your parameters according to your specific needs.
-
-### Global level
-
-For altering settings globally at the instance or server level, go to the **Server parameters** pane in the Azure portal. You can also use other available tools such as the Azure CLI, the REST API, Azure Resource Manager templates, or partner tools.
-
-> [!NOTE]
-> Because Azure Database for PostgreSQL is a managed database service, users don't have host or operating system access to view or modify configuration files such as *postgresql.conf*. The content of the files is automatically updated based on parameter changes that you make.
-
-:::image type="content" source="./media/concepts-server-parameters/server-parameters-portal.png" alt-text="Screenshot of the pane for server parameters in the Azure portal.":::
-
-### Granular levels
-
-You can adjust parameters at more granular levels. These adjustments override globally set values. Their scope and duration depend on the level at which you make them:
-
-* **Database level**: Use the `ALTER DATABASE` command for database-specific configurations.
-* **Role or user level**: Use the `ALTER USER` command for user-centric settings.
-* **Function, procedure level**: When you're defining a function or procedure, you can specify or alter the configuration parameters that will be set when the function is called.
-* **Table level**: As an example, you can modify parameters related to autovacuum at this level.
-* **Session level**: For the duration of an individual database session, you can adjust specific parameters. PostgreSQL facilitates this adjustment with the following SQL commands:
-
-  * Use the `SET` command to make session-specific adjustments. These changes serve as the default settings during the current session. Access to these changes might require specific `SET` privileges, and the limitations for modifiable and read-only parameters described earlier don't apply. The corresponding SQL function is `set_config(setting_name, new_value, is_local)`.
-  * Use the `SHOW` command to examine existing parameter settings. Its SQL function equivalent is `current_setting(setting_name text)`.
-
