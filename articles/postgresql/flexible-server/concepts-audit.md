@@ -36,6 +36,8 @@ Once you [enable `pgaudit`](#installing-the-extension), you can configure its pa
 
 To configure `pgaudit`, you can follow these instructions:
 
+### [Portal](#tab/portal)
+
 Using the [Azure portal](https://portal.azure.com):
 
    1. Select your instance of Azure Database for the PostgreSQL flexible server.
@@ -48,7 +50,17 @@ Using the [Azure portal](https://portal.azure.com):
 
    1. Select **Save** button to save changes.
 
-Th official [documentation](https://github.com/pgaudit/pgaudit/blob/master/README.md#settings) of `pgaudit` provides the definition of each parameter. Test the parameters first and confirm that you're getting the expected behavior.
+### [CLI](#tab/cli)
+
+You can set the value of any of the `pgaudit` server parameters via the [az postgres flexible-server parameter set](/cli/azure/postgres/flexible-server/parameter#az-postgres-flexible-server-parameter-set) command.
+
+```azurecli-interactive
+az postgres flexible-server parameter set --resource-group <resource_group> --server-name <server> --source user-override --name <parameter> --value <value>
+```
+
+---
+
+The official [documentation](https://github.com/pgaudit/pgaudit/blob/master/README.md#settings) of `pgaudit` provides the definition of each parameter. Test the parameters first and confirm that you're getting the expected behavior.
 
 For example, setting `pgaudit.log_client` to ON not only writes audit events to the server log, but also sends them to client processes (like psql). This setting should generally be left disabled. <br> <br>
 `pgaudit.log_level` is only enabled when `pgaudit.log_client` is on.
