@@ -511,11 +511,7 @@
       - name: Connect with SCRAM authentication
         href: flexible-server/how-to-connect-scram.md
     - name: Major version upgrade
-      items:
-      - name: Azure portal
-        href: flexible-server/how-to-perform-major-version-upgrade-portal.md
-      - name: Azure CLI
-        href: flexible-server/how-to-perform-major-version-upgrade-cli.md
+      href: flexible-server/how-to-perform-major-version-upgrade.md
     - name: Manage high availability
       items:
       - name: Azure portal
@@ -572,7 +568,7 @@
       items:
       - name: Overview  
         href: flexible-server/azure-local-ai.md
-      - name: Create embeddings with azure_local_ai
+      - name: How to enable and use
         href: flexible-server/generative-ai-azure-local-ai.md
     - name: Vector indexing (pg_diskann)
       items:
