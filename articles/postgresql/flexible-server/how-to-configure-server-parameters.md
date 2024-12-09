@@ -89,6 +89,38 @@ az postgres flexible-server parameter list --resource-group <resource_group> --s
 
 ---
 
+## Set the value of one or more server parameters
+
+### [Portal](#tab/portal-set-value)
+
+Using the [Azure portal](https://portal.azure.com):
+
+1. Select your Azure Database for PostgreSQL flexible server instance.
+
+2. In the resource menu, under the **Settings** section, select **Server parameters**.
+
+3. Locate the read-write parameters whose current values you want to change, set them to the new desired values, notice that an informational message indicates how many server parameter changes aren't saved yet, and select **Save**.
+
+    :::image type="content" source="./media/how-to-configure-server-parameters/set-value.png" alt-text="Screenshot of setting the value of a server parameter." lightbox="./media/how-to-configure-server-parameters/set-value.png":::
+
+4. If the column **Parameter type** for any of the parameters changed is equal to **Static**, the server requires a restart for the changes to take effect. In that case, a dialog pops up so that you can select if you want to:
+    - **Save and Restart**: In case you want to persist all changes made to all parameters whose values were modified, and immediately after restart the server for any changes to static parameters to take effect.
+    - **Save only**: In case you want to persist all changes made to all parameters whose set values changed, but want to defer the server restart to a later time. Until you don't complete the server restart action, changes made to any static server parameters don't take effect.
+    - **Cancel**: To not implement any changes yet.
+
+    :::image type="content" source="./media/how-to-configure-server-parameters/save-restart-cancel.png" alt-text="Screenshot of dialog requesting a restart of the server after having modified the value of a static parameter." lightbox="./media/how-to-configure-server-parameters/save-restart-cancel.png":::
+
+### [CLI](#tab/cli-set-value)
+
+You can set the value of a server parameter via the [az postgres flexible-server parameter set](/cli/azure/postgres/flexible-server/parameter#az-postgres-flexible-server-parameter-set) command.
+
+```azurecli-interactive
+az postgres flexible-server parameter set --resource-group <resource_group> --server-name <server> --source user-override --name <parameter> --value <value>
+```
+
+---
+
+
 7. Change the parameter values you would like to adjust. All changes you make in a session are highlighted in purple. Once you have changed the values, you can select **Save**. Or you can **Discard** your changes.
 :::image type="content" source="./media/how-to-configure-server-parameters/6-save-and-discard.png" alt-text="Screenshot of save or discard changes.":::
 
