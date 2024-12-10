@@ -164,13 +164,9 @@ We have a scenario where CPU utilization spikes to 90% and want to determine the
     call autoexplain_test ();
 ```
 
-7. To understand what exact explain plan was generated, use Azure Database for PostgreSQL Flexible Server logs. The `auto_explain` extension would have logged an entry in the logs every time the query execution was completed during the interval. In the resource menu, under the **Monitoring** section, select **Logs**.
+7. To understand what exact explain plan was generated, use Azure Database for PostgreSQL Flexible Server logs. Every time the query completed execution during that time window, the `auto_explain` extension should write an entry in the logs. In the resource menu, under the **Monitoring** section, select **Logs**. Then, in **Time range:**, select the time window where you want to focus the analysis.
 
-    :::image type="content" source="./media/how-to-identify-slow-queries/log-analytics-tab.png" alt-text="Screenshot of troubleshooting guides menu - Logs." lightbox="./media/how-to-identify-slow-queries/log-analytics-tab.png":::
-
-8. Select the time range where 90% CPU Utilization was found.
-
-   :::image type="content" source="./media/how-to-identify-slow-queries/log-analytics-timerange.png" alt-text="Screenshot of troubleshooting guides menu - Logs Time range." lightbox="./media/how-to-identify-slow-queries/log-analytics-timerange.png":::
+image type="content" source="./media/how-to-identify-slow-queries/log-analytics-timerange.png" alt-text="Screenshot of troubleshooting guides menu - Logs Time range." lightbox="./media/how-to-identify-slow-queries/log-analytics-timerange.png":::
 
 9. Execute the following query to retrieve the explain analyze output of the query identified.
 
