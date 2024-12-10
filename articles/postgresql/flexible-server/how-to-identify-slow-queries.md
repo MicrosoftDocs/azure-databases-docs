@@ -47,19 +47,19 @@ We have a scenario where CPU utilization spikes to 90% and want to determine the
 
 1. As soon as you're alerted by a CPU scenario, in the resource menu of the affected instance of Azure Database for PostgreSQL Flexible Server, under the **Monitoring** section, select **Troubleshooting guides**.
 
-      :::image type="content" source="./media/how-to-identify-slow-queries/troubleshooting-guides-blade.png" alt-text="Screenshot of troubleshooting guides menu option." lightbox="./media/how-to-identify-slow-queries/troubleshooting-guides-blade.png":::
+    :::image type="content" source="./media/how-to-identify-slow-queries/troubleshooting-guides-blade.png" alt-text="Screenshot of troubleshooting guides menu option." lightbox="./media/how-to-identify-slow-queries/troubleshooting-guides-blade.png":::
 
 2. Select the **CPU** tab. The **Optimizing high CPU utilization** troubleshooting guide opens.
 
-      :::image type="content" source="./media/how-to-identify-slow-queries/cpu-troubleshooting-guide.png" alt-text="Screenshot of troubleshooting guides menu - tabs. " lightbox="./media/how-to-identify-slow-queries/cpu-troubleshooting-guide.png":::
+    :::image type="content" source="./media/how-to-identify-slow-queries/cpu-troubleshooting-guide.png" alt-text="Screenshot of troubleshooting guides menu - tabs. " lightbox="./media/how-to-identify-slow-queries/cpu-troubleshooting-guide.png":::
 
 3. From the **Analysis period (local time)** drop-down, select the time range on which you want to focus the analysis.
 
-      :::image type="content" source="./media/how-to-identify-slow-queries/high-cpu-timerange.png" alt-text="Screenshot of troubleshooting guides menu - CPU tab." lightbox="./media/how-to-identify-slow-queries/high-cpu-timerange.png":::
+    :::image type="content" source="./media/how-to-identify-slow-queries/high-cpu-timerange.png" alt-text="Screenshot of troubleshooting guides menu - CPU tab." lightbox="./media/how-to-identify-slow-queries/high-cpu-timerange.png":::
 
 4. Select **Queries** tab. It shows details of all the queries that ran in the interval where 90% CPU utilization was seen. From the snapshot, it looks like the query with the slowest average execution time during the time interval was ~2.6 minutes, and the query ran 22 times during the interval. That query is most likely the cause of the CPU spikes.
 
-      :::image type="content" source="./media/how-to-identify-slow-queries/high-cpu-query.png" alt-text="Screenshot of troubleshooting guides menu - Top CPU consuming queries tab." lightbox="./media/how-to-identify-slow-queries/high-cpu-query.png":::
+    :::image type="content" source="./media/how-to-identify-slow-queries/high-cpu-query.png" alt-text="Screenshot of troubleshooting guides menu - Top CPU consuming queries tab." lightbox="./media/how-to-identify-slow-queries/high-cpu-query.png":::
 
 5. To retrieve the actual query text, connect to the `azure_sys` database and execute the following query.
 
@@ -86,7 +86,7 @@ ORDER BY c_w_id;
  
 8. Select the time range where 90% CPU Utilization was found.
    
-   :::image type="content" source="./media/how-to-identify-slow-queries/log-analytics-timerange.png" alt-text="Screenshot showing how to pick a time window in Troubleshooting guides." lightbox="./media/how-to-identify-slow-queries/log-analytics-timerange.png":::
+    :::image type="content" source="./media/how-to-identify-slow-queries/log-analytics-timerange.png" alt-text="Screenshot showing how to pick a time window in Troubleshooting guides." lightbox="./media/how-to-identify-slow-queries/log-analytics-timerange.png":::
 
 9. Execute the following query to retrieve the output of EXPLAIN ANALYZE for the query identified.
 
@@ -132,21 +132,19 @@ We have a scenario where CPU utilization spikes to 90% and want to determine the
 
 1. As soon as you're alerted by a CPU scenario, in the resource menu of the affected instance of Azure Database for PostgreSQL Flexible Server, under the **Monitoring** section, select **Troubleshooting guides**.
 
-      :::image type="content" source="./media/how-to-identify-slow-queries/troubleshooting-guides-blade.png" alt-text="Screenshot of troubleshooting guides menu." lightbox="./media/how-to-identify-slow-queries/troubleshooting-guides-blade.png":::
+    :::image type="content" source="./media/how-to-identify-slow-queries/troubleshooting-guides-blade.png" alt-text="Screenshot of troubleshooting guides menu." lightbox="./media/how-to-identify-slow-queries/troubleshooting-guides-blade.png":::
 
 2. Select the **CPU** tab. The **Optimizing high CPU utilization** troubleshooting guide opens.
 
-      :::image type="content" source="./media/how-to-identify-slow-queries/cpu-troubleshooting-guide.png" alt-text="Screenshot of troubleshooting guides tabs." lightbox="./media/how-to-identify-slow-queries/cpu-troubleshooting-guide.png":::
+    :::image type="content" source="./media/how-to-identify-slow-queries/cpu-troubleshooting-guide.png" alt-text="Screenshot of troubleshooting guides tabs." lightbox="./media/how-to-identify-slow-queries/cpu-troubleshooting-guide.png":::
 
 3. From the **Analysis period (local time)** drop-down, select the time range on which you want to focus the analysis.
 
-      :::image type="content" source="./media/how-to-identify-slow-queries/high-cpu-procedure-timerange.png" alt-text="Screenshot of troubleshooting guides - CPU tab." lightbox="./media/how-to-identify-slow-queries/high-cpu-procedure-timerange.png":::
+    :::image type="content" source="./media/how-to-identify-slow-queries/high-cpu-procedure-timerange.png" alt-text="Screenshot of troubleshooting guides - CPU tab." lightbox="./media/how-to-identify-slow-queries/high-cpu-procedure-timerange.png":::
 
 4. Select **Queries** tab. It shows details of all the queries that ran in the interval where 90% CPU utilization was seen. From the snapshot, it looks like the query with the slowest average execution time during the time interval was ~2.6 minutes, and the query ran 22 times during the interval. That query is most likely the cause of the CPU spikes.
 
-      :::image type="content" source="./media/how-to-identify-slow-queries/high-cpu-procedure.png" alt-text="Screenshot of troubleshooting guides - CPU tab - queries." lightbox="./media/how-to-identify-slow-queries/high-cpu-procedure.png":::
-
-      It's important to note from the snapshot below that the query type as highlighted below is `Utility``. Generally, a utility can be a stored procedure or function running during the interval.
+    :::image type="content" source="./media/how-to-identify-slow-queries/high-cpu-procedure.png" alt-text="Screenshot of troubleshooting guides - CPU tab - queries." lightbox="./media/how-to-identify-slow-queries/high-cpu-procedure.png":::
 
 5.    Connect to azure_sys database and execute the query to retrieve actual query text using the below script. 
 
@@ -158,7 +156,7 @@ We have a scenario where CPU utilization spikes to 90% and want to determine the
      WHERE query_text_id = <query_id>;
 ```
 
-6. In the example considered, the query that was found slow was a stored procedure as mentioned below:
+6. In the example considered, the query that was found slow was a stored procedure:
 
 ```sql
     call autoexplain_test ();
@@ -166,7 +164,7 @@ We have a scenario where CPU utilization spikes to 90% and want to determine the
 
 7. To understand what exact explain plan was generated, use Azure Database for PostgreSQL Flexible Server logs. Every time the query completed execution during that time window, the `auto_explain` extension should write an entry in the logs. In the resource menu, under the **Monitoring** section, select **Logs**. Then, in **Time range:**, select the time window where you want to focus the analysis.
 
-image type="content" source="./media/how-to-identify-slow-queries/log-analytics-timerange.png" alt-text="Screenshot of troubleshooting guides menu - Logs Time range." lightbox="./media/how-to-identify-slow-queries/log-analytics-timerange.png":::
+:::image type="content" source="./media/how-to-identify-slow-queries/log-analytics-timerange.png" alt-text="Screenshot of troubleshooting guides menu - Logs Time range." lightbox="./media/how-to-identify-slow-queries/log-analytics-timerange.png":::
 
 9. Execute the following query to retrieve the explain analyze output of the query identified.
 
