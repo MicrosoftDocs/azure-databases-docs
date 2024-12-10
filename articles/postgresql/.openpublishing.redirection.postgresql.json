@@ -1862,12 +1862,12 @@
     },
     {
         "source_path_from_root": "/articles/postgresql/flexible-server/how-to-configure-server-parameters-using-portal.md",
-        "redirect_url": "/azure/postgresql/how-to-configure-server-parameters",
+        "redirect_url": "/azure/postgresql/flexible-server/how-to-configure-server-parameters",
         "redirect_document_id": false
     },
     {
         "source_path_from_root": "/articles/postgresql/flexible-server/how-to-configure-server-parameters-using-cli.md",
-        "redirect_url": "/azure/postgresql/how-to-configure-server-parameters",
+        "redirect_url": "/azure/postgresql/flexible-server/how-to-configure-server-parameters",
         "redirect_document_id": false
     },
     {
