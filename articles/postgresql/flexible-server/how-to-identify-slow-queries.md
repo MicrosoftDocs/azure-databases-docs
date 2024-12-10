@@ -4,7 +4,7 @@ description: Troubleshooting guide for identifying slow running queries in Azure
 author: sarat0681
 ms.author: sbalijepalli
 ms.reviewer: maghan
-ms.date: 04/27/2024
+ms.date: 12/10/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: conceptual
@@ -13,45 +13,41 @@ ms.topic: conceptual
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
-This article shows you how to troubleshoot and identify slow-running queries using [Azure Database for PostgreSQL flexible server](overview.md).
+This article describes how to identify and diagnose the root cause of slow-running queries.
 
-In a high CPU utilization scenario, in this article, you learn how to:
+In this article, you can learn:
 
-- Identify slow-running queries.
+- How to identify slow-running queries.
+- How to identify a slow-running procedure along with it. Identify a slow query among a list of queries that belong to the same slow-running stored procedure.
 
-- Identify a slow-running procedure along with it. Identify a slow query among a list of queries that belong to the same slow-running stored procedure.
-
-## High CPU scenario - Identify slow query
+## Identify slow query
 
 ### Prerequisites
 
-One must enable troubleshooting guides and auto_explain extension on the Azure Database for PostgreSQL flexible server instance. To enable troubleshooting guides, follow the steps mentioned [here](how-to-troubleshooting-guides.md).
+1. Enable troubleshooting guides by following the steps described in [use troubleshooting guides](how-to-troubleshooting-guides.md).
 
-To enable auto_explain extension, follow the steps below:
+2. Configure the `auto_explain` extension by [allowlisting](../extensions/how-to-allow-extensions.md#allow-extensions) and [loading](../extensions/how-to-allow-extensions.md#load-libraries) the extension.
 
-1. Add auto_explain extension to the shared preload libraries as shown below from the server parameters page on the Azure Database for PostgreSQL flexible server portal.
+3. After the `auto_explain` extension is configured, change the following [server parameters](concepts-server-parameters.md), which control the behavior of the extension:
 
-   
-   :::image type="content" source="./media/how-to-identify-slow-queries/shared-preload-library.png" alt-text="Screenshot of server parameters page with shared preload libraries parameter." lightbox="./media/how-to-identify-slow-queries/shared-preload-library.png":::
+    - `auto_explain.log_analyze` to `ON`.
+    - `auto_explain.log_buffers` to `ON`.
+    - `auto_explain.log_min_duration` according to what's reasonable in your scenario.
+    - `auto_explain.log_timing` to `ON`.
+    - `auto_explain.log_verbose` to `ON`.
 
-> [!NOTE]  
-> Making this change will require a server restart.
-
-2. After the auto_explain extension is added to shared preload libraries and the server has restarted, change the below highlighted auto_explain server parameters to `ON` from the server parameters page on the Azure Database for PostgreSQL flexible server portal and leave the remaining ones
-   with default values as shown below.
-
-   :::image type="content" source="./media/how-to-identify-slow-queries/auto-explain-parameters.png" alt-text="Screenshot of server parameters page with auto_explain parameters." lightbox="./media/how-to-identify-slow-queries/auto-explain-parameters.png":::
+   :::image type="content" source="./media/how-to-identify-slow-queries/auto-explain-parameters.png" alt-text="Screenshot of showing auto_explain server parameters that need to be configured." lightbox="./media/how-to-identify-slow-queries/auto-explain-parameters.png":::
 
 > [!NOTE]  
-> Updating `auto_explain.log_min_duration` parameter to 0 will start logging all queries being executed on the server. This may impact performance of the database. Proper due diligence must be made to come to a value which is considered slow on the server. Example if 30 seconds is considered threshold and all queries being run below 30 seconds is acceptable for application then it is advised to update the parameter to 30000 milliseconds. This would then log any query which is executed more than 30 seconds on the server.
+> If you set `auto_explain.log_min_duration` to 0, the extension starts logging all queries being executed on the server. This may impact performance of the database. Proper due diligence must be made to come to a value which is considered slow on the server. For example, if all queries complete in less than 30 seconds, and that's acceptable for your application, then it is advised to update the parameter to 30000 milliseconds. This would then log any query which takes longer than 30 seconds to complete.
 
 ### Scenario - Identify slow-running query
 
-With troubleshooting guides and auto_explain extension in place, we explain the scenario with the help of an example.
+With troubleshooting guides and `auto_explain` extension in place, we describe the scenario with the help of an example.
 
-We have a scenario where CPU utilization has spiked to 90% and would like to know the root cause of the spike. To debug the scenario, follow the steps mentioned below.
+We have a scenario where CPU utilization spikes to 90% and want to determine the cause of the spike. To debug the scenario, follow theses steps:
 
-1. As soon as you're alerted by a CPU scenario, go to the troubleshooting guides available under the Help tab on the Azure Database for PostgreSQL flexible server portal overview page.
+1. As soon as you're alerted by a CPU scenario, in the resource menu of the affected instance of Azure Database for PostgreSQL Flexible Server, under the **Monitoring** section, select **Troubleshooting guides**.
 
       :::image type="content" source="./media/how-to-identify-slow-queries/troubleshooting-guides-blade.png" alt-text="Screenshot of troubleshooting guides menu." lightbox="./media/how-to-identify-slow-queries/troubleshooting-guides-blade.png":::
 
@@ -139,9 +135,9 @@ In the second scenario, a stored procedure execution time is found to be slow, a
 
 ### Prerequisites
 
-One must enable troubleshooting guides and auto_explain extension on the Azure Database for PostgreSQL flexible server instance as a prerequisite. To enable troubleshooting guides, follow the steps mentioned [here](how-to-troubleshooting-guides.md).
+One must enable troubleshooting guides and `auto_explain` extension on the Azure Database for PostgreSQL flexible server instance as a prerequisite. To enable troubleshooting guides, follow the steps mentioned [here](how-to-troubleshooting-guides.md).
 
-To enable auto_explain extension, follow the steps below:
+To enable `auto_explain` extension, follow the steps below:
 
 1. Add auto_explain extension to the shared preload libraries as shown below from the server parameters page on the Azure Database for PostgreSQL flexible server portal.
 
@@ -253,7 +249,11 @@ Finalize Aggregate (cost=180185.84..180185.85 rows=1 width=4) (actual time=10387
 > [!NOTE]  
 > Please note for demonstration purpose explain analyze output of only few queries used in the procedure are shared. The idea is one can gather explain analyze output of all queries from the logs, and then identify the slowest of those and try to tune them.
 
-## Related content
+[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
 
-- [High CPU Utilization](how-to-high-cpu-utilization.md)
-- [Autovacuum Tuning](how-to-autovacuum-tuning.md)
+## Related contents
+
+- [autovacuum tuning](how-to-autovacuum-tuning.md)
+- [high CPU utilization](how-to-high-cpu-utilization.md)
+- [high memory utilization](how-to-high-memory-utilization.md)
+- [server parameters](concepts-server-parameters.md)

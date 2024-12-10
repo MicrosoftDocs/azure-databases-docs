@@ -4,7 +4,7 @@ description: Troubleshooting guide for autovacuum in Azure Database for PostgreS
 author: sarat0681
 ms.author: sbalijepalli
 ms.reviewer: maghan
-ms.date: 05/07/2024
+ms.date: 12/10/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: conceptual
@@ -42,7 +42,7 @@ The amount of work autovacuum performs depend on two parameters:
 `autovacuum_vacuum_cost_limit` | The amount of work autovacuum does in one go.
 `autovacuum_vacuum_cost_delay` | Number of milliseconds that autovacuum is asleep after it reaches the cost limit specified by the `autovacuum_vacuum_cost_limit`  parameter.
 
-In all currently supported versions of Postgres the default value for `autovacuum_vacuum_cost_limit` is 200 (actually, set to -1, which makes it equals to the value of the regular `vacuum_cost_limit`, which by default, is 200).
+In all currently supported versions of Postgres, the default value for `autovacuum_vacuum_cost_limit` is 200 (actually, set to -1, which makes it equals to the value of the regular `vacuum_cost_limit`, which by default, is 200).
 
 As for `autovacuum_vacuum_cost_delay`, in Postgres version 11 it defaults to 20 milliseconds, while in Postgres versions 12 and above it defaults to 2 milliseconds.
 
@@ -70,7 +70,7 @@ The following columns help determine if autovacuum is catching up to table activ
 `last_autovacuum` | The date of the last time the table was autovacuumed.
 `last_autoanalyze` |  The date of the last time the table was automatically analyzed.
 
-## When does PostgreSQL trigger autovacuum
+## Triggering autovacuum
 
 An autovacuum action (either *ANALYZE* or *VACUUM*) triggers when the number of dead tuples exceeds a particular number that is dependent on two factors: the total count of rows in a table, plus a fixed threshold. *ANALYZE*, by default, triggers when 10% of the table plus 50 row changes, while *VACUUM* triggers when 20% of the table plus 50 row changes. Since the *VACUUM* threshold is twice as high as the *ANALYZE* threshold, *ANALYZE* gets triggered earlier than *VACUUM*. 
 For PG versions >=13; *ANALYZE* by default, triggers when 20% of the table plus 1000 row inserts.
@@ -226,7 +226,9 @@ Stop the postmaster and vacuum that database in single-user mode.
 > [!NOTE]  
 > This error message is a long-standing oversight. Usually, you do not need to switch to single-user mode. Instead, you can run the required VACUUM commands and perform tuning for VACUUM to run fast. While you cannot run any data manipulation language (DML), you can still run VACUUM.
 
-The wraparound problem occurs when the database is either not vacuumed or there are too many dead tuples that aren't removed by autovacuum. The reasons for this issue might be:
+The wraparound problem occurs when the database is either not vacuumed or there are too many dead tuples not removed by autovacuum.
+
+Possible reasons for this issue might be any of the following:
 
 #### Heavy workload
 
@@ -275,7 +277,7 @@ Unused replication slots prevent autovacuum from claiming dead tuples. The follo
 
 Use `pg_drop_replication_slot()` to delete unused replication slots.
 
-When the database runs into transaction ID wraparound protection, check for any blockers as mentioned previously, and remove the blockers manually for autovacuum to continue and complete. You can also increase the speed of autovacuum by setting `autovacuum_cost_delay` to 0 and increasing the `autovacuum_cost_limit` to a value greater than 200. However, changes to these parameters do not apply to existing autovacuum workers. Either restart the database or kill existing workers manually to apply parameter changes.
+When the database runs into transaction ID wraparound protection, check for any blockers as mentioned previously, and remove the blockers manually for autovacuum to continue and complete. You can also increase the speed of autovacuum by setting `autovacuum_cost_delay` to 0 and increasing the `autovacuum_cost_limit` to a value greater than 200. However, changes to these parameters don't apply to existing autovacuum workers. Either restart the database or kill existing workers manually to apply parameter changes.
 
 ### Table-specific requirements
 
@@ -298,7 +300,7 @@ In versions of PostgreSQL <= 13, autovacuum doesn't run on tables with an inse
 
 - The visibility map of the tables isn't updated, and thus query performance, especially where there are Index Only Scans, starts to suffer over time.
 - The database can run into transaction ID wraparound protection.
-- Hint bits are not set.
+- Hint bits aren't set.
 
 #### Solutions
 
@@ -306,7 +308,7 @@ In versions of PostgreSQL <= 13, autovacuum doesn't run on tables with an inse
 
 Using the **pg_cron** extension, a cron job can be set up to schedule a periodic vacuum analyze on the table. The frequency of the cron job depends on the workload.
 
-For step-by-step guidance using pg_cron, review [Extensions](./concepts-extensions.md).
+For step-by-step guidance using pg_cron, review [Extensions](concepts-extensions.md).
 
 ##### Postgres 13 and higher versions
 
@@ -319,16 +321,19 @@ Using the feature troubleshooting guides that is available on the Azure Database
 
 ## Azure Advisor Recommendations
 
-Azure Advisor recommendations are a proactive way of identifying if a server has a high bloat ratio or the server is approaching transaction wraparound scenario. You can also set alerts for the recommendations using the [Create Azure Advisor alerts on new recommendations using the Azure portal](/azure/advisor/advisor-alerts-portal)
+Azure Advisor recommendations are a proactive way of identifying if a server has a high bloat ratio or the server is approaching transaction wraparound scenario. You can also [create Azure Advisor alerts for the recommendations](/azure/advisor/advisor-alerts-portal).
 
 The recommendations are:
 
 - **High Bloat Ratio**: A high bloat ratio can affect server performance in several ways. One significant issue is that the PostgreSQL Engine Optimizer might struggle to select the best execution plan, leading to degraded query performance. Therefore, a recommendation is triggered when the bloat percentage on a server reaches a certain threshold to avoid such performance issues.
 
-- **Transaction Wrap around**: This scenario is one of the most serious issues a server can encounter. Once your server is in this state it might stop accepting any more transactions, causing the server to become read-only. Hence, a recommendation is triggered when we see the server has crossed 1 billion transactions threshold.
+- **Transaction Wrap around**: This scenario is one of the most serious issues a server can encounter. Once your server is in this state it might stop accepting any more transactions, causing the server to become read-only. Hence, a recommendation is triggered when we see the server crosses 1 billion transactions threshold.
 
-## Related content
+[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
 
-- [High CPU Utilization](how-to-high-cpu-utilization.md)
-- [High Memory Utilization](how-to-high-memory-utilization.md)
-- [Server Parameters](how-to-configure-server-parameters.md)
+## Related contents
+
+- [high CPU utilization](how-to-high-cpu-utilization.md)
+- [high memory utilization](how-to-high-memory-utilization.md)
+- [identify slow queries](how-to-identify-slow-queries.md)
+- [server parameters](concepts-server-parameters.md)
