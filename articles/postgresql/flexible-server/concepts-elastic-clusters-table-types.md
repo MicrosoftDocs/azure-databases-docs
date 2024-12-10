@@ -48,8 +48,8 @@ With [schema-based sharding](./concepts-elastic-clusters-sharding-models.md#sche
 
 [Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
 
-## Related contents
+## Related content
 
-- [overview of Elastic Clusters](./concepts-elastic-clusters.md)
-- [sharding models](./concepts-elastic-clusters-sharding-models.md)
-- [limitations](./concepts-elastic-clusters-limitations.yml)
+- [Overview of Elastic Clusters](./concepts-elastic-clusters.md)
+- [Sharding models](./concepts-elastic-clusters-sharding-models.md)
+- [Limitations](./concepts-elastic-clusters-limitations.yml)

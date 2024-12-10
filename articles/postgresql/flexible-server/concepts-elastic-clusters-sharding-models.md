@@ -68,8 +68,8 @@ Drawbacks:
 
 [Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
 
-## Related contents
+## Related content
 
-- [overview of Elastic Clusters](./concepts-elastic-clusters.md)
-- [table types](./concepts-elastic-clusters-table-types.md)
-- [limitations](./concepts-elastic-clusters-limitations.yml)
+- [Overview of Elastic Clusters](./concepts-elastic-clusters.md)
+- [Table types](./concepts-elastic-clusters-table-types.md)
+- [Limitations](./concepts-elastic-clusters-limitations.yml)

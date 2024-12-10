@@ -18,7 +18,7 @@ Elastic Cluster on Azure Database for PostgreSQL Flexible Server is a managed of
 
 While Citus is just an extension, it connects multiple PostgreSQL instances. When Azure Database for PostgreSQL Flexible Server is deployed with Citus, it handles the management and configuration of multiple PostgreSQL instances as a single resource. It also automatically sets up the nodes and makes them known to the Citus extension.
 
-Elastic Clusters on Flexible Server offer two sharding models: row-based sharding and schema-based sharding. Check the open-source documentation about [sharding models](https://docs.citusdata.com/en/v12.1/get_started/concepts.html?highlight=shard#sharding-models), if you want to learn more it.
+Elastic Clusters on Flexible Server offer two sharding models: row-based sharding and schema-based sharding. Check the open-source documentation about [sharding models](https://docs.citusdata.com/en/v12.1/get_started/concepts.html?highlight=shard#sharding-models), if you want to learn more.
 
 ## Architecture
 
@@ -108,8 +108,8 @@ WHERE shardid = 102027;
 
 [Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
 
-## Related contents
+## Related content
 
-- [sharding models](./concepts-elastic-clusters-sharding-models.md)
-- [table types](./concepts-elastic-clusters-table-types.md)
-- [limitations](./concepts-elastic-clusters-limitations.yml)
+- [Sharding models](./concepts-elastic-clusters-sharding-models.md)
+- [Table types](./concepts-elastic-clusters-table-types.md)
+- [Limitations](./concepts-elastic-clusters-limitations.yml)
