@@ -136,7 +136,7 @@ We have a scenario where CPU utilization spikes to 90% and want to determine the
 
 2. Select the **CPU** tab. The **Optimizing high CPU utilization** troubleshooting guide opens.
 
-      :::image type="content" source="./media/how-to-identify-slow-queries/high-cpu-troubleshooting-guide.png" alt-text="Screenshot of troubleshooting guides tabs." lightbox="./media/how-to-identify-slow-queries/high-cpu-troubleshooting-guide.png":::
+      :::image type="content" source="./media/how-to-identify-slow-queries/cpu-troubleshooting-guide.png" alt-text="Screenshot of troubleshooting guides tabs." lightbox="./media/how-to-identify-slow-queries/cpu-troubleshooting-guide.png":::
 
 3. From the **Analysis period (local time)** drop-down, select the time range on which you want to focus the analysis.
 
