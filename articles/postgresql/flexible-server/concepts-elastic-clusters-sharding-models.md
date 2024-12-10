@@ -71,5 +71,5 @@ Drawbacks:
 ## Related contents
 
 - [overview of Elastic Clusters](./concepts-elastic-clusters.md)
-- [table types](./concepts-elastic-clusters-tables.md)
+- [table types](./concepts-elastic-clusters-table-types.md)
 - [limitations](./concepts-elastic-clusters-limitations.yml)

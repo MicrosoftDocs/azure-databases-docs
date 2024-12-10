@@ -111,5 +111,5 @@ WHERE shardid = 102027;
 ## Related contents
 
 - [sharding models](./concepts-elastic-clusters-sharding-models.md)
-- [table types](./concepts-elastic-clusters-tables.md)
+- [table types](./concepts-elastic-clusters-table-types.md)
 - [limitations](./concepts-elastic-clusters-limitations.yml)
