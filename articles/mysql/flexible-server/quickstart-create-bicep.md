@@ -26,7 +26,7 @@ ms.custom:
 
 ## Create a server that has public access
 
-Modify the following code examples to create a *main.bicep* file and a *CreateFirewallRules.bicep* file. Use the files to create an Azure Database for MySQL flexible server that has public access and to create a database on the server. You might need to modify the default value of `firewallRules`.
+Modify the following code examples to create a *main.bicep* file and a *CreateFirewallRules.bicep* file. Use the files to create an Azure Database for MySQL Flexible Server that has public access and to create a database on the server. You might need to modify the default value of `firewallRules`.
 
 *main.bicep*:
 
@@ -177,7 +177,7 @@ Save the two Bicep files in the same directory.
 
 ## Create a server that has private access
 
-Modify the following code samples to deploy an Azure Database for MySQL flexible server that has private access inside a virtual network:
+Modify the following code samples to deploy an Azure Database for MySQL Flexible Server that has private access inside a virtual network:
 
 ```powershell
 @description('Provide a prefix for creating resource names.')
@@ -344,7 +344,7 @@ Follow the instructions to enter the parameter values. When the deployment finis
 
 ## Review deployed resources
 
-To verify that your Azure Database for MySQL flexible server was created in the resource group:
+To verify that your Azure Database for MySQL Flexible Server was created in the resource group:
 
 # [Azure CLI](#tab/azure-cli)
 
