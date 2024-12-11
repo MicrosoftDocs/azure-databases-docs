@@ -101,7 +101,7 @@ To perform a vector search, use the `$search` aggregation pipeline stage, and qu
 
 ### Enabling DiskANN on a new cluster
 
-To enable **DiskANN** Vector Index on a newly provisioned Azure Cosmos DB for MongoDB (vCore) cluster, follow these steps to perform a cluster-level registration via the Azure CLI:
+To enable **DiskANN** Vector Index on a newly provisioned Azure Cosmos DB for MongoDB (vCore) cluster, follow these steps to perform a cluster-level registration via the [Azure CLI](https://learn.microsoft.com/cli/azure/):
 1. Log in to Azure CLI
 ```bash
 az login
