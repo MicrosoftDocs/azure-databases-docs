@@ -43,7 +43,7 @@ There's no extra cost.
 
 ### Can I encrypt my data with customer managed keys (CMK)?
 
-This feature is coming to the service in the second half of 2024.
+This feature is coming to the service in early 2025. Please reach out to Microsoft Support for access to a private preview as soon as it's available.
 
 ### How often are encryption keys rotated?
 
