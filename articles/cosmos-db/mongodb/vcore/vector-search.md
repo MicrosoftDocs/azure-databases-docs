@@ -74,38 +74,6 @@ DiskANN indexes are available on M40 tiers and above. To create the DiskANN inde
 | `maxDegree` | integer | Maximum number of edges per node in the graph. This parameter ranges from 20 to 2048 (default is 32). Higher `maxDegree` is suitable for datasets with high dimensionality and/or high accuracy requirements. |
 | `lBuild` | integer | Sets the number of candidate neighbors evaluated during DiskANN index construction. This parameter, which ranges from 10 to 500 (default is 50), balances accuracy and computational overhead: higher values improve index quality and accuracy but increase build time |
 
-> [!NOTE]
-### Enabling DiskANN on a vCore Cluster
-
-To enable the **DiskANN Vector Index** feature on an Azure Cosmos DB for MongoDB vCore cluster, follow these steps to perform a cluster-level registration via the Azure CLI:
-
-#### 1. Log in to Azure CLI
-Log in to your Azure account via the CLI:
-```bash
-az login
-```
-
-#### 2. Check the Current Feature Flags
-Retrieve the current settings for the feature flags on your vCore cluster. This ensures you retain any existing flags while adding the new feature. Run the following command, replacing placeholders with your specific values:
-
-```bash
-az resource show --ids "/subscriptions/<sub id>/resourceGroups/<resource group name>/providers/Microsoft.DocumentDB/mongoClusters/<resource name of mongo vCore>" --api-version 2024-10-01-preview
-```
-
-For example, if the output includes the following:
-```json
-"previewFeatures": ["GeoReplicas"]
-```
-
-You should ensure that the existing `GeoReplicas` flag remains intact when adding the `DiskANNIndex` flag.
-
-#### 3. Update the Cluster to Enable the Feature Flag
-Add the `DiskANNIndex` flag to the list of preview features without removing any existing ones. Use the following command, replacing placeholders with your specific values:
-
-```bash
-az resource patch --ids "/subscriptions/<sub id>/resourceGroups/<resource group name>/providers/Microsoft.DocumentDB/mongoClusters/<resource name of mongo vCore>" --api-version 2024-10-01-preview --properties "{\"previewFeatures\": [\"GeoReplicas\", \"DiskANNIndex\"]}"
-```
-
 ### Perform a vector search with DiskANN
 
 To perform a vector search, use the `$search` aggregation pipeline stage, and query with the `cosmosSearch` operator. DiskANN allows high-performance searches across massive datasets with **optional** filtering such as geospatial or text-based filters.
@@ -130,6 +98,28 @@ To perform a vector search, use the `$search` aggregation pipeline stage, and qu
 | --- | --- | --- |
 | `lSearch` | integer | Specifies the size of the dynamic candidate list for search. The default value is `40`, with a configurable range from `10` to `1000`. Increasing the value enhances recall but may reduce search speed. |
 | `k` | integer | Defines the number of search results to return. The `k` value must be less than or equal to `lSearch`. |
+
+
+## Enabling DiskANN on a new Cluster
+To enable the **DiskANN Vector Index** feature on an Azure Cosmos DB for MongoDB (vCore) cluster, follow these steps to perform a cluster-level registration via the Azure CLI:
+1. Log in to Azure CLI
+```bash
+az login
+```
+1. Retrieve the current settings for the feature flags on your vCore cluster. This ensures you retain any existing flags while adding the new feature. Run the following command, replacing placeholders with your specific values:
+```bash
+az resource show --ids "/subscriptions/<sub id>/resourceGroups/<resource group name>/providers/Microsoft.DocumentDB/mongoClusters/<resource name of your Cosmos for MongoDB cluster>" --api-version <cluster's api version>
+```
+For example, if the output includes the following:
+```json
+"previewFeatures": ["GeoReplicas"]
+```
+1. Add the `DiskANNIndex` flag to the list of preview features without removing any existing ones. Use the following command, replacing placeholders with your specific values:
+
+```bash
+az resource patch --ids "/subscriptions/<sub id>/resourceGroups/<resource group name>/providers/Microsoft.DocumentDB/mongoClusters/<resource name of your Cosmos for MongoDB cluster>" --api-version <cluster's api version> --properties "{\"previewFeatures\": [\"GeoReplicas\", \"DiskANNIndex\"]}"
+```
+
 
 ## Example using a DiskANN Index with Filtering
 
