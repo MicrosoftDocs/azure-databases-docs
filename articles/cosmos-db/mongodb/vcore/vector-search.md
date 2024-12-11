@@ -106,20 +106,16 @@ To enable the **DiskANN Vector Index** feature on an Azure Cosmos DB for MongoDB
 ```bash
 az login
 ```
-1. Retrieve the current settings for the feature flags on your vCore cluster. This ensures you retain any existing flags while adding the new feature. Run the following command, replacing placeholders with your specific values:
+
+2. Retrieve the current settings for the feature flags on your vCore cluster. This ensures you retain any existing flags while adding the new feature. Run the following command, replacing placeholders with your specific values:
 ```bash
 az resource show --ids "/subscriptions/<sub id>/resourceGroups/<resource group name>/providers/Microsoft.DocumentDB/mongoClusters/<resource name of your Cosmos for MongoDB cluster>" --api-version <cluster's api version>
 ```
-For example, if the output includes the following:
-```json
-"previewFeatures": ["GeoReplicas"]
-```
-1. Add the `DiskANNIndex` flag to the list of preview features without removing any existing ones. Use the following command, replacing placeholders with your specific values:
 
+3. Add the `DiskANNIndex` flag to the list of preview features **without removing any existing ones**. Use the following command, replacing placeholders with your specific values:
 ```bash
 az resource patch --ids "/subscriptions/<sub id>/resourceGroups/<resource group name>/providers/Microsoft.DocumentDB/mongoClusters/<resource name of your Cosmos for MongoDB cluster>" --api-version <cluster's api version> --properties "{\"previewFeatures\": [\"GeoReplicas\", \"DiskANNIndex\"]}"
 ```
-
 
 ## Example using a DiskANN Index with Filtering
 
