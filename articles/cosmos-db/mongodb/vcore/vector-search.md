@@ -75,7 +75,36 @@ DiskANN indexes are available on M40 tiers and above. To create the DiskANN inde
 | `lBuild` | integer | Sets the number of candidate neighbors evaluated during DiskANN index construction. This parameter, which ranges from 10 to 500 (default is 50), balances accuracy and computational overhead: higher values improve index quality and accuracy but increase build time |
 
 > [!NOTE]
-> Enable the "DiskANN Vector Index for vCore-based Azure Cosmos DB for MongoDB" feature in the "Preview Features" tab of your Azure Subscription. Learn more about preview features [here](/azure/azure-resource-manager/management/preview-features).
+### Enabling DiskANN on a vCore Cluster
+
+To enable the **DiskANN Vector Index** feature on an Azure Cosmos DB for MongoDB vCore cluster, follow these steps to perform a cluster-level registration via the Azure CLI:
+
+#### 1. Log in to Azure CLI
+Log in to your Azure account via the CLI:
+```bash
+az login
+```
+
+#### 2. Check the Current Feature Flags
+Retrieve the current settings for the feature flags on your vCore cluster. This ensures you retain any existing flags while adding the new feature. Run the following command, replacing placeholders with your specific values:
+
+```bash
+az resource show --ids "/subscriptions/<sub id>/resourceGroups/<resource group name>/providers/Microsoft.DocumentDB/mongoClusters/<resource name of mongo vCore>" --api-version 2024-10-01-preview
+```
+
+For example, if the output includes the following:
+```json
+"previewFeatures": ["GeoReplicas"]
+```
+
+You should ensure that the existing `GeoReplicas` flag remains intact when adding the `DiskANNIndex` flag.
+
+#### 3. Update the Cluster to Enable the Feature Flag
+Add the `DiskANNIndex` flag to the list of preview features without removing any existing ones. Use the following command, replacing placeholders with your specific values:
+
+```bash
+az resource patch --ids "/subscriptions/<sub id>/resourceGroups/<resource group name>/providers/Microsoft.DocumentDB/mongoClusters/<resource name of mongo vCore>" --api-version 2024-10-01-preview --properties "{\"previewFeatures\": [\"GeoReplicas\", \"DiskANNIndex\"]}"
+```
 
 ### Perform a vector search with DiskANN
 
