@@ -100,7 +100,7 @@ To perform a vector search, use the `$search` aggregation pipeline stage, and qu
 | `k` | integer | Defines the number of search results to return. The `k` value must be less than or equal to `lSearch`. |
 
 
-### Enabling DiskANN on a new Cluster
+### Enabling DiskANN on a new cluster
 To enable **DiskANN** Vector Index on a newly provisioned Azure Cosmos DB for MongoDB (vCore) cluster, follow these steps to perform a cluster-level registration via the Azure CLI:
 1. Log in to Azure CLI
 ```bash
