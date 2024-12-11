@@ -99,8 +99,8 @@ To perform a vector search, use the `$search` aggregation pipeline stage, and qu
 | `lSearch` | integer | Specifies the size of the dynamic candidate list for search. The default value is `40`, with a configurable range from `10` to `1000`. Increasing the value enhances recall but may reduce search speed. |
 | `k` | integer | Defines the number of search results to return. The `k` value must be less than or equal to `lSearch`. |
 
-
 ### Enabling DiskANN on a new cluster
+
 To enable **DiskANN** Vector Index on a newly provisioned Azure Cosmos DB for MongoDB (vCore) cluster, follow these steps to perform a cluster-level registration via the Azure CLI:
 1. Log in to Azure CLI
 ```bash
