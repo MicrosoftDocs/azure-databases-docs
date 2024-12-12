@@ -21,7 +21,9 @@ This article highlights the latest updates and enhancements for Azure Database f
 
 - General Availability of [oracle_fdw](../extensions/concepts-extensions-versions.md#list-of-extensions-by-name) extension.
 - General Availability of [index tuning](./concepts-index-tuning.md) on Azure Database for PostgreSQL flexible server.
+- General Availability of the [Semantic Ranker Solution Accelerator](https://aka.ms/pg-ranker) for Azure Database for PostgreSQL flexible server.
 - Public preview of [age](../extensions/concepts-extensions-versions.md#list-of-extensions-by-name) extension.
+- Public preview of the [GraphRAG Solution Accelerator](https://aka.ms/pg-graphrag) for Azure Database for PostgreSQL flexible server.
 - Public preview of [On-Demand Backups](./concepts-backup-restore.md#on-demand-backups-preview).
 
 ## Release: November 2024
