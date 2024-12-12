@@ -65,7 +65,7 @@ The [`pg_cron`](https://github.com/citusdata/pg_cron/) extension is a simple, cr
 
 The `pg_cron` extension can run multiple jobs in parallel, but it runs at most one instance of a job at a time. If a second run is supposed to start before the first one finishes, then the second run is queued and started as soon as the first run completes. In such a way, it's ensured that jobs run precisely as many times as scheduled and don't run concurrently with themselves.
 
-The `pg_cron` extension must be added to `shared_preload_libraries`. It doesn't support loading the library as the effect of executing [CREATE EXTENSION](https://www.postgresql.org/docs/current/sql-createextension.html).
+Make sure that the `pg_cron` extension is added to `shared_preload_libraries`. This extension doesn't support loading the library as the effect of executing [CREATE EXTENSION](https://www.postgresql.org/docs/current/sql-createextension.html). Any attempt to run CREATE EXTENSION without having added the extension to `shared_preload_libraries` and having restarted the server, results in an error whose text says `pg_cron can only be loaded via shared_preload_libraries`, and whose hint is `Add pg_cron to the shared_preload_libraries configuration variable in postgresql.conf.`.
 
 To use `pg_cron`, make sure it's [library is added to be loaded upon server start](how-to-allow-extensions.md#load-libraries), it's [allowlisted](how-to-allow-extensions.md#allow-extensions), and it's [installed](how-to-allow-extensions.md#create-extensions) in any database from which you want to interact with its functionality, using the SQL artifacts it creates when you [create the extension]().
 
