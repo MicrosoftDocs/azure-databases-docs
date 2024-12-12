@@ -15,7 +15,7 @@ In Azure Cosmos DB, you can configure either standard (manual) or autoscale prov
 
 Autoscale provisioned throughput is well suited for mission-critical workloads that have variable or unpredictable traffic patterns, and require SLAs on high performance and scale. Autoscale by default scales workloads based on the most active region and partition. For nonuniform workloads that have different workload patterns across regions and partitions, this scaling can cause unnecessary scale-ups. **Dynamic scaling or dynamic autoscale** is an enhancement to autoscale provisioned throughout that helps scaling of such nonuniform workloads independently based on usage, at per region and per partition level. Dynamic scaling allows you to save cost if you often experience hot partitions and/or have multiple regions. 
 
-## Benefits
+## Benefits of autoscale
 
 Azure Cosmos DB databases and containers that are configured with autoscale provisioned throughput have the following benefits:
 
@@ -27,7 +27,7 @@ Azure Cosmos DB databases and containers that are configured with autoscale prov
 
 * **Highly available:** Databases and containers using autoscale use the same globally distributed, fault-tolerant, highly available Azure Cosmos DB backend to ensure data durability and high availability.
 
-## Use cases
+## Use cases of autoscale
 
 The use cases of autoscale include:
 
@@ -43,6 +43,8 @@ The use cases of autoscale include:
 
 Building a custom solution to these problems not only requires an enormous amount of time, but also introduces complexity in your application's configuration or code. Autoscale enables the above scenarios out of the box and removes the need for custom or manual scaling of capacity. 
 
+## Use cases of dynamic scaling
+
 The use cases of dynamic scaling include:
 
 - Database workloads that have a highly trafficked primary region and a secondary passive region for disaster recovery.
@@ -50,7 +52,7 @@ The use cases of dynamic scaling include:
 - Multi-region database workloads.
   - These workloads often observe uneven distribution of requests across regions due to natural traffic growth and dips throughout the day. For example, a database might be active during business hours across globally distributed time zones.
 
-## How autoscale and dynamic autoscale provisioned throughput works
+## How autoscale provisioned throughput works
 
 When configuring containers and databases with autoscale, you specify the maximum throughput `Tmax` required. Azure Cosmos DB scales the throughput `T` such `0.1*Tmax <= T <= Tmax`. For example, if you set the maximum throughput to 20,000 RU/s, the throughput scales between 2000 to 20,000 RU/s. Because scaling is automatic and instantaneous, at any point in time, you can consume up to the provisioned `Tmax` with no delay. 
 
