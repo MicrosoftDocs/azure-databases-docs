@@ -1,8 +1,8 @@
 ---
 title: Release notes for Azure DB for PostgreSQL - Flexible Server
 description: Release notes for Azure DB for PostgreSQL - Flexible Server, including feature additions, engine versions support, extensions, and other announcements.
-author: varun-dhawan
-ms.author: varundhawan
+author: maxluk
+ms.author: mluk
 ms.reviewer: maghan
 ms.date: 12/12/2024
 ms.service: azure-database-postgresql
@@ -21,7 +21,9 @@ This article highlights the latest updates and enhancements for Azure Database f
 
 - General Availability of [oracle_fdw](../extensions/concepts-extensions-versions.md#list-of-extensions-by-name) extension.
 - General Availability of [index tuning](./concepts-index-tuning.md) on Azure Database for PostgreSQL flexible server.
+- General Availability of the [Semantic Ranker Solution Accelerator](https://aka.ms/pg-ranker) for Azure Database for PostgreSQL flexible server.
 - Public preview of [age](../extensions/concepts-extensions-versions.md#list-of-extensions-by-name) extension.
+- Public preview of the [GraphRAG Solution Accelerator](https://aka.ms/pg-graphrag) for Azure Database for PostgreSQL flexible server.
 - Public preview of [On-Demand Backups](./concepts-backup-restore.md#on-demand-backups-preview).
 
 ## Release: November 2024
