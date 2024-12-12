@@ -12,16 +12,6 @@ ms.topic: concept-article
 
 # Extension considerations specific to Azure Database for PostgreSQL flexible server
 
-To check which versions of an extension are available for your current database installation, query the `pg_avaable_extensions` system catalog view.
-
-For example, to determine the version available for the `azure_ai'extension, execute:
-
-```sql
-SELECT * FROM pg_available_extensions WHERE name = 'azure_ai';
-```
-
-These commands provide necessary insights into your database's extension configurations, helping maintain your systems efficiently and securely. When you enable easy updates to the latest extension versions, Azure Database for PostgreSQL continues to support your database applications' robust, secure, and efficient management.
-
 ## Prerequisites
 
 Read the article [how to use PostgreSQL extensions for Azure Database for PostgreSQL](how-to-allow-extensions.md) to learn how to:
@@ -29,6 +19,10 @@ Read the article [how to use PostgreSQL extensions for Azure Database for Postgr
  - Allowlist extensions in Azure Database for PostgreSQL Flexible Server
  - Load the libraries of extensions that deploy binary libraries, which require allocating and accessing shared memory and need to be loaded when the server starts.
  - Install extensions in some database, so that the SQL objects packaged in that extension are deployed in that database, and can be accessed in its context.
+ - Drop extensions from some database, so that the SQL objects packaged in that extension are removed from that database.
+ - Update the SQL artifacts deployed by an extension that is already installed.
+ - View which extensions are installed and their corresponding versions.
+ - Learn what are the possible errors you can receive when managing extensions in Azure Database for PostgreSQL Flexible Server, and what could be the cause of each of them.
 
 ## Extensions
 
