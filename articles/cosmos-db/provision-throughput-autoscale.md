@@ -69,9 +69,9 @@ For example, if we have a collection with **1000** RU/s and **2** partitions, ea
 | Read | P1 | <= 150 RU/s | 30% | 150 RU/s consisting of 50 RU/s used for writes replicated from the write region. 100 RU/s are used for read operations in this region. |
 | Read | P2 | <= 50 RU/s | 10% | |
 
-In autoscale provisioned throughput, all partitions are scaled uniformly based on the hottest partition. Both the write and read regions are scaled to 1000 RU/s, making the total RU/s as much as **2000 RU/s**.
+Without dynamic scaling, all partitions are scaled uniformly based on the hottest partition. In this example, because the hottest partition had 100% utilization, all partitions in both the write and read regions are scaled to 1000 RU/s, making the total RU/s scaled to **2000 RU/s**.
 
-With dynamic scaling, you can optimize your throughput. The total consumption would be **900 RU/s** as each partition or region's throughput is scaled independently and measured per hour using the same scenario.
+With dynamic scaling, because each partition and region's throughput is scaled independently, the total RU/s scaled to would be **900 RU/s**, which better reflects the actual traffic pattern and lowers costs.
 
 ## Enabling autoscale on existing resources
 
