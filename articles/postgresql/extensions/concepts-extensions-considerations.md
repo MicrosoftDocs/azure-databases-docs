@@ -24,9 +24,11 @@ These commands provide necessary insights into your database's extension configu
 
 ## Prerequisites
 
-Follow the following article to learn how to allow extensions.
+Read the article [how to use PostgreSQL extensions for Azure Database for PostgreSQL](how-to-allow-extensions.md) to learn how to:
 
-- [How to use PostgreSQL extensions for Azure Database for PostgreSQL](how-to-allow-extensions.md#allow-extensions).
+ - Allowlist extensions in Azure Database for PostgreSQL Flexible Server
+ - Load the libraries of those extensions that implement binary libraries which require allocating and accessing shared memory, and need to be loaded when the server starts.
+ - Install extensions in some database, so that the SQL objects packaged in that extension are deployed in that database, and can be accessed in its context.
 
 ## Extensions
 
