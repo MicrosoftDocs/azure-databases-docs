@@ -32,7 +32,7 @@ Read the article [how to use PostgreSQL extensions for Azure Database for Postgr
 
 ## Extensions
 
-The following is a list of supported extensions that require specific considerations in the Azure Database for PostgreSQL flexible server service:
+The following list ennumerates all the supported extensions that require specific considerations when used in the Azure Database for PostgreSQL flexible server service:
 
 - `dblink`
 - `pg_buffercache`
@@ -65,9 +65,9 @@ CREATE EXTENSION pg_buffercache;
 
 The [`pg_cron`](https://github.com/citusdata/pg_cron/) extension is a simple, cron-based job scheduler for PostgreSQL that runs inside the database as an extension. The `pg_cron` extension can run scheduled maintenance tasks within a PostgreSQL database. For example, you can run a periodic vacuum of a table or remove old data jobs.
 
-The `pg_cron` extension can run multiple jobs in parallel, but it runs at most one instance of a job at a time. If a second run is supposed to start before the first one finishes, then the second run is queued and started as soon as the first run completes. In such a way, it's ensured that jobs run precisely as many times as scheduled and don't run concurrently with themselves.
+The `pg_cron` extension can run multiple jobs in parallel, but it runs at most one instance of a job at a time. If a second run is supposed to start before the first one finishes, then the second run is queued and started as soon as the first run completes. In such a way, it ensures that jobs run precisely as many times as scheduled and don't run concurrently with themselves.
 
-Make sure that the `pg_cron` extension is added to `shared_preload_libraries`. This extension doesn't support loading the library as the effect of executing [CREATE EXTENSION](https://www.postgresql.org/docs/current/sql-createextension.html). Any attempt to run CREATE EXTENSION without having added the extension to `shared_preload_libraries` and having restarted the server, results in an error whose text says `pg_cron can only be loaded via shared_preload_libraries`, and whose hint is `Add pg_cron to the shared_preload_libraries configuration variable in postgresql.conf.`.
+Make sure that the value to which `shared_preload_libraries` is set, includes `pg_cron`. This extension doesn't support loading the library as the effect of executing [CREATE EXTENSION](https://www.postgresql.org/docs/current/sql-createextension.html). Any attempt to run CREATE EXTENSION if the extension was not added to `shared_preload_libraries`, or the server wan't restarted after it was added, results in an error whose text says `pg_cron can only be loaded via shared_preload_libraries`, and whose hint is `Add pg_cron to the shared_preload_libraries configuration variable in postgresql.conf.`.
 
 To use `pg_cron`, make sure it's [library is added to be loaded upon server start](how-to-allow-extensions.md#load-libraries), it's [allowlisted](how-to-allow-extensions.md#allow-extensions), and it's [installed](how-to-allow-extensions.md#create-extensions) in any database from which you want to interact with its functionality, using the SQL artifacts it creates when you [create the extension]().
 
@@ -130,28 +130,7 @@ The extension is supported for PostgreSQL versions 11 to 16.
 
 You can find more information and instructions on using the `pg_failover_slots` extension on its [GitHub page](https://github.com/EnterpriseDB/pg_failover_slots).
 
-To enable the `pg_failover_slots` extension for your Azure Database for PostgreSQL flexible server instance, you need to modify the server's configuration by including the extension in the server's shared preload libraries and adjusting a specific server parameter. Here's the process:
-
-1. Update the `shared_preload_libraries` parameter to add the `pg_failover_slots` to the server's shared preload libraries.
-
-1. Change the server parameter `hot_standby_feedback` to `on`.
-
-Any changes to the `shared_preload_libraries` parameter require a server restart to take effect.
-
-Using the [Azure portal](https://portal.azure.com):
-
-1. Select your Azure Database for PostgreSQL flexible server instance.
-
-1. From the resource menu, under **Settings** section, select **Server parameters**.
-
-1. Search for the `shared_preload_libraries` parameter and edit its value to include `pg_failover_slots`.
-
-1. Search for the `hot_standby_feedback` parameter and set its value to `on`.
-
-1. Select **Save** to preserve your changes. Now, you have the option to **Save and restart**.
-    1. Choose this to ensure that the changes take effect since modifying `shared_preload_libraries` requires a server restart.
-
-By selecting **Save and restart**, your server automatically reboots, applying the changes made. Once the server is back online, the `pg_failover_slots` extension is enabled and operational on your primary Azure Database for PostgreSQL flexible server instance, ready to handle logical replication slots during failovers.
+To use the `pg_failover_slots` extension, make sure that its [library was loaded](how-to-allow-extensions.md#load-libraries) when the server started.
 
 ### pg_hint_plan
 
@@ -178,24 +157,7 @@ Example:
 
 The previous example causes the planner to use the results of a `seqscan` on table `a` to combine with table `b` as a `hashjoin`.
 
-To install `pg_hint_plan`, in addition to allowing listing it, as shown in [how to use PostgreSQL extensions](how-to-allow-extensions.md#allow-extensions)-use-postgresql-extensions), you need to include it in the server's shared preload libraries. A change to Postgres's `shared_preload_libraries` parameter requires a **server restart** to take effect. You can change parameters using the [Azure portal](../flexible-server/how-to-configure-server-parameters-using-portal.md) or the [Azure CLI](../flexible-server/how-to-configure-server-parameters-using-cli.md).
-
-Using the [Azure portal](https://portal.azure.com):
-
-1. Select your Azure Database for PostgreSQL flexible server instance.
-
-1. From the resource menu, under **Settings** section, select **Server parameters**.
-
-1. Search for the `shared_preload_libraries` parameter and edit its value to include `pg_hint_plan`.
-
-1. Select ** Save ** to preserve your changes. You now have the option of **Save and restart**.
-    1. Choose this to ensure that the changes take effect since modifying `shared_preload_libraries` requires a server restart.
-
-You can now enable `pg_hint_plan` your Azure Database for PostgreSQL flexible server database. Connect to the database and issue the following command:
-
-```sql
-CREATE EXTENSION pg_hint_plan;
-```
+To use `pg_hint_plan` extension, make sure that you [allowlist](how-to-allow-extensions.md#allow-extensions) the extension, [load its library](how-to-allow-extensions.md#load-libraries), and [install the extension](how-to-allow-extensions.md#create-extension) in the database on which you plan to use its functionality.
 
 ### pg_prewarm
 
@@ -258,26 +220,7 @@ The `timescaleDB` extension is a time-series database packaged as an extension f
 
 #### Install TimescaleDB
 
-In addition to installing the `timescaleDB` extension and [allowing listing it](how-to-allow-extensions.md#allow-extensions), you need to include it in the server's shared preload libraries. A change to Postgres's `shared_preload_libraries` parameter requires a **server restart** to take effect. You can change parameters using the [Azure portal](../flexible-server/how-to-configure-server-parameters-using-portal.md) or the [Azure CLI](../flexible-server/how-to-configure-server-parameters-using-cli.md).
-
-Using the [Azure portal](https://portal.azure.com):
-
-1. Select your Azure Database for PostgreSQL flexible server instance.
-
-1. From the resource menu, under **Settings** section, select **Server parameters**.
-
-1. Search for the `shared_preload_libraries` parameter and edit its value to include `TimescaleDB`.
-
-1. Select ** Save ** to preserve your changes. You now have the option - **Save and restart**. Choose this to ensure that the changes take effect since modifying `shared_preload_libraries` requires a server restart.
-
-You can now enable TimescaleDB in your Azure Database for PostgreSQL flexible server database. Connect to the database and issue the following command:
-
-```sql
-CREATE EXTENSION IF NOT EXISTS timescaledb CASCADE;
-```
-
-> [!TIP]  
-> If you see an error, confirm that you [restarted your server](../flexible-server/how-to-restart-server-portal.md) after saving shared_preload_libraries.
+To use `timescaleDB`, make sure that you [allowlist](how-to-allow-extensions.md#allow-extensions) the extension, [load its library](how-to-allow-extensions.md#load-libraries), and [install the extension](how-to-allow-extensions.md#create-extension) in the database on which you plan to use its functionality.
 
 You can now create a TimescaleDB hypertable [from scratch](https://docs.timescale.com/getting-started/creating-hypertables) or migrate [existing time-series data in PostgreSQL](https://docs.timescale.com/getting-started/migrating-data).
 
@@ -330,9 +273,8 @@ The extensions `anon`, `Apache AGE`, `dblink`, `orafce`, `pgaudit`, `postgres_fd
 
 [Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
 
-## Related content
+## Related contents
 
-- [How to use extensions](how-to-allow-extensions.md)
-- [List of extensions by name](concepts-extensions-versions.md)
-- [List of extensions by version of PostgreSQL](concepts-extensions-by-engine.md)
-- [Feedback forum](https://aka.ms/pgfeedback)
+- [hHow to use extensions](how-to-allow-extensions.md)
+- [list of extensions by name](concepts-extensions-versions.md)
+- [list of extensions by version of PostgreSQL](concepts-extensions-by-engine.md)
