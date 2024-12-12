@@ -1,6 +1,6 @@
 ---
-title: Database transactions and optimistic concurrency control in Azure Cosmos DB
-description: This article describes database transactions and optimistic concurrency control in Azure Cosmos DB
+title: Database transactions and concurrency control in Azure Cosmos DB
+description: This article describes database transactions and concurrency control in Azure Cosmos DB
 author: markjbrown
 ms.author: mjbrown
 ms.service: azure-cosmos-db
@@ -58,6 +58,16 @@ The item’s `_etag` value changes every time the item is updated. For replace i
 The concurrent updates of an item are subjected to the OCC by Azure Cosmos DB’s communication protocol layer. For Azure Cosmos DB accounts configured for **single-region writes**, Azure Cosmos DB ensures that the client-side version of the item that you are updating (or deleting) is the same as the version of the item in the Azure Cosmos DB container. This ensures that your writes are protected from being overwritten accidentally by the writes of others and vice versa. In a multi-user environment, the optimistic concurrency control protects you from accidentally deleting or updating wrong version of an item. As such, items are protected against the infamous "lost update" or "lost delete" problems.
 
 In an Azure Cosmos DB account configured with **multi-region writes**, data can be committed independently into secondary regions if its `_etag` matches that of the data in the local region. Once new data is committed locally in a secondary region, it is then merged in the hub or primary region. If the conflict resolution policy merges the new data into the hub region, this data will then be replicated globally with the new `_etag`. If the conflict resolution policy rejects the new data, the secondary region will be rolled back to the original data and `_etag`.
+
+## Pessimistic concurrency control
+
+While Azure Cosmos DB primarily supports optimistic concurrency through mechanisms like `ETag`, certain scenarios require pessimistic concurrency control to ensure exclusive access to resources. Two common approaches for implementing pessimistic concurrency control in Cosmos DB are Lease Document-Based Locking and Conditional Attributes with TTL for In-Place Locking.
+
+Lease Document-Based Locking involves creating a dedicated document in a Cosmos DB container to act as the lock for a resource. The lease document contains attributes such as `resourceId`, `lockedBy`, `lockTime`, and optionally TTL for expiration. The lock is acquired by inserting or updating the lease document using conditional writes to ensure that only one process can claim the lock at a time. Cosmos DB's TTL feature automatically deletes documents after the specified time, ensuring that stale locks are released without requiring manual intervention. This approach decouples lock management from resource data, making it flexible and suitable for scenarios where multiple resources require coordinated locking. However, it does require an additional collection to manage the leases.
+
+Conditional Attributes with TTL for In-Place Locking embeds locking attributes directly within the resource document. The resource document is extended to include fields like `lockedBy`, `lockTime`, and TTL. Locks are managed by modifying these fields and leveraging TTL to ensure that stale locks are automatically removed if the process holding the lock fails to release it. This approach eliminates the need for a separate lease collection and simplifies management when locking is confined to a single resource. However, it is better suited for scenarios with straightforward locking requirements and requires schema modifications to the resource documents.
+
+Both approaches allow efficient implementation of pessimistic concurrency control, with the choice depending on the complexity and nature of the locking requirements.
 
 ## Next steps
 
