@@ -959,6 +959,11 @@
       "source_path": "articles/cosmos-db/nosql/multitenancy.md",
       "redirect_url": "/azure/architecture/guide/multitenant/service/cosmos-db?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json",
       "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/cosmos-db/autoscale-per-partition-region.md",
+      "redirect_url": "/azure/cosmos-db/provision-throughput-autoscale",
+      "redirect_document_id": false
     }
   ]
 }
