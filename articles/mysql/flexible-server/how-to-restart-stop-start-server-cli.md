@@ -14,7 +14,7 @@ ms.custom:
 
 # Restart/stop/start an Azure Database for MySQL - Flexible Server instance
 
-This article shows you how to perform restart, start and stop an Azure Database for MySQL flexible server instance by using Azure CLI.
+This article shows you how to perform restart, start and stop an Azure Database for MySQL Flexible Server instance by using Azure CLI.
 
 ## Prerequisites
 
@@ -36,7 +36,7 @@ This article shows you how to perform restart, start and stop an Azure Database 
     az account set --subscription <subscription id>
     ```
 
-- Create an Azure Database for MySQL flexible server instance if you haven't already created one by using the `az mysql flexible-server create` command.
+- Create an Azure Database for MySQL Flexible Server instance if you haven't already created one by using the `az mysql flexible-server create` command.
 
     ```azurecli
     az mysql flexible-server create --resource-group myresourcegroup --name myservername
@@ -91,7 +91,7 @@ az mysql flexible-server start
 ```
 
 > [!IMPORTANT]  
-> Once the server has restarted successfully, all management operations are now available for the Azure Database for MySQL flexible server instance.
+> Once the server has restarted successfully, all management operations are now available for the Azure Database for MySQL Flexible Server instance.
 
 ## Restart a server
 
@@ -121,9 +121,9 @@ az mysql flexible-server restart
 ```
 
 > [!IMPORTANT]  
-> Once the server has restarted successfully, all management operations are now available for the Azure Database for MySQL flexible server instance.
+> Once the server has restarted successfully, all management operations are now available for the Azure Database for MySQL Flexible Server instance.
 
 ## Related content
 
-- [networking in Azure Database for MySQL flexible server](concepts-networking.md)
+- [networking in Azure Database for MySQL Flexible Server](concepts-networking.md)
 - [Create and manage virtual networks for Azure Database for MySQL - Flexible Server using the Azure portal](how-to-manage-virtual-network-portal.md)
