@@ -15,7 +15,7 @@ ms.topic: conceptual
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
-The following questions are intended to help you identify and record the compute resources required to maintain operational database performance.  This information is critical when planning your migration as well as discussing migration plans with your selected migration partner(s).
+The following questions are intended to help you identify and record the compute resources required to maintain operational database performance. This information is critical when planning your migration as well as discussing migration plans with your selected migration partner(s).
 
 ## 1. Workload Consistency
 
@@ -51,7 +51,7 @@ During peak operational periods…
 | How many cores are being utilized? | &nbsp; |
 | What is the percentage of core utilization? | &nbsp; |
 | What is the maximum amount of memory used by SGA? | &nbsp; |
-| What is the maximum amount of memory used by PGA? |&nbsp;  |
+| What is the maximum amount of memory used by PGA? |&nbsp; |
 | What are the maximum IOPS required? | &nbsp; |
 | What are the maximum storage throughput speeds? | &nbsp; |
 | What is the maximum required network speed? | &nbsp;|
