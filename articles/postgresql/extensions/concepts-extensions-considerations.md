@@ -4,7 +4,7 @@ description: Learn about the extension considerations specific to Azure Database
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 11/19/2024
+ms.date: 12/12/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: concept-article
@@ -65,9 +65,9 @@ The [`pg_cron`](https://github.com/citusdata/pg_cron/) extension is a simple, cr
 
 The `pg_cron` extension can run multiple jobs in parallel, but it runs at most one instance of a job at a time. If a second run is supposed to start before the first one finishes, then the second run is queued and started as soon as the first run completes. In such a way, it's ensured that jobs run precisely as many times as scheduled and don't run concurrently with themselves.
 
-The `pg_cron` extension is preloaded in `shared_preload_libraries` for every Azure Database for PostgreSQL flexible server instance inside the Postgres database to provide you with the ability to schedule jobs to run in other databases within your Azure Database for PostgreSQL flexible server DB instance without compromising security.
+The `pg_cron` extension must be added to `shared_preload_libraries`. It doesn't support loading the library as the effect of executing [CREATE EXTENSION](https://www.postgresql.org/docs/current/sql-createextension.html).
 
-For security reasons, you must [allowlist](how-to-allow-extensions.md#allow-extensions) the `pg_cron` extension and install it using [CREATE EXTENSION](https://www.postgresql.org/docs/current/sql-createextension.html) command.
+To use `pg_cron`, make sure it's [library is added to be loaded upon server start](how-to-allow-extensions.md#load-libraries), it's [allowlisted](how-to-allow-extensions.md#allow-extensions), and it's [installed](how-to-allow-extensions.md#create-extensions) in any database from which you want to interact with its functionality, using the SQL artifacts it creates when you [create the extension]().
 
 #### Examples
 
