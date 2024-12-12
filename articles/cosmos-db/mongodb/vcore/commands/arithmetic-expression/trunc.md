@@ -58,6 +58,4 @@ db.collection.aggregate([
 ```
 
 ## Related content
-
-- Review options for [migrating from MongoDB to Azure Cosmos DB for MongoDB (vCore)](migration-options.md).
-- Get started by [creating an account](../quickstart-portal.md).
+[!INCLUDE[Related content](../includes/related-content.md)]

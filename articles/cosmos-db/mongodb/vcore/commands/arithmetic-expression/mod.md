@@ -56,6 +56,4 @@ This example demonstrates querying a nested field (`sales.monthly.total`) with t
 - Ensure that the divisor is not zero, as this will lead to an invalid operation.
 
 ## Related content
-
-- Review options for [migrating from MongoDB to Azure Cosmos DB for MongoDB (vCore)](migration-options.md).
-- Get started by [creating an account](../quickstart-portal.md).
+[!INCLUDE[Related content](../includes/related-content.md)]

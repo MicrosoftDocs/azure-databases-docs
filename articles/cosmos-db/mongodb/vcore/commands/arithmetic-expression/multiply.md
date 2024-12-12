@@ -91,6 +91,4 @@ The resulting `area` field is the product of the rectangle's `width` and `height
 - Be cautious of overflow or precision issues when working with large numbers or floating-point arithmetic.
 
 ## Related content
-
-- Review options for [migrating from MongoDB to Azure Cosmos DB for MongoDB (vCore)](migration-options.md).
-- Get started by [creating an account](../quickstart-portal.md).
+[!INCLUDE[Related content](../includes/related-content.md)]
