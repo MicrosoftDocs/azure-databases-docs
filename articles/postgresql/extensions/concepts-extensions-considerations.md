@@ -165,9 +165,11 @@ The `pg_prewarm` extension loads relational data into the cache. Prewarming your
 
 ### pg_repack
 
-When they first try to use this extension, a typical question is: Is `pg_repack` an extension or a client-side executable like `psql` or `pg_dump`?
+First time users of the `pg_repack` extension typically ask the following question: Is `pg_repack` an extension or a client-side executable like `psql` or `pg_dump`?
 
-The answer to that is that it's both. [pg_repack/lib](https://github.com/reorg/pg_repack/tree/master/lib) holds the code for the extension, including the schema and SQL artifacts it creates, and the `C` library implementing the code of several of those functions. On the other hand, [pg_repack/bin](https://github.com/reorg/pg_repack/tree/master/bin) keeps the code for the client application, which knows how to interact with the programmability artifacts created by the extension. This client application aims to ease the complexity of interacting with the different interfaces surfaced by the server-side extension by offering the user some command-line options that are easier to understand. The client application is useless without the extension created on the database it's pointed to. The server-side extension on its own would be fully functional but would require the user to understand a complicated interaction pattern consisting of executing queries to retrieve data that is used as input to functions implemented by the extension.
+pg_repack is actually both. [pg_repack/lib](https://github.com/reorg/pg_repack/tree/master/lib) has the code for the extension, including the schema and SQL artifacts it creates, and the C library implementing the code of several of those functions.
+
+On the other hand, [pg_repack/bin](https://github.com/reorg/pg_repack/tree/master/bin) has the code for the client application, which knows how to interact with the programmability elements implemented in the extension. This client application aims to ease the complexity of interacting with the different interfaces surfaced by the server-side extension. It offers the user some command-line options which are easier to understand. The client application is useless without the extension created on the database it's being pointing to. The server side extension on its own would be fully functional, but would require the user to understand a complicated interaction pattern. That pattern would consist on executing queries to retrieve data that is used as input to functions implemented by the extension, etc.
 
 #### Permission denied for schema repack
 
@@ -275,6 +277,6 @@ The extensions `anon`, `Apache AGE`, `dblink`, `orafce`, `pgaudit`, `postgres_fd
 
 ## Related contents
 
-- [hHow to use extensions](how-to-allow-extensions.md)
+- [how to use extensions](how-to-allow-extensions.md)
 - [list of extensions by name](concepts-extensions-versions.md)
 - [list of extensions by version of PostgreSQL](concepts-extensions-by-engine.md)
