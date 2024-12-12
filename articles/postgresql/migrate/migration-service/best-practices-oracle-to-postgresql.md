@@ -14,7 +14,7 @@ ms.topic: conceptual
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
-The following scenarios outline some of the potential challenges which may be encountered during an Oracle to Azure Postgres migration.  The recommended solutions can be helpful when planning and executing your own migration(s).
+The following scenarios outline some of the potential challenges which may be encountered during an Oracle to Azure Postgres migration.  The recommended solutions can be helpful in overcoming these challenges when planning and executing your own migration(s).
 
 **Scenario:** Two separate low-latency client applications were discovered to be connected to the same database.  Each system was inadvertently bumping the other cached queries out of the buffers.  The shared load and combined resource contention created a situation wherein the database’s shared buffers were being flushed too frequently, resulting in degraded performance across both systems.  
 
@@ -51,7 +51,7 @@ LIMIT 10;
 ```
 
 #### Buffer Cache Contention
-Significant contention in your buffer cache indicates queries might be fighting for the same buffers, leading to performance bottlenecks.  Examining the location and frequency of buffer access can help in diagnosing such issues:
+Significant contention in your buffer cache indicates multiple queries might be fighting for the same buffer space, leading to performance bottlenecks.  Examining the location and frequency of buffer access can help in diagnosing such issues:
 
 ```sql
 SELECT c.relname, b.relblocknumber, COUNT(*) AS access_count
@@ -65,7 +65,7 @@ LIMIT 10;
 
 **Recommended Solution:** Whenever possible, prioritize the adoption of the latest release version of Postgres when migrating.  The Postgres community dev teams work incredibly hard to squeeze every bit of performance and stability into each new release, and holding back potentially translates to leaving performance on the sidelines.  Additionally, take full advantage of new Azure features, including SSDv2 storage, the latest server family of infrastructure, and automated index tuning and autonomous server parameter tuning capabilities.
 
-**Scenario:** Organizations migrating to Postgres for the first time may be unfamiliar with best practices and approaches when identifying slow-running queries, implementing new index-types appropriately, and operating within a database engine environment which does not require query hints.
+**Scenario:** Organizations migrating to Postgres for the first time may be unfamiliar with best practices and approaches when identifying slow-running queries, implementing new index-types appropriately, and operating within a database engine environment which doesn't require query hints.
 
 **Recommended Solution:** Extensions are an integral part of what makes Postgres so powerful.  There are several extensions that can provide important features enabling you to ensure your database is operating at peak performance.  Some key extensions to consider include: 
 
@@ -90,7 +90,7 @@ These examples are just scratching the surface of the incredibly vast set of ext
 
 **Recommended Solution:** PostgreSQL Foreign Data Wrapper (FDW) Extensions are a key Postgres feature allowing you to access and manipulate data stored in external systems as if that data was within Azure Postgres database natively.  FDWs enable Azure Postgres to function as a federated database, allowing integration with any number of external data sources, including Oracle databases.  FDWs create foreign table definitions within your Postgres database and these foreign tables act as a proxy for your defined external data source allowing users to query these foreign tables using regular SQL queries.  Internally, the Postgres engine uses the external FDW definition to communicate with and coordinate data on demand from the remote data source.
 
-**oracle_fdw:** (Foreign Data Wrapper for Oracle) is a Postgres extension that allows you to access Oracle databases from within Azure Postgres.  When migrating from Oracle to Azure Postgres, oracle_fdw can play a crucial role by providing data access, data validation, incremental migration, and real-time data synchronization.  It is important to keep in mind the following key considerations when using FDWs:
+**oracle_fdw:** (Foreign Data Wrapper for Oracle) is a Postgres extension that allows you to access Oracle databases from within Azure Postgres.  When migrating from Oracle to Azure Postgres, oracle_fdw can play a crucial role by providing data access, data validation, incremental migration, and real-time data synchronization.  It's important to keep in mind the following key considerations when using FDWs:
 
  - Running queries through oracle_fdw will incur overhead in the form of network communications and authentication negotiation while the data is processed and fetched from the remote Oracle server
  - Some data types may need special handling or conversion to ensure data types are correctly mapped between systems.  

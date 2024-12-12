@@ -21,40 +21,40 @@ The following questions are intended to help you identify and record the compute
 
 | Question | Answer |
 | :------------------- | :--- |
-| Does my database environment utilization change throughout the *day*? | |
-| &nbsp; &nbsp; If Yes, which time(s) of *day* does activity peak? | |
-| &nbsp; &nbsp; How long is the sustained peak activity period? | |
-| Does my database environment utilization change throughout the *week*? | |
-| &nbsp; &nbsp; If Yes, which day(s) of the *week* does activity peak? | |
-| &nbsp; &nbsp; How long is the sustained peak activity period? | |
-| Does my database environment utilization change throughout the *month*? | |
-| &nbsp; &nbsp; If Yes, which times(s) of the *month* does activity peak? | |
-| &nbsp; &nbsp; How long is the sustained peak activity period? | |
-| Does my database environment utilization change throughout the *year*? | |
-| &nbsp; &nbsp; If Yes, which month(s) of the *year* does activity peak? | |
-| &nbsp; &nbsp; How long is the sustained peak activity period? | |
+| Does my database environment utilization change throughout the *day*? | &nbsp; |
+| &nbsp; &nbsp; If Yes, which time(s) of *day* does activity peak? | &nbsp; |
+| &nbsp; &nbsp; How long is the sustained peak activity period? | &nbsp; |
+| Does my database environment utilization change throughout the *week*? | &nbsp; |
+| &nbsp; &nbsp; If Yes, which day(s) of the *week* does activity peak? | &nbsp; |
+| &nbsp; &nbsp; How long is the sustained peak activity period? | &nbsp; |
+| Does my database environment utilization change throughout the *month*? | &nbsp; |
+| &nbsp; &nbsp; If Yes, which times(s) of the *month* does activity peak? | &nbsp; |
+| &nbsp; &nbsp; How long is the sustained peak activity period? | &nbsp; |
+| Does my database environment utilization change throughout the *year*? | &nbsp; |
+| &nbsp; &nbsp; If Yes, which month(s) of the *year* does activity peak? | &nbsp; |
+| &nbsp; &nbsp; How long is the sustained peak activity period? | &nbsp; |
 
 ## 2. Workload Type
 
 | Question | Answer |
 | :-------------------| :--- |
-| Is my workload read-intensive, write-intensive, or hybrid of both? | |
-| Are there any inbound or outbound linked database connection dependencies? | |
-| Does my database use any file system mounts for data operations? | |
-| How many dependent client applications are connected to my database? | |
+| Is my workload read-intensive, write-intensive, or hybrid of both? | &nbsp; |
+| Are there any inbound or outbound linked database connection dependencies? | &nbsp; |
+| Does my database use any file system mounts for data operations? | &nbsp; |
+| How many dependent client applications are connected to my database? | &nbsp; |
 
 ## 3. Peak Operational Periods
 During peak operational periods…
 
 | Question | Answer |
 | :------------------- | :--- |
-| How many cores are being utilized? | |
-| What is the percentage of core utilization? | |
-| What is the maximum amount of memory used by SGA? | |
-| What is the maximum amount of memory used by PGA? | |
-| What are the maximum IOPS required? | |
-| What are the maximum storage throughput speeds? | |
-| What is the maximum required network speed? | |
-| What is the maximum number of concurrent active database connections? | |
+| How many cores are being utilized? | &nbsp; |
+| What is the percentage of core utilization? | &nbsp; |
+| What is the maximum amount of memory used by SGA? | &nbsp; |
+| What is the maximum amount of memory used by PGA? |&nbsp;  |
+| What are the maximum IOPS required? | &nbsp; |
+| What are the maximum storage throughput speeds? | &nbsp; |
+| What is the maximum required network speed? | &nbsp;|
+| What is the maximum number of concurrent active database connections? | &nbsp; |
 
-To learn more about identifying the ideal software and/or partner solutions for your migration, and discussing these answers with experienced migration partners, see our [Oracle to Azure Postgres Migration Playbook](../../../../flexible-server/LINK_TO_PLAYBOOK_PDF.)
+To discuss these answers with experienced migration partners and to learn more about identifying the ideal software and/or partner solutions for your migration, see our [Oracle to Azure Postgres Migration Playbook](../../../../flexible-server/LINK_TO_PLAYBOOK_PDF.)

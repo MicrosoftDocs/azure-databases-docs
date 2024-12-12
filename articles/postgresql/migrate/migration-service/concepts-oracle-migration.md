@@ -15,14 +15,13 @@ Migrating from Oracle databases to Azure Postgres Flexible Server can provide mu
 
 The success and increasing popularity of open source technologies over the past several years have resulted in Postgres database gaining the status as the preferred platform for Oracle migrations.  This same popularity and extended ecosystem have led to new challenges for organizations interested in migrating who must navigate through a crowded solution space occupied by numerous open-source and private third-party providers offering similar, yet critically unique differences in their approach and feature sets.  
 
-The following concepts and strategic best practices provide a comprehensive overview of the key phases required to migrate successfully, and introduces our recommended solution provider ecosystem offering tools, technologies, and services to ensure each stage of your migration moves forward.
+These concepts and strategic best practices provide a comprehensive overview of the key phases required to migrate successfully, and introduces our recommended solution provider ecosystem offering tools, technologies, and services to ensure each stage of your migration moves forward.
 
 ## Why Migrate?
 
 Sustainable organizations are increasingly assessing their infrastructural environments against the ever-changing collection of business drivers to plan their strategic priorities and operations.  Decision makers are seeking efficiencies wherever possible to focus their investments in areas that drive innovation and growth.  Under these circumstances, it's easy to understand why so many teams are finding success in leveraging cloud platforms to host their critical workloads.  Whether contending with overwhelming security threats, software and hardware refresh cycles, budget and resource constraints, or end-of-life support agreements, the Azure cloud delivers on-demand infrastructure, prioritizes security, and encourages innovation for every facet of your delivery roadmap.
 
-
-:::image type="content" source="media/concepts-oracle-migration/why-migrate.png" alt-text="Why Migrate?":::
+:::image type="content" source="media/concepts-oracle-migration/why_migrate.png" alt-text="Why Migrate?":::
 
 ## Why Choose Azure Database for PostgreSQL?
 
@@ -34,7 +33,9 @@ Azure Postgres is built upon the official open-source Postgres community builds,
 
 ## Getting Started
 
-A critical step towards the successful completion of your initiative includes recognition that Oracle migrations are complex operations which require the successful execution of multiple sequential key phases and must be addressed in a specific and structured order.  Carefully orchestrating and following these established methodologies and battle-tested processes are essential to achieving success.  Our experience and expertise in supporting countless successful migrations can ensure that your migration is able to leverage and apply our learned lessons within your specific migration scenario.  Additionally, there are key solution providers within the Microsoft Partner network offering powerful tools to assist with your migration efforts.  This reference is intended to help identify key migration stages and recommend the ideal set of services and solutions for each stage of your Oracle migration. 
+A critical step towards the successful completion of your initiative includes recognition that Oracle migrations are complex operations which require the successful execution of multiple sequential key phases and must be addressed in a specific and structured order.  Carefully orchestrating and following these established methodologies and battle-tested processes are essential to achieving success.  Our experience and expertise in supporting countless successful migrations can ensure that your migration is able to leverage and apply our learned lessons within your specific migration scenario.  Additionally, there are key solution providers within the Microsoft Partner network offering powerful tools to assist with your migration efforts.  
+
+This reference is intended to help identify key migration stages and recommend the ideal set of services and solutions for each stage of your Oracle migration:
 
 :::image type="content" source="media/concepts-oracle-migration/migration_stages.png" alt-text="Migration Stages: Discovery, Assessment, Schema Migration, Code Migration, Data Migration, Application Migration, Performance Tuning, and Cloud Optimization":::
 
