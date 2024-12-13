@@ -648,16 +648,17 @@
   - name: Minimal-downtime migration with DMS
     href: single-server/how-to-migrate-online.md
   - name: Migrate from Oracle
-    href: migration-service/concepts-oracle-migration.md
     items:
+      - name: Migration Concepts
+        href: migrate/migration-service/concepts-oracle-migration.md
       - name: Migration Stages
-        href: migration-service/concepts-oracle-migration-stages.md
+        href: migrate/migration-service/concepts-oracle-migration-stages.md
       - name: Best Practices
-        href: migration-service/best-practices-oracle-to-postgresql.md
+        href: migrate/migration-service/best-practices-oracle-to-postgresql.md
       - name: Pre-migration Checklist
-        href: migration-service/best-practices-oracle-to-postgresql-checklist.md
+        href: migrate/migration-service/best-practices-oracle-to-postgresql-checklist.md
       - name: Migrate using Ora2Pg
-        href: single-server/how-to-migrate-from-oracle.md
+        href: migrate/how-to-migrate-from-oracle.md
 - name: Azure Database for PostgreSQL - Single Server
   expanded: false
   items:
