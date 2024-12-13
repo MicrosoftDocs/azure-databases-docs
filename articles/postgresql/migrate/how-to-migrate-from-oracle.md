@@ -1,6 +1,6 @@
 ---
-title: "Oracle to Azure Database for PostgreSQL: Migration guide"
-description: This guide helps you to migrate your Oracle schema to Azure Database for PostgreSQL. 
+title: "Oracle to Azure Database for PostgreSQL: Ora2Pg Migration guide"
+description: This guide helps you to migrate your Oracle schema to Azure Database for PostgreSQL using Ora2Pg. 
 ms.service: azure-database-postgresql
 ms.subservice: migration-guide
 ms.topic: how-to
@@ -9,7 +9,7 @@ ms.author: akashrao
 ms.date: 03/18/2021
 ---
 
-# Migrate Oracle to Azure Database for PostgreSQL
+# Migrate Oracle to Azure Database for PostgreSQL Using Ora2Pg
 
 [!INCLUDE [applies-to-postgresql-flexible-server](../includes/applies-to-postgresql-flexible-server.md)]
 
@@ -22,22 +22,22 @@ For detailed and comprehensive migration guidance, see the [Migration guide reso
 To migrate your Oracle schema to Azure Database for PostgreSQL, you need to: 
 
 - Verify your source environment is supported. 
-- Download the latest version of [ora2pg](https://ora2pg.darold.net/). 
+- Download the latest version of [Ora2Pg](https://ora2pg.darold.net/). 
 - Have the latest version of the [DBD module](https://www.cpan.org/modules/by-module/DBD/). 
 
 
 ## Overview
 
-PostgreSQL is one of world's most advanced open-source databases. This article describes how to use the free ora2pg tool to migrate an Oracle database to PostgreSQL. You can use ora2pg to migrate an Oracle database or MySQL database to a PostgreSQL-compatible schema. 
+PostgreSQL is one of world's most advanced open-source databases. This article describes how to use the free Ora2Pg tool to migrate an Oracle database to PostgreSQL. You can use Ora2Pg to migrate an Oracle database or MySQL database to a PostgreSQL-compatible schema. 
 
-The ora2pg tool connects your Oracle database, scans it automatically, and extracts its structure or data. Then ora2pg generates SQL scripts that you can load into your PostgreSQL database. You can use ora2pg for tasks such as reverse-engineering an Oracle database, migrating a huge enterprise database, or simply replicating some Oracle data into a PostgreSQL database. The tool is easy to use and requires no Oracle database knowledge besides the ability to provide the parameters needed to connect to the Oracle database.
+The Ora2Pg tool connects your Oracle database, scans it automatically, and extracts its structure or data. Then Ora2Pg generates SQL scripts that you can load into your PostgreSQL database. You can use Ora2Pg for tasks such as reverse-engineering an Oracle database, migrating a huge enterprise database, or simply replicating some Oracle data into a PostgreSQL database. The tool is easy to use and requires no Oracle database knowledge besides the ability to provide the parameters needed to connect to the Oracle database.
 
 > [!NOTE]
-> For more information about using the latest version of ora2pg, see the [ora2pg documentation](https://ora2pg.darold.net/documentation.html).
+> For more information about using the latest version of Ora2Pg, see the [Ora2Pg documentation](https://ora2pg.darold.net/documentation.html).
 
-### Typical ora2pg migration architecture
+### Typical Ora2Pg migration architecture
 
-![Screenshot of the ora2pg migration architecture.](media/how-to-migrate-from-oracle/ora2pg-migration-architecture.png)
+![Screenshot of the Ora2Pg migration architecture.](media/how-to-migrate-from-oracle/ora2pg-migration-architecture.png)
 
 After you provision the VM and Azure Database for PostgreSQL, you need two configurations to enable connectivity between them: **Allow access to Azure services** and **Enforce SSL Connection**: 
 
@@ -94,9 +94,9 @@ Download the related scripts from [github](https://github.com/microsoft/DataMigr
 
 After you inventory the Oracle databases, you'll have an idea of the database size and potential challenges. The next step is to run the assessment.
 
-Estimating the cost of a migration from Oracle to PostgreSQL isn't easy. To assess the migration cost, ora2pg checks all database objects, functions, and stored procedures for objects and PL/SQL code that it can't automatically convert.
+Estimating the cost of a migration from Oracle to PostgreSQL isn't easy. To assess the migration cost, Ora2Pg checks all database objects, functions, and stored procedures for objects and PL/SQL code that it can't automatically convert.
 
-The ora2pg tool has a content analysis mode that inspects the Oracle database to generate a text report. The report describes what the Oracle database contains and what can't be exported.
+The Ora2Pg tool has a content analysis mode that inspects the Oracle database to generate a text report. The report describes what the Oracle database contains and what can't be exported.
 
 To activate the *analysis and report* mode, use the exported type `SHOW_REPORT` as shown in the following command:
 
@@ -104,9 +104,9 @@ To activate the *analysis and report* mode, use the exported type `SHOW_REPORT` 
 ora2pg -t SHOW_REPORT
 ```
 
-The ora2pg tool can convert SQL and PL/SQL code from Oracle syntax to PostgreSQL. So after the database is analyzed, ora2pg can estimate the code difficulties and the time necessary to migrate a full database.
+The Ora2Pg tool can convert SQL and PL/SQL code from Oracle syntax to PostgreSQL. So after the database is analyzed, Ora2Pg can estimate the code difficulties and the time necessary to migrate a full database.
 
-To estimate the migration cost in human-days, ora2pg allows you to use a configuration directive called `ESTIMATE_COST`. You can also enable this directive at a command prompt:
+To estimate the migration cost in human-days, Ora2Pg allows you to use a configuration directive called `ESTIMATE_COST`. You can also enable this directive at a command prompt:
 
 ```
 ora2pg -t SHOW_REPORT --estimate_cost
@@ -164,14 +164,14 @@ This schema assessment was developed to help users decide which database to migr
 
 In minimal-downtime migrations, your migration source changes. It drifts from the target in terms of data and schema after the one-time migration. During the *Data sync* phase, ensure that all changes in the source are captured and applied to the target in near real time. After you verify that all changes are applied to the target, you can *cut over* from the source to the target environment.
 
-In this step of the migration, the Oracle code and DDL scripts are converted or translated to PostgreSQL. The ora2pg tool exports the Oracle objects in a PostgreSQL format automatically. Some of the generated objects can't be compiled in the PostgreSQL database without manual changes.  
+In this step of the migration, the Oracle code and DDL scripts are converted or translated to PostgreSQL. The Ora2Pg tool exports the Oracle objects in a PostgreSQL format automatically. Some of the generated objects can't be compiled in the PostgreSQL database without manual changes.  
 
-To understand which elements need manual intervention, first compile the files generated by ora2pg against the PostgreSQL database. Check the log, and then make any necessary changes until the schema structure is compatible with PostgreSQL syntax.
+To understand which elements need manual intervention, first compile the files generated by Ora2Pg against the PostgreSQL database. Check the log, and then make any necessary changes until the schema structure is compatible with PostgreSQL syntax.
 
 
 #### Create a migration template 
 
-We recommend using the migration template that ora2pg provides. When you use the options `--project_base` and `--init_project`, ora2pg creates a project template with a work tree, a configuration file, and a script to export all objects from the Oracle database. For more information, see the [ora2pg documentation](https://ora2pg.darold.net/documentation.html).
+We recommend using the migration template that Ora2Pg provides. When you use the options `--project_base` and `--init_project`, Ora2Pg creates a project template with a work tree, a configuration file, and a script to export all objects from the Oracle database. For more information, see the [Ora2Pg documentation](https://ora2pg.darold.net/documentation.html).
 
 Use the following command: 
 
@@ -222,7 +222,7 @@ ora2pg --project_base /app/migration/ --init_project test_project
 The `sources/` directory contains the Oracle code. The `schema/` directory contains the code ported to PostgreSQL. And the `reports/` directory contains the HTML reports and the migration cost assessment.
 
 
-After the project structure is created, a generic config file is created. Define the Oracle database connection and the relevant config parameters in the config file. For more information about the config file, see the [ora2pg documentation](https://ora2pg.darold.net/documentation.html).
+After the project structure is created, a generic config file is created. Define the Oracle database connection and the relevant config parameters in the config file. For more information about the config file, see the [Ora2Pg documentation](https://ora2pg.darold.net/documentation.html).
 
 
 #### Export Oracle objects
@@ -280,7 +280,7 @@ psql -f %namespace%\data\table1.sql -h server1-server.postgres.database.azure.co
 psql -f %namespace%\data\table2.sql -h server1-server.postgres.database.azure.com -p 5432 -U username@server1-server -d database -l %namespace%\data\table2.log
 ```
 
-While the files are being compiled, check the logs and correct any syntax that ora2pg couldn't convert on its own.
+While the files are being compiled, check the logs and correct any syntax that Ora2Pg couldn't convert on its own.
 
 For more information, see [Oracle to Azure Database for PostgreSQL migration workarounds](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20Azure%20Database%20for%20PostgreSQL%20Migration%20Workarounds.pdf).
 
@@ -302,7 +302,7 @@ During the *Data sync* phase, ensure that all changes in the source are captur
 
 To do an online migration, contact AskAzureDBforPostgreSQL@service.microsoft.com for support.
 
-In a *delta/incremental* migration that uses ora2pg, for each table, use a query that filters (*cuts*) by date, time, or another parameter. Then finish the migration by using a second query that migrates the remaining data.
+In a *delta/incremental* migration that uses Ora2Pg, for each table, use a query that filters (*cuts*) by date, time, or another parameter. Then finish the migration by using a second query that migrates the remaining data.
 
 In the source data table, migrate all the historical data first. Here's an example:
 
@@ -330,7 +330,7 @@ After the data is migrated to the target environment, all the applications that 
 
 After the data is migrated to the target, run tests against the databases to verify that the applications work well with the target. Make sure the source and target are properly migrated by running the manual data validation scripts against the Oracle source and PostgreSQL target databases.
 
-Ideally, if the source and target databases have a networking path, ora2pg should be used for data validation. You can use the `TEST` action to ensure that all objects from the Oracle database have been created in PostgreSQL. 
+Ideally, if the source and target databases have a networking path, Ora2Pg should be used for data validation. You can use the `TEST` action to ensure that all objects from the Oracle database have been created in PostgreSQL. 
 
 Run this command:
 
@@ -348,15 +348,15 @@ For more information about this migration scenario, see the following resources.
 
 | Resource | Description    |
 | -------------- | ------------------ |
-| [Oracle to Azure PostgreSQL migration cookbook](https://www.microsoft.com/en-us/download/details.aspx?id=103473) | This document helps architects, consultants, database administrators, and related roles quickly migrate workloads from Oracle to Azure Database for PostgreSQL by using ora2pg. |
+| [Oracle to Azure PostgreSQL migration cookbook](https://www.microsoft.com/en-us/download/details.aspx?id=103473) | This document helps architects, consultants, database administrators, and related roles quickly migrate workloads from Oracle to Azure Database for PostgreSQL by using Ora2Pg. |
 | [Oracle to Azure PostgreSQL migration workarounds](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20Azure%20Database%20for%20PostgreSQL%20Migration%20Workarounds.pdf) | This document helps architects, consultants, database administrators, and related roles quickly fix or work around issues while migrating workloads from Oracle to Azure Database for PostgreSQL. |
-| [Steps to install ora2pg on Windows or Linux](https://www.microsoft.com/download/confirmation.aspx?id=105121)                       | This document provides a quick installation guide for migrating schema and data from Oracle to Azure Database for PostgreSQL by using ora2pg on Windows or Linux. For more information, see the [ora2pg documentation](http://ora2pg.darold.net/documentation.html). |
+| [Steps to install Ora2Pg on Windows or Linux](https://www.microsoft.com/download/confirmation.aspx?id=105121)                       | This document provides a quick installation guide for migrating schema and data from Oracle to Azure Database for PostgreSQL by using Ora2Pg on Windows or Linux. For more information, see the [Ora2Pg documentation](http://ora2pg.darold.net/documentation.html). |
 
 The Data SQL Engineering team developed these resources. This team's core charter is to unblock and accelerate complex modernization for data platform migration projects to the Microsoft Azure data platform.
 
 ## More support
 
-For migration help beyond the scope of ora2pg tooling, contact [@Ask Azure DB for PostgreSQL](mailto:AskAzureDBforPostgreSQL@service.microsoft.com).
+For migration help beyond the scope of Ora2Pg tooling, contact [@Ask Azure DB for PostgreSQL](mailto:AskAzureDBforPostgreSQL@service.microsoft.com).
 
 ## Next steps
 
@@ -364,6 +364,6 @@ For a matrix of services and tools for database and data migration and for speci
 
 Documentation: 
 - [Azure Database for PostgreSQL documentation](../index.yml)
-- [ora2pg documentation](https://ora2pg.darold.net/documentation.html)
+- [Ora2Pg documentation](https://ora2pg.darold.net/documentation.html)
 - [PostgreSQL website](https://www.postgresql.org/)
 - [Autonomous transaction support in PostgreSQL](http://blog.dalibo.com/2016/08/19/Autonoumous_transactions_support_in_PostgreSQL.html) 

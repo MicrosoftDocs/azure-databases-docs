@@ -39,3 +39,10 @@ A critical step towards the successful completion of your initiative includes re
 This reference is intended to help identify key migration stages and recommend the ideal set of services and solutions for each stage of your Oracle migration:
 
 :::image type="content" source="media/concepts-oracle-migration/migration_stages.png" alt-text="Migration Stages: Discovery, Assessment, Schema Migration, Code Migration, Data Migration, Application Migration, Performance Tuning, and Cloud Optimization":::
+
+## Related content
+
+ - [Oracle to Azure PostgreSQL migration playbook](articles/postgresql/migrate/oracle-migration-playbook.md)
+ - [Oracle to Azure PostgreSQL migration workarounds](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20Azure%20Database%20for%20PostgreSQL%20Migration%20Workarounds.pdf)
+ - [Azure Database for PostgreSQL migration partners](migrate/partners-migration-postgresql.md)
+ - [Microsoft Partner site](https://partner.microsoft.com)
