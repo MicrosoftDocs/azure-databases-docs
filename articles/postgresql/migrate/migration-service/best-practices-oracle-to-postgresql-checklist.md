@@ -1,5 +1,5 @@
 ---
-title: Best Practices For Seamless Migrations To Azure Database For PostgreSQL
+title: Oracle To Azure Database For PostgreSQL Pre-Migration Checklist
 description: Best practices for migration from Oracle into Azure Database for PostgreSQL.
 author: JaredMSFT
 ms.author: jaredmeade
@@ -7,11 +7,11 @@ ms.reviewer: tbd
 ms.date: 12/11/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
-ms.topic: conceptual
+ms.topic: best-practice
 
 ---
 
-# Best Practices For Seamless Migrations To Azure Database For PostgreSQL
+# Oracle To Azure Database For PostgreSQL Pre-Migration Checklist
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 

@@ -6,6 +6,7 @@ ms.author: jaredmeade
 ms.reviewer: tbd
 ms.date: 12/11/2024
 ms.service: azure-database-postgresql
+ms.subservice: flexible-server
 ms.topic: conceptual
 ---
 
