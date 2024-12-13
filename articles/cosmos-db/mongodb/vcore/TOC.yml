@@ -134,6 +134,16 @@
       href: secondary-users.md
 - name: Reference
   items:
+    - name: Azure CLI
+      href: /cli/azure/cosmosdb/mongocluster
+    - name: Java
+      href: /java/api/overview/azure/resourcemanager-mongocluster-readme
+    - name: .NET
+      href: /dotnet/api/azure.provisioning.cosmosdb.mongocluster
+    - name: Node.js
+      href: /javascript/api/overview/azure/mongo-cluster
+    - name: Python
+      href: /python/api/overview/azure/mongo-cluster
     - name: Commands
       href: commands/toc.yml
     - name: Operators
