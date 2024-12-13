@@ -44,5 +44,5 @@ This reference is intended to help identify key migration stages and recommend t
 
  - [Oracle to Azure PostgreSQL migration playbook](/articles/postgresql/migrate/oracle-migration-playbook.md)
  - [Oracle to Azure PostgreSQL migration workarounds](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20Azure%20Database%20for%20PostgreSQL%20Migration%20Workarounds.pdf)
- - [Azure Database for PostgreSQL migration partners](../migrate/partners-migration-postgresql.md)
+ - [Azure Database for PostgreSQL migration partners](../partners-migration-postgresql.md)
  - [Microsoft Partner site](https://partner.microsoft.com)
