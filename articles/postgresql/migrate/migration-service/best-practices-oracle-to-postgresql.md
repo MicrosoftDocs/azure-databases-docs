@@ -10,7 +10,7 @@ ms.subservice: flexible-server
 ms.topic: conceptual
 ---
 
-# Best practices for migrations from Oracle into Azure Database for PostgreSQL.
+# Best practices for migrations from Oracle into Azure Database for PostgreSQL
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
