@@ -12,11 +12,11 @@ ms.topic: conceptual
 
 # Migrating Oracle To Azure Database For PostgreSQL
 
-Migrating from Oracle databases to Azure Postgres Flexible Server can provide multiple key benefits to organizations who are modernizing their operations infrastructure including: cost efficiency, simplified licensing models and vendor independence, flexible resource scalability, open-source extensibility, and advanced security integration features.
+Migrating from Oracle database to Azure Postgres Flexible Server can provide multiple key benefits to organizations who are modernizing their operations and infrastructure including: cost efficiency, simplified licensing models and vendor independence, flexible resource scalability, open-source extensibility, and advanced security integration features.
 
-The success and increasing popularity of open source technologies over the past several years have resulted in Postgres database gaining the status as the preferred platform for Oracle migrations. This same popularity and extended ecosystem have led to new challenges for organizations interested in migrating who must navigate through a crowded solution space occupied by numerous open-source and private third-party providers offering similar, yet critically unique differences in their approach and feature sets. 
+The success and increasing popularity of open source technologies over the past several years have resulted in Postgres database gaining the status as the preferred platform for Oracle migrations. This same popularity and extended ecosystem have led to new challenges as well. Organizations interested in migrating must navigate through a crowded solution space occupied by numerous open-source and private third-party providers offering similar, yet critically unique differences in their approach and feature sets. 
 
-These concepts and strategic best practices provide a comprehensive overview of the key phases required to migrate successfully, and introduces our recommended solution provider ecosystem offering tools, technologies, and services to ensure each stage of your migration moves forward.
+These concepts and strategic best practices provide a comprehensive overview of the key phases required to migrate successfully for all migration paths and introduces our recommended solution provider ecosystem offering tools, technologies, and services to ensure each stage of your migration moves forward.
 
 ## Why Migrate?
 
@@ -39,9 +39,3 @@ A critical step towards the successful completion of your initiative includes re
 This reference is intended to help identify key migration stages and recommend the ideal set of services and solutions for each stage of your Oracle migration:
 
 :::image type="content" source="media/concepts-oracle-migration/migration_stages.png" alt-text="Migration Stages: Discovery, Assessment, Schema Migration, Code Migration, Data Migration, Application Migration, Performance Tuning, and Cloud Optimization":::
-
-
-
-- [Migration service](concepts-migration-service-postgresql.md)
-- [Network setup](how-to-network-setup-migration-service.md)
-- [Premigration validations](concepts-premigration-migration-service.md)
