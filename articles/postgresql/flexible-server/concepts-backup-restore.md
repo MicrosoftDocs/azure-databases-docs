@@ -41,7 +41,7 @@ Azure Database for PostgreSQL flexible server stores multiple copies of your bac
 
 Azure Database for PostgreSQL flexible server offers three options: 
 
-- **Zone-redundant backup storage**: This option is automatically chosen for regions that support availability zones. When backups are stored in geo-redundant backup storage, three copies of the data are kept within the region where your server is hosted. Additionally, the data is replicated to a paired region for added protection. 
+- **Zone-redundant backup storage**: This option is automatically chosen for regions that support availability zones. When backups are stored in zone-redundant backup storage, three copies of the data are kept within the availability zone  where your server is hosted. Additionally, the data is replicated to another availability zone for added protection. 
 
   This option provides backup data availability across availability zones and restricts replication of data to within a country/region to meet data residency requirements. This option provides at least 99.9999999999 percent (12 nines) durability of backup objects over a year.  
 
