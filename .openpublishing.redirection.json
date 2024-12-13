@@ -965,10 +965,5 @@
       "redirect_url": "/azure/cosmos-db/provision-throughput-autoscale",
       "redirect_document_id": false
     }
-    {
-      "source_path": "articles/postgresql/migrate/oracle-migration-playbook.md",
-      "redirect_url": "https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20Azure%20Database%20for%20PostgreSQL%20Migration%20WPlaybook.pdf",
-      "redirect_document_id": false
-    }
   ]
 }
