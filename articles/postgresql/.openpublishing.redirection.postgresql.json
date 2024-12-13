@@ -1884,11 +1884,6 @@
         "source_path_from_root": "/articles/postgresql/flexible-server/how-to-auto-grow-storage-portal.md",
         "redirect_url": "/azure/postgresql/flexible-server/how-to-auto-grow-storage",
         "redirect_document_id": false
-    },
-    {
-      "source_path": "/articles/postgresql/migrate/oracle-migration-playbook.md",
-      "redirect_url": "https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20Azure%20Database%20for%20PostgreSQL%20Migration%20Workarounds.pdf?test=1",
-      "redirect_document_id": false
     }
 ]
 }
