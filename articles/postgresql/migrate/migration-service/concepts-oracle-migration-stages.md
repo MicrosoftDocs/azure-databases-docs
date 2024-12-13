@@ -31,13 +31,13 @@ Assessments encapsulate many different types of estimate-based exploratory opera
 
 Your assessment accuracy will be closely tied to the specific underlying tools and service platforms involved in the execution and completion of subsequent migration steps. It's therefore important to consider that there are several factors which can impact the accuracy of these assessment estimates and reported results are directly correlated to the underlying tools utilized in your migration assessment. Care must be taken to avoid interpolating estimate outputs from different or combined tools when reviewing and incorporating assessment outputs into your migration plans.
 
-For more information, see our [Oracle to Azure Postgres Migration Playbook](/articles/postgresql/migrate/oracle-migration-playbook.md)
+For more information, see our [Oracle to Azure Postgres Migration Playbook](../oracle-migration-playbook.md)
 
 ## Database Schema Migration
 
 Structured data definitions are one of the hallmarks of transactional database engines and an essential foundation to a well-designed data platform. Ensuring that your unique Oracle data structures and data type definitions will be properly mapped to their respective tables within Azure Postgres is a critical requirement to the overall success in your migration. While all transactional databases share many similarities, data table and column data type differences do exist and care must be taken to ensure your data isn't inadvertently lost, truncated, or mangled due to mismatched data definitions. Numeric data types, date/time data types, and text-based data types are just some examples of areas that must be closely examined when developing corresponding data mappings for your migration.
 
-For additional information and examples of the differences between Oracle and Postgres data types, see our [Oracle to Azure Postgres Migration Playbook](/articles/postgresql/migrate/oracle-migration-playbook.md)
+For additional information and examples of the differences between Oracle and Postgres data types, see our [Oracle to Azure Postgres Migration Playbook](../oracle-migration-playbook.md)
 
 ## Database Code Migration
 
@@ -45,7 +45,7 @@ Database code migration refers to the process of converting database code writte
 
 In many instances, the Postgres extension ecosystem can be a powerful ally to assist with streamlining your code migration process. For example, the extension “Oracle Functions for PostgreSQL” (orafce) provides a set of built in Oracle-compatibility functions and packages which can reduce the need to rewrite parts of your codebase that rely on and reference these Oracle functions. Using this compatibility-based approach during the migration of Oracle code to PostgreSQL offers significant advantages in terms of reducing the complexity, time, and cost of the migration process by maintaining your original logic and functionality of your source database definitions, ensures consistency in results, and enhances developer productivity. All of these benefits add up to an achieved simplified and more efficient code migration to PostgreSQL.
 
-For additional information and examples of the differences between Oracle and Postgres built-in functions and logic operators, see our [Oracle to Azure Postgres Migration Playbook](/articles/postgresql/migrate/oracle-migration-playbook.md)
+For additional information and examples of the differences between Oracle and Postgres built-in functions and logic operators, see our [Oracle to Azure Postgres Migration Playbook](../oracle-migration-playbook.md)
 
 
 ## Data Migration
@@ -120,7 +120,7 @@ To ensure these pillars are aligned to your Azure Postgres deployment, review ou
 
 ## Related content
 
- - [Oracle to Azure PostgreSQL migration playbook](/articles/postgresql/migrate/oracle-migration-playbook.md)
+ - [Oracle to Azure PostgreSQL migration playbook](../oracle-migration-playbook.md)
  - [Oracle to Azure PostgreSQL migration workarounds](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20Azure%20Database%20for%20PostgreSQL%20Migration%20Workarounds.pdf)
  - [Azure Database for PostgreSQL migration partners](../partners-migration-postgresql.md)
  - [Microsoft Partner site](https://partner.microsoft.com)
