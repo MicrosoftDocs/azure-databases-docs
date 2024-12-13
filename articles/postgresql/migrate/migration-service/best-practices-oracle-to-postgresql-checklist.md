@@ -13,8 +13,6 @@ ms.topic: best-practice
 
 # Oracle To Azure Database For PostgreSQL Pre-Migration Checklist
 
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
-
 The following questions are intended to help you identify and record the compute resources required to maintain operational database performance. This information is critical when planning your migration as well as discussing migration plans with your selected migration partner(s).
 
 ## 1. Workload Consistency
@@ -57,11 +55,11 @@ During peak operational periods…
 | What is the maximum required network speed? | &nbsp;|
 | What is the maximum number of concurrent active database connections? | &nbsp; |
 
-To discuss these answers with experienced migration partners and to learn more about identifying the ideal software and/or partner solutions for your migration, see our [Oracle to Azure Postgres Migration Playbook](articles/postgresql/migrate/oracle-migration-playbook.md)
+To discuss these answers with experienced migration partners and to learn more about identifying the ideal software and/or partner solutions for your migration, see our [Oracle to Azure Postgres Migration Playbook](/articles/postgresql/migrate/oracle-migration-playbook.md)
 
 ## Related content
 
- - [Oracle to Azure PostgreSQL migration playbook](articles/postgresql/migrate/oracle-migration-playbook.md)
+ - [Oracle to Azure PostgreSQL migration playbook](/articles/postgresql/migrate/oracle-migration-playbook.md)
  - [Oracle to Azure PostgreSQL migration workarounds](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20Azure%20Database%20for%20PostgreSQL%20Migration%20Workarounds.pdf)
- - [Azure Database for PostgreSQL migration partners](migrate/partners-migration-postgresql.md)
+ - [Azure Database for PostgreSQL migration partners](../migrate/partners-migration-postgresql.md)
  - [Microsoft Partner site](https://partner.microsoft.com)
