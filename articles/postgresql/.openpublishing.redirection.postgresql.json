@@ -1887,7 +1887,7 @@
     },
     {
       "source_path": "/articles/postgresql/migrate/oracle-migration-playbook.md",
-      "redirect_url": "https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20Azure%20Database%20for%20PostgreSQL%20Migration%20WPlaybook.pdf",
+      "redirect_url": "https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20Azure%20Database%20for%20PostgreSQL%20Migration%20Workarounds.pdf?test=1",
       "redirect_document_id": false
     }
 ]
