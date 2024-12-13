@@ -1,7 +1,7 @@
 ---
-title: "Oracle to Azure Database for PostgreSQL Migration Stages"
+title: "Oracle To Azure Database For PostgreSQL Migration Stages"
 description: "This article outlines the key stages involving successful Oracle to Azure Database for PostgreSQL migrations."
-author: jaredmeade
+author: JaredMSFT
 ms.author: jaredmeade
 ms.reviewer: tbd
 ms.date: 12/11/2024
@@ -9,7 +9,7 @@ ms.service: azure-database-postgresql
 ms.topic: conceptual
 ---
 
-# Oracle to Azure Database for PostgreSQL Migration Stages
+# Oracle To Azure Database For PostgreSQL Migration Stages
 
 A comprehensive end-to-end migration from Oracle to Azure Postgres requires the careful execeution of several key steps and migration stages. These milestones are all closely related and essential to a complete and successful migration. 
 

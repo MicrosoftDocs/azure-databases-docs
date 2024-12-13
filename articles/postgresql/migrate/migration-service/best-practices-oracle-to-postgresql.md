@@ -1,7 +1,7 @@
 ---
 title: Best Practices For Migrations From Oracle To Azure Database For PostgreSQL
 description: Best practices for migrations from Oracle into Azure Database for PostgreSQL
-author: jaredmeade
+author: JaredMSFT
 ms.author: jaredmeade
 ms.reviewer: tbd
 ms.date: 12/11/2024
