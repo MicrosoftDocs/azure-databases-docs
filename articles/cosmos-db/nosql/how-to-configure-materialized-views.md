@@ -17,7 +17,7 @@ ms.date: 12/13/2024
 > [!IMPORTANT]
 > Azure Cosmos DB for NoSQL materialized views are currently in preview. You can enable this feature by using the Azure portal. This preview is provided without a service-level agreement. At this time, we don't recommend that you use materialized views for production workloads. Certain features of this preview might not be supported or might have constrained capabilities. For more information, see the [supplemental terms of use for Microsoft Azure previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Materialized views provide a powerful way to optimize query performance and simplify application logic by creating views of your data with a different partition key and/ or data model. This article describes how to create and enable materialized views as well as how to leverage their capabilities to handle cross-partition queries efficiently.
+Materialized views provide a powerful way to optimize query performance and simplify application logic by creating views of your data with a different partition key and/ or data model. This article describes how to create and enable materialized views and how to use them to handle cross-partition queries efficiently.
 
 ## Prerequisites
 
@@ -97,7 +97,7 @@ Use the Azure CLI to enable the materialized views feature either by using a nat
 
 ## Create a materialized view builder
 
-After the materialized views features is enabled for your account, you'll see a new page in the **Settings** section of the Azure portal for **Materialized Views Builder**. You must provision a materialized views builder before creating views in your account. The builder is responsible for automatically hydrating data in the views and keeping them in sync with source containers. Learn more about options for [provisioning the materialized view builder](./materialized-views.md#provisioning-the-materialized-views-builder).
+After the materialized views feature is enabled for your account, you'll see a new page in the **Settings** section of the Azure portal for **Materialized Views Builder**. You must provision a materialized views builder before creating views in your account. The builder is responsible for automatically hydrating data in the views and keeping them in sync with source containers. Learn more about options for [provisioning the materialized view builder](./materialized-views.md#provisioning-the-materialized-views-builder).
 
 ### [Azure portal](#tab/azure-portal)
 
@@ -273,9 +273,9 @@ After the feature is enabled and the materialized view builder is provisioned, y
 
 ## Query data from materialized views
 
-In this example, we have a source container partitioned on `accountId` and a view partitioned on `emailAddress`. Without the view, queries that only include the `emailAddress` would have been cross-partition, but now they can use be executed against the view instead to increase efficiency. 
+In this example, we have a source container partitioned on `accountId` and a view partitioned on `emailAddress`. Without the view, queries that only include the `emailAddress` would be cross-partition, but now they can use be executed against the view instead to increase efficiency. 
 
-Querying data from materialized views is similar to querying data from any other container. You can use the Azure portal, Azure SDKs or REST API to query data in materialized views.
+Querying data from materialized views is similar to querying data from any other container. You can use the Azure portal, Azure SDKs, or REST API to query data in materialized views.
 
 ### [.NET](#tab/dotnet)
 

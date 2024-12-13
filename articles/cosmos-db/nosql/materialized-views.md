@@ -26,13 +26,13 @@ Applications often need to query data without specifying a partition key. These 
 
 With a materialized view, you can:
 
-- Maintain a copy of data with a different partition key, allowing cross-partition queries to be re-targeted to the view for more efficient lookups.
+- Maintain a copy of data with a different partition key, allowing cross-partition queries to be retargeted to the view for more efficient lookups.
 - Provide a SQL-based predicate (without conditions) to populate only specific item properties.
 - Create real-time views to handle event-based data, which is often stored in separate containers.
 
 ### Implement the Global Secondary Index pattern
 
-Materialized views can act as a Global Secondary Index (GSI), enabling efficient querying on properties other than the partition key of the source container. By creating a materialized view with a different partition key, you can achieve a similar effect to a GSI. Once the materialized view is created, queries that would have otherwise been cross-partition can be re-targeted to the view container, leading to reduced RU charge and reduced latency.
+Materialized views can act as a Global Secondary Index (GSI), enabling efficient querying on properties other than the partition key of the source container. By creating a materialized view with a different partition key, you can achieve a similar effect to a GSI. Once the materialized view is created, queries that would otherwise be cross-partition can be retargeted to the view container, leading to reduced RU charge and reduced latency.
 
 ## Materialized views features
 
@@ -48,10 +48,10 @@ Azure Cosmos DB materialized views offer the following features:
 
 ## Defining materialized views
 
-Creating a materialized view is similar to creating a new container, with the additional requirement of specifying the source container and a query defining the view. Each item in the materialized view has a one-to-one mapping to an item in the source container. To maintain this, the `id` field in materialized view items is auto populated with the `_rid` from the source items. The value of `id` from the source collection is represented as `_id` in the view.
+Creating a materialized view is similar to creating a new container, with requirements to specify the source container and a query defining the view. Each item in the materialized view has a one-to-one mapping to an item in the source container. To maintain this mapping, the `id` field in materialized view items is auto populated with the `_rid` from the source items. The value of `id` from the source collection is represented as `_id` in the view.
 
 The query used to define a materialized view must adhere to the following constraints:
- - The SELECT statement allows projection of only one level of properties in the JSON tree, or it may be SELECT * to include all properties.
+ - The SELECT statement allows projection of only one level of properties in the JSON tree, or it can be SELECT * to include all properties.
  - Aliasing property names using AS isn’t supported.
  - Queries can’t include a WHERE clause or other clauses such as JOIN, DISTINCT, GROUP BY, ORDER BY, TOP, OFFSET LIMIT, and EXISTS.
  - System functions and user-defined functions (UDFs) aren't supported.
@@ -83,7 +83,7 @@ The materialized views builder is available in the following sizes:
 
 ### Materialized views builders in multi-region accounts
 
-For Azure Cosmos DB accounts with a single region, the materialized views builder is provisioned in that region. In a multi-region account with a single write region, the builder is provisioned the write region and reads change feed from there. In an account with multiple write regions, the builder is provisioned in one of the write regions and reads change feed from the same region it is provisioned in. 
+For Azure Cosmos DB accounts with a single region, the materialized views builder is provisioned in that region. In a multi-region account with a single write region, the builder is provisioned the write region and reads change feed from there. In an account with multiple write regions, the builder is provisioned in one of the write regions and reads change feed from the same region it's provisioned in. 
 
 [Learn how to provision the materialized views builder.](how-to-configure-materialized-views.md#create-a-materialized-view-builder)
 
@@ -96,7 +96,7 @@ For Azure Cosmos DB accounts with a single region, the materialized views builde
 
 ## Monitoring
 
-You can monitor the lag in building views as well as the health of the materialized views builder through Metrics in the Azure portal. To learn about these metrics, see [Supported metrics for Microsoft.DocumentDB/DatabaseAccounts](../monitor-reference.md#supported-metrics-for-microsoftdocumentdbdatabaseaccounts).
+You can monitor the lag in building views and the health of the materialized views builder through Metrics in the Azure portal. To learn about these metrics, see [Supported metrics for Microsoft.DocumentDB/DatabaseAccounts](../monitor-reference.md#supported-metrics-for-microsoftdocumentdbdatabaseaccounts).
 
 :::image type="content" source="./media/materialized-views/materialized-views-metrics.png" alt-text="Screenshot of the Materialized Views Builder Average CPU Usage metric in the Azure portal." :::
 
@@ -104,7 +104,7 @@ You can monitor the lag in building views as well as the health of the materiali
 
 #### I want to understand the lag between my source container and views
 
-The **MaterializedViewCatchupGapInMinutes** metric shows the maximum difference in minutes between data in a source container and a view. While there may be multiple views created in a single account, this metric exposes the highest lag among all views. A high value indicates the builder needs more compute to keep up with the volume of changes to source containers. The RUs provisioned on source and view containers can also impact the rate at which changes are propagated to the view. Check the **Total Requests** metric and split by **StatusCode** to determine if there are throttled requests on these containers. Throttled requests are represented by status code 429.
+The **MaterializedViewCatchupGapInMinutes** metric shows the maximum difference in minutes between data in a source container and a view. While there can be multiple views created in a single account, this metric exposes the highest lag among all views. A high value indicates the builder needs more compute to keep up with the volume of changes to source containers. The RUs provisioned on source and view containers can also affect the rate at which changes are propagated to the view. Check the **Total Requests** metric and split by **StatusCode** to determine if there are throttled requests on these containers. Throttled requests have status code 429.
 
 #### I want to understand if my materialized views builder has the right number of nodes
 
@@ -114,7 +114,7 @@ The **MaterializedViewsBuilderAverageCPUUsage** and **MaterializedViewsBuilderAv
 
 There are a few limitations with the Azure Cosmos DB for NoSQL API materialized view feature while it is in preview:
 
-- Role-based access control is not supported for materialized views.
+- Role-based access control isn't supported for materialized views.
 - Materialized views can't be enabled on accounts that have partition merge, analytical store, or continuous backups.
 - Point-in-time restore, hierarchical partitioning, and end-to-end encryption aren't supported on source containers that have materialized views associated with them.
 - Cross-tenant customer-managed key (CMK) encryption isn't supported on materialized views.
