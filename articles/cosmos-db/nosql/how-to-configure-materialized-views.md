@@ -219,6 +219,8 @@ After the feature is enabled and the materialized view builder is provisioned, y
 
    > [!IMPORTANT]
    > In the template, notice that the partition key path is set as `/emailAddress`. The `sourceCollectionId` defines the source container for the view and the `definition` contains a query to determine the data model of the view. Learn more about [defining materialized views](materialized-views.md#defining-materialized-views) and the query constraints.
+   >
+   > The materialized view source container and definition query can't be changed once created.
 
 1. Next, make a REST API call to create the materialized view as defined in the *mv-definition.json* file. Use the Azure CLI to make the REST API call.
 

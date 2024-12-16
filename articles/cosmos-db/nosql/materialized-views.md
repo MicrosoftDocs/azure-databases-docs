@@ -56,7 +56,7 @@ The query used to define a materialized view must adhere to the following constr
  - Queries can’t include a WHERE clause or other clauses such as JOIN, DISTINCT, GROUP BY, ORDER BY, TOP, OFFSET LIMIT, and EXISTS.
  - System functions and user-defined functions (UDFs) aren't supported.
 
- For example, a valid query could be: `SELECT c.userName, c.emailAddress FROM c`, which selects the `userName` and `emailAddress` properties from the source container `c`. This query defines the structure of the materialized view, determining which properties are included in the view. 
+ For example, a valid query could be: `SELECT c.userName, c.emailAddress FROM c`, which selects the `userName` and `emailAddress` properties from the source container `c`. This query defines the structure of the materialized view, determining which properties are included in the view. The materialized view source container and definition query can't be changed once created.
  
  [Learn how to create materialized views.](how-to-configure-materialized-views.md#create-a-materialized-view)
  
@@ -67,7 +67,7 @@ The query used to define a materialized view must adhere to the following constr
 
 The materialized views builder is a dedicated compute layer provisioned for your Azure Cosmos DB account that automatically maintains views defined for source containers. The builder reads from the [change feed](../change-feed.md) of the source container and writes changes to the materialized views according to the view definition, keeping them in sync. Updating views is asynchronous and doesn't affect writes to the source container. Updates to the views are eventually consistent with the source container regardless of the consistency level set for the account.
 
-Before defining views, you must provision a materialized views builder for your Azure Cosmos DB account. The amount of compute provisioned in the builder, including the SKU and the number of nodes, as well as the RUs provisioned on the view container, determine how quickly views are hydrated and synced. The builder can have up to five nodes by default and you can add or remove nodes at any time. Scaling up and down the number of nodes helps control the rate at which views are built.
+You must provision a materialized views builder for your Azure Cosmos DB account for views to begin populating. The amount of compute provisioned in the builder, including the SKU and the number of nodes, as well as the RUs provisioned on the view container, determine how quickly views are hydrated and synced. The builder can have up to five nodes by default and you can add or remove nodes at any time. Scaling up and down the number of nodes helps control the rate at which views are built.
 
 The materialized views builder is available in the following sizes:
 
@@ -122,7 +122,7 @@ There are a few limitations with the Azure Cosmos DB for NoSQL API materialized 
   - Materialized views can't be enabled on an account that has availability zone-enabled regions.
   - Adding a new region with an availability zone isn't supported after materialized views are enabled on an account.
 - Periodic backup and restore
-  - Materialized views aren't automatically restored by using the restore process. You must re-create the materialized views after the restore process is finished. Then, you should enable materialized views on the restored account before you create the materialized views and builders again.
+  - Materialized views aren't automatically restored during the restore process. You must enable the materialized views feature on the restored account after the restore process is finished. Then, can you can create the materialized views and builder again.
 
 ## Next steps
 
