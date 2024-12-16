@@ -17,7 +17,7 @@ ms.date: 12/13/2024
 > [!IMPORTANT]
 > Azure Cosmos DB for NoSQL materialized views are currently in preview. You can enable this feature by using the Azure portal. This preview is provided without a service-level agreement. At this time, we don't recommend that you use materialized views for production workloads. Certain features of this preview might not be supported or might have constrained capabilities. For more information, see the [supplemental terms of use for Microsoft Azure previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Materialized views provide a powerful way to optimize query performance and simplify application logic by creating views of your data with a different partition key and/ or data model. This article describes how to create and enable materialized views and how to use them to handle cross-partition queries efficiently.
+Materialized views provide a powerful way to optimize query performance and simplify application logic by creating views of your data with a different partition key and/ or data model. This article describes how to create materialized views and how to use them to handle cross-partition queries efficiently.
 
 ## Prerequisites
 
@@ -170,17 +170,17 @@ After the materialized views feature is enabled for your account, you'll see a n
 
 After the feature is enabled and the materialized view builder is provisioned, you can create materialized views using the REST API.
 
-1. Use the Azure portal, the Azure SDKs, the Azure CLI, or the REST API to create a source container that has `/accountId` as the partition key path. Name this source container `mv-src`.
+1. Use the Azure portal, the Azure SDKs, the Azure CLI, or the REST API to create a source container that has `/customerId` as the partition key path. Name this source container `mv-src`.
 
    > [!NOTE]
-   > The `/accountId` field is used only as an example in this article. For your own containers, select a partition key that works for your solution.
+   > The `/customerId` field is used only as an example in this article. For your own containers, select a partition key that works for your solution.
 
-1. Insert a few items in the source container. To follow the examples that are shown in this article, make sure that the items have `accountId` and `emailAddress` fields. A sample item might look like this:
+1. Insert a few items in the source container. To follow the examples that are shown in this article, make sure that the items have `customerId` and `emailAddress` fields. A sample item might look like this:
 
     ```json
     {
       "id": "eaf0338e-2b61-4163-822f-7bef75bf51de",
-      "accountId": "36c7cc3d-1709-45c6-819f-10e5586a6cb7",
+      "customerId": "36c7cc3d-1709-45c6-819f-10e5586a6cb7",
       "emailAddress": "justine@contoso.com",
       "name": "Justine"
     }
@@ -207,7 +207,7 @@ After the feature is enabled and the materialized view builder is provisioned, y
               },
               "materializedViewDefinition": {
                 "sourceCollectionId": "mv-src",
-                "definition": "SELECT c.accountId, c.emailAddress FROM c"
+                "definition": "SELECT c.customerId, c.emailAddress FROM c"
               }
             },
             "options": {
@@ -218,7 +218,7 @@ After the feature is enabled and the materialized view builder is provisioned, y
         ```
 
    > [!IMPORTANT]
-   > In the template, notice that the partition key path is set as `/emailAddress`. The `sourceCollectionID` defines the source collection for the view and the `definition` contains a query to determine the data model of the view. Learn more about [defining materialized views](materialized-views.md#defining-materialized-views) and the query constraints.
+   > In the template, notice that the partition key path is set as `/emailAddress`. The `sourceCollectionId` defines the source container for the view and the `definition` contains a query to determine the data model of the view. Learn more about [defining materialized views](materialized-views.md#defining-materialized-views) and the query constraints.
 
 1. Next, make a REST API call to create the materialized view as defined in the *mv-definition.json* file. Use the Azure CLI to make the REST API call.
 
@@ -228,14 +228,14 @@ After the feature is enabled and the materialized view builder is provisioned, y
         # This should match the resource id you defined in your json file
         $materializedViewName = "mv-target"
         
-        # Database name for the source and target collections
-        $databaseName = "<database-that-contains-source-collection>"
+        # Database name for the source and view containers
+        $databaseName = "<Database that contains source container>"
 
         # Azure Cosmos DB account name
         $accountName = "<Azure Cosmos DB account name>"
 
         # Resource name for your Azure Cosmos DB account
-        $resourceGroupName = "<Resource group for Cosmos DB account>"
+        $resourceGroupName = "<Resource group for Azure Cosmos DB account>"
 
         # Subscription id for your Azure Cosmos DB account
         $subscriptionId = "<Subscription id>"
@@ -273,7 +273,7 @@ After the feature is enabled and the materialized view builder is provisioned, y
 
 ## Query data from materialized views
 
-In this example, we have a source container partitioned on `accountId` and a view partitioned on `emailAddress`. Without the view, queries that only include the `emailAddress` would be cross-partition, but now they can use be executed against the view instead to increase efficiency. 
+In this example, we have a source container partitioned on `customerId` and a view partitioned on `emailAddress`. Without the view, queries that only include the `emailAddress` would be cross-partition, but now they can use be executed against the view instead to increase efficiency. 
 
 Querying data from materialized views is similar to querying data from any other container. You can use the Azure portal, Azure SDKs, or REST API to query data in materialized views.
 
@@ -282,7 +282,7 @@ Querying data from materialized views is similar to querying data from any other
 ```csharp
 Container container = client.GetDatabase("mv-db").GetContainer("mv-target");
 
-FeedIterator<MyClass> myQuery = container.GetItemQueryIterator<MyClass>(new QueryDefinition("SELECT * FROM c WHERE c.emailAddress = 'justine@constos.com'"));
+FeedIterator<MyClass> myQuery = container.GetItemQueryIterator<MyClass>(new QueryDefinition("SELECT * FROM c WHERE c.emailAddress = 'justine@contoso.com'"));
 ```
 
 ### [Java](#tab/java)
@@ -292,7 +292,7 @@ CosmosAsyncDatabase container = client.getDatabase("mv-db");
 CosmosAsyncContainer container = database.getContainer("mv-target");
 
 CosmosPagedFlux<MyClass> pagedFluxResponse = container.queryItems(
-        "SELECT * FROM c WHERE c.emailAddress = 'justine@constos.com'", null, MyClass.class);
+        "SELECT * FROM c WHERE c.emailAddress = 'justine@contoso.com'", null, MyClass.class);
 ```
 
 ### [Node.js](#tab/nodejs)
@@ -302,7 +302,7 @@ const database = client.database("mv-db");
 const container = database.container("mv-target");
 
 const querySpec = {
-    query: "SELECT * FROM c WHERE c.emailAddress = 'justine@constos.com'"
+    query: "SELECT * FROM c WHERE c.emailAddress = 'justine@contoso.com'"
  };
 const { resources: items } = await container.items
     .query(querySpec)
@@ -315,7 +315,7 @@ const { resources: items } = await container.items
 database = client.get_database_client("mv-db")
 container = database.get_container_client("mv-target")
 
-query = "SELECT * FROM c WHERE c.emailAddress = 'justine@constos.com'"
+query = "SELECT * FROM c WHERE c.emailAddress = 'justine@contoso.com'"
 container.query_items(
     query=query
 )

@@ -32,7 +32,7 @@ With a materialized view, you can:
 
 ### Implement the Global Secondary Index pattern
 
-Materialized views can act as a Global Secondary Index (GSI), enabling efficient querying on properties other than the partition key of the source container. By creating a materialized view with a different partition key, you can achieve a similar effect to a GSI. Once the materialized view is created, queries that would otherwise be cross-partition can be retargeted to the view container, leading to reduced RU charge and reduced latency.
+Materialized views can act as a Global Secondary Index (GSI), enabling efficient querying on properties other than the partition key of the source container. By creating a materialized view with a different partition key, you can achieve a similar effect to a GSI. Once the materialized view is created, queries that would otherwise be cross-partition can be retargeted to the view container, leading to reduced RU consumption and reduced latency.
 
 ## Materialized views features
 
@@ -48,7 +48,7 @@ Azure Cosmos DB materialized views offer the following features:
 
 ## Defining materialized views
 
-Creating a materialized view is similar to creating a new container, with requirements to specify the source container and a query defining the view. Each item in the materialized view has a one-to-one mapping to an item in the source container. To maintain this mapping, the `id` field in materialized view items is auto populated with the `_rid` from the source items. The value of `id` from the source collection is represented as `_id` in the view.
+Creating a materialized view is similar to creating a new container, with requirements to specify the source container and a query defining the view. Each item in the materialized view has a one-to-one mapping to an item in the source container. To maintain this mapping, the `id` field in materialized view items is auto populated. The value of `id` from the source collection is represented as `_id` in the view.
 
 The query used to define a materialized view must adhere to the following constraints:
  - The SELECT statement allows projection of only one level of properties in the JSON tree, or it can be SELECT * to include all properties.
@@ -83,7 +83,7 @@ The materialized views builder is available in the following sizes:
 
 ### Materialized views builders in multi-region accounts
 
-For Azure Cosmos DB accounts with a single region, the materialized views builder is provisioned in that region. In a multi-region account with a single write region, the builder is provisioned the write region and reads change feed from there. In an account with multiple write regions, the builder is provisioned in one of the write regions and reads change feed from the same region it's provisioned in. 
+For Azure Cosmos DB accounts with a single region, the materialized views builder is provisioned in that region. In a multi-region account with a single write region, the builder is provisioned in the write region and reads change feed from there. In an account with multiple write regions, the builder is provisioned in one of the write regions and reads change feed from the same region it's provisioned in. 
 
 [Learn how to provision the materialized views builder.](how-to-configure-materialized-views.md#create-a-materialized-view-builder)
 
