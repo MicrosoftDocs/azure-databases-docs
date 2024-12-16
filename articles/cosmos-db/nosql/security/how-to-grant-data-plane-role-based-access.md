@@ -614,7 +614,7 @@ public class NoSQL{
         
         CosmosClient client = new CosmosClientBuilder()
             .endpoint("<account-endpoint>")
-            .credential(credential);
+            .credential(credential)
             .buildClient();
     }
 }

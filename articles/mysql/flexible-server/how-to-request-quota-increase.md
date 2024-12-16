@@ -1,10 +1,10 @@
 ---
-title: Request quota increases for Azure Database for MySQL
+title: Request Quota Increases for Azure Database for MySQL
 description: Request quota increases for Azure Database for MySQL - Flexible Server resources.
 author: karla-escobar # GitHub alias
 ms.author: karlaescobar # Microsoft alias
 ms.reviewer: maghan
-ms.date: 06/18/2024
+ms.date: 11/27/2024
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: troubleshooting
@@ -16,7 +16,7 @@ The resources in Azure Database for MySQL - Flexible Server have default quotas/
 
 ## Create a new support request
 
-To request a quota increase, you must create a new support request with your workload details. The Azure Database for MySQL flexible server team then processes your request and approves or denies it. Use the following steps to create a new support request from the Azure portal:
+To request a quota increase, you must create a new support request with your workload details. The Azure Database for MySQL Flexible Server team then processes your request and approves or denies it. Use the following steps to create a new support request from the Azure portal:
 
 1. Sign into the Azure portal.
 
@@ -29,12 +29,12 @@ To request a quota increase, you must create a new support request with your wor
    - For **Subscription**, select the subscription for which you want to increase the quota.
    - For **Quota type**, select **Azure Database for MySQL Flexible Server**
 
-   :::image type="content" source="media/how-to-request-quota-increase/request-quota-increase-mysql-flex.png" alt-text="Screenshot of new support request.":::
+   :::image type="content" source="media/how-to-request-quota-increase/request-quota-increase-mysql-flex.png" alt-text="Screenshot of new support request." lightbox="media/how-to-request-quota-increase/request-quota-increase-mysql-flex.png":::
 
 1. In the **Additional Details** tab, enter the details corresponding to your quota request. The Information provided on this tab is used to further assess your issue and help the support engineer troubleshoot the problem.
 1. Fill the following details in this form:
 
-   - In  **Request details** select **Enter details** and select the relevant **Quota Type**
+   - In **Request details** select **Enter details** and select the relevant **Quota Type**
 
    provide the requested information for your specific quota request like Location, Series, New Quota.
 

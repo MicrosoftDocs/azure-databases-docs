@@ -1859,6 +1859,31 @@
         "source_path_from_root": "/articles/postgresql/flexible-server/concepts-extensions.md",
         "redirect_url": "/azure/postgresql/extensions/how-to-allow-extensions",
         "redirect_document_id": false
+    },
+    {
+        "source_path_from_root": "/articles/postgresql/flexible-server/how-to-configure-server-parameters-using-portal.md",
+        "redirect_url": "/azure/postgresql/flexible-server/how-to-configure-server-parameters",
+        "redirect_document_id": false
+    },
+    {
+        "source_path_from_root": "/articles/postgresql/flexible-server/how-to-configure-server-parameters-using-cli.md",
+        "redirect_url": "/azure/postgresql/flexible-server/how-to-configure-server-parameters",
+        "redirect_document_id": false
+    },
+    {
+        "source_path_from_root": "/articles/postgresql/flexible-server/how-to-perform-major-version-upgrade-cli.md",
+        "redirect_url": "/azure/postgresql/flexible-server/how-to-perform-major-version-upgrade",
+        "redirect_document_id": false
+    },
+    {
+        "source_path_from_root": "/articles/postgresql/flexible-server/how-to-perform-major-version-upgrade-portal.md",
+        "redirect_url": "/azure/postgresql/flexible-server/how-to-perform-major-version-upgrade",
+        "redirect_document_id": false
+    },
+    {
+        "source_path_from_root": "/articles/postgresql/flexible-server/how-to-auto-grow-storage-portal.md",
+        "redirect_url": "/azure/postgresql/flexible-server/how-to-auto-grow-storage",
+        "redirect_document_id": false
     } 
 ]
 }

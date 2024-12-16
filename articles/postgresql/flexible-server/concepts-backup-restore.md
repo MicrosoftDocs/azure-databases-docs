@@ -4,7 +4,7 @@ description: Learn about the concepts of backup and restore with Azure Database 
 author: kabharati
 ms.author: kabharati
 ms.reviewer: maghan
-ms.date: 05/06/2024
+ms.date: 11/28/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: conceptual
@@ -41,7 +41,7 @@ Azure Database for PostgreSQL flexible server stores multiple copies of your bac
 
 Azure Database for PostgreSQL flexible server offers three options: 
 
-- **Zone-redundant backup storage**: This option is automatically chosen for regions that support availability zones. When backups are stored in geo-redundant backup storage, three copies of the data are kept within the region where your server is hosted. Additionally, the data is replicated to a paired region for added protection. 
+- **Zone-redundant backup storage**: This option is automatically chosen for regions that support availability zones. When backups are stored in zone-redundant backup storage, three copies of the data are kept within the availability zone  where your server is hosted. Additionally, the data is replicated to another availability zone for added protection. 
 
   This option provides backup data availability across availability zones and restricts replication of data to within a country/region to meet data residency requirements. This option provides at least 99.9999999999 percent (12 nines) durability of backup objects over a year.  
 
@@ -84,7 +84,7 @@ You can use the [Backup Storage Used](../concepts-monitoring.md) metric in the
 
 ## Point-in-time recovery
 
-In Azure Database for PostgreSQL flexible server, performing a PITR creates a new server in the same region as your source server, but you can choose the availability zone. It's created with the source server's configuration for the pricing tier, compute generation, number of virtual cores, storage size, backup retention period, and backup redundancy option. Also, tags and settings such as virtual networks and firewall settings are inherited from the source server.
+In Azure Database for PostgreSQL flexible server, performing a PITR creates a new server in the same region as your source server, but you can choose the availability zone. It's created with the source server's configuration for the pricing tier, compute generation, number of virtual cores, storage size, backup retention period, and backup redundancy option. 
 
 The physical database files are first restored from the snapshot backups to the server's data location. The appropriate backup that was taken earlier than the desired point in time is automatically chosen and restored. A recovery process then starts by using WAL files to bring the database to a consistent state. 
 
@@ -163,6 +163,8 @@ After you restore the server, you can perform the following tasks to get your us
 
 - If the new server is meant to replace the original server, redirect clients and client applications to the new server. Change the server name of your connection string to point to the new server.
 
+- The values of all [server parameters](./concepts-server-parameters.md) on the original server are not automatically applied to the new server. Ensure that all server parameters on the new server are re-configured as per the requirements of that new server.
+
 - Ensure that appropriate server-level firewall, private endpoints and virtual network rules are in place for user connections. In *public access* network, rules are copied over from the original server, but those might not be the ones required in the restored environment. So, adjust them as per your requirements. Private endpoints are not carried over. Create any private endpoints you may need in the restored server. In *private access* virtual network, the restore doesn't copy over any network infrastructure artifacts from source to restored server networks. Anything related to configuration of VNET(Virtual Network), subnets, or Network Security Groups, must be taken care of as a post-restore task.
   
 - Scale up or scale down the restored server's compute as needed.
@@ -192,7 +194,7 @@ On-demand backup feature is currently not supported with the Burstable server co
 
 We are aware of an existing bug that allows taking on-demand backups on Replicas, even though Point-in-Time Restore (PITR) is not supported in this context. This issue will be addressed to ensure that on-demand backups can only be performed on the Primary server.
 
-## Long-term retention
+## Long-term retention (preview)
 
 Azure Backup and Azure Database for PostgreSQL flexible server services have built an enterprise-class long-term backup solution for Azure Database for PostgreSQL flexible server instances that retains backups for up to 10 years. You can use long-term retention (LTR) independently or in addition to the automated backup solution offered by Azure Database for PostgreSQL flexible server, which offers retention of up to 35 days. Automated backups are physical backups suited for operational recoveries, especially when you want to restore from the latest backups. Long-term backups help you with your compliance needs, are more granular, and are taken as logical backups using native pg_dump. In addition to long-term retention, the solution offers the following capabilities:
 
@@ -208,7 +210,7 @@ Azure Backup and Azure Database for PostgreSQL flexible server services have bui
 - LTR restores are currently available only as 'Restore as Files' to storage accounts, with 'Restore as Server' capability planned for the future.
 - LTR backs up all databases in flexible server instances, and individual databases cannot be selected for LTR configuration.
 - LTR backup is not supported on geo-replicas, but it can be performed from primary servers.
-- The maximum supported database size for LTR backup is 4 TiB.
+- The maximum supported database size for Long-Term Retention (LTR) backups is 4 TiB. While backups can be attempted on servers exceeding 4 TiB, these are not officially supported, and the success of LTR backups for such servers cannot be guaranteed.
 - LTR backups can be scheduled weekly, monthly, or yearly. The daily backup schedule is currently unsupported.
 
 
@@ -241,7 +243,7 @@ For more information about performing a long term backup, visit the [how-to guid
 
 * **Can I restore a single database or a few databases in a server?**
   
-    Restoring a single database or a few databases or tables is not directly supported. However, you can restore the entire server to a new server, and then extract tables or databases and import them to the new server.
+    Restoring a single database or a few databases or tables is not directly supported. However, you can restore the entire server to a new server, and then drop tables or databases that you don't need on the new server.
 
 * **Is my server available while a backup is in progress?**
 

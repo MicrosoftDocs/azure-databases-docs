@@ -4,7 +4,7 @@ description: Introduction to the PostgreSQL Extensions for Azure Database for Po
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 11/19/2024
+ms.date: 12/06/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: how-to
@@ -20,18 +20,17 @@ Azure Database for PostgreSQL flexible server allows you to extend the functiona
 
 Before installing extensions in Azure Database for PostgreSQL flexible server, you must allow these extensions to be listed for use.
 
-#### [Portal](#tab/portal)
+#### [Portal](#tab/allow-extensions-portal)
 
 Using the [Azure portal](https://portal.azure.com):
 
 1. Select your Azure Database for PostgreSQL flexible server instance.
 1. From the resource menu, under **Settings** section, select **Server parameters**.
-1. Search for the `azure.extensions` parameter.
-1. Select the extensions you wish to allow.
+1. Select the extensions that you want to allowlist, from the ones available in the `azure.extensions` parameter, and select **Save**.
 
     :::image type="content" source="media/how-to-allow-extensions/allow-list.png" alt-text="Screenshot of allowlist." lightbox="media/how-to-allow-extensions/allow-list.png":::
 
-#### [Azure CLI](#tab/cli)
+#### [Azure CLI](#tab/allow-extensions-cli)
 
 You can allow extensions via the CLI parameter set [command](/cli/azure/postgres/flexible-server/parameter?view=azure-cli-latest&preserve-view=true).
 
@@ -39,7 +38,7 @@ You can allow extensions via the CLI parameter set [command](/cli/azure/postgres
     az postgres flexible-server parameter set --resource-group <resource_group>  --server-name <server> --subscription <subscription_id> --name azure.extensions --value <extension_name>,<extension_name>
 ```
 
-#### [Resource Manager Template](#tab/azure-resource-manager)
+#### [Resource Manager Template](#tab/allow-extensions-azure-resource-manager)
 
 Using the [ARM Template](/azure/azure-resource-manager/templates/):
 
@@ -80,39 +79,58 @@ The following example adds extensions to the allowlist `dblink`, `dict_xsyn`, `p
 
 `shared_preload_libraries` is a server configuration parameter that determines which libraries have to be loaded when Azure Database for PostgreSQL flexible server starts. Any libraries that use shared memory must be loaded via this parameter. If your extension needs to be added to the shared preload libraries, follow these steps:
 
+#### [Portal](#tab/load-libraries-portal)
+
 Using the [Azure portal](https://portal.azure.com):
 
 1. Select your Azure Database for PostgreSQL flexible server instance.
-1. From the resource menu, under **Settings** section, select **Server parameters**.
-1. Search for the `shared_preload_libraries` parameter.
-1. Select the libraries you wish to add.
+2. From the resource menu, under **Settings** section, select **Server parameters**.
+3. Include the libraries you wish to add in the value of `shared_preload_libraries`, and select **Save**.
 
-    :::image type="content" source="media/how-to-allow-extensions/shared-libraries.png" alt-text="Screenshot of shared libraries." lightbox="media/how-to-allow-extensions/shared-libraries.png":::
+    :::image type="content" source="media/how-to-allow-extensions/shared-libraries.png" alt-text="Screenshot of Server parameters page while setting shared_preload_libraries." lightbox="media/how-to-allow-extensions/shared-libraries.png":::
 
-You can set `shared_preload_libraries` via the CLI [parameter set](/cli/azure/postgres/flexible-server/parameter?view=azure-cli-latest&preserve-view=true) command.
+4. Because `shared_preload_libraries`is a static server parameter, it requires a server restart so that the changes take effect.
+
+    :::image type="content" source="media/how-to-allow-extensions/save-and-restart.png" alt-text="Screenshot of Server parameters page, showing the dialog from which you can save changes and restart." lightbox="media/how-to-allow-extensions/save-and-restart.png":::
+
+#### [Azure CLI](#tab/load-libraries-cli)
+
+You can set `shared_preload_libraries` using the CLI [parameter set](/cli/azure/postgres/flexible-server/parameter?view=azure-cli-latest#az-postgres-flexible-server-parameter-set) command.
 
 ```azurecli
-az postgres flexible-server parameter set --resource-group <resource_group> --server-name <server> --subscription <subscription_id> --name shared_preload_libraries --value <extension_name>,<extension_name>
+az postgres flexible-server parameter set --resource-group <resource_group> --server-name <server> --name shared_preload_libraries --value <extension_name>,<extension_name>
 ```
 
-## Create Extension
+And can restart the server using the CLI [parameter set](/cli/azure/postgres/flexible-server?view=azure-cli-latest#az-postgres-flexible-server-restart) command.
 
-After extensions are allowlisted and loaded, they must be installed in each database on which they're to be used.
+```azurecli
+az postgres flexible-server restart --resource-group <resource_group> --name <server>
+```
 
-1. To create an extension, a user must be a member of the `azure_pg_admin` role. A member of the `azure_pg_admin` role can grant privileges to other users to create extensions.
+---
 
-1. Run the [CREATE EXTENSION](https://www.postgresql.org/docs/current/sql-createextension.html) command to install a particular extension. This command loads the packaged objects into your database.
+## Create extensions
+
+After an extension is allowlisted and, if the extension requires it, is also added to `shared_load_libraries`, it can be created or installed in each database on which it's to be used.
+
+1. To create an extension, a user must be a member of the `azure_pg_admin` role.
+
+1. Run the [CREATE EXTENSION](https://www.postgresql.org/docs/current/sql-createextension.html) command to create or install a particular extension. This command loads the packaged objects into your database.
 
 > [!NOTE]  
 > Third-party extensions offered in Azure Database for PostgreSQL flexible server are open-source licensed code. We don't offer any third-party extensions or extension versions with premium or proprietary licensing models.
 
-Azure Database for PostgreSQL flexible server instance supports a subset of key PostgreSQL extensions, as listed in the following table. This information is also available by running `SHOW azure.extensions;`. Extensions not listed in this document aren't supported on Azure Database for PostgreSQL flexible server. You can't create or load your extension in Azure Database for PostgreSQL flexible server.
+Azure Database for PostgreSQL flexible server instance supports a subset of key PostgreSQL extensions, as listed in [supported extensions by name](concepts-extensions-versions.md) or in [supported extensions by version of PostgreSQL](concepts-extensions-by-engine.md). This information is also available by running `SHOW azure.extensions;`. Extensions not included in those lists aren't supported on Azure Database for PostgreSQL flexible server. You can't create or load your own extensions in Azure Database for PostgreSQL flexible server.
 
-## Upgrading PostgreSQL extensions
+## Drop extensions
 
-A simple command allows in-place upgrades of database extensions. This feature enables customers to automatically update their third-party extensions to the latest versions, maintaining current and secure systems without manual effort.
+To drop an extension, first make sure to [allowlist](#allow-extensions) it.
 
-### Updating extensions
+1. To drop an extension, a user must be a member of the `azure_pg_admin` role.
+
+1. Run the [DROP EXTENSION](https://www.postgresql.org/docs/current/sql-dropextension.html) command to drop or uninstall a particular extension. This command drops the objects packaged in the extension from your database.
+
+## Update extensions
 
 To update an installed extension to the latest available version supported by Azure, use the following SQL command:
 
@@ -121,16 +139,6 @@ ALTER EXTENSION <extension_name> UPDATE;
 ```
 
 This command simplifies the management of database extensions by allowing users to manually upgrade to the latest version approved by Azure, enhancing both compatibility and security.
-
-### Installed extensions
-
-To list the extensions currently installed on your database, use the following SQL command:
-
-```sql
-SELECT * FROM pg_extension;
-```
-
-View the list of [available extension](concepts-extensions-versions.md).
 
 ### Limitations
 
@@ -141,10 +149,33 @@ While updating extensions is straightforward, there are certain limitations:
 
 - **Downgrading**: Doesn't support downgrading an extension to a previous version. If a downgrade is necessary, it might require support assistance and depends on the availability of the previous version.
 
+## View installed extensions
+
+To list the extensions currently installed on your database, use the following SQL command:
+
+```sql
+SELECT * FROM pg_extension;
+```
+
+## Possible errors
+
+### Extension "%s" is not allow-listed for "azure_pg_admin" users in Azure Database for PostgreSQL
+
+This error occurs when you run a `CREATE EXTENSION` or `DROP EXTENSION` command referring to an extension that isn't [allowlisted](#allow-extensions), or an extension that isn't supported yet on the instance of Azure Database for flexible server on which you're running the command.
+
+### Only members of "azure_pg_admin" are allowed to use CREATE EXTENSION
+
+This error occurs when the user that runs a `CREATE EXTENSION` command isn't a member of `azure_pg_admin` role.
+
+### Only members of "azure_pg_admin" are allowed to use DROP EXTENSION 
+
+This error occurs when the user that runs a `DROP EXTENSION` command isn't a member of `azure_pg_admin` role.
+
 [Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
 
 ## Related content
 
-- [Extension versions](concepts-extensions-versions.md)
-- [Extension considerations](concepts-extensions-considerations.md)
+- [Special considerations with extensions](concepts-extensions-considerations.md)
+- [List of extensions by name](concepts-extensions-versions.md)
+- [List of extensions by version of PostgreSQL](concepts-extensions-by-engine.md)
 - [Feedback forum](https://aka.ms/pgfeedback)

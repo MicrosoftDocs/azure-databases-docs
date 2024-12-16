@@ -369,7 +369,9 @@ az postgres flexible-server migration show [--subscription]
                                            [--migration-name]
 ```
 
-The `migration_name` parameter is the name assigned to the migration during the `create` command. Here's a snapshot of the sample response from the CLI command for showing details:
+The `migration_name` parameter is the name assigned to the migration during the `create` command. Here's a snapshot of the sample response from the CLI command to monitor the migration:
+
+:::image type="content" source="../../media/postgresql-single-server-cli-migrate/az-postgres-flexible-server-migration-monitor.png" alt-text="Screenshot of Azure Command Line Interface to monitor migration progress." lightbox="../../media/postgresql-single-server-cli-migrate/az-postgres-flexible-server-migration-monitor.png":::
 
 For more information about this command, use the `--help` parameter:
 

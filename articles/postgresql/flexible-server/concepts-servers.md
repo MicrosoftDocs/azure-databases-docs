@@ -70,4 +70,4 @@ Your Azure Database for PostgreSQL flexible server instance is enabled with defa
 
 - For an overview of the service, see [Azure Database for PostgreSQL flexible server overview](overview.md).
 - For information about specific resource quotas and limitations based on your **configuration**, see [Compute options](concepts-compute.md).
-- View and edit server parameters through [Azure portal](how-to-configure-server-parameters-using-portal.md) or [Azure CLI](how-to-configure-server-parameters-using-cli.md).
+- View and edit server parameters through [Azure portal](how-to-configure-server-parameters.md) or [Azure CLI](how-to-configure-server-parameters-using-cli.md).

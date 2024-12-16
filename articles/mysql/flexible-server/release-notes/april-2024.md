@@ -1,10 +1,10 @@
 ---
-title: Release notes for Azure Database for MySQL Flexible Server - April 2024
+title: Release Notes for Azure Database for MySQL Flexible Server - April 2024
 description: Learn about the release notes for Azure Database for MySQL Flexible Server April 2024.
 author: xboxeer
 ms.author: yuzheng1
 ms.reviewer: maghan
-ms.date: 08/09/2024
+ms.date: 11/27/2024
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: conceptual
@@ -29,7 +29,7 @@ To check your engine version, run `SELECT VERSION();` command at the MySQL promp
 
 ### [Microsoft Defender for Cloud](/azure/defender-for-cloud/defender-for-databases-introduction)
 
-- Introducing Defender for Cloud support to simplify security management with threat protection from anomalous database activities in Azure Database for MySQL flexible server instances.
+- Introducing Defender for Cloud support to simplify security management with threat protection from anomalous database activities in Azure Database for MySQL Flexible Server instances.
 
 ## Improvement
 

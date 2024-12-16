@@ -1,18 +1,16 @@
 ---
-title: "Migrate MySQL on-premises to Azure Database for MySQL introduction"
+title: "Migrate MySQL On-Premises to Azure Database for MySQL Introduction"
 description: "Migration guide from MySQL on-premises to Azure Data base for MySQL"
 author: SudheeshGH
 ms.author: sunaray
 ms.reviewer: maghan
-ms.date: 05/21/2024
+ms.date: 11/27/2024
 ms.service: azure-database-mysql
 ms.subservice: migration-guide
 ms.topic: how-to
 ---
 
 # Migrate MySQL on-premises to Azure Database for MySQL
-
-[!INCLUDE [applies-to-mysql-single-flexible-server](../../includes/applies-to-mysql-single-flexible-server.md)]
 
 This migration guide is designed to provide stackable and actionable information for MySQL customers and software integrators seeking to migrate MySQL workloads to [Azure Database for MySQL](../../overview.md). This guide gives applicable knowledge that applies to most cases and provides guidance that leads to the successful planning and execution of a MySQL migration to Azure.
 
@@ -30,7 +28,7 @@ MySQL has a rich history in the open-source community and has become popular wit
 
 In addition to the PaaS offering, it's still possible to run MySQL in Azure VMs. Reference the [Choose the right MySQL Server option in Azure](../../select-right-deployment-type.md) article to decide what deployment type is most appropriate for the target data workload.
 
-:::image type="content" source="media/01-mysql-migration-guide-intro/image3.jpg" alt-text="Comparison of MySQL environments." lightbox="media/01-mysql-migration-guide-intro/image3.jpg":::
+:::image type="content" source="media/01-mysql-migration-guide-intro/image3.jpg" alt-text="Screenshot of Comparison of MySQL environments.":::
 
 **Comparison of MySQL environments**
 
@@ -39,4 +37,4 @@ This guide focuses entirely on migrating the on-premises MySQL workloads to the 
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Representative Use Case](02-representative-use-case.md)
+> [Migrate MySQL on-premises to Azure Database for MySQL: Representative Use Case](02-representative-use-case.md)
