@@ -17,7 +17,7 @@ Azure Database for PostgreSQL - Flexible Server supports both vertical and horiz
 
 ## Vertical scaling
 
-You can scale your instance vertically, by adding more resources to your Azure Database for PostgreSQL flexible server instance, such as increasing the number of CPUs and memory assigned to it.
+You can scale your instance vertically, by adding more resources to your Azure Database for PostgreSQL flexible server instance. You can increase or decrease the number of CPUs and memory assigned to it.
 
 Network throughput of your instance depends on the values you choose for CPU and memory.
 
@@ -27,7 +27,7 @@ After an Azure Database for PostgreSQL flexible server instance is created, you 
 - Storage tier and size.
 - Backup retention period.
 
-Compute tier can be scaled up or down between Burstable, General Purpose, and Memory Optimized, to adjust to the needs of your workload. In each of these tiers there's an ample selection of pre-configured hardware of different generations and with more or less CPUs and more or less installed memory. Among that wide selection you can choose the one that supports your resource requirements at any time, while keeping your operational costs reduced and adjusted to your needs.
+Compute tier can be scaled up or down between Burstable, General Purpose, and Memory Optimized, to adjust to the needs of your workload. In each of these tiers, there's an ample selection of preconfigured hardware of different generations and with more or less CPUs and more or less installed memory. Among that wide selection you can choose the one that supports your resource requirements at any time, while keeping your operational costs reduced and adjusted to your needs.
 
 The number of vCores and installed memory can be scaled up or down. The storage tier can also be configured up or down to accommodate to the requirements of throughput and IOPS that your workload demands. The storage size can only be increased. Also, depending on your requirements you can increase or decrease the backup retention period between 7 to 35 days.
 
@@ -40,7 +40,7 @@ These resources can be scaled by using multiple interfaces. For instance, you ca
 
 You can scale your instance horizontally by creating [read replicas](concepts-read-replicas.md). Read replicas let you scale your read workloads onto separate Azure Database for PostgreSQL flexible server instances. They don't affect the performance and availability of the primary instance.
 
-In a horizontally scaled set up, the primary instance and the read replicas can also be scaled vertically.
+In a horizontally scaled setup, the primary instance and the read replicas can also be scaled vertically.
 
 When you change the number of vCores or the compute tier, the instance is restarted so that the new hardware assigned begins running your server workload. During this time, the system switches over to the new server type. No new connections can be established, and all uncommitted transactions are rolled back.
 
@@ -48,7 +48,7 @@ The overall time it takes to restart your server depends on the crash recovery p
 
 If your application is sensitive to loss of in-flight transactions that might occur during compute scaling, we recommend implementing a transaction [retry pattern](../single-server/concepts-connectivity.md#handling-transient-errors).
 
-Scaling the storage doesn't require a server restart in most cases. For more details, see [storage options in Azure Database for PostgreSQL - Flexible Server](concepts-scaling-resources.md).
+Scaling the storage doesn't require a server restart in most cases. For more information, see [storage options in Azure Database for PostgreSQL - Flexible Server](concepts-scaling-resources.md).
 
 Backup retention period changes are an online operation.
 
@@ -62,7 +62,7 @@ Typically, this process could take anywhere between 2 to 10 minutes with regular
 
 ### How it works
 
-When you update your Azure Database for PostgreSQL flexible server instance in scaling scenarios, the service creates a new virtual machine for your server with the updated configuration. It's synchronized with the virtual machine that's currently running your instance, and then switches to the new with a brief interruption. Then a background process eliminates the old virtual machine. All this process occurs at no extra cost to you.
+When you update your Azure Database for PostgreSQL flexible server instance in scaling scenarios, the service creates a new virtual machine for your server with the updated configuration. Then is synchronized with the virtual machine that's currently running your instance, and then switches to the new with a brief interruption. Then a background process eliminates the old virtual machine. All this process occurs at no extra cost to you.
 
 This process allows for seamless updates, while minimizing downtime and ensuring cost-efficiency. This scaling process is triggered when changes are made to the storage and compute tiers. *No customer action is required* to use this capability.
 
@@ -74,16 +74,16 @@ For horizontally scaled configurations, consisting of a primary server and one o
 ### Precise downtime expectations
 
 * **Downtime duration**: In most cases, the downtime ranges from 10 to 30 seconds.
-* **Other considerations**: After a scaling event, there's an inherent DNS `Time-To-Live` (TTL) period of approximately 30 seconds. This period isn't directly controlled by the scaling process. It's a standard part of DNS behavior. From an application perspective, the total downtime experienced during scaling could be in the range of 40 to 60 seconds.
+* **Other considerations**: After a scaling event, there's an inherent DNS `Time-To-Live` (TTL) period of approximately 30 seconds. The scaling process doesn't directly control this period. It's a standard part of DNS behavior. From an application perspective, the total downtime experienced during scaling could be in the range of 40 to 60 seconds.
 
 #### Considerations and limitations
 
 - For reduced downtime scaling to work, allow all [inbound and outbound connections between the IP addresses in the delegated subnet, when you use virtual network integrated networking](concepts-networking-private.md#virtual-network-concepts). If these connections aren't permitted, the reduced downtime scaling process doesn't work, and scaling occurs through the standard scaling workflow.
 - Reduced downtime scaling doesn't work if there are regional capacity constraints or quota limits on your subscription.
-- Reduced downtime scaling doesn't work for a replica server, because it's only supported on the primary server. For replica servers, the scaling operation automatically goes through the regular process.
+- Reduced downtime scaling doesn't work for a replica server, because is only supported on the primary server. For replica servers, the scaling operation automatically goes through the regular process.
 - Reduced downtime scaling doesn't work if a [virtual network-injected server](concepts-networking-private.md#virtual-network-concepts) doesn't have sufficient usable IP addresses in the delegated subnet. If you have a standalone server, one extra IP address is necessary. For an instance with high-availability enabled, two extra IP addresses are required.
 - Logical replication slots aren't preserved during a reduced downtime failover event. To maintain logical replication slots and ensure data consistency after a scale operation, use the [pg_failover_slot](https://github.com/EnterpriseDB/pg_failover_slots) extension. For more information, see [enabling extension in a flexible server](concepts-extensions.md#pg_failover_slots).
-- Reduced downtime scaling doesn't work with [unlogged tables](https://www.postgresql.org/docs/current/sql-createtable.html#SQL-CREATETABLE-UNLOGGED). If you're using unlogged tables for any of your data will lose all the data in those tables after the near-zero downtime scaling.
+- Reduced downtime scaling doesn't work with [unlogged tables](https://www.postgresql.org/docs/current/sql-createtable.html#SQL-CREATETABLE-UNLOGGED). If you're using unlogged tables for any of your data will lose all the data in those tables after the reduced downtime scaling.
 
 [Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
 
