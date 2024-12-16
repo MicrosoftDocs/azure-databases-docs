@@ -14,7 +14,7 @@ ms.custom:
 
 # Point-in-time restore in Azure Database for MySQL - Flexible Server with Azure CLI
 
-This article provides step-by-step procedure to perform point-in-time recoveries in Azure Database for MySQL flexible server using backups.
+This article provides step-by-step procedure to perform point-in-time recoveries in Azure Database for MySQL Flexible Server using backups.
 
 ## Prerequisites
 
@@ -37,7 +37,7 @@ This article provides step-by-step procedure to perform point-in-time recoveries
     az account set --subscription <subscription id>
     ```
 
-- Create an Azure Database for MySQL flexible server instance if you haven't already created one by using the `az mysql flexible-server create` command.
+- Create an Azure Database for MySQL Flexible Server instance if you haven't already created one by using the `az mysql flexible-server create` command.
 
     ```azurecli
     az mysql flexible-server create --resource-group myresourcegroup --name myservername

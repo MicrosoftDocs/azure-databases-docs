@@ -4,7 +4,7 @@ description: This article describes the compute options in Azure Database for Po
 author: kabharati
 ms.author: kabharati
 ms.reviewer: maghan
-ms.date: 05/01/2024
+ms.date: 12/16/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: conceptual
@@ -24,18 +24,18 @@ You can create an Azure Database for PostgreSQL flexible server instance in one 
 | vCores | 1, 2, 4, 8, 12, 16, 20 | 2, 4, 8, 16, 32, 48, 64, 96 | 2, 4, 8, 16, 20 (v4/v5), 32, 48, 64, 96 |
 | Memory per vCore | Variable | 4 GiB | 6.75 GiB to 8 GiB |
 | Storage size | 32 GiB to 64 TiB | 32 GiB to 64 TiB | 32 GiB to 64 TiB |
-| Automated Database backup retention period | 7 to 35 days | 7 to 35 days | 7 to 35 days |
-| Long term Database backup retention period | up to 10 years | up to 10 years | up to 10 years |
+| Automated database backup retention period | 7 to 35 days | 7 to 35 days | 7 to 35 days |
+| Long term database backup retention period | up to 10 years | up to 10 years | up to 10 years |
 
-To choose a pricing tier, use the following table as a starting point:
+To help you choose the pricing tier that better adjusts to your needs, use the guidelines provided in the following table as a starting point:
 
 | Pricing tier | Target workloads |
 | :--- | :--- |
 | Burstable | Workloads that don't need the full CPU continuously. |
-| General Purpose | Most business workloads that require balanced compute and memory with scalable I/O throughput. Examples include servers for hosting web and mobile apps and other enterprise applications. |
-| Memory Optimized | High-performance database workloads that require in-memory performance for faster transaction processing and higher concurrency. Examples include servers for processing real-time data and high-performance transactional or analytical apps. |
+| General Purpose | Most business workloads that require balanced compute and memory with scalable I/O throughput. Examples include servers for hosting web and mobile applications and other enterprise applications. |
+| Memory Optimized | High-performance database workloads that require in-memory performance for faster transaction processing and higher concurrency. Examples include servers for processing real-time data and high-performance transactional or analytical applications. |
 
-After you create a server for the compute tier, you can change the number of vCores (up or down) and the storage size (up) in seconds. You also can independently adjust the backup retention period up or down. For more information, see the [Scaling resources in Azure Database for PostgreSQL flexible server](concepts-scaling-resources.md) page.
+After you create a server for the compute tier, you can change the number of vCores (up or down) and the storage size (up) in seconds. You can also increase or decrease the backup retention period independently. For more information, see [scaling resources in Azure Database for PostgreSQL - Flexible Server](concepts-scaling-resources.md).
 
 ## Compute tiers, vCores, and server types
 
@@ -88,15 +88,27 @@ The detailed specifications of the available server types are as follows:
 | E64ds_v5 / E64ads_v4 | 64 | 512 GiB | 80,000 | 1200 MiB/sec |
 | E96ds_v5 /E96ads_v5 | 96 | 672 GiB | 80,000 | 1200 MiB/sec |
 > [!IMPORTANT]  
-> Minimum and maximum IOPS are also determined by the storage tier so please choose a storage tier and instance type that can scale as per your workload requirements.
+> Minimum and maximum IOPS are also determined by the storage tier, so please choose a storage tier and instance type that can scale as per your workload requirements.
 
 ## Price
 
-For the most up-to-date pricing information, see the [Azure Database for PostgreSQL flexible server pricing](https://azure.microsoft.com/pricing/details/postgresql/flexible-server/) page. The [Azure portal](https://portal.azure.com/#create/Microsoft.PostgreSQLServer) shows the monthly cost on the **Pricing tier** tab, based on the options that you select.
+For the most up-to-date pricing information, see [Azure Database for PostgreSQL - Flexible Server pricing](https://azure.microsoft.com/pricing/details/postgresql/flexible-server/).
 
-If you don't have an Azure subscription, you can use the Azure pricing calculator to get an estimated price. On the [Azure pricing calculator](https://azure.microsoft.com/pricing/calculator/) website, select **Add items**, expand the **Databases** category, and then select **Azure Database for PostgreSQL** to customize the options.
+[Azure portal](https://portal.azure.com/#create/Microsoft.PostgreSQLServer) also shows you an estimation of the monthly costs of a server configuration, based on the options selected.
+
+That estimation can be seen throughout the server creation experience, in the **New Azure Database for PostgreSQL Flexible server** page:
+
+:::image type="content" source="./media/concepts-compute/new-server-estimated-costs.png" alt-text="Screenshot that shows the estimated monthly costs in the New Azure Database for PostgreSQL Flexible server wizard." lightbox="./media/concepts-compute/new-server-estimated-costs.png":::
+
+It can also be seen for existing servers if, in the resource menu of an existing instance, under the **Settings** section, you select **Compute + storage**:
+
+:::image type="content" source="./media/concepts-compute/existing-server-estimated-costs.png" alt-text="Screenshot that shows the estimated monthly costs in the Compute + storage page of an existing Azure Database for PostgreSQL flexible server instance." lightbox="./media/concepts-compute/existing-server-estimated-costs.png":::
+
+If you don't have an Azure subscription, you can use the Azure pricing calculator to get an estimated price. In the [Azure pricing calculator](https://azure.microsoft.com/pricing/calculator/) website, select **Databases** category, and then select **Azure Database for PostgreSQL** to add the service to your estimate and then customize the options.
+
+[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
 
 ## Related content
 
-- [Manage Azure Database for PostgreSQL - Flexible Server using the Azure portal](how-to-manage-server-portal.md)
+- [Manage Azure Database for PostgreSQL - Flexible Server](how-to-manage-server-portal.md)
 - [Limits in Azure Database for PostgreSQL - Flexible Server](concepts-limits.md)
