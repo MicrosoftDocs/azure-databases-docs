@@ -650,13 +650,13 @@
   - name: Migrate from Oracle
     items:
       - name: Migration Concepts
-        href: migrate/migration-service/concepts-oracle-migration.md
+        href: migrate/concepts-oracle-migration.md
       - name: Migration Stages
-        href: migrate/migration-service/concepts-oracle-migration-stages.md
+        href: migrate/concepts-oracle-migration-stages.md
       - name: Best Practices
-        href: migrate/migration-service/best-practices-oracle-to-postgresql.md
+        href: migrate/best-practices-oracle-to-postgresql.md
       - name: Pre-migration Checklist
-        href: migrate/migration-service/best-practices-oracle-to-postgresql-checklist.md
+        href: migrate/best-practices-oracle-to-postgresql-checklist.md
       - name: Migrate using Ora2Pg
         href: migrate/how-to-migrate-from-oracle.md
 - name: Azure Database for PostgreSQL - Single Server
