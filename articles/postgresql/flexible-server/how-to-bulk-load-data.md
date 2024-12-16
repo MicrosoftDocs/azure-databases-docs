@@ -8,6 +8,7 @@ ms.date: 12/16/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: how-to
+ai.usage: ai-assisted
 ---
 
 # Best practices to bulk upload data to Azure Database for PostgreSQL - Flexible Server
