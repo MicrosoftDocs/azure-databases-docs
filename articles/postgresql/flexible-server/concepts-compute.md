@@ -24,8 +24,8 @@ You can create an Azure Database for PostgreSQL flexible server instance in one 
 | vCores | 1, 2, 4, 8, 12, 16, 20 | 2, 4, 8, 16, 32, 48, 64, 96 | 2, 4, 8, 16, 20 (v4/v5), 32, 48, 64, 96 |
 | Memory per vCore | Variable | 4 GiB | 6.75 GiB to 8 GiB |
 | Storage size | 32 GiB to 64 TiB | 32 GiB to 64 TiB | 32 GiB to 64 TiB |
-| Automated Database backup retention period | 7 to 35 days | 7 to 35 days | 7 to 35 days |
-| Long term Database backup retention period | up to 10 years | up to 10 years | up to 10 years |
+| Automated database backup retention period | 7 to 35 days | 7 to 35 days | 7 to 35 days |
+| Long term database backup retention period | up to 10 years | up to 10 years | up to 10 years |
 
 To help you choose the pricing tier that better adjusts to your needs, use the guidelines provided in the following table as a starting point:
 
