@@ -102,5 +102,5 @@ Effectively using oracle_fdw can potentially help in simplifying the database tr
 
  - [Oracle to Azure PostgreSQL migration playbook](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20Azure%20Database%20for%20PostgreSQL%20Migration%20Playbook.pdf)
  - [Oracle to Azure PostgreSQL migration workarounds](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20Azure%20Database%20for%20PostgreSQL%20Migration%20Workarounds.pdf)
- - [Azure Database for PostgreSQL migration partners](../partners-migration-postgresql.md)
+ - [Azure Database for PostgreSQL migration partners](./partners-migration-postgresql.md)
  - [Microsoft Partner site](https://partner.microsoft.com)
