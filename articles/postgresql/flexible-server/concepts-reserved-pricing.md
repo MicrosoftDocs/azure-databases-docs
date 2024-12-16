@@ -12,7 +12,7 @@ ms.topic: conceptual
 
 # Prepay for Azure Database for PostgreSQL - Flexible Server compute resources with reserved capacity
 
-[!INCLUDE [applies-to-postgresql-flexible-server](../includes/applies-to-postgresql-flexible-server.md)][!INCLUDE 
+[!INCLUDE [applies-to-postgresql-flexible-server](../includes/applies-to-postgresql-flexible-server.md)][!INCLUDE]
 
 Azure Database for PostgreSQL flexible server helps you save money by prepaying for compute resources, compared to pay-as-you-go prices. With Azure Database for PostgreSQL flexible server reserved capacity, you make an upfront commitment on Azure Database for PostgreSQL flexible server for a one-year or three-year period. This commitment gives you a significant discount on the compute costs.
 
