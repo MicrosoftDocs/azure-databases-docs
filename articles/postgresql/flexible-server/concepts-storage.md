@@ -56,7 +56,7 @@ All Premium SSD v2 disks have a baseline throughput of 125 MB/s that is free of 
 
 #### Premium SSD v2 - Limitations during preview
 
-- [High availability](/azure/reliability/reliability-postgresql-flexible-server), [read replicas](concepts-read-replicas.md), [geographically redundant backups](concepts-geo-disaster-recovery.md), [data encryption with customer managed keys](concepts-data-encryption.md), or [storage autogrowth](#storage-autogrow-limitations-and-considerations) features aren't supported for Premium SSD v2.
+- [High availability](/azure/reliability/reliability-postgresql-flexible-server), [read replicas](concepts-read-replicas.md), [geographically redundant backups](concepts-geo-disaster-recovery.md), [data encryption with customer managed keys](concepts-data-encryption.md), or [storage autogrowth](#limitations-and-considerations-of-storage-autogrowth) features aren't supported for Premium SSD v2.
 
 - Online migration from Premium SSD (PV1) to Premium SSD v2 (PV2) isn't supported. As an alternative, if you want to migrate across the different storage types, you can perform a [point-in-time-restore](concepts-backup-restore.md#point-in-time-recovery) of your existing server to a new one that is provisioned with a different storage type.
 
