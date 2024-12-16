@@ -227,7 +227,7 @@ After the feature is enabled and the materialized view builder is provisioned, y
     1. Create a variable for the name of the materialized view and source database name:
 
         ```azurecli
-        # This should match the resource id you defined in your json file
+        # This should match the resource ID you defined in your json file
         $materializedViewName = "mv-target"
         
         # Database name for the source and view containers
@@ -243,7 +243,7 @@ After the feature is enabled and the materialized view builder is provisioned, y
         $subscriptionId = "<Subscription id>"
         ```
 
-    1. Construct the resource id using these variables.
+    1. Construct the resource ID using these variables.
 
         ```azurecli
         $accountId = "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/$accountName"

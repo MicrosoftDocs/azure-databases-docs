@@ -122,7 +122,7 @@ There are a few limitations with the Azure Cosmos DB for NoSQL API materialized 
   - Materialized views can't be enabled on an account that has availability zone-enabled regions.
   - Adding a new region with an availability zone isn't supported after materialized views are enabled on an account.
 - Periodic backup and restore
-  - Materialized views aren't automatically restored during the restore process. You must enable the materialized views feature on the restored account after the restore process is finished. Then, can you can create the materialized views and builder again.
+  - Materialized views aren't automatically restored during the restore process. You must enable the materialized views feature on the restored account after the restore process is finished. Then, you can create the materialized views and builder again.
 
 ## Next steps
 
