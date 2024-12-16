@@ -34,7 +34,7 @@ After you create an Azure Database for the MySQL server, you can use the first s
 
 1. Get the connection information and admin user name.
 
-To connect to your database server, you need the full server name and admin sign-in credentials. You can easily find the server name and sign-in information on the server Overview or the Properties page in the Azure portal.
+   To connect to your database server, you need the full server name and admin sign-in credentials. You can easily find the server name and sign-in information on the server Overview or the Properties page in the Azure portal.
 
 1. Use the admin account and password to connect to your database server. Use your preferred client tool, MySQL Workbench, mysql.exe, or HeidiSQL.
 
