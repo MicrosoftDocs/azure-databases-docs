@@ -120,7 +120,6 @@ The `cron_schedule_in_database` function allows for the user name as an optional
 The `pg_failover_slots` extension enhances Azure Database for PostgreSQL flexible server when operating with both logical replication and high availability enabled servers. It effectively addresses the challenge within the standard PostgreSQL engine that doesn't preserve logical replication slots after a failover. Maintaining these slots is critical to prevent replication pauses or data mismatches during primary server role changes, ensuring operational continuity and data integrity.
 
 The extension streamlines the failover process by managing the necessary transfer, cleanup, and synchronization of replication slots, thus providing a seamless transition during server role changes.
-The extension is supported for PostgreSQL versions 11 to 16.
 
 You can find more information and instructions on using the `pg_failover_slots` extension on its [GitHub page](https://github.com/EnterpriseDB/pg_failover_slots).
 
@@ -271,6 +270,6 @@ The extensions `anon`, `Apache AGE`, `dblink`, `orafce`, `pgaudit`, `postgres_fd
 
 ## Related contents
 
-- [how to use extensions](how-to-allow-extensions.md)
-- [list of extensions by name](concepts-extensions-versions.md)
-- [list of extensions by version of PostgreSQL](concepts-extensions-by-engine.md)
+- [How to use extensions](how-to-allow-extensions.md)
+- [List of extensions by name](concepts-extensions-versions.md)
+- [List of extensions by version of PostgreSQL](concepts-extensions-by-engine.md)
