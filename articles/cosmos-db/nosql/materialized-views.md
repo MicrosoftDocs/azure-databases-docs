@@ -79,7 +79,7 @@ The materialized views builder is available in the following sizes:
 | **D16s**     | **16**   | **64 GB** |
 
 > [!TIP]
-> Once created, you can add or remove builder nodes, but you can't modify the size of the nodes. To change the size of your materialized view builder nodes you can deprovision the builder and provision it again in a different size. This will result in a short period of downtime, and you should rebuild your views to ensure they're consistent with the source container.
+> Once created, you can add or remove builder nodes, but you can't modify the size of the nodes. To change the size of your materialized view builder nodes you can deprovision the builder and provision it again in a different size. Views don't need to be re-created and will catch up to the source once the builder is provisioned again.
 
 ### Materialized views builders in multi-region accounts
 
