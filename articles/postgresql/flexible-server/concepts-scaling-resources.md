@@ -3,7 +3,7 @@ title: Scaling resources
 description: This article describes the resource scaling in Azure Database for PostgreSQL flexible server.
 author: varun-dhawan
 ms.author: varundhawan
-ms.date: 12/7/2024
+ms.date: 12/16/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: conceptual
@@ -48,7 +48,7 @@ Typically, this process could take anywhere between 2 to 10 minutes with regular
 
 When you update your Azure Database for PostgreSQL flexible server instance in scaling scenarios, we create a new copy of your server (VM) with the updated configuration. We synchronize it with your current one, and switch to the new copy with a 30-second interruption. Then we retire the old server. The process occurs all at no extra cost to you. 
 
-This process allows for seamless updates while minimizing downtime and ensuring cost-efficiency. This scaling process is triggered when changes are made to the storage and compute tiers. This feature is only available on non-HA servers and is enabled in all Azure regions. *No customer action is required* to use this capability.
+This process allows for seamless updates while minimizing downtime and ensuring cost-efficiency. This scaling process is triggered when changes are made to the storage and compute tiers. *No customer action is required* to use this capability.
 
 For read replica configured servers, scaling operations must follow a specific sequence to ensure data consistency and minimize downtime. For details about that sequence, refer to [scaling with read replicas](./concepts-read-replicas.md#scale).
 
