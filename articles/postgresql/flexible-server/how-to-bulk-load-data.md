@@ -215,23 +215,23 @@ The `number_of_scans`, `tuples_read`, and `tuples_fetched` columns would indicat
 
 During peak business hours, arrive at a value by doing the following:
 
-    a. Take the current WAL log sequence number (LSN) by running the following query:
+a. Take the current WAL log sequence number (LSN) by running the following query:
 
-        ```sql
-        SELECT pg_current_wal_lsn ();
-        ```
+    ```sql
+    SELECT pg_current_wal_lsn ();
+    ``` 
 
-    b. Wait for the `checkpoint_timeout` number of seconds. Take the current WAL LSN by running the following query:
-    
-        ```sql
-        SELECT pg_current_wal_lsn ();
-        ```
+b. Wait for the `checkpoint_timeout` number of seconds. Take the current WAL LSN by running the following query:
 
-    c. Use the two results to check the difference in GB:
+    ```sql
+    SELECT pg_current_wal_lsn ();
+    ```
 
-        ```sql
-        SELECT round (pg_wal_lsn_diff('LSN value when running the second time','LSN value when run the first time')/1024/1024/1024,2) WAL_CHANGE_GB;
-        ```
+c. Use the two results to check the difference in GB:
+
+    ```sql
+    SELECT round (pg_wal_lsn_diff('LSN value when running the second time','LSN value when run the first time')/1024/1024/1024,2) WAL_CHANGE_GB;
+    ```
 
 - `wal_compression`: This can be turned on. Enabling this parameter can incur an extra CPU cost for compressing during WAL logging and decompressing during WAL replay.
 
