@@ -88,8 +88,10 @@ Salted Challenge Response Authentication Mechanism (SCRAM) is a password-based m
 > [!NOTE]  
 > SCRAM authentication is also supported when connected to the built-in managed [PgBouncer](concepts-pgbouncer.md). Above tutorial is valid for setting up connectivity using SCRAM authentication via built-in PgBouncer feature.
 
+[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
+
 ## Related content
 
-- [Create and manage Azure Database for PostgreSQL - Flexible Server virtual network using Azure CLI](./how-to-manage-virtual-network-cli.md)
-- [Networking in Azure Database for PostgreSQL - Flexible Server](./concepts-networking.md)
-- [Azure Database for PostgreSQL - Flexible Server firewall rules](./concepts-networking.md#public-access-allowed-ip-addresses)
+- [Create and manage Azure Database for PostgreSQL - Flexible Server virtual network using Azure CLI](how-to-manage-virtual-network-cli.md).
+- [Networking in Azure Database for PostgreSQL - Flexible Server](concepts-networking.md).
+- [Azure Database for PostgreSQL - Flexible Server firewall rules](concepts-networking.md#public-access-allowed-ip-addresses).
