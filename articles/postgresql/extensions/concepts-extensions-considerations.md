@@ -272,6 +272,6 @@ The extensions `anon`, `Apache AGE`, `dblink`, `orafce`, `pgaudit`, `postgres_fd
 
 ## Related content
 
-- [How to use extensions](how-to-allow-extensions.md)
-- [List of extensions by name](concepts-extensions-versions.md)
-- [List of extensions by version of PostgreSQL](concepts-extensions-by-engine.md)
+- [How to use extensions](how-to-allow-extensions.md).
+- [Special considerations with extensions](concepts-extensions-considerations.md).
+- [List of extensions by name](concepts-extensions-versions.md).

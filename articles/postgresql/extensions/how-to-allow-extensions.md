@@ -1,6 +1,6 @@
 ---
-title: How to Use PostgreSQL Extensions in Azure Database for PostgreSQL
-description: Introduction to the PostgreSQL Extensions for Azure Database for PostgreSQL.
+title: How to manage PostgreSQL extensions in Azure Database for PostgreSQL - Flexible Server
+description: Introduction to the PostgreSQL extensions in Azure Database for PostgreSQL - Flexible Server.
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
@@ -10,7 +10,7 @@ ms.subservice: flexible-server
 ms.topic: how-to
 ---
 
-# How to use PostgreSQL extensions for Azure Database for PostgreSQL
+# Manage PostgreSQL extensions in Azure Database for PostgreSQL - Flexible Server
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
@@ -32,7 +32,7 @@ Using the [Azure portal](https://portal.azure.com):
 
 #### [Azure CLI](#tab/allow-extensions-cli)
 
-You can allow extensions via the CLI parameter set [command](/cli/azure/postgres/flexible-server/parameter?view=azure-cli-latest&preserve-view=true).
+You can allow extensions via the CLI parameter set [command](/cli/azure/postgres/flexible-server/parameter&preserve-view=true).
 
 ```azurecli
     az postgres flexible-server parameter set --resource-group <resource_group>  --server-name <server> --subscription <subscription_id> --name azure.extensions --value <extension_name>,<extension_name>
@@ -95,13 +95,13 @@ Using the [Azure portal](https://portal.azure.com):
 
 #### [Azure CLI](#tab/load-libraries-cli)
 
-You can set `shared_preload_libraries` using the CLI [parameter set](/cli/azure/postgres/flexible-server/parameter?view=azure-cli-latest#az-postgres-flexible-server-parameter-set) command.
+You can set `shared_preload_libraries` using the CLI [parameter set](/cli/azure/postgres/flexible-server/parameter#az-postgres-flexible-server-parameter-set) command.
 
 ```azurecli
 az postgres flexible-server parameter set --resource-group <resource_group> --server-name <server> --name shared_preload_libraries --value <extension_name>,<extension_name>
 ```
 
-And can restart the server using the CLI [parameter set](/cli/azure/postgres/flexible-server?view=azure-cli-latest#az-postgres-flexible-server-restart) command.
+And can restart the server using the CLI [parameter set](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-restart) command.
 
 ```azurecli
 az postgres flexible-server restart --resource-group <resource_group> --name <server>
@@ -175,7 +175,6 @@ This error occurs when the user that runs a `DROP EXTENSION` command isn't a mem
 
 ## Related content
 
-- [Special considerations with extensions](concepts-extensions-considerations.md)
-- [List of extensions by name](concepts-extensions-versions.md)
-- [List of extensions by version of PostgreSQL](concepts-extensions-by-engine.md)
-- [Feedback forum](https://aka.ms/pgfeedback)
+- [How to use extensions](how-to-allow-extensions.md).
+- [Special considerations with extensions](concepts-extensions-considerations.md).
+- [List of extensions by name](concepts-extensions-versions.md).

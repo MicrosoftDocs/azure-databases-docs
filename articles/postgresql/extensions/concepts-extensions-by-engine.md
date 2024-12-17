@@ -539,15 +539,10 @@ The following extensions are available for the Azure Database for the PostgreSQL
 
 ::: zone-end
 
-
-
-
-
 [Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
 
 ## Related content
 
-- [How to use extensions](how-to-allow-extensions.md)
-- [Special considerations with extensions](concepts-extensions-considerations.md)
-- [List of extensions by name](concepts-extensions-versions.md)
-- [Feedback forum](https://aka.ms/pgfeedback)
+- [How to use extensions](how-to-allow-extensions.md).
+- [Special considerations with extensions](concepts-extensions-considerations.md).
+- [List of extensions by name](concepts-extensions-versions.md).
