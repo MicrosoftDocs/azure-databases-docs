@@ -212,9 +212,10 @@ Finalize Aggregate (cost=180185.84..180185.85 rows=1 width=4) (actual time=10387
 
 [Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
 
-## Related contents
+## Related content
 
-- [autovacuum tuning](how-to-autovacuum-tuning.md)
-- [high CPU utilization](how-to-high-cpu-utilization.md)
-- [high memory utilization](how-to-high-memory-utilization.md)
-- [server parameters](concepts-server-parameters.md)
+- [Troubleshoot high CPU utilization in Azure Database for PostgreSQL - Flexible Server](how-to-high-cpu-utilization.md).
+- [Troubleshoot high IOPS utilization in Azure Database for PostgreSQL - Flexible Server](how-to-high-io-utilization.md).
+- [Troubleshoot high memory utilization in Azure Database for PostgreSQL - Flexible Server](how-to-high-memory-utilization.md).
+- [Server parameters in Azure Database for PostgreSQL - Flexible Server](concepts-server-parameters.md).
+- [Autovacuum tuning in Azure Database for PostgreSQL - Flexible Server](./how-to-autovacuum-tuning.md).
