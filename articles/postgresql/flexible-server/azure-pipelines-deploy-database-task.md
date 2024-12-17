@@ -21,9 +21,9 @@ You can automatically deploy your database updates to Azure Database for Postgre
 ## Prerequisites
 
 - An Azure account. If you don't have one, [get a free trial](https://azure.microsoft.com/free/).
-- [Azure Resource Manager service connection](/azure/devops/pipelines/library/connect-to-azure) to your Azure account
+- [Azure Resource Manager service connection](/azure/devops/pipelines/library/connect-to-azure) to your Azure account.
 - Microsoft hosted agents have Azure CLI preinstalled. However if you're using private agents, [install Azure CLI](/cli/azure/install-azure-cli) on the computers that run the build and release agent. If an agent is already running on the machine on which the Azure CLI is installed, restart the agent to ensure all the relevant stage variables are updated.
-- Create an Azure Database for PostgreSQL flexible server instance using the [Azure portal](./quickstart-create-server-portal.md) or  [Azure CLI](./quickstart-create-server-cli.md)
+- Create an Azure Database for PostgreSQL flexible server instance using the [Azure portal](quickstart-create-server-portal.md) or  [Azure CLI](quickstart-create-server-cli.md).
 
 
 ## Use SQL file
@@ -88,14 +88,15 @@ You can see the full list of all the task inputs when using Azure CLI task with 
 |powerShellErrorActionPreference| (Optional) Prepends the line <b>$ErrorActionPreference = 'VALUE'</b> at the top of your PowerShell/PowerShell Core script. The default value is stop. Supported values are stop, continue, and silentlyContinue. |
 |addSpnToEnvironment|(Optional) Adds service principal ID and key of the Azure endpoint you chose to the script's execution environment. You can use these variables: <b>$env:servicePrincipalId, $env:servicePrincipalKey and $env:tenantId</b> in your script. This is honored only when the Azure endpoint has Service Principal authentication scheme. The default value is false.|
 |useGlobalConfig|(Optional) If this is false, this task uses its own separate <a href= "/cli/azure/azure-cli-configuration#cli-configuration-file">Azure CLI configuration directory</a>. This can be used to run Azure CLI tasks in <b>parallel</b> releases" <br/>Default value: false</td>
-|workingDirectory| (Optional) Current working directory where the script is run.  Empty is the root of the repo (build) or artifacts (release), which is $(System.DefaultWorkingDirectory). |
+|workingDirectory| (Optional) Current working directory where the script is run. Empty is the root of the repo (build) or artifacts (release), which is $(System.DefaultWorkingDirectory). |
 |failOnStandardError|(Optional) If this is true, this task fails when any errors are written to the StandardError stream. Unselect the checkbox to ignore standard errors and rely on exit codes to determine the status. The default value is false.|
 |powerShellIgnoreLASTEXITCODE| (Optional) If this is false, the line <code>if ((Test-Path -LiteralPath variable:\\LASTEXITCODE)) { exit $LASTEXITCODE }</code> is appended to the end of your script. This causes the last exit code from an external command to be propagated as the exit code of PowerShell. Otherwise the line isn't appended to the end of your script. The default value is false. |
 
 Having issues with CLI Task, see [how to troubleshoot Build and Release](/azure/devops/pipelines/troubleshooting/troubleshooting).
 
-## Next steps 
-Here are some related tasks that can be used to deploy with Azure Pipelines.
+[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
 
-- [Azure Resource Group Deployment](/azure/devops/pipelines/tasks/deploy/azure-resource-group-deployment)
-- [Azure Web App Deployment](/azure/devops/pipelines/tasks/deploy/azure-rm-web-app-deployment)
+## Related content
+
+- [Azure Resource Group Deployment](/azure/devops/pipelines/tasks/deploy/azure-resource-group-deployment).
+- [Azure Web App Deployment](/azure/devops/pipelines/tasks/deploy/azure-rm-web-app-deployment).

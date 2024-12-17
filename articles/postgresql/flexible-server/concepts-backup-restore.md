@@ -261,7 +261,7 @@ For more information about performing a long term backup, visit the [how-to guid
     - Locally redundant storage, in regions that don't support multiple zones yet. 
     - The paired region, if you configure  geo-redundant backup.
     
-    These backup files can't be exported. 
+    These backup files can't be exported as they are stored in Microsoft-managed storage accounts. Customers have read-only access to restore these files but cannot modify or delete them. The backup files are automatically deleted after the retention period
     
     You can use backups to restore your server to a point in time only. The default backup retention period is 7 days. You can optionally configure the backup retention up to 35 days. 
 
