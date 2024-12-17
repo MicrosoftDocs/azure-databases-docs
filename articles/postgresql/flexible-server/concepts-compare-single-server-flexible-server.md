@@ -126,9 +126,11 @@ The following table provides a list of high-level features and capabilities comp
 | Major version upgrades support | No | Yes |
 | Minor version upgrades | Yes. Automatic during maintenance window | Yes. Automatic during maintenance window |
 
+[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
 
-## Next steps
+## Related content
 
-- Understand [what’s available for compute and storage options - Azure Database for PostgreSQL - Flexible Server](concepts-compute-storage.md)
-- Learn about [supported PostgreSQL database versions - Azure Database for PostgreSQL - Flexible Server](concepts-supported-versions.md)
-- Learn about [current limitations in Azure Database for PostgreSQL flexible server](concepts-limits.md)
+- [Compute options in Azure Database for PostgreSQL - Flexible Server](concepts-compute.md).
+- [Storage options in Azure Database for PostgreSQL - Flexible Server](concepts-storage.md).
+- [Supported versions of PostgreSQL in Azure Database for PostgreSQL - Flexible Server](concepts-supported-versions.md).
+- [Limits in Azure Database for PostgreSQL - Flexible Server](concepts-limits.md).
