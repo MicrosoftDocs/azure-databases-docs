@@ -90,7 +90,7 @@ The physical database files are first restored from the snapshot backups to the 
 
 For example, assume that the backups are performed at 11:00 PM every night. If the restore point is for August 15 at 10:00 AM, the daily backup of August 14 is restored. The database will be recovered until 10:00 AM of August 15 by using the transaction log backup from August 14, 11:00 PM, to August 15, 10:00 AM. 
 
-To restore your database server, see [these steps](./how-to-restore-server-portal.md).
+To restore your database server, see [these steps](how-to-restore-server-portal.md).
 
 > [!IMPORTANT]
 > A restore operation in Azure Database for PostgreSQL flexible server always creates a new database server with the name that you provide. It doesn't overwrite the existing database server.
@@ -119,7 +119,7 @@ If you configure your server within a virtual network, you can restore to the sa
 
 ## Geo-redundant backup and restore
 
-To enable geo-redundant backup from the **Compute + storage** pane in the Azure portal, see the [quickstart guide](./quickstart-create-server-portal.md). 
+To enable geo-redundant backup from the **Compute + storage** pane in the Azure portal, see the [quickstart guide](quickstart-create-server-portal.md). 
 
 >[!IMPORTANT]
 > Geo-redundant backup can be configured only at the time of server creation. 
@@ -163,7 +163,7 @@ After you restore the server, you can perform the following tasks to get your us
 
 - If the new server is meant to replace the original server, redirect clients and client applications to the new server. Change the server name of your connection string to point to the new server.
 
-- The values of all [server parameters](./concepts-server-parameters.md) on the original server are not automatically applied to the new server. Ensure that all server parameters on the new server are re-configured as per the requirements of that new server.
+- The values of all [server parameters](concepts-server-parameters.md) on the original server are not automatically applied to the new server. Ensure that all server parameters on the new server are re-configured as per the requirements of that new server.
 
 - Ensure that appropriate server-level firewall, private endpoints and virtual network rules are in place for user connections. In *public access* network, rules are copied over from the original server, but those might not be the ones required in the restored environment. So, adjust them as per your requirements. Private endpoints are not carried over. Create any private endpoints you may need in the restored server. In *private access* virtual network, the restore doesn't copy over any network infrastructure artifacts from source to restored server networks. Anything related to configuration of VNET(Virtual Network), subnets, or Network Security Groups, must be taken care of as a post-restore task.
   
@@ -173,9 +173,9 @@ After you restore the server, you can perform the following tasks to get your us
 
 - Configure alerts as appropriate.
   
-- If the source server from which you restored was configured with high availability, and you want to configure the restored server with high availability, you can then follow [these steps](./how-to-manage-high-availability-portal.md).
+- If the source server from which you restored was configured with high availability, and you want to configure the restored server with high availability, you can then follow [these steps](how-to-manage-high-availability-portal.md).
 
-- If the source server from which you restored was configured with read replicas, and you want to configure read replicas on the restored server, you can then follow [these steps](./how-to-read-replicas-portal.md).
+- If the source server from which you restored was configured with read replicas, and you want to configure read replicas on the restored server, you can then follow [these steps](how-to-read-replicas-portal.md).
  
 ## On-demand Backups (preview)
 
@@ -183,7 +183,7 @@ Azure Database for PostgreSQL Flexible Server automatically generates storage vo
 
 On-demand backups can be taken in addition to scheduled automatic backups. These backups are retained according to your backup retention window. You can delete these on-demand backups at any time if they are no longer needed. To initiate an on-demand backup, simply select the database instance you wish to back up and specify a backup name. These backups are stored alongside automated backups, but only on-demand backups can be deleted by users, as automated backups are managed and retained by the Flexible Server service to meet backup retention requirements.
 
- For more information about performing an on-demand backup, visit the [how-to guide](./how-to-perform-on-demand-backup-portal.md).
+ For more information about performing an on-demand backup, visit the [how-to guide](how-to-perform-on-demand-backup-portal.md).
 
 
 #### Limitations
@@ -343,9 +343,10 @@ For more information about performing a long term backup, visit the [how-to guid
   
     Currently, there's no way to track the restore operation. You can monitor the activity log to see if the operation is in progress or complete.
 
+[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
 
-## Next steps
+## Related content
 
--   Learn about [business continuity](./concepts-business-continuity.md).
--   Learn about [zone-redundant high availability](./concepts-high-availability.md).
--   Learn [how to restore](./how-to-restore-server-portal.md).
+- [Overview of business continuity with Azure Database for PostgreSQL - Flexible Server](concepts-business-continuity.md).
+- [High availability in Azure Database for PostgreSQL - Flexible Server](/azure/reliability/reliability-postgresql-flexible-server).
+- [Point-in-time restore of an Azure Database for PostgreSQL - Flexible Server instance](how-to-restore-server-portal.md).
