@@ -3,7 +3,7 @@ title: Major version upgrades in Azure Database for PostgreSQL - Flexible Server
 description: Learn how to use Azure Database for PostgreSQL - Flexible Server to do in-place major version upgrades of PostgreSQL on a server.
 author: varun-dhawan
 ms.author: varundhawan
-ms.date: 12/08/2024
+ms.date: 12/17/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: conceptual
@@ -86,11 +86,15 @@ If precheck operations fail for an in-place major version upgrade, the upgrade f
 
 - Azure Database for PostgreSQL - Flexible Server requires the ability to send and receive traffic to destination ports 5432 and 6432 within the virtual network where the flexible server is deployed, and to Azure Storage for log archiving.
 
-  If you configure network security groups (NSGs) to restrict traffic to or from your flexible server within its deployed subnet, be sure to allow traffic to destination ports 5432 and 6432 within the subnet. Allow traffic to Azure Storage by using the service tag **Azure Storage** as a destination.
+    - If you configure network security groups (NSGs) to restrict traffic to or from your flexible server within its deployed subnet, be sure to allow traffic to destination ports 5432 and 6432 within the subnet. Allow traffic to Azure Storage by using the service tag **Azure Storage** as a destination.
 
-  If network rules aren't set up properly, HA isn't enabled automatically after a major version upgrade, and you should manually enable HA. Modify your NSG rules to allow traffic for the destination ports and storage, and to enable an HA feature on the server.
+      - If network rules aren't set up properly, HA isn't enabled automatically after a major version upgrade, and you should manually enable HA. Modify your NSG rules to allow traffic for the destination ports and storage, and to enable an HA feature on the server.
 
-- In-place major version upgrades don't support certain extensions, and there are some limitations to upgrading certain extensions. The following extensions are unsupported for all PostgreSQL versions: `Timescaledb`, `pgaudit`, `dblink`, `orafce`, `pg_partman`, `postgres_fdw`.
+- In-place major version upgrades don't support certain extensions, and there are some limitations to upgrading certain extensions. 
+- 
+    - The following extensions are unsupported for all PostgreSQL versions: `Timescaledb`, `pgaudit`, `dblink`, `orafce`, `pg_partman`, `postgres_fdw`.
+  
+    - `pgrouting` extensions in not unsupported when the upgrade target is Postgres 16 and above.
 
 - When you're upgrading servers with the PostGIS extension installed, set the `search_path` server parameter to explicitly include:
   
@@ -100,6 +104,7 @@ If precheck operations fail for an in-place major version upgrade, the upgrade f
 
 - Servers configured with logical replication slots aren't supported.
 - Servers using SSDv2 storage don't support Major Version Upgrades.
+- Server using views dependent on `pg_stat_activity` aren't supported.
 
 [Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
 
