@@ -407,4 +407,4 @@ PostgreSQL allows you to specify time zones in three different forms:
 [Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
 
 ## Related contents
-- [overview of server parameters](concepts-server-parameters.md)
+- [Server parameters in Azure Database for PostgreSQL - Flexible Server](concepts-server-parameters.md).
