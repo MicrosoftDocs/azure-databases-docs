@@ -117,5 +117,6 @@ az postgres flexible-server create --resource-group <resource_group> --name <ser
 
 [Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
 
-## Related contents
-- [service limits](concepts-limits.md).
+## Related content
+
+- [Limits in Azure Database for PostgreSQL - Flexible Server](concepts-limits.md).

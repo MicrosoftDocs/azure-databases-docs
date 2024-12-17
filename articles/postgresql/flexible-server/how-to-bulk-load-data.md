@@ -149,7 +149,7 @@ We always recommend that you partition large tables. Some advantages of partitio
 
 ### Maintain up-to-date table statistics
 
-Monitoring and maintaining table statistics is important for query performance on the database, including scenarios with incremental loads. PostgreSQL uses the autovacuum daemon process to clean up dead tuples and analyze the tables to keep the statistics updated. For more information, see [Autovacuum monitoring and tuning](./how-to-autovacuum-tuning.md).
+Monitoring and maintaining table statistics is important for query performance on the database. This also includes scenarios where you have incremental loads. PostgreSQL uses the autovacuum daemon process to clean up dead tuples and analyze the tables to keep the statistics updated. For more information, see [Autovacuum monitoring and tuning](how-to-autovacuum-tuning.md).
 
 ### Create indexes on foreign key constraints
 
@@ -165,7 +165,7 @@ You can identify unused indexes in two ways: by Query Store and an index usage q
 
 **Query Store**
 
-The Query Store feature helps identify indexes that can be dropped based on database query usage patterns. See [Query Store](./concepts-query-store.md) for step-by-step guidance.
+The Query Store feature helps identify indexes, which can be dropped based on query usage patterns on the database. For step-by-step guidance, see [Query Store](concepts-query-store.md).
 
 After you've enabled Query Store on the server, you can use the following query to identify indexes that can be dropped by connecting to azure_sys database.
 
@@ -236,10 +236,12 @@ SELECT round (pg_wal_lsn_diff('LSN value when running the second time','LSN valu
 
 - `wal_compression`: This can be turned on. Enabling this parameter can incur an extra CPU cost for compressing during WAL logging and decompressing during WAL replay.
 
+[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
+
 ## Related content
 
-- [Troubleshoot high CPU utilization](./how-to-high-CPU-utilization.md)
-- [Troubleshoot high memory utilization](./how-to-high-memory-utilization.md)
-- [Configure server parameters](./how-to-configure-server-parameters.md)
-- [Troubleshoot and tune Autovacuum](how-to-autovacuum-tuning.md)
-- [Troubleshoot high CPU utilization](./how-to-high-io-utilization.md)
+- [Troubleshoot high CPU utilization in Azure Database for PostgreSQL - Flexible Server](how-to-high-cpu-utilization.md).
+- [Troubleshoot high memory utilization in Azure Database for PostgreSQL - Flexible Server](how-to-high-memory-utilization.md).
+- [Troubleshoot and identify slow-running queries in Azure Database for PostgreSQL - Flexible Server](how-to-identify-slow-queries.md).
+- [Server parameters in Azure Database for PostgreSQL - Flexible Server](concepts-server-parameters.md).
+- [Autovacuum tuning in Azure Database for PostgreSQL - Flexible Server](./how-to-autovacuum-tuning.md).
