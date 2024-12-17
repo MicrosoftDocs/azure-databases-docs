@@ -4,7 +4,7 @@ description: Review the monitoring and metrics features in Azure Database for Po
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 10/30/2024
+ms.date: 12/17/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: conceptual
@@ -124,6 +124,7 @@ You can choose from the following categories of enhanced metrics:
 |---|---|---|---|---|---|
 |**Disk Bandwidth Consumed Percentage**|`disk_bandwidth_consumed_percentage`|Percent|Percentage of data disk bandwidth consumed per minute.|Doesn't apply|Yes |
 |**Disk IOPS Consumed Percentage** |`disk_iops_consumed_percentage` |Percent|Percentage of data disk I/Os consumed per minute. |Doesn't apply|Yes |
+|**Postmaster Process cpu usage (preview)**|`postmaster_process_cpu_usage_percent`|Percent|CPU utilization of Postmaster process. Not applicable for Burstable SKU.                                      |Doesn't apply|No             |
 
 ##### Traffic
 
@@ -131,7 +132,6 @@ You can choose from the following categories of enhanced metrics:
 |------------------------------------------|--------------------------------------|-------|--------------------------------------------------------------------------------------------------------------|-------------|---------------|
 |**Max Connections** ^                     |`max_connections`                     |Count  |Number of maximum connections.                                                                                |Doesn't apply|Yes            |
 |**TCP Connection Backlog (preview)**      |`tcp_connection_backlog`              |Count  |Number of pending connections that exceed the PostgreSQL server's capacity. Applicable for 8 vCores and above.|State        |No             |
-|**Postmaster Process cpu usage (preview)**|`postmaster_process_cpu_usage_percent`|Percent|CPU utilization of Postmaster process. Not applicable for Burstable SKU.                                      |Doesn't apply|No             |
 
 
 ^ **Max Connections** represents the configured value for the `max_connections` server parameter. This metric is polled every 30 minutes.
