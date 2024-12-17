@@ -23,7 +23,7 @@ You can automatically deploy your database updates to Azure Database for Postgre
 - An Azure account. If you don't have one, [get a free trial](https://azure.microsoft.com/free/).
 - [Azure Resource Manager service connection](/azure/devops/pipelines/library/connect-to-azure) to your Azure account
 - Microsoft hosted agents have Azure CLI preinstalled. However if you are using private agents, [install Azure CLI](/cli/azure/install-azure-cli) on the computer(s) that run the build and release agent. If an agent is already running on the machine on which the Azure CLI is installed, restart the agent to ensure all the relevant stage variables are updated.
-- Create an Azure Database for PostgreSQL flexible server instance using the [Azure portal](./quickstart-create-server-portal.md) or  [Azure CLI](./quickstart-create-server-cli.md)
+- Create an Azure Database for PostgreSQL flexible server instance using the [Azure portal](quickstart-create-server-portal.md) or  [Azure CLI](quickstart-create-server-cli.md)
 
 
 ## Use SQL file
@@ -94,8 +94,9 @@ You can see the full list of all the task inputs when using Azure CLI task with 
 
 Having issues with CLI Task, see [how to troubleshoot Build and Release](/azure/devops/pipelines/troubleshooting/troubleshooting).
 
-## Next steps 
-Here are some related tasks that can be used to deploy with Azure Pipelines.
+[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
 
-- [Azure Resource Group Deployment](/azure/devops/pipelines/tasks/deploy/azure-resource-group-deployment)
-- [Azure Web App Deployment](/azure/devops/pipelines/tasks/deploy/azure-rm-web-app-deployment)
+## Related content
+
+- [Azure Resource Group Deployment](/azure/devops/pipelines/tasks/deploy/azure-resource-group-deployment).
+- [Azure Web App Deployment](/azure/devops/pipelines/tasks/deploy/azure-rm-web-app-deployment).
