@@ -96,7 +96,8 @@ You might continue to run the retired version in Azure Database for PostgreSQL f
 
 Before PostgreSQL version 10, the [PostgreSQL versioning policy](https://www.postgresql.org/support/versioning/) considered a _major version_ upgrade to be an increase in the first _or_ second number. For example, 9.5 to 9.6 was considered a _major_ version upgrade. As of version 10, only a change in the first number is considered a major version upgrade. For example, 10.0 to 10.1 is a _minor_ release upgrade. Version 10 to 11 is a _major_ version upgrade.
 
-## Next steps
+[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
 
-- See Azure Database for PostgreSQL single server [supported versions](../single-server/concepts-supported-versions.md).
-- See Azure Database for PostgreSQL flexible server [supported versions](concepts-supported-versions.md).
+## Related content
+
+- [Supported versions of PostgreSQL in Azure Database for PostgreSQL - Flexible Server](concepts-supported-versions.md).
