@@ -174,7 +174,7 @@ Before you try to access your SSL-enabled server from a client application, make
 *SSL connection (protocol: TLSv1.2, cipher: ECDHE-RSA-AES256-GCM-SHA384, bits: 256, compression: off)*
 *Type "help" for help.*
 
-You can also load the [sslinfo extension](./concepts-extensions.md) and then call the `ssl_is_used()` function to determine if SSL is being used. The function returns `t` if the connection is using SSL. Otherwise, it returns `f`.
+You can also load the [sslinfo extension](concepts-extensions.md) and then call the `ssl_is_used()` function to determine if SSL is being used. The function returns `t` if the connection is using SSL. Otherwise, it returns `f`.
 
 ## Cipher suites
 
