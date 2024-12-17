@@ -12,13 +12,13 @@ ms.topic: conceptual
 
 # Azure Database For MySQL Flexible Server January 2025 Version Release Notes
 
-We are excited to announce the January 2025 version of Azure Database for MySQL Flexible Server. Starting January 6, 2025, all new servers will automatically be onboarded to this latest version. Existing servers will be upgraded during their next scheduled maintenance. If you prefer to upgrade your servers earlier, you can enroll in our Virtual Canary Program by following this link.
+We're excited to announce the January 2025 version of Azure Database for MySQL Flexible Server. Starting January 6, 2025, all new servers will automatically be onboarded to this latest version. Existing servers are upgraded during their next scheduled maintenance. If you prefer to upgrade your servers earlier, you can enroll in our Virtual Canary Program by following this link.
 
 This new version introduces a range of new features and enhancements, resolves known issues, and includes essential security patches to ensure optimal performance and security.
 
 ## Engine version changes
 
-All existing 8.0 major version servers will be upgraded to 8.0.40 minor version
+All existing 8.0 major version servers are upgraded to 8.0.40 minor version
 
 To check your engine version, run `SELECT VERSION();` command at the MySQL prompt, or run the following command in the Azure Cloud Shell:
 
@@ -26,7 +26,7 @@ To check your engine version, run `SELECT VERSION();` command at the MySQL promp
 az mysql flexible-server show --resource-group {resource group name} --name {server name} --query "fullVersion"
 ```
 
-Please note you must have the Azure CLI installed and updated to the latest version to run the above command.
+Note you must have the Azure CLI installed and updated to the latest version to run the above CLI command.
 
 ## Features
 
