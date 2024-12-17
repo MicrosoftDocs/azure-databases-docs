@@ -29,7 +29,7 @@ The following table provides a list of high-level features and capabilities comp
 | PostgreSQL | Community | Community |
 | Supported versions | 10, 11 | 11, 12, 13, 14, 15, 16|
 | Underlying O/S | Windows | Linux  |
-| AZ selection for application colocation | No | Yes |
+| Availability zone selection for application colocation | No | Yes |
 | Built-in connection pooler | No | Yes (PgBouncer)|
 | Uptime SLA | [99.99% SLA](https://azure.microsoft.com/support/legal/sla/postgresql)| [Up to 99.99% SLA](https://azure.microsoft.com/support/legal/sla/postgresql) |
 | **Connectivity** | | |
@@ -50,7 +50,7 @@ The following table provides a list of high-level features and capabilities comp
 | Stop/Start | No | Yes (for all compute SKUs). Only compute is stopped/started |
 | Max. Storage size | 1 TB (Basic), 4 TB or 16 TB (GP, MO). Note: Not all regions support 16 TB. | 64 TB. Note: Not all regions support 64 TB.|
 | Min storage size | 5 GB (Basic), 100 GB (GP, MO) | 32 GB |
-| Storage auto-grow | Yes | Yes |
+| Storage autogrow | Yes | Yes |
 | Max IOPS | Basic - Variable. GP/MO: up to 18 K  | Up to 80 K |
 | **Networking/Security** | | |
 | Supported networking | Virtual network, private link, public access | Private access (VNET injection in a delegated subnet), public access |
@@ -102,7 +102,7 @@ The following table provides a list of high-level features and capabilities comp
 | System scheduled window | Yes | Yes |
 | Customer scheduled window | No | Yes (can choose any 1 hr on any day) |
 | Notice period | Three days | Five days |
-| Maintenance period | Anytime within 15-hrs window | 1 hr window | 
+| Maintenance period | Anytime within 15-hrs window | 1 hour window | 
 | **Metrics** | | |
 | Errors | Failed connections | Failed connections |
 | Latency | Max lag across replicas, Replica lag | Max lag across replicas, Replica lag  |
