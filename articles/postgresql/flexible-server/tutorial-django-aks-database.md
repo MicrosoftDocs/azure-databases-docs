@@ -388,5 +388,5 @@ az group delete --name django-project --yes --no-wait
 - Learn how to [access the Kubernetes web dashboard](/azure/aks/kubernetes-dashboard) for your AKS cluster
 - Learn how to [enable continuous deployment](/azure/aks/deployment-center-launcher)
 - Learn how to [scale your cluster](/azure/aks/tutorial-kubernetes-scale)
-- Learn how to manage your [Azure Database for PostgreSQL flexible server instance](./quickstart-create-server-cli.md)
-- Learn how to [configure server parameters](./howto-configure-server-parameters-using-cli.md) for your database server.
+- Learn how to manage your [Azure Database for PostgreSQL flexible server instance](quickstart-create-server-cli.md)
+- Learn how to [configure server parameters](howto-configure-server-parameters-using-cli.md) for your database server.
