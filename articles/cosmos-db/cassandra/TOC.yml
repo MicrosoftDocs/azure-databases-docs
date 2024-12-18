@@ -195,9 +195,6 @@
       items:
       - name: Security overview
         href: ../security.yml
-      - name: Role-based access control guide
-        displayName: RBAC, Entra
-        href: security/index.md
       - name: Considerations and guidance
         href: ../security-considerations.md
       - name: Well Architected Framework security guidance
