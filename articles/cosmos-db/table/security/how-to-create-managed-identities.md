@@ -8,17 +8,17 @@ ms.reviewer: stefarroyo
 ms.service: azure-cosmos-db
 ms.subservice: table
 ms.topic: how-to
-ms.date: 10/24/2024
+ms.date: 12/18/2024
 ms.custom: subject-msia
 zone_pivot_groups: azure-interface-portal-cli-powershell-bicep
+appliesto:
+  - ✅ Table
 hidden: true
 ROBOTS: NOINDEX, NOFOLLOW
 #Customer Intent: As a security user, I want to create managed identities for use with Azure hosting services, so that my developer team can write portable authentication code for their client.
 ---
 
 # How to use managed identities with Azure services to connect to Azure Cosmos DB for Table
-
-[!INCLUDE[Table](../../includes/appliesto-table.md)]
 
 :::image type="complex" source="media/how-to-create-managed-identities/map.svg" border="false" alt-text="Diagram of the current location ('Prepare') in the sequence of the deployment guide.":::
 Diagram of the sequence of the deployment guide including these locations, in order: Overview, Concepts, Prepare, Role-based access control, and Reference. The 'Prepare' location is currently highlighted.
