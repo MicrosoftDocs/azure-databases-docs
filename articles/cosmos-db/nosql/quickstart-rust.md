@@ -6,10 +6,10 @@ author: seesharprun
 ms.author: sidandrews
 ms.service: azure-cosmos-db
 ms.subservice: nosql
-ms.devlang: golang
+ms.devlang: rust
 ms.topic: quickstart-sdk
 ms.date: 12/18/2024
-ms.custom: devx-track-go, devx-track-extended-azdevcli
+ms.custom: devx-track-rust, devx-track-extended-azdevcli
 appliesto:
   - ✅ NoSQL
 # CustomerIntent: As a developer, I want to learn the basics of the Rust library so that I can build applications with Azure Cosmos DB for NoSQL.
@@ -52,7 +52,7 @@ Use the Azure Developer CLI (`azd`) to create an Azure Cosmos DB for Table accou
 1. Use `azd init` to initialize the project.
 
     ```azurecli
-    azd init --template cosmos-db-nosql-go-quickstart
+    azd init --template cosmos-db-nosql-rust-quickstart
     ```
 
 1. During initialization, configure a unique environment name.
@@ -108,10 +108,9 @@ The client library is available through Rust, as the `azure_data_cosmos` crate.
 
 | Name | Description |
 | --- | --- |
-| [`CosmosClient`](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/sdk/data/azcosmos#CosmosClient) | This class is the primary client class and is used to manage account-wide metadata or databases. |
-| [`CosmosDatabase`](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/sdk/data/azcosmos#CosmosDatabase) | This class represents a database within the account. |
-| [`CosmosContainer`](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/sdk/data/azcosmos#CosmosContainer) | This class is primarily used to perform read, update, and delete operations on either the container or the items stored within the container. |
-| [`PartitionKey`](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/sdk/data/azcosmos#PartitionKey) | This class represents a logical partition key. This class is required for many common operations and queries. |
+| [`CosmosClient`](https://docs.rs/azure_data_cosmos/latest/azure_data_cosmos/clients/struct.CosmosClient.html) | This type is the primary client and is used to manage account-wide metadata or databases. |
+| [`DatabaseClient`](https://docs.rs/azure_data_cosmos/latest/azure_data_cosmos/clients/struct.DatabaseClient.html) | This type represents a database within the account. |
+| [`CollectionClient`](https://docs.rs/azure_data_cosmos/latest/azure_data_cosmos/clients/struct.CollectionClient.html) | This type is primarily used to perform read, update, and delete operations on either the container or the items stored within the container. |
 
 ## Code examples
 
