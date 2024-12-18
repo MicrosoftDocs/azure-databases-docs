@@ -1,41 +1,44 @@
 ---
-title: AI-Enhanced Advertisement Generation using Azure Cosmos DB for MongoDB vCore
-titleSuffix: Azure Cosmos DB
+title: AI-enhanced advertisement generation
+titleSuffix: Azure Cosmos DB for MongoDB vCore
 description: Demonstrates the use of Azure Cosmos DB for MongoDB vCore's vector similarity search and OpenAI embeddings to generate advertising content.
 author: khelanmodi
 ms.author: khelanmodi
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: concept-article
-ms.date: 03/12/2024
+ms.date: 12/03/2024
 ms.collection:
   - ce-skilling-ai-copilot
+appliesto:
+  - ✅ MongoDB vCore
 ---
 
-# AI-Enhanced Advertisement Generation using Azure Cosmos DB for MongoDB vCore
+# AI-Enhanced advertisement generation using Azure Cosmos DB for MongoDB vCore
+
 In this guide, we demonstrate how to create dynamic advertising content that resonates with your audience, using our personalized AI assistant, Heelie. Utilizing Azure Cosmos DB for MongoDB vCore, we harness the [vector similarity search](./vector-search.md) functionality to semantically analyze and match inventory descriptions with advertisement topics. The process is made possible by generating vectors for inventory descriptions using OpenAI embeddings, which significantly enhance their semantic depth. These vectors are then stored and indexed within the Cosmos DB for MongoDB vCore resource. When generating content for advertisements, we vectorize the advertisement topic to find the best-matching inventory items. This is followed by a retrieval augmented generation (RAG) process, where the top matches are sent to OpenAI to craft a compelling advertisement. The entire codebase for the application is available in a [GitHub repository](https://aka.ms/adgen) for your reference.
 
 ## Features
+
 - **Vector Similarity Search**: Uses Azure Cosmos DB for MongoDB vCore's powerful vector similarity search to improve semantic search capabilities, making it easier to find relevant inventory items based on the content of advertisements.
 - **OpenAI Embeddings**: Utilizes the cutting-edge embeddings from OpenAI to generate vectors for inventory descriptions. This approach allows for more nuanced and semantically rich matches between the inventory and the advertisement content.
 - **Content Generation**: Employs OpenAI's advanced language models to generate engaging, trend-focused advertisements. This method ensures that the content is not only relevant but also captivating to the target audience.
 
 ## Prerequisites
+
 - Azure OpenAI: Let's setup the Azure OpenAI resource. Access to this service is currently available by application only. You can apply for access to Azure OpenAI by completing the form at https://aka.ms/oai/access. Once you have access, complete the following steps:
-    - Create an Azure OpenAI resource following this [quickstart](/azure/ai-services/openai/how-to/create-resource?pivots=web-portal).
-    - Deploy a `completions` and an `embeddings` model 
-        - For more information on `completions`, go [here](/azure/ai-services/openai/how-to/completions).
-        - For more information on `embeddings`, go [here](/azure/ai-services/openai/how-to/embeddings).
-    - Note down your endpoint, key, and deployment names.
-
+  - Create an Azure OpenAI resource following this [quickstart](/azure/ai-services/openai/how-to/create-resource?pivots=web-portal).
+  - Deploy a `completions` and an `embeddings` model.
+    - For more information on `completions`, go [here](/azure/ai-services/openai/how-to/completions).
+    - For more information on `embeddings`, go [here](/azure/ai-services/openai/how-to/embeddings).
+  - Note down your endpoint, key, and deployment names.
 - Cosmos DB for MongoDB vCore resource: Let's start by creating an Azure Cosmos DB for MongoDB vCore resource for free following this [quick start](./quickstart-portal.md) guide.
-    - Note down the connection details (connection string).
-
+  - Note down the connection details.
 - Python environment (>= 3.9 version) with packages such as `numpy`, `openai`, `pymongo`, `python-dotenv`, `azure-core`, `azure-cosmos`, `tenacity`, and `gradio`.
-
 - Download the [data file](https://github.com/jayanta-mondal/ignite-demo/blob/main/data/shoes_with_vectors.json) and save it in a designated data folder.
 
 ## Running the Script
+
 Before we dive into the exciting part of generating AI-enhanced advertisements, we need to set up our environment. This setup involves installing the necessary packages to ensure our script runs smoothly. Here’s a step-by-step guide to get everything ready.
 
 ### 1.1 Install Necessary Packages
@@ -55,7 +58,8 @@ Firstly, we need to install a few Python packages. Open your terminal and run th
 ```
 
 ### 1.2 Setting Up the OpenAI and Azure Client
-After installing the necessary packages, the next step involves setting up our OpenAI and Azure clients for the script, which is crucial for authenticating our requests to the OpenAI API and Azure services. 
+
+After installing the necessary packages, the next step involves setting up our OpenAI and Azure clients for the script, which is crucial for authenticating our requests to the OpenAI API and Azure services.
 
 ```python
 import json
@@ -80,6 +84,7 @@ client = AzureOpenAI(
 ```
 
 ## Solution architecture
+
 ![solution architecture](./media/tutorial-adgen/architecture.png)
 
 ## 2. Creating Embeddings and Setting up Cosmos DB
@@ -112,10 +117,13 @@ if embeddings is not None:
 The function takes a text input — like a product description — and uses the `client.embeddings.create` method from the OpenAI API to generate a vector embedding for that text. We're using the `text-embedding-ada-002` model here, but you can choose other models based on your requirements. If the process is successful, it prints the generated embeddings; otherwise, it handles exceptions by printing an error message.
 
 ## 3. Connect and set up Cosmos DB for MongoDB vCore
+
 With our embeddings ready, the next step is to store and index them in a database that supports vector similarity search. Azure Cosmos DB for MongoDB vCore is a perfect fit for this task because it's purpose built to store your transactional data and perform vector search all in one place. 
 
 ### 3.1 Set up the connection
+
 To connect to Cosmos DB, we use the pymongo library, which allows us to interact with MongoDB easily. The following code snippet establishes a connection with our Cosmos DB for MongoDB vCore instance:
+
 ```python
 import pymongo
 
@@ -133,6 +141,7 @@ Once you've established a connection to Azure Cosmos DB, the next steps involve 
 ### 4.1 Set Up the Database and Collection
 
 First, we create a database and a collection within our Cosmos DB instance. Here’s how:
+
 ```python
 DATABASE_NAME = "AdgenDatabase"
 COLLECTION_NAME = "AdgenCollection"
@@ -150,9 +159,11 @@ else:
 ```
 
 ### 4.2 Create the vector index
+
 To perform efficient vector similarity searches within our collection, we need to create a vector index. Cosmos DB supports different types of [vector indexes](./vector-search.md), and here we discuss two: IVF and HNSW.
 
 ### IVF
+
 IVF stands for Inverted File Index, is the default vector indexing algorithm, which works on all cluster tiers. It's an approximate nearest neighbors (ANN) approach that uses clustering to speeding up the search for similar vectors in a dataset. To create an IVF index, use the following command:
 
 ```javascript
@@ -175,10 +186,10 @@ db.command({
 });
 ```
 
-> [!IMPORTANT] 
+> [!IMPORTANT]
 > **You can only create one index per vector property.** That is, you cannot create more than one index that points to the same vector property. If you want to change the index type (e.g., from IVF to HNSW) you must drop the index first before creating a new index.
 
-### HNSW 
+### HNSW
 
 HNSW stands for Hierarchical Navigable Small World, a graph-based data structure that partitions vectors into clusters and subclusters. With HNSW, you can perform fast approximate nearest neighbor search at higher speeds with greater accuracy. HNSW is an approximate (ANN) method. Here's how to set it up:
 
@@ -204,10 +215,12 @@ db.command(
 }
 )
 ```
+
 > [!NOTE]
-> HNSW indexing is only available on M40 cluster tiers and higher. 
+> HNSW indexing is only available on M40 cluster tiers and higher.
 
 ## 5. Insert data to the collection
+
 Now insert the inventory data, which includes descriptions and their corresponding vector embeddings, into the newly created collection. To insert data into our collection, we use the `insert_many()` method provided by the `pymongo` library. The method allows us to insert multiple documents into the collection at once. Our data is stored in a JSON file, which we'll load and then insert into the database.
 
 Download the [shoes_with_vectors.json](https://github.com/jayanta-mondal/ignite-demo/blob/main/data/shoes_with_vectors.json) file from the GitHub repository and store it in a `data` directory within your project folder.
@@ -223,9 +236,11 @@ print(f"Number of data points added: {len(result.inserted_ids)}")
 ```
 
 ## 6. Vector Search in Cosmos DB for MongoDB vCore
+
 With our data successfully uploaded, we can now apply the power of vector search to find the most relevant items based on a query. The vector index we created earlier enables us to perform semantic searches within our dataset.
 
 ### 6.1 Conducting a Vector Search
+
 To perform a vector search, we define a function `vector_search` that takes a query and the number of results to return. The function generates a vector for the query using the `generate_embeddings` function we defined earlier, then uses Cosmos DB's `$search` functionality to find the closest matching items based on their vector embeddings.
 
 ```python
@@ -250,7 +265,9 @@ def vector_search(query, num_results=3):
     results = collection.aggregate(pipeline)
     return results
 ```
+
 ## 6.2 Perform vector search query
+
 Finally, we execute our vector search function with a specific query and process the results to display them:
 
 ```python
@@ -358,6 +375,7 @@ def render_html_page(ad_topic):
 ```
 
 ## 8. Putting it all together
+
 To make our advertisement generation interactive, we employ Gradio, a Python library for creating simple web UIs. We define a UI that allows users to input ad topics and then dynamically generates and displays the resulting advertisement.
 
 ```python
@@ -382,7 +400,8 @@ if __name__ == "__main__":
     demo.launch()   
 ```
 
-## Output 
+## Output
+
 ![Output screen](./media/tutorial-adgen/result.png)
 
 ## Next step

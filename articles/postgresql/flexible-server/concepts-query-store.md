@@ -110,7 +110,7 @@ The following options apply specifically to wait statistics:
 > [!NOTE]  
 > `pg_qs.query_capture_mode` supersedes `pgms_wait_sampling.query_capture_mode`. If `pg_qs.query_capture_mode` is `none`, the `pgms_wait_sampling.query_capture_mode` setting has no effect.
 
-Use the [Azure portal](how-to-configure-server-parameters-using-portal.md) to get or set a different value for a parameter.
+Use the [Azure portal](how-to-configure-server-parameters.md) to get or set a different value for a parameter.
 
 ## Views and functions
 
@@ -283,8 +283,10 @@ When an instance of Azure Database for PostgreSQL Flexible Server is in read-onl
 
 Enabling query store on a server that has [read replicas](concepts-read-replicas.md), doesn't automatically enable query store on any of the read replicas. Even if you enable it on any of the read replicas, query store doesn't record the queries executed on any read replicas, because they operate in read-only mode until you promote them to primary.
 
+[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
+
 ## Related content
 
-- [scenarios where query store can be especially helpful](concepts-query-store-scenarios.md)
-- [best practices for using query store](concepts-query-store-best-practices.md)
-- [visualizing data from query store via Query Performance Insight](./concepts-query-performance-insight.md)
+- [Usage scenarios for query store in Azure Database for PostgreSQL - Flexible Server](concepts-query-store-scenarios.md).
+- [Best practices for query store in Azure Database for PostgreSQL - Flexible Server](concepts-query-store-best-practices.md).
+- [Query Performance Insight in Azure Database for PostgreSQL - Flexible Server](concepts-query-performance-insight.md).

@@ -12,7 +12,7 @@ ms.custom:
   - devx-track-azurecli
 ---
 
-# List and download Azure Database for PostgreSQL flexible server logs by using the Azure CLI
+# Enable, list and download server logs in Azure Database for PostgreSQL - Flexible Server using the Azure CLI
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
@@ -38,7 +38,7 @@ az account set --subscription <subscription id>
 After you configure the prerequisites and connect to your required subscription, you can list the server logs from your Azure Database for PostgreSQL flexible server instance by using the following command.
 
 > [!NOTE]
-> You can configure your server logs in the same way as just shown by using the [server parameters](./howto-configure-server-parameters-using-portal.md). Set the appropriate values for these parameters. Set `logfiles.download_enable` to ON to enable this feature. Set `logfiles.retention_days` to define retention in days. Initially, server logs occupy data disk space for about an hour before moving to backup storage for the set retention period.
+> You can configure your server logs in the same way as just shown by using the [server parameters](howto-configure-server-parameters-using-portal.md). Set the appropriate values for these parameters. Set `logfiles.download_enable` to ON to enable this feature. Set `logfiles.retention_days` to define retention in days. Initially, server logs occupy data disk space for about an hour before moving to backup storage for the set retention period.
 
 ```azurecli
 az postgres flexible-server server-logs list --resource-group <myresourcegroup> --server-name <serverlogdemo> --out <table>
@@ -69,7 +69,12 @@ The following command downloads the preceding server logs to your current direct
 az postgres flexible-server server-logs download --resource-group <myresourcegroup> --server-name <serverlogdemo>  --name <serverlogs/postgresql_2024_01_10_12_00_00.log>
 ```
 
-## Next steps
+[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
 
-- To enable and disable server logs from the portal, see [Enable, list, and download server logs for Azure Database for PostgreSQL flexible server](./how-to-server-logs-portal.md).
-- Learn more about [logging](./concepts-logging.md).
+## Related content
+
+- [Restart an instance of Azure Database for PostgreSQL flexible server](how-to-restart-server-portal.md).
+- [Stop/Start an instance of Azure Database for PostgreSQL flexible server](how-to-stop-start-server-portal.md).
+- [Compute options in Azure Database for PostgreSQL - Flexible Server](concepts-compute.md).
+- [Storage options in Azure Database for PostgreSQL - Flexible Server](concepts-storage.md).
+- [Limits in Azure Database for PostgreSQL - Flexible Server](concepts-limits.md).

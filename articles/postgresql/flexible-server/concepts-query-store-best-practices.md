@@ -42,4 +42,4 @@ The `pg_qs.retention_period_in_days` parameter specifies the data retention peri
 
 - [monitor performance with query store](concepts-query-store.md)
 - [scenarios where query store can be especially helpful](concepts-query-store-scenarios.md)
-- [visualizing data from query store via Query Performance Insight](./concepts-query-performance-insight.md)
+- [visualizing data from query store via Query Performance Insight](concepts-query-performance-insight.md)

@@ -324,11 +324,13 @@ SELECT bill_id, one_sentence_summary FROM bill_summaries LIMIT 5;
 
 Congratulations, you just learned how to use the `azure_ai` extension to integrate large language models and generative AI capabilities into your database.
 
+[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
+
 ## Related content
 
-- [How to use PostgreSQL extensions in Azure Database for PostgreSQL - Flexible Server](/azure/postgresql/flexible-server/concepts-extensions)
-- [Learn how to generate embeddings with Azure OpenAI](/azure/ai-services/openai/how-to/embeddings)
-- [Azure OpenAI Service embeddings models](/azure/ai-services/openai/concepts/models#embeddings-models-1)
-- [Understand embeddings in Azure OpenAI Service](/azure/ai-services/openai/concepts/understand-embeddings)
-- [What is Azure AI Language?](/azure/ai-services/language-service/overview)
-- [What is Azure OpenAI Service?](/azure/ai-services/openai/overview)
+- [How to use PostgreSQL extensions in Azure Database for PostgreSQL - Flexible Server](/azure/postgresql/flexible-server/concepts-extensions).
+- [Learn how to generate embeddings with Azure OpenAI](/azure/ai-services/openai/how-to/embeddings).
+- [Azure OpenAI Service embeddings models](/azure/ai-services/openai/concepts/models#embeddings-models-1).
+- [Understand embeddings in Azure OpenAI Service](/azure/ai-services/openai/concepts/understand-embeddings).
+- [What is Azure AI Language?](/azure/ai-services/language-service/overview).
+- [What is Azure OpenAI Service?](/azure/ai-services/openai/overview).

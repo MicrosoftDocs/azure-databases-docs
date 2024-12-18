@@ -10,7 +10,7 @@ ms.subservice: flexible-server
 ms.topic: how-to
 ---
 
-# Enable, list and download server logs for Azure Database for PostgreSQL - Flexible Server
+# Enable, list and download server logs in Azure Database for PostgreSQL - Flexible Server
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
@@ -26,7 +26,7 @@ In this tutorial, you’ll learn how to:
 
 ## Prerequisites
 
-To complete this tutorial, you need an Azure Database for PostgreSQL flexible server instance. If you need to create a new server, see [Create an Azure Database for PostgreSQL - Flexible Server](./quickstart-create-server-portal.md).
+To complete this tutorial, you need an Azure Database for PostgreSQL flexible server instance. If you need to create a new server, see [Create an Azure Database for PostgreSQL - Flexible Server](quickstart-create-server-portal.md).
 
 ## Enable Server logs
 
@@ -45,7 +45,7 @@ To enable the server logs feature, perform the following steps.
 4. To configure retention period (in days), choose the slider. Minimum retention 1 days and Maximum retention is 7 days.
 
 > [!Note]
-> You can configure your server logs in the same way as above using the [Server Parameters](./howto-configure-server-parameters-using-portal.md), setting the appropriate values for these parameters: _logfiles.download_enable_ to ON to enable this feature, and _logfiles.retention_days_ to define retention in days. Initially, server logs occupy data disk space for about an hour before moving to backup storage for the set retention period.
+> You can configure your server logs in the same way as above using the [Server Parameters](howto-configure-server-parameters-using-portal.md), setting the appropriate values for these parameters: _logfiles.download_enable_ to ON to enable this feature, and _logfiles.retention_days_ to define retention in days. Initially, server logs occupy data disk space for about an hour before moving to backup storage for the set retention period.
 
 ## Download Server logs
 
@@ -73,6 +73,12 @@ To download server logs, perform the following steps.
 
 3. Select Save
 
-## Next steps
-- To enable and disable Server logs from CLI, you can refer to the [article.](./how-to-server-logs-cli.md)
-- Learn more about [Logging](./concepts-logging.md)
+[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
+
+## Related content
+
+- [Restart an instance of Azure Database for PostgreSQL flexible server](how-to-restart-server-portal.md).
+- [Stop/Start an instance of Azure Database for PostgreSQL flexible server](how-to-stop-start-server-portal.md).
+- [Compute options in Azure Database for PostgreSQL - Flexible Server](concepts-compute.md).
+- [Storage options in Azure Database for PostgreSQL - Flexible Server](concepts-storage.md).
+- [Limits in Azure Database for PostgreSQL - Flexible Server](concepts-limits.md).

@@ -158,6 +158,9 @@ After a restore from either **latest restore point** or **custom restore point**
 
 ## Long-term retention (preview)
 
+> [!NOTE]
+> The preview feature - "Long-term retention" solution for protection of Azure Database for MySQL flexible servers by using Azure Backup is currently paused. Please refrain from configuring any new backups until further notice. Be assured, all existing backup data is safe and available for restore.
+
 Azure Backup and Azure Database for MySQL Flexible Server services have built an enterprise-class long-term backup solution for Azure Database for MySQL Flexible Server instances that retains backups for up to 10 years. You can use long-term retention independently or in addition to the automated backup solution offered by Azure Database for MySQL Flexible Server, which offers retention of up to 35 days. Automated backups are snapshot backups suited for operational recoveries, especially when you want to restore from the latest backups. Long-term backups help you with your compliance needs and auditing needs. In addition to long-term retention, the solution offers the following capabilities:
 
 - Customer-controlled scheduled and on-demand backups

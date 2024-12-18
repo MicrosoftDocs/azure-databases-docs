@@ -111,15 +111,14 @@ Initialize Terraform and apply the configuration.
 
 Confirm the apply action when prompted. Terraform provisions the resources and configure the virtual endpoints as specified.
 
-
-For additional info about Virtual endpoints, refer to [create virtual endpoints](how-to-read-replicas-portal.md#create-virtual-endpoints)
+[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
 
 ## Related content
 
-- [Create virtual endpoints](how-to-read-replicas-portal.md#create-virtual-endpoints)
-- [Read replicas - overview](concepts-read-replicas.md)
-- [Geo-replication](concepts-read-replicas-geo.md)
-- [Promote read replicas](concepts-read-replicas-promote.md)
-- [Create and manage read replicas in the Azure portal](how-to-read-replicas-portal.md)
-- [Cross-region replication with virtual network](concepts-networking.md#replication-across-azure-regions-and-virtual-networks-with-private-networking)
-- [Terraform Azure provider documentation](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs)
+- [Read replicas in Azure Database for PostgreSQL - Flexible Server](concepts-read-replicas.md).
+- [Geo-replication in Azure Database for PostgreSQL - Flexible Server](concepts-read-replicas-geo.md).
+- [Promote read replicas in Azure Database for PostgreSQL - Flexible Server](concepts-read-replicas-promote.md).
+- [Virtual endpoints for read replicas in Azure Database for PostgreSQL - Flexible Server](concepts-read-replicas-virtual-endpoints.md).
+- [Create and manage read replicas in Azure Database for PostgreSQL - Flexible Server](how-to-read-replicas-portal.md).
+- [Replication across Azure regions and virtual networks with private networking](concepts-networking-private.md#replication-across-azure-regions-and-virtual-networks-with-private-networking).
+- [Terraform Azure provider documentation](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs).
