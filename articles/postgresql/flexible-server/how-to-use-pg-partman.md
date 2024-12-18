@@ -258,4 +258,4 @@ Run the maintenance procedure by using `pg_cron`:
 
 ## Related content
 
-- [Vector search on Azure Database for PostgreSQL](how-to-use-pgvector.md)
+- [Vector search on Azure Database for PostgreSQL](how-to-use-pgvector.md).
