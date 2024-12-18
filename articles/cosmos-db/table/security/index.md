@@ -8,14 +8,14 @@ ms.reviewer: iriaosara
 ms.service: azure-cosmos-db
 ms.subservice: table
 ms.topic: solution-overview
-ms.date: 11/25/2024
+ms.date: 12/18/2024
 ai-usage: ai-assisted
+appliesto:
+  - ✅ Table
 #Customer Intent: As a developer, I want to review the major security areas related to Azure Cosmos DB for Table, so that I can build secure applications using the API for Table.
 ---
 
 # Security guidance for Azure Cosmos DB for Table
-
-[!INCLUDE[Table](../../includes/appliesto-gremlin.md)]
 
 :::image type="complex" source="media/index/map.svg" border="false" alt-text="Diagram of the current location ('Overview') in the sequence of the deployment guide.":::
 Diagram of the sequence of the deployment guide including these locations, in order: Overview, Concepts, Prepare, Role-based access control, Network, and Reference. The 'Overview' location is currently highlighted.

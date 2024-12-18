@@ -1,7 +1,7 @@
 ---
-title: Vector store
+title: Integrated vector store
 titleSuffix: Azure Cosmos DB for MongoDB vCore
-description: Use vector store in Azure Cosmos DB for MongoDB vCore to enhance AI-based applications.
+description: Use the integrated vector store in Azure Cosmos DB for MongoDB vCore to enhance AI-based applications.
 author: gahl-levy
 ms.author: gahllevy
 ms.service: azure-cosmos-db
@@ -9,15 +9,15 @@ ms.subservice: mongodb-vcore
 ms.custom:
   - ignite-2023
   - ignite-2024
-ms.topic: conceptual
-ms.date: 11/1/2023
+ms.topic: concept-article
+ms.date: 12/03/2024
 ms.collection:
   - ce-skilling-ai-copilot
+appliesto:
+  - ✅ MongoDB vCore
 ---
 
-# Vector Store in vCore-based Azure Cosmos DB for MongoDB
-
-[!INCLUDE[MongoDB vCore](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
+# Vector store in Azure Cosmos DB for MongoDB vCore
 
 Use the Integrated Vector Database in Azure Cosmos DB for MongoDB (vCore) to seamlessly connect your AI-based applications with your data that's stored in Azure Cosmos DB. This integration can include apps that you built by using [Azure OpenAI embeddings](/azure/ai-services/openai/tutorials/embeddings). The natively integrated vector database enables you to efficiently store, index, and query high-dimensional vector data that's stored directly in Azure Cosmos DB for MongoDB (vCore), along with the original data from which the vector data is created. It eliminates the need to transfer your data to alternative vector stores and incur additional costs.
 
@@ -31,8 +31,8 @@ In a vector store, vector search algorithms are used to index and query embeddin
 
 In the Integrated Vector Database in Azure Cosmos DB for MongoDB (vCore), embeddings can be stored, indexed, and queried alongside the original data. This approach eliminates the extra cost of replicating data in a separate pure vector database. Moreover, this architecture keeps the vector embeddings and original data together, which better facilitates multi-modal data operations, and enables greater data consistency, scale, and performance.
 
-
 ## Perform Vector Similarity search
+
 Azure Cosmos DB for MongoDB (vCore) provides robust vector search capabilities, allowing you to perform high-speed similarity searches across complex datasets. To perform vector search in Azure Cosmos DB for MongoDB, you first need to create a vector index. Cosmos DB currently supports three types of vector indexes:
 
 - **DiskANN (Recommended)**: Ideal for large-scale datasets, leveraging SSDs for efficient memory usage while maintaining high recall in approximate nearest-neighbor (ANN) searches.
@@ -64,20 +64,17 @@ DiskANN indexes are available on M40 tiers and above. To create the DiskANN inde
 }
 ```
 
-|Field               |Type     |Description  |
-|--------------------|---------|---------|
-| `index_name`       | string  | Unique name of the index. |
-| `path_to_property` | string  | Path to the property that contains the vector. This path can be a top-level property or a dot notation path to the property. Vectors must be a `number[]` to be indexed and used in vector search results. Using another type, such as `double[]`,  prevents the document from being indexed. Non-indexed documents won't be returned in the result of a vector search. |
-| `kind`             | string  | Type of vector index to create. The options are `vector-ivf`, `vector-hnsw`, and `vector-diskann`. |
-| `dimensions`       | integer | Number of dimensions for vector similarity. DiskANN supports up to 2000 dimensions, with future support planned for 40,000+. |
-| `similarity`       | string  | Similarity metric to use with the index. Possible options are `COS` (cosine distance), `L2` (Euclidean distance), and `IP` (inner product). |
-| `maxDegree`       | integer  |  Maximum number of edges per node in the graph. This parameter ranges from 20 to 2048 (default is 32). Higher `maxDegree` is suitable for datasets with high dimensionality and/or high accuracy requirements. |
-| `lBuild`       | integer  | Sets the number of candidate neighbors evaluated during DiskANN index construction. This parameter, which ranges from 10 to 500 (default is 50), balances accuracy and computational overhead: higher values improve index quality and accuracy but increase build time |
+| Field | Type | Description |
+| --- | --- | --- |
+| `index_name` | string | Unique name of the index. |
+| `path_to_property` | string | Path to the property that contains the vector. This path can be a top-level property or a dot notation path to the property. Vectors must be a `number[]` to be indexed and used in vector search results. Using another type, such as `double[]`,  prevents the document from being indexed. Non-indexed documents won't be returned in the result of a vector search. |
+| `kind` | string | Type of vector index to create. The options are `vector-ivf`, `vector-hnsw`, and `vector-diskann`. |
+| `dimensions` | integer | Number of dimensions for vector similarity. DiskANN supports up to 2000 dimensions, with future support planned for 40,000+. |
+| `similarity` | string | Similarity metric to use with the index. Possible options are `COS` (cosine distance), `L2` (Euclidean distance), and `IP` (inner product). |
+| `maxDegree` | integer | Maximum number of edges per node in the graph. This parameter ranges from 20 to 2048 (default is 32). Higher `maxDegree` is suitable for datasets with high dimensionality and/or high accuracy requirements. |
+| `lBuild` | integer | Sets the number of candidate neighbors evaluated during DiskANN index construction. This parameter, which ranges from 10 to 500 (default is 50), balances accuracy and computational overhead: higher values improve index quality and accuracy but increase build time |
 
-> [!Note]
-> Enable the "DiskANN Vector Index for vCore-based Azure Cosmos DB for MongoDB" feature in the "Preview Features" tab of your Azure Subscription. Learn more about preview features [here](/azure/azure-resource-manager/management/preview-features).
-
-### **Perform a vector search with DiskANN**
+### Perform a vector search with DiskANN
 
 To perform a vector search, use the `$search` aggregation pipeline stage, and query with the `cosmosSearch` operator. DiskANN allows high-performance searches across massive datasets with **optional** filtering such as geospatial or text-based filters.
 
@@ -97,10 +94,28 @@ To perform a vector search, use the `$search` aggregation pipeline stage, and qu
 },
 ```
 
-|Field    |Type     |Description  |
-|---------|---------|---------|
+| Field | Type | Description |
+| --- | --- | --- |
 | `lSearch` | integer | Specifies the size of the dynamic candidate list for search. The default value is `40`, with a configurable range from `10` to `1000`. Increasing the value enhances recall but may reduce search speed. |
 | `k` | integer | Defines the number of search results to return. The `k` value must be less than or equal to `lSearch`. |
+
+### Enabling DiskANN on a new cluster
+
+To enable **DiskANN** Vector Index on a newly provisioned Azure Cosmos DB for MongoDB (vCore) cluster, follow these steps to perform a cluster-level registration via the Azure CLI:
+1. Log in to Azure CLI
+```bash
+az login
+```
+
+2. Retrieve the current settings for the feature flags on your cluster. This ensures you retain any existing flags while adding the new feature.
+```bash
+az resource show --ids "/subscriptions/<sub id>/resourceGroups/<resource group name>/providers/Microsoft.DocumentDB/mongoClusters/<resource name of your Cosmos DB for MongoDB cluster>" --api-version <cluster's api version>
+```
+
+3. Add the `DiskANNIndex` flag to the list of preview features **without removing any existing ones**.
+```bash
+az resource patch --ids "/subscriptions/<sub id>/resourceGroups/<resource group name>/providers/Microsoft.DocumentDB/mongoClusters/<resource name of your Cosmos DB for MongoDB cluster>" --api-version <cluster's api version> --properties "{\"previewFeatures\": [\"GeoReplicas\", \"DiskANNIndex\"]}" 
+```
 
 ## Example using a DiskANN Index with Filtering
 
@@ -168,7 +183,7 @@ This command creates a DiskANN vector index on the `contentVector` field in `exa
 
 ### Perform a Vector Search
 
-To find documents with similar vectors within a specific geographic radius, specify the `queryVector` for similarity search and include a geospatial filter. 
+To find documents with similar vectors within a specific geographic radius, specify the `queryVector` for similarity search and include a geospatial filter.
 
 ```python
 query_vector = [0.52, 0.28, 0.12]
@@ -251,13 +266,15 @@ You can create HNSW (Hierarchical Navigable Small World) indexes on M40 cluster 
 }
 ```
 
-|Field    |Type     |Description  |
-|---------|---------|---------|
-|`m`        |integer    |The max number of connections per layer (`16` by default, minimum value is `2`, maximum value is `100`). Higher m is suitable for datasets with high dimensionality and/or high accuracy requirements.    |
-|`efConstruction` |integer    |the size of the dynamic candidate list for constructing the graph (`64` by default, minimum value is `4`, maximum value is `1000`). Higher `efConstruction` will result in better index quality and higher accuracy, but it will also increase the time required to build the index. `efConstruction` has to be at least `2 * m`    |
+| Field | Type | Description |
+| --- | --- | --- |
+| `m` | integer | The max number of connections per layer (`16` by default, minimum value is `2`, maximum value is `100`). Higher m is suitable for datasets with high dimensionality and/or high accuracy requirements. |
+| `efConstruction` | integer | the size of the dynamic candidate list for constructing the graph (`64` by default, minimum value is `4`, maximum value is `1000`). Higher `efConstruction` will result in better index quality and higher accuracy, but it will also increase the time required to build the index. `efConstruction` has to be at least `2 * m` |
 
 ### Perform a vector search with HNSW
+
 To perform a vector search, use the `$search` aggregation pipeline stage the query with the `cosmosSearch` operator.
+
 ```javascript
 {
     "$search": {
@@ -270,14 +287,15 @@ To perform a vector search, use the `$search` aggregation pipeline stage the que
     }
 }
 ```
-|Field    |Type     |Description  |
-|---------|---------|---------|
-|`efSearch`     |integer    |The size of the dynamic candidate list for search (`40` by default). A higher value provides better recall at the cost of speed.     |
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `efSearch` | integer | The size of the dynamic candidate list for search (`40` by default). A higher value provides better recall at the cost of speed. |
 
 > [!NOTE]
 > Creating an HSNW index with large datasets can result in your Azure Cosmos DB for MongoDB vCore resource running out of memory, or can limit the performance of other operations running on your database. If you encounter such issues, these can be mitigated by scaling your resource to a higher cluster tier, or creating a new DiskANN vector index.
 
-## Example using an HNSW index.
+## Example using an HNSW index
 
 The following examples show you how to index vectors, add documents that have vector properties, perform a vector search, and retrieve the index configuration.
 
@@ -305,6 +323,7 @@ db.runCommand({
     ] 
 });
 ```
+
 This command creates an HNSW index against the `contentVector` property in the documents that are stored in the specified collection, `exampleCollection`. The `cosmosSearchOptions` property specifies the parameters for the HNSW vector index. If your document has the vector stored in a nested property, you can set this property by using a dot notation path. For example, you might use `text.contentVector` if `contentVector` is a subproperty of `text`.
 
 ### Add vectors to your database
@@ -366,7 +385,6 @@ In this example, a vector search is performed by using `queryVector` as an input
 ]
 ```
 
-
 ### [IVF](#tab/IVF)
 
 To create a vector index using the IVF (Inverted File) algorithm, use the following `createIndexes` template and set the `"kind"` parameter to `"vector-ivf"`:
@@ -424,12 +442,11 @@ To perform a vector search, use the `$search` aggregation pipeline stage in a Mo
   }
 }
 ```
-To retrieve the similarity score (`searchScore`) along with the documents found by the vector search, use the `$project` operator to include `searchScore` and rename it as `<custom_name_for_similarity_score>` in the results. Then the document is also projected as nested object. Note that the similarity score is calculated using the metric defined in the vector index.
 
+To retrieve the similarity score (`searchScore`) along with the documents found by the vector search, use the `$project` operator to include `searchScore` and rename it as `<custom_name_for_similarity_score>` in the results. Then the document is also projected as nested object. Note that the similarity score is calculated using the metric defined in the vector index.
 
 > [!IMPORTANT]
 > Vectors must be a `number[]` to be indexed. Using another type, such as `double[]`,  prevents the document from being indexed. Non-indexed documents won't be returned in the result of a vector search.
-
 
 ## Example using an IVF Index
 
@@ -506,12 +523,12 @@ To perform a vector search, use the `$search` aggregation pipeline stage in a Mo
   }
 }
 ```
+
 To retrieve the similarity score (`searchScore`) along with the documents found by the vector search, use the `$project` operator to include `searchScore` and rename it as `<custom_name_for_similarity_score>` in the results. Then the document is also projected as nested object. Note that the similarity score is calculated using the metric defined in the vector index.
 
 ### Query vectors and vector distances (aka similarity scores) using $search"
 
-Continuing with the last example, create another vector, `queryVector`. Vector search measures the distance between `queryVector` and the vectors in the `vectorContent` path of your documents. You can set the number of results that the search returns by setting the parameter `k`, which is set to `2` here. You can also set `nProbes`, which is an integer that controls the number of nearby clusters that are inspected in each search. A higher value may improve accuracy, however the search will be slower as a result. This is an optional parameter with a default value of 1 and cannot be larger than the `numLists` value specified in the vector index. 
-
+Continuing with the last example, create another vector, `queryVector`. Vector search measures the distance between `queryVector` and the vectors in the `vectorContent` path of your documents. You can set the number of results that the search returns by setting the parameter `k`, which is set to `2` here. You can also set `nProbes`, which is an integer that controls the number of nearby clusters that are inspected in each search. A higher value may improve accuracy, however the search will be slower as a result. This is an optional parameter with a default value of 1 and cannot be larger than the `numLists` value specified in the vector index.
 
 ```javascript
 const queryVector = [0.52, 0.28, 0.12];
@@ -557,6 +574,7 @@ In this example, a vector search is performed by using `queryVector` as an input
   }
 ]
 ```
+
 ---
 
 ### Get vector index definitions
@@ -587,8 +605,8 @@ In this example, `vectorIndex` is returned with all the `cosmosSearch` parameter
 ]
 ```
 
-
 ## Filtered vector search (preview)
+
 You can now execute vector searches with any supported query filter such as `$lt`, `$lte`, `$eq`, `$neq`, `$gte`, `$gt`, `$in`, `$nin`, and `$regex`. Enable the "filtering vector search" feature in the "Preview Features" tab of your Azure Subscription. Learn more about preview features [here](/azure/azure-resource-manager/management/preview-features).
 
 First, you'll need to define an index for your filter in addition to a vector index. For example, you can define the filter index on a property  
@@ -624,20 +642,24 @@ db.exampleCollection.aggregate([
 }
 ]);
 ```
+
 > [!IMPORTANT]
-> While in preview, filtered vector search may require you to adjust your vector index parameters to achieve higher accuracy. For example, increasing `m`, `efConstruction`, or `efSearch` when using HNSW, or `numLists`, or `nProbes` when using IVF, may lead to better results. You should test your configuration before use to ensure that the results are satisfactory. 
+> While in preview, filtered vector search may require you to adjust your vector index parameters to achieve higher accuracy. For example, increasing `m`, `efConstruction`, or `efSearch` when using HNSW, or `numLists`, or `nProbes` when using IVF, may lead to better results. You should test your configuration before use to ensure that the results are satisfactory.
 
 ## Use LLM Orchestration tools
 
 ### Use as a vector database with Semantic Kernel
+
 Use Semantic Kernel to orchestrate your information retrieval from Azure Cosmos DB for MongoDB vCore and your LLM. Learn more [here](https://github.com/microsoft/semantic-kernel/tree/main/python/semantic_kernel/connectors/memory/azure_cosmosdb).
 
 https://github.com/microsoft/semantic-kernel/tree/main/python/semantic_kernel/connectors/memory/azure_cosmosdb
 
 ###  Use as a vector database with LangChain
+
 Use LangChain to orchestrate your information retrieval from Azure Cosmos DB for MongoDB vCore and your LLM. Learn more [here](https://python.langchain.com/docs/integrations/vectorstores/azure_cosmos_db).
 
 ### Use as a semantic cache with LangChain
+
 Use LangChain and Azure Cosmos DB for MongoDB (vCore) to orchestrate Semantic Caching, using previously recorded LLM responses that can save you LLM API costs and reduce latency for responses. Learn more [here](https://python.langchain.com/docs/integrations/vectorstores/azure_cosmos_db/)
 
 ## Features and limitations

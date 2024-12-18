@@ -28,7 +28,7 @@ The `pg_diskann` extension for Azure Database for PostgreSQL flexible server add
 
 ## Enable `pg_diskann` extension
 
-Before you can enable `pg_diskann` on your Azure Database for PostgreSQL flexible server instance, you need to add it to your allowlist as described in [how to use PostgreSQL extensions](./concepts-extensions.md#how-to-use-postgresql-extensions) and check if correctly added by running `SHOW azure.extensions;`.
+Before you can enable `pg_diskann` on your Azure Database for PostgreSQL flexible server instance, you need to add it to your allowlist as described in [how to use PostgreSQL extensions](concepts-extensions.md#how-to-use-postgresql-extensions) and check if correctly added by running `SHOW azure.extensions;`.
 
 :::image type="content" source="media/how-to-use-pgdiskann/select-diskann-azure-extension.png" alt-text="Screenshot of selecting pg_diskann in server parameters." lightbox="media/how-to-use-pgdiskann/select-diskann-azure-extension.png":::
 
@@ -116,7 +116,9 @@ The vector type allows you to perform three types of searches on the stored vect
 - `vector_cosine_ops`: `<=>` Cosine distance
 - `vector_ip_ops`: `<#>` Inner Product
 
+[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
+
 ## Related content
 
-- [Enable and use pg_partman](how-to-use-pg-partman.md)
-- [How to enable and use pgvector ](how-to-use-pgvector.md)
+- [Enable and use pgvector in Azure Database for PostgreSQL - Flexible Server](how-to-use-pgvector.md).
+- [Manage PostgreSQL extensions in Azure Database for PostgreSQL - Flexible Server](../extensions/how-to-allow-extensions.md).

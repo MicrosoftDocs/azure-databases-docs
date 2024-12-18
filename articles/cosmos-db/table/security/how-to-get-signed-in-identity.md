@@ -8,14 +8,14 @@ ms.reviewer: stefarroyo
 ms.service: azure-cosmos-db
 ms.subservice: table
 ms.topic: how-to
-ms.date: 11/25/2024
+ms.date: 12/18/2024
 zone_pivot_groups: azure-interface-portal-cli-powershell
+appliesto:
+  - ✅ Table
 #Customer Intent: As a developer, I want to get my current signed-in identity for Azure CLI, so that my security team can grant me role-based access control permissions to access Azure resources.
 ---
 
 # Get the signed in account's identity to use with Azure services to connect to Azure Cosmos DB for Table
-
-[!INCLUDE[Table](../../includes/appliesto-table.md)]
 
 :::image type="complex" source="media/how-to-get-signed-in-identity/map.svg" border="false" alt-text="Diagram of the current location ('Prepare') in the sequence of the deployment guide.":::
 Diagram of the sequence of the deployment guide including these locations, in order: Overview, Concepts, Prepare, Role-based access control, and Reference. The 'Prepare' location is currently highlighted.

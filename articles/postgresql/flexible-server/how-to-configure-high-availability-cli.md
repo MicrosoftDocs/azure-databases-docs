@@ -19,10 +19,10 @@ ms.custom:
 
 The article describes how you can enable or disable high availability configuration at the time of server creation in Azure Database for PostgreSQL flexible server. You can disable high availability after server creation too. 
 
-High availability feature provisions physically separate primary and standby replica in different zones. For more information, see [high availability concepts documentation](./concepts/../concepts-high-availability.md). Enabling or disabling high availability doesn't change your other settings including VNET configuration, firewall settings, and backup retention. Disabling of high availability doesn't impact your application connectivity and operations.
+High availability feature provisions physically separate primary and standby replica in different zones. For more information, see [high availability concepts documentation](concepts/../concepts-high-availability.md). Enabling or disabling high availability doesn't change your other settings including VNET configuration, firewall settings, and backup retention. Disabling of high availability doesn't impact your application connectivity and operations.
 
 > [!IMPORTANT]
-> For the list of regions that support Zone redundant high availability, please review the supported regions [here](./overview.md#azure-regions). 
+> For the list of regions that support Zone redundant high availability, please review the supported regions [here](overview.md#azure-regions). 
 
 ## Prerequisites
 - If you don't have an Azure subscription, create a [free](https://azure.microsoft.com/free/) account before you begin.
@@ -70,8 +70,9 @@ az postgres flexible-server update [--high-availability {Disabled, Enabled}]
 az postgres flexible-server update --resource-group myresourcegroup --name myservername --high-availability Disabled
 ```
 
+[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
 
-## Next steps
+## Related content
 
--   Learn about [business continuity](./concepts-business-continuity.md)
--   Learn about [zone redundant high availability](./concepts-high-availability.md)
+- [Overview of business continuity with Azure Database for PostgreSQL - Flexible Server](concepts-business-continuity.md).
+- [High availability in Azure Database for PostgreSQL - Flexible Server](/azure/reliability/reliability-postgresql-flexible-server).

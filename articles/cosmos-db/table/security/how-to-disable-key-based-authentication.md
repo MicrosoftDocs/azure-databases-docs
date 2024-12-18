@@ -8,14 +8,15 @@ ms.reviewer: iriaosara
 ms.service: azure-cosmos-db
 ms.subservice: table
 ms.topic: how-to
-ms.date: 11/25/2024
+
+ms.date: 12/18/2024
 zone_pivot_groups: azure-interface-cli-powershell-bicep
+appliesto:
+  - ✅ Table
 #Customer Intent: As a security user, I want to disable key-based auth in an Azure Cosmos DB for Table account, so that my developers or applications can no longer access the account in an insecure manner.
 ---
 
 # Disable key-based authentication with Azure Cosmos DB for Table (preview)
-
-[!INCLUDE[Table](../../includes/appliesto-table.md)]
 
 This article covers the process of disabling key-based authorization (or resource owner password credential auth) for an Azure Cosmos DB for Table account.
 

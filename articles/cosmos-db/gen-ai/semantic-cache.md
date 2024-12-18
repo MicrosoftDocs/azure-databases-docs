@@ -1,15 +1,19 @@
 ---
-title: Semantic cache
+title: Semantic cache for large language models
 titleSuffix: Azure Cosmos DB
 description: Learn how semantic cache, in Azure Cosmos DB, provides a way for you to re-use past prompts and completions to address similar prompts using vector similarity.
 author: markjbrown
 ms.service: azure-cosmos-db
 ms.subservice: nosql
-ms.topic: conceptual
-ms.date: 08/21/2024
+ms.topic: concept-article
+ms.date: 12/03/2024
 ms.author: mjbrown
 ms.collection:
   - ce-skilling-ai-copilot
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB vCore
+  - ✅ PostgreSQL
 ---
 
 # Introduction to semantic cache
@@ -72,14 +76,14 @@ There are multiple samples you can use to understand how to build your own seman
 
 - [Build a Copilot app using Azure Cosmos DB for NoSQL](https://github.com/AzureCosmosDB/cosmosdb-nosql-copilot)
 
-This C# sample demonstrates many of the concepts necessary to build your own Copilot applications in Azure using Azure Cosmos DB for NoSQL. This sample also comes with a [Hands-On-Lab](https://github.com/AzureCosmosDB/cosmosdb-nosql-copilot/tree/start?tab=readme-ov-file#hands-on-lab-to-build-a-copilot-app-using-azure-cosmos-db-for-nosql-azure-openai-service-azure-app-service-and-semantic-kernel) that walks users step-by-step through these concepts, including [how to implement a semantic cache](https://github.com/AzureCosmosDB/cosmosdb-nosql-copilot/blob/start/lab/lab-guide.md#exercise--implement-a-semantic-cache). 
+This C# sample demonstrates many of the concepts necessary to build your own Copilot applications in Azure using Azure Cosmos DB for NoSQL. This sample also comes with a [Hands-On-Lab](https://github.com/AzureCosmosDB/cosmosdb-nosql-copilot/tree/start?tab=readme-ov-file#hands-on-lab-to-build-a-copilot-app-using-azure-cosmos-db-for-nosql-azure-openai-service-azure-app-service-and-semantic-kernel) that walks users step-by-step through these concepts, including [how to implement a semantic cache](https://github.com/AzureCosmosDB/cosmosdb-nosql-copilot/blob/start/lab/lab-guide.md#exercise--implement-a-semantic-cache).
 
 - [Build a Copilot app using Azure Cosmos DB for MongoDB](https://github.com/AzureCosmosDB/cosmosdb-mongo-copilot)
 
-This C# sample demonstrates many of the concepts necessary to build your own Copilot applications in Azure using Azure Cosmos DB for MongoDB. This sample also comes with a [Hands-On-Lab](https://github.com/AzureCosmosDB/cosmosdb-mongo-copilot/tree/start?tab=readme-ov-file#hands-on-lab-to-build-a-copilot-app-with-azure-cosmos-db-for-mongodb-azure-openai-service-and-semantic-kernel) that walks users step-by-step through these concepts, including [how to implement a semantic cache](https://github.com/AzureCosmosDB/cosmosdb-mongo-copilot/blob/start/docs/LABGuide.md#exercise--implement-a-semantic-cache). 
-
+This C# sample demonstrates many of the concepts necessary to build your own Copilot applications in Azure using Azure Cosmos DB for MongoDB. This sample also comes with a [Hands-On-Lab](https://github.com/AzureCosmosDB/cosmosdb-mongo-copilot/tree/start?tab=readme-ov-file#hands-on-lab-to-build-a-copilot-app-with-azure-cosmos-db-for-mongodb-azure-openai-service-and-semantic-kernel) that walks users step-by-step through these concepts, including [how to implement a semantic cache](https://github.com/AzureCosmosDB/cosmosdb-mongo-copilot/blob/start/docs/LABGuide.md#exercise--implement-a-semantic-cache).
 
 ## Related content
+
 - [What is a vector database?](../vector-database.md)
 - [Vector database in Azure Cosmos DB NoSQL](../nosql/vector-search.md)
 - [Vector database in Azure Cosmos DB for MongoDB](../mongodb/vcore/vector-search.md)

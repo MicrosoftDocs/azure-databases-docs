@@ -65,13 +65,14 @@ With the private endpoint provisioned and approved, you can finally use the Azur
 
    :::image type="content" source="./media/how-to-connect-to-data-factory-private-endpoint/data-factory-linked-service-create-postgresql-integration-runtime.png" alt-text="Screenshot that shows where to select integration runtime with managed virtual network." lightbox="./media/how-to-connect-to-data-factory-private-endpoint/data-factory-linked-service-create-postgresql-integration-runtime.png":::
 
-1. Select an **Encryption method**. If you select **No encryption**, the connection only succeeds if the server parameter [require_secure_transport](./server-parameters-table-tls.md?#require_secure_transport) is set to `off`, which is not a recommended practice since it relaxes security.
+1. Select an **Encryption method**. If you select **No encryption**, the connection only succeeds if the server parameter [require_secure_transport](server-parameters-table-tls.md?#require_secure_transport) is set to `off`, which is not a recommended practice since it relaxes security.
 
    :::image type="content" source="./media/how-to-connect-to-data-factory-private-endpoint/data-factory-linked-service-create-postgresql-encryption-method.png" alt-text="Screenshot that shows options available for the encryption method field." lightbox="./media/how-to-connect-to-data-factory-private-endpoint/data-factory-linked-service-create-postgresql-encryption-method.png":::
 
 1. Select **Test connection**. A **Connection successful** message should appear next to the **Test connection** button.
 
-## Next step
+[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
 
-> [!div class="nextstepaction"]
-> [Networking with Private Link in Azure Database for PostgreSQL - Flexible Server](concepts-networking-private-link.md)
+## Related content
+
+- [Networking with Private Link in Azure Database for PostgreSQL - Flexible Server](concepts-networking-private-link.md).

@@ -44,7 +44,7 @@ This example returns all documents that contain either "keyword1" or "keyword2" 
 ```nosql
 SELECT TOP 10 c.text
 FROM c
-WHERE FullTextContainsAll(c.text, "keywords1", "keywords2")
+WHERE FullTextContainsAny(c.text, "keywords1", "keywords2")
 ```
 
 This example returns all documents that contain  "keyword1", "keyword2", or "keyword3" in the path `c.text`.
@@ -52,7 +52,7 @@ This example returns all documents that contain  "keyword1", "keyword2", or "key
 ```nosql
 SELECT *
 FROM c
-WHERE FullTextContainsAll(c.text, "keyword1", "keyword2", "keyword3") 
+WHERE FullTextContainsAny(c.text, "keyword1", "keyword2", "keyword3") 
 ```
 
 ## Remarks

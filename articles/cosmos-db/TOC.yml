@@ -49,8 +49,8 @@
     expanded: true
   - name: AI Applications
     items:
-    - name: Quickstart - build a RAG chatbot
-      href: gen-ai/quickstart-rag-chatbot.md
+    - name: Build a RAG chatbot
+      href: gen-ai/rag-chatbot.md
     - name: Ingest and vectorize document files
       href: gen-ai/document-ingestion.md
     - name: Cosmos AI Graph - Graph RAG

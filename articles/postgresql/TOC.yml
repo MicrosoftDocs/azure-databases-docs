@@ -138,7 +138,7 @@
         href: flexible-server/how-to-integrate-azure-ai.md
     - name: Import and export data
       items:
-      - name: pg_azure_storage extension
+      - name: azure_storage extension
         href: flexible-server/concepts-storage-extension.md
     - name: Microsoft Entra authentication
       href: flexible-server/concepts-azure-ad-authentication.md
@@ -410,7 +410,7 @@
         - name: Connect and query guide
           href: flexible-server/how-to-connect-query-guide.md
       - name: Auto grow storage
-        href: flexible-server/how-to-auto-grow-storage-portal.md
+        href: flexible-server/how-to-auto-grow-storage.md
       - name: Scale a server
         items:
         - name: Azure portal
@@ -495,14 +495,8 @@
           href: flexible-server/how-to-manage-firewall-portal.md
         - name: Azure CLI
           href: flexible-server/how-to-manage-firewall-cli.md
-    - name: Configure server parameters
-      items:
-      - name: Azure portal
-        href: flexible-server/how-to-configure-server-parameters-using-portal.md
-        displayName: application development, server parameters
-      - name: Azure CLI
-        href: flexible-server/how-to-configure-server-parameters-using-cli.md
-        displayName: application development, server parameters
+    - name: Server parameters
+      href: flexible-server/how-to-configure-server-parameters.md
     - name: Enable authentication
       items:
       - name: Create users
@@ -517,11 +511,7 @@
       - name: Connect with SCRAM authentication
         href: flexible-server/how-to-connect-scram.md
     - name: Major version upgrade
-      items:
-      - name: Azure portal
-        href: flexible-server/how-to-perform-major-version-upgrade-portal.md
-      - name: Azure CLI
-        href: flexible-server/how-to-perform-major-version-upgrade-cli.md
+      href: flexible-server/how-to-perform-major-version-upgrade.md
     - name: Manage high availability
       items:
       - name: Azure portal
@@ -556,12 +546,14 @@
         href: flexible-server/how-to-read-replicas-virtual-endpoints-terraform.md
   - name: Extensions
     items:
-    - name: Allow extensions
+    - name: Manage
       href: extensions/how-to-allow-extensions.md
-    - name: Extension considerations
+    - name: Special considerations
       href: extensions/concepts-extensions-considerations.md
-    - name: Extension versions
+    - name: List by name
       href: extensions/concepts-extensions-versions.md           
+    - name: List by version of PostgreSQL
+      href: extensions/concepts-extensions-by-engine.md           
     - name: Azure AI (azure_ai)
       items:
       - name: Overview
@@ -576,7 +568,7 @@
       items:
       - name: Overview  
         href: flexible-server/azure-local-ai.md
-      - name: Create embeddings with azure_local_ai
+      - name: How to enable and use
         href: flexible-server/generative-ai-azure-local-ai.md
     - name: Vector indexing (pg_diskann)
       items:

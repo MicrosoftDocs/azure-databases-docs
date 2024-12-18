@@ -68,6 +68,8 @@
         href: ../scripts/cli/common/keys.md
       - name: Secure with IP firewall
         href: ../scripts/cli/common/ipfirewall.md
+      - name: Bulk add or remove IP firewall rules
+        href: ../scripts/cli/common/ipfirewall-bulk-add-remove.md
       - name: Secure new account with service endpoints
         href: ../scripts/cli/common/service-endpoints.md
       - name: Secure existing account with service endpoints

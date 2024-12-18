@@ -8,14 +8,14 @@ ms.reviewer: iriaosara
 ms.service: azure-cosmos-db
 ms.subservice: table
 ms.topic: how-to
-ms.date: 11/25/2024
+ms.date: 12/18/2024
 zone_pivot_groups: azure-interface-portal-cli-powershell-bicep
+appliesto:
+  - ✅ Table
 #Customer Intent: As a security user, I want to grant an identity control-plane access to Azure Cosmos DB for Table, so that my developer team can use the SDK of their choice with minimal code change.
 ---
 
 # Use control plane role-based access control with Azure Cosmos DB for Table
-
-[!INCLUDE[Table](../../includes/appliesto-table.md)]
 
 :::image type="complex" source="media/how-to-grant-control-plane-role-based-access/map.svg" border="false" alt-text="Diagram of the current location ('Role-based access control') in the sequence of the deployment guide.":::
 Diagram of the sequence of the deployment guide including these locations, in order: Overview, Concepts, Prepare, Role-based access control, Network, and Reference. The 'Role-based access control' location is currently highlighted.
