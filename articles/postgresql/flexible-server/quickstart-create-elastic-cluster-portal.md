@@ -24,7 +24,7 @@ Open your web browser and go to the [portal](https://portal.azure.com/). Enter y
 
 ## Create an Azure Database for PostgreSQL server
 
-An Elastic Cluster, like a flexible server instance is created with a configured set of [compute and storage resources](./concepts-compute-storage.md). The server is created within an [Azure resource group](/azure/azure-resource-manager/management/overview). The steps outlined in [creating a server](./quickstart-create-server-portal.md) equally apply to Elastic Cluster. This section outlines the changes in the process.
+An Elastic Cluster, like a flexible server instance is created with a configured set of [compute and storage resources](concepts-compute-storage.md). The server is created within an [Azure resource group](/azure/azure-resource-manager/management/overview). The steps outlined in [creating a server](quickstart-create-server-portal.md) equally apply to Elastic Cluster. This section outlines the changes in the process.
 
 To create an Azure Database for PostgreSQL flexible server instance, take the following steps:
 
@@ -145,7 +145,7 @@ To delete only the newly created server:
 
 1. Confirm the name of the server you want to delete, and view the databases under it that are affected. Enter your server name in the text box, and select **Delete**.
 
-## Next step
+[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
 
-> [!div class="nextstepaction"]
-> [Design multitenant database with Elastic Cluster](./tutorial-multitenant-database.md)
+## Related content
+- [Design multitenant database with Elastic Cluster](tutorial-multitenant-database.md).
