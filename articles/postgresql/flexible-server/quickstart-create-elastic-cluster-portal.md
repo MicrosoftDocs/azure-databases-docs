@@ -38,7 +38,7 @@ To create an Azure Database for PostgreSQL flexible server instance, take the fo
 
 1. Provide a desired node count and configure desired compute size.
 
-    :::image type="content" source="./media/quickstart-create-elastic-cluster-portal/3-elastic-clusters-configure-server.png" alt-text="Screenshot of of Compute + storage configuration with Elastic Clusters. Elastic cluster is selected. Node count input box has a value of 4. Compute tier and size options are visible.":::
+    :::image type="content" source="./media/quickstart-create-elastic-cluster-portal/3-elastic-clusters-configure-server.png" alt-text="Screenshot of Compute + storage configuration with Elastic Clusters. Elastic cluster is selected. Node count input box has a value of 4. Compute tier and size options are visible.":::
 
 1. Save changes and verify your choices on the main configuration page.
 
