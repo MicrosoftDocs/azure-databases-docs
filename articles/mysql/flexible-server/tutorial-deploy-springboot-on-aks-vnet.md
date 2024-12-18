@@ -32,7 +32,7 @@ In this tutorial, you'll learn how to deploy a [Spring Boot](https://spring.io/p
 - A [Git](https://github.com/) client.
 - A [Docker](https://www.docker.com/) client.
 
-## Create an Azure Database for MySQL flexible server
+## Create an Azure Database for MySQL Flexible Server
 
 ### Create a resource group
 
@@ -55,11 +55,11 @@ An Azure resource group is a logical group in which Azure resources are deployed
     az group create --name rg-mysqlaksdemo --location eastus
     ```
 
-### Create an Azure Database for MySQL flexible server instance
+### Create an Azure Database for MySQL Flexible Server instance
 
-We'll now create an Azure Database for MySQL flexible server instance in a virtual network (private access connectivity method).
+We'll now create an Azure Database for MySQL Flexible Server instance in a virtual network (private access connectivity method).
 
-1. Create an Azure virtual network *vnet-mysqlaksdemo* for all the resources in this tutorial, and a subnet *subnet-mysql* for the Azure Database for MySQL flexible server instance.
+1. Create an Azure virtual network *vnet-mysqlaksdemo* for all the resources in this tutorial, and a subnet *subnet-mysql* for the Azure Database for MySQL Flexible Server instance.
 
     ```azurecli-interactive
     az network vnet create \
@@ -70,7 +70,7 @@ We'll now create an Azure Database for MySQL flexible server instance in a virtu
     --subnet-prefix 155.55.1.0/24
     ```
 
-1. Create an Azure Database for MySQL flexible server instance *mysql-mysqlaksdemo* in the above created subnet, using the [az mysql flexible-server create](/cli/azure/mysql/flexible-server#az-mysql-flexible-server-create) command. Replace your values for admin username and password.
+1. Create an Azure Database for MySQL Flexible Server instance *mysql-mysqlaksdemo* in the above created subnet, using the [az mysql flexible-server create](/cli/azure/mysql/flexible-server#az-mysql-flexible-server-create) command. Replace your values for admin username and password.
 
     ```azurecli-interactive
     az mysql flexible-server create \
@@ -83,9 +83,9 @@ We'll now create an Azure Database for MySQL flexible server instance in a virtu
     --subnet subnet-mysql
     ```
 
-    You have now created an Azure Database for MySQL flexible server instance in the eastus region with Burstable B1MS compute, 32 GB storage, 7 days backup retention period, and in the provided subnet *subnet-mysql*. This subnet should not have any other resource deployed in it and will be delegated to Microsoft.DBforMySQL/flexibleServers.
+    You have now created an Azure Database for MySQL Flexible Server instance in the eastus region with Burstable B1MS compute, 32 GB storage, 7 days backup retention period, and in the provided subnet *subnet-mysql*. This subnet should not have any other resource deployed in it and will be delegated to Microsoft.DBforMySQL/flexibleServers.
 
-1. Configure a new Azure Database for MySQL flexible server database `demo` to be used with the Spring Boot Application.
+1. Configure a new Azure Database for MySQL Flexible Server database `demo` to be used with the Spring Boot Application.
 
     ```azurecli-interactive
     az mysql flexible-server db create \
@@ -125,7 +125,7 @@ In this section, we'll code the demo application. If you want to go faster, you 
 
     Use your favorite text editor like [VSCode](https://code.visualstudio.com/docs) or any IDE for the following steps.
 
-1. Configure Spring Boot to use Azure Database for MySQL flexible server.
+1. Configure Spring Boot to use Azure Database for MySQL Flexible Server.
 
     Open the src/main/resources/application.properties file, and add the below snippet. This code is reading the database host, database name, username, and password from the Kubernetes manifest file.
 
@@ -369,7 +369,7 @@ In this tutorial, we'll use Azure CNI networking in AKS. If you'd like to config
 
     :::image type="content" source="media/tutorial-deploy-springboot-on-aks-vnet/aks-resource-blade.png" alt-text="Screenshot that shows Azure Kubernetes Service resource view on Azure portal." lightbox="media/tutorial-deploy-springboot-on-aks-vnet/aks-resource-blade.png":::
 
-1. Paste in the following YAML. Replace your values for Azure Database for MySQL flexible server admin username and password.
+1. Paste in the following YAML. Replace your values for Azure Database for MySQL Flexible Server admin username and password.
 
     ```sql
     apiVersion: apps/v1
@@ -450,7 +450,7 @@ Here's a screenshot of these cURL requests:
 You can see a similar output through your browser:
 :::image type="content" source="media/tutorial-deploy-springboot-on-aks-vnet/aks-browser-output.png" alt-text="Screenshot that shows browser request output." lightbox="media/tutorial-deploy-springboot-on-aks-vnet/aks-browser-output.png":::
 
-Congratulations! You've successfully deployed a Spring Boot application on Azure Kubernetes Service (AKS) cluster with Azure Database for MySQL flexible server in the backend!
+Congratulations! You've successfully deployed a Spring Boot application on Azure Kubernetes Service (AKS) cluster with Azure Database for MySQL Flexible Server in the backend!
 
 ## Clean up the resources
 

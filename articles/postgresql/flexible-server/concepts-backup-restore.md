@@ -4,7 +4,7 @@ description: Learn about the concepts of backup and restore with Azure Database 
 author: kabharati
 ms.author: kabharati
 ms.reviewer: maghan
-ms.date: 05/06/2024
+ms.date: 11/28/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: conceptual
@@ -41,7 +41,7 @@ Azure Database for PostgreSQL flexible server stores multiple copies of your bac
 
 Azure Database for PostgreSQL flexible server offers three options: 
 
-- **Zone-redundant backup storage**: This option is automatically chosen for regions that support availability zones. When backups are stored in geo-redundant backup storage, three copies of the data are kept within the region where your server is hosted. Additionally, the data is replicated to a paired region for added protection. 
+- **Zone-redundant backup storage**: This option is automatically chosen for regions that support availability zones. When backups are stored in zone-redundant backup storage, three copies of the data are kept within the availability zone  where your server is hosted. Additionally, the data is replicated to another availability zone for added protection. 
 
   This option provides backup data availability across availability zones and restricts replication of data to within a country/region to meet data residency requirements. This option provides at least 99.9999999999 percent (12 nines) durability of backup objects over a year.  
 
@@ -84,13 +84,13 @@ You can use the [Backup Storage Used](../concepts-monitoring.md) metric in the
 
 ## Point-in-time recovery
 
-In Azure Database for PostgreSQL flexible server, performing a PITR creates a new server in the same region as your source server, but you can choose the availability zone. It's created with the source server's configuration for the pricing tier, compute generation, number of virtual cores, storage size, backup retention period, and backup redundancy option. Also, tags and settings such as virtual networks and firewall settings are inherited from the source server.
+In Azure Database for PostgreSQL flexible server, performing a PITR creates a new server in the same region as your source server, but you can choose the availability zone. It's created with the source server's configuration for the pricing tier, compute generation, number of virtual cores, storage size, backup retention period, and backup redundancy option. 
 
 The physical database files are first restored from the snapshot backups to the server's data location. The appropriate backup that was taken earlier than the desired point in time is automatically chosen and restored. A recovery process then starts by using WAL files to bring the database to a consistent state. 
 
 For example, assume that the backups are performed at 11:00 PM every night. If the restore point is for August 15 at 10:00 AM, the daily backup of August 14 is restored. The database will be recovered until 10:00 AM of August 15 by using the transaction log backup from August 14, 11:00 PM, to August 15, 10:00 AM. 
 
-To restore your database server, see [these steps](./how-to-restore-server-portal.md).
+To restore your database server, see [these steps](how-to-restore-server-portal.md).
 
 > [!IMPORTANT]
 > A restore operation in Azure Database for PostgreSQL flexible server always creates a new database server with the name that you provide. It doesn't overwrite the existing database server.
@@ -119,7 +119,7 @@ If you configure your server within a virtual network, you can restore to the sa
 
 ## Geo-redundant backup and restore
 
-To enable geo-redundant backup from the **Compute + storage** pane in the Azure portal, see the [quickstart guide](./quickstart-create-server-portal.md). 
+To enable geo-redundant backup from the **Compute + storage** pane in the Azure portal, see the [quickstart guide](quickstart-create-server-portal.md). 
 
 >[!IMPORTANT]
 > Geo-redundant backup can be configured only at the time of server creation. 
@@ -163,6 +163,8 @@ After you restore the server, you can perform the following tasks to get your us
 
 - If the new server is meant to replace the original server, redirect clients and client applications to the new server. Change the server name of your connection string to point to the new server.
 
+- The values of all [server parameters](concepts-server-parameters.md) on the original server are not automatically applied to the new server. Ensure that all server parameters on the new server are re-configured as per the requirements of that new server.
+
 - Ensure that appropriate server-level firewall, private endpoints and virtual network rules are in place for user connections. In *public access* network, rules are copied over from the original server, but those might not be the ones required in the restored environment. So, adjust them as per your requirements. Private endpoints are not carried over. Create any private endpoints you may need in the restored server. In *private access* virtual network, the restore doesn't copy over any network infrastructure artifacts from source to restored server networks. Anything related to configuration of VNET(Virtual Network), subnets, or Network Security Groups, must be taken care of as a post-restore task.
   
 - Scale up or scale down the restored server's compute as needed.
@@ -171,9 +173,9 @@ After you restore the server, you can perform the following tasks to get your us
 
 - Configure alerts as appropriate.
   
-- If the source server from which you restored was configured with high availability, and you want to configure the restored server with high availability, you can then follow [these steps](./how-to-manage-high-availability-portal.md).
+- If the source server from which you restored was configured with high availability, and you want to configure the restored server with high availability, you can then follow [these steps](how-to-manage-high-availability-portal.md).
 
-- If the source server from which you restored was configured with read replicas, and you want to configure read replicas on the restored server, you can then follow [these steps](./how-to-read-replicas-portal.md).
+- If the source server from which you restored was configured with read replicas, and you want to configure read replicas on the restored server, you can then follow [these steps](how-to-read-replicas-portal.md).
  
 ## On-demand Backups (preview)
 
@@ -181,7 +183,7 @@ Azure Database for PostgreSQL Flexible Server automatically generates storage vo
 
 On-demand backups can be taken in addition to scheduled automatic backups. These backups are retained according to your backup retention window. You can delete these on-demand backups at any time if they are no longer needed. To initiate an on-demand backup, simply select the database instance you wish to back up and specify a backup name. These backups are stored alongside automated backups, but only on-demand backups can be deleted by users, as automated backups are managed and retained by the Flexible Server service to meet backup retention requirements.
 
- For more information about performing an on-demand backup, visit the [how-to guide](./how-to-perform-on-demand-backup-portal.md).
+ For more information about performing an on-demand backup, visit the [how-to guide](how-to-perform-on-demand-backup-portal.md).
 
 
 #### Limitations
@@ -208,7 +210,7 @@ Azure Backup and Azure Database for PostgreSQL flexible server services have bui
 - LTR restores are currently available only as 'Restore as Files' to storage accounts, with 'Restore as Server' capability planned for the future.
 - LTR backs up all databases in flexible server instances, and individual databases cannot be selected for LTR configuration.
 - LTR backup is not supported on geo-replicas, but it can be performed from primary servers.
-- The maximum supported database size for LTR backup is 4 TiB.
+- The maximum supported database size for Long-Term Retention (LTR) backups is 4 TiB. While backups can be attempted on servers exceeding 4 TiB, these are not officially supported, and the success of LTR backups for such servers cannot be guaranteed.
 - LTR backups can be scheduled weekly, monthly, or yearly. The daily backup schedule is currently unsupported.
 
 
@@ -241,7 +243,7 @@ For more information about performing a long term backup, visit the [how-to guid
 
 * **Can I restore a single database or a few databases in a server?**
   
-    Restoring a single database or a few databases or tables is not directly supported. However, you can restore the entire server to a new server, and then extract tables or databases and import them to the new server.
+    Restoring a single database or a few databases or tables is not directly supported. However, you can restore the entire server to a new server, and then drop tables or databases that you don't need on the new server.
 
 * **Is my server available while a backup is in progress?**
 
@@ -259,7 +261,7 @@ For more information about performing a long term backup, visit the [how-to guid
     - Locally redundant storage, in regions that don't support multiple zones yet. 
     - The paired region, if you configure  geo-redundant backup.
     
-    These backup files can't be exported. 
+    These backup files can't be exported as they are stored in Microsoft-managed storage accounts. Customers have read-only access to restore these files but cannot modify or delete them. The backup files are automatically deleted after the retention period
     
     You can use backups to restore your server to a point in time only. The default backup retention period is 7 days. You can optionally configure the backup retention up to 35 days. 
 
@@ -341,9 +343,10 @@ For more information about performing a long term backup, visit the [how-to guid
   
     Currently, there's no way to track the restore operation. You can monitor the activity log to see if the operation is in progress or complete.
 
+[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
 
-## Next steps
+## Related content
 
--   Learn about [business continuity](./concepts-business-continuity.md).
--   Learn about [zone-redundant high availability](./concepts-high-availability.md).
--   Learn [how to restore](./how-to-restore-server-portal.md).
+- [Overview of business continuity with Azure Database for PostgreSQL - Flexible Server](concepts-business-continuity.md).
+- [High availability in Azure Database for PostgreSQL - Flexible Server](/azure/reliability/reliability-postgresql-flexible-server).
+- [Point-in-time restore of an Azure Database for PostgreSQL - Flexible Server instance](how-to-restore-server-portal.md).

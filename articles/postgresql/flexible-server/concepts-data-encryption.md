@@ -201,12 +201,14 @@ Azure Database for PostgreSQL flexible server supports advanced [data recovery](
 
 Here are current limitations for configuring the CMK in Azure Database for PostgreSQL flexible server:
 
-- You can configure CMK encryption only during creation of a new server, not as an update to an existing Azure Database for PostgreSQL flexible server instance. You can [restore a PITR backup to a new server with CMK encryption](./concepts-backup-restore.md#point-in-time-recovery) instead.
+- You can configure CMK encryption only during creation of a new server, not as an update to an existing Azure Database for PostgreSQL flexible server instance. You can [restore a PITR backup to a new server with CMK encryption](concepts-backup-restore.md#point-in-time-recovery) instead.
 
-- After you configure CMK encryption, you can't remove it. If you want to remove this feature, the only way is to [restore the server to a non-CMK server](./concepts-backup-restore.md#point-in-time-recovery).
+- After you configure CMK encryption, you can't remove it. If you want to remove this feature, the only way is to [restore the server to a non-CMK server](concepts-backup-restore.md#point-in-time-recovery).
 
 - The instance of Azure Key Vault Managed HSM or the instance of Azure Key Vault on which you plan to store the encryption key, must exist in the same region on which the instance of Azure Database for flexible server is being created.
 
-## Next steps
+[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
 
-- Learn about [Microsoft Entra Domain Services](/azure/active-directory-domain-services/overview).
+## Related content
+
+- [What's Microsoft Entra Domain Services](/azure/active-directory-domain-services/overview).

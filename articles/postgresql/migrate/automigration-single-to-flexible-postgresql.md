@@ -115,6 +115,10 @@ For Flexible Server, VNet rules are not supported. Instead, Flexible Server allo
 After the migration, you must add a private endpoint to your Flexible Server for all subnets previously covered by VNet rules on your Single Server. You can complete this process using either the [Azure portal](../flexible-server/how-to-manage-virtual-network-private-endpoint-portal.md) or the [Azure CLI](../flexible-server/how-to-manage-virtual-network-private-endpoint-cli.md).
 Once this step is completed, your network connectivity will remain intact on the Flexible Server after the migration from Single Server.
 
+### Long-term retention backup
+
+Auto migration of single servers does not automatically configure long-term retention (LTR) backup after migration to Flexible server. You can backup Azure Database for PostgreSQL Flexible server with long-term retention using [Azure Backup](https://learn.microsoft.com/azure/backup/backup-azure-database-postgresql-flex).
+
 ## Frequently Asked Questions (FAQs)
 
 **Q. Why am I being auto-migrated​?**
@@ -139,6 +143,14 @@ Once this step is completed, your network connectivity will remain intact on the
 **Q. How can I opt out of a scheduled automigration of my Single server?​**
 
 **A.** If you wish to opt out of the automigration, you can raise a support ticket for this purpose.
+
+**Q. What post-migration steps should I follow if my Single server uses VNet rules?​**
+
+**A.** VNet rules are not supported on Flexible server. Please refer to [this section](#handling-vnet-rules-in-flexible-server)
+
+**Q. Do I need to re-configure Long-term retention backups on Flexible server?​**
+
+**A.** Yes. Please refer to [this section](#long-term-retention-backup)
 
 **Q. What username and connection string would be supported for the migrated Flexible Server? ​​**
 

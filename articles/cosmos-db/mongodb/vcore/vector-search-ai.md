@@ -1,20 +1,20 @@
 ---
 title: Open-source vector databases
-titleSuffix: 
-description: Open-source vector database functionalities, examples, challenges, and solutions.
+titleSuffix: Azure Cosmos DB for MongoDB vCore
+description: Review open-source vector database functionalities, examples, challenges, and solutions in relation to Azure Cosmos DB for MongoDB vCore.
 author: gahl-levy
 ms.author: gahllevy
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
-ms.topic: conceptual
-ms.date: 04/02/2024
+ms.topic: concept-article
+ms.date: 12/03/2024
 ms.collection:
   - ce-skilling-ai-copilot
+appliesto:
+  - ✅ MongoDB vCore
 ---
 
 # Open-source vector databases
-
-[!INCLUDE[MongoDB vCore](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 
 When developers select vector databases, the open-source options provide numerous benefits. "Open source" means that the software's source code is available freely, enabling users to customize the database according to their specific needs. This flexibility is beneficial for organizations that are subject to unique regulatory requirements on data, such as companies in the financial services industry.
 
@@ -78,6 +78,7 @@ A fully managed vector database that is integrated in a highly performant NoSQL 
 
 An example is the Integrated Vector Database in Azure Cosmos DB for MongoDB. It allows developers to enjoy the same financial benefit associated with open-source vector databases, while the service provider handles maintenance, updates, and scalability. When it’s time to scale up operations, upgrading is quick and easy while keeping a low [total cost of ownership (TCO)](introduction.md#low-total-cost-of-ownership-tco). This service can also be used to conveniently [scale MongoDB](../reimagined.md) applications that are already in production.
 
-## Next steps
+## Next step
+
 > [!div class="nextstepaction"]
 > [Use lifetime free tier of Integrated Vector Database in Azure Cosmos DB for MongoDB](free-tier.md)
