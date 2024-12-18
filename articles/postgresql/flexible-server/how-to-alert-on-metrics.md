@@ -85,9 +85,11 @@ Once you have created an alert, you can select it and do the following actions:
 * **Edit** or **Delete** the alert rule.
 * **Disable** or **Enable** the alert, if you want to temporarily stop or resume receiving notifications.
 
-## Next steps
+[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
 
-* Learn more about [setting alert on metrics](/azure/azure-monitor/alerts/alerts-create-new-alert-rule).
-* Learn more about [monitoring metrics available in Azure Database for PostgreSQL - Flexible Server](./concepts-monitoring.md).
-* [Understand how metric alerts work in Azure Monitor](/azure/azure-monitor/alerts/alerts-types).
-* [Scale Monitoring with Azure Database for PostgreSQL - Flexible Server Multi-Resource Alerts](https://techcommunity.microsoft.com/t5/azure-database-for-postgresql/scale-monitoring-with-azure-postgresql-multi-resource-alerts/ba-p/3866526).
+## Related content
+
+- [Setting alerts on metrics](/azure/azure-monitor/alerts/alerts-create-new-alert-rule).
+- [Monitor metrics in Azure Database for PostgreSQL - Flexible Server](concepts-monitoring.md).
+- [Understand how metric alerts work in Azure Monitor](/azure/azure-monitor/alerts/alerts-types).
+- [Scale Monitoring with Azure Database for PostgreSQL - Flexible Server Multi-Resource Alerts](https://techcommunity.microsoft.com/t5/azure-database-for-postgresql/scale-monitoring-with-azure-postgresql-multi-resource-alerts/ba-p/3866526).

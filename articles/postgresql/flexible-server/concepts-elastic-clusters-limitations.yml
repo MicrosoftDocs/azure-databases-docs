@@ -16,7 +16,7 @@ summary: |
 
   The following section describes capacity and functional limits in Elastic Clusters with Azure Database for PostgreSQL.
 
-  Current [limitation of Azure Database for PostgreSQL Flexible](./concepts-limits.md) server also apply to Elastic Clusters.
+  Current [limitation of Azure Database for PostgreSQL Flexible](concepts-limits.md) server also apply to Elastic Clusters.
   The rest of the document describes differences that apply only to Elastic Clusters.
 
 sections:

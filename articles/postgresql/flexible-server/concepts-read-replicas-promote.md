@@ -96,13 +96,12 @@ In both the Planned and Forced promotion scenarios, it's required that the lates
  
     No, we disable HA during the initial promotion since we don't support HA-enabled read replicas. Promoting a read replica to a primary means that the original primary is changing its role to a replica. If you're switching back, you need to enable HA on your original primary server.
 
-
-    
+[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
 
 ## Related content
 
-- [Read replicas - overview](concepts-read-replicas.md)
-- [Geo-replication](concepts-read-replicas-geo.md)
-- [Virtual endpoints](concepts-read-replicas-virtual-endpoints.md)
-- [Create and manage read replicas in the Azure portal](how-to-read-replicas-portal.md)
-- [Cross-region replication with virtual network](concepts-networking.md#replication-across-azure-regions-and-virtual-networks-with-private-networking)
+- [Read replicas in Azure Database for PostgreSQL - Flexible Server](concepts-read-replicas.md).
+- [Geo-replication in Azure Database for PostgreSQL - Flexible Server](concepts-read-replicas-geo.md).
+- [Virtual endpoints for read replicas in Azure Database for PostgreSQL - Flexible Server](concepts-read-replicas-virtual-endpoints.md).
+- [Create and manage read replicas in Azure Database for PostgreSQL - Flexible Server](how-to-read-replicas-portal.md).
+- [Replication across Azure regions and virtual networks with private networking](concepts-networking-private.md#replication-across-azure-regions-and-virtual-networks-with-private-networking).

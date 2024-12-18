@@ -66,8 +66,13 @@ As a managed service for Postgres, Azure Database for PostgreSQL has configurabl
 
 Your Azure Database for PostgreSQL flexible server instance is enabled with default values for each parameter on creation. The user can't configure some parameters that would require a server restart or superuser access for changes to take effect.
 
+[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
+
 ## Related content
 
-- For an overview of the service, see [Azure Database for PostgreSQL flexible server overview](overview.md).
-- For information about specific resource quotas and limitations based on your **configuration**, see [Compute options](concepts-compute.md).
-- View and edit server parameters through [Azure portal](how-to-configure-server-parameters.md) or [Azure CLI](how-to-configure-server-parameters-using-cli.md).
+- [Overview of Azure Database for PostgreSQL - Flexible Server](overview.md).
+- [Compute options in Azure Database for PostgreSQL - Flexible Server](concepts-compute.md).
+- [Storage options in Azure Database for PostgreSQL - Flexible Server](concepts-storage.md).
+- [Supported versions of PostgreSQL in Azure Database for PostgreSQL - Flexible Server](concepts-supported-versions.md).
+- [Limits in Azure Database for PostgreSQL - Flexible Server](concepts-limits.md).
+- [Server parameters in Azure Database for PostgreSQL - Flexible Server](concepts-server-parameters.md).

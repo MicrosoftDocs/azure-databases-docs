@@ -87,6 +87,8 @@ For horizontally scaled configurations, consisting of a primary server and one o
 
 [Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
 
+[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
+
 ## Related content
 
-- [Create an Azure Database for PostgreSQL flexible server instance in the portal](how-to-manage-server-portal.md).
+- [Manage Azure Database for PostgreSQL - Flexible Server](how-to-manage-server-portal.md).

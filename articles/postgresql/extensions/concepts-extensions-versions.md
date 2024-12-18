@@ -20,7 +20,6 @@ The following extensions are available for the Azure Database for the PostgreSQL
 
 ## Related content
 
-- [How to use extensions](how-to-allow-extensions.md)
-- [Special considerations with extensions](concepts-extensions-considerations.md)
-- [List of extensions by version of PostgreSQL](concepts-extensions-by-engine.md)
-- [Feedback forum](https://aka.ms/pgfeedback)
+- [How to use extensions](how-to-allow-extensions.md).
+- [Special considerations with extensions](concepts-extensions-considerations.md).
+- [List of extensions by name](concepts-extensions-versions.md).
