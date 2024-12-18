@@ -292,7 +292,7 @@ deployment "django-app" created
 service "python-svc" created
 ```
 
-A deployment `django-app` allows you to describes details of your deployment such as which images to use for the app, the number of pods and pod configuration. A service `python-svc` is created to expose the application through an external IP.
+A deployment `django-app` allows you to describe details of your deployment such as which images to use for the app, the number of pods and pod configuration. A service `python-svc` is created to expose the application through an external IP.
 
 ## Test the application
 
