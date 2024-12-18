@@ -59,8 +59,9 @@ Follow these steps to take on-demand backups for your Azure Database for Postgre
 
 4.  A notification is shown that **On-demand backup deletion has been initiated.**
 
+[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
 
-## Next steps
+## Related content
 
--   Learn about [business continuity](./concepts-business-continuity.md)
--   Learn about [zone redundant high availability](./concepts-high-availability.md)
+- [Overview of business continuity with Azure Database for PostgreSQL - Flexible Server](concepts-business-continuity.md).
+- [Backup and restore in Azure Database for PostgreSQL - Flexible Server](concepts-backup-restore.md).

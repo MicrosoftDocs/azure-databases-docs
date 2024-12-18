@@ -55,7 +55,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 ### [CLI](#tab/cli)
 
-You can upgrade the major version via the CLI upgrade [command](/cli/azure/postgres/flexible-server?view=azure-cli-latest#az-postgres-flexible-server-upgrade).
+You can upgrade the major version via the CLI upgrade [command](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-upgrade).
 
 ```azurecli
 az postgres flexible-server upgrade --resource-group <resource_group> --name <server> --version <target_version>
@@ -67,7 +67,7 @@ az postgres flexible-server upgrade --resource-group <resource_group> --name <se
 
 ## Related content
 
-- [business continuity](./concepts-business-continuity.md).
-- [major version upgrade](./concepts-major-version-upgrade.md).
-- [zone-redundant high availability](./concepts-high-availability.md).
-- [backup and recovery](./concepts-backup-restore.md).
+- [Overview of business continuity with Azure Database for PostgreSQL - Flexible Server](concepts-business-continuity.md).
+- [Major version upgrades in Azure Database for PostgreSQL - Flexible Server](concepts-major-version-upgrade.md).
+- [High availability in Azure Database for PostgreSQL - Flexible Server](/azure/reliability/reliability-postgresql-flexible-server).
+- [Backup and restore in Azure Database for PostgreSQL - Flexible Server](concepts-backup-restore.md).
