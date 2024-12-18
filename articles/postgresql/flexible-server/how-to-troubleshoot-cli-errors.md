@@ -74,8 +74,8 @@ Currently, Azure CLI doesn't support turning on debug logging, but you can retri
 |InvalidUserName| Enter a valid username. The admin user name can't be azure_superuser, azure_pg_admin, admin, administrator, root, guest, or public. It can't start with pg_.                                                                                                                                                                                      |
 |BlockedUserName| The admin user name can't be azure_superuser, azure_pg_admin, admin, administrator, root, guest, or public. It can't start with pg_. Avoid using these patterns in the admin name.                                                                                                                                                                |
 
-## Next steps
+[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
 
-- If you're still experiencing issues, please [report the issue](https://github.com/Azure/azure-cli/issues). 
-- If you have questions, visit our Stack Overflow page: https://aka.ms/azcli/questions. 
-- Let us know how we're doing with this survey https://aka.ms/azureclihats. 
+## Related content
+- [Report an issue specific to Azure CLI](https://github.com/Azure/azure-cli/issues).
+- [Azure CLI page in Stack Overflow](https://aka.ms/azcli/questions).
