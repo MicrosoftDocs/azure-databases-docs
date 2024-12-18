@@ -12,7 +12,7 @@ ms.topic: quickstart
 
 # Tutorial: Manage Azure Database for MySQL - Flexible Server credentials in Azure Key Vault
 
-You can store the Azure Database for MySQL flexible server connection string in Azure Key Vault to ensure that sensitive information is securely managed and accessed only by authorized users or applications. Additionally, any changes to the connection string can be easily updated in the Key Vault without modifying the application code.
+You can store the Azure Database for MySQL Flexible Server connection string in Azure Key Vault to ensure that sensitive information is securely managed and accessed only by authorized users or applications. Additionally, any changes to the connection string can be easily updated in the Key Vault without modifying the application code.
 
 ## Prerequisites
 
@@ -39,7 +39,7 @@ For more information, see [About Azure Key Vault secrets](/azure/key-vault/secre
 
 ## Configure access policies
 
-In the Key Vault settings, configure the appropriate access policies to grant access to the users or applications that need to retrieve the Azure Database for MySQL flexible server connection string from the Key Vault. Ensure that the necessary permissions are granted for "Get" operations on secrets.
+In the Key Vault settings, configure the appropriate access policies to grant access to the users or applications that need to retrieve the Azure Database for MySQL Flexible Server connection string from the Key Vault. Ensure that the necessary permissions are granted for "Get" operations on secrets.
 
 1. In the [Azure portal](https://portal.azure.com), navigate to the Key Vault resource.
 1. Select **Access policies**, then select **Create**.
@@ -48,9 +48,9 @@ In the Key Vault settings, configure the appropriate access policies to grant ac
 1. Review the access policy changes and select **Create** to save the access policy.
 1. Back on the **Access policies** page, verify that your access policy is listed.
 
-## Retrieve the Azure Database for MySQL flexible server connection string
+## Retrieve the Azure Database for MySQL Flexible Server connection string
 
-In your application or script, use the Azure Key Vault SDK or client libraries to authenticate and retrieve the Azure Database for MySQL flexible server connection string from the Key Vault. You need to provide the appropriate authentication credentials and access permissions to access the Key Vault. Once you have retrieved the Azure Database for MySQL flexible server connection string from Azure Key Vault, you can use it in your application to establish a connection to the Azure Database for MySQL flexible server database. Pass the retrieved connection string as a parameter to your database connection code.
+In your application or script, use the Azure Key Vault SDK or client libraries to authenticate and retrieve the Azure Database for MySQL Flexible Server connection string from the Key Vault. You need to provide the appropriate authentication credentials and access permissions to access the Key Vault. Once you have retrieved the Azure Database for MySQL Flexible Server connection string from Azure Key Vault, you can use it in your application to establish a connection to the Azure Database for MySQL Flexible Server database. Pass the retrieved connection string as a parameter to your database connection code.
 
 ### Code samples to retrieve connection string
 

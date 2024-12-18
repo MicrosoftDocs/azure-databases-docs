@@ -30,7 +30,9 @@ To complete this how-to guide, you need:
  
 You can use Azure Service Health to [view notifications](/azure/service-health/service-notifications) about upcoming and performed scheduled maintenance on your Azure Database for PostgreSQL flexible server instance. You can also [set up](/azure/service-health/resource-health-alert-monitor-guide) alerts in Azure Service Health to get notifications about maintenance events.
  
-## Next steps  
- 
-* Learn about [scheduled maintenance in Azure Database for PostgreSQL – Flexible Server](concepts-maintenance.md)
-* Lean about [Azure Service Health](/azure/service-health/overview)
+[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
+
+## Related content
+
+- [Scheduled maintenance in Azure Database for PostgreSQL - Flexible Server](concepts-maintenance.md).
+- [Azure Service Health](/azure/service-health/overview).

@@ -15,7 +15,7 @@ ms.topic: tutorial
 > [!IMPORTANT]  
 > This capability is in preview and is subject to [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-To help you manage [What is Azure Database for MySQL - Flexible Server?](overview.md) resources more efficiently, you can create automation tasks for your Azure Database for MySQL flexible server instance. One example of such tasks can be starting or stopping the Azure Database for MySQL flexible server instance on a predefined schedule. You can set this task to start or stop the server automatically for a specific number of times every day, week, or month by setting the Interval and Frequency values. The automation task continues to work until you delete or disable the task.
+To help you manage [What is Azure Database for MySQL - Flexible Server?](overview.md) resources more efficiently, you can create automation tasks for your Azure Database for MySQL Flexible Server instance. One example of such tasks can be starting or stopping the Azure Database for MySQL Flexible Server instance on a predefined schedule. You can set this task to start or stop the server automatically for a specific number of times every day, week, or month by setting the Interval and Frequency values. The automation task continues to work until you delete or disable the task.
 
 ## How do automation tasks differ from Azure Automation?
 
@@ -32,27 +32,27 @@ Creating an automation task doesn't immediately incur charges. The automation ta
 ## Prerequisites
 
 - An Azure account and subscription.
-- Azure Database for MySQL flexible server instance that you want to manage.
+- Azure Database for MySQL Flexible Server instance that you want to manage.
 
 ## Create an automation task
 
-1. In the [Azure portal](https://portal.azure.com), find the Azure Database for MySQL flexible server resource that you want to manage.
+1. In the [Azure portal](https://portal.azure.com), find the Azure Database for MySQL Flexible Server resource that you want to manage.
 1. On the resource navigation menu, in the **Automation** section, select **Tasks (preview)**. Select **Add a task** to select a task template.
 :::image type="content" source="media/create-automation-tasks/add-automation-task.png" alt-text="Screenshot that shows the 'Tasks (preview)' pane with 'Add a task' selected." lightbox="media/create-automation-tasks/add-automation-task.png":::
 
-1. Under **Select a template**, select one of the tasks available to automate for your Azure Database for MySQL flexible server instance.
+1. Under **Select a template**, select one of the tasks available to automate for your Azure Database for MySQL Flexible Server instance.
    :::image type="content" source="media/create-automation-tasks/select-task-template.png" alt-text="Screenshot that shows the 'Add a task' pane with 'Stop MySQL Flexible Server' template selected." lightbox="media/create-automation-tasks/select-task-template.png":::
 
    | Task Type | Details |
    | --- | --- |
-   | **Send monthly cost** | Send email about the monthly cost for your Azure Database for MySQL flexible server instance. |
+   | **Send monthly cost** | Send email about the monthly cost for your Azure Database for MySQL Flexible Server instance. |
    | **Stop server** | Allows you to stop a server based on a given schedule, for example you want to stop it on a weekend to optimize cost. |
    | **Start server** | Allows you to start a server based on a given schedule, for example you want to start a server if it is stopped during the weekend. |
    | **Scale server** | Allows you to scale up or down a server on a given schedule. For example, to scale down during weekends or scale up during an event you can use this task. |
 
 ## Stop server task
 
-Here's an example to configure stop tasks for an Azure Database for MySQL flexible server instance.
+Here's an example to configure stop tasks for an Azure Database for MySQL Flexible Server instance.
 
 1. Select **Stop MySQL Flexible server** task.
 
@@ -86,12 +86,12 @@ The task you've created, which is automatically live and running, will appear on
 
 ## Scale a server task
 
-You can scale a server up or down based on a recurring time schedule. You need to provide the following information when creating a scale Azure Database for MySQL flexible server task:
+You can scale a server up or down based on a recurring time schedule. You need to provide the following information when creating a scale Azure Database for MySQL Flexible Server task:
 
 | Field | Description |
 | --- | --- |
 | Scale Time | Time when to start the operation. |
-| Location | Region of your Azure Database for MySQL flexible server instance. |
+| Location | Region of your Azure Database for MySQL Flexible Server instance. |
 | Sku Name | Choose a Service tier name in this format Standard_B1ms. See [the full list of skus available.](./concepts-service-tiers-storage.md#service-tiers-size-and-server-types) |
 | Sku Tier | Choose from Burstable, General purpose and Memory Optimized (same as Business critical Sku tier in MySQL Flexible Server). |
 | Interval | How frequently to run this task. Enter a numeric value. If you enter 1, the task will run 1 time based on the frequency. |
@@ -106,7 +106,7 @@ Here's a screenshot of the Scale automation task:
 
 To view a task's history of runs along with their status:
 
-1. In the [Azure portal](https://portal.azure.com), find the Azure Database for MySQL flexible server resource that you want to manage.
+1. In the [Azure portal](https://portal.azure.com), find the Azure Database for MySQL Flexible Server resource that you want to manage.
 1. On the resource navigation menu, in the **Automation** section, select **Tasks (preview)**.
 1. In the tasks list, find the task that you want to review. In that task's **Runs** column, select **View**.
 
@@ -131,7 +131,7 @@ To change a task, you have these options:
 
 ### Edit the task inline
 
-1. In the [Azure portal](https://portal.azure.com), find the Azure Database for MySQL flexible server resource that you want to manage.
+1. In the [Azure portal](https://portal.azure.com), find the Azure Database for MySQL Flexible Server resource that you want to manage.
 1. On the resource navigation menu, in the **Automation** section, select **Tasks (preview)**.
 1. In the tasks list, find the task that you want to update. Open the task's ellipses (**...**) menu, and select **Edit in-line**.
 1. By default, the **Authenticate** tab appears and shows the existing connections.

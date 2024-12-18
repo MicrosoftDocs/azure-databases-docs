@@ -3,7 +3,7 @@ title: Scaling resources
 description: This article describes the resource scaling in Azure Database for PostgreSQL flexible server.
 author: varun-dhawan
 ms.author: varundhawan
-ms.date: 08/22/2024
+ms.date: 12/16/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: conceptual
@@ -23,12 +23,12 @@ After an Azure Database for PostgreSQL flexible server instance is created, you 
 - Amount of storage.
 - Backup retention period.
 
-The number of vCores can be scaled up or down, but the storage size can only be increased. You can also scale the backup retention period, up or down, from 7 to 35 days. The resources can be scaled by using multiple tools, for instance, the [Azure portal](./quickstart-create-server-portal.md) or the [Azure CLI](./quickstart-create-server-cli.md).
+The number of vCores can be scaled up or down, but the storage size can only be increased. You can also scale the backup retention period, up or down, from 7 to 35 days. The resources can be scaled by using multiple tools, for instance, the [Azure portal](quickstart-create-server-portal.md) or the [Azure CLI](quickstart-create-server-cli.md).
 
 > [!NOTE]
 > After you increase the storage size, you can't go back to a smaller storage size.
 
-**Horizontal scaling**: You can scale horizontally by creating [read replicas](./concepts-read-replicas.md). Read replicas let you scale your read workloads onto separate Azure Database for PostgreSQL flexible server instances. They don't affect the performance and availability of the primary instance.
+**Horizontal scaling**: You can scale horizontally by creating [read replicas](concepts-read-replicas.md). Read replicas let you scale your read workloads onto separate Azure Database for PostgreSQL flexible server instances. They don't affect the performance and availability of the primary instance.
 
 When you change the number of vCores or the compute tier, the instance is restarted for the new server type to take effect. During this time, the system switches over to the new server type. No new connections can be established, and all uncommitted transactions are rolled back. 
 
@@ -36,7 +36,7 @@ The overall time it takes to restart your server depends on the crash recovery p
 
 If your application is sensitive to loss of in-flight transactions that might occur during compute scaling, we recommend implementing a transaction [retry pattern](../single-server/concepts-connectivity.md#handling-transient-errors).
 
-Scaling the storage doesn't require a server restart in most cases. Similarly, backup retention period changes are an online operation. To improve the restart time, we recommend that you perform scale operations during off-peak hours. That approach reduces the time needed to restart the database server.
+Scaling the storage doesn't require a server restart in most cases, for more details refer to [Storage options in Azure Database for PostgreSQL - Flexible Server](concepts-scaling-resources.md) Similarly, backup retention period changes are an online operation. To improve the restart time, we recommend that you perform scale operations during off-peak hours. That approach reduces the time needed to restart the database server.
 
 ## Near-zero downtime scaling
 
@@ -48,9 +48,9 @@ Typically, this process could take anywhere between 2 to 10 minutes with regular
 
 When you update your Azure Database for PostgreSQL flexible server instance in scaling scenarios, we create a new copy of your server (VM) with the updated configuration. We synchronize it with your current one, and switch to the new copy with a 30-second interruption. Then we retire the old server. The process occurs all at no extra cost to you. 
 
-This process allows for seamless updates while minimizing downtime and ensuring cost-efficiency. This scaling process is triggered when changes are made to the storage and compute tiers. This feature is only available on non-HA servers and is enabled in all Azure regions. *No customer action is required* to use this capability.
+This process allows for seamless updates while minimizing downtime and ensuring cost-efficiency. This scaling process is triggered when changes are made to the storage and compute tiers. *No customer action is required* to use this capability.
 
-For read replica configured servers, scaling operations must follow a specific sequence to ensure data consistency and minimize downtime. For details about that sequence, refer to [scaling with read replicas](./concepts-read-replicas.md#scale).
+For read replica configured servers, scaling operations must follow a specific sequence to ensure data consistency and minimize downtime. For details about that sequence, refer to [scaling with read replicas](concepts-read-replicas.md#scale).
 
 > [!NOTE]
 > The near-zero downtime scaling process is the _default_ operation. When the following limitations are encountered, the system switches to regular scaling, which involves more downtime compared to the near-zero downtime scaling.
@@ -68,8 +68,9 @@ For read replica configured servers, scaling operations must follow a specific s
 - Near-zero downtime scaling doesn't work if a [virtual network-injected server with a delegated subnet](../flexible-server/concepts-networking-private.md#virtual-network-concepts) doesn't have sufficient usable IP addresses. If you have a standalone server, one extra IP address is necessary. For an HA-enabled server, two extra IP addresses are required.
 - Logical replication slots aren't preserved during a near-zero downtime failover event. To maintain logical replication slots and ensure data consistency after a scale operation, use the [pg_failover_slot](https://github.com/EnterpriseDB/pg_failover_slots) extension. For more information, see [Enabling extension in a flexible server](../flexible-server/concepts-extensions.md#pg_failover_slots).
 - Near-zero downtime scaling doesn't work with [unlogged tables](https://www.postgresql.org/docs/current/sql-createtable.html#SQL-CREATETABLE-UNLOGGED). Customers using unlogged tables for any of their data will lose all the data in those tables after the near-zero downtime scaling.
-- Near-zero downtime scaling is currently not supported for High Availability (HA) enabled servers.
+
+[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
 
 ## Related content
 
-- [Create an Azure Database for PostgreSQL flexible server instance in the portal](how-to-manage-server-portal.md).
+- [Manage Azure Database for PostgreSQL - Flexible Server](how-to-manage-server-portal.md).

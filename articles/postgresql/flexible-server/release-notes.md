@@ -4,7 +4,7 @@ description: Release notes for Azure DB for PostgreSQL - Flexible Server, includ
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 11/8/2024
+ms.date: 12/12/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: overview
@@ -16,6 +16,15 @@ ms.topic: overview
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
 This article highlights the latest updates and enhancements for Azure Database for PostgreSQL - Flexible Server, service including new feature releases, supported engine versions, available extensions, and other important announcements.
+
+## Release: December 2024
+
+- General Availability of [oracle_fdw](../extensions/concepts-extensions-versions.md#list-of-extensions-by-name) extension.
+- General Availability of [index tuning](./concepts-index-tuning.md) on Azure Database for PostgreSQL flexible server.
+- General Availability of the [Semantic Ranker Solution Accelerator](https://aka.ms/pg-ranker) for Azure Database for PostgreSQL flexible server.
+- Public preview of [age](../extensions/concepts-extensions-versions.md#list-of-extensions-by-name) extension.
+- Public preview of the [GraphRAG Solution Accelerator](https://aka.ms/pg-graphrag) for Azure Database for PostgreSQL flexible server.
+- Public preview of [On-Demand Backups](./concepts-backup-restore.md#on-demand-backups-preview).
 
 ## Release: November 2024
 
@@ -35,8 +44,6 @@ This article highlights the latest updates and enhancements for Azure Database f
 - Public preview of [postgresql_anonymizer (anon)](./concepts-extensions.md#extension-versions) extension.
 - Support for MD5 is disabled in favor of [SCRAM authentication](how-to-connect-scram.md) authentication for new PostgreSQL 14+ new server deployments.
 - Collation sort order might change due to an underlying `glibc` update from 2.27 to 2.35. See [PostgreSQL Wiki](https://wiki.postgresql.org/wiki/Locale_data_changes) for details.
-
-<sup>**^**</sup> Postgres 17 preview is available in "East Asia, West Central US, Canada Central" starting immediately with more regions coming soon.
 
 ## Release: Aug 2024
 

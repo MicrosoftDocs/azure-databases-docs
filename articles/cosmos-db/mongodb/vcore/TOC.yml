@@ -42,18 +42,22 @@
       href: compatibility-and-feature-support.md
     - name: Support for Geospatial Queries
       href: geospatial-support.md
-    - name: High availability (HA)
-      href: high-availability.md
-    - name: Cross-region replication
-      href: cross-region-replication.md
+    - name: Availability and disaster recovery (DR)
+      items:
+        - name: High availability (HA)
+          href: high-availability.md
+        - name: Cross-region replication
+          href: cross-region-replication.md
+        - name: HA and DR - Behind the scenes
+          href: availability-disaster-recovery-under-hood.md
+        - name: Reliability
+          href: /azure/reliability/reliability-cosmos-mongodb?toc=/azure/cosmos-db/mongodb/vcore/toc.json
     - name: Indexing
       href: indexing.md
     - name: Change Stream
       href: change-streams.md
     - name: Data api
       href: data-api.md
-    - name: Reliability
-      href: /azure/reliability/reliability-cosmos-mongodb?toc=/azure/cosmos-db/mongodb/vcore/toc.json
     - name: Scalability
       items: 
        - name: Scalability overview

@@ -7,29 +7,24 @@ ms.author: jacodel
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: how-to
-ms.date: 08/08/2024
+ms.date: 12/03/2024
 ms.custom: query-reference, build-2024, devx-track-js, ignite-2024
 ms.collection:
   - ce-skilling-ai-copilot
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Index and query vectors in Azure Cosmos DB for NoSQL in JavaScript
 
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
-
 Before you use Vector Indexing and Search, you must first enable the feature. This article covers the following steps:
 
 1. Enabling the Vector Search in Azure Cosmos DB for NoSQL feature
-
-2. Setting up the Azure Cosmos DB container for vector search
-
-3. Authoring vector embedding policy
-
-4. Adding vector indexes to the container indexing policy
-
-5. Creating a container with vector indexes and vector embedding policy
-
-6. Performing a vector search on the stored data
+1. Setting up the Azure Cosmos DB container for vector search
+1. Authoring vector embedding policy
+1. Adding vector indexes to the container indexing policy
+1. Creating a container with vector indexes and vector embedding policy
+1. Performing a vector search on the stored data
 
 This guide walks through the process of creating vector data, indexing the data, and then querying the data in a container.
 
@@ -45,24 +40,20 @@ This guide walks through the process of creating vector data, indexing the data,
 Vector search for Azure Cosmos DB for NoSQL requires enabling the feature by completing the following steps:
 
 1. Navigate to your Azure Cosmos DB for NoSQL resource page.
-
 1. Select the "Features" pane under the "Settings" menu item.
-
 1. Select for "Vector Search in Azure Cosmos DB for NoSQL."
+1. Read the description of the feature to confirm you want to enable it.
+1. Select "Enable" to turn on vector search in Azure Cosmos DB for NoSQL.
 
-2. Read the description of the feature to confirm you want to enable it. 
-
-3. Select "Enable" to turn on vector search in Azure Cosmos DB for NoSQL.
-
-> [!TIP]
-> Alternatively, use the Azure CLI to update the capabilities of your account to support NoSQL vector search.
->
-> ```azurecli
-> az cosmosdb update \
->      --resource-group <resource-group-name> \
->      --name <account-name> \
->      --capabilities EnableNoSQLVectorSearch
-> ```
+    > [!TIP]
+    > Alternatively, use the Azure CLI to update the capabilities of your account to support NoSQL vector search.
+    >
+    > ```azurecli
+    > az cosmosdb update \
+    >      --resource-group <resource-group-name> \
+    >      --name <account-name> \
+    >      --capabilities EnableNoSQLVectorSearch
+    > ```
 
 > [!NOTE]
 > The registration request will be autoapproved; however, it may take 15 minutes to take effect.
@@ -74,8 +65,8 @@ The following steps assume that you know how to [setup a Cosmos DB NoSQL account
 Let’s take an example of creating a database for an internet-based bookstore and you're storing Title, Author, ISBN, and Description for each book. We also define two properties to contain vector embeddings. The first is the "contentVector" property, which contains [text embeddings](/azure/ai-services/openai/concepts/models#embeddings ) generated from the text content of the book (for example, concatenating the "title" "author" "isbn" and "description" properties before creating the embedding). The second is "coverImageVector," which is generated from [images of the book’s cover](/azure/ai-services/computer-vision/concept-image-retrieval).
 
 1. Create and store vector embeddings for the fields on which you want to perform vector search.
-2. Specify the vector embedding paths in the vector embedding policy.
-3. Include any desired vector indexes in the indexing policy for the container.
+1. Specify the vector embedding paths in the vector embedding policy.
+1. Include any desired vector indexes in the indexing policy for the container.
 
 For subsequent sections of this article, we consider this structure for the items stored in our container:
 

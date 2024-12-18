@@ -12,7 +12,7 @@ ms.custom:
 ms.topic: conceptual
 ---
 
-# Usage scenarios for query store - Azure Database for PostgreSQL - Flexible Server
+# Usage scenarios for query store in Azure Database for PostgreSQL - Flexible Server
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
@@ -64,4 +64,4 @@ If you are in control of the application code, you might consider rewriting the 
 
 - [monitor performance with query store](concepts-query-store.md)
 - [best practices for using query store](concepts-query-store-best-practices.md)
-- [visualizing data from query store via Query Performance Insight](./concepts-query-performance-insight.md)
+- [visualizing data from query store via Query Performance Insight](concepts-query-performance-insight.md)

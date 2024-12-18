@@ -1,5 +1,5 @@
 ---
-title: List of the PostgreSQL Extensions for Azure Database for PostgreSQL
+title: List of the PostgreSQL extensions, by name, for Azure Database for PostgreSQL
 description: The following extensions are available in the Azure Database for the PostgreSQL - Flexible Server.
 author: varun-dhawan
 ms.author: varundhawan
@@ -10,16 +10,16 @@ ms.subservice: flexible-server
 ms.topic: concept-article
 ---
 
-# Extension versions
+# List of extensions by name
 
 The following extensions are available for the Azure Database for the PostgreSQL service.
 
-[!INCLUDE [extensions-table](includes/extensions-table-new.md)]
+[!INCLUDE [extensions-table](includes/extensions-table.md)]
 
 [Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
 
 ## Related content
 
-- [How to use extensions](how-to-allow-extensions.md)
-- [Extension considerations](concepts-extensions-considerations.md)
-- [Feedback forum](https://aka.ms/pgfeedback)
+- [How to use extensions](how-to-allow-extensions.md).
+- [Special considerations with extensions](concepts-extensions-considerations.md).
+- [List of extensions by name](concepts-extensions-versions.md).
