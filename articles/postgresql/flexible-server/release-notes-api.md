@@ -62,6 +62,8 @@ In addition, consider the following points of contact as appropriate:
 - To fix an issue with your account, file a [support request](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) in the Azure portal.
 - To provide feedback or to request new features, create an entry via [UserVoice](https://feedback.azure.com/forums/597976-azure-database-for-postgresql).
 
-## Next steps
+[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
 
-Now that you've read our API Release Notes on Azure Database for PostgreSQL flexible server, you're ready to create your first server: [Create an Azure Database for PostgreSQL - Flexible Server using Azure portal.](./quickstart-create-server-portal.md)
+## Related content
+
+- [Quickstart: Create an Azure Database for PostgreSQL - Flexible Server](quickstart-create-server-portal.md).

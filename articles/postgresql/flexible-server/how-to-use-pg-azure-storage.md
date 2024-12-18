@@ -1,6 +1,6 @@
 ---
-title: Copy data with pg_azure_storage extension in Azure Database for PostgreSQL - Flexible Server
-description: Learn how to use the pg_azure_storage extension in Azure Database for PostgreSQL - Flexible Server to import and export data
+title: Copy data with azure_storage extension in Azure Database for PostgreSQL - Flexible Server
+description: Learn how to use the azure_storage extension in Azure Database for PostgreSQL - Flexible Server to import and export data
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
@@ -12,15 +12,15 @@ ms.custom:
   - ignite-2024
 ---
 
-# How to import and export data using pg_azure_storage extension in Azure Database for PostgreSQL - Flexible Server
+# Import and export data using azure_storage extension in Azure Database for PostgreSQL - Flexible Server
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
-The [pg_azure_storage](./concepts-storage-extension.md) extension allows you to import or export data in multiple file formats, directly between Azure Storage accounts and an instance of Azure Database for PostgreSQL Flexible Server.
+The [azure_storage](./concepts-storage-extension.md) extension allows you to import or export data in multiple file formats, directly between Azure Storage accounts and an instance of Azure Database for PostgreSQL Flexible Server.
 
 Examples of data export and import using this extension can be found in the [Examples](#examples) section of this article.
 
-To use the `pg_azure_storage` extension on your Azure Database for PostgreSQL flexible server instance, you need to add the extension to the `shared_preload_libraries`, and also add it to the `azure.extensions` server parameter, as described in [how to use PostgreSQL extensions](./concepts-extensions.md#how-to-use-postgresql-extensions). 
+To use the `azure_storage` extension on your Azure Database for PostgreSQL flexible server instance, you need to add the extension to the `shared_preload_libraries`, and also add it to the `azure.extensions` server parameter, as described in [how to use PostgreSQL extensions](./concepts-extensions.md#how-to-use-postgresql-extensions). 
 
 Because `shared_preload_library` is a static server parameter, it requires a restart of the server for the change to take effect.
 
@@ -34,8 +34,8 @@ CREATE EXTENSION azure_storage;
 
 ## Overview of the procedure
 
-1. Identify the Azure Storage accounts with which you want users of the `pg_azure_storage` extension to interact with.
-2. Decide which type of authorization you want to use for the requests made against the blob service of each of those Azure Storage accounts. `pg_azure_storage` extension supports [authorization with Shared Key](/rest/api/storageservices/authorize-with-shared-key), and [authorization with Microsoft Entra ID](/rest/api/storageservices/authorize-with-azure-active-directory). Of these two types of authorization, Microsoft Entra ID provides superior security and ease of use over Shared Key, and is the one Microsoft recommends. To meet the prerequisites needed in each case, follow the instructions in the corresponding sections:
+1. Identify the Azure Storage accounts with which you want users of the `azure_storage` extension to interact with.
+2. Decide which type of authorization you want to use for the requests made against the blob service of each of those Azure Storage accounts. `azure_storage` extension supports [authorization with Shared Key](/rest/api/storageservices/authorize-with-shared-key), and [authorization with Microsoft Entra ID](/rest/api/storageservices/authorize-with-azure-active-directory). Of these two types of authorization, Microsoft Entra ID provides superior security and ease of use over Shared Key, and is the one Microsoft recommends. To meet the prerequisites needed in each case, follow the instructions in the corresponding sections:
     - [Authorization with Microsoft Entra ID](#to-use-authorization-with-microsoft-entra-id), or
     - [Authorization with Shared Key](#to-use-authorization-with-shared-key).
 3. Include `azure_storage` in `shared_preload_libraries`:
@@ -82,14 +82,14 @@ Using [Configurations - Put](/rest/api/postgresql/flexibleserver/configurations/
 
 ---
 
-5. Using the client of your preference (for example, psql, pgAdmin, etc.), connect to any database in your instance of Azure Database for PostgreSQL Flexible Server. To create all SQL objects (tables, types, functions, views, etc.) with which you can use the `pg_azure_storage` extension to interact with instances of Azure Storage accounts, execute the following statement:
+5. Using the client of your preference (for example, psql, pgAdmin, etc.), connect to any database in your instance of Azure Database for PostgreSQL Flexible Server. To create all SQL objects (tables, types, functions, views, etc.) with which you can use the `azure_storage` extension to interact with instances of Azure Storage accounts, execute the following statement:
     ```sql
     CREATE EXTENSION azure_storage;
     ```
-6. Using the `azure_storage.account_*` functions, add references to Azure Storage accounts that you want to let PostgreSQL users or roles access with the `pg_azure_storage` extension. Those references include the name of the Azure Storage account being referenced, and the authentication type to use when interacting with the Azure Storage account. Depending on the authentication type selected you might need to also provide some other parameters, like the Azure Storage account access key or the SAS token.
+6. Using the `azure_storage.account_*` functions, add references to Azure Storage accounts that you want to let PostgreSQL users or roles access with the `azure_storage` extension. Those references include the name of the Azure Storage account being referenced, and the authentication type to use when interacting with the Azure Storage account. Depending on the authentication type selected you might need to also provide some other parameters, like the Azure Storage account access key or the SAS token.
 
 > [!IMPORTANT]
-> For authentication types for which you must provide an Azure Storage account access key, notice that your Azure Storage access keys are similar to a root password for your storage account. Always be careful to protect them. Use Azure Key Vault to manage and rotate your keys securely. `pg_azure_storage` extension stores those keys in a table `azure_storage.accounts` that can be read by members of the `pg_read_all_data` role.
+> For authentication types for which you must provide an Azure Storage account access key, notice that your Azure Storage access keys are similar to a root password for your storage account. Always be careful to protect them. Use Azure Key Vault to manage and rotate your keys securely. `azure_storage` extension stores those keys in a table `azure_storage.accounts` that can be read by members of the `pg_read_all_data` role.
 
 Users granted the `azure_storage_admin` role can interact with the `azure_storage.accounts` table using the following functions:
 * [azure_storage.account_add](#azure_storageaccount_add)
@@ -166,7 +166,7 @@ Using [Storage Accounts - List Keys](/rest/api/storagerp/storage-accounts/list-k
 
 ### azure_storage.account_add
 
-Function that allows adding a storage account, and its associated access key, to the list of storage accounts that the `pg_azure_storage` extension can access.
+Function that allows adding a storage account, and its associated access key, to the list of storage accounts that the `azure_storage` extension can access.
 
 If a previous invocation of this function already added the reference to this storage account, it doesn't add a new entry but instead updates the access key of the existing entry.
 
@@ -297,7 +297,7 @@ Any user or role can invoke this function.
 
 ### azure_storage.account_remove
 
-Function that allows removing a storage account and its associated access key from the list of storage accounts that the `pg_azure_storage` extension can access.
+Function that allows removing a storage account and its associated access key from the list of storage accounts that the `azure_storage` extension can access.
 
 ```sql
 azure_storage.account_remove(account_name_p text);
@@ -319,7 +319,7 @@ Must be a member of `azure_storage_admin`.
 
 ### azure_storage.account_user_add
 
-Function that allows granting a PostgreSQL user or role access to a storage account through the functions provided by the `pg_azure_storage` extension.
+Function that allows granting a PostgreSQL user or role access to a storage account through the functions provided by the `azure_storage` extension.
 
 > [!NOTE]  
 > The execution of this function only succeeds if the storage account, whose name is being passed as the first argument, was already created using [azure_storage.account_add](#azure_storageaccount_add), and if the user or role, whose name is passed as the second argument, already exists.
@@ -348,7 +348,7 @@ Must be a member of `azure_storage_admin`.
 
 ### azure_storage.account_user_remove
 
-Function that allows revoking a PostgreSQL user or role access to a storage account through the functions provided by the `pg_azure_storage` extension.
+Function that allows revoking a PostgreSQL user or role access to a storage account through the functions provided by the `azure_storage` extension.
 
 > [!NOTE]
 > The execution of this function only succeeds if the storage account whose name is being passed as the first argument has already been created using [azure_storage.account_add](#azure_storageaccount_add), and if the user or role whose name is passed as the second argument still exists.
@@ -378,7 +378,7 @@ Must be a member of `azure_storage_admin`.
 
 ### azure_storage.account_list
 
-Function that lists the names of the storage accounts that were configured via the [azure_storage.account_add](#azure_storageaccount_add) function, together with the PostgreSQL users or roles that are granted permissions to interact with that storage account through the functions provided by the `pg_azure_storage` extension.
+Function that lists the names of the storage accounts that were configured via the [azure_storage.account_add](#azure_storageaccount_add) function, together with the PostgreSQL users or roles that are granted permissions to interact with that storage account through the functions provided by the `azure_storage` extension.
 
 ```sql
 azure_storage.account_list();
@@ -873,7 +873,7 @@ CREATE TABLE IF NOT EXISTS events
 
 ### Add access key of storage account
 
-This example illustrates how to add a reference to a storage account, together with the access key of that storage account which is required to access its content via the functionality provided by the `pg_azure_storage` extension in your instance of Azure Database for PostgreSQL flexible server.
+This example illustrates how to add a reference to a storage account, together with the access key of that storage account which is required to access its content via the functionality provided by the `azure_storage` extension in your instance of Azure Database for PostgreSQL flexible server.
 
 `<storage_account>` must be set to the name of your storage account. If you used the previous scripts, this value should match whatever value you set to the storage_account environment variable in those scripts.
 
@@ -887,7 +887,7 @@ SELECT azure_storage.account_add('<storage_account>', '<access_key>');
 
 ### Remove reference to storage account
 
-This example illustrates how to remove any reference to a storage account, so that no user in the current database can use the `pg_azure_storage` extension functionality to access that storage account.
+This example illustrates how to remove any reference to a storage account, so that no user in the current database can use the `azure_storage` extension functionality to access that storage account.
 
 `<storage_account>` must be set to the name of your storage account. If you used the previous scripts, this value should match whatever value you set to the storage_account environment variable in those scripts.
 
@@ -897,7 +897,7 @@ SELECT azure_storage.account_remove('<storage_account>');
 
 ### Grant access to a user or role on the Azure Blob storage reference
 
-This example illustrates how to grant access to a user or role named `<regular_user>`, so that such PostgreSQL user can use the `pg_azure_storage` extension to access the blobs stored in containers hosted by the referred Azure storage account.
+This example illustrates how to grant access to a user or role named `<regular_user>`, so that such PostgreSQL user can use the `azure_storage` extension to access the blobs stored in containers hosted by the referred Azure storage account.
 
 `<storage_account>` must be set to the name of your storage account. If you used the previous scripts, this value should match whatever value you set to the storage_account environment variable in those scripts.
 
@@ -909,7 +909,7 @@ SELECT * FROM azure_storage.account_user_add('<storage_account>', '<regular_user
 
 ### List all the references to Azure storage accounts
 
-This example illustrates how to find out which Azure storage accounts the `pg_azure_storage` extension can reference in this database, together with the type of authentication that is used to access each storage account, and which users or roles are granted permission, via the [azure_storage.account_user_add](#azure_storageaccount_user_add) function, to access that Azure storage account through the functionality provided by the extension.
+This example illustrates how to find out which Azure storage accounts the `azure_storage` extension can reference in this database, together with the type of authentication that is used to access each storage account, and which users or roles are granted permission, via the [azure_storage.account_user_add](#azure_storageaccount_user_add) function, to access that Azure storage account through the functionality provided by the extension.
 
 ```sql
 SELECT * FROM azure_storage.account_list();
@@ -917,7 +917,7 @@ SELECT * FROM azure_storage.account_list();
 
 ### Revoke access from a user or role on the Azure Blob storage reference
 
-This example illustrates how to revoke access from a user or role named `<regular_user>`, so that such PostgreSQL user can't use the `pg_azure_storage` extension to access the blobs stored in containers hosted by the referred Azure storage account. 
+This example illustrates how to revoke access from a user or role named `<regular_user>`, so that such PostgreSQL user can't use the `azure_storage` extension to access the blobs stored in containers hosted by the referred Azure storage account. 
 
 `<storage_account>` must be set to the name of your storage account. If you used the previous scripts, this value should match whatever value you set to the storage_account environment variable in those scripts.
 
@@ -1173,3 +1173,4 @@ The following example shows the export of data from a table called `events`, to 
 ## Related content
 
 - [Import and export data using Azure Storage in Azure Database for PostgreSQL - Flexible Server](concepts-storage-extension.md).
+- [Manage PostgreSQL extensions in Azure Database for PostgreSQL - Flexible Server](../extensions/how-to-allow-extensions.md).

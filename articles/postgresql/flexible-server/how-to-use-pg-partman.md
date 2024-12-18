@@ -256,6 +256,8 @@ Run the maintenance procedure by using `pg_cron`:
     );
     ```
 
+[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
+
 ## Related content
 
-- [Vector search on Azure Database for PostgreSQL](how-to-use-pgvector.md).
+- [Manage PostgreSQL extensions in Azure Database for PostgreSQL - Flexible Server](../extensions/how-to-allow-extensions.md).
