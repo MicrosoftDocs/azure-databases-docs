@@ -8,7 +8,7 @@ ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.devlang: golang
 ms.topic: quickstart-sdk
-ms.date: 11/18/2024
+ms.date: 12/18/2024
 ms.custom: devx-track-go, devx-track-extended-azdevcli
 appliesto:
   - ✅ NoSQL
@@ -26,6 +26,7 @@ In this quickstart, you deploy a basic Azure Cosmos DB for Table application usi
 >
 > For more information, see [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 >
+
 [API reference documentation](https://docs.rs/azure_data_cosmos/latest/azure_data_cosmos/index.html) | [Library source code](https://github.com/Azure/azure-sdk-for-rust/tree/main/sdk/cosmos/azure_data_cosmos#readme) | [Crate (Rust)](https://docs.rs/azure_data_cosmos) | [Azure Developer CLI](/azure/developer/azure-developer-cli/overview)
 
 ## Prerequisites
