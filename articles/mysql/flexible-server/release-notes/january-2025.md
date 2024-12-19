@@ -20,7 +20,7 @@ This new version introduces a range of new features and enhancements, resolves k
 
 All existing 8.0 major version servers are upgraded to 8.0.40 minor version
 
-To check your engine version, run `SELECT VERSION();` command at the MySQL prompt, or run the following command in the Azure Cloud Shell:
+To check your engine version, run `SELECT VERSION();` command at the MySQL prompt, or run the following command in the Azure CLI:
 
 ```bash 
 az mysql flexible-server show --resource-group {resource group name} --name {server name} --query "fullVersion"
