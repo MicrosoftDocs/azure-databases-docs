@@ -1,5 +1,5 @@
 ---
-title: Oracle To Azure Database For PostgreSQL Pre-Migration Checklist
+title: Oracle To Azure Database for PostgreSQL Pre-Migration Checklist
 description: Best practices for migration from Oracle into Azure Database for PostgreSQL.
 author: JaredMSFT
 ms.author: jaredmeade
@@ -11,7 +11,7 @@ ms.topic: best-practice
 
 ---
 
-# Oracle To Azure Database For PostgreSQL Pre-Migration Checklist
+# Oracle To Azure Database for PostgreSQL Pre-Migration Checklist
 
 The following questions are intended to help you identify and record the compute resources required to maintain operational database performance. This information is critical when planning your migration as well as discussing migration plans with your selected migration partner(s).
 

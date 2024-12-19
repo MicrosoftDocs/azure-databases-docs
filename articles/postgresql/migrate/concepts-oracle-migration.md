@@ -1,5 +1,5 @@
 ---
-title: "Migrating Oracle To Azure Database For PostgreSQL"
+title: "Migrating Oracle To Azure Database for PostgreSQL"
 description: "This article discusses concepts regarding Oracle to Azure Database for PostgreSQL migrations."
 author: JaredMSFT
 ms.author: jaredmeade
@@ -10,7 +10,7 @@ ms.subservice: flexible-server
 ms.topic: conceptual
 ---
 
-# Migrating Oracle To Azure Database For PostgreSQL
+# Migrating Oracle To Azure Database for PostgreSQL
 
 Migrating from Oracle database to Azure Postgres Flexible Server can provide multiple key benefits to organizations who are modernizing their operations and infrastructure including: cost efficiency, simplified licensing models and vendor independence, flexible resource scalability, open-source extensibility, and advanced security integration features.
 
