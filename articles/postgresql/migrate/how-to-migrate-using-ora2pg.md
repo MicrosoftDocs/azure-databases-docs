@@ -363,7 +363,11 @@ For migration help beyond the scope of Ora2Pg tooling, contact [@Ask Azure DB fo
 For a matrix of services and tools for database and data migration and for specialty tasks, see [Services and tools for data migration](../../dms/dms-tools-matrix.md).
 
 Documentation: 
-- [Azure Database for PostgreSQL documentation](../index.yml)
-- [Ora2Pg documentation](https://ora2pg.darold.net/documentation.html)
-- [PostgreSQL website](https://www.postgresql.org/)
-- [Autonomous transaction support in PostgreSQL](http://blog.dalibo.com/2016/08/19/Autonoumous_transactions_support_in_PostgreSQL.html) 
+
+- [Ora2Pg Documentation](https://ora2pg.darold.net/documentation.html)
+- [Oracle to Azure PostgreSQL Migration Concepts](./concepts-oracle-migration.md)
+- [Oracle to Azure PostgreSQL Migration Playbook](https://download.microsoft.com/download/8/f/c/8fc4fe39-7cb1-484a-aaa0-418704b90c0e/Oracle%20to%20Azure%20Postgres%20Migration%20Playbook.pdf)
+- [Oracle to Azure PostgreSQL Migration Workarounds](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20Azure%20Database%20for%20PostgreSQL%20Migration%20Workarounds.pdf)
+- [Azure Database for PostgreSQL Migration Partners](./partners-migration-postgresql.md)
+
+

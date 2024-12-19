@@ -35,4 +35,7 @@ To broadly support your Azure Database for PostgreSQL solution, you can choose f
 
 ## Related content
 
-- [Microsoft Partner site](https://partner.microsoft.com)
+ - [Oracle to Azure PostgreSQL Migration Concepts](./concepts-oracle-migration.md)
+ - [Microsoft Partner Site](https://partner.microsoft.com)
+ - [Oracle to Azure PostgreSQL Migration Playbook](https://download.microsoft.com/download/8/f/c/8fc4fe39-7cb1-484a-aaa0-418704b90c0e/Oracle%20to%20Azure%20Postgres%20Migration%20Playbook.pdf)
+ - [Azure Database for PostgreSQL Documentation](../index.yml)
