@@ -111,5 +111,4 @@ Confirm the apply action when prompted. Terraform provisions the resources and c
 - [Promote read replicas in Azure Database for PostgreSQL - Flexible Server](concepts-read-replicas-promote.md)
 - [Virtual endpoints for read replicas in Azure Database for PostgreSQL - Flexible Server](concepts-read-replicas-virtual-endpoints.md)
 - [Create and manage read replicas in Azure Database for PostgreSQL - Flexible Server](how-to-read-replicas-portal.md)
-- [Replication across Azure regions and virtual networks with private networking](concepts-networking-privatemd#replication-across-azure-regions-and-virtual-networks-with-private-networking)
 - [Terraform Azure provider documentation](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs)
