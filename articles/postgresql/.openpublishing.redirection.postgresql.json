@@ -1884,6 +1884,11 @@
         "source_path_from_root": "/articles/postgresql/flexible-server/how-to-auto-grow-storage-portal.md",
         "redirect_url": "/azure/postgresql/flexible-server/how-to-auto-grow-storage",
         "redirect_document_id": false
-    } 
+    },
+    {
+        "source_path_from_root": "/articles/postgresql/migrate/how-to-migrate-from-oracle.md",
+        "redirect_url": "/azure/postgresql/migrate/how-to-migrate-oracle-ora2pg",
+        "redirect_document_id": false
+    }
 ]
 }
