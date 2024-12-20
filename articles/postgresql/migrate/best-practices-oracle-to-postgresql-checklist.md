@@ -15,7 +15,7 @@ ms.topic: best-practice
 
 The following questions are intended to help you identify and record the compute resources required to maintain operational database performance. This information is critical when planning your migration as well as discussing migration plans with your selected migration partner(s).
 
-## 1. Workload Consistency
+## Workload Consistency
 
 | Question | Answer |
 | :------------------- | :--- |
@@ -26,13 +26,13 @@ The following questions are intended to help you identify and record the compute
 | &nbsp; &nbsp; If Yes, which day(s) of the *week* does activity peak? | &nbsp; |
 | &nbsp; &nbsp; How long is the sustained peak activity period? | &nbsp; |
 | Does my database environment utilization change throughout the *month*? | &nbsp; |
-| &nbsp; &nbsp; If Yes, which times(s) of the *month* does activity peak? | &nbsp; |
+| &nbsp; &nbsp; If Yes, which time(s) of the *month* does activity peak? | &nbsp; |
 | &nbsp; &nbsp; How long is the sustained peak activity period? | &nbsp; |
 | Does my database environment utilization change throughout the *year*? | &nbsp; |
 | &nbsp; &nbsp; If Yes, which month(s) of the *year* does activity peak? | &nbsp; |
 | &nbsp; &nbsp; How long is the sustained peak activity period? | &nbsp; |
 
-## 2. Workload Type
+## Workload Type
 
 | Question | Answer |
 | :-------------------| :--- |
@@ -41,7 +41,7 @@ The following questions are intended to help you identify and record the compute
 | Does my database use any file system mounts for data operations? | &nbsp; |
 | How many dependent client applications are connected to my database? | &nbsp; |
 
-## 3. Peak Operational Periods
+## Peak Operational Periods
 During peak operational periods…
 
 | Question | Answer |

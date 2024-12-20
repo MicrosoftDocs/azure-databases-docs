@@ -658,7 +658,7 @@
       - name: Pre-migration Checklist
         href: migrate/best-practices-oracle-to-postgresql-checklist.md
       - name: Migrate using Ora2Pg
-        href: migrate/how-to-migrate-using-ora2pg.md
+        href: migrate/how-to-migrate-oracle-ora2pg.md
 - name: Azure Database for PostgreSQL - Single Server
   expanded: false
   items:

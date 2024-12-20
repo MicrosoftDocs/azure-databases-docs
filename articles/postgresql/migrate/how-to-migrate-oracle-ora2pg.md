@@ -88,7 +88,7 @@ Microsoft pre-assessment scripts for Oracle run against the Oracle database. The
 - The size of tables in each schema.
 - The number of code lines per package, function, procedure, and so on.
 
-Download the related scripts from [github](https://github.com/microsoft/DataMigrationTeam/tree/master/Whitepapers).
+Download the related scripts from [GitHub](https://github.com/microsoft/DataMigrationTeam/tree/master/Whitepapers).
 
 ### Assess
 

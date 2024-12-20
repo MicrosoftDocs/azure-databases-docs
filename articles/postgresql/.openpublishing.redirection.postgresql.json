@@ -1887,7 +1887,7 @@
     },
     {
         "source_path_from_root": "/articles/postgresql/migrate/how-to-migrate-from-oracle.md",
-        "redirect_url": "/azure/postgresql/migrate/how-to-migrate-using-ora2pg",
+        "redirect_url": "/azure/postgresql/migrate/how-to-migrate-oracle-ora2pg",
         "redirect_document_id": false
     }
 ]

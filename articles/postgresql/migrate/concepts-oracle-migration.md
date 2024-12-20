@@ -22,7 +22,7 @@ These concepts and strategic best practices provide a comprehensive overview of 
 
 Sustainable organizations are increasingly assessing their infrastructural environments against the ever-changing collection of business drivers to plan their strategic priorities and operations. Decision makers are seeking efficiencies wherever possible to focus their investments in areas that drive innovation and growth. Under these circumstances, it's easy to understand why so many teams are finding success in leveraging cloud platforms to host their critical workloads. Whether contending with overwhelming security threats, software and hardware refresh cycles, budget and resource constraints, or end-of-life support agreements, the Azure cloud delivers on-demand infrastructure, prioritizes security, and encourages innovation for every facet of your delivery roadmap.
 
-:::image type="content" source="media/concepts-oracle-migration/why_migrate.png" alt-text="Why Migrate?":::
+:::image type="content" source="media/concepts-oracle-migration/why-migrate.png" alt-text="Screenshot of top drivers for migrating Oracle to the cloud.":::
 
 ## Why Choose Azure Database for PostgreSQL?
 
@@ -30,7 +30,7 @@ As businesses evolve, database platforms need to keep pace in adopting modern fe
 
 Azure Postgres is built upon the official open-source Postgres community builds, ensuring your workloads are compatible with every Postgres release without risk of proprietary dependencies or lock-ins. Our team embraces the open-source community, and we proudly employ the most Postgres contributors who are actively enhancing and maintaining the community Postgres platform. 
 
-:::image type="content" source="media/concepts-oracle-migration/azure_postgres_benefits.png" alt-text="Azure builds upon the core benefits of PostgreSQL":::
+:::image type="content" source="media/concepts-oracle-migration/azure-postgres-benefits.png" alt-text="Screenshot of examples how Azure builds upon the core benefits of PostgreSQL.":::
 
 ## Getting Started
 
@@ -38,7 +38,7 @@ A critical step towards the successful completion of your initiative includes re
 
 This reference is intended to help identify key migration stages and recommend the ideal set of services and solutions for each stage of your Oracle migration:
 
-:::image type="content" source="media/concepts-oracle-migration/migration_stages.png" alt-text="Migration Stages: Discovery, Assessment, Schema Migration, Code Migration, Data Migration, Application Migration, Performance Tuning, and Cloud Optimization":::
+:::image type="content" source="media/concepts-oracle-migration/migration-stages.png" alt-text="Migration Stages: Discovery, Assessment, Schema Migration, Code Migration, Data Migration, Application Migration, Performance Tuning, and Cloud Optimization":::
 
 ## Related content
 
