@@ -14,7 +14,7 @@ ms.topic: conceptual
 
 A comprehensive end-to-end migration from Oracle to Azure Postgres requires the careful execeution of several key steps and migration stages. These milestones are all closely related and essential to a complete and successful migration. 
 
-:::image type="content" source="media/concepts-oracle-migration/migration-stages.png" alt-text="Screenshot of Migration Stages: Discovery, Assessment, Schema Migration, Code Migration, Data Migration, Application Migration, Performance Tuning, and Cloud Optimization":::
+:::image type="content" source="media/concepts-oracle-migration/migration-stages.png" alt-text="Screenshot of Migration Stages: Discovery, Assessment, Schema Migration, Code Migration, Data Migration, Application Migration, Performance Tuning, and Cloud Optimization.":::
 
 ## Discovery
 
