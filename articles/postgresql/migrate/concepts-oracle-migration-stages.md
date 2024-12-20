@@ -14,7 +14,7 @@ ms.topic: conceptual
 
 A comprehensive end-to-end migration from Oracle to Azure Postgres requires the careful execeution of several key steps and migration stages. These milestones are all closely related and essential to a complete and successful migration. 
 
-:::image type="content" source="media/concepts-oracle-migration/migration-stages.png" alt-text="Migration Stages: Discovery, Assessment, Schema Migration, Code Migration, Data Migration, Application Migration, Performance Tuning, and Cloud Optimization":::
+:::image type="content" source="media/concepts-oracle-migration/migration-stages.png" alt-text="Screenshot of Migration Stages: Discovery, Assessment, Schema Migration, Code Migration, Data Migration, Application Migration, Performance Tuning, and Cloud Optimization":::
 
 ## Discovery
 
@@ -76,7 +76,7 @@ Performance is generally viewed as one of the most tangible and important charac
 
 Fortunately, the Azure platform natively incorporates the tooling and capabilities needed to monitor performance points across a variety of metrics, including scale, efficiency, and perhaps most importantly, speed. These Intelligent Performance features work hand-in-hand with the Postgres monitoring resources to simplify your tuning processes, and in many cases, automate these steps to automatically adapt and adjust as needed. The following Azure tools can ensure your database systems are operating at their very best levels. 
 
-#### Query Store
+### Query Store
 Query Store for Azure Postgres serves as the foundation for your monitoring features. Query Store tracks the statistics and operational metrics from your Postgres database, including queries, associated explain plans, resource utilization, and workload timing. These data points can uncover long running queries, queries consuming the most resources, the most frequently run queries, excessive table bloat, and many more operational facets of your database. This information helps you spend less time troubleshooting by quickly identifying any operations or areas requiring attention. Query Store provides a comprehensive view of your overall workload performance by identifying:
 
  - Long running queries, and how they change over time.
@@ -85,7 +85,7 @@ Query Store for Azure Postgres serves as the foundation for your monitoring feat
 - Drill down details of a query, to view the Query ID and history of resource utilization.
 - Deeper insight into overall databases resource consumption.
  
-#### Index Tuning
+### Index Tuning
 Index tuning is a feature of Azure Database for PostgreSQL flexible server that can automatically improve the performance of your workload by analyzing tracked queries and providing index recommendations. It's natively built into Azure Database for PostgreSQL Flexible Server, and builds upon Query Store functionality. Index tuning analyzes workloads tracked by Query Store and produces index recommendations to improve the performance of the analyzed workload or to drop duplicate or unused indexes. This is accomplished in three unique ways:
 
 - Identify which indexes are beneficial to create because they could significantly improve the queries analyzed during an index tuning session.
