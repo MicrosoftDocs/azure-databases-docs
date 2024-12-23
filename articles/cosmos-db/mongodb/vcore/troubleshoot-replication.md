@@ -32,6 +32,5 @@ A: You can promote your replica cluster to become a read-write one at any time. 
 You can initiate promotion from the replica cluser properties in Azure portal. Select 'Promote' on the 'Global distribution' page in replica cluster's properties and confirm promotion.
 During promotion global read-write string is updated to point to the promoted replica once it is open for write operations.
 
-
 ## Next steps
 If you've completed all the troubleshooting steps and haven't been able to discover a solution for your issue, open a [support request](https://azure.microsoft.com/support/create-ticket/).
