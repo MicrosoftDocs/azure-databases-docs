@@ -228,8 +228,8 @@ Given that you're migrating from a particular MongoDB version, the supported too
 
 | MongoDB source version | Azure Cosmos DB for MongoDB (RU based) destination version | Supported tools | Unsupported tools |
 | --- | --- | --- | --- |
-| <3.2 | 3.2, 3.6, <7.0 | MongoDB native tools, Spark | DMS, ADF |
-| 3.2, 3.6, <7.0 | 3.2, 3.6, <7.0 | MongoDB native tools, DMS, ADF, Spark | None |
+| <3.2 | 3.2, 3.6, <8.0 | MongoDB native tools, Spark | DMS, ADF |
+| 3.2, 3.6, <8.0 | 3.2, 3.6, <8.0 | MongoDB native tools, DMS, ADF, Spark | None |
 
 ### Post-migration
 
