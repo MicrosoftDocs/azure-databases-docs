@@ -28,8 +28,6 @@ This article shows you how to connect to Azure Cosmos DB for Table using the .NE
 
 ## Set up your project
 
-### Create the .NET console application
-
 Create a new .NET application by using the [``dotnet new``](/dotnet/core/tools/dotnet-new) command with the **console** template.
 
 ```dotnetcli
@@ -50,94 +48,59 @@ dotnet build
 
 ## Connect to Azure Cosmos DB for Table
 
-To connect to the API for Table of Azure Cosmos DB, create an instance of the [``TableServiceClient``](/dotnet/api/azure.data.tables.tableserviceclient) class. This class is the starting point to perform all operations against tables. There are two primary ways to connect to an API for Table account using the **TableServiceClient** class:
+To connect to the API for Table of Azure Cosmos DB, create an instance of the [``TableServiceClient``](/dotnet/api/azure.data.tables.tableserviceclient) class. This class is the starting point to perform all operations against tables.
 
-- [Connect with a API for Table connection string](#connect-with-a-connection-string)
+To connect to your API for NoSQL account using Microsoft Entra, use a security principal. The exact type of principal will depend on where you host your application code. The table below serves as a quick reference guide.
 
-### Connect with a connection string
+| Where the application runs | Security principal
+|--|--|---|
+| Local machine (developing and testing) | User identity or service principal |
+| Azure | Managed identity |
+| Servers or clients outside of Azure | Service principal |
 
-The most common constructor for **TableServiceClient** has a single parameter:
+### Import Azure.Identity
 
-| Parameter | Example value | Description |
-| --- | --- | --- |
-| ``connectionString`` | ``COSMOS_CONNECTION_STRING`` environment variable | Connection string to the API for Table account |
+The **Azure.Identity** NuGet package contains core authentication functionality that is shared among all Azure SDK libraries.
 
-#### Retrieve your account connection string
+Import the [Azure.Identity](https://www.nuget.org/packages/Azure.Identity) NuGet package using the ``dotnet add package`` command.
 
-##### [Azure CLI](#tab/azure-cli)
-
-1. Use the [``az cosmosdb list``](/cli/azure/cosmosdb#az-cosmosdb-list) command to retrieve the name of the first Azure Cosmos DB account in your resource group and store it in the *accountName* shell variable.
-
-    ```azurecli-interactive
-    # Retrieve most recently created account name
-    accountName=$(
-        az cosmosdb list \
-            --resource-group $resourceGroupName \
-            --query "[0].name" \
-            --output tsv
-    )
-    ```
-
-1. Find the *PRIMARY CONNECTION STRING* from the list of connection strings for the account with the [`az-cosmosdb-keys-list`](/cli/azure/cosmosdb/keys#az-cosmosdb-keys-list) command.
-
-    ```azurecli-interactive
-    az cosmosdb keys list \
-        --resource-group $resourceGroupName \
-        --name $accountName \
-        --type "connection-strings" \
-        --query "connectionStrings[?description == \`Primary Table Connection String\`] | [0].connectionString"
-    ```
-
-##### [PowerShell](#tab/azure-powershell)
-
-1. Use the [``Get-AzCosmosDBAccount``](/powershell/module/az.cosmosdb/get-azcosmosdbaccount) cmdlet to retrieve the name of the first Azure Cosmos DB account in your resource group and store it in the *ACCOUNT_NAME* shell variable.
-
-    ```azurepowershell-interactive
-    # Retrieve most recently created account name
-    $parameters = @{
-        ResourceGroupName = $RESOURCE_GROUP_NAME
-    }
-    $ACCOUNT_NAME = (
-        Get-AzCosmosDBAccount @parameters |
-            Select-Object -Property Name -First 1
-    ).Name
-    ```
-
-1. Find the *PRIMARY CONNECTION STRING* from the list of connection strings for the account with the [``Get-AzCosmosDBAccountKey``](/powershell/module/az.cosmosdb/get-azcosmosdbaccountkey) cmdlet.
-
-    ```azurepowershell-interactive
-    $parameters = @{
-        ResourceGroupName = $RESOURCE_GROUP_NAME
-        Name = $ACCOUNT_NAME
-        Type = "ConnectionStrings"
-    }    
-    Get-AzCosmosDBAccountKey @parameters |
-        Select-Object -Property "Primary Table Connection String" -First 1    
-    ```
-
----
-
-To use the **PRIMARY CONNECTION STRING** value within your .NET code, persist it to a new environment variable on the local machine running the application.
-
-#### [Windows](#tab/windows)
-
-```powershell
-$env:COSMOS_CONNECTION_STRING = "<cosmos-account-PRIMARY-CONNECTION-STRING>"
+```dotnetcli
+dotnet add package Azure.Identity
 ```
 
-#### [Linux / macOS](#tab/linux+macos)
+Rebuild the project with the ``dotnet build`` command.
 
-```bash
-export COSMOS_CONNECTION_STRING="<cosmos-account-PRIMARY-CONNECTION-STRING>"
+```dotnetcli
+dotnet build
 ```
 
----
+In your code editor, add using directives for ``Azure.Core`` and ``Azure.Identity`` namespaces.
 
-#### Create TableServiceClient with connection string
+```csharp
+using Azure.Core;
+using Azure.Identity;
+```
 
-Create a new instance of the **TableServiceClient** class with the ``COSMOS_CONNECTION_STRING`` environment variable as the only parameter.
+### Create CosmosClient with default credential implementation
 
-:::code language="csharp" source="~/azure-cosmos-db-table-dotnet-v12/101-client-connection-string/Program.cs" id="connection_string" highlight="3":::
+If you're testing on a local machine, or your application will run on Azure services with direct support for managed identities, obtain an OAuth token by creating a [``DefaultAzureCredential``](/dotnet/api/azure.identity.defaultazurecredential) instance.
+
+For this example, we saved the instance in a variable of type [``TokenCredential``](/dotnet/api/azure.core.tokencredential) as that's a more generic type that's reusable across SDKs.
+
+```csharp
+// Credential class for testing on a local machine or Azure services
+TokenCredential credential = new DefaultAzureCredential();
+```
+
+Create a new instance of the **CosmosClient** class with the ``COSMOS_ENDPOINT`` environment variable and the **TokenCredential** object as parameters.
+
+```csharp
+// New instance of TableServiceClient class using Microsoft Entra
+TableServiceClient client = new(
+    endpoint: Environment.GetEnvironmentVariable("COSMOS_ENDPOINT")!,
+    tokenCredential: credential
+);
+```
 
 ## Build your application
 

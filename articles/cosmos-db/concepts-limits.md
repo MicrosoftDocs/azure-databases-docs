@@ -5,8 +5,8 @@ description: Service quotas and default limits on operations, storage, and throu
 author: markjbrown
 ms.author: mjbrown
 ms.service: azure-cosmos-db
-ms.topic: conceptual
-ms.date: 04/15/2023
+ms.topic: concept-article
+ms.date: 09/26/2024
 ms.custom: build-2023
 ---
 
@@ -49,7 +49,9 @@ The actual minimum RU/s might vary depending on your account configuration. You 
 
 #### Minimum throughput on container
 
-**Manual throughput**
+Use this section to estimate the minimum throughput on a container.
+
+##### Manual throughput
 
 To estimate the minimum RU/s required of a container with manual throughput, find the maximum of:
 
@@ -59,7 +61,7 @@ To estimate the minimum RU/s required of a container with manual throughput, fin
 
 For example, you have a container provisioned with 400 RU/s and 0-GB storage. You increase the throughput to 50,000 RU/s and import 20 GB of data. The minimum RU/s is now `MAX(400, 20 * 1 RU/s per GB, 50,000 RU/s / 100)` = 500 RU/s. Over time, the storage grows to 2000 GB. The minimum RU/s is now `MAX(400, 2000 * 1 RU/s per GB, 50,000 / 100)` = 2000 RU/s.
 
-**Autoscale throughput**
+##### Autoscale throughput
 
 To estimate the minimum autoscale max RU/s required of a container with autoscale throughput, find the maximum of:
 
@@ -71,7 +73,9 @@ For example, you have a container provisioned with 1000 RU/s and 0-GB storage. Y
 
 #### Minimum throughput on shared throughput database
 
-**Manual throughput**
+Use this section to estimate the minimum throughput on a database sharing throughput across containers.
+
+##### Manual throughput
 
 To estimate the minimum RU/s required of a shared throughput database with manual throughput, find the maximum of:
 
@@ -82,7 +86,7 @@ To estimate the minimum RU/s required of a shared throughput database with manua
 
 For example, you have a database provisioned with 400 RU/s, 15 GB of storage, and 10 containers. The minimum RU/s is `MAX(400, 15 * 1 RU/s per GB, 400 / 100, 400 + 0 )` = 400 RU/s. If there were 30 containers in the database, the minimum RU/s would be `400 + MAX(30 - 25, 0) * 100 RU/s` = 900 RU/s.
 
-**Autoscale throughput**
+##### Autoscale throughput
 
 To estimate the minimum autoscale max RU/s required of a shared throughput database with autoscale throughput, find the maximum of:
 
@@ -92,7 +96,6 @@ To estimate the minimum autoscale max RU/s required of a shared throughput datab
 * 1000 + MAX(Container count - 25, 0) * 1000 RU/s
 
 For example, you have a database provisioned with 1000 RU/s, 15 GB of storage, and 10 containers. The minimum max RU/s for autoscale database is `MAX(1000, 15 * 10 RU/s per GB, 1000 / 10, 1000 + 0 )` = 1000 RU/s. If there were 30 containers in the database, the minimum max RU/s would be `1000 + MAX(30 - 25, 0) * 1000 RU/s` = 5000 RU/s. 
- 
 
 In summary, here are the minimum provisioned RU limits when using provisioned throughput.
 
@@ -234,7 +237,7 @@ Azure Cosmos DB supports execution of triggers during writes. The service suppor
 
 Once an operation like query reaches the execution timeout or response size limit, it returns a page of results and a continuation token to the client to resume execution. There's no practical limit on the duration a single query can run across pages/continuations.
 
-Azure Cosmos DB uses HMAC for authorization. You can use either a primary key, or a [resource token](secure-access-to-data.md) for fine-grained access control to resources. These resources can include containers, partition keys, or items. The following table lists limits for authorization tokens in Azure Cosmos DB.
+Azure Cosmos DB uses HMAC for authorization. You can use a primary key for fine-grained access control to resources. These resources can include containers, partition keys, or items. The following table lists limits for authorization tokens in Azure Cosmos DB.
 
 | Resource | Limit |
 | --- | --- |
@@ -325,7 +328,7 @@ The following table lists the limits for [Azure Cosmos DB free tier accounts.](o
 
 In addition to the previous table, the [Per-account limits](#per-account-limits) also apply to free tier accounts. To learn more, see how to create a [free tier account](free-tier.md).
 
-## Next steps
+## Related content
 
-* Read more about [global distribution](distribute-data-globally.md)
-* Read more about [partitioning](partitioning-overview.md) and [provisioned throughput](request-units.md).
+* [Global distribution](distribute-data-globally.md)
+* [Partitioning](partitioning-overview.md) and [provisioned throughput](request-units.md).

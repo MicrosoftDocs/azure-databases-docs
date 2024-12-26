@@ -1,11 +1,12 @@
 ---
-author: akashraokm
-ms.author: akashrao
+author: nachoalonsoportillo
+ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 06/18/2024
+ms.date: 12/05/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
+ms.custom: automatically generated
 ---
 ### block_size
 
@@ -201,8 +202,8 @@ ms.topic: include
 | Category       | Preset Options |
 | Description    | Shows the server version.                                                              |
 | Data type      | string    |
-| Default value  | `16.3`        |
-| Allowed values | `16.3`         |
+| Default value  | `16.4`        |
+| Allowed values | `16.4`         |
 | Parameter type | read-only      |
 | Documentation  | [server_version](https://www.postgresql.org/docs/16/runtime-config-preset.html#GUC-SERVER-VERSION)                                     |
 
@@ -218,8 +219,8 @@ ms.topic: include
 | Category       | Preset Options |
 | Description    | Shows the server version as an integer.                                                |
 | Data type      | integer   |
-| Default value  | `160003`      |
-| Allowed values | `160003`       |
+| Default value  | `160004`      |
+| Allowed values | `160004`       |
 | Parameter type | read-only      |
 | Documentation  | [server_version_num](https://www.postgresql.org/docs/16/runtime-config-preset.html#GUC-SERVER-VERSION-NUM)                             |
 
@@ -235,8 +236,8 @@ ms.topic: include
 | Category       | Preset Options |
 | Description    | Shows the size of the server's main shared memory area (rounded up to the nearest MB). |
 | Data type      | integer   |
-| Default value  | `8567`        |
-| Allowed values | `8567`         |
+| Default value  | `8570`        |
+| Allowed values | `8570`         |
 | Parameter type | read-only      |
 | Documentation  | [shared_memory_size](https://www.postgresql.org/docs/16/runtime-config-preset.html#GUC-SHARED-MEMORY-SIZE)                             |
 
@@ -252,8 +253,8 @@ ms.topic: include
 | Category       | Preset Options |
 | Description    | Shows the number of huge pages needed for the main shared memory area.                 |
 | Data type      | integer   |
-| Default value  | `4284`        |
-| Allowed values | `4284`         |
+| Default value  | `4285`        |
+| Allowed values | `4285`         |
 | Parameter type | read-only      |
 | Documentation  | [shared_memory_size_in_huge_pages](https://www.postgresql.org/docs/16/runtime-config-preset.html#GUC-SHARED-MEMORY-SIZE-IN-HUGE-PAGES) |
 

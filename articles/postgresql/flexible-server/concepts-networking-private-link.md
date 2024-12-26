@@ -1,10 +1,10 @@
 ---
 title: Networking overview with Private Link connectivity
 description: Learn about connectivity and networking options for Azure Database for PostgreSQL - Flexible Server with Private Link.
-author: akashraokm
-ms.author: akashrao
+author: gbowerman
+ms.author: guybo
 ms.reviewer: maghan
-ms.date: 04/27/2024
+ms.date: 09/20/2024
 ms.service: azure-database-postgresql
 ms.subservice: 
 ms.topic: conceptual
@@ -14,7 +14,7 @@ ms.custom:
 
 # Azure Database for PostgreSQL - Flexible Server networking with Private Link
 
-Azure Private Link allows you to create private endpoints for Azure Database for PostgreSQL - Flexible Server to bring it inside your virtual network. That functionality is introduced in addition to already [existing networking capabilities provided by virtual network integration](./concepts-networking-private.md), which is currently in general availability with Azure Database for PostgreSQL - Flexible Server.
+Azure Private Link allows you to create private endpoints for Azure Database for PostgreSQL - Flexible Server to bring it inside your virtual network. That functionality is introduced in addition to already [existing networking capabilities provided by virtual network integration](concepts-networking-private.md), which is currently in general availability with Azure Database for PostgreSQL - Flexible Server.
 
 With Private Link, traffic between your virtual network and the service travels the Microsoft backbone network. Exposing your service to the public internet is no longer necessary. You can create your own private link service in your virtual network and deliver it to your customers. Setup and consumption by using Private Link is consistent across Azure PaaS, customer-owned, and shared partner services.
 
@@ -106,8 +106,10 @@ When you use a private endpoint, you need to connect to the same Azure service b
 Private DNS zones provide separate DNS zone names for each Azure service. For example, if you configured a Private DNS zone for the storage account blob service in the previous image, the DNS zone name is `privatelink.blob.core.windows.net`. Review the Microsoft documentation to see more of the private DNS zone names for all Azure services.
 
 > [!NOTE]
-> Private endpoint Private DNS zone configurations automatically generates only if you use the recommended naming scheme: `privatelink.postgres.database.azure.com`.
-> On newly provisioned public access (non-virtual network injected) servers, there's a temporary DNS layout change. The server's FQDN now becomes a CName, resolving to a record, in the format `servername.privatelink.postgres.database.azure.com`. In the near future, this format will apply only when private endpoints are created on the server.
+> Private endpoint Private DNS zone configurations automatically generate only if you use the recommended naming scheme: `privatelink.postgres.database.azure.com`.
+> On newly provisioned public access (non-virtual network injected) servers, there will be a change in DNS layout. The server's FQDN now becomes a CName record in the form `servername.postgres.database.azure.com` which will point to an A record in one of the following formats:
+>  1. If the server has a Private Endpoint with a default private dns zone linked, the A record will be in this format: `server_name.privatelink.postgres.database.azure.com`.
+>  2. If the server has no Private Endpoints then the A record will be in this format `server_name.rs-<15 semi-random bytes>.postgres.database.azure.com`.
 
 ### Hybrid DNS for Azure and on-premises resources
 

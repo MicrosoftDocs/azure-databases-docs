@@ -92,7 +92,7 @@ Use the Azure CLI to restore a deleted container or database. Child containers a
         "apiType": "Sql",
         "creationTime": "2020-08-02T22:23:00.095870+00:00",
         "deletionTime": "2020-08-02T22:26:13.483175+00:00",
-        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.DocumentDB/locations/westus/restorableDatabaseAccounts/abcd1234-d1c0-4645-a699-abcd1234",
+        "id": "/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/providers/Microsoft.DocumentDB/locations/westus/restorableDatabaseAccounts/abcd1234-d1c0-4645-a699-abcd1234",
         "location": "West US",
         "name": "abcd1234-d1c0-4645-a699-abcd1234",
         "restorableLocations": [
@@ -172,7 +172,7 @@ Use the Azure CLI to restore a deleted container or database. Child containers a
         "apiType": "Sql",
         "creationTime": "2020-08-02T22:23:00.095870+00:00",
         "deletionTime": "2020-08-02T22:26:13.483175+00:00",
-        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.DocumentDB/locations/westus/restorableDatabaseAccounts/abcd1234-d1c0-4645-a699-abcd1234",
+        "id": "/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/providers/Microsoft.DocumentDB/locations/westus/restorableDatabaseAccounts/abcd1234-d1c0-4645-a699-abcd1234",
         "location": "West US",
         "name": "abcd1234-d1c0-4645-a699-abcd1234",
         "restorableLocations": [
@@ -245,7 +245,7 @@ Use the Azure CLI to restore a deleted container or database. Child containers a
         "apiType": "Sql",
         "creationTime": "2020-08-02T22:23:00.095870+00:00",
         "deletionTime": "2020-08-02T22:26:13.483175+00:00",
-        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.DocumentDB/locations/westus/restorableDatabaseAccounts/abcd1234-d1c0-4645-a699-abcd1234",
+        "id": "/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/providers/Microsoft.DocumentDB/locations/westus/restorableDatabaseAccounts/abcd1234-d1c0-4645-a699-abcd1234",
         "location": "West US",
         "name": "abcd1234-d1c0-4645-a699-abcd1234",
         "restorableLocations": [
@@ -318,7 +318,7 @@ Use the Azure CLI to restore a deleted container or database. Child containers a
         "apiType": "Sql",
         "creationTime": "2020-08-02T22:23:00.095870+00:00",
         "deletionTime": "2020-08-02T22:26:13.483175+00:00",
-        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.DocumentDB/locations/westus/restorableDatabaseAccounts/abcd1234-d1c0-4645-a699-abcd1234",
+        "id": "/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/providers/Microsoft.DocumentDB/locations/westus/restorableDatabaseAccounts/abcd1234-d1c0-4645-a699-abcd1234",
         "location": "West US",
         "name": "abcd1234-d1c0-4645-a699-abcd1234",
         "restorableLocations": [

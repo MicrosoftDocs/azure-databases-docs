@@ -1,11 +1,12 @@
 ---
-author: akashraokm
-ms.author: akashrao
+author: nachoalonsoportillo
+ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 06/18/2024
+ms.date: 12/05/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
+ms.custom: automatically generated
 ---
 ### allow_in_place_tablespaces
 
@@ -221,7 +222,7 @@ ms.topic: include
 | Default value  | `on`          |
 | Allowed values | `on`             |
 | Parameter type | read-only      |
-| Documentation  | [jit_tuple_deforming](https://www.postgresql.org/docs/16/runtime-config-client.html#GUC-JIT-TUPLE-DEFORMING)                        |
+| Documentation  | [jit_tuple_deforming](https://www.postgresql.org/docs/16/runtime-config-developer.html#GUC-JIT-TUPLE-DEFORMING)                     |
 
 
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]

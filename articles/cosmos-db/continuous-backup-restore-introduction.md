@@ -57,7 +57,7 @@ You can choose to restore any combination of provisioned throughput containers, 
 The following configurations aren't restored after the point-in-time recovery:
 
 * A subset of containers under a shared throughput database can't be restored. The entire database can be restored as a whole.
-* Firewall, Virtual Network [VNET](how-to-configure-vnet-service-endpoint.md), Data plane Role based access control [RBAC](role-based-access-control.md),  or private endpoint settings. 
+* Firewall, Virtual Network [VNET](how-to-configure-vnet-service-endpoint.md), Data plane Role based access control RBAC,  or private endpoint settings. 
 * All the Regions from the source account.
 * Stored procedures, triggers, UDFs.
 * Role-based access control assignments. 
@@ -120,9 +120,13 @@ For example, if you have 1 TB of data in two regions then:
 * 30-day retention tier is charged for backup storage. 7-day retention tier isn't charged.
 * Restore is always charged in either tier
 
+## Time to live 
+
+* The default restore process restores all the properties of a container including its TTL configuration by default, this can result in deletion of data if restore is done without way to disable the TTL. To prevent the deletion please pass parameter to disable TTL in [PowerShell](./restore-account-continuous-backup.md#trigger-restore-ps) (-DisableTtl $true) or [cli](./restore-account-continuous-backup.md#trigger-restore-cli) (--disable-ttl True) while doing the restore.  
+
 ## Customer-managed keys
 
-See [How do customer-managed keys affect continuous backups?](./how-to-setup-cmk.md#how-do-customer-managed-keys-affect-continuous-backups) to learn:
+See [How do customer-managed keys affect continuous backups](./how-to-setup-cmk.md#how-do-customer-managed-keys-affect-continuous-backups) to learn:
 
 * How to configure your Azure Cosmos DB account when using customer-managed keys with continuous backups.
 * How do customer-managed keys affect restores?
@@ -135,7 +139,7 @@ Currently the point in time restore functionality has the following limitations:
 
 * `Multi region write` accounts aren't supported. 
 
-* Synapse Link for database accounts using continuous backup mode is GA. The opposiste situation, continuous backup mode for Synapse Link enabled accounts, is in public preview. Currently, customers that disabled Synapse Link from containers can't migrate to continuous backup. And analytical store isn't included in backups. For more information about backup and analytical store, see [analytical store backup](analytical-store-introduction.md#backup).
+* Synapse Link for database accounts using continuous backup mode is GA. The opposite situation, continuous backup mode for Synapse Link enabled accounts, is in public preview. Currently, customers that disabled Synapse Link from containers can't migrate to continuous backup. And analytical store isn't included in backups. For more information about backup and analytical store, see [analytical store backup](analytical-store-introduction.md#backup).
 
 * The restored account is created in the same region where your source account exists. You can't restore an account into a region where the source account didn't exist.
 
@@ -148,8 +152,6 @@ Currently the point in time restore functionality has the following limitations:
 * Azure Cosmos DB for MongoDB accounts with continuous backup don't support creating a unique index for an existing collection. For such an account, unique indexes must be created along with their collection; it can be done using the create collection [extension commands](mongodb/custom-commands.md).
 
 * After restoring, it's possible that for certain collections the consistent index may be rebuilding. You can check the status of the rebuild operation via the [IndexTransformationProgress](how-to-manage-indexing-policy.md) property.
-
-* The restore process restores all the properties of a container including its TTL configuration by default, you can pass parameter to disable TTL while doing the restore. As a result, it's possible that the data restored is deleted immediately if you configured that way. In order to prevent this situation, the restore timestamp must be before the TTL properties were added into the container.
 
 * Unique indexes in API for MongoDB can't be added, updated, or dropped when you create a continuous backup mode account. They also can't be modified when you migrate an account from periodic to continuous mode.
 
