@@ -1,5 +1,4 @@
 In the SSH terminal:
-
 1. CD to the root of your application code:
 
     ```bash
@@ -12,5 +11,5 @@ In the SSH terminal:
     php artisan migrate --force
     ```
 
-    > [!NOTE]
+    > [!NOTE]  
     > Only changes to files in `/home` can persist beyond app restarts. Changes outside of `/home` are not persisted.

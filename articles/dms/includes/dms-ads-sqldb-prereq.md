@@ -1,9 +1,12 @@
 ---
 author: abhims14
 ms.author: abhishekum
+ms.reviewer: randolphwest
+ms.date: 09/18/2024
 ms.service: azure-database-migration-service
 ms.topic: include
-ms.date: 09/30/2022
+ms.collection:
+  - sql-migration-content
 ---
 
 - [Download and install Azure Data Studio](/azure-data-studio/download-azure-data-studio).
@@ -13,10 +16,10 @@ ms.date: 09/30/2022
   - Contributor for the target instance of Azure SQL Database
   - Reader role for the Azure resource group that contains the target instance of Azure SQL Database
   - Owner or Contributor role for the Azure subscription (required if you create a new instance of Azure Database Migration Service)
-  
+
   As an alternative to using one of these built-in roles, you can [assign a custom role](/data-migration/sql-server/database/custom-roles).
-  
-  > [!IMPORTANT]
+
+  > [!IMPORTANT]  
   > An Azure account is required only when you configure the migration steps. An Azure account isn't required for the assessment or to view Azure recommendations in the migration wizard in Azure Data Studio.
 
 - Create a target instance of [Azure SQL Database](/azure/azure-sql/database/single-database-create-quickstart).

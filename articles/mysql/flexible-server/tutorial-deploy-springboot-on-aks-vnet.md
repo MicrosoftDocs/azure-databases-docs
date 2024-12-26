@@ -1,10 +1,10 @@
 ---
-title: "Tutorial: Deploy Spring Boot Application on AKS cluster within a VNet"
+title: "Tutorial: Deploy Spring Boot Application on AKS Cluster Within a VNet"
 description: Learn how to quickly build and deploy a Spring Boot Application on AKS with Azure Database for MySQL - Flexible Server, with secure connectivity within a VNet.
 author: shreyaaithal
 ms.author: shaithal
 ms.reviewer: maghan
-ms.date: 06/18/2024
+ms.date: 11/27/2024
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: tutorial
@@ -17,11 +17,9 @@ ms.custom:
 
 # Tutorial: Deploy a Spring Boot application on AKS cluster with Azure Database for MySQL - Flexible Server in a VNet
 
-[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
+In this tutorial, you'll learn how to deploy a [Spring Boot](https://spring.io/projects/spring-boot) application on [Azure Kubernetes Service (AKS)](/azure/aks/intro-kubernetes) cluster with [What is Azure Database for MySQL - Flexible Server?](overview.md) in the backend, securely communicating with each other within an [Azure virtual network](/azure/virtual-network/virtual-networks-overview).
 
-In this tutorial, you'll learn how to deploy a [Spring Boot](https://spring.io/projects/spring-boot) application on [Azure Kubernetes Service (AKS)](/azure/aks/intro-kubernetes) cluster with [Azure Database for MySQL flexible server](overview.md) in the backend, securely communicating with each other within an [Azure virtual network](/azure/virtual-network/virtual-networks-overview). 
-
-> [!NOTE]
+> [!NOTE]  
 > This tutorial assumes a basic understanding of Kubernetes concepts, Java Spring Boot and MySQL.
 > For Spring Boot applications, we recommend using Azure Spring Apps. However, you can still use Azure Kubernetes Services as a destination. See [Java Workload Destination Guidance](https://aka.ms/javadestinations) for advice.
 
@@ -34,30 +32,34 @@ In this tutorial, you'll learn how to deploy a [Spring Boot](https://spring.io/p
 - A [Git](https://github.com/) client.
 - A [Docker](https://www.docker.com/) client.
 
-## Create an Azure Database for MySQL flexible server 
+## Create an Azure Database for MySQL Flexible Server
 
 ### Create a resource group
-An Azure resource group is a logical group in which Azure resources are deployed and managed. Let's create a resource group *rg-mysqlaksdemo* using the [az group create](/cli/azure/group#az-group-create) command  in the *eastus* location.
 
-1. Open command prompt. 
+An Azure resource group is a logical group in which Azure resources are deployed and managed. Let's create a resource group *rg-mysqlaksdemo* using the [az group create](/cli/azure/group#az-group-create) command in the *eastus* location.
+
+1. Open command prompt.
 1. Sign in to your Azure account.
+
     ```azurecli-interactive
     az login
     ```
 1. Choose your Azure subscription.
+
     ```azurecli-interactive
     az account set -s <your-subscription-ID>
-    ```    
+    ```
 1. Create the resource group.
+
     ```azurecli-interactive
     az group create --name rg-mysqlaksdemo --location eastus
     ```
 
-### Create an Azure Database for MySQL flexible server instance
+### Create an Azure Database for MySQL Flexible Server instance
 
-We'll now create an Azure Database for MySQL flexible server instance in a virtual network (private access connectivity method).
+We'll now create an Azure Database for MySQL Flexible Server instance in a virtual network (private access connectivity method).
 
-1. Create an Azure virtual network *vnet-mysqlaksdemo* for all the resources in this tutorial, and a subnet *subnet-mysql* for the Azure Database for MySQL flexible server instance.
+1. Create an Azure virtual network *vnet-mysqlaksdemo* for all the resources in this tutorial, and a subnet *subnet-mysql* for the Azure Database for MySQL Flexible Server instance.
 
     ```azurecli-interactive
     az network vnet create \
@@ -65,10 +67,10 @@ We'll now create an Azure Database for MySQL flexible server instance in a virtu
     --name vnet-mysqlaksdemo \
     --address-prefixes 155.55.0.0/16 \
     --subnet-name subnet-mysql \
-    --subnet-prefix 155.55.1.0/24 
+    --subnet-prefix 155.55.1.0/24
     ```
 
-1. Create an Azure Database for MySQL flexible server instance *mysql-mysqlaksdemo* in the above created subnet, using the [az mysql flexible-server create](/cli/azure/mysql/flexible-server#az-mysql-flexible-server-create) command. Replace your values for admin username and password.
+1. Create an Azure Database for MySQL Flexible Server instance *mysql-mysqlaksdemo* in the above created subnet, using the [az mysql flexible-server create](/cli/azure/mysql/flexible-server#az-mysql-flexible-server-create) command. Replace your values for admin username and password.
 
     ```azurecli-interactive
     az mysql flexible-server create \
@@ -80,10 +82,10 @@ We'll now create an Azure Database for MySQL flexible server instance in a virtu
     --vnet vnet-mysqlaksdemo \
     --subnet subnet-mysql
     ```
-    
-    You have now created an Azure Database for MySQL flexible server instance in the eastus region with Burstable B1MS compute, 32 GB storage, 7 days backup retention period, and in the provided subnet *subnet-mysql*. This subnet should not have any other resource deployed in it and will be delegated to Microsoft.DBforMySQL/flexibleServers.
 
-1. Configure a new Azure Database for MySQL flexible server database `demo` to be used with the Spring Boot Application.
+    You have now created an Azure Database for MySQL Flexible Server instance in the eastus region with Burstable B1MS compute, 32 GB storage, 7 days backup retention period, and in the provided subnet *subnet-mysql*. This subnet should not have any other resource deployed in it and will be delegated to Microsoft.DBforMySQL/flexibleServers.
+
+1. Configure a new Azure Database for MySQL Flexible Server database `demo` to be used with the Spring Boot Application.
 
     ```azurecli-interactive
     az mysql flexible-server db create \
@@ -92,7 +94,7 @@ We'll now create an Azure Database for MySQL flexible server instance in a virtu
     --database-name demo
     ```
 
-## Create an Azure container registry 
+## Create an Azure container registry
 
 Create a private Azure container registry in the resource group. This tutorial pushes the sample app as a Docker image to this registry in later steps. Replace `mysqlaksdemoregistry` with a unique name for your registry.
 
@@ -105,9 +107,9 @@ az acr create --resource-group rg-mysqlaksdemo \
 
 ## Code the application
 
-In this section, we'll code the demo application. If you want to go faster, you can download the coded application available at [https://github.com/Azure-Samples/tutorial-springboot-mysql-aks](https://github.com/Azure-Samples/tutorial-springboot-mysql-aks) and skip to the next section - [Build the image and push to ACR](#build-the-image-and-push-to-acr). 
+In this section, we'll code the demo application. If you want to go faster, you can download the coded application available at [https://github.com/Azure-Samples/tutorial-springboot-mysql-aks](https://github.com/Azure-Samples/tutorial-springboot-mysql-aks) and skip to the next section - [Build the image and push to ACR](#build-the-image-and-push-to-acr).
 
-1. Generate the application using Spring Initializr. 
+1. Generate the application using Spring Initializr.
 
     ```bash
     curl https://start.spring.io/starter.tgz \
@@ -118,30 +120,30 @@ In this section, we'll code the demo application. If you want to go faster, you 
     -d description="Spring Boot on AKS connecting to Azure DB for MySQL" \
     -d javaVersion=1.8 | tar -xzvf -
     ```
-    
+
     A base Spring Boot application will be generated inside the `springboot-mysql-aks` folder.
-    
+
     Use your favorite text editor like [VSCode](https://code.visualstudio.com/docs) or any IDE for the following steps.
 
-1. Configure Spring Boot to use Azure Database for MySQL flexible server.
+1. Configure Spring Boot to use Azure Database for MySQL Flexible Server.
 
     Open the src/main/resources/application.properties file, and add the below snippet. This code is reading the database host, database name, username, and password from the Kubernetes manifest file.
-    
-    ```properties
+
+    ```powershell
     logging.level.org.springframework.jdbc.core=DEBUG
     spring.datasource.url=jdbc:mysql://${DATABASE_HOST}:3306/${DATABASE_NAME}?serverTimezone=UTC
     spring.datasource.username=${DATABASE_USERNAME}
     spring.datasource.password=${DATABASE_PASSWORD}
     spring.datasource.initialization-mode=always
     ```
-    >[!Warning]
+    > [!WARNING]  
     > The configuration property `spring.datasource.initialization-mode=always` means that Spring Boot will automatically generate a database schema, using the `schema.sql` file that we will create later, each time the server is started. This is great for testing, but remember this will delete your data at each restart, so this shouldn't be used in production!
 
-    >[!Note]
-    >We append `?serverTimezone=UTC` to the configuration property `spring.datasource.url`, to tell the JDBC driver to use the UTC date format (or Coordinated Universal Time) when connecting to the database. Otherwise, our Java server would not use the same date format as the database, which would result in an error.
+    > [!NOTE]  
+    > We append `?serverTimezone=UTC` to the configuration property `spring.datasource.url`, to tell the JDBC driver to use the UTC date format (or Coordinated Universal Time) when connecting to the database. Otherwise, our Java server would not use the same date format as the database, which would result in an error.
 
 1. Create the database schema.
-    
+
     Spring Boot will automatically execute `src/main/resources/schema.sql` to create a database schema. Create that file, with the following content:
 
     ```sql
@@ -149,62 +151,62 @@ In this section, we'll code the demo application. If you want to go faster, you 
     CREATE TABLE todo (id SERIAL PRIMARY KEY, description VARCHAR(255), details VARCHAR(4096), done BOOLEAN);
     ```
 1. Code the Java Spring Boot application.
-    
+
     Add the Java code that will use JDBC to store and retrieve data from your MySQL server. Create a new `Todo` Java class, next to the `DemoApplication` class, and add the following code:
 
-    ```java
+    ```csharp
     package com.example.springbootmysqlaks;
 
     import org.springframework.data.annotation.Id;
-    
+
     public class Todo {
-    
+
         public Todo() {
         }
-    
+
         public Todo(String description, String details, boolean done) {
             this.description = description;
             this.details = details;
             this.done = done;
         }
-    
+
         @Id
         private Long id;
-    
+
         private String description;
-    
+
         private String details;
-    
+
         private boolean done;
-    
+
         public Long getId() {
             return id;
         }
-    
+
         public void setId(Long id) {
             this.id = id;
         }
-    
+
         public String getDescription() {
             return description;
         }
-    
+
         public void setDescription(String description) {
             this.description = description;
         }
-    
+
         public String getDetails() {
             return details;
         }
-    
+
         public void setDetails(String details) {
             this.details = details;
         }
-    
+
         public boolean isDone() {
             return done;
         }
-    
+
         public void setDone(boolean done) {
             this.done = done;
         }
@@ -213,12 +215,12 @@ In this section, we'll code the demo application. If you want to go faster, you 
     This class is a domain model mapped on the `todo` table that you created before.
 
     To manage that class, you'll need a repository. Define a new `TodoRepository` interface in the same package:
-    
+
     ```java
     package com.example.springbootmysqlaks;
 
     import org.springframework.data.repository.CrudRepository;
-    
+
     public interface TodoRepository extends CrudRepository<Todo, Long> {
     }
     ```
@@ -226,29 +228,29 @@ In this section, we'll code the demo application. If you want to go faster, you 
     This repository is a repository that Spring Data JDBC manages.
 
     Finish the application by creating a controller that can store and retrieve data. Implement a `TodoController` class in the same package, and add the following code:
-    
-    ```java
+
+    ```csharp
     package com.example.springbootmysqlaks;
 
     import org.springframework.http.HttpStatus;
     import org.springframework.web.bind.annotation.*;
-    
+
     @RestController
     @RequestMapping("/")
     public class TodoController {
-    
+
         private final TodoRepository todoRepository;
-    
+
         public TodoController(TodoRepository todoRepository) {
             this.todoRepository = todoRepository;
         }
-    
+
         @PostMapping("/")
         @ResponseStatus(HttpStatus.CREATED)
         public Todo createTodo(@RequestBody Todo todo) {
             return todoRepository.save(todo);
         }
-    
+
         @GetMapping("/")
         public Iterable<Todo> getTodos() {
             return todoRepository.findAll();
@@ -258,7 +260,7 @@ In this section, we'll code the demo application. If you want to go faster, you 
 
 1. Create a new Dockerfile in the base directory *springboot-mysql-aks* and copy this code snippet.
 
-    ```dockerfile
+    ```powershell
     FROM openjdk:8-jdk-alpine
     RUN addgroup -S spring && adduser -S spring -G spring
     USER spring:spring
@@ -274,14 +276,14 @@ In this section, we'll code the demo application. If you want to go faster, you 
 
     ```xml
     <properties>
-   		<docker.image.prefix>mysqlaksdemoregistry.azurecr.io</docker.image.prefix>
-   		<jib-maven-plugin.version>3.1.4</jib-maven-plugin.version>
-   		<java.version>1.8</java.version>
-	</properties>
+           <docker.image.prefix>mysqlaksdemoregistry.azurecr.io</docker.image.prefix>
+           <jib-maven-plugin.version>3.1.4</jib-maven-plugin.version>
+           <java.version>1.8</java.version>
+    </properties>
     ```
 
-1. Update the `<plugins>` collection in the *pom.xml* file so that there is a `<plugin>` element containing an entry for the `jib-maven-plugin`, as shown below. Note that we are using a base image from the Microsoft Container Registry (MCR): `mcr.microsoft.com/java/jdk:8-zulu-alpine`, which contains an officially supported JDK for Azure. For other MCR base images with officially supported JDKs, see the [docker hub](https://hub.docker.com/).
-    
+1. Update the `<plugins>` collection in the *pom.xml* file so that there is a `<plugin>` element containing an entry for the `jib-maven-plugin`, as shown below. We are using a base image from the Microsoft Container Registry (MCR): `mcr.microsoft.com/java/jdk:8-zulu-alpine`, which contains an officially supported JDK for Azure. For other MCR base images with officially supported JDKs, see the [docker hub](https://hub.docker.com/).
+
     ```xml
     <plugin>
         <artifactId>jib-maven-plugin</artifactId>
@@ -311,9 +313,9 @@ az acr login && mvn compile jib:build
 
 ## Create a Kubernetes cluster on AKS
 
-We'll now create an AKS cluster in the virtual network *vnet-mysqlaksdemo*. 
+We'll now create an AKS cluster in the virtual network *vnet-mysqlaksdemo*.
 
-In this tutorial, we'll use Azure CNI networking in AKS. If you'd like to configure kubenet networking instead, see [Use kubenet networking in AKS](/azure/aks/configure-kubenet).  
+In this tutorial, we'll use Azure CNI networking in AKS. If you'd like to configure kubenet networking instead, see [Use kubenet networking in AKS](/azure/aks/configure-kubenet).
 
 1. Create a subnet *subnet-aks* for the AKS cluster to use.
 
@@ -330,7 +332,7 @@ In this tutorial, we'll use Azure CNI networking in AKS. If you'd like to config
     ```azurecli-interactive
     SUBNET_ID=$(az network vnet subnet show --resource-group rg-mysqlaksdemo --vnet-name vnet-mysqlaksdemo --name subnet-aks --query id -o tsv)
     ```
-    
+
 1. Create an AKS cluster in the virtual network, with Azure Container Registry (ACR) *mysqlaksdemoregistry* attached.
 
     ```azurecli-interactive
@@ -348,28 +350,28 @@ In this tutorial, we'll use Azure CNI networking in AKS. If you'd like to config
     ```
 
     The following IP address ranges are also defined as part of the cluster create process:
-    
+
     - The *--service-cidr* is used to assign internal services in the AKS cluster an IP address. You can use any private address range that satisfies the following requirements:
         - Must not be within the virtual network IP address range of your cluster
         - Must not overlap with any other virtual networks with which the cluster virtual network peers
         - Must not overlap with any on-premises IPs
         - Must not be within the ranges 169.254.0.0/16, 172.30.0.0/16, 172.31.0.0/16, or 192.0.2.0/24
-    
+
     - The *--dns-service-ip* address is the IP address for the cluster's DNS service. This address must be within the *Kubernetes service address range*. Don't use the first IP address in your address range. The first address in your subnet range is used for the *kubernetes.default.svc.cluster.local* address.
-    
+
     - The *--docker-bridge-address* is the Docker bridge network address which represents the default *docker0* bridge network address present in all Docker installations. You must pick an address space that does not collide with the rest of the CIDRs on your networks, including the cluster's service CIDR and pod CIDR.
 
 ## Deploy the application to AKS cluster
 
 1. Go to your AKS cluster resource on the Azure portal.
 
-1. Select **Add** and **Add with YAML** from any of the resource views (Namespace, Workloads, Services and ingresses, Storage, or Configuration). 
+1. Select **Add** and **Add with YAML** from any of the resource views (Namespace, Workloads, Services and ingresses, Storage, or Configuration).
 
-    :::image type="content" source="media/tutorial-deploy-springboot-on-aks-vnet.md/aks-resource-blade.png" alt-text="Screenshot that shows Azure Kubernetes Service resource view on Azure portal.":::
+    :::image type="content" source="media/tutorial-deploy-springboot-on-aks-vnet/aks-resource-blade.png" alt-text="Screenshot that shows Azure Kubernetes Service resource view on Azure portal." lightbox="media/tutorial-deploy-springboot-on-aks-vnet/aks-resource-blade.png":::
 
-1. Paste in the following YAML. Replace your values for Azure Database for MySQL flexible server admin username and password.
+1. Paste in the following YAML. Replace your values for Azure Database for MySQL Flexible Server admin username and password.
 
-    ```yml
+    ```sql
     apiVersion: apps/v1
     kind: Deployment
     metadata:
@@ -394,8 +396,8 @@ In this tutorial, we'll use Azure CNI networking in AKS. If you'd like to config
               value: "<your-admin-username>"
             - name: DATABASE_PASSWORD
               value: "<your-admin-password>"
-            - name: DATABASE_NAME    
-              value: "demo"     
+            - name: DATABASE_NAME
+              value: "demo"
     ---
     apiVersion: v1
     kind: Service
@@ -411,11 +413,11 @@ In this tutorial, we'll use Azure CNI networking in AKS. If you'd like to config
     ```
 1. Select **Add** at the bottom of the YAML editor to deploy the application.
 
-    :::image type="content" source="media/tutorial-deploy-springboot-on-aks-vnet.md/aks-add-with-yaml.png" alt-text="Screenshot that shows Add with YAML editor.":::
+    :::image type="content" source="media/tutorial-deploy-springboot-on-aks-vnet/aks-add-with-yaml.png" alt-text="Screenshot that shows Add with YAML editor." lightbox="media/tutorial-deploy-springboot-on-aks-vnet/aks-add-with-yaml.png":::
 
 1. Once the YAML file is added, the resource viewer shows your Spring Boot application. Make a note of the linked external IP address included in the external service.
 
-    :::image type="content" source="media/tutorial-deploy-springboot-on-aks-vnet.md/aks-external-ip.png" alt-text="Screenshot that shows Azure portal view of Azure Kubernetes cluster service external IP.":::
+    :::image type="content" source="media/tutorial-deploy-springboot-on-aks-vnet/aks-external-ip.png" alt-text="Screenshot that shows Azure portal view of Azure Kubernetes cluster service external IP." lightbox="media/tutorial-deploy-springboot-on-aks-vnet/aks-external-ip.png":::
 
 ## Test the application
 
@@ -438,35 +440,30 @@ curl http://<AKS-service-external-ip>
 
 This command will return the list of "todo" items, including the item you've created.
 
-```json
+```csharp
 [{"id":1,"description":"configuration","details":"congratulations, you have deployed your application correctly!","done":true}]
 ```
 
 Here's a screenshot of these cURL requests:
-:::image type="content" source="media/tutorial-deploy-springboot-on-aks-vnet.md/aks-curl-output.png" alt-text="Screenshot that shows command line output of cURL requests.":::
+:::image type="content" source="media/tutorial-deploy-springboot-on-aks-vnet/aks-curl-output.png" alt-text="Screenshot that shows command line output of cURL requests." lightbox="media/tutorial-deploy-springboot-on-aks-vnet/aks-curl-output.png":::
 
 You can see a similar output through your browser:
-:::image type="content" source="media/tutorial-deploy-springboot-on-aks-vnet.md/aks-browser-output.png" alt-text="Screenshot that shows browser request output.":::
+:::image type="content" source="media/tutorial-deploy-springboot-on-aks-vnet/aks-browser-output.png" alt-text="Screenshot that shows browser request output." lightbox="media/tutorial-deploy-springboot-on-aks-vnet/aks-browser-output.png":::
 
-
-Congratulations! You've successfully deployed a Spring Boot application on Azure Kubernetes Service (AKS) cluster with Azure Database for MySQL flexible server in the backend! 
-
+Congratulations! You've successfully deployed a Spring Boot application on Azure Kubernetes Service (AKS) cluster with Azure Database for MySQL Flexible Server in the backend!
 
 ## Clean up the resources
 
-To avoid Azure charges, you should clean up unneeded resources.  When the cluster is no longer needed, use the [az group delete](/cli/azure/group#az-group-delete) command to remove the resource group, container service, and all related resources.
+To avoid Azure charges, you should clean up unneeded resources. When the cluster is no longer needed, use the [az group delete](/cli/azure/group#az-group-delete) command to remove the resource group, container service, and all related resources.
 
 ```azurecli-interactive
 az group delete --name rg-mysqlaksdemo
 ```
 
-> [!NOTE]
+> [!NOTE]  
 > When you delete the cluster, the Microsoft Entra service principal used by the AKS cluster is not removed. For steps on how to remove the service principal, see [AKS service principal considerations and deletion](/azure/aks/kubernetes-service-principal#other-considerations). If you used a managed identity, the identity is managed by the platform and does not require removal.
 
-## Next steps
+## Related content
 
-> [!div class="nextstepaction"]
-> [Deploy WordPress app on AKS with Azure Database for MySQL flexible server](tutorial-deploy-wordpress-on-aks.md)
-
-> [!div class="nextstepaction"]
-> [Build a PHP (Laravel) web app with Azure Database for MySQL flexible server](tutorial-php-database-app.md)
+- [Tutorial: Deploy WordPress app on AKS with Azure Database for MySQL - Flexible Server](tutorial-deploy-wordpress-on-aks.md)
+- [Tutorial: Build a PHP (Laravel) and Azure Database for MySQL - Flexible Server app on Azure App Service](tutorial-php-database-app.md)

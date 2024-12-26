@@ -57,7 +57,7 @@ Following are the details for the arguments in the preceding code:
 name | mydemoserver | Enter a unique name for your server. The server name can contain only lowercase letters, numbers, and the hyphen (-) character. It must contain 3 to 63 characters.
 resource-group | myresourcegroup | Provide the name of the Azure resource group.
 sku-name|Standard_D4ds_v3|Enter the name of the compute tier and size. The value follows the convention *Standard_{VM size}* in shorthand. See the [pricing tiers](../concepts-pricing-tiers.md) for more information.
-storage-size | 6144 | Enter the storage capacity of the server in megabytes. The minimum is 5120, increasing in increments of 1024.
+storage-size | 32768 | Enter the storage capacity of the server in megabytes. The minimum storage size 32768, 
 
 > [!IMPORTANT]
 > You cannot scale down storage. 
@@ -138,7 +138,8 @@ To delete the Azure Database for PostgreSQL flexible server instance, run the [a
 az postgres flexible-server delete --resource-group myresourcegroup --name mydemoserver
 ```
 
-## Next steps
+[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
 
-- [Understand backup and restore concepts](concepts-backup-restore.md)
-- [Tune and monitor the server](concepts-monitoring.md)
+## Related content
+- [Backup and restore in Azure Database for PostgreSQL - Flexible Server](concepts-backup-restore.md).
+- [Monitor metrics in Azure Database for PostgreSQL - Flexible Server](concepts-monitoring.md).

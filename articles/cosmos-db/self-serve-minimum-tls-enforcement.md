@@ -30,6 +30,9 @@ Starting with the [2022-11-15 API version of the Azure Cosmos DB Resource Provid
 
 The **default value for new accounts is `Tls12`**.
 
+> [!IMPORTANT]
+> **Starting August 31, 2025, all Cosmos DB database accounts must use Transport Layer Security (TLS) 1.2 or higher**, as [support for TLS 1.0 and 1.1 will be discontinued](https://azure.microsoft.com/updates/azure-support-tls-will-end-by-31-october-2024-2/).
+
 ### Set Minimal TLS Protocol in Azure Cosmos DB using the Portal 
 
 This self-serve feature is available in the Portal while creating and editing an account. Azure Cosmos DB Accounts enforce the TLS 1.2 protocol. However, Azure Cosmos DB also supports the following TLS protocols depending on the API kind selected.
@@ -189,7 +192,3 @@ $getParameters = @{
 Invoke-AzRestMethod @getParameters
 ```
 
-## Next steps
-
-For more information about security in Azure Cosmos DB, see [Overview of database security in Azure Cosmos DB
-](./database-security.md).

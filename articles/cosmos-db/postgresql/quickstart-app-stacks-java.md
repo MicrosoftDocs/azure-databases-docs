@@ -88,7 +88,7 @@ Using your favorite integrated development environment (IDE), create a new Java 
 
 ### Configure the database connection
 
-In *src/main/resources/*, create an *application.properties* file with the following contents. Replace \<cluster> with your cluster name, and replace \<password> with your administrative password.
+In *src/main/resources/*, create an *application.properties* file with the following contents. Replace \<cluster> with your cluster name, and replace \<password> with your administrative password or Microsoft Entra ID token.
 
 ```properties
 driver.class.name=org.postgresql.Driver

@@ -8,7 +8,7 @@ ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: reference
 ms.devlang: nosql
-ms.date: 08/22/2024
+ms.date: 10/24/2024
 ms.custom: query-reference
 ---
 
@@ -48,9 +48,13 @@ This next example assumes that there's a container with two items with a `/name`
 
 In this example, the function counts the number of times the specified scalar field occurs in the filtered data. Here, the function looks for the number of times the `/name` field occurs which is two out of three times.
 
-:::code language="" source="~/cosmos-db-nosql-query-samples/scripts/count/query.sql" highlight="2":::
+:::code language="nosql" source="~/cosmos-db-nosql-query-samples/scripts/count/query.sql" highlight="2":::
 
-:::code language="" source="~/cosmos-db-nosql-query-samples/scripts/count/result.json":::
+:::code language="json" source="~/cosmos-db-nosql-query-samples/scripts/count/result.json":::
+
+In this final example, the function is used to count every item within a contianer.
+
+:::code language="nosql" source="~/cosmos-db-nosql-query-samples/scripts/count-items/query.novalidate.sql" highlight="2":::
 
 ## Remarks
 

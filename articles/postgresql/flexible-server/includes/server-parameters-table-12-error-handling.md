@@ -1,11 +1,12 @@
 ---
-author: akashraokm
-ms.author: akashrao
+author: nachoalonsoportillo
+ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 06/18/2024
+ms.date: 12/05/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
+ms.custom: automatically generated
 ---
 ### data_sync_retry
 
@@ -17,7 +18,7 @@ ms.topic: include
 | Default value  | `off`         |
 | Allowed values | `off`          |
 | Parameter type | read-only      |
-| Documentation  | [data_sync_retry](https://www.postgresql.org/docs/12/runtime-config-error-handling.html#GUC-DATA-SYNC-RETRY) |
+| Documentation  | [data_sync_retry](https://www.postgresql.org/docs/12/runtime-config-error-handling.html#GUC-DATA-SYNC-RETRY)         |
 
 
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
@@ -34,7 +35,7 @@ ms.topic: include
 | Default value  | `off`         |
 | Allowed values | `on,off`       |
 | Parameter type | dynamic        |
-| Documentation  | [exit_on_error](https://www.postgresql.org/docs/12/runtime-config-error-handling.html#GUC-EXIT-ON-ERROR)     |
+| Documentation  | [exit_on_error](https://www.postgresql.org/docs/12/runtime-config-error-handling.html#GUC-EXIT-ON-ERROR)             |
 
 
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
@@ -51,7 +52,7 @@ ms.topic: include
 | Default value  | `on`          |
 | Allowed values | `on`           |
 | Parameter type | read-only      |
-| Documentation  |                                                                                                              |
+| Documentation  | [restart_after_crash](https://www.postgresql.org/docs/12/runtime-config-error-handling.html#GUC-RESTART-AFTER-CRASH) |
 
 
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]

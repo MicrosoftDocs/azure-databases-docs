@@ -12,7 +12,7 @@ ms.date: 01/26/2022
 
 # List and update configurations of an Azure Database for PostgreSQL - Flexible Server instance using Azure CLI
 
-[!INCLUDE[applies-to-postgres-single-flexible-server](../includes/applies-to-postgresql-single-flexible-server.md)]
+[!INCLUDE [applies-to-postgresql-flexible-server](../includes/applies-to-postgresql-flexible-server.md)]
 
 This sample CLI script lists all available configuration parameters as well as their allowable values for Azure Database for PostgreSQL flexible server, and sets the *log_retention_days* to a value that is other than the default one.
 

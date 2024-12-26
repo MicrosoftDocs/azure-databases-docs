@@ -2,21 +2,21 @@
 title: Azure Cosmos DB indexing policies
 description:  Learn how to configure and change the default indexing policy for automatic indexing and greater performance in Azure Cosmos DB.
 author: deborahc
+ms.author: dech
 ms.service: azure-cosmos-db
 ms.subservice: nosql
-ms.custom:
-  - build-2024
-ms.topic: conceptual
-ms.date: 12/07/2021
-ms.author: dech
+ms.topic: concept-article
+ms.date: 09/26/2024
+ms.custom: build-2024, ignite-2024
 ---
 
 # Indexing policies in Azure Cosmos DB
+
 [!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 In Azure Cosmos DB, every container has an indexing policy that dictates how the container's items should be indexed. The default indexing policy for newly created containers indexes every property of every item and enforces range indexes for any string or number. This allows you to get good query performance without having to think about indexing and index management upfront.
 
-In some situations, you may want to override this automatic behavior to better suit your requirements. You can customize a container's indexing policy by setting its *indexing mode*, and include or exclude *property paths*.
+In some situations, you might want to override this automatic behavior to better suit your requirements. You can customize a container's indexing policy by setting its *indexing mode*, and include or exclude *property paths*.
 
 > [!NOTE]
 > The method of updating indexing policies described in this article only applies to Azure Cosmos DB API for NoSQL. Learn about indexing in [Azure Cosmos DB API for MongoDB](mongodb/indexing.md)
@@ -25,7 +25,7 @@ In some situations, you may want to override this automatic behavior to better s
 
 Azure Cosmos DB supports two indexing modes:
 
-- **Consistent**: The index is updated synchronously as you create, update or delete items. This means that the consistency of your read queries will be the [consistency configured for the account](consistency-levels.md).
+- **Consistent**: The index is updated synchronously as you create, update, or delete items. This means that the consistency of your read queries will be the [consistency configured for the account](consistency-levels.md).
 - **None**: Indexing is disabled on the container. This mode is commonly used when a container is used as a pure key-value store without the need for secondary indexes. It can also be used to improve the performance of bulk operations. After the bulk operations are complete, the index mode can be set to Consistent and then monitored using the [IndexTransformationProgress](how-to-manage-indexing-policy.md#dotnet-sdk) until complete.
 
 > [!NOTE]
@@ -33,15 +33,15 @@ Azure Cosmos DB supports two indexing modes:
 
 By default, indexing policy is set to `automatic`. It's achieved by setting the `automatic` property in the indexing policy to `true`. Setting this property to `true` allows Azure Cosmos DB to automatically index items as they're written.
 
-## <a id="index-size"></a>Index size
+## Index size
 
 In Azure Cosmos DB, the total consumed storage is the combination of both the Data size and Index size. The following are some features of index size:
 
 * The index size depends on the indexing policy. If all the properties are indexed, then the index size can be larger than the data size.
-* When data is deleted, indexes are compacted on a near continuous basis. However, for small data deletions, you may not immediately observe a decrease in index size.
+* When data is deleted, indexes are compacted on a near continuous basis. However, for small data deletions, you might not immediately observe a decrease in index size.
 * The Index size can temporarily grow when physical partitions split. The index space is released after the partition split is completed.
 
-## <a id="include-exclude-paths"></a>Including and excluding property paths
+## Including and excluding property paths
 
 A custom indexing policy can specify property paths that are explicitly included or excluded from indexing. By optimizing the number of paths that are indexed, you can substantially reduce the latency and RU charge of write operations. These paths are defined following [the method described in the indexing overview section](index-overview.md#from-trees-to-property-paths) with the following additions:
 
@@ -71,13 +71,13 @@ Taking the same example again:
 
 - the path to anything under `headquarters` is `/headquarters/*`
 
-For example, we could include the `/headquarters/employees/?` path. This path would ensure that we index the employees property but wouldn't index additional nested JSON within this property.
+For example, we could include the `/headquarters/employees/?` path. This path would ensure that we index the `employees` property but wouldn't index extra nested JSON within this property.
 
 ## Include/exclude strategy
 
 Any indexing policy has to include the root path `/*` as either an included or an excluded path.
 
-- Include the root path to selectively exclude paths that don't need to be indexed. This approach is recommended as it lets Azure Cosmos DB proactively index any new property that may be added to your model.
+- Include the root path to selectively exclude paths that don't need to be indexed. This approach is recommended as it lets Azure Cosmos DB proactively index any new property that might be added to your model.
 
 - Exclude the root path to selectively include paths that need to be indexed. The partition key property path isn't indexed by default with the exclude strategy and should be explicitly included if needed.
 
@@ -87,9 +87,9 @@ Any indexing policy has to include the root path `/*` as either an included or a
 
 - If the indexing mode is set to **consistent**, the system properties `id` and `_ts` are automatically indexed.
 
-- If an explicitly indexed path doesn't exist in an item, a value will be added to the index to indicate that the path is undefined.
+- If an explicitly indexed path doesn't exist in an item, a value is added to the index to indicate that the path is undefined.
 
-All explicitly included paths will have values added to the index for each item in the container, even if the path is undefined for a given item.
+All explicitly included paths have values added to the index for each item in the container, even if the path is undefined for a given item.
 
 See [this section](how-to-manage-indexing-policy.md#indexing-policy-examples) for indexing policy examples for including and excluding paths.
 
@@ -113,12 +113,44 @@ Here are some rules for included and excluded paths precedence in Azure Cosmos D
 
 - The path `/*` must be either an included path or excluded path.
 
+## Full text indexes
+> [!NOTE]
+>  You must enable the [Full Text  & Hybrid Search for NoSQL API](nosql/vector-search.md#enable-the-vector-indexing-and-search-feature) preview feature to specify a full text index.
+
+**Full text** indexes enable full text search and scoring efficiently using the index. Defining a full text path in an indexing policy can easily be done by including a `fullTextIndexes` section of the indexing policy that contains all of the text paths to be indexed. For example:
+
+```json
+{
+    "indexingMode": "consistent",
+    "automatic": true,
+    "includedPaths": [
+        {
+            "path": "/*"
+        }
+    ],
+    "excludedPaths": [
+        {
+            "path": "/\"_etag\"/?"
+        },
+    ],
+    "fullTextIndexes": [
+        {
+            "path": "/text"
+        }
+    ]
+}
+```
+
+> [!IMPORTANT]
+> A full text indexing policy must be on the path defined in the container's full text policy. [Learn more about container vector policies](gen-ai/full-text-search.md).
+
+
 ## Vector indexes
 
 > [!NOTE]
->  You must enroll in the [Azure Cosmos DB NoSQL Vector Index preview feature](nosql/vector-search.md#enroll-in-the-vector-search-preview-feature) to specify a vector indexing policy.> 
+>  You must enable the [Azure Cosmos DB NoSQL Vector Search feature](nosql/vector-search.md#enable-the-vector-indexing-and-search-feature) to specify a vector index.
 
-**Vector** indexes increase the efficiency when performing vector searches using the `VectorDistance` system function. Vectors searches will have significantly lower latency, higher throughput, and less RU consumption when leveraging a vector index.  You can specify the following types of vector index policies:
+**Vector** indexes increase the efficiency when performing vector searches using the `VectorDistance` system function. Vectors searches have lower latency, higher throughput, and less RU consumption when applying a vector index.  You can specify the following types of vector index policies:
 
 | Type | Description | Max dimensions |
 | --- | --- |
@@ -126,12 +158,19 @@ Here are some rules for included and excluded paths precedence in Azure Cosmos D
 | **`quantizedFlat`** | Quantizes (compresses) vectors before storing on the index. This can improve latency and throughput at the cost of a small amount of accuracy. | 4096 |
 | **`diskANN`** | Creates an index based on DiskANN for fast and efficient approximate search. | 4096 |
 
+> [!IMPORTANT]
+> Currently, vector policies and vector indexes are immutable after creation. To make changes, please create a new collection.
+
 A few points to note:
-  - The `flat` and `quantizedFlat` index types leverage Azure Cosmos DB's index to store and read each vector when performing a vector search. Vector searches with a `flat` index are brute-force searches and produce 100% accuracy or recall. That is, it is guaranteed to find the most similar vectors in the dataset. However, there is a limitation of `505` dimensions for vectors on a flat index.
+- The `flat` and `quantizedFlat` index types apply Azure Cosmos DB's index to store and read each vector when performing a vector search. Vector searches with a `flat` index are brute-force searches and produce 100% accuracy or recall. That is, it's guaranteed to find the most similar vectors in the dataset. However, there's a limitation of `505` dimensions for vectors on a flat index.
 
-  - The `quantizedFlat` index stores quantized (compressed) vectors on then index. Vector searches with `quantizedFlat` index are also brute-force searches, however their accuracy might be slightly less than 100% since the vectors are quantized before adding to the index. However, vector searches with `quantized flat` should have lower latency, higher throughput, and lower RU cost than vector searches on a `flat` index. This is a good option for scenarios where you are using query filters to narrow down the vector search to a relatively small set of vectors, and extremely high accuracy is required.
+  - The `quantizedFlat` index stores quantized (compressed) vectors on the index. Vector searches with `quantizedFlat` index are also brute-force searches, however their accuracy might be slightly less than 100% since the vectors are quantized before adding to the index. However, vector searches with `quantized flat` should have lower latency, higher throughput, and lower RU cost than vector searches on a `flat` index. This is a good option for scenarios where you're using query filters to narrow down the vector search to a relatively small set of vectors, and high accuracy is required.
 
-  - The `diskANN` index is a separate index defined specifically for vectors leveraging [DiskANN](https://www.microsoft.com/research/publication/diskann-fast-accurate-billion-point-nearest-neighbor-search-on-a-single-node/), a suite of high performance vector indexing algorithms developed by Microsoft Research. DiskANN indexes can offer some of the lowest latency, highest throughput, and lowest RU cost queries, while still maintaining high accuracy. However, since DiskANN is an approximate nearest neighbors (ANN) index, the accuracy may be lower than `quantizedFlat` or `flat`.
+  - The `diskANN` index is a separate index defined specifically for vectors applying [DiskANN](https://www.microsoft.com/research/publication/diskann-fast-accurate-billion-point-nearest-neighbor-search-on-a-single-node/), a suite of high performance vector indexing algorithms developed by Microsoft Research. DiskANN indexes can offer some of the lowest latency, highest throughput, and lowest RU cost queries, while still maintaining high accuracy. However, since DiskANN is an approximate nearest neighbors (ANN) index, the accuracy might be lower than `quantizedFlat` or `flat`.
+
+ The `diskANN` and `quantizedFlat` indexes can take optional index build parameters that can be used to tune the accuracy versus latency trade-off that applies to every Approximate Nearest Neighbors vector index.
+- `quantizationByteSize`: Sets the size (in bytes) for product quantization. Min=1, Default=dynamic (system decides), Max=512. Setting this larger may result in higher accuracy vector searches at expense of higher RU cost and higher latency. This applies to both `quantizedFlat` and `DiskANN` index types.
+  - `indexingSearchListSize`: Sets how many vectors to search over during index build construction. Min=10, Default=100, Max=500. Setting this larger may result in higher accuracy vector searches at the expense of longer index build times and higher vector ingest latencies. This applies to `DiskANN` indexes only.
 
 Here's an example of an indexing policy with a vector index:
 
@@ -163,7 +202,6 @@ Here's an example of an indexing policy with a vector index:
 
 > [!IMPORTANT]
 > A vector indexing policy must be on the path defined in the container's vector policy. [Learn more about container vector policies](nosql/vector-search.md#container-vector-policies).
-> Vector indexes must also be defined at the time of Container creation and cannot be modified once created. In a future release, vector indexes will be modifiable.
 
 >[!IMPORTANT]
 > The vector path added to the "excludedPaths" section of the indexing policy to ensure optimized performance for insertion. Not adding the vector path to "excludedPaths" will result in higher RU charge and latency for vector insertions.
@@ -182,11 +220,65 @@ When you define a spatial path in the indexing policy, you should define which i
 
 Azure Cosmos DB, by default, won't create any spatial indexes. If you would like to use spatial SQL built-in functions, you should create a spatial index on the required properties. See [this section](sql-query-geospatial-index.md) for indexing policy examples for adding spatial indexes.
 
+## Tuple indexes
+Tuple Indexes are useful when performing filtering on multiple fields within an array element. Tuple indexes are defined in the includedPaths section of the indexing policy using the tuple specifier “[]”. 
+
+> [!NOTE]
+> Unlike with included or excluded paths, you can't create a path with the /* wildcard. Every tuple path needs to end with “/?”. If a tuple in a tuple path doesn't exist in an item, a value will be added to the index to indicate that the tuple is undefined.
+
+Array tuple paths will be defined in the includedPaths section and will be using the following notation.
+
+`<path prefix>/[]/{<tuple 1>, <tuple 2> … <tuple n>}/?`
+
+Note that:
+- The first part, the path Prefix, is the path that is common between the tuples. It is the path from root to array.  In our example it is “/events”.
+- Next is the array wildcard specifier “[]”. All array tuple paths should have an array wildcard specifier before the tuple specifier “{}”. 
+- Next is specifying the tuples using the tuple specifier “{}”. 
+- Tuples will be separated by comma.  
+- Tuple needs to use the same path specification as other index paths with a few exceptions:  
+- Tuples should not start with the leading “/”. 
+- Tuples should not have array wildcards. 
+- Tuples should not end “?” or “*”
+- “?” is the last segment in a tuple path and should be specified immediately after the tuple specifier segment. 
+
+For example, 
+
+`/events/[]/{name, category}/?`
+
+These are a few examples of *valid* array tuple paths:
+
+```
+    “includedPaths”:[  
+        {“path”: “/events/[]/{name/first, name/last}/?”}, 
+        {“path”: “/events/[]/{name/first, category}/?”}, 
+        {“path”: “/events/[]/{name/first, category/subcategory}/?”}, 
+        {“path”: “/events/[]/{name/[1]/first, category}/?”}, 
+        {“path”: “/events/[]/{[1], [3]}/?”}, 
+        {“path”: “/city/[1]/events/[]/{name, category}/?”} 
+    ]
+```
+
+These are a few examples of *invalid* array tuple paths
+- `/events/[]/{name/[]/first, category}/?`
+    - One of the tuples has array wildcard
+- `/events/[]/{name, category}/*`
+    - The last segment in array tuple path should be “?” and not * 
+-  `/events/[]/{{name, first},category}/?`
+    - The tuple specifier is nested
+- `/events/{name, category}/?`
+    - The array wildcard is missing before the tuple specifier 
+- `/events/[]/{/name,/category}/?`
+    - Tuples start with leading `/` 
+- `/events/[]/{name/?,category/?}/?`
+    - Tuples end with an `?` 
+- `/city/[]/events/[]/{name, category}/?`
+    - The path prefix as 2 array wildcards 
+
 ## Composite indexes
 
 Queries that have an `ORDER BY` clause with two or more properties require a composite index. You can also define a composite index to improve the performance of many equality and range queries. By default, no composite indexes are defined so you should [add composite indexes](how-to-manage-indexing-policy.md#composite-index) as needed.
 
-Unlike with included or excluded paths, you can't create a path with the `/*` wildcard. Every composite path has an implicit `/?` at the end of the path that you don't need to specify. Composite paths lead to a scalar value that is the only value included in the composite index. If a path in a composite index doesn't exist in an item or leads to a non-scalar value, a value will be added to the index to indicate that the path is undefined.
+Unlike with included or excluded paths, you can't create a path with the `/*` wildcard. Every composite path has an implicit `/?` at the end of the path that you don't need to specify. Composite paths lead to a scalar value that is the only value included in the composite index. If a path in a composite index doesn't exist in an item or leads to a nonscalar value, a value is added to the index to indicate that the path is undefined.
 
 When defining a composite index, you specify:
 
@@ -195,11 +287,11 @@ When defining a composite index, you specify:
 - The order (ascending or descending).
 
 > [!NOTE]
-> When you add a composite index, the query will utilize existing range indexes until the new composite index addition is complete. Therefore, when you add a composite index, you may not immediately observe performance improvements. It is possible to track the progress of index transformation [by using one of the SDKs](how-to-manage-indexing-policy.md).
+> When you add a composite index, the query will utilize existing range indexes until the new composite index addition is complete. Therefore, when you add a composite index, you might not immediately observe performance improvements. It is possible to track the progress of index transformation [by using one of the SDKs](how-to-manage-indexing-policy.md).
 
 ### ORDER BY queries on multiple properties:
 
-The following considerations are used when using composite indexes for queries with an `ORDER BY` clause with two or more properties:
+The following considerations are used when using composite indexes for queries with an `ORDER BY` clause with two or more properties.
 
 - If the composite index paths don't match the sequence of the properties in the `ORDER BY` clause, then the composite index can't support the query.
 
@@ -222,7 +314,7 @@ You should customize your indexing policy so you can serve all necessary `ORDER 
 
 ### Queries with filters on multiple properties
 
-If a query has filters on two or more properties, it may be helpful to create a composite index for these properties.
+If a query has filters on two or more properties, it might be helpful to create a composite index for these properties.
 
 For example, consider the following query that has both an equality and range filter:
 
@@ -232,7 +324,7 @@ FROM c
 WHERE c.name = "John" AND c.age > 18
 ```
 
-This query will be more efficient, taking less time and consuming fewer RUs, if it's able to leverage a composite index on `(name ASC, age ASC)`.
+This query is more efficient, taking less time and consuming fewer RUs, if it's able to apply a composite index on `(name ASC, age ASC)`.
 
 Queries with multiple range filters can also be optimized with a composite index. However, each individual composite index can only optimize a single range filter. Range filters include `>`, `<`, `<=`, `>=`, and `!=`. The range filter should be defined last in the composite index.
 
@@ -244,15 +336,15 @@ FROM c
 WHERE c.name = "John" AND c.age > 18 AND c._ts > 1612212188
 ```
 
-This query will be more efficient with a composite index on `(name ASC, age ASC)` and `(name ASC, _ts ASC)`. However, the query wouldn't utilize a composite index on `(age ASC, name ASC)` because the properties with equality filters must be defined first in the composite index. Two separate composite indexes are required instead of a single composite index on `(name ASC, age ASC, _ts ASC)` since each composite index can only optimize a single range filter.
+This query is more efficient with a composite index on `(name ASC, age ASC)` and `(name ASC, _ts ASC)`. However, the query wouldn't utilize a composite index on `(age ASC, name ASC)` because the properties with equality filters must be defined first in the composite index. Two separate composite indexes are required instead of a single composite index on `(name ASC, age ASC, _ts ASC)` since each composite index can only optimize a single range filter.
 
 The following considerations are used when creating composite indexes for queries with filters on multiple properties
 
 - Filter expressions can use multiple composite indexes.
 - The properties in the query's filter should match those in composite index. If a property is in the composite index but isn't included in the query as a filter, the query won't utilize the composite index.
-- If a query has other properties in the filter that aren't defined in a composite index, then a combination of composite and range indexes will be used to evaluate the query. This will require fewer RUs than exclusively using range indexes.
-- If a property has a range filter (`>`, `<`, `<=`, `>=`, or `!=`), then this property should be defined last in the composite index. If a query has more than one range filter, it may benefit from multiple composite indexes.
-- When creating a composite index to optimize queries with multiple filters, the `ORDER` of the composite index will have no impact on the results. This property is optional.
+- If a query has other properties in the filter that aren't defined in a composite index, then a combination of composite and range indexes are used to evaluate the query. This requires fewer RUs than exclusively using range indexes.
+- If a property has a range filter (`>`, `<`, `<=`, `>=`, or `!=`), then this property should be defined last in the composite index. If a query has more than one range filter, it might benefit from multiple composite indexes.
+- When creating a composite index to optimize queries with multiple filters, the `ORDER` of the composite index has no impact on the results. This property is optional.
 
 Consider the following examples where a composite index is defined on properties name, age, and timestamp:
 
@@ -269,9 +361,9 @@ Consider the following examples where a composite index is defined on properties
 
 ### Queries with a filter and ORDER BY
 
-If a query filters on one or more properties and has different properties in the ORDER BY clause, it may be helpful to add the properties in the filter to the `ORDER BY` clause.
+If a query filters on one or more properties and has different properties in the ORDER BY clause, it might be helpful to add the properties in the filter to the `ORDER BY` clause.
 
-For example, by adding the properties in the filter to the `ORDER BY` clause, the following query could be rewritten to leverage a composite index:
+For example, by adding the properties in the filter to the `ORDER BY` clause, the following query could be rewritten to apply a composite index:
 
 Query using range index:
 
@@ -337,7 +429,7 @@ The following considerations apply when creating composite indexes to optimize a
 * If the query filters on properties, these properties should be included first in the `ORDER BY` clause.
 * If the query filters on multiple properties, the equality filters must be the first properties in the `ORDER BY` clause.
 * If the query filters on multiple properties, you can have a maximum of one range filter or system function utilized per composite index. The property used in the range filter or system function should be defined last in the composite index.
-* All considerations for creating composite indexes for `ORDER BY` queries with multiple properties as well as queries with filters on multiple properties still apply.
+* All considerations for creating composite indexes for `ORDER BY` queries with multiple properties and queries with filters on multiple properties still apply.
 
 
 | **Composite Index**                      | **Sample `ORDER BY` Query**                                  | **Supported by Composite Index?** |
@@ -352,11 +444,11 @@ The following considerations apply when creating composite indexes to optimize a
 
 ### Queries with a filter and an aggregate 
 
-If a query filters on one or more properties and has an aggregate system function, it may be helpful to create a composite index for the properties in the filter and aggregate system function. This optimization applies to the [SUM](sql-query-aggregate-sum.md) and [AVG](sql-query-aggregate-avg.md) system functions.
+If a query filters on one or more properties and has an aggregate system function, it might be helpful to create a composite index for the properties in the filter and aggregate system function. This optimization applies to the [SUM](sql-query-aggregate-sum.md) and [AVG](sql-query-aggregate-avg.md) system functions.
 
 The following considerations apply when creating composite indexes to optimize a query with a filter and aggregate system function.
 
-* Composite indexes are optional when running queries with aggregates. However, the RU cost of the query can often be significantly reduced with a composite index.
+* Composite indexes are optional when running queries with aggregates. However, the RU cost of the query can often be reduced with a composite index.
 * If the query filters on multiple properties, the equality filters must be the first properties in the composite index.
 * You can have a maximum of one range filter per composite index and it must be on the property in the aggregate system function.
 * The property in the aggregate system function should be defined last in the composite index.
@@ -370,9 +462,39 @@ The following considerations apply when creating composite indexes to optimize a
 | ```(name ASC, age ASC, timestamp ASC)```          | ```SELECT AVG(c.timestamp) FROM c WHERE c.name = "John" AND c.age = 25``` | `Yes` |
 | ```(age ASC, timestamp ASC)```          | ```SELECT AVG(c.timestamp) FROM c WHERE c.name = "John" AND c.age > 25``` | `No` |
 
+### Composite indexes with an array wildcard
+
+Below is an example for a composite index that contains an array wildcard.
+```json
+{  
+    "automatic":true,
+    "indexingMode":"Consistent",
+    "includedPaths":[  
+        {  
+            "path":"/*"
+        }
+    ],
+    "excludedPaths":[],
+    "compositeIndexes":[  
+        [  
+            {"path":"/familyname", "order":"ascending"},
+            {"path":"/children/[]/age", "order":"descending"}
+        ]
+    ]
+}
+```
+
+An example query that can benefit from this composite index is:
+```sql
+SELECT r.id
+FROM root r
+JOIN ch IN r.children
+WHERE r.familyname = 'Anderson' AND ch.age > 20
+```
+
 ## <a id=index-transformation></a>Modifying the indexing policy
 
-A container's indexing policy can be updated at any time [by using the Azure portal or one of the supported SDKs](how-to-manage-indexing-policy.md). An update to the indexing policy triggers a transformation from the old index to the new one, which is performed online and in-place (so no additional storage space is consumed during the operation). The old indexing policy is efficiently transformed to the new policy without affecting the write availability, read availability, or the throughput provisioned on the container. Index transformation is an asynchronous operation, and the time it takes to complete depends on the provisioned throughput, the number of items and their size. If multiple indexing policy updates have to be made, it is recommended to do all the changes as a single operation in order to have the index transformation complete as quickly as possible.
+A container's indexing policy can be updated at any time [by using the Azure portal or one of the supported SDKs](how-to-manage-indexing-policy.md). An update to the indexing policy triggers a transformation from the old index to the new one, which is performed online and in-place (so no extra storage space is consumed during the operation). The old indexing policy is efficiently transformed to the new policy without affecting the write availability, read availability, or the throughput provisioned on the container. Index transformation is an asynchronous operation, and the time it takes to complete depends on the provisioned throughput, the number of items and their size. If multiple indexing policy updates have to be made, it's recommended to do all the changes as a single operation in order to have the index transformation complete as quickly as possible.
 
 > [!IMPORTANT]
 > Index transformation is an operation that consumes [request units](request-units.md).
@@ -382,7 +504,7 @@ A container's indexing policy can be updated at any time [by using the Azure por
 
 There's no impact to write availability during any index transformations. The index transformation uses your provisioned RUs but at a lower priority than your CRUD operations or queries.
 
-There's no impact to read availability when adding new indexed paths. Queries will only utilize new indexed paths once an index transformation is complete. In other words, when adding a new indexed path, queries that benefit from that indexed path will have the same performance before and during the index transformation. After the index transformation is complete, the query engine will begin to use the new indexed paths.
+There's no impact to read availability when adding new indexed paths. Queries will only utilize new indexed paths once an index transformation is complete. In other words, when adding a new indexed path, queries that benefit from that indexed path has the same performance before and during the index transformation. After the index transformation is complete, the query engine will begin to use the new indexed paths.
 
 When removing indexed paths, you should group all your changes into one indexing policy transformation. If you remove multiple indexes and do so in one single indexing policy change, the query engine provides consistent and complete results throughout the index transformation. However, if you remove indexes through multiple indexing policy changes, the query engine won't provide consistent or complete results until all index transformations complete. Most developers don't drop indexes and then immediately try to run queries that utilize these indexes so, in practice, this situation is unlikely.
 
@@ -392,7 +514,7 @@ When you drop an indexed path, the query engine will immediately stop using it, 
 > Where possible, you should always try to group multiple index removals into one single indexing policy modification.
 
 > [!IMPORTANT]
-> Removing an index takes effect immediately, whereas adding a new index takes some time as it requires an indexing transformation. When replacing one index with another (for example, replacing a single property index with a composite-index) make sure to add the new index first and then wait for the index transformation to complete **before** you remove the previous index from the indexing policy. Otherwise this will negatively affect your ability to query the previous index and may break any active workloads that reference the previous index. 
+> Removing an index takes effect immediately, whereas adding a new index takes some time as it requires an indexing transformation. When replacing one index with another (for example, replacing a single property index with a composite-index) make sure to add the new index first and then wait for the index transformation to complete **before** you remove the previous index from the indexing policy. Otherwise this will negatively affect your ability to query the previous index and might break any active workloads that reference the previous index. 
 
 ## Indexing policies and TTL
 
@@ -403,9 +525,7 @@ Using the [Time-to-Live (TTL) feature](time-to-live.md) requires indexing. This 
 
 For scenarios where no property path needs to be indexed, but TTL is required, you can use an indexing policy with an indexing mode set to `consistent`, no included paths, and `/*` as the only excluded path.
 
-## Next steps
-
-Read more about the indexing in the following articles:
+## Related content
 
 - [Indexing overview](index-overview.md)
 - [How to manage indexing policy](how-to-manage-indexing-policy.md)

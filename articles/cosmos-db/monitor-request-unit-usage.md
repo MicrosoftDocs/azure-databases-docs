@@ -17,7 +17,7 @@ There are two ways to analyze the request unit usage data:
 
 * Within the given time interval which operations are taking more request units.
 * Which operations in general dominate your workload by consuming more request units.
-This analysis allows you to focus on operations such as insert, upsert and look at their indexing. You can find out if you are over/under indexing specific fields and modify the [indexing policy](index-policy.md#include-exclude-paths) to include or exclude the paths.
+This analysis allows you to focus on operations such as insert, upsert and look at their indexing. You can find out if you are over/under indexing specific fields and modify the [indexing policy](index-policy.md) to include or exclude the paths.
 
 If you notice certain queries are taking more request units, you can take actions such as:
 

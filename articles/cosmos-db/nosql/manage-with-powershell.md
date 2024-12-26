@@ -39,9 +39,6 @@ The following sections demonstrate how to manage the Azure Cosmos DB account, in
 * [Get an Azure Cosmos DB account](#get-account)
 * [Delete an Azure Cosmos DB account](#delete-account)
 * [Update tags for an Azure Cosmos DB account](#update-tags)
-* [List keys for an Azure Cosmos DB account](#list-keys)
-* [Regenerate keys for an Azure Cosmos DB account](#regenerate-keys)
-* [List connection strings for an Azure Cosmos DB account](#list-connection-strings)
 * [Modify failover priority for an Azure Cosmos DB account](#modify-failover-priority)
 * [Trigger a manual failover for an Azure Cosmos DB account](#trigger-manual-failover)
 * [List resource locks on an Azure Cosmos DB account](#list-account-locks)
@@ -218,52 +215,6 @@ Update-AzCosmosDBAccount `
     -ResourceGroupName $resourceGroupName `
     -Name $accountName `
     -Tag $tags
-```
-
-### <a id="list-keys"></a> List Account Keys
-
-When you create an Azure Cosmos DB account, the service generates two primary access keys that can be used for authentication when the Azure Cosmos DB account is accessed. Read-only keys for authenticating read-only operations are also generated.
-By providing two access keys, Azure Cosmos DB enables you to regenerate and rotate one key at a time with no interruption to your Azure Cosmos DB account.
-Azure Cosmos DB accounts have two read-write keys (primary and secondary) and two read-only keys (primary and secondary).
-
-```azurepowershell-interactive
-$resourceGroupName = "myResourceGroup"
-$accountName = "mycosmosaccount"
-
-Get-AzCosmosDBAccountKey `
-    -ResourceGroupName $resourceGroupName `
-    -Name $accountName `
-    -Type "Keys"
-```
-
-### <a id="list-connection-strings"></a> List Connection Strings
-
-The following command retrieves connection strings to connect apps to the Azure Cosmos DB account.
-
-```azurepowershell-interactive
-$resourceGroupName = "myResourceGroup"
-$accountName = "mycosmosaccount"
-
-Get-AzCosmosDBAccountKey `
-    -ResourceGroupName $resourceGroupName `
-    -Name $accountName `
-    -Type "ConnectionStrings"
-```
-
-### <a id="regenerate-keys"></a> Regenerate Account Keys
-
-Access keys to an Azure Cosmos DB account should be periodically regenerated to help keep connections secure. A primary and secondary access keys are assigned to the account. This allows clients to maintain access while one key at a time is regenerated.
-There are four types of keys for an Azure Cosmos DB account (Primary, Secondary, PrimaryReadonly, and SecondaryReadonly)
-
-```azurepowershell-interactive
-$resourceGroupName = "myResourceGroup" # Resource Group must already exist
-$accountName = "mycosmosaccount" # Must be all lower case
-$keyKind = "primary" # Other key kinds: secondary, primaryReadonly, secondaryReadonly
-
-New-AzCosmosDBAccountKey `
-    -ResourceGroupName $resourceGroupName `
-    -Name $accountName `
-    -KeyKind $keyKind
 ```
 
 ### <a id="enable-automatic-failover"></a> Enable service-managed failover

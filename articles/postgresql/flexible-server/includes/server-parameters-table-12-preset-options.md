@@ -1,11 +1,12 @@
 ---
-author: akashraokm
-ms.author: akashrao
+author: nachoalonsoportillo
+ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 06/18/2024
+ms.date: 12/05/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
+ms.custom: automatically generated
 ---
 ### block_size
 
@@ -218,8 +219,8 @@ ms.topic: include
 | Category       | Preset Options |
 | Description    | Shows the server version.                                      |
 | Data type      | string    |
-| Default value  | `12.19`       |
-| Allowed values | `12.19`        |
+| Default value  | `12.20`       |
+| Allowed values | `12.20`        |
 | Parameter type | read-only      |
 | Documentation  | [server_version](https://www.postgresql.org/docs/12/runtime-config-preset.html#GUC-SERVER-VERSION)               |
 
@@ -235,8 +236,8 @@ ms.topic: include
 | Category       | Preset Options |
 | Description    | Shows the server version as an integer.                        |
 | Data type      | integer   |
-| Default value  | `120019`      |
-| Allowed values | `120019`       |
+| Default value  | `120020`      |
+| Allowed values | `120020`       |
 | Parameter type | read-only      |
 | Documentation  | [server_version_num](https://www.postgresql.org/docs/12/runtime-config-preset.html#GUC-SERVER-VERSION-NUM)       |
 
