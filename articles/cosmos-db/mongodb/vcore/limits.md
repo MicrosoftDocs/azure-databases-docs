@@ -5,8 +5,10 @@ author: gahl-levy
 ms.author: gahllevy
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
+ms.custom:
+  - ignite-2024
 ms.topic: conceptual
-ms.date: 08/27/2024
+ms.date: 11/06/2024
 ---
 
 # Service Limits in Azure Cosmos DB for MongoDB vCore
@@ -38,11 +40,10 @@ db.collection.find({ field: "value" }).maxTimeMS(5000)
   - Configurable up to: 300 indexes per collection.
 - Sorting is done in memory and doesn't push down to the index.
 - Maximum level of nesting for embedded objects/arrays on index definitions: 6.
-- Background index builds are in preview. To enable, [reach out to our team](mailto:mongodb-feedback@microsoft.com) for assistance.
-  - A single index build can be in progress on the same collection.
-  - The number of simultaneous index builds on different collections is configurable (default: 2).
-  - Use the `currentOp` command to view the progress of long-running index builds.
-  - Unique index builds are done in the foreground and block writes in the collection.
+- A single index build can be in progress on the same collection.
+- The number of simultaneous index builds on different collections is configurable (default: 2).
+- Use the `currentOp` command to view the progress of long-running index builds.
+- Unique index builds are done in the foreground and block writes in the collection.
 
 ### Wildcard Indexing Limits
 - For wildcard indexes, if the indexed field is an array of arrays, the entire embedded array is taken as a value instead of traversing its contents.
@@ -66,20 +67,19 @@ db.collection.find({ field: "value" }).maxTimeMS(5000)
 - Indexing vectors up to 2,000 dimensions in size.
 - Indexing applies to only one vector per path.
 - Only one index can be created per vector path.
+- `HNSW` and `DiskANN` are available on M40 and above cluster tiers. 
 
 ## Cluster and Shard Limits
 
 ### Cluster Tier
-- Maximum: M200. [Reach out to our team](mailto:mongodb-feedback@microsoft.com) for higher tiers.
+- Maximum: M200 / 64 vCores / 256 GiB RAM per physical shard. [Reach out to our team](mailto:mongodb-feedback@microsoft.com) for higher tiers.
 
-### Shards
-- Maximum: 6 (in preview). [Reach out to our team](mailto:mongodb-feedback@microsoft.com) for more shards.
+### Physical shards
+- Maximum: 10. [Reach out to our team](mailto:mongodb-feedback@microsoft.com) for more shards.
 
-### Collection and index limits
+### Collection limits
 -	Collections per cluster: 1,000
--	Collection size: 4 TiB
--	Indexes per cluster: 100
--	Total index size: 100 GiB
+-	Unsharded collection size: 4 TiB
 
 [Reach out to our team](mailto:mongodb-feedback@microsoft.com) for the higher values support.
 
@@ -92,23 +92,19 @@ The following limitations can be overridden by upgrading to a paid tier
 - Backup / Restore not supported (available in M25+)
 - High availability (HA) not supported (available in M30+)
 - HNSW vector indexes not supported (available in M40+)
-- Diagnostic logging not supported (available in M30+)
+- Diagnostic logging not supported (available in M40+)
 - No service-level-agreement provided (requires HA to be enabled)
 - Free tier clusters are paused after 60 days of inactivity where there are no connections to the cluster.
 
 ## Replication and HA (high availability) Limits
 
-### Cross-Region Replication (preview)
-- Supported only on single shard (node) vCore clusters.
+### Cross-Region Replication
 - The following configurations are the same on both primary and replica clusters and can't be changed on the replica cluster:
-  - Compute configuration
   - Storage and shard count
   - User accounts
-- HA isn't supported on replica clusters.
-- The following features aren't available when cross-replication preview is enabled:
-  - Private endpoints (Private Link).
-  - Diagnostic settings.
-  - Point-in-time restore preview.
+- The following features aren't available on replica clusters:
+  - Point-in-time restore
+  - High availability (HA)
 - Cross-region replication isn't available on clusters with burstable compute or Free tier clusters.
 
 ## Miscellaneous Limits

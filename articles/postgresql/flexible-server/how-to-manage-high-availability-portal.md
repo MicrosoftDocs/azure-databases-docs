@@ -16,7 +16,7 @@ ms.topic: how-to
 
 This article describes how you can enable or disable high availability configuration in your Azure Database for PostgreSQL flexible server instance in both zone-redundant and same-zone deployment models.
 
-High availability feature provisions physically separate primary and standby replica with the same zone or across zones depending on the deployment model. For more information, see [high availability concepts documentation](./concepts-high-availability.md). You may choose to enable high availability at the time of Azure Database for PostgreSQL flexible server instance creation or after the creation.
+High availability feature provisions physically separate primary and standby replica with the same zone or across zones depending on the deployment model. For more information, see [high availability concepts documentation](concepts-high-availability.md). You may choose to enable high availability at the time of Azure Database for PostgreSQL flexible server instance creation or after the creation.
 
 This page provides guidelines how you can enable or disable high availability. This operation doesn't change your other settings including VNET configuration, firewall settings, and backup retention. Similarly, enabling and disabling of high availability is an online operation and doesn't impact your application connectivity and operations.
 
@@ -27,13 +27,13 @@ In April, we implemented a billing model update for v5 SKU with High Availabilit
 ## Prerequisites
 
 > [!IMPORTANT]
-> For the list of regions that support Zone redundant high availability, please review the supported regions [here](./overview.md#azure-regions).  
+> For the list of regions that support Zone redundant high availability, please review the supported regions [here](overview.md#azure-regions).  
 
 ## Enable high availability during server creation
 
 This section provides details specifically for HA-related fields. You can follow these steps to deploy high availability while creating your Azure Database for PostgreSQL flexible server instance.
 
-1.  In the [Azure portal](https://portal.azure.com/), choose Azure Database for PostgreSQL flexible server and select create.  For details on how to fill details such as **Subscription**, **Resource group**, **Server name**, **Region**, and other fields, see [how to create an Azure Database for PostgreSQL - Flexible Server](./quickstart-create-server-portal.md).
+1.  In the [Azure portal](https://portal.azure.com/), choose Azure Database for PostgreSQL flexible server and select create.  For details on how to fill details such as **Subscription**, **Resource group**, **Server name**, **Region**, and other fields, see [how to create an Azure Database for PostgreSQL - Flexible Server](quickstart-create-server-portal.md).
    
     :::image type="content" source="./media/how-to-manage-high-availability-portal/subscription-region.png" alt-text="Screenshot of subscription and region selection.":::
 
@@ -158,8 +158,8 @@ There are Azure regions that don't support availability zones. If you already de
 6. After data verification, you can optionally [delete](how-to-manage-server-portal.md#delete-a-server) the old server. 
 7. Make sure your clients connection strings are modified to point to your new HA-enabled server.
    
+[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
 
-## Next steps
-
--   Learn about [business continuity](./concepts-business-continuity.md)
--   Learn about [zone redundant high availability](./concepts-high-availability.md)
+- [Overview of business continuity with Azure Database for PostgreSQL - Flexible Server](concepts-business-continuity.md).
+- [High availability in Azure Database for PostgreSQL - Flexible Server](/azure/reliability/reliability-postgresql-flexible-server).
+- [Point-in-time restore of an Azure Database for PostgreSQL - Flexible Server instance](how-to-restore-server-portal.md).

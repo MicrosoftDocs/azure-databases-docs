@@ -1,10 +1,10 @@
 ---
-title: "Quickstart: Create a flexible server by using Terraform"
+title: "Quickstart: Create a Flexible Server By Using Terraform"
 description: In this quickstart, learn how to deploy a database in an instance of Azure Database for MySQL - Flexible Server by using Terraform.
 author: shreyaaithal
 ms.author: shaithal
 ms.reviewer: maghan
-ms.date: 06/18/2024
+ms.date: 11/27/2024
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: quickstart
@@ -13,8 +13,6 @@ ms.custom:
 ---
 
 # Quickstart: Create an instance of Azure Database for MySQL - Flexible Server by using Terraform
-
-[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 This quickstart was tested by using the following Terraform and Terraform provider versions:
 
@@ -36,7 +34,7 @@ In this article, you learn how to:
 > - Deploy Azure Database for MySQL - Flexible Server by using [azurerm_mysql_flexible_server](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/mysql_flexible_server).
 > - Deploy a database by using [azurerm_mysql_flexible_database](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/mysql_flexible_database).
 
-> [!NOTE]
+> [!NOTE]  
 > The example code that appears in this article is located in the [Azure Terraform GitHub repo](https://github.com/Azure/terraform/tree/master/quickstart/201-mysql-fs-db).
 
 ## Prerequisites
@@ -96,7 +94,7 @@ az mysql flexible-server db show \
 
 Consider the following *key points*:
 
-- The values for `<resource_group_name>`, `<azurerm_mysql_flexible_server>`, and `<mysql_flexible_server_database_name>` are displayed in the `terraform apply` output. You can also run the [terraform output](https://www.terraform.io/cli/commands/output) command to view these values.
+- The values for `<resource_group_name>`, `<azurerm_mysql_flexible_server>`, and `<mysql_flexible_server_database_name>` are displayed in the `terraform apply` output. You can also run the [terraform output](https://developer.hashicorp.com/terraform/cli/commands/output) command to view these values.
 
 #### [Azure PowerShell](#tab/azure-powershell)
 
@@ -111,7 +109,7 @@ Get-AzMySqlFlexibleServerDatabase `
 
 Consider the following *key points*:
 
-- The values for the `<resource_group_name>`, `<azurerm_mysql_flexible_server>`, and `<mysql_flexible_server_database_name>` are displayed in the `terraform apply` output. You can also run the [terraform output](https://www.terraform.io/cli/commands/output) command to view these output values.
+- The values for the `<resource_group_name>`, `<azurerm_mysql_flexible_server>`, and `<mysql_flexible_server_database_name>` are displayed in the `terraform apply` output. You can also run the [terraform output](https://developer.hashicorp.com/terraform/cli/commands/output) command to view these output values.
 
 ---
 
@@ -126,4 +124,4 @@ Explore how to [troubleshoot common problems for using Terraform on Azure](/azur
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Connect to an instance of Azure Database for MySQL - Flexible Server by using private access](./quickstart-create-connect-server-vnet.md)
+> [Connect Azure Database for MySQL - Flexible Server with private access connectivity method](quickstart-create-connect-server-vnet.md)

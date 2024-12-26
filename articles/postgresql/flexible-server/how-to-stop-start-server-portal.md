@@ -11,7 +11,7 @@ ms.topic: how-to
 #customer intent: As a user, I want to learn how to stop/start an Azure Database for PostgreSQL flexible server instance using the Azure portal so that I can manage my server efficiently.
 ---
 
-# Stop/Start an Azure Database for PostgreSQL - Flexible Server instance using Azure portal
+# Stop/Start an instance of Azure Database for PostgreSQL flexible server using Azure portal
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
@@ -42,7 +42,12 @@ To complete this how-to guide, you need:
 > [!NOTE]
 > Once the server is started, all management operations are now available for the Azure Database for PostgreSQL flexible server instance.
 
+[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
+
 ## Related content
 
--   Learn about [Compute](./concepts-compute.md)
--   Learn about [Storage](./concepts-storage.md)
+- [Restart an instance of Azure Database for PostgreSQL flexible server](how-to-restart-server-portal.md).
+- [Enable, list and download server logs in Azure Database for PostgreSQL - Flexible Server](how-to-server-logs-portal.md).
+- [Compute options in Azure Database for PostgreSQL - Flexible Server](concepts-compute.md).
+- [Storage options in Azure Database for PostgreSQL - Flexible Server](concepts-storage.md).
+- [Limits in Azure Database for PostgreSQL - Flexible Server](concepts-limits.md).

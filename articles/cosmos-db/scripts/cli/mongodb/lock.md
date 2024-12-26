@@ -14,13 +14,13 @@ ms.date: 02/21/2022
 
 [!INCLUDE[MongoDB](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb.md)]
 
-The script in this article demonstrates performing resource lock operations for a API for MongoDB database and collection.
+The script in this article demonstrates performing resource lock operations for an API for MongoDB database and collection.
 
 > [!IMPORTANT]
 >
 > To create resource locks, you must have membership in the owner role in the subscription.
 >
-> Resource locks do not work for changes made by users connecting using any MongoDB SDK, Mongoshell, any tools or the Azure Portal unless the Azure Cosmos DB account is first locked with the `disableKeyBasedMetadataWriteAccess` property enabled. To learn more about how to enable this property see, [Preventing changes from SDKs](../../../role-based-access-control.md#prevent-sdk-changes).
+> Resource locks do not work for changes made by users connecting using any MongoDB SDK, Mongoshell, any tools or the Azure Portal unless the Azure Cosmos DB account is first locked with the `disableKeyBasedMetadataWriteAccess` property enabled. To learn more about how to enable this property see, [Preventing changes from SDKs](../../../mongodb/security/how-to-disable-key-based-authentication.md).
 
 [!INCLUDE [quickstarts-free-trial-note](~/reusable-content/ce-skilling/azure/includes/quickstarts-free-trial-note.md)]
 

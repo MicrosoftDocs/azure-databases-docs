@@ -65,7 +65,7 @@ Success looks like:
 (1 row)
 ```
 
-For more information on managing Microsoft Entra ID enabled database roles, see [how to manage Microsoft Entra ID enabled Azure Database for PostgreSQL - Flexible Server roles](./how-to-manage-azure-ad-users.md)
+For more information on managing Microsoft Entra ID enabled database roles, see [how to manage Microsoft Entra ID enabled Azure Database for PostgreSQL - Flexible Server roles](how-to-manage-azure-ad-users.md)
 
 The managed identity now has access when authenticating with the identity name as a role name and the Microsoft Entra token as a password.
 
@@ -110,11 +110,11 @@ This section shows how to get an access token using the VM's user-assigned manag
 
 ## Connect using Managed Identity in Python
 
-For a Python code example, please refer to the [Quickstart: Use Python to connect and query data in Azure Database for PostgreSQL - Flexible Server](./connect-python.md)
+For a Python code example, please refer to the [Quickstart: Use Python to connect and query data in Azure Database for PostgreSQL - Flexible Server](connect-python.md)
 
 ## Connect using Managed Identity in Java
 
-For a Java code example, please refer to the [Quickstart: Use Java and JDBC with Azure Database for PostgreSQL - Flexible Server](./connect-java.md)
+For a Java code example, please refer to the [Quickstart: Use Java and JDBC with Azure Database for PostgreSQL - Flexible Server](connect-java.md)
 
 ## Connect using Managed Identity in C#
 
@@ -207,6 +207,8 @@ Connected!
 Postgres version: PostgreSQL 11.11, compiled by Visual C++ build 1800, 64-bit 
 ```
 
-## Next steps
+[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
 
-- Review the overall concepts for [Microsoft Entra authentication with Azure Database for PostgreSQL - Flexible Server](concepts-azure-ad-authentication.md)
+## Related content
+
+- [# Microsoft Entra authentication with Azure Database for PostgreSQL - Flexible Server](concepts-azure-ad-authentication.md).

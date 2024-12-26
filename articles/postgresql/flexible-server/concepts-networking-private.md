@@ -61,7 +61,8 @@ Here are some concepts to be familiar with when you're using virtual networks wh
   * Add a rule with the destination IP range the same as the Azure Database for PostgreSQL - Flexible Server subnet range and the next hop `Virtual Network`.
 
   > [!IMPORTANT]
-  > The names `AzureFirewallSubnet`, `AzureFirewallManagementSubnet`, `AzureBastionSubnet`, and `GatewaySubnet` are reserved within Azure. Don't use any of these names as your subnet name.
+  > The names `AzureFirewallSubnet`, `AzureFirewallManagementSubnet`, `AzureBastionSubnet`, and `GatewaySubnet` are reserved within Azure. Don't use any of these names as your subnet name. Additionally, virtual networks should not have overlapping address space for creating cross-region replicas.
+
 
 - **Network security group (NSG)**: Security rules in NSGs enable you to filter the type of network traffic that can flow in and out of virtual network subnets and network interfaces. For more information, see the [NSG overview](/azure/virtual-network/network-security-groups-overview).
 
@@ -78,7 +79,7 @@ Here are some concepts to be familiar with when you're using virtual networks wh
 
    You can further [filter](/azure/virtual-network/tutorial-filter-network-traffic) this exception rule by adding your Azure region to the label like `us-east.storage`. Also, if you elect to use [Microsoft Entra authentication](concepts-azure-ad-authentication.md) to authenticate sign-ins to your Azure Database for PostgreSQL flexible server, allow outbound traffic to Microsoft Entra ID by using a Microsoft Entra [service tag](/azure/virtual-network/service-tags-overview).
 
-   When you set up [Read Replicas across Azure regions](./concepts-read-replicas.md), Azure Database for PostgreSQL - Flexible Server requires the ability to send or receive traffic to *destination port 5432* for both primary and replica and to [Azure Storage](/azure/virtual-network/service-tags-overview#available-service-tags) in primary and replica regions from both primary and replica servers. The required destination TCP port for Storage is 443.
+   When you set up [Read Replicas across Azure regions](concepts-read-replicas.md), Azure Database for PostgreSQL - Flexible Server requires the ability to send or receive traffic to *destination port 5432* for both primary and replica and to [Azure Storage](/azure/virtual-network/service-tags-overview#available-service-tags) in primary and replica regions from both primary and replica servers. The required destination TCP port for Storage is 443.
 
 - **Private DNS zone integration**: Azure Private DNS zone integration allows you to resolve the private DNS within the current virtual network or any in-region peered virtual network where the Private DNS zone is linked.
 
@@ -88,9 +89,12 @@ Here are some concepts to be familiar with when you're using virtual networks wh
 
 When you use private network access with an Azure virtual network, providing the Private DNS zone information is *mandatory* to be able to do DNS resolution. For new Azure Database for PostgreSQL flexible server creation by using private network access, Private DNS zones need to be used while you configure Azure Database for PostgreSQL flexible servers with private access.
 
+  > [!IMPORTANT]
+  > When using a private DNS zone in a different subscription, that subscription **must** have the Microsoft.DBforPostgreSQL resource provider registered as well, otherwise your deployment of Azure Database for PostgreSQL flexible server won't complete.
+
 For new Azure Database for PostgreSQL flexible server creation by using private network access with an API, Azure Resource Manager template (ARM template), or Terraform, create Private DNS zones. Then use them while you configure Azure Database for PostgreSQL flexible servers with private access. For more information, see [REST API specifications for Azure](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/postgresql/resource-manager/Microsoft.DBforPostgreSQL/stable/2021-06-01/postgresql.json).
 
-If you use the [Azure portal](./how-to-manage-virtual-network-portal.md) or the [Azure CLI](./how-to-manage-virtual-network-cli.md) to create Azure Database for PostgreSQL flexible servers, you can provide a Private DNS zone name that you previously created in the same or a different subscription, or a default Private DNS zone is automatically created in your subscription.
+If you use the [Azure portal](how-to-manage-virtual-network-portal.md) or the [Azure CLI](how-to-manage-virtual-network-cli.md) to create Azure Database for PostgreSQL flexible servers, you can provide a Private DNS zone name that you previously created in the same or a different subscription, or a default Private DNS zone is automatically created in your subscription.
 
 If you use an Azure API, an ARM template, or Terraform, create Private DNS zones that end with `.postgres.database.azure.com`. Use those zones while you configure Azure Database for PostgreSQL flexible servers with private access. For example, use the form `[name1].[name2].postgres.database.azure.com` or `[name].postgres.database.azure.com`. If you choose to use the form `[name].postgres.database.azure.com`, the name _can't_ be the name that you use for one of your Azure Database for PostgreSQL flexible servers, or you'll get an error message during provisioning. For more information, see [Private DNS zones overview](/azure/dns/private-dns-overview).
 
@@ -104,7 +108,7 @@ After you create a Private DNS zone in Azure, you need to [link](/azure/dns/priv
   > [!IMPORTANT]
   > We no longer validate virtual network link presence on server creation for Azure Database for PostgreSQL - Flexible Server with private networking. When you create a server through the portal, we provide customer choice to create a link on server creation via the checkbox **Link a Private DNS zone to your virtual network** in the Azure portal.
 
-[DNS private zones are resilient](/azure/dns/private-dns-overview) to regional outages because zone data is globally available. Resource records in a private zone are automatically replicated across regions. Azure Private DNS is an availability zone foundational, zone-reduntant service. For more information, see [Azure services with availability zone support](/azure/reliability/availability-zones-service-support#azure-services-with-availability-zone-support).
+[DNS private zones are resilient](/azure/dns/private-dns-overview) to regional outages because zone data is globally available. Resource records in a private zone are automatically replicated across regions. Azure Private DNS is an availability zone foundational, zone-redundant service. For more information, see [Azure services with availability zone support](/azure/reliability/availability-zones-service-support).
 
 ### Integration with a custom DNS server
 
@@ -157,7 +161,7 @@ There are multiple ways to achieve such connectivity, including:
 
 Database replication is the process of copying data from a central or primary server to multiple servers known as replicas. The primary server accepts read and write operations, but the replicas serve read-only transactions. The primary server and replicas collectively form a database cluster. The goal of database replication is to ensure redundancy, consistency, high availability, and accessibility of data, especially in high-traffic, mission-critical applications.
 
-Azure Database for PostgreSQL - Flexible Server offers two methods for replications: physical (that is, streaming) via the [built-in Read Replica feature](./concepts-read-replicas.md) and [logical replication](./concepts-logical.md). Both are ideal for different use cases, and a user might choose one over the other depending on the end goal.
+Azure Database for PostgreSQL - Flexible Server offers two methods for replications: physical (that is, streaming) via the [built-in Read Replica feature](concepts-read-replicas.md) and [logical replication](concepts-logical.md). Both are ideal for different use cases, and a user might choose one over the other depending on the end goal.
 
 Replication across Azure regions, with separate [virtual networks](/azure/virtual-network/virtual-networks-overview) in each region, requires connectivity across regional virtual network boundaries that can be provided via [virtual network peering](/azure/virtual-network/virtual-network-peering-overview) or in hub-and-spoke architectures via a network appliance.
 
@@ -171,7 +175,7 @@ Here are some limitations for working with virtual networks created via virtual 
 
 - After an Azure Database for PostgreSQL flexible server is deployed to a virtual network and subnet, you can't move it to another virtual network or subnet. You can't move the virtual network into another resource group or subscription.
 - Subnet size (address spaces) can't be increased after resources exist in the subnet.
-- Virtual network injected resources can't interact with Private Link by default. If you want to use [Private Link](/azure/private-link/private-link-overview) for private networking, see [Azure Database for PostgreSQL - Flexible Server networking with Private Link](./concepts-networking-private-link.md).
+- Virtual network injected resources can't interact with Private Link by default. If you want to use [Private Link](/azure/private-link/private-link-overview) for private networking, see [Azure Database for PostgreSQL - Flexible Server networking with Private Link](concepts-networking-private-link.md).
 
 > [!IMPORTANT]
 > Azure Resource Manager supports the ability to *lock* resources as a security control. Resource locks are applied to the resource and are effective across all users and roles. There are two types of resource lock: `CanNotDelete` and `ReadOnly`. These lock types can be applied either to a Private DNS zone or to an individual record set.

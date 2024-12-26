@@ -33,7 +33,6 @@ Capabilities are features that can be added or removed to your API for MongoDB a
 | `EnableUniqueCompoundNestedDocs`    | Enables support for compound and unique indexes on nested fields if the nested field isn't an array.                               | No        |
 | `EnableTtlOnCustomPath`             | Provides the ability to set a custom Time to Live (TTL) on any one field in a collection. Setting TTL on partial unique index property is not supported. <sup>2</sup>                                                                    | No        |
 | `EnablePartialUniqueIndex`          | Enables support for a unique partial index, so you have more flexibility to specify exactly which fields in documents you'd like to index. | No        |
-| `EnableUniqueIndexReIndex` | Enables support for unique index re-indexing for Cosmos DB for MongoDB RU. <sup>2</sup>  | No |
 
 > [!NOTE]
 >
