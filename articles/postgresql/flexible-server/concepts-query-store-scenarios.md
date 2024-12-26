@@ -60,6 +60,50 @@ Some workloads don't have dominant queries that you can tune to improve overall 
 
 If you are in control of the application code, you might consider rewriting the data access layer to use stored procedures or parameterized queries. However, this situation can also be improved without application changes, by forcing query parameterization for the entire database (all queries) or for the individual query templates with the same query hash.
 
+## Example scenarios for using query store to identify and improve improvised workloads:
+
+### 1. Identifying long running queries
+
+```sql
+SELECT query, total_exec_time, execution_count
+FROM pg_query_store.query
+ORDER BY total_exec_time DESC
+LIMIT 5;
+```
+
+This example demonstrates how to leverage query store views to quickly find queries that may need optimization, which is a key feature of the query store[^1^].
+
+### 2. Performance tracking
+
+```sql
+SELECT date_trunc('day', start_time) AS day,
+       AVG(total_exec_time) AS avg_exec_time
+FROM pg_query_store.query
+WHERE query = 'SELECT * FROM orders'
+GROUP BY day
+ORDER BY day;
+```
+
+### 3. Scoped troubleshooting
+Provide an example of how to troubleshoot a specific query that is performing poorly. For instance, you could describe a scenario where a user identifies a query that has a high execution count but low performance, and then uses the query store to analyze its execution plan:
+
+```sql
+SELECT *
+FROM pg_query_store.query
+WHERE query = 'SELECT * FROM customers'
+ORDER BY execution_count DESC;
+```
+
+### 4. Assessing impact of changes
+Add an example of how to assess the impact of changes made to the database or application. For instance, you could describe a scenario where a user compares the performance of a query before and after an index is added:
+
+```sql
+SELECT query, total_exec_time
+FROM pg_query_store.query
+WHERE query = 'SELECT * FROM products'
+AND start_time BETWEEN '2023-01-01' AND '2023-01-15';
+```
+
 ## Related content
 
 - [monitor performance with query store](concepts-query-store.md)
