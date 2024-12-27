@@ -32,7 +32,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 3. When the process completes, a notification informs you that the system assigned managed identity is enabled.
 
-    :::image type="content" source="./media/concepts-identity/enable-system-assigned-managed-identitynotification.png" alt-text="Screenshot that shows the notification informing that the system assigned managed identity is enabled." lightbox="./media/concepts-identity/enable-system-assigned-managed-identitynotification.png":::
+    :::image type="content" source="./media/concepts-identity/enable-system-assigned-managed-identity-notification.png" alt-text="Screenshot that shows the notification informing that the system assigned managed identity is enabled." lightbox="./media/concepts-identity/enable-system-assigned-managed-identity-notification.png":::
 
 
 ## [CLI](#tab/cli-enable)
@@ -53,6 +53,7 @@ else
     echo "System Assigned Managed identity is already enabled."
 fi
 ```
+---
 
 ## Disable the system assigned managed identity for existing servers
 
@@ -111,6 +112,10 @@ You can verify the managed identity created by going to **Enterprise Application
 az ad sp list --display-name testuamisami
 
 ---
+
+## Special considerations
+
+
 
 [Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
 
