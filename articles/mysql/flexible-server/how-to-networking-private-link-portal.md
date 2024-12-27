@@ -1,20 +1,18 @@
 ---
-title: Configure Private Link by using the Azure portal
+title: Configure Private Link By Using the Azure Portal
 description: Learn how to use the Azure portal to configure Private Link for Azure Database for MySQL - Flexible Server.
 author: SudheeshGH
 ms.author: sunaray
 ms.reviewer: maghan
-ms.date: 06/18/2024
+ms.date: 11/27/2024
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: how-to
 ---
 
-# Create and manage Private Link for Azure Database for MySQL - Flexible Server using the portal 
+# Create and manage Private Link for Azure Database for MySQL - Flexible Server using the portal
 
-[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
-This tutorial provides step-by-step instructions on configuring a connection to an Azure Database for MySQL flexible server instance through a private endpoint and establishing a connection from a VM located within a VNet.
+This tutorial provides step-by-step instructions on configuring a connection to an Azure Database for MySQL Flexible Server instance through a private endpoint and establishing a connection from a VM located within a VNet.
 
 If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
 
@@ -39,7 +37,7 @@ In this section, you create a Virtual Network and the subnet to host the VM used
     | Subnet - Name | Enter *mySubnet*. |
     | Subnet - Address range | Enter *10.1.0.0/24*. |
     | | |
-1. Leave the rest as default and select **Create**.
+| 1. Leave the rest as default and select **Create**. |
 
 ### Create a Virtual Machine
 
@@ -86,9 +84,9 @@ In this section, you create a Virtual Network and the subnet to host the VM used
 
 1. When you see the **Validation passed** message, select **Create**.
 
-### Create an Azure Database for MySQL flexible server instance with a Private endpoint
+### Create an Azure Database for MySQL Flexible Server instance with a Private endpoint
 
-- Create an [Azure Database for MySQL flexible server instance](quickstart-create-server-portal.md) with **Public access (allowed IP addresses) and Private endpoint** as the connectivity method.
+- Create an [Quickstart: Create an instance of Azure Database for MySQL with the Azure portal](quickstart-create-server-portal.md) with **Public access (allowed IP addresses) and Private endpoint** as the connectivity method.
 
 - Select **Add Private endpoint** to create private endpoint:
 
@@ -106,24 +104,24 @@ In this section, you create a Virtual Network and the subnet to host the VM used
     | Integrate with private DNS zone | Select **Yes**. |
     | Private DNS Zone | Select *(New)privatelink.mysql.database.Azure.com* |
 
-- Select on **OK** to save the Private endpoint configuration.
+- Select **OK** to save the Private endpoint configuration.
 
-- After entering the remaining information in the other tabs, select on **Review + create** to deploy the Azure Database for MySQL flexible server instance.
+- After entering the remaining information in the other tabs, select **Review + create** to deploy the Azure Database for MySQL Flexible Server instance.
 
 > [!NOTE]  
-> In some cases, the Azure Database for MySQL flexible server instance and the VNet-subnet are in different subscriptions. In these cases, you must ensure the following configurations:
->
+> In some cases, the Azure Database for MySQL Flexible Server instance and the VNet-subnet are in different subscriptions. In these cases, you must ensure the following configurations:
+>  
 > - Make sure that both subscriptions have the **Microsoft.DBforMySQL/flexibleServer** resource provider registered. For more information refer [resource-manager-registration](/azure/azure-resource-manager/management/resource-providers-and-types).
 
-## Manage private endpoints on Azure Database for MySQL flexible server via the Networking tab
+## Manage private endpoints on Azure Database for MySQL Flexible Server via the Networking tab
 
-1. Navigate to your Azure Database for MySQL flexible server resource in the Azure portal.
+1. Navigate to your Azure Database for MySQL Flexible Server resource in the Azure portal.
 
 1. Go to the **Networking** section under **Settings**.
 
 1. In the **Private endpoint** section, you can manage your private endpoints (Add, Approve, Reject, or Delete).
 
-    :::image type="content" source="media/how-to-networking-private-link-portal-mysql/networking-private-link-portal-mysql.png" alt-text="Screenshot of networking private link portal page.":::
+    :::image type="content" source="media/how-to-networking-private-link-portal/networking-private-link-portal-mysql.png" alt-text="Screenshot of networking private link portal page." lightbox="media/how-to-networking-private-link-portal/networking-private-link-portal-mysql.png":::
 
 ### Connect to a VM using Remote Desktop (RDP)
 
@@ -142,19 +140,19 @@ After you've created **myVm**, connect to it from the internet as follows:
     1. Enter the username and password you specified when creating the VM.
 
       > [!NOTE]  
-      > You may need to select **More choices** > **Use a different account** to specify the credentials you entered when you created the VM.
+      > You might need to select **More choices** > **Use a different account** to specify the credentials you entered when you created the VM.
 
 1. Select **OK**.
 
-1. You may receive a certificate warning during the sign-in process. Select **Yes** or **Continue** if you receive a certificate warning.
+1. You might receive a certificate warning during the sign-in process. Select **Yes** or **Continue** if you receive a certificate warning.
 
 1. Once the VM desktop appears, minimize it to go back to your local desktop.
 
-### Access the Azure Database for MySQL flexible server instance privately from the VM
+### Access the Azure Database for MySQL Flexible Server instance privately from the VM
 
 1. In the Remote Desktop of *myVM*, open PowerShell.
 
-1. Enter `nslookup  myServer.privatelink.mysql.database.azure.com`.
+1. Enter `nslookup myServer.privatelink.mysql.database.azure.com`.
 
     You receive a message similar to this:
 
@@ -169,7 +167,7 @@ After you've created **myVm**, connect to it from the internet as follows:
     > [!NOTE]  
     > Regardless of the firewall settings or public access being disabled, the ping and telnet tests will successfully verify network connectivity.
 
-1. Test the private link connection for the Azure Database for MySQL flexible server instance using any available client. The following example uses [MySQL Workbench](https://dev.mysql.com/doc/workbench/en/wb-installing-windows.html) to do the operation.
+1. Test the private link connection for the Azure Database for MySQL Flexible Server instance using any available client. The following example uses [MySQL Workbench](https://dev.mysql.com/doc/workbench/en/wb-installing-windows.html) to do the operation.
 
 1. In **New connection**, then select this information:
 
@@ -177,37 +175,37 @@ After you've created **myVm**, connect to it from the internet as follows:
     | --- | --- |
     | Server type | Select **MySQL**. |
     | Server name | Select *myServer.privatelink.mysql.database.Azure.com* |
-    | User name | Enter username as username@servername, provided during the Azure Database for MySQL flexible server instance creation. |
-    | Password | Enter a password provided during the Azure Database for MySQL flexible server instance creation. |
+    | User name | Enter username as username@servername, provided during the Azure Database for MySQL Flexible Server instance creation. |
+    | Password | Enter a password provided during the Azure Database for MySQL Flexible Server instance creation. |
     | SSL | Select **Required**. |
 
 1. Select Connect.
 
 1. Browse databases from the left menu.
 
-1. (Optionally) Create or query information from the Azure Database for MySQL flexible server instance.
+1. (Optionally) Create or query information from the Azure Database for MySQL Flexible Server instance.
 
 1. Close the remote desktop connection to *myVm*.
 
 ### Clean up resources
 
-When you're done using the private endpoint, Azure Database for MySQL flexible server instance, and the VM, delete the resource group and all of the resources it contains:
+When you're done using the private endpoint, Azure Database for MySQL Flexible Server instance, and the VM, delete the resource group and all of the resources it contains:
 
 1. Enter *myResourceGroup* in the **Search** box at the top of the portal and select *myResourceGroup* from the search results.
- 
+
 1. Select **Delete resource group**.
 
 1. Enter myResourceGroup for **TYPE THE RESOURCE GROUP NAME** and select **Delete**.
 
 ## Create a private endpoint via Private Link Center
 
-In this section, you learn how to add a private endpoint to the Azure Database for MySQL flexible server instance that you have already created.
+In this section, you learn how to add a private endpoint to the Azure Database for MySQL Flexible Server instance that you have already created.
 
 1. In the Azure portal, select **Create a resource** > **Networking** > **Private Link**.
 
 1. In **Private Link Center - Overview**, select the option to **Create private endpoint**.
 
-    :::image type="content" source="media/how-to-networking-private-link-portal-mysql/networking-private-link-center portal-mysql.png" alt-text="Screenshot of private link center portal page.":::
+    :::image type="content" source="media/how-to-networking-private-link-portal/networking-private-link-center portal-mysql.png" alt-text="Screenshot of private link center portal page." lightbox="media/how-to-networking-private-link-portal/networking-private-link-center portal-mysql.png":::
 
 1. In **Create a private endpoint - Basics**, then select the **Project details** information:
 
@@ -253,9 +251,9 @@ In this section, you learn how to add a private endpoint to the Azure Database f
 > [!NOTE]  
 > The FQDN in the customer's DNS setting does not resolve the private IP configured. You must set up a DNS zone for the configured FQDN as shown [here](/azure/dns/dns-operations-recordsets-portal).
 
-## Next steps
+## Related content
 
-- Learn how to configure private link for Azure Database for MySQL flexible server from [Azure CLI](how-to-networking-private-link-azure-cli.md).
-- Learn how to [manage connectivity](concepts-networking.md) to Azure Database for MySQL flexible server.
-- Learn how to [add another layer of encryption to Azure Database for MySQL flexible server using Customer Managed Keys](concepts-customer-managed-key.md).
-- Learn how to configure and use [Microsoft Entra authentication](concepts-azure-ad-authentication.md) on your Azure Database for MySQL flexible server instance.
+- [Create and manage Private Link for Azure Database for MySQL - Flexible Server using Azure CLI](how-to-networking-private-link-azure-cli.md)
+- [manage connectivity](concepts-networking.md)
+- [add another layer of encryption to Azure Database for MySQL Flexible Server using Customer Managed Keys](concepts-customer-managed-key.md)
+- [Microsoft Entra authentication for Azure Database for MySQL - Flexible Server](concepts-azure-ad-authentication.md)

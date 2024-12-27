@@ -1,2 +1,0 @@
-- name: $push
-  href: $push.md

@@ -115,11 +115,9 @@ Create your Azure Cosmos DB for PostgreSQL cluster in the [Azure portal](https:/
 
 ## Access the cluster privately from the VM
 
-The private link allows the VM to connect to the cluster, and prevents external hosts from doing so. In this step, you check that the psql database client on your VM can communicate with the coordinator node of the cluster. In the code, replace `{your_password}` with your cluster password.
+The private link allows the VM to connect to the cluster, and prevents external hosts from doing so. In this step, you check that the psql database client on your VM can communicate with the coordinator node of the cluster. 
 
 ```azurecli
-# replace {your_password} in the string with your actual password
-
 PG_URI='host=c-link-demo-sg.12345678901234.postgres.cosmos.azure.com port=5432 dbname=citus user=citus password={your_password} sslmode=require'
 
 # Attempt to connect to cluster with psql in the VM
@@ -132,6 +130,9 @@ az vm run-command invoke \
 	--query 'value[0].message' \
 	| xargs printf
 ```
+
+> [!NOTE]
+> In the connection string, replace `{your_password}` with your cluster password or Microsoft Entra ID token. For more information, see [authentication options](how-to-configure-authentication.md).
 
 You should see a version number for Citus in the output. If you do, then psql
 was able to execute the command, and the private link worked.

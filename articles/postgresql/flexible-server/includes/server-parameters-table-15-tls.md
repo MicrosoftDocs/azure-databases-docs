@@ -1,11 +1,12 @@
 ---
-author: akashraokm
-ms.author: akashrao
+author: nachoalonsoportillo
+ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 06/18/2024
+ms.date: 12/05/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
+ms.custom: automatically generated
 ---
 ### require_secure_transport
 
@@ -17,7 +18,7 @@ ms.topic: include
 | Default value  | `on`          |
 | Allowed values | `on,off`       |
 | Parameter type | dynamic        |
-| Documentation  |               |
+| Documentation  | [require_secure_transport](https://go.microsoft.com/fwlink/?linkid=2282200) |
 
 
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]

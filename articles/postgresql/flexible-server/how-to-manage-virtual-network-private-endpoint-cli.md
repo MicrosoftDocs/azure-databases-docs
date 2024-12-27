@@ -72,7 +72,9 @@ To add an Azure Database for PostgreSQL flexible server instance to a virtual ne
     az postgres flexible-server private-endpoint-connection approve -g <resource_group> -s <server_name> -n <connection_name>        --description "Approve connection"
     ```
 
-## Next steps
+[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
 
-* Learn more about [networking in Azure Database for PostgreSQL flexible server with Private Link](./concepts-networking-private-link.md).
-* Understand more about [virtual network integration in Azure Database for PostgreSQL flexible server](./concepts-networking-private.md).
+## Related content
+
+- Learn more about [networking in Azure Database for PostgreSQL flexible server with Private Link](concepts-networking-private-link.md).
+- Understand more about [virtual network integration in Azure Database for PostgreSQL flexible server](concepts-networking-private.md).

@@ -57,7 +57,9 @@ Key Vault Uri can be copied from key properties **Key Identifier** field  in Azu
 :::image type="content" source="./media/how-to-create-server-customer-managed-key-azure-api/key-uri-portal.png" alt-text =" Screenshot of  key properties and URI on Azure Key Vault Portal page." :::
 You can also programmatically fetch Key Vault Uri using [Azure REST API](/rest/api/keyvault/keyvault/vaults/get?tabs=HTTP)
 
-## Next steps
+[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
 
-- [Azure Database for PostgreSQL - Flexible Server encryption with customer managed key (CMK)](../flexible-server/concepts-data-encryption.md)
-- [Microsoft Entra ID](/azure/active-directory-domain-services/overview)
+## Related content
+
+- [Data encryption with a customer-managed key in Azure Database for PostgreSQL - Flexible Server](concepts-data-encryption.md).
+- [Microsoft Entra Domain Services](/azure/active-directory-domain-services/overview).

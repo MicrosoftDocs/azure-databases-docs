@@ -1,2 +1,6 @@
-- name: $count
-  href: $count.md
+- name: aggregate
+  href: aggregate.md
+- name: count
+  href: count.md
+- name: distinct
+  href: distinct.md
