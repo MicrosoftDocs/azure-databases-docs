@@ -5,6 +5,8 @@ ms.reviewer: randolphwest
 ms.date: 09/18/2024
 ms.service: azure-database-migration-service
 ms.topic: include
+ms.collection:
+  - sql-migration-content
 ---
 
 - [Download and install Azure Data Studio](/azure-data-studio/download-azure-data-studio).

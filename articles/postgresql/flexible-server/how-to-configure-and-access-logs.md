@@ -107,7 +107,9 @@ AzureDiagnostics
 | where TimeGenerated > ago(1d) 
 ```
 
-## Next steps
+[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
 
-- [Get started with log analytics queries](/azure/azure-monitor/logs/log-analytics-tutorial)
-- Learn about [Azure event hubs](/azure/event-hubs/event-hubs-about)
+## Related content
+
+- [Get started with log analytics queries](/azure/azure-monitor/logs/log-analytics-tutorial).
+- [Overview of Azure event hubs](/azure/event-hubs/event-hubs-about).

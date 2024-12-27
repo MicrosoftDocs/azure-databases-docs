@@ -25,6 +25,8 @@ Source PostgreSQL version should be `>= 9.5`. If the source PostgreSQL version i
 
 - For detailed instructions on creating a new Azure Database for PostgreSQL, refer to the following link: [Quickstart: Create server](/azure/postgresql/flexible-server/).
 
+- When migrating across PostgreSQL versions (major or minor), ensure compatibility between your database and application by reviewing the [release notes](https://www.postgresql.org/docs/17/release.html) for potential breaking changes.
+
 ### Network setup
 
 Network setup is crucial for the migration service to function correctly. Ensure that the source PostgreSQL server can communicate with the target Azure Database for PostgreSQL server. The following network configurations are essential for a successful migration.
@@ -42,6 +44,10 @@ These parameters aren't automatically migrated to the target environment and mus
 - Match server parameter values from the source PostgreSQL database to the Azure Database for PostgreSQL by accessing the **Server parameters** section in the Azure portal and manually updating the values accordingly.
 
 - Save the parameter changes and, if necessary, restart the Azure Database for PostgreSQL flexible server to apply the new configuration.
+
+> [!IMPORTANT]  
+> [Change the **password_encryption** server parameter on your flexible server](../../../../flexible-server/how-to-configure-server-parameters-using-portal.md) from SCRAM-SHA-256 to MD5 before initating the migration. This is essential for the existing credentials on single server to work on your flexible server.
+
 
 ### Disable high availability (reliability) and read replicas in the target
 

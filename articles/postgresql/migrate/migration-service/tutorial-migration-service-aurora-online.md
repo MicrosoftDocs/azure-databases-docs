@@ -1,6 +1,6 @@
 ---
-title: "Tutorial: Migrate online from Amazon Aurora using the migration service with the Azure portal and Azure CLI"
-description: "Learn to migrate online seamlessly from Amazon Aurora to Azure Database for PostgreSQL using the new migration service in Azure, simplifying the transition while ensuring data integrity and efficient deployment."
+title: "Migrate from Amazon Aurora online by using the migration service"
+description: Learn how to migrate online seamlessly from Amazon Aurora to Azure Database for PostgreSQL by using the new migration service in Azure. Simplify the migration while ensuring data integrity and efficient deployment."
 author: apduvuri
 ms.author: adityaduvuri
 ms.reviewer: maghan
@@ -13,150 +13,175 @@ ms.custom:
 # customer intent: As a developer, I want to learn how to migrate from Amazon Aurora to Azure Database for PostgreSQL using the migration service, so that I can simplify the transition and ensure data integrity.
 ---
 
-# Tutorial: Migrate online from Amazon Aurora PostgreSQL to Azure Database for PostgreSQL with the migration service Preview
+# Tutorial: Migrate online from Amazon Aurora PostgreSQL to Azure Database for PostgreSQL with the migration service
 
-This article explores how to migrate your PostgreSQL database from Amazon Aurora to Azure Database for PostgreSQL online.
+This article describes how to migrate your PostgreSQL database from Amazon Aurora to Azure Database for PostgreSQL online.
 
-The migration service in Azure Database for PostgreSQL is a fully managed service integrated into the Azure portal and Azure CLI. It's designed to simplify your migration journey to Azure Database for PostgreSQL server.
+The migration service in Azure Database for PostgreSQL is a fully managed service that's integrated into the Azure portal and the Azure CLI. It's designed to simplify your migration journey to Azure Database for PostgreSQL.
+
+In this tutorial, you:
 
 > [!div class="checklist"]
->  
-> - Prerequisites
-> - Perform the migration
+>
+> - Complete prerequisites
+> - Initiate the migration
 > - Monitor the migration
-> - Cutover
-> - Check the migration when completed
+> - Initiate a cutover
+> - Verify the migration
 
 ## Prerequisites
 
-To complete the migration, you need the following prerequisites:
-
 [!INCLUDE [prerequisites-migration-service-postgresql-online-aurora](includes/aurora/prerequisites-migration-service-postgresql-online-aurora.md)]
 
-## Perform the migration
+## Initiate the migration
 
 You can migrate by using the Azure portal or the Azure CLI.
 
-#### [Portal](#tab/portal)
+# [Azure portal](#tab/azure-portal)
 
-The Azure portal provides a simple and intuitive wizard-based experience that guides you through migration. Following the steps outlined in this tutorial, you can seamlessly transfer your database to Azure Database for PostgreSQL - Flexible Server and take advantage of its powerful features and scalability.
+The Azure portal offers a simple and intuitive wizard-based experience to guide you through migration. By completing the steps that are outlined in this tutorial, you can seamlessly transfer your database to Azure Database for PostgreSQL - Flexible Server and take advantage of its powerful features and scalability.
 
-To migrate with the Azure portal, you first configure the migration task, connect to the source and target, and then perform the migration.
+To migrate by using the Azure portal, first configure the migration task. Then, connect to the source and target, and initiate the migration.
 
 ### Configure the migration task
 
-The migration service comes with a simple, wizard-based experience on the Azure portal. Here's how to start:
+To configure the migration task in the Azure portal:
 
-1. Open your web browser and go to the [portal](https://portal.azure.com/). Enter your credentials to sign in. The default view is your service dashboard.
+1. Open your web browser and go to the [Azure portal](https://portal.azure.com/). Enter your credentials to sign in.
 
-1. Go to your Azure Database for PostgreSQL Flexible Server target.
+1. Go to your instance of Azure Database for PostgreSQL - Flexible Server.
 
-1. In the Flexible Server's Overview tab, on the left menu, scroll down to Migration and select it.
+1. On the service menu, select **Migration**.
 
     :::image type="content" source="media/tutorial-migration-service-aurora-online/migration-portal-select.png" alt-text="Screenshot of the Migration selection." lightbox="media/tutorial-migration-service-aurora-online/migration-portal-select.png":::
 
-1. Select the **Create** button to migrate from Amazon Aurora to Azure Database for PostgreSQL - Flexible Server. If this is your first time using the migration service, an empty grid appears with a prompt to begin your first migration.
+1. Select **Create** to migrate from Amazon Aurora to a flexible server.
 
-    :::image type="content" source="media/tutorial-migration-service-aurora-online/portal-online-create-migration.png" alt-text="Screenshot of creating a migration." lightbox="media/tutorial-migration-service-aurora-online/portal-online-create-migration.png":::
+   The first time you use the migration service, an empty grid appears with a prompt to begin your first migration. If migrations to your flexible server target are already created, the grid contains information about attempted migrations.
 
-    If you've already created migrations to your Azure Database for PostgreSQL target, the grid contains information about attempted migrations.
+1. Select **Create** to step through a series of tabs to set up a migration.
 
-1. Select the **Create ** button. Then, you go through a wizard-based series of tabs to create a migration into this Azure Database for PostgreSQL target from the PostgreSQL source instance.
+    :::image type="content" source="media/tutorial-migration-service-aurora-online/portal-online-create-migration.png" alt-text="creenshot of the migration selection in the Azure portal." lightbox="media/tutorial-migration-service-aurora-online/portal-online-create-migration.png":::
 
 #### Setup
 
-The first tab is the **Setup** tab, where the user needs to provide migration details like migration name source type to initiate the migrations.
+Enter or select the following information:
 
-:::image type="content" source="media/tutorial-migration-service-aurora-online/01-portal-online-setup-aurora.png" alt-text="Screenshot of the Setup migration in the Azure portal." lightbox="media/tutorial-migration-service-aurora-online/01-portal-online-setup-aurora.png":::
+- **Migration name**: Enter a unique identifier for each migration to this flexible server target. You can use only alphanumeric characters and hyphens (`-`) in the migration name. The name can't start with a hyphen, and it must be unique for a target server. No two migrations to the same flexible server target can have the same name.
 
-- **Migration name** is the unique identifier for each migration to this Flexible Server target. This field accepts only alphanumeric characters and doesn't accept any special characters except a hyphen (-). The name can't start with a hyphen and should be unique for a target server. No two migrations to the same Flexible Server target can have the same name.
+- **Source server type**: Select the source type that corresponds to your PostgreSQL source, such as a cloud-based PostgreSQL service, an on-premises setup, or a virtual machine.
 
-- **Source Server Type** — Depending on your PostgreSQL source, you can select the corresponding source type, such as a cloud-based PostgreSQL service, an on-premises setup, or a virtual machine.
+- **Migration option**: Choose one of the following options for a premigration validation:
 
-- **Migration Option** allows you to perform validations before triggering a migration. You can pick any of the following options:
+  - **Validate**. Checks your server and database readiness for migration to the target source.
+  - **Migrate**. Skips validations and starts the migration.
+  - **Validate and Migrate**. Performs validation before triggering a migration. If there are no validation failures, the migration is triggered.
 
-     - **Validate** - Checks your server and database readiness for migration to the target.
-     - **Migrate** - Skips validations and starts migrations.
-     - **Validate and Migrate**—Performs validation before triggering a migration. The migration is triggered only if there are no validation failures.
+  A good practice is to select the **Validate** or **Validate and Migrate** option for premigration validations.
 
-Choosing the **Validate** or **Validate and Migrate** option is always a good practice when performing premigration validations before running the migration. To learn more about the premigration validation, refer to this [documentation](concepts-premigration-migration-service.md).
+  For more information, see [Premigration validations](concepts-premigration-migration-service.md).
 
-- **Migration mode** allows you to pick the mode for the migration. **Offline** is the default option.
+- **Migration mode**: Select the mode for the migration. The default option is **Offline**.
 
-Select the **Next: Connect to the Source** button.
+Select **Next: Connect to source**.
 
-#### Select Runtime Server
+:::image type="content" source="media/tutorial-migration-service-aurora-online/01-portal-online-setup-aurora.png" alt-text="Screenshot of the migration Setup tab in the Azure portal." lightbox="media/tutorial-migration-service-aurora-online/01-portal-online-setup-aurora.png":::
 
-The migration Runtime Server is a specialized feature within the migration service, designed to act as an intermediary server during migration. It's a separate Azure Database for PostgreSQL - Flexible Server instance that isn't the target server but is used to facilitate the migration of databases from a source environment that is only accessible via a private network.
+#### Select the runtime server
 
-For more information about the Runtime Server, visit the [Migration Runtime Server](concepts-migration-service-runtime-server.md).
+The migration runtime server is a specialized feature of the migration service. The runtime server acts as an intermediary server during migration. It's a separate instance of Azure Database for PostgreSQL - Flexible Server that isn't the target server. The runtime server facilitates the migration of databases from a source environment that is accessible only via a private network.
 
-:::image type="content" source="media/tutorial-migration-service-aurora-online/02-portal-online-runtime-server-aurora.png" alt-text="Screenshot of the Migration Runtime Server page.":::
+For more information, see [Migration runtime server](concepts-migration-service-runtime-server.md).
 
-#### Connect to source
+:::image type="content" source="media/tutorial-migration-service-aurora-offline/02-portal-offline-runtime-server-aurora.png" alt-text="Screenshot of the Migration Runtime Server tab.":::
 
-The **Connect to Source** tab prompts you to provide details related to the Source selected in the **Setup Tab**, which is the Source of the databases.
+#### Connect to the source
 
-:::image type="content" source="media/tutorial-migration-service-aurora-online/03-portal-online-connect-source-aurora.png" alt-text="Screenshot of Connectsourcemigration." lightbox="media/tutorial-migration-service-aurora-online/03-portal-online-connect-source-aurora.png":::
+On the **Connect to source** tab, enter or select the following information for the database source:
 
-- **Server Name** - Provide the Hostname or the IP address of the source PostgreSQL instance
-- **Port** - Port number of the Source server
-- **Server admin login name** - Username of the source PostgreSQL server
-- **Password** - Password of the Source PostgreSQL server
-- **SSL Mode**—The supported values are preferred and required. When the SSL at the Source PostgreSQL server is OFF, use SSLMODE=prefer. If the SSL at the source server is ON, use SSLMODE=require. SSL values can be determined in the Postgresql.conf file.
-- **Test Connection**—Performs the connectivity test between the target and the Source. Once the connection is successful, users can proceed with the next step. Otherwise, we need to identify the networking issues between the target and the Source and verify the username/password for the Source. Establishing a test connection takes a few minutes.
+- **Server name**: Enter the host name or the IP address of the source PostgreSQL instance.
+- **Port**: Enter the port number of the source server.
+- **Server admin login name**: Enter the username of the source PostgreSQL server.
+- **Password**: Enter the password of the source PostgreSQL server.
+- **SSL mode**: Supported values are **Prefer** and **Require**. When Secure Sockets Layer (SSL) at the source PostgreSQL server is off, select **Prefer**. If SSL at the source server is on, select **Require**. SSL values are set in the *postgresql.conf* file.
+- **Test Connection**: Initiates a connectivity test between the target and the source. When the connection is successful, go to the next step to identify networking issues between the target and source and to verify the username and password for the source. Establishing a test connection takes a few minutes.
 
-After the successful test connection, select the **Next: Select Migration target**
+After a successful test connection, select **Next: Select migration target**.
 
-#### Select migration target
+:::image type="content" source="media/tutorial-migration-service-aurora-online/03-portal-online-connect-source-aurora.png" alt-text="Screenshot of the Connect to source tab." lightbox="media/tutorial-migration-service-aurora-online/03-portal-online-connect-source-aurora.png":::
 
-The **select migration target** tab displays metadata for the Flexible Server target, such as the subscription name, resource group, server name, location, and PostgreSQL version.
+#### Select the migration target
 
-:::image type="content" source="media/tutorial-migration-service-aurora-online/04-portal-online-select-migration-target-aurora.png" alt-text="Screenshot of the connect target migration screen.":::
+On the **Select migration target** tab, enter or select the following information for the flexible server target, in addition to subscription, resource group, and server name:
 
-- **Admin username** - Admin username of the target PostgreSQL server
-- **Password** - Password of the target PostgreSQL server
-- **Test Connection** - Performs the connectivity test between the target and Source. Once the connection is successful, users can proceed with the next step. Otherwise, we need to identify the networking issues between the target and the Source and verify the username/password for the target. Test connection takes a few minutes to establish a connection between the target and the source.
+- **Admin username**: The admin username of the target PostgreSQL server.
+- **Password**: The password of the target PostgreSQL server.
+- **Custom FQDN/IP (Optional)**: The custom FQDN/IP field is optional and can be used when the target is behind a custom DNS server or has custom DNS namespaces, making it accessible only via specific FQDNs or IP addresses. For example, this could include entries like `flexibleserver.example.com`, `198.1.0.2`, or a PostgreSQL FQDN such as `flexibleserver.postgres.database.azure.com`, if the custom DNS server contains the DNS zone `postgres.database.azure.com` or forwards queries for this zone to `168.63.129.16`, where the FQDN is resolved in the Azure public or private DNS zone. 
+- **Test Connection**: Initiates a connectivity test between the target and the source. When the connection is successful, go to the next step to identify networking issues between the target and source and to verify the username and password for the target server. Establishing a test connection takes a few minutes.
 
-After the successful test connection, select the **Next: Select Database(s) for Migration**
+After a successful test connection, select **Next: Select database(s) for migration**.
+
+:::image type="content" source="media/tutorial-migration-service-aurora-online/04-portal-online-select-migration-target-aurora.png" alt-text="Screenshot of the Connect target migration tab.":::
 
 #### Select databases for migration
 
-Under this tab, a list of user databases is inside the source server selected in the setup tab. You can select and migrate up to eight databases in a single migration attempt. If there are more than eight user databases, the migration process is repeated between the source and target servers for the next set of databases.
+On the **Select database for migration** tab, select from a list of user databases to migrate from your source PostgreSQL server.
 
-:::image type="content" source="media/tutorial-migration-service-aurora-online/05-portal-online-select-database-migration-aurora.png" alt-text="Screenshot of FetchDBmigration.":::
+After you select the databases, select **Next: Summary**.
 
-After selecting the databases, select the **Next: Summary**
+:::image type="content" source="media\tutorial-migration-service-aurora-online\05-portal-online-select-database-migration-aurora.png" alt-text="Screenshot of the Select databases for migration tab.":::
 
 #### Summary
 
-The **Summary** tab summarizes all the Source and target details for creating the validation or migration. Review the details and select the start button.
+The **Summary** tab summarizes all the source and target details for creating the validation or migration. Review the details, and then select **Start Validation and Migration**.
 
-:::image type="content" source="media/tutorial-migration-service-aurora-online/06-portal-online-summary-aurora.png" alt-text="Screenshot of Summary migration.":::
+:::image type="content" source="media/tutorial-migration-service-aurora-online/06-portal-online-summary-aurora.png" alt-text="Screenshot of the migration Summary tab.":::
 
-#### Monitor the migration
+### Monitor the migration
 
-After you select the start button, a notification will appear in a few seconds saying that the validation or migration creation is successful. You'll then be automatically redirected to the **Migration** page of Flexible Server, which has a new entry for the recently created validation or migration.
+Within a few seconds after you select **Start Validation and Migration**, a notification appears to say that the validation or migration creation is successful. You're redirected to the Flexible Server instance **Migration** pane. The state entry is **InProgress** and the substate is **PerformingPreRequisiteSteps**. The workflow takes 2 to 3 minutes to set up the migration infrastructure and check network connections.
 
-:::image type="content" source="media/tutorial-migration-service-aurora-online/aurora-monitor.png" alt-text="Screenshot of Monitor migration." lightbox="media/tutorial-migration-service-aurora-online/aurora-monitor.png":::
+:::image type="content" source="media/tutorial-migration-service-aurora-online/aurora-monitor.png" alt-text="Screenshot of the Monitor migration pane." lightbox="media/tutorial-migration-service-aurora-online/aurora-monitor.png":::
 
-The grid that displays the migrations has these columns: **Name**, **Status**, **Migration mode**, **Migration type**, **Source server**, **Source server type**, **Databases**, **Duration**, and **Start time**. The entries are displayed in the descending order of the start time, with the most recent entry at the top. You can use the refresh button to refresh the status of the validation or migration.
-Select the migration name in the grid to see the associated details.
+The grid that displays the migrations has these columns:
 
-When the validation or migration is created, it moves to the **InProgress** state and **PerformingPreRequisiteSteps** substrate. The workflow takes 2-3 minutes to set up the migration infrastructure and network connections.
+- **Name**
+- **Status**
+- **Migration mode**
+- **Migration type**
+- **Source server**
+- **Source server type**
+- **Databases**
+- **Duration**
+- **Start time**
+
+The entries are displayed in descending order of start time, with the most recent entry on the top. You can select **Refresh** in the menu bar to refresh the status of the validation or migration run.
 
 #### Migration details
 
-In the Setup tab, we have selected the migration option as **Migrate and Validate**. In this scenario, validations are performed first before migration starts. After the **PerformingPreRequisiteSteps** substate is completed, the workflow moves into the substate of **Validation in Progress**.
+In the list of migrations, select the name of a migration to see associated details.
+
+On the **Setup** tab, select the migration option **Validate and Migrate**. In this scenario, validations are completed before migration starts. After the **PerformingPreRequisiteSteps** substate is completed, the workflow moves into the **Validation in Progress** substate.
 
 - If validation has errors, the migration moves into a **Failed** state.
-- If validation completes without error, the migration starts, and the workflow moves into the substate of **Migrating Data**.
 
-You can see the results of validation and migration at the instance and database level.
+- If validation is complete without any error, the migration starts, and the workflow moves into the substate **Migrating Data**.
+
+You can check validation details at the instance level and at the database level:
+
+- Validation at the instance level:
+
+  - Check validation related to the connectivity check for the source version (the `PostgreSQL version >= 9.5` server parameter check) if the extensions are enabled in the server parameters of the instance of Azure Database for PostgreSQL - Flexible Server.
+
+- Validation at the database level:
+
+  - Check validation of the individual databases related to extensions and collations support in Azure Database for PostgreSQL - Flexible Server.
+
+You can see the current status for the migration and validation on the migration details pane.
 
 :::image type="content" source="media/tutorial-migration-service-aurora-online/aurora-details-migration.png" alt-text="Screenshot of Details migration." lightbox="media/tutorial-migration-service-aurora-online/aurora-details-migration.png":::
 
-Some possible migration states:
+The following tables describe some possible migration states and substates.
 
 #### Migration states
 
@@ -164,10 +189,10 @@ Some possible migration states:
 | --- | --- |
 | **InProgress** | The migration infrastructure setup is underway, or the actual data migration is in progress. |
 | **Canceled** | The migration is canceled or deleted. |
-| **Failed** | The migration has failed. |
-| **Validation Failed** | The validation has failed. |
-| **Succeeded** | The migration has succeeded and is complete. |
-| **WaitingForUserAction** | Applicable only for online migration. Waiting for user action to perform cutover. |
+| **Failed** | The migration failed. |
+| **Validation failed** | The validation failed. |
+| **Succeeded** | The migration succeeded and is completed. |
+| **WaitingForUserAction** | Applicable only in online migrations. Waiting for a user to perform a cutover. |
 
 #### Migration substates
 
@@ -177,46 +202,47 @@ Some possible migration states:
 | **Validation in Progress** | Validation is in progress. |
 | **MigratingData** | Data migration is in progress. |
 | **CompletingMigration** | Migration is in the final stages of completion. |
-| **Completed** | Migration has been completed. |
-| **Failed** | Migration has failed. |
+| **Completed** | Migration is completed. |
+| **Failed** | Migration failed. |
 
 #### Validation substates
 
 | Substate | Description |
 | --- | --- |
-| **Failed** | Validation has failed. |
+| **Failed** | Validation failed. |
 | **Succeeded** | Validation is successful. |
-| **Warning** | Validation is in warning. | 
+| **Warning** | Validation shows a warning. |
 
-#### Cutover
+### Initiate a cutover
 
-If there are both **Migrate** and **Validate and Migrate**, completing the Online migration requires another step—the user must take a Cutover action. After the copy/clone of the base data is complete, the migration moves to the `WaitingForUserAction` state and the `WaitingForCutoverTrigger' substate. In this state, the user can trigger the cutover from the portal by selecting the migration.
+If **Migrate** and **Validate and Migrate** both appear, completing the online migration requires the additional step of initiating a cutover. After the copy and clone of the base data is complete, the migration moves to the **WaitingForUserAction** state and the **WaitingForCutoverTrigger** substate. In this state, the user can trigger the cutover from the portal by selecting the migration.
 
-Before initiating cutover, it's important to ensure that:
+Before initiating a cutover, it's important to ensure that:
 
-- Writes to the Source are stopped - `Latency` value is 0 or close to 0. The `Latency` information can be obtained from the migration details screen as shown below:
+- Writes to the source are stopped.
+- The `latency` value decreases to 0 or close to 0.
 
-    :::image type="content" source="media/tutorial-migration-service-aurora-online/aurora-cutover-migration.png" alt-text="Screenshot of Cutover migration." lightbox="media/tutorial-migration-service-aurora-online/aurora-cutover-migration.png":::
+You can get the `latency` value on the migration details pane:
 
-- `latency` value decreases to 0 or close to 0
+:::image type="content" source="media/tutorial-migration-service-aurora-online/aurora-cutover-migration.png" alt-text="Screenshot of the Cutover migration pane." lightbox="media/tutorial-migration-service-aurora-online/aurora-cutover-migration.png":::
 
-- The `latency` value indicates when the target last synced with the Source. At this point, writing to the Source can be stopped, and cutover can be initiated. In case there's heavy traffic at the Source, it's recommended to stop writes first so that `Latency` can come close to 0, and then a cutover is initiated.
-The Cutover operation applies all pending changes from the Source to the Target and completes the migration. If you trigger a "Cutover" even with nonzero `Latency,` the replication stops until that point in time. All the data is on the Source until the cutover point is applied to the target. Say a latency was 15 minutes at the cutover point, so all the changed data in the last 15 minutes are applied to the target.
-Time depends on the backlog of changes occurring in the last 15 minutes. Hence, it's recommended that the Latency go to zero or near zero before triggering the cutover.
+The `latency` value indicates when the target last synced with the source. At this point, writing to the source can be stopped, and cutover can be initiated. If there's heavy traffic on the source server, we recommend that you stop writes first so that `latency` can come close to 0. Then, initiate a cutover.
 
-    :::image type="content" source="media/tutorial-migration-service-aurora-online/aurora-confirm-cutover.png" alt-text="Screenshot of Confirmcutovermigration." lightbox="media/tutorial-migration-service-aurora-online/aurora-confirm-cutover.png":::
+The cutover operation applies all pending changes from the source to the target and completes the migration. If you trigger a cutover, even with a nonzero value for `latency`, the replication stops at that point in time. All the data is on the source until the cutover point is applied to the target. For example, if latency is 15 minutes at the cutover point, all the changed data in the last 15 minutes is applied to the target. The time it takes the cutover to finish depends on the backlog of changes that occurred during those 15 minutes. So, we recommend that latency go to zero or near zero before you trigger the cutover.
 
-- The migration moves to the `Succeeded` state when the `Migrating Data` substate or the cutover (in Online migration) finishes successfully. If there's a problem at the `Migrating Data` substate, the migration moves into a `Failed` state.
+:::image type="content" source="media/tutorial-migration-service-aurora-online/aurora-confirm-cutover.png" alt-text="Screenshot that shows the dialog where you confirm a cutover during migration." lightbox="media/tutorial-migration-service-aurora-online/aurora-confirm-cutover.png":::
 
-    :::image type="content" source="media/tutorial-migration-service-aurora-online/aurora-success-migration.png" alt-text="Screenshot of Success migration." lightbox="media/tutorial-migration-service-aurora-online/aurora-success-migration.png":::
+The migration moves to the **Succeeded** state when the **Migrating Data** substate or the cutover (in an online migration) finishes successfully. If there's a problem in the **Migrating Data** substate, the migration moves into a **Failed** state.
 
-#### [CLI](#tab/cli)
+:::image type="content" source="media/tutorial-migration-service-aurora-online/aurora-success-migration.png" alt-text="Screenshot that shows the results of a successful migration in the Azure portal." lightbox="media/tutorial-migration-service-aurora-online/aurora-success-migration.png":::
 
-This article explores using the Azure CLI to migrate your PostgreSQL database from Amazon Aurora to Azure Database for PostgreSQL. The Azure CLI provides a powerful and flexible command-line interface that allows you to perform various tasks, including database migration. Following the steps outlined in this article, you can seamlessly transfer your database to Azure and take advantage of its powerful features and scalability.
+# [Azure CLI](#tab/azure-cli)
 
-To learn more about Azure CLI with the migration service, visit [How to set up Azure CLI for the migration service](how-to-setup-azure-cli-commands-postgresql.md).
+This article describes how to use the Azure CLI to migrate your PostgreSQL database from Amazon Aurora to Azure Database for PostgreSQL. The Azure CLI is a powerful and flexible command-line interface that you can use to complete various tasks, including database migration.
 
-Once the CLI is installed, open the command prompt and log into your Azure account using the below command.
+For more information, see [Set up the Azure CLI for the migration service](how-to-setup-azure-cli-commands-postgresql.md).
+
+After the Azure CLI is installed, at the command line, sign in to your Azure account by using the following command:
 
 ```azurecli-interactive
 az login
@@ -224,77 +250,81 @@ az login
 
 ### Configure the migration task
 
-To begin the migration, you need to create a JSON file with the migration details. The JSON file contains the following information:
+1. To begin the migration, create a JSON file to hold the migration details. Save the JSON file on your local computer as *\<filename\>.json*. For example, you can save the file as *C:\migration-CLI\migration_body.json*.
 
-- Edit the below placeholders `<< >>` in the JSON lines and store them in the local machine as `<<filename>>.json` where the CLI is being invoked. In this tutorial, we have saved the file in C:\migration-CLI\migration_body.json
+   Copy the following JSON and paste it in the JSON file. Replace `<placeholders>` with relevant information from your scenario.
 
-```bash
-{
-	"properties": {
-		"SourceDBServerResourceId": "<<source hostname or IP address>>:<<port>>@<<username>>",
-		"SecretParameters": {
-			"AdminCredentials": {
-				"SourceServerPassword": "<<Source Password>>",
-				"TargetServerPassword": "<<Target Password>>"
-			},
-			"targetServerUserName": "<<Target username>>"
-		},
-		"DBsToMigrate": "<<comma separated list of databases in a array like - ["ticketdb","timedb","inventorydb"]>>",
-		"OverwriteDBsInTarget": "true",
-		"sourceType": "AWS_AURORA",
-		"sslMode": "Require"
-	}
-}
-```
+    ```json
+    {
+    "properties": {
+    "SourceDBServerResourceId": "<source host name or IP address>:<port>@<username>",
+            "SecretParameters": {
+                "AdminCredentials": {
+                    "SourceServerPassword": "<source password>",
+                    "TargetServerPassword": "<target password>"
+                },
+                "targetServerUserName": "<target username>"
+            },
+            "DBsToMigrate": "<a comma-separated list of databases in an array, similar to the example "ticketdb","timedb","inventorydb">",
+            "OverwriteDBsInTarget": "true",
+            "sourceType": "AWS_AURORA",
+            "sslMode": "Require"
+        }
+    }
+    ```
 
-- Run the following command to check if any migrations are running. The migration name is unique across the migrations within the Azure Database for PostgreSQL flexible server target.
+1. Run the following command to check if any migrations are running. The migration name is unique for migrations in the Azure Database for PostgreSQL - Flexible Server target.
 
     ```azurecli-interactive
     az postgres flexible-server migration list --subscription 11111111-1111-1111-1111-111111111111 --resource-group my-learning-rg --name myflexibleserver --filter All
     ```
 
-- In the above steps, there are no migrations performed so we start with the new migration by running the following command
+1. In the preceding steps, there are no migrations performed. Start with the new migration by running the following command:
 
     ```azurecli-interactive
     az postgres flexible-server migration create --subscription 11111111-1111-1111-1111-111111111111 --resource-group my-learning-rg --name myflexibleserver --migration-name migration1 --migration-mode online --migration-option ValidateAndMigrate --properties "C:\migration-cli\migration_body.json"
     ```
 
-- Run the following command to initiate the migration status in the previous step. You can check the status of the migration by providing the migration name
+1. Run the following command to initiate the migration status in the previous step. You can check the status of the migration by providing the migration name.
 
     ```azurecli-interactive
     az postgres flexible-server migration show --subscription 11111111-1111-1111-1111-111111111111 --resource-group my-learning-rg --name myflexibleserver --migration-name migration1
     ```
 
-- The status of the migration progress is shown in the Azure CLI.
-- You can also see the status of the Azure Database for PostgreSQL flexible server in the Azure portal.
+   The status of the migration appears in the Azure CLI. You also can see the status of the instance of Azure Database for PostgreSQL - Flexible Server in the Azure portal.
 
-- You can cancel any ongoing migration attempts using the `cancel` command. This command stops the particular migration attempt and rolls back all changes on your target server. Here's the CLI command to delete a migration:
+### Cancel or delete a migration
 
-    ```azurecli-interactive
-    az postgres flexible-server migration update cancel --subscription 11111111-1111-1111-1111-111111111111 --resource-group my-learning-rg --name myflexibleserver --migration-name migration1
-    ```
+You can cancel any ongoing migration attempts by using the `cancel` command. This command stops the specific migration attempt and rolls back all changes on your target server.
 
-#### Cutover
+Here's the Azure CLI command to delete a migration:
 
-- After the base data migration is complete in online migrations, the migration task moves to the `WaitingForCutoverTrigger` substate. In this state, the user can trigger the cutover through the CLI using the command below. The cutover can also be triggered from the portal by selecting the migration name in the migration grid.
-- You can also initiate the cutover from the Azure portal.
+```azurecli-interactive
+az postgres flexible-server migration update cancel --subscription 11111111-1111-1111-1111-111111111111 --resource-group my-learning-rg --name myflexibleserver --migration-name migration1
+```
 
-    ```azurecli-interactive
-    az postgres flexible-server migration update --subscription 11111111-1111-1111-1111-111111111111 --resource-group my-learning-rg --name myflexibleserver --migration-name migration1 --cutover
-    ```
+### Cutover
+
+When the base data migration is complete in an online migration, the migration task moves to the **WaitingForCutoverTrigger** substate. In this state, you can trigger the cutover by using the following command in the Azure CLI:
+
+```azurecli-interactive
+az postgres flexible-server migration update --subscription 11111111-1111-1111-1111-111111111111 --resource-group my-learning-rg --name myflexibleserver --migration-name migration1 --cutover
+```
+
+You also can trigger a cutover in the portal by selecting the name of the migration in the migration grid.
 
 ---
 
-## Check the migration when complete
+## Verify the migration
 
-After completing the databases, you need to manually validate the data between the source, and the target and verify that all the objects in the target database are successfully created.
+When the database migration is finished, manually validate the data between the source and the target. Verify that all the objects in the target database are successfully created.
 
-After migration, you can perform the following tasks:
+After migration, you can complete these tasks:
 
-- Verify the data on your flexible server and ensure it's an exact copy of the source instance.
-- Post verification, enable the high availability option on your flexible server as needed.
-- Change the SKU of the flexible server to match the application needs. This change needs a database server restart.
-- If you change any server parameters from their default values in the source instance, copy those server parameter values in the flexible server.
+- Verify the data on your flexible server and ensure that it's an exact copy of the source instance.
+- After verification, enable the high-availability option on your flexible server as needed.
+- Change the SKU (version) of the flexible server to match the needs of your application. This change requires a restart of the database server.
+- If you change any server parameters from their default values in the source instance, copy those server parameter values to the flexible server.
 - Copy other server settings, such as tags, alerts, and firewall rules (if applicable), from the source instance to the flexible server.
 - Make changes to your application to point the connection strings to a flexible server.
 - Monitor the database performance closely to see if it requires performance tuning.
@@ -304,4 +334,4 @@ After migration, you can perform the following tasks:
 - [Migrate offline from Amazon Aurora PostgreSQL](tutorial-migration-service-aurora-offline.md)
 - [Migration service](concepts-migration-service-postgresql.md)
 - [Migrate from on-premises and Azure VMs](tutorial-migration-service-iaas.md)
-- [Known Issues and limitations](concepts-known-issues-migration-service.md)
+- [Known issues and limitations](concepts-known-issues-migration-service.md)

@@ -7,9 +7,10 @@ ms.reviewer: randolphwest
 ms.date: 09/18/2024
 ms.service: azure-database-migration-service
 ms.topic: conceptual
+ms.collection:
+  - sql-migration-content
 ms.custom:
   - references_regions
-  - sql-migration-content
 ---
 
 # Migrate databases by using the Azure SQL Migration extension for Azure Data Studio

@@ -1,20 +1,20 @@
 ---
 title: 'Tutorial: Deploy an ASP.NET web application using Azure Cosmos DB for NoSQL, managed identity, and Azure Kubernetes Service via Bicep'
-description: Learn how to deploy an ASP.NET MVC web application with Azure Cosmos DB for NoSQL, managed identity, and Azure Kubernetes Service by using Bicep.
+description: Learn how to deploy an ASP.NET web application with Azure Cosmos DB for NoSQL, managed identity, and Azure Kubernetes Service by using Bicep.
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.custom: tutorial-develop, mvc, devx-track-azurecli, devx-track-bicep, build-2023, build-2023-dataai
 author: sandnair
 ms.author: sandnair
 ms.topic: tutorial
-ms.date: 10/17/2022
+ms.date: 09/26/2024
 ---
 
 # Tutorial: Deploy an ASP.NET web application by using Azure Cosmos DB for NoSQL, managed identity, and AKS via Bicep
 
 [!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
 
-In this tutorial, you'll deploy a reference ASP.NET web application on an Azure Kubernetes Service (AKS) cluster that connects to Azure Cosmos DB for NoSQL.
+In this tutorial, you deploy a reference ASP.NET web application on an Azure Kubernetes Service (AKS) cluster that connects to Azure Cosmos DB for NoSQL.
 
 [Azure Cosmos DB](../introduction.md) is a fully managed distributed database platform for modern application development with NoSQL or relational databases.
 
@@ -37,9 +37,9 @@ The following tools are required to compile the ASP.NET web application and crea
 
 ## Overview
 
-This tutorial uses an [infrastructure as code (IaC)](/devops/deliver/what-is-infrastructure-as-code) approach to deploy the resources to Azure. You'll use [Bicep](/azure/azure-resource-manager/bicep/overview), which is a new declarative language that offers the same capabilities as [Azure Resource Manager templates](/azure/azure-resource-manager/templates/overview). However, Bicep includes a syntax that's more concise and easier to use.
+This tutorial uses an [infrastructure as code (IaC)](/devops/deliver/what-is-infrastructure-as-code) approach to deploy the resources to Azure. You use [Bicep](/azure/azure-resource-manager/bicep/overview), which is a new declarative language that offers the same capabilities as [Azure Resource Manager templates](/azure/azure-resource-manager/templates/overview). However, Bicep includes a syntax that's more concise and easier to use.
 
-The Bicep modules will deploy the following Azure resources within the targeted subscription scope:
+The Bicep modules deploy the following Azure resources within the targeted subscription scope:
 
 - A [resource group](/azure/azure-resource-manager/management/overview#resource-groups) to organize the resources
 -  A [managed identity](/azure/active-directory/managed-identities-azure-resources/overview) for authentication
@@ -50,11 +50,11 @@ The Bicep modules will deploy the following Azure resources within the targeted 
 - A [key vault](/azure/key-vault/general/overview) to store secure keys
 - (Optional) A [Log Analytics workspace](/azure/azure-monitor/logs/log-analytics-overview)
 
-This tutorial uses the following security best practices with Azure Cosmos DB:
+This tutorial uses the following best practices for Azure Cosmos DB security:
 
 - Implement access control by using [role-based access control (RBAC)](/azure/role-based-access-control/overview) and a [managed identity](/azure/active-directory/managed-identities-azure-resources/overview). These features eliminate the need for developers to manage secrets, credentials, certificates, and keys for secure communication between services.
 - Limit Azure Cosmos DB access to the AKS subnet by [configuring a virtual network service endpoint](../how-to-configure-vnet-service-endpoint.md).
-- Set `disableLocalAuth = true` in the `databaseAccount` resource to [enforce RBAC as the only authentication method](../how-to-setup-rbac.md#disable-local-auth).
+- Set `disableLocalAuth = true` in the `databaseAccount` resource to [enforce RBAC as the only authentication method](security/how-to-disable-key-based-authentication.md).
 
 > [!TIP]
 > The steps in this tutorial use [Azure Cosmos DB for NoSQL](./quickstart-dotnet.md). However, you can apply the same concepts to [Azure Cosmos DB for MongoDB](../mongodb/introduction.md).
@@ -71,7 +71,7 @@ cd Bicep/
 
 ## Connect to your Azure subscription
 
-Use [az login](/cli/azure/authenticate-azure-cli) to connect to your default Azure subscription:
+Use [az sign in](/cli/azure/authenticate-azure-cli) to connect to your default Azure subscription:
 
 ```azurecli
 az login
@@ -128,7 +128,7 @@ az deployment sub create \
   --parameters @param.json
 ```
 
-During deployment, the console will output a message indicating that the deployment is still running:
+During deployment, the console outputs a message indicating that the deployment is still running:
 
 ```output
  / Running ..
@@ -167,7 +167,7 @@ rgName='{resource group name}'
 aksName=$rgName'aks'
 ```
 
-Run [az aks update](/cli/azure/aks#az-aks-update) to attach the existing Azure Container Registry resource with the AKS cluster:
+Run [`az aks update`](/cli/azure/aks#az-aks-update) to attach the existing Azure Container Registry resource with the AKS cluster:
 
 ```azurecli
 az aks update \
@@ -178,13 +178,13 @@ az aks update \
 
 ## Connect to the AKS cluster
 
-To manage a Kubernetes cluster, you use [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/), the Kubernetes command-line client. If you use Azure Cloud Shell, `kubectl` is already installed. To install `kubectl` locally, use [az aks install-cli](/cli/azure/aks#az-aks-install-cli):
+To manage a Kubernetes cluster, you use [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/), the Kubernetes command-line client. If you use Azure Cloud Shell, `kubectl` is already installed. To install `kubectl` locally, use [`az aks install-cli`](/cli/azure/aks#az-aks-install-cli):
 
 ```azurecli
 az aks install-cli
 ```
 
-To configure `kubectl` to connect to your Kubernetes cluster, use [az aks get-credentials](/cli/azure/aks#az-aks-get-credentials). This command downloads credentials and configures the Kubernetes CLI to use them.
+To configure `kubectl` to connect to your Kubernetes cluster, use [`az aks get-credentials`](/cli/azure/aks#az-aks-get-credentials). This command downloads credentials and configures the Kubernetes CLI to use them.
 
 ```azurecli
 az aks get-credentials \
@@ -194,7 +194,7 @@ az aks get-credentials \
 
 ## Connect the AKS pods to Azure Key Vault
 
-Microsoft Entra pod-managed identities use AKS primitives to associate managed identities for Azure resources and identities in Microsoft Entra ID with pods. You'll use these identities to grant access to the Azure Key Vault Provider for Secrets Store CSI Driver.
+Microsoft Entra pod-managed identities use AKS primitives to associate managed identities for Azure resources and identities in Microsoft Entra ID with pods. You use these identities to grant access to the Azure Key Vault Provider for Secrets Store Container Storage Interface (CSI) Driver.
 
 Use the following command to find the values of the tenant ID (`homeTenantId`):
 
@@ -247,7 +247,7 @@ Open the *Application* folder in Visual Studio Code. Run the application by usin
 
 1. In the prompt that asks for the name and version to tag the image, enter the name **todo:latest**.
 
-1. Use the **Docker** pane to push the built image to Azure Container Registry. You'll find the built image under the **Images** node. Open the **todo** node, right-click **latest**, and then select **Push**.
+1. Use the **Docker** pane to push the built image to Azure Container Registry. You can find the built image under the **Images** node. Open the **todo** node, right-click **latest**, and then select **Push**.
 
     :::image type="content" source="./media/tutorial-deploy-app-bicep-aks/context-menu-push-docker-image.png" alt-text="Screenshot of the context menu in Visual Studio Code with the Push option selected.":::
 
@@ -348,10 +348,9 @@ az deployment sub delete \
   --name $deploymentName
 ```
 
-## Next steps
+## Related content
 
-- Learn how to [develop a web application with Azure Cosmos DB](./tutorial-dotnet-web-app.md).
-- Learn how to [query Azure Cosmos DB for NoSQL](./tutorial-query.md).
-- Learn how to [upgrade your cluster](/azure/aks/tutorial-kubernetes-upgrade-cluster).
-- Learn how to [scale your cluster](/azure/aks/tutorial-kubernetes-scale).
-- Learn how to [enable continuous deployment](/azure/aks/deployment-center-launcher).
+- [Query Azure Cosmos DB for NoSQL](./tutorial-query.md).
+- [Upgrade your cluster](/azure/aks/tutorial-kubernetes-upgrade-cluster).
+- [Scale your cluster](/azure/aks/tutorial-kubernetes-scale).
+- [Enable continuous deployment](/azure/aks/deployment-center-launcher).

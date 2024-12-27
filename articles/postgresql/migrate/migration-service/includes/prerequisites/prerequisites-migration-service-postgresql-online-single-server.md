@@ -44,6 +44,11 @@ To prevent the Online migration from running out of storage to store the logs, e
 
 - ALTER SYSTEM SET max_replication_slots = `number of databases to migrate` + 1;
 
+- When migrating across PostgreSQL versions (major or minor), ensure compatibility between your database and application by reviewing the [release notes](https://www.postgresql.org/docs/17/release.html) for potential breaking changes.
+
+> [!IMPORTANT]  
+> [Change the **password_encryption** server parameter on your flexible server](../../../../flexible-server/how-to-configure-server-parameters-using-portal.md) from SCRAM-SHA-256 to MD5 before initating the migration. This is essential for the existing credentials on single server to work on your flexible server.
+
 ### Set up Network
 
 Network setup is crucial for the migration service to function correctly. Ensure that the source PostgreSQL server can communicate with the target Azure Database for PostgreSQL server. The following network configurations are essential for a successful migration.

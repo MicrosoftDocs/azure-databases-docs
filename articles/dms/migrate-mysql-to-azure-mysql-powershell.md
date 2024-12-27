@@ -8,9 +8,10 @@ ms.reviewer: arthiaga, randolphwest
 ms.date: 09/18/2024
 ms.service: azure-database-migration-service
 ms.topic: tutorial
+ms.collection:
+  - sql-migration-content
 ms.custom:
   - devx-track-azurepowershell
-  - sql-migration-content
 ---
 
 # Migrate MySQL to Azure Database for MySQL offline with PowerShell & Azure Database Migration Service

@@ -67,7 +67,7 @@ sections:
       - question: |
           What permissions do I need to enable Synapse Link in my database account?
         answer: |
-          You need [Contributor role](role-based-access-control.md) to enable Synapse Link at account level.
+          You need Contributor role to enable Synapse Link at account level.
           
       - question: |
           Why Synapse Workspace doesn't list my Gremlin Graphs in Data Explorer?
@@ -176,7 +176,7 @@ sections:
       - question: |
           What permissions do I need to enable Synapse Link in my containers or collections?
         answer: |
-          You need at least [Operator role](role-based-access-control.md) to enable Synapse Link, for consequence to enable analytical store, at container or collection level.
+          You need at least Operator role to enable Synapse Link, for consequence to enable analytical store, at container or collection level.
 
           
   - name: Analytical Time to live (TTL)

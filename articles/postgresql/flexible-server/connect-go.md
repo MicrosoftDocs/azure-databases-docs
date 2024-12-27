@@ -31,7 +31,7 @@ This quickstart uses the resources created in either of these guides as a starti
 > [!IMPORTANT]
 > We recommend you use a server with **Public access (allowed IP addresses)** enabled for this quickstart. Using a server with **Private access (VNet Integration)** enabled to complete this quickstart might involve extra steps that aren't covered.
 >
-> Ensure the IP address you're connecting from has been added the server's firewall rules using the [Azure portal](./how-to-manage-firewall-portal.md) or [Azure CLI](./how-to-manage-firewall-cli.md).
+> Ensure the IP address you're connecting from has been added the server's firewall rules using the [Azure portal](how-to-manage-firewall-portal.md) or [Azure CLI](how-to-manage-firewall-cli.md).
 
 ## Install Go and pq connector
 
@@ -379,7 +379,14 @@ az group delete \
     --yes
 ```
 
-## Next steps
+[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
 
-> [!div class="nextstepaction"]
-> [Migrate your database using dump and restore](../howto-migrate-using-dump-and-restore.md)
+## Related content
+
+- [Manage Azure Database for PostgreSQL - Flexible Server](how-to-manage-server-portal.md).
+- [Quickstart: Use Python to connect and query data from an instance of Azure Database for PostgreSQL flexible server](connect-python.md).
+- [Quickstart: Use Java to connect and query data from an instance of Azure Database for PostgreSQL flexible server](connect-java.md).
+- [Quickstart: Use .NET (C#) to connect and query data from an instance of Azure Database for PostgreSQL flexible server](connect-csharp.md).
+- [Quickstart: Use PHP to connect and query data from an instance of Azure Database for PostgreSQL flexible server](connect-php.md).
+- [Quickstart: Use Azure CLI to connect and query data from an instance of Azure Database for PostgreSQL flexible server](connect-azure-cli.md).
+- [Quickstart: Import data from Azure Database for PostgreSQL - Flexible Server in Power BI](connect-with-power-bi-desktop.md).

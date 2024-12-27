@@ -7,9 +7,10 @@ ms.reviewer: randolphwest
 ms.date: 09/18/2024
 ms.service: azure-database-migration-service
 ms.topic: troubleshooting
+ms.collection:
+  - sql-migration-content
 ms.custom:
   - has-azure-ad-ps-ref
-  - sql-migration-content
 ---
 
 # Troubleshoot common Azure Database Migration Service (classic) issues and errors

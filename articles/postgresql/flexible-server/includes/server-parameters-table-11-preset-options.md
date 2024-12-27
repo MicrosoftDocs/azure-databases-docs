@@ -2,10 +2,11 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 09/13/2024
+ms.date: 12/05/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
+ms.custom: automatically generated
 ---
 ### block_size
 
@@ -276,5 +277,6 @@ ms.topic: include
 
 
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
 
 

@@ -26,12 +26,6 @@ Manage your MongoDB collection stored in Azure Cosmos DB with the native MongoDB
 
 In Azure Cosmos DB, a collection is analogous to a table in a relational database. When you create a collection, the collection name forms a segment of the URI used to access the collection resource and any child docs.
 
-Here are some quick rules when naming a collection:
-
-- Keep collection names between 3 and 63 characters long
-- Collection names can only contain lowercase letters, numbers, or the dash (-) character.
-- Container names must start with a lowercase letter or number.
-
 ## Get collection instance
 
 Use an instance of the **Collection** class to access the collection on the server.
