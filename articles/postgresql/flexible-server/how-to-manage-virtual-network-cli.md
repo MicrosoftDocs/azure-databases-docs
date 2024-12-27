@@ -18,10 +18,10 @@ ms.custom:
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
 Azure Database for PostgreSQL flexible server supports two types of mutually exclusive network connectivity methods to connect to your flexible server. The two options are:
-* Public access (allowed IP addresses). That method can be further secured by using [Private Link](./concepts-networking-private-link.md) based networking with Azure Database for PostgreSQL flexible server in Preview. 
+* Public access (allowed IP addresses). That method can be further secured by using [Private Link](concepts-networking-private-link.md) based networking with Azure Database for PostgreSQL flexible server in Preview. 
 * Private access (VNET Integration)
 
-In this article, we focus on creation of an Azure Database for PostgreSQL flexible server instance with **Private access (VNet Integration)** using Azure CLI. With *Private access (VNET Integration)*, you can deploy your Azure Database for PostgreSQL flexible server instance into your own [Azure Virtual Network](/azure/virtual-network/virtual-networks-overview). Azure Virtual Networks provide private and secure network communication. In Private access, the connections to the Azure Database for PostgreSQL flexible server instance are restricted to only within your virtual network. To learn more about it, refer to [Private access (VNet Integration)](./concepts-networking.md#private-access-vnet-integration).
+In this article, we focus on creation of an Azure Database for PostgreSQL flexible server instance with **Private access (VNet Integration)** using Azure CLI. With *Private access (VNET Integration)*, you can deploy your Azure Database for PostgreSQL flexible server instance into your own [Azure Virtual Network](/azure/virtual-network/virtual-networks-overview). Azure Virtual Networks provide private and secure network communication. In Private access, the connections to the Azure Database for PostgreSQL flexible server instance are restricted to only within your virtual network. To learn more about it, refer to [Private access (VNet Integration)](concepts-networking.md#private-access-vnet-integration).
 
 In Azure Database for PostgreSQL flexible server, you can only deploy the server to a virtual network and subnet during creation of the server. After the Azure Database for PostgreSQL flexible server instance is deployed to a virtual network and subnet, you can't move it to another virtual network, subnet or to *Public access (allowed IP addresses)*.
 
@@ -83,6 +83,9 @@ Refer to the Azure CLI [reference documentation](/cli/azure/postgres/flexible-se
 >[!Important]
 > If you get an error `The parameter PrivateDnsZoneArguments is required, and must be provided by customer`, this means you may be running an older version of Azure CLI. Please [upgrade Azure CLI](/cli/azure/update-azure-cli) and retry the operation.
 
-## Next steps
-- Learn more about [private networking in Azure Database for PostgreSQL - Flexible Server](./concepts-networking-private.md).
-- [Create and manage Azure Database for PostgreSQL - Flexible Server virtual network using Azure portal](./how-to-manage-virtual-network-portal.md).
+[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
+
+## Related content
+
+- [Private networking in Azure Database for PostgreSQL - Flexible Server](concepts-networking-private.md).
+- [Create and manage Azure Database for PostgreSQL - Flexible Server virtual network using Azure portal](how-to-manage-virtual-network-portal.md).

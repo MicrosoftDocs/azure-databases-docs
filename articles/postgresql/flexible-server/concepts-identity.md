@@ -60,7 +60,7 @@ Follow these steps to enable System Assigned Managed Identity on your Azure Data
 
 4. Select **Save** to apply the changes.
 
-![Screenshot showing system assigned managed identity.](./media/concepts-Identity/system-assigned-managed-identity.png)
+![Screenshot showing system assigned managed identity.](media/concepts-Identity/system-assigned-managed-identity.png)
 
 5. A notification confirms that system assigned managed identity is enabled.
 
@@ -109,12 +109,13 @@ You can verify the managed identity created by going to **Enterprise Application
 
 2. Provide your flexible server name in **Search by application name or Identity** as shown in the screenshot.
 
-![Screenshot verifying system assigned managed identity.](./media/concepts-Identity/verify-managed-identity.png)
+![Screenshot verifying system assigned managed identity.](media/concepts-Identity/verify-managed-identity.png)
 
 
+[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
 
 ## Related content
 
-- [Microsoft Entra authentication](../concepts-aad-authentication.md)
-- [Firewall rules for IP addresses](concepts-firewall-rules.md)
-- [Private access networking with Azure Database for PostgreSQL - Flexible Server](concepts-networking.md)
+- [Firewall rules in Azure Database for PostgreSQL - Flexible Server](concepts-firewall-rules.md).
+- [Public access and private endpoints in Azure Database for PostgreSQL - Flexible Server](concepts-networking-public.md).
+- [Virtual network integration in Azure Database for PostgreSQL - Flexible Server](concepts-networking-private.md).

@@ -2,7 +2,7 @@
 author: shreyaaithal
 ms.author: shaithal
 ms.reviewer: maghan
-ms.date: 06/18/2024
+ms.date: 11/27/2024
 ms.topic: include
 ---
 
@@ -18,5 +18,5 @@ To make any changes to your code, go to Visual Studio Code in the browser:
 
 If you go back to the Deployment Center page, you'll see a new log entry because another run is started. Wait for the run to complete. It takes about 15 minutes.
 
-> [!TIP]
+> [!TIP]  
 > The GitHub action is defined by the file in your GitHub repository, in *.github/workflow*. You can make it faster by customizing the file.

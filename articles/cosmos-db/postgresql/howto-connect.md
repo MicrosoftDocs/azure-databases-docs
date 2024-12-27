@@ -43,7 +43,7 @@ administration and development platform for PostgreSQL.
      It will be of the form, `c-<clustername>.12345678901234.postgres.cosmos.azure.com`.
    * **Maintenance database**: use the value `citus`.
    * **Username**: use the value `citus`.
-   * **Password**: the connection password.
+   * **Password**: the connection password or Microsoft Entra ID token. For more information, see [authentication options](how-to-configure-authentication.md).
    * **Save password**: enable if desired.
 
 1. In the SSL tab, set **SSL mode** to **Require**.
@@ -68,7 +68,7 @@ interactively, issue them to PostgreSQL, and see the query results.
 
    The **psql** string is of the form `psql "host=c-<clustername>.<uniqueID>.postgres.cosmos.azure.com port=5432 dbname=citus user=citus password=<your_password> sslmode=require"`. Notice that the host name starts with a `c-`, for example `c-demo.12345678901234.postgres.cosmos.azure.com`. This prefix indicates the coordinator node of the cluster. The default `dbname` and `username` are `citus` and can't be changed.
 
-1. In the connection string you copied, replace `<your_password>` with your administrative password.
+1. In the connection string you copied, replace `<your_password>` with your connection password or Microsoft Entra ID token. For more information, see [authentication options](how-to-configure-authentication.md).
 
 1. In a local terminal prompt, paste the psql connection string, and then press Enter.
 

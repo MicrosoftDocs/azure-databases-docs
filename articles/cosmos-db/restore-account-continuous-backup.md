@@ -230,10 +230,10 @@ The response includes all the database accounts (both live and deleted) that can
     "apiType": "Sql",
     "creationTime": "2020-08-08T01:04:52.070190+00:00",
     "deletionTime": null,
-    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.DocumentDB/locations/West US/restorableDatabaseAccounts/23e99a35-cd36-4df4-9614-f767a03b9995",
+    "id": "/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/providers/Microsoft.DocumentDB/locations/West US/restorableDatabaseAccounts/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e",
     "identity": null,
     "location": "West US",
-    "name": "23e99a35-cd36-4df4-9614-f767a03b9995",
+    "name": "aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e",
     "restorableLocations": [
       {
         "creationTime": "2020-08-08T01:04:52.945185+00:00",
@@ -422,7 +422,7 @@ az cosmosdb restore \
  --target-database-account-name <MyRestoredCosmosDBDatabaseAccount> \
  --account-name <MySourceAccount> \
  --restore-timestamp 2020-07-13T16:03:41+0000 \
- --resource-group <MyResourceGroup> \
+ --resource-group <TargetResourceGroup> \
  --location "West US" \
  --public-network-access Disabled \
  --disable-ttl True 
@@ -503,7 +503,7 @@ The response includes all the database accounts (both live and deleted) that can
     "apiType": "Sql",
     "creationTime": "2021-01-08T23:34:11.095870+00:00",
     "deletionTime": null,
-    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.DocumentDB/locations/West US/restorableDatabaseAccounts/abcd1234-d1c0-4645-a699-abcd1234",
+    "id": "/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/providers/Microsoft.DocumentDB/locations/West US/restorableDatabaseAccounts/abcd1234-d1c0-4645-a699-abcd1234",
     "identity": null,
     "location": "West US",
     "name": "abcd1234-d1c0-4645-a699-abcd1234",
@@ -539,8 +539,8 @@ This command output now shows when a database was created and deleted.
 ```json
 [
   {
-    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.DocumentDB/locations/West US/restorableDatabaseAccounts/abcd1234-d1c0-4645-a699-abcd1234/restorableSqlDatabases/40e93dbd-2abe-4356-a31a-35567b777220",
-     "name": "40e93dbd-2abe-4356-a31a-35567b777220",
+    "id": "/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/providers/Microsoft.DocumentDB/locations/West US/restorableDatabaseAccounts/abcd1234-d1c0-4645-a699-abcd1234/restorableSqlDatabases/bbbb1b1b-cc2c-dd3d-ee4e-ffffff5f5f5f",
+     "name": "bbbb1b1b-cc2c-dd3d-ee4e-ffffff5f5f5f",
     "resource": {
       "database": {
         "id": "db1"
@@ -553,8 +553,8 @@ This command output now shows when a database was created and deleted.
    
   },
   {
-    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.DocumentDB/locations/West US/restorableDatabaseAccounts/abcd1234-d1c0-4645-a699-abcd1234/restorableSqlDatabases/243c38cb-5c41-4931-8cfb-5948881a40ea",
-    "name": "243c38cb-5c41-4931-8cfb-5948881a40ea",
+    "id": "/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/providers/Microsoft.DocumentDB/locations/West US/restorableDatabaseAccounts/abcd1234-d1c0-4645-a699-abcd1234/restorableSqlDatabases/cccc2c2c-dd3d-ee4e-ff5f-aaaaaa6a6a6a",
+    "name": "cccc2c2c-dd3d-ee4e-ff5f-aaaaaa6a6a6a",
     "resource": {
       "database": {
         "id": "spdb1"
@@ -703,8 +703,8 @@ This command output shows includes list of operations performed on all the conta
 ```
 [ { 
 
-    "id": "/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/providers/Microsoft.DocumentDB/locations/eastus2euap/restorableDatabaseAccounts/a00d591d-4316-483b-8308-44193c5f3073/restorableGraphs/1792cead-4307-4032-860d-3fc30bd46a20", 
-    "name": "1792cead-4307-4032-860d-3fc30bd46a20", 
+    "id": "/subscriptions/dddd3d3d-ee4e-ff5f-aa6a-bbbbbb7b7b7b/providers/Microsoft.DocumentDB/locations/eastus2euap/restorableDatabaseAccounts/eeee4efe-ff5f-aa6a-bb7b-cccccc8c8c8c/restorableGraphs/ffff5f5f-aa6a-bb7b-cc8c-dddddd9d9d9d", 
+    "name": "ffff5f5f-aa6a-bb7b-cc8c-dddddd9d9d9d", 
     "resource": { 
       "eventTimestamp": "2022-02-09T17:10:31Z", 
       "operationType": "Create", 
@@ -753,8 +753,8 @@ az cosmosdb table restorable-table list \
 ```
 [   { 
 
-"id": "/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/providers/Microsoft.DocumentDB/locations/WestUS/restorableDatabaseAccounts/7e4d666a-c6ba-4e1f-a4b9-e92017c5e8df/restorableTables/59781d91-682b-4cc2-93a3-c25d03fab159", 
-"name": "59781d91-682b-4cc2-93a3-c25d03fab159", 
+"id": "/subscriptions/dddd3d3d-ee4e-ff5f-aa6a-bbbbbb7b7b7b/providers/Microsoft.DocumentDB/locations/WestUS/restorableDatabaseAccounts/aaaa6a6a-bb7b-cc8c-dd9d-eeeeee0e0e0e/restorableTables/bbbb1b1b-cc2c-dd3d-ee4e-ffffff5f5f5f", 
+"name": "bbbb1b1b-cc2c-dd3d-ee4e-ffffff5f5f5f", 
 "resource": { 
   "eventTimestamp": "2022-02-09T17:09:54Z", 
   "operationType": "Create", 
@@ -765,8 +765,8 @@ az cosmosdb table restorable-table list \
 "type": "Microsoft.DocumentDB/locations/restorableDatabaseAccounts/restorableTables" 
    }, 
 
-{"id": "/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/providers/Microsoft.DocumentDB/locations/eastus2euap/restorableDatabaseAccounts/7e4d666a-c6ba-4e1f-a4b9-e92017c5e8df/restorableTables/2c9f35eb-a14c-4ab5-a7e0-6326c4f6b785", 
-"name": "2c9f35eb-a14c-4ab5-a7e0-6326c4f6b785", 
+{"id": "/subscriptions/dddd3d3d-ee4e-ff5f-aa6a-bbbbbb7b7b7b/providers/Microsoft.DocumentDB/locations/eastus2euap/restorableDatabaseAccounts/aaaa6a6a-bb7b-cc8c-dd9d-eeeeee0e0e0e/restorableTables/cccc2c2c-dd3d-ee4e-ff5f-aaaaaa6a6a6a", 
+"name": "cccc2c2c-dd3d-ee4e-ff5f-aaaaaa6a6a6a", 
 "resource": { 
   "eventTimestamp": "2022-02-09T20:47:53Z", 
   "operationType": "Create", 
@@ -834,7 +834,7 @@ Use the following ARM template to restore an account for the Azure Cosmos DB API
         "databaseAccountOfferType": "Standard",
         "createMode": "Restore",
         "restoreParameters": {
-            "restoreSource": "/subscriptions/2296c272-5d55-40d9-bc05-4d56dc2d7588/providers/Microsoft.DocumentDB/locations/West US/restorableDatabaseAccounts/6a18ecb8-88c2-4005-8dce-07b44b9741df",
+            "restoreSource": "/subscriptions/dddd3d3d-ee4e-ff5f-aa6a-bbbbbb7b7b7b/providers/Microsoft.DocumentDB/locations/West US/restorableDatabaseAccounts/eeee4efe-ff5f-aa6a-bb7b-cccccc8c8c8c",
             "restoreMode": "PointInTime",
             "restoreTimestampInUtc": "6/24/2020 4:01:48 AM",
             "restoreWithTtlDisabled": "true"
@@ -869,7 +869,7 @@ Use the following ARM template to restore an account for the Azure Cosmos DB API
         "databaseAccountOfferType": "Standard",
         "createMode": "Restore",
         "restoreParameters": {
-            "restoreSource": "/subscriptions/2296c272-5d55-40d9-bc05-4d56dc2d7588/providers/Microsoft.DocumentDB/locations/West US/restorableDatabaseAccounts/5cb9d82e-ec71-430b-b977-cd6641db85bc",
+            "restoreSource": "/subscriptions/dddd3d3d-ee4e-ff5f-aa6a-bbbbbb7b7b7b/providers/Microsoft.DocumentDB/locations/West US/restorableDatabaseAccounts/ffff5f5f-aa6a-bb7b-cc8c-dddddd9d9d9d",
             "restoreMode": "PointInTime",
             "restoreTimestampInUtc": "2021-10-27T23:20:46Z",
             "gremlinDatabasesToRestore": [{ 
@@ -909,7 +909,7 @@ Use the following ARM template to restore an account for the Azure Cosmos DB API
         "databaseAccountOfferType": "Standard",
         "createMode": "Restore",
         "restoreParameters": {
-            "restoreSource": "/subscriptions/1296c352-5d33-40d9-bc05-4d56dc2a7521/providers/Microsoft.DocumentDB/locations/West US/restorableDatabaseAccounts/4bcb9d82e-ec71-430b-b977-cd6641db85ad",
+            "restoreSource": "/subscriptions/aaaa6a6a-bb7b-cc8c-dd9d-eeeeee0e0e0e/providers/Microsoft.DocumentDB/locations/West US/restorableDatabaseAccounts/4bcb9d82e-ec71-430b-b977-cd6641db85ad",
             "restoreMode": "PointInTime",
             "restoreTimestampInUtc": "2022-04-13T10:20:46Z",
              "tablesToRestore": [ 

@@ -66,12 +66,11 @@ If your source server is configured with geo-redundant backup, you can restore t
 
 6. Select **Review + create** and click **create**, a notification shows that the restore operation has started.
 
+[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
 
 
+## Related content
 
-## Next steps
-
-- Learn about [business continuity](./concepts-business-continuity.md).
-- Learn about [zone-redundant high availability](./concepts-high-availability.md).
-- Learn about [backup and recovery](./concepts-backup-restore.md).
-
+- [Overview of business continuity with Azure Database for PostgreSQL - Flexible Server](concepts-business-continuity.md).
+- [High availability in Azure Database for PostgreSQL - Flexible Server](/azure/reliability/reliability-postgresql-flexible-server).
+- [Backup and restore in Azure Database for PostgreSQL - Flexible Server](concepts-backup-restore.md).

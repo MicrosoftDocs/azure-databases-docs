@@ -1,10 +1,10 @@
 ---
-title: Azure Database for MySQL - Flexible Server overview
+title: Azure Database for MySQL - Flexible Server Overview
 description: Learn about the Flexible Server deployment model for Azure Database for MySQL.
 author: SudheeshGH
 ms.author: sunaray
 ms.reviewer: maghan
-ms.date: 06/18/2024
+ms.date: 12/19/2024
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: overview
@@ -14,8 +14,6 @@ ms.custom:
 ---
 
 # What is Azure Database for MySQL - Flexible Server?
-
-[!INCLUDE [applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 > [!VIDEO https://aka.ms/docs/player?id=492c7a41-5f0a-4482-828b-72be1b38e691]
 
@@ -40,9 +38,9 @@ These capabilities require no extra cost and almost no administration. They allo
 
 Azure Database for MySQL - Flexible Server also supports reserved instances. If your production workloads have predictable compute capacity requirements, using reserved instances can help you save costs.
 
-For the latest updates on Azure Database for MySQL - Flexible Server, refer to [What's new in Azure Database for MySQL - Flexible Server](whats-new.md).
+For the latest updates on Azure Database for MySQL - Flexible Server, refer to [What's new in Azure Database for MySQL](whats-new.md).
 
-:::image type="content" source="media/overview-single/1-azure-db-for-mysql-conceptual-diagram.png" alt-text="Diagram that shows the relationship between Azure database services and MySQL.":::
+:::image type="content" source="media/overview/1-azure-db-for-mysql-conceptual-diagram.png" alt-text="Diagram that shows the relationship between Azure database services and MySQL.":::
 
 ## Architecture overview
 
@@ -60,7 +58,7 @@ When you use a Flexible Server architecture, you can opt for high availability w
 - Production workloads with same-zone or zone-redundant high availability, along with managed maintenance windows.
 - A simplified development experience.
 
-:::image type="content" source="media/overview-single/1-flexible-server-conceptual-diagram.png" alt-text="Diagram of a Flexible Server architecture." lightbox="media/overview-single/1-flexible-server-conceptual-diagram.png":::
+:::image type="content" source="media/overview/1-flexible-server-conceptual-diagram.png" alt-text="Diagram of a Flexible Server architecture." lightbox="media/overview/1-flexible-server-conceptual-diagram.png":::
 
 ## Free 12-month offer
 
@@ -83,15 +81,11 @@ There are two high-availability architectural models:
 
   Zone-redundant HA is available in a [subset of Azure regions](#azure-regions) that support multiple availability zones and zone-redundant premium file shares.
 
-  :::image type="content" source="media/concepts-high-availability/1-flexible-server-overview-zone-redundant-ha.png" alt-text="Diagram of zone-redundant high availability." lightbox="media/concepts-high-availability/1-flexible-server-overview-zone-redundant-ha.png":::
-
 - **Same-zone high availability**: This option offers infrastructure redundancy with lower network latency because both primary and standby servers are in the same availability zone. It provides high availability without requiring you to configure application redundancy across zones.
 
   Same-zone HA is available in [all Azure regions](#azure-regions) where you can create Azure Database for MySQL - Flexible Server instances.
 
-  :::image type="content" source="media/concepts-high-availability/flexible-server-overview-same-zone-ha.png" alt-text="Diagram of same-zone high availability." lightbox="media/concepts-high-availability/flexible-server-overview-same-zone-ha.png":::
-
-For more information, see [High-availability concepts in Azure Database for MySQL - Flexible Server](concepts-high-availability.md).
+For more information, see [High availability concepts in Azure Database for MySQL - Flexible Server](concepts-high-availability.md).
 
 ## Automated patching with a managed maintenance window
 
@@ -105,7 +99,7 @@ For more information, see [Scheduled maintenance in Azure Database for MySQL - F
 
 The Azure Database for MySQL - Flexible Server service automatically creates server backups and stores them in user-configured locally redundant or geo-redundant storage. You can use backups to restore your server to any point in time within the backup retention period.
 
-You can configure a retention period of 1 to 35 days. The default is 7 days. All backups are encrypted through AES 256-bit encryption.
+You can configure a retention period of 1 to 35 days. The default is seven days. All backups are encrypted through AES 256-bit encryption.
 
 For more information, see [Backup and restore in Azure Database for MySQL - Flexible Server](concepts-backup-restore.md).
 
@@ -146,7 +140,7 @@ Using a virtual machine scale set with App Service or AKS as the underlying infr
 
 The *read replica* feature allows you to replicate data from an Azure Database for MySQL - Flexible Server instance to a read-only server. You can replicate from the source server to *up to 10 replicas*.
 
-Replicas are updated asynchronously via the MySQL engine's native [binary log (binlog) file position-based replication technology](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html). You can use a load-balancer proxy solution like [ProxySQL](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/load-balance-read-replicas-using-proxysql-in-azure-database-for/ba-p/880042) to seamlessly scale out your application workload to read replicas without any application refactoring cost.
+Replicas are updated asynchronously via the MySQL engine's native [binary log (binlog) file position-based replication technology](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html). You can use a load-balancer proxy solution like [ProxySQL](https://techcommunity.microsoft.com/blog/adformysql/load-balance-read-replicas-using-proxysql-in-azure-database-for-mysql/880042) to seamlessly scale out your application workload to read replicas without any application refactoring cost.
 
 For more information, see [Read replicas in Azure Database for MySQL - Flexible Server](concepts-read-replicas.md).
 
@@ -172,19 +166,21 @@ For more information, see [Server concepts in Azure Database for MySQL - Flexibl
 
 Azure Database for MySQL - Flexible Server uses the FIPS 140-2 validated cryptographic module for storage encryption of data at rest. Data (including backups) and temporary files created while you run queries are encrypted.
 
-The service uses the AES 256-bit cipher included in Azure storage encryption, and the keys can be system managed (default). You can also use customer-managed keys stored in an Azure key vault or a managed hardware security module for data encryption at rest. For more information, see [Data encryption with customer-managed keys for Azure Database for MySQL - Flexible Server](concepts-customer-managed-key.md).
+The service uses the AES 256-bit cipher included in Azure storage encryption, and the keys can be system managed (default). You can also use customer-managed keys stored in an Azure key vault or a managed hardware security module for data encryption at rest. For more information, see [Data encryption with customer managed keys for Azure Database for MySQL - Flexible Server](concepts-customer-managed-key.md).
 
 Azure Database for MySQL - Flexible Server encrypts data in motion with Transport Layer Security (TLS) enforced by default. Azure Database for MySQL - Flexible Server supports encrypted connections that use TLS 1.2. All incoming connections that use TLS 1.0 and TLS 1.1 are denied. You can turn off TLS enforcement by setting the `require_secure_transport` server parameter and then setting the minimum `tls_version` value for your server. For more information, see [Connect to Azure Database for MySQL - Flexible Server with encrypted connections](how-to-connect-tls-ssl.md).
 
 Azure Database for MySQL - Flexible Server allows full private access to the servers through [virtual network](/azure/virtual-network/virtual-networks-overview) integration. Servers in a virtual network can be reached and connected only through private IP addresses. With virtual network integration, public access is denied and servers can't be reached through public endpoints. For more information, see [Connectivity and networking concepts for Azure Database for MySQL - Flexible Server](concepts-networking.md).
 
-## Monitoring and alerting
+<a id="monitoring-and-alerting"></a>
+
+## Monitor and alerting
 
 Azure Database for MySQL - Flexible Server has built-in performance monitoring and alerting features. All Azure metrics have a one-minute frequency. Each metric provides 30 days of history.
 
 You can configure alerts on the metrics. Azure Database for MySQL - Flexible Server exposes host server metrics to monitor resource utilization and allows configuring slow query logs. By using these tools, you can quickly optimize your workloads and configure your server for the best performance.
 
-In Azure Database for MySQL - Flexible Server, you can visualize slow query and audit log data by using Azure Monitor workbooks. With workbooks, you get a flexible canvas for analyzing data and creating rich visual reports within the Azure portal. Azure Database for MySQL - Flexible Server provides three workbook templates: Server Overview, [Auditing](tutorial-configure-audit.md), and [Query Performance Insight](tutorial-query-performance-insights.md).
+In Azure Database for MySQL - Flexible Server, you can visualize slow query and audit log data by using Azure Monitor workbooks. With workbooks, you get a flexible canvas for analyzing data and creating rich visual reports within the Azure portal. Azure Database for MySQL - Flexible Server provides three workbook templates: Server Overview, [Tutorial: Configure audit logs by using Azure Database for MySQL - Flexible Server](tutorial-configure-audit.md), and [Tutorial: Query Performance Insight for Azure Database for MySQL - Flexible Server](tutorial-query-performance-insights.md).
 
 The Query Performance Insight workbook helps you spend less time troubleshooting database performance by providing such information as:
 
@@ -192,7 +188,7 @@ The Query Performance Insight workbook helps you spend less time troubleshooting
 - Query details: view the query text and the execution history with minimum, maximum, average, and standard deviation query time.
 - Resource utilization (CPU, memory, and storage).
 
-In addition, you can use community monitoring tools like [Percona Monitoring and Management](https://techcommunity.microsoft.com/t5/azure-database-for-mysql-blog/monitor-azure-database-for-mysql-using-percona-monitoring-and/ba-p/2568545) and integrate them with Azure Database for MySQL - Flexible Server.
+In addition, you can use community monitoring tools like [Percona Monitoring and Management](https://techcommunity.microsoft.com/blog/adformysql/monitor-azure-database-for-mysql-using-percona-monitoring-and-management-pmm/2568545) and integrate them with Azure Database for MySQL - Flexible Server.
 
 For more information, see [Monitor Azure Database for MySQL - Flexible Server](concepts-monitoring.md).
 
@@ -210,7 +206,7 @@ Use mydumper and myloader to use compression settings to efficiently move data o
 
 Use data-in replication with mydumper/myloader-consistent backup and restore for initial seeding. For step-by-step instructions, see [Migrate Azure Database for MySQL - Single Server to Azure Database for MySQL - Flexible Server with open-source tools](../../mysql/howto-migrate-single-flexible-minimum-downtime.md).
 
-To migrate from Azure Database for MySQL - Single Server to Azure Database for MySQL - Flexible Server in five easy steps, refer to [this blog](https://techcommunity.microsoft.com/t5/azure-database-for-mysql-blog/migrate-from-azure-database-for-mysql-single-server-to-flexible/ba-p/2674057).
+To migrate from Azure Database for MySQL - Single Server to Azure Database for MySQL - Flexible Server in five easy steps, refer to [this blog](https://techcommunity.microsoft.com/blog/adformysql/migrate-from-azure-database-for-mysql---single-server-to-flexible-server-in-5-ea/2674057).
 
 For more information, see [Select the right tools for migration to Azure Database for MySQL](../../mysql/how-to-decide-on-right-migration-tools.md).
 
@@ -220,61 +216,62 @@ One advantage of running your workload in Azure is its global reach. Azure Datab
 
 | Region | Availability | Same-zone HA | Zone-redundant HA | Geo-redundant backup |
 | --- | --- | --- | --- | --- |
-| Australia Central | :heavy_check_mark: | :heavy_check_mark: | :x: | :x: |
-| Australia East | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Australia Southeast | :heavy_check_mark: | :heavy_check_mark: | :x: | :heavy_check_mark: |
-| Brazil South | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Canada Central | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Canada East | :heavy_check_mark: | :heavy_check_mark: | :x: | :heavy_check_mark: |
-| Central India | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Central US | :heavy_check_mark: | :heavy_check_mark: | :x: | :heavy_check_mark: |
-| China East 2 | :heavy_check_mark: | :heavy_check_mark: | :x: | :heavy_check_mark: |
-| China East 3 | :heavy_check_mark: | :heavy_check_mark: | :x: | :heavy_check_mark: |
-| China North 2 | :heavy_check_mark: | :heavy_check_mark: | :x: | :heavy_check_mark: |
-| China North 3 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| East Asia (Hong Kong SAR) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| East US | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| East US 2 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| France Central | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| France South | :heavy_check_mark: | :heavy_check_mark: | :x: | :heavy_check_mark: |
-| Germany West Central | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Germany North | :heavy_check_mark: | :heavy_check_mark: | :x: | :heavy_check_mark: |
-| Israel Central | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :x: |
-| Italy North | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :x: |
-| Japan East | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Japan West | :heavy_check_mark: | :heavy_check_mark: | :x: | :heavy_check_mark: |
-| Jio India West | :heavy_check_mark: | :heavy_check_mark: | :x: | :x: |
-| Korea Central | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Korea South | :heavy_check_mark: | :heavy_check_mark: | :x: | :heavy_check_mark: |
-| North Central US | :heavy_check_mark: | :heavy_check_mark: | :x: | :heavy_check_mark: |
-| North Europe | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Norway East | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Norway West | :heavy_check_mark: | :heavy_check_mark: | :x: | :x: |
-| Poland Central | :heavy_check_mark: | :heavy_check_mark: | :x: | :x: |
-| Qatar Central | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :x: |
-| South Africa North | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :x: |
-| South Africa West | :heavy_check_mark: | :heavy_check_mark: | :x: | :x: |
-| South Central US | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| South India | :heavy_check_mark: | :heavy_check_mark: | :x: | :heavy_check_mark: |
-| Southeast Asia | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Spain Central | :heavy_check_mark: | :heavy_check_mark: | :x: | :heavy_check_mark: |
-| Sweden Central | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :x: |
-| Switzerland North | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Switzerland West | :heavy_check_mark: | :heavy_check_mark: | :x: | :heavy_check_mark: |
-| Taiwan North | :heavy_check_mark: | :heavy_check_mark: | :x: | :x: |
-| Taiwan Northwest | :heavy_check_mark: | :heavy_check_mark: | :x: | :x: |
-| UAE Central | :heavy_check_mark: | :heavy_check_mark: | :x: | :heavy_check_mark: |
-| UAE North | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| UK South | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| UK West | :heavy_check_mark: | :heavy_check_mark: | :x: | :heavy_check_mark: |
-| USGov Virginia | :heavy_check_mark: | :heavy_check_mark: | :x: | :x: |
-| USGov Arizona | :heavy_check_mark: | :heavy_check_mark: | :x: | :heavy_check_mark: |
-| USGov Texas | :heavy_check_mark: | :heavy_check_mark: | :x: | :heavy_check_mark: |
-| West Central US | :heavy_check_mark: | :heavy_check_mark: | :x: | :heavy_check_mark: |
-| West Europe | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| West US | :heavy_check_mark: | :heavy_check_mark: | :x: | :heavy_check_mark: |
-| West US 2 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| West US 3 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Australia Central | Yes | Yes | No | No |
+| Australia East | Yes | Yes | Yes | Yes |
+| Australia Southeast | Yes | Yes | No | Yes |
+| Brazil South | Yes | Yes | Yes | Yes |
+| Canada Central | Yes | Yes | Yes | Yes |
+| Canada East | Yes | Yes | No | Yes |
+| Central India | Yes | Yes | Yes | Yes |
+| Central US | Yes | Yes | Yes | Yes |
+| China East 2 | Yes | Yes | No | Yes |
+| China East 3 | Yes | Yes | No | Yes |
+| China North 2 | Yes | Yes | No | Yes |
+| China North 3 | Yes | Yes | Yes | Yes |
+| East Asia (Hong Kong SAR) | Yes | Yes | Yes | Yes |
+| East US | Yes | Yes | Yes | Yes |
+| East US 2 | Yes | Yes | Yes | Yes |
+| France Central | Yes | Yes | Yes | Yes |
+| France South | Yes | Yes | No | Yes |
+| Germany West Central | Yes | Yes | Yes | Yes |
+| Germany North | Yes | Yes | No | Yes |
+| Israel Central | Yes | Yes | Yes | No |
+| Italy North | Yes | Yes | Yes | No |
+| Japan East | Yes | Yes | Yes | Yes |
+| Japan West | Yes | Yes | No | Yes |
+| Jio India West | Yes | Yes | No | No |
+| Korea Central | Yes | Yes | Yes | Yes |
+| Korea South | Yes | Yes | No | Yes |
+| Mexico Central | Yes | Yes | Yes | Yes |
+| North Central US | Yes | Yes | No | Yes |
+| North Europe | Yes | Yes | Yes | Yes |
+| Norway East | Yes | Yes | Yes | Yes |
+| Norway West | Yes | Yes | No | No |
+| Poland Central | Yes | Yes | Yes | No |
+| Qatar Central | Yes | Yes | Yes | No |
+| South Africa North | Yes | Yes | Yes | Yes |
+| South Africa West | Yes | Yes | No | Yes |
+| South Central US | Yes | Yes | Yes | Yes |
+| South India | Yes | Yes | No | Yes |
+| Southeast Asia | Yes | Yes | Yes | Yes |
+| Spain Central | Yes | Yes | No | Yes |
+| Sweden Central | Yes | Yes | Yes | No |
+| Switzerland North | Yes | Yes | Yes | Yes |
+| Switzerland West | Yes | Yes | No | Yes |
+| Taiwan North | Yes | Yes | No | No |
+| Taiwan Northwest | Yes | Yes | No | No |
+| UAE Central | Yes | Yes | No | Yes |
+| UAE North | Yes | Yes | Yes | Yes |
+| UK South | Yes | Yes | Yes | Yes |
+| UK West | Yes | Yes | No | Yes |
+| USGov Virginia | Yes | Yes | No | No |
+| USGov Arizona | Yes | Yes | No | Yes |
+| USGov Texas | Yes | Yes | No | Yes |
+| West Central US | Yes | Yes | No | Yes |
+| West Europe | Yes | Yes | Yes | Yes |
+| West US | Yes | Yes | No | Yes |
+| West US 2 | Yes | Yes | Yes | Yes |
+| West US 3 | Yes | Yes | Yes | Yes |
 
 ## Feedback and support
 
@@ -285,8 +282,8 @@ For any questions or suggestions that you might have about working with Azure Da
 
 ## Related content
 
-- [Create an Azure Database for MySQL - Flexible Server instance by using the Azure portal](quickstart-create-server-portal.md)
-- [Create an Azure Database for MySQL - Flexible Server instance by using the Azure CLI](quickstart-create-server-cli.md)
-- [Manage an Azure Database for MySQL - Flexible Server instance by using the Azure CLI](how-to-manage-server-portal.md)
-- [Use Python to connect and query data in Azure Database for MySQL - Flexible Server](connect-python.md)
+- [Quickstart: Create an instance of Azure Database for MySQL with the Azure portal](quickstart-create-server-portal.md)
+- [Quickstart: Create an instance of Azure Database for MySQL - Flexible Server by using the Azure CLI](quickstart-create-server-cli.md)
+- [Manage Azure Database for MySQL - Flexible Server using the Azure portal](how-to-manage-server-portal.md)
+- [Quickstart: Use Python to connect and query data in Azure Database for MySQL - Flexible Server](connect-python.md)
 - [Use PHP with Azure Database for MySQL - Flexible Server](connect-php.md)

@@ -18,10 +18,10 @@ ms.custom:
 
 Azure Database for PostgreSQL flexible server supports two types of mutually exclusive network connectivity methods to connect to your flexible server. The two options are:
 
-* Public access (allowed IP addresses). That method can be further secured by using [Private Link](./concepts-networking-private-link.md) based networking with AAzure Database for PostgreSQL flexible server in Preview. 
+* Public access (allowed IP addresses). That method can be further secured by using [Private Link](concepts-networking-private-link.md) based networking with AAzure Database for PostgreSQL flexible server in Preview. 
 * Private access (VNet Integration)
 
-This article focuses on creation of an Azure Database for PostgreSQL flexible server instance with **Public access (allowed IP addresses)** using Azure portal and provides an overview of managing firewall rules after creation of the Azure Database for PostgreSQL flexible server instance. With *Public access (allowed IP addresses)*, the connections to the Azure Database for PostgreSQL flexible server instance are restricted to allowed IP addresses only. The client IP addresses need to be allowed in firewall rules. To learn more about it, refer to [Public access (allowed IP addresses)](./concepts-networking.md#public-access-allowed-ip-addresses). The firewall rules can be defined at the time of server creation (recommended) but can be added later as well. In this article, we'll provide an overview on how to create and manage firewall rules using public access (allowed IP addresses).
+This article focuses on creation of an Azure Database for PostgreSQL flexible server instance with **Public access (allowed IP addresses)** using Azure portal and provides an overview of managing firewall rules after creation of the Azure Database for PostgreSQL flexible server instance. With *Public access (allowed IP addresses)*, the connections to the Azure Database for PostgreSQL flexible server instance are restricted to allowed IP addresses only. The client IP addresses need to be allowed in firewall rules. To learn more about it, refer to [Public access (allowed IP addresses)](concepts-networking.md#public-access-allowed-ip-addresses). The firewall rules can be defined at the time of server creation (recommended) but can be added later as well. In this article, we'll provide an overview on how to create and manage firewall rules using public access (allowed IP addresses).
 
 ## Create a firewall rule when creating a server
 
@@ -41,25 +41,25 @@ This article focuses on creation of an Azure Database for PostgreSQL flexible se
 1. In the [Azure portal](https://portal.azure.com/), select the Azure Database for PostgreSQL flexible server instance on which you want to add firewall rules.
 2. On the Flexible Server page, under **Settings** heading, click **Networking** to open the Networking page.
 
-   <!--![Azure portal - click Connection Security](./media/howto-manage-firewall-portal/1-connection-security.png)-->
+   <!--![Azure portal - click Connection Security](media/howto-manage-firewall-portal/1-connection-security.png)-->
 
 3. Select **Add current client IP address** in the firewall rules. This automatically creates a firewall rule with the public IP address of your computer, as perceived by the Azure system.
 
-   <!--![Azure portal - click Add My IP](./media/howto-manage-firewall-portal/2-add-my-ip.png)-->
+   <!--![Azure portal - click Add My IP](media/howto-manage-firewall-portal/2-add-my-ip.png)-->
 
 4. Verify your IP address before saving the configuration. In some situations, the IP address observed by Azure portal differs from the IP address used when accessing the internet and Azure servers. Therefore, you may need to change the Start IP address and End IP address to make the rule function as expected.
 
    You can use a search engine or other online tool to check your own IP address. For example, search for "what is my IP."
 
-   <!--![Bing search for What is my IP](./media/howto-manage-firewall-portal/3-what-is-my-ip.png)-->
+   <!--![Bing search for What is my IP](media/howto-manage-firewall-portal/3-what-is-my-ip.png)-->
 
 5. Add more address ranges. In the firewall rules for the Azure Database for PostgreSQL flexible server instance, you can specify a single IP address, or a range of addresses. If you want to limit the rule to a single IP address, type the same address in the field for Start IP address and End IP address. Opening the firewall enables administrators, users, and applications to access any database on the Azure Database for PostgreSQL flexible server instance to which they have valid credentials.
 
-   <!--![Azure portal - firewall rules](./media/howto-manage-firewall-portal/4-specify-addresses.png)-->
+   <!--![Azure portal - firewall rules](media/howto-manage-firewall-portal/4-specify-addresses.png)-->
 
 6. Select **Save** on the toolbar to save this firewall rule. Wait for the confirmation that the update to the firewall rules was successful.
 
-   <!--![Azure portal - click Save](./media/howto-manage-firewall-portal/5-save-firewall-rule.png)-->
+   <!--![Azure portal - click Save](media/howto-manage-firewall-portal/5-save-firewall-rule.png)-->
 
 ## Connecting from Azure
 
@@ -83,7 +83,10 @@ Repeat the following steps to manage the firewall rules.
 - To modify an existing rule, click any of the fields in the rule and modify. Click **Save** to save the changes.
 - To delete an existing rule, click the ellipsis […] and click **Delete** to remove the rule. Click **Save** to save the changes.
 
+[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
+
 ## Next steps
-- Learn more about [Networking in Azure Database for PostgreSQL - Flexible Server](./concepts-networking.md)
-- Understand more about [Azure Database for PostgreSQL - Flexible Server firewall rules](./concepts-networking.md#public-access-allowed-ip-addresses)
-- [Create and manage Azure Database for PostgreSQL - Flexible Server firewall rules using Azure CLI](./how-to-manage-firewall-cli.md).
+
+- Learn more about [Networking in Azure Database for PostgreSQL - Flexible Server](concepts-networking.md)
+- Understand more about [Azure Database for PostgreSQL - Flexible Server firewall rules](concepts-networking.md#public-access-allowed-ip-addresses)
+- [Create and manage Azure Database for PostgreSQL - Flexible Server firewall rules using Azure CLI](how-to-manage-firewall-cli.md).
