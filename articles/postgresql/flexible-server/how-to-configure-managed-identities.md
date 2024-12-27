@@ -24,15 +24,15 @@ Using the [Azure portal](https://portal.azure.com/):
 
 1. Locate your server in the portal, if you don't have it open. One way to do it is by typing the name of the server in the search bar. When the resource with the matching name is shown, select that resource.
 
-    :::image type="content" source="./media/concepts-identity/server-search.png" alt-text="Screenshot that shows how to search for a resource using the search bar in the Azure portal." lightbox="./media/concepts-identity/server-search.png":::
+    :::image type="content" source="./media/how-to-configure-managed-identities/server-search.png" alt-text="Screenshot that shows how to search for a resource using the search bar in the Azure portal." lightbox="./media/how-to-configure-managed-identities/server-search.png":::
 
 2. In the resource menu, under **Security**, select **Identity**. Then, in the **System assigned managed identity** section, select the **On** option. Select **Save**.
 
-    :::image type="content" source="./media/concepts-identity/enable-system-assigned-managed-identity.png" alt-text="Screenshot that shows how to enable the system assigned managed identity on an instance of Azure Database for PostgreSQL flexible server." lightbox="./media/concepts-identity/enable-system-assigned-managed-identity.png":::
+    :::image type="content" source="./media/how-to-configure-managed-identities/enable-system-assigned-managed-identity.png" alt-text="Screenshot that shows how to enable the system assigned managed identity on an instance of Azure Database for PostgreSQL flexible server." lightbox="./media/how-to-configure-managed-identities/enable-system-assigned-managed-identity.png":::
 
 3. When the process completes, a notification informs you that the system assigned managed identity is enabled.
 
-    :::image type="content" source="./media/concepts-identity/enable-system-assigned-managed-identity-notification.png" alt-text="Screenshot that shows the notification informing that the system assigned managed identity is enabled." lightbox="./media/concepts-identity/enable-system-assigned-managed-identity-notification.png":::
+    :::image type="content" source="./media/how-to-configure-managed-identities/enable-system-assigned-managed-identity-notification.png" alt-text="Screenshot that shows the notification informing that the system assigned managed identity is enabled." lightbox="./media/how-to-configure-managed-identities/enable-system-assigned-managed-identity-notification.png":::
 
 
 ## [CLI](#tab/cli-enable)
@@ -63,15 +63,15 @@ Using the [Azure portal](https://portal.azure.com/):
 
 1. Locate your server in the portal, if you don't have it open. One way to do it is by typing the name of the server in the search bar. When the resource with the matching name is shown, select that resource.
 
-    :::image type="content" source="./media/concepts-identity/server-search.png" alt-text="Screenshot that shows how to search for a resource using the search bar in the Azure portal." lightbox="./media/concepts-identity/server-search.png":::
+    :::image type="content" source="./media/how-to-configure-managed-identities/server-search.png" alt-text="Screenshot that shows how to search for a resource using the search bar in the Azure portal." lightbox="./media/how-to-configure-managed-identities/server-search.png":::
 
 2. In the resource menu, under **Security**, select **Identity**. Then, in the **System assigned managed identity** section, select the **Off** option. Select **Save**.
 
-    :::image type="content" source="./media/concepts-identity/disable-system-assigned-managed-identity.png" alt-text="Screenshot that shows how to disable the system assigned managed identity on an instance of Azure Database for PostgreSQL flexible server." lightbox="./media/concepts-identity/disable-system-assigned-managed-identity.png":::
+    :::image type="content" source="./media/how-to-configure-managed-identities/disable-system-assigned-managed-identity.png" alt-text="Screenshot that shows how to disable the system assigned managed identity on an instance of Azure Database for PostgreSQL flexible server." lightbox="./media/how-to-configure-managed-identities/disable-system-assigned-managed-identity.png":::
 
 3. When the process completes, a notification informs you that the system assigned managed identity is disabled.
 
-    :::image type="content" source="./media/concepts-identity/disable-system-assigned-managed-identity-notification.png" alt-text="Screenshot that shows the notification informing that the system assigned managed identity is disabled." lightbox="./media/concepts-identity/disable-system-assigned-managed-identity-notification.png":::
+    :::image type="content" source="./media/how-to-configure-managed-identities/disable-system-assigned-managed-identity-notification.png" alt-text="Screenshot that shows the notification informing that the system assigned managed identity is disabled." lightbox="./media/how-to-configure-managed-identities/disable-system-assigned-managed-identity-notification.png":::
 
 
 ## [CLI](#tab/cli-disable)
@@ -105,7 +105,7 @@ You can verify the managed identity created by going to **Enterprise Application
 
 2. Provide your flexible server name in **Search by application name or Identity** as shown in the screenshot.
 
-![Screenshot verifying system assigned managed identity.](media/concepts-Identity/verify-managed-identity.png)
+![Screenshot verifying system assigned managed identity.](media/how-to-configure-managed-identities/verify-managed-identity.png)
 
 ## [CLI](#tab/cli-verify)
 
