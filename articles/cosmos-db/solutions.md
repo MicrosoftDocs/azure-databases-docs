@@ -7,10 +7,18 @@ ms.author: wangwilliam
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: best-practice
-ms.date: 02/27/2024
+ms.date: 12/03/2024
 zone_pivot_groups: azure-cosmos-db-apis-nosql-mongodb
 ms.collection:
   - ce-skilling-ai-copilot
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ MongoDB vCore
+  - ✅ Cassanda
+  - ✅ Gremlin
+  - ✅ Table
+  - ✅ PostgreSQL
 ---
 
 # Best practices and solutions using AI and Azure Cosmos DB

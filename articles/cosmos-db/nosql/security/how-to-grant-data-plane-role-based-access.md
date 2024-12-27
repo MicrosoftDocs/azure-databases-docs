@@ -27,7 +27,7 @@ Diagram of the sequence of the deployment guide including these locations, in or
 This article walks through the steps to grant an identity access to manage data in an Azure Cosmos DB for NoSQL account.
 
 > [!IMPORTANT]
-> The steps in this article only cover data plane access to perform operations on individual items and run queries. To learn how to manage roles, definitions, and assignments for the control plane, see [grant control plane role-based access](how-to-grant-control-plane-role-based-access.md).
+> The steps in this article only cover data plane access to perform operations on individual items and run queries. To learn how to manage databases and containers for the control plane, see [grant control plane role-based access](how-to-grant-control-plane-role-based-access.md).
 
 ## Prerequisites
 
@@ -614,7 +614,7 @@ public class NoSQL{
         
         CosmosClient client = new CosmosClientBuilder()
             .endpoint("<account-endpoint>")
-            .credential(credential);
+            .credential(credential)
             .buildClient();
     }
 }

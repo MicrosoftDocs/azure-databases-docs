@@ -1,16 +1,21 @@
 ---
-title: AI agent
+title: AI agents and solutions
+titleSuffix: Azure Cosmos DB
 description: Learn about key concepts for agents and step through the implementation of an AI agent memory system.
 author: wmwxwa
 ms.author: wangwilliam
 ms.service: azure-cosmos-db
-ms.topic: conceptual
-ms.date: 06/26/2024
+ms.custom:
+  - ignite-2024
+ms.topic: concept-article
+ms.date: 12/03/2024
 ms.collection:
   - ce-skilling-ai-copilot
+appliesto:
+  - ✅ MongoDB vCore
 ---
 
-# AI agent
+# AI agents in Azure Cosmos DB
 
 AI agents are designed to perform specific tasks, answer questions, and automate processes for users. These agents vary widely in complexity. They range from simple chatbots, to copilots, to advanced AI assistants in the form of digital or robotic systems that can run complex workflows autonomously.
 
@@ -169,9 +174,9 @@ In place of all the standalone databases, Azure Cosmos DB can serve as a unified
 
 ### Speed
 
-Azure Cosmos DB provides single-digit millisecond latency. This capability makes it suitable for processes that require rapid data access and management. These processes include caching (both traditional and [semantic caching](https://techcommunity.microsoft.com/t5/azure-architecture-blog/optimize-azure-openai-applications-with-semantic-caching/ba-p/4106867)), transactions, and operational workloads.
+Azure Cosmos DB provides single-digit millisecond latency. This capability makes it suitable for processes that require rapid data access and management. These processes include caching (both traditional and semantic caching, transactions, and operational workloads.
 
-Low latency is crucial for AI agents that need to perform complex reasoning, make real-time decisions, and provide immediate responses. In addition, the service's [use of the DiskANN algorithm](nosql/vector-search.md#enroll-in-the-vector-search-preview-feature) provides accurate and fast vector search with minimal memory consumption.
+Low latency is crucial for AI agents that need to perform complex reasoning, make real-time decisions, and provide immediate responses. In addition, the service's [use of the DiskANN algorithm](nosql/vector-search.md#enable-the-vector-indexing-and-search-feature) provides accurate and fast vector search with minimal memory consumption.
 
 ### Scale
 
@@ -239,22 +244,22 @@ The GitHub repository contains a Python project in the *loader* directory. It's 
 
 Set up your Python virtual environment in the *loader* directory by running the following command:
 
-```python
-    python -m venv venv
+```shell
+python -m venv venv
 ```
 
 Activate your environment and install dependencies in the *loader* directory:
 
-```python
-    venv\Scripts\activate
-    python -m pip install -r requirements.txt
+```shell
+venv\Scripts\activate
+python -m pip install -r requirements.txt
 ```
 
 Create a file named *.env* in the *loader* directory, to store the following environment variables:
 
-```python
-    OPENAI_API_KEY="<your OpenAI key>"
-    MONGO_CONNECTION_STRING="mongodb+srv:<your connection string from Azure Cosmos DB>"
+```env
+OPENAI_API_KEY="<your OpenAI key>"
+MONGO_CONNECTION_STRING="mongodb+srv:<your connection string from Azure Cosmos DB>"
 ```
 
 #### Load documents and vectors
@@ -267,7 +272,6 @@ Here are the contents of *main.py*:
 from cosmosdbloader import CosmosDBLoader
 from itinerarybuilder import ItineraryBuilder
 import json
-
 
 cosmosdb_loader = CosmosDBLoader(DB_Name='travel')
 
@@ -299,13 +303,13 @@ collection.create_index([('name', 'text')])
 
 Load the documents, load the vectors, and create indexes by running the following command from the *loader* directory:
 
-```python
-    python main.py
+```shell
+python main.py
 ```
 
 Here's the output of *main.py*:
 
-```markdown
+```output
 --build itinerary--
 --load itinerary--
 --load destinations--
@@ -314,7 +318,7 @@ Here's the output of *main.py*:
 
 ### Build the AI travel agent by using Python FastAPI
 
-The AI travel agent is hosted in a back end API through Python FastAPI, which facilitates integration with the front-end user interface. The API project processes agent requests by [grounding](https://techcommunity.microsoft.com/t5/fasttrack-for-azure/grounding-llms/ba-p/3843857) the LLM prompts against the data layer, specifically the vectors and documents in Azure Cosmos DB.
+The AI travel agent is hosted in a back end API through Python FastAPI, which facilitates integration with the front-end user interface. The API project processes agent requests by grounding the LLM prompts against the data layer, specifically the vectors and documents in Azure Cosmos DB.
 
 The agent makes use of various tools, particularly the Python functions provided at the API service layer. This article focuses on the code necessary for AI agents within the API code.
 
@@ -331,28 +335,28 @@ We used Python version 3.11.4 for the development and testing of the API.
 
 Set up your Python virtual environment in the *api* directory:
 
-```python
-    python -m venv venv
+```shell
+python -m venv venv
 ```
 
 Activate your environment and install dependencies by using the *requirements* file in the *api* directory:
 
-```python
-    venv\Scripts\activate
-    python -m pip install -r requirements.txt
+```shell
+venv\Scripts\activate
+python -m pip install -r requirements.txt
 ```
 
 Create a file named *.env* in the *api* directory, to store your environment variables:
 
-```python
-    OPENAI_API_KEY="<your Open AI key>"
-    MONGO_CONNECTION_STRING="mongodb+srv:<your connection string from Azure Cosmos DB>"
+```env
+OPENAI_API_KEY="<your Open AI key>"
+MONGO_CONNECTION_STRING="mongodb+srv:<your connection string from Azure Cosmos DB>"
 ```
 
 Now that you've configured the environment and set up variables, run the following command from the *api* directory to initiate the server:
 
-```python
-    python app.py
+```shell
+python app.py
 ```
 
 The FastAPI server starts on the localhost loopback 127.0.0.1 port 8000 by default. You can access the Swagger documents by using the following localhost address: `http://127.0.0.1:8000/docs`.
@@ -367,7 +371,7 @@ Select **Try it out** for `/session/`.
 
 :::image type="content" source="media/gen-ai/ai-agent/fastapi-get-session.png" lightbox="media/gen-ai/ai-agent/fastapi-get-session.png" alt-text="Screenshot of the use of the Get Session method in Python FastAPI, with the button for trying it out.":::
 
-```python
+```json
 {
   "session_id": "0505a645526f4d68a3603ef01efaab19"
 }
@@ -378,9 +382,9 @@ For the AI agent, you only need to simulate a session. The stubbed-out method me
 Here are the contents of *web/session.py*:
 
 ```python
-    @router.get("/")
-    def get_session():
-        return {'session_id':str(uuid.uuid4().hex)}
+@router.get("/")
+def get_session():
+    return {'session_id':str(uuid.uuid4().hex)}
 ```
 
 ### Start a conversation with the AI travel agent
@@ -393,7 +397,7 @@ Select **Try it out** for `/agent/agent_chat`.
 
 Use this example parameter:
 
-```python
+```json
 {
   "input": "I want to take a relaxing vacation.",
   "session_id": "0505a645526f4d68a3603ef01efaab19"
@@ -404,7 +408,7 @@ The initial execution results in a recommendation for the Tranquil Breeze Cruise
 
 The similarity search scores appear as output from the API for debugging purposes. Here's the output after a call to `data.mongodb.travel.similarity_search()`:
 
-```markdown
+```output
 0.8394561085977978
 0.8086545112328692
 2
@@ -441,7 +445,6 @@ from langchain.agents import AgentExecutor, create_openai_tools_agent
 from service import TravelAgentTools as agent_tools
 
 load_dotenv(override=False)
-
 
 chat : ChatOpenAI | None=None
 agent_with_chat_history : RunnableWithMessageHistory | None=None
@@ -593,8 +596,8 @@ Install Node.js and the dependencies before testing the React interface.
 
 Run the following command from the *web* directory to perform a clean installation of project dependencies. The installation might take some time.
 
-```javascript
-    npm ci
+```shell
+npm ci
 ```
 
 Next, create a file named *.env* within the *web* directory to facilitate the storage of environment variables. Include the following details in the newly created *.env* file:
@@ -603,8 +606,8 @@ Next, create a file named *.env* within the *web* directory to facilitate the st
 
 Now, run the following command from the *web* directory to initiate the React web user interface:
 
-```javascript
-    npm start
+```shell
+npm start
 ```
 
 Running the previous command opens the React web application.
@@ -622,7 +625,7 @@ The main component serves as the central manager of the application. It acts as 
 Here are the contents of *main.js*:
 
 ```javascript
-    import React, {  Component } from 'react'
+import React, {  Component } from 'react'
 import { Stack, Link, Paper } from '@mui/material'
 import TravelAgent from './TripPlanning/TravelAgent'
 
@@ -812,7 +815,7 @@ Select **Effortlessly plan your voyage** to open the travel assistant.
 
 The chat layout component oversees the arrangement of the chat. It systematically processes the chat messages and implements the formatting specified in the `message` JSON object.
 
-Here are the contents of *TripPlanning/ChatLayout.py*:
+Here are the contents of *TripPlanning/ChatLayout.js*:
 
 ```javascript
 import React from 'react'
@@ -841,11 +844,11 @@ export default function ChatLayout(messages) {
 
 User prompts are on the right side and colored blue. Responses from the AI travel agent are on the left side and colored green. As the following image shows, the HTML-formatted responses are accounted for in the conversation.
 
-:::image type="content" source="media/gen-ai/ai-agent/chat-screenshot.png" lightbox="media/gen-ai/ai-agent/chat-screenshot.png" alt-text="Screenshot of a chat.":::
+:::image type="content" source="media/gen-ai/ai-agent/chat-screenshot.png" lightbox="media/gen-ai/ai-agent/chat-screenshot.png" alt-text="Screenshot of a chat with an AI agent.":::
 
 When your AI agent is ready to go into production, you can use semantic caching to improve query performance by 80% and to reduce LLM inference and API call costs. To implement semantic caching, see [this post on the Stochastic Coder blog](https://stochasticcoder.com/2024/03/22/improve-llm-performance-using-semantic-cache-with-cosmos-db/).
 
-:::image type="content" source="media/gen-ai/ai-agent/semantic-caching.png" lightbox="media/gen-ai/ai-agent/semantic-caching.png" alt-text="Diagram of semantic caching.":::
+:::image type="content" source="media/gen-ai/ai-agent/semantic-caching.png" lightbox="media/gen-ai/ai-agent/semantic-caching.png" alt-text="Diagram of semantic caching for AI agents.":::
 
 ## Related content
 

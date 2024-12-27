@@ -9,7 +9,7 @@ ms.subservice: mongodb-vcore
 ms.custom:
   - ignite-2023
 ms.topic: how-to
-ms.date: 10/29/2024
+ms.date: 12/15/2024
 ---
 
 # Restore a cluster in Azure Cosmos DB for MongoDB vCore
@@ -40,7 +40,7 @@ In Azure regions that support availability zones, backup snapshots are stored in
 
 The restore process creates a new cluster with the same configuration in the same Azure region, subscription, and resource group as the original. Follow these steps to restore data.
 
-1. Select an existing Azure Cosmos DB for MongoDB vCore cluster in the subscription where the restore preview is enabled.
+1. Select an existing Azure Cosmos DB for MongoDB vCore cluster.
 1. On the cluster sidebar, under **Settings**, select **Point In Time Restore**.
 1. Select a date and provide a time (in UTC time zone) in the date and time fields.
 1. Enter a cluster name in the **Restore target cluster name** field. 
@@ -55,6 +55,14 @@ To create an Azure support request, follow these steps:
 
 1. Select an existing Azure Cosmos DB for MongoDB vCore cluster that you need to restore.
 1. On the cluster sidebar, under **Help**, select **Support + Troubleshooting**. For more information, see [create an Azure support request](/azure/azure-portal/supportability/how-to-create-azure-support-request#problem-description).
+
+### Post-restore tasks
+After a restore, you should do the following to get your users and applications back up and running:
+
+- If the new cluster is meant to replace the original cluster, redirect clients and client applications to the new cluster.
+- Ensure appropriate [networking settings](./security.md#network-security-options) for private or public access are in place for users to connect. These settings aren't copied from the original cluster.
+- Ensure [high availability (HA)](./high-availability.md) is enabled on the restored cluster. High availability is disabled on the restored cluster and needs to be enabled, if needed. 
+- Configure alerts on [cluster metrics](./monitor-metrics.md), as appropriate.
 
 ## Next steps
 

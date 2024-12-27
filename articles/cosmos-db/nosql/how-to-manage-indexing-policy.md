@@ -5,15 +5,16 @@ author: markjbrown
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: how-to
-ms.date: 03/08/2023
+ms.date: 12/03/2024
 ms.author: mjbrown
-ms.custom: devx-track-csharp, build-2024
+ms.custom: devx-track-csharp, build-2024, ignite-2024
 ms.collection:
   - ce-skilling-ai-copilot
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Manage indexing policies in Azure Cosmos DB
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
 
 In Azure Cosmos DB, data is indexed following [indexing policies](../index-policy.md) that are defined for each container. The default indexing policy for newly created containers enforces range indexes for any string or number. You can override this policy with your own custom indexing policy.
 
@@ -24,7 +25,7 @@ In Azure Cosmos DB, data is indexed following [indexing policies](../index-polic
 
 Here are some examples of indexing policies shown in [their JSON format](../index-policy.md). They're exposed on the Azure portal in JSON format. The same parameters can be set through the Azure CLI or any SDK.
 
-### <a id="range-index"></a>Opt-out policy to selectively exclude some property paths
+### Opt-out policy to selectively exclude some property paths
 
 ```json
 {
@@ -69,7 +70,7 @@ Here are some examples of indexing policies shown in [their JSON format](../inde
 > [!NOTE]
 > We generally recommend that you use an *opt-out* indexing policy. Azure Cosmos DB proactively indexes any new property that might be added to your data model.
 
-### <a id="spatial-index"></a>Using a spatial index on a specific property path only
+### Using a spatial index on a specific property path only
 
 ```json
 {
@@ -100,13 +101,14 @@ Here are some examples of indexing policies shown in [their JSON format](../inde
 ```
 
 ## Vector indexing policy examples
-In addition to including or excluding paths for individual properties, you can also specify a [vector index](../index-policy.md#vector-indexes). In general, vector indexes should be specified whenever the `VectorDistance` system function is used to measure similarity between a query vector and a vector property. 
+
+In addition to including or excluding paths for individual properties, you can also specify a [vector index](../index-policy.md#vector-indexes). In general, vector indexes should be specified whenever the `VectorDistance` system function is used to measure similarity between a query vector and a vector property.
 
 > [!NOTE]
-> You must enroll in the [Azure Cosmos DB NoSQL Vector Index preview feature](vector-search.md#enroll-in-the-vector-search-preview-feature) to use vector search in Azure Cosmos DB for NoSQL.> 
+> Before proceeding, you must enable the [Azure Cosmos DB NoSQL Vector Indexing and Search](vector-search.md#enable-the-vector-indexing-and-search-feature).
 
 >[!IMPORTANT]
-> A vector indexing policy must be on the same path defined in the container's vector policy. [Learn more about container vector policies](vector-search.md#container-vector-policies).)
+> A vector indexing policy must be on the same path defined in the container's vector policy. [Learn more about container vector policies](vector-search.md#container-vector-policies).
 
 ```json
 {
@@ -134,9 +136,11 @@ In addition to including or excluding paths for individual properties, you can a
 }
 ```
 
->[!IMPORTANT]
+> [!IMPORTANT]
 > The vector path added to the "excludedPaths" section of the indexing policy to ensure optimized performance for insertion. Not adding the vector path to "excludedPaths" will result in higher RU charge and latency for vector insertions.
 
+> [!IMPORTANT]
+> Currently, vector policies and vector indexes are immutable after creation. To make changes, please create a new collection.
 
 You can define the following types of vector index policies:
 
@@ -151,6 +155,11 @@ The `flat` and `quantizedFlat` index types leverage Azure Cosmos DB's index to s
 The `quantizedFlat` index stores quantized or compressed vectors on the index. Vector searches with `quantizedFlat` index are also brute-force searches, however their accuracy might be slightly less than 100% since the vectors are quantized before adding to the index. However, vector searches with `quantized flat` should have lower latency, higher throughput, and lower RU cost than vector searches on a `flat` index. This is a good option for scenarios where you are using query filters to narrow down the vector search to a relatively small set of vectors. 
 
 The `diskANN` index is a separate index defined specifically for vectors leveraging [DiskANN](https://www.microsoft.com/research/publication/diskann-fast-accurate-billion-point-nearest-neighbor-search-on-a-single-node/), a suite of highly performant vector indexing algorithms developed by Microsoft Research. DiskANN indexes can offer some of the lowest latency, highest query-per-second (QPS), and lowest RU cost queries at high accuracy. However, since DiskANN is an approximate nearest neighbors (ANN) index, the accuracy may be lower than `quantizedFlat` or `flat`.
+
+The `diskANN` and `quantizedFlat` indexes can take optional index build parameters that can be used to tune the accuracy vs latency trade-off that applies to every Approximate Nearest Neighbors vector index.
+
+- `quantizationByteSize`: Sets the size (in bytes) for product quantization. Min=1, Default=dynamic (system decides), Max=512. Setting this larger may result in higher accuracy vector searches at expense of higher RU cost and higher latency. This applies to both `quantizedFlat` and `DiskANN` index types.
+- `indexingSearchListSize`: Sets how many vectors to search over during index build construction. Min=10, Default=100, Max=500. Setting this larger may result in higher accuracy vector searches at the expense of longer index build times and higher vector ingest latencies. This applies to `DiskANN` indexes only.
 
 ### Tuple indexing policy examples
 
@@ -179,8 +188,7 @@ WHERE
            WHERE ev.name = ‘M&M’ AND ev.category = ‘Candy’) 
 ```
 
-
-## <a id="composite-index"></a>Composite indexing policy examples
+## Composite indexing policy examples
 
 In addition to including or excluding paths for individual properties, you can also specify a composite index. To perform a query that has an `ORDER BY` clause for multiple properties, a [composite index](../index-policy.md#composite-indexes) is required on those properties. If the query includes filters along with sorting on multiple properties, you may need more than one composite index.
 
@@ -355,11 +363,10 @@ In Azure Cosmos DB, the indexing policy can be updated using any of the followin
 An [indexing policy update](../index-policy.md#modifying-the-indexing-policy) triggers an index transformation. The progress of this transformation can also be tracked from the SDKs.
 
 > [!NOTE]
-> When you update indexing policy, writes to Azure Cosmos DB are uninterrupted. Learn more about [indexing transformations](../index-policy.md#modifying-the-indexing-policy)
- 
-> [!IMPORTANT]
-> Removing an index takes effect immediately, whereas adding a new index takes some time as it requires an indexing transformation. When replacing one index with another (for example, replacing a single property index with a composite-index) make sure to add the new index first and then wait for the index transformation to complete **before** you remove the previous index from the indexing policy. Otherwise this will negatively affect your ability to query the previous index and may break any active workloads that reference the previous index. 
+> When you update indexing policy, writes to Azure Cosmos DB are uninterrupted. Learn more about [indexing transformations](../index-policy.md#modifying-the-indexing-policy).
 
+> [!IMPORTANT]
+> Removing an index takes effect immediately, whereas adding a new index takes some time as it requires an indexing transformation. When replacing one index with another (for example, replacing a single property index with a composite-index) make sure to add the new index first and then wait for the index transformation to complete **before** you remove the previous index from the indexing policy. Otherwise this will negatively affect your ability to query the previous index and may break any active workloads that reference the previous index.
 
 ### Use the Azure portal
 
@@ -387,9 +394,9 @@ To create a container with a custom indexing policy, see [Create a container wit
 
 To create a container with a custom indexing policy, see [Create a container with a custom index policy using PowerShell](manage-with-powershell.md#create-container-custom-index).
 
-### <a id="dotnet-sdk"></a> Use the .NET SDK
+### Use the .NET SDK
 
-# [.NET SDK V3](#tab/dotnetv3)
+#### [.NET SDK V3](#tab/dotnetv3)
 
 The `ContainerProperties` object from the [.NET SDK v3](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) exposes an `IndexingPolicy` property that lets you change the `IndexingMode` and add or remove `IncludedPaths` and `ExcludedPaths`. For more information, see [Quickstart: Azure Cosmos DB for NoSQL client library for .NET](quickstart-dotnet.md).
 
@@ -446,7 +453,7 @@ await client.GetDatabase("database").DefineContainer(name: "container", partitio
     .CreateIfNotExistsAsync();
 ```
 
-# [.NET SDK V2](#tab/dotnetv2)
+#### [.NET SDK V2](#tab/dotnetv2)
 
 The `DocumentCollection` object from the [.NET SDK v2](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/) exposes an `IndexingPolicy` property that lets you change the `IndexingMode` and add or remove `IncludedPaths` and `ExcludedPaths`.
 
@@ -629,6 +636,7 @@ const containerResponse = await client.database('database').container('container
 // retrieve the index transformation progress from the response headers
 const indexTransformationProgress = replaceResponse.headers['x-ms-documentdb-collection-index-transformation-progress'];
 ```
+
 Add a composite index:
 
 ```javascript
@@ -663,7 +671,7 @@ Add a composite index:
 
 ### Use the Python SDK
 
-# [Python SDK V3](#tab/pythonv3)
+#### [Python SDK V3](#tab/pythonv3)
 
 When you use the [Python SDK V3](https://pypi.org/project/azure-cosmos/), the container configuration is managed as a dictionary. From this dictionary, you can access the indexing policy and all its attributes. For more information, see [Quickstart: Azure Cosmos DB for NoSQL client library for Python](quickstart-python.md).
 
@@ -727,7 +735,7 @@ Update the container with changes:
 response = client.ReplaceContainer(containerPath, container)
 ```
 
-# [Python SDK V4](#tab/pythonv4)
+#### [Python SDK V4](#tab/pythonv4)
 
 When you use the [Python SDK V4](https://pypi.org/project/azure-cosmos/), the container configuration is managed as a dictionary. From this dictionary, you can access the indexing policy and all its attributes.
 
@@ -802,9 +810,7 @@ container_client.read(populate_quota_info = True,
 
 ---
 
-## Next steps
-
-Read more about the indexing in the following articles:
+## Related content
 
 - [Indexing overview](../index-overview.md)
 - [Indexing policy](../index-policy.md)

@@ -62,9 +62,10 @@ The following table describes the fields for the **PostgreSQLLogs** type. Depend
 | DatatypeName | Name of the datatype (if applicable) |
 | _ResourceId | Resource URI |
 
+[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
 
-## Next steps
+## Related content
 
-- Learn more about how to [Configure and Access Logs](how-to-configure-and-access-logs.md).
-- Learn more about [Azure Monitor pricing](https://azure.microsoft.com/pricing/details/monitor/).
-- Learn more about [audit logs](concepts-audit.md)
+- [Configure and access logs in Azure Database for PostgreSQL - Flexible Server](how-to-configure-and-access-logs.md).
+- [Azure Monitor pricing](https://azure.microsoft.com/pricing/details/monitor/).
+- [Audit logging in Azure Database for PostgreSQL - Flexible Server](concepts-audit.md).

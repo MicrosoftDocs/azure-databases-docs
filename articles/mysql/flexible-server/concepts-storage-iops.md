@@ -4,7 +4,7 @@ description: This article describes the storage IOPS in Azure Database for MySQL
 author: code-sidd
 ms.author: sisawant
 ms.reviewer: maghan
-ms.date: 06/18/2024
+ms.date: 11/27/2024
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: conceptual
@@ -13,8 +13,6 @@ ms.custom:
 ---
 
 # Storage IOPS in Azure Database for MySQL - Flexible Server
-
-[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 The number of read and write operations that the storage system can perform is measured in input/output operations per second (IOPS). Higher IOPS values indicate better storage performance, which allows your database to handle more simultaneous read and write operations. The result is faster data retrieval and improved overall efficiency.
 
@@ -89,16 +87,18 @@ Consider the impact of throttling on your workload. If potential performance deg
 Ultimately, the decision between autoscale and pre-provisioned IOPS depends on your specific workload requirements and performance expectations. Analyze your workload patterns, evaluate the cost implications, and consider the potential impact of throttling to make a choice that aligns with your priorities.
 
 | Workload considerations | Pre-provisioned IOPS | Autoscale IOPS |
-|---|---|---|
-| Workloads with consistent and predictable I/O patterns | Recommended, because it uses only provisioned IOPS  | Compatible, with no manual provisioning of IOPS required   |
+| --- | --- | --- |
+| Workloads with consistent and predictable I/O patterns | Recommended, because it uses only provisioned IOPS | Compatible, with no manual provisioning of IOPS required |
 | Workloads with varying usage patterns | Not recommended, because it might not provide efficient performance during high usage periods. | Recommended, because it automatically adjusts to handle varying workloads |
-| Workloads with dynamic growth or changing performance needs | Not recommended, because it requires constant adjustments for changing IOPS requirements | Recommended, because no extra settings are required for specific throughput requirements  |
+| Workloads with dynamic growth or changing performance needs | Not recommended, because it requires constant adjustments for changing IOPS requirements | Recommended, because no extra settings are required for specific throughput requirements |
 
 ### Cost considerations
 
 If you have a fluctuating workload with unpredictable peaks, opting for autoscale IOPS might be more cost-effective. It ensures that you pay for only the higher IOPS that you use during peak periods, offering flexibility and cost savings. Although pre-provisioned IOPS provides consistent and maximum IOPS, it might come at a higher cost, depending on the workload. Consider the trade-off between cost and performance required from your server.
 
-### Testing and evaluation
+<a id="testing-and-evaluation"></a>
+
+### Test and evaluation
 
 If you're unsure about the optimal IOPS setting, consider running performance tests by using both autoscale IOPS and pre-provisioned IOPS. Assess the results and determine which setting meets your workload requirements and performance expectations.
 
@@ -138,7 +138,7 @@ During a point-in-time restore (PITR) operation in Azure Database for MySQL - Fl
 
 The increase in IOPS usage is a normal occurrence and doesn't indicate any problems with the source server or the PITR operation. After the PITR operation is complete, the IOPS usage on the source server returns to its usual levels.
 
-For more information on PITR, see [Backup and restore in Azure Database for MySQL - Flexible Server](./concepts-backup-restore.md).
+For more information on PITR, see [Backup and restore in Azure Database for MySQL - Flexible Server](concepts-backup-restore.md).
 
 ### How do I know that IOPS have scaled up and scaled down when the server is using the autoscale IOPS feature? Can I monitor IOPS usage for my server?
 
@@ -154,5 +154,5 @@ Go to **Monitoring** in the **Overview** section, or go to the [Storage IO Count
 
 ## Related content
 
-- Learn more about [service limitations](./concepts-limitations.md).
-- Get [pricing](./concepts-service-tiers-storage.md#price) information.
+- [service limitations](concepts-limitations.md)
+- [pricing](./concepts-service-tiers-storage.md#price)

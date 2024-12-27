@@ -6,7 +6,7 @@ ms.author: jucocchi
 ms.service: azure-cosmos-db
 ms.custom: build-2023
 ms.topic: conceptual
-ms.date: 07/25/2024
+ms.date: 11/11/2024
 ---
 # Change feed modes in Azure Cosmos DB
 
@@ -85,7 +85,7 @@ In addition to the [common features across all change feed modes](../change-feed
 
 * Change feed items come in the order of their modification time. Deletes from TTL expirations aren't guaranteed to appear in the feed immediately after the item expires. They appear when the item is purged from the container.
 
-* All changes that occurred within the retention window that's set for continuous backups on the account can be read. Attempting to read changes that occurred outside of the retention window results in an error. For example, if your container was created eight days ago and your continuous backup period retention period is seven days, then you can only read changes from the last seven days.
+* All changes that occurred within the retention window for continuous backups on the account can be read. Attempting to read changes that occurred outside of the retention window results in an error. For example, if your container was created eight days ago and your continuous backup period retention period is seven days, then you can only read changes from the last seven days.
 
 * The change feed starting point can be from "now" or from a specific checkpoint within your retention period. You can't read changes from the beginning of the container or from a specific point in time by using this mode.
 
@@ -107,7 +107,7 @@ You can use the following ways to consume changes from change feed in latest ver
 
 ### Parse the response object
 
-In latest version mode, the default response object is an array of items that have changed. Each item contains the standard metadata for any Azure Cosmos DB item, including `_etag` and `_ts`, with the addition of a new property, `_lsn`.
+In latest version mode, the default response object is an array of items that changed. Each item contains the standard metadata for any Azure Cosmos DB item, including `_etag` and `_ts`, with the addition of a new property, `_lsn`.
 
 The `_etag` format is internal and you shouldn't take dependency on it because it can change anytime. `_ts` is a modification or a creation time stamp. You can use `_ts` for chronological comparison. `_lsn` is a batch ID that is added for change feed only that represents the transaction ID. Many items can have same `_lsn`.
 
@@ -120,7 +120,7 @@ During the preview, the following methods to read the change feed are available 
 | **Method to read change feed** | **.NET** | **Java** | **Python** | **Node.js** |
 | --- | --- | --- | --- | --- |
 | [Change feed pull model](change-feed-pull-model.md) | [>= 3.32.0-preview](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/3.32.0-preview) | [>= 4.42.0](https://mvnrepository.com/artifact/com.azure/azure-cosmos/4.37.0) |  No  |  [>= 4.1.0](https://www.npmjs.com/package/@azure/cosmos?activeTab=versions)  |
-| [Change feed processor](change-feed-processor.md) | No | [>= 4.42.0](https://mvnrepository.com/artifact/com.azure/azure-cosmos/4.42.0) | No | No |
+| [Change feed processor](change-feed-processor.md) | [>= 3.40.0-preview.0](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/3.40.0-preview.0) | [>= 4.42.0](https://mvnrepository.com/artifact/com.azure/azure-cosmos/4.42.0) | No | No |
 | Azure Functions trigger | No | No | No | No |
 
 > [!NOTE]
@@ -132,33 +132,58 @@ To get started using all versions and deletes change feed mode, enroll in the pr
 
 :::image type="content" source="media/change-feed-modes/enroll-in-preview.png" alt-text="Screenshot of All versions and deletes change feed mode feature in Preview Features page in Subscriptions overview in Azure portal.":::
 
-Before you submit your request, ensure that you have at least one Azure Cosmos DB account in the subscription. This account can be an existing account or a new account that you created to try out the preview feature. If you have no accounts in the subscription when the Azure Cosmos DB team receives your request, the request is declined because there are no accounts to apply the feature to.
+Before you submit your request, ensure that you have at least one Azure Cosmos DB account in the subscription. This account can be an existing account or a new account that you created to try out the preview feature. If you have no accounts in the subscription when your request is received, the request is declined because there are no accounts to apply the feature to.
 
 The Azure Cosmos DB team reviews your request and contacts you via email to confirm which Azure Cosmos DB accounts in the subscription you want to enroll in the preview. To use the preview, you must have [continuous backups](../continuous-backup-restore-introduction.md) configured for your Azure Cosmos DB account. Continuous backups can be enabled either before or after being admitted to the preview, but continuous backups must be enabled before you attempt to read from the change feed in all versions and deletes mode.
 
 ### Parse the response object
 
-The response object is an array of items that represent each change. The array looks like the following example:
+The response object is an array of items that represent each change. Different properties will be populated depending on the change type. There's currently no way to get the previous version of items for either replace or delete operations.
 
-```json
-[
-    {  
-        "current": { 
-            <The current version of the item that changed. All the properties of your item will appear here. This will be empty for delete operations.>
-         },  
-        "previous" : { 
-            <The previous version of the item that changed. If the change was a delete operation, the item that was deleted will appear here. This will be empty for create and replace operations.>
-         },  
-        "metadata": {
-            "lsn": <A number that represents the batch ID. Many items can have the same lsn.>, 
-            "operationType": <The type of change, either 'create', 'replace', or 'delete'.>, 
-            "previousImageLSN" : <A number that represents the batch ID of the change prior to this one.>, 
-            "timeToLiveExpired" : <For delete changes, it will be 'true' if it was deleted due to a TTL expiration and 'false' if it wasn't.>, 
-            "crts": <A number that represents the Conflict Resolved Timestamp. It has the same format as _ts.> 
-        } 
+* Create operations
+    ```json
+    {
+      "current": {
+        <The current version of the item that changed. All the properties of your item will appear here.>
+      },
+      "metadata": {
+        "operationType": "create",
+        "lsn": <A number that represents the batch ID. Many items can have the same lsn.>,
+        "crts": <A number that represents the Conflict Resolved Timestamp. It has the same format as _ts.>
+      }
     }
-]
-```
+    ```
+
+* Replace operations
+    ```json
+    {
+      "current": {
+        <The current version of the item that changed. All the properties of your item will appear here.>
+      },
+      "metadata": {
+        "operationType": "replace",
+        "lsn": <A number that represents the batch ID. Many items can have the same lsn.>,
+        "crts": <A number that represents the Conflict Resolved Timestamp. It has the same format as _ts.>,
+        "previousImageLSN" : <A number that represents the batch ID of the change prior to this one.>,
+      }
+    }
+    ```
+
+* Delete operations
+    ```json
+    {
+      "metadata": {
+        "operationType": "delete",
+        "lsn": <A number that represents the batch ID. Many items can have the same lsn.>,
+        "crts": <A number that represents the Conflict Resolved Timestamp. It has the same format as _ts.>,
+        "previousImageLSN" : <A number that represents the batch ID of the change prior to this one.>,
+        "id": "<Id of the deleted item.>",
+        "partitionKey": {
+          "<Partition key property name>": "<Partition key property value>"
+        }
+      }
+    }
+    ```
 
 ### Limitations
 
@@ -170,9 +195,9 @@ The response object is an array of items that represent each change. The array l
 
 * The ability to start reading the change feed from the beginning or to select a start time based on a past time stamp isn't currently supported. You can either start from "now" or from a previous [lease](change-feed-processor.md#components-of-the-change-feed-processor) or [continuation token](change-feed-pull-model.md#save-continuation-tokens).
 
-* Receiving the previous version of items that have been updated isn't currently available.
+* Receiving the previous version of items that were deleted or updated isn't currently available.
 
-* Accounts that have enabled [merging partitions](../merge.md) aren't supported.
+* Accounts that enabled [merging partitions](../merge.md) aren't supported.
 
 ---
 

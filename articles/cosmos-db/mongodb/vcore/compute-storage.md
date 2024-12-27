@@ -6,8 +6,10 @@ author: niklarin
 ms.author: nlarin
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
+ms.custom:
+  - ignite-2024
 ms.topic: conceptual
-ms.date: 10/29/2024
+ms.date: 11/06/2024
 ---
 
 # Compute and storage configurations for Azure Cosmos DB for MongoDB vCore clusters
@@ -49,13 +51,11 @@ available to each shard in the cluster.
 | 1,024             | 5,000        |
 | 2,048             | 7,500        |
 | 4,095             | 7,500        |
-| 8,192*            | 16,000       |
-| 16,384*           | 18,000       |
-| 32,767*           | 20,000       |
+| 8,192             | 16,000       |
+| 16,384            | 18,000       |
+| 32,767            | 20,000       |
 
 † Max IOPS with free disk bursting. Storage up to 512 GiB inclusive come with free disk bursting enabled.
-
-\* Available in preview.
 
 ## Maximizing IOPS for your compute / storage configuration
 Each *compute* configuration has an IOPS limit that depends on the number of vCores. Make sure you select compute configuration for your cluster to fully utilize IOPS in the selected storage.
