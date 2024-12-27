@@ -14,7 +14,7 @@ ms.topic: conceptual
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
-In this article you can learn how to enable or disable a system assigned managed identity or how to add or remove one or more user assigned managed identities to your instance of Azure Database for PostgreSQL flexible server.
+In this article, you can learn how to enable or disable a system assigned managed identity for your instance of Azure Database for PostgreSQL flexible server. You can also learn how to add or remove one or more user assigned managed identities to your instance.
 
 ## Enable the system assigned managed identity for existing servers
 
@@ -37,7 +37,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 ## [CLI](#tab/cli-enable)
 
-Although the [az postgres flexible-server update](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-update) commands don't provide built-in support to enable and disable the system assigned managed identity yet, you can use the [az rest](/cli/azure/reference-index#az-rest) command to directly invoke the [Servers - Update](/rest/api/postgresql/flexibleserver/servers/update) REST API.
+The [az postgres flexible-server update](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-update) command doesn't provide built-in support to enable and disable the system assigned managed identity yet. As a workaround, you can use the [az rest](/cli/azure/reference-index#az-rest) command to directly invoke the [Servers - Update](/rest/api/postgresql/flexibleserver/servers/update) REST API.
 
 ```azurecli-interactive
 # Enable system assigned managed identity
@@ -76,7 +76,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 ## [CLI](#tab/cli-disable)
 
-Although the [az postgres flexible-server update](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-update) commands don't provide built-in support to enable and disable the system assigned managed identity yet, you can use the [az rest](/cli/azure/reference-index#az-rest) command to directly invoke the [Servers - Update](/rest/api/postgresql/flexibleserver/servers/update) REST API.
+The [az postgres flexible-server update](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-update) command doesn't provide built-in support to enable and disable the system assigned managed identity yet. As a workaround, you can use the [az rest](/cli/azure/reference-index#az-rest) command to directly invoke the [Servers - Update](/rest/api/postgresql/flexibleserver/servers/update) REST API.
 
 ```azurecli-interactive
 # Disable system assigned managed identity
@@ -120,13 +120,11 @@ az ad sp list --display-name $server
 
 ## Associate user assigned managed identities for existing servers
 
-This article assumes you have created the user assigned managed identities that you want to associate to an existing instance of Azure Database for PostgreSQL flexible server.
+This article assumes you created the user assigned managed identities that you want to associate to an existing instance of Azure Database for PostgreSQL flexible server.
 
 For more information, see [how to manage user assigned managed identities in Microsoft Entra ID](/entra/identity/managed-identities-azure-resources/how-manage-user-assigned-managed-identities).
 
 You can associate as many user assigned managed identities as you want to an instance of Azure Database for PostgreSQL flexible server. However, once you assign at least one, you're allowed to remove them all but one.
-
-Also, if you enable a system assigned managed identity once you've associated at least one user assigned managed identity to your instance, it isn't supported to disable the system assigned managed identity. 
 
 ## [Portal](#tab/portal-associate)
 
@@ -149,12 +147,9 @@ az postgres flexible-server identity assign --resource-group $resourceGroup --se
 
 ## Dissociate user assigned managed identities for existing servers
 
-It's supported to dissociate user assigned managed identities currently associated to an instance of Azure Database for PostgreSQL flexible server.
+The service supports dissociating user assigned managed identities which are associated to an instance of Azure Database for PostgreSQL flexible server.
 
-However, the following list shows some exceptional cases in which dissociation isn't supported:
-
-- If you're trying to dissociate the only remaining user assigned managed identity of the instance.
-- If the user assigned managed identity you're trying to dissociate is designated as the identity that should be used to access the encryption keys. This is only applicable to servers that were deployed with [data encryption using customer managed keys](concepts-data-encryption.md).
+An exception to that rule is any of the user assigned managed identities that are designated as the ones that should be used to access the encryption keys. This case is only possible on servers that were deployed with [data encryption using customer managed keys](concepts-data-encryption.md).
 
 ## [Portal](#tab/portal-dissociate)
 
