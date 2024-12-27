@@ -77,7 +77,7 @@ By using a hierarchical partition key, we can surpass the 20 GB data limit per d
 
 While this is the recommended strategy, let's also take a look at other potential options customers often consider and their trade-offs. 
 
-## Other Potential Partition Keys and Tradeoffs
+## Other potential partition keys and tradeoffs
 
 ### Device ID
 
@@ -135,4 +135,4 @@ By using DeviceId +Time-based-key (Date + Hour + Minute) as a hierarchical parti
 > - We recommend  adding ID as the last level of your hierarchical partition key to ensure you never reach the 20 GB limit.
 -   Optimize our most common query patterns that frequently filter by DeviceId and Date/Hour/Minute, minimizing cross-partition queries and reducing RU costs.
 
-For more information on how partitioning works in Azure Cosmos DB, you can learn more [here](#partitioning-overview).
+For more information on how partitioning works in Azure Cosmos DB, you can learn more [here](#partitioning-overview.md).
