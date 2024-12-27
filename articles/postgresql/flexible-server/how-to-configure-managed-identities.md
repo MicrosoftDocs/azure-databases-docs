@@ -117,6 +117,47 @@ az ad sp list --display-name $server
 
 ---
 
+
+## Associate user assigned managed identities for existing servers
+
+## [Portal](#tab/portal-enable)
+
+Using the [Azure portal](https://portal.azure.com/):
+
+1. Locate your server in the portal, if you don't have it open. One way to do it is by typing the name of the server in the search bar. When the resource with the matching name is shown, select that resource.
+
+    :::image type="content" source="./media/how-to-configure-managed-identities/server-search.png" alt-text="Screenshot that shows how to search for a resource using the search bar in the Azure portal." lightbox="./media/how-to-configure-managed-identities/server-search.png":::
+
+2. In the resource menu, under **Security**, select **Identity**. Then, in the **System assigned managed identity** section, select the **On** option. Select **Save**.
+
+    :::image type="content" source="./media/how-to-configure-managed-identities/enable-system-assigned-managed-identity.png" alt-text="Screenshot that shows how to enable the system assigned managed identity on an instance of Azure Database for PostgreSQL flexible server." lightbox="./media/how-to-configure-managed-identities/enable-system-assigned-managed-identity.png":::
+
+3. When the process completes, a notification informs you that the system assigned managed identity is enabled.
+
+    :::image type="content" source="./media/how-to-configure-managed-identities/enable-system-assigned-managed-identity-notification.png" alt-text="Screenshot that shows the notification informing that the system assigned managed identity is enabled." lightbox="./media/how-to-configure-managed-identities/enable-system-assigned-managed-identity-notification.png":::
+
+
+## [CLI](#tab/cli-enable)
+
+Although the [az postgres flexible-server update](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-update) commands don't provide built-in support to enable and disable the system assigned managed identity yet, you can use the [az rest](/cli/azure/reference-index#az-rest) command to directly invoke the [Servers - Update](/rest/api/postgresql/flexibleserver/servers/update) REST API.
+
+```azurecli-interactive
+# Enable system assigned managed identity
+subscriptionId=<subscription-id>
+resourceGroup=<resource-group>
+server=<server>
+result=$(az postgres flexible-server show --resource-group $resourceGroup --name $server --query "identity.type" --output tsv)
+if [ -z "$result" ]; then
+    az rest --method patch --url https://management.azure.com/subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.DBforPostgreSQL/flexibleServers/$server?api-version=2024-08-01 --body '{"identity":{"type":"SystemAssigned"}}'
+elif [ "$result" == "UserAssigned" ]; then
+    az rest --method patch --url https://management.azure.com/subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.DBforPostgreSQL/flexibleServers/$server?api-version=2024-08-01 --body '{"identity":{"type":"SystemAssigned,UserAssigned"}}'
+else
+    echo "System Assigned Managed identity is already enabled."
+fi
+```
+---
+
+
 ## Special considerations
 
 
