@@ -99,13 +99,17 @@ fi
 
 ## [Portal](#tab/portal-verify)
 
-You can verify the managed identity created by going to **Enterprise Applications** 
+Using the [Azure portal](https://portal.azure.com/):
 
-1. Choose  **Application Type == Managed Identity**
+1. Locate the **Enterprise Applications** service in the portal, if you don't have it open. One way to do it is by typing its name in the search bar. When the service with the matching name is shown, select it.
 
-2. Provide your flexible server name in **Search by application name or Identity** as shown in the screenshot.
+    :::image type="content" source="./media/how-to-configure-managed-identities/search-enterprise-applications.png" alt-text="Screenshot that shows how to search for a the Enterprise applications service using the search bar in the Azure portal." lightbox="./media/how-to-configure-managed-identities/search-enterprise-applications.png":::
 
-![Screenshot verifying system assigned managed identity.](media/how-to-configure-managed-identities/verify-managed-identity.png)
+2. Choose  **Application Type == Managed Identity**
+
+3. Provide the name of your instance of Azure Database for PostgreSQL flexible server in the **Search by application name or object ID** text box.
+
+    :::image type="content" source="./media/how-to-configure-managed-identities/search-managed-identity.png" alt-text="Screenshot that shows how to search for a managed identity using the Enterprise applications service interface in the Azure portal." lightbox="./media/how-to-configure-managed-identities/search-managed-identity.png":::
 
 ## [CLI](#tab/cli-verify)
 
