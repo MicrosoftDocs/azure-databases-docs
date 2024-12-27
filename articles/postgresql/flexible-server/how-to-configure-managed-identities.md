@@ -24,7 +24,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 1. Locate your server in the portal, if you don't have it open. One way to do it is by typing the name of the server in the search bar. When the resource with the matching name is shown, select that resource.
 
-    :::image type="content" source="./media/how-to-configure-managed-identities/server-search.png" alt-text="Screenshot that shows how to search for a resource using the search bar in the Azure portal." lightbox="./media/how-to-configure-managed-identities/server-search.png":::
+    :::image type="content" source="./media/how-to-configure-managed-identities/search-server.png" alt-text="Screenshot that shows how to search for a resource using the search bar in the Azure portal." lightbox="./media/how-to-configure-managed-identities/search-server.png":::
 
 2. In the resource menu, under **Security**, select **Identity**. Then, in the **System assigned managed identity** section, select the **On** option. Select **Save**.
 
@@ -63,7 +63,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 1. Locate your server in the portal, if you don't have it open. One way to do it is by typing the name of the server in the search bar. When the resource with the matching name is shown, select that resource.
 
-    :::image type="content" source="./media/how-to-configure-managed-identities/server-search.png" alt-text="Screenshot that shows how to search for a resource using the search bar in the Azure portal." lightbox="./media/how-to-configure-managed-identities/server-search.png":::
+    :::image type="content" source="./media/how-to-configure-managed-identities/search-server.png" alt-text="Screenshot that shows how to search for a resource using the search bar in the Azure portal." lightbox="./media/how-to-configure-managed-identities/search-server.png":::
 
 2. In the resource menu, under **Security**, select **Identity**. Then, in the **System assigned managed identity** section, select the **Off** option. Select **Save**.
 
