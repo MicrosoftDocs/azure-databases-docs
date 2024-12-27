@@ -52,7 +52,7 @@ Imagine an IoT application that collects environmental data from thousands of Io
 **Access Pattern:**
 In this scenario, we are logging data every minute, making it a write-heavy application. We'd like to optimize our partitioning strategy for ingesting data at high throughput. 
 
-For real-time analytics (e.g. aggregating device data across districts), we can explore [Azure Synapse Link](articles/cosmos-db/synapse-link.md).
+For real-time analytics (e.g. aggregating device data across districts), we can explore [Azure Synapse Link](synapse-link.md).
 
 ## Recommended partitioning strategy
 
@@ -60,7 +60,7 @@ For real-time analytics (e.g. aggregating device data across districts), we can 
 
 It is important to note that Azure Cosmos DB limits the data per logical partition to 20 GB. In our scenario, each device is logging data per minute, logging 525,600 records per year. On average, our document size is around 50 KB, so we are guaranteed to hit the 20 GB data limit per device ID during the year by partitioning by device ID alone. 
 
-To ensure that we never run into the 20 GB data limit for any of our device IDs, we can use [hierarchical partition keys](articles/cosmos-db/hierarchical-partition-keys.md) and set the following 2 levels:
+To ensure that we never run into the 20 GB data limit for any of our device IDs, we can use [hierarchical partition keys](hierarchical-partition-keys.md) and set the following 2 levels:
 
 - **First Level**: DeviceId (*e.g. "s67890"*)
 - **Second Level**: Timestamp (*e.g. "2024-01-01T08:30"*)
@@ -115,7 +115,7 @@ We do not want to run into hot partitions, and by partitioning solely on a time-
 
 ### Synthetic Key: DeviceId + Time-based-key (Date + Hour + Minute)
 
--   **Pros:** By using a [synthetic key](articles/cosmos-db/nosql/synthetic-partition-keys.md) that combines device ID and a time-based key with date/hour/minute granularity, writes are distributed across multiple logical partitions. This approach prevents all device data from being concentrated in a single logical and physical partition, as happens when partitioning solely by a time-based key. Instead, the inclusion of the device ID ensures writes are spread across many logical partitions, which are then mapped to multiple physical partitions, improving scalability and reducing the risk of hot partitions. We are also less likely to run into the 20 GB logical partition limit since we're adding a time-based key as a second property in the key.
+-   **Pros:** By using a [synthetic key](nosql/synthetic-partition-keys.md) that combines device ID and a time-based key with date/hour/minute granularity, writes are distributed across multiple logical partitions. This approach prevents all device data from being concentrated in a single logical and physical partition, as happens when partitioning solely by a time-based key. Instead, the inclusion of the device ID ensures writes are spread across many logical partitions, which are then mapped to multiple physical partitions, improving scalability and reducing the risk of hot partitions. We are also less likely to run into the 20 GB logical partition limit since we're adding a time-based key as a second property in the key.
 
 -   **Cons:** Many of our queries filter only by DeviceId. With a synthetic key, this would result in a cross-partition query, leading to higher RU costs (an additional 2-3 RUs per physical partition scanned). Since the partition key is a combination of DeviceId and Date/Hour/Minute, Azure Cosmos DB cannot route the query to a single partition based on specifying the DeviceId alone.
 
@@ -135,5 +135,5 @@ By using DeviceId +Time-based-key (Date + Hour + Minute) as a hierarchical parti
 > - We recommend  adding ID as the last level of your hierarchical partition key to ensure you never reach the 20 GB limit.
 -   Optimize our most common query patterns that frequently filter by DeviceId and Date/Hour/Minute, minimizing cross-partition queries and reducing RU costs.
 
-For more information on how partitioning works in Azure Cosmos DB, you can learn more [here](articles/cosmos-db/partitioning-overview.md).
+For more information on how partitioning works in Azure Cosmos DB, you can learn more [here](partitioning-overview.md).
 /
