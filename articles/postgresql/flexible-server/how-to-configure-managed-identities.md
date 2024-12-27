@@ -120,43 +120,60 @@ az ad sp list --display-name $server
 
 ## Associate user assigned managed identities for existing servers
 
-## [Portal](#tab/portal-enable)
+This article assumes you have created the user assigned managed identities that you want to associate to an existing instance of Azure Database for PostgreSQL flexible server.
 
-Using the [Azure portal](https://portal.azure.com/):
+For more information, see [how to manage user assigned managed identities in Microsoft Entra ID](/entra/identity/managed-identities-azure-resources/how-manage-user-assigned-managed-identities).
 
-1. Locate your server in the portal, if you don't have it open. One way to do it is by typing the name of the server in the search bar. When the resource with the matching name is shown, select that resource.
+You can associate as many user assigned managed identities as you want to an instance of Azure Database for PostgreSQL flexible server. However, once you assign at least one, you're allowed to remove them all but one.
 
-    :::image type="content" source="./media/how-to-configure-managed-identities/server-search.png" alt-text="Screenshot that shows how to search for a resource using the search bar in the Azure portal." lightbox="./media/how-to-configure-managed-identities/server-search.png":::
+Also, if you enable a system assigned managed identity once you've associated at least one user assigned managed identity to your instance, it isn't supported to disable the system assigned managed identity. 
 
-2. In the resource menu, under **Security**, select **Identity**. Then, in the **System assigned managed identity** section, select the **On** option. Select **Save**.
+## [Portal](#tab/portal-associate)
 
-    :::image type="content" source="./media/how-to-configure-managed-identities/enable-system-assigned-managed-identity.png" alt-text="Screenshot that shows how to enable the system assigned managed identity on an instance of Azure Database for PostgreSQL flexible server." lightbox="./media/how-to-configure-managed-identities/enable-system-assigned-managed-identity.png":::
+There's no support to associate user assigned managed identities to an instance of Azure Database for PostgreSQL flexible server from the portal.
 
-3. When the process completes, a notification informs you that the system assigned managed identity is enabled.
+## [CLI](#tab/cli-associate)
 
-    :::image type="content" source="./media/how-to-configure-managed-identities/enable-system-assigned-managed-identity-notification.png" alt-text="Screenshot that shows the notification informing that the system assigned managed identity is enabled." lightbox="./media/how-to-configure-managed-identities/enable-system-assigned-managed-identity-notification.png":::
+You can associate a user assigned identity to an instance of Azure Database for PostgreSQL flexible server via the [az postgres flexible-server identity assign](/cli/azure/postgres/flexible-server/identity#az-postgres-flexible-server-identity-assign) command.
 
-
-## [CLI](#tab/cli-enable)
-
-Although the [az postgres flexible-server update](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-update) commands don't provide built-in support to enable and disable the system assigned managed identity yet, you can use the [az rest](/cli/azure/reference-index#az-rest) command to directly invoke the [Servers - Update](/rest/api/postgresql/flexibleserver/servers/update) REST API.
 
 ```azurecli-interactive
-# Enable system assigned managed identity
-subscriptionId=<subscription-id>
+# Associate user assigned managed identity
 resourceGroup=<resource-group>
 server=<server>
-result=$(az postgres flexible-server show --resource-group $resourceGroup --name $server --query "identity.type" --output tsv)
-if [ -z "$result" ]; then
-    az rest --method patch --url https://management.azure.com/subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.DBforPostgreSQL/flexibleServers/$server?api-version=2024-08-01 --body '{"identity":{"type":"SystemAssigned"}}'
-elif [ "$result" == "UserAssigned" ]; then
-    az rest --method patch --url https://management.azure.com/subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.DBforPostgreSQL/flexibleServers/$server?api-version=2024-08-01 --body '{"identity":{"type":"SystemAssigned,UserAssigned"}}'
-else
-    echo "System Assigned Managed identity is already enabled."
-fi
+identity=<identity>
+az postgres flexible-server identity assign --resource-group $resourceGroup --server-name $server --identity $identity
 ```
+
 ---
 
+## Dissociate user assigned managed identities for existing servers
+
+It's supported to dissociate user assigned managed identities currently associated to an instance of Azure Database for PostgreSQL flexible server.
+
+However, the following list shows some exceptional cases in which dissociation isn't supported:
+
+- If you're trying to dissociate the only remaining user assigned managed identity of the instance.
+- If the user assigned managed identity you're trying to dissociate is designated as the identity that should be used to access the encryption keys. This is only applicable to servers that were deployed with [data encryption using customer managed keys](concepts-data-encryption.md).
+
+## [Portal](#tab/portal-dissociate)
+
+There's no support to associate user assigned managed identities to an instance of Azure Database for PostgreSQL flexible server from the portal.
+
+## [CLI](#tab/cli-dissociate)
+
+You can dissociate a user assigned identity to an instance of Azure Database for PostgreSQL flexible server via the [az postgres flexible-server identity remove](/cli/azure/postgres/flexible-server/identity#az-postgres-flexible-server-identity-remove) command.
+
+
+```azurecli-interactive
+# Dissociate user assigned managed identity
+resourceGroup=<resource-group>
+server=<server>
+identity=<identity>
+az postgres flexible-server identity remove --resource-group $resourceGroup --server-name $server --identity $identity
+```
+
+---
 
 ## Special considerations
 
