@@ -128,7 +128,7 @@ You can associate as many user assigned managed identities as you want to an ins
 
 ## [Portal](#tab/portal-associate)
 
-There's no support to associate user assigned managed identities to an instance of Azure Database for PostgreSQL flexible server from the portal.
+There's no support to associate user assigned managed identities to an instance of Azure Database for PostgreSQL flexible server via the portal.
 
 ## [CLI](#tab/cli-associate)
 
@@ -153,11 +153,11 @@ An exception to that rule is any of the user assigned managed identities that ar
 
 ## [Portal](#tab/portal-dissociate)
 
-There's no support to associate user assigned managed identities to an instance of Azure Database for PostgreSQL flexible server from the portal.
+There's no support to dissociate user assigned managed identities from an instance of Azure Database for PostgreSQL flexible server via the portal.
 
 ## [CLI](#tab/cli-dissociate)
 
-You can dissociate a user assigned identity to an instance of Azure Database for PostgreSQL flexible server via the [az postgres flexible-server identity remove](/cli/azure/postgres/flexible-server/identity#az-postgres-flexible-server-identity-remove) command.
+You can dissociate a user assigned identity from an instance of Azure Database for PostgreSQL flexible server via the [az postgres flexible-server identity remove](/cli/azure/postgres/flexible-server/identity#az-postgres-flexible-server-identity-remove) command.
 
 
 ```azurecli-interactive
