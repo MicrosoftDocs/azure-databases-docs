@@ -458,7 +458,7 @@
       - name: Relocate a server 
         href: /azure/operational-excellence/relocation-postgresql-flexible-server?toc=/azure/postgresql/toc.json
     - name: Configure managed identities
-      href: flexible-server/how-to-configure-managed-identity.md
+      href: flexible-server/how-to-configure-managed-identities.md
     - name: Encryption with CMK
       items:
       - name: Azure CLI
