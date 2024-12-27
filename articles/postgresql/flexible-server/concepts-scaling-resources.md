@@ -9,7 +9,7 @@ ms.subservice: flexible-server
 ms.topic: conceptual
 ---
 
-# Scaling resources in Azure Database for PostgreSQL - Fexible Server
+# Scaling resources in Azure Database for PostgreSQL - Flexible Server
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
@@ -80,7 +80,7 @@ For horizontally scaled configurations, consisting of a primary server and one o
 
 - For reduced downtime scaling to work, allow all [inbound and outbound connections between the IP addresses in the delegated subnet, when you use virtual network integrated networking](concepts-networking-private.md#virtual-network-concepts). If these connections aren't permitted, the reduced downtime scaling process doesn't work, and scaling occurs through the standard scaling workflow.
 - Reduced downtime scaling doesn't work if there are regional capacity constraints or quota limits on your subscription.
-- Reduced downtime scaling doesn't work for a replica server, because is only supported on the primary server. For replica servers, the scaling operation automatically goes through the regular process.
+- Reduced downtime scaling doesn't work for a replica server, because it's only supported on the primary server. For replica servers, the scaling operation automatically goes through the regular process.
 - Reduced downtime scaling doesn't work if a [virtual network-injected server](concepts-networking-private.md#virtual-network-concepts) doesn't have sufficient usable IP addresses in the delegated subnet. If you have a standalone server, one extra IP address is necessary. For an instance with high-availability enabled, two extra IP addresses are required.
 - Logical replication slots aren't preserved during a reduced downtime failover event. To maintain logical replication slots and ensure data consistency after a scale operation, use the [pg_failover_slot](https://github.com/EnterpriseDB/pg_failover_slots) extension. For more information, see [enabling extension in a flexible server](concepts-extensions.md#pg_failover_slots).
 - Reduced downtime scaling doesn't work with [unlogged tables](https://www.postgresql.org/docs/current/sql-createtable.html#SQL-CREATETABLE-UNLOGGED). If you're using unlogged tables for any of your data will lose all the data in those tables after the reduced downtime scaling.
