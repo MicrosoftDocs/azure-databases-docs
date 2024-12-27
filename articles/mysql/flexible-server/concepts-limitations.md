@@ -4,7 +4,7 @@ description: This article describes limitations in Azure Database for MySQL - Fl
 author: SudheeshGH
 ms.author: sunaray
 ms.reviewer: maghan
-ms.date: 06/18/2024
+ms.date: 11/27/2024
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: conceptual
@@ -12,13 +12,11 @@ ms.topic: conceptual
 
 # Limitations in Azure Database for MySQL - Flexible Server
 
-[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
 This article describes limitations in Azure Database for MySQL - Flexible Server. [General limitations](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.7/en/limits.html) in the MySQL database engine also apply. If you want to learn about resource limitations (compute, memory, storage), see the [article about compute and storage](concepts-service-tiers-storage.md).
 
 ## Server parameters
 
-Azure Database for MySQL - Flexible Server supports tuning the values of server parameters. Some parameters' minimum and maximum values (for example, `max_connections`, `join_buffer_size`, `query_cache_size`) are determined by the compute tier and before you compute the size of the server. For more information about these limits, along with minimum and maximum values for server parameters like `max_connections` and `innodb_buffer_pool_size`, see the [article about server parameters](./concepts-server-parameters.md).
+Azure Database for MySQL - Flexible Server supports tuning the values of server parameters. Some parameters' minimum and maximum values (for example, `max_connections`, `join_buffer_size`, `query_cache_size`) are determined by the compute tier and before you compute the size of the server. For more information about these limits, along with minimum and maximum values for server parameters like `max_connections` and `innodb_buffer_pool_size`, see the [article about server parameters](concepts-server-parameters.md).
 
 ### Generated invisible primary keys
 
@@ -133,6 +131,6 @@ For the complete list of feature comparisons between Azure Database for MySQL - 
 
 ## Related content
 
-- Understand [what compute and storage options are available in flexible servers](concepts-service-tiers-storage.md).
-- Learn about [supported MySQL versions](concepts-supported-versions.md).
-- Learn how to [use the Azure portal to create an Azure Database for MySQL - Flexible Server instance](quickstart-create-server-portal.md).
+- [what compute and storage options are available in flexible servers](concepts-service-tiers-storage.md)
+- [supported MySQL versions](concepts-supported-versions.md)
+- [use the Azure portal to create an Azure Database for MySQL - Flexible Server instance](quickstart-create-server-portal.md)

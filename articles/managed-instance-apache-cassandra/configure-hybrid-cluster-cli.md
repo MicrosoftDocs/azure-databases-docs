@@ -166,7 +166,7 @@ This quickstart demonstrates how to use the Azure CLI commands to configure a hy
    > Note also that `--availability-zone` is set to `false`. To enable availability zones, set this to `true`. Availability zones increase the availability SLA of the service. For more details, review the full SLA details [here](https://azure.microsoft.com/support/legal/sla/managed-instance-apache-cassandra/v1_0/).
 
    > [!WARNING]
-   > Availability zones are not supported in all regions. Deployments will fail if you select a region where Availability zones are not supported. See [here](/azure/availability-zones/az-overview#azure-regions-with-availability-zones) for supported regions. The successful deployment of availability zones is also subject to the availability of compute resources in all of the zones in the given region. Deployments may fail if the SKU you have selected, or capacity, is not available across all zones.
+   > Availability zones are not supported in all regions. Deployments will fail if you select a region where Availability zones are not supported. See [here](/azure/reliability/availability-zones-region-support) for supported regions. The successful deployment of availability zones is also subject to the availability of compute resources in all of the zones in the given region. Deployments may fail if the SKU you have selected, or capacity, is not available across all zones.
 
 1. Now that the new datacenter is created, run the show datacenter command to view its details:
 

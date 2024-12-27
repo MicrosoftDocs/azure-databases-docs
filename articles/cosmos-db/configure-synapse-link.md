@@ -39,7 +39,7 @@ The first step to use Synapse Link is to enable it for your Azure Cosmos DB data
 > If you want to use Full Fidelity Schema for API for NoSQL accounts, you can't use the Azure portal to enable Synapse Link. This option can't be changed after Synapse Link is enabled in your account and to set it you must use Azure CLI or PowerShell. For more information, check [analytical store schema representation documentation](analytical-store-introduction.md#schema-representation). 
 
 > [!NOTE]
-> You need [Contributor role](role-based-access-control.md) to enable Synapse Link at account level. And you need at least [Operator role](role-based-access-control.md) to enable Synapse Link in your containers or collections.
+> You need [Contributor](/azure/role-based-access-control/built-in-roles#databases) role to enable Synapse Link at account level. And you need at least [Operator](/azure/role-based-access-control/built-in-roles#databases) to enable Synapse Link in your containers or collections.
 
 ### Azure portal
 
@@ -173,6 +173,13 @@ The following options enable Synapse Link in a container by using Azure CLI by s
 The following .NET code creates a Synapse Link enabled container by setting the `AnalyticalStoreTimeToLiveInSeconds` property. To update an existing container, use the `Container.ReplaceContainerAsync` method.
 
 ```csharp
+CosmosClient cosmosClient = new CosmosClient(
+    accountEndpoint: "<nosql-account-endpoint>",
+    tokenCredential: new DefaultAzureCredential()
+);
+```
+
+```csharp
 // Create a container with a partition key, and analytical TTL configured to -1 (infinite retention)
 ContainerProperties properties = new ContainerProperties()
 {
@@ -180,7 +187,6 @@ ContainerProperties properties = new ContainerProperties()
     PartitionKeyPath = "/id",
     AnalyticalStoreTimeToLiveInSeconds = -1,
 };
-CosmosClient cosmosClient = new CosmosClient("myConnectionString");
 await cosmosClient.GetDatabase("myDatabase").CreateContainerAsync(properties);
 ```
 

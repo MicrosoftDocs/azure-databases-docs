@@ -32,7 +32,7 @@ We'll connect to a cluster and load data using CREATE TABLE and INSERT INTO SQL 
 
 [!INCLUDE[why-connection-pooling](includes/why-connection-pooling.md)]
 
-In the following code, replace \<cluster> with your cluster name and \<password> with your administrator password.
+In the following code, replace \<cluster> with your cluster name and \<password> with your administrator password or Microsoft Entra ID token.
 
 ```csharp
 using System;

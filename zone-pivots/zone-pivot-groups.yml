@@ -37,6 +37,17 @@ groups:
   - id: api-mongodb
     title: MongoDB
 # Owner: sidandrews
+- id: azure-cosmos-db-apis-nosql-mongodb-cassandra
+  title: Azure Cosmos DB APIs
+  prompt: Choose an API
+  pivots:
+  - id: api-nosql
+    title: NoSQL
+  - id: api-mongodb
+    title: MongoDB
+  - id: api-apache-cassandra
+    title: Apache Cassandra
+# Owner: sidandrews
 - id: azure-cosmos-db-quickstart-env
   title: Azure Cosmos DB Quickstart environment
   prompt: Choose a development environment
@@ -72,6 +83,8 @@ groups:
   title: PostgreSQL Server Versions
   prompt: Choose a PostgreSQL version
   pivots:
+  - id: postgresql-17
+    title: PostgreSQL 17 (preview)
   - id: postgresql-16
     title: PostgreSQL 16
   - id: postgresql-15
@@ -84,3 +97,56 @@ groups:
     title: PostgreSQL 12
   - id: postgresql-11
     title: PostgreSQL 11
+# Owner: sidandrews
+- id: azure-interface-portal-cli-powershell
+  title: Azure interface
+  prompt: Choose an Azure interface
+  pivots:
+  - id: azure-interface-cli
+    title: Azure CLI
+  - id: azure-interface-portal
+    title: Azure portal
+  - id: azure-interface-shell
+    title: Azure PowerShell
+# Owner: sidandrews
+- id: azure-interface-portal-cli-powershell-bicep
+  title: Azure interface
+  prompt: Choose an Azure interface
+  pivots:
+  - id: azure-interface-cli
+    title: Azure CLI
+  - id: azure-interface-bicep
+    title: Bicep
+  - id: azure-interface-portal
+    title: Azure portal
+  - id: azure-interface-shell
+    title: Azure PowerShell
+# Owner: sidandrews
+- id: azure-interface-cli-powershell-bicep
+  title: Azure interface
+  prompt: Choose an Azure interface
+  pivots:
+  - id: azure-interface-cli
+    title: Azure CLI
+  - id: azure-interface-bicep
+    title: Bicep
+  - id: azure-interface-shell
+    title: Azure PowerShell
+# Owner: sidandrews
+- id: azure-interface-cli-powershell
+  title: Azure interface
+  prompt: Choose an Azure interface
+  pivots:
+  - id: azure-interface-cli
+    title: Azure CLI
+  - id: azure-interface-shell
+    title: Azure PowerShell
+# Owner: sidandrews
+- id: azure-devlang-nodejs
+  title: Programming languages
+  prompt: Choose a programming language
+  pivots:
+  - id: programming-language-ts
+    title: TypeScript
+  - id: programming-language-js
+    title: JavaScript

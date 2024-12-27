@@ -126,7 +126,7 @@ When you plan to migrate or ingest a large amount of data into Azure Cosmos DB, 
 We can take advantage of the fact that during container creation, Azure Cosmos DB uses the heuristic formula of starting RU/s to calculate the number of physical partitions to start with. 
  
 ### Step 1: Review the choice of partition key
-Follow [best practices](partitioning-overview.md#choose-partitionkey) for choosing a partition key to ensure you will have even distribution of request volume and storage post-migration. 
+Follow [best practices](partitioning-overview.md) for choosing a partition key to ensure you will have even distribution of request volume and storage post-migration. 
  
 ### Step 2: Calculate the number of physical partitions you'll need 
 `Number of physical partitions = Total data size in GB / Target data per physical partition in GB`

@@ -12,7 +12,7 @@ ms.custom:
   - devx-track-azurecli
 ---
 
-# Stop/Start Azure Database for PostgreSQL - Flexible Server using Azure CLI
+# Stop/Start an instance of Azure Database for PostgreSQL flexible server using Azure CLI
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
@@ -83,5 +83,12 @@ az postgres flexible-server start
 > [!IMPORTANT]
 > Once the server has restarted successfully, all management operations are now available for the Azure Database for PostgreSQL flexible server instance.
 
-## Next steps
-- Learn more about [restarting Azure Database for PostgreSQL flexible server](./how-to-restart-server-cli.md).
+[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
+
+## Related content
+
+- [Restart an instance of Azure Database for PostgreSQL flexible server](how-to-restart-server-portal.md).
+- [Enable, list and download server logs in Azure Database for PostgreSQL - Flexible Server](how-to-server-logs-portal.md).
+- [Compute options in Azure Database for PostgreSQL - Flexible Server](concepts-compute.md).
+- [Storage options in Azure Database for PostgreSQL - Flexible Server](concepts-storage.md).
+- [Limits in Azure Database for PostgreSQL - Flexible Server](concepts-limits.md).

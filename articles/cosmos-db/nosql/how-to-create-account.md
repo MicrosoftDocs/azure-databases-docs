@@ -143,4 +143,4 @@ Create a single Azure Cosmos DB account using the API for NoSQL.
 In this guide, you learned how to create an Azure Cosmos DB for NoSQL account. You can now create an application with your Azure Cosmos DB account.
 
 > [!div class="nextstepaction"]
-> [Create a .NET console application with Azure Cosmos DB for NoSQL](tutorial-dotnet-web-app.md)
+> [Create a .NET console application with Azure Cosmos DB for NoSQL](tutorial-dotnet-console-app.md)

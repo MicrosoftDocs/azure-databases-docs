@@ -35,6 +35,9 @@ We recommend that you allocate sufficient storage on the flexible server, equiva
 
 The quickstart to [create an Azure Database for PostgreSQL - Flexible Server instance by using the portal](../../flexible-server/quickstart-create-server-portal.md) is an excellent place to begin. For more information about each server configuration, see [Compute and storage options in Azure Database for PostgreSQL - Flexible Server](../../flexible-server/concepts-compute-storage.md).
 
+> [!IMPORTANT]  
+> Once flexible server is created, make sure to [change the **password_encryption** server parameter on your flexible server](../../flexible-server/how-to-configure-server-parameters-using-portal.md) from SCRAM-SHA-256 to MD5 before initating the migration. This is essential for the existing credentials on single server to work on your flexible server
+
 ## Migration timeline
 
 Each migration has a maximum lifetime of seven days (168 hours) after it starts, and it times out after seven days. You can complete your migration and application cutover after the data validation and all checks are complete to avoid the migration from timing out. In online migrations, after the initial base copy is complete, the cutover window lasts three days (72 hours) before timing out. In offline migrations, the applications should stop writing to the database to prevent data loss. Similarly, for online migration, keep traffic low throughout the migration.
@@ -65,7 +68,7 @@ Although a migration often runs without any problems, it's good practice to plan
 
 ## Migration speed benchmarking
 
-The following table shows the time it takes to perform migrations for databases of various sizes by using the migration service. The migration was performed by using a flexible server with the SKU Standard_D4ds_v4 (4 cores, 16-GB memory, 128-GB disk, and 500 IOPS).
+The following table shows the time it takes to perform migrations for databases of various sizes by using the migration service. The migration was performed by using a flexible server with the SKU Standard_D4ds_v4 (4 cores, 16-GB memory).
 
 | Database size | Approximate time taken (HH:MM) |
 | :--- | :--- |
@@ -79,11 +82,8 @@ The following table shows the time it takes to perform migrations for databases 
 
 The preceding numbers give you an approximation of the time taken to complete the migration. We strongly recommend running a test migration with your workload to get a precise value for migrating your server.
 
-> [!IMPORTANT]  
-> Choose a higher SKU for your flexible server to perform faster migrations. Azure Database for PostgreSQL - Flexible Server supports near-zero downtime compute and IOPS scaling, so the SKU can be updated with minimal downtime. You can always change the SKU to match the application needs post-migration.
-
-> [!NOTE]
-> Migration into Burstable SKU is supported only in West Europe region currently. In all other regions, the Databases can first be migrated into a General Purpose or Memory Optimized SKU and then scaled down if needed.
+  > [!IMPORTANT]
+  > Though the Burstable SKU is not a limitation, it is recommended to choose a higher SKU for your flexible server to perform faster migrations. Azure Database for PostgreSQL - Flexible Server supports near-zero downtime compute and IOPS scaling, so the SKU can be updated with minimal downtime. You can always change the SKU to match the application needs post-migration.
 
 ### Improve migration speed: Parallel migration of tables
 

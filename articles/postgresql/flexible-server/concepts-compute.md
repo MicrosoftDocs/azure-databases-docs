@@ -90,13 +90,11 @@ The detailed specifications of the available server types are as follows:
 > [!IMPORTANT]  
 > Minimum and maximum IOPS are also determined by the storage tier so please choose a storage tier and instance type that can scale as per your workload requirements.
 
-## Price
+[!INCLUDE [pricing](./includes/compute-storage-pricing.md)]
 
-For the most up-to-date pricing information, see the [Azure Database for PostgreSQL flexible server pricing](https://azure.microsoft.com/pricing/details/postgresql/flexible-server/) page. The [Azure portal](https://portal.azure.com/#create/Microsoft.PostgreSQLServer) shows the monthly cost on the **Pricing tier** tab, based on the options that you select.
-
-If you don't have an Azure subscription, you can use the Azure pricing calculator to get an estimated price. On the [Azure pricing calculator](https://azure.microsoft.com/pricing/calculator/) website, select **Add items**, expand the **Databases** category, and then select **Azure Database for PostgreSQL** to customize the options.
+[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
 
 ## Related content
 
-- [Manage Azure Database for PostgreSQL - Flexible Server using the Azure portal](how-to-manage-server-portal.md)
+- [Manage Azure Database for PostgreSQL - Flexible Server](how-to-manage-server-portal.md)
 - [Limits in Azure Database for PostgreSQL - Flexible Server](concepts-limits.md)

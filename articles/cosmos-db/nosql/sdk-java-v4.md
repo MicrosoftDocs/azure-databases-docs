@@ -7,7 +7,7 @@ ms.subservice: nosql
 ms.devlang: java
 ms.topic: reference
 ms.date: 04/06/2021
-ms.author: mjbrown
+ms.author: kuthapar
 ms.custom: devx-track-java, devx-track-extended-java
 ---
 
@@ -56,7 +56,7 @@ Release history is maintained in the azure-sdk-for-java repo, for detailed list 
 
 ## Recommended version
 
-It's strongly recommended to use version 4.48.2 and above.
+It's strongly recommended to use version 4.64.0 and above.
 
 ## FAQ
 [!INCLUDE [cosmos-db-sdk-faq](../includes/cosmos-db-sdk-faq.md)] 
