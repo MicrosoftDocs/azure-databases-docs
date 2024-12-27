@@ -1,6 +1,6 @@
 ---
-title: Managed identity in Azure Database for PostgreSQL - Flexible Server
-description: Learn about Managed identity in Azure Database for PostgreSQL - Flexible Server.
+title: Managed identities in Azure Database for PostgreSQL - Flexible Server
+description: Learn about Managed identities in Azure Database for PostgreSQL - Flexible Server.
 author: kabharati
 ms.author: kabharati
 ms.reviewer: maghan
@@ -8,13 +8,9 @@ ms.date: 12/18/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: conceptual
-ms.custom:
-  - mvc
-  - mode-other
-ms.devlang: python
 ---
 
-# Managed identity in Azure Database for PostgreSQL - Flexible Server
+# Managed identities in Azure Database for PostgreSQL - Flexible Server
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
@@ -43,88 +39,22 @@ There are two types of managed identities:
     - Multiple resources can utilize user assigned identities.
     - You authorize the managed identity to have access to one or more services.
 
-> [!NOTE]
-> Azure Database for PostgreSQL - Flexible Server doesn't support the use of user assigned managed identities.
+## Uses of managed identities in Azure Database for PostgreSQL - Flexible Server
 
-## Enable the system assigned managed identity for existing servers
+**System assigned managed identity** for an instance of Azure Database for PostgreSQL flexible server is used by:
 
-## [Portal](#tab/portal-enable)
+- [azure_storage extension](concepts-storage-extension.md), when it's configured to access a storage account using the `managed-identity` authentication type. For more information, see how to [configure the azure_storage extension to use authorization with Microsoft Entra ID](how-to-use-pg-azure-storage.md#to-use-authorization-with-microsoft-entra-id).
+- [Microsoft Fabric mirrored databases from Azure Database for PostgreSQL - Flexible Server (preview)](https://techcommunity.microsoft.com/blog/adforpostgresql/mirroring-azure-database-for-postgresql-flexible-server-in-microsoft-fabric---pr/4251876) uses the credentials of the system assigned managed identity to sign the requests that your instance of flexible server sends to the Azure DataLake service in Microsoft Fabric to mirror your designated databases.
 
-Using the [Azure portal](https://portal.azure.com/):
+**User assigned managed identities** configured for an instance of Azure Database for PostgreSQL flexible server can be used for:
 
-1. Locate your server in the portal, if you don't have it open. One way to do it is by typing the name of the server in the search bar. When the resource with the matching name is shown, select that resource.
-
-    :::image type="content" source="./media/concepts-identity/server-search.png" alt-text="Screenshot that shows how to search for a resource using the search bar in the Azure portal." lightbox="./media/concepts-identity/server-search.png":::
-
-2. In the resource menu, under **Security**, select **Identity**. Then, in the **System assigned managed identity** section, select the **On** option. Select **Save**.
-
-    :::image type="content" source="./media/concepts-identity/identity.png" alt-text="Screenshot that shows how to enable the system assigned managed identity on an instance of Azure Database for PostgreSQL flexible server." lightbox="./media/concepts-identity/identity.png":::
-
-3. When the process completes, a notification informs you that the system assigned managed identity is enabled.
-
-    :::image type="content" source="./media/concepts-identity/notification.png" alt-text="Screenshot that shows the notification informing that the system assigned managed identity is enabled." lightbox="./media/concepts-identity/notification.png":::
-
-## [CLI](#tab/cli-enable)
-
-Although the [az postgres flexible-server update](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-update) commands don't provide built-in support to enable and disable the system assigned managed identity yet, you can use the [az rest](/cli/azure/reference-index#az-rest) command to directly invoke the [Servers - Update](/rest/api/postgresql/flexibleserver/servers/update) REST API.
-
-
-
-## [ARM template](#tab/arm-enable)
-
-Here's the ARM template to enable system assigned managed identity. You can use the 2023-06-01-preview or the latest available API.
-
-```json
-{
-    "resources": [
-        {
-            "apiVersion": "2023-06-01-preview",
-            "identity": {
-                "type": "SystemAssigned"
-            },
-            "location": "Region name",
-            "name": "flexible server name",
-            "type": "Microsoft.DBforPostgreSQL/flexibleServers"
-        }
-    ]
-}
-  ```
-
-To disable system assigned managed identity change the type to **None**
- 
-```json
-{
-    "resources": [
-        {
-            "apiVersion": "2023-06-01-preview",
-            "identity": {
-                "type": "None"
-            },
-            "location": "Region Name",
-            "name": "flexible server name",
-            "type": "Microsoft.DBforPostgreSQL/flexibleServers"
-        }
-    ]
-}
- ```
-
----
-
-## Verify the system assigned managed identity
-
-You can verify the managed identity created by going to **Enterprise Applications** 
-
-1. Choose  **Application Type == Managed Identity**
-
-2. Provide your flexible server name in **Search by application name or Identity** as shown in the screenshot.
-
-![Screenshot verifying system assigned managed identity.](media/concepts-Identity/verify-managed-identity.png)
-
+- [Data encryption with customer managed keys](concepts-data-encryption.md).
 
 [Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
 
 ## Related content
 
+- [Configure system or user assigned managed identities in Azure Database for PostgreSQL - Flexible Server](how-to-managed-identities.md).
 - [Firewall rules in Azure Database for PostgreSQL - Flexible Server](concepts-firewall-rules.md).
 - [Public access and private endpoints in Azure Database for PostgreSQL - Flexible Server](concepts-networking-public.md).
 - [Virtual network integration in Azure Database for PostgreSQL - Flexible Server](concepts-networking-private.md).
