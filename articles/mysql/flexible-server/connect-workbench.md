@@ -34,7 +34,7 @@ This quickstart uses the resources created in either of these guides as a starti
 
 ## Get connection information
 
-Get the connection information needed to connect to the Flexible Server. You need the fully qualified server name and sign in credentials.
+Get the connection information needed to connect to the flexible server. You need the fully qualified server name and sign in credentials.
 
 1. Sign in to the [Azure portal](https://portal.azure.com/).
 1. From the left-hand menu in Azure portal, select **All resources**, and then search for the server you have created (such as **mydemoserver**).
