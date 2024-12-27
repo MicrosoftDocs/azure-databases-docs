@@ -124,7 +124,7 @@ This article assumes you created the user assigned managed identities that you w
 
 For more information, see [how to manage user assigned managed identities in Microsoft Entra ID](/entra/identity/managed-identities-azure-resources/how-manage-user-assigned-managed-identities).
 
-You can associate as many user assigned managed identities as you want to an instance of Azure Database for PostgreSQL flexible server. However, once you assign at least one, you're allowed to remove them all but one.
+You can associate as many user assigned managed identities as you want to an instance of Azure Database for PostgreSQL flexible server.
 
 ## [Portal](#tab/portal-associate)
 
