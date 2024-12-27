@@ -54,7 +54,7 @@ There are two types of managed identities:
 
 ## Related content
 
-- [Configure system or user assigned managed identities in Azure Database for PostgreSQL - Flexible Server](how-to-managed-identities.md).
+- [Configure system or user assigned managed identities in Azure Database for PostgreSQL - Flexible Server](how-to-configure-managed-identities.md).
 - [Firewall rules in Azure Database for PostgreSQL - Flexible Server](concepts-firewall-rules.md).
 - [Public access and private endpoints in Azure Database for PostgreSQL - Flexible Server](concepts-networking-public.md).
 - [Virtual network integration in Azure Database for PostgreSQL - Flexible Server](concepts-networking-private.md).

@@ -109,7 +109,11 @@ You can verify the managed identity created by going to **Enterprise Application
 
 ## [CLI](#tab/cli-verify)
 
-az ad sp list --display-name testuamisami
+
+```azurecli-interactive
+server=<server>
+az ad sp list --display-name $server
+```
 
 ---
 
