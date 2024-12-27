@@ -121,7 +121,6 @@ az ad sp list --display-name $server
 
 ---
 
-
 ## Associate user assigned managed identities for existing servers
 
 This article assumes you created the user assigned managed identities that you want to associate to an existing instance of Azure Database for PostgreSQL flexible server.
@@ -176,7 +175,9 @@ az postgres flexible-server identity remove --resource-group $resourceGroup --se
 
 ## Special considerations
 
-
+- TODO 1
+- TODO 2
+- TODO N
 
 [Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
 
