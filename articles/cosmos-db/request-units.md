@@ -5,8 +5,8 @@ description: Learn how request units function as a currency in Azure Cosmos DB a
 author: markjbrown
 ms.author: mjbrown
 ms.service: azure-cosmos-db
-ms.topic: conceptual
-ms.date: 02/27/2023
+ms.topic: concept-article
+ms.date: 09/26/2024
 ms.custom: cosmos-db-video
 ---
 
@@ -77,10 +77,10 @@ If you assign *'R'* RUs on an Azure Cosmos DB container (or database), Azure Cos
 
 Assuming that an Azure Cosmos DB container is configured with *'R'* RUs and there are *'N'* regions associated with the Azure Cosmos DB account, the total RUs available globally on the container = *R* x *N*.
 
-Your choice of [consistency model](consistency-levels.md) also affects the throughput. You can get approximately 2x read throughput for the more relaxed consistency levels (*session*, *consistent prefix* and *eventual* consistency) compared to stronger consistency levels (*bounded staleness* or *strong* consistency).
+Your choice of [consistency model](consistency-levels.md) also affects the throughput. You can get approximately 2x read throughput for the more relaxed consistency levels (*session*, *consistent prefix, and *eventual* consistency) compared to stronger consistency levels (*bounded staleness* or *strong* consistency).
 
-## Next steps
+## Related content
 
-* Learn more about how to [assign throughput on Azure Cosmos DB containers and databases](set-throughput.md).
-* Learn more about [serverless on Azure Cosmos DB](serverless.md).
-* Learn more about [logical partitions](./partitioning-overview.md)
+* [Assign throughput on Azure Cosmos DB containers and databases](set-throughput.md).
+* [Serverless on Azure Cosmos DB](serverless.md).
+* [Logical partitions](./partitioning-overview.md)

@@ -1,10 +1,10 @@
 ---
-title: Resolve capacity errors
+title: Resolve Capacity Errors
 description: The article describes how you can resolve capacity errors when deploying or scaling Azure Database for MySQL - Flexible Server.
 author: karla-escobar
 ms.author: karlaescobar
 ms.reviewer: maghan
-ms.date: 06/18/2024
+ms.date: 11/27/2024
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: troubleshooting

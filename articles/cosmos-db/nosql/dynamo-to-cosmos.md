@@ -111,7 +111,7 @@ git clone https://github.com/Azure-Samples/DynamoDB-to-CosmosDB
 Add the following "NuGet package" to your project:
 
 ```bash
-Install-Package Microsoft.Azure.Azure Cosmos DB
+Install-Package Microsoft.Azure.Cosmos
 ```
 
 ### Establish connection
@@ -131,7 +131,10 @@ In Amazon DynamoDB, the following code is used to connect:
 To connect Azure Cosmos DB, update your code to:
 
 ```csharp
-client_documentDB = new CosmosClient("your connectionstring from the Azure portal");
+client_documentDB = new CosmosClient(
+    "<nosql-account-endpoint>",
+    tokenCredential
+);
 ```
 
 **Optimize the connection in Azure Cosmos DB**

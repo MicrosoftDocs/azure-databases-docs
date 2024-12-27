@@ -19,7 +19,7 @@ ms.date: 10/31/2023
 Azure's diagnostic logs are essential to capture Azure resource logs for an Azure Cosmos DB for MongoDB vCore account. These logs furnish detailed and frequent insights into the operations for resources with the account.
 
 > [!IMPORTANT]
-> This feature is not available with `M25` (burstable) or `M30` (free-tier) SKUs.
+> This feature is not available with `M25`, `M30`, or free-tier SKUs.
 
 ## Prerequisites
 
@@ -69,7 +69,7 @@ Use these resource-specific queries to perform common troubleshooting research i
     ```Kusto
     VCoreMongoRequests
     // Time range filter:  | where TimeGenerated between (StartTime .. EndTime)
-    // Resource id filter: | where _ResourceId == "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/my-resource-group-name/providers/microsoft.documentdb/mongoclusters/my-cluster-name"
+    // Resource id filter: | where _ResourceId == "/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourcegroups/my-resource-group-name/providers/microsoft.documentdb/mongoclusters/my-cluster-name"
     | where ErrorCode != 0
     | summarize count() by bin(TimeGenerated, 5m), ErrorCode=tostring(ErrorCode)
     ```
@@ -81,7 +81,7 @@ Use these resource-specific queries to perform common troubleshooting research i
     // Mongo vCore requests P99 runtime duration by operation name. 
     VCoreMongoRequests
     // Time range filter:  | where TimeGenerated between (StartTime .. EndTime)
-    // Resource id filter: | where _ResourceId == "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/my-resource-group-name/providers/microsoft.documentdb/mongoclusters/my-cluster-name"
+    // Resource id filter: | where _ResourceId == "/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourcegroups/my-resource-group-name/providers/microsoft.documentdb/mongoclusters/my-cluster-name"
     | summarize percentile(DurationMs, 99) by bin(TimeGenerated, 1h), OperationName
     ```
 
@@ -92,7 +92,7 @@ Use these resource-specific queries to perform common troubleshooting research i
     // Count of Mongo vCore requests binned by total runtime duration. 
     VCoreMongoRequests
     // Time range filter:  | where TimeGenerated between (StartTime .. EndTime)
-    // Resource id filter: | where _ResourceId == "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/my-resource-group-name/providers/microsoft.documentdb/mongoclusters/my-cluster-name"
+    // Resource id filter: | where _ResourceId == "/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourcegroups/my-resource-group-name/providers/microsoft.documentdb/mongoclusters/my-cluster-name"
     | project TimeGenerated, DurationBin=tostring(bin(DurationMs, 5))
     | summarize count() by bin(TimeGenerated, 1m), tostring(DurationBin)
     ```
@@ -104,7 +104,7 @@ Use these resource-specific queries to perform common troubleshooting research i
     // Count of Mongo vCore requests by user agent. 
     VCoreMongoRequests
     // Time range filter:  | where TimeGenerated between (StartTime .. EndTime)
-    // Resource id filter: | where _ResourceId == "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/my-resource-group-name/providers/microsoft.documentdb/mongoclusters/my-cluster-name"
+    // Resource id filter: | where _ResourceId == "/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourcegroups/my-resource-group-name/providers/microsoft.documentdb/mongoclusters/my-cluster-name"
     | summarize count() by bin(TimeGenerated, 1h), UserAgent
     ```
 

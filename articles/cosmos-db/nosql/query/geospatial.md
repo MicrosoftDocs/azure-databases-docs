@@ -26,7 +26,7 @@ Common geospatial use cases include, but aren't limited to:
 - **Location-based personalization**, for industries like retail and healthcare to improve user experience.
 - **Logistics enhancement**, for industries like transportation where optimization is critical.
 - **Risk Analysis**, for industries like insurance and finance to supplement other metadata.
-- **Situational awareness***, for proxmiity-based alerts and notifications.
+- **Situational awareness***, for proximity-based alerts and notifications.
 
 ## Introduction to spatial data
 

@@ -74,7 +74,7 @@ The [ItemManagement](https://github.com/Azure/azure-cosmos-js/blob/master/sample
 
 ## Indexing examples
 
-The [IndexManagement](https://github.com/Azure/azure-sdk-for-js/blob/main/sdk/cosmosdb/cosmos/samples-dev/IndexManagement.ts) file shows how to manage indexing. To learn about indexing in Azure Cosmos DB before running the following samples, see [indexing policies](../index-policy.md), [indexing types](../index-overview.md#types-of-indexes), and [indexing paths](../index-policy.md#include-exclude-paths) conceptual articles.
+The [IndexManagement](https://github.com/Azure/azure-sdk-for-js/blob/main/sdk/cosmosdb/cosmos/samples-dev/IndexManagement.ts) file shows how to manage indexing. To learn about indexing in Azure Cosmos DB before running the following samples, see [indexing policies](../index-policy.md), [indexing types](../index-overview.md#types-of-indexes), and [indexing paths](../index-policy.md) conceptual articles.
 
 | Task                                                                                                                                                                                            | API reference                                                                                                                                                                        |
 | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -103,7 +103,7 @@ The [EntraAuth.ts](https://github.com/Azure/azure-sdk-for-js/blob/main/sdk/cosmo
 | Task                                                                                                                                                                | API reference                                                                                             |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
 | [Create credential object from @azure/identity](https://github.com/Azure/azure-sdk-for-js/blob/main/sdk/cosmosdb/cosmos/samples-dev/EntraAuth.ts#L23-L28)             | [API](/javascript/api/@azure/identity/usernamepasswordcredential#constructors)                            |
-| [Pass credentials to client object with key aadCredentials](https://github.com/Azure/azure-sdk-for-js/blob/main/sdk/cosmosdb/cosmos/samples-dev/EntraAuth.ts#L30-L38) | [API](/javascript/api/@azure/cosmos/cosmosclientoptions#@azure-cosmos-cosmosclientoptions-aadcredentials) |
+| [Pass token credentials to client constructor](https://github.com/Azure/azure-sdk-for-js/blob/main/sdk/cosmosdb/cosmos/samples-dev/EntraAuth.ts#L30-L38) | [API](/javascript/api/@azure/cosmos/cosmosclientoptions#@azure-cosmos-cosmosclientoptions-aadcredentials) |
 | [Execute cosmos client with aad credentials](https://github.com/Azure/azure-sdk-for-js/blob/main/sdk/cosmosdb/cosmos/samples-dev/EntraAuth.ts#L45-L52)                | [API](/javascript/api/@azure/cosmos/databases#readall-feedoptions-)                                       |
 
 ## Miscellaneous samples
