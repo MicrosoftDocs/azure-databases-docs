@@ -1,10 +1,10 @@
 ---
-title: "Quickstart: Connect using Azure CLI"
+title: "Quickstart: Connect Using Azure CLI"
 description: This quickstart provides several ways to connect with and query Azure Database for MySQL - Flexible Server by using Azure CLI.
 author: shreyaaithal
 ms.author: shaithal
 ms.reviewer: maghan
-ms.date: 06/18/2024
+ms.date: 11/27/2024
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: quickstart
@@ -16,22 +16,21 @@ ms.custom:
 
 # Quickstart: Connect with Azure Database for MySQL - Flexible Server by using Azure CLI
 
-[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
-This quickstart demonstrates how to connect to Azure Database for MySQL flexible server using Azure CLI with `az mysql flexible-server connect` and execute single query or sql file with the `az mysql flexible-server execute` command. This command allows you test connectivity to your database server and run queries. You can also run multiple queries using the interactive mode.
+This quickstart demonstrates how to connect to Azure Database for MySQL Flexible Server using Azure CLI with `az mysql flexible-server connect` and execute single query or sql file with the `az mysql flexible-server execute` command. This command allows you test connectivity to your database server and run queries. You can also run multiple queries using the interactive mode.
 
 ## Prerequisites
 
 - An Azure account with an active subscription.
 
-    [!INCLUDE [flexible-server-free-trial-note](../includes/flexible-server-free-trial-note.md)]
+[!INCLUDE [flexible-server-free-trial-note](../includes/flexible-server-free-trial-note.md)]
+
 - Install [Azure CLI](/cli/azure/install-azure-cli) latest version (2.20.0 or higher)
 - Log in using Azure CLI with the `az login` command
 - Turn on parameter persistence with `az config param-persist on`. Parameter persistence helps you use local context without having to repeat numerous arguments like resource group or location.
 
 ## Create a MySQL Flexible Server
 
-The first thing to create is a managed Azure Database for MySQL flexible server instance. In [Azure Cloud Shell](https://shell.azure.com/), run the following script and make a note of the **server name**, **username** and  **password** generated from this command.
+The first thing to create is a managed Azure Database for MySQL Flexible Server instance. In [Azure Cloud Shell](https://portal.azure.com/#cloudshell), run the following script and make a note of the **server name**, **username** and **password** generated from this command.
 
 ```azurecli-interactive
 az mysql flexible-server create --public-access <your-ip-address>
@@ -100,7 +99,7 @@ az mysql flexible-server connect -n mysqldemoserver1 -u dbuser -p "dbpassword" -
 
 You can see the **MySQL** shell experience as shown below:
 
-```mysql
+```sql
 Command group 'mysql flexible-server' is in preview and under development. Reference and support levels: https://aka.ms/CLI_refstatus
 Password:
 mysql 5.7.29-log
@@ -117,13 +116,13 @@ Query OK, 1 row affected
 Time: 0.199s
 newdatabase1> SELECT * FROM table1;
 +----+-----+-------+
-| id | val | txt   |
-+----+-----+-------+
-| 1  | 100 | text1 |
-+----+-----+-------+
-1 row in set
-Time: 0.149s
-newdatabase>exit;
+| id | val | txt |
+| +----+-----+-------+ |
+| 1 | 100 | text1 |
+| +----+-----+-------+ |
+| 1 row in set |
+| Time: 0.149s |
+| newdatabase>exit; |
 Goodbye!
 ```
 
@@ -183,8 +182,7 @@ Successfully executed the file.
 Closed the connection to mysqldemoserver.
 ```
 
-## Next Steps
+## Related content
 
-> [!div class="nextstepaction"]
-* [Connect to Azure Database for MySQL flexible server with encrypted connections](how-to-connect-tls-ssl.md)
-* [Manage the server](./how-to-manage-server-cli.md)
+- [Connect to Azure Database for MySQL - Flexible Server with encrypted connections](how-to-connect-tls-ssl.md)
+- [Manage Azure Database for MySQL - Flexible Server using the Azure CLI](how-to-manage-server-cli.md)

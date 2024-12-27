@@ -1,6 +1,6 @@
 ---
-title: "Migration service - Known issues and limitations"
-description: This article provides the limitations and known issues of the migration service in Azure Database for PostgreSQL.
+title: "Known issues and limitations for the migration service"
+description: This article describes the limitations and known issues of the migration service in Azure Database for PostgreSQL.
 author: apduvuri
 ms.author: adityaduvuri
 ms.reviewer: maghan
@@ -9,47 +9,46 @@ ms.service: azure-database-postgresql
 ms.topic: conceptual
 ---
 
-# Known issues and limitations for the migration service in Azure Database for PostgreSQL
+# Known issues and limitations for the migration service
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
-This article describes the known issues and limitations associated with the migrations service in Azure Database for PostgreSQL.
+This article describes the known issues and limitations that are associated with the migration service in Azure Database for PostgreSQL.
 
 ## Common limitations
 
-Here are common limitations that apply to migration scenarios:
+The following list describes common limitations that apply to migration scenarios:
 
 - You can have only one active migration or validation to your flexible server.
-- The migration service only supports migration for users and roles when the source is Azure Database for PostgreSQL - Single Server.
-- The migration service shows the number of tables copied from source to target. You must manually check the data and PostgreSQL objects on the target server post-migration.
-- The migration service migrates only user databases, not system databases, such as template_0 and template_1.
-- The migration service doesn't support moving POSTGIS_TOPOLOGY, POSTGIS_TIGER_GEOCODER, POSTGRES_FDW and PG_PARTMAN extensions from source to target.
+- The migration service supports migration for users and roles only when the source is Azure Database for PostgreSQL - Single Server.
+- The migration service shows the number of tables that are copied from the source to the target. You must manually check the data and PostgreSQL objects on the target server after migration.
+- The migration service migrates only user databases. The service doesn't migrate system databases like **template_0** and **template_1**.
+- The migration service doesn't support moving POSTGIS_TOPOLOGY, POSTGIS_TIGER_GEOCODER, POSTGRES_FDW, and PG_PARTMAN extensions from source to target.
 
-> [!NOTE]
-> Migration of databases with **TIMESCALEDB** extension is in preview and is disabled by default. If you want to migrate your time series databases, you can raise a support ticket for this purpose.
+  > [!NOTE]
+  > The feature to migrate databases that have the TIMESCALEDB extension is in preview. The option is turned off by default. To migrate your time series databases, please open a support ticket.
 
-- You can't move extensions not supported by Azure Database for PostgreSQL - Flexible Server. The supported extensions are listed in [Extensions - Azure Database for PostgreSQL](/azure/postgresql/flexible-server/concepts-extensions).
-- User-defined collations can't be migrated into Azure Database for PostgreSQL - Flexible Server.
-- You can't migrate to an older version. For instance, you can't migrate from Azure Database for PostgreSQL version 15 to version 14.
-- The migration service only works with preferred or required SSLMODE values.
-- The migration service doesn't support superuser privileges and objects.
-- Azure Database for PostgreSQL - Flexible Server doesn't support the creation of custom tablespaces because of superuser privilege restrictions. During migration, data from custom tablespaces in the source PostgreSQL instance is migrated into the default tablespaces of the target Azure Database for PostgreSQL - Flexible Server instance.
-- Currently, online migration from Amazon Aurora PostgreSQL 13 to Azure Database for PostgreSQL - Flexible Server is not supported and will fail.
-- The following PostgreSQL objects can't be migrated into the PostgreSQL flexible server target:
+- You can't move extensions that aren't supported by Azure Database for PostgreSQL - Flexible Server. Supported extensions are listed in [Extensions for Azure Database for PostgreSQL](/azure/postgresql/flexible-server/concepts-extensions).
+- User-defined collations can't be migrated to Azure Database for PostgreSQL - Flexible Server.
+- You can't migrate to an earlier version. For instance, you can't migrate from Azure Database for PostgreSQL version 15 to Azure Database for PostgreSQL version 14.
+- The migration service works only with an `SSLMODE` value of `preferred` or `required`.
+- The migration service doesn't support superuser permissions and objects.
+- Azure Database for PostgreSQL - Flexible Server doesn't support the creation of custom tablespaces due to restrictions on superuser permissions. During migration, data from custom tablespaces in the source PostgreSQL instance is migrated to the default tablespaces of the target instance of Azure Database for PostgreSQL - Flexible Server.
+- The following PostgreSQL objects can't be migrated to a Flexible Server target:
+  - Create casts
+  - Creation of full-text search (FTS) parsers and FTS templates
+  - Users that have superuser roles
+  - Create TYPE
+- The migration service doesn't support migration at the object level. That is, you can't migrate a table or a schema.
 
-    - Create casts
-    - Creation of FTS parsers and FTS templates
-    - Users with superuser roles
-    - Create TYPE
-- The migration service doesn't support migration at the object level, that is, at the table level or schema level.
-- Migration into Burstable SKU is supported only in West Europe region currently. In all other regions, the Databases can first be migrated into a General Purpose or Memory Optimized SKU and then scaled down if needed.
-- The Migration Runtime Server is designed to operate with the default DNS servers/private DNS zones, for example, `privatelink.postgres.database.azure.com`. Custom DNS names/DNS servers aren't supported by the migration service when you use the Migration Runtime Server feature. When you're configuring private endpoints for both the source and target databases, it's imperative to use the default private DNS zone provided by Azure for the private link service. The use of custom DNS configurations isn't yet supported and might lead to connectivity issues during the migration process.
+  > [!IMPORTANT]
+  > Though the Burstable SKU is not a limitation, it is recommended to choose a higher SKU for your flexible server to perform faster migrations. Azure Database for PostgreSQL - Flexible Server supports near-zero downtime compute and IOPS scaling, so the SKU can be updated with minimal downtime. You can always change the SKU to match the application needs post-migration.
 
-## Limitations migrating from Azure Database for PostgreSQL - Single Server
+## Limitations in migrating from Azure Database for PostgreSQL - Single Server
 
-- Microsoft Entra ID users present on your source server aren't migrated to the target server. To mitigate this limitation, see [Manage Microsoft Entra roles](../../flexible-server/how-to-manage-azure-ad-users.md) to manually create all Microsoft Entra users on your target server before you trigger a migration. If Microsoft Entra users aren't created on the target server, migration fails.
-- If the target flexible server uses the SCRAM-SHA-256 password encryption method, connection to a flexible server using the users/roles on a single server fails because the passwords are encrypted by using the md5 algorithm. To mitigate this limitation, choose the option `MD5` for the `password_encryption` server parameter on your flexible server.
-- Online migration makes use of [pgcopydb follow](https://pgcopydb.readthedocs.io/en/latest/ref/pgcopydb_follow.html), and some of the [logical decoding restrictions](https://pgcopydb.readthedocs.io/en/latest/ref/pgcopydb_follow.html#pgcopydb-follow) apply.
+- Microsoft Entra users who are on your source server aren't migrated to the target server. To mitigate this limitation, see [Manage Microsoft Entra roles](../../flexible-server/how-to-manage-azure-ad-users.md). The solution is to manually create all Microsoft Entra users on your target server before you initiate a migration. If Microsoft Entra users aren't created on the target server, migration fails.
+- If the target flexible server uses the SCRAM-SHA-256 password encryption method, connection to a flexible server by using the users or roles on a single server fails. On a single server, passwords are encrypted by using the MD5 algorithm. To mitigate this limitation, for the `password_encryption` server parameter on your flexible server, select the option `MD5`.
+- Online migration uses [pgcopydb follow](https://pgcopydb.readthedocs.io/en/latest/ref/pgcopydb_follow.html). Some [logical decoding restrictions](https://pgcopydb.readthedocs.io/en/latest/ref/pgcopydb_follow.html#pgcopydb-follow) apply.
 
 ## Related content
 

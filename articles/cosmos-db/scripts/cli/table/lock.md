@@ -14,10 +14,10 @@ ms.custom: kr2b-contr-experiment, devx-track-azurecli
 
 [!INCLUDE[Table](../../../includes/appliesto-table.md)]
 
-The script in this article demonstrates performing resource lock operations for a API for Table table.
+The script in this article demonstrates performing resource lock operations for an API for Table table.
 
 > [!IMPORTANT]
-> To enable resource locking, the Azure Cosmos DB account must have the `disableKeyBasedMetadataWriteAccess` property enabled. This property prevents any changes to resources from clients that connect via account keys, such as the Azure Cosmos DB Table SDK, Azure Storage Table SDK, or Azure portal. For more information, see [Preventing changes from SDKs](../../../role-based-access-control.md#prevent-sdk-changes).
+> To enable resource locking, the Azure Cosmos DB account must have the `disableKeyBasedMetadataWriteAccess` property enabled. This property prevents any changes to resources from clients that connect via account keys, such as the Azure Cosmos DB Table SDK, Azure Storage Table SDK, or Azure portal.
 
 ## Prerequisites
 

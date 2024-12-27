@@ -41,6 +41,10 @@ If the source PostgreSQL version is less than 9.5, upgrade it to 9.5 or higher b
 ### Enable CDC as a source
 
 - `test_decoding` logical decoding plugin captures the changed records from the source.
+- To allow the migration user to access replication privileges, execute the following command:
+```bash
+GRANT rds_replication TO <<username>>;
+```
 - In the source, PostgreSQL instance, modify the following parameters by creating a new parameter group:
     - Set `rds.logical_replication = 1`
     - Set `max_replication_slots` to a value greater than one; the value should be greater than the number of databases selected for migration.

@@ -1,5 +1,5 @@
 ---
-  title: $mergeObjects (object expression) usage on Azure Cosmos DB for MongoDB vCore
+  title: $mergeObjects object expression usage on Azure Cosmos DB for MongoDB vCore
   titleSuffix: Azure Cosmos DB for MongoDB vCore
   description: The $mergeObjects operator is used to combine multiple documents into a single document.
   author: avijitgupta
@@ -7,10 +7,10 @@
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: reference
-  ms.date: 09/12/2024
+  ms.date: 11/01/2024
 ---
 
-# $mergeObjects (object expression)
+# $mergeObjects as object expression operator
 
 [!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 

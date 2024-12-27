@@ -7,7 +7,7 @@ ms.author: jacodel
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: how-to
-ms.date: 08/01/2023
+ms.date: 10/07/2024
 ms.custom: query-reference, devx-track-dotnet
 ---
 
@@ -52,8 +52,8 @@ All containers include a default indexing policy that will successfully index ge
 
     ```azurecli-interactive
     az cosmosdb sql database create \
-        --resource-group $resourceGroupName \
-        --account-name $accountName \
+        --resource-group "<resource-group-name>" \
+        --account-name "<nosql-account-name>" \
         --name "cosmicworks" \
         --throughput 400
     ```
@@ -90,29 +90,24 @@ All containers include a default indexing policy that will successfully index ge
 
     ```azurecli-interactive
     az cosmosdb sql container create \
-        --resource-group $resourceGroupName \
-        --account-name $accountName \
+        --resource-group "<resource-group-name>" \
+        --account-name "<nosql-account-name>" \
         --database-name "cosmicworks" \
         --name "locations" \
         --partition-key-path "/category" \
         --idx @index-policy.json
     ```
 
-1. Retrieve the primary connection string for the account using [``az cosmosdb keys list``](/cli/azure/cosmosdb/keys#az-cosmosdb-keys-list).
+1. Finally, get the account endpoint for your account using [`az cosmosdb show`](/cli/azure/cosmosdb#az-cosmosdb-show) and a JMESPath query.
 
     ```azurecli-interactive
-    az cosmosdb keys list \
-        --resource-group $resourceGroupName \
-        --name $accountName \
-        --type "connection-strings" \
-        --query "connectionStrings[?keyKind == \`Primary\`].connectionString" \
-        --output tsv
+    az cosmosdb show \
+        --resource-group "<resource-group-name>" \
+        --name "<nosql-account-name>" \
+        --query "documentEndpoint"
     ```
 
-    > [!TIP]
-    > To see all the possible connection strings for an account, use ``az cosmosdb keys list --resource-group $resourceGroupName --name $accountName --type "connection-strings"``.
-
-1. Record the connection string. You use this credential later in this guide.
+1. Record the account endpoint as you will need this in the next section.
 
 ## Create .NET SDK console application
 
@@ -126,7 +121,7 @@ The .NET SDK for Azure Cosmos DB for NoSQL provides classes for common GeoJSON o
     dotnet new console
     ```
 
-1. Import the [Microsoft.Azure.Cosmos](https://www.nuget.org/packages/Microsoft.Azure.Cosmos) NuGet package using the [``dotnet add package``](/dotnet/core/tools/dotnet-add-package) command.
+1. Import the [`Microsoft.Azure.Cosmos`](https://www.nuget.org/packages/Microsoft.Azure.Cosmos) NuGet package using the [``dotnet add package``](/dotnet/core/tools/dotnet-add-package) command.
 
     ```dotnetcli
     dotnet add package Microsoft.Azure.Cosmos --version 3.*
@@ -134,6 +129,12 @@ The .NET SDK for Azure Cosmos DB for NoSQL provides classes for common GeoJSON o
 
     > [!WARNING]
     > Entity Framework does not currently spatial data in Azure Cosmos DB for NoSQL. Use one of the Azure Cosmos DB for NoSQL SDKs for strongly-typed GeoJSON support.
+
+1. Import the [`Azure.Identity`](https://www.nuget.org/packages/Azure.Identity) NuGet package.
+
+    ```dotnetcli
+    dotnet add package Azure.Identity --version 1.*
+    ```
 
 1. Build the project with the [``dotnet build``](/dotnet/core/tools/dotnet-build) command.
 
@@ -151,10 +152,22 @@ The .NET SDK for Azure Cosmos DB for NoSQL provides classes for common GeoJSON o
     using Microsoft.Azure.Cosmos.Spatial;
     ```
 
-1. Add a string variable named *``connectionString`` with the connection string you recorded earlier in this guide.
+1. Add another using directive for the `Azure.Identity` namespace.
 
     ```csharp
-    string connectionString = "<your-account-connection-string>"
+    using Azure.Identity;
+    ```
+
+1. Create a new variable named `credential` of type [`DefaultAzureCredential`](/dotnet/api/azure.identity.defaultazurecredential).
+
+    ```csharp
+    DefaultAzureCredential credential = new();
+    ```
+
+1. Create a string variable named `endpoint` with your Azure Cosmos DB for NoSQL account endpoint.
+
+    ```csharp
+    string endpoint = "<nosql-account-endpoint>";
     ```
 
 1. Create a new instance of the [``CosmosClient``](/dotnet/api/microsoft.azure.cosmos.cosmosclient) class passing in ``connectionString`` and wrapping it in a [using statement](/dotnet/csharp/language-reference/statements/using).
@@ -467,8 +480,8 @@ Remove your database after you complete this guide.
 
     ```azurecli-interactive
     az cosmosdb sql database delete \
-        --resource-group $resourceGroupName \
-        --account-name $accountName \
+        --resource-group "<resource-group-name>" \
+        --account-name "<nosql-account-name>" \
         --name "cosmicworks"
     ```
 
