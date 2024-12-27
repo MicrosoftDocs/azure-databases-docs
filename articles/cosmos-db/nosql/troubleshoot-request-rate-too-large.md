@@ -115,7 +115,7 @@ This sample output shows that in a particular minute, the logical partition key 
 > In any workload, there will be natural variation in request volume across logical partitions. You should determine if the hot partition is caused by a fundamental skewness due to choice of partition key (which may require changing the key) or temporary spike due to natural variation in workload patterns.
 
 #### Recommended solution
-Review the guidance on [how to chose a good partition key](../partitioning-overview.md#choose-partitionkey).
+Review the guidance on [how to chose a good partition key](../partitioning-overview.md#choose-a-partition-key).
 
 If there's high percent of rate limited requests and no hot partition:
 - You can [increase the RU/s](../set-throughput.md) on the database or container using the client SDKs, Azure portal, PowerShell, CLI or ARM template. Follow [best practices for scaling provisioned throughput (RU/s)](../scaling-provisioned-throughput-best-practices.md) to determine the right RU/s to set.

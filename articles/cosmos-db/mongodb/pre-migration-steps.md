@@ -15,10 +15,10 @@ ms.date: 04/20/2023
 [!INCLUDE[MongoDB](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb.md)]
 
 > [!IMPORTANT]  
-> Please read this entire guide before carrying out your pre-migration steps.
+> Please read this entire guide before carrying out your pre-migration steps. For migrations to Azure Cosmos DB for MongoDB vCore refer to  [vCore migration options](./vcore/migration-options.md)
 >
 
-This MongoDB pre-migration guide is part of series on MongoDB migration. The critical MongoDB migration steps are pre-migration, migration, and [post-migration](post-migration-optimization.md), as shown in this guide.
+This MongoDB pre-migration guide is part of series on MongoDB RU migration. The critical MongoDB migration steps are pre-migration, migration, and [post-migration](post-migration-optimization.md), as shown in this guide.
 
 ![Diagram of the migration steps from pre to post migration.](~/reusable-content/ce-skilling/azure/media/cosmos-db/overall-migration-steps.png)
 
@@ -132,7 +132,7 @@ Figure out what Azure Cosmos DB resources you create. This process requires step
 The following Azure Cosmos DB configuration choices can't be modified or undone once you've created an Azure Cosmos DB resource; therefore it's important to get these configuration choices right during pre-migration planning, before you kick off any migrations:
 
 * Refer to [Partitioning and horizontal scaling in Azure Cosmos DB](../partitioning-overview.md) to choose the best shard key. Partitioning, also known as Sharding, is a key point of consideration before migrating data. Azure Cosmos DB uses fully managed partitioning to increase the capacity in a database to meet the storage and throughput requirements. This feature doesn't need the hosting or configuration of routing servers.
-  * In a similar way, the partitioning capability automatically adds capacity and rebalances the data accordingly. For more information on choosing the right partition key for your data, see [choosing a partition key](../partitioning-overview.md#choose-partitionkey).
+  * In a similar way, the partitioning capability automatically adds capacity and rebalances the data accordingly. For more information on choosing the right partition key for your data, see [choosing a partition key](../partitioning-overview.md).
 * Follow the guide for [Data modeling in Azure Cosmos DB](../modeling-data.md) to choose a data model.
 * Follow [Optimize provisioned throughput cost in Azure Cosmos DB](../optimize-cost-throughput.md#optimize-by-provisioning-throughput-at-different-levels) to choose between dedicated and shared throughput for each resource that you migrate
 * [How to model and partition data on Azure Cosmos DB using a real-world example](../nosql/model-partition-example.md) is a real-world example of sharding and data modeling to aid you in your decision-making process
@@ -226,10 +226,10 @@ Here's a list of compatible tools for each migration scenario:
 
 Given that you're migrating from a particular MongoDB version, the supported tools for each version are included here:
 
-| MongoDB source version | Azure Cosmos DB for MongoDB destination version | Supported tools | Unsupported tools |
+| MongoDB source version | Azure Cosmos DB for MongoDB (RU based) destination version | Supported tools | Unsupported tools |
 | --- | --- | --- | --- |
-| <2.x, >4.0 | 3.2, 3.6, 4.0 | MongoDB native tools, Spark | DMS, ADF |
-| 3.2, 3.6, 4.0 | 3.2, 3.6, 4.0 | MongoDB native tools, DMS, ADF, Spark | None |
+| <3.2 | 3.2, 3.6, <8.0 | MongoDB native tools, Spark | DMS, ADF |
+| 3.2, 3.6, <8.0 | 3.2, 3.6, <8.0 | MongoDB native tools, DMS, ADF, Spark | None |
 
 ### Post-migration
 

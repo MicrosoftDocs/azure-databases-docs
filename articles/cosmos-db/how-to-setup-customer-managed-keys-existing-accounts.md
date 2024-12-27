@@ -162,5 +162,4 @@ Yes. Go through the prerequisite section thoroughly. We recommend testing all sc
 
 * Learn more about [data encryption in Azure Cosmos DB](database-encryption-at-rest.md).
 * You can choose to add a second layer of encryption with your own keys, to learn more, see the [customer-managed keys](how-to-setup-cmk.md) article.
-* For an overview of Azure Cosmos DB security and the latest improvements, see [Azure Cosmos DB database security](database-security.md).
 * For more information about Microsoft certifications, see the [Azure Trust Center](https://azure.microsoft.com/support/trust-center/).

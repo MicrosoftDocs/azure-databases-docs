@@ -8,7 +8,7 @@ metadata:
   ms.service: azure-cosmos-db
   ms.subservice: apache-gremlin
   ms.topic: faq
-  ms.date: 02/23/2024
+  ms.date: 09/24/2024
 title: Frequently asked questions about Azure Cosmos DB for Table
 summary: |
   [!INCLUDE[Table](../includes/appliesto-table.md)]
@@ -57,7 +57,6 @@ sections:
             - **CloudTable** class
               - `SetPermissions`
               - `GetPermissions`
-
   - name: Other frequently asked questions
     questions:
       - question: |
@@ -151,7 +150,7 @@ sections:
       - question: |
           How do I add replication of the data in the API for Table across more than one region of Azure?
         answer: |
-          You can use the Azure Cosmos DB portal's [global replication settings](../nosql/tutorial-global-distribution.md#portal) to add regions that are suitable for your application. To develop a globally distributed application, you should also add your application with the PreferredLocation information set to the local region for providing low read latency.
+          You can use the Azure Cosmos DB portal's global replication settings to add regions that are suitable for your application. To develop a globally distributed application, you should also add your application with the PreferredLocation information set to the local region for providing low read latency.
 
       - question: |
           How do I change the primary write region for the account in the API for Table?
@@ -294,7 +293,16 @@ sections:
 
           * [Microsoft Q&A question page](/answers/topics/azure-cosmos-db.html)
           * [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-cosmosdb). Stack Overflow is best for programming questions. Make sure your question is [on-topic](https://stackoverflow.com/help/on-topic) and [provide as many details as possible, making the question clear and answerable](https://stackoverflow.com/help/how-to-ask).
-
+  - name: Security
+    questions:
+      - question: |
+          What is role-based access control (RBAC)?
+        answer: |
+          Role-based access control (RBAC) is a method of regulating access to computer or network resources based on the roles of individual users within an enterprise. In Azure Cosmos DB, RBAC is used to grant data-plane access to users and applications.
+      - question: |
+          How do I enable data-plane role-based access control for Azure Cosmos DB for Table?
+        answer: |
+          Use the Azure Cosmos DB native role-based access control (RBAC) feature to grant data-plane access to users and applications.
 additionalContent: |
   ## Related content
 

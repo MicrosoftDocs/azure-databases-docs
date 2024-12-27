@@ -7,7 +7,8 @@ ms.author: avijitgupta
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: release-notes
-ms.date: 08/23/2024
+ms.date: 09/17/2024
+
 #Customer intent: As a database administrator, I want to review the release notes, so I can understand what new features are released for the service.
 ---
 
@@ -15,7 +16,54 @@ ms.date: 08/23/2024
 
 This article contains release notes for the API for MongoDB vCore. These release notes are composed of feature release dates, and feature updates.
 
-## Latest release: Aug 05, 2024
+## Latest release: October 14, 2024
+
+- Index builds to run in background by default.
+- Support for more options with $setWindowFields.
+  - $integral.
+  - $derivative.
+  - $expMovingAvg.
+  - $linearFill.
+  - $locf.
+  - $documentNumber.
+  - $shift.
+  - Added support for more operators with $group.
+    - $top, $topN, $bottom, $bottomN, $first, $firstN, $last, $lastN, $maxN, $minN.
+  - $max.
+  - $min.
+- Support added for aggregation operator.
+  - $toHashedIndexKey.
+- Support added for aggregation stage.
+  - $fill.
+- Support for `wallTime` with ChangeStreams.
+
+## Previous releases
+
+### Latest release: September 16, 2024
+
+- Gated Preview for [ChangeStream](change-streams.md).
+- Gated preview for Runtime support of Collation with $find / $aggregate queries.
+- Large Index keys enabled as default option for indexing.
+- Added support for $DbRef with additional fields $ref/$id/$db, with limitation of the option with `elemMatch`.
+- Support added for trigonometric aggregation operators.
+- Support for more options with $setWindowFields.
+  - $count.
+  - $addToSet.
+  - $push.
+  - $avg.
+  - $rank.
+  - $denseRank.
+  - $covariancePop
+  - $covarianceSamp
+- Support for $let with following.
+  - $lookup.
+  - $find.
+  - $aggregate.
+- Support for $merge aggregation stage with following.
+  - whenMatched : "replace" / "keepExisting" / "merge" / "fail".
+  - whenNotMatched : "insert" / "discard" / "fail".
+
+### August 05, 2024
 
 - [Geospatial support](geospatial-support.md) is now GA.
 - [MongoDB vCore v7 released](how-to-upgrade-cluster.md).
@@ -38,9 +86,7 @@ This article contains release notes for the API for MongoDB vCore. These release
   - $near.
   - $nearSphere.
 
-## Previous releases
-
-## July 02, 2024
+### July 02, 2024
 
 - Metrics added
   - Customer Activity.
