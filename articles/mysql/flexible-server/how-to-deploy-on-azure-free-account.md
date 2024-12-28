@@ -133,7 +133,7 @@ You're not charged for Azure Database for MySQL Flexible Server services include
 
     :::image type="content" source="media/how-to-deploy-on-azure-free-account/free-services-usage-overview.png" alt-text="Screenshot that shows the Free Trial subscription overview page and highlights View all free services." lightbox="media/how-to-deploy-on-azure-free-account/free-services-usage-overview.png":::
 
-1. Locate the meters related to **Azure Database for MySQL ? Flexible Server** to track usage.
+1. Locate the meters related to **Azure Database for MySQL - Flexible Server** to track usage.
 
     :::image type="content" source="media/how-to-deploy-on-azure-free-account/free-services-tracking.png" alt-text="Screenshot that shows the View and track usage information blade on Azure Portal for all free services." lightbox="media/how-to-deploy-on-azure-free-account/free-services-tracking.png":::
 
