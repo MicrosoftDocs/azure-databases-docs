@@ -118,7 +118,7 @@ Using the [Azure portal](https://portal.azure.com/):
 # Show the system assigned managed identity
 resourceGroup=<resource-group>
 server=<server>
-az postgres flexible-server identity list --resource-group rg-nacho-playground --server-name pgtest16 --query "{principalId:principalId, tenantId:tenantId}" --output table
+az postgres flexible-server identity list --resource-group $resourceGroup --server-name $server --query "{principalId:principalId, tenantId:tenantId}" --output table
 ```
 
 ---
@@ -150,7 +150,7 @@ az ad sp list --display-name $server
 
 ---
 
-## Associate user assigned managed identities for existing servers
+## Associate user assigned managed identities to existing servers
 
 This article assumes you created the user assigned managed identities that you want to associate to an existing instance of Azure Database for PostgreSQL flexible server.
 
@@ -177,7 +177,7 @@ az postgres flexible-server identity assign --resource-group $resourceGroup --se
 
 ---
 
-## Dissociate user assigned managed identities for existing servers
+## Dissociate user assigned managed identities to existing servers
 
 The service supports dissociating user assigned managed identities which are associated to an instance of Azure Database for PostgreSQL flexible server.
 
@@ -202,31 +202,32 @@ az postgres flexible-server identity remove --resource-group $resourceGroup --se
 
 ---
 
-## Verify the system assigned managed identity
+## Show the associated user assigned managed identities
 
-## [Portal](#tab/portal-verify-uami)
+## [Portal](#tab/portal-show-uami)
 
 Using the [Azure portal](https://portal.azure.com/):
 
-1. Locate the **Enterprise Applications** service in the portal, if you don't have it open. One way to do it is by typing its name in the search bar. When the service with the matching name is shown, select it.
+1. Locate your server in the portal, if you don't have it open. One way to do it is by typing the name of the server in the search bar. When the resource with the matching name is shown, select that resource.
 
-    :::image type="content" source="./media/how-to-configure-managed-identities/search-enterprise-applications.png" alt-text="Screenshot that shows how to search for a the Enterprise applications service using the search bar in the Azure portal." lightbox="./media/how-to-configure-managed-identities/search-enterprise-applications.png":::
+    :::image type="content" source="./media/how-to-configure-managed-identities/search-server.png" alt-text="Screenshot that shows how to search for a resource using the search bar in the Azure portal." lightbox="./media/how-to-configure-managed-identities/search-server.png":::
 
-2. Choose  **Application Type == Managed Identity**
+2. In the resource menu, under **Overview**, select **JSON View**.
 
-3. Provide the name of your instance of Azure Database for PostgreSQL flexible server in the **Search by application name or object ID** text box.
+    :::image type="content" source="./media/how-to-configure-managed-identities/json-view.png" alt-text="Screenshot that shows how to select JSON View on an instance of Azure Database for PostgreSQL flexible server." lightbox="./media/how-to-configure-managed-identities/json-view.png":::
 
-    :::image type="content" source="./media/how-to-configure-managed-identities/search-managed-identity.png" alt-text="Screenshot that shows how to search for a managed identity using the Enterprise applications service interface in the Azure portal." lightbox="./media/how-to-configure-managed-identities/search-managed-identity.png":::
+3. In the **Resource JSON** panel that opens, find the **identity** property and, inside it, you can find the **userAssignedIdentities**. That object consists of one or more key/value pairs, where each key represents the resource identifier of one user assigned managed identity, and their corresponding value is made of **principalId** and **clientId** associated to that managed identity.
 
-## [CLI](#tab/cli-verify-uami)
+    :::image type="content" source="./media/how-to-configure-managed-identities/user-assigned-managed-identity-details.png" alt-text="Screenshot that shows where to find the userAssignedManagedIdentities object for a server." lightbox="./media/how-to-configure-managed-identities/user-assigned-managed-identity-details.png":::
+
+## [CLI](#tab/cli-show-uami)
 
 
 ```azurecli-interactive
-# Dissociate user assigned managed identity
+# List all associated user assigned managed identities
 resourceGroup=<resource-group>
 server=<server>
-identity=<identity>
-az postgres flexible-server identity remove --resource-group $resourceGroup --server-name $server --identity $identity
+az postgres flexible-server identity list --resource-group $resourceGroup --server-name $server --query "userAssignedIdentities"
 ```
 
 ---
