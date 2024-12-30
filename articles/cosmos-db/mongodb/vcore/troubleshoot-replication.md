@@ -30,7 +30,7 @@ To locate the replica cluster:
 Ensure that [public or private access](./security.md#network-security-options) is enabled for the replica cluster. When a replica cluster is created in another region, its network settings aren't automatically replicated from the primary Azure Cosmos DB for MongoDB vCore cluster.  
 
 To enable access:  
-- To allow public access add firewall rules.  
+- To allow public access, add firewall rules.  
 - Alternatively, create private endpoints to enable private access to the replica cluster.  
 
 ### How can I track utilization of various resources such as memory or IOPS on my replica cluster?
@@ -57,7 +57,7 @@ You can delete a replica cluster at any time without impacting the primary clust
 
 To delete a replica cluster:
 1. Open the properties page of the replica cluster in the Azure portal.
-1. On the **Overview** page, select **Delete** in the toolbar .
+1. On the **Overview** page, select **Delete** in the toolbar.
 1. Carefully read the warning message and confirm the deletion.
 
 ## Next steps
