@@ -18,19 +18,19 @@ This guide is designed to help you troubleshoot common issues when using [cross-
 Ensure your vCore cluster has a cross-region replica created. A replica cluster can be created during initial cluster provisioning or added later. You can [verify the existence of a replica on the 'Overview' page](./how-to-cluster-replica.md#check-cluster-replication-role-and-replication-region) or [create a new one on the 'Global distribution' page](./how-to-cluster-replica.md#enable-cross-region-replication) of your vCore cluster in the Azure portal.
 
 ### I can't find connection string for replica cluster.
-The replica cluster is a full replica of the primary cluster with writes disabled. It is represented as a separate vCore cluster resource in Azure and has its own connection string.
+The replica cluster is a full replica of the primary cluster with writes disabled. It's represented as a separate vCore cluster resource in Azure and has its own connection string.
 
 To locate the replica cluster:
 
 - Open the properties page of the primary vCore cluster in the Azure portal.
 - Navigate to the 'Global distribution' page and click on the hyperlinked name of the replica cluster.
-- This will open the replica cluster’s properties. [Navigate to the 'Connection strings' page](./how-to-cluster-replica.md#use-connection-strings) to copy the connection string.
+- In the replica cluster’s properties, [navigate to the 'Connection strings' page](./how-to-cluster-replica.md#use-connection-strings) to copy the connection string.
 
 ### I can't connect to replica cluster.
-Ensure that [public or private access](./security.md#network-security-options) is enabled for the replica cluster. When a replica cluster is created in another region, its network settings are not automatically replicated from the primary Azure Cosmos DB for MongoDB vCore cluster.  
+Ensure that [public or private access](./security.md#network-security-options) is enabled for the replica cluster. When a replica cluster is created in another region, its network settings aren't automatically replicated from the primary Azure Cosmos DB for MongoDB vCore cluster.  
 
 To enable access:  
-- Add firewall rules to allow public access.  
+- To allow public access add firewall rules.  
 - Alternatively, create private endpoints to enable private access to the replica cluster.  
 
 ### How can I track utilization of various resources such as memory or IOPS on my replica cluster?
@@ -50,15 +50,15 @@ To promote the replica cluster:
 1. Navigate to the **Global distribution** page.  
 1. Select **Promote** and confirm the promotion.  
 
-During the promotion process, the [global read-write connection string](./how-to-cluster-replica.md#use-connection-strings) is updated to point to the newly promoted replica cluster once it is open for write operations.
+During the promotion process, the [global read-write connection string](./how-to-cluster-replica.md#use-connection-strings) is updated to point to the newly promoted replica cluster once it's open for write operations.
 
-### Replica cluster is not needed anymore. How can I disable replication and delete replica cluster?
-You can delete replica cluster at any time. Deletion of the replica cluster doesn't impact the primary cluster or data stored or written to the primary cluster. If you need to delete both replica and primary clusters, you need to delete replica cluster first.
+### Replica cluster isn't needed anymore. How can I disable replication and delete replica cluster?
+You can delete a replica cluster at any time without impacting the primary cluster or the data stored and written to it. However, if you need to delete both the replica and primary clusters, ensure that the replica cluster is deleted first.
 
 To delete a replica cluster:
 1. Open the properties page of the replica cluster in the Azure portal.
-1. Select **Delete** in the toolbar on the **Overview** page. 
-1. Read the warning and confirm deletion.
+1. On the **Overview** page, select **Delete** in the toolbar .
+1. Carefully read the warning message and confirm the deletion.
 
 ## Next steps
-If you've completed all the troubleshooting steps and haven't been able to discover a solution for your issue, open a [support request](https://azure.microsoft.com/support/create-ticket/).
+If you followed all the troubleshooting steps and still can't resolve your issue, you can open a [support request](https://azure.microsoft.com/support/create-ticket/) for further assistance.
