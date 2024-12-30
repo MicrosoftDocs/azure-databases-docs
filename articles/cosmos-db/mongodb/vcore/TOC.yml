@@ -64,7 +64,7 @@
       href: indexing.md
     - name: Change Stream
       href: change-streams.md
-    - name: Data api
+    - name: Data API
       href: data-api.md
     - name: Migration options
       href: migration-options.md
