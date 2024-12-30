@@ -34,7 +34,6 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="./media/how-to-configure-managed-identities/enable-system-assigned-managed-identity-notification.png" alt-text="Screenshot that shows the notification informing that the system assigned managed identity is enabled." lightbox="./media/how-to-configure-managed-identities/enable-system-assigned-managed-identity-notification.png":::
 
-
 ## [CLI](#tab/cli-enable)
 
 The [az postgres flexible-server update](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-update) command doesn't provide built-in support to enable and disable the system assigned managed identity yet. As a workaround, you can use the [az rest](/cli/azure/reference-index#az-rest) command to directly invoke the [Servers - Update](/rest/api/postgresql/flexibleserver/servers/update) REST API.
@@ -73,7 +72,6 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="./media/how-to-configure-managed-identities/disable-system-assigned-managed-identity-notification.png" alt-text="Screenshot that shows the notification informing that the system assigned managed identity is disabled." lightbox="./media/how-to-configure-managed-identities/disable-system-assigned-managed-identity-notification.png":::
 
-
 ## [CLI](#tab/cli-disable)
 
 The [az postgres flexible-server update](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-update) command doesn't provide built-in support to enable and disable the system assigned managed identity yet. As a workaround, you can use the [az rest](/cli/azure/reference-index#az-rest) command to directly invoke the [Servers - Update](/rest/api/postgresql/flexibleserver/servers/update) REST API.
@@ -95,9 +93,39 @@ fi
 
 ---
 
+## Show the system assigned managed identity
+
+## [Portal](#tab/portal-show-sami)
+
+Using the [Azure portal](https://portal.azure.com/):
+
+1. Locate your server in the portal, if you don't have it open. One way to do it is by typing the name of the server in the search bar. When the resource with the matching name is shown, select that resource.
+
+    :::image type="content" source="./media/how-to-configure-managed-identities/search-server.png" alt-text="Screenshot that shows how to search for a resource using the search bar in the Azure portal." lightbox="./media/how-to-configure-managed-identities/search-server.png":::
+
+2. In the resource menu, under **Overview**, select **JSON View**.
+
+    :::image type="content" source="./media/how-to-configure-managed-identities/json-view.png" alt-text="Screenshot that shows how to select JSON View on an instance of Azure Database for PostgreSQL flexible server." lightbox="./media/how-to-configure-managed-identities/json-view.png":::
+
+3. In the **Resource JSON** panel that opens, find the **identity** property and, inside it, you can find the **principalId** and **tenantId** for the system assigned managed identity.
+
+    :::image type="content" source="./media/how-to-configure-managed-identities/system-assigned-managed-identity-details.png" alt-text="Screenshot that shows where to find the principalId and tenantId of the system assigned managed identity." lightbox="./media/how-to-configure-managed-identities/system-assigned-managed-identity-details.png":::
+
+## [CLI](#tab/cli-show-sami)
+
+
+```azurecli-interactive
+# Show the system assigned managed identity
+resourceGroup=<resource-group>
+server=<server>
+az postgres flexible-server identity list --resource-group rg-nacho-playground --server-name pgtest16 --query "{principalId:principalId, tenantId:tenantId}" --output table
+```
+
+---
+
 ## Verify the system assigned managed identity
 
-## [Portal](#tab/portal-verify)
+## [Portal](#tab/portal-verify-sami)
 
 Using the [Azure portal](https://portal.azure.com/):
 
@@ -111,10 +139,11 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="./media/how-to-configure-managed-identities/search-managed-identity.png" alt-text="Screenshot that shows how to search for a managed identity using the Enterprise applications service interface in the Azure portal." lightbox="./media/how-to-configure-managed-identities/search-managed-identity.png":::
 
-## [CLI](#tab/cli-verify)
+## [CLI](#tab/cli-verify-sami)
 
 
 ```azurecli-interactive
+# Verify the system assigned managed identity
 server=<server>
 az ad sp list --display-name $server
 ```
@@ -173,11 +202,34 @@ az postgres flexible-server identity remove --resource-group $resourceGroup --se
 
 ---
 
-## Special considerations
+## Verify the system assigned managed identity
 
-- TODO 1
-- TODO 2
-- TODO N
+## [Portal](#tab/portal-verify-uami)
+
+Using the [Azure portal](https://portal.azure.com/):
+
+1. Locate the **Enterprise Applications** service in the portal, if you don't have it open. One way to do it is by typing its name in the search bar. When the service with the matching name is shown, select it.
+
+    :::image type="content" source="./media/how-to-configure-managed-identities/search-enterprise-applications.png" alt-text="Screenshot that shows how to search for a the Enterprise applications service using the search bar in the Azure portal." lightbox="./media/how-to-configure-managed-identities/search-enterprise-applications.png":::
+
+2. Choose  **Application Type == Managed Identity**
+
+3. Provide the name of your instance of Azure Database for PostgreSQL flexible server in the **Search by application name or object ID** text box.
+
+    :::image type="content" source="./media/how-to-configure-managed-identities/search-managed-identity.png" alt-text="Screenshot that shows how to search for a managed identity using the Enterprise applications service interface in the Azure portal." lightbox="./media/how-to-configure-managed-identities/search-managed-identity.png":::
+
+## [CLI](#tab/cli-verify-uami)
+
+
+```azurecli-interactive
+# Dissociate user assigned managed identity
+resourceGroup=<resource-group>
+server=<server>
+identity=<identity>
+az postgres flexible-server identity remove --resource-group $resourceGroup --server-name $server --identity $identity
+```
+
+---
 
 [Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
 
