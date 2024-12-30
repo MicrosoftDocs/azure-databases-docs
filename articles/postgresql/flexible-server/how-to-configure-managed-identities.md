@@ -131,9 +131,9 @@ Using the [Azure portal](https://portal.azure.com/):
 
 1. Locate the **Enterprise Applications** service in the portal, if you don't have it open. One way to do it is by typing its name in the search bar. When the service with the matching name is shown, select it.
 
-    :::image type="content" source="./media/how-to-configure-managed-identities/search-enterprise-applications.png" alt-text="Screenshot that shows how to search for a the Enterprise applications service using the search bar in the Azure portal." lightbox="./media/how-to-configure-managed-identities/search-enterprise-applications.png":::
+    :::image type="content" source="./media/how-to-configure-managed-identities/search-enterprise-applications.png" alt-text="Screenshot that shows how to search for the Enterprise applications service using the search bar in the Azure portal." lightbox="./media/how-to-configure-managed-identities/search-enterprise-applications.png":::
 
-2. Choose  **Application Type == Managed Identity**
+2. Choose  **Application Type == Managed Identity**.
 
 3. Provide the name of your instance of Azure Database for PostgreSQL flexible server in the **Search by application name or object ID** text box.
 
