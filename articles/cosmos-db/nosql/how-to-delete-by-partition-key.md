@@ -1,8 +1,8 @@
 ---
 title:  Delete items by partition key value using the Azure Cosmos DB SDK (preview)
 description: Learn how to delete items by partition key value using the Azure Cosmos DB SDKs
-author: AbhinavTrips
-ms.author: abtripathi
+author: richagaur
+ms.author: richagaur
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: how-to
@@ -25,7 +25,7 @@ The delete by partition key feature is an asynchronous, background operation tha
 
 Because the number of documents to be deleted may be large, the operation runs in the background. Though the physical deletion operation runs in the background, the effects are available immediately, as the documents to be deleted won't appear in the results of queries or read operations. 
 
-The delete by partition key operation is constrained to consume at most 10% of the total available RU/s on the container each second. This helps in limiting the resources used by this background task.
+The delete by partition key operation aims to consume at most 10% of the total available RU/s on the container each second on **best effort** basis. This helps in limiting the resources used by this background task.
 
 ## Getting started
 
@@ -49,7 +49,7 @@ Update your Azure Cosmos DB account to enable "Delete by partition key" feature 
     > The list of capabilities must always specify all capabilities that you want to enable, inclusively. This includes capabilities that are already enabled for the account that you want to keep. 
 
     ```azurecli-interactive
-       $capabilities += $DeleteByPk
+       $capabilities = $DeleteByPk
     ```
 
 - Step 4: Update Cosmos DB account to enable "Delete items by partition key" feature

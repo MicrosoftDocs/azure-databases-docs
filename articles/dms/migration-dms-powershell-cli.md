@@ -129,7 +129,7 @@ az datamigration sql-managed-instance create `
 --migration-service "/subscriptions/mySubscriptionID/resourceGroups/myRG/providers/Microsoft.DataMigration/SqlMigrationServices/myMigrationService" `
 --scope "/subscriptions/mySubscriptionID/resourceGroups/myRG/providers/Microsoft.Sql/managedInstances/mySQLMI" `
 --source-database-name "AdventureWorks2008" `
---source-sql-connection authentication="SqlAuthentication" data-source="mySQLServer" password="myPassword" user-name="sqluser" `
+--source-sql-connection authentication="SqlAuthentication" data-source="mySQLServer" password="<password>" user-name="sqluser" `
 --target-db-name "AdventureWorks2008" `
 --resource-group myRG `
 --managed-instance-name mySQLMI

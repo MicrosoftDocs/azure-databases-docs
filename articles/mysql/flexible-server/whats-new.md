@@ -1,45 +1,76 @@
 ---
-title: What's new
-description: Learn about recent updates to Azure Database for MySQL - Flexible Server.
+title: "What's New"
+description: Learn about recent updates to Azure Database for MySQL.
 author: SudheeshGH
 ms.author: sunaray
 ms.reviewer: vamehta, maghan
-ms.date: 06/18/2024
+ms.date: 11/27/2024
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: overview
 ms.custom:
   - mvc
   - references_regions
+  - ignite-2024
 ---
 
-# What's new in Azure Database for MySQL - Flexible Server?
+# What's new in Azure Database for MySQL
 
-[!INCLUDE [applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
-[Azure Database for MySQL - Flexible Server deployment model](overview.md) is a deployment mode designed to provide more granular control and flexibility over database management functions and configuration settings than the Azure Database for MySQL single server deployment mode. The service currently supports the community versions of MySQL 5.7 and 8.0.
+[What is Azure Database for MySQL - Flexible Server?](overview.md) is a deployment mode designed to provide more granular control and flexibility over database management functions and configuration settings than the Azure Database for MySQL single server deployment mode. The service currently supports the community versions of MySQL 5.7 and 8.0.
 
 This article summarizes new releases and features in the Azure Database for MySQL Flexible Server, which will begin in January 2021. Listings appear in reverse chronological order, with the most recent updates first.
 
 > [!NOTE]  
 > This article references the term slave, which Microsoft no longer uses. When the term is removed from the software, we'll remove it from this article.
 
+## November 2024
+
+**MySQL 8.4 LTS version support - Public Preview**
+
+Azure MySQL Flexible Server now supports MySQL 8.4 LTS version, bringing the latest MySQL capabilities to Azure. MySQL 8.4 LTS version offers enhanced replication features, expanded monitoring, and long-term support, making it ideal for production environments requiring stability and advanced management. [Azure Database for MySQL version support policy](../concepts-version-policy.md)
+
+**MySQL 9.1 innovation version support - Public Prevew**
+
+Azure MySQL Flexible Server now supports MySQL 9.1 Innovation version, introduces experimental features, including JavaScript support for stored procedures and the new vector data type, designed for modern applications in machine learning and analytics. [Azure Database for MySQL version support policy](../concepts-version-policy.md)
+
+> [!NOTE]  
+> Due to Azure deployment restrictions during the holiday season, some users may not see the options for Azure MySQL versions 8.4 and 9.1 when creating a new server. For affected customers, you can send the subscription ID you wish to enroll in the Azure MySQL 8.4 and 9.1 public preview to this email address: AskAzureDBforMySQL@service.microsoft.com. Once we receive your email, we will unblock your subscription to enable selection of Azure MySQL 8.4 and 9.1.
+
+## October 2024
+
+**New B1s Servers are unavailable**
+
+To ensure performance and reliability in light of ongoing security improvements, the creation of new B1s servers will be limited starting 11/1/2024. We recommend exploring alternative SKUs designed to better support your needs while maintaining high service reliability. Thank you for your understanding as we work to improve your experience.
+
+**What does this mean for you?**
+
+- Limited Access: New B1s instances will be unavailable after 10/28/24.
+
+- Existing Deployments: Any current B1s instances will remain unaffected.
+- Alternative Options: Explore and consider using other SKUs, such as B1ms and B2s, which provide enhanced compute power and memory while supporting greater performance.
+
+**Next Steps:**
+- Review recommended alternative SKUs
+- Access documentation for changing your SKU here:
+  - [Azure portal](/azure/mysql/flexible-server/how-to-manage-server-portal)
+  - [Azure CLI](/azure/mysql/flexible-server/how-to-manage-server-cli)
+- Review the Usage Dashboard to monitor your current usage
+
 ## September 2024
+
 - **Azure Database for MySQL Flexible Server Flexible Maintenance is now Generally Available**
-  
+
   Azure Database for MySQL Flexible Server has officially released the Flexible Maintenance feature to General Availability (GA). With this feature, users can now reschedule maintenance activities via the Azure CLI, providing enhanced control and flexibility. The reschedule window has also been expanded to cover all available maintenance dates within the same region and same round of maintenance, instead of being limited to the 14-day window around the instance's originally scheduled date.[Learn more](./concepts-maintenance.md#maintenance-reschedule)
 
 ## August 2024
 
-
 - **Azure Database for MySQL Flexible Server now supports up to 8 TB in a single data file!**
-  
+
   Azure Database for MySQL now supports single InnoDB data files up to **8 TB** in size, enabling users to store larger datasets within a single file. This enhancement reduces the need for data partitioning and streamlines database management, making it easier to handle substantial volumes of data using the InnoDB storage engine. [Learn more.](./concepts-server-parameters.md#innodb_file_per_table)
 
 - **Major version upgrade support for Burstable compute tier**
-  
-  Azure Database for MySQL now offers major version upgrades for Burstable SKU compute tiers. This support automatically upgrades the compute tier to General Purpose SKU before performing the upgrade, ensuring sufficient resources. Customers can choose to revert back to Burstable SKU after the upgrade. Additional costs may apply. [Learn more](how-to-upgrade.md#perform-a-planned-major-version-upgrade-from-mysql-57-to-mysql-80-using-the-azure-portal-for-burstable-sku-servers)
 
+  Azure Database for MySQL now offers major version upgrades for Burstable SKU compute tiers. This support automatically upgrades the compute tier to General Purpose SKU before performing the upgrade, ensuring sufficient resources. Customers can choose to revert back to Burstable SKU after the upgrade. Additional costs might apply. [Learn more](how-to-upgrade.md#perform-a-planned-major-version-upgrade-from-mysql-57-to-mysql-80-using-the-azure-portal-for-burstable-sku-servers)
 
 - **Deprecated Metrics Announcement**
 
@@ -47,25 +78,24 @@ This article summarizes new releases and features in the Azure Database for MySQ
   - Storage Throttle Count (deprecated)
   - Available Memory Bytes (deprecated)
   - MySQL Lock Row Lock Waits (deprecated)
-  
-  These metrics will no longer be supported and will be removed from the monitoring by the end of August 2024. We recommend updating your monitoring and alerting configurations to exclude these metrics and use alternative metrics that provide similar insights. For more information and guidance on alternative metrics, please refer to [azure monitoring documentation](./concepts-monitoring.md)
-  
+
+  These metrics will no longer be supported and will be removed from the monitoring by the end of August 2024. We recommend updating your monitoring and alerting configurations to exclude these metrics and use alternative metrics that provide similar insights. For more information and guidance on alternative metrics, please refer to [azure monitoring documentation](concepts-monitoring.md)
 
 ## July 2024
 
 - **Move from private access (virtual network integrated) network to public access or private link**
 
   Azure Database for MySQL Flexible Server can be transitioned from private access (virtual network Integrated) to public access, with the option to use Private Link. This functionality enables servers to switch from virtual network integrated to Private Link/Public infrastructure seamlessly, without the need to alter the server name or migrate data, simplifying the process for customers. [Learn more](concepts-networking-vnet.md#move-from-private-access-virtual-network-integrated-network-to-public-access-or-private-link)
-  
+
 - **Managed HSM support for Azure Database for MySQL Flexible Server (Generally Available)**
 
   We're excited to announce the General Availability (GA) of Azure Key Vault Managed HSM support for Customer Managed Keys (CMK) in Azure Database for MySQL Flexible Server. With Managed HSM you can import your own HSM-backed encryption keys using the CMK bring your own key (BYOK) feature to protect data at rest in your Azure Database for MySQL Flexible Server instances while maintaining data residency and full control of your HSM keys. [Learn more](/azure/mysql/flexible-server/concepts-customer-managed-key)
-  
+
 ## May 2024
 
 - **Accelerated Logs in Azure Database for MySQL Flexible Server is now Generally Available**
 
-  We're thrilled to announce the General Availability (GA) of the Accelerated Logs feature for Azure Database for MySQL Flexible Server. This feature is available within the Business-Critical service tier, which significantly enhances the performance of Azure Database for MySQL Flexible Server instances. It offers a dynamic solution designed for high throughput needs, reducing latency with no additional cost. [Learn more](concepts-accelerated-logs.md).
+  We're thrilled to announce the General Availability (GA) of the Accelerated Logs feature for Azure Database for MySQL Flexible Server. This feature is available within the Business-Critical service tier, which significantly enhances the performance of Azure Database for MySQL Flexible Server instances. It offers a dynamic solution designed for high throughput needs, reducing latency with no additional cost. [Accelerated logs feature in Azure Database for MySQL - Flexible Server](concepts-accelerated-logs.md).
 
 - **Support for storage up to 32 TB in Azure Database for MySQL Flexible Server is now Generally Available**
 
@@ -95,7 +125,7 @@ This article summarizes new releases and features in the Azure Database for MySQ
 
 - **Accelerated Logs now supports major version upgrades.**
 
-   Accelerated Logs has now introduced support for [major version upgrade](how-to-upgrade.md), allowing an upgrade from MySQL version 5.7 to MySQL version 8.0 with accelerated logs feature enabled.[Accelerated logs feature in Azure Database for MySQL - Flexible Server (Preview)](concepts-accelerated-logs.md)
+   Accelerated Logs has now introduced support for [major version upgrade](how-to-upgrade.md), allowing an upgrade from MySQL version 5.7 to MySQL version 8.0 with accelerated logs feature enabled.[Accelerated logs feature in Azure Database for MySQL - Flexible Server](concepts-accelerated-logs.md)
 
 - **Support for Long-term retention of backups in Azure Database for MySQL Flexible Server (Preview)**
 
@@ -105,7 +135,7 @@ This article summarizes new releases and features in the Azure Database for MySQ
 
 - **Accelerated Logs is now available for existing servers and three new regions.**
 
-  Accelerated Logs, previously limited to servers created after November 14, is now accessible for all existing Business Critical tier's **standalone** servers in the preview phase. Accelerated logs also support [Microsoft Entra authentication for Azure Database for MySQL - Flexible Server](concepts-azure-ad-authentication.md). Additionally, this feature has been extended to include three new regions: Japan East, Korea Central, and Poland Central. [Accelerated logs feature in Azure Database for MySQL - Flexible Server (Preview)](concepts-accelerated-logs.md)
+  Accelerated Logs, previously limited to servers created after November 14, is now accessible for all existing Business Critical tier's **standalone** servers in the preview phase. Accelerated logs also support [Microsoft Entra authentication for Azure Database for MySQL - Flexible Server](concepts-azure-ad-authentication.md). Additionally, this feature has been extended to include three new regions: Japan East, Korea Central, and Poland Central. [Accelerated logs feature in Azure Database for MySQL - Flexible Server](concepts-accelerated-logs.md)
 
 - **Known Issues**
 
@@ -141,7 +171,7 @@ This article summarizes new releases and features in the Azure Database for MySQ
 
 - **Accelerated logs in Azure Database for MySQL Flexible Server (Preview)**
 
-  We're excited to announce a preview of the accelerated logs feature for Azure Database for MySQL's Flexible Server. This feature is available within the Business Critical service tier. Accelerated logs significantly enhance the performance of Azure Database for MySQL Flexible Server instances, offering a dynamic solution that is designed for high throughput needs that also reduces latency and optimizes cost efficiency.[Accelerated logs feature in Azure Database for MySQL - Flexible Server (Preview)](concepts-accelerated-logs.md).
+  We're excited to announce a preview of the accelerated logs feature for Azure Database for MySQL's Flexible Server. This feature is available within the Business Critical service tier. Accelerated logs significantly enhance the performance of Azure Database for MySQL Flexible Server instances, offering a dynamic solution that is designed for high throughput needs that also reduces latency and optimizes cost efficiency.[Accelerated logs feature in Azure Database for MySQL - Flexible Server](concepts-accelerated-logs.md).
 
 - **Universal Geo Restore in Azure Database for MySQL Flexible Server (General Availability)**
 
@@ -174,7 +204,7 @@ This article summarizes new releases and features in the Azure Database for MySQ
 
 - **Azure MySQL Import Smart Defaults for Azure Database for MySQL single server to Azure Database for MySQL Flexible Server migration (Public Preview)**
 
-  You can now migrate an Azure Database for MySQL single server instance to an Azure Database for MySQL Flexible Server instance by running a single CLI command with minimal inputs. The command leverages smart defaults for target Azure Database for MySQL Flexible Server provisioning based on the source server SKU and properties! [Migrate Azure Database for MySQL - Single Server to Flexible Server using Azure Database for MySQL Import CLI](../migrate/migrate-single-flexible-mysql-import-cli.md).
+  You can now migrate an Azure Database for MySQL single server instance to an Azure Database for MySQL Flexible Server instance by running a single CLI command with minimal inputs. The command leverages smart defaults for target Azure Database for MySQL Flexible Server provisioning based on the source server SKU and properties!
 
 - **Nominate an eligible Azure Database for MySQL single server instance for in-place automigration to Azure Database for MySQL Flexible Server**
 
@@ -222,7 +252,7 @@ This article summarizes new releases and features in the Azure Database for MySQ
 
 - **Read-Replica in Geo-Paired Region on Azure Database for MySQL- Flexible Server (General Availability)**
 
-  Azure Database for MySQL - Flexible server now supports cross-region read-replica in a geo-paired region. The feature allows you to replicate your data from an instance of Azure Database for MySQL Flexible Server to a read-only server in a geo-paired region. [Read replicas in Azure Database for MySQL - Flexible Server](concepts-read-replicas.md)
+  Azure Database for MySQL now supports cross-region read-replica in a geo-paired region. The feature allows you to replicate your data from an instance of Azure Database for MySQL Flexible Server to a read-only server in a geo-paired region. [Read replicas in Azure Database for MySQL - Flexible Server](concepts-read-replicas.md)
 
 - **Support for data-in replication using GTID**
 
@@ -267,7 +297,7 @@ This article summarizes new releases and features in the Azure Database for MySQ
 
   The ability to modify the [thread_handling](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html) parameter in the Azure Database for MySQL Flexible Server is discontinued considering the underlying architecture and performance.
 
-- **Minor version upgrade for Azure Database for MySQL - Flexible server to 8.0.31**
+- **Minor version upgrade for Azure Database for MySQL to 8.0.31**
 
   After this month's deployment, Azure Database for MySQL Flexible Server 8.0 will be running on minor version 8.0.31*, to learn more about changes coming in this minor version [visit Changes in MySQL 8.0.31 (2022-10-11, General Availability)](https://dev.mysql.com/doc/relnotes/mysql/8.0/en/news-8-0-31.html)
 
@@ -289,7 +319,7 @@ This article summarizes new releases and features in the Azure Database for MySQ
 
 - **Microsoft Entra IDauthentication for Azure Database for MySQL – Flexible Server (General Availability)**
 
-  Using identities, you can now authenticate to Azure Database for MySQL - Flexible server using Microsoft Entra ID. With authentication, you can manage database user identities and other Microsoft services in a central location, simplifying permission management. [Microsoft Entra authentication for Azure Database for MySQL - Flexible Server](concepts-azure-ad-authentication.md)
+  Using identities, you can now authenticate to Azure Database for MySQL using Microsoft Entra ID. With authentication, you can manage database user identities and other Microsoft services in a central location, simplifying permission management. [Microsoft Entra authentication for Azure Database for MySQL - Flexible Server](concepts-azure-ad-authentication.md)
 
 - **Customer managed keys data encryption – Azure Database for MySQL – Flexible Server (General Availability)**
 
@@ -381,7 +411,7 @@ This article summarizes new releases and features in the Azure Database for MySQ
 - **Business Critical tier now supports Ev5 compute series**
 
     Business Critical tier for Azure Database for MySQL Flexible Server now supports the Ev5 compute series in more regions.
-Learn more about [Boost Azure MySQL Business Critical Flexible Server performance by 30% with the Ev5 compute series!](https://techcommunity.microsoft.com/t5/azure-database-for-mysql-blog/boost-azure-mysql-business-critical-flexible-server-performance/ba-p/3603698)
+Learn more about [Boost Azure MySQL Business Critical Flexible Server performance by 30% with the Ev5 compute series!](https://techcommunity.microsoft.com/blog/adformysql/boost-azure-mysql-business-critical-flexible-server-performance-by-30-with-the-e/3603698)
 
 - **Server parameters that are now configurable**
 
@@ -409,7 +439,7 @@ Learn more about [Boost Azure MySQL Business Critical Flexible Server performanc
 ## May 2022
 
 - **Announcing Azure Database for MySQL Flexible Server for business-critical workloads**
-    Azure Database for MySQL Flexible Server Business Critical service tier is generally available. The Business Critical service tier is ideal for Tier 1 production workloads that require low latency, high concurrency, fast failover, and high scalability, such as gaming, e-commerce, and Internet-scale applications, to learn more about [Business Critical service Tier](https://techcommunity.microsoft.com/t5/azure-database-for-mysql-blog/announcing-azure-database-for-mysql-flexible-server-for-business/ba-p/3361718).
+    Azure Database for MySQL Flexible Server Business Critical service tier is generally available. The Business Critical service tier is ideal for Tier 1 production workloads that require low latency, high concurrency, fast failover, and high scalability, such as gaming, e-commerce, and Internet-scale applications, to learn more about [Business Critical service Tier](https://techcommunity.microsoft.com/blog/adformysql/announcing-azure-database-for-mysql---flexible-server-for-business-critical-work/3361718).
 
 - **Announcing the addition of new Burstable compute instances for Azure Database for MySQL Flexible Server**
     We're announcing the addition of new Burstable compute instances to support customers' autoscaling compute requirements from 1 vCore up to 20 vCores. learn more about [Compute Option for Azure Database for MySQL Flexible Server](./concepts-compute-storage.md).
@@ -474,7 +504,7 @@ This release of Azure Database for MySQL Flexible Server includes the following 
 
 - **General Availability of Azure Database for MySQL Flexible Server**
 
-  Azure Database for MySQL Flexible Server is now **General Availability** in more than [Azure Database for MySQL - Flexible Server deployment model](overview.md) worldwide.
+  Azure Database for MySQL Flexible Server is now **General Availability** in more than [What is Azure Database for MySQL - Flexible Server?](overview.md) worldwide.
 
 - **View available full backups in Azure portal**
 
@@ -502,7 +532,7 @@ This release of Azure Database for MySQL Flexible Server includes the following 
 
 - **Thread pools are now available for Azure Database for MySQL Flexible Server**
 
-    Thread pools enhance the scalability of Azure Database for MySQL Flexible Server. Using a thread pool, users can optimize performance, achieve better throughput, and lower latency for high concurrent workloads. [Learn more](https://techcommunity.microsoft.com/t5/azure-database-for-mysql-blog/bg-p/ADforMySQL).
+    Thread pools enhance the scalability of Azure Database for MySQL Flexible Server. Using a thread pool, users can optimize performance, achieve better throughput, and lower latency for high concurrent workloads. [Learn more](https://techcommunity.microsoft.com/category/azuredatabases/blog/adformysql).
 
 - **Geo-redundant backup restore to geo-paired region for DR scenarios**
 
@@ -692,11 +722,11 @@ This release of Azure Database for MySQL Flexible Server includes the following 
 
 - **Ability to force failover to standby server with zone redundant high availability released**
 
-  Customers can now manually force a failover to test functionality with their application scenarios, which can help them to prepare for any outages. [Learn more](https://techcommunity.microsoft.com/t5/azure-database-for-mysql-blog/forced-failover-for-azure-database-for-mysql-flexible-server/ba-p/2280671).
+  Customers can now manually force a failover to test functionality with their application scenarios, which can help them to prepare for any outages. [Learn more](https://techcommunity.microsoft.com/blog/adformysql/forced-failover-for-azure-database-for-mysql-%E2%80%93-flexible-server/2280671).
 
 - **PowerShell module for Azure Database for MySQL Flexible Server released**
 
-  Developers can now use PowerShell to provision, manage, operate, and support Azure Database for MySQL Flexible Server instances and dependent resources. [Learn more](https://techcommunity.microsoft.com/t5/azure-database-for-mysql-blog/introducing-the-mysql-flexible-server-powershell-module/ba-p/2203383).
+  Developers can now use PowerShell to provision, manage, operate, and support Azure Database for MySQL Flexible Server instances and dependent resources. [Learn more](https://techcommunity.microsoft.com/blog/adformysql/introducing-the-mysql-flexible-server-powershell-module/2203383).
 
 - **Connect, test, and execute queries using Azure CLI**
 
@@ -759,4 +789,3 @@ If you have questions about or suggestions for working with Azure Database for M
 - [Azure Database for MySQL Flexible Server pricing](https://azure.microsoft.com/pricing/details/mysql/server/)
 - [public documentation](index.yml)
 - [troubleshooting common migration errors](../howto-troubleshoot-common-errors.md)
-

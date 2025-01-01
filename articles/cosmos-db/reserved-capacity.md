@@ -4,22 +4,20 @@ description: Azure Cosmos DB pricing allows for various forms of optimization. Y
 author: rodrigossz
 ms.service: azure-cosmos-db
 ms.topic: conceptual
-ms.date: 10/02/2024
+ms.date: 11/14/2024
 ms.author: rosouz
 ---
 
 # Azure Cosmos DB pricing & discounts with Reserved Capacity
 [!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
-Azure Cosmos DB Reserved Capacity allows you to benefit from discounted prices on the throughput provisioned for your Azure Cosmos DB resources. You can enjoy up to 63% savings by committing to a reservation for Azure Cosmos DB resources for either one year or three years. Examples of resources are databases and containers (tables, collections, and graphs).
-
-
+Azure Cosmos DB Reserved Capacity allows you to benefit from discounted prices on the throughput provisioned for your Azure Cosmos DB resources. You can enjoy up to 63% savings by committing to a reservation for Azure Cosmos DB resources for either one year or three years. Examples of resources are databases and containers (tables, collections, and graphs). It doesn’t cover networking or storage.
 
 ## How Azure Cosmos DB pricing and discounts work with Reserved Capacity
 
 The size of the Reserved Capacity purchase should be based on the total amount of throughput that the existing or soon-to-be-deployed Azure Cosmos DB resources use on an hourly basis.
 
-For example: Purchase 10,000 RU/s Reserved Capacity if that is your consistent hourly usage pattern. In this case, provisioned throughput exceeding 10,000 RU/s is billed with your pay-as-you-go rate. However, if your usage pattern is consistently below 10,000 RU/s in an hour, you should reduce your Reserved Capacity accordingly to avoid waste.
+For example: Purchase 10,000 RU/s Reserved Capacity if that is your consistent hourly usage pattern. In this case, provisioned throughput exceeding 10,000 RU/s is billed with your pay-as-you-go rate. However, if your usage pattern is consistently below 10,000 RU/s in an hour, you should reduce your Reserved Capacity accordingly to avoid waste. 
 
 Note that:
 
@@ -32,7 +30,18 @@ After you buy a reservation, it's applied immediately to any existing Azure Cosm
 When your reservation expires, your Azure Cosmos DB instances continue to run and are billed at the regular pay-as-you-go rates.
 You can buy Azure Cosmos DB Reserved Capacity from the [Azure portal](https://portal.azure.com). Pay for the reservation [upfront or with monthly payments](/azure/cost-management-billing/reservations/prepare-buy-reservation). 
 
-### Required permissions
+## Unused Reserved Capacity and reservations exchange
+
+A reservation discount is *use-it-or-lose-it*. So, if you don't have matching resources for any hour, then you lose a reservation quantity for that hour. You can't carry forward unused reserved hours.
+
+When you shut down a resource, the reservation discount automatically applies to another matching resource in the specified scope. If no matching resources are found in the specified scope, then the reserved hours are *lost*.
+
+Stopped resources are billed and continue to use reservation hours. To use your available reservation hours with other workloads, deallocate or delete resources or scale-in other resources.
+
+Customers can use a self-service process to exchange reservations, migrating existing ones for bigger or smaller options. There is no penalty for an exchanges, that are processed as a refund and a repurchase. Different transactions are created for the cancellation and the new reservation purchase. The prorated reservation amount is refunded for the reservations that's traded-in. You're charged fully for the new purchase. The prorated reservation amount is the daily prorated residual value of the reservation being returned. For more information about reservations exchanges, click [here](/azure/cost-management-billing/reservations/exchange-and-refund-azure-reservations).
+
+
+## Required permissions
 
 The required permissions to purchase Reserved Capacity for Azure Cosmos DB are:
 
@@ -40,14 +49,27 @@ The required permissions to purchase Reserved Capacity for Azure Cosmos DB are:
 * For Enterprise subscriptions, **Add Reserved Instances** must be enabled in the [EA portal](https://ea.azure.com). Or, if that setting is disabled, you must be an EA Admin on the subscription.
 * For the Cloud Solution Provider (CSP) program, only admin agents or sales agents can buy Azure Cosmos DB Reserved Capacity.
 
-### Reservations consumption
+## Reservation discount per region
+The reservation discount applies to throughput usage in different regions using the following ratios:
 
-As soon as you buy a reservation, the throughput charges that match the reservation attributes are no longer charged at the pay-as-you go rates. For more information on reservations, see the [Azure reservations](/azure/cost-management-billing/reservations/save-compute-costs-reservations) article.
+|Region |Ratio  |
+|---------|---------|
+|    IN South     |    1.0375    |
+|   CA East      |    1.1      |
+|   JA East      |    1.125     |
+|     JA West    |   1.125       |
+|    IN West    |    1.1375     |
+|   IN Central     |  1.1375       |
+|    AU East    |   1.15       |
+| CA Central       |   1.2       |
+|   FR Central      |    1.25      |
+| BR South       |   1.5      |
+|  AU Central      |   1.5      |
+| AU Central 2        |    1.5     |
+|   FR South     |    1.625     |
+| All other regions | 1.0 |
 
-Azure Cosmos DB consumes reservations in two different ways:
-
- * Autoscale database operations consume Reserved Capacity at a rate of 100 RU/s x 1.5 x N regions. So, if you need 10,000 RU/s for all your regions, purchase 15,000 RU/s.
- * Standard database operations consume Reserved Capacity at a rate of 100 RU/s x N regions. So, if you need 10,000 RU/s for all your regions, purchase 10,0000 RU/s.
+The Azure billing system assigns the reservation billing benefit to the first region that was added to the database account and that matches the reservation configuration. Please check the examples.
 
 
 ## Azure Cosmos DB pricing discount tiers with Reserved Capacity
@@ -65,7 +87,7 @@ This option, using multiples of the 100 RU/s, allows you to reserve any capacity
 | 100 RU/s |  20% | 30% |
 | 100 Multi-master RU/s |  20% | 30% |
 
-For more than 999,900 RU/s reservations, you can reduce costs with progressive discounts.
+For more than 999,900 RU/s, you can reduce costs with progressive discounts.
 
 ### Progressive discounts reservations
 
@@ -100,7 +122,64 @@ You can maximize savings with the biggest reservation for your scenario. Example
 
 Create a [support request](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) to purchase any quantity of the reservations bigger than 1,000,000 RU/s.
 
-## Sample scenario 1
+## Reservations consumption
+
+As soon as you buy a reservation, the throughput charges that match the reservation attributes are no longer charged at the pay-as-you go rates. For more information on reservations, see the [Azure reservations](/azure/cost-management-billing/reservations/save-compute-costs-reservations) article.
+
+Please note that single write region autoscale database operations use RU/s with a 1.5 multiplier factor. With that, we have the following formulas for the reservations consumption:
+
+ * Single region standard throughput: RUs * Regional Ratio
+ * Multi region standard throughput: RUs * Regional Ratio for each region, in the order that the regions were added to the database account.
+ * Single region autoscale throughput: RUs * 1.5 * Regional Ratio
+ * Multi region autoscale throughput: RUs * 1.5 * Regional Ratio for each region, in the order that the regions were added to the database account.
+
+### Consumption examples
+
+Consider the following requirements for a reservation:
+
+* Required throughput per region: 50,000 RU/s  
+* Regions used: 2
+
+In this case, your total on-demand charges are for 500 quantity of 100 RU/s meter in these two regions. The total RU/s consumption is 100,000 every hour.
+
+#### Example 1 - Two regions with a 1.0 ratio and standard throughput
+
+For example, assume that you need Azure Cosmos DB standard throughput deployments in the US North Central and US West regions. Each region has a throughput consumption of 50,000 RU/s. A reservation purchase of 100,000 RU/s would completely balance your on-demand charges. The discount that a reservation covers is computed as: throughput consumption * reservation_discount_ratio_for_that_region. For the US North Central and US West regions, the reservation discount ratio is 1.0. So, the total discounted RU/s are 100,000. This value is computed as: 50,000 * 1.0 + 50,000 * 1.0 = 100,000 RU/s. You don't have to pay any other charges at the regular pay-as-you-go rates.
+
+|Meter description | Quantity|Region |Region ratio |Throughput consumption (RU/s) |Reservation consumption formula| Reservation discount applied to RU/s | Pay as you go RU/s|
+|---------|---------|---------|---------|---------|---------|---------|---------|
+|Azure Cosmos DB - 100 RU/s/Hour - US North Central  | 500|US North Central| 1.0  | 50,000   |50,000 * 1.0 = 50,000 | 50,000 of the reservation| 0 |
+|Azure Cosmos DB - 100 RU/s/Hour - US West  | 500  | US West               |1.0   |  50,000  |50,000 * 1.0 = 50,000 | The remaining 50,000 of the reservation | 0 |
+
+#### Example 2 - Two regions with different ratios and standard throughput
+
+For example, assume that you need Azure Cosmos DB standard throughput deployments in the AU Central 2 and FR South regions. Each region has a throughput consumption of 50,000 RU/s. A reservation purchase of 100,000 RU/s would be applicable as follows (assuming that AU Central 2 usage was added first to the database account):
+
+|Meter description | Quantity|Region |Region ratio |Throughput consumption (RU/s) |Reservation consumption formula|Final reservation discount applied to RU/s |  Pay as You go RU/s|
+|---------|---------|---------|---------|---------|---------|---------|---------|
+|Azure Cosmos DB - 100 RU/s/Hour - AU Central 2  | 500 | AU Central 2 |1.5  |  50,000 | 50,000 * 1.5 = 75,000 | 75,000 of the 100,000 reservation   | 0 |
+|Azure Cosmos DB - 100 RU/s/Hour - FR South  | 500 |FR South   |1.625 | 50,000 | 50,000 * 1.625 = 81,250 | The remaining 25,000 of the reservation| (81,250 - 25,000) / 1.625 = 34,616|
+
+*  A usage of 50,000 units in the AU Central 2 region corresponds to 75,000 RU/s of billable reservation usage (or normalized usage). This value is computed as: throughput consumption * reservation_discount_ratio_for_that_region. The computation equals 75,000 RU/s of billable or normalized usage. This value is computed as: 50,000 * 1.5 = 75,000 RU/s.
+
+* A usage of 50,000 units in the FR South region corresponds to  50,000 * 1.625 = 81,250 RU/s reservation is needed.
+
+* Total reservation purchase is 100,000. Because AU central2 region uses 75,000 RU/s, which leaves 25,000 RU/s for the other region.
+
+* For the FR south region, a 25,000 RU/s reservation purchase is used and it leaves 56,250 reservation RU/s (81,250 – 25,000 = 56,250 Ru/s).
+
+* 56,250 RU/s are required when using reservation. To pay for the RU/s with regular pricing, you need to convert it into regular RU/s by dividing with the reservation ratio 56,250 / 1.625 = 34,616 RU/s. Regular RU/s are charged at the normal pay-as-you-go rates.
+
+#### Example 3 - Two regions with a 1.0 ratio and autoscale throughput
+
+For example, assume that you need Azure Cosmos DB autoscale throughput deployments in the US North Central and US West regions. Each region has a throughput consumption of 50,000 RU/s. A reservation purchase of 100,000 RU/s won't completely balance your on-demand charges. The discount that a reservation covers is computed as: throughput consumption * reservation_discount_ratio_for_that_region * autoscale_ratio. For the US North Central and US West regions, the reservation discount ratio is 1.0.
+
+|Meter description | Quantity|Region |Region ratio |Autoscale ratio |Throughput consumption (RU/s) |Reservation consumption formula| Reservation discount applied to RU/s | Pay as you go RU/s|
+|---------|---------|---------|---------|---------|---------|---------|---------|---------|
+|Azure Cosmos DB - 100 RU/s/Hour - US North Central  | 500|US North Central| 1.0  | 1.5 |50,000  |50,000 * 1.0 * 1.5 = 75,000 |75,000 of the 100,000 reservation | 0 |
+|Azure Cosmos DB - 100 RU/s/Hour - US West  | 500  | US West               |1.0   | 1.5 |50,000  |50,000 * 1.0 * 1.5 = 75,000| The remaining 25,000  of the reservation | (75,000-25,000)/1.0 = 50,000 |
+
+## Purchase sample scenario 1
 
 Imagine this hypothetical scenario: A company is working on a new application but isn't sure about the throughput requirements, they purchased RU/s on 3 different days.
 
@@ -120,7 +199,7 @@ Imagine this hypothetical scenario: A company is working on a new application bu
   * Three-years term, to maximize the discounts.
   * They choose to pay monthly too.
 
-## Sample scenario 2
+## Purchase sample scenario 2
 
 Imagine this hypothetical scenario: A company needs a 10,950,000 three-years reservation. In the same purchase they got:
 

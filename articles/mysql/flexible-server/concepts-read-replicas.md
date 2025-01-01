@@ -1,18 +1,16 @@
 ---
-title: Read replicas
+title: Read Replicas
 description: "Learn about read replicas in Azure Database for MySQL - Flexible Server: creating replicas, connecting to replicas, monitoring replication, and stopping replication."
 author: VandhanaMehta
 ms.author: vamehta
 ms.reviewer: maghan
-ms.date: 06/18/2024
+ms.date: 11/27/2024
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: conceptual
 ---
 
 # Read replicas in Azure Database for MySQL - Flexible Server
-
-[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 MySQL is one of the popular database engines for running internet-scale web and mobile applications. Many of our customers use it for their online education services, video streaming services, digital payment solutions, e-commerce platforms, gaming services, news portals, government, and healthcare websites. These services are required to serve and scale as the traffic on the web or mobile application increases.
 
@@ -126,7 +124,7 @@ The following server parameters are available for configuring GTID:
 | `gtid_mode` | Indicates if GTIDs are used to identify transactions. Changes between modes can only be done one step at a time in ascending order (ex. `OFF` -> `OFF_PERMISSIVE` -> `ON_PERMISSIVE` -> `ON`) | `OFF*` | `OFF`: Both new and replication transactions must be anonymous<br />`OFF_PERMISSIVE`: New transactions are anonymous. Replicated transactions can either be anonymous or GTID transactions.<br />`ON_PERMISSIVE`: New transactions are GTID transactions. Replicated transactions can either be anonymous or GTID transactions.<br />`ON`: Both new and replicated transactions must be GTID transactions. |
 | `enforce_gtid_consistency` | Enforces GTID consistency by allowing execution of only those statements that can be logged in a transactionally safe manner. This value must be set to `ON` before enabling GTID replication. | `OFF*` | `OFF`: All transactions are allowed to violate GTID consistency.<br />`ON`: No transaction is allowed to violate GTID consistency.<br />`WARN`: All transactions are allowed to violate GTID consistency, but a warning is generated. |
 
-**For Azure Database for MySQL Flexible Server instances that have the High Availability feature enabled, the default value is set to `ON`**.
+**For Azure Database for MySQL Flexible Server instances that have the High Availability feature enabled, the default value is set to `ON`.
 
 > [!NOTE]  
 > - After GTID is enabled, you can't turn it back off. If you need to turn GTID OFF, please contact support.
@@ -134,7 +132,7 @@ The following server parameters are available for configuring GTID:
 > - To keep replication consistent, you can't update it for a master/replica server.
 > - It's recommended to SET enforce_gtid_consistency to ON before you can set gtid_mode=ON.
 
-To enable GTID and configure the consistency behavior, update the `gtid_mode` and `enforce_gtid_consistency` server parameters using the [Azure portal](how-to-configure-server-parameters-portal.md) or [Azure CLI](how-to-configure-server-parameters-cli.md).
+To enable GTID and configure the consistency behavior, update the `gtid_mode` and `enforce_gtid_consistency` server parameters using the [Configure server parameters in Azure Database for MySQL - Flexible Server using the Azure portal](how-to-configure-server-parameters-portal.md) or [Configure server parameters in Azure Database for MySQL - Flexible Server using the Azure CLI](how-to-configure-server-parameters-cli.md).
 
 If GTID is enabled on a source server (`gtid_mode` = ON), newly created replicas also have GTID enabled and use GTID replication. In order to make sure that the replication is consistent, `gtid_mode` can't be changed once the master, or replica server(s) is created with GTID enabled.
 
@@ -146,16 +144,16 @@ If GTID is enabled on a source server (`gtid_mode` = ON), newly created replicas
 | Pricing | The cost of running the replica server is based on the region where the replica server is running |
 | Source server restart | When you create a replica for a source that has no existing replicas, the source will first restart to prepare itself for replication. Take this into consideration and perform these operations during an off-peak period |
 | New replicas | A read replica is created as a new Azure Database for MySQL Flexible Server instance. An existing server can't be made into a replica. You can't create a replica of another read replica. |
-| Replica configuration | A replica is created by using the same server configuration as the source. After a replica is created, several settings can be changed independently from the source server: compute generation, vCores, storage, and backup retention period. The compute tier can also be changed independently.<br><br>**IMPORTANT** - Before a source server configuration is updated to new values, update the replica configuration to equal or greater values. This action ensures the replica can keep up with any changes made to the source. <br/> Connectivity method and parameter settings are inherited from the source server to the replica when the replica is created. Afterwards, the replica's rules are independent. |
+| Replica configuration | A replica is created by using the same server configuration as the source. After a replica is created, several settings can be changed independently from the source server: compute generation, vCores, storage, and backup retention period. The compute tier can also be changed independently.<br /><br />**IMPORTANT** - Before a source server configuration is updated to new values, update the replica configuration to equal or greater values. This action ensures the replica can keep up with any changes made to the source.<br />Connectivity method and parameter settings are inherited from the source server to the replica when the replica is created. Afterwards, the replica's rules are independent. |
 | Stopped replicas | If you stop replication between a source server and a read replica, the stopped replica becomes a standalone server that accepts both reads and writes. The standalone server can't be made into a replica again. |
 | Deleted source and standalone servers | When a source server is deleted, replication is stopped to all read replicas. These replicas automatically become standalone servers and can accept both reads and writes. The source server itself is deleted. |
 | User accounts | Users on the source server are replicated to the read replicas. You can only connect to a read replica using the user accounts available on the source server. |
-| Server parameters | To prevent data from becoming out of sync and to avoid potential data loss or corruption, some server parameters are locked from being updated when using read replicas. <br> The following server parameters are locked on both the source and replica servers:<br> - [`innodb_file_per_table`](https://dev.mysql.com/doc/refman/8.0/en/innodb-file-per-table-tablespaces.html) <br> - [`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators) <br> The [`event_scheduler`](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_event_scheduler) parameter is locked on the replica servers. <br> To update one of the above parameters on the source server, delete replica servers, update the parameter value on the source, and recreate replicas.
+| Server parameters | To prevent data from becoming out of sync and to avoid potential data loss or corruption, some server parameters are locked from being updated when using read replicas.<br />The following server parameters are locked on both the source and replica servers:<br />- [`innodb_file_per_table`](https://dev.mysql.com/doc/refman/8.0/en/innodb-file-per-table-tablespaces.html)<br />- [`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators)<br />The [`event_scheduler`](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_event_scheduler) parameter is locked on the replica servers.<br />To update one of the above parameters on the source server, delete replica servers, update the parameter value on the source, and recreate replicas. |
 | Session level parameters | When configuring session level parameters such as 'foreign_keys_checks' on the read replica, ensure the parameter values being set on the read replica are consistent with that of the source server. |
-| Adding AUTO_INCREMENT Primary Key column to the existing table in the source server. | We don't recommend altering table with AUTO_INCREMENT post read replica creation, as it breaks the replication. But in case you would like to add the auto increment column post creating a replica server, we recommend these two approaches:<br />- Create a new table with the same schema of table you want to modify. In the new table, alter the column with AUTO_INCREMENT and then from the original table restore the data. Drop old table and rename it in the source, this doesn't need us to delete the replica server but may need large insert cost to creating backup table.<br />- The other quicker method is to recreate the replica after adding all auto increment columns. |
-| Other | - Creating a replica of a replica isn't supported.<br />- In-memory tables may cause replicas to become out of sync. This is a limitation of the MySQL replication technology. Read more in the [MySQL reference documentation](https://dev.mysql.com/doc/refman/5.7/en/replication-features-memory.html) for more information.<br />- Ensure the source server tables have primary keys. Lack of primary keys may result in replication latency between the source and replicas.<br />- Review the full list of MySQL replication limitations in the [MySQL documentation](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html) |
+| Adding AUTO_INCREMENT Primary Key column to the existing table in the source server. | We don't recommend altering table with AUTO_INCREMENT post read replica creation, as it breaks the replication. But in case you would like to add the auto increment column post creating a replica server, we recommend these two approaches:<br />- Create a new table with the same schema of table you want to modify. In the new table, alter the column with AUTO_INCREMENT and then from the original table restore the data. Drop old table and rename it in the source, this doesn't need us to delete the replica server but might need large insert cost to creating backup table.<br />- The other quicker method is to recreate the replica after adding all auto increment columns. |
+| Other | - Creating a replica of a replica isn't supported.<br />- In-memory tables might cause replicas to become out of sync. This is a limitation of the MySQL replication technology. Read more in the [MySQL reference documentation](https://dev.mysql.com/doc/refman/5.7/en/replication-features-memory.html) for more information.<br />- Ensure the source server tables have primary keys. Lack of primary keys might result in replication latency between the source and replicas.<br />- Review the full list of MySQL replication limitations in the [MySQL documentation](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html) |
 
-## Next steps
+## Related content
 
-- Learn how to [create and manage read replicas using the Azure portal](how-to-read-replicas-portal.md)
-- Learn how to [create and manage read replicas using the Azure CLI](how-to-read-replicas-cli.md)
+- [create and manage read replicas using the Azure portal](how-to-read-replicas-portal.md)
+- [create and manage read replicas using the Azure CLI](how-to-read-replicas-cli.md)

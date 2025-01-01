@@ -98,11 +98,15 @@ az postgres flexible-server geo-restore \
 ## Perform post-restore tasks
 After the restore is completed, you should perform the following tasks to get your users and applications back up and running:
 
-- If the new server is meant to replace the original server, redirect clients and client applications to the new server
+- If the new server is meant to replace the original server, redirect clients and client applications to the new server.
 - Ensure appropriate VNet rules are in place for users to connect. These rules aren't copied over from the original server.
-- Ensure appropriate logins and database level permissions are in place
-- Configure alerts as appropriate for the newly restore server
+- Ensure appropriate logins and database level permissions are in place.
+- Configure alerts as appropriate for the newly restore server.
 
-## Next steps
-* Learn about [business continuity](concepts-business-continuity.md)
-* Learn about [backup & recovery](concepts-backup-restore.md)  
+[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
+
+## Related content
+
+- [Overview of business continuity with Azure Database for PostgreSQL - Flexible Server](concepts-business-continuity.md).
+- [High availability in Azure Database for PostgreSQL - Flexible Server](/azure/reliability/reliability-postgresql-flexible-server).
+- [Backup and restore in Azure Database for PostgreSQL - Flexible Server](concepts-backup-restore.md).

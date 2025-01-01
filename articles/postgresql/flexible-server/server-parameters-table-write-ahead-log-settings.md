@@ -4,13 +4,21 @@ description: Write-Ahead Log / Settings server parameters for Azure Database for
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 09/26/2024
+ms.date: 12/05/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
+ms.custom: automatically generated
 zone_pivot_groups: postgresql-server-version
 ---
 # Write-Ahead Log / Settings
+
+
+::: zone pivot="postgresql-17"
+
+[!INCLUDE [server-parameters-table-17-write-ahead-log-settings](./includes/server-parameters-table-17-write-ahead-log-settings.md)]
+
+::: zone-end
 
 
 ::: zone pivot="postgresql-16"

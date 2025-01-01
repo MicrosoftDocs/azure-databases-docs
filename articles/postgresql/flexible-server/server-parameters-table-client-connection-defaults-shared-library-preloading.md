@@ -4,13 +4,21 @@ description: Client Connection Defaults / Shared Library Preloading server param
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 09/26/2024
+ms.date: 12/05/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
+ms.custom: automatically generated
 zone_pivot_groups: postgresql-server-version
 ---
 # Client Connection Defaults / Shared Library Preloading
+
+
+::: zone pivot="postgresql-17"
+
+[!INCLUDE [server-parameters-table-17-client-connection-defaults-shared-library-preloading](./includes/server-parameters-table-17-client-connection-defaults-shared-library-preloading.md)]
+
+::: zone-end
 
 
 ::: zone pivot="postgresql-16"
