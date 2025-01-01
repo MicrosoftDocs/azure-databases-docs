@@ -61,7 +61,7 @@ def main():
             "location": "westus",
             "properties": {
                 "administratorLogin": "cloudsa",
-                "administratorLoginPassword": "password",
+                "administratorLoginPassword": "<password>",
                 "availabilityZone": "1",
                 "backup": {"backupRetentionDays": 7, "geoRedundantBackup": "Disabled"},
                 "createMode": "Create",

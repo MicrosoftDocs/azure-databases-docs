@@ -1,7 +1,7 @@
 ---
 ms.service: azure-cosmos-db
 ms.topic: include
-ms.date: 10/01/2024
+ms.date: 10/09/2024
 zone_pivot_groups: azure-interface-cli-powershell-bicep
 ---
 
@@ -34,8 +34,7 @@ az resource update \
     --resource-group "<name-of-existing-resource-group>" \
     --name "<name-of-existing-account>" \
     --resource-type "Microsoft.DocumentDB/databaseAccounts" \
-    --set properties.disableLocalAuth=true \
-    --set properties.disableKeyBasedMetadataWriteAccess=true
+    --set properties.disableLocalAuth=true
 ```
 
 ::: zone-end
@@ -66,8 +65,7 @@ First, create a new account with key-based authentication disabled so that appli
             locationName: location
           }
         ]
-        disableLocalAuth: true,
-        disableKeyBasedMetadataWriteAccess: true
+        disableLocalAuth: true
       }
     }
     ```
@@ -95,7 +93,7 @@ $parameters = @{
 $resource = Get-AzResource @parameters
 
 $resource.Properties.DisableLocalAuth = $true
-$resource.Properties.DisableKeyBasedMetadataWriteAccess = $true
+
 
 $resource | Set-AzResource -Force
 ```

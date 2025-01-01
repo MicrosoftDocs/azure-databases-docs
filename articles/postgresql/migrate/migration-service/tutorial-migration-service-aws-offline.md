@@ -76,7 +76,7 @@ The user needs to provide multiple details related to the migration, such as the
 - **Migration Option** - Allows you to perform validations before triggering a migration. You can pick any of the following options:
     - **Validate** - Checks your server and database readiness for migration to the target.
     - **Migrate** - Skips validations and starts migrations.
-    - **Validate and Migrate—Performs validation before triggering a migration. If there are no validation failures, the migration is triggered.
+    - **Validate and Migrate** — Performs validation before triggering a migration. If there are no validation failures, the migration is triggered.
 
 Choosing the **Validate** or **Validate and Migrate** option is always a good practice for performing premigration validations before running the migration.
 
@@ -101,15 +101,10 @@ For more information about the Runtime Server, visit the [Migration Runtime Serv
 The **Connect to Source** tab prompts you to give details related to the source selected in the **Setup Tab**, which is the source of the databases.
 
 - **Server Name** - Provide the Hostname or the IP address of the source PostgreSQL instance
-
 - **Port** - Port number of the Source server
-
 - **Server admin login name** - Username of the source PostgreSQL server
-
 - **Password** - Password of the source PostgreSQL server
-
 - **SSL Mode** - Supported values are preferred and required. When the SSL at the source PostgreSQL server is OFF, use the SSLMODE=prefer. If the SSL at the source server is ON, use the SSLMODE=require. SSL values can be determined in postgresql.conf file.
-
 - **Test Connection**—Performs the connectivity test between the target and source. Once the connection is successful, users can proceed to the next step; they need to identify the networking issues between the target and source and verify the username/password for the source. Establishing a test connection takes a few minutes.
 
 After the successful test connection, select the **Next: Select Migration target** button.
@@ -121,9 +116,8 @@ After the successful test connection, select the **Next: Select Migration target
 The **select migration target** tab displays metadata for the Flexible Server target, like subscription name, resource group, server name, location, and PostgreSQL version.
 
 - **Admin username** - Admin username of the target PostgreSQL server
-
 - **Password** - Password of the target PostgreSQL server
-
+- **Custom FQDN/IP (Optional)**: The custom FQDN/IP field is optional and can be used when the target is behind a custom DNS server or has custom DNS namespaces, making it accessible only via specific FQDNs or IP addresses. For example, this could include entries like `flexibleserver.example.com`, `198.1.0.2`, or a PostgreSQL FQDN such as `flexibleserver.postgres.database.azure.com`, if the custom DNS server contains the DNS zone `postgres.database.azure.com` or forwards queries for this zone to `168.63.129.16`, where the FQDN is resolved in the Azure public or private DNS zone. 
 - **Test Connection** - Performs the connectivity test between target and source. Once the connection is successful, users can proceed with the next step. Otherwise, we need to identify the networking issues between the target and the source and verify the target's username/password. Test connection takes a few minutes to establish a connection between the target and source
 
 After the successful test connection, select the **Next: Select Database(s) for Migration**

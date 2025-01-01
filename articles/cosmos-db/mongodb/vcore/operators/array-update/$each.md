@@ -1,5 +1,5 @@
 ---
-  title: $each (array update operator) usage on Azure Cosmos DB for MongoDB vCore
+  title: $each (array update) usage on Azure Cosmos DB for MongoDB vCore
   titleSuffix: Azure Cosmos DB for MongoDB vCore
   description: The $each operator is used within an `$addToSet` or `$push` operation to add multiple elements to an array field in a single update operation. 
   author: sandeepsnairms
@@ -9,7 +9,7 @@
   ms.topic: reference
   ms.date: 09/11/2024
 ---
-# $each (array update operator)
+# $each (array update)
 
 [!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 

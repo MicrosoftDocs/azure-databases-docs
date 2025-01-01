@@ -4,13 +4,21 @@ description: Error Handling server parameters for Azure Database for PostgreSQL 
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 09/26/2024
+ms.date: 12/05/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
+ms.custom: automatically generated
 zone_pivot_groups: postgresql-server-version
 ---
 # Error Handling
+
+
+::: zone pivot="postgresql-17"
+
+[!INCLUDE [server-parameters-table-17-error-handling](./includes/server-parameters-table-17-error-handling.md)]
+
+::: zone-end
 
 
 ::: zone pivot="postgresql-16"

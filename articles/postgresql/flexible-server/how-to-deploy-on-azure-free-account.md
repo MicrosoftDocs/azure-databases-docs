@@ -169,7 +169,8 @@ Alternatively, if you don't expect to need these resources in the future, you ca
 
 - To delete the Azure Database for PostgreSQL flexible server instance, on the **Overview** page for the server, select **Delete**.
 
-## Next step
+[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
 
-> [!div class="nextstepaction"]
-> [Deploy a Django app with App Service and PostgreSQL](/azure/app-service/tutorial-python-postgresql-app)
+## Related content
+
+- [Deploy a Django app with App Service and PostgreSQL](/azure/app-service/tutorial-python-postgresql-app).

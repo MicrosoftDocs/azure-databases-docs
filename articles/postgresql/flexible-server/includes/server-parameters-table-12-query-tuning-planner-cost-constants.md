@@ -2,10 +2,11 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 09/26/2024
+ms.date: 12/05/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
+ms.custom: automatically generated
 ---
 ### cpu_index_tuple_cost
 
@@ -71,7 +72,7 @@ ms.topic: include
 | Documentation  | [effective_cache_size](https://www.postgresql.org/docs/12/runtime-config-query.html#GUC-EFFECTIVE-CACHE-SIZE)                 |
 
 
-[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+[!INCLUDE [server-parameters-azure-notes-effective-cache-size](./server-parameters-azure-notes-effective-cache-size.md)]
 
 
 

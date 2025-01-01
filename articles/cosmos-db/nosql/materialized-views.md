@@ -1,311 +1,131 @@
 ---
 title: Materialized views (preview)
 titleSuffix: Azure Cosmos DB for NoSQL
-description: Learn how to efficiently query a base container by using predefined filters in materialized views for Azure Cosmos DB for NoSQL. Use materilaized views as global secondary indexes to avoid expensive cross-partition queries.
-author: AbhinavTrips
-ms.author: abtripathi
+description: Materialized views are read-only containers with a persistent copy of data from a source container. They can be used to implement the Global Secondary Index pattern on Azure Cosmos DB.
+author: jcocchi
+ms.author: jucocchi
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.custom: build-2023, devx-track-azurecli
-ms.topic: how-to
-ms.date: 06/09/2023
+ms.topic: conceptual
+ms.date: 12/13/2024
 ---
 
-# Materialized views for Azure Cosmos DB for NoSQL (preview)
+# Azure Cosmos DB for NoSQL materialized views (preview)
 
 [!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
 
 > [!IMPORTANT]
-> The materialized view feature of Azure Cosmos DB for NoSQL is currently in preview. You can enable this feature by using the Azure portal. This preview is provided without a service-level agreement. At this time, we don't recommend that you use materialized views for production workloads. Certain features of this preview might not be supported or might have constrained capabilities. For more information, see the [supplemental terms of use for Microsoft Azure previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Azure Cosmos DB for NoSQL materialized views are currently in preview. You can enable this feature by using the Azure portal. This preview is provided without a service-level agreement. At this time, we don't recommend that you use materialized views for production workloads. Certain features of this preview might not be supported or might have constrained capabilities. For more information, see the [supplemental terms of use for Microsoft Azure previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Applications frequently are required to make queries that don't specify a partition key. In these cases, the queries might scan through all data for a small result set. The queries end up being expensive because they inadvertently run as a cross-partition query.
+Materialized views are read-only containers that store a persistent copy of data from a source container. These views have their own settings, separate from the source container, such as partition key, indexing policy, Request Unit (RU) limit, and data model, which can be customized by selecting a subset of item properties. Materialized views are automatically kept in sync with the source container using change feed, managed by the materialized views builder. The materialized views builder is dedicated compute provisioned for your Azure Cosmos DB account to maintain views.
 
-Materialized views, when defined, help provide a way to efficiently query a base container in Azure Cosmos DB by using filters that don't include the partition key. When users write to the base container, the materialized view is built automatically in the background. This view can have a different partition key for efficient lookups. The view also contains only fields that are explicitly projected from the base container. This view is a read-only table. The Azure Cosmos DB materialized views can be used as global secondary indexes to avoid expensive cross-partition queries.
+## Use cases
 
-> [!IMPORTANT]
-> The materialized view feature of Azure Cosmos DB for NoSQL can be used as Global Secondary Indexes. Users can specify the fields that are projected from the base container to the materialized view and they can choose a different partition key for the materialized view. Choosing a different partition key based on the most common queries, helps in scoping the queries to a single logical partition and avoiding cross-partition queries..
+Applications often need to query data without specifying a partition key. These queries must be executed across all partitions, even if some partitions don't contain data that matches the filter criteria. As a result, queries that don't include the partition key consume more RUs and have higher latency. 
 
 With a materialized view, you can:
 
-- Use the view as a lookup or mapping container to persist cross-partition scans that would otherwise be expensive queries.
-- Provide a SQL-based predicate (without conditions) to populate only specific fields.
-- Use change feed triggers to create real-time views to simplify event-based scenarios that are commonly stored as separate containers.
+- Maintain a copy of data with a different partition key, allowing cross-partition queries to be retargeted to the view for more efficient lookups.
+- Provide a SQL-based predicate (without conditions) to populate only specific item properties.
+- Create real-time views to handle event-based data, which is often stored in separate containers.
 
-The benefits of using Azure Cosmos DB Materiliazed Views include, but aren't limited to:
+### Implement the Global Secondary Index pattern
 
-- You can implement server-side denormalization by using materialized views. With server-side denormalization, you can avoid multiple independent tables and computationally complex denormalization in client applications.
-- Materialized views automatically update views to keep views consistent with the base container. This automatic update abstracts the responsibilities of your client applications that would otherwise typically implement custom logic to perform dual writes to the base container and the view.
-- Materialized views optimize read performance by reading from a single view.
-- You can specify throughput for the materialized view independently.
-- You can configure a materialized view builder layer to map to your requirements to hydrate a view.
-- Materialized views improve write performance (compared to a multi-container-write strategy) because write operations need to be written only to the base container.
-- The Azure Cosmos DB implementation of materialized views is based on a pull model. This implementation doesn't affect write performance.
-- Azure Cosmos DB materialized views for NoSQL API caters to the Global Secondary Index use cases as well. Global Secondary Indexes are also used to maintain secondary data views and help in reducing cross-partition queries.
+Materialized views can act as a Global Secondary Index (GSI), enabling efficient querying on properties other than the partition key of the source container. By creating a materialized view with a different partition key, you can achieve a similar effect to a GSI. Once the materialized view is created, queries that would otherwise be cross-partition can be retargeted to the view container, leading to reduced RU consumption and reduced latency.
 
+## Materialized views features
+
+Azure Cosmos DB materialized views offer the following features:
+
+- Automatic Syncing: Views are automatically synced with the source container, eliminating the need for custom logic in client applications.
+- Eventual Consistency: Views are eventually consistent with the source container regardless of the [consistency level](../consistency-levels.md) set for the account.
+- Performance Isolation: View containers have their own storage and RU limits, providing performance isolation.
+- Optimized Read Performance: Fine-tuned data model, partition key, and indexing policy for optimized read performance.
+- Improved Write Performance: Clients only need to write to the source container, improving write performance compared to a multi-container-write strategy.
+- Read-Only Containers: Writes to the view are asynchronous and managed by the materialized view builder. Client applications can't write directly to views.
+- Multiple Views: You can create multiple views for the same source container without extra overhead.
+
+## Defining materialized views
+
+Creating a materialized view is similar to creating a new container, with requirements to specify the source container and a query defining the view. Each item in the materialized view has a one-to-one mapping to an item in the source container. To maintain this mapping, the `id` field in materialized view items is auto populated. The value of `id` from the source collection is represented as `_id` in the view.
+
+The query used to define a materialized view must adhere to the following constraints:
+ - The SELECT statement allows projection of only one level of properties in the JSON tree, or it can be SELECT * to include all properties.
+ - Aliasing property names using AS isn’t supported.
+ - Queries can’t include a WHERE clause or other clauses such as JOIN, DISTINCT, GROUP BY, ORDER BY, TOP, OFFSET LIMIT, and EXISTS.
+ - System functions and user-defined functions (UDFs) aren't supported.
+
+ For example, a valid query could be: `SELECT c.userName, c.emailAddress FROM c`, which selects the `userName` and `emailAddress` properties from the source container `c`. This query defines the structure of the materialized view, determining which properties are included in the view. The materialized view source container and definition query can't be changed once created.
+ 
+ [Learn how to create materialized views.](how-to-configure-materialized-views.md#create-a-materialized-view)
+ 
 > [!NOTE]
-> The "id" field in the materialized view is auto populated with "_rid" from source document. This is done to maintain the one-to-one relationship between materialized view and source container documents.
+> Once views are created, if you want to delete the source container, you must first delete all materialized views that are created for it.
 
-## Prerequisites
+## Provisioning the materialized views builder
 
-- An existing Azure Cosmos DB account.
-  - If you have an Azure subscription, [create a new account](how-to-create-account.md?tabs=azure-portal).
-  - If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
-  - Alternatively, you can [try Azure Cosmos DB free](../try-free.md) before you commit.
+The materialized views builder is a dedicated compute layer provisioned for your Azure Cosmos DB account that automatically maintains views defined for source containers. The builder reads from the [change feed](../change-feed.md) of the source container and writes changes to the materialized views according to the view definition, keeping them in sync. Updating views is asynchronous and doesn't affect writes to the source container. Updates to the views are eventually consistent with the source container regardless of the consistency level set for the account.
 
-## Enable materialized views
+You must provision a materialized views builder for your Azure Cosmos DB account for views to begin populating. The amount of compute provisioned in the builder, including the SKU and the number of nodes, as well as the RUs provisioned on the view container, determine how quickly views are hydrated and synced. The builder can have up to five nodes by default and you can add or remove nodes at any time. Scaling up and down the number of nodes helps control the rate at which views are built.
 
-Use the Azure CLI to enable the materialized views feature either by using a native command or a REST API operation on your Cosmos DB for NoSQL account.
+The materialized views builder is available in the following sizes:
 
-### [Azure portal](#tab/azure-portal)
+| **Sku Name** | **vCPU** | **Memory**  |
+| ------------ | -------- | ----------- |
+| **D2s**      | **2**    | **8 GB** |
+| **D4s**      | **4**    | **16 GB** |
+| **D8s**      | **8**    | **32 GB** |
+| **D16s**     | **16**   | **64 GB** |
 
-1. Sign in to the [Azure portal](https://portal.azure.com/).
+> [!TIP]
+> Once created, you can add or remove builder nodes, but you can't modify the size of the nodes. To change the size of your materialized view builder nodes you can deprovision the builder and provision it again in a different size. Views don't need to be re-created and will catch up to the source once the builder is provisioned again.
 
-1. Go to your API for NOSQL account.
+### Materialized views builders in multi-region accounts
 
-1. In the resource menu, select **Settings**.
+For Azure Cosmos DB accounts with a single region, the materialized views builder is provisioned in that region. In a multi-region account with a single write region, the builder is provisioned in the write region and reads change feed from there. In an account with multiple write regions, the builder is provisioned in one of the write regions and reads change feed from the same region it's provisioned in. 
 
-1. In the **Features** section under **Settings**, toggle the **Materialized View for NoSQL API (Preview)** option to **On**.
+[Learn how to provision the materialized views builder.](how-to-configure-materialized-views.md#create-a-materialized-view-builder)
 
-1. In the new dialog, select **Enable** to enable this feature for the account.
+> [!IMPORTANT]
+> In the event of a failover for your account, the materialized views builder is deprovisioned and re-provisioned in the new write region.
+> 
+> Manual failovers (change write region operation) are graceful operations, and views are guaranteed to be consistent with the source. However, service managed failovers are not guaranteed to be graceful and can result in inconsistencies between the source and view containers. In such cases, it's recommended to re-build the view containers and fall back to executing cross-partition queries on the source container until the view is updated.
+>
+> Learn more about [service managed failover.](/azure/reliability/reliability-cosmos-db-nosql#service-managed-failover)
 
-### [Azure CLI](#tab/azure-cli)
+## Monitoring
 
-1. Sign in to the Azure CLI.
+You can monitor the lag in building views and the health of the materialized views builder through Metrics in the Azure portal. To learn about these metrics, see [Supported metrics for Microsoft.DocumentDB/DatabaseAccounts](../monitor-reference.md#supported-metrics-for-microsoftdocumentdbdatabaseaccounts).
 
-    ```azurecli
-    az login
-    ```
+:::image type="content" source="./media/materialized-views/materialized-views-metrics.png" alt-text="Screenshot of the Materialized Views Builder Average CPU Usage metric in the Azure portal." :::
 
-   > [!NOTE]
-   > If you need to first install the Azure CLI, see [How to install the Azure CLI](/cli/azure/install-azure-cli).
+### Troubleshooting common issues
 
-1. Define the variables for the resource group and account name for your existing API for NoSQL account.
+#### I want to understand the lag between my source container and views
 
-    ```azurecli
-    # Variable for resource group name
-    resourceGroupName="<resource-group-name>"
-    
-    # Variable for account name
-    accountName="<account-name>"
-    
-    # Variable for Azure subscription
-    subscriptionId="<subscription-id>"
-    ```
+The **MaterializedViewCatchupGapInMinutes** metric shows the maximum difference in minutes between data in a source container and a view. While there can be multiple views created in a single account, this metric exposes the highest lag among all views. A high value indicates the builder needs more compute to keep up with the volume of changes to source containers. The RUs provisioned on source and view containers can also affect the rate at which changes are propagated to the view. Check the **Total Requests** metric and split by **StatusCode** to determine if there are throttled requests on these containers. Throttled requests have status code 429.
 
-1. Create a new JSON file named *capabilities.json* by using the capabilities manifest.
+#### I want to understand if my materialized views builder has the right number of nodes
 
-    ```json
-    {
-      "properties": {
-        "enableMaterializedViews": true
-      }
-    }
-    ```
+The **MaterializedViewsBuilderAverageCPUUsage** and **MaterializedViewsBuilderAverageMemoryUsage** metrics show the average CPU usage and memory consumption across all nodes in the builder. If these metrics are too high, add nodes to scale up the cluster. If these metrics show under-utilization of CPU and memory, remove nodes by scaling down the cluster. For optimal performance, CPU usage should be no higher than 70 percent.
 
-1. Get the identifier of the account and store it in a shell variable named `$accountId`.
-
-    ```azurecli
-    accountId="/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/$accountName"
-    ```
-
-1. Enable the preview materialized views feature for the account by using the REST API and [az rest](/cli/azure/reference-index#az-rest) with an HTTP `PATCH` verb.
-
-    ```azurecli
-    az rest \
-        --method PATCH \
-        --uri "https://management.azure.com/$accountId?api-version=2022-11-15-preview" \
-        --body @capabilities.json
-    ```
-
----
-
-## Create a materialized view builder
-
-Create a materialized view builder to automatically transform data and write to a materialized view.
-
-### [Azure portal](#tab/azure-portal)
-
-1. Sign in to the [Azure portal](https://portal.azure.com/).
-
-1. Go to your API for NoSQL account.
-
-1. In the resource menu, select **Materialized Views Builder**.
-
-1. On the **Materialized Views Builder** page, configure the SKU and the number of instances for the builder.
-
-   > [!NOTE]
-   > This resource menu option and page appear only when the materialized views feature is enabled for the account.
-
-1. Select **Save**.
-
-### [Azure CLI](#tab/azure-cli)
-
-1. Create a new JSON file named *builder.json* by using the builder manifest:
-
-    ```json
-    {
-      "properties": {
-        "serviceType": "materializedViewsBuilder",
-        "instanceCount": 1,
-        "instanceSize": "Cosmos.D4s"
-      }
-    }
-    ```
-
-1. Enable the materialized views builder for the account by using the REST API and `az rest` with an HTTP `PUT` verb:
-
-    ```azurecli
-    az rest \
-        --method PUT \
-        --uri "https://management.azure.com$accountId/services/materializedViewsBuilder?api-version=2022-11-15-preview" \
-        --body @builder.json
-    ```
-
-1. Wait for a couple of minutes, and then check the status by using `az rest` again with the HTTP `GET` verb. The status in the output should now be `Running`.
-
-    ```azurecli
-    az rest \
-        --method GET \
-        --uri "https://management.azure.com$accountId/services/materializedViewsBuilder?api-version=2022-11-15-preview"
-    ```
-
----
-
-Azure Cosmos DB For NoSQL uses a materialized view builder compute layer to maintain the views.
-
-You have the flexibility of configuring the view builder's compute instances based on your latency and lag requirements to hydrate the views. From a technical standpoint, this compute layer helps you manage connections between partitions in a more efficient manner, even when the data size is large and the number of partitions is high.
-
-The compute containers are shared among all materialized views within an Azure Cosmos DB account. Each provisioned compute container initiates multiple tasks that read the change feed from the base container partitions and write data to the target materialized view or views. The compute container transforms the data per the materialized view definition for each materialized view in the account.
-
-## Create a materialized view
-
-After your account and the materialized view builder are set up, you should be able to create materialized views by using the REST API.
-
-### [Azure portal / Azure CLI](#tab/azure-portal+azure-cli)
-
-1. Use the Azure portal, the Azure SDK, the Azure CLI, or the REST API to create a source container that has `/accountId` as the partition key path. Name this source container `mv-src.
-
-   > [!NOTE]
-   > The `/accountId` field is used only as an example in this article. For your own containers, select a partition key that works for your solution.
-
-1. Insert a few items in the source container. To follow the examples that are shown in this article, make sure that the items have `accountId`, `fullName`, and `emailAddress` fields. A sample item might look like this example:
-
-    ```json
-    {
-      "accountId": "prikrylova-libuse",
-      "emailAddress": "libpri@contoso.com",
-      "name": {
-        "first": "Libuse",
-        "last": "Prikrylova"
-      }
-    }
-    ```
-
-   > [!NOTE]
-   > In this example, you populate the source container with sample data. You can also create a materialized view from an empty source container.
-
-1. Now, create a materialized view named `mv-target` with a partition key path that is different from the source container. For this example, specify `/emailAddress` as the partition key path for the `mv-target` container.
-
-    1. First, create a definition manifest for a materialized view and save it in a JSON file named *definition.json*:
-
-        ```json
-        {
-          "location": "North Central US",
-          "tags": {},
-          "properties": {
-            "resource": {
-              "id": "mv-target",
-              "partitionKey": {
-                "paths": [
-                  "/emailAddress"
-                ],
-                "kind": "Hash"
-              },
-              "materializedViewDefinition": {
-                "sourceCollectionId": "mv-src",
-                "definition": "SELECT s.accountId, s.emailAddress FROM s"
-              }
-            },
-            "options": {
-              "throughput": 400
-            }
-          }
-        }        
-        ```
-
-   > [!NOTE]
-   > In the template, notice that the partitionKey path is set as `/emailAddress`. We also have more parameters to specify the source collection and the definition to populate the materialized view.
-
-1. Now, make a REST API call to create the materialized view as defined in the *mv_definition.json* file. Use the Azure CLI to make the REST API call.
-
-    1. Create a variable for the name of the materialized view and source database name:
-
-        ```azurecli
-        materializedViewName="mv-target"
-        
-        # Variable for database name used in later section
-        databaseName="<database-that-contains-source-collection>"
-        ```
-
-    1. If you haven't already, get the identifier of the account and store it in a shell variable named `$accountId`.
-
-        ```azurecli
-        accountId="/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/$accountName"
-        ```
-
-    1. Make a REST API call to create the materialized view:
-
-        ```azurecli
-        az rest \
-            --method PUT \
-            --uri "https://management.azure.com$accountId/sqlDatabases/
-                  $databaseName/containers/$materializedViewName?api-version=2022-11-15-preview" \
-            --body @definition.json \
-            --headers content-type=application/json
-        ```
-
-    1. Check the status of the materialized view container creation by using the REST API:
-
-        ```azurecli
-        az rest \
-            --method GET \
-            --uri "https://management.azure.com$accountId/sqlDatabases/
-                  $databaseName/containers/$materializedViewName?api-version=2022-11-15-preview" \
-            --headers content-type=application/json \
-            --query "{mvCreateStatus: properties.Status}"
-        ```
-
----
-
-After the materialized view is created, the materialized view container automatically syncs changes with the source container. Try executing create, read, update, and delete (CRUD) operations in the source container. You'll see the same changes in the materialized view container.
-
-> [!NOTE]
-> Materialized view containers are read-only containers for users. The containers can be automatically modified only by a materialized view builder.
-
-## Current limitations
+## Limitations
 
 There are a few limitations with the Azure Cosmos DB for NoSQL API materialized view feature while it is in preview:
 
-- `WHERE` clauses aren't supported in the materialized view definition.
-- You can project only the source container item's JSON `object` property list in the materialized view definition. Currently, the list can contain only one level of properties in the JSON tree.
-- In the materialized view definition, aliases aren't supported for fields of documents.
-- We recommend that you create a materialized view when the source container is still empty or has only a few items.
-- Restoring a container from a backup doesn't restore materialized views. You must re-create the materialized views after the restore process is finished.
-- You must delete all materialized views that are defined on a specific source container before you delete the source container.
+- Role-based access control isn't supported for materialized views.
+- Materialized views can't be enabled on accounts that have partition merge, analytical store, or continuous backups.
 - Point-in-time restore, hierarchical partitioning, and end-to-end encryption aren't supported on source containers that have materialized views associated with them.
-- Role-based access control is currently not supported for materialized views.
 - Cross-tenant customer-managed key (CMK) encryption isn't supported on materialized views.
-- Currently, this feature can't be enabled if any of the following features are enabled: partition merge, analytical store, or continuous backup.
-
-Note the additional following limitations:
-
 - Availability zones
   - Materialized views can't be enabled on an account that has availability zone-enabled regions.
-  - Adding a new region with an availability zone isn't supported after `enableMaterializedViews` is set to `true` on the account.
+  - Adding a new region with an availability zone isn't supported after materialized views are enabled on an account.
 - Periodic backup and restore
-  - Materialized views aren't automatically restored by using the restore process. You must re-create the materialized views after the restore process is finished. Then, you should configure `enableMaterializedViews` on the restored account before you create the materialized views and builders again.
+  - Materialized views aren't automatically restored during the restore process. You must enable the materialized views feature on the restored account after the restore process is finished. Then, you can create the materialized views and builder again.
 
 ## Next steps
 
 > [!div class="nextstepaction"]
 > [Data modeling and partitioning](model-partition-example.md)
+> [Learn how to configure materialized views](how-to-configure-materialized-views.md)

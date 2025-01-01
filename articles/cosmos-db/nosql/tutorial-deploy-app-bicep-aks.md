@@ -350,7 +350,6 @@ az deployment sub delete \
 
 ## Related content
 
-- [Develop a web application with Azure Cosmos DB](./tutorial-dotnet-web-app.md).
 - [Query Azure Cosmos DB for NoSQL](./tutorial-query.md).
 - [Upgrade your cluster](/azure/aks/tutorial-kubernetes-upgrade-cluster).
 - [Scale your cluster](/azure/aks/tutorial-kubernetes-scale).

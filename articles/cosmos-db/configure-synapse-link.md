@@ -173,6 +173,13 @@ The following options enable Synapse Link in a container by using Azure CLI by s
 The following .NET code creates a Synapse Link enabled container by setting the `AnalyticalStoreTimeToLiveInSeconds` property. To update an existing container, use the `Container.ReplaceContainerAsync` method.
 
 ```csharp
+CosmosClient cosmosClient = new CosmosClient(
+    accountEndpoint: "<nosql-account-endpoint>",
+    tokenCredential: new DefaultAzureCredential()
+);
+```
+
+```csharp
 // Create a container with a partition key, and analytical TTL configured to -1 (infinite retention)
 ContainerProperties properties = new ContainerProperties()
 {
@@ -180,7 +187,6 @@ ContainerProperties properties = new ContainerProperties()
     PartitionKeyPath = "/id",
     AnalyticalStoreTimeToLiveInSeconds = -1,
 };
-CosmosClient cosmosClient = new CosmosClient("myConnectionString");
 await cosmosClient.GetDatabase("myDatabase").CreateContainerAsync(properties);
 ```
 

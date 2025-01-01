@@ -63,7 +63,7 @@ java.util.concurrent.ExecutionException: java.lang.RuntimeException: org.postgre
 
 ### Programmatically managed firewall rules
 
-In addition using to the Azure portal, you can manage firewall rules programmatically by using the Azure CLI. For more information, see [Create and manage Azure Database for PostgreSQL - Flexible Server firewall rules using the Azure CLI](./how-to-manage-firewall-cli.md).
+In addition using to the Azure portal, you can manage firewall rules programmatically by using the Azure CLI. For more information, see [Create and manage Azure Database for PostgreSQL - Flexible Server firewall rules using the Azure CLI](how-to-manage-firewall-cli.md).
 
 ### Allow all Azure IP addresses
 
