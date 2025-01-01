@@ -10,12 +10,14 @@
   items:
   - name: .NET
     href: quickstart-dotnet.md
-  - name: Java
-    href: quickstart-java.md
-  - name: Node.js
-    href: quickstart-nodejs.md
   - name: Python
     href: quickstart-python.md
+  - name: Node.js
+    href: quickstart-nodejs.md
+  - name: Java
+    href: quickstart-java.md
+  - name: Go
+    href: quickstart-go.md
 - name: Tutorials
   items:
   - name: Query data
@@ -27,21 +29,6 @@
     href: ../tutorial-log-transformation.md
 - name: Samples
   items:
-  - name: .NET
-    href: samples-dotnet.md
-  - name: Java
-    href: how-to-use-java.md
-  - name: Node.js
-    href: how-to-use-nodejs.md
-  - name: Python
-    href: quickstart-python.md
-  - name: Go
-    href: how-to-use-go.md
-  - name: C++
-    href: how-to-use-c-plus.md
-  - name: F#
-    href: /dotnet/articles/fsharp/using-fsharp-on-azure/table-storage
-    maintainContext: true
   - name: Azure CLI
     items:
     - name: Overview
@@ -62,6 +49,8 @@
       href: ../scripts/cli/common/keys.md
     - name: Secure with IP firewall
       href: ../scripts/cli/common/ipfirewall.md
+    - name: Bulk add or remove IP firewall rules
+      href: ../scripts/cli/common/ipfirewall-bulk-add-remove.md
     - name: Secure new account with service endpoints
       href: ../scripts/cli/common/service-endpoints.md
     - name: Secure existing account with service endpoints
@@ -207,9 +196,6 @@
     items:
     - name: Security overview
       href: ../security.yml
-    - name: Role-based access control guide
-      displayName: RBAC, Entra
-      href: security/index.md
     - name: Considerations and guidance
       href: ../security-considerations.md
     - name: Well Architected Framework security guidance
@@ -339,13 +325,6 @@
       href: ../how-to-setup-cross-tenant-customer-managed-keys.md
     - name: Use managed identities with Azure services
       href: ../how-to-setup-managed-identity.md
-    - name: Disable key-based authentication
-      displayName: key, ropc, connection string
-      href: security/how-to-disable-key-based-authentication.md?context=/azure/cosmos-db/context/context
-    - name: Grant role-based access control access for resources
-      href: security/how-to-grant-control-plane-role-based-access.md?context=/azure/cosmos-db/context/context
-    - name: Grant role-based access control access for data
-      href: security/how-to-grant-data-plane-role-based-access.md?context=/azure/cosmos-db/context/context
   - name: Enterprise readiness
     items:
     - name: Access preview features

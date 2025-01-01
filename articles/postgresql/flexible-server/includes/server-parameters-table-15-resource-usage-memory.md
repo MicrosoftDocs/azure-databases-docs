@@ -2,10 +2,11 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 09/26/2024
+ms.date: 12/05/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
+ms.custom: automatically generated
 ---
 ### autovacuum_work_mem
 
@@ -49,8 +50,8 @@ ms.topic: include
 | Description    | Multiple of work_mem to use for hash tables.                                                                                                                                        |
 | Data type      | numeric     |
 | Default value  | `2`                                                                        |
-| Allowed values | `2`              |
-| Parameter type | read-only      |
+| Allowed values | `1-1000`         |
+| Parameter type | dynamic        |
 | Documentation  | [hash_mem_multiplier](https://www.postgresql.org/docs/15/runtime-config-resource.html#GUC-HASH-MEM-MULTIPLIER)               |
 
 

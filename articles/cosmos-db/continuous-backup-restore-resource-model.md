@@ -67,7 +67,7 @@ The following JSON is a sample database account resource with continuous backup 
     "restoreParameters": {
       "restoreMode": "PointInTime",
       "restoreWithTtlDisabled" : "true",
-      "restoreSource": "/subscriptions/subid/providers/Microsoft.DocumentDB/locations/westus/restorableDatabaseAccounts/1a97b4bb-f6a0-430e-ade1-638d781830cc",
+      "restoreSource": "/subscriptions/subid/providers/Microsoft.DocumentDB/locations/westus/restorableDatabaseAccounts/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e",
       "restoreTimestampInUtc": "2020-06-11T22:05:09Z",
       "databasesToRestore": [
         {

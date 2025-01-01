@@ -21,8 +21,6 @@ Query optimizations in Azure Cosmos DB are broadly categorized as follows:
 
 If you reduce the RU charge of a query, you'll typically decrease latency as well.
 
-This article provides examples that you can re-create by using the [nutrition dataset](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json).
-
 > [!NOTE] 
 > This article assumes you are using Azure Cosmos DB's API for MongoDB accounts with version 3.6 and higher. Some queries that perform poorly in version 3.2 have significant improvements in versions 3.6+. Upgrade to version 3.6 by filing a [support request](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 

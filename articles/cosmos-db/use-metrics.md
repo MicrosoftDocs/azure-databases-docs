@@ -20,6 +20,9 @@ This article walks through common use cases and how Azure Cosmos DB insights can
 
 The following sections explain common scenarios where you can use Azure Cosmos DB metrics.
 
+>[!NOTE]
+> When filtering by database or collections in metrics, it is possible that you may see "__Empty" or "\<Empty>\" as the resourceName. This is because metric data is being collected at an account-level for that particular request. Therefore, there is no associated database or collection as the metric value.
+
 ## Understand how many requests are succeeding or causing errors
 
 To get started, head to the [Azure portal](https://portal.azure.com) and navigate to the **Insights** pane. From this pane, open the **Requests** tab. The Requests tab shows a chart with the total requests segmented by the status code and operation type. For more information about HTTP status codes, see [HTTP status codes for Azure Cosmos DB](/rest/api/cosmos-db/http-status-codes-for-cosmosdb).

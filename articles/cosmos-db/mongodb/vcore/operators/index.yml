@@ -19,22 +19,34 @@ landingContent:
         links:
           - text: $count
             url: aggregation/$count.md
+          - text: $facet
+            url: aggregation/$facet.md
+          - text: $lookup
+            url: aggregation/$lookup.md
+          - text: $match
+            url: aggregation/$match.md
   - title: Array expression
     linkLists:
       - linkListType: reference
         links:
-          - text: $in
-            url: array-expression/$in.md
+          - text: $arrayToObject
+            url: array-expression/$arraytoobject.md
+          - text: $concatArrays
+            url: array-expression/$concatarrays.md
+          - text: $filter
+            url: array-expression/$filter.md
+          - text: $indexOfArray
+            url: array-expression/$indexOfArray.md
           - text: $map
             url: array-expression/$map.md
-          - text: $range
-            url: array-expression/$range.md
           - text: $reduce
             url: array-expression/$reduce.md
-          - text: $size
-            url: array-expression/$size.md
+          - text: $reverseArray
+            url: array-expression/$reversearray.md
           - text: $slice
             url: array-expression/$slice.md
+          - text: $sortArray
+            url: array-expression/$sortarray.md
           - text: $zip
             url: array-expression/$zip.md
   - title: Array query
@@ -51,14 +63,30 @@ landingContent:
     linkLists:
       - linkListType: reference
         links:
+          - text: $each
+            url: array-update/$each.md
+          - text: $position
+            url: array-update/$position.md
+          - text: $pullAll
+            url: array-update/$pullall.md
           - text: $push
             url: array-update/$push.md
+          - text: $slice
+            url: array-update/$slice.md
+          - text: $sort
+            url: array-update/$sort.md
   - title: Bitwise query
     linkLists:
       - linkListType: reference
         links:
           - text: $bitsAllClear
             url: bitwise-query/$bitsallclear.md
+          - text: $bitsAllSet
+            url: bitwise-query/$bitsallset.md
+          - text: $bitsAnyClear
+            url: bitwise-query/$bitsanyclear.md
+          - text: $bitsAnySet
+            url: bitwise-query/$bitsanyset.md
   - title: Comparison query
     linkLists:
       - linkListType: reference
@@ -89,12 +117,14 @@ landingContent:
         links:
           - text: $mergeObjects
             url: object-expression/$mergeobjects.md
+          - text: $objectToArray
+            url: object-expression/$objectToArray.md
+          - text: $setField
+            url: object-expression/$setField.md
   - title: Projection
     linkLists:
       - linkListType: reference
         links:
-          - text: $
-            url: projection/$.md
           - text: $elemMatch
             url: projection/$elemmatch.md
           - text: $meta

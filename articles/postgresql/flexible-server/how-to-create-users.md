@@ -43,7 +43,7 @@ The server admin user account can be used to create more users and grant those u
    You need the full server name and admin sign-in credentials to connect to your Azure Database for PostgreSQL flexible server instance. You can easily find the server name and sign-in information from the server **Overview** page or the **Properties** page in the Azure portal.
 
 1. Use the admin account and password to connect to your Azure Database for PostgreSQL flexible server instance. Use your preferred client tool, such as pgAdmin or psql.
-   If you're unsure of how to connect, see [the quickstart](./quickstart-create-server-portal.md)
+   If you're unsure of how to connect, see [the quickstart](quickstart-create-server-portal.md)
 
 1. Edit and run the following SQL code. Replace your new user name with the placeholder value <new_user>, and replace the placeholder password with your own strong password.
 

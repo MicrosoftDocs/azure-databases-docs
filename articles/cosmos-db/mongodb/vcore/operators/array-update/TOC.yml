@@ -1,2 +1,18 @@
+- name: $addtoset
+  href: $addtoset.md
+- name: $each
+  href: $each.md
+- name: $position
+  href: $position.md
+- name: $pop
+  href: $pop.md
+- name: $pull
+  href: $pull.md
+- name: $pullAll
+  href: $pullall.md
 - name: $push
   href: $push.md
+- name: $slice
+  href: $slice.md
+- name: $sort
+  href: $sort.md

@@ -24,7 +24,7 @@ An [Azure Database for PostgreSQL flexible server instance](quickstart-create-se
 
 2. Provide the **resourceGroupName**(Target Resource group name), **serverName** (Target server name), **subscriptionId** (Target subscription) properties. Please use the latest api-version that is available. For this example we're using 2023-06-01-preview.
 
-    ![Screenshot showing the REST API Try It page.](./media/how-to-restore-server-portal/geo-restore-different-subscription-or-resource-group-api.png)
+    ![Screenshot showing the REST API Try It page.](media/how-to-restore-server-portal/geo-restore-different-subscription-or-resource-group-api.png)
 
 
 
@@ -71,8 +71,10 @@ An [Azure Database for PostgreSQL flexible server instance](quickstart-create-se
  - If you utilize the incorrect API version, you might experience restore failures or timeouts. Please use 2023-06-01-preview API to avoid such issues.
  - To avoid potential DNS errors, it's recommended to use a different name when initiating the restore process, as some restore operations might fail with the same name.
 
-## Next steps
+[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
 
-- Learn about [business continuity](./concepts-business-continuity.md).
-- Learn about [zone-redundant high availability](./concepts-high-availability.md).
-- Learn about [backup and recovery](./concepts-backup-restore.md).
+## Related content
+
+- [Overview of business continuity with Azure Database for PostgreSQL - Flexible Server](concepts-business-continuity.md).
+- [High availability in Azure Database for PostgreSQL - Flexible Server](/azure/reliability/reliability-postgresql-flexible-server).
+- [Backup and restore in Azure Database for PostgreSQL - Flexible Server](concepts-backup-restore.md).

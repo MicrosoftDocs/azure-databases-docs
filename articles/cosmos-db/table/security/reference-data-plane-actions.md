@@ -1,5 +1,5 @@
 ---
-title: Data plane actions reference
+title: Data plane actions reference (preview)
 titleSuffix: Azure Cosmos DB for Table
 description: This article includes a list of all potential data plane actions for use with role-based access control (RBAC) in Azure Cosmos DB for Table.
 author: seesharprun
@@ -8,12 +8,14 @@ ms.reviewer: stefarroyo
 ms.service: azure-cosmos-db
 ms.subservice: table
 ms.topic: reference
-ms.date: 10/01/2024
+ms.date: 12/18/2024
+appliesto:
+  - ✅ Table
+hidden: true
+ROBOTS: NOINDEX, NOFOLLOW
 ---
 
-# Azure Cosmos DB for Table data plane actions reference
-
-[!INCLUDE[Table](../../includes/appliesto-table.md)]
+# Azure Cosmos DB for Table data plane actions reference (preview)
 
 :::image type="complex" source="media/reference-data-plane-actions/map.svg" border="false" alt-text="Diagram of the current location ('Reference') in the sequence of the deployment guide.":::
 Diagram of the sequence of the deployment guide including these locations, in order: Overview, Concepts, Prepare, Role-based access control, and Reference. The 'Reference' location is currently highlighted.

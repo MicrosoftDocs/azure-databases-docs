@@ -1849,6 +1849,46 @@
         "source_path_from_root": "/articles/postgresql/single-server/whats-happening-to-postgresql-single-server.md",
         "redirect_url": "/azure/postgresql/migrate/whats-happening-to-postgresql-single-server",
         "redirect_document_id": true
+    },
+    {
+        "source_path_from_root": "/articles/postgresql/flexible-server/reference-pg-azure-storage.md",
+        "redirect_url": "/azure/postgresql/flexible-server/how-to-use-pg-azure-storage",
+        "redirect_document_id": false
+    },
+    {
+        "source_path_from_root": "/articles/postgresql/flexible-server/concepts-extensions.md",
+        "redirect_url": "/azure/postgresql/extensions/how-to-allow-extensions",
+        "redirect_document_id": false
+    },
+    {
+        "source_path_from_root": "/articles/postgresql/flexible-server/how-to-configure-server-parameters-using-portal.md",
+        "redirect_url": "/azure/postgresql/flexible-server/how-to-configure-server-parameters",
+        "redirect_document_id": false
+    },
+    {
+        "source_path_from_root": "/articles/postgresql/flexible-server/how-to-configure-server-parameters-using-cli.md",
+        "redirect_url": "/azure/postgresql/flexible-server/how-to-configure-server-parameters",
+        "redirect_document_id": false
+    },
+    {
+        "source_path_from_root": "/articles/postgresql/flexible-server/how-to-perform-major-version-upgrade-cli.md",
+        "redirect_url": "/azure/postgresql/flexible-server/how-to-perform-major-version-upgrade",
+        "redirect_document_id": false
+    },
+    {
+        "source_path_from_root": "/articles/postgresql/flexible-server/how-to-perform-major-version-upgrade-portal.md",
+        "redirect_url": "/azure/postgresql/flexible-server/how-to-perform-major-version-upgrade",
+        "redirect_document_id": false
+    },
+    {
+        "source_path_from_root": "/articles/postgresql/flexible-server/how-to-auto-grow-storage-portal.md",
+        "redirect_url": "/azure/postgresql/flexible-server/how-to-auto-grow-storage",
+        "redirect_document_id": false
+    },
+    {
+        "source_path_from_root": "/articles/postgresql/migrate/how-to-migrate-from-oracle.md",
+        "redirect_url": "/azure/postgresql/migrate/how-to-migrate-oracle-ora2pg",
+        "redirect_document_id": false
     }
 ]
 }

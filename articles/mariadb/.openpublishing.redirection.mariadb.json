@@ -22,8 +22,13 @@
     },
     {
         "source_path_from_root": "/articles/mariadb/security-baseline.md",
-        "redirect_url": "/security/benchmark/azure/baselines/mariadb-security-baseline",
+        "redirect_url": "/azure/security/benchmark/azure/baselines/mariadb-security-baseline",
         "redirect_document_id": false
+    },
+    {
+        "source_path_from_root": "/articles/mariadb/whats-happening-to-mariadb.md",
+        "redirect_url": "/azure/mariadb/migrate/whats-happening-to-mariadb",
+        "redirect_document_id": true
     }
   ]
 }

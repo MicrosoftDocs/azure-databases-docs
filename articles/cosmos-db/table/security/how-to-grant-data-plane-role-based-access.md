@@ -1,5 +1,5 @@
 ---
-title: Use data plane role-based access control
+title: Use data plane role-based access control (preview)
 titleSuffix: Azure Cosmos DB for Table
 description: Grant access to run queries, manage entities, and perform operations using role-based access control (RBAC), Microsoft Entra, and Azure Cosmos DB for Table.
 author: seesharprun
@@ -8,14 +8,16 @@ ms.reviewer: stefarroyo
 ms.service: azure-cosmos-db
 ms.subservice: table
 ms.topic: how-to
-ms.date: 10/01/2024
+ms.date: 12/18/2024
 zone_pivot_groups: azure-interface-cli-powershell-bicep
+appliesto:
+  - ✅ Table
+hidden: true
+ROBOTS: NOINDEX, NOFOLLOW
 #Customer Intent: As a security user, I want to grant an identity data-plane access to Azure Cosmos DB for Table, so that my developer team can use the SDK of their choice with minimal code change.
 ---
 
-# Use role-based access control with Azure Cosmos DB for Table
-
-[!INCLUDE[Table](../../includes/appliesto-table.md)]
+# Use role-based access control with Azure Cosmos DB for Table (preview)
 
 :::image type="complex" source="media/how-to-grant-data-plane-role-based-access/map.svg" border="false" alt-text="Diagram of the current location ('Role-based access control') in the sequence of the deployment guide.":::
 Diagram of the sequence of the deployment guide including these locations, in order: Overview, Concepts, Prepare, Role-based access control, and Reference. The 'Role-based access control' location is currently highlighted.
@@ -166,7 +168,7 @@ Content    : {
         "roleName": "Azure Cosmos DB for Table Data Plane Owner",
         "type": "CustomRole",
         "assignableScopes": [
-          "/subscriptions/5e6451f0-384a-4ec0-a4a1-bff59cf4837d/resourceGroups/sidandrews-rbac/providers/Microsoft.DocumentDB/databaseAccounts/sidandrews-rbac-table/"
+          "/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/sidandrews-rbac/providers/Microsoft.DocumentDB/databaseAccounts/sidandrews-rbac-table/"
         ],
         "permissions": [
           {
@@ -336,7 +338,7 @@ Content    : {
         roleName = "Azure Cosmos DB for Table Data Plane Owner"
         type = "CustomRole"
         assignableScopes = @(
-          "/subscriptions/5e6451f0-384a-4ec0-a4a1-bff59cf4837d/resourceGroups/sidandrews-rbac/providers/Microsoft.DocumentDB/databaseAccounts/sidandrews-rbac-table/"
+          "/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/sidandrews-rbac/providers/Microsoft.DocumentDB/databaseAccounts/sidandrews-rbac-table/"
         )
         permissions = @(
           @{
@@ -581,13 +583,19 @@ Finally, validate that you correctly granted access using application code and t
 ```csharp
 using Azure.Identity;
 using Azure.Data.Tables;
-using Azure.Core;
 
 string endpoint = "<account-endpoint>";
 
-TokenCredential credential = new DefaultAzureCredential();
+DefaultAzureCredential credential = new();
 
-TableServiceClient client = new(new Uri(endpoint), credential);
+TableServiceClient client = new(
+    endpoint: new Uri(endpoint),
+    tokenCredential: credential
+);
+
+TableClient table = client.GetTableClient(
+    tableName: "<name-of-table>"
+);
 ```
 
 > [!IMPORTANT]
@@ -596,14 +604,16 @@ TableServiceClient client = new(new Uri(endpoint), credential);
 ### [JavaScript](#tab/javascript)
 
 ```javascript
-const { TableServiceClient } = require('@azure/data-tables');
+const { TableServiceClient, TableClient } = require('@azure/data-tables');
 const { DefaultAzureCredential } = require('@azure/identity');
 
 const endpoint = '<account-endpoint>';
 
-const credential = new DefaultAzureCredential();
+let credential = new DefaultAzureCredential();
 
-const client = new TableServiceClient(endpoint, credential);
+let client = new TableServiceClient(endpoint, credential);
+
+let table = new TableClient(endpoint, "<table-name>", credential);
 ```
 
 > [!IMPORTANT]
@@ -612,14 +622,16 @@ const client = new TableServiceClient(endpoint, credential);
 ### [TypeScript](#tab/typescript)
 
 ```typescript
-import { TableServiceClient } from '@azure/data-tables';
+import { TableServiceClient, TableClient } from '@azure/data-tables';
 import { TokenCredential, DefaultAzureCredential } from '@azure/identity';
 
-let endpoint: string = '<account-endpoint>';
+const endpoint: string = '<account-endpoint>';
 
 let credential: TokenCredential = new DefaultAzureCredential();
 
-const client: TableServiceClient = new TableServiceClient(endpoint, credential);
+let client: TableServiceClient = new TableServiceClient(endpoint, credential);
+
+let table: TableClient = new TableClient(endpoint, "<table-name>", credential);
 ```
 
 > [!IMPORTANT]
@@ -628,7 +640,7 @@ const client: TableServiceClient = new TableServiceClient(endpoint, credential);
 ### [Python](#tab/python)
 
 ```python
-from azure.data.tables import TableServiceClient
+from azure.data.tables import TableServiceClient, TableClient
 from azure.identity import DefaultAzureCredential
 
 endpoint = "<account-endpoint>"
@@ -636,6 +648,8 @@ endpoint = "<account-endpoint>"
 credential = DefaultAzureCredential()
 
 client = TableServiceClient(endpoint, credential=credential)
+
+table = client.get_table_client("<table-name>")
 ```
 
 > [!IMPORTANT]
@@ -655,7 +669,8 @@ const endpoint = "<account-endpoint>"
 
 func main() {
     credential, _ := azidentity.NewDefaultAzureCredential(nil)
-    client, _ := aztables.NewClient(endpoint, credential, nil)
+    client, _ := aztables.NewServiceClient(endpoint, credential, nil)
+    table, _ := client.NewClient("<table-name>")
 }
 ```
 
@@ -665,6 +680,7 @@ func main() {
 ### [Java](#tab/java)
 
 ```java
+import com.azure.data.tables.TableClient;
 import com.azure.data.tables.TableServiceClient;
 import com.azure.data.tables.TableServiceClientBuilder;
 import com.azure.identity.DefaultAzureCredential;
@@ -675,13 +691,15 @@ public class Table{
         DefaultAzureCredential credential = new DefaultAzureCredentialBuilder()
             .build();
         
-        TableServiceClient tableServiceClient = new TableServiceClientBuilder()
+        TableServiceClient client = new TableServiceClientBuilder()
             .endpoint("<nosql-endpoint>")
             .credential(credential)
             .buildClient();
+
+        TableClient table = client
+            .getTableClient("<table-name>");
     }
 }
-
 ```
 
 > [!IMPORTANT]

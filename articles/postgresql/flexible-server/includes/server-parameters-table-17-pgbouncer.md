@@ -2,10 +2,11 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 09/26/2024
+ms.date: 12/05/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
+ms.custom: automatically generated
 ---
 ### pgbouncer.default_pool_size
 
@@ -17,7 +18,7 @@ ms.topic: include
 | Default value  | `50`          |
 | Allowed values | `1-4950`                        |
 | Parameter type | dynamic        |
-| Documentation  | [pgbouncer.default_pool_size](https://www.pgbouncer.org/config.html)                               |
+| Documentation  | [pgbouncer.default_pool_size](https://www.pgbouncer.org/config.html#default_pool_size)                 |
 
 
 [!INCLUDE [server-parameters-azure-notes-pgbouncer-default-pool-size](./server-parameters-azure-notes-pgbouncer-default-pool-size.md)]
@@ -34,7 +35,7 @@ ms.topic: include
 | Default value  | `false`       |
 | Allowed values | `true, false`                   |
 | Parameter type | dynamic        |
-| Documentation  | [pgbouncer.enabled](https://www.pgbouncer.org/config.html)                                         |
+| Documentation  | [pgbouncer.enabled](https://www.pgbouncer.org/config.html#enabled)                                     |
 
 
 [!INCLUDE [server-parameters-azure-notes-pgbouncer-enabled](./server-parameters-azure-notes-pgbouncer-enabled.md)]
@@ -51,7 +52,7 @@ ms.topic: include
 | Default value  |               |
 | Allowed values | `[A-Za-z0-9_\\.,]*`             |
 | Parameter type | dynamic        |
-| Documentation  | [pgbouncer.ignore_startup_parameters](https://www.pgbouncer.org/config.html)                       |
+| Documentation  | [pgbouncer.ignore_startup_parameters](https://www.pgbouncer.org/config.html#ignore_startup_parameters) |
 
 
 [!INCLUDE [server-parameters-azure-notes-pgbouncer-ignore-startup-parameters](./server-parameters-azure-notes-pgbouncer-ignore-startup-parameters.md)]
@@ -68,7 +69,7 @@ ms.topic: include
 | Default value  | `5000`        |
 | Allowed values | `1-50000`                       |
 | Parameter type | dynamic        |
-| Documentation  | [pgbouncer.max_client_conn](https://www.pgbouncer.org/config.html)                                 |
+| Documentation  | [pgbouncer.max_client_conn](https://www.pgbouncer.org/config.html#max_client_conn)                     |
 
 
 [!INCLUDE [server-parameters-azure-notes-pgbouncer-max-client-conn](./server-parameters-azure-notes-pgbouncer-max-client-conn.md)]
@@ -85,7 +86,7 @@ ms.topic: include
 | Default value  | `0`           |
 | Allowed values | `0-5000`                        |
 | Parameter type | dynamic        |
-| Documentation  | [pgbouncer.max_prepared_statements](https://www.pgbouncer.org/config.html#max_prepared_statements) |
+| Documentation  | [pgbouncer.max_prepared_statements](https://www.pgbouncer.org/config.html#max_prepared_statements)     |
 
 
 [!INCLUDE [server-parameters-azure-notes-pgbouncer-max-prepared-statements](./server-parameters-azure-notes-pgbouncer-max-prepared-statements.md)]
@@ -102,7 +103,7 @@ ms.topic: include
 | Default value  | `0`           |
 | Allowed values | `0-4950`                        |
 | Parameter type | dynamic        |
-| Documentation  | [pgbouncer.min_pool_size](https://www.pgbouncer.org/config.html)                                   |
+| Documentation  | [pgbouncer.min_pool_size](https://www.pgbouncer.org/config.html#min_pool_size)                         |
 
 
 [!INCLUDE [server-parameters-azure-notes-pgbouncer-min-pool-size](./server-parameters-azure-notes-pgbouncer-min-pool-size.md)]
@@ -119,7 +120,7 @@ ms.topic: include
 | Default value  | `transaction` |
 | Allowed values | `session,transaction,statement` |
 | Parameter type | dynamic        |
-| Documentation  | [pgbouncer.pool_mode](https://www.pgbouncer.org/config.html)                                       |
+| Documentation  | [pgbouncer.pool_mode](https://www.pgbouncer.org/config.html#pool_mode)                                 |
 
 
 [!INCLUDE [server-parameters-azure-notes-pgbouncer-pool-mode](./server-parameters-azure-notes-pgbouncer-pool-mode.md)]
@@ -136,7 +137,7 @@ ms.topic: include
 | Default value  | `120`         |
 | Allowed values | `0-86400`                       |
 | Parameter type | dynamic        |
-| Documentation  | [pgbouncer.query_wait_timeout](https://www.pgbouncer.org/config.html)                              |
+| Documentation  | [pgbouncer.query_wait_timeout](https://www.pgbouncer.org/config.html#query_wait_timeout)               |
 
 
 [!INCLUDE [server-parameters-azure-notes-pgbouncer-query-wait-timeout](./server-parameters-azure-notes-pgbouncer-query-wait-timeout.md)]
@@ -153,7 +154,7 @@ ms.topic: include
 | Default value  | `600`         |
 | Allowed values | `0-86400`                       |
 | Parameter type | dynamic        |
-| Documentation  | [pgbouncer.server_idle_timeout](https://www.pgbouncer.org/config.html)                             |
+| Documentation  | [pgbouncer.server_idle_timeout](https://www.pgbouncer.org/config.html#server_idle_timeout)             |
 
 
 [!INCLUDE [server-parameters-azure-notes-pgbouncer-server-idle-timeout](./server-parameters-azure-notes-pgbouncer-server-idle-timeout.md)]
@@ -170,7 +171,7 @@ ms.topic: include
 | Default value  |               |
 | Allowed values | `[A-Za-z0-9,@_\\-\\.]*`         |
 | Parameter type | dynamic        |
-| Documentation  | [pgbouncer.stats_users](https://www.pgbouncer.org/config.html)                                     |
+| Documentation  | [pgbouncer.stats_users](https://www.pgbouncer.org/config.html#stats_users)                             |
 
 
 [!INCLUDE [server-parameters-azure-notes-pgbouncer-stats-users](./server-parameters-azure-notes-pgbouncer-stats-users.md)]
