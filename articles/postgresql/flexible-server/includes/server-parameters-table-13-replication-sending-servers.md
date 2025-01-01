@@ -2,10 +2,11 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 09/26/2024
+ms.date: 12/05/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
+ms.custom: automatically generated
 ---
 ### max_replication_slots
 
@@ -54,7 +55,7 @@ ms.topic: include
 | Documentation  | [max_wal_senders](https://www.postgresql.org/docs/13/runtime-config-replication.html#GUC-MAX-WAL-SENDERS)               |
 
 
-[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+[!INCLUDE [server-parameters-azure-notes-max-wal-senders](./server-parameters-azure-notes-max-wal-senders.md)]
 
 
 

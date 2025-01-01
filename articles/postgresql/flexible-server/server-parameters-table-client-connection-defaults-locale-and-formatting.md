@@ -4,13 +4,21 @@ description: Client Connection Defaults / Locale and Formatting server parameter
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 09/26/2024
+ms.date: 12/05/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
+ms.custom: automatically generated
 zone_pivot_groups: postgresql-server-version
 ---
 # Client Connection Defaults / Locale and Formatting
+
+
+::: zone pivot="postgresql-17"
+
+[!INCLUDE [server-parameters-table-17-client-connection-defaults-locale-and-formatting](./includes/server-parameters-table-17-client-connection-defaults-locale-and-formatting.md)]
+
+::: zone-end
 
 
 ::: zone pivot="postgresql-16"

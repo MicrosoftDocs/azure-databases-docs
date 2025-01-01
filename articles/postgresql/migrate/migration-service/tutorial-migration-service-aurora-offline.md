@@ -99,15 +99,10 @@ For more information, see [Migration runtime server](concepts-migration-service-
 On the **Connect to source** tab, enter or select the following information for the database source:
 
 - **Server name**: Enter the host name or the IP address of the source PostgreSQL instance.
-
 - **Port**: Enter the port number of the source server.
-
 - **Server admin login name**: Enter the username of the source PostgreSQL server.
-
 - **Password**: Enter the password of the source PostgreSQL server.
-
 - **SSL mode**: Supported values are **Prefer** and **Require**. When Secure Sockets Layer (SSL) at the source PostgreSQL server is off, select **Prefer**. If SSL at the source server is on, select **Require**. SSL values are set in the *postgresql.conf* file.
-
 - **Test Connection**: Initiates a connectivity test between the target and the source. When the connection is successful, go to the next step to identify networking issues between the target and source and to verify the username and password for the source. Establishing a test connection takes a few minutes.
 
 After a successful test connection, select **Next: Select migration target**.
@@ -119,9 +114,8 @@ After a successful test connection, select **Next: Select migration target**.
 On the **Select migration target** tab, enter or select the following information for the flexible server target, in addition to subscription, resource group, and server name:
 
 - **Admin username**: The admin username of the target PostgreSQL server.
-
 - **Password**: The password of the target PostgreSQL server.
-
+- **Custom FQDN/IP (Optional)**: The custom FQDN/IP field is optional and can be used when the target is behind a custom DNS server or has custom DNS namespaces, making it accessible only via specific FQDNs or IP addresses. For example, this could include entries like `flexibleserver.example.com`, `198.1.0.2`, or a PostgreSQL FQDN such as `flexibleserver.postgres.database.azure.com`, if the custom DNS server contains the DNS zone `postgres.database.azure.com` or forwards queries for this zone to `168.63.129.16`, where the FQDN is resolved in the Azure public or private DNS zone.
 - **Test Connection**: Initiates a connectivity test between the target and the source. When the connection is successful, go to the next step to identify networking issues between the target and source and to verify the username and password for the target server. Establishing a test connection takes a few minutes.
 
 After a successful test connection, select **Next: Select database(s) for migration**.

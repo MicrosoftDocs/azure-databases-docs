@@ -300,5 +300,4 @@ Versions 3.6 and higher support RBAC.
 
 ## Next steps
 
-- Get an overview of [secure access to data in Azure Cosmos DB](../secure-access-to-data.md).
 - Learn more about [RBAC for Azure Cosmos DB management](security/index.md).

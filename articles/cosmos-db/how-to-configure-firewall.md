@@ -5,7 +5,7 @@ author: iriaosara
 ms.author: iriaosara
 ms.service: azure-cosmos-db
 ms.topic: how-to
-ms.date: 09/26/2024
+ms.date: 10/24/2024
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
 ---
 
@@ -31,9 +31,9 @@ You can secure the data stored in your Azure Cosmos DB account by using IP firew
 
 ## Configure an IP firewall by using the Azure portal
 
-To set the IP access control policy in the Azure portal, go to the Azure Cosmos DB account page and select **Firewall and virtual networks** on the navigation menu. Change the **Allow access from** value to **Selected networks**, and then select **Save**. If you change the public access network settings, either by disabling it or allowing it for all networks, you lose the firewall IP that you might have set up before.
+To set the IP access control policy in the Azure portal, go to the Azure Cosmos DB account page and select **Networking** on the navigation menu. Change the **Allow access from** value to **Selected networks**, and then select **Save**. If you are not adding any IP addresses yet, you will also have to **check the box to acknowledge that all VNets and IPs will be blocked**. If you change the public access network settings, either by disabling it or allowing it for all networks, you lose the firewall IP that you might have set up before.
 
-:::image type="content" source="./media/how-to-configure-firewall/azure-portal-firewall.png" alt-text="Screenshot showing how to open the Firewall page in the Azure portal" border="true":::
+![Screenshot of the Azure Cosmos DB networking firewall settings in the Azure portal.](media/how-to-configure-firewall/networking-firewall.png)
 
 When IP access control is turned on, the Azure portal provides the ability to specify IP addresses, IP address ranges, and switches. Switches enable access to other Azure services and the Azure portal. The following sections give details about these switches.
 
@@ -42,34 +42,37 @@ When IP access control is turned on, the Azure portal provides the ability to sp
 
 ### Allow requests from the Azure portal
 
-When you enable an IP access control policy programmatically, you need to add the IP address for the Azure portal to the **ipRangeFilter** property to maintain access. 
+When you enable an IP access control policy programmatically, you may need to add the IP addresses for the Azure portal services to the **ipRangeFilter** property to keep using some portal functionality. 
 
 Portal scenarios that require this option to be enabled include:
 
-- Accessing API for MongoDB or API for Apache Cassandra accounts with Data Explorer or <cosmos.azure.com>
-- Using the following Azure Cosmos DB blades within the Azure portal:
-  - Replicate Data Globally
+- Specifically for the API for the MongoDB or API for Apache Cassandra, accessing accounts with Data Explorer or <cosmos.azure.com>
+- For all APIs, using the following Azure Cosmos DB blades within the Azure portal:
   - Browse Collections
   - Power BI
   - Azure Synapse
 
-The portal IP addresses are:
+You can enable requests to access the Azure portal by selecting the **Add Azure Portal Middleware IPs** option, as shown in the following screenshot:
 
-|Region|IP address|
-|------|----------|
-|China|139.217.8.252|
-|US Gov|52.244.48.71|
-|All other regions|104.42.195.92|
+![Screenshot of the options to add middleware IP addresses to networking in the Azure portal.](media/how-to-configure-firewall/networking-add-middleware1.png)
 
-You can enable requests to access the Azure portal by selecting the **Allow access from Azure portal** option, as shown in the following screenshot:
 
-:::image type="content" source="./media/how-to-configure-firewall/enable-azure-portal.png" alt-text="Screenshot showing how to enable Azure portal access" border="true":::
 
-#### New Azure portal IP Addresses
+The Azure Portal Middleware IP addresses will be added to a separate list, as shown in the following screenshot. Click on **Save** to add these addresses to your database account. More details on the Middleware IP addresses can be found further below in this article.
 
-Cosmos DB portal services are transitioning to new infrastructure in 2024. As part of this transition, accounts with firewall enabled will require new IP addresses to be allowed to continue access to some portal functionality, such as Data Explorer. This move also introduces dedicated IP addresses for Mongo DB and Apache Cassandra API accounts.
+![Screenshot of the list of middleware IP addresses for networking in the Azure portal.](media/how-to-configure-firewall/networking-middleware-list.png)
 
-During this transition, the **Allow access from Azure portal** option adds both current and new IP addresses to account firewall settings (including MongoDB and Cassandra specific addresses for those accounts) When the transition is complete, a portal option is made available to remove the old IP addresses.
+The Azure Portal Middleware IP addresses can be removed by clicking on the **Remove Azure Portal Middleware IPs** option and then selecting **Save**.
+
+#### Azure Portal Middleware IP Addresses
+
+The Azure Portal Middleware IP addresses are listed below. Some IP addresses are only required for specific Database Account APIs. When you add the Middleware IP Addresses in the portal, as described above, only the IP addresses required for your account will be added.  
+  
+For example:
+
+- For an API for NoSQL account, the IP addresses from the **All** category will be added. 
+
+- For an API for MongoDB account, the IP addresses from the **All** and **MongoDB only** categories will be added.
 
 ##### Azure Public
 
@@ -95,6 +98,20 @@ During this transition, the **Allow access from Azure portal** option adds both 
 |MongoDB only|52.244.176.112, 52.247.148.42|
 |Apache Cassandra only|52.244.50.101, 52.227.165.24|
 
+#### Legacy Middleware IP Addresses
+
+The Cosmos DB portal services recently transitioned to new infrastructure that required new Middleware IP addresses. With the completion of that transition, the legacy IP addresses used by the old infrastructure can now be safely removed. If your account has legacy Middleware IP addresses present in the firewall rules, the **Remove Azure Portal Legacy Middleware IPs** option will be displayed. Select that option and then Save to remove the legacy IP addresses.
+
+![Screenshot of the option to remove legacy middleware IPs for networking in the Azure portal.](media/how-to-configure-firewall/networking-remove-legacy.png)
+
+The legacy IP addresses are dependent on cloud environment:
+
+|Azure Environment| IP Addresses|
+| -------- | -------- |
+|Azure Public|104.42.195.92, 40.76.54.131, 52.176.6.30, 52.169.50.45, 52.187.184.26|
+|Azure China|139.217.8.252, 52.176.6.30, 52.169.50.45, 52.187.184.26|
+|Azure US Government|52.244.48.71, 52.176.6.30, 52.169.50.45, 52.187.184.26|
+
 > [!NOTE]
 > If you are experiencing challenges connecting to your Azure Cosmos DB account from the Data Explorer, review the [Data Explorer troubleshooting guide](/troubleshoot/azure/cosmos-db/data-explorer).
 
@@ -102,7 +119,7 @@ During this transition, the **Allow access from Azure portal** option adds both 
 
 If you access your Azure Cosmos DB account from services that don’t provide a static IP (for example, Azure Stream Analytics and Azure Functions), you can still use the IP firewall to limit access. You can enable access from other sources within the Azure by selecting the **Accept connections from within Azure datacenters** option, as shown in the following screenshot:
 
-:::image type="content" source="./media/how-to-configure-firewall/enable-azure-services.png" alt-text="Screenshot showing how to accept connections from Azure datacenters" border="true":::
+![Screenshot of the option to accept connections from within public Azure datacenters in the Azure portal.](media/how-to-configure-firewall/networking-add-azure-datacenters.png)
 
 When you enable this option, the IP address `0.0.0.0` is added to the list of allowed IP addresses. The `0.0.0.0` IP address restricts requests to your Azure Cosmos DB account from Azure datacenter IP range. This setting doesn't allow access for any other IP ranges to your Azure Cosmos DB account.
 
@@ -118,9 +135,9 @@ To simplify development, the Azure portal helps you identify and add the IP of y
 
 The portal automatically detects the client IP address. It might be the client IP address of your machine, or the IP address of your network gateway. Make sure to remove this IP address before you take your workloads to production.
 
-To add your current IP to the list of IPs, select **Add my current IP**. Then select **Save**.
+To add your current IP to the list of IPs, select **Add your current IP**. Then select **Save**.
 
-:::image type="content" source="./media/how-to-configure-firewall/enable-current-ip.png" alt-text="Screenshot showing a how to configure firewall settings for the current IP" border="true":::
+![Screenshot of the option to add your current IP address to networking in the Azure portal.](media/how-to-configure-firewall/networking-add-current-ip.png)
 
 ### Requests from cloud services
 

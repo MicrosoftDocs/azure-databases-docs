@@ -47,6 +47,3 @@ On multi-region write accounts, Azure portal supports generation of region-speci
 
 We recommend applications deployed to different regions to use the region-specific connection string with the correct preferred region for low-latency writes.
 
-## Next steps
-
-- Get an overview of [secure access to data in Azure Cosmos DB](../secure-access-to-data.md).

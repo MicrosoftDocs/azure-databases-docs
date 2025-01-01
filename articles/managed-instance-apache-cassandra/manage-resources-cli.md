@@ -177,7 +177,7 @@ Currently, Azure Managed Instance for Apache Cassandra doesn't support transitio
 In the preceding command, `--availability-zone` is set to `false`. To enable availability zones, set this value to `true`. Availability zones increase the service-level agreement (SLA) for availability of the service. For more information, review the [full SLA details](https://azure.microsoft.com/support/legal/sla/managed-instance-apache-cassandra/v1_0/).
 
 > [!WARNING]
-> Azure Managed Instance for Apache Cassandra doesn't support availability zones in all regions. If you select a region where availability zones aren't supported, deployments will fail. See the [list of supported regions](/azure/availability-zones/az-overview#azure-regions-with-availability-zones).
+> Azure Managed Instance for Apache Cassandra doesn't support availability zones in all regions. If you select a region where availability zones aren't supported, deployments will fail. See the [list of supported regions](/azure/reliability/availability-zones-region-support).
 >
 > The successful deployment of availability zones is also subject to the availability of compute resources in all of the zones in a region. Deployments might fail if the VM or the capacity that you selected isn't available across all zones.
 

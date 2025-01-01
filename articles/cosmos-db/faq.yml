@@ -48,6 +48,10 @@ sections:
         answer: |
           Azure Cosmos DB is Microsoft's globally distributed, multi-model database service. Multi-model refers to Azure Cosmos DB's support for multiple APIs and data models. In this paradigm, different APIs use different data formats for storage and wire protocol. For example; NoSQL uses JSON, MongoDB uses binary-encoded JSON (BSON), Table uses Entity Data Model (EDM), Cassandra uses Cassandra Query Language (CQL), Gremlin uses JSON format. As a result, we recommend using the same API for all access to the data in a given account.
       - question: |
+          Can I integrate Azure Cosmos DB directly with other services?
+        answer: |
+          Yes. Azure Cosmos DB APIs allow direct integration. For example, the Azure Cosmos DB REST APIs can be integrated with Azure API Management for CRUD operations, eliminating the need for intermediate services like Azure Functions.        
+      - question: |
           Is Azure Cosmos DB HIPAA compliant?
         answer: |
           Yes, Azure Cosmos DB is HIPAA-compliant. HIPAA establishes requirements for the use, disclosure, and safeguarding of individually identifiable health information. For more information, see the [Microsoft Trust Center](/compliance/regulatory/offering-hipaa-hitech).

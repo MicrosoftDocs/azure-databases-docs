@@ -1,5 +1,5 @@
 ---
-title: Index and query vector data in JavaScript
+title: Indexing and querying vector data in JavaScript
 titleSuffix: Azure Cosmos DB for NoSQL
 description: Add vector data Azure Cosmos DB for NoSQL and then query the data efficiently in your JavaScript application
 author: jcodella
@@ -7,26 +7,23 @@ ms.author: jacodel
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: how-to
-ms.date: 08/08/2024
-ms.custom: query-reference, build-2024, devx-track-js
+ms.date: 12/03/2024
+ms.custom: query-reference, build-2024, devx-track-js, ignite-2024
+ms.collection:
+  - ce-skilling-ai-copilot
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Index and query vectors in Azure Cosmos DB for NoSQL in JavaScript
 
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+Before you use Vector Indexing and Search, you must first enable the feature. This article covers the following steps:
 
-The Azure Cosmos DB for NoSQL vector search feature is in preview. Before you use this feature, you must first register for the preview. This article covers the following steps:
-
-1. Registering for the preview of Vector Search in Azure Cosmos DB for NoSQL
-
+1. Enabling the Vector Search in Azure Cosmos DB for NoSQL feature
 1. Setting up the Azure Cosmos DB container for vector search
-
 1. Authoring vector embedding policy
-
 1. Adding vector indexes to the container indexing policy
-
 1. Creating a container with vector indexes and vector embedding policy
-
 1. Performing a vector search on the stored data
 
 This guide walks through the process of creating vector data, indexing the data, and then querying the data in a container.
@@ -38,22 +35,28 @@ This guide walks through the process of creating vector data, indexing the data,
   - If you have an existing Azure subscription, [create a new Azure Cosmos DB for NoSQL account](how-to-create-account.md).
 - Latest version of the Azure Cosmos DB [JavaScript](sdk-nodejs.md) SDK (Version 4.1.0 or later)
 
-## Register for the preview
+## Enable the feature
 
-Vector search for Azure Cosmos DB for NoSQL requires preview feature registration. Follow the below steps to register:
+Vector search for Azure Cosmos DB for NoSQL requires enabling the feature by completing the following steps:
 
 1. Navigate to your Azure Cosmos DB for NoSQL resource page.
-
 1. Select the "Features" pane under the "Settings" menu item.
-
 1. Select for "Vector Search in Azure Cosmos DB for NoSQL."
+1. Read the description of the feature to confirm you want to enable it.
+1. Select "Enable" to turn on vector search in Azure Cosmos DB for NoSQL.
 
-1. Read the description of the feature to confirm you want to enroll in the preview.
+    > [!TIP]
+    > Alternatively, use the Azure CLI to update the capabilities of your account to support NoSQL vector search.
+    >
+    > ```azurecli
+    > az cosmosdb update \
+    >      --resource-group <resource-group-name> \
+    >      --name <account-name> \
+    >      --capabilities EnableNoSQLVectorSearch
+    > ```
 
-1. Select "Enable" to enroll in the preview.
-
-    > [!NOTE]
-    > The registration request will be autoapproved, however it may take several minutes to take effect.
+> [!NOTE]
+> The registration request will be autoapproved; however, it may take 15 minutes to take effect.
 
 ## Understand the steps involved in vector search
 
@@ -62,8 +65,8 @@ The following steps assume that you know how to [setup a Cosmos DB NoSQL account
 Let’s take an example of creating a database for an internet-based bookstore and you're storing Title, Author, ISBN, and Description for each book. We also define two properties to contain vector embeddings. The first is the "contentVector" property, which contains [text embeddings](/azure/ai-services/openai/concepts/models#embeddings ) generated from the text content of the book (for example, concatenating the "title" "author" "isbn" and "description" properties before creating the embedding). The second is "coverImageVector," which is generated from [images of the book’s cover](/azure/ai-services/computer-vision/concept-image-retrieval).
 
 1. Create and store vector embeddings for the fields on which you want to perform vector search.
-2. Specify the vector embedding paths in the vector embedding policy.
-3. Include any desired vector indexes in the indexing policy for the container.
+1. Specify the vector embedding paths in the vector embedding policy.
+1. Include any desired vector indexes in the indexing policy for the container.
 
 For subsequent sections of this article, we consider this structure for the items stored in our container:
 
@@ -98,15 +101,15 @@ const vectorEmbeddingPolicy: VectorEmbeddingPolicy = {
       vectorEmbeddings: [
         {
           path: "/coverImageVector",
-          dataType: "float32",
+          dataType: VectorEmbeddingDataType.Float32,
           dimensions: 8,
-          distanceFunction: "dotproduct",
+          distanceFunction: VectorEmbeddingDistanceFunction.DotProduct,
         },
         {
-          path: "contentVector",
-          dataType: "float32",
+          path: "/contentVector",
+          dataType: VectorEmbeddingDataType.Float32,
           dimensions: 10,
-          distanceFunction: "cosine",
+          distanceFunction: VectorEmbeddingDistanceFunction.Cosine,
         },
       ],
     };
@@ -119,10 +122,10 @@ Once the vector embedding paths are decided, vector indexes need to be added to 
 ```javascript
 const indexingPolicy: IndexingPolicy = {
   vectorIndexes: [
-    { path: "/coverImageVector", type: "quantizedFlat" },
-    { path: "/contentVector", type: "diskANN" },
+    { path: "/coverImageVector", type: VectorIndexType.QuantizedFlat },
+    { path: "/contentVector", type: VectorIndexType.DiskANN },
   ],
-    inlcludedPaths: [
+    includedPaths: [
       {
         path: "/*",
       },
@@ -149,9 +152,6 @@ const containerName = "vector embedding container";
       indexingPolicy: indexingPolicy,
     });
 ```
-
-> [!IMPORTANT]
-> Currently vector search in Azure Cosmos DB for NoSQL is supported on new containers only. You need to set both the container vector policy and any vector indexing policy during the time of container creation as it can’t be modified later. Both policies will be modifiable in a future improvement to the preview feature.
 
 ## Run a vector similarity search query
 

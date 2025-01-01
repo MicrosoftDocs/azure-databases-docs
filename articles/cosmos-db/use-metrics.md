@@ -20,6 +20,9 @@ This article walks through common use cases and how Azure Cosmos DB insights can
 
 The following sections explain common scenarios where you can use Azure Cosmos DB metrics.
 
+>[!NOTE]
+> When filtering by database or collections in metrics, it is possible that you may see "__Empty" or "\<Empty>\" as the resourceName. This is because metric data is being collected at an account-level for that particular request. Therefore, there is no associated database or collection as the metric value.
+
 ## Understand how many requests are succeeding or causing errors
 
 To get started, head to the [Azure portal](https://portal.azure.com) and navigate to the **Insights** pane. From this pane, open the **Requests** tab. The Requests tab shows a chart with the total requests segmented by the status code and operation type. For more information about HTTP status codes, see [HTTP status codes for Azure Cosmos DB](/rest/api/cosmos-db/http-status-codes-for-cosmosdb).
@@ -34,7 +37,7 @@ Having a good cardinality of your partition keys is essential for any scalable a
 
 :::image type="content" source="media/use-metrics/throughput-consumption-partition-key-range.png" alt-text="Screenshot of the Throughput tab, showing the RU/s consumption." lightbox="media/use-metrics/throughput-consumption-partition-key-range.png":::
 
-With the help of this chart, you can identify if there's a hot partition. An uneven throughput distribution might cause *hot* partitions, which can result in throttled requests and might require repartitioning. After identifying which partition key is causing the skew in distribution, you might have to repartition your container with a more distributed partition key. For more information about partitioning in Azure Cosmos DB, see [Partitioning and horizontal scaling in Azure Cosmos DB](./partitioning-overview.md).
+With the help of this chart, you can identify if there's a hot partition. The PartitionKeyRangeIDs corresponds to physical partitions. The [Normalized RU Consumption metric](./monitor-normalized-request-units.md#metric-definition) is a value between 0% and 100% that helps measure the utilization of provisioned throughput on a database or container. An uneven throughput distribution might cause *hot* partitions, which can result in throttled requests and might require repartitioning. After identifying which partition key is causing the skew in distribution, you might have to repartition your container with a more distributed partition key. For more information about partitioning in Azure Cosmos DB, see [Partitioning and horizontal scaling in Azure Cosmos DB](./partitioning-overview.md).
 
 ## Determine the data and index usage
 

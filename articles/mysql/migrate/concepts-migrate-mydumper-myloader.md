@@ -1,18 +1,15 @@
 ---
-title: Migrate large databases to Azure Database for MySQL using mydumper/myloader
+title: Migrate Large Databases to Azure Database for MySQL Using Mydumper/myloader
 description: This article explains two common ways to back up and restore databases in your Azure Database for MySQL, using tool mydumper/myloader
 author: SudheeshGH
 ms.author: sunaray
 ms.reviewer: maghan
-ms.date: 05/21/2024
+ms.date: 11/27/2024
 ms.service: azure-database-mysql
-ms.subservice: single-server
 ms.topic: conceptual
 ---
 
 # Migrate large databases to Azure Database for MySQL using mydumper/myloader
-
-[!INCLUDE [applies-to-mysql-single-flexible-server](../includes/applies-to-mysql-single-flexible-server.md)]
 
 Azure Database for MySQL is a managed service that you use to run, manage, and scale highly available MySQL databases in the cloud. To migrate MySQL databases larger than 1 TB to Azure Database for MySQL, consider using community tools such as [mydumper/myloader](https://centminmod.com/mydumper.html), which provide the following benefits:
 
@@ -83,14 +80,14 @@ To install mydumper/myloader, do the following steps.
 
 This command uses the following variables:
 
-- **--host:** The host to connect to
-- **--user:** Username with the necessary privileges
-- **--password:** User password
-- **--rows:** Try to split tables into chunks of this many rows
-- **--outputdir:** Directory to dump output files to
-- **--regex:** Regular expression for Database matching.
-- **--trx-consistency-only:** Transactional consistency only
-- **--threads:** Number of threads to use, default 4. Recommended a use a value equal to 2x of the vCore of the computer.
+- **-host:** The host to connect to
+- **-user:** Username with the necessary privileges
+- **-password:** User password
+- **-rows:** Try to split tables into chunks of this many rows
+- **-outputdir:** Directory to dump output files to
+- **-regex:** Regular expression for Database matching.
+- **-trx-consistency-only:** Transactional consistency only
+- **-threads:** Number of threads to use, default 4. Recommended a use a value equal to 2x of the vCore of the computer.
 
     > [!NOTE]  
     > For more information on other options, you can use with mydumper, run the following command:
@@ -107,12 +104,12 @@ This command uses the following variables:
 
 This command uses the following variables:
 
-- **--host:** The host to connect to
-- **--user:** Username with the necessary privileges
-- **--password:** User password
-- **--directory:** Location where the backup is stored.
-- **--queries-per-transaction:** Recommend setting to value not more than 500
-- **--threads:** Number of threads to use, default 4. Recommended a use a value equal to 2x of the vCore of the computer
+- **-host:** The host to connect to
+- **-user:** Username with the necessary privileges
+- **-password:** User password
+- **-directory:** Location where the backup is stored.
+- **-queries-per-transaction:** Recommend setting to value not more than 500
+- **-threads:** Number of threads to use, default 4. Recommended a use a value equal to 2x of the vCore of the computer
 
 > [!TIP]  
 > For more information on other options you can use with myloader, run the following command:
@@ -126,8 +123,6 @@ After the database is restored, it's always recommended to validate the data con
 ## Related content
 
 - [mydumper/myloader project in GitHub](https://github.com/maxbube/mydumper)
-- [how to migrate large MySQL databases](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/best-practices-for-migrating-large-databases-to-azure-database/ba-p/1362699)
-- [Minimal Downtime Migration of Azure Database for MySQL – Single Server to Azure Database for MySQL – Flexible Server](how-to-migrate-single-flexible-minimum-downtime.md)
-- [Replicate data into Azure Database for MySQL Flexible Server](../flexible-server/concepts-data-in-replication.md)
-- [Configure Azure Database for MySQL Flexible Server Data-in replication](../flexible-server/how-to-data-in-replication.md)
-- [migration errors](../single-server/how-to-troubleshoot-common-errors.md)
+- [how to migrate large MySQL databases](https://techcommunity.microsoft.com/blog/adformysql/best-practices-for-migrating-large-databases-to-azure-database-for-mysql/1362699)
+- [Replicate data into Azure Database for MySQL - Flexible Server](../flexible-server/concepts-data-in-replication.md)
+- [How to configure Azure Database for MySQL - Flexible Server data-in replication](../flexible-server/how-to-data-in-replication.md)

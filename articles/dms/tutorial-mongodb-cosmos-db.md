@@ -19,7 +19,7 @@ ms.custom:
 [!INCLUDE [appliesto-mongodb-api](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb.md)]
 
 > [!IMPORTANT]  
-> Please read this entire guide before carrying out your migration steps. Azure Database Migration Service doesn't currently support migrations to an Azure Cosmos DB for MongoDB vCore account. Use the [Azure Cosmos DB for MongoDB extension in Azure Data Studio](/azure-data-studio/extensions/database-migration-for-mongo-extension) to migrate your MongoDB workfloads offline to Azure Cosmos DB for MongoDB vCore.
+> Migrations to Azure Cosmos DB for MongoDB vCore can be performed using the [MongoDB migration extension for Azure Data Studio](../cosmos-db/mongodb/vcore/migration-options.md#azure-data-studio-online). This extension leverages the Azure Database Migration Service in the background. Note that migrations to Azure Cosmos DB for MongoDB vCore cannot be done using the Database Migration Service on the Azure portal.
 
 This MongoDB migration guide is part of series on MongoDB migration. The critical MongoDB migration steps are [pre-migration](../cosmos-db/mongodb-pre-migration.md), migration, and [post-migration](../cosmos-db/mongodb-post-migration.md), as shown below.
 

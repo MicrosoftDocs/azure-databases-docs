@@ -20,7 +20,7 @@ This article describes how you can create a Microsoft Entra ID enabled database 
 
 > [!NOTE]  
 > This guide assumes you already enabled Microsoft Entra authentication on your Azure Database for PostgreSQL flexible server instance.
-> See [How to Configure Microsoft Entra authentication](./how-to-configure-sign-in-azure-ad-authentication.md)
+> See [How to Configure Microsoft Entra authentication](how-to-configure-sign-in-azure-ad-authentication.md)
 
 If you like to learn about how to create and manage Azure subscription users and their privileges, you can visit the [Azure role-based access control (Azure RBAC) article](/azure/role-based-access-control/built-in-roles) or review [how to customize roles](/azure/role-based-access-control/custom-roles).
 

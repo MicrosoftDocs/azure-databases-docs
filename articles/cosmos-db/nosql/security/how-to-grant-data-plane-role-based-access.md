@@ -8,7 +8,7 @@ ms.reviewer: iriaosara
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: how-to
-ms.date: 10/01/2024
+ms.date: 10/09/2024
 zone_pivot_groups: azure-interface-cli-powershell-bicep
 #Customer Intent: As a security user, I want to grant an identity data-plane access to Azure Cosmos DB for NoSQL, so that my developer team can use the SDK of their choice with minimal code change.
 ---
@@ -21,10 +21,13 @@ zone_pivot_groups: azure-interface-cli-powershell-bicep
 Diagram of the sequence of the deployment guide including these locations, in order: Overview, Concepts, Prepare, Role-based access control, Network, and Reference. The 'Role-based access control' location is currently highlighted.
 :::image-end:::
 
+> [!Tip] 
+> Visit our new **[Samples Gallery](https://aka.ms/AzureCosmosDB/Gallery)** for the latest samples for building new apps
+
 This article walks through the steps to grant an identity access to manage data in an Azure Cosmos DB for NoSQL account.
 
 > [!IMPORTANT]
-> The steps in this article only cover data plane access to perform operations on individual items and run queries. To learn how to manage roles, definitions, and assignments for the control plane, see [grant control plane role-based access](how-to-grant-control-plane-role-based-access.md).
+> The steps in this article only cover data plane access to perform operations on individual items and run queries. To learn how to manage databases and containers for the control plane, see [grant control plane role-based access](how-to-grant-control-plane-role-based-access.md).
 
 ## Prerequisites
 
@@ -49,6 +52,13 @@ This article walks through the steps to grant an identity access to manage data 
 First, you must prepare a role definition with a list of `dataActions` to grant access to read, query, and manage data in Azure Cosmos DB for NoSQL.
 
 ### [Built-in definition](#tab/built-in-definition)
+
+> [!IMPORTANT]
+> Obtaining an existing data plane role definition requires these control plane permissions:
+>
+> - `Microsoft.DocumentDB/databaseAccounts/sqlRoleDefinitions/read`
+>
+> For more information, see [grant control plane role-based access](how-to-grant-control-plane-role-based-access.md).
 
 ::: zone pivot="azure-interface-cli,azure-interface-bicep"
 
@@ -120,6 +130,14 @@ Permissions.NotDataActions :
 ::: zone-end
 
 ### [Custom definition](#tab/custom-definition)
+
+> [!IMPORTANT]
+> Creating a new data plane role definition requires these control plane permissions:
+>
+> - `Microsoft.DocumentDB/databaseAccounts/sqlRoleDefinitions/read`
+> - `Microsoft.DocumentDB/databaseAccounts/sqlRoleDefinitions/write`
+>
+> For more information, see [grant control plane role-based access](how-to-grant-control-plane-role-based-access.md).
 
 > [!WARNING]
 > Azure Cosmos DB for NoSQL's native role-based access control doesn't support the `notDataActions` property. Any action that is not specified as an allowed `dataAction` is excluded automatically.
@@ -327,6 +345,15 @@ Permissions.NotDataActions :
 
 Now, assign the newly defined role to an identity so that your applications can access data in Azure Cosmos DB for NoSQL.
 
+> [!IMPORTANT]
+> Creating a new data plane role assignment requires these control plane permissions:
+>
+> - `Microsoft.DocumentDB/databaseAccounts/sqlRoleDefinitions/read`
+> - `Microsoft.DocumentDB/databaseAccounts/sqlRoleAssignments/read`
+> - `Microsoft.DocumentDB/databaseAccounts/sqlRoleAssignments/write`
+>
+> For more information, see [grant control plane role-based access](how-to-grant-control-plane-role-based-access.md).
+
 ::: zone pivot="azure-interface-cli"
 
 1. Use [`az cosmosdb show`](/cli/azure/cosmosdb#az-cosmosdb-show) to get the unique identifier for your current account.
@@ -334,7 +361,7 @@ Now, assign the newly defined role to an identity so that your applications can 
     ```azurecli-interactive
     az cosmosdb show \
         --resource-group "<name-of-existing-resource-group>" \
-        --name "<name-of-existing-resource-group>" \
+        --name "<name-of-existing-nosql-account>" \
         --query "{id:id}"
     ```
 
@@ -587,7 +614,7 @@ public class NoSQL{
         
         CosmosClient client = new CosmosClientBuilder()
             .endpoint("<account-endpoint>")
-            .credential(credential);
+            .credential(credential)
             .buildClient();
     }
 }

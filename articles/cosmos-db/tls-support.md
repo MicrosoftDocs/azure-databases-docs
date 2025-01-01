@@ -38,7 +38,3 @@ These issues are some of the known issues with TLS 1.3 enablement, potential eff
 
 > [!NOTE]
 > Enabling client to use TLS 1.3 requires Java runtime to support TLS 1.3
-## Next steps
-
-For more information about security in Azure Cosmos DB, see [Overview of database security in Azure Cosmos DB
-](./database-security.md).
