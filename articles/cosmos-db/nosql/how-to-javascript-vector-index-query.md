@@ -101,15 +101,15 @@ const vectorEmbeddingPolicy: VectorEmbeddingPolicy = {
       vectorEmbeddings: [
         {
           path: "/coverImageVector",
-          dataType: "float32",
+          dataType: VectorEmbeddingDataType.Float32,
           dimensions: 8,
-          distanceFunction: "dotproduct",
+          distanceFunction: VectorEmbeddingDistanceFunction.DotProduct,
         },
         {
-          path: "contentVector",
-          dataType: "float32",
+          path: "/contentVector",
+          dataType: VectorEmbeddingDataType.Float32,
           dimensions: 10,
-          distanceFunction: "cosine",
+          distanceFunction: VectorEmbeddingDistanceFunction.Cosine,
         },
       ],
     };
@@ -122,10 +122,10 @@ Once the vector embedding paths are decided, vector indexes need to be added to 
 ```javascript
 const indexingPolicy: IndexingPolicy = {
   vectorIndexes: [
-    { path: "/coverImageVector", type: "quantizedFlat" },
-    { path: "/contentVector", type: "diskANN" },
+    { path: "/coverImageVector", type: VectorIndexType.QuantizedFlat },
+    { path: "/contentVector", type: VectorIndexType.DiskANN },
   ],
-    inlcludedPaths: [
+    includedPaths: [
       {
         path: "/*",
       },

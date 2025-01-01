@@ -196,7 +196,7 @@ This view returns all the data that is persisted in the supporting tables of que
 | `user_id` | oid | pg_authid.oid | OID of user who executed the statement. |
 | `db_id` | oid | pg_database.oid | OID of database in which the statement was executed. |
 | `query_id` | bigint | | Internal hash code, computed from the statement's parse tree. |
-| `query_sql_text` | varchar(10000) | | Text of a representative statement. Different queries with the same structure are clustered together; this text is the text for the first of the queries in the cluster. The default value for the maximum query text length is 6000, and can be modified using query store parameter `pg_qs.max_query_text_length`. If the text of the query exceeds this maximum value, it's truncated to the first `pg_qs.max_query_text_length` characters. |
+| `query_sql_text` | varchar(10000) | | Text of a representative statement. Different queries with the same structure are clustered together; this text is the text for the first of the queries in the cluster. The default value for the maximum query text length is 6000, and can be modified using query store parameter `pg_qs.max_query_text_length`. If the text of the query exceeds this maximum value, it's truncated to the first `pg_qs.max_query_text_length` bytes. |
 | `plan_id` | bigint | | ID of the plan corresponding to this query. |
 | `start_time` | timestamp | | Queries are aggregated by time windows. Server parameter `pg_qs.interval_length_minutes` defines the time span of those windows (default is 15 minutes). This column corresponds to the start time of the window in which this entry was recorded. |
 | `end_time` | timestamp | | End time corresponding to the time window for this entry. |
@@ -283,8 +283,10 @@ When an instance of Azure Database for PostgreSQL Flexible Server is in read-onl
 
 Enabling query store on a server that has [read replicas](concepts-read-replicas.md), doesn't automatically enable query store on any of the read replicas. Even if you enable it on any of the read replicas, query store doesn't record the queries executed on any read replicas, because they operate in read-only mode until you promote them to primary.
 
+[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
+
 ## Related content
 
-- [scenarios where query store can be especially helpful](concepts-query-store-scenarios.md)
-- [best practices for using query store](concepts-query-store-best-practices.md)
-- [visualizing data from query store via Query Performance Insight](./concepts-query-performance-insight.md)
+- [Usage scenarios for query store in Azure Database for PostgreSQL - Flexible Server](concepts-query-store-scenarios.md).
+- [Best practices for query store in Azure Database for PostgreSQL - Flexible Server](concepts-query-store-best-practices.md).
+- [Query Performance Insight in Azure Database for PostgreSQL - Flexible Server](concepts-query-performance-insight.md).

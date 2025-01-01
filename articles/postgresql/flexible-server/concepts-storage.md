@@ -146,5 +146,5 @@ Learn how to [scale up or down IOPS](how-to-scale-compute-storage-portal.md).
 
 ## Related content
 
-- [Manage Azure Database for PostgreSQL - Flexible Server](how-to-manage-server-portal.md)
-- [Limits in Azure Database for PostgreSQL - Flexible Server](concepts-limits.md)
+- [Manage Azure Database for PostgreSQL - Flexible Server](how-to-manage-server-portal.md).
+- [Limits in Azure Database for PostgreSQL - Flexible Server](concepts-limits.md).

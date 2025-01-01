@@ -138,7 +138,7 @@
         href: flexible-server/how-to-integrate-azure-ai.md
     - name: Import and export data
       items:
-      - name: pg_azure_storage extension
+      - name: azure_storage extension
         href: flexible-server/concepts-storage-extension.md
     - name: Microsoft Entra authentication
       href: flexible-server/concepts-azure-ad-authentication.md
@@ -457,6 +457,8 @@
           href: flexible-server/how-to-server-logs-cli.md
       - name: Relocate a server 
         href: /azure/operational-excellence/relocation-postgresql-flexible-server?toc=/azure/postgresql/toc.json
+    - name: Configure managed identities
+      href: flexible-server/how-to-configure-managed-identities.md
     - name: Encryption with CMK
       items:
       - name: Azure CLI
@@ -648,7 +650,17 @@
   - name: Minimal-downtime migration with DMS
     href: single-server/how-to-migrate-online.md
   - name: Migrate from Oracle
-    href: single-server/how-to-migrate-from-oracle.md
+    items:
+      - name: Migration Concepts
+        href: migrate/concepts-oracle-migration.md
+      - name: Migration Stages
+        href: migrate/concepts-oracle-migration-stages.md
+      - name: Best Practices
+        href: migrate/best-practices-oracle-to-postgresql.md
+      - name: Pre-migration Checklist
+        href: migrate/best-practices-oracle-to-postgresql-checklist.md
+      - name: Migrate using Ora2Pg
+        href: migrate/how-to-migrate-oracle-ora2pg.md
 - name: Azure Database for PostgreSQL - Single Server
   expanded: false
   items:

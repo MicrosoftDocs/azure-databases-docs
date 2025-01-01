@@ -8,14 +8,14 @@ ms.reviewer: stefarroyo
 ms.service: azure-cosmos-db
 ms.subservice: table
 ms.topic: reference
-ms.date: 10/24/2024
+ms.date: 12/18/2024
+appliesto:
+  - ✅ Table
 hidden: true
 ROBOTS: NOINDEX, NOFOLLOW
 ---
 
 # Azure Cosmos DB for Table data plane actions reference (preview)
-
-[!INCLUDE[Table](../../includes/appliesto-table.md)]
 
 :::image type="complex" source="media/reference-data-plane-actions/map.svg" border="false" alt-text="Diagram of the current location ('Reference') in the sequence of the deployment guide.":::
 Diagram of the sequence of the deployment guide including these locations, in order: Overview, Concepts, Prepare, Role-based access control, and Reference. The 'Reference' location is currently highlighted.

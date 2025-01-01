@@ -79,6 +79,9 @@ az postgres flexible-server backup delete --name mysourceservername --resource-g
 > [!IMPORTANT]
 >You can only delete on-demand backups but not the scheduled automated backups.
 
-## Next steps
-* Learn about [business continuity](concepts-business-continuity.md)
-* Learn about [backup & recovery](concepts-backup-restore.md)  
+[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
+
+## Related content
+
+- [Overview of business continuity with Azure Database for PostgreSQL - Flexible Server](concepts-business-continuity.md).
+- [Backup and restore in Azure Database for PostgreSQL - Flexible Server](concepts-backup-restore.md).

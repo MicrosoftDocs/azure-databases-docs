@@ -21,7 +21,7 @@ In this article, you learn how to create and manage read replicas in Azure Datab
 
 ## Prerequisites
 
-An [Azure Database for PostgreSQL flexible server instance](./quickstart-create-server-portal.md) to be the primary server.
+An [Azure Database for PostgreSQL flexible server instance](quickstart-create-server-portal.md) to be the primary server.
 
 > [!NOTE]  
 > When deploying read replicas for persistent heavy write-intensive primary workloads, the replication lag could continue to grow and might never catch up with the primary. This might also increase storage usage at the primary as the WAL files are only deleted once received at the replica.
@@ -1059,6 +1059,14 @@ The **Read Replica Lag** metric shows the time since the last replayed transacti
 
 3.  For your **Aggregation**, select **Max**.
 
+[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
+
 ## Related content
 
-- [Read replicas in Azure Database for PostgreSQL - Flexible Server](concepts-read-replicas.md)
+- [Read replicas in Azure Database for PostgreSQL - Flexible Server](concepts-read-replicas.md).
+- [Geo-replication in Azure Database for PostgreSQL - Flexible Server](concepts-read-replicas-geo.md).
+- [Promote read replicas in Azure Database for PostgreSQL - Flexible Server](concepts-read-replicas-promote.md).
+- [Virtual endpoints for read replicas in Azure Database for PostgreSQL - Flexible Server](concepts-read-replicas-virtual-endpoints.md).
+- [Create and manage read replicas in Azure Database for PostgreSQL - Flexible Server](how-to-read-replicas-portal.md).
+- [Replication across Azure regions and virtual networks with private networking](concepts-networking-private.md#replication-across-azure-regions-and-virtual-networks-with-private-networking).
+- [Terraform Azure provider documentation](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs).

@@ -313,4 +313,4 @@ According to expectations, the schemas are moved and we have a more balanced clu
 In this tutorial, you learned how to create distributed schemas, ran microservices using them as storage. You also learned how to explore and manage schema-based sharded Elastic Cluster on Azure Database for PostgreSQL.
 
 > [!div class="nextstepaction"]
-> [Learn more about Elastic Clusters](./concepts-elastic-clusters.md)
+> [Learn more about Elastic Clusters](concepts-elastic-clusters.md)

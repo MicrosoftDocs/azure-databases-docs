@@ -156,8 +156,12 @@ Use the below steps to scale down the performance tier on your Azure Database fo
 > [!IMPORTANT]
 > You can only scale down the Performance Tier of your server 12 hours after scaling up. This restriction is in place to ensure stability and performance after any changes to your server's configuration.
 
+[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
+
 ## Related content
 
--   Learn about [business continuity](./concepts-business-continuity.md)
--   Learn about [high availability](./concepts-high-availability.md)
--   Learn about [Compute and Storage](./concepts-compute-storage.md)
+- [Overview of business continuity with Azure Database for PostgreSQL - Flexible Server](concepts-business-continuity.md).
+- [High availability in Azure Database for PostgreSQL - Flexible Server](/azure/reliability/reliability-postgresql-flexible-server).
+- [Compute options in Azure Database for PostgreSQL - Flexible Server](concepts-compute.md).
+- [Storage options in Azure Database for PostgreSQL - Flexible Server](concepts-storage.md).
+- [Limits in Azure Database for PostgreSQL - Flexible Server](concepts-limits.md).
