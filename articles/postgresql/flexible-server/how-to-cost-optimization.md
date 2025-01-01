@@ -127,12 +127,11 @@ As you design your application database on Azure Database for PostgreSQL flexibl
 **Cost vs operational excellence**
 > Investing in systems monitoring and automation might increase the cost initially but over time will reduce cost.
 
-## Next steps
+[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
 
-To learn more about cost optimization, see:
+## Related content
 
-* [Overview of the cost optimization pillar](/azure/architecture/framework/cost/overview)
-* [Tradeoffs for cost](/azure/architecture/framework/cost/tradeoffs)
-* [Checklist - Optimize cost](/azure/architecture/framework/cost/optimize-checklist)
-* [Checklist - Monitor cost](/azure/architecture/framework/cost/monitor-checklist)
-
+- [Overview of the cost optimization pillar](/azure/architecture/framework/cost/overview).
+- [Tradeoffs for cost](/azure/architecture/framework/cost/tradeoffs).
+- [Checklist - Optimize cost](/azure/architecture/framework/cost/optimize-checklist).
+- [Checklist - Monitor cost](/azure/architecture/framework/cost/monitor-checklist).

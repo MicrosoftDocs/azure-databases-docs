@@ -34,7 +34,7 @@ Salted Challenge Response Authentication Mechanism (SCRAM) is a password-based m
 1. From your Azure Database for PostgreSQL flexible server client, connect to the Azure Database for PostgreSQL flexible server instance. For example,
 
     ```bash
-    psql "host=myPGServer.postgres.database.azure.com port=5432 dbname=postgres user=myDemoUser password=MyPassword sslmode=require"
+    psql "host=myPGServer.postgres.database.azure.com port=5432 dbname=postgres user=myDemoUser password=<password> sslmode=require"
 
     psql (12.3 (Ubuntu 12.3-1.pgdg18.04+1), server 12.6)
     SSL connection (protocol: TLSv1.3, cipher: TLS_AES_256_GCM_SHA384, bits: 256, compression: off)
@@ -88,8 +88,10 @@ Salted Challenge Response Authentication Mechanism (SCRAM) is a password-based m
 > [!NOTE]  
 > SCRAM authentication is also supported when connected to the built-in managed [PgBouncer](concepts-pgbouncer.md). Above tutorial is valid for setting up connectivity using SCRAM authentication via built-in PgBouncer feature.
 
+[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
+
 ## Related content
 
-- [Create and manage Azure Database for PostgreSQL - Flexible Server virtual network using Azure CLI](./how-to-manage-virtual-network-cli.md)
-- [Networking in Azure Database for PostgreSQL - Flexible Server](./concepts-networking.md)
-- [Azure Database for PostgreSQL - Flexible Server firewall rules](./concepts-networking.md#public-access-allowed-ip-addresses)
+- [Create and manage Azure Database for PostgreSQL - Flexible Server virtual network using Azure CLI](how-to-manage-virtual-network-cli.md).
+- [Networking in Azure Database for PostgreSQL - Flexible Server](concepts-networking.md).
+- [Azure Database for PostgreSQL - Flexible Server firewall rules](concepts-networking.md#public-access-allowed-ip-addresses).

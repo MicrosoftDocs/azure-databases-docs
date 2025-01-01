@@ -4,13 +4,13 @@ description: Review the monitoring and metrics features in Azure Database for Po
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 10/30/2024
+ms.date: 12/17/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: conceptual
 ---
 
-# Monitor metrics on Azure Database for PostgreSQL - Flexible Server
+# Monitor metrics in Azure Database for PostgreSQL - Flexible Server
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
@@ -124,6 +124,7 @@ You can choose from the following categories of enhanced metrics:
 |---|---|---|---|---|---|
 |**Disk Bandwidth Consumed Percentage**|`disk_bandwidth_consumed_percentage`|Percent|Percentage of data disk bandwidth consumed per minute.|Doesn't apply|Yes |
 |**Disk IOPS Consumed Percentage** |`disk_iops_consumed_percentage` |Percent|Percentage of data disk I/Os consumed per minute. |Doesn't apply|Yes |
+|**Postmaster Process cpu usage (preview)**|`postmaster_process_cpu_usage_percent`|Percent|CPU utilization of Postmaster process. Not applicable for Burstable SKU.                                      |Doesn't apply|No             |
 
 ##### Traffic
 
@@ -131,7 +132,6 @@ You can choose from the following categories of enhanced metrics:
 |------------------------------------------|--------------------------------------|-------|--------------------------------------------------------------------------------------------------------------|-------------|---------------|
 |**Max Connections** ^                     |`max_connections`                     |Count  |Number of maximum connections.                                                                                |Doesn't apply|Yes            |
 |**TCP Connection Backlog (preview)**      |`tcp_connection_backlog`              |Count  |Number of pending connections that exceed the PostgreSQL server's capacity. Applicable for 8 vCores and above.|State        |No             |
-|**Postmaster Process cpu usage (preview)**|`postmaster_process_cpu_usage_percent`|Percent|CPU utilization of Postmaster process. Not applicable for Burstable SKU.                                      |Doesn't apply|No             |
 
 
 ^ **Max Connections** represents the configured value for the `max_connections` server parameter. This metric is polled every 30 minutes.
@@ -183,7 +183,7 @@ You can use PgBouncer metrics to monitor the performance of the PgBouncer proces
 
 #### How to enable PgBouncer metrics
 
-- To monitor PgBouncer metrics, ensure that the [pgbouncer](./concepts-pgbouncer.md) feature is enabled via the server parameter `pgbouncer.enabled` and metrics parameter `metrics.pgbouncer_diagnostics` is enabled.
+- To monitor PgBouncer metrics, ensure that the [pgbouncer](concepts-pgbouncer.md) feature is enabled via the server parameter `pgbouncer.enabled` and metrics parameter `metrics.pgbouncer_diagnostics` is enabled.
 - These parameters are dynamic and don't require an instance restart.
 - PgBouncer metrics are disabled by default.
 
@@ -258,10 +258,12 @@ The Server Logs feature in Azure Database for PostgreSQL Flexible Server allows 
 
 ### Server logs retention
 
-Server logs have minimum retention 1 days and maximum retention is 7 days. If this limit is exceeded, the oldest logs are deleted to make room for new ones. For details on enabling and managing server logs, refer to the guide on setting up [server logs](./how-to-server-logs-portal.md).
+Server logs have minimum retention 1 days and maximum retention is 7 days. If this limit is exceeded, the oldest logs are deleted to make room for new ones. For details on enabling and managing server logs, refer to the guide on setting up [server logs](how-to-server-logs-portal.md).
 
-## Next steps
+[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
 
-- Learn more about how to [configure and access logs](how-to-configure-and-access-logs.md).
-- Learn more about [Azure Monitor pricing](https://azure.microsoft.com/pricing/details/monitor/).
-- Learn more about [audit logs](concepts-audit.md).
+## Related content
+
+- [Configure logging and access logs in Azure Database for PostgreSQL - Flexible Server](how-to-configure-and-access-logs.md).
+- [Azure Monitor pricing](https://azure.microsoft.com/pricing/details/monitor/).
+- [Audit logging in Azure Database for PostgreSQL - Flexible Server](concepts-audit.md).

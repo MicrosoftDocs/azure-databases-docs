@@ -122,7 +122,8 @@ Edit the task "inline" to change its properties, such as connection information 
 
 - For details on editing the underlying workflow, refer to [Edit the task's underlying workflow](/azure/logic-apps/create-automation-tasks-azure-resources#edit-the-tasks-underlying-workflow)
 
-## Next step
+[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
 
-> [!div class="nextstepaction"]
-> [Manage logic apps in the Azure portal](/azure/logic-apps/manage-logic-apps-with-azure-portal)
+## Related content
+
+- [Manage logic apps in the Azure portal](/azure/logic-apps/manage-logic-apps-with-azure-portal).

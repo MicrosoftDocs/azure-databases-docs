@@ -1,10 +1,10 @@
 ---
-title: "Migrate MySQL on-premises to Azure Database for MySQL: Migration Methods"
-description: "Getting the data from the source to target will require using tools or features of MySQL to accomplish the migration."
+title: "Migrate MySQL On-Premises to Azure Database for MySQL: Migration Methods"
+description: "Getting the data from the source to target requires using tools or features of MySQL to accomplish the migration."
 author: SudheeshGH
 ms.author: sunaray
 ms.reviewer: maghan
-ms.date: 05/21/2024
+ms.date: 11/27/2024
 ms.service: azure-database-mysql
 ms.subservice: migration-guide
 ms.topic: how-to
@@ -12,11 +12,11 @@ ms.topic: how-to
 
 # Migrate MySQL on-premises to Azure Database for MySQL: Migration Methods
 
-[!INCLUDE [applies-to-mysql-single-flexible-server](../../includes/applies-to-mysql-single-flexible-server.md)]
+Exploring the various methods for migrating MySQL databases from on-premises environments to Azure Database for MySQL is essential for selecting the most suitable approach for your needs. This article delves into the different migration methods available, providing a detailed analysis of each technique's advantages and potential challenges. By understanding the nuances of offline migration, online migration, and hybrid approaches, you can make informed decisions that align with your organization's goals and technical requirements. Whether you're aiming for minimal downtime, cost-efficiency, or a seamless transition, this guide equips you with the knowledge to choose the best migration method and execute it effectively.
 
 ## Prerequisites
 
-[Planning](04-planning.md)
+[Migrate MySQL on-premises to Azure Database for MySQL: Planning](04-planning.md)
 
 ## Overview
 
@@ -46,7 +46,7 @@ MySQL Workbench provides a wizard-based UI to do full or partial export and impo
 
 ### Dump and restore (mysqldump)
 
-`mysqldump` is typically provided as part of the MySQL installation. It's a [client utility](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html) that can be run to create logical backups that equate to a set of SQL statements that can be replayed to rebuild the database to a point in time. `mysqldump` is not intended as a fast or scalable solution for backing up or migrating large amounts of data. Executing a large set of SQL insert statements can perform poorly due to the disk I/O required to update indexes. However, when combined with other tools that require the original schema, `mysqldump` is a great tool for generating the database and table schemas. The schemas can create the target landing zone environment.
+`mysqldump` is typically provided as part of the MySQL installation. It's a [client utility](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html) that can be run to create logical backups that equate to a set of SQL statements that can be replayed to rebuild the database to a point in time. `mysqldump` isn't intended as a fast or scalable solution for backing up or migrating large amounts of data. Executing a large set of SQL insert statements can perform poorly due to the disk I/O required to update indexes. However, when combined with other tools that require the original schema, `mysqldump` is a great tool for generating the database and table schemas. The schemas can create the target landing zone environment.
 
 The `mysqldump` utility provides useful features during the data migration phase. Performance considerations need to be evaluated before running the utility. See [Performance considerations](../../concepts-migrate-dump-restore.md#performance-considerations).
 
@@ -54,7 +54,7 @@ The `mysqldump` utility provides useful features during the data migration pha
 
 Environments with large databases requiring fast migration should use [mydumper and myloader.](https://github.com/maxbube/mydumper) These tools are written in C++ and utilize multi-threaded techniques to send the data as fast as possible to the target MySQL instance. `mydumper` and `myloader` take advantage of parallelism and can speed up the migration by a factor of 10x or more.
 
-The tools' binary releases available for public download have been compiled for Linux. To run these tools on Windows, the open-source projects would need to be recompiled. Compiling source code and creating releases is not a trivial task for most users.
+The tools' binary releases available for public download have been compiled for Linux. To run these tools on Windows, the open-source projects would need to be recompiled. Compiling source code and creating releases isn't a trivial task for most users.
 
 ### Data-in replication (binlog)
 
@@ -119,4 +119,4 @@ WWI has selected its conference database as its first migration workload. The wo
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Test Plans](06-test-plans.md)
+> [Migrate MySQL on-premises to Azure Database for MySQL: Test Plans](06-test-plans.md)

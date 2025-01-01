@@ -7,7 +7,7 @@ ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: concept-article
 ms.date: 09/26/2024
-ms.custom: build-2024
+ms.custom: build-2024, ignite-2024
 ---
 
 # Indexing policies in Azure Cosmos DB
@@ -113,10 +113,42 @@ Here are some rules for included and excluded paths precedence in Azure Cosmos D
 
 - The path `/*` must be either an included path or excluded path.
 
+## Full text indexes
+> [!NOTE]
+>  You must enable the [Full Text  & Hybrid Search for NoSQL API](nosql/vector-search.md#enable-the-vector-indexing-and-search-feature) preview feature to specify a full text index.
+
+**Full text** indexes enable full text search and scoring efficiently using the index. Defining a full text path in an indexing policy can easily be done by including a `fullTextIndexes` section of the indexing policy that contains all of the text paths to be indexed. For example:
+
+```json
+{
+    "indexingMode": "consistent",
+    "automatic": true,
+    "includedPaths": [
+        {
+            "path": "/*"
+        }
+    ],
+    "excludedPaths": [
+        {
+            "path": "/\"_etag\"/?"
+        },
+    ],
+    "fullTextIndexes": [
+        {
+            "path": "/text"
+        }
+    ]
+}
+```
+
+> [!IMPORTANT]
+> A full text indexing policy must be on the path defined in the container's full text policy. [Learn more about container vector policies](gen-ai/full-text-search.md).
+
+
 ## Vector indexes
 
 > [!NOTE]
->  You must enroll in the [Azure Cosmos DB NoSQL Vector Index preview feature](nosql/vector-search.md#enroll-in-the-vector-search-preview-feature) to specify a vector indexing policy.> 
+>  You must enable the [Azure Cosmos DB NoSQL Vector Search feature](nosql/vector-search.md#enable-the-vector-indexing-and-search-feature) to specify a vector index.
 
 **Vector** indexes increase the efficiency when performing vector searches using the `VectorDistance` system function. Vectors searches have lower latency, higher throughput, and less RU consumption when applying a vector index.  You can specify the following types of vector index policies:
 
@@ -126,12 +158,19 @@ Here are some rules for included and excluded paths precedence in Azure Cosmos D
 | **`quantizedFlat`** | Quantizes (compresses) vectors before storing on the index. This can improve latency and throughput at the cost of a small amount of accuracy. | 4096 |
 | **`diskANN`** | Creates an index based on DiskANN for fast and efficient approximate search. | 4096 |
 
+> [!IMPORTANT]
+> Currently, vector policies and vector indexes are immutable after creation. To make changes, please create a new collection.
+
 A few points to note:
-  - The `flat` and `quantizedFlat` index types apply Azure Cosmos DB's index to store and read each vector when performing a vector search. Vector searches with a `flat` index are brute-force searches and produce 100% accuracy or recall. That is, it's guaranteed to find the most similar vectors in the dataset. However, there's a limitation of `505` dimensions for vectors on a flat index.
+- The `flat` and `quantizedFlat` index types apply Azure Cosmos DB's index to store and read each vector when performing a vector search. Vector searches with a `flat` index are brute-force searches and produce 100% accuracy or recall. That is, it's guaranteed to find the most similar vectors in the dataset. However, there's a limitation of `505` dimensions for vectors on a flat index.
 
   - The `quantizedFlat` index stores quantized (compressed) vectors on the index. Vector searches with `quantizedFlat` index are also brute-force searches, however their accuracy might be slightly less than 100% since the vectors are quantized before adding to the index. However, vector searches with `quantized flat` should have lower latency, higher throughput, and lower RU cost than vector searches on a `flat` index. This is a good option for scenarios where you're using query filters to narrow down the vector search to a relatively small set of vectors, and high accuracy is required.
 
   - The `diskANN` index is a separate index defined specifically for vectors applying [DiskANN](https://www.microsoft.com/research/publication/diskann-fast-accurate-billion-point-nearest-neighbor-search-on-a-single-node/), a suite of high performance vector indexing algorithms developed by Microsoft Research. DiskANN indexes can offer some of the lowest latency, highest throughput, and lowest RU cost queries, while still maintaining high accuracy. However, since DiskANN is an approximate nearest neighbors (ANN) index, the accuracy might be lower than `quantizedFlat` or `flat`.
+
+ The `diskANN` and `quantizedFlat` indexes can take optional index build parameters that can be used to tune the accuracy versus latency trade-off that applies to every Approximate Nearest Neighbors vector index.
+- `quantizationByteSize`: Sets the size (in bytes) for product quantization. Min=1, Default=dynamic (system decides), Max=512. Setting this larger may result in higher accuracy vector searches at expense of higher RU cost and higher latency. This applies to both `quantizedFlat` and `DiskANN` index types.
+  - `indexingSearchListSize`: Sets how many vectors to search over during index build construction. Min=10, Default=100, Max=500. Setting this larger may result in higher accuracy vector searches at the expense of longer index build times and higher vector ingest latencies. This applies to `DiskANN` indexes only.
 
 Here's an example of an indexing policy with a vector index:
 
@@ -163,7 +202,6 @@ Here's an example of an indexing policy with a vector index:
 
 > [!IMPORTANT]
 > A vector indexing policy must be on the path defined in the container's vector policy. [Learn more about container vector policies](nosql/vector-search.md#container-vector-policies).
-> Vector indexes must also be defined at the time of Container creation and cannot be modified once created. In a future release, vector indexes will be modifiable.
 
 >[!IMPORTANT]
 > The vector path added to the "excludedPaths" section of the indexing policy to ensure optimized performance for insertion. Not adding the vector path to "excludedPaths" will result in higher RU charge and latency for vector insertions.
@@ -231,13 +269,10 @@ These are a few examples of *invalid* array tuple paths
     - The array wildcard is missing before the tuple specifier 
 - `/events/[]/{/name,/category}/?`
     - Tuples start with leading `/` 
-- /events/[]/{name/?,category/?}/?`
+- `/events/[]/{name/?,category/?}/?`
     - Tuples end with an `?` 
-- /city/[]/events/[]/{name, category}/?`
+- `/city/[]/events/[]/{name, category}/?`
     - The path prefix as 2 array wildcards 
-
-
-
 
 ## Composite indexes
 
@@ -256,7 +291,7 @@ When defining a composite index, you specify:
 
 ### ORDER BY queries on multiple properties:
 
-The following considerations are used when using composite indexes for queries with an `ORDER BY` clause with two or more properties:
+The following considerations are used when using composite indexes for queries with an `ORDER BY` clause with two or more properties.
 
 - If the composite index paths don't match the sequence of the properties in the `ORDER BY` clause, then the composite index can't support the query.
 
@@ -449,7 +484,7 @@ Below is an example for a composite index that contains an array wildcard.
 }
 ```
 
-An example query that can benefits from this composite index is:
+An example query that can benefit from this composite index is:
 ```sql
 SELECT r.id
 FROM root r

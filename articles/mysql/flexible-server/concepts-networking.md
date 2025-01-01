@@ -1,10 +1,10 @@
 ---
-title: Networking overview
+title: Networking Overview
 description: Connectivity and networking concepts for Azure Database for MySQL - Flexible Server.
 author: SudheeshGH
 ms.author: sunaray
 ms.reviewer: maghan
-ms.date: 06/18/2024
+ms.date: 11/27/2024
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: conceptual
@@ -12,17 +12,15 @@ ms.topic: conceptual
 
 # Connectivity and networking concepts for Azure Database for MySQL - Flexible Server
 
-[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
 This article introduces the concepts to control connectivity to your Azure Database for MySQL Flexible Server instance. You learn in detail the networking concepts for Azure Database for MySQL Flexible Server to create and access a server securely in Azure.
 
 Azure Database for MySQL Flexible Server supports three ways to configure connectivity to your servers:
 
-   - **[Public access](./concepts-networking-public.md)** Your Flexible Server is accessed through a public endpoint. The public endpoint is a publicly resolvable DNS address. The phrase "allowed IP addresses" refers to a range of IPs you choose to give permission to access your server. These permissions are called **firewall rules**.
+   - **[Public Network Access for Azure Database for MySQL - Flexible Server](concepts-networking-public.md)** Your Flexible Server is accessed through a public endpoint. The public endpoint is a publicly resolvable DNS address. The phrase "allowed IP addresses" refers to a range of IPs you choose to give permission to access your server. These permissions are called **firewall rules**.
 
    - **[Private Endpoint](/azure/private-link/private-endpoint-overview)** You can use private endpoints to allow hosts on a virtual network [VNet](/azure/virtual-network/virtual-networks-overview) to securely access data over a [Private Link](/azure/private-link/private-link-overview).
 
-   - **[Private access (VNet Integration)](./concepts-networking-vnet.md)** You can deploy your Flexible Server into your [Azure Virtual Network](/azure/virtual-network/virtual-networks-overview). Azure virtual networks provide private and secure network communication. Resources in a virtual network can communicate through private IP addresses.
+   - **[Private Network Access using virtual network integration for Azure Database for MySQL - Flexible Server](concepts-networking-vnet.md)** You can deploy your Flexible Server into your [Azure Virtual Network](/azure/virtual-network/virtual-networks-overview). Azure virtual networks provide private and secure network communication. Resources in a virtual network can communicate through private IP addresses.
 
 > [!NOTE]  
 > After deploying a server with public or private access (via VNet integration), you cannot modify the connectivity mode. But in public access mode, you can enable or disable private endpoints as required and also disable public access if needed.
@@ -71,7 +69,7 @@ Azure Database for MySQL Flexible Server supports encrypted connections using Tr
 
 Following are the different configurations of SSL and TLS settings you can have for your Flexible Server:
 
->[!IMPORTANT]
+> [!IMPORTANT]  
 > According to [Removal of Support for the TLS 1.0 and TLS 1.1 Protocols](https://dev.mysql.com/doc/refman/8.0/en/encrypted-connection-protocols-ciphers.html#encrypted-connection-deprecated-protocols), starting in early September 2024, new servers will no longer be permitted to use TLS 1.0 or 1.1, and existing servers will not be allowed to downgrade to these versions. Beginning mid-September 2024, we will initiate a mandatory upgrade of all servers currently using TLS 1.0 or 1.1 to TLS 1.2. This upgrade process is expected to be completed by the end of September 2024. We strongly recommend that customers ensure their applications are fully compatible with TLS 1.2 before the end of September.
 
 | Scenario | Server parameter settings | Description |
@@ -84,11 +82,12 @@ Following are the different configurations of SSL and TLS settings you can have 
 > [!NOTE]  
 > Changes to SSL Cipher on the Flexible Server is not supported. FIPS cipher suites is enforced by default when tls_version is set to TLS version 1.2. For TLS versions other than version 1.2, SSL Cipher is set to default settings which comes with MySQL community installation.
 
-
 Review [connect using SSL/TLS](how-to-connect-tls-ssl.md#verify-the-tlsssl-connection) to learn how to identify the TLS version you are using .
 
-## Next steps
+## Related content
 
-- Learn how to enable private access (VNet integration) using the [Azure portal](how-to-manage-virtual-network-portal.md) or [Azure CLI](how-to-manage-virtual-network-cli.md)
-- Learn how to enable public access (allowed IP addresses) using the [Azure portal](how-to-manage-firewall-portal.md) or [Azure CLI](how-to-manage-firewall-cli.md)
-- Learn how to [configure private link for Azure Database for MySQL Flexible Server from Azure portal](how-to-networking-private-link-portal.md).
+- [Create and manage virtual networks for Azure Database for MySQL - Flexible Server using the Azure portal](how-to-manage-virtual-network-portal.md)
+- [Create and manage virtual networks for Azure Database for MySQL - Flexible Server using the Azure CLI](how-to-manage-virtual-network-cli.md)
+- [Manage firewall rules for Azure Database for MySQL - Flexible Server using the Azure portal](how-to-manage-firewall-portal.md)
+- [Manage firewall rules for Azure Database for MySQL - Flexible Server using Azure CLI](how-to-manage-firewall-cli.md)
+- [configure private link for Azure Database for MySQL Flexible Server from Azure portal](how-to-networking-private-link-portal.md)

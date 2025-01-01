@@ -422,7 +422,7 @@ az cosmosdb restore \
  --target-database-account-name <MyRestoredCosmosDBDatabaseAccount> \
  --account-name <MySourceAccount> \
  --restore-timestamp 2020-07-13T16:03:41+0000 \
- --resource-group <MyResourceGroup> \
+ --resource-group <TargetResourceGroup> \
  --location "West US" \
  --public-network-access Disabled \
  --disable-ttl True 

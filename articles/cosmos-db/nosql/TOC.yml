@@ -106,6 +106,8 @@
       href: ../scripts/cli/common/keys.md
     - name: Secure with IP firewall
       href: ../scripts/cli/common/ipfirewall.md
+    - name: Bulk add or remove IP firewall rules
+      href: ../scripts/cli/common/ipfirewall-bulk-add-remove.md
     - name: Secure new account with service endpoints
       href: ../scripts/cli/common/service-endpoints.md
     - name: Secure existing account with service endpoints
@@ -272,8 +274,6 @@
       items:
       - name: Autoscale introduction
         href: ../provision-throughput-autoscale.md
-      - name: Autoscale per partition/region
-        href: ../autoscale-per-partition-region.md
       - name: Autoscale FAQ
         href: ../autoscale-faq.yml
     - name: Serverless
@@ -328,6 +328,8 @@
       href: change-feed-pull-model.md
   - name: Emulator
     href: ../emulator.md
+  - name: Linux emulator (preview)
+    href: ../emulator-linux.md
   - name: Integrated cache
     items:
     - name: Dedicated gateway overview
@@ -338,6 +340,8 @@
       href: ../integrated-cache-faq.md
   - name: Integrated vector database
     href: ../vector-search.md
+  - name: Materialized views (preview)
+    href: materialized-views.md
   - name: Analytics and BI
     items:
     - name: Analytics and BI overview
@@ -370,42 +374,6 @@
         href: ../analytical-store-change-data-capture.md
       - name: Time travel (preview)
         href: ../synapse-link-time-travel.md
-  - name: Back up and restore
-    items:
-    - name: Back up and restore introduction
-      href: ../online-backup-and-restore.md
-    - name: Continuous backup
-      items:
-      - name: Continuous backup - Introduction
-        href: ../continuous-backup-restore-introduction.md
-      - name: Restore
-        items:
-        - name: Restore into a new account
-          items:
-          - name: Continuous backup - Resource model
-            href: ../continuous-backup-restore-resource-model.md
-          - name: Continuous backup - FAQ
-            href: ../continuous-backup-restore-frequently-asked-questions.yml
-          - name: Latest restorable timestamp
-            href: ../latest-restore-timestamp-continuous-backup.md
-          - name: Auditing restore action with continuous backup
-            href: ../audit-restore-continuous.md
-        - name: Restore in the same account
-          items:
-          - name: Introduction
-            href: ../restore-in-account-continuous-backup-introduction.md
-          - name: Resource model
-            href: ../restore-in-account-continuous-backup-resource-model.md
-          - name: FAQ
-            href: ../restore-in-account-continuous-backup-frequently-asked-questions.yml
-    - name: Periodic backup
-      items:
-      - name: Introduction
-        href: ../periodic-backup-restore-introduction.md
-      - name: Storage redundancy
-        href: ../periodic-backup-storage-redundancy.md
-      - name: Request data restore
-        href: ../periodic-backup-request-data-restore.md
   - name: Global distribution
     items:
     - name: Global distribution overview
@@ -591,8 +559,8 @@
       href: how-to-java-change-feed.md
   - name: NoSQL query
     href: query/toc.yml
-  - name: Materialized views (preview)
-    href: materialized-views.md
+  - name: Configure materialized views (preview)
+    href: how-to-configure-materialized-views.md
   - name: Index and query geospatial data
     displayName: geospatial, geojson, spatial, index, query, geography, geometry
     href: how-to-geospatial-index-query.md
@@ -901,6 +869,8 @@
         href: ../how-to-configure-vnet-service-endpoint.md
       - name: Configure access from private endpoints
         href: ../how-to-configure-private-endpoints.md
+      - name: Configure Network Security Perimeter
+        href: ../how-to-configure-nsp.md
     - name: Encryption
       items:
       - name: Use Always Encrypted
@@ -1068,7 +1038,7 @@
       href: sdk-java-async-v2.md
     - name: Spring Data Connector v2 (legacy)
       href: sdk-java-spring-data-v2.md
-    - name: Spring Data Connector v3
+    - name: Spring Data Connector v3 (legacy)
       href: sdk-java-spring-data-v3.md
     - name: Spring Data Connector v5
       href: sdk-java-spring-data-v5.md
@@ -1126,3 +1096,4 @@
       href: ../social-media-apps.md
     - name: AI agents
       href: ../ai-agents.md
+      

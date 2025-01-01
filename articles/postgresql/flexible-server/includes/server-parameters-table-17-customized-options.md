@@ -2,10 +2,11 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 09/26/2024
+ms.date: 12/05/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
+ms.custom: automatically generated
 ---
 ### allow_alter_system
 
@@ -323,7 +324,7 @@ ms.topic: include
 | Default value  | Depends on resources (vCores, RAM, or disk space) allocated to the server. |
 | Allowed values | `1024`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 | Parameter type | read-only      |
-| Documentation  | [azure_storage.blob_block_size_mb](/rest/api/storageservices/put-block?tabs=azure-ad#remarks)                               |
+| Documentation  | [azure_storage.blob_block_size_mb](https://learn.microsoft.com/rest/api/storageservices/put-block?tabs=azure-ad#remarks)                               |
 
 
 [!INCLUDE [server-parameters-azure-notes-azure-storage-blob-block-size-mb](./server-parameters-azure-notes-azure-storage-blob-block-size-mb.md)]

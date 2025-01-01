@@ -47,6 +47,8 @@
       href: ../scripts/cli/common/keys.md
     - name: Secure with IP firewall
       href: ../scripts/cli/common/ipfirewall.md
+    - name: Bulk add or remove IP firewall rules
+      href: ../scripts/cli/common/ipfirewall-bulk-add-remove.md
     - name: Secure new account with service endpoints
       href: ../scripts/cli/common/service-endpoints.md
     - name: Secure existing account with service endpoints
@@ -201,9 +203,6 @@
     items:
     - name: Security overview
       href: ../security.yml
-    - name: Role-based access control guide
-      displayName: RBAC, Entra
-      href: security/index.md
     - name: Considerations and guidance
       href: ../security-considerations.md
     - name: Well Architected Framework security guidance

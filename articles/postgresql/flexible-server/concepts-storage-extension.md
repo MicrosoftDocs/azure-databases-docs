@@ -1,13 +1,13 @@
 ---
-title: Import and export data using pg_azure_storage extension in Azure Database for PostgreSQL - Flexible Server
-description: Learn about the pg_azure_storage extension in Azure Database for PostgreSQL - Flexible Server
+title: Import and Export Data Using azure_storage Extension in Azure Database for PostgreSQL - Flexible Server
+description: Learn about the azure_storage extension in Azure Database for PostgreSQL - Flexible Server
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 10/31/2024
+ms.date: 11/18/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom:
   - ignite-2023
 ---
@@ -20,7 +20,7 @@ You can import data that is being stored as blobs in Azure Storage accounts to i
 
 You can also export data stored in PostgreSQL tables onto blobs stored in any of your Azure Storage accounts.
 
-To do so, you need to install the `pg_azure_storage` extension in your instance of Azure Database for PostgreSQL Flexible Server, and use the functionality it incorporates.
+To do so, you need to install the `azure_storage` extension in your instance of Azure Database for PostgreSQL Flexible Server, and use the functionality it incorporates.
 
 ## Azure Blob Storage
 
@@ -44,7 +44,7 @@ Blob Storage offers a hierarchy of three types of resources:
 
 The following diagram shows the relationship between these resources.
 
-:::image type="content" source="./media/concepts-extensions/blob-1.png" alt-text="Diagram that shows an example of storage resources.":::
+:::image type="content" source="media/concepts-storage-extension/blob-1.png" alt-text="Diagram that shows an example of storage resources.":::
 
 ## Key benefits of storing data as blobs in Azure Blob Storage
 
@@ -55,6 +55,8 @@ Azure Blob Storage can provide following benefits:
 - It communicates with other Azure services and partner applications. It's a versatile solution for a wide range of use cases, such as backup and disaster recovery, archiving, and data analysis.
 - It's a cost-effective solution for managing and storing massive amounts of data in the cloud, whether the organization is a small business or a large enterprise. You pay only for the storage that you need.
 
+[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
+
 ## Related content
 
-- [How to import and export data using pg_azure_storage extension in Azure Database for PostgreSQL - Flexible Server](how-to-use-pg-azure-storage.md)
+- [Import and export data using azure_storage extension in Azure Database for PostgreSQL - Flexible Server](how-to-use-pg-azure-storage.md).
