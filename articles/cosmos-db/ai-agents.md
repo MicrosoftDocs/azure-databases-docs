@@ -12,7 +12,7 @@ ms.date: 12/03/2024
 ms.collection:
   - ce-skilling-ai-copilot
 appliesto:
-  - ✅ MongoDB vCore
+  - ✅ NoSQL ✅ MongoDB vCore
 ---
 
 # AI agents in Azure Cosmos DB
