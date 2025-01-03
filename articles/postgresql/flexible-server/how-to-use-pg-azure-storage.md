@@ -135,7 +135,7 @@ Using the [Servers - Update](/rest/api/postgresql/flexibleserver/servers/update)
 # [Azure CLI](#tab/cli-04)
 
 ```azurecli
-az storage account update --resource-group <storage_account_resource_group> --name <storage_account> --allow-shared-key-access true
+az storage account update --resource-group <storage_account_resource_group> --name <account_name> --allow-shared-key-access true
 ```
 
 # [REST API](#tab/rest-04)
@@ -153,7 +153,7 @@ Using [Storage Accounts - Update](/rest/api/storagerp/storage-accounts/update) R
 # [Azure CLI](#tab/cli-05)
 
 ```azurecli
-az storage account keys list --resource-group <storage_account_resource_group> --account-name <storage_account> --query [0].value -o tsv
+az storage account keys list --resource-group <storage_account_resource_group> --account-name <account_name> --query [0].value -o tsv
 ```
 
 # [REST API](#tab/rest-05)
@@ -805,7 +805,7 @@ When the System Assigned Managed Identity is not enabled in the instance of Flex
 
 When the System Assigned Managed Identity is enabled on the instance of Flexible Server, but the server has not been restarted after enabling it.
 
-### ERROR:  azure_storage: current user <user_or_role> is not allowed to use storage account <storage_account>
+### ERROR:  azure_storage: current user <user_or_role> is not allowed to use storage account <account_name>
 
 When executing any of the functions that interact with Azure Storage (`azure_storage.blob_list`, `azure_storage.blob_get` or `azure_storage.blob_put`) with a user or role which is not member of `azure_storage_admin` and is not granted permissions, using `azure_storage.account_user_add`, to use the referred storage account.
 
@@ -814,12 +814,12 @@ When executing any of the functions that interact with Azure Storage (`azure_sto
 You must meet the following prerequisites before you can run the following examples:
 
 1. Create an Azure Storage account.
-   To create an Azure Storage account, if you don't have one already, customize the values of `<resource_group>`, `<location>`, `<storage_account>`, and `<blob_container>`, and run the following Azure CLI command:
+   To create an Azure Storage account, if you don't have one already, customize the values of `<resource_group>`, `<location>`, `<account_name>`, and `<container_name>`, and run the following Azure CLI command:
    ```azurecli
    resource_group=<resource_group>
    location=<location>
-   storage_account=<storage_account>
-   blob_container=<blob_container>
+   storage_account=<account_name>
+   blob_container=<container_name>
    az group create --name $resource_group --location $location
    az storage account create --resource-group $resource_group --name $storage_account --location $location --sku Standard_LRS --kind BlobStorage --public-network-access enabled --access-tier hot
    ```
@@ -875,12 +875,12 @@ CREATE TABLE IF NOT EXISTS events
 
 This example illustrates how to add a reference to a storage account, together with the access key of that storage account which is required to access its content via the functionality provided by the `azure_storage` extension in your instance of Azure Database for PostgreSQL flexible server.
 
-`<storage_account>` must be set to the name of your storage account. If you used the previous scripts, this value should match whatever value you set to the storage_account environment variable in those scripts.
+`<account_name>` must be set to the name of your storage account. If you used the previous scripts, this value should match whatever value you set to the storage_account environment variable in those scripts.
 
 Similarly, `<access_key>` must be set to the value you fetched from your storage account.
 
 ```sql
-SELECT azure_storage.account_add('<storage_account>', '<access_key>');
+SELECT azure_storage.account_add('<account_name>', '<access_key>');
 ```
 > [!TIP]  
 > If you want to retrieve the storage account name and one of its access keys from the Azure portal, search for your storage account, in the resource menu select **Access keys**, copy the **Storage account name** and copy the **Key** from **key1** section (you have to select **Show** next to the key first).
@@ -889,22 +889,22 @@ SELECT azure_storage.account_add('<storage_account>', '<access_key>');
 
 This example illustrates how to remove any reference to a storage account, so that no user in the current database can use the `azure_storage` extension functionality to access that storage account.
 
-`<storage_account>` must be set to the name of your storage account. If you used the previous scripts, this value should match whatever value you set to the storage_account environment variable in those scripts.
+`<account_name>` must be set to the name of your storage account. If you used the previous scripts, this value should match whatever value you set to the storage_account environment variable in those scripts.
 
 ```sql
-SELECT azure_storage.account_remove('<storage_account>');
+SELECT azure_storage.account_remove('<account_name>');
 ```
 
 ### Grant access to a user or role on the Azure Blob storage reference
 
 This example illustrates how to grant access to a user or role named `<regular_user>`, so that such PostgreSQL user can use the `azure_storage` extension to access the blobs stored in containers hosted by the referred Azure storage account.
 
-`<storage_account>` must be set to the name of your storage account. If you used the previous scripts, this value should match whatever value you set to the storage_account environment variable in those scripts.
+`<account_name>` must be set to the name of your storage account. If you used the previous scripts, this value should match whatever value you set to the storage_account environment variable in those scripts.
 
 `<regular_user>` must be set to the name of an existing user or role.
 
 ```sql
-SELECT * FROM azure_storage.account_user_add('<storage_account>', '<regular_user>');
+SELECT * FROM azure_storage.account_user_add('<account_name>', '<regular_user>');
 ```
 
 ### List all the references to Azure storage accounts
@@ -919,60 +919,60 @@ SELECT * FROM azure_storage.account_list();
 
 This example illustrates how to revoke access from a user or role named `<regular_user>`, so that such PostgreSQL user can't use the `azure_storage` extension to access the blobs stored in containers hosted by the referred Azure storage account. 
 
-`<storage_account>` must be set to the name of your storage account. If you used the previous scripts, this value should match whatever value you set to the storage_account environment variable in those scripts.
+`<account_name>` must be set to the name of your storage account. If you used the previous scripts, this value should match whatever value you set to the storage_account environment variable in those scripts.
 
 `<regular_user>` must be set to the name of an existing user or role.
 
 ```sql
-SELECT * FROM azure_storage.account_user_remove('<storage_account>', '<regular_user>');
+SELECT * FROM azure_storage.account_user_remove('<account_name>', '<regular_user>');
 ```
 
 ### List all blobs in a container
 
-This example illustrates how to list all existing blobs inside container `<container_name>` of storage account `<storage_account>`.
+This example illustrates how to list all existing blobs inside container `<container_name>` of storage account `<account_name>`.
 
-`<storage_account>` must be set to the name of your storage account. If you used the previous scripts, this value should match whatever value you set to the storage_account environment variable in those scripts.
+`<account_name>` must be set to the name of your storage account. If you used the previous scripts, this value should match whatever value you set to the storage_account environment variable in those scripts.
 
-`<blob_container>` must be set to the name of your blob container. If you used the previous scripts, this value should match whatever value you set to the blob_container environment variable in those scripts.
+`<container_name>` must be set to the name of your blob container. If you used the previous scripts, this value should match whatever value you set to the blob_container environment variable in those scripts.
 
 ```sql
-SELECT * FROM azure_storage.blob_list('<storage_account>','<blob_container>');
+SELECT * FROM azure_storage.blob_list('<account_name>','<container_name>');
 ```
 
 ### List the objects with specific blob name prefix
 
-This example illustrates how to list all existing blobs inside container `<blob_container>` of storage account `<storage_account>`, whose blob name begins with `<blob_name_prefix>`.
+This example illustrates how to list all existing blobs inside container `<container_name>` of storage account `<account_name>`, whose blob name begins with `<blob_name_prefix>`.
 
-`<storage_account>` must be set to the name of your storage account. If you used the previous scripts, this value should match whatever value you set to the storage_account environment variable in those scripts.
+`<account_name>` must be set to the name of your storage account. If you used the previous scripts, this value should match whatever value you set to the storage_account environment variable in those scripts.
 
-`<blob_container>` must be set to the name of your blob container. If you used the previous scripts, this value should match whatever value you set to the blob_container environment variable in those scripts.
+`<container_name>` must be set to the name of your blob container. If you used the previous scripts, this value should match whatever value you set to the blob_container environment variable in those scripts.
 
-`<blob_name_prefix>` should be set to the whatever prefix you want the blobs enumerated to include in their names. If you want to return all blobs, you can set this parameter to an empty string or don't even specify a value for this parameter, in which case the value defaults to an empty string.
+`<blob_name_prefix>` should be set to whatever prefix you want the blobs enumerated to include in their names. If you want to return all blobs, you can set this parameter to an empty string or don't even specify a value for this parameter, in which case the value defaults to an empty string.
 
 ```sql
-SELECT * FROM azure_storage.blob_list('<storage_account>','<blob_container>','<blob_name_prefix>');
+SELECT * FROM azure_storage.blob_list('<account_name>','<container_name>','<blob_name_prefix>');
 ```
 
 Alternatively, you can use the following syntax:
 
 ```sql
-SELECT * FROM azure_storage.blob_list('<storage_account>','<blob_container>') WHERE path LIKE '<blob_name_prefix>%';
+SELECT * FROM azure_storage.blob_list('<account_name>','<container_name>') WHERE path LIKE '<blob_name_prefix>%';
 ```
 
 ### Read content from a blob in a container
 
-The `blob_get` function retrieves the contents of one specific blob (`events.csv` in this case), in the referred container `<blob_container>` of the `<storage_account>` storage. In order for `blob_get` to know how to parse the data you can pass a value in the form `NULL::table_name`, where `table_name` refers to a table whose schema matches that of the blob being read. In the example, it refers to the `events` table we created at the very beginning.
+The `blob_get` function retrieves the contents of one specific blob (`events.csv` in this case), in the referred container `<container_name>` of the `<account_name>` storage. In order for `blob_get` to know how to parse the data you can pass a value in the form `NULL::table_name`, where `table_name` refers to a table whose schema matches that of the blob being read. In the example, it refers to the `events` table we created at the very beginning.
 
-`<storage_account>` must be set to the name of your storage account. If you used the previous scripts, this value should match whatever value you set to the storage_account environment variable in those scripts.
+`<account_name>` must be set to the name of your storage account. If you used the previous scripts, this value should match whatever value you set to the storage_account environment variable in those scripts.
 
-`<blob_container>` must be set to the name of your blob container. If you used the previous scripts, this value should match whatever value you set to the blob_container environment variable in those scripts.
+`<container_name>` must be set to the name of your blob container. If you used the previous scripts, this value should match whatever value you set to the blob_container environment variable in those scripts.
 
-`<blob_name_prefix>` should be set to the whatever prefix you want the blobs enumerated to include in their names. If you want to return all blobs, you can set this parameter to an empty string or don't even specify a value for this parameter, in which case the value defaults to an empty string.
+`<blob_name>` should be set to the full path of the blob whose contents you want to read.
 
 ```sql
 SELECT * FROM azure_storage.blob_get
-        ('<storage_account>'
-        ,'<blob_container>'
+        ('<account_name>'
+        ,'<container_name>'
         ,'events.csv'
         , NULL::events)
 LIMIT 5;
@@ -981,7 +981,7 @@ LIMIT 5;
 Alternatively, you can explicitly define the schema of the result using the `AS` clause after the [blob_get](#azure_storageblob_get) function.
 
 ```sql
-SELECT * FROM azure_storage.blob_get('<storage_account>','<blob_container>','events.csv.gz')
+SELECT * FROM azure_storage.blob_get('<account_name>','<container_name>','events.csv.gz')
 AS res (
          event_id BIGINT
         ,event_type TEXT
@@ -999,14 +999,14 @@ LIMIT 5;
 
 This example illustrates the use of the `decoder` option. Normally format is inferred from the extension of the file, but when the file content doesn't have a matching extension you can pass the decoder argument.
 
-`<storage_account>` must be set to the name of your storage account. If you used the previous scripts, this value should match whatever value you set to the storage_account environment variable in those scripts.
+`<account_name>` must be set to the name of your storage account. If you used the previous scripts, this value should match whatever value you set to the storage_account environment variable in those scripts.
 
-`<blob_container>` must be set to the name of your blob container. If you used the previous scripts, this value should match whatever value you set to the blob_container environment variable in those scripts.
+`<container_name>` must be set to the name of your blob container. If you used the previous scripts, this value should match whatever value you set to the blob_container environment variable in those scripts.
 
 ```sql
 SELECT * FROM azure_storage.blob_get
-        ('<storage_account>'
-        ,'<blob_container>'
+        ('<account_name>'
+        ,'<container_name>'
         ,'events_blob_without_extension'
         , NULL::events
         , decoder := 'csv')
@@ -1017,14 +1017,14 @@ LIMIT 5;
 
 This example shows how to enforce using the gzip compression on a gzip compressed blob whose name doesn't end with a .gz extension.
 
-`<storage_account>` must be set to the name of your storage account. If you used the previous scripts, this value should match whatever value you set to the storage_account environment variable in those scripts.
+`<account_name>` must be set to the name of your storage account. If you used the previous scripts, this value should match whatever value you set to the storage_account environment variable in those scripts.
 
-`<blob_container>` must be set to the name of your blob container. If you used the previous scripts, this value should match whatever value you set to the blob_container environment variable in those scripts.
+`<container_name>` must be set to the name of your blob container. If you used the previous scripts, this value should match whatever value you set to the blob_container environment variable in those scripts.
 
 ```sql
 SELECT * FROM azure_storage.blob_get
-        ('<storage_account>'
-        ,'<blob_container>'
+        ('<account_name>'
+        ,'<container_name>'
         ,'events_compressed'
         , NULL::events
         , decoder := 'csv'
@@ -1036,14 +1036,14 @@ LIMIT 5;
 
 This example illustrates the possibility to filter and modify the content imported from the blob, before loading that into a SQL table.
 
-`<storage_account>` must be set to the name of your storage account. If you used the previous scripts, this value should match whatever value you set to the storage_account environment variable in those scripts.
+`<account_name>` must be set to the name of your storage account. If you used the previous scripts, this value should match whatever value you set to the storage_account environment variable in those scripts.
 
-`<blob_container>` must be set to the name of your blob container. If you used the previous scripts, this value should match whatever value you set to the blob_container environment variable in those scripts.
+`<container_name>` must be set to the name of your blob container. If you used the previous scripts, this value should match whatever value you set to the blob_container environment variable in those scripts.
 
 ```sql
 SELECT concat('P-',event_id::text) FROM azure_storage.blob_get
-        ('<storage_account>'
-        ,'<blob_container>'
+        ('<account_name>'
+        ,'<container_name>'
         ,'events.csv'
         , NULL::events)
 WHERE event_type='PushEvent'
@@ -1054,14 +1054,14 @@ LIMIT 5;
 
 This example illustrates how you can use custom separators and escape characters, by passing the result of [options_copy](#azure_storageoptions_copy) to the `options` argument.
 
-`<storage_account>` must be set to the name of your storage account. If you used the previous scripts, this value should match whatever value you set to the storage_account environment variable in those scripts.
+`<account_name>` must be set to the name of your storage account. If you used the previous scripts, this value should match whatever value you set to the storage_account environment variable in those scripts.
 
-`<blob_container>` must be set to the name of your blob container. If you used the previous scripts, this value should match whatever value you set to the blob_container environment variable in those scripts.
+`<container_name>` must be set to the name of your blob container. If you used the previous scripts, this value should match whatever value you set to the blob_container environment variable in those scripts.
 
 ```sql
 SELECT * FROM azure_storage.blob_get
-        ('<storage_account>'
-        ,'<blob_container>'
+        ('<account_name>'
+        ,'<container_name>'
         ,'events_pipe.csv'
         ,NULL::events
         ,options := azure_storage.options_csv_get(delimiter := '|' , header := 'true')
@@ -1072,14 +1072,14 @@ SELECT * FROM azure_storage.blob_get
 
 This example illustrates how you can do aggregation operations over information that is stored in a blob container, without the need to import the contents of the blob into PostgreSQL tables.
 
-`<storage_account>` must be set to the name of your storage account. If you used the previous scripts, this value should match whatever value you set to the storage_account environment variable in those scripts.
+`<account_name>` must be set to the name of your storage account. If you used the previous scripts, this value should match whatever value you set to the storage_account environment variable in those scripts.
 
-`<blob_container>` must be set to the name of your blob container. If you used the previous scripts, this value should match whatever value you set to the blob_container environment variable in those scripts.
+`<container_name>` must be set to the name of your blob container. If you used the previous scripts, this value should match whatever value you set to the blob_container environment variable in those scripts.
 
 ```sql
 SELECT event_type, COUNT(*) FROM azure_storage.blob_get
-        ('<storage_account>'
-        ,'<blob_container>'
+        ('<account_name>'
+        ,'<container_name>'
         ,'events.csv'
         , NULL::events)
 GROUP BY event_type
@@ -1089,7 +1089,7 @@ LIMIT 5;
 
 ### Import data using a COPY statement
 
-The following example shows the import of data from a blob called `events.csv`  that resides in the blob container `<blob_container>` in the Azure Storage account `<storage_account>`, via the `COPY` command:
+The following example shows the import of data from a blob called `events.csv`  that resides in the blob container `<container_name>` in the Azure Storage account `<account_name>`, via the `COPY` command:
 
 1. Create a table that matches the schema of the source file:
 
@@ -1112,34 +1112,34 @@ The following example shows the import of data from a blob called `events.csv`  
 
     ```sql
     COPY events
-    FROM 'https://<storage_account>.blob.core.windows.net/<blob_container>/events.csv'
+    FROM 'https://<account_name>.blob.core.windows.net/<container_name>/events.csv'
     WITH (FORMAT 'csv', header);
     ```
 
 ### Write content to a blob in a container
 
-The `blob_put` function composes the contents of one specific blob (`eventscopy.csv` in this case), and uploads it to the referred container `<blob_container>` of the `<storage_account>` storage. This example uses `blob_get` to construct a set of five rows, which are then passed to the `blob_put` aggregate function which uploads them as a blob named `eventscopy.csv`.
+The `blob_put` function composes the contents of one specific blob (`eventscopy.csv` in this case), and uploads it to the referred container `<container_name>` of the `<account_name>` storage. This example uses `blob_get` to construct a set of five rows, which are then passed to the `blob_put` aggregate function which uploads them as a blob named `eventscopy.csv`.
 
-`<storage_account>` must be set to the name of your storage account. If you used the previous scripts, this value should match whatever value you set to the storage_account environment variable in those scripts.
+`<account_name>` must be set to the name of your storage account. If you used the previous scripts, this value should match whatever value you set to the storage_account environment variable in those scripts.
 
-`<blob_container>` must be set to the name of your blob container. If you used the previous scripts, this value should match whatever value you set to the blob_container environment variable in those scripts.
+`<container_name>` must be set to the name of your blob container. If you used the previous scripts, this value should match whatever value you set to the blob_container environment variable in those scripts.
 
 ```sql
 SELECT azure_storage.blob_put
-        ('<storage_account>'
-        ,'<blob_container>'
+        ('<account_name>'
+        ,'<container_name>'
         ,'eventscopy.csv'
         , top_5_events)
 FROM (SELECT * FROM azure_storage.blob_get
-                     ('<storage_account>'
-                     ,'<blob_container>'
+                     ('<account_name>'
+                     ,'<container_name>'
                      ,'events.csv'
                      , NULL::events) LIMIT 5) AS top_5_events;
 ```
 
 ### Export data using a COPY statement
 
-The following example shows the export of data from a table called `events`, to a blob called `events_exported.csv` that resides in the blob container `<blob_container>` in the Azure Storage account `<storage_account>`, via the `COPY` command:
+The following example shows the export of data from a table called `events`, to a blob called `events_exported.csv` that resides in the blob container `<container_name>` in the Azure Storage account `<account_name>`, via the `COPY` command:
 
 1. Create a table that matches the schema of the source file:
 
@@ -1164,7 +1164,7 @@ The following example shows the export of data from a table called `events`, to 
 
    ```sql
    COPY events
-   TO 'https://<storage_account>.blob.core.windows.net/<blob_container>/events_exported.csv'
+   TO 'https://<account_name>.blob.core.windows.net/<container_name>/events_exported.csv'
    WITH (FORMAT 'csv', header);
    ```
 
