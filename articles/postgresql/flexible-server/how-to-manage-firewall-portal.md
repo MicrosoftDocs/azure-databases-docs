@@ -85,8 +85,8 @@ Repeat the following steps to manage the firewall rules.
 
 [Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
 
-## Next steps
+## Related content
 
-- Learn more about [Networking in Azure Database for PostgreSQL - Flexible Server](concepts-networking-private.md)
-- Understand more about [Azure Database for PostgreSQL - Flexible Server firewall rules](concepts-networking-private.md#public-access-allowed-ip-addresses)
+- [Networking in Azure Database for PostgreSQL - Flexible Server](concepts-networking-private.md).
+- [Azure Database for PostgreSQL - Flexible Server firewall rules](concepts-networking-public.md#firewall-rules).
 - [Create and manage Azure Database for PostgreSQL - Flexible Server firewall rules using Azure CLI](how-to-manage-firewall-cli.md).
