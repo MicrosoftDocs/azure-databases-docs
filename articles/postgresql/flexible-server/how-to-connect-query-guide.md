@@ -33,12 +33,10 @@ Transport Layer Security (TLS) is used by all drivers that Microsoft supplies or
 
 Azure Database for PostgreSQL flexible server provides the ability to extend the functionality of your database using extensions. Extensions bundle multiple related SQL objects together in a single package that can be loaded or removed from your database with a single command. After being loaded in the database, extensions function like built-in features.
 
-- [Postgres extensions](concepts-extensions.md#extension-versions)
-- [dblink](concepts-extensions.md#dblink)
-- [postgres_fdw](concepts-extensions.md#postgres_fdw)
-- [pg_prewarm](concepts-extensions.md#pg_prewarm)
-- [pg_stat_statements](concepts-extensions.md#pg_stat_statements)
-
-Fore more details, see [How to use PostgreSQL extensions on Azure Database for PostgreSQL - Flexible Server](concepts-extensions.md).
-
 [Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
+
+## Related content
+
+- [Manage PostgreSQL extensions in Azure Database for PostgreSQL - Flexible Server](../extensions/how-to-allow-extensions.md).
+- [List of extensions by name](../extensions/concepts-extensions-versions.md).
+- [List of extensions by version of PostgreSQL](../extensions/concepts-extensions-by-engine.md).
