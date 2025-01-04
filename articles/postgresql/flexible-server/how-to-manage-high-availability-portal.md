@@ -33,7 +33,7 @@ In April, we implemented a billing model update for v5 SKU with High Availabilit
 
 This section provides details specifically for HA-related fields. You can follow these steps to deploy high availability while creating your Azure Database for PostgreSQL flexible server instance.
 
-1.  In the [Azure portal](https://portal.azure.com/), choose Azure Database for PostgreSQL flexible server and select create.  For details on how to fill details such as **Subscription**, **Resource group**, **Server name**, **Region**, and other fields, see [how to create an Azure Database for PostgreSQL - Flexible Server](quickstart-create-server-portal.md).
+1.  In the [Azure portal](https://portal.azure.com/), choose Azure Database for PostgreSQL flexible server and select create.  For details on how to fill details such as **Subscription**, **Resource group**, **Server name**, **Region**, and other fields, see [Create an instance of Azure Database for PostgreSQL - Flexible Server](quickstart-create-server.md).
    
     :::image type="content" source="./media/how-to-manage-high-availability-portal/subscription-region.png" alt-text="Screenshot of subscription and region selection.":::
 

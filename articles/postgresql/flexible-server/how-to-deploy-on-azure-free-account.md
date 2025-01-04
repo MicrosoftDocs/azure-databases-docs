@@ -117,12 +117,12 @@ To complete this tutorial, you need:
 ## Connect and query
 
 Now that you've created an Azure Database for PostgreSQL flexible server instance in a resource group, you can connect to server and query databases by using the following Connect and query quickstarts:
-- [psql](quickstart-create-server-portal.md#connect-to-the-postgresql-database-using-psql)
-- [Azure CLI](connect-azure-cli.md)
-- [Python](connect-python.md)
-- [Java](connect-java.md)
-- [.NET](connect-csharp.md)
-- [Connect to a server in VNET](quickstart-create-connect-server-vnet.md)
+- [psql](quickstart-create-server.md#connect-using-psql).
+- [Azure CLI](connect-azure-cli.md).
+- [Python](connect-python.md).
+- [Java](connect-java.md).
+- [.NET](connect-csharp.md).
+- [Connect to a server in VNET](quickstart-create-connect-server-vnet.md).
 
 ## Monitor and track free services usage
 
