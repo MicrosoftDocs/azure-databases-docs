@@ -73,8 +73,10 @@ az postgres flexible-server server-logs download --resource-group <myresourcegro
 
 ## Related content
 
-- [Restart an instance of Azure Database for PostgreSQL flexible server](how-to-restart-server-portal.md).
-- [Stop/Start an instance of Azure Database for PostgreSQL flexible server](how-to-stop-start-server-portal.md).
+- [Restart an instance of Azure Database for PostgreSQL flexible server](how-to-restart-server.md).
+- [Start an instance of Azure Database for PostgreSQL flexible server](how-to-start-server.md).
+- [Stop an instance of Azure Database for PostgreSQL flexible server](how-to-stop-server.md).
+- [Restart an instance of Azure Database for PostgreSQL flexible server](how-to-restart-server.md).
 - [Compute options in Azure Database for PostgreSQL - Flexible Server](concepts-compute.md).
 - [Storage options in Azure Database for PostgreSQL - Flexible Server](concepts-storage.md).
 - [Limits in Azure Database for PostgreSQL - Flexible Server](concepts-limits.md).
