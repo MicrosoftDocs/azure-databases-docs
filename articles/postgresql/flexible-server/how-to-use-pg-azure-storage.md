@@ -16,7 +16,7 @@ ms.custom:
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
-The [azure_storage](./concepts-storage-extension.md) extension allows you to import or export data in multiple file formats, directly between Azure Storage accounts and an instance of Azure Database for PostgreSQL Flexible Server.
+The [azure_storage](concepts-storage-extension.md) extension allows you to import or export data in multiple file formats, directly between Azure Storage accounts and an instance of Azure Database for PostgreSQL Flexible Server.
 
 Examples of data export and import using this extension can be found in the [Examples](#examples) section of this article.
 
