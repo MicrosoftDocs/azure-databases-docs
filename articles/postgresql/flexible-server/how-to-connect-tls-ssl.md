@@ -50,5 +50,5 @@ Some application frameworks that use PostgreSQL for their database services do n
 ## Related content
 
 - [Create and manage Azure Database for PostgreSQL - Flexible Server virtual network using Azure CLI](how-to-manage-virtual-network-cli.md).
-- Learn more about [networking in Azure Database for PostgreSQL - Flexible Server](concepts-networking.md)
-- Understand more about [Azure Database for PostgreSQL - Flexible Server firewall rules](concepts-networking.md#public-access-allowed-ip-addresses)
+- Learn more about [networking in Azure Database for PostgreSQL - Flexible Server](concepts-networking-private.md)
+- Understand more about [Azure Database for PostgreSQL - Flexible Server firewall rules](concepts-networking-private.md#public-access-allowed-ip-addresses)

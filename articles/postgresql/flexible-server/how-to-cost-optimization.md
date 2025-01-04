@@ -56,7 +56,7 @@ If your workload requires AZ resiliency and lower RTO, you can enable High Avail
 
 Key take away is to evaluate the requirement of your full application stack and then choose the right configuration for the Azure Database for PostgreSQL flexible server instance. For example, if your application isn't AZ resilient, there's nothing to be gained by configuring Azure Database for PostgreSQL flexible server in AZ resilient configuration.
 
-To learn more, see [High availability architecture in Flexible Server](concepts-high-availability.md)
+To learn more, see [High availability architecture in Flexible Server]/azure/reliability/reliability-postgresql-flexible-server
 
 ## 5. Consolidate databases and servers
 
