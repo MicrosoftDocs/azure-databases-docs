@@ -31,7 +31,7 @@ Compute tier can be scaled up or down between Burstable, General Purpose, and Me
 
 The number of vCores and installed memory can be scaled up or down. The storage tier can also be configured up or down to accommodate to the requirements of throughput and IOPS that your workload demands. The storage size can only be increased. Also, depending on your requirements you can increase or decrease the backup retention period between 7 to 35 days.
 
-These resources can be scaled by using multiple interfaces. For instance, you can use [Azure portal](quickstart-create-server-portal.md) or [Azure CLI](quickstart-create-server-cli.md).
+These resources can be scaled by using multiple interfaces. For instance, you can use [Azure portal](quickstart-create-server.md) or [Azure CLI](quickstart-create-server.md).
 
 > [!NOTE]
 > After you increase the size of the storage assigned to your instance, you can't shrink it to a smaller size.
