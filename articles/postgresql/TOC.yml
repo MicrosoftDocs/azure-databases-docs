@@ -395,14 +395,12 @@
     items:
     - name: Server administration
       items:
-      - name: Manage a server
-        items:
-        - name: Azure portal
-          href: flexible-server/how-to-manage-server-portal.md
-        - name: Azure CLI
-          href: flexible-server/how-to-manage-server-cli.md
-        - name: Connect and query guide
-          href: flexible-server/how-to-connect-query-guide.md
+      - name: Start a server
+        href: flexible-server/how-to-start-server.md
+      - name: Stop a server
+        href: flexible-server/how-to-stop-server.md
+      - name: Restart a server
+        href: flexible-server/how-to-restart-server.md
       - name: Auto grow storage
         href: flexible-server/how-to-auto-grow-storage.md
       - name: Scale a server
@@ -419,12 +417,6 @@
           href: flexible-server/how-to-restore-to-different-subscription-or-resource-group.md
         - name: Azure REST API
           href: flexible-server/how-to-restore-different-subscription-resource-group-api.md 
-      - name: Restart a server
-        items:
-        - name: Azure portal
-          href: flexible-server/how-to-restart-server-portal.md
-        - name: Azure CLI
-          href: flexible-server/how-to-restart-server-cli.md
       - name:  On-demand-backup 
         items:
         - name: Azure portal
