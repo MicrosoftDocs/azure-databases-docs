@@ -19,7 +19,7 @@ This article provides step-by-step instructions to start an Azure Database for P
 
 ## Start a stopped server
 
-### [Portal](#tab/portal-start/server)
+### [Portal](#tab/portal-start-server)
 
 Using the [Azure portal](https://portal.azure.com/):
 
@@ -49,7 +49,7 @@ You can start a stopped server via the [az postgres flexible-server start](/cli/
 az postgres flexible-server start --resource-group <resource_group> --name <server>
 ```
 
-If you attempt to start a server which isn't in `Stopped` state, you receive an error like the following:
+If you attempt to start a server which isn't in `Stopped` state, you receive an error like this:
 
 ```output
 (ServerIsNotStopped) Start Server can only be performed on Stopped servers. Seever Name = <server>, Current Server State = Updating
@@ -66,8 +66,9 @@ Message: Start Server can only be performed on Stopped servers. Server Name = <s
 
 ## Related content
 
-- [Restart an instance of Azure Database for PostgreSQL flexible server](how-to-restart-server-portal.md).
-- [Enable, list and download server logs in Azure Database for PostgreSQL - Flexible Server](how-to-server-logs-portal.md).
+- [Stop an instance of Azure Database for PostgreSQL flexible server](how-to-stop-server.md).
+- [Restart an instance of Azure Database for PostgreSQL flexible server](how-to-restart-server.md).
+- [Enable, list, and download server logs in Azure Database for PostgreSQL - Flexible Server](how-to-server-logs-portal.md).
 - [Compute options in Azure Database for PostgreSQL - Flexible Server](concepts-compute.md).
 - [Storage options in Azure Database for PostgreSQL - Flexible Server](concepts-storage.md).
 - [Limits in Azure Database for PostgreSQL - Flexible Server](concepts-limits.md).
