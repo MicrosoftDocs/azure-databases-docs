@@ -320,7 +320,7 @@ The server parameters page in the Azure portal shows a unit of measurement and t
 ## Release: April 2021
 
 - Support for [latest PostgreSQL minors](concepts-supported-versions.md) 12.6 and 11.11 with new server creates.
-- Support for Virtual Network (virtual network) [private DNS zone](concepts-networking-private.md#private-access-vnet-integration).
+- Support for Virtual Network (virtual network) [private DNS zone](concepts-networking-private.md#private-access-virtual-network-integration).
 - Support to choose the Availability zone during Point-in-time recovery operation.
 - Support for new [regions](overview.md#azure-regions), including Australia East, Canada Central, and France Central.
 - Support for [built-in PgBouncer](concepts-pgbouncer.md) connection pooler.
