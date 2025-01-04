@@ -383,10 +383,12 @@ az group delete --name django-project --yes --no-wait
 > [!NOTE]
 > When you delete the cluster, the Microsoft Entra service principal used by the AKS cluster is not removed. For steps on how to remove the service principal, see [AKS service principal considerations and deletion](/azure/aks/kubernetes-service-principal#other-considerations). If you used a managed identity, the identity is managed by the platform and doesn't require removal.
 
-## Next steps
+[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
 
-- Learn how to [access the Kubernetes web dashboard](/azure/aks/kubernetes-dashboard) for your AKS cluster
-- Learn how to [enable continuous deployment](/azure/aks/deployment-center-launcher)
-- Learn how to [scale your cluster](/azure/aks/tutorial-kubernetes-scale)
-- Learn how to manage your [Azure Database for PostgreSQL flexible server instance](quickstart-create-server-cli.md)
-- Learn how to [configure server parameters](howto-configure-server-parameters-using-cli.md) for your database server.
+## Related content
+
+- [Access Kubernetes resources using the Azure portal](/azure/aks/kubernetes-portal) for your AKS cluster.
+- [Automated deployments for Azure Kubernetes Service](/azure/aks/automated-deployments).
+- [Scale applications in Azure Kubernetes Service](/azure/aks/tutorial-kubernetes-scale).
+- [Manage Azure Database for PostgreSQL - Flexible Server](how-to-manage-server-portal.md).
+- [Configure server parameters in Azure Database for PostgreSQL - Flexible Server](how-to-configure-server-parameters.md).

@@ -345,4 +345,4 @@ However, we'll continue to support Azure Database for PostgreSQL single server u
 
 ## Related content
 
-- [Quickstart: Create an Azure Database for PostgreSQL - Flexible Server](quickstart-create-server-portal.md).
+- [Quickstart: Create an Azure Database for PostgreSQL - Flexible Server](quickstart-create-server.md).
