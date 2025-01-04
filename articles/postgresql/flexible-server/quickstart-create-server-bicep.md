@@ -129,7 +129,7 @@ Get-AzResource -ResourceGroupName exampleRG
 
 ## Clean up resources
 
-Keep this resource group, server, and single database if you want to go to the [Next steps](#next-steps). The next steps show you how to connect and query your database using different methods.
+Keep this resource group, server, and single database if you want to go to the [Related content](#related-content). The reference shows you how to connect and query your database using different methods.
 
 To delete the resource group:
 
@@ -151,4 +151,4 @@ Remove-AzResourceGroup -Name exampleRG
 
 ## Related content
 
-- [Migrate your database using dump and restore](../howto-migrate-using-dump-and-restore.md)
+- [Connect and query overview for Azure Database for PostgreSQL - Flexible Server](how-to-connect-query-guide.md).
