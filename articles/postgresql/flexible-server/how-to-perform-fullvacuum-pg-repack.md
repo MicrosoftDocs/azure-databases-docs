@@ -136,4 +136,4 @@ On the other hand, [pg_repack/bin](https://github.com/reorg/pg_repack/tree/maste
 
 ## Related content
 
-- [Autovacuum tuning in Azure Database for PostgreSQL - Flexible Server](./how-to-autovacuum-tuning.md).
+- [Autovacuum tuning in Azure Database for PostgreSQL - Flexible Server](how-to-autovacuum-tuning.md).
