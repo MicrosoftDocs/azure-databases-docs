@@ -45,7 +45,7 @@ To enable the server logs feature, perform the following steps.
 4. To configure retention period (in days), choose the slider. Minimum retention 1 days and Maximum retention is 7 days.
 
 > [!Note]
-> You can configure your server logs in the same way as above using the [Server Parameters](howto-configure-server-parameters-using-portal.md), setting the appropriate values for these parameters: _logfiles.download_enable_ to ON to enable this feature, and _logfiles.retention_days_ to define retention in days. Initially, server logs occupy data disk space for about an hour before moving to backup storage for the set retention period.
+> You can configure your server logs in the same way as above using the [Server Parameters](how-to-configure-server-parameters.md), setting the appropriate values for these parameters: _logfiles.download_enable_ to ON to enable this feature, and _logfiles.retention_days_ to define retention in days. Initially, server logs occupy data disk space for about an hour before moving to backup storage for the set retention period.
 
 ## Download Server logs
 
