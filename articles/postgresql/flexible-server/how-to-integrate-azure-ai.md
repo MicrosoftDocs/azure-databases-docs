@@ -31,7 +31,7 @@ This tutorial showcases adding rich AI capabilities to an Azure Database for Pos
 
    - An [Azure AI Language](/azure/ai-services/language-service/overview) service. If you don't have a resource, you can [create a Language resource](https://portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics) in the Azure portal by following the instructions provided in the [quickstart for summarization](/azure/ai-services/language-service/summarization/custom/quickstart#create-a-new-resource-from-the-azure-portal) document. You can use the free pricing tier (`Free F0`) to try the service and upgrade later to a paid tier for production.
 
-   - An Azure Database for PostgreSQL flexible server instance in your Azure subscription. If you don't have a resource, use either the [Azure portal](/azure/postgresql/flexible-server/quickstart-create-server-portal) or the [Azure CLI](/azure/postgresql/flexible-server/quickstart-create-server-cli) guide for creating one.
+   - An Azure Database for PostgreSQL flexible server instance in your Azure subscription. If you don't have a resource, see [Create an instance of Azure Database for PostgreSQL - Flexible Server](quickstart-create-server.md).
 
 ## Connect to the database using `psql` in the Azure Cloud Shell
 

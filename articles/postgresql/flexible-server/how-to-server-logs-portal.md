@@ -26,7 +26,7 @@ In this tutorial, you’ll learn how to:
 
 ## Prerequisites
 
-To complete this tutorial, you need an Azure Database for PostgreSQL flexible server instance. If you need to create a new server, see [Create an Azure Database for PostgreSQL - Flexible Server](quickstart-create-server-portal.md).
+To complete this tutorial, you need an Azure Database for PostgreSQL flexible server instance. If you need to create a new server, see [Create an instance of Azure Database for PostgreSQL - Flexible Server](quickstart-create-server.md).
 
 ## Enable Server logs
 

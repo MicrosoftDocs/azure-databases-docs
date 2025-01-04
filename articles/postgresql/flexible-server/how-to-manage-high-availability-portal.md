@@ -22,22 +22,22 @@ This page provides guidelines how you can enable or disable high availability. T
 
 > [!IMPORTANT]
 > _Billing Model Update for Azure Database for PostgreSQL Flexible Server (v5 HA):_
-In April, we implemented a billing model update for v5 SKU with High Availability (HA) enabled servers. This change aims to correctly reflect the charges, by accounting for both the primary and standby servers. Before this change we were incorrectly charging customers for the primary server only. Customers using v5 SKU with HA enabled servers will now see billing quantities multiplied by 2. This update does not impact v4 and v3 SKUs.
+In April, we implemented a billing model update for v5 SKU with High Availability (HA) enabled servers. This change aims to correctly reflect the charges, by accounting for both the primary and standby servers. Before this change, we were incorrectly charging customers for the primary server only. Customers using v5 SKU with HA enabled servers will now see billing quantities multiplied by 2. This update does not impact v4 and v3 SKUs.
 
 ## Prerequisites
 
 > [!IMPORTANT]
-> For the list of regions that support Zone redundant high availability, please review the supported regions [here](overview.md#azure-regions).  
+> For the list of regions that support Zone redundant high availability, review the supported regions [here](overview.md#azure-regions).  
 
 ## Enable high availability during server creation
 
 This section provides details specifically for HA-related fields. You can follow these steps to deploy high availability while creating your Azure Database for PostgreSQL flexible server instance.
 
-1.  In the [Azure portal](https://portal.azure.com/), choose Azure Database for PostgreSQL flexible server and select create.  For details on how to fill details such as **Subscription**, **Resource group**, **Server name**, **Region**, and other fields, see [how to create an Azure Database for PostgreSQL - Flexible Server](quickstart-create-server-portal.md).
+1.  In the [Azure portal](https://portal.azure.com/), choose Azure Database for PostgreSQL flexible server and select create. For details on how to fill details such as **Subscription**, **Resource group**, **Server name**, **Region**, and other fields, see [Create an instance of Azure Database for PostgreSQL - Flexible Server](quickstart-create-server.md).
    
     :::image type="content" source="./media/how-to-manage-high-availability-portal/subscription-region.png" alt-text="Screenshot of subscription and region selection.":::
 
-2.  Choose your **availability zone**. This is useful if you want to collocate your application in the same availability zone as the database to reduce latency. Choose **No Preference** if you want the Azure Database for PostgreSQL flexible server instance to deploy the primary server on any availability zone. Note that only if you choose the availability zone for the primary in a zone-redundant HA deployment are you allowed to choose the standby availability zone.
+2.  Choose your **availability zone**. This is useful if you want to collocate your application in the same availability zone as the database to reduce latency. Choose **No Preference** if you want the Azure Database for PostgreSQL flexible server instance to deploy the primary server on any availability zone. Only if you choose the availability zone for the primary in a zone-redundant HA deployment are you allowed to choose the standby availability zone.
 
      :::image type="content" source="./media/how-to-manage-high-availability-portal/zone-selection.png" alt-text="Screenshot of availability zone selection.":::  
 
@@ -114,15 +114,15 @@ Follow these steps to force failover your primary to the standby Azure Database 
 1.	In the [Azure portal](https://portal.azure.com/), select your existing Azure Database for PostgreSQL flexible server instance that has high availability feature already enabled.
 2.	On the Azure Database for PostgreSQL flexible server instance page, select High Availability from the front panel to open high availability page.
 3.	Check the Primary availability zone and the Standby availability zone
-4.	Select on Forced Failover to initiate the manual failover procedure. A pop up informs you on the potential downtime until the failover is complete. Read the message and select Ok.
-5.	A notification appears mentioning that failover is in progress.
+4.	Select on Forced Failover to initiate the manual failover procedure. A dialog informs you of the potential downtime until the failover is complete. Read the message and select Ok.
+5.	A notification appears to mention that failover is in progress.
 6.	Once failover to the standby server is complete, a notification pops up.
 7.	Check the new Primary availability zone and the Standby availability zone.
     
     :::image type="content" source="./media/how-to-manage-high-availability-portal/ha-forced-failover.png" alt-text="On-demand forced failover option screenshot."::: 
 
 >[!IMPORTANT] 
-> * Please do not perform immediate, back-to-back failovers. Wait for at least 15-20 minutes between failovers, which will also allow the new standby server to be fully established.
+> * Please don't perform immediate, back-to-back failovers. Wait for at least 15-20 minutes between failovers, which will also allow the new standby server to be fully established.
 >
 > * The overall end-to-end operation time as reported on the portal may be longer than the actual downtime experienced by the application. Please measure the downtime from the application perspective. 
 
@@ -140,15 +140,15 @@ Follow these steps to perform a planned failover from your primary to the standb
 
 >[!IMPORTANT] 
 >
-> * Please do not perform immediate, back-to-back failovers. Wait for at least 15-20 minutes between failovers, which will also allow the new standby server to be fully established.
+> * Don't perform immediate, back-to-back failovers. Wait for at least 15-20 minutes between failovers, to allow the new standby server to be fully established.
 >
-> * It is recommended to perform planned failover during low activity period.
+> * We recommended performing planned failover during low activity periods.
 >
-> * The overall end-to-end operation time may be longer than the actual downtime experienced by the application. Please measure the downtime from the application perspective.
+> * The overall end-to-end operation time may be longer than the actual downtime experienced by the application. Measure the downtime from the application perspective.
 
 ## Enabling Zone redundant HA after the region supports AZ
 
-There are Azure regions that don't support availability zones. If you already deployed non-HA servers, you can't directly enable zone redundant HA on the server, but you can perform restore and enable HA in that server.  The following steps shows how to enable Zone redundant HA for that server.
+There are Azure regions that don't support availability zones. If you already deployed non-HA servers, you can't directly enable zone redundant HA on the server, but you can perform restore and enable HA in that server. The following steps show how to enable Zone redundant HA for that server.
 
 1. From the overview page of the server, select **Restore** to [perform a PITR](how-to-restore-server-portal.md#restore-to-the-latest-restore-point). Choose **Latest restore point**. 
 2. Choose a server name, availability zone.
