@@ -243,7 +243,4 @@ Remove-AzResourceGroup -Name <resource_group>
 
 ## Related content
 
-- [Create an Azure Database for PostgreSQL - Portal](quickstart-create-server-python-sdk.md)
-- [Create an Azure Database for PostgreSQL - Azure CLI](quickstart-create-server-cli.md)
-- [Create an Azure Database for PostgreSQL - ARM template](quickstart-create-server-arm-template.md)
-- [Create an Azure Database for PostgreSQL - Bicep](quickstart-create-server-bicep.md)
+- [Quickstart: Create an instance of Azure Database for PostgreSQL - Flexible Server](quickstart-create-server.md)
