@@ -19,7 +19,7 @@ ms.custom:
 
 The article describes how you can enable or disable high availability configuration at the time of server creation in Azure Database for PostgreSQL flexible server. You can disable high availability after server creation too. 
 
-High availability feature provisions physically separate primary and standby replica in different zones. For more information, see [high availability concepts documentation](concepts/../concepts-high-availability.md). Enabling or disabling high availability doesn't change your other settings including VNET configuration, firewall settings, and backup retention. Disabling of high availability doesn't impact your application connectivity and operations.
+High availability feature provisions physically separate primary and standby replica in different zones. For more information, see [high availability concepts documentation](/azure/reliability/reliability-postgresql-flexible-server). Enabling or disabling high availability doesn't change your other settings including VNET configuration, firewall settings, and backup retention. Disabling of high availability doesn't impact your application connectivity and operations.
 
 > [!IMPORTANT]
 > For the list of regions that support Zone redundant high availability, please review the supported regions [here](overview.md#azure-regions). 

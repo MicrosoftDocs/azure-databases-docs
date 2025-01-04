@@ -93,5 +93,5 @@ Salted Challenge Response Authentication Mechanism (SCRAM) is a password-based m
 ## Related content
 
 - [Create and manage Azure Database for PostgreSQL - Flexible Server virtual network using Azure CLI](how-to-manage-virtual-network-cli.md).
-- [Networking in Azure Database for PostgreSQL - Flexible Server](concepts-networking.md).
-- [Azure Database for PostgreSQL - Flexible Server firewall rules](concepts-networking.md#public-access-allowed-ip-addresses).
+- [Networking in Azure Database for PostgreSQL - Flexible Server](concepts-networking-private.md).
+- [Azure Database for PostgreSQL - Flexible Server firewall rules](concepts-networking-private.md#public-access-allowed-ip-addresses).
