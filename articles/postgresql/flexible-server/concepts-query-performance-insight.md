@@ -88,7 +88,8 @@ The Query Performance Insight view in the Azure portal surfaces visualizations o
 * For Query Performance Insight to function, data must exist in the Query Store. Query Store is an opt-in feature, so it isn't enabled by default on a server. Query store is enabled or disabled globally for all databases on a given server and can't be turned on or off per database.
 * Enabling Query Store on the Burstable pricing tier may negatively impact performance; therefore, we don't recommend enabling it on that tier.
 
+[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
 
-## Next steps
+## Related content
 
-- Learn more about [monitoring and tuning](concepts-monitoring.md) in Azure Database for PostgreSQL flexible server.
+- [Monitor metrics in Azure Database for PostgreSQL - Flexible Server](concepts-monitoring.md).

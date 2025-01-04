@@ -218,10 +218,9 @@ You use the connection string as a GitHub secret.
 
 When your Azure Database for PostgreSQL flexible server database and repository are no longer needed, clean up the resources you deployed by deleting the resource group and your GitHub repository.
 
-## Next steps
+[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
 
-> [!div class="nextstepaction"]
-> [Learn about Azure and GitHub integration](/azure/developer/github/)
-<br/>
-> [!div class="nextstepaction"]
-> [Learn how to connect to the server](connect-csharp.md)
+## Related content
+
+- [Azure and GitHub integration](/azure/developer/github/).
+- [How to connect to the server](connect-csharp.md).

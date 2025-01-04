@@ -147,7 +147,8 @@ Remove-AzResourceGroup -Name exampleRG
 
 ---
 
-## Next steps
+[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
 
-> [!div class="nextstepaction"]
-> [Migrate your database using dump and restore](../howto-migrate-using-dump-and-restore.md)
+## Related content
+
+- [Migrate your database using dump and restore](../howto-migrate-using-dump-and-restore.md)
