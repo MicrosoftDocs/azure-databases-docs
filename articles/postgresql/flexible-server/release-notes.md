@@ -19,10 +19,10 @@ This article highlights the latest updates and enhancements for Azure Database f
 
 ## Release: December 2024
 
-- General Availability of [oracle_fdw](../extensions/concepts-extensions-versions.md#list-of-extensions-by-name) extension.
+- General Availability of [oracle_fdw](../extensions/concepts-extensions-versions.md#oracle_fdw) extension.
 - General Availability of [index tuning](concepts-index-tuning.md) on Azure Database for PostgreSQL flexible server.
 - General Availability of the [Semantic Ranker Solution Accelerator](https://aka.ms/pg-ranker) for Azure Database for PostgreSQL flexible server.
-- Public preview of [age](../extensions/concepts-extensions-versions.md#list-of-extensions-by-name) extension.
+- Public preview of [age](../extensions/concepts-extensions-versions.md#age) extension.
 - Public preview of the [GraphRAG Solution Accelerator](https://aka.ms/pg-graphrag) for Azure Database for PostgreSQL flexible server.
 - Public preview of [On-Demand Backups](concepts-backup-restore.md#on-demand-backups-preview).
 
@@ -176,7 +176,7 @@ This article highlights the latest updates and enhancements for Azure Database f
 ## Release: February 2023
 
 - Public preview of [Autovacuum Metrics](concepts-monitoring.md#autovacuum-metrics) for Azure Database for PostgreSQL flexible server.
-- Support for [semver](../extensions/concepts-extensions-versions#semver) extension with new servers. <sup>$</sup>
+- Support for [semver](../extensions/concepts-extensions-versions.md#semver) extension with new servers. <sup>$</sup>
 - Public Preview of [Major Version Upgrade](concepts-major-version-upgrade.md) for Azure Database for PostgreSQL flexible server.
 - Support for [Geo-redundant backup feature](concepts-backup-restore.md#geo-redundant-backup-and-restore) when using [Disk Encryption with Customer Managed Key (CMK)](concepts-data-encryption.md#how-data-encryption-with-a-cmk-works) feature.
 - Support for [minor versions](concepts-supported-versions.md) 14.6, 13.9, 12.13, 11.18. <sup>$</sup>
@@ -188,7 +188,7 @@ This article highlights the latest updates and enhancements for Azure Database f
 
 ## Release: December 2022
 
-- Support for [pg_hint_plan](../extensions/concepts-extensions-versions#pg_hint_plan) extension with new servers. <sup>$</sup>
+- Support for [pg_hint_plan](../extensions/concepts-extensions-versions.md#pg_hint_plan) extension with new servers. <sup>$</sup>
 - General availability of [Customer Managed Key feature](concepts-data-encryption.md) with Azure Database for PostgreSQL flexible server in Canada East, Canada Central, Southeast Asia, Switzerland North, Switzerland West, Brazil South and East Asia Azure regions.
 
 ## Release: November 2022
@@ -227,9 +227,9 @@ This article highlights the latest updates and enhancements for Azure Database f
 - Support for [minor versions](concepts-supported-versions.md) 14.3, 13.7, 12.11, 11.16. <sup>$</sup>
 - Support for [Same-zone high availability]/azure/reliability/reliability-postgresql-flexible-server deployment option.
 - Support for choosing [standby availability zone](how-to-manage-high-availability-portal.md) when deploying zone-redundant high availability.
-- Support for [plv8](../extensions/concepts-extensions-versions#plv8) extension with new servers. <sup>$</sup>
-- Support for [pgrouting](../extensions/concepts-extensions-versions#pgrouting) extension with new servers. <sup>$</sup>
-- Version updates for [PostGIS](../extensions/concepts-extensions-versions#postgis) extension.
+- Support for [plv8](../extensions/concepts-extensions-versions.md#plv8) extension with new servers. <sup>$</sup>
+- Support for [pgrouting](../extensions/concepts-extensions-versions.md#pgrouting) extension with new servers. <sup>$</sup>
+- Version updates for [PostGIS](../extensions/concepts-extensions-versions.md#postgis) extension.
 - General availability of Azure Database for PostgreSQL flexible server in Canada East and India West regions.
 
 <sup>**$**</sup> New servers get these features automatically. These features are enabled on your existing servers during your server's future maintenance window.
