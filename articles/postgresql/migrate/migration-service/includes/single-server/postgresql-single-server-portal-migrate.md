@@ -17,7 +17,7 @@ You can migrate using the Azure portal.
 
 ## Configure your Azure Database for PostgreSQL flexible server
 
-- Create the target flexible server. For guided steps, refer to the quickstart [Create an Azure Database for PostgreSQL flexible server using the portal](../../../../flexible-server/quickstart-create-server-portal.md).
+- Create the target flexible server. For guided steps, refer to the quickstart [Create an instance of Azure Database for PostgreSQL - Flexible Server](../../../../flexible-server/quickstart-create-server.md).
 
 - [Allowlist extensions](../../../../flexible-server/concepts-extensions.md#how-to-use-postgresql-extensions) whose libraries must be loaded at server start. It's essential that the extension is on the allowlist before you initiate a migration.
 
@@ -208,7 +208,7 @@ You can see the results of **Validate and Migrate** once the operation is comple
 
 ## Configure your Azure Database for PostgreSQL flexible server
 
-- Create the target flexible server. For guided steps, refer to the quickstart [Create an Azure Database for PostgreSQL flexible server using the portal](../../../../flexible-server/quickstart-create-server-portal.md).
+- Create the target flexible server. For guided steps, refer to the quickstart [Create an instance of Azure Database for PostgreSQL - Flexible Server](../../../../flexible-server/quickstart-create-server.md).
 
 - [Allowlist extensions](../../../../flexible-server/concepts-extensions.md#how-to-use-postgresql-extensions) whose libraries must be loaded at server start. It's essential that the extension is on the allowlist before you initiate a migration.
 

@@ -90,7 +90,7 @@ The detailed specifications of the available server types are as follows:
 > [!IMPORTANT]  
 > Minimum and maximum IOPS are also determined by the storage tier so please choose a storage tier and instance type that can scale as per your workload requirements.
 
-[!INCLUDE [pricing](./includes/compute-storage-pricing.md)]
+[!INCLUDE [pricing](includes/compute-storage-pricing.md)]
 
 [Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
 

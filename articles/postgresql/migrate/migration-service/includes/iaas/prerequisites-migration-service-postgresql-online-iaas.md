@@ -9,7 +9,7 @@ ms.service: azure-database-postgresql
 ms.topic: include
 ---
 
-Before starting the migration with the Azure Database for PostgreSQL migration service, it is important to fulfill the following prerequisites, specifically designed for online migration scenarios.
+Before starting the migration with the Azure Database for PostgreSQL migration service, it's important to fulfill the following prerequisites, specifically designed for online migration scenarios.
 
 - [Verify the source version](#verify-the-source-version)
 - [Install test_decoding - Source Setup](#install-test_decoding---source-setup)
@@ -36,7 +36,7 @@ If the source PostgreSQL version is less than 9.5, upgrade it to 9.5 or higher b
 
 - Before migrating, Azure Database for PostgreSQL – Flexible server must be created.
 - SKU provisioned for Azure Database for PostgreSQL – Flexible server should match with the source.
-- To create a new Azure Database for PostgreSQL, visit [Create an Azure Database for PostgreSQL](../../../../flexible-server/quickstart-create-server-portal.md)
+- To create a new Azure Database for PostgreSQL, visit [Create an instance of Azure Database for PostgreSQL - Flexible Server](../../../../flexible-server/quickstart-create-server.md)
 - When migrating across PostgreSQL versions (major or minor), ensure compatibility between your database and application by reviewing the [release notes](https://www.postgresql.org/docs/17/release.html) for potential breaking changes.
 
 ### Enable CDC as a source
