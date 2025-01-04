@@ -25,7 +25,7 @@ This article shows you how to create an instance of Azure Database for PostgreSQ
 
 If you don't have an Azure subscription, create a [free Azure account](https://azure.microsoft.com/free/) before you begin.
 
-An Azure Database for PostgreSQL flexible server instance is created with a configured set of [compute and storage resources](./concepts-compute-storage.md). The server is created within an [Azure resource group](/azure/azure-resource-manager/management/overview).
+An Azure Database for PostgreSQL flexible server instance is created with a configured set of [compute and storage resources](./concepts-compute.md). The server is created within an [Azure resource group](/azure/azure-resource-manager/management/overview).
 
 Select any of the following tabs, depending on the method you want to use to deploy your instance:
 
