@@ -108,7 +108,7 @@ The following sections describe how to create and configure your database instan
 The first thing you create is a managed Azure Database for PostgreSQL flexible server instance.
 
 > [!NOTE]
-> You can read more detailed information about creating Azure Database for PostgreSQL flexible server instances in [Create an Azure Database for PostgreSQL flexible server instance by using the Azure portal](quickstart-create-server-portal.md).
+> You can read more detailed information about creating Azure Database for PostgreSQL flexible server instances in [Create an Azure Database for PostgreSQL flexible server instance by using the Azure portal](quickstart-create-server.md).
 
 #### [Passwordless (Recommended)](#tab/passwordless)
 
