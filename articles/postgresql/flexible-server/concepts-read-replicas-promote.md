@@ -65,7 +65,7 @@ The promote operation does not carry over specific configurations and parameters
 - **Geo-redundant backup storage**: Geo-backup settings aren't transferred. Since replicas cannot have geo-backup enabled, the promoted primary (formerly the replica) does not have it after promotion. The feature can only be activated at the standard server's creation time (not a replica).
 - **Server Parameters**: If their values differ on the primary and read replica, they will not change during promotion. It's essential to note that parameters influencing shared memory size must have the same values on both the primary and replicas. This requirement is detailed in the [Server parameters](concepts-read-replicas.md#server-parameters) section.
 - **Microsoft Entra authentication**: If the primary had [Microsoft Entra authentication](concepts-azure-ad-authentication.md) configured, but the replica was set up with PostgreSQL authentication, then after promotion, the replica won't automatically switch to Microsoft Entra authentication. It retains the PostgreSQL authentication. Users need to manually configure Microsoft Entra authentication on the promoted replica either before or after the promotion process.
-- **High Availability (HA)**: Should you require [HA](concepts-high-availability.md) after the promotion, it must be configured on the freshly promoted primary server, following the role reversal.
+- **High Availability (HA)**: Should you require [HA]/azure/reliability/reliability-postgresql-flexible-server after the promotion, it must be configured on the freshly promoted primary server, following the role reversal.
 
 
 ## Considerations
