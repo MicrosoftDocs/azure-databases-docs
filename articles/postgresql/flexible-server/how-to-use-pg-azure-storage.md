@@ -16,21 +16,11 @@ ms.custom:
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
-The [azure_storage](./concepts-storage-extension.md) extension allows you to import or export data in multiple file formats, directly between Azure Storage accounts and an instance of Azure Database for PostgreSQL Flexible Server.
+The [azure_storage](concepts-storage-extension.md) extension allows you to import or export data in multiple file formats, directly between Azure Storage accounts and an instance of Azure Database for PostgreSQL Flexible Server.
 
 Examples of data export and import using this extension can be found in the [Examples](#examples) section of this article.
 
-To use the `azure_storage` extension on your Azure Database for PostgreSQL flexible server instance, you need to add the extension to the `shared_preload_libraries`, and also add it to the `azure.extensions` server parameter, as described in [how to use PostgreSQL extensions](./concepts-extensions.md#how-to-use-postgresql-extensions). 
-
-Because `shared_preload_library` is a static server parameter, it requires a restart of the server for the change to take effect.
-
-Once the server restarts, connect to your instance of PostgreSQL using the client of your preference (for example psql, pgAdmin, etc.). Confirm that `SHOW azure.extensions;`, and `SHOW shared_preload_libraries;`, both include the value `azure_storage` in the list of the comma-separated values returned by each of the `SHOW` statements.
-
-Only then you can install the extension, by connecting to your target database, and running the [CREATE EXTENSION](https://www.postgresql.org/docs/current/static/sql-createextension.html) statement. You need to repeat the command separately for each database in which you want the extension to be available.
-
-```sql
-CREATE EXTENSION azure_storage;
-```
+To use the `azure_storage` extension on your Azure Database for PostgreSQL flexible server instance, you need to [allow the extension](../extensions/how-to-allow-extensions.md#allow-extensions), [load its library](../extensions/how-to-allow-extensions.md#load-libraries), and [create the extension](../extensions/how-to-allow-extensions.md#create-extensions). 
 
 ## Overview of the procedure
 

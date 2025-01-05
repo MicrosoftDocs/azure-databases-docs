@@ -47,7 +47,7 @@ If zone redundant high availability is configured, the service provisions and ma
 
 :::image type="content" source="~/reusable-content/ce-skilling/azure/media/postgresql/concepts-zone-redundant-high-availability-architecture.png" alt-text="Diagram of Zone redundant high availability." lightbox="~/reusable-content/ce-skilling/azure/media/postgresql/concepts-zone-redundant-high-availability-architecture.png":::
 
-See [High availability](concepts-high-availability.md) for more details.
+See [High availability]/azure/reliability/reliability-postgresql-flexible-server for more details.
 
 ## Automated patching with a managed maintenance window
 
@@ -132,4 +132,4 @@ In addition, consider the following points of contact as appropriate:
 
 ## Related content
 
-- [Quickstart: Create an Azure Database for PostgreSQL - Flexible Server](quickstart-create-server-portal.md).
+- [Create an instance of Azure Database for PostgreSQL - Flexible Server](quickstart-create-server.md).

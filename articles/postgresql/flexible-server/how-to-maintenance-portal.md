@@ -18,8 +18,7 @@ You can specify maintenance options for each Azure Database for PostgreSQL flexi
 
 ## Prerequisites
 
-To complete this how-to guide, you need:
-- An [Azure Database for PostgreSQL flexible server](quickstart-create-server-portal.md) instance
+To complete this how-to guide, you need to [Create an instance of Azure Database for PostgreSQL - Flexible Server](quickstart-create-server.md).
  
 ## Specify maintenance schedule options
  
