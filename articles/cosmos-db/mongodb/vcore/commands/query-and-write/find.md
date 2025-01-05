@@ -22,9 +22,11 @@ The basic syntax for the `find` command is:
 db.collection.find(query, projection, options)
 ```
 
-- **query**: A document that specifies the criteria for the documents to be retrieved.
-- **projection**: (Optional) A document that specifies the fields in the matching documents to be returned in the result set.
-- **options**: (Optional) A document that specifies options for query behavior and results.
+### Parameters
+
+- `query`: A document that specifies the criteria for the documents to be retrieved.
+- `projection` (Optional) A document that specifies the fields in the matching documents to be returned in the result set.
+- `options`: (Optional) A document that specifies options for query behavior and results.
 
 ## Example(s)
 Consider this sample document from the SampleCollection collection in the StoreData database.
