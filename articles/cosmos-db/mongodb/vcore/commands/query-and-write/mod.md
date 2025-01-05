@@ -21,9 +21,11 @@ The syntax for the $mod operator is:
 { field: { $mod: [divisor, remainder] } }
 ```
 
-- field: The field to which the modulo operation will be applied.
-- divisor: The number by which the field's value will be divided.
-- remainder: The remainder to compare against the result of the modulo operation.
+### Parameters
+
+- `field`: The field to which the modulo operation will be applied.
+- `divisor`: The number by which the field's value will be divided.
+- `remainder`: The remainder to compare against the result of the modulo operation.
 
 ## Examples
 
