@@ -31,7 +31,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="./media/how-to-delete-server/delete-server.png" alt-text="Screenshot showing how to delete an Azure Database for PostgreSQL flexible server." lightbox="./media/how-to-delete-server/delete-server.png":::
 
-5. In the **Delete *\<server\>*** panel, make sure that the name of the resource you're willing to delete, matches the one displayed. Take the time to provide feedback about your experience with the service. Select the icon that best expresses your overall level of satisfaction with the service, and provide additional details in free text form. It's required to check the **I have read and understand that this server, as well as any databases it contains, will be deleted.** box, so that the **Delete** button is enabled. Optionally, check the **You can contact me about this feedback.** box, if we can contact you about the feedback provided. Finally, select **Delete** to proceed with the immediate deletion of the server.
+5. In the **Delete *\<server\>*** panel, make sure that the name of the resource you're willing to delete, matches the one displayed. Take the time to provide feedback about your experience with the service. Select the icon that best expresses your overall level of satisfaction with the service, and provide more details in free text form. You must check the **I have read and understand that this server, as well as any databases it contains, will be deleted.** box, so that the **Delete** button is enabled. Optionally, check the **You can contact me about this feedback.** box, if we can contact you about the feedback provided. Finally, select **Delete** to proceed with the immediate deletion of the server.
 
     :::image type="content" source="./media/how-to-delete-server/confirm-delete-server.png" alt-text="Screenshot showing how to provide feedback and confirm the deletion of an Azure Database for PostgreSQL flexible server." lightbox="./media/how-to-delete-server/confirm-delete-server.png":::
 
@@ -41,7 +41,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 7. When the process completes, a notification informs you that the server was successfully deleted.
 
-    :::image type="content" source="./media/how-to-delete-server/notification-deleted-server.png" alt-text="Screenshot showing a server that was succeessfully deleted." lightbox="./media/how-to-delete-server/notification-deleted-server.png":::
+    :::image type="content" source="./media/how-to-delete-server/notification-deleted-server.png" alt-text="Screenshot showing a server that was successfully deleted." lightbox="./media/how-to-delete-server/notification-deleted-server.png":::
 
 ### [CLI](#tab/cli-reset-admin-password)
 
