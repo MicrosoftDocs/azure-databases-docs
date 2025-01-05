@@ -32,8 +32,8 @@ db.collection.deleteMany(
 
 ### Parameters
 
-- `<filter>`: A document that specifies the criteria for deletion. Only the documents that match the filter will be deleted.
-- `<options>`: Optional. A document that specifies additional options for the delete operation. Common options include:
+- `<filter>`: A document that specifies the criteria for deletion. Only the documents that match the filter are deleted.
+- `<options>`: Optional. A document that specifies options for the delete operation. Common options include:
   - `writeConcern`: Specifies the level of acknowledgment requested from MongoDB for write operations.
   - `collation`: Specifies the collation to use for the operation.
 
