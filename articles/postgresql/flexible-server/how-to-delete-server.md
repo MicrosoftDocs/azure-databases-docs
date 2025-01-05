@@ -71,8 +71,6 @@ az postgres flexible-server delete --resource-group <resource_group> --name <ser
 
 - [Start an Azure Database for PostgreSQL flexible server](how-to-start-server.md).
 - [Stop an Azure Database for PostgreSQL flexible server](how-to-stop-server.md).
-- [Restart an Azure Database for PostgreSQL flexible server](how-to-stop-server.md).
-- [Enable, list, and download server logs in Azure Database for PostgreSQL - Flexible Server](how-to-server-logs-portal.md).
-- [Compute options in Azure Database for PostgreSQL - Flexible Server](concepts-compute.md).
-- [Storage options in Azure Database for PostgreSQL - Flexible Server](concepts-storage.md).
-- [Limits in Azure Database for PostgreSQL - Flexible Server](concepts-limits.md).
+- [Restart an Azure Database for PostgreSQL flexible server](how-to-restart-server.md).
+- [Reset administrator password of an Azure Database for PostgreSQL flexible server](how-to-reset-admin-password.md).
+- [Configure storage autogrow in an Azure Database for PostgreSQL flexible server](how-to-auto-grow-storage.md).

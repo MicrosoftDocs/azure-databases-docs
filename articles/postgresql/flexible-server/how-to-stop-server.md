@@ -74,7 +74,7 @@ Message: Restart or Stop Server can only be performed on Started servers. Server
 
 - [Start an Azure Database for PostgreSQL flexible server](how-to-start-server.md).
 - [Restart an Azure Database for PostgreSQL flexible server](how-to-restart-server.md).
-- [Enable, list, and download server logs in Azure Database for PostgreSQL - Flexible Server](how-to-server-logs-portal.md).
-- [Compute options in Azure Database for PostgreSQL - Flexible Server](concepts-compute.md).
-- [Storage options in Azure Database for PostgreSQL - Flexible Server](concepts-storage.md).
-- [Limits in Azure Database for PostgreSQL - Flexible Server](concepts-limits.md).
+- [Reset administrator password of an Azure Database for PostgreSQL flexible server](how-to-reset-admin-password.md).
+- [Delete an Azure Database for PostgreSQL flexible server](how-to-delete-server.md).
+- [Configure storage autogrow in an Azure Database for PostgreSQL flexible server](how-to-auto-grow-storage.md).
+- [Configure high availability in an Azure Database for PostgreSQL flexible server](how-to-configure-high-availability.md).
