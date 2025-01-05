@@ -31,19 +31,24 @@ Using the [Azure portal](https://portal.azure.com/):
 
 3. Select the **Restart** button.
 
-    :::image type="content" source="./media/how-to-restart-server/restart-server.png" alt-text="Screenshot showing how to restart a stopped server." lightbox="./media/how-to-restart-server/restart-server.png":::
+    :::image type="content" source="./media/how-to-restart-server/restart-server.png" alt-text="Screenshot showing how to restart a started server." lightbox="./media/how-to-restart-server/restart-server.png":::
 
-4. A notification informs you that the server is restarting. Also, the status of the server changes to **Restarting**.
+4. In the **Restart server** dialog, confirm or abort your decision to restart the server.
+
+    :::image type="content" source="./media/how-to-restart-server/confirm-restart-server.png" alt-text="Screenshot showing the Restart server dialog to confirm or abort the operation." lightbox="./media/how-to-restart-server/confirm-restart-server.png":::
+
+
+5. A notification informs you that the server is restarting. Also, the status of the server changes to **Restarting**.
 
     :::image type="content" source="./media/how-to-restart-server/restarting-server.png" alt-text="Screenshot showing a server which is restarting." lightbox="./media/how-to-restart-server/restarting-server.png":::
 
-5. When the process completes, a notification informs you that the server is restarted. Also, the status of the server changes to **Available**.
+6. When the process completes, a notification informs you that the server is restarted. Also, the status of the server changes to **Available**.
 
     :::image type="content" source="./media/how-to-restart-server/restarted-server.png" alt-text="Screenshot showing a server which is restarted and shows its status as Available." lightbox="./media/how-to-restart-server/restarted-server.png":::
 
 ### [CLI](#tab/cli-restart-server)
 
-You can restart a stopped server via the [az postgres flexible-server restart](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-restart) command.
+You can restart a started server via the [az postgres flexible-server restart](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-restart) command.
 
 ```azurecli-interactive
 az postgres flexible-server restart --resource-group <resource_group> --name <server>

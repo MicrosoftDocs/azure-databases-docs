@@ -429,12 +429,6 @@
           href: flexible-server/how-to-restore-server-portal.md
         - name: Azure CLI
           href: flexible-server/how-to-restore-server-cli.md
-      - name: Stop/Start a server
-        items:
-        - name: Azure portal
-          href: flexible-server/how-to-stop-start-server-portal.md
-        - name: Azure CLI
-          href: flexible-server/how-to-stop-start-server-cli.md
       - name: Configure server logs
         items:
         - name: Azure portal
