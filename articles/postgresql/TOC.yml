@@ -401,6 +401,10 @@
         href: flexible-server/how-to-stop-server.md
       - name: Restart a server
         href: flexible-server/how-to-restart-server.md
+      - name: Reset administrator password
+        href: flexible-server/how-to-reset-admin-password.md
+      - name: Delete a server
+        href: flexible-server/how-to-delete-server.md
       - name: Auto grow storage
         href: flexible-server/how-to-auto-grow-storage.md
       - name: Scale a server

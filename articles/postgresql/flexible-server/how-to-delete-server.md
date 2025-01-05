@@ -1,0 +1,78 @@
+---
+title: Delete an Azure Database for PostgreSQL flexible server
+description: This article describes the steps to delete an existing Azure Database for PostgreSQL flexible server.
+author: nachoalonsoportillo
+ms.author: ialonso
+ms.reviewer: maghan
+ms.date: 01/05/2025
+ms.service: azure-database-postgresql
+ms.subservice: flexible-server
+ms.topic: how-to
+#customer intent: As a user, I want to learn how to delete an Azure Database for PostgreSQL flexible server.
+---
+
+# Delete an Azure Database for PostgreSQL flexible server
+
+[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
+
+This article provides step-by-step instructions to delete an Azure Database for PostgreSQL flexible server.
+
+## Delete a server
+
+### [Portal](#tab/portal-delete-server)
+
+Using the [Azure portal](https://portal.azure.com/):
+
+1. Select your Azure Database for PostgreSQL flexible server.
+
+2. In the resource menu, select **Overview**.
+
+3. Select the **Delete** button.
+
+    :::image type="content" source="./media/how-to-delete-server/delete-server.png" alt-text="Screenshot showing how to delete an Azure Database for PostgreSQL flexible server." lightbox="./media/how-to-delete-server/delete-server.png":::
+
+5. In the **Delete *<server>*** panel, make sure that the name of the resource you're willing to delete, matches the one displayed. Take the time to provide feedback about your experience with the service. Select the icon that best expresses your overall level of satisfaction with the service, and provide additional details in free text form. It's required to check the **I have read and understand that this server, as well as any databases it contains, will be deleted.** box, so that the **Delete** button is enabled. Optionally, check the **You can contact me about this feedback.** box, if we can contact you about the feedback provided. Finally, select **Delete** to proceed with the immediate deletion of the server.
+
+    :::image type="content" source="./media/how-to-delete-server/confirm-delete-server.png" alt-text="Screenshot showing how to provide feedback and confirm the deletion of an Azure Database for PostgreSQL flexible server." lightbox="./media/how-to-delete-server/confirm-delete-server.png":::
+
+6. A notification informs you that the server is being deleted.
+
+    :::image type="content" source="./media/how-to-delete-server/notification-deleting-server.png" alt-text="Screenshot showing a server that's being deleted." lightbox="./media/how-to-delete-server/notification-deleting-server.png":::
+
+7. When the process completes, a notification informs you that the server was successfully deleted.
+
+    :::image type="content" source="./media/how-to-delete-server/notification-deleted-server.png" alt-text="Screenshot showing a server that was succeessfully deleted." lightbox="./media/how-to-delete-server/notification-deleted-server.png":::
+
+### [CLI](#tab/cli-reset-admin-password)
+
+You can delete a server via the [az postgres flexible-server delete](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-delete) command.
+
+```azurecli-interactive
+az postgres flexible-server delete --resource-group <resource_group> --name <server>
+```
+
+If you run the previous command, it requires you to explicitly confirm, responding with a `y` (yes):
+
+```output
+Are you sure you want to delete the server '<server>' in resource group '<resource_group>' (y/n): 
+```
+
+If you want to run the command without needing the user interaction, you can add the `--yes` parameter like this:
+
+```azurecli-interactive
+az postgres flexible-server delete --resource-group <resource_group> --name <server> --yes
+```
+
+---
+
+[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
+
+## Related content
+
+- [Start an Azure Database for PostgreSQL flexible server](how-to-start-server.md).
+- [Stop an Azure Database for PostgreSQL flexible server](how-to-stop-server.md).
+- [Restart an Azure Database for PostgreSQL flexible server](how-to-stop-server.md).
+- [Enable, list, and download server logs in Azure Database for PostgreSQL - Flexible Server](how-to-server-logs-portal.md).
+- [Compute options in Azure Database for PostgreSQL - Flexible Server](concepts-compute.md).
+- [Storage options in Azure Database for PostgreSQL - Flexible Server](concepts-storage.md).
+- [Limits in Azure Database for PostgreSQL - Flexible Server](concepts-limits.md).
