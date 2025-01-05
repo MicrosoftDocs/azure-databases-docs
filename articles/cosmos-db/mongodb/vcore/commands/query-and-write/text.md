@@ -10,7 +10,7 @@ ms.topic: conceptual
 ms.date: 08/31/2024
 ---
 
-The $text operator is used to perform text search queries on a collection. The $text operator enables searching for text within string fields that have been indexed as a text index.
+The $text operator is used to perform text search queries on a collection. The $text operator enables searching for text within string fields that are indexed as a text index.
 
 ## Syntax
 
@@ -148,7 +148,7 @@ Consider this sample document from the SampleCollection collection in the StoreD
 ```
 
 > [!NOTE]
-> Using the $text operator requires all fields that will be part of the query filter to be specified as a text index during index creation.
+> Using the $text operator requires all fields in the query filter to be specified as a text index during index creation.
 
 ### Example 1 - Basic text search
 
@@ -157,7 +157,7 @@ db.SampleCollection.find({"$text": {"$search": "Ebba's Smart TVs"}})
 ```
 
 > [!NOTE]
-> By default, the text search functionality treats all word separators as tokenizers for the search query. In this example, the search query conducts a search on 3 separate tokens - "Ebba's", "Smart" and "TVs" and returns all documents that contain at least one of the three terms.
+> By default, the text search functionality treats all word separators as tokenizers for the search query. In this example, the search query conducts a search on three separate tokens - "Ebba's," "Smart" and "TVs" and returns all documents that contain at least one of the three terms.
 
 ### Example 2 - Basic text search on the full string
 
@@ -166,4 +166,4 @@ db.SampleCollection.find({"$text": {"$search": "\"Ebba's Smart TVs\""}})
 ```
 
 > [!NOTE]
-> To avoid tokenizing the terms in the search string, the string should be enclosed by quotation marks. In this example, the query conducts a search on a single token - "Ebba's Smart TVs" without separating the three words into individual tokens.
+> To avoid tokenizing the terms in the search string, quotation marks must enclose the string. In this example, the query conducts a search on a single token - "Ebba's Smart TVs" without separating the three words into individual tokens.
