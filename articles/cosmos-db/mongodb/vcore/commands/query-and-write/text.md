@@ -10,6 +10,8 @@ ms.topic: conceptual
 ms.date: 08/31/2024
 ---
 
+# text 
+
 The $text operator is used to perform text search queries on a collection. The $text operator enables searching for text within string fields that are indexed as a text index.
 
 ## Syntax
