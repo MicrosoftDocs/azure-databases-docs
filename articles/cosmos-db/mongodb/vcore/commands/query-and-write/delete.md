@@ -10,6 +10,8 @@ ms.topic: conceptual
 ms.date: 01/03/2025
 ---
 
+# delete
+
 The `delete` command is used to remove documents from a collection. A single document or multiple documents can be deleted based on a specified query filter.
 
 ## Syntax
