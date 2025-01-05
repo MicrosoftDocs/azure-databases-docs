@@ -10,6 +10,8 @@ ms.topic: conceptual
 ms.date: 01/03/2025
 ---
 
+# mod
+
 The $mod operator is used to perform a modulo operation on the value of a field and select documents with a specified result. The $mod operator is useful in grouping or filtering data based on cyclic patterns.
 
 ## Syntax
