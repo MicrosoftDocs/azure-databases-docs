@@ -10,6 +10,8 @@ ms.topic: conceptual
 ms.date: 01/03/2025
 ---
 
+# update
+
 The update command is used to modify existing documents within a collection. The update command can be used to update one or multiple documents based on filtering criteria. Values of fields can be changed, new fields and values can be added and existing fields can be removed.
 
 ## Example(s)
