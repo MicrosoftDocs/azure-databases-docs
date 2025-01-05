@@ -10,6 +10,8 @@ ms.topic: conceptual
 ms.date: 01/03/2025
 ---
 
+# regex
+
 The $regex operator is used to perform pattern matching with regular expressions and is particularly useful for querying string fields for matches that fit specific patterns. Common use cases include searching for documents where a field contains a substring, starts with a certain prefix, or matches a complex pattern.
 
 ## Syntax
