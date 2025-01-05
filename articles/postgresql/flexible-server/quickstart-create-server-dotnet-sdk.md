@@ -17,7 +17,7 @@ In this quickstart, you learn how to use the Azure SDK libraries in .NET to crea
 ## Prerequisites
 
 - [An Azure account with an active subscription](https://azure.microsoft.com/free/).
-- [Flexible Server instance](quickstart-create-server-portal.md).
+- [Create an instance of Azure Database for PostgreSQL - Flexible Server](quickstart-create-server.md).
 - [.NET framework](https://dotnet.microsoft.com/download) installed on your local machine.
 - [Azure CLI](/cli/azure/install-azure-cli) installed on your local machine.
 
@@ -301,7 +301,4 @@ Alternatively, you can remove the resource group using:
 
 ## Related content
 
-- [Quickstart: Create an Azure Database for PostgreSQL - Flexible Server instance in the Azure portal](quickstart-create-server-portal.md)
-- [Quickstart: Create an Azure Database for PostgreSQL - Flexible Server instance using Azure CLI](quickstart-create-server-cli.md)
-- [Quickstart: Use an ARM template to create an Azure Database for PostgreSQL - Flexible Server instance](quickstart-create-server-arm-template.md)
-- [Quickstart: Use a Bicep file to create an Azure Database for PostgreSQL - Flexible Server instance](quickstart-create-server-bicep.md)
+- [Quickstart: Create an instance of Azure Database for PostgreSQL - Flexible Server](quickstart-create-server.md)

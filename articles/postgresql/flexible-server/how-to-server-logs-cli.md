@@ -38,7 +38,7 @@ az account set --subscription <subscription id>
 After you configure the prerequisites and connect to your required subscription, you can list the server logs from your Azure Database for PostgreSQL flexible server instance by using the following command.
 
 > [!NOTE]
-> You can configure your server logs in the same way as just shown by using the [server parameters](howto-configure-server-parameters-using-portal.md). Set the appropriate values for these parameters. Set `logfiles.download_enable` to ON to enable this feature. Set `logfiles.retention_days` to define retention in days. Initially, server logs occupy data disk space for about an hour before moving to backup storage for the set retention period.
+> You can configure your server logs in the same way as just shown by using the [server parameters](how-to-configure-server-parameters.md). Set the appropriate values for these parameters. Set `logfiles.download_enable` to ON to enable this feature. Set `logfiles.retention_days` to define retention in days. Initially, server logs occupy data disk space for about an hour before moving to backup storage for the set retention period.
 
 ```azurecli
 az postgres flexible-server server-logs list --resource-group <myresourcegroup> --server-name <serverlogdemo> --out <table>

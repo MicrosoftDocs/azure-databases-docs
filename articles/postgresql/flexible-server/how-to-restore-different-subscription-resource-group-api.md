@@ -16,7 +16,8 @@ ms.topic: how-to
 In this article, you learn how to restore an Azure Database for PostgreSQL flexible server instance to a different subscription or resource group using the REST API [Azure REST API](/rest/api/azure/). To learn more about backup and restore see the [overview](concepts-backup-restore.md).
 
 ## Prerequisites
-An [Azure Database for PostgreSQL flexible server instance](quickstart-create-server-portal.md) to be the primary server.
+
+[Create an instance of Azure Database for PostgreSQL - Flexible Server](quickstart-create-server.md) to be the primary server.
 
 ### Restore to a different Subscription or Resource group
 

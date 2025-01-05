@@ -99,4 +99,4 @@ Additionally, configuring high availability to another data center requires mini
 ## Related content
 
 - [Azure Database for PostgreSQL - Flexible Server pricing](https://azure.microsoft.com/pricing/details/postgresql/server/).
-- [Quickstart: Create an Azure Database for PostgreSQL - Flexible Server](quickstart-create-server-portal.md).
+- [Create an instance of Azure Database for PostgreSQL - Flexible Server](quickstart-create-server.md).

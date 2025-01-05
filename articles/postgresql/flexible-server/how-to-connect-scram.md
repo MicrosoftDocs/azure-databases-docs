@@ -14,13 +14,13 @@ ms.topic: how-to
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
-Salted Challenge Response Authentication Mechanism (SCRAM) is a password-based mutual authentication protocol. It is a challenge-response scheme that adds several levels of security and prevents password sniffing on untrusted connections. SCRAM supports storing passwords on the server in a cryptographically hashed form which provides advanced security.
+Salted Challenge Response Authentication Mechanism (SCRAM) is a password-based mutual authentication protocol. It's a challenge-response scheme that adds several levels of security and prevents password sniffing on untrusted connections. SCRAM supports storing passwords on the server in a cryptographically hashed form which provides advanced security.
 
 > [!NOTE]  
 > To access an Azure Database for PostgreSQL flexible server instance using SCRAM method of authentication, your client libraries need to support SCRAM. Refer to the **[list of drivers](https://wiki.postgresql.org/wiki/List_of_drivers)** that support SCRAM.
 
 > [!NOTE]  
-> SCRAM authentication imposes additional computational load on your application servers, which need to compute the client proof for each authentication. The performance overhead SCRAM introduces might be mitigated by limiting the number of connections in your application's connection pool (reducing chattiness in your application) or limiting the number of concurrent transactions that your client allows (chunkier transactions). Its recommended to test your workloads before migrating to SCRAM authentication.
+> SCRAM authentication imposes extra computational load on your application servers, which need to compute the client proof for each authentication. The performance overhead SCRAM introduces might be mitigated by limiting the number of connections in your application's connection pool (reducing chattiness in your application) or limiting the number of concurrent transactions that your client allows (bigger transactions). It's recommended testing your workloads before migrating to SCRAM authentication.
 
 ## Configure SCRAM authentication
 
@@ -29,8 +29,8 @@ Salted Challenge Response Authentication Mechanism (SCRAM) is a password-based m
 1. Allow SCRAM-SHA-256 as the authentication method.
         :::image type="content" source="media/how-to-connect-scram/2-auth-method.png" alt-text="Screenshot of Choose the authentication method."::: 
     > [!IMPORTANT]  
-    > You might choose to enforce SCRAM only authentication by selecting only SCRAM-SHA-256 method. By doing so, users with MD5 authentication can longer connect to the server. Hence, before enforcing SCRAM, it is recommended to have both MD5 and SCRAM-SHA-256 as authentication methods until you update all user passwords to SCRAM-SHA-256. You can verify the authentication type for users using the query mentioned in step #7.
-1. Save the changes. These are dynamic properties and do not require server restart.
+    > You might choose to enforce SCRAM only authentication by selecting only SCRAM-SHA-256 method. By doing so, users with MD5 authentication can longer connect to the server. Hence, before enforcing SCRAM, it's recommended to have both MD5 and SCRAM-SHA-256 as authentication methods until you update all user passwords to SCRAM-SHA-256. You can verify the authentication type for users using the query mentioned in step #7.
+1. Save the changes. These are dynamic properties and don't require server restart.
 1. From your Azure Database for PostgreSQL flexible server client, connect to the Azure Database for PostgreSQL flexible server instance. For example,
 
     ```bash
@@ -93,5 +93,5 @@ Salted Challenge Response Authentication Mechanism (SCRAM) is a password-based m
 ## Related content
 
 - [Create and manage Azure Database for PostgreSQL - Flexible Server virtual network using Azure CLI](how-to-manage-virtual-network-cli.md).
-- [Networking in Azure Database for PostgreSQL - Flexible Server](concepts-networking.md).
-- [Azure Database for PostgreSQL - Flexible Server firewall rules](concepts-networking.md#public-access-allowed-ip-addresses).
+- [Networking in Azure Database for PostgreSQL - Flexible Server](concepts-networking-private.md).
+- [Firewall rules in Azure Database for PostgreSQL - Flexible Server](concepts-networking-public.md#firewall-rules).
