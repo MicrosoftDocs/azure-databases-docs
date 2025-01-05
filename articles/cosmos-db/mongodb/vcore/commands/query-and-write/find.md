@@ -10,6 +10,8 @@
   ms.date: 01/03/2025
 ---
 
+# find
+
 The `find` command in Azure Cosmos DB for MongoDB (vCore) is used to query documents within a collection. This command is fundamental for data retrieval operations and can be customized with filters, projections, and query options to fine-tune the results.
 
 ## Syntax
