@@ -1,6 +1,6 @@
 ---
-title: Restart an instance of Azure Database for PostgreSQL flexible server
-description: This article describes how to restart an instance of Azure Database for PostgreSQL flexible server.
+title: Restart an Azure Database for PostgreSQL flexible server
+description: This article describes how to restart an Azure Database for PostgreSQL flexible server.
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
@@ -8,14 +8,14 @@ ms.date: 01/04/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: how-to
-#customer intent: As a user, I want to learn how to restart an Azure Database for PostgreSQL flexible server instance, so that I can manage my server efficiently.
+#customer intent: As a user, I want to learn how to restart an Azure Database for PostgreSQL flexible server, so that I can manage my server efficiently.
 ---
 
-# Restart an instance of Azure Database for PostgreSQL flexible server
+# Restart an Azure Database for PostgreSQL flexible server
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
-This article provides step-by-step instructions to restart an Azure Database for PostgreSQL flexible server instance.
+This article provides step-by-step instructions to restart an Azure Database for PostgreSQL flexible server.
 
 ## Restart a started server
 
@@ -23,7 +23,7 @@ This article provides step-by-step instructions to restart an Azure Database for
 
 Using the [Azure portal](https://portal.azure.com/):
 
-1. Select your Azure Database for PostgreSQL flexible server instance.
+1. Select your Azure Database for PostgreSQL flexible server.
 
 2. In the resource menu, select **Overview**.
 
@@ -66,14 +66,14 @@ Message: Restart or Stop Server can only be performed on Started servers. Server
 ---
 
 > [!NOTE]
-> Once the server is restarted, all management operations are available for the Azure Database for PostgreSQL flexible server instance.
+> Once the server is restarted, all management operations are available for the Azure Database for PostgreSQL flexible server.
 
 [Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
 
 ## Related content
 
-- [Start an instance of Azure Database for PostgreSQL flexible server](how-to-start-server.md).
-- [Stop an instance of Azure Database for PostgreSQL flexible server](how-to-stop-server.md).
+- [Start an Azure Database for PostgreSQL flexible server](how-to-start-server.md).
+- [Stop an Azure Database for PostgreSQL flexible server](how-to-stop-server.md).
 - [Enable, list, and download server logs in Azure Database for PostgreSQL - Flexible Server](how-to-server-logs-portal.md).
 - [Compute options in Azure Database for PostgreSQL - Flexible Server](concepts-compute.md).
 - [Storage options in Azure Database for PostgreSQL - Flexible Server](concepts-storage.md).
