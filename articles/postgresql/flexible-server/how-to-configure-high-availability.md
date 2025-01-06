@@ -52,7 +52,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 5. If the region supports zone redundancy, and you select **Zone redundant**, you can choose in which of the other available zones you want to deploy your standby server.
 
-    :::image type="content" source="./media/how-to-manage-high-availability/high-availability-zone-redundant.png" alt-text="Screenshot showing how the High availability page looks, when high availability is enabled with standby server deployed in a different zone as the primary." lightbox="./media/how-to-manage-high-availability/high-availability-zone-redundant.png":::
+    :::image type="content" source="./media/how-to-manage-high-availability/high-availability-zone-redundant.png" alt-text="Screenshot showing the High availability page, when the feature is enabled with standby server deployed in a different zone than the primary." lightbox="./media/how-to-manage-high-availability/high-availability-zone-redundant.png":::
 
 6. When everything is configured according to your needs, select **Save** to apply the changes. A dialog informs you of the cost increase associated with the deployment of the standby server. If you decide to proceed, select **Enable HA**.
 
@@ -66,11 +66,68 @@ Using the [Azure portal](https://portal.azure.com/):
 
 You can enable high availability in an existing server via the [az postgres flexible-server update](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-update) command.
 
+To enable high availability so that standby server is deployed in the same zone as the primary server, use this command:
+
 ```azurecli-interactive
-az postgres flexible-server update --resource-group <resource_group> --name <server> --storage-auto-grow enabled*******
+az postgres flexible-server update --resource-group <resource_group> --name <server> --high-availability SameZone
+```
+
+To enable high availability with standby server deployed in a different zone than the primary server, and if you want the zone to be automatically selected, use this command:
+
+```azurecli-interactive
+az postgres flexible-server update --resource-group <resource_group> --name <server> --high-availability ZoneRedundant
+```
+
+Also, optionally, you can select the availability zone in which the standby server should be deployed. To do so, use this command:
+
+```azurecli-interactive
+az postgres flexible-server update --resource-group <resource_group> --name <server> --high-availability ZoneRedundant --standby-zone <standby_zone>
+```
+
+If you're enabling high availability with zone redundancy, and the zone specified for standby matches the zone of the primary, you get this error:
+
+```output
+Your server is in availability zone <server>. The zone of the server cannot be same as the standby zone.
+```
+
+If you're enabling high availability with zone redundancy, and the zone specified for standby isn't available in that region, you get this error:
+
+```output
+(InvalidParameterValue) Invalid value given for parameter StandbyAvailabilityZone,availabilityZone. Specify a valid parameter value.
+Code: InvalidParameterValue
+Message: Invalid value given for parameter StandbyAvailabilityZone,availabilityZone. Specify a valid parameter value.
+```
+
+If high availability is enabled in one mode, and you try to enable it again, specifying a different mode, you get the following error:
+
+```output
+(InvalidParameterValue) Invalid value given for parameter Cannot switch Properties.HighAvailability.Mode directly from SameZone to ZoneRedundant. Please disable HA and then enable HA.. Specify a valid parameter value.
+Code: InvalidParameterValue
+Message: Invalid value given for parameter Cannot switch Properties.HighAvailability.Mode directly from SameZone to ZoneRedundant. Please disable HA and then enable HA.. Specify a valid parameter value.
 ```
 
 ---
+
+## Disable high availability
+
+Follow these steps to disable high availability for your Azure Database for PostgreSQL flexible server instance that is already configured with high availability.
+
+1.  In the [Azure portal](https://portal.azure.com/), select your existing Azure Database for PostgreSQL flexible server instance.
+
+2.  On the Azure Database for PostgreSQL flexible server instance page, select **High Availability** from the front panel to open high availability page.
+   
+    :::image type="content" source="./media/how-to-manage-high-availability-portal/high-availability-left-panel.png" alt-text="Left panel selection screenshot."::: 
+
+3.  Select on the **High availability** checkbox to **disable** the option. Then select **Save** to save the change.
+
+     :::image type="content" source="./media/how-to-manage-high-availability-portal/disable-high-availability.png" alt-text="Screenshot showing disable high availability."::: 
+
+4.  A confirmation dialog is shown where you can confirm disabling high availability.
+
+5.  Select **Disable HA** button to disable the high availability.
+
+6.  A notification appears stating that decommissioning of the high availability deployment is in progress.
+
 
 ## Enable high availability during server creation
 
@@ -108,26 +165,6 @@ This section provides details specifically for HA-related fields. You can follow
 
 8. Select **Save**. 
 
-
-## Disable high availability
-
-Follow these steps to disable high availability for your Azure Database for PostgreSQL flexible server instance that is already configured with high availability.
-
-1.  In the [Azure portal](https://portal.azure.com/), select your existing Azure Database for PostgreSQL flexible server instance.
-
-2.  On the Azure Database for PostgreSQL flexible server instance page, select **High Availability** from the front panel to open high availability page.
-   
-    :::image type="content" source="./media/how-to-manage-high-availability-portal/high-availability-left-panel.png" alt-text="Left panel selection screenshot."::: 
-
-3.  Select on the **High availability** checkbox to **disable** the option. Then select **Save** to save the change.
-
-     :::image type="content" source="./media/how-to-manage-high-availability-portal/disable-high-availability.png" alt-text="Screenshot showing disable high availability."::: 
-
-4.  A confirmation dialog is shown where you can confirm disabling high availability.
-
-5.  Select **Disable HA** button to disable the high availability.
-
-6.  A notification appears stating that decommissioning of the high availability deployment is in progress.
 
 ## Forced failover
 
