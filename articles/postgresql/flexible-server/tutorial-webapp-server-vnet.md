@@ -149,6 +149,8 @@ Clean up all resources you created in the tutorial using the following command. 
 az group delete -n demoresourcegroup
 ```
 
-## Next steps
-> [!div class="nextstepaction"]
-> [Map an existing custom DNS name to Azure App Service](/azure/app-service/app-service-web-tutorial-custom-domain)
+[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
+
+## Related content
+
+- [Map an existing custom DNS name to Azure App Service](/azure/app-service/app-service-web-tutorial-custom-domain)
