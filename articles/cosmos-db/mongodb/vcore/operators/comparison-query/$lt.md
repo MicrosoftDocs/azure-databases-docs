@@ -28,7 +28,7 @@ The syntax for using the `$lt` operator in a MongoDB query is:
 - `field`: The field in the document you want to evaluate.
 - `value`: The value to compare against the field's value. The operator will match documents where the field's value is less than this specified value.
 
-## Example(s)
+## Examples
 
 Consider this sample document from the SampleCollection collection in the StoreData database.
 
