@@ -37,30 +37,30 @@ Using the [Azure portal](https://portal.azure.com/):
 
 2. In the resource menu, under the **Settings** section, select **High availability**.
 
-    :::image type="content" source="./media/how-to-manage-high-availability/high-availability.png" alt-text="Screenshot showing the High availability page." lightbox="./media/how-to-manage-high-availability/high-availability.png":::
+    :::image type="content" source="./media/how-to-configure-high-availability/high-availability.png" alt-text="Screenshot showing the High availability page." lightbox="./media/how-to-configure-high-availability/high-availability.png":::
 
 3. If high availability isn't enabled, the **Enable high availability** checkbox appears unchecked, and **High availability status** is shown as **Not Enabled**.
 
-    :::image type="content" source="./media/how-to-manage-high-availability/high-availability-not-enabled.png" alt-text="Screenshot showing how the High availability page looks, when high availability isn't enabled." lightbox="./media/how-to-manage-high-availability/high-availability-not-enabled.png":::
+    :::image type="content" source="./media/how-to-configure-high-availability/high-availability-not-enabled.png" alt-text="Screenshot showing how the High availability page looks, when high availability isn't enabled." lightbox="./media/how-to-configure-high-availability/high-availability-not-enabled.png":::
 
 4. Select the **Enable high availability** checkbox to enable the option. It shows **Same zone** and **Zone redundant** options. If you choose **Same zone**, the standby server is created in the same availability zone as the primary server.
 
-    :::image type="content" source="./media/how-to-manage-high-availability/high-availability-same-zone.png" alt-text="Screenshot showing how the High availability page looks, when high availability is enabled with same zone." lightbox="./media/how-to-manage-high-availability/high-availability-same-zone.png":::
+    :::image type="content" source="./media/how-to-configure-high-availability/high-availability-same-zone.png" alt-text="Screenshot showing how the High availability page looks, when high availability is enabled with same zone." lightbox="./media/how-to-configure-high-availability/high-availability-same-zone.png":::
 
 >[!NOTE]
 >If the region in which your server is created doesn't support high availability with zone redundancy, the **Zone redundant** option is grayed out and disabled.
 
 5. If the region supports zone redundancy, and you select **Zone redundant**, you can choose in which of the other available zones you want to deploy your standby server.
 
-    :::image type="content" source="./media/how-to-manage-high-availability/high-availability-zone-redundant.png" alt-text="Screenshot showing the High availability page, when the feature is enabled with standby server deployed in a different zone than the primary." lightbox="./media/how-to-manage-high-availability/high-availability-zone-redundant.png":::
+    :::image type="content" source="./media/how-to-configure-high-availability/high-availability-zone-redundant.png" alt-text="Screenshot showing the High availability page, when the feature is enabled with standby server deployed in a different zone than the primary." lightbox="./media/how-to-configure-high-availability/high-availability-zone-redundant.png":::
 
 6. When everything is configured according to your needs, select **Save** to apply the changes. A dialog informs you of the cost increase associated with the deployment of the standby server. If you decide to proceed, select **Enable HA**.
 
-    :::image type="content" source="./media/how-to-manage-high-availability/confirm-enable-high-availability.png" alt-text="Screenshot showing the dialog to confirm enablement of high availability." lightbox="./media/how-to-manage-high-availability/confirm-enable-high-availability.png.png":::
+    :::image type="content" source="./media/how-to-configure-high-availability/confirm-enable-high-availability.png" alt-text="Screenshot showing the dialog to confirm enablement of high availability." lightbox="./media/how-to-configure-high-availability/confirm-enable-high-availability.png.png":::
 
 7. A deployment initiates and, when it completes, a notification shows that high availability is successfully enabled.
 
-    :::image type="content" source="./media/how-to-manage-high-availability/notification-enable-high-availability.png" alt-text="Screenshot showing notification informing that high availability is successfully enabled." lightbox="./media/how-to-manage-high-availability/notification-enable-high-availability.png.png":::
+    :::image type="content" source="./media/how-to-configure-high-availability/notification-enable-high-availability.png" alt-text="Screenshot showing notification informing that high availability is successfully enabled." lightbox="./media/how-to-configure-high-availability/notification-enable-high-availability.png.png":::
 
 ### [CLI](#tab/cli-enable-existing-server)
 
@@ -116,11 +116,11 @@ Follow these steps to disable high availability for your Azure Database for Post
 
 2.  On the Azure Database for PostgreSQL flexible server instance page, select **High Availability** from the front panel to open high availability page.
    
-    :::image type="content" source="./media/how-to-manage-high-availability-portal/high-availability-left-panel.png" alt-text="Left panel selection screenshot."::: 
+    :::image type="content" source="./media/how-to-configure-high-availability-portal/high-availability-left-panel.png" alt-text="Left panel selection screenshot."::: 
 
 3.  Select on the **High availability** checkbox to **disable** the option. Then select **Save** to save the change.
 
-     :::image type="content" source="./media/how-to-manage-high-availability-portal/disable-high-availability.png" alt-text="Screenshot showing disable high availability."::: 
+     :::image type="content" source="./media/how-to-configure-high-availability-portal/disable-high-availability.png" alt-text="Screenshot showing disable high availability."::: 
 
 4.  A confirmation dialog is shown where you can confirm disabling high availability.
 
@@ -135,33 +135,33 @@ This section provides details specifically for HA-related fields. You can follow
 
 1.  In the [Azure portal](https://portal.azure.com/), choose Azure Database for PostgreSQL flexible server and select create. For details on how to fill details such as **Subscription**, **Resource group**, **Server name**, **Region**, and other fields, see [Create an instance of Azure Database for PostgreSQL - Flexible Server](quickstart-create-server.md).
    
-    :::image type="content" source="./media/how-to-manage-high-availability-portal/subscription-region.png" alt-text="Screenshot of subscription and region selection.":::
+    :::image type="content" source="./media/how-to-configure-high-availability-portal/subscription-region.png" alt-text="Screenshot of subscription and region selection.":::
 
 2.  Choose your **availability zone**. This is useful if you want to collocate your application in the same availability zone as the database to reduce latency. Choose **No Preference** if you want the Azure Database for PostgreSQL flexible server instance to deploy the primary server on any availability zone. Only if you choose the availability zone for the primary in a zone-redundant HA deployment are you allowed to choose the standby availability zone.
 
-     :::image type="content" source="./media/how-to-manage-high-availability-portal/zone-selection.png" alt-text="Screenshot of availability zone selection.":::  
+     :::image type="content" source="./media/how-to-configure-high-availability-portal/zone-selection.png" alt-text="Screenshot of availability zone selection.":::  
 
 3.  Select the checkbox for **Enable high availability**. That opens up an option to choose high availability mode. If the region doesn't support AZs, then only same-zone mode is enabled.
 
-    :::image type="content" source="./media/how-to-manage-high-availability-portal/choose-high-availability-deployment-model.png" alt-text="High availability checkbox and mode selection.":::
+    :::image type="content" source="./media/how-to-configure-high-availability-portal/choose-high-availability-deployment-model.png" alt-text="High availability checkbox and mode selection.":::
 
 4.  If you chose the Availability zone in step 2 and if you chose zone-redundant HA, then you can choose the standby zone.
-    :::image type="content" source="./media/how-to-manage-high-availability-portal/choose-standby-availability-zone.png" alt-text="Screenshot of Standby AZ selection.":::
+    :::image type="content" source="./media/how-to-configure-high-availability-portal/choose-standby-availability-zone.png" alt-text="Screenshot of Standby AZ selection.":::
  
 
 5.  If you want to change the default compute and storage, select  **Configure server**.
  
-    :::image type="content" source="./media/how-to-manage-high-availability-portal/configure-server.png" alt-text="Screenshot of configure compute and storage screen.":::  
+    :::image type="content" source="./media/how-to-configure-high-availability-portal/configure-server.png" alt-text="Screenshot of configure compute and storage screen.":::  
 
 6.  If high availability option is checked, the burstable tier isn't available to choose. You can choose either
     **General purpose** or **Memory Optimized** compute tiers. Then you can select **compute size** for your choice from the dropdown.
 
-    :::image type="content" source="./media/how-to-manage-high-availability-portal/select-compute.png" alt-text="Compute tier selection screen.":::  
+    :::image type="content" source="./media/how-to-configure-high-availability-portal/select-compute.png" alt-text="Compute tier selection screen.":::  
 
 
 7.  Select **storage size** in GiB using the sliding bar and select the **backup retention period** between 7 days and 35 days.
    
-    :::image type="content" source="./media/how-to-manage-high-availability-portal/storage-backup.png" alt-text="Screenshot of Storage Backup."::: 
+    :::image type="content" source="./media/how-to-configure-high-availability-portal/storage-backup.png" alt-text="Screenshot of Storage Backup."::: 
 
 8. Select **Save**. 
 
@@ -178,7 +178,7 @@ Follow these steps to force failover your primary to the standby Azure Database 
 6.	Once failover to the standby server is complete, a notification pops up.
 7.	Check the new Primary availability zone and the Standby availability zone.
     
-    :::image type="content" source="./media/how-to-manage-high-availability-portal/ha-forced-failover.png" alt-text="On-demand forced failover option screenshot."::: 
+    :::image type="content" source="./media/how-to-configure-high-availability-portal/ha-forced-failover.png" alt-text="On-demand forced failover option screenshot."::: 
 
 >[!IMPORTANT] 
 > * Don't perform immediate, back-to-back failovers. Wait for at least 15-20 minutes between failovers, which will also allow the new standby server to be fully established.
@@ -195,7 +195,7 @@ Follow these steps to perform a planned failover from your primary to the standb
 5.	A notification appears mentioning that failover is in progress.
 6.	Once failover to the standby server is complete, a notification pops up.
 7.	Check the new Primary availability zone and the Standby availability zone.
-        :::image type="content" source="./media/how-to-manage-high-availability-portal/ha-planned-failover.png" alt-text="Screenshot of On-demand planned failover."::: 
+        :::image type="content" source="./media/how-to-configure-high-availability-portal/ha-planned-failover.png" alt-text="Screenshot of On-demand planned failover."::: 
 
 >[!IMPORTANT] 
 >
