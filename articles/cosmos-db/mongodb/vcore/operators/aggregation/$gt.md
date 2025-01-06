@@ -16,7 +16,7 @@ The `$gt` operator is used to select documents where the value of a field is gre
 
 ## Syntax
 
-```json
+```mongodb
 { "field": { "$gt": value } }
 ```
 
