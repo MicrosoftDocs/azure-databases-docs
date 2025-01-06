@@ -30,7 +30,7 @@ The syntax for using the `$lte` operator is:
 - `field`: The field to be compared.
 - `value`: The value to compare against.
 
-## Example(s)
+## Examples
 Consider this sample document from the SampleCollection collection in the StoreData database.
 
 ```json
