@@ -138,7 +138,7 @@ Consider this sample document from the SampleCollection collection in the StoreD
 }
 ```
 
-### Example 1 - Randomly select 5 documents
+### Example 1 - Randomly select five documents
 
 ```mongodb
 db.SampleCollection.aggregate([{"$sample": {"size": 5}}])
