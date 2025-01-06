@@ -37,7 +37,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 2. In the resource menu, under the **Settings** section, select **High availability**.
 
-    :::image type="content" source="./media/how-to-configure-high-availability/high-availability.png" alt-text="Screenshot showing the High availability page." lightbox="./media/how-to-configure-high-availability/high-availability.png":::
+    :::image type="content" source="./media/how-to-configure-high-availability/high-availability-disabled.png" alt-text="Screenshot showing the High availability page." lightbox="./media/how-to-configure-high-availability/high-availability-disabled.png":::
 
 3. If high availability isn't enabled, the **Enable high availability** checkbox appears unchecked, and **High availability status** is shown as **Not Enabled**.
 
@@ -60,7 +60,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 7. A deployment initiates and, when it completes, a notification shows that high availability is successfully enabled.
 
-    :::image type="content" source="./media/how-to-configure-high-availability/notification-enable-high-availability.png" alt-text="Screenshot showing notification informing that high availability is successfully enabled." lightbox="./media/how-to-configure-high-availability/notification-enable-high-availability.png.png":::
+    :::image type="content" source="./media/how-to-configure-high-availability/notification-enable-disable-high-availability.png" alt-text="Screenshot showing notification informing that high availability is successfully enabled." lightbox="./media/how-to-configure-high-availability/notification-enable-disable-high-availability.png.png":::
 
 ### [CLI](#tab/cli-enable-existing-server)
 
@@ -98,6 +98,12 @@ Code: InvalidParameterValue
 Message: Invalid value given for parameter StandbyAvailabilityZone,availabilityZone. Specify a valid parameter value.
 ```
 
+If you're enabling high availability with zone redundancy, and the region doesn't have multiple availability zones, you get this error:
+
+```output
+This region is single availability zone. Zone redundant high availability is not supported in a single availability zone region.
+```
+
 If high availability is enabled in one mode, and you try to enable it again, specifying a different mode, you get the following error:
 
 ```output
@@ -110,24 +116,43 @@ Message: Invalid value given for parameter Cannot switch Properties.HighAvailabi
 
 ## Disable high availability
 
-Follow these steps to disable high availability for your Azure Database for PostgreSQL flexible server instance that is already configured with high availability.
+### [Portal](#tab/portal-disable-existing-server)
 
-1.  In the [Azure portal](https://portal.azure.com/), select your existing Azure Database for PostgreSQL flexible server instance.
+Using the [Azure portal](https://portal.azure.com/):
 
-2.  On the Azure Database for PostgreSQL flexible server instance page, select **High Availability** from the front panel to open high availability page.
-   
-    :::image type="content" source="./media/how-to-configure-high-availability-portal/high-availability-left-panel.png" alt-text="Left panel selection screenshot."::: 
+1. Select your Azure Database for PostgreSQL flexible server.
 
-3.  Select on the **High availability** checkbox to **disable** the option. Then select **Save** to save the change.
+2. In the resource menu, under the **Settings** section, select **High availability**.
 
-     :::image type="content" source="./media/how-to-configure-high-availability-portal/disable-high-availability.png" alt-text="Screenshot showing disable high availability."::: 
+    :::image type="content" source="./media/how-to-configure-high-availability/high-availability-enabled.png" alt-text="Screenshot showing the High availability page with same zone high availability enabled." lightbox="./media/how-to-configure-high-availability/high-availability-enabled.png":::
 
-4.  A confirmation dialog is shown where you can confirm disabling high availability.
+3. If high availability is enabled, the **Enable high availability** checkbox appears checked, **High availability mode** is set to the mode configured, and **High availability status** is typically shown as **Healthy**.
 
-5.  Select **Disable HA** button to disable the high availability.
+    :::image type="content" source="./media/how-to-configure-high-availability/high-availability-not-enabled.png" alt-text="Screenshot showing how the High availability page looks, when high same zone high availability is enabled." lightbox="./media/how-to-configure-high-availability/high-availability-not-enabled.png":::
 
-6.  A notification appears stating that decommissioning of the high availability deployment is in progress.
+4. Clear the **Enable high availability** checkbox to disable the option.
 
+    :::image type="content" source="./media/how-to-configure-high-availability/high-availability-disabling.png" alt-text="Screenshot showing how the High availability page looks, when disabling high availability." lightbox="./media/how-to-configure-high-availability/high-availability-disabling.png":::
+
+6. Select **Save** to apply the changes. A dialog informs you of the cost reduction associated with the removal of the standby server. If you decide to proceed, select **Disable HA**.
+
+    :::image type="content" source="./media/how-to-configure-high-availability/confirm-disable-high-availability.png" alt-text="Screenshot showing the dialog to confirm disablement of high availability." lightbox="./media/how-to-configure-high-availability/confirm-disable-high-availability.png":::
+
+7. A deployment initiates and, when it completes, a notification shows that high availability is successfully disabled.
+
+    :::image type="content" source="./media/how-to-configure-high-availability/notification-enable-disable-high-availability.png" alt-text="Screenshot showing notification informing that high availability is successfully disabled." lightbox="./media/how-to-configure-high-availability/notification-enable-disable-high-availability.png.png":::
+
+### [CLI](#tab/cli-disable-existing-server)
+
+You can disable high availability in an existing server via the [az postgres flexible-server update](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-update) command.
+
+To disable high availability, use this command:
+
+```azurecli-interactive
+az postgres flexible-server update --resource-group <resource_group> --name <server> --high-availability Disabled
+```
+
+---
 
 ## Enable high availability during server creation
 
