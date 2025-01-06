@@ -25,7 +25,7 @@ The `$gt` operator is used to select documents where the value of a field is gre
 - `field`: The field in the document you want to compare.
 - `value`: The value that the field should be greater than.
 
-## Example(s)
+## Examples
 Consider this sample document from the SampleCollection collection in the StoreData database.
 
 ```json
