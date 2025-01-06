@@ -14,7 +14,7 @@ ms.date: 01/06/2025
 
 [!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 
-The `$ne` operator is used to select documents where the value of a field does not equal a specified value.
+The `$ne` operator is used to select documents where the value of a field doesn't equal a specified value.
 
 ## Syntax
 
@@ -26,9 +26,9 @@ The syntax for the `$ne` operator is:
 
 ## Parameters
 - `field`: The field to be compared.
-- `value`: The value that the field should not be equal to.
+- `value`: The value that the field shouldn't be equal to.
 
-## Example(s)
+## Examples
 Consider this sample document from the SampleCollection collection in the StoreData database.
 
 ```json
@@ -141,13 +141,13 @@ Consider this sample document from the SampleCollection collection in the StoreD
 }
 ```
 
-### Example 1 - Find stores whose name is not "Delmer's Jewelry Gifts"
+### Example 1 - Find stores whose name isn't "Delmer's Jewelry Gifts"
 
 ```javascript
 db.SampleCollection.find({ "name": {"$ne": "Delmer's Jewelry Gifts"}})
 ```
 
-### Example 2 - Find stores with promotion events that are not in 2024
+### Example 2 - Find stores with promotion events that aren't in 2024
 
 ```javascript
 db.SampleCollection.find({ "promotionEvents.promotionalDates.startDate": {"$ne": "2024"}})
