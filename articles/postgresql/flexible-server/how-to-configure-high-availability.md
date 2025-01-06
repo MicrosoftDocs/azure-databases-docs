@@ -52,11 +52,11 @@ Using the [Azure portal](https://portal.azure.com/):
 
 6. When everything is configured according to your needs, select **Save** to apply the changes. A dialog informs you of the cost increase associated with the deployment of the standby server. If you decide to proceed, select **Enable HA**.
 
-    :::image type="content" source="./media/how-to-configure-high-availability/confirm-enable-high-availability.png" alt-text="Screenshot showing the dialog to confirm enablement of high availability." lightbox="./media/how-to-configure-high-availability/confirm-enable-high-availability.png.png":::
+    :::image type="content" source="./media/how-to-configure-high-availability/confirm-enable-high-availability.png" alt-text="Screenshot showing the dialog to confirm enablement of high availability." lightbox="./media/how-to-configure-high-availability/confirm-enable-high-availability.png":::
 
 7. A deployment initiates and, when it completes, a notification shows that high availability is successfully enabled.
 
-    :::image type="content" source="./media/how-to-configure-high-availability/notification-enable-disable-high-availability.png" alt-text="Screenshot showing notification informing that high availability is successfully enabled." lightbox="./media/how-to-configure-high-availability/notification-enable-disable-high-availability.png.png":::
+    :::image type="content" source="./media/how-to-configure-high-availability/notification-enable-disable-high-availability.png" alt-text="Screenshot showing notification informing that high availability is successfully enabled." lightbox="./media/how-to-configure-high-availability/notification-enable-disable-high-availability.png":::
 
 ### [CLI](#tab/cli-enable-existing-server)
 
@@ -134,7 +134,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 7. A deployment initiates and, when it completes, a notification shows that high availability is successfully disabled.
 
-    :::image type="content" source="./media/how-to-configure-high-availability/notification-enable-disable-high-availability.png" alt-text="Screenshot showing notification informing that high availability is successfully disabled." lightbox="./media/how-to-configure-high-availability/notification-enable-disable-high-availability.png.png":::
+    :::image type="content" source="./media/how-to-configure-high-availability/notification-enable-disable-high-availability.png" alt-text="Screenshot showing notification informing that high availability is successfully disabled." lightbox="./media/how-to-configure-high-availability/notification-enable-disable-high-availability.png":::
 
 ### [CLI](#tab/cli-disable-existing-server)
 
@@ -163,7 +163,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 2.  If you select a specific zone for the primary server by setting **Availability zone** to any value other than **No preference**, when you select **Zone redundant**, you can also select an explicitly selected value for the standby server in **Standby availability zone**. Setting the zones to specific zones is useful if you want to collocate your application in the same zone as the database, to reduce latency. Choose **No preference** if you want the standby server to deploy on an availability zone automatically chosen for you.
 
-    :::image type="content" source="./media/how-to-configure-high-availability/high-availability-zone-redundant-server-provisioning.png" alt-text="Screenshot showing how to configure high availability options during provisioning of a new instance." lightbox="./media/how-to-configure-high-availability/high-availability-zone-redundant-server-provisioning.png":::
+    :::image type="content" source="./media/how-to-configure-high-availability/high-availability-zone-redundant-server-provisioning.png" alt-text="Screenshot showing how to select specific availability zones for primary and standby servers." lightbox="./media/how-to-configure-high-availability/high-availability-zone-redundant-server-provisioning.png":::
 
 ### [CLI](#tab/cli-enable-new-server)
 
