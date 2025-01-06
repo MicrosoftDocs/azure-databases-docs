@@ -1,10 +1,10 @@
 ---
-title: Major version upgrade - Azure portal
-description: This article describes how to perform a major version upgrade in Azure Database for PostgreSQL - Flexible Server through the Azure portal.
+title: Major version upgrade
+description: This article describes how to perform a major version upgrade in an Azure Database for PostgreSQL flexible server.
 author: rajsell
 ms.author: kabharati
 ms.reviewer: maghan
-ms.date: 12/08/2024
+ms.date: 01/06/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: how-to
