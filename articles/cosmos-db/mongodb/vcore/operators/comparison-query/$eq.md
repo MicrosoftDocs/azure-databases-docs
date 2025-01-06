@@ -1,35 +1,182 @@
 ---
-title: $eq (Comparison Query)
-titleSuffix: Azure Cosmos DB for MongoDB vCore
-description: The $eq operator matches documents where the value of a field is equal to a specified value.
-author: avijitgupta
-ms.author: avijitgupta
+title: $eq
+titleSuffix: Overview of the $eq query operator in Azure Cosmos DB for MongoDB vCore
+description: Overview of the $eq query operator in Azure Cosmos DB for MongoDB vCore
+author: abinav2307
+ms.author: abramees
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
-ms.topic: reference
-ms.date: 09/11/2024
+ms.topic: conceptual
+ms.date: 01/06/2025
 ---
 
 # $eq (Comparison Query)
 
 [!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 
-The `$eq` operator is used to match documents where the value of a field is equal to a specified value. This operator is particularly useful for filtering documents based on exact matches. It can be used in various query contexts, such as finding documents with specific field values, filtering arrays, and more.
+The `$eq` operator is used to match documents where the value of a field is equal to a specified value. This operator is used to filter documents based on exact matches and with query predicates to retrieve documents with specific values, objects and arrays.
 
 ## Syntax
 
-The syntax for the `$eq` operator is as follows:
+The syntax for the `$eq` operator is:
 
-```javascript
-{ field: { $eq: value } }
+```json
+{ "field": { "$eq": "value" } }
 ```
 
 ## Parameters
 
-| | Description |
-| --- | --- |
-| **`field`** | The field to be compared. |
-| **`count`** | The value to compare against. |
+- `field`: The field to be compared.
+- `value`: The value to compare against.
+
+## Example(s)
+
+Consider this sample document from the SampleCollection collection in the StoreData database.
+
+```json
+{
+    "_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4",
+    "name": "First Up Consultants | Beverage Shop - Satterfieldmouth",
+    "location": {
+        "lat": -89.2384,
+        "lon": -46.4012
+    },
+    "staff": {
+        "totalStaff": {
+            "fullTime": 8,
+            "partTime": 20
+        }
+    },
+    "sales": {
+        "totalSales": 75670,
+        "salesByCategory": [
+            {
+                "categoryName": "Wine Accessories",
+                "totalSales": 34440
+            },
+            {
+                "categoryName": "Bitters",
+                "totalSales": 39496
+            },
+            {
+                "categoryName": "Rum",
+                "totalSales": 1734
+            }
+        ]
+    },
+    "promotionEvents": [
+        {
+            "eventName": "Unbeatable Bargain Bash",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 6,
+                    "Day": 23
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 7,
+                    "Day": 2
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 7
+                },
+                {
+                    "categoryName": "Bitters",
+                    "discountPercentage": 15
+                },
+                {
+                    "categoryName": "Brandy",
+                    "discountPercentage": 8
+                },
+                {
+                    "categoryName": "Sports Drinks",
+                    "discountPercentage": 22
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 19
+                }
+            ]
+        },
+        {
+            "eventName": "Steal of a Deal Days",
+            "promotionalDates": {
+                "startDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 21
+                },
+                "endDate": {
+                    "Year": 2024,
+                    "Month": 9,
+                    "Day": 29
+                }
+            },
+            "discounts": [
+                {
+                    "categoryName": "Organic Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "White Wine",
+                    "discountPercentage": 20
+                },
+                {
+                    "categoryName": "Sparkling Wine",
+                    "discountPercentage": 19
+                },
+                {
+                    "categoryName": "Whiskey",
+                    "discountPercentage": 17
+                },
+                {
+                    "categoryName": "Vodka",
+                    "discountPercentage": 23
+                }
+            ]
+        }
+    ]
+}
+```
+
+### Example 1: Find documents based an equality match on the value of a root level field
+
+To find a store with the name "Boulder Innovations | Home Security Place - Ankundingburgh":
+
+```javascript
+db.SampleCollection.find({ "name": { "$eq": "Boulder Innovations | Home Security Place - Ankundingburgh" } })
+```
+
+### Example 2: Find documents based on an equality match on the value of a nested field
+
+To find stores where the total sales amount is exactly $37,015:
+
+```javascript
+db.SampleCollection.find({ "sales.totalSales": { "$eq": 37015 } })
+```
+
+### Example 3: Find documents based on an equality match on any individual item within an array
+
+This query searches for an equality match on any one of the objects within the nested discounts array
+
+```javascript
+db.SampleCollection.find({"promotionEvents.discounts": { "$eq": {"categoryName": "Alarm Systems", "discountPercentage": 5}}})
+```
+
+### Example 4: Find documents based on an equality on the entire array
+
+This query searches for documents based on exact match on ALL the values within an array.
+
+```javascript
+db.SampleCollection.find({"promotionEvents.discounts": { "$eq": [{"categoryName": "Alarm Systems", "discountPercentage": 5}, {"categoryName": "Door Locks", "discountPercentage": 12}]}})
+```
+
+> [!NOTE]
+> For an equality match on an entire array, the order of the order of specified values in the equality predicates must also be an exact match.
 
 ## Related content
 
