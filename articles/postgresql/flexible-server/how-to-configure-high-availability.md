@@ -158,6 +158,9 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="./media/how-to-configure-high-availability/high-availability-enable-server-provisioning.png" alt-text="Screenshot showing how to configure high availability options during provisioning of a new instance." lightbox="./media/how-to-configure-high-availability/high-availability-enable-server-provisioning.png":::
 
+>[!NOTE]
+>If the region in which your server is created doesn't support high availability with zone redundancy, the **Zone redundant** option is grayed out and disabled.
+
 2.  If you select a specific zone for the primary server by setting **Availability zone** to any value other than **No preference**, when you select **Zone redundant**, you can also select an explicitly selected value for the standby server in **Standby availability zone**. Setting the zones to specific zones is useful if you want to collocate your application in the same zone as the database, to reduce latency. Choose **No preference** if you want the standby server to deploy on an availability zone automatically chosen for you.
 
     :::image type="content" source="./media/how-to-configure-high-availability/high-availability-zone-redundant-server-provisioning.png" alt-text="Screenshot showing how to configure high availability options during provisioning of a new instance." lightbox="./media/how-to-configure-high-availability/high-availability-zone-redundant-server-provisioning.png":::
