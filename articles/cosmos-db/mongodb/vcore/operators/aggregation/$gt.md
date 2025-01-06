@@ -146,12 +146,12 @@ db.SampleCollection.find({ "sales.totalSales": { "$gt": 35000 } })
 
 ### Example 2: Find stores with more than 12 full-time staff
 
-```json
+```javascript
 db.SampleCollection.find({ "staff.totalStaff.fullTime": { "$gt": 12 } })
 ```
 
 ### Example 3: Find promotion events with a discount percentage greater than 10% for Art & Craft Kits
 
-```json
+```javascript
 db.SampleCollection.find({ "promotionEvents.discounts": { "$elemMatch": { "categoryName": "Art & Craft Kits", "discountPercentage": { "$gt": 10 } } } })  
 ```
