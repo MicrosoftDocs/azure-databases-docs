@@ -23,10 +23,7 @@ This quickstart demonstrates how to connect to an Azure Database for PostgreSQL 
 
 ## Prerequisites
 
-This quickstart uses the resources created in either of these guides as a starting point:
-
-- [Create DB - Portal](quickstart-create-server-portal.md)
-- [Create DB - Azure CLI](quickstart-create-server-cli.md)
+This quickstart uses the resources created in the [Create an instance of Azure Database for PostgreSQL - Flexible Server](quickstart-create-server.md) as a starting point.
 
 > [!IMPORTANT]
 > We recommend you use a server with **Public access (allowed IP addresses)** enabled for this quickstart. Using a server with **Private access (VNet Integration)** enabled to complete this quickstart might involve extra steps that aren't covered.

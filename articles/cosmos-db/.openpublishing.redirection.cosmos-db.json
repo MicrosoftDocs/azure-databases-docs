@@ -5984,6 +5984,21 @@
       "source_path_from_root": "/articles/cosmos-db/gen-ai/quickstart-rag-chatbot.md",
       "redirect_url": "/azure/cosmos-db/gen-ai/rag-chatbot",
       "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/cassandra/security/index.md",
+      "redirect_url": "/azure/cosmos-db/cassandra",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/gremlin/security/index.md",
+      "redirect_url": "/azure/cosmos-db/gremlin",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/security/index.md",
+      "redirect_url": "/azure/cosmos-db/mongodb",
+      "redirect_document_id": false
     }
   ]
 }

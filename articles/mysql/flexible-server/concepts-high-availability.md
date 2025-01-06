@@ -8,6 +8,7 @@ ms.date: 11/27/2024
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: conceptual
+ai-usage: ai-assisted
 ---
 
 # High availability concepts in Azure Database for MySQL - Flexible Server
@@ -69,6 +70,8 @@ Automatic backups, both snapshots and log backups, are performed on locally redu
 > - Always use a fully qualified domain name (FQDN) to connect to your primary server. Avoid using an IP address to connect. If there's a failover, after the primary and standby server roles are switched, a DNS A record might change. That change would prevent the application from connecting to the new primary server if an IP address is used in the connection string.
 
 ## Failover process
+
+During the failover process in Azure Database for MySQL, the system automatically switches from the primary server to the standby replica to ensure continuity and minimize downtime. When a failure is detected, the standby replica is promoted to become the new primary server. The binary log files from the original primary server are applied to the standby replica to synchronize it with the last committed transaction, ensuring no data loss. This seamless transition helps maintain high availability and reliability of the database service.
 
 ### Planned: Forced failover
 
@@ -138,6 +141,18 @@ Here are some considerations to keep in mind when you use high availability:
 
 > [!NOTE]  
 > Storage autogrow is default enabled for a High-Availability configured server and can not to be disabled.
+
+## Health Checks
+
+When configuring High Availability (HA) for Azure Database for MySQL, health checks play a crucial role in maintaining the reliability and performance of your database. These checks continuously monitor the status and health of both the primary and standby replicas, ensuring that any issues are detected promptly. By tracking various metrics such as server responsiveness, replication lag, and resource utilization, health checks help to ensure that failover processes can be executed seamlessly, minimizing downtime and preventing data loss. Properly configured health checks are essential for achieving the desired level of availability and resilience in your database setup.
+
+### Monitoring health
+
+"Users can monitor the health of their HA setup through the Azure portal. Key metrics to observe include:
+
+- **Server responsiveness:** Indicates whether the primary server is reachable.
+- **Replication lag:** Measures the delay between the primary and standby replicas, ensuring data consistency.
+- **Resource utilization:** Monitors CPU, memory, and storage usage to prevent bottlenecks."
 
 ## Frequently asked questions (FAQ)
 

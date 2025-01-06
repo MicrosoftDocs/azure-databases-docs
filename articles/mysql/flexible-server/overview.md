@@ -4,7 +4,7 @@ description: Learn about the Flexible Server deployment model for Azure Database
 author: SudheeshGH
 ms.author: sunaray
 ms.reviewer: maghan
-ms.date: 11/27/2024
+ms.date: 12/19/2024
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: overview
@@ -99,7 +99,7 @@ For more information, see [Scheduled maintenance in Azure Database for MySQL - F
 
 The Azure Database for MySQL - Flexible Server service automatically creates server backups and stores them in user-configured locally redundant or geo-redundant storage. You can use backups to restore your server to any point in time within the backup retention period.
 
-You can configure a retention period of 1 to 35 days. The default is 7 days. All backups are encrypted through AES 256-bit encryption.
+You can configure a retention period of 1 to 35 days. The default is seven days. All backups are encrypted through AES 256-bit encryption.
 
 For more information, see [Backup and restore in Azure Database for MySQL - Flexible Server](concepts-backup-restore.md).
 
@@ -216,62 +216,62 @@ One advantage of running your workload in Azure is its global reach. Azure Datab
 
 | Region | Availability | Same-zone HA | Zone-redundant HA | Geo-redundant backup |
 | --- | --- | --- | --- | --- |
-| Australia Central | :heavy_check_mark: | :heavy_check_mark: | :x: | :x: |
-| Australia East | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Australia Southeast | :heavy_check_mark: | :heavy_check_mark: | :x: | :heavy_check_mark: |
-| Brazil South | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Canada Central | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Canada East | :heavy_check_mark: | :heavy_check_mark: | :x: | :heavy_check_mark: |
-| Central India | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Central US | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| China East 2 | :heavy_check_mark: | :heavy_check_mark: | :x: | :heavy_check_mark: |
-| China East 3 | :heavy_check_mark: | :heavy_check_mark: | :x: | :heavy_check_mark: |
-| China North 2 | :heavy_check_mark: | :heavy_check_mark: | :x: | :heavy_check_mark: |
-| China North 3 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| East Asia (Hong Kong SAR) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| East US | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| East US 2 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| France Central | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| France South | :heavy_check_mark: | :heavy_check_mark: | :x: | :heavy_check_mark: |
-| Germany West Central | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Germany North | :heavy_check_mark: | :heavy_check_mark: | :x: | :heavy_check_mark: |
-| Israel Central | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :x: |
-| Italy North | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :x: |
-| Japan East | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Japan West | :heavy_check_mark: | :heavy_check_mark: | :x: | :heavy_check_mark: |
-| Jio India West | :heavy_check_mark: | :heavy_check_mark: | :x: | :x: |
-| Korea Central | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Korea South | :heavy_check_mark: | :heavy_check_mark: | :x: | :heavy_check_mark: |
-| Mexico Central | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| North Central US | :heavy_check_mark: | :heavy_check_mark: | :x: | :heavy_check_mark: |
-| North Europe | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Norway East | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Norway West | :heavy_check_mark: | :heavy_check_mark: | :x: | :x: |
-| Poland Central | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :x: |
-| Qatar Central | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :x: |
-| South Africa North | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| South Africa West | :heavy_check_mark: | :heavy_check_mark: | :x: | :heavy_check_mark: |
-| South Central US | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| South India | :heavy_check_mark: | :heavy_check_mark: | :x: | :heavy_check_mark: |
-| Southeast Asia | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Spain Central | :heavy_check_mark: | :heavy_check_mark: | :x: | :heavy_check_mark: |
-| Sweden Central | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :x: |
-| Switzerland North | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Switzerland West | :heavy_check_mark: | :heavy_check_mark: | :x: | :heavy_check_mark: |
-| Taiwan North | :heavy_check_mark: | :heavy_check_mark: | :x: | :x: |
-| Taiwan Northwest | :heavy_check_mark: | :heavy_check_mark: | :x: | :x: |
-| UAE Central | :heavy_check_mark: | :heavy_check_mark: | :x: | :heavy_check_mark: |
-| UAE North | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| UK South | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| UK West | :heavy_check_mark: | :heavy_check_mark: | :x: | :heavy_check_mark: |
-| USGov Virginia | :heavy_check_mark: | :heavy_check_mark: | :x: | :x: |
-| USGov Arizona | :heavy_check_mark: | :heavy_check_mark: | :x: | :heavy_check_mark: |
-| USGov Texas | :heavy_check_mark: | :heavy_check_mark: | :x: | :heavy_check_mark: |
-| West Central US | :heavy_check_mark: | :heavy_check_mark: | :x: | :heavy_check_mark: |
-| West Europe | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| West US | :heavy_check_mark: | :heavy_check_mark: | :x: | :heavy_check_mark: |
-| West US 2 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| West US 3 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Australia Central | Yes | Yes | No | No |
+| Australia East | Yes | Yes | Yes | Yes |
+| Australia Southeast | Yes | Yes | No | Yes |
+| Brazil South | Yes | Yes | Yes | Yes |
+| Canada Central | Yes | Yes | Yes | Yes |
+| Canada East | Yes | Yes | No | Yes |
+| Central India | Yes | Yes | Yes | Yes |
+| Central US | Yes | Yes | Yes | Yes |
+| China East 2 | Yes | Yes | No | Yes |
+| China East 3 | Yes | Yes | No | Yes |
+| China North 2 | Yes | Yes | No | Yes |
+| China North 3 | Yes | Yes | Yes | Yes |
+| East Asia (Hong Kong SAR) | Yes | Yes | Yes | Yes |
+| East US | Yes | Yes | Yes | Yes |
+| East US 2 | Yes | Yes | Yes | Yes |
+| France Central | Yes | Yes | Yes | Yes |
+| France South | Yes | Yes | No | Yes |
+| Germany West Central | Yes | Yes | Yes | Yes |
+| Germany North | Yes | Yes | No | Yes |
+| Israel Central | Yes | Yes | Yes | No |
+| Italy North | Yes | Yes | Yes | No |
+| Japan East | Yes | Yes | Yes | Yes |
+| Japan West | Yes | Yes | No | Yes |
+| Jio India West | Yes | Yes | No | No |
+| Korea Central | Yes | Yes | Yes | Yes |
+| Korea South | Yes | Yes | No | Yes |
+| Mexico Central | Yes | Yes | Yes | Yes |
+| North Central US | Yes | Yes | No | Yes |
+| North Europe | Yes | Yes | Yes | Yes |
+| Norway East | Yes | Yes | Yes | Yes |
+| Norway West | Yes | Yes | No | No |
+| Poland Central | Yes | Yes | Yes | No |
+| Qatar Central | Yes | Yes | Yes | No |
+| South Africa North | Yes | Yes | Yes | Yes |
+| South Africa West | Yes | Yes | No | Yes |
+| South Central US | Yes | Yes | Yes | Yes |
+| South India | Yes | Yes | No | Yes |
+| Southeast Asia | Yes | Yes | Yes | Yes |
+| Spain Central | Yes | Yes | No | Yes |
+| Sweden Central | Yes | Yes | Yes | No |
+| Switzerland North | Yes | Yes | Yes | Yes |
+| Switzerland West | Yes | Yes | No | Yes |
+| Taiwan North | Yes | Yes | No | No |
+| Taiwan Northwest | Yes | Yes | No | No |
+| UAE Central | Yes | Yes | No | Yes |
+| UAE North | Yes | Yes | Yes | Yes |
+| UK South | Yes | Yes | Yes | Yes |
+| UK West | Yes | Yes | No | Yes |
+| USGov Virginia | Yes | Yes | No | No |
+| USGov Arizona | Yes | Yes | No | Yes |
+| USGov Texas | Yes | Yes | No | Yes |
+| West Central US | Yes | Yes | No | Yes |
+| West Europe | Yes | Yes | Yes | Yes |
+| West US | Yes | Yes | No | Yes |
+| West US 2 | Yes | Yes | Yes | Yes |
+| West US 3 | Yes | Yes | Yes | Yes |
 
 ## Feedback and support
 
