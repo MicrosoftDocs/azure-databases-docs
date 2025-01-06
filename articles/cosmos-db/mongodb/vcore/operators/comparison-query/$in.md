@@ -27,7 +27,7 @@ The $in operator is used to match values of a field against an array of possible
 - `[<value1>, <value2>, ... <valueN>]`: An array of values to match against the specified field.
 
 ## Examples
-Consider this sample document from the stores collection in the StoreData database.
+Consider this sample document from the SampleCollection collection in the StoreData database.
 
 ```json
 {
