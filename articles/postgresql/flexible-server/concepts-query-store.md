@@ -196,7 +196,7 @@ This view returns all the data that is persisted in the supporting tables of que
 | `user_id` | oid | pg_authid.oid | OID of user who executed the statement. |
 | `db_id` | oid | pg_database.oid | OID of database in which the statement was executed. |
 | `query_id` | bigint | | Internal hash code, computed from the statement's parse tree. |
-| `query_sql_text` | varchar(10000) | | Text of a representative statement. Different queries with the same structure are clustered together; this text is the text for the first of the queries in the cluster. The default value for the maximum query text length is 6000, and can be modified using query store parameter `pg_qs.max_query_text_length`. If the text of the query exceeds this maximum value, it's truncated to the first `pg_qs.max_query_text_length` characters. |
+| `query_sql_text` | varchar(10000) | | Text of a representative statement. Different queries with the same structure are clustered together; this text is the text for the first of the queries in the cluster. The default value for the maximum query text length is 6000, and can be modified using query store parameter `pg_qs.max_query_text_length`. If the text of the query exceeds this maximum value, it's truncated to the first `pg_qs.max_query_text_length` bytes. |
 | `plan_id` | bigint | | ID of the plan corresponding to this query. |
 | `start_time` | timestamp | | Queries are aggregated by time windows. Server parameter `pg_qs.interval_length_minutes` defines the time span of those windows (default is 15 minutes). This column corresponds to the start time of the window in which this entry was recorded. |
 | `end_time` | timestamp | | End time corresponding to the time window for this entry. |

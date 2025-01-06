@@ -114,7 +114,7 @@ To connect your application to Azure Cosmos DB, you need to update the configura
 1. Retrieve the primary key for the Azure Cosmos DB account by using the following CLI command in the terminal window: 
 
     ```azurecli-interactive
-    az cosmosdb list-keys --name <cosmosdb-name> -g myResourceGroup
+    az cosmosdb keys list --name <cosmosdb-name> -g myResourceGroup
     ```    
     
     \<cosmosdb-name> is the name of the Azure Cosmos DB account that you created in [Part 4](tutorial-develop-nodejs-part-4.md) of the tutorial.

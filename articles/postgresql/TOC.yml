@@ -42,23 +42,17 @@
   - name: Quickstarts
     expanded: true
     items:
-    - name: Create server instance and database
+    - name: Create a server
       items:
-      - name: ARM template
-        displayName: Resource Manager
-        href: flexible-server/quickstart-create-server-arm-template.md
-      - name: Azure CLI
-        href: flexible-server/quickstart-create-server-cli.md
-      - name: Azure portal
-        href: flexible-server/quickstart-create-server-portal.md
+      - name: Portal, CLI, ARM template
+        href: flexible-server/quickstart-create-server.md
       - name: Azure SDK for Python
         href: flexible-server/quickstart-create-server-python-sdk.md
       - name: Azure SDK for .NET
         href: flexible-server/quickstart-create-server-dotnet-sdk.md
       - name: Bicep
-        displayName: Resource Manager, ARM
         href: flexible-server/quickstart-create-server-bicep.md
-    - name: Create an Elastic Cluster
+    - name: Create an elastic cluster
       items:
       - name: ARM template
         displayName: Resource Manager
@@ -457,6 +451,8 @@
           href: flexible-server/how-to-server-logs-cli.md
       - name: Relocate a server 
         href: /azure/operational-excellence/relocation-postgresql-flexible-server?toc=/azure/postgresql/toc.json
+    - name: Configure managed identities
+      href: flexible-server/how-to-configure-managed-identities.md
     - name: Encryption with CMK
       items:
       - name: Azure CLI
@@ -648,7 +644,17 @@
   - name: Minimal-downtime migration with DMS
     href: single-server/how-to-migrate-online.md
   - name: Migrate from Oracle
-    href: single-server/how-to-migrate-from-oracle.md
+    items:
+      - name: Migration Concepts
+        href: migrate/concepts-oracle-migration.md
+      - name: Migration Stages
+        href: migrate/concepts-oracle-migration-stages.md
+      - name: Best Practices
+        href: migrate/best-practices-oracle-to-postgresql.md
+      - name: Pre-migration Checklist
+        href: migrate/best-practices-oracle-to-postgresql-checklist.md
+      - name: Migrate using Ora2Pg
+        href: migrate/how-to-migrate-oracle-ora2pg.md
 - name: Azure Database for PostgreSQL - Single Server
   expanded: false
   items:

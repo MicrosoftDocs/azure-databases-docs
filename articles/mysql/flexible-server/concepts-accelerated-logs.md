@@ -57,14 +57,18 @@ The accelerated logs feature is currently available only in the following region
   - East US 2
   - France Central
   - Germany West Central
+  - Israel central
+  - Italy North
   - Japan East
   - Korea Central
+  - Mexico Central
   - North Europe
   - Norway East
   - Poland Central
   - South Africa North
   - South Central US
   - Southeast Asia
+  - Spain Central
   - Sweden Central
   - Switzerland North
   - UAE North
