@@ -19,10 +19,6 @@ This article describes how you can enable or disable high availability configura
 
 High availability feature deploys physically separate primary and standby replicas. Both replicas can be provisioned within the same availability zone or each on a different zone, depending on the deployment model you choose. For more information, see [high availability concepts](/azure/reliability/reliability-postgresql-flexible-server). You can enable high availability at creation time of your Azure Database for PostgreSQL flexible server, or you can do it after the server is created.
 
-Enabling or disabling high availability on an Azure Database for PostgreSQL flexible server doesn't change other settings, including networking configuration, firewall settings, server parameters, or backup retention. Enabling or disabling high availability is an online operation, and doesn't affect your application connectivity and operations.
-
-High availability with both replicas deployed in the same zone is supported and available in all regions in which Azure Database for PostgreSQL - Flexible Server is supported. However, high availability with zone redundancy is [only available in certain regions](overview.md#azure-regions).
-
 > [!IMPORTANT]
 > _Billing Model Update for Azure Database for PostgreSQL Flexible Server (v5 HA):_
 In April, we implemented a billing model update for v5 SKU with High Availability (HA) enabled servers. This change aims to correctly reflect the charges, by accounting for both the primary and standby servers. Before this change, we were incorrectly charging customers for the primary server only. Customers using v5 SKU with HA enabled servers will now see billing quantities multiplied by 2. This update doesn't impact v4 and v3 SKUs.
@@ -154,42 +150,78 @@ az postgres flexible-server update --resource-group <resource_group> --name <ser
 
 ---
 
-## Enable high availability during server creation
+## Enable high availability during server provisioning
 
-This section provides details specifically for HA-related fields. You can follow these steps to deploy high availability while creating your Azure Database for PostgreSQL flexible server instance.
+### [Portal](#tab/portal-enable-new-server)
 
-1.  In the [Azure portal](https://portal.azure.com/), choose Azure Database for PostgreSQL flexible server and select create. For details on how to fill details such as **Subscription**, **Resource group**, **Server name**, **Region**, and other fields, see [Create an instance of Azure Database for PostgreSQL - Flexible Server](quickstart-create-server.md).
-   
-    :::image type="content" source="./media/how-to-configure-high-availability-portal/subscription-region.png" alt-text="Screenshot of subscription and region selection.":::
+Using the [Azure portal](https://portal.azure.com/):
 
-2.  Choose your **availability zone**. This is useful if you want to collocate your application in the same availability zone as the database to reduce latency. Choose **No Preference** if you want the Azure Database for PostgreSQL flexible server instance to deploy the primary server on any availability zone. Only if you choose the availability zone for the primary in a zone-redundant HA deployment are you allowed to choose the standby availability zone.
+1. During provisioning of a new instance of Azure Database for PostgreSQL Flexible Server, in the **High availability** section, select **Same zone** or **Zone redundant**.
 
-     :::image type="content" source="./media/how-to-configure-high-availability-portal/zone-selection.png" alt-text="Screenshot of availability zone selection.":::  
+    :::image type="content" source="./media/how-to-configure-high-availability/high-availability-enable-server-provisioning.png" alt-text="Screenshot showing how to configure high availability options during provisioning of a new instance." lightbox="./media/how-to-configure-high-availability/high-availability-enable-server-provisioning.png":::
 
-3.  Select the checkbox for **Enable high availability**. That opens up an option to choose high availability mode. If the region doesn't support AZs, then only same-zone mode is enabled.
+2.  If you've selected a specific zone for the primary server by setting **Availability zone** to any value other than **No preference**, when you select **Zone redundant**, you can also select an explicitly selected value for the standby server in **Standby availability zone**. This is useful if you want to collocate your application in the same availability zone as the database to reduce latency. Choose **No preference** if you want the standby server to deploy on an availability zone automatically chosen for you.
 
-    :::image type="content" source="./media/how-to-configure-high-availability-portal/choose-high-availability-deployment-model.png" alt-text="High availability checkbox and mode selection.":::
+    :::image type="content" source="./media/how-to-configure-high-availability/high-availability-zone-redundant-server-provisioning.png" alt-text="Screenshot showing how to configure high availability options during provisioning of a new instance." lightbox="./media/how-to-configure-high-availability/high-availability-zone-redundant-server-provisioning.png":::
 
-4.  If you chose the Availability zone in step 2 and if you chose zone-redundant HA, then you can choose the standby zone.
-    :::image type="content" source="./media/how-to-configure-high-availability-portal/choose-standby-availability-zone.png" alt-text="Screenshot of Standby AZ selection.":::
- 
+### [CLI](#tab/cli-enable-new-server)
 
-5.  If you want to change the default compute and storage, select  **Configure server**.
- 
-    :::image type="content" source="./media/how-to-configure-high-availability-portal/configure-server.png" alt-text="Screenshot of configure compute and storage screen.":::  
+You can enable high availability while provisioning a new server via the [az postgres flexible-server create](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-create) command.
 
-6.  If high availability option is checked, the burstable tier isn't available to choose. You can choose either
-    **General purpose** or **Memory Optimized** compute tiers. Then you can select **compute size** for your choice from the dropdown.
+> [!NOTE]
+> The following commands need to be completed with other parameters, whose presence and values would vary depending on how you want to configure other features of the provisioned server.
 
-    :::image type="content" source="./media/how-to-configure-high-availability-portal/select-compute.png" alt-text="Compute tier selection screen.":::  
+To deploy the primary server with a standby server in the same zone, and let the service choose for you the zone, use this command:
 
+```azurecli-interactive
+az postgres flexible-server create --resource-group <resource_group> --name <server> --high-availability SameZone ...
+```
 
-7.  Select **storage size** in GiB using the sliding bar and select the **backup retention period** between 7 days and 35 days.
-   
-    :::image type="content" source="./media/how-to-configure-high-availability-portal/storage-backup.png" alt-text="Screenshot of Storage Backup."::: 
+To deploy the primary server with a standby server in the same zone, and explicitly choose the zone, use this command:
 
-8. Select **Save**. 
+```azurecli-interactive
+az postgres flexible-server create --resource-group <resource_group> --name <server> --high-availability SameZone --zone <zone> ...
+```
 
+If the availability zone specified isn't supported in the selected region, you get this error:
+
+```output
+(AvailabilityZoneNotAvailable) Specified availability zone is not supported in this region. Please choose a different availability zone.
+Code: AvailabilityZoneNotAvailable
+Message: Specified availability zone is not supported in this region. Please choose a different availability zone.
+```
+
+To deploy the primary server with a standby server in a different zone, and let the service choose for you both zones, use this command:
+
+```azurecli-interactive
+az postgres flexible-server create --resource-group <resource_group> --name <server> --high-availability ZoneRedundant ...
+```
+
+To deploy the primary server with a standby server in a different zone, explicitly specify the zone for the primary but let the service choose the zone for the standby, use this command:
+
+```azurecli-interactive
+az postgres flexible-server create --resource-group <resource_group> --name <server> --high-availability ZoneRedundant --zone <zone> ...
+```
+
+To deploy the primary server with a standby server in a different zone, and explicitly specify the zone for the primary and the standby, use this command:
+
+```azurecli-interactive
+az postgres flexible-server create --resource-group <resource_group> --name <server> --high-availability ZoneRedundant --zone <zone> --standby-zone <standby_zone>...
+```
+
+If the high availability mode selected is zone redundant, and the same value is specified for the zone of the primary and the zone for the standby, you get this error:
+
+```output
+Your server is in availability zone <zone>. The zone of the server cannot be same as the standby zone.
+```
+
+If the high availability mode selected is zone redundant, and the region doesn't have multiple availability zones, you get this error:
+
+```output
+This region is single availability zone. Zone redundant high availability is not supported in a single availability zone region.
+```
+
+---
 
 ## Forced failover
 
@@ -241,7 +273,15 @@ There are Azure regions that don't support availability zones. If you already de
 5. Once the new server is created, from the overview page of the server, follow the [guide](#enable-high-availability-post-server-creation) to enable HA.
 6. After data verification, you can optionally [delete](how-to-manage-server-portal.md#delete-a-server) the old server. 
 7. Make sure your clients connection strings are modified to point to your new HA-enabled server.
-   
+
+## Special considerations
+
+- Enabling or disabling high availability on an Azure Database for PostgreSQL flexible server doesn't change other settings, including networking configuration, firewall settings, server parameters, or backup retention. Enabling or disabling high availability is an online operation, and doesn't affect your application connectivity and operations.
+
+- High availability with both replicas deployed in the same zone is supported and available in all regions in which Azure Database for PostgreSQL - Flexible Server is supported. However, high availability with zone redundancy is [only available in certain regions](overview.md#azure-regions).
+
+- High availability isn't supported in the **Burstable** tier. It's only supported in **General purpose** or **Memory optimized** tiers.
+
 [Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
 
 - [Overview of business continuity with Azure Database for PostgreSQL - Flexible Server](concepts-business-continuity.md).
