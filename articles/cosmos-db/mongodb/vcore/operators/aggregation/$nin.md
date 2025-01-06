@@ -14,7 +14,7 @@ ms.date: 01/06/2025
 
 [!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 
-The `$nin` operator is used to retrieve documents where the value of a specified field does not match a list of values.
+The `$nin` operator is used to retrieve documents where the value of a specified field doesn't match a list of values.
 
 ## Syntax
 
@@ -24,9 +24,9 @@ The `$nin` operator is used to retrieve documents where the value of a specified
 
 ## Parameters
 - `field`: The field to compare.
-- `[<value1>, <value2>, ... <valueN>]`: An array of values that should not match the value of the field being compared.
+- `[<value1>, <value2>, ... <valueN>]`: An array of values that shouldn't match the value of the field being compared.
 
-## Example(s)
+## Examples
 Consider this sample document from the SampleCollection collection in the StoreData database.
 
 ```json
@@ -139,13 +139,13 @@ Consider this sample document from the SampleCollection collection in the StoreD
 }
 ```
 
-### Example 1 - Find documents with promotion events offering a discount percentage that is not either of 10%, 15% or 20%
+### Example 1 - Find documents with promotion events offering a discount percentage that isn't either of 10%, 15%, or 20%
 
 ```javascript
 db.SampleCollection.find({ "promotionEvents.discounts.discountPercentage": { "$nin": [10, 15, 20] }})
 ```
 
-### Example 2 - Find documents with discount offers that are not on specific categories of promotions
+### Example 2 - Find documents with discount offers that aren't on specific categories of promotions
 
 ```javascript
 db.SampleCollection.find({ "promotionEvents.discounts.categoryName": { "$nin": ["Smoked Salmon", "Anklets"] }})
