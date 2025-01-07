@@ -1904,6 +1904,36 @@
         "source_path_from_root": "/articles/postgresql/flexible-server/quickstart-create-server-arm-template.md",
         "redirect_url": "/azure/postgresql/flexible-server/quickstart-create-server",
         "redirect_document_id": false
+    },
+    {
+        "source_path_from_root": "/articles/postgresql/flexible-server/how-to-stop-start-server-portal.md",
+        "redirect_url": "/azure/postgresql/flexible-server/how-to-start-server",
+        "redirect_document_id": false
+    },
+    {
+        "source_path_from_root": "/articles/postgresql/flexible-server/how-to-stop-start-server-cli.md",
+        "redirect_url": "/azure/postgresql/flexible-server/how-to-start-server",
+        "redirect_document_id": false
+    },
+    {
+        "source_path_from_root": "/articles/postgresql/flexible-server/how-to-restart-server-portal.md",
+        "redirect_url": "/azure/postgresql/flexible-server/how-to-restart-server",
+        "redirect_document_id": false
+    },
+    {
+        "source_path_from_root": "/articles/postgresql/flexible-server/how-to-restart-server-cli.md",
+        "redirect_url": "/azure/postgresql/flexible-server/how-to-restart-server",
+        "redirect_document_id": false
+    },
+    {
+        "source_path_from_root": "/articles/postgresql/flexible-server/how-to-manage-high-availability-portal.md",
+        "redirect_url": "/azure/postgresql/flexible-server/how-to-configure-high-availability",
+        "redirect_document_id": false
+    },
+    {
+        "source_path_from_root": "/articles/postgresql/flexible-server/how-to-configure-high-availability-cli.md",
+        "redirect_url": "/azure/postgresql/flexible-server/how-to-configure-high-availability",
+        "redirect_document_id": false
     }
 ]
 }

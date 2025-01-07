@@ -111,7 +111,7 @@ Using the [Servers - Update](/rest/api/postgresql/flexibleserver/servers/update)
 
 ---
 
-2. [Restart the instance of Azure Database for PostgreSQL Flexible Server](how-to-restart-server-portal.md), after enabling a system assigned managed identity on it.
+2. [Restart the instance of Azure Database for PostgreSQL Flexible Server](how-to-restart-server.md), after enabling a system assigned managed identity on it.
 3. [Assign role-based access control (RBAC) permissions for access to blob data](/azure/storage/blobs/assign-azure-role-data-access), on the Azure Storage account, to the System Assigned Managed Identity of your instance of Azure Database for PostgreSQL Flexible Server.
 
 ### To use authorization with Shared Key
