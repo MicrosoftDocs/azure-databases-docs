@@ -209,7 +209,7 @@ You can download the captured PostgreSQL server logs and major version upgrade l
 To download one PostgreSQL server log whose name is logs available for download, which were updated in the last 72 hours (default value), use this command:
 
 ```azurecli-interactive
-az postgres flexible-server server-logs list --resource-group <resource_group> --server-name <server>
+az postgres flexible-server server-logs download --resource-group <resource_group> --server-name <server> --
 ```
 
 To list all captured logs available for download, which were updated in the last 10 hours, use this command:
