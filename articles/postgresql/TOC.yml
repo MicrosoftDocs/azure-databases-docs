@@ -410,7 +410,7 @@
       - name: Configure high availability
         href: flexible-server/how-to-configure-high-availability.md
       - name: Download server logs
-        href: flexible-server/how-to-server-logs.md
+        href: flexible-server/how-to-configure-server-logs.md
       - name: Scale a server
         items:
         - name: Azure portal
