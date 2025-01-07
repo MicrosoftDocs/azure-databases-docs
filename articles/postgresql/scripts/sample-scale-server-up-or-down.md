@@ -1,12 +1,12 @@
 ---
 title: Azure CLI Script - Scale and Monitor
 description: Azure CLI Script Sample - Scale an Azure Database for PostgreSQL - Flexible Server instance to a different performance level after querying the metrics.
-author: akashraokm
-ms.author: akashrao
+author: gkasar
+ms.author: gkasar
 ms.reviewer: maghan
 ms.date: 01/06/2025
 ms.service: azure-database-postgresql
-ms.topic: sample
+ms.topic: how-to
 ms.devlang: azurecli
 ---
 # Monitor and scale a single Azure Database for PostgreSQL - Flexible Server instance using Azure CLI
