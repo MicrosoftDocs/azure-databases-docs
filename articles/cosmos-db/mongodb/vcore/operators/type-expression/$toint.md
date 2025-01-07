@@ -187,7 +187,7 @@ db.SampleCollection.aggregate([
 }
 ])
 ```
-However, this query returns an error since the string "72.0" isn;t the string representation of an integer value.
+However, this query returns an error since the string "72.0" isn't the string representation of an integer value.
 
 ```javascript
 db.SampleCollection.aggregate([
@@ -209,7 +209,7 @@ db.SampleCollection.aggregate([
 ])
 ```
 
-Tabulated here is the expected behavior of the $toInt operator based on the data type of the input value.
+This table delineates the expected behavior of the $toInt operator based on the data type of the input value.
 
 | **Value Type**                                               | **Behavior/Output** |
 |--------------------------------------------------------------|---------------------|
