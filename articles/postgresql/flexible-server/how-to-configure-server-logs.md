@@ -43,7 +43,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 5. Select the **Save** button.
 
-    :::image type="content" source="./media/how-to-configure-server-logs/save-changes.png" alt-text="Screenshot showing how to save configuration changes made to Server logs page." lightbox="./media/how-to-configure-server-logs/save-changes.png":::
+    :::image type="content" source="./media/how-to-configure-server-logs/save-changes-enable.png" alt-text="Screenshot showing how to save configuration changes made to Server logs page." lightbox="./media/how-to-configure-server-logs/save-changes-enable.png":::
 
 6. A notification informs you that the service is configuring the capture of logs for download.
 
@@ -94,7 +94,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 2. In the resource menu, under the **Monitoring** section, select **Server logs**.
 
-    :::image type="content" source="./media/how-to-configure-server-logs/server-logs-page-enabled.png" alt-text="Screenshot showing the Server logs page." lightbox="./media/how-to-configure-server-logs/server-logs-page-enabled.png":::
+    :::image type="content" source="./media/how-to-configure-server-logs/server-logs-page-enabled-with-logs-captured.png" alt-text="Screenshot showing the Server logs page." lightbox="./media/how-to-configure-server-logs/server-logs-page-enabled-with-logs-captured.png":::
 
 3. Under **Download server logs**, clear the **Enable** checkbox.
 
@@ -102,7 +102,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 4. Select the **Save** button.
 
-    :::image type="content" source="./media/how-to-configure-server-logs/save-changes.png" alt-text="Screenshot showing how to save configuration changes made to Server logs page." lightbox="./media/how-to-configure-server-logs/save-changes.png":::
+    :::image type="content" source="./media/how-to-configure-server-logs/save-changes-disable.png" alt-text="Screenshot showing how to save configuration changes made to Server logs page." lightbox="./media/how-to-configure-server-logs/save-changes-disable.png":::
 
 5. A notification informs you that the service is configuring the capture of logs for download.
 
