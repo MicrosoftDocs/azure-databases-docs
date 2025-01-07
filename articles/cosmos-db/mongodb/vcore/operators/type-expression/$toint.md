@@ -1,7 +1,7 @@
 ---
 title: $toInt
-titleSuffix: Overview of the $eq query operator in Azure Cosmos DB for MongoDB vCore
-description: Overview of the $eq query operator in Azure Cosmos DB for MongoDB vCore
+titleSuffix: Overview of the $toInt operator in Azure Cosmos DB for MongoDB vCore
+description: Overview of the $toInt operator in Azure Cosmos DB for MongoDB vCore
 author: abinav2307
 ms.author: abramees
 ms.service: azure-cosmos-db
@@ -18,7 +18,7 @@ The toInt operator converts a specified value into an integer value.
 
 ## Syntax
 
-The syntax for the `$eq` operator is:
+The syntax for the `$toInt` operator is:
 
 ```mongodb
 { "$toInt": <expression> }
