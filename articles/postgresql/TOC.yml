@@ -409,6 +409,8 @@
         href: flexible-server/how-to-auto-grow-storage.md
       - name: Configure high availability
         href: flexible-server/how-to-configure-high-availability.md
+      - name: Download server logs
+        href: flexible-server/how-to-configure-server-logs.md
       - name: Scale a server
         items:
         - name: Azure portal
@@ -435,12 +437,6 @@
           href: flexible-server/how-to-restore-server-portal.md
         - name: Azure CLI
           href: flexible-server/how-to-restore-server-cli.md
-      - name: Configure server logs
-        items:
-        - name: Azure portal
-          href: flexible-server/how-to-server-logs-portal.md
-        - name: Azure CLI
-          href: flexible-server/how-to-server-logs-cli.md
       - name: Relocate a server 
         href: /azure/operational-excellence/relocation-postgresql-flexible-server?toc=/azure/postgresql/toc.json
     - name: Configure managed identities
