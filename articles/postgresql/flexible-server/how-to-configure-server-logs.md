@@ -21,7 +21,7 @@ By default, capturing server logs for download in an Azure Database for PostgreS
 
 This article explains how to enable and disable the feature. It also describes how you can list all available server logs, and how can you download any of them.
 
-## Enable the capture of PostgreSQL server logs and major version upgrade logs
+## Enable the capture of PostgreSQL server logs and major version upgrade logs for download
 
 ### [Portal](#tab/portal-enable-capture-of-logs)
 
@@ -31,9 +31,9 @@ Using the [Azure portal](https://portal.azure.com/):
 
 2. In the resource menu, under the **Monitoring** section, select **Server logs**.
 
-    :::image type="content" source="./media/how-to-configure-server-logs/server-logs-page.png" alt-text="Screenshot showing the Server logs page." lightbox="./media/how-to-configure-server-logs/server-logs-page.png":::
+    :::image type="content" source="./media/how-to-configure-server-logs/server-logs-page-disabled.png" alt-text="Screenshot showing the Server logs page." lightbox="./media/how-to-configure-server-logs/server-logs-page-disabled.png":::
 
-3. Under **Download server logs**, select the **Enable** checkbox.
+3. Under **Download server logs**, mark the **Enable** checkbox.
 
     :::image type="content" source="./media/how-to-configure-server-logs/enable-server-logs.png" alt-text="Screenshot showing how to configure the server so that PostgreSQL server logs and major version upgrade logs are captured, so that you can download them for inspection." lightbox="./media/how-to-configure-server-logs/enable-server-logs.png":::
 
@@ -41,15 +41,15 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="./media/how-to-configure-server-logs/adjust-retention.png" alt-text="Screenshot showing how to adjust the retention period for PostgreSQL server logs and major version upgrade logs captured." lightbox="./media/how-to-configure-server-logs/adjust-retention.png":::
 
-4. Select the **Save** button.
+5. Select the **Save** button.
 
     :::image type="content" source="./media/how-to-configure-server-logs/save-changes.png" alt-text="Screenshot showing how to save configuration changes made to Server logs page." lightbox="./media/how-to-configure-server-logs/save-changes.png":::
 
-5. A notification informs you that the service is configuring the capture of logs for download.
+6. A notification informs you that the service is configuring the capture of logs for download.
 
     :::image type="content" source="./media/how-to-configure-server-logs/notification-configuring.png" alt-text="Screenshot showing the notification informing that configuration changes are being applied." lightbox="./media/how-to-configure-server-logs/notification-configuring.png":::
 
-6. Once the operation ends, a notification informs you that the service has completed the configuration of the capture of logs for download.
+7. Once the operation ends, a notification informs you that the service has completed the configuration of the capture of logs for download.
 
     :::image type="content" source="./media/how-to-configure-server-logs/notification-configured.png" alt-text="Screenshot showing the notification informing that configuration changes were successfully applied." lightbox="./media/how-to-configure-server-logs/notification-configured.png":::
 
@@ -57,7 +57,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 You can enable the capture of PostgreSQL server logs and major version upgrade logs, to be able to download them for inspection, via the [az postgres flexible-server parameter set](/cli/azure/postgres/flexible-server/parameter#az-postgres-flexible-server-parameter-set) command.
 
-To enable capture of the logs for download, use this command:
+To enable the capture of the logs for download, use this command:
 
 ```azurecli-interactive
 az postgres flexible-server parameter --resource-group <resource_group> --server-name <server> --name logfiles.download_enable --value on
@@ -82,6 +82,46 @@ Message: The value: [<value>] of Server Parameter: [logfiles.retention_days] is 
 > Initially, and for approximately one hour, server logs occupy data disk space. Then, they're moved to backup storage and kept there for the configured retention period.
 
 
+## Disable the capture of PostgreSQL server logs and major version upgrade logs for download
+
+### [Portal](#tab/portal-disable-capture-of-logs)
+
+Using the [Azure portal](https://portal.azure.com/):
+
+1. Select your Azure Database for PostgreSQL flexible server.
+
+2. In the resource menu, under the **Monitoring** section, select **Server logs**.
+
+    :::image type="content" source="./media/how-to-configure-server-logs/server-logs-page-enabled.png" alt-text="Screenshot showing the Server logs page." lightbox="./media/how-to-configure-server-logs/server-logs-page-enabled.png":::
+
+3. Under **Download server logs**, clear the **Enable** checkbox.
+
+    :::image type="content" source="./media/how-to-configure-server-logs/disable-server-logs.png" alt-text="Screenshot showing how to configure the server so that PostgreSQL server logs and major version upgrade logs stop being captured for download." lightbox="./media/how-to-configure-server-logs/disable-server-logs.png":::
+
+4. Select the **Save** button.
+
+    :::image type="content" source="./media/how-to-configure-server-logs/save-changes.png" alt-text="Screenshot showing how to save configuration changes made to Server logs page." lightbox="./media/how-to-configure-server-logs/save-changes.png":::
+
+5. A notification informs you that the service is configuring the capture of logs for download.
+
+    :::image type="content" source="./media/how-to-configure-server-logs/notification-configuring.png" alt-text="Screenshot showing the notification informing that configuration changes are being applied." lightbox="./media/how-to-configure-server-logs/notification-configuring.png":::
+
+6. Once the operation ends, a notification informs you that the service has completed the configuration of the capture of logs for download.
+
+    :::image type="content" source="./media/how-to-configure-server-logs/notification-configured.png" alt-text="Screenshot showing the notification informing that configuration changes were successfully applied." lightbox="./media/how-to-configure-server-logs/notification-configured.png":::
+
+### [CLI](#tab/cli-disable-capture-of-logs)
+
+You can disable the capture of PostgreSQL server logs and major version upgrade logs via the [az postgres flexible-server parameter set](/cli/azure/postgres/flexible-server/parameter#az-postgres-flexible-server-parameter-set) command.
+
+To disable the capture of the logs for download, use this command:
+
+```azurecli-interactive
+az postgres flexible-server parameter --resource-group <resource_group> --server-name <server> --name logfiles.download_enable --value off
+```
+
+---
+
 ## Download Server logs
 
 To download server logs, perform the following steps.
@@ -96,17 +136,6 @@ To download server logs, perform the following steps.
 2. To download multiple log files at one time, under **Name**, select the files you want to download, and then above **Name**, select **Download**.
 
     :::image type="content" source="./media/how-to-server-logs-portal/4-how-to-server-log.png" alt-text="Screenshot showing server Logs - Download all.":::
-
-
-## Disable Server Logs
-
-1. From your Azure portal, select Server logs from Monitoring server pane.
-
-2. For disabling Server logs to file, Uncheck Enable. (The setting will disable logging for all the log_types available)
-
-    :::image type="content" source="./media/how-to-server-logs-portal/5-how-to-server-log.png" alt-text="Screenshot showing server Logs - Disable.":::
-
-3. Select Save
 
 [Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
 
