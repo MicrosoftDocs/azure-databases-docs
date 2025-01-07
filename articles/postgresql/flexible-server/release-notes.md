@@ -99,14 +99,14 @@ This article highlights the latest updates and enhancements for Azure Database f
 
 ## Release: January 2024
 
-- General availability of [Server logs](how-to-server-logs-portal.md) including Portal and CLI support.
+- General availability of [Server logs](how-to-configure-server-logs.md), including Portal and CLI support.
 - General availability of UAE Central region.
 - General availability of Israel Central region.
 - Worldwide public preview of [long-term backup retention](concepts-backup-restore.md).
 
 ## Release: December 2023
 
-- Public preview of [Server logs](how-to-server-logs-portal.md).
+- Public preview of [Server logs](how-to-configure-server-logs.md).
 - General availability of [TLS Version 1.3 support](concepts-networking-ssl-tls.md#tls-versions).
 - General availability of [Microsoft Defender support](concepts-security.md)
 
