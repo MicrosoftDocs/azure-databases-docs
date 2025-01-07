@@ -187,7 +187,7 @@ az network private-link-resource list \
   --type Microsoft.DocumentDB/mongoClusters 
 ```
 
-## Next step
-
-> [!div class="nextstepaction"]
-> [Try Azure Cosmos DB for MongoDB vCore](quickstart-portal.md)
+## Related content
+- [Learn more about database security in Azure Cosmos DB for MongoDB vCore](./security.md)
+- [See guidance on how to enable public access](./how-to-public-access.md)
+- [Migrate to Azure Cosmos DB for MongoDB vCore](./migration-options.md)
