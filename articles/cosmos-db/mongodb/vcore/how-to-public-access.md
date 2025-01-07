@@ -79,7 +79,7 @@ There's an easy way to grant cluster access to applications hosted on Azure, suc
 > [!IMPORTANT] 
 > Enabling this option allows connections from any Azure service, including from services and hosts in other customer subscriptions. Ensure your login credentials and user permissions restrict access to authorized users only.
 
-## Disabling public access
+## Disable public access
 To disable public access on a cluster:
 1. On the portal page for your cluster, under **Networking**, in the **Public access**, remove all firewall rules.
 1. Clear the **Allow Azure services and resources to access this cluster** checkbox.
