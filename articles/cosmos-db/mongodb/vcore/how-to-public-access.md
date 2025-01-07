@@ -7,7 +7,7 @@ ms.author: nlarin
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: how-to
-ms.date: 01/02/2025
+ms.date: 01/06/2025
 #Customer Intent: As a database adminstrator, I want to configure public access, so that I can connect to Azure Cosmos DB for MongoDB vCore cluster using public IP address.
 ---
 
@@ -26,7 +26,7 @@ You can use cluster-level firewall rules to manage public access to an Azure Cos
 ## Enable public access *during cluster creation* in the Azure portal
 
 > [!NOTE]
-> If no firewall rules are added to your Azure Cosmos DB for MongoDB vCore cluster, public network access to the cluster is disabled. If you don't add any firewall rules or private endpoints during cluster creation, your cluster will be created in a locked-down state. To enable access to a locked-down cluster, you must add firewall rules for public access or create private endpoints for private access after the cluster is created.
+> If no firewall rules are added to your Azure Cosmos DB for MongoDB vCore cluster, public network access to the cluster is disabled. If you don't add any firewall rules or [private endpoints](./how-to-private-link.md) during cluster creation, your cluster is created in a locked-down state. To enable access to a locked-down cluster, you must add firewall rules for public access or create private endpoints for private access after the cluster is created.
 
 To enable public access during cluster creation:
 
@@ -53,6 +53,9 @@ To **add** a firewall rule:
 1. On the Azure Cosmos DB for MongoDB vCore cluster page, under **Settings**, select **Networking**.
 1. In the **Public access**, in the **Firewall rules** section, type in the firewall rule name, start IP v4 address, and end IP v4 address. 
     - To allow a single IP address, enter the same address in both the **Start IP address** and **End IP address** fields.
+
+    :::image type="content" source="media/how-to-public-access/firewall-rule-settings-management.png" alt-text="Screenshot of the firewall rule settings management on an Azure Cosmos DB for MongoDB vCore cluster.":::
+
 1. To quickly add your current public IP address (the address of the machine or device from which you’re accessing the Azure portal), select **Add current client IP address**.
 
 > [!TIP]
@@ -74,10 +77,10 @@ There's an easy way to grant cluster access to applications hosted on Azure, suc
 1. Select **Save** on the toolbar to save the changes. Wait for the confirmation that the update was successful.
 
 > [!IMPORTANT] 
-> Enabling this option allows connections from any Azure service, including those from other customer subscriptions. Ensure your login credentials and user permissions restrict access to authorized users only.
+> Enabling this option allows connections from any Azure service, including from services and hosts in other customer subscriptions. Ensure your login credentials and user permissions restrict access to authorized users only.
 
 ## Disabling public access
-To disable pulic access on a cluster:
+To disable public access on a cluster:
 1. On the portal page for your cluster, under **Networking**, in the **Public access**, remove all firewall rules.
 1. Clear the **Allow Azure services and resources to access this cluster** checkbox.
 1. Select **Save** on the toolbar to save the changes. Wait for the confirmation that the update was successful.
