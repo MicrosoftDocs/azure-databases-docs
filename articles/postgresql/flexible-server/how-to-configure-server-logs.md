@@ -202,7 +202,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="./media/how-to-configure-server-logs/server-logs-page-refresh.png" alt-text="Screenshot showing the Server logs page and highlighting the Refresh button to update the contents of the page." lightbox="./media/how-to-configure-server-logs/server-logs-page-refresh.png":::
 
-### [CLI](#tab/cli-list-captured-logs)
+### [CLI](#tab/cli-download-captured-logs)
 
 You can download the captured PostgreSQL server logs and major version upgrade logs via the [az postgres flexible-server server-logs download](/cli/azure/postgres/flexible-server/server-logs#az-postgres-flexible-server-server-logs-download) command.
 
