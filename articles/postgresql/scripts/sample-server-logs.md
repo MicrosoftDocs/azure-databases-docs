@@ -1,12 +1,12 @@
 ---
 title: Azure CLI Script - Download Server Logs
 description: This sample Azure CLI script shows how to enable and download the server logs of an Azure Database for PostgreSQL - Flexible Server instance.
-author: akashraokm
-ms.author: akashrao
+author: gkasar
+ms.author: gkasar
 ms.reviewer: maghan
 ms.date: 01/06/2025
 ms.service: azure-database-postgresql
-ms.topic: sample
+ms.topic: how-to
 ms.devlang: azurecli
 ---
 
