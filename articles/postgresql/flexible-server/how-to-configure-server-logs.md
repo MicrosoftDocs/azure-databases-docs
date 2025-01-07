@@ -206,29 +206,22 @@ Using the [Azure portal](https://portal.azure.com/):
 
 You can download the captured PostgreSQL server logs and major version upgrade logs via the [az postgres flexible-server server-logs download](/cli/azure/postgres/flexible-server/server-logs#az-postgres-flexible-server-server-logs-download) command.
 
-To download one PostgreSQL server log whose name is logs available for download, which were updated in the last 72 hours (default value), use this command:
+To download one specific log, use this command:
 
 ```azurecli-interactive
-az postgres flexible-server server-logs download --resource-group <resource_group> --server-name <server> --
+az postgres flexible-server server-logs download --resource-group <resource_group> --server-name <server> --name <log_name>
 ```
 
-To list all captured logs available for download, which were updated in the last 10 hours, use this command:
+To download one specific log, use this command:
 
 ```azurecli-interactive
-az postgres flexible-server server-logs list --resource-group <resource_group> --server-name <server> --file-last-written 10
+az postgres flexible-server server-logs download --resource-group <resource_group> --server-name <server> --name <log1_name log2_name ...logn_name>
 ```
 
-To list all captured logs available for download, whose size is under 30 KiB, use this command:
-
-```azurecli-interactive
-az postgres flexible-server server-logs list --resource-group <resource_group> --server-name <server> --max-file-size 30
-```
-
-To list all captured logs available for download, whose name contains `01_07`, use this command:
-
-```azurecli-interactive
-az postgres flexible-server server-logs list --resource-group <resource_group> --server-name <server> --filename-contains 01_07
-```
+> [!NOTE]
+> * For the file names provided for which there're log files with matching names available to download, a local file is created with the same name and contents.
+> 
+> * If any of the file names provided aren't available to download, the command doesn't report any error. It simply doesn't download that file.
 
 ---
 
