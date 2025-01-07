@@ -100,6 +100,4 @@ Before PostgreSQL version 10, the [PostgreSQL versioning policy](https://www.pos
 
 - [Supported versions of PostgreSQL in Azure Database for PostgreSQL - Flexible Server](concepts-supported-versions.md).
 
-## Feedback
-
 [Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
