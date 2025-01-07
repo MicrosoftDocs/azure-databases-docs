@@ -187,7 +187,7 @@ db.SampleCollection.aggregate([
 }
 ])
 ```
-However, this query returns an error since the string "72.0" is not the string representation of an integer value.
+However, this query returns an error since the string "72.0" isn;t the string representation of an integer value.
 
 ```javascript
 db.SampleCollection.aggregate([
@@ -209,13 +209,13 @@ db.SampleCollection.aggregate([
 ])
 ```
 
-Tabulated below is the expected bahavior of the $toInt operator based on the data type of the value.
+Tabulated here is the expected behavior of the $toInt operator based on the data type of the input value.
 
-| **Value Type**                                        | **Behavior/Output** |
-|-------------------------------------------------------|---------------------|
-| Boolean value true                                    | Output -> 1         |
-| Boolean value false                                   | Output -> 0         |
-| Double value. E.g., 72.0                              | Output -> 72        |
-| String representation of an integer value. E.g., "72" | Output -> 72        |
-| String representation of a double value. E.g., "72.0" | Output -> Error     |
-| Null value                                            | Output -> null      |
+| **Value Type**                                               | **Behavior/Output** |
+|--------------------------------------------------------------|---------------------|
+| Boolean value true                                           | Output -> 1         |
+| Boolean value false                                          | Output -> 0         |
+| Double value. E.g., 72.0                                     | Output -> 72        |
+| String representation of an integer value. For example, "72" | Output -> 72        |
+| String representation of a double value. For example, "72.0" | Output -> Error     |
+| Null value                                                   | Output -> null      |
