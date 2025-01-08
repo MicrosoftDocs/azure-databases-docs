@@ -1,7 +1,7 @@
 ---
 title: Enable and manage public access in Azure Cosmos DB for MongoDB vCore
 titleSuffix: Azure Cosmos DB for MongoDB vCore
-description: Enable pubic access and manage public access settings for an Azure Cosmos DB for MongoDB vCore cluster.
+description: Enable public access and manage public access settings for an Azure Cosmos DB for MongoDB vCore cluster.
 author: niklarin
 ms.author: nlarin
 ms.service: azure-cosmos-db
@@ -38,9 +38,9 @@ To enable public access during cluster creation:
     :::image type="content" source="media/how-to-public-access/add-firewall-rule-during-cluster-creation.png" alt-text="Screenshot of the firewall rule addition during a new Azure Cosmos DB for MongoDB vCore cluster creation.":::
 
 1. To quickly add your current public IP address (the address of the machine or device from which you’re accessing the Azure portal), select **Add current client IP address**.
-
-> [!TIP]
-> Verify your IP address before saving the configuration. In some cases, the IP address detected by the Azure portal may differ from the IP address used when accessing the Internet. To check your actual IP address, use a search engine to find tools like *what is my IP*.
+    
+    > [!TIP]
+    > Verify your IP address before saving the configuration. In some cases, the IP address detected by the Azure portal may differ from the IP address used when accessing the Internet. To check your actual IP address, use a search engine to find tools like *what is my IP*.
 
 1. To allow cluster access from any IP address on the Internet, select **Add 0.0.0.0 - 255.255.255.255**. Even with this rule in place, users must authenticate with the correct username and password to access the cluster. However, it’s recommended to allow global access only temporarily and for non-production databases.
 
@@ -54,13 +54,13 @@ To **add** a firewall rule:
 1. In the **Public access**, in the **Firewall rules** section, type in the firewall rule name, start IP v4 address, and end IP v4 address. 
     - To allow a single IP address, enter the same address in both the **Start IP address** and **End IP address** fields.
 
-    :::image type="content" source="media/how-to-public-access/firewall-rule-settings-management.png" alt-text="Screenshot of the firewall rule settings management on an Azure Cosmos DB for MongoDB vCore cluster.":::
+    :::image type="content" source="media/how-to-public-access/firewall-rule-settings-management.png" alt-text="Screenshot of the firewall rule settings management on an Azure Cosmos DB for MongoDB vCore cluster." lightbox="how-to-public-access/firewall-rule-settings-management.png":::
 
 1. To quickly add your current public IP address (the address of the machine or device from which you’re accessing the Azure portal), select **Add current client IP address**.
-
-> [!TIP]
-> Verify your IP address before saving the configuration. In some cases, the IP address detected by the Azure portal may differ from the IP address used when accessing the Internet. To check your actual IP address, use a search engine to find tools like *what is my IP*.
-
+    
+    > [!TIP]
+    > Verify your IP address before saving the configuration. In some cases, the IP address detected by the Azure portal may differ from the IP address used when accessing the Internet. To check your actual IP address, use a search engine to find tools like *what is my IP*.
+    
 1. To allow cluster access from any IP address on the Internet, select **Add 0.0.0.0 - 255.255.255.255**. Even with this rule in place, users must authenticate with the correct username and password to access the cluster. However, it’s recommended to allow global access only temporarily and for non-production databases.
 1. Select **Save** on the toolbar to save the changes in cluster-level firewall rules. Wait for the confirmation that the update was successful.
 
