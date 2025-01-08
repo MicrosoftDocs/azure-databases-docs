@@ -155,13 +155,10 @@ db.SampleCollection.aggregate([
     "$project": {
         "originalLatitude": "$location.lat",
         "latitudeAsString": {
-            "$toString": {
-                "$location.lat"
-            }
+            "$toString": "$location.lat"
         }
     }
-}
-])
+}])
 ```
 
 This query returns the following result:
@@ -187,13 +184,10 @@ db.SampleCollection.aggregate([
     "$project": {
         "originalTotalSales": "$sales.totalSales",
         "totalSalesAsString": {
-            "$toString": {
-                "$sales.totalSales"
-            }
+            "$toString": "$sales.totalSales"
         }
     }
-}
-])
+}])
 ```
 
 This query returns the following result:
