@@ -54,7 +54,7 @@ To **add** a firewall rule:
 1. In the **Public access**, in the **Firewall rules** section, type in the firewall rule name, start IP v4 address, and end IP v4 address. 
     - To allow a single IP address, enter the same address in both the **Start IP address** and **End IP address** fields.
 
-    :::image type="content" source="media/how-to-public-access/firewall-rule-settings-management.png" alt-text="Screenshot of the firewall rule settings management on an Azure Cosmos DB for MongoDB vCore cluster." lightbox="how-to-public-access/firewall-rule-settings-management.png":::
+    :::image type="content" source="media/how-to-public-access/firewall-rule-settings-management.png" alt-text="Screenshot of the firewall rule settings management on an Azure Cosmos DB for MongoDB vCore cluster." lightbox="media/how-to-public-access/firewall-rule-settings-management-extended.png":::
 
 1. To quickly add your current public IP address (the address of the machine or device from which you’re accessing the Azure portal), select **Add current client IP address**.
     
