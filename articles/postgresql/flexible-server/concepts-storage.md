@@ -144,8 +144,6 @@ Learn how to [scale up or down IOPS](how-to-scale-compute-storage-portal.md).
 
 [!INCLUDE [pricing](includes/compute-storage-princing.md)]
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 
 - [Manage Azure Database for PostgreSQL - Flexible Server](how-to-manage-server-portal.md).

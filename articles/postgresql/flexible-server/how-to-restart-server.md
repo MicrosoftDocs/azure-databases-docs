@@ -68,8 +68,6 @@ Message: Restart or Stop Server can only be performed on Started servers. Server
 > [!NOTE]
 > Once the server is restarted, all management operations are available for the Azure Database for PostgreSQL flexible server.
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 
 - [Start an Azure Database for PostgreSQL flexible server](how-to-start-server.md).

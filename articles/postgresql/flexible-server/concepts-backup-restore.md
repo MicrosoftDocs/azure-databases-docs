@@ -343,8 +343,6 @@ For more information about performing a long term backup, visit the [how-to guid
   
     Currently, there's no way to track the restore operation. You can monitor the activity log to see if the operation is in progress or complete.
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 
 - [Overview of business continuity with Azure Database for PostgreSQL - Flexible Server](concepts-business-continuity.md).

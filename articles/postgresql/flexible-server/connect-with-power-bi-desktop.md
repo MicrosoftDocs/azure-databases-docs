@@ -118,8 +118,6 @@ The following table lists all of the advanced options you can set in Power Query
 
 Once you've selected the advanced options you require, select **OK** in Power Query Desktop to connect to your PostgreSQL database.
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 
 - [Manage Azure Database for PostgreSQL - Flexible Server](how-to-manage-server-portal.md).

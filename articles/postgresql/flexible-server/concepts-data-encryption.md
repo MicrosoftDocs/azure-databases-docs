@@ -207,8 +207,6 @@ Here are current limitations for configuring the CMK in Azure Database for Postg
 
 - The instance of Azure Key Vault Managed HSM or the instance of Azure Key Vault on which you plan to store the encryption key, must exist in the same region on which the instance of Azure Database for flexible server is being created.
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 
 - [What's Microsoft Entra Domain Services](/azure/active-directory-domain-services/overview).

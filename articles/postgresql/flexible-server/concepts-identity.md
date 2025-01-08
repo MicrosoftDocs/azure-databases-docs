@@ -50,8 +50,6 @@ There are two types of managed identities:
 
 - [Data encryption with customer managed keys](concepts-data-encryption.md).
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 
 - [Configure system or user assigned managed identities in Azure Database for PostgreSQL - Flexible Server](how-to-configure-managed-identities.md).

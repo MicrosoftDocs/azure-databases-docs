@@ -242,8 +242,6 @@ For storage scaling:
 
 - Storage size on the primary must be always equal or smaller than the storage size on the smallest replica.
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 
 - [Geo-replication in Azure Database for PostgreSQL - Flexible Server](concepts-read-replicas-geo.md).

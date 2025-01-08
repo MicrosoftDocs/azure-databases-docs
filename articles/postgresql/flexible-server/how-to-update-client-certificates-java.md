@@ -115,8 +115,6 @@ For other PostgreSQL client users, you can merge two CA certificate files like t
 -----END CERTIFICATE-----
 ```
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 
 - [Security in Azure Database for PostgreSQL - Flexible Server](concepts-security.md).

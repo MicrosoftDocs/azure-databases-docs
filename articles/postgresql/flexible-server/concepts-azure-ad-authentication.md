@@ -139,8 +139,6 @@ To configure Microsoft Entra ID with Azure Database for PostgreSQL flexible serv
 
   User tokens are valid for up to 1 hour. Tokens for system-assigned managed identities are valid for up to 24 hours.
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 
 - [Use Microsoft Entra ID in Azure Database for PostgreSQL - Flexible Server](how-to-configure-sign-in-azure-ad-authentication.md).

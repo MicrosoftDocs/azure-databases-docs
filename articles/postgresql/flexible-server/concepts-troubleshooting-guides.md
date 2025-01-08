@@ -92,8 +92,6 @@ Before using any troubleshooting guide, it's essential to ensure that all prereq
 * Troubleshooting guides aren't available for [read replicas](concepts-read-replicas.md).
 * Be aware that enabling Query Store on the Burstable pricing tier can lead to a negative impact on performance. As a result, it's not recommended to use Query Store with this particular pricing tier.
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 
 - [Configure intelligent tuning for Azure Database for PostgreSQL - Flexible Server](how-to-enable-intelligent-performance-portal.md).

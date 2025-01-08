@@ -236,8 +236,6 @@ SELECT round (pg_wal_lsn_diff('LSN value when running the second time','LSN valu
 
 - `wal_compression`: This can be turned on. Enabling this parameter can incur an extra CPU cost for compressing during WAL logging and decompressing during WAL replay.
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 
 - [Troubleshoot high CPU utilization in Azure Database for PostgreSQL - Flexible Server](how-to-high-cpu-utilization.md).

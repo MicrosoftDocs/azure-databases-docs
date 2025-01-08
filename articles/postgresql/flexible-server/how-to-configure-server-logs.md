@@ -225,8 +225,6 @@ az postgres flexible-server server-logs download --resource-group <resource_grou
 
 ---
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 
 - [Restart an instance of Azure Database for PostgreSQL flexible server](how-to-restart-server.md).

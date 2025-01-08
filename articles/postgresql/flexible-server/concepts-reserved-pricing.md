@@ -115,8 +115,6 @@ If you have questions or need help, [create a support request](https://portal.az
 
 The vCore reservation discount is applied automatically to the Azure Database for PostgreSQL flexible server instances that match the Azure Database for PostgreSQL flexible server reserved capacity scope and attributes. You can update the scope of the Azure Database for PostgreSQL - Flexible Server reserved capacity through the Azure portal, PowerShell, Azure CLI, or REST APIs.
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 
 - [What are Azure reservations?](/azure/cost-management-billing/reservations/save-compute-costs-reservations)

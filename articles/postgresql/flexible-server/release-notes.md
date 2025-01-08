@@ -351,8 +351,6 @@ Yes.
 
 However, we'll continue to support Azure Database for PostgreSQL single server until **March 28, 2025**, and encourage you to adopt Azure Database for PostgreSQL flexible server, which has richer capabilities such as zone resilient HA, predictable performance, maximum control, custom maintenance window, cost optimization controls, and simplified developer experience suitable for your enterprise workloads. If we decide to retire any service, feature, API, or SKU, you'll receive advance notice, including a migration or transition path. Learn more about Microsoft Lifecycle policies [here](/lifecycle/faq/general-lifecycle).
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 
 - [Quickstart: Create an Azure Database for PostgreSQL - Flexible Server](quickstart-create-server.md).

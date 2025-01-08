@@ -383,8 +383,6 @@ az group delete --name django-project --yes --no-wait
 > [!NOTE]
 > When you delete the cluster, the Microsoft Entra service principal used by the AKS cluster isn't removed. For steps on how to remove the service principal, see [AKS service principal considerations and deletion](/azure/aks/kubernetes-service-principal#other-considerations). If you used a managed identity, the identity is managed by the platform and doesn't require removal.
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 
 - [Access Kubernetes resources using the Azure portal](/azure/aks/kubernetes-portal) for your AKS cluster.

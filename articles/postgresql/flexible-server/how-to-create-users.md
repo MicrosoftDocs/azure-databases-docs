@@ -96,8 +96,6 @@ The server admin user account can be used to create more users and grant those u
 
 Open the firewall for the IP addresses of the new users' machines to enable them to connect:
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 
 - [Create and manage Azure Database for PostgreSQL - Flexible Server firewall rules by using the Azure portal](how-to-manage-firewall-portal.md) or [Azure CLI](how-to-manage-firewall-cli.md).

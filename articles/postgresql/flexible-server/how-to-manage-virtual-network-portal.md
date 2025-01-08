@@ -61,8 +61,6 @@ To create an Azure Database for PostgreSQL flexible server instance in a virtual
 >[!Note]
 > If you want to connect to the Azure Database for PostgreSQL flexible server instance from a client that's provisioned in another VNET, you have to link the private DNS zone with the VNET. See this [linking the virtual network](/azure/dns/private-dns-getstarted-portal#link-the-virtual-network) documentation on how to do it.
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 
 - [Create and manage Azure Database for PostgreSQL - Flexible Server virtual network using Azure CLI](how-to-manage-virtual-network-cli.md).

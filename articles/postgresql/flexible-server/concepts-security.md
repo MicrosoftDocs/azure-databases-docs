@@ -299,8 +299,6 @@ The section below provides an index of Azure Policy built-in policy definitions 
 
 Custom policies can be precisely tailored to match the specific requirements of your organization, including unique security policies or compliance mandates. With custom policies you have complete control over the policy logic and parameters, allowing for sophisticated and fine-grained policy definitions.
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 
 - [Firewall rules in Azure Database for PostgreSQL - Flexible Server](concepts-firewall-rules.md).

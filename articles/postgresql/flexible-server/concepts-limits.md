@@ -141,8 +141,6 @@ The following sections list considerations for what is and isn't supported in Az
 
 - MD5 hashing is disabled from Postgres 14 and later versions and native Postgres passwords will be hashed using SCRAM-SHA-256 method only.
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 
 - [Compute options in Azure Database for PostgreSQL - Flexible Server](concepts-compute.md).

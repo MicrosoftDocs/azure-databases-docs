@@ -145,7 +145,5 @@ To delete only the newly created server:
 
 1. Confirm the name of the server you want to delete, and view the databases under it that are affected. Enter your server name in the text box, and select **Delete**.
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 - [Design multitenant database with Elastic Cluster](tutorial-multitenant-database.md).

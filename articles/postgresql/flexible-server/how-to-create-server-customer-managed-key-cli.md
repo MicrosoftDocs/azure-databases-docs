@@ -68,8 +68,6 @@ Follow the steps below to change\rotate key or identity after creation of server
   az postgres flexible-server update --resource-group <resource_group> --name <server_name> --key $newKeyIdentifier --identity <identity_name>
 ```
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 
 - [Manage Azure Database for PostgreSQL - Flexible Server](how-to-manage-server-cli.md).

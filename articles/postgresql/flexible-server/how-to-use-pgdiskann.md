@@ -116,8 +116,6 @@ The vector type allows you to perform three types of searches on the stored vect
 - `vector_cosine_ops`: `<=>` Cosine distance
 - `vector_ip_ops`: `<#>` Inner Product
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 
 - [Enable and use pgvector in Azure Database for PostgreSQL - Flexible Server](how-to-use-pgvector.md).

@@ -134,8 +134,6 @@ Generative AI has a wide range of applications across various domains and indust
     - Clean noisy data by generating clean data samples. 
     - Fill in missing or incomplete data in datasets.
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 
 - [Integrate Azure Database for PostgreSQL - Flexible Server with Azure Cognitive Services](generative-ai-azure-cognitive.md).

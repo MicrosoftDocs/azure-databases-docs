@@ -66,8 +66,6 @@ If your source server is configured with geo-redundant backup, you can restore t
 
 6. Select **Review + create** and click **create**, a notification shows that the restore operation has started.
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 
 ## Related content
 

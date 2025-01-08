@@ -74,8 +74,6 @@ Consider the following possibilities when access to an Azure Database for Postgr
 
 * **Firewall rules aren't available for IPv6 format**: The firewall rules must be in IPv4 format. If you specify firewall rules in IPv6 format, you'll get a validation error.
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 
 - [Create and manage firewall rules for Azure Database for PostgreSQL - Flexible Server](how-to-manage-firewall-portal.md).

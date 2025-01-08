@@ -166,8 +166,6 @@ For more information about monitoring and tuning in scenarios where autovacuum i
 
 Increasing storage helps when you're adding more IOPS to the server. For more information about storage and associated IOPS, review [Compute and storage options](concepts-compute.md).
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 
 - [Troubleshoot high CPU utilization in Azure Database for PostgreSQL - Flexible Server](how-to-high-cpu-utilization.md).
