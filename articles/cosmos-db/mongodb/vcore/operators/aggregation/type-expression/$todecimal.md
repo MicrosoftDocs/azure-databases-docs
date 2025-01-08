@@ -155,13 +155,10 @@ db.SampleCollection.aggregate([
     "$project": {
         "originalLatitude": "$location.lat",
         "latitudeAsDecimal": {
-            "$toDecimal": {
-                "$location.lat"
-            }
+            "$toDecimal": "$location.lat"
         }
     }
-}
-])
+}])
 ```
 
 This query returns the following result:
