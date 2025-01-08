@@ -64,6 +64,6 @@ This results in the following output:
 ```json
 {
     "_id": "b0107631-9370-4acd-aafa-8ac3511e623d",
-    "idAsObjectId": 'ObjectId('b010763193704acdaafa8ac3')'
+    "idAsObjectId": "ObjectId('b010763193704acdaafa8ac3')"
 }
 ```
