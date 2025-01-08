@@ -450,9 +450,7 @@
       - name: Azure REST API
         href: flexible-server/how-to-create-server-customer-managed-key-azure-api.md
     - name: Scheduled maintenance
-      items:
-      - name: Azure portal
-        href: flexible-server/how-to-maintenance-portal.md
+      href: flexible-server/how-to-configure-scheduled-maintenance.md
     - name: Networking
       items:
       - name: Encrypted connectivity using TLS/SSL
