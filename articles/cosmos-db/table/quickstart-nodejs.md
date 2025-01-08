@@ -279,7 +279,7 @@ After you insert an entity, you can also run a query to get all entities that ma
 ```typescript
 const partitionKey: string = 'gear-surf-surfboards';
 
-const filter: string = `PartitionKey eq '${partitionKey}'`
+const filter: string = odata`PartitionKey eq '${partitionKey}'`
 
 const queryOptions: TableEntityQueryOptions = { filter: filter }
 
@@ -295,7 +295,7 @@ const partitionKey = 'gear-surf-surfboards';
 
 const entities = table.listEntities({
     queryOptions: {
-        filter: `PartitionKey eq '${partitionKey}'`
+        filter: odata`PartitionKey eq '${partitionKey}'`
     }
 });
 ```
