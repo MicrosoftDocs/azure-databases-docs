@@ -2,7 +2,7 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 01/07/2025
+ms.date: 01/06/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
@@ -80,7 +80,7 @@ ms.custom:
 | Attribute | Value |
 | --- | --- |
 | Category | Customized Options |
-| Description | Sets the minimum execution time above which plans will be logged. Zero prints all plans. -1 turns off this feature. |
+| Description | Sets the minimum execution time above which plans are logged. Zero prints all plans. -1 turns off this feature. |
 | Data type | integer |
 | Default value | `-1` |
 | Allowed values | `-1-2147483647` |
@@ -254,7 +254,7 @@ ms.custom:
 | Default value | Depends on resources (vCores, RAM, or disk space) allocated to the server. |
 | Allowed values | `1024` |
 | Parameter type | read-only |
-| Documentation | [azure_storage.blob_block_size_mb](https://learn.microsoft.com/rest/api/storageservices/put-block?tabs=azure-ad#remarks) |
+| Documentation | [azure_storage.blob_block_size_mb](/rest/api/storageservices/put-block?tabs=azure-ad#remarks) |
 [!INCLUDE [server-parameters-azure-notes-azure-storage-blob-block-size-mb](./server-parameters-azure-notes-azure-storage-blob-block-size-mb.md)]
 
 ### azure_storage.public_account_access
@@ -288,7 +288,7 @@ ms.custom:
 | Attribute | Value |
 | --- | --- |
 | Category | Customized Options |
-| Description | Max sign in tokens per bucket. |
+| Description | Max login tokens per bucket. |
 | Data type | integer |
 | Default value | `2000` |
 | Allowed values | `1-2147483647` |
@@ -301,7 +301,7 @@ ms.custom:
 | Attribute | Value |
 | --- | --- |
 | Category | Customized Options |
-| Description | Enables temporary connection throttling per IP for too many sign in failures. |
+| Description | Enables temporary connection throttling per IP for too many login failures. |
 | Data type | boolean |
 | Default value | `off` |
 | Allowed values | `on,off` |
@@ -327,7 +327,7 @@ ms.custom:
 | Attribute | Value |
 | --- | --- |
 | Category | Customized Options |
-| Description | Max number of entries in the sign in failures hash table. |
+| Description | Max number of entries in the login failures hash table. |
 | Data type | integer |
 | Default value | `500` |
 | Allowed values | `1-2147483647` |
@@ -340,7 +340,7 @@ ms.custom:
 | Attribute | Value |
 | --- | --- |
 | Category | Customized Options |
-| Description | Time between resetting the sign in bucket. |
+| Description | Time between resetting the login bucket. |
 | Data type | integer |
 | Default value | `120` |
 | Allowed values | `1-2147483647` |
@@ -366,7 +366,7 @@ ms.custom:
 | Attribute | Value |
 | --- | --- |
 | Category | Customized Options |
-| Description | Time between updating the sign in bucket. |
+| Description | Time between updating the login bucket. |
 | Data type | integer |
 | Default value | `20` |
 | Allowed values | `1-2147483647` |
@@ -613,7 +613,7 @@ ms.custom:
 | Attribute | Value |
 | --- | --- |
 | Category | Customized Options |
-| Description | Sets the retention period window in days for server logs - after this time data will be deleted. |
+| Description | Sets the retention period window in days for server logs - after this time the data is deleted. |
 | Data type | integer |
 | Default value | `3` |
 | Allowed values | `1-7` |
@@ -665,7 +665,7 @@ ms.custom:
 | Attribute | Value |
 | --- | --- |
 | Category | Customized Options |
-| Description | Specifies which classes of statements will be logged by session audit logging. |
+| Description | Specifies which classes of statements are logged by session audit logging. |
 | Data type | set |
 | Default value | `none` |
 | Allowed values | `none,read,write,function,role,ddl,misc,all` |
@@ -704,7 +704,7 @@ ms.custom:
 | Attribute | Value |
 | --- | --- |
 | Category | Customized Options |
-| Description | Specifies the log level that is used for log entries. |
+| Description | Specifies the log level that are used for log entries. |
 | Data type | enumeration |
 | Default value | `log` |
 | Allowed values | `debug5,debug4,debug3,debug2,debug1,info,notice,warning,log` |
@@ -743,7 +743,7 @@ ms.custom:
 | Attribute | Value |
 | --- | --- |
 | Category | Customized Options |
-| Description | Specifies whether logging will include the statement text and parameters with the first log entry for a statement/substatement combination or with every entry. |
+| Description | Specifies whether logging includes the statement text and parameters with the first log entry for a statement/substatement combination or with every entry. |
 | Data type | boolean |
 | Default value | `off` |
 | Allowed values | `on,off` |
@@ -847,7 +847,7 @@ ms.custom:
 | Attribute | Value |
 | --- | --- |
 | Category | Customized Options |
-| Description | Internal Use Only: This parameter is used as a feature override switch. If it shows as off, wait sampling will be disabled despite the value set for pgms_wait_sampling.query_capture_mode. |
+| Description | Internal Use Only: This parameter is used as a feature override switch. If it shows as off, wait sampling are disabled despite the value set for pgms_wait_sampling.query_capture_mode. |
 | Data type | boolean |
 | Default value | `on` |
 | Allowed values | `on` |
@@ -886,7 +886,7 @@ ms.custom:
 | Attribute | Value |
 | --- | --- |
 | Category | Customized Options |
-| Description | Required. The databases that run_maintenance() runs. If more than one, use a comma separated list. If not set, BGW does nothing. |
+| Description | Required. The databases that run_maintenance() runs on. If more than one, use a comma separated list. If not set, BGW does nothing. |
 | Data type | string |
 | Default value | |
 | Allowed values | `[A-Za-z0-9_,]*` |
@@ -925,7 +925,7 @@ ms.custom:
 | Attribute | Value |
 | --- | --- |
 | Category | Customized Options |
-| Description | The role that run_maintenance() will run as. Default is postgres. Only a single role name is allowed. |
+| Description | The role that run_maintenance() runs as is. Default is postgres. Only a single role name is allowed. |
 | Data type | string |
 | Default value | |
 | Allowed values | `[A-Za-z\\._]*` |
@@ -951,7 +951,7 @@ ms.custom:
 | Attribute | Value |
 | --- | --- |
 | Category | Customized Options |
-| Description | Internal Use Only: This parameter is used as a feature override switch. If it shows as off, Query Store is disabled despite the value set for pg_qs.query_capture_mode. |
+| Description | Internal Use Only: This parameter is used as a feature override switch. If it shows as off, the Query Store is disabled despite the value set for pg_qs.query_capture_mode. |
 | Data type | boolean |
 | Default value | `on` |
 | Allowed values | `on` |
@@ -964,7 +964,7 @@ ms.custom:
 | Attribute | Value |
 | --- | --- |
 | Category | Customized Options |
-| Description | Sets the maximum number of bytes that will be saved for query plan text for pg_qs; longer plans will be truncated. |
+| Description | Sets the maximum number of bytes that are saved for query plan text for pg_qs; longer plans are truncated. |
 | Data type | integer |
 | Default value | `7500` |
 | Allowed values | `100-10000` |
@@ -977,7 +977,7 @@ ms.custom:
 | Attribute | Value |
 | --- | --- |
 | Category | Customized Options |
-| Description | Sets the maximum query text length that is saved; longer queries will be truncated. |
+| Description | Sets the maximum query text length that is saved; longer queries are truncated. |
 | Data type | integer |
 | Default value | `6000` |
 | Allowed values | `100-10000` |
@@ -1016,7 +1016,7 @@ ms.custom:
 | Attribute | Value |
 | --- | --- |
 | Category | Customized Options |
-| Description | Sets the retention period window in days for pg_qs - after this time data will be deleted. |
+| Description | Sets the retention period window in days for pg_qs - after this time the data is deleted. |
 | Data type | integer |
 | Default value | `7` |
 | Allowed values | `1-30` |
