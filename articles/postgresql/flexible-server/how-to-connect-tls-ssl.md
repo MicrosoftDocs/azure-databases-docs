@@ -45,8 +45,6 @@ The following example shows how to connect to your server using the psql command
 
 Some application frameworks that use PostgreSQL for their database services do not enable TLS by default during installation. Your Azure Database for PostgreSQL flexible server instance enforces TLS connections but if the application is not configured for TLS, the application may fail to connect to your database server. Consult your application's documentation to learn how to enable TLS connections.
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 
 - [Create and manage Azure Database for PostgreSQL - Flexible Server virtual network using Azure CLI](how-to-manage-virtual-network-cli.md).

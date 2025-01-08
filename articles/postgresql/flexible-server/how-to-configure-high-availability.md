@@ -369,8 +369,6 @@ Message: Operation HandleWalServiceFailureManagementOperation failed, because se
     3. After data verification, you can optionally [delete](how-to-delete-server.md) the old server.
     4. Make sure that the connection strings of your clients are modified to point to your newly restored instance.
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 - [Overview of business continuity with Azure Database for PostgreSQL - Flexible Server](concepts-business-continuity.md).
 - [High availability in Azure Database for PostgreSQL - Flexible Server](/azure/reliability/reliability-postgresql-flexible-server).
 - [Point-in-time restore of an Azure Database for PostgreSQL - Flexible Server instance](how-to-restore-server-portal.md).

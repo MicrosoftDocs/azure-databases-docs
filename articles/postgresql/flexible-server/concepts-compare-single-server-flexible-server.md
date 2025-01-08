@@ -126,8 +126,6 @@ The following table provides a list of high-level features and capabilities comp
 | Major version upgrades support | No | Yes |
 | Minor version upgrades | Yes. Automatic during maintenance window | Yes. Automatic during maintenance window |
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 
 - [Compute options in Azure Database for PostgreSQL - Flexible Server](concepts-compute.md).

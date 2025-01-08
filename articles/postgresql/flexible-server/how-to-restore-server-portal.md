@@ -99,8 +99,6 @@ By default, the backups for the restored server are configured with geo-redundan
 
 If the source server is configured with *private access*, you can restore only to another virtual network in the remote region. You can either choose an existing virtual network or create a new virtual network and restore your server into that network.  
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 
 - [Overview of business continuity with Azure Database for PostgreSQL - Flexible Server](concepts-business-continuity.md).

@@ -72,8 +72,6 @@ In this article, you learn how to restore an Azure Database for PostgreSQL flexi
  - If you utilize the incorrect API version, you might experience restore failures or timeouts. Please use 2023-06-01-preview API to avoid such issues.
  - To avoid potential DNS errors, it's recommended to use a different name when initiating the restore process, as some restore operations might fail with the same name.
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 
 - [Overview of business continuity with Azure Database for PostgreSQL - Flexible Server](concepts-business-continuity.md).

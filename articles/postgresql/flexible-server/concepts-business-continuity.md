@@ -110,8 +110,6 @@ Below are some unplanned failure scenarios and the recovery process.
 > [!IMPORTANT]
 > Deleted servers can be restored. If you delete the server, you can follow our guidance [Restore a dropped Azure database - Azure Database for PostgreSQL - Flexible Server](how-to-restore-dropped-server.md) to recover. Use Azure resource lock to help prevent accidental deletion of your server.
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 
 - [High availability in Azure Database for PostgreSQL - Flexible Server](/azure/reliability/reliability-postgresql-flexible-server).

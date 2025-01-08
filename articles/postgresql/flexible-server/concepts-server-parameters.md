@@ -28,8 +28,6 @@ You can explore the specific documentation of each of these parameters in the fo
 [!INCLUDE [server-parameters-table](includes/server-parameters-table.md)]
 
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 
 - [Configure server parameters in Azure Database for PostgreSQL - Flexible Server](how-to-configure-server-parameters.md).

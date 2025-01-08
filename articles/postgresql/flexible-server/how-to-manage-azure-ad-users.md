@@ -171,8 +171,6 @@ SECURITY LABEL for "pgaadauth" on role "<roleName>" is 'aadauth,oid=<objectId>,t
 
 `text` it can be present or absent. Users/roles for which this part is present in their security label, can manage other Microsoft Entra ID roles.
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 
 - [Microsoft Entra authentication with Azure Database for PostgreSQL - Flexible Server](concepts-azure-ad-authentication.md).

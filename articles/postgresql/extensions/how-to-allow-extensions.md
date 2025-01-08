@@ -171,8 +171,6 @@ This error occurs when the user that runs a `CREATE EXTENSION` command isn't a m
 
 This error occurs when the user that runs a `DROP EXTENSION` command isn't a member of `azure_pg_admin` role.
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 
 - [How to use extensions](how-to-allow-extensions.md).

@@ -268,8 +268,6 @@ Azure Database for PostgreSQL flexible server offers an [in-place major version 
 
 The extensions `anon`, `Apache AGE`, `dblink`, `orafce`, `pgaudit`, `postgres_fdw`, and `timescaledb` are unsupported for all Azure Database for PostgreSQL flexible server versions when using in-place major version update feature.
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 
 - [How to use extensions](how-to-allow-extensions.md).

@@ -57,8 +57,6 @@ az postgres flexible-server upgrade --resource-group <resource_group> --name <se
 
 ---
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 
 - [Overview of business continuity with Azure Database for PostgreSQL - Flexible Server](concepts-business-continuity.md).

@@ -62,8 +62,6 @@ Message: Start Server can only be performed on Stopped servers. Server Name = <s
 > [!NOTE]
 > Once the server is started, all management operations are available for the Azure Database for PostgreSQL flexible server.
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 
 - [Stop an Azure Database for PostgreSQL flexible server](how-to-stop-server.md).

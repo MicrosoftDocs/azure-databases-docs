@@ -140,8 +140,6 @@ Using an application-side pool together with PgBouncer on the database server ca
 
 For customers who want simplified management, built-in high availability, easy connectivity with containerized applications, and the ability to use the most popular configuration parameters, the built-in PgBouncer feature is a good choice. For customers who want multithreaded scalability, full control of all parameters, and a debugging experience, setting up PgBouncer on Azure VMs might be an alternative.
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 
 - [Overview of Azure Database for PostgreSQL - Flexible Server](overview.md).
