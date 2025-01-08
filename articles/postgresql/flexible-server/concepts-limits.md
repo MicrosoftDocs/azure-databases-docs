@@ -103,7 +103,7 @@ The following sections list considerations for what is and isn't supported in Az
 
 ### High availability
 
-- See [High availability in Azure Database for PostgreSQL - Flexible Server](concepts-high-availability.md#high-availability---limitations).
+- See [High availability in Azure Database for PostgreSQL - Flexible Server](/azure/reliability/reliability-postgresql-flexible-server#high-availability-limitations).
 
 ### Availability zones
 
@@ -140,8 +140,6 @@ The following sections list considerations for what is and isn't supported in Az
 ### Security
 
 - MD5 hashing is disabled from Postgres 14 and later versions and native Postgres passwords will be hashed using SCRAM-SHA-256 method only.
-
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
 
 ## Related content
 

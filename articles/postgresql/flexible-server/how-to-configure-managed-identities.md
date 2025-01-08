@@ -232,8 +232,6 @@ az postgres flexible-server identity list --resource-group $resourceGroup --serv
 
 ---
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 
 - [Managed identities in Azure Database for PostgreSQL - Flexible Server](concepts-identity.md).

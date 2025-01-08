@@ -30,9 +30,9 @@ There are different ways to model recommendation systems. This article explores 
 
 [Create and deploy an Azure OpenAI Service resource and a model](/azure/ai-services/openai/how-to/create-resource), deploy the embeddings model [text-embedding-ada-002](/azure/ai-services/openai/concepts/models#embeddings-models). Copy the deployment name as it is needed to create embeddings.
 
-## Enable the `azure_ai` and `pgvector` extensions
+## Enable the azure_ai and pgvector extensions
 
-Before you can enable `azure_ai` and `pgvector` on your Azure Database for PostgreSQL flexible server instance, you need to add them to your allowlist as described in [how to use PostgreSQL extensions](concepts-extensions.md#how-to-use-postgresql-extensions) and check if correctly added by running `SHOW azure.extensions;`.
+Before you can enable `azure_ai` and `pgvector` on your Azure Database for PostgreSQL flexible server instance, you need to add them to your allowlist as described in [how to use PostgreSQL extensions](../extensions/how-to-allow-extensions.md) and check if correctly added by running `SHOW azure.extensions;`.
 
 Then you can install the extension, by connecting to your target database and running the [CREATE EXTENSION](https://www.postgresql.org/docs/current/static/sql-createextension.html) command. You need to repeat the command separately for every database you want the extension to be available in.
 
@@ -202,8 +202,6 @@ And explore the results:
  Pear Pie                              |         0.099974394
 (20 rows)
 ```
-
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
 
 ## Related content
 

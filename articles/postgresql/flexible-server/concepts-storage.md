@@ -22,7 +22,7 @@ Azure Premium SSD deliver high-performance and low-latency disk support for virt
 
 ## Premium SSD v2 (preview)
 
-Premium SSD v2 offers higher performance than Premium SSD, while also being less costly, as a general rule. You can individually tweak the performance (capacity, throughput, and input/output operations per second, referred to as IOPS) of Premium SSD v2 at any time. The ability to do these adjustments allow workloads to be cost-efficient, while meeting shifting performance needs. For example, a transaction-intensive database might need to cope with a large amount of IOPS for a couple of exceptionally high-demand days. Or a gaming application might demand higher throughput during peak hours only. Hence, for most general-purpose workloads, Premium SSD v2 can provide the best price for performance.
+Premium SSD v2 offers higher performance than Premium SSD, while also being less costly, as a general rule. You can individually tweak the performance (capacity, throughput, and input/output operations per second, referred to as IOPS) of Premium SSD v2 at any time. The ability to do these adjustments allow workloads to be cost-efficient, while meeting shifting performance needs. For example, a transaction-intensive database might need to cope with a large amount of IOPS for a couple of exceptionally high-demand days. Or a gaming application might demand higher throughput during peak hours only. Hence, for most general-purpose workloads, Premium SSD v2 can provide the best price for performance. You can now deploy Azure Database for PostgreSQL flexible server instances with Premium SSD v2 disk in all supported regions.
 
 > [!NOTE]  
 > Premium SSD v2 is currently in preview for Azure Database for PostgreSQL - Flexible Server.
@@ -61,6 +61,8 @@ All Premium SSD v2 disks have a baseline throughput of 125 MB/s that is free of 
 - Online migration from Premium SSD (PV1) to Premium SSD v2 (PV2) isn't supported. As an alternative, if you want to migrate across the different storage types, you can perform a [point-in-time-restore](concepts-backup-restore.md#point-in-time-recovery) of your existing server to a new one that is provisioned with a different storage type.
 
 - Premium SSD V2 can only be enabled for newly created servers. Enabling Premium SSD V2 on existing servers isn't supported.
+
+- Premium SSD V2 can only be enabled in the following regions: Australia East, Brazil South, Canada Central, Central India, Central US, East Asia, East US, East US 2, France Central, Germany West Central, Israel Central, Japan East, Korea Central, Norway East, Poland Central, South Central US, Southeast Asia, Switzerland North, UAE North, West Central US, West Europe, and West US 2.
 
 The storage that you provision is the amount of storage capacity available to your Azure Database for PostgreSQL flexible server instance. This storage is used for database files, temporary files, transaction logs, and PostgreSQL server logs. The total amount of storage that you provision also defines the I/O capacity available to your server.
 
@@ -118,7 +120,7 @@ The process of scaling storage is performed online, without causing any downtime
 
 ## Limitations and considerations of storage autogrowth 
 
-- Disk scaling operations are typically performed online, except in specific scenarios involving crossing the boundary of 4,096 GiB. These scenarios include reaching or crossing the limit of 4,096 GiB. For instance, scaling from 2,048 GiB to 8,192 GiB triggers an offline operation. In the Azure portal, moving to 4 TB, which is represented as 4,095 GiB, keeps the operation online. However, if you explicitly specify 4 TB as 4,096 GiB, such as in Azure CLI, the scaling operation is completed in offline mode, since it reaches the limit of 4,096 GiB. Oflline scale operation usually takes anywhere between 2 to 10 minutes. With the [reduced downtime scaling feature](./concepts-scaling-resources.md), this duration is reduced to less than 30 seconds. This reduction in downtime during scaling resources improves the overall availability of your database instance.
+- Disk scaling operations are typically performed online, except in specific scenarios involving crossing the boundary of 4,096 GiB. These scenarios include reaching or crossing the limit of 4,096 GiB. For instance, scaling from 2,048 GiB to 8,192 GiB triggers an offline operation. In the Azure portal, moving to 4 TB, which is represented as 4,095 GiB, keeps the operation online. However, if you explicitly specify 4 TB as 4,096 GiB, such as in Azure CLI, the scaling operation is completed in offline mode, since it reaches the limit of 4,096 GiB. Oflline scale operation usually takes anywhere between 2 to 10 minutes. With the [reduced downtime scaling feature](concepts-scaling-resources.md), this duration is reduced to less than 30 seconds. This reduction in downtime during scaling resources improves the overall availability of your database instance.
 
 - Host Caching (ReadOnly and Read/Write) is supported on disk sizes less than 4 TiB. Any disk that is provisioned up to 4,095 GiB can take advantage of Host Caching. Host caching isn't supported for disk sizes more than or equal to 4,096 GiB. For example, a P50 premium disk provisioned at 4,095 GiB can take advantage of Host caching and a P50 disk provisioned at 4,096 GiB can't take advantage of Host Caching. Customers moving from lower disk size to 4,096 GiB or higher lose the ability to use disk caching.
 
@@ -140,9 +142,7 @@ The compute size selected determines the minimum and maximum IOPS. To learn more
 
 Learn how to [scale up or down IOPS](how-to-scale-compute-storage-portal.md).
 
-[!INCLUDE [pricing](./includes/compute-storage-princing.md)]
-
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
+[!INCLUDE [pricing](includes/compute-storage-princing.md)]
 
 ## Related content
 

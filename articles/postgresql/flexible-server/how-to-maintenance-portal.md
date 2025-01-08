@@ -18,8 +18,7 @@ You can specify maintenance options for each Azure Database for PostgreSQL flexi
 
 ## Prerequisites
 
-To complete this how-to guide, you need:
-- An [Azure Database for PostgreSQL flexible server](quickstart-create-server-portal.md) instance
+To complete this how-to guide, you need to [Create an instance of Azure Database for PostgreSQL - Flexible Server](quickstart-create-server.md).
  
 ## Specify maintenance schedule options
  
@@ -30,8 +29,6 @@ To complete this how-to guide, you need:
  
 You can use Azure Service Health to [view notifications](/azure/service-health/service-notifications) about upcoming and performed scheduled maintenance on your Azure Database for PostgreSQL flexible server instance. You can also [set up](/azure/service-health/resource-health-alert-monitor-guide) alerts in Azure Service Health to get notifications about maintenance events.
  
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 
 - [Scheduled maintenance in Azure Database for PostgreSQL - Flexible Server](concepts-maintenance.md).

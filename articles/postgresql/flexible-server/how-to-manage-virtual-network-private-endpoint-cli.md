@@ -18,7 +18,7 @@ ms.custom: ignite-2023, devx-track-azurecli
 
 Azure Database for PostgreSQL flexible server supports two types of mutually exclusive network connectivity methods to connect to your Azure Database for PostgreSQL flexible server instance. The two options are:
 
-* Public access through allowed IP addresses. You can further secure that method by using [Azure Private Link](./concepts-networking-private-link.md)-based networking with Azure Database for PostgreSQL flexible server. The feature is in preview.
+* Public access through allowed IP addresses. You can further secure that method by using [Azure Private Link](concepts-networking-private-link.md)-based networking with Azure Database for PostgreSQL flexible server. The feature is in preview.
 * Private access through virtual network integration.
 
 This article focuses on creating an Azure Database for PostgreSQL flexible server instance with public access (allowed IP addresses) by using the Azure portal. You can then help secure the server by adding private networking based on Private Link technology.
@@ -71,8 +71,6 @@ To add an Azure Database for PostgreSQL flexible server instance to a virtual ne
     ```azurecli
     az postgres flexible-server private-endpoint-connection approve -g <resource_group> -s <server_name> -n <connection_name>        --description "Approve connection"
     ```
-
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
 
 ## Related content
 

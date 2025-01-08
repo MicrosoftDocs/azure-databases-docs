@@ -44,7 +44,7 @@ After a successful migration, ensure you can log in to your flexible server usin
 
  1) Change the password_encryption [server parameter on your flexible server](../../flexible-server/how-to-configure-server-parameters-using-portal.md) from SCRAM-SHA-256 to MD5.
  2) Reinitiate the migration from your single server to the flexible server.
- 3) If authentication issues persist, delete the existing flexible server and [provision a new one](../../flexible-server/quickstart-create-server-portal.md). Repeat steps 1 and 2 to resolve the issue.
+ 3) If authentication issues persist, delete the existing flexible server and [provision a new one](../../flexible-server/quickstart-create-server.md). Repeat steps 1 and 2 to resolve the issue.
 
  This should resolve the authentication errors.
 

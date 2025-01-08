@@ -20,9 +20,9 @@ ms.custom:
 
 Azure Database for PostgreSQL flexible server extension for Azure AI enables you to use large language models (LLMS) and build rich generative AI applications within the database.  The Azure AI extension enables the database to call into various Azure AI services including [Azure OpenAI](/azure/ai-services/openai/overview) and [Azure Cognitive Services](https://azure.microsoft.com/products/ai-services/cognitive-search/) simplifying the development process allowing seamless integration into those services. 
 
-## Enable the `azure_ai` extension
+## Enable the azure_ai extension
 
-Before you can enable `azure_ai` on your Azure Database for PostgreSQL flexible server instance, you need to add it to your allowlist as described in [how to use PostgreSQL extensions](concepts-extensions.md#how-to-use-postgresql-extensions) and check if correctly added by running `SHOW azure.extensions;`.
+Before you can enable `azure_ai` on your Azure Database for PostgreSQL flexible server instance, you need to add it to your allowlist as described in [how to use PostgreSQL extensions](../extensions/how-to-allow-extensions.md) and check if correctly added by running `SHOW azure.extensions;`.
 
 > [!TIP]
 > You might also want to enable the [`pgvector` extension](how-to-use-pgvector.md) as it is commonly used with `azure_ai`.
@@ -44,7 +44,7 @@ Installing the extension `azure_ai` creates the following three schemas:
 
 The extension also allows calling Azure OpenAI and Azure Cognitive Services.
 
-## Configure the `azure_ai` extension
+## Configure the azure_ai extension
 
 Configuring the extension requires you to provide the endpoints to connect to the Azure AI services and the API keys required for authentication. Service settings are stored using following functions:
 
@@ -151,8 +151,6 @@ To update an installed extension to the latest available version supported by Az
 ```sql
 ALTER EXTENSION azure_ai UPDATE;
 ```
-
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
 
 ## Related content
 

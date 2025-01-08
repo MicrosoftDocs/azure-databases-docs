@@ -119,7 +119,7 @@ If you configure your server within a virtual network, you can restore to the sa
 
 ## Geo-redundant backup and restore
 
-To enable geo-redundant backup from the **Compute + storage** pane in the Azure portal, see the [quickstart guide](quickstart-create-server-portal.md). 
+To enable geo-redundant backup from the **Compute + storage** pane in the Azure portal, see [Create an instance of Azure Database for PostgreSQL - Flexible Server](quickstart-create-server.md). 
 
 >[!IMPORTANT]
 > Geo-redundant backup can be configured only at the time of server creation. 
@@ -173,7 +173,7 @@ After you restore the server, you can perform the following tasks to get your us
 
 - Configure alerts as appropriate.
   
-- If the source server from which you restored was configured with high availability, and you want to configure the restored server with high availability, you can then follow [these steps](how-to-manage-high-availability-portal.md).
+- If the source server from which you restored was configured with high availability, and you want to configure the restored server with high availability, you can then follow [these steps](how-to-configure-high-availability.md).
 
 - If the source server from which you restored was configured with read replicas, and you want to configure read replicas on the restored server, you can then follow [these steps](how-to-read-replicas-portal.md).
  
@@ -342,8 +342,6 @@ For more information about performing a long term backup, visit the [how-to guid
 * **How do I track my restore operation?**
   
     Currently, there's no way to track the restore operation. You can monitor the activity log to see if the operation is in progress or complete.
-
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
 
 ## Related content
 

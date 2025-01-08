@@ -23,8 +23,7 @@ You can automatically deploy your database updates to Azure Database for Postgre
 - An Azure account. If you don't have one, [get a free trial](https://azure.microsoft.com/free/).
 - [Azure Resource Manager service connection](/azure/devops/pipelines/library/connect-to-azure) to your Azure account.
 - Microsoft hosted agents have Azure CLI preinstalled. However if you're using private agents, [install Azure CLI](/cli/azure/install-azure-cli) on the computers that run the build and release agent. If an agent is already running on the machine on which the Azure CLI is installed, restart the agent to ensure all the relevant stage variables are updated.
-- Create an Azure Database for PostgreSQL flexible server instance using the [Azure portal](quickstart-create-server-portal.md) or  [Azure CLI](quickstart-create-server-cli.md).
-
+- [Create an instance of Azure Database for PostgreSQL - Flexible Server](quickstart-create-server.md).
 
 ## Use SQL file
 
@@ -93,8 +92,6 @@ You can see the full list of all the task inputs when using Azure CLI task with 
 |powerShellIgnoreLASTEXITCODE| (Optional) If this is false, the line <code>if ((Test-Path -LiteralPath variable:\\LASTEXITCODE)) { exit $LASTEXITCODE }</code> is appended to the end of your script. This causes the last exit code from an external command to be propagated as the exit code of PowerShell. Otherwise the line isn't appended to the end of your script. The default value is false. |
 
 Having issues with CLI Task, see [how to troubleshoot Build and Release](/azure/devops/pipelines/troubleshooting/troubleshooting).
-
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
 
 ## Related content
 

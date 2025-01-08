@@ -395,16 +395,22 @@
     items:
     - name: Server administration
       items:
-      - name: Manage a server
-        items:
-        - name: Azure portal
-          href: flexible-server/how-to-manage-server-portal.md
-        - name: Azure CLI
-          href: flexible-server/how-to-manage-server-cli.md
-        - name: Connect and query guide
-          href: flexible-server/how-to-connect-query-guide.md
+      - name: Start a server
+        href: flexible-server/how-to-start-server.md
+      - name: Stop a server
+        href: flexible-server/how-to-stop-server.md
+      - name: Restart a server
+        href: flexible-server/how-to-restart-server.md
+      - name: Reset administrator password
+        href: flexible-server/how-to-reset-admin-password.md
+      - name: Delete a server
+        href: flexible-server/how-to-delete-server.md
       - name: Auto grow storage
         href: flexible-server/how-to-auto-grow-storage.md
+      - name: Configure high availability
+        href: flexible-server/how-to-configure-high-availability.md
+      - name: Download server logs
+        href: flexible-server/how-to-configure-server-logs.md
       - name: Scale a server
         items:
         - name: Azure portal
@@ -419,12 +425,6 @@
           href: flexible-server/how-to-restore-to-different-subscription-or-resource-group.md
         - name: Azure REST API
           href: flexible-server/how-to-restore-different-subscription-resource-group-api.md 
-      - name: Restart a server
-        items:
-        - name: Azure portal
-          href: flexible-server/how-to-restart-server-portal.md
-        - name: Azure CLI
-          href: flexible-server/how-to-restart-server-cli.md
       - name:  On-demand-backup 
         items:
         - name: Azure portal
@@ -437,18 +437,6 @@
           href: flexible-server/how-to-restore-server-portal.md
         - name: Azure CLI
           href: flexible-server/how-to-restore-server-cli.md
-      - name: Stop/Start a server
-        items:
-        - name: Azure portal
-          href: flexible-server/how-to-stop-start-server-portal.md
-        - name: Azure CLI
-          href: flexible-server/how-to-stop-start-server-cli.md
-      - name: Configure server logs
-        items:
-        - name: Azure portal
-          href: flexible-server/how-to-server-logs-portal.md
-        - name: Azure CLI
-          href: flexible-server/how-to-server-logs-cli.md
       - name: Relocate a server 
         href: /azure/operational-excellence/relocation-postgresql-flexible-server?toc=/azure/postgresql/toc.json
     - name: Configure managed identities
@@ -508,12 +496,6 @@
         href: flexible-server/how-to-connect-scram.md
     - name: Major version upgrade
       href: flexible-server/how-to-perform-major-version-upgrade.md
-    - name: Manage high availability
-      items:
-      - name: Azure portal
-        href: flexible-server/how-to-manage-high-availability-portal.md
-      - name: Azure CLI
-        href: flexible-server/how-to-configure-high-availability-cli.md
     - name: Monitor
       items:
       - name: Create alerts on metrics using portal

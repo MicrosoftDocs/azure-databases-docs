@@ -31,7 +31,7 @@ Compute tier can be scaled up or down between Burstable, General Purpose, and Me
 
 The number of vCores and installed memory can be scaled up or down. The storage tier can also be configured up or down to accommodate to the requirements of throughput and IOPS that your workload demands. The storage size can only be increased. Also, depending on your requirements you can increase or decrease the backup retention period between 7 to 35 days.
 
-These resources can be scaled by using multiple interfaces. For instance, you can use [Azure portal](quickstart-create-server-portal.md) or [Azure CLI](quickstart-create-server-cli.md).
+These resources can be scaled by using multiple interfaces. For instance, you can use [Azure portal](quickstart-create-server.md) or [Azure CLI](quickstart-create-server.md).
 
 > [!NOTE]
 > After you increase the size of the storage assigned to your instance, you can't shrink it to a smaller size.
@@ -82,12 +82,8 @@ For horizontally scaled configurations, consisting of a primary server and one o
 - Reduced downtime scaling doesn't work if there are regional capacity constraints or quota limits on your subscription.
 - Reduced downtime scaling doesn't work for a replica server, because it's only supported on the primary server. For replica servers, the scaling operation automatically goes through the regular process.
 - Reduced downtime scaling doesn't work if a [virtual network-injected server](concepts-networking-private.md#virtual-network-concepts) doesn't have sufficient usable IP addresses in the delegated subnet. If you have a standalone server, one extra IP address is necessary. For an instance with high-availability enabled, two extra IP addresses are required.
-- Logical replication slots aren't preserved during a reduced downtime failover event. To maintain logical replication slots and ensure data consistency after a scale operation, use the [pg_failover_slot](https://github.com/EnterpriseDB/pg_failover_slots) extension. For more information, see [enabling extension in a flexible server](concepts-extensions.md#pg_failover_slots).
+- Logical replication slots aren't preserved during a reduced downtime failover event. To maintain logical replication slots and ensure data consistency after a scale operation, use the [pg_failover_slot](https://github.com/EnterpriseDB/pg_failover_slots) extension. For more information, see [enabling the pg_failover_slots extension in an instance of flexible server](../extensions/concepts-extensions-considerations.md#pg_failover_slots).
 - Reduced downtime scaling doesn't work with [unlogged tables](https://www.postgresql.org/docs/current/sql-createtable.html#SQL-CREATETABLE-UNLOGGED). If you're using unlogged tables for any of your data will lose all the data in those tables after the reduced downtime scaling.
-
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
 
 ## Related content
 

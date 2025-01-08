@@ -118,8 +118,6 @@ For more information about the SKUs, see:
 * [Edv4 and Edsv4-series](/azure/virtual-machines/edv4-edsv4-series)   
 * [Ddv4 and Ddsv4-series](/azure/virtual-machines/ddv4-ddsv4-series)
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 
 - [Configure intelligent tuning for Azure Database for PostgreSQL - Flexible Server](how-to-enable-intelligent-performance-portal.md).

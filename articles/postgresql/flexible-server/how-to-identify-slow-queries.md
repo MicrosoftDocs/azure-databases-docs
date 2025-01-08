@@ -210,12 +210,10 @@ Finalize Aggregate (cost=180185.84..180185.85 rows=1 width=4) (actual time=10387
 > [!NOTE]  
 > For demonstration purposes the EXPLAIN ANALYZE output of only a few queries used in the procedure are shown. The idea is one can gather EXPLAIN ANALYZE output of all queries from the logs, and identify the slowest of those and try to tune them.
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 
 - [Troubleshoot high CPU utilization in Azure Database for PostgreSQL - Flexible Server](how-to-high-cpu-utilization.md).
 - [Troubleshoot high IOPS utilization in Azure Database for PostgreSQL - Flexible Server](how-to-high-io-utilization.md).
 - [Troubleshoot high memory utilization in Azure Database for PostgreSQL - Flexible Server](how-to-high-memory-utilization.md).
 - [Server parameters in Azure Database for PostgreSQL - Flexible Server](concepts-server-parameters.md).
-- [Autovacuum tuning in Azure Database for PostgreSQL - Flexible Server](./how-to-autovacuum-tuning.md).
+- [Autovacuum tuning in Azure Database for PostgreSQL - Flexible Server](how-to-autovacuum-tuning.md).

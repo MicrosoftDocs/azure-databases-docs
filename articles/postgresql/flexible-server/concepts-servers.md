@@ -30,7 +30,7 @@ An Azure Database for PostgreSQL flexible server instance:
 - Provides a connection endpoint for server and database access.
 - Provides the scope for management policies that apply to its databases, such as login, firewall, users, roles, and configurations.
 - Is available in multiple versions. For more information, see the [supported PostgreSQL database versions](concepts-supported-versions.md).
-- Is extensible by users. For more information, see [PostgreSQL extensions](concepts-extensions.md).
+- Is extensible by users. For more information, see [PostgreSQL extensions](../extensions/how-to-allow-extensions.md).
 
 Within an Azure Database for PostgreSQL flexible server instance, you can create one or multiple databases. You can opt to create a single database per server to utilize all the resources, or create multiple databases to share the resources. The pricing is structured per-server, based on the configuration of pricing tier, vCores, and storage (GB). For more information, see [Compute options](concepts-compute.md).
 
@@ -65,8 +65,6 @@ The Azure Database for PostgreSQL flexible server parameters determine the confi
 As a managed service for Postgres, Azure Database for PostgreSQL has configurable parameters that are a subset of the parameters in a local Postgres instance. For more information on Postgres parameters, see the [PostgreSQL documentation](https://www.postgresql.org/docs/current/static/runtime-config.html).
 
 Your Azure Database for PostgreSQL flexible server instance is enabled with default values for each parameter on creation. The user can't configure some parameters that would require a server restart or superuser access for changes to take effect.
-
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
 
 ## Related content
 

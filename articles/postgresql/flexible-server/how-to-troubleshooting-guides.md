@@ -22,9 +22,9 @@ To effectively troubleshoot a specific issue, you need to make sure that you hav
 Each troubleshooting guide requires a specific set of data, which is sourced from three separate features: [Diagnostic settings](how-to-configure-and-access-logs.md), [Query Store](concepts-query-store.md), and [Enhanced metrics](concepts-monitoring.md#enabling-enhanced-metrics).
 All troubleshooting guides require logs to be sent to a Log Analytics workspace, but the specific category of logs to be captured may vary depending on the particular guide. 
 
-Please, follow the steps described in [Configure and Access Logs - Azure Database for PostgreSQL - Flexible Server](howto-configure-and-access-logs.md) to configure diagnostic settings and send the logs to a Log Analytics workspace.
+Please, follow the steps described in [Configure and Access Logs - Azure Database for PostgreSQL - Flexible Server](how-to-configure-and-access-logs.md) to configure diagnostic settings and send the logs to a Log Analytics workspace.
 
-Query Store, and Enhanced metrics are configured via Server parameters. Please follow the steps described in the configure server parameters in Azure Database for PostgreSQL flexible server articles for [Azure portal](howto-configure-server-parameters-using-portal.md) or [Azure CLI](howto-configure-server-parameters-using-cli.md).
+Query Store, and Enhanced metrics are configured via Server parameters. Please follow the steps described in the configure server parameters in Azure Database for PostgreSQL flexible server articles for [Azure portal](how-to-configure-server-parameters.md) or [Azure CLI](how-to-configure-server-parameters.md).
 
 The table below provides information on the required log categories for each troubleshooting guide, as well as the necessary Query Store, Enhanced metrics and Server parameters prerequisites.
 
@@ -84,8 +84,6 @@ SELECT '24776'::regrole;
 ```
 
 :::image type="content" source="./media/how-to-troubleshooting-guides/retrieve-username.png" alt-text="Screenshot of retrieving the Username.":::
-
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
 
 ## Related content
 

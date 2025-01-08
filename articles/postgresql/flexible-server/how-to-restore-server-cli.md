@@ -103,8 +103,6 @@ After the restore is completed, you should perform the following tasks to get yo
 - Ensure appropriate logins and database level permissions are in place.
 - Configure alerts as appropriate for the newly restore server.
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 
 - [Overview of business continuity with Azure Database for PostgreSQL - Flexible Server](concepts-business-continuity.md).

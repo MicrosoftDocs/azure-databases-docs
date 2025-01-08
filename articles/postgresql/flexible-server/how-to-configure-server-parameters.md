@@ -404,7 +404,5 @@ PostgreSQL allows you to specify time zones in three different forms:
 
 - In addition to the timezone names and abbreviations, PostgreSQL accepts POSIX-style time zone specifications of the form STDoffset or STDoffsetDST, where STD is a zone abbreviation, offset is a numeric offset in hours west from UTC, and DST is an optional daylight-savings zone abbreviation, assumed to stand for one hour ahead of the given offset. 
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related contents
 - [Server parameters in Azure Database for PostgreSQL - Flexible Server](concepts-server-parameters.md).
