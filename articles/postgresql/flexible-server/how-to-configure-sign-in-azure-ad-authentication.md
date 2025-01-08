@@ -265,8 +265,6 @@ These considerations are essential when you're connecting as a group member:
 
 You're now authenticated to your PostgreSQL server through Microsoft Entra authentication.
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 
 - [Microsoft Entra authentication with Azure Database for PostgreSQL - Flexible Server](concepts-azure-ad-authentication.md)

@@ -65,8 +65,6 @@ az postgres flexible-server delete --resource-group <resource_group> --name <ser
 
 ---
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 
 - [Start an Azure Database for PostgreSQL flexible server](how-to-start-server.md).

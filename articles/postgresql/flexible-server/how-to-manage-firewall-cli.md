@@ -148,8 +148,6 @@ az postgres flexible-server firewall-rule delete --name mydemoserver --rule-name
 ```
 Upon success, there is no output. Upon failure, error message text displays.
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 
 - [Networking in Azure Database for PostgreSQL - Flexible Server](concepts-networking-private.md).

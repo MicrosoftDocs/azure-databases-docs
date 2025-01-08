@@ -1059,8 +1059,6 @@ The **Read Replica Lag** metric shows the time since the last replayed transacti
 
 3.  For your **Aggregation**, select **Max**.
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 
 - [Read replicas in Azure Database for PostgreSQL - Flexible Server](concepts-read-replicas.md).

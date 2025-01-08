@@ -1158,8 +1158,6 @@ The following example shows the export of data from a table called `events`, to 
    WITH (FORMAT 'csv', header);
    ```
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 
 - [Import and export data using Azure Storage in Azure Database for PostgreSQL - Flexible Server](concepts-storage-extension.md).

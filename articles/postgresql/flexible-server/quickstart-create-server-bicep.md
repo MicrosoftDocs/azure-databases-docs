@@ -147,8 +147,6 @@ Remove-AzResourceGroup -Name exampleRG
 
 ---
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 
 - [Connect and query overview for Azure Database for PostgreSQL - Flexible Server](how-to-connect-query-guide.md).

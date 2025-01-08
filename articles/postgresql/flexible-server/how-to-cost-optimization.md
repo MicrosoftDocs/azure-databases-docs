@@ -127,8 +127,6 @@ As you design your application database on Azure Database for PostgreSQL flexibl
 **Cost vs operational excellence**
 > Investing in systems monitoring and automation might increase the cost initially but over time will reduce cost.
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 
 - [Overview of the cost optimization pillar](/azure/architecture/framework/cost/overview).

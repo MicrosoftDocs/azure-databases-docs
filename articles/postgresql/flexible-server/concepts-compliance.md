@@ -59,8 +59,6 @@ Azure Database for PostgreSQL flexible server has achieved a comprehensive set o
 > | SEC 17a-4            | Financial |
 > | Spanish DPA            | Public and private companies, government entities, and nonprofits |
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 
 - [Azure compliance](https://azure.microsoft.com/explore/trusted-cloud/compliance/).

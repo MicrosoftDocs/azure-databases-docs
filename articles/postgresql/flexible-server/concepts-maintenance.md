@@ -62,8 +62,6 @@ Some considerations when considering during monthly maintenance.
 - Monthly maintenance is impactful and they involve some downtime.
     - Downtime depends on the transactional load on the server at the time of maintenance.
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 
 - [Manage scheduled maintenance settings for Azure Database for PostgreSQL - Flexible Server](how-to-maintenance-portal.md).

@@ -56,8 +56,6 @@ If the application persistently fails to connect to Azure Database for PostgreSQ
 3. Verify your connection string and other connection settings.
 4. Check the service health in the dashboard. If you think there’s a regional outage, see [Overview of business continuity - Azure Database for PostgreSQL - Flexible Server](concepts-business-continuity.md) for steps to recover to a new region.
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 
 - [Handling transient connectivity errors in Azure Database for PostgreSQL - Flexible Server](concepts-connectivity.md).

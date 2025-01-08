@@ -68,8 +68,6 @@ Message: Restart or Stop Server can only be performed on Started servers. Server
 > Once the server is stopped, other management operations aren't available for the Azure Database for PostgreSQL flexible server.
 > While the Azure Database for PostgreSQL flexible server is in stopped state, it could be briefly restarted for scheduled monthly maintenance, and then returned to its stopped state. This procedure ensures that even instances in a stopped state, stay up to date with all necessary patches and updates.
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 
 - [Start an Azure Database for PostgreSQL flexible server](how-to-start-server.md).

@@ -105,8 +105,6 @@ Restoring a dropped virtual network enabled server involves specifying additiona
 1. If you utilize the incorrect API version, you might experience restore failures or timeouts. Use 2024-08-01 API to avoid such issues.
 1. To avoid potential DNS errors, it's recommended to use a different name when initiating the restore process, as some restore operations might fail with the same name.
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 
 - [Resource Locks](https://techcommunity.microsoft.com/t5/azure-database-for-postgresql/preventing-the-disaster-of-accidental-deletion-for-your-PostgreSQL/ba-p/825222).
