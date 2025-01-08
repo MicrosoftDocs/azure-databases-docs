@@ -9,7 +9,7 @@ ms.subservice: mongodb-vcore
 ms.custom:
   - ignite-2024
 ms.topic: conceptual
-ms.date: 11/25/2023
+ms.date: 01/06/2025
 ---
 
 # Overview of database security in Azure Cosmos DB for MongoDB vCore
@@ -93,13 +93,14 @@ In the public access option, a public IP address is assigned to the cluster, and
 
 ## Firewall overview
 
-Azure Cosmos DB for MongoDB vCore uses a server-level firewall to prevent all access to your cluster until you specify which computers have permission. The firewall grants access to the cluster based on the originating IP address of each request. To configure your firewall, you create firewall rules that specify ranges of acceptable IP addresses.
+Azure Cosmos DB for MongoDB vCore uses a cluster-level firewall to prevent all access to your cluster until you specify which computers (IP addresses) have permission. The firewall grants access to the cluster based on the originating IP address of each request. To configure your firewall, you [create firewall rules](./how-to-public-access.md) that specify ranges of acceptable IP addresses.
 
-Firewall rules enable clients to access your cluster and all the databases within it. Server-level firewall rules can be configured using the Azure portal or programmatically using Azure tools such as the Azure CLI.
+Firewall rules enable clients to access your cluster and all the databases within it. Cluster-level firewall rules can be configured using the Azure portal or programmatically using Azure tools such as the Azure CLI.
 
-By default, the firewall blocks all access to your cluster. To begin using your cluster from another computer, you need to specify one or more server-level firewall rules to enable access to your cluster. Use the firewall rules to specify which IP address ranges from the Internet to allow. Firewall rules don't affect access to the Azure portal website itself. Connection attempts from the internet and Azure must first pass through the firewall before they can reach your databases. In addition to firewall rules, private link access that can be used for a private IP just for the Azure Cosmos DB for MongoDB vCore cluster.
+By default, the firewall blocks all access to your cluster. To begin using your cluster from another computer, you need to specify one or more cluster-level firewall rules to enable access to your cluster. Use the firewall rules to specify which IP address ranges from the Internet to allow. Firewall rules don't affect access to the Azure portal website itself. Connection attempts from the Internet and Azure must first pass through the firewall before they can reach your databases.
 
-## Next steps
-
-> [!div class="nextstepaction"]
-> [Migrate MongoDB data to Azure Cosmos DB for MongoDB vCore](migration-options.md)
+## Related content
+- [Learn more about database security in Azure Cosmos DB for MongoDB vCore](./security.md)
+- [See guidance on how to enable private access](./how-to-private-link.md)
+- [See guidance on how to enable public access](./how-to-public-access.md)
+- [Migrate to Azure Cosmos DB for MongoDB vCore](./migration-options.md)
