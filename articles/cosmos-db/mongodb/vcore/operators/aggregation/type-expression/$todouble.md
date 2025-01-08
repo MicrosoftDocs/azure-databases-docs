@@ -164,8 +164,7 @@ db.SampleCollection.aggregate([
             }
         }
     }
-}
-])
+}])
 ```
 
 This table delineates the expected behavior of the $toDouble operator based on the data type of the input value.
