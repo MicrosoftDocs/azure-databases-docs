@@ -154,13 +154,10 @@ db.SampleCollection.aggregate([
     "$project": {
         "originalLatitude": "$location.lat",
         "latitudeAsBool": {
-            "$toBool": {
-                "$location.lat"
-            }
+            "$toBool": "$location.lat"
         }
     }
-}
-])
+}])
 ```
 
 This query returns the following result:
@@ -186,13 +183,10 @@ db.SampleCollection.aggregate([
     "$project": {
         "originalId": "$_id",
         "idAsBool": {
-            "$toBool": {
-                "$_id"
-            }
+            "$toBool": "$_id"
         }
     }
-}
-])
+}])
 ```
 
 This query returns the following result:
@@ -218,13 +212,10 @@ db.SampleCollection.aggregate([
     "$project": {
         "originalTotalSales": "$sales.totalSales",
         "totalSalesAsBool": {
-            "$toBool": {
-                "$sales.totalSales"
-            }
+            "$toBool": "$sales.totalSales"
         }
     }
-}
-])
+}])
 ```
 
 This query returns the following result:
