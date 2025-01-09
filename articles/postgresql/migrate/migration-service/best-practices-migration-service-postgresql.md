@@ -89,20 +89,20 @@ The preceding numbers give you an approximation of the time taken to complete th
 
 We recommend a powerful SKU for the target because the PostgreSQL migration service runs out of a container on the flexible server. A powerful SKU enables more tables to be migrated in parallel. You can scale the SKU back to your preferred configuration after the migration. This section contains steps to improve the migration speed if the data distribution among the tables needs to be more balanced or a more powerful SKU doesn't significantly affect the migration speed.
 
-If the data distribution on the source is highly skewed, with most of the data present in one table, the allocated compute for migration needs to be fully utilized, which creates a bottleneck. So, split large tables into smaller chunks, which are then migrated in parallel. This feature applies to tables with more than 1,000,000 (1 m) tuples. Splitting the table into smaller chunks is possible if one of the following conditions is satisfied:
+If the data distribution on the source is highly skewed, with most of the data present in one table, the allocated compute for migration needs to be fully utilized, which creates a bottleneck. So, split large tables into smaller chunks, which are then migrated in parallel. This feature applies to tables larger than 20 GB. Splitting the table into smaller chunks is possible if one of the following conditions is satisfied:
 
-- The table must have a column with a simple (not composite) primary key or unique index of type `int` or `significant int`.
+- The table must have a column with a simple (not composite) primary key or unique index of type `smallint`, `integer` or `big int`.
 
     > [!NOTE]
     > In the case of the first or second approaches, you must carefully evaluate the implications of adding a unique index column to the source schema. Only after confirmation that adding a unique index column won't affect the application should you go ahead with the changes.
 
-- If the table doesn't have a simple primary key or unique index of type `int` or `significant int` but has a column that meets the data type criteria, the column can be converted into a unique index by using the following command. This command doesn't require a lock on the table.
+- If the table doesn't have a simple primary key or unique index of type `smallint`, `integer` or `big int` but has a column that meets the data type criteria, the column can be converted into a unique index by using the following command. This command doesn't require a lock on the table.
 
     ```sql
         create unique index concurrently partkey_idx on <table name> (column name);
     ```
 
-- If the table doesn't have a `simple int`/`big int` primary key or unique index or any column that meets the data type criteria, you can add such a column by using [ALTER](https://www.postgresql.org/docs/current/sql-altertable.html) and drop it post-migration. Running the `ALTER` command requires a lock on the table.
+- If the table doesn't have a `smallint`, `integer` or `big int` primary key or unique index or any column that meets the data type criteria, you can add such a column by using [ALTER](https://www.postgresql.org/docs/current/sql-altertable.html) and drop it post-migration. Running the `ALTER` command requires a lock on the table.
 
     ```sql
         alter table <table name> add column <column name> big serial unique;
@@ -112,13 +112,13 @@ If any of the preceding conditions are satisfied, the table is migrated in multi
 
 #### How it works
 
-- The migration service looks up the maximum and minimum integer value of the table's primary key/unique index that must be split up and migrated in parallel.
-- If the difference between the minimum and maximum value is more than 1,000,000 (1 m), the table is split into multiple parts and each part is migrated in parallel.
+- The migration service looks up the size of a table to check if it is larger than 20 GB.
+- If the size is larger than 20 GB, and there is a `smallint`, `integer` or `big int` primary key or unique index, the table is split into multiple parts and each part is migrated in parallel.
 
 In summary, the PostgreSQL migration service migrates a table in parallel threads and reduces the migration time if:
 
-- The table has a column with a simple primary key or unique index of type int or significant int.
-- The table has at least 1,000,000 (1 m) rows so that the difference between the minimum and maximum value of the primary key is more than 1,000,000 (1 m).
+- The table has a column with a simple primary key or unique index of type `smallint`, `integer` or `big int`.
+- The table size is larger than 20 GB.
 - The SKU used has idle cores, which can be used for migrating the table in parallel.
 
 ## Vacuum bloat in the PostgreSQL database
