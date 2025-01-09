@@ -68,7 +68,7 @@ az postgres flexible-server backup create --resource-group <resource_group> --na
 
 ## List on-demand backups
 
-### [Portal](#tab/cli-list-on-demand-backups)
+### [Portal](#tab/portal-list-on-demand-backups)
 
 Using the [Azure portal](https://portal.azure.com/):
 
@@ -94,7 +94,7 @@ az postgres flexible-server backup list --resource-group <resource_group> --name
 
 ## Delete on-demand backups
 
-### [Portal](#tab/cli-delete-on-demand-backups)
+### [Portal](#tab/portal-delete-on-demand-backups)
 
 Using the [Azure portal](https://portal.azure.com/):
 

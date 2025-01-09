@@ -1944,6 +1944,16 @@
         "source_path_from_root": "/articles/postgresql/flexible-server/how-to-server-logs-cli.md",
         "redirect_url": "/azure/postgresql/flexible-server/how-to-configure-server-logs",
         "redirect_document_id": false
+    },
+    {
+        "source_path_from_root": "/articles/postgresql/flexible-server/how-to-performan-on-demand-backup-portal.md",
+        "redirect_url": "/azure/postgresql/flexible-server/how-to-operate-on-demand-backups",
+        "redirect_document_id": false
+    },
+    {
+        "source_path_from_root": "/articles/postgresql/flexible-server/how-to-performan-on-demand-backup-cli.md",
+        "redirect_url": "/azure/postgresql/flexible-server/how-to-operate-on-demand-backups",
+        "redirect_document_id": false
     }
 ]
 }
