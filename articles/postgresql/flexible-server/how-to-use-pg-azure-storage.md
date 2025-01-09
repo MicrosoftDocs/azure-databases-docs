@@ -452,7 +452,7 @@ The URI for a container is similar to:
 
 ### azure_storage.blob_get
 
-Function that allows importing data. It downloads one or more files from a blob container in an Azure Storage account. Then it translates the contents into rows, which can be consumed and processed with SQL language constructs. This function adds support to filter and manipulate the data fetched from the blob container before importing it.
+Function that allows importing data. It downloads a file from a blob container in an Azure Storage account. Then it translates the contents into rows, which can be consumed and processed with SQL language constructs. This function adds support to filter and manipulate the data fetched from the blob container before importing it.
 
 > [!NOTE]  
 > Before trying to access the container for the referred storage account, this function checks if the names of the storage account and container passed as arguments are valid according to the naming validation rules imposed on Azure storage accounts. If either of them is invalid, an error is raised.
