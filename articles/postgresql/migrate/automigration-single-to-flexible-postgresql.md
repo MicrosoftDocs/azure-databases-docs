@@ -19,7 +19,7 @@ ms.custom:
 
 **Automigration** from Azure Database for PostgreSQL – Single Server to Flexible Server is a service-initiated migration that takes place during a planned downtime window for Single Server, separate from its patching or maintenance window. The service identifies eligible servers and sends advance notifications with detailed steps about the automigration process. You can review and adjust the migration schedule if needed or submit a support request to opt out of automigration for your servers.
 
-Automigration leverages the [Azure PostgreSQL migration service](../migrate/migration-service/overview-migration-service-postgresql.md) to deliver a resilient offline migration during the planned migration window. Downtime will vary based on workload characteristics, with larger workloads potentially requiring up to 20 minutes. For migration speed benchmarks, see [Azure PostgreSQL Migration Speed Benchmarking](../migrate/migration-service/best-practices-migration-service-postgresql.md#migration-speed-benchmarking). This migration eliminates the need for manual server migration, allowing you to benefit from Flexible Server features post-migration, including improved price-performance, granular database configuration control, and custom maintenance windows.
+Automigration leverages the [Azure PostgreSQL migration service](./migration-service/overview-migration-service-postgresql.md) to deliver a resilient offline migration during the planned migration window. Downtime will vary based on workload characteristics, with larger workloads potentially requiring up to 20 minutes. For migration speed benchmarks, see [Azure PostgreSQL Migration Speed Benchmarking](./migration-service/best-practices-migration-service-postgresql.md#migration-speed-benchmarking). This migration eliminates the need for manual server migration, allowing you to benefit from Flexible Server features post-migration, including improved price-performance, granular database configuration control, and custom maintenance windows.
 
 > [!NOTE]  
 > The Automigration service selects Single server to migrate based on the following criteria:
@@ -158,6 +158,10 @@ Auto migration of single servers does not automatically configure long-term rete
 **Q. I see a pricing difference on my potential move from postgresql Basic Single Server to postgresql Flexible Server??​**
 
 **A.** Few servers might see a minor price revision after migration as the minimum storage limit on both offerings is different (5 GiB on Single Server and 32 GiB on Flexible Server). Storage cost for Flexible Server is marginally higher than Single Server. Any price increase is offset through better throughput and performance compared to Single Server. For more information on Flexible server pricing, please refer to [this document](https://azure.microsoft.com/pricing/details/postgresql/flexible-server/)
+
+**Q. What happens if I do not migrate or my server is not auto migrated by March 28th, 2025??​**
+
+**A.** After the retirement deadline of March 28th 2025, all existing single servers that have not migrated will be force migrated to Flexible server. Servers with add-on features such as CMK or Private endpoint will require additional actions by the user post-migration to ensure normal operation. There are no extensions to the retirement date.
 
 ## Related content
 
