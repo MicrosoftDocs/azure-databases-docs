@@ -789,7 +789,11 @@ When executing any of the functions that interact with Azure Storage (`azure_sto
 
 ### ERROR: azure_storage: internal error while connecting
 
-When the System Assigned Managed Identity is not enabled in the instance of Flexible Server.
+When the instance of flexible server cannot reach the target storage account. That could happen in the following cases:
+- The storage account doesn't exist.
+- Networking configuration doesn't allow traffic originated from the instance of flexible server to reach the storage account. For example, when the instance of flexible server is deployed with public access networking, and the storage account is only accessible via private endpoints.
+
+When the System Assigned Managed Identity is not enabled in the instance of flexible server.
 
 ### ERROR: azure_storage: storage credentials invalid format
 
