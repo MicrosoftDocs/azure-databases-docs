@@ -1,5 +1,5 @@
 ---
-title: Restart an Azure Database for PostgreSQL flexible server
+title: Restart a server
 description: This article describes how to restart an Azure Database for PostgreSQL flexible server.
 author: varun-dhawan
 ms.author: varundhawan
@@ -11,7 +11,7 @@ ms.topic: how-to
 #customer intent: As a user, I want to learn how to restart an Azure Database for PostgreSQL flexible server, so that I can manage my server efficiently.
 ---
 
-# Restart an Azure Database for PostgreSQL flexible server
+# Restart a server
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
