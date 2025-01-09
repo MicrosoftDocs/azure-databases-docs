@@ -14,7 +14,7 @@ ms.topic: how-to
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
-This article provides step-by-step instructions to perform on-demand backups of an Azure Database for PostgreSQL flexible server.
+This article provides step-by-step instructions to operate with on-demand backups of an Azure Database for PostgreSQL flexible server.
 
 > [!IMPORTANT]
 > On-demand backups are automatically deleted, according to your configured backup retention period. However, you can manually delete them earlier if they’re no longer needed.
