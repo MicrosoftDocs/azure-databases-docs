@@ -1,5 +1,5 @@
 ---
-title: Manage high availability
+title: Configure high availability
 description: This article describes how to enable and disable high availability in an Azure Database for PostgreSQL flexible server.
 author: akashraokm
 ms.author: akashrao
@@ -11,7 +11,7 @@ ms.topic: how-to
 #customer intent: As a user, I want to learn how to enable and disable high availability in an Azure Database for PostgreSQL flexible server.
 ---
 
-# Configure high availability in an Azure Database for PostgreSQL flexible server
+# Configure high availability
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
@@ -353,7 +353,6 @@ Message: Operation HandleWalServiceFailureManagementOperation failed, because se
 
 ---
 
-
 ## Special considerations
 
 - Enabling or disabling high availability on an Azure Database for PostgreSQL flexible server doesn't change other settings, including networking configuration, firewall settings, server parameters, or backup retention. Enabling or disabling high availability is an online operation, and doesn't affect your application connectivity and operations.
@@ -368,6 +367,8 @@ Message: Operation HandleWalServiceFailureManagementOperation failed, because se
     2. Once the new server is created, [enable high availability with zone redundancy](#enable-high-availability-for-existing-servers).
     3. After data verification, you can optionally [delete](how-to-delete-server.md) the old server.
     4. Make sure that the connection strings of your clients are modified to point to your newly restored instance.
+
+## Related content
 
 - [Overview of business continuity with Azure Database for PostgreSQL - Flexible Server](concepts-business-continuity.md).
 - [High availability in Azure Database for PostgreSQL - Flexible Server](/azure/reliability/reliability-postgresql-flexible-server).
