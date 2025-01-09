@@ -8,7 +8,7 @@ ms.date: 01/09/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: how-to
-# customer intent: As a user, I want to learn how can I operate full backups of my Azure Database for PostgreSQL flexible, including how to perform a backup, how to list, and how to delete existing backups.
+# customer intent: As a user, I want to learn how can I operate full backups of my Azure Database for PostgreSQL flexible server, including how to perform a backup, how to list, and how to delete existing backups.
 ---
 
 # On-demand backups (Preview)
