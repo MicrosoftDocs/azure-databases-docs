@@ -65,7 +65,7 @@ Following is the list of requirements to configure data encryption for Azure Dat
 - The key must be in **Enabled** state.
 - If you're importing an existing key into Key Vault, provide it in the supported file formats (`.pfx`, `.byok`, or `.backup`).
 
-### Recommendations
+## Recommendations
 
 When you're using a customer managed key for data encryption, follow these recommendations to configure Key Vault:
 - Set a resource lock on Key Vault, to prevent accidental or unauthorized deletion of this critical resource.
@@ -78,7 +78,7 @@ When you're using a customer managed key for data encryption, follow these recom
 - Keep a copy of the customer manged key in a secure place, or escrow it to the escrow service.
 - If Key Vault generates the key, create a key backup before you use the key for the first time. You can only restore the backup to Key Vault.
 
-### Accidental key access revocation from Key Vault
+## Accidental key access revocation from Key Vault
 
 Someone with sufficient access rights to Key Vault, might accidentally disable server access to the key by:
 
@@ -141,7 +141,6 @@ If the user assigned managed identity used to access the encryption key stored i
 
 > [!IMPORTANT]
 > Simply creating new Entra ID identity with the same name as deleted identity doesn't recover from managed identity deletion.
-
 
 ## Using data encryption with customer managed keys and geo-redundant business continuity features
 
