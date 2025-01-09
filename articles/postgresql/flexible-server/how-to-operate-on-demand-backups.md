@@ -49,7 +49,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 7.  Upon successful completion, a notification informs you that the on-demand backup is completed.
 
-    :::image type="content" source="./media/how-to-on-demand-backup/notification-complete.png" alt-text="Screenshot showing the notification informing that on-demand backup is completed." lightbox="./media/how-to-on-demand-backup/notification-complete.png":::
+    :::image type="content" source="./media/how-to-on-demand-backup/notification-completed.png" alt-text="Screenshot showing the notification informing that on-demand backup is completed." lightbox="./media/how-to-on-demand-backup/notification-completed.png":::
 
 ### [CLI](#tab/cli-perform-on-demand-backups)
 
