@@ -307,29 +307,28 @@ The `feed_range` is a range of partition key values that specifies the items tha
 
 You can also specify `mode` parameter for the change feed mode in which you want to process changes: [LatestVersion](change-feed-modes.md#latest-version-change-feed-mode) or [AllVersionsAndDeletes](change-feed-modes.md#all-versions-and-deletes-change-feed-mode-preview) (The default value: `LatestVersion`).
 Use either `LatestVersion` or `AllVersionsAndDeletes` to indicate which mode you want to use to read the change feed. 
-When you use `LatestVersion` mode, `start_time` can be specified from value of `Now`, `Beginning` or specific datetime(The default value: `Now`).
-When you use `AllVersionsAndDeletes` mode, `start_time` can be specified from value of either `Now`(The default value: `Now`).
-Or, `continuation` token can be used to specified the start time for either modes. `continuation` token can be retrieved from the previous change feed query response headers.
+When you use `AllVersionsAndDeletes` mode, `start_time` isn't supported to read the change feed from the beginning or from a point in time.
+You must either process from now by default or from a `continuation` token.
 
 > [!NOTE]
 > 
 > `AllVersionsAndDeletes` mode is in preview and is available in Python SDK version [>= 4.9.1b1](https://pypi.org/project/azure-cosmos/4.9.1b1/).
 
-[//]: # (TODO: Seperate samples for Latest and AllVersions modes, and update the note section above to add the links like other languages.)
-[//]: # (TODO: Add sample codes from the following sections to the sample files like JAVA samples.)
-
 ### Consume the changes for an entire container
 
 If you don't supply a `feed_range` parameter, you can process an entire container's change feed at your own pace.
->[!NOTE]
-> All the following code snippets are taken from a samples in GitHub. You can use the [latest version mode sample](https://github.com/Azure/azure-sdk-for-python/blob/main/sdk/cosmos/azure-cosmos/samples/change_feed_management.py#L63-L73) and the [all versions and deletes mode sample](https://github.com/Azure/azure-sdk-for-python/blob/main/sdk/cosmos/azure-cosmos/samples/change_feed_management.py#L63-L73).
 
-Here's an example of how to obtain `responseIterator` in `LatestVersion` mode from `Beginning`:
+[//]: # (TODO: Seperate samples for Latest and AllVersions modes, and update the note section above to add the links like other languages.)
+[//]: # (TODO: Add sample codes from the following sections to the sample files like JAVA samples.)
+[//]: # (>[!NOTE])
+[//]: # (> All the following code snippets are taken from a samples in GitHub. You can use the [latest version mode sample]&#40;https://github.com/Azure/azure-sdk-for-python/blob/main/sdk/cosmos/azure-cosmos/samples/change_feed_management.py#L63-L73&#41; and the [all versions and deletes mode sample]&#40;https://github.com/Azure/azure-sdk-for-python/blob/main/sdk/cosmos/azure-cosmos/samples/change_feed_management.py#L63-L73&#41;.)
+
+Here's an example of how to obtain `responseIterator` in `LatestVersion` mode from `Beginning`. Since `LatestVersion` is a default mode, `mode` parameter doesn't need to be passed:
 ```python
 responseIterator = container.query_items_change_feed(start_time="Beginning")
 ```
 
-Here's an example of how to obtain  `responseIterator` in `AllVersionsAndDeletes` mode from `Now`:
+Here's an example of how to obtain  `responseIterator` in `AllVersionsAndDeletes` mode from `Now`, Since `Now` is a default value of `start_time` parameter, it doesn't need to be passed:
 ```python
 responseIterator = container.query_items_change_feed(mode="AllVersionsAndDeletes")
 ```
@@ -339,14 +338,15 @@ Here's an example in latest version mode, which reads all changes, starting from
 Each iteration print change feeds for documents.
 
 ```python
+responseIterator = container.query_items_change_feed(start_time="Beginning")
 for doc in responseIterator:
     print(doc)
 ```
 
 ### Consume a partition key's changes
 In some cases, you might want to process only the changes for a specific partition key.
-You can process the changes for a specific partition key the same way that you can for an entire container. 
-Here's an example that uses latest version mode:
+You can process the changes the same way that you can for an entire container with the `partition_key` parameter. 
+Here's an example that uses `LatestVersion` mode:
 
 ```python
 pk = "partition_key_value"
@@ -404,7 +404,7 @@ continuation_token = container.client_connection.last_response_headers['etag']
 
 > [!NOTE]
 > 
-> Since `continuation` token contains previously used `mode` parameter, if `continuation` was used, `mode` parameter will be ignored and use the `mode` from `continuation` token.
+> Since `continuation` token contains previously used `mode` parameter, if `continuation` was used, `mode` parameter will be ignored and use the `mode` from `continuation` token instead.
 
 Here's a sample that shows how to read from the container's change feed by using a `continuation` token:
 
