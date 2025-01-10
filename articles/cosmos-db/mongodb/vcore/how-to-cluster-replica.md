@@ -36,7 +36,7 @@ To enable cross-region replication on a new cluster *during cluster creation*, f
 1. On the **Review + create** tab, review cluster configuration details, and then select **Create**. 
 
 > [!NOTE]
-> The replica cluster is created in the same Azure subscirption and resource group as its primary cluster.
+> The replica cluster is created in the same Azure subscription and resource group as its primary cluster.
 
 To enable cross-region replication on a new cluster *at any time after cluster creation*, follow these steps:
 
@@ -101,5 +101,5 @@ Self connection strings are preserved after [the cluster replica promotion](./cr
 
 - [Learn more about cross-region replication in Azure Cosmos DB for MongoDB vCore](./cross-region-replication.md)
 - [See cross-region replication limits and limitations](./limits.md#cross-region-replication)
-- To resolve an issue with cross-region replciation see [this troubleshooting guide](./troubleshoot-replication.md).
+- To resolve an issue with cross-region replication, see [this troubleshooting guide](./troubleshoot-replication.md).
 - [Learn about reliability in Azure Cosmos DB for MongoDB vCore](/azure/reliability/reliability-cosmos-mongodb)
