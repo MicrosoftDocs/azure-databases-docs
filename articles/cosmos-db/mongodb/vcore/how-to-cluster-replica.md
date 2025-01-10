@@ -10,7 +10,7 @@ ms.custom:
   - build-2024
   - ignite-2024
 ms.topic: how-to
-ms.date: 11/06/2024
+ms.date: 01/08/2025
 #Customer Intent: As a database adminstrator, I want to configure cross-region replication, so that I can have disaster recovery plans in the event of a regional outage.
 ---
 
@@ -36,7 +36,7 @@ To enable cross-region replication on a new cluster *during cluster creation*, f
 1. On the **Review + create** tab, review cluster configuration details, and then select **Create**. 
 
 > [!NOTE]
-> The replica cluster is created in the same Azure subscirption and resource group as its primary cluster.
+> The replica cluster is created in the same Azure subscription and resource group as its primary cluster.
 
 To enable cross-region replication on a new cluster *at any time after cluster creation*, follow these steps:
 
@@ -101,4 +101,5 @@ Self connection strings are preserved after [the cluster replica promotion](./cr
 
 - [Learn more about cross-region replication in Azure Cosmos DB for MongoDB vCore](./cross-region-replication.md)
 - [See cross-region replication limits and limitations](./limits.md#cross-region-replication)
+- To resolve an issue with cross-region replication, see [this troubleshooting guide](./troubleshoot-replication.md).
 - [Learn about reliability in Azure Cosmos DB for MongoDB vCore](/azure/reliability/reliability-cosmos-mongodb)

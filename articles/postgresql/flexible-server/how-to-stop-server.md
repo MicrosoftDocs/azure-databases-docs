@@ -1,5 +1,5 @@
 ---
-title: Stop an instance of Azure Database for PostgreSQL flexible server
+title: Stop a server
 description: This article describes how to stop an instance of Azure Database for PostgreSQL flexible server.
 author: varun-dhawan
 ms.author: varundhawan
@@ -11,7 +11,7 @@ ms.topic: how-to
 #customer intent: As a user, I want to learn how to stop an Azure Database for PostgreSQL flexible server instance, so that I can manage my server efficiently.
 ---
 
-# Stop an instance of Azure Database for PostgreSQL flexible server
+# Stop a server
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
