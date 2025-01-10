@@ -1,0 +1,202 @@
+---
+title: Restore a server
+description: This article describes how to perform restore operations in Azure Database for PostgreSQL - Flexible Server.
+author: akashraokm
+ms.author: akashrao
+ms.reviewer: maghan
+ms.date: 01/10/2025
+ms.service: azure-database-postgresql
+ms.subservice: flexible-server
+ms.topic: how-to
+#customer intent: As a user, I want to learn the different restore options available to restore backups of an Azure Database for PostgreSQL flexible server.
+---
+
+# Point-in-time restore of an Azure Database for PostgreSQL - Flexible Server instance
+
+[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
+
+This article provides step-by-step instructions to perform the different types of restore of the available backups of an Azure Database for PostgreSQL flexible server.
+
+Existing servers can be restored to their latest restore point, to a custom restore point, or to a full backup (snapshot) among the ones available, taking into account your configured backup retention period.
+
+Deleted servers can also be restored. Restore of deleted servers is possible as long as the restore operation is initiated within five days from the time the server was deleted. This recovery is based on the last full backup (snapshot) available when the server was dropped. Therefore, this operation can result in data loss. The data loss is limited to changes that came into the server after the most recent full backup.
+
+> [!NOTE]
+> When you issue a request to delete an Azure Database for flexible server, it isn't immediately deleted. Instead, an asynchronous process triggers to remove everything from that server, except for the server's specifications and the most recent full back. That process can take around five minutes. If you try to recover the deleted server and the deletion process isn't completed yet, the ReviveDropped operation might fail. The reason for the failure is because the server still exists, and doesn't attempt the recovery from the tombstone server. To avoid this issue, we recommend you to increase the time interval to 10 or 15 minutes, to allow for the deletion process to complete.
+
+## Restore to the latest restore point
+
+### [Portal](#tab/portal-restore-latest-point)
+
+Using the [Azure portal](https://portal.azure.com/):
+
+1. Select your Azure Database for PostgreSQL flexible server.
+
+2. In the resource menu, select **Overview**.
+
+    :::image type="content" source="./media/how-to-restore-server/overview.png" alt-text="Screenshot showing the location of the Restore button in the Overview page." lightbox="./media/how-to-restore-server/overview.png":::
+
+3. Select the **Restore** button.
+
+    :::image type="content" source="./media/how-to-restore-server/restore-button.png" alt-text="Screenshot showing the location of the Restore button in the Overview page." lightbox="./media/how-to-restore-server/restore-button.png":::
+
+4. You're redirected to the **Create Azure Database for PostgreSQL Flexible server - Restore server** wizard, from where you can configure some settings for the new server that is created. After the new server is deployed, the most recent snapshot of the source server data disk is restored. In the **Point-in-time-restore (PITR)** section, select **Latest restore point (Now)**.
+
+    :::image type="content" source="./media/how-to-restore-server/latest-restore-point.png" alt-text="Screenshot showing the Latest restore point (Now) radio button selected." lightbox="./media/how-to-restore-server/latest-restore-point.png":::
+
+5. Use the following table to understand the meaning of the different fields available in the **Basics** page, and as guidance to fill the page:
+
+    | Section | Setting | Suggested value | Description | Can be changed after instance creation |
+    | --- | --- | --- | --- | --- |
+    | **Project details** | | | | |
+    | | **Subscription** | The name of the [subscription](/microsoft-365/enterprise/subscriptions-licenses-accounts-and-tenants-for-microsoft-cloud-offerings#subscriptions) in which you want to create the resource. | A subscription is an agreement with Microsoft to use one or more Microsoft cloud platforms or services, for which charges accrue based on either a per-user license fee or on cloud-based resource consumption. Azure portal doesn't support restoring a backup of an existing server to a new server deployed on a different subscription. | An existing Azure Database for PostgreSQL flexible server instance can be moved to a different subscription from the one it was originally created. For more information, see Move [Azure resources to a new resource group or subscription](/azure/azure-resource-manager/management/move-resource-group-and-subscription). |
+    | | **Resource group** | The [resource group](/azure/azure-resource-manager/management/manage-resource-groups-portal#what-is-a-resource-group) in the selected subscription, in which you want to create the resource. It can be an existing resource group, or you can select **Create new**, and provide a name in that subscription which is unique among the existing resource group names. | A resource group is a container that holds related resources for an Azure solution. The resource group can include all the resources for the solution, or only those resources that you want to manage as a group. You decide how you want to allocate resources to resource groups based on what makes the most sense for your organization. Generally, add resources that share the same lifecycle to the same resource group so you can easily deploy, update, and delete them as a group | An existing Azure Database for PostgreSQL flexible server instance can be moved to a different subscription from the one it was originally created. For more information, see Move [Azure resources to a new resource group or subscription](/azure/azure-resource-manager/management/move-resource-group-and-subscription). |
+    | **Source details** | | | | |
+    | | **Source server** | The name of the server whose backup you want to restore on the newly deployed server. | | |
+    | | **Geo-redundant restore** | If the source server, the one from which you're trying to restore a backup, was created with [geo-redundant backups](concepts-backup-restore.md#geo-redundant-backup-and-restore), this option would be enabled, and you could restore a backup kept in the storage account of the paired region, to create a new server in that paired region. | | |
+    | | **Earliest restore point** | The oldest backup of the source server available to restore from. the server whose backup you want to restore on the newly deployed server. Backups are automatically deleted, based on the backup retention period that you have configured on the source server. | | |
+    | | **Point-in-time-restore (PITR)** | Possible options are **Latest restore point (Now)**, **Select a custom restore point**, and **Select Fast restore point (Restore using full backup only)**. | To restore to latest restore point, select **Latest restore point (Now)**. | |
+    | **Server details** | | | | |
+    | | **Name** | The name that you want to assign to the newly deployed server, on top of which a backup of the source is restored. | A unique name that identifies your Azure Database for PostgreSQL flexible server instance. The domain name `postgres.database.azure.com` is appended to the server name you provide, to conform the fully qualified host name by which you can use a Domain Naming System server to resolve the IP address of your instance. | Although the server name can't be changed after server creation, you can use the [point in time recovery](concepts-backup-restore.md#point-in-time-recovery) feature, to restore the server under a different name. An alternative approach to continue using the existing server, but being able to refer to it using a different server name, would use the [virtual endpoints](concepts-read-replicas-virtual-endpoints.md) to create a writer endpoint with the new desired name. With this approach, you could refer to the instance by its original name, or that assigned to the write virtual endpoint. |
+    | | **Location** | The name of one of the [regions in which the service is supported](overview.md#azure-regions). For point in time restore, it's only supported to deploy the new server in the same region in which the source server exists. | Compliance, data residency, pricing, proximity to your users, or availability of other services in the same region, are some of the requirements you should use when choosing the region. | The service doesn't offer a feature to automatically and transparently relocate an instance to a different region. |
+    | | **PostgreSQL version** | The version selected by default. | For point in time restores, it's only supported to deploy the new server with the exact same major version used by the source server. Currently those versions are: **[!INCLUDE [major-versions-ascending](includes/major-versions-ascending.md)]** | Azure Database for PostgreSQL - Flexible Server supports in-place upgrade, via [major version upgrade](how-to-perform-major-version-upgrade.md). |
+    | | **Availability zone** | Your preferred [availability zone](/azure/reliability/availability-zones-overview). | You can choose in which availability zone you want your server to be deployed. Being able to choose the availability zone in which your instance is deployed, is useful to colocate it with your application. If you choose *No preference*, a default availability zone is automatically assigned to your instance during its creation. | Although the availability zone in which an instance is deployed can't be changed after its creation, you can use the [point in time recovery](concepts-backup-restore.md#point-in-time-recovery) feature to restore the server under a different name on a different availability zone. |
+    | | **Compute + storage** | It assigns the exact same type and size of compute and exact same size of storage to the newly provisioned server, as that used by the source server at the time the backup is restored. However, if you select the **Configure server** link, you can change the type of storage allocated to the new server, and whether or not it should be provisioned with geo-redundant backups. | | After the new server is deployed, its compute options can be scaled up or down. |
+
+6. If you want to change the type of storage assigned to the new server, or if you want to deploy it with geo-redundant backups, select **Configure server**:
+
+    :::image type="content" source="./media/how-to-restore-server/configure-server.png" alt-text="Screenshot showing the location of the Configure server link." lightbox="./media/how-to-restore-server/configure-server.png":::
+
+7. Use the following table to understand the meaning of the different fields available in the **Compute + storage** page, and as guidance to fill the page:
+
+    | Section | Setting | Suggested value | Description | Can be changed after instance creation |
+    | --- | --- | --- | --- | --- |
+    | **Compute** | | | | |
+    | | **Compute tier** | Cannot be changed and is automatically set to the same value as the source server. | Possible values are **Burstable** (typically used for development environments in which workloads don't need the full capacity of the CPU continuously) and **General Purpose** (typically used for production environments with most common workloads), and **Memory Optimized** (typically used for production environments running workloads that require a high memory to CPU ratio). For more information, see [Compute options in Azure Database for PostgreSQL - Flexible Server](concepts-compute.md). | Can be changed after the server is created. However, if you're using some functionality which is only supported on certain tiers, and change the current tier to one in which the feature isn't supported, the feature stops being available or gets disabled. |
+    | | **Compute size** | Cannot be changed and is automatically set to the same value as the source server. | Notice that the list of supported values might vary across regions, depending on the hardware available on each region. For more information, see [Compute options in Azure Database for PostgreSQL - Flexible Server](concepts-compute.md). | Can be changed after instance is created. |
+    | **Storage** | | | | |
+    | | **Storage type** | Select **Premium SSD**. | Notice that the list of allowed values might vary depending on which other features you selected. For more information, see [Storage options in Azure Database for PostgreSQL - Flexible Server](concepts-storage.md). | Can't be changed after the instance is created. |
+    | | **Storage size** | Cannot be changed and is automatically set to the same value as the source server. | Notice that the list of supported values might vary across regions, depending on the hardware available on each region. For more information, see [Compute options in Azure Database for PostgreSQL - Flexible Server](concepts-compute.md). | Can be changed after the instance is created. It can only be increased. Manual or automatic shrinking of storage isn't supported. Acceptable values depend on the type of storage assigned to the instance. |
+    | | **Performance Tier** | Cannot be changed and is automatically set to the same value as the source server. | Performance of Premium solid-state drives (SSD) is set when you create the disk, in the form of their performance tier. When setting the provisioned size of the disk, a performance tier is automatically selected. This performance tier determines the IOPS and throughput of your managed disk. For Premium SSD disks, this tier can be changed at deployment or afterwards, without changing the size of the disk, and without downtime. Changing the tier allows you to prepare for and meet higher demand without using your disk's bursting capability. It can be more cost-effective to change your performance tier rather than rely on bursting, depending on how long the extra performance is necessary. This is ideal for events that temporarily require a consistently higher level of performance, like holiday shopping, performance testing, or running a training environment. To handle these events, you can switch a disk to a higher performance tier without downtime, for as long as you need the extra performance. You can then return to the original tier without downtime when the extra performance is no longer necessary. | Can be changed after the instance is created. |
+    | | **Storage Auto-growth** | Cannot be changed and is automatically set to the same value as the source server. | Notice that this option might not be supported for some storage types, and it might not be honored for certain storage sizes. For more information, see [Configure storage autogrow in an Azure Database for PostgreSQL flexible server](how-to-auto-grow-storage.md). | Can be changed after the instance is created, as long as the storage type supports this feature. |
+    | **Backups** | | | | |
+    | | **Backup retention period (in days)** | Cannot be changed and is automatically set to the same value as the source server. | The default backup retention period is 7 days, but you can extend the period to a maximum of 35 days. | Can be changed after instance is created. |
+    | | **Backup Redundancy Options** | Automatically selected for you, based on the configuration of high availability and geo-redundancy of backups. | Possible values are **Locally redundant** (provides at least 99.999999999% durability of backup objects over a year), **Zone redundant** (provides at least 99.9999999999% durability of backup objects over a year), and **Geo-Redundant** (provides at least 99.99999999999999% durability of backup objects over a year). When **Geo-redundancy** is enabled for the backup, then the backup redundancy option is set to **Geo-Redundant**. Otherwise, if high availability is set to **Disabled** or **Same zone**, then backup redundancy is set to **Locally redundant**. And if high availability is set to **Zone redundant**, then backup redundancy is set to **Zone redundant**. For more information, see [Backup redundancy options in Azure Database for PostgreSQL - Flexible Server](concepts-backup-restore.md#backup-redundancy-options). | Can't be changed after instance is created. |
+    | | **Geo-redundancy** | Leave this option disabled. | Geo-redundancy in backups is only supported on instances deployed in any of the [Azure paired regions](/azure/reliability/cross-region-replication-azure). For more information, see [Geo-redundant backup and restore in Azure Database for PostgreSQL - Flexible Server](concepts-backup-restore.md#geo-redundant-backup-and-restore)| Can't be changed after instance is created. |
+
+8. Once all the new server is configured to your needs, select **Review + create**.
+
+    :::image type="content" source="./media/how-to-restore-server/latest-restore-point-review-and-create.png" alt-text="Screenshot showing the location of the Review + create button." lightbox="./media/how-to-restore-server/latest-restore-point-review-and-create":::
+
+9. Review that all configurations for the new deployment are correctly set, and select **Create**.
+
+    :::image type="content" source="./media/how-to-restore-server/latest-restore-point-create.png" alt-text="Screenshot showing the location of the Create button." lightbox="./media/how-to-restore-server/latest-restore-point-create":::
+
+10. A new deployment is launched to create your new Azure Database for PostgreSQL flexible server and restore the most recent data available on the source server at the time of restore:
+
+    :::image type="content" source="./media/how-to-restore-server/latest-restore-point-deployment-in-progress.png" alt-text="Screenshot that shows the deployment in progress to create your new Azure Database for PostgreSQL Flexible server, on which the most recent data available on the source server is restored." lightbox="./media/how-to-restore-server/latest-restore-point-deployment-in-progress.png":::
+
+11. When the deployment completes, you can select **Go to resource**, to get you to the **Overview** page of your new Azure Database for PostgreSQL flexible server, and start using it:
+
+    :::image type="content" source="./media/how-to-restore-server/latest-restore-point-deployment-completed.png" alt-text="Screenshot that shows the deployment successfully completed of your Azure Database for PostgreSQL Flexible server." lightbox="./media/how-to-restore-server/latest-restore-point-deployment-completed.png":::
+
+### [CLI](#tab/cli-restore-latest-point)
+
+You can start a stopped server via the [az postgres flexible-server start](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-start) command.
+
+```azurecli-interactive
+az postgres flexible-server start --resource-group <resource_group> --name <server>
+```
+
+If you attempt to start a server which isn't in `Stopped` state, you receive an error like this:
+
+```output
+(ServerIsNotStopped) Start Server can only be performed on Stopped servers. Seever Name = <server>, Current Server State = Updating
+Code: ServerIsNotStopped
+Message: Start Server can only be performed on Stopped servers. Server Name = <server>, Current Server State = Updating
+```
+
+---
+
+Follow these steps to restore your Azure Database for PostgreSQL flexible server instance to the latest restore point by using an existing backup:
+
+1. In the [Azure portal](https://portal.azure.com/), choose the Azure Database for PostgreSQL flexible server instance that you want to restore the backup from.
+
+2. Select **Overview** from the left pane, and then select **Restore**.
+   
+   :::image type="content" source="./media/how-to-restore-server-portal/restore-overview.png" alt-text="Screenshot that shows a server overview and the Restore button.":::
+
+3. Under **Source details**, select **Latest restore point (Now)**. 
+
+4. Under **Server details**, for **Name**, provide a server name. For **Availability zone**, you can optionally choose an availability zone to restore to.
+   
+   :::image type="content" source="./media/how-to-restore-server-portal/restore-latest.png" alt-text="Screenshot that shows selections for restoring to the latest restore point.":::
+
+5. Select **OK**. A notification shows that the restore operation has started.
+
+## Restore to a custom restore point
+
+Follow these steps to restore your Azure Database for PostgreSQL flexible server instance to a custom restore point by using an existing backup:
+
+1. In the [Azure portal](https://portal.azure.com/), choose the Azure Database for PostgreSQL flexible server instance that you want to restore the backup from.
+
+2. Select **Overview** from the left pane, and then select **Restore**.
+ 
+   :::image type="content" source="./media/how-to-restore-server-portal/restore-overview.png" alt-text="Screenshot that shows a server overview and the Restore button.":::
+    
+4. Under **Source details**, choose **Select a custom restore point**.
+
+5. Under **Server details**, for **Name**, provide a server name. For **Availability zone**, you can optionally choose an availability zone to restore to.
+   
+   :::image type="content" source="./media/how-to-restore-server-portal/restore-custom.png" alt-text="Screenshot that shows selections for restoring to a custom restore point.":::
+ 
+6.  Select  **OK**. A notification shows that the restore operation has started.
+
+## Restore by using fast restore
+
+Follow these steps to restore your flexible server by using a fast restore option:
+
+1. In the [Azure portal](https://portal.azure.com/), choose the flexible server that you want to restore the backup from.
+
+2. Select **Overview** from the left pane, and then select **Restore**.
+   
+   :::image type="content" source="./media/how-to-restore-server-portal/restore-overview.png" alt-text="Screenshot that shows a server overview and the Restore button.":::
+    
+4. Under **Source details**, choose **Select Fast restore point (Restore using full backup only)**. For **Fast Restore point (UTC)**, select the full backup of your choice.
+
+5. Under **Server details**, for **Name**, provide a server name. For **Availability zone**, you can optionally choose an availability zone to restore to.
+   
+   :::image type="content" source="./media/how-to-restore-server-portal/fast-restore.png" alt-text="Screenshot that shows selections for a fast restore point.":::
+ 
+6. Select **OK**. A notification shows that the restore operation has started.
+
+## Perform geo-restore
+
+If your source server is configured with geo-redundant backup, you can restore the servers in a paired region. 
+
+> [!NOTE]
+> For the first time that you perform a geo-restore, wait at least one hour after you create the source server.
+
+1. In the [Azure portal](https://portal.azure.com/), choose the Azure Database for PostgreSQL flexible server instance that you want to geo-restore the backup from.
+
+2. Select **Overview** from the left pane, and then select **Restore**.
+ 
+   :::image type="content" source="./media/how-to-restore-server-portal/restore-overview.png" alt-text="Screenshot that shows the Restore button.":::
+
+3. Under **Source details**, for **Geo-redundant restore (preview)**, select the **Restore to paired region** checkbox. 
+ 
+   :::image type="content" source="./media/how-to-restore-server-portal/geo-restore-choose-checkbox.png" alt-text="Screenshot that shows the option for restoring to a paired region for geo-redundant restore.":::
+ 
+4. Under **Server details**, the region and the database version are pre-selected. The server will be restored to the last available data at the paired region. For **Availability zone**, you can optionally choose an availability zone to restore to.
+
+5. Select **OK**. A notification shows that the restore operation has started.
+
+By default, the backups for the restored server are configured with geo-redundant backup. If you don't want geo-redundant backup, you can select **Configure Server** and then clear the **Restore to paired region** checkbox.
+
+If the source server is configured with *private access*, you can restore only to another virtual network in the remote region. You can either choose an existing virtual network or create a new virtual network and restore your server into that network.  
+
+## Related content
+
+- [Overview of business continuity with Azure Database for PostgreSQL - Flexible Server](concepts-business-continuity.md).
+- [High availability in Azure Database for PostgreSQL - Flexible Server](/azure/reliability/reliability-postgresql-flexible-server).
+- [Backup and restore in Azure Database for PostgreSQL - Flexible Server](concepts-backup-restore.md).
