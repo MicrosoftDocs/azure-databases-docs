@@ -11,7 +11,7 @@ ms.topic: how-to
 #customer intent: As a user, I want to learn how to configure storage autogrow in an Azure Database for PostgreSQL flexible server.
 ---
 
-# Configure storage autogrow in an Azure Database for PostgreSQL flexible server
+# Configure storage autogrow
 
 [!INCLUDE [applies-to-postgresql-Flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 

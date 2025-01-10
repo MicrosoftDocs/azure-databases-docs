@@ -1,5 +1,5 @@
 ---
-title: Delete an Azure Database for PostgreSQL flexible server
+title: Delete a server
 description: This article describes the steps to delete an existing Azure Database for PostgreSQL flexible server.
 author: nachoalonsoportillo
 ms.author: ialonso
@@ -11,7 +11,7 @@ ms.topic: how-to
 #customer intent: As a user, I want to learn how to delete an Azure Database for PostgreSQL flexible server.
 ---
 
-# Delete an Azure Database for PostgreSQL flexible server
+# Delete a server
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 

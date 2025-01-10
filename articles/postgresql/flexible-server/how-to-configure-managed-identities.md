@@ -1,5 +1,5 @@
 ---
-title: Configure managed identities in Azure Database for PostgreSQL - Flexible Server
+title: Configure managed identities
 description: Learn how to configure managed identities in Azure Database for PostgreSQL - Flexible Server.
 author: kabharati
 ms.author: kabharati
@@ -10,7 +10,7 @@ ms.subservice: flexible-server
 ms.topic: conceptual
 ---
 
-# Configure system or user assigned managed identities in Azure Database for PostgreSQL - Flexible Server
+# Configure system or user assigned managed identities
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
