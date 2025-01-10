@@ -118,8 +118,8 @@ The `_etag` format is internal and you shouldn't take dependency on it because i
 During the preview, the following methods to read the change feed are available for each client SDK:
 
 | **Method to read change feed** | **.NET** | **Java** | **Python** | **Node.js** |
-| --- | --- | --- |--- |--- |
-| [Change feed pull model](change-feed-pull-model.md) | [>= 3.32.0-preview](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/3.32.0-preview) | [>= 4.42.0](https://mvnrepository.com/artifact/com.azure/azure-cosmos/4.37.0) | [>= 4.9.1b1](https://pypi.org/project/azure-cosmos/4.9.1b1/) |  [>= 4.1.0](https://www.npmjs.com/package/@azure/cosmos?activeTab=versions)  |
+| --- | --- | --- | --- | --- |
+| [Change feed pull model](change-feed-pull-model.md) | [>= 3.32.0-preview](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/3.32.0-preview) | [>= 4.42.0](https://mvnrepository.com/artifact/com.azure/azure-cosmos/4.37.0) | [>= 4.9.1b1](https://pypi.org/project/azure-cosmos/4.9.1b1/) |  [>= 4.1.0](https://www.npmjs.com/package/@azure/cosmos?activeTab=versions) |
 | [Change feed processor](change-feed-processor.md) | [>= 3.40.0-preview.0](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/3.40.0-preview.0) | [>= 4.42.0](https://mvnrepository.com/artifact/com.azure/azure-cosmos/4.42.0) | No | No |
 | Azure Functions trigger | No | No | No | No |
 
