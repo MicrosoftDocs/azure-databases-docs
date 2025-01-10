@@ -413,6 +413,8 @@
         href: flexible-server/how-to-configure-server-logs.md
       - name:  On-demand backups
         href: flexible-server/how-to-operate-on-demand-backups.md
+      - name: Restore a server
+        href: flexible-server/how-to-restore-server.md
       - name: Scale a server
         items:
         - name: Azure portal
@@ -427,12 +429,6 @@
           href: flexible-server/how-to-restore-to-different-subscription-or-resource-group.md
         - name: Azure REST API
           href: flexible-server/how-to-restore-different-subscription-resource-group-api.md 
-      - name: Restore a server
-        items:
-        - name: Azure portal
-          href: flexible-server/how-to-restore-server-portal.md
-        - name: Azure CLI
-          href: flexible-server/how-to-restore-server-cli.md
       - name: Relocate a server 
         href: /azure/operational-excellence/relocation-postgresql-flexible-server?toc=/azure/postgresql/toc.json
     - name: Configure managed identities
