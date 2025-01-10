@@ -4,7 +4,7 @@ description: This doc discusses the ways to troubleshoot common issues encounter
 ms.service: azure-cosmos-db
 ms.subservice: mongodb
 ms.topic: troubleshooting
-ms.date: 12/22/2024
+ms.date: 01/08/2025
 author: niklarin
 ms.author: nlarin
 ---
@@ -61,4 +61,5 @@ To delete a replica cluster:
 1. Carefully read the warning message and confirm the deletion.
 
 ## Next steps
-If you followed all the troubleshooting steps and still can't resolve your issue, you can open a [support request](https://azure.microsoft.com/support/create-ticket/) for further assistance.
+- If you followed all the troubleshooting steps and still can't resolve your issue, you can open a [support request](https://azure.microsoft.com/support/create-ticket/) for further assistance.
+- If you're troubleshooting common issues with Azure Cosmos DB for MongoDB vCore, see [this troubelshooting guide](./troubleshoot-common-issues.md).

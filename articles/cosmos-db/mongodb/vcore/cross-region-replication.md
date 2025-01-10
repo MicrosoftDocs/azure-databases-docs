@@ -10,7 +10,7 @@ ms.custom:
   - build-2024
   - ignite-2024
 ms.topic: concept-article
-ms.date: 11/06/2024
+ms.date: 01/08/2025
 #Customer Intent: As a database adminstrator, I want to configure cross-region replication, so that I can have disaster recovery plans in the event of a regional outage.
 ---
 
@@ -55,4 +55,5 @@ If a region outage occurs, you can perform disaster recovery operation by promot
 
 - [Learn how to enable cross-region replication and promote replica cluster](./how-to-cluster-replica.md)
 - [See cross-region replication limits and limitations](./limits.md#cross-region-replication)
+- To resolve an issue with cross-region replciation see [this troubleshooting guide](./troubleshoot-replication.md).
 - [Learn about reliability in Azure Cosmos DB for MongoDB vCore](/azure/reliability/reliability-cosmos-mongodb)

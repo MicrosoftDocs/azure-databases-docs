@@ -4,7 +4,7 @@ description: This doc discusses the ways to troubleshoot common issues encounter
 ms.service: azure-cosmos-db
 ms.subservice: mongodb
 ms.topic: troubleshooting
-ms.date: 08/11/2023
+ms.date: 01/08/2025
 author: khelanmodi
 ms.author: khelanmodi
 ---
@@ -46,5 +46,5 @@ Only use the connection string provided in the Azure portal. Ensure that it incl
 
 
 ## Next steps
-If you've completed all the troubleshooting steps and haven't been able to discover a solution for your issue, kindly consider submitting a [Support Ticket](https://azure.microsoft.com/support/create-ticket/). 
-
+- If you followed all the troubleshooting steps and still can't resolve your issue, you can open a [support request](https://azure.microsoft.com/support/create-ticket/) for further assistance.
+- If you're troubleshooting cross-region replication, see [troubleshooting guide for cross-region replication](./troubleshoot-replication.md).
