@@ -11,6 +11,8 @@ ms.author: nlarin
 
 # Troubleshooting guide: Cross-region replication in Azure Cosmos DB for MongoDB vCore
 
+[!INCLUDE[MongoDB vCore](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
+
 This guide is designed to help you troubleshoot common issues when using [cross-region replication](./cross-region-replication.md) with Azure Cosmos DB for MongoDB vCore. It offers practical solutions for connectivity problems and optimization challenges to improve your experience.
 
 ## Common issues and solutions
