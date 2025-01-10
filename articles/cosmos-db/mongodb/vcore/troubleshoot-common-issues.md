@@ -28,7 +28,7 @@ This issue might occur when the cluster doesn't have the correct firewall rule(s
 ### Unable to Connect with DNSClient.DnsResponseException Error
 #### Debugging Connectivity Issues: 
 Windows User: <br>
-Psping doesn't work. The use of nslookup confirms cluster reachability and discoverability, indicating network issues are unlikely.
+PsPing doesn't work. The use of nslookup confirms cluster reachability and discoverability, indicating network issues are unlikely.
 
 Unix Users: <br>
 For Socket/Network-related exceptions, potential network connectivity issues might be hindering the application from establishing a connection with the Azure Cosmos DB Mongo API endpoint.
