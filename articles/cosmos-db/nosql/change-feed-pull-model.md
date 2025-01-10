@@ -299,6 +299,121 @@ Machine 2:
 
 [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/changefeedpull/SampleChangeFeedPullModel.java?name=Machine2)]
 
+### [Python](#tab/python)
+
+To process the change feed by using the pull model, create an instance of responseIterator with the type `ItemPaged[Dict[str, Any]]`. 
+When you call change feed API, you must specify where to start reading the change feed from and pass the `feed_range` parameter that you want to use.
+The `feed_range` is a range of partition key values that specifies the items that can be read from the change feed.
+
+You can also specify `mode` parameter for the change feed mode in which you want to process changes: [LatestVersion](change-feed-modes.md#latest-version-change-feed-mode) or [AllVersionsAndDeletes](change-feed-modes.md#all-versions-and-deletes-change-feed-mode-preview) (The default value: `LatestVersion`).
+Use either `LatestVersion` or `AllVersionsAndDeletes` to indicate which mode you want to use to read the change feed. 
+When you use `LatestVersion` mode, `start_time` can be specified from value of `Now`, `Beginning` or specific datetime(The default value: `Now`).
+When you use `AllVersionsAndDeletes` mode, `start_time` can be specified from value of either `Now`(The default value: `Now`).
+Or, `continuation` token can be used to specified the start time for either modes. `continuation` token can be retrieved from the previous change feed query response headers.
+
+> [!NOTE]
+> 
+> `AllVersionsAndDeletes` mode is in preview and is available in Python SDK version [>= 4.9.1b1](https://pypi.org/project/azure-cosmos/4.9.1b1/).
+
+[//]: # (TODO: Seperate samples for Latest and AllVersions modes, and update the note section above to add the links like other languages.)
+[//]: # (TODO: Add sample codes from the following sections to the sample files like JAVA samples.)
+
+### Consume the changes for an entire container
+
+If you don't supply a `feed_range` parameter, you can process an entire container's change feed at your own pace.
+>[!NOTE]
+> All the following code snippets are taken from a samples in GitHub. You can use the [latest version mode sample](https://github.com/Azure/azure-sdk-for-python/blob/main/sdk/cosmos/azure-cosmos/samples/change_feed_management.py#L63-L73) and the [all versions and deletes mode sample](https://github.com/Azure/azure-sdk-for-python/blob/main/sdk/cosmos/azure-cosmos/samples/change_feed_management.py#L63-L73).
+
+Here's an example of how to obtain `responseIterator` in `LatestVersion` mode from `Beginning`:
+```python
+responseIterator = container.query_items_change_feed(start_time="Beginning")
+```
+
+Here's an example of how to obtain  `responseIterator` in `AllVersionsAndDeletes` mode from `Now`:
+```python
+responseIterator = container.query_items_change_feed(mode="AllVersionsAndDeletes")
+```
+
+We can then iterate over the results. Because the change feed is effectively an infinite list of items that encompasses all future writes and updates, responseIterator can loop infinitely. 
+Here's an example in latest version mode, which reads all changes, starting from the beginning.
+Each iteration print change feeds for documents.
+
+```python
+for doc in responseIterator:
+    print(doc)
+```
+
+### Consume a partition key's changes
+In some cases, you might want to process only the changes for a specific partition key.
+You can process the changes for a specific partition key the same way that you can for an entire container. 
+Here's an example that uses latest version mode:
+
+```python
+pk = "partition_key_value"
+responseIterator = container.query_items_change_feed(start_time="Beginning", parition_key=pk)
+for doc in responseIterator:
+    print(doc)
+```
+
+### Use FeedRange for parallelization
+In the change feed pull model, you can use the `feed_range` to parallelize the processing of the change feed.
+A `feed_range` represents a range of partition key values.
+
+Here's an example that shows how to get a list of ranges for your container. `list` command will convert iterator to a list:
+
+```python
+rangesIterator = container.read_feed_ranges(force_refresh=False)
+ranges = list(rangesIterator)
+```
+
+When you get a list of `feed_range` values for your container, you get one `feed_range` per [physical partition](../partitioning-overview.md#physical-partitions).
+
+By using a `feed_range`, you can create iterator to parallelize the processing of the change feed across multiple machines or threads.
+Unlike the previous example that showed how to obtain a `responseIterator` for the entire container or a single partition key,
+you can use `feed_range` to obtain multiple iterators, which can process the change feed in parallel.
+
+Here's a sample that shows how to read from the beginning of the container's change feed by using two hypothetical separate machines that read in parallel:
+
+Machine 1:
+```python
+responseIterator = container.query_items_change_feed(start_time="Beginning", feed_range=ranges[0])
+for doc in responseIterator:
+    print(doc)
+```
+
+Machine 2:
+```python
+responseIterator = container.query_items_change_feed(start_time="Beginning", feed_range=ranges[1])
+for doc in responseIterator:
+    print(doc)
+```
+
+### Save continuation tokens
+You can save the position of your iterator by obtaining the continuation token.
+A continuation token is a string value that keeps of track of your `responseIterator` last processed changes and allows the iterator to resume at this point later.
+The continuation token, if specified, takes precedence over the start time and start from beginning values. 
+The following code reads through the change feed since container creation. 
+After no more changes are available, it will persist a continuation token so that change feed consumption can be later resumed.
+
+```python
+responseIterator = container.query_items_change_feed(start_time="Beginning")
+for doc in responseIterator:
+    print(doc)
+continuation_token = container.client_connection.last_response_headers['etag']
+```
+
+> [!NOTE]
+> 
+> Since `continuation` token contains previously used `mode` parameter, if `continuation` was used, `mode` parameter will be ignored and use the `mode` from `continuation` token.
+
+Here's a sample that shows how to read from the container's change feed by using a `continuation` token:
+
+
+```python
+responseIterator = container.query_items_change_feed(continuation=continuation_token)
+for doc in responseIterator:
+    print(doc)
+```
 ### [JavaScript](#tab/JavaScript)
 
 To process the change feed by using the pull model, create an instance of `ChangeFeedPullModelIterator`. When you initially create `ChangeFeedPullModelIterator`, you must specify a required `changeFeedStartFrom` value inside the `ChangeFeedIteratorOptions` which consists of both the starting position for reading changes and the resource(a partition key or a FeedRange) for which changes are to be fetched.
