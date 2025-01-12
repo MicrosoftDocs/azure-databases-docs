@@ -89,14 +89,10 @@ landingContent:
             url: compatibility.md
           - text: Sharding
             url: partitioning.md
-          - text: High availability
-            url: high-availability.md
           - text: Compute and storage
             url: compute-storage.md
           - text: Compute autoscale
             url: autoscale.md
-          - text: Migration options
-            url: migration-options.md
   - title: Samples
     linkLists:
       - linkListType: sample
@@ -139,3 +135,5 @@ landingContent:
         links:
           - text: Cluster security overview
             url: security.md
+          - text: Data encryption
+            url: database-encryption-at-rest.md
