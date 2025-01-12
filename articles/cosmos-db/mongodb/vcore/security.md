@@ -89,7 +89,7 @@ This section outlines various network security options you can configure for you
 
 ### Public IP access with firewall
 
-In [the public access option](./how-to-public-access.md), a public IP address is assigned to the cluster, and access to the cluster is protected by a firewall. If public IP address is not specified in one of the firewall rules on the cluster, requests from that IP address are rejected by the firewall and don't reach database.
+In [the public access option](./how-to-public-access.md), a public IP address is assigned to the cluster, and access to the cluster is protected by a firewall. If public IP address isn't specified in one of the firewall rules on the cluster, requests from that IP address are rejected by the firewall and don't reach database.
 
 ### Private access
 
