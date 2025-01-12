@@ -139,9 +139,8 @@ For more information, see the [Restore to a paired region (geo-restore)](how-to-
 > [!IMPORTANT]
 > When the primary region is down, you can't create geo-redundant servers in the respective geo-paired region, because storage can't be provisioned in the primary region. Before you can provision geo-redundant servers in the geo-paired region, you must wait for the primary region to be up. 
 >
-> With the primary region down, you can still geo-restore the source server to the geo-paired region. For more information about performing a geo-restore, see the [how-to guide](how-to-restore-server.md#perform-geo-restore).
+> With the primary region down, you can still geo-restore the source server to the geo-paired region. For more information, see the [Restore to a paired region (geo-restore)](how-to-restore-server.md#restore-to-a-paired-region-geo-restore).
 > You should use Geo-replicas as your disaster recovery (DR) strategy if you need to configure DR to any region, or if the primary region doesn't support Geo-redundant backups 
-
 
 ## Restore and networking
 
