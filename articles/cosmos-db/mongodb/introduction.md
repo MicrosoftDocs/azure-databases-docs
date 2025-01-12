@@ -20,7 +20,7 @@ Azure Cosmos DB for MongoDB makes it easy to use Azure Cosmos DB as if it were a
 
 Azure Cosmos DB for MongoDB provides an SLA that covers the full stack: the database and the underlying infrastructure. Unlike third-party MongoDB services such as MongoDB Atlas, which only cover the database and exclude services, hardware, or software provided by the cloud platform.
 
-> [!VIDEO https://www.microsoft.com/videoplayer/embed/RWXr4T]
+> [!VIDEO https://learn-video.azurefd.net/vod/player?id=234381e8-24dd-4692-bb70-596c97959216]
 
 ## Cosmos DB for MongoDB benefits
 

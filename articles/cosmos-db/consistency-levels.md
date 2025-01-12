@@ -16,7 +16,7 @@ ms.custom: cosmos-db-video
 
 Distributed databases that rely on replication for high availability, low latency, or both, must make a fundamental tradeoff between the read consistency, availability, latency, and throughput as defined by the [PACELC theorem](https://en.wikipedia.org/wiki/PACELC_theorem). The linearizability of the strong consistency model is the gold standard of data programmability. But it adds a steep price from higher write latencies due to data having to replicate and commit across large distances. Strong consistency may also suffer from reduced availability (during failures) because data can't replicate and commit in every region. Eventual consistency offers higher availability and better performance, but it's more difficult to program applications because data may not be consistent across all regions.
 
-> [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4RZ0h]
+> [!VIDEO https://learn-video.azurefd.net/vod/player?id=7b1f8d3d-ae64-4f52-a5b7-252ba78429af]
 
 Most commercially available distributed NoSQL databases available in the market today provide only strong and eventual consistency. Azure Cosmos DB offers five well-defined levels. From strongest to weakest, the levels are:
 
