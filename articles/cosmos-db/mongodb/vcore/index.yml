@@ -73,10 +73,6 @@ landingContent:
         links:
           - text: Scale cluster
             url: how-to-scale-cluster.md
-          - text: Enable or disable public access
-            url: how-to-public-access.md
-          - text: Enable private access
-            url: how-to-private-link.md
           - text: Monitor diagnostics logs
             url: how-to-monitor-diagnostics-logs.md
           - text: Monitor metrics
@@ -129,3 +125,17 @@ landingContent:
             url: cross-region-replication.md
           - text: HA and DR - behind the scenes
             url: availability-disaster-recovery-under-hood.md
+  - title: Security
+    linkLists:
+      - linkListType: how-to-guide
+        links:
+          - text: Enable or disable public access
+            url: how-to-public-access.md
+          - text: Enable private access
+            url: how-to-private-link.md
+          - text: Manage secondary users
+            url: secondary-users.md
+      - linkListType: concept
+        links:
+          - text: Cluster security overview
+            url: security.md
