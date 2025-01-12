@@ -27,6 +27,8 @@ landingContent:
             url: quickstart-portal.md
           - text: Create resources - Bicep template
             url: quickstart-bicep.md
+          - text: Create resources - Terraform
+            url: quickstart-terraform.md
   - title: Vector database
     linkLists:
       - linkListType: concept
@@ -49,6 +51,22 @@ landingContent:
             url: how-to-transactions.md
           - text: Create text search index
             url: how-to-create-text-index.md
+  - title: Migrate to MongoDB (vCore)
+    linkLists:
+      - linkListType: concept
+        links:
+          - text: Migration options
+            url: migration-options.md
+      - linkListType: how-to-guide
+        links:
+          - text: Migrate using native tools
+            url: how-to-migrate-native-tools.md
+          - text: Migrate using Azure Data Studio
+            url: /azure-data-studio/extensions/database-migration-for-mongo-extension
+          - text: Migrate using Azure Database Migration Service
+            url: ../../../dms/tutorial-mongodb-cosmos-db-online.md
+          - text: Migrate using Azure Database Migration Service (offline)
+            url: ../../../dms/tutorial-mongodb-cosmos-db.md
   - title: Manage a vCore cluster
     linkLists:
       - linkListType: how-to-guide
@@ -83,22 +101,6 @@ landingContent:
             url: autoscale.md
           - text: Migration options
             url: migration-options.md
-  - title: Migrate to MongoDB (vCore)
-    linkLists:
-      - linkListType: concept
-        links:
-          - text: Migration options
-            url: migration-options.md
-      - linkListType: how-to-guide
-        links:
-          - text: Migrate using native tools
-            url: how-to-migrate-native-tools.md
-          - text: Migrate using Azure Data Studio
-            url: /azure-data-studio/extensions/database-migration-for-mongo-extension
-          - text: Migrate using Azure Database Migration Service
-            url: ../../../dms/tutorial-mongodb-cosmos-db-online.md
-          - text: Migrate using Azure Database Migration Service (offline)
-            url: ../../../dms/tutorial-mongodb-cosmos-db.md
   - title: Samples
     linkLists:
       - linkListType: sample
