@@ -35,24 +35,32 @@ Follow these steps to create an alert rule based on a metric:
 
 1. In the [Azure portal](https://portal.azure.com/), select the **Azure Cosmos DB for MongoDB vCore** cluster you want to monitor.
 1. Under the **Monitoring** section of the sidebar, select **Alerts**, then select **Create** and then **Alert rule**.
-   :::image type="content" source="./media/how-to-manage-alerts/create-alert-rule.png" alt-text="Screenshot of alert rule creation page in Azure Cosmos DB for MongoDB vCore in the Azure portal.":::
-1. On the **Condition** tab, select **See all signals** next to **Select a signal** drop-down list. 
+   :::image type="content" source="./media/how-to-manage-alerts/create-alert-rule.png" alt-text="Screenshot of the alert rule creation page in Azure Cosmos DB for MongoDB vCore in the Azure portal.":::
+1. On the **Condition** tab, select **See all signals** next to **Select a signal** drop-down list.
 1. Choose a metric from the list of available signals. For example, select **Storage percent** and then select **Apply**.
+   :::image type="content" source="./media/how-to-manage-alerts/select-metric-for-the-rule.png" alt-text="Screenshot of the alert condition selection panel with a metric selected in the Azure portal.":::
 1. On the **Condition** tab of the **Create an alert rule** page, under **Alert logic**, configure the following:
    - For **Threshold**, select **Static**.
    - For **Aggregation type**, select **Average**.
    - For **Operator**, select **Greater than**.
    - For **Threshold value**, enter **85**.
 1. Select the **Actions** tab.
+   :::image type="content" source="./media/how-to-manage-alerts/condition-definition.png" alt-text="Screenshot of the alert definition for a selected metric in the Azure portal.":::
 1. Make sure **Use action groups** is selected, then choose **Create action group** to create a new group that will receive notifications when the alert triggers.
-1. On the **Create an action group** form, specify the **Subscription**, **Resource group**, and **Region**, and enter an **Action group name** and **Display name** for the group.
+   :::image type="content" source="./media/how-to-manage-alerts/create-action-group.png" alt-text="Screenshot of the action group creation panel in the Azure portal.":::
+1. On the **Create an action group** form, confirm the **Subscription**, **Resource group**, specify **Region**, and enter an **Action group name** and **Display name** for the group.
 1. Select **Next: Notifications** at the bottom of the page.
+   :::image type="content" source="./media/how-to-manage-alerts/action-group-basics.png" alt-text="Screenshot of the action group basics in the Azure portal.":::
 1. On the **Notifications** tab, under **Notification type**, select **Email/SMS message/Push/Voice**.
 1. On the **Email/SMS message/Push/Voice** form, enter the email addresses and phone numbers of the recipients you want to notify. Then select **OK**.
 1. On the **Create an action group** form, provide a name for the notification.
-1. Select **Review + create**, then select **Create** to complete the action group setup. The new action group appears under **Action group name** on the **Actions** tab of the **Create an alert rule** page.
+   :::image type="content" source="./media/how-to-manage-alerts/email-notification-creation.png" alt-text="Screenshot of the e-mail notification creation in the Azure portal.":::
+1. Select **Review + create**, then select **Create** to complete the action group setup. 
+1. The new action group appears under **Action group name** on the **Actions** tab of the **Create an alert rule** page.
 1. Select **Next: Details** at the bottom of the page.
+   :::image type="content" source="./media/how-to-manage-alerts/alert-rules-actions-completed.png" alt-text="Screenshot of the completed alert rule actions tab in the Azure portal.":::
 1. On the **Details** tab, set a **Severity** level for the alert rule. Provide an easily identifiable **Name** and an optional **Description** for the rule.
+   :::image type="content" source="./media/how-to-manage-alerts/alert-rule-details.png" alt-text="Screenshot of the completed alert rule details tab in the Azure portal.":::
 1. Select **Review + create**, then select **Create** to finalize the alert rule. The alert will be active within a few minutes and will trigger as configured.
 
 ## Manage alerts
