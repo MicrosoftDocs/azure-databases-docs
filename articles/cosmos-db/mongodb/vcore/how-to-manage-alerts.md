@@ -15,7 +15,7 @@ ms.date: 01/10/2025
 
 [!INCLUDE[MongoDB vCore](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 
-This article shows how to set up and manage alerts on operational metrics for Azure Cosmos DB for MongoDB vCore using the Azure portal. You can create alerts based on monitoring metrics for your Azure services to proactively manage your clusters.
+This article shows how to set up and manage alerts on [operational metrics](./monitor-metrics.md) for Azure Cosmos DB for MongoDB vCore using the Azure portal. You can create alerts based on monitoring metrics for your Azure services to proactively manage your clusters.
 
 You'll set up an alert to trigger when a specified metric crosses a threshold. The alert triggers when the condition is first met and continues to trigger afterward until the condition is no longer true.
 
@@ -25,16 +25,17 @@ You can configure an alert to perform the following actions when triggered:
 - Call a webhook.
 
 You can configure and manage alert rules using the following tools:
-- Azure portal
-- Azure CLI
-- Azure Monitor REST API
+- [Azure portal](/azure/azure-monitor/alerts/alerts-create-metric-alert-rule)
+- [Azure CLI, PowerShell, and ARM templates](/azure/azure-monitor/alerts/alerts-create-rule-cli-powershell-arm)
+- [Azure Monitor REST API](/rest/api/monitor/metric-alerts)
 
 ## Create an alert rule on a metric from the Azure portal
 
 Follow these steps to create an alert rule based on a metric:
 
-1. In the Azure portal, select the **Azure Cosmos DB for MongoDB vCore** cluster you want to monitor.
+1. In the [Azure portal](https://portal.azure.com/), select the **Azure Cosmos DB for MongoDB vCore** cluster you want to monitor.
 1. Under the **Monitoring** section of the sidebar, select **Alerts**, then select **Create** and then **Alert rule**.
+   :::image type="content" source="./media/how-to-manage-alerts/create-alert-rule.png" alt-text="Screenshot of alert rule creation page in Azure Cosmos DB for MongoDB vCore in the Azure portal.":::
 1. On the **Condition** tab, select **See all signals** next to **Select a signal** drop-down list. 
 1. Choose a metric from the list of available signals. For example, select **Storage percent** and then select **Apply**.
 1. On the **Condition** tab of the **Create an alert rule** page, under **Alert logic**, configure the following:
