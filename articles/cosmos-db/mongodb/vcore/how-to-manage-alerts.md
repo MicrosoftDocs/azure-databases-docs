@@ -67,9 +67,11 @@ Follow these steps to create an alert rule based on a metric:
 
 After creating an alert, you can view, modify, or manage it in several ways:
 
-- **View a graph** showing the metric threshold and the actual values from the past day.
-- **Edit or delete** the alert rule.
 - **Disable or enable** the alert to temporarily stop or resume receiving notifications.
+- **Edit or delete** the alert rule.
+
+To get access to the alerts, under the **Monitoring** section of the sidebar in the cluster properties, select **Alerts**, then select **Alert rules** in the toolbar.
+:::image type="content" source="./media/how-to-manage-alerts/manage-alerts.png" alt-text="Screenshot of the alerts page in Azure Cosmos DB for MongoDB vCore in the Azure portal.":::
 
 ## Suggested alerts
 
@@ -85,16 +87,17 @@ For best results, set up a series of alerts at **75%**, **85%**, and **95%** usa
 
 To free up disk space, consider the following actions:
 - **Review your data retention policy** and move older data to cold storage if possible.
-- **Increase the node capacity** if necessary. Each node can support up to **32 TiB** of storage.
+- **Increase the node capacity** if necessary. Each node can support up to [**32 TiB** of storage](./compute-storage.md#storage-in-azure-cosmos-db-for-mongodb-vcore).
 
 ### CPU usage
 
 Monitoring CPU usage helps you establish a performance baseline. For example, if your cluster's CPU usage typically hovers around **40-60%**, a sudden increase to **95%** could indicate an anomaly.
 
-CPU usage spikes can result from organic growth or inefficient queries. When creating CPU usage alerts, set a long aggregation period to catch sustained increases and ignore momentary spikes.
+CPU usage spikes can result from organic growth or inefficient queries. When creating CPU usage alerts, set a long aggregation period to catch sustained increases and ignore momentary spikes. Longer aggregation period can help make decisions on scaling [cluster compute](./compute-storage.md#compute-in-azure-cosmos-db-for-mongodb-vcore) up or down. For workloads with business patterns including CPU usage spikes on a regular basis and prolonged valley periods in between, consider using [autoscale compute](./autoscale.md).
 
 With these alerts in place, you can proactively monitor and manage your Azure Cosmos DB for MongoDB vCore clusters to maintain high availability and performance.
 
 ## Related content
 - [Learn more about alerts in Azure](/azure/azure-monitor/alerts/alerts-overview)
 - [See details on metrics in Azure Cosmos DB for MongoDB vCore](./monitor-metrics.md)
+- [Migrate your data](./migration-options.md) to Azure Cosmos DB for MongoDB vCore

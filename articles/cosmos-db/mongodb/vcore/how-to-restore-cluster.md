@@ -9,7 +9,7 @@ ms.subservice: mongodb-vcore
 ms.custom:
   - ignite-2023
 ms.topic: how-to
-ms.date: 12/15/2024
+ms.date: 01/11/2025
 ---
 
 # Restore a cluster in Azure Cosmos DB for MongoDB vCore
@@ -62,11 +62,12 @@ After a restore, you should do the following to get your users and applications 
 - If the new cluster is meant to replace the original cluster, redirect clients and client applications to the new cluster.
 - Ensure appropriate [networking settings](./security.md#network-security-options) for private or public access are in place for users to connect. These settings aren't copied from the original cluster.
 - Ensure [high availability (HA)](./high-availability.md) is enabled on the restored cluster. High availability is disabled on the restored cluster and needs to be enabled, if needed. 
-- Configure alerts on [cluster metrics](./monitor-metrics.md), as appropriate.
+- Configure [alerts on cluster metrics](./how-to-manage-alerts.md), as appropriate.
 
 ## Next steps
 
 In this guide, we covered the backup and restore features for Azure Cosmos DB for MongoDB vCore.
 
-> [!div class="nextstepaction"]
-> [Review cross-region replication capabilities in Azure Cosmos DB for MongoDB vCore](./cross-region-replication.md)
+## Related content
+- [Review cross-region replication capabilities in Azure Cosmos DB for MongoDB vCore](./cross-region-replication.md)
+- [Migrate your data](./migration-options.md) to Azure Cosmos DB for MongoDB vCore
