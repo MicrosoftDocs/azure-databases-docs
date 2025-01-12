@@ -1,16 +1,17 @@
 ---
-title: How to manage PostgreSQL extensions in Azure Database for PostgreSQL - Flexible Server
+title: Manage PostgreSQL extensions
 description: Introduction to the PostgreSQL extensions in Azure Database for PostgreSQL - Flexible Server.
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 12/06/2024
+ms.date: 01/12/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: how-to
+#customer intent: As a user, I want to learn how to manage PostgreSQL extensions in an Azure Database for PostgreSQL flexible server.
 ---
 
-# Manage PostgreSQL extensions in Azure Database for PostgreSQL - Flexible Server
+# Manage PostgreSQL extensions
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
