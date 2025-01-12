@@ -69,4 +69,6 @@ It delivers:
 ## Next steps
 
 * Configure [metric alerts](./how-to-manage-alerts.md) to set up automated alerting to aid in detecting issues.
-* [Migrate your data](./migration-options.md) to vCore-based Azure Cosmos DB for MongoDB
+
+> [!div class="nextstepaction"]
+> [Migration options for Azure Cosmos DB for MongoDB vCore](migration-options.md)

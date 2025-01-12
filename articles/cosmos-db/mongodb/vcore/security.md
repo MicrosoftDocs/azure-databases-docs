@@ -9,7 +9,7 @@ ms.subservice: mongodb-vcore
 ms.custom:
   - ignite-2024
 ms.topic: conceptual
-ms.date: 01/06/2025
+ms.date: 01/11/2025
 ---
 
 # Overview of database security in Azure Cosmos DB for MongoDB vCore
@@ -60,7 +60,7 @@ Let's dig into each one in detail.
 
 |Security requirement|Azure Cosmos DB's security approach|
 |--------------------|-----------------------------------|
-|Network security|Private access implemented via [the mature Private Link technology](/azure/private-link/private-link-overview) allows you to provide access to cluster for resources in Azure VNets. Public access allows you to open cluster to a defined set of public IP addresses. Private and public access can be combined and enabled or disabled at any time.<br><br>**Default configuration**: Azure Cosmos DB for MongoDB vCore clusters are created locked down by default. To provide access to the cluster, networking settings should be updated to enable private and/or public access to cluster during cluster creation or after it.<br><br>[**Private access**](./how-to-private-link.md): With private access enabled a private endpoint could be created to access privately cluster from within Azure virtual network. Private endpoint is created in a specified VNet's subnet. Once done, all [Azure virtual network capabilities](/azure/virtual-network/concepts-and-best-practices) are available to the cluster including local and global virtual network peering, access to private on-premises environments, filtering and routing of network traffic, and others.<br><br>[**Public access**](#firewall-overview): Using an IP firewall is the first layer of protection to secure your database. Azure Cosmos DB for MongoDB vCore supports policy driven IP-based access controls for inbound firewall support. The IP-based access controls are similar to the firewall rules used by traditional database systems. However, they're expanded so that an Azure Cosmos DB for MongoDB vCore cluster is only accessible from an approved set of machines or cloud services. All requests originating from machines outside this allowed list are blocked by Azure Cosmos DB for MongoDB vCore. Requests from approved machines and cloud services then must complete the authentication process to be given access control to the resources.|
+|Network security|Private access implemented via [the mature Private Link technology](/azure/private-link/private-link-overview) allows you to provide access to cluster for resources in Azure VNets. Public access allows you to open cluster to a defined set of public IP addresses. Private and public access can be combined and enabled or disabled at any time.<br><br>**Default configuration**: Azure Cosmos DB for MongoDB vCore clusters are created locked down by default. To provide access to the cluster, networking settings should be updated to enable private and/or public access to cluster during cluster creation or after it.<br><br>[**Private access**](./how-to-private-link.md): With private access enabled a private endpoint could be created to access privately cluster from within Azure virtual network. Private endpoint is created in a specified VNet's subnet. Once done, all [Azure virtual network capabilities](/azure/virtual-network/concepts-and-best-practices) are available to the cluster including local and global virtual network peering, access to private on-premises environments, filtering and routing of network traffic, and others.<br><br>[**Public access**](./how-to-public-access.md): Using an IP firewall is the first layer of protection to secure your database. Azure Cosmos DB for MongoDB vCore supports policy driven IP-based access controls for inbound firewall support. The IP-based access controls are similar to the firewall rules used by traditional database systems. However, they're expanded so that an Azure Cosmos DB for MongoDB vCore cluster is only accessible from an approved set of machines or cloud services. All requests originating from machines outside this allowed list are blocked by Azure Cosmos DB for MongoDB vCore. Requests from approved machines and cloud services then must complete the authentication process to be given access control to the resources.|
 |Local replication|Even within a single region, Azure Cosmos DB for MongoDB vCore replicates the data on storage level maintaining 3 synchronous replicas of each physical shard transparently at all times.<br><br>HA-enabled clusters have another layer of replication between each primary and standby physical shard pair. [High availability](./high-availability.md) replication is synchronous and provides zero data loss on failovers thus guaranteeing a 99.99% [monthly availability SLA for single region setup](https://azure.microsoft.com/support/legal/sla/cosmos-db).|
 |Global replication|Azure Cosmos DB for MongoDB vCore offers [cross-region replication](./cross-region-replication.md) which enables you to replicate your data to another Azure region. Global replication lets you scale globally and provide low-latency access to your data around the world. In the context of security, global replication ensures data protection against infrequent regional outages. With cross-region replica cluster, a copy of your data is always present in another region. The replica in another region combined with high-availability provides a 99.995% [monthly availability SLA for multi-region setup](https://azure.microsoft.com/support/legal/sla/cosmos-db).|
 |Database isolation|Azure Cosmos DB for MongoDB vCore databases are hosted on their own dedicated resources. It means that each cluster gets its own dedicated node called physical shard or a few in a multishard configuration. Each physical shard has its own compute and remote storage attached to it. There's no sharing of infrastructure between clusters providing an extra layer of physical and logical isolation for your database.|
@@ -81,15 +81,19 @@ The following screenshot shows how you can use audit logging and activity logs t
 
 ## Network security options
 
-This section outlines various network security options you can configure for your cluster.
+This section outlines various network security options you can configure for your cluster. You can combine public and private access options on your cluster. You can change network configuration settings at any time.
 
 ### No access
 
-**No Access** is the default option for a newly created cluster if public or private access isn't enabled. In this case, no computers, whether inside or outside of Azure, can connect to the database nodes.
+**No Access** is the default option for a newly created cluster if no firewall rules or private endpoints were created during cluster provisioning for public or private access respectively. In this case, no computers, whether inside or outside of Azure, can connect to the database nodes.
 
 ### Public IP access with firewall
 
-In the public access option, a public IP address is assigned to the cluster, and access to the cluster is protected by a firewall.
+In [the public access option](./how-to-public-access.md), a public IP address is assigned to the cluster, and access to the cluster is protected by a firewall. If public IP address is not specified in one of the firewall rules on the cluster, requests from that IP address are rejected by the firewall and don't reach database.
+
+### Private access
+
+In [the private access option](./how-to-private-link.md), a private endpoint is created for the cluster. This private endpoint is associated with an Azure virtual network (VNet) and a subnet within that VNet. Private endpoint allows hosts on the associated virtual network and peered virtual networks to access Azure Cosmos DB for MongoDB vCore cluster.
 
 ## Firewall overview
 
@@ -100,7 +104,8 @@ Firewall rules enable clients to access your cluster and all the databases withi
 By default, the firewall blocks all access to your cluster. To begin using your cluster from another computer, you need to specify one or more cluster-level firewall rules to enable access to your cluster. Use the firewall rules to specify which IP address ranges from the Internet to allow. Firewall rules don't affect access to the Azure portal website itself. Connection attempts from the Internet and Azure must first pass through the firewall before they can reach your databases.
 
 ## Related content
-- [Learn more about database security in Azure Cosmos DB for MongoDB vCore](./security.md)
 - [See guidance on how to enable private access](./how-to-private-link.md)
 - [See guidance on how to enable public access](./how-to-public-access.md)
-- [Migrate to Azure Cosmos DB for MongoDB vCore](./migration-options.md)
+
+> [!div class="nextstepaction"]
+> [Migration options for Azure Cosmos DB for MongoDB vCore](migration-options.md)

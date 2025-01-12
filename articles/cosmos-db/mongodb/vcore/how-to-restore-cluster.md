@@ -70,4 +70,6 @@ In this guide, we covered the backup and restore features for Azure Cosmos DB fo
 
 ## Related content
 - [Review cross-region replication capabilities in Azure Cosmos DB for MongoDB vCore](./cross-region-replication.md)
-- [Migrate your data](./migration-options.md) to Azure Cosmos DB for MongoDB vCore
+
+> [!div class="nextstepaction"]
+> [Migration options for Azure Cosmos DB for MongoDB vCore](migration-options.md)

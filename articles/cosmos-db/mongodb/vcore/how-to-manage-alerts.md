@@ -100,4 +100,6 @@ With these alerts in place, you can proactively monitor and manage your Azure Co
 ## Related content
 - [Learn more about alerts in Azure](/azure/azure-monitor/alerts/alerts-overview)
 - [See details on metrics in Azure Cosmos DB for MongoDB vCore](./monitor-metrics.md)
-- [Migrate your data](./migration-options.md) to Azure Cosmos DB for MongoDB vCore
+
+> [!div class="nextstepaction"]
+> [Migration options for Azure Cosmos DB for MongoDB vCore](migration-options.md)
