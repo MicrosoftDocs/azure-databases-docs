@@ -33,7 +33,7 @@ In this quickstart, you deploy a basic Azure Cosmos DB for Table application usi
 
 - Azure Developer CLI
 - Docker Desktop
-- Rust 1+
+- Rust 1.80 or later
 
 If you don't have an Azure account, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
 
