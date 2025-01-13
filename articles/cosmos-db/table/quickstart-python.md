@@ -165,7 +165,9 @@ After you insert an entity, you can also run a query to get all entities that ma
 
 ```python
 category = "gear-surf-surfboards"
-filter = f"PartitionKey eq '{category}'"
+# Ensure the value is OData-compliant by escaping single quotes
+safe_category = category.replace("'", "''")
+filter = f"PartitionKey eq '{safe_category}'"
 entities = table.query_entities(query_filter=filter)
 ```
 
