@@ -85,7 +85,7 @@ In the event of Azure Database for PostgreSQL flexible server outage, you can se
 
 
 > [!IMPORTANT]
-> As the name implies, temporary tablespaces in PostgreSQL are used for temporary objects, as well as other internal database operations, such as sorting. Therefore we do not recommend creating user schema objects in temporary tablespace, as we dont guarantee durability of such objects after Server restarts, HA failovers, etc.
+> As the name implies, temporary tablespaces in PostgreSQL are used for temporary objects, as well as other internal database operations, such as sorting. Therefore we do not recommend creating user schema objects in temporary tablespace, as we don't guarantee durability of such objects after Server restarts, HA failovers, etc.
 
 
 ### Unplanned downtime: failure scenarios and service recovery
@@ -113,4 +113,4 @@ Below are some unplanned failure scenarios and the recovery process.
 ## Related content
 
 - [High availability in Azure Database for PostgreSQL - Flexible Server](/azure/reliability/reliability-postgresql-flexible-server).
-- [Point-in-time restore of an Azure Database for PostgreSQL - Flexible Server instance](how-to-restore-server-portal.md).
+- [Point-in-time restore of an Azure Database for PostgreSQL - Flexible Server instance](how-to-restore-server.md).
