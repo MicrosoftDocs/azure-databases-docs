@@ -342,7 +342,7 @@ Error: Unable to geo-restore server <server> as its geo-backups aren't available
 
 If the server whose backups you're trying to restore is configured with [Private access (VNET Integration)](concepts-networking-private.md) networking mode, you can only restore to another virtual network in the remote region. You can restore your server into an existing virtual network or you can create a new virtual network.  
 
-### [Portal](#tab/portal-restore-full-backup)
+### [Portal](#tab/portal-restore-geo-restore)
 
 Using the [Azure portal](https://portal.azure.com/):
 
@@ -421,7 +421,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="./media/how-to-restore-server/restore-point-deployment-completed.png" alt-text="Screenshot that shows the deployment successfully completed of your Azure Database for PostgreSQL Flexible server." lightbox="./media/how-to-restore-server/restore-point-deployment-completed.png":::
 
-### [CLI](#tab/cli-restore-full-backup)
+### [CLI](#tab/cli-restore-geo-restore)
 
 If your server was deployed with geo-redundant backup, you can initiate the restore of its backups to its paired region, with recovery point objective set to present time, via the [az postgres flexible-server geo-restore](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-geo-restore) command.
 
