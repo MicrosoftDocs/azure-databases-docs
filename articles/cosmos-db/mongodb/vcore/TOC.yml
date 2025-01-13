@@ -132,6 +132,8 @@
       items:
       - name: Monitor metrics
         href: monitor-metrics.md
+      - name: Create and manage alerts
+        href: how-to-manage-alerts.md
       - name: Monitor diagnostics logs
         href: how-to-monitor-diagnostics-logs.md
     - name: Security and data access
