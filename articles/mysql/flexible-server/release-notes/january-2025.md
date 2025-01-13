@@ -38,10 +38,10 @@ Note you must have the Azure CLI installed and updated to the latest version to 
 - Export backup destination folder name is changed from timestamp to backupName
 
 ## Known Issues Fix
-- Fix the issue that changing customer maintenance window failed in some scenarios
-- Fix the issue that when server is migrated from single server to flexible server and new partial table is created after the migration, the major version upgrade will fail.
-- Fix the issue that for MySQL parameter 'event_scheduler', it will be wrongly turn off during HA server failover
-- Fix the issue that major version upgrade would failed when audit log turns on ConnectionV2.
-- Fix the issue that major version upgrade has probability that rollback incompleted, causing MySQL keep crashing after rolling back to 5.7
-- Fix the issue that audit_log_exclude_users parameter unavailable with table_access event
+- Fixed the issue where changing the customer maintenance window failed in certain scenarios.
+- Fixed the issue where migrating a server from Single Server to Flexible Server and creating a new partial table after migration caused the major version upgrade to fail.
+- Fixed the issue where the MySQL parameter `event_scheduler` was incorrectly turned off during an HA server failover.
+- Fixed the issue where the major version upgrade failed when the audit log was enabled with ConnectionV2.
+- Fixed the issue where a major version upgrade could lead to incomplete rollbacks, causing MySQL to repeatedly crash after rolling back to version 5.7.
+- Fixed the issue where the `audit_log_exclude_users` parameter was unavailable with the `table_access` event.
 
