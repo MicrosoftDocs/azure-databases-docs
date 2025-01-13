@@ -94,7 +94,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 9. Once all the new server is configured to your needs, select **Review + create**.
 
-    :::image type="content" source="./media/how-to-restore-server/restore-point-review-and-create.png" alt-text="Screenshot showing the location of the Review + create button." lightbox="./media/how-to-restore-server/restore-point-review-and-create.png":::
+    :::image type="content" source="./media/how-to-restore-server/restore-point-review-create.png" alt-text="Screenshot showing the location of the Review + create button." lightbox="./media/how-to-restore-server/restore-point-review-create.png":::
 
 10. Review that all configurations for the new deployment are correctly set, and select **Create**.
 
@@ -143,7 +143,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 5. In **Custom restore point (UTC)**, select a date from the calendar control, and specify a time in the time text box.
 
-    :::image type="content" source="./media/how-to-restore-server/custom-restore-point-date-and-time.png" alt-text="Screenshot showing the date picker and time textbox, available to configure the custom restore point." lightbox="./media/how-to-restore-server/custom-restore-point-date-and-time.png":::
+    :::image type="content" source="./media/how-to-restore-server/custom-restore-point-date-time.png" alt-text="Screenshot showing the date picker and time textbox, available to configure the custom restore point." lightbox="./media/how-to-restore-server/custom-restore-point-date-time.png":::
 
 > [!NOTE]
 > Selectable dates in the calendar control are restricted to the ones covering the range from the day in which the oldest available backup was taken until now.
@@ -195,7 +195,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 10. Once all the new server is configured to your needs, select **Review + create**.
 
-    :::image type="content" source="./media/how-to-restore-server/restore-point-review-and-create.png" alt-text="Screenshot showing the location of the Review + create button." lightbox="./media/how-to-restore-server/restore-point-review-and-create.png":::
+    :::image type="content" source="./media/how-to-restore-server/restore-point-review-create.png" alt-text="Screenshot showing the location of the Review + create button." lightbox="./media/how-to-restore-server/restore-point-review-create.png":::
 
 11. Review that all configurations for the new deployment are correctly set, and select **Create**.
 
@@ -295,7 +295,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 10. Once all the new server is configured to your needs, select **Review + create**.
 
-    :::image type="content" source="./media/how-to-restore-server/restore-point-review-and-create.png" alt-text="Screenshot showing the location of the Review + create button." lightbox="./media/how-to-restore-server/restore-point-review-and-create.png":::
+    :::image type="content" source="./media/how-to-restore-server/restore-point-review-create.png" alt-text="Screenshot showing the location of the Review + create button." lightbox="./media/how-to-restore-server/restore-point-review-create.png":::
 
 11. Review that all configurations for the new deployment are correctly set, and select **Create**.
 
@@ -407,7 +407,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 9. Once all the new server is configured to your needs, select **Review + create**.
 
-    :::image type="content" source="./media/how-to-restore-server/restore-point-review-and-create.png" alt-text="Screenshot showing the location of the Review + create button." lightbox="./media/how-to-restore-server/restore-point-review-and-create.png":::
+    :::image type="content" source="./media/how-to-restore-server/restore-point-review-create.png" alt-text="Screenshot showing the location of the Review + create button." lightbox="./media/how-to-restore-server/restore-point-review-create.png":::
 
 10. Review that all configurations for the new deployment are correctly set, and select **Create**.
 
@@ -415,7 +415,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 11. A new deployment is launched to create your new Azure Database for PostgreSQL flexible server and restore the most recent data available on the source server at the time of restore:
 
-    :::image type="content" source="./media/how-to-restore-server/restore-point-deployment-in-progress.png" alt-text="Screenshot that shows the deployment in progress to create your new Azure Database for PostgreSQL Flexible server, on which the most recent data available on the source server is restored." lightbox="./media/how-to-restore-server/restore-point-deployment-in-progress.png":::
+    :::image type="content" source="./media/how-to-restore-server/restore-point-deployment-progress.png" alt-text="Screenshot that shows the deployment in progress to create your new Azure Database for PostgreSQL Flexible server, on which the most recent data available on the source server is restored." lightbox="./media/how-to-restore-server/restore-point-deployment-progress.png":::
 
 12. When the deployment completes, you can select **Go to resource**, to get you to the **Overview** page of your new Azure Database for PostgreSQL flexible server, and start using it:
 
