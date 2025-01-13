@@ -37,7 +37,7 @@ landingContent:
       - linkListType: video
         links:            
           - text: Introduction to Azure Data Migration Service
-            url: https://www.microsoft.com/videoplayer/embed/RE2IqVu
+            url: https://learn-video.azurefd.net/vod/player?id=58ca75ec-3688-4a84-bbf4-cf0265e9ab0d
           - text: Cloud Migration Strategies and Phases in Migration Journey
             url: https://learn-video.azurefd.net/vod/player?show=data-exposed&ep=migrating-to-sql-cloud-migration-strategies-and-phases-in-migration-journey-ep-1
           - text: Discover and Assess SQL Server Data Estate Migrating to Azure SQL
