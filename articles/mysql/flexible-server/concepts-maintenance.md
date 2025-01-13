@@ -28,6 +28,41 @@ In certain scenarios, such as the need to deploy urgent security fixes or update
 
 <a id="locating-maintenance-details"></a>
 
+### Virtual Canary Maintenance (Public Preview)
+Virtual Canary is an experimental maintenance program offering early access to updates, enabling customers to test workload compatibility with new Azure MySQL versions. Unlike routine maintenance, Virtual Canary does not follow the 30-day minimum gap or the 7-day notification period. This program helps customers proactively validate new features and contribute early feedback for product improvements. Burstable SKU servers, commonly used for non-production environments, are automatically enrolled in the Virtual Canary program.
+
+#### Managing Virtual Canary Enrollment  
+
+Azure Database for MySQL provides flexibility for customers to manage their participation in the Virtual Canary program. Virtual Canary allows early access to maintenance updates, enabling proactive compatibility testing and feedback on new features.  
+
+- Checking Virtual Canary Enrollment  
+
+To verify if your server is enrolled in the Virtual Canary program, use the following command:  
+
+```bash  
+az mysql flexible-server show --resource-group {resourcegroupname} --name {servername} --query "maintenancePolicy"
+```  
+
+If the result includes `"patchStrategy": "VirtualCanary"`, the server is enrolled in the Virtual Canary program.  
+
+- Enrolling in Virtual Canary  
+
+To enroll a server in the Virtual Canary program, run the following command:  
+
+```bash  
+az mysql flexible-server update --resource-group {resourcegroupname} --name {servername} --maintenance-policy-patch-strategy VirtualCanary
+```  
+
+- Exiting Virtual Canary  
+
+To exit the Virtual Canary program and revert to the standard maintenance policy, use this command:  
+
+```bash  
+az mysql flexible-server update --resource-group {resourcegroupname} --name {servername} --maintenance-policy-patch-strategy Regular
+```  
+
+This straightforward process allows customers to opt in or out of Virtual Canary as needed, ensuring alignment with their operational requirements.
+
 ### Locate Maintenance Details
 
 For specific details about what each maintenance update entails, please refer to our release notes. These notes provide comprehensive information about the updates applied during maintenance, allowing you to understand and prepare for any changes affecting your environment.

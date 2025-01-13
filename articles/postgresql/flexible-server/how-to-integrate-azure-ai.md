@@ -314,8 +314,6 @@ SELECT bill_id, one_sentence_summary FROM bill_summaries LIMIT 5;
 
 Congratulations, you just learned how to use the `azure_ai` extension to integrate large language models and generative AI capabilities into your database.
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 
 - [How to use PostgreSQL extensions in Azure Database for PostgreSQL - Flexible Server](/azure/postgresql/flexible-server/concepts-extensions).

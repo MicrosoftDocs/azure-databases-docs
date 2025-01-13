@@ -109,7 +109,7 @@ landingContent:
           - text: Manage high availability
             url: flexible-server/how-to-manage-high-availability-portal.md
           - text: Restore a server
-            url: flexible-server/how-to-restore-server-portal.md
+            url: flexible-server/how-to-restore-server.md
 
 # Card 5
   - title: Connect and query

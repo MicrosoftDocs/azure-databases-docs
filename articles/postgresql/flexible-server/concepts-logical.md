@@ -338,8 +338,6 @@ SELECT * FROM pg_replication_slots;
 > [!IMPORTANT]  
 > You must drop the logical replication slot in the primary server if the corresponding subscriber no longer exists. Otherwise, the WAL files accumulate in the primary, filling up the storage. Suppose the storage threshold exceeds a certain threshold, and the logical replication slot isn't in use (due to a nonavailable subscriber). In that case, the Azure Database for PostgreSQL flexible server instance automatically drops that unused logical replication slot. That action releases accumulated WAL files and avoids your server becoming unavailable due to storage getting filled situation.
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 
 - [Firewall rules in Azure Database for PostgreSQL - Flexible Server](concepts-firewall-rules.md).

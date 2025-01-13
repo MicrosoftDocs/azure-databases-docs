@@ -125,8 +125,6 @@ If your subscription is part of above offerings and you require access to any of
 
 Once you submit your request, it undergoes review. You then receive a response based on the information provided in the form.
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 
 - [Azure subscription and service limits, quotas, and constraints](/azure/azure-resource-manager/management/azure-subscription-service-limits).

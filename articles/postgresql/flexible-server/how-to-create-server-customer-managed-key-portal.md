@@ -52,8 +52,6 @@ Follow the steps below to update CMK on CMK enabled Azure Database for PostgreSQ
 
 4. Select different key by choosing subscription, Key Vault and key from dropdowns provided.
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 
 - [Manage an Azure Database for PostgreSQL - Flexible Server instance by using  Azure portal](how-to-manage-server-portal.md)

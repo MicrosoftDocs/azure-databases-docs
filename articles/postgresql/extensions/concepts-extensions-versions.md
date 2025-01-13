@@ -16,8 +16,6 @@ The following extensions are available for the Azure Database for the PostgreSQL
 
 [!INCLUDE [extensions-table](includes/extensions-table.md)]
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 
 - [How to use extensions](how-to-allow-extensions.md).

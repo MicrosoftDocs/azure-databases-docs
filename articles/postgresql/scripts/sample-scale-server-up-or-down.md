@@ -1,21 +1,21 @@
 ---
-title: Azure CLI script - Scale and monitor
+title: Azure CLI Script - Scale and Monitor
 description: Azure CLI Script Sample - Scale an Azure Database for PostgreSQL - Flexible Server instance to a different performance level after querying the metrics.
-ms.author: sunila
-author: sunilagarwal
+author: gkasar
+ms.author: gkasar
+ms.reviewer: maghan
+ms.date: 01/06/2025
 ms.service: azure-database-postgresql
+ms.topic: how-to
 ms.devlang: azurecli
-ms.custom: mvc, devx-track-azurecli
-ms.topic: sample
-ms.date: 01/26/2022 
 ---
 # Monitor and scale a single Azure Database for PostgreSQL - Flexible Server instance using Azure CLI
 
 [!INCLUDE [applies-to-postgresql-flexible-server](../includes/applies-to-postgresql-flexible-server.md)]
 
-This sample CLI script scales compute and storage for a single Azure Database for PostgreSQL flexible server instance after querying the metrics. Compute can scale up or down. Storage can only scale up. 
+This sample CLI script scales compute and storage for a single Azure Database for PostgreSQL flexible server instance after querying the metrics. Compute can scale up or down. Storage can only scale up.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Storage can only be scaled up, not down.
 
 [!INCLUDE [quickstarts-free-trial-note](~/reusable-content/ce-skilling/azure/includes/quickstarts-free-trial-note.md)]
@@ -43,15 +43,15 @@ az group delete --name $resourceGroup
 This script uses the commands outlined in the following table:
 
 | **Command** | **Notes** |
-|---|---|
+| --- | --- |
 | [az group create](/cli/azure/group) | Creates a resource group in which all resources are stored. |
 | [az postgres server create](/cli/azure/postgres/server#az-postgres-server-create) | Creates an Azure Database for PostgreSQL flexible server instance that hosts the databases. |
 | [az postgres server update](/cli/azure/postgres/server#az-postgres-server-update) | Updates properties of the Azure Database for PostgreSQL flexible server instance. |
 | [az monitor metrics list](/cli/azure/monitor/metrics) | Lists the metric value for the resources. |
 | [az group delete](/cli/azure/group) | Deletes a resource group including all nested resources. |
 
-## Next steps
+## Related content
 
-- Learn more about [Azure Database for PostgreSQL - Flexible Server compute and storage](../concepts-pricing-tiers.md)
-- Try additional scripts: [Azure CLI samples for Azure Database for PostgreSQL - Flexible Server](../sample-scripts-azure-cli.md)
-- Learn more about the [Azure CLI](/cli/azure)
+- [Azure Database for PostgreSQL - Flexible Server compute and storage](../concepts-pricing-tiers.md)
+- [Azure CLI samples for Azure Database for PostgreSQL - Flexible Server](../sample-scripts-azure-cli.md)
+- [Azure CLI](/cli/azure)

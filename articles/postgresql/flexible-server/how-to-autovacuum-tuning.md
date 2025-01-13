@@ -329,8 +329,6 @@ The recommendations are:
 
 - **Transaction Wrap around**: This scenario is one of the most serious issues a server can encounter. Once your server is in this state it might stop accepting any more transactions, causing the server to become read-only. Hence, a recommendation is triggered when we see the server crosses 1 billion transactions threshold.
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 
 - [Full vacuum using pg_repack in Azure Database for PostgreSQL - Flexible Server](how-to-perform-fullvacuum-pg-repack.md).

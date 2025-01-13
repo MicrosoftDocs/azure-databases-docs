@@ -75,8 +75,6 @@ This section explains how to use Virtual Endpoints in Azure Database for Postgre
 3. **Validation:**
     - Ensure that your application connects using the virtual endpoint and verify the database operations post-recovery.
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 
 - [Create virtual endpoints for read replicas with Terraform](how-to-read-replicas-virtual-endpoints-terraform.md)

@@ -111,7 +111,7 @@ Using the [Servers - Update](/rest/api/postgresql/flexibleserver/servers/update)
 
 ---
 
-2. [Restart the instance of Azure Database for PostgreSQL Flexible Server](how-to-restart-server-portal.md), after enabling a system assigned managed identity on it.
+2. [Restart the instance of Azure Database for PostgreSQL Flexible Server](how-to-restart-server.md), after enabling a system assigned managed identity on it.
 3. [Assign role-based access control (RBAC) permissions for access to blob data](/azure/storage/blobs/assign-azure-role-data-access), on the Azure Storage account, to the System Assigned Managed Identity of your instance of Azure Database for PostgreSQL Flexible Server.
 
 ### To use authorization with Shared Key
@@ -452,7 +452,7 @@ The URI for a container is similar to:
 
 ### azure_storage.blob_get
 
-Function that allows importing data. It downloads one or more files from a blob container in an Azure Storage account. Then it translates the contents into rows, which can be consumed and processed with SQL language constructs. This function adds support to filter and manipulate the data fetched from the blob container before importing it.
+Function that allows importing data. It downloads a file from a blob container in an Azure Storage account. Then it translates the contents into rows, which can be consumed and processed with SQL language constructs. This function adds support to filter and manipulate the data fetched from the blob container before importing it.
 
 > [!NOTE]  
 > Before trying to access the container for the referred storage account, this function checks if the names of the storage account and container passed as arguments are valid according to the naming validation rules imposed on Azure storage accounts. If either of them is invalid, an error is raised.
@@ -789,7 +789,11 @@ When executing any of the functions that interact with Azure Storage (`azure_sto
 
 ### ERROR: azure_storage: internal error while connecting
 
-When the System Assigned Managed Identity is not enabled in the instance of Flexible Server.
+When the instance of flexible server cannot reach the target storage account. That could happen in the following cases:
+- The storage account doesn't exist.
+- Networking configuration doesn't allow traffic originated from the instance of flexible server to reach the storage account. For example, when the instance of flexible server is deployed with public access networking, and the storage account is only accessible via private endpoints.
+
+When the System Assigned Managed Identity is not enabled in the instance of flexible server.
 
 ### ERROR: azure_storage: storage credentials invalid format
 
@@ -1157,8 +1161,6 @@ The following example shows the export of data from a table called `events`, to 
    TO 'https://<account_name>.blob.core.windows.net/<container_name>/events_exported.csv'
    WITH (FORMAT 'csv', header);
    ```
-
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
 
 ## Related content
 

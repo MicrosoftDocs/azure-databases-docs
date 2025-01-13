@@ -92,8 +92,6 @@ The detailed specifications of the available server types are as follows:
 
 [!INCLUDE [pricing](includes/compute-storage-pricing.md)]
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 
 - [Manage Azure Database for PostgreSQL - Flexible Server](how-to-manage-server-portal.md)

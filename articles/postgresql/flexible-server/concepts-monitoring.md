@@ -258,9 +258,7 @@ The Server Logs feature in Azure Database for PostgreSQL Flexible Server allows 
 
 ### Server logs retention
 
-Server logs have minimum retention 1 days and maximum retention is 7 days. If this limit is exceeded, the oldest logs are deleted to make room for new ones. For details on enabling and managing server logs, refer to the guide on setting up [server logs](how-to-server-logs-portal.md).
-
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
+Server logs have minimum retention 1 days and maximum retention is 7 days. If this limit is exceeded, the oldest logs are deleted to make room for new ones. For details on enabling and managing server logs, see [Configure capture of PostgreSQL server logs and major version upgrade logs](how-to-configure-server-logs.md).
 
 ## Related content
 
