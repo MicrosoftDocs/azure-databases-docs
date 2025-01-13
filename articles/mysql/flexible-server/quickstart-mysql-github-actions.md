@@ -29,8 +29,8 @@ You'll need:
     > [!IMPORTANT]  
     > This quickstart assumes that you have cloned a GitHub repository to your computer so that you can add the associated IP address to a firewall rule, if necessary.
 
-- An Azure Database for MySQL flexible server instance.
-  - [Quickstart: Create an Azure Database for MySQL flexible server instance in the Azure portal](../single-server/quickstart-create-mysql-server-database-using-azure-portal.md)
+- An Azure Database for MySQL Flexible Server instance.
+  - [Quickstart: Create an Azure Database for MySQL Flexible Server instance in the Azure portal](../single-server/quickstart-create-mysql-server-database-using-azure-portal.md)
 
 ## Workflow file overview
 
@@ -213,7 +213,7 @@ You'll use the connection string as a GitHub secret.
 
 ## Clean up resources
 
-When your Azure Database for MySQL flexible server database and repository are no longer needed, clean up the resources you deployed by deleting the resource group and your GitHub repository.
+When your Azure Database for MySQL Flexible Server database and repository are no longer needed, clean up the resources you deployed by deleting the resource group and your GitHub repository.
 
 ## Next step
 
