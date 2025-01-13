@@ -17,12 +17,12 @@ ms.custom:
 > [!NOTE]  
 > This article contains references to the term slave, a term that Microsoft no longer uses. When the term is removed from the software, we will remove it from this article.
 
-This article describes how you can upgrade your MySQL major version in-place in Azure Database for MySQL flexible server.
+This article describes how you can upgrade your MySQL major version in-place in Azure Database for MySQL Flexible Server.
 This feature enables customers to perform in-place upgrades of their MySQL 5.7 servers to MySQL 8.0 without any data movement or the need to make any application connection string changes.
 
 > [!IMPORTANT]  
 > - Duration of downtime varies based on the size of the database instance and the number of tables it contains.
-> - When initiating a major version upgrade for Azure Database for MySQL flexible server via Rest API or SDK, please avoid modifying other properties of the service in the same request. The simultaneous changes are not permitted and might lead to unintended results or request failure. Please conduct property modifications in separate operations post-upgrade completion.
+> - When initiating a major version upgrade for Azure Database for MySQL Flexible Server via Rest API or SDK, please avoid modifying other properties of the service in the same request. The simultaneous changes are not permitted and might lead to unintended results or request failure. Please conduct property modifications in separate operations post-upgrade completion.
 > - Some workloads might not exhibit enhanced performance after upgrading from 5.7 to 8.0. We suggest that you evaluate the performance of your workload by first creating a replica server (as a test server), then promoting it to a standalone server and then running the workload on the test server prior to implementing the upgrade in a production environment.
 > - Upgrading the major MySQL version is irreversible. Your deployment might fail if validation identifies that the server is configured with any features that are [removed](https://dev.mysql.com/doc/refman/8.0/en/mysql-nutshell.html#mysql-nutshell-removals) or [deprecated](https://dev.mysql.com/doc/refman/8.0/en/mysql-nutshell.html#mysql-nutshell-deprecations). You can make necessary configuration changes on the server and try the upgrade again.
 
@@ -44,7 +44,7 @@ Performing a major version upgrade for an Azure Database for MySQL Burstable SKU
 
 To perform a major version upgrade for an Azure Database for MySQL Burstable SKU compute tier using the Azure portal, follow these steps:
 
-1. In the [Azure portal](https://portal.azure.com/), select your existing Azure Database for MySQL flexible server 5.7 server.
+1. In the [Azure portal](https://portal.azure.com/), select your existing Azure Database for MySQL Flexible Server 5.7 server.
     > [!IMPORTANT]  
     > We recommend performing upgrade first on a restored copy of the server rather than upgrading production directly. See [how to perform point-in-time restore](how-to-restore-server-portal.md).
 
@@ -52,10 +52,10 @@ To perform a major version upgrade for an Azure Database for MySQL Burstable SKU
 
     > [!IMPORTANT]  
     > Before upgrading visit link for list of [features removed](https://dev.mysql.com/doc/refman/8.0/en/mysql-nutshell.html#mysql-nutshell-removals) in MySQL 8.0.
-    > Verify deprecated [sql_mode](https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_sql_mode) values and remove/deselect them from your current Azure Database for MySQL flexible server 5.7 server using the Server Parameters Blade on your Azure portal to avoid deployment failure.
+    > Verify deprecated [sql_mode](https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_sql_mode) values and remove/deselect them from your current Azure Database for MySQL Flexible Server 5.7 server using the Server Parameters Blade on your Azure portal to avoid deployment failure.
     > [sql_mode](https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_sql_mode) with values NO_AUTO_CREATE_USER, NO_FIELD_OPTIONS, NO_KEY_OPTIONS and NO_TABLE_OPTIONS are no longer supported in MySQL 8.0.
 
-    :::image type="content" source="media/how-to-upgrade/1-how-to-upgrade.png" alt-text="Screenshot showing Azure Database for MySQL flexible server Upgrade." lightbox="media/how-to-upgrade/1-how-to-upgrade.png":::
+    :::image type="content" source="media/how-to-upgrade/1-how-to-upgrade.png" alt-text="Screenshot showing Azure Database for MySQL Flexible Server Upgrade." lightbox="media/how-to-upgrade/1-how-to-upgrade.png":::
 
 1. Schema Compatibility Validation
 
@@ -90,9 +90,9 @@ To perform a major version upgrade for an Azure Database for MySQL Burstable SKU
 
 ## Perform a planned major version upgrade from MySQL 5.7 to MySQL 8.0 using the Azure portal for General Purpose and Business Critical SKU servers
 
-To perform a major version upgrade of an Azure Database for MySQL flexible server 5.7 server using the Azure portal, perform the following steps.
+To perform a major version upgrade of an Azure Database for MySQL Flexible Server 5.7 server using the Azure portal, perform the following steps.
 
-1. In the [Azure portal](https://portal.azure.com/), select your existing Azure Database for MySQL flexible server 5.7 server.
+1. In the [Azure portal](https://portal.azure.com/), select your existing Azure Database for MySQL Flexible Server 5.7 server.
     > [!IMPORTANT]  
     > We recommend performing upgrade first on a restored copy of the server rather than upgrading production directly. See [how to perform point-in-time restore](how-to-restore-server-portal.md).
 
@@ -100,10 +100,10 @@ To perform a major version upgrade of an Azure Database for MySQL flexible serve
 
     > [!IMPORTANT]  
     > Before upgrading visit link for list of [features removed](https://dev.mysql.com/doc/refman/8.0/en/mysql-nutshell.html#mysql-nutshell-removals) in MySQL 8.0.
-    > Verify deprecated [sql_mode](https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_sql_mode) values and remove/deselect them from your current Azure Database for MySQL flexible server 5.7 server using the Server Parameters Blade on your Azure portal to avoid deployment failure.
+    > Verify deprecated [sql_mode](https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_sql_mode) values and remove/deselect them from your current Azure Database for MySQL Flexible Server 5.7 server using the Server Parameters Blade on your Azure portal to avoid deployment failure.
     > [sql_mode](https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_sql_mode) with values NO_AUTO_CREATE_USER, NO_FIELD_OPTIONS, NO_KEY_OPTIONS and NO_TABLE_OPTIONS are no longer supported in MySQL 8.0.
 
-    :::image type="content" source="media/how-to-upgrade/1-how-to-upgrade.png" alt-text="Screenshot showing Azure Database for MySQL flexible server Upgrade." lightbox="media/how-to-upgrade/1-how-to-upgrade.png":::
+    :::image type="content" source="media/how-to-upgrade/1-how-to-upgrade.png" alt-text="Screenshot showing Azure Database for MySQL Flexible Server Upgrade." lightbox="media/how-to-upgrade/1-how-to-upgrade.png":::
 1. Perform Pre-Upgrade Validation
 
     Before proceeding with the upgrade, Select the **Validate** button to check the compatibility of your server with MySQL 8.0.
@@ -128,7 +128,7 @@ To perform a major version upgrade of an Azure Database for MySQL flexible serve
 
 ## Perform a planned major version upgrade from MySQL 5.7 to MySQL 8.0 using the Azure CLI
 
-To perform a major version upgrade of an Azure Database for MySQL flexible server 5.7 server using the Azure CLI, perform the following steps.
+To perform a major version upgrade of an Azure Database for MySQL Flexible Server 5.7 server using the Azure CLI, perform the following steps.
 
 1. Install the [Azure CLI](/cli/azure/install-azure-cli) for Windows or use the [Azure CLI](/azure/cloud-shell/overview) in Azure Cloud Shell to run the upgrade commands.
 
@@ -144,29 +144,29 @@ To perform a major version upgrade of an Azure Database for MySQL flexible serve
 
 ## Perform a major version upgrade from MySQL 5.7 to MySQL 8.0 on a read replica server using the Azure portal
 
-To perform a major version upgrade of an Azure Database for MySQL flexible server 5.7 server to MySQL 8.0 on a read replica using the Azure portal, perform the following steps.
+To perform a major version upgrade of an Azure Database for MySQL Flexible Server 5.7 server to MySQL 8.0 on a read replica using the Azure portal, perform the following steps.
 
-1. In the Azure portal, select your existing Azure Database for MySQL flexible server 5.7 read replica server.
+1. In the Azure portal, select your existing Azure Database for MySQL Flexible Server 5.7 read replica server.
 
 1. On the **Overview** page, in the toolbar, select **Upgrade**.
 
 > [!IMPORTANT]  
 > Before upgrading visit link for list of [features removed](https://dev.mysql.com/doc/refman/8.0/en/mysql-nutshell.html#mysql-nutshell-removals) in MySQL 8.0.
-> Verify deprecated [sql_mode](https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_sql_mode) values and remove/deselect them from your current Azure Database for MySQL flexible server 5.7 server using the Server Parameters Blade on your Azure Portal to avoid deployment failure.
+> Verify deprecated [sql_mode](https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_sql_mode) values and remove/deselect them from your current Azure Database for MySQL Flexible Server 5.7 server using the Server Parameters Blade on your Azure Portal to avoid deployment failure.
 
-1. In the **Upgrade** section, select **Upgrade** to upgrade an Azure Database for MySQL flexible server 5.7 read replica server to MySQL 8.0.
+1. In the **Upgrade** section, select **Upgrade** to upgrade an Azure Database for MySQL Flexible Server 5.7 read replica server to MySQL 8.0.
 
     A notification appears to confirm that upgrade is successful.
 
-1. On the **Overview** page, confirm that your Azure Database for MySQL flexible server read replica server is running version is 8.0.
+1. On the **Overview** page, confirm that your Azure Database for MySQL Flexible Server read replica server is running version is 8.0.
 
 1. Now, go to your primary server and perform major version upgrade on it.
 
 ## Perform minimal downtime major version upgrade from MySQL 5.7 to MySQL 8.0 using read replicas
 
-To perform a major version upgrade of an Azure Database for MySQL flexible server 5.7 server to MySQL 8.0 with minimal downtime using read replica servers, perform the following steps.
+To perform a major version upgrade of an Azure Database for MySQL Flexible Server 5.7 server to MySQL 8.0 with minimal downtime using read replica servers, perform the following steps.
 
-1. In the Azure portal, select your existing Azure Database for MySQL flexible server 5.7 server.
+1. In the Azure portal, select your existing Azure Database for MySQL Flexible Server 5.7 server.
 
 1. Create a [read replica](how-to-read-replicas-portal.md) from your primary server.
 
@@ -208,7 +208,7 @@ To perform a major version upgrade of an Azure Database for MySQL flexible serve
 
   Burstable SKU is not able to support major version upgrade due to the performance limitation of this SKU.
 
-  If you need to perform a major version upgrade on your Azure Database for MySQL flexible server instance and are currently using Burstable SKU, one temporary solution would be to upgrade to General Purpose or Business Critical SKU, perform the upgrade, and then switch back to Burstable SKU.
+  If you need to perform a major version upgrade on your Azure Database for MySQL Flexible Server instance and are currently using Burstable SKU, one temporary solution would be to upgrade to General Purpose or Business Critical SKU, perform the upgrade, and then switch back to Burstable SKU.
 
   Upgrading to a higher SKU might involve a change in pricing and might result in increased costs for your deployment. However, since the upgrade process is not expected to take a long time, the added costs shouldn't be significant.
 
