@@ -8,7 +8,7 @@ ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.devlang: rust
 ms.topic: quickstart-sdk
-ms.date: 12/18/2024
+ms.date: 01/13/2024
 ms.custom: devx-track-rust, devx-track-extended-azdevcli
 appliesto:
   - ✅ NoSQL
