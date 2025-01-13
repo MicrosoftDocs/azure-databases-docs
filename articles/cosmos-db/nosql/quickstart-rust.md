@@ -144,7 +144,7 @@ let client = match CosmosClient::new(&endpoint, credential, None) {
 Use `client.database` to retrieve the existing database named *`cosmicworks`*.
 
 ```rust
-let database = client.database("database");
+let database = client.database_client("database");
 ```
 
 ### Get a container
@@ -152,14 +152,17 @@ let database = client.database("database");
 Retrieve the existing *`products`* container using `database.container`.
 
 ```rust
-let container = database.container("products");
+let container = database.container_client("products");
 ```
 
 ### Create an item
 
-Build a new type with all of the members you want to serialize into JSON. In this example, the type has a unique identifier, and fields for category, name, quantity, price, and sale.
+Build a new type with all of the members you want to serialize into JSON. In this example, the type has a unique identifier, and fields for category, name, quantity, price, and sale. Derive the `serde::Serialize` trait on this type, so that it can be serialized to JSON.
 
 ```rust
+use serde::Serialize;
+
+#[derive(Serialize)
 struct Item {
     id: String,
     category: String,
@@ -170,7 +173,7 @@ struct Item {
 }
 ```
 
-Create an item in the container using `container.UpsertItem`. This method "upserts" the item effectively replacing the item if it already exists.
+Create an item in the container using `container.upsert_item`. This method "upserts" the item effectively replacing the item if it already exists.
 
 ```rust
 let item = Item {
@@ -195,23 +198,10 @@ Perform a point read operation by using both the unique identifier (`id`) and pa
 let item_id = "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb";
 let item_partition_key = "gear-surf-surfboards";
 
-match read_response {
-    Ok(r) => {
-        let deserialize_response = r.deserialize_body().await;
-        match deserialize_response {
-            Ok(i) => {
-                let read_item = i.unwrap();
-                // Do something
-            },
-            Err(e) => {
-                eprintln!("Error deserializing response: {}", e);
-            },
-        }
-    },
-    Err(e) => {
-        eprintln!("Error reading item: {}", e);
-    },
-}
+let item = container.read_item(item_partition_key, item_id, None)
+    .await?
+    .into_json_body()
+    .await?;
 ```
 
 ### Query items
@@ -227,7 +217,8 @@ let item_partition_key = "gear-surf-surfboards";
 
 let partition_key = PartitionKey::from(item_partition_key);
 
-let query = format!("SELECT * FROM c WHERE c.category = '{}'", item_partition_key);
+let query = Query::from("SELECT * FROM c WHERE c.category = @category")
+    .with_parameter("@category", item_partition_key)?;
 
 let pager = container.query_items::<Item>(query, partition_key, None)?;
 while let Some(page_response) = pager.next.await {
