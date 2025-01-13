@@ -40,3 +40,8 @@ Note you must have the Azure CLI installed and updated to the latest version to 
 ## Known Issues Fix
 - Fix the issue that changing customer maintenance window failed in some scenarios
 - Fix the issue that when server is migrated from single server to flexible server and new partial table is created after the migration, the major version upgrade will fail.
+- Fix the issue that for MySQL parameter 'event_scheduler', it will be wrongly turn off during HA server failover
+- Fix the issue that major version upgrade would failed when audit log turns on ConnectionV2.
+- Fix the issue that major version upgrade has probability that rollback incompleted, causing MySQL keep crashing after rolling back to 5.7
+- Fix the issue that audit_log_exclude_users parameter unavailable with table_access event
+
