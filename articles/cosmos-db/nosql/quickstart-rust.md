@@ -229,36 +229,13 @@ let partition_key = PartitionKey::from(item_partition_key);
 
 let query = format!("SELECT * FROM c WHERE c.category = '{}'", item_partition_key);
 
-let page_response = container.query_items::<Item>(&query, partition_key, None);
-
-match page_response {
-    Ok(mut page) => {
-        while let Some(item) = page.next().await {
-            match item {
-                Ok(i) => {
-                    let deserialize_response = i.deserialize_body().await;
-                    match deserialize_response {
-                        Ok(page) => {
-                            for item in page.items {
-                                // Do something
-                            }
-                        },
-                        Err(e) => {
-                            eprintln!("Error deserializing item: {}", e);
-                        },
-                    }
-                },
-                Err(e) => {
-                    eprintln!("Error querying item: {}", e);
-                },
-            }
-        }
-    },
-    Err(e) => {
-        eprintln!("Error querying items: {}", e);
-    },
+let pager = container.query_items::<Item>(query, partition_key, None)?;
+while let Some(page_response) = pager.next.await {
+    let page = page_response?.into_body().await?
+    for item in page.items {
+        // Do something
+    }
 }
-```
 
 ## Clean up resources
 
