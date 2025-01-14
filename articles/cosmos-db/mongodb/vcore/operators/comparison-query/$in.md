@@ -158,5 +158,5 @@ db.stores.find({ "promotionEvents.discounts.categoryName": { "$in": ["Smoked Sal
 
 ## Related content
 
-- [Migrate to vCore based Azure Cosmos DB for MongoDB](https://learn.microsoft.com/en-us/azure/cosmos-db/mongodb/vcore/migration-options)
+- [Migrate to vCore based Azure Cosmos DB for MongoDB](https://aka.ms/migrate-to-azure-cosmosdb-for-mongodb-vcore)
 - [$nin for not-in comparisons]($nin.md)
