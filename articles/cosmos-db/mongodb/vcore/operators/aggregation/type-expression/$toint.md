@@ -14,7 +14,7 @@ ms.date: 01/06/2025
 
 [!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 
-The toInt operator converts a specified value into an integer value.
+The `$toInt` operator converts a specified value into an integer value.
 
 ## Syntax
 
@@ -30,7 +30,7 @@ The syntax for the `$toInt` operator is:
 
 ## Examples
 
-Consider this sample document from the SampleCollection collection in the StoreData database.
+Consider this sample document from the stores collection in the StoreData database.
 
 ```json
 {
@@ -146,7 +146,7 @@ Consider this sample document from the SampleCollection collection in the StoreD
 A Double value is truncated and returned as an Integer value
 
 ```javascript
-db.SampleCollection.aggregate([
+db.stores.aggregate([
 {
     "$match": {
         "_id": "b0107631-9370-4acd-aafa-8ac3511e623d"
@@ -169,7 +169,7 @@ A String can be converted into an Integer value if it was already the string rep
 In this query, the string "72" can be converted to an integer value.
 
 ```javascript
-db.SampleCollection.aggregate([
+db.stores.aggregate([
 {
     "$match": {
         "_id": "b0107631-9370-4acd-aafa-8ac3511e623d"
@@ -190,7 +190,7 @@ db.SampleCollection.aggregate([
 However, this query returns an error since the string "72.0" isn't the string representation of an integer value.
 
 ```javascript
-db.SampleCollection.aggregate([
+db.stores.aggregate([
 {
     "$match": {
         "_id": "b0107631-9370-4acd-aafa-8ac3511e623d"
@@ -219,3 +219,10 @@ This table delineates the expected behavior of the $toInt operator based on the 
 | String representation of an integer value. For example, "72" | Output -> 72        |
 | String representation of a double value. For example, "72.0" | Output -> Error     |
 | Null value                                                   | Output -> null      |
+
+## Related content
+
+- [Migrate to vCore based Azure Cosmos DB for MongoDB](https://learn.microsoft.com/en-us/azure/cosmos-db/mongodb/vcore/migration-options)
+- [$type to determine the BSON type of a value]($type.md)
+- [$toInt to convert a value to a Double type]($todouble.md)
+- [$toLong to convert a value to a Long type]($tolong.md)
