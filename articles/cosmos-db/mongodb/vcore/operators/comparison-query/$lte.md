@@ -163,6 +163,6 @@ db.stores.find({ "promotionEvents.discounts": { "$elemMatch": { "categoryName": 
 
 ## Related content
 
-- [Migrate to vCore based Azure Cosmos DB for MongoDB](https://learn.microsoft.com/en-us/azure/cosmos-db/mongodb/vcore/migration-options)
+- [Migrate to vCore based Azure Cosmos DB for MongoDB](https://aka.ms/migrate-to-azure-cosmosdb-for-mongodb-vcore)
 - [$lt for less than comparisons]($lt.md)
 - [$gt for greater than comparisons]($gt.md)
