@@ -14,7 +14,7 @@ ms.date: 01/06/2025
 
 [!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 
-The `$gte` operator is used to filter documents where the value of a field is greater than or equal to a specified value. The $gte operation is used to retrieve documents that meet a minimum threshold for the value of a field or to find records within a range of values for the field.
+The `$gte` operator is used to filter documents where the value of a field is greater than or equal to a specified value. The `$gte` operator is used to retrieve documents that meet a minimum threshold for the value of a field or to find records within a range of values for the field.
 
 ## Syntax
 
@@ -30,7 +30,7 @@ The syntax for using the `$gte` operator is:
 - `value`: The value that the field should be greater than.
 
 ## Examples
-Consider this sample document from the SampleCollection collection in the StoreData database.
+Consider this sample document from the stores collection in the StoreData database.
 
 ```json
 {
@@ -145,17 +145,23 @@ Consider this sample document from the SampleCollection collection in the StoreD
 ### Example 1: Retrieve all stores where the total sales is greater than or equal to $35,000
 
 ```javascript
-db.SampleCollection.find({ "sales.totalSales": { "$gte": 35000 } })
+db.stores.find({ "sales.totalSales": { "$gte": 35000 } })
 ```
 
 ### Example 2: Find stores with 12 or more full-time staff
 
 ```javascript
-db.SampleCollection.find({ "staff.totalStaff.fullTime": { "$gte": 12 } })
+db.stores.find({ "staff.totalStaff.fullTime": { "$gte": 12 } })
 ```
 
 ### Example 3: Find promotion events with a discount percentage greater than or equal to 15% for Mirrors
 
 ```javascript
-db.SampleCollection.find({ "promotionEvents.discounts": { "$elemMatch": { "categoryName": "Laptops", "discountPercentage": { "$gte": 15 } } } })
+db.stores.find({ "promotionEvents.discounts": { "$elemMatch": { "categoryName": "Laptops", "discountPercentage": { "$gte": 15 } } } })
 ```
+
+## Related content
+
+- [Migrate to vCore based Azure Cosmos DB for MongoDB](https://aka.ms/migrate-to-azure-cosmosdb-for-mongodb-vcore)
+- [$gt for greater than comparisons]($gt.md)
+- [$lt for less than comparisons]($lt.md)
