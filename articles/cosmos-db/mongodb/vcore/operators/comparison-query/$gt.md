@@ -12,7 +12,7 @@ ms.date: 01/06/2025
 
 # $gt (Comparison Query)
 
-The `$gt` operator is used to select documents where the value of a field is greater than a specified value. This $gt operator queries numerical and date values to filter records that exceed a specified threshold.
+The `$gt` operator is used to select documents where the value of a field is greater than a specified value. The `$gt` operator queries numerical and date values to filter records that exceed a specified threshold.
 
 ## Syntax
 
@@ -26,7 +26,7 @@ The `$gt` operator is used to select documents where the value of a field is gre
 - `value`: The value that the field should be greater than.
 
 ## Examples
-Consider this sample document from the SampleCollection collection in the StoreData database.
+Consider this sample document from the stores collection in the StoreData database.
 
 ```json
 {
@@ -141,17 +141,23 @@ Consider this sample document from the SampleCollection collection in the StoreD
 ### Example 1: Retrieve all stores where the total sales exceed $35,000
 
 ```javascript
-db.SampleCollection.find({ "sales.totalSales": { "$gt": 35000 } })
+db.stores.find({ "sales.totalSales": { "$gt": 35000 } })
 ```
 
 ### Example 2: Find stores with more than 12 full-time staff
 
 ```javascript
-db.SampleCollection.find({ "staff.totalStaff.fullTime": { "$gt": 12 } })
+db.stores.find({ "staff.totalStaff.fullTime": { "$gt": 12 } })
 ```
 
 ### Example 3: Find promotion events with a discount percentage greater than 10% for Art & Craft Kits
 
 ```javascript
-db.SampleCollection.find({ "promotionEvents.discounts": { "$elemMatch": { "categoryName": "Art & Craft Kits", "discountPercentage": { "$gt": 10 } } } })  
+db.stores.find({ "promotionEvents.discounts": { "$elemMatch": { "categoryName": "Art & Craft Kits", "discountPercentage": { "$gt": 10 } } } })  
 ```
+
+## Related content
+
+- [Migrate to vCore based Azure Cosmos DB for MongoDB](https://aka.ms/migrate-to-azure-cosmosdb-for-mongodb-vcore)
+- [$gte for greater than or equal to comparisons]($gte.md)
+- [$lte for less than or equal to comparisons]($lte.md)
