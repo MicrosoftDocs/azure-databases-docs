@@ -14,7 +14,7 @@ ms.date: 01/06/2025
 
 [!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 
-The $in operator is used to match values of a field against an array of possible values. The $in operator filters documents where the value of a field equals any of the specified values.
+The `$in` operator is used to match values of a field against an array of possible values. The `$in` operator filters documents where the value of a field equals any of the specified values.
 
 ## Syntax
 
@@ -27,7 +27,7 @@ The $in operator is used to match values of a field against an array of possible
 - `[<value1>, <value2>, ... <valueN>]`: An array of values to match against the specified field.
 
 ## Examples
-Consider this sample document from the SampleCollection collection in the StoreData database.
+Consider this sample document from the stores collection in the StoreData database.
 
 ```json
 {
@@ -142,11 +142,16 @@ Consider this sample document from the SampleCollection collection in the StoreD
 ### Example 1 - Find documents with promotion events offering a discount percentage of either 10%, 15% or 20%
 
 ```javascript
-db.SampleCollection.find({ "promotionEvents.discounts.discountPercentage": { "$in": [10, 15, 20] }})
+db.stores.find({ "promotionEvents.discounts.discountPercentage": { "$in": [10, 15, 20] }})
 ```
+
+## Related content
+
+- [Migrate to vCore based Azure Cosmos DB for MongoDB](https://aka.ms/migrate-to-azure-cosmosdb-for-mongodb-vcore)
+- [$in for not-in comparisons]($nin.md)
 
 ### Example 2 - Find documents with discount offers on specific categories of promotions
 
 ```javascript
-db.SampleCollection.find({ "promotionEvents.discounts.categoryName": { "$in": ["Smoked Salmon", "Anklets"] }})
+db.stores.find({ "promotionEvents.discounts.categoryName": { "$in": ["Smoked Salmon", "Anklets"] }})
 ```
