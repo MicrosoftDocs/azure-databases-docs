@@ -147,11 +147,6 @@ Consider this sample document from the stores collection in the StoreData databa
 db.stores.find({ "name": {"$ne": "Delmer's Jewelry Gifts"}})
 ```
 
-## Related content
-
-- [Migrate to vCore based Azure Cosmos DB for MongoDB](https://aka.ms/migrate-to-azure-cosmosdb-for-mongodb-vcore)
-- [$eq for equality comparisons]($lt.md)
-
 ### Example 2 - Find stores with promotion events that aren't in 2024
 
 ```javascript
