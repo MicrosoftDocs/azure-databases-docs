@@ -27,7 +27,7 @@ The `$nin` operator is used to retrieve documents where the value of a specified
 - `[<value1>, <value2>, ... <valueN>]`: An array of values that shouldn't match the value of the field being compared.
 
 ## Examples
-Consider this sample document from the SampleCollection collection in the StoreData database.
+Consider this sample document from the stores collection in the StoreData database.
 
 ```json
 {
@@ -142,11 +142,16 @@ Consider this sample document from the SampleCollection collection in the StoreD
 ### Example 1 - Find documents with promotion events offering a discount percentage that isn't either of 10%, 15%, or 20%
 
 ```javascript
-db.SampleCollection.find({ "promotionEvents.discounts.discountPercentage": { "$nin": [10, 15, 20] }})
+db.stores.find({ "promotionEvents.discounts.discountPercentage": { "$nin": [10, 15, 20] }})
 ```
 
 ### Example 2 - Find documents with discount offers that aren't on specific categories of promotions
 
 ```javascript
-db.SampleCollection.find({ "promotionEvents.discounts.categoryName": { "$nin": ["Smoked Salmon", "Anklets"] }})
+db.stores.find({ "promotionEvents.discounts.categoryName": { "$nin": ["Smoked Salmon", "Anklets"] }})
 ```
+
+## Related content
+
+- [Migrate to vCore based Azure Cosmos DB for MongoDB](https://learn.microsoft.com/en-us/azure/cosmos-db/mongodb/vcore/migration-options)
+- [$in for in comparisons]($in.md)
