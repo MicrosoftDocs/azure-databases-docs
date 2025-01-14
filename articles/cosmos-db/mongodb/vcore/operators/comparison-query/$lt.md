@@ -14,7 +14,7 @@ ms.date: 08/31/2024
 
 [!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 
-The `$lt` operator is used to match documents where the value of a field is strictly less than a specified value. The $lt operators filters documents based on numeric, date, or string values.
+The `$lt` operator is used to match documents where the value of a field is strictly less than a specified value. The `$lt` operator filters documents based on numeric, date, or string values.
 
 ## Syntax
 
@@ -30,7 +30,7 @@ The syntax for using the `$lt` operator in a MongoDB query is:
 
 ## Examples
 
-Consider this sample document from the SampleCollection collection in the StoreData database.
+Consider this sample document from the stores collection in the StoreData database.
 
 ```json
 {
@@ -145,17 +145,23 @@ Consider this sample document from the SampleCollection collection in the StoreD
 ### Example 1: Find stores with total sales less than $36000
 
 ```javascript
-db.SampleCollection.find({"sales.totalSales": { "$lt": 36000 }})
+db.stores.find({"sales.totalSales": { "$lt": 36000 }})
 ```
 
 ### Example 2: Find promotion events with discounts less than 20%
 
 ```javascript
-db.SampleCollection.find({"promotionEvents.discounts.discountPercentage": { "$lt": 20 }})
+db.stores.find({"promotionEvents.discounts.discountPercentage": { "$lt": 20 }})
 ```
 
 ### Example 3: Find stores with fewer than 20 full-time staff
 
 ```javascript
-db.SampleCollection.find({"staff.totalStaff.fullTime": { "$lt": 20 }})
+db.stores.find({"staff.totalStaff.fullTime": { "$lt": 20 }})
 ```
+
+## Related content
+
+- [Migrate to vCore based Azure Cosmos DB for MongoDB](https://aka.ms/migrate-to-azure-cosmosdb-for-mongodb-vcore)
+- [$gt for greater than comparisons]($gt.md)
+- [$lte for less than or equal to comparisons]($lte.md)
