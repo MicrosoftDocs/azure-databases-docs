@@ -33,7 +33,7 @@ The syntax for the `$convert` operator is:
 
 ## Examples
 
-Consider this sample document from the SampleCollection collection in the StoreData database.
+Consider this sample document from the stores collection in the StoreData database.
 
 ```json
 {
@@ -148,7 +148,7 @@ Consider this sample document from the SampleCollection collection in the StoreD
 ### Example 1: Convert an Int value into a String
 
 ```javascript
-db.SampleCollection.aggregate([
+db.stores.aggregate([
 {
     "$match": {
         "_id": "b0107631-9370-4acd-aafa-8ac3511e623d"
@@ -180,7 +180,7 @@ This query returns the following result:
 ### Example 2: Convert an Int value into a Boolean value
 
 ```javascript
-db.SampleCollection.aggregate([
+db.stores.aggregate([
 {
     "$match": {
         "_id": "b0107631-9370-4acd-aafa-8ac3511e623d"
@@ -212,7 +212,7 @@ This query returns the following result:
 ### Example 3: Convert an Int value into a Decimal value
 
 ```javascript
-db.SampleCollection.aggregate([
+db.stores.aggregate([
 {
     "$match": {
         "_id": "b0107631-9370-4acd-aafa-8ac3511e623d"
@@ -244,7 +244,7 @@ This query returns the following result:
 ### Example 4: Convert an Int value into a Long value
 
 ```javascript
-db.SampleCollection.aggregate([
+db.stores.aggregate([
 {
     "$match": {
         "_id": "b0107631-9370-4acd-aafa-8ac3511e623d"
@@ -272,3 +272,9 @@ This query returns the following result:
     "fulltimeStaffAsLong": "Long('3')"
 }
 ```
+
+## Related content
+
+- [Migrate to vCore based Azure Cosmos DB for MongoDB](https://learn.microsoft.com/en-us/azure/cosmos-db/mongodb/vcore/migration-options)
+- [$type to determine the BSON type of a value]($type.md)
+- [$toInt to convert a value to an Integer type]($toint.md)
