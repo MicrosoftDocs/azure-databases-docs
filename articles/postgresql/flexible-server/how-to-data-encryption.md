@@ -129,4 +129,4 @@ Follow the steps below to update CMK on CMK enabled Azure Database for PostgreSQ
 
 ## Related content
 
-- [Manage an Azure Database for PostgreSQL - Flexible Server instance by using  Azure portal](how-to-manage-server-portal.md)
+- [Data encryption](concepts-data-encryption.md).
