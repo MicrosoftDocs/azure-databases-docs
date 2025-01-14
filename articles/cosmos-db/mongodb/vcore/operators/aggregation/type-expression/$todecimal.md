@@ -200,7 +200,7 @@ This query returns the following result:
 
 ## Related content
 
-- [Migrate to vCore based Azure Cosmos DB for MongoDB](https://learn.microsoft.com/en-us/azure/cosmos-db/mongodb/vcore/migration-options)
+- [Migrate to vCore based Azure Cosmos DB for MongoDB](https://aka.ms/migrate-to-azure-cosmosdb-for-mongodb-vcore)
 - [$type to determine the BSON type of a value]($type.md)
 - [$toInt to convert a value to an Integer type]($toint.md)
 - [$toLong to convert a value to a Long type]($tolong.md)
