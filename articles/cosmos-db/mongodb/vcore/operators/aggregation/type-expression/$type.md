@@ -230,6 +230,6 @@ This query returns the following result:
 
 ## Related content
 
-- [Migrate to vCore based Azure Cosmos DB for MongoDB](https://learn.microsoft.com/en-us/azure/cosmos-db/mongodb/vcore/migration-options)
+- [Migrate to vCore based Azure Cosmos DB for MongoDB](https://aka.ms/migrate-to-azure-cosmosdb-for-mongodb-vcore)
 - [$convert to convert a value from one type to another]($convert.md)
 
