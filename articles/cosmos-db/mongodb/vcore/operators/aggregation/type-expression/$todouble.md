@@ -14,7 +14,7 @@ ms.date: 01/06/2025
 
 [!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 
-The toDouble operator converts a specified value into a Double value.
+The `$toDouble` operator converts a specified value into a Double value.
 
 ## Syntax
 
@@ -30,7 +30,7 @@ The syntax for the `$toDouble` operator is:
 
 ## Examples
 
-Consider this sample document from the SampleCollection collection in the StoreData database.
+Consider this sample document from the stores collection in the StoreData database.
 
 ```json
 {
@@ -149,7 +149,7 @@ A String can be converted into a Double value if it was already the string repre
 In this query, the string "72" can be converted to a Double value.
 
 ```javascript
-db.SampleCollection.aggregate([
+db.stores.aggregate([
 {
     "$match": {
         "_id": "b0107631-9370-4acd-aafa-8ac3511e623d"
@@ -176,3 +176,10 @@ This table delineates the expected behavior of the $toDouble operator based on t
 | Double value. E.g., 72.0                                     | Output -> 72        |
 | String representation of a numberi value. For example, "72"  | Output -> 72        |
 | Null value                                                   | Output -> null      |
+
+## Related content
+
+- [Migrate to vCore based Azure Cosmos DB for MongoDB](https://learn.microsoft.com/en-us/azure/cosmos-db/mongodb/vcore/migration-options)
+- [$type to determine the BSON type of a value]($type.md)
+- [$toInt to convert a value to an Integer type]($toint.md)
+- [$toDecimal to convert a value to a Decimal type]($todecimal.md)
