@@ -145,11 +145,6 @@ Consider this sample document from the stores collection in the StoreData databa
 db.stores.find({ "promotionEvents.discounts.discountPercentage": { "$in": [10, 15, 20] }})
 ```
 
-## Related content
-
-- [Migrate to vCore based Azure Cosmos DB for MongoDB](https://aka.ms/migrate-to-azure-cosmosdb-for-mongodb-vcore)
-- [$in for not-in comparisons]($nin.md)
-
 ### Example 2 - Find documents with discount offers on specific categories of promotions
 
 ```javascript
