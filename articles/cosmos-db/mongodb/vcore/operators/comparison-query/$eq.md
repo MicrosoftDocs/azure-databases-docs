@@ -31,7 +31,7 @@ The syntax for the `$eq` operator is:
 
 ## Examples
 
-Consider this sample document from the SampleCollection collection in the StoreData database.
+Consider this sample document from the stores collection in the StoreData database.
 
 ```json
 {
@@ -148,7 +148,7 @@ Consider this sample document from the SampleCollection collection in the StoreD
 To find a store with the name "Boulder Innovations | Home Security Place - Ankundingburgh":
 
 ```javascript
-db.SampleCollection.find({ "name": { "$eq": "Boulder Innovations | Home Security Place - Ankundingburgh" } })
+db.stores.find({ "name": { "$eq": "Boulder Innovations | Home Security Place - Ankundingburgh" } })
 ```
 
 ### Example 2: Find documents based on an equality match on the value of a nested field
@@ -156,7 +156,7 @@ db.SampleCollection.find({ "name": { "$eq": "Boulder Innovations | Home Security
 To find stores where the total sales amount is exactly $37,015:
 
 ```javascript
-db.SampleCollection.find({ "sales.totalSales": { "$eq": 37015 } })
+db.stores.find({ "sales.totalSales": { "$eq": 37015 } })
 ```
 
 ### Example 3: Find documents based on an equality match on any individual item within an array
@@ -164,7 +164,7 @@ db.SampleCollection.find({ "sales.totalSales": { "$eq": 37015 } })
 This query searches for an equality match on any one of the objects within the nested discounts array
 
 ```javascript
-db.SampleCollection.find({"promotionEvents.discounts": { "$eq": {"categoryName": "Alarm Systems", "discountPercentage": 5}}})
+db.stores.find({"promotionEvents.discounts": { "$eq": {"categoryName": "Alarm Systems", "discountPercentage": 5}}})
 ```
 
 ### Example 4: Find documents based on an equality on the entire array
@@ -172,7 +172,7 @@ db.SampleCollection.find({"promotionEvents.discounts": { "$eq": {"categoryName":
 This query searches for documents based on exact match on ALL the values within an array.
 
 ```javascript
-db.SampleCollection.find({"promotionEvents.discounts": { "$eq": [{"categoryName": "Alarm Systems", "discountPercentage": 5}, {"categoryName": "Door Locks", "discountPercentage": 12}]}})
+db.stores.find({"promotionEvents.discounts": { "$eq": [{"categoryName": "Alarm Systems", "discountPercentage": 5}, {"categoryName": "Door Locks", "discountPercentage": 12}]}})
 ```
 
 > [!NOTE]
@@ -180,4 +180,6 @@ db.SampleCollection.find({"promotionEvents.discounts": { "$eq": [{"categoryName"
 
 ## Related content
 
-[!INCLUDE[Related content](../includes/related-content.md)]
+- [Migrate to vCore based Azure Cosmos DB for MongoDB](https://aka.ms/migrate-to-azure-cosmosdb-for-mongodb-vcore)
+- [$gte for greater than or equal to comparisons]($gte.md)
+- [$lte for less than or equal to comparisons]($lte.md)
