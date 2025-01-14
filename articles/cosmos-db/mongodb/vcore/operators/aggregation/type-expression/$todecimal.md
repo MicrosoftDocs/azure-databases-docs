@@ -14,7 +14,7 @@ ms.date: 01/06/2025
 
 [!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 
-The toDecimal operator converts an expression into a Decimal value. Long, Double or Int values are simply converted to a Decimal data type, while Decimal values are returned as is. A boolean value of true is returned as 1, while false is returned as 0. Lastly, ISODates are returned as a Decimal value corresponding to the number of milliseconds since January 1st, 1970 represented by the ISODate value.
+The `$toDecimal` operator converts an expression into a Decimal value. Long, Double or Int values are simply converted to a Decimal data type, while Decimal values are returned as is. A boolean value of true is returned as 1, while false is returned as 0. Lastly, ISODates are returned as a Decimal value corresponding to the number of milliseconds since January 1st, 1970 represented by the ISODate value.
 
 ## Syntax
 
@@ -30,7 +30,7 @@ The syntax for the `$toDecimal` operator is:
 
 ## Examples
 
-Consider this sample document from the SampleCollection collection in the StoreData database.
+Consider this sample document from the stores collection in the StoreData database.
 
 ```json
 {
@@ -145,7 +145,7 @@ Consider this sample document from the SampleCollection collection in the StoreD
 ### Example 1: Convert a Double value into a Decimal value
 
 ```javascript
-db.SampleCollection.aggregate([
+db.stores.aggregate([
 {
     "$match": {
         "_id": "b0107631-9370-4acd-aafa-8ac3511e623d"
@@ -174,7 +174,7 @@ This query returns the following result:
 ### Example 2: Convert an ISODate value into a Decimal value
 
 ```javascript
-db.SampleCollection.aggregate([
+db.stores.aggregate([
 {
     "$match": {
         "_id": "b0107631-9370-4acd-aafa-8ac3511e623d"
@@ -197,3 +197,11 @@ This query returns the following result:
     "dateAsDecimal": "Decimal128('1736121600000')"
 }
 ```
+
+## Related content
+
+- [Migrate to vCore based Azure Cosmos DB for MongoDB](https://learn.microsoft.com/en-us/azure/cosmos-db/mongodb/vcore/migration-options)
+- [$type to determine the BSON type of a value]($type.md)
+- [$toInt to convert a value to an Integer type]($toint.md)
+- [$toLong to convert a value to a Long type]($tolong.md)
+- [$toDouble to convert a value to a Double type]($todouble.md)
