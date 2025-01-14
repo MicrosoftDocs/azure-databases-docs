@@ -155,3 +155,8 @@ db.stores.find({ "promotionEvents.discounts.discountPercentage": { "$in": [10, 1
 ```javascript
 db.stores.find({ "promotionEvents.discounts.categoryName": { "$in": ["Smoked Salmon", "Anklets"] }})
 ```
+
+## Related content
+
+- [Migrate to vCore based Azure Cosmos DB for MongoDB](https://learn.microsoft.com/en-us/azure/cosmos-db/mongodb/vcore/migration-options)
+- [$nin for not-in comparisons]($nin.md)
