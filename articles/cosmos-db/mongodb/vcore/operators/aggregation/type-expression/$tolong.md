@@ -14,7 +14,7 @@ ms.date: 01/06/2025
 
 [!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 
-The toLong operator converts a specified value into a Long value.
+The `$toLong` operator converts a specified value into a Long value.
 
 ## Syntax
 
@@ -30,7 +30,7 @@ The syntax for the `$toLong` operator is:
 
 ## Examples
 
-Consider this sample document from the SampleCollection collection in the StoreData database.
+Consider this sample document from the stores collection in the StoreData database.
 
 ```json
 {
@@ -146,7 +146,7 @@ Consider this sample document from the SampleCollection collection in the StoreD
 A Double value is truncated and returned as a Long value
 
 ```javascript
-db.SampleCollection.aggregate([
+db.stores.aggregate([
 {
     "$match": {
         "_id": "b0107631-9370-4acd-aafa-8ac3511e623d"
@@ -169,7 +169,7 @@ A String can be converted into a Long value if it was already the string represe
 In this query, the string "72" can be converted to a long value.
 
 ```javascript
-db.SampleCollection.aggregate([
+db.stores.aggregate([
 {
     "$match": {
         "_id": "b0107631-9370-4acd-aafa-8ac3511e623d"
@@ -208,3 +208,11 @@ This table delineates the expected behavior of the $toLong operator based on the
 | String representation of a long value. For example, "72"     | Output -> Long("72")|
 | String representation of a double value. For example, "72.0" | Output -> Error     |
 | Null value                                                   | Output -> null      |
+
+
+## Related content
+
+- [Migrate to vCore based Azure Cosmos DB for MongoDB](https://learn.microsoft.com/en-us/azure/cosmos-db/mongodb/vcore/migration-options)
+- [$type to determine the BSON type of a value]($type.md)
+- [$toInt to convert a value to an Integer type]($toint.md)
+- [$toInt to convert a value to an Double type]($todouble.md)
