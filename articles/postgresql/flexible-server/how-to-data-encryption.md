@@ -62,39 +62,71 @@ az postgres flexible-server create --resource-group <resource_group> --name <ser
 
 Using the [Azure portal](https://portal.azure.com/):
 
-1. During provisioning of a new instance of Azure Database for PostgreSQL Flexible Server, in the **Security** tab.
+
+1. [Create one user assigned managed identity](/entra/identity/managed-identities-azure-resources/how-manage-user-assigned-managed-identities), if you don't have one created yet.
+
+2. [Create one Azure Key Vault](/azure/key-vault/general/quick-create-portal) or [create one Managed HSM](/azure/key-vault/managed-hsm/quick-create-cli), if you don't have one key store created yet. Make sure that you meet the [requirements](concepts-data-encryption.md#requirements), and follow the [recommendations](concepts-data-encryption.md#recommendations) before you configure the key store, create the key and assign the required permissions to the user assigned managed identity.
+
+3. [Create one key in your key store](/azure/key-vault/keys/quick-create-portal).
+
+4. During provisioning of a new instance of Azure Database for PostgreSQL Flexible Server, in the **Security** tab.
 
     :::image type="content" source="./media/how-to-data-encryption/create-server-security-tab.png" alt-text="Screenshot showing how to get to the Security tab, from where you can configure data encryption settings." lightbox="./media/how-to-data-encryption/create-server-security-tab.png":::
 
-2. In the **Data encryption key**, select the **Service-managed key** radio button.
+5. In the **Data encryption key**, select the **Service-managed key** radio button.
 
     :::image type="content" source="./media/how-to-data-encryption/create-server-customer-assigned.png" alt-text="Screenshot showing how to select the customer managed encryption key during server provisioning." lightbox="./media/how-to-data-encryption/create-server-customer-assigned.png":::
 
-3. If you enable geo-redundant backup storage to be provisioned together with the server, the aspect of the **Security** tab changes slightly because the server uses two separate encryption keys. One for the primary region in which you're deploying your server, and one for the paired region to which the server backups are asynchronously replicated.
+6. If you enable geo-redundant backup storage to be provisioned together with the server, the aspect of the **Security** tab changes slightly because the server uses two separate encryption keys. One for the primary region in which you're deploying your server, and one for the paired region to which the server backups are asynchronously replicated.
 
     :::image type="content" source="./media/how-to-data-encryption/create-server-customer-assigned-geo-redundant.png" alt-text="Screenshot showing how to select the customer managed encryption key during server provisioning, when the server is enabled for geo-redundant backup storage." lightbox="./media/how-to-data-encryption/create-server-customer-assigned-geo-redundant.png":::
 
-4. In **User assigned managed identity**, select **Change identity**.
+7. In **User assigned managed identity**, select **Change identity**.
 
     :::image type="content" source="./media/how-to-data-encryption/create-server-customer-assigned-change-identity.png" alt-text="Screenshot showing how to select the user assigned managed identity to access the data encryption key for the data of the server location." lightbox="./media/how-to-data-encryption/create-server-customer-assigned-change-identity.png":::
 
-5. If you don't have one created yet, [create one user assigned managed identity](/entra/identity/managed-identities-azure-resources/how-manage-user-assigned-managed-identities).
-
-6. Among the list of user assigned managed identities, select the one you want your server to use to access the data encryption key stored in an Azure Key Vault.
+8. Among the list of user assigned managed identities, select the one you want your server to use to access the data encryption key stored in an Azure Key Vault.
 
     :::image type="content" source="./media/how-to-data-encryption/create-server-customer-assigned-select-identity.png" alt-text="Screenshot showing how to select the user assigned managed identity to access the data encryption key for the data of the server location and copy of the backup kept in server's region." lightbox="./media/how-to-data-encryption/create-server-customer-assigned-select-identity.png":::
 
-7. Select **Add**.
+9. Select **Add**.
 
     :::image type="content" source="./media/how-to-data-encryption/create-server-customer-assigned-add-identity.png" alt-text="Screenshot showing the location of the Add button to assign the identity with which the server accesses the data encryption key." lightbox="./media/how-to-data-encryption/create-server-customer-assigned-add-identity.png":::
 
-8. Select **Select a key**.
+10. Select **Select a key**.
 
     :::image type="content" source="./media/how-to-data-encryption/create-server-customer-assigned-select-key.png" alt-text="Screenshot showing how to select a data encryption key." lightbox="./media/how-to-data-encryption/create-server-customer-assigned-select-key.png":::
 
-9. **Subscription** is automatically populated with the name of the subscription on which your server is about to be created. The key store that keeps the data encryption key must exist in the same subscription as the server.
+11. **Subscription** is automatically populated with the name of the subscription on which your server is about to be created. The key store that keeps the data encryption key must exist in the same subscription as the server.
 
     :::image type="content" source="./media/how-to-data-encryption/create-server-customer-assigned-key-subscription.png" alt-text="Screenshot showing how to select the subscription in which the key store should exist." lightbox="./media/how-to-data-encryption/create-server-customer-assigned-key-subscription.png":::
+
+12. In **Key store type**, select the radio button corresponding to the type of key store in which you plan to store the data encryption key. In this example, we choose **Key vault**, but the experience is very similar if you choose **Managed HSM**.
+
+    :::image type="content" source="./media/how-to-data-encryption/create-server-customer-assigned-key-store-type.png" alt-text="Screenshot showing how to select the type of store that keeps the data encryption key." lightbox="./media/how-to-data-encryption/create-server-customer-assigned-key-store-type.png":::
+
+13. Expand **Key vault** (or **Managed HSM**, if you selected that storage type), and select the instance where the data encryption key exists.
+
+> [!NOTE]
+> When you expand the drop down box, it shows **No available items**. It takes a few seconds until it lists all the instances of key vault which are deployed in the same region as the server.
+
+    :::image type="content" source="./media/how-to-data-encryption/create-server-customer-assigned-key-vault.png" alt-text="Screenshot showing how to select the key store that keeps the data encryption key." lightbox="./media/how-to-data-encryption/create-server-customer-assigned-key-vault.png":::
+
+14. Expand **Key**, and select the name of the key that you want to use for data encryption.
+
+    :::image type="content" source="./media/how-to-data-encryption/create-server-customer-assigned-key-key.png" alt-text="Screenshot showing how to select the data encryption key." lightbox="./media/how-to-data-encryption/create-server-customer-assigned-key-key.png":::
+
+15. Expand **Version**, and select the identifier of the version of the key that you want to use for data encryption.
+
+    :::image type="content" source="./media/how-to-data-encryption/create-server-customer-assigned-key-version.png" alt-text="Screenshot showing how to select the version to use of the data encryption key." lightbox="./media/how-to-data-encryption/create-server-customer-assigned-key-version.png":::
+
+16. Select **Select**.
+
+    :::image type="content" source="./media/how-to-data-encryption/create-server-customer-assigned-key-select.png" alt-text="Screenshot showing how to select the chose key." lightbox="./media/how-to-data-encryption/create-server-customer-assigned-key-select.png":::
+
+17. Configure all other settings of the new server and select **Review + create**.
+
+    :::image type="content" source="./media/how-to-data-encryption/create-server-customer-assigned-key-review-create.png" alt-text="Screenshot showing how to complete creation of server." lightbox="./media/how-to-data-encryption/create-server-customer-assigned-key-review-create.png":::
 
 ### [CLI](#tab/cli-customer-managed-server-provisioning)
 
