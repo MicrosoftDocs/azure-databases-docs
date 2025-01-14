@@ -74,6 +74,28 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="./media/how-to-data-encryption/create-server-customer-assigned-geo-redundant.png" alt-text="Screenshot showing how to select the customer managed encryption key during server provisioning, when the server is enabled for geo-redundant backup storage." lightbox="./media/how-to-data-encryption/create-server-customer-assigned-geo-redundant.png":::
 
+4. In **User assigned managed identity**, select **Change identity**.
+
+    :::image type="content" source="./media/how-to-data-encryption/create-server-customer-assigned-change-identity.png" alt-text="Screenshot showing how to select the user assigned managed identity to access the data encryption key for the data of the server location." lightbox="./media/how-to-data-encryption/create-server-customer-assigned-change-identity.png":::
+
+5. If you don't have one created yet, [create one user assigned managed identity](/entra/identity/managed-identities-azure-resources/how-manage-user-assigned-managed-identities).
+
+6. Among the list of user assigned managed identities, select the one you want your server to use to access the data encryption key stored in an Azure Key Vault.
+
+    :::image type="content" source="./media/how-to-data-encryption/create-server-customer-assigned-select-identity.png" alt-text="Screenshot showing how to select the user assigned managed identity to access the data encryption key for the data of the server location and copy of the backup kept in server's region." lightbox="./media/how-to-data-encryption/create-server-customer-assigned-select-identity.png":::
+
+7. Select **Add**.
+
+    :::image type="content" source="./media/how-to-data-encryption/create-server-customer-assigned-add-identity.png" alt-text="Screenshot showing the location of the Add button to assign the identity with which the server accesses the data encryption key." lightbox="./media/how-to-data-encryption/create-server-customer-assigned-add-identity.png":::
+
+8. Select **Select a key**.
+
+    :::image type="content" source="./media/how-to-data-encryption/create-server-customer-assigned-select-key.png" alt-text="Screenshot showing how to select a data encryption key." lightbox="./media/how-to-data-encryption/create-server-customer-assigned-select-key.png":::
+
+9. **Subscription** is automatically populated with the name of the subscription on which your server is about to be created. The key store that keeps the data encryption key must exist in the same subscription as the server.
+
+    :::image type="content" source="./media/how-to-data-encryption/create-server-customer-assigned-key-subscription.png" alt-text="Screenshot showing how to select the subscription in which the key store should exist." lightbox="./media/how-to-data-encryption/create-server-customer-assigned-key-subscription.png":::
+
 ### [CLI](#tab/cli-customer-managed-server-provisioning)
 
 You can enable data encryption with system assigned encryption key, while provisioning a new server, via the [az postgres flexible-server create](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-create) command.
