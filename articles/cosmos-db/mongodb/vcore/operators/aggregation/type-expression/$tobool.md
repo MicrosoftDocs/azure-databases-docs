@@ -13,7 +13,7 @@ ms.date: 01/06/2025
 # $toBool
 [!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 
-The toBool operator converts an expression into a Boolean value. Boolean values are simply returned as is without a conversion. Non-zero numeric value are converted to true while Decimal, Long, Double or Int values of 0 are converted to false. All other data types are converted to true. 
+The `$toBool` operator converts an expression into a Boolean value. Boolean values are simply returned as is without a conversion. Non-zero numeric value are converted to true while Decimal, Long, Double or Int values of 0 are converted to false. All other data types are converted to true. 
 
 ## Syntax
 
@@ -29,7 +29,7 @@ The syntax for the `$toBool` operator is:
 
 ## Examples
 
-Consider this sample document from the SampleCollection collection in the StoreData database.
+Consider this sample document from the stores collection in the StoreData database.
 
 ```json
 {
@@ -144,7 +144,7 @@ Consider this sample document from the SampleCollection collection in the StoreD
 ### Example 1: Convert a Double value into a Boolean value
 
 ```javascript
-db.SampleCollection.aggregate([
+db.stores.aggregate([
 {
     "$match": {
         "_id": "b0107631-9370-4acd-aafa-8ac3511e623d"
@@ -173,7 +173,7 @@ This query returns the following result:
 ### Example 2: Convert a String value into a Boolean value
 
 ```javascript
-db.SampleCollection.aggregate([
+db.stores.aggregate([
 {
     "$match": {
         "_id": "b0107631-9370-4acd-aafa-8ac3511e623d"
@@ -202,7 +202,7 @@ This query returns the following result:
 ### Example 3: Convert an Int value into a Boolean value
 
 ```javascript
-db.SampleCollection.aggregate([
+db.stores.aggregate([
 {
     "$match": {
         "_id": "b0107631-9370-4acd-aafa-8ac3511e623d"
@@ -238,3 +238,9 @@ This table delineates the expected behavior of the $toBool operator based on the
 | Any Double, Int, Long or Decimal value                       | Output -> true      |
 | Any ISODate value                                            | Output -> true      |
 | Null value                                                   | Output -> null      |
+
+## Related content
+
+- [Migrate to vCore based Azure Cosmos DB for MongoDB](https://learn.microsoft.com/en-us/azure/cosmos-db/mongodb/vcore/migration-options)
+- [$type to determine the BSON type of a value]($type.md)
+- [$toString to convert a value to a String]($tostring.md)
