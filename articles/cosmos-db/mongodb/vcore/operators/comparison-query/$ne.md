@@ -157,3 +157,8 @@ db.stores.find({ "name": {"$ne": "Delmer's Jewelry Gifts"}})
 ```javascript
 db.stores.find({ "promotionEvents.promotionalDates.startDate": {"$ne": "2024"}})
 ```
+
+## Related content
+
+- [Migrate to vCore based Azure Cosmos DB for MongoDB](https://learn.microsoft.com/en-us/azure/cosmos-db/mongodb/vcore/migration-options)
+- [$eq for equality comparisons]($eq.md)
