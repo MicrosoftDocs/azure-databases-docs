@@ -29,7 +29,7 @@ The syntax for the `$ne` operator is:
 - `value`: The value that the field shouldn't be equal to.
 
 ## Examples
-Consider this sample document from the SampleCollection collection in the StoreData database.
+Consider this sample document from the stores collection in the StoreData database.
 
 ```json
 {
@@ -144,11 +144,16 @@ Consider this sample document from the SampleCollection collection in the StoreD
 ### Example 1 - Find stores whose name isn't "Delmer's Jewelry Gifts"
 
 ```javascript
-db.SampleCollection.find({ "name": {"$ne": "Delmer's Jewelry Gifts"}})
+db.stores.find({ "name": {"$ne": "Delmer's Jewelry Gifts"}})
 ```
+
+## Related content
+
+- [Migrate to vCore based Azure Cosmos DB for MongoDB](https://learn.microsoft.com/en-us/azure/cosmos-db/mongodb/vcore/migration-options)
+- [$eq for equality comparisons]($lt.md)
 
 ### Example 2 - Find stores with promotion events that aren't in 2024
 
 ```javascript
-db.SampleCollection.find({ "promotionEvents.promotionalDates.startDate": {"$ne": "2024"}})
+db.stores.find({ "promotionEvents.promotionalDates.startDate": {"$ne": "2024"}})
 ```
