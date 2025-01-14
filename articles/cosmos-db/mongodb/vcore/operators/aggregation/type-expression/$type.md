@@ -14,7 +14,7 @@ ms.date: 01/06/2025
 
 [!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 
-The type operator returns the type of the value specified in the expression.
+The `$type` operator returns the type of the value specified in the expression.
 
 ## Syntax
 
@@ -30,7 +30,7 @@ The syntax for the `$type` operator is:
 
 ## Examples
 
-Consider this sample document from the SampleCollection collection in the StoreData database.
+Consider this sample document from the stores collection in the StoreData database.
 
 ```json
 {
@@ -144,7 +144,7 @@ Consider this sample document from the SampleCollection collection in the StoreD
 
 ### Example 1: Get the type of a Double value
 ```javascript
-db.SampleCollection.aggregate([
+db.stores.aggregate([
 {
     "$match": {
         "_id": "b0107631-9370-4acd-aafa-8ac3511e623d"
@@ -173,7 +173,7 @@ This query returns the following result:
 ### Example 2: Get the type of a String value
 
 ```javascript
-db.SampleCollection.aggregate([
+db.stores.aggregate([
 {
     "$match": {
         "_id": "b0107631-9370-4acd-aafa-8ac3511e623d"
@@ -202,7 +202,7 @@ This query returns the following result:
 ### Example 3: Get the type of an Int value
 
 ```javascript
-db.SampleCollection.aggregate([
+db.stores.aggregate([
 {
     "$match": {
         "_id": "b0107631-9370-4acd-aafa-8ac3511e623d"
@@ -227,4 +227,9 @@ This query returns the following result:
     "fullTimeStaffType": "int"
 }
 ```
+
+## Related content
+
+- [Migrate to vCore based Azure Cosmos DB for MongoDB](https://learn.microsoft.com/en-us/azure/cosmos-db/mongodb/vcore/migration-options)
+- [$convert to convert a value from one type to another]($convert.md)
 
