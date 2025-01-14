@@ -14,7 +14,7 @@ ms.date: 01/06/2025
 
 [!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 
-The toString operator simply returns the value of the expression as a String.
+The `$toString` operator simply returns the value of the expression as a String.
 
 ## Syntax
 
@@ -30,7 +30,7 @@ The syntax for the `$toString` operator is:
 
 ## Examples
 
-Consider this sample document from the SampleCollection collection in the StoreData database.
+Consider this sample document from the stores collection in the StoreData database.
 
 ```json
 {
@@ -145,7 +145,7 @@ Consider this sample document from the SampleCollection collection in the StoreD
 ### Example 1: Convert a Double value into a String value
 
 ```javascript
-db.SampleCollection.aggregate([
+db.stores.aggregate([
 {
     "$match": {
         "_id": "b0107631-9370-4acd-aafa-8ac3511e623d"
@@ -174,7 +174,7 @@ This query returns the following result:
 ### Example 2: Convert an Int value into a String value
 
 ```javascript
-db.SampleCollection.aggregate([
+db.stores.aggregate([
 {
     "$match": {
         "_id": "b0107631-9370-4acd-aafa-8ac3511e623d"
@@ -208,3 +208,10 @@ This table delineates the expected behavior of the $toString operator based on t
 | Boolean value false                                                    | Output -> "false"                    |
 | Any Double, Int, Long or Decimal value. For example, 72                | Output -> "72"                       |
 | Any ObjectId value. For example, ObjectId("b010763193704acdaafa8ac3")  | Output -> "b010763193704acdaafa8ac3" |
+
+
+## Related content
+
+- [Migrate to vCore based Azure Cosmos DB for MongoDB](https://learn.microsoft.com/en-us/azure/cosmos-db/mongodb/vcore/migration-options)
+- [$type to determine the BSON type of a value]($type.md)
+- [$toInt to convert a value to an ObjectId]($toobjectid.md)
