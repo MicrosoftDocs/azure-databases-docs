@@ -160,5 +160,5 @@ db.stores.find({ "promotionEvents.promotionalDates.startDate": {"$ne": "2024"}})
 
 ## Related content
 
-- [Migrate to vCore based Azure Cosmos DB for MongoDB](https://learn.microsoft.com/en-us/azure/cosmos-db/mongodb/vcore/migration-options)
+- [Migrate to vCore based Azure Cosmos DB for MongoDB](https://aka.ms/migrate-to-azure-cosmosdb-for-mongodb-vcore)
 - [$eq for equality comparisons]($eq.md)
