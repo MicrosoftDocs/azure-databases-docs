@@ -14,7 +14,7 @@ ms.date: 01/06/2025
 
 [!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 
-The `$lte` operator is used to match documents where the value of a field is less than or equal to a specified value. The $lte operator filters documents based on numerical, date, or other comparable fields.
+The `$lte` operator is used to match documents where the value of a field is less than or equal to a specified value. The `$lte` operator filters documents based on numerical, date, or other comparable fields.
 
 ## Syntax
 
@@ -31,7 +31,7 @@ The syntax for using the `$lte` operator is:
 - `value`: The value to compare against.
 
 ## Examples
-Consider this sample document from the SampleCollection collection in the StoreData database.
+Consider this sample document from the stores collection in the StoreData database.
 
 ```json
 {
@@ -146,17 +146,23 @@ Consider this sample document from the SampleCollection collection in the StoreD
 ### Example 1: Retrieve all stores where the total sales is less than or equal to $35,000
 
 ```javascript
-db.SampleCollection.find({ "sales.totalSales": { "$lte": 35000 } })
+db.stores.find({ "sales.totalSales": { "$lte": 35000 } })
 ```
 
 ### Example 2: Find stores with 12 or fewer full-time staff
 
 ```javascript
-db.SampleCollection.find({ "staff.totalStaff.fullTime": { "$lte": 12 } })
+db.stores.find({ "staff.totalStaff.fullTime": { "$lte": 12 } })
 ```
 
 ### Example 3: Find promotion events with a discount percentage less than or equal to 15% for laptops
 
 ```javascript
-db.SampleCollection.find({ "promotionEvents.discounts": { "$elemMatch": { "categoryName": "Laptops", "discountPercentage": { "$lte": 15 } } } })
+db.stores.find({ "promotionEvents.discounts": { "$elemMatch": { "categoryName": "Laptops", "discountPercentage": { "$lte": 15 } } } })
 ```
+
+## Related content
+
+- [Migrate to vCore based Azure Cosmos DB for MongoDB](https://learn.microsoft.com/en-us/azure/cosmos-db/mongodb/vcore/migration-options)
+- [$lt for less than comparisons]($lt.md)
+- [$gt for greater than comparisons]($gt.md)
