@@ -29,6 +29,8 @@ Using the [Azure portal](https://portal.azure.com/):
 
 3. The status of the server must be **Available**, for the **Restart** button to appear on the toolbar.
 
+    :::image type="content" source="./media/how-to-restart-server/server-status.png" alt-text="Screenshot showing where in the Overview page you can find the status of the server." lightbox="./media/how-to-restart-server/server-status.png":::
+
 4. Select the **Restart** button.
 
     :::image type="content" source="./media/how-to-restart-server/restart-server.png" alt-text="Screenshot showing how to restart a started server." lightbox="./media/how-to-restart-server/restart-server.png":::
