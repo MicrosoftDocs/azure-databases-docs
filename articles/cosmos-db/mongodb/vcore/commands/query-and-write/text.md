@@ -172,5 +172,5 @@ db.stores.find({"$text": {"$search": "\"Ebba's Smart TVs\""}})
 
 ## Related Content
 
-- [Migrate to vCore based Azure Cosmos DB for MongoDB](https://learn.microsoft.com/en-us/azure/cosmos-db/mongodb/vcore/migration-options)
+- [Migrate to vCore based Azure Cosmos DB for MongoDB](https://aka.ms/migrate-to-azure-cosmosdb-for-mongodb-vcore)
 - [find with vCore based Azure Cosmos DB for MongoDB](find.md)
