@@ -27,23 +27,35 @@ Using the [Azure portal](https://portal.azure.com/):
 
 2. In the resource menu, select **Overview**.
 
+    :::image type="content" source="./media/how-to-stop-server/overview.png" alt-text="Screenshot showing how to select the Overview page." lightbox="./media/how-to-stop-server/overview.png":::
+
 3. The status of the server must be **Available**, for the **Stop** button to appear on the toolbar.
 
-3. Select the **Stop** button.
+    :::image type="content" source="./media/how-to-stop-server/server-status.png" alt-text="Screenshot showing where in the Overview page you can find the status of the server ." lightbox="./media/how-to-stop-server/server-status.png":::
+
+4. Select the **Stop** button.
 
     :::image type="content" source="./media/how-to-stop-server/stop-server.png" alt-text="Screenshot showing how to stop a started server." lightbox="./media/how-to-stop-server/stop-server.png":::
 
-4. In the **Stop server** dialog, confirm or abort your decision to stop the server.
+5. In the **Stop server** dialog, confirm or abort your decision to stop the server.
 
     :::image type="content" source="./media/how-to-stop-server/confirm-stop-server.png" alt-text="Screenshot showing the Stop server dialog to confirm or abort the operation." lightbox="./media/how-to-stop-server/confirm-stop-server.png":::
 
-5. A notification informs you that the server is stopping. Also, the status of the server changes to **Stopping**.
+6. A notification informs you that the server is stopping.
 
-    :::image type="content" source="./media/how-to-stop-server/stopping-server.png" alt-text="Screenshot showing a server which is stopping." lightbox="./media/how-to-stop-server/stopping-server.png":::
+    :::image type="content" source="./media/how-to-stop-server/stopping-server-notification.png" alt-text="Screenshot showing a the notification seen when a server initiates a stop operation." lightbox="./media/how-to-stop-server/stopping-server-notification.png":::
 
-6. When the process completes, a notification informs you that the server is stopped. Also, the status of the server changes to **Available**.
+7. Also, the status of the server changes to **Stopping**.
 
-    :::image type="content" source="./media/how-to-stop-server/stopped-server.png" alt-text="Screenshot showing a server which is stopped and shows its status as Stopped." lightbox="./media/how-to-stop-server/stopped-server.png":::
+    :::image type="content" source="./media/how-to-stop-server/stopping-server-status.png" alt-text="Screenshot showing a server which is stopping, highlighting its status as Stopping." lightbox="./media/how-to-stop-server/stopping-server-status.png":::
+
+8. When the process completes, a notification informs you that the server is stopped.
+
+    :::image type="content" source="./media/how-to-stop-server/stopped-server-notification.png" alt-text="Screenshot showing a the notification seen when a server completes a successful stop operation." lightbox="./media/how-to-stop-server/stopped-server-notification.png":::
+
+9. Also, the status of the server changes to **Stopped**.
+
+    :::image type="content" source="./media/how-to-stop-server/stopped-server-status.png" alt-text="Screenshot showing a server which is stopped, highlighting its status as Stopped." lightbox="./media/how-to-stop-server/stopped-server-status.png":::
 
 ### [CLI](#tab/cli-stop-server)
 
@@ -56,10 +68,9 @@ az postgres flexible-server stop --resource-group <resource_group> --name <serve
 If you attempt to stop a server which isn't in `Available` state, you receive an error like this:
 
 ```output
-Server will be automatically started after 7 days if you do not perform a manual start operation
-(ServerIsNotReady) Restart or Stop Server can only be performed on Started servers. Server Name = <server>, Current Server State = Stopped
+(ServerIsNotReady) Restart or Stop Server can only be performed on Started servers. Server Name = <server>, Current Server State = <non_started_server_state>
 Code: ServerIsNotReady
-Message: Restart or Stop Server can only be performed on Started servers. Server Name = <server>, Current Server State = Stopped
+Message: Restart or Stop Server can only be performed on Started servers. Server Name = <server>, Current Server State = <non_started_server_state>
 ```
 
 ---
@@ -70,7 +81,7 @@ Message: Restart or Stop Server can only be performed on Started servers. Server
 
 ## Related content
 
-- [Start an Azure Database for PostgreSQL flexible server](how-to-start-server.md).
+- [Start an Azure Database for PostgreSQL flexible server](how-to-stop-server.md).
 - [Restart an Azure Database for PostgreSQL flexible server](how-to-restart-server.md).
 - [Reset administrator password of an Azure Database for PostgreSQL flexible server](how-to-reset-admin-password.md).
 - [Delete an Azure Database for PostgreSQL flexible server](how-to-delete-server.md).
