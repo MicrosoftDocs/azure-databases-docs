@@ -27,19 +27,31 @@ Using the [Azure portal](https://portal.azure.com/):
 
 2. In the resource menu, select **Overview**.
 
+    :::image type="content" source="./media/how-to-start-server/overview.png" alt-text="Screenshot showing how to select the Overview page." lightbox="./media/how-to-start-server/overview.png":::
+
 3. The status of the server must be **Stopped**, for the **Start** button to appear on the toolbar.
+
+    :::image type="content" source="./media/how-to-start-server/server-status.png" alt-text="Screenshot showing where in the Overview page you can find the status of the server ." lightbox="./media/how-to-start-server/server-status.png":::
 
 3. Select the **Start** button.
 
     :::image type="content" source="./media/how-to-start-server/start-server.png" alt-text="Screenshot showing how to start a stopped server." lightbox="./media/how-to-start-server/start-server.png":::
 
-4. A notification informs you that the server is starting. Also, the status of the server changes to **Starting**.
+4. A notification informs you that the server is starting.
 
-    :::image type="content" source="./media/how-to-start-server/starting-server.png" alt-text="Screenshot showing a server which is starting." lightbox="./media/how-to-start-server/starting-server.png":::
+    :::image type="content" source="./media/how-to-start-server/starting-server-notification.png" alt-text="Screenshot showing a the notification seen when a server initiates a start operation." lightbox="./media/how-to-start-server/starting-server-notification.png":::
 
-5. When the process completes, a notification informs you that the server is started. Also, the status of the server changes to **Available**.
+5. Also, the status of the server changes to **Starting**.
 
-    :::image type="content" source="./media/how-to-start-server/started-server.png" alt-text="Screenshot showing a server which is started and shows its status as Available." lightbox="./media/how-to-start-server/started-server.png":::
+    :::image type="content" source="./media/how-to-start-server/starting-server-status.png" alt-text="Screenshot showing a server which is starting, highlighting its status as Starting." lightbox="./media/how-to-start-server/starting-server-status.png":::
+
+6. When the process completes, a notification informs you that the server is started.
+
+    :::image type="content" source="./media/how-to-start-server/started-server-notification.png" alt-text="Screenshot showing a the notification seen when a server completes a successful start operation." lightbox="./media/how-to-start-server/started-server-notification.png":::
+
+7. Also, the status of the server changes to **Available**.
+
+    :::image type="content" source="./media/how-to-start-server/started-server-status.png" alt-text="Screenshot showing a server which is started, highlighting its status as Available." lightbox="./media/how-to-start-server/started-server-status.png":::
 
 ### [CLI](#tab/cli-start-server)
 
