@@ -106,7 +106,7 @@ az postgres flexible-server create --resource-group <resource_group> --name <ser
 ```
 
 > [!NOTE]
-> The command provided above needs to be completed with other parameters whose presence and values would vary depending on how you want to configure other features of the provisioned server.
+> The previous command needs to be completed with other parameters whose presence and values would vary depending on how you want to configure other features of the provisioned server.
 
 ---
 

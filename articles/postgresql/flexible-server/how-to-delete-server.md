@@ -27,13 +27,27 @@ Using the [Azure portal](https://portal.azure.com/):
 
 2. In the resource menu, select **Overview**.
 
+    :::image type="content" source="./media/how-to-delete-server/overview.png" alt-text="Screenshot showing how to select the Overview page." lightbox="./media/how-to-delete-server/overview.png":::
+
 3. Select the **Delete** button.
 
     :::image type="content" source="./media/how-to-delete-server/delete-server.png" alt-text="Screenshot showing how to delete an Azure Database for PostgreSQL flexible server." lightbox="./media/how-to-delete-server/delete-server.png":::
 
-5. In the **Delete *\<server\>*** panel, make sure that the name of the resource you're willing to delete, matches the one displayed. Take the time to provide feedback about your experience with the service. Select the icon that best expresses your overall level of satisfaction with the service, and provide more details in free text form. You must check the **I have read and understand that this server, as well as any databases it contains, will be deleted.** box, so that the **Delete** button is enabled. Optionally, check the **You can contact me about this feedback.** box, if we can contact you about the feedback provided. Finally, select **Delete** to proceed with the immediate deletion of the server.
+5. In the **Delete *\<server\>*** panel, make sure that the name of the resource you're willing to delete, matches the one displayed.
 
-    :::image type="content" source="./media/how-to-delete-server/confirm-delete-server.png" alt-text="Screenshot showing how to provide feedback and confirm the deletion of an Azure Database for PostgreSQL flexible server." lightbox="./media/how-to-delete-server/confirm-delete-server.png":::
+    :::image type="content" source="./media/how-to-delete-server/confirm-server-name.png" alt-text="Screenshot showing where to find the name of the server being deleted." lightbox="./media/how-to-delete-server/confirm-server-name.png":::
+
+6. Take the time to provide feedback about your experience with the service. Select the icon that best expresses your overall level of satisfaction with the service, and provide more details in free text form.
+
+    :::image type="content" source="./media/how-to-delete-server/provide-feedback.png" alt-text="Screenshot showing where to provide feedback." lightbox="./media/how-to-delete-server/provide-feedback.png":::
+
+7. You must check the **I have read and understand that this server, as well as any databases it contains, will be deleted.** box, so that the **Delete** button is enabled. Optionally, check the **You can contact me about this feedback.** box, if we can contact you about the feedback provided.
+
+    :::image type="content" source="./media/how-to-delete-server/accept-conditions.png" alt-text="Screenshot showing how to accept terms and consequences of triggering the deletion of an Azure Database for PostgreSQL flexible server." lightbox="./media/how-to-delete-server/accept-conditions.png":::
+
+8. Select **Delete** to proceed with the immediate deletion of the server.
+
+    :::image type="content" source="./media/how-to-delete-server/delete.png" alt-text="Screenshot showing the location of the Delete button to initiate the deletion of the server." lightbox="./media/how-to-delete-server/delete.png":::
 
 6. A notification informs you that the server is being deleted.
 
