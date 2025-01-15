@@ -12,7 +12,7 @@ ms.date: 08/31/2024
 
 # text 
 
-The $text operator is used to perform text search queries on a collection. The $text operator enables searching for text within string fields that are indexed as a text index.
+The `$text` operator is used to perform text search queries on a collection. The `$text` operator enables searching for text within string fields that are indexed as a text index.
 
 ## Syntax
 
@@ -30,14 +30,14 @@ The basic syntax for the $text operator is:
 ```
 
 ## Parameters.
--   search - The search string to query in the text index
--   language - Optional field to specify the language to be used for the search. The default value is "english".
--   caseSensitive - Optional boolean field to specify whether the search should be a case sensitive search. The default value is false.
--   diacriticSensitive - Optional boolean field to specify whether the search should be diacritic-sensitive. The default value is false.
+-   `search` - The search string to query in the text index
+-   `language` - Optional field to specify the language to be used for the search. The default value is "english".
+-   `caseSensitive` - Optional boolean field to specify whether the search should be a case sensitive search. The default value is false.
+-   `diacriticSensitive` - Optional boolean field to specify whether the search should be diacritic-sensitive. The default value is false.
 
 ## Examples
 
-Consider this sample document from the SampleCollection collection in the StoreData database.
+Consider this sample document from the stores collection in the StoreData database.
 
 ```json
 {
@@ -155,7 +155,7 @@ Consider this sample document from the SampleCollection collection in the StoreD
 ### Example 1 - Basic text search
 
 ```mongodb
-db.SampleCollection.find({"$text": {"$search": "Ebba's Smart TVs"}})
+db.stores.find({"$text": {"$search": "Ebba's Smart TVs"}})
 ```
 
 > [!NOTE]
@@ -164,8 +164,13 @@ db.SampleCollection.find({"$text": {"$search": "Ebba's Smart TVs"}})
 ### Example 2 - Basic text search on the full string
 
 ```mongodb
-db.SampleCollection.find({"$text": {"$search": "\"Ebba's Smart TVs\""}})
+db.stores.find({"$text": {"$search": "\"Ebba's Smart TVs\""}})
 ```
 
 > [!NOTE]
 > To avoid tokenizing the terms in the search string, quotation marks must enclose the string. In this example, the query conducts a search on a single token - "Ebba's Smart TVs" without separating the three words into individual tokens.
+
+## Related Content
+
+- [Migrate to vCore based Azure Cosmos DB for MongoDB](https://learn.microsoft.com/en-us/azure/cosmos-db/mongodb/vcore/migration-options)
+- [find with vCore based Azure Cosmos DB for MongoDB](find.md)
