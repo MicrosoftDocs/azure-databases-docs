@@ -12,7 +12,7 @@ ms.date: 01/03/2025
 
 # $replaceWith
 
-The $replaceWith aggregation stage operator is used to replace the input document with the specified document. The $replaceWith operator transforms documents from one structure to another or replaces them entirely with new fields and values.
+The `$replaceWith` aggregation stage operator is used to replace the input document with the specified document. The `$replaceWith` operator transforms documents from one structure to another or replaces them entirely with new fields and values.
 
 ## Syntax
 
@@ -27,7 +27,7 @@ The $replaceWith aggregation stage operator is used to replace the input documen
 
 ## Examples
 
-Consider this sample document from the SsampleCollection collection in the StoreData database.
+Consider this sample document from the Sstores collection in the StoreData database.
 
 ```json
 {
@@ -144,11 +144,17 @@ Consider this sample document from the SsampleCollection collection in the Store
 First, match a specific document to replace by the _id field and replace the contents of the document with the specified fields.
 
 ```mongodb
-db.SampleCollection.aggregate([{ "$match": { "_id": "bda56164-954d-4f47-a230-ecf64b317b43" } }, { "$replaceWith": { "_id": "$_id", "name": "$name", "sales": "$sales.totalSales" } }])
+db.stores.aggregate([{ "$match": { "_id": "bda56164-954d-4f47-a230-ecf64b317b43" } }, { "$replaceWith": { "_id": "$_id", "name": "$name", "sales": "$sales.totalSales" } }])
 ```
+
+## Related Content
+
+- [Migrate to vCore based Azure Cosmos DB for MongoDB](https://learn.microsoft.com/en-us/azure/cosmos-db/mongodb/vcore/migration-options)
+- [update with vCore based Azure Cosmos DB for MongoDB](../query-and-write/update.md)
+
 
 ### Example 2 - Return a document that replaces the contents of the original document after aggregating specified fields
 
 ```mongodb
-db.SampleCollection.aggregate([{ "$match": { "_id": "bda56164-954d-4f47-a230-ecf64b317b43" } }, { "$replaceWith": { "_id": "$_id", "name": "$name", "totalStaff": {"$add": ["$staff.totalStaff.fullTime", "$staff.totalStaff.partTime"]}}}])
+db.stores.aggregate([{ "$match": { "_id": "bda56164-954d-4f47-a230-ecf64b317b43" } }, { "$replaceWith": { "_id": "$_id", "name": "$name", "totalStaff": {"$add": ["$staff.totalStaff.fullTime", "$staff.totalStaff.partTime"]}}}])
 ```
