@@ -12,7 +12,7 @@ ms.date: 01/03/2025
 
 # mod
 
-The $mod operator is used to perform a modulo operation on the value of a field and select documents with a specified result. The $mod operator is useful in grouping or filtering data based on cyclic patterns.
+The `$mod` operator is used to perform a modulo operation on the value of a field and select documents with a specified result. The `$mod` operator is useful in grouping or filtering data based on cyclic patterns.
 
 ## Syntax
 The syntax for the $mod operator is:
@@ -29,7 +29,7 @@ The syntax for the $mod operator is:
 
 ## Examples
 
-Consider this sample document from the SampleCollection collection in the StoreData database.
+Consider this sample document from the stores collection in the StoreData database.
 
 ```json
 {
@@ -144,7 +144,7 @@ Consider this sample document from the SampleCollection collection in the StoreD
 ### Example 1 - Find documents with an even number of staff members
 
 ```mongodb
-db.SampleCollection.find({"staff.totalStaff.fullTime": {"$mod": [2, 0]}}, {"staff": true})
+db.stores.find({"staff.totalStaff.fullTime": {"$mod": [2, 0]}}, {"staff": true})
 ```
 
 Two of the documents returned are:
@@ -176,19 +176,19 @@ The $mod operator rounds down floating points for the $mod operator.
 The following queries all yield the same result.
 
 ```mongodb
-db.SampleCollection.find({"staff.totalStaff.fullTime": {"$mod": [2.0, 0]}}, {"staff": true})
+db.stores.find({"staff.totalStaff.fullTime": {"$mod": [2.0, 0]}}, {"staff": true})
 ```
 
 ```mongodb
-db.SampleCollection.find({"staff.totalStaff.fullTime": {"$mod": [2.25, 0]}}, {"staff": true})
+db.stores.find({"staff.totalStaff.fullTime": {"$mod": [2.25, 0]}}, {"staff": true})
 ```
 
 ```mongodb
-db.SampleCollection.find({"staff.totalStaff.fullTime": {"$mod": [2.5, 0]}}, {"staff": true})
+db.stores.find({"staff.totalStaff.fullTime": {"$mod": [2.5, 0]}}, {"staff": true})
 ```
 
 ```mongodb
-db.SampleCollection.find({"staff.totalStaff.fullTime": {"$mod": [2.9, 0]}}, {"staff": true})
+db.stores.find({"staff.totalStaff.fullTime": {"$mod": [2.9, 0]}}, {"staff": true})
 ```
 
 All the queries yield the same result. Two of the documents returned are:
@@ -216,3 +216,8 @@ All the queries yield the same result. Two of the documents returned are:
 ### Considerations
 - If fewer than two values are specified in the array for the $mod operator, an error is thrown by the server indicating not enough arguments were passed. 
 - If more than two values are specified in the array for the $mod operator, an error is thrown by the server indicating too many arguments were passed.
+
+## Related Content
+
+- [Migrate to vCore based Azure Cosmos DB for MongoDB](https://learn.microsoft.com/en-us/azure/cosmos-db/mongodb/vcore/migration-options)
+- [find with vCore based Azure Cosmos DB for MongoDB](find.md)
