@@ -12,26 +12,26 @@ ms.date: 08/31/2024
 
 # $set
 
-The $set operator updates an existing field or creates a new field with the specified value if it does not exist. One or more fields listed are updated or created. The dot notation is used to update or create nested objects.
+The `$set` operator updates an existing field or creates a new field with the specified value if it does not exist. One or more fields listed are updated or created. The dot notation is used to update or create nested objects.
 
 ## Syntax
 
 ```mongodb
 {
   "$set": {
-    <newField>: <expression>,
+    "newField": <expression>,
     ...
   }
 }
 ```
 
 ## Parameters
-- `<newField>`: The name of the field to update or create.
-- `<expression>`: The expression that defines the value of the new or updated field.
+- `newField`: The name of the field to update or create.
+- `expression`: The expression that defines the value of the new or updated field.
 
 ## Examples
 
-Consider this sample document from the SampleCollection collection in the StoreData database.
+Consider this sample document from the stores collection in the StoreData database.
 
 ```json
 {
@@ -146,7 +146,7 @@ Consider this sample document from the SampleCollection collection in the StoreD
 ### Example 1 - Update an existing field
 
 ```mongodb
-db.SampleCollection.updateOne({"_id": "8eefe8bd-5d6f-4038-90e8-05a8277637f0"}, {"$set": {"name": "Headwind Donators"}})
+db.stores.updateOne({"_id": "8eefe8bd-5d6f-4038-90e8-05a8277637f0"}, {"$set": {"name": "Headwind Donators"}})
 ```
 
 ### Example 2 - Update an existing field in a nested object
@@ -176,3 +176,7 @@ db.stores.updateOne({"_id": "8eefe8bd-5d6f-4038-90e8-05a8277637f0"}, {"$set": {"
 ```mongodb
 db.stores.updateOne({"_id": "8eefe8bd-5d6f-4038-90e8-05a8277637f0"}, {"$set": {"staff.totalStaff.partTime": 9, "sales.totalSales": 3611}})
 ```
+
+## Related content
+
+- [Migrate to vCore based Azure Cosmos DB for MongoDB](https://learn.microsoft.com/en-us/azure/cosmos-db/mongodb/vcore/migration-options)
