@@ -29,7 +29,7 @@ db.collection.find(query, projection, options)
 - `options`: (Optional) A document that specifies options for query behavior and results.
 
 ## Example(s)
-Consider this sample document from the SampleCollection collection in the StoreData database.
+Consider this sample document from the stores collection in the StoreData database.
 
 ```json
 {
@@ -146,7 +146,7 @@ Consider this sample document from the SampleCollection collection in the StoreD
 The find() command without any query filters returns all documents in the collection.
 
 ```javascript
-db.SampleCollection.find()
+db.stores.find()
 ```
 
 ### Example 2: Retrieve documents with query filters
@@ -154,7 +154,7 @@ db.SampleCollection.find()
 Retrieve documents using a filter on the name property.
 
 ```javascript
-db.SampleCollection.find({"name": "Fourth Coffee | Stationery Haven - New Franco"})
+db.stores.find({"name": "Fourth Coffee | Stationery Haven - New Franco"})
 ```
 
 ### Example 3: Retrieve documents with query filters on objects
@@ -162,13 +162,13 @@ db.SampleCollection.find({"name": "Fourth Coffee | Stationery Haven - New Franco
 Retrieve documents using query filters on the lat and lon fields within the location object.
 
 ```javascript
-db.SampleCollection.find({"location.lat": 13.5236, "location.lon": -82.5707})
+db.stores.find({"location.lat": 13.5236, "location.lon": -82.5707})
 ```
 
 When the dot (.) notation isn't used to reference fields within an object, the query filter should exactly match the entire object including the order of the fields.
 
 ```javascript
-db.SampleCollection.find({"location": {"lat": 13.5236, "lon": -82.5707}})
+db.stores.find({"location": {"lat": 13.5236, "lon": -82.5707}})
 ```
 
 ### Example 4: Retrieve documents with query filters on arrays
@@ -176,13 +176,13 @@ db.SampleCollection.find({"location": {"lat": 13.5236, "lon": -82.5707}})
 Retrieve documents from the promotionEvents array where the eventName is "Grand Bargain Gala".
 
 ```javascript
-db.SampleCollection.find({"promotionEvents.eventName": "Grand Bargain Gala"})
+db.stores.find({"promotionEvents.eventName": "Grand Bargain Gala"})
 ```
 
 Retrieve documents from the "discounts" array, which is nested within the promotionEvents array where the categoryName is "Area Rugs".
 
 ```javascript
-db.SampleCollection.find({"promotionEvents.discounts.categoryName": "Area Rugs"})
+db.stores.find({"promotionEvents.discounts.categoryName": "Area Rugs"})
 ```
 
 ## Projections
@@ -194,19 +194,19 @@ The second document in the find command specifies the list of fields to project 
 A non-zero integer value or a boolean value of true includes the field in the response.
 
 ```javascript
-db.SampleCollection.find({"name": "Fourth Coffee | Stationery Haven - New Franco"}, {"location": 1, "sales": 1})
+db.stores.find({"name": "Fourth Coffee | Stationery Haven - New Franco"}, {"location": 1, "sales": 1})
 ```
 
 ```javascript
-db.SampleCollection.find({"name": "Fourth Coffee | Stationery Haven - New Franco"}, {"location": true, "sales": true})
+db.stores.find({"name": "Fourth Coffee | Stationery Haven - New Franco"}, {"location": true, "sales": true})
 ```
 
 ```javascript
-db.SampleCollection.find({"name": "Fourth Coffee | Stationery Haven - New Franco"}, {"location": 1, "sales": true})
+db.stores.find({"name": "Fourth Coffee | Stationery Haven - New Franco"}, {"location": 1, "sales": true})
 ```
 
 ```javascript
-db.SampleCollection.find({"name": "Fourth Coffee | Stationery Haven - New Franco"}, {"location": 1, "sales": -5})
+db.stores.find({"name": "Fourth Coffee | Stationery Haven - New Franco"}, {"location": 1, "sales": -5})
 ```
 
 All four queries are equivalent and specify the inclusion of the "location" and "sales" fields in the server response.
@@ -235,11 +235,11 @@ All four queries are equivalent and specify the inclusion of the "location" and 
 An integer value of zero or a boolean value of false excludes the specified field from the query response.
 
 ```javascript
-db.SampleCollection.find({"name": "Fourth Coffee | Stationery Haven - New Franco"}, {"promotionEvents": 0, "location": 0, "sales": 0})
+db.stores.find({"name": "Fourth Coffee | Stationery Haven - New Franco"}, {"promotionEvents": 0, "location": 0, "sales": 0})
 ```
 
 ```javascript
-db.SampleCollection.find({"name": "Fourth Coffee | Stationery Haven - New Franco"}, {"promotionEvents": false, "location": false, "sales": false})
+db.stores.find({"name": "Fourth Coffee | Stationery Haven - New Franco"}, {"promotionEvents": false, "location": false, "sales": false})
 ```
 
 Both queries are equivalent and return the following response:
@@ -265,7 +265,7 @@ Both queries are equivalent and return the following response:
 The <arrayFieldName>.$ command projects only the first occurrence of an object in an array that matches the specified query filters.
 
 ```javascript
-db.SampleCollection.find({"promotionEvents.eventName": "Grand Bargain Gala"}, {"promotionEvents.$": true})
+db.stores.find({"promotionEvents.eventName": "Grand Bargain Gala"}, {"promotionEvents.$": true})
 ```
 
 One of the documents returned shows only the first element in the promotionEvents array that has the event name "Grand Bargain Gala" while excluding all other elements in the array.
@@ -308,7 +308,7 @@ One of the documents returned shows only the first element in the promotionEvent
 This query projects the eventName property and the nested Year property within the promotionEvents array.
 
 ```javascript
-db.SampleCollection.find({"promotionEvents.eventName": "Grand Bargain Gala"}, {"promotionEvents.eventName": true, "promotionEvents.promotionalDates.startDate.Year": true})
+db.stores.find({"promotionEvents.eventName": "Grand Bargain Gala"}, {"promotionEvents.eventName": true, "promotionEvents.promotionalDates.startDate.Year": true})
 ```
 
 One of the documents returned shows the specified array elements projected in the response.
@@ -347,3 +347,6 @@ One of the documents returned shows the specified array elements projected in th
 
 ## Related Content
 
+- [Migrate to vCore based Azure Cosmos DB for MongoDB](https://learn.microsoft.com/en-us/azure/cosmos-db/mongodb/vcore/migration-options)
+- [insert with vCore based Azure Cosmos DB for MongoDB](insert.md)
+- [update with vCore based Azure Cosmos DB for MongoDB](update.md)
