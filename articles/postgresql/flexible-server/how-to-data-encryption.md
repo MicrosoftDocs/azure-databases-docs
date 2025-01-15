@@ -63,11 +63,17 @@ az postgres flexible-server create --resource-group <resource_group> --name <ser
 Using the [Azure portal](https://portal.azure.com/):
 
 
-1. [Create one user assigned managed identity](/entra/identity/managed-identities-azure-resources/how-manage-user-assigned-managed-identities), if you don't have one created yet.
+1. [Create one user assigned managed identity](/entra/identity/managed-identities-azure-resources/how-manage-user-assigned-managed-identities), if you don't have one yet. If your server has geo-redundant backups enabled, you need to create to different identities. Each of those identities is used to access each of the two data encryption keys.
 
-2. [Create one Azure Key Vault](/azure/key-vault/general/quick-create-portal) or [create one Managed HSM](/azure/key-vault/managed-hsm/quick-create-cli), if you don't have one key store created yet. Make sure that you meet the [requirements](concepts-data-encryption.md#requirements), and follow the [recommendations](concepts-data-encryption.md#recommendations) before you configure the key store, create the key and assign the required permissions to the user assigned managed identity.
+    > [!NOTE]
+    > Although it isn't required, to maintain regional resiliency, we recommend that you create the user managed identity in the same region as your server. And if your server has geo-backup redundancy enabled, we recommend that the second user managed identity, used to access the data encryption key for geo-redundant backups, is created in the [paired region](/azure/reliability/cross-region-replication-azure) of the server.
 
-3. [Create one key in your key store](/azure/key-vault/keys/quick-create-portal).
+2. [Create one Azure Key Vault](/azure/key-vault/general/quick-create-portal) or [create one Managed HSM](/azure/key-vault/managed-hsm/quick-create-cli), if you don't have one key store created yet. Make sure that you meet the [requirements](concepts-data-encryption.md#requirements). Also, follow the [recommendations](concepts-data-encryption.md#recommendations) before you configure the key store, and before you create the key and assign the required permissions to the user assigned managed identity. If your server has geo-redundant backups enabled, you need to create a second key store. That second key store is used to keep the data encryption key with which your backups copied to the [paired region](/azure/reliability/cross-region-replication-azure) of the server are encrypted.
+
+    > [!NOTE]
+    > The key store used to keep the data encryption key must be deployed in the same region as your server. And if your server has geo-backup redundancy enabled, the key store that keeps the data encryption key for geo-redundant backups must be created in the [paired region](/azure/reliability/cross-region-replication-azure) of the server.
+
+3. [Create one key in your key store](/azure/key-vault/keys/quick-create-portal). If your server has geo-redundant backups enabled, you need one key on each of the key stores. With one of these keys, we encrypt all your server's data (including all system and user databases, temporary files, server logs, write-ahead log segments, and backups). With the second key, we encrypt the copies of the backups which are asynchronously copied over the [paired region](/azure/reliability/cross-region-replication-azure) of your server.
 
 4. During provisioning of a new instance of Azure Database for PostgreSQL Flexible Server, in the **Security** tab.
 
@@ -87,7 +93,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 8. Among the list of user assigned managed identities, select the one you want your server to use to access the data encryption key stored in an Azure Key Vault.
 
-    :::image type="content" source="./media/how-to-data-encryption/create-server-customer-assigned-select-identity.png" alt-text="Screenshot showing how to select the user assigned managed identity to access the data encryption key for the data of the server location and copy of the backup kept in server's region." lightbox="./media/how-to-data-encryption/create-server-customer-assigned-select-identity.png":::
+    :::image type="content" source="./media/how-to-data-encryption/create-server-customer-assigned-select-identity.png" alt-text="Screenshot showing how to select the user assigned managed identity with which the server accesses the data encryption key." lightbox="./media/how-to-data-encryption/create-server-customer-assigned-select-identity.png":::
 
 9. Select **Add**.
 
@@ -101,16 +107,16 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="./media/how-to-data-encryption/create-server-customer-assigned-key-subscription.png" alt-text="Screenshot showing how to select the subscription in which the key store should exist." lightbox="./media/how-to-data-encryption/create-server-customer-assigned-key-subscription.png":::
 
-12. In **Key store type**, select the radio button corresponding to the type of key store in which you plan to store the data encryption key. In this example, we choose **Key vault**, but the experience is very similar if you choose **Managed HSM**.
+12. In **Key store type**, select the radio button corresponding to the type of key store in which you plan to store the data encryption key. In this example, we choose **Key vault**, but the experience is similar if you choose **Managed HSM**.
 
     :::image type="content" source="./media/how-to-data-encryption/create-server-customer-assigned-key-store-type.png" alt-text="Screenshot showing how to select the type of store that keeps the data encryption key." lightbox="./media/how-to-data-encryption/create-server-customer-assigned-key-store-type.png":::
 
 13. Expand **Key vault** (or **Managed HSM**, if you selected that storage type), and select the instance where the data encryption key exists.
 
-> [!NOTE]
-> When you expand the drop down box, it shows **No available items**. It takes a few seconds until it lists all the instances of key vault which are deployed in the same region as the server.
-
     :::image type="content" source="./media/how-to-data-encryption/create-server-customer-assigned-key-vault.png" alt-text="Screenshot showing how to select the key store that keeps the data encryption key." lightbox="./media/how-to-data-encryption/create-server-customer-assigned-key-vault.png":::
+
+    > [!NOTE]
+    > When you expand the drop-down box, it shows **No available items**. It takes a few seconds until it lists all the instances of key vault which are deployed in the same region as the server.
 
 14. Expand **Key**, and select the name of the key that you want to use for data encryption.
 
@@ -130,38 +136,27 @@ Using the [Azure portal](https://portal.azure.com/):
 
 ### [CLI](#tab/cli-customer-managed-server-provisioning)
 
-You can enable data encryption with system assigned encryption key, while provisioning a new server, via the [az postgres flexible-server create](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-create) command.
+You can enable data encryption with user assigned encryption key, while provisioning a new server, via the [az postgres flexible-server create](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-create) command.
+
+If your server doesn't have geo-redundant backups enabled:
 
 ```azurecli-interactive
-az postgres flexible-server create --resource-group <resource_group> --name <server> ...
+az postgres flexible-server create --resource-group <resource_group> --name <server> --geo-redundant-backup Disabled --identity <managed_identity_to_access_primary_encryption_key> --key <resource_identifier_of_primary_encryption_key> ...
 ```
 
 > [!NOTE]
-> Notice that there's no special parameter in the previous command to specify that the server must be created with system assigned key for data encryption. The reason being that data encryption with system assigned key is the default option.
-> Also, notice that you must complete the command provided with other parameters whose presence and values would vary depending on how you want to configure other features of the provisioned server.
+> The command provided above needs to be completed with other parameters whose presence and values would vary depending on how you want to configure other features of the provisioned server.
+
+If your server has geo-redundant backups enabled:
+
+```azurecli-interactive
+az postgres flexible-server create --resource-group <resource_group> --name <server> --geo-redundant-backup Enabled --identity <managed_identity_to_access_primary_encryption_key> --key <resource_identifier_of_primary_encryption_key> --backup-identity <managed_identity_to_access_geo_backups_encryption_key> --backup-key <resource_identifier_of_geo_backups_encryption_key> ...
+```
+
+> [!NOTE]
+> The command provided above needs to be completed with other parameters whose presence and values would vary depending on how you want to configure other features of the provisioned server.
 
 ---
-
-## Configure user assigned encryption key during server provisioning
-
-## Set up customer managed key during server creation
-Prerequisites:
-
-- Microsoft Entra user managed identity in the region where the Azure Database for PostgreSQL flexible server instance will be created. Follow this [tutorial](/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm) to create identity.
-
-- Key Vault with key in region where the Azure Database for PostgreSQL flexible server instance will be created. Follow this [tutorial](/azure/key-vault/general/quick-create-portal) to create Key Vault and generate key. Follow [requirements section in concepts doc](concepts-data-encryption.md) for required Azure Key Vault settings.
-
-Follow the steps below to enable CMK while creating the Azure Database for PostgreSQL flexible server instance using Azure portal.
-
-1. Navigate to the Azure Database for PostgreSQL flexible server create pane via Azure portal.
-
-2. Provide required information on Basics and Networking tabs.
-
-3. Navigate to Security tab. On the screen, provide Microsoft Entra ID  identity that has access to the Key Vault and Key in Key Vault in the same region where you're creating this server.
-
-4. On Review Summary tab, make sure that you provided correct information in Security section and press Create button.
-
-5. Once it's finished, you should be able to navigate to Data Encryption  screen for the server and update identity or key if necessary.
 
 ## Update customer managed key on the CMK enabled Azure Database for PostgreSQL flexible server instance
 
