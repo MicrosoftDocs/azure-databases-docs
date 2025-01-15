@@ -38,7 +38,7 @@ db.collection.deleteMany(
   - `collation`: Specifies the collation to use for the operation.
 
 ## Example(s)
-Consider this sample document from the SampleCollection collection in the StoreData database.
+Consider this sample document from the stores collection in the StoreData database.
 
 ```json
 {
@@ -152,25 +152,29 @@ Consider this sample document from the SampleCollection collection in the StoreD
 ### Example 1 - Delete all documents in a collection
 
 ```mongodb
-db.SampleCollection.deleteMany({})
+db.stores.deleteMany({})
 ```
 
 ### Example 2 - Delete a document that matches a specified query filter
 
 ```mongodb
-db.SampleCollection.deleteOne({"_id": "68471088-4d45-4164-ae58-a9428d12f310"})
+db.stores.deleteOne({"_id": "68471088-4d45-4164-ae58-a9428d12f310"})
 ```
 
 ### Example 3 - Delete all documents that match a specified query filter
 
 ```mongodb
-db.SampleCollection.deleteMany({"promotionEvents.discounts.discountPercentage": 21}, {"limit": 0})
+db.stores.deleteMany({"promotionEvents.discounts.discountPercentage": 21}, {"limit": 0})
 ```
 
 ### Example 3 - Delete only one of many documents that match a specified query filter
 
 ```mongodb
-db.SampleCollection.deleteMany({"promotionEvents.discounts.discountPercentage": 21}, {"limit": 1})
+db.stores.deleteMany({"promotionEvents.discounts.discountPercentage": 21}, {"limit": 1})
 ```
 
-## Next Steps
+## Related Content
+
+- [Migrate to vCore based Azure Cosmos DB for MongoDB](https://learn.microsoft.com/en-us/azure/cosmos-db/mongodb/vcore/migration-options)
+- [insert with vCore based Azure Cosmos DB for MongoDB](insert.md)
+- [update with vCore based Azure Cosmos DB for MongoDB](update.md)
