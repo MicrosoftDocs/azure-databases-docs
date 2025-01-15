@@ -200,6 +200,6 @@ db.stores.updateOne({"_id": "NonExistentDocId"}, {"$set": {"name": "Brand New St
 
 ## Related Content
 
-- [Migrate to vCore based Azure Cosmos DB for MongoDB](https://learn.microsoft.com/en-us/azure/cosmos-db/mongodb/vcore/migration-options)
+- [Migrate to vCore based Azure Cosmos DB for MongoDB](https://aka.ms/migrate-to-azure-cosmosdb-for-mongodb-vcore)
 - [insert with vCore based Azure Cosmos DB for MongoDB](insert.md)
 - [delete with vCore based Azure Cosmos DB for MongoDB](delete.md)
