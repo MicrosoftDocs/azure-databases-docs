@@ -144,7 +144,7 @@ az postgres flexible-server create --resource-group <resource_group> --name <ser
 ```
 
 > [!NOTE]
-> The command provided above needs to be completed with other parameters whose presence and values would vary depending on how you want to configure other features of the provisioned server.
+> The previous command needs to be completed with other parameters whose presence and values would vary depending on how you want to configure other features of the provisioned server.
 
 If your server has geo-redundant backups enabled:
 
@@ -153,7 +153,7 @@ az postgres flexible-server create --resource-group <resource_group> --name <ser
 ```
 
 > [!NOTE]
-> The command provided above needs to be completed with other parameters whose presence and values would vary depending on how you want to configure other features of the provisioned server.
+> The previous command needs to be completed with other parameters whose presence and values would vary depending on how you want to configure other features of the provisioned server.
 
 ---
 
@@ -261,7 +261,7 @@ az postgres flexible-server update --resource-group <resource_group> --name <ser
 ```
 
 > [!NOTE]
-> The command provided above might need to be completed with other parameters whose presence and values would vary depending on how you want to configure other features of the existing server.
+> The previous command might need to be completed with other parameters whose presence and values would vary depending on how you want to configure other features of the existing server.
 
 Whether you want to only change the user assigned managed identity used to access the key, or you want to only change the key used for data encryption, or you want to change both at the same time, you're required to provide both parameters `--identity` and `--key`. If you provide either one but not both, you get the following error:
 
@@ -288,7 +288,7 @@ If you pass the parameters `--backup-identity` and `--backup-key` to the `az pos
 Geo-redundant backup is not enabled. You cannot provide Geo-location user assigned identity and keyvault key.
 ```
 
-Identities passed to the `--identity` and `--backup-identity` parameters, if they exist and are valid, are automatically added to the list of user assigned managed identities associated to your Azure Database for PostgreSQL flexible server. That's the case, even if the command later fails with some other error. In such cases, you may want to use the [az postgres flexible-server identity](/cli/azure/postgres/flexible-server/identity) commands to list, assign, or remove user assigned managed identities assigned to your Azure Database for PostgreSQL flexible server. To learn more about configuring user assigned managed identities in your Azure Database for PostgreSQL flexible server, refer to [associate user assigned managed identities to existing servers](how-to-configure-managed-identities.md#associate-user-assigned-managed-identities-to-existing-servers), [dissociate user assigned managed identities to existing servers](how-to-configure-managed-identities.md#dissociate-user-assigned-managed-identities-to-existing-servers), and [show the associated user assigned managed identities](how-to-configure-managed-identities.md#show-the-associated-user-assigned-managed-identities).
+Identities passed to the `--identity` and `--backup-identity` parameters, if they exist and are valid, are automatically added to the list of user assigned managed identities associated to your Azure Database for PostgreSQL flexible server. That's the case, even if the command later fails with some other error. In such cases, you might want to use the [az postgres flexible-server identity](/cli/azure/postgres/flexible-server/identity) commands to list, assign, or remove user assigned managed identities assigned to your Azure Database for PostgreSQL flexible server. To learn more about configuring user assigned managed identities in your Azure Database for PostgreSQL flexible server, refer to [associate user assigned managed identities to existing servers](how-to-configure-managed-identities.md#associate-user-assigned-managed-identities-to-existing-servers), [dissociate user assigned managed identities to existing servers](how-to-configure-managed-identities.md#dissociate-user-assigned-managed-identities-to-existing-servers), and [show the associated user assigned managed identities](how-to-configure-managed-identities.md#show-the-associated-user-assigned-managed-identities).
 
 ---
 
