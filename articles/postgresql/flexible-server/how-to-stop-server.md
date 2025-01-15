@@ -68,10 +68,9 @@ az postgres flexible-server stop --resource-group <resource_group> --name <serve
 If you attempt to stop a server which isn't in `Available` state, you receive an error like this:
 
 ```output
-Server will be automatically started after 7 days if you do not perform a manual start operation
-(ServerIsNotReady) Restart or Stop Server can only be performed on Started servers. Server Name = <server>, Current Server State = Stopped
+(ServerIsNotReady) Restart or Stop Server can only be performed on Started servers. Server Name = <server>, Current Server State = <non_started_server_state>
 Code: ServerIsNotReady
-Message: Restart or Stop Server can only be performed on Started servers. Server Name = <server>, Current Server State = Stopped
+Message: Restart or Stop Server can only be performed on Started servers. Server Name = <server>, Current Server State = <non_started_server_state>
 ```
 
 ---
@@ -82,7 +81,7 @@ Message: Restart or Stop Server can only be performed on Started servers. Server
 
 ## Related content
 
-- [Start an Azure Database for PostgreSQL flexible server](how-to-start-server.md).
+- [Start an Azure Database for PostgreSQL flexible server](how-to-stop-server.md).
 - [Restart an Azure Database for PostgreSQL flexible server](how-to-restart-server.md).
 - [Reset administrator password of an Azure Database for PostgreSQL flexible server](how-to-reset-admin-password.md).
 - [Delete an Azure Database for PostgreSQL flexible server](how-to-delete-server.md).
