@@ -250,7 +250,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 17. Once satisfied with the changes made, select **Save**.
 
-    :::image type="content" source="./media/how-to-data-encryption/existing-server-customer-assigned-key-save.png" alt-text="Screenshot showing how to select the chose key." lightbox="./media/how-to-data-encryption/existing-server-customer-assigned-key-save.png":::
+    :::image type="content" source="./media/how-to-data-encryption/existing-server-customer-assigned-key-save.png" alt-text="Screenshot showing how to save the changes made to data encryption configuration." lightbox="./media/how-to-data-encryption/existing-server-customer-assigned-key-save.png":::
 
 ### [CLI](#tab/cli-customer-managed-server-existing)
 
@@ -263,17 +263,21 @@ az postgres flexible-server update --resource-group <resource_group> --name <ser
 > [!NOTE]
 > The previous command might need to be completed with other parameters whose presence and values would vary depending on how you want to configure other features of the existing server.
 
-Whether you want to only change the user assigned managed identity used to access the key, or you want to only change the key used for data encryption, or you want to change both at the same time, you're required to provide both parameters `--identity` and `--key`. If you provide either one but not both, you get the following error:
+Whether you want to only change the user assigned managed identity used to access the key, or you want to only change the key used for data encryption, or you want to change both at the same time, you're required to provide both parameters `--identity` and `--key` (or `--backup-identity` and `--backup-key` for geo-redundant backups). If you provide either one but not both, you get any of the following errors:
 
 ```output
 User assigned identity and keyvault key need to be provided together. Please provide --identity and --key together.
 ```
 
-If the key pointed by the value passed to the `--key` parameter doesn't exist, or if the user assigned managed identity whose resource identifier is passed to the `--identity` parameter doesn't have the required permissions to access the key, you get the following error:
+```output
+User assigned identity and keyvault key need to be provided together. Please provide --backup-identity and --backup-key together.
+```
+
+If the key pointed by the value passed to the `--key` parameter (or `--backup-key` for geo-redundant backups) doesn't exist, or if the user assigned managed identity whose resource identifier is passed to the `--identity` parameter (ore `--backup-identity` for geo-redundant backups) doesn't have the required permissions to access the key, you get the following error:
 
 ```output
 Code: AzureKeyVaultKeyNameNotFound
-Message: The operation could not be completed because the Azure Key Vault Key name 'https://productionazurekeyvault.vault.azure.net/keys/production-encryption-key-primary/d6a6627bf84a427e9d0505010753a8f8' does not exist or User Assigned Identity does not have Get access to the Key (https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/concepts-data-encryption#requirements-for-configuring-data-encryption-for-azure-database-for-postgresql-flexible-server).
+Message: The operation could not be completed because the Azure Key Vault Key name '<key_vault_resource>' does not exist or User Assigned Identity does not have Get access to the Key (https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/concepts-data-encryption#requirements-for-configuring-data-encryption-for-azure-database-for-postgresql-flexible-server).
 ```
 
 If your server has geo-redundant backups enabled, you can configure the key used for encryption of geo-redundant backups, and the identity used to access that key. To do so, you can use the `--backup-identity` and `--backup-key` parameters.
