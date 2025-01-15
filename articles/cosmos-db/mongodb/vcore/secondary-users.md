@@ -20,13 +20,13 @@ Azure Cosmos DB for MongoDB vCore now supports secondary users with specialized 
  > [!NOTE]
 >  You can enable/disable this feature by using an ARM template or via Azure CLI during the preview phase.
 
-### Using Azure CLI :
+### Using Azure CLI
 
 ```Bash
     az resource patch --ids "/subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroup}/providers/Microsoft.DocumentDB/mongoClusters/{ClusterName}" --api-version 2024-10-01-preview --properties "{\"previewFeatures\": [\"GeoReplicas\", \"EnableReadOnlyUser\"]}"
 ```
 
-### Using ARM template : 
+### Using ARM template
 
 
 ```powershell
@@ -51,7 +51,7 @@ Azure Cosmos DB for MongoDB vCore now supports secondary users with specialized 
 mongosh mongodb+srv://<YOUR_USERNAME>:<YOUR_PASSWORD>@>YOUR_HOST>?tls=true&authMechanism=SCRAM-SHA-256&retrywrites=false&maxIdleTimeMS=120000
 ```
  > [!NOTE]
->  Make sure you allowlist your client IP under the networking settings on azure portal. 
+>  Make sure you allowlist your client IP under the networking settings on Azure portal. 
 
 ### CreateUser
 
