@@ -12,22 +12,22 @@ ms.date: 01/03/2025
 
 # regex
 
-The $regex operator is used to perform pattern matching with regular expressions and is particularly useful for querying string fields for matches that fit specific patterns. Common use cases include searching for documents where a field contains a substring, starts with a certain prefix, or matches a complex pattern.
+The `$regex` operator is used to perform pattern matching with regular expressions and is particularly useful for querying string fields for matches that fit specific patterns. Common use cases include searching for documents where a field contains a substring, starts with a certain prefix, or matches a complex pattern.
 
 ## Syntax
 
 ```mongodb
-{ <field>: { $regex: /pattern/, $options: '<options>' }  }
+{ "field": { $regex: /pattern/, $options: '<options>' }  }
 ```
 
 ## Parameters
-- field: The field in the document you want to query.
-- /pattern/: The regular expression pattern you want to match.
-- <options>: Optional flags to modify the behavior of the regex. Common options include i for case-insensitive matching, m for multiline matching, etc.
+- `field`: The field in the document you want to query.
+- `/pattern/`: The regular expression pattern you want to match.
+- `options`: Optional flags to modify the behavior of the regex. Common options include i for case-insensitive matching, m for multiline matching, etc.
 
 ## Examples
 
-Consider this sample document from the SampleCollection collection in the StoreData database.
+Consider this sample document from the stores collection in the StoreData database.
 
 ```json
 {
@@ -142,7 +142,7 @@ Consider this sample document from the SampleCollection collection in the StoreD
 ### Example 1 - Find all stores with a promotion event where the name contains the substring 'Days'
 
 ```mongodb
-db.SampleCollection.find({"promotionEvents.eventName": {"$regex": /Days/}})
+db.stores.find({"promotionEvents.eventName": {"$regex": /Days/}})
 ```
 
 ### Example 2 - Perform a case insensitive regex pattern match
@@ -150,5 +150,10 @@ db.SampleCollection.find({"promotionEvents.eventName": {"$regex": /Days/}})
 Find all stores with a promotion event where the name contains the case insensitive substring 'days'
 
 ```mongodb
-db.SampleCollection.find({"promotionEvents.eventName": {"$regex": /bash/i}})
+db.stores.find({"promotionEvents.eventName": {"$regex": /bash/i}})
 ```
+## Related Content
+
+- [Migrate to vCore based Azure Cosmos DB for MongoDB](https://learn.microsoft.com/en-us/azure/cosmos-db/mongodb/vcore/migration-options)
+- [find with vCore based Azure Cosmos DB for MongoDB](find.md)
+- [findAndModify with vCore based Azure Cosmos DB for MongoDB](findandmodify.md)
