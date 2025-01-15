@@ -31,7 +31,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 3. The status of the server must be **Available**, for the **Stop** button to appear on the toolbar.
 
-    :::image type="content" source="./media/how-to-stop-server/server-status.png" alt-text="Screenshot showing where in the Overview page you can find the status of the server ." lightbox="./media/how-to-stop-server/server-status.png":::
+    :::image type="content" source="./media/how-to-stop-server/server-status.png" alt-text="Screenshot showing where in the Overview page you can find the status of the server." lightbox="./media/how-to-stop-server/server-status.png":::
 
 4. Select the **Stop** button.
 
@@ -43,7 +43,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 6. A notification informs you that the server is stopping.
 
-    :::image type="content" source="./media/how-to-stop-server/stopping-server-notification.png" alt-text="Screenshot showing a the notification seen when a server initiates a stop operation." lightbox="./media/how-to-stop-server/stopping-server-notification.png":::
+    :::image type="content" source="./media/how-to-stop-server/stopping-server-notification.png" alt-text="Screenshot showing the notification seen when a server initiates a stop operation." lightbox="./media/how-to-stop-server/stopping-server-notification.png":::
 
 7. Also, the status of the server changes to **Stopping**.
 
@@ -51,7 +51,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 8. When the process completes, a notification informs you that the server is stopped.
 
-    :::image type="content" source="./media/how-to-stop-server/stopped-server-notification.png" alt-text="Screenshot showing a the notification seen when a server completes a successful stop operation." lightbox="./media/how-to-stop-server/stopped-server-notification.png":::
+    :::image type="content" source="./media/how-to-stop-server/stopped-server-notification.png" alt-text="Screenshot showing the notification seen when a server completes a successful stop operation." lightbox="./media/how-to-stop-server/stopped-server-notification.png":::
 
 9. Also, the status of the server changes to **Stopped**.
 
