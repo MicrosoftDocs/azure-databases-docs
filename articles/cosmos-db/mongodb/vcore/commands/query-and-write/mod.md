@@ -219,5 +219,5 @@ All the queries yield the same result. Two of the documents returned are:
 
 ## Related Content
 
-- [Migrate to vCore based Azure Cosmos DB for MongoDB](https://learn.microsoft.com/en-us/azure/cosmos-db/mongodb/vcore/migration-options)
+- [Migrate to vCore based Azure Cosmos DB for MongoDB](https://aka.ms/migrate-to-azure-cosmosdb-for-mongodb-vcore)
 - [find with vCore based Azure Cosmos DB for MongoDB](find.md)
