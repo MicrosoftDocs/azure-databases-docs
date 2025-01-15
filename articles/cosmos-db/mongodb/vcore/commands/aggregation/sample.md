@@ -11,7 +11,7 @@ ms.date: 01/03/2025
 ---
 
 # $sample
-The $sample stage is used in aggregation pipelines to randomly select a specified number of documents from a collection. The $sample command is useful during testing, data analysis, and generating random subsets of data for machine learning.
+The `$sample` stage is used in aggregation pipelines to randomly select a specified number of documents from a collection. The `$sample` command is useful during testing, data analysis, and generating random subsets of data for machine learning.
 
 ## Syntax
 
@@ -26,7 +26,7 @@ The $sample stage is used in aggregation pipelines to randomly select a specifie
 - `size`: The number of documents to randomly select from the collection.
 
 ## Examples
-Consider this sample document from the SampleCollection collection in the StoreData database.
+Consider this sample document from the stores collection in the StoreData database.
 
 ```json
 {
@@ -141,7 +141,10 @@ Consider this sample document from the SampleCollection collection in the StoreD
 ### Example 1 - Randomly select five documents
 
 ```mongodb
-db.SampleCollection.aggregate([{"$sample": {"size": 5}}])
+db.stores.aggregate([{"$sample": {"size": 5}}])
 ```
 
-## Next Steps
+## Related Content
+
+- [Migrate to vCore based Azure Cosmos DB for MongoDB](https://learn.microsoft.com/en-us/azure/cosmos-db/mongodb/vcore/migration-options)
+- [count with vCore based Azure Cosmos DB for MongoDB](count.md)
