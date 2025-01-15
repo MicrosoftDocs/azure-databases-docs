@@ -12,7 +12,7 @@ ms.date: 01/03/2025
 
 # insert
 
-The insert command is used to create new documents into a collection. Either a single document or multiple documents can be inserted in one go.
+The `insert` command is used to create new documents into a collection. Either a single document or multiple documents can be inserted in one go.
 
 ## Syntax
 
@@ -38,10 +38,10 @@ db.collection.insert(
 
 ### Inserting a Single Document
 
-The following command inserts a single document into the SampleCollection collection in the StoreData database.
+The following command inserts a single document into the stores collection in the StoreData database.
 
 ```javascript
-db.SampleCollection.insertOne({
+db.stores.insertOne({
   "storeId": "12345",
   "name": "Tech Gadgets",
   "location": {
@@ -108,10 +108,10 @@ db.SampleCollection.insertOne({
 
 ### Inserting Multiple Documents
 
-The following command inserts an array of documents into the SampleCollection collection.
+The following command inserts an array of documents into the stores collection.
 
 ```javascript
-db.SampleCollection.insertMany([
+db.stores.insertMany([
   {
     "storeId": "12346",
     "name": "Gadget World",
@@ -237,7 +237,7 @@ If a duplicate value for the _id field is specified, a duplicate key violation e
 Documents that are inserted in bulk can be inserted in order when specifying "ordered": true
 
 ```javascript
-db.SampleCollection.insertMany([
+db.stores.insertMany([
   {
     "_id": "123456",
     "storeId": "123456",
@@ -349,4 +349,6 @@ The ordered insert command returns a response confirming the order in which docu
 
 ## Related Content
 
-Manually add content as necessary.
+- [Migrate to vCore based Azure Cosmos DB for MongoDB](https://learn.microsoft.com/en-us/azure/cosmos-db/mongodb/vcore/migration-options)
+- [update with vCore based Azure Cosmos DB for MongoDB](update.md)
+- [find with vCore based Azure Cosmos DB for MongoDB](find.md)
