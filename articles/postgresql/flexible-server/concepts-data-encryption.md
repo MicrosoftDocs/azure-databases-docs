@@ -181,4 +181,4 @@ Here are current limitations for configuring the customer managed key in Azure D
 
 ## Related content
 
-- [What's Microsoft Entra Domain Services](/azure/active-directory-domain-services/overview).
+- [Configure data encryption](how-to-data-encryption.md).
