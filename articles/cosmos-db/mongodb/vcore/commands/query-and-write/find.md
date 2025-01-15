@@ -262,7 +262,7 @@ Both queries are equivalent and return the following response:
 
 ### Project the first element in an array that matches the query filter criteria
 
-The <arrayFieldName>.$ command projects only the first occurrence of an object in an array that matches the specified query filters.
+The "arrayFieldName".$ command projects only the first occurrence of an object in an array that matches the specified query filters.
 
 ```javascript
 db.stores.find({"promotionEvents.eventName": "Grand Bargain Gala"}, {"promotionEvents.$": true})
