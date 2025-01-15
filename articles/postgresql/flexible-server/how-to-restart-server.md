@@ -43,7 +43,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 7. When the process completes, a notification informs you that the server is restarted.
 
-    :::image type="content" source="./media/how-to-restart-server/restarted-server-notification.png" alt-text="Screenshot showing the notification seen when a server completes a successful restart operation" lightbox="./media/how-to-restart-server/restarted-server-notification.png":::
+    :::image type="content" source="./media/how-to-restart-server/restarted-server-notification.png" alt-text="Screenshot showing the notification seen when a server completes a successful restart operation." lightbox="./media/how-to-restart-server/restarted-server-notification.png":::
 
 8. Also, the status of the server changes to **Available**.
 
