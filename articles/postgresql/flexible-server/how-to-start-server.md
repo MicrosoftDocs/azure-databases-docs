@@ -39,7 +39,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 4. A notification informs you that the server is starting.
 
-    :::image type="content" source="./media/how-to-start-server/starting-server-notification.png" alt-text="Screenshot showing a the notification seen when a server initiates a start operation." lightbox="./media/how-to-start-server/starting-server-notification.png":::
+    :::image type="content" source="./media/how-to-start-server/starting-server-notification.png" alt-text="Screenshot showing the notification seen when a server initiates a start operation." lightbox="./media/how-to-start-server/starting-server-notification.png":::
 
 5. Also, the status of the server changes to **Starting**.
 
@@ -47,7 +47,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 6. When the process completes, a notification informs you that the server is started.
 
-    :::image type="content" source="./media/how-to-start-server/started-server-notification.png" alt-text="Screenshot showing a the notification seen when a server completes a successful start operation." lightbox="./media/how-to-start-server/started-server-notification.png":::
+    :::image type="content" source="./media/how-to-start-server/started-server-notification.png" alt-text="Screenshot showing the notification seen when a server completes a successful start operation." lightbox="./media/how-to-start-server/started-server-notification.png":::
 
 7. Also, the status of the server changes to **Available**.
 
