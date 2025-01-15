@@ -347,6 +347,6 @@ One of the documents returned shows the specified array elements projected in th
 
 ## Related Content
 
-- [Migrate to vCore based Azure Cosmos DB for MongoDB](https://learn.microsoft.com/en-us/azure/cosmos-db/mongodb/vcore/migration-options)
+- [Migrate to vCore based Azure Cosmos DB for MongoDB](https://aka.ms/migrate-to-azure-cosmosdb-for-mongodb-vcore)
 - [insert with vCore based Azure Cosmos DB for MongoDB](insert.md)
 - [update with vCore based Azure Cosmos DB for MongoDB](update.md)
