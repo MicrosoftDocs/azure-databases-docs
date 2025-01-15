@@ -12,10 +12,10 @@ ms.date: 01/03/2025
 
 # update
 
-The update command is used to modify existing documents within a collection. The update command can be used to update one or multiple documents based on filtering criteria. Values of fields can be changed, new fields and values can be added and existing fields can be removed.
+The `update` command is used to modify existing documents within a collection. The `update` command can be used to update one or multiple documents based on filtering criteria. Values of fields can be changed, new fields and values can be added and existing fields can be removed.
 
 ## Example(s)
-Consider this sample document from the SampleCollection collection in the StoreData database.
+Consider this sample document from the stores collection in the StoreData database.
 
 ```json
 {
@@ -132,7 +132,7 @@ Consider this sample document from the SampleCollection collection in the StoreD
 Increment the totalSales by 10 and decrement the number of full time staff for a document with the specified _id.
 
 ```mongodb
-db.SampleCollection.updateOne({"_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4"}, {"$inc": {"sales.salesByCategory.0.totalSales": 10, "staff.totalStaff.fullTime": -6}})
+db.stores.updateOne({"_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4"}, {"$inc": {"sales.salesByCategory.0.totalSales": 10, "staff.totalStaff.fullTime": -6}})
 ```
 
 ### Example 2 - Update a single document using the $min operator
@@ -140,7 +140,7 @@ db.SampleCollection.updateOne({"_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4"}, {
 Update the totalStaff count for the document with the specified _id to 10 if the current value of the field is greater than 10.
 
 ```mongodb
-db.SampleCollection.updateOne({"_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4"}, {"$min": {"staff.totalStaff.fullTime": 10}})
+db.stores.updateOne({"_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4"}, {"$min": {"staff.totalStaff.fullTime": 10}})
 ```
 
 ### Example 3 - Update a single document using the $max operator 
@@ -148,7 +148,7 @@ db.SampleCollection.updateOne({"_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4"}, {
 Update the totalStaff count for the document with the specified _id to 14 if the current value of the field is less than 14.
 
 ```mongodb
-db.SampleCollection.updateOne({"_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4"}, {"$max": {"staff.totalStaff.fullTime": 14}})
+db.stores.updateOne({"_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4"}, {"$max": {"staff.totalStaff.fullTime": 14}})
 ```
 
 ### Example 4 - Update a single document using the $mul operator
@@ -156,7 +156,7 @@ db.SampleCollection.updateOne({"_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4"}, {
 Multiple the count of part time employees by 2 for the document with the specified _id value.
 
 ```mongodb
-db.SampleCollection.updateOne({"_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4"}, {"$mul": {"staff.totalStaff.partTime": 2}})
+db.stores.updateOne({"_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4"}, {"$mul": {"staff.totalStaff.partTime": 2}})
 ```
 
 ### Example 5 - Update a single document using the $rename operator
@@ -164,7 +164,7 @@ db.SampleCollection.updateOne({"_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4"}, {
 Rename the totalSales and totalStaff fields to fullSales and staffCounts respectively.
 
 ```mongodb
-db.SampleCollection.updateOne({"_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4"}, {"$rename": {"sales.totalSales": "sales.fullSales", "staff.totalStaff": "staff.staffCounts"}})
+db.stores.updateOne({"_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4"}, {"$rename": {"sales.totalSales": "sales.fullSales", "staff.totalStaff": "staff.staffCounts"}})
 ```
 
 ### Example 6 - Update a single document using the $set operator
@@ -172,7 +172,7 @@ db.SampleCollection.updateOne({"_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4"}, {
 Set the fullSales field to 3700 for the document with the specified _id value.
 
 ```mongodb
-db.SampleCollection.updateOne({"_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4"}, {"$set": {"sales.fullSales": 3700}})
+db.stores.updateOne({"_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4"}, {"$set": {"sales.fullSales": 3700}})
 ```
 
 ### Example 7 - Update a single document using the $unset operator
@@ -180,7 +180,7 @@ db.SampleCollection.updateOne({"_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4"}, {
 Remove the lon field from the location object in the document with the specified _id value.
 
 ```mongodb
-db.SampleCollection.updateOne({"_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4"}, {"$unset": {"location.lon": ""}})
+db.stores.updateOne({"_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4"}, {"$unset": {"location.lon": ""}})
 ```
 
 ### Example 8 - Update multiple documents
@@ -188,12 +188,18 @@ db.SampleCollection.updateOne({"_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4"}, {
 Update all documents where the first promotional event starts in February to start in March.
 
 ```mongodb
-db.SampleCollection.updateMany({"promotionEvents.0.promotionalDates.startDate.Month": 2}, {"$inc": {"promotionEvents.0.promotionalDates.startDate.Month": 1}})
+db.stores.updateMany({"promotionEvents.0.promotionalDates.startDate.Month": 2}, {"$inc": {"promotionEvents.0.promotionalDates.startDate.Month": 1}})
 ```
 
 ### Example 9 - Upsert a single document
 
 Set the upsert flag to true to create a new document if the document specified in the query filter does not exist in the collection.
 ```mongodb
-db.SampleCollection.updateOne({"_id": "NonExistentDocId"}, {"$set": {"name": "Brand New Store", "sales.totalSales": 0}}, {"upsert": true})
+db.stores.updateOne({"_id": "NonExistentDocId"}, {"$set": {"name": "Brand New Store", "sales.totalSales": 0}}, {"upsert": true})
 ```
+
+## Related Content
+
+- [Migrate to vCore based Azure Cosmos DB for MongoDB](https://learn.microsoft.com/en-us/azure/cosmos-db/mongodb/vcore/migration-options)
+- [insert with vCore based Azure Cosmos DB for MongoDB](insert.md)
+- [delete with vCore based Azure Cosmos DB for MongoDB](delete.md)
