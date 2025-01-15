@@ -27,35 +27,35 @@ Using the [Azure portal](https://portal.azure.com/):
 
 2. In the resource menu, select **Overview**.
 
-    :::image type="content" source="./media/how-to-restart-server/overview.png" alt-text="Screenshot showing how to select the Overview page." lightbox="./media/how-to-restart-server/overview.png":::
+    :::image type="content" source="./media/how-to-stop-server/overview.png" alt-text="Screenshot showing how to select the Overview page." lightbox="./media/how-to-stop-server/overview.png":::
 
-3. The status of the server must be **Available**, for the **Restart** button to appear on the toolbar.
+3. The status of the server must be **Available**, for the **Stop** button to appear on the toolbar.
 
-    :::image type="content" source="./media/how-to-restart-server/server-status.png" alt-text="Screenshot showing where in the Overview page you can find the status of the server ." lightbox="./media/how-to-restart-server/server-status.png":::
+    :::image type="content" source="./media/how-to-stop-server/server-status.png" alt-text="Screenshot showing where in the Overview page you can find the status of the server." lightbox="./media/how-to-stop-server/server-status.png":::
 
-4. Select the **Restart** button.
+4. Select the **Stop** button.
 
-    :::image type="content" source="./media/how-to-restart-server/restart-server.png" alt-text="Screenshot showing how to restart a started server." lightbox="./media/how-to-restart-server/restart-server.png":::
+    :::image type="content" source="./media/how-to-stop-server/stop-server.png" alt-text="Screenshot showing how to stop a started server." lightbox="./media/how-to-stop-server/stop-server.png":::
 
-5. In the **Restart server** dialog, confirm or abort your decision to restart the server.
+5. In the **Stop server** dialog, confirm or abort your decision to stop the server.
 
-    :::image type="content" source="./media/how-to-restart-server/confirm-restart-server.png" alt-text="Screenshot showing the Restart server dialog to confirm or abort the operation." lightbox="./media/how-to-restart-server/confirm-restart-server.png":::
+    :::image type="content" source="./media/how-to-stop-server/confirm-stop-server.png" alt-text="Screenshot showing the Stop server dialog to confirm or abort the operation." lightbox="./media/how-to-stop-server/confirm-stop-server.png":::
 
-6. A notification informs you that the server is restarting.
+6. A notification informs you that the server is stopping.
 
-    :::image type="content" source="./media/how-to-restart-server/restarting-server-notification.png" alt-text="Screenshot showing a the notification seen when a server initiates a restart operation." lightbox="./media/how-to-restart-server/restarting-server-notification.png":::
+    :::image type="content" source="./media/how-to-stop-server/stopping-server-notification.png" alt-text="Screenshot showing the notification seen when a server initiates a stop operation." lightbox="./media/how-to-stop-server/stopping-server-notification.png":::
 
-7. Also, the status of the server changes to **Restarting**.
+7. Also, the status of the server changes to **Stopping**.
 
-    :::image type="content" source="./media/how-to-restart-server/restarting-server-status.png" alt-text="Screenshot showing a server which is stopping, highlighting its status as Restarting." lightbox="./media/how-to-restart-server/restarting-server-status.png":::
+    :::image type="content" source="./media/how-to-stop-server/stopping-server-status.png" alt-text="Screenshot showing a server which is stopping, highlighting its status as Stopping." lightbox="./media/how-to-stop-server/stopping-server-status.png":::
 
-8. When the process completes, a notification informs you that the server is restarted.
+8. When the process completes, a notification informs you that the server is stopped.
 
-    :::image type="content" source="./media/how-to-restart-server/restarted-server-notification.png" alt-text="Screenshot showing a the notification seen when a server completes a successful restart operation." lightbox="./media/how-to-restart-server/restarted-server-notification.png":::
+    :::image type="content" source="./media/how-to-stop-server/stopped-server-notification.png" alt-text="Screenshot showing the notification seen when a server completes a successful stop operation." lightbox="./media/how-to-stop-server/stopped-server-notification.png":::
 
-9. Also, the status of the server changes to **Available**.
+9. Also, the status of the server changes to **Stopped**.
 
-    :::image type="content" source="./media/how-to-restart-server/restarted-server-status.png" alt-text="Screenshot showing a server which is restarted, highlighting its status as Available." lightbox="./media/how-to-restart-server/restarted-server-status.png":::
+    :::image type="content" source="./media/how-to-stop-server/stopped-server-status.png" alt-text="Screenshot showing a server which is stopped, highlighting its status as Stopped." lightbox="./media/how-to-stop-server/stopped-server-status.png":::
 
 ### [CLI](#tab/cli-stop-server)
 
