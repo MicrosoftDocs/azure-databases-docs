@@ -46,6 +46,8 @@
           href: cross-region-replication.md
         - name: HA and DR - Behind the scenes
           href: availability-disaster-recovery-under-hood.md
+        - name: Best practices for HA and DR
+          href: high-availability-replication-best-practices.md
         - name: Reliability
           href: /azure/reliability/reliability-cosmos-mongodb?toc=/azure/cosmos-db/mongodb/vcore/toc.json
     - name: Scalability
