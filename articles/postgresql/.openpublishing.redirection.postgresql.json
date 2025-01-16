@@ -1959,6 +1959,26 @@
         "source_path_from_root": "/articles/postgresql/flexible-server/how-to-maintenance-portal.md",
         "redirect_url": "/azure/postgresql/flexible-server/how-to-configure-scheduled-maintenance",
         "redirect_document_id": false
+    },
+    {
+        "source_path_from_root": "/articles/postgresql/flexible-server/how-to-restore-server-portal.md",
+        "redirect_url": "/azure/postgresql/flexible-server/how-to-restore-server",
+        "redirect_document_id": false
+    },
+    {
+        "source_path_from_root": "/articles/postgresql/flexible-server/how-to-create-server-customer-managed-key-cli.md",
+        "redirect_url": "/azure/postgresql/flexible-server/how-to-data-encryption",
+        "redirect_document_id": false
+    },
+    {
+        "source_path_from_root": "/articles/postgresql/flexible-server/how-to-create-server-customer-managed-key-portal.md",
+        "redirect_url": "/azure/postgresql/flexible-server/how-to-data-encryption",
+        "redirect_document_id": false
+    },
+    {
+        "source_path_from_root": "/articles/postgresql/flexible-server/how-to-create-server-customer-managed-key-azure-api.md",
+        "redirect_url": "/azure/postgresql/flexible-server/how-to-data-encryption",
+        "redirect_document_id": false
     }
 ]
 }

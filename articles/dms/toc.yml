@@ -150,20 +150,12 @@
       href: /azure/migrate/migrate-services-overview
     - name: SQL Database Projects
       href: /azure-data-studio/extensions/sql-database-project-extension
-    - name: Database Schema Conversion Toolkit (Oracle to Microsoft SQL)
-      href: /azure-data-studio/extensions/dsct/database-schema-conversion-toolkit
-    - name: Database Migration Assessment for Oracle
-      href: /azure-data-studio/extensions/database-migration-assessment-for-oracle-extension
     - name: SQL Server Migration Assistant
       href: /sql/ssma/sql-server-migration-assistant
     - name: Older tools
       items: 
       - name: Data Migration Assistant
         href: /sql/dma/dma-overview
-      - name: Database Experimentation Assistant
-        href: /sql/dea/database-experimentation-assistant-overview
-      - name: Data Access Migration Toolkit
-        href: https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit
   - name: Troubleshooting and known issues
     items:
     - name: Database Migration Service

@@ -200,6 +200,12 @@ identity=<identity>
 az postgres flexible-server identity remove --resource-group $resourceGroup --server-name $server --identity $identity
 ```
 
+If you try to remove a user assigned managed identity which is used to access a data encryption key, you get the following error:
+
+```output
+Cannot remove identity <identity> because it's used for data encryption.
+```
+
 ---
 
 ## Show the associated user assigned managed identities

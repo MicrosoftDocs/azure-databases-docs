@@ -20,6 +20,14 @@ Azure Cosmos DB for MongoDB vCore now supports secondary users with specialized 
  > [!NOTE]
 >  You can enable/disable this feature by using an ARM template or via Azure CLI during the preview phase.
 
+### Using Azure CLI
+
+```Bash
+    az resource patch --ids "/subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroup}/providers/Microsoft.DocumentDB/mongoClusters/{ClusterName}" --api-version 2024-10-01-preview --properties "{\"previewFeatures\": [\"GeoReplicas\", \"EnableReadOnlyUser\"]}"
+```
+
+### Using ARM template
+
 
 ```powershell
 "previewFeatures": {
@@ -43,7 +51,7 @@ Azure Cosmos DB for MongoDB vCore now supports secondary users with specialized 
 mongosh mongodb+srv://<YOUR_USERNAME>:<YOUR_PASSWORD>@>YOUR_HOST>?tls=true&authMechanism=SCRAM-SHA-256&retrywrites=false&maxIdleTimeMS=120000
 ```
  > [!NOTE]
->  Make sure you allowlist your client IP under the networking settings on azure portal. 
+>  Make sure you allowlist your client IP under the networking settings on Azure portal. 
 
 ### CreateUser
 
@@ -129,3 +137,4 @@ db.runCommand(
 -  You can create up to 10 users/roles per cluster. If you have a requirement to add more users, please open a [support ticket](/azure/azure-portal/supportability/how-to-create-azure-support-request).
 -  The `Updateuser` command now only supports password updates and cannot modify other object fields.
 -  The `Roleinfo` command is not supported in preview. Alternatively you can use `usersInfo`.
+-  RBAC support for assigning roles to specific databases or collections is not yet supported.

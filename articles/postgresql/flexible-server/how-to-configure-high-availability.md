@@ -363,7 +363,7 @@ Message: Operation HandleWalServiceFailureManagementOperation failed, because se
 
 - If you deploy a server in a region that consists of a single availability zone, you can enable high availability in same zone mode only. If the region is enhanced in the future with multiple availability zones, you can deploy new Azure Database for PostgreSQL flexible server with high availability configured as same zone or zone redundant. However, for any instances that were deployed in the region when the region consisted of a single availability zone, you can't directly enable high availability in zone redundant mode for them. As a workaround, you can restore those instances onto new instances, and then enable zone redundant high availability on the restored servers.
 
-    1. Follow the instructions provided in [Point-in-time restore of an Azure Database for PostgreSQL flexible server](how-to-restore-server-portal.md#restore-to-the-latest-restore-point), to restore the existing instance on a new one, using the latest restore point.
+    1. Follow the instructions provided in [Point-in-time restore of an Azure Database for PostgreSQL flexible server](how-to-restore-server.md#restore-to-the-latest-restore-point), to restore the existing instance on a new one, using the latest restore point.
     2. Once the new server is created, [enable high availability with zone redundancy](#enable-high-availability-for-existing-servers).
     3. After data verification, you can optionally [delete](how-to-delete-server.md) the old server.
     4. Make sure that the connection strings of your clients are modified to point to your newly restored instance.
@@ -372,4 +372,4 @@ Message: Operation HandleWalServiceFailureManagementOperation failed, because se
 
 - [Overview of business continuity with Azure Database for PostgreSQL - Flexible Server](concepts-business-continuity.md).
 - [High availability in Azure Database for PostgreSQL - Flexible Server](/azure/reliability/reliability-postgresql-flexible-server).
-- [Point-in-time restore of an Azure Database for PostgreSQL - Flexible Server instance](how-to-restore-server-portal.md).
+- [Point-in-time restore of an Azure Database for PostgreSQL - Flexible Server instance](how-to-restore-server.md).

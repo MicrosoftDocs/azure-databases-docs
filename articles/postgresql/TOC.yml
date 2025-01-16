@@ -413,12 +413,18 @@
         href: flexible-server/how-to-configure-server-logs.md
       - name:  On-demand backups
         href: flexible-server/how-to-operate-on-demand-backups.md
+      - name: Restore a server
+        href: flexible-server/how-to-restore-server.md
       - name: Configure managed identities
         href: flexible-server/how-to-configure-managed-identities.md
       - name: Major version upgrade
         href: flexible-server/how-to-perform-major-version-upgrade.md
       - name: Server parameters
         href: flexible-server/how-to-configure-server-parameters.md
+      - name: Scheduled maintenance
+        href: flexible-server/how-to-configure-scheduled-maintenance.md
+      - name: Data encryption
+        href: flexible-server/how-to-data-encryption.md
       - name: Scale a server
         items:
         - name: Azure portal
@@ -433,24 +439,8 @@
           href: flexible-server/how-to-restore-to-different-subscription-or-resource-group.md
         - name: Azure REST API
           href: flexible-server/how-to-restore-different-subscription-resource-group-api.md 
-      - name: Restore a server
-        items:
-        - name: Azure portal
-          href: flexible-server/how-to-restore-server-portal.md
-        - name: Azure CLI
-          href: flexible-server/how-to-restore-server-cli.md
       - name: Relocate a server 
         href: /azure/operational-excellence/relocation-postgresql-flexible-server?toc=/azure/postgresql/toc.json
-    - name: Encryption with CMK
-      items:
-      - name: Azure CLI
-        href: flexible-server/how-to-create-server-customer-managed-key-cli.md
-      - name: Azure portal
-        href: flexible-server/how-to-create-server-customer-managed-key-portal.md
-      - name: Azure REST API
-        href: flexible-server/how-to-create-server-customer-managed-key-azure-api.md
-    - name: Configure scheduled maintenance
-      href: flexible-server/how-to-configure-scheduled-maintenance.md
     - name: Networking
       items:
       - name: Encrypted connectivity using TLS/SSL
