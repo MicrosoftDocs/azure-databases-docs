@@ -29,7 +29,7 @@ Azure Cosmos DB for MongoDB vCore offers a **99.99% monthly availability SLA** f
 Clusters with high availability enabled automatically recover from physical shard failures without manual intervention. When a node failure occurs, the system promotes a standby physical shard to replace the failed primary node. The automatic failover process retains the same connection string, so that the failover process is seamless and transparent to applications. This feature is critical for applications that require continuous uptime and consistent data access.
 
 ### Disable HA for non-production clusters
-For non-production clusters or those cluster that aren't sensitive to downtime, high availability can be disabled to reduce costs. These environments may tolerate occasional downtime without impacting business operations. Carefully assess the risk and cost trade-offs before disabling HA on any cluster.
+For non-production clusters or those clusters that aren't sensitive to downtime, high availability can be disabled to reduce costs. These environments may tolerate occasional downtime without impacting business operations. Carefully assess the risk and cost trade-offs before disabling HA on any cluster.
 
 ### Use HA with availability zones
 In regions where **availability zones** are supported, enabling HA ensures that each primary-standby physical shard pair is provisioned in different availability zones. Zone redundancy provides extra resilience by protecting your cluster from data center-level failures within a region.
@@ -39,7 +39,7 @@ In regions where **availability zones** are supported, enabling HA ensures that 
 ### Use cross-region replication for disaster recovery
 Use cross-region replication when a copy of cluster data needs to be stored in another Azure region for disaster recovery (DR) purposes. Cross-region replication ensures that your data is available even in the event of a regional outage. Azure Cosmos DB for MongoDB vCore supports active-passive replication configuration to facilitate cross-region disaster recovery. Active-passive replication keeps one cluster as the primary one in read-write mode and maintains a read-only replica cluster in another Azure region. 
 
-If there is a rare regional outage, replica cluster can be promoted to become the new read-write cluster with minimal interruption. This capability ensures that your data remains safe and accessible even if an entire region experiences an outage.
+If there's a rare regional outage, replica cluster can be promoted to become the new read-write cluster with minimal interruption. This capability ensures that your data remains safe and accessible even if an entire region experiences an outage.
 
 ### Configure replication with minimal impact on performance
 When configuring cross-region replication, consider network latency and write latency impact on your applications. Choose regions for the primary read-write and replica clusters that are geographically close to your users and ensure that your applications are optimized for eventual consistency.
