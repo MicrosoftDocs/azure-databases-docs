@@ -3,7 +3,7 @@ title: Scaling resources
 description: This article describes the resource scaling in Azure Database for PostgreSQL - Flexible Server.
 author: varun-dhawan
 ms.author: varundhawan
-ms.date: 12/16/2024
+ms.date: 01/16/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: conceptual
@@ -54,11 +54,11 @@ Backup retention period changes are an online operation.
 
 To improve the restart time, we recommend that you perform scale operations during off-peak hours. That approach reduces the time needed to restart the database server.
 
-## Reduced downtime scaling
+## Near-zero downtime scaling
 
-Reduced downtime scaling is a feature designed to minimize downtime when you modify storage and compute tiers. If you modify the number of vCores or change the compute tier, the server undergoes a restart to apply the new configuration. During this transition to the new server, no new connections can be established.
+Near-zero downtime scaling is a feature designed to minimize downtime when you modify storage and compute tiers. If you modify the number of vCores or change the compute tier, the server undergoes a restart to apply the new configuration. During this transition to the new server, no new connections can be established.
 
-Typically, this process could take anywhere between 2 to 10 minutes with regular scaling. With the reduced downtime scaling feature, this duration is reduced to less than 30 seconds. This reduction in downtime during scaling resources improves the overall availability of your database instance.
+Typically, this process could take anywhere between 2 to 10 minutes with regular scaling. With the near-zero downtime scaling feature, this duration is reduced to less than 30 seconds. This reduction in downtime during scaling resources improves the overall availability of your database instance.
 
 ### How it works
 
@@ -69,7 +69,7 @@ This process allows for seamless updates, while minimizing downtime and ensuring
 For horizontally scaled configurations, consisting of a primary server and one or more read replicas, scaling operations must follow a specific sequence to ensure data consistency and minimize downtime. For details about that sequence, see [scaling with read replicas](concepts-read-replicas.md#scale).
 
 > [!NOTE]
-> Reduced downtime scaling is the _default_ type of operation. When the following [limitations](#considerations-and-limitations) are encountered, the system switches to regular scaling, which involves more downtime compared to the reduced downtime scaling.
+> Near-zero downtime scaling is the _default_ type of operation. When the following [limitations](#considerations-and-limitations) are encountered, the system switches to regular scaling, which involves more downtime compared to the near-zero downtime scaling.
 
 ### Precise downtime expectations
 
@@ -78,12 +78,12 @@ For horizontally scaled configurations, consisting of a primary server and one o
 
 #### Considerations and limitations
 
-- For reduced downtime scaling to work, allow all [inbound and outbound connections between the IP addresses in the delegated subnet, when you use virtual network integrated networking](concepts-networking-private.md#virtual-network-concepts). If these connections aren't permitted, the reduced downtime scaling process doesn't work, and scaling occurs through the standard scaling workflow.
-- Reduced downtime scaling doesn't work if there are regional capacity constraints or quota limits on your subscription.
-- Reduced downtime scaling doesn't work for a replica server, because it's only supported on the primary server. For replica servers, the scaling operation automatically goes through the regular process.
-- Reduced downtime scaling doesn't work if a [virtual network-injected server](concepts-networking-private.md#virtual-network-concepts) doesn't have sufficient usable IP addresses in the delegated subnet. If you have a standalone server, one extra IP address is necessary. For an instance with high-availability enabled, two extra IP addresses are required.
-- Logical replication slots aren't preserved during a reduced downtime failover event. To maintain logical replication slots and ensure data consistency after a scale operation, use the [pg_failover_slot](https://github.com/EnterpriseDB/pg_failover_slots) extension. For more information, see [enabling the pg_failover_slots extension in an instance of flexible server](../extensions/concepts-extensions-considerations.md#pg_failover_slots).
-- Reduced downtime scaling doesn't work with [unlogged tables](https://www.postgresql.org/docs/current/sql-createtable.html#SQL-CREATETABLE-UNLOGGED). If you're using unlogged tables for any of your data will lose all the data in those tables after the reduced downtime scaling.
+- For near-zero downtime scaling to work, allow all [inbound and outbound connections between the IP addresses in the delegated subnet, when you use virtual network integrated networking](concepts-networking-private.md#virtual-network-concepts). If these connections aren't permitted, the near-zero downtime scaling process doesn't work, and scaling occurs through the standard scaling workflow.
+- Near-zero downtime scaling doesn't work if there are regional capacity constraints or quota limits on your subscription.
+- Near-zero downtime scaling doesn't work for a replica server, because it's only supported on the primary server. For replica servers, the scaling operation automatically goes through the regular process.
+- Near-zero downtime scaling doesn't work if a [virtual network-injected server](concepts-networking-private.md#virtual-network-concepts) doesn't have sufficient usable IP addresses in the delegated subnet. If you have a standalone server, one extra IP address is necessary. For an instance with high-availability enabled, two extra IP addresses are required.
+- Logical replication slots aren't preserved during a near-zero downtime failover event. To maintain logical replication slots and ensure data consistency after a scale operation, use the [pg_failover_slot](https://github.com/EnterpriseDB/pg_failover_slots) extension. For more information, see [enabling the pg_failover_slots extension in an instance of flexible server](../extensions/concepts-extensions-considerations.md#pg_failover_slots).
+- Near-zero downtime scaling doesn't work with [unlogged tables](https://www.postgresql.org/docs/current/sql-createtable.html#SQL-CREATETABLE-UNLOGGED). If you're using unlogged tables for any of your data will lose all the data in those tables after the near-zero downtime scaling.
 
 ## Related content
 
