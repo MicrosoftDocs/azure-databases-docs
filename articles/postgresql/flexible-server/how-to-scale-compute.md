@@ -1,23 +1,25 @@
 ---
-title: Scale operations - Azure portal
-description: This article describes how to perform scale operations in Azure Database for PostgreSQL - Flexible Server through the Azure portal.
+title: Scale compute
+description: Learn how to scale compute in Azure Database for PostgreSQL - Flexible Server.
 author: akashraokm
 ms.author: akashrao
 ms.reviewer: maghan
-ms.date: 06/09/2024
+ms.date: 01/21/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: how-to
+# customer intent: As a user, I want to learn how to scale the compute used by my Azure Database for PostgreSQL flexible server.
 ---
 
-# Scale operations in Azure Database for PostgreSQL - Flexible Server
+# Scale compute
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
-This article provides steps to perform scaling operations for compute and storage. You're able to change your compute tiers between burstable, general purpose, and memory optimized SKUs, including choosing the number of vCores that is suitable to run your application. You can also scale up your storage. Expected IOPS are shown based on the compute tier, vCores and the storage capacity. The cost estimate is also shown based on your selection.
+This article provides step-by-step instructions to perform scaling operations for the compute of an Azure Database for PostgreSQL flexible server.
 
-> [!IMPORTANT]
-> You can't scale down the storage.
+You're allowed to change your compute between the burstable, general purpose, and memory optimized tiers. And, among each of those tiers, you can choose the number of virtual cores (vCores) that is more suitable to run your application. To learn more about the different compute tiers available in Azure Virtual Machines, and the use case for which they're best suited, refer to [size for virtual machines in Azure](/azure/virtual-machines/sizes/overview).
+
+When scaling the compute of your Azure Database for PostgreSQL flexible server, your server undergoes a restart and consequently leaves your server unavailable for some time. For more information about how that process works, and the expected duration of the downtime, see [near-zero downtime scaling](concepts-scaling-resources.md#near-zero-downtime-scaling).
 
 ## Prerequisites
 
@@ -25,141 +27,69 @@ To complete this how-to guide, you need:
 
 -   You must have an Azure Database for PostgreSQL flexible server instance. The same procedure is also applicable for an Azure Database for PostgreSQL flexible server instance configured with zone redundancy.
 
+## Scale compute
 
-## Scaling the compute tier and size
+### [Portal](#tab/portal-scale-compute)
 
-Follow these steps to choose the compute tier.
- 
-1.  In the [Azure portal](https://portal.azure.com/), choose the Azure Database for PostgreSQL flexible server instance that you want to restore the backup from.
+Using the [Azure portal](https://portal.azure.com/):
 
-2.  Select **Compute+storage**.
+1. Select your Azure Database for PostgreSQL flexible server.
 
-3.  A page with current settings is displayed.
- :::image type="content" source="./media/how-to-scale-compute-storage-portal/click-compute-storage.png" alt-text="Screenshot that shows compute+storage view.":::
+2. In the resource menu, select **Compute + storage**.
 
-4.  You can choose the compute class between burstable, general purpose, and memory optimized tiers.
-   :::image type="content" source="./media/how-to-scale-compute-storage-portal/list-compute-tiers.png" alt-text="Screenshot that  list compute tiers.":::
+    :::image type="content" source="./media/how-to-scale-compute/compute-storage.png" alt-text="Screenshot showing how to select the Compute + storage page." lightbox="./media/how-to-scale-compute/compute-storage.png":::
 
+3. If you want to select a different tier than the one currently selected, in the **Compute tier** group of radio buttons, select the option that best adjusts to your needs.
 
-5.  If you're good with the default vCores and memory sizes, you can skip the next step.
+    :::image type="content" source="./media/how-to-scale-compute/compute-tier.png" alt-text="Screenshot showing where to select a different compute tier." lightbox="./media/how-to-scale-compute/compute-tier.png":::
 
-6.  If you want to change the number of vCores, you can select the drop-down of **Compute size** and select the desired number of vCores/Memory from the list.
-    
-    - Burstable compute tier:
-    :::image type="content" source="./media/how-to-scale-compute-storage-portal/compute-burstable-dropdown.png" alt-text="Screenshot that shows burstable compute.":::
+4. If the region of your server supports Intel and AMD processors, you can use the **Compute Processor** radio button to filter the options listed in the **Compute size** drop-down to only hardware produced by the manufacturer selected.
 
-    - General purpose compute tier:
-    :::image type="content" source="./media/how-to-scale-compute-storage-portal/compute-general-purpose-dropdown.png" alt-text="Screenshot that shows general-purpose compute.":::
+    :::image type="content" source="./media/how-to-scale-compute/compute-processor.png" alt-text="Screenshot showing where to select a different compute processor manufacturer." lightbox="./media/how-to-scale-compute/compute-processor.png":::
 
-    - Memory optimized compute tier:
-    :::image type="content" source="./media/how-to-scale-compute-storage-portal/compute-memory-optimized-dropdown.png" alt-text="Screenshot that shows memory optimized compute.":::
+5. If you want to select a different machine size among the ones available in the same tier, expand the **Compute size** drop-down and select the size that best suits your needs.
 
-7.  Select **Save**. 
-8.  You see a confirmation message. Select **OK** if you want to proceed. 
-9.  A notification about the scaling operation in progress.
+    :::image type="content" source="./media/how-to-scale-compute/compute-size.png" alt-text="Screenshot showing where to select a different compute size." lightbox="./media/how-to-scale-compute/compute-size.png":::
 
+6. Once you choose your desired configuration, select **Save**.
 
-## Manual storage scaling
+    :::image type="content" source="./media/how-to-scale-compute/save.png" alt-text="Screenshot showing the location of the Save button, enabled once you make some changes to current configuration." lightbox="./media/how-to-scale-compute/save.png":::
 
-Follow these steps to increase your storage size.
+> [!NOTE]
+> Notice that when you click **Save** you're not asked for confirmation to proceed with the changes. The operation is immediately initiated and cannot be aborted.
 
-1.  In the [Azure portal](https://portal.azure.com/), choose the Azure Database for PostgreSQL flexible server instance for which you want to increase the storage size.
+6. A notification shows that a deployment is in progress.
 
-2.  Select **Compute+storage**.
+    :::image type="content" source="./media/how-to-scale-compute/deployment-progress-notification.png" alt-text="Screenshot showing a deployment is in progress to scale the compute." lightbox="./media/how-to-scale-compute/deployment-progress-notification.png":::
 
-3.  A page with current settings is displayed.
-   
-:::image type="content" source="./media/how-to-scale-compute-storage-portal/click-compute-storage.png" alt-text="Screenshot that shows compute+storage.":::
+7. When the scale process completes, a notification shows that the deployment succeeded.
 
-4.  Select **Storage size in GiB** drop down and choose your new desired size.
+    :::image type="content" source="./media/how-to-scale-compute/deployment-suceeded-notification.png" alt-text="Screenshot showing that the deployment to scale the compute succeeded." lightbox="./media/how-to-scale-compute/deployment-suceeded-notification.png":::
 
- :::image type="content" source="./media/how-to-scale-compute-storage-portal/storage-scaleup.png" alt-text="Screenshot that shows storage scale up.":::
+### [CLI](#tab/cli-scale-compute)
 
-5. If you're good with the storage size, select **Save**.
-   
-6. Most of the disk scaling operations are **online** and as soon as you select **Save** scaling process starts without any downtime but some scaling operations are **offline** and you see below server restart message. Select **continue** if you want to proceed.
+You can initiate the scaling of your compute via the [az postgres flexible-server update](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-update) command.
 
-     :::image type="content" source="./media/how-to-scale-compute-storage-portal/offline-scaling.png" alt-text="Screenshot that shows offline scaling.":::
-   
-7. You will receive a notification that scaling operation is in progress.
+```azurecli-interactive
+az postgres flexible-server update --resource-group <resource_group> --name <server> --tier <tier> --sku-name <sku_name>
+```
 
+> [!NOTE]
+> The previous command might need to be completed with other parameters whose presence and values would vary depending on how you want to configure other features of the existing server.
 
-## Storage autogrow 
+The list of allowed values for the `--sku-name` parameter is dependent of the value passed to the `--tier` parameter, and of the region in which you're trying to deploy your server.
 
-Use below steps to enable storage autogrow for your Azure Database for PostgreSQL flexible server instance and automatically scale your storage in most cases.
+If you pass an incorrect value to `--sku-name`, you get the following error with the list of 
 
-1.  In the [Azure portal](https://portal.azure.com/), choose the Azure Database for PostgreSQL flexible server instance for which you want to increase the storage size.
+```output
+Incorrect value for --sku-name. The SKU name does not match <tier> tier. Specify --tier if you did not. Or CLI will set GeneralPurpose as the default tier. Allowed values : ['<sku_name_1>', '<sku_name_2>', ..., 'sku_name_n']
+```
 
-2.  Select **Compute+storage**.
-
-3.  A page with current settings is displayed.
-   
-:::image type="content" source="./media/how-to-scale-compute-storage-portal/storage-autogrow.png" alt-text="Screenshot that shows storage autogrow checkbox.":::
-
-4. Check **Storage Auto-growth** button
-
- :::image type="content" source="./media/how-to-scale-compute-storage-portal/storage-autogrow.png" alt-text="Screenshot that shows storage autogrow.":::
-
-5.  Select **Save**. 
-
-6.  You receive a notification that storage autogrow enablement is in progress.
-
-> [!IMPORTANT]
-> Storage autogrow initiates disk scaling operations online, but there are specific situations where online scaling is not possible. In such cases, like when approaching or surpassing the 4,096-GiB limit, storage autogrow does not activate, and you must manually increase the storage. A portal informational message is displayed when this happens.
-
-## Performance tier
-
-### Scaling up
-
-Use the below steps to scale up the performance tier on your Azure Database for PostgreSQL flexible server instance.
-
-1. In the [Azure portal](https://portal.azure.com/), choose the Azure Database for PostgreSQL flexible server instance that you want to scale up.
-
-2. Select **Compute + storage**.
-
-3. A page with current settings is displayed.
- 
-    :::image type="content" source="./media/how-to-scale-compute-storage-portal/iops-scale-up-1.png" alt-text="Screenshot that shows performance tier 1.":::
-
-4. You see the new “Performance Tier” drop-down option. The option selected will be the pre-provisioned IOPS, which is also the minimum amount of IOPS available for the selected storage size.
-
-    :::image type="content" source="./media/how-to-scale-compute-storage-portal/iops-scale-up-2.png" alt-text="Screenshot that shows performance tier drop-down 2.":::
-
-5. Select your new performance tier and select save.
-
-    :::image type="content" source="./media/how-to-scale-compute-storage-portal/iops-scale-up-3.png" alt-text="Screenshot that shows performance tier and save 3.":::
-
-6. Your server deploys and once the deployment is completed, your server is updated and will show the new performance tier.
-
-### Scaling down 
-
-Use the below steps to scale down the performance tier on your Azure Database for PostgreSQL flexible server instance.
-
-1. In the [Azure portal](https://portal.azure.com/), choose the Azure Database for PostgreSQL flexible server instance that you want to scale down.
-
-2. Select **Compute + storage**.
-
-3. A page with current settings is displayed.
-
-    :::image type="content" source="./media/how-to-scale-compute-storage-portal/iops-scale-down-1.png" alt-text="Screenshot that shows performance tier 4.":::
-
-4.	You see the new “Performance Tier” drop-down option. The option selected will be your last selected IOPS when you scaled up.
-
-    :::image type="content" source="./media/how-to-scale-compute-storage-portal/iops-scale-down-2.png" alt-text="Screenshot that shows performance tier drop-down 5.":::
-
-5.	Select your new performance tier and select save.
-
-    :::image type="content" source="./media/how-to-scale-compute-storage-portal/iops-scale-down-3.png" alt-text="Screenshot that shows performance tier and save 6.":::
-
-6.	Your server deploys and once the deployment is completed, your server is updated and will show the new performance tier.
-
-> [!IMPORTANT]
-> You can only scale down the Performance Tier of your server 12 hours after scaling up. This restriction is in place to ensure stability and performance after any changes to your server's configuration.
+---
 
 ## Related content
 
-- [Overview of business continuity with Azure Database for PostgreSQL - Flexible Server](concepts-business-continuity.md).
-- [High availability in Azure Database for PostgreSQL - Flexible Server](/azure/reliability/reliability-postgresql-flexible-server).
 - [Compute options in Azure Database for PostgreSQL - Flexible Server](concepts-compute.md).
 - [Storage options in Azure Database for PostgreSQL - Flexible Server](concepts-storage.md).
 - [Limits in Azure Database for PostgreSQL - Flexible Server](concepts-limits.md).
+- [Near-zero downtime scaling](concepts-scaling-resources.md#near-zero-downtime-scaling)
