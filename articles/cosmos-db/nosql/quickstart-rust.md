@@ -208,13 +208,10 @@ SELECT * FROM products p WHERE p.category = @category
 
 ```rust
 let item_partition_key = "gear-surf-surfboards";
-
-let partition_key = PartitionKey::from(item_partition_key);
-
 let query = Query::from("SELECT * FROM c WHERE c.category = @category")
     .with_parameter("@category", item_partition_key)?;
 
-let pager = container.query_items::<Item>(query, partition_key, None)?;
+let pager = container.query_items::<Item>(query, item_partition_key, None)?;
 while let Some(page_response) = pager.next.await {
     let page = page_response?.into_body().await?
     for item in page.items {
