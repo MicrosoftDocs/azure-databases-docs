@@ -128,7 +128,7 @@ The sample code in the template uses a database named `cosmicworks` and containe
 This sample creates a new instance of `CosmosClient` using `CosmosClient::new` and authenticates using a `DefaultAzureCredential` instance.
 
 ```rust
-let credential = DefaultAzureCredential::new().unwrap();
+let credential = DefaultAzureCredential::new()?;
 
 let client = CosmosClient::new(&endpoint, credential, None)?;
 ```
