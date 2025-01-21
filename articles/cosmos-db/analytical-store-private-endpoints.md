@@ -34,7 +34,7 @@ The following access restrictions are applicable when data-exfiltration protecti
 ### Add a managed private endpoint for Azure Cosmos DB analytical store
 
 > [!NOTE]
-> To perform some of the steps below, you will need to temporarly change the Azure Cosmos DB account networking configuration. Go to the **Networking** tab in the portal, and click on the **Allow access from Azure Portal** option. After the configuration of your private endpoint, you can revert this action and disable the access.
+> To perform some of the steps below, you will need to temporarly change the Azure Cosmos DB account networking configuration. Go to the **Networking** tab in the portal, and click on the **Accept connections from within public Azure datacenters** and **Add Azure Portal Middleware IPs** options. After the configuration of your private endpoint, you can revert this action and disable the access.
 
 1. Sign in to the [Azure portal](https://portal.azure.com).
 
