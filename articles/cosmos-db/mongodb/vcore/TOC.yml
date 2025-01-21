@@ -46,6 +46,8 @@
           href: cross-region-replication.md
         - name: HA and DR - Behind the scenes
           href: availability-disaster-recovery-under-hood.md
+        - name: Best practices for HA and DR
+          href: high-availability-replication-best-practices.md
         - name: Reliability
           href: /azure/reliability/reliability-cosmos-mongodb?toc=/azure/cosmos-db/mongodb/vcore/toc.json
     - name: Scalability
@@ -146,6 +148,16 @@
         href: secondary-users.md
 - name: Reference
   items:
+    - name: Azure CLI
+      href: /cli/azure/cosmosdb/mongocluster
+    - name: Java
+      href: /java/api/overview/azure/resourcemanager-mongocluster-readme
+    - name: .NET
+      href: /dotnet/api/azure.provisioning.cosmosdb.mongocluster
+    - name: Node.js
+      href: /javascript/api/overview/azure/mongo-cluster
+    - name: Python
+      href: /python/api/overview/azure/mongo-cluster
     - name: Commands
       href: commands/toc.yml
     - name: Operators

@@ -29,22 +29,27 @@ Using the [Azure portal](https://portal.azure.com/):
 
 3. The status of the server must be **Available**, for the **Restart** button to appear on the toolbar.
 
-3. Select the **Restart** button.
+    :::image type="content" source="./media/how-to-restart-server/server-status.png" alt-text="Screenshot showing where in the Overview page you can find the status of the server." lightbox="./media/how-to-restart-server/server-status.png":::
+
+4. Select the **Restart** button.
 
     :::image type="content" source="./media/how-to-restart-server/restart-server.png" alt-text="Screenshot showing how to restart a started server." lightbox="./media/how-to-restart-server/restart-server.png":::
 
-4. In the **Restart server** dialog, confirm or abort your decision to restart the server.
+5. In the **Restart server** dialog, confirm or abort your decision to restart the server.
 
     :::image type="content" source="./media/how-to-restart-server/confirm-restart-server.png" alt-text="Screenshot showing the Restart server dialog to confirm or abort the operation." lightbox="./media/how-to-restart-server/confirm-restart-server.png":::
 
+6. A notification informs you that the server is restarting. Also, the status of the server changes to **Restarting**.
 
-5. A notification informs you that the server is restarting. Also, the status of the server changes to **Restarting**.
+    :::image type="content" source="./media/how-to-restart-server/restarting-server-status.png" alt-text="Screenshot showing a server which is restarting." lightbox="./media/how-to-restart-server/restarting-server-status.png":::
 
-    :::image type="content" source="./media/how-to-restart-server/restarting-server.png" alt-text="Screenshot showing a server which is restarting." lightbox="./media/how-to-restart-server/restarting-server.png":::
+7. When the process completes, a notification informs you that the server is restarted.
 
-6. When the process completes, a notification informs you that the server is restarted. Also, the status of the server changes to **Available**.
+    :::image type="content" source="./media/how-to-restart-server/restarted-server-notification.png" alt-text="Screenshot showing the notification seen when a server completes a successful restart operation." lightbox="./media/how-to-restart-server/restarted-server-notification.png":::
 
-    :::image type="content" source="./media/how-to-restart-server/restarted-server.png" alt-text="Screenshot showing a server which is restarted and shows its status as Available." lightbox="./media/how-to-restart-server/restarted-server.png":::
+8. Also, the status of the server changes to **Available**.
+
+    :::image type="content" source="./media/how-to-restart-server/restarted-server-status.png" alt-text="Screenshot showing a server which is started, highlighting its status as Available." lightbox="./media/how-to-restart-server/restarted-server-status.png":::
 
 ### [CLI](#tab/cli-restart-server)
 

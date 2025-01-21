@@ -33,9 +33,13 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="./media/how-to-configure-scheduled-maintenance/system-managed-schedule.png" alt-text="Screenshot showing the selection of system managed schedule in Maintenance page." lightbox="./media/how-to-configure-scheduled-maintenance/system-managed-schedule.png":::
 
-4. If you want to have more granular control, select **Custom schedule**. You can then select a preferred day of the week, and a start time for the 60-minute window in which you want maintenance to occur.
+4. If you want to have more granular control, select **Custom schedule**.
 
     :::image type="content" source="./media/how-to-configure-scheduled-maintenance/custom-schedule.png" alt-text="Screenshot showing the selection of custom schedule in Maintenance page." lightbox="./media/how-to-configure-scheduled-maintenance/custom-schedule.png":::
+
+5. Select a preferred day of the week, and a start time for the 60-minute window in which you want maintenance to occur.
+
+    :::image type="content" source="./media/how-to-configure-scheduled-maintenance/day-time.png" alt-text="Screenshot showing the selection of custom day of the week and start time for the maintenance window." lightbox="./media/how-to-configure-scheduled-maintenance/day-time.png":::
 
 5. Select **Save**.
 

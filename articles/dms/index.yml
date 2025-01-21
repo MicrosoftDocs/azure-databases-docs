@@ -132,10 +132,6 @@ landingContent:
             url: /azure/migrate/migrate-services-overview
           - text: SQL Database Projects
             url: /azure-data-studio/extensions/sql-database-project-extension
-          - text: Database Schema Conversion Toolkit (Oracle to Microsoft SQL)
-            url: /azure-data-studio/extensions/dsct/database-schema-conversion-toolkit
-          - text: Database Migration Assessment for Oracle
-            url: /azure-data-studio/extensions/database-migration-assessment-for-oracle-extension
           - text: Database Migration Assessment for MongoDB
             url: /azure-data-studio/extensions/database-migration-for-mongo-extension
           - text: SQL Server Migration Assistant
