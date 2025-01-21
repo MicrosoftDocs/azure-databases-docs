@@ -130,13 +130,7 @@ This sample creates a new instance of `CosmosClient` using `CosmosClient::new` a
 ```rust
 let credential = DefaultAzureCredential::new().unwrap();
 
-let client = match CosmosClient::new(&endpoint, credential, None) {
-    Ok(client) => client,
-    Err(e) => {
-        eprintln!("Error creating CosmosClient: {}", e);
-        return;
-    }
-};
+let client = CosmosClient::new(&endpoint, credential, None)?;
 ```
 
 ### Get a database
