@@ -181,7 +181,7 @@ let item = Item {
 
 let partition_key = PartitionKey::from(item.category.clone());
 
-let _ = container.upsert_item(partition_key, item, None).await;
+container.upsert_item(partition_key, item, None).await?;
 ```
 
 ### Read an item
