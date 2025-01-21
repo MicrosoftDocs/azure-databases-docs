@@ -17,7 +17,7 @@ This article discusses how to enforce a minimum version of the TLS protocol for 
 
 ## How minimum TLS version enforcement works in Azure Cosmos DB
 
-Because of the multi-tenant nature of Cosmos DB, the service is required to meet the access and security needs of every user. To achieve this, **Cosmos DB enforces minimum TLS protocols at the application layer**, and not lower layers in the network stack where TLS operates. This enforcement occurs on any authenticated request to a specific database account, according to the settings set on that account by the customer.
+Because of the multitenant nature of Cosmos DB, the service is required to meet the access and security needs of every user. To achieve this, **Cosmos DB enforces minimum TLS protocols at the application layer**, and not lower layers in the network stack where TLS operates. This enforcement occurs on any authenticated request to a specific database account, according to the settings set on that account by the customer.
 
 The **minimum service-wide accepted version is TLS 1.0**. This selection can be changed on a per account basis, as discussed in the following section. 
 
@@ -157,7 +157,7 @@ To set this property using an ARM template, update your existing template or exp
 You can create accounts with the `minimalTlsVersion` property set by using the ARM template above, or by changing the PATCH method to a PUT on either Azure CLI or Azure PowerShell. Make sure to include the other properties for your account.
 
 > [!IMPORTANT]
-> If the account exists and the `minimalTlsVersion` property is ommited in a PUT request, then the property will reset to its default value, starting with the 2022-11-15 API version.
+> If the account exists and the `minimalTlsVersion` property is omitted in a PUT request, then the property will reset to its default value, starting with the 2022-11-15 API version.
 
 ## How to verify minimum TLS version enforcement
 
