@@ -19,7 +19,7 @@ This article provides step-by-step instructions to perform scaling operations fo
 
 You're allowed to change your compute between the burstable, general purpose, and memory optimized tiers. And, among each of those tiers, you can choose the number of virtual cores (vCores) that is more suitable to run your application. To learn more about the different compute tiers available in Azure Virtual Machines, and the use case for which they're best suited, refer to [size for virtual machines in Azure](/azure/virtual-machines/sizes/overview).
 
-When scaling the compute of your Azure Database for PostgreSQL flexible server, your server undergoes a restart and consequently leaves your server unavailable for some time. For more information about how that process works, and the expected duration of the downtime, see [near-zero downtime scaling](concepts-scaling-resources.md#near-zero-downtime-scaling).
+When you request a scaling operation of the compute used by your Azure Database for PostgreSQL flexible server, your server undergoes a restart and so leaves your server unavailable for some time. For more information about how that process works, and the expected duration of the downtime, see [near-zero downtime scaling](concepts-scaling-resources.md#near-zero-downtime-scaling).
 
 ## Prerequisites
 
@@ -56,15 +56,15 @@ Using the [Azure portal](https://portal.azure.com/):
     :::image type="content" source="./media/how-to-scale-compute/save.png" alt-text="Screenshot showing the location of the Save button, enabled once you make some changes to current configuration." lightbox="./media/how-to-scale-compute/save.png":::
 
 > [!NOTE]
-> Notice that when you click **Save** you're not asked for confirmation to proceed with the changes. The operation is immediately initiated and cannot be aborted.
+> Notice that when you select **Save** you're not asked for confirmation to proceed with the changes. The operation is immediately initiated and can't be aborted.
 
-6. A notification shows that a deployment is in progress.
+7. A notification shows that a deployment is in progress.
 
     :::image type="content" source="./media/how-to-scale-compute/deployment-progress-notification.png" alt-text="Screenshot showing a deployment is in progress to scale the compute." lightbox="./media/how-to-scale-compute/deployment-progress-notification.png":::
 
-7. When the scale process completes, a notification shows that the deployment succeeded.
+8. When the scale process completes, a notification shows that the deployment succeeded.
 
-    :::image type="content" source="./media/how-to-scale-compute/deployment-suceeded-notification.png" alt-text="Screenshot showing that the deployment to scale the compute succeeded." lightbox="./media/how-to-scale-compute/deployment-suceeded-notification.png":::
+    :::image type="content" source="./media/how-to-scale-compute/deployment-succeeded-notification.png" alt-text="Screenshot showing that the deployment to scale the compute succeeded." lightbox="./media/how-to-scale-compute/deployment-succeeded-notification.png":::
 
 ### [CLI](#tab/cli-scale-compute)
 
