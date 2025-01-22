@@ -21,9 +21,9 @@ To configure your server so that the storage grows automatically when it's runni
 
 Whether you use the manual or automatic approach, you're only allowed to increase the size of the storage assigned to your Azure Database for PostgreSQL flexible server. Decreasing the size of the storage isn't supported.
 
-If your server is using [Premium SSD disk](/virtual-machines/disks-types#premium-ssds), you can also use a performance tier higher than the original baseline to meet higher demand. The baseline performance tier is set based on the provisioned disk size. For more information, see [Performance tiers for managed disks](/azure/virtual-machines/disks-change-performance).
+If your server is using [Premium SSD disk](/azure/virtual-machines/disks-types#premium-ssds), you can also use a performance tier higher than the original baseline to meet higher demand. The baseline performance tier is set based on the provisioned disk size. For more information, see [Performance tiers for managed disks](/azure/virtual-machines/disks-change-performance).
 
-If your server is using [Premium SSD v2 disk](/virtual-machines/disks-types#premium-ssd-v2), you can also adjust, independently, the IOPS and throughput of your disk. For more information, see [Premium SSD v2 performance](/azure/virtual-machines/disks-types#premium-ssd-v2-performance).
+If your server is using [Premium SSD v2 disk](/azure/virtual-machines/disks-types#premium-ssd-v2), you can also adjust, independently, the IOPS and throughput of your disk. For more information, see [Premium SSD v2 performance](/azure/virtual-machines/disks-types#premium-ssd-v2-performance).
 
 > [!IMPORTANT]
 > You can only scale down the Performance Tier of your server 12 hours after scaling up. This restriction is in place to ensure stability and performance after any changes to your server's configuration.
@@ -62,7 +62,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 ### [CLI](#tab/cli-scale-storage-size-ssd)
 
-You can initiate the scaling of your compute via the [az postgres flexible-server update](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-update) command.
+You can initiate the scaling of your storage, to increase the size of your Premium SSD disk, via the [az postgres flexible-server update](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-update) command.
 
 ```azurecli-interactive
 az postgres flexible-server update --resource-group <resource_group> --name <server> --tier <tier> --sku-name <sku_name>
