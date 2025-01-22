@@ -1526,12 +1526,12 @@
         "redirect_document_id": false
       },
       {
-        "source_path_from_root": "/azure/mysql/flexible-server/concepts-monitoring.md",
+        "source_path_from_root": "/articles/mysql/flexible-server/concepts-monitoring.md",
         "redirect_url": "/azure/mysql/flexible-server/monitor-mysql-flexible-server-reference",
         "redirect_document_id": true
       },
       {
-        "source_path_from_root": "/azure/mysql/flexible-server/concepts-slow-query-logs.md",
+        "source_path_from_root": "/articles/mysql/flexible-server/concepts-slow-query-logs.md",
         "redirect_url": "/azure/mysql/flexible-server/monitor-mysql-flexible-server",
         "redirect_document_id": true
       }

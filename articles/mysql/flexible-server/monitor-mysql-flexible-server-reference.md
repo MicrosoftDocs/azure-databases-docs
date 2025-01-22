@@ -33,7 +33,7 @@ This table includes more detailed descriptions of some metrics.
 | Metric display name | Metric | Unit | Description |
 |:--- |:--- |
 | MySQL Uptime | This metric indicates the length of time that the MySQL server has been running. |
-| Host CPU percent | Host CPU percent is the total utilization of the CPU to process all the tasks on your server over a selected period. This metric includes the workload of your Azure Database for MySQL Flexible Server instance and Azure MySQL process. High CPU percent can help you find if your database server has more workload than it can handle. This metric is equivalent to total CPU utilization and is similar to CPU utilization on any virtual machine. |
+| Host CPU percent | Host CPU percent is the total utilization of the CPU to process all the tasks on your server over a selected period. This metric includes the workload of your Azure Database for MySQL Flexible Server instance and Azure MySQL process. High CPU percent can help you find if your database server has a heavier workload than it can handle. This metric is equivalent to total CPU utilization and is similar to CPU utilization on any virtual machine. |
 | CPU Credit Consumed | **This is for Burstable Tier Only** CPU credit is calculated based on workload. See [B-series burstable virtual machine sizes](/azure/virtual-machines/sizes-b-series-burstable) for more information. |
 | CPU Credit Remaining | **This is for Burstable Tier Only** CPU remaining is calculated based on workload. See [B-series burstable virtual machine sizes](/azure/virtual-machines/sizes-b-series-burstable) for more information. |
 | Host Network In | Total sum of incoming network traffic on the server for a selected period. This metric includes traffic to your database and Azure Database for MySQL Flexible Server features like monitoring, logs, etc. |
@@ -50,7 +50,7 @@ This table includes more detailed descriptions of some metrics.
 
 *Storage breakdown metrics* provide valuable insights into the storage usage of your Azure Database for MySQL Flexible Server. These metrics give you a detailed breakdown of the storage limit, storage percentage, storage used, data storage used, ibdata1 storage used, binlog storage used, other storage used, and backup storage used. By monitoring these metrics, you can effectively manage your storage resources, optimize storage allocation, and ensure efficient utilization of your server's storage capacity. Understanding the storage breakdown metrics helps you make informed decisions to maintain the performance and availability of your Azure Database for MySQL Flexible Server.
 
-The table below lists desctiptions for the storage breakdown metrics available for Azure Database for MySQL Flexible Server:
+The table below lists descriptions for the storage breakdown metrics available for Azure Database for MySQL Flexible Server:
 
 | Metric display name | Description |
 |:--- |:--- |

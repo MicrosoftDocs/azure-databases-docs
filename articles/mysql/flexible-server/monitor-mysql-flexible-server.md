@@ -8,32 +8,8 @@ author: markingmyname
 ms.author: maghan
 ms.service: azure-database-mysql
 ---
-
-<!-- 
-According to the Content Pattern guidelines, all comments must be removed before publication!!!
-IMPORTANT 
-When using this template, first:
-1. Search and replace [TODO-replace-with-service-name] with the official name of your service.
-2. Search and replace [TODO-replace-with-service-filename] with the service name to use in GitHub filenames.-->
-
-<!-- VERSION 4.0 November 2024
-For background about this template, see https://review.learn.microsoft.com/en-us/help/contribute/contribute-monitoring?branch=main -->
-
-<!-- Add service-specific information after the includes.
-Your service should have the following two articles:
-1. The overview monitoring article (based on this template)
-   - Title: "Monitor [TODO-replace-with-service-name]"
-   - TOC title: "Monitor [TODO-replace-with-service-name]"
-   - Filename: "monitor-[TODO-replace-with-service-filename].md"
-2. A reference article that lists all the metrics and logs for your service (based on the template data-reference-template.md).
-   - Title: "[TODO-replace-with-service-name] monitoring data reference"
-   - TOC title: "Monitoring data reference"
-   - Filename: "monitor-[TODO-replace-with-service-filename]-reference.md".
--->
-
 # Monitor Azure Database for MySQL - Flexible Server
 
-<!-- Intro -->
 [!INCLUDE [azmon-horz-intro](~/reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/azmon-horz-intro.md)]
  
 ## Collect data with Azure Monitor 
@@ -127,10 +103,8 @@ The following table describes the output of the slow query log. Depending on the
 
 [!INCLUDE [azmon-horz-tools](~/reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/azmon-horz-tools.md)]
 
-<!--## Export Azure Monitor data -->
 [!INCLUDE [azmon-horz-export-data](~/reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/azmon-horz-export-data.md)]
 
-<!--## Use Kusto queries to analyze log data -->
 [!INCLUDE [azmon-horz-kusto](~/reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/azmon-horz-kusto.md)]
 
 ### Recommended Kusto queries for Azure Database for MySQL - Flexible Server
@@ -190,7 +164,6 @@ You can use slow query logs to find candidates for optimization. After your slow
 
 [!INCLUDE [azmon-horz-alerts-part-one](~/reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/azmon-horz-alerts-part-one.md)]
 
-<!-- Add any recommended alert rules here. -->
 ### Recommended Azure Monitor alert rules for Azure Database for MySQL - Flexible Server
 
 The following table lists common and recommended alert rules for Azure Database for MySQL - Flexible Server.
@@ -205,7 +178,6 @@ The following table lists common and recommended alert rules for Azure Database 
 
 [!INCLUDE [azmon-horz-alerts-part-two](~/reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/azmon-horz-alerts-part-two.md)]
 
-<!-- ## Get personalized recommendations using Azure Advisor -->
 [!INCLUDE [azmon-horz-advisor](~/reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/azmon-horz-advisor.md)]
 
 ## Related content
