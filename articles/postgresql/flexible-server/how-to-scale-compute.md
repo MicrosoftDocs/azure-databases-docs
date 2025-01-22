@@ -21,12 +21,6 @@ You're allowed to change your compute between the burstable, general purpose, an
 
 When you request a scaling operation of the compute used by your Azure Database for PostgreSQL flexible server, your server undergoes a restart and so leaves your server unavailable for some time. For more information about how that process works, and the expected duration of the downtime, see [near-zero downtime scaling](concepts-scaling-resources.md#near-zero-downtime-scaling).
 
-## Prerequisites
-
-To complete this how-to guide, you need:
-
--   You must have an Azure Database for PostgreSQL flexible server instance. The same procedure is also applicable for an Azure Database for PostgreSQL flexible server instance configured with zone redundancy.
-
 ## Scale compute
 
 ### [Portal](#tab/portal-scale-compute)
