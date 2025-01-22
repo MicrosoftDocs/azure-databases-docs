@@ -25,9 +25,6 @@ If your server is using [Premium SSD disk](/azure/virtual-machines/disks-types#p
 
 If your server is using [Premium SSD v2 disk](/azure/virtual-machines/disks-types#premium-ssd-v2), you can also adjust, independently, the IOPS and throughput of your disk. For more information, see [Premium SSD v2 performance](/azure/virtual-machines/disks-types#premium-ssd-v2-performance).
 
-> [!IMPORTANT]
-> You can only scale down the Performance Tier of your server 12 hours after scaling up. This restriction is in place to ensure stability and performance after any changes to your server's configuration.
-
 ## Scale storage size (Premium SSD)
 
 ### [Portal](#tab/portal-scale-storage-size-ssd)
@@ -46,11 +43,14 @@ Using the [Azure portal](https://portal.azure.com/):
 
 4. Select **Save**.
 
-    :::image type="content" source="./media/how-to-scale-storage/save-ssd.png" alt-text="Screenshot showing the Save button enabled after changing disk size for a Premium SSD disk." lightbox="./media/how-to-scale-storage/save-ssd.png":::
+    :::image type="content" source="./media/how-to-scale-storage/save-size-ssd.png" alt-text="Screenshot showing the Save button enabled after changing disk size for a Premium SSD disk." lightbox="./media/how-to-scale-storage/save-size-ssd.png":::
 
-5. If you grow the disk from any size between 32 GiB and 4 TiB, to any other size in the same range, the disk size increase operation occurs without causing any server downtime. That's also the case if you grow the disk from any size between 8 TiB and 32 TiB. In all those cases, the operation is performed while the server is online. However, if you increased the size of disk from any value lower or equal to 4096 GiB, to any size higher than 4096 GiB, a server restart is required. In that case, you are required to confirm that you understand the understand the consequences of performing the operation at that point in time.
+5. If you grow the disk from any size between 32 GiB and 4 TiB, to any other size in the same range, the operation is performed without causing any server downtime. It's also the case if you grow the disk from any size between 8 TiB and 32 TiB. In all those cases, the operation is performed while the server is online. However, if you increased the size of disk from any value lower or equal to 4096 GiB, to any size higher than 4096 GiB, a server restart is required. In that case, you're required to confirm that you understand the consequences of performing the operation then.
 
     :::image type="content" source="./media/how-to-scale-storage/confirmation-ssd.png" alt-text="Screenshot showing the confirmation dialog displayed when a Premium SSD disk is grown from a size smaller to 4 TiB to a size larger than 4 TiB." lightbox="./media/how-to-scale-storage/confirmation-ssd.png":::
+
+> [!IMPORTANT]
+> Setting the size of the disk from the Azure portal to any size higher than 4 TiB, disables disk caching.
 
 6. A notification shows that a deployment is in progress.
 
@@ -65,26 +65,89 @@ Using the [Azure portal](https://portal.azure.com/):
 You can initiate the scaling of your storage, to increase the size of your Premium SSD disk, via the [az postgres flexible-server update](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-update) command.
 
 ```azurecli-interactive
-az postgres flexible-server update --resource-group <resource_group> --name <server> --tier <tier> --sku-name <sku_name>
+az postgres flexible-server update --resource-group <resource_group> --name <server> --storage-size <storage_size>
 ```
 
 > [!NOTE]
 > The previous command might need to be completed with other parameters whose presence and values would vary depending on how you want to configure other features of the existing server.
 
-The list of allowed values for the `--sku-name` parameter is dependent of the value passed to the `--tier` parameter, and of the region in which you're trying to deploy your server.
+The value passed to the `--storage-size` parameter represents the size in GiB to which you want to increase the disk.
 
-If you pass an incorrect value to `--sku-name`, you get the following error with the list of 
+If you pass an incorrect value to `--storage-size`, you get the following error with the list of allowed values:
 
 ```output
-Incorrect value for --sku-name. The SKU name does not match <tier> tier. Specify --tier if you did not. Or CLI will set GeneralPurpose as the default tier. Allowed values : ['<sku_name_1>', '<sku_name_2>', ..., 'sku_name_n']
+Incorrect value for --storage-size : Allowed values(in GiB) : [32, 64, 128, 256, 512, 1024, 2048, 4095, 4096, 8192, 16384, 32767]
+```
+
+> [!IMPORTANT]
+> Setting the size of the disk from the CLI to any size equal or higher than 4 TiB, disables disk caching.
+> If the current size of the disk is lower or equal to 4,096 GiB and you increase its size to any value higher than 4096 GiB, a server restart is required.
+
+---
+
+## Scale storage performance tier (Premium SSD)
+
+> [!IMPORTANT]
+> If you increase the performance tier of your disk, you can only decrease it to a lower tier 12 hours after the last increase. [This restriction](/azure/virtual-machines/disks-change-performance#restrictions) is in place to ensure stability and performance after any changes to your server's configuration.
+
+Any attempt to decrease the performance tier within the 12 hours after increasing it, produces the following error:
+
+```output 
+Code: PerformanceTierCannotBeDowngradedBefore12HoursError
+Message: Unable to downgrade storage tier: A higher tier was explicitly set on the server at <mm/dd/yyyy hh:mm:ss AM|PM +00:00>. Tier can only be downgraded after 12 hours
+```
+
+### [Portal](#tab/portal-scale-storage-performance-tier-ssd)
+
+Using the [Azure portal](https://portal.azure.com/):
+
+1. Select your Azure Database for PostgreSQL flexible server.
+
+2. In the resource menu, select **Compute + storage**.
+
+    :::image type="content" source="./media/how-to-scale-storage/compute-storage-ssd.png" alt-text="Screenshot showing how to select the Compute + storage page." lightbox="./media/how-to-scale-storage/compute-storage-ssd.png":::
+
+3. If you want to increase the performance tier of the disk allocated to your server, expand the **Performance Tier** drop-down and select the tier that suits your needs. Smallest tier that can be assigned to a disk, depends on the allocated size of the disk. That smallest tier is referred to as the baseline performance tier of a disk of that size. If you increase the performance tier, you're increasing the maximum IOPS and throughput of the disk. To learn about the baseline performance tiers assigned to a disk of a given size, and the tiers to which you can upgrade, see [what Premium SSD disk performance tiers can be changed](/azure/virtual-machines/disks-change-performance#what-tiers-can-be-changed).
+
+    :::image type="content" source="./media/how-to-scale-storage/storage-performance-tier-ssd.png" alt-text="Screenshot showing where to select a different storage performance tier for Premium SSD disks." lightbox="./media/how-to-scale-storage/storage-performance-tier-ssd.png":::
+
+4. Select **Save**.
+
+    :::image type="content" source="./media/how-to-scale-storage/save-performance-tier-ssd.png" alt-text="Screenshot showing the Save button enabled after changing performance tier for a Premium SSD disk." lightbox="./media/how-to-scale-storage/save-performance-tier-ssd.png":::
+
+5. A notification shows that a deployment is in progress.
+
+    :::image type="content" source="./media/how-to-scale-storage/deployment-progress-notification-peformance-tier-ssd.png" alt-text="Screenshot showing a deployment is in progress to scale the performance tier of a Premium SSD disk." lightbox="./media/how-to-scale-storage/deployment-progress-notification-peformance-tier-ssd.png":::
+
+6. When the scale process completes, a notification shows that the deployment succeeded.
+
+    :::image type="content" source="./media/how-to-scale-storage/deployment-succeeded-notification-peformance-tier-ssd.png" alt-text="Screenshot showing that the deployment to scale the performance tier of the Premium SSD disk succeeded." lightbox="./media/how-to-scale-storage/deployment-succeeded-notification-peformance-tier-ssd.png":::
+
+### [CLI](#tab/cli-scale-storage-performance-tier-ssd)
+
+You can initiate the scaling of your storage, to increase the performance tier of your Premium SSD disk, via the [az postgres flexible-server update](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-update) command.
+
+```azurecli-interactive
+az postgres flexible-server update --resource-group <resource_group> --name <server> --performance-tier <performance_tier>
+```
+
+> [!NOTE]
+> The previous command might need to be completed with other parameters whose presence and values would vary depending on how you want to configure other features of the existing server.
+
+The allowed values that you can pass to the `--performance-tier` parameter depend on the size of the disk.
+
+If you pass an incorrect value to `--performance-tier`, you get the following error with the list of allowed values:
+
+```output
+Incorrect value for --performance-tier for storage-size: <storage_size>. Allowed values : ['<performance_tier_1>', '<performance_tier_2>', ..., '<performance_tier_n>']
 ```
 
 ---
 
 ## Related content
 
-- [Overview of business continuity with Azure Database for PostgreSQL - Flexible Server](concepts-business-continuity.md).
-- [High availability in Azure Database for PostgreSQL - Flexible Server](/azure/reliability/reliability-postgresql-flexible-server).
-- [Compute options in Azure Database for PostgreSQL - Flexible Server](concepts-compute.md).
-- [Storage options in Azure Database for PostgreSQL - Flexible Server](concepts-storage.md).
+- [Compute options](concepts-compute.md).
+- [Storage options](concepts-storage.md).
 - [Limits in Azure Database for PostgreSQL - Flexible Server](concepts-limits.md).
+- [Near-zero downtime scaling](concepts-scaling-resources.md#near-zero-downtime-scaling)
+- [Scale compute](how-to-scale-compute.md)

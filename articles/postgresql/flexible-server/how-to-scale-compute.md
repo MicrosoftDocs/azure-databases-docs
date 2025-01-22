@@ -76,14 +76,15 @@ The list of allowed values for the `--sku-name` parameter is dependent of the va
 If you pass an incorrect value to `--sku-name`, you get the following error with the list of 
 
 ```output
-Incorrect value for --sku-name. The SKU name does not match <tier> tier. Specify --tier if you did not. Or CLI will set GeneralPurpose as the default tier. Allowed values : ['<sku_name_1>', '<sku_name_2>', ..., 'sku_name_n']
+Incorrect value for --sku-name. The SKU name does not match <tier> tier. Specify --tier if you did not. Or CLI will set GeneralPurpose as the default tier. Allowed values : ['<sku_name_1>', '<sku_name_2>', ..., '<sku_name_n>']
 ```
 
 ---
 
 ## Related content
 
-- [Compute options in Azure Database for PostgreSQL - Flexible Server](concepts-compute.md).
-- [Storage options in Azure Database for PostgreSQL - Flexible Server](concepts-storage.md).
+- [Compute options](concepts-compute.md).
+- [Storage options](concepts-storage.md).
 - [Limits in Azure Database for PostgreSQL - Flexible Server](concepts-limits.md).
 - [Near-zero downtime scaling](concepts-scaling-resources.md#near-zero-downtime-scaling)
+- [Scale storage](how-to-scale-storage.md)
