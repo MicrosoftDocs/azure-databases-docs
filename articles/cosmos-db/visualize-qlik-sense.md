@@ -34,7 +34,7 @@ This article describes the details of connecting to the Azure Cosmos DB API for 
 
 Before following the instructions in this article, ensure that you have the following resources ready:
 
-* Download the [Qlik Sense Desktop](https://www.qlik.com/us/try-or-buy/download-qlik-sense) or set up Qlik Sense in Azure by [Installing the Qlik Sense marketplace item](https://azuremarketplace.microsoft.com/marketplace/apps/qlik.qlik-sense).
+* Download the [Qlik Sense Desktop](https://www.qlik.com/us/trial/download-qlik-sense-desktop) or set up Qlik Sense in Azure by [Installing the Qlik Sense marketplace item](https://azuremarketplace.microsoft.com/marketplace/apps/qlik.qlik-sense).
 
 * Download the [video game data](https://www.kaggle.com/gregorut/videogamesales), this sample data is in CSV format. You will store this data in an Azure Cosmos DB account and visualize it in Qlik Sense.
 
