@@ -183,7 +183,7 @@ Using the [Azure portal](https://portal.azure.com/):
     :::image type="content" source="./media/how-to-scale-storage/save-size-ssd-v2.png" alt-text="Screenshot showing the Save button enabled after changing disk size for a Premium SSD v2 disk." lightbox="./media/how-to-scale-storage/save-size-ssd-v2.png":::
 
 > [!IMPORTANT]
-> [Premium SSD v2 disks don't support host caching](/azure/virtual-machines/disks-types#differences-between-premium-ssd-and-premium-ssd-v2).
+> Premium SSD v2 disks don't support host caching. For more information, see [Premium SSD v2 limitations](/azure/virtual-machines/disks-types##premium-ssd-v2-limitations).
 >
 > Although the portal doesn't warn you, the operation to increase the size of Premium SSD v2 disks always requires a server restart, regardless of what's the current size and what's the target size to which you're growing it.
 
@@ -208,10 +208,10 @@ az postgres flexible-server update --resource-group <resource_group> --name <ser
 
 The value passed to the `--storage-size` parameter represents the size in GiB to which you want to increase the disk.
 
-If you pass an incorrect value to `--storage-size`, you get the following error with the list of allowed values:
+If you pass a value to `--storage-size` which is outside of the allowed range of values, you get the following error:
 
 ```output
-Incorrect value for --storage-size : Allowed values(in GiB) : [32, 64, 128, 256, 512, 1024, 2048, 4095, 4096, 8192, 16384, 32767]
+The requested value for storage size does not fall between <current_storage_size> and 65536 GiB.
 ```
 
 If you pass try to set `--storage-size` to a value smaller than the one currently assigned, you get the following error:
@@ -225,10 +225,6 @@ You can determine the current storage size of your server via the [az postgres f
 ```azurecli-interactive
 az postgres flexible-server show --resource-group <resource_group> --name <server> --query storage.storageSizeGb
 ```
-
-> [!IMPORTANT]
-> Setting the size of the disk from the CLI to any size equal or higher than 4 TiB, disables disk caching.
-> If the current size of the disk is lower or equal to 4,096 GiB and you increase its size to any value higher than 4096 GiB, a server restart is required.
 
 ---
 
