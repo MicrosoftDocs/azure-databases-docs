@@ -23,6 +23,17 @@ This article summarizes new releases and features in the Azure Database for MySQ
 > [!NOTE]  
 > This article references the term slave, which Microsoft no longer uses. When the term is removed from the software, we'll remove it from this article.
 
+## January 2025
+
+**lower_case_table_names Parameter Support for MySQL 8.0+ - Private Preview**
+
+Azure Database for MySQL - Flexible Server now supports the  lower_case_table_names server parameter in private preview for MySQL 8.0+. Customers can configure this parameter with a value of 1 or 2 during server creation. To participate in the private preview, please open a [support ticket](https://azure.microsoft.com/support/create-ticket) for assistance.
+
+**Default zone-resiliency for Business-Critical service tier**
+
+You’ll now benefit from the highest level of availability against infrastructure failures within an availability zone, at no additional cost for mission-critical workloads running on the Business-Critical service tier. Regardless of whether your flexible servers are enabled with High Availability (HA), your server data and log files will be hosted in zone-redundant storage by default. While zone-redundant HA-enabled servers continue to benefit from a 99.99% uptime SLA from the built-in zonal redundancy and hot standby, non-HA servers will also be able to recover quickly from zonal outages using zone-redundant backups. This enhancement will be applicable to all new server provisioned in Business-Critical service tier.
+
+
 ## November 2024
 
 **MySQL 8.4 LTS version support - Public Preview**
