@@ -119,7 +119,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="./media/how-to-scale-storage/compute-storage-ssd.png" alt-text="Screenshot showing how to select the Compute + storage page." lightbox="./media/how-to-scale-storage/compute-storage-ssd.png":::
 
-3. If you want to increase the performance tier of the disk allocated to your server, expand the **Performance Tier** drop-down and select the tier that suits your needs. Smallest tier that can be assigned to a disk, depends on the allocated size of the disk. That smallest tier is referred to as the baseline performance tier of a disk of that size. If you increase the performance tier, you're increasing the maximum IOPS and throughput of the disk. To learn about the baseline performance tiers assigned to a disk of a given size, and the tiers to which you can upgrade, see [what Premium SSD disk performance tiers can be changed](/azure/virtual-machines/disks-change-performance#what-tiers-can-be-changed).
+3. If you want to increase the performance tier of the disk allocated to your server, expand the **Performance Tier** drop-down and select the tier that suits your needs. Smallest tier that can be assigned to a disk, depends on the allocated size of the disk. That smallest tier is referred to as the baseline performance tier of a disk of that size. If you increase the performance tier, you're increasing the maximum IOPS and throughput of the disk. To learn about the baseline performance tiers set for each size of a disk, and the tiers to which you can upgrade, see [what Premium SSD disk performance tiers can be changed](/azure/virtual-machines/disks-change-performance#what-tiers-can-be-changed).
 
     :::image type="content" source="./media/how-to-scale-storage/storage-performance-tier-ssd.png" alt-text="Screenshot showing where to select a different storage performance tier for Premium SSD disks." lightbox="./media/how-to-scale-storage/storage-performance-tier-ssd.png":::
 
@@ -174,7 +174,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="./media/how-to-scale-storage/compute-storage-ssd-v2.png" alt-text="Screenshot showing how to select the Compute + storage page." lightbox="./media/how-to-scale-storage/compute-storage-ssd-v2.png":::
 
-3. If you want to increase the size of the disk allocated to your server, type the desired new size in the **Storage size (in GiB)**. Smallest size that can be assigned to a disk is 32 GiB. The value shown in the text box before you modify it corresponds to current disk size. You cannot set it to a value smaller than current size, because it isn't supported to reduce the size of the disk assigned to a server.
+3. If you want to increase the size of the disk allocated to your server, type the desired new size in the **Storage size (in GiB)**. Smallest size that can be assigned to a disk is 32 GiB. The value shown in the text box before you modify it corresponds to current disk size. You can't set it to a value smaller than current size, because it isn't supported to reduce the size of the disk assigned to a server.
 
     :::image type="content" source="./media/how-to-scale-storage/storage-size-ssd-v2.png" alt-text="Screenshot showing where to set a different storage size for Premium SSD v2 disks." lightbox="./media/how-to-scale-storage/storage-size-ssd-v2.png":::
 
@@ -185,7 +185,7 @@ Using the [Azure portal](https://portal.azure.com/):
 > [!IMPORTANT]
 > Premium SSD v2 disks don't support host caching. For more information, see [Premium SSD v2 limitations](/azure/virtual-machines/disks-types##premium-ssd-v2-limitations).
 >
-> Although the portal doesn't warn you, the operation to increase the size of Premium SSD v2 disks always requires a server restart, regardless of what's the current size and what's the target size to which you're growing it.
+> The operation to increase the size of Premium SSD v2 disks always requires a server restart, regardless of what's the current size and what's the target size to which you're growing it.
 
 6. A notification shows that a deployment is in progress.
 
