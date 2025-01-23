@@ -1,16 +1,17 @@
 ---
-title: Managed identities in Azure Database for PostgreSQL - Flexible Server
+title: Managed identities
 description: Learn about Managed identities in Azure Database for PostgreSQL - Flexible Server.
 author: kabharati
 ms.author: kabharati
 ms.reviewer: maghan
-ms.date: 12/18/2024
+ms.date: 01/12/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: conceptual
+#customer intent: As a user, I want to learn about how can I use the different types of managed identities in an Azure Database for PostgreSQL flexible server.
 ---
 
-# Managed identities in Azure Database for PostgreSQL - Flexible Server
+# Managed identities
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
@@ -49,8 +50,6 @@ There are two types of managed identities:
 **User assigned managed identities** configured for an instance of Azure Database for PostgreSQL flexible server can be used for:
 
 - [Data encryption with customer managed keys](concepts-data-encryption.md).
-
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
 
 ## Related content
 

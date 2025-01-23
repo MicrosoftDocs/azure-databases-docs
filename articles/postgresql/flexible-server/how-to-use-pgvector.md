@@ -38,8 +38,6 @@ CREATE EXTENSION vector;
 
 [!INCLUDE [`pgvector`](~/reusable-content/ce-skilling/azure/includes/cosmos-db/postgresql/includes/pgvector-basics.md)]
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 
 - [Optimize performance when using pgvector in Azure Database for PostgreSQL - Flexible Server](how-to-optimize-performance-pgvector.md).

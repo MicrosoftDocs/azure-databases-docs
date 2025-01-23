@@ -106,8 +106,6 @@ WHERE shardid = 102027;
 └─────────┴───────────┴──────────┘
 ```
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 
 - [Sharding models on Elastic Clusters in Azure Database for PostgreSQL - Flexible Server](concepts-elastic-clusters-sharding-models.md).

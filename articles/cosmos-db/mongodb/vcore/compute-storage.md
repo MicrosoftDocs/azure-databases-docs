@@ -9,7 +9,7 @@ ms.subservice: mongodb-vcore
 ms.custom:
   - ignite-2024
 ms.topic: conceptual
-ms.date: 11/06/2024
+ms.date: 01/11/2025
 ---
 
 # Compute and storage configurations for Azure Cosmos DB for MongoDB vCore clusters
@@ -112,7 +112,7 @@ Determining the right compute and storage configuration for your Azure Cosmos DB
 4. **Scale appropriately**
     - **Vertical scaling**: Scale compute / RAM up and down and scale storage up. 
         - Compute: Increase the vCore / RAM on a cluster if your workload requires temporary increase or is often crossing over 70% of CPU utilization for prolonged periods. 
-        - Make sure you have appropriate data retention in your Azure Cosmos DB for MongoDB vCore database. Retention allows you to avoid unnecessary storage use. Monitor storage usage by setting alerts on the 'Storage percent' and/or 'Storage used' metrics with 'Max' aggregation. Consider increase storage as your workload size crosses 70% usage.
+        - Make sure you have appropriate data retention in your Azure Cosmos DB for MongoDB vCore database. Retention allows you to avoid unnecessary storage use. Monitor storage usage by [setting alerts](./how-to-manage-alerts.md) on the 'Storage percent' and/or 'Storage used' metrics with 'Max' aggregation. Consider increase storage as your workload size crosses 70% usage.
     - **Horizontal scaling**: Consider using multiple shards for your cluster  to distribute your data across multiple Azure Cosmos DB for MongoDB vCore nodes for performance gains and better capacity management as your workload grows. This is especially useful for large datasets (over 2-4 TiB) and high-throughput applications.
 
 5. **Test and iterate**

@@ -138,8 +138,6 @@ To delete the Azure Database for PostgreSQL flexible server instance, run the [a
 az postgres flexible-server delete --resource-group myresourcegroup --name mydemoserver
 ```
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 - [Backup and restore in Azure Database for PostgreSQL - Flexible Server](concepts-backup-restore.md).
 - [Monitor metrics in Azure Database for PostgreSQL - Flexible Server](concepts-monitoring.md).

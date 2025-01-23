@@ -117,8 +117,6 @@ After a network administrator creates a private endpoint, the PostgreSQL DBA can
 
    After approval or rejection, the list reflects the appropriate state, along with the response text.
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 
 - Learn more about [networking in Azure Database for PostgreSQL flexible server with Private Link](concepts-networking-private-link.md).

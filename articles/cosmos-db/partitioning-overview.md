@@ -20,7 +20,7 @@ For example, a container holds items. Each item has a unique value for the `User
 
 In addition to a partition key that determines the item's logical partition, each item in a container has an *item ID* (unique within a logical partition). Combining the partition key and the *item ID* creates the item's *index*, which uniquely identifies the item. [Choosing a partition key](#choose-a-partition-key) is an important decision that affects your application's performance.
 
-> [!VIDEO https://www.microsoft.com/videoplayer/embed/RWXbMV]
+> [!VIDEO https://learn-video.azurefd.net/vod/player?id=3dfedc45-9a96-48c0-ab15-54ffc7fb7d32]
 
 This article explains the relationship between logical and physical partitions. It also discusses best practices for partitioning and gives an in-depth view at how horizontal scaling works in Azure Cosmos DB. It's not necessary to understand these internal details to select your partition key but we're covering them so you can have clarity on how Azure Cosmos DB works.
 

@@ -144,7 +144,7 @@
       href: flexible-server/concepts-limits.md
     - name: Identity
       href: flexible-server/concepts-Identity.md
-    - name: Encryption with customer managed keys
+    - name: Data encryption
       href: flexible-server/concepts-data-encryption.md
     - name: Scheduled maintenance
       href: flexible-server/concepts-maintenance.md
@@ -395,16 +395,36 @@
     items:
     - name: Server administration
       items:
-      - name: Manage a server
-        items:
-        - name: Azure portal
-          href: flexible-server/how-to-manage-server-portal.md
-        - name: Azure CLI
-          href: flexible-server/how-to-manage-server-cli.md
-        - name: Connect and query guide
-          href: flexible-server/how-to-connect-query-guide.md
+      - name: Start a server
+        href: flexible-server/how-to-start-server.md
+      - name: Stop a server
+        href: flexible-server/how-to-stop-server.md
+      - name: Restart a server
+        href: flexible-server/how-to-restart-server.md
+      - name: Reset administrator password
+        href: flexible-server/how-to-reset-admin-password.md
+      - name: Delete a server
+        href: flexible-server/how-to-delete-server.md
       - name: Auto grow storage
         href: flexible-server/how-to-auto-grow-storage.md
+      - name: Configure high availability
+        href: flexible-server/how-to-configure-high-availability.md
+      - name: Download server logs
+        href: flexible-server/how-to-configure-server-logs.md
+      - name:  On-demand backups
+        href: flexible-server/how-to-operate-on-demand-backups.md
+      - name: Restore a server
+        href: flexible-server/how-to-restore-server.md
+      - name: Configure managed identities
+        href: flexible-server/how-to-configure-managed-identities.md
+      - name: Major version upgrade
+        href: flexible-server/how-to-perform-major-version-upgrade.md
+      - name: Server parameters
+        href: flexible-server/how-to-configure-server-parameters.md
+      - name: Scheduled maintenance
+        href: flexible-server/how-to-configure-scheduled-maintenance.md
+      - name: Data encryption
+        href: flexible-server/how-to-data-encryption.md
       - name: Scale a server
         items:
         - name: Azure portal
@@ -419,52 +439,8 @@
           href: flexible-server/how-to-restore-to-different-subscription-or-resource-group.md
         - name: Azure REST API
           href: flexible-server/how-to-restore-different-subscription-resource-group-api.md 
-      - name: Restart a server
-        items:
-        - name: Azure portal
-          href: flexible-server/how-to-restart-server-portal.md
-        - name: Azure CLI
-          href: flexible-server/how-to-restart-server-cli.md
-      - name:  On-demand-backup 
-        items:
-        - name: Azure portal
-          href: flexible-server/how-to-perform-on-demand-backup-portal.md
-        - name: Azure CLI
-          href: flexible-server/how-to-perform-on-demand-backup-cli.md
-      - name: Restore a server
-        items:
-        - name: Azure portal
-          href: flexible-server/how-to-restore-server-portal.md
-        - name: Azure CLI
-          href: flexible-server/how-to-restore-server-cli.md
-      - name: Stop/Start a server
-        items:
-        - name: Azure portal
-          href: flexible-server/how-to-stop-start-server-portal.md
-        - name: Azure CLI
-          href: flexible-server/how-to-stop-start-server-cli.md
-      - name: Configure server logs
-        items:
-        - name: Azure portal
-          href: flexible-server/how-to-server-logs-portal.md
-        - name: Azure CLI
-          href: flexible-server/how-to-server-logs-cli.md
       - name: Relocate a server 
         href: /azure/operational-excellence/relocation-postgresql-flexible-server?toc=/azure/postgresql/toc.json
-    - name: Configure managed identities
-      href: flexible-server/how-to-configure-managed-identities.md
-    - name: Encryption with CMK
-      items:
-      - name: Azure CLI
-        href: flexible-server/how-to-create-server-customer-managed-key-cli.md
-      - name: Azure portal
-        href: flexible-server/how-to-create-server-customer-managed-key-portal.md
-      - name: Azure REST API
-        href: flexible-server/how-to-create-server-customer-managed-key-azure-api.md
-    - name: Scheduled maintenance
-      items:
-      - name: Azure portal
-        href: flexible-server/how-to-maintenance-portal.md
     - name: Networking
       items:
       - name: Encrypted connectivity using TLS/SSL
@@ -491,8 +467,6 @@
           href: flexible-server/how-to-manage-firewall-portal.md
         - name: Azure CLI
           href: flexible-server/how-to-manage-firewall-cli.md
-    - name: Server parameters
-      href: flexible-server/how-to-configure-server-parameters.md
     - name: Enable authentication
       items:
       - name: Create users
@@ -506,14 +480,6 @@
         href: flexible-server/how-to-manage-azure-ad-users.md
       - name: Connect with SCRAM authentication
         href: flexible-server/how-to-connect-scram.md
-    - name: Major version upgrade
-      href: flexible-server/how-to-perform-major-version-upgrade.md
-    - name: Manage high availability
-      items:
-      - name: Azure portal
-        href: flexible-server/how-to-manage-high-availability-portal.md
-      - name: Azure CLI
-        href: flexible-server/how-to-configure-high-availability-cli.md
     - name: Monitor
       items:
       - name: Create alerts on metrics using portal

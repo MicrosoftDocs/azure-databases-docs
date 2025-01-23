@@ -30,6 +30,8 @@ Azure Database for PostgreSQL - Flexible Server is a fully managed production-re
 
 Learn how to migrate from Azure Database for PostgreSQL - Single Server to Azure Database for PostgreSQL - Flexible Server using the [PostgreSQL migration service](../migrate/concepts-single-to-flexible.md).
 
+You can also leverage Automigration to migrate to Flexible server by nominating the Single server(s) that you want to migrate automatically. [Automigration](./automigration-single-to-flexible-postgresql.md) leverages the [Azure PostgreSQL migration service](./migration-service/overview-migration-service-postgresql.md) to deliver a resilient offline migration during a planned migration window.
+
 ## Frequently Asked Questions (FAQs)
 
 **Q. Why is Azure Database for PostgreSQL- Single Server being retired?**
@@ -60,6 +62,10 @@ Learn how to migrate from Azure Database for PostgreSQL - Single Server to Azure
 **Q. Can I continue running my Azure Database for PostgreSQL - Single Server beyond the sunset date of March 28, 2025?**
 
 **A.** We plan to support Single Server until the sunset date of March 28, 2025, and we strongly advise that you start planning your migration as soon as possible. We plan to end support for Single Server deployments at the sunset date of **March 28, 2025**.
+
+**Q. What happens if I do not migrate or my server is not auto migrated by March 28th, 2025??​**
+
+**A.** After the retirement deadline of March 28th 2025, all existing single servers that have not migrated will be force migrated to Flexible server. Servers with add-on features such as CMK or Private endpoint will require additional actions by the user post-migration to ensure normal operation. There are no extensions to the retirement date.
 
 **Q. After the Single Server retirement announcement, what if I still need to create a new single server to meet my business needs?**
 

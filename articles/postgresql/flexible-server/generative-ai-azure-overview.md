@@ -152,8 +152,6 @@ To update an installed extension to the latest available version supported by Az
 ALTER EXTENSION azure_ai UPDATE;
 ```
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 
 - [Integrate Azure Database for PostgreSQL - Flexible Server with Azure Cognitive Services](generative-ai-azure-cognitive.md).

@@ -120,10 +120,6 @@ sections:
 
           For JSON dumps, DMS will read the files in the blob container folders named after the containing databases. Within each database folder, DMS only uses data files placed in the `data` subfolder. DMS only looks at files placed in the `metadata` subfolder and named using the format `collection.json` for metadata.
 
-          #### Oracle to Azure SQL Database
-
-          In this scenario, the AWR report or a Windows `perfmon` file is consumed to provide optional (but highly recommended) workload sizing recommendations. The user performing the migration uses the Database Schema Conversion Toolkit to perform a schema migration to prepare the target database.
-
           #### Oracle to Azure Database for PostgreSQL
 
           Much like Oracle to Azure SQL Database, in this scenario, the AWR report or a Windows `perfmon` file is consumed to provide optional (but highly recommended) workload sizing recommendations. The `ora2pg` library is used to extract the schema and migrate the data manually by the user performing the migration.

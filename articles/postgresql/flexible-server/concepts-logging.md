@@ -3,7 +3,7 @@ title: Logs
 description: Describes logging configuration, storage and analysis in Azure Database for PostgreSQL - Flexible Server.
 author: varun-dhawan
 ms.author: varundhawan
-ms.date: 7/11/2024
+ms.date: 1/10/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: how-to
@@ -30,9 +30,14 @@ To learn how to configure parameters in Azure Database for PostgreSQL flexible s
 
 Azure Database for PostgreSQL flexible server is integrated with Azure Monitor diagnostic settings. Diagnostic settings allows you to send your Azure Database for PostgreSQL flexible server logs in JSON format to Azure Monitor Logs for analytics and alerting, Event Hubs for streaming, and Azure Storage for archiving. 
 
-## Data retention policy and pricing
+## Data Retention Policy and Pricing
 
-If you select Event Hubs or a Storage account, you can specify a retention policy. This policy deletes data that is older than a selected time period. If you specify Log Analytics, the retention policy depends on the selected pricing tier. Logs ingested into your **Log Analytics** workspace can be retained at no charge for up to first 31 days. Logs retained beyond these no-charge periods will be charged for each GB of data retained for a month (pro-rated daily). For more details, refer [Azure Monitor pricing](https://azure.microsoft.com/pricing/details/monitor/).
+For logs sent to Event Hubs or a Storage account, you can set up a retention policy to automatically delete data after a certain period. When it comes to logs sent to Log Analytics, the costs for Azure Monitor Log Analytics are primarily influenced by two factors:
+
+- **Data Ingestion:** Charges are based on the volume of data that is ingested into the workspace.
+- **Data Retention:** Logs stored in your Log Analytics workspace are kept free of charge for the first 31 days. Beyond this free retention period, there is a fee for storing data, calculated on a daily pro-rata basis, based on the amount of data (in GB) retained each month.
+
+For a comprehensive breakdown of the costs associated with data ingestion and retention, please visit the [Azure Monitor pricing page](https://azure.microsoft.com/pricing/details/monitor/).
 
 ### Log format
 
@@ -61,8 +66,6 @@ The following table describes the fields for the **PostgreSQLLogs** type. Depend
 | SchemaName | Name of the schema (if applicable) |
 | DatatypeName | Name of the datatype (if applicable) |
 | _ResourceId | Resource URI |
-
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
 
 ## Related content
 

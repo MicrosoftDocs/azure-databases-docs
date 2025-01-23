@@ -102,8 +102,6 @@ terraform apply
 
 Confirm the apply action when prompted. Terraform provisions the resources and configures the virtual endpoints as specified.
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 
 - [Read replicas in Azure Database for PostgreSQL - Flexible Server](concepts-read-replicas.md)

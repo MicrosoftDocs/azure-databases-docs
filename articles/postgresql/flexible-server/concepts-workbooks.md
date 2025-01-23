@@ -51,8 +51,6 @@ Using the [Azure portal](https://portal.azure.com).
 
     :::image type="content" source="./media/concepts-workbooks/monitor-workbooks-all.png" alt-text="Screenshot showing the Overview and Enhanced Metrics templates on the Workbooks page." lightbox="media/concepts-workbooks/monitor-workbooks-all.png":::
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 
 - [Access control in Azure workbooks](/azure/azure-monitor/visualize/workbooks-overview#access-control)

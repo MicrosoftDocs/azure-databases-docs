@@ -1,5 +1,5 @@
 ---
-title: Configure managed identities in Azure Database for PostgreSQL - Flexible Server
+title: Configure managed identities
 description: Learn how to configure managed identities in Azure Database for PostgreSQL - Flexible Server.
 author: kabharati
 ms.author: kabharati
@@ -10,7 +10,7 @@ ms.subservice: flexible-server
 ms.topic: conceptual
 ---
 
-# Configure system or user assigned managed identities in Azure Database for PostgreSQL - Flexible Server
+# Configure system or user assigned managed identities
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
@@ -200,6 +200,12 @@ identity=<identity>
 az postgres flexible-server identity remove --resource-group $resourceGroup --server-name $server --identity $identity
 ```
 
+If you try to remove a user assigned managed identity which is used to access a data encryption key, you get the following error:
+
+```output
+Cannot remove identity <identity> because it's used for data encryption.
+```
+
 ---
 
 ## Show the associated user assigned managed identities
@@ -231,8 +237,6 @@ az postgres flexible-server identity list --resource-group $resourceGroup --serv
 ```
 
 ---
-
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
 
 ## Related content
 

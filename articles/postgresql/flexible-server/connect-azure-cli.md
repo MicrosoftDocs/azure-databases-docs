@@ -1,8 +1,8 @@
 ---
 title: "Quickstart: Connect using Azure CLI"
 description: This quickstart provides several ways to connect with Azure CLI with Azure Database for PostgreSQL - Flexible Server.
-author: akashraokm
-ms.author: akashrao
+author: gkasar
+ms.author: gkasar
 ms.reviewer: maghan
 ms.date: 05/10/2024
 ms.service: azure-database-postgresql
@@ -162,8 +162,6 @@ Running sql file 'test.sql'...
 Successfully executed the file.
 Closed the connection to server372060240
 ```
-
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
 
 ## Related content
 

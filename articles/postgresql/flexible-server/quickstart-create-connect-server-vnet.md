@@ -159,8 +159,6 @@ You have now created an Azure Database for PostgreSQL flexible server instance i
 1. In the **Overview** page for your resource group, select **Delete resource group**.
 1. In the confirmation dialog box, type the name of your resource group, and then select **Delete**.
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 
 - [Manage Azure Database for PostgreSQL - Flexible Server](how-to-manage-server-portal.md).

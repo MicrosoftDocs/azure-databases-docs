@@ -4,7 +4,7 @@ description: Release notes for Azure DB for PostgreSQL - Flexible Server, includ
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 12/12/2024
+ms.date: 1/16/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: overview
@@ -17,13 +17,17 @@ ms.topic: overview
 
 This article highlights the latest updates and enhancements for Azure Database for PostgreSQL - Flexible Server, service including new feature releases, supported engine versions, available extensions, and other important announcements.
 
+## Release: January 2025
+
+- Public preview of [Elastic Clusters](./concepts-elastic-clusters.md) for Azure Database for PostgreSQL flexible server.
+
 ## Release: December 2024
 
 - General Availability of [oracle_fdw](../extensions/concepts-extensions-versions.md#oracle_fdw) extension.
 - General Availability of [index tuning](concepts-index-tuning.md) on Azure Database for PostgreSQL flexible server.
 - General Availability of the [Semantic Ranker Solution Accelerator](https://aka.ms/pg-ranker) for Azure Database for PostgreSQL flexible server.
 - Public preview of [age](../extensions/concepts-extensions-versions.md#age) extension.
-- Public preview of the [GraphRAG Solution Accelerator](https://aka.ms/pg-graphrag) for Azure Database for PostgreSQL flexible server.
+- Public preview of [GraphRAG Solution Accelerator](https://aka.ms/pg-graphrag) for Azure Database for PostgreSQL flexible server.
 - Public preview of [On-Demand Backups](concepts-backup-restore.md#on-demand-backups-preview).
 
 ## Release: November 2024
@@ -99,14 +103,14 @@ This article highlights the latest updates and enhancements for Azure Database f
 
 ## Release: January 2024
 
-- General availability of [Server logs](how-to-server-logs-portal.md) including Portal and CLI support.
+- General availability of [Server logs](how-to-configure-server-logs.md), including Portal and CLI support.
 - General availability of UAE Central region.
 - General availability of Israel Central region.
 - Worldwide public preview of [long-term backup retention](concepts-backup-restore.md).
 
 ## Release: December 2023
 
-- Public preview of [Server logs](how-to-server-logs-portal.md).
+- Public preview of [Server logs](how-to-configure-server-logs.md).
 - General availability of [TLS Version 1.3 support](concepts-networking-ssl-tls.md#tls-versions).
 - General availability of [Microsoft Defender support](concepts-security.md)
 
@@ -178,7 +182,7 @@ This article highlights the latest updates and enhancements for Azure Database f
 - Public preview of [Autovacuum Metrics](concepts-monitoring.md#autovacuum-metrics) for Azure Database for PostgreSQL flexible server.
 - Support for [semver](../extensions/concepts-extensions-versions.md#semver) extension with new servers. <sup>$</sup>
 - Public Preview of [Major Version Upgrade](concepts-major-version-upgrade.md) for Azure Database for PostgreSQL flexible server.
-- Support for [Geo-redundant backup feature](concepts-backup-restore.md#geo-redundant-backup-and-restore) when using [Disk Encryption with Customer Managed Key (CMK)](concepts-data-encryption.md#how-data-encryption-with-a-cmk-works) feature.
+- Support for [Geo-redundant backup feature](concepts-backup-restore.md#geo-redundant-backup-and-restore) when using [Data encryption with customer managed key](concepts-data-encryption.md).
 - Support for [minor versions](concepts-supported-versions.md) 14.6, 13.9, 12.13, 11.18. <sup>$</sup>
 
 ## Release: January 2023
@@ -350,8 +354,6 @@ Will the Azure Database for PostgreSQL flexible server replace the Azure Databas
 Yes.
 
 However, we'll continue to support Azure Database for PostgreSQL single server until **March 28, 2025**, and encourage you to adopt Azure Database for PostgreSQL flexible server, which has richer capabilities such as zone resilient HA, predictable performance, maximum control, custom maintenance window, cost optimization controls, and simplified developer experience suitable for your enterprise workloads. If we decide to retire any service, feature, API, or SKU, you'll receive advance notice, including a migration or transition path. Learn more about Microsoft Lifecycle policies [here](/lifecycle/faq/general-lifecycle).
-
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
 
 ## Related content
 

@@ -83,8 +83,6 @@ Repeat the following steps to manage the firewall rules.
 - To modify an existing rule, click any of the fields in the rule and modify. Click **Save** to save the changes.
 - To delete an existing rule, click the ellipsis […] and click **Delete** to remove the rule. Click **Save** to save the changes.
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 
 - [Networking in Azure Database for PostgreSQL - Flexible Server](concepts-networking-private.md).

@@ -55,7 +55,7 @@ Each PostgreSQL database role can be mapped to one of the following Microsoft En
 ### List Microsoft Entra roles using SQL
 
 ```sql
-pg_catalog.pgaadauth_list_principals(isAdminValue boolean)
+select * from pg_catalog.pgaadauth_list_principals(isAdminValue boolean)
 ```
 
 #### Arguments
@@ -77,7 +77,7 @@ pg_catalog.pgaadauth_list_principals(isAdminValue boolean)
 ## Create a user/role using Microsoft Entra principal name
 
 ```sql
-pg_catalog.pgaadauth_create_principal(roleName text, isAdmin boolean, isMfa boolean)
+select * from pg_catalog.pgaadauth_create_principal(roleName text, isAdmin boolean, isMfa boolean)
 ```
 
 #### Arguments
@@ -112,7 +112,7 @@ DROP ROLE rolename;
 ## Create a role using Microsoft Entra object identifier
 
 ```sql
-pg_catalog.pgaadauth_create_principal_with_oid(roleName text, objectId text, objectType text, isAdmin boolean, isMfa boolean)
+select * from pg_catalog.pgaadauth_create_principal_with_oid(roleName text, objectId text, objectType text, isAdmin boolean, isMfa boolean)
 ```
 
 #### Arguments
@@ -170,8 +170,6 @@ SECURITY LABEL for "pgaadauth" on role "<roleName>" is 'aadauth,oid=<objectId>,t
 ##### `admin`
 
 `text` it can be present or absent. Users/roles for which this part is present in their security label, can manage other Microsoft Entra ID roles.
-
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
 
 ## Related content
 
