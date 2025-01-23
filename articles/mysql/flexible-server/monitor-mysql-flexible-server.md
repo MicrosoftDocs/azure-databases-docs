@@ -26,6 +26,8 @@ This table describes how you can collect data to monitor your service, and what 
 
 ## Built in monitoring for Azure Database for MySQL - Flexible Server
 
+Azure Database for MySQL - Flexible Server offers built-in resources for monitoring.
+
 ### Server logs
 
 In Azure Database for MySQL Flexible Server, users can configure and download server logs to assist with troubleshooting efforts. With this feature enabled, an Azure Database for MySQL Flexible Server instance starts capturing events of the selected log type and writes them to a file. You can then use the Azure portal and Azure CLI to download the files to work with them.
@@ -47,26 +49,26 @@ For more information about the MySQL slow query log, see the [slow query log sec
 
 #### Configure slow query logging
 
-By default, the slow query log is disabled. To enable logs, set the `slow_query_log` server parameter to *ON*. This can be configured using the Azure portal or Azure CLI.
+By default, the slow query log is disabled. To enable logs, set the `slow_query_log` server parameter to *ON*. This parameter can be configured using the Azure portal or Azure CLI.
 
 Other parameters you can adjust to control slow query logging behavior include:
 
-- **long_query_time**: log a query if it takes longer than `long_query_time` (in seconds) to complete. The default is 10 seconds. Server parameter `long_query_time` applies globally to all newly established connections in MySQL. However, it doesn't affect threads that are already connected. It's recommended to reconnect to Azure Database for MySQL Flexible Server from the application, or restarting the server will help clear out threads with older values of "long_query_time" and apply the updated parameter value.
+- **long_query_time**: log a query if it takes longer than `long_query_time` (in seconds) to complete. The default is 10 seconds. Server parameter `long_query_time` applies globally to all newly established connections in MySQL. However, it doesn't affect threads that are already connected. We recommended that you reconnect to Azure Database for MySQL Flexible Server from the application or restart the server to clear out threads with older values of `long_query_time` and apply the updated parameter value.
 - **log_slow_admin_statements**: determines if administrative statements (ex. `ALTER_TABLE`, `ANALYZE_TABLE`) are logged.
 - **log_queries_not_using_indexes**: determines if queries that don't use indexes are logged.
-- **log_throttle_queries_not_using_indexes**: limits the number of non-indexed queries that can be written to the slow query log. This parameter takes effect when `log_queries_not_using_indexes` is set to *ON*
+- **log_throttle_queries_not_using_indexes**: limits the number of nonindexed queries that can be written to the slow query log. This parameter takes effect when `log_queries_not_using_indexes` is set to *ON*
 
 > [!IMPORTANT]  
-> If your tables are not indexed, setting the `log_queries_not_using_indexes` and `log_throttle_queries_not_using_indexes` parameters to **ON** might affect MySQL performance since all queries running against these non-indexed tables will be written to the slow query log.
+> If your tables aren't indexed, setting the `log_queries_not_using_indexes` and `log_throttle_queries_not_using_indexes` parameters to **ON** might affect MySQL performance. All queries that run against these nonindexed tables are written to the slow query log.
 
 See the MySQL [slow query log documentation](https://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html) for full descriptions of the slow query log parameters.
 
 #### Access slow query logs
 
-Slow query logs are integrated with Azure Monitor diagnostic settings. Once you've enabled slow query logs on your Azure Database for MySQL Flexible Server instance, you can emit them to Azure Monitor logs, Event Hubs, or Azure Storage. To learn more about diagnostic settings, see the [diagnostic logs documentation](/azure/azure-monitor/essentials/platform-logs-overview). To learn more about how to enable diagnostic settings in the Azure portal, see the [slow query log portal article](tutorial-query-performance-insights.md#set-up-diagnostics).
+Slow query logs are integrated with Azure Monitor diagnostic settings. After you enable slow query logs on your Azure Database for MySQL Flexible Server instance, you can emit them to Azure Monitor logs, Event Hubs, or Azure Storage. To learn more about diagnostic settings, see the [diagnostic logs documentation](/azure/azure-monitor/essentials/platform-logs-overview). To learn more about how to enable diagnostic settings in the Azure portal, see the [slow query log portal article](tutorial-query-performance-insights.md#set-up-diagnostics).
 
 > [!NOTE]  
-> Premium Storage accounts are not supported if you are sending the logs to Azure storage via diagnostics and settings.
+> Premium Storage accounts aren't supported if you're sending the logs to Azure storage via diagnostics and settings.
 
 The following table describes the output of the slow query log. Depending on the output method, the fields included and the order in which they appear might vary.
 
@@ -99,7 +101,7 @@ The following table describes the output of the slow query log. Depending on the
 | `\_ResourceId` | Resource URI |
 
 > [!NOTE]  
-> For `sql_text_s`, log will be truncated if it exceeds 2048 characters.
+> For `sql_text_s`, log is truncated if it exceeds 2048 characters.
 
 [!INCLUDE [azmon-horz-tools](~/reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/azmon-horz-tools.md)]
 
@@ -109,7 +111,7 @@ The following table describes the output of the slow query log. Depending on the
 
 ### Recommended Kusto queries for Azure Database for MySQL - Flexible Server
 
-You can use slow query logs to find candidates for optimization. After your slow query logs are piped to Azure Monitor Logs through Diagnostic Logs, you can perform further analysis of your slow queries. Below are some sample queries to help you get started. Make sure to update the below with your server name.
+You can use slow query logs to find candidates for optimization. After your slow query logs are piped to Azure Monitor Logs through Diagnostic Logs, you can perform further analysis of your slow queries. These sample queries can get you started. Make sure to update them with your server name.
 
 - Queries longer than 10 seconds on a particular server
 
@@ -121,7 +123,7 @@ You can use slow query logs to find candidates for optimization. After your slow
     | where query_time_d > 10
     ```
 
-- List top 5 longest queries on a particular server
+- List top five longest queries on a particular server
 
     ```kusto
     AzureDiagnostics
@@ -165,16 +167,6 @@ You can use slow query logs to find candidates for optimization. After your slow
 [!INCLUDE [azmon-horz-alerts-part-one](~/reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/azmon-horz-alerts-part-one.md)]
 
 ### Recommended Azure Monitor alert rules for Azure Database for MySQL - Flexible Server
-
-The following table lists common and recommended alert rules for Azure Database for MySQL - Flexible Server.
-
-| Alert type | Condition | Examples  |
-|:---|:---|:---|
-| Metric | |  |
-| Log search |  | |
-| Activity Log | | |
-| Service Health | | |
-| Resource Health | | |
 
 [!INCLUDE [azmon-horz-alerts-part-two](~/reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/azmon-horz-alerts-part-two.md)]
 

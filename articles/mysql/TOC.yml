@@ -141,6 +141,8 @@
       items:
       - name: Monitor Azure Database for MySQL - Flexible Server
         href: flexible-server/monitor-mysql-flexible-server.md
+      - name: Monitoring data reference
+        href: flexible-server\monitor-mysql-flexible-server-reference.md
       - name: Error logs
         href: flexible-server/concepts-error-logs.md        
       - name: Audit logs
@@ -430,8 +432,6 @@
     href: flexible-server/concept-operation-excellence-best-practices.md
 - name: Reference
   items:
-  - name: Monitoring data reference
-    href: flexible-server\monitor-mysql-flexible-server-reference.md
   - name: Azure CLI
     href: /cli/azure/mysql
   - name: REST API
