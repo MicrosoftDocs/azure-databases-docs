@@ -555,14 +555,18 @@
   items:
   - name: What's happening to Azure Database for PostgreSQL - Single Server?
     href: migrate/whats-happening-to-postgresql-single-server.md
-  - name: Migration Service
+  - name: Migration Service for Azure Database for PostgreSQL
     items:
     - name: Overview
       href: migrate/migration-service/overview-migration-service-postgresql.md
-    - name: Tutorials
+    - name: Tutorials for migrating from Single Server
       items:
       - name: Migrate from Single Server
         href: migrate/migration-service/tutorial-migration-service-single-to-flexible.md
+      - name: Automigration from Azure Database for PostgreSQL - Single Server to Flexible Server
+        href: migrate/automigration-single-to-flexible-postgresql.md
+    - name: Tutorials for migrating from PostgreSQL
+      items:
       - name: Migrate from an Azure VM or an on-premises PostgreSQL server offline
         href: migrate/migration-service/tutorial-migration-service-iaas-offline.md
       - name: Migrate from an Azure VM or an on-premises PostgreSQL server online
@@ -599,16 +603,12 @@
         href: migrate/migration-service/how-to-setup-azure-cli-commands-postgresql.md
       - name: How to set up the network
         href: migrate/migration-service/how-to-network-setup-migration-service.md
+      - name: Migrate data with pg_dump
+        href: migrate/how-to-migrate-using-dump-and-restore.md
     - name: Troubleshoot
       items:
       - name: Troubleshoot errors
         href: migrate/migration-service/troubleshoot-error-codes-premigration.md
-  - name: Automigration from Azure Database for PostgreSQL - Single Server to Flexible Server
-    href: migrate/automigration-single-to-flexible-postgresql.md
-  - name: Migrate data with pg_dump
-    href: migrate/how-to-migrate-using-dump-and-restore.md
-  - name: Minimal-downtime migration with DMS
-    href: single-server/how-to-migrate-online.md
   - name: Migrate from Oracle
     items:
       - name: Migration Concepts
