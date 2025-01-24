@@ -33,6 +33,9 @@ Azure Database for MySQL - Flexible Server now supports the  lower_case_table_na
 
 You’ll now benefit from the highest level of availability against infrastructure failures within an availability zone, at no additional cost for mission-critical workloads running on the Business-Critical service tier. Regardless of whether your flexible servers are enabled with High Availability (HA), your server data and log files will be hosted in zone-redundant storage by default. While zone-redundant HA-enabled servers continue to benefit from a 99.99% uptime SLA from the built-in zonal redundancy and hot standby, non-HA servers will also be able to recover quickly from zonal outages using zone-redundant backups. This enhancement will be applicable to all new server provisioned in Business-Critical service tier.
 
+**Accelerated Logs Enabled for All New Business Critical Servers**
+
+Accelerated Logs, a feature that significantly enhances the performance of Azure Database for MySQL Flexible Server instances, is now enabled by default for all new Business-Critical servers. Accelerated Logs offers a dynamic solution designed for high throughput needs, reducing latency with no additional cost. Existing Business Critical servers can also enable Accelerated Logs through the Azure portal. [Accelerated logs feature in Azure Database for MySQL - Flexible Server](concepts-accelerated-logs.md).
 
 ## November 2024
 
