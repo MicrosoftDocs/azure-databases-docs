@@ -53,7 +53,7 @@ To configure the migration task in the Azure portal:
 
 1. On the service menu, select **Migration**.
 
-    :::image type="content" source="media/tutorial-migration-service-aurora-online/migration-portal-select.png" alt-text="Screenshot of the Migration selection." lightbox="media/tutorial-migration-service-aurora-online/migration-portal-select.png":::
+    :::image type="content" source="media/tutorial-migration-service-aurora-online/migration-portal-select.png" alt-text="Screenshot showing the Migration selection in the Azure portal." lightbox="media/tutorial-migration-service-aurora-online/migration-portal-select.png":::
 
 1. Select **Create** to migrate from Amazon Aurora to a flexible server.
 
