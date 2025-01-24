@@ -25,7 +25,6 @@ To migrate your Oracle schema to Azure Database for PostgreSQL, you need to:
 - Download the latest version of [Ora2Pg](https://ora2pg.darold.net/). 
 - Have the latest version of the [DBD module](https://www.cpan.org/modules/by-module/DBD/). 
 
-
 ## Overview
 
 PostgreSQL is one of world's most advanced open-source databases. This article describes how to use the free Ora2Pg tool to migrate an Oracle database to PostgreSQL. You can use Ora2Pg to migrate an Oracle database or MySQL database to a PostgreSQL-compatible schema. 

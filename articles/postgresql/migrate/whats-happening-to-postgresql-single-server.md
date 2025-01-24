@@ -7,14 +7,12 @@ ms.reviewer: guybo
 ms.date: 10/09/2024
 ms.service: azure-database-postgresql
 ms.subservice: single-server
-ms.topic: overview
+ms.topic: concept-article
 ms.custom:
   - single server deprecation announcement
 ---
 
 # What happens to Azure Database for PostgreSQL - Single Server after the retirement announcement?
-
-[!INCLUDE [applies-to-postgresql-single-server](../includes/applies-to-postgresql-single-server.md)]
 
 **Azure Database for PostgreSQL - Single Server is on the retirement path and is scheduled to retire by March 28, 2025.
 
@@ -150,23 +148,23 @@ Data Migration
 
 - All tables from all databases/schemas.
 
-Schema Migration:
-- Naming
-- Primary key
-- Data type
-- Ordinal position
-- Default value
-- Nullability
-- Autoincrement attributes
-- Secondary indexes
-
-Metadata Migration:
-- Stored Procedures
-- Functions
-- Triggers
-- Views
-- Foreign key constraints
-
+- Schema Migration:
+    - Naming
+    - Primary key
+    - Data type
+    - Ordinal position
+    - Default value
+    - Nullability
+    - Autoincrement attributes
+    - Secondary indexes
+    
+- Metadata Migration:
+    - Stored Procedures
+    - Functions
+    - Triggers
+    - Views
+    - Foreign key constraints
+    
 **Q. What's the difference between offline and online migration?**
 
 **A.** With an offline migration, application downtime starts when the migration begins. With an online migration, downtime is limited to the time required to cut over at the end of migration. However, it uses a logical replication mechanism that is subject to a few [restrictions](https://pgcopydb.readthedocs.io/en/latest/ref/pgcopydb_follow.html#pgcopydb-follow).
