@@ -1,7 +1,7 @@
 ---
 title: Monitor Azure Database for MySQL - Flexible Server
 description: Learn how to monitor Azure Database for MySQL - Flexible Server using Azure Monitor, including data collection, analysis, and alerting.
-ms.date: 01/22/2025
+ms.date: 01/27/2025
 ms.custom: horz-monitor
 ms.topic: conceptual
 author: markingmyname
@@ -11,8 +11,8 @@ ms.service: azure-database-mysql
 # Monitor Azure Database for MySQL - Flexible Server
 
 [!INCLUDE [azmon-horz-intro](~/reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/azmon-horz-intro.md)]
- 
-## Collect data with Azure Monitor 
+
+## Collect data with Azure Monitor
 
 This table describes how you can collect data to monitor your service, and what you can do with the data once collected:
 
@@ -103,6 +103,182 @@ The following table describes the output of the slow query log. Depending on the
 > [!NOTE]  
 > For `sql_text_s`, log is truncated if it exceeds 2048 characters.
 
+### Track database activity with Audit Logs
+
+Azure Database for MySQL flexible server provides users with the ability to configure audit logs. Audit logs can be used to track database-level activity including connection, admin, DDL, and DML events. These types of logs are commonly used for compliance purposes.
+
+#### Configure audit logging
+
+> [!IMPORTANT]  
+> We recommend to only log the event types and users required for your auditing purposes. This approach helps to ensure your server's performance isn't heavily affected and a minimum amount of data is collected.
+
+By default, audit logs are disabled. To enable them, set the `audit_log_enabled` server parameter to *ON*. Enable audit logs using the Azure portal or Azure CLI.
+
+Other parameters you can adjust to control audit logging behavior include:
+
+- `audit_log_events`: controls the events to be logged. See the following table for specific audit events.
+- `audit_log_include_users`: MySQL users to be included for logging. The default value for this parameter is empty, which includes all the users for logging. This parameter has higher priority over `audit_log_exclude_users`. Max length of the parameter is 512 characters. For example, wildcard value of `dev*` includes all the users with entries starting with keyword `dev` like *dev1,dev_user,dev_2*. Another example for wildcard entry for including user is `*dev` in this example, all users ending with value "dev" like "stage_dev,prod_dev,user_dev" are included in the audit log entries. Additionally, the use of a question mark `(?)` as a wildcard character is permitted in patterns.
+- `audit_log_exclude_users`: MySQL users to be excluded from logging. The Max length of the parameter is 512 characters. Wildcard entries for user are also accepted to exclude users in audit logs. For example, wildcard value of `stage*` excludes all the users with entries starting with keyword `stage` like *stage1,stage_user,stage_2*. Another example for wildcard entry for excluding user is `*com`. In this example, all users ending with value `com` are excluded from the audit log entries. Additionally, the use of a question mark `(?)` as a wildcard character is permitted in patterns.
+
+> [!NOTE]  
+> `audit_log_include_users` has higher priority over `audit_log_exclude_users`. For example, if `audit_log_include_users` = `demouser` and `audit_log_exclude_users` = `demouser`, the user is included in the audit logs because `audit_log_include_users` has higher priority.
+
+| **Event** | **Description** |
+| --- | --- |
+| `CONNECTION` | - Connection initiation<br />- Connection termination |
+| `CONNECTION_V2` | - Connection initiation (successful or unsuccessful attempt error code)<br />- Connection termination<br />|
+| `DML_SELECT` | SELECT queries |
+| `DML_NONSELECT` | INSERT/DELETE/UPDATE queries |
+| `DML` | DML = DML_SELECT + DML_NONSELECT |
+| `DDL` | Queries like "DROP DATABASE" |
+| `DCL` | Queries like "GRANT PERMISSION" |
+| `ADMIN` | Queries like "SHOW STATUS" |
+| `GENERAL` | All in DML_SELECT, DML_NONSELECT, DML, DDL, DCL, and ADMIN |
+| `TABLE_ACCESS` | - Table read statements, such as SELECT or INSERT INTO ... SELECT<br />- Table delete statements, such as DELETE or TRUNCATE TABLE<br />- Table insert statements, such as INSERT or REPLACE<br />- Table update statements, such as UPDATE |
+
+#### Access audit logs
+
+Audit logs are integrated with Azure Monitor diagnostic settings. After you enable audit logs on your flexible server, you can emit them to Azure Monitor logs, Azure Event Hubs, or Azure Storage. To learn more about diagnostic settings, see the [diagnostic logs documentation](/azure/azure-monitor/essentials/platform-logs-overview). To learn more about how to enable diagnostic settings in the Azure portal, see the [audit log portal article](tutorial-configure-audit.md#set-up-diagnostics).
+
+> [!NOTE]  
+> Premium Storage accounts aren't supported if you send the logs to Azure storage via diagnostics and settings.
+
+Depending on the output method, the fields included and the order in which they appear might vary.
+
+Connection:
+
+| **Property** | **Description** |
+| --- | --- |
+| `TenantId` | Your tenant ID |
+| `SourceSystem` | `Azure` |
+| `TimeGenerated [UTC]` | Time stamp when the log was recorded in UTC |
+| `Type` | Type of the log. Always `AzureDiagnostics` |
+| `SubscriptionId` | GUID for the subscription that the server belongs to |
+| `ResourceGroup` | Name of the resource group the server belongs to |
+| `ResourceProvider` | Name of the resource provider. Always `MICROSOFT.DBFORMYSQL` |
+| `ResourceType` | `Servers` |
+| `ResourceId` | Resource URI |
+| `Resource` | Name of the server in upper case |
+| `Category` | `MySqlAuditLogs` |
+| `OperationName` | `LogEvent` |
+| `LogicalServerName_s` | Name of the server |
+| `event_class_s` | `connection_log` |
+| `event_subclass_s` | `CONNECT`, `DISCONNECT`, `CHANGE USER` |
+| `connection_id_d` | Unique connection ID generated by MySQL |
+| `host_s` | Blank |
+| `ip_s` | IP address of client connecting to MySQL |
+| `user_s` | Name of user executing the query |
+| `db_s` | Name of database connected to |
+| `\_ResourceId` | Resource URI |
+| `status_d` | Connection [Error code](https://dev.mysql.com/doc/mysql-errors/8.0/en/server-error-reference.html) entry for CONNECTIONS_V2 event. |
+
+General:
+
+The following Schema applies to GENERAL, DML_SELECT, DML_NONSELECT, DML, DDL, DCL, and ADMIN event types.
+
+> [!NOTE]  
+> For `sql_text_s`, log is truncated if it exceeds 2048 characters.
+
+| **Property** | **Description** |
+| --- | --- |
+| `TenantId` | Your tenant ID |
+| `SourceSystem` | `Azure` |
+| `TimeGenerated [UTC]` | Time stamp when the log was recorded in UTC |
+| `Type` | Type of the log. Always `AzureDiagnostics` |
+| `SubscriptionId` | GUID for the subscription that the server belongs to |
+| `ResourceGroup` | Name of the resource group the server belongs to |
+| `ResourceProvider` | Name of the resource provider. Always `MICROSOFT.DBFORMYSQL` |
+| `ResourceType` | `Servers` |
+| `ResourceId` | Resource URI |
+| `Resource` | Name of the server in upper case |
+| `Category` | `MySqlAuditLogs` |
+| `OperationName` | `LogEvent` |
+| `LogicalServerName_s` | Name of the server |
+| `event_class_s` | `general_log` |
+| `event_subclass_s` | `LOG`, `ERROR`, `RESULT` (only available for MySQL 5.6) |
+| `event_time` | Query start time in UTC timestamp |
+| `error_code_d` | Error code if query failed. `0` means no error |
+| `thread_id_d` | ID of thread that executed the query |
+| `host_s` | Blank |
+| `ip_s` | IP address of client connecting to MySQL |
+| `user_s` | Name of user executing the query |
+| `sql_text_s` | Full query text |
+| `\_ResourceId` | Resource URI |
+
+Table access:
+
+> [!NOTE]  
+> For `sql_text_s`, log is truncated if it exceeds 2048 characters.
+
+| **Property** | **Description** |
+| --- | --- |
+| `TenantId` | Your tenant ID |
+| `SourceSystem` | `Azure` |
+| `TimeGenerated [UTC]` | Time stamp when the log was recorded in UTC |
+| `Type` | Type of the log. Always `AzureDiagnostics` |
+| `SubscriptionId` | GUID for the subscription that the server belongs to |
+| `ResourceGroup` | Name of the resource group the server belongs to |
+| `ResourceProvider` | Name of the resource provider. Always `MICROSOFT.DBFORMYSQL` |
+| `ResourceType` | `Servers` |
+| `ResourceId` | Resource URI |
+| `Resource` | Name of the server in upper case |
+| `Category` | `MySqlAuditLogs` |
+| `OperationName` | `LogEvent` |
+| `LogicalServerName_s` | Name of the server |
+| `event_class_s` | `table_access_log` |
+| `event_subclass_s` | `READ`, `INSERT`, `UPDATE`, or `DELETE` |
+| `connection_id_d` | Unique connection ID generated by MySQL |
+| `db_s` | Name of database accessed |
+| `table_s` | Name of table accessed |
+| `sql_text_s` | Full query text |
+| `\_ResourceId` | Resource URI |
+
+### Use Azure Monitor workbooks
+
+Azure Database for MySQL flexible server is now integrated with Azure Monitor workbooks. With workbooks, you get a flexible canvas for analyzing data and creating rich visual reports within the Azure portal. Workbooks allow you to tap into multiple data sources across Azure and combine them into unified interactive experiences. Workbook templates serve as curated reports that multiple users and teams design for flexible reuse.
+
+When you open a template, you create a transient workbook that's populated with the contents of the template. With this integration, the server links to workbooks and a few sample templates, which can help you monitor the service at scale. You can edit these templates, customize them to your requirements, and pin them to the dashboard to create a focused and organized view of Azure resources.
+
+Azure Database for MySQL flexible server has three available templates:
+
+- **Overview**: Displays an instance summary and top-level metrics to help you visualize and understand the resource utilization on your server. This template displays the following views:
+
+  - Server Summary
+  - Database Summary
+  - Connection Metrics
+  - Performance Metrics
+  - Storage Metrics
+
+- **Auditing**: Displays a summary and details of the auditing events that are collected for the server. This template displays the following views:
+
+  - Administrative Actions on the service
+  - Audit Summary
+  - Audit Connection Events Summary
+  - Audit Connection Events
+  - Table Access Summary
+  - Errors Identified
+
+- **Query Performance Insight**: Displays a summary and details of query workload on the instance, long running query, slow query analysis, and connection metrics. This template displays the following views:
+
+  - Query Load
+  - Total Active Connections
+  - Slow Query Trend (>10 seconds of query time)
+  - Slow Query Details
+  - List top five longest queries
+  - Summarize slow queries by minimum, maximum, average, and standard deviation query time
+
+You can also edit and customize these templates according to your requirements. For more information, see [Azure Workbooks](/azure/azure-monitor/visualize/workbooks-overview).
+
+#### Access the workbook templates
+
+To view the templates in the Azure portal, go to the **Monitoring** pane for Azure Database for MySQL flexible server, and then select **Workbooks**.
+
+:::image type="content" source="media/concepts-workbooks/monitor-workbooks-all.png" alt-text="Screenshot showing the 'Overview', 'Auditing', and 'Query Performance Insight' templates on the Workbooks pane." lightbox="media/concepts-workbooks/monitor-workbooks-all.png":::
+
+You can also display the list of templates by going to the **Public Templates** pane.
+
+:::image type="content" source="media/concepts-workbooks/monitor-workbooks-public.png" alt-text="Diagram that shows the 'Overview', 'Auditing', and 'Query Performance Insight' templates on the 'Public Templates' pane." lightbox="media/concepts-workbooks/monitor-workbooks-public.png":::
+
 [!INCLUDE [azmon-horz-tools](~/reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/azmon-horz-tools.md)]
 
 [!INCLUDE [azmon-horz-export-data](~/reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/azmon-horz-export-data.md)]
@@ -163,6 +339,70 @@ You can use slow query logs to find candidates for optimization. After your slow
     | project TimeGenerated, Resource , event_class_s, start_time_t , query_time_d, sql_text_s
     | where query_time_d > 10
     ```
+
+For audit logs, after your audit logs are piped to Azure Monitor Logs through Diagnostic Logs, you can perform further analysis of your audited events. These sample queries can get you started. Make sure to update them with your server name.
+
+- List GENERAL events on a particular server
+
+    ```kusto
+    AzureDiagnostics
+    | where Resource  == '<your server name>' //Server name must be in Upper case
+    | where Category == 'MySqlAuditLogs' and event_class_s == "general_log"
+    | project TimeGenerated, Resource, event_class_s, event_subclass_s, event_time_t, user_s , ip_s , sql_text_s
+    | order by TimeGenerated asc nulls last
+    ```
+
+- List CONNECTION_V2 events on a particular server, `status_d` column denotes the client connection [error code](https://dev.mysql.com/doc/mysql-errors/8.0/en/server-error-reference.html) faced by the client application while connecting.
+
+    ```kusto
+    AzureDiagnostics
+    | where Resource  == '<your server name>' //Server name must be in Upper case
+    | where Category == 'MySqlAuditLogs' and event_subclass_s == "CONNECT"
+    | project TimeGenerated, Resource, event_class_s, event_subclass_s, user_s, ip_s, status_d
+    | order by TimeGenerated asc nulls last
+    ```
+
+- List CONNECTION events on a particular server
+
+    ```kusto
+    AzureDiagnostics
+    | where Resource  == '<your server name>' //Server name must be in Upper case
+    | where Category == 'MySqlAuditLogs' and event_class_s == "connection_log"
+    | project TimeGenerated, Resource, event_class_s, event_subclass_s, event_time_t, user_s , ip_s , sql_text_s
+    | order by TimeGenerated asc nulls last
+    ```
+
+- Summarize audited events on a particular server
+
+    ```kusto
+    AzureDiagnostics
+    | where Resource  == '<your server name>' //Server name must be in Upper case
+    | where Category == 'MySqlAuditLogs'
+    | project TimeGenerated, Resource, event_class_s, event_subclass_s, event_time_t, user_s , ip_s , sql_text_s
+    | summarize count() by event_class_s, event_subclass_s, user_s, ip_s
+    ```
+
+- Graph the audit event type distribution on a particular server
+
+    ```kusto
+    AzureDiagnostics
+    | where Resource  == '<your server name>' //Server name must be in Upper case
+    | where Category == 'MySqlAuditLogs'
+    | project TimeGenerated, Resource, event_class_s, event_subclass_s, event_time_t, user_s , ip_s , sql_text_s
+    | summarize count() by Resource, bin(TimeGenerated, 5m)
+    | render timechart
+    ```
+
+- List audited events across all Azure Database for MySQL Flexible Server instances with Diagnostic Logs enabled for audit logs
+
+    ```kusto
+    AzureDiagnostics
+    | where Category == 'MySqlAuditLogs'
+    | project TimeGenerated, Resource, event_class_s, event_subclass_s, event_time_t, user_s , ip_s , sql_text_s
+    | order by TimeGenerated asc nulls last
+    ```
+
+
 
 [!INCLUDE [azmon-horz-alerts-part-one](~/reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/azmon-horz-alerts-part-one.md)]
 

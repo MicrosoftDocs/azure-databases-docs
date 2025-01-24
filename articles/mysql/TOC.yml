@@ -145,10 +145,6 @@
         href: flexible-server\monitor-mysql-flexible-server-reference.md
       - name: Error logs
         href: flexible-server/concepts-error-logs.md        
-      - name: Audit logs
-        href: flexible-server/concepts-audit-logs.md
-      - name: Workbooks
-        href: flexible-server/concepts-workbooks.md
     - name: Replication
       items:
       - name: Data-in replication

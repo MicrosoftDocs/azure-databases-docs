@@ -1,7 +1,7 @@
 ---
 title: Monitoring data reference for Azure Database for MySQL - Flexible Server
 description: This article contains important reference material you need when you monitor Azure Database for MySQL - Flexible Server.
-ms.date: 01/22/2025
+ms.date: 01/27/2025
 ms.custom: horz-monitor
 ms.topic: reference
 author: markingmyname
