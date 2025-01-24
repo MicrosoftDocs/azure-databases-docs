@@ -425,10 +425,10 @@
         href: flexible-server/how-to-configure-scheduled-maintenance.md
       - name: Data encryption
         href: flexible-server/how-to-data-encryption.md
-      - name: Scale a server
-        items:
-        - name: Azure portal
-          href: flexible-server/how-to-scale-compute-storage-portal.md
+      - name: Scale compute
+        href: flexible-server/how-to-scale-compute.md
+      - name: Scale storage
+        href: flexible-server/how-to-scale-storage.md
       - name: Restore a dropped server
         items:
         - name: Restore a dropped server
