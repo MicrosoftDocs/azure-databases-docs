@@ -4,10 +4,10 @@ description: Permissions required for a user to create and monitor migrations.
 author: shriramm
 ms.author: shriramm
 ms.reviewer: maghan
-ms.date: 01/06/2025
+ms.date: 01/24/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Required Permissions for Migration Creation and Monitoring

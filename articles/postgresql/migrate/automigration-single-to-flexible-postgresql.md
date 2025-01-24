@@ -4,7 +4,7 @@ description: This tutorial describes how to configure notifications, review migr
 author: hariramt
 ms.author: hariramt
 ms.reviewer: shriramm, maghan
-ms.date: 01/06/2025
+ms.date: 01/24/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: overview
@@ -21,7 +21,7 @@ ms.custom:
 
 Automigration leverages the [Azure PostgreSQL migration service](./migration-service/overview-migration-service-postgresql.md) to deliver a resilient offline migration during the planned migration window. Downtime will vary based on workload characteristics, with larger workloads potentially requiring up to 20 minutes. For migration speed benchmarks, see [Azure PostgreSQL Migration Speed Benchmarking](./migration-service/best-practices-migration-service-postgresql.md#migration-speed-benchmarking). This migration eliminates the need for manual server migration, allowing you to benefit from Flexible Server features post-migration, including improved price-performance, granular database configuration control, and custom maintenance windows.
 
-> [!NOTE]  
+> [!NOTE]
 > The Automigration service selects Single server to migrate based on the following criteria:
 > - Single server version 11
 > - Servers with no complex feature such as CMK, Microsoft Entra ID, Read Replica and Private end-point
