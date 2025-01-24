@@ -138,6 +138,23 @@ procedureSection:
 
         :::image type="content" source="./media/how-to-manage-database-account/single-to-multi-master.png" alt-text="Screenshot of the Replicate data globally menu, highlighting Configure regions and Save.":::
   - title: |
+      Enable service-managed failover for your Azure Cosmos DB account
+    summary: |
+      The Service-Managed failover option allows Azure Cosmos DB to fail over to the region with the highest failover priority with no user action should a region become unavailable. When service-managed failover is enabled, region priority can be modified. Your account must have two or more regions to enable service-managed failover.
+    steps:
+      - |
+        From your Azure Cosmos DB account, open the **Replicate data globally** pane.
+      - |
+        At the top of the pane, select **Service-Managed Failover**.
+
+          :::image type="content" source="./media/how-to-manage-database-account/replicate-data-globally.png" alt-text="Screenshot that shows the replicate data globally menu.":::
+      - |
+        On the **Service-Managed Failover** pane, make sure that **Enable Service-Managed Failover** is set to **ON**.
+      - |
+        Select **Save**.
+
+          :::image type="content" source="./media/how-to-manage-database-account/automatic-failover.png" alt-text="Screenshot of the Service-Managed failover portal menu.":::
+  - title: |
       Perform Forced failover for your Azure Cosmos DB Account
     summary: |
       A forced failover (region offline) enables users to promptly address degraded performance, partial outages, or regional disruptions in a Cosmos DB account. A service-managed failover depends on the service's confirmation and which might take time to activate based on the progression of the outage. A forced failover allows administrators to quickly restore availability for the affected region without waiting for the service-managed failover. 
