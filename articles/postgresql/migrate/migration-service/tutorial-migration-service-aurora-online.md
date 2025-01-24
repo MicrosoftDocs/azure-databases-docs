@@ -93,7 +93,7 @@ The migration runtime server is a specialized feature of the migration service. 
 
 For more information, see [Migration runtime server](concepts-migration-service-runtime-server.md).
 
-:::image type="content" source="media/tutorial-migration-service-aurora-online/02-portal-offline-runtime-server-aurora.png" alt-text="Screenshot of the Migration Runtime Server tab.":::
+:::image type="content" source="media/tutorial-migration-service-aurora-offline/02-portal-offline-runtime-server-aurora.png" alt-text="Screenshot of the Migration Runtime Server tab.":::
 
 #### Connect to the source
 
