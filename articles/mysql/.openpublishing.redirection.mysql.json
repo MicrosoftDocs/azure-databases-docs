@@ -1538,12 +1538,12 @@
       {
         "source_path_from_root": "/articles/mysql/flexible-server/concepts-audit-logs.md",
         "redirect_url": "/azure/mysql/flexible-server/monitor-mysql-flexible-server#track-database-activity-with-audit-logs",
-        "redirect_document_id": true
+        "redirect_document_id": false
       },
       {
         "source_path_from_root": "/articles/mysql/flexible-server/concepts-workbooks.md",
         "redirect_url": "/azure/mysql/flexible-server/monitor-mysql-flexible-server#use-azure-monitor-workbooks",
-        "redirect_document_id": true
+        "redirect_document_id": false
       }
   ]
 }
