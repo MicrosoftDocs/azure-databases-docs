@@ -182,10 +182,10 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="./media/how-to-scale-storage/save-size-ssd-v2.png" alt-text="Screenshot showing the Save button enabled after changing disk size for a Premium SSD v2 disk." lightbox="./media/how-to-scale-storage/save-size-ssd-v2.png":::
 
-> [!IMPORTANT]
-> Premium SSD v2 disks don't support host caching. For more information, see [Premium SSD v2 limitations](/azure/virtual-machines/disks-types##premium-ssd-v2-limitations).
->
-> The operation to increase the size of Premium SSD v2 disks always requires a server restart, regardless of what's the current size and what's the target size to which you're growing it.
+   > [!IMPORTANT]
+   > Premium SSD v2 disks don't support host caching. For more information, see [Premium SSD v2 limitations](/azure/virtual-machines/disks-types##premium-ssd-v2-limitations).
+   >
+   > The operation to increase the size of Premium SSD v2 disks always requires a server restart, regardless of what's the current size and what's the target size to which you're growing it.
 
 6. A notification shows that a deployment is in progress.
 
