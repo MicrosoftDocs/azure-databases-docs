@@ -61,7 +61,7 @@ To configure the migration task in the Azure portal:
 
 1. Select **Create** to step through a series of tabs to set up a migration.
 
-    :::image type="content" source="media/tutorial-migration-service-aurora-online/portal-online-create-migration.png" alt-text="Creenshot of the migration selection in the Azure portal." lightbox="media/tutorial-migration-service-aurora-online/portal-online-create-migration.png":::
+    :::image type="content" source="media/tutorial-migration-service-aurora-online/portal-online-create-migration.png" alt-text="Screenshot of the migration selection in the Azure portal." lightbox="media/tutorial-migration-service-aurora-online/portal-online-create-migration.png":::
 
 #### Setup
 
