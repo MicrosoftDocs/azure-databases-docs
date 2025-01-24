@@ -99,6 +99,9 @@ The following options are available for configuring Query Store parameters:
 (*) Static server parameter which requires a server restart for a change in its value to take effect. 
 
 
+> [!NOTE]  
+> If you change the value for `pg_qs.max_query_text_length` parameter, queries already recorded in the Query Store will continue using the same query_id and sql_query_text  and it will seem that the new value does not take effect, but for queries not recorded in the Query Store you will see the query text will use the new max length value. This is by design as explained at [Views and functions](#views-and-functions). A workaround is to run [query_store.qs_reset](#query_storeqs_reset) so all query start being recorded using the new max length.
+
 The following options apply specifically to wait statistics:
 
 | **Parameter** | **Description** | **Default** | **Range** |
