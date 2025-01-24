@@ -1979,6 +1979,12 @@
         "source_path_from_root": "/articles/postgresql/flexible-server/how-to-create-server-customer-managed-key-azure-api.md",
         "redirect_url": "/azure/postgresql/flexible-server/how-to-data-encryption",
         "redirect_document_id": false
+    },
+    {
+        "source_path_from_root": "/articles/postgresql/flexible-server/how-to-scale-compute-storage-portal.md",
+        "redirect_url": "/azure/postgresql/flexible-server/how-to-scale-compute",
+        "redirect_document_id": false
     }
 ]
 }
+
