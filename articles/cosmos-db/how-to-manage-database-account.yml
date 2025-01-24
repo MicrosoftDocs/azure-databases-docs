@@ -138,22 +138,33 @@ procedureSection:
 
         :::image type="content" source="./media/how-to-manage-database-account/single-to-multi-master.png" alt-text="Screenshot of the Replicate data globally menu, highlighting Configure regions and Save.":::
   - title: |
-      Enable service-managed failover for your Azure Cosmos DB account
+      Perform Forced failover for your Azure Cosmos DB Account
     summary: |
-      The Service-Managed failover option allows Azure Cosmos DB to fail over to the region with the highest failover priority with no user action should a region become unavailable. When service-managed failover is enabled, region priority can be modified. Your account must have two or more regions to enable service-managed failover.
+      A forced failover (region offline) enables users to promptly address degraded performance, partial outages, or regional disruptions in a Cosmos DB account. A service-managed failover depends on the service's confirmation and which might take time to activate based on the progression of the outage. A forced failover allows administrators to quickly restore availability for the affected region without waiting for the service-managed failover. 
     steps:
       - |
         From your Azure Cosmos DB account, open the **Replicate data globally** pane.
       - |
-        At the top of the pane, select **Service-Managed Failover**.
+        At the top of the pane, select **Offline region**.
 
-          :::image type="content" source="./media/how-to-manage-database-account/replicate-data-globally.png" alt-text="Screenshot that shows the replicate data globally menu.":::
+          :::image type="content" source="./media/how-to-manage-database-account/offline-region-failover.png" alt-text="Screenshot that shows the offline region portal menu.":::
       - |
-        On the **Service-Managed Failover** pane, make sure that **Enable Service-Managed Failover** is set to **ON**.
+        > [!WARNING]
+        > Review the warning message indicating the possibility of data loss due to un-replicated writes not being available in the region that will be promoted to the new write region based on the failover priority.
       - |
-        Select **Save**.
+        Select the region to be marked offline, check the box titled “I understand and agree to offline the currently selected region.” and click the **Offline region** button. 
 
-          :::image type="content" source="./media/how-to-manage-database-account/automatic-failover.png" alt-text="Screenshot of the Service-Managed failover portal menu.":::
+          :::image type="content" source="./media/how-to-manage-database-account/offline-region-warning.png" alt-text="Screenshot that shows the offline region warning.":::
+      - |
+        Once completed, the region with the highest failover priority is promoted to the new write region, while the original write region is marked offline.
+
+          :::image type="content" source="./media/how-to-manage-database-account/offline-region-complete.png" alt-text="Screenshot that shows the offline region complete.":::
+
+        The Azure Cosmos DB service team handles bringing back the region online. If the region is offline during an outage, it may take more than three days to restore it online, depending on the impact's severity. For a disaster recovery drill where a region is taken offline, please create a support ticket request to bring the region back online.  
+
+        In the case of a single-write region, if the write region is offline during the drill or an outage, bringing the region back online will restore it as a 'read region'. Afterward, you can perform the 'change write region' operation to promote the region back to a write region. 
+
+        Azure Cosmos DB offers “Region Offline” and “Region Online” metrics for users who want to create automation based on these metrics. For instance, after the region is back online, you might want to trigger an automation job to change-write region. The list of supported database account metrics can be found here.
   - title: |
       Set failover priorities for your Azure Cosmos DB account
     summary: |
@@ -186,7 +197,7 @@ procedureSection:
       > If you perform a manual failover operation while an asynchronous throughput scaling operation is in progress, the throughput scale-up operation will be paused. It resumes automatically when the failover operation is complete. For more information, see [Best practices for scaling provisioned throughput (RU/s)](scaling-provisioned-throughput-best-practices.md#background-on-scaling-rus)
 
       > [!WARNING]
-      > In the event of a write region outage, where the Azure Cosmos DB account promotes a secondary region to be the new primary write region via *service-managed failover*, the original write region will **not be promoted back as the write region automatically** once it's recovered. It is your responsibility to switch back to the recovered region as the write region using [PowerShell, the Azure CLI, or the Azure portal](#perform-manual-failover-on-an-azure-cosmos-db-account) (once safe to do so, as described above).  
+      > If there's a write region outage, where the Azure Cosmos DB account promotes a secondary region to be the new primary write region via *service-managed failover*, the original write region will **not be promoted back as the write region automatically** once it's recovered. It is your responsibility to switch back to the recovered region as the write region using [PowerShell, the Azure CLI, or the Azure portal](#perform-manual-failover-on-an-azure-cosmos-db-account) (once safe to do so, as described above).  
     steps:
       - |
         Go to your Azure Cosmos DB account and open the **Replicate data globally** menu.
