@@ -155,7 +155,7 @@ procedureSection:
 
           :::image type="content" source="./media/how-to-manage-database-account/automatic-failover.png" alt-text="Screenshot of the Service-Managed failover portal menu.":::
   - title: |
-      Perform Forced failover for your Azure Cosmos DB Account
+      Perform forced failover for your Azure Cosmos DB Account
     summary: |
       A forced failover (region offline) enables users to promptly address degraded performance, partial outages, or regional disruptions in a Cosmos DB account. A service-managed failover depends on the service's confirmation and which might take time to activate based on the progression of the outage. A forced failover allows administrators to quickly restore availability for the affected region without waiting for the service-managed failover. 
     steps:
@@ -205,30 +205,31 @@ procedureSection:
 
         :::image type="content" source="./media/how-to-manage-database-account/automatic-failover.png" alt-text="Screenshot of the Service-Managed failover portal menu.":::
   - title: |
-      Perform manual failover on an Azure Cosmos DB account
+      Change write region for your Azure Cosmos DB Account
     summary: |
       > [!IMPORTANT]
-      > The Azure Cosmos DB account must be configured for manual failover for this operation to succeed.
+      > The Azure Cosmos DB account must be configured with multiple regions for change write region operation.
 
       > [!NOTE]
-      > If you perform a manual failover operation while an asynchronous throughput scaling operation is in progress, the throughput scale-up operation will be paused. It resumes automatically when the failover operation is complete. For more information, see [Best practices for scaling provisioned throughput (RU/s)](scaling-provisioned-throughput-best-practices.md#background-on-scaling-rus)
+      > If you perform a manual change-write region operation while an asynchronous throughput scaling operation is in progress, the throughput scale-up operation will be paused. It resumes automatically when the failover operation is complete. For more information, see [Best practices for scaling provisioned throughput (RU/s)](scaling-provisioned-throughput-best-practices.md#background-on-scaling-rus)
 
       > [!WARNING]
-      > If there's a write region outage, where the Azure Cosmos DB account promotes a secondary region to be the new primary write region via *service-managed failover*, the original write region will **not be promoted back as the write region automatically** once it's recovered. It is your responsibility to switch back to the recovered region as the write region using [PowerShell, the Azure CLI, or the Azure portal](#perform-manual-failover-on-an-azure-cosmos-db-account) (once safe to do so, as described above).  
+      > In the event of a write region outage, please do not use change-write region. For outage scenarios, please refer to forced failover section. 
     steps:
       - |
         Go to your Azure Cosmos DB account and open the **Replicate data globally** menu.
       - |
-        At the top of the menu, select **Manual Failover**.
+        At the top of the menu, select **Change write region**.
 
-          :::image type="content" source="./media/how-to-manage-database-account/replicate-data-globally.png" alt-text="Screenshot of the Replicate data globally menu.":::
-
+          :::image type="content" source="./media/how-to-manage-database-account/change-write-region.png" alt-text="Screenshot of the change write region menu.":::
       - |
-        On the **Manual Failover** menu, select your new write region. Select the check box to indicate that you understand this option changes your write region.
-      - |
-        To trigger the failover, select **OK**.
+        Change write region panel provides details to ensure that this operation is not executed during outage scenarios. Select and acknowledge that this operation is not being performed during regional outages.
 
-          :::image type="content" source="./media/how-to-manage-database-account/manual-failover.png" alt-text="Screenshot of the manual failover portal menu.":::
+          :::image type="content" source="./media/how-to-manage-database-account/change-write-region-details.png" alt-text="Screenshot of the change write region details.":::
+      - |
+        Select a new write region and checkbox to acknowledge the operation confirmation. Click **Ok** to perform the operation.
+
+          :::image type="content" source="./media/how-to-manage-database-account/change-write-region-confirm.png" alt-text="Screenshot of the change write region confirmation.":::
 
 relatedContent:
   - text: Manage Azure Cosmos DB for NoSQL resources using PowerShell
