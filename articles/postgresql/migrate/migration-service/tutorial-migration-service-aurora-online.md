@@ -1,10 +1,10 @@
 ---
-title: "Migrate from Amazon Aurora online by using the migration service"
-description: Learn how to migrate online seamlessly from Amazon Aurora to Azure Database for PostgreSQL by using the new migration service in Azure. Simplify the migration while ensuring data integrity and efficient deployment."
+title: "Migrate From Amazon Aurora Online By Using the Migration Service"
+description: Learn how to migrate online seamlessly from Amazon Aurora to Azure Database for PostgreSQL by using the new migration service in Azure. Simplify the migration while ensuring data integrity and efficient deployment.
 author: apduvuri
 ms.author: adityaduvuri
 ms.reviewer: maghan
-ms.date: 06/19/2024
+ms.date: 01/24/2025
 ms.service: azure-database-postgresql
 ms.subservice: migration-guide
 ms.topic: tutorial
@@ -22,7 +22,7 @@ The migration service in Azure Database for PostgreSQL is a fully managed servic
 In this tutorial, you:
 
 > [!div class="checklist"]
->
+>  
 > - Complete prerequisites
 > - Initiate the migration
 > - Monitor the migration
@@ -61,7 +61,7 @@ To configure the migration task in the Azure portal:
 
 1. Select **Create** to step through a series of tabs to set up a migration.
 
-    :::image type="content" source="media/tutorial-migration-service-aurora-online/portal-online-create-migration.png" alt-text="creenshot of the migration selection in the Azure portal." lightbox="media/tutorial-migration-service-aurora-online/portal-online-create-migration.png":::
+    :::image type="content" source="media/tutorial-migration-service-aurora-online/portal-online-create-migration.png" alt-text="Creenshot of the migration selection in the Azure portal." lightbox="media/tutorial-migration-service-aurora-online/portal-online-create-migration.png":::
 
 #### Setup
 
@@ -93,7 +93,7 @@ The migration runtime server is a specialized feature of the migration service. 
 
 For more information, see [Migration runtime server](concepts-migration-service-runtime-server.md).
 
-:::image type="content" source="media/tutorial-migration-service-aurora-offline/02-portal-offline-runtime-server-aurora.png" alt-text="Screenshot of the Migration Runtime Server tab.":::
+:::image type="content" source="media/tutorial-migration-service-aurora-online/02-portal-offline-runtime-server-aurora.png" alt-text="Screenshot of the Migration Runtime Server tab.":::
 
 #### Connect to the source
 
@@ -116,7 +116,7 @@ On the **Select migration target** tab, enter or select the following informatio
 
 - **Admin username**: The admin username of the target PostgreSQL server.
 - **Password**: The password of the target PostgreSQL server.
-- **Custom FQDN/IP (Optional)**: The custom FQDN/IP field is optional and can be used when the target is behind a custom DNS server or has custom DNS namespaces, making it accessible only via specific FQDNs or IP addresses. For example, this could include entries like `flexibleserver.example.com`, `198.1.0.2`, or a PostgreSQL FQDN such as `flexibleserver.postgres.database.azure.com`, if the custom DNS server contains the DNS zone `postgres.database.azure.com` or forwards queries for this zone to `168.63.129.16`, where the FQDN is resolved in the Azure public or private DNS zone. 
+- **Custom FQDN/IP (Optional)**: The custom FQDN/IP field is optional and can be used when the target is behind a custom DNS server or has custom DNS namespaces, making it accessible only via specific FQDNs or IP addresses. For example, this could include entries like `flexibleserver.example.com`, `198.1.0.2`, or a PostgreSQL FQDN such as `flexibleserver.postgres.database.azure.com`, if the custom DNS server contains the DNS zone `postgres.database.azure.com` or forward queries for this zone to `168.63.129.16`, where the FQDN is resolved in the Azure public or private DNS zone.
 - **Test Connection**: Initiates a connectivity test between the target and the source. When the connection is successful, go to the next step to identify networking issues between the target and source and to verify the username and password for the target server. Establishing a test connection takes a few minutes.
 
 After a successful test connection, select **Next: Select database(s) for migration**.
@@ -129,13 +129,13 @@ On the **Select database for migration** tab, select from a list of user databas
 
 After you select the databases, select **Next: Summary**.
 
-:::image type="content" source="media\tutorial-migration-service-aurora-online\05-portal-online-select-database-migration-aurora.png" alt-text="Screenshot of the Select databases for migration tab.":::
+:::image type="content" source="media/tutorial-migration-service-aurora-online/05-portal-online-select-database-migration-aurora.png" alt-text="Screenshot of the Select databases for migration tab." lightbox="media/tutorial-migration-service-aurora-online/05-portal-online-select-database-migration-aurora.png":::
 
 #### Summary
 
 The **Summary** tab summarizes all the source and target details for creating the validation or migration. Review the details, and then select **Start Validation and Migration**.
 
-:::image type="content" source="media/tutorial-migration-service-aurora-online/06-portal-online-summary-aurora.png" alt-text="Screenshot of the migration Summary tab.":::
+:::image type="content" source="media/tutorial-migration-service-aurora-online/06-portal-online-summary-aurora.png" alt-text="Screenshot of the migration Summary tab." lightbox="media/tutorial-migration-service-aurora-online/06-portal-online-summary-aurora.png":::
 
 ### Monitor the migration
 

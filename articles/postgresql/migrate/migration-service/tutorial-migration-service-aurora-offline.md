@@ -1,10 +1,10 @@
 ---
-title: "Migrate from Amazon Aurora offline by using the migration service"
-description: Learn how to migrate offline seamlessly from Amazon Aurora to Azure Database for PostgreSQL by using the new migration service in Azure. Simplify the migration while ensuring data integrity and efficient deployment."
+title: "Migrate From Amazon Aurora Offline By Using the Migration Service"
+description: Learn how to migrate offline seamlessly from Amazon Aurora to Azure Database for PostgreSQL by using the new migration service in Azure. Simplify the migration while ensuring data integrity and efficient deployment.
 author: apduvuri
 ms.author: adityaduvuri
 ms.reviewer: maghan
-ms.date: 08/30/2024
+ms.date: 01/24/2025
 ms.service: azure-database-postgresql
 ms.subservice: migration-guide
 ms.topic: tutorial
@@ -22,7 +22,7 @@ The migration service in Azure Database for PostgreSQL is a fully managed servic
 In this tutorial, you:
 
 > [!div class="checklist"]
->
+>  
 > - Complete prerequisites
 > - Initiate the migration
 > - Monitor the migration
@@ -84,7 +84,7 @@ Enter or select the following information:
 
 Select **Next: Connect to source**.
 
-:::image type="content" source="media/tutorial-migration-service-aurora-offline/01-portal-offline-setup-aurora.png" alt-text="Screenshot of the migration Setup tab in the Azure portal.":::
+:::image type="content" source="media/tutorial-migration-service-aurora-offline/01-portal-offline-setup-aurora.png" alt-text="Screenshot of the migration Setup tab in the Azure portal." lightbox="media/tutorial-migration-service-aurora-offline/01-portal-offline-setup-aurora.png":::
 
 #### Select the runtime server
 
@@ -115,7 +115,7 @@ On the **Select migration target** tab, enter or select the following informatio
 
 - **Admin username**: The admin username of the target PostgreSQL server.
 - **Password**: The password of the target PostgreSQL server.
-- **Custom FQDN/IP (Optional)**: The custom FQDN/IP field is optional and can be used when the target is behind a custom DNS server or has custom DNS namespaces, making it accessible only via specific FQDNs or IP addresses. For example, this could include entries like `flexibleserver.example.com`, `198.1.0.2`, or a PostgreSQL FQDN such as `flexibleserver.postgres.database.azure.com`, if the custom DNS server contains the DNS zone `postgres.database.azure.com` or forwards queries for this zone to `168.63.129.16`, where the FQDN is resolved in the Azure public or private DNS zone.
+- **Custom FQDN/IP (Optional)**: The custom FQDN/IP field is optional and can be used when the target is behind a custom DNS server or has custom DNS namespaces, making it accessible only via specific FQDNs or IP addresses. For example, this could include entries like `flexibleserver.example.com`, `198.1.0.2`, or a PostgreSQL FQDN such as `flexibleserver.postgres.database.azure.com`, if the custom DNS server contains the DNS zone `postgres.database.azure.com` or forward queries for this zone to `168.63.129.16`, where the FQDN is resolved in the Azure public or private DNS zone.
 - **Test Connection**: Initiates a connectivity test between the target and the source. When the connection is successful, go to the next step to identify networking issues between the target and source and to verify the username and password for the target server. Establishing a test connection takes a few minutes.
 
 After a successful test connection, select **Next: Select database(s) for migration**.
@@ -128,13 +128,13 @@ On the **Select database for migration** tab, select from a list of user databas
 
 After you select the databases, select **Next: Summary**.
 
-:::image type="content" source="media/tutorial-migration-service-aurora-offline/05-portal-offline-select-database-aurora.png" alt-text="Screenshot of the Select databases for migration tab.":::
+:::image type="content" source="media/tutorial-migration-service-aurora-offline/05-portal-offline-select-database-aurora.png" alt-text="Screenshot of the Select databases for migration tab." lightbox="media/tutorial-migration-service-aurora-offline/05-portal-offline-select-database-aurora.png":::
 
 #### Summary
 
 The **Summary** tab summarizes all the source and target details for creating the validation or migration. Review the details, and then select **Start Validation and Migration**.
 
-:::image type="content" source="media/tutorial-migration-service-aurora-offline/06-portal-offline-summary-aurora.png" alt-text="Screenshot of the Summary migration pane.":::
+:::image type="content" source="media/tutorial-migration-service-aurora-offline/06-portal-offline-summary-aurora.png" alt-text="Screenshot of the Summary migration pane." lightbox="media/tutorial-migration-service-aurora-offline/06-portal-offline-summary-aurora.png":::
 
 ### Monitor the migration
 

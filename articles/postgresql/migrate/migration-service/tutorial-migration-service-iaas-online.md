@@ -1,10 +1,10 @@
 ---
-title: "Migrate online from on-premises or an Azure VM to Azure Database for PostgreSQL"
+title: "Migrate Online From On-Premises or an Azure VM to Azure Database for PostgreSQL"
 description: "Learn to migrate seamlessly from on-premises or an Azure VM to Azure Database for PostgreSQL - Flexible Server using the new migration service in Azure."
 author: apduvuri
 ms.author: adityaduvuri
 ms.reviewer: maghan
-ms.date: 06/19/2024
+ms.date: 01/24/2025
 ms.service: azure-database-postgresql
 ms.subservice: migration-guide
 ms.topic: tutorial
@@ -56,7 +56,7 @@ The migration service comes with a simple, wizard-based experience on the Azure 
 
 1. Select the **Create** button to migrate from an Azure virtual machine (VM) or an on-premises PostgreSQL server to the Flexible Server. If this is your first time using the migration service, an empty grid appears with a prompt to begin your first migration.
 
-    :::image type="content" source="media/tutorial-migration-service-iaas-online/portal-online-create-migration.png" alt-text="Screenshot of Create migration.":::
+    :::image type="content" source="media/tutorial-migration-service-iaas-online/portal-online-create-migration.png" alt-text="Screenshot of Create migration." lightbox="media/tutorial-migration-service-iaas-online/portal-online-create-migration.png":::
 
     If you've already created migrations to your Flexible Server target, the grid contains information about attempted migrations.
 
@@ -114,7 +114,7 @@ The **select migration target** tab displays metadata for the Flexible Server ta
 
 - **Admin username** - Admin username of the target PostgreSQL server
 - **Password** - Password of the target PostgreSQL server
-- **Custom FQDN/IP (Optional)**: The custom FQDN/IP field is optional and can be used when the target is behind a custom DNS server or has custom DNS namespaces, making it accessible only via specific FQDNs or IP addresses. For example, this could include entries like `flexibleserver.example.com`, `198.1.0.2`, or a PostgreSQL FQDN such as `flexibleserver.postgres.database.azure.com`, if the custom DNS server contains the DNS zone `postgres.database.azure.com` or forwards queries for this zone to `168.63.129.16`, where the FQDN is resolved in the Azure public or private DNS zone.
+- **Custom FQDN/IP (Optional)**: The custom FQDN/IP field is optional and can be used when the target is behind a custom DNS server or has custom DNS namespaces, making it accessible only via specific FQDNs or IP addresses. For example, this could include entries like `flexibleserver.example.com`, `198.1.0.2`, or a PostgreSQL FQDN such as `flexibleserver.postgres.database.azure.com`, if the custom DNS server contains the DNS zone `postgres.database.azure.com` or forward queries for this zone to `168.63.129.16`, where the FQDN is resolved in the Azure public or private DNS zone.
 - **Test Connection** - Performs the connectivity test between target and source. Once the connection is successful, users can proceed with the next step. Otherwise, we need to identify the networking issues between the target and the source and verify the username/password for the target. The test connection takes a few minutes to establish a connection between the target and the source.
 
 After the successful test connection, select the **Next: Select Database(s) for Migration**
@@ -137,7 +137,7 @@ The **Summary** tab summarizes all the source and target details for creating th
 
 After you select the start button, a notification appears in a few seconds, saying that the validation or migration creation is successful. You're redirected automatically to the **Migration** blade of Flexible Server, which has a new entry for the recently created validation or migration.
 
-:::image type="content" source="media/tutorial-migration-service-iaas-online/portal-online-monitor-migration.png" alt-text="Screenshot of monitor migration in the Azure portal.":::
+:::image type="content" source="media/tutorial-migration-service-iaas-online/portal-online-monitor-migration.png" alt-text="Screenshot of monitor migration in the Azure portal." lightbox="media/tutorial-migration-service-iaas-online/portal-online-monitor-migration.png":::
 
 The grid that displays the migrations has these columns: **Name**, **Status**, **Migration mode**, **Migration type**, **Source server**, **Source server type**, **Databases**, **Duration, and **Start time**. The entries are displayed in the descending order of the start time, with the most recent entry at the top. You can use the refresh button to refresh the status of the validation or migration.
 Select the migration name in the grid to see the associated details.
@@ -152,7 +152,7 @@ In the Setup tab, we have selected the migration option as **Migrate and Validat
 
 The validation results are displayed under the **Validation** tab, and the migration is monitored under the **Migration** tab.
 
-:::image type="content" source="media/tutorial-migration-service-iaas-online/portal-online-details-migration.png" alt-text="Screenshot of Details migration.":::
+:::image type="content" source="media/tutorial-migration-service-iaas-online/portal-online-details-migration.png" alt-text="Screenshot of Details migration." lightbox="media/tutorial-migration-service-iaas-online/portal-online-details-migration.png":::
 
 Some possible migration states:
 
@@ -236,7 +236,7 @@ To begin the migration, create a JSON file with the migration details. The JSON 
                 "SourceServerPassword": "<<Source Password>>",
                 "TargetServerPassword": "<<Target Password>>"
             },
-			"targetServerUserName": "<<Target username>>"
+            "targetServerUserName": "<<Target username>>"
         },
         "DBsToMigrate": "<<comma separated list of databases in a array like - ["ticketdb","timedb","inventorydb"]>>",
         "OverwriteDBsInTarget": "true",
