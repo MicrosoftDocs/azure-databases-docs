@@ -2,7 +2,7 @@
 author: akashraokm
 ms.author: akashrao
 ms.reviewer: maghan, randolphwest
-ms.date: 12/05/2024
+ms.date: 01/25/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
@@ -304,7 +304,7 @@ ms.custom: automatically generated
 
 | PostgreSQL version | Extension version |
 | --- | --- |
-| 17 | 1.4.0 |
+| 17 | 1.4.1 |
 | 16 | 1.4.0 |
 | 15 | 1.4.0 |
 | 14 | 1.4.0 |
@@ -527,6 +527,22 @@ ms.custom: automatically generated
 
 
 
+## pg_diskann
+
+[pg_diskann](../../flexible-server/how-to-use-pgdiskann.md) (Preview) is a scalable approximate nearest neighbor search algorithm for efficient vector search at any scale.
+
+| PostgreSQL version | Extension version |
+| --- | --- |
+| 17 | N/A |
+| 16 | 0.4.0 |
+| 15 | 0.4.0 |
+| 14 | 0.4.0 |
+| 13 | N/A |
+| 12 | N/A |
+| 11 | N/A |
+
+
+
 ## pg_failover_slots
 
 [pg_failover_slots](https://github.com/EnterpriseDB/pg_failover_slots) is a logical replication slot manager for failover purposes.
@@ -638,11 +654,11 @@ ms.custom: automatically generated
 
 | PostgreSQL version | Extension version |
 | --- | --- |
-| 17 | 1.4.7 |
-| 16 | 1.4.7 |
-| 15 | 1.4.7 |
-| 14 | 1.4.7 |
-| 13 | 1.4.7 |
+| 17 | 1.5.1 |
+| 16 | 1.5.1 |
+| 15 | 1.5.1 |
+| 14 | 1.5.1 |
+| 13 | 1.5.1 |
 | 12 | 1.4.7 |
 | 11 | 1.4.7 |
 
@@ -999,7 +1015,7 @@ ms.custom: automatically generated
 
 | PostgreSQL version | Extension version |
 | --- | --- |
-| 17 | N/A |
+| 17 | 2.17.2 <sup>*</sup> |
 | 16 | 2.13.0 <sup>*</sup> |
 | 15 | 2.10.0 <sup>*</sup> |
 | 14 | 2.10.0 <sup>*</sup> |
