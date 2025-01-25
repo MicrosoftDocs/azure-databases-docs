@@ -1984,6 +1984,16 @@
         "source_path_from_root": "/articles/postgresql/flexible-server/how-to-scale-compute-storage-portal.md",
         "redirect_url": "/azure/postgresql/flexible-server/how-to-scale-compute",
         "redirect_document_id": false
+    },
+    {
+        "source_path_from_root": "/articles/postgresql/flexible-server/how-to-restore-to-different-subscription-or-resource-group.md",
+        "redirect_url": "/azure/postgresql/flexible-server/how-to-restore",
+        "redirect_document_id": false
+    },
+    {
+        "source_path_from_root": "/articles/postgresql/flexible-server/how-to-restore-different-subscription-resource-group-api.md",
+        "redirect_url": "/azure/postgresql/flexible-server/how-to-restore",
+        "redirect_document_id": false
     }
 ]
 }
