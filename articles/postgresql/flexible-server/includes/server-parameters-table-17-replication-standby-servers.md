@@ -2,7 +2,7 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 01/07/2025
+ms.date: 01/25/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
@@ -169,8 +169,8 @@ ms.custom: automatically generated
 | Description | Sets the maximum wait time to receive data from the sending server. |
 | Data type | integer |
 | Default value | `60000` |
-| Allowed values | `60000` |
-| Parameter type | read-only |
+| Allowed values | `0-2147483647` |
+| Parameter type | dynamic |
 | Documentation | [wal_receiver_timeout](https://www.postgresql.org/docs/17/runtime-config-replication.html#GUC-WAL-RECEIVER-TIMEOUT) |
 
 
