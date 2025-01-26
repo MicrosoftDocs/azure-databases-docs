@@ -22,12 +22,10 @@ This article provides step-by-step instructions to configure networking related 
 ## Servers deployed with public access
 
 ### Enable public access
-
-If public access is disabled, connectivity to the server is only possible via private endpoints. You must configure those private endpoints so that hosts that can route traffic to the Azure virtual network in which you inject the private endpoints, can access your Azure Database for PostgreSQL flexible server. While public access is disabled, any firewall rules you might have created while public access was enabled aren't enforced, and any modifications made to the firewall rules are discarded.
  
 If you enable public access, connectivity to the server is also possible via private endpoints. With public access enabled, you can also configure firewall rules to allow connections originating from specific IP addresses or ranges of addresses, or from any Azure service. When you enable public access, any firewall rules that already existed last time the server was configured with enabled public access, and that weren't explicitly deleted, are enforced again.
 
-#### [Portal](#tab/portal-configure-public-access)
+#### [Portal](#tab/portal-enable-public-access)
 
 Using the [Azure portal](https://portal.azure.com/):
 
@@ -43,18 +41,18 @@ Using the [Azure portal](https://portal.azure.com/):
 
 4. If the status of the server isn't **Available**, the **Networking** option is disabled.
 
-    :::image type="content" source="./media/how-to-networking/networking-disabled.png" alt-text="Screenshot showing where in the Overview page you can find the status of the server." lightbox="./media/how-to-networking/networking-disabled.png":::
+    :::image type="content" source="./media/how-to-networking/networking-disabled.png" alt-text="Screenshot showing that Networking menu is disabled when status of server isn't Available." lightbox="./media/how-to-networking/networking-disabled.png":::
 
 > [!NOTE]
 > Any attempt to configure the networking settings of a server whose status is other than available, would fail with an error.
 
 5. In the resource menu, select **Networking**.
 
-    :::image type="content" source="./media/how-to-networking/configure-public-access-networking.png" alt-text="Screenshot showing the Networking page." lightbox="./media/how-to-networking/configure-public-access-networking.png":::
+    :::image type="content" source="./media/how-to-networking/configure-public-access-networking-disabled.png" alt-text="Screenshot showing the Networking page." lightbox="./media/how-to-networking/configure-public-access-networking-disabled.png":::
 
 6. Select the **Allow public access to this resource through the internet using a public IP address** checkbox.
 
-    :::image type="content" source="./media/how-to-networking/configure-public-access-networking.png" alt-text="Screenshot showing how to enable public access." lightbox="./media/how-to-networking/configure-public-access-networking.png":::
+    :::image type="content" source="./media/how-to-networking/configure-public-access-enable-public-access.png" alt-text="Screenshot showing how to enable public access." lightbox="./media/how-to-networking/configure-public-access-enable-public-access.png":::
 
 7. Select **Save**.
 
@@ -66,37 +64,118 @@ Using the [Azure portal](https://portal.azure.com/):
 
 9. Also, the status of the server changes to **Updating**.
 
-    :::image type="content" source="./media/how-to-networking/configure-public-access-enable-public-access-updating.png" alt-text="Screenshot showing that server status is Updating." lightbox="./media/how-to-networking/configure-public-access-enable-public-access-updating.png":::
+    :::image type="content" source="./media/how-to-networking/configure-public-access-updating.png" alt-text="Screenshot showing that server status is Updating." lightbox="./media/how-to-networking/configure-public-access-updating.png":::
 
 10. When the process completes, a notification informs you that the changes were applied.
 
-    :::image type="content" source="./media/how-to-networking/restarted-server-notification.png" alt-text="Screenshot showing a server whose network settings were successfully saved." lightbox="./media/how-to-networking/restarted-server-notification.png":::
+    :::image type="content" source="./media/how-to-networking/configure-public-access-enable-public-access-succeeded-notification.png" alt-text="Screenshot showing a server whose network settings were successfully saved." lightbox="./media/how-to-networking/configure-public-access-enable-public-access-succeeded-notification.png":::
 
 11. Also, the status of the server changes to **Available**.
 
-    :::image type="content" source="./media/how-to-networking/configure-public-access-enable-public-access-available.png" alt-text="Screenshot showing that server status is Available." lightbox="./media/how-to-networking/configure-public-access-enable-public-access-available.png":::
+    :::image type="content" source="./media/how-to-networking/configure-public-access-available.png" alt-text="Screenshot showing that server status is Available." lightbox="./media/how-to-networking/configure-public-access-available.png":::
 
-#### [CLI](#tab/cli-configure-public-access)
+#### [CLI](#tab/cli-enable-public-access)
 
-You can restart a started server via the [az postgres flexible-server restart](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-restart) command.
+You can enable public access on a server via the [az postgres flexible-server update](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-update) command.
 
 ```azurecli-interactive
-az postgres flexible-server restart --resource-group <resource_group> --name <server>
+az postgres flexible-server update --resource-group <resource_group> --name <server> --public-access enabled
 ```
 
-If you attempt to restart a server which isn't in `Available` state, you receive an error like this:
+If you attempt to enable public access on a server which isn't in `Available` state, you receive an error like this:
 
 ```output
-Server will be automatically started after 7 days if you do not perform a manual start operation
-(ServerIsNotReady) Restart or Stop Server can only be performed on Started servers. Server Name = <server>, Current Server State = Stopped
-Code: ServerIsNotReady
-Message: Restart or Stop Server can only be performed on Started servers. Server Name = <server>, Current Server State = Stopped
+Code: 
+Message: Server <server> is busy with other operations. Please try later
+```
+
+If you attempt to enable public access on a server which wasn't deployed with networking mode public access (allowed IP addresses), but was deployed with networking mode set to private access (VNET Integration), you don't receive an error. The request to change that configuration is ignored.
+
+To determine if a server has public access enabled or disabled, run the following command:
+
+```azurecli-interactive
+az postgres flexible-server show --resource-group <resource_group> --name <server> --query '{"publicAccess":network.publicNetworkAccess}'
 ```
 
 ---
 
+### Disable public access
+
+If you disable public access, connectivity to the server is only possible via private endpoints. You must configure those private endpoints so that hosts that can route traffic to the Azure virtual network in which you inject the private endpoints, can access your Azure Database for PostgreSQL flexible server. When public access is disabled, any firewall rules you created while public access was enabled, aren't enforced. Also, any modifications made to the firewall rules are discarded.
+
+#### [Portal](#tab/portal-disable-public-access)
+
+Using the [Azure portal](https://portal.azure.com/):
+
+1. Select your Azure Database for PostgreSQL flexible server.
+
+2. In the resource menu, select **Overview**.
+
+    :::image type="content" source="./media/how-to-networking/networking-overview.png" alt-text="Screenshot showing the Overview page." lightbox="./media/how-to-networking/networking-overview.png":::
+
+3. The status of the server must be **Available**, for the **Networking** menu option to be enabled.
+
+    :::image type="content" source="./media/how-to-networking/networking-server-status.png" alt-text="Screenshot showing where in the Overview page you can find the status of the server." lightbox="./media/how-to-networking/networking-server-status.png":::
+
+4. If the status of the server isn't **Available**, the **Networking** option is disabled.
+
+    :::image type="content" source="./media/how-to-networking/networking-disabled.png" alt-text="Screenshot showing that Networking menu is disabled when status of server isn't Available." lightbox="./media/how-to-networking/networking-disabled.png":::
+
 > [!NOTE]
-> Once the server is restarted, all management operations are available for the Azure Database for PostgreSQL flexible server.
+> Any attempt to configure the networking settings of a server whose status is other than available, would fail with an error.
+
+5. In the resource menu, select **Networking**.
+
+    :::image type="content" source="./media/how-to-networking/configure-public-access-networking-enabled.png" alt-text="Screenshot showing the Networking page." lightbox="./media/how-to-networking/configure-public-access-networking-enabled.png":::
+
+6. Clear the **Allow public access to this resource through the internet using a public IP address** checkbox.
+
+    :::image type="content" source="./media/how-to-networking/configure-public-access-disable-public-access.png" alt-text="Screenshot showing how to disable public access." lightbox="./media/how-to-networking/configure-public-access-disable-public-access.png":::
+
+7. Select **Save**.
+
+    :::image type="content" source="./media/how-to-networkingconfigure-public-access-disable-public-access-save.png" alt-text="Screenshot showing the Save button." lightbox="./media/how-to-networking/configure-public-access-disable-public-access-save.png":::
+
+8. A notification informs you that the changes are being applied.
+
+    :::image type="content" source="./media/how-to-networking/configure-public-access-disable-public-access-progressing-notification.png" alt-text="Screenshot showing a server whose network settings are being saved." lightbox="./media/how-to-networking/configure-public-access-disable-public-access-progressing-notification.png":::
+
+9. Also, the status of the server changes to **Updating**.
+
+    :::image type="content" source="./media/how-to-networking/configure-public-access-updating.png" alt-text="Screenshot showing that server status is Updating." lightbox="./media/how-to-networking/configure-public-access-updating.png":::
+
+10. When the process completes, a notification informs you that the changes were applied.
+
+    :::image type="content" source="./media/how-to-networking/configure-public-access-disable-public-access-succeeded-notification.png" alt-text="Screenshot showing a server whose network settings were successfully saved." lightbox="./media/how-to-networking/configure-public-access-disable-public-access-succeeded-notification.png":::
+
+11. Also, the status of the server changes to **Available**.
+
+    :::image type="content" source="./media/how-to-networking/configure-public-access-available.png" alt-text="Screenshot showing that server status is Available." lightbox="./media/how-to-networking/configure-public-access-available.png":::
+
+#### [CLI](#tab/cli-disable-public-access)
+
+You can disable public access on a server via the [az postgres flexible-server update](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-update) command.
+
+```azurecli-interactive
+az postgres flexible-server update --resource-group <resource_group> --name <server> --public-access disabled
+```
+
+If you attempt to disable public access on a server which isn't in `Available` state, you receive an error like this:
+
+```output
+Code: 
+Message: Server <server> is busy with other operations. Please try later
+```
+
+If you attempt to disable public access on a server which wasn't deployed with networking mode public access (allowed IP addresses), but was deployed with networking mode set to private access (VNET Integration), you don't receive an error. The request to change that configuration is ignored.
+
+To determine if a server has public access disabled or enabled, run the following command:
+
+```azurecli-interactive
+az postgres flexible-server show --resource-group <resource_group> --name <server> --query '{"publicAccess":network.publicNetworkAccess}'
+```
+
+---
 
 ## Servers deployed with private access
 
