@@ -2,7 +2,7 @@
 author: akashraokm
 ms.author: akashrao
 ms.reviewer: maghan, randolphwest
-ms.date: 01/25/2025
+ms.date: 01/26/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
@@ -279,6 +279,22 @@ ms.custom: automatically generated
 | 13 | 1.1 |
 | 12 | 1.1 |
 | 11 | 1.1 |
+
+
+
+## hll
+
+[hll](https://github.com/citusdata/postgresql-hll) (Preview) introduces a new data type hll which is a HyperLogLog data structure.
+
+| PostgreSQL version | Extension version |
+| --- | --- |
+| 17 | N/A |
+| 16 | 2.18 |
+| 15 | 2.18 |
+| 14 | 2.18 |
+| 13 | 2.18 |
+| 12 | 2.18 |
+| 11 | N/A |
 
 
 
@@ -993,6 +1009,22 @@ ms.custom: automatically generated
 
 
 
+## tdigest
+
+[tdigest](https://github.com/tvondra/tdigest) (Preview) implements t-digest, a data structure for on-line accumulation of rank-based statistics such as quantiles and trimmed means.
+
+| PostgreSQL version | Extension version |
+| --- | --- |
+| 17 | 1.4.2 |
+| 16 | 1.4.2 |
+| 15 | 1.4.2 |
+| 14 | 1.4.2 |
+| 13 | 1.4.2 |
+| 12 | 1.4.2 |
+| 11 | N/A |
+
+
+
 ## tds_fdw
 
 [tds_fdw](https://github.com/tds-fdw/tds_fdw) is a foreign data wrapper for querying a TDS database (SAP ASE or SQL Server).
@@ -1024,6 +1056,22 @@ ms.custom: automatically generated
 | 11 | 1.7.4 <sup>*</sup> |
 
 <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
+
+## topn
+
+[topn](https://github.com/citusdata/postgresql-topn) (Preview) returns the top values in a database according to some criteria.
+
+| PostgreSQL version | Extension version |
+| --- | --- |
+| 17 | 2.7.0 |
+| 16 | 2.7.0 |
+| 15 | 2.7.0 |
+| 14 | 2.7.0 |
+| 13 | 2.7.0 |
+| 12 | N/A |
+| 11 | N/A |
+
+
 
 ## tsm_system_rows
 

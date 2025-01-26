@@ -4,7 +4,7 @@ description: The following extensions, organized by version of PostgreSQL, are a
 author: akashraokm
 ms.author: akashrao
 ms.reviewer: maghan, randolphwest
-ms.date: 01/25/2025
+ms.date: 01/26/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
@@ -37,6 +37,7 @@ The following extensions are available for the Azure Database for the PostgreSQL
 | [dict_xsyn](https://www.postgresql.org/docs/current/dict-xsyn.html) provides a text search dictionary template for extended synonym processing. | 1.0 | |
 | [earthdistance](https://www.postgresql.org/docs/current/earthdistance.html) calculates great-circle distances on the surface of the Earth. | 1.1 | |
 | [fuzzystrmatch](https://www.postgresql.org/docs/current/fuzzystrmatch.html) determines similarities and distance between strings. | 1.2 | |
+| [hll](https://github.com/citusdata/postgresql-hll) (Preview) introduces a new data type hll which is a HyperLogLog data structure. | N/A | |
 | [hstore](https://www.postgresql.org/docs/current/hstore.html) is a data type for storing sets of (key, value) pairs. | 1.8 | |
 | [hypopg](https://github.com/HypoPG/hypopg) provides hypothetical indexes for PostgreSQL. | 1.4.1 | |
 | [intagg](https://www.postgresql.org/docs/current/intagg.html) is an obsolete extension that provides an integer aggregator and enumerator. | 1.1 | |
@@ -80,8 +81,10 @@ The following extensions are available for the Azure Database for the PostgreSQL
 | [session_variable](https://github.com/splendiddata/session_variable) provides registration and manipulation of session variables and constants. | 3.3 | |
 | [sslinfo](https://www.postgresql.org/docs/current/sslinfo.html) provides information about SSL certificates. | 1.2 | |
 | [tablefunc](https://www.postgresql.org/docs/current/tablefunc.html) provides functions that manipulate whole tables, including crosstab. | 1.0 | |
+| [tdigest](https://github.com/tvondra/tdigest) (Preview) implements t-digest, a data structure for on-line accumulation of rank-based statistics such as quantiles and trimmed means. | 1.4.2 | |
 | [tds_fdw](https://github.com/tds-fdw/tds_fdw) is a foreign data wrapper for querying a TDS database (SAP ASE or SQL Server). | 2.0.3 | |
 | [timescaledb](https://github.com/timescale/timescaledb) enables scalable inserts and complex queries for time-series data. | 2.17.2 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. |
+| [topn](https://github.com/citusdata/postgresql-topn) (Preview) returns the top values in a database according to some criteria. | 2.7.0 | |
 | [tsm_system_rows](https://www.postgresql.org/docs/13/tsm-system-rows.html) is a `TABLESAMPLE` method which accepts number of rows as a limit. | 1.0 | |
 | [tsm_system_time](https://www.postgresql.org/docs/current/tsm-system-time.html) is a `TABLESAMPLE` method which accepts time in milliseconds as a limit. | 1.0 | |
 | [unaccent](https://www.postgresql.org/docs/current/unaccent.html) provides a text search dictionary that removes accents. | 1.1 | |
@@ -113,6 +116,7 @@ The following extensions are available for the Azure Database for the PostgreSQL
 | [dict_xsyn](https://www.postgresql.org/docs/current/dict-xsyn.html) provides a text search dictionary template for extended synonym processing. | 1.0 | |
 | [earthdistance](https://www.postgresql.org/docs/current/earthdistance.html) calculates great-circle distances on the surface of the Earth. | 1.1 | |
 | [fuzzystrmatch](https://www.postgresql.org/docs/current/fuzzystrmatch.html) determines similarities and distance between strings. | 1.2 | |
+| [hll](https://github.com/citusdata/postgresql-hll) (Preview) introduces a new data type hll which is a HyperLogLog data structure. | 2.18 | |
 | [hstore](https://www.postgresql.org/docs/current/hstore.html) is a data type for storing sets of (key, value) pairs. | 1.8 | |
 | [hypopg](https://github.com/HypoPG/hypopg) provides hypothetical indexes for PostgreSQL. | 1.4.0 | |
 | [intagg](https://www.postgresql.org/docs/current/intagg.html) is an obsolete extension that provides an integer aggregator and enumerator. | 1.1 | |
@@ -156,8 +160,10 @@ The following extensions are available for the Azure Database for the PostgreSQL
 | [session_variable](https://github.com/splendiddata/session_variable) provides registration and manipulation of session variables and constants. | 3.3 | |
 | [sslinfo](https://www.postgresql.org/docs/current/sslinfo.html) provides information about SSL certificates. | 1.2 | |
 | [tablefunc](https://www.postgresql.org/docs/current/tablefunc.html) provides functions that manipulate whole tables, including crosstab. | 1.0 | |
+| [tdigest](https://github.com/tvondra/tdigest) (Preview) implements t-digest, a data structure for on-line accumulation of rank-based statistics such as quantiles and trimmed means. | 1.4.2 | |
 | [tds_fdw](https://github.com/tds-fdw/tds_fdw) is a foreign data wrapper for querying a TDS database (SAP ASE or SQL Server). | 2.0.3 | |
 | [timescaledb](https://github.com/timescale/timescaledb) enables scalable inserts and complex queries for time-series data. | 2.13.0 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. |
+| [topn](https://github.com/citusdata/postgresql-topn) (Preview) returns the top values in a database according to some criteria. | 2.7.0 | |
 | [tsm_system_rows](https://www.postgresql.org/docs/13/tsm-system-rows.html) is a `TABLESAMPLE` method which accepts number of rows as a limit. | 1.0 | |
 | [tsm_system_time](https://www.postgresql.org/docs/current/tsm-system-time.html) is a `TABLESAMPLE` method which accepts time in milliseconds as a limit. | 1.0 | |
 | [unaccent](https://www.postgresql.org/docs/current/unaccent.html) provides a text search dictionary that removes accents. | 1.1 | |
@@ -189,6 +195,7 @@ The following extensions are available for the Azure Database for the PostgreSQL
 | [dict_xsyn](https://www.postgresql.org/docs/current/dict-xsyn.html) provides a text search dictionary template for extended synonym processing. | 1.0 | |
 | [earthdistance](https://www.postgresql.org/docs/current/earthdistance.html) calculates great-circle distances on the surface of the Earth. | 1.1 | |
 | [fuzzystrmatch](https://www.postgresql.org/docs/current/fuzzystrmatch.html) determines similarities and distance between strings. | 1.1 | |
+| [hll](https://github.com/citusdata/postgresql-hll) (Preview) introduces a new data type hll which is a HyperLogLog data structure. | 2.18 | |
 | [hstore](https://www.postgresql.org/docs/current/hstore.html) is a data type for storing sets of (key, value) pairs. | 1.8 | |
 | [hypopg](https://github.com/HypoPG/hypopg) provides hypothetical indexes for PostgreSQL. | 1.4.0 | |
 | [intagg](https://www.postgresql.org/docs/current/intagg.html) is an obsolete extension that provides an integer aggregator and enumerator. | 1.1 | |
@@ -232,8 +239,10 @@ The following extensions are available for the Azure Database for the PostgreSQL
 | [session_variable](https://github.com/splendiddata/session_variable) provides registration and manipulation of session variables and constants. | 3.3 | |
 | [sslinfo](https://www.postgresql.org/docs/current/sslinfo.html) provides information about SSL certificates. | 1.2 | |
 | [tablefunc](https://www.postgresql.org/docs/current/tablefunc.html) provides functions that manipulate whole tables, including crosstab. | 1.0 | |
+| [tdigest](https://github.com/tvondra/tdigest) (Preview) implements t-digest, a data structure for on-line accumulation of rank-based statistics such as quantiles and trimmed means. | 1.4.2 | |
 | [tds_fdw](https://github.com/tds-fdw/tds_fdw) is a foreign data wrapper for querying a TDS database (SAP ASE or SQL Server). | 2.0.3 | |
 | [timescaledb](https://github.com/timescale/timescaledb) enables scalable inserts and complex queries for time-series data. | 2.10.0 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. |
+| [topn](https://github.com/citusdata/postgresql-topn) (Preview) returns the top values in a database according to some criteria. | 2.7.0 | |
 | [tsm_system_rows](https://www.postgresql.org/docs/13/tsm-system-rows.html) is a `TABLESAMPLE` method which accepts number of rows as a limit. | 1.0 | |
 | [tsm_system_time](https://www.postgresql.org/docs/current/tsm-system-time.html) is a `TABLESAMPLE` method which accepts time in milliseconds as a limit. | 1.0 | |
 | [unaccent](https://www.postgresql.org/docs/current/unaccent.html) provides a text search dictionary that removes accents. | 1.1 | |
@@ -265,6 +274,7 @@ The following extensions are available for the Azure Database for the PostgreSQL
 | [dict_xsyn](https://www.postgresql.org/docs/current/dict-xsyn.html) provides a text search dictionary template for extended synonym processing. | 1.0 | |
 | [earthdistance](https://www.postgresql.org/docs/current/earthdistance.html) calculates great-circle distances on the surface of the Earth. | 1.1 | |
 | [fuzzystrmatch](https://www.postgresql.org/docs/current/fuzzystrmatch.html) determines similarities and distance between strings. | 1.1 | |
+| [hll](https://github.com/citusdata/postgresql-hll) (Preview) introduces a new data type hll which is a HyperLogLog data structure. | 2.18 | |
 | [hstore](https://www.postgresql.org/docs/current/hstore.html) is a data type for storing sets of (key, value) pairs. | 1.8 | |
 | [hypopg](https://github.com/HypoPG/hypopg) provides hypothetical indexes for PostgreSQL. | 1.4.0 | |
 | [intagg](https://www.postgresql.org/docs/current/intagg.html) is an obsolete extension that provides an integer aggregator and enumerator. | 1.1 | |
@@ -308,8 +318,10 @@ The following extensions are available for the Azure Database for the PostgreSQL
 | [session_variable](https://github.com/splendiddata/session_variable) provides registration and manipulation of session variables and constants. | 3.3 | |
 | [sslinfo](https://www.postgresql.org/docs/current/sslinfo.html) provides information about SSL certificates. | 1.2 | |
 | [tablefunc](https://www.postgresql.org/docs/current/tablefunc.html) provides functions that manipulate whole tables, including crosstab. | 1.0 | |
+| [tdigest](https://github.com/tvondra/tdigest) (Preview) implements t-digest, a data structure for on-line accumulation of rank-based statistics such as quantiles and trimmed means. | 1.4.2 | |
 | [tds_fdw](https://github.com/tds-fdw/tds_fdw) is a foreign data wrapper for querying a TDS database (SAP ASE or SQL Server). | 2.0.3 | |
 | [timescaledb](https://github.com/timescale/timescaledb) enables scalable inserts and complex queries for time-series data. | 2.10.0 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. |
+| [topn](https://github.com/citusdata/postgresql-topn) (Preview) returns the top values in a database according to some criteria. | 2.7.0 | |
 | [tsm_system_rows](https://www.postgresql.org/docs/13/tsm-system-rows.html) is a `TABLESAMPLE` method which accepts number of rows as a limit. | 1.0 | |
 | [tsm_system_time](https://www.postgresql.org/docs/current/tsm-system-time.html) is a `TABLESAMPLE` method which accepts time in milliseconds as a limit. | 1.0 | |
 | [unaccent](https://www.postgresql.org/docs/current/unaccent.html) provides a text search dictionary that removes accents. | 1.1 | |
@@ -341,6 +353,7 @@ The following extensions are available for the Azure Database for the PostgreSQL
 | [dict_xsyn](https://www.postgresql.org/docs/current/dict-xsyn.html) provides a text search dictionary template for extended synonym processing. | 1.0 | |
 | [earthdistance](https://www.postgresql.org/docs/current/earthdistance.html) calculates great-circle distances on the surface of the Earth. | 1.1 | |
 | [fuzzystrmatch](https://www.postgresql.org/docs/current/fuzzystrmatch.html) determines similarities and distance between strings. | 1.1 | |
+| [hll](https://github.com/citusdata/postgresql-hll) (Preview) introduces a new data type hll which is a HyperLogLog data structure. | 2.18 | |
 | [hstore](https://www.postgresql.org/docs/current/hstore.html) is a data type for storing sets of (key, value) pairs. | 1.7 | |
 | [hypopg](https://github.com/HypoPG/hypopg) provides hypothetical indexes for PostgreSQL. | 1.4.0 | |
 | [intagg](https://www.postgresql.org/docs/current/intagg.html) is an obsolete extension that provides an integer aggregator and enumerator. | 1.1 | |
@@ -384,8 +397,10 @@ The following extensions are available for the Azure Database for the PostgreSQL
 | [session_variable](https://github.com/splendiddata/session_variable) provides registration and manipulation of session variables and constants. | 3.3 | |
 | [sslinfo](https://www.postgresql.org/docs/current/sslinfo.html) provides information about SSL certificates. | 1.2 | |
 | [tablefunc](https://www.postgresql.org/docs/current/tablefunc.html) provides functions that manipulate whole tables, including crosstab. | 1.0 | |
+| [tdigest](https://github.com/tvondra/tdigest) (Preview) implements t-digest, a data structure for on-line accumulation of rank-based statistics such as quantiles and trimmed means. | 1.4.2 | |
 | [tds_fdw](https://github.com/tds-fdw/tds_fdw) is a foreign data wrapper for querying a TDS database (SAP ASE or SQL Server). | 2.0.3 | |
 | [timescaledb](https://github.com/timescale/timescaledb) enables scalable inserts and complex queries for time-series data. | 2.10.0 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. |
+| [topn](https://github.com/citusdata/postgresql-topn) (Preview) returns the top values in a database according to some criteria. | 2.7.0 | |
 | [tsm_system_rows](https://www.postgresql.org/docs/13/tsm-system-rows.html) is a `TABLESAMPLE` method which accepts number of rows as a limit. | 1.0 | |
 | [tsm_system_time](https://www.postgresql.org/docs/current/tsm-system-time.html) is a `TABLESAMPLE` method which accepts time in milliseconds as a limit. | 1.0 | |
 | [unaccent](https://www.postgresql.org/docs/current/unaccent.html) provides a text search dictionary that removes accents. | 1.1 | |
@@ -417,6 +432,7 @@ The following extensions are available for the Azure Database for the PostgreSQL
 | [dict_xsyn](https://www.postgresql.org/docs/current/dict-xsyn.html) provides a text search dictionary template for extended synonym processing. | 1.0 | |
 | [earthdistance](https://www.postgresql.org/docs/current/earthdistance.html) calculates great-circle distances on the surface of the Earth. | 1.1 | |
 | [fuzzystrmatch](https://www.postgresql.org/docs/current/fuzzystrmatch.html) determines similarities and distance between strings. | 1.1 | |
+| [hll](https://github.com/citusdata/postgresql-hll) (Preview) introduces a new data type hll which is a HyperLogLog data structure. | 2.18 | |
 | [hstore](https://www.postgresql.org/docs/current/hstore.html) is a data type for storing sets of (key, value) pairs. | 1.6 | |
 | [hypopg](https://github.com/HypoPG/hypopg) provides hypothetical indexes for PostgreSQL. | 1.4.0 | |
 | [intagg](https://www.postgresql.org/docs/current/intagg.html) is an obsolete extension that provides an integer aggregator and enumerator. | 1.1 | |
@@ -460,8 +476,10 @@ The following extensions are available for the Azure Database for the PostgreSQL
 | [session_variable](https://github.com/splendiddata/session_variable) provides registration and manipulation of session variables and constants. | 3.3 | |
 | [sslinfo](https://www.postgresql.org/docs/current/sslinfo.html) provides information about SSL certificates. | 1.2 | |
 | [tablefunc](https://www.postgresql.org/docs/current/tablefunc.html) provides functions that manipulate whole tables, including crosstab. | 1.0 | |
+| [tdigest](https://github.com/tvondra/tdigest) (Preview) implements t-digest, a data structure for on-line accumulation of rank-based statistics such as quantiles and trimmed means. | 1.4.2 | |
 | [tds_fdw](https://github.com/tds-fdw/tds_fdw) is a foreign data wrapper for querying a TDS database (SAP ASE or SQL Server). | 2.0.3 | |
 | [timescaledb](https://github.com/timescale/timescaledb) enables scalable inserts and complex queries for time-series data. | 2.10.0 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. |
+| [topn](https://github.com/citusdata/postgresql-topn) (Preview) returns the top values in a database according to some criteria. | N/A | |
 | [tsm_system_rows](https://www.postgresql.org/docs/13/tsm-system-rows.html) is a `TABLESAMPLE` method which accepts number of rows as a limit. | 1.0 | |
 | [tsm_system_time](https://www.postgresql.org/docs/current/tsm-system-time.html) is a `TABLESAMPLE` method which accepts time in milliseconds as a limit. | 1.0 | |
 | [unaccent](https://www.postgresql.org/docs/current/unaccent.html) provides a text search dictionary that removes accents. | 1.1 | |
@@ -493,6 +511,7 @@ The following extensions are available for the Azure Database for the PostgreSQL
 | [dict_xsyn](https://www.postgresql.org/docs/current/dict-xsyn.html) provides a text search dictionary template for extended synonym processing. | 1.0 | |
 | [earthdistance](https://www.postgresql.org/docs/current/earthdistance.html) calculates great-circle distances on the surface of the Earth. | 1.1 | |
 | [fuzzystrmatch](https://www.postgresql.org/docs/current/fuzzystrmatch.html) determines similarities and distance between strings. | 1.1 | |
+| [hll](https://github.com/citusdata/postgresql-hll) (Preview) introduces a new data type hll which is a HyperLogLog data structure. | N/A | |
 | [hstore](https://www.postgresql.org/docs/current/hstore.html) is a data type for storing sets of (key, value) pairs. | 1.5 | |
 | [hypopg](https://github.com/HypoPG/hypopg) provides hypothetical indexes for PostgreSQL. | 1.4.0 | |
 | [intagg](https://www.postgresql.org/docs/current/intagg.html) is an obsolete extension that provides an integer aggregator and enumerator. | 1.1 | |
@@ -536,8 +555,10 @@ The following extensions are available for the Azure Database for the PostgreSQL
 | [session_variable](https://github.com/splendiddata/session_variable) provides registration and manipulation of session variables and constants. | 3.3 | |
 | [sslinfo](https://www.postgresql.org/docs/current/sslinfo.html) provides information about SSL certificates. | 1.2 | |
 | [tablefunc](https://www.postgresql.org/docs/current/tablefunc.html) provides functions that manipulate whole tables, including crosstab. | 1.0 | |
+| [tdigest](https://github.com/tvondra/tdigest) (Preview) implements t-digest, a data structure for on-line accumulation of rank-based statistics such as quantiles and trimmed means. | N/A | |
 | [tds_fdw](https://github.com/tds-fdw/tds_fdw) is a foreign data wrapper for querying a TDS database (SAP ASE or SQL Server). | 2.0.3 | |
 | [timescaledb](https://github.com/timescale/timescaledb) enables scalable inserts and complex queries for time-series data. | 1.7.4 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. |
+| [topn](https://github.com/citusdata/postgresql-topn) (Preview) returns the top values in a database according to some criteria. | N/A | |
 | [tsm_system_rows](https://www.postgresql.org/docs/13/tsm-system-rows.html) is a `TABLESAMPLE` method which accepts number of rows as a limit. | 1.0 | |
 | [tsm_system_time](https://www.postgresql.org/docs/current/tsm-system-time.html) is a `TABLESAMPLE` method which accepts time in milliseconds as a limit. | 1.0 | |
 | [unaccent](https://www.postgresql.org/docs/current/unaccent.html) provides a text search dictionary that removes accents. | 1.1 | |
