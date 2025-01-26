@@ -435,12 +435,6 @@
         items:
         - name: Restore a dropped server
           href: flexible-server/how-to-restore-dropped-server.md
-      - name: Cross subscription and cross resource group restore
-        items:
-        - name: Azure portal
-          href: flexible-server/how-to-restore-to-different-subscription-or-resource-group.md
-        - name: Azure REST API
-          href: flexible-server/how-to-restore-different-subscription-resource-group-api.md 
       - name: Relocate a server 
         href: /azure/operational-excellence/relocation-postgresql-flexible-server?toc=/azure/postgresql/toc.json
     - name: Networking
