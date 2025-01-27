@@ -145,8 +145,10 @@ Use the following query to list the tables in a database and identify the tables
 > The query doesn't take into consideration that autovacuum can be configured on a per-table basis using the "alter table" DDL command.
 
 ### Backporting pg_signal_autovaccum_worker role from PostgreSQL 18 version
-When autovacuum is triggered, it acquires lock on that table, because of this statements like ALTER, DROP etc. cannot get executed. If we allow users to kill the autovacuum process, it can raise significant priviledge escalation or stability concerns. In PostgreSQL 18 version there is a new role that is introduced 'pg_signal_autovacuum_worker' which can be used to terminate or interrupt an ongoing autovacuum task by non-superuser members. We have backported 'pg_signal_autovacuum_worker' role to Azure Database for PostgreSQL flexible server versions 15 and higher which will allow users with secure and controlled signalling of autovacuum  process. 
 
+The autovacuum process in PostgreSQL can either be a normal autovacuum or an autovacuum to prevent wraparound. In the normal autovacuum process, it cancels itself after the deadlock_timeout (default value is 1 second) when a user is executing DDL on a table. However, in the autovacuum to prevent wraparound, these processes do not get canceled until they are completed, requiring users to wait until the autovacuum finishes. Consequently, both types of autovacuum can cause significant delays or latency when a user is trying to execute read or write operations.
+In PostgreSQL version 18, a new role called pg_signal_autovacuum_worker has been introduced. This role allows non-superuser members to terminate or interrupt an ongoing autovacuum task. We have backported the pg_signal_autovacuum_worker role to Azure Database for PostgreSQL flexible server versions 15 and higher, enabling users to securely and controllably signal the autovacuum process. Users can now cancel the autovacuum process once they are granted the pg_signal_autovacuum_worker role by using pg_cancel_backend.
+ 
 ## Common autovacuum problems
 
 Review the following list of possible common problems with the autovacuum process.
