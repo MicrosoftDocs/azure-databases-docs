@@ -26,7 +26,7 @@ To use the `pg_diskann` extension on your Azure Database for PostgreSQL flexible
 > [!IMPORTANT]
 > This preview feature is only available for newly deployed Azure Database for PostgreSQL flexible server instances.
 
-Because `pg_diskann` has a dependency on the [`vector`](../extensions/concepts-extensions-versions.md#vector) extension, either you [allow]((../extensions/how-to-allow-extensions.md#allow-extensions)) and [create]((../extensions/how-to-allow-extensions.md#create-extensions)) the `vector` extension in the same database, and the run the following command:
+Because `pg_diskann` has a dependency on the [`vector`](../extensions/concepts-extensions-versions.md#vector) extension, either you [allow](../extensions/how-to-allow-extensions.md#allow-extensions) and [create](../extensions/how-to-allow-extensions.md#create-extensions) the `vector` extension in the same database, and the run the following command:
  
 ```sql
 CREATE EXTENSION IF NOT EXISTS pg_diskann;
