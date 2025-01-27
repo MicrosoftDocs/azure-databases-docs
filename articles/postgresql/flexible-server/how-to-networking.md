@@ -339,23 +339,23 @@ Using the [Azure portal](https://portal.azure.com/):
 > [!IMPORTANT]
 > **Allow public access from any Azure service within Azure to this server** creates a firewall rule whose start and end IP addresses are set to `0.0.0.0`. The presence of such rule configures the firewall to allow connections from IP addresses allocated to any Azure service or asset, including connections from the subscriptions of other customers.
 
-10. Select **Save**.
+8. Select **Save**.
 
     :::image type="content" source="./media/how-to-networking/deleted-firewall-rule-current-client-save.png" alt-text="Screenshot showing the Save button." lightbox="./media/how-to-networking/deleted-firewall-rule-current-client-save.png":::
 
-11. A notification informs you that the changes are being applied.
+9. A notification informs you that the changes are being applied.
 
     :::image type="content" source="./media/how-to-networking/deleted-firewall-rule-current-client-progressing-notification.png" alt-text="Screenshot showing a server whose network settings are being saved." lightbox="./media/how-to-networking/deleted-firewall-rule-current-client-progressing-notification.png":::
 
-12. Also, the status of the server changes to **Updating**.
+10. Also, the status of the server changes to **Updating**.
 
     :::image type="content" source="./media/how-to-networking/configure-public-access-updating.png" alt-text="Screenshot showing that server status is Updating." lightbox="./media/how-to-networking/configure-public-access-updating.png":::
 
-13. When the process completes, a notification informs you that the changes were applied.
+11. When the process completes, a notification informs you that the changes were applied.
 
     :::image type="content" source="./media/how-to-networking/deleted-firewall-rule-current-client-succeeded-notification.png" alt-text="Screenshot showing a server whose network settings were successfully saved." lightbox="./media/how-to-networking/deleted-firewall-rule-current-client-succeeded-notification.png":::
 
-14. Also, the status of the server changes to **Available**.
+12. Also, the status of the server changes to **Available**.
 
     :::image type="content" source="./media/how-to-networking/configure-public-access-available.png" alt-text="Screenshot showing that server status is Available." lightbox="./media/how-to-networking/configure-public-access-available.png":::
 
@@ -391,11 +391,75 @@ Firewall rule operations cannot be requested for a private access enabled server
 
 ---
 
-## Servers deployed with private access
+### Add private endpoints
 
-### Configure public access
+Azure Database for PostgreSQL - Flexible Server is an Azure Private Link service. Because of that, you can create private endpoints so that your client applications can connect privately and securely to your Azure Database for PostgreSQL flexible server.
 
-#### [Portal](#tab/portal-restart-server)
+A private endpoint to your Azure Database for PostgreSQL flexible server is a network interface that you can inject in a subnet of an Azure virtual network. Any host or service that can route network traffic to that subnet, are able to communicate with your flexible server so that the network traffic doesn't have to traversethe internet. All traffic is sent privately using Microsoft backbone.
+
+For more information about Azure Private Link and Azure Private Endpoint, see [Azure Private Link frequently asked questions](/azure/private-link/private-link-faq).
+
+#### [Portal](#tab/portal-add-private-endpoint)
+
+Using the [Azure portal](https://portal.azure.com/):
+
+1. Select your Azure Database for PostgreSQL flexible server.
+
+2. In the resource menu, select **Overview**.
+
+    :::image type="content" source="./media/how-to-networking/networking-overview.png" alt-text="Screenshot showing the Overview page." lightbox="./media/how-to-networking/networking-overview.png":::
+
+3. The status of the server must be **Available**, for the **Networking** menu option to be enabled.
+
+    :::image type="content" source="./media/how-to-networking/networking-server-status.png" alt-text="Screenshot showing where in the Overview page you can find the status of the server." lightbox="./media/how-to-networking/networking-server-status.png":::
+
+4. If the status of the server isn't **Available**, the **Networking** option is disabled.
+
+    :::image type="content" source="./media/how-to-networking/networking-disabled.png" alt-text="Screenshot showing that Networking menu is disabled when status of server isn't Available." lightbox="./media/how-to-networking/networking-disabled.png":::
+
+> [!NOTE]
+> Any attempt to configure the networking settings of a server whose status is other than available, would fail with an error.
+
+5. In the resource menu, select **Networking**.
+
+    :::image type="content" source="./media/how-to-networking/configure-public-access-networking-disabled.png" alt-text="Screenshot showing the Networking page." lightbox="./media/how-to-networking/configure-public-access-networking-disabled.png":::
+
+6. To create a new private endpoint, select **Add private endpoint**.
+
+    :::image type="content" source="./media/how-to-networking/add-private-endpoint.png" alt-text="Screenshot showing how to begin adding a new private endpoint." lightbox="./media/how-to-networking/add-private-endpoint.png":::
+
+7. If you want to delete the firewall rule that allows connections originating from any IP address allocated to any Azure service or asset, clear the **Allow public access from any Azure service within Azure to this server** checkbox.
+
+    :::image type="content" source="./media/how-to-networking/delete-firewall-rule-any-azure-service.png" alt-text="Screenshot showing how to delete the firewall rule to allow connections from any Azure service." lightbox="./media/how-to-networking/delete-firewall-rule-any-azure-service.png":::
+
+> [!IMPORTANT]
+> **Allow public access from any Azure service within Azure to this server** creates a firewall rule whose start and end IP addresses are set to `0.0.0.0`. The presence of such rule configures the firewall to allow connections from IP addresses allocated to any Azure service or asset, including connections from the subscriptions of other customers.
+
+8. Select **Save**.
+
+    :::image type="content" source="./media/how-to-networking/deleted-firewall-rule-current-client-save.png" alt-text="Screenshot showing the Save button." lightbox="./media/how-to-networking/deleted-firewall-rule-current-client-save.png":::
+
+9. A notification informs you that the changes are being applied.
+
+    :::image type="content" source="./media/how-to-networking/deleted-firewall-rule-current-client-progressing-notification.png" alt-text="Screenshot showing a server whose network settings are being saved." lightbox="./media/how-to-networking/deleted-firewall-rule-current-client-progressing-notification.png":::
+
+10. Also, the status of the server changes to **Updating**.
+
+    :::image type="content" source="./media/how-to-networking/configure-public-access-updating.png" alt-text="Screenshot showing that server status is Updating." lightbox="./media/how-to-networking/configure-public-access-updating.png":::
+
+11. When the process completes, a notification informs you that the changes were applied.
+
+    :::image type="content" source="./media/how-to-networking/deleted-firewall-rule-current-client-succeeded-notification.png" alt-text="Screenshot showing a server whose network settings were successfully saved." lightbox="./media/how-to-networking/deleted-firewall-rule-current-client-succeeded-notification.png":::
+
+12. Also, the status of the server changes to **Available**.
+
+    :::image type="content" source="./media/how-to-networking/configure-public-access-available.png" alt-text="Screenshot showing that server status is Available." lightbox="./media/how-to-networking/configure-public-access-available.png":::
+
+#### [CLI](#tab/cli-add-private-endpoint)
+
+ddd
+
+---
 
 ## Related content
 
