@@ -1,8 +1,8 @@
 ---
-title: Azure Database for PostgreSQL - Single Server to Flexible Server CLI migration
+title: Azure Database for PostgreSQL - Single Server to Flexible Server CLI Migration
 author: markingmyname
 ms.author: maghan
-ms.date: 09/18/2024
+ms.date: 01/24/2025
 ms.service: azure-database-postgresql
 ms.topic: include
 ms.custom:
@@ -94,22 +94,22 @@ The structure of the JSON is:
 
 ```json
 {
-	"properties": {
-		"sourceDbServerResourceId": "/subscriptions/<subscriptionid>/resourceGroups/<sourceServerResourceGroup>/providers/Microsoft.DBforPostgreSQL/servers/<sourceServer>",
-		"secretParameters": {
-			"adminCredentials": {
-				"sourceServerPassword": "<password>",
-				"targetServerPassword": "<password>"
-			},
-			"sourceServerUserName": "<username>@<servername>",
-			"targetServerUserName": "<username>"
-		},
-		"dbsToMigrate": [
-			"<db1>",
-			"<db2>"
-		],
-		"overwriteDbsInTarget": "true"
-	}
+    "properties": {
+        "sourceDbServerResourceId": "/subscriptions/<subscriptionid>/resourceGroups/<sourceServerResourceGroup>/providers/Microsoft.DBforPostgreSQL/servers/<sourceServer>",
+        "secretParameters": {
+            "adminCredentials": {
+                "sourceServerPassword": "<password>",
+                "targetServerPassword": "<password>"
+            },
+            "sourceServerUserName": "<username>@<servername>",
+            "targetServerUserName": "<username>"
+        },
+        "dbsToMigrate": [
+            "<db1>",
+            "<db2>"
+        ],
+        "overwriteDbsInTarget": "true"
+    }
 }
 ```
 
@@ -230,8 +230,6 @@ az postgres flexible-server migration --help
 
 Executing previous command returns the following output:
 
-
-
 The output lists the supported migration commands, along with their actions. Let's look at these commands in detail.
 
 ### Create a migration using the Azure CLI
@@ -243,8 +241,6 @@ az postgres flexible-server migration create --help
 ```
 
 Executing previous command returns the following output:
-
-
 
 It lists the expected arguments and has an example syntax for successfully creating a migration from the source server to the target server. Here's the CLI command to create a new migration:
 

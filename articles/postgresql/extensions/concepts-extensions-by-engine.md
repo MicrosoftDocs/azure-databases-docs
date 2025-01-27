@@ -4,7 +4,7 @@ description: The following extensions, organized by version of PostgreSQL, are a
 author: akashraokm
 ms.author: akashrao
 ms.reviewer: maghan, randolphwest
-ms.date: 12/05/2024
+ms.date: 01/26/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
@@ -19,7 +19,7 @@ The following extensions are available for the Azure Database for the PostgreSQL
 ::: zone pivot="postgresql-17"
 
 | **Extension** | **Extension version** | **Notes** |
-|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [address_standardizer](http://postgis.net/docs/manual-2.5/Address_Standardizer.html) is used to parse an address into constituent elements. Generally used to support geocoding address normalization step. | 3.5.0 | |
 | [address_standardizer_data_us](http://postgis.net/docs/manual-2.5/Address_Standardizer.html) is the Address Standardizer US dataset example. | 3.5.0 | |
 | [age](https://age.apache.org/) (Preview) provides graph database capabilities. | N/A | |
@@ -37,8 +37,9 @@ The following extensions are available for the Azure Database for the PostgreSQL
 | [dict_xsyn](https://www.postgresql.org/docs/current/dict-xsyn.html) provides a text search dictionary template for extended synonym processing. | 1.0 | |
 | [earthdistance](https://www.postgresql.org/docs/current/earthdistance.html) calculates great-circle distances on the surface of the Earth. | 1.1 | |
 | [fuzzystrmatch](https://www.postgresql.org/docs/current/fuzzystrmatch.html) determines similarities and distance between strings. | 1.2 | |
+<!--| [hll](https://github.com/citusdata/postgresql-hll) introduces a new data type hll which is a HyperLogLog data structure. | N/A | |-->
 | [hstore](https://www.postgresql.org/docs/current/hstore.html) is a data type for storing sets of (key, value) pairs. | 1.8 | |
-| [hypopg](https://github.com/HypoPG/hypopg) provides hypothetical indexes for PostgreSQL. | 1.4.0 | |
+| [hypopg](https://github.com/HypoPG/hypopg) provides hypothetical indexes for PostgreSQL. | 1.4.1 | |
 | [intagg](https://www.postgresql.org/docs/current/intagg.html) is an obsolete extension that provides an integer aggregator and enumerator. | 1.1 | |
 | [intarray](https://www.postgresql.org/docs/current/intarray.html) provides functions, operators, and index support for 1-D arrays of integers. | 1.5 | |
 | [isn](https://www.postgresql.org/docs/current/isn.html) provides data types for international product numbering standards. | 1.2 | |
@@ -52,13 +53,14 @@ The following extensions are available for the Azure Database for the PostgreSQL
 | [pg_buffercache](https://www.postgresql.org/docs/current/pgbuffercache.html) examines the shared buffer cache. | 1.5 | Read the special considerations for extension [pg_buffercache](./concepts-extensions-considerations.md#pg_buffercache) in Flexible Server.<BR> |
 | [pg_cron](https://github.com/citusdata/pg_cron) is a job scheduler for PostgreSQL. | 1.6 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. <BR> Read the special considerations for extension [pg_cron](./concepts-extensions-considerations.md#pg_cron) in Flexible Server.<BR> |
 | [pgcrypto](https://www.postgresql.org/docs/current/pgcrypto.html) provides cryptographic functions. | 1.3 | |
+| [pg_diskann](../flexible-server/how-to-use-pgdiskann.md) (Preview) is a scalable approximate nearest neighbor search algorithm for efficient vector search at any scale. | N/A | |
 | [pg_failover_slots](https://github.com/EnterpriseDB/pg_failover_slots) is a logical replication slot manager for failover purposes. | N/A | |
 | [pg_freespacemap](https://www.postgresql.org/docs/current/pgfreespacemap.html) examines the free space map (FSM). | 1.2 | |
 | [pg_hint_plan](https://github.com/ossc-db/pg_hint_plan) makes it possible to tweak PostgreSQL execution plans using so-called hints in SQL comments. | 1.7.0 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. <BR> Read the special considerations for extension [pg_hint_plan](./concepts-extensions-considerations.md#pg_hint_plan) in Flexible Server.<BR> |
 | [pglogical](https://github.com/2ndQuadrant/pglogical) manages PostgreSQL Logical Replication. | 2.4.5 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. |
 | [pg_partman](https://github.com/pgpartman/pg_partman) manages partitioned tables by time or ID. | 5.0.1 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. |
 | [pg_prewarm](https://www.postgresql.org/docs/current/pgprewarm.html) prewarms the cache with relation data. | 1.2 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. <BR> Read the special considerations for extension [pg_prewarm](./concepts-extensions-considerations.md#pg_prewarm) in Flexible Server.<BR> |
-| [pg_repack](https://reorg.github.io/pg_repack/) reorganizes tables in PostgreSQL databases with minimal locks. | 1.4.7 | Read the special considerations for extension [pg_repack](./concepts-extensions-considerations.md#pg_repack) in Flexible Server.<BR> |
+| [pg_repack](https://reorg.github.io/pg_repack/) reorganizes tables in PostgreSQL databases with minimal locks. | 1.5.1 | Read the special considerations for extension [pg_repack](./concepts-extensions-considerations.md#pg_repack) in Flexible Server.<BR> |
 | [pgrouting](https://pgrouting.org/) provides geospatial routing functionality. | N/A | |
 | [pgrowlocks](https://www.postgresql.org/docs/current/pgrowlocks.html) shows row-level locking information. | 1.2 | |
 | [pg_squeeze](https://github.com/cybertec-postgresql/pg_squeeze) removes unused space from a relation. | 1.7 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. |
@@ -79,8 +81,10 @@ The following extensions are available for the Azure Database for the PostgreSQL
 | [session_variable](https://github.com/splendiddata/session_variable) provides registration and manipulation of session variables and constants. | 3.3 | |
 | [sslinfo](https://www.postgresql.org/docs/current/sslinfo.html) provides information about SSL certificates. | 1.2 | |
 | [tablefunc](https://www.postgresql.org/docs/current/tablefunc.html) provides functions that manipulate whole tables, including crosstab. | 1.0 | |
+<!--| [tdigest](https://github.com/tvondra/tdigest) implements t-digest, a data structure for on-line accumulation of rank-based statistics such as quantiles and trimmed means. | 1.4.2 | |-->
 | [tds_fdw](https://github.com/tds-fdw/tds_fdw) is a foreign data wrapper for querying a TDS database (SAP ASE or SQL Server). | 2.0.3 | |
-| [timescaledb](https://github.com/timescale/timescaledb) enables scalable inserts and complex queries for time-series data. | N/A | |
+| [timescaledb](https://github.com/timescale/timescaledb) enables scalable inserts and complex queries for time-series data. | 2.17.2 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. |
+<!--| [topn](https://github.com/citusdata/postgresql-topn) returns the top values in a database according to some criteria. | 2.7.0 | |-->
 | [tsm_system_rows](https://www.postgresql.org/docs/13/tsm-system-rows.html) is a `TABLESAMPLE` method which accepts number of rows as a limit. | 1.0 | |
 | [tsm_system_time](https://www.postgresql.org/docs/current/tsm-system-time.html) is a `TABLESAMPLE` method which accepts time in milliseconds as a limit. | 1.0 | |
 | [unaccent](https://www.postgresql.org/docs/current/unaccent.html) provides a text search dictionary that removes accents. | 1.1 | |
@@ -112,6 +116,7 @@ The following extensions are available for the Azure Database for the PostgreSQL
 | [dict_xsyn](https://www.postgresql.org/docs/current/dict-xsyn.html) provides a text search dictionary template for extended synonym processing. | 1.0 | |
 | [earthdistance](https://www.postgresql.org/docs/current/earthdistance.html) calculates great-circle distances on the surface of the Earth. | 1.1 | |
 | [fuzzystrmatch](https://www.postgresql.org/docs/current/fuzzystrmatch.html) determines similarities and distance between strings. | 1.2 | |
+<!--| [hll](https://github.com/citusdata/postgresql-hll) introduces a new data type hll which is a HyperLogLog data structure. | 2.18 | |-->
 | [hstore](https://www.postgresql.org/docs/current/hstore.html) is a data type for storing sets of (key, value) pairs. | 1.8 | |
 | [hypopg](https://github.com/HypoPG/hypopg) provides hypothetical indexes for PostgreSQL. | 1.4.0 | |
 | [intagg](https://www.postgresql.org/docs/current/intagg.html) is an obsolete extension that provides an integer aggregator and enumerator. | 1.1 | |
@@ -127,13 +132,14 @@ The following extensions are available for the Azure Database for the PostgreSQL
 | [pg_buffercache](https://www.postgresql.org/docs/current/pgbuffercache.html) examines the shared buffer cache. | 1.4 | Read the special considerations for extension [pg_buffercache](./concepts-extensions-considerations.md#pg_buffercache) in Flexible Server.<BR> |
 | [pg_cron](https://github.com/citusdata/pg_cron) is a job scheduler for PostgreSQL. | 1.6 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. <BR> Read the special considerations for extension [pg_cron](./concepts-extensions-considerations.md#pg_cron) in Flexible Server.<BR> |
 | [pgcrypto](https://www.postgresql.org/docs/current/pgcrypto.html) provides cryptographic functions. | 1.3 | |
+| [pg_diskann](../flexible-server/how-to-use-pgdiskann.md) (Preview) is a scalable approximate nearest neighbor search algorithm for efficient vector search at any scale. | 0.4.0 | |
 | [pg_failover_slots](https://github.com/EnterpriseDB/pg_failover_slots) is a logical replication slot manager for failover purposes. | 1.0.1 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. <BR> Read the special considerations for extension [pg_failover_slots](./concepts-extensions-considerations.md#pg_failover_slots) in Flexible Server.<BR> |
 | [pg_freespacemap](https://www.postgresql.org/docs/current/pgfreespacemap.html) examines the free space map (FSM). | 1.2 | |
 | [pg_hint_plan](https://github.com/ossc-db/pg_hint_plan) makes it possible to tweak PostgreSQL execution plans using so-called hints in SQL comments. | 1.6.0 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. <BR> Read the special considerations for extension [pg_hint_plan](./concepts-extensions-considerations.md#pg_hint_plan) in Flexible Server.<BR> |
 | [pglogical](https://github.com/2ndQuadrant/pglogical) manages PostgreSQL Logical Replication. | 2.4.4 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. |
 | [pg_partman](https://github.com/pgpartman/pg_partman) manages partitioned tables by time or ID. | 5.0.1 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. |
 | [pg_prewarm](https://www.postgresql.org/docs/current/pgprewarm.html) prewarms the cache with relation data. | 1.2 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. <BR> Read the special considerations for extension [pg_prewarm](./concepts-extensions-considerations.md#pg_prewarm) in Flexible Server.<BR> |
-| [pg_repack](https://reorg.github.io/pg_repack/) reorganizes tables in PostgreSQL databases with minimal locks. | 1.4.7 | Read the special considerations for extension [pg_repack](./concepts-extensions-considerations.md#pg_repack) in Flexible Server.<BR> |
+| [pg_repack](https://reorg.github.io/pg_repack/) reorganizes tables in PostgreSQL databases with minimal locks. | 1.5.1 | Read the special considerations for extension [pg_repack](./concepts-extensions-considerations.md#pg_repack) in Flexible Server.<BR> |
 | [pgrouting](https://pgrouting.org/) provides geospatial routing functionality. | N/A | |
 | [pgrowlocks](https://www.postgresql.org/docs/current/pgrowlocks.html) shows row-level locking information. | 1.2 | |
 | [pg_squeeze](https://github.com/cybertec-postgresql/pg_squeeze) removes unused space from a relation. | 1.6 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. |
@@ -154,8 +160,10 @@ The following extensions are available for the Azure Database for the PostgreSQL
 | [session_variable](https://github.com/splendiddata/session_variable) provides registration and manipulation of session variables and constants. | 3.3 | |
 | [sslinfo](https://www.postgresql.org/docs/current/sslinfo.html) provides information about SSL certificates. | 1.2 | |
 | [tablefunc](https://www.postgresql.org/docs/current/tablefunc.html) provides functions that manipulate whole tables, including crosstab. | 1.0 | |
+<!--| [tdigest](https://github.com/tvondra/tdigest) implements t-digest, a data structure for on-line accumulation of rank-based statistics such as quantiles and trimmed means. | 1.4.2 | |-->
 | [tds_fdw](https://github.com/tds-fdw/tds_fdw) is a foreign data wrapper for querying a TDS database (SAP ASE or SQL Server). | 2.0.3 | |
 | [timescaledb](https://github.com/timescale/timescaledb) enables scalable inserts and complex queries for time-series data. | 2.13.0 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. |
+<!--| [topn](https://github.com/citusdata/postgresql-topn) returns the top values in a database according to some criteria. | 2.7.0 | |-->
 | [tsm_system_rows](https://www.postgresql.org/docs/13/tsm-system-rows.html) is a `TABLESAMPLE` method which accepts number of rows as a limit. | 1.0 | |
 | [tsm_system_time](https://www.postgresql.org/docs/current/tsm-system-time.html) is a `TABLESAMPLE` method which accepts time in milliseconds as a limit. | 1.0 | |
 | [unaccent](https://www.postgresql.org/docs/current/unaccent.html) provides a text search dictionary that removes accents. | 1.1 | |
@@ -187,6 +195,7 @@ The following extensions are available for the Azure Database for the PostgreSQL
 | [dict_xsyn](https://www.postgresql.org/docs/current/dict-xsyn.html) provides a text search dictionary template for extended synonym processing. | 1.0 | |
 | [earthdistance](https://www.postgresql.org/docs/current/earthdistance.html) calculates great-circle distances on the surface of the Earth. | 1.1 | |
 | [fuzzystrmatch](https://www.postgresql.org/docs/current/fuzzystrmatch.html) determines similarities and distance between strings. | 1.1 | |
+<!--| [hll](https://github.com/citusdata/postgresql-hll) introduces a new data type hll which is a HyperLogLog data structure. | 2.18 | |-->
 | [hstore](https://www.postgresql.org/docs/current/hstore.html) is a data type for storing sets of (key, value) pairs. | 1.8 | |
 | [hypopg](https://github.com/HypoPG/hypopg) provides hypothetical indexes for PostgreSQL. | 1.4.0 | |
 | [intagg](https://www.postgresql.org/docs/current/intagg.html) is an obsolete extension that provides an integer aggregator and enumerator. | 1.1 | |
@@ -202,13 +211,14 @@ The following extensions are available for the Azure Database for the PostgreSQL
 | [pg_buffercache](https://www.postgresql.org/docs/current/pgbuffercache.html) examines the shared buffer cache. | 1.3 | Read the special considerations for extension [pg_buffercache](./concepts-extensions-considerations.md#pg_buffercache) in Flexible Server.<BR> |
 | [pg_cron](https://github.com/citusdata/pg_cron) is a job scheduler for PostgreSQL. | 1.6 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. <BR> Read the special considerations for extension [pg_cron](./concepts-extensions-considerations.md#pg_cron) in Flexible Server.<BR> |
 | [pgcrypto](https://www.postgresql.org/docs/current/pgcrypto.html) provides cryptographic functions. | 1.3 | |
+| [pg_diskann](../flexible-server/how-to-use-pgdiskann.md) (Preview) is a scalable approximate nearest neighbor search algorithm for efficient vector search at any scale. | 0.4.0 | |
 | [pg_failover_slots](https://github.com/EnterpriseDB/pg_failover_slots) is a logical replication slot manager for failover purposes. | 1.0.1 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. <BR> Read the special considerations for extension [pg_failover_slots](./concepts-extensions-considerations.md#pg_failover_slots) in Flexible Server.<BR> |
 | [pg_freespacemap](https://www.postgresql.org/docs/current/pgfreespacemap.html) examines the free space map (FSM). | 1.2 | |
 | [pg_hint_plan](https://github.com/ossc-db/pg_hint_plan) makes it possible to tweak PostgreSQL execution plans using so-called hints in SQL comments. | 1.5 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. <BR> Read the special considerations for extension [pg_hint_plan](./concepts-extensions-considerations.md#pg_hint_plan) in Flexible Server.<BR> |
 | [pglogical](https://github.com/2ndQuadrant/pglogical) manages PostgreSQL Logical Replication. | 2.4.2 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. |
 | [pg_partman](https://github.com/pgpartman/pg_partman) manages partitioned tables by time or ID. | 4.7.1 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. |
 | [pg_prewarm](https://www.postgresql.org/docs/current/pgprewarm.html) prewarms the cache with relation data. | 1.2 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. <BR> Read the special considerations for extension [pg_prewarm](./concepts-extensions-considerations.md#pg_prewarm) in Flexible Server.<BR> |
-| [pg_repack](https://reorg.github.io/pg_repack/) reorganizes tables in PostgreSQL databases with minimal locks. | 1.4.7 | Read the special considerations for extension [pg_repack](./concepts-extensions-considerations.md#pg_repack) in Flexible Server.<BR> |
+| [pg_repack](https://reorg.github.io/pg_repack/) reorganizes tables in PostgreSQL databases with minimal locks. | 1.5.1 | Read the special considerations for extension [pg_repack](./concepts-extensions-considerations.md#pg_repack) in Flexible Server.<BR> |
 | [pgrouting](https://pgrouting.org/) provides geospatial routing functionality. | 3.5.0 | |
 | [pgrowlocks](https://www.postgresql.org/docs/current/pgrowlocks.html) shows row-level locking information. | 1.2 | |
 | [pg_squeeze](https://github.com/cybertec-postgresql/pg_squeeze) removes unused space from a relation. | 1.6 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. |
@@ -229,8 +239,10 @@ The following extensions are available for the Azure Database for the PostgreSQL
 | [session_variable](https://github.com/splendiddata/session_variable) provides registration and manipulation of session variables and constants. | 3.3 | |
 | [sslinfo](https://www.postgresql.org/docs/current/sslinfo.html) provides information about SSL certificates. | 1.2 | |
 | [tablefunc](https://www.postgresql.org/docs/current/tablefunc.html) provides functions that manipulate whole tables, including crosstab. | 1.0 | |
+<!--| [tdigest](https://github.com/tvondra/tdigest) implements t-digest, a data structure for on-line accumulation of rank-based statistics such as quantiles and trimmed means. | 1.4.2 | |-->
 | [tds_fdw](https://github.com/tds-fdw/tds_fdw) is a foreign data wrapper for querying a TDS database (SAP ASE or SQL Server). | 2.0.3 | |
 | [timescaledb](https://github.com/timescale/timescaledb) enables scalable inserts and complex queries for time-series data. | 2.10.0 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. |
+<!--| [topn](https://github.com/citusdata/postgresql-topn) returns the top values in a database according to some criteria. | 2.7.0 | |-->
 | [tsm_system_rows](https://www.postgresql.org/docs/13/tsm-system-rows.html) is a `TABLESAMPLE` method which accepts number of rows as a limit. | 1.0 | |
 | [tsm_system_time](https://www.postgresql.org/docs/current/tsm-system-time.html) is a `TABLESAMPLE` method which accepts time in milliseconds as a limit. | 1.0 | |
 | [unaccent](https://www.postgresql.org/docs/current/unaccent.html) provides a text search dictionary that removes accents. | 1.1 | |
@@ -262,6 +274,7 @@ The following extensions are available for the Azure Database for the PostgreSQL
 | [dict_xsyn](https://www.postgresql.org/docs/current/dict-xsyn.html) provides a text search dictionary template for extended synonym processing. | 1.0 | |
 | [earthdistance](https://www.postgresql.org/docs/current/earthdistance.html) calculates great-circle distances on the surface of the Earth. | 1.1 | |
 | [fuzzystrmatch](https://www.postgresql.org/docs/current/fuzzystrmatch.html) determines similarities and distance between strings. | 1.1 | |
+<!--| [hll](https://github.com/citusdata/postgresql-hll) introduces a new data type hll which is a HyperLogLog data structure. | 2.18 | |-->
 | [hstore](https://www.postgresql.org/docs/current/hstore.html) is a data type for storing sets of (key, value) pairs. | 1.8 | |
 | [hypopg](https://github.com/HypoPG/hypopg) provides hypothetical indexes for PostgreSQL. | 1.4.0 | |
 | [intagg](https://www.postgresql.org/docs/current/intagg.html) is an obsolete extension that provides an integer aggregator and enumerator. | 1.1 | |
@@ -277,13 +290,14 @@ The following extensions are available for the Azure Database for the PostgreSQL
 | [pg_buffercache](https://www.postgresql.org/docs/current/pgbuffercache.html) examines the shared buffer cache. | 1.3 | Read the special considerations for extension [pg_buffercache](./concepts-extensions-considerations.md#pg_buffercache) in Flexible Server.<BR> |
 | [pg_cron](https://github.com/citusdata/pg_cron) is a job scheduler for PostgreSQL. | 1.6 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. <BR> Read the special considerations for extension [pg_cron](./concepts-extensions-considerations.md#pg_cron) in Flexible Server.<BR> |
 | [pgcrypto](https://www.postgresql.org/docs/current/pgcrypto.html) provides cryptographic functions. | 1.3 | |
+| [pg_diskann](../flexible-server/how-to-use-pgdiskann.md) (Preview) is a scalable approximate nearest neighbor search algorithm for efficient vector search at any scale. | 0.4.0 | |
 | [pg_failover_slots](https://github.com/EnterpriseDB/pg_failover_slots) is a logical replication slot manager for failover purposes. | 1.0.1 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. <BR> Read the special considerations for extension [pg_failover_slots](./concepts-extensions-considerations.md#pg_failover_slots) in Flexible Server.<BR> |
 | [pg_freespacemap](https://www.postgresql.org/docs/current/pgfreespacemap.html) examines the free space map (FSM). | 1.2 | |
 | [pg_hint_plan](https://github.com/ossc-db/pg_hint_plan) makes it possible to tweak PostgreSQL execution plans using so-called hints in SQL comments. | 1.4 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. <BR> Read the special considerations for extension [pg_hint_plan](./concepts-extensions-considerations.md#pg_hint_plan) in Flexible Server.<BR> |
 | [pglogical](https://github.com/2ndQuadrant/pglogical) manages PostgreSQL Logical Replication. | 2.4.1 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. |
 | [pg_partman](https://github.com/pgpartman/pg_partman) manages partitioned tables by time or ID. | 4.6.1 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. |
 | [pg_prewarm](https://www.postgresql.org/docs/current/pgprewarm.html) prewarms the cache with relation data. | 1.2 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. <BR> Read the special considerations for extension [pg_prewarm](./concepts-extensions-considerations.md#pg_prewarm) in Flexible Server.<BR> |
-| [pg_repack](https://reorg.github.io/pg_repack/) reorganizes tables in PostgreSQL databases with minimal locks. | 1.4.7 | Read the special considerations for extension [pg_repack](./concepts-extensions-considerations.md#pg_repack) in Flexible Server.<BR> |
+| [pg_repack](https://reorg.github.io/pg_repack/) reorganizes tables in PostgreSQL databases with minimal locks. | 1.5.1 | Read the special considerations for extension [pg_repack](./concepts-extensions-considerations.md#pg_repack) in Flexible Server.<BR> |
 | [pgrouting](https://pgrouting.org/) provides geospatial routing functionality. | 3.3.0 | |
 | [pgrowlocks](https://www.postgresql.org/docs/current/pgrowlocks.html) shows row-level locking information. | 1.2 | |
 | [pg_squeeze](https://github.com/cybertec-postgresql/pg_squeeze) removes unused space from a relation. | 1.5 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. |
@@ -304,8 +318,10 @@ The following extensions are available for the Azure Database for the PostgreSQL
 | [session_variable](https://github.com/splendiddata/session_variable) provides registration and manipulation of session variables and constants. | 3.3 | |
 | [sslinfo](https://www.postgresql.org/docs/current/sslinfo.html) provides information about SSL certificates. | 1.2 | |
 | [tablefunc](https://www.postgresql.org/docs/current/tablefunc.html) provides functions that manipulate whole tables, including crosstab. | 1.0 | |
+<!--| [tdigest](https://github.com/tvondra/tdigest) implements t-digest, a data structure for on-line accumulation of rank-based statistics such as quantiles and trimmed means. | 1.4.2 | |-->
 | [tds_fdw](https://github.com/tds-fdw/tds_fdw) is a foreign data wrapper for querying a TDS database (SAP ASE or SQL Server). | 2.0.3 | |
 | [timescaledb](https://github.com/timescale/timescaledb) enables scalable inserts and complex queries for time-series data. | 2.10.0 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. |
+<!--| [topn](https://github.com/citusdata/postgresql-topn) returns the top values in a database according to some criteria. | 2.7.0 | |-->
 | [tsm_system_rows](https://www.postgresql.org/docs/13/tsm-system-rows.html) is a `TABLESAMPLE` method which accepts number of rows as a limit. | 1.0 | |
 | [tsm_system_time](https://www.postgresql.org/docs/current/tsm-system-time.html) is a `TABLESAMPLE` method which accepts time in milliseconds as a limit. | 1.0 | |
 | [unaccent](https://www.postgresql.org/docs/current/unaccent.html) provides a text search dictionary that removes accents. | 1.1 | |
@@ -337,6 +353,7 @@ The following extensions are available for the Azure Database for the PostgreSQL
 | [dict_xsyn](https://www.postgresql.org/docs/current/dict-xsyn.html) provides a text search dictionary template for extended synonym processing. | 1.0 | |
 | [earthdistance](https://www.postgresql.org/docs/current/earthdistance.html) calculates great-circle distances on the surface of the Earth. | 1.1 | |
 | [fuzzystrmatch](https://www.postgresql.org/docs/current/fuzzystrmatch.html) determines similarities and distance between strings. | 1.1 | |
+<!--| [hll](https://github.com/citusdata/postgresql-hll) introduces a new data type hll which is a HyperLogLog data structure. | 2.18 | |-->
 | [hstore](https://www.postgresql.org/docs/current/hstore.html) is a data type for storing sets of (key, value) pairs. | 1.7 | |
 | [hypopg](https://github.com/HypoPG/hypopg) provides hypothetical indexes for PostgreSQL. | 1.4.0 | |
 | [intagg](https://www.postgresql.org/docs/current/intagg.html) is an obsolete extension that provides an integer aggregator and enumerator. | 1.1 | |
@@ -352,13 +369,14 @@ The following extensions are available for the Azure Database for the PostgreSQL
 | [pg_buffercache](https://www.postgresql.org/docs/current/pgbuffercache.html) examines the shared buffer cache. | 1.3 | Read the special considerations for extension [pg_buffercache](./concepts-extensions-considerations.md#pg_buffercache) in Flexible Server.<BR> |
 | [pg_cron](https://github.com/citusdata/pg_cron) is a job scheduler for PostgreSQL. | 1.6 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. <BR> Read the special considerations for extension [pg_cron](./concepts-extensions-considerations.md#pg_cron) in Flexible Server.<BR> |
 | [pgcrypto](https://www.postgresql.org/docs/current/pgcrypto.html) provides cryptographic functions. | 1.3 | |
+| [pg_diskann](../flexible-server/how-to-use-pgdiskann.md) (Preview) is a scalable approximate nearest neighbor search algorithm for efficient vector search at any scale. | N/A | |
 | [pg_failover_slots](https://github.com/EnterpriseDB/pg_failover_slots) is a logical replication slot manager for failover purposes. | 1.0.1 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. <BR> Read the special considerations for extension [pg_failover_slots](./concepts-extensions-considerations.md#pg_failover_slots) in Flexible Server.<BR> |
 | [pg_freespacemap](https://www.postgresql.org/docs/current/pgfreespacemap.html) examines the free space map (FSM). | 1.2 | |
 | [pg_hint_plan](https://github.com/ossc-db/pg_hint_plan) makes it possible to tweak PostgreSQL execution plans using so-called hints in SQL comments. | 1.3.7 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. <BR> Read the special considerations for extension [pg_hint_plan](./concepts-extensions-considerations.md#pg_hint_plan) in Flexible Server.<BR> |
 | [pglogical](https://github.com/2ndQuadrant/pglogical) manages PostgreSQL Logical Replication. | 2.4.1 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. |
 | [pg_partman](https://github.com/pgpartman/pg_partman) manages partitioned tables by time or ID. | 4.5.0 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. |
 | [pg_prewarm](https://www.postgresql.org/docs/current/pgprewarm.html) prewarms the cache with relation data. | 1.2 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. <BR> Read the special considerations for extension [pg_prewarm](./concepts-extensions-considerations.md#pg_prewarm) in Flexible Server.<BR> |
-| [pg_repack](https://reorg.github.io/pg_repack/) reorganizes tables in PostgreSQL databases with minimal locks. | 1.4.7 | Read the special considerations for extension [pg_repack](./concepts-extensions-considerations.md#pg_repack) in Flexible Server.<BR> |
+| [pg_repack](https://reorg.github.io/pg_repack/) reorganizes tables in PostgreSQL databases with minimal locks. | 1.5.1 | Read the special considerations for extension [pg_repack](./concepts-extensions-considerations.md#pg_repack) in Flexible Server.<BR> |
 | [pgrouting](https://pgrouting.org/) provides geospatial routing functionality. | 3.3.0 | |
 | [pgrowlocks](https://www.postgresql.org/docs/current/pgrowlocks.html) shows row-level locking information. | 1.2 | |
 | [pg_squeeze](https://github.com/cybertec-postgresql/pg_squeeze) removes unused space from a relation. | 1.5 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. |
@@ -379,8 +397,10 @@ The following extensions are available for the Azure Database for the PostgreSQL
 | [session_variable](https://github.com/splendiddata/session_variable) provides registration and manipulation of session variables and constants. | 3.3 | |
 | [sslinfo](https://www.postgresql.org/docs/current/sslinfo.html) provides information about SSL certificates. | 1.2 | |
 | [tablefunc](https://www.postgresql.org/docs/current/tablefunc.html) provides functions that manipulate whole tables, including crosstab. | 1.0 | |
+<!--| [tdigest](https://github.com/tvondra/tdigest) implements t-digest, a data structure for on-line accumulation of rank-based statistics such as quantiles and trimmed means. | 1.4.2 | |-->
 | [tds_fdw](https://github.com/tds-fdw/tds_fdw) is a foreign data wrapper for querying a TDS database (SAP ASE or SQL Server). | 2.0.3 | |
 | [timescaledb](https://github.com/timescale/timescaledb) enables scalable inserts and complex queries for time-series data. | 2.10.0 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. |
+<!--| [topn](https://github.com/citusdata/postgresql-topn) returns the top values in a database according to some criteria. | 2.7.0 | |-->
 | [tsm_system_rows](https://www.postgresql.org/docs/13/tsm-system-rows.html) is a `TABLESAMPLE` method which accepts number of rows as a limit. | 1.0 | |
 | [tsm_system_time](https://www.postgresql.org/docs/current/tsm-system-time.html) is a `TABLESAMPLE` method which accepts time in milliseconds as a limit. | 1.0 | |
 | [unaccent](https://www.postgresql.org/docs/current/unaccent.html) provides a text search dictionary that removes accents. | 1.1 | |
@@ -412,6 +432,7 @@ The following extensions are available for the Azure Database for the PostgreSQL
 | [dict_xsyn](https://www.postgresql.org/docs/current/dict-xsyn.html) provides a text search dictionary template for extended synonym processing. | 1.0 | |
 | [earthdistance](https://www.postgresql.org/docs/current/earthdistance.html) calculates great-circle distances on the surface of the Earth. | 1.1 | |
 | [fuzzystrmatch](https://www.postgresql.org/docs/current/fuzzystrmatch.html) determines similarities and distance between strings. | 1.1 | |
+<!--| [hll](https://github.com/citusdata/postgresql-hll) introduces a new data type hll which is a HyperLogLog data structure. | 2.18 | |-->
 | [hstore](https://www.postgresql.org/docs/current/hstore.html) is a data type for storing sets of (key, value) pairs. | 1.6 | |
 | [hypopg](https://github.com/HypoPG/hypopg) provides hypothetical indexes for PostgreSQL. | 1.4.0 | |
 | [intagg](https://www.postgresql.org/docs/current/intagg.html) is an obsolete extension that provides an integer aggregator and enumerator. | 1.1 | |
@@ -427,6 +448,7 @@ The following extensions are available for the Azure Database for the PostgreSQL
 | [pg_buffercache](https://www.postgresql.org/docs/current/pgbuffercache.html) examines the shared buffer cache. | 1.3 | Read the special considerations for extension [pg_buffercache](./concepts-extensions-considerations.md#pg_buffercache) in Flexible Server.<BR> |
 | [pg_cron](https://github.com/citusdata/pg_cron) is a job scheduler for PostgreSQL. | 1.6 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. <BR> Read the special considerations for extension [pg_cron](./concepts-extensions-considerations.md#pg_cron) in Flexible Server.<BR> |
 | [pgcrypto](https://www.postgresql.org/docs/current/pgcrypto.html) provides cryptographic functions. | 1.3 | |
+| [pg_diskann](../flexible-server/how-to-use-pgdiskann.md) (Preview) is a scalable approximate nearest neighbor search algorithm for efficient vector search at any scale. | N/A | |
 | [pg_failover_slots](https://github.com/EnterpriseDB/pg_failover_slots) is a logical replication slot manager for failover purposes. | 1.0.1 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. <BR> Read the special considerations for extension [pg_failover_slots](./concepts-extensions-considerations.md#pg_failover_slots) in Flexible Server.<BR> |
 | [pg_freespacemap](https://www.postgresql.org/docs/current/pgfreespacemap.html) examines the free space map (FSM). | 1.2 | |
 | [pg_hint_plan](https://github.com/ossc-db/pg_hint_plan) makes it possible to tweak PostgreSQL execution plans using so-called hints in SQL comments. | 1.3.7 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. <BR> Read the special considerations for extension [pg_hint_plan](./concepts-extensions-considerations.md#pg_hint_plan) in Flexible Server.<BR> |
@@ -454,8 +476,10 @@ The following extensions are available for the Azure Database for the PostgreSQL
 | [session_variable](https://github.com/splendiddata/session_variable) provides registration and manipulation of session variables and constants. | 3.3 | |
 | [sslinfo](https://www.postgresql.org/docs/current/sslinfo.html) provides information about SSL certificates. | 1.2 | |
 | [tablefunc](https://www.postgresql.org/docs/current/tablefunc.html) provides functions that manipulate whole tables, including crosstab. | 1.0 | |
+<!--| [tdigest](https://github.com/tvondra/tdigest) implements t-digest, a data structure for on-line accumulation of rank-based statistics such as quantiles and trimmed means. | 1.4.2 | |-->
 | [tds_fdw](https://github.com/tds-fdw/tds_fdw) is a foreign data wrapper for querying a TDS database (SAP ASE or SQL Server). | 2.0.3 | |
 | [timescaledb](https://github.com/timescale/timescaledb) enables scalable inserts and complex queries for time-series data. | 2.10.0 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. |
+<!--| [topn](https://github.com/citusdata/postgresql-topn) returns the top values in a database according to some criteria. | N/A | |-->
 | [tsm_system_rows](https://www.postgresql.org/docs/13/tsm-system-rows.html) is a `TABLESAMPLE` method which accepts number of rows as a limit. | 1.0 | |
 | [tsm_system_time](https://www.postgresql.org/docs/current/tsm-system-time.html) is a `TABLESAMPLE` method which accepts time in milliseconds as a limit. | 1.0 | |
 | [unaccent](https://www.postgresql.org/docs/current/unaccent.html) provides a text search dictionary that removes accents. | 1.1 | |
@@ -487,6 +511,7 @@ The following extensions are available for the Azure Database for the PostgreSQL
 | [dict_xsyn](https://www.postgresql.org/docs/current/dict-xsyn.html) provides a text search dictionary template for extended synonym processing. | 1.0 | |
 | [earthdistance](https://www.postgresql.org/docs/current/earthdistance.html) calculates great-circle distances on the surface of the Earth. | 1.1 | |
 | [fuzzystrmatch](https://www.postgresql.org/docs/current/fuzzystrmatch.html) determines similarities and distance between strings. | 1.1 | |
+<!--| [hll](https://github.com/citusdata/postgresql-hll) introduces a new data type hll which is a HyperLogLog data structure. | N/A | |-->
 | [hstore](https://www.postgresql.org/docs/current/hstore.html) is a data type for storing sets of (key, value) pairs. | 1.5 | |
 | [hypopg](https://github.com/HypoPG/hypopg) provides hypothetical indexes for PostgreSQL. | 1.4.0 | |
 | [intagg](https://www.postgresql.org/docs/current/intagg.html) is an obsolete extension that provides an integer aggregator and enumerator. | 1.1 | |
@@ -502,6 +527,7 @@ The following extensions are available for the Azure Database for the PostgreSQL
 | [pg_buffercache](https://www.postgresql.org/docs/current/pgbuffercache.html) examines the shared buffer cache. | 1.3 | Read the special considerations for extension [pg_buffercache](./concepts-extensions-considerations.md#pg_buffercache) in Flexible Server.<BR> |
 | [pg_cron](https://github.com/citusdata/pg_cron) is a job scheduler for PostgreSQL. | 1.4-1 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. <BR> Read the special considerations for extension [pg_cron](./concepts-extensions-considerations.md#pg_cron) in Flexible Server.<BR> |
 | [pgcrypto](https://www.postgresql.org/docs/current/pgcrypto.html) provides cryptographic functions. | 1.3 | |
+| [pg_diskann](../flexible-server/how-to-use-pgdiskann.md) (Preview) is a scalable approximate nearest neighbor search algorithm for efficient vector search at any scale. | N/A | |
 | [pg_failover_slots](https://github.com/EnterpriseDB/pg_failover_slots) is a logical replication slot manager for failover purposes. | 1.0.1 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. <BR> Read the special considerations for extension [pg_failover_slots](./concepts-extensions-considerations.md#pg_failover_slots) in Flexible Server.<BR> |
 | [pg_freespacemap](https://www.postgresql.org/docs/current/pgfreespacemap.html) examines the free space map (FSM). | 1.2 | |
 | [pg_hint_plan](https://github.com/ossc-db/pg_hint_plan) makes it possible to tweak PostgreSQL execution plans using so-called hints in SQL comments. | 1.3.7 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. <BR> Read the special considerations for extension [pg_hint_plan](./concepts-extensions-considerations.md#pg_hint_plan) in Flexible Server.<BR> |
@@ -529,8 +555,10 @@ The following extensions are available for the Azure Database for the PostgreSQL
 | [session_variable](https://github.com/splendiddata/session_variable) provides registration and manipulation of session variables and constants. | 3.3 | |
 | [sslinfo](https://www.postgresql.org/docs/current/sslinfo.html) provides information about SSL certificates. | 1.2 | |
 | [tablefunc](https://www.postgresql.org/docs/current/tablefunc.html) provides functions that manipulate whole tables, including crosstab. | 1.0 | |
+<!--| [tdigest](https://github.com/tvondra/tdigest) implements t-digest, a data structure for on-line accumulation of rank-based statistics such as quantiles and trimmed means. | N/A | |-->
 | [tds_fdw](https://github.com/tds-fdw/tds_fdw) is a foreign data wrapper for querying a TDS database (SAP ASE or SQL Server). | 2.0.3 | |
 | [timescaledb](https://github.com/timescale/timescaledb) enables scalable inserts and complex queries for time-series data. | 1.7.4 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. |
+<!--| [topn](https://github.com/citusdata/postgresql-topn) returns the top values in a database according to some criteria. | N/A | |-->
 | [tsm_system_rows](https://www.postgresql.org/docs/13/tsm-system-rows.html) is a `TABLESAMPLE` method which accepts number of rows as a limit. | 1.0 | |
 | [tsm_system_time](https://www.postgresql.org/docs/current/tsm-system-time.html) is a `TABLESAMPLE` method which accepts time in milliseconds as a limit. | 1.0 | |
 | [unaccent](https://www.postgresql.org/docs/current/unaccent.html) provides a text search dictionary that removes accents. | 1.1 | |
@@ -539,8 +567,15 @@ The following extensions are available for the Azure Database for the PostgreSQL
 
 ::: zone-end
 
+
+
+
+
+[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
+
 ## Related content
 
-- [How to use extensions](how-to-allow-extensions.md).
-- [Special considerations with extensions](concepts-extensions-considerations.md).
-- [List of extensions by name](concepts-extensions-versions.md).
+- [How to use extensions](how-to-allow-extensions.md)
+- [Special considerations with extensions](concepts-extensions-considerations.md)
+- [List of extensions by name](concepts-extensions-versions.md)
+- [Feedback forum](https://aka.ms/pgfeedback)

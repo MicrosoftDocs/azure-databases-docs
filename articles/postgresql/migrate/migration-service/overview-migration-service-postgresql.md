@@ -1,10 +1,10 @@
 ---
-title: Migration service in Azure Database for PostgreSQL
+title: Migration Service in Azure Database for PostgreSQL
 description: Get an introduction to using the migration service to migrate to Azure Database for PostgreSQL - Flexible Server, including advantages and migration options.
 author: hariramt
 ms.author: hariramt
 ms.reviewer: maghan
-ms.date: 09/03/2024
+ms.date: 01/24/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: overview
@@ -26,11 +26,11 @@ Some of the advantages of using the migration service include:
 
 The following figure shows the PostgreSQL sources you can migrate by using the migration service in Azure Database for PostgreSQL. All supported environments can be seamlessly transitioned to Azure Database for PostgreSQL.
 
-:::image type="content" source="media/overview-migration-service-postgresql/migrate-postgresql-sources.png" alt-text="Diagram that shows different PostgreSQL sources." border="false" lightbox="media/overview-migration-service-postgresql/migrate-postgresql-sources.png":::
+:::image type="content" source="media/overview-migration-service-postgresql/migrate-postgresql-sources.png" alt-text="Diagram that shows different PostgreSQL sources." lightbox="media/overview-migration-service-postgresql/migrate-postgresql-sources.png":::
 
 The next figure depicts the detailed steps that are involved in migrating from Azure Database for PostgreSQL - Single Server to Azure Database for PostgreSQL - Flexible Server. The figure illustrates the migration workflow and key stages of the migration for a successful transition to Azure Database for PostgreSQL - Flexible Server.
 
-:::image type="content" source="media/overview-migration-service-postgresql/concepts-flow-diagram.png" alt-text="Diagram that depicts the migration from Single Server to Flexible Server." border="false" lightbox="media/overview-migration-service-postgresql/concepts-flow-diagram.png":::
+:::image type="content" source="media/overview-migration-service-postgresql/concepts-flow-diagram.png" alt-text="Diagram that depicts the migration from Single Server to Flexible Server." lightbox="media/overview-migration-service-postgresql/concepts-flow-diagram.png":::
 
 ## Why use a flexible server?
 
@@ -70,7 +70,7 @@ The following table describes offline and online options:
 
 | Option | Advantages | Considerations | Recommended scenarios |
 | --- | --- | --- | --- |
-| Offline | - Simple, easy, and less complex to execute.<br />- Far fewer chances of failure.<br />- No restrictions on the number of database objects it can handle. | - Downtime for applications. | - Best for scenarios in which simplicity and a high success rate are essential.<br />- Ideal when a database can be taken offline without significant impact on business operations.<br />- Suitable when databases can be migrated  within a planned maintenance window. |
+| Offline | - Simple, easy, and less complex to execute.<br />- Far fewer chances of failure.<br />- No restrictions on the number of database objects it can handle. | - Downtime for applications. | - Best for scenarios in which simplicity and a high success rate are essential.<br />- Ideal when a database can be taken offline without significant impact on business operations.<br />- Suitable when databases can be migrated within a planned maintenance window. |
 | Online | - Very minimal downtime for your application.<br />- Ideal for large databases and for customers who have requirements for limited downtime. | - Replication used in online migration has a few [restrictions](https://pgcopydb.readthedocs.io/en/latest/ref/pgcopydb_follow.html#pgcopydb-follow). For example, primary keys are required in all tables.<br />- More complex to execute than offline migration.<br />- Greater chances of failure due to the complexity of the migration process.<br />- There's an impact on the source instance storage and computing if the migration runs for a long time. The impact needs to be monitored closely during migration. | - Best suited for businesses where continuity is critical and downtime must be kept to an absolute minimum.<br />- Recommended when database migration needs to occur without interrupting ongoing operations. |
 
 The following table lists the sources that the migration service supports:
