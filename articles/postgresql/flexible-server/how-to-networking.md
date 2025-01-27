@@ -326,34 +326,26 @@ Using the [Azure portal](https://portal.azure.com/):
 
 5. In the resource menu, select **Networking**.
 
-    :::image type="content" source="./media/how-to-networking/configure-public-access-networking-enabled.png" alt-text="Screenshot showing the Networking page." lightbox="./media/how-to-networking/configure-public-access-networking-enabled.png":::
+    :::image type="content" source="./media/how-to-networking/configure-public-access-networking-enabled-existing-firewall-rules.png" alt-text="Screenshot showing the Networking page." lightbox="./media/how-to-networking/configure-public-access-networking-enabled-existing-firewall-rules.png":::
 
-6. If you want to create a firewall rule to allow connections originating from the public IP address of the client machine that you're using to connect to navigate the portal, select **Add current client IP address (###.###.###.###)**.
+6. If you want to delete a firewall rule, select the icon that resembles a trash bin, which is located to the right of the rule definition.
 
-    :::image type="content" source="./media/how-to-networking/add-firewall-rule-current-client.png" alt-text="Screenshot showing how to add a firewall rule to allow connections from the IP address of the computer from which you're navigating the Azure portal." lightbox="./media/how-to-networking/add-firewall-rule-current-client.png":::
+    :::image type="content" source="./media/how-to-networking/delete-firewall-rule-current-client.png" alt-text="Screenshot showing how to delete the firewall rule that you created to allow connections from the IP address of the computer from which you're navigating the Azure portal." lightbox="./media/how-to-networking/delete-firewall-rule-current-client.png":::
 
-7. A new firewall rule is added to the grid. Its **Firewall rule name** is automatically generated, but you can change it to any valid name of your preference. **Start IP address** and **End IP address** are set to the public IP address from which you're connnected to the Azure portal.
+7. If you want to delete the firewall rule that allows connections originating from any IP address allocated to any Azure service or asset, clear the **Allow public access from any Azure service within Azure to this server** checkbox.
 
-    :::image type="content" source="./media/how-to-networking/added-firewall-rule-current-client.png" alt-text="Screenshot showing a new rule added to allow connections from the IP address of the computer from which you're navigating the Azure portal." lightbox="./media/how-to-networking/added-firewall-rule-current-client.png":::
-
-8. If you want to create a firewall rule to allow connections originating from any public IP address, select **Add 0.0.0.0 / 255.255.255.255**.
-
-    :::image type="content" source="./media/how-to-networking/add-firewall-rule-all-addresses.png" alt-text="Screenshot showing how to add a firewall rule to allow connections from all public IP addresses." lightbox="./media/how-to-networking/add-firewall-rule-all-addresses.png":::
-
-9. If you want to create a firewall rule to allow connections originating from any IP address allocated to any Azure service or asset, select **Allow public access from any Azure service within Azure to this server**.
-
-    :::image type="content" source="./media/how-to-networking/add-firewall-rule-any-azure-service.png" alt-text="Screenshot showing how to add a firewall rule to allow connections from any Azure service." lightbox="./media/how-to-networking/add-firewall-rule-any-azure-service.png":::
+    :::image type="content" source="./media/how-to-networking/delete-firewall-rule-any-azure-service.png" alt-text="Screenshot showing how to delete the firewall rule to allow connections from any Azure service." lightbox="./media/how-to-networking/delete-firewall-rule-any-azure-service.png":::
 
 > [!IMPORTANT]
 > **Allow public access from any Azure service within Azure to this server** creates a firewall rule whose start and end IP addresses are set to `0.0.0.0`. The presence of such rule configures the firewall to allow connections from IP addresses allocated to any Azure service or asset, including connections from the subscriptions of other customers.
 
 10. Select **Save**.
 
-    :::image type="content" source="./media/how-to-networking/added-firewall-rule-current-client-save.png" alt-text="Screenshot showing the Save button." lightbox="./media/how-to-networking/added-firewall-rule-current-client-save.png":::
+    :::image type="content" source="./media/how-to-networking/deleted-firewall-rule-current-client-save.png" alt-text="Screenshot showing the Save button." lightbox="./media/how-to-networking/deleted-firewall-rule-current-client-save.png":::
 
 11. A notification informs you that the changes are being applied.
 
-    :::image type="content" source="./media/how-to-networking/added-firewall-rule-current-client-progressing-notification.png" alt-text="Screenshot showing a server whose network settings are being saved." lightbox="./media/how-to-networking/added-firewall-rule-current-client-progressing-notification.png":::
+    :::image type="content" source="./media/how-to-networking/deleted-firewall-rule-current-client-progressing-notification.png" alt-text="Screenshot showing a server whose network settings are being saved." lightbox="./media/how-to-networking/deleted-firewall-rule-current-client-progressing-notification.png":::
 
 12. Also, the status of the server changes to **Updating**.
 
@@ -361,7 +353,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 13. When the process completes, a notification informs you that the changes were applied.
 
-    :::image type="content" source="./media/how-to-networking/added-firewall-rule-current-client-succeeded-notification.png" alt-text="Screenshot showing a server whose network settings were successfully saved." lightbox="./media/how-to-networking/added-firewall-rule-current-client-succeeded-notification.png":::
+    :::image type="content" source="./media/how-to-networking/deleted-firewall-rule-current-client-succeeded-notification.png" alt-text="Screenshot showing a server whose network settings were successfully saved." lightbox="./media/how-to-networking/deleted-firewall-rule-current-client-succeeded-notification.png":::
 
 14. Also, the status of the server changes to **Available**.
 
@@ -369,7 +361,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 #### [CLI](#tab/cli-delete-firewall-rules)
 
-You can add firewall rules to a server via the [az postgres flexible-server firewall-rule delete](/cli/azure/postgres/flexible-server/firewall-rule#az-postgres-flexible-server-firewall-rule-delete) command.
+You can delete firewall rules from a server via the [az postgres flexible-server firewall-rule delete](/cli/azure/postgres/flexible-server/firewall-rule#az-postgres-flexible-server-firewall-rule-delete) command.
 
 ```azurecli-interactive
 az postgres flexible-server firewall-rule delete --resource-group <resource_group> --name <server> --rule-name <rule>
@@ -391,33 +383,11 @@ If you attempt to delete a firewall rule with an invalid name, you receive an er
 The firewall rule name can only contain 0-9, a-z, A-Z, '-' and '_'. Additionally, the name of the firewall rule must be at least 3 characters and no more than 128 characters in length. 
 ```
 
-If you attempt to add a firewall rule with a name that matches the name of another existing firewall rule, you don't receive an error, but the rule is updated with the values provided for `--start-ip-address` and `--end-ip-address`.
-
-If you pass an invalid IP address for the `--start-ip-address` and `--end-ip-address` parameters, you receive an error like this:
-
-```output
-Incorrect value for ip address. Ip address should be IPv4 format. Example: 12.12.12.12.
-```
-
-If you pass a value for `--start-ip-address` which is bigger than the value passed `--end-ip-address`, you receive an error like this:
-
-```output
-The end IP address is smaller than the start IP address.
-```
-
-If you attempt to add a firewall rule to a server that doesn't have public access enabled, you receive an error like this:
+If you attempt to remove a firewall rule from a server that doesn't have public access enabled, you receive an error like this:
 
 ```output
 Firewall rule operations cannot be requested for a private access enabled server.
 ```
-
-> [!NOTE]
-> Although not recommended, it's supported to create multiple firewall rules with different names and either overlapping IP ranges, or even matching start and end IP addresses.
-
-To allow public access, from any Azure service within Azure, to your server, you must create a firewall rule whose start and end IP addresses are both set to `0.0.0.0`.
-
-> [!IMPORTANT]
-> When you configure a rule in the firewall with start and end IP addresses set to `0.0.0.0`, it configures the firewall to allow connections from IP addresses allocated to any Azure service or asset, including connections from the subscriptions of other customers.
 
 ---
 
