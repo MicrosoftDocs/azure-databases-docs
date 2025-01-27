@@ -103,7 +103,7 @@ Then, `CREATE INDEX` command uses the specified number of parallel workers, depe
 CREATE INDEX CONCURRENTLY demo_embedding_diskann_idx ON demo USING diskann (embedding vector_cosine_ops)
 ```
 
-> [!ALERT]
+> [!IMPORTANT]
 > The leader process cannot participate in parallel index builds.
 
 If you want to create the index by using parallel workers, you also need to set `max_parallel_workers`, `max_worker_processes`, and `max_parallel_maintenance_workers` parameters accordingly. For more information about these parameters, see [parameters that control resource usages and asynchronous behavior](concepts-server-parameters.md#resource-usage--asynchronous-behavior).
@@ -161,7 +161,7 @@ SET LOCAL diskann.l_value_is TO 20;
 
 - `relaxed_order` (default): Lets diskann iteratively search the graph in batches of `diskann.l_value_is`, until the desired number of tuples, possibly limited by `LIMIT` clause, are yielded. Might cause the results to be slightly out of order, if sorted by distance. Depending on the use case, you might want to sort again the results, by using an outer query with an `ORDER BY` clause.
 
-- `strict_order`: Similar to `relaxed_order`, lets diskann iteratively search the graph, until the desired number of tuples are yielded. However, it ensures that the results are returned in strict order, when sorted by distance. To ensure strict order, the index migth skip yielding some tuples which are closer to the query vector, than some of the tuples that were already yielded.
+- `strict_order`: Similar to `relaxed_order`, lets diskann iteratively search the graph, until the desired number of tuples are yielded. However, it ensures that the results are returned in strict order, when sorted by distance. To ensure strict order, the index might skip yielding some tuples which are closer to the query vector, than some of the tuples that were already yielded.
 
 - `off`: Uses noniterative search functionality, which means that it attempts to fetch `diskann.l_value_is` tuples in one step. Noniterative search can only return a maximum of `diskann.l_value_is` vectors for a query, regardless of the `LIMIT` clause or the number of tuples that match the query.
 
@@ -221,9 +221,9 @@ The vector type allows you to perform three types of searches on the stored vect
 
 When you encounter this error, you can resolve by:
 
-1. Executing `REINDEX` or `REDINDEX CONCURRENTLY` statement on the index. 
+- Executing `REINDEX` or `REDINDEX CONCURRENTLY` statement on the index. 
 
-2. Because `REINDEX` might take a long time, the extension also provides a user-defined function called `upgrade_diskann_index()`, which upgrades your index faster, when possible.
+- Because `REINDEX` might take a long time, the extension also provides a user-defined function called `upgrade_diskann_index()`, which upgrades your index faster, when possible.
 
     To upgrade your index, run the following statement:
 
