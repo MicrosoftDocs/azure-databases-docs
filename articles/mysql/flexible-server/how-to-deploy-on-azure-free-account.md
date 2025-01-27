@@ -151,7 +151,7 @@ You're not charged for Azure Database for MySQL Flexible Server services include
 
     > [!IMPORTANT]  
     > With an Azure free account, you also get $200 in credit to use in 30 days. During this time, any usage beyond the free monthly amounts of services will be deducted from this credit.
-    > At the end of your first 30 days or after you spend your $200 credit (whichever comes first), you'll only pay for what you use beyond the free monthly amounts of services. To keep getting free services after 30 days, move to pay-as-you-go pricing. If you don't move to pay as you go, you can't purchase Azure services beyond your $200 credit?and eventually your account and services will be disabled.
+    > At the end of your first 30 days or after you spend your $200 credit (whichever comes first), you'll only pay for what you use beyond the free monthly amounts of services. To keep getting free services after 30 days, move to pay-as-you-go pricing. If you don't move to pay as you go, you can't purchase Azure services beyond your $200 credit, and eventually your account and services will be disabled.
     > For more information, see [**Azure free account FAQ**](https://azure.microsoft.com/free/free-account-faq/).
 
 ## Clean up resources
