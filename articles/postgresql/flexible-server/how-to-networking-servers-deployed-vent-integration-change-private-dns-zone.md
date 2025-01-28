@@ -17,12 +17,9 @@ ms.topic: how-to
 
 When you deploy an Azure Database for PostgreSQL flexible server with **Networking with private access (VNET Integration)** mode, you're required to provide the private DNS zone in which  is mandatory to be able to do DNS resolution. For new Azure Database for PostgreSQL flexible server creation by using private network access, Private DNS zones need to be used while you configure Azure Database for PostgreSQL flexible servers with private access.
 
+On existing servers, you can change the private DNS zone from the one that you provided during server creation.
 
-You can also change the Private DNS zone from the one that you provided when you created your Azure Database for PostgreSQL flexible server to another Private DNS zone that exists for the same or different subscription
-
-When you enable public access, any firewall rules that already existed last time the server was configured with enabled public access are enforced again.
-
-## [Portal](#tab/portal-enable-public-access)
+## [Portal](#tab/portal-change-private-dns-zone)
 
 Using the [Azure portal](https://portal.azure.com/):
 
@@ -71,7 +68,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="./media/how-to-networking/configure-public-access-available.png" alt-text="Screenshot showing that server status is Available." lightbox="./media/how-to-networking/configure-public-access-available.png":::
 
-## [CLI](#tab/cli-enable-public-access)
+## [CLI](#tab/cli-change-private-dns-zone)
 
 You can enable public access on a server via the [az postgres flexible-server update](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-update) command.
 
