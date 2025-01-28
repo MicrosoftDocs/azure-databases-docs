@@ -14,23 +14,27 @@ ms.date: 06/20/2024
 The Azure Cosmos DB emulator is updated at a regular cadence with release notes provided in this article.
 
 > [!div class="nextstepaction"]
-> [Download latest version (``2.14.20``)](https://aka.ms/cosmosdb-emulator)
+> [Download latest version (``2.14.21``)](https://aka.ms/cosmosdb-emulator)
 
 ## Supported versions
 
 Only the most recent version of the Azure Cosmos DB emulator is actively supported.
 
-## Latest version ``2.14.20``
+## Latest version ``2.14.21``
 
-> *Released Aug 30, 2024*
+> *Released Nov 18, 2024*
 
-- Fix emulator crash on ARM processors.
 - Update Azure Cosmos DB Emulator background services to match the latest online functionality of the Azure Cosmos DB.
 
 ## Previous releases
 
 > [!WARNING]
 > Previous versions of the emulator are not supported by the product group.
+
+### ``2.14.20`` (Aug 30, 2024)
+
+- Fix emulator crash on ARM processors.
+- Update Azure Cosmos DB Emulator background services to match the latest online functionality of the Azure Cosmos DB.
 
 ### ``2.14.19`` (Aug 6, 2024)
 
