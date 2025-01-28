@@ -1,6 +1,6 @@
 ---
 title: Delete private endpoint connections
-description: This article describes how to delete endpoint connections to an Azure Database for PostgreSQL flexible server.
+description: This article describes how to delete private endpoint connections to an Azure Database for PostgreSQL flexible server.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
@@ -8,7 +8,7 @@ ms.date: 01/26/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: how-to
-#customer intent: As a user, I want to learn how to delete endpoint connections to an Azure Database for PostgreSQL flexible server.
+#customer intent: As a user, I want to learn how to delete private endpoint connections to an Azure Database for PostgreSQL flexible server.
 ---
 
 # Delete private endpoint connections
@@ -54,11 +54,11 @@ Using the [Azure portal](https://portal.azure.com/):
 
 8. A notification informs you that the private endpoint connection is being deleted.
 
-    :::image type="content" source="./media/how-to-networking/configure-public-access-networking-disabled-approved-private-endpoint-deleting-notification.png" alt-text="Screenshot showing the notification informing that private endpoint connection is deleting." lightbox="./media/how-to-networking/configure-public-access-networking-disabled-approved-private-endpoint-deleting-notification.png":::
+    :::image type="content" source="./media/how-to-networking/configure-public-access-networking-disabled-approved-private-endpoint-deleting-notification.png" alt-text="Screenshot showing the notification informing that it-s deleting the private endpoint connection." lightbox="./media/how-to-networking/configure-public-access-networking-disabled-approved-private-endpoint-deleting-notification.png":::
 
 8. When the operation completes, a notification informs you that the private endpoint connection was successfully deleted.
 
-    :::image type="content" source="./media/how-to-networking/configure-public-access-networking-disabled-approved-private-endpoint-deleted-notification.png" alt-text="Screenshot showing the notification informing that private endpoint connection is deleting." lightbox="./media/how-to-networking/configure-public-access-networking-disabled-approved-private-endpoint-deleted-notification.png":::
+    :::image type="content" source="./media/how-to-networking/configure-public-access-networking-disabled-approved-private-endpoint-deleted-notification.png" alt-text="Screenshot showing the notification informing that private endpoint connection is deleted." lightbox="./media/how-to-networking/configure-public-access-networking-disabled-approved-private-endpoint-deleted-notification.png":::
 
 > [!IMPORTANT]
 > The previous procedure doesn't delete the private endpoint, but only the connection established between that private endpoint and your instance of Azure Database for PostgreSQL flexible server. To learn how to delete the private endpoint, see [Manage Azure private endpoints](/azure/private-link/manage-private-endpoint).

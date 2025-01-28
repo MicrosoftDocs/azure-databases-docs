@@ -1,6 +1,6 @@
 ---
-title: Approve private endpoint connections
-description: This article describes how to approve private endpoint connections to an Azure Database for PostgreSQL flexible server.
+title: Reject private endpoint connections
+description: This article describes how to reject private endpoint connections to an Azure Database for PostgreSQL flexible server.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
@@ -8,10 +8,10 @@ ms.date: 01/26/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: how-to
-#customer intent: As a user, I want to learn how to approve private endpoint connections to an Azure Database for PostgreSQL flexible server.
+#customer intent: As a user, I want to learn how to reject private endpoint connections to an Azure Database for PostgreSQL flexible server.
 ---
 
-# Approve private endpoint connections
+# Reject private endpoint connections
 
 Azure Database for PostgreSQL - Flexible Server is an Azure Private Link service. This means that you can create private endpoints so that your client applications can connect privately and securely to your Azure Database for PostgreSQL flexible server.
 
@@ -27,7 +27,7 @@ Therefore, network administrators wouldn't have permissions to approve and rejec
 
 In this scenarios, after network administrators create a private endpoint, the database administrators are responsible for approving or rejecting the connections that are created from those private endpoints.
 
-## [Portal](#tab/portal-approve-private-endpoint-connections)
+## [Portal](#tab/portal-reject-private-endpoint-connections)
 
 Using the [Azure portal](https://portal.azure.com/):
 
@@ -50,34 +50,34 @@ Using the [Azure portal](https://portal.azure.com/):
 
 5. In the resource menu, select **Networking**.
 
-    :::image type="content" source="./media/how-to-networking/configure-public-access-networking-disabled-pending-private-endpoint.png" alt-text="Screenshot showing the Networking page." lightbox="./media/how-to-networking/configure-public-access-networking-disabled-pending-private-endpoint.png":::
+    :::image type="content" source="./media/how-to-networking/configure-public-access-networking-disabled-external-approved-private-endpoint.png" alt-text="Screenshot showing the Networking page." lightbox="./media/how-to-networking/configure-public-access-networking-disabled-external-approved-private-endpoint.png":::
 
-6. Select the private endpoint connection whose state is **Pending**, and that you want to approve.
+6. Select the private endpoint connection whose state is **Pending** or **Approved**, and that you want to reject.
 
-    :::image type="content" source="./media/how-to-networking/configure-public-access-networking-disabled-pending-private-endpoint-select.png" alt-text="Screenshot showing how to begin approving an existing private endpoint connection with Pending state." lightbox="./media/how-to-networking/configure-public-access-networking-disabled-pending-private-endpoint-select.png":::
+    :::image type="content" source="./media/how-to-networking/configure-public-access-networking-disabled-external-approved-private-endpoint-select.png" alt-text="Screenshot showing how to begin rejecting an existing private endpoint connection with Approved state." lightbox="./media/how-to-networking/configure-public-access-networking-disabled-external-approved-private-endpoint-select.png":::
 
-7. Select **Approve** to trigger the approval of the private endpoint connection.
+7. Select **Reject** to trigger the rejection of the private endpoint connection.
 
-    :::image type="content" source="./media/how-to-networking/configure-public-access-networking-disabled-pending-private-endpoint-approve.png" alt-text="Screenshot showing the Approve button to trigger the approval of an existing private endpoint connection." lightbox="./media/how-to-networking/configure-public-access-networking-disabled-pending-private-endpoint-approve.png":::
+    :::image type="content" source="./media/how-to-networking/configure-public-access-networking-disabled-external-approved-private-endpoint-reject.png" alt-text="Screenshot showing the Reject button to trigger the rejection of an existing private endpoint connection." lightbox="./media/how-to-networking/configure-public-access-networking-disabled-external-approved-private-endpoint-reject.png":::
 
-8. If you consider it necessary, in the **Description** box of the **Approve** dialog, type the reason why you're deciding to approve this private endpoint connection.
+8. If you consider it necessary, in the **Description** box of the **Reject** dialog, type the reason why you're deciding to reject this private endpoint connection.
 
-    :::image type="content" source="./media/how-to-networking/configure-public-access-networking-disabled-pending-private-endpoint-approve-confirm.png" alt-text="Screenshot showing the Approve dialog to provide reason why the request is approved." lightbox="./media/how-to-networking/configure-public-access-networking-disabled-pending-private-endpoint-approve-confirm.png":::
+    :::image type="content" source="./media/how-to-networking/configure-public-access-networking-disabled-external-approved-private-endpoint-reject-confirm.png" alt-text="Screenshot showing the Reject dialog to provide reason why the request is rejected." lightbox="./media/how-to-networking/configure-public-access-networking-disabled-external-approved-private-endpoint-reject-confirm.png":::
 
-9. A notification informs you that the private endpoint connection is being approved.
+9. A notification informs you that the private endpoint connection is being rejected.
 
-    :::image type="content" source="./media/how-to-networking/configure-public-access-networking-disabled-pending-private-endpoint-approving-notification.png" alt-text="Screenshot showing the notification informing that it's approving the private endpoint connection." lightbox="./media/how-to-networking/configure-public-access-networking-disabled-pending-private-endpoint-approving-notification.png":::
+    :::image type="content" source="./media/how-to-networking/configure-public-access-networking-disabled-pending-private-endpoint-rejecting-notification.png" alt-text="Screenshot showing the notification informing that its rejecting the private endpoint connection." lightbox="./media/how-to-networking/configure-public-access-networking-disabled-pending-private-endpoint-rejecting-notification.png":::
 
-8. When the operation completes, a notification informs you that the private endpoint connection was successfully approved.
+8. When the operation completes, a notification informs you that the private endpoint connection was successfully rejected.
 
-    :::image type="content" source="./media/how-to-networking/configure-public-access-networking-disabled-pending-private-endpoint-approved-notification.png" alt-text="Screenshot showing the notification informing that private endpoint connection is approved." lightbox="./media/how-to-networking/configure-public-access-networking-disabled-pending-private-endpoint-approved-notification.png":::
+    :::image type="content" source="./media/how-to-networking/configure-public-access-networking-disabled-pending-private-endpoint-rejected-notification.png" alt-text="Screenshot showing the notification informing that private endpoint connection is rejected." lightbox="./media/how-to-networking/configure-public-access-networking-disabled-pending-private-endpoint-rejected-notification.png":::
 
-## [CLI](#tab/cli-approve-private-endpoint-connection)
+## [CLI](#tab/cli-rejected-private-endpoint-connection)
 
-You can approve one private endpoint connection that is in pending state to a server via the [az network private-endpoint-connection approve](/cli/azure/network/private-endpoint-connection#az-network-private-endpoint-connection-approve) command.
+You can reject one private endpoint connection that is in pending state to a server via the [az network private-endpoint-connection reject](/cli/azure/network/private-endpoint-connection#az-network-private-endpoint-connection-reject) command.
 
 ```azurecli-interactive
-az network private-endpoint-connection approve --description <description> --resource-group <resource_group> --resource-name <server> --type Microsoft.DBforPostgreSQL/flexibleServers --name <connection>
+az network private-endpoint-connection reject --description <description> --resource-group <resource_group> --resource-name <server> --type Microsoft.DBforPostgreSQL/flexibleServers --name <connection>
 ```
 
 ---

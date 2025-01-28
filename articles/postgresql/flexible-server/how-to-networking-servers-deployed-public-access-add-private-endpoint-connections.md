@@ -1,6 +1,6 @@
 ---
 title: Add private endpoint connections
-description: This article describes how to add endpoint connections to an Azure Database for PostgreSQL flexible server.
+description: This article describes how to add private endpoint connections to an Azure Database for PostgreSQL flexible server.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
@@ -8,7 +8,7 @@ ms.date: 01/26/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: how-to
-#customer intent: As a user, I want to learn how to add endpoint connections to an Azure Database for PostgreSQL flexible server.
+#customer intent: As a user, I want to learn how to add private endpoint connections to an Azure Database for PostgreSQL flexible server.
 ---
 
 # Add private endpoint connections
