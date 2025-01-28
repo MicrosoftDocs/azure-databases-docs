@@ -11,7 +11,7 @@ ms.topic: how-to
 #customer intent: As a user, I want to learn how to add endpoint connections to an Azure Database for PostgreSQL flexible server.
 ---
 
-# Add private endpoints
+# Add private endpoint connections
 
 Azure Database for PostgreSQL - Flexible Server is an Azure Private Link service. Because of that, you can create private endpoints so that your client applications can connect privately and securely to your Azure Database for PostgreSQL flexible server.
 
