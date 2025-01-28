@@ -19,9 +19,12 @@ When you deploy your Azure Database for PostgreSQL flexible server, you can choo
 
 For more information about these options, see [Networking with public access (allowed IP addresses)](concepts-networking-public.md) and [Networking with private access (VNET integration)](concepts-networking-private.md).
 
-Depending on the networking mode you selected when you deployed your server, you can performn different operations.
+Depending on the networking mode you selected when you deployed your server, you can perform different operations. The following two sections cover the two available networking modes, and list the operations available in each of them.
 
-- Networking with public access (allowed IP addresses)
+## Networking with public access (allowed IP addresses)
+
+If your server was deployed with **Networking with public access (allowed IP addresses)** mode, you can perform the following operations:
+
     - [Enable public access](how-to-networking-servers-deployed-public-access-enable-public-access.md).
     - [Disable public access](how-to-networking-servers-deployed-public-access-disable-public-access.md).
     - [Add firewall rules](how-to-networking-servers-deployed-public-access-add-firewall-rules.md).
@@ -31,7 +34,10 @@ Depending on the networking mode you selected when you deployed your server, you
     - [Approve private endpoint connections](how-to-networking-servers-deployed-public-access-approve-private-endpoint-connections.md).
     - [Reject private endpoint connections](how-to-networking-servers-deployed-public-access-reject-private-endpoint-connections.md).
 
-- Networking with private access (VNET Integration)
+## Networking with private access (VNET Integration)
+
+If your server was deployed with **Networking with private access (VNET Integration)** mode, you can perform the following operations:
+
     - TODO.
     - TODO.
     - TODO.
