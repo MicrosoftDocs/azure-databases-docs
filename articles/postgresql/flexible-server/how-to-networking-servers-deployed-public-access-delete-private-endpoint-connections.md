@@ -42,93 +42,38 @@ Using the [Azure portal](https://portal.azure.com/):
 
 5. In the resource menu, select **Networking**.
 
-    :::image type="content" source="./media/how-to-networking/configure-public-access-networking-disabled.png" alt-text="Screenshot showing the Networking page." lightbox="./media/how-to-networking/configure-public-access-networking-disabled.png":::
+    :::image type="content" source="./media/how-to-networking/configure-public-access-networking-disabled-approved-private-endpoint.png" alt-text="Screenshot showing the Networking page." lightbox="./media/how-to-networking/configure-public-access-networking-disabled-approved-private-endpoint.png":::
 
-6. If you have the required permissions to deploy a private endpoint, you can create it by selecting **Add private endpoint**.
+6. Select the private endpoint connection that you want to delete.
 
-    :::image type="content" source="./media/how-to-networking/add-private-endpoint-connection.png" alt-text="Screenshot showing how to begin adding a new private endpoint." lightbox="./media/how-to-networking/add-private-endpoint-connection.png":::
+    :::image type="content" source="./media/how-to-networking/configure-public-access-networking-disabled-approved-private-endpoint-select.png" alt-text="Screenshot showing how to begin deleting an existing private endpoint." lightbox="./media/how-to-networking/configure-public-access-networking-disabled-approved-private-endpoint-select.png":::
 
-> [!NOTE]
-> To learn about the necessary permissions to deploy a private endpoint, see [Azure RBAC permissions for Azure Private Link](/azure/private-link/rbac-permissions).
+7. Select **Delete** to trigger the deletion of the private endpoint connection.
 
-7. In the **Basics** page, fill all the details required. Then, select **Next: Resource**.
+    :::image type="content" source="./media/how-to-networking/configure-public-access-networking-disabled-approved-private-endpoint-delete.png" alt-text="Screenshot showing the Delete button to trigger the deletion of an existing private endpoint." lightbox="./media/how-to-networking/configure-public-access-networking-disabled-approved-private-endpoint-delete.png":::
 
-    :::image type="content" source="./media/how-to-networking/create-private-endpoint-basics.png" alt-text="Screenshot showing the Basics page of Create a private endpoint." lightbox="./media/how-to-networking/create-private-endpoint-basics.png":::
+8. A notification informs you that the private endpoint connection is being deleted.
 
-8. Use the following table to understand the meaning of the different fields available in the **Basics** page, and as guidance to fill the page:
+    :::image type="content" source="./media/how-to-networking/configure-public-access-networking-disabled-approved-private-endpoint-deleting-notification.png" alt-text="Screenshot showing the notification informing that private endpoint connection is deleting." lightbox="./media/how-to-networking/configure-public-access-networking-disabled-approved-private-endpoint-deleting-notification.png":::
 
-    | Setting | Suggested value | Description |
-    | --- | --- | --- |
-    | **Subscription** | Select the name of the [subscription](/microsoft-365/enterprise/subscriptions-licenses-accounts-and-tenants-for-microsoft-cloud-offerings#subscriptions) in which you want to create the resource. It automatically selects the subscription in which your server is deployed. | A subscription is an agreement with Microsoft to use one or more Microsoft cloud platforms or services, for which charges accrue based on either a per-user license fee or on cloud-based resource consumption. If you have multiple subscriptions, choose the subscription in which you'd like to be billed for the resource. |
-    | **Resource group** | The [resource group](/azure/azure-resource-manager/management/manage-resource-groups-portal#what-is-a-resource-group) in the selected subscription, in which you want to create the private endpoint. It can be an existing resource group, or you can select **Create new**, and provide a name in that subscription which is unique among the existing resource group names. It automatically selects the resource group in which your server is deployed. | A resource group is a container that holds related resources for an Azure solution. The resource group can include all the resources for the solution, or only those resources that you want to manage as a group. You decide how you want to allocate resources to resource groups based on what makes the most sense for your organization. Generally, add resources that share the same lifecycle to the same resource group so you can easily deploy, update, and delete them as a group. |
-    | **Name** | The name that you want to assign to the private endpoint. | A unique name that identifies the private endpoint through which you could connect to your Azure Database for PostgreSQL flexible server. |
-    | **Network Interface Name** | The name that you want to assign to the network interface associated to the private endpoint. | A unique name that identifies the network interface associated to the private endpoint. |
-    | **Region** | The name of one of the [regions in which you can create private endpoints for Azure Database for PostgreSQL - Flexible Server](/azure/private-link/availability#databases). | The region you select must match that of the virtual network in which you plan to deploy the private endpoint. |
+8. When the operation completes, a notification informs you that the private endpoint connection was successfully deleted.
 
+    :::image type="content" source="./media/how-to-networking/configure-public-access-networking-disabled-approved-private-endpoint-deleted-notification.png" alt-text="Screenshot showing the notification informing that private endpoint connection is deleting." lightbox="./media/how-to-networking/configure-public-access-networking-disabled-approved-private-endpoint-deleted-notification.png":::
 
-9. In the **Resource** page, fill all the details required. Then, select **Next: Virtual Network**.
+> [!IMPORTANT]
+> The previous procedure doesn't delete the private endpoint, but only the connection established between that private endpoint and your instance of Azure Database for PostgreSQL flexible server. To learn how to delete the private endpoint, see [Manage Azure private endpoints](/azure/private-link/manage-private-endpoint).
 
-    :::image type="content" source="./media/how-to-networking/create-private-endpoint-resource.png" alt-text="Screenshot showing the Resource page of Create a private endpoint." lightbox="./media/how-to-networking/create-private-endpoint-resource.png":::
-
-10. Use the following table to understand the meaning of the different fields available in the **Resource** page, and as guidance to fill the page:
-
-    | Setting | Suggested value | Description |
-    | --- | --- | --- |
-    | **Resource type** | Automatically set to `Microsoft.DBforPostgreSQL/flexibleServers` | This value is automatically chosen for you, and corresponds to the type of resource that an Azure Database for PostgreSQL flexible server is, to the eyes of Azure Private Link. |
-    | **Resource** | Automatically set to the name of the Azure Database for PostgreSQL flexible server for which you're creating the private endpoint. | The name of the resource to which the private endpoint connects to. |
-    | **Target sub-resource** | Automatically set to `postgresqlServer`. | The type of subresource for the resource selected, that your private endpoint is able to access. |
-
-11. In the **Virtual Network** page, fill all the details required. Then, select **Next: DNS**.
-
-    :::image type="content" source="./media/how-to-networking/create-private-endpoint-virtual-network.png" alt-text="Screenshot showing the Virtual Network page of Create a private endpoint." lightbox="./media/how-to-networking/create-private-endpoint-virtual-network.png":::
-
-12. Use the following table to understand the meaning of the different fields available in the **Virtual Network** page, and as guidance to fill the page:
-
-    | Setting | Suggested value | Description |
-    | --- | --- | --- |
-    | **Virtual network** | Automatically set to the first (sorted in alphabetical order) virtual network available in the subscription and region selected. | Only virtual networks on which you have permissions, in the currently selected subscription and region, are listed. |
-    | **Subnet** | Automatically set to the name of the Azure Database for PostgreSQL flexible server for which you're creating the private endpoint. | Only subnets in the currently selected virtual network are listed. |
-    | **Network policy for private endpoints** | By default, network policies are disabled for a subnet in a virtual network. You can enable network policies either for network security groups only, for user-defined routes only, or for both. | To use network policies like user-defined routes and network security group support, network policy support must be enabled for the subnet. This setting only applies to private endpoints in the subnet and affects all private endpoints in the subnet. For other resources in the subnet, access is controlled based on security rules in the network security group. For more information, see [Manage network policies for private endpoints](/azure/private-link/disable-private-endpoint-network-policy). |
-    | **Private IP configuration** | Automatically set to dynamically allocate one of the available IP addresses in the range assigned to the selected subnet. | This is the IP address assigned to the network interface associated to the private endpoint. It can be dynamically allocated from the range assigned to the selected subnet, or you can decide which specific address you want to assign to it. After the private endpoint is created, you can't change its IP address, regardless of which of the two allocation modes you select during creation. |
-    | **Application security group** | No application security group is assigned by default. You can choose an existing one, or you can create one and assign it. | Application security groups enable you to configure network security as a natural extension of an application's structure, allowing you to group virtual machines and define network security policies based on those groups. You can reuse your security policy at scale without manual maintenance of explicit IP addresses. The platform handles the complexity of explicit IP addresses and multiple rule sets, allowing you to focus on your business logic. For more information, see [Application security groups](/azure/virtual-network/application-security-groups). |
-
-13. In the **DNS** page, fill all the details required. Then, select **Next: Tags**.
-
-    :::image type="content" source="./media/how-to-networking/create-private-endpoint-dns.png" alt-text="Screenshot showing the DNS page of Create a private endpoint." lightbox="./media/how-to-networking/create-private-endpoint-dns.png":::
-
-14. Use the following table to understand the meaning of the different fields available in the **DNS** page, and as guidance to fill the page:
-
-    | Setting | Suggested value | Description |
-    | --- | --- | --- |
-    | **Integrate with private DNS zone** | Enabled by default. | Select **Yes** if you want your private endpoint to be integrated with an Azure private DNS zone, or **No** if you want to use your own DNS servers, or if you want to resolve the name of the endpoint by using host files in the machines from which you want to connect through the private endpoint. For more information, see [Private endpoint DNS configuration](/azure/private-link/private-endpoint-overview#dns-configuration). If you configure private DNS zone integration, the private DNS zone is automatically linked to the virtual network in which you create the private endpoint. |
-    | **Configuration name** | Automatically set for you to `privatelink-postgres-database-azure-com`. | The name assigned to DNS configuration which is associated to the private DNS zone. |
-    | **Subscription** | Select the name of the [subscription](/microsoft-365/enterprise/subscriptions-licenses-accounts-and-tenants-for-microsoft-cloud-offerings#subscriptions) in which you want to create the private DNS zone. It automatically selects the subscription in which your server is deployed. | A subscription is an agreement with Microsoft to use one or more Microsoft cloud platforms or services, for which charges accrue based on either a per-user license fee or on cloud-based resource consumption. If you have multiple subscriptions, choose the subscription in which you'd like to be billed for the resource. |
-    | **Resource group** | The [resource group](/azure/azure-resource-manager/management/manage-resource-groups-portal#what-is-a-resource-group) in the selected subscription, in which you want to create the private DNS zone. It must be an existing resource group. It automatically selects the resource group in which your server is deployed. | A resource group is a container that holds related resources for an Azure solution. The resource group can include all the resources for the solution, or only those resources that you want to manage as a group. You decide how you want to allocate resources to resource groups based on what makes the most sense for your organization. Generally, add resources that share the same lifecycle to the same resource group so you can easily deploy, update, and delete them as a group. |
-    | **Private DNS zone** | Automatically set for you to `privatelink.postgres.database.azure.com`. | This is the name assigned to the private DNS zone resource. |
-
-15. In the **Tags** page, fill all the details required. Then, select **Next: Review + create**.
-
-    :::image type="content" source="./media/how-to-networking/create-private-endpoint-tags.png" alt-text="Screenshot showing the Tags page of Create a private endpoint." lightbox="./media/how-to-networking/create-private-endpoint-tags.png":::
-
-16. Use the following table to understand the meaning of the different fields available in the **Tags** page, and as guidance to fill the page:
-
-    | Setting | Suggested value | Description |
-    | --- | --- | --- |
-    | **Name** | Leave empty. | Name of the tag that you want to assign to your private endpoint and private DNS zone (if you selected private DNS zone integration in the **DNS** page). |
-    | **Value** | Leave empty. | Value that you want to assign to the tag with the given name, and that you want to assign to your private endpoint and private DNS zone (if you selected private DNS zone integration in the **DNS** page). |
-    | **Resource** | Leave by default. | You can select to which resources you want the given tag assigned. It can be the private endpoint, the private DNS zone (if you selected private DNS zone integration in the **DNS** page), or both. |
-
-17. In the **Review + create** page, make sure that everything is configured as you wanted to. Then, select **Create**.
-
-    :::image type="content" source="./media/how-to-networking/create-private-endpoint-review-create.png" alt-text="Screenshot showing the Review + create page of Create a private endpoint." lightbox="./media/how-to-networking/create-private-endpoint-review-create.png":::
-
-18. A deployment is initiated, and you see a notification when the deployment completes. 
-
-    :::image type="content" source="./media/how-to-networking/create-private-endpoint-deployment-succeeded.png" alt-text="Screenshot showing the successful deployment of the private endpoint." lightbox="./media/how-to-networking/create-private-endpoint-deployment-succeeded.png":::
 
 ## [CLI](#tab/cli-delete-private-endpoint-connection)
 
-ddd
+You can delete one private endpoint connection to a server via the [az network private-endpoint-connection delete](/cli/azure/network/private-endpoint-connection#az-network-private-endpoint-connection-delete) command.
+
+```azurecli-interactive
+az network private-endpoint-connection delete --resource-group <resource_group> --resource-name <server> --type Microsoft.DBforPostgreSQL/flexibleServers --name <connection> --yes
+```
+
+> [!IMPORTANT]
+> The previous procedure doesn't delete the private endpoint, but only the connection established between that private endpoint and your instance of Azure Database for PostgreSQL flexible server. To learn how to delete the private endpoint, see [Manage Azure private endpoints](/azure/private-link/manage-private-endpoint).
 
 ---
 
