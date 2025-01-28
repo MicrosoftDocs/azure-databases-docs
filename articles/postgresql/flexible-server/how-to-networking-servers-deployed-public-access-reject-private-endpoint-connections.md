@@ -89,6 +89,6 @@ az network private-endpoint-connection reject --description <description> --reso
 - [Disable public access](how-to-networking-servers-deployed-public-access-disable-public-access.md).
 - [Add firewall rules](how-to-networking-servers-deployed-public-access-add-firewall-rules.md).
 - [Delete firewall rules](how-to-networking-servers-deployed-public-access-delete-firewall-rules.md).
+- [Add private endpoint connections](how-to-networking-servers-deployed-public-access-add-private-endpoint-connections.md).
 - [Delete private endpoint connections](how-to-networking-servers-deployed-public-access-delete-private-endpoint-connections.md).
 - [Approve private endpoint connections](how-to-networking-servers-deployed-public-access-approve-private-endpoint-connections.md).
-- [Reject private endpoint connections](how-to-networking-servers-deployed-public-access-reject-private-endpoint-connections.md).
