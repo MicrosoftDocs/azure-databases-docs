@@ -87,7 +87,7 @@ Message: An unexpected error occured while processing the request. Tracking ID: 
 ```
 
 > [!NOTE]
-> Firewall rule names can only contain `0`-`9`, `a`-`z`, `A`-`Z`, `-` and `_`. Additionally, the name of the firewall rule must be at least 3 characters, and no more than 128 characters in length.
+> Firewall rule names can only contain `0`-`9`, `a`-`z`, `A`-`Z`, `-`, and `_`. Additionally, the name of the firewall rule must be at least 3 characters, and no more than 128 characters in length.
 
 If you attempt to delete a firewall rule with an invalid name, you receive an error like this:
 

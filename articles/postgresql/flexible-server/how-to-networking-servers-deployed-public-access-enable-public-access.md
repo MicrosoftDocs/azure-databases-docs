@@ -13,7 +13,11 @@ ms.topic: how-to
 
 # Enable public access
  
-If you enable public access, connectivity to the server is also possible via private endpoints. With public access enabled, you can also configure firewall rules to allow connections originating from specific IP addresses, or from any Azure service. When you enable public access, any firewall rules that already existed last time the server was configured with enabled public access, and that weren't explicitly deleted, are enforced again.
+If you enable public access, connectivity to the server is also possible via private endpoints.
+
+With public access enabled, you can also configure firewall rules to allow connections originating from specific IP addresses, or from any Azure service.
+
+When you enable public access, any firewall rules that already existed last time the server was configured with enabled public access are enforced again.
 
 ## [Portal](#tab/portal-enable-public-access)
 
@@ -79,7 +83,7 @@ Code:
 Message: Server <server> is busy with other operations. Please try later
 ```
 
-If you attempt to enable public access on a server which wasn't deployed with networking mode public access (allowed IP addresses), but was deployed with networking mode set to private access (VNET Integration), you don't receive an error. The request to change that configuration is ignored.
+If you attempt to enable public access on a server which wasn't deployed with networking mode public access (allowed IP addresses), you don't receive an error. The request to change that configuration is ignored.
 
 To determine if a server has public access enabled or disabled, run the following command:
 

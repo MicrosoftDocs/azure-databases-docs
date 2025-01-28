@@ -13,7 +13,13 @@ ms.topic: how-to
 
 # Disable public access
 
-If you disable public access, connectivity to the server is only possible via private endpoints. You must configure those private endpoints so that hosts that can route traffic to the Azure virtual network in which you inject the private endpoints, can access your Azure Database for PostgreSQL flexible server. When public access is disabled, any firewall rules you created while public access was enabled, aren't enforced. Also, any modifications made to the firewall rules are discarded.
+If you disable public access, connectivity to the server is only possible via private endpoints.
+
+You must configure those private endpoints so that hosts that can route traffic to the Azure virtual network in which you inject the private endpoints, can access your Azure Database for PostgreSQL flexible server.
+
+When public access is disabled, any firewall rules you created while public access was enabled, aren't enforced.
+
+Also, any modifications made to the firewall rules are discarded.
 
 ## [Portal](#tab/portal-disable-public-access)
 
@@ -79,7 +85,7 @@ Code:
 Message: Server <server> is busy with other operations. Please try later
 ```
 
-If you attempt to disable public access on a server which wasn't deployed with networking mode public access (allowed IP addresses), but was deployed with networking mode set to private access (VNET Integration), you don't receive an error. The request to change that configuration is ignored.
+If you attempt to disable public access on a server which wasn't deployed with networking mode public access (allowed IP addresses), you don't receive an error. The request to change that configuration is ignored.
 
 To determine if a server has public access disabled or enabled, run the following command:
 

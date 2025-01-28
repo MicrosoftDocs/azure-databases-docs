@@ -44,7 +44,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="./media/how-to-networking/add-firewall-rule-current-client.png" alt-text="Screenshot showing how to add a firewall rule to allow connections from the IP address of the computer from which you're navigating the Azure portal." lightbox="./media/how-to-networking/add-firewall-rule-current-client.png":::
 
-7. A new firewall rule is added to the grid. Its **Firewall rule name** is automatically generated, but you can change it to any valid name of your preference. **Start IP address** and **End IP address** are set to the public IP address from which you're connnected to the Azure portal.
+7. A new firewall rule is added to the grid. Its **Firewall rule name** is automatically generated, but you can change it to any valid name of your preference. **Start IP address** and **End IP address** are set to the public IP address from which you're connected to the Azure portal.
 
     :::image type="content" source="./media/how-to-networking/added-firewall-rule-current-client.png" alt-text="Screenshot showing a new rule added to allow connections from the IP address of the computer from which you're navigating the Azure portal." lightbox="./media/how-to-networking/added-firewall-rule-current-client.png":::
 
@@ -95,7 +95,7 @@ Message: An unexpected error occured while processing the request. Tracking ID: 
 ```
 
 > [!NOTE]
-> Firewall rule names can only contain `0`-`9`, `a`-`z`, `A`-`Z`, `-` and `_`. Additionally, the name of the firewall rule must be at least 3 characters, and no more than 128 characters in length.
+> Firewall rule names can only contain `0`-`9`, `a`-`z`, `A`-`Z`, `-`, and `_`. Additionally, the name of the firewall rule must be at least 3 characters, and no more than 128 characters in length.
 
 If you attempt to add a firewall rule with an invalid name, you receive an error like this:
 
@@ -124,7 +124,7 @@ Firewall rule operations cannot be requested for a private access enabled server
 ```
 
 > [!NOTE]
-> Although not recommended, it's supported to create multiple firewall rules with different names and either overlapping IP ranges, or even matching start and end IP addresses.
+> Although not recommended, you can create multiple firewall rules with different names and either overlapping IP ranges, or even matching start and end IP addresses.
 
 To allow public access, from any Azure service within Azure, to your server, you must create a firewall rule whose start and end IP addresses are both set to `0.0.0.0`.
 
