@@ -96,15 +96,15 @@ The [index.ts](https://github.com/Azure/azure-sdk-for-js/blob/main/sdk/cosmosdb/
 
 For more information about server-side programming, see [Azure Cosmos DB server-side programming: Stored procedures, database triggers, and UDFs](stored-procedures-triggers-udfs.md).
 
-## Azure Identity(AAD) Auth Examples
+## Microsoft Entra Auth Examples
 
-The [AADAuth.ts](https://github.com/Azure/azure-sdk-for-js/blob/main/sdk/cosmosdb/cosmos/samples-dev/AADAuth.ts) file shows how to perform the following tasks.
+The [EntraAuth.ts](https://github.com/Azure/azure-sdk-for-js/blob/main/sdk/cosmosdb/cosmos/samples-dev/EntraAuth.ts) file shows how to perform the following tasks.
 
 | Task                                                                                                                                                                | API reference                                                                                             |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
-| [Create credential object from @azure/identity](https://github.com/Azure/azure-sdk-for-js/blob/main/sdk/cosmosdb/cosmos/samples-dev/AADAuth.ts#L23-L28)             | [API](/javascript/api/@azure/identity/usernamepasswordcredential#constructors)                            |
-| [Pass credentials to client object with key aadCredentials](https://github.com/Azure/azure-sdk-for-js/blob/main/sdk/cosmosdb/cosmos/samples-dev/AADAuth.ts#L29-L38) | [API](/javascript/api/@azure/cosmos/cosmosclientoptions#@azure-cosmos-cosmosclientoptions-aadcredentials) |
-| [Execute cosmos client with aad credentials](https://github.com/Azure/azure-sdk-for-js/blob/main/sdk/cosmosdb/cosmos/samples-dev/AADAuth.ts#L40-L52)                | [API](/javascript/api/@azure/cosmos/databases#readall-feedoptions-)                                       |
+| [Create credential object from @azure/identity](https://github.com/Azure/azure-sdk-for-js/blob/main/sdk/cosmosdb/cosmos/samples-dev/EntraAuth.ts#L23-L28)             | [API](/javascript/api/@azure/identity/usernamepasswordcredential#constructors)                            |
+| [Pass credentials to client object with key aadCredentials](https://github.com/Azure/azure-sdk-for-js/blob/main/sdk/cosmosdb/cosmos/samples-dev/EntraAuth.ts#L30-L38) | [API](/javascript/api/@azure/cosmos/cosmosclientoptions#@azure-cosmos-cosmosclientoptions-aadcredentials) |
+| [Execute cosmos client with aad credentials](https://github.com/Azure/azure-sdk-for-js/blob/main/sdk/cosmosdb/cosmos/samples-dev/EntraAuth.ts#L45-L52)                | [API](/javascript/api/@azure/cosmos/databases#readall-feedoptions-)                                       |
 
 ## Miscellaneous samples
 

@@ -167,7 +167,7 @@ When you create items that contain GeoJSON values, they're automatically indexed
 
 ```javascript
 var userProfileitem = {
-    "id":"cosmosdb",
+    "id": "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb",
     "location":{
         "type":"Point",
         "coordinates":[ -122.12, 47.66 ]
@@ -200,7 +200,7 @@ public class UserProfile
 await container.CreateItemAsync(
     new UserProfile
     {
-        id = "cosmosdb",
+        id = "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb",
         Location = new Point (-122.12, 47.66)
     }
 );

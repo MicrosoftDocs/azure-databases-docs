@@ -3,8 +3,8 @@ title: What's happening to Azure Database for PostgreSQL single server?
 description: The Azure Database for PostgreSQL single server service is being deprecated.
 author: markingmyname
 ms.author: maghan
-ms.reviewer: sunila
-ms.date: 03/30/2023
+ms.reviewer: guybo
+ms.date: 08/27/2024
 ms.service: azure-database-postgresql
 ms.subservice: single-server
 ms.topic: overview
@@ -19,7 +19,7 @@ ms.custom: single server deprecation announcement
 
 Azure Database for PostgreSQL – Single Server generally became available in 2018. Given customer feedback and new advancements in the computation, availability, scalability, and performance capabilities in the Azure database landscape, the Single Server offering needs to be retired and upgraded with a new architecture. Azure Database for PostgreSQL - Flexible Server is the next generation of the service and brings you the best of Azure open-source database platform.
 
-As part of this retirement, we no longer support creating new single server instances from the Azure portal beginning November 30, 2023. If you need to create single server instances to meet business continuity needs, you can continue to use Azure CLI until November 2024. However, as of March 2025, these methods will no longer be used.
+As part of this retirement, we no longer support creating new single server instances from the Azure portal beginning November 30, 2023. If you need to create single server instances to meet business continuity needs, you can continue to use Azure CLI until November 2024.
 
 If you currently have an Azure Database for PostgreSQL - Single Server service hosting production servers, we're glad to inform you that you can migrate your Azure Database for PostgreSQL - Single Server to the Azure Database for PostgreSQL - Flexible Server.
 

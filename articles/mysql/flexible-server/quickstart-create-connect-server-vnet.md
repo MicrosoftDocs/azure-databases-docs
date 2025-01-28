@@ -18,7 +18,7 @@ ms.custom:
 
 [!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
-Azure Database for MySQL flexible server is a managed service that runs, manages, and scales highly available MySQL servers in the cloud. This quickstart shows you how to create an Azure Database for MySQL flexible server instance in a virtual network by using the Azure portal.
+Azure Database for MySQL Flexible Server is a managed service that runs, manages, and scales highly available MySQL servers in the cloud. This quickstart shows you how to create an Azure Database for MySQL Flexible Server instance in a virtual network by using the Azure portal.
 
 [!INCLUDE [flexible-server-free-trial-note](../includes/flexible-server-free-trial-note.md)]
 
@@ -26,11 +26,11 @@ Azure Database for MySQL flexible server is a managed service that runs, manages
 
 Sign in to the [Azure portal](https://portal.azure.com). Enter your credentials to sign in to the portal. The default view is your service dashboard.
 
-## Create an Azure Database for MySQL flexible server instance
+## Create an Azure Database for MySQL Flexible Server instance
 
-You create an Azure Database for MySQL flexible server instance with a defined set of [compute and storage resources](./concepts-compute-storage.md). You create the server within an [Azure resource group](/azure/azure-resource-manager/management/overview).
+You create an Azure Database for MySQL Flexible Server instance with a defined set of [compute and storage resources](./concepts-compute-storage.md). You create the server within an [Azure resource group](/azure/azure-resource-manager/management/overview).
 
-Complete these steps to create an Azure Database for MySQL flexible server instance:
+Complete these steps to create an Azure Database for MySQL Flexible Server instance:
 
 1. Search for and select **Azure Database for MySQL servers** in the portal:
 
@@ -42,7 +42,7 @@ Complete these steps to create an Azure Database for MySQL flexible server insta
 
     > :::image type="content" source="./media/quickstart-create-connect-server-vnet/deployment-option.png" alt-text="Screenshot that shows the Flexible server option." lightbox="./media/quickstart-create-connect-server-vnet/deployment-option.png":::
 
-1. On the **Basics** tab, enter the **subscription**, **resource group** , **region**, **administrator username** and **administrator password**.  With the default values, this provisions an Azure Database for MySQL flexible server instance of version 5.7 with Burstable Sku using 1 vCore, 2 GiB Memory, and 32 GiB storage. The backup retention is seven days. You can change the configuration.
+1. On the **Basics** tab, enter the **subscription**, **resource group** , **region**, **administrator username** and **administrator password**.  With the default values, this provisions an Azure Database for MySQL Flexible Server instance of version 5.7 with Burstable Sku using 1 vCore, 2 GiB Memory, and 32 GiB storage. The backup retention is seven days. You can change the configuration.
 
     > :::image type="content" source="./media/quickstart-create-connect-server-vnet/mysql-flexible-server-create-portal.png" alt-text="Screenshot that shows the Basics tab of the Flexible server page." lightbox="./media/quickstart-create-connect-server-vnet/mysql-flexible-server-create-portal.png":::
 
@@ -56,7 +56,7 @@ Complete these steps to create an Azure Database for MySQL flexible server insta
 1. Select **OK** once you've provided the virtual network name and subnet information.
     > :::image type="content" source="./media/quickstart-create-connect-server-vnet/show-server-vnet-information.png" alt-text="Review VNET information":::
 
-1. Select **Review + create** to review your Azure Database for MySQL flexible server configuration.
+1. Select **Review + create** to review your Azure Database for MySQL Flexible Server configuration.
 
 1. Select **Create** to provision the server. Provisioning can take a few minutes.
 
@@ -92,9 +92,9 @@ Since the server is in a virtual network, you can only connect to the server fro
 
    > :::image type="content" source="~/reusable-content/ce-skilling/azure/media/virtual-machines/inbound-port-rules.png" alt-text="Screenshot of the inbound port rules section where you select what ports inbound connections are allowed on." lightbox="~/reusable-content/ce-skilling/azure/media/virtual-machines/inbound-port-rules.png":::
 
-1. Select **Networking** page to configure the virtual network. For the virtual network, choose the **vnetenvironment1** created for the Azure Database for MySQL flexible server instance.
+1. Select **Networking** page to configure the virtual network. For the virtual network, choose the **vnetenvironment1** created for the Azure Database for MySQL Flexible Server instance.
 
-   > :::image type="content" source="./media/quickstart-create-connect-server-vnet/vm-vnet-configuration.png" alt-text="Screenshot of the select existing virtual network of the Azure Database for MySQL flexible server instance." lightbox="./media/quickstart-create-connect-server-vnet/vm-vnet-configuration.png":::
+   > :::image type="content" source="./media/quickstart-create-connect-server-vnet/vm-vnet-configuration.png" alt-text="Screenshot of the select existing virtual network of the Azure Database for MySQL Flexible Server instance." lightbox="./media/quickstart-create-connect-server-vnet/vm-vnet-configuration.png":::
 
 1. Select **Manage subnet configuration** to create a new subnet for the server.
 
@@ -153,7 +153,7 @@ mysql -h mydemoserver.mysql.database.azure.com -u mydemouser -p --ssl-mode=REQUI
 
 ## Clean up resources
 
-You've created an Azure Database for MySQL flexible server instance in a resource group. If you don't expect to need these resources in the future, you can delete them by deleting the resource group or the Azure Database for MySQL flexible server instance. To delete the resource group, complete these steps:
+You've created an Azure Database for MySQL Flexible Server instance in a resource group. If you don't expect to need these resources in the future, you can delete them by deleting the resource group or the Azure Database for MySQL Flexible Server instance. To delete the resource group, complete these steps:
 
 1. Search for and select **Resource groups**in the Azure portal.
 1. In the list of resource groups, select the name of your resource group.

@@ -9,7 +9,7 @@ ms.subservice: mongodb-vcore
 ms.custom:
   - build-2024
 ms.topic: how-to
-ms.date: 05/20/2024
+ms.date: 08/26/2024
 #Customer Intent: As a database adminstrator, I want to configure cross-region replication, so that I can have disaster recovery plans in the event of a regional outage.
 ---
 
@@ -99,17 +99,8 @@ Follow these steps to [get the connection strings for different cases](./cross-r
 
 Connection strings are preserved after [the cluster replica promotion](./cross-region-replication.md#replica-cluster-promotion). You can continue to use either string for read operations. You need to change connection string to point to the promoted replica cluster to continue writes to the database after promotion is completed.
 
-## Cross-region replication limits and limitations
-The following section describes various limits in the cross-region replication feature.
-
-- Cross-region replication isn't supported in [the Free tier](./free-tier.md).
-- [Burstable compute](./burstable-tier.md) isn't supported on replica clusters.
-- Cross-region replication is supported only on clusters with one shard.
-- Compute, storage, and shard count configuration is the same on the primary and replica clusters and can't be changed.
-- High availability isn't supported on replica clusters.
-- Replica of a replica cluster isn't supported.
-
 ## Related content
 
 - [Learn more about cross-region replication in Azure Cosmos DB for MongoDB vCore](./cross-region-replication.md)
+- [See cross-region replication preview limits and limitations](./limits.md#cross-region-replication-preview)
 - [Learn about reliability in Azure Cosmos DB for MongoDB vCore](/azure/reliability/reliability-cosmos-mongodb)

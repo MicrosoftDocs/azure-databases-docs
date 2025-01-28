@@ -2,7 +2,7 @@
 author: akashraokm
 ms.author: akashrao
 ms.reviewer: maghan
-ms.date: 08/19/2024
+ms.date: 08/28/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
@@ -12,6 +12,7 @@ ms.topic: include
 | [address_standardizer](http://postgis.net/docs/manual-2.5/Address_Standardizer.html)         | Used to parse an address into constituent elements. Generally used to support geocoding address normalization step. | 3.3.3                     | 3.3.1                     | 3.2.3                     | 3.2.3                     | 3.2.3                     | 3.2.3|
 | [address_standardizer_data_us](http://postgis.net/docs/manual-2.5/Address_Standardizer.html) | Address Standardizer US dataset example                                                                             | 3.3.3                     | 3.3.1                     | 3.2.3                     | 3.2.3                     | 3.2.3                     | 3.2.3|
 | [amcheck](https://www.postgresql.org/docs/13/amcheck.html)                                   | Functions for verifying relation integrity                                                                          | 1.3                       | 1.3                       | 1.3                       | 1.2                       | 1.2                       | 1.1|
+| [anon](https://postgresql-anonymizer.readthedocs.io)                                         | Data anonymization tools                                                                                            | 1.3.2                     | 1.3.2                     | 1.3.2                     | 1.3.2                     | 1.3.2                     | 1.3.2|
 | [azure_ai](../generative-ai-azure-overview.md)                                               | Azure AI and ML Services integration for PostgreSQL                                                                 | 1.1.0                     | 1.1.0                     | 1.1.0                     | 1.1.0                     | 1.1.0                     | N/A|
 | [azure_local_ai](../azure-local-ai.md) (Preview)                                             | Local AI capabilities for PostgreSQL                                                                                | 0.1.0                     | 0.1.0                     | 0.1.0                     | 0.1.0                     | N/A                       | N/A|
 | [azure_storage](../concepts-storage-extension.md)                                            | Azure integration for PostgreSQL                                                                                    | 1.4 :heavy_check_mark:    | 1.4 :heavy_check_mark:    | 1.4 :heavy_check_mark:    | 1.4 :heavy_check_mark:    | 1.4 :heavy_check_mark:    | N/A|
