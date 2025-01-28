@@ -6,25 +6,11 @@
       href: array-query-elemmatch.md
     - name: $size
       href: array-query-size.md
-- name: Aggregation Pipeline
-  items:
-    - name: $addFields
-      href: aggregation-addFields.md 
-    - name: $collStats
-      href: aggregation-collStats.md
-    - name: $count
-      href: aggregation-count.md
-    - name: $skip
-      href: aggregation-skip.md
-    - name: $sort
-      href: aggregation-sort.md
-    - name: $sortByCount
-      href: aggregation-sortByCount.md
-    - name: $unset
-      href: aggregation-unset.md
-    - name: $unwind
-      href: aggregation-unwind.md
 - name: Projection
   items:
     - name: $elemMatch
       href: projection-elemmatch.md
+- name: Aggregation
+  href: aggregation/toc.yml
+- name: Query and Write
+  href: query-and-write/toc.yml

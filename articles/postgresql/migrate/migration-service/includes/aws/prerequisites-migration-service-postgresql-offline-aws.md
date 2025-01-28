@@ -1,10 +1,10 @@
 ---
-title: "Prerequisites using the migration service from AWS RDS PostgreSQL (offline)"
+title: "Prerequisites Using the Migration Service From AWS RDS PostgreSQL (Offline)"
 description: Providing the offline prerequisites for the migration service in Azure Database for PostgreSQL.
 author: apduvuri
 ms.author: adityaduvuri
 ms.reviewer: maghan
-ms.date: 06/19/2024
+ms.date: 01/24/2025
 ms.service: azure-database-postgresql
 ms.topic: include
 ---

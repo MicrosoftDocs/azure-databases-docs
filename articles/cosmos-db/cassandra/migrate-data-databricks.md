@@ -129,6 +129,5 @@ You might see a 429 error code or "request rate is large" error text even if you
 ## Next steps
 
 * [Provision throughput on containers and databases](../set-throughput.md)
-* [Partition key best practices](../partitioning-overview.md#choose-partitionkey)
 * [Estimate RU/s using the Azure Cosmos DB capacity planner](../estimate-ru-with-capacity-planner.md)
 * [Elastic Scale in Azure Cosmos DB for Apache Cassandra](scale-account-throughput.md)

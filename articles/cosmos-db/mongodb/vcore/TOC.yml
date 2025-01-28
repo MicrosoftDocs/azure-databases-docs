@@ -14,8 +14,6 @@
       href: quickstart-bicep.md
     - name: Create resources - Terraform
       href: quickstart-terraform.md
-    - name: Create cross-region replica - Azure portal
-      href: quickstart-cross-region-replica-portal.md
 - name: Tutorials
   items:
     - name: Build web applications
@@ -26,8 +24,6 @@
   items:
     - name: Free tier
       href: free-tier.md
-    - name: Burstable tier
-      href: burstable-tier.md
     - name: Multicloud Solution
       href: multi-cloud.md
     - name: Integrated vector database
@@ -38,18 +34,22 @@
           href: vector-search-ai.md
         - name: RAG with Langchain & OpenAI
           href: rag.md
-    - name: MongoDB feature support
-      href: compatibility.md
+    - name: MongoDB compatibility and feature support
+      href: compatibility-and-feature-support.md
     - name: Support for Geospatial Queries
       href: geospatial-support.md
-    - name: High availability (HA)
-      href: high-availability.md
-    - name: Cross-region replication
-      href: cross-region-replication.md
-    - name: Indexing
-      href: indexing.md
-    - name: Reliability
-      href: /azure/reliability/reliability-cosmos-mongodb?toc=/azure/cosmos-db/mongodb/vcore/toc.json
+    - name: Availability and disaster recovery (DR)
+      items:
+        - name: High availability (HA)
+          href: high-availability.md
+        - name: Cross-region replication
+          href: cross-region-replication.md
+        - name: HA and DR - Behind the scenes
+          href: availability-disaster-recovery-under-hood.md
+        - name: Best practices for HA and DR
+          href: high-availability-replication-best-practices.md
+        - name: Reliability
+          href: /azure/reliability/reliability-cosmos-mongodb?toc=/azure/cosmos-db/mongodb/vcore/toc.json
     - name: Scalability
       items: 
        - name: Scalability overview
@@ -58,6 +58,16 @@
          href: partitioning.md
        - name: Compute and storage
          href: compute-storage.md 
+       - name: Autoscale
+         href: autoscale.md
+       - name: Burstable tier
+         href: burstable-tier.md
+    - name: Indexing
+      href: indexing.md
+    - name: Change Stream
+      href: change-streams.md
+    - name: Data API
+      href: data-api.md
     - name: Migration options
       href: migration-options.md
     - name: Service limits
@@ -83,7 +93,9 @@
         - name: Connect using Studio 3T
           href: how-to-connect-studio-3t.md
         - name: Connect using MongoDB Shell
-          href: how-to-connect-mongo-shell.md      
+          href: how-to-connect-mongo-shell.md
+        - name: Connect using Visual Studio Code
+          href: ../../visual-studio-code-extension.md?pivots=api-mongodb      
     - name: Develop applications
       items:
         - name: Create transactions
@@ -102,26 +114,56 @@
           href: how-to-create-wildcard-indexes.md
         - name: Search and query text
           href: how-to-create-text-index.md
-    - name: Scale cluster
-      href: how-to-scale-cluster.md
-    - name: Upgrade cluster
-      href: how-to-upgrade-cluster.md
-    - name: Restore cluster
-      href: how-to-restore-cluster.md
-    - name: Manage replication
-      href: how-to-cluster-replica.md
+    - name: Manage cluster
+      items:
+      - name: Scale cluster
+        href: how-to-scale-cluster.md
+      - name: Upgrade cluster
+        href: how-to-upgrade-cluster.md
+      - name: Restore cluster
+        href: how-to-restore-cluster.md
+    - name: Replication
+      items:
+      - name: Manage replication
+        href: how-to-cluster-replica.md
+      - name: Create cross-region replica using Azure portal
+        href: how-to-cross-region-replica-portal.md
+      - name: Troubleshoot cross-region replication
+        href: troubleshoot-replication.md
     - name: Monitor
       items:
       - name: Monitor metrics
         href: monitor-metrics.md
+      - name: Create and manage alerts
+        href: how-to-manage-alerts.md
       - name: Monitor diagnostics logs
         href: how-to-monitor-diagnostics-logs.md
-    - name: Use Azure Private Link
-      href: how-to-private-link.md
+    - name: Security and data access
+      items:
+      - name: Manage private access
+        href: how-to-private-link.md
+      - name: Manage public access
+        href: how-to-public-access.md
+      - name: Create secondary users
+        href: secondary-users.md
 - name: Reference
   items:
+    - name: Azure CLI
+      href: /cli/azure/cosmosdb/mongocluster
+    - name: Java
+      href: /java/api/overview/azure/resourcemanager-mongocluster-readme
+    - name: .NET
+      href: /dotnet/api/azure.provisioning.cosmosdb.mongocluster
+    - name: Node.js
+      href: /javascript/api/overview/azure/mongo-cluster
+    - name: Python
+      href: /python/api/overview/azure/mongo-cluster
     - name: Commands
       href: commands/toc.yml
+    - name: Operators
+      href: operators/toc.yml
+    - name: MongoDB feature reference
+      href: compatibility.md
     - name: Release notes
       href: release-notes.md
     - name: Troubleshoot common issues

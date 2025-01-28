@@ -20,10 +20,10 @@ ms.devlang: azurecli
 
 Azure Database for PostgreSQL flexible server supports two types of mutually exclusive network connectivity methods to connect to your Azure Database for PostgreSQL flexible server instance. The two options are:
 
-* Public access (allowed IP addresses). That method can be further secured by using [Private Link](./concepts-networking-private-link.md) based networking with Azure Database for PostgreSQL flexible server in Preview. 
+* Public access (allowed IP addresses). That method can be further secured by using [Private Link](concepts-networking-private-link.md) based networking with Azure Database for PostgreSQL flexible server in Preview. 
 * Private access (VNet Integration)
 
-This article focuses on creation of an Azure Database for PostgreSQL flexible server instance with **Public access (allowed IP addresses)** using Azure CLI and provides an overview on Azure CLI commands you can use to create, update, delete, list, and show firewall rules after server creation. With *Public access (allowed IP addresses)*, the connections to the Azure Database for PostgreSQL flexible server instance are restricted to allowed IP addresses only. The client IP addresses need to be allowed in firewall rules. To learn more about it, refer to [Public access (allowed IP addresses)](./concepts-networking.md#public-access-allowed-ip-addresses). The firewall rules can be defined at the time of server creation (recommended) but can be added later as well.
+This article focuses on creation of an Azure Database for PostgreSQL flexible server instance with **Public access (allowed IP addresses)** using Azure CLI and provides an overview on Azure CLI commands you can use to create, update, delete, list, and show firewall rules after server creation. With *Public access (allowed IP addresses)*, the connections to the Azure Database for PostgreSQL flexible server instance are restricted to allowed IP addresses only. The client IP addresses need to be allowed in firewall rules. To learn more about it, refer to [Public access (allowed IP addresses)](concepts-networking-public.md#firewall-rules). The firewall rules can be defined at the time of server creation (recommended) but can be added later as well.
 
 ## Launch Azure Cloud Shell
 
@@ -148,7 +148,8 @@ az postgres flexible-server firewall-rule delete --name mydemoserver --rule-name
 ```
 Upon success, there is no output. Upon failure, error message text displays.
 
-## Next steps
-- Learn more about [Networking in Azure Database for PostgreSQL - Flexible Server](./concepts-networking.md)
-- Understand more about [Azure Database for PostgreSQL - Flexible Server firewall rules](./concepts-networking.md#public-access-allowed-ip-addresses)
-- [Create and manage Azure Database for PostgreSQL - Flexible Server firewall rules using the Azure portal](./how-to-manage-firewall-portal.md).
+## Related content
+
+- [Networking in Azure Database for PostgreSQL - Flexible Server](concepts-networking-private.md).
+- [Azure Database for PostgreSQL - Flexible Server firewall rules](concepts-networking-public.md#firewall-rules).
+- [Create and manage Azure Database for PostgreSQL - Flexible Server firewall rules using the Azure portal](how-to-manage-firewall-portal.md).

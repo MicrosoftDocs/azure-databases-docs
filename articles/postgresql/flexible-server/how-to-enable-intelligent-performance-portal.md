@@ -46,6 +46,6 @@ When you're choosing values from the `intelligent_tuning.metric_targets` server 
 
 * The `ALL` value encompasses all existing metric targets. This value also automatically applies to any new metric targets that you might add in the future. This allows for comprehensive and future-proof tuning of your Azure Database for PostgreSQL flexible server instance.
 
-## Next steps
+## Related content
 
-- [Perform intelligent tuning in Azure Database for PostgreSQL - Flexible Server](concepts-intelligent-tuning.md)
+- [Perform intelligent tuning in Azure Database for PostgreSQL - Flexible Server](concepts-intelligent-tuning.md).

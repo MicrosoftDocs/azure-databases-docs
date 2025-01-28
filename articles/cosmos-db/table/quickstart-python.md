@@ -1,453 +1,194 @@
 ---
-title: 'Quickstart: API for Table with Python - Azure Cosmos DB'
-description: This quickstart shows how to access the Azure Cosmos DB for Table from a Python application using the Azure Data Tables SDK
+title: Quickstart - Azure SDK for Python
+titleSuffix: Azure Cosmos DB for Table
+description: Deploy a Python web application that uses the Azure SDK for Python to interact with Azure Cosmos DB for Table data in this quickstart.
 author: seesharprun
+ms.author: sidandrews
+ms.reviewer: sasinnat
 ms.service: azure-cosmos-db
 ms.subservice: table
 ms.devlang: python
-ms.topic: quickstart
-ms.date: 05/04/2023
-ms.author: sasinnat
-ms.custom: devx-track-python, mode-api, devx-track-azurecli, py-fresh-zinc
+ms.topic: quickstart-sdk
+ms.date: 11/07/2024
+ms.custom: devx-track-python, devx-track-extended-azdevcli
+appliesto:
+  - ✅ Table
+# CustomerIntent: As a developer, I want to learn the basics of the Python library so that I can build applications with Azure Cosmos DB for Table.
 ---
 
-# Quickstart: Build an API for Table app with Python SDK and Azure Cosmos DB
+# Quickstart: Use Azure Cosmos DB for Table with Azure SDK for Python
 
-[!INCLUDE[Table](../includes/appliesto-table.md)]
+[!INCLUDE[Developer Quickstart selector](includes/quickstart/dev-selector.md)]
 
-> [!div class="op_single_selector"]
->
-> * [.NET](quickstart-dotnet.md)
-> * [Java](quickstart-java.md)
-> * [Node.js](quickstart-nodejs.md)
-> * [Python](quickstart-python.md)
->
+In this quickstart, you deploy a basic Azure Cosmos DB for Table application using the Azure SDK for Python. Azure Cosmos DB for Table is a schemaless data store allowing applications to store structured table data in the cloud. You learn how to create tables, rows, and perform basic tasks within your Azure Cosmos DB resource using the Azure SDK for Python.
 
-This quickstart shows how to access the Azure Cosmos DB [API for Table](introduction.md) from a Python application. The Azure Cosmos DB for Table is a schemaless data store allowing applications to store structured NoSQL data in the cloud. Because data is stored in a schemaless design, new properties (columns) are automatically added to the table when an object with a new attribute is added to the table. Python applications can access the Azure Cosmos DB for Table using the [Azure Data Tables SDK for Python](https://pypi.org/project/azure-data-tables/) package.
+[API reference documentation](/python/api/azure-data-tables) | [Library source code](https://github.com/Azure/azure-sdk-for-python/blob/main/sdk/tables/azure-data-tables) | [Package (PyPI)](https://pypi.org/project/azure-data-tables) | [Azure Developer CLI](/azure/developer/azure-developer-cli/overview)
 
 ## Prerequisites
 
-The sample application is written in [Python 3.7 or later](https://www.python.org/downloads/), though the principles apply to all Python 3.7+ applications. You can use [Visual Studio Code](https://code.visualstudio.com/) as an IDE.
+- Azure Developer CLI
+- Docker Desktop
+- Python 3.12
 
-If you don't have an [Azure subscription](/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing), create a [free account](https://azure.microsoft.com/free/dotnet) before you begin.
+If you don't have an Azure account, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
 
-## Sample application
+## Initialize the project
 
-The sample application for this tutorial may be cloned or downloaded from the repository https://github.com/Azure-Samples/msdocs-azure-tables-sdk-python-flask.
+Use the Azure Developer CLI (`azd`) to create an Azure Cosmos DB for Table account and deploy a containerized sample application. The sample application uses the client library to manage, create, read, and query sample data.
 
-```bash
-git clone https://github.com/Azure-Samples/msdocs-azure-tables-sdk-python-flask.git
-```
+1. Open a terminal in an empty directory.
 
-A *1-starter-app* and *2-completed-app* sample folder are included in the sample repository. The *1-starter-app* has some functionality left for you to complete with lines marked "#TODO". The code snippets shown in this article are the suggested additions to complete the *1-starter-app*.
+1. If you're not already authenticated, authenticate to the Azure Developer CLI using `azd auth login`. Follow the steps specified by the tool to authenticate to the CLI using your preferred Azure credentials.
 
-The completed sample application uses weather data as an example to demonstrate the capabilities of the API for Table. Objects representing weather observations are stored and retrieved using the API for Table, including storing objects with extra properties to demonstrate the schemaless capabilities of the API for Table. The following image shows the local application running in a browser, displaying the weather data stored in the Azure Cosmos DB for Table.
+    ```azurecli
+    azd auth login
+    ```
 
-:::image type="content" source="./media/quickstart-python/table-api-app-finished-application-720px.png" alt-text="A screenshot of the finished application, which shows data stored in an Azure Cosmos DB table using the API for Table." lightbox="./media/quickstart-python/table-api-app-finished-application.png":::
+1. Use `azd init` to initialize the project.
 
-## 1 - Create an Azure Cosmos DB account
+    ```azurecli
+    azd init --template cosmos-db-table-python-quickstart
+    ```
 
-You first need to create an Azure Cosmos DB Tables API account that will contain the table(s) used in your application. Create an account with the Azure portal, Azure CLI, or Azure PowerShell.
+1. During initialization, configure a unique environment name.
 
-### [Azure portal](#tab/azure-portal)
+1. Deploy the Azure Cosmos DB account using `azd up`. The Bicep templates also deploy a sample web application.
 
-Log in to the [Azure portal](https://portal.azure.com/) and follow these steps to create an Azure Cosmos DB account.
+    ```azurecli
+    azd up
+    ```
 
-| Instructions    | Screenshot |
-|:----------------|-----------:|
-| [!INCLUDE [Create Azure Cosmos DB db account step 1](./includes/quickstart-python/create-cosmos-db-acct-1.md)] | :::image type="content" source="./media/quickstart-python/azure-portal-create-cosmos-db-account-table-api-1-240px.png" alt-text="A screenshot showing how to use the search box in the top tool bar to find Azure Cosmos DB accounts in Azure." lightbox="./media/quickstart-python/azure-portal-create-cosmos-db-account-table-api-1.png":::           |
-| [!INCLUDE [Create Azure Cosmos DB db account step 2](./includes/quickstart-python/create-cosmos-db-acct-2.md)] | :::image type="content" source="./media/quickstart-python/azure-portal-create-cosmos-db-account-table-api-2-240px.png" alt-text="A screenshot showing the Create button location on the Azure Cosmos DB accounts page in Azure." lightbox="./media/quickstart-python/azure-portal-create-cosmos-db-account-table-api-2.png":::           |
-| [!INCLUDE [Create Azure Cosmos DB db account step 3](./includes/quickstart-python/create-cosmos-db-acct-3.md)] | :::image type="content" source="./media/quickstart-python/azure-portal-create-cosmos-db-account-table-api-3-240px.png" alt-text="A screenshot showing the Azure Table option as the correct option to select." lightbox="./media/quickstart-python/azure-portal-create-cosmos-db-account-table-api-3.png":::           |
-| [!INCLUDE [Create Azure Cosmos DB db account step 4](./includes/quickstart-python/create-cosmos-db-acct-4.md)] | :::image type="content" source="./media/quickstart-python/azure-portal-create-cosmos-db-account-table-api-4-240px.png" alt-text="A screenshot showing how to fill out the fields on the Azure Cosmos DB Account creation page." lightbox="./media/quickstart-python/azure-portal-create-cosmos-db-account-table-api-4.png":::           |
+1. During the provisioning process, select your subscription, desired location, and target resource group. Wait for the provisioning process to complete. The process can take **approximately five minutes**.
 
-### [Azure CLI](#tab/azure-cli)
+1. Once the provisioning of your Azure resources is done, a URL to the running web application is included in the output.
 
-Azure Cosmos DB accounts are created using the [az cosmosdb create](/cli/azure/cosmosdb#az-cosmosdb-create) command. You must include the `--capabilities EnableTable` option to enable table storage within your Azure Cosmos DB. As all Azure resources must be contained in a resource group, the following code snippet also creates a resource group for the Azure Cosmos DB account.
-
-Azure Cosmos DB account names must be between 3 and 44 characters in length and may contain only lowercase letters, numbers, and the hyphen (-) character. Azure Cosmos DB account names must also be unique across Azure.
-
-Azure CLI commands can be run in the [Azure Cloud Shell](https://shell.azure.com/) or on a workstation with the [Azure CLI installed](/cli/azure/install-azure-cli).
-
-It typically takes several minutes for the Azure Cosmos DB account creation process to complete.
-
-```azurecli
-LOCATION='eastus'
-RESOURCE_GROUP_NAME='rg-msdocs-tables-sdk-demo'
-COSMOS_ACCOUNT_NAME='cosmos-msdocs-tables-sdk-demo-123'    # change 123 to a unique set of characters for a unique name
-
-az group create \
-    --location $LOCATION \
-    --name $RESOURCE_GROUP_NAME
-
-az cosmosdb create \
-    --name $COSMOS_ACCOUNT_NAME \
-    --resource-group $RESOURCE_GROUP_NAME \
-    --capabilities EnableTable
-```
-
-### [Azure PowerShell](#tab/azure-powershell)
-
-Azure Cosmos DB accounts are created using the [New-AzCosmosDBAccount](/powershell/module/az.cosmosdb/new-azcosmosdbaccount) cmdlet. You must include the `-ApiKind "Table"` option to enable table storage within your Azure Cosmos DB.  As all Azure resources must be contained in a resource group, the following code snippet also creates a resource group for the Azure Cosmos DB account.
-
-Azure Cosmos DB account names must be between 3 and 44 characters in length and may contain only lowercase letters, numbers, and the hyphen (-) character.  Azure Cosmos DB account names must also be unique across Azure.
-
-Azure PowerShell commands can be run in the [Azure Cloud Shell](https://shell.azure.com) or on a workstation with [Azure PowerShell installed](/powershell/azure/install-azure-powershell).
-
-It typically takes several minutes for the Azure Cosmos DB account creation process to complete.
-
-```azurepowershell
-$location = 'eastus'
-$resourceGroupName = 'rg-msdocs-tables-sdk-demo'
-$cosmosAccountName = 'cosmos-msdocs-tables-sdk-demo-123'  # change 123 to a unique set of characters for a unique name
-
-# Create a resource group
-New-AzResourceGroup `
-    -Location $location `
-    -Name $resourceGroupName
-
-# Create an Azure Cosmos DB 
-New-AzCosmosDBAccount `
-    -Name $cosmosAccountName `
-    -ResourceGroupName $resourceGroupName `
-    -Location $location `
-    -ApiKind "Table"
-```
-
----
-
-## 2 - Create a table
-
-Next, you need to create a table within your Azure Cosmos DB account for your application to use. Unlike a traditional database, you only need to specify the name of the table, not the properties (columns) in the table. As data is loaded into your table, the properties (columns) are automatically created as needed.
-
-### [Azure portal](#tab/azure-portal)
-
-In the [Azure portal](https://portal.azure.com/), complete the following steps to create a table inside your Azure Cosmos DB account.
-
-| Instructions    | Screenshot |
-|:----------------|-----------:|
-| [!INCLUDE [Create Azure Cosmos DB db table step 1](./includes/quickstart-python/create-cosmos-table-1.md)] | :::image type="content" source="./media/quickstart-python/azure-portal-create-cosmos-db-table-api-1-240px.png" alt-text="A screenshot showing how to use the search box in the top tool bar to find your Azure Cosmos DB account." lightbox="./media/quickstart-python/azure-portal-create-cosmos-db-table-api-1.png":::           |
-| [!INCLUDE [Create Azure Cosmos DB db table step 2](./includes/quickstart-python/create-cosmos-table-2.md)] | :::image type="content" source="./media/quickstart-python/azure-portal-create-cosmos-db-table-api-2-240px.png" alt-text="A screenshot showing the location of the Add Table button." lightbox="./media/quickstart-python/azure-portal-create-cosmos-db-table-api-2.png":::           |
-| [!INCLUDE [Create Azure Cosmos DB db table step 3](./includes/quickstart-python/create-cosmos-table-3.md)] | :::image type="content" source="./media/quickstart-python/azure-portal-create-cosmos-db-table-api-3-240px.png" alt-text="A screenshot showing how to New Table dialog box for an Azure Cosmos DB table." lightbox="./media/quickstart-python/azure-portal-create-cosmos-db-table-api-3.png":::           |
-
-### [Azure CLI](#tab/azure-cli)
-
-Tables in Azure Cosmos DB are created using the [az cosmosdb table create](/cli/azure/cosmosdb/table#az-cosmosdb-table-create) command.
-
-```azurecli
-COSMOS_TABLE_NAME='WeatherData'
-
-az cosmosdb table create \
-    --account-name $COSMOS_ACCOUNT_NAME \
-    --resource-group $RESOURCE_GROUP_NAME \
-    --name $COSMOS_TABLE_NAME \
-    --throughput 400
-```
-
-### [Azure PowerShell](#tab/azure-powershell)
-
-Tables in Azure Cosmos DB are created using the [New-AzCosmosDBTable](/powershell/module/az.cosmosdb/new-azcosmosdbtable) cmdlet.
-
-```azurepowershell
-$cosmosTableName = 'WeatherData'
-
-# Create the table for the application to use
-New-AzCosmosDBTable `
-    -Name $cosmosTableName `
-    -AccountName $cosmosAccountName `
-    -ResourceGroupName $resourceGroupName
-```
-
----
-
-## 3 - Get Azure Cosmos DB connection string
-
-To access your table(s) in Azure Cosmos DB, your app needs the table connection string for the Cosmos DB Storage account.  The connection string can be retrieved using the Azure portal, Azure CLI or Azure PowerShell.
-
-### [Azure portal](#tab/azure-portal)
-
-| Instructions    | Screenshot |
-|:----------------|-----------:|
-| [!INCLUDE [Get Azure Cosmos DB db table connection string step 1](./includes/quickstart-python/get-cosmos-connection-string-1.md)] | :::image type="content" source="./media/quickstart-python/azure-portal-cosmos-db-table-connection-string-1-240px.png" alt-text="A screenshot showing the location of the connection strings link on the Azure Cosmos DB page." lightbox="./media/quickstart-python/azure-portal-cosmos-db-table-connection-string-1.png":::           |
-| [!INCLUDE [Get Azure Cosmos DB db table connection string step 2](./includes/quickstart-python/get-cosmos-connection-string-2.md)] | :::image type="content" source="./media/quickstart-python/azure-portal-cosmos-db-table-connection-string-2-240px.png" alt-text="A screenshot showing which connection string to select and use in your application." lightbox="./media/quickstart-python/azure-portal-cosmos-db-table-connection-string-2.png":::           |
-
-### [Azure CLI](#tab/azure-cli)
-
-To get the primary connection string using Azure CLI, use the [az cosmosdb keys list](/cli/azure/cosmosdb/keys#az-cosmosdb-keys-list) command with the option `--type connection-strings`. This command uses a [JMESPath query](/cli/azure/query-azure-cli) to display only the primary table connection string.
-
-```azurecli
-# This gets the primary connection string
-az cosmosdb keys list \
-    --type connection-strings \
-    --resource-group $RESOURCE_GROUP_NAME \
-    --name $COSMOS_ACCOUNT_NAME \
-    --query "connectionStrings[?description=='Primary Table Connection String'].connectionString" \
-    --output tsv
-```
-
-### [Azure PowerShell](#tab/azure-powershell)
-
-To get the primary connection string using Azure PowerShell, use the [Get-AzCosmosDBAccountKey](/powershell/module/az.cosmosdb/get-azcosmosdbaccountkey) cmdlet.
-
-```azurepowershell
-# This gets the primary connection string
-$(Get-AzCosmosDBAccountKey `
-    -ResourceGroupName $resourceGroupName `
-    -Name $cosmosAccountName `
-    -Type "ConnectionStrings")."Primary Table Connection String"
-```
-
-The connection string for your Azure Cosmos DB account is considered an app secret and must be protected like any other app secret or password.
-
----
-
-## 4 - Install the Azure Data Tables SDK for Python
-
-After you've created an Azure Cosmos DB account, your next step is to install the Microsoft [Azure Data Tables SDK for Python](https://pypi.python.org/pypi/azure-data-tables/). For details on installing the SDK, refer to the [README.md](https://github.com/Azure/azure-sdk-for-python/blob/main/sdk/tables/azure-data-tables/README.md) file in the Data Tables SDK for Python repository on GitHub.
-
-Install the Azure Tables client library for Python with pip:
-
-```bash
-pip install azure-data-tables
-```
-
-Don't forget to also install the *requirements.txt* in the *1-starter-app* or *2-completed-app* folders.
-
----
-
-## 5 - Configure the Table client in an .env file
-
-Copy your Azure Cosmos DB account connection string from the Azure portal, and create a TableServiceClient object using your copied connection string. Switch to the *1-starter-app* or *2-completed-app* folder. Regardless of which app you start with, you need to define environment variables in an `.env` file.
-
-```python
-# Configuration Parameters
-conn_str = "A connection string to an Azure Cosmos DB account."
-table_name = "WeatherData"
-project_root_path = "Project abs path"
-```
-
-The Azure SDK communicates with Azure using client objects to execute different operations against Azure. The [`TableServiceClient`](/python/api/azure-data-tables/azure.data.tables.tableserviceclient) object is the object used to communicate with the Azure Cosmos DB for Table. An application will typically have a single `TableServiceClient` overall, and it will have a [`TableClient`](/python/api/azure-data-tables/azure.data.tables.tableclient) per table.
-
-For example, the following code creates a `TableServiceClient` object using the connection string from the environment variable.
-
-```python
-self.conn_str = os.getenv("conn_str")
-self.table_service = TableServiceClient.from_connection_string(self.conn_str)
-```
-
----
-
-## 6 - Implement Azure Cosmos DB table operations
-
-All Azure Cosmos DB table operations for the sample app are implemented in the `TableServiceHelper` class located in *helper* file under the *webapp* directory. You'll need to import the `TableServiceClient` class at the top of this file to work with objects in the [azure.data.tables](https://pypi.org/project/azure-data-tables/) client library for Python.
-
-```python
-from azure.data.tables import TableServiceClient
-```
-
-At the start of the `TableServiceHelper` class, create a constructor and add a member variable for the `TableClient` object to allow the `TableClient` object to be injected into the class.
-
-```python
-def __init__(self, table_name=None, conn_str=None):
-    self.table_name = table_name if table_name else os.getenv("table_name")
-    self.conn_str = conn_str if conn_str else os.getenv("conn_str")
-    self.table_service = TableServiceClient.from_connection_string(self.conn_str)
-    self.table_client = self.table_service.get_table_client(self.table_name)
-```
-
-### Filter rows returned from a table
-
-To filter the rows returned from a table, you can pass an OData style filter string to the `query_entities` method. For example, if you wanted to get all of the weather readings for Chicago between midnight July 1, 2021 and midnight July 2, 2021 (inclusive) you would pass in the following filter string.
-
-```odata
-PartitionKey eq 'Chicago' and RowKey ge '2021-07-01 12:00 AM' and RowKey le '2021-07-02 12:00 AM'
-```
-
-You can view related OData filter operators on the azure-data-tables website in the section [Writing Filters](https://github.com/Azure/azure-sdk-for-python/tree/main/sdk/tables/azure-data-tables/samples#writing-filters).
-
-When request.args parameter is passed to the `query_entity` method in the `TableServiceHelper` class, it creates a filter string for each non-null property value. It then creates a combined filter string by joining all of the values together with an "and" clause. This combined filter string is passed to the `query_entities` method on the `TableClient` object and only rows matching the filter string are returned. You can use a similar method in your code to construct suitable filter strings as required by your application.
-
-```python
-def query_entity(self, params):
-    filters = []
-    if params.get("partitionKey"):
-        filters.append("PartitionKey eq '{}'".format(params.get("partitionKey")))
-    if params.get("rowKeyDateStart") and params.get("rowKeyTimeStart"):
-        filters.append("RowKey ge '{} {}'".format(params.get("rowKeyDateStart"), params.get("rowKeyTimeStart")))
-    if params.get("rowKeyDateEnd") and params.get("rowKeyTimeEnd"):
-        filters.append("RowKey le '{} {}'".format(params.get("rowKeyDateEnd"), params.get("rowKeyTimeEnd")))
-    if params.get("minTemperature"):
-        filters.append("Temperature ge {}".format(params.get("minTemperature")))
-    if params.get("maxTemperature"):
-        filters.append("Temperature le {}".format(params.get("maxTemperature")))
-    if params.get("minPrecipitation"):
-        filters.append("Precipitation ge {}".format(params.get("minPrecipitation")))
-    if params.get("maxPrecipitation"):
-        filters.append("Precipitation le {}".format(params.get("maxPrecipitation")))
-    return list(self.table_client.query_entities(" and ".join(filters)))
-```
-
-### Insert data using a TableEntity object
-
-The simplest way to add data to a table is by using a [`TableEntity`](/python/api/azure-data-tables/azure.data.tables.tableentity) object. In this example, data is mapped from an input model object to a `TableEntity` object. The properties on the input object representing the weather station name and observation date/time are mapped to the `PartitionKey` and `RowKey` properties respectively, which together form a unique key for the row in the table. Then the extra properties on the input model object are mapped to dictionary properties on the TableEntity object. Finally, the `create_entity` method on the `TableClient` object is used to insert data into the table.
-
-Modify the `insert_entity` function in the example application to contain the following code.
-
-```python
-def insert_entity(self):
-    entity = self.deserialize()
-    return self.table_client.create_entity(entity)
+    ```output
+    Deploying services (azd deploy)
     
-@staticmethod
-def deserialize():
-    params = {key: request.form.get(key) for key in request.form.keys()}
-    params["PartitionKey"] = params.pop("StationName")
-    params["RowKey"] = "{} {}".format(params.pop("ObservationDate"), params.pop("ObservationTime"))
-    return params
-```
-
-### Upsert data using a TableEntity object
-
-If you try to insert a row into a table with a partition key/row key combination that already exists in that table, you'll receive an error. For this reason, it's often preferable to use the `upsert_entity` instead of the `create_entity` method when adding rows to a table. If the given partition key/row key combination already exists in the table, the `upsert_entity` method updates the existing row. Otherwise, the row is added to the table.
-
-```python
-def upsert_entity(self):
-    entity = self.deserialize()
-    return self.table_client.upsert_entity(entity)
+      (✓) Done: Deploying service web
+    - Endpoint: <https://[container-app-sub-domain].azurecontainerapps.io>
     
-@staticmethod
-def deserialize():
-    params = {key: request.form.get(key) for key in request.form.keys()}
-    params["PartitionKey"] = params.pop("StationName")
-    params["RowKey"] = "{} {}".format(params.pop("ObservationDate"), params.pop("ObservationTime"))
-    return params
-```
+    SUCCESS: Your application was provisioned and deployed to Azure in 5 minutes 0 seconds.
+    ```
 
-### Insert or upsert data with variable properties
+1. Use the URL in the console to navigate to your web application in the browser. Observe the output of the running app.
 
-One of the advantages of using the Azure Cosmos DB for Table is that if an object being loaded to a table contains any new properties then those properties are automatically added to the table and the values stored in Azure Cosmos DB. There's no need to run DDL statements like ALTER TABLE to add columns as in a traditional database.
+:::image type="content" source="media/quickstart-python/running-application.png" alt-text="Screenshot of the running web application.":::
 
-This model gives your application flexibility when dealing with data sources that may add or modify what data needs to be captured over time or when different inputs provide different data to your application. In the sample application, we can simulate a weather station that sends not just the base weather data but also some extra values. When an object with these new properties is stored in the table for the first time, the corresponding properties (columns) are automatically added to the table.
+### Install the client library
 
-To insert or upsert such an object using the API for Table, map the properties of the expandable object into a `TableEntity` object and use the `create_entity` or `upsert_entity` methods on the `TableClient` object as appropriate.
+The client library is available through PyPi, as the `azure-data-tables` package.
 
-In the sample application, the `upsert_entity` function can also implement the function of insert or upsert data with variable properties
+1. Open a terminal and navigate to the `/src` folder.
+
+    ```bash
+    cd ./src
+    ```
+
+1. If not already installed, install the `azure-data-tables` package using `pip install`.
+
+    ```bash
+    pip install azure-data-tables
+    ```
+
+1. Open and review the **src/requirements.txt** file to validate that the `azure-data-tables` entry exists.
+
+## Object model
+
+| Name | Description |
+| --- | --- |
+| [`TableServiceClient`](/python/api/azure-data-tables/azure.data.tables.tableserviceclient) | This type is the primary client type and is used to manage account-wide metadata or databases. |
+| [`TableClient`](/python/api/azure-data-tables/azure.data.tables.tableclient) | This type represents the client for a table within the account. |
+
+## Code examples
+
+- [Authenticate the client](#authenticate-the-client)
+- [Get a table](#get-a-table)
+- [Create an entity](#create-an-entity)
+- [Get an entity](#get-an-entity)
+- [Query entities](#query-entities)
+
+The sample code in the template uses a table named `cosmicworks-products`. The `cosmicworks-products` table contains details such as name, category, quantity, price, a unique identifier, and a sale flag for each product. The container uses a *unique identifier* as the row key and *category* as a partition key.
+
+### Authenticate the client
+
+This sample creates a new instance of the `TableServiceClient` type.
 
 ```python
-def insert_entity(self):
-    entity = self.deserialize()
-    return self.table_client.create_entity(entity)
+credential = DefaultAzureCredential()
 
-def upsert_entity(self):
-    entity = self.deserialize()
-    return self.table_client.upsert_entity(entity)
-
-@staticmethod
-def deserialize():
-    params = {key: request.form.get(key) for key in request.form.keys()}
-    params["PartitionKey"] = params.pop("StationName")
-    params["RowKey"] = "{} {}".format(params.pop("ObservationDate"), params.pop("ObservationTime"))
-    return params
+client = TableServiceClient(endpoint="<azure-cosmos-db-table-account-endpoint>", credential=credential)
 ```
 
-### Update an entity
+### Get a table
 
-Entities can be updated by calling the `update_entity` method on the `TableClient` object. 
-
-In the sample app, this object is passed to the `upsert_entity` method in the `TableClient` class. It updates that entity object and uses the `upsert_entity` method save the updates to the database. 
+This sample creates an instance of the `TableClient` type using the `GetTableClient` function of the `TableServiceClient` type.
 
 ```python
-def update_entity(self):
-    entity = self.update_deserialize()
-    return self.table_client.update_entity(entity)
-    
-@staticmethod
-def update_deserialize():
-    params = {key: request.form.get(key) for key in request.form.keys()}
-    params["PartitionKey"] = params.pop("StationName")
-    params["RowKey"] = params.pop("ObservationDate")
-    return params
+table = client.get_table_client("<azure-cosmos-db-table-name>")
 ```
 
-### Remove an entity
+### Create an entity
 
-To remove an entity from a table, call the `delete_entity` method on the `TableClient` object with the partition key and row key of the object.
-    
+The easiest way to create a new entity in a table is to create a new object ensuring that you specify the mandatory `RowKey` and `PartitionKey` properties.
+
 ```python
-def delete_entity(self):
-    partition_key = request.form.get("StationName")
-    row_key = request.form.get("ObservationDate")
-    return self.table_client.delete_entity(partition_key, row_key)
+new_entity = {
+    "RowKey": "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb",
+    "PartitionKey": "gear-surf-surfboards",
+    "Name": "Yamba Surfboard",
+    "Quantity": 12,
+    "Sale": False,
+}
 ```
 
-## 7 - Run the code
+Create an entity in the table using `upsert_entity`.
 
-Run the sample application to interact with the Azure Cosmos DB for Table. For example, starting in the *2-completed-app* folder, with requirements installed, you can use:
-
-```bash
-python3 run.py webapp
+```python
+created_entity = table.upsert_entity(new_entity)
 ```
 
-See the *README.md* file in the [sample repository root](https://github.com/Azure-Samples/msdocs-azure-tables-sdk-python-flask/tree/main) for more information about running the sample application.
+### Get an entity
 
-The first time you run the application, there will be no data because the table is empty. Use any of the buttons at the top of application to add data to the table.
+You can retrieve a specific entity from a table using `get_entity`.
 
-:::image type="content" source="./media/quickstart-python/table-api-app-data-insert-buttons-480px.png" alt-text="A screenshot of the application showing the location of the buttons used to insert data into Azure Cosmos DB using the Table API." lightbox="./media/quickstart-python/table-api-app-data-insert-buttons.png":::
+```python
+existing_entity = table.get_entity(
+    row_key="aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb",
+    partition_key="gear-surf-surfboards",
+)
+```
 
-Selecting the **Insert using Table Entity** button opens a dialog allowing you to insert or upsert a new row using a `TableEntity` object.
+### Query entities
 
-:::image type="content" source="./media/quickstart-python/table-api-app-insert-table-entity-480px.png" alt-text="A screenshot of the application showing the dialog box used to insert data using a TableEntity object." lightbox="./media/quickstart-python/table-api-app-insert-table-entity.png":::
+After you insert an entity, you can also run a query to get all entities that match a specific filter by using `query_entities` with a string OData filter.
 
-Selecting the **Insert using Expandable** Data button brings up a dialog that enables you to insert an object with custom properties, demonstrating how the Azure Cosmos DB for Table automatically adds properties (columns) to the table when needed. Use the *Add Custom Field* button to add one or more new properties and demonstrate this capability.
+```python
+category = "gear-surf-surfboards"
+# Ensure the value is OData-compliant by escaping single quotes
+safe_category = category.replace("'", "''")
+filter = f"PartitionKey eq '{safe_category}'"
+entities = table.query_entities(query_filter=filter)
+```
 
-:::image type="content" source="./media/quickstart-python/table-api-app-insert-expandable-entity-480px.png" alt-text="A screenshot of the application showing the dialog box used to insert data using an object with custom fields." lightbox="./media/quickstart-python/table-api-app-insert-expandable-entity.png":::
+Parse the paginated results of the query by using a `for` loop.
 
-Use the **Insert Sample Data** button to load some sample data into your Azure Cosmos DB Table.
-
-* For the *1-starter-app* sample folder, you'll need to at least complete the code for the `submit_transaction` function for the sample data insert to work.
-
-* The sample data is loaded from a *sample_data.json* file. The *.env* variable `project_root_path` tells the app where to find this file. For example, if you're running the application from the *1-starter-app* or *2-completed-app* folder, set `project_root_path` to "" (blank).
-
-:::image type="content" source="./media/quickstart-python/table-api-app-sample-data-insert-480px.png" alt-text="A screenshot of the application showing the location of the sample data insert button." lightbox="./media/quickstart-python/table-api-app-sample-data-insert.png":::
-
-Select the **Filter Results** item in the top menu to be taken to the Filter Results page.  On this page, fill out the filter criteria to demonstrate how a filter clause can be built and passed to the Azure Cosmos DB for Table.
-
-:::image type="content" source="./media/quickstart-python/table-api-app-filter-data-480px.png" alt-text="A screenshot of the application showing filter results page and highlighting the menu item used to navigate to the page." lightbox="./media/quickstart-python/table-api-app-filter-data.png":::
+```python
+for entity in entities:
+    # Do something
+```
 
 ## Clean up resources
 
-When you're finished with the sample application, you should remove all Azure resources related to this article from your Azure account.  You can remove all resources by deleting the resource group.
-
-### [Azure portal](#tab/azure-portal)
-
-A resource group can be deleted using the [Azure portal](https://portal.azure.com/) by doing the following.
-
-| Instructions    | Screenshot |
-|:----------------|-----------:|
-| [!INCLUDE [Delete resource group step 1](./includes/quickstart-python/remove-resource-group-1.md)] | :::image type="content" source="./media/quickstart-python/azure-portal-remove-resource-group-1-240px.png" alt-text="A screenshot showing how to search for a resource group." lightbox="./media/quickstart-python/azure-portal-remove-resource-group-1.png":::           |
-| [!INCLUDE [Delete resource group step 2](./includes/quickstart-python/remove-resource-group-2.md)] | :::image type="content" source="./media/quickstart-python/azure-portal-remove-resource-group-2-240px.png" alt-text="A screenshot showing the location of the Delete resource group button." lightbox="./media/quickstart-python/azure-portal-remove-resource-group-2.png":::           |
-| [!INCLUDE [Delete resource group step 3](./includes/quickstart-python/remove-resource-group-3.md)] | :::image type="content" source="./media/quickstart-python/azure-portal-remove-resource-group-3-240px.png" alt-text="A screenshot showing the confirmation dialog for deleting a resource group." lightbox="./media/quickstart-python/azure-portal-remove-resource-group-3.png":::           |
-
-### [Azure CLI](#tab/azure-cli)
-
-To delete a resource group using the Azure CLI, use the [az group delete](/cli/azure/group#az-group-delete) command with the name of the resource group to be deleted.  Deleting a resource group also removes all Azure resources contained in the resource group.
+When you no longer need the sample application or resources, remove the corresponding deployment and all resources.
 
 ```azurecli
-az group delete --name $RESOURCE_GROUP_NAME
+azd down
 ```
 
-### [Azure PowerShell](#tab/azure-powershell)
+## Related content
 
-To delete a resource group using Azure PowerShell, use the [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) command with the name of the resource group to be deleted.  Deleting a resource group also removes all Azure resources contained in the resource group.
-
-```azurepowershell
-Remove-AzResourceGroup -Name $resourceGroupName
-```
-
----
-
-## Next steps
-
-In this quickstart, you've learned how to create an Azure Cosmos DB account, create a table using the Data Explorer, and run an app. Now you can query your data using the API for Table.  
-
-> [!div class="nextstepaction"]
-> [Query Azure Cosmos DB by using the API for Table](tutorial-query.md)
+- [.NET Quickstart](quickstart-dotnet.md)
+- [Node.js Quickstart](quickstart-nodejs.md)
+- [Java Quickstart](quickstart-java.md)
+- [Go Quickstart](quickstart-go.md)

@@ -30,10 +30,6 @@ In Azure Cosmos DB, a database is analogous to a namespace. When you create a da
 
 Here are some quick rules when naming a database:
 
-- Keep database names between 3 and 63 characters long
-- Database names can only contain lowercase letters, numbers, or the dash (-) character.
-- Database names must start with a lowercase letter or number.
-
 Once created, the URI for a database is in this format:
 
 ``https://<cosmos-account-name>.documents.azure.com/dbs/<database-name>``

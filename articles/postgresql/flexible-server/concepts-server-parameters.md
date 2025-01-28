@@ -4,7 +4,7 @@ description: Learn about the server parameters in Azure Database for PostgreSQL 
 author: akashraokm
 ms.author: akashrao
 ms.reviewer: maghan
-ms.date: 05/16/2024
+ms.date: 12/08/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: conceptual
@@ -14,49 +14,20 @@ ms.topic: conceptual
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
-Azure Database for PostgreSQL provides a subset of configurable parameters for each server. For more information on
-Postgres parameters, see the [PostgreSQL documentation](https://www.postgresql.org/docs/current/runtime-config.html).
+Azure Database for PostgreSQL provides a set of configurable parameters for each server.
 
-## Parameter types
+These parameters can correspond to:
 
-Azure Database for PostgreSQL - Flexible Server comes preconfigured with optimal default settings for each parameter. Parameters are categorized into one of the following types:
+- Parameters defined by the PostgreSQL database engine or by binary libraries that implement functionality of extensions. Some examples of database engine built-in parameters are `autovacuum_max_workers`, `DateStyle`, `client_min_messages`, `password_encryption`, `max_connections`, `geqo`, `from_collapse_limit`, `cpu_tuple_cost`, `cpu_tuple_cost`, `max_standby_streaming_delay`, `log_connections`, `log_min_duration_statement`, `max_parallel_workers`, `bgwriter_delay`, and `shared_buffers`. Some examples of parameters defined by extensions are `pg_qs.max_query_text_length` (pg_qs extension, implementing functionality for [query store](concepts-query-store.md)), `pg_stat_statements.max` ([pg_stat_statements](https://www.postgresql.org/docs/current/pgstatstatements.html#PGSTATSTATEMENTS-CONFIG-PARAMS) extension), `pgaudit.log_catalog` ([pgaudit](https://github.com/pgaudit/pgaudit) extension), and `cron.database_name` ([cron](https://github.com/citusdata/pg_cron) extension).
+- Parameters that control some built-in functionality, which is core to the Azure Database for PostgreSQL Flexible Server service, but is not part of the database engine or any of its extensions. Some examples of these are `metrics.collector_database_activity` (controls whether or not the service should collect the list of metrics which are considered [enhanced metrics](concepts-monitoring.md#enhanced-metrics) and aren't collected by default), `pgbouncer.enabled` (allows the user to activate the instance of [PgBouncer](concepts-pgbouncer.md) which is built into the service), `index_tuning.analysis_interval` (sets the frequency at which [automatic index tuning](concepts-index-tuning.md) should wake up to produce recommendations)
 
-* **Static**: These parameters require a server restart to implement any changes.
-* **Dynamic**: These parameters can be altered without the need to restart the server instance. However, changes will apply only to new connections established after the modification.
-* **Read-only**: These parameters aren't user configurable because of their critical role in maintaining reliability, security, or other operational aspects of the service.
-
-To determine the parameter type, go to the Azure portal and open the **Server parameters** pane. The parameters are grouped into tabs for easy identification.
-
-## Parameter customization
-
-Various methods and levels are available to customize your parameters according to your specific needs.
-
-### Global level
-
-For altering settings globally at the instance or server level, go to the **Server parameters** pane in the Azure portal. You can also use other available tools such as the Azure CLI, the REST API, Azure Resource Manager templates, or partner tools.
-
-> [!NOTE]
-> Because Azure Database for PostgreSQL is a managed database service, users don't have host or operating system access to view or modify configuration files such as *postgresql.conf*. The content of the files is automatically updated based on parameter changes that you make.
-
-:::image type="content" source="./media/concepts-server-parameters/server-parameters-portal.png" alt-text="Screenshot of the pane for server parameters in the Azure portal.":::
-
-### Granular levels
-
-You can adjust parameters at more granular levels. These adjustments override globally set values. Their scope and duration depend on the level at which you make them:
-
-* **Database level**: Use the `ALTER DATABASE` command for database-specific configurations.
-* **Role or user level**: Use the `ALTER USER` command for user-centric settings.
-* **Function, procedure level**: When you're defining a function or procedure, you can specify or alter the configuration parameters that will be set when the function is called.
-* **Table level**: As an example, you can modify parameters related to autovacuum at this level.
-* **Session level**: For the duration of an individual database session, you can adjust specific parameters. PostgreSQL facilitates this adjustment with the following SQL commands:
-
-  * Use the `SET` command to make session-specific adjustments. These changes serve as the default settings during the current session. Access to these changes might require specific `SET` privileges, and the limitations for modifiable and read-only parameters described earlier don't apply. The corresponding SQL function is `set_config(setting_name, new_value, is_local)`.
-  * Use the `SHOW` command to examine existing parameter settings. Its SQL function equivalent is `current_setting(setting_name text)`.
+You can explore the specific documentation of each of these parameters in the following list of supported server parameters.
 
 ## Supported server parameters
 
-[!INCLUDE [server-parameters-table](./includes/server-parameters-table.md)]
+[!INCLUDE [server-parameters-table](includes/server-parameters-table.md)]
 
-## Next steps
 
-For information on supported PostgreSQL extensions, see [PostgreSQL extensions in Azure Database for PostgreSQL - Flexible Server](concepts-extensions.md).
+## Related content
+
+- [Configure server parameters in Azure Database for PostgreSQL - Flexible Server](how-to-configure-server-parameters.md).

@@ -4,7 +4,7 @@ description: This article describes the storage options in Azure Database for Po
 author: kabharati
 ms.author: kabharati
 ms.reviewer: maghan
-ms.date: 05/30/2024
+ms.date: 01/16/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: conceptual
@@ -14,58 +14,59 @@ ms.topic: conceptual
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
-You can create an Azure Database for PostgreSQL flexible server instance using Azure managed disks, which are block-level storage volumes managed by Azure and used with Azure Virtual Machines. Managed disks are like a physical disk in an on-premises server but, virtualized. With managed disks, all you have to do is specify the disk size, the disk type, and provision the disk. Once you provision the disk, Azure handles the rest. Azure Database for PostgreSQL Flexible Server supports premium solid-state drives (SSD) and Premium SSD v2 and the pricing is calculated based on the compute, memory, and storage tier you provision.
+You can create an Azure Database for PostgreSQL flexible server instance using [Azure managed disks](/azure/virtual-machines/managed-disks-overview), which are block-level storage volumes managed by Azure and used with Azure Virtual Machines. Managed disks are like a physical disk in an on-premises server, but they're virtualized. With managed disks, all you have to do is specify the disk size, the disk type, and provision the disk. Once you provision the disk, Azure handles the rest. Azure Database for PostgreSQL - Flexible Server supports premium solid-state drives (Premium SSD) and premium solid-state drives version 2 (Premium SSD v2), and the pricing is calculated based on the compute, memory, and storage tier you provision.
 
 ## Premium SSD
 
-Azure Premium SSDs deliver high-performance and low-latency disk support for virtual machines (VMs) with input/output (IO)-intensive workloads. Premium SSDs are suitable for mission-critical production applications, but you can use them only with compatible VM series. Premium SSDs support the 512E sector size.
+Azure Premium SSD deliver high-performance and low-latency disk support for virtual machines (VMs) with input/output (IO)-intensive workloads. Premium SSD units are suitable for mission-critical production applications.
 
 ## Premium SSD v2 (preview)
 
-Premium SSD v2 offers higher performance than Premium SSDs while also generally being less costly. You can individually tweak the performance (capacity, throughput, and IOPS(input/output operations per second)) of Premium SSD v2 disks at any time, allowing workloads to be cost-efficient while meeting shifting performance needs. For example, a transaction-intensive database might need a large amount of IOPS at a small size, or a gaming application might need a large amount of IOPS but only during peak hours. Hence, for most general-purpose workloads, Premium SSD v2 can provide the best price performance. You can now deploy Azure Database for PostgreSQL flexible server instances with Premium SSD v2 disk in all supported regions.
+Premium SSD v2 offers higher performance than Premium SSD, while also being less costly, as a general rule. You can individually tweak the performance (capacity, throughput, and input/output operations per second, referred to as IOPS) of Premium SSD v2 at any time. The ability to do these adjustments allow workloads to be cost-efficient, while meeting shifting performance needs. For example, a transaction-intensive database might need to cope with a large amount of IOPS for a couple of exceptionally high-demand days. Or a gaming application might demand higher throughput during peak hours only. Hence, for most general-purpose workloads, Premium SSD v2 can provide the best price for performance. You can now deploy Azure Database for PostgreSQL flexible server instances with Premium SSD v2 disk in all supported regions.
 
 > [!NOTE]  
-> Premium SSD v2 is currently in preview for Azure Database for PostgreSQL flexible server.
+> Premium SSD v2 is currently in preview for Azure Database for PostgreSQL - Flexible Server.
 
 ### Differences between Premium SSD and Premium SSD v2
 
-Unlike Premium SSDs, Premium SSD v2 doesn't have dedicated sizes. You can set a Premium SSD v2 to any supported size you prefer, and make granular adjustments (1-GiB increments) as per your workload requirements. Premium SSD v2 doesn't support host caching but still provides lower latency than Premium SSD. Premium SSD v2 capacities range from 1 GiB to 64 TiBs.
+Unlike Premium SSD, Premium SSD v2 doesn't have dedicated sizes. You can set a Premium SSD v2 disk to any size you prefer, and make granular adjustments as per your workload requirements. Those granular increments can go in steps of 1 GiB. Premium SSD v2 doesn't support host caching, but still provide lower latency than Premium SSD. Premium SSD v2 capacities range from 1 GiB to 64 TiBs.
 
-The following table provides a comparison of the five disk types to help you decide which one to use.
+The following table provides a comparison of different aspect of the types of disk supported by Azure Database for PostgreSQL - Flexible Server, to help you decide which one suits your needs better.
 
 | | Premium SSD v2 | Premium SSD |
 | --- | --- | --- |
 | **Disk type** | SSD | SSD |
-| **Scenario** | Production and performance-sensitive workloads that consistently require low latency and high IOPS and throughput | Production and performance-sensitive workloads |
+| **Scenario** | Production and performance-sensitive workloads that consistently require low latency and high IOPS and throughput. | Production and performance-sensitive workloads. |
 | **Max disk size** | 65,536 GiB | 32,767 GiB |
 | **Max throughput** | 1,200 MB/s | 900 MB/s |
 | **Max IOPS** | 80,000 | 20,000 |
-| **Usable as OS Disk?** | No | Yes |
 
-Premium SSD v2 offers up to 32 TiBs per region per subscription by default, but supports higher capacity by request. To request an increase in capacity, request a quota increase or contact Azure Support.
+Premium SSD v2 offers up to 32 TiBs per region per subscription by default, but supports higher capacity by request. To request an increase in capacity, request a quota increase or contact [Azure Support](https://ms.portal.azure.com/#view/Microsoft_Azure_Support/HelpAndSupportBlade/~/overview).
 
-#### Premium SSD v2 IOPS
+#### Premium SSD v2 - IOPS
 
-All Premium SSD v2 disks have a baseline of 3000 IOPS that is free of charge. After 6 GiB, the maximum IOPS a disk can have increases at a rate of 500 per GiB, up to 80,000 IOPS. So, an 8-GiB disk can have up to 4,000 IOPS, and a 10 GiB can have up to 5,000 IOPS. To be able to set 80,000 IOPS on a disk, that disk must have at least 160 GiBs. Increasing your IOPS beyond 3,000 increases the price of your disk.
+All Premium SSD v2 disks have a baseline of 3,000 IOPS that is free of charge. After 6 GiB, the maximum IOPS a disk can have increases at a rate of 500 per GiB, up to 80,000 IOPS. So, a disk of 8 GiB can have up to 4,000 IOPS, and a disk of 10 GiB can have up to 5,000 IOPS. To be able to set 80,000 IOPS on a disk, that disk must have at least 160 GiBs. Increasing your IOPS beyond 3,000 increases the price of your disk.
 
-#### Premium SSD v2 throughput
+#### Premium SSD v2 - Throughput
 
-All Premium SSD v2 disks have a baseline throughput of 125 MB/s that is free of charge. After 6 GiB, the maximum throughput that can be set increases by 0.25 MB/s per set IOPS. If a disk has 3,000 IOPS, the maximum throughput it can set is 750 MB/s. To raise the throughput for this disk beyond 750 MB/s, its IOPS must be increased. For example, if you increase the IOPS to 4,000, then the maximum throughput that can be set is 1,000. 1,200 MB/s is the maximum throughput supported for disks that have 5,000 IOPS or more. Increasing your throughput beyond 125 increases the price of your disk.
+All Premium SSD v2 disks have a baseline throughput of 125 MB/s that is free of charge. After 6 GiB, the maximum throughput that can be set increases by 0.25 MB/s per set IOPS. If a disk has 3,000 IOPS, the maximum throughput it can be set to is 750 MB/s. To raise the throughput for this disk beyond 750 MB/s, its IOPS must be increased. For example, if you increase the IOPS to 4,000, then the maximum throughput that can be set is 1,000. 1,200 MB/s is the maximum throughput supported for disks that have 5,000 IOPS or more. Increasing your throughput beyond 125 MB/s increases the price of your disk.
 
 > [!NOTE]  
-> Premium SSD v2 is currently in preview for Azure Database for PostgreSQL flexible server.
+> Premium SSD v2 is currently in preview for Azure Database for PostgreSQL - Flexible Server.
 
-#### Premium SSD v2 early preview limitations
+#### Premium SSD v2 - Limitations during preview
 
-- During the preview, features like High Availability, Read Replicas, Geo Redundant Backups, Customer Managed Keys, or Storage Autogrow features aren't supported for PV2.
+- [High availability](/azure/reliability/reliability-postgresql-flexible-server), [read replicas](concepts-read-replicas.md), [geographically redundant backups](concepts-geo-disaster-recovery.md), [data encryption with customer managed keys](concepts-data-encryption.md), or [storage autogrowth](#limitations-and-considerations-of-storage-autogrowth) features aren't supported for Premium SSD v2.
 
-- During the preview, online migration from PV1 to PV2 isn't supported. Customers can perform PITR (Point-In-Time-Restore) to migrate from PV1 to PV2.
+- Online migration from Premium SSD (PV1) to Premium SSD v2 (PV2) isn't supported. As an alternative, if you want to migrate across the different storage types, you can perform a [point-in-time-restore](concepts-backup-restore.md#point-in-time-recovery) of your existing server to a new one that is provisioned with a different storage type.
 
-- During the preview, you can enable Premium SSD V2 only for newly created servers. Enabling Premium SSD V2 on existing servers is currently not supported.
+- Premium SSD V2 can only be enabled for newly created servers. Enabling Premium SSD V2 on existing servers isn't supported.
 
-The storage that you provision is the amount of storage capacity available to your Azure Database for PostgreSQL server. The storage is used for the database files, temporary files, transaction logs, and PostgreSQL server logs. The total amount of storage that you provision also defines the I/O capacity available to your server.
+- Premium SSD V2 can only be enabled in the following regions: Australia East, Brazil South, Canada Central, Central India, Central US, East Asia, East US, East US 2, France Central, Germany West Central, Israel Central, Japan East, Korea Central, Norway East, Poland Central, South Central US, Southeast Asia, Switzerland North, UAE North, West Central US, West Europe, and West US 2.
 
-| Disk size | Premium SSD IOPS | Premium SSD V2 IOPS |
+The storage that you provision is the amount of storage capacity available to your Azure Database for PostgreSQL flexible server instance. This storage is used for database files, temporary files, transaction logs, and PostgreSQL server logs. The total amount of storage that you provision also defines the I/O capacity available to your server.
+
+| Disk size | Premium SSD IOPS | Premium SSD v2 IOPS |
 | :--- | :--- | :--- |
 | 32 GiB | Provisioned 120; up to 3,500 | First 3000 IOPS free can scale up to 17179 |
 | 64 GiB | Provisioned 240; up to 3,500 | First 3000 IOPS free can scale up to 34359 |
@@ -80,48 +81,50 @@ The storage that you provision is the amount of storage capacity available to yo
 | 32 TiB | 20,000 | First 3000 IOPS free can scale up to 80000 |
 | 64 TiB | N/A | First 3000 IOPS free can scale up to 80000 |
 
-The following table provides an overview of premium SSD V2 disk capacities and performance maximums to help you decide which to use.
+The following table provides an overview of premium SSD v2 disk capacities and performance maximums to help you decide which want you should use.
 
-| SSD v2 Disk size | Maximum available IOPS | Maximum available throughput (MB/s) |
+| SSD v2 disk size | Maximum available IOPS | Maximum available throughput (MB/s) |
 | :--- | :--- | :--- |
 | 1 GiB-64 TiBs | 3,000-80,000 (Increases by 500 IOPS per GiB) | 125-1,200 (increases by 0.25 MB/s per set IOPS) |
 
-Your VM type also has IOPS limits. Even though you can select any storage size independently from the server type, you might not be able to use all IOPS that the storage provides, especially when you choose a server with a few vCores.
-You can learn more about flexible server [Compute options in Azure Database for PostgreSQL - Flexible Server](concepts-compute.md).
+Your virtual machine type also has IOPS limits. Although you can select any storage size, independently from the server type, you might not be able to use all IOPS that the storage provides, especially when you choose a server with a few vCores.
+To learn more, see [compute options in Azure Database for PostgreSQL - Flexible Server](concepts-compute.md).
 
 > [!NOTE]  
-> Storage can only be scaled up, not down.
+> Regardless of the type of storage you assign to your instance, storage can only be scaled up, not down.
 
-You can monitor your I/O consumption in the Azure portal or by using Azure CLI commands. The relevant metrics to monitor are [storage limit, storage percentage, storage used, and I/O percentage](concepts-monitoring.md).
+You can monitor your I/O consumption in the [Azure portal](https://portal.azure.com/), or by using [Azure CLI commands](/cli/azure/monitor/metrics). The relevant metrics to monitor are [storage limit, storage percentage, storage used, and I/O percentage](concepts-monitoring.md).
 
-### Reach Storage Limits
+### Disk full conditions
 
-When you reach the storage limit, the server starts returning errors and prevents any further modifications. Reaching the limit might also cause problems with other operational activities, such as backups and write-ahead log (WAL) archiving.
-To avoid this situation, the server is automatically switched to read-only mode when the storage usage reaches 95 percent or when the available capacity is less than 5 GiB. You can use storage autogrow feature to avoid this issue with Premium SSD disk.
+When your disk becomes full, the server starts returning errors and prevents any further modifications. Reaching the limit might also cause problems with other operational activities, such as backups and write-ahead log (WAL) archiving.
 
-We recommend that you actively monitor the disk space that's in use and increase the disk size before you run out of storage. You can set up an alert to notify you when your server storage is approaching an out-of-disk state. For more information, see [Use the Azure portal to set up alerts on metrics for Azure Database for PostgreSQL - Flexible Server](how-to-alert-on-metrics.md).
+To avoid this situation, the server is automatically switched to read-only mode when the storage usage reaches 95 percent, or when the available capacity is less than 5 GiB. If you're using Premium SSD storage type, you can use the [storage autogrow](#storage-autogrow-premium-ssd) feature to avoid this issue from occurring.
+
+We recommend that you actively monitor the disk space that's in use, and increase the disk size before you run out of available space in your storage. You can set up an alert to notify you when your server storage is approaching an out-of-disk state. For more information, see how to [use the Azure portal to set up alerts on metrics for Azure Database for PostgreSQL - Flexible Server](how-to-alert-on-metrics.md).
 
 ### Storage autogrow (Premium SSD)
 
-Storage autogrow can help ensure that your server always has enough storage capacity and doesn't become read-only. When you turn on storage autogrow, disk size increases without affecting the workload. Storage Autogrow is only supported for Premium SSD storage tier. Premium SSD v2 doesn't support storage autogrow.
+Storage autogrow can help ensure that your server always has enough free space available, and doesn't become read-only. When you turn on storage autogrow, disk size increases without affecting the workload. Storage autogrow is only supported for Premium SSD storage tier.
 
-For servers with more than 1 TiB of provisioned storage, the storage autogrow mechanism activates when the available space falls to less than 10% of the total capacity or 64 GiB of free space, whichever of the two values are smaller. Conversely, for servers with storage under 1 TiB, this threshold is adjusted to 20% of the available free space or 64 GiB, depending on which of these values is smaller.
+For servers with more than 1 TiB of provisioned storage, the storage autogrow mechanism activates when the available space falls below 10% of the total capacity or 64 GiB, whichever of the two values are smaller. Conversely, for servers with storage under 1 TiB this threshold is adjusted to 20% of the available free space or 64 GiB, depending on which of these values is smaller.
 
-As an illustration, take a server with a storage capacity of 2 TiB (greater than 1 TiB). In this case, the autogrow limit is set at 64 GiB. This choice is made because 64 GiB is the smaller value when compared to 10% of 2 TiB, which is roughly 204.8 GiB. In contrast, for a server with a storage size of 128 GiB (less than 1 TiB), the autogrow feature activates when there's only 25.8 GiB of space left. This activation is based on the 20% threshold of the total allocated storage (128 GiB), which is smaller than 64 GiB.
+As an illustrative example, let's consider a server with a storage capacity of 2 TiB (which is greater than 1 TiB). In this case, the autogrow limit is set at 64 GiB. This choice is made because 64 GiB is the smaller value when compared to 10% of 2 TiB, which is roughly 204.8 GiB. In contrast, for a server with a storage size of 128 GiB (which is smaller than 1 TiB), the autogrow feature activates when there's only 25.8 GiB of space left. This activation is based on the 20% threshold of the total allocated storage (128 GiB), which is smaller than 64 GiB.
 
-The default behavior is to increase the disk size to the next premium SSD storage tier. This increase is always double in both size and cost, regardless of whether you start the storage scaling operation manually or through storage autogrow. Enabling storage autogrow is valuable when you're managing unpredictable workloads, because it automatically detects low-storage conditions and scales up the storage accordingly.
+The default behavior increases the disk size to the next premium SSD storage size. This increase is always double in both size and cost, regardless of whether you start the storage scaling operation manually or through storage autogrow. Enabling storage autogrow is valuable when you're managing unpredictable workloads, because it automatically detects low-storage conditions and scales up the storage accordingly.
 
-The process of scaling storage is performed online without causing any downtime, except when the disk is provisioned at 4,096 GiB. This exception is a limitation of Azure Managed disks. If a disk is already 4,096 GiB, the storage scaling activity isn't triggered, even if storage autogrow is turned on. In such cases, you need to scale your storage manually. Manual scaling is an offline operation that you should plan according to your business requirements.
+The process of scaling storage is performed online, without causing any downtime, except when the disk size needs to cross the border of 4,096 GiB. This exception is a limitation of [Azure managed disks](/azure/virtual-machines/managed-disks-overview). In that case, the automatic storage scaling activity isn't triggered, even if storage autogrow setting is enabled for the server. In such cases, you need to scale your storage manually. Please be aware that in this scenario (reaching or crossing the 4096 GiB boundary), manual scaling is an offline operation. We recommend scheduling this task to align with your business needs. All other operations can be performed online. Once the allocated disk size is 8,192 GiB or higher, storage autogrow triggers again automatically and every subsequent storage grow operation is performed online until the disk allocated reaches its maximum growing capacity, which is 32,768 GiB.
 
-Remember that storage can only be scaled up, not down.
+> [!NOTE]  
+> Regardless of the type of storage you assign to your instance, storage can only be scaled up, not down.
 
-## Storage Autogrow Limitations and Considerations
+## Limitations and considerations of storage autogrowth 
 
-- Disk scaling operations are always online, except in specific scenarios that involve the 4,096-GiB boundary. These scenarios include reaching, starting at, or crossing the 4,096-GiB limit. An example is when you're scaling from 2,048 GiB to 8,192 GiB.
+- Disk scaling operations are typically performed online, except in specific scenarios involving crossing the boundary of 4,096 GiB. These scenarios include reaching or crossing the limit of 4,096 GiB. For instance, scaling from 2,048 GiB to 8,192 GiB triggers an offline operation. In the Azure portal, moving to 4 TB, which is represented as 4,095 GiB, keeps the operation online. However, if you explicitly specify 4 TB as 4,096 GiB, such as in Azure CLI, the scaling operation is completed in offline mode, since it reaches the limit of 4,096 GiB. Oflline scale operation usually takes anywhere between 2 to 10 minutes. With the [reduced downtime scaling feature](concepts-scaling-resources.md), this duration is reduced to less than 30 seconds. This reduction in downtime during scaling resources improves the overall availability of your database instance.
 
-- Host Caching (ReadOnly and Read/Write) is supported on disk sizes less than 4 TiB. Any disk that is provisioned up to 4,095 GiB can take advantage of Host Caching. Host caching isn't supported for disk sizes more than or equal to 4,096 GiB. For example, a P50 premium disk provisioned at 4,095 GiB can take advantage of Host caching and a P50 disk provisioned at 4,096 GiB can't take advantage of Host Caching. Customers moving from lower disk size to 4,096 GiB or higher won't get   disk caching ability.
+- Host Caching (ReadOnly and Read/Write) is supported on disk sizes less than 4 TiB. Any disk that is provisioned up to 4,095 GiB can take advantage of Host Caching. Host caching isn't supported for disk sizes more than or equal to 4,096 GiB. For example, a P50 premium disk provisioned at 4,095 GiB can take advantage of Host caching and a P50 disk provisioned at 4,096 GiB can't take advantage of Host Caching. Customers moving from lower disk size to 4,096 GiB or higher lose the ability to use disk caching.
 
-  This limitation is due to the underlying Azure Managed disk, which needs a manual disk scaling operation. You receive an informational message in the portal when you approach this limit.
+  This limitation is due to the underlying [Azure managed disks](/azure/virtual-machines/managed-disks-overview), which needs a manual disk scaling operation. You receive an informational message in the portal when you approach this limit.
 
 - Storage autogrow isn't triggered when you have high WAL usage.
 
@@ -130,22 +133,18 @@ Remember that storage can only be scaled up, not down.
 
 ## IOPS scaling
 
-Azure Database for PostgreSQL flexible server supports provisioning of extra IOPS. This feature enables you to provision more IOPS above the complimentary IOPS limit. Using this feature, you can increase or decrease the number of IOPS provisioned based on your workload requirements at any time.
+Azure Database for PostgreSQL - Flexible Server supports provisioning of extra IOPS. This feature enables you to provision more IOPS beyond the complimentary IOPS limit. Using this feature, you can increase or decrease the number of IOPS provisioned, to adjust them to your workload requirements at any time.
 
-The minimum and maximum IOPS are determined by the selected compute size. To learn more about the minimum and maximum IOPS per compute size refer to the [compute size](concepts-compute.md).
+The compute size selected determines the minimum and maximum IOPS. To learn more about the minimum and maximum IOPS per compute size, see [compute size](concepts-compute.md).
 
 > [!IMPORTANT]  
-> Minimum and maximum IOPS are determined by the selected compute size.
+> The selected compute size determines the minimum and maximum IOPS.
 
 Learn how to [scale up or down IOPS](how-to-scale-compute-storage-portal.md).
 
-## Price
-
-For the most up-to-date pricing information, see the [Azure Database for PostgreSQL flexible server pricing](https://azure.microsoft.com/pricing/details/postgresql/flexible-server/) page. The [Azure portal](https://portal.azure.com/#create/Microsoft.PostgreSQLServer) shows the monthly cost on the **Pricing tier** tab, based on the options that you select.
-
-If you don't have an Azure subscription, you can use the Azure pricing calculator to get an estimated price. On the [Azure pricing calculator](https://azure.microsoft.com/pricing/calculator/) website, select **Add items**, expand the **Databases** category, and then select **Azure Database for PostgreSQL** to customize the options.
+[!INCLUDE [pricing](includes/compute-storage-princing.md)]
 
 ## Related content
 
-- [Manage Azure Database for PostgreSQL - Flexible Server using the Azure portal](how-to-manage-server-portal.md)
-- [Limits in Azure Database for PostgreSQL - Flexible Server](concepts-limits.md)
+- [Manage Azure Database for PostgreSQL - Flexible Server](how-to-manage-server-portal.md).
+- [Limits in Azure Database for PostgreSQL - Flexible Server](concepts-limits.md).

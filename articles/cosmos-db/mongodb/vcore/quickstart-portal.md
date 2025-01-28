@@ -7,8 +7,10 @@ author: gahl-levy
 ms.author: gahllevy
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
+ms.custom:
+  - ignite-2024
 ms.topic: quickstart
-ms.date: 08/08/2024
+ms.date: 11/06/2024
 ---
 
 # Quickstart: Create an Azure Cosmos DB for MongoDB vCore cluster by using the Azure portal
@@ -68,9 +70,7 @@ Create a MongoDB cluster by using Azure Cosmos DB for MongoDB vCore.
 
     :::image type="content" source="media/quickstart-portal/configure-cluster.png" alt-text="Screenshot of various configuration options for a cluster.":::
 
-1. Leave **Access to global distribution (preview)** and **Free tier** unselected.
-
-1. Select **Next: Global distribution (preview)**.
+1. Select **Next: Global distribution**.
 
 1. Select **Next: Networking**.
 
@@ -100,7 +100,7 @@ Get the connection string you need to connect to this cluster using your applica
 1. Copy or record the value from the **Connection string** field.
 
     > [!IMPORTANT]
-    > The connection string in the portal does not include the username and password values. You must replace the `<user>` and `<password>` placeholders with the credentials you entered when you created the cluster.
+    > The connection string in the portal does not include the password value. You must replace the `<password>` placeholder with the credentials you entered when you created the cluster or enter password interactively.
 
 ## Clean up resources
 

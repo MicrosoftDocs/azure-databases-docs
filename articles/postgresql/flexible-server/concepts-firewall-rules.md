@@ -16,7 +16,7 @@ ms.topic: conceptual
 
 When you're running Azure Database for PostgreSQL flexible server, you have two main networking options. The options are private access (virtual network integration) and public access (allowed IP addresses). 
 
-With public access, the Azure Database for PostgreSQL flexible server instance is accessed through a public endpoint. By default, the firewall blocks all access to the server. To specify which IP hosts can access the server, you create server-level *firewall rules*. Firewall rules specify allowed public IP address ranges. The firewall grants access to the server based on the originating IP address of each request. With [private access](concepts-networking.md#private-access-vnet-integration) no public endpoint is available and only hosts located on the same network can access Azure Database for PostgreSQL flexible server. 
+With public access, the Azure Database for PostgreSQL flexible server instance is accessed through a public endpoint. By default, the firewall blocks all access to the server. To specify which IP hosts can access the server, you create server-level *firewall rules*. Firewall rules specify allowed public IP address ranges. The firewall grants access to the server based on the originating IP address of each request. With [private access](concepts-networking-private.md#private-access-virtual-network-integration) no public endpoint is available and only hosts located on the same network can access Azure Database for PostgreSQL flexible server. 
 
 You can create firewall rules by using the Azure portal or by using Azure CLI commands. You must be the subscription owner or a subscription contributor.
 
@@ -74,8 +74,6 @@ Consider the following possibilities when access to an Azure Database for Postgr
 
 * **Firewall rules aren't available for IPv6 format**: The firewall rules must be in IPv4 format. If you specify firewall rules in IPv6 format, you'll get a validation error.
 
+## Related content
 
-## Next steps
-
-* [Create and manage Azure Database for PostgreSQL flexible server firewall rules by using the Azure portal](how-to-manage-firewall-portal.md)
-* [Create and manage Azure Database for PostgreSQL flexible server firewall rules by using the Azure CLI](how-to-manage-firewall-cli.md)
+- [Create and manage firewall rules for Azure Database for PostgreSQL - Flexible Server](how-to-manage-firewall-portal.md).

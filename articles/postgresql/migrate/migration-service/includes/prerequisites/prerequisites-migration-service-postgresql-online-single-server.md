@@ -1,10 +1,10 @@
 ---
-title: "Prerequisites for the migration service in Azure Database for PostgreSQL (online)"
+title: "Prerequisites for the Migration Service in Azure Database for PostgreSQL (Online)"
 description: Providing the prerequisites of the migration service in Azure Database for PostgreSQL
 author: hariramt
 ms.author: hariramt
 ms.reviewer: maghan
-ms.date: 06/19/2024
+ms.date: 01/24/2025
 ms.service: azure-database-postgresql
 ms.topic: include
 ---
@@ -27,7 +27,7 @@ For Online migration, the replication support should be set to Logical under rep
 
 Ensure that there are no **long running transactions**. Long running transactions don't allow creation of replication slots. The creation of a replication slot will succeed if all long running transactions are committed or rolled-back. You'll need to restart the source PostgreSQL server after completing all the Online migration prerequisites.
 
-> [!NOTE]
+> [!NOTE]  
 > For online migration with Azure Database for PostgreSQL single server, the Azure replication support is set to logical under the replication settings of the single server page in the Azure portal.
 
 To prevent the Online migration from running out of storage to store the logs, ensure that you have sufficient tablespace space using a provisioned managed disk. To achieve this, disable the server parameter `azure.enable_temp_tablespaces_on_local_ssd` on the Flexible Server for the duration of the migration, and restore it to the original state after the migration.
@@ -43,6 +43,11 @@ To prevent the Online migration from running out of storage to store the logs, e
 - The server parameter `max_replication_slots` should be more than the number of Databases that need to be migrated. It can be set in the Azure portal under **Settings->Server Parameters** or configured in the command line using the following command:
 
 - ALTER SYSTEM SET max_replication_slots = `number of databases to migrate` + 1;
+
+- When migrating across PostgreSQL versions (major or minor), ensure compatibility between your database and application by reviewing the [release notes](https://www.postgresql.org/docs/17/release.html) for potential breaking changes.
+
+> [!IMPORTANT]  
+> [Change the **password_encryption** server parameter on your flexible server](../../../../flexible-server/how-to-configure-server-parameters-using-portal.md) from SCRAM-SHA-256 to MD5 before initating the migration. This is essential for the existing credentials on single server to work on your flexible server.
 
 ### Set up Network
 

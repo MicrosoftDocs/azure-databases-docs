@@ -1,12 +1,12 @@
 ---
 title: Databases, containers, and items
 titleSuffix: Azure Cosmos DB
-description: Learn about the hierarchy of an account's elements in an Azure Cosmos DB resource model.
+description: Learn about the hierarchy of resources that composes an Azure Cosmos DB account in the service's hierarchical resource model.
 author: markjbrown
 ms.author: mjbrown
 ms.service: azure-cosmos-db
-ms.topic: conceptual
-ms.date: 02/27/2023
+ms.topic: concept-article
+ms.date: 09/26/2024
 ---
 
 # Databases, containers, and items in Azure Cosmos DB
@@ -29,7 +29,7 @@ For replicating your data and throughput across multiple Azure regions, you can 
 
 ## Elements in an Azure Cosmos DB account
 
-Currently, you can create a maximum of 50 Azure Cosmos DB accounts under an Azure subscription. You can increase this limit by making a support request.
+Currently, you can create a maximum of 250 Azure Cosmos DB accounts under an Azure subscription. You can increase this limit by making a support request.
 
 You can manage a virtually unlimited amount of data and provisioned throughput by using a single Azure Cosmos DB account. To manage your data and provisioned throughput, you create one or more databases within your account and then create one or more containers to store your data.
 
@@ -146,9 +146,7 @@ Azure Cosmos DB items support the following operations. You can use any of the A
 | --- | --- | --- | --- | --- | --- |
 | Insert, replace, delete, upsert, read | Yes | Yes | Yes | Yes | Yes |
 
-## Next steps
-
-Learn about how to manage your Azure Cosmos DB account and other concepts:
+## Related content
 
 - [Manage an Azure Cosmos DB account by using the Azure portal](how-to-manage-database-account.yml)
 - [Distribute your data globally with Azure Cosmos DB](distribute-data-globally.md)

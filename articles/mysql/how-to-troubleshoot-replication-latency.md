@@ -1,22 +1,22 @@
 ---
-title: Troubleshoot replication latency - Azure Database for MySQL - Flexible Server
+title: Troubleshoot Replication Latency - Azure Database for MySQL - Flexible Server
 description: Learn how to troubleshoot replication latency by using Azure Database for MySQL - Flexible Server read replicas.
-keywords: mysql, troubleshoot, replication latency in seconds
-ms.service: azure-database-mysql
-ms.subservice: flexible-server
 author: VandhanaMehta
 ms.author: vamehta
+ms.reviewer: maghan
+ms.date: 11/27/2024
+ms.service: azure-database-mysql
+ms.subservice: flexible-server
 ms.topic: troubleshooting
-ms.date: 12/01/2023
+keywords:
+  - mysql
+  - troubleshoot
+  - replication latency in seconds
 ---
 
 # Troubleshoot replication latency in Azure Database for MySQL - Flexible Server
 
-[!INCLUDE[applies-to-mysql-single-flexible-server](includes/applies-to-mysql-single-flexible-server.md)]
-
-[!INCLUDE[azure-database-for-mysql-single-server-deprecation](~/reusable-content/ce-skilling/azure/includes/mysql/includes/azure-database-for-mysql-single-server-deprecation.md)]
-
-[!INCLUDE[inclusive-language-guidelines-slave](includes/inclusive-language-guidelines-slave.md)]
+[!INCLUDE [inclusive-language-guidelines-slave](includes/inclusive-language-guidelines-slave.md)]
 
 The [read replica](concepts-read-replicas.md) feature allows you to replicate data from an Azure Database for MySQL server to a read-only replica server. You can scale out workloads by routing read and reporting queries from the application to replica servers. This setup reduces the pressure on the source server and improves overall performance and latency of the application as it scales.
 
@@ -31,9 +31,6 @@ The replication lag on the secondary read replicas depends several factors. Thes
 
 In this article, you'll learn how to troubleshoot replication latency in Azure Database for MySQL. You'll also get a better idea of some common causes of increased replication latency on replica servers.
 
-> [!NOTE]
-> This article contains references to the term *slave*, a term that Microsoft no longer uses. When the term is removed from the software, we'll remove it from this article.
-
 ## Replication concepts
 
 When a binary log is enabled, the source server writes committed transactions into the binary log. The binary log is used for replication. It's turned on by default for all newly provisioned servers that support up to 16 TB of storage. On replica servers, two threads run on each replica server. One thread is the *IO thread*, and the other is the *SQL thread*:
@@ -45,7 +42,7 @@ When a binary log is enabled, the source server writes committed transactions in
 
 Azure Database for MySQL provides the metric for replication lag in seconds in [Azure Monitor](concepts-monitoring.md). This metric is available only on read replica servers. It's calculated by the seconds_behind_master metric that's available in MySQL.
 
-To understand the cause of increased replication latency, connect to the replica server by using [MySQL Workbench](connect-workbench.md) or [Azure Cloud Shell](https://shell.azure.com). Then run following command.
+To understand the cause of increased replication latency, connect to the replica server by using [MySQL Workbench](connect-workbench.md) or [Azure Cloud Shell](https://portal.azure.com/#cloudshell). Then run following command.
 
 > [!NOTE]
 > In your code, replace the example values with your replica server name and admin username. The admin username requires `@\<servername>` for Azure Database for MySQL.
@@ -90,7 +87,7 @@ mysql> SHOW SLAVE STATUS;
 Here's a typical output:
   
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/how-to-troubleshoot-replication-latency/show-status.png" alt-text="Monitoring replication latency":::
+> 
 
 The output contains numerous information. Normally, you need to focus on only the rows that the following table describes.
 

@@ -1,26 +1,28 @@
 ---
-title: 'Tutorial: Azure Cosmos DB global distribution tutorial for the API for NoSQL'
-description: 'Tutorial: Learn how to set up Azure Cosmos DB global distribution using the API for NoSQL with .NET, Java, Python and various other SDKs'
+title: Configure Azure Cosmos DB global distribution
+titleSuffix: Azure Cosmos DB for NoSQL
+description: Learn how to set up Azure Cosmos DB global distribution using the API for NoSQL with .NET, Java, Python, and various other SDKs
 author: markjbrown
 ms.author: mjbrown
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: tutorial
-ms.date: 04/03/2022
+ms.date: 10/03/2024
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp, devx-track-dotnet, devx-track-extended-java
 ---
-# Tutorial: Set up Azure Cosmos DB global distribution using the API for NoSQL
+
+# Tutorial: Set up global distribution using Azure Cosmos DB for NoSQL
+
 [!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
 
 In this article, we show how to use the Azure portal to set up Azure Cosmos DB global distribution and then connect using the API for NoSQL.
 
-This article covers the following tasks: 
+This article covers the following tasks:
 
 > [!div class="checklist"]
 > * Configure global distribution using the Azure portal
 > * Configure global distribution using the [API for NoSQLs](../introduction.md)
 
-<a id="portal"></a>
 [!INCLUDE [cosmos-db-tutorial-global-distribution-portal](../includes/cosmos-db-tutorial-global-distribution-portal.md)]
 
 ## <a id="preferred-locations"></a> Connecting to a preferred region using the API for NoSQL
@@ -29,7 +31,7 @@ In order to take advantage of [global distribution](../distribute-data-globally.
 
 This preference list is specified when initializing a connection using the SQL SDKs. The SDKs accept an optional parameter `PreferredLocations` that is an ordered list of Azure regions.
 
-The SDK will automatically send all writes to the current write region. All reads will be sent to the first available region in the preferred locations list. If the request fails, the client will fail down the list to the next region.
+The SDK will automatically send all writes to the current write region. All reads are sent to the first available region in the preferred locations list. If the request fails, the client will fail down the list to the next region.
 
 The SDK will only attempt to read from the regions specified in preferred locations. So, for example, if the Azure Cosmos DB account is available in four regions, but the client only specifies two read(non-write) regions within the `PreferredLocations`, then no reads will be served out of the read region that is not specified in `PreferredLocations`. If the read regions specified in the `PreferredLocations` list are not available, reads will be served out of write region.
 
@@ -40,7 +42,6 @@ If you don't specify the preferred locations but used the `setCurrentLocation` m
 ## .NET SDK
 
 The SDK can be used without any code changes. In this case, the SDK automatically directs both reads and writes to the current write region.
-
 In version 1.8 and later of the .NET SDK, the ConnectionPolicy parameter for the DocumentClient constructor has a property called Microsoft.Azure.Documents.ConnectionPolicy.PreferredLocations. This property is of type Collection `<string>` and should contain a list of region names. The string values are formatted per the region name column on the [Azure Regions][regions] page, with no spaces before or after the first and last character respectively.
 
 The current write and read endpoints are available in DocumentClient.WriteEndpoint and DocumentClient.ReadEndpoint respectively.
@@ -48,7 +49,6 @@ The current write and read endpoints are available in DocumentClient.WriteEndpoi
 > [!NOTE]
 > The URLs for the endpoints should not be considered as long-lived constants. The service may update these at any point. The SDK handles this change automatically.
 >
-
 # [.NET SDK V2](#tab/dotnetv2)
 
 If you are using the .NET V2 SDK, use the `PreferredLocations` property to set the preferred region.
@@ -56,19 +56,17 @@ If you are using the .NET V2 SDK, use the `PreferredLocations` property to set t
 ```csharp
 // Getting endpoints from application settings or other configuration location
 Uri accountEndPoint = new Uri(Properties.Settings.Default.GlobalDatabaseUri);
-string accountKey = Properties.Settings.Default.GlobalDatabaseKey;
-  
+
 ConnectionPolicy connectionPolicy = new ConnectionPolicy();
 
 //Setting read region selection preference
 connectionPolicy.PreferredLocations.Add(LocationNames.WestUS); // first preference
 connectionPolicy.PreferredLocations.Add(LocationNames.EastUS); // second preference
 connectionPolicy.PreferredLocations.Add(LocationNames.NorthEurope); // third preference
-
 // initialize connection
 DocumentClient docClient = new DocumentClient(
     accountEndPoint,
-    accountKey,
+    credential,
     connectionPolicy);
 
 // connect to DocDB
@@ -80,8 +78,7 @@ Alternatively, you can use the `SetCurrentLocation` property and let the SDK cho
 ```csharp
 // Getting endpoints from application settings or other configuration location
 Uri accountEndPoint = new Uri(Properties.Settings.Default.GlobalDatabaseUri);
-string accountKey = Properties.Settings.Default.GlobalDatabaseKey;
-  
+
 ConnectionPolicy connectionPolicy = new ConnectionPolicy();
 
 connectionPolicy.SetCurrentLocation("West US 2"); /
@@ -89,7 +86,7 @@ connectionPolicy.SetCurrentLocation("West US 2"); /
 // initialize connection
 DocumentClient docClient = new DocumentClient(
     accountEndPoint,
-    accountKey,
+    credential,
     connectionPolicy);
 
 // connect to DocDB
@@ -101,13 +98,11 @@ await docClient.OpenAsync().ConfigureAwait(false);
 If you are using the .NET V3 SDK, use the `ApplicationPreferredRegions` property to set the preferred region.
 
 ```csharp
-
 CosmosClientOptions options = new CosmosClientOptions();
 options.ApplicationName = "MyApp";
 options.ApplicationPreferredRegions = new List<string> {Regions.WestUS, Regions.WestUS2};
 
-CosmosClient client = new CosmosClient(connectionString, options);
-
+CosmosClient client = new CosmosClient(endpoint, credential, options);
 ```
 
 Alternatively, you can use the `ApplicationRegion` property and let the SDK choose the preferred location based on proximity.
@@ -118,7 +113,7 @@ options.ApplicationName = "MyApp";
 // If the application is running in West US
 options.ApplicationRegion = Regions.WestUS;
 
-CosmosClient client = new CosmosClient(connectionString, options);
+CosmosClient client = new CosmosClient(endpoint, tokenCredential, options);
 ```
 
 ---
@@ -127,7 +122,6 @@ CosmosClient client = new CosmosClient(connectionString, options);
 
 > [!NOTE]
 > The URLs for the endpoints should not be considered as long-lived constants. The service may update these at any point. The SDK will handle this change automatically.
->
 >
 
 Below is a code example for Node.js/JavaScript.
@@ -140,7 +134,7 @@ Below is a code example for Node.js/JavaScript.
 const preferredLocations = ['West US', 'East US', 'North Europe'];
 
 // initialize the connection
-const client = new CosmosClient{ endpoint, key, connectionPolicy: { preferredLocations } });
+const client = new CosmosClient({ endpoint, aadCredentials: tokenCredential, connectionPolicy: { preferredLocations } });
 ```
 
 ## Python SDK
@@ -150,8 +144,7 @@ The following code shows how to set preferred locations by using the Python SDK:
 ```python
 connectionPolicy = documents.ConnectionPolicy()
 connectionPolicy.PreferredLocations = ['West US', 'East US', 'North Europe']
-client = cosmos_client.CosmosClient(ENDPOINT, {'masterKey': MASTER_KEY}, connectionPolicy)
-
+client = cosmos_client.CosmosClient(ENDPOINT, credential=token_credential, connectionPolicy)
 ```
 
 ## <a id="java4-preferred-locations"></a> Java V4 SDK
@@ -160,17 +153,39 @@ The following code shows how to set preferred locations by using the Java SDK:
 
 # [Async](#tab/api-async)
 
-   [Java SDK V4](sdk-java-v4.md) (Maven [com.azure::azure-cosmos](https://mvnrepository.com/artifact/com.azure/azure-cosmos)) Async API
+```java
+ArrayList<String> preferredRegions = new ArrayList<String>();
+preferredRegions.add("East US");
+preferredRegions.add( "West US");
+preferredRegions.add("Canada Central");
 
-   [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=TutorialGlobalDistributionPreferredLocationAsync)]
+CosmosAsyncClient client =
+        new CosmosClientBuilder()
+                .endpoint(HOST)
+                .credential(tokenCredential)
+                .preferredRegions(preferredRegions)
+                .contentResponseOnWriteEnabled(true)
+                .buildAsyncClient();
+```
 
 # [Sync](#tab/api-sync)
 
-   [Java SDK V4](sdk-java-v4.md) (Maven [com.azure::azure-cosmos](https://mvnrepository.com/artifact/com.azure/azure-cosmos)) Sync API
+```java
+ArrayList<String> preferredRegions = new ArrayList<String>();
+preferredRegions.add("East US");
+preferredRegions.add( "West US");
+preferredRegions.add("Canada Central");
 
-   [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/sync/SampleDocumentationSnippets.java?name=TutorialGlobalDistributionPreferredLocationSync)]
+CosmosClient client =
+        new CosmosClientBuilder()
+                .endpoint(HOST)
+                .credential(tokenCredential)
+                .preferredRegions(preferredRegions)
+                .contentResponseOnWriteEnabled(true)
+                .buildClient();
+```
 
---- 
+---
 
 ## Spark 3 Connector
 
@@ -179,7 +194,6 @@ You can define the preferred regional list using the `spark.cosmos.preferredRegi
 ```scala
 val sparkConnectorConfig = Map(
   "spark.cosmos.accountEndpoint" -> cosmosEndpoint,
-  "spark.cosmos.accountKey" -> cosmosMasterKey,
   "spark.cosmos.preferredRegionsList" -> "[West US, East US, North Europe]"
   // other settings
 )
@@ -225,7 +239,7 @@ Example response
 }
 ```
 
-* All PUT, POST and DELETE requests must go to the indicated write URI
+* All PUT, POST, and DELETE requests must go to the indicated write URI
 * All GETs and other read-only requests (for example queries) may go to any endpoint of the client's choice
 
 Write requests to read-only regions will fail with HTTP error code 403 ("Forbidden").

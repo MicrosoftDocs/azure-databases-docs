@@ -1,5 +1,5 @@
 ---
-title: Cross-region replication (preview)
+title: Cross-region replication
 titleSuffix: Azure Cosmos DB for MongoDB vCore
 description: Learn about Azure Cosmos DB for MongoDB vCore cross-region disaster recovery (DR) and read replicas.
 author: niklarin
@@ -8,20 +8,15 @@ ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.custom:
   - build-2024
+  - ignite-2024
 ms.topic: concept-article
-ms.date: 08/26/2024
+ms.date: 01/08/2025
 #Customer Intent: As a database adminstrator, I want to configure cross-region replication, so that I can have disaster recovery plans in the event of a regional outage.
 ---
 
-# Cross-region replication in Azure Cosmos DB for MongoDB vCore (preview)
+# Cross-region replication in Azure Cosmos DB for MongoDB vCore
 
 [!INCLUDE[MongoDB vCore](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
-
-> [!IMPORTANT]
-> Cross-region replication in Azure Cosmos DB for MongoDB vCore is currently in preview.
-> This preview version is provided without a service level agreement (SLA), and it's not recommended
-> for production workloads. Certain features might not be supported or might have constrained
-> capabilities.
 
 This article discusses cross-region disaster recovery (DR) for Azure Cosmos DB for MongoDB vCore. It also covers read capabilities of the cluster replicas in other regions for read operations scalability.
 
@@ -35,22 +30,22 @@ Cross-region replication is one of several important pillars in [the Azure busin
 
 When cross-region replication is enabled on an Azure Cosmos DB for MongoDB vCore cluster, each shard gets replicated to another region continuously. This replication maintains a replica of data in the selected region. Such a replica is ready to be used as a part of disaster recovery plan in a rare case of the primary region outage. Replication is asynchronous. Write operations on the primary cluster's shard don't wait for completed replication to the corresponding replica's shard before sending confirmation of a successful write. Asynchronous replication helps to avoid increased latencies for write operations on the primary cluster.  
 
-## Read operations on cluster replicas and connection strings
+## Continuous writes, read operations on cluster replicas, and connection strings
 
-Replica clusters are also available for reads. It helps offload intensive read operations from the primary cluster or deliver reduced latency for read operations to the clients that are located closer to the replication region.
+The global read-write connection string in Azure Cosmos DB for MongoDB consistently directs writes to the active write-enabled cluster. When initiating a replica cluster promotion, the replica cluster in Region B is switched to write mode, while the original primary cluster in Region A transitions to read-only. Before promotion, the global read-write connection string targets the primary cluster in Region A and then updates to point to Region B as it assumes write responsibilities. For applications using the global read-write connection string, write operations continue seamlessly throughout the promotion process, maintaining uninterrupted data flow.
 
-When you create a replica by enabling cross-region replication, it doesn't inherit networking settings such as firewall rules of the primary cluster. These settings must be set up independently for the replica.
+Replica clusters are also available for reads. It helps offload intensive read operations from the primary cluster or deliver reduced latency for read operations to the clients that are located closer to the replication region. When cross-region replication is enabled, applications can use the replica cluster self connection string to perform reads from the cluster replica. The primary cluster is available for read and write operations using its own self connection string. 
 
-The replica inherits the admin account from the primary cluster. User accounts need to be managed on the primary cluster. You can connect to the primary cluster and its replica cluster using the same user accounts.
+:::image type="content" source="media/cross-region-replication/global-read-write-connection-string-in-azure-portal.png" alt-text="Screenshot of the cluster connection strings an Azure Cosmos DB for MongoDB (vCore) cluster including global read-write connection string and self connection string.":::
 
-When cross-region replication is enabled, applications can use the replica cluster connection string to perform reads from the cluster replica. The primary cluster is available for read and write operations using its own connection string.
+When you create a replica by enabling cross-region replication, it doesn't inherit networking settings such as firewall rules of the primary cluster. These settings must be set up independently for the replica. The replica inherits the admin account from the primary cluster. User accounts need to be managed on the primary cluster. You can connect to the primary cluster and its replica cluster using the same user accounts.
 
 ## Replica cluster promotion
 
 If a region outage occurs, you can perform disaster recovery operation by promoting your cluster replica in another region to become available for writes. During replica promotion operation, these steps are happening:
 
 1. Writes on the replica in region B are enabled in addition to reads. The former replica becomes a new read-write cluster.
-1. The promoted replica cluster accepts writes using its connection string.
+1. The promoted replica cluster in region B accepts writes using its connection string and the global read-write connection string.
 1. The cluster in region A is set to read-only and keeps its connection string.
 
 > [!IMPORTANT]
@@ -59,5 +54,6 @@ If a region outage occurs, you can perform disaster recovery operation by promot
 ## Related content
 
 - [Learn how to enable cross-region replication and promote replica cluster](./how-to-cluster-replica.md)
-- [See cross-region replication preview limits and limitations](./limits.md#cross-region-replication-preview)
+- [See cross-region replication limits and limitations](./limits.md#cross-region-replication)
+- To resolve an issue with cross-region replication see [this troubleshooting guide](./troubleshoot-replication.md).
 - [Learn about reliability in Azure Cosmos DB for MongoDB vCore](/azure/reliability/reliability-cosmos-mongodb)

@@ -61,8 +61,8 @@ This article requires Azure CLI version 2.30.0 or later. If you're using Azure C
 
     ```shell
       "identity": {
-        "principalId": "1aa51c7f-196a-4013-a656-1ccabfdc54e0",
-        "tenantId": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+        "principalId": "aaaaaaaa-bbbb-cccc-1111-222222222222",
+        "tenantId": "aaaabbbb-0000-cccc-1111-dddd2222eeee",
         "type": "SystemAssigned"
       }
     ```

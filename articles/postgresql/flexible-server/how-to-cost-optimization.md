@@ -56,7 +56,7 @@ If your workload requires AZ resiliency and lower RTO, you can enable High Avail
 
 Key take away is to evaluate the requirement of your full application stack and then choose the right configuration for the Azure Database for PostgreSQL flexible server instance. For example, if your application isn't AZ resilient, there's nothing to be gained by configuring Azure Database for PostgreSQL flexible server in AZ resilient configuration.
 
-To learn more, see [High availability architecture in Flexible Server](concepts-high-availability.md)
+To learn more, see [High availability architecture in Flexible Server]/azure/reliability/reliability-postgresql-flexible-server
 
 ## 5. Consolidate databases and servers
 
@@ -94,7 +94,7 @@ Starting and stopping servers can be a cost-saving strategy for Azure Database f
 1. Stop the server: Stop the Azure Database for PostgreSQL flexible server instance when you don't need it. You can stop the server using the Azure portal, Azure CLI, or Azure REST API.
 1. Also, if a server has been in a stopped (or idle) state for several continuous weeks, you can consider dropping the server after the required due diligence.
 
-By starting and stopping the server as needed, you can reduce the cost of running Azure Database for PostgreSQL flexible server. To ensure smooth database performance, it is crucial to evaluate the impact of starting and stopping the server and have a reliable process in place for these actions as required. To learn more, see [Stop/start an Azure Database for PostgreSQL - Flexible Server instance](how-to-stop-start-server-portal.md).
+By starting and stopping the server as needed, you can reduce the cost of running Azure Database for PostgreSQL flexible server. To ensure smooth database performance, it is crucial to evaluate the impact of starting and stopping the server and have a reliable process in place for these actions as required. To learn more, see [Stop an instance of Azure Database for PostgreSQL flexible server](how-to-stop-server.md) and [Start an instance of Azure Database for PostgreSQL flexible server](how-to-start-server.md).
 
 ## 8. Archive old data for cold storage
 
@@ -127,12 +127,9 @@ As you design your application database on Azure Database for PostgreSQL flexibl
 **Cost vs operational excellence**
 > Investing in systems monitoring and automation might increase the cost initially but over time will reduce cost.
 
-## Next steps
+## Related content
 
-To learn more about cost optimization, see:
-
-* [Overview of the cost optimization pillar](/azure/architecture/framework/cost/overview)
-* [Tradeoffs for cost](/azure/architecture/framework/cost/tradeoffs)
-* [Checklist - Optimize cost](/azure/architecture/framework/cost/optimize-checklist)
-* [Checklist - Monitor cost](/azure/architecture/framework/cost/monitor-checklist)
-
+- [Overview of the cost optimization pillar](/azure/architecture/framework/cost/overview).
+- [Tradeoffs for cost](/azure/architecture/framework/cost/tradeoffs).
+- [Checklist - Optimize cost](/azure/architecture/framework/cost/optimize-checklist).
+- [Checklist - Monitor cost](/azure/architecture/framework/cost/monitor-checklist).

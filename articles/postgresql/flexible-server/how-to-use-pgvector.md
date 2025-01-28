@@ -14,7 +14,7 @@ ms.custom:
   - ignite-2023
 ---
 
-# How to enable and use pgvector on Azure Database for PostgreSQL - Flexible Server
+# Enable and use pgvector in Azure Database for PostgreSQL - Flexible Server
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
@@ -22,7 +22,7 @@ ms.custom:
 
 ## Enable extension
 
-Before you can enable `pgvector` on your Azure Database for PostgreSQL flexible server instance, you need to add it to your allowlist as described in [how to use PostgreSQL extensions](./concepts-extensions.md#how-to-use-postgresql-extensions) and check if correctly added by running `SHOW azure.extensions;`.
+Before you can enable `pgvector` on your Azure Database for PostgreSQL flexible server instance, you need to add it to your allowlist as described in [how to use PostgreSQL extensions](../extensions/how-to-allow-extensions.md#allow-extensions), and check if correctly added by running `SHOW azure.extensions;`.
 
 > [!IMPORTANT]
 > Notice that although all PostgreSQL community tends to refer to this extension as pgvector, the name of the binary and the extension itself is simply `vector`. Take that into consideration, because that is the name you must use to allowlist it or to create it on any database via the CREATE EXTENSION command.
@@ -38,12 +38,15 @@ CREATE EXTENSION vector;
 
 [!INCLUDE [`pgvector`](~/reusable-content/ce-skilling/azure/includes/cosmos-db/postgresql/includes/pgvector-basics.md)]
 
-## Next Steps
+## Related content
 
-Learn more around performance, indexing and limitations using `pgvector`.
-
-> [!div class="nextstepaction"]
-> [Optimize performance using pgvector](how-to-optimize-performance-pgvector.md)
-
-> [!div class="nextstepaction"]
-> [Generate vector embeddings with Azure OpenAI - Azure Database for PostgreSQL - Flexible Server](./generative-ai-azure-openai.md)
+- [Optimize performance when using pgvector in Azure Database for PostgreSQL - Flexible Server](how-to-optimize-performance-pgvector.md).
+- [Integrate Azure Database for PostgreSQL - Flexible Server with Azure Cognitive Services](generative-ai-azure-cognitive.md).
+- [Generate vector embeddings in Azure Database for PostgreSQL - Flexible Server with locally deployed LLM (Preview)](generative-ai-azure-local-ai.md).
+- [Integrate Azure Database for PostgreSQL with Azure Machine Learning Services](generative-ai-azure-machine-learning.md).
+- [Generate vector embeddings with Azure OpenAI in Azure Database for PostgreSQL - Flexible Server](generative-ai-azure-openai.md).
+- [Azure AI extension in Azure Database for PostgreSQL - Flexible Server](generative-ai-azure-overview.md).
+- [Generative AI with Azure Database for PostgreSQL - Flexible Server](generative-ai-overview.md).
+- [Recommendation System with Azure Database for PostgreSQL - Flexible Server and Azure OpenAI](generative-ai-recommendation-system.md).
+- [Semantic Search with Azure Database for PostgreSQL - Flexible Server and Azure OpenAI](generative-ai-semantic-search.md).
+- [Enable and use pgvector in Azure Database for PostgreSQL - Flexible Server](how-to-use-pgvector.md).

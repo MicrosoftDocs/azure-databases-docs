@@ -68,7 +68,7 @@ At this time, Azure Database for PostgreSQL - Flexible Server doesn't support:
 > [!NOTE]
 > Microsoft made root CA changes for various Azure services, including Azure Database for PostgreSQL - Flexible Server. For more information, see [Azure TLS certificate changes](/azure/security/fundamentals/tls-certificate-changes) and the section [Configure SSL on the client](#configure-ssl-on-the-client).
 
-To determine your current TLS\SSL connection status, you can load the [sslinfo extension](concepts-extensions.md) and then call the `ssl_is_used()` function to determine if SSL is being used. The function returns `t` if the connection is using SSL. Otherwise, it returns `f`. You can also collect all the information about your Azure Database for PostgreSQL flexible server's SSL usage by process, client, and application by using the following query:
+To determine your current TLS\SSL connection status, you can load the [sslinfo extension](../extensions/concepts-extensions-versions.md#sslinfo) and then call the `ssl_is_used()` function to determine if SSL is being used. The function returns `t` if the connection is using SSL. Otherwise, it returns `f`. You can also collect all the information about your Azure Database for PostgreSQL flexible server's SSL usage by process, client, and application by using the following query:
 
 ```sql
 SELECT datname as "Database name", usename as "User name", ssl, client_addr, application_name, backend_type
@@ -174,7 +174,7 @@ Before you try to access your SSL-enabled server from a client application, make
 *SSL connection (protocol: TLSv1.2, cipher: ECDHE-RSA-AES256-GCM-SHA384, bits: 256, compression: off)*
 *Type "help" for help.*
 
-You can also load the [sslinfo extension](./concepts-extensions.md) and then call the `ssl_is_used()` function to determine if SSL is being used. The function returns `t` if the connection is using SSL. Otherwise, it returns `f`.
+You can also load the [sslinfo extension](../extensions/concepts-extensions-versions.md#sslinfo) and then call the `ssl_is_used()` function to determine if SSL is being used. The function returns `t` if the connection is using SSL. Otherwise, it returns `f`.
 
 ## Cipher suites
 

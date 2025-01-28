@@ -1,10 +1,10 @@
 ---
-title: Premigration error codes in the migration service.
+title: "Premigration Error Codes in the Migration Service."
 description: Error codes for troubleshooting and resolving issues during the migration process in Azure Database for PostgreSQL.
 author: apduvuri
 ms.author: adityaduvuri
 ms.reviewer: maghan
-ms.date: 06/19/2024
+ms.date: 01/24/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: error-reference
@@ -12,7 +12,7 @@ ms.custom:
   - troubleshooting
 ---
 
-#  Known errors in the migration service for Azure Database for PostgreSQL
+# Known errors in the migration service for Azure Database for PostgreSQL
 
 This article contains error message numbers and their description for premigration validation.
 
@@ -48,7 +48,7 @@ These settings help maintain the connection by sending keepalive probes to preve
 ## Migration error codes
 
 | Error Code | Error message | Resolution |
-| --- | --- | --- | 
+| --- | --- | --- |
 | 603000 | Connection failed. Connection to the server `{serverName}` was unsuccessful. Ensure that the source server is reachable from the target or runtime server. | Refer to [Network guide](how-to-network-setup-migration-service.md) for debugging connectivity issues. |
 | 603001 | SSL Configuration Error. The server `{serverName}` doesn't support SSL. Check SSL settings. Set SSL mode to *prefer* and retry the migration. | Refer to [Network guide](how-to-network-setup-migration-service.md) for debugging connectivity issues. |
 | 603100 | Authentication failed. The password for server `{serverName}` is incorrect. Enter the correct password and retry the migration. | N/A |
@@ -61,7 +61,7 @@ These settings help maintain the connection by sending keepalive probes to preve
 | 603107 | GUC Settings Error. Source server WAL level parameter is set to `{0}`. Set GUC parameter WAL level to be 'logical'. | N/A |
 | 603108 | Extensions allowlist required. Extensions `{0}` couldn't be installed on the target server because they're not allowlisted. Allowlist the extensions and retry the migration. | Set the allowlist by following the steps mentioned in [PostgreSQL extensions](https://aka.ms/allowlist-extensions). |
 | 603109 | Shared preload libraries configuration error. Add allowlisted extensions `{0}` to 'shared_preload_libraries' on the target server and retry the migration. | Set the shared preload libraries by following the steps mentioned in [PostgreSQL extensions](https://aka.ms/allowlist-extensions). This requires a server restart. |
-| 603110 | Insufficient privileges. Migration user lacks necessary permissions for database access. Ensure that the migration user is owner of source databases and has both read and write privileges and retry the migration.| N/A |
+| 603110 | Insufficient privileges. Migration user lacks necessary permissions for database access. Ensure that the migration user is owner of source databases and has both read and write privileges and retry the migration. | N/A |
 | 603111 | Target database cleanup failed. Unable to terminate active connections on the target database during the premigration phase. Grant pg_signal_backend role to migration user and retry the migration. | Add pg_signal_backend role to migration user using the command 'GRANT pg_signal_backend to <migration_user>' |
 | 603112 | GUC settings error. Failed to set default_transaction_read_only GUC parameter to off. Ensure that user write access is properly set and retry the migration. | Set 'default_transaction_read_only' to OFF on source server via Azure portal or through psql command(for example, ALTER SYSTEM SET default_transaction_read_only = off). |
 | 603113 | Cutover failure. Cutover can't be initiated for database '{dbName}' as the migration has already been with the status Completed/Failed/Canceled. | N/A |
@@ -80,6 +80,7 @@ These settings help maintain the connection by sending keepalive probes to preve
 | 603408 | Unsupported Extensions. Target server version 16 doesn't support `{0}` extensions. Migrate to version 15 or lower, then upgrade once the extensions are supported. | N/A |
 | 603409 | User-defined casts present. Source database `{0}` contains user-defined casts that can't be migrated to the target server. | N/A |
 | 603410 | System table permission error. Users have access to system tables like pg_authid and pg_shadow that can't be migrated to the target. Revoke these permissions and retry the migration. | Validating the default permissions granted to `pg_catalog` tables/views (such as `pg_authid` and `pg_shadow`) is essential. However, these permissions can't be assigned to the target. Specifically, User `{1}` possesses `{2}` permissions, while User `{3}` holds `{4}` permissions. For a workaround, visit [User, Roles, and Permissions](https://aka.ms/troubleshooting-user-roles-permission-ownerships-issues) |
+| 603413 | Unsupported language(s). The migration service does not support the migration of databases with `{0}` language(s) on the target server. Remove the language(s) and its implemented function(s). | N/A |
 | 603700 | Target database cleanup failed. Unable to terminate active connections on the target database during the pre-migration/post-migration phase. | N/A |
 | 603701 | Internal server error. Failed to create roles on the target server. | [Contact Microsoft support](https://support.microsoft.com/contactus) for further analysis. |
 | 603702 | Internal server error. Failed to dump roles from source server. | [Contact Microsoft support](https://support.microsoft.com/contactus) for further analysis. |
@@ -87,14 +88,13 @@ These settings help maintain the connection by sending keepalive probes to preve
 | 603704 | Internal server error. Failed to make all source roles a member of target migration user. | [Contact Microsoft support](https://support.microsoft.com/contactus) for further analysis. |
 | 603705 | Internal server error. Failed to restore grants/revokes. | [Contact Microsoft support](https://support.microsoft.com/contactus) for further analysis. |
 | 603706 | Internal server error. Failed to clean up the target server migration user. Your target migration user can be part of multiple roles. Remove all unnecessary roles from target server migration user and retry the migration. | [Contact Microsoft support](https://support.microsoft.com/contactus) for further analysis. |
-| 603707 | Internal server error. Failed to grant azure_pg_admin to the source server admin user. | [Contact Microsoft support](https://support.microsoft.com/contactus) for further analysis.|
+| 603707 | Internal server error. Failed to grant azure_pg_admin to the source server admin user. | [Contact Microsoft support](https://support.microsoft.com/contactus) for further analysis. |
 | 603708 | Internal server error. Failed to alter the owner of public schema to azure_pg_admin in database '{dbName}'. Change the owner of public schema to azure_pg_admin manually and retry the migration. | [Contact Microsoft support](https://support.microsoft.com/contactus) for further analysis. |
 | 603709 | Migration setup failed. | [Contact Microsoft support](https://support.microsoft.com/contactus) for further analysis. |
 
-
 ## Related content
 
-- [Troubleshoot the migration service for Azure Database for PostgreSQL](how-to-network-setup-migration-service.md))
+- [Troubleshoot the migration service for Azure Database for PostgreSQL](how-to-network-setup-migration-service.md)
 - [Best practices for seamless migration into Azure Database for PostgreSQL](best-practices-migration-service-postgresql.md)
 - [Networking](how-to-network-setup-migration-service.md)
 - [Known issues and limitations](concepts-known-issues-migration-service.md)

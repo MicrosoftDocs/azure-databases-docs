@@ -1,16 +1,24 @@
 ---
 title: TLS server parameters
 description: TLS server parameters for Azure Database for PostgreSQL - Flexible Server.
-author: akashraokm
-ms.author: akashrao
+author: nachoalonsoportillo
+ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 06/18/2024
+ms.date: 01/07/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
+ms.custom: automatically generated
 zone_pivot_groups: postgresql-server-version
 ---
 # TLS
+
+
+::: zone pivot="postgresql-17"
+
+[!INCLUDE [server-parameters-table-17-tls](./includes/server-parameters-table-17-tls.md)]
+
+::: zone-end
 
 
 ::: zone pivot="postgresql-16"

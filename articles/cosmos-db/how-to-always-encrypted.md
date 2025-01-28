@@ -36,6 +36,9 @@ You can:
 - Create one DEK per property to encrypt, or
 - Use the same DEK to encrypt multiple properties.
 
+> [!NOTE]
+> Resource limit for Client Encryption Key is 20
+
 #### Customer-managed keys
 
 Before DEKs get stored in Azure Cosmos DB, they are wrapped by a customer-managed key (CMK). By controlling the wrapping and unwrapping of DEKs, CMKs effectively control the access to the data that's encrypted with their corresponding DEKs. CMK storage is designed as an extensible, with a default implementation that expects them to be stored in Azure Key Vault.
@@ -350,5 +353,4 @@ If you have flexibility in the way new encrypted properties can be added from a 
 
 ## Next steps
 
-- Get an overview of [secure access to data in Azure Cosmos DB](secure-access-to-data.md).
 - Learn more about [customer-managed keys for encryption-at-rest](how-to-setup-cmk.md)

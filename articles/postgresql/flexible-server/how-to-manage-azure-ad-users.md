@@ -20,7 +20,7 @@ This article describes how you can create a Microsoft Entra ID enabled database 
 
 > [!NOTE]  
 > This guide assumes you already enabled Microsoft Entra authentication on your Azure Database for PostgreSQL flexible server instance.
-> See [How to Configure Microsoft Entra authentication](./how-to-configure-sign-in-azure-ad-authentication.md)
+> See [How to Configure Microsoft Entra authentication](how-to-configure-sign-in-azure-ad-authentication.md)
 
 If you like to learn about how to create and manage Azure subscription users and their privileges, you can visit the [Azure role-based access control (Azure RBAC) article](/azure/role-based-access-control/built-in-roles) or review [how to customize roles](/azure/role-based-access-control/custom-roles).
 
@@ -55,7 +55,7 @@ Each PostgreSQL database role can be mapped to one of the following Microsoft En
 ### List Microsoft Entra roles using SQL
 
 ```sql
-pg_catalog.pgaadauth_list_principals(isAdminValue boolean)
+select * from pg_catalog.pgaadauth_list_principals(isAdminValue boolean)
 ```
 
 #### Arguments
@@ -77,7 +77,7 @@ pg_catalog.pgaadauth_list_principals(isAdminValue boolean)
 ## Create a user/role using Microsoft Entra principal name
 
 ```sql
-pg_catalog.pgaadauth_create_principal(roleName text, isAdmin boolean, isMfa boolean)
+select * from pg_catalog.pgaadauth_create_principal(roleName text, isAdmin boolean, isMfa boolean)
 ```
 
 #### Arguments
@@ -112,7 +112,7 @@ DROP ROLE rolename;
 ## Create a role using Microsoft Entra object identifier
 
 ```sql
-pg_catalog.pgaadauth_create_principal_with_oid(roleName text, objectId text, objectType text, isAdmin boolean, isMfa boolean)
+select * from pg_catalog.pgaadauth_create_principal_with_oid(roleName text, objectId text, objectType text, isAdmin boolean, isMfa boolean)
 ```
 
 #### Arguments
@@ -171,6 +171,6 @@ SECURITY LABEL for "pgaadauth" on role "<roleName>" is 'aadauth,oid=<objectId>,t
 
 `text` it can be present or absent. Users/roles for which this part is present in their security label, can manage other Microsoft Entra ID roles.
 
-## Next steps
+## Related content
 
-- Review the overall concepts for [Microsoft Entra authentication with Azure Database for PostgreSQL - Flexible Server](concepts-azure-ad-authentication.md)
+- [Microsoft Entra authentication with Azure Database for PostgreSQL - Flexible Server](concepts-azure-ad-authentication.md).
