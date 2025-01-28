@@ -36,11 +36,9 @@ If your server was deployed with **Networking with public access (allowed IP add
 
 ## Private access (VNET Integration)
 
-If your server was deployed with **Networking with private access (VNET Integration)** mode, you can perform the following operations:
+If your server was deployed with **Networking with private access (VNET Integration)** mode, you can perform the following operation:
 
-- TODO.
-- TODO.
-- TODO.
+- [Change private DNS zone](how-to-networking-servers-deployed-vent-integration-change-private-dns-zone.md).
 
 ## Related content
 
