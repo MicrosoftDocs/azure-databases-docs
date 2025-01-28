@@ -21,26 +21,26 @@ For more information about these options, see [Networking with public access (al
 
 Depending on the networking mode you selected when you deployed your server, you can perform different operations. The following two sections cover the two available networking modes, and list the operations available in each of them.
 
-## Networking with public access (allowed IP addresses)
+## Public access (allowed IP addresses)
 
 If your server was deployed with **Networking with public access (allowed IP addresses)** mode, you can perform the following operations:
 
-    - [Enable public access](how-to-networking-servers-deployed-public-access-enable-public-access.md).
-    - [Disable public access](how-to-networking-servers-deployed-public-access-disable-public-access.md).
-    - [Add firewall rules](how-to-networking-servers-deployed-public-access-add-firewall-rules.md).
-    - [Delete firewall rules](how-to-networking-servers-deployed-public-access-delete-firewall-rules.md).
-    - [Add private endpoint connections](how-to-networking-servers-deployed-public-access-add-private-endpoint-connections.md).
-    - [Delete private endpoint connections](how-to-networking-servers-deployed-public-access-delete-private-endpoint-connections.md).
-    - [Approve private endpoint connections](how-to-networking-servers-deployed-public-access-approve-private-endpoint-connections.md).
-    - [Reject private endpoint connections](how-to-networking-servers-deployed-public-access-reject-private-endpoint-connections.md).
+- [Enable public access](how-to-networking-servers-deployed-public-access-enable-public-access.md).
+- [Disable public access](how-to-networking-servers-deployed-public-access-disable-public-access.md).
+- [Add firewall rules](how-to-networking-servers-deployed-public-access-add-firewall-rules.md).
+- [Delete firewall rules](how-to-networking-servers-deployed-public-access-delete-firewall-rules.md).
+- [Add private endpoint connections](how-to-networking-servers-deployed-public-access-add-private-endpoint-connections.md).
+- [Delete private endpoint connections](how-to-networking-servers-deployed-public-access-delete-private-endpoint-connections.md).
+- [Approve private endpoint connections](how-to-networking-servers-deployed-public-access-approve-private-endpoint-connections.md).
+- [Reject private endpoint connections](how-to-networking-servers-deployed-public-access-reject-private-endpoint-connections.md).
 
-## Networking with private access (VNET Integration)
+## Private access (VNET Integration)
 
 If your server was deployed with **Networking with private access (VNET Integration)** mode, you can perform the following operations:
 
-    - TODO.
-    - TODO.
-    - TODO.
+- TODO.
+- TODO.
+- TODO.
 
 ## Related content
 
