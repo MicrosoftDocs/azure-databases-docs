@@ -46,11 +46,11 @@ Using the [Azure portal](https://portal.azure.com/):
 
 6. Select the private endpoint connection that you want to delete.
 
-    :::image type="content" source="./media/how-to-networking/configure-public-access-networking-disabled-approved-private-endpoint-select.png" alt-text="Screenshot showing how to begin deleting an existing private endpoint." lightbox="./media/how-to-networking/configure-public-access-networking-disabled-approved-private-endpoint-select.png":::
+    :::image type="content" source="./media/how-to-networking/configure-public-access-networking-disabled-approved-private-endpoint-select.png" alt-text="Screenshot showing how to begin deleting an existing private endpoint connection." lightbox="./media/how-to-networking/configure-public-access-networking-disabled-approved-private-endpoint-select.png":::
 
 7. Select **Delete** to trigger the deletion of the private endpoint connection.
 
-    :::image type="content" source="./media/how-to-networking/configure-public-access-networking-disabled-approved-private-endpoint-delete.png" alt-text="Screenshot showing the Delete button to trigger the deletion of an existing private endpoint." lightbox="./media/how-to-networking/configure-public-access-networking-disabled-approved-private-endpoint-delete.png":::
+    :::image type="content" source="./media/how-to-networking/configure-public-access-networking-disabled-approved-private-endpoint-delete.png" alt-text="Screenshot showing the Delete button to trigger the deletion of an existing private endpoint connection." lightbox="./media/how-to-networking/configure-public-access-networking-disabled-approved-private-endpoint-delete.png":::
 
 8. A notification informs you that the private endpoint connection is being deleted.
 
