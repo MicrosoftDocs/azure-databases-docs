@@ -448,8 +448,8 @@
         - name: Private access (VNET Integration)
           expanded: true
           items:
-          - name: TODO
-            href: flexible-server/TODO.md
+          - name: Change private DNS zone
+            href: flexible-server/how-to-networking-servers-deployed-vent-integration-change-private-dns-zone.md
       - name: Scheduled maintenance
         href: flexible-server/how-to-configure-scheduled-maintenance.md
       - name: Data encryption
