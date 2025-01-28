@@ -27,25 +27,32 @@ You can perform the following operations with this library:
 4. Scaling Operations
 5. Back up and Restore
 
+This guide will help you explore the basic functionalities of this SDK, including creating a flexible server instance, reviewing the created server, creating a database, and deleting the instance.
+
 ## Prerequisites
 
 An Azure account with an active subscription. [Create one for free](https://azure.microsoft.com/free/).
 
-## Create the Server
-
-First, install the required packages.
+### Installing the libraries
 
 ```bash
 pip install azure-mgmt-resource
 pip install azure-identity
 pip install azure-mgmt-postgresqlflexibleservers
 ```
+### Run the login command
+Login to your account using [az CLI](/cli/azure/authenticate-azure-cli-interactively)
 
+```azurecli
+az login
+```
+Once this command it executed, select valid account to sign in and later select the subscription id from the list to login. 
+
+## Create the Server
 Create a `create_postgres_flexible_server.py` file and include the following code.
 
 ```python
 from azure.identity import DefaultAzureCredential
-
 from azure.mgmt.postgresqlflexibleservers import PostgreSQLManagementClient
 
 def main():
@@ -55,26 +62,24 @@ def main():
     )
 
     response = client.servers.begin_create(
-        resource_group_name="testrg",
-        server_name="pgtestsvc4",
+        resource_group_name="<resource-group-name>",
+        server_name="<server-name>",
         parameters={
-            "location": "westus",
+            "location": "<region>",
             "properties": {
-                "administratorLogin": "cloudsa",
+                "administratorLogin": "<admin-username>",
                 "administratorLoginPassword": "<password>",
                 "availabilityZone": "1",
                 "backup": {"backupRetentionDays": 7, "geoRedundantBackup": "Disabled"},
                 "createMode": "Create",
                 "highAvailability": {"mode": "ZoneRedundant"},
                 "network": {
-                    "delegatedSubnetResourceId": "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/testrg/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/test-vnet-subnet",
-                    "privateDnsZoneArmResourceId": "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourcegroups/testrg/providers/Microsoft.Network/privateDnsZones/test-private-dns-zone.postgres.database.azure.com",
+                    "delegatedSubnetResourceId": "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/testrg/providers/Microsoft.Network/virtualNetworks/<vnet-name>/subnets/<subnet-name>",
+                    "privateDnsZoneArmResourceId": "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourcegroups/testrg/providers/Microsoft.Network/privateDnsZones/<private-DNS-zone-name>.postgres.database.azure.com",
                 },
-                "storage": {"autoGrow": "Disabled", "storageSizeGB": 512, "tier": "P20"},
-                "version": "12",
+                "version": "<pg-version>",
             },
-            "sku": {"name": "Standard_D4s_v3", "tier": "GeneralPurpose"},
-            "tags": {"ElasticServer": "1"},
+            "sku": {"name": "<sku-name>", "tier": "<tier-type>"},
         },
     ).result()
     print(response)
@@ -98,12 +103,14 @@ You can also customize other parameters like storage size, engine version, etc.
 > [!NOTE]  
 > The DefaultAzureCredential class will try to authenticate using various methods, such as environment variables, managed identities, or the Azure CLI.  
 > Make sure you have one of these methods set up. You can find more information on authentication in the [Azure SDK documentation](/python/api/overview/azure/identity-readme?view=azure-python#defaultazurecredential&preserve-view=true).
+> [!NOTE]  
+> Running this code will initiate the instance creation process, which might take a few minutes to complete.
 
-## Review deployed resources
+### Review deployed resources
 
 You can use the Python SDK, Azure portal, Azure CLI, Azure PowerShell, and various other tools to validate the deployment and review the deployed resources. Some examples are provided below.
 
-# [Python SDK](#tab/PythonSDK)
+#### Validate deployment with Python SDK
 
 Add the `check_server_created` function to your existing script to use the servers attribute of the [PostgreSQLManagementClient](/python/api/azure-mgmt-rdbms/azure.mgmt.rdbms.postgresql_flexibleservers.postgresqlmanagementclient?view=azure-python&preserve-view=true) instance to check if the Azure Database for PostgreSQL flexible server instance was created:
 
@@ -136,6 +143,8 @@ Call it with the appropriate parameters.
 > [!NOTE]  
 > The `check_server_created` function will return the server state as soon as the server is provisioned. However, it might take a few minutes for the server to become fully available. Ensure that you wait for the server to be in the Ready state before connecting to it. It would return the state, id, name, location etc parameters in the response to the postgres_client.servers.get method.
 
+### Create database
+
 Create a database in your flexible server with this sample code
 
 ```python
@@ -164,26 +173,11 @@ Replace the following parameters with your data:
 - **subscription_id**: Your own [subscription ID](/azure/azure-portal/get-subscription-tenant-id#find-your-azure-subscription).
 - **resource_group**: The name of the resource group you want to use. The script creates a new resource group if it doesn't exist.
 - **sever_name**: The name of the Azure database flexible server instance that you created before
-
-# [CLI](#tab/CLI)
-
-```azurecli
-az resource list --resource-group <resource_group>
-```
-
-# [PowerShell](#tab/PowerShell)
-
-```azurepowershell
-Get-AzResource -ResourceGroupName <resource_group>
-```
-
----
-
+  
 ## Clean up resources
-
 If you no longer need the Azure Database for PostgreSQL flexible server instance, you can delete it and the associated resource group using the following methods.
 
-# [Python SDK](#tab/PythonSDK)
+### Use Python SDK to delete the instance
 
 Create a 'delete_server.py' file to delete the flexi server instance that was created.
 
@@ -205,13 +199,13 @@ if __name__ == "__main__":
     main()
 ```
 
-# [CLI](#tab/CLI)
+### [CLI](#tab/CLI)
 
 ```azurecli
 az group delete --name <resource_group>
 ```
 
-# [PowerShell](#tab/PowerShell)
+### [PowerShell](#tab/PowerShell)
 
 ```azurepowershell
 Remove-AzResourceGroup -Name <resource_group>
