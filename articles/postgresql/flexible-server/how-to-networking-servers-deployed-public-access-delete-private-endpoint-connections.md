@@ -1,6 +1,6 @@
 ---
-title: Add private endpoint connections
-description: This article describes how to add endpoint connections to an Azure Database for PostgreSQL flexible server.
+title: Delete private endpoint connections
+description: This article describes how to delete endpoint connections to an Azure Database for PostgreSQL flexible server.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
@@ -8,10 +8,10 @@ ms.date: 01/26/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: how-to
-#customer intent: As a user, I want to learn how to add endpoint connections to an Azure Database for PostgreSQL flexible server.
+#customer intent: As a user, I want to learn how to delete endpoint connections to an Azure Database for PostgreSQL flexible server.
 ---
 
-# Add private endpoint connections
+# Delete private endpoint connections
 
 Azure Database for PostgreSQL - Flexible Server is an Azure Private Link service. This means that you can create private endpoints so that your client applications can connect privately and securely to your Azure Database for PostgreSQL flexible server.
 
@@ -19,7 +19,7 @@ A private endpoint to your Azure Database for PostgreSQL flexible server is a ne
 
 For more information about Azure Private Link and Azure Private Endpoint, see [Azure Private Link frequently asked questions](/azure/private-link/private-link-faq).
 
-## [Portal](#tab/portal-add-private-endpoint-connections)
+## [Portal](#tab/portal-delete-private-endpoint-connections)
 
 Using the [Azure portal](https://portal.azure.com/):
 
@@ -126,66 +126,9 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="./media/how-to-networking/create-private-endpoint-deployment-succeeded.png" alt-text="Screenshot showing the successful deployment of the private endpoint." lightbox="./media/how-to-networking/create-private-endpoint-deployment-succeeded.png":::
 
-## [CLI](#tab/cli-add-private-endpoint-connection)
+## [CLI](#tab/cli-delete-private-endpoint-connection)
 
-If you have the required permissions to deploy a private endpoint and to approve the private endpoint connection to your server, you can create the private endpoint connection via the [az network private-endpoint create](/cli/azure/network/private-endpoint#az-network-private-endpoint-create) command.
-
-To create the private endpoint and assign to its network interface an IP address dynamically allocated from the range assigned to the selected subnet:
-
-```azurecli-interactive
-# Retrieve the resource identifier of the server to which you want to connect via the private endpoint
-server_id=$(az postgres flexible-server show --resource-group <resource_group> --name <server> --query id --output tsv)
-az network private-endpoint create --connection-name <connection> --name <private_endpoint> --private-connection-resource-id $server_id --resource-group <resource_group> --subnet <subnet> --group-id sites --vnet-name <virtual_network>  
-```
-
-To create the private endpoint and assign to its network interface an IP address statically allocated from the range assigned to the selected subnet:
-
-```azurecli-interactive
-# Retrieve the resource identifier of the server to which you want to connect via the private endpoint
-server_id=$(az postgres flexible-server show --resource-group <resource_group> --name <server> --query id --output tsv)
-az network private-endpoint create --connection-name <connection> --name <private_endpoint> --private-connection-resource-id $server_id --resource-group <resource_group> --subnet <subnet> --group-id postgresqlServer --vnet-name <virtual_network> --location <location> --ip-config name=<ip_config> group-id=postgresqlServer member-name=postgresqlServer private-ip-address=<private_ip_address>
-```
-
-If you had the required permissions, the private endpoint connection should be automatically approved. If that's the case, the output of the following command would show `status` as `Approved`, and `description` as `Auto-Approved`:
-
-```azurecli-interactive
-az network private-endpoint show --resource-group <resource_group> --name <private_endpoint> --query privateLinkServiceConnections[?name==\'<connection>\'].privateLinkServiceConnectionState
-```
-
-If you try to create the private endpoint with a statically allocated private IP address, and the address specified is already used by some other network interface, you get the following error:
-
-```output
-Code: PrivateIPAddressIsAllocated
-Message: IP configuration /subscriptions/<subscription>/resourceGroups/<resource_group>/providers/Microsoft.Network/networkInterfaces/<network_interface>.nic.<guid>/ipConfigurations/privateEndpointIpConfig.<guid> is using the private IP address <private_ip_address> which is already allocated to resource /subscriptions/<subscription>/resourceGroups/<resource_group>/providers/Microsoft.Network/networkInterfaces/<network_interface>.nic.<guid>/ipConfigurations/privateEndpointIpConfig.<guid>.
-```
-
-If you try to create the private endpoint and the virtual network referenced via the `--subscription`, `--resource-group` and `--vnet-name` parameters doesn't exist. Or if the virtual network exists, but the region in which it's deployed doesn't match the region in which you're trying to deploy the private endpoint, you get the following error:
-
-```output
-Code: InvalidResourceReference
-Message: Resource /subscriptions/<subscription>/resourceGroups/<resource_group>/providers/Microsoft.Network/virtualNetworks/<virtual_network> referenced by resource /subscriptions/<subscription>/resourceGroups/<resource_group>/providers/Microsoft.Network/privateEndpoints/<private_endpoint> was not found. Please make sure that the referenced resource exists, and that both resources are in the same region.
-```
-
-If you try to create the private endpoint and one already exists with the same name, but you specify a different value for `--connection-name` or for `--vnet-name`, you get the following error:
-
-```output
-Code: CannotChangePrivateLinkConnectionOnPrivateEndpoint
-Message: Cannot change the private link connection on private endpoint /subscriptions/<subscription>/resourceGroups/<resource_group>/providers/Microsoft.Network/privateEndpoints/<private_endpoint>. Please ensure you are not updating the details of existing private link connection: '/subscriptions/<subscription>/resourceGroups/<resource_group>/providers/Microsoft.Network/privateEndpoints/<private_endpoint>/privateLinkServiceConnections/<connection>'. That is not allowed.
-```
-
-If you try to create the private endpoint and one already exists with the same name, but you specify a different value for `--subnet`, you get the following error:
-
-```output
-Code: CannotChangeSubnetOnExistingPrivateEndpoint
-Message: Cannot change the subnet in which the network interface for private endpoint /subscriptions/<subscription>/resourceGroups/<resource_group>/providers/Microsoft.Network/privateEndpoints/<private_endpoint> is created. Current subnet: '/subscriptions/<subscription>/resourceGroups/<resource_group>/providers/Microsoft.Network/virtualNetworks/<virtual_network>/subnets/<current_subnet>.' Requested subnet: '/subscriptions/<subscription>/resourceGroups/<resource_group>/providers/Microsoft.Network/virtualNetworks/<virtual_network>/subnets/<requested_subnet>.'
-```
-
-If you try to create the private endpoint and one already exists with the same name, but you specify a different value for `--location`, you get the following error:
-
-```output
-Code: InvalidResourceLocation
-Message: The resource '<private_endpoint>' already exists in location '<current_location>' in resource group '<resource_group>'. A resource with the same name cannot be created in location '<requested_location>'. Please select a new resource name.
-```
+ddd
 
 ---
 
