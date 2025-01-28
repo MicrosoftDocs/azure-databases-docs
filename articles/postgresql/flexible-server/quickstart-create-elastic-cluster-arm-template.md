@@ -279,8 +279,6 @@ az group delete --name $resourcegroupName
 
 ---
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 
 - [Design multitenant database with Elastic Cluster](tutorial-multitenant-database.md).

@@ -41,6 +41,9 @@ Follow these steps to trigger backup on demand:
 
 ## Trigger an On-Demand Backup and Export (preview)
 
+> [!NOTE]
+> The **"On-Demand Backup and Export"** feature in Azure Database for MySQL Flexible Server, currently in preview, has been temporarily paused. This decision was made to address certain technical blockers identified during the preview phase, which impact the restorability of exported backups. As a result, exporting backups to external storage accounts will not be available until further notice.
+
 Follow these steps to trigger an on-demand backup and export:
 
 1. In the [Azure portal](https://portal.azure.com/), choose your Azure Database for MySQL Flexible Server instance to take a backup of and export.

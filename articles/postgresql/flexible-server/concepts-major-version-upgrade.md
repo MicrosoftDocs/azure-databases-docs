@@ -60,7 +60,7 @@ ANALYZE
 
 ## Major version upgrade logs
 
-Major version upgrade logs (`PG_Upgrade_Logs`) provide direct access to detailed [server logs](how-to-server-logs-portal.md). Integrating `PG_Upgrade_Logs` into your upgrade process can help ensure a smoother and more transparent transition to new PostgreSQL versions.
+Major version upgrade logs (`PG_Upgrade_Logs`) provide direct access to detailed [server logs](how-to-configure-server-logs.md). Integrating `PG_Upgrade_Logs` into your upgrade process can help ensure a smoother and more transparent transition to new PostgreSQL versions.
 
 You can configure your major version upgrade logs in the same way as server logs, by using the following server parameters:
 
@@ -69,7 +69,7 @@ You can configure your major version upgrade logs in the same way as server logs
 
 ### Setup of upgrade logs
 
-To start using `PG_Upgrade_Logs`, you can configure the logs through either the Azure portal or the [Azure CLI](how-to-server-logs-cli.md). Choose the method that best fits your workflow.
+To start using `PG_Upgrade_Logs`, you can [Configure capture of PostgreSQL server logs and major version upgrade logs](how-to-configure-server-logs.md).
 
 You can access the upgrade logs through the UI for server logs. There, you can monitor the progress and details of your PostgreSQL major version upgrades in real time. This UI provides a centralized location for viewing logs, so you can more easily track and troubleshoot the upgrade process.
 
@@ -106,10 +106,10 @@ If precheck operations fail for an in-place major version upgrade, the upgrade f
 - Servers using SSDv2 storage don't support Major Version Upgrades.
 - Server using views dependent on `pg_stat_activity` aren't supported.
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 
 - [Major version upgrade of Azure Database for PostgreSQL - Flexible Server](how-to-perform-major-version-upgrade.md?tabs=portal).
 - [High availability in Azure Database for PostgreSQL - Flexible Server](/azure/reliability/reliability-postgresql-flexible-server).
 - [Backup and restore in Azure Database for PostgreSQL - Flexible Server](concepts-backup-restore.md).
+
+[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).

@@ -85,8 +85,6 @@ Once you have created an alert, you can select it and do the following actions:
 * **Edit** or **Delete** the alert rule.
 * **Disable** or **Enable** the alert, if you want to temporarily stop or resume receiving notifications.
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 
 - [Setting alerts on metrics](/azure/azure-monitor/alerts/alerts-create-new-alert-rule).

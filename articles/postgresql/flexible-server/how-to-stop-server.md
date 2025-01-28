@@ -1,0 +1,89 @@
+---
+title: Stop a server
+description: This article describes how to stop an instance of Azure Database for PostgreSQL flexible server.
+author: varun-dhawan
+ms.author: varundhawan
+ms.reviewer: maghan
+ms.date: 01/04/2025
+ms.service: azure-database-postgresql
+ms.subservice: flexible-server
+ms.topic: how-to
+#customer intent: As a user, I want to learn how to stop an Azure Database for PostgreSQL flexible server instance, so that I can manage my server efficiently.
+---
+
+# Stop a server
+
+[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
+
+This article provides step-by-step instructions to stop an Azure Database for PostgreSQL flexible server instance.
+
+## Stop a started server
+
+### [Portal](#tab/portal-stop-server)
+
+Using the [Azure portal](https://portal.azure.com/):
+
+1. Select your Azure Database for PostgreSQL flexible server instance.
+
+2. In the resource menu, select **Overview**.
+
+    :::image type="content" source="./media/how-to-stop-server/overview.png" alt-text="Screenshot showing how to select the Overview page." lightbox="./media/how-to-stop-server/overview.png":::
+
+3. The status of the server must be **Available**, for the **Stop** button to appear on the toolbar.
+
+    :::image type="content" source="./media/how-to-stop-server/server-status.png" alt-text="Screenshot showing where in the Overview page you can find the status of the server." lightbox="./media/how-to-stop-server/server-status.png":::
+
+4. Select the **Stop** button.
+
+    :::image type="content" source="./media/how-to-stop-server/stop-server.png" alt-text="Screenshot showing how to stop a started server." lightbox="./media/how-to-stop-server/stop-server.png":::
+
+5. In the **Stop server** dialog, confirm or abort your decision to stop the server.
+
+    :::image type="content" source="./media/how-to-stop-server/confirm-stop-server.png" alt-text="Screenshot showing the Stop server dialog to confirm or abort the operation." lightbox="./media/how-to-stop-server/confirm-stop-server.png":::
+
+6. A notification informs you that the server is stopping.
+
+    :::image type="content" source="./media/how-to-stop-server/stopping-server-notification.png" alt-text="Screenshot showing the notification seen when a server initiates a stop operation." lightbox="./media/how-to-stop-server/stopping-server-notification.png":::
+
+7. Also, the status of the server changes to **Stopping**.
+
+    :::image type="content" source="./media/how-to-stop-server/stopping-server-status.png" alt-text="Screenshot showing a server which is stopping, highlighting its status as Stopping." lightbox="./media/how-to-stop-server/stopping-server-status.png":::
+
+8. When the process completes, a notification informs you that the server is stopped.
+
+    :::image type="content" source="./media/how-to-stop-server/stopped-server-notification.png" alt-text="Screenshot showing the notification seen when a server completes a successful stop operation." lightbox="./media/how-to-stop-server/stopped-server-notification.png":::
+
+9. Also, the status of the server changes to **Stopped**.
+
+    :::image type="content" source="./media/how-to-stop-server/stopped-server-status.png" alt-text="Screenshot showing a server which is stopped, highlighting its status as Stopped." lightbox="./media/how-to-stop-server/stopped-server-status.png":::
+
+### [CLI](#tab/cli-stop-server)
+
+You can stop a started server via the [az postgres flexible-server stop](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-stop) command.
+
+```azurecli-interactive
+az postgres flexible-server stop --resource-group <resource_group> --name <server>
+```
+
+If you attempt to stop a server which isn't in `Available` state, you receive an error like this:
+
+```output
+(ServerIsNotReady) Restart or Stop Server can only be performed on Started servers. Server Name = <server>, Current Server State = <non_started_server_state>
+Code: ServerIsNotReady
+Message: Restart or Stop Server can only be performed on Started servers. Server Name = <server>, Current Server State = <non_started_server_state>
+```
+
+---
+
+> [!NOTE]
+> Once the server is stopped, other management operations aren't available for the Azure Database for PostgreSQL flexible server.
+> While the Azure Database for PostgreSQL flexible server is in stopped state, it could be briefly restarted for scheduled monthly maintenance, and then returned to its stopped state. This procedure ensures that even instances in a stopped state, stay up to date with all necessary patches and updates.
+
+## Related content
+
+- [Start an Azure Database for PostgreSQL flexible server](how-to-stop-server.md).
+- [Restart an Azure Database for PostgreSQL flexible server](how-to-restart-server.md).
+- [Reset administrator password of an Azure Database for PostgreSQL flexible server](how-to-reset-admin-password.md).
+- [Delete an Azure Database for PostgreSQL flexible server](how-to-delete-server.md).
+- [Configure storage autogrow in an Azure Database for PostgreSQL flexible server](how-to-auto-grow-storage.md).
+- [Configure high availability in an Azure Database for PostgreSQL flexible server](how-to-configure-high-availability.md).

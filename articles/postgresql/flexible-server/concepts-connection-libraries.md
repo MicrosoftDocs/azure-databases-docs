@@ -33,8 +33,6 @@ Most language client libraries used to connect to Azure Database for PostgreSQL 
 | C | [libpq](https://www.postgresql.org/docs/current/static/libpq.html) | Primary C language interface | Included |
 | C++ | [libpqxx](http://pqxx.org/) | New-style C++ interface | [Download](https://pqxx.org/libpqxx/) |
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 
 - [Quickstart: Use Python to connect and query data from an instance of Azure Database for PostgreSQL flexible server](connect-python.md).

@@ -4,10 +4,10 @@ description: Permissions required for a user to create and monitor migrations.
 author: shriramm
 ms.author: shriramm
 ms.reviewer: maghan
-ms.date: 11/11/2024
+ms.date: 01/24/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Required Permissions for Migration Creation and Monitoring
@@ -51,7 +51,6 @@ The following permissions are the minimum required for a user to successfully cr
     - Microsoft.DBforPostgreSQL/flexibleServers/configurations/read
     - Microsoft.DBforPostgreSQL/servers/configurations/read
 
-
 ### Default roles
 
 By default, privileged administrator roles such as **Owner** or **Contributor** at the subscription level have the necessary permissions enabled.
@@ -60,11 +59,11 @@ By default, privileged administrator roles such as **Owner** or **Contributor** 
 
 If you want to grant permissions specifically for creating and monitoring migrations, without additional database admin privileges, consider creating a custom role.
 
-- [Create a custom role](https://learn.microsoft.com/azure/role-based-access-control/custom-roles-portal) with the permissions listed above.
+- [Create a custom role](/azure/role-based-access-control/custom-roles-portal) with the permissions listed above.
 
-- Assign the custom role’s scope at the subscription level for both the single server and flexible server involved in the migration. 
+- Assign the custom role's scope at the subscription level for both the single server and flexible server involved in the migration.
 
-- [Assign this custom role to the user](https://learn.microsoft.com/azure/role-based-access-control/role-assignments-portal) responsible for conducting the migration.
+- [Assign this custom role to the user](/azure/role-based-access-control/role-assignments-portal) responsible for conducting the migration.
 
 ### Additional Requirements for Runtime Server Migrations
 

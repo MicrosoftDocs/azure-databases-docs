@@ -1,124 +1,246 @@
 ---
-title: DiskANN on Azure Database for PostgreSQL
-description: Enable diskANN for improved semantic similarity search for Retrieval Augmented Generation (RAG) on Azure Database for PostgreSQL.
+title: Enable and use DiskANN
+description: This article describes how to enable DiskANN for improved semantic similarity search for Retrieval Augmented Generation (RAG) on an Azure Database for PostgreSQL flexible server.
 author: abeomor
 ms.author: abeomorogbe
 ms.reviewer: maghan
-ms.date: 09/27/2024
+ms.date: 01/25/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: how-to
-# customer intent: As a user, I want to understand the overview and how to use diskann extension for Azure Database for PostgreSQL - Flexible Server.
+# customer intent: As a user, I want to learn how to enable and use DiskANN extension in an Azure Database for PostgreSQL flexible server.
 ---
 
-# How to enable and use diskann extension for Azure Database for PostgreSQL - Flexible Server (Preview)
+# Enable and use DiskANN extension (Preview)
 
-DiskANN is a scalable approximate nearest neighbor search algorithm for efficient vector search at any scale. It offers high recall, high queries per second (QPS), and low query latency, even for billion-point datasets. This makes it a powerful tool for handling large volumes of data. [Learn more about DiskANN from Microsoft](https://www.microsoft.com/en-us/research/project/project-akupara-approximate-nearest-neighbor-search-for-large-scale-semantic-search/)
+DiskANN is a scalable approximate nearest neighbor search algorithm for efficient vector search at any scale. It offers high recall, high queries per second, and low query latency, even for billion-point datasets. Those characteristics make it a powerful tool for handling large volumes of data.
 
-The `pg_diskann` extension for Azure Database for PostgreSQL flexible server adds support for using the DiskANN for efficient vector indexing and searching.
+To learn more about DiskANN, see [DiskANN: Vector Search for Web Scale Search and Recommendation](https://www.microsoft.com/en-us/research/project/project-akupara-approximate-nearest-neighbor-search-for-large-scale-semantic-search/).
 
-## Enroll in the `pg_diskann` Preview Feature
-`pg_diskann` for Azure Database for PostgreSQL - Flexible Server requires users to sign up via our Preview form. Follow the below steps to register:
+The `pg_diskann` extension adds support for using DiskANN for efficient vector indexing and searching.
 
-1. Open the [preview form](https://aka.ms/pg-diskann-form)
-2. Fill out all relevant details. We will need your Azure subscription ID for enablement.
+## Enable pg_diskann
 
-> [!NOTE]
-> After fill out the preview form it will take some time for your request to be approved. Confirmation will be sent to your email.
-
-## Enable `pg_diskann` extension
-
-Before you can enable `pg_diskann` on your Azure Database for PostgreSQL flexible server instance, you need to add it to your allowlist as described in [how to use PostgreSQL extensions](concepts-extensions.md#how-to-use-postgresql-extensions) and check if correctly added by running `SHOW azure.extensions;`.
-
-:::image type="content" source="media/how-to-use-pgdiskann/select-diskann-azure-extension.png" alt-text="Screenshot of selecting pg_diskann in server parameters." lightbox="media/how-to-use-pgdiskann/select-diskann-azure-extension.png":::
+To use the `pg_diskann` extension on your Azure Database for PostgreSQL flexible server instance, you need to [allow the extension](../extensions/how-to-allow-extensions.md#allow-extensions) at the instance level. Then you need to [create the extension](../extensions/how-to-allow-extensions.md#create-extensions) on each database in which you want to use the functionality provided by the extension.
 
 > [!IMPORTANT]
-> This preview feature is only available for newly deployed Azure Database for PostgreSQL Flexible Server instances.
+> This preview feature is only available for newly deployed Azure Database for PostgreSQL flexible server instances.
 
-Then, you can install the extension by connecting to your target database and running the [CREATE EXTENSION](https://www.postgresql.org/docs/current/static/sql-createextension.html) command. You need to repeat the command separately for every database in which you want the extension to be available.
+Because `pg_diskann` has a dependency on the [`vector`](../extensions/concepts-extensions-versions.md#vector) extension, either you [allow](../extensions/how-to-allow-extensions.md#allow-extensions) and [create](../extensions/how-to-allow-extensions.md#create-extensions) the `vector` extension in the same database, and the run the following command:
+ 
+```sql
+CREATE EXTENSION IF NOT EXISTS pg_diskann;
+```
+
+Or you can skip explicitly allowing and creating the `vector` extension, and run instead the previous command appending the `CASCADE` clause. That clause PostgreSQL to implicitly run CREATE EXTENSION on the extension that it depends. To do so, run the following command:
 
 ```sql
 CREATE EXTENSION IF NOT EXISTS pg_diskann CASCADE;
 ```
-*This command enables `pgvector` if it hasn't already been installed in your PostgreSQL database.*
 
-> [!NOTE]
-> To remove the extension from the currently connected database use `DROP EXTENSION vector;`.
+To drop the extension from the database to which you're currently connected, run the following command:
+ 
+```sql
+DROP EXTENSION IF EXISTS pg_diskann;
+```
 
-## Using `diskann` Index Access Method
+## Use the diskann index access method
 
-Once the extension is installed, you can create a `diskann` index on a table column that contains vector data. For example, to create an index on the `embedding` column of the `my_table` table, use the following command:
+Once the extension is installed, you can create a `diskann` index on a table column that contains vector data. For example, to create an index on the `embedding` column of the `demo` table, use the following command:
 
 ```sql
-CREATE TABLE my_table (
+CREATE TABLE demo (
  id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
  embedding public.vector(3)
  -- other columns
 );
+
 -- insert dummy data
-INSERT INTO my_table (embedding) VALUES
+INSERT INTO demo (embedding) VALUES
 ('[1.0, 2.0, 3.0]'),
 ('[4.0, 5.0, 6.0]'),
 ('[7.0, 8.0, 9.0]');
+
 -- create a diskann index by using Cosine distance operator
-CREATE INDEX my_table_embedding_diskann_idx ON my_table USING diskann (embedding vector_cosine_ops)
+CREATE INDEX demo_embedding_diskann_idx ON demo USING diskann (embedding vector_cosine_ops)
 ```
 
-## Index options
+Once the index is created, you can run queries to find the nearest neighbors.
 
-When creating an index with `diskann`, you can specify various parameters to control its behavior. Here are the options that we currently have:
-
-- `max_neighbors`: Maximum number of edges per node in the graph. (Defaults to 32)
-- `l_value_ib`: The size of the search list during index build (Defaults to 50)
+Following query finds the 5 nearest neighbors to the vector `[2.0, 3.0, 4.0]`:
 
 ```sql
-CREATE INDEX my_table_embedding_diskann_custom_idx ON my_table USING diskann (embedding vector_cosine_ops)
+SELECT id, embedding
+FROM demo
+ORDER BY embedding <=> '[2.0, 3.0, 4.0]'
+LIMIT 5;
+```
+
+Postgres automatically decides when to use the DiskANN index. If it chooses not to use the index in a scenario in which you want it to use it, execute the following command:
+
+```sql
+SET LOCAL enable_seqscan TO OFF;
+```
+
+> [!IMPORTANT]
+> Setting `enable_seqscan` to off, it discourages the planner from using the query planner's use of sequential scan plan if there are other methods available. Because it's disable using the `SET LOCAL` command, the setting takes effect for only the current transaction. After a COMMIT or ROLLBACK, the session level setting takes effect again. Notice that if the query involves other tables, the setting also discourages the use of sequential scans in all of them.
+
+## Speed up index build with parallelization
+
+To speed up the creation of the index, you can use parallel workers. The number of workers can be specified through the `parallel_workers` storage parameter of the [`CREATE TABLE`](https://www.postgresql.org/docs/current/sql-createtable.html#RELOPTION-PARALLEL-WORKERS) statement, when creating the table. And it can be adjusted later using the `SET` clause of the [`ALTER TABLE`](https://www.postgresql.org/docs/current/sql-altertable.html#SQL-ALTERTABLE-DESC-SET-STORAGE-PARAMETER) statement.
+
+```sql
+CREATE TABLE demo (
+	id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+	embedding public.vector(3)
+) WITH (parallel_workers = 4);
+ALTER TABLE demo SET (parallel_workers = 8);
+```
+
+Then, `CREATE INDEX` command uses the specified number of parallel workers, depending on the available resources, to build the index.
+
+```sql
+CREATE INDEX CONCURRENTLY demo_embedding_diskann_idx ON demo USING diskann (embedding vector_cosine_ops)
+```
+
+> [!IMPORTANT]
+> The leader process cannot participate in parallel index builds.
+
+If you want to create the index by using parallel workers, you also need to set `max_parallel_workers`, `max_worker_processes`, and `max_parallel_maintenance_workers` parameters accordingly. For more information about these parameters, see [parameters that control resource usages and asynchronous behavior](concepts-server-parameters.md#resource-usage--asynchronous-behavior).
+
+
+You can set these parameters at different granularity levels. For example, to set them at session level, you can run the following statements:
+
+```sql
+-- Set the parameters
+SET max_parallel_workers = 8;
+SET max_worker_processes = 8;
+SET max_parallel_maintenance_workers = 4;
+```
+
+To learn about other options to configure these parameters in Azure Database for PostgreSQL flexible server, see [Configure server parameters](how-to-configure-server-parameters.md).
+
+If the configuration of those parameters and the available resources on the server don't permit launching the parallel workers, PostgreSQL automatically falls back to create the index in the nonparallel mode.
+
+## Configuration parameters
+
+When creating a `diskann` index, you can specify various parameters to control its behavior. 
+
+### Index parameters
+
+- `max_neighbors`: Maximum number of edges per node in the graph (Defaults to 32). A higher value can improve the recall up to a certain point.
+- `l_value_ib`: Size of the search list during index build (Defaults to 100). A higher value makes the build slower, but the index would be of higher quality.
+
+```sql
+CREATE INDEX demo_embedding_diskann_custom_idx ON demo USING diskann (embedding vector_cosine_ops)
 WITH (
  max_neighbors = 48,
  l_value_ib = 100
  );
 ```
 
-The L value for index scanning (`l_value_is`) can be set for the whole connection or per transaction (using `SET LOCAL` within a transaction block):
+### Extension parameters
+
+`diskann.l_value_is`: L value for index scanning (Defaults to 100). Increasing the value improves recall but might slow down queries.
+
+To change the L value for index scanning to 20, for all queries executed in the current session, run the following statement:
 
 ```sql
-SET diskann.l_value_is = 100;
-SELECT * FROM my_table ORDER BY embedding <=> '[1,2,3]' LIMIT 5; -- uses 100 candidates
+SET diskann.l_value_is TO 20;
 ```
 
-Postgres will automatically decide when to use the DiskANN index. If there are scenarios you always want to use the index, use the following command:
+To change it so that it only affects all queries executed in the current transaction, run the following statement:
+
 ```sql
-SET LOCAL enable_seqscan TO OFF;
-SELECT * FROM my_table ORDER BY embedding <=> '[1,2,3]' LIMIT 5; -- forces the use of index
+SET LOCAL diskann.l_value_is TO 20;
 ```
 
-## Indexing progress
+`diskann.iterative_search`: Controls the search behavior (Defaults to `relaxed_order`).
 
-With PostgreSQL 12 and newer, you can use `pg_stat_progress_create_index` to check indexing progress.
+`diskann.iterative_search` can be configured to the following values:
+
+- `relaxed_order` (default): Lets diskann iteratively search the graph in batches of `diskann.l_value_is`, until the desired number of tuples, possibly limited by `LIMIT` clause, are yielded. Might cause the results to be slightly out of order, if sorted by distance. Depending on the use case, you might want to sort again the results, by using an outer query with an `ORDER BY` clause.
+
+- `strict_order`: Similar to `relaxed_order`, lets diskann iteratively search the graph, until the desired number of tuples are yielded. However, it ensures that the results are returned in strict order, when sorted by distance. To ensure strict order, the index might skip yielding some tuples which are closer to the query vector, than some of the tuples that were already yielded.
+
+- `off`: Uses noniterative search functionality, which means that it attempts to fetch `diskann.l_value_is` tuples in one step. Noniterative search can only return a maximum of `diskann.l_value_is` vectors for a query, regardless of the `LIMIT` clause or the number of tuples that match the query.
+
+To change the search behavior to` strict_order`, for all queries executed in the current session, run the following statement:
+
+```sql
+SET diskann.iterative_search TO 'strict_order';
+```
+
+To change it so that it only affects all queries executed in the current transaction, run the following statement:
+
+```sql
+SET LOCAL diskann.iterative_search TO 'strict_order';
+```
+
+### Recommended configuration of parameters
+
+| Dataset size (rows)| Parameter type | Name | Recommended value |
+| --- | --- | --- | --- |
+| <1M | Index build | `l_value_ib` | 100 |
+| <1M | Index build | `max_neighbors` | 32 |
+| <1M | Query time | `diskann.l_value_is` | 100 |
+|  | | | |
+| 1M-50M | Index build | `l_value_ib` | 100 |
+| 1M-50M | Index build | `max_neighbors` | 64 |
+| 1M-50M | Query time | `diskann.l_value_is` | 100 |
+|  | | | |
+| >50M | Index build | `l_value_ib` | 100 |
+| >50M | Index build | `max_neighbors` | 96 |
+| >50M | Query time | `diskann.l_value_is` | 100 |
+
+> [!NOTE]
+> These parameters might vary depending on the specific dataset and use case. Users might have to experiment with different parameter values, to find the optimal settings for their particular scenario.
+
+## CREATE INDEX and REINDEX progress
+
+With PostgreSQL 12 and newer, you can use [`pg_stat_progress_create_index`](https://www.postgresql.org/docs/current/progress-reporting.html#CREATE-INDEX-PROGRESS-REPORTING) to check the progress of the CREATE INDEX or REINDEX operations.
 
 ```sql
 SELECT phase, round(100.0 * blocks_done / nullif(blocks_total, 0), 1) AS "%" FROM pg_stat_progress_create_index;
 ```
 
-Phases for building DiskANN indexes are:
-1. `initializing`
-1. `loading tuples`
-
-> [!WARNING]
-> Users may experience slow index build times in some cases.
+To learn more about the possible phases through which a CREATE INDEX or REINDEX operation goes through, see [CREATE INDEX phases](https://www.postgresql.org/docs/current/progress-reporting.html#CREATE-INDEX-PHASES). 
 
 ### Selecting the index access function
 
-The vector type allows you to perform three types of searches on the stored vectors. You need to select the correct access function for your index so the database can consider your index when executing your queries.
+The vector type allows you to perform three types of searches on the stored vectors. You need to select the correct access function for your index, so that the database can consider your index when executing your queries.
 
 `pg_diskann` supports following distance operators
 - `vector_l2_ops`: `<->` Euclidean distance
 - `vector_cosine_ops`: `<=>` Cosine distance
 - `vector_ip_ops`: `<#>` Inner Product
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
+## Troubleshooting
+
+**Error: `diskann index needs to be upgraded to version 2...`**:
+
+When you encounter this error, you can resolve by:
+
+- Executing `REINDEX` or `REDINDEX CONCURRENTLY` statement on the index. 
+
+- Because `REINDEX` might take a long time, the extension also provides a user-defined function called `upgrade_diskann_index()`, which upgrades your index faster, when possible.
+
+    To upgrade your index, run the following statement:
+
+    ```sql
+    SELECT upgrade_diskann_index('demo_embedding_diskann_custom_idx');
+    ```
+
+    To upgrade all diskann indexes in the database to the current version, run the following statement:
+
+    ```sql
+    SELECT upgrade_diskann_index(pg_class.oid)
+    FROM pg_class
+    JOIN pg_am ON (pg_class.relam = pg_am.oid)
+    WHERE pg_am.amname = 'diskann';
+    ```
 
 ## Related content
 
 - [Enable and use pgvector in Azure Database for PostgreSQL - Flexible Server](how-to-use-pgvector.md).
-- [Manage PostgreSQL extensions in Azure Database for PostgreSQL - Flexible Server](../extensions/how-to-allow-extensions.md).
+- [Manage PostgreSQL extensions](../extensions/how-to-allow-extensions.md).

@@ -97,8 +97,6 @@ AzureDiagnostics
 | where Message contains "AUDIT:"
 ```
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 
 - [Logging in Azure Database for PostgreSQL - Flexible Server](concepts-logging.md).

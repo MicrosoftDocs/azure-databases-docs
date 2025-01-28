@@ -90,7 +90,7 @@ The physical database files are first restored from the snapshot backups to the 
 
 For example, assume that the backups are performed at 11:00 PM every night. If the restore point is for August 15 at 10:00 AM, the daily backup of August 14 is restored. The database will be recovered until 10:00 AM of August 15 by using the transaction log backup from August 14, 11:00 PM, to August 15, 10:00 AM. 
 
-To restore your database server, see [these steps](how-to-restore-server-portal.md).
+To restore your database server, see [these steps](how-to-restore-server.md).
 
 > [!IMPORTANT]
 > A restore operation in Azure Database for PostgreSQL flexible server always creates a new database server with the name that you provide. It doesn't overwrite the existing database server.
@@ -119,7 +119,7 @@ If you configure your server within a virtual network, you can restore to the sa
 
 ## Geo-redundant backup and restore
 
-To enable geo-redundant backup from the **Compute + storage** pane in the Azure portal, see the [quickstart guide](quickstart-create-server-portal.md). 
+To enable geo-redundant backup from the **Compute + storage** pane in the Azure portal, see [Create an instance of Azure Database for PostgreSQL - Flexible Server](quickstart-create-server.md). 
 
 >[!IMPORTANT]
 > Geo-redundant backup can be configured only at the time of server creation. 
@@ -134,14 +134,13 @@ The estimated time to recover the server RTO (recovery time objective) depends o
 
 During the geo-restore, the server configurations that can be changed include virtual network settings and the ability to remove geo-redundant backup from the restored server. Changing other server configurations -such as compute, storage, or pricing tier (Burstable, General Purpose, or Memory Optimized)- during geo-restore is not supported.
 
-For more information about performing a geo-restore, see the [how-to guide](how-to-restore-server-portal.md#perform-geo-restore).
+For more information, see the [Restore to a paired region (geo-restore)](how-to-restore-server.md#restore-to-a-paired-region-geo-restore).
 
 > [!IMPORTANT]
 > When the primary region is down, you can't create geo-redundant servers in the respective geo-paired region, because storage can't be provisioned in the primary region. Before you can provision geo-redundant servers in the geo-paired region, you must wait for the primary region to be up. 
 >
-> With the primary region down, you can still geo-restore the source server to the geo-paired region. For more information about performing a geo-restore, see the [how-to guide](how-to-restore-server-portal.md#perform-geo-restore).
+> With the primary region down, you can still geo-restore the source server to the geo-paired region. For more information, see the [Restore to a paired region (geo-restore)](how-to-restore-server.md#restore-to-a-paired-region-geo-restore).
 > You should use Geo-replicas as your disaster recovery (DR) strategy if you need to configure DR to any region, or if the primary region doesn't support Geo-redundant backups 
-
 
 ## Restore and networking
 
@@ -173,7 +172,7 @@ After you restore the server, you can perform the following tasks to get your us
 
 - Configure alerts as appropriate.
   
-- If the source server from which you restored was configured with high availability, and you want to configure the restored server with high availability, you can then follow [these steps](how-to-manage-high-availability-portal.md).
+- If the source server from which you restored was configured with high availability, and you want to configure the restored server with high availability, you can then follow [these steps](how-to-configure-high-availability.md).
 
 - If the source server from which you restored was configured with read replicas, and you want to configure read replicas on the restored server, you can then follow [these steps](how-to-read-replicas-portal.md).
  
@@ -183,12 +182,12 @@ Azure Database for PostgreSQL Flexible Server automatically generates storage vo
 
 On-demand backups can be taken in addition to scheduled automatic backups. These backups are retained according to your backup retention window. You can delete these on-demand backups at any time if they are no longer needed. To initiate an on-demand backup, simply select the database instance you wish to back up and specify a backup name. These backups are stored alongside automated backups, but only on-demand backups can be deleted by users, as automated backups are managed and retained by the Flexible Server service to meet backup retention requirements.
 
- For more information about performing an on-demand backup, visit the [how-to guide](how-to-perform-on-demand-backup-portal.md).
-
+ For more information, see [On-demand backups](how-to-operate-on-demand-backups.md).
 
 #### Limitations
 
 On-demand backup feature is currently not supported with the Burstable server compute tier.
+On-demand backup feature is currently not supported with the SSDv2 storage tier.
 
 #### Known Issues
 
@@ -343,10 +342,8 @@ For more information about performing a long term backup, visit the [how-to guid
   
     Currently, there's no way to track the restore operation. You can monitor the activity log to see if the operation is in progress or complete.
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 
 - [Overview of business continuity with Azure Database for PostgreSQL - Flexible Server](concepts-business-continuity.md).
 - [High availability in Azure Database for PostgreSQL - Flexible Server](/azure/reliability/reliability-postgresql-flexible-server).
-- [Point-in-time restore of an Azure Database for PostgreSQL - Flexible Server instance](how-to-restore-server-portal.md).
+- [Point-in-time restore of an Azure Database for PostgreSQL - Flexible Server instance](how-to-restore-server.md).

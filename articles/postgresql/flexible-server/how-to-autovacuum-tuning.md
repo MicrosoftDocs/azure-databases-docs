@@ -308,7 +308,7 @@ In versions of PostgreSQL <= 13, autovacuum doesn't run on tables with an inse
 
 Using the **pg_cron** extension, a cron job can be set up to schedule a periodic vacuum analyze on the table. The frequency of the cron job depends on the workload.
 
-For step-by-step guidance using pg_cron, review [Extensions](concepts-extensions.md).
+For guidance, see [special considerations about using pg_cron in Azure Database for PostgreSQL Flexible Server](../extensions/concepts-extensions-considerations.md#pg_cron).
 
 ##### Postgres 13 and higher versions
 
@@ -328,8 +328,6 @@ The recommendations are:
 - **High Bloat Ratio**: A high bloat ratio can affect server performance in several ways. One significant issue is that the PostgreSQL Engine Optimizer might struggle to select the best execution plan, leading to degraded query performance. Therefore, a recommendation is triggered when the bloat percentage on a server reaches a certain threshold to avoid such performance issues.
 
 - **Transaction Wrap around**: This scenario is one of the most serious issues a server can encounter. Once your server is in this state it might stop accepting any more transactions, causing the server to become read-only. Hence, a recommendation is triggered when we see the server crosses 1 billion transactions threshold.
-
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
 
 ## Related content
 

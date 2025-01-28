@@ -47,7 +47,7 @@ If zone redundant high availability is configured, the service provisions and ma
 
 :::image type="content" source="~/reusable-content/ce-skilling/azure/media/postgresql/concepts-zone-redundant-high-availability-architecture.png" alt-text="Diagram of Zone redundant high availability." lightbox="~/reusable-content/ce-skilling/azure/media/postgresql/concepts-zone-redundant-high-availability-architecture.png":::
 
-See [High availability](concepts-high-availability.md) for more details.
+See [High availability]/azure/reliability/reliability-postgresql-flexible-server for more details.
 
 ## Automated patching with a managed maintenance window
 
@@ -89,7 +89,7 @@ $ New Zone-redundant high availability deployments are temporarily blocked in th
 
 $$ New server deployments are temporarily blocked in these regions. Already provisioned servers are fully supported.
 
-** Zone-redundant high availability can now be deployed when you provision new servers in these regions. Any existing servers deployed in AZ with *no preference* (which you can check on the Azure portal) before the region started to support AZ, even when you enable zone-redundant HA, the standby is provisioned in the same AZ (same-zone HA) as the primary server. To enable zone-redundant high availability, [follow the steps](how-to-manage-high-availability-portal.md#enabling-zone-redundant-ha-after-the-region-supports-az).
+** Zone-redundant high availability can now be deployed when you provision new servers in these regions. Any existing servers deployed in AZ with *no preference* (which you can check on the Azure portal) before the region started to support AZ, even when you enable zone-redundant HA, the standby is provisioned in the same AZ (same-zone HA) as the primary server. To enable zone-redundant high availability in such case, read these [special considerations](how-to-configure-high-availability.md#special-considerations).
 
 (*) Certain regions are access-restricted to support specific customer scenarios, such as in-country/region disaster recovery. These regions are available only upon request by creating a new support request.
 
@@ -128,8 +128,6 @@ In addition, consider the following points of contact as appropriate:
 - To fix an issue with your account, file a [support request](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) in the Azure portal.
 - To provide feedback or to request new features, create an entry via [UserVoice](https://feedback.azure.com/forums/597976-azure-database-for-postgresql).
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 
-- [Quickstart: Create an Azure Database for PostgreSQL - Flexible Server](quickstart-create-server-portal.md).
+- [Create an instance of Azure Database for PostgreSQL - Flexible Server](quickstart-create-server.md).

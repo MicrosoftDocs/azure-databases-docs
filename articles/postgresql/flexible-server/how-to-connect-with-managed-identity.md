@@ -188,8 +188,6 @@ Connected!
 Postgres version: PostgreSQL 11.11, compiled by Visual C++ build 1800, 64-bit
 ```
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 
 - [# Microsoft Entra authentication with Azure Database for PostgreSQL - Flexible Server](concepts-azure-ad-authentication.md)

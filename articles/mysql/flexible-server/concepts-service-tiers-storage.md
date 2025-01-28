@@ -90,30 +90,23 @@ The detailed specifications of the available server types are as follows for the
 | Compute size | vCores | Physical Memory Size (GiB) | Total Memory Size (GiB) | Max Supported IOPS | Max Connections | Temp Storage (SSD) GiB |
 | --- | --- | --- | --- | --- | --- | --- |
 | Standard_E2ds_v4 | 2 | 16 | 22 | 5000 | 2731 | 37 |
-| Standard_E2ads_v5 | 2 | 16 | 22 | 5000 | 2731 | 37 |
+| Standard_E2ads_v5, Standard_E2ds_v5 | 2 | 16 | 22 | 5000 | 2731 | 37 |
 | Standard_E4ds_v4 | 4 | 32 | 44 | 10000 | 5461 | 75 |
-| Standard_E4ads_v5 | 4 | 32 | 44 | 10000 | 5461 | 75 |
+| Standard_E4ads_v5, Standard_E4ds_v5 | 4 | 32 | 44 | 10000 | 5461 | 75 |
 | Standard_E8ds_v4 | 8 | 64 | 88 | 18000 | 10923 | 151 |
-| Standard_E8ads_v5 | 8 | 64 | 88 | 18000 | 10923 | 151 |
+| Standard_E8ads_v5, Standard_E8ds_v5 | 8 | 64 | 88 | 18000 | 10923 | 151 |
 | Standard_E16ds_v4 | 16 | 128 | 176 | 28000 | 21845 | 302 |
-| Standard_E16ads_v5 | 16 | 128 | 176 | 28000 | 21845 | 302 |
+| Standard_E16ads_v5, Standard_E16ds_v5 | 16 | 128 | 176 | 28000 | 21845 | 302 |
 | Standard_E20ds_v4 | 20 | 160 | 220 | 28000 | 27306 | 377 |
-| Standard_E20ads_v5 | 20 | 160 | 220 | 28000 | 27306 | 377 |
+| Standard_E20ads_v5, Standard_E20ds_v5 | 20 | 160 | 220 | 28000 | 27306 | 377 |
 | Standard_E32ds_v4 | 32 | 256 | 352 | 38000 | 43691 | 604 |
-| Standard_E32ads_v5 | 32 | 256 | 352 | 38000 | 43691 | 604 |
+| Standard_E32ads_v5, Standard_E32ds_v5 | 32 | 256 | 352 | 38000 | 43691 | 604 |
 | Standard_E48ds_v4 | 48 | 384 | 528 | 48000 | 65536 | 906 |
-| Standard_E48ads_v5 | 48 | 384 | 528 | 48000 | 65536 | 906 |
+| Standard_E48ads_v5, Standard_E48ds_v5 | 48 | 384 | 528 | 48000 | 65536 | 906 |
 | Standard_E64ds_v4 | 64 | 504 | 693 | 64000 | 86016 | 1224 |
 | Standard_E64ads_v5 | 64 | 504 | 693 | 64000 | 86016 | 1224 |
-| Standard_E80ds_v4 | 80 | 504 | 693 | 72000 | 86016 | 1224 |
-| Standard_E2ds_v5 | 2 | 16 | 22 | 5000 | 2731 | 37 |
-| Standard_E4ds_v5 | 4 | 32 | 44 | 10000 | 5461 | 75 |
-| Standard_E8ds_v5 | 8 | 64 | 88 | 18000 | 10923 | 151 |
-| Standard_E16ds_v5 | 16 | 128 | 176 | 28000 | 21845 | 302 |
-| Standard_E20ds_v5 | 20 | 160 | 220 | 28000 | 27306 | 377 |
-| Standard_E32ds_v5 | 32 | 256 | 352 | 38000 | 43691 | 604 |
-| Standard_E48ds_v5 | 48 | 384 | 528 | 48000 | 65536 | 906 |
 | Standard_E64ds_v5 | 64 | 512 | 704 | 64000 | 87383 | 1208 |
+| Standard_E80ids_v4 | 80 | 504 | 693 | 72000 | 86016 | 1224 |
 | Standard_E96ds_v5 | 96 | 672 | 924 | 80000 | 100000 | 2004 |
 
 **Default Zone-Resilience in Azure Database for MySQL – Flexible Server Business Critical Tier**: Starting mid-December 2024, all new servers provisioned in the Azure Database for MySQL – Flexible Server Business Critical tier will come with built-in zone-resilience—at no extra cost! This means your data and log files will automatically be stored on zone-redundant storage, ensuring rapid recovery from zonal outages. Even without High-Availability enabled, you'll benefit from seamless protection with zone-redundant backups. [Overview of business continuity with Azure Database for MySQL - Flexible Server](concepts-business-continuity.md).
@@ -222,7 +215,9 @@ Azure Database for MySQL Flexible Server offers pre-provisioned IOPS, allowing y
 
 ## Autoscale IOPS
 
-The cornerstone of Azure Database for MySQL Flexible Server is its ability to achieve the best performance for tier 1 workloads. This can be improved by enabling the server to automatically scale its database servers' performance (IO) seamlessly depending on the workload needs. This opt-in feature enables users to scale IOPS on demand without having to pre-provision a certain amount of IO per second. With the Autoscale IOPS featured enabled, you can now enjoy worry-free IO management in Azure Database for MySQL flexible server because the server scales IOPs up or down automatically depending on workload needs. AutoScale IOPS automatically scales up to the 'Max Supported IOPS' for each service tier and compute size, as specified in the [service tiers documentation](#service-tiers-size-and-server-types). This ensures optimal performance without the need for manual scaling efforts
+
+The cornerstone of Azure Database for MySQL Flexible Server is its ability to achieve the best performance for tier 1 workloads. This can be improved by enabling the server to automatically scale its database servers' performance (IO) seamlessly depending on the workload needs. This opt-in feature enables users to scale IOPS on demand without having to pre-provision a certain amount of IO per second. With the Autoscale IOPS featured enabled, you can now enjoy worry-free IO management in Azure Database for MySQL Flexible Server because the server scales IOPs up or down automatically depending on workload needs. AutoScale IOPS automatically scales up to the 'Max Supported IOPS' for each service tier and compute size, as specified in the [service tiers documentation](#service-tiers-size-and-server-types). This ensures optimal performance without the need for manual scaling efforts
+
 
 With Autoscale IOPS, you pay only for the IO the server uses and no longer need to provision and pay for resources they aren't fully using, saving time and money. In addition, mission-critical Tier-1 applications can achieve consistent performance by making additional IO available to the workload anytime. Autoscale IOPS eliminates the administration required to provide the best performance at the least cost for Azure Database for MySQL Flexible Server customers.
 

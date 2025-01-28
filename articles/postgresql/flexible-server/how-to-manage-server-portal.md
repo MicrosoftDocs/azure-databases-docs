@@ -68,8 +68,6 @@ You can delete your server if you no longer need it.
 
 3. Select **Delete**.
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 
 - [Backup and restore in Azure Database for PostgreSQL - Flexible Server](concepts-backup-restore.md).

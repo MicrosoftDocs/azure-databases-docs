@@ -3,10 +3,10 @@ title:  Azure Database for PostgreSQL - Flexible Server documentation
 summary: "Azure Database for PostgreSQL - Flexible Server is a relational database service based on the open-source Postgres database engine. It's a fully managed database-as-a-service that can handle mission-critical workloads with predictable performance, security, high availability, and dynamic scalability."
 metadata:
   description: "Azure Database for PostgreSQL - Flexible Server is a relational database service in the Microsoft cloud that is built for developers based on the open-source PostgreSQL database engine."
-  author: sunilagarwal
-  ms.author: sunila
+  author: nachoalonsoportillo
+  ms.author: ialonso
   ms.reviewer: maghan
-  ms.date: 09/19/2024
+  ms.date: 01/04/2025
   ms.service: azure-database-postgresql
   ms.topic: landing-page
 # linkListType: architecture | concept | deploy | download | get-started | how-to-guide | learn | overview | quickstart | reference | tutorial | whats-new
@@ -42,12 +42,8 @@ landingContent:
             url: flexible-server/concepts-limits.md
       - linkListType: quickstart
         links:
-          - text: Create an Azure Database for PostgreSQL - Flexible Server instance using Azure portal
-            url: flexible-server/quickstart-create-server-portal.md
-          - text: Create an Azure Database for PostgreSQL - Flexible Server instance using ARM template
-            url: flexible-server/quickstart-create-server-arm-template.md
-          - text: Create an Azure Database for PostgreSQL - Flexible Server instance using Azure CLI
-            url: flexible-server/quickstart-create-server-cli.md
+          - text: Create an instance of Azure Database for PostgreSQL - Flexible Server
+            url: flexible-server/quickstart-create-server.md
       - linkListType: tutorial
         links:
           - text: Create App and database server in virtual network
@@ -113,7 +109,7 @@ landingContent:
           - text: Manage high availability
             url: flexible-server/how-to-manage-high-availability-portal.md
           - text: Restore a server
-            url: flexible-server/how-to-restore-server-portal.md
+            url: flexible-server/how-to-restore-server.md
 
 # Card 5
   - title: Connect and query

@@ -150,20 +150,12 @@
       href: /azure/migrate/migrate-services-overview
     - name: SQL Database Projects
       href: /azure-data-studio/extensions/sql-database-project-extension
-    - name: Database Schema Conversion Toolkit (Oracle to Microsoft SQL)
-      href: /azure-data-studio/extensions/dsct/database-schema-conversion-toolkit
-    - name: Database Migration Assessment for Oracle
-      href: /azure-data-studio/extensions/database-migration-assessment-for-oracle-extension
     - name: SQL Server Migration Assistant
       href: /sql/ssma/sql-server-migration-assistant
     - name: Older tools
       items: 
       - name: Data Migration Assistant
         href: /sql/dma/dma-overview
-      - name: Database Experimentation Assistant
-        href: /sql/dea/database-experimentation-assistant-overview
-      - name: Data Access Migration Toolkit
-        href: https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit
   - name: Troubleshooting and known issues
     items:
     - name: Database Migration Service
@@ -196,7 +188,7 @@
     - name: Assess, get recommendations, & migrate SQL Server to Azure using Azure Data Studio 
       href: https://learn-video.azurefd.net/vod/player?show=data-exposed&ep=assess-get-recommendations-migrate-sql-server-to-azure-using-azure-data-studio
     - name: Introduction to Azure Data Migration Service
-      href: https://www.microsoft.com/videoplayer/embed/RE2IqVu
+      href: https://learn-video.azurefd.net/vod/player?id=58ca75ec-3688-4a84-bbf4-cf0265e9ab0d
     - name: Cloud Migration Strategies and Phases in Migration Journey
       href: https://learn-video.azurefd.net/vod/player?show=data-exposed&ep=migrating-to-sql-cloud-migration-strategies-and-phases-in-migration-journey-ep-1
     - name: Discover and Assess SQL Server Data Estate Migrating to Azure SQL

@@ -107,8 +107,6 @@ AzureDiagnostics
 | where TimeGenerated > ago(1d) 
 ```
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 
 - [Get started with log analytics queries](/azure/azure-monitor/logs/log-analytics-tutorial).

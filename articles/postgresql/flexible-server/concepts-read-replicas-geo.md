@@ -70,8 +70,6 @@ This option won't require updating the connection strings in your application, p
 
 In that case, this is the only viable option. After promoting the server, you'll need to update your application's connection strings. Once the original region is restored, the old primary might become active again. Ensure to remove it to avoid incurring unnecessary costs. If you wish to maintain the previous topology, recreate the read replica.
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 
 - [Read replicas in Azure Database for PostgreSQL - Flexible Server](concepts-read-replicas.md).

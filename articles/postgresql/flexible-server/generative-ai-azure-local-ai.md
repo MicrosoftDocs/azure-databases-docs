@@ -187,8 +187,6 @@ SELECT all_documents.doc_id, all_docs.doc_contents , 1 - (all_documents.doc_vect
  LIMIT 2;
 ```
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 
 - [Integrate Azure Database for PostgreSQL - Flexible Server with Azure Cognitive Services](generative-ai-azure-cognitive.md).

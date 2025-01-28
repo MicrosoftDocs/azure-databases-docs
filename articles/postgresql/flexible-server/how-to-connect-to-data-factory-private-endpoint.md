@@ -71,8 +71,6 @@ With the private endpoint provisioned and approved, you can finally use the Azur
 
 1. Select **Test connection**. A **Connection successful** message should appear next to the **Test connection** button.
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 
 - [Networking with Private Link in Azure Database for PostgreSQL - Flexible Server](concepts-networking-private-link.md).

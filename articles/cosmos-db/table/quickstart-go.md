@@ -195,7 +195,10 @@ if err != nil {
 After you insert an entity, you can also run a query to get all entities that match a specific filter by using `NewListEntitiesPager` along with a string filter.
 
 ```go
-filter := "PartitionKey eq 'gear-surf-surfboards'"
+category := "gear-surf-surfboards"
+// Ensure the value is OData-compliant by escaping single quotes
+safeCategory := strings.ReplaceAll(category, "'", "''")
+filter := fmt.Sprintf("PartitionKey eq '%s'", safeCategory)
 
 options := &aztables.ListEntitiesOptions{
     Filter: &filter,

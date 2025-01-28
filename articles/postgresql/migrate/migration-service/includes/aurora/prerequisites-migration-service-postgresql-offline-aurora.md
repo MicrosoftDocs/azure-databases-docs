@@ -1,10 +1,10 @@
 ---
-title: "Prerequisites to use the migration service from Amazon Aurora PostgreSQL (offline)"
+title: "Prerequisites to Use the Migration Service From Amazon Aurora PostgreSQL (Offline)"
 description: Get the offline prerequisites for the migration service in Azure Database for PostgreSQL.
 author: apduvuri
 ms.author: adityaduvuri
 ms.reviewer: maghan
-ms.date: 06/19/2024
+ms.date: 01/24/2025
 ms.service: azure-database-postgresql
 ms.topic: include
 ---
@@ -27,7 +27,7 @@ The source PostgreSQL server version must be 9.5 or later. If the source Postgre
 
 Before you begin the migration, you must create an instance of [Azure Database for PostgreSQL](/azure/postgresql/flexible-server/) in Azure. The SKU that's provisioned for Azure Database for PostgreSQL - Flexible Server should match the source.
 
-For more information, see [Create an instance of Azure Database for PostgreSQL](../../../../flexible-server/quickstart-create-server-portal.md).
+For more information, see [Create an instance of Azure Database for PostgreSQL - Flexible Server](../../../../flexible-server/quickstart-create-server.md).
 
 ### Configure the network setup
 

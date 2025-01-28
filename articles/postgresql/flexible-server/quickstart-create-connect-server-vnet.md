@@ -30,7 +30,7 @@ Sign in to the [Azure portal](https://portal.azure.com). Enter your credentials 
 
 ## Create an Azure Database for PostgreSQL flexible server
 
-You create an Azure Database for PostgreSQL flexible server instance with a defined set of [compute and storage resources](concepts-compute-storage.md). You create the server within an [Azure resource group](/azure/azure-resource-manager/management/overview).
+You create an Azure Database for PostgreSQL flexible server instance with a defined set of [compute and storage resources](concepts-compute.md). You create the server within an [Azure resource group](/azure/azure-resource-manager/management/overview).
 
 Complete these steps to create an Azure Database for PostgreSQL flexible server instance:
 
@@ -158,8 +158,6 @@ You have now created an Azure Database for PostgreSQL flexible server instance i
 1. In the list of resource groups, select the name of your resource group.
 1. In the **Overview** page for your resource group, select **Delete resource group**.
 1. In the confirmation dialog box, type the name of your resource group, and then select **Delete**.
-
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
 
 ## Related content
 

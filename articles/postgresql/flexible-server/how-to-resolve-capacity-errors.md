@@ -20,7 +20,7 @@ The article describes how you can resolve capacity errors when deploying or scal
 
 
 > [!IMPORTANT]
-> For the list of regions that support Zone redundant high availability, please review the supported regions [here](./overview.md#azure-regions). 
+> For the list of regions that support Zone redundant high availability, please review the supported regions [here](overview.md#azure-regions). 
 
 
 ## Exceeded quota 
@@ -124,8 +124,6 @@ If your subscription is part of above offerings and you require access to any of
 `Australia Central, Australia Central 2, Australia SouthEast, Brazil SouthEast, Canada East, China East, China North, China North 2, France South, Germany North, Japan West, Jio India Central, Jio India West, Korea South, Norway West, South Africa West, South India, Switzerland West, UAE Central, UK West, US DoD Central, US DoD East, US Gov Arizona, US Gov Texas, West Central US, West India.`
 
 Once you submit your request, it undergoes review. You then receive a response based on the information provided in the form.
-
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
 
 ## Related content
 
