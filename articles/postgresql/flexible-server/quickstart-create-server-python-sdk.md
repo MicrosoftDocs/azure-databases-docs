@@ -22,10 +22,10 @@ Azure Database for PostgreSQL flexible server is a managed service that you use 
 You can perform the following operations with this library:
 
 1. Creating a PostgreSQL Flexible Server
-1. Managing Databases
-1. Configuring Firewall Rules
-1. Scaling Operations
-1. Back up and Restore
+2. Managing Databases
+3. Configuring Firewall Rules
+4. Scaling Operations
+5. Back up and Restore
 
 ## Prerequisites
 
@@ -165,28 +165,6 @@ Replace the following parameters with your data:
 - **resource_group**: The name of the resource group you want to use. The script creates a new resource group if it doesn't exist.
 - **sever_name**: The name of the Azure database flexible server instance that you created before
 
-You can also delete the created database
-
-```sql
-from azure.identity import DefaultAzureCredential
-from azure.mgmt.postgresqlflexibleservers import PostgreSQLManagementClient
-
-def main():
-    client = PostgreSQLManagementClient(
-        credential=DefaultAzureCredential(),
-        subscription_id="ffffffff-ffff-ffff-ffff-ffffffffffff",
-    )
-
-    client.databases.begin_delete(
-        resource_group_name="TestGroup",
-        server_name="testserver",
-        database_name="db1",
-    ).result()
-
-if __name__ == "__main__":
-    main()
-```
-
 # [CLI](#tab/CLI)
 
 ```azurecli
@@ -209,7 +187,7 @@ If you no longer need the Azure Database for PostgreSQL flexible server instance
 
 Create a 'delete_server.py' file to delete the flexi server instance that was created.
 
-```sql
+```python
 from azure.identity import DefaultAzureCredential
 from azure.mgmt.postgresqlflexibleservers import PostgreSQLManagementClient
 
