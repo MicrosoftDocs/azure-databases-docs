@@ -421,8 +421,21 @@
         href: flexible-server/how-to-perform-major-version-upgrade.md
       - name: Configure server parameters
         href: flexible-server/how-to-configure-server-parameters.md
-      - name: Configure networking
-        href: flexible-server/how-to-networking.md
+      - name: Networking
+        expanded: true
+        items:
+        - name: Configure networking
+          href: flexible-server/how-to-networking.md
+        - name: Enable public access
+          href: flexible-server/how-to-networking.md#enable-public-access
+        - name: Disable public access
+          href: flexible-server/how-to-networking.md#disable-public-access
+        - name: Add firewall rules
+          href: flexible-server/how-to-networking.md#add-firewall-rules
+        - name: Delete firewall rules
+          href: flexible-server/how-to-networking.md#delete-firewall-rules
+        - name: Add private endpoints
+          href: flexible-server/how-to-networking.md#add-private-endpoints
       - name: Scheduled maintenance
         href: flexible-server/how-to-configure-scheduled-maintenance.md
       - name: Data encryption
