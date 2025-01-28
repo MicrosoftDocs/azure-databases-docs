@@ -1,10 +1,10 @@
 ---
-title: "Prerequisites using the migration service from Google Cloud SQL PostgreSQL (offline)"
+title: "Prerequisites Using the Migration Service From Google Cloud SQL PostgreSQL (Offline)"
 description: Providing the offline prerequisites for the migration service in Azure Database for PostgreSQL.
 author: apduvuri
 ms.author: adityaduvuri
 ms.reviewer: maghan
-ms.date: 06/19/2024
+ms.date: 01/24/2025
 ms.service: azure-database-postgresql
 ms.topic: include
 ---
@@ -25,7 +25,7 @@ The source PostgreSQL server version must be 9.5 or later.
 
 If the source PostgreSQL version is less than 9.5, upgrade it to 9.5 or higher before you start the migration.
 
-> [!NOTE]
+> [!NOTE]  
 > The migration service in Azure Database for PostgreSQL supports connections using the IP address for source Google Cloud SQL for PostgreSQL. The format `myproject:myregion:myinstance` is not supported.
 
 ### Configure target setup

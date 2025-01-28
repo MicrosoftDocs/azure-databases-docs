@@ -187,6 +187,7 @@ On-demand backups can be taken in addition to scheduled automatic backups. These
 #### Limitations
 
 On-demand backup feature is currently not supported with the Burstable server compute tier.
+On-demand backup feature is currently not supported with the SSDv2 storage tier.
 
 #### Known Issues
 

@@ -121,6 +121,8 @@ landingContent:
             url: cross-region-replication.md
           - text: HA and DR - behind the scenes
             url: availability-disaster-recovery-under-hood.md
+          - text: Best practices for HA and DR
+            url: high-availability-replication-best-practices.md
   - title: Security
     linkLists:
       - linkListType: how-to-guide

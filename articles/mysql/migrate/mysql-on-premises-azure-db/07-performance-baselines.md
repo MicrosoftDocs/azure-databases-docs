@@ -28,7 +28,7 @@ Creating query performance baselines is vital to a migration project. The perfor
 
 Below are tools used to gather server metrics and database workload information. Use the captured metrics to determine the appropriate Azure Database for the MySQL tier and the associated scaling options.
 
-  - [MySQL Enterprise Monitor:](https://www.mysql.com/products/enterprise/monitor.html) This nonfree, enterprise edition tool can provide a sorted list of the most expensive queries, server metrics, file I/O, and topology information
+  - [MySQL Enterprise Telemetry:](https://www.mysql.com/products/enterprise/telemetry/) This nonfree, enterprise edition tool can provide a sorted list of the most expensive queries, server metrics, file I/O, and topology information
 
   - [Percona Monitoring and Management (PMM)](https://www.percona.com/software/database-tools/percona-monitoring-and-management) : a best-of-breed open-source database monitoring solution. It helps to reduce complexity, optimize performance, and improve the security of business-critical database environments, no matter the deployed location.
 
