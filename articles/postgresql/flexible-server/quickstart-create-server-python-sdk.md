@@ -80,6 +80,7 @@ def main():
                 "version": "<pg-version>",
             },
             "sku": {"name": "<sku-name>", "tier": "<tier-type>"},
+            "tags": {"ElasticServer": "1"},
         },
     ).result()
     print(response)
@@ -106,11 +107,11 @@ You can also customize other parameters like storage size, engine version, etc.
 > [!NOTE]  
 > Running this code will initiate the instance creation process, which might take a few minutes to complete.
 
-### Review deployed resources
+## Review deployed resources
 
 You can use the Python SDK, Azure portal, Azure CLI, Azure PowerShell, and various other tools to validate the deployment and review the deployed resources. Some examples are provided below.
 
-#### Validate deployment with Python SDK
+### Validate deployment with Python SDK
 
 Add the `check_server_created` function to your existing script to use the servers attribute of the [PostgreSQLManagementClient](/python/api/azure-mgmt-rdbms/azure.mgmt.rdbms.postgresql_flexibleservers.postgresqlmanagementclient?view=azure-python&preserve-view=true) instance to check if the Azure Database for PostgreSQL flexible server instance was created:
 
@@ -143,7 +144,7 @@ Call it with the appropriate parameters.
 > [!NOTE]  
 > The `check_server_created` function will return the server state as soon as the server is provisioned. However, it might take a few minutes for the server to become fully available. Ensure that you wait for the server to be in the Ready state before connecting to it. It would return the state, id, name, location etc parameters in the response to the postgres_client.servers.get method.
 
-### Create database
+## Create database
 
 Create a database in your flexible server with this sample code
 
