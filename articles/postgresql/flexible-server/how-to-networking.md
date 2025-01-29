@@ -1,17 +1,17 @@
 ---
-title: Configure networking
+title: Networking
 description: This article describes how to configure networking related settings of an Azure Database for PostgreSQL flexible server.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 01/26/2025
+ms.date: 01/29/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: how-to
 #customer intent: As a user, I want to learn how to configure network related settings of an Azure Database for PostgreSQL flexible server.
 ---
 
-# Configure networking
+# Networking
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
@@ -42,9 +42,10 @@ If your server was deployed with **Networking with private access (VNET Integrat
 
 ## Related content
 
-- [Start an Azure Database for PostgreSQL flexible server](how-to-start-server.md).
-- [Stop an Azure Database for PostgreSQL flexible server](how-to-stop-server.md).
-- [Reset administrator password of an Azure Database for PostgreSQL flexible server](how-to-reset-admin-password.md).
-- [Delete an Azure Database for PostgreSQL flexible server](how-to-delete-server.md).
-- [Configure storage autogrow in an Azure Database for PostgreSQL flexible server](how-to-auto-grow-storage.md).
-- [Configure high availability in an Azure Database for PostgreSQL flexible server](how-to-configure-high-availability.md).
+- [Server lifecycle](how-to-networking.md).
+- [Server administration](how-to-networking.md).
+- [Compute and storage](how-to-networking.md).
+- [Monitoring](how-to-networking.md).
+- [Intelligent performance](how-to-networking.md).
+- [Extensions](how-to-networking.md).
+- [Replication](how-to-networking.md).

@@ -4,7 +4,7 @@ description: This article describes how to add firewall rules to an Azure Databa
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 01/26/2025
+ms.date: 01/29/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: how-to

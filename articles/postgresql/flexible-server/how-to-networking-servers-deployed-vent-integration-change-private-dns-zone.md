@@ -4,7 +4,7 @@ description: This article describes how to change the private DNS zone of your A
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 01/26/2025
+ms.date: 01/29/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: how-to
@@ -17,7 +17,7 @@ ms.topic: how-to
 
 When you deploy an Azure Database for PostgreSQL flexible server with **Networking with private access (VNET Integration)** mode, you're required to provide the private DNS zone in which  is mandatory to be able to do DNS resolution. For new Azure Database for PostgreSQL flexible server creation by using private network access, Private DNS zones need to be used while you configure Azure Database for PostgreSQL flexible servers with private access.
 
-On existing servers, you can change the private DNS zone from the one that you provided during server creation.
+On existing servers, you can change the private DNS zone from the one that you provided during server creation, to another one that exists already and that can be on any resource group of any subscription to which you have access.
 
 ## [Portal](#tab/portal-change-private-dns-zone)
 
@@ -42,7 +42,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 5. In the resource menu, select **Networking**.
 
-    :::image type="content" source="./media/how-to-networking/configure-public-access-networking-disabled.png" alt-text="Screenshot showing the Networking page." lightbox="./media/how-to-networking/configure-public-access-networking-disabled.png":::
+    :::image type="content" source="./media/how-to-networking/configure-private-access-networking.png" alt-text="Screenshot showing the Networking page." lightbox="./media/how-to-networking/configure-private-access-networking.png":::
 
 6. Select the **Allow public access to this resource through the internet using a public IP address** checkbox.
 
@@ -95,11 +95,4 @@ az postgres flexible-server show --resource-group <resource_group> --name <serve
 
 ## Related content
 
-- [Configure networking](how-to-networking.md).
-- [Disable public access](how-to-networking-servers-deployed-public-access-disable-public-access.md).
-- [Add firewall rules](how-to-networking-servers-deployed-public-access-add-firewall-rules.md).
-- [Delete firewall rules](how-to-networking-servers-deployed-public-access-delete-firewall-rules.md).
-- [Add private endpoint connections](how-to-networking-servers-deployed-public-access-add-private-endpoint-connections.md).
-- [Delete private endpoint connections](how-to-networking-servers-deployed-public-access-delete-private-endpoint-connections.md).
-- [Approve private endpoint connections](how-to-networking-servers-deployed-public-access-approve-private-endpoint-connections.md).
-- [Reject private endpoint connections](how-to-networking-servers-deployed-public-access-reject-private-endpoint-connections.md).
+- [Networking](how-to-networking.md).
