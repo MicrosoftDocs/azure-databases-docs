@@ -215,7 +215,6 @@ Remove-AzResourceGroup -Name <resource_group>
 
 ## Related content
 
-- Learn how to find your [subscription ID](https://azure.microsoft.com/en-us/documentation/articles/azure-portal/get-subscription-tenant-id/#find-your-azure-subscription).
-- [Create an Azure account for free](https://azure.microsoft.com/free/).
+- [Create an instance of Azure Database for PostgreSQL - Flexible Server](quickstart-create-server.md).
 
 
