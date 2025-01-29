@@ -12,4 +12,4 @@ ms.date: 08/23/2024
 
 1. Record the value for the **PRIMARY CONNECTION STRING** field. You'll use this value in a later step.
 
-   :::image type="content" source="../media/quickstart-nodejs/cosmos-endpoint-key-credentials.png" lightbox="../media/quickstart-nodejs/cosmos-endpoint-key-credentials.png" alt-text="Screenshot of Keys page with various credentials for an Azure Cosmos DB DB SQL API account.":::
+   :::image type="content" source="media/portal-get-connection-string-from-sign-in/endpoints-credentials.png" lightbox="media/portal-get-connection-string-from-sign-in/endpoints-credentials.png" alt-text="Screenshot of Keys page with various credentials for an Azure Cosmos DB for MongoDB account.":::
