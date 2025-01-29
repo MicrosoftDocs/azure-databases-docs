@@ -97,7 +97,6 @@ Deploy this project's development container to your environment. Then, use the A
 
 1. Use the URL in the console to navigate to your web application in the browser. Observe the output of the running app.
 
-    :::image type="content" source="media/quickstart-python/cosmos-python-app.png" alt-text="Screenshot of the running web application.":::
 
 ---
 
@@ -135,10 +134,6 @@ Deploy this project's development container to your environment. Then, use the A
 ## Object model
 
 Let's look at the hierarchy of resources in the API for MongoDB and the object model that's used to create and access these resources. The Azure Cosmos DB creates resources in a hierarchy that consists of accounts, databases, collections, and documents.
-
-:::image type="complex" source="media/quickstart-nodejs/resource-hierarchy.png" alt-text="Diagram of the Azure Cosmos DB hierarchy including accounts, databases, collections, and docs.":::
-    Hierarchical diagram showing an Azure Cosmos DB account at the top. The account has two child database shards. One of the database shards includes two child collection shards. The other database shard includes a single child collection shard. That single collection shard has three child doc shards.
-:::image-end:::
 
 Each type of resource is represented by a Python class. Here are the most common classes:
 

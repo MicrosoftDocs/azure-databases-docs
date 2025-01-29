@@ -113,10 +113,6 @@ npm install mongodb dotenv
 
 Before you start building the application, let's look into the hierarchy of resources in Azure Cosmos DB. Azure Cosmos DB has a specific object model used to create and access resources. The Azure Cosmos DB creates resources in a hierarchy that consists of accounts, databases, collections, and docs.
 
-:::image type="complex" source="media/quickstart-nodejs/resource-hierarchy.png" alt-text="Diagram of the Azure Cosmos DB hierarchy including accounts, databases, collections, and docs.":::
-    Hierarchical diagram showing an Azure Cosmos DB account at the top. The account has two child database shards. One of the database shards includes two child collection shards. The other database shard includes a single child collection node. That single collection shard has three child doc shards.
-:::image-end:::
-
 You use the following MongoDB classes to interact with these resources:
 
 - [``MongoClient``](https://mongodb.github.io/node-mongodb-native/4.5/classes/MongoClient.html) - This class provides a client-side logical representation for the API for MongoDB layer on Azure Cosmos DB. The client object is used to configure and execute requests against the service.
@@ -277,11 +273,9 @@ Remove-AzResourceGroup @parameters
     > In this quickstart, we recommended the name ``msdocs-cosmos-javascript-quickstart-rg``.
 1. Select **Delete resource group**.
 
-   :::image type="content" source="media/quickstart-nodejs/delete-resource-group-option.png" lightbox="media/quickstart-nodejs/delete-resource-group-option.png" alt-text="Screenshot of the 'Delete resource group' option in the navigation bar for a resource group.":::
 
 1. On the **Are you sure you want to delete** dialog, enter the name of the resource group, and then select **Delete**.
 
-   :::image type="content" source="media/quickstart-nodejs/delete-confirmation.png" lightbox="media/quickstart-nodejs/delete-confirmation.png" alt-text="Screenshot of the deletion confirmation page for a resource group.":::
 
 ---
 
