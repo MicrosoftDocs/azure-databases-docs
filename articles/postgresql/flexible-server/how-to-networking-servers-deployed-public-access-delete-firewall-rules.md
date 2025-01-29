@@ -105,7 +105,7 @@ Firewall rule operations cannot be requested for a private access enabled server
 
 ## Related content
 
-- [Configure networking](how-to-networking.md).
+- [Networking](how-to-networking.md).
 - [Enable public access](how-to-networking-servers-deployed-public-access-enable-public-access.md).
 - [Disable public access](how-to-networking-servers-deployed-public-access-disable-public-access.md).
 - [Add firewall rules](how-to-networking-servers-deployed-public-access-add-firewall-rules.md).

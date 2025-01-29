@@ -97,7 +97,7 @@ az postgres flexible-server show --resource-group <resource_group> --name <serve
 
 ## Related content
 
-- [Configure networking](how-to-networking.md).
+- [Networking](how-to-networking.md).
 - [Enable public access](how-to-networking-servers-deployed-public-access-enable-public-access.md).
 - [Add firewall rules](how-to-networking-servers-deployed-public-access-add-firewall-rules.md).
 - [Delete firewall rules](how-to-networking-servers-deployed-public-access-delete-firewall-rules.md).

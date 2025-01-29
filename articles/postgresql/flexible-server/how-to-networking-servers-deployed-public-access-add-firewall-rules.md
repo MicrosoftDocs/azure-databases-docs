@@ -135,7 +135,7 @@ To allow public access, from any Azure service within Azure, to your server, you
 
 ## Related content
 
-- [Configure networking](how-to-networking.md).
+- [Networking](how-to-networking.md).
 - [Enable public access](how-to-networking-servers-deployed-public-access-enable-public-access.md).
 - [Disable public access](how-to-networking-servers-deployed-public-access-disable-public-access.md).
 - [Delete firewall rules](how-to-networking-servers-deployed-public-access-delete-firewall-rules.md).
