@@ -42,12 +42,8 @@
       href: quickstart-nodejs.md
     - name: Develop app - Python
       href: quickstart-python.md
-    - name: Develop app - Java
-      href: quickstart-java.md
     - name: Develop app - .NET
       href: quickstart-dotnet.md
-    - name: Develop app - Golang
-      href: quickstart-go.md
   - name: Tutorials
     items:
     - name: Create and manage data
