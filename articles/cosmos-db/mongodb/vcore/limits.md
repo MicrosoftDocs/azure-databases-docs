@@ -93,8 +93,10 @@ The following limitations can be overridden by upgrading to a paid tier
 - High availability (HA) not supported (available in M30+)
 - HNSW vector indexes not supported (available in M40+)
 - Diagnostic logging not supported (available in M40+)
+- Azure Active Directory (Azure AD) not supported
 - No service-level-agreement provided (requires HA to be enabled)
 - Free tier clusters are paused after 60 days of inactivity where there are no connections to the cluster.
+- Transition from a paid tier account to a free tier accounts is not supported.
 
 ## Replication and HA (high availability) Limits
 
