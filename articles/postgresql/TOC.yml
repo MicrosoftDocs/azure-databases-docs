@@ -422,10 +422,9 @@
       - name: Configure server parameters
         href: flexible-server/how-to-configure-server-parameters.md
       - name: Networking
+        href: flexible-server/how-to-networking.md
         expanded: true
         items:
-        - name: Configure networking
-          href: flexible-server/how-to-networking.md
         - name: Public access (allowed IP addresses)
           expanded: true
           items:
