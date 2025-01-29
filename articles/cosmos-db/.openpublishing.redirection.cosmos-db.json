@@ -5999,6 +5999,16 @@
       "source_path_from_root": "/articles/cosmos-db/mongodb/security/index.md",
       "redirect_url": "/azure/cosmos-db/mongodb",
       "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/quickstart-java.md",
+      "redirect_url": "/azure/cosmos-db/mongodb",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/quickstart-go.md",
+      "redirect_url": "/azure/cosmos-db/mongodb",
+      "redirect_document_id": false
     }
   ]
 }

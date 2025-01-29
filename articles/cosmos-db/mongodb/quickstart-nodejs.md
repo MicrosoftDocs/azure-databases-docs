@@ -7,7 +7,7 @@ ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.devlang: javascript
 ms.topic: quickstart
-ms.date: 06/14/2024
+ms.date: 01/29/2025
 ms.custom: devx-track-js, devguide-js, cosmos-db-dev-journey
 zone_pivot_groups: azure-cosmos-db-quickstart-env
 ---

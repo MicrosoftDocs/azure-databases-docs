@@ -7,7 +7,7 @@ ms.service: azure-cosmos-db
 ms.subservice: mongodb
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 08/01/2024
+ms.date: 01/29/2025
 ms.custom: devx-track-azurecli, devx-track-python
 zone_pivot_groups: azure-cosmos-db-quickstart-env
 ---
