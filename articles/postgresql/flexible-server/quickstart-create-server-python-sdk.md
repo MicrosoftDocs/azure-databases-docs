@@ -10,6 +10,7 @@ ms.subservice: flexible-server
 ms.topic: quickstart
 ms.custom:
   - devx-track-python-sdk
+  - references_regions
 ---
 
 # Quickstart: Use an Azure library (SDK) for Python to create an Azure Database for PostgreSQL - Flexible Server instance
