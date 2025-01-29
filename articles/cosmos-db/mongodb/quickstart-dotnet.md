@@ -19,6 +19,18 @@ appliesto:
 
 [!INCLUDE[Developer Quickstart selector](includes/quickstart/dev-selector.md)]
 
+In this quickstart, you deploy a basic Azure Cosmos DB for MongoDB application using Python. Azure Cosmos DB for MongoDB is a schemaless data store allowing applications to store unstructed documents in the cloud with MongoDB libraries. You learn how to create documents and perform basic tasks within your Azure Cosmos DB resource using Python.
+
+[Library source code](https://github.com/mongodb/mongo-csharp-driver) | [Package (NuGet)](https://www.nuget.org/packages/MongoDB.Driver) | [Azure Developer CLI](/azure/developer/azure-developer-cli/overview)
+
+## Prerequisites
+
+- Azure Developer CLI
+- Docker Desktop
+- .NET SDK 9.0
+
+If you don't have an Azure account, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
+
 ## Related content
 
 - [Node.js Quickstart](quickstart-nodejs.md)
