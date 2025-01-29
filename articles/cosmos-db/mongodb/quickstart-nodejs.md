@@ -73,7 +73,17 @@ Use the Azure Developer CLI (`azd`) to create an Azure Cosmos DB for Table accou
 
 1. Use the URL in the console to navigate to your web application in the browser. Observe the output of the running app.
 
+::: zone pivot="programming-language-js"
+
+:::image type="content" source="media/quickstart-nodejs/running-application-javascript.png" alt-text="Screenshot of the running web application.":::
+
+:::zone-end
+
+::: zone pivot="programming-language-ts"
+
 :::image type="content" source="media/quickstart-nodejs/running-application-typescript.png" alt-text="Screenshot of the running web application.":::
+
+:::zone-end
 
 ### Install the client library
 
