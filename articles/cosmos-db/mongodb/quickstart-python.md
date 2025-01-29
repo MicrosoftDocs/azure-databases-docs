@@ -31,6 +31,109 @@ In this quickstart, you deploy a basic Azure Cosmos DB for MongoDB application u
 
 If you don't have an Azure account, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
 
+## Initialize the project
+
+Use the Azure Developer CLI (`azd`) to create an Azure Cosmos DB for Table account and deploy a containerized sample application. The sample application uses the client library to manage, create, read, and query sample data.
+
+1. Open a terminal in an empty directory.
+
+1. If you're not already authenticated, authenticate to the Azure Developer CLI using `azd auth login`. Follow the steps specified by the tool to authenticate to the CLI using your preferred Azure credentials.
+
+    ```azurecli
+    azd auth login
+    ```
+
+1. Use `azd init` to initialize the project.
+
+    ```azurecli
+    azd init --template cosmos-db-mongodb-python-quickstart
+    ```
+
+1. During initialization, configure a unique environment name.
+
+1. Deploy the Azure Cosmos DB account using `azd up`. The Bicep templates also deploy a sample web application.
+
+    ```azurecli
+    azd up
+    ```
+
+1. During the provisioning process, select your subscription, desired location, and target resource group. Wait for the provisioning process to complete. The process can take **approximately five minutes**.
+
+1. Once the provisioning of your Azure resources is done, a URL to the running web application is included in the output.
+
+    ```output
+    Deploying services (azd deploy)
+    
+      (✓) Done: Deploying service web
+    - Endpoint: <https://[container-app-sub-domain].azurecontainerapps.io>
+    
+    SUCCESS: Your application was provisioned and deployed to Azure in 5 minutes 0 seconds.
+    ```
+
+1. Use the URL in the console to navigate to your web application in the browser. Observe the output of the running app.
+
+::: zone pivot="programming-language-js"
+
+:::image type="content" source="media/quickstart-nodejs/running-application-javascript.png" alt-text="Screenshot of the running web application.":::
+
+:::zone-end
+
+::: zone pivot="programming-language-ts"
+
+:::image type="content" source="media/quickstart-nodejs/running-application-typescript.png" alt-text="Screenshot of the running web application.":::
+
+:::zone-end
+### Install the client library
+
+TODO
+
+## Object model
+
+TODO
+
+## Code examples
+
+- [Authenticate the client](#authenticate-the-client)
+- [Get a database](#get-a-database)
+- [Get a collection](#get-a-collection)
+- [Create a document](#create-a-document)
+- [Get a document](#read-a-document)
+- [Query documents](#query-documents)
+
+The sample code in the template uses a database named `cosmicworks` and collection named `products`. The `products` collection contains details such as name, category, quantity, and a unique identifier for each product. The collection uses the `/category` property as a shard key.
+
+### Authenticate the client
+
+TODO
+
+### Get a database
+
+TODO
+
+### Get a collection
+
+TODO
+
+### Create a document
+
+TODO
+
+### Read a document
+
+TODO
+
+### Query documents
+
+TODO
+
+## Clean up resources
+
+When you no longer need the sample application or resources, remove the corresponding deployment and all resources.
+
+```azurecli
+azd down
+```
+
 ## Related content
 
 - [.NET Quickstart](quickstart-dotnet.md)
