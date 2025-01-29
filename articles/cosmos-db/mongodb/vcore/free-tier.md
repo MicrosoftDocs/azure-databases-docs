@@ -49,8 +49,9 @@ specify your storage requirements, and you're all set. Rest assured, your data, 
 
 * For a given subscription, only one free tier account is permissible.
 * Free tier is currently available in the South India region only.
-* High availability, Azure Active Directory (Azure AD) and Diagnostic Logging are not supported.
-
+* High availability, Azure Active Directory (Azure AD), Backup / Restore, HNSW vector indexes and Diagnostic Logging are not supported.
+* Free tier clusters are paused after 60 days of inactivity where there are no connections to the cluster.
+* Transition from a paid tier account to a free tier accounts is not supported.
 
 ## Next steps
 
