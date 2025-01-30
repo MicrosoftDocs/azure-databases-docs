@@ -184,6 +184,8 @@ const database: Db = client.db("<database-name>");
 const database = client.db("<database-name>");
 ```
 
+::: zone-end
+
 ### Get a collection
 
 This sample creates an instance of the `Collection` type using the `collection` function of the `Db` type.
