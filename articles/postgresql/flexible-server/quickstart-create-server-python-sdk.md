@@ -15,26 +15,27 @@ ms.custom:
 
 # Quickstart: Use an Azure library (SDK) for Python to create an Azure Database for PostgreSQL - Flexible Server instance
 
-In this quickstart, you learn how to use the [Azure libraries (SDK) for Python](/azure/developer/python/sdk/azure-sdk-overview?view=azure-python&preserve-view=true)  
-to create an Azure Database for PostgreSQL flexible server instance.
+In this quickstart, you'll learn how to use the Azure Python SDK to interact with an Azure Database for PostgreSQL Flexible Server instance.
 
 Azure Database for PostgreSQL flexible server is a managed service for running, managing, and scaling highly available PostgreSQL databases in the cloud. You can use Python SDK to provision an Azure Database for PostgreSQL flexible server instance, multiple servers, or multiple databases on a server.
 
 You can perform the following operations with this library:
 
 1. Creating a PostgreSQL Flexible Server
-1. Managing Databases
-1. Configuring Firewall Rules
-1. Scaling Operations
-1. Back up and Restore
+2. Managing Databases
+3. Configuring Firewall Rules
+4. Scaling Operations
+5. Back up and Restore
 
 This guide helps you explore the basic functionalities of this SDK, including creating a flexible server instance, reviewing the created server, creating a database, and deleting the instance.
 
 ## Prerequisites
 
-- An Azure account with an active subscription.
+### Account with active subscription
+An Azure account with an active subscription [Create one for free](https://azure.microsoft.com/free/).
 
-### Installing the libraries
+### Install the libraries
+Install the following Azure Python libraries.
 
 ```bash
 pip install azure-mgmt-resource
@@ -96,14 +97,14 @@ if __name__ == "__main__":
 
 Replace the following parameters with your data:
 
-- **subscription_id**: Your own subscription ID.
-- **resource_group**: Name the resource group you want to use. If it doesn't exist, the script creates a new one.
-- **server_name**: A unique name that identifies your Azure Database for PostgreSQL flexible server instance. The domain name `postgres.database.azure.com` is appended to the server name you provided. The server name must be at least three characters and at most 63 characters and can only contain lowercase letters, numbers, and hyphens.
+- **subscription-id**: Your own subscription ID.
+- **resource-group**: Name the resource group you want to use. If it doesn't exist, the script creates a new one.
+- **server-name**: A unique name that identifies your Azure Database for PostgreSQL flexible server instance. The domain name `postgres.database.azure.com` is appended to the server name you provided. The server name must be at least three characters and at most 63 characters and can only contain lowercase letters, numbers, and hyphens.
 - **Location**: The Azure region where you want to create your Azure Database for PostgreSQL flexible server instance. It defines the geographical location where your server and its data reside. Choose a region close to your users for reduced latency. The location should be specified in the Azure region short names format, like `westus2`, `eastus`, or `northeurope`.
-- **administrator_login**: The primary administrator username for the server. After the server has been created, you can create additional users.
-- **administrator_login_password**: A password for the primary administrator for the server. It must contain between 8 and 128 characters. Your password must contain characters from three categories: English uppercase letters, English lowercase letters, numbers (0 through 9), and nonalphanumeric characters (!, $, #, %, etc.).
+- **admin-username**: The primary administrator username for the server. After the server has been created, you can create additional users.
+- **password**: A password for the primary administrator for the server. It must contain between 8 and 128 characters. Your password must contain characters from three categories: English uppercase letters, English lowercase letters, numbers (0 through 9), and nonalphanumeric characters (!, $, #, %, etc.).
 
-You can also customize other parameters like storage size, engine version, etc.
+You can also add values for other parameters like vnet-name, subnet-name, private-DNS-zone, and customize other parameters like storage size, engine version, etc. 
 
 > [!NOTE]  
 > The DefaultAzureCredential class tries to authenticate using various methods, such as environment variables, managed identities, or the Azure CLI.  
@@ -159,11 +160,11 @@ from azure.mgmt.postgresqlflexibleservers import PostgreSQLManagementClient
 def main():
     client = PostgreSQLManagementClient(
         credential=DefaultAzureCredential(),
-        subscription_id="ffffffff-ffff-ffff-ffff-ffffffffffff",
+        subscription_id=<subscription-id>,
     )
     # Create database
     response = client.databases.begin_create(
-        resource_group_name="<rg-name>",
+        resource_group_name="<resource-group-name>",
         server_name="<server-name>",
         database_name="<database-name>",
         parameters={"properties": {"charset": "utf8", "collation": "en_US.utf8"}},
@@ -174,21 +175,22 @@ if __name__ == "__main__":
     main()
 ```
 
-### Replace the following parameters with your data
+#### Replace the following parameters with your data
 
-- **subscription_id**: Your own [subscription ID](/azure/azure-portal/get-subscription-tenant-id#find-your-azure-subscription).
-- **resource_group**: Name the resource group you want to use. The script creates a new resource group if it doesn't exist.
-- **sever_name**: The name of the Azure database flexible server instance that you created before
-- **database_name**: The name of the database you want to create.
+- **subscription-id**: Your own [subscription ID](/azure/azure-portal/get-subscription-tenant-id#find-your-azure-subscription).
+- **resource-group-name**: Name the resource group you want to use. The script creates a new resource group if it doesn't exist.
+- **sever-name**: The name of the Azure database flexible server instance that you created before
+- **database-name**: The name of the database you want to create.
 
 ## Clean up resources
 
-If you no longer need the Azure Database for PostgreSQL flexible server instance, you can delete it and the associated resource group using either the Python SDK, Azure CLI, or Powershell.
+If you no longer need the Azure Database for PostgreSQL flexible server instance, you can delete it and the associated resource group using either the Portal, Python SDK, or Azure CLI.
 
 ### Use Python SDK to delete the instance
 
-Create a 'delete_server.py' file to delete the flexi server instance that was created.
+Create a 'delete_server.py' file to delete the Azure Databases for PostgreSQL Server instance that was created.
 
+### [Python](#tab/Python)
 ```python
 from azure.identity import DefaultAzureCredential
 from azure.mgmt.postgresqlflexibleservers import PostgreSQLManagementClient
@@ -210,13 +212,7 @@ main()
 ### [CLI](#tab/CLI)
 
 ```azurecli
-az group delete --name <resource_group>
-```
-
-### [PowerShell](#tab/PowerShell)
-
-```azurepowershell
-Remove-AzResourceGroup -Name <resource_group>
+az postgres flexible-server delete --resource-group <resource-group> --name <server-name>
 ```
 
 ---
@@ -224,5 +220,3 @@ Remove-AzResourceGroup -Name <resource_group>
 ## Related content
 
 - [Create an instance of Azure Database for PostgreSQL - Flexible Server](quickstart-create-server.md).
-
-
