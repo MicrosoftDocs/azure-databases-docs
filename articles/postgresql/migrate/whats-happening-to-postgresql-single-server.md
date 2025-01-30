@@ -63,7 +63,19 @@ You can also use Automigration to migrate to Flexible server by nominating the S
 
 **Q. What happens if I do not migrate or my server is not auto migrated by March 28th, 2025??​**
 
-**A.** After the retirement deadline of March 28th 2025, all existing single servers that have not migrated will be force migrated to Flexible server. Servers with add-on features such as CMK or Private endpoint will require additional actions by the user post-migration to ensure normal operation. There are no extensions to the retirement date.
+**A.** Azure Database for PostgreSQL Single Server will be retired on 28 March 2025. To prevent disruptions or service loss, you must migrate to Azure Database for PostgreSQL Flexible Server before this date.
+
+**Key Changes**:
+- Starting 29 March 2025, you will no longer be able to create new Single Server instances.
+
+- Existing Single Server instances will be automatically migrated to the comparable Flexible Server in a phased manner—regardless of downtime requirements or application compatibility.
+
+- Single Servers using the following features will **NOT** be automatically migrated and will be deleted in a phased manner, resulting in data loss:
+  - **Customer Managed Keys(CMK)**
+  - **Private Endpoint**
+  - **Deny Public Access** set to **Yes** 
+
+To avoid service disruptions, please plan your migration as soon as possible.
 
 **Q. After the Single Server retirement announcement, what if I still need to create a new single server to meet my business needs?**
 
