@@ -94,7 +94,11 @@ The client library is available through PyPi, as the `pymongo` package.
 
 ## Object model
 
-TODO
+| Name | Description |
+| --- | --- |
+| [`MongoClient`](https://www.mongodb.com/docs/languages/python/pymongo-driver/current/get-started/connect-to-mongodb/) | Type used to connect to MongoDB. |
+| `Database` | Represents a database in the account. |
+| `Collection` | Represents a collection within a database in the account. |
 
 ## Code examples
 
@@ -109,27 +113,79 @@ The sample code in the template uses a database named `cosmicworks` and collecti
 
 ### Authenticate the client
 
-TODO
+This sample creates a new instance of the `MongoClient` type.
+
+```python
+connection_string = "<azure-cosmos-db-for-mongodb-connection-string>"
+
+client = MongoClient(connection_string)
+```
 
 ### Get a database
 
-TODO
+This sample creates an instance of the `Database` type using the `get_database` function of the `MongoClient` type.
+
+```python
+database = client.get_database("<database-name>")
+```
 
 ### Get a collection
 
-TODO
+This sample creates an instance of the `Collection` type using the `get_collection` function of the `Database` type.
+
+```python
+collection = database.get_collection("<collection-name>")
+```
 
 ### Create a document
 
-TODO
+Create a document in the collection using `collection.update_one`. This method "upserts" the item effectively replacing the item if it already exists.
+
+```python
+new_document = {
+    "_id": "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb",
+    "category": "gear-surf-surfboards",
+    "name": "Yamba Surfboard",
+    "quantity": 12,
+    "sale": False,
+}
+
+filter = {
+    "_id": "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb",
+    "category": "gear-surf-surfboards"
+}
+payload = {
+    "$set": new_document
+}
+result = collection.update_one(filter, payload, upsert=True);
+```
 
 ### Read a document
 
-TODO
+Perform a point read operation by using both the unique identifier (`id`) and shard key fields. Use `collection.find_one` to efficiently retrieve the specific item.
+
+```python
+filter = {
+    "_id": "bbbbbbbb-1111-2222-3333-cccccccccccc",
+    "category": "gear-surf-surfboards"
+}
+existing_document = collection.find_one(filter)
+```
 
 ### Query documents
 
-TODO
+Perform a query over multiple items in a container using `collection.find`. This query finds all items within a specified category (shard key).
+
+```python
+filter = {
+    "category": "gear-surf-surfboards"
+}
+
+matched_documents = collection.find(filter)
+
+for document in matched_documents:
+    # Do something with each item
+```
 
 ## Clean up resources
 

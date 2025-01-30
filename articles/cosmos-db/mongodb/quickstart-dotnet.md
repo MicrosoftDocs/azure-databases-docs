@@ -92,10 +92,13 @@ The client library is available through NuGet, as the `MongoDB.Driver` package.
 
 1. Open and review the **src/web/Microsoft.Samples.Cosmos.MongoDB.Quickstart.Web.csproj** file to validate that the `MongoDB.Driver` entry exists.
 
-
 ## Object model
 
-TODO
+| Name | Description |
+| --- | --- |
+| [`MongoClient`](https://www.mongodb.com/docs/drivers/csharp/current/quick-start/) | Type used to connect to MongoDB. |
+| `Database` | Represents a database in the account. |
+| `Collection` | Represents a collection within a database in the account. |
 
 ## Code examples
 
@@ -110,27 +113,90 @@ The sample code in the template uses a database named `cosmicworks` and collecti
 
 ### Authenticate the client
 
-TODO
+This sample creates a new instance of the `MongoClient` class.
+
+```csharp
+string connectionString = "<azure-cosmos-db-for-mongodb-connection-string>";
+
+MongoClient client = new(connectionString);
+```
+
+::: zone-end
 
 ### Get a database
 
-TODO
+This sample creates an instance of the `IMongoDatabase` interface using the `GetDatabase` method of the `MongoClient` class.
+
+```csharp
+IMongoDatabase database = client.GetDatabase("<database-name>");
+```
 
 ### Get a collection
 
-TODO
+This sample creates an instance of the generic `IMongoCollection<>` interface using the `GetCollection<>` generic method of the `IMongoDatabase` interface. The generic interface and method both uses a type named `Product` defined in another class.
+
+```csharp
+IMongoCollection<Product> collection = database.GetCollection<Product>("<collection-name>");
+```
+
+```csharp
+public record Product(
+    string id,
+    string category,
+    string name,
+    int quantity,
+    decimal price,
+    bool clearance
+);
+```
 
 ### Create a document
 
-TODO
+Create a document in the collection using `collection.ReplaceOneAsync<>` with the generic `Product` type parameter. This method "upserts" the item effectively replacing the item if it already exists.
+
+```csharp
+Product document = new(
+    id: "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb",
+    category: "gear-surf-surfboards",
+    name: "Yamba Surfboard",
+    quantity: 12,
+    price: 850.00m,
+    clearance: false
+);
+
+await collection.ReplaceOneAsync<Product>(
+    d => d.id == document.id,
+    document,
+    new ReplaceOptions { IsUpsert = true }
+);
+```
 
 ### Read a document
 
-TODO
+Perform a point read operation by using both the unique identifier (`id`) and shard key fields. Use `collection.FindAsync<>` with the generic `Product` type parameter to efficiently retrieve the specific item.
+
+```csharp
+IAsyncCursor<Product> documents = await collection.FindAsync<Product>(
+    d => d.id == "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb" && d.category == "gear-surf-surfboards"
+);
+
+Product? document = await documents.SingleOrDefaultAsync();
+```
 
 ### Query documents
 
-TODO
+Perform a query over multiple items in a container using `collection.AsQueryable()` and language-integrated query (LINQ). This query finds all items within a specified category (shard key).
+
+```csharp
+IQueryable<Product> documents = collection.AsQueryable().Where(
+    d => d.category == "gear-surf-surfboards"
+);
+
+foreach (Product document in await documents.ToListAsync())
+{
+    // Do something with each item
+}
+```
 
 ## Clean up resources
 

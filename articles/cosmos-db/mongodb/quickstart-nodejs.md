@@ -125,10 +125,13 @@ The client library is available through npm, as the `mongodb` package.
 
 ::: zone-end
 
-
 ## Object model
 
-TODO
+| Name | Description |
+| --- | --- |
+| [`MongoClient`](https://www.mongodb.com/docs/drivers/node/current/quick-start/connect-to-mongodb/) | Type used to connect to MongoDB. |
+| `Database` | Represents a database in the account. |
+| `Collection` | Represents a collection within a database in the account. |
 
 ## Code examples
 
@@ -143,27 +146,205 @@ The sample code in the template uses a database named `cosmicworks` and collecti
 
 ### Authenticate the client
 
-TODO
+This sample creates a new instance of the `MongoClient` type.
+
+::: zone pivot="programming-language-ts"
+
+```typescript
+const connectionString = "<azure-cosmos-db-for-mongodb-connection-string>";
+
+const client = new MongoClient(connectionString);
+```
+
+::: zone-end
+
+::: zone pivot="programming-language-js"
+
+```javascript
+const connectionString = "<azure-cosmos-db-for-mongodb-connection-string>";
+
+const client = new MongoClient(connectionString);
+```
+
+::: zone-end
 
 ### Get a database
 
-TODO
+This sample creates an instance of the `Db` type using the `db` function of the `MongoClient` type.
+
+```typescript
+const database: Db = client.db("<database-name>");
+```
+
+::: zone-end
+
+::: zone pivot="programming-language-js"
+
+```javascript
+const database = client.db("<database-name>");
+```
 
 ### Get a collection
 
-TODO
+This sample creates an instance of the `Collection` type using the `collection` function of the `Db` type.
+
+::: zone pivot="programming-language-ts"
+
+This function has a generic parameter that uses the `Product` type defined in an interface.
+
+```typescript
+const collection: Collection<Product> = database.collection<Product>("<collection-name>");
+```
+
+```typescript
+export interface Product {
+    _id: string;
+    category: string;
+    name: string;
+    quantity: number;
+    price: number;
+    clearance: boolean;
+}
+```
+
+::: zone-end
+
+::: zone pivot="programming-language-js"
+
+```javascript
+const collection = database.collection("<collection-name>");
+```
+
+::: zone-end
 
 ### Create a document
 
-TODO
+Create a document in the collection using `collection.updateOne`. This method "upserts" the item effectively replacing the item if it already exists.
+
+::: zone pivot="programming-language-ts"
+
+```typescript
+var document: Product = {
+    _id: 'aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb',
+    category: 'gear-surf-surfboards',
+    name: 'Yamba Surfboard',
+    quantity: 12,
+    price: 850.00,
+    clearance: false
+};
+
+var query: Filter<Product> = {
+    _id: 'aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb',
+    category: 'gear-surf-surfboards'
+};
+var payload: UpdateFilter<Product> = {
+    $set: document
+};
+var options: UpdateOptions = {
+    upsert: true
+};
+var response: UpdateResult<Product> = await collection.updateOne(query, payload, options);
+```
+
+::: zone-end
+
+::: zone pivot="programming-language-js"
+
+```javascript
+var document = {
+    _id: 'aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb',
+    category: 'gear-surf-surfboards',
+    name: 'Yamba Surfboard',
+    quantity: 12,
+    price: 850.00,
+    clearance: false
+};
+
+const query = {
+    _id: 'aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb',
+    category: 'gear-surf-surfboards'
+};
+const payload = {
+    $set: document
+};
+const options = {
+    upsert: true,
+    new: true
+};
+var response = await collection.updateOne(query, payload, options);
+```
+
+::: zone-end
 
 ### Read a document
 
-TODO
+Perform a point read operation by using both the unique identifier (`id`) and shard key fields. Use `collection.findOne` to efficiently retrieve the specific item.
+
+::: zone pivot="programming-language-ts"
+
+```typescript
+var query: Filter<Product> = { 
+    _id: 'aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb', 
+    category: 'gear-surf-surfboards' 
+};
+
+var response: WithId<Product> | null = await collection.findOne(query);
+```
+
+::: zone-end
+
+::: zone pivot="programming-language-js"
+
+```javascript
+var query = { 
+    _id: 'aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb', 
+    category: 'gear-surf-surfboards' 
+};
+
+var response = await collection.findOne(query);
+```
+
+::: zone-end
 
 ### Query documents
 
-TODO
+Perform a query over multiple items in a container using `collection.find`. This query finds all items within a specified category (shard key).
+
+::: zone pivot="programming-language-ts"
+
+```typescript
+var query: Filter<Product> = { 
+    category: 'gear-surf-surfboards' 
+};
+
+var response: FindCursor<WithId<Product>> = await collection.find(query);
+```
+
+```typescript
+for await (const item of response) {
+    // Do something with each item
+}
+```
+
+::: zone-end
+
+::: zone pivot="programming-language-js"
+
+```javascript
+var query = { 
+    category: 'gear-surf-surfboards' 
+};
+
+var response = await collection.find(query);
+```
+
+```javascript
+for await (const item of response) {
+    // Do something with each item
+}
+```
+
+::: zone-end
 
 ## Clean up resources
 
