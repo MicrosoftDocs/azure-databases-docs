@@ -1,12 +1,12 @@
 ---
-title: "Known issues and limitations for the migration service"
+title: "Known Issues and Limitations for the Migration Service"
 description: This article describes the limitations and known issues of the migration service in Azure Database for PostgreSQL.
 author: apduvuri
 ms.author: adityaduvuri
 ms.reviewer: maghan
-ms.date: 06/19/2024
+ms.date: 01/24/2025
 ms.service: azure-database-postgresql
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Known issues and limitations for the migration service
@@ -25,7 +25,7 @@ The following list describes common limitations that apply to migration scenario
 - The migration service migrates only user databases. The service doesn't migrate system databases like **template_0** and **template_1**.
 - The migration service doesn't support moving POSTGIS_TOPOLOGY, POSTGIS_TIGER_GEOCODER, POSTGRES_FDW, and PG_PARTMAN extensions from source to target.
 
-  > [!NOTE]
+  > [!NOTE]  
   > The feature to migrate databases that have the TIMESCALEDB extension is in preview. The option is turned off by default. To migrate your time series databases, please open a support ticket.
 
 - You can't move extensions that aren't supported by Azure Database for PostgreSQL - Flexible Server. Supported extensions are listed in [Extensions for Azure Database for PostgreSQL](/azure/postgresql/flexible-server/concepts-extensions).
@@ -41,7 +41,7 @@ The following list describes common limitations that apply to migration scenario
   - Create TYPE
 - The migration service doesn't support migration at the object level. That is, you can't migrate a table or a schema.
 
-  > [!IMPORTANT]
+  > [!IMPORTANT]  
   > Though the Burstable SKU is not a limitation, it is recommended to choose a higher SKU for your flexible server to perform faster migrations. Azure Database for PostgreSQL - Flexible Server supports near-zero downtime compute and IOPS scaling, so the SKU can be updated with minimal downtime. You can always change the SKU to match the application needs post-migration.
 
 ## Limitations in migrating from Azure Database for PostgreSQL - Single Server

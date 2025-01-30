@@ -4,7 +4,7 @@ metadata:
   description: Frequently asked questions about autoscale provisioned throughput for Azure Cosmos DB databases and containers.
   author: deborahc
   ms.author: dech
-  ms.service: cosmos-db
+  ms.service: azure-cosmos-db
   ms.topic: faq
   ms.date: 09/26/2024
 title: Frequently asked questions about autoscale provisioned throughput in Azure Cosmos DB

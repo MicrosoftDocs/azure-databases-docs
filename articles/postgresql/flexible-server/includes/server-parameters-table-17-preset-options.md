@@ -2,7 +2,7 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 01/07/2025
+ms.date: 01/26/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
@@ -202,8 +202,8 @@ ms.custom: automatically generated
 | Category | Preset Options |
 | Description | Shows the server version. |
 | Data type | string |
-| Default value | `17.0` |
-| Allowed values | `17.0` |
+| Default value | `17.2` |
+| Allowed values | `17.2` |
 | Parameter type | read-only |
 | Documentation | [server_version](https://www.postgresql.org/docs/17/runtime-config-preset.html#GUC-SERVER-VERSION) |
 
@@ -219,8 +219,8 @@ ms.custom: automatically generated
 | Category | Preset Options |
 | Description | Shows the server version as an integer. |
 | Data type | integer |
-| Default value | `170000` |
-| Allowed values | `170000` |
+| Default value | `170002` |
+| Allowed values | `170002` |
 | Parameter type | read-only |
 | Documentation | [server_version_num](https://www.postgresql.org/docs/17/runtime-config-preset.html#GUC-SERVER-VERSION-NUM) |
 
@@ -236,8 +236,8 @@ ms.custom: automatically generated
 | Category | Preset Options |
 | Description | Shows the size of the server's main shared memory area (rounded up to the nearest MB). |
 | Data type | integer |
-| Default value | `8607` |
-| Allowed values | `8607` |
+| Default value | `8608` |
+| Allowed values | `8608` |
 | Parameter type | read-only |
 | Documentation | [shared_memory_size](https://www.postgresql.org/docs/17/runtime-config-preset.html#GUC-SHARED-MEMORY-SIZE) |
 
