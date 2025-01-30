@@ -15,9 +15,9 @@ ms.custom: cosmos-db-video
 
 Serverless computing is all about the ability to focus on individual pieces of logic that are repeatable and stateless. These pieces require no infrastructure management and they consume resources only for the seconds, or milliseconds, they run for. At the core of the serverless computing movement are functions, which are made available in the Azure ecosystem by [Azure Functions](https://azure.microsoft.com/services/functions). To learn about other serverless execution environments in Azure see [serverless in Azure](https://azure.microsoft.com/solutions/serverless/) page. 
 
-Azure Functions can create isolated database connections per invocation, which may impact connection management, especially under high concurrency. On the other hand, Azure Cosmos DB leverages a stateless, HTTP-based connection model, simplifying connection handling. This architecture offers a scalable solution for workloads that require dynamic, high-performance data access, without the need for traditional [connection pooling](https://wikipedia.org/wiki/Connection_pool).
-
 With the native integration between [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db) and Azure Functions, you can create database triggers, input bindings, and output bindings directly from your Azure Cosmos DB account. Using Azure Functions and Azure Cosmos DB, you can create and deploy event-driven serverless apps with low-latency access to rich data for a global user base.
+
+Azure Functions can create isolated database connections per invocation if the database client is not properly managed, which may impact connection performance under high concurrency, particularly in the Consumption plan. However, when using Cosmos DB bindings or triggers, Azure Functions internally reuses a shared Cosmos DB SDK client, ensuring efficient connection pooling across multiple invocations. Azure Cosmos DB supports both an HTTP-based and a Direct TCP-based connection model. The SDK optimizes connection handling by multiplexing connections in Direct Mode, reducing the need for traditional connection pooling. This architecture supports scalable and high-performance workloads that require dynamic data access.
 
 ## Overview
 
