@@ -11,7 +11,7 @@ keywords: connect to cosmos db for nosql or cosmos db for mongodb database
 zone_pivot_groups: azure-cosmos-db-apis-nosql-mongodb
 ---
 
-# Quickstart: Use Visual Studio Code to connect and query Azure Cosmos DB instances
+# Use Visual Studio Code to connect and query Azure Cosmos DB instances
 
 [!INCLUDE[NoSQL, MongoDB](includes/appliesto-nosql-mongodb.md)]
 
