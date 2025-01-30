@@ -76,7 +76,21 @@ Use the Azure Developer CLI (`azd`) to create an Azure Cosmos DB for Table accou
 
 ### Install the client library
 
-TODO
+The client library is available through PyPi, as the `pymongo` package.
+
+1. Open a terminal and navigate to the `/src` folder.
+
+    ```bash
+    cd ./src
+    ```
+
+1. If not already installed, install the `pymongo` package using `pip install`.
+
+    ```bash
+    pip install pymongo
+    ```
+
+1. Open and review the **src/requirements.txt** file to validate that the `pymongo` entry exists.
 
 ## Object model
 

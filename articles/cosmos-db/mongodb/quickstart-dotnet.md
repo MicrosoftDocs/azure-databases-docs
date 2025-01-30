@@ -76,7 +76,22 @@ Use the Azure Developer CLI (`azd`) to create an Azure Cosmos DB for Table accou
 
 ### Install the client library
 
-TODO
+The client library is available through NuGet, as the `MongoDB.Driver` package.
+
+1. Open a terminal and navigate to the `/src/web` folder.
+
+    ```bash
+    cd ./src/web
+    ```
+
+1. If not already installed, install the `MongoDB.Driver` package using `dotnet add package`.
+
+    ```bash
+    dotnet add package MongoDB.Driver
+    ```
+
+1. Open and review the **src/web/Microsoft.Samples.Cosmos.MongoDB.Quickstart.Web.csproj** file to validate that the `MongoDB.Driver` entry exists.
+
 
 ## Object model
 

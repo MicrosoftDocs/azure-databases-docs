@@ -87,7 +87,44 @@ Use the Azure Developer CLI (`azd`) to create an Azure Cosmos DB for Table accou
 
 ### Install the client library
 
-TODO
+The client library is available through npm, as the `mongodb` package.
+
+::: zone pivot="programming-language-ts"
+
+1. Open a terminal and navigate to the `/src/ts` folder.
+
+    ```bash
+    cd ./src/ts
+    ```
+
+1. If not already installed, install the `mongodb` package using `npm install`.
+
+    ```bash
+    npm install --save mongodb
+    ```
+
+1. Open and review the **src/ts/package.json** file to validate that the `mongodb` entry exists.
+
+::: zone-end
+
+::: zone pivot="programming-language-js"
+
+1. Open a terminal and navigate to the `/src/js` folder.
+
+    ```bash
+    cd ./src/js
+    ```
+
+1. If not already installed, install the `mongodb` package using `npm install`.
+
+    ```bash
+    npm install --save mongodb
+    ```
+
+1. Open and review the **src/js/package.json** file to validate that the `mongodb` entry exists.
+
+::: zone-end
+
 
 ## Object model
 
