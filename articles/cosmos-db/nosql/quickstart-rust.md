@@ -8,7 +8,7 @@ ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.devlang: rust
 ms.topic: quickstart-sdk
-ms.date: 01/13/2024
+ms.date: 02/01/2024
 ms.custom: devx-track-rust, devx-track-extended-azdevcli
 appliesto:
   - ✅ NoSQL
@@ -218,6 +218,18 @@ while let Some(page_response) = pager.next.await {
         // Do something
     }
 }
+```
+
+### Explore your data
+
+Use the Visual Studio Code extension for Azure Cosmos DB to explore your NoSQL data. You can perform core database operations including, but not limited to:
+
+- Querying data using the query editor or a scrapbook
+- Inserting, updating, and deleting data
+- Importing data
+- Managing containers
+
+For more information, see [How-to use Visual Studio Code extension to explore Azure Cosmos DB for NoSQL data](../visual-studio-code-extension.md?pivots=api-nosql).
 
 ## Clean up resources
 
