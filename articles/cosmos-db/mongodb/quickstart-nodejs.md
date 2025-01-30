@@ -172,6 +172,8 @@ const client = new MongoClient(connectionString);
 
 This sample creates an instance of the `Db` type using the `db` function of the `MongoClient` type.
 
+::: zone pivot="programming-language-ts"
+
 ```typescript
 const database: Db = client.db("<database-name>");
 ```

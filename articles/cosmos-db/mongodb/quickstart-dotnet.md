@@ -121,8 +121,6 @@ string connectionString = "<azure-cosmos-db-for-mongodb-connection-string>";
 MongoClient client = new(connectionString);
 ```
 
-::: zone-end
-
 ### Get a database
 
 This sample creates an instance of the `IMongoDatabase` interface using the `GetDatabase` method of the `MongoClient` class.
