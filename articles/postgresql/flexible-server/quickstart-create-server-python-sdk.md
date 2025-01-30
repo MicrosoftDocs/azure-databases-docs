@@ -181,6 +181,14 @@ if __name__ == "__main__":
 - **sever_name**: The name of the Azure database flexible server instance that you created before
 - **database_name**: The name of the database you want to create.
 
+## Clean up resources
+
+If you no longer need the Azure Database for PostgreSQL flexible server instance, you can delete it and the associated resource group using either the Python SDK, Azure CLI, or Powershell.
+
+### Use Python SDK to delete the instance
+
+Create a 'delete_server.py' file to delete the flexi server instance that was created.
+
 ```python
 from azure.identity import DefaultAzureCredential
 from azure.mgmt.postgresqlflexibleservers import PostgreSQLManagementClient
