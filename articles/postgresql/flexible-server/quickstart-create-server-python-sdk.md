@@ -13,7 +13,7 @@ ms.custom:
   - references_regions
 ---
 
-# Quickstart: Use an Azure library (SDK) for Python to create an Azure Database for PostgreSQL - Flexible Server instance
+# Quickstart: Use Azure Python SDK libraries to create, read, and delete an Azure Database for PostgreSQL - Flexible Server instance
 
 In this quickstart, you'll learn how to use the Azure Python SDK to interact with an Azure Database for PostgreSQL Flexible Server instance.
 
@@ -209,7 +209,7 @@ if __name__ == "__main__":
 main()
 ```
 
-### [CLI](#tab/CLI)
+### [Azure CLI](#tab/CLI)
 
 ```azurecli
 az postgres flexible-server delete --resource-group <resource-group> --name <server-name>
