@@ -424,11 +424,11 @@
       - name: Networking
         expanded: true
         items:
+        - name: Overview
+          href: flexible-server/how-to-networking.md
         - name: Public access (allowed IP addresses)
           expanded: true
           items:
-          - name: Overview
-            href: flexible-server/how-to-networking.md
           - name: Enable public access
             href: flexible-server/how-to-networking-servers-deployed-public-access-enable-public-access.md
           - name: Disable public access
