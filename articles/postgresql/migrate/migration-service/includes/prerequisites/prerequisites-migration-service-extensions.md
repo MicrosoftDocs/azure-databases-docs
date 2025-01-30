@@ -1,10 +1,10 @@
 ---
-title: "Prerequisites for the migration service: Enable extensions"
+title: "Prerequisites for the Migration Service: Enable Extensions"
 description: Get prerequisite information for enabling extensions for the migration service in Azure Database for PostgreSQL.
 author: apduvuri
 ms.author: adityaduvuri
 ms.reviewer: maghan
-ms.date: 06/19/2024
+ms.date: 01/24/2025
 ms.service: azure-database-postgresql
 ms.topic: include
 ---
@@ -15,5 +15,5 @@ In the target instance of Azure Database for PostgreSQL - Flexible Server, enabl
 
 For more information, see [Extensions in Azure Database for PostgreSQL](../../../../flexible-server/concepts-extensions.md#how-to-use-postgresql-extensions).
 
-> [!NOTE]
+> [!NOTE]  
 > A restart is required when you make any changes to the `shared_preload_libraries` parameter.

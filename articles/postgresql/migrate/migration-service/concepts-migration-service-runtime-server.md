@@ -4,9 +4,9 @@ description: "This article discusses concepts about Migration Runtime Server wit
 author: apduvuri
 ms.author: adityaduvuri
 ms.reviewer: maghan
-ms.date: 06/19/2024
+ms.date: 01/24/2025
 ms.service: azure-database-postgresql
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Migration Runtime Server with the migration service in Azure Database for PostgreSQL
@@ -17,7 +17,7 @@ Migration Runtime Server is helpful in scenarios where both the source PostgreSQ
 
 Migration Runtime Server is distinct from the target server and is configured to handle the data transfer process, ensuring a secure and efficient migration path.
 
-:::image type="content" source="media/concepts-migration-service-runtime-server/private-endpoint-scenario.png" alt-text="Screenshot that shows Migration Runtime Server.":::
+:::image type="content" source="media/concepts-migration-service-runtime-server/private-endpoint-scenario.png" alt-text="Screenshot that shows Migration Runtime Server." lightbox="media/concepts-migration-service-runtime-server/private-endpoint-scenario.png":::
 
 ## Supported migration scenarios with the Migration Runtime Server
 
@@ -43,7 +43,7 @@ Here's how to do it in both methods.
 1. Select your Azure subscription and resource group. Select the location of the virtual network-integrated Azure Database for PostgreSQL - Flexible Server instance.
 1. Select the appropriate Azure Database for PostgreSQL - Flexible Server instance to serve as your Migration Runtime Server instance.
 
-   :::image type="content" source="media/concepts-migration-service-runtime-server/select-runtime-server.png" alt-text="Screenshot that shows selecting Migration Runtime Server.":::
+   :::image type="content" source="media/concepts-migration-service-runtime-server/select-runtime-server.png" alt-text="Screenshot that shows selecting Migration Runtime Server." lightbox="media/concepts-migration-service-runtime-server/select-runtime-server.png":::
 
 ### Use the Azure CLI
 

@@ -1,10 +1,10 @@
 ---
-title: "Prerequisites to use the migration service from Amazon Aurora PostgreSQL (online)"
+title: "Prerequisites to Use the Migration Service From Amazon Aurora PostgreSQL (Online)"
 description: Get the online prerequisites for the migration service in Azure Database for PostgreSQL.
 author: apduvuri
 ms.author: adityaduvuri
 ms.reviewer: maghan
-ms.date: 06/19/2024
+ms.date: 01/24/2025
 ms.service: azure-database-postgresql
 ms.topic: include
 ---
