@@ -311,6 +311,8 @@
       href: ../network-bandwidth.md
   - name: How to
     items:
+    - name: Visual Studio Code extension
+      href: ../visual-studio-code-extension.md?pivots=api-mongodb&tabs=MongoDB
     - name: Develop with the emulator
       href: ../how-to-develop-emulator.md?pivots=api-mongodb
     - name: Use developer tools
