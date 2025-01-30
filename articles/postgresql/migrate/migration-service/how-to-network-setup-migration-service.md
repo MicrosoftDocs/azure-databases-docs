@@ -1,11 +1,11 @@
 ---
-title: "Networking scenarios for the migration service"
+title: "Networking Scenarios for the Migration Service"
 titleSuffix: Azure Database for PostgreSQL - Flexible Server
 description: Learn about network scenarios for connecting supported source environments with Azure Database for PostgreSQL - Flexible Server.
 author: apduvuri
 ms.author: adityaduvuri
 ms.reviewer: maghan
-ms.date: 09/11/2024
+ms.date: 01/24/2025
 ms.service: azure-database-postgresql
 ms.topic: how-to
 ---
@@ -70,7 +70,7 @@ Networking steps:
 
   1. Establish a secure connection by using ExpressRoute, IPsec VPN, or an equivalent private connection service from the cloud provider (Azure ExpressRoute, AWS Direct Connect, GCP Interconnect) to Azure.
   1. In the source cloud provider's security settings (for example, AWS security groups or GCP firewall rules), add an inbound rule to allow traffic from the Azure Database for PostgreSQL public IP address or domain, or from the IP address range of the Azure virtual network on the PostgreSQL port (the default port is 5432).
-  1. Create a virtual network in Azure in the same region as your instance of Azure Database for PostgreSQL. Set up the network security group to allow outbound connections to the source cloud provider’s PostgreSQL instance’s IP address on the default port 5432.
+  1. Create a virtual network in Azure in the same region as your instance of Azure Database for PostgreSQL. Set up the network security group to allow outbound connections to the source cloud provider's PostgreSQL instance's IP address on the default port 5432.
   1. Set up network security group rules in Azure to permit incoming connections from the cloud provider (for example, from AWS or GCP) to the Azure Database for PostgreSQL IP address range.
   1. Test the connectivity between your PostgreSQL instance in the managed PostgreSQL service (for example, in AWS, GCP, or Heroku) and Azure Database for PostgreSQL to ensure that no network issues occur.
 
@@ -236,9 +236,9 @@ Alternatively, when a custom DNS server or custom DNS namespaces are in use, you
 
 ## Related content
 
-- To establish an ExpressRoute connection, see [What is Azure ExpressRoute?](/azure/expressroute/expressroute-introduction).
-- To learn how to set up an IPsec VPN, see [About point-to-site VPNs](/azure/vpn-gateway/point-to-site-about).
-- Learn more about [virtual network peering](/azure/virtual-network/virtual-network-peering-overview).
-- Learn about the [migration service](concepts-migration-service-postgresql.md).
-- Explore [known issues and limitations](concepts-known-issues-migration-service.md).
-- Review [premigration validations](concepts-premigration-migration-service.md).
+- [What is Azure ExpressRoute?](/azure/expressroute/expressroute-introduction)
+- [About point-to-site VPNs](/azure/vpn-gateway/point-to-site-about)
+- [virtual network peering](/azure/virtual-network/virtual-network-peering-overview)
+- [migration service](concepts-migration-service-postgresql.md)
+- [known issues and limitations](concepts-known-issues-migration-service.md)
+- [premigration validations](concepts-premigration-migration-service.md)
