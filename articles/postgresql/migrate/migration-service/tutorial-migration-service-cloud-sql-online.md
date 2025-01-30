@@ -1,10 +1,10 @@
 ---
-title: "Tutorial: Migrate online from Google Cloud SQL for PostgreSQL using the migration service with the Azure portal and Azure CLI"
+title: "Tutorial: Migrate Online From Google Cloud SQL for PostgreSQL Using the Migration Service With the Azure Portal and Azure CLI"
 description: "Learn to migrate online seamlessly from Google Cloud SQL for PostgreSQL to Azure Database for PostgreSQL using the new migration service in Azure, simplifying the transition while ensuring data integrity and efficient deployment."
 author: apduvuri
 ms.author: adityaduvuri
 ms.reviewer: maghan
-ms.date: 06/19/2024
+ms.date: 01/24/2025
 ms.service: azure-database-postgresql
 ms.subservice: migration-guide
 ms.topic: tutorial
@@ -116,7 +116,7 @@ The **select migration target** tab displays metadata for the Flexible Server ta
 
 - **Admin username** - Admin username of the target PostgreSQL server
 - **Password** - Password of the target PostgreSQL server
-- **Custom FQDN/IP (Optional)**: The custom FQDN/IP field is optional and can be used when the target is behind a custom DNS server or has custom DNS namespaces, making it accessible only via specific FQDNs or IP addresses. For example, this could include entries like `flexibleserver.example.com`, `198.1.0.2`, or a PostgreSQL FQDN such as `flexibleserver.postgres.database.azure.com`, if the custom DNS server contains the DNS zone `postgres.database.azure.com` or forwards queries for this zone to `168.63.129.16`, where the FQDN is resolved in the Azure public or private DNS zone.
+- **Custom FQDN/IP (Optional)**: The custom FQDN/IP field is optional and can be used when the target is behind a custom DNS server or has custom DNS namespaces, making it accessible only via specific FQDNs or IP addresses. For example, this could include entries like `flexibleserver.example.com`, `198.1.0.2`, or a PostgreSQL FQDN such as `flexibleserver.postgres.database.azure.com`, if the custom DNS server contains the DNS zone `postgres.database.azure.com` or forward queries for this zone to `168.63.129.16`, where the FQDN is resolved in the Azure public or private DNS zone.
 - **Test Connection** - Performs the connectivity test between the target and Source. Once the connection is successful, users can proceed with the next step. Otherwise, we need to identify the networking issues between the target and the Source and verify the username/password for the target. Test connection takes a few minutes to establish a connection between the target and the source.
 
 After the successful test connection, select the **Next: Select Database(s) for Migration**
@@ -125,7 +125,7 @@ After the successful test connection, select the **Next: Select Database(s) for 
 
 Under this tab, a list of user databases is inside the source server selected in the setup tab. You can select and migrate up to eight databases in a single migration attempt. If there are more than eight user databases, the migration process is repeated between the source and target servers for the next set of databases.
 
-:::image type="content" source="media/tutorial-migration-service-cloud-sql-online/05-portal-online-select-database-migration-cloud-sql.png" alt-text="Screenshot of FetchDBmigration.":::
+:::image type="content" source="media/tutorial-migration-service-cloud-sql-online/05-portal-online-select-database-migration-cloud-sql.png" alt-text="Screenshot of FetchDBmigration." lightbox="media/tutorial-migration-service-cloud-sql-online/05-portal-online-select-database-migration-cloud-sql.png":::
 
 After selecting the databases, select the **Next: Summary**
 
@@ -133,7 +133,7 @@ After selecting the databases, select the **Next: Summary**
 
 The **Summary** tab summarizes all the Source and target details for creating the validation or migration. Review the details and select the start button.
 
-:::image type="content" source="media/tutorial-migration-service-cloud-sql-online/06-portal-online-summary-cloud-sql.png" alt-text="Screenshot of Summary migration.":::
+:::image type="content" source="media/tutorial-migration-service-cloud-sql-online/06-portal-online-summary-cloud-sql.png" alt-text="Screenshot of Summary migration." lightbox="media/tutorial-migration-service-cloud-sql-online/06-portal-online-summary-cloud-sql.png":::
 
 #### Monitor the migration
 
@@ -187,7 +187,7 @@ Some possible migration states:
 | --- | --- |
 | **Failed** | Validation has failed. |
 | **Succeeded** | Validation is successful. |
-| **Warning** | Validation is in warning. | 
+| **Warning** | Validation is in warning. |
 
 #### Cutover
 
@@ -231,20 +231,20 @@ To begin the migration, you need to create a JSON file with the migration detail
 
 ```bash
 {
-	"properties": {
-		"SourceDBServerResourceId": "<<source hostname or IP address>>:<<port>>@<<username>>",
-		"SecretParameters": {
-			"AdminCredentials": {
-				"SourceServerPassword": "<<Source Password>>",
-				"TargetServerPassword": "<<Target Password>>"
-			},
-			"targetServerUserName": "<<Target username>>"
-		},
-		"DBsToMigrate": "<<comma separated list of databases in a array like - ["ticketdb","timedb","inventorydb"]>>",
-		"OverwriteDBsInTarget": "true",
-		"sourceType": "GCP_CloudSQL",
-		"sslMode": "Require"
-	}
+    "properties": {
+        "SourceDBServerResourceId": "<<source hostname or IP address>>:<<port>>@<<username>>",
+        "SecretParameters": {
+            "AdminCredentials": {
+                "SourceServerPassword": "<<Source Password>>",
+                "TargetServerPassword": "<<Target Password>>"
+            },
+            "targetServerUserName": "<<Target username>>"
+        },
+        "DBsToMigrate": "<<comma separated list of databases in a array like - ["ticketdb","timedb","inventorydb"]>>",
+        "OverwriteDBsInTarget": "true",
+        "sourceType": "GCP_CloudSQL",
+        "sslMode": "Require"
+    }
 }
 ```
 

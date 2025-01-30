@@ -39,15 +39,27 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="./media/quickstart-create-server/create-a-resource.png" alt-text="Screenshot that shows how to create a resource in Azure portal." lightbox="./media/quickstart-create-server/create-a-resource.png":::
 
-3. Under **Categories**, select **Databases**, and from the filtered list of resource types, find the one called **Azure Database for PostgreSQL Flexible Server** and select **Create**.
+3. Under **Categories**, select **Databases**.
 
-    :::image type="content" source="./media/quickstart-create-server/create-an-instance.png" alt-text="Screenshot that shows how to create an Azure Database for flexible server instance." lightbox="./media/quickstart-create-server/create-an-instance.png":::
+    :::image type="content" source="./media/quickstart-create-server/create-an-instance-databases.png" alt-text="Screenshot that shows how to select Databases under resource categories." lightbox="./media/quickstart-create-server/create-an-instance-databases.png":::
 
-4. The **New Azure Database for PostgreSQL Flexible server** wizard launches, and you should provide all information required, starting from the **Basics** tab.
+4. From the filtered list of resource types, find the one called **Azure Database for PostgreSQL Flexible Server**.
+
+    :::image type="content" source="./media/quickstart-create-server/create-an-instance-flexible-server.png" alt-text="Screenshot that shows the Azure Database for PostgreSQL Flexible Server resource type." lightbox="./media/quickstart-create-server/create-an-instance-flexible-server.png":::
+
+5. Select **Create**.
+
+    :::image type="content" source="./media/quickstart-create-server/create-an-instance-flexible-server-create.png" alt-text="Screenshot that shows the Create link in the Azure Database for PostgreSQL Flexible Server resource type." lightbox="./media/quickstart-create-server/create-an-instance-flexible-server-create.png":::
+
+6. The **New Azure Database for PostgreSQL Flexible server** wizard launches.
+
+    :::image type="content" source="./media/quickstart-create-server/new-server-wizard.png" alt-text="Screenshot that shows the New Azure Database for PostgreSQL Flexible server wizard." lightbox="./media/quickstart-create-server/new-server-wizard.png":::
+
+7. Provide all information required, starting from the **Basics** tab.
 
     :::image type="content" source="./media/quickstart-create-server/fill-basics.png" alt-text="Screenshot that shows the Basics tab of the New Azure Database for PostgreSQL Flexible server wizard to create a new instance." lightbox="./media/quickstart-create-server/fill-basics.png":::
 
-5. Use the following table to understand the meaning of the different fields available in the **Basics** page, and as guidance to fill the page:
+8. Use the following table to understand the meaning of the different fields available in the **Basics** page, and as guidance to fill the page:
 
     | Section | Setting | Suggested value | Description | Can be changed after instance creation |
     | --- | --- | --- | --- | --- |
@@ -67,11 +79,11 @@ Using the [Azure portal](https://portal.azure.com/):
     | | **Admin username** | The name of the PostgreSQL native user that you want to assign as the administrator of your instance. For this example, let's set it to `adminuser`. | The admin username must contain between 1 and 63 characters, must only consist of numbers and letters, can’t start with **pg_** and can't be **azure_superuser**, **azure_pg_admin**, **admin**, **administrator**, **root**, **guest**, or **public**. | The name of this user can't be changed after the instance is created. Also, it can't be replaced with some other PostgreSQL native user that you could create in the instance. |
     | | **Password** | The password that you want to assign to the PostgreSQL native user which is designated as an administrator. | Specify a password for the server admin account. Make sure that your password is complex enough. | Can be changed as many times as needed after the server is created. |
 
-6. To configure the compute and storage further, under **Server details**, in the **Compute + storage** section, select **Configure server**. The **Compute + storage** page opens, where you can configure several settings specific to the type of compute and storage you want to use. Once you configure your compute and storage according to your needs, select **Save** to return to the **Basics** page and continue configuring your instance.
+9. To configure the compute and storage further, under **Server details**, in the **Compute + storage** section, select **Configure server**. The **Compute + storage** page opens, where you can configure several settings specific to the type of compute and storage you want to use. Once you configure your compute and storage according to your needs, select **Save** to return to the **Basics** page and continue configuring your instance.
 
     :::image type="content" source="./media/quickstart-create-server/fill-compute-and-storage.png" alt-text="Screenshot that shows the Compute + storage page where you can configure compute and storage of your server." lightbox="./media/quickstart-create-server/fill-compute-and-storage.png":::
 
-7. Use the following table to understand the meaning of the different fields available in the **Compute + storage** page, and as guidance to fill the page:
+10. Use the following table to understand the meaning of the different fields available in the **Compute + storage** page, and as guidance to fill the page:
 
     | Section | Setting | Suggested value | Description | Can be changed after instance creation |
     | --- | --- | --- | --- | --- |
@@ -94,13 +106,13 @@ Using the [Azure portal](https://portal.azure.com/):
     | | **Backup Redundancy Options** | Automatically selected for you, based on the configuration of high availability and geo-redundancy of backups. | Possible values are **Locally redundant** (provides at least 99.999999999% durability of backup objects over a year), **Zone redundant** (provides at least 99.9999999999% durability of backup objects over a year), and **Geo-Redundant** (provides at least 99.99999999999999% durability of backup objects over a year). When **Geo-redundancy** is enabled for the backup, then the backup redundancy option is set to **Geo-Redundant**. Otherwise, if high availability is set to **Disabled** or **Same zone**, then backup redundancy is set to **Locally redundant**. And if high availability is set to **Zone redundant**, then backup redundancy is set to **Zone redundant**. For more information, see [Backup redundancy options in Azure Database for PostgreSQL - Flexible Server](concepts-backup-restore.md#backup-redundancy-options). | Can't be changed after instance is created. |
     | | **Geo-redundancy** | Leave this option disabled. | Geo-redundancy in backups is only supported on instances deployed in any of the [Azure paired regions](/azure/reliability/cross-region-replication-azure). For more information, see [Geo-redundant backup and restore in Azure Database for PostgreSQL - Flexible Server](concepts-backup-restore.md#geo-redundant-backup-and-restore)| Can't be changed after instance is created. |
 
-8. After providing all required information in the **Basics** tab, select **Next: Networking** to move forward to the **Network** tab, from where you can configure the networking settings of your Azure Database for PostgreSQL flexible server instance:
+11. After providing all required information in the **Basics** tab, select **Next: Networking** to move forward to the **Network** tab, from where you can configure the networking settings of your Azure Database for PostgreSQL flexible server instance:
 
     :::image type="content" source="./media/quickstart-create-server/next-networking.png" alt-text="Screenshot that shows the highlights the Next: Networking button in the Basics tab of the New Azure Database for PostgreSQL Flexible server wizard to create a new instance." lightbox="./media/quickstart-create-server/next-networking.png":::
 
     :::image type="content" source="./media/quickstart-create-server/fill-networking.png" alt-text="Screenshot that shows the Networking tab of the New Azure Database for PostgreSQL Flexible server wizard to create a new instance." lightbox="./media/quickstart-create-server/fill-networking.png":::
 
-9. Use the following table to understand the meaning of the different fields available in the **Networking** page, and as guidance to fill the page:
+12. Use the following table to understand the meaning of the different fields available in the **Networking** page, and as guidance to fill the page:
 
     | Section | Setting | Suggested value | Description | Can be changed after instance creation |
     | --- | --- | --- | --- | --- |
@@ -112,26 +124,26 @@ Using the [Azure portal](https://portal.azure.com/):
     | | **Allow public access from any Azure service within Azure to this server** | Leave the default setting. | By enabling this checkbox, you configure a special firewall rule to allow connections from IP addresses allocated to any Azure service or asset, including connections from the subscriptions of other customers. For more information, see [Network with virtual network integration for Azure Database for PostgreSQL - Flexible Server](concepts-networking-public.md) | Can be changed after instance is created. |
     | | **+ Add current client IP address ( ###.###.###.### )** | Select the link with that text. | That configures a firewall rule to allow connections from  the IP address indicated in parenthesis. That IP address corresponds to the public IP address that's used by the computer from which you're accessing Azure portal. For more information, see [Network with virtual network integration for Azure Database for PostgreSQL - Flexible Server](concepts-networking-public.md) | Can be changed after instance is created. |
 
-10. After providing all required information in the **Networking** tab, select **Next: Security** to move forward to the **Security** tab, from where you can configure the data security settings of your Azure Database for PostgreSQL flexible server instance:
+13. After providing all required information in the **Networking** tab, select **Next: Security** to move forward to the **Security** tab, from where you can configure the data security settings of your Azure Database for PostgreSQL flexible server instance:
 
     :::image type="content" source="./media/quickstart-create-server/next-security.png" alt-text="Screenshot that shows the highlights the Next: Security button in the Networking tab of the New Azure Database for PostgreSQL Flexible server wizard to create a new instance." lightbox="./media/quickstart-create-server/next-security.png":::
 
     :::image type="content" source="./media/quickstart-create-server/fill-security.png" alt-text="Screenshot that shows the Security tab of the New Azure Database for PostgreSQL Flexible server wizard to create a new instance." lightbox="./media/quickstart-create-server/fill-security.png":::
 
-11. Use the following table to understand the meaning of the different fields available in the **Security** page, and as guidance to fill the page:
+14. Use the following table to understand the meaning of the different fields available in the **Security** page, and as guidance to fill the page:
 
     | Section | Setting | Suggested value | Description | Can be changed after instance creation |
     | --- | --- | --- | --- | --- |
     | **Data encryption** | | | | |
     | | **Data encryption key** | Leave the default setting. | Possible values are **Service-managed key** and **Customer-managed key**. For more information, see [Data encryption in Azure Database for PostgreSQL - Flexible Server](concepts-data-encryption.md). | Can't be changed after instance is created. |
 
-12. After providing all required information in the **Security** tab, select **Next: Tags** to move forward to the **Tags** tab, from where you can attach some [tags](/azure/azure-resource-manager/management/tag-resources) to your Azure Database for PostgreSQL flexible server instance:
+15. After providing all required information in the **Security** tab, select **Next: Tags** to move forward to the **Tags** tab, from where you can attach some [tags](/azure/azure-resource-manager/management/tag-resources) to your Azure Database for PostgreSQL flexible server instance:
 
     :::image type="content" source="./media/quickstart-create-server/next-tags.png" alt-text="Screenshot that shows the highlights the Next: Tags button in the Security tab of the New Azure Database for PostgreSQL Flexible server wizard to create a new instance." lightbox="./media/quickstart-create-server/next-tags.png":::
 
     :::image type="content" source="./media/quickstart-create-server/fill-tags.png" alt-text="Screenshot that shows the Tags tab of the New Azure Database for PostgreSQL Flexible server wizard to create a new instance." lightbox="./media/quickstart-create-server/fill-tags.png":::
 
-13. Use the following table to understand the meaning of the different fields available in the **Tags** page, and as guidance to fill the page:
+16. Use the following table to understand the meaning of the different fields available in the **Tags** page, and as guidance to fill the page:
 
     | Section | Setting | Suggested value | Description | Can be changed after instance creation |
     | --- | --- | --- | --- | --- |
@@ -139,21 +151,21 @@ Using the [Azure portal](https://portal.azure.com/):
     | | **Name** | Set it to `Environment`. | For more information about, see [tags](/azure/azure-resource-manager/management/tag-resources). | Can be changed after instance is created. |
     | | **Value** | Set it to `PostgreSQL Quickstart`. | For more information about, see [tags](/azure/azure-resource-manager/management/tag-resources). | Can be changed after instance is created. |
 
-14. After providing all required information in the **Tags** tab, select **Next: Review + create** to move forward to the **Review + create** tab, from where you can review all settings configured for your new Azure Database for PostgreSQL flexible server instance, before you trigger its creation:
+17. After providing all required information in the **Tags** tab, select **Next: Review + create** to move forward to the **Review + create** tab, from where you can review all settings configured for your new Azure Database for PostgreSQL flexible server instance, before you trigger its creation:
 
     :::image type="content" source="./media/quickstart-create-server/next-review-and-create.png" alt-text="Screenshot that shows the highlights the Next: Review + create button in the Tags tab of the New Azure Database for PostgreSQL Flexible server wizard to create a new instance." lightbox="./media/quickstart-create-server/next-review-and-create.png":::
 
     :::image type="content" source="./media/quickstart-create-server/fill-review-and-create.png" alt-text="Screenshot that shows the Review + create tab of the New Azure Database for PostgreSQL Flexible server wizard to create a new instance." lightbox="./media/quickstart-create-server/fill-review-and-create.png":::
 
-15. After reviewing that the values of all settings match your requirements, select **Create** to initiate the deployment of your new Azure Database for PostgreSQL flexible server instance:
+18. After reviewing that the values of all settings match your requirements, select **Create** to initiate the deployment of your new Azure Database for PostgreSQL flexible server instance:
 
     :::image type="content" source="./media/quickstart-create-server/next-create.png" alt-text="Screenshot that shows the highlights the Create button in the Review + create tab of the New Azure Database for PostgreSQL Flexible server wizard to create a new instance." lightbox="./media/quickstart-create-server/next-create.png":::
 
-16. A new deployment is launched to create your Azure Database for PostgreSQL flexible server instance:
+19. A new deployment is launched to create your Azure Database for PostgreSQL flexible server instance:
 
     :::image type="content" source="./media/quickstart-create-server/deployment-in-progress.png" alt-text="Screenshot that shows the deployment in progress to create your Azure Database for PostgreSQL Flexible server instance." lightbox="./media/quickstart-create-server/deployment-in-progress.png":::
 
-17. When the deployment completes, you can select **Go to resource**, to get you to the **Overview** page of your new Azure Database for PostgreSQL flexible server instance, and start using it:
+20. When the deployment completes, you can select **Go to resource**, to get you to the **Overview** page of your new Azure Database for PostgreSQL flexible server instance, and start using it:
 
     :::image type="content" source="./media/quickstart-create-server/deployment-completed.png" alt-text="Screenshot that shows the deployment successfully completed of your Azure Database for PostgreSQL Flexible server instance." lightbox="./media/quickstart-create-server/deployment-completed.png":::
 
@@ -447,10 +459,18 @@ To connect to your instance, you need to have its fully qualified name and the c
 
 Using the [Azure portal](https://portal.azure.com/):
 
-1. Open the **Overview** page of your new instance. Copy the values of **Server name** and **Server admin login name**. Hover your cursor over each field, and the copy symbol appears to the right of the text. Select the copy symbol as needed to copy the values.
+1. Open the **Overview** page of your new instance.
 
-    :::image type="content" source="./media/quickstart-create-server/overview-copy-information.png" alt-text="Screenshot that shows how to copy server name and admin user name from the Overview page." lightbox="./media/quickstart-create-server/overview-copy-information.png":::
- 
+    :::image type="content" source="./media/quickstart-create-server/overview-copy-information.png" alt-text="Screenshot that shows the Overview page." lightbox="./media/quickstart-create-server/overview-copy-information.png":::
+
+2.  Copy the value of **Server name**, and save it somewhere to use it later. Hover your cursor over each field, and the copy symbol appears to the right of the text. Select the copy symbol as needed to copy the values.
+
+    :::image type="content" source="./media/quickstart-create-server/overview-copy-server-name.png" alt-text="Screenshot that shows how to copy the server name from the Overview page." lightbox="./media/quickstart-create-server/overview-copy-server-name.png":::
+
+3.  Copy the value of **Server admin login name**, and save it somewhere to use it later. Hover your cursor over each field, and the copy symbol appears to the right of the text. Select the copy symbol as needed to copy the values.
+
+    :::image type="content" source="./media/quickstart-create-server/overview-copy-admin-login-name.png" alt-text="Screenshot that shows how to the admin user name from the Overview page." lightbox="./media/quickstart-create-server/overview-copy-admin-login-name.png":::
+
  ## [CLI](#tab/cli-create-get-connection)
 
 The [Azure Cloud Shell](/azure/cloud-shell/overview) is a free interactive shell that you can use to run the steps in this article. It has common Azure tools preinstalled and configured to use with your account.
@@ -540,16 +560,23 @@ To delete the entire resource group, including the newly created server.
 
     :::image type="content" source="./media/quickstart-create-server/resource-group-select.png" alt-text="Screenshot that shows how to select one resource group." lightbox="./media/quickstart-create-server/resource-group-select.png":::
 
-3. In the **Overview** page of the resource group chosen, select **Delete resource group**, then enter the name of the resource group in the **Enter resource group name to confirm deletion** text box, and select **Delete**.
+3. In the **Overview** page of the resource group chosen, select **Delete resource group**.
 
-    :::image type="content" source="./media/quickstart-create-server/resource-group-delete.png" alt-text="Screenshot that shows how to delete one resource group." lightbox="./media/quickstart-create-server/resource-group-delete.png":::
+    :::image type="content" source="./media/quickstart-create-server/resource-group-delete.png" alt-text="Screenshot that shows how to inititiate the deletion of one resource group." lightbox="./media/quickstart-create-server/resource-group-delete.png":::
 
+4. Enter the name of the resource group in the **Enter resource group name to confirm deletion** text box.
+
+    :::image type="content" source="./media/quickstart-create-server/resource-group-delete-confirm.png" alt-text="Screenshot that shows how to confirm the deletion of one resource group." lightbox="./media/quickstart-create-server/resource-group-delete-confirm.png":::
+
+5. Select **Delete**.
+
+    :::image type="content" source="./media/quickstart-create-server/resource-group-delete-delete.png" alt-text="Screenshot that shows the Delete button." lightbox="./media/quickstart-create-server/resource-group-delete-delete.png":::
 
 To delete only the newly created server.
 
 1. Locate your server in the portal, if you don't have it open. One way to do it is by typing the name of the server in the search bar. When the resource with the matching name is shown, select that resource.
 
-2. On the **Overview** page, select **Delete**. Select **I have read and understand that this server, as well as any databases it contains, will be deleted.**, and select **Delete**.
+2. In the **Overview** page, select **Delete**. Select **I have read and understand that this server, as well as any databases it contains, will be deleted.**, and select **Delete**.
 
     :::image type="content" source="./media/quickstart-create-server/server-delete.png" alt-text="Screenshot that shows how to delete one Azure Database for flexible server instance." lightbox="./media/quickstart-create-server/server-delete.png":::
 

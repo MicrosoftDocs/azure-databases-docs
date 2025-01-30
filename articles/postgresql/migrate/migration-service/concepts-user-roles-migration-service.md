@@ -1,12 +1,12 @@
 ---
-title: "Permissions in migration scenarios"
+title: "Permissions in Migration Scenarios"
 description: Learn about key concerns about permissions when you migrate users, roles, and ownerships by using the migration service in Azure Database for PostgreSQL. Learn about steps to take in specific migration scenarios.
 author: shriramm
 ms.author: shriramm
 ms.reviewer: maghan
-ms.date: 06/19/2024
+ms.date: 01/24/2025
 ms.service: azure-database-postgresql
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Permissions in migration scenarios for the migration service
@@ -90,7 +90,7 @@ In the code:
 ```sql
 SELECT
   array_to_string(array_agg(acl.privilege_type), ', ') AS privileges,
-  t.relname AS relation_name, 
+  t.relname AS relation_name,
   r.rolname AS grantee
 FROM
   pg_catalog.pg_class AS t
@@ -104,7 +104,6 @@ WHERE
   )
 GROUP BY
   r.rolname, t.relname;
-
 ```
 
 ##### Step 2: Review the output
@@ -114,7 +113,7 @@ The output of the query shows the list of permissions that are granted to roles 
 For example:
 
 | Permissions | Table or view (relation name) | Grantee |
-| :--- |:--- |:--- |
+| :--- | :--- | :--- |
 | SELECT | pg_authid | adminuser1 |
 | SELECT, UPDATE | pg_shadow | adminuser2 |
 
@@ -134,7 +133,7 @@ REVOKE UPDATE ON pg_shadow FROM adminuser2;
 
 Run the query from step 1 again to ensure that the resulting output set is empty.
 
-> [!NOTE]
+> [!NOTE]  
 > To avoid any permissions-related issues during the migration, make sure that you complete the preceding steps for all the databases that are included in the migration.
 
 After you finish these steps, you can initiate a migration from a single server to a flexible server by using the migration service.
