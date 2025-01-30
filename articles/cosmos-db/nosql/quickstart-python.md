@@ -202,6 +202,17 @@ items = [item for item in results]
 output = json.dumps(items, indent=True)
 ```
 
+### Explore your data
+
+Use the Visual Studio Code extension for Azure Cosmos DB to explore your NoSQL data. You can perform core database operations including, but not limited to:
+
+- Querying data using the query editor or a scrapbook
+- Inserting, updating, and deleting data
+- Importing data
+- Managing containers
+
+For more information, see [How-to use Visual Studio Code extension to explore Azure Cosmos DB for NoSQL data](../visual-studio-code-extension.md?pivots=api-nosql).
+
 ## Clean up resources
 
 When you no longer need the sample application or resources, remove the corresponding deployment and all resources.
