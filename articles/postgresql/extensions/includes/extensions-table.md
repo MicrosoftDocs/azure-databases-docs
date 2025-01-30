@@ -2,7 +2,7 @@
 author: akashraokm
 ms.author: akashrao
 ms.reviewer: maghan, randolphwest
-ms.date: 01/26/2025
+ms.date: 01/29/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
@@ -281,7 +281,8 @@ ms.custom: automatically generated
 | 11 | 1.1 |
 
 
-<!--## hll
+
+## hll
 
 [hll](https://github.com/citusdata/postgresql-hll) introduces a new data type hll which is a HyperLogLog data structure.
 
@@ -296,7 +297,7 @@ ms.custom: automatically generated
 | 11 | N/A |
 
 
--->
+
 ## hstore
 
 [hstore](https://www.postgresql.org/docs/current/hstore.html) is a data type for storing sets of (key, value) pairs.
@@ -1008,7 +1009,7 @@ ms.custom: automatically generated
 
 
 
-<!--## tdigest
+## tdigest
 
 [tdigest](https://github.com/tvondra/tdigest) implements t-digest, a data structure for on-line accumulation of rank-based statistics such as quantiles and trimmed means.
 
@@ -1023,7 +1024,7 @@ ms.custom: automatically generated
 | 11 | N/A |
 
 
--->
+
 ## tds_fdw
 
 [tds_fdw](https://github.com/tds-fdw/tds_fdw) is a foreign data wrapper for querying a TDS database (SAP ASE or SQL Server).
@@ -1056,7 +1057,7 @@ ms.custom: automatically generated
 
 <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
 
-<!--## topn
+## topn
 
 [topn](https://github.com/citusdata/postgresql-topn) returns the top values in a database according to some criteria.
 
@@ -1071,7 +1072,7 @@ ms.custom: automatically generated
 | 11 | N/A |
 
 
--->
+
 ## tsm_system_rows
 
 [tsm_system_rows](https://www.postgresql.org/docs/13/tsm-system-rows.html) is a `TABLESAMPLE` method which accepts number of rows as a limit.
