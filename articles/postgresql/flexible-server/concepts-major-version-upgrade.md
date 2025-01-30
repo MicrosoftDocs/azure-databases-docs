@@ -111,5 +111,3 @@ If precheck operations fail for an in-place major version upgrade, the upgrade f
 - [Major version upgrade of Azure Database for PostgreSQL - Flexible Server](how-to-perform-major-version-upgrade.md?tabs=portal).
 - [High availability in Azure Database for PostgreSQL - Flexible Server](/azure/reliability/reliability-postgresql-flexible-server).
 - [Backup and restore in Azure Database for PostgreSQL - Flexible Server](concepts-backup-restore.md).
-
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
