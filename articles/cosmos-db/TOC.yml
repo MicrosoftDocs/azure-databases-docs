@@ -1,6 +1,7 @@
 - name: Azure Cosmos DB documentation
   href: index.yml
 - name: Overview
+  expanded: true
   items:
   - name: Welcome to Azure Cosmos DB
     href: introduction.md
@@ -62,9 +63,6 @@
     - name: Azure AI Advantage free trial
       href: ai-advantage.md
     expanded: true
-  expanded: true
-- name: Visual Studio Code extension
-  href: visual-studio-code-extension.md
 - name: NoSQL
   href: nosql/toc.yml
 - name: MongoDB
