@@ -440,6 +440,8 @@
     href: ../network-bandwidth.md
 - name: How to
   items:
+  - name: Visual Studio Code extension
+    href: ../visual-studio-code-extension.md?pivots=api-nosql
   - name: Configure vector database capabilities
     items:
     - name: .NET
