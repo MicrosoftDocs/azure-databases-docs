@@ -45,22 +45,22 @@ Vector search for Azure Cosmos DB for NoSQL requires enabling the feature by com
 1. Read the description of the feature to confirm you want to enable it.
 1. Select "Enable" to turn on vector search in Azure Cosmos DB for NoSQL.
 
-    > [!TIP]
-    > Alternatively, use the Azure CLI to update the capabilities of your account to support NoSQL vector search.
-    >
-    > ```azurecli
-    > az cosmosdb update \
-    >      --resource-group <resource-group-name> \
-    >      --name <account-name> \
-    >      --capabilities EnableNoSQLVectorSearch
-    > ```
+> [!TIP]
+> Alternatively, use the Azure CLI to update the capabilities of your account to support NoSQL vector search.
+>
+> ```azurecli
+> az cosmosdb update \
+>      --resource-group <resource-group-name> \
+>      --name <account-name> \
+>      --capabilities EnableNoSQLVectorSearch
+> ```
 
 > [!NOTE]
 > The registration request will be autoapproved; however, it may take 15 minutes to take effect.
 
 ## Understand the steps involved in vector search
 
-The following steps assume that you know how to [setup a Cosmos DB NoSQL account and create a database](quickstart-portal.md). The vector search feature is currently only supported on new containers, not existing container. You need to create a new container and then specify the container-level vector embedding policy and the vector indexing policy at the time of creation.
+The following steps assume that you know how to [setup a Cosmos DB NoSQL account and create a database](quickstart-portal.md). The vector search feature is currently not supported on the existing containers, so you need to create a new container and specify the container-level vector embedding policy, and the vector indexing policy at the time of container creation.
 
 Let’s take an example of creating a database for an internet-based bookstore and you're storing Title, Author, ISBN, and Description for each book. We also define two properties to contain vector embeddings. The first is the "contentVector" property, which contains [text embeddings](/azure/ai-services/openai/concepts/models#embeddings ) generated from the text content of the book (for example, concatenating the "title" "author" "isbn" and "description" properties before creating the embedding). The second is "coverImageVector," which is generated from [images of the book’s cover](/azure/ai-services/computer-vision/concept-image-retrieval).
 

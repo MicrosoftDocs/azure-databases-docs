@@ -1,62 +1,43 @@
 ---
-title: Quickstart - Azure Cosmos DB for MongoDB for .NET with MongoDB driver
-description: Learn how to build a .NET app to manage Azure Cosmos DB for MongoDB account resources in this quickstart.
+title: Quickstart - .NET
+titleSuffix: Azure Cosmos DB for MongoDB (RU)
+description: Deploy a .NET web application that uses the client library for .NET to interact with Azure Cosmos DB for MongoDB (RU) data in this quickstart.
 author: seesharprun
 ms.author: sidandrews
 ms.service: azure-cosmos-db
 ms.subservice: mongodb
 ms.devlang: csharp
-ms.topic: quickstart
-ms.date: 06/14/2024
-ms.custom: devx-track-csharp, mode-api, devguide-csharp, cosmos-db-dev-journey, devx-track-dotnet, devx-track-extended-azdevcli
-zone_pivot_groups: azure-cosmos-db-quickstart-env
+ms.topic: quickstart-sdk
+ms.date: 01/29/2025
+ms.custom: devx-track-csharp, devx-track-dotnet, devx-track-extended-azdevcli
+appliesto:
+  - ✅ MongoDB (RU)
+# CustomerIntent: As a developer, I want to learn the basics of the .NET library so that I can build applications with Azure Cosmos DB for MongoDB (RU).
 ---
 
-# Quickstart: Azure Cosmos DB for MongoDB for .NET with the MongoDB driver
-
-[!INCLUDE[MongoDB](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb.md)]
+# Quickstart: Use Azure Cosmos DB for MongoDB (RU) with .NET
 
 [!INCLUDE[Developer Quickstart selector](includes/quickstart-dev-selector.md)]
 
-Get started with MongoDB to create databases, collections, and docs within your Azure Cosmos DB resource. Follow these steps to deploy a minimal solution to your environment using the Azure Developer CLI.
+In this quickstart, you deploy a basic Azure Cosmos DB for MongoDB application using Python. Azure Cosmos DB for MongoDB is a schemaless data store allowing applications to store unstructured documents in the cloud with MongoDB libraries. You learn how to create documents and perform basic tasks within your Azure Cosmos DB resource using Python.
 
-[API for MongoDB reference documentation](https://www.mongodb.com/docs/drivers/csharp) | [MongoDB Package (NuGet)](https://www.nuget.org/packages/MongoDB.Driver)
-packages/Microsoft.Azure.Cosmos) | [Azure Developer CLI](/azure/developer/azure-developer-cli/overview)
+[Library source code](https://github.com/mongodb/mongo-csharp-driver) | [Package (NuGet)](https://www.nuget.org/packages/MongoDB.Driver) | [Azure Developer CLI](/azure/developer/azure-developer-cli/overview)
 
 ## Prerequisites
 
-[!INCLUDE [Developer Quickstart prerequisites](includes/quickstart-dev-prereqs.md)]
+- Azure Developer CLI
+- Docker Desktop
+- .NET SDK 9.0
 
-## Setting up
+If you don't have an Azure account, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
 
-Deploy this project's development container to your environment. Then, use the Azure Developer CLI (`azd`) to create an Azure Cosmos DB for MongoDB account and deploy a containerized sample application. The sample application uses the client library to manage, create, read, and query sample data.
+## Initialize the project
 
-::: zone pivot="devcontainer-codespace"
+Use the Azure Developer CLI (`azd`) to create an Azure Cosmos DB for Table account and deploy a containerized sample application. The sample application uses the client library to manage, create, read, and query sample data.
 
-[![Open in GitHub Codespaces](https://img.shields.io/static/v1?style=for-the-badge&label=GitHub+Codespaces&message=Open&color=brightgreen&logo=github)](https://codespaces.new/azure-samples/cosmos-db-mongodb-dotnet-quickstart?template=false&quickstart=1&azure-portal=true)
+1. Open a terminal in an empty directory.
 
-::: zone-end
-
-::: zone pivot="devcontainer-vscode"
-
-[![Open in Dev Container](https://img.shields.io/static/v1?style=for-the-badge&label=Dev+Containers&message=Open&color=blue&logo=visualstudiocode)](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/azure-samples/cosmos-db-mongodb-dotnet-quickstart)
-
-::: zone-end
-
-::: zone pivot="devcontainer-codespace"
-
-> [!IMPORTANT]
-> GitHub accounts include an entitlement of storage and core hours at no cost. For more information, see [included storage and core hours for GitHub accounts](https://docs.github.com/billing/managing-billing-for-github-codespaces/about-billing-for-github-codespaces#monthly-included-storage-and-core-hours-for-personal-accounts).
-
-::: zone-end
-
-::: zone pivot="devcontainer-vscode"
-
-::: zone-end
-
-1. Open a terminal in the root directory of the project.
-
-1. Authenticate to the Azure Developer CLI using `azd auth login`. Follow the steps specified by the tool to authenticate to the CLI using your preferred Azure credentials.
+1. If you're not already authenticated, authenticate to the Azure Developer CLI using `azd auth login`. Follow the steps specified by the tool to authenticate to the CLI using your preferred Azure credentials.
 
     ```azurecli
     azd auth login
@@ -68,13 +49,7 @@ Deploy this project's development container to your environment. Then, use the A
     azd init --template cosmos-db-mongodb-dotnet-quickstart
     ```
 
-    > [!NOTE]
-    > This quickstart uses the [azure-samples/cosmos-db-mongodb-dotnet-quickstart](https://github.com/azure-samples/cosmos-db-mongodb-dotnet-quickstart) template GitHub repository. The Azure Developer CLI will automatically clone this project to your machine if it is not already there.
-
 1. During initialization, configure a unique environment name.
-
-    > [!TIP]
-    > The environment name will also be used as the target resource group name. For this quickstart, consider using `msdocs-cosmos-db`.
 
 1. Deploy the Azure Cosmos DB account using `azd up`. The Bicep templates also deploy a sample web application.
 
@@ -82,7 +57,7 @@ Deploy this project's development container to your environment. Then, use the A
     azd up
     ```
 
-1. During the provisioning process, select your subscription and desired location. Wait for the provisioning process to complete. The process can take **approximately five minutes**.
+1. During the provisioning process, select your subscription, desired location, and target resource group. Wait for the provisioning process to complete. The process can take **approximately five minutes**.
 
 1. Once the provisioning of your Azure resources is done, a URL to the running web application is included in the output.
 
@@ -97,13 +72,11 @@ Deploy this project's development container to your environment. Then, use the A
 
 1. Use the URL in the console to navigate to your web application in the browser. Observe the output of the running app.
 
-    :::image type="content" source="media/quickstart/dev-web-application.png" alt-text="Screenshot of the running web application.":::
-
----
+:::image type="content" source="media/quickstart-dotnet/running-application.png" alt-text="Screenshot of the running web application.":::
 
 ### Install the client library
 
-The client library is available through NuGet, as the `Microsoft.Azure.Cosmos` package.
+The client library is available through NuGet, as the `MongoDB.Driver` package.
 
 1. Open a terminal and navigate to the `/src/web` folder.
 
@@ -111,150 +84,138 @@ The client library is available through NuGet, as the `Microsoft.Azure.Cosmos` p
     cd ./src/web
     ```
 
-1. If not already installed, install the `MongoDb.Driver` package using `dotnet add package`.
+1. If not already installed, install the `MongoDB.Driver` package using `dotnet add package`.
 
     ```bash
-    dotnet add package MongoDb.Driver
+    dotnet add package MongoDB.Driver
     ```
 
-1. Also, install the `Azure.Identity` package if not already installed.
-
-    ```bash
-    dotnet add package Azure.Identity
-    ```
+1. Open and review the **src/web/Microsoft.Samples.Cosmos.MongoDB.Quickstart.Web.csproj** file to validate that the `MongoDB.Driver` entry exists.
 
 ## Object model
 
-Before you start building the application, let's look into the hierarchy of resources in Azure Cosmos DB. Azure Cosmos DB has a specific object model used to create and access resources. The Azure Cosmos DB creates resources in a hierarchy that consists of accounts, databases, collections, and docs.
-
-:::image type="complex" source="media/quickstart-dotnet/resource-hierarchy.png" alt-text="Diagram of the Azure Cosmos DB hierarchy including accounts, databases, collections, and docs.":::
-    Hierarchical diagram showing an Azure Cosmos DB account at the top. The account has two child database shards. One of the database shards includes two child collection shards. The other database shard includes a single child collection shard. That single collection shard has three child doc shards.
-:::image-end:::
-
-You use the following MongoDB classes to interact with these resources:
-
-- [``MongoClient``](https://mongodb.github.io/mongo-csharp-driver/2.16/apidocs/html/T_MongoDB_Driver_MongoClient.htm) - This class provides a client-side logical representation for the API for MongoDB layer on Azure Cosmos DB. The client object is used to configure and execute requests against the service.
-- [``MongoDatabase``](https://mongodb.github.io/mongo-csharp-driver/2.16/apidocs/html/T_MongoDB_Driver_MongoDatabase.htm) - This class is a reference to a database that might, or might not, exist in the service yet. The database is validated server-side when you attempt to access it or perform an operation against it.
-- [``Collection``](https://mongodb.github.io/mongo-csharp-driver/2.16/apidocs/html/T_MongoDB_Driver_MongoCollection.htm) - This class is a reference to a collection that also might not exist in the service yet. The collection is validated server-side when you attempt to work with it.
+| Name | Description |
+| --- | --- |
+| [`MongoClient`](https://www.mongodb.com/docs/drivers/csharp/current/quick-start/) | Type used to connect to MongoDB. |
+| `Database` | Represents a database in the account. |
+| `Collection` | Represents a collection within a database in the account. |
 
 ## Code examples
 
 - [Authenticate the client](#authenticate-the-client)
-- [Create a database](#create-a-database)
-- [Create a container](#create-a-collection)
-- [Create an item](#create-an-item)
-- [Get an item](#get-an-item)
-- [Query items](#query-items)
+- [Get a database](#get-a-database)
+- [Get a collection](#get-a-collection)
+- [Create a document](#create-a-document)
+- [Get a document](#read-a-document)
+- [Query documents](#query-documents)
 
-The sample code demonstrated in this article creates a database named ``adventureworks`` with a collection named ``products``. The ``products`` collection is designed to contain product details such as name, category, quantity, and a sale indicator. Each product also contains a unique identifier.
+The sample code in the template uses a database named `cosmicworks` and collection named `products`. The `products` collection contains details such as name, category, quantity, and a unique identifier for each product. The collection uses the `/category` property as a shard key.
 
 ### Authenticate the client
 
-From the project directory, open the *Program.cs* file. In your editor, add a using directive for ``MongoDB.Driver``.
+This sample creates a new instance of the `MongoClient` class.
 
-:::code language="csharp" source="~/azure-cosmos-mongodb-dotnet/001-quickstart/Program.cs" id="using_directives":::
+```csharp
+string connectionString = "<azure-cosmos-db-for-mongodb-connection-string>";
 
-Define a new instance of the ``MongoClient`` class using the constructor, and [``Environment.GetEnvironmentVariable``](/dotnet/api/system.environment.getenvironmentvariables) to read the connection string set by the Azure Developer CLI earlier.
+MongoClient client = new(connectionString);
+```
 
-:::code language="csharp" source="~/azure-cosmos-mongodb-dotnet/001-quickstart/Program.cs"  id="client_credentials":::
+### Get a database
 
-### Create a database
+This sample creates an instance of the `IMongoDatabase` interface using the `GetDatabase` method of the `MongoClient` class.
 
-Use the [``MongoClient.GetDatabase``](https://mongodb.github.io/mongo-csharp-driver/2.16/apidocs/html/M_MongoDB_Driver_MongoClient_GetDatabase.htm) method to create a new database if it doesn't already exist. This method returns a reference to the existing or newly created database.
+```csharp
+IMongoDatabase database = client.GetDatabase("<database-name>");
+```
 
-:::code language="csharp" source="~/azure-cosmos-mongodb-dotnet/001-quickstart/Program.cs" id="new_database" :::
+### Get a collection
 
-### Create a collection
+This sample creates an instance of the generic `IMongoCollection<>` interface using the `GetCollection<>` generic method of the `IMongoDatabase` interface. The generic interface and method both uses a type named `Product` defined in another class.
 
-The [``MongoDatabase.GetCollection``](https://mongodb.github.io/mongo-csharp-driver/2.16/apidocs/html/M_MongoDB_Driver_MongoDatabase_GetCollection.htm) creates a new collection if it doesn't already exist and return a reference to the collection.
-
-:::code language="csharp" source="~/azure-cosmos-mongodb-dotnet/001-quickstart/Program.cs" id="new_collection":::
-
-### Create an item
-
-The easiest way to create a new item in a collection is to create a C# [class](/dotnet/csharp/language-reference/keywords/class) or [record](/dotnet/csharp/language-reference/builtin-types/record) type with all of the members you want to serialize into JSON. In this example, the C# record has a unique identifier, a *category* field for the partition key, and extra *name*, *quantity*, and *sale* fields.
+```csharp
+IMongoCollection<Product> collection = database.GetCollection<Product>("<collection-name>");
+```
 
 ```csharp
 public record Product(
-    string Id,
-    string Category,
-    string Name,
-    int Quantity,
-    bool Sale
+    string id,
+    string category,
+    string name,
+    int quantity,
+    decimal price,
+    bool clearance
 );
 ```
 
-Create an item in the collection using the `Product` record by calling [``IMongoCollection<TDocument>.InsertOne``](https://mongodb.github.io/mongo-csharp-driver/2.16/apidocs/html/M_MongoDB_Driver_IMongoCollection_1_InsertOne_1.htm).
+### Create a document
 
-:::code language="csharp" source="~/azure-cosmos-mongodb-dotnet/001-quickstart/Program.cs" id="new_item" :::
+Create a document in the collection using `collection.ReplaceOneAsync<>` with the generic `Product` type parameter. This method "upserts" the item effectively replacing the item if it already exists.
 
-### Get an item
+```csharp
+Product document = new(
+    id: "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb",
+    category: "gear-surf-surfboards",
+    name: "Yamba Surfboard",
+    quantity: 12,
+    price: 850.00m,
+    clearance: false
+);
 
-In Azure Cosmos DB, you can retrieve items by composing queries using Linq. In the SDK, call [``IMongoCollection.FindAsync<>``](https://mongodb.github.io/mongo-csharp-driver/2.16/apidocs/html/M_MongoDB_Driver_IMongoCollection_1_FindAsync__1.htm) and pass in a C# expression to filter the results.
-
-:::code language="csharp" source="~/azure-cosmos-mongodb-dotnet/001-quickstart/Program.cs" id="read_item" :::
-
-### Query items
-
-After you insert an item, you can run a query to get all items that match a specific filter by treating the collection as an `IQueryable`. This example uses an expression to filter products by category. Once the call to `AsQueryable`  is made, call [``MongoQueryable.Where``](https://mongodb.github.io/mongo-csharp-driver/2.16/apidocs/html/M_MongoDB_Driver_Linq_MongoQueryable_Where__1.htm) to retrieve a set of filtered items.
-
-:::code language="csharp" source="~/azure-cosmos-mongodb-dotnet/001-quickstart/Program.cs" id="query_items" :::
-
-## Run the code
-
-This app creates an Azure Cosmos DB MongoDb API database and collection. The example then creates an item and then reads the exact same item back. Finally, the example creates a second item and then performs a query that should return multiple items. With each step, the example outputs metadata to the console about the performed steps.
-
-To run the app, use a terminal to navigate to the application directory and run the application.
-
-```dotnetcli
-dotnet run
+await collection.ReplaceOneAsync<Product>(
+    d => d.id == document.id,
+    document,
+    new ReplaceOptions { IsUpsert = true }
+);
 ```
 
-The output of the app should be similar to this example:
+### Read a document
 
-```output
-Single product name: 
-Yamba Surfboard
-Multiple products:
-Yamba Surfboard
-Sand Surfboard
+Perform a point read operation by using both the unique identifier (`id`) and shard key fields. Use `collection.FindAsync<>` with the generic `Product` type parameter to efficiently retrieve the specific item.
+
+```csharp
+IAsyncCursor<Product> documents = await collection.FindAsync<Product>(
+    d => d.id == "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb" && d.category == "gear-surf-surfboards"
+);
+
+Product? document = await documents.SingleOrDefaultAsync();
 ```
+
+### Query documents
+
+Perform a query over multiple items in a container using `collection.AsQueryable()` and language-integrated query (LINQ). This query finds all items within a specified category (shard key).
+
+```csharp
+IQueryable<Product> documents = collection.AsQueryable().Where(
+    d => d.category == "gear-surf-surfboards"
+);
+
+foreach (Product document in await documents.ToListAsync())
+{
+    // Do something with each item
+}
+```
+
+### Explore your data
+
+Use the Visual Studio Code extension for Azure Cosmos DB to explore your MongoDB data. You can perform core database operations including, but not limited to:
+
+- Performing queries using a scrapbook or the query editor
+- Modifying, updating, creating, and deleting documents
+- Importing bulk data from other sources
+- Managing databases and collections
+
+For more information, see [How-to use Visual Studio Code extension to explore Azure Cosmos DB for MongoDB data](../visual-studio-code-extension.md?pivots=api-mongodb&tabs=MongoDB).
 
 ## Clean up resources
 
-When you no longer need the Azure Cosmos DB for MongoDB account, you can delete the corresponding resource group.
+When you no longer need the sample application or resources, remove the corresponding deployment and all resources.
 
-### [Azure CLI / Resource Manager template](#tab/azure-cli)
-
-Use the [``az group delete``](/cli/azure/group#az-group-delete) command to delete the resource group.
-
-```azurecli-interactive
-az group delete --name $resourceGroupName
+```azurecli
+azd down
 ```
 
-### [PowerShell](#tab/azure-powershell)
+## Related content
 
-Use the [``Remove-AzResourceGroup``](/powershell/module/az.resources/remove-azresourcegroup) cmdlet to delete the resource group.
-
-```azurepowershell-interactive
-$parameters = @{
-    Name = $RESOURCE_GROUP_NAME
-}
-Remove-AzResourceGroup @parameters
-```
-
-### [Portal](#tab/azure-portal)
-
-1. Navigate to the resource group you previously created in the Azure portal.
-
-    > [!TIP]
-    > In this quickstart, we recommended the name ``msdocs-cosmos-quickstart-rg``.
-1. Select **Delete resource group**.
-
-   :::image type="content" source="media/quickstart-dotnet/delete-resource-group-option.png" lightbox="media/quickstart-dotnet/delete-resource-group-option.png" alt-text="Screenshot of the 'Delete resource group' option in the navigation bar for a resource group.":::
-
-1. On the **Are you sure you want to delete** dialog, enter the name of the resource group, and then select **Delete**.
-
-   :::image type="content" source="media/quickstart-dotnet/delete-confirmation.png" lightbox="media/quickstart-dotnet/delete-confirmation.png" alt-text="Screenshot of the deletion confirmation dialog for a resource group.":::
-
----
+- [Node.js Quickstart](quickstart-nodejs.md)
+- [Python Quickstart](quickstart-python.md)
