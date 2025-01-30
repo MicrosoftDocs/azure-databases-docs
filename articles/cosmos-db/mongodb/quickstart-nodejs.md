@@ -348,6 +348,17 @@ for await (const item of response) {
 
 ::: zone-end
 
+### Explore your data
+
+Use the Visual Studio Code extension for Azure Cosmos DB to explore your MongoDB data. You can perform core database operations including, but not limited to:
+
+- Querying data using the query editor or a scrapbook
+- Inserting, updating, and deleting data
+- Importing data
+- Managing collections
+
+For more information, see [How-to use Visual Studio Code extension to explore Azure Cosmos DB for MongoDB data](../visual-studio-code-extension.md?pivots=api-mongodb&tabs=MongoDB).
+
 ## Clean up resources
 
 When you no longer need the sample application or resources, remove the corresponding deployment and all resources.
