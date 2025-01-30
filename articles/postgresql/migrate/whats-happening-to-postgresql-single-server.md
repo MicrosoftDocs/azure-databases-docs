@@ -72,7 +72,6 @@ You can also use Automigration to migrate to Flexible server by nominating the S
 
 - Single Servers using the following features will **NOT** be automatically migrated and will be deleted in a phased manner, resulting in data loss:
   - **Customer Managed Keys(CMK)**
-  - **Private Endpoint**
   - **Deny Public Access** set to **Yes** 
 
 To avoid service disruptions, please plan your migration as soon as possible.
