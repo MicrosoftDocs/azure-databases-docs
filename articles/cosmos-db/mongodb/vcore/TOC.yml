@@ -89,7 +89,7 @@
 - name: How to
   items:
     - name: Visual Studio Code extension
-      href: ../visual-studio-code-extension.md?pivots=api-mongodb&tabs=CBDMongovCore
+      href: ../../visual-studio-code-extension.md?pivots=api-mongodb&tabs=CBDMongovCore
     - name: Use community tools
       items:
         - name: Connect using Studio 3T
