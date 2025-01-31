@@ -11,6 +11,7 @@ ms.devlang: spark-scala
 ---
 
 # Access Azure Cosmos DB for Apache Cassandra data from Azure Databricks
+
 [!INCLUDE[Cassandra](../includes/appliesto-cassandra.md)]
 
 This article details how to work with Azure Cosmos DB for Apache Cassandra from Spark on [Azure Databricks](/azure/databricks/scenarios/what-is-azure-databricks).
@@ -21,7 +22,7 @@ This article details how to work with Azure Cosmos DB for Apache Cassandra from 
 
 * [Review the basics of connecting to Azure Cosmos DB for Apache Cassandra](connect-spark-configuration.md)
 
-* [Provision an Azure Databricks cluster](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal)
+* [Provision an Azure Databricks workspace](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal)
 
 * [Review the code samples for working with API for Cassandra](connect-spark-configuration.md#next-steps)
 
