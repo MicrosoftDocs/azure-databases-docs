@@ -29,10 +29,10 @@ If your server was deployed with **Networking with public access (allowed IP add
 - [Disable public access](how-to-networking-servers-deployed-public-access-disable-public-access.md).
 - [Add firewall rules](how-to-networking-servers-deployed-public-access-add-firewall-rules.md).
 - [Delete firewall rules](how-to-networking-servers-deployed-public-access-delete-firewall-rules.md).
-- [Add private endpoint connections](how-to-networking-servers-deployed-public-access-add-private-endpoint-connections.md).
-- [Delete private endpoint connections](how-to-networking-servers-deployed-public-access-delete-private-endpoint-connections.md).
-- [Approve private endpoint connections](how-to-networking-servers-deployed-public-access-approve-private-endpoint-connections.md).
-- [Reject private endpoint connections](how-to-networking-servers-deployed-public-access-reject-private-endpoint-connections.md).
+- [Add private endpoint connections](how-to-networking-servers-deployed-public-access-add-private-endpoint.md).
+- [Delete private endpoint connections](how-to-networking-servers-deployed-public-access-delete-private-endpoint.md).
+- [Approve private endpoint connections](how-to-networking-servers-deployed-public-access-approve-private-endpoint.md).
+- [Reject private endpoint connections](how-to-networking-servers-deployed-public-access-reject-private-endpoint.md).
 
 ## Private access (VNET Integration)
 

@@ -438,13 +438,13 @@
           - name: Delete firewall rules
             href: flexible-server/how-to-networking-servers-deployed-public-access-delete-firewall-rules.md
           - name: Add private endpoint connections
-            href: flexible-server/how-to-networking-servers-deployed-public-access-add-private-endpoint-connections.md
+            href: flexible-server/how-to-networking-servers-deployed-public-access-add-private-endpoint.md
           - name: Delete private endpoint connections
-            href: flexible-server/how-to-networking-servers-deployed-public-access-delete-private-endpoint-connections.md
+            href: flexible-server/how-to-networking-servers-deployed-public-access-delete-private-endpoint.md
           - name: Approve private endpoint connections
-            href: flexible-server/how-to-networking-servers-deployed-public-access-approve-private-endpoint-connections.md
+            href: flexible-server/how-to-networking-servers-deployed-public-access-approve-private-endpoint.md
           - name: Reject private endpoint connections
-            href: flexible-server/how-to-networking-servers-deployed-public-access-reject-private-endpoint-connections.md
+            href: flexible-server/how-to-networking-servers-deployed-public-access-reject-private-endpoint.md
         - name: Private access (VNET Integration)
           expanded: true
           items:

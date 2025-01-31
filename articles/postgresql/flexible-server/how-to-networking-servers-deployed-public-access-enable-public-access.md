@@ -42,31 +42,31 @@ Using the [Azure portal](https://portal.azure.com/):
 
 5. In the resource menu, select **Networking**.
 
-    :::image type="content" source="./media/how-to-networking/configure-public-access-networking-disabled.png" alt-text="Screenshot showing the Networking page." lightbox="./media/how-to-networking/configure-public-access-networking-disabled.png":::
+    :::image type="content" source="./media/how-to-networking/public-access-networking-disabled.png" alt-text="Screenshot showing the Networking page." lightbox="./media/how-to-networking/public-access-networking-disabled.png":::
 
 6. Select the **Allow public access to this resource through the internet using a public IP address** checkbox.
 
-    :::image type="content" source="./media/how-to-networking/configure-public-access-enable-public-access.png" alt-text="Screenshot showing how to enable public access." lightbox="./media/how-to-networking/configure-public-access-enable-public-access.png":::
+    :::image type="content" source="./media/how-to-networking/public-access-enable-public-access.png" alt-text="Screenshot showing how to enable public access." lightbox="./media/how-to-networking/public-access-enable-public-access.png":::
 
 7. Select **Save**.
 
-    :::image type="content" source="./media/how-to-networking/configure-public-access-enable-public-access-save.png" alt-text="Screenshot showing the Save button." lightbox="./media/how-to-networking/configure-public-access-enable-public-access-save.png":::
+    :::image type="content" source="./media/how-to-networking/public-access-enable-public-access-save.png" alt-text="Screenshot showing the Save button." lightbox="./media/how-to-networking/public-access-enable-public-access-save.png":::
 
 8. A notification informs you that the changes are being applied.
 
-    :::image type="content" source="./media/how-to-networking/configure-public-access-enable-public-access-progressing-notification.png" alt-text="Screenshot showing a server whose network settings are being saved." lightbox="./media/how-to-networking/configure-public-access-enable-public-access-progressing-notification.png":::
+    :::image type="content" source="./media/how-to-networking/public-access-enable-public-access-progressing-notification.png" alt-text="Screenshot showing a server whose network settings are being saved." lightbox="./media/how-to-networking/public-access-enable-public-access-progressing-notification.png":::
 
 9. Also, the status of the server changes to **Updating**.
 
-    :::image type="content" source="./media/how-to-networking/configure-public-access-updating.png" alt-text="Screenshot showing that server status is Updating." lightbox="./media/how-to-networking/configure-public-access-updating.png":::
+    :::image type="content" source="./media/how-to-networking/public-access-updating.png" alt-text="Screenshot showing that server status is Updating." lightbox="./media/how-to-networking/public-access-updating.png":::
 
 10. When the process completes, a notification informs you that the changes were applied.
 
-    :::image type="content" source="./media/how-to-networking/configure-public-access-enable-public-access-succeeded-notification.png" alt-text="Screenshot showing a server whose network settings were successfully saved." lightbox="./media/how-to-networking/configure-public-access-enable-public-access-succeeded-notification.png":::
+    :::image type="content" source="./media/how-to-networking/public-access-enable-public-access-succeeded-notification.png" alt-text="Screenshot showing a server whose network settings were successfully saved." lightbox="./media/how-to-networking/public-access-enable-public-access-succeeded-notification.png":::
 
 11. Also, the status of the server changes to **Available**.
 
-    :::image type="content" source="./media/how-to-networking/configure-public-access-available.png" alt-text="Screenshot showing that server status is Available." lightbox="./media/how-to-networking/configure-public-access-available.png":::
+    :::image type="content" source="./media/how-to-networking/public-access-available.png" alt-text="Screenshot showing that server status is Available." lightbox="./media/how-to-networking/public-access-available.png":::
 
 ## [CLI](#tab/cli-enable-public-access)
 
@@ -99,7 +99,7 @@ az postgres flexible-server show --resource-group <resource_group> --name <serve
 - [Disable public access](how-to-networking-servers-deployed-public-access-disable-public-access.md).
 - [Add firewall rules](how-to-networking-servers-deployed-public-access-add-firewall-rules.md).
 - [Delete firewall rules](how-to-networking-servers-deployed-public-access-delete-firewall-rules.md).
-- [Add private endpoint connections](how-to-networking-servers-deployed-public-access-add-private-endpoint-connections.md).
-- [Delete private endpoint connections](how-to-networking-servers-deployed-public-access-delete-private-endpoint-connections.md).
-- [Approve private endpoint connections](how-to-networking-servers-deployed-public-access-approve-private-endpoint-connections.md).
-- [Reject private endpoint connections](how-to-networking-servers-deployed-public-access-reject-private-endpoint-connections.md).
+- [Add private endpoint connections](how-to-networking-servers-deployed-public-access-add-private-endpoint.md).
+- [Delete private endpoint connections](how-to-networking-servers-deployed-public-access-delete-private-endpoint.md).
+- [Approve private endpoint connections](how-to-networking-servers-deployed-public-access-approve-private-endpoint.md).
+- [Reject private endpoint connections](how-to-networking-servers-deployed-public-access-reject-private-endpoint.md).

@@ -25,7 +25,7 @@ In such organizations, network administrators create the cloud networking infras
 
 Therefore, network administrators wouldn't have permissions to approve and reject private endpoint connections on Azure Database for PostgreSQL flexible server. Likewise, database administrators wouldn't have permissions to deploy private endpoints, integrate them with private DNS zones, or link the private DNS zones to virtual networks.
 
-In this scenarios, after network administrators create a private endpoint, the database administrators are responsible for approving or rejecting the connections that are created from those private endpoints.
+In these scenarios, after network administrators create a private endpoint, the database administrators are responsible for approving or rejecting the connections that are created from those private endpoints.
 
 ## [Portal](#tab/portal-approve-private-endpoint-connections)
 
@@ -50,27 +50,27 @@ Using the [Azure portal](https://portal.azure.com/):
 
 5. In the resource menu, select **Networking**.
 
-    :::image type="content" source="./media/how-to-networking/configure-public-access-networking-disabled-pending-private-endpoint.png" alt-text="Screenshot showing the Networking page." lightbox="./media/how-to-networking/configure-public-access-networking-disabled-pending-private-endpoint.png":::
+    :::image type="content" source="./media/how-to-networking/public-access-networking-disabled-pending-endpoint.png" alt-text="Screenshot showing the Networking page." lightbox="./media/how-to-networking/public-access-networking-disabled-pending-endpoint.png":::
 
 6. Select the private endpoint connection whose state is **Pending**, and that you want to approve.
 
-    :::image type="content" source="./media/how-to-networking/configure-public-access-networking-disabled-pending-private-endpoint-select.png" alt-text="Screenshot showing how to begin approving an existing private endpoint connection with Pending state." lightbox="./media/how-to-networking/configure-public-access-networking-disabled-pending-private-endpoint-select.png":::
+    :::image type="content" source="./media/how-to-networking/public-access-networking-disabled-pending-endpoint-select.png" alt-text="Screenshot showing how to begin approving an existing private endpoint connection with Pending state." lightbox="./media/how-to-networking/public-access-networking-disabled-pending-endpoint-select.png":::
 
 7. Select **Approve** to trigger the approval of the private endpoint connection.
 
-    :::image type="content" source="./media/how-to-networking/configure-public-access-networking-disabled-pending-private-endpoint-approve.png" alt-text="Screenshot showing the Approve button to trigger the approval of an existing private endpoint connection." lightbox="./media/how-to-networking/configure-public-access-networking-disabled-pending-private-endpoint-approve.png":::
+    :::image type="content" source="./media/how-to-networking/public-access-networking-disabled-pending-endpoint-approve.png" alt-text="Screenshot showing the Approve button to trigger the approval of an existing private endpoint connection." lightbox="./media/how-to-networking/public-access-networking-disabled-pending-endpoint-approve.png":::
 
 8. If you consider it necessary, in the **Description** box of the **Approve** dialog, type the reason why you're deciding to approve this private endpoint connection.
 
-    :::image type="content" source="./media/how-to-networking/configure-public-access-networking-disabled-pending-private-endpoint-approve-confirm.png" alt-text="Screenshot showing the Approve dialog to provide reason why the request is approved." lightbox="./media/how-to-networking/configure-public-access-networking-disabled-pending-private-endpoint-approve-confirm.png":::
+    :::image type="content" source="./media/how-to-networking/public-access-networking-disabled-pending-endpoint-approve-confirm.png" alt-text="Screenshot showing the Approve dialog to provide reason why the request is approved." lightbox="./media/how-to-networking/public-access-networking-disabled-pending-endpoint-approve-confirm.png":::
 
 9. A notification informs you that the private endpoint connection is being approved.
 
-    :::image type="content" source="./media/how-to-networking/configure-public-access-networking-disabled-pending-private-endpoint-approving-notification.png" alt-text="Screenshot showing the notification informing that it's approving the private endpoint connection." lightbox="./media/how-to-networking/configure-public-access-networking-disabled-pending-private-endpoint-approving-notification.png":::
+    :::image type="content" source="./media/how-to-networking/public-access-networking-disabled-pending-endpoint-approving-notification.png" alt-text="Screenshot showing the notification informing that it's approving the private endpoint connection." lightbox="./media/how-to-networking/public-access-networking-disabled-pending-endpoint-approving-notification.png":::
 
 8. When the operation completes, a notification informs you that the private endpoint connection was successfully approved.
 
-    :::image type="content" source="./media/how-to-networking/configure-public-access-networking-disabled-pending-private-endpoint-approved-notification.png" alt-text="Screenshot showing the notification informing that private endpoint connection is approved." lightbox="./media/how-to-networking/configure-public-access-networking-disabled-pending-private-endpoint-approved-notification.png":::
+    :::image type="content" source="./media/how-to-networking/public-access-networking-disabled-pending-endpoint-approved-notification.png" alt-text="Screenshot showing the notification informing that private endpoint connection is approved." lightbox="./media/how-to-networking/public-access-networking-disabled-pending-endpoint-approved-notification.png":::
 
 ## [CLI](#tab/cli-approve-private-endpoint-connection)
 
@@ -89,6 +89,6 @@ az network private-endpoint-connection approve --description <description> --res
 - [Disable public access](how-to-networking-servers-deployed-public-access-disable-public-access.md).
 - [Add firewall rules](how-to-networking-servers-deployed-public-access-add-firewall-rules.md).
 - [Delete firewall rules](how-to-networking-servers-deployed-public-access-delete-firewall-rules.md).
-- [Delete private endpoint connections](how-to-networking-servers-deployed-public-access-delete-private-endpoint-connections.md).
-- [Approve private endpoint connections](how-to-networking-servers-deployed-public-access-approve-private-endpoint-connections.md).
-- [Reject private endpoint connections](how-to-networking-servers-deployed-public-access-reject-private-endpoint-connections.md).
+- [Delete private endpoint connections](how-to-networking-servers-deployed-public-access-delete-private-endpoint.md).
+- [Approve private endpoint connections](how-to-networking-servers-deployed-public-access-approve-private-endpoint.md).
+- [Reject private endpoint connections](how-to-networking-servers-deployed-public-access-reject-private-endpoint.md).

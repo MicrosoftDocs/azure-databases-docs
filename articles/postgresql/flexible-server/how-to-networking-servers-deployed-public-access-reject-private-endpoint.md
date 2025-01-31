@@ -25,7 +25,7 @@ In such organizations, network administrators create the cloud networking infras
 
 Therefore, network administrators wouldn't have permissions to approve and reject private endpoint connections on Azure Database for PostgreSQL flexible server. Likewise, database administrators wouldn't have permissions to deploy private endpoints, integrate them with private DNS zones, or link the private DNS zones to virtual networks.
 
-In this scenarios, after network administrators create a private endpoint, the database administrators are responsible for approving or rejecting the connections that are created from those private endpoints.
+In these scenarios, after network administrators create a private endpoint, the database administrators are responsible for approving or rejecting the connections that are created from those private endpoints.
 
 ## [Portal](#tab/portal-reject-private-endpoint-connections)
 
@@ -50,27 +50,27 @@ Using the [Azure portal](https://portal.azure.com/):
 
 5. In the resource menu, select **Networking**.
 
-    :::image type="content" source="./media/how-to-networking/configure-public-access-networking-disabled-external-approved-private-endpoint.png" alt-text="Screenshot showing the Networking page." lightbox="./media/how-to-networking/configure-public-access-networking-disabled-external-approved-private-endpoint.png":::
+    :::image type="content" source="./media/how-to-networking/public-access-networking-disabled-external-approved-endpoint.png" alt-text="Screenshot showing the Networking page." lightbox="./media/how-to-networking/public-access-networking-disabled-external-approved-endpoint.png":::
 
 6. Select the private endpoint connection whose state is **Pending** or **Approved**, and that you want to reject.
 
-    :::image type="content" source="./media/how-to-networking/configure-public-access-networking-disabled-external-approved-private-endpoint-select.png" alt-text="Screenshot showing how to begin rejecting an existing private endpoint connection with Approved state." lightbox="./media/how-to-networking/configure-public-access-networking-disabled-external-approved-private-endpoint-select.png":::
+    :::image type="content" source="./media/how-to-networking/public-access-networking-disabled-external-approved-endpoint-select.png" alt-text="Screenshot showing how to begin rejecting an existing private endpoint connection with Approved state." lightbox="./media/how-to-networking/public-access-networking-disabled-external-approved-endpoint-select.png":::
 
 7. Select **Reject** to trigger the rejection of the private endpoint connection.
 
-    :::image type="content" source="./media/how-to-networking/configure-public-access-networking-disabled-external-approved-private-endpoint-reject.png" alt-text="Screenshot showing the Reject button to trigger the rejection of an existing private endpoint connection." lightbox="./media/how-to-networking/configure-public-access-networking-disabled-external-approved-private-endpoint-reject.png":::
+    :::image type="content" source="./media/how-to-networking/public-access-networking-disabled-external-approved-endpoint-reject.png" alt-text="Screenshot showing the Reject button to trigger the rejection of an existing private endpoint connection." lightbox="./media/how-to-networking/public-access-networking-disabled-external-approved-endpoint-reject.png":::
 
 8. If you consider it necessary, in the **Description** box of the **Reject** dialog, type the reason why you're deciding to reject this private endpoint connection.
 
-    :::image type="content" source="./media/how-to-networking/configure-public-access-networking-disabled-external-approved-private-endpoint-reject-confirm.png" alt-text="Screenshot showing the Reject dialog to provide reason why the request is rejected." lightbox="./media/how-to-networking/configure-public-access-networking-disabled-external-approved-private-endpoint-reject-confirm.png":::
+    :::image type="content" source="./media/how-to-networking/public-access-networking-disabled-external-approved-endpoint-reject-confirm.png" alt-text="Screenshot showing the Reject dialog to provide reason why the request is rejected." lightbox="./media/how-to-networking/public-access-networking-disabled-external-approved-endpoint-reject-confirm.png":::
 
 9. A notification informs you that the private endpoint connection is being rejected.
 
-    :::image type="content" source="./media/how-to-networking/configure-public-access-networking-disabled-pending-private-endpoint-rejecting-notification.png" alt-text="Screenshot showing the notification informing that its rejecting the private endpoint connection." lightbox="./media/how-to-networking/configure-public-access-networking-disabled-pending-private-endpoint-rejecting-notification.png":::
+    :::image type="content" source="./media/how-to-networking/public-access-networking-disabled-pending-endpoint-rejecting-notification.png" alt-text="Screenshot showing the notification informing that its rejecting the private endpoint connection." lightbox="./media/how-to-networking/public-access-networking-disabled-pending-endpoint-rejecting-notification.png":::
 
 8. When the operation completes, a notification informs you that the private endpoint connection was successfully rejected.
 
-    :::image type="content" source="./media/how-to-networking/configure-public-access-networking-disabled-pending-private-endpoint-rejected-notification.png" alt-text="Screenshot showing the notification informing that private endpoint connection is rejected." lightbox="./media/how-to-networking/configure-public-access-networking-disabled-pending-private-endpoint-rejected-notification.png":::
+    :::image type="content" source="./media/how-to-networking/public-access-networking-disabled-pending-endpoint-rejected-notification.png" alt-text="Screenshot showing the notification informing that private endpoint connection is rejected." lightbox="./media/how-to-networking/public-access-networking-disabled-pending-endpoint-rejected-notification.png":::
 
 ## [CLI](#tab/cli-rejected-private-endpoint-connection)
 
@@ -89,6 +89,6 @@ az network private-endpoint-connection reject --description <description> --reso
 - [Disable public access](how-to-networking-servers-deployed-public-access-disable-public-access.md).
 - [Add firewall rules](how-to-networking-servers-deployed-public-access-add-firewall-rules.md).
 - [Delete firewall rules](how-to-networking-servers-deployed-public-access-delete-firewall-rules.md).
-- [Add private endpoint connections](how-to-networking-servers-deployed-public-access-add-private-endpoint-connections.md).
-- [Delete private endpoint connections](how-to-networking-servers-deployed-public-access-delete-private-endpoint-connections.md).
-- [Approve private endpoint connections](how-to-networking-servers-deployed-public-access-approve-private-endpoint-connections.md).
+- [Add private endpoint connections](how-to-networking-servers-deployed-public-access-add-private-endpoint.md).
+- [Delete private endpoint connections](how-to-networking-servers-deployed-public-access-delete-private-endpoint.md).
+- [Approve private endpoint connections](how-to-networking-servers-deployed-public-access-approve-private-endpoint.md).

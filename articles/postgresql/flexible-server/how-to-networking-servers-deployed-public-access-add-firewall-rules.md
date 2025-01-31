@@ -38,7 +38,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 5. In the resource menu, select **Networking**.
 
-    :::image type="content" source="./media/how-to-networking/configure-public-access-networking-enabled.png" alt-text="Screenshot showing the Networking page." lightbox="./media/how-to-networking/configure-public-access-networking-enabled.png":::
+    :::image type="content" source="./media/how-to-networking/public-access-networking-enabled.png" alt-text="Screenshot showing the Networking page." lightbox="./media/how-to-networking/public-access-networking-enabled.png":::
 
 6. If you want to create a firewall rule to allow connections originating from the public IP address of the client machine that you're using to connect to navigate the portal, select **Add current client IP address (###.###.###.###)**.
 
@@ -69,7 +69,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 12. Also, the status of the server changes to **Updating**.
 
-    :::image type="content" source="./media/how-to-networking/configure-public-access-updating.png" alt-text="Screenshot showing that server status is Updating." lightbox="./media/how-to-networking/configure-public-access-updating.png":::
+    :::image type="content" source="./media/how-to-networking/public-access-updating.png" alt-text="Screenshot showing that server status is Updating." lightbox="./media/how-to-networking/public-access-updating.png":::
 
 13. When the process completes, a notification informs you that the changes were applied.
 
@@ -77,7 +77,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 14. Also, the status of the server changes to **Available**.
 
-    :::image type="content" source="./media/how-to-networking/configure-public-access-available.png" alt-text="Screenshot showing that server status is Available." lightbox="./media/how-to-networking/configure-public-access-available.png":::
+    :::image type="content" source="./media/how-to-networking/public-access-available.png" alt-text="Screenshot showing that server status is Available." lightbox="./media/how-to-networking/public-access-available.png":::
 
 ## [CLI](#tab/cli-add-firewall-rules)
 
@@ -139,7 +139,7 @@ To allow public access, from any Azure service within Azure, to your server, you
 - [Enable public access](how-to-networking-servers-deployed-public-access-enable-public-access.md).
 - [Disable public access](how-to-networking-servers-deployed-public-access-disable-public-access.md).
 - [Delete firewall rules](how-to-networking-servers-deployed-public-access-delete-firewall-rules.md).
-- [Add private endpoint connections](how-to-networking-servers-deployed-public-access-add-private-endpoint-connections.md).
-- [Delete private endpoint connections](how-to-networking-servers-deployed-public-access-delete-private-endpoint-connections.md).
-- [Approve private endpoint connections](how-to-networking-servers-deployed-public-access-approve-private-endpoint-connections.md).
-- [Reject private endpoint connections](how-to-networking-servers-deployed-public-access-reject-private-endpoint-connections.md).
+- [Add private endpoint connections](how-to-networking-servers-deployed-public-access-add-private-endpoint.md).
+- [Delete private endpoint connections](how-to-networking-servers-deployed-public-access-delete-private-endpoint.md).
+- [Approve private endpoint connections](how-to-networking-servers-deployed-public-access-approve-private-endpoint.md).
+- [Reject private endpoint connections](how-to-networking-servers-deployed-public-access-reject-private-endpoint.md).
