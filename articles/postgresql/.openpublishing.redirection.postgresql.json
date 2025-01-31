@@ -1986,6 +1986,36 @@
         "redirect_document_id": false
     },
     {
+        "source_path_from_root": "/articles/postgresql/flexible-server/how-to-manage-virtual-network-portal.md",
+        "redirect_url": "/azure/postgresql/flexible-server/how-to-networking",
+        "redirect_document_id": false
+    },
+    {
+        "source_path_from_root": "/articles/postgresql/flexible-server/how-to-manage-virtual-network-cli.md",
+        "redirect_url": "/azure/postgresql/flexible-server/how-to-networking",
+        "redirect_document_id": false
+    },
+    {
+        "source_path_from_root": "/articles/postgresql/flexible-server/how-to-manage-virtual-network-private-endpoint-portal.md",
+        "redirect_url": "/azure/postgresql/flexible-server/how-to-networking",
+        "redirect_document_id": false
+    },
+    {
+        "source_path_from_root": "/articles/postgresql/flexible-server/how-to-manage-virtual-network-private-endpoint-cli.md",
+        "redirect_url": "/azure/postgresql/flexible-server/how-to-networking",
+        "redirect_document_id": false
+    },
+    {
+        "source_path_from_root": "/articles/postgresql/flexible-server/how-to-manage-firewall-portal.md",
+        "redirect_url": "/azure/postgresql/flexible-server/how-to-networking",
+        "redirect_document_id": false
+    },
+    {
+        "source_path_from_root": "/articles/postgresql/flexible-server/how-to-manage-firewall-cli.md",
+        "redirect_url": "/azure/postgresql/flexible-server/how-to-networking",
+        "redirect_document_id": false
+    },
+    {
         "source_path_from_root": "/articles/postgresql/flexible-server/how-to-restore-to-different-subscription-or-resource-group.md",
         "redirect_url": "/azure/postgresql/flexible-server/how-to-restore-server",
         "redirect_document_id": false
@@ -2002,4 +2032,3 @@
     }
 ]
 }
-
