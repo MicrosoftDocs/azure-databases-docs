@@ -144,7 +144,7 @@ Use the following query to list the tables in a database and identify the tables
 > [!NOTE]  
 > The query doesn't take into consideration that autovacuum can be configured on a per-table basis using the "alter table" DDL command.
 
-### Backporting pg_signal_autovaccum_worker role from PostgreSQL 18 version
+### New Role - pg_signal_autovacuum_worker role in PostgreSQL version 15 and higher
 
 The autovacuum process in PostgreSQL can either be a normal autovacuum or wraparound protection around autovacuum. In the normal autovacuum process, it cancels itself after the deadlock_timeout (default value is 1 second) when a user is executing DDL on a table. Sometimes a user might have to wait until the deadlock_timeout interval period before they are able to execute reads/writes on the table requested by different connection requests. In the wraparound protection around autovacuum, these processes do not get canceled until they are completed, requiring users to wait until the autovacuum finishes. Consequently, both types of autovacuum can cause significant delays or latency when a user is trying to execute read or write operations.
 
