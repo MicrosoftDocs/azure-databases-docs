@@ -46,14 +46,14 @@ Using the [Azure portal](https://portal.azure.com/):
 
 6. If you have the required permissions to deploy a private endpoint, you can create it by selecting **Add private endpoint**.
 
-    :::image type="content" source="./media/how-to-networking/add-endpoint-connection.png" alt-text="Screenshot showing how to begin adding a new private endpoint." lightbox="./media/how-to-networking/add-endpoint-connection.png":::
+    :::image type="content" source="./media/how-to-networking/add-private-endpoint-connection.png" alt-text="Screenshot showing how to begin adding a new private endpoint." lightbox="./media/how-to-networking/add-private-endpoint-connection.png":::
 
 > [!NOTE]
 > To learn about the necessary permissions to deploy a private endpoint, see [Azure RBAC permissions for Azure Private Link](/azure/private-link/rbac-permissions).
 
 7. In the **Basics** page, fill all the details required. Then, select **Next: Resource**.
 
-    :::image type="content" source="./media/how-to-networking/create-endpoint-basics.png" alt-text="Screenshot showing the Basics page of Create a private endpoint." lightbox="./media/how-to-networking/create-endpoint-basics.png":::
+    :::image type="content" source="./media/how-to-networking/create-private-endpoint-basics.png" alt-text="Screenshot showing the Basics page of Create a private endpoint." lightbox="./media/how-to-networking/create-private-endpoint-basics.png":::
 
 8. Use the following table to understand the meaning of the different fields available in the **Basics** page, and as guidance to fill the page:
 
@@ -68,7 +68,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 9. In the **Resource** page, fill all the details required. Then, select **Next: Virtual Network**.
 
-    :::image type="content" source="./media/how-to-networking/create-endpoint-resource.png" alt-text="Screenshot showing the Resource page of Create a private endpoint." lightbox="./media/how-to-networking/create-endpoint-resource.png":::
+    :::image type="content" source="./media/how-to-networking/create-private-endpoint-resource.png" alt-text="Screenshot showing the Resource page of Create a private endpoint." lightbox="./media/how-to-networking/create-private-endpoint-resource.png":::
 
 10. Use the following table to understand the meaning of the different fields available in the **Resource** page, and as guidance to fill the page:
 
@@ -80,7 +80,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 11. In the **Virtual Network** page, fill all the details required. Then, select **Next: DNS**.
 
-    :::image type="content" source="./media/how-to-networking/create-endpoint-virtual-network.png" alt-text="Screenshot showing the Virtual Network page of Create a private endpoint." lightbox="./media/how-to-networking/create-endpoint-virtual-network.png":::
+    :::image type="content" source="./media/how-to-networking/create-private-endpoint-virtual-network.png" alt-text="Screenshot showing the Virtual Network page of Create a private endpoint." lightbox="./media/how-to-networking/create-private-endpoint-virtual-network.png":::
 
 12. Use the following table to understand the meaning of the different fields available in the **Virtual Network** page, and as guidance to fill the page:
 
@@ -94,7 +94,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 13. In the **DNS** page, fill all the details required. Then, select **Next: Tags**.
 
-    :::image type="content" source="./media/how-to-networking/create-endpoint-dns.png" alt-text="Screenshot showing the DNS page of Create a private endpoint." lightbox="./media/how-to-networking/create-endpoint-dns.png":::
+    :::image type="content" source="./media/how-to-networking/create-private-endpoint-dns.png" alt-text="Screenshot showing the DNS page of Create a private endpoint." lightbox="./media/how-to-networking/create-private-endpoint-dns.png":::
 
 14. Use the following table to understand the meaning of the different fields available in the **DNS** page, and as guidance to fill the page:
 
@@ -108,7 +108,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 15. In the **Tags** page, fill all the details required. Then, select **Next: Review + create**.
 
-    :::image type="content" source="./media/how-to-networking/create-endpoint-tags.png" alt-text="Screenshot showing the Tags page of Create a private endpoint." lightbox="./media/how-to-networking/create-endpoint-tags.png":::
+    :::image type="content" source="./media/how-to-networking/create-private-endpoint-tags.png" alt-text="Screenshot showing the Tags page of Create a private endpoint." lightbox="./media/how-to-networking/create-private-endpoint-tags.png":::
 
 16. Use the following table to understand the meaning of the different fields available in the **Tags** page, and as guidance to fill the page:
 
@@ -120,11 +120,11 @@ Using the [Azure portal](https://portal.azure.com/):
 
 17. In the **Review + create** page, make sure that everything is configured as you wanted to. Then, select **Create**.
 
-    :::image type="content" source="./media/how-to-networking/create-endpoint-review-create.png" alt-text="Screenshot showing the Review + create page of Create a private endpoint." lightbox="./media/how-to-networking/create-endpoint-review-create.png":::
+    :::image type="content" source="./media/how-to-networking/create-private-endpoint-review-create.png" alt-text="Screenshot showing the Review + create page of Create a private endpoint." lightbox="./media/how-to-networking/create-private-endpoint-review-create.png":::
 
 18. A deployment is initiated, and you see a notification when the deployment completes. 
 
-    :::image type="content" source="./media/how-to-networking/create-endpoint-deployment-succeeded.png" alt-text="Screenshot showing the successful deployment of the private endpoint." lightbox="./media/how-to-networking/create-endpoint-deployment-succeeded.png":::
+    :::image type="content" source="./media/how-to-networking/create-private-endpoint-deployment-succeeded.png" alt-text="Screenshot showing the successful deployment of the private endpoint." lightbox="./media/how-to-networking/create-private-endpoint-deployment-succeeded.png":::
 
 ## [CLI](#tab/cli-add-private-endpoint-connection)
 

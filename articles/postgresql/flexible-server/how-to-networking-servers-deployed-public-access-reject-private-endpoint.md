@@ -62,7 +62,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 8. If you consider it necessary, in the **Description** box of the **Reject** dialog, type the reason why you're deciding to reject this private endpoint connection.
 
-    :::image type="content" source="./media/how-to-networking/public-access-networking-disabled-external-approved-endpoint-reject-confirm.png" alt-text="Screenshot showing the Reject dialog to provide reason why the request is rejected." lightbox="./media/how-to-networking/public-access-networking-disabled-external-approved-endpoint-reject-confirm.png":::
+    :::image type="content" source="./media/how-to-networking/public-access-networking-disabled-approved-endpoint-reject-confirm.png" alt-text="Screenshot showing the Reject dialog to provide reason why the request is rejected." lightbox="./media/how-to-networking/public-access-networking-disabled-approved-endpoint-reject-confirm.png":::
 
 9. A notification informs you that the private endpoint connection is being rejected.
 
