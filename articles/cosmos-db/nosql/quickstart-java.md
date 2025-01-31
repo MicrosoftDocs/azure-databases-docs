@@ -227,6 +227,17 @@ for (Item item : items) {
 }
 ```
 
+### Explore your data
+
+Use the Visual Studio Code extension for Azure Cosmos DB to explore your NoSQL data. You can perform core database operations including, but not limited to:
+
+- Performing queries using a scrapbook or the query editor
+- Modifying, updating, creating, and deleting items
+- Importing bulk data from other sources
+- Managing databases and containers
+
+For more information, see [How-to use Visual Studio Code extension to explore Azure Cosmos DB for NoSQL data](../visual-studio-code-extension.md?pivots=api-nosql).
+
 ## Clean up resources
 
 When you no longer need the sample application or resources, remove the corresponding deployment and all resources.

@@ -49,7 +49,7 @@ The following table lists high-level comparisons of Microsoft Entra ID features 
 
 The following high-level diagram summarizes how authentication works when you use Microsoft Entra authentication with Azure Database for PostgreSQL flexible server. The arrows indicate communication pathways.
 
-![authentication flow][1]
+ :::image type="content" source="media/concepts-azure-ad-authentication/authentication-flow.png" alt-text="Diagram of authentication flow between Microsoft Entra ID, the user's computer, and the server.":::
 
 For the steps to configure Microsoft Entra ID with Azure Database for PostgreSQL flexible server, see [Configure and sign in with Microsoft Entra ID for Azure Database for PostgreSQL - Flexible Server](how-to-configure-sign-in-azure-ad-authentication.md).
 
@@ -66,7 +66,7 @@ The Microsoft Entra administrator can be a Microsoft Entra user, Microsoft Entra
 
 You can configure multiple Microsoft Entra administrators concurrently. You have the option to deactivate password authentication to an Azure Database for PostgreSQL flexible server instance for enhanced auditing and compliance requirements.
 
-![admin structure][2]
+ :::image type="content" source="media/concepts-azure-ad-authentication/admin-structure.png" alt-text="Diagram of admin structure of Entra users compared to local users on Flexible server.":::
 
 > [!NOTE]  
 > A service principal or managed identity can act as fully functional Microsoft Entra administrator in Azure Database for PostgreSQL flexible server. This was a limitation in Azure Database for PostgreSQL single server.

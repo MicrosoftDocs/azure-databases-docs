@@ -101,14 +101,24 @@ When migrating across major PostgreSQL versions, consider the following key fact
 
 ## Post-migration steps
 
-Here's the info you need to know post automigration:
+Here’s the information you need regarding the post-automigration steps.
 - If automigration involves migrating across major PostgreSQL versions, thoroughly test your application to identify the impact of breaking changes and parameter adjustments. Make the necessary changes to ensure compatibility and optimal performance.
 
+- Any Terraform/CLI scripts you host to manage your Single Server instance should be updated with Flexible Server references.
+
 - The server parameters in Flexible server are tuned to the community standards. If you want to retain the same server parameter values as your Single server, you can log in via PowerShell and run the script [here](https://github.com/hariramt/auto-migration/tree/main) to copy the parameter values.
+
+- Access Control (IAM) settings for your flexible server will be inherited from the Subscription settings. If you have provided any role assignments specific to the single server, then you must create these role assignments on your flexible server.
+
+- Copy monitoring page settings (Alerts, Metrics, and Diagnostic settings) to Flexible server.
 
 - To enable [query perf insights](../flexible-server/concepts-query-performance-insight.md), you need to enable query store on the Flexible server which isn't enabled by default.
 
 - If [High Availability](/azure/reliability/reliability-postgresql-flexible-server) is needed, you can enable it with zero downtime.
+
+- Please verify that your flexible server SKU matches the one mentioned in the Service Health automigration notification. If it's different, [revert it to the SKU specified](../flexible-server/how-to-scale-compute.md) in the notification. This is crucial to ensure accurate billing.
+
+- The existing connection strings of your Single Server will now point to the Flexible Server. To access your Single Server, a new set of connection strings has been generated. You can retrieve them from the Service Health notification sent for the automigration of your Single Server.
 
 ### Handling VNet rules in Flexible server
 
@@ -157,7 +167,7 @@ To determine if your Single Server is selected for automigration, follow these s
 
 **Q. How can I defer the scheduled migration of my Single server?​**
 
-**A.** You can review the migration schedule by navigating to the Overview page of your Single Server instance. If you wish to defer the migration, you can defer by a month at the most by navigating to the Overview page of your single server instance on the Azure portal. You can reschedule the migration by selecting another migration window within a month. The migration details will be locked seven days before the scheduled migration window after which you're unable to reschedule. This automigration can be deferred monthly until 30 March 2025.
+**A.** You can review the migration schedule by navigating to the Overview page of your Single Server instance. If you wish to defer the migration, you can defer by a month at the most by navigating to the Overview page of your single server instance on the Azure portal. You can reschedule the migration by selecting another migration window within a month. The migration details will be locked seven days before the scheduled migration window after which you're unable to reschedule. This automigration can be deferred monthly until 28 March, 2025.
 
 **Q. How can I opt out of a scheduled automigration of my Single server?​**
 

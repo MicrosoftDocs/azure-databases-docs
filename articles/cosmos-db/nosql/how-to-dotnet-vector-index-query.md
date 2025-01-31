@@ -60,6 +60,8 @@ Vector search for Azure Cosmos DB for NoSQL requires enabling the feature by com
 
 ## Understanding the steps involved in vector search
 
+The following steps assume that you know how to [setup a Cosmos DB NoSQL account and create a database](quickstart-portal.md). The vector search feature is currently not supported on the existing containers, so you need to create a new container and specify the container-level vector embedding policy, and the vector indexing policy at the time of container creation.
+
 Let’s take an example of creating a database for an internet-based bookstore and you're storing Title, Author, ISBN, and Description for each book. We also define two properties to contain vector embeddings. The first is the “contentVector” property, which contains [text embeddings](/azure/ai-services/openai/concepts/models#embeddings ) generated from the text content of the book (for example, concatenating the “title” “author” “isbn” and “description” properties before creating the embedding). The second is “coverImageVector”, which is generated from [images of the book’s cover](/azure/ai-services/computer-vision/concept-image-retrieval).
 
 1. Create and store vector embeddings for the fields on which you want to perform vector search.
