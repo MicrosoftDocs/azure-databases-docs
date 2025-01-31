@@ -10,6 +10,7 @@ ms.author: thvankra
 ---
 
 # Migrate data from Cassandra to an Azure Cosmos DB for Apache Cassandra account by using Azure Databricks
+
 [!INCLUDE[Cassandra](../includes/appliesto-cassandra.md)]
 
 API for Cassandra in Azure Cosmos DB has become a great choice for enterprise workloads running on Apache Cassandra for several reasons:
@@ -34,22 +35,20 @@ There are many ways to migrate database workloads from one platform to another. 
 
 * [Use cqlsh for validation](support.md#cql-shell).
 
-## Provision an Azure Databricks cluster
+## Provision an Azure Databricks workspace
 
-You can follow instructions to [provision an Azure Databricks cluster](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal). We recommend selecting Databricks runtime version 7.5, which supports Spark 3.0.
-
-:::image type="content" source="~/reusable-content/ce-skilling/azure/media/cosmos-db/databricks-runtime.png" alt-text="Screenshot that shows finding the Databricks runtime version.":::
+You can follow instructions to [provision an Azure Databricks workspace](/azure/databricks/getting-started). You can use the default compute available or [create a new compute resource](/azure/databricks/compute/configure#create-a-new-all-purpose-compute-resource) to run your notebook. Be sure to select a Databricks runtime that supports at least Spark 3.0.
 
 ## Add dependencies
 
-You need to add the Apache Spark Cassandra Connector library to your cluster to connect to both native and Azure Cosmos DB Cassandra endpoints. In your cluster, select **Libraries** > **Install New** > **Maven**, and then add `com.datastax.spark:spark-cassandra-connector-assembly_2.12:3.0.0` in Maven coordinates.
+You need to add the Apache Spark Cassandra Connector library to your compute to connect to both native and Azure Cosmos DB Cassandra endpoints. In your compute, select **Libraries** > **Install New** > **Maven**, and then add `com.datastax.spark:spark-cassandra-connector-assembly_2.12:3.0.0` in Maven coordinates.
 
 :::image type="content" source="~/reusable-content/ce-skilling/azure/media/cosmos-db/databricks-search-packages.png" alt-text="Screenshot that shows searching for Maven packages in Databricks.":::
 
-Select **Install**, and then restart the cluster when installation is complete.
+Select **Install**, and then restart the compute when installation is complete.
 
 > [!NOTE]
-> Make sure that you restart the Databricks cluster after the Cassandra Connector library has been installed.
+> Make sure that you restart the Databricks compute after the Cassandra Connector library has been installed.
 
 > [!WARNING]
 > The samples shown in this article have been tested with Spark **version 3.0.1** and the corresponding Cassandra Spark Connector **com.datastax.spark:spark-cassandra-connector-assembly_2.12:3.0.0**. Later versions of Spark and/or the Cassandra connector may not function as expected.
