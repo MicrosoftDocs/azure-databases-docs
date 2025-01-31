@@ -12,7 +12,7 @@ ms.date: 01/29/2025
 
 # $dateFromParts
 
-The `$dateFromParts` operator constructs a date from individual components such as year, month, day, hour, minute, second, and millisecond. This can be particularly useful when dealing with data that stores date components separately.
+The `$dateFromParts` operator constructs a date from individual components such as year, month, day, hour, minute, second, and millisecond. This operator can be useful when dealing with data that stores date components separately.
 
 ## Syntax
 

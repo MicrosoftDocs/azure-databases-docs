@@ -10,7 +10,7 @@ ms.topic: reference
 ms.date: 01/29/2025
 ---
 # $dateDiff
-The `$dateDiff` operator calculates the difference between two dates in various units such as years, months, days, etc. It is useful for determining the duration between two timestamps in your dataset.
+The `$dateDiff` operator calculates the difference between two dates in various units such as years, months, days, etc. It's useful for determining the duration between two timestamps in your dataset.
 
 ## Syntax
 ```

@@ -1,8 +1,8 @@
-- name: $arrayElemAt
-  href: $arrayelemat.md
-- name: $arrayToObject
-  href: $arraytoobject.md
-- name: $concatArrays
-  href: $concatarrays.md
-- name: $filter
-  href: $filter.md
+- name: $dateAdd
+  href: $dateadd.md
+- name: $datediff
+  href: $datediff.md
+- name: $datefromparts
+  href: $datefromparts.md
+- name: $datefromstring
+  href: $datefromstring.md

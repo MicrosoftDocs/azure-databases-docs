@@ -12,7 +12,7 @@ ms.date: 01/29/2025
 
 # $dateAdd
 
-The `$dateAdd` operator adds a specified number of time units to a date. It is useful in scenarios where you need to calculate future dates based on a given date and a time interval.
+The `$dateAdd` operator adds a specified number of time units to a date. It's useful in scenarios where you need to calculate future dates based on a given date and a time interval.
 
 ## Syntax
 

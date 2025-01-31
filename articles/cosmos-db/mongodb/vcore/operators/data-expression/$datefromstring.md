@@ -11,7 +11,7 @@ ms.date: 01/29/2025
 ---
 
 # $dateFromString
-The `$dateFromString` operator is used to convert a date/time string to a date object in MongoDB. This can be particularly useful when dealing with string representations of dates that need to be manipulated or queried as date objects.
+The `$dateFromString` operator is used to convert a date/time string to a date object in MongoDB. This operation can be useful when dealing with string representations of dates that need to be manipulated or queried as date objects.
 
 ## Syntax
 ```plaintext
