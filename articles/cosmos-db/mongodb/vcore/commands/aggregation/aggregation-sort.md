@@ -2,7 +2,7 @@
 title: aggregation - $sort (Aggregation Pipeline Stage)
 titleSuffix: Azure Cosmos DB for MongoDB vCore
 description: The $sort stage in the aggregation pipeline is used to order the documents in the pipeline by a specified field or fields.
-author: gahl.levy
+author: gahl-levy
 ms.author: gahllevy
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
@@ -22,8 +22,8 @@ The syntax for the $sort stage is as follows:
 }
 ```
 
-<field>: The field by which to sort the documents.
-<sort order>: The order in which to sort the field. 1 for ascending order and -1 for descending order.
+field: The field by which to sort the documents.
+sort order: The order in which to sort the field. 1 for ascending order and -1 for descending order.
 
 ## Example(s)
 ### Example 1: Sorting by Total Sales in Descending Order
@@ -56,5 +56,5 @@ db.collection.aggregate([
 
 ## Related content
 
-- Review options for [migrating from MongoDB to Azure Cosmos DB for MongoDB (vCore)](migration-options.md)
-- Get started by [creating an account](../quickstart-portal.md).
+- Review options for [migrating from MongoDB to Azure Cosmos DB for MongoDB (vCore)](../../migration-options.md)
+- Get started by [creating an account](../../quickstart-portal.md).

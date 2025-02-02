@@ -22,7 +22,7 @@ The syntax for the $sortByCount stage is:
 }
 ```
 
-<expression>: This is the field or computed expression on which to group and count the documents.
+expression: This is the field or computed expression on which to group and count the documents.
 
 ## Example(s)
 Consider a collection named stores with documents structured as described earlier. To find out the most common promotional events based on their names, you can use the $sortByCount stage as follows:
@@ -49,5 +49,5 @@ This pipeline will: 1. Use $unwind to deconstruct the salesByCategory array fiel
 
 ## Related content
 
-- Review options for [migrating from MongoDB to Azure Cosmos DB for MongoDB (vCore)](migration-options.md)
-- Get started by [creating an account](../quickstart-portal.md).
+- Review options for [migrating from MongoDB to Azure Cosmos DB for MongoDB (vCore)](../../migration-options.md)
+- Get started by [creating an account](../../quickstart-portal.md).

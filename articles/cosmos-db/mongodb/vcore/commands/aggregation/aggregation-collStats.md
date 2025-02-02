@@ -2,7 +2,7 @@
 title: $collStats (as Aggregation Pipeline Stage)
 titleSuffix: Azure Cosmos DB for MongoDB vCore
 description: The $collStats stage in the aggregation pipeline is used to return statistics about a collection.
-author: gahl.levy
+author: gahl-levy
 ms.author: gahllevy
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
@@ -64,5 +64,5 @@ This example returns latency statistics with histograms and storage statistics s
 
 ## Related content
 
-- Review options for [migrating from MongoDB to Azure Cosmos DB for MongoDB (vCore)](migration-options.md)
-- Get started by [creating an account](../quickstart-portal.md).
+- Review options for [migrating from MongoDB to Azure Cosmos DB for MongoDB (vCore)](../../migration-options.md)
+- Get started by [creating an account](../../quickstart-portal.md).

@@ -2,7 +2,7 @@
 title: $count (as Aggregation Pipeline Stage)
 titleSuffix: Azure Cosmos DB for MongoDB vCore
 description: The $count stage in the aggregation pipeline is used to count the number of documents that pass through the pipeline.
-author: gahl.levy
+author: gahl-levy
 ms.author: gahllevy
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
@@ -22,7 +22,7 @@ The syntax for the $count stage is straightforward. It takes a single argument, 
 }
 ```
 
-<field>: The name of the field in the output document where the count will be stored.
+field: The name of the field in the output document where the count will be stored.
 
 ## Example(s)
 ### Example 1: Counting Total Documents
@@ -74,5 +74,5 @@ db.store.aggregate([
 
 ## Related content
 
-- Review options for [migrating from MongoDB to Azure Cosmos DB for MongoDB (vCore)](migration-options.md)
-- Get started by [creating an account](../quickstart-portal.md).
+- Review options for [migrating from MongoDB to Azure Cosmos DB for MongoDB (vCore)](../../migration-options.md)
+- Get started by [creating an account](../../quickstart-portal.md).
