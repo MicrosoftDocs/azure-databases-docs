@@ -10,9 +10,9 @@ ms.topic: reference
 ms.date: 09/27/2024
 ---
 
-# $pow (as arithmetic expression operator) usage on Azure Cosmos DB for MongoDB vCore
+# $pow (as arithmetic expression operator) usage on Azure Cosmos DB for MongoDB (vCore)
 
-The `$pow` operator in MongoDB is used to raise a number to a specified exponent. This can be useful in various scenarios where mathematical computations are required within your documents. 
+The `$pow` operator is used to raise a number to a specified exponent. This can be useful in various scenarios where mathematical computations are required within your documents. 
 
 ## Syntax
 

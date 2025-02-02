@@ -12,7 +12,7 @@ ms.date: 09/27/2024
 
 # $subtract (as arithmetic expression operator)
 
-The `$subtract` operator in MongoDB is used to subtract two numbers and return the result. This operator is useful in various scenarios such as calculating differences between dates, times, or numerical values in a document.
+The `$subtract` operator is used to subtract two numbers and return the result. This operator is useful in various scenarios such as calculating differences between dates, times, or numerical values in a document.
 
 ## Syntax
 

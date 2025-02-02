@@ -12,7 +12,7 @@ ms.date: 09/27/2024
 
 # $multiply (Aggregation Expression)
 
-The `$multiply` operator in MongoDB calculates the product of numerical expressions and is supported in aggregation operations. It is a useful tool for deriving calculated fields or performing arithmetic within aggregation pipelines.
+The `$multiply` operator calculates the product of numerical expressions and is supported in aggregation operations. It is a useful tool for deriving calculated fields or performing arithmetic within aggregation pipelines.
 
 ## Syntax
 

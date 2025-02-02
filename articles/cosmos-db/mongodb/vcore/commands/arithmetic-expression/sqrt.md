@@ -12,7 +12,7 @@ ms.date: 09/27/2024
 
 # $sqrt
 
-The `$sqrt` operator in MongoDB is used to return the square root of a specified number. It is commonly used in aggregation pipelines to perform mathematical calculations on numeric fields within documents.
+The `$sqrt` operator is used to return the square root of a specified number. It is commonly used in aggregation pipelines to perform mathematical calculations on numeric fields within documents.
 
 ## Syntax
 

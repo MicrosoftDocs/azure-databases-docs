@@ -12,7 +12,7 @@ ms.date: 09/27/2024
 
 # $trunc
 
-The `$trunc` operator in MongoDB is used to truncate a number to a specified decimal place. This operator is particularly useful in scenarios where you need to limit the precision of numerical data, such as financial calculations, reporting, or data normalization.
+The `$trunc` operator is used to truncate a number to a specified decimal place. This operator is particularly useful in scenarios where you need to limit the precision of numerical data, such as financial calculations, reporting, or data normalization.
 
 ## Syntax
 
