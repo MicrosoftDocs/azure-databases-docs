@@ -1,10 +1,10 @@
 ---
-title: "Prerequisites using the migration service from AWS RDS PostgreSQL (online)"
+title: "Prerequisites Using the Migration Service From AWS RDS PostgreSQL (Online)"
 description: Providing the online prerequisites for the migration service in Azure Database for PostgreSQL.
 author: apduvuri
 ms.author: adityaduvuri
 ms.reviewer: maghan
-ms.date: 06/19/2024
+ms.date: 01/24/2025
 ms.service: azure-database-postgresql
 ms.topic: include
 ---
@@ -36,23 +36,24 @@ If the source PostgreSQL version is less than 9.5, upgrade it to 9.5 or higher b
 
 - Before migrating, Azure Database for PostgreSQL – Flexible server must be created.
 - SKU provisioned for Azure Database for PostgreSQL – Flexible server should match with the source.
-- To create a new Azure Database for PostgreSQL, visit [Create an Azure Database for PostgreSQL](../../../../flexible-server/quickstart-create-server-portal.md)
+- To create a new Azure Database for PostgreSQL, visit [Create an instance of Azure Database for PostgreSQL - Flexible Server](../../../../flexible-server/quickstart-create-server.md)
 
 ### Enable CDC as a source
 
 - `test_decoding` logical decoding plugin captures the changed records from the source.
 - To allow the migration user to access replication privileges, execute the following command:
+
 ```bash
 GRANT rds_replication TO <<username>>;
 ```
 - In the source, PostgreSQL instance, modify the following parameters by creating a new parameter group:
+
     - Set `rds.logical_replication = 1`
     - Set `max_replication_slots` to a value greater than one; the value should be greater than the number of databases selected for migration.
     - Set `max_wal_senders` to a value greater than one. It should be at least the same as `max_replication_slots`, plus the number of senders already used on your instance.
     - The `wal_sender_timeout` parameter ends inactive replication connections longer than the specified number of milliseconds. The default for an AWS RDS for PostgreSQL instance is `30000 milliseconds (30 seconds)`. Setting the value to 0 (zero) disables the timeout mechanism and is a valid setting for migration.
 
 - In the target Flexible Server, to prevent the Online migration from running out of storage to store the logs, ensure that you have sufficient tablespace space using a provisioned managed disk. To achieve this, disable the server parameter `azure.enable_temp_tablespaces_on_local_ssd` for the duration of the migration, and restore it to the original state after the migration.
-
 
 ### Configure network setup
 

@@ -22,7 +22,7 @@ Azure Database for PostgreSQL flexible server supports encrypted connections usi
 > By default, secured connectivity between the client and the server is enforced. If you want to disable the enforcement of TLS/SSL, allowing both encrypted and unencrypted client communications, you can change the server parameter *require_secure_transport* to *OFF*. You can also set TLS version by setting *ssl_max_protocol_version* server parameters.
 
 ## Applications that require certificate verification for TLS/SSL connectivity
-In some cases, applications require a local certificate file generated from a trusted Certificate Authority (CA) certificate file to connect securely. For more information on downloading root CA certificates you can **[visit this document](./concepts-networking-ssl-tls.md#configure-ssl-on-the-client)**.
+In some cases, applications require a local certificate file generated from a trusted Certificate Authority (CA) certificate file to connect securely. For more information on downloading root CA certificates you can **[visit this document](concepts-networking-ssl-tls.md#configure-ssl-on-the-client)**.
 **Detailed information on updating client applications certificate stores with new Root CA certificates has been documented in this [how-to document](../flexible-server/how-to-update-client-certificates-java.md)**. 
 
 > [!NOTE]
@@ -45,7 +45,8 @@ The following example shows how to connect to your server using the psql command
 
 Some application frameworks that use PostgreSQL for their database services do not enable TLS by default during installation. Your Azure Database for PostgreSQL flexible server instance enforces TLS connections but if the application is not configured for TLS, the application may fail to connect to your database server. Consult your application's documentation to learn how to enable TLS connections.
 
-## Next steps
-- [Create and manage Azure Database for PostgreSQL - Flexible Server virtual network using Azure CLI](./how-to-manage-virtual-network-cli.md).
-- Learn more about [networking in Azure Database for PostgreSQL - Flexible Server](./concepts-networking.md)
-- Understand more about [Azure Database for PostgreSQL - Flexible Server firewall rules](./concepts-networking.md#public-access-allowed-ip-addresses)
+## Related content
+
+- [Create and manage Azure Database for PostgreSQL - Flexible Server virtual network using Azure CLI](how-to-manage-virtual-network-cli.md).
+- Learn more about [networking in Azure Database for PostgreSQL - Flexible Server](concepts-networking-private.md).
+- [Azure Database for PostgreSQL - Flexible Server firewall rules](concepts-networking-public.md#firewall-rules).

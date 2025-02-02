@@ -98,6 +98,8 @@ The following options are available for configuring Query Store parameters:
 
 (*) Static server parameter which requires a server restart for a change in its value to take effect. 
 
+> [!NOTE]  
+> If you change the value for `pg_qs.max_query_text_length` parameter, the text of all queries that were captured before you make the change continue to use the same query_id and sql_query_text. It might give the impression that the new value doesn't take effect but, for queries that weren't recorded in query store before, you will see that the query text uses the newly configured maximum length. This is by design, and is explained at [Views and functions](#views-and-functions). If you execute [query_store.qs_reset](#query_storeqs_reset), it removes all the information recorded by query store until now, including the text that was captured for each query id, and if any of those queries is executed again, the newly configured maximum length is applied to the text being captured.
 
 The following options apply specifically to wait statistics:
 
@@ -196,7 +198,7 @@ This view returns all the data that is persisted in the supporting tables of que
 | `user_id` | oid | pg_authid.oid | OID of user who executed the statement. |
 | `db_id` | oid | pg_database.oid | OID of database in which the statement was executed. |
 | `query_id` | bigint | | Internal hash code, computed from the statement's parse tree. |
-| `query_sql_text` | varchar(10000) | | Text of a representative statement. Different queries with the same structure are clustered together; this text is the text for the first of the queries in the cluster. The default value for the maximum query text length is 6000, and can be modified using query store parameter `pg_qs.max_query_text_length`. If the text of the query exceeds this maximum value, it's truncated to the first `pg_qs.max_query_text_length` characters. |
+| `query_sql_text` | varchar(10000) | | Text of a representative statement. Different queries with the same structure are clustered together; this text is the text for the first of the queries in the cluster. The default value for the maximum query text length is 6000, and can be modified using query store parameter `pg_qs.max_query_text_length`. If the text of the query exceeds this maximum value, it's truncated to the first `pg_qs.max_query_text_length` bytes. |
 | `plan_id` | bigint | | ID of the plan corresponding to this query. |
 | `start_time` | timestamp | | Queries are aggregated by time windows. Server parameter `pg_qs.interval_length_minutes` defines the time span of those windows (default is 15 minutes). This column corresponds to the start time of the window in which this entry was recorded. |
 | `end_time` | timestamp | | End time corresponding to the time window for this entry. |
@@ -285,6 +287,6 @@ Enabling query store on a server that has [read replicas](concepts-read-replicas
 
 ## Related content
 
-- [scenarios where query store can be especially helpful](concepts-query-store-scenarios.md)
-- [best practices for using query store](concepts-query-store-best-practices.md)
-- [visualizing data from query store via Query Performance Insight](./concepts-query-performance-insight.md)
+- [Usage scenarios for query store in Azure Database for PostgreSQL - Flexible Server](concepts-query-store-scenarios.md).
+- [Best practices for query store in Azure Database for PostgreSQL - Flexible Server](concepts-query-store-best-practices.md).
+- [Query Performance Insight in Azure Database for PostgreSQL - Flexible Server](concepts-query-performance-insight.md).

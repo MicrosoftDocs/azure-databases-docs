@@ -308,7 +308,7 @@ In versions of PostgreSQL <= 13, autovacuum doesn't run on tables with an inse
 
 Using the **pg_cron** extension, a cron job can be set up to schedule a periodic vacuum analyze on the table. The frequency of the cron job depends on the workload.
 
-For step-by-step guidance using pg_cron, review [Extensions](concepts-extensions.md).
+For guidance, see [special considerations about using pg_cron in Azure Database for PostgreSQL Flexible Server](../extensions/concepts-extensions-considerations.md#pg_cron).
 
 ##### Postgres 13 and higher versions
 
@@ -329,11 +329,11 @@ The recommendations are:
 
 - **Transaction Wrap around**: This scenario is one of the most serious issues a server can encounter. Once your server is in this state it might stop accepting any more transactions, causing the server to become read-only. Hence, a recommendation is triggered when we see the server crosses 1 billion transactions threshold.
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
+## Related content
 
-## Related contents
-
-- [high CPU utilization](how-to-high-cpu-utilization.md)
-- [high memory utilization](how-to-high-memory-utilization.md)
-- [identify slow queries](how-to-identify-slow-queries.md)
-- [server parameters](concepts-server-parameters.md)
+- [Full vacuum using pg_repack in Azure Database for PostgreSQL - Flexible Server](how-to-perform-fullvacuum-pg-repack.md).
+- [Troubleshoot high CPU utilization in Azure Database for PostgreSQL - Flexible Server](how-to-high-cpu-utilization.md).
+- [Troubleshoot high memory utilization in Azure Database for PostgreSQL - Flexible Server](how-to-high-memory-utilization.md).
+- [Troubleshoot high IOPS utilization in Azure Database for PostgreSQL - Flexible Server](how-to-high-io-utilization.md).
+- [Troubleshoot and identify slow-running queries in Azure Database for PostgreSQL - Flexible Server](how-to-identify-slow-queries.md).
+- [Server parameters in Azure Database for PostgreSQL - Flexible Server](concepts-server-parameters.md).

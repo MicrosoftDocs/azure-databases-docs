@@ -17,7 +17,7 @@ In this quickstart, you learn how to use the Azure SDK libraries in .NET to crea
 ## Prerequisites
 
 - [An Azure account with an active subscription](https://azure.microsoft.com/free/).
-- [Flexible Server instance](quickstart-create-server-portal.md).
+- [Create an instance of Azure Database for PostgreSQL - Flexible Server](quickstart-create-server.md).
 - [.NET framework](https://dotnet.microsoft.com/download) installed on your local machine.
 - [Azure CLI](/cli/azure/install-azure-cli) installed on your local machine.
 
@@ -77,7 +77,7 @@ To Learn more about the `.csproj` file, visit [Web Deployment](/aspnet/web-forms
 
 ## Create the project
 
-Create a new .NET project using the following process.
+Create a new .NET project by following the steps mentioned in this [link](/dotnet/core/tutorials/cli-templates-create-project-template)
 
 ### Create the Server
 
@@ -98,42 +98,42 @@ namespace CreatePostgreSqlFlexibleServer
     class Program
  {
         static async Task Main(string[] args)
- {
+   {
 
             TokenCredential credential = new DefaultAzureCredential();
             ArmClient armClient = new ArmClient(credential);
- // Replace with your subscription ID
+            // Replace with your subscription ID
             string subscriptionId = "subscription-id";
- // Replace with your resource group name
+            // Replace with your resource group name
             string resourceGroupName = "resource-group-name";
- // Replace with a unique server name
+           // Replace with a unique server name
             string serverName = "server-name";
- // Replace with your desired region
+           // Replace with your desired region
             string location = "region-name";
- // Create the resource identifier for the resource group
+          // Create the resource identifier for the resource group
             ResourceIdentifier resourceGroupId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
             ResourceGroupResource resourceGroup = await armClient.GetResourceGroupResource(resourceGroupId).GetAsync();
- // Prepare server data
+            // Prepare server data
             var serverData = new PostgreSqlFlexibleServerData(location)
- {
- AdministratorLogin = "admin-username",
- AdministratorLoginPassword = "admin-password",
- Version = "pgVersion",
- Storage = new PostgreSqlFlexibleServerStorage() { StorageSizeInGB = 128 },
- Sku = new PostgreSqlFlexibleServerSku("Standard_B1ms", PostgreSqlFlexibleServerSkuTier.Burstable),
- };
+            {
+              AdministratorLogin = "admin-username",
+              AdministratorLoginPassword = "admin-password",
+              Version = "pgVersion",
+              Storage = new PostgreSqlFlexibleServerStorage() { StorageSizeInGB = 128 },
+              Sku = new PostgreSqlFlexibleServerSku("Standard_B1ms", PostgreSqlFlexibleServerSkuTier.Burstable),
+           };
             try
- {
-                ArmOperation<PostgreSqlFlexibleServerResource> operation = await resourceGroup.GetPostgreSqlFlexibleServers().CreateOrUpdateAsync(Azure.WaitUntil.Completed, serverName, serverData);
-                PostgreSqlFlexibleServerResource serverResource = operation.Value;
- Console.WriteLine($"PostgreSQL Flexible Server '{serverResource.Data.Name}' created successfully.");
- }
+            {
+               ArmOperation<PostgreSqlFlexibleServerResource> operation = await resourceGroup.GetPostgreSqlFlexibleServers().CreateOrUpdateAsync(Azure.WaitUntil.Completed, serverName, serverData);
+              PostgreSqlFlexibleServerResource serverResource = operation.Value;
+              Console.WriteLine($"PostgreSQL Flexible Server '{serverResource.Data.Name}' created successfully.");
+           }
             catch (Exception ex)
- {
- Console.WriteLine($"An error occurred: {ex.Message}");
- }
- }
- }
+            {
+               Console.WriteLine($"An error occurred: {ex.Message}");
+            }
+   }
+  }
 }
 ```
 
@@ -198,40 +198,38 @@ namespace UpdateServerData
     class Program
  {
         static async Task Main(string[] args)
- {
+   {
 
             TokenCredential credential = new DefaultAzureCredential();
             ArmClient armClient = new ArmClient(credential);
- // Replace with your subscription ID
+            // Replace with your subscription ID
             string subscriptionId = "subscription-id";
- // Replace with your resource group name
+            // Replace with your resource group name
             string resourceGroupName = "resource-group-name";
- // Replace with a unique server name
+            // Replace with a unique server name
             string serverName = "server-name";
- // Replace with your desired region
+            // Replace with your desired region
             string location = "region-name";
- // Create the resource identifier for the resource group
             ResourceIdentifier resourceGroupId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
             ResourceGroupResource resourceGroup = await armClient.GetResourceGroupResource(resourceGroupId).GetAsync();
- // Prepare server data
+            // Prepare server data
             var serverData = new PostgreSqlFlexibleServerData(location)
- {
-
- Version = "16", // Updating version from a lower version to a higher version
-
- };
-            try
- {
-            ArmOperation<PostgreSqlFlexibleServerResource> operation = await resourceGroup.GetPostgreSqlFlexibleServers().CreateOrUpdateAsync(Azure.WaitUntil.Completed, serverName, serverData);
-            PostgreSqlFlexibleServerResource serverResource = operation.Value;
- Console.WriteLine($"PostgreSQL Flexible Server '{serverResource.Data.Name}' updated successfully.");
- }
-        catch (Exception ex)
- {
- Console.WriteLine($"An error occurred: {ex.Message}");
- }
- }
- }
+           {
+              // Updating version from a lower version to a higher version
+              Version = "16", 
+           };
+            try
+             {
+               ArmOperation<PostgreSqlFlexibleServerResource> operation = await resourceGroup.GetPostgreSqlFlexibleServers().CreateOrUpdateAsync(Azure.WaitUntil.Completed, serverName, serverData);
+               PostgreSqlFlexibleServerResource serverResource = operation.Value;
+               Console.WriteLine($"PostgreSQL Flexible Server '{serverResource.Data.Name}' updated successfully.");
+            }
+            catch (Exception ex)
+            {
+              Console.WriteLine($"An error occurred: {ex.Message}");
+            }
+   }
+  }
 }
 ```
 
@@ -256,34 +254,33 @@ using Azure.ResourceManager.PostgreSql.FlexibleServers.Models;
 namespace DeleteServer
 {
     class Program
- {
+  {
         static async Task Main(string[] args)
- {
+   {
 
- // Replace with your subscription ID
+            // Replace with your subscription ID
             string subscriptionId = "subscription-id";
- // Replace with your resource group name
+            // Replace with your resource group name
             string resourceGroupName = "resource-group-name";
- // Replace with a unique server name
+            // Replace with a unique server name
             string serverName = "server-name";
             var credential = new DefaultAzureCredential();
             var armClient = new ArmClient(credential);
- // Create the PostgreSQL flexible server
             try
- {
- // Get the PostgreSQL Flexible Server resource
+            {
+                // Get the PostgreSQL Flexible Server resource
                 var postgresServerResourceId = PostgreSqlFlexibleServerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName);
                 var postgresServer = armClient.GetPostgreSqlFlexibleServerResource(postgresServerResourceId);
- // Delete the server
+                // Delete the server
                 await postgresServer.DeleteAsync(Azure.WaitUntil.Completed);
- Console.WriteLine($"PostgreSQL Flexible Server '{serverName}' deleted successfully.");
- }
+                Console.WriteLine($"PostgreSQL Flexible Server '{serverName}' deleted successfully.");
+            }
             catch (Exception ex)
- {
- Console.WriteLine($"An error occurred: {ex.Message}");
- }
- }
- }
+            {
+                Console.WriteLine($"An error occurred: {ex.Message}");
+            }
+   }
+  }
 }
 ```
 
@@ -304,7 +301,4 @@ Alternatively, you can remove the resource group using:
 
 ## Related content
 
-- [Quickstart: Create an Azure Database for PostgreSQL - Flexible Server instance in the Azure portal](quickstart-create-server-portal.md)
-- [Quickstart: Create an Azure Database for PostgreSQL - Flexible Server instance using Azure CLI](quickstart-create-server-cli.md)
-- [Quickstart: Use an ARM template to create an Azure Database for PostgreSQL - Flexible Server instance](quickstart-create-server-arm-template.md)
-- [Quickstart: Use a Bicep file to create an Azure Database for PostgreSQL - Flexible Server instance](quickstart-create-server-bicep.md)
+- [Quickstart: Create an instance of Azure Database for PostgreSQL - Flexible Server](quickstart-create-server.md)

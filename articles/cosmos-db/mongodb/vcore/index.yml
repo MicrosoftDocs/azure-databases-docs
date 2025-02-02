@@ -1,7 +1,7 @@
 ### YamlMime:Landing
 
 title: Azure Cosmos DB for MongoDB (vCore) documentation
-summary: Azure Cosmos DB for MongoDB in vCore architecture makes it easy to create a database with full native MongoDB support. You can apply your MongoDB experience and continue to use your favorite MongoDB drivers, SDKs, and tools by pointing your application to the API for MongoDB (vCore) account's connection string.
+summary: Azure Cosmos DB for MongoDB in vCore architecture makes it easy to create a database with full native MongoDB support. You can apply your MongoDB experience and continue to use your favorite MongoDB drivers, SDKs, and tools by pointing your application to the API for MongoDB (vCore) cluster's connection string.
 
 metadata:
   title: Azure Cosmos DB for MongoDB (vCore) documentation
@@ -11,7 +11,7 @@ metadata:
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: landing-page
-  ms.date: 02/21/2024
+  ms.date: 01/11/2025
 landingContent:
   - title: Get started with Azure Cosmos DB for MongoDB (vCore)
     linkLists:
@@ -27,6 +27,8 @@ landingContent:
             url: quickstart-portal.md
           - text: Create resources - Bicep template
             url: quickstart-bicep.md
+          - text: Create resources - Terraform
+            url: quickstart-terraform.md
   - title: Vector database
     linkLists:
       - linkListType: concept
@@ -49,26 +51,6 @@ landingContent:
             url: how-to-transactions.md
           - text: Create text search index
             url: how-to-create-text-index.md
-  - title: Manage a vCore cluster
-    linkLists:
-      - linkListType: how-to-guide
-        links:
-          - text: Scale cluster
-            url: how-to-scale-cluster.md
-          - text: Restore cluster
-            url: how-to-restore-cluster.md
-          - text: Monitor diagnostics logs
-            url: how-to-monitor-diagnostics-logs.md
-      - linkListType: concept
-        links:
-          - text: MongoDB feature support
-            url: compatibility.md
-          - text: High availability
-            url: high-availability.md
-          - text: Failover and disaster recovery
-            url: failover-disaster-recovery.md
-          - text: Migration options
-            url: migration-options.md
   - title: Migrate to MongoDB (vCore)
     linkLists:
       - linkListType: concept
@@ -85,6 +67,32 @@ landingContent:
             url: ../../../dms/tutorial-mongodb-cosmos-db-online.md
           - text: Migrate using Azure Database Migration Service (offline)
             url: ../../../dms/tutorial-mongodb-cosmos-db.md
+  - title: Manage a vCore cluster
+    linkLists:
+      - linkListType: how-to-guide
+        links:
+          - text: Scale cluster
+            url: how-to-scale-cluster.md
+          - text: Monitor diagnostics logs
+            url: how-to-monitor-diagnostics-logs.md
+          - text: Monitor metrics
+            url: monitor-metrics.md
+          - text: Create and manage alerts
+            url: how-to-manage-alerts.md
+          - text: Restore cluster
+            url: how-to-restore-cluster.md
+          - text: Upgrade cluster
+            url: how-to-upgrade-cluster.md
+      - linkListType: concept
+        links:
+          - text: MongoDB feature support
+            url: compatibility.md
+          - text: Sharding
+            url: partitioning.md
+          - text: Compute and storage
+            url: compute-storage.md
+          - text: Compute autoscale
+            url: autoscale.md
   - title: Samples
     linkLists:
       - linkListType: sample
@@ -95,3 +103,39 @@ landingContent:
         links:
           - text: AI-Enhanced Advertisement Generation
             url: ai-advertisement-generation.md
+  - title: Availability and disaster recovery (DR)
+    linkLists:
+      - linkListType: how-to-guide
+        links:
+          - text: Manage replication
+            url: how-to-cluster-replica.md
+          - text: Create cross-region replica
+            url: how-to-cross-region-replica-portal.md
+          - text: Troubleshoot replication
+            url: how-to-cross-region-replica-portal.md
+      - linkListType: concept
+        links:
+          - text: High availability (HA)
+            url: high-availability.md
+          - text: Cross-region replication
+            url: cross-region-replication.md
+          - text: HA and DR - behind the scenes
+            url: availability-disaster-recovery-under-hood.md
+          - text: Best practices for HA and DR
+            url: high-availability-replication-best-practices.md
+  - title: Security
+    linkLists:
+      - linkListType: how-to-guide
+        links:
+          - text: Enable or disable public access
+            url: how-to-public-access.md
+          - text: Enable private access
+            url: how-to-private-link.md
+          - text: Manage secondary users
+            url: secondary-users.md
+      - linkListType: concept
+        links:
+          - text: Cluster security overview
+            url: security.md
+          - text: Data encryption
+            url: database-encryption-at-rest.md

@@ -51,11 +51,9 @@ Using the [Azure portal](https://portal.azure.com).
 
     :::image type="content" source="./media/concepts-workbooks/monitor-workbooks-all.png" alt-text="Screenshot showing the Overview and Enhanced Metrics templates on the Workbooks page." lightbox="media/concepts-workbooks/monitor-workbooks-all.png":::
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 
-- [access control in Azure workbooks](/azure/azure-monitor/visualize/workbooks-overview#access-control)
-- [visualization options in Azure workbooks](/azure/azure-monitor/visualize/workbooks-visualizations)
-- [enhanced metrics](concepts-monitoring.md#enhanced-metrics)
-- [autovacuum metrics](concepts-monitoring.md#autovacuum-metrics)
+- [Access control in Azure workbooks](/azure/azure-monitor/visualize/workbooks-overview#access-control)
+- [Visualization options in Azure workbooks](/azure/azure-monitor/visualize/workbooks-visualizations)
+- [Enhanced metrics](concepts-monitoring.md#enhanced-metrics)
+- [Autovacuum metrics](concepts-monitoring.md#autovacuum-metrics)

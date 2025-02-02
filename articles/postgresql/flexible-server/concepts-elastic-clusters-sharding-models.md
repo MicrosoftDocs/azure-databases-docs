@@ -10,7 +10,7 @@ ms.subservice: flexible-server
 ms.topic: concept-article
 ---
 
-# Sharding models in Elastic Clusters on Azure Database for PostgreSQL
+# Sharding models on Elastic Clusters in Azure Database for PostgreSQL - Flexible Server
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
@@ -66,10 +66,8 @@ Drawbacks:
 | **Data sharing across tenants** | Yes, using reference tables (in a separate schema) | Yes, using reference tables |
 | **Tenant to shard isolation** | Every tenant has its own shard group by definition | Can give specific tenant IDs their own shard group via isolate_tenant_to_new_shard |
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 
-- [Overview of Elastic Clusters](./concepts-elastic-clusters.md)
-- [Table types](./concepts-elastic-clusters-table-types.md)
-- [Limitations](./concepts-elastic-clusters-limitations.yml)
+- [Overview of Elastic Clusters](concepts-elastic-clusters.md).
+- [Table types on Elastic Clusters in Azure Database for PostgreSQL - Flexible Server](concepts-elastic-clusters-table-types.md).
+- [Frequently asked questions about Elastic Clusters with Azure Database for PostgreSQL limitations](concepts-elastic-clusters-limitations.yml).

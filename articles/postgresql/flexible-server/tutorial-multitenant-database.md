@@ -293,4 +293,4 @@ SELECT id
 In this tutorial, you learned how to create an Elastic Cluster. You connected to it with psql, created a schema, and distributed data. You learned to query data both within and between tenants, and to customize the schema per tenant.
 
 > [!div class="nextstepaction"]
-> [Learn more about Elastic Clusters](./concepts-elastic-clusters.md)
+> [Learn more about Elastic Clusters](concepts-elastic-clusters.md)

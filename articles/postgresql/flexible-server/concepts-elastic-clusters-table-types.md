@@ -10,7 +10,7 @@ ms.subservice: flexible-server
 ms.topic: concept-article
 ---
 
-# Table types in Elastic Clusters on Azure Database for PostgreSQL
+# Table types on Elastic Clusters in Azure Database for PostgreSQL - Flexible Server
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
@@ -44,12 +44,10 @@ Elastic Clusters might automatically add local tables to metadata if a foreign k
 
 ## Schema tables
 
-With [schema-based sharding](./concepts-elastic-clusters-sharding-models.md#schema-based-sharding), distributed schemas are automatically associated with individual colocation groups. Tables created in those schemas are automatically converted to colocated distributed tables without a shard key. Such tables are considered schema tables and are displayed as schema in `citus_tables` view.
-
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
+With [schema-based sharding](concepts-elastic-clusters-sharding-models.md#schema-based-sharding), distributed schemas are automatically associated with individual colocation groups. Tables created in those schemas are automatically converted to colocated distributed tables without a shard key. Such tables are considered schema tables and are displayed as schema in `citus_tables` view.
 
 ## Related content
 
-- [Overview of Elastic Clusters](./concepts-elastic-clusters.md)
-- [Sharding models](./concepts-elastic-clusters-sharding-models.md)
-- [Limitations](./concepts-elastic-clusters-limitations.yml)
+- [Overview of Elastic Clusters](concepts-elastic-clusters.md).
+- [Sharding models on Elastic Clusters in Azure Database for PostgreSQL - Flexible Server](concepts-elastic-clusters-sharding-models.md).
+- [Frequently asked questions about Elastic Clusters with Azure Database for PostgreSQL limitations](concepts-elastic-clusters-limitations.yml).

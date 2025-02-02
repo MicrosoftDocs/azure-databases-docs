@@ -4,13 +4,14 @@ description: This article describes how to configure the Postgres parameters in 
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 12/08/2024
+ms.date: 01/09/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: how-to
+#customer intent: As a user, I want to learn how to configure server paramaters in an Azure Database for PostgreSQL flexible server.
 ---
 
-# Configure server parameters in Azure Database for PostgreSQL - Flexible Server
+# Configure server parameters
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
@@ -63,7 +64,7 @@ Using the [Azure portal](https://portal.azure.com):
 
     :::image type="content" source="./media/how-to-configure-server-parameters/server-parameters.png" alt-text="Screenshot of Server parameters page." lightbox="./media/how-to-configure-server-parameters/server-parameters.png":::
 
-3. Select or hover over the **i** (information) icon, to see the allowed values to which each parameter can be set to. Depending on the data type of the parameter, which can be string, enumeration, integer, boolean, numeric, set, the allowed values vary. And it can be regular expression, list of values, range of integers, on/off, range of decimals, list of values, respectively.
+3. Select or hover over the **i** (information) icon to see which values are allowed for each parameter. Depending on the data type of the parameter, which can be string, enumeration, integer, boolean, numeric, set, the allowed values vary. And it can be regular expression, list of values, range of integers, on/off, range of decimals, list of values, respectively.
 
     :::image type="content" source="./media/how-to-configure-server-parameters/information-icon.png" alt-text="Screenshot showing balloon that pops up when hovering on the information icon." lightbox="./media/how-to-configure-server-parameters/information-icon.png":::
 
@@ -105,7 +106,7 @@ Each parameter has the following attributes:
 | **id** | Resource identifier that uniquely refers to the server parameter in this particular instance of flexible server. | A string that follows the pattern `/subscriptions/<subscription_identifier>/resourceGroups/<resource_group_name>/providers/Microsoft.DBforPostgreSQL/flexibleServers/<server_name>/configurations/<parameter_name>`. |
 | **isConfigPendingRestart** | Indicates whether a server restart is required for the value currently set in the **value** attribute to take effect. | `true`: for parameters whose value was changed and, because they aren't dynamic (that is, they're static), require a server restart for the change to take effect. `false`: for parameters whose value currently set in the **value** attribute is in effect, and aren't waiting for a server restart to take effect. |
 | **isDynamicConfig** | Indicates whether a change in the value assigned to the parameter doesn't require or requires a server restart, for the change to take effect. | `true`: for parameters that, when their value changes, the change takes effect immediately. `false`: for parameters that, when their value changes, require a server restart for the change to take effect. |
-| **isReadOnly** | Indicates if the default value assigned for the parameter can or cannot be overridden by the user. | `true`: for parameters that are designated as read-only and the user can't change. `false`: for parameters that are designated as read-write and the user can set to a different value than their default. |
+| **isReadOnly** | Indicates if the user can or can't override the default value assigned to the parameter. | `true`: for parameters that are designated as read-only and the user can't change. `false`: for parameters that are designated as read-write and the user can set to a different value than their default. |
 | **name** | Name of the parameter. | Any valid name for a server parameter. |
 | **resourceGroup** | Name of the resource group in which the server is deployed. | Any valid name for a resource group in Azure. |
 | **source** | Source from which the value currently set for the parameter originates. | `system-default` or `user-override`, depending on whether **value** is set to the system default or the user override it. |
@@ -135,7 +136,7 @@ az postgres flexible-server parameter list --resource-group <resource_group> --s
 ```
 
 > [!NOTE]  
-> Previous CLI command doesn't consider modified server parameters those which are designated as read-only, `temp_tablespaces` and  `vacuum_cost_page_miss`, following the exact same criteria as the **Server parameters** page in the Azure portal.
+> Previous CLI command doesn't consider modified server parameters the ones which are designated as read-only, `temp_tablespaces`, and  `vacuum_cost_page_miss`, following the exact same criteria as the **Server parameters** page in the Azure portal.
 
 ---
 
@@ -153,7 +154,7 @@ Using the [Azure portal](https://portal.azure.com):
 
 ### [CLI](#tab/cli-list-static)
 
-You can list all server parameters that require a restart after their values are changed, so that the changes take effect, via the [az postgres flexible-server parameter list](/cli/azure/postgres/flexible-server/parameter#az-postgres-flexible-server-parameter-list) command.
+You can list all server parameters that require a restart, for changes to take effect, via the [az postgres flexible-server parameter list](/cli/azure/postgres/flexible-server/parameter#az-postgres-flexible-server-parameter-list) command.
 
 ```azurecli-interactive
 az postgres flexible-server parameter list --resource-group <resource_group> --server-name <server> --query "[?isDynamicConfig==\`false\` && isReadOnly==\`false\`] | [].name"
@@ -197,7 +198,7 @@ Using the [Azure portal](https://portal.azure.com):
 
 ### [CLI](#tab/cli-list-read-only)
 
-You can list all server parameters that are designated as read-only, whose values can't be changed by users, via the [az postgres flexible-server parameter list](/cli/azure/postgres/flexible-server/parameter#az-postgres-flexible-server-parameter-list) command.
+You can list all server parameters that are designated as read-only, the ones the user can't change, via the [az postgres flexible-server parameter list](/cli/azure/postgres/flexible-server/parameter#az-postgres-flexible-server-parameter-list) command.
 
 ```azurecli-interactive
 az postgres flexible-server parameter list --resource-group <resource_group> --server-name <server> --query "[?isReadOnly==\`true\`] | [].name"
@@ -402,9 +403,8 @@ PostgreSQL allows you to specify time zones in three different forms:
         ART   |
     </pre>
 
-- In addition to the timezone names and abbreviations, PostgreSQL accepts POSIX-style time zone specifications of the form STDoffset or STDoffsetDST, where STD is a zone abbreviation, offset is a numeric offset in hours west from UTC, and DST is an optional daylight-savings zone abbreviation, assumed to stand for one hour ahead of the given offset. 
-
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
+- In addition to the timezone names and abbreviations PostgreSQL accepts POSIX-style time zone specifications of the form STDoffset or STDoffsetDST. STD is a zone abbreviation. Offset is a numeric offset in hours west from UTC. DST is an optional daylight-savings zone abbreviation, assumed to stand for one hour ahead of the given offset.
 
 ## Related contents
-- [overview of server parameters](concepts-server-parameters.md)
+
+- [Server parameters in Azure Database for PostgreSQL - Flexible Server](concepts-server-parameters.md).

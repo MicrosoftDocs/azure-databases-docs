@@ -94,7 +94,7 @@ Additionally, configuring high availability to another data center requires mini
 
 - When you want to avoid the time and expense of acquiring new on-premises hardware, PostgreSQL on Azure VMs is the right solution for applications that require a granular control and customization of PostgreSQL engine not supported by the service or requiring access of the underlying OS.
 
-## Next steps
+## Related content
 
-- See [Azure Database for PostgreSQL flexible server pricing](https://azure.microsoft.com/pricing/details/postgresql/server/).
-- Get started by creating your first server.
+- [Azure Database for PostgreSQL - Flexible Server pricing](https://azure.microsoft.com/pricing/details/postgresql/server/).
+- [Create an instance of Azure Database for PostgreSQL - Flexible Server](quickstart-create-server.md).

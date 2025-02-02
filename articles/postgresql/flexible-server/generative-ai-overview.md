@@ -85,7 +85,7 @@ These are some key characteristics of vector databases:
 - Geospatial Data Handling: Some vector databases are designed for geospatial data, making them well-suited for applications like location-based services, GIS (Geographic Information Systems), and map-related tasks.
 - Support for Diverse Data Types: Vector databases can store and manage various types of data, including vectors, images, text and more.
 
-PostgreSQL can gain the capabilities of a vector database with the help of the [`pgvector` extension](./how-to-use-pgvector.md).
+PostgreSQL can gain the capabilities of a vector database with the help of the [`pgvector` extension](how-to-use-pgvector.md).
 
 ## Embeddings
 
@@ -99,13 +99,13 @@ Common types of embeddings include:
 
 Embeddings are central to representing complex, high-dimensional data in a form easily processable by machine learning models. They can be trained on large datasets and then used as features for various tasks, and are used by LLMs.
 
-PostgreSQL can gain the capabilities of [generating vector embeddings with Azure AI extension OpenAI integration](./generative-ai-azure-openai.md).
+PostgreSQL can gain the capabilities of [generating vector embeddings with Azure AI extension OpenAI integration](generative-ai-azure-openai.md).
 
 ## Scenarios
 
 Generative AI has a wide range of applications across various domains and industries including tech, healthcare, entertainment, finance, manufacturing and more. Here are some common tasks that can be accomplished with generative AI:
 
-- [Semantic Search](./generative-ai-semantic-search.md):
+- [Semantic Search](generative-ai-semantic-search.md):
     - GenAI enables semantic search on data rather than lexicographical search. The latter looks for exact matches to queries whereas semantic search finds content that satisfies the search query intent.
 - Chatbots and Virtual Assistants: 
     - Develop chatbots that can engage in natural context-aware conversations, for example, to implement self-help for customers.
@@ -134,18 +134,13 @@ Generative AI has a wide range of applications across various domains and indust
     - Clean noisy data by generating clean data samples. 
     - Fill in missing or incomplete data in datasets.
 
-## Next steps
+## Related content
 
-Visit the following articles to learn how to perform semantic search with Azure Database for PostgreSQL flexible server and Azure OpenAI, and how to leverage the power of Azure Cognitive Services to analyze sentiment, detect language, extract key phrases, and more advanced operations you can apply on text.
-
-> [!div class="nextstepaction"]
-> [Generate vector embeddings with Azure OpenAI](./generative-ai-azure-openai.md)
-
-> [!div class="nextstepaction"]
-> [Integrate Azure Database for Azure Database for PostgreSQL - Flexible Server with Azure Cognitive Services](./generative-ai-azure-cognitive.md)
-
-> [!div class="nextstepaction"]
-> [Implement Semantic Search with Azure Database for PostgreSQL - Flexible Server and Azure OpenAI](./generative-ai-semantic-search.md)
-
-> [!div class="nextstepaction"]
-> [Learn more about vector similarity search using pgvector](./how-to-use-pgvector.md)
+- [Integrate Azure Database for PostgreSQL - Flexible Server with Azure Cognitive Services](generative-ai-azure-cognitive.md).
+- [Generate vector embeddings in Azure Database for PostgreSQL - Flexible Server with locally deployed LLM (Preview)](generative-ai-azure-local-ai.md).
+- [Integrate Azure Database for PostgreSQL with Azure Machine Learning Services](generative-ai-azure-machine-learning.md).
+- [Generate vector embeddings with Azure OpenAI in Azure Database for PostgreSQL - Flexible Server](generative-ai-azure-openai.md).
+- [Azure AI extension in Azure Database for PostgreSQL - Flexible Server](generative-ai-azure-overview.md).
+- [Recommendation System with Azure Database for PostgreSQL - Flexible Server and Azure OpenAI](generative-ai-recommendation-system.md).
+- [Semantic Search with Azure Database for PostgreSQL - Flexible Server and Azure OpenAI](generative-ai-semantic-search.md).
+- [Enable and use pgvector in Azure Database for PostgreSQL - Flexible Server](how-to-use-pgvector.md).

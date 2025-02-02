@@ -33,8 +33,12 @@ Most language client libraries used to connect to Azure Database for PostgreSQL 
 | C | [libpq](https://www.postgresql.org/docs/current/static/libpq.html) | Primary C language interface | Included |
 | C++ | [libpqxx](http://pqxx.org/) | New-style C++ interface | [Download](https://pqxx.org/libpqxx/) |
 
-## Next steps
+## Related content
 
-Read these quickstarts on how to connect to and query Azure Database for PostgreSQL flexible server by using your language of choice:
-
-[Python](./connect-python.md) | [Java](./connect-java.md) | [Azure CLI](./connect-azure-cli.md) | [.NET (C#)](./connect-csharp.md) 
+- [Quickstart: Use Python to connect and query data from an instance of Azure Database for PostgreSQL flexible server](connect-python.md).
+- [Quickstart: Use Java to connect and query data from an instance of Azure Database for PostgreSQL flexible server](connect-java.md).
+- [Quickstart: Use .NET (C#) to connect and query data from an instance of Azure Database for PostgreSQL flexible server](connect-csharp.md).
+- [Quickstart: Use Go language to connect and query data from an instance of Azure Database for PostgreSQL flexible server](connect-go.md).
+- [Quickstart: Use PHP to connect and query data from an instance of Azure Database for PostgreSQL flexible server](connect-php.md).
+- [Quickstart: Use Azure CLI to connect and query data from an instance of Azure Database for PostgreSQL flexible server](connect-azure-cli.md).
+- [Quickstart: Import data from Azure Database for PostgreSQL - Flexible Server in Power BI](connect-with-power-bi-desktop.md).

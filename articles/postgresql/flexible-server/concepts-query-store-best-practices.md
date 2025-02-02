@@ -26,7 +26,7 @@ Configure query store so that it captures the queries that matter to you.
 |---|---|
 | `all`	| Captures all queries (top-level or nested) and their execution frequencies and other statistics. Identify new queries in your workload. Detect if ad-hoc queries are used, to identify opportunities for user defined parameterization or automatic parameterization. |
 | `top` | Captures top-level queries only. Top-level queries are those issued directly by clients. These don't include nested statements (statements executed inside a procedure or a function). |
-| `top` | Doesn't capture any new queries, while configured like this. You might want to set it to this value if you've already captured a query set in the time window that you wanted to investigate, and you don't want to continue recording any new queries. `none` is suitable for testing and bench-marking environments. `none` should be used with caution as you might miss the opportunity to track and optimize important new queries. |
+| `none` | Doesn't capture any new queries, while configured like this. You might want to set it to this value if you've already captured a query set in the time window that you wanted to investigate, and you don't want to continue recording any new queries. `none` is suitable for testing and bench-marking environments. `none` should be used with caution as you might miss the opportunity to track and optimize important new queries. |
 
 
 > [!NOTE] 
@@ -42,4 +42,4 @@ The `pg_qs.retention_period_in_days` parameter specifies the data retention peri
 
 - [monitor performance with query store](concepts-query-store.md)
 - [scenarios where query store can be especially helpful](concepts-query-store-scenarios.md)
-- [visualizing data from query store via Query Performance Insight](./concepts-query-performance-insight.md)
+- [visualizing data from query store via Query Performance Insight](concepts-query-performance-insight.md)

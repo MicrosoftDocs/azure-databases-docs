@@ -432,6 +432,24 @@ def cache_response(container, user_prompt, prompt_vectors, response):
         'vector': prompt_vectors
     }
     container.create_item(body=chat_document)
+
+def get_cache(container, vectors, similarity_score=0.0, num_results=5):
+    # Execute the query
+    results = container.query_items(
+        query= '''
+        SELECT TOP @num_results *
+        FROM c
+        WHERE VectorDistance(c.vector,@embedding) > @similarity_score
+        ORDER BY VectorDistance(c.vector,@embedding)
+        ''',
+        parameters=[
+            {"name": "@embedding", "value": vectors},
+            {"name": "@num_results", "value": num_results},
+            {"name": "@similarity_score", "value": similarity_score},
+        ],
+        enable_cross_partition_query=True, populate_query_metrics=True)
+    results = list(results)
+    return results
 ```
 
 ## 11. Create a Simple UX in Gradio

@@ -1,5 +1,5 @@
 ---
-title: Use Azure Private Link
+title: Use Azure Private Link with Azure Cosmos DB for MongoDB vCore
 titleSuffix: Azure Cosmos DB for MongoDB vCore
 description: Use Azure Private Link to connect to Azure Cosmos DB for MongoDB vCore over a private endpoint in a virtual network.
 author: khelanmodi
@@ -8,11 +8,11 @@ ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.custom: ignite-2023, devx-track-azurecli
 ms.topic: how-to
-ms.date: 11/01/2023
+ms.date: 01/02/2025
 # CustomerIntent: As a security administrator, I want to use Azure Private Link so that I can ensure that database connections occur over privately-managed virtual network endpoints.
 ---
 
-# Enable Private access in Azure Cosmos DB for MongoDB vCore
+# Enable private access in Azure Cosmos DB for MongoDB vCore
 
 [!INCLUDE[MongoDB vCore](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 
@@ -187,7 +187,7 @@ az network private-link-resource list \
   --type Microsoft.DocumentDB/mongoClusters 
 ```
 
-## Next step
-
-> [!div class="nextstepaction"]
-> [Try Azure Cosmos DB for MongoDB vCore](quickstart-portal.md)
+## Related content
+- [Learn more about database security in Azure Cosmos DB for MongoDB vCore](./security.md)
+- [See guidance on how to enable public access](./how-to-public-access.md)
+- [Migrate to Azure Cosmos DB for MongoDB vCore](./migration-options.md)

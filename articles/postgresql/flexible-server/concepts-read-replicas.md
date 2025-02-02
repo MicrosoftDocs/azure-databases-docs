@@ -150,7 +150,7 @@ Learn how to [monitor replication](how-to-read-replicas-portal.md#monitor-a-repl
 
 This section summarizes considerations about the read replica feature. The following considerations do apply.
 
-- **Power operations**: [Power operations](how-to-stop-start-server-portal.md), including start and stop actions, can be applied to both the primary and replica servers. However, to preserve system integrity, a specific sequence should be followed. Before stopping the read replicas, ensure the primary server is stopped first. When commencing operations, initiate the start action on the replica servers before starting the primary server.
+- **Power operations**: Power operations, including [start](how-to-start-server.md) and [stop](how-to-stop-server.md) actions, can be applied to both the primary and replica servers. However, to preserve system integrity, a specific sequence should be followed. Before stopping the read replicas, ensure the primary server is stopped first. When commencing operations, initiate the start action on the replica servers before starting the primary server.
 - If server has read replicas, then read replicas should be deleted first before deleting the primary server.
 - [In-place major version upgrade](concepts-major-version-upgrade.md) in Azure Database for PostgreSQL flexible server requires removing any read replicas currently enabled on the server. Once the replicas have been deleted, the primary server can be upgraded to the desired major version. After the upgrade is complete, you can recreate the replicas to resume the replication process.
 - **Premium SSD v2**: As of the current release, if the primary server uses Premium SSD v2 for storage, the creation of read replicas isn't supported.
@@ -244,8 +244,8 @@ For storage scaling:
 
 ## Related content
 
-- [Geo-replication](concepts-read-replicas-geo.md)
-- [Promote read replicas](concepts-read-replicas-promote.md)
-- [Virtual endpoints](concepts-read-replicas-virtual-endpoints.md)
-- [Create and manage read replicas in the Azure portal](how-to-read-replicas-portal.md)
-- [Cross-region replication with virtual network](concepts-networking.md#replication-across-azure-regions-and-virtual-networks-with-private-networking)
+- [Geo-replication in Azure Database for PostgreSQL - Flexible Server](concepts-read-replicas-geo.md).
+- [Promote read replicas in Azure Database for PostgreSQL - Flexible Server](concepts-read-replicas-promote.md).
+- [Virtual endpoints for read replicas in Azure Database for PostgreSQL - Flexible Server](concepts-read-replicas-virtual-endpoints.md).
+- [Create and manage read replicas in Azure Database for PostgreSQL - Flexible Server](how-to-read-replicas-portal.md).
+- [Replication across Azure regions and virtual networks with private networking](concepts-networking-private.md#replication-across-azure-regions-and-virtual-networks-with-private-networking).

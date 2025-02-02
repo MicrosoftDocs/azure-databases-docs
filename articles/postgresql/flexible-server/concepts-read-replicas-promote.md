@@ -17,7 +17,7 @@ ms.topic: conceptual
 Promote refers to the process where a replica is commanded to end its replica mode and transition into full read-write operations.
 
 > [!IMPORTANT]  
-> Promote operation is not automatic. In the event of a primary server failure, the system won't switch to the read replica independently. An user action is always required for the promote operation.
+> Promote operation isn't automatic. If a failure occurs on the primary server, the system doesn't switch to the read replica independently. A user action is always required for the promote operation.
 
 Promotion of replicas can be done in two distinct manners:
 
@@ -50,7 +50,7 @@ For both promotion methods, there are more options to consider:
 - **Forced**: This option is designed for rapid recovery in scenarios such as regional outages. Instead of waiting to synchronize all the data from the primary, the server becomes operational once it processes WAL files needed to achieve the nearest consistent state. If you promote the replica using this option, the lag at the time you delink the replica from the primary indicates how much data is lost.
 
 > [!IMPORTANT]
-> The **Forced** promotion option is specifically designed to address regional outages and, in such cases, it skips all checks - including the server symmetry requirement - and proceeds with promotion. This is because it prioritizes immediate server availability to handle disaster scenarios. However, using the Forced option outside of region down scenarios is not allowed if the requirements for read replicas specified in the documentation, especially server symmetry requirement, are not met, as it could lead to issues such as broken replication.
+> The **Forced** promotion option is designed to address regional outages and, in such cases, it skips all checks - including the server symmetry requirement - and proceeds with promotion. This is because it prioritizes immediate server availability to handle disaster scenarios. However, using the Forced option outside of region down scenarios isn't allowed if the requirements for read replicas specified in the documentation, especially server symmetry requirement, aren't met, as it could lead to issues such as broken replication.
  
 
 Learn how to [promote replica to primary](how-to-read-replicas-portal.md#promote-replicas) and [promote to independent server and remove from replication](how-to-read-replicas-portal.md#promote-replica-to-independent-server).
@@ -59,13 +59,13 @@ Learn how to [promote replica to primary](how-to-read-replicas-portal.md#promote
 
 Read replicas are treated as separate servers in terms of control plane configurations. This approach provides flexibility for read scale scenarios. However, when using replicas for disaster recovery purposes, users must ensure the configuration is as desired.
 
-The promote operation does not carry over specific configurations and parameters. Here are some of the notable ones:
+The promote operation doesn't carry over specific configurations and parameters. Here are some of the notable ones:
 
 - **PgBouncer**: [The built-in PgBouncer](concepts-pgbouncer.md) connection pooler's settings and status aren't replicated during the promotion process. If PgBouncer was enabled on the primary but not on the replica, it will remain disabled on the replica after promotion. Should you want PgBouncer on the newly promoted server, you must enable it either before or following the promotion action.
-- **Geo-redundant backup storage**: Geo-backup settings aren't transferred. Since replicas cannot have geo-backup enabled, the promoted primary (formerly the replica) does not have it after promotion. The feature can only be activated at the standard server's creation time (not a replica).
-- **Server Parameters**: If their values differ on the primary and read replica, they will not change during promotion. It's essential to note that parameters influencing shared memory size must have the same values on both the primary and replicas. This requirement is detailed in the [Server parameters](concepts-read-replicas.md#server-parameters) section.
+- **Geo-redundant backup storage**: Geo-backup settings aren't transferred. Since replicas can't have geo-backup enabled, the promoted primary (formerly the replica) doesn't have it after promotion. The feature can only be activated at the standard server's creation time (not a replica).
+- **Server Parameters**: If their values differ on the primary and read replica, they won't change during promotion. It's essential to note that parameters influencing shared memory size must have the same values on both the primary and replicas. This requirement is detailed in the [Server parameters](concepts-read-replicas.md#server-parameters) section.
 - **Microsoft Entra authentication**: If the primary had [Microsoft Entra authentication](concepts-azure-ad-authentication.md) configured, but the replica was set up with PostgreSQL authentication, then after promotion, the replica won't automatically switch to Microsoft Entra authentication. It retains the PostgreSQL authentication. Users need to manually configure Microsoft Entra authentication on the promoted replica either before or after the promotion process.
-- **High Availability (HA)**: Should you require [HA](concepts-high-availability.md) after the promotion, it must be configured on the freshly promoted primary server, following the role reversal.
+- **High Availability (HA)**: Should you require [HA]/azure/reliability/reliability-postgresql-flexible-server after the promotion, it must be configured on the freshly promoted primary server, following the role reversal.
 
 
 ## Considerations
@@ -75,14 +75,14 @@ In both the Planned and Forced promotion scenarios, it's required that servers (
 
 During such regional outages, the Forced promotion method can be implemented regardless of the primary server's current status. This approach allows for swift action in response to potential regional disasters, bypassing normal checks on server availability. 
 
-Note that if the former primary server fails beyond recovery during the promotion of its replica, the only option is to delete the former primary and recreate the replica server. 
+If the former primary server fails beyond recovery during the promotion of its replica, the only option is to delete the former primary and recreate the replica server. 
 
 ### Multiple replicas visibility during promotion in nonpaired regions
 
-When dealing with multiple replicas and if the primary region lacks a [paired region](concepts-read-replicas-geo.md#paired-regions-for-disaster-recovery-purposes), a special consideration must be considered. In the event of a regional outage affecting the primary, any other replicas won't be automatically recognized by the newly promoted replica. While applications can still be directed to the promoted replica for continued operation, the unrecognized replicas remain disconnected during the outage. These extra replicas will only reassociate and resume their roles once the original primary region has been restored.
+When dealing with multiple replicas and if the primary region lacks a [paired region](concepts-read-replicas-geo.md#paired-regions-for-disaster-recovery-purposes), a special consideration must be considered. If a regional outage affecting the primary occurs, any other replicas aren't automatically recognized by the newly promoted replica. While applications can still be directed to the promoted replica for continued operation, the unrecognized replicas remain disconnected during the outage. These extra replicas will only reassociate and resume their roles once the original primary region has been restored.
 
 ### Point-In-Time-Restore during promotion
-In both the Planned and Forced promotion scenarios, it's required that the latest automated backups are available to ensure PITR operations are successful. We are aware of an issue where the PITR operation may encounter the following error after failover and failback operations. This issue is scheduled to be resolved in an upcoming release. To ensure successful PITR operations to the latest time you can wait for the automated backup to complete after a promotion operation.
+In both the Planned and Forced promotion scenarios, it's required that the latest automated backups are available to ensure PITR operations are successful. We're aware of an issue where the PITR operation may encounter the following error after failover and failback operations. This issue is scheduled to be resolved in an upcoming release. To ensure successful PITR operations to the latest time you can wait for the automated backup to complete after a promotion operation.
 
 ``Error : Point-in-time-restore of server to the period when the siteswap operation for this server was in-progress or when the server was replica is not allowed.``
 
@@ -96,13 +96,10 @@ In both the Planned and Forced promotion scenarios, it's required that the lates
  
     No, we disable HA during the initial promotion since we don't support HA-enabled read replicas. Promoting a read replica to a primary means that the original primary is changing its role to a replica. If you're switching back, you need to enable HA on your original primary server.
 
-
-    
-
 ## Related content
 
-- [Read replicas - overview](concepts-read-replicas.md)
-- [Geo-replication](concepts-read-replicas-geo.md)
-- [Virtual endpoints](concepts-read-replicas-virtual-endpoints.md)
-- [Create and manage read replicas in the Azure portal](how-to-read-replicas-portal.md)
-- [Cross-region replication with virtual network](concepts-networking.md#replication-across-azure-regions-and-virtual-networks-with-private-networking)
+- [Read replicas in Azure Database for PostgreSQL - Flexible Server](concepts-read-replicas.md).
+- [Geo-replication in Azure Database for PostgreSQL - Flexible Server](concepts-read-replicas-geo.md).
+- [Virtual endpoints for read replicas in Azure Database for PostgreSQL - Flexible Server](concepts-read-replicas-virtual-endpoints.md).
+- [Create and manage read replicas in Azure Database for PostgreSQL - Flexible Server](how-to-read-replicas-portal.md).
+- [Replication across Azure regions and virtual networks with private networking](concepts-networking-private.md#replication-across-azure-regions-and-virtual-networks-with-private-networking).

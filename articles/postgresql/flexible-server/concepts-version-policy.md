@@ -4,7 +4,7 @@ description: Describes the policy around Postgres major and minor versions in Az
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 9/30/2024
+ms.date: 1/7/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: conceptual
@@ -30,7 +30,7 @@ Azure Database for PostgreSQL flexible server supports the following database ve
 | PostgreSQL 15 |   | X |
 | PostgreSQL 14 |   | X |
 | PostgreSQL 13 |   | X |
-| PostgreSQL 12 |   | X |
+| PostgreSQL 12 (retired)* |   | See [policy](#postgresql-12-support) |
 | PostgreSQL 11 | X | X |
 | *PostgreSQL 10 (retired)* | See [policy](#retired-postgresql-engine-versions-not-supported-in-azure-database-for-postgresql-flexible-server) |  |
 | *PostgreSQL 9.6 (retired)* | See [policy](#retired-postgresql-engine-versions-not-supported-in-azure-database-for-postgresql-flexible-server) |  |
@@ -48,18 +48,18 @@ Azure Database for PostgreSQL flexible server automatically performs minor versi
 
 The table below provides the retirement details for PostgreSQL major versions. The dates follow the [PostgreSQL community versioning policy](https://www.postgresql.org/support/versioning/).
 
-|Version|What's New                   |Azure support start date|Retirement date (Azure)                      |
-|-------|-----------------------------|------------------------|---------------------------------------------|
-|[PostgreSQL 17](https://www.postgresql.org/about/news/postgresql-17-released-2936/)|[Features](https://www.postgresql.org/docs/17/release-17.html)|30-Sep-24               |8-Nov-29                                     |
-|[PostgreSQL 16](https://www.postgresql.org/about/news/postgresql-16-released-2715/)|[Features](https://www.postgresql.org/docs/16/release-16.html)|15-Oct-23               |9-Nov-28                                     |
-|[PostgreSQL 15](https://www.postgresql.org/about/news/postgresql-15-released-2526/)|[Features](https://www.postgresql.org/docs/15/release-15.html)|15-May-23               |11-Nov-27                                    |
-|[PostgreSQL 14](https://www.postgresql.org/about/news/postgresql-14-released-2318/)|[Features](https://www.postgresql.org/docs/14/release-14.html)|29-Jun-22               |12-Nov-26                                    |
-|[PostgreSQL 13](https://www.postgresql.org/about/news/postgresql-13-released-2077/)|[Features](https://www.postgresql.org/docs/13/release-13.html)|25-May-21               |13-Nov-25                                    |
-|[PostgreSQL 12](https://www.postgresql.org/about/news/postgresql-12-released-1976/)|[Features](https://www.postgresql.org/docs/12/release-12.html)|22-Sep-20               |14-Nov-24                                    |
-|[PostgreSQL 11](https://www.postgresql.org/about/news/postgresql-11-released-1894/)|[Features](https://www.postgresql.org/docs/11/release-11.html)|24-Jul-19               |9-Nov-25                                     |
-|[PostgreSQL 10 (retired)](https://www.postgresql.org/about/news/postgresql-10-released-1786/)|[Features](https://wiki.postgresql.org/wiki/New_in_postgres_10)|4-Jun-18                |10-Nov-22                                    |
-|[PostgreSQL 9.5 (retired)](https://www.postgresql.org/about/news/postgresql-132-126-1111-1016-9621-and-9525-released-2165/)|[Features](https://www.postgresql.org/docs/9.5/release-9-5.html)|18-Apr-18               |11-Feb-21                                    |
-|[PostgreSQL 9.6 (retired)](https://www.postgresql.org/about/news/postgresql-96-released-1703/)|[Features](https://wiki.postgresql.org/wiki/NewIn96)|18-Apr-18               |11-Nov-21                                    |
+| Version                                                                                                                     | What's New                                                       | Azure support start date | Retirement date (Azure) |
+| --------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- | ------------------------ | ----------------------- |
+| [PostgreSQL 17](https://www.postgresql.org/about/news/postgresql-17-released-2936/)                                         | [Features](https://www.postgresql.org/docs/17/release-17.html)   | 30-Sep-24                | 8-Nov-29                |
+| [PostgreSQL 16](https://www.postgresql.org/about/news/postgresql-16-released-2715/)                                         | [Features](https://www.postgresql.org/docs/16/release-16.html)   | 15-Oct-23                | 9-Nov-28                |
+| [PostgreSQL 15](https://www.postgresql.org/about/news/postgresql-15-released-2526/)                                         | [Features](https://www.postgresql.org/docs/15/release-15.html)   | 15-May-23                | 11-Nov-27               |
+| [PostgreSQL 14](https://www.postgresql.org/about/news/postgresql-14-released-2318/)                                         | [Features](https://www.postgresql.org/docs/14/release-14.html)   | 29-Jun-22                | 12-Nov-26               |
+| [PostgreSQL 13](https://www.postgresql.org/about/news/postgresql-13-released-2077/)                                         | [Features](https://www.postgresql.org/docs/13/release-13.html)   | 25-May-21                | 13-Nov-25               |
+| [PostgreSQL 12 (retired)](https://www.postgresql.org/about/news/postgresql-12-released-1976/)                               | [Features](https://www.postgresql.org/docs/12/release-12.html)   | 22-Sep-20                | 14-Nov-24               |
+| [PostgreSQL 11](https://www.postgresql.org/about/news/postgresql-11-released-1894/)                                         | [Features](https://www.postgresql.org/docs/11/release-11.html)   | 24-Jul-19                | 9-Nov-25                |
+| [PostgreSQL 10 (retired)](https://www.postgresql.org/about/news/postgresql-10-released-1786/)                               | [Features](https://wiki.postgresql.org/wiki/New_in_postgres_10)  | 4-Jun-18                 | 10-Nov-22               |
+| [PostgreSQL 9.5 (retired)](https://www.postgresql.org/about/news/postgresql-132-126-1111-1016-9621-and-9525-released-2165/) | [Features](https://www.postgresql.org/docs/9.5/release-9-5.html) | 18-Apr-18                | 11-Feb-21               |
+| [PostgreSQL 9.6 (retired)](https://www.postgresql.org/about/news/postgresql-96-released-1703/)                              | [Features](https://wiki.postgresql.org/wiki/NewIn96)             | 18-Apr-18                | 11-Nov-21               |
 
 ## PostgreSQL 11 support
 
@@ -67,7 +67,7 @@ Azure is extending its support for PostgreSQL 11 within both the Azure Database 
 
 ## PostgreSQL 12 support
 
-PostgreSQL 12 is retiring on **November 14, 2024**, as per Azure's versioning policy, which aligns with the PostgreSQL community [versioning policy](https://www.postgresql.org/support/versioning/). According to this policy, each major version is supported until it is retired by the community. However, Azure has extended support for PostgreSQL 11 until November 9, 2025, to give customers more time to plan and migrate from Azure Database for PostgreSQL Single Server to Flexible Server, as well as to higher PostgreSQL versions. This support extension is designed to provide a smoother transition for customers currently using PostgreSQL 11.
+PostgreSQL 12 retired on **November 14, 2024**, as per Azure's versioning policy, which aligns with the PostgreSQL community [versioning policy](https://www.postgresql.org/support/versioning/). According to this policy, each major version is supported until it is retired by the community. However, Azure has extended support for PostgreSQL 11 until November 9, 2025, to give customers more time to plan and migrate from Azure Database for PostgreSQL Single Server to Flexible Server, as well as to higher PostgreSQL versions. This support extension is designed to provide a smoother transition for customers currently using PostgreSQL 11.
 
 ### Single Server Support:
 - Until March 28, 2025, users can continue to create and utilize PostgreSQL 11 servers on the Azure Database for PostgreSQL Single Server, except for creation through the Azure portal. It's important to note that other [restrictions](#retired-postgresql-engine-versions-not-supported-in-azure-database-for-postgresql-flexible-server) associated with retired PostgreSQL engines still apply.
@@ -96,7 +96,6 @@ You might continue to run the retired version in Azure Database for PostgreSQL f
 
 Before PostgreSQL version 10, the [PostgreSQL versioning policy](https://www.postgresql.org/support/versioning/) considered a _major version_ upgrade to be an increase in the first _or_ second number. For example, 9.5 to 9.6 was considered a _major_ version upgrade. As of version 10, only a change in the first number is considered a major version upgrade. For example, 10.0 to 10.1 is a _minor_ release upgrade. Version 10 to 11 is a _major_ version upgrade.
 
-## Next steps
+## Related content
 
-- See Azure Database for PostgreSQL single server [supported versions](../single-server/concepts-supported-versions.md).
-- See Azure Database for PostgreSQL flexible server [supported versions](concepts-supported-versions.md).
+- [Supported versions of PostgreSQL in Azure Database for PostgreSQL - Flexible Server](concepts-supported-versions.md).

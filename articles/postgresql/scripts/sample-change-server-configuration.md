@@ -1,20 +1,20 @@
 ---
-title: Azure CLI script - Change server configurations
+title: Azure CLI Script - Change Server Configurations
 description: This sample CLI script lists all available server configuration options and updates the value of one of the options.
-ms.author: sunila
-author: sunilagarwal
+author: gkasar
+ms.author: gkasar
+ms.reviewer: maghan
+ms.date: 01/06/2025
 ms.service: azure-database-postgresql
+ms.topic: how-to
 ms.devlang: azurecli
-ms.topic: sample
-ms.custom: mvc, devx-track-azurecli
-ms.date: 01/26/2022 
 ---
 
 # List and update configurations of an Azure Database for PostgreSQL - Flexible Server instance using Azure CLI
 
 [!INCLUDE [applies-to-postgresql-flexible-server](../includes/applies-to-postgresql-flexible-server.md)]
 
-This sample CLI script lists all available configuration parameters as well as their allowable values for Azure Database for PostgreSQL flexible server, and sets the *log_retention_days* to a value that is other than the default one.
+This sample CLI script lists all available configuration parameters and their allowable values for Azure Database for PostgreSQL flexible server, and sets the *log_retention_days* to a value that is other than the default one.
 
 [!INCLUDE [quickstarts-free-trial-note](~/reusable-content/ce-skilling/azure/includes/quickstarts-free-trial-note.md)]
 
@@ -41,7 +41,7 @@ az group delete --name $resourceGroup
 This script uses the commands outlined in the following table:
 
 | **Command** | **Notes** |
-|---|---|
+| --- | --- |
 | [az group create](/cli/azure/group) | Creates a resource group in which all resources are stored. |
 | [az postgres server create](/cli/azure/postgres/server) | Creates an Azure Database for PostgreSQL flexible server instance that hosts the databases. |
 | [az postgres server configuration list](/cli/azure/postgres/server/configuration) | List the configurations of an Azure Database for PostgreSQL flexible server instance. |
@@ -49,8 +49,8 @@ This script uses the commands outlined in the following table:
 | [az postgres server configuration show](/cli/azure/postgres/server/configuration) | Show the configuration of an Azure Database for PostgreSQL flexible server instance. |
 | [az group delete](/cli/azure/group) | Deletes a resource group including all nested resources. |
 
-## Next steps
+## Related content
 
-- Read more information on the Azure CLI: [Azure CLI documentation](/cli/azure).
-- Try additional scripts: [Azure CLI samples for Azure Database for PostgreSQL- Flexible Server](../single-server/sample-scripts-azure-cli.md)
-- For more information on server parameters, see [How to configure server parameters in Azure portal](../flexible-server/how-to-configure-server-parameters-using-portal.md).
+- [Azure CLI documentation](/cli/azure)
+- [Azure CLI samples for Azure Database for PostgreSQL- Flexible Server](../single-server/sample-scripts-azure-cli.md)
+- [How to configure server parameters in Azure portal](../flexible-server/how-to-configure-server-parameters-using-portal.md)

@@ -119,9 +119,9 @@ The following options are available for configuring index tuning parameters:
 
 ## Related content
 
-- [Index tuning in Azure Database for PostgreSQL - Flexible Server](concepts-index-tuning.md)
-- [Using index recommendations produced by index tuning in Azure Database for PostgreSQL - Flexible Server](how-to-get-and-apply-recommendations-from-index-tuning.md)
-- [Monitor performance with query store](concepts-query-store.md)
-- [Usage scenarios for query store - Azure Database for PostgreSQL - Flexible Server](concepts-query-store-scenarios.md)
-- [Best practices for query store - Azure Database for PostgreSQL - Flexible Server](concepts-query-store-best-practices.md)
-- [Query Performance Insight for Azure Database for PostgreSQL - Flexible Server](concepts-query-performance-insight.md)
+- [Index tuning in Azure Database for PostgreSQL - Flexible Server](concepts-index-tuning.md).
+- [Using index recommendations produced by index tuning in Azure Database for PostgreSQL - Flexible Server](how-to-get-and-apply-recommendations-from-index-tuning.md).
+- [Monitor performance with query store](concepts-query-store.md).
+- [Usage scenarios for query store - Azure Database for PostgreSQL - Flexible Server](concepts-query-store-scenarios.md).
+- [Best practices for query store - Azure Database for PostgreSQL - Flexible Server](concepts-query-store-best-practices.md).
+- [Query Performance Insight for Azure Database for PostgreSQL - Flexible Server](concepts-query-performance-insight.md).

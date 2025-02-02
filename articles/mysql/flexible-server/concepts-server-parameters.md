@@ -71,32 +71,52 @@ To learn about the `innodb_buffer_pool_size` parameter, review the [MySQL docume
 
 The [physical memory size](./concepts-service-tiers-storage.md#physical-memory-size-gb) in the following table represents the available random-access memory (RAM), in gigabytes (GB), on your Azure Database for MySQL Flexible Server.
 
-| Pricing tier | vCores | Physical memory size (GB) | Default value (bytes) | Min value (bytes) | Max value (bytes) |
-| --- | --- | --- | --- | --- | --- |
-| Burstable (B1s) | 1 | 1 | 134217728 | 33554432 | 268435456 |
-| Burstable (B1ms) | 1 | 2 | 536870912 | 134217728 | 1073741824 |
-| Burstable (B2s) | 2 | 4 | 2147483648 | 134217728 | 2147483648 |
-| Burstable (B2ms) | 2 | 8 | 4294967296 | 134217728 | 5368709120 |
-| Burstable | 4 | 16 | 12884901888 | 134217728 | 12884901888 |
-| Burstable | 8 | 32 | 25769803776 | 134217728 | 25769803776 |
-| Burstable | 12 | 48 | 51539607552 | 134217728 | 51539607552 |
-| Burstable | 16 | 64 | 2147483648 | 134217728 | 2147483648 |
-| Burstable | 20 | 80 | 64424509440 | 134217728 | 64424509440 |
-| General Purpose | 2 | 8 | 4294967296 | 134217728 | 5368709120 |
-| General Purpose | 4 | 16 | 12884901888 | 134217728 | 12884901888 |
-| General Purpose | 8 | 32 | 25769803776 | 134217728 | 25769803776 |
-| General Purpose | 16 | 64 | 51539607552 | 134217728 | 51539607552 |
-| General Purpose | 32 | 128 | 103079215104 | 134217728 | 103079215104 |
-| General Purpose | 48 | 192 | 154618822656 | 134217728 | 154618822656 |
-| General Purpose | 64 | 256 | 206158430208 | 134217728 | 206158430208 |
-| Business Critical | 2 | 16 | 12884901888 | 134217728 | 12884901888 |
-| Business Critical | 4 | 32 | 25769803776 | 134217728 | 25769803776 |
-| Business Critical | 8 | 64 | 51539607552 | 134217728 | 51539607552 |
-| Business Critical | 16 | 128 | 103079215104 | 134217728 | 103079215104 |
-| Business Critical | 20 | 160 | 128849018880 | 134217728 | 128849018880 |
-| Business Critical | 32 | 256 | 206158430208 | 134217728 | 206158430208 |
-| Business Critical | 48 | 384 | 309237645312 | 134217728 | 309237645312 |
-| Business Critical | 64 | 504 | 405874409472 | 134217728 | 405874409472 |
+| Compute size | vCores | Physical memory size (GB) | Default value (bytes) | Min value (bytes) | Max value (bytes) |
+| --- | --- | --- | --- | --- | --- |  
+|**Burstable**    |  |  |  |  |  |                           
+| Standard_B1s | 1 | 1 | 134217728 | 33554432 | 268435456 |
+| Standard_B1ms | 1 | 2 | 536870912 | 134217728 | 1073741824 |
+| Standard_B2s | 2 | 4 | 2147483648 | 134217728 | 2147483648 |
+| Standard_B2ms | 2 | 8 | 4294967296 | 134217728 | 5368709120 |
+| Standard_B4ms | 4 | 16 | 12884901888 | 134217728 | 12884901888 |
+| Standard_B8ms | 8 | 32 | 25769803776 | 134217728 | 25769803776 |
+| Standard_B12ms | 12 | 48 | 51539607552 | 134217728 | 32212254720 |
+| Standard_B16ms | 16 | 64 | 2147483648 | 134217728 | 51539607552 |
+| Standard_B20ms | 20 | 80 | 64424509440 | 134217728 | 64424509440 |
+|**General Purpose**    |  |  |  |  |  |  
+| Standard_D2ads_v5 | 2 | 8 | 4294967296 | 134217728 | 5368709120 |
+| Standard_D2ds_v4 | 2 | 8 | 4294967296 | 134217728 | 5368709120 |
+| Standard_D4ads_v5 | 4 | 16 | 12884901888 | 134217728 | 12884901888 |
+| Standard_D4ds_v4 | 4 | 16 | 12884901888 | 134217728 | 12884901888 |
+| Standard_D8ads_v5 | 8 | 32 | 25769803776 | 134217728 | 25769803776 |
+| Standard_D8ds_v4 | 8 | 32 | 25769803776 | 134217728 | 25769803776 |
+| Standard_D16ads_v5 | 16 | 64 | 51539607552 | 134217728 | 51539607552 |
+| Standard_D16ds_v4 | 16 | 64 | 51539607552 | 134217728 | 51539607552 |
+| Standard_D32ads_v5 | 32 | 128 | 103079215104 | 134217728 | 103079215104 |
+| Standard_D32ds_v4 | 32 | 128 | 103079215104 | 134217728 | 103079215104 |
+| Standard_D48ads_v5 | 48 | 192 | 154618822656 | 134217728 | 154618822656 |
+| Standard_D48ds_v4 | 48 | 192 | 154618822656 | 134217728 | 154618822656 |
+| Standard_D64ads_v5 | 64 | 256 | 206158430208 | 134217728 | 206158430208 |
+| Standard_D64ds_v4| 64 | 256 | 206158430208 | 134217728 | 206158430208 |
+|**Business Critical**    |  |  |  |  |  |  
+| Standard_E2ds_v4 | 2 | 16 | 12884901888 | 134217728 | 12884901888 |
+| Standard_E2ads_v5, Standard_E2ds_v5| 2 | 16 | 12884901888 | 134217728 | 12884901888 |
+| Standard_E4ds_v4 | 4 | 32 | 25769803776 | 134217728 | 25769803776 |
+| Standard_E4ads_v5, Standard_E4ds_v5 | 4 | 32 | 25769803776 | 134217728 | 25769803776 |
+| Standard_E8ds_v4 | 8 | 64 | 51539607552 | 134217728 | 51539607552 |
+| Standard_E8ads_v5, Standard_E8ds_v5 | 8 | 64 | 51539607552 | 134217728 | 51539607552 |
+| Standard_E16ds_v4  | 16 | 128 | 103079215104 | 134217728 | 103079215104 |
+| Standard_E16ads_v5, Standard_E16ds_v5 | 16 | 128 | 103079215104 | 134217728 | 103079215104 |
+| Standard_E20ds_v4  | 20 | 160 | 128849018880 | 134217728 | 128849018880 |
+| Standard_E20ads_v5, Standard_E20ds_v5 | 20 | 160 | 128849018880 | 134217728 | 128849018880 |
+| Standard_E32ds_v4  | 32 | 256 | 206158430208 | 134217728 | 206158430208 |
+| Standard_E32ads_v5, Standard_E32ds_v5 | 32 | 256 | 206158430208 | 134217728 | 206158430208 |
+| Standard_E48ds_v4  | 48 | 384 | 309237645312 | 134217728 | 309237645312 |
+| Standard_E48ads_v5, Standard_E48ds_v5 | 48 | 384 | 309237645312 | 134217728 | 309237645312 |
+| Standard_E64ds_v4  | 64 | 504 | 405874409472 | 134217728 | 405874409472 |
+| Standard_E64ads_v5 , Standard_E64ds_v5 | 64 | 512 | 412316860416 | 134217728 | 412316860416 |
+| Standard_E80ids_v4  | 80 | 504 | 405874409472 | 134217728 | 405874409472 |
+| Standard_E96ds_v5 | 96 | 672 | 541165879296 | 134217728 | 541165879296 |
 
 ### innodb_file_per_table
 
@@ -121,32 +141,52 @@ You can configure `innodb_log_size` to 256 megabytes (MB), 512 MB, 1 GB, or 2 GB
 
 The memory size of the server determines the value of `max_connections`. The [physical memory size](./concepts-service-tiers-storage.md#physical-memory-size-gb) in the following table represents the available RAM, in gigabytes, on your Azure Database for MySQL Flexible Server.
 
-| Pricing tier | vCores | Physical memory size (GB) | Default value | Min value | Max value |
+| Compute size | vCores | Physical memory size (GB) | Default value | Min value | Max value |
 | --- | --- | --- | --- | --- | --- |
-| Burstable (B1s) | 1 | 1 | 85 | 10 | 171 |
-| Burstable (B1ms) | 1 | 2 | 171 | 10 | 341 |
-| Burstable (B2s) | 2 | 4 | 341 | 10 | 683 |
-| Burstable (B2ms) | 2 | 4 | 683 | 10 | 1365 |
-| Burstable | 4 | 16 | 1365 | 10 | 2731 |
-| Burstable | 8 | 32 | 2731 | 10 | 5461 |
-| Burstable | 12 | 48 | 4097 | 10 | 8193 |
-| Burstable | 16 | 64 | 5461 | 10 | 10923 |
-| Burstable | 20 | 80 | 6827 | 10 | 13653 |
-| General Purpose | 2 | 8 | 683 | 10 | 1365 |
-| General Purpose | 4 | 16 | 1365 | 10 | 2731 |
-| General Purpose | 8 | 32 | 2731 | 10 | 5461 |
-| General Purpose | 16 | 64 | 5461 | 10 | 10923 |
-| General Purpose | 32 | 128 | 10923 | 10 | 21845 |
-| General Purpose | 48 | 192 | 16384 | 10 | 32768 |
-| General Purpose | 64 | 256 | 21845 | 10 | 43691 |
-| Business Critical | 2 | 16 | 1365 | 10 | 2731 |
-| Business Critical | 4 | 32 | 2731 | 10 | 5461 |
-| Business Critical | 8 | 64 | 5461 | 10 | 10923 |
-| Business Critical | 16 | 128 | 10923 | 10 | 21845 |
-| Business Critical | 20 | 160 | 13653 | 10 | 27306 |
-| Business Critical | 32 | 256 | 21845 | 10 | 43691 |
-| Business Critical | 48 | 384 | 32768 | 10 | 65536 |
-| Business Critical | 64 | 504 | 43008 | 10 | 86016 |
+| **Burstable** | | | | | |
+| Standard_B1s | 1 | 1 | 85 | 10 | 171 |
+| Standard_B1ms | 1 | 2 | 171 | 10 | 341 |
+| Standard_B2s | 2 | 4 | 341 | 10 | 683 |
+| Standard_B2ms | 2 | 4 | 683 | 10 | 1365 |
+| Standard_B4ms | 4 | 16 | 1365 | 10 | 2731 |
+| Standard_B8ms | 8 | 32 | 2731 | 10 | 5461 |
+| Standard_B12ms | 12 | 48 | 4097 | 10 | 8193 |
+| Standard_B16ms | 16 | 64 | 5461 | 10 | 10923 |
+| Standard_B20ms | 20 | 80 | 6827 | 10 | 13653 |
+| **General Purpose** | | | | | |
+| Standard_D2ads_v5 | 2 | 8 | 683 | 10 | 1365 |
+| Standard_D2ds_v4 | 2 | 8 | 683 | 10 | 1365 |
+| Standard_D4ads_v5 | 4 | 16 | 1365 | 10 | 2731 |
+| Standard_D4ds_v4 | 4 | 16 | 1365 | 10 | 2731 |
+| Standard_D8ads_v5 | 8 | 32 | 2731 | 10 | 5461 |
+| Standard_D8ds_v4 | 8 | 32 | 2731 | 10 | 5461 |
+| Standard_D16ads_v5 | 16 | 64 | 5461 | 10 | 10923 |
+| Standard_D16ds_v4 | 16 | 64 | 5461 | 10 | 10923 |
+| Standard_D32ads_v5 | 32 | 128 | 10923 | 10 | 21845 |
+| Standard_D32ds_v4 | 32 | 128 | 10923 | 10 | 21845 |
+| Standard_D48ads_v5 | 48 | 192 | 16384 | 10 | 32768 |
+| Standard_D48ds_v4 | 48 | 192 | 16384 | 10 | 32768 |
+| Standard_D64ads_v5 | 64 | 256 | 21845 | 10 | 43691 |
+| Standard_D64ds_v4 | 64 | 256 | 21845 | 10 | 43691 |
+| **Business Critical** | | | | | |
+| Standard_E2ds_v4 | 2 | 16 | 1365 | 10 | 2731 |
+| Standard_E2ads_v5, Standard_E2ds_v5 | 2 | 16 | 1365 | 10 | 2731 |
+| Standard_E4ds_v4 | 4 | 32 | 2731 | 10 | 5461 |
+| Standard_E4ads_v5, Standard_E4ds_v5 | 4 | 32 | 2731 | 10 | 5461 |
+| Standard_E8ds_v4 | 8 | 64 | 5461 | 10 | 10923 |
+| Standard_E8ads_v5, Standard_E8ds_v5 | 8 | 64 | 5461 | 10 | 10923 |
+| Standard_E16ds_v4 | 16 | 128 | 10923 | 10 | 21845 |
+| Standard_E16ads_v5, Standard_E16ds_v5 | 16 | 128 | 10923 | 10 | 21845 |
+| Standard_E20ds_v4 | 20 | 160 | 13653 | 10 | 27306 |
+| Standard_E20ads_v5, Standard_E20ds_v5 | 20 | 160 | 13653 | 10 | 27306 |
+| Standard_E32ds_v4 | 32 | 256 | 21845 | 10 | 43691 |
+| Standard_E32ads_v5, Standard_E32ds_v5 | 32 | 256 | 21845 | 10 | 43691 |
+| Standard_E48ds_v4 | 48 | 384 | 32768 | 10 | 65536 |
+| Standard_E48ads_v5, Standard_E48ds_v5 | 48 | 384 | 32768 | 10 | 65536 |
+| Standard_E64ds_v4 | 64 | 504 | 43008 | 10 | 86016 |
+| Standard_E64ads_v5, Standard_E64ds_v5 | 64 | 512 | 43691 | 10 | 87383 |
+| Standard_E80ids_v4 | 80 | 504 | 43008 | 10 | 86016 |
+| Standard_E96ds_v5 | 96 | 672 | 50000 | 10 | 100000 |
 
 When connections exceed the limit, you might receive the following error: "ERROR 1040 (08004): Too many connections."
 
@@ -343,6 +383,19 @@ DO
 #### Limitations
 
 For servers with high availability configured, when failover occurs, it's possible that the `event_scheduler` server parameter is set to `OFF`. If this occurs, when the failover is complete, configure the parameter to set the value to `ON`.
+
+### innodb_ft_user_stopword_table
+`innodb_ft_user_stopword_table` is a server parameter in MySQL that specifies the name of the table containing custom stopwords for InnoDB Full-Text Search. The table must be in the same database as the full-text indexed table, and its first column must be of type `VARCHAR`. In Azure Database for MySQL - Flexible Server, the default setting of `sql_generate_invisible_primary_key=ON` causes all tables without an explicit primary key to automatically include an invisible primary key. This behavior conflicts with the requirements for `innodb_ft_user_stopword_table`, as the invisible primary key becomes the first column of the table, preventing it from functioning as intended during Full-Text Search. To resolve this issue, you must set `sql_generate_invisible_primary_key=OFF` in the same session before creating the custom stopword table. For example:  
+
+```sql
+SET sql_generate_invisible_primary_key = OFF;
+CREATE TABLE my_stopword_table (
+    stopword VARCHAR(50) NOT NULL
+);
+INSERT INTO my_stopword_table (stopword) VALUES ('and'), ('or'), ('the');
+```  
+
+This ensures the stopword table meets MySQL’s requirements and allows custom stopwords to work properly.
 
 ## Nonmodifiable server parameters
 

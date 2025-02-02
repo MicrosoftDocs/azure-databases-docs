@@ -245,7 +245,7 @@ az resource show --resource-group $resourcegroupName --name $serverName --resour
 
 ## Clean up resources
 
-Keep this resource group, and Elastic Cluster database if you want to go to the [Next steps](#next-step). The next steps show you how to use Elastic Clusters with different application sharding models and designs.
+Keep this resource group and the Elastic Cluster just created if you want to use it to continue with the next suggested steps listed in the [Related content](#related-content) section. The next steps show you how to use Elastic Clusters with different application sharding models and designs.
 
 To delete the resource group:
 
@@ -279,7 +279,6 @@ az group delete --name $resourcegroupName
 
 ---
 
-## Next step
+## Related content
 
-> [!div class="nextstepaction"]
-> [Design multitenant database with Elastic Cluster](./tutorial-multitenant-database.md)
+- [Design multitenant database with Elastic Cluster](tutorial-multitenant-database.md).

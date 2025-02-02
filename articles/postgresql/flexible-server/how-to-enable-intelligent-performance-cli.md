@@ -119,6 +119,6 @@ When you're choosing values from the `intelligent_tuning.metric_targets` server 
 
   Specifying only a new value would overwrite the current settings. When you're adding a new tuning target, always ensure that you include the existing tuning targets in your command.
 
-## Next steps
+## Related content
 
-- [Perform intelligent tuning in Azure Database for PostgreSQL - Flexible Server](concepts-intelligent-tuning.md)
+- [Perform intelligent tuning in Azure Database for PostgreSQL - Flexible Server](concepts-intelligent-tuning.md).

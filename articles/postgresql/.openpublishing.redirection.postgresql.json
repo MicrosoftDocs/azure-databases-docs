@@ -1881,9 +1881,154 @@
         "redirect_document_id": false
     },
     {
+        "source_path_from_root": "/articles/postgresql/migrate/how-to-migrate-from-oracle.md",
+        "redirect_url": "/azure/postgresql/migrate/how-to-migrate-oracle-ora2pg",
+        "redirect_document_id": false
+    },
+    {
         "source_path_from_root": "/articles/postgresql/flexible-server/how-to-auto-grow-storage-portal.md",
         "redirect_url": "/azure/postgresql/flexible-server/how-to-auto-grow-storage",
         "redirect_document_id": false
-    } 
+    },
+    {
+        "source_path_from_root": "/articles/postgresql/flexible-server/quickstart-create-server-portal.md",
+        "redirect_url": "/azure/postgresql/flexible-server/quickstart-create-server",
+        "redirect_document_id": false
+    },
+    {
+        "source_path_from_root": "/articles/postgresql/flexible-server/quickstart-create-server-cli.md",
+        "redirect_url": "/azure/postgresql/flexible-server/quickstart-create-server",
+        "redirect_document_id": false
+    },
+    {
+        "source_path_from_root": "/articles/postgresql/flexible-server/quickstart-create-server-arm-template.md",
+        "redirect_url": "/azure/postgresql/flexible-server/quickstart-create-server",
+        "redirect_document_id": false
+    },
+    {
+        "source_path_from_root": "/articles/postgresql/flexible-server/how-to-stop-start-server-portal.md",
+        "redirect_url": "/azure/postgresql/flexible-server/how-to-start-server",
+        "redirect_document_id": false
+    },
+    {
+        "source_path_from_root": "/articles/postgresql/flexible-server/how-to-stop-start-server-cli.md",
+        "redirect_url": "/azure/postgresql/flexible-server/how-to-start-server",
+        "redirect_document_id": false
+    },
+    {
+        "source_path_from_root": "/articles/postgresql/flexible-server/how-to-restart-server-portal.md",
+        "redirect_url": "/azure/postgresql/flexible-server/how-to-restart-server",
+        "redirect_document_id": false
+    },
+    {
+        "source_path_from_root": "/articles/postgresql/flexible-server/how-to-restart-server-cli.md",
+        "redirect_url": "/azure/postgresql/flexible-server/how-to-restart-server",
+        "redirect_document_id": false
+    },
+    {
+        "source_path_from_root": "/articles/postgresql/flexible-server/how-to-manage-high-availability-portal.md",
+        "redirect_url": "/azure/postgresql/flexible-server/how-to-configure-high-availability",
+        "redirect_document_id": false
+    },
+    {
+        "source_path_from_root": "/articles/postgresql/flexible-server/how-to-configure-high-availability-cli.md",
+        "redirect_url": "/azure/postgresql/flexible-server/how-to-configure-high-availability",
+        "redirect_document_id": false
+    },
+    {
+        "source_path_from_root": "/articles/postgresql/flexible-server/how-to-server-logs-portal.md",
+        "redirect_url": "/azure/postgresql/flexible-server/how-to-configure-server-logs",
+        "redirect_document_id": false
+    },
+    {
+        "source_path_from_root": "/articles/postgresql/flexible-server/how-to-server-logs-cli.md",
+        "redirect_url": "/azure/postgresql/flexible-server/how-to-configure-server-logs",
+        "redirect_document_id": false
+    },
+    {
+        "source_path_from_root": "/articles/postgresql/flexible-server/how-to-perform-on-demand-backup-portal.md",
+        "redirect_url": "/azure/postgresql/flexible-server/how-to-operate-on-demand-backups",
+        "redirect_document_id": false
+    },
+    {
+        "source_path_from_root": "/articles/postgresql/flexible-server/how-to-perform-on-demand-backup-cli.md",
+        "redirect_url": "/azure/postgresql/flexible-server/how-to-operate-on-demand-backups",
+        "redirect_document_id": false
+    },
+    {
+        "source_path_from_root": "/articles/postgresql/flexible-server/how-to-maintenance-portal.md",
+        "redirect_url": "/azure/postgresql/flexible-server/how-to-configure-scheduled-maintenance",
+        "redirect_document_id": false
+    },
+    {
+        "source_path_from_root": "/articles/postgresql/flexible-server/how-to-restore-server-portal.md",
+        "redirect_url": "/azure/postgresql/flexible-server/how-to-restore-server",
+        "redirect_document_id": false
+    },
+    {
+        "source_path_from_root": "/articles/postgresql/flexible-server/how-to-create-server-customer-managed-key-cli.md",
+        "redirect_url": "/azure/postgresql/flexible-server/how-to-data-encryption",
+        "redirect_document_id": false
+    },
+    {
+        "source_path_from_root": "/articles/postgresql/flexible-server/how-to-create-server-customer-managed-key-portal.md",
+        "redirect_url": "/azure/postgresql/flexible-server/how-to-data-encryption",
+        "redirect_document_id": false
+    },
+    {
+        "source_path_from_root": "/articles/postgresql/flexible-server/how-to-create-server-customer-managed-key-azure-api.md",
+        "redirect_url": "/azure/postgresql/flexible-server/how-to-data-encryption",
+        "redirect_document_id": false
+    },
+    {
+        "source_path_from_root": "/articles/postgresql/flexible-server/how-to-scale-compute-storage-portal.md",
+        "redirect_url": "/azure/postgresql/flexible-server/how-to-scale-compute",
+        "redirect_document_id": false
+    },
+    {
+        "source_path_from_root": "/articles/postgresql/flexible-server/how-to-manage-virtual-network-portal.md",
+        "redirect_url": "/azure/postgresql/flexible-server/how-to-networking",
+        "redirect_document_id": false
+    },
+    {
+        "source_path_from_root": "/articles/postgresql/flexible-server/how-to-manage-virtual-network-cli.md",
+        "redirect_url": "/azure/postgresql/flexible-server/how-to-networking",
+        "redirect_document_id": false
+    },
+    {
+        "source_path_from_root": "/articles/postgresql/flexible-server/how-to-manage-virtual-network-private-endpoint-portal.md",
+        "redirect_url": "/azure/postgresql/flexible-server/how-to-networking",
+        "redirect_document_id": false
+    },
+    {
+        "source_path_from_root": "/articles/postgresql/flexible-server/how-to-manage-virtual-network-private-endpoint-cli.md",
+        "redirect_url": "/azure/postgresql/flexible-server/how-to-networking",
+        "redirect_document_id": false
+    },
+    {
+        "source_path_from_root": "/articles/postgresql/flexible-server/how-to-manage-firewall-portal.md",
+        "redirect_url": "/azure/postgresql/flexible-server/how-to-networking",
+        "redirect_document_id": false
+    },
+    {
+        "source_path_from_root": "/articles/postgresql/flexible-server/how-to-manage-firewall-cli.md",
+        "redirect_url": "/azure/postgresql/flexible-server/how-to-networking",
+        "redirect_document_id": false
+    },
+    {
+        "source_path_from_root": "/articles/postgresql/flexible-server/how-to-restore-to-different-subscription-or-resource-group.md",
+        "redirect_url": "/azure/postgresql/flexible-server/how-to-restore-server",
+        "redirect_document_id": false
+    },
+    {
+        "source_path_from_root": "/articles/postgresql/flexible-server/how-to-restore-different-subscription-resource-group-api.md",
+        "redirect_url": "/azure/postgresql/flexible-server/how-to-restore-server",
+        "redirect_document_id": false
+    },
+    {
+        "source_path_from_root": "/articles/postgresql/flexible-server/how-to-restore-server-cli.md",
+        "redirect_url": "/azure/postgresql/flexible-server/how-to-restore-server",
+        "redirect_document_id": false
+    }
 ]
 }

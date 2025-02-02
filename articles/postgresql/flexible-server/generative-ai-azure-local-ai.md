@@ -16,7 +16,7 @@ ms.custom:
   - build-2024
 ---
 
-# Use azure_local_ai extension to generate vector embeddings in PostgreSQL with locally deployed LLM (Preview)
+# Generate vector embeddings in Azure Database for PostgreSQL - Flexible Server with locally deployed LLM (Preview)
 
 ## Prerequisites
 
@@ -187,9 +187,13 @@ SELECT all_documents.doc_id, all_docs.doc_contents , 1 - (all_documents.doc_vect
  LIMIT 2;
 ```
 
-
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
-- [overview of azure_local_ai extension (Preview)](azure-local-ai.md)
-- [enable and use pgvector extension](how-to-use-pgvector.md)
+
+- [Integrate Azure Database for PostgreSQL - Flexible Server with Azure Cognitive Services](generative-ai-azure-cognitive.md).
+- [Integrate Azure Database for PostgreSQL with Azure Machine Learning Services](generative-ai-azure-machine-learning.md).
+- [Generate vector embeddings with Azure OpenAI in Azure Database for PostgreSQL - Flexible Server](generative-ai-azure-openai.md).
+- [Azure AI extension in Azure Database for PostgreSQL - Flexible Server](generative-ai-azure-overview.md).
+- [Generative AI with Azure Database for PostgreSQL - Flexible Server](generative-ai-overview.md).
+- [Recommendation System with Azure Database for PostgreSQL - Flexible Server and Azure OpenAI](generative-ai-recommendation-system.md).
+- [Semantic Search with Azure Database for PostgreSQL - Flexible Server and Azure OpenAI](generative-ai-semantic-search.md).
+- [Enable and use pgvector in Azure Database for PostgreSQL - Flexible Server](how-to-use-pgvector.md).

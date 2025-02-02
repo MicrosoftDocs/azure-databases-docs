@@ -29,7 +29,7 @@ The following table provides a list of high-level features and capabilities comp
 | PostgreSQL | Community | Community |
 | Supported versions | 10, 11 | 11, 12, 13, 14, 15, 16|
 | Underlying O/S | Windows | Linux  |
-| AZ selection for application colocation | No | Yes |
+| Availability zone selection for application colocation | No | Yes |
 | Built-in connection pooler | No | Yes (PgBouncer)|
 | Uptime SLA | [99.99% SLA](https://azure.microsoft.com/support/legal/sla/postgresql)| [Up to 99.99% SLA](https://azure.microsoft.com/support/legal/sla/postgresql) |
 | **Connectivity** | | |
@@ -50,7 +50,7 @@ The following table provides a list of high-level features and capabilities comp
 | Stop/Start | No | Yes (for all compute SKUs). Only compute is stopped/started |
 | Max. Storage size | 1 TB (Basic), 4 TB or 16 TB (GP, MO). Note: Not all regions support 16 TB. | 64 TB. Note: Not all regions support 64 TB.|
 | Min storage size | 5 GB (Basic), 100 GB (GP, MO) | 32 GB |
-| Storage auto-grow | Yes | Yes |
+| Storage autogrow | Yes | Yes |
 | Max IOPS | Basic - Variable. GP/MO: up to 18 K  | Up to 80 K |
 | **Networking/Security** | | |
 | Supported networking | Virtual network, private link, public access | Private access (VNET injection in a delegated subnet), public access |
@@ -79,7 +79,7 @@ The following table provides a list of high-level features and capabilities comp
 | Support for logical decoding | Yes | Yes |
 | Support for native logical replication | No | Yes |
 | Support for pglogical extension | No | Yes |
-| Support logical replication with HA | N/A | [Limited](concepts-high-availability.md#high-availability---limitations) |
+| Support logical replication with HA | N/A | [Limited](/azure/reliability/reliability-postgresql-flexible-server#high-availability-limitations) |
 | **Disaster Recovery** | | |
 | Cross region DR | Using read replicas, geo-redundant backup | Using read replicas, Geo-redundant backup (in [selected regions](overview.md#azure-regions)) |
 | DR using replica | Using async physical replication | Using async physical replication |
@@ -102,7 +102,7 @@ The following table provides a list of high-level features and capabilities comp
 | System scheduled window | Yes | Yes |
 | Customer scheduled window | No | Yes (can choose any 1 hr on any day) |
 | Notice period | Three days | Five days |
-| Maintenance period | Anytime within 15-hrs window | 1 hr window | 
+| Maintenance period | Anytime within 15-hrs window | 1 hour window | 
 | **Metrics** | | |
 | Errors | Failed connections | Failed connections |
 | Latency | Max lag across replicas, Replica lag | Max lag across replicas, Replica lag  |
@@ -126,9 +126,9 @@ The following table provides a list of high-level features and capabilities comp
 | Major version upgrades support | No | Yes |
 | Minor version upgrades | Yes. Automatic during maintenance window | Yes. Automatic during maintenance window |
 
+## Related content
 
-## Next steps
-
-- Understand [what’s available for compute and storage options - Azure Database for PostgreSQL - Flexible Server](concepts-compute-storage.md)
-- Learn about [supported PostgreSQL database versions - Azure Database for PostgreSQL - Flexible Server](concepts-supported-versions.md)
-- Learn about [current limitations in Azure Database for PostgreSQL flexible server](concepts-limits.md)
+- [Compute options in Azure Database for PostgreSQL - Flexible Server](concepts-compute.md).
+- [Storage options in Azure Database for PostgreSQL - Flexible Server](concepts-storage.md).
+- [Supported versions of PostgreSQL in Azure Database for PostgreSQL - Flexible Server](concepts-supported-versions.md).
+- [Limits in Azure Database for PostgreSQL - Flexible Server](concepts-limits.md).

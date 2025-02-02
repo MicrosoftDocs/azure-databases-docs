@@ -42,23 +42,17 @@
   - name: Quickstarts
     expanded: true
     items:
-    - name: Create server instance and database
+    - name: Create a server
       items:
-      - name: ARM template
-        displayName: Resource Manager
-        href: flexible-server/quickstart-create-server-arm-template.md
-      - name: Azure CLI
-        href: flexible-server/quickstart-create-server-cli.md
-      - name: Azure portal
-        href: flexible-server/quickstart-create-server-portal.md
+      - name: Portal, CLI, ARM template
+        href: flexible-server/quickstart-create-server.md
       - name: Azure SDK for Python
         href: flexible-server/quickstart-create-server-python-sdk.md
       - name: Azure SDK for .NET
         href: flexible-server/quickstart-create-server-dotnet-sdk.md
       - name: Bicep
-        displayName: Resource Manager, ARM
         href: flexible-server/quickstart-create-server-bicep.md
-    - name: Create an Elastic Cluster
+    - name: Create an elastic cluster
       items:
       - name: ARM template
         displayName: Resource Manager
@@ -138,7 +132,7 @@
         href: flexible-server/how-to-integrate-azure-ai.md
     - name: Import and export data
       items:
-      - name: pg_azure_storage extension
+      - name: azure_storage extension
         href: flexible-server/concepts-storage-extension.md
     - name: Microsoft Entra authentication
       href: flexible-server/concepts-azure-ad-authentication.md
@@ -150,7 +144,7 @@
       href: flexible-server/concepts-limits.md
     - name: Identity
       href: flexible-server/concepts-Identity.md
-    - name: Encryption with customer managed keys
+    - name: Data encryption
       href: flexible-server/concepts-data-encryption.md
     - name: Scheduled maintenance
       href: flexible-server/concepts-maintenance.md
@@ -401,102 +395,85 @@
     items:
     - name: Server administration
       items:
-      - name: Manage a server
-        items:
-        - name: Azure portal
-          href: flexible-server/how-to-manage-server-portal.md
-        - name: Azure CLI
-          href: flexible-server/how-to-manage-server-cli.md
-        - name: Connect and query guide
-          href: flexible-server/how-to-connect-query-guide.md
+      - name: Start a server
+        href: flexible-server/how-to-start-server.md
+      - name: Stop a server
+        href: flexible-server/how-to-stop-server.md
+      - name: Restart a server
+        href: flexible-server/how-to-restart-server.md
+      - name: Reset administrator password
+        href: flexible-server/how-to-reset-admin-password.md
+      - name: Delete a server
+        href: flexible-server/how-to-delete-server.md
       - name: Auto grow storage
         href: flexible-server/how-to-auto-grow-storage.md
-      - name: Scale a server
+      - name: Configure high availability
+        href: flexible-server/how-to-configure-high-availability.md
+      - name: Download server logs
+        href: flexible-server/how-to-configure-server-logs.md
+      - name:  On-demand backups
+        href: flexible-server/how-to-operate-on-demand-backups.md
+      - name: Restore a server
+        href: flexible-server/how-to-restore-server.md
+      - name: Configure managed identities
+        href: flexible-server/how-to-configure-managed-identities.md
+      - name: Major version upgrade
+        href: flexible-server/how-to-perform-major-version-upgrade.md
+      - name: Configure server parameters
+        href: flexible-server/how-to-configure-server-parameters.md
+      - name: Networking
+        expanded: true
         items:
-        - name: Azure portal
-          href: flexible-server/how-to-scale-compute-storage-portal.md
+        - name: Overview
+          href: flexible-server/how-to-networking.md
+        - name: Public access (allowed IP addresses)
+          expanded: true
+          items:
+          - name: Enable public access
+            href: flexible-server/how-to-networking-servers-deployed-public-access-enable-public-access.md
+          - name: Disable public access
+            href: flexible-server/how-to-networking-servers-deployed-public-access-disable-public-access.md
+          - name: Add firewall rules
+            href: flexible-server/how-to-networking-servers-deployed-public-access-add-firewall-rules.md
+          - name: Delete firewall rules
+            href: flexible-server/how-to-networking-servers-deployed-public-access-delete-firewall-rules.md
+          - name: Add private endpoint connections
+            href: flexible-server/how-to-networking-servers-deployed-public-access-add-private-endpoint.md
+          - name: Delete private endpoint connections
+            href: flexible-server/how-to-networking-servers-deployed-public-access-delete-private-endpoint.md
+          - name: Approve private endpoint connections
+            href: flexible-server/how-to-networking-servers-deployed-public-access-approve-private-endpoint.md
+          - name: Reject private endpoint connections
+            href: flexible-server/how-to-networking-servers-deployed-public-access-reject-private-endpoint.md
+        - name: Private access (VNET Integration)
+          expanded: true
+          items:
+          - name: Change private DNS zone
+            href: flexible-server/how-to-networking-servers-deployed-vent-integration-change-private-dns-zone.md
+      - name: Scheduled maintenance
+        href: flexible-server/how-to-configure-scheduled-maintenance.md
+      - name: Data encryption
+        href: flexible-server/how-to-data-encryption.md
+      - name: Scale compute
+        href: flexible-server/how-to-scale-compute.md
+      - name: Scale storage
+        href: flexible-server/how-to-scale-storage.md
       - name: Restore a dropped server
         items:
         - name: Restore a dropped server
           href: flexible-server/how-to-restore-dropped-server.md
-      - name: Cross subscription and cross resource group restore
-        items:
-        - name: Azure portal
-          href: flexible-server/how-to-restore-to-different-subscription-or-resource-group.md
-        - name: Azure REST API
-          href: flexible-server/how-to-restore-different-subscription-resource-group-api.md 
-      - name: Restart a server
-        items:
-        - name: Azure portal
-          href: flexible-server/how-to-restart-server-portal.md
-        - name: Azure CLI
-          href: flexible-server/how-to-restart-server-cli.md
-      - name:  On-demand-backup 
-        items:
-        - name: Azure portal
-          href: flexible-server/how-to-perform-on-demand-backup-portal.md
-        - name: Azure CLI
-          href: flexible-server/how-to-perform-on-demand-backup-cli.md
-      - name: Restore a server
-        items:
-        - name: Azure portal
-          href: flexible-server/how-to-restore-server-portal.md
-        - name: Azure CLI
-          href: flexible-server/how-to-restore-server-cli.md
-      - name: Stop/Start a server
-        items:
-        - name: Azure portal
-          href: flexible-server/how-to-stop-start-server-portal.md
-        - name: Azure CLI
-          href: flexible-server/how-to-stop-start-server-cli.md
-      - name: Configure server logs
-        items:
-        - name: Azure portal
-          href: flexible-server/how-to-server-logs-portal.md
-        - name: Azure CLI
-          href: flexible-server/how-to-server-logs-cli.md
       - name: Relocate a server 
         href: /azure/operational-excellence/relocation-postgresql-flexible-server?toc=/azure/postgresql/toc.json
-    - name: Encryption with CMK
-      items:
-      - name: Azure CLI
-        href: flexible-server/how-to-create-server-customer-managed-key-cli.md
-      - name: Azure portal
-        href: flexible-server/how-to-create-server-customer-managed-key-portal.md
-      - name: Azure REST API
-        href: flexible-server/how-to-create-server-customer-managed-key-azure-api.md
-    - name: Scheduled maintenance
-      items:
-      - name: Azure portal
-        href: flexible-server/how-to-maintenance-portal.md
     - name: Networking
       items:
       - name: Encrypted connectivity using TLS/SSL
         href: flexible-server/how-to-connect-tls-ssl.md
       - name: Update application client SSL/TLS certificates
         href: flexible-server/how-to-update-client-certificates-java.md
-      - name: Private access with virtual network integration
-        items:
-        - name: Azure portal
-          href: flexible-server/how-to-manage-virtual-network-portal.md
-        - name: Azure CLI
-          href: flexible-server/how-to-manage-virtual-network-cli.md
       - name: Networking with Private Endpoint
         items:
-        - name: Azure portal
-          href: flexible-server/how-to-manage-virtual-network-private-endpoint-portal.md
-        - name: Azure CLI
-          href: flexible-server/how-to-manage-virtual-network-private-endpoint-cli.md
         - name: Connect to managed data factory via Private Endpoint
           href: flexible-server/how-to-connect-to-data-factory-private-endpoint.md
-      - name: Public access (allowed IP addresses)
-        items:
-        - name: Azure portal
-          href: flexible-server/how-to-manage-firewall-portal.md
-        - name: Azure CLI
-          href: flexible-server/how-to-manage-firewall-cli.md
-    - name: Server parameters
-      href: flexible-server/how-to-configure-server-parameters.md
     - name: Enable authentication
       items:
       - name: Create users
@@ -510,14 +487,6 @@
         href: flexible-server/how-to-manage-azure-ad-users.md
       - name: Connect with SCRAM authentication
         href: flexible-server/how-to-connect-scram.md
-    - name: Major version upgrade
-      href: flexible-server/how-to-perform-major-version-upgrade.md
-    - name: Manage high availability
-      items:
-      - name: Azure portal
-        href: flexible-server/how-to-manage-high-availability-portal.md
-      - name: Azure CLI
-        href: flexible-server/how-to-configure-high-availability-cli.md
     - name: Monitor
       items:
       - name: Create alerts on metrics using portal
@@ -593,14 +562,18 @@
   items:
   - name: What's happening to Azure Database for PostgreSQL - Single Server?
     href: migrate/whats-happening-to-postgresql-single-server.md
-  - name: Migration Service
+  - name: Migration Service for Azure Database for PostgreSQL
     items:
     - name: Overview
       href: migrate/migration-service/overview-migration-service-postgresql.md
-    - name: Tutorials
+    - name: Tutorials for migrating from Single Server
       items:
       - name: Migrate from Single Server
         href: migrate/migration-service/tutorial-migration-service-single-to-flexible.md
+      - name: Automigration from Azure Database for PostgreSQL - Single Server to Flexible Server
+        href: migrate/automigration-single-to-flexible-postgresql.md
+    - name: Tutorials for migrating from PostgreSQL
+      items:
       - name: Migrate from an Azure VM or an on-premises PostgreSQL server offline
         href: migrate/migration-service/tutorial-migration-service-iaas-offline.md
       - name: Migrate from an Azure VM or an on-premises PostgreSQL server online
@@ -637,18 +610,24 @@
         href: migrate/migration-service/how-to-setup-azure-cli-commands-postgresql.md
       - name: How to set up the network
         href: migrate/migration-service/how-to-network-setup-migration-service.md
+      - name: Migrate data with pg_dump
+        href: migrate/how-to-migrate-using-dump-and-restore.md
     - name: Troubleshoot
       items:
       - name: Troubleshoot errors
         href: migrate/migration-service/troubleshoot-error-codes-premigration.md
-  - name: Automigration from Azure Database for PostgreSQL - Single Server to Flexible Server
-    href: migrate/automigration-single-to-flexible-postgresql.md
-  - name: Migrate data with pg_dump
-    href: migrate/how-to-migrate-using-dump-and-restore.md
-  - name: Minimal-downtime migration with DMS
-    href: single-server/how-to-migrate-online.md
   - name: Migrate from Oracle
-    href: single-server/how-to-migrate-from-oracle.md
+    items:
+      - name: Migration Concepts
+        href: migrate/concepts-oracle-migration.md
+      - name: Migration Stages
+        href: migrate/concepts-oracle-migration-stages.md
+      - name: Best Practices
+        href: migrate/best-practices-oracle-to-postgresql.md
+      - name: Pre-migration Checklist
+        href: migrate/best-practices-oracle-to-postgresql-checklist.md
+      - name: Migrate using Ora2Pg
+        href: migrate/how-to-migrate-oracle-ora2pg.md
 - name: Azure Database for PostgreSQL - Single Server
   expanded: false
   items:

@@ -15,10 +15,10 @@ ms.date: 04/20/2023
 [!INCLUDE[MongoDB](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb.md)]
 
 > [!IMPORTANT]  
-> Please read this entire guide before carrying out your pre-migration steps.
+> Please read this entire guide before carrying out your pre-migration steps. For migrations to Azure Cosmos DB for MongoDB vCore refer to  [vCore migration options](./vcore/migration-options.md)
 >
 
-This MongoDB pre-migration guide is part of series on MongoDB migration. The critical MongoDB migration steps are pre-migration, migration, and [post-migration](post-migration-optimization.md), as shown in this guide.
+This MongoDB pre-migration guide is part of series on MongoDB RU migration. The critical MongoDB migration steps are pre-migration, migration, and [post-migration](post-migration-optimization.md), as shown in this guide.
 
 ![Diagram of the migration steps from pre to post migration.](~/reusable-content/ce-skilling/azure/media/cosmos-db/overall-migration-steps.png)
 
@@ -226,10 +226,10 @@ Here's a list of compatible tools for each migration scenario:
 
 Given that you're migrating from a particular MongoDB version, the supported tools for each version are included here:
 
-| MongoDB source version | Azure Cosmos DB for MongoDB destination version | Supported tools | Unsupported tools |
+| MongoDB source version | Azure Cosmos DB for MongoDB (RU based) destination version | Supported tools | Unsupported tools |
 | --- | --- | --- | --- |
-| <2.x, >4.0 | 3.2, 3.6, 4.0 | MongoDB native tools, Spark | DMS, ADF |
-| 3.2, 3.6, 4.0 | 3.2, 3.6, 4.0 | MongoDB native tools, DMS, ADF, Spark | None |
+| <3.2 | 3.2, 3.6, <8.0 | MongoDB native tools, Spark | DMS, ADF |
+| 3.2, 3.6, <8.0 | 3.2, 3.6, <8.0 | MongoDB native tools, DMS, ADF, Spark | None |
 
 ### Post-migration
 

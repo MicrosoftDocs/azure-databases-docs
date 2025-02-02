@@ -168,13 +168,13 @@ Index tuning is supported on [major versions](concepts-supported-versions.md) **
 
 ### Use of search_path
 
-Index tuning consumes the value persisted in column `search_path` of [query_store.qs_view](./concepts-query-store.md#query_storeqs_view), so that when each query is analyzed, the same value of `search_path` that was set when the query executed originally is the one to which it's set to analyze possible recommendations.
+Index tuning consumes the value persisted in column `search_path` of [query_store.qs_view](concepts-query-store.md#query_storeqs_view), so that when each query is analyzed, the same value of `search_path` that was set when the query executed originally is the one to which it's set to analyze possible recommendations.
 
 ### Parameterized queries
 
 Parameterized queries created with [PREPARE](https://www.postgresql.org/docs/current/sql-prepare.html) or using the [extended query protocol](https://www.postgresql.org/docs/current/protocol-flow.html#PROTOCOL-FLOW-EXT-QUERY) are parsed and analyzed to produce index recommendations on them.
 
-For the analysis of parameterized queries, index tuning requires that [pg_qs.parameters_capture_mode](concepts-query-store.md#configuration-options) is set to `capture_first_sample` when query store captures the execution of the query. It also requires that the parameters are correctly captured by query store when the query is executed. In other words, for the query being analyzed, [query_store.qs_view](./concepts-query-store.md#query_storeqs_view) must have its column `parameters_capture_status` set to `succeeded`.
+For the analysis of parameterized queries, index tuning requires that [pg_qs.parameters_capture_mode](concepts-query-store.md#configuration-options) is set to `capture_first_sample` when query store captures the execution of the query. It also requires that the parameters are correctly captured by query store when the query is executed. In other words, for the query being analyzed, [query_store.qs_view](concepts-query-store.md#query_storeqs_view) must have its column `parameters_capture_status` set to `succeeded`.
 
 ### Read-only mode and read replicas
 
@@ -192,6 +192,6 @@ If you have [high availability](/azure/reliability/reliability-postgresql-flexib
 
 ## Related content
 
-- [Monitor performance with query store](concepts-query-store.md)
-- [Enable, disable, and configure index tuning](how-to-configure-index-tuning.md)
-- [Read, interpret, and use recommendations produced by index tuning](how-to-get-and-apply-recommendations-from-index-tuning.md)
+- [Monitor performance with query store](concepts-query-store.md).
+- [Enable, disable, and configure index tuning](how-to-configure-index-tuning.md).
+- [Read, interpret, and use recommendations produced by index tuning](how-to-get-and-apply-recommendations-from-index-tuning.md).

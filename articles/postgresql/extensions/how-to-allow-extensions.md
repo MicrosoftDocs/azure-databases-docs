@@ -1,16 +1,17 @@
 ---
-title: How to Use PostgreSQL Extensions in Azure Database for PostgreSQL
-description: Introduction to the PostgreSQL Extensions for Azure Database for PostgreSQL.
+title: Manage PostgreSQL extensions
+description: Introduction to the PostgreSQL extensions in Azure Database for PostgreSQL - Flexible Server.
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 12/06/2024
+ms.date: 01/25/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: how-to
+#customer intent: As a user, I want to learn how to manage PostgreSQL extensions in an Azure Database for PostgreSQL flexible server.
 ---
 
-# How to use PostgreSQL extensions for Azure Database for PostgreSQL
+# Manage PostgreSQL extensions
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
@@ -32,7 +33,7 @@ Using the [Azure portal](https://portal.azure.com):
 
 #### [Azure CLI](#tab/allow-extensions-cli)
 
-You can allow extensions via the CLI parameter set [command](/cli/azure/postgres/flexible-server/parameter?view=azure-cli-latest&preserve-view=true).
+You can allow extensions via the CLI parameter set [command](/cli/azure/postgres/flexible-server/parameter).
 
 ```azurecli
     az postgres flexible-server parameter set --resource-group <resource_group>  --server-name <server> --subscription <subscription_id> --name azure.extensions --value <extension_name>,<extension_name>
@@ -95,13 +96,13 @@ Using the [Azure portal](https://portal.azure.com):
 
 #### [Azure CLI](#tab/load-libraries-cli)
 
-You can set `shared_preload_libraries` using the CLI [parameter set](/cli/azure/postgres/flexible-server/parameter?view=azure-cli-latest#az-postgres-flexible-server-parameter-set) command.
+You can set `shared_preload_libraries` using the CLI [parameter set](/cli/azure/postgres/flexible-server/parameter#az-postgres-flexible-server-parameter-set) command.
 
 ```azurecli
 az postgres flexible-server parameter set --resource-group <resource_group> --server-name <server> --name shared_preload_libraries --value <extension_name>,<extension_name>
 ```
 
-And can restart the server using the CLI [parameter set](/cli/azure/postgres/flexible-server?view=azure-cli-latest#az-postgres-flexible-server-restart) command.
+And can restart the server using the CLI [parameter set](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-restart) command.
 
 ```azurecli
 az postgres flexible-server restart --resource-group <resource_group> --name <server>
@@ -111,12 +112,32 @@ az postgres flexible-server restart --resource-group <resource_group> --name <se
 
 ## Create extensions
 
-After an extension is allowlisted and, if the extension requires it, is also added to `shared_load_libraries`, it can be created or installed in each database on which it's to be used.
+1. [Allowlist](#allow-extensions) the extension.
 
-1. To create an extension, a user must be a member of the `azure_pg_admin` role.
+1. If the extension requires it, also add it to `shared_load_libraries`.
+
+1. The user that creates the extensions must be a member of the `azure_pg_admin` role.
 
 1. Run the [CREATE EXTENSION](https://www.postgresql.org/docs/current/sql-createextension.html) command to create or install a particular extension. This command loads the packaged objects into your database.
 
+```sql
+CREATE EXTENSION <extension>;
+```
+
+1. Some extensions require other extensions to be created first, because they depend on objects distributed by those other extensions. It's the case, for example, of the `pg_diskann` extension, which has dependencies on the `vector` extension. To install such extensions, you can proceed in two ways:
+    - [Allowlist](#allow-extensions) and run `CREATE EXTENSION` on the depending extension first. Then, allowlist and run `CREATE EXTENSION` on the dependent extension.
+
+    ```sql
+    CREATE EXTENSION <depending_extension>;
+    CREATE EXTENSION <dependent_extension>;
+    ```
+    
+    - [Allowlist](#allow-extensions) and run `CREATE EXTENSION` on the dependent extension only, but add the `CASCADE` clause, so that it automatically creates all extensions on which it depends.
+
+    ```sql
+    CREATE EXTENSION <dependent_extension> CASCADE;
+    ```
+    
 > [!NOTE]  
 > Third-party extensions offered in Azure Database for PostgreSQL flexible server are open-source licensed code. We don't offer any third-party extensions or extension versions with premium or proprietary licensing models.
 
@@ -124,18 +145,36 @@ Azure Database for PostgreSQL flexible server instance supports a subset of key 
 
 ## Drop extensions
 
-To drop an extension, first make sure to [allowlist](#allow-extensions) it.
+1. [Allowlist](#allow-extensions) the extension.
 
-1. To drop an extension, a user must be a member of the `azure_pg_admin` role.
+1. The user that drops the extensions must be a member of the `azure_pg_admin` role.
 
 1. Run the [DROP EXTENSION](https://www.postgresql.org/docs/current/sql-dropextension.html) command to drop or uninstall a particular extension. This command drops the objects packaged in the extension from your database.
+
+```sql
+DROP EXTENSION <extension>;
+```
+
+1. Some extensions might distribute objects which are required by other extension. That's the case, for example, of the `vector` extension, in which the `pg_diskann` extension depends. To drop such extensions, you can proceed in two ways:
+    - [Allowlist](#allow-extensions) and run `DROP EXTENSION` on all the extensions that depend on the one that you're trying to drop first. Then, allowlist and run `DROP EXTENSION` on the extension on which other extensions depended.
+
+    ```sql
+    DROP EXTENSION <dependent_extension>;
+    DROP EXTENSION <depending_extension>;
+    ```
+
+    - [Allowlist](#allow-extensions) and run `DROP EXTENSION` on the extension that you want to drop, that other extensions depend on, but add the `CASCADE` clause, so that it automatically drops all extensions on which it depends.
+
+    ```sql
+    DROP EXTENSION <depending_extension> CASCADE;
+    ```
 
 ## Update extensions
 
 To update an installed extension to the latest available version supported by Azure, use the following SQL command:
 
 ```sql
-ALTER EXTENSION <extension_name> UPDATE;
+ALTER EXTENSION <extension> UPDATE;
 ```
 
 This command simplifies the management of database extensions by allowing users to manually upgrade to the latest version approved by Azure, enhancing both compatibility and security.
@@ -171,11 +210,8 @@ This error occurs when the user that runs a `CREATE EXTENSION` command isn't a m
 
 This error occurs when the user that runs a `DROP EXTENSION` command isn't a member of `azure_pg_admin` role.
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 
-- [Special considerations with extensions](concepts-extensions-considerations.md)
-- [List of extensions by name](concepts-extensions-versions.md)
-- [List of extensions by version of PostgreSQL](concepts-extensions-by-engine.md)
-- [Feedback forum](https://aka.ms/pgfeedback)
+- [How to use extensions](how-to-allow-extensions.md).
+- [Special considerations with extensions](concepts-extensions-considerations.md).
+- [List of extensions by name](concepts-extensions-versions.md).

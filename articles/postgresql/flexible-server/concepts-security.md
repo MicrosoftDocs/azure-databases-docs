@@ -41,7 +41,7 @@ Azure Database for PostgreSQL - Flexible Server encrypts data in two ways:
 
 When you're running Azure Database for PostgreSQL - Flexible Server, you have two main networking options:
 
-- **Private access**: You can deploy your server into an Azure virtual network. Azure virtual networks help provide private and secure network communication. Resources in a virtual network can communicate through private IP addresses. For more information, see the [networking overview for Azure Database for PostgreSQL - Flexible Server](concepts-networking.md).
+- **Private access**: You can deploy your server into an Azure virtual network. Azure virtual networks help provide private and secure network communication. Resources in a virtual network can communicate through private IP addresses. For more information, see the [networking overview for Azure Database for PostgreSQL - Flexible Server](concepts-networking-private.md).
 
   Security rules in network security groups enable you to filter the type of network traffic that can flow in and out of virtual network subnets and network interfaces. For more information, see the [overview of network security groups](/azure/virtual-network/network-security-groups-overview).
 
@@ -255,7 +255,7 @@ If your [client driver supports SCRAM](https://wiki.postgresql.org/wiki/List_of_
 
 ### Reset administrator password
 
-Follow the [how to guide](./how-to-manage-server-portal.md#reset-admin-password) to reset the admin password.
+Follow the [how to guide](how-to-manage-server-portal.md#reset-admin-password) to reset the admin password.
 
 ### Update database user password
 
@@ -299,10 +299,8 @@ The section below provides an index of Azure Policy built-in policy definitions 
 
 Custom policies can be precisely tailored to match the specific requirements of your organization, including unique security policies or compliance mandates. With custom policies you have complete control over the policy logic and parameters, allowing for sophisticated and fine-grained policy definitions.
 
-
-
 ## Related content
 
-- [Firewall rules for IP addresses](concepts-firewall-rules.md)
-- [Private access networking with Azure Database for PostgreSQL - Flexible Server](concepts-networking.md)
-- [Microsoft Entra authentication](../concepts-aad-authentication.md)
+- [Firewall rules in Azure Database for PostgreSQL - Flexible Server](concepts-firewall-rules.md).
+- [Public access and private endpoints in Azure Database for PostgreSQL - Flexible Server](concepts-networking-public.md).
+- [Virtual network integration in Azure Database for PostgreSQL - Flexible Server](concepts-networking-private.md).

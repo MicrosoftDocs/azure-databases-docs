@@ -233,4 +233,4 @@ In production, you could wrap these queries in a function and call it every minu
 In this tutorial, you learned how to create an Elastic Cluster. You connected to it with psql, created a schema, and distributed data. You learned to query data in the raw form, regularly aggregate that data, query the aggregated tables, and expire old data.
 
 > [!div class="nextstepaction"]
-> [Learn more about Elastic Clusters](./concepts-elastic-clusters.md)
+> [Learn more about Elastic Clusters](concepts-elastic-clusters.md)

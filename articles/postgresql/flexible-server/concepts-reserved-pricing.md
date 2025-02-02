@@ -4,7 +4,7 @@ description: Learn about reserved compute pricing and how to purchase Azure Data
 author: kabharati
 ms.author: kabharati
 ms.reviewer: maghan
-ms.date: 04/27/2024
+ms.date: 12/16/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: conceptual
@@ -12,27 +12,27 @@ ms.topic: conceptual
 
 # Prepay for Azure Database for PostgreSQL - Flexible Server compute resources with reserved capacity
 
-[!INCLUDE [applies-to-postgresql-flexible-server](../includes/applies-to-postgresql-flexible-server.md)][!INCLUDE 
+[!INCLUDE [applies-to-postgresql-flexible-server](../includes/applies-to-postgresql-flexible-server.md)]
 
-Azure Database for PostgreSQL flexible server helps you save money by prepaying for compute resources, compared to pay-as-you-go prices. With Azure Database for PostgreSQL flexible server reserved capacity, you make an upfront commitment on Azure Database for PostgreSQL flexible server for a one-year or three-year period. This commitment gives you a significant discount on the compute costs.
+Azure Database for PostgreSQL - Flexible Server helps you save money by prepaying for compute resources, compared to pay-as-you-go prices. With Azure Database for PostgreSQL - Flexible Server reserved capacity, you make an upfront commitment on Azure Database for PostgreSQL - Flexible Server for a one-year or three-year period. This commitment gives you a significant discount on the compute costs.
 
-To purchase Azure Database for PostgreSQL flexible server reserved capacity, you need to specify the Azure region, deployment type, performance tier, and term.
+To purchase Azure Database for PostgreSQL - Flexible Server reserved capacity, you need to specify the Azure region, deployment type, performance tier, and term.
 
 ## How instance reservations work
 
 You don't need to assign the reservation to specific Azure Database for PostgreSQL flexible server instances. An already running Azure Database for PostgreSQL flexible server instance (or one that's newly deployed) automatically gets the benefit of reserved pricing.
 
-By purchasing a reservation, you're prepaying for the compute costs for one or three years. As soon as you buy a reservation, the Azure Database for PostgreSQL flexible server compute charges that match the reservation attributes are no longer charged at the pay-as-you go rates.
+By purchasing a reservation, you're prepaying for the compute costs for one or three years. As soon as you buy a reservation, the Azure Database for PostgreSQL - Flexible Server compute charges that match the reservation attributes are no longer charged at the pay-as-you go rates.
 
 A reservation doesn't cover software, networking, or storage charges associated with the Azure Database for PostgreSQL flexible server instances. At the end of the reservation term, the billing benefit expires, and the vCores that Azure Database for PostgreSQL flexible server instances use are billed at the pay-as-you go price. Reservations don't automatically renew. For pricing information, see the [Azure Database for PostgreSQL reserved capacity offering](https://azure.microsoft.com/pricing/details/postgresql/).
 
-You can buy Azure Database for PostgreSQL flexible server reserved capacity in the [Azure portal](https://portal.azure.com/). Pay for the reservation [up front or with monthly payments](/azure/cost-management-billing/reservations/prepare-buy-reservation). To buy the reserved capacity:
+You can buy Azure Database for PostgreSQL - Flexible Server reserved capacity in the [Azure portal](https://portal.azure.com/). Pay for the reservation [up front or with monthly payments](/azure/cost-management-billing/reservations/prepare-buy-reservation). To buy the reserved capacity:
 
 * To buy a reservation, you must have owner role or reservation purchaser role on an Azure subscription.
 * For EA subscriptions, **Add Reserved Instances** must be turned on in the [EA portal](https://ea.azure.com/). Or, if that setting is off, you must be an EA admin on the subscription.
-* For the Cloud Solution Provider (CSP) program, only the admin agents or sales agents can purchase Azure Database for PostgreSQL flexible server reserved capacity.
+* For the Cloud Solution Provider (CSP) program, only the admin agents or sales agents can purchase Azure Database for PostgreSQL - Flexible Server reserved capacity.
 
-For details on how enterprise customers and pay-as-you-go customers are charged for reservation purchases, see [Understand Azure reservation usage for your Enterprise Agreement enrollment](/azure/cost-management-billing/reservations/understand-reserved-instance-usage-ea) and [Understand Azure reservation usage for your pay-as-you-go subscription](/azure/cost-management-billing/reservations/understand-reserved-instance-usage).
+For details on how enterprise customers and pay-as-you-go customers are charged for reservation purchases, see [understand Azure reservation usage for your Enterprise Agreement enrollment](/azure/cost-management-billing/reservations/understand-reserved-instance-usage-ea) and [understand Azure reservation usage for your pay-as-you-go subscription](/azure/cost-management-billing/reservations/understand-reserved-instance-usage).
 
 ## Reservation exchanges and refunds
 
@@ -80,7 +80,7 @@ The following table describes the required fields.
 | **Deployment Type** | The Azure Database for PostgreSQL flexible server resource type that you want to buy the reservation for.|
 | **Performance Tier** | The service tier for the Azure Database for PostgreSQL flexible server instances.|
 | **Term** | One year.|
-| **Quantity** | The amount of compute resources being purchased within the Azure Database for PostgreSQL flexible server reserved capacity. The quantity is a number of vCores in the selected Azure region and performance tier that are being reserved and that get the billing discount. For example, if you're running or planning to run Azure Database for PostgreSQL flexible server instances with the total compute capacity of Gen5 16 vCores in the East US region, you would specify the quantity as 16 to maximize the benefit for all servers.|
+| **Quantity** | The amount of compute resources being purchased within the Azure Database for PostgreSQL flexible server reserved capacity. The quantity represents the number of vCores in the selected Azure region and performance tier that are being reserved and that get the billing discount. For example, if you're running or planning to run Azure Database for PostgreSQL flexible server instances with the total compute capacity of Gen5 16 vCores in the East US region, you would specify the quantity as 16 to maximize the benefit for all servers.|
 
 ## API support for reserved instances
 
@@ -113,12 +113,12 @@ If you have questions or need help, [create a support request](https://portal.az
 
 ## Next steps
 
-The vCore reservation discount is applied automatically to the Azure Database for PostgreSQL flexible server instances that match the Azure Database for PostgreSQL flexible server reserved capacity scope and attributes. You can update the scope of the Azure Database for PostgreSQL flexible server reserved capacity through the Azure portal, PowerShell, the Azure CLI, or the APIs.
+The vCore reservation discount is applied automatically to the Azure Database for PostgreSQL flexible server instances that match the Azure Database for PostgreSQL flexible server reserved capacity scope and attributes. You can update the scope of the Azure Database for PostgreSQL - Flexible Server reserved capacity through the Azure portal, PowerShell, Azure CLI, or REST APIs.
 
-To learn more about Azure reservations, see the following articles:
+## Related content
 
-* [What are Azure reservations?](/azure/cost-management-billing/reservations/save-compute-costs-reservations)
-* [Manage Azure reservations](/azure/cost-management-billing/reservations/manage-reserved-vm-instance)
-* [Understand Azure reservation discounts](/azure/cost-management-billing/reservations/understand-reservation-charges)
-* [Understand reservation usage for your Enterprise Agreement enrollment](/azure/cost-management-billing/reservations/understand-reserved-instance-usage-ea)
-* [Azure reservations in the Partner Center CSP program](/partner-center/azure-reservations)
+- [What are Azure reservations?](/azure/cost-management-billing/reservations/save-compute-costs-reservations)
+- [Manage Azure reservations](/azure/cost-management-billing/reservations/manage-reserved-vm-instance)
+- [Understand Azure reservation discounts](/azure/cost-management-billing/reservations/understand-reservation-charges)
+- [Understand reservation usage for your Enterprise Agreement enrollment](/azure/cost-management-billing/reservations/understand-reserved-instance-usage-ea)
+- [Azure reservations in the Partner Center CSP program](/partner-center/azure-reservations)

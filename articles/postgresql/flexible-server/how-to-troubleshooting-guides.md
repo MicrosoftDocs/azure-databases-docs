@@ -10,7 +10,7 @@ ms.subservice: flexible-server
 ms.topic: how-to
 ---
 
-# Use the troubleshooting guides for Azure Database for PostgreSQL - Flexible Server
+# Use the troubleshooting guides in Azure Database for PostgreSQL - Flexible Server
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
@@ -22,9 +22,9 @@ To effectively troubleshoot a specific issue, you need to make sure that you hav
 Each troubleshooting guide requires a specific set of data, which is sourced from three separate features: [Diagnostic settings](how-to-configure-and-access-logs.md), [Query Store](concepts-query-store.md), and [Enhanced metrics](concepts-monitoring.md#enabling-enhanced-metrics).
 All troubleshooting guides require logs to be sent to a Log Analytics workspace, but the specific category of logs to be captured may vary depending on the particular guide. 
 
-Please, follow the steps described in [Configure and Access Logs - Azure Database for PostgreSQL - Flexible Server](howto-configure-and-access-logs.md) to configure diagnostic settings and send the logs to a Log Analytics workspace.
+Please, follow the steps described in [Configure and Access Logs - Azure Database for PostgreSQL - Flexible Server](how-to-configure-and-access-logs.md) to configure diagnostic settings and send the logs to a Log Analytics workspace.
 
-Query Store, and Enhanced metrics are configured via Server parameters. Please follow the steps described in the configure server parameters in Azure Database for PostgreSQL flexible server articles for [Azure portal](howto-configure-server-parameters-using-portal.md) or [Azure CLI](howto-configure-server-parameters-using-cli.md).
+Query Store, and Enhanced metrics are configured via Server parameters. Please follow the steps described in the configure server parameters in Azure Database for PostgreSQL flexible server articles for [Azure portal](how-to-configure-server-parameters.md) or [Azure CLI](how-to-configure-server-parameters.md).
 
 The table below provides information on the required log categories for each troubleshooting guide, as well as the necessary Query Store, Enhanced metrics and Server parameters prerequisites.
 
@@ -85,12 +85,12 @@ SELECT '24776'::regrole;
 
 :::image type="content" source="./media/how-to-troubleshooting-guides/retrieve-username.png" alt-text="Screenshot of retrieving the Username.":::
 
+## Related content
 
-## Next steps
-
-* Learn more about [Troubleshoot high CPU utilization](how-to-high-cpu-utilization.md).
-* Learn more about [High memory utilization](how-to-high-memory-utilization.md).
-* Learn more about [Troubleshoot high IOPS utilization](how-to-high-io-utilization.md).
-* Learn more about [Autovacuum Tuning](how-to-autovacuum-tuning.md).
-
-[//]: # (* Learn how to [create and manage read replicas in the Azure CLI and REST API]&#40;how-to-read-replicas-cli.md&#41;.)
+- [Configure intelligent tuning for Azure Database for PostgreSQL - Flexible Server](how-to-enable-intelligent-performance-portal.md).
+- [Troubleshooting guides for Azure Database for PostgreSQL - Flexible Server](concepts-troubleshooting-guides.md).
+- [Autovacuum tuning in Azure Database for PostgreSQL - Flexible Server](how-to-autovacuum-tuning.md).
+- [Troubleshoot high IOPS utilization in Azure Database for PostgreSQL - Flexible Server](how-to-high-io-utilization.md).
+- [Best practices for uploading data in bulk in Azure Database for PostgreSQL - Flexible Server](how-to-bulk-load-data.md).
+- [Troubleshoot high CPU utilization in Azure Database for PostgreSQL - Flexible Server](how-to-high-cpu-utilization.md).
+- [Query Performance Insight in Azure Database for PostgreSQL - Flexible Server](concepts-query-performance-insight.md).

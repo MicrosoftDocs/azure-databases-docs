@@ -172,9 +172,9 @@ Once you have the statement, you can use any PostgreSQL client of your preferenc
 
 ## Related content
 
-- [Index tuning in Azure Database for PostgreSQL - Flexible Server](concepts-index-tuning.md)
-- [Configure index tuning in Azure Database for PostgreSQL - Flexible Server](how-to-configure-index-tuning.md)
-- [Monitor performance with Query Store](concepts-query-store.md)
-- [Usage scenarios for Query Store - Azure Database for PostgreSQL - Flexible Server](concepts-query-store-scenarios.md)
-- [Best practices for Query Store - Azure Database for PostgreSQL - Flexible Server](concepts-query-store-best-practices.md)
-- [Query Performance Insight for Azure Database for PostgreSQL - Flexible Server](concepts-query-performance-insight.md)
+- [Index tuning in Azure Database for PostgreSQL - Flexible Server](concepts-index-tuning.md).
+- [Configure index tuning in Azure Database for PostgreSQL - Flexible Server](how-to-configure-index-tuning.md).
+- [Monitor performance with Query Store](concepts-query-store.md).
+- [Usage scenarios for Query Store - Azure Database for PostgreSQL - Flexible Server](concepts-query-store-scenarios.md).
+- [Best practices for Query Store - Azure Database for PostgreSQL - Flexible Server](concepts-query-store-best-practices.md).
+- [Query Performance Insight for Azure Database for PostgreSQL - Flexible Server](concepts-query-performance-insight.md).

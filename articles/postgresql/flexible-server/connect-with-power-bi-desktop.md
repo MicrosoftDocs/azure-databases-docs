@@ -118,7 +118,13 @@ The following table lists all of the advanced options you can set in Power Query
 
 Once you've selected the advanced options you require, select **OK** in Power Query Desktop to connect to your PostgreSQL database.
 
-## Next step
+## Related content
 
-> [!div class="nextstepaction"]
-> [Build visuals with Power BI Desktop](/power-bi/fundamentals/desktop-what-is-desktop)
+- [Manage Azure Database for PostgreSQL - Flexible Server](how-to-manage-server-portal.md).
+- [Build visuals with Power BI Desktop](/power-bi/fundamentals/desktop-what-is-desktop).
+- [Quickstart: Use Python to connect and query data from an instance of Azure Database for PostgreSQL flexible server](connect-python.md).
+- [Quickstart: Use Java to connect and query data from an instance of Azure Database for PostgreSQL flexible server](connect-java.md).
+- [Quickstart: Use .NET (C#) to connect and query data from an instance of Azure Database for PostgreSQL flexible server](connect-csharp.md).
+- [Quickstart: Use Go language to connect and query data from an instance of Azure Database for PostgreSQL flexible server](connect-go.md).
+- [Quickstart: Use PHP to connect and query data from an instance of Azure Database for PostgreSQL flexible server](connect-php.md).
+- [Quickstart: Use Azure CLI to connect and query data from an instance of Azure Database for PostgreSQL flexible server](connect-azure-cli.md).

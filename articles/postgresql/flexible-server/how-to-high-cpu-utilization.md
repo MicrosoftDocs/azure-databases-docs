@@ -196,11 +196,10 @@ A short-term solution would be to do a manual vacuum analyze of the tables where
 VACUUM ANALYZE <table>;
 ```
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
+## Related content
 
-## Related contents
-
-- [autovacuum tuning](how-to-autovacuum-tuning.md)
-- [high memory utilization](how-to-high-memory-utilization.md)
-- [identify slow queries](how-to-identify-slow-queries.md)
-- [server parameters](concepts-server-parameters.md)
+- [Troubleshoot high memory utilization in Azure Database for PostgreSQL - Flexible Server](how-to-high-memory-utilization.md).
+- [Troubleshoot high IOPS utilization in Azure Database for PostgreSQL - Flexible Server](how-to-high-io-utilization.md).
+- [Troubleshoot and identify slow-running queries in Azure Database for PostgreSQL - Flexible Server](how-to-identify-slow-queries.md).
+- [Server parameters in Azure Database for PostgreSQL - Flexible Server](concepts-server-parameters.md).
+- [Autovacuum tuning in Azure Database for PostgreSQL - Flexible Server](how-to-autovacuum-tuning.md).

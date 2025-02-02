@@ -103,7 +103,7 @@ The following sections list considerations for what is and isn't supported in Az
 
 ### High availability
 
-- See [High availability (reliability) in Azure Database for PostgreSQL - Flexible Server](concepts-high-availability.md#high-availability---limitations).
+- See [High availability in Azure Database for PostgreSQL - Flexible Server](/azure/reliability/reliability-postgresql-flexible-server#high-availability-limitations).
 
 ### Availability zones
 
@@ -143,7 +143,6 @@ The following sections list considerations for what is and isn't supported in Az
 
 ## Related content
 
-- Understand [what’s available for compute options](concepts-compute.md)
-- Understand [what’s available for Storage options](concepts-storage.md)
-- Learn about [Supported PostgreSQL database versions](concepts-supported-versions.md)
-- Review [how to back up and restore a server in Azure Database for PostgreSQL flexible server using the Azure portal](how-to-restore-server-portal.md)
+- [Compute options in Azure Database for PostgreSQL - Flexible Server](concepts-compute.md).
+- [Storage options in Azure Database for PostgreSQL - Flexible Server](concepts-storage.md).
+- [Supported versions of PostgreSQL in Azure Database for PostgreSQL - Flexible Server](concepts-supported-versions.md).

@@ -10,7 +10,7 @@ ms.subservice: flexible-server
 ms.topic: concept-article
 ---
 
-# Elastic Clusters on Azure Database for PostgreSQL
+# Elastic Clusters in Azure Database for PostgreSQL - Flexible Server
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
@@ -49,7 +49,7 @@ To learn more about Citus, you can refer to the official open-source [project do
 
 By default, tables and schemas created with Citus aren't automatically distributed among the cluster. You need to decide on a sharding model, and either decide to distribute schemas or decide to distribute your table data with row based sharding.
 
-For each query on distributed tables, the queried node either routes it to a single node or parallelizes it across several nodes. The decision depends on whether the required data lives on a single node or on multiple. With [schema-based sharding](./concepts-elastic-clusters-sharding-models.md#schema-based-sharding), the coordinator routes the queries directly to the node that hosts the schema. In both, schema-based sharding and [row-based sharding](./concepts-elastic-clusters-sharding-models.md#row-based-sharding), the node decides what to do by consulting metadata tables. These tables track the location and health of nodes, and the distribution of data across nodes.
+For each query on distributed tables, the queried node either routes it to a single node or parallelizes it across several nodes. The decision depends on whether the required data lives on a single node or on multiple. With [schema-based sharding](concepts-elastic-clusters-sharding-models.md#schema-based-sharding), the coordinator routes the queries directly to the node that hosts the schema. In both, schema-based sharding and [row-based sharding](concepts-elastic-clusters-sharding-models.md#row-based-sharding), the node decides what to do by consulting metadata tables. These tables track the location and health of nodes, and the distribution of data across nodes.
 
 Once data is distributed using one of the sharding models, you can connect to any of the nodes to perform DML (Data Modification Language) operations (SELECT, UPDATE, INSERT, DELETE). All nodes contain the metadata required to locate data needed for the query and are able to obtain it to answer the query.
 
@@ -106,10 +106,8 @@ WHERE shardid = 102027;
 └─────────┴───────────┴──────────┘
 ```
 
-[Share your suggestions and bugs with the Azure Database for PostgreSQL product team](https://aka.ms/pgfeedback).
-
 ## Related content
 
-- [Sharding models](./concepts-elastic-clusters-sharding-models.md)
-- [Table types](./concepts-elastic-clusters-table-types.md)
-- [Limitations](./concepts-elastic-clusters-limitations.yml)
+- [Sharding models on Elastic Clusters in Azure Database for PostgreSQL - Flexible Server](concepts-elastic-clusters-sharding-models.md).
+- [Table types on Elastic Clusters in Azure Database for PostgreSQL - Flexible Server](concepts-elastic-clusters-table-types.md).
+- [Frequently asked questions about Elastic Clusters with Azure Database for PostgreSQL limitations](concepts-elastic-clusters-limitations.yml).
