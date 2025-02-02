@@ -12,7 +12,7 @@ ms.date: 09/27/2024
 
 # $mod (as Query Operator)
 
-The `$mod` query operator is used to filter documents based on the remainder of a division operation. This operator allows for queries that involve mathematical conditions, such as finding values divisible by a number or having a specific remainder. It is supported in Azure Cosmos DB for MongoDB (vCore).
+The `$mod` query operator is used to filter documents based on the remainder of a division operation. This operator allows for queries that involve mathematical conditions, such as finding values divisible by a number or having a specific remainder. It's supported in Azure Cosmos DB for MongoDB (vCore).
 
 ## Syntax
 
@@ -55,7 +55,7 @@ This example demonstrates querying a nested field (`sales.monthly.total`) with t
 ## Limitations
 
 - The `$mod` operator is applied to numerical fields only. Using it on non-numerical fields result in an error.
-- Ensure that the divisor is not zero, as this will lead to an invalid operation.
+- Ensure that the divisor isn't zero, as it leads to an invalid operation.
 
 ## Related content
 [!INCLUDE[Related content](../includes/related-content.md)]

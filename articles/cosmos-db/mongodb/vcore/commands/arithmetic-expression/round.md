@@ -12,7 +12,7 @@ ms.date: 09/27/2024
 
 # $round
 
-The `$round` operator is used to round a number to a specified decimal place. It is particularly useful in aggregations where numerical precision is important, such as financial calculations or statistical analysis.
+The `$round` operator is used to round a number to a specified decimal place. It's useful in aggregations where numerical precision is important, such as financial calculations or statistical analysis.
 
 ## Syntax
 
@@ -27,7 +27,7 @@ The `$round` operator is used to round a number to a specified decimal place. It
 | **`<number>`** | The number to be rounded. |
 | **`<place>`** | The decimal place to which the number should be rounded. |
 
-## Example(s)
+## Example
 
 ### Round the latitude and longitude values
 

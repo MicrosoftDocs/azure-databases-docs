@@ -12,7 +12,7 @@ ms.date: 09/27/2024
 
 # $multiply (Aggregation Expression)
 
-The `$multiply` operator calculates the product of numerical expressions and is supported in aggregation operations. It is a useful tool for deriving calculated fields or performing arithmetic within aggregation pipelines.
+The `$multiply` operator calculates the product of numerical expressions and is supported in aggregation operations. It's a useful tool for deriving calculated fields or performing arithmetic within aggregation pipelines.
 
 ## Syntax
 
@@ -26,7 +26,7 @@ The `$multiply` operator calculates the product of numerical expressions and is 
 - **`<expression2>`**: A valid expression that resolves to a number.
 - **`...`**: Additional expressions, each resolving to a number.
 
-## Example(s)
+## Example
 
 ### Example 1: Multiply a field by a constant
 
@@ -87,7 +87,7 @@ The resulting `area` field is the product of the rectangle's `width` and `height
 
 ## Limitations
 
-- The `$multiply` operator works only with numerical expressions. Using it with non-numerical values will result in an error.
+- The `$multiply` operator works only with numerical expressions. Using it with non-numerical values result in an error.
 - Be cautious of overflow or precision issues when working with large numbers or floating-point arithmetic.
 
 ## Related content
