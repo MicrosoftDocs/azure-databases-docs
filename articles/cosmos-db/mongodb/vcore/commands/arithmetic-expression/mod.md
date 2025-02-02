@@ -1,3 +1,4 @@
+---
 title: $mod (as Query Operator)
 titleSuffix: Azure Cosmos DB for MongoDB vCore
 description: The $mod query operator in Azure Cosmos DB for MongoDB vCore is used to filter documents based on a modulus operation.
@@ -7,6 +8,7 @@ ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: reference
 ms.date: 09/27/2024
+---
 
 # $mod (as Query Operator)
 

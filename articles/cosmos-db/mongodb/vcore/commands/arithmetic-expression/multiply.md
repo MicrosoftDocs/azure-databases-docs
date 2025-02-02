@@ -1,3 +1,4 @@
+---
 title: $multiply (Aggregation Expression)
 titleSuffix: Azure Cosmos DB for MongoDB vCore
 description: The $multiply operator in Azure Cosmos DB for MongoDB vCore calculates the product of numerical expressions.
@@ -7,7 +8,6 @@ ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: reference
 ms.date: 09/27/2024
-
 ---
 
 # $multiply (Aggregation Expression)
