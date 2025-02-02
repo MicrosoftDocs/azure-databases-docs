@@ -37,8 +37,8 @@ landingContent:
             url: arithmetic-expression/round.md
           - text: sqrt
             url: arithmetic-expression/sqrt.md
-          - text: substract
-            url: arithmetic-expression/substract.md
+          - text: subtract
+            url: arithmetic-expression/subtract.md
           - text: trunc
             url: arithmetic-expression/trunc.md
   - title: Query-and-Write
