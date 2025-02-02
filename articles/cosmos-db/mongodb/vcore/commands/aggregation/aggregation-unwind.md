@@ -2,7 +2,7 @@
 title: $unwind (Aggregation Pipeline Stage)
 titleSuffix: Azure Cosmos DB for MongoDB vCore
 description: The $unwind stage in the aggregation framework is used to deconstruct an array field from the input documents to output a document for each element.
-author: gahl.levy
+author: gahl-levy
 ms.author: gahllevy
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
@@ -75,5 +75,5 @@ This will output documents where each document represents a single discount with
 
 ## Related content
 
-- Review options for [migrating from MongoDB to Azure Cosmos DB for MongoDB (vCore)](migration-options.md)
-- Get started by [creating an account](../quickstart-portal.md).
+- Review options for [migrating from MongoDB to Azure Cosmos DB for MongoDB (vCore)](../../migration-options.md)
+- Get started by [creating an account](../../quickstart-portal.md).

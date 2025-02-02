@@ -2,7 +2,7 @@
 title: $unset (as Aggregation Pipeline Stage)
 titleSuffix: Azure Cosmos DB for MongoDB vCore
 description: The $unset stage in the aggregation pipeline is used to remove specified fields from documents.
-author: gahl.levy
+author: gahl-levy
 ms.author: gahllevy
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
@@ -23,7 +23,7 @@ The syntax for the $unset stage is straightforward. It accepts a single argument
 ```
 
 Parameters
-<field1>, <field2>, ... : The names of the fields to remove from the documents.
+field1, field2, ... : The names of the fields to remove from the documents.
 
 ## Example(s)
 Here are a few examples demonstrating how to use the $unset stage in an aggregation pipeline.
@@ -63,5 +63,5 @@ db.stores.aggregate([
 
 ## Related content
 
-- Review options for [migrating from MongoDB to Azure Cosmos DB for MongoDB (vCore)](migration-options.md)
-- Get started by [creating an account](../quickstart-portal.md).
+- Review options for [migrating from MongoDB to Azure Cosmos DB for MongoDB (vCore)](../../migration-options.md)
+- Get started by [creating an account](../../quickstart-portal.md).
