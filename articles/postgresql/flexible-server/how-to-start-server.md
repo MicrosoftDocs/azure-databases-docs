@@ -4,11 +4,11 @@ description: This article describes how to start an Azure Database for PostgreSQ
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 01/04/2025
+ms.date: 02/03/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: how-to
-#customer intent: As a user, I want to learn how to start an Azure Database for PostgreSQL flexible server, so that I can manage my server efficiently.
+#customer intent: As a user, I want to learn how to start an Azure Database for PostgreSQL flexible server.
 ---
 
 # Start a server
@@ -17,7 +17,7 @@ ms.topic: how-to
 
 This article provides step-by-step instructions to start an Azure Database for PostgreSQL flexible server.
 
-## Start a stopped server
+## Steps to start a server
 
 ### [Portal](#tab/portal-start-server)
 
@@ -76,9 +76,6 @@ Message: Start Server can only be performed on Stopped servers. Server Name = <s
 
 ## Related content
 
-- [Stop an Azure Database for PostgreSQL flexible server](how-to-stop-server.md).
-- [Restart an Azure Database for PostgreSQL flexible server](how-to-restart-server.md).
-- [Reset administrator password of an Azure Database for PostgreSQL flexible server](how-to-reset-admin-password.md).
-- [Delete an Azure Database for PostgreSQL flexible server](how-to-delete-server.md).
-- [Configure storage autogrow in an Azure Database for PostgreSQL flexible server](how-to-auto-grow-storage.md).
-- [Configure high availability in an Azure Database for PostgreSQL flexible server](how-to-configure-high-availability.md).
+- [Stop a server](how-to-stop-server.md).
+- [Restart a server](how-to-restart-server.md).
+- [Configure high availability](how-to-configure-high-availability.md).
