@@ -1,6 +1,6 @@
 ---
-title: Download PostgreSQL server logs and major version upgrade logs
-description: This article describes how to configure, list, and download PostgreSQL server logs and major version upgrade logs.
+title: Download PostgreSQL and upgrade logs
+description: This article describes how to configure, list, and download PostgreSQL and upgrade logs.
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
@@ -8,10 +8,10 @@ ms.date: 02/03/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: how-to
-# customer intent: As a user, I want to learn how to configure, list, and download PostgreSQL server logs and major version upgrade logs.
+# customer intent: As a user, I want to learn how to configure, list, and download PostgreSQL and upgrade logs.
 ---
 
-# Download PostgreSQL server logs and major version upgrade logs
+# Download PostgreSQL and upgrade logs
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
@@ -21,7 +21,7 @@ By default, capturing server logs for download in an Azure Database for PostgreS
 
 This article explains how to enable and disable the feature. It also describes how you can list all available server logs, and how can you download any of them.
 
-## Steps to enable the capture of PostgreSQL server logs and major version upgrade logs for download
+## Steps to enable the capture of PostgreSQL and upgrade logs for download
 
 ### [Portal](#tab/portal-enable-capture-of-logs)
 
@@ -84,7 +84,7 @@ Message: The value: [<value>] of Server Parameter: [logfiles.retention_days] is 
 > * Initially, and for approximately one hour, server logs occupy data disk space. Then, they're moved to backup storage and kept there for the configured retention period.
 
 
-## Steps to disable the capture of PostgreSQL server logs and major version upgrade logs for download
+## Steps to disable the capture of PostgreSQL and upgrade logs for download
 
 ### [Portal](#tab/portal-disable-capture-of-logs)
 
@@ -178,7 +178,7 @@ az postgres flexible-server server-logs list --resource-group <resource_group> -
 
 ---
 
-## Steps to download captured logs available for download
+## Steps to download captured logs
 
 ### [Portal](#tab/portal-download-captured-logs)
 

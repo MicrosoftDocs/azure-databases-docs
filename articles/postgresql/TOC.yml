@@ -393,71 +393,89 @@
         href: flexible-server/tutorial-microservices.md
   - name: How-to guides
     items:
-    - name: Configuration management
+    - name: Configuration and Maintenance
       items:
-      - name: Server parameters
-        href: flexible-server/how-to-configure-server-parameters.md
-      - name: Extensions
+      - name: Power management
         items:
-        - name: Manage
-          href: extensions/how-to-allow-extensions.md
-        - name: Special considerations
-          href: extensions/concepts-extensions-considerations.md
-        - name: List by name
-          href: extensions/concepts-extensions-versions.md           
-        - name: List by version of PostgreSQL
-          href: extensions/concepts-extensions-by-engine.md           
-        - name: Azure AI (azure_ai)
-          items:
-          - name: Overview
-            href: flexible-server/generative-ai-azure-overview.md
-          - name: Azure OpenAI
-            href: flexible-server/generative-ai-azure-openai.md
-          - name: Azure Cognitive Services
-            href: flexible-server/generative-ai-azure-cognitive.md
-          - name: Azure Machine Learning Services
-            href: flexible-server/generative-ai-azure-machine-learning.md
-        - name: In-database Embeddings (azure_local_ai)
-          items:
-          - name: Overview  
-            href: flexible-server/azure-local-ai.md
-          - name: How to enable and use
-            href: flexible-server/generative-ai-azure-local-ai.md
-        - name: Vector indexing (pg_diskann)
-          items:
-          - name: Overview  
-            href: flexible-server/how-to-use-pgdiskann.md
-        - name: Azure Storage (pg_azure_storage)
-          href: flexible-server/how-to-use-pg-azure-storage.md
-        - name: Vector similarity search (pgvector)
-          items:
-          - name: Basics of pgvector
-            href: flexible-server/how-to-use-pgvector.md
-            displayName: vector databases
-          - name: Optimize performance when using pgvector
-            href: flexible-server/how-to-optimize-performance-pgvector.md
-            displayName: vector databases
-        - name: Partitioning
-          items:
-          - name: Partitioning using pg_partman
-            href: flexible-server/how-to-use-pg-partman.md
-            displayName: pg_partman
-      - name: Major version upgrade
-        href: flexible-server/how-to-perform-major-version-upgrade.md
-    - name: Monitoring and maintenance
-      items:
-      - name: Start a server
-        href: flexible-server/how-to-start-server.md
-      - name: Stop a server
-        href: flexible-server/how-to-stop-server.md
-      - name: Restart a server
-        href: flexible-server/how-to-restart-server.md
+        - name: Start a server
+          href: flexible-server/how-to-start-server.md
+        - name: Stop a server
+          href: flexible-server/how-to-stop-server.md
+        - name: Restart a server
+          href: flexible-server/how-to-restart-server.md
       - name: Configure high availability
         href: flexible-server/how-to-configure-high-availability.md
-      - name: PostgreSQL and major version upgrade logs
-        href: flexible-server/how-to-configure-server-logs.md
-      - name: Scheduled maintenance
+      - name: Schedule maintenance
         href: flexible-server/how-to-configure-scheduled-maintenance.md
+      - name: Server parameters
+        items:
+        - name: List all server parameters
+          href: flexible-server/how-to-server-parameters-list-all.md
+        - name: List server parameters with modified values
+          href: flexible-server/how-to-server-parameters-list-modified.md
+        - name: List read-write static server parameters
+          href: flexible-server/how-to-server-parameters-list-read-write-static.md
+        - name: List read-write dynamic server parameters
+          href: flexible-server/how-to-server-parameters-list-read-write-dynamic.md
+        - name: List read-only server parameters
+          href: flexible-server/how-to-server-parameters-list-read-only.md
+        - name: Set the value of one or more server parameters
+          href: flexible-server/how-to-server-parameters-set-value.md
+        - name: Revert one server parameter to its default
+          href: flexible-server/how-to-server-parameters-revert-one-default.md
+        - name: Revert all server parameters to their default
+          href: flexible-server/how-to-server-parameters-revert-all-default.md
+      - name: Major version upgrade
+        href: flexible-server/how-to-perform-major-version-upgrade.md
+    - name: Extensions
+      items:
+      - name: Manage
+        href: extensions/how-to-allow-extensions.md
+      - name: Special considerations
+        href: extensions/concepts-extensions-considerations.md
+      - name: List by name
+        href: extensions/concepts-extensions-versions.md           
+      - name: List by version of PostgreSQL
+        href: extensions/concepts-extensions-by-engine.md           
+      - name: Azure AI (azure_ai)
+        items:
+        - name: Overview
+          href: flexible-server/generative-ai-azure-overview.md
+        - name: Azure OpenAI
+          href: flexible-server/generative-ai-azure-openai.md
+        - name: Azure Cognitive Services
+          href: flexible-server/generative-ai-azure-cognitive.md
+        - name: Azure Machine Learning Services
+          href: flexible-server/generative-ai-azure-machine-learning.md
+      - name: In-database Embeddings (azure_local_ai)
+        items:
+        - name: Overview  
+          href: flexible-server/azure-local-ai.md
+        - name: How to enable and use
+          href: flexible-server/generative-ai-azure-local-ai.md
+      - name: Vector indexing (pg_diskann)
+        items:
+        - name: Overview  
+          href: flexible-server/how-to-use-pgdiskann.md
+      - name: Azure Storage (pg_azure_storage)
+        href: flexible-server/how-to-use-pg-azure-storage.md
+      - name: Vector similarity search (pgvector)
+        items:
+        - name: Basics of pgvector
+          href: flexible-server/how-to-use-pgvector.md
+          displayName: vector databases
+        - name: Optimize performance when using pgvector
+          href: flexible-server/how-to-optimize-performance-pgvector.md
+          displayName: vector databases
+      - name: Partitioning
+        items:
+        - name: Partitioning using pg_partman
+          href: flexible-server/how-to-use-pg-partman.md
+          displayName: pg_partman
+    - name: Monitoring
+      items:
+      - name: Download PostgreSQL and upgrade logs
+        href: flexible-server/how-to-configure-server-logs.md
       - name: Create alerts on metrics using portal
         href: flexible-server/how-to-alert-on-metrics.md
       - name: Configure and access logs
@@ -478,8 +496,6 @@
             href: flexible-server/how-to-enable-intelligent-performance-cli.md
     - name: Networking
       items:
-      - name: Overview
-        href: flexible-server/how-to-networking.md
       - name: Public access (allowed IP addresses)
         items:
         - name: Enable public access
@@ -514,9 +530,11 @@
       items:
       - name: Scale compute
         href: flexible-server/how-to-scale-compute.md
-      - name: Scale storage
-        href: flexible-server/how-to-scale-storage.md
-      - name: Autogrow storage
+      - name: Scale storage size
+        href: flexible-server/how-to-scale-storage-size.md
+      - name: Scale storage performance
+        href: flexible-server/how-to-scale-storage-performance.md
+      - name: Configure storage autogrow
         href: flexible-server/how-to-auto-grow-storage.md
       - name: Replication
         items:
@@ -524,35 +542,52 @@
           href: flexible-server/how-to-read-replicas-portal.md
         - name: Read replica with Terraform
           href: flexible-server/how-to-read-replicas-virtual-endpoints-terraform.md
-    - name: Backup and recovery
+    - name: Backup and restore
       items:
-      - name: Perform on-demand backups
-        href: flexible-server/how-to-operate-on-demand-backups.md
-      - name: Restore a server
-        href: flexible-server/how-to-restore-server.md
-      - name: Restore a dropped server
-        href: flexible-server/how-to-restore-dropped-server.md
+        - name: Backup
+          items:
+          - name: Perform on-demand backups
+            href: flexible-server/how-to-perform-backups.md
+          - name: List all backups
+            href: flexible-server/how-to-list-all-backups.md
+          - name: Delete on-demand backups
+            href: flexible-server/how-to-delete-backups.md
+        - name: Restore
+          items:
+          - name: Restore to latest restore point
+            href: flexible-server/how-to-restore-latest-restore-point.md
+          - name: Restore to custom restore point
+            href: flexible-server/how-to-restore-custom-restore-point.md
+          - name: Restore to full backup (fast restore)
+            href: flexible-server/how-to-restore-full-backup.md
+          - name: Restore to paired region (geo-restore)
+            href: flexible-server/how-to-restore-paired-region.md
+          - name: Restore a dropped server
+            href: flexible-server/how-to-restore-dropped-server.md
     - name: Security management
       items:
-      - name: Managed identities
-        href: flexible-server/how-to-configure-managed-identities.md
-      - name: Data encryption
-        href: flexible-server/how-to-data-encryption.md
-      - name: Reset administrator password
-        href: flexible-server/how-to-reset-admin-password.md
       - name: Authentication
         items:
         - name: Create users
           href: flexible-server/how-to-create-users.md
         - name: Configure Microsoft Entra integration
           href: flexible-server/how-to-configure-sign-in-azure-ad-authentication.md
-          displayName: application development, azure ad, active directory
         - name: Connect with managed identity
           href: flexible-server/how-to-connect-with-managed-identity.md
         - name: Manage Microsoft Entra users
           href: flexible-server/how-to-manage-azure-ad-users.md
         - name: Connect with SCRAM authentication
           href: flexible-server/how-to-connect-scram.md
+      - name: Data encryption
+        href: flexible-server/how-to-data-encryption.md
+      - name: Managed identities
+        items:
+        - name: System assigned managed identity
+          href: flexible-server/how-to-configure-managed-identities-system-assigned.md
+        - name: User assigned managed identities
+          href: flexible-server/how-to-configure-managed-identities-user-assigned.md
+      - name: Reset administrator password
+        href: flexible-server/how-to-reset-admin-password.md
     - name: Decommissioning and relocation
       items:
       - name: Delete a server

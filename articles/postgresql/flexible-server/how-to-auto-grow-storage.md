@@ -4,7 +4,7 @@ description: This article describes how you can configure storage autogrow in an
 author: kabharati
 ms.author: kabharati
 ms.reviewer: maghan
-ms.date: 01/05/2025
+ms.date: 02/03/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: how-to
@@ -24,7 +24,7 @@ As an illustration, take a server with a storage capacity of 2 TiB (greater than
 > [!NOTE]  
 > Storage always doubles in size for premium disk SSD, and that doubles the storage cost. Only premium SSD V2 supports more granular disk size increase.
 
-## Enable storage autogrow for existing servers
+## Steps to enable storage autogrow for existing servers
 
 ### [Portal](#tab/portal-enable-existing-server)
 
@@ -53,7 +53,7 @@ az postgres flexible-server update --resource-group <resource_group> --name <ser
 ```
 ---
 
-## Disable storage autogrow for existing servers
+## Steps to disable storage autogrow for existing servers
 
 ### [Portal](#tab/portal-disable-existing-server)
 
@@ -83,7 +83,7 @@ az postgres flexible-server update --resource-group <resource_group> --name <ser
 
 ---
 
-## Enable storage autogrow during server provisioning
+## Steps to enable storage autogrow during server provisioning
 
 ### [Portal](#tab/portal-enable-new-server)
 
@@ -113,9 +113,6 @@ az postgres flexible-server create --resource-group <resource_group> --name <ser
 
 ## Related content
 
-- [Start an Azure Database for PostgreSQL flexible server](how-to-start-server.md).
-- [Stop an Azure Database for PostgreSQL flexible server](how-to-stop-server.md).
-- [Restart an Azure Database for PostgreSQL flexible server](how-to-restart-server.md).
-- [Reset administrator password of an Azure Database for PostgreSQL flexible server](how-to-reset-admin-password.md).
-- [Delete an Azure Database for PostgreSQL flexible server](how-to-delete-server.md).
-- [Configure high availability in an Azure Database for PostgreSQL flexible server](how-to-configure-high-availability.md).
+- [Scale storage performance](how-to-scale-storage-performance.md).
+- [Storage options](concepts-storage.md).
+- [Limits in Azure Database for PostgreSQL - Flexible Server](concepts-limits.md).
