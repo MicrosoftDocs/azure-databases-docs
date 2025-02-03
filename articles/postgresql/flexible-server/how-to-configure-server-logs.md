@@ -1,5 +1,5 @@
 ---
-title: Capture of PostgreSQL server logs and major version upgrade logs for download
+title: Download PostgreSQL server logs and major version upgrade logs
 description: This article describes how to configure, list, and download PostgreSQL server logs and major version upgrade logs.
 author: varun-dhawan
 ms.author: varundhawan
@@ -8,10 +8,10 @@ ms.date: 02/03/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: how-to
-# customer intent: As a user, I want to learn about how to configure my Azure Database for PostgreSQL flexible server, so that I can download PostgreSQL server logs and major version upgrade logs for further inspection.
+# customer intent: As a user, I want to learn how to configure, list, and download PostgreSQL server logs and major version upgrade logs.
 ---
 
-# Capture of PostgreSQL server logs and major version upgrade logs for download
+# Download PostgreSQL server logs and major version upgrade logs
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 

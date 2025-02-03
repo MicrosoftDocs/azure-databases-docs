@@ -77,4 +77,4 @@ Message: Restart or Stop Server can only be performed on Started servers. Server
 
 - [Stop a server](how-to-stop-server.md).
 - [Configure high availability](how-to-configure-high-availability.md).
-- [Capture of PostgreSQL server logs and major version upgrade logs for download](how-to-configure-server-logs.md).
+- [Download PostgreSQL server logs and major version upgrade logs](how-to-configure-server-logs.md).
