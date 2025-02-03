@@ -4,11 +4,11 @@ description: This article describes how to restart an Azure Database for Postgre
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 01/04/2025
+ms.date: 02/03/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: how-to
-#customer intent: As a user, I want to learn how to restart an Azure Database for PostgreSQL flexible server, so that I can manage my server efficiently.
+#customer intent: As a user, I want to learn how to restart an Azure Database for PostgreSQL flexible server.
 ---
 
 # Restart a server
@@ -17,7 +17,7 @@ ms.topic: how-to
 
 This article provides step-by-step instructions to restart an Azure Database for PostgreSQL flexible server.
 
-## Restart a started server
+## Steps to restart a server
 
 ### [Portal](#tab/portal-restart-server)
 
@@ -75,9 +75,6 @@ Message: Restart or Stop Server can only be performed on Started servers. Server
 
 ## Related content
 
-- [Start an Azure Database for PostgreSQL flexible server](how-to-start-server.md).
-- [Stop an Azure Database for PostgreSQL flexible server](how-to-stop-server.md).
-- [Reset administrator password of an Azure Database for PostgreSQL flexible server](how-to-reset-admin-password.md).
-- [Delete an Azure Database for PostgreSQL flexible server](how-to-delete-server.md).
-- [Configure storage autogrow in an Azure Database for PostgreSQL flexible server](how-to-auto-grow-storage.md).
-- [Configure high availability in an Azure Database for PostgreSQL flexible server](how-to-configure-high-availability.md).
+- [Stop a server](how-to-stop-server.md).
+- [Configure high availability](how-to-configure-high-availability.md).
+- [Download PostgreSQL server logs and major version upgrade logs](how-to-configure-server-logs.md).
