@@ -85,5 +85,6 @@ You can also [set up](/azure/service-health/resource-health-alert-monitor-guide)
 
 ## Related content
 
-- [Scheduled maintenance in Azure Database for PostgreSQL - Flexible Server](concepts-maintenance.md).
-- [Azure Service Health](/azure/service-health/overview).
+- [Capture of PostgreSQL server logs and major version upgrade logs for download](how-to-configure-server-logs.md).
+- [Create alerts on metrics using portal](how-to-alert-on-metrics.md).
+- [Configure and access logs](how-to-configure-and-access-logs.md)

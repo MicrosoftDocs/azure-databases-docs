@@ -1,14 +1,14 @@
 ---
 title: Configure high availability
-description: This article describes how to enable and disable high availability in an Azure Database for PostgreSQL flexible server.
+description: This article describes how to configure and operate high availability in an Azure Database for PostgreSQL flexible server.
 author: akashraokm
 ms.author: akashrao
 ms.reviewer: maghan
-ms.date: 01/05/2025
+ms.date: 02/03/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: how-to
-#customer intent: As a user, I want to learn how to enable and disable high availability in an Azure Database for PostgreSQL flexible server.
+#customer intent: As a user, I want to learn how to configure and operate high availability in an Azure Database for PostgreSQL flexible server.
 ---
 
 # Configure high availability
@@ -23,7 +23,7 @@ High availability feature deploys physically separate primary and standby replic
 > _Billing Model Update for Azure Database for PostgreSQL Flexible Server (v5 HA):_
 In April, we implemented a billing model update for v5 SKU with High Availability (HA) enabled servers. This change aims to correctly reflect the charges, by accounting for both the primary and standby servers. Before this change, we were incorrectly charging customers for the primary server only. Customers using v5 SKU with HA enabled servers will now see billing quantities multiplied by 2. This update doesn't impact v4 and v3 SKUs.
 
-## Enable high availability for existing servers
+## Steps to enable high availability for existing servers
 
 ### [Portal](#tab/portal-enable-existing-server)
 
@@ -108,7 +108,7 @@ Message: Invalid value given for parameter Cannot switch Properties.HighAvailabi
 
 ---
 
-## Disable high availability
+## Steps to disable high availability
 
 ### [Portal](#tab/portal-disable-existing-server)
 
@@ -148,7 +148,7 @@ az postgres flexible-server update --resource-group <resource_group> --name <ser
 
 ---
 
-## Enable high availability during server provisioning
+## Steps to enable high availability during server provisioning
 
 ### [Portal](#tab/portal-enable-new-server)
 
@@ -223,7 +223,7 @@ This region is single availability zone. Zone redundant high availability is not
 
 ---
 
-## Forced failover
+## Steps to initiate a forced failover
 
 Follow these steps to force a failover of your primary server to the standby server in an Azure Database for PostgreSQL flexible server. Initiating a forced failover immediately brings the primary server down, and triggers a failover to the standby server. Initiating a forced failover is useful for cases in which you want to test how a failover caused by an unplanned outage would affect your workload.
 
@@ -287,7 +287,7 @@ Message: Operation HandleWalServiceFailureManagementOperation failed, because se
 
 ---
 
-## Planned failover
+## Steps to initiate a planned failover
 
 Follow these steps to perform a planned failover from your primary server to the standby server in an Azure Database for PostgreSQL flexible server. Initiating this operation first prepares the standby server, and then performs the failover. This failover operation provides the least downtime, as it performs a graceful failover to the standby server. It's useful for situations like after an unexpected failover occurs, and you want to bring the primary server back to your preferred availability zone.
 
