@@ -180,6 +180,75 @@ If you get an error because the alias already exists, delete it and then run the
 keytool -cacerts -delete -alias cosmos_emulator
 ```
 
+## Use in continuous integration workflow
+
+The emulator can be incorporated as part continuous integration workflow using a platform such as GitHub Actions. This [GitHub repository](https://github.com/AzureCosmosDB/cosmosdb-linux-emulator-github-actions) provides examples of how to configure the emulator as part of a GitHub Actions CI workflow for [Python](https://github.com/AzureCosmosDB/cosmosdb-linux-emulator-github-actions/blob/main/.github/workflows/python.yml), [Java](https://github.com/AzureCosmosDB/cosmosdb-linux-emulator-github-actions/blob/main/.github/workflows/java.yml) and [Go](https://github.com/AzureCosmosDB/cosmosdb-linux-emulator-github-actions/blob/main/.github/workflows/go.yml) applications. Since the database runs in an isolated container, each CI job starts with a clean state, preventing conflicts between tests. This results in a testing environment that is reliable, consistent, and cost effective.
+
+Below is an example of how to use the Azure Cosmos DB Linux-based emulator in a GitHub Actions CI workflow for a Java application. It configures Azure Cosmos DB Linux-based emulator as a [GitHub Actions service container](https://docs.github.com/en/actions/use-cases-and-examples/using-containerized-services/about-service-containers) as part of the a job in the workflow. GitHub takes care of starting the Docker container and destroys it when the job completes - no manual intervention (like using the `docker run` command) required.
+
+```yml
+name: Java App CI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'java-app/**'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'java-app/**'
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    services:
+      cosmosdb:
+        image: mcr.microsoft.com/cosmosdb/linux/azure-cosmos-emulator:vnext-preview
+        ports:
+          - 8081:8081
+        env:
+          PROTOCOL: https
+        
+    env:
+      COSMOSDB_CONNECTION_STRING: ${{ secrets.COSMOSDB_CONNECTION_STRING }}
+      COSMOSDB_DATABASE_NAME: ${{ vars.COSMOSDB_DATABASE_NAME }}
+      COSMOSDB_CONTAINER_NAME: ${{ vars.COSMOSDB_CONTAINER_NAME }}
+
+    steps:
+
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'microsoft'
+          java-version: '21.0.0'
+
+      - name: Export Cosmos DB Emulator Certificate
+        run: |
+
+          sudo apt update && sudo apt install -y openssl
+
+          openssl s_client -connect localhost:8081 </dev/null | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' > cosmos_emulator.cert
+
+          cat cosmos_emulator.cert
+
+          $JAVA_HOME/bin/keytool -cacerts -importcert -alias cosmos_emulator -file cosmos_emulator.cert -storepass changeit -noprompt
+      
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run tests
+        run: cd java-app && mvn test
+```
+
+This job runs on an Ubuntu runner and uses the `mcr.microsoft.com/cosmosdb/linux/azure-cosmos-emulator:vnext-preview` Docker image as a service container. It uses environment variables to configure the connection string, database name, and container name. Since in this case the job is running directly on the GitHub Actions runner machine, the **Run tests** step in the job can access the emulator is accessible using `localhost:8081` (`8081` is the port exposed by the emulator).
+
+The **Export Cosmos DB Emulator Certificate** step is specific to Java applications (that use the Azure Cosmos DB Java SDK) since the Java SDK currently does not support `HTTP` mode in emulator (which is the default). The `PROTOCOL` environment variable is set to `https` in the `services` section and this step exports the emulator certificate and import it into the Java keystore. The same applies to .NET as well.
+
+> [!NOTE] 
+> The Azure Cosmos DB Linux emulator can run on a wide variety of processors and operating systems (including `ARM64`). In the case of GitHub Actions, it can only run on a Linux runner (a GitHub-hosted Ubuntu runner in this case) since it uses a service container. Read more in [About service containers](https://docs.github.com/en/actions/use-cases-and-examples/using-containerized-services/about-service-containers#about-service-containers) in GitHub Actions documentation.
+
 ## Reporting issues
 
 If you encounter issues with using this version of the emulator, open an issue in the GitHub repository (<https://github.com/Azure/azure-cosmos-db-emulator-docker>) and tag it with the label `cosmosEmulatorVnextPreview`.
