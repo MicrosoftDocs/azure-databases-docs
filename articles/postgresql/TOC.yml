@@ -477,12 +477,10 @@
           - name: Azure CLI
             href: flexible-server/how-to-enable-intelligent-performance-cli.md
     - name: Networking
-      expanded: true
       items:
       - name: Overview
         href: flexible-server/how-to-networking.md
       - name: Public access (allowed IP addresses)
-        expanded: true
         items:
         - name: Enable public access
           href: flexible-server/how-to-networking-servers-deployed-public-access-enable-public-access.md
@@ -501,12 +499,10 @@
         - name: Reject private endpoint connections
           href: flexible-server/how-to-networking-servers-deployed-public-access-reject-private-endpoint.md
       - name: Private access (VNET Integration)
-        expanded: true
         items:
         - name: Change private DNS zone
           href: flexible-server/how-to-networking-servers-deployed-vent-integration-change-private-dns-zone.md
       - name: Other
-        expanded: false
         items:
         - name: Encrypted connectivity using TLS/SSL
           href: flexible-server/how-to-connect-tls-ssl.md
@@ -515,7 +511,6 @@
         - name: Connect to managed data factory via Private Endpoint
           href: flexible-server/how-to-connect-to-data-factory-private-endpoint.md
     - name: Scaling
-      expanded: true
       items:
       - name: Scale compute
         href: flexible-server/how-to-scale-compute.md
@@ -530,7 +525,6 @@
         - name: Read replica with Terraform
           href: flexible-server/how-to-read-replicas-virtual-endpoints-terraform.md
     - name: Backup and recovery
-      expanded: true
       items:
       - name: Perform on-demand backups
         href: flexible-server/how-to-operate-on-demand-backups.md
@@ -539,7 +533,6 @@
       - name: Restore a dropped server
         href: flexible-server/how-to-restore-dropped-server.md
     - name: Security management
-      expanded: true
       items:
       - name: Managed identities
         href: flexible-server/how-to-configure-managed-identities.md
@@ -561,7 +554,6 @@
         - name: Connect with SCRAM authentication
           href: flexible-server/how-to-connect-scram.md
     - name: Decommissioning and relocation
-      expanded: true
       items:
       - name: Delete a server
         href: flexible-server/how-to-delete-server.md
