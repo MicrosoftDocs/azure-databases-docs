@@ -2029,6 +2029,11 @@
         "source_path_from_root": "/articles/postgresql/flexible-server/how-to-restore-server-cli.md",
         "redirect_url": "/azure/postgresql/flexible-server/how-to-restore-server",
         "redirect_document_id": false
+    },
+    {
+        "source_path_from_root": "/articles/postgresql/flexible-server/how-to-scale-storage.md",
+        "redirect_url": "/azure/postgresql/flexible-server/how-to-scale-storage-size",
+        "redirect_document_id": false
     }
 ]
 }

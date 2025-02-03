@@ -454,7 +454,7 @@
         href: flexible-server/how-to-restart-server.md
       - name: Configure high availability
         href: flexible-server/how-to-configure-high-availability.md
-      - name: PostgreSQL and major version upgrade logs
+      - name: Download PostgreSQL server logs and upgrade logs
         href: flexible-server/how-to-configure-server-logs.md
       - name: Scheduled maintenance
         href: flexible-server/how-to-configure-scheduled-maintenance.md
@@ -514,9 +514,11 @@
       items:
       - name: Scale compute
         href: flexible-server/how-to-scale-compute.md
-      - name: Scale storage
-        href: flexible-server/how-to-scale-storage.md
-      - name: Autogrow storage
+      - name: Scale storage size
+        href: flexible-server/how-to-scale-storage-size.md
+      - name: Scale storage performance
+        href: flexible-server/how-to-scale-storage-performance.md
+      - name: Configure storage autogrow
         href: flexible-server/how-to-auto-grow-storage.md
       - name: Replication
         items:
