@@ -456,7 +456,7 @@
         href: flexible-server/how-to-configure-high-availability.md
       - name: Download PostgreSQL and upgrade logs
         href: flexible-server/how-to-configure-server-logs.md
-      - name: Scheduled maintenance
+      - name: Schedule maintenance
         href: flexible-server/how-to-configure-scheduled-maintenance.md
       - name: Create alerts on metrics using portal
         href: flexible-server/how-to-alert-on-metrics.md
