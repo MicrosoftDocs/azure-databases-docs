@@ -152,6 +152,7 @@ Azure Database for PostgreSQL flexible server supports advanced [data recovery](
 - You can't use the same [user-managed identity](/azure/active-directory/managed-identities-azure-resources/how-manage-user-assigned-managed-identities) to authenticate for the primary database's Key Vault instance and the Key Vault instance that holds the encryption key for geo-redundant backup. To maintain regional resiliency, we recommend that you create the user-managed identity in the same region as the geo-redundant backups.
 - If you set up a [read replica database](../flexible-server/concepts-read-replicas.md) to be encrypted with CMKs during creation, its encryption key needs to be in a Key Vault instance in the region where the read replica database resides. The [user-assigned identity](/azure/active-directory/managed-identities-azure-resources/how-manage-user-assigned-managed-identities) to authenticate against this Key Vault instance needs to be created in the same region.
 
+<!--
 ### Customer managed key rotation and versionless keys (preview)
 
 As a precautionary measure, we recommend that you rotate the key periodically or whenever the key is compromised.
@@ -170,7 +171,7 @@ Manually rotating the key helps protect your data in case the key is compromised
 Versionless keys are recommended for data encryption in Azure Database for PostgreSQL flexible server. It correctly covers any of the key rotation scenarios described earlier. After a new key version is available, the server will automatically use the new version of the key version for encrypting and decrypting data.
 
 The API doesn't change for versionless keys. Instead of providing the entire key identifier URI, omit the version portion of the key identifier. This applies to the API, to Azure CLI, to ARM templates, and to Bicep templates. Azure portal has a checkbox to enable versionless, which you can use to select just the versionless key identifier.
-
+-->
 ## Limitations
 
 Here are current limitations for configuring the customer managed key in Azure Database for PostgreSQL flexible server:
