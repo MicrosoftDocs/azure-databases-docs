@@ -319,12 +319,12 @@ Using the feature troubleshooting guides that is available on the Azure Database
 
 ### Terminating autovacuum process - pg_signal_autovacuum_worker role
 
-Autovacuum is a very important background process as it helps with efficient storage and performance maintainence in the database. In the normal autovacuum process, it cancels itself after the deadlock_timeout. If a user is executing DDL statement on a table, a user might have to wait until the deadlock_timeout interval. This also does not allow executing reads/writes on the table requested by different connection requests, adding to latency in the transaction.
+Autovacuum is a very important background process as it helps with efficient storage and performance maintainence in the database. In the normal autovacuum process, it cancels itself after the `deadlock_timeout`. If a user is executing DDL statement on a table, a user might have to wait until the `deadlock_timeout` interval. This also does not allow executing reads/writes on the table requested by different connection requests, adding to latency in the transaction.
 
-We have introduced a role 'pg_signal_autovacuum_worker' which allows non-superuser members to terminate an ongoing autovacuum task. This helps users to get secure and controlled access to the autovacuum process. Non-super users can cancel the autovacuum process once they are granted the pg_signal_autovacuum_worker role by using pg_terminate_backend command.  We have backported the pg_signal_autovacuum_worker role to Azure Database for PostgreSQL flexible Server in PostgreSQL versions 15 and higher. 
+We have introduced a role `pg_signal_autovacuum_worker` which allows non-superuser members to terminate an ongoing autovacuum task. This helps users to get secure and controlled access to the autovacuum process. Non-super users can cancel the autovacuum process once they are granted the `pg_signal_autovacuum_worker` role by using `pg_terminate_backend` command.  We have backported the pg_signal_autovacuum_worker role to Azure Database for PostgreSQL flexible Server in PostgreSQL versions 15 and higher. 
 
 > [!NOTE]
-> We do not recommend to kill any ongoing autovacuum process because terminating autovacuum process might lead to table and databases bloat, which can further lead to peformance regressions. However, in cases where there is a business-critical requirement involving the scheduled execution of a DDL statement that coincides with the autovacuum process, we can allow non-superusers to terminate the autovacuum in a controlled and secure manner using pg_signal_autovacuum_worker role.
+> We do not recommend to kill any ongoing autovacuum process because terminating autovacuum process might lead to table and databases bloat, which can further lead to peformance regressions. However, in cases where there is a business-critical requirement involving the scheduled execution of a DDL statement that coincides with the autovacuum process, we can allow non-superusers to terminate the autovacuum in a controlled and secure manner using `pg_signal_autovacuum_worker role`.
 
 ## Azure Advisor Recommendations
 
