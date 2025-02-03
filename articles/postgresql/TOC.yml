@@ -454,7 +454,7 @@
         href: flexible-server/how-to-restart-server.md
       - name: Configure high availability
         href: flexible-server/how-to-configure-high-availability.md
-      - name: Download PostgreSQL server logs and upgrade logs
+      - name: Download PostgreSQL and upgrade logs
         href: flexible-server/how-to-configure-server-logs.md
       - name: Scheduled maintenance
         href: flexible-server/how-to-configure-scheduled-maintenance.md
