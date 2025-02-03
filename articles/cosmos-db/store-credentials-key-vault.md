@@ -214,7 +214,7 @@ Finally, inject the secrets stored in your key vault as app settings within the 
     | **Key** | Get the **secret identifier** for the **cosmos-endpoint** secret in your key vault that you created earlier in this tutorial. Enter the identifier in the following format: `@Microsoft.KeyVault(SecretUri=<secret-identifier>)`. |
 
     > [!TIP]
-    > Ensure that the environment variable has a double underscore (`__`) value instead of a single underscore. The double-underscore is a key delimeter supported by .NET on all platforms. For more information, see [environment variables configuration](/dotnet/core/extensions/configuration-providers#environment-variable-configuration-provider).
+    > Ensure that the environment variable has a double underscore (`__`) value instead of a single underscore. The double-underscore is a key delimiter supported by .NET on all platforms. For more information, see [environment variables configuration](/dotnet/core/extensions/configuration-providers#environment-variable-configuration-provider).
 
     > [!NOTE]
     > For example, if the secret identifier is `https://msdocs-key-vault.vault.azure.net/secrets/cosmos-endpoint/AB0CD1EF2GH3IJ4KL5MN6OP7QR8ST9`, then the reference is `@Microsoft.KeyVault(SecretUri=https://msdocs-key-vault.vault.azure.net/secrets/cosmos-endpoint/AB0CD1EF2GH3IJ4KL5MN6OP7QR8ST9)`:
