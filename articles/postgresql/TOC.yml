@@ -548,25 +548,28 @@
             href: flexible-server/how-to-restore-dropped-server.md
     - name: Security management
       items:
-      - name: Managed identities
-        href: flexible-server/how-to-configure-managed-identities.md
-      - name: Data encryption
-        href: flexible-server/how-to-data-encryption.md
-      - name: Reset administrator password
-        href: flexible-server/how-to-reset-admin-password.md
       - name: Authentication
         items:
         - name: Create users
           href: flexible-server/how-to-create-users.md
         - name: Configure Microsoft Entra integration
           href: flexible-server/how-to-configure-sign-in-azure-ad-authentication.md
-          displayName: application development, azure ad, active directory
         - name: Connect with managed identity
           href: flexible-server/how-to-connect-with-managed-identity.md
         - name: Manage Microsoft Entra users
           href: flexible-server/how-to-manage-azure-ad-users.md
         - name: Connect with SCRAM authentication
           href: flexible-server/how-to-connect-scram.md
+      - name: Data encryption
+        href: flexible-server/how-to-data-encryption.md
+      - name: Managed identities
+        items:
+        - name: System assigned managed identity
+          href: flexible-server/how-to-configure-managed-identities-system-assigned.md
+        - name: User assigned managed identities
+          href: flexible-server/how-to-configure-managed-identities-user-assigned.md
+      - name: Reset administrator password
+        href: flexible-server/how-to-reset-admin-password.md
     - name: Decommissioning and relocation
       items:
       - name: Delete a server
