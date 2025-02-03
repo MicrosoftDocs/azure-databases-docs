@@ -396,7 +396,23 @@
     - name: Configuration management
       items:
       - name: Server parameters
-        href: flexible-server/how-to-configure-server-parameters.md
+        items:
+        - name: List all server parameters
+          href: flexible-server/how-to-server-parameters-list-all.md
+        - name: List server parameters with modified values
+          href: flexible-server/how-to-server-parameters-list-modified.md
+        - name: List read-write static server parameters
+          href: flexible-server/how-to-server-parameters-list-read-write-static.md
+        - name: List read-write dynamic server parameters
+          href: flexible-server/how-to-server-parameters-list-read-write-dynamic.md
+        - name: List read-only server parameters
+          href: flexible-server/how-to-server-parameters-list-read-only.md
+        - name: Set the value of one or more server parameters
+          href: flexible-server/how-to-server-parameters-set-value.md
+        - name: Revert one server parameter to its default
+          href: flexible-server/how-to-server-parameters-revert-one-default.md
+        - name: Revert all server parameters to their default
+          href: flexible-server/how-to-server-parameters-revert-all-default.md
       - name: Extensions
         items:
         - name: Manage

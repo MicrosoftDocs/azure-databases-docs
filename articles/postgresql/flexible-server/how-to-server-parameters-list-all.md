@@ -17,7 +17,7 @@ ms.topic: how-to
 
 This article provides step-by-step instructions to list all server parameters of an Azure Database for PostgreSQL flexible server.
 
-# Steps to list all server parameters
+## Steps to list all server parameters
 
 ### [Portal](#tab/portal-list)
 
