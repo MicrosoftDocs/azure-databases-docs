@@ -14,6 +14,8 @@
   href: bitwise-update/toc.yml
 - name: Comparison query
   href: comparison-query/toc.yml
+- name: Data expression
+  href: data-expression/TOC.yml
 - name: Evaluation query
   href: evaluation-query/toc.yml
 - name: Geospatial
