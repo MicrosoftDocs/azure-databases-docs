@@ -478,8 +478,6 @@
             href: flexible-server/how-to-enable-intelligent-performance-cli.md
     - name: Networking
       items:
-      - name: Overview
-        href: flexible-server/how-to-networking.md
       - name: Public access (allowed IP addresses)
         items:
         - name: Enable public access
@@ -526,7 +524,7 @@
           href: flexible-server/how-to-read-replicas-portal.md
         - name: Read replica with Terraform
           href: flexible-server/how-to-read-replicas-virtual-endpoints-terraform.md
-    - name: Backup and recovery
+    - name: Backup and restore
       items:
       - name: Perform on-demand backups
         href: flexible-server/how-to-operate-on-demand-backups.md
