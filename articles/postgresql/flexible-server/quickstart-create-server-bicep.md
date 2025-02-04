@@ -89,14 +89,14 @@ Use Azure CLI or Azure PowerShell to deploy the Bicep file.
 
 # [CLI](#tab/CLI)
 
-```azurecli
+```azurecli-interactive
 az group create --name exampleRG --location centralus
 az deployment group create --resource-group exampleRG --template-file main.bicep
 ```
 
 # [PowerShell](#tab/PowerShell)
 
-```azurepowershell
+```azurepowershell-interactive
 New-AzResourceGroup -Name "exampleRG" -Location "centralus"
 New-AzResourceGroupDeployment -ResourceGroupName exampleRG  -TemplateFile "./main.bicep"
 ```
@@ -115,13 +115,13 @@ Use the Azure portal, Azure CLI, or Azure PowerShell to validate the deployment 
 
 # [CLI](#tab/CLI)
 
-```azurecli
+```azurecli-interactive
 az resource list --resource-group exampleRG
 ```
 
 # [PowerShell](#tab/PowerShell)
 
-```azurepowershell
+```azurepowershell-interactive
 Get-AzResource -ResourceGroupName exampleRG
 ```
 
@@ -135,13 +135,13 @@ To delete the resource group:
 
 # [CLI](#tab/CLI)
 
-```azurecli
+```azurecli-interactive
 az group delete --name exampleRG
 ```
 
 # [PowerShell](#tab/PowerShell)
 
-```azurepowershell
+```azurepowershell-interactive
 Remove-AzResourceGroup -Name exampleRG
 ```
 

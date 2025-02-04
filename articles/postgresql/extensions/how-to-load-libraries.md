@@ -33,17 +33,17 @@ Using the [Azure portal](https://portal.azure.com):
 
     :::image type="content" source="media/how-to-allow-extensions/save-and-restart.png" alt-text="Screenshot of Server parameters page, showing the dialog from which you can save changes and restart." lightbox="media/how-to-allow-extensions/save-and-restart.png":::
 
-### [Azure CLI](#tab/load-libraries-cli)
+### [CLI](#tab/load-libraries-cli)
 
 You can set `shared_preload_libraries` using the CLI [parameter set](/cli/azure/postgres/flexible-server/parameter#az-postgres-flexible-server-parameter-set) command.
 
-```azurecli
+```azurecli-interactive
 az postgres flexible-server parameter set --resource-group <resource_group> --server-name <server> --name shared_preload_libraries --value <extension_name>,<extension_name>
 ```
 
 And can restart the server using the CLI [parameter set](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-restart) command.
 
-```azurecli
+```azurecli-interactive
 az postgres flexible-server restart --resource-group <resource_group> --name <server>
 ```
 

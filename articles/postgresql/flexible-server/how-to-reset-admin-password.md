@@ -4,7 +4,7 @@ description: This article describes how to reset the password of the administrat
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 01/05/2025
+ms.date: 02/04/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: how-to
@@ -17,7 +17,7 @@ ms.topic: how-to
 
 This article provides step-by-step instructions to reset the administrator password of an Azure Database for PostgreSQL flexible server.
 
-## Reset server administrator password
+## Steps to reset administrator password
 
 ### [Portal](#tab/portal-reset-admin-password)
 
@@ -27,21 +27,45 @@ Using the [Azure portal](https://portal.azure.com/):
 
 2. In the resource menu, select **Overview**.
 
+    :::image type="content" source="./media/how-to-reset-admin-password/overview.png" alt-text="Screenshot showing the Overview page of an Azure Database for PostgreSQL flexible server." lightbox="./media/how-to-reset-admin-password/overview.png":::
+
 3. The status of the server must be **Available** for the **Reset password** button to be enabled on the toolbar.
 
-4. Select the **Reset password** button.
+    :::image type="content" source="./media/how-to-reset-admin-password/server-status.png" alt-text="Screenshot showing the status of the server set to Available." lightbox="./media/how-to-reset-admin-password/server-status.png":::
+
+4. In the resource menu, under the **Security** section, select **Authentication**.
+
+    :::image type="content" source="./media/how-to-reset-admin-password/authentication.png" alt-text="Screenshot showing the Authentication page of an Azure Database for PostgreSQL flexible server." lightbox="./media/how-to-reset-admin-password/authentication.png":::
+
+5. **Assign access to** must be either **PostgreSQL authentication only** or **PostgreSQL and Microsoft Entra authentication** for the **Reset password** button to be enabled on the toolbar. When set to **Microsoft Entra authentication only**, the **Reset password** button is disabled.
+
+    :::image type="content" source="./media/how-to-reset-admin-password/microsoft-entra-authentication-only.png" alt-text="Screenshot showing that server's authentication is configured with Microsoft Entra authentication only." lightbox="./media/how-to-reset-admin-password/microsoft-entra-authentication-only.png":::
+
+6. If **Reset password** button is disabled, you can hover the mouse over it, and a tooltip describes the reason why the button is disabled.
+
+    :::image type="content" source="./media/how-to-reset-admin-password/reset-password-disabled.png" alt-text="Screenshot showing Reset password button disabled." lightbox="./media/how-to-reset-admin-password/reset-password-disabled.png":::
+
+7. Select the **Reset password** button.
 
     :::image type="content" source="./media/how-to-reset-admin-password/reset-password.png" alt-text="Screenshot showing how to reset password of the server administrator." lightbox="./media/how-to-reset-admin-password/reset-password.png":::
 
-5. In the **Reset admin password** panel, enter the new password in the **Password** and **Confirm password** text boxes, and select **Save**.
+8. In the **Reset admin password** panel, enter the new password in the **Password** text box.
 
-    :::image type="content" source="./media/how-to-reset-admin-password/save-password.png" alt-text="Screenshot showing how to enter new password for the server administrator." lightbox="./media/how-to-reset-admin-password/save-password.png":::
+    :::image type="content" source="./media/how-to-reset-admin-password/enter-password.png" alt-text="Screenshot showing how to enter new password for the server administrator." lightbox="./media/how-to-reset-admin-password/enter-password.png":::
 
-6. A notification informs you that the password of the server administrator is being reset.
+9. In the **Reset admin password** panel, enter the new password in the **Confirm password** text box.
+
+    :::image type="content" source="./media/how-to-reset-admin-password/confirm-password.png" alt-text="Screenshot showing how to confirm new password for the server administrator." lightbox="./media/how-to-reset-admin-password/confirm-password.png":::
+
+10. Select **Save**.
+
+    :::image type="content" source="./media/how-to-reset-admin-password/save-password.png" alt-text="Screenshot showing how to save the new password provided for the server administrator." lightbox="./media/how-to-reset-admin-password/save-password.png":::
+
+11. A notification informs you that the password of the server administrator is being reset.
 
     :::image type="content" source="./media/how-to-reset-admin-password/notification-resetting-password.png" alt-text="Screenshot showing a server whose administrator's password is being reset." lightbox="./media/how-to-reset-admin-password/notification-resetting-password.png":::
 
-7. When the process completes, a notification informs you that the password was successfully reset.
+12. When the process completes, a notification informs you that the password was successfully reset.
 
     :::image type="content" source="./media/how-to-reset-admin-password/notification-reset-password.png" alt-text="Screenshot showing a server whose administrator's password reset completed successfully." lightbox="./media/how-to-reset-admin-password/notification-reset-password.png":::
 
@@ -51,6 +75,14 @@ You can reset the password of as server via the [az postgres flexible-server upd
 
 ```azurecli-interactive
 az postgres flexible-server update --resource-group <resource_group> --name <server> --admin-password <new_password>
+```
+
+If you attempt to reset the administrator password of a server which isn't configured with password-based authentication enabled, the command doesn't report any error. However, it doesn't change the password of the server administrator, provided one exists.
+
+To determine if a server is configured to support password-based authentication, run the following command:
+
+```azurecli-interactive
+az postgres flexible-server show --resource-group <resource_group> --name <server> --query authConfig.passwordAuth --output tsv
 ```
 
 If you attempt to reset the administrator password of a server which isn't in `Available` state, you receive an error like this:
@@ -68,9 +100,4 @@ Message: Server <server> is busy with other operations. Please try later
 
 ## Related content
 
-- [Start an Azure Database for PostgreSQL flexible server](how-to-start-server.md).
-- [Stop an Azure Database for PostgreSQL flexible server](how-to-stop-server.md).
-- [Restart an Azure Database for PostgreSQL flexible server](how-to-restart-server.md).
-- [Delete an Azure Database for PostgreSQL flexible server](how-to-delete-server.md).
-- [Configure storage autogrow in an Azure Database for PostgreSQL flexible server](how-to-auto-grow-storage.md).
-- [Configure high availability in an Azure Database for PostgreSQL flexible server](how-to-configure-high-availability.md).
+- [Security](concepts-security.md).

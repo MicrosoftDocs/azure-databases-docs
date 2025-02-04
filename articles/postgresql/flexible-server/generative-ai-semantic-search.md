@@ -99,7 +99,7 @@ Rem on Windows
 Set PGCLIENTENCODING=utf-8;
 ```
 
-```shell
+```bash
 # on Unix based operating systems
 export PGCLIENTENCODING=utf-8
 ```
@@ -148,7 +148,7 @@ Repeat the command, until there are no more rows to process.
 
 Create a search function in your database for convenience:
 
-```cpp
+```sql
 create function
     recipe_search(searchQuery text, numResults int)
 returns table(
