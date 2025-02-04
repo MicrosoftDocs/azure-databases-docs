@@ -150,6 +150,53 @@
       href: flexible-server/concepts-maintenance.md
     - name: Connection pooling (PgBouncer)
       href: flexible-server/concepts-pgbouncer.md
+    - name: Extensions
+      items:
+      - name: Overview
+        href: extensions/concepts-extensions.md
+      - name: Special considerations
+        href: extensions/concepts-extensions-considerations.md
+      - name: List by name
+        href: extensions/concepts-extensions-versions.md           
+      - name: List by version of PostgreSQL
+        href: extensions/concepts-extensions-by-engine.md           
+      - name: Possible errors when managing extensions
+        href: extensions/errors-extensions.md           
+      - name: Azure AI (azure_ai)
+        items:
+        - name: Overview
+          href: flexible-server/generative-ai-azure-overview.md
+        - name: Azure OpenAI
+          href: flexible-server/generative-ai-azure-openai.md
+        - name: Azure Cognitive Services
+          href: flexible-server/generative-ai-azure-cognitive.md
+        - name: Azure Machine Learning Services
+          href: flexible-server/generative-ai-azure-machine-learning.md
+      - name: In-database Embeddings (azure_local_ai)
+        items:
+        - name: Overview  
+          href: flexible-server/azure-local-ai.md
+        - name: How to enable and use
+          href: flexible-server/generative-ai-azure-local-ai.md
+      - name: Vector indexing (pg_diskann)
+        items:
+        - name: Overview  
+          href: flexible-server/how-to-use-pgdiskann.md
+      - name: Azure Storage (pg_azure_storage)
+        href: flexible-server/how-to-use-pg-azure-storage.md
+      - name: Vector similarity search (pgvector)
+        items:
+        - name: Basics of pgvector
+          href: flexible-server/how-to-use-pgvector.md
+          displayName: vector databases
+        - name: Optimize performance when using pgvector
+          href: flexible-server/how-to-optimize-performance-pgvector.md
+          displayName: vector databases
+      - name: Partitioning
+        items:
+        - name: Partitioning using pg_partman
+          href: flexible-server/how-to-use-pg-partman.md
+          displayName: pg_partman
     - name: Server parameters
       items:
       - name: Overview
@@ -429,49 +476,18 @@
         href: flexible-server/how-to-perform-major-version-upgrade.md
     - name: Extensions
       items:
-      - name: Manage
+      - name: Allow extensions
         href: extensions/how-to-allow-extensions.md
-      - name: Special considerations
-        href: extensions/concepts-extensions-considerations.md
-      - name: List by name
-        href: extensions/concepts-extensions-versions.md           
-      - name: List by version of PostgreSQL
-        href: extensions/concepts-extensions-by-engine.md           
-      - name: Azure AI (azure_ai)
-        items:
-        - name: Overview
-          href: flexible-server/generative-ai-azure-overview.md
-        - name: Azure OpenAI
-          href: flexible-server/generative-ai-azure-openai.md
-        - name: Azure Cognitive Services
-          href: flexible-server/generative-ai-azure-cognitive.md
-        - name: Azure Machine Learning Services
-          href: flexible-server/generative-ai-azure-machine-learning.md
-      - name: In-database Embeddings (azure_local_ai)
-        items:
-        - name: Overview  
-          href: flexible-server/azure-local-ai.md
-        - name: How to enable and use
-          href: flexible-server/generative-ai-azure-local-ai.md
-      - name: Vector indexing (pg_diskann)
-        items:
-        - name: Overview  
-          href: flexible-server/how-to-use-pgdiskann.md
-      - name: Azure Storage (pg_azure_storage)
-        href: flexible-server/how-to-use-pg-azure-storage.md
-      - name: Vector similarity search (pgvector)
-        items:
-        - name: Basics of pgvector
-          href: flexible-server/how-to-use-pgvector.md
-          displayName: vector databases
-        - name: Optimize performance when using pgvector
-          href: flexible-server/how-to-optimize-performance-pgvector.md
-          displayName: vector databases
-      - name: Partitioning
-        items:
-        - name: Partitioning using pg_partman
-          href: flexible-server/how-to-use-pg-partman.md
-          displayName: pg_partman
+      - name: Load libraries
+        href: extensions/how-to-allow-extensions.md
+      - name: Create extensions
+        href: extensions/how-to-create-extensions.md
+      - name: Drop extensions
+        href: extensions/how-to-drop-extensions.md
+      - name: Update extensions
+        href: extensions/how-to-update-extensions.md
+      - name: View installed extensions
+        href: extensions/how-to-view-installed-extensions.md
     - name: Monitoring
       items:
       - name: Download PostgreSQL and upgrade logs
