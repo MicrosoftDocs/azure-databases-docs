@@ -67,7 +67,7 @@ The `azure_ai` extension allows you to integrate Azure OpenAI and Azure Cognitiv
 
 1. Add the extension to your allowlist as described in [Allow extensions](../extensions/how-to-allow-extensions.md#allow-extensions).
 
-1. In the database in which you plan to use the `azure_ai` extension, install it as described in [Create extensions](../extensions/how-to-allow-extensions.md?#create-extensions)
+1. In the database in which you plan to use the `azure_ai` extension, install it as described in [Create extensions](../extensions/how-to-create-extensions.md)
 
 ## Inspect the objects contained within the `azure_ai` extension
 
