@@ -67,7 +67,7 @@ The `azure_ai` extension allows you to integrate Azure OpenAI and Azure Cognitiv
 
 1. Add the extension to your allowlist as described in [Allow extensions](../extensions/how-to-allow-extensions.md#allow-extensions).
 
-1. In the database in which you plan to use the `azure_ai` extension, install it as described in [Create extensions](../extensions/how-to-allow-extensions.md?#create-extensions)
+1. In the database in which you plan to use the `azure_ai` extension, install it as described in [Create extensions](../extensions/how-to-create-extensions.md)
 
 ## Inspect the objects contained within the `azure_ai` extension
 
@@ -271,7 +271,7 @@ The `Argument data types` property in the output of the `\df azure_cognitive.sum
 | sentence_count | `integer` | 3 | The maximum number of sentences to include in the generated summary. |
 | disable_service_logs | `boolean` | false | The Language service logs your input text for 48 hours solely to allow for troubleshooting issues. Setting this property to `true` disables input logging and might limit our ability to investigate issues that occur. For more information, see Cognitive Services Compliance and Privacy notes at <https://aka.ms/cs-compliance> and Microsoft Responsible AI principles at <https://www.microsoft.com/ai/responsible-ai>. |
 
-The `summarize_abstractive` functionfunction requires the following arguments: `azure_cognitive.summarize_abstractive(text TEXT, language TEXT)`.
+The `summarize_abstractive` function requires the following arguments: `azure_cognitive.summarize_abstractive(text TEXT, language TEXT)`.
 
 The following query against the `bill_summaries` table uses the `summarize_abstractive` function to generate a new one-sentence summary for the text of a bill, allowing you to incorporate the power of generative AI directly into your queries.
 

@@ -20,7 +20,7 @@ The [azure_storage](concepts-storage-extension.md) extension allows you to impor
 
 Examples of data export and import using this extension can be found in the [Examples](#examples) section of this article.
 
-To use the `azure_storage` extension on your Azure Database for PostgreSQL flexible server instance, you need to [allow the extension](../extensions/how-to-allow-extensions.md#allow-extensions), [load its library](../extensions/how-to-allow-extensions.md#load-libraries), and [create the extension](../extensions/how-to-allow-extensions.md#create-extensions). 
+To use the `azure_storage` extension on your Azure Database for PostgreSQL flexible server instance, you need to [allow the extension](../extensions/how-to-allow-extensions.md#allow-extensions), [load its library](../extensions/how-to-load-libraries.md), and [create the extension](../extensions/how-to-create-extensions.md). 
 
 ## Overview of the procedure
 
@@ -844,7 +844,7 @@ You must meet the following prerequisites before you can run the following examp
    ```
 
 > [!NOTE]  
-> You can list containers or the blobs stored in them for a specific storage account, but only if your PostgreSQL user or role is granted permission on on the reference to that storage account by using [azure_storage.account_user_add](#azure_storageaccount_user_add). Members of the `azure_storage_admin` role are granted this privilege over all Azure Storage accounts that have been added using [azure_storage.account_add](#azure_storageaccount_add). By default, only members of `azure_pg_admin` are granted the `azure_storage_admin` role.
+> You can list containers or the blobs stored in them for a specific storage account, but only if your PostgreSQL user or role is granted permission on the reference to that storage account by using [azure_storage.account_user_add](#azure_storageaccount_user_add). Members of the `azure_storage_admin` role are granted this privilege over all Azure Storage accounts that have been added using [azure_storage.account_add](#azure_storageaccount_add). By default, only members of `azure_pg_admin` are granted the `azure_storage_admin` role.
 
 ### Create table in which data is loaded
 

@@ -1,30 +1,30 @@
 ---
-title: Extension Considerations Specific to Azure Database for PostgreSQL Flexible Server
-description: Learn about the extension considerations specific to Azure Database for PostgreSQL flexible server.
+title: Extension considerations specific to an Azure Database for PostgreSQL flexible server
+description: Learn about the extension considerations specific to an Azure Database for PostgreSQL flexible server.
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 12/12/2024
+ms.date: 02/04/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: concept-article
 ---
 
-# Extension considerations specific to Azure Database for PostgreSQL - Flexible Server
+# Extension considerations specific to an Azure Database for PostgreSQL flexible server
 
-This article describes some special considerations that you must be aware of when using certain extensions in an instance of Azure Database for PostgreSQL flexible server.
+This article describes some special considerations that you must be aware of, when using certain extensions in an Azure Database for PostgreSQL flexible server.
 
 ## Prerequisites
 
-Read the article [how to use PostgreSQL extensions for Azure Database for PostgreSQL](how-to-allow-extensions.md) to learn how to:
+Refer to the following articles, to learn how to:
 
- - Allowlist extensions in Azure Database for PostgreSQL Flexible Server
- - Load the libraries of extensions that deploy binary libraries, which require allocating and accessing shared memory and need to be loaded when the server starts.
- - Install extensions in some database, so that the SQL objects packaged in that extension are deployed in that database, and can be accessed in its context.
- - Drop extensions from some database, so that the SQL objects packaged in that extension are removed from that database.
- - Update the SQL artifacts deployed by an extension that is already installed.
- - View which extensions are installed and their corresponding versions.
- - Learn what are the possible errors you can receive when managing extensions in Azure Database for PostgreSQL Flexible Server, and what could be the cause of each of them.
+ - [Allow extensions](how-to-allow-extensions.md) in Azure Database for PostgreSQL Flexible Server.
+ - [Load libraries](how-to-load-libraries.md) of extensions that deploy binary libraries. These libraries require allocating and accessing shared memory, and need to be loaded when the server starts.
+ - [Create extensions](how-to-create-extensions.md) in some database, so that the SQL objects packaged in that extension are deployed in that database, and can be accessed in its context.
+ - [Drop extensions](how-to-drop-extensions.md) from some database, so that the SQL objects packaged in that extension are removed from that database.
+ - [Update extensions](how-to-update-extensions.md), to update, to its newest version, all the SQL artifacts deployed by an extension that is already installed.
+ - [View installed extensions](how-to-view-installed-extensions.md) and their corresponding versions.
+ - Learn what are the [possible errors](errors-extensions.md) you can receive when managing extensions in an Azure Database for PostgreSQL flexible server, and what could be the cause of each of them.
 
 ## Extensions
 
@@ -65,7 +65,7 @@ The `pg_cron` extension can run multiple jobs in parallel, but it runs at most o
 
 Make sure that the value to which `shared_preload_libraries` is set, includes `pg_cron`. This extension doesn't support loading the library as the effect of executing [CREATE EXTENSION](https://www.postgresql.org/docs/current/sql-createextension.html). Any attempt to run CREATE EXTENSION if the extension wasn't added to `shared_preload_libraries`, or the server wasn't restarted after it was added, results in an error whose text says `pg_cron can only be loaded via shared_preload_libraries`, and whose hint is `Add pg_cron to the shared_preload_libraries configuration variable in postgresql.conf`.
 
-To use `pg_cron`, make sure it's [library is added to be loaded upon server start](how-to-allow-extensions.md#load-libraries), it's [allowlisted](how-to-allow-extensions.md#allow-extensions), and it's [installed](how-to-allow-extensions.md#create-extensions) in any database from which you want to interact with its functionality, using the SQL artifacts it creates.
+To use `pg_cron`, make sure it's [library is added to be loaded upon server start](how-to-load-libraries.md), it's [allowlisted](how-to-allow-extensions.md#allow-extensions), and it's [installed](how-to-create-extensions.md) in any database from which you want to interact with its functionality, using the SQL artifacts it creates.
 
 #### Examples
 
@@ -125,7 +125,7 @@ The extension streamlines the failover process by managing the necessary transfe
 
 You can find more information and instructions on using the `pg_failover_slots` extension on its [GitHub page](https://github.com/EnterpriseDB/pg_failover_slots).
 
-To use the `pg_failover_slots` extension, make sure that its [library was loaded](how-to-allow-extensions.md#load-libraries) when the server started.
+To use the `pg_failover_slots` extension, make sure that its [library was loaded](how-to-load-libraries.md) when the server started.
 
 ### pg_hint_plan
 
@@ -152,7 +152,7 @@ Example:
 
 The previous example causes the planner to use the results of a `seqscan` on table `a` to combine with table `b` as a `hashjoin`.
 
-To use `pg_hint_plan` extension, make sure that you [allowlist](how-to-allow-extensions.md#allow-extensions) the extension, [load its library](how-to-allow-extensions.md#load-libraries), and [install the extension](how-to-allow-extensions.md#create-extensions) in the database on which you plan to use its functionality.
+To use `pg_hint_plan` extension, make sure that you [allowlist](how-to-allow-extensions.md#allow-extensions) the extension, [load its library](how-to-load-libraries.md), and [install the extension](how-to-create-extensions.md) in the database on which you plan to use its functionality.
 
 ### pg_prewarm
 
@@ -217,7 +217,7 @@ The `timescaleDB` extension is a time-series database packaged as an extension f
 
 #### Install TimescaleDB
 
-To use `timescaleDB`, make sure that you [allowlist](how-to-allow-extensions.md#allow-extensions) the extension, [load its library](how-to-allow-extensions.md#load-libraries), and [install the extension](how-to-allow-extensions.md#create-extensions) in the database on which you plan to use its functionality.
+To use `timescaleDB`, make sure that you [allowlist](how-to-allow-extensions.md#allow-extensions) the extension, [load its library](how-to-load-libraries.md), and [install the extension](how-to-create-extensions.md) in the database on which you plan to use its functionality.
 
 You can now create a TimescaleDB hypertable [from scratch](https://docs.timescale.com/getting-started/creating-hypertables) or migrate [existing time-series data in PostgreSQL](https://docs.timescale.com/getting-started/migrating-data).
 
@@ -270,6 +270,6 @@ The extensions `anon`, `Apache AGE`, `dblink`, `orafce`, `pgaudit`, `postgres_fd
 
 ## Related content
 
-- [How to use extensions](how-to-allow-extensions.md).
+- [Allow extensions](how-to-allow-extensions.md).
 - [Special considerations with extensions](concepts-extensions-considerations.md).
 - [List of extensions by name](concepts-extensions-versions.md).
