@@ -8,7 +8,7 @@ ms.reviewer: stefarroyo
 ms.service: azure-cosmos-db
 ms.subservice: table
 ms.topic: how-to
-ms.date: 12/18/2024
+ms.date: 02/05/2025
 zone_pivot_groups: azure-interface-portal-cli-powershell
 appliesto:
   - ✅ Table
