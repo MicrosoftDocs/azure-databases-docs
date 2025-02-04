@@ -56,7 +56,7 @@ By using the built-in PgBouncer feature with Azure Database for PostgreSQL flexi
 
 ### Metrics
 
-[!INCLUDE [metrics for monitoring PgBouncer connection pooling](./concepts-monitoring.md#pgbouncer-metrics)]
+[!INCLUDE [metrics for monitoring PgBouncer connection pooling](concepts-monitoring.md#pgbouncer-metrics)]
 
 To learn more, see [PgBouncer metrics](concepts-monitoring.md#pgbouncer-metrics).
 
