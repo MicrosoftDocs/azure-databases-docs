@@ -13,7 +13,7 @@ ms.date: 01/06/2025
 # $toBool
 [!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 
-The `$toBool` operator converts an expression into a Boolean value. Boolean values are simply returned as is without a conversion. Non-zero numeric value are converted to true while Decimal, Long, Double or Int values of 0 are converted to false. All other data types are converted to true. 
+The `$toBool` operator converts an expression into a Boolean value. Boolean values are returned as is without a conversion. Nonzero numeric values are converted to true while Decimal, Long, Double or Int values of 0 are converted to false. All other data types are converted to true. 
 
 ## Syntax
 
@@ -235,7 +235,7 @@ This table delineates the expected behavior of the $toBool operator based on the
 |--------------------------------------------------------------|---------------------|
 | Boolean value true                                           | Output -> true      |
 | Boolean value false                                          | Output -> false     |
-| Any Double, Int, Long or Decimal value                       | Output -> true      |
+| Any Double, Int, Long, or Decimal value                       | Output -> true      |
 | Any ISODate value                                            | Output -> true      |
 | Null value                                                   | Output -> null      |
 
