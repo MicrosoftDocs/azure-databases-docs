@@ -15,7 +15,7 @@ ms.topic: how-to
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
-You might want to view the extensions that are installed in adn Azure Database for PostgreSQL flexible server, and their corresponding versions.
+You might want to view the extensions that are installed in an Azure Database for PostgreSQL flexible server, and their corresponding versions.
 
 ## Steps to view installed extensions
 
