@@ -49,7 +49,7 @@ During these steps, `pg_repack` only holds an exclusive access lock for a short 
 
 ### Prerequisites
 
-1. Configure the `pg_repack` extension by [allowlisting](../extensions/how-to-allow-extensions.md#allow-extensions) and [creating](../extensions/how-to-allow-extensions.md#create-extensions) the extension.
+1. Configure the `pg_repack` extension by [allowlisting](../extensions/how-to-allow-extensions.md#allow-extensions) and [creating](../extensions/how-to-create-extensions.md) the extension.
 
 ### Build pg_repack client application
 

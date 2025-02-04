@@ -162,7 +162,13 @@ After the restore is completed, you should perform the following tasks to get yo
 - Ensure appropriate logins and database level permissions are in place.
 - Configure alerts as appropriate for the newly restored server.
 
-## Next step
+## Common Errors:
+
+- Restore to same server name is currently unsupported. It's recommended to use a different name when initiating the restore process, otherwise restore operations will fail. 
+
+- Ensure server is not in "Inaccessible" state during restore.  Restore will not be successful for such servers.
+
+### Next step
 
 > [!div class="nextstepaction"]
 > [business continuity](concepts-business-continuity.md)
