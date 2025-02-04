@@ -66,7 +66,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 10. Then, you can select the **Go to resource** button to validate your upgrade.
 
-   :::image type="content" source="media/how-to-perform-major-version-upgrade/go-to-resource.png" alt-text="DScreenshot showing the Go to resource button, through which you can access the Overview page of the Azure Database for PostgreSQL flexible server whose major version was upgraded." lightbox="media/how-to-perform-major-version-upgrade/go-to-resource.png":::
+   :::image type="content" source="media/how-to-perform-major-version-upgrade/go-to-resource.png" alt-text="Screenshot showing the Go to resource button, through which you can access the Overview page of the upgraded Azure Database for PostgreSQL flexible server." lightbox="media/how-to-perform-major-version-upgrade/go-to-resource.png":::
 
 11. Observe that the name of the server remains unchanged.
 
