@@ -422,7 +422,7 @@ Note : The `azure_server_name` consistently returns the original server name you
 
 ### logical_server_name
 
-The logical_server_name variable represents the hostname of the instance where Azure Database for MySQL - Flexible Server is running. This variable is useful for identifying the host where the service is currently running, aiding in troubleshooting and failover monitoring. You can retrieve this variable by executing the following command within MySQL.
+The `logical_server_name` variable represents the hostname of the instance where Azure Database for MySQL - Flexible Server is running. This variable is useful for identifying the host where the service is currently running, aiding in troubleshooting and failover monitoring. You can retrieve this variable by executing the following command within MySQL.
 
 ```sql
 mysql> SHOW GLOBAL VARIABLES LIKE 'logical_server_name';
