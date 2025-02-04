@@ -479,7 +479,7 @@
       - name: Allow extensions
         href: extensions/how-to-allow-extensions.md
       - name: Load libraries
-        href: extensions/how-to-allow-extensions.md
+        href: extensions/how-to-load-libraries.md
       - name: Create extensions
         href: extensions/how-to-create-extensions.md
       - name: Drop extensions
