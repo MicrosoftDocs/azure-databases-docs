@@ -403,7 +403,7 @@ The **Server parameters** pane in the Azure portal shows both the modifiable and
 
 ## logical_server_name
 
-The logical_server_name parameter represents the logical identifier of an Azure Database for MySQL - Flexible Server instance. This parameter remains static but reflects the underlying hostnames used in HA setups. It is not visible in the Azure portal but can be retrieved by running following command inside MySQL.
+The `logical_server_name` parameter represents the hostname of an Azure Database for MySQL - Flexible Server instance. The parameter is static and is not visible in the azure portal but can be retrieved by running following command inside MySQL.
 ```sql
 mysql> SHOW GLOBAL VARIABLES LIKE 'logical_server_name';
 +---------------------+--------------+
@@ -412,6 +412,23 @@ mysql> SHOW GLOBAL VARIABLES LIKE 'logical_server_name';
 | logical_server_name | myflex	     |
 +---------------------+--------------+
 ```  
+In a high availability (HA) setup, the standby server in Azure Database for MySQL - Flexible Server is assigned a unique four-letter identifier appended to the server name. (e.g., myflex-xyze).
+If a failover occurs and standdby is the new primary server, the parmaeter `logical_server_name` updates to reflect the new primary hostname with identifier (e.g.,myflex-xyze) . This parameter is useful for identifying the current underlying host in an HA setup, helping with troubleshooting and failover monitoring.
+
+## azure_server_name
+
+The `azure_server_name` parameter provides the exact server name of the Azure Database for MySQL - Flexible Server instance. This parameter is also static and not visible in azure portal and can be retrieved using following command inside MySQL.
+
+```sql
+mysql> SHOW GLOBAL VARIABLES LIKE 'azure_server_name';
++-------------------+---------+
+| Variable_name     | Value   |
++-------------------+---------+
+| azure_server_name | myflex  |
++-------------------+---------+
+```  
+Regardless of failovers in an HA setup, `azure_server_name` always returns the original server name (e.g., myflex). This parameter is useful when applications or scripts need to programmatically retrieve the server’s hostname they are connected to, without relying on external configurations.
+
 
 ## Related content
 
