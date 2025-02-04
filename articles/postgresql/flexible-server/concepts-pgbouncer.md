@@ -56,7 +56,7 @@ By using the built-in PgBouncer feature with Azure Database for PostgreSQL flexi
 
 ### Metrics
 
-[!INCLUDE [Pgbouncer Metrics](concepts-monitoring.md#pgbouncer-metrics)]
+[!INCLUDE [PgBouncer Metrics](./includes/pgbouncer-metrics.md)]
 
 To learn more, see [PgBouncer metrics](concepts-monitoring.md#pgbouncer-metrics).
 
