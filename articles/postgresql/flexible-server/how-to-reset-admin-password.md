@@ -43,7 +43,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 6. If **Reset password** button is disabled, you can hover the mouse over it, and a tooltip describes the reason why the button is disabled.
 
-    :::image type="content" source="./media/how-to-reset-admin-password/reset-password-disabled.png" alt-text="Screenshot showing Rest password button disabled." lightbox="./media/how-to-reset-admin-password/reset-password-disabled.png":::
+    :::image type="content" source="./media/how-to-reset-admin-password/reset-password-disabled.png" alt-text="Screenshot showing Reset password button disabled." lightbox="./media/how-to-reset-admin-password/reset-password-disabled.png":::
 
 7. Select the **Reset password** button.
 

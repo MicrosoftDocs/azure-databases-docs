@@ -558,7 +558,7 @@
           href: flexible-server/how-to-read-replicas-portal.md
         - name: Read replica with Terraform
           href: flexible-server/how-to-read-replicas-virtual-endpoints-terraform.md
-    - name: Backup and Restore
+    - name: Backup and restore
       items:
         - name: Backup
           items:
