@@ -62,19 +62,19 @@ Using the [Azure portal](https://portal.azure.com/):
 
 10. Select **Operation details** if you want to see more information about the upgrade process.
 
-   :::image type="content" source="media/how-to-perform-major-version-upgrade/operation-details.png" alt-text="Screenshot showing how access the operation details of a successful deployment of a major version upgrade." lightbox="media/how-to-perform-major-version-upgrade/operation-details.png":::
+    :::image type="content" source="media/how-to-perform-major-version-upgrade/operation-details.png" alt-text="Screenshot showing how access the operation details of a successful deployment of a major version upgrade." lightbox="media/how-to-perform-major-version-upgrade/operation-details.png":::
 
 11. Then, you can select the **Go to resource** button to validate your upgrade.
 
-   :::image type="content" source="media/how-to-perform-major-version-upgrade/go-to-resource.png" alt-text="Screenshot showing the Go to resource button, through which you can access the Overview page of the upgraded Azure Database for PostgreSQL flexible server." lightbox="media/how-to-perform-major-version-upgrade/go-to-resource.png":::
+    :::image type="content" source="media/how-to-perform-major-version-upgrade/go-to-resource.png" alt-text="Screenshot showing the Go to resource button, through which you can access the Overview page of the upgraded Azure Database for PostgreSQL flexible server." lightbox="media/how-to-perform-major-version-upgrade/go-to-resource.png":::
 
 12. Observe that the name of the server remains unchanged.
 
-   :::image type="content" source="media/how-to-perform-major-version-upgrade/upgrade-verification-server-name.png" alt-text="Screenshot showing the Overview page of the upgraded Azure Database for PostgreSQL flexible server, after major version upgrade, highlighting the name of the server." lightbox="media/how-to-perform-major-version-upgrade/upgrade-verification-server-name.png":::
+    :::image type="content" source="media/how-to-perform-major-version-upgrade/upgrade-verification-server-name.png" alt-text="Screenshot showing the Overview page of the upgraded Azure Database for PostgreSQL flexible server, after major version upgrade, highlighting the name of the server." lightbox="media/how-to-perform-major-version-upgrade/upgrade-verification-server-name.png":::
 
 13. Notice that the version of PostgreSQL is upgraded to the major version you selected as target. The minor version corresponds to the most recent minor version supported by Azure Database for PostgreSQL - Flexible Server at the time of the upgrade.
 
-   :::image type="content" source="media/how-to-perform-major-version-upgrade/upgrade-verification-server-version.png" alt-text="Screenshot showing the Overview page of the upgraded Azure Database for PostgreSQL flexible server, after major version upgrade, highlighting the version of the server." lightbox="media/how-to-perform-major-version-upgrade/upgrade-verification-server-version.png":::
+    :::image type="content" source="media/how-to-perform-major-version-upgrade/upgrade-verification-server-version.png" alt-text="Screenshot showing the Overview page of the upgraded Azure Database for PostgreSQL flexible server, after major version upgrade, highlighting the version of the server." lightbox="media/how-to-perform-major-version-upgrade/upgrade-verification-server-version.png":::
 
 ### [CLI](#tab/cli-major-version-upgrade)
 
