@@ -56,16 +56,7 @@ By using the built-in PgBouncer feature with Azure Database for PostgreSQL flexi
 
 ### Metrics
 
-Azure Database for PostgreSQL flexible server provides six metrics for monitoring PgBouncer connection pooling:
-
-|Display name                            |Metric ID                |Unit |description                                                                          |Dimension   |Default enabled|
-|----------------------------------------|--------------------------|-----|-------------------------------------------------------------------------------------|------------|---------------|
-|**Active client connections** (preview) |`client_connections_active` |Count|Connections from clients that are associated with an Azure Database for PostgreSQL flexible server connection           |`DatabaseName`|No             |
-|**Waiting client connections** (preview)|`client_connections_waiting`|Count|Connections from clients that are waiting for an Azure Database for PostgreSQL flexible server connection to service them|`DatabaseName`|No             |
-|**Active server connections** (preview) |`server_connections_active` |Count|Connections to Azure Database for PostgreSQL flexible server that a client connection is using                    |`DatabaseName`|No             |
-|**Idle server connections** (preview)   |`server_connections_idle`   |Count|Connections to Azure Database for PostgreSQL flexible server that are idle and ready to service a new client connection    |`DatabaseName`|No             |
-|**Total pooled connections** (preview)  |`total_pooled_connections`  |Count|Current number of pooled connections                                                 |`DatabaseName`|No             |
-|**Number of connection pools** (preview)|`num_pools`                 |Count|Total number of connection pools                                                     |`DatabaseName`|No             |
+[!INCLUDE [metrics for monitoring PgBouncer connection pooling](./concepts-monitoring.md#pgbouncer-metrics)]
 
 To learn more, see [PgBouncer metrics](concepts-monitoring.md#pgbouncer-metrics).
 
