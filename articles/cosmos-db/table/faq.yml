@@ -8,7 +8,7 @@ metadata:
   ms.service: azure-cosmos-db
   ms.subservice: apache-gremlin
   ms.topic: faq
-  ms.date: 09/24/2024
+  ms.date: 02/05/2025
 title: Frequently asked questions about Azure Cosmos DB for Table
 summary: |
   [!INCLUDE[Table](../includes/appliesto-table.md)]
@@ -298,11 +298,11 @@ sections:
       - question: |
           What is role-based access control (RBAC)?
         answer: |
-          Role-based access control (RBAC) is a method of regulating access to computer or network resources based on the roles of individual users within an enterprise. In Azure Cosmos DB, RBAC is used to grant data-plane access to users and applications.
+          Role-based access control (RBAC) is a method of regulating access to computer or network resources based on the roles of individual users within an enterprise. In Azure Cosmos DB, RBAC is used to grant data-plane access to users and applications. For more information about various terms in role-based access control, see the [security glossary](security/glossary.md).
       - question: |
           How do I enable data-plane role-based access control for Azure Cosmos DB for Table?
         answer: |
-          Use the Azure Cosmos DB native role-based access control (RBAC) feature to grant data-plane access to users and applications.
+          Use the Azure Cosmos DB native role-based access control (RBAC) feature to grant data-plane access to users and applications. For more information, see [Grant data-plane role-based access](security/how-to-grant-data-plane-role-based-access.md).
 additionalContent: |
   ## Related content
 

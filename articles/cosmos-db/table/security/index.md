@@ -8,12 +8,10 @@ ms.reviewer: iriaosara
 ms.service: azure-cosmos-db
 ms.subservice: table
 ms.topic: solution-overview
-ms.date: 12/18/2024
+ms.date: 02/05/2025
 ai-usage: ai-assisted
 appliesto:
   - ✅ Table
-hidden: true
-ROBOTS: NOINDEX, NOFOLLOW
 #Customer Intent: As a developer, I want to review the major security areas related to Azure Cosmos DB for Table, so that I can build secure applications using the API for Table.
 ---
 
