@@ -106,7 +106,7 @@ For .NET (Npgsql) users on Windows, connecting to Azure Database for PostgreSQL 
 
 For other PostgreSQL client users, you can merge two CA certificate files like this format below.
 
-```azurecli
+```output
 -----BEGIN CERTIFICATE-----
 (Root CA1: DigiCertGlobalRootCA.crt.pem)
 -----END CERTIFICATE-----

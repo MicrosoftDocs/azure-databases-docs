@@ -64,7 +64,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 You can upgrade the major version via the [az postgres flexible-server upgrade](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-upgrade).
 
-```azurecli
+```azurecli-interactive
 az postgres flexible-server upgrade --resource-group <resource_group> --name <server> --version <target_version>
 ```
 

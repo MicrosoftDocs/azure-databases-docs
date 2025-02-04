@@ -267,7 +267,7 @@ $serverName = Read-Host -Prompt "Enter the resource group where the Azure Databa
 Remove-AzResourceGroup -Name $serverName
 ```
 
-# [Azure CLI](#tab/azure-cli)
+# [CLI](#tab/azure-cli)
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 

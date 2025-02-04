@@ -44,7 +44,7 @@ az vm identity assign -g myResourceGroup -n myVm
 
 Retrieve the application ID for the system-assigned managed identity, which you need in the next few steps:
 
-```azurecli
+```azurecli-interactive
 # Get the client ID (application ID) of the system-assigned managed identity
 
 az ad sp list --display-name vm-name --query [*].appId --out tsv

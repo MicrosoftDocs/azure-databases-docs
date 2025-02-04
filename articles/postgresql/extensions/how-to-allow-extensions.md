@@ -29,11 +29,11 @@ Using the [Azure portal](https://portal.azure.com):
 
     :::image type="content" source="media/how-to-allow-extensions/allow-list.png" alt-text="Screenshot of allowlist." lightbox="media/how-to-allow-extensions/allow-list.png":::
 
-### [Azure CLI](#tab/allow-extensions-cli)
+### [CLI](#tab/allow-extensions-cli)
 
 You can allow extensions via the CLI parameter set [command](/cli/azure/postgres/flexible-server/parameter).
 
-```azurecli
+```azurecli-interactive
     az postgres flexible-server parameter set --resource-group <resource_group>  --server-name <server> --subscription <subscription_id> --name azure.extensions --value <extension_name>,<extension_name>
 ```
 

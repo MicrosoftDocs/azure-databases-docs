@@ -36,13 +36,13 @@ To use the `azure_storage` extension on your Azure Database for PostgreSQL flexi
 Because the `shared_preload_libraries` is static, the server must be restarted for a change to take effect:
 :::image type="content" source="media/how-to-use-pg-azure-storage/save-and-restart-shared-preload-libraries-portal.png" alt-text="Screenshot of dialog that pops up when changing shared_preload_libraries, to save and restart." lightbox="media/how-to-use-pg-azure-storage/save-and-restart-shared-preload-libraries-portal.png":::
 
-# [Azure CLI](#tab/cli-01)
+# [CLI](#tab/cli-01)
 
-```azurecli
+```azurecli-interactive
 az postgres flexible-server parameter set --resource-group <flexible_server_resource_group> --server-name <flexible_server_name> --name shared_preload_libraries --source user-override --value azure_storage,$(az postgres flexible-server parameter show --resource-group <flexible_server_resource_group> --server-name <flexible_server_name> --name shared_preload_libraries --query value --output tsv)
 ```
 Because the `shared_preload_libraries` is static, the server must be restarted for a change to take effect:
-```azurecli
+```azurecli-interactive
 az postgres flexible-server restart --resource-group <flexible_server_resource_group> --name <flexible_server_name>
 ```
 
@@ -60,9 +60,9 @@ Because the `shared_preload_libraries` is static, the server must be restarted f
 
 :::image type="content" source="media/how-to-use-pg-azure-storage/azure-extensions-portal.png" alt-text="Screenshot of selecting azure_storage in azure.extensions in server parameters." lightbox="media/how-to-use-pg-azure-storage/azure-extensions-portal.png":::
 
-# [Azure CLI](#tab/cli-02)
+# [CLI](#tab/cli-02)
 
-```azurecli
+```azurecli-interactive
 az postgres flexible-server parameter set --resource-group <flexible_server_resource_group> --server-name <flexible_server_name> --name azure.extensions --source user-override --value azure_storage,$(az postgres flexible-server parameter show --resource-group <flexible_server_resource_group> --server-name <flexible_server_name> --name azure.extensions --query value --output tsv)
 ```
 
@@ -99,9 +99,9 @@ The `azure_storage_admin` role is, by default, granted to the `azure_pg_admin` r
 
 :::image type="content" source="media/how-to-use-pg-azure-storage/enable-system-assigned-managed-identity-portal.png" alt-text="Screenshot of enabling System Assigned Managed Identity." lightbox="media/how-to-use-pg-azure-storage/enable-system-assigned-managed-identity-portal.png":::
 
-# [Azure CLI](#tab/cli-03)
+# [CLI](#tab/cli-03)
 
-```azurecli
+```azurecli-interactive
 az rest --method patch --url https://management.azure.com/subscriptions/<subscriptionId>/resourceGroups/<flexible_server_resource_group>/providers/Microsoft.DBforPostgreSQL/flexibleServers/<flexible_server_name>?api-version=2024-08-01 --body '{"identity":{"type":"SystemAssigned"}}'
 ```              
 
@@ -122,9 +122,9 @@ Using the [Servers - Update](/rest/api/postgresql/flexibleserver/servers/update)
 
 :::image type="content" source="media/how-to-use-pg-azure-storage/AllowSharedKeyAccess-enabled-portal.png" alt-text="Screenshot of confirming that Allow storage account key access is enabled." lightbox="media/how-to-use-pg-azure-storage/AllowSharedKeyAccess-enabled-portal.png":::
 
-# [Azure CLI](#tab/cli-04)
+# [CLI](#tab/cli-04)
 
-```azurecli
+```azurecli-interactive
 az storage account update --resource-group <storage_account_resource_group> --name <account_name> --allow-shared-key-access true
 ```
 
@@ -140,9 +140,9 @@ Using [Storage Accounts - Update](/rest/api/storagerp/storage-accounts/update) R
 
 :::image type="content" source="media/how-to-use-pg-azure-storage/copy-access-key-portal.png" alt-text="Screenshot of copying storage account access key." lightbox="media/how-to-use-pg-azure-storage/copy-access-key-portal.png":::
 
-# [Azure CLI](#tab/cli-05)
+# [CLI](#tab/cli-05)
 
-```azurecli
+```azurecli-interactive
 az storage account keys list --resource-group <storage_account_resource_group> --account-name <account_name> --query [0].value -o tsv
 ```
 
@@ -809,7 +809,7 @@ You must meet the following prerequisites before you can run the following examp
 
 1. Create an Azure Storage account.
    To create an Azure Storage account, if you don't have one already, customize the values of `<resource_group>`, `<location>`, `<account_name>`, and `<container_name>`, and run the following Azure CLI command:
-   ```azurecli
+   ```azurecli-interactive
    resource_group=<resource_group>
    location=<location>
    storage_account=<account_name>
@@ -819,19 +819,19 @@ You must meet the following prerequisites before you can run the following examp
    ```
 1. Create a blob container.
    To create the blob container, run the following Azure CLI:
-   ```azurecli
+   ```azurecli-interactive
    az storage container create --account-name $storage_account --name $blob_container -o tsv
    ```
 1. Fetch one of the two access keys assigned to the storage account. Make sure you copy the value of your access_key as you need to pass it as an argument to [azure_storage.account_add](#azure_storageaccount_add) in a subsequent step.
    To fetch the first of the two access keys, run the following Azure CLI command:
-   ```azurecli
+   ```azurecli-interactive
    access_key=$(az storage account keys list --resource-group $resource_group --account-name $storage_account --query [0].value)
    echo "Following is the value of your access key:"
    echo $access_key
    ```
 1. Download the file with the data set that is used during the examples, and upload it to your blob container.
    To download the file with the data set, run the following Azure CLI command:
-   ```azurecli   
+   ```azurecli-interactive   
    mkdir --parents azure_storage_examples
    cd azure_storage_examples
    curl -O https://examples.citusdata.com/tutorial/events.csv
