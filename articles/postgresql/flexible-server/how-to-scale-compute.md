@@ -1,14 +1,14 @@
 ---
 title: Scale compute
-description: Learn how to scale compute in Azure Database for PostgreSQL - Flexible Server.
+description: This article describes how to scale the compute of an Azure Database for PostgreSQL flexible server.
 author: akashraokm
 ms.author: akashrao
 ms.reviewer: maghan
-ms.date: 01/21/2025
+ms.date: 02/03/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: how-to
-# customer intent: As a user, I want to learn how to scale the compute used by my Azure Database for PostgreSQL flexible server.
+#customer intent: As a user, I want to learn how to scale the compute of an Azure Database for PostgreSQL flexible server.
 ---
 
 # Scale compute
@@ -21,7 +21,7 @@ You're allowed to change your compute between the burstable, general purpose, an
 
 When you request a scaling operation of the compute used by your Azure Database for PostgreSQL flexible server, your server undergoes a restart and so leaves your server unavailable for some time. For more information about how that process works, and the expected duration of the downtime, see [near-zero downtime scaling](concepts-scaling-resources.md#near-zero-downtime-scaling).
 
-## Scale compute
+## Steps to scale compute
 
 ### [Portal](#tab/portal-scale-compute)
 
@@ -84,7 +84,5 @@ Incorrect value for --sku-name. The SKU name does not match <tier> tier. Specify
 ## Related content
 
 - [Compute options](concepts-compute.md).
-- [Storage options](concepts-storage.md).
 - [Limits in Azure Database for PostgreSQL - Flexible Server](concepts-limits.md).
 - [Near-zero downtime scaling](concepts-scaling-resources.md#near-zero-downtime-scaling)
-- [Scale storage](how-to-scale-storage.md)

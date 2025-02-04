@@ -1,14 +1,14 @@
 ---
 title: Major version upgrade
-description: This article describes how to perform a major version upgrade in an Azure Database for PostgreSQL flexible server.
+description: This article describes how to perform an in-place major version upgrade of an Azure Database for PostgreSQL flexible server.
 author: kabharati
 ms.author: kabharati
 ms.reviewer: maghan
-ms.date: 01/06/2025
+ms.date: 02/03/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: how-to
-#customer intent: As a user, I want to learn how to perform an in place major version of an Azure Database for PostgreSQL flexible server.
+#customer intent: As a user, I want to learn how to perform an in-place major version upgrade of an Azure Database for PostgreSQL flexible server.
 ---
 
 # Major version upgrade
@@ -20,9 +20,9 @@ This article provides step-by-step instructions to perform a major version upgra
 > [!NOTE]  
 > The major version upgrade action is irreversible. Make sure that you perform a point in time restore (PITR) of the production server that you want to upgrade. Test the upgrade in that restored, nonproduction instance before you upgrade the production environment.
 
-## Upgrade to the major version of your choice
+## Steps to upgrade to a higher major version
 
-### [Portal](#tab/portal)
+### [Portal](#tab/portal-major-version-upgrade)
 
 Using the [Azure portal](https://portal.azure.com/):
 
@@ -60,7 +60,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
    :::image type="content" source="media/how-to-perform-major-version-upgrade/upgrade-verification.png" alt-text="Diagram of upgraded version to Azure Database for PostgreSQL flexible server, after major version upgrade." lightbox="media/how-to-perform-major-version-upgrade/upgrade-verification.png":::
 
-### [CLI](#tab/cli)
+### [CLI](#tab/cli-major-version-upgrade)
 
 You can upgrade the major version via the [az postgres flexible-server upgrade](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-upgrade).
 
