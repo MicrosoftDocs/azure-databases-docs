@@ -29,6 +29,6 @@ This error occurs when the user that runs a `DROP EXTENSION` command isn't a mem
 
 ## Related content
 
-- [Allow extensions](how-to-allow-extensions.md)
-- [Special considerations with extensions](concepts-extensions-considerations.md)
-- [List of extensions by name](concepts-extensions-versions.md)
+- [Allow extensions](how-to-allow-extensions.md).
+- [Special considerations with extensions](concepts-extensions-considerations.md).
+- [List of extensions by name](concepts-extensions-versions.md).
