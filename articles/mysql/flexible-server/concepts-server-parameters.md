@@ -401,6 +401,18 @@ This ensures the stopword table meets MySQL’s requirements and allows custom s
 
 The **Server parameters** pane in the Azure portal shows both the modifiable and nonmodifiable server parameters. The nonmodifiable server parameters are unavailable. You can configure a nonmodifiable server parameter at the session level by using `init_connect` in the [Azure portal](./how-to-configure-server-parameters-portal.md#setting-non-modifiable-server-parameters) or the [Azure CLI](./how-to-configure-server-parameters-cli.md#setting-non-modifiable-server-parameters).
 
+## logical_server_name
+
+The logical_server_name parameter represents the logical identifier of an Azure Database for MySQL - Flexible Server instance. This parameter remains static but reflects the underlying hostnames used in HA setups. It is not visible in the Azure portal but can be retrieved by running following command inside MySQL.
+```sql
+mysql> SHOW GLOBAL VARIABLES LIKE 'logical_server_name';
++---------------------+--------------+
+| Variable_name       | Value        |
++---------------------+--------------+
+| logical_server_name | myflex	     |
++---------------------+--------------+
+```  
+
 ## Related content
 
 - [Configure server parameters in Azure Database for MySQL - Flexible Server using the Azure portal](how-to-configure-server-parameters-portal.md)
