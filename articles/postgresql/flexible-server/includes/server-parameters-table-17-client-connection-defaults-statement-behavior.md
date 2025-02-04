@@ -2,7 +2,7 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 01/07/2025
+ms.date: 02/04/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
@@ -155,6 +155,23 @@ ms.custom: automatically generated
 | Allowed values | `on,off` |
 | Parameter type | dynamic |
 | Documentation | [default_transaction_read_only](https://www.postgresql.org/docs/17/runtime-config-client.html#GUC-DEFAULT-TRANSACTION-READ-ONLY) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### event_triggers
+
+| Attribute | Value |
+| --- | --- |
+| Category | Client Connection Defaults / Statement Behavior |
+| Description | Enable/Disable event triggers for debugging purpose. |
+| Data type | boolean |
+| Default value | `on` |
+| Allowed values | `on` |
+| Parameter type | read-only |
+| Documentation | [event_triggers](https://www.postgresql.org/docs/17/runtime-config-client.html#GUC-EVENT-TRIGGERS) |
 
 
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
@@ -359,6 +376,23 @@ ms.custom: automatically generated
 | Allowed values | `off` |
 | Parameter type | read-only |
 | Documentation | [transaction_read_only](https://www.postgresql.org/docs/17/runtime-config-client.html#GUC-TRANSACTION-READ-ONLY) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### transaction_timeout
+
+| Attribute | Value |
+| --- | --- |
+| Category | Client Connection Defaults / Statement Behavior |
+| Description | Sets the maximum allowed duration (in milliseconds) of any transcation in a session. 0 turns this off. |
+| Data type | integer |
+| Default value | `0` |
+| Allowed values | `0-2147483647` |
+| Parameter type | dynamic |
+| Documentation | [transaction_timeout](https://www.postgresql.org/docs/17/runtime-config-client.html#GUC-TRANSACTION-TIMEOUT) |
 
 
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]

@@ -2,29 +2,12 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 01/07/2025
+ms.date: 02/04/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
 ms.custom: automatically generated
 ---
-### allow_alter_system
-
-| Attribute | Value |
-| --- | --- |
-| Category | Customized Options |
-| Description | Enable/Disable allow alter system command. |
-| Data type | boolean |
-| Default value | `on` |
-| Allowed values | `on` |
-| Parameter type | read-only |
-| Documentation | [allow_alter_system](https://www.postgresql.org/docs/17/runtime-config-compatible.html#GUC-ALLOW-ALTER-SYSTEM) |
-
-
-[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
-
 ### auto_explain.log_analyze
 
 | Attribute | Value |
@@ -324,7 +307,7 @@ ms.custom: automatically generated
 | Default value | Depends on resources (vCores, RAM, or disk space) allocated to the server. |
 | Allowed values | `1024` |
 | Parameter type | read-only |
-| Documentation | [azure_storage.blob_block_size_mb](/rest/api/storageservices/put-block?tabs=azure-ad#remarks) |
+| Documentation | [azure_storage.blob_block_size_mb](https://learn.microsoft.com/rest/api/storageservices/put-block?tabs=azure-ad#remarks) |
 
 
 [!INCLUDE [server-parameters-azure-notes-azure-storage-blob-block-size-mb](./server-parameters-azure-notes-azure-storage-blob-block-size-mb.md)]
@@ -342,23 +325,6 @@ ms.custom: automatically generated
 | Allowed values | `on,off` |
 | Parameter type | dynamic |
 | Documentation | |
-
-
-[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
-
-### commit_timestamp_buffers
-
-| Attribute | Value |
-| --- | --- |
-| Category | Customized Options |
-| Description | Specifies the amount of memory to use to cache the contents of pg_commit_ts. Unit is 8kb. |
-| Data type | integer |
-| Default value | `1024` |
-| Allowed values | `1024` |
-| Parameter type | read-only |
-| Documentation | [commit_timestamp_buffers](https://www.postgresql.org/docs/17/runtime-config-resource.html#GUC-COMMIT_TIMESTAMP_BUFFERS) |
 
 
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
@@ -546,23 +512,6 @@ ms.custom: automatically generated
 | Allowed values | `0-5000` |
 | Parameter type | static |
 | Documentation | [cron.max_running_jobs](https://github.com/citusdata/pg_cron) |
-
-
-[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
-
-### event_triggers
-
-| Attribute | Value |
-| --- | --- |
-| Category | Customized Options |
-| Description | Enable/Disable event triggers for debugging purpose. |
-| Data type | boolean |
-| Default value | `on` |
-| Allowed values | `on` |
-| Parameter type | read-only |
-| Documentation | [event_triggers](https://www.postgresql.org/docs/17/runtime-config-client.html#GUC-EVENT-TRIGGERS) |
 
 
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
@@ -801,57 +750,6 @@ ms.custom: automatically generated
 | Allowed values | `1-7` |
 | Parameter type | dynamic |
 | Documentation | [logfiles.retention_days](https://go.microsoft.com/fwlink/?linkid=2274270) |
-
-
-[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
-
-### multixact_member_buffers
-
-| Attribute | Value |
-| --- | --- |
-| Category | Customized Options |
-| Description | Specifies the amount of shared memory to use to cache the contents of pg_multixact/members. Unit is 8kb. |
-| Data type | integer |
-| Default value | `32` |
-| Allowed values | `32` |
-| Parameter type | read-only |
-| Documentation | [multixact_member_buffers](https://www.postgresql.org/docs/17/runtime-config-resource.html#GUC-MUTIXACT_MEMBER_BUFFERS) |
-
-
-[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
-
-### multixact_offset_buffers
-
-| Attribute | Value |
-| --- | --- |
-| Category | Customized Options |
-| Description | Specifies the amount of shared memory to use to cache the contents of pg_multixact/offsets. Unit is 8kb. |
-| Data type | integer |
-| Default value | `16` |
-| Allowed values | `16` |
-| Parameter type | read-only |
-| Documentation | [multixact_offset_buffers](https://www.postgresql.org/docs/17/runtime-config-resource.html#GUC-MULTIXACT_OFFSET_BUFFERS) |
-
-
-[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
-
-### notify_buffers
-
-| Attribute | Value |
-| --- | --- |
-| Category | Customized Options |
-| Description | Specifies the amount of shared memory to use to cache the contents of pg_notify. Unit is 8kb. |
-| Data type | integer |
-| Default value | `16` |
-| Allowed values | `16` |
-| Parameter type | read-only |
-| Documentation | [notify_buffers](https://www.postgresql.org/docs/17/runtime-config-resource.html#GUC-NOTIFY_BUFFERS) |
 
 
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
@@ -1453,40 +1351,6 @@ ms.custom: automatically generated
 
 
 
-### serializable_buffers
-
-| Attribute | Value |
-| --- | --- |
-| Category | Customized Options |
-| Description | Specifies the amount of shared memory to use to cache the contents of pg_serial. Unit is 8kb. |
-| Data type | integer |
-| Default value | `32` |
-| Allowed values | `32` |
-| Parameter type | read-only |
-| Documentation | [serializable_buffers](https://www.postgresql.org/docs/17/runtime-config-resource.html#GUC-SERIALIZABLE_BUFFERS) |
-
-
-[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
-
-### subtransaction_buffers
-
-| Attribute | Value |
-| --- | --- |
-| Category | Customized Options |
-| Description | Specifies the amount of shared memory to use to cache the contents of pg_subtrans. Unit is 8kb. |
-| Data type | integer |
-| Default value | `1024` |
-| Allowed values | `1024` |
-| Parameter type | read-only |
-| Documentation | [subtransaction_buffers](https://www.postgresql.org/docs/17/runtime-config-resource.html#GUC-SUBTRANSACTION_BUFFERS) |
-
-
-[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
-
 ### sync_replication_slots
 
 | Attribute | Value |
@@ -1498,40 +1362,6 @@ ms.custom: automatically generated
 | Allowed values | `on,off` |
 | Parameter type | dynamic |
 | Documentation | [sync_replication_slots](https://www.postgresql.org/docs/17/runtime-config-replication.html#GUC-SYNC-REPLICATION-SLOTS) |
-
-
-[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
-
-### transaction_buffers
-
-| Attribute | Value |
-| --- | --- |
-| Category | Customized Options |
-| Description | Specifies the amount of shared memory to use to cache the contents of pg_xact. Unit is 8kb. |
-| Data type | integer |
-| Default value | `1024` |
-| Allowed values | `1024` |
-| Parameter type | read-only |
-| Documentation | [transaction_buffers](https://www.postgresql.org/docs/17/runtime-config-resource.html#GUC-TRANSACTION_BUFFERS) |
-
-
-[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
-
-### transaction_timeout
-
-| Attribute | Value |
-| --- | --- |
-| Category | Customized Options |
-| Description | Sets the maximum allowed duration (in milliseconds) of any transcation in a session. 0 turns this off. |
-| Data type | integer |
-| Default value | `0` |
-| Allowed values | `0-2147483647` |
-| Parameter type | dynamic |
-| Documentation | [transaction_timeout](https://www.postgresql.org/docs/17/runtime-config-client.html#GUC-TRANSACTION-TIMEOUT) |
 
 
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]

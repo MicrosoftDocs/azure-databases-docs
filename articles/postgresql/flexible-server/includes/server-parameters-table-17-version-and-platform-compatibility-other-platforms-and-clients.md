@@ -2,12 +2,29 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 01/07/2025
+ms.date: 02/04/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
 ms.custom: automatically generated
 ---
+### allow_alter_system
+
+| Attribute | Value |
+| --- | --- |
+| Category | Version and Platform Compatibility / Other Platforms and Clients |
+| Description | Enable/Disable allow alter system command. |
+| Data type | boolean |
+| Default value | `on` |
+| Allowed values | `on` |
+| Parameter type | read-only |
+| Documentation | [allow_alter_system](https://www.postgresql.org/docs/17/runtime-config-compatible.html#GUC-ALLOW-ALTER-SYSTEM) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
 ### transform_null_equals
 
 | Attribute | Value |
