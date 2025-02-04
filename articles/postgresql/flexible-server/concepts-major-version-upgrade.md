@@ -53,7 +53,7 @@ Here are some of the important considerations with in-place major version upgrad
 
 After the major version upgrade is complete, we recommend running the `ANALYZE` command  in each database to refresh the [`pg_statistic`](https://www.postgresql.org/docs/current/catalog-pg-statistic.html) table. Otherwise, you could run into performance issues.
 
-```SQL
+```sql
 postgres=> analyze;
 ANALYZE
 ```

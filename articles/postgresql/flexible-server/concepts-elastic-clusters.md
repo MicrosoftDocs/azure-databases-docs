@@ -86,7 +86,7 @@ Suppose that shard 102027 is associated with the row in question. The row is rea
 
 The node rewrites queries into fragments that refer to the specific tables like `github_events_102027` and runs those fragments on the appropriate workers. Here's an example of a query run behind the scenes to find the node holding shard with identifier 102027.
 
-```cpp
+```sql
 SELECT
     shardid,
     node.nodename,

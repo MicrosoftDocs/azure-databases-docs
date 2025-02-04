@@ -34,6 +34,7 @@ The first thing to create is a managed Azure Database for PostgreSQL flexible se
 ```azurecli-interactive
 az postgres flexible-server create --public-access <your-ip-address>
 ```
+
 You can provide more arguments for this command to customize it. See all arguments for [az postgres flexible-server create](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-create).
 
 ## View all the arguments

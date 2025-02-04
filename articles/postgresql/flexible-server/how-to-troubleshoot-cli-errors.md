@@ -31,14 +31,14 @@ Currently, Azure CLI doesn't support turning on debug logging, but you can retri
 
 1. List the deployments in resource group to identify the Azure Database for PostgreSQL flexible server deployment.
 
-    ```azurecli
+    ```azurecli-interactive
         az deployment operation group list \
           --resource-group examplegroup \
           --name exampledeployment
     ```
 
 2. Get the request content of the Azure Database for PostgreSQL flexible server deployment. 
-    ```azurecli
+    ```azurecli-interactive
         az deployment operation group list \
           --name exampledeployment \
           -g examplegroup \
@@ -47,7 +47,7 @@ Currently, Azure CLI doesn't support turning on debug logging, but you can retri
 
 3. Examine the response content. 
 
-    ```azurecli
+    ```azurecli-interactive
     az deployment operation group list \
       --name exampledeployment \
       -g examplegroup \

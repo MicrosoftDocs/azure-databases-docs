@@ -191,7 +191,7 @@ Review and note the following settings:
 
 To obtain information about the configuration of a server in Azure Database for PostgreSQL flexible server, especially to view settings for recently introduced features like storage autogrow or private link, you should use the latest API version `2023-06-01-preview`. The `GET` request would be formatted as follows:
 
-```http request
+```http
 https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}?api-version=2023-06-01-preview
 ```
 

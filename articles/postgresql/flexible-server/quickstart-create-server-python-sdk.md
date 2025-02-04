@@ -47,7 +47,7 @@ pip install azure-mgmt-postgresqlflexibleservers
 
 Log in to your account using `azurecli` to authenticate your account.
 
-```azurecli
+```azurecli-interactive
 az login
 ```
 
@@ -209,9 +209,9 @@ if __name__ == "__main__":
 main()
 ```
 
-### [Azure CLI](#tab/CLI)
+### [CLI](#tab/CLI)
 
-```azurecli
+```azurecli-interactive
 az postgres flexible-server delete --resource-group <resource-group> --name <server-name>
 ```
 

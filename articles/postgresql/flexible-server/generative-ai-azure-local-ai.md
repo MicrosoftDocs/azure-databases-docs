@@ -57,7 +57,7 @@ The `azure_local_ai` extension provides a set of functions. These functions allo
 
 These functions can be displayed using the following psql meta-command:
 
-```psql
+```sql
 \df azure_local_ai.*
 ```
 
