@@ -196,6 +196,9 @@
     items:
     - name: Security overview
       href: ../security.yml
+    - name: Role-based access control guide
+      displayName: RBAC, Entra
+      href: security/index.md
     - name: Considerations and guidance
       href: ../security-considerations.md
     - name: Well Architected Framework security guidance
@@ -325,6 +328,13 @@
       href: ../how-to-setup-cross-tenant-customer-managed-keys.md
     - name: Use managed identities with Azure services
       href: ../how-to-setup-managed-identity.md
+    - name: Disable key-based authentication
+      displayName: key, ropc, connection string
+      href: security/how-to-disable-key-based-authentication.md?context=/azure/cosmos-db/context/context
+    - name: Grant role-based access control access for resources
+      href: security/how-to-grant-control-plane-role-based-access.md?context=/azure/cosmos-db/context/context
+    - name: Grant role-based access control access for data
+      href: security/how-to-grant-data-plane-role-based-access.md?context=/azure/cosmos-db/context/context
   - name: Enterprise readiness
     items:
     - name: Access preview features
