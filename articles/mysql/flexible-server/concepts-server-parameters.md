@@ -405,9 +405,9 @@ The **Server parameters** pane in the Azure portal shows both the modifiable and
 ## Azure mysql system variables
 
 
-## azure_server_name
+### azure_server_name
 
-The `azure_server_name` variable provides the exact server name of the Azure Database for MySQL - Flexible Server instance. This variable can be retrieved by running following command inside MySQL.
+The `azure_server_name` variable provides the exact server name of the Azure Database for MySQL - Flexible Server instance. This variable is useful when applications or scripts need to programmatically retrieve the server’s hostname they are connected to, without relying on external configurations and can be retrieved by running following command inside MySQL.
 
 ```sql
 mysql> SHOW GLOBAL VARIABLES LIKE 'azure_server_name';
@@ -417,13 +417,13 @@ mysql> SHOW GLOBAL VARIABLES LIKE 'azure_server_name';
 | azure_server_name | myflex  |
 +-------------------+---------+
 ```  
-Regardless of failovers in an HA setup, `azure_server_name` always returns the original server name (e.g., myflex). This variable is useful when applications or scripts need to programmatically retrieve the server’s hostname they are connected to, without relying on external configurations. 
-In a Non-HA server, the value of variable `azure_server_name` is the same as the value of `logical_server_name`, as there is only a single instance without a failover mechanism.
+Note : The `azure_server_name` consistently returns the original server name you use to connect to the service (e.g., myflex) for both HA-enabled and HA-disabled server
 
 
-## logical_server_name
+### logical_server_name
 
-The `logical_server_name` variable represents the hostname of an Azure Database for MySQL - Flexible Server instance. The variable can be retrieved by running following command inside MySQL.
+The logical_server_name variable represents the hostname of the instance where Azure Database for MySQL - Flexible Server is running. This variable is useful for identifying the host where the service is currently running, aiding in troubleshooting and failover monitoring. You can retrieve this variable by executing the following command within MySQL.
+
 ```sql
 mysql> SHOW GLOBAL VARIABLES LIKE 'logical_server_name';
 +---------------------+--------------+
@@ -432,11 +432,7 @@ mysql> SHOW GLOBAL VARIABLES LIKE 'logical_server_name';
 | logical_server_name | myflex	     |
 +---------------------+--------------+
 ```  
-In a high availability (HA) setup, the standby server in Azure Database for MySQL - Flexible Server is assigned a unique four-letter identifier appended to the server name. (e.g., myflex-xyze).
-If a failover occurs and standdby is the new primary server, the variable `logical_server_name` updates to reflect the new primary hostname with identifier (e.g.,myflex-xyze). 
-For an HA server, the variable `logical_server_name` reflects the hostname of the node which is acting as a *primary server*.
-In a Non-HA server, the value `logical_server_name` is the same as variable `azure_server_name` as there is only a single instance without a failover mechanism. 
-This variable is useful for identifying the current underlying host in an HA setup, helping with troubleshooting and failover monitoring.
+Note: For an HA-enabled server, the `logical_server_name` variable reflects the hostname of the instance acting as the primary server. For a server where HA is disabled, the value of `logical_server_name` is the same as the `azure_server_name` variable since there is only a single instance.
 
 
 ## Related content
