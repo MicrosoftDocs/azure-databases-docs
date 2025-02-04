@@ -24,7 +24,7 @@ In this article, you can learn:
 
 1. Enable troubleshooting guides by following the steps described in [use troubleshooting guides](how-to-troubleshooting-guides.md).
 
-2. Configure the `auto_explain` extension by [allowlisting](../extensions/how-to-allow-extensions.md#allow-extensions) and [loading](../extensions/how-to-allow-extensions.md#load-libraries) the extension.
+2. Configure the `auto_explain` extension by [allowlisting](../extensions/how-to-allow-extensions.md#allow-extensions) and [loading](../extensions/how-to-load-libraries.md) the extension.
 
 3. After the `auto_explain` extension is configured, change the following [server parameters](concepts-server-parameters.md), which control the behavior of the extension:
 

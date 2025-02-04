@@ -17,7 +17,7 @@ ms.topic: how-to
 
 Before creating extensions in Azure Database for PostgreSQL flexible server, you must [allowlist](how-to-allow-extensions.md) them.
 
-# Steps to create extensions
+## Steps to create extensions
 
 1. [Allowlist](how-to-allow-extensions.md) the extension.
 
