@@ -35,22 +35,38 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="./media/how-to-configure-high-availability/high-availability-disabled.png" alt-text="Screenshot showing the High availability page." lightbox="./media/how-to-configure-high-availability/high-availability-disabled.png":::
 
-3. If high availability isn't enabled, the **Enable high availability** checkbox appears unchecked, and **High availability status** is shown as **Not Enabled**.
+3. If high availability isn't enabled, the **Enable high availability** checkbox appears unchecked.
 
-    :::image type="content" source="./media/how-to-configure-high-availability/high-availability-not-enabled.png" alt-text="Screenshot showing how the High availability page looks, when high availability isn't enabled." lightbox="./media/how-to-configure-high-availability/high-availability-not-enabled.png":::
+    :::image type="content" source="./media/how-to-configure-high-availability/high-availability-not-enabled.png" alt-text="Screenshot showing how the Enable high availability checbox is unchecked, when high availability isn't enabled." lightbox="./media/how-to-configure-high-availability/high-availability-not-enabled.png":::
 
-4. Select the **Enable high availability** checkbox to enable the option. It shows **Same zone** and **Zone redundant** options. If you choose **Same zone**, the standby server is created in the same availability zone as the primary server.
+4. Also, **High availability status** is shown as **Not Enabled**.
 
-    :::image type="content" source="./media/how-to-configure-high-availability/high-availability-same-zone.png" alt-text="Screenshot showing how the High availability page looks, when high availability is enabled with same zone." lightbox="./media/how-to-configure-high-availability/high-availability-same-zone.png":::
+    :::image type="content" source="./media/how-to-configure-high-availability/high-availability-not-enabled-status.png" alt-text="Screenshot showing how the High availability status shows as Not Enabled, when high availability isn't enabled." lightbox="./media/how-to-configure-high-availability/high-availability-not-enabled-status.png":::
+
+5. Select the **Enable high availability** checkbox to enable the option.
+
+    :::image type="content" source="./media/how-to-configure-high-availability/high-availability-enable.png" alt-text="Screenshot showing how to enable high availability, when high availability isn't enabled." lightbox="./media/how-to-configure-high-availability/high-availability-enable.png":::
+
+6. It shows **Same zone** and **Zone redundant** options. If you choose **Same zone**, the standby server is created in the same availability zone as the primary server.
+
+    :::image type="content" source="./media/how-to-configure-high-availability/high-availability-same-zone.png" alt-text="Screenshot showing how to select Same zone for High availability mode, while enabling high availability." lightbox="./media/how-to-configure-high-availability/high-availability-same-zone.png":::
 
 >[!NOTE]
 >If the region in which your server is created doesn't support high availability with zone redundancy, the **Zone redundant** option is grayed out and disabled.
 
-5. If the region supports zone redundancy, and you select **Zone redundant**, you can choose in which of the other available zones you want to deploy your standby server.
+7. If the region supports zone redundancy, you can select **Zone redundant**.
 
-    :::image type="content" source="./media/how-to-configure-high-availability/high-availability-zone-redundant.png" alt-text="Screenshot showing the High availability page, when the feature is enabled with standby server deployed in a different zone than the primary." lightbox="./media/how-to-configure-high-availability/high-availability-zone-redundant.png":::
+    :::image type="content" source="./media/how-to-configure-high-availability/high-availability-zone-redundant.png" alt-text="Screenshot showing the High availability page, when the you enable high availability with standby server deployed in a different zone than the primary." lightbox="./media/how-to-configure-high-availability/high-availability-zone-redundant.png":::
 
-6. When everything is configured according to your needs, select **Save** to apply the changes. A dialog informs you of the cost increase associated with the deployment of the standby server. If you decide to proceed, select **Enable HA**.
+8. In that case, you can choose in which of the other availability zones you want to deploy your standby server.
+
+    :::image type="content" source="./media/how-to-configure-high-availability/high-availability-zone-redundant-zone-selection.png" alt-text="Screenshot showing the High availability page, and how you can select a specific zone, when the you enable high availability with standby server deployed in a different zone than the primary." lightbox="./media/how-to-configure-high-availability/high-availability-zone-redundant-zone-selection.png":::
+
+9. When everything is configured according to your needs, select **Save** to apply the changes.
+
+    :::image type="content" source="./media/how-to-configure-high-availability/enable-high-availability-save.png" alt-text="Screenshot showing the Save button." lightbox="./media/how-to-configure-high-availability/enable-high-availability-save.png":::
+
+9. A dialog informs you of the cost increase associated with the deployment of the standby server. If you decide to proceed, select **Enable HA**.
 
     :::image type="content" source="./media/how-to-configure-high-availability/confirm-enable-high-availability.png" alt-text="Screenshot showing the dialog to confirm enablement of high availability." lightbox="./media/how-to-configure-high-availability/confirm-enable-high-availability.png":::
 
