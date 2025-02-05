@@ -56,6 +56,12 @@ That means in one-second autovacuum can do:
 
 ## Monitor autovacuum
 
+Azure Database for PostgreSQL flexible server provides following metrics for monitoring autovacuum. 
+
+[!INCLUDE [Autovacuum Metrics](includes/autovacuum-metrics-table.md)]
+
+To learn more, see [Autovacuum Metrics](./concepts-monitoring.md#autovacuum-metrics).
+
 Use the following queries to monitor autovacuum:
 
 ```sql
