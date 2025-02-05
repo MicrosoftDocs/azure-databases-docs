@@ -2042,7 +2042,7 @@
     },
     {
         "source_path_from_root": "/articles/postgresql/videos.md",
-        "redirect_url": "/azure/postgresql/flexible-server/overview.md",
+        "redirect_url": "/azure/postgresql/flexible-server/overview",
         "redirect_document_id": false
     }
 ]
