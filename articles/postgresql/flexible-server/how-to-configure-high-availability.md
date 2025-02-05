@@ -154,7 +154,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 6. Select **Save** to apply the changes.
 
-    :::image type="content" source="./media/how-to-configure-high-availability/disable-high-availability-save.png" alt-text="Screenshot showing the dialog to confirm disablement of high availability." lightbox="./media/how-to-configure-high-availability/disable-high-availability-save.png":::
+    :::image type="content" source="./media/how-to-configure-high-availability/disable-high-availability-save.png" alt-text="Screenshot showing the Save button to disable high availability." lightbox="./media/how-to-configure-high-availability/disable-high-availability-save.png":::
 
 7.  A dialog informs you of the cost reduction associated with the removal of the standby server. If you decide to proceed, select **Disable HA**.
 
