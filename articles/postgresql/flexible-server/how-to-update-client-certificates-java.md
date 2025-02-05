@@ -1,5 +1,5 @@
 ---
-title: Update application client certificates for Java
+title: Update application client certificates
 description: Learn about updating Java clients with Flexible Server using  TLS.
 author: techlake
 ms.author: hganten
@@ -11,7 +11,7 @@ ms.custom: devx-track-dotnet, devx-track-extended-java
 ms.topic: conceptual
 ---
 
-# Update application client certificates for Java
+# Update application client certificates
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
