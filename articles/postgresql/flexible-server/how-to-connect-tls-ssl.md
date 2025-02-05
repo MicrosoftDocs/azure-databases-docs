@@ -1,7 +1,6 @@
 ---
 title: Encrypted connectivity using TLS/SSL
-description: This article describes how you can configure storage autogrow in an Azure Database for PostgreSQL flexible server.
-description: Instructions and information on how to connect using TLS/SSL in Azure Database for PostgreSQL - Flexible Server.
+description: This article describes how to connect using TLS/SSL in an Azure Database for PostgreSQL flexible server.
 author: techlake
 ms.author: hganten
 ms.reviewer: maghan
