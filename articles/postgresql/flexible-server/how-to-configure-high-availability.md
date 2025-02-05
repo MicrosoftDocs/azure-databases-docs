@@ -136,19 +136,31 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="./media/how-to-configure-high-availability/high-availability-enabled.png" alt-text="Screenshot showing the High availability page with same zone high availability enabled." lightbox="./media/how-to-configure-high-availability/high-availability-enabled.png":::
 
-3. If high availability is enabled, the **Enable high availability** checkbox appears checked, **High availability mode** is set to the mode configured, and **High availability status** is typically shown as **Healthy**.
+3. If high availability is enabled, the **Enable high availability** checkbox appears checked.
 
-    :::image type="content" source="./media/how-to-configure-high-availability/high-availability-not-enabled.png" alt-text="Screenshot showing how the High availability page looks, when high same zone high availability is enabled." lightbox="./media/how-to-configure-high-availability/high-availability-not-enabled.png":::
+    :::image type="content" source="./media/how-to-configure-high-availability/high-availability-enable-marked.png" alt-text="Screenshot showing the High availability page with the Enable high availability checkbox marked." lightbox="./media/how-to-configure-high-availability/high-availability-enable-marked.png":::
 
-4. Clear the **Enable high availability** checkbox to disable the option.
+4. Also, **High availability mode** is set to the mode configured.
+
+    :::image type="content" source="./media/how-to-configure-high-availability/high-availability-mode.png" alt-text="Screenshot showing how the High availability mode looks like, when same zone high availability is enabled." lightbox="./media/how-to-configure-high-availability/high-availability-mode.png":::
+
+5. And **High availability status** is typically shown as **Healthy**.
+
+    :::image type="content" source="./media/how-to-configure-high-availability/high-availability-status.png" alt-text="Screenshot showing how the High availability status shows as Healthy." lightbox="./media/how-to-configure-high-availability/high-availability-status.png":::
+
+6. Clear the **Enable high availability** checkbox to disable the option.
 
     :::image type="content" source="./media/how-to-configure-high-availability/high-availability-disabling.png" alt-text="Screenshot showing how the High availability page looks, when disabling high availability." lightbox="./media/how-to-configure-high-availability/high-availability-disabling.png":::
 
-6. Select **Save** to apply the changes. A dialog informs you of the cost reduction associated with the removal of the standby server. If you decide to proceed, select **Disable HA**.
+6. Select **Save** to apply the changes.
+
+    :::image type="content" source="./media/how-to-configure-high-availability/disable-high-availability-save.png" alt-text="Screenshot showing the dialog to confirm disablement of high availability." lightbox="./media/how-to-configure-high-availability/disable-high-availability-save.png":::
+
+7.  A dialog informs you of the cost reduction associated with the removal of the standby server. If you decide to proceed, select **Disable HA**.
 
     :::image type="content" source="./media/how-to-configure-high-availability/confirm-disable-high-availability.png" alt-text="Screenshot showing the dialog to confirm disablement of high availability." lightbox="./media/how-to-configure-high-availability/confirm-disable-high-availability.png":::
 
-7. A deployment initiates and, when it completes, a notification shows that high availability is successfully disabled.
+8. A deployment initiates and, when it completes, a notification shows that high availability is successfully disabled.
 
     :::image type="content" source="./media/how-to-configure-high-availability/notification-enable-disable-high-availability.png" alt-text="Screenshot showing notification informing that high availability is successfully disabled." lightbox="./media/how-to-configure-high-availability/notification-enable-disable-high-availability.png":::
 
