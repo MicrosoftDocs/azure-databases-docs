@@ -534,13 +534,13 @@
         items:
         - name: Change private DNS zone
           href: flexible-server/how-to-networking-servers-deployed-vent-integration-change-private-dns-zone.md
-      - name: Other
+      - name: Encrypted connectivity
         items:
-        - name: Encrypted connectivity using TLS/SSL
+        - name: Use of TLS/SSL
           href: flexible-server/how-to-connect-tls-ssl.md
-        - name: Update application client SSL/TLS certificates
+        - name: Update application client certificates
           href: flexible-server/how-to-update-client-certificates-java.md
-        - name: Connect to managed data factory via Private Endpoint
+        - name: Connect from data factory via managed private endpoint
           href: flexible-server/how-to-connect-to-data-factory-private-endpoint.md
     - name: Scaling
       items:
