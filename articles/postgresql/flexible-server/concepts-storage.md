@@ -97,11 +97,13 @@ You can monitor your I/O consumption in the [Azure portal](https://portal.azure.
 
 ### Disk full conditions
 
-When your disk becomes full, the server starts returning errors and prevents any further modifications. Reaching the limit might also cause problems with other operational activities, such as backups and write-ahead log (WAL) archiving.
-
-To avoid this situation, the server is automatically switched to read-only mode when the storage usage reaches 95 percent, or when the available capacity is less than 5 GiB. If you're using Premium SSD storage type, you can use the [storage autogrow](#storage-autogrow-premium-ssd) feature to avoid this issue from occurring.
-
-We recommend that you actively monitor the disk space that's in use, and increase the disk size before you run out of available space in your storage. You can set up an alert to notify you when your server storage is approaching an out-of-disk state. For more information, see how to [use the Azure portal to set up alerts on metrics for Azure Database for PostgreSQL - Flexible Server](how-to-alert-on-metrics.md).
+When your disk becomes full, the server starts returning errors and prevents any further modifications. Reaching the limit might also cause problems with other operational activities, such as backups and write-ahead log (WAL) archiving. There are different ways with which this disk full condition can be avoided:
+1. To avoid this situation, the server is automatically switched to read-only mode when the storage usage reaches 95 percent, or when the available capacity is less than 5 GiB. If you're using Premium SSD storage type, you can use the [storage autogrow](#storage-autogrow-premium-ssd) feature or scale up the storage of the server to avoid this issue from occurring.
+2. If the server is marked as read only because of this, you can delete the data that is no longer required, to do this you can execute the below command to change the mode to read-write mode and once that is done you can execute delete command.
+```sql
+	SET SESSION CHARACTERISTICS AS TRANSACTION READ WRITE
+```
+We recommend that you actively monitor the disk space that's in use by using storage_percentage or storage_used metrics and increase the disk size before you run out of available space in your storage. You can set up an alert to notify you when your server storage is approaching an out-of-disk state. For more information, see how to [use the Azure portal to set up alerts on metrics for Azure Database for PostgreSQL - Flexible Server](how-to-alert-on-metrics.md).
 
 ### Storage autogrow (Premium SSD)
 
