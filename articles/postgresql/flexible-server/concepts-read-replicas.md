@@ -115,7 +115,13 @@ Therefore, monitoring the replication lag and replication slots status is crucia
 
 We recommend setting alert rules for storage used or storage percentage, and for replication lags, when they exceed certain thresholds so that you can proactively act, increase the storage size, and delete lagging read replicas. For example, you can set an alert if the storage percentage exceeds 80% usage, and if the replica lag is higher than 5 minutes. The [Transaction Log Storage Used](concepts-monitoring.md#default-metrics) metric shows you if the WAL files accumulation is the main reason of the excessive storage usage.
 
-Azure Database for PostgreSQL flexible server provides [two metrics](concepts-monitoring.md#replication) for monitoring replication. The two metrics are **Max Physical Replication Lag** and **Read Replica Lag**. To learn how to view these metrics, see the **Monitor a replica** section of the [read replica how-to article](how-to-read-replicas-portal.md#monitor-a-replica).
+#### Moniotring metrics
+
+Azure Database for PostgreSQL flexible server provides following metrics for monitoring replication. 
+
+[!INCLUDE [Read-Replica Metrics](includes/read-replica-metrics-table.md)]
+
+To learn more, see [read replica how-to article](how-to-read-replicas-portal.md#monitor-a-replica).
 
 The **Max Physical Replication Lag** metric shows the lag in bytes between the primary and the most-lagging replica. This metric is applicable and available on the primary server only, and will be available only if at least one of the read replicas is connected to the primary. The lag information is present also when the replica is in the process of catching up with the primary, during replica creation, or when replication becomes inactive.
 
