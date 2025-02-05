@@ -2039,6 +2039,11 @@
         "source_path_from_root": "/articles/postgresql/flexible-server/how-to-configure-server-parameters.md",
         "redirect_url": "/azure/postgresql/flexible-server/how-to-server-parameters-list-all",
         "redirect_document_id": false
+    },
+    {
+        "source_path_from_root": "/articles/postgresql/videos.md",
+        "redirect_url": "/azure/postgresql/flexible-server/overview.md",
+        "redirect_document_id": false
     }
 ]
 }
