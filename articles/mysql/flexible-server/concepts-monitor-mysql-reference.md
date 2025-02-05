@@ -16,7 +16,7 @@ ms.service: azure-database-mysql
 
 [!INCLUDE [horz-monitor-ref-intro](~/reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/horz-monitor-ref-intro.md)]
 
-See [Monitor Azure Database for MySQL - Flexible Server](monitor-mysql-flexible-server.md) for details on the data you can collect for Azure Database for MySQL - Flexible Server and how to use it.
+See [Monitor Azure Database for MySQL - Flexible Server](concepts-monitor-mysql.md) for details on the data you can collect for Azure Database for MySQL - Flexible Server and how to use it.
 
 [!INCLUDE [horz-monitor-ref-metrics-intro](~/reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/horz-monitor-ref-metrics-intro.md)]
 
@@ -159,5 +159,5 @@ For more detailed information on troubleshooting metrics, refer to the [Azure Mo
 
 ## Related content
 
-- See [Monitor Azure Database for MySQL - Flexible Server](monitor-mysql-flexible-server.md) for a description of monitoring Azure Database for MySQL - Flexible Server.
+- See [Monitor Azure Database for MySQL - Flexible Server](concepts-monitor-mysql.md) for a description of monitoring Azure Database for MySQL - Flexible Server.
 - See [Monitor Azure resources with Azure Monitor](/azure/azure-monitor/essentials/monitor-azure-resource) for details on monitoring Azure resources.
