@@ -21,7 +21,7 @@ High availability feature deploys physically separate primary and standby replic
 
 > [!IMPORTANT]
 > _Billing Model Update for Azure Database for PostgreSQL Flexible Server (v5 HA):_
-In April, we implemented a billing model update for v5 SKU with High Availability (HA) enabled servers. This change aims to correctly reflect the charges, by accounting for both the primary and standby servers. Before this change, we were incorrectly charging customers for the primary server only. Customers using v5 SKU with HA enabled servers will now see billing quantities multiplied by 2. This update doesn't impact v4 and v3 SKUs.
+In April, we implemented a billing model update for v5 SKU with High Availability (HA) enabled servers. This change aims to correctly reflect the charges, by accounting for both the primary and standby servers. Before this change, we were incorrectly charging customers for the primary server only. Customers using v5 SKU with HA enabled servers would now see billing quantities multiplied by 2. This update doesn't impact v4 and v3 SKUs.
 
 ## Steps to enable high availability for existing servers
 
@@ -37,7 +37,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 3. If high availability isn't enabled, the **Enable high availability** checkbox appears unchecked.
 
-    :::image type="content" source="./media/how-to-configure-high-availability/high-availability-not-enabled.png" alt-text="Screenshot showing how the Enable high availability checbox is unchecked, when high availability isn't enabled." lightbox="./media/how-to-configure-high-availability/high-availability-not-enabled.png":::
+    :::image type="content" source="./media/how-to-configure-high-availability/high-availability-not-enabled.png" alt-text="Screenshot showing how the Enable high availability checkbox is unchecked, when high availability isn't enabled." lightbox="./media/how-to-configure-high-availability/high-availability-not-enabled.png":::
 
 4. Also, **High availability status** is shown as **Not Enabled**.
 
@@ -56,11 +56,11 @@ Using the [Azure portal](https://portal.azure.com/):
 
 7. If the region supports zone redundancy, you can select **Zone redundant**.
 
-    :::image type="content" source="./media/how-to-configure-high-availability/high-availability-zone-redundant.png" alt-text="Screenshot showing the High availability page, when the you enable high availability with standby server deployed in a different zone than the primary." lightbox="./media/how-to-configure-high-availability/high-availability-zone-redundant.png":::
+    :::image type="content" source="./media/how-to-configure-high-availability/high-availability-zone-redundant.png" alt-text="Screenshot showing the High availability page, when you enable high availability with standby server deployed in a different zone than the primary." lightbox="./media/how-to-configure-high-availability/high-availability-zone-redundant.png":::
 
 8. In that case, you can choose in which of the other availability zones you want to deploy your standby server.
 
-    :::image type="content" source="./media/how-to-configure-high-availability/high-availability-zone-redundant-zone-selection.png" alt-text="Screenshot showing the High availability page, and how you can select a specific zone, when the you enable high availability with standby server deployed in a different zone than the primary." lightbox="./media/how-to-configure-high-availability/high-availability-zone-redundant-zone-selection.png":::
+    :::image type="content" source="./media/how-to-configure-high-availability/high-availability-zone-redundant-zone-selection.png" alt-text="Screenshot showing the High availability page, and how you can select a specific zone, when you enable high availability with standby server deployed in a different zone than the primary." lightbox="./media/how-to-configure-high-availability/high-availability-zone-redundant-zone-selection.png":::
 
 9. When everything is configured according to your needs, select **Save** to apply the changes.
 
@@ -142,7 +142,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 4. Also, **High availability mode** is set to the mode configured.
 
-    :::image type="content" source="./media/how-to-configure-high-availability/high-availability-mode.png" alt-text="Screenshot showing how the High availability mode looks like, when same zone high availability is enabled." lightbox="./media/how-to-configure-high-availability/high-availability-mode.png":::
+    :::image type="content" source="./media/how-to-configure-high-availability/high-availability-mode.png" alt-text="Screenshot showing how the High availability mode looks, when same zone high availability is enabled." lightbox="./media/how-to-configure-high-availability/high-availability-mode.png":::
 
 5. And **High availability status** is typically shown as **Healthy**.
 
@@ -270,7 +270,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="./media/how-to-configure-high-availability/high-availability-enabled.png" alt-text="Screenshot showing the High availability page." lightbox="./media/how-to-configure-high-availability/high-availability-enabled.png":::
 
-3.	If high availability mode is set to **Zone redundant** mode, you may want to take note of the values assigned to **Primary availability zone** and **Standby availability zone**, as they should be reversed after the failover operation completes.
+3.	If high availability mode is set to **Zone redundant** mode, you might want to take note of the values assigned to **Primary availability zone** and **Standby availability zone**, as they should be reversed after the failover operation completes.
 
     :::image type="content" source="./media/how-to-configure-high-availability/high-availability-primary-standby-zones.png" alt-text="Screenshot showing the zones in which primary and standby servers are deployed." lightbox="./media/how-to-configure-high-availability/high-availability-primary-standby-zones.png":::
 
@@ -336,7 +336,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="./media/how-to-configure-high-availability/high-availability-enabled.png" alt-text="Screenshot showing the High availability page." lightbox="./media/how-to-configure-high-availability/high-availability-enabled.png":::
 
-3.	If high availability mode is set to **Zone redundant** mode, you may want to take note of the values assigned to **Primary availability zone** and **Standby availability zone**, as they should be reversed after the failover operation completes.
+3.	If high availability mode is set to **Zone redundant** mode, you might want to take note of the values assigned to **Primary availability zone** and **Standby availability zone**, as they should be reversed after the failover operation completes.
 
     :::image type="content" source="./media/how-to-configure-high-availability/high-availability-primary-standby-zones.png" alt-text="Screenshot showing the zones in which primary and standby servers are deployed." lightbox="./media/how-to-configure-high-availability/high-availability-primary-standby-zones.png":::
 
