@@ -182,12 +182,14 @@ keytool -cacerts -delete -alias cosmos_emulator
 
 ## Use in continuous integration workflow
 
-The emulator can be incorporated as part CI/CD pipelines. This [GitHub repository](https://github.com/AzureCosmosDB/cosmosdb-linux-emulator-github-actions) provides examples of how to use the emulator as part of a GitHub Actions CI workflow for [Python](https://github.com/AzureCosmosDB/cosmosdb-linux-emulator-github-actions/blob/main/.github/workflows/python.yml), [Java](https://github.com/AzureCosmosDB/cosmosdb-linux-emulator-github-actions/blob/main/.github/workflows/java.yml), and [Go](https://github.com/AzureCosmosDB/cosmosdb-linux-emulator-github-actions/blob/main/.github/workflows/go.yml) applications on both `x64` and `ARM64` architectures (demonstrated for Linux runner using `ubuntu`).
+There are lot of benefits to using Docker containers in CI/CD pipelines, especially for stateful systems like databases. This could be in terms of cost-effectiveness, performance, reliability and consistency of your test suites. 
 
-Here is an example of a GitHub Actions workflow file for a Java application. It configures the emulator as a [GitHub Actions service container](https://docs.github.com/en/actions/use-cases-and-examples/using-containerized-services/about-service-containers) as part of a job in the workflow. GitHub takes care of starting the Docker container and destroys it when the job completes - no manual intervention (like using the `docker run` command) required.
+The emulator can be incorporated as part CI/CD pipelines. You can refer to this [GitHub repository](https://github.com/AzureCosmosDB/cosmosdb-linux-emulator-github-actions) that provides examples of how to use the emulator as part of a GitHub Actions CI workflow for .NET, Python, Java, and Go applications on both `x64` and `ARM64` architectures (demonstrated for Linux runner using `ubuntu`).
+
+Here is an example of a GitHub Actions CI workflow that shows how to configure the emulator as a [GitHub Actions service container](https://docs.github.com/en/actions/use-cases-and-examples/using-containerized-services/about-service-containers) as part of a job in the workflow. GitHub takes care of starting the Docker container and destroys it when the job completes, without the need for manual intervention (such as using the `docker run` command).
 
 ```yml
-name: Java App CI
+name: CI demo app
 
 on:
   push:
@@ -244,7 +246,7 @@ jobs:
 
 This job runs on an Ubuntu runner and uses the `mcr.microsoft.com/cosmosdb/linux/azure-cosmos-emulator:vnext-preview` Docker image as a service container. It uses environment variables to configure the connection string, database name, and container name. Since in this case the job is running directly on the GitHub Actions runner machine, the **Run tests** step in the job can access the emulator is accessible using `localhost:8081` (`8081` is the port exposed by the emulator).
 
-The **Export Cosmos DB Emulator Certificate** step is specific to Java applications (that use the Azure Cosmos DB Java SDK) since the Java SDK currently doesn't support `HTTP` mode in emulator (which is the default). The `PROTOCOL` environment variable is set to `https` in the `services` section and this step exports the emulator certificate and import it into the Java keystore. The same applies to .NET as well.
+The **Export Cosmos DB Emulator Certificate** step is specific to Java applications since the Azure Cosmos DB Java SDK currently doesn't support `HTTP` mode in emulator. The `PROTOCOL` environment variable is set to `https` in the `services` section and this step exports the emulator certificate and import it into the Java keystore. The same applies to .NET as well.
 
 ## Reporting issues
 
