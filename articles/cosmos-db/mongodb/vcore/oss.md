@@ -1,5 +1,5 @@
 ---
-title: DocumentDB: The Open-Source Engine Powering Azure Cosmos DB for MongoDB vCore
+title: DocumentDBis the Open-Source Engine Powering Azure Cosmos DB for MongoDB vCore
 description: Learn about DocumentDB, the open-source document database platform that powers Azure Cosmos DB for MongoDB vCore, its features, architecture, and how to get started.
 author: patty-chow
 ms.author: pattychow
