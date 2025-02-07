@@ -1,63 +1,44 @@
 ---
-title: Quickstart - Node.js client library
+title: Quickstart - Azure SDK for Node.js
 titleSuffix: Azure Cosmos DB for NoSQL
-description: Deploy a Node.js Express web application that uses the client library to interact with Azure Cosmos DB for NoSQL data in this quickstart.
+description: Deploy a Node.js Express web application that uses the Azure SDK for Node.js to interact with Azure Cosmos DB for NoSQL data in this quickstart.
 author: seesharprun
 ms.author: sidandrews
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.devlang: typescript
-ms.custom: devx-track-js, devx-track-ts, devx-track-extended-azdevcli
 ms.topic: quickstart-sdk
-ms.date: 08/01/2024
-zone_pivot_groups: azure-cosmos-db-quickstart-env
+ms.date: 11/07/2024
+ms.custom: devx-track-js, devx-track-ts, devx-track-extended-azdevcli
+zone_pivot_groups: azure-devlang-nodejs
+appliesto:
+  - ✅ NoSQL
 # CustomerIntent: As a developer, I want to learn the basics of the Node.js library so that I can build applications with Azure Cosmos DB for NoSQL.
 ---
 
-# Quickstart: Azure Cosmos DB for NoSQL library for Node.js
-
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+# Quickstart: Use Azure Cosmos DB for NoSQL with Azure SDK for Node.js
 
 [!INCLUDE[Developer Quickstart selector](includes/quickstart/dev-selector.md)]
 
-Get started with the Azure Cosmos DB for NoSQL client library for Node.js to query data in your containers and perform common operations on individual items. Follow these steps to deploy a minimal solution to your environment using the Azure Developer CLI.
+In this quickstart, you deploy a basic Azure Cosmos DB for Table application using the Azure SDK for Node.js. Azure Cosmos DB for Table is a schemaless data store allowing applications to store structured table data in the cloud. You learn how to create tables, rows, and perform basic tasks within your Azure Cosmos DB resource using the Azure SDK for Node.js.
 
 [API reference documentation](/javascript/api/overview/azure/cosmos-readme) | [Library source code](https://github.com/azure/azure-sdk-for-js/tree/main/sdk/cosmosdb/cosmos) | [Package (npm)](https://www.npmjs.com/package/@azure/cosmos) | [Azure Developer CLI](/azure/developer/azure-developer-cli/overview)
 
 ## Prerequisites
 
-[!INCLUDE[Developer Quickstart prerequisites](includes/quickstart/dev-prereqs.md)]
+- Azure Developer CLI
+- Docker Desktop
+- Node.js 22 or newer
 
-## Setting up
+If you don't have an Azure account, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
 
-Deploy this project's development container to your environment. Then, use the Azure Developer CLI (`azd`) to create an Azure Cosmos DB for NoSQL account and deploy a containerized sample application. The sample application uses the client library to manage, create, read, and query sample data.
+## Initialize the project
 
-::: zone pivot="devcontainer-codespace"
+Use the Azure Developer CLI (`azd`) to create an Azure Cosmos DB for Table account and deploy a containerized sample application. The sample application uses the client library to manage, create, read, and query sample data.
 
-[![Open in GitHub Codespaces](https://img.shields.io/static/v1?style=for-the-badge&label=GitHub+Codespaces&message=Open&color=brightgreen&logo=github)](https://codespaces.new/azure-samples/cosmos-db-nosql-nodejs-quickstart?template=false&quickstart=1&azure-portal=true)
+1. Open a terminal in an empty directory.
 
-::: zone-end
-
-::: zone pivot="devcontainer-vscode"
-
-[![Open in Dev Container](https://img.shields.io/static/v1?style=for-the-badge&label=Dev+Containers&message=Open&color=blue&logo=visualstudiocode)](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/azure-samples/cosmos-db-nosql-nodejs-quickstart)
-
-::: zone-end
-
-::: zone pivot="devcontainer-codespace"
-
-> [!IMPORTANT]
-> GitHub accounts include an entitlement of storage and core hours at no cost. For more information, see [included storage and core hours for GitHub accounts](https://docs.github.com/billing/managing-billing-for-github-codespaces/about-billing-for-github-codespaces#monthly-included-storage-and-core-hours-for-personal-accounts).
-
-::: zone-end
-
-::: zone pivot="devcontainer-vscode"
-
-::: zone-end
-
-1. Open a terminal in the root directory of the project.
-
-1. Authenticate to the Azure Developer CLI using `azd auth login`. Follow the steps specified by the tool to authenticate to the CLI using your preferred Azure credentials.
+1. If you're not already authenticated, authenticate to the Azure Developer CLI using `azd auth login`. Follow the steps specified by the tool to authenticate to the CLI using your preferred Azure credentials.
 
     ```azurecli
     azd auth login
@@ -69,13 +50,7 @@ Deploy this project's development container to your environment. Then, use the A
     azd init --template cosmos-db-nosql-nodejs-quickstart
     ```
 
-    > [!NOTE]
-    > This quickstart uses the [azure-samples/cosmos-db-nosql-nodejs-quickstart](https://github.com/azure-samples/cosmos-db-nosql-nodejs-quickstart) template GitHub repository. The Azure Developer CLI will automatically clone this project to your machine if it is not already there.
-
 1. During initialization, configure a unique environment name.
-
-    > [!TIP]
-    > The environment name will also be used as the target resource group name. For this quickstart, consider using `msdocs-cosmos-db`.
 
 1. Deploy the Azure Cosmos DB account using `azd up`. The Bicep templates also deploy a sample web application.
 
@@ -83,7 +58,7 @@ Deploy this project's development container to your environment. Then, use the A
     azd up
     ```
 
-1. During the provisioning process, select your subscription and desired location. Wait for the provisioning process to complete. The process can take **approximately five minutes**.
+1. During the provisioning process, select your subscription, desired location, and target resource group. Wait for the provisioning process to complete. The process can take **approximately five minutes**.
 
 1. Once the provisioning of your Azure resources is done, a URL to the running web application is included in the output.
 
@@ -98,7 +73,17 @@ Deploy this project's development container to your environment. Then, use the A
 
 1. Use the URL in the console to navigate to your web application in the browser. Observe the output of the running app.
 
-    :::image type="content" source="media/quickstart/dev-web-application.png" alt-text="Screenshot of the running web application.":::
+::: zone pivot="programming-language-js"
+
+:::image type="content" source="media/quickstart-nodejs/running-application-javascript.png" alt-text="Screenshot of the running web application.":::
+
+:::zone-end
+
+::: zone pivot="programming-language-ts"
+
+:::image type="content" source="media/quickstart-nodejs/running-application-typescript.png" alt-text="Screenshot of the running web application.":::
+
+:::zone-end
 
 ### Install the client library
 
@@ -143,79 +128,143 @@ The client library is available through the Node Package Manager, as the `@azure
 - [Get an item](#read-an-item)
 - [Query items](#query-items)
 
-[!INCLUDE[Developer Quickstart sample explanation](includes/quickstart/dev-sample-primer.md)]
+The sample code in the template uses a database named `cosmicworks` and container named `products`. The `products` container contains details such as name, category, quantity, a unique identifier, and a sale flag for each product. The container uses the `/category` property as a logical partition key.
 
 ### Authenticate the client
 
-[!INCLUDE[Developer Quickstart authentication explanation](includes/quickstart/dev-auth-primer.md)]
-
 This sample creates a new instance of the `CosmosClient` type and authenticates using a `DefaultAzureCredential` instance.
 
-### [JavaScript](#tab/javascript)
+::: zone pivot="programming-language-js"
 
-:::code language="javascript" source="~/cosmos-db-nosql-nodejs-quickstart/src/js/cosmos.js" id="create_client" highlight="1,3":::
+```javascript
+const credential = new DefaultAzureCredential();
 
-### [TypeScript](#tab/typescript)
+const client = new CosmosClient({
+    '<azure-cosmos-db-nosql-account-endpoint>',
+    aadCredentials: credential
+});
+```
 
-:::code language="typescript" source="~/cosmos-db-nosql-nodejs-quickstart/src/ts/cosmos.ts" id="create_client" highlight="1,3":::
+:::zone-end
 
----
+::: zone pivot="programming-language-js"
+
+```typescript
+const credential: TokenCredential = new DefaultAzureCredential();
+
+const client = new CosmosClient({
+    '<azure-cosmos-db-nosql-account-endpoint>',
+    aadCredentials: credential
+});
+```
+
+:::zone-end
 
 ### Get a database
 
 Use `client.database` to retrieve the existing database named *`cosmicworks`*.
 
-### [JavaScript](#tab/javascript)
+::: zone pivot="programming-language-js"
 
-:::code language="javascript" source="~/cosmos-db-nosql-nodejs-quickstart/src/js/cosmos.js" id="get_database":::
+```javascript
+const database = client.database('cosmicworks');
+```
 
-### [TypeScript](#tab/typescript)
+:::zone-end
 
-:::code language="typescript" source="~/cosmos-db-nosql-nodejs-quickstart/src/ts/cosmos.ts" id="get_database":::
+::: zone pivot="programming-language-js"
 
----
+```typescript
+const database: Database = client.database('cosmicworks');
+```
+
+:::zone-end
 
 ### Get a container
 
 Retrieve the existing *`products`* container using `database.container`.
 
-### [JavaScript](#tab/javascript)
+::: zone pivot="programming-language-js"
 
-:::code language="javascript" source="~/cosmos-db-nosql-nodejs-quickstart/src/js/cosmos.js" id="get_container":::
+```javascript
+const container = database.container('products');
+```
 
-### [TypeScript](#tab/typescript)
+:::zone-end
 
-:::code language="typescript" source="~/cosmos-db-nosql-nodejs-quickstart/src/ts/cosmos.ts" id="get_container":::
+::: zone pivot="programming-language-js"
 
----
+```typescript
+const container: Container = database.container('products');
+```
+
+:::zone-end
 
 ### Create an item
 
 Build a new object with all of the members you want to serialize into JSON. In this example, the type has a unique identifier, and fields for category, name, quantity, price, and sale. Create an item in the container using `container.items.upsert`. This method "upserts" the item effectively replacing the item if it already exists.
 
-### [JavaScript](#tab/javascript)
+::: zone pivot="programming-language-js"
 
-:::code language="javascript" source="~/cosmos-db-nosql-nodejs-quickstart/src/js/cosmos.js" id="create_item" highlight="10":::
+```javascript
+const item = {
+    'id': 'aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb',
+    'category': 'gear-surf-surfboards',
+    'name': 'Yamba Surfboard',
+    'quantity': 12,
+    'price': 850.00,
+    'clearance': false
+};
 
-### [TypeScript](#tab/typescript)
+let response = await container.items.upsert(item);
+```
 
-:::code language="typescript" source="~/cosmos-db-nosql-nodejs-quickstart/src/ts/cosmos.ts" id="create_item" highlight="10":::
+:::zone-end
 
----
+::: zone pivot="programming-language-js"
+
+```typescript
+const item: Product = {
+    'id': 'aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb',
+    'category': 'gear-surf-surfboards',
+    'name': 'Yamba Surfboard',
+    'quantity': 12,
+    'price': 850.00,
+    'clearance': false
+};
+
+let response: ItemResponse<Product> = await container.items.upsert<Product>(item);
+```
+
+:::zone-end
 
 ### Read an item
 
 Perform a point read operation by using both the unique identifier (`id`) and partition key fields. Use `container.item` to get a pointer to an item and `item.read` to efficiently retrieve the specific item.
 
-### [JavaScript](#tab/javascript)
+::: zone pivot="programming-language-js"
 
-:::code language="javascript" source="~/cosmos-db-nosql-nodejs-quickstart/src/js/cosmos.js" id="read_item" highlight="4":::
+```javascript
+const id = 'aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb';
+const partitionKey = 'gear-surf-surfboards';
 
-### [TypeScript](#tab/typescript)
+let response = await container.item(id, partitionKey).read();
+let read_item = response.resource;
+```
 
-:::code language="typescript" source="~/cosmos-db-nosql-nodejs-quickstart/src/ts/cosmos.ts" id="read_item" highlight="4":::
+:::zone-end
 
----
+::: zone pivot="programming-language-js"
+
+```typescript
+const id = 'aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb';
+const partitionKey = 'gear-surf-surfboards';
+
+let response: ItemResponse<Product> = await container.item(id, partitionKey).read<Product>();
+let read_item: Product = response.resource!;
+```
+
+:::zone-end
 
 ### Query items
 
@@ -227,15 +276,66 @@ SELECT * FROM products p WHERE p.category = @category
 
 Fetch all of the results of the query using `query.fetchAll`. Loop through the results of the query.
 
-### [JavaScript](#tab/javascript)
+::: zone pivot="programming-language-js"
 
-:::code language="javascript" source="~/cosmos-db-nosql-nodejs-quickstart/src/js/cosmos.js" id="query_items" highlight="2,11":::
+```javascript
+const querySpec = {
+    query: 'SELECT * FROM products p WHERE p.category = @category',
+    parameters: [
+        {
+            name: '@category',
+            value: 'gear-surf-surfboards'
+        }
+    ]
+};
 
-### [TypeScript](#tab/typescript)
+let response = await container.items.query(querySpec).fetchAll();
+for (let item of response.resources) {
+    // Do something
+}
+```
 
-:::code language="typescript" source="~/cosmos-db-nosql-nodejs-quickstart/src/ts/cosmos.ts" id="query_items" highlight="2,11":::
+:::zone-end
 
----
+::: zone pivot="programming-language-js"
+
+```typescript
+const querySpec: SqlQuerySpec = {
+    query: 'SELECT * FROM products p WHERE p.category = @category',
+    parameters: [
+        {
+            name: '@category',
+            value: 'gear-surf-surfboards'
+        }
+    ]
+};
+
+let response: FeedResponse<Product> = await container.items.query<Product>(querySpec).fetchAll();
+for (let item of response.resources) {
+    // Do something
+}
+```
+
+:::zone-end
+
+### Explore your data
+
+Use the Visual Studio Code extension for Azure Cosmos DB to explore your NoSQL data. You can perform core database operations including, but not limited to:
+
+- Performing queries using a scrapbook or the query editor
+- Modifying, updating, creating, and deleting items
+- Importing bulk data from other sources
+- Managing databases and containers
+
+For more information, see [How-to use Visual Studio Code extension to explore Azure Cosmos DB for NoSQL data](../visual-studio-code-extension.md?pivots=api-nosql).
+
+## Clean up resources
+
+When you no longer need the sample application or resources, remove the corresponding deployment and all resources.
+
+```azurecli
+azd down
+```
 
 ## Related content
 
@@ -243,8 +343,3 @@ Fetch all of the results of the query using `query.fetchAll`. Loop through the r
 - [Java Quickstart](quickstart-java.md)
 - [Python Quickstart](quickstart-python.md)
 - [Go Quickstart](quickstart-go.md)
-
-## Next step
-
-> [!div class="nextstepaction"]
-> [Tutorial: Build a Node.js web app](tutorial-nodejs-web-app.md)

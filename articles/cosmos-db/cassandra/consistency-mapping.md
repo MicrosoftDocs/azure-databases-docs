@@ -1,12 +1,12 @@
 ---
 title: Apache Cassandra and Azure Cosmos DB consistency levels
-description: Apache Cassandra and Azure Cosmos DB consistency levels.
+description: Review the write and read consistency levels that are native to Apache Cassandra and how they are related to Azure Cosmos DB for Apache Cassandra.
 author: TheovanKraay
 ms.author: thvankra
 ms.service: azure-cosmos-db
 ms.subservice: apache-cassandra
 ms.topic: conceptual
-ms.date: 10/18/2022
+ms.date: 09/26/2024
 ---
 
 # Apache Cassandra and Azure Cosmos DB for Apache Cassandra consistency levels
@@ -22,7 +22,7 @@ Unlike Azure Cosmos DB, Apache Cassandra doesn't natively provide precisely defi
 
 Apache Cassandra database is a multi-master system by default, and doesn't provide an out-of-box option for single-region writes with multi-region replication for reads. However, Azure Cosmos DB provides turnkey ability to have either single region, or [multi-region](../how-to-multi-master.md) write configurations. One of the advantages of being able to choose a single region write configuration across multiple regions is the avoidance of cross-region conflict scenarios, and the option of maintaining strong consistency across multiple regions.
 
-With single-region writes, you can maintain strong consistency, while still maintaining a level of high availability across regions with [service-managed failover](../high-availability.md#region-outages). In this configuration, you can still exploit data locality to reduce read latency by downgrading to eventual consistency on a per request basis. In addition to these capabilities, the Azure Cosmos DB platform also offers the option of [zone redundancy](/azure/architecture/reliability/architect) when selecting a region. Thus, unlike native Apache Cassandra, Azure Cosmos DB allows you to navigate the CAP Theorem [trade-off spectrum](../consistency-levels.md#rto) with more granularity.
+With single-region writes, you can maintain strong consistency, while still maintaining a level of high availability across regions with [service-managed failover](../high-availability.md#region-outages). In this configuration, you can still exploit data locality to reduce read latency by downgrading to eventual consistency on a per request basis. In addition to these capabilities, the Azure Cosmos DB platform also offers the option of [zone redundancy](/azure/architecture/reliability/architect) when selecting a region. Thus, unlike native Apache Cassandra, Azure Cosmos DB allows you to navigate the CAP Theorem [trade-off spectrum](../consistency-levels.md#consistency-levels-and-data-durability) with more granularity.
 
 ## Mapping consistency levels
 
@@ -216,9 +216,7 @@ Azure Cosmos DB for Cassandra now facilitates overriding the consistency on read
 
 This option also prevents the need to set a default consistency that is higher than `Eventual`, when it's only needed for read requests.
 
-## Next steps
-
-Learn more about global distribution and consistency levels for Azure Cosmos DB:
+## Related content
 
 - [Global distribution overview](../distribute-data-globally.md)
 - [Consistency Level overview](../consistency-levels.md)

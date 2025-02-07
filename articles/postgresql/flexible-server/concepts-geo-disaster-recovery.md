@@ -56,10 +56,7 @@ You can also use cross region read replicas. In the event of region failure you 
 
 For more information on unplanned downtime mitigation and recovery after regional disaster, see [Unplanned downtime mitigation](/azure/postgresql/flexible-server/concepts-business-continuity#unplanned-downtime-mitigation).
 
-## Next steps
+## Related content
 
-> [!div class="nextstepaction"]
-> [Azure Database for PostgreSQL flexible server documentation](/azure/postgresql/)
-
-> [!div class="nextstepaction"]
-> [Reliability in Azure](/azure/reliability/availability-zones-overview)
+- [Azure Database for PostgreSQL - Flexible Server documentation](/azure/postgresql/).
+- [Reliability in Azure](/azure/reliability/availability-zones-overview).

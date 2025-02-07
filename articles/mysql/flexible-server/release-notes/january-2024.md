@@ -1,10 +1,10 @@
 ---
-title: Release notes for Azure Database for MySQL Flexible Server - January 2024
+title: Release Notes for Azure Database for MySQL Flexible Server - January 2024
 description: Learn about the release notes for Azure Database for MySQL Flexible Server January 2024.
 author: xboxeer
 ms.author: yuzheng1
 ms.reviewer: maghan
-ms.date: 08/09/2024
+ms.date: 11/27/2024
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: conceptual
@@ -22,13 +22,13 @@ There will be no engine version changes in this maintenance update.
 
 ## Features
 
-### [Accelerated Logs V2](../concepts-accelerated-logs.md)
+### [Accelerated logs feature in Azure Database for MySQL - Flexible Server](../concepts-accelerated-logs.md)
 
 - Introducing a new type of disk designed to offer superior performance in storing binary logs and redo logs.
 
 ## Improvement
 
-### [Audit Log Improvement](../concepts-audit-logs.md)
+### [Track database activity with Audit Logs in Azure Database for MySQL - Flexible Server](../concepts-audit-logs.md)
 
 - In alignment with our users' expectations for the audit log, we have introduced wildcard support for audit log usernames and added connection status for connection logs.
 

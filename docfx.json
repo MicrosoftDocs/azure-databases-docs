@@ -7,14 +7,9 @@
           "**/*.yml"
         ],
         "exclude": [
-          "iot-edge/**",
-          "ai-services/document-intelligence/**",
           "**/_themes/**",
           "**/includes/**",
-          "**/obj/**",
-          "**/*.graffle",
-          "machine-learning/**",
-          "machine-learning/v1/**"
+          "**/obj/**"
         ],
         "src": "articles",
         "dest": "."
@@ -25,6 +20,13 @@
         ],
         "src": "breadcrumb/azure-databases",
         "dest": "breadcrumb/azure-databases"
+      },
+      {
+        "files": [
+          "zone-pivot-groups.yml"
+        ],
+        "src": "zone-pivots",
+        "dest": "zone-pivots/azure-databases"
       }
     ],
     "resource": [
@@ -37,12 +39,8 @@
           "**/*.svg"
         ],
         "exclude": [
-          "iot-edge/**",
-          "ai-services/document-intelligence/**",
           "**/_themes/**",
-          "**/obj/**",
-          "machine-learning/**",
-          "machine-learning/v1/**"
+          "**/obj/**"
         ],
         "src": "articles",
         "dest": "."
@@ -127,7 +125,8 @@
         "Certification"
       ],
       "uhfHeaderId": "azure",
-      "ms.suite": "office"
+      "ms.suite": "office",
+      "zone_pivot_group_filename": "zone-pivots/azure-databases/zone-pivot-groups.json"
     },
     "fileMetadata": {
       "adobe-target": {
@@ -228,7 +227,11 @@
         "articles/mysql/flexible-server/**/*.md": "Azure Database for MySQL - Flexible Server",
         "articles/postgresql/scripts/**/*.md": "Azure Database for PostgreSQL - Flexible Server",
         "articles/postgresql/flexible-server/**/*.md": "Azure Database for PostgreSQL - Flexible Server",
-        "articles/postgresql/migrate/**/*.md": "Azure Database for PostgreSQL - Flexible Server"
+        "articles/postgresql/migrate/**/*.md": "Azure Database for PostgreSQL - Flexible Server",
+        "articles/mysql/flexible-server/**/*.yml": "Azure Database for MySQL - Flexible Server",
+        "articles/postgresql/scripts/**/*.yml": "Azure Database for PostgreSQL - Flexible Server",
+        "articles/postgresql/flexible-server/**/*.yml": "Azure Database for PostgreSQL - Flexible Server",
+        "articles/postgresql/migrate/**/*.yml": "Azure Database for PostgreSQL - Flexible Server"
       }
     },
     "overwrite": [],

@@ -234,14 +234,14 @@ FROM
 ```json
 [
   {
-    "id": "03230",
+    "id": "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb",
     "name": "Winter glove"
   },
   {
-    "id": "03238"
+    "id": "bbbbbbbb-1111-2222-3333-cccccccccccc"
   },
   {
-    "id": "03229"
+    "id": "cccccccc-2222-3333-4444-dddddddddddd"
   }
 ]
 ```

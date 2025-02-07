@@ -59,7 +59,7 @@ Azure Database for PostgreSQL flexible server has achieved a comprehensive set o
 > | SEC 17a-4            | Financial |
 > | Spanish DPA            | Public and private companies, government entities, and nonprofits |
 
-## Next steps
+## Related content
 
-- [Azure compliance](https://azure.microsoft.com/explore/trusted-cloud/compliance/)
-- [Managing compliance in the cloud (Microsoft Trust Center)](https://www.microsoft.com/en-us/trust-center/compliance/compliance-overview)
+- [Azure compliance](https://azure.microsoft.com/explore/trusted-cloud/compliance/).
+- [Managing compliance in the cloud (Microsoft Trust Center)](https://www.microsoft.com/en-us/trust-center/compliance/compliance-overview).

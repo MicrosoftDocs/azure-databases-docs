@@ -1,0 +1,11 @@
+{
+  "name": "Content contributor environment",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "docsmsft.learnlinter",
+        "docsmsft.docs-authoring-pack"
+      ]
+    }
+  }
+}

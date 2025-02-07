@@ -1,63 +1,43 @@
 ---
-title: Quickstart - Go client library
+title: Quickstart - Azure SDK for Go
 titleSuffix: Azure Cosmos DB for NoSQL
-description: Deploy a Go web application that uses the client library to interact with Azure Cosmos DB for NoSQL data in this quickstart.
+description: Deploy a Go web application that uses the Azure SDK for Go to interact with Azure Cosmos DB for NoSQL data in this quickstart.
 author: seesharprun
 ms.author: sidandrews
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.devlang: golang
-ms.custom: devx-track-go, devx-track-extended-azdevcli
 ms.topic: quickstart-sdk
-ms.date: 06/14/2024
-zone_pivot_groups: azure-cosmos-db-quickstart-env
+ms.date: 11/07/2024
+ms.custom: devx-track-go, devx-track-extended-azdevcli
+appliesto:
+  - ✅ NoSQL
 # CustomerIntent: As a developer, I want to learn the basics of the Go library so that I can build applications with Azure Cosmos DB for NoSQL.
 ---
 
-# Quickstart: Azure Cosmos DB for NoSQL library for Go
-
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+# Quickstart: Use Azure Cosmos DB for NoSQL with Azure SDK for Go
 
 [!INCLUDE[Developer Quickstart selector](includes/quickstart/dev-selector.md)]
 
-Get started with the Azure Cosmos DB for NoSQL client library for Go to query data in your containers and perform common operations on individual items. Follow these steps to deploy a minimal solution to your environment using the Azure Developer CLI.
+In this quickstart, you deploy a basic Azure Cosmos DB for Table application using the Azure SDK for Go. Azure Cosmos DB for Table is a schemaless data store allowing applications to store structured table data in the cloud. You learn how to create tables, rows, and perform basic tasks within your Azure Cosmos DB resource using the Azure SDK for Go.
 
 [API reference documentation](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/sdk/data/azcosmos) | [Library source code](https://github.com/Azure/azure-sdk-for-go/tree/main/sdk/data/azcosmos#readme) | [Package (Go)](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/sdk/data/azcosmos) | [Azure Developer CLI](/azure/developer/azure-developer-cli/overview)
 
 ## Prerequisites
 
-[!INCLUDE[Developer Quickstart prerequisites](includes/quickstart/dev-prereqs.md)]
+- Azure Developer CLI
+- Docker Desktop
+- `Go` 1.21 or newer
 
-## Setting up
+If you don't have an Azure account, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
 
-Deploy this project's development container to your environment. Then, use the Azure Developer CLI (`azd`) to create an Azure Cosmos DB for NoSQL account and deploy a containerized sample application. The sample application uses the client library to manage, create, read, and query sample data.
+## Initialize the project
 
-::: zone pivot="devcontainer-codespace"
+Use the Azure Developer CLI (`azd`) to create an Azure Cosmos DB for Table account and deploy a containerized sample application. The sample application uses the client library to manage, create, read, and query sample data.
 
-[![Open in GitHub Codespaces](https://img.shields.io/static/v1?style=for-the-badge&label=GitHub+Codespaces&message=Open&color=brightgreen&logo=github)](https://codespaces.new/azure-samples/cosmos-db-nosql-go-quickstart?template=false&quickstart=1&azure-portal=true)
+1. Open a terminal in an empty directory.
 
-::: zone-end
-
-::: zone pivot="devcontainer-vscode"
-
-[![Open in Dev Container](https://img.shields.io/static/v1?style=for-the-badge&label=Dev+Containers&message=Open&color=blue&logo=visualstudiocode)](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/azure-samples/cosmos-db-nosql-go-quickstart)
-
-::: zone-end
-
-::: zone pivot="devcontainer-codespace"
-
-> [!IMPORTANT]
-> GitHub accounts include an entitlement of storage and core hours at no cost. For more information, see [included storage and core hours for GitHub accounts](https://docs.github.com/billing/managing-billing-for-github-codespaces/about-billing-for-github-codespaces#monthly-included-storage-and-core-hours-for-personal-accounts).
-
-::: zone-end
-
-::: zone pivot="devcontainer-vscode"
-
-::: zone-end
-
-1. Open a terminal in the root directory of the project.
-
-1. Authenticate to the Azure Developer CLI using `azd auth login`. Follow the steps specified by the tool to authenticate to the CLI using your preferred Azure credentials.
+1. If you're not already authenticated, authenticate to the Azure Developer CLI using `azd auth login`. Follow the steps specified by the tool to authenticate to the CLI using your preferred Azure credentials.
 
     ```azurecli
     azd auth login
@@ -69,13 +49,7 @@ Deploy this project's development container to your environment. Then, use the A
     azd init --template cosmos-db-nosql-go-quickstart
     ```
 
-    > [!NOTE]
-    > This quickstart uses the [azure-samples/cosmos-db-nosql-go-quickstart](https://github.com/azure-samples/cosmos-db-nosql-go-quickstart) template GitHub repository. The Azure Developer CLI will automatically clone this project to your machine if it is not already there.
-
 1. During initialization, configure a unique environment name.
-
-    > [!TIP]
-    > The environment name will also be used as the target resource group name. For this quickstart, consider using `msdocs-cosmos-db`.
 
 1. Deploy the Azure Cosmos DB account using `azd up`. The Bicep templates also deploy a sample web application.
 
@@ -83,7 +57,7 @@ Deploy this project's development container to your environment. Then, use the A
     azd up
     ```
 
-1. During the provisioning process, select your subscription and desired location. Wait for the provisioning process to complete. The process can take **approximately five minutes**.
+1. During the provisioning process, select your subscription, desired location, and target resource group. Wait for the provisioning process to complete. The process can take **approximately five minutes**.
 
 1. Once the provisioning of your Azure resources is done, a URL to the running web application is included in the output.
 
@@ -98,7 +72,7 @@ Deploy this project's development container to your environment. Then, use the A
 
 1. Use the URL in the console to navigate to your web application in the browser. Observe the output of the running app.
 
-    :::image type="content" source="media/quickstart/dev-web-application.png" alt-text="Screenshot of the running web application.":::
+:::image type="content" source="media/quickstart-go/running-application.png" alt-text="Screenshot of the running web application.":::
 
 ### Install the client library
 
@@ -142,43 +116,116 @@ The client library is available through Go, as the `azcosmos` package.
 - [Get an item](#read-an-item)
 - [Query items](#query-items)
 
-[!INCLUDE[Developer Quickstart sample explanation](includes/quickstart/dev-sample-primer.md)]
+The sample code in the template uses a database named `cosmicworks` and container named `products`. The `products` container contains details such as name, category, quantity, a unique identifier, and a sale flag for each product. The container uses the `/category` property as a logical partition key.
 
 ### Authenticate the client
 
-[!INCLUDE[Developer Quickstart authentication explanation](includes/quickstart/dev-auth-primer.md)]
-
 This sample creates a new instance of `CosmosClient` using `azcosmos.NewClient` and authenticates using a `DefaultAzureCredential` instance.
 
-:::code language="go" source="~/cosmos-db-nosql-go-quickstart/src/cosmos.go" id="create_client" highlight="1,10":::
+```go
+credential, err := azidentity.NewDefaultAzureCredential(nil)
+if err != nil {
+    return err
+}
+
+clientOptions := azcosmos.ClientOptions{
+    EnableContentResponseOnWrite: true,
+}
+
+client, err := azcosmos.NewClient("<azure-cosmos-db-nosql-account-endpoint>", credential, &clientOptions)
+if err != nil {
+    return err
+}
+```
 
 ### Get a database
 
 Use `client.NewDatabase` to retrieve the existing database named *`cosmicworks`*.
 
-:::code language="go" source="~/cosmos-db-nosql-go-quickstart/src/cosmos.go" id="get_database":::
+```go
+database, err := client.NewDatabase("cosmicworks")
+if err != nil {
+    return err
+}
+```
 
 ### Get a container
 
 Retrieve the existing *`products`* container using `database.NewContainer`.
 
-:::code language="go" source="~/cosmos-db-nosql-go-quickstart/src/cosmos.go" id="get_container":::
+```go
+container, err := database.NewContainer("products")
+if err != nil {
+    return err
+}
+```
 
 ### Create an item
 
 Build a Go type with all of the members you want to serialize into JSON. In this example, the type has a unique identifier, and fields for category, name, quantity, price, and sale.
 
-:::code language="go" source="~/cosmos-db-nosql-go-quickstart/src/item.go" id="model":::
+```go
+type Item struct {
+  Id        string  `json:"id"`
+  Category  string  `json:"category"`
+  Name      string  `json:"name"`
+  Quantity  int     `json:"quantity"`
+  Price     float32 `json:"price"`
+  Clearance bool    `json:"clearance"`
+}
+```
 
 Create an item in the container using `container.UpsertItem`. This method "upserts" the item effectively replacing the item if it already exists.
 
-:::code language="go" source="~/cosmos-db-nosql-go-quickstart/src/cosmos.go" id="create_item" highlight="19":::
+```go
+item := Item {
+    Id:        "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb",
+    Category:  "gear-surf-surfboards",
+    Name:      "Yamba Surfboard",
+    Quantity:  12,
+    Price:     850.00,
+    Clearance: false,
+}
+
+partitionKey := azcosmos.NewPartitionKeyString("gear-surf-surfboards")
+
+context := context.TODO()
+
+bytes, err := json.Marshal(item)
+if err != nil {
+    return err
+}
+
+response, err := container.UpsertItem(context, partitionKey, bytes, nil)
+if err != nil {
+    return err
+}
+```
 
 ### Read an item
 
 Perform a point read operation by using both the unique identifier (`id`) and partition key fields. Use `container.ReadItem` to efficiently retrieve the specific item.
 
-:::code language="go" source="~/cosmos-db-nosql-go-quickstart/src/cosmos.go" id="read_item" highlight="7":::
+```go
+partitionKey := azcosmos.NewPartitionKeyString("gear-surf-surfboards")
+
+context := context.TODO()
+
+itemId := "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb"
+
+response, err := container.ReadItem(context, partitionKey, itemId, nil)
+if err != nil {
+    return err
+}
+
+if response.RawResponse.StatusCode == 200 {
+    read_item := Item{}
+    err := json.Unmarshal(response.Value, &read_item)
+    if err != nil {
+        return err
+    }
+}
+```
 
 ### Query items
 
@@ -188,15 +235,60 @@ Perform a query over multiple items in a container using `container.NewQueryItem
 SELECT * FROM products p WHERE p.category = @category
 ```
 
-:::code language="go" source="~/cosmos-db-nosql-go-quickstart/src/cosmos.go" id="query_items" highlight="3,11":::
+```go
+partitionKey := azcosmos.NewPartitionKeyString("gear-surf-surfboards")
+
+query := "SELECT * FROM products p WHERE p.category = @category"
+
+queryOptions := azcosmos.QueryOptions{
+    QueryParameters: []azcosmos.QueryParameter{
+        {Name: "@category", Value: "gear-surf-surfboards"},
+    },
+}
+
+pager := container.NewQueryItemsPager(query, partitionKey, &queryOptions)
+```
 
 Parse the paginated results of the query by looping through each page of results using `pager.NextPage`. Use `pager.More` to determine if there are any results left at the start of each loop.
 
-:::code language="go" source="~/cosmos-db-nosql-go-quickstart/src/cosmos.go" id="parse_results" highlight="7-8":::
+```go
+items := []Item{}
+
+for pager.More() {
+    response, err := pager.NextPage(context.TODO())
+    if err != nil {
+        return err
+    }
+
+    for _, bytes := range response.Items {
+        item := Item{}
+        err := json.Unmarshal(bytes, &item)
+        if err != nil {
+            return err
+        }
+        items = append(items, item)
+    }
+}
+```
+
+### Explore your data
+
+Use the Visual Studio Code extension for Azure Cosmos DB to explore your NoSQL data. You can perform core database operations including, but not limited to:
+
+- Performing queries using a scrapbook or the query editor
+- Modifying, updating, creating, and deleting items
+- Importing bulk data from other sources
+- Managing databases and containers
+
+For more information, see [How-to use Visual Studio Code extension to explore Azure Cosmos DB for NoSQL data](../visual-studio-code-extension.md?pivots=api-nosql).
 
 ## Clean up resources
 
-[!INCLUDE[Developer Quickstart cleanup](includes/quickstart/dev-cleanup.md)]
+When you no longer need the sample application or resources, remove the corresponding deployment and all resources.
+
+```azurecli
+azd down
+```
 
 ## Related content
 
@@ -204,8 +296,3 @@ Parse the paginated results of the query by looping through each page of results
 - [Node.js Quickstart](quickstart-nodejs.md)
 - [Java Quickstart](quickstart-java.md)
 - [Python Quickstart](quickstart-python.md)
-
-## Next step
-
-> [!div class="nextstepaction"]
-> [Go package](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/sdk/data/azcosmos)

@@ -27,7 +27,7 @@ You need:
 - An Azure account with an active subscription. [Create an account for free](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - A GitHub repository with sample data (`data.sql`). If you don't have a GitHub account, [sign up for free](https://github.com/join).
 - An Azure Database for PostgreSQL flexible server instance.
-    - [Quickstart: Create an Azure Database for PostgreSQL - Flexible Server instance in the Azure portal](quickstart-create-server-portal.md)
+- [Create an instance of Azure Database for PostgreSQL - Flexible Server](quickstart-create-server.md).
 
 ## Workflow file overview
 
@@ -218,10 +218,7 @@ You use the connection string as a GitHub secret.
 
 When your Azure Database for PostgreSQL flexible server database and repository are no longer needed, clean up the resources you deployed by deleting the resource group and your GitHub repository.
 
-## Next steps
+## Related content
 
-> [!div class="nextstepaction"]
-> [Learn about Azure and GitHub integration](/azure/developer/github/)
-<br/>
-> [!div class="nextstepaction"]
-> [Learn how to connect to the server](connect-csharp.md)
+- [Azure and GitHub integration](/azure/developer/github/).
+- [How to connect to the server](connect-csharp.md).

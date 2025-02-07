@@ -31,14 +31,14 @@ Currently, Azure CLI doesn't support turning on debug logging, but you can retri
 
 1. List the deployments in resource group to identify the Azure Database for PostgreSQL flexible server deployment.
 
-    ```azurecli
+    ```azurecli-interactive
         az deployment operation group list \
           --resource-group examplegroup \
           --name exampledeployment
     ```
 
 2. Get the request content of the Azure Database for PostgreSQL flexible server deployment. 
-    ```azurecli
+    ```azurecli-interactive
         az deployment operation group list \
           --name exampledeployment \
           -g examplegroup \
@@ -47,7 +47,7 @@ Currently, Azure CLI doesn't support turning on debug logging, but you can retri
 
 3. Examine the response content. 
 
-    ```azurecli
+    ```azurecli-interactive
     az deployment operation group list \
       --name exampledeployment \
       -g examplegroup \
@@ -74,8 +74,6 @@ Currently, Azure CLI doesn't support turning on debug logging, but you can retri
 |InvalidUserName| Enter a valid username. The admin user name can't be azure_superuser, azure_pg_admin, admin, administrator, root, guest, or public. It can't start with pg_.                                                                                                                                                                                      |
 |BlockedUserName| The admin user name can't be azure_superuser, azure_pg_admin, admin, administrator, root, guest, or public. It can't start with pg_. Avoid using these patterns in the admin name.                                                                                                                                                                |
 
-## Next steps
-
-- If you're still experiencing issues, please [report the issue](https://github.com/Azure/azure-cli/issues). 
-- If you have questions, visit our Stack Overflow page: https://aka.ms/azcli/questions. 
-- Let us know how we're doing with this survey https://aka.ms/azureclihats. 
+## Related content
+- [Report an issue specific to Azure CLI](https://github.com/Azure/azure-cli/issues).
+- [Azure CLI page in Stack Overflow](https://aka.ms/azcli/questions).

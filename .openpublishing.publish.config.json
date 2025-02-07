@@ -3,16 +3,18 @@
     {
       "docset_name": "azure-databases",
       "build_source_folder": ".",
+      "build_output_subfolder": "azure-databases",
+      "locale": "en-us",
+      "monikers": [],
+      "moniker_ranges": [],
       "xref_query_tags": [
         "/dotnet",
         "/python"
       ],
-      "build_output_subfolder": "azure-databases",
-      "locale": "en-us",
-      "monikers": [],
       "open_to_public_contributors": true,
       "type_mapping": {
-        "Conceptual": "Content"
+        "Conceptual": "Content",
+        "ZonePivotGroups": "Toc"
       },
       "build_entry_point": "docs"
     }
@@ -23,7 +25,6 @@
   "git_repository_url_open_to_public_contributors": "https://github.com/MicrosoftDocs/azure-databases-docs",
   "git_repository_branch_open_to_public_contributors": "main",
   "need_preview_pull_request": true,
-  "skip_source_output_uploading": false,
   "need_pr_comments": true,
   "dependent_repositories": [
     {
@@ -195,36 +196,6 @@
       "branch_mapping": {}
     },
     {
-      "path_to_root": "cosmos-db-nosql-dotnet-quickstart",
-      "url": "https://github.com/azure-samples/cosmos-db-nosql-dotnet-quickstart",
-      "branch": "main",
-      "branch_mapping": {}
-    },
-    {
-      "path_to_root": "cosmos-db-nosql-go-quickstart",
-      "url": "https://github.com/azure-samples/cosmos-db-nosql-go-quickstart",
-      "branch": "main",
-      "branch_mapping": {}
-    },
-    {
-      "path_to_root": "cosmos-db-nosql-java-quickstart",
-      "url": "https://github.com/azure-samples/cosmos-db-nosql-java-quickstart",
-      "branch": "main",
-      "branch_mapping": {}
-    },
-    {
-      "path_to_root": "cosmos-db-nosql-nodejs-quickstart",
-      "url": "https://github.com/azure-samples/cosmos-db-nosql-nodejs-quickstart",
-      "branch": "main",
-      "branch_mapping": {}
-    },
-    {
-      "path_to_root": "cosmos-db-nosql-python-quickstart",
-      "url": "https://github.com/azure-samples/cosmos-db-nosql-python-quickstart",
-      "branch": "main",
-      "branch_mapping": {}
-    },
-    {
       "path_to_root": "cosmos-dotnet-bulk-import",
       "url": "https://github.com/Azure-Samples/cosmos-dotnet-bulk-import-throughput-optimizer",
       "branch": "main",
@@ -255,12 +226,6 @@
       "branch_mapping": {}
     },
     {
-      "path_to_root": "azure-cosmos-tableapi-dotnet",
-      "url": "https://github.com/Azure-Samples/cosmos-db-table-api-dotnet-samples",
-      "branch": "v12",
-      "branch_mapping": {}
-    },
-    {
       "path_to_root": "azure-dev-docs-pr",
       "url": "https://github.com/MicrosoftDocs/azure-dev-docs-pr",
       "branch": "main",
@@ -274,5 +239,6 @@
     }
   ],
   "branch_target_mapping": {},
-  "targets": {}
+  "targets": {},
+  "skip_source_output_uploading": false
 }

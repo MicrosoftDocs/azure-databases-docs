@@ -1,14 +1,13 @@
 ---
-title: Create virtual endpoints for read replicas with Terraform
+title: Create Virtual Endpoints for Read Replicas With Terraform
 description: This article describes the virtual endpoints for read replica feature using Terraform for Azure Database for PostgreSQL - Flexible Server.
 author: akashraokm
 ms.author: akashrao
 ms.reviewer: maghan
-ms.date: 08/08/2024 
+ms.date: 12/19/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: how-to
-ai.usage: ai-assisted
 ---
 
 # Create virtual endpoints for read replicas with Terraform
@@ -19,13 +18,11 @@ Using Terraform, you can create and manage virtual endpoints for read replicas i
 
 Before you begin, ensure you have the following:
 
-- An Azure account with the necessary permissions.
+- An Azure account with an active subscription.
 - Terraform installed on your local machine. You can download it from the [official Terraform website](https://www.terraform.io/downloads.html).
 - Azure CLI installed and authenticated. Instructions are in the [Azure CLI documentation](/cli/azure/install-azure-cli).
 
 Ensure you have a basic understanding of Terraform syntax and Azure resource provisioning.
-
-Step-by-Step Terraform Configuration: Provide a step-by-step guide on configuring virtual endpoints for read replicas using Terraform.
 
 ## Configuring virtual endpoints
 
@@ -33,18 +30,18 @@ Follow these steps to create virtual endpoints for read replicas in Azure Databa
 
 ### Initialize the Terraform configuration
 
-  Create a `main.tf` file and define the Azure provider.
+Create a `main.tf` file and define the Azure provider.
 
-  ```terraform
-   provider "azurerm" {
-     features {}
-   }
+```terraform
+provider "azurerm" {
+  features {}
+}
 
-   resource "azurerm_resource_group" "example" {
-     name     = "example-resources"
-     location = "East US"
-   }
-  ```
+resource "azurerm_resource_group" "example" {
+  name     = "example-resources"
+  location = "East US"
+}
+```
 
 ### Create the primary Azure Database for PostgreSQL
 
@@ -74,7 +71,7 @@ resource "azurerm_postgresql_flexible_server" "primary" {
 Define the read replicas for the primary server.
 
 ```terraform
-resource "azurerm_postgresql_flexible_server_replica" "replica" {
+resource "azurerm_postgresql_flexible_server" "replica" {
   name                = "replica-server"
   resource_group_name = azurerm_resource_group.example.name
   location            = azurerm_resource_group.example.location
@@ -84,42 +81,32 @@ resource "azurerm_postgresql_flexible_server_replica" "replica" {
 
 ### Configure virtual endpoints
 
-Define the necessary resources to configure virtual endpoints.
+To configure virtual endpoints, define the necessary resources.
 
 ```terraform
-resource "azurerm_private_endpoint" "example" {
-  name                = "example-private-endpoint"
-  location            = azurerm_resource_group.example.location
+resource "azurerm_postgresql_flexible_server_virtual_endpoint" "example" {
+  name                = "example-virtual-endpoint"
   resource_group_name = azurerm_resource_group.example.name
-  subnet_id           = azurerm_subnet.example.id
-
-  private_service_connection {
-    name                           = "example-privateserviceconnection"
-    private_connection_resource_id = azurerm_postgresql_flexible_server.primary.id
-    is_manual_connection           = false
-    subresource_names              = ["postgresqlServer"]
-  }
+  server_name         = azurerm_postgresql_flexible_server.primary.name
 }
 ```
 
-### Apply the configuration
+## Apply the configuration
 
 Initialize Terraform and apply the configuration.
 
-`terraform init`
-`terraform apply`
+```bash
+terraform init
+terraform apply
+```
 
-Confirm the apply action when prompted. Terraform provisions the resources and configure the virtual endpoints as specified.
-
-
-For additional info about Virtual endpoints, refer to [create virtual endpoints](how-to-read-replicas-portal.md#create-virtual-endpoints)
+Confirm the apply action when prompted. Terraform provisions the resources and configures the virtual endpoints as specified.
 
 ## Related content
 
-- [Create virtual endpoints](how-to-read-replicas-portal.md#create-virtual-endpoints)
-- [Read replicas - overview](concepts-read-replicas.md)
-- [Geo-replication](concepts-read-replicas-geo.md)
-- [Promote read replicas](concepts-read-replicas-promote.md)
-- [Create and manage read replicas in the Azure portal](how-to-read-replicas-portal.md)
-- [Cross-region replication with virtual network](concepts-networking.md#replication-across-azure-regions-and-virtual-networks-with-private-networking)
+- [Read replicas in Azure Database for PostgreSQL - Flexible Server](concepts-read-replicas.md)
+- [Geo-replication in Azure Database for PostgreSQL - Flexible Server](concepts-read-replicas-geo.md)
+- [Promote read replicas in Azure Database for PostgreSQL - Flexible Server](concepts-read-replicas-promote.md)
+- [Virtual endpoints for read replicas in Azure Database for PostgreSQL - Flexible Server](concepts-read-replicas-virtual-endpoints.md)
+- [Create and manage read replicas in Azure Database for PostgreSQL - Flexible Server](how-to-read-replicas-portal.md)
 - [Terraform Azure provider documentation](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs)

@@ -14,18 +14,18 @@ ms.custom:
   - build-2024
 ---
 
-# Azure AI extension on Azure Database for PostgreSQL - Flexible Server
+# Azure AI extension in Azure Database for PostgreSQL - Flexible Server
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
 Azure Database for PostgreSQL flexible server extension for Azure AI enables you to use large language models (LLMS) and build rich generative AI applications within the database.  The Azure AI extension enables the database to call into various Azure AI services including [Azure OpenAI](/azure/ai-services/openai/overview) and [Azure Cognitive Services](https://azure.microsoft.com/products/ai-services/cognitive-search/) simplifying the development process allowing seamless integration into those services. 
 
-## Enable the `azure_ai` extension
+## Enable the azure_ai extension
 
-Before you can enable `azure_ai` on your Azure Database for PostgreSQL flexible server instance, you need to add it to your allowlist as described in [how to use PostgreSQL extensions](./concepts-extensions.md#how-to-use-postgresql-extensions) and check if correctly added by running `SHOW azure.extensions;`.
+Before you can enable `azure_ai` on your Azure Database for PostgreSQL flexible server instance, you need to add it to your allowlist as described in [how to use PostgreSQL extensions](../extensions/how-to-allow-extensions.md) and check if correctly added by running `SHOW azure.extensions;`.
 
 > [!TIP]
-> You might also want to enable the [`pgvector` extension](./how-to-use-pgvector.md) as it is commonly used with `azure_ai`.
+> You might also want to enable the [`pgvector` extension](how-to-use-pgvector.md) as it is commonly used with `azure_ai`.
 
 Then you can install the extension, by connecting to your target database and running the [CREATE EXTENSION](https://www.postgresql.org/docs/current/static/sql-createextension.html) command. You need to repeat the command separately for every database you want the extension to be available in.
 
@@ -44,7 +44,7 @@ Installing the extension `azure_ai` creates the following three schemas:
 
 The extension also allows calling Azure OpenAI and Azure Cognitive Services.
 
-## Configure the `azure_ai` extension
+## Configure the azure_ai extension
 
 Configuring the extension requires you to provide the endpoints to connect to the Azure AI services and the API keys required for authentication. Service settings are stored using following functions:
 
@@ -152,7 +152,13 @@ To update an installed extension to the latest available version supported by Az
 ALTER EXTENSION azure_ai UPDATE;
 ```
 
-## Next steps
+## Related content
 
-> [!div class="nextstepaction"]
-> [Generate vector embeddings with Azure OpenAI](./generative-ai-azure-openai.md)
+- [Integrate Azure Database for PostgreSQL - Flexible Server with Azure Cognitive Services](generative-ai-azure-cognitive.md).
+- [Generate vector embeddings in Azure Database for PostgreSQL - Flexible Server with locally deployed LLM (Preview)](generative-ai-azure-local-ai.md).
+- [Integrate Azure Database for PostgreSQL with Azure Machine Learning Services](generative-ai-azure-machine-learning.md).
+- [Generate vector embeddings with Azure OpenAI in Azure Database for PostgreSQL - Flexible Server](generative-ai-azure-openai.md).
+- [Generative AI with Azure Database for PostgreSQL - Flexible Server](generative-ai-overview.md).
+- [Recommendation System with Azure Database for PostgreSQL - Flexible Server and Azure OpenAI](generative-ai-recommendation-system.md).
+- [Semantic Search with Azure Database for PostgreSQL - Flexible Server and Azure OpenAI](generative-ai-semantic-search.md).
+- [Enable and use pgvector in Azure Database for PostgreSQL - Flexible Server](how-to-use-pgvector.md).

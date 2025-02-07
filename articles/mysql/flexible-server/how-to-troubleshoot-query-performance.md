@@ -1,10 +1,10 @@
 ---
-title: Profile query performance
+title: Profile Query Performance
 description: Learn how to profile query performance in Azure Database for MySQL - Flexible Server by using EXPLAIN.
 author: SudheeshGH
 ms.author: sunaray
 ms.reviewer: maghan
-ms.date: 06/18/2024
+ms.date: 11/27/2024
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: troubleshooting
@@ -12,15 +12,11 @@ ms.topic: troubleshooting
 
 # Profile query performance in Azure Database for MySQL - Flexible Server by using EXPLAIN
 
-[!INCLUDE[applies-to-mysql-single-flexible-server](../includes/applies-to-mysql-single-flexible-server.md)]
-
-[!INCLUDE[azure-database-for-mysql-single-server-deprecation](~/reusable-content/ce-skilling/azure/includes/mysql/includes/azure-database-for-mysql-single-server-deprecation.md)]
-
 **EXPLAIN** is a handy tool that can help you optimize queries. You can use an EXPLAIN statement to get information about how SQL statements are run. The following shows example output from running an EXPLAIN statement.
 
 ```sql
 mysql> EXPLAIN SELECT * FROM tb1 WHERE id=100\G
-*************************** 1. row ***************************
+****************** 1. row ******************
            id: 1
   select_type: SIMPLE
         table: tb1
@@ -35,12 +31,12 @@ possible_keys: NULL
         Extra: Using where
 ```
 
-In this example, the value of *key* is NULL, which means that Azure Database for MySQL flexible server can't locate any indexes optimized for the query. As a result, it performs a full table scan. Let's optimize this query by adding an index on the **ID** column, and then run the EXPLAIN statement again.
+In this example, the value of *key* is NULL, which means that Azure Database for MySQL Flexible Server can't locate any indexes optimized for the query. As a result, it performs a full table scan. Let's optimize this query by adding an index on the **ID** column, and then run the EXPLAIN statement again.
 
 ```sql
 mysql> ALTER TABLE tb1 ADD KEY (id);
 mysql> EXPLAIN SELECT * FROM tb1 WHERE id=100\G
-*************************** 1. row ***************************
+****************** 1. row ******************
            id: 1
   select_type: SIMPLE
         table: tb1
@@ -55,7 +51,7 @@ possible_keys: id
         Extra: NULL
 ```
 
-Now, the output shows that Azure Database for MySQL flexible server uses an index to limit the number of rows to 1, which dramatically shortens the search time.
+Now, the output shows that Azure Database for MySQL Flexible Server uses an index to limit the number of rows to 1, which dramatically shortens the search time.
 
 ## Covering index
 
@@ -63,7 +59,7 @@ A covering index includes of all columns of a query, which reduces value retriev
 
 ```sql
 mysql> EXPLAIN SELECT MAX(c1), c2 FROM tb1 WHERE c2 LIKE '%100' GROUP BY c1\G
-*************************** 1. row ***************************
+****************** 1. row ******************
            id: 1
   select_type: SIMPLE
         table: tb1
@@ -78,14 +74,14 @@ possible_keys: NULL
         Extra: Using where; Using temporary; Using filesort
 ```
 
-The output shows that Azure Database for MySQL flexible server doesn't use any indexes, because proper indexes are unavailable. The output also shows *Using temporary; Using filesort*, which indicates that Azure Database for MySQL flexible server creates a temporary table to satisfy the **GROUP BY** clause.
+The output shows that Azure Database for MySQL Flexible Server doesn't use any indexes, because proper indexes are unavailable. The output also shows *Using temporary; Using filesort*, which indicates that Azure Database for MySQL Flexible Server creates a temporary table to satisfy the **GROUP BY** clause.
 
-Creating an index only on column **c2** makes no difference, and Azure Database for MySQL flexible server still needs to create a temporary table:
+Creating an index only on column **c2** makes no difference, and Azure Database for MySQL Flexible Server still needs to create a temporary table:
 
 ```sql
 mysql> ALTER TABLE tb1 ADD KEY (c2);
 mysql> EXPLAIN SELECT MAX(c1), c2 FROM tb1 WHERE c2 LIKE '%100' GROUP BY c1\G
-*************************** 1. row ***************************
+****************** 1. row ******************
            id: 1
   select_type: SIMPLE
         table: tb1
@@ -105,7 +101,7 @@ In this case, you can create a **covered index** on both **c1** and **c2** by ad
 ```sql
 mysql> ALTER TABLE tb1 ADD KEY covered(c1,c2);
 mysql> EXPLAIN SELECT MAX(c1), c2 FROM tb1 WHERE c2 LIKE '%100' GROUP BY c1\G
-*************************** 1. row ***************************
+****************** 1. row ******************
            id: 1
   select_type: SIMPLE
         table: tb1
@@ -120,7 +116,7 @@ possible_keys: covered
         Extra: Using where; Using index
 ```
 
-As the output of the EXPLAIN above shows, Azure Database for MySQL flexible server now uses the covered index and avoids having to creating a temporary table.
+As the output of the EXPLAIN above shows, Azure Database for MySQL Flexible Server now uses the covered index and avoids having to creating a temporary table.
 
 ## Combined index
 
@@ -128,7 +124,7 @@ A combined index consists values from multiple columns and can be considered an 
 
 ```sql
 mysql> EXPLAIN SELECT c1, c2 from tb1 WHERE c2 LIKE '%100' ORDER BY c1 DESC LIMIT 10\G
-*************************** 1. row ***************************
+****************** 1. row ******************
            id: 1
   select_type: SIMPLE
         table: tb1
@@ -143,12 +139,12 @@ possible_keys: NULL
         Extra: Using where; Using filesort
 ```
 
-Azure Database for MySQL flexible server performs a *file sort* operation that is fairly slow, especially when it has to sort many rows. To optimize this query, create a combined index on both of the columns that are being sorted.
+Azure Database for MySQL Flexible Server performs a *file sort* operation that is fairly slow, especially when it has to sort many rows. To optimize this query, create a combined index on both of the columns that are being sorted.
 
 ```sql
 mysql> ALTER TABLE tb1 ADD KEY my_sort2 (c1, c2);
 mysql> EXPLAIN SELECT c1, c2 from tb1 WHERE c2 LIKE '%100' ORDER BY c1 DESC LIMIT 10\G
-*************************** 1. row ***************************
+****************** 1. row ******************
            id: 1
   select_type: SIMPLE
         table: tb1
@@ -163,12 +159,13 @@ possible_keys: NULL
         Extra: Using where; Using index
 ```
 
-The output of the EXPLAIN statement now shows that Azure Database for MySQL flexible server uses a combined index to avoid additional sorting as the index is already sorted.
+The output of the EXPLAIN statement now shows that Azure Database for MySQL Flexible Server uses a combined index to avoid additional sorting as the index is already sorted.
 
 ## Conclusion
 
-You can increase performance significantly by using EXPLAIN together with different types of indexes. Having an index on a table doesn't necessarily mean that Azure Database for MySQL flexible server can use it for your queries. Always validate your assumptions by using EXPLAIN and optimize your queries using indexes.
+You can increase performance significantly by using EXPLAIN together with different types of indexes. Having an index on a table doesn't necessarily mean that Azure Database for MySQL Flexible Server can use it for your queries. Always validate your assumptions by using EXPLAIN and optimize your queries using indexes.
 
-## Next steps
+## Next step
 
-- To find peer answers to your most important questions or to post or answer a question, visit [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-database-mysql).
+> [!div class="nextstepaction"]
+> [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-database-mysql)

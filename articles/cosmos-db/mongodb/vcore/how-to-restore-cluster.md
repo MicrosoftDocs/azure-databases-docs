@@ -9,7 +9,7 @@ ms.subservice: mongodb-vcore
 ms.custom:
   - ignite-2023
 ms.topic: how-to
-ms.date: 08/28/2023
+ms.date: 01/11/2025
 ---
 
 # Restore a cluster in Azure Cosmos DB for MongoDB vCore
@@ -38,17 +38,38 @@ In Azure regions that support availability zones, backup snapshots are stored in
 
 ## Restore from a backup
 
-The restore process creates a new cluster with the same configuration in the same Azure region, subscription, and resource group as the original. To restore data, customers must create an Azure support request.
+The restore process creates a new cluster with the same configuration in the same Azure region, subscription, and resource group as the original. Follow these steps to restore data.
 
-1. Sign in to the [Azure portal](https://portal.azure.com).
+1. Select an existing Azure Cosmos DB for MongoDB vCore cluster.
+1. On the cluster sidebar, under **Settings**, select **Point In Time Restore**.
+1. Select a date and provide a time (in UTC time zone) in the date and time fields.
+1. Enter a cluster name in the **Restore target cluster name** field. 
+1. Enter a cluster admin name for the restored cluster in the **Admin user name** field.
+1. Enter a password for the admin role in the **Password** and **Confirm password** fields.
+1. Select **Submit** to initiate cluster restore.
 
-1. Navigate to the **Help + support** section and select **Create a support request**. For more information, see [create an Azure support request](/azure/azure-portal/supportability/how-to-create-azure-support-request).
+> [!NOTE]
+> Cluster backups are stored for 35 days. If your cluster was created 35 days or more ago and you don't see the desired date in the restore date field, you might need to open a support request to restore the cluster to that point.
 
-1. Once the support ticket is submitted, our team guides you through the process of restoring your data from the backup.
+To create an Azure support request, follow these steps:
+
+1. Select an existing Azure Cosmos DB for MongoDB vCore cluster that you need to restore.
+1. On the cluster sidebar, under **Help**, select **Support + Troubleshooting**. For more information, see [create an Azure support request](/azure/azure-portal/supportability/how-to-create-azure-support-request#problem-description).
+
+### Post-restore tasks
+After a restore, you should do the following to get your users and applications back up and running:
+
+- If the new cluster is meant to replace the original cluster, redirect clients and client applications to the new cluster.
+- Ensure appropriate [networking settings](./security.md#network-security-options) for private or public access are in place for users to connect. These settings aren't copied from the original cluster.
+- Ensure [high availability (HA)](./high-availability.md) is enabled on the restored cluster. High availability is disabled on the restored cluster and needs to be enabled, if needed. 
+- Configure [alerts on cluster metrics](./how-to-manage-alerts.md), as appropriate.
 
 ## Next steps
 
-In this guide, we've covered the backup and restore features for Azure Cosmos DB for MongoDB vCore.
+In this guide, we covered the backup and restore features for Azure Cosmos DB for MongoDB vCore.
+
+## Related content
+- [Review cross-region replication capabilities in Azure Cosmos DB for MongoDB vCore](./cross-region-replication.md)
 
 > [!div class="nextstepaction"]
-> [Review security concepts](security.md)
+> [Migration options for Azure Cosmos DB for MongoDB vCore](migration-options.md)

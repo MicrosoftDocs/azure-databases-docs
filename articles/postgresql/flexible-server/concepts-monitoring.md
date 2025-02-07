@@ -4,13 +4,13 @@ description: Review the monitoring and metrics features in Azure Database for Po
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 07/31/2024
+ms.date: 2/5/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: conceptual
 ---
 
-# Monitor metrics on Azure Database for PostgreSQL - Flexible Server
+# Monitor metrics in Azure Database for PostgreSQL - Flexible Server
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
@@ -55,7 +55,7 @@ The following metrics are available for an Azure Database for PostgreSQL flexibl
 
 ### Enhanced metrics
 
-You can use enhanced metrics for Azure Database for PostgreSQL flexible server to get fine-grained monitoring and alerting on databases. You can configure alerts on the metrics. Some enhanced metrics include a `Dimension` parameter that you can use to split and filter metrics data by using a dimension like database name or state.
+You can use enhanced metrics for Azure Database for PostgreSQL flexible server to get fine-grained monitoring and alerting on databases. Each metric is emitted at a *1-minute* interval and has up to *93 days* of history. You can configure alerts on the metrics. Some enhanced metrics include a `Dimension` parameter that you can use to split and filter metrics data by using a dimension like database name or state.
 
 #### Enabling enhanced metrics
 
@@ -124,12 +124,14 @@ You can choose from the following categories of enhanced metrics:
 |---|---|---|---|---|---|
 |**Disk Bandwidth Consumed Percentage**|`disk_bandwidth_consumed_percentage`|Percent|Percentage of data disk bandwidth consumed per minute.|Doesn't apply|Yes |
 |**Disk IOPS Consumed Percentage** |`disk_iops_consumed_percentage` |Percent|Percentage of data disk I/Os consumed per minute. |Doesn't apply|Yes |
+|**Postmaster Process cpu usage (preview)**|`postmaster_process_cpu_usage_percent`|Percent|CPU utilization of Postmaster process. Not applicable for Burstable SKU.                                      |Doesn't apply|No             |
 
 ##### Traffic
 
-|Display name|Metric ID|Unit|Description|Dimension|Default enabled|
-|---|---|---|---|---|---|
-|**Max Connections** ^|`max_connections`|Count|Number of maximum connections. |Doesn't apply|Yes |
+|Display name                              |Metric ID                             |Unit   |Description                                                                                                   |Dimension    |Default enabled|
+|------------------------------------------|--------------------------------------|-------|--------------------------------------------------------------------------------------------------------------|-------------|---------------|
+|**Max Connections** ^                     |`max_connections`                     |Count  |Number of maximum connections.                                                                                |Doesn't apply|Yes            |
+|**TCP Connection Backlog (preview)**      |`tcp_connection_backlog`              |Count  |Number of pending TCP connections waiting to be processed by the server.                                      |Doesn't apply|No             |
 
 ^ **Max Connections** represents the configured value for the `max_connections` server parameter. This metric is polled every 30 minutes.
 
@@ -180,7 +182,7 @@ You can use PgBouncer metrics to monitor the performance of the PgBouncer proces
 
 #### How to enable PgBouncer metrics
 
-- To monitor PgBouncer metrics, ensure that the [pgbouncer](./concepts-pgbouncer.md) feature is enabled via the server parameter `pgbouncer.enabled` and metrics parameter `metrics.pgbouncer_diagnostics` is enabled.
+- To monitor PgBouncer metrics, ensure that the [pgbouncer](concepts-pgbouncer.md) feature is enabled via the server parameter `pgbouncer.enabled` and metrics parameter `metrics.pgbouncer_diagnostics` is enabled.
 - These parameters are dynamic and don't require an instance restart.
 - PgBouncer metrics are disabled by default.
 
@@ -249,9 +251,16 @@ In addition to the metrics, you can use Azure Database for PostgreSQL flexible s
 |---------|---------|--------|
 |[Log Analytics](/azure/azure-monitor/logs/log-analytics-overview)|With Log Analytics, you can create log queries to interactively work with log data and create log query alerts.| Some training is required for you to become familiar with the query language, although you can use prebuilt queries for common requirements. |
 
+## Server Logs
 
-## Next steps
+The Server Logs feature in Azure Database for PostgreSQL Flexible Server allows users to enable, configure, and **download server logs**, which are essential for troubleshooting and performing historical analyses of server activity. By default, the server logs feature in Azure Database for PostgreSQL flexible server is disabled. However, after you enable the feature, Azure Database for PostgreSQL flexible server starts capturing events of the selected log type and writes them to a file. You can then use the Azure portal or the Azure CLI to download the files to assist with your troubleshooting efforts.
 
-- Learn more about how to [configure and access logs](how-to-configure-and-access-logs.md).
-- Learn more about [Azure Monitor pricing](https://azure.microsoft.com/pricing/details/monitor/).
-- Learn more about [audit logs](concepts-audit.md).
+### Server logs retention
+
+Server logs have minimum retention 1 days and maximum retention is 7 days. If this limit is exceeded, the oldest logs are deleted to make room for new ones. For details on enabling and managing server logs, see [Configure capture of PostgreSQL server logs and major version upgrade logs](how-to-configure-server-logs.md).
+
+## Related content
+
+- [Configure logging and access logs in Azure Database for PostgreSQL - Flexible Server](how-to-configure-and-access-logs.md).
+- [Azure Monitor pricing](https://azure.microsoft.com/pricing/details/monitor/).
+- [Audit logging in Azure Database for PostgreSQL - Flexible Server](concepts-audit.md).

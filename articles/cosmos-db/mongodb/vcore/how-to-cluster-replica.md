@@ -1,5 +1,5 @@
 ---
-title: Enable and work with cross-region replication (preview)
+title: Enable and work with cross-region replication
 titleSuffix: Azure Cosmos DB for MongoDB vCore
 description: Enable and disable cross-region replication and promote cluster replica in another region for disaster recovery (DR) in Azure Cosmos DB for MongoDB vCore.
 author: niklarin
@@ -8,20 +8,15 @@ ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.custom:
   - build-2024
+  - ignite-2024
 ms.topic: how-to
-ms.date: 08/26/2024
+ms.date: 01/08/2025
 #Customer Intent: As a database adminstrator, I want to configure cross-region replication, so that I can have disaster recovery plans in the event of a regional outage.
 ---
 
-# Manage cross-region replication on your Azure Cosmos DB for MongoDB vCore cluster (preview)
+# Manage cross-region replication on your Azure Cosmos DB for MongoDB vCore cluster
 
 [!INCLUDE[MongoDB vCore](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
-
-> [!IMPORTANT]
-> Cross-region replication in Azure Cosmos DB for MongoDB vCore is currently in preview.
-> This preview version is provided without a service level agreement (SLA), and it's not recommended
-> for production workloads. Certain features might not be supported or might have constrained
-> capabilities.
 
 Azure Cosmos DB for MongoDB vCore allows continuous data streaming to a replica cluster in another Azure region. That capability provides cross-region disaster recovery (DR) protection and read scalability across the regions. This document serves as a quick guide for developers who want to learn how to manage cross-region replication for their clusters.
 
@@ -33,27 +28,27 @@ Azure Cosmos DB for MongoDB vCore allows continuous data streaming to a replica 
 
 To enable cross-region replication on a new cluster *during cluster creation*, follow these steps:
 
-1. Follow the steps to [create a new Azure Cosmos DB for MongoDB vCore cluster](./quickstart-portal.md#create-a-cluster).
-1. On the **Basics** tab, select **Enable global distribution (preview)** flag.
-1. On the **Global distribution (preview)** tab, select **Enable** for the **Read replica in another region (preview)**.
+1. Follow the steps to [start cluster creation and complete the **Basics** tab for a new Azure Cosmos DB for MongoDB vCore cluster](./quickstart-portal.md#create-a-cluster).
+1. On the **Global distribution** tab, select **Enable** for the **Read replica in another region**.
 1. Provide a replica cluster name in the **Read replica name** field. 
 1. Select a region in the **Read replica region**. The replica cluster is hosted in the selected Azure region.
 1. (optionally) Select desired network access settings for the cluster on the **Networking** tab.
 1. On the **Review + create** tab, review cluster configuration details, and then select **Create**. 
 
 > [!NOTE]
-> The replica cluster is created in the same Azure subscirption and resource group as its primary cluster.
+> The replica cluster is created in the same Azure subscription and resource group as its primary cluster.
 
 To enable cross-region replication on a new cluster *at any time after cluster creation*, follow these steps:
 
 1. Follow the steps to [create a new Azure Cosmos DB for MongoDB vCore cluster](./quickstart-portal.md#create-a-cluster).
-1. On the **Basics** tab, select **Enable global distribution (preview)** flag.
-1. Skip **Global distribution (preview)** tab. This tab is used to create a cluster replica during primary cluster provisioning.
-1. Once cluster is created, on the cluster sidebar, under **Settings**, select **Global distribution (preview)**.
+1. Skip **Global distribution** tab. This tab is used to create a cluster replica during primary cluster provisioning.
+1. *Once cluster is created*, on the cluster sidebar, under **Settings**, select **Global distribution**.
 1. Select **Add new read replica**.
 1. Provide a replica cluster name in the **Read replica name** field. 
 1. Select a region in the **Read replica region**. The replica cluster is hosted in the selected Azure region.
 1. Verify your selection and select the **Save** button to confirm replica creation.
+
+To make the replica cluster accessible for read operations, adjust its networking settings by configuring firewall rules for public access or by adding private endpoints for secure, private access.
 
 ## Promote a replica
 
@@ -64,7 +59,7 @@ To [promote a cluster replica](./cross-region-replication.md#replica-cluster-pro
 1. On the **Global distribution** page, select **Promote**.
 1. On the **Promote \<cluster name>** screen, double check the cluster replica's name, read the warning text, and select **Promote**.
 
-After the cluster replica is promoted, it becomes a readable and writable cluster.
+After the cluster replica is promoted, it becomes a readable and writable cluster. If [high availability (HA)](./high-availability.md) is enabled on the primary (read-write) cluster, it needs to be re-enabled on the replica cluster after promotion.
 
 ## Check cluster replication role and replication region
 
@@ -91,16 +86,20 @@ If you need to delete the primary and replica clusters, you would need to delete
 ## Use connection strings
 
 You can connect to the cluster replica as you would to a regular read-write cluster. 
-Follow these steps to [get the connection strings for different cases](./cross-region-replication.md#read-operations-on-cluster-replicas-and-connection-strings):
+Follow these steps to [get the connection strings for different cases](./cross-region-replication.md#continuous-writes-read-operations-on-cluster-replicas-and-connection-strings):
 
 1. Select the primary cluster or its cluster replica in the portal.
 1. On the cluster sidebar, under **Settings**, select **Connection strings**.
-1. Copy the connection string for currently selected cluster to connect to that cluster.
+1. Copy the self connection string for currently selected cluster to connect to that cluster.
+1. (optionally, on the primary cluster only) Copy the global read-write connection string that always points to the cluster available for writes.
 
-Connection strings are preserved after [the cluster replica promotion](./cross-region-replication.md#replica-cluster-promotion). You can continue to use either string for read operations. You need to change connection string to point to the promoted replica cluster to continue writes to the database after promotion is completed.
+:::image type="content" source="media/cross-region-replication/global-read-write-connection-string-in-azure-portal.png" alt-text="Screenshot of the cluster connection strings an Azure Cosmos DB for MongoDB (vCore) cluster including global read-write connection string and self connection string.":::
+
+Self connection strings are preserved after [the cluster replica promotion](./cross-region-replication.md#replica-cluster-promotion). You can continue to use either string or global read-write connection string for read operations. If you use self connection string for write operations, you need to update connection string in your application to point to the promoted replica cluster to continue writes to the database after promotion is completed.
 
 ## Related content
 
 - [Learn more about cross-region replication in Azure Cosmos DB for MongoDB vCore](./cross-region-replication.md)
-- [See cross-region replication preview limits and limitations](./limits.md#cross-region-replication-preview)
+- [See cross-region replication limits and limitations](./limits.md#cross-region-replication)
+- To resolve an issue with cross-region replication, see [this troubleshooting guide](./troubleshoot-replication.md).
 - [Learn about reliability in Azure Cosmos DB for MongoDB vCore](/azure/reliability/reliability-cosmos-mongodb)

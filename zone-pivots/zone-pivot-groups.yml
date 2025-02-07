@@ -1,0 +1,152 @@
+### YamlMime:ZonePivotGroups
+groups:
+- id: azure-cosmos-db-apis-nosql-mongodb-cassandra-gremlin-table
+  title: Azure Cosmos DB APIs
+  prompt: Choose an API
+  pivots:
+  - id: api-nosql
+    title: NoSQL
+  - id: api-mongodb
+    title: MongoDB
+  - id: api-apache-cassandra
+    title: Apache Cassandra
+  - id: api-apache-gremlin
+    title: Apache Gremlin
+  - id: api-table
+    title: Table
+# Owner: sidandrews
+- id: azure-cosmos-db-apis-nosql-mongodb-gremlin-table
+  title: Azure Cosmos DB APIs
+  prompt: Choose an API
+  pivots:
+  - id: api-nosql
+    title: NoSQL
+  - id: api-mongodb
+    title: MongoDB
+  - id: api-gremlin
+    title: Apache Gremlin
+  - id: api-table
+    title: Table
+# Owner: maghan
+- id: azure-cosmos-db-apis-nosql-mongodb
+  title: Azure Cosmos DB APIs
+  prompt: Choose an API
+  pivots:
+  - id: api-nosql
+    title: NoSQL
+  - id: api-mongodb
+    title: MongoDB
+# Owner: sidandrews
+- id: azure-cosmos-db-apis-nosql-mongodb-cassandra
+  title: Azure Cosmos DB APIs
+  prompt: Choose an API
+  pivots:
+  - id: api-nosql
+    title: NoSQL
+  - id: api-mongodb
+    title: MongoDB
+  - id: api-apache-cassandra
+    title: Apache Cassandra
+# Owner: sidandrews
+- id: azure-cosmos-db-quickstart-env
+  title: Azure Cosmos DB Quickstart environment
+  prompt: Choose a development environment
+  pivots:
+  - id: devcontainer-codespace
+    title: GitHub Codespaces
+  - id: devcontainer-vscode
+    title: Visual Studio Code
+# Owner: sidandrews
+- id: programming-languages-spark-all-minus-sql-r-csharp
+  title: Programming languages
+  prompt: Choose a language
+  pivots:
+  - id: programming-language-python
+    title: Python
+  - id: programming-language-scala
+    title: Scala
+# Owner maquaran
+- id: programming-languages-set-cosmos
+  title: Programming languages
+  prompt: Choose a programming language
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-nodejs
+    title: NodeJS
+  - id: programming-language-python
+    title: Python
+# Postgresql
+- id: postgresql-server-version
+  title: PostgreSQL Server Versions
+  prompt: Choose a PostgreSQL version
+  pivots:
+  - id: postgresql-17
+    title: PostgreSQL 17 (preview)
+  - id: postgresql-16
+    title: PostgreSQL 16
+  - id: postgresql-15
+    title: PostgreSQL 15
+  - id: postgresql-14
+    title: PostgreSQL 14
+  - id: postgresql-13
+    title: PostgreSQL 13
+  - id: postgresql-12
+    title: PostgreSQL 12
+  - id: postgresql-11
+    title: PostgreSQL 11
+# Owner: sidandrews
+- id: azure-interface-portal-cli-powershell
+  title: Azure interface
+  prompt: Choose an Azure interface
+  pivots:
+  - id: azure-interface-cli
+    title: Azure CLI
+  - id: azure-interface-portal
+    title: Azure portal
+  - id: azure-interface-shell
+    title: Azure PowerShell
+# Owner: sidandrews
+- id: azure-interface-portal-cli-powershell-bicep
+  title: Azure interface
+  prompt: Choose an Azure interface
+  pivots:
+  - id: azure-interface-cli
+    title: Azure CLI
+  - id: azure-interface-bicep
+    title: Bicep
+  - id: azure-interface-portal
+    title: Azure portal
+  - id: azure-interface-shell
+    title: Azure PowerShell
+# Owner: sidandrews
+- id: azure-interface-cli-powershell-bicep
+  title: Azure interface
+  prompt: Choose an Azure interface
+  pivots:
+  - id: azure-interface-cli
+    title: Azure CLI
+  - id: azure-interface-bicep
+    title: Bicep
+  - id: azure-interface-shell
+    title: Azure PowerShell
+# Owner: sidandrews
+- id: azure-interface-cli-powershell
+  title: Azure interface
+  prompt: Choose an Azure interface
+  pivots:
+  - id: azure-interface-cli
+    title: Azure CLI
+  - id: azure-interface-shell
+    title: Azure PowerShell
+# Owner: sidandrews
+- id: azure-devlang-nodejs
+  title: Programming languages
+  prompt: Choose a programming language
+  pivots:
+  - id: programming-language-ts
+    title: TypeScript
+  - id: programming-language-js
+    title: JavaScript

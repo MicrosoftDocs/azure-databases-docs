@@ -1,39 +1,41 @@
 ---
-title: "Migration service - Migration of users/roles, ownerships, and privileges"
-description: Learn about the migration of user roles, ownerships, and privileges along with schema and data for the migration service in Azure Database for PostgreSQL.
+title: "Permissions in Migration Scenarios"
+description: Learn about key concerns about permissions when you migrate users, roles, and ownerships by using the migration service in Azure Database for PostgreSQL. Learn about steps to take in specific migration scenarios.
 author: shriramm
 ms.author: shriramm
 ms.reviewer: maghan
-ms.date: 06/19/2024
+ms.date: 01/24/2025
 ms.service: azure-database-postgresql
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
-# Migration of user roles, ownerships, and privileges for the migration service in Azure Database for PostgreSQL
+# Permissions in migration scenarios for the migration service
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
+The migration service in Azure Database for PostgreSQL provides the following built-in capabilities for Azure Database for PostgreSQL - Single Server as the source and data migration:
+
+- Migrates user roles from your source server to the target server.
+- Migrates ownership of all database objects from your source server to the target server.
+- Migrates permissions of database objects like GRANT and REVOKE from your source server to the target server.
+
 > [!IMPORTANT]  
-> The migration of user roles, ownerships, and privileges feature is available only for the Azure Database for PostgreSQL - Single Server instance as the source. This feature is currently disabled for PostgreSQL version 16 servers.
+> You can migrate users, roles, ownerships, and permissions only when the source is an instance of Azure Database for PostgreSQL - Single Server. Currently, this feature is not available for PostgreSQL version 16 servers.
 
-The migration service automatically provides the following built-in capabilities for Azure Database for PostgreSQL - Single Server as the source and data migration:
+## Permissions on a single server compared to a flexible server
 
-- Migration of user roles on your source server to the target server.
-- Migration of ownership of all the database objects on your source server to the target server.
-- Migration of permissions of database objects on your source server, such as `GRANT`/`REVOKE`, to the target server.
+This section describes the differences in permissions granted to the azure_pg_admin role in Azure Database for PostgreSQL - Single Server and Azure Database for PostgreSQL - Flexible Server environments.
 
-## Permission differences between Azure Database for PostgreSQL - Single Server and Flexible Server
+### pg_catalog schema permissions
 
-This section explores the differences in permissions granted to the **azure_pg_admin** role across single server and flexible server environments.
+Unlike a user-created schema that organizes database objects into logical groups, pg_catalog is a system schema. It holds crucial system-level information, such as details about tables, columns, and other internal bookkeeping data. The pg_catalog schema is where PostgreSQL stores important metadata. Permissions vary between single server and flexible server environments:
 
-### PG catalog permissions
+- In a single server environment, a user who belongs to the azure_pg_admin role is granted specific permissions for all pg_catalog tables and views.
+- In a flexible server environment, permissions for certain tables and views are restricted so that only superusers can query them.
 
-Unlike user-created schemas, which organize database objects into logical groups, pg_catalog is a system schema. It houses crucial system-level information, such as details about tables, columns, and other internal bookkeeping data. It's where PostgreSQL stores important metadata.
+Granting unrestricted access to system tables and views in the pg_catalog schema can lead to unauthorized modifications, accidental deletions, or even security breaches. Restricted access reduces the risk of unintended changes or data exposure.
 
-- In a single server environment, a user belonging to the azure_pg_admin role is granted select privileges for all pg_catalog tables and views.
-- In a flexible server environment, privileges are restricted for certain tables and views so that only superusers are allowed to query them.
-
-We removed all privileges for non-superusers on the following pg_catalog tables:
+We removed all permissions for non-superusers on the following pg_catalog *tables*:
 
 - pg_authid
 
@@ -45,7 +47,7 @@ We removed all privileges for non-superusers on the following pg_catalog tables:
 
 - pg_user_mapping
 
-We removed all privileges for non-superusers on the following pg_catalog views:
+We removed all permissions for non-superusers on the following pg_catalog *views*:
 
 - pg_config
 
@@ -57,33 +59,38 @@ We removed all privileges for non-superusers on the following pg_catalog views:
 
 - pg_shadow
 
-Allowing unrestricted access to these system tables and views could lead to unauthorized modifications, accidental deletions, or even security breaches. Restricted access reduces the risk of unintended changes or data exposure.
-
 ### pg_pltemplate deprecation
 
-Another important consideration is the deprecation of the **pg_pltemplate** system table within the pg_catalog schema by the PostgreSQL community *starting from version 13*. If you're migrating to Flexible Server versions 13 and above and have granted permissions to users on the pg_pltemplate table on your single server, you must revoke these permissions before you initiate a new migration.
+Another important consideration is the deprecation of the pg_pltemplate system table. Starting in *version 13*, PostgreSQL community deprecates the pg_pltemplate system table in the pg_catalog schema. If you migrate to Azure Database for PostgreSQL - Flexible Server version 13 or later and you granted permissions to users on the pg_pltemplate table on your single server, you must revoke these permissions before you initiate a migration.
 
-#### What is the impact?
+#### Effects
 
-- If your application is designed to directly query the affected tables and views, it encounters issues upon migrating to the flexible server. We strongly advise you to refactor your application to avoid direct queries to these system tables.
-- If you've granted or revoked privileges to any users or roles for the affected pg_catalog tables and views, you encounter an error during the migration process. You can identify this error by the following pattern:
+The following list describes important effects of pg_pltemplate deprecation:
+
+- If your application is designed to directly query the relevant tables and views, it encounters issues when you migrate to a flexible server. We strongly recommend that you refactor your application to avoid direct queries to these system tables.
+- If you granted or revoked permissions to any users or roles for the relevant pg_catalog tables and views, an error occurs during the migration process. You can identify this error by the following pattern:
 
   ```sql
-  pg_restore error: could not execute query <GRANT/REVOKE> <PRIVILEGES> on <affected TABLE/VIEWS> to <user>.
+  pg_restore error: could not execute query <GRANT/REVOKE> <PERMISSIONS> on <relevant TABLE/VIEW> to <user>.
   ```
 
 #### Workaround
 
-To resolve this error, it's necessary to undo the privileges granted to users and roles on the affected pg_catalog tables and views. You can accomplish this task by taking the following steps.
+To resolve a pg_catalog error, remove the permissions that you granted to users and roles related to the relevant pg_catalog tables and views.
 
-**Step 1: Identify privileges**
+##### Step 1: Identify permissions
 
-Execute the following query on your single server by logging in as the admin user:
+Execute the following query on your single server by logging in as the admin user.
+
+In the code:
+
+- Permissions are called *privileges*.
+- A *relation_name* value is a table name or view name.
 
 ```sql
 SELECT
   array_to_string(array_agg(acl.privilege_type), ', ') AS privileges,
-  t.relname AS relation_name, 
+  t.relname AS relation_name,
   r.rolname AS grantee
 FROM
   pg_catalog.pg_class AS t
@@ -97,23 +104,24 @@ WHERE
   )
 GROUP BY
   r.rolname, t.relname;
-
 ```
 
-**Step 2: Review the output**
+##### Step 2: Review the output
 
-The output of the query shows the list of privileges granted to roles on the impacted tables and views.
+The output of the query shows the list of permissions that are granted to roles on the relevant tables and views.
 
 For example:
 
-| Privileges | Relation name | Grantee |
-| :--- |:--- |:--- | 
+| Permissions | Table or view (relation name) | Grantee |
+| :--- | :--- | :--- |
 | SELECT | pg_authid | adminuser1 |
-| SELECT, UPDATE |pg_shadow | adminuser2 |
+| SELECT, UPDATE | pg_shadow | adminuser2 |
 
-**Step 3: Undo the privileges**
+##### Step 3: Revoke the permissions
 
-To undo the privileges, run `REVOKE` statements for each privilege on the relation from the grantee. In this example, you would run:
+To revoke the permissions, run `REVOKE` statements for each permission on the table or view from the grantee.
+
+For example:
 
 ```sql
 REVOKE SELECT ON pg_authid FROM adminuser1;
@@ -121,14 +129,14 @@ REVOKE SELECT ON pg_shadow FROM adminuser2;
 REVOKE UPDATE ON pg_shadow FROM adminuser2;
 ```
 
-**Step 4: Final verification**
+##### Step 4: Final verification
 
 Run the query from step 1 again to ensure that the resulting output set is empty.
 
-> [!NOTE]
-> Make sure you perform the preceding steps for all the databases included in the migration to avoid any permission-related issues during the migration.
+> [!NOTE]  
+> To avoid any permissions-related issues during the migration, make sure that you complete the preceding steps for all the databases that are included in the migration.
 
-After you finish these steps, you can proceed to initiate a new migration from the single server to the flexible server by using the migration service. You shouldn't encounter permission-related issues during this process.
+After you finish these steps, you can initiate a migration from a single server to a flexible server by using the migration service.
 
 ## Related content
 

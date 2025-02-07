@@ -1,21 +1,21 @@
 ---
-title: "Tutorial: Migrate offline from AWS RDS using the migration service with the Azure portal and Azure CLI"
-description: "Learn to migrate offline seamlessly from AWS RDS to Azure Database for PostgreSQL using the new migration service in Azure, simplifying the transition while ensuring data integrity and efficient deployment."
+title: "Tutorial: Migrate Offline From Amazon RDS for PostgreSQL Using the Migration Service With the Azure Portal and Azure CLI"
+description: "Learn to migrate offline seamlessly from Amazon RDS for PostgreSQL to Azure Database for PostgreSQL using the new migration service in Azure, simplifying the transition while ensuring data integrity and efficient deployment."
 author: apduvuri
 ms.author: adityaduvuri
 ms.reviewer: maghan
-ms.date: 06/19/2024
+ms.date: 01/24/2025
 ms.service: azure-database-postgresql
 ms.subservice: migration-guide
 ms.topic: tutorial
 ms.custom:
   - devx-track-azurecli
-# customer intent: As a developer, I want to learn how to migrate from AWS RDS to Azure Database for PostgreSQL using the migration service, so that I can simplify the transition and ensure data integrity.
+# customer intent: As a developer, I want to learn how to migrate from Amazon RDS for PostgreSQL to Azure Database for PostgreSQL using the migration service, so that I can simplify the transition and ensure data integrity.
 ---
 
-# Tutorial: Migrate offline from AWS RDS PostgreSQL to Azure Database for PostgreSQL with the migration service
+# Tutorial: Migrate offline from Amazon RDS for PostgreSQL to Azure Database for PostgreSQL with the migration service
 
-This article explores how to migrate your PostgreSQL database from AWS RDS to Azure Database for PostgreSQL offline.
+This article explores how to migrate your PostgreSQL database from Amazon RDS for PostgreSQL to Azure Database for PostgreSQL offline.
 
 The migration service in Azure Database for PostgreSQL is a fully managed service integrated into the Azure portal and Azure CLI. It's designed to simplify your migration journey to Azure Database for PostgreSQL server.
 
@@ -54,7 +54,7 @@ The migration service comes with a simple, wizard-based experience on the Azure 
 
     :::image type="content" source="media/tutorial-migration-service-aws-offline/offline-portal-select-migration-pane.png" alt-text="Screenshot of the migration selection in the Azure portal." lightbox="media/tutorial-migration-service-aws-offline/offline-portal-select-migration-pane.png":::
 
-1. Select the **Create** button to migrate from AWS RDS to a flexible server.
+1. Select the **Create** button to migrate from Amazon RDS for PostgreSQL to a flexible server.
 
     > [!NOTE]  
     > The first time you use the migration service, an empty grid appears with a prompt to begin your first migration.
@@ -71,9 +71,9 @@ The user needs to provide multiple details related to the migration, such as the
 
 - **Migration name** is the unique identifier for each migration to this Flexible Server target. This field accepts only alphanumeric characters and doesn't accept any special characters except a hyphen (-). The name can't start with a hyphen and should be unique for a target server. No two migrations to the same Flexible Server target can have the same name.
 
-- **Source Server Type** - Depending on your PostgreSQL source, you can select AWS RDS for PostgreSQL.
+- **Source Server Type** - Depending on your PostgreSQL source, you can select Amazon RDS for PostgreSQL.
 
-- **Migration Option** - Allows you to perform validations before triggering a migration. You can pick any of the following options
+- **Migration Option** - Allows you to perform validations before triggering a migration. You can pick any of the following options:
     - **Validate** - Checks your server and database readiness for migration to the target.
     - **Migrate** - Skips validations and starts migrations.
     - **Validate and Migrate** — Performs validation before triggering a migration. If there are no validation failures, the migration is triggered.
@@ -86,7 +86,7 @@ To learn more about the premigration validation, visit [premigration](concepts-p
 
 Select the **Next: Connect to source** button.
 
-:::image type="content" source="media/tutorial-migration-service-aws-offline/01-portal-offline-setup-aws.png" alt-text="Screenshot of the Setup Migration page to get started.":::
+:::image type="content" source="media/tutorial-migration-service-aws-offline/01-portal-offline-setup-aws.png" alt-text="Screenshot of the Setup Migration page to get started." lightbox="media/tutorial-migration-service-aws-offline/01-portal-offline-setup-aws.png":::
 
 #### Select Runtime Server
 
@@ -101,15 +101,10 @@ For more information about the Runtime Server, visit the [Migration Runtime Serv
 The **Connect to Source** tab prompts you to give details related to the source selected in the **Setup Tab**, which is the source of the databases.
 
 - **Server Name** - Provide the Hostname or the IP address of the source PostgreSQL instance
-
 - **Port** - Port number of the Source server
-
 - **Server admin login name** - Username of the source PostgreSQL server
-
 - **Password** - Password of the source PostgreSQL server
-
 - **SSL Mode** - Supported values are preferred and required. When the SSL at the source PostgreSQL server is OFF, use the SSLMODE=prefer. If the SSL at the source server is ON, use the SSLMODE=require. SSL values can be determined in postgresql.conf file.
-
 - **Test Connection**—Performs the connectivity test between the target and source. Once the connection is successful, users can proceed to the next step; they need to identify the networking issues between the target and source and verify the username/password for the source. Establishing a test connection takes a few minutes.
 
 After the successful test connection, select the **Next: Select Migration target** button.
@@ -121,9 +116,8 @@ After the successful test connection, select the **Next: Select Migration target
 The **select migration target** tab displays metadata for the Flexible Server target, like subscription name, resource group, server name, location, and PostgreSQL version.
 
 - **Admin username** - Admin username of the target PostgreSQL server
-
 - **Password** - Password of the target PostgreSQL server
-
+- **Custom FQDN/IP (Optional)**: The custom FQDN/IP field is optional and can be used when the target is behind a custom DNS server or has custom DNS namespaces, making it accessible only via specific FQDNs or IP addresses. For example, this could include entries like `flexibleserver.example.com`, `198.1.0.2`, or a PostgreSQL FQDN such as `flexibleserver.postgres.database.azure.com`, if the custom DNS server contains the DNS zone `postgres.database.azure.com` or forwards queries for this zone to `168.63.129.16`, where the FQDN is resolved in the Azure public or private DNS zone.
 - **Test Connection** - Performs the connectivity test between target and source. Once the connection is successful, users can proceed with the next step. Otherwise, we need to identify the networking issues between the target and the source and verify the target's username/password. Test connection takes a few minutes to establish a connection between the target and source
 
 After the successful test connection, select the **Next: Select Database(s) for Migration**
@@ -203,7 +197,7 @@ Some possible migration states:
 | --- | --- |
 | **Failed** | Validation has failed. |
 | **Succeeded** | Validation is successful. |
-| **Warning** | Validation is in warning. | 
+| **Warning** | Validation is in warning. |
 
 ### Cancel the migration
 
@@ -213,7 +207,7 @@ You can cancel any ongoing validations or migrations. The workflow must be in th
 
 #### [CLI](#tab/cli)
 
-This article explores using the Azure CLI to migrate your PostgreSQL database from AWS RDS to Azure Database for PostgreSQL. The Azure CLI provides a powerful and flexible command-line interface that allows you to perform various tasks, including database migration. Following the steps outlined in this article, you can seamlessly transfer your database to Azure and take advantage of its powerful features and scalability.
+This article explores using the Azure CLI to migrate your PostgreSQL database from Amazon RDS for PostgreSQL to Azure Database for PostgreSQL. The Azure CLI provides a powerful and flexible command-line interface that allows you to perform various tasks, including database migration. Following the steps outlined in this article, you can seamlessly transfer your database to Azure and take advantage of its powerful features and scalability.
 
 To learn more about Azure CLI with the migration service, visit [How to set up Azure CLI for the migration service](how-to-setup-azure-cli-commands-postgresql.md).
 
@@ -238,7 +232,7 @@ To begin the migration, you need to create a JSON file with the migration detail
                 "SourceServerPassword": "<<Source Password>>",
                 "TargetServerPassword": "<<Target Password>>"
             },
-			"targetServerUserName": "<<Target username>>"
+            "targetServerUserName": "<<Target username>>"
         },
         "DBsToMigrate": "<<comma separated list of databases in a array like - ["ticketdb","timedb","inventorydb"]>>",
         "OverwriteDBsInTarget": "true",
@@ -293,7 +287,7 @@ After migration, you can perform the following tasks:
 
 ## Related content
 
-- [Migrate online from AWS RDS PostgreSQL](tutorial-migration-service-aws-online.md)
+- [Migrate online from Amazon RDS for PostgreSQL](tutorial-migration-service-aws-online.md)
 - [Migration service](concepts-migration-service-postgresql.md)
 - [Migrate from on-premises and Azure VMs](tutorial-migration-service-iaas.md)
 - [Known Issues and limitations](concepts-known-issues-migration-service.md)

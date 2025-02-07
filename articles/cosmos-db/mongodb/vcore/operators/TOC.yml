@@ -1,0 +1,28 @@
+- name: Index
+  href: index.yml
+- name: Aggregation
+  href: aggregation/toc.yml
+- name: Array expression
+  href: array-expression/toc.yml
+- name: Array query
+  href: array-query/toc.yml
+- name: Array update
+  href: array-update/toc.yml
+- name: Bitwise query
+  href: bitwise-query/toc.yml
+- name: Bitwise update
+  href: bitwise-update/toc.yml
+- name: Comparison query
+  href: comparison-query/toc.yml
+- name: Data expression
+  href: data-expression/TOC.yml
+- name: Evaluation query
+  href: evaluation-query/toc.yml
+- name: Geospatial
+  href: geospatial/toc.yml
+- name: Logical query
+  href: logical-query/toc.yml
+- name: Object expression
+  href: object-expression/TOC.yml 
+- name: Projection
+  href: projection/toc.yml

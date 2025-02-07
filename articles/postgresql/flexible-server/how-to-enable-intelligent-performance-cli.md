@@ -27,17 +27,17 @@ To learn more about intelligent tuning, see the [overview](concepts-intelligent-
 - Install or upgrade the Azure CLI to the latest version. See [Install the Azure CLI](/cli/azure/install-azure-cli).
 - Sign in to your Azure account by using the [az login](/cli/azure/reference-index#az-login) command. Note the `id` property, which refers to the subscription ID for your Azure account.
 
-    ```azurecli
+    ```azurecli-interactive
     az login
     ````
 
-- If you have multiple subscriptions, choose the appropriate subscription in which you want to create the server by using the ```az account set``` command:
+- If you have multiple subscriptions, choose the appropriate subscription in which you want to create the server by using the `az account set` command:
 
     ```azurecli-interactive
     az account set --subscription <subscription id>
     ```
 
-- If you haven't already created an Azure Database for PostgreSQL flexible server instance, create one by using the ```az postgres flexible-server create``` command:
+- If you haven't already created an Azure Database for PostgreSQL flexible server instance, create one by using the `az postgres flexible-server create` command:
 
     ```azurecli-interactive
     az postgres flexible-server create --resource-group myresourcegroup --name myservername
@@ -119,6 +119,6 @@ When you're choosing values from the `intelligent_tuning.metric_targets` server 
 
   Specifying only a new value would overwrite the current settings. When you're adding a new tuning target, always ensure that you include the existing tuning targets in your command.
 
-## Next steps
+## Related content
 
-- [Perform intelligent tuning in Azure Database for PostgreSQL - Flexible Server](concepts-intelligent-tuning.md)
+- [Perform intelligent tuning in Azure Database for PostgreSQL - Flexible Server](concepts-intelligent-tuning.md).

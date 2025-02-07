@@ -64,11 +64,11 @@ You can delete your server if you no longer need it.
 
 
   > [!div class="mx-imgBorder"]
-  > ![Delete the Azure Database for PostgreSQL flexible server instance](./media/how-to-manage-server-portal/delete-server.png)  
+  > ![Delete the Azure Database for PostgreSQL flexible server instance](media/how-to-manage-server-portal/delete-server.png)  
 
 3. Select **Delete**.
 
-## Next steps
+## Related content
 
-- [Understand backup and restore concepts](concepts-backup-restore.md)
-- [Tune and monitor the server](concepts-monitoring.md)
+- [Backup and restore in Azure Database for PostgreSQL - Flexible Server](concepts-backup-restore.md).
+- [Monitor metrics in Azure Database for PostgreSQL - Flexible Server](concepts-monitoring.md).

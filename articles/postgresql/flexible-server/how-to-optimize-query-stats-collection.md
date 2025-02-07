@@ -33,7 +33,7 @@ To set **pg_stat_statements.track** = `TOP`
 
 Using the [Query Store](concepts-query-store.md) feature in Azure Database for PostgreSQL flexible server offers a different way to monitor query execution statistics. To prevent performance overhead, it is recommended to utilize only one mechanism, either the pg_stat_statements extension or the Query Store.
 
-## Next steps
+## Related content
 
-- [Query Store usage scenarios](concepts-query-store-scenarios.md) 
-- [Query Store best practices](concepts-query-store-best-practices.md) 
+- [Query Store usage scenarios](concepts-query-store-scenarios.md).
+- [Query Store best practices](concepts-query-store-best-practices.md).

@@ -1,14 +1,15 @@
 ---
-title: Recommendation system with Azure OpenAI
+title: Recommendation System With Azure OpenAI
 description: Recommendation System with Azure Database for PostgreSQL - Flexible Server and Azure OpenAI.
 author: mulander
 ms.author: adamwolk
 ms.reviewer: maghan
-ms.date: 04/27/2024
+ms.date: 11/19/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: tutorial
-ms.collection: ce-skilling-ai-copilot
+ms.collection:
+  - ce-skilling-ai-copilot
 ms.custom:
   - ignite-2023
 ---
@@ -17,9 +18,9 @@ ms.custom:
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
-This hands-on tutorial shows you how to build a recommender application using Azure Database for PostgreSQL flexible server and Azure OpenAI Service. Recommendations have applications in different domains – service providers frequently tend to provide recommendations for products and services they offer based on prior history and contextual information collected from the customer and environment. 
+This hands-on tutorial shows you how to build a recommender application using Azure Database for PostgreSQL flexible server and Azure OpenAI Service. Recommendations have applications in different domains – service providers frequently tend to provide recommendations for products and services they offer based on prior history and contextual information collected from the customer and environment.
 
-There are different ways to model recommendation systems. This article explores the simplest form – recommendation based one product corresponding to, say, a prior purchase. This tutorial uses the recipe dataset used in the [Semantic Search](./generative-ai-semantic-search.md) article and the recommendation is for recipes based on a recipe a customer liked or searched for before.
+There are different ways to model recommendation systems. This article explores the simplest form – recommendation based one product corresponding to, say, a prior purchase. This tutorial uses the recipe dataset used in the [Semantic Search](generative-ai-semantic-search.md) article and the recommendation is for recipes based on a recipe a customer liked or searched for before.
 
 ## Prerequisites
 
@@ -29,15 +30,15 @@ There are different ways to model recommendation systems. This article explores 
 
 [Create and deploy an Azure OpenAI Service resource and a model](/azure/ai-services/openai/how-to/create-resource), deploy the embeddings model [text-embedding-ada-002](/azure/ai-services/openai/concepts/models#embeddings-models). Copy the deployment name as it is needed to create embeddings.
 
-## Enable the `azure_ai` and `pgvector` extensions
+## Enable the azure_ai and pgvector extensions
 
-Before you can enable `azure_ai` and `pgvector` on your Azure Database for PostgreSQL flexible server instance, you need to add them to your allowlist as described in [how to use PostgreSQL extensions](./concepts-extensions.md#how-to-use-postgresql-extensions) and check if correctly added by running `SHOW azure.extensions;`.
+Before you can enable `azure_ai` and `pgvector` on your Azure Database for PostgreSQL flexible server instance, you need to add them to your allowlist as described in [how to use PostgreSQL extensions](../extensions/how-to-allow-extensions.md) and check if correctly added by running `SHOW azure.extensions;`.
 
 Then you can install the extension, by connecting to your target database and running the [CREATE EXTENSION](https://www.postgresql.org/docs/current/static/sql-createextension.html) command. You need to repeat the command separately for every database you want the extension to be available in.
 
 ```sql
 CREATE EXTENSION azure_ai;
-CREATE EXTENSION pgvector;
+CREATE EXTENSION vector;
 ```
 
 ## Configure OpenAI endpoint and key
@@ -45,14 +46,14 @@ CREATE EXTENSION pgvector;
 In the Azure AI services under **Resource Management** > **Keys and Endpoints** you can find the endpoint and the keys for your Azure AI resource. Use the endpoint and one of the keys to enable `azure_ai` extension to invoke the model deployment.
 
 ```sql
-select azure_ai.set_setting('azure_openai.endpoint','https://<endpoint>.openai.azure.com'); 
-select azure_ai.set_setting('azure_openai.subscription_key', '<API Key>'); 
+select azure_ai.set_setting('azure_openai.endpoint','https://<endpoint>.openai.azure.com');
+select azure_ai.set_setting('azure_openai.subscription_key', '<API Key>');
 ```
 
 ## Download & Import the Data
 
 1. Download the data from [Kaggle](https://www.kaggle.com/datasets/thedevastator/better-recipes-for-a-better-life).
-1. Connect to your server and create a `test` database, and in it create a table in which you will import the data.
+1. Connect to your server and create a `test` database, and in it create a table in which you'll import the data.
 1. Import the data.
 1. Add an embedding column to the table.
 1. Generate the embeddings.
@@ -61,23 +62,23 @@ select azure_ai.set_setting('azure_openai.subscription_key', '<API Key>');
 ### Create the table
 
 ```sql
-CREATE TABLE public.recipes( 
-    rid integer NOT NULL, 
-    recipe_name text, 
-    prep_time text, 
-    cook_time text, 
-    total_time text, 
-    servings integer, 
-    yield text, 
-    ingredients text, 
-    directions text, 
-    rating real, 
-    url text, 
-    cuisine_path text, 
-    nutrition text, 
-    timing text, 
+CREATE TABLE public.recipes(
+    rid integer NOT NULL,
+    recipe_name text,
+    prep_time text,
+    cook_time text,
+    total_time text,
+    servings integer,
+    yield text,
+    ingredients text,
+    directions text,
+    rating real,
+    url text,
+    cuisine_path text,
+    nutrition text,
+    timing text,
     img_src text,
-    PRIMARY KEY (rid) 
+    PRIMARY KEY (rid)
 );
 ```
 
@@ -97,14 +98,14 @@ export PGCLIENTENCODING=utf-8
 
 Import the data into the table created; note that this dataset contains a header row:
 
-```shell
+```bash
 psql -d <database> -h <host> -U <user> -c "\copy recipes FROM <local recipe data file> DELIMITER ',' CSV HEADER"
 ```
 
 ### Add a column to store the embeddings
 
 ```sql
-ALTER TABLE recipes ADD COLUMN embedding vector(1536); 
+ALTER TABLE recipes ADD COLUMN embedding vector(1536);
 ```
 
 ### Generate embeddings
@@ -128,45 +129,44 @@ FROM
     ro
 WHERE
     r.rid = ro.rid;
-
 ```
 
 Repeat the command, until there are no more rows to process.
 
-> [!TIP]
+> [!TIP]  
 > Play around with the `LIMIT`. With a high value, the statement might fail halfway through due to throttling imposed by Azure OpenAI. If it fails, wait for at least one minute and execute the command again.
 
 Create a search function in your database for convenience:
 
 ```sql
 create function
-    recommend_recipe(sampleRecipeId int, numResults int) 
+    recommend_recipe(sampleRecipeId int, numResults int)
 returns table(
             out_recipeName text,
             out_nutrition text,
             out_similarityScore real)
-as $$  
+as $$
 declare
-    queryEmbedding vector(1536); 
-    sampleRecipeText text; 
-begin 
-    sampleRecipeText := (select 
+    queryEmbedding vector(1536);
+    sampleRecipeText text;
+begin
+    sampleRecipeText := (select
                             recipe_name||' '||cuisine_path||' '||ingredients||' '||nutrition||' '||directions
                         from
-                            recipes where rid = sampleRecipeId); 
+                            recipes where rid = sampleRecipeId);
 
     queryEmbedding := (azure_openai.create_embeddings('text-embedding-ada-002',sampleRecipeText));
 
-    return query  
+    return query
     select
         distinct r.recipe_name,
         r.nutrition,
-        (r.embedding <=> queryEmbedding)::real as score  
+        (r.embedding <=> queryEmbedding)::real as score
     from
-        recipes r  
-    order by score asc limit numResults; -- cosine distance  
+        recipes r
+    order by score asc limit numResults; -- cosine distance
 end $$
-language plpgsql; 
+language plpgsql;
 ```
 
 Now just invoke the function to search for the recommendation:
@@ -177,8 +177,7 @@ select out_recipename, out_similarityscore from recommend_recipe(1, 20); -- sear
 
 And explore the results:
 
-
-```
+```output
             out_recipename             | out_similarityscore
 ---------------------------------------+---------------------
  Apple Pie by Grandma Ople             |                   0
@@ -204,15 +203,13 @@ And explore the results:
 (20 rows)
 ```
 
-## Next steps
+## Related content
 
-You learned how to perform semantic search with Azure Database for PostgreSQL flexible server and Azure OpenAI.
-
-> [!div class="nextstepaction"]
-> [Generate vector embeddings with Azure OpenAI](./generative-ai-azure-openai.md)
-
-> [!div class="nextstepaction"]
-> [Integrate Azure Database for PostgreSQL - Flexible Server with Azure Cognitive Services](./generative-ai-azure-cognitive.md)
-
-> [!div class="nextstepaction"]
-> [Learn more about vector similarity search using `pgvector`](./how-to-use-pgvector.md)
+- [Integrate Azure Database for PostgreSQL - Flexible Server with Azure Cognitive Services](generative-ai-azure-cognitive.md).
+- [Generate vector embeddings in Azure Database for PostgreSQL - Flexible Server with locally deployed LLM (Preview)](generative-ai-azure-local-ai.md).
+- [Integrate Azure Database for PostgreSQL with Azure Machine Learning Services](generative-ai-azure-machine-learning.md).
+- [Generate vector embeddings with Azure OpenAI in Azure Database for PostgreSQL - Flexible Server](generative-ai-azure-openai.md).
+- [Azure AI extension in Azure Database for PostgreSQL - Flexible Server](generative-ai-azure-overview.md).
+- [Generative AI with Azure Database for PostgreSQL - Flexible Server](generative-ai-overview.md).
+- [Semantic Search with Azure Database for PostgreSQL - Flexible Server and Azure OpenAI](generative-ai-semantic-search.md).
+- [Enable and use pgvector in Azure Database for PostgreSQL - Flexible Server](how-to-use-pgvector.md).
