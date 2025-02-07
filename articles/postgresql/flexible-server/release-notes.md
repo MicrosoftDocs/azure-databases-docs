@@ -23,7 +23,7 @@ This article highlights the latest updates and enhancements for Azure Database f
 ## Release: January 2025
 
 - Public preview of [Elastic Clusters](./concepts-elastic-clusters.md) for Azure Database for PostgreSQL flexible server.
-- Support for [pg_signal_autovacuum_worker](how-to-autovacuum-tuning.md#Troubleshooting-guides) role in PostgreSQL versions 15 and higher for Azure Database for PostgreSQL flexible server. 
+- Support for [pg_signal_autovacuum_worker](how-to-autovacuum-tuning.md#troubleshooting-guides) role in PostgreSQL versions 15 and higher for Azure Database for PostgreSQL flexible server. 
 
 ## Release: December 2024
 
