@@ -1,10 +1,10 @@
 ---
-title: Extension considerations specific to an Azure Database for PostgreSQL flexible server
+title: Extension Considerations Specific to an Azure Database for PostgreSQL Flexible Server
 description: Learn about the extension considerations specific to an Azure Database for PostgreSQL flexible server.
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 02/04/2025
+ms.date: 02/07/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: concept-article
@@ -18,13 +18,13 @@ This article describes some special considerations that you must be aware of, wh
 
 Refer to the following articles, to learn how to:
 
- - [Allow extensions](how-to-allow-extensions.md) in Azure Database for PostgreSQL Flexible Server.
- - [Load libraries](how-to-load-libraries.md) of extensions that deploy binary libraries. These libraries require allocating and accessing shared memory, and need to be loaded when the server starts.
- - [Create extensions](how-to-create-extensions.md) in some database, so that the SQL objects packaged in that extension are deployed in that database, and can be accessed in its context.
- - [Drop extensions](how-to-drop-extensions.md) from some database, so that the SQL objects packaged in that extension are removed from that database.
- - [Update extensions](how-to-update-extensions.md), to update, to its newest version, all the SQL artifacts deployed by an extension that is already installed.
- - [View installed extensions](how-to-view-installed-extensions.md) and their corresponding versions.
- - Learn what are the [possible errors](errors-extensions.md) you can receive when managing extensions in an Azure Database for PostgreSQL flexible server, and what could be the cause of each of them.
+- [Allow extensions](how-to-allow-extensions.md) in Azure Database for PostgreSQL Flexible Server.
+- [Load libraries](how-to-load-libraries.md) of extensions that deploy binary libraries. These libraries require allocating and accessing shared memory, and need to be loaded when the server starts.
+- [Create extensions](how-to-create-extensions.md) in some database, so that the SQL objects packaged in that extension are deployed in that database, and can be accessed in its context.
+- [Drop extensions](how-to-drop-extensions.md) from some database, so that the SQL objects packaged in that extension are removed from that database.
+- [Update extensions](how-to-update-extensions.md), to update, to its newest version, all the SQL artifacts deployed by an extension that is already installed.
+- [View installed extensions](how-to-view-installed-extensions.md) and their corresponding versions.
+- Learn what are the [possible errors](errors-extensions.md) you can receive when managing extensions in an Azure Database for PostgreSQL flexible server, and what could be the cause of each of them.
 
 ## Extensions
 
@@ -270,6 +270,6 @@ The extensions `anon`, `Apache AGE`, `dblink`, `orafce`, `pgaudit`, `postgres_fd
 
 ## Related content
 
-- [Allow extensions](how-to-allow-extensions.md).
-- [Special considerations with extensions](concepts-extensions-considerations.md).
-- [List of extensions by name](concepts-extensions-versions.md).
+- [Allow extensions](how-to-allow-extensions.md)
+- [Special considerations with extensions](concepts-extensions-considerations.md)
+- [List of extensions by name](concepts-extensions-versions.md)
