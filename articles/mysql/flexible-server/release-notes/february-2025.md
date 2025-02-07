@@ -12,7 +12,7 @@ ms.topic: conceptual
 
 # Azure Database For MySQL Flexible Server February 2025 Version Release Notes
 
-We're excited to announce the February 2025 version of Azure Database for MySQL Flexible Server. Starting February 6, 2025, all new servers will automatically be onboarded to this latest version. Existing servers are upgraded during their next scheduled maintenance. If you prefer to upgrade your servers earlier, you can enroll in our Virtual Canary Program by following this [link](https://aka.ms/mysql/virtual-canary).
+We're excited to announce the February 2025 version of Azure Database for MySQL Flexible Server. Starting February 10, 2025, all new servers will automatically be onboarded to this latest version. Existing servers are upgraded during their next scheduled maintenance. If you prefer to upgrade your servers earlier, you can enroll in our Virtual Canary Program by following this [link](https://aka.ms/mysql/virtual-canary).
 
 This new version introduces a range of new features and enhancements, resolves known issues, and includes essential security patches to ensure optimal performance and security.
 
