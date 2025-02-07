@@ -5,8 +5,8 @@ description: Learn about partitioning, logical, physical partitions in Azure Cos
 author: markjbrown
 ms.author: mjbrown
 ms.service: azure-cosmos-db
-ms.topic: conceptual
-ms.date: 02/27/2023
+ms.topic: concept-article
+ms.date: 09/26/2024
 ms.custom: cosmos-db-video
 ---
 
@@ -18,9 +18,9 @@ Azure Cosmos DB uses partitioning to scale individual containers in a database t
 
 For example, a container holds items. Each item has a unique value for the `UserID` property. If `UserID` serves as the partition key for the items in the container and there are 1,000 unique `UserID` values, 1,000 logical partitions are created for the container.
 
-In addition to a partition key that determines the item's logical partition, each item in a container has an *item ID* (unique within a logical partition). Combining the partition key and the *item ID* creates the item's *index*, which uniquely identifies the item. [Choosing a partition key](#choose-partitionkey) is an important decision that affects your application's performance.
+In addition to a partition key that determines the item's logical partition, each item in a container has an *item ID* (unique within a logical partition). Combining the partition key and the *item ID* creates the item's *index*, which uniquely identifies the item. [Choosing a partition key](#choose-a-partition-key) is an important decision that affects your application's performance.
 
-> [!VIDEO https://www.microsoft.com/videoplayer/embed/RWXbMV]
+> [!VIDEO https://learn-video.azurefd.net/vod/player?id=3dfedc45-9a96-48c0-ab15-54ffc7fb7d32]
 
 This article explains the relationship between logical and physical partitions. It also discusses best practices for partitioning and gives an in-depth view at how horizontal scaling works in Azure Cosmos DB. It's not necessary to understand these internal details to select your partition key but we're covering them so you can have clarity on how Azure Cosmos DB works.
 
@@ -30,7 +30,7 @@ A logical partition consists of a set of items that have the same partition key.
 
 A logical partition also defines the scope of database transactions. You can update items within a logical partition by using a [transaction with snapshot isolation](database-transactions-optimistic-concurrency.md). When new items are added to a container, the system transparently creates new logical partitions. You don't have to worry about deleting a logical partition when the underlying data is deleted.
 
-There's no limit to the number of logical partitions in your container. Each logical partition can store up to 20 GB of data. Good partition key choices have a wide range of possible values. For example, in a container where all items contain a `foodGroup` property, the data within the `Beef Products` logical partition can grow up to 20 GB. [Selecting a partition key](#choose-partitionkey) with a wide range of possible values ensures that the container is able to scale.
+There's no limit to the number of logical partitions in your container. Each logical partition can store up to 20 GB of data. Good partition key choices have a wide range of possible values. For example, in a container where all items contain a `foodGroup` property, the data within the `Beef Products` logical partition can grow up to 20 GB. [Selecting a partition key](#choose-a-partition-key) with a wide range of possible values ensures that the container is able to scale.
 
 You can use Azure Monitor Alerts to [monitor if a logical partition's size is approaching 20 GB](how-to-alert-on-logical-partition-key-storage-size.md).
 
@@ -53,7 +53,7 @@ Throughput provisioned for a container is divided evenly among physical partitio
 
 For example, consider a container with the path `/foodGroup` specified as the partition key. The container could have any number of physical partitions, but in this example we assume it has three. A single physical partition could contain multiple partition keys. As an example, the largest physical partition could contain the top three most significant size logical partitions: `Beef Products`, `Vegetable and Vegetable Products`, and `Soups, Sauces, and Gravies`.
 
-If you assign a throughput of 18,000 request units per second (RU/s), then each of the three physical partitions can utilize 1/3 of the total provisioned throughput. Within the selected physical partition, the logical partition keys `Beef Products`, `Vegetable and Vegetable Products`, and `Soups, Sauces, and Gravies` can, collectively, utilize the physical partition's 6,000 provisioned RU/s. Because provisioned throughput is evenly divided across your container's physical partitions, it's important to choose a partition key that evenly distributes throughput consumption. For more information, see [choosing the right logical partition key](#choose-partitionkey).
+If you assign a throughput of 18,000 request units per second (RU/s), then each of the three physical partitions can utilize 1/3 of the total provisioned throughput. Within the selected physical partition, the logical partition keys `Beef Products`, `Vegetable and Vegetable Products`, and `Soups, Sauces, and Gravies` can, collectively, utilize the physical partition's 6,000 provisioned RU/s. Because provisioned throughput is evenly divided across your container's physical partitions, it's important to choose a partition key that evenly distributes throughput consumption. For more information, see [choosing the right logical partition key](#choose-a-partition-key).
 
 ## Managing logical partitions
 
@@ -73,7 +73,7 @@ The following image shows how logical partitions are mapped to physical partitio
 
 :::image type="content" source="./media/partitioning-overview/logical-partitions.png" alt-text="An image that demonstrates Azure Cosmos DB partitioning" border="false":::
 
-## <a id="choose-partitionkey"></a>Choose a partition key
+## Choose a partition key
 
 A partition key has two components: **partition key path** and the **partition key value**. For example, consider an item `{ "userId" : "Andrew", "worksFor": "Microsoft" }` if you choose "userId" as the partition key, the following are the two partition key components:
 
@@ -101,6 +101,16 @@ If you need [multi-item ACID transactions](database-transactions-optimistic-conc
 
 > [!NOTE]
 > If you only have one physical partition, the value of the partition key may not be relevant as all queries will target the same physical partition.
+
+## Types of partition keys
+
+
+| **Partitioning Strategy**         | **When to Use**                                                                                                                                                                           | **Pros**                                                                                                                                                                                           | **Cons**                                                                                                                                                                                                                   |
+|------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|**Regular Partition Key** (e.g., CustomerId, OrderId) | - Use when the partition key has high cardinality and aligns with query patterns (e.g., filtering by CustomerId).<br>- Suitable for workloads where queries mostly target a single customer’s data (e.g., retrieving all orders for a customer). | - Simple to manage.<br>- Efficient queries when the access pattern matches the partition key (e.g., querying all orders by CustomerId).<br>- Prevents cross-partition queries if access patterns are consistent. | - Risk of hot partitions if some values (e.g., a few high-traffic customers) generate significantly more data than others.<br>- May hit the 20 GB limit per logical partition if data volume for a specific key grows rapidly. |
+|**Synthetic Partition Key** (e.g., CustomerId + OrderDate) | - Use when no single field has both high cardinality and matches query patterns.<br>- Good for write-heavy workloads where data needs to be evenly distributed across physical partitions (e.g., many orders placed on the same date). | - Helps distribute data evenly across partitions, reducing hot partitions (e.g., distributing orders by both CustomerId and OrderDate).<br>- Spreads writes across multiple partitions, improving throughput. | - Queries that only filter by one field (e.g., CustomerId only) could result in cross-partition queries.<br>- Cross-partition queries can lead to higher RU consumption (2-3 RU/s additional charge for every physical partition that exists) and added latency.                                    |
+| **Hierarchical Partition Key (HPK)** (e.g., CustomerId/OrderId, StoreId/ProductId) | - Use when you need multi-level partitioning to support large-scale datasets.<br>- Ideal when queries filter on first and second levels of the hierarchy.            | - Helps avoid the 20 GB limit by creating multiple levels of partitioning.<br>- Efficient querying on both hierarchical levels (e.g., filtering first by CustomerID, then by OrderID).<br>- Minimizes cross-partition queries for queries targeting the top level (e.g., retrieving all data from a specific CustomerID). | - Requires careful planning to ensure the first-level key has high cardinality and is included in most queries.<br>- More complex to manage than a regular partition key.<br>- If queries don’t align with the hierarchy (e.g., filtering only by OrderID when CustomerID is the first level), query performance could suffer. |
+
 
 ## Partition keys for read-heavy containers
 
@@ -137,8 +147,8 @@ Some things to consider when selecting the *item ID* as the partition key includ
 * If you have a read-heavy container with many [physical partitions](partitioning-overview.md#physical-partitions), queries are more efficient if they have an equality filter with the *item ID*.
 * You can't run stored procedures or triggers that target multiple logical partitions.
 
-## Next steps
+## Related content
 
-* Learn about [provisioned throughput in Azure Cosmos DB](request-units.md).
-* Learn about [global distribution in Azure Cosmos DB](distribute-data-globally.md).
-* See the training module on how to [Model and partition your data in Azure Cosmos DB.](/training/modules/model-partition-data-azure-cosmos-db/)
+* [Provisioned throughput in Azure Cosmos DB](request-units.md).
+* [Global distribution in Azure Cosmos DB](distribute-data-globally.md).
+* [Training: model and partition your data in Azure Cosmos DB.](/training/modules/model-partition-data-azure-cosmos-db/)

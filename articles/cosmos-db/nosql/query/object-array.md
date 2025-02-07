@@ -68,7 +68,7 @@ FROM
 ```json
 [
   {
-    "id": "a0151c77-ffc3-4fa6-a495-7b53d936faa6",
+    "id": "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb",
     "categoryNames": [
       "swim",
       "gear"

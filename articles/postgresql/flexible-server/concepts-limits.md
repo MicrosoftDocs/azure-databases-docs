@@ -4,7 +4,7 @@ description: This article describes limits in Azure Database for PostgreSQL - Fl
 author: kabharati
 ms.author: kabharati
 ms.reviewer: kabharati, maghan
-ms.date: 05/01/2024
+ms.date: 09/26/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: conceptual
@@ -103,7 +103,7 @@ The following sections list considerations for what is and isn't supported in Az
 
 ### High availability
 
-- See [High availability (reliability) in Azure Database for PostgreSQL - Flexible Server](concepts-high-availability.md#high-availability---limitations).
+- See [High availability in Azure Database for PostgreSQL - Flexible Server](/azure/reliability/reliability-postgresql-flexible-server#high-availability-limitations).
 
 ### Availability zones
 
@@ -137,10 +137,12 @@ The following sections list considerations for what is and isn't supported in Az
 - The new server created during a restore doesn't have the firewall rules that existed on the original server. You need to create firewall rules separately for the new server.
 - Restore to a different subscription isn't supported. As a workaround, you can restore the server within the same subscription and then migrate the restored server to a different subscription.
 
+### Security
+
+- MD5 hashing is disabled from Postgres 14 and later versions and native Postgres passwords will be hashed using SCRAM-SHA-256 method only.
+
 ## Related content
 
-- Understand [what’s available for compute options](concepts-compute.md)
-- Understand [what’s available for Storage options](concepts-storage.md)
-- Learn about [Supported PostgreSQL database versions](concepts-supported-versions.md)
-- Review [how to back up and restore a server in Azure Database for PostgreSQL flexible server using the Azure portal](how-to-restore-server-portal.md)
-
+- [Compute options in Azure Database for PostgreSQL - Flexible Server](concepts-compute.md).
+- [Storage options in Azure Database for PostgreSQL - Flexible Server](concepts-storage.md).
+- [Supported versions of PostgreSQL in Azure Database for PostgreSQL - Flexible Server](concepts-supported-versions.md).

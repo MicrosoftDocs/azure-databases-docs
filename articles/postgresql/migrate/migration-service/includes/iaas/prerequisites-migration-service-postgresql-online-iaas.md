@@ -1,15 +1,15 @@
 ---
-title: "Prerequisites using the migration service from an Azure VM or an on-premises PostgreSQL server (online)"
+title: "Prerequisites Using the Migration Service From an Azure VM or an On-Premises PostgreSQL Server (Online)"
 description: Providing the online prerequisites for the migration service in Azure Database for PostgreSQL.
 author: apduvuri
 ms.author: adityaduvuri
 ms.reviewer: maghan
-ms.date: 06/19/2024
+ms.date: 01/24/2025
 ms.service: azure-database-postgresql
 ms.topic: include
 ---
 
-Before starting the migration with the Azure Database for PostgreSQL migration service, it is important to fulfill the following prerequisites, specifically designed for online migration scenarios.
+Before starting the migration with the Azure Database for PostgreSQL migration service, it's important to fulfill the following prerequisites, specifically designed for online migration scenarios.
 
 - [Verify the source version](#verify-the-source-version)
 - [Install test_decoding - Source Setup](#install-test_decoding---source-setup)
@@ -36,7 +36,8 @@ If the source PostgreSQL version is less than 9.5, upgrade it to 9.5 or higher b
 
 - Before migrating, Azure Database for PostgreSQL – Flexible server must be created.
 - SKU provisioned for Azure Database for PostgreSQL – Flexible server should match with the source.
-- To create a new Azure Database for PostgreSQL, visit [Create an Azure Database for PostgreSQL](../../../../flexible-server/quickstart-create-server-portal.md)
+- To create a new Azure Database for PostgreSQL, visit [Create an instance of Azure Database for PostgreSQL - Flexible Server](../../../../flexible-server/quickstart-create-server.md)
+- When migrating across PostgreSQL versions (major or minor), ensure compatibility between your database and application by reviewing the [release notes](https://www.postgresql.org/docs/17/release.html) for potential breaking changes.
 
 ### Enable CDC as a source
 
@@ -59,7 +60,7 @@ For information about network setup, visit [Network guide for migration service]
 
 pg_hba.conf Configuration: To facilitate connectivity between the source and target PostgreSQL instances, it's essential to verify and potentially modify the pg_hba.conf file. This file includes client authentication and must be configured to allow the target PostgreSQL to connect to the source. Changes to the pg_hba.conf file typically require a restart of the source PostgreSQL instance to take effect.
 
-The pg_hba.conf file is located in the data directory of the PostgreSQL installation. This file should be checked and configured if the source database is an on-premises PostgreSQL server or a PostgreSQL server hosted on an Azure VM. 
+The pg_hba.conf file is located in the data directory of the PostgreSQL installation. This file should be checked and configured if the source database is an on-premises PostgreSQL server or a PostgreSQL server hosted on an Azure VM.
 
 ### Enable extensions
 
@@ -73,4 +74,3 @@ The pg_hba.conf file is located in the data directory of the PostgreSQL installa
 
 - The users and different roles must be migrated manually to the Azure Database for PostgreSQL – Flexible server. For migrating users and roles, you can use `pg_dumpall --globals-only -U <<username> -f <<filename>>.sql`.
 - Azure Database for PostgreSQL – The flexible server doesn't support any superuser; users having roles of superuser need to be removed before migration.
-

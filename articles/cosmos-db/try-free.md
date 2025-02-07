@@ -8,16 +8,16 @@ ms.author: merae
 ms.service: azure-cosmos-db
 ms.custom: references_regions
 ms.topic: overview
-ms.date: 07/23/2024
+ms.date: 09/19/2024
 ---
 
 # Try Azure Cosmos DB free
 
-[!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table, PostgreSQL](includes/appliesto-nosql-mongodb-cassandra-gremlin-table-postgresql.md)]
+[!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
 [Try Azure Cosmos DB](https://aka.ms/trycosmosdb) for free before you commit with an Azure Cosmos DB sandbox account. There's no credit card required to get started. Your sandbox account is free for 30 days.  Your data is deleted at the expiration date.   
 
-You can also upgrade your active trial sandbox account to a paid Azure subscription  at any time during the 30-day trial period.  You can only have one Try Azure Cosmos DB sandbox account at a time.  If you're using the API for NoSQL or PostgreSQL, after you upgrade to a paid Azure subscription and create a new Azure Cosmos DB account you can migrate the data from your Try Azure Cosmos DB sandbox account to your upgraded Azure subscription and Azure Cosmos DB account before the trial ends.
+You can also upgrade your active trial sandbox account to a paid Azure subscription  at any time during the 30-day trial period.  You can only have one Try Azure Cosmos DB sandbox account at a time.  If you're using the API for NoSQL, after you upgrade to a paid Azure subscription and create a new Azure Cosmos DB account you can migrate the data from your Try Azure Cosmos DB sandbox account to your upgraded Azure subscription and Azure Cosmos DB account before the trial ends.
 
 This article walks you through how to create your Try Azure Cosmos DB sandbox account, limits, and upgrading your account. It will also explain how to migrate your data from your Azure Cosmos DB sandbox to your own account using the API for NoSQL.
 
@@ -35,13 +35,14 @@ The following table lists the limits for the [Try Azure Cosmos DB](https://aka.m
 
 | Resource | Limit |
 | --- | --- |
-| Duration of the trial | 30 days¹²  |
+| Duration of the trial | 30 days¹² |
 | Maximum containers per subscription | 1 |
 | Maximum throughput per container | 5,000 |
 | Maximum throughput per shared-throughput database | 20,000 |
 | Maximum total storage per account | 10 GB |
 
 ¹ A new Try Azure Cosmos DB sandbox account can be requested after expiration.
+
 ² After expiration, the information stored in your account is deleted. You can upgrade your account prior to expiration and migrate the information stored to an enterprise subscription.
 
 > [!NOTE]
@@ -65,24 +66,6 @@ The following table lists the limits for the [Try Azure Cosmos DB](https://aka.m
 > [!NOTE]
 > The Try Azure Cosmos DB sandbox account supports global distribution in only the  **East US**, **North Europe**, **Southeast Asia**, and **North Central US** regions. By default, the Try Azure Cosmos DB sandbox account is created in East US.  Azure support tickets can't be created for Try Azure Cosmos DB sandbox accounts. If the account exceeds the maximum resource limits, it's automatically deleted.  Don’t use personal or sensitive data in your sandbox database during the trial period.
 
-### [PostgreSQL](#tab/postgresql)
-
-The following table lists the limits for the [Try Azure Cosmos DB](https://aka.ms/trycosmosdb) free trial sandbox.
-
-| Resource | Limit |
-| --- | --- |
-| Duration of the trial | 30 days¹² |
-| Type of account | Single node |
-| vCores | 2 |
-| Memory (GiB) | 8 |
-| Maximum storage size (GiB) | 128 |
-
-¹ A new Try Azure Cosmos DB sandbox account can be requested after expiration. 
-² After expiration, the information stored in your account is deleted. You can upgrade your account prior to expiration and migrate the information stored to an enterprise subscription.
-
-> [!NOTE]
-> The Try Azure Cosmos DB sandbox account supports global distribution in only the  **East US**, **North Europe**, **Southeast Asia**, and **North Central US** regions. By default, the Try Azure Cosmos DB sandbox account is created in East US.  Azure support tickets can't be created for Try Azure Cosmos DB sandbox accounts. If the account exceeds the maximum resource limits, it's automatically deleted.  Don’t use personal or sensitive data in your sandbox database during the trial period.
-
 ---
 
 ## Create your Try Azure Cosmos DB account
@@ -92,14 +75,13 @@ From the [Try Azure Cosmos DB home page](https://aka.ms/trycosmosdb), select an 
 > [!NOTE]
 > Not sure which API will best meet your needs? To learn more about the APIs for Azure Cosmos DB, see [Choose an API in Azure Cosmos DB](choose-api.md).
 
-:::image type="content" source="media/try-free/try-cosmos-db-page.png" lightbox="media/try-free/try-cosmos-db-page.png" alt-text="Screenshot of the API options including NoSQL, MongoDB, and Cassandra on the Try Azure Cosmos DB page.":::
+:::image type="content" source="media/try-free/try-cosmos-db-page.png" lightbox="media/try-free/try-cosmos-db-page.png" alt-text="Screenshot of the API options including NoSQL and MongoDB on the Try Azure Cosmos DB page.":::
 
 ## Launch a Quick Start
 
 Launch the Quickstart in Data Explorer in Azure portal to start using Azure Cosmos DB or get started with our documentation.
 
-* [API for NoSQL](nosql/quickstart-portal.md#create-container-database)
-* [API for PostgreSQL](postgresql/quickstart-create-portal.md)
+* [API for NoSQL](nosql/quickstart-portal.md)
 * [API for MongoDB](mongodb/quickstart-python.md#object-model)
 * [API for Apache Cassandra](cassandra/adoption.md)
 * [API for Apache Gremlin](gremlin/quickstart-console.md)
@@ -111,7 +93,7 @@ You can also get started with one of the learning resources in the Data Explorer
 
 ## Upgrade your account
 
-Your Try Azure Cosmos DB sandbox account is free for 30 days. After expiration, a new sandbox account can be created. You can upgrade your active Try Azure Cosmos DB account at any time during the 30 day trial period.  .  If you're using the API for NoSQL or PostgreSQL, after you upgrade to a paid Azure subscription and create a new Azure Cosmos DB account you can migrate the data from your Try Azure Cosmos DB sandbox account to your upgraded Azure subscription and Azure Cosmos DB account before the trial ends.  Here are the steps to start an upgrade.
+Your Try Azure Cosmos DB sandbox account is free for 30 days. After expiration, a new sandbox account can be created. You can upgrade your active Try Azure Cosmos DB account at any time during the 30 day trial period.  If you're using the API for NoSQL, after you upgrade to a paid Azure subscription and create a new Azure Cosmos DB account you can migrate the data from your Try Azure Cosmos DB sandbox account to your upgraded Azure subscription and Azure Cosmos DB account before the trial ends. Here are the steps to start an upgrade.
 
 ### Start upgrade
 
@@ -123,18 +105,10 @@ Your Try Azure Cosmos DB sandbox account is free for 30 days. After expiration, 
 
 ### Create a new account
 
-#### [NoSQL / MongoDB / Cassandra / Gremlin / Table](#tab/nosql+mongodb+cassandra+gremlin+table)
-
 > [!NOTE]
 > While this example uses API for NoSQL, the steps are similar for the APIs for MongoDB, Cassandra, Gremlin, or Table.
 
 [!INCLUDE[Create NoSQL account](includes/create-nosql-account.md)]
-
-#### [PostgreSQL](#tab/postgresql)
-
-[!INCLUDE[Create PostgreSQL account](includes/create-postgresql-account.md)]
-
----
 
 ### Move data to new account
 
@@ -155,20 +129,6 @@ If you desire, you can migrate your existing data from the free sandbox account 
     :::image type="content" source="media/try-free/migrate-data.png" lightbox="media/try-free/migrate-data.png" alt-text="Screenshot of the migrate data options in the portal.":::
 
 1. Select **Next** to move the data to your account. Provide your email address to be notified by email once the migration has been completed.
-
-#### [PostgreSQL](#tab/postgresql)
-
-1. Navigate back to the **Upgrade** page from the [Start upgrade](#start-upgrade) section of this guide. Select **Next** to move on to the third step and move your data.
-
-    :::image type="content" source="media/try-free/account-creation-options.png" lightbox="media/try-free/account-creation-options.png" alt-text="Screenshot of the sign-in/sign-up experience to upgrade your current account.":::
-
-1. Locate your **PostgreSQL connection URL** of the Azure Cosmos DB account you created for your data. This information can be found within the **Connection String** page of your new account.
-
-1. Back in the **Upgrade** page from the [Start upgrade](#start-upgrade) section of this guide, insert the connection string of the new Azure Cosmos DB account in the **Connection string** field.
-
-1. Select the region where you account was created.
-
-1. Select **Finish** to move the data to your account.
 
 #### [MongoDB / Cassandra / Gremlin / Table](#tab/mongodb+cassandra+gremlin+table)
 
@@ -200,8 +160,7 @@ After you create a Try Azure Cosmos DB sandbox account, you can start building a
 * [Create a notebook](nosql/tutorial-create-notebook-vscode.md) and analyze your data.
 * Learn more about [understanding your Azure Cosmos DB bill](understand-your-bill.md)
 * Get started with Azure Cosmos DB with one of our quickstarts:
-  * [Get started with Azure Cosmos DB for NoSQL](nosql/quickstart-portal.md#create-container-database)
-  * [Get started with Azure Cosmos DB for PostgreSQL](postgresql/quickstart-create-portal.md)
+  * [Get started with Azure Cosmos DB for NoSQL](nosql/quickstart-portal.md)
   * [Get started with Azure Cosmos DB for MongoDB](mongodb/quickstart-python.md#object-model)
   * [Get started with Azure Cosmos DB for Cassandra](cassandra/adoption.md)
   * [Get started with Azure Cosmos DB for Gremlin](gremlin/quickstart-console.md)

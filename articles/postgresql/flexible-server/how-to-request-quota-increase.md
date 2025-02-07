@@ -55,10 +55,7 @@ To request a quota increase, you must create a new support request with your wor
 
 The Azure Database for PostgreSQL flexible server support team processes all quota requests in 24-48 hours.
 
+## Related content
 
-
-
-## Next steps
-
-- Learn how to [create an Azure Database for PostgreSQL flexible server instance in the portal](how-to-manage-server-portal.md).
-- Learn about [service limits](concepts-limits.md).
+- [Manage Azure Database for PostgreSQL - Flexible Server using the Azure portal](how-to-manage-server-portal.md).
+- [Limits in Azure Database for PostgreSQL - Flexible Server](concepts-limits.md).

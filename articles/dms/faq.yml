@@ -29,7 +29,7 @@ sections:
       - question: |
           What source/target pairs does Azure Database Migration Service currently support?
         answer: |
-          The service currently supports various source/target pairs, or migration scenarios. For a complete listing of the status of each available migration scenario, see the article [Status of migration scenarios supported by the Azure Database Migration Service](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/dms/resource-scenario-status.md).
+          The service currently supports various source/target pairs, or migration scenarios. For a complete listing of the status of each available migration scenario, see the article [Status of migration scenarios supported by the Azure Database Migration Service](/azure/dms/resource-scenario-status).
           
       - question: |
           What versions of SQL Server does Azure Database Migration Service support as a source?
@@ -119,10 +119,6 @@ sections:
           For BSON dumps, DMS uses the data in `bsondump` format within the same folder within a blob container. DMS only looks for metadata files using the format `collection.metadata.json`.
 
           For JSON dumps, DMS will read the files in the blob container folders named after the containing databases. Within each database folder, DMS only uses data files placed in the `data` subfolder. DMS only looks at files placed in the `metadata` subfolder and named using the format `collection.json` for metadata.
-
-          #### Oracle to Azure SQL Database
-
-          In this scenario, the AWR report or a Windows `perfmon` file is consumed to provide optional (but highly recommended) workload sizing recommendations. The user performing the migration uses the Database Schema Conversion Toolkit to perform a schema migration to prepare the target database.
 
           #### Oracle to Azure Database for PostgreSQL
 

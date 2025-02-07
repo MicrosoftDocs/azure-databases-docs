@@ -298,7 +298,7 @@ Now that you've created a Microsoft Entra application and service principal, cre
     ::: zone-end
 
     > [!TIP]
-    > In this quickstart example, credentials are assigned to variables in clear text. For security, we recommend that you use secrets. For more information on how to configure secrets, see [Add secrets to your Spark configuration](/azure/databricks/security/secrets/secrets#read-a-secret).
+    > In this quickstart example, credentials are assigned to variables in clear text. For security, we recommend that you use secrets. For more information on how to configure secrets, see [Add secrets to your Spark configuration](/azure/databricks/security/secrets#read-a-secret).
 
 ## Related content
 

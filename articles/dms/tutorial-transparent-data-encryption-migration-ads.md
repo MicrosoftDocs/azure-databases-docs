@@ -5,10 +5,10 @@ description: Learn how to migrate on-premises SQL Server TDE-enabled databases (
 author: abhims14
 ms.author: abhishekum
 ms.reviewer: randolphwest
-ms.date: 10/10/2023
+ms.date: 09/18/2024
 ms.service: azure-database-migration-service
 ms.topic: tutorial
-ms.custom:
+ms.collection:
   - sql-migration-content
 ---
 # Tutorial: Migrate TDE-enabled databases (preview) to Azure SQL in Azure Data Studio
@@ -23,14 +23,12 @@ You can use the [Azure SQL Migration extension for Azure Data Studio](/azure-dat
 
 The TDE-enabled database migration process automates manual tasks such as backing up the database certificate keys (DEK), copying the certificate files from the on-premises SQL Server to the Azure SQL target, and then reconfiguring TDE for the target database again.
 
-  > [!IMPORTANT]  
-  > 1) Currently, only Azure SQL Managed Instance targets are supported.
->   2) And Encrypted Backups are not supported.
+> [!IMPORTANT]  
+> Currently, only Azure SQL Managed Instance targets are supported. Encrypted Backups aren't supported.
 
 In this tutorial, you learn how to migrate the example `AdventureWorksTDE` encrypted database from an on-premises instance of SQL Server to an Azure SQL managed instance.
 
 > [!div class="checklist"]
->  
 > - Open the Migrate to Azure SQL wizard in Azure Data Studio
 > - Run an assessment of your source SQL Server databases
 > - Configure your TDE certificates migration
@@ -48,6 +46,7 @@ Before you begin the tutorial:
 - Run Azure Data Studio as Administrator.
 
 - Have an Azure account that is assigned to one of the following built-in roles:
+
   - Contributor for the target managed instance (and Storage Account to upload your backups of the TDE certificate files from SMB network share).
   - Reader role for the Azure Resource Groups containing the target managed instance or the Azure storage account.
   - Owner or Contributor role for the Azure subscription (required if creating a new DMS service).
@@ -71,11 +70,11 @@ To open the Migrate to Azure SQL wizard:
 
 1. In the server menu under **General**, select **Azure SQL Migration**.
 
-   :::image type="content" source="media/tutorial-transparent-data-encryption-migration-ads/launch-migrate-to-azure-sql-wizard-1.png" alt-text="Screenshot that shows the Azure Data Studio server menu.":::
+   :::image type="content" source="media/tutorial-transparent-data-encryption-migration-ads/launch-migrate-to-azure-sql-wizard-1.png" alt-text="Screenshot that shows the Azure Data Studio server menu." lightbox="media/tutorial-transparent-data-encryption-migration-ads/launch-migrate-to-azure-sql-wizard-1.png":::
 
 1. In the Azure SQL Migration dashboard, select **Migrate to Azure SQL** to open the migration wizard.
 
-   :::image type="content" source="media/tutorial-transparent-data-encryption-migration-ads/launch-migrate-to-azure-sql-wizard-2.png" alt-text="Screenshot that shows the Migrate to Azure SQL wizard.":::
+   :::image type="content" source="media/tutorial-transparent-data-encryption-migration-ads/launch-migrate-to-azure-sql-wizard-2.png" alt-text="Screenshot that shows the Migrate to Azure SQL wizard." lightbox="media/tutorial-transparent-data-encryption-migration-ads/launch-migrate-to-azure-sql-wizard-2.png":::
 
 1. On the first page of the wizard, start a new session or resume a previously saved session.
 
@@ -107,10 +106,9 @@ To open the Migrate to Azure SQL wizard:
 
    :::image type="content" source="media/tutorial-transparent-data-encryption-migration-ads/tde-migration-configuration.png" alt-text="Screenshot that shows the TDE migration configuration." lightbox="media/tutorial-transparent-data-encryption-migration-ads/tde-migration-configuration.png":::
 
-   > [!IMPORTANT]  
-   > The **Info box** section describes the required permissions to export the DEK certificates.
-   >  
-   > You must ensure the SQL Server service account has write access to network share path you will use to backup the DEK certificates. Also, the current user should have administrator privileges on the computer where this network path exists.
+   The **Info box** section describes the required permissions to export the DEK certificates.
+
+   You must ensure the SQL Server service account has write access to network share path you use to backup the DEK certificates. Also, the current user should have administrator privileges on the computer where this network path exists.
 
 1. Enter the **network path**.
 
@@ -181,10 +179,10 @@ USE master;
 GO
 
 SELECT db_name(database_id),
-    key_algorithm,
-    encryption_state_desc,
-    encryption_scan_state_desc,
-    percent_complete
+       key_algorithm,
+       encryption_state_desc,
+       encryption_scan_state_desc,
+       percent_complete
 FROM sys.dm_database_encryption_keys
 WHERE database_id = DB_ID('Your database name');
 GO
@@ -192,7 +190,7 @@ GO
 
 The query returns the information about the database, the encryption status and the pending percent complete. In this case, it's zero because the TDE certificate has been already completed.
 
-:::image type="content" source="media/tutorial-transparent-data-encryption-migration-ads/tde-query.png" alt-text="Screenshot that shows the results returned by the TDE query provided in this section.":::
+:::image type="content" source="media/tutorial-transparent-data-encryption-migration-ads/tde-query.png" alt-text="Screenshot that shows the results returned by the TDE query provided in this section." lightbox="media/tutorial-transparent-data-encryption-migration-ads/tde-query.png":::
 
 For more information about encryption with SQL Server, see [Transparent data encryption (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption).
 
@@ -208,7 +206,7 @@ The following table describes the current status of the TDE-enabled database mig
 
 ## Related content
 
-- [Migrate databases with Azure SQL Migration extension for Azure Data Studio](migration-using-azure-data-studio.md)
+- [Migrate databases by using the Azure SQL Migration extension for Azure Data Studio](migration-using-azure-data-studio.md)
 - [Tutorial: Migrate SQL Server to Azure SQL Database - Offline](/data-migration/sql-server/database/database-migration-service)
 - [Tutorial: Migrate SQL Server to Azure SQL Managed Instance - Online](/data-migration/sql-server/managed-instance/database-migration-service)
 - [Tutorial: Migrate SQL Server to SQL Server On Azure Virtual Machines - Online](/data-migration/sql-server/virtual-machines/database-migration-service)

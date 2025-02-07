@@ -1,10 +1,10 @@
 ---
-title: "Migrate MySQL on-premises to Azure Database for MySQL: Performance Baselines"
+title: "Migrate MySQL On-Premises to Azure Database for MySQL: Performance Baselines"
 description: "Understanding the existing MySQL workload is one of the best investments that can be made to ensure a successful migration."
 author: SudheeshGH
 ms.author: sunaray
 ms.reviewer: maghan
-ms.date: 05/21/2024
+ms.date: 11/27/2024
 ms.service: azure-database-mysql
 ms.subservice: migration-guide
 ms.topic: how-to
@@ -12,11 +12,11 @@ ms.topic: how-to
 
 # Migrate MySQL on-premises to Azure Database for MySQL: Performance Baselines
 
-[!INCLUDE [applies-to-mysql-single-flexible-server](../../includes/applies-to-mysql-single-flexible-server.md)]
+Establishing performance baselines is vital in migrating MySQL databases from on-premises environments to Azure Database for MySQL. This article delves into the importance of performance baselines, providing a detailed guide on measuring and analyzing your current database performance. By understanding your existing performance metrics, you can set realistic expectations and identify areas for improvement during the migration process. This guide equips you with the knowledge to create accurate performance baselines, ensuring your migrated databases meet or exceed their current performance levels in the Azure environment. Whether you aim to optimize query performance, enhance scalability, or ensure consistent user experience, this article provides the insights needed to achieve your performance goals.
 
 ## Prerequisites
 
-[Test plans.](06-test-plans.md)
+[Migrate MySQL on-premises to Azure Database for MySQL: Test Plans](06-test-plans.md)
 
 ## Overview
 
@@ -28,7 +28,7 @@ Creating query performance baselines is vital to a migration project. The perfor
 
 Below are tools used to gather server metrics and database workload information. Use the captured metrics to determine the appropriate Azure Database for the MySQL tier and the associated scaling options.
 
-  - [MySQL Enterprise Monitor:](https://www.mysql.com/products/enterprise/monitor.html) This nonfree, enterprise edition tool can provide a sorted list of the most expensive queries, server metrics, file I/O, and topology information
+  - [MySQL Enterprise Telemetry:](https://www.mysql.com/products/enterprise/telemetry/) This nonfree, enterprise edition tool can provide a sorted list of the most expensive queries, server metrics, file I/O, and topology information
 
   - [Percona Monitoring and Management (PMM)](https://www.percona.com/software/database-tools/percona-monitoring-and-management) : a best-of-breed open-source database monitoring solution. It helps to reduce complexity, optimize performance, and improve the security of business-critical database environments, no matter the deployed location.
 
@@ -96,4 +96,4 @@ When reviewing the MySQL database, I found that the MySQL 5.5 server runs with t
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Data Migration](08-data-migration.md)
+> [Migrate MySQL on-premises to Azure Database for MySQL: Data Migration](08-data-migration.md)

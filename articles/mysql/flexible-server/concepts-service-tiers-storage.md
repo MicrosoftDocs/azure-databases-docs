@@ -1,10 +1,10 @@
 ---
-title: Service tiers
+title: Service Tiers
 description: This article describes the compute and storage options in Azure Database for MySQL - Flexible Server.
 author: code-sidd
 ms.author: sisawant
 ms.reviewer: maghan
-ms.date: 06/18/2024
+ms.date: 11/27/2024
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: concept-article
@@ -17,7 +17,7 @@ ms.custom:
 
 [!INCLUDE [applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
-You can create an Azure Database for MySQL flexible server instance in one of three service tiers: Burstable, General Purpose, and Business Critical. The underlying VM SKU differentiates the service tiers used B-series, D-series, and E-series. The compute tier and size choice determines the memory and vCores available on the server. The exact storage technology is used across all service tiers. All resources are provisioned at the Azure Database for MySQL flexible server instance level. A server can have one or many databases.
+You can create an Azure Database for MySQL Flexible Server instance in one of three service tiers: Burstable, General Purpose, and Business Critical. The underlying VM SKU differentiates the service tiers used B-series, D-series, and E-series. The compute tier and size choice determines the memory and vCores available on the server. The exact storage technology is used across all service tiers. All resources are provisioned at the Azure Database for MySQL Flexible Server instance level. A server can have one or many databases.
 
 | Resource / Tier | **Burstable** | **General Purpose** | **Business Critical** |
 | :--- | :--- | :--- | :--- |
@@ -29,7 +29,7 @@ You can create an Azure Database for MySQL flexible server instance in one of th
 
 \** Except 64.80, and 96 vCores, which have 504 GiB, 504 GiB, and 672 GiB of memory, respectively.
 
-\* Ev5 compute performs best among other VM series regarding QPS and latency. Learn more about the performance and region availability of Ev5 compute from [here](https://techcommunity.microsoft.com/t5/azure-database-for-mysql-blog/boost-azure-mysql-business-critical-flexible-server-performance/ba-p/3603698).
+\* Ev5 compute performs best among other VM series regarding QPS and latency. Learn more about the performance and region availability of Ev5 compute from [here](https://techcommunity.microsoft.com/blog/adformysql/boost-azure-mysql-business-critical-flexible-server-performance-by-30-with-the-e/3603698).
 
 ## Flexible Server service tiers
 
@@ -53,7 +53,7 @@ The detailed specifications of the available server types are as follows for the
 
 | Compute size | vCores | Physical Memory Size (GiB) | Total Memory Size (GiB) | Max Supported IOPS | Max Connections | Temp Storage (SSD) GiB |
 | --- | --- | --- | --- | --- | --- | --- |
-|Standard_B1ms | 1 | 2 | 2.2 | 640 | 341 | 0 |
+| Standard_B1ms | 1 | 2 | 2.2 | 640 | 341 | 0 |
 | Standard_B2s | 2 | 4 | 4.4 | 1280 | 683 | 0 |
 | Standard_B2ms | 2 | 8 | 8.8 | 1700 | 1365 | 0 |
 | Standard_B4ms | 4 | 16 | 17.6 | 2400 | 2731 | 0 |
@@ -90,44 +90,39 @@ The detailed specifications of the available server types are as follows for the
 | Compute size | vCores | Physical Memory Size (GiB) | Total Memory Size (GiB) | Max Supported IOPS | Max Connections | Temp Storage (SSD) GiB |
 | --- | --- | --- | --- | --- | --- | --- |
 | Standard_E2ds_v4 | 2 | 16 | 22 | 5000 | 2731 | 37 |
-| Standard_E2ads_v5 | 2 | 16 | 22 | 5000 | 2731 | 37 |
+| Standard_E2ads_v5, Standard_E2ds_v5 | 2 | 16 | 22 | 5000 | 2731 | 37 |
 | Standard_E4ds_v4 | 4 | 32 | 44 | 10000 | 5461 | 75 |
-| Standard_E4ads_v5 | 4 | 32 | 44 | 10000 | 5461 | 75 |
+| Standard_E4ads_v5, Standard_E4ds_v5 | 4 | 32 | 44 | 10000 | 5461 | 75 |
 | Standard_E8ds_v4 | 8 | 64 | 88 | 18000 | 10923 | 151 |
-| Standard_E8ads_v5 | 8 | 64 | 88 | 18000 | 10923 | 151 |
+| Standard_E8ads_v5, Standard_E8ds_v5 | 8 | 64 | 88 | 18000 | 10923 | 151 |
 | Standard_E16ds_v4 | 16 | 128 | 176 | 28000 | 21845 | 302 |
-| Standard_E16ads_v5 | 16 | 128 | 176 | 28000 | 21845 | 302 |
+| Standard_E16ads_v5, Standard_E16ds_v5 | 16 | 128 | 176 | 28000 | 21845 | 302 |
 | Standard_E20ds_v4 | 20 | 160 | 220 | 28000 | 27306 | 377 |
-| Standard_E20ads_v5 | 20 | 160 | 220 | 28000 | 27306 | 377 |
+| Standard_E20ads_v5, Standard_E20ds_v5 | 20 | 160 | 220 | 28000 | 27306 | 377 |
 | Standard_E32ds_v4 | 32 | 256 | 352 | 38000 | 43691 | 604 |
-| Standard_E32ads_v5 | 32 | 256 | 352 | 38000 | 43691 | 604 |
+| Standard_E32ads_v5, Standard_E32ds_v5 | 32 | 256 | 352 | 38000 | 43691 | 604 |
 | Standard_E48ds_v4 | 48 | 384 | 528 | 48000 | 65536 | 906 |
-| Standard_E48ads_v5 | 48 | 384 | 528 | 48000 | 65536 | 906 |
+| Standard_E48ads_v5, Standard_E48ds_v5 | 48 | 384 | 528 | 48000 | 65536 | 906 |
 | Standard_E64ds_v4 | 64 | 504 | 693 | 64000 | 86016 | 1224 |
 | Standard_E64ads_v5 | 64 | 504 | 693 | 64000 | 86016 | 1224 |
-| Standard_E80ds_v4 | 80 | 504 | 693 | 72000 | 86016 | 1224 |
-| Standard_E2ds_v5 | 2 | 16 | 22 | 5000 | 2731 | 37 |
-| Standard_E4ds_v5 | 4 | 32 | 44 | 10000 | 5461 | 75 |
-| Standard_E8ds_v5 | 8 | 64 | 88 | 18000 | 10923 | 151 |
-| Standard_E16ds_v5 | 16 | 128 | 176 | 28000 | 21845 | 302 |
-| Standard_E20ds_v5 | 20 | 160 | 220 | 28000 | 27306 | 377 |
-| Standard_E32ds_v5 | 32 | 256 | 352 | 38000 | 43691 | 604 |
-| Standard_E48ds_v5 | 48 | 384 | 528 | 48000 | 65536 | 906 |
 | Standard_E64ds_v5 | 64 | 512 | 704 | 64000 | 87383 | 1208 |
+| Standard_E80ids_v4 | 80 | 504 | 693 | 72000 | 86016 | 1224 |
 | Standard_E96ds_v5 | 96 | 672 | 924 | 80000 | 100000 | 2004 |
 
-## Memory management in Azure Database for MySQL flexible server
+**Default Zone-Resilience in Azure Database for MySQL – Flexible Server Business Critical Tier**: Starting mid-December 2024, all new servers provisioned in the Azure Database for MySQL – Flexible Server Business Critical tier will come with built-in zone-resilience—at no extra cost! This means your data and log files will automatically be stored on zone-redundant storage, ensuring rapid recovery from zonal outages. Even without High-Availability enabled, you'll benefit from seamless protection with zone-redundant backups. [Overview of business continuity with Azure Database for MySQL - Flexible Server](concepts-business-continuity.md).
 
-In MySQL, memory plays a vital role throughout various operations, including query processing and caching. Azure Database for MySQL flexible server optimizes memory allocation for the MySQL server process ([mysqld](https://dev.mysql.com/doc/refman/8.0/en/mysqld.html)), ensuring it receives sufficient memory resources for efficient query processing, caching, client connection management, and thread handling. [Learn more on how MySQL uses memory](https://dev.mysql.com/doc/refman/8.0/en/memory-use.html).
+## Memory management in Azure Database for MySQL Flexible Server
+
+In MySQL, memory plays a vital role throughout various operations, including query processing and caching. Azure Database for MySQL Flexible Server optimizes memory allocation for the MySQL server process ([mysqld](https://dev.mysql.com/doc/refman/8.0/en/mysqld.html)), ensuring it receives sufficient memory resources for efficient query processing, caching, client connection management, and thread handling. [Learn more on how MySQL uses memory](https://dev.mysql.com/doc/refman/8.0/en/memory-use.html).
 
 ### Physical Memory Size (GB)
 
-The Physical Memory Size (GB) in the table below represents the available random-access memory (RAM) in gigabytes (GB) on your Azure Database for MySQL flexible server.
+The Physical Memory Size (GB) in the table below represents the available random-access memory (RAM) in gigabytes (GB) on your Azure Database for MySQL Flexible Server.
 
 ### Total Memory Size (GB)
 
-Azure Database for MySQL flexible server provides a Total Memory Size (GB). This represents the total memory available to your server, which is a combination of physical memory and a set amount of temporary storage SSD component. This unified view is designed to streamline resource management, allowing you to focus only on the total memory available to your Azure MySQL Server (mysqld) process.
-Memory Percent (memory_percent) metric represents the percentage of memory occupied by the Azure MySQL server process (mysqld). This metric is calculated from the **Total Memory Size (GB)**. For example, when the Memory Percent metric displays a value of 60, it means that your Azure MySQL Server process is utilizing **60% of the Total memory size (GB)** available on your Azure Database for MySQL flexible server.
+Azure Database for MySQL Flexible Server provides a Total Memory Size (GB). This represents the total memory available to your server, which is a combination of physical memory and a set amount of temporary storage SSD component. This unified view is designed to streamline resource management, allowing you to focus only on the total memory available to your Azure MySQL Server (mysqld) process.
+Memory Percent (memory_percent) metric represents the percentage of memory occupied by the Azure MySQL server process (mysqld). This metric is calculated from the **Total Memory Size (GB)**. For example, when the Memory Percent metric displays a value of 60, it means that your Azure MySQL Server process is utilizing **60% of the Total memory size (GB)** available on your Azure Database for MySQL Flexible Server.
 
 ### MySQL Server (mysqld)
 
@@ -135,7 +130,7 @@ The Azure MySQL server process, [mysqld](https://dev.mysql.com/doc/refman/8.0/en
 
 ### InnoDB Storage Engine
 
-As MySQL's default storage engine, [InnoDB](https://dev.mysql.com/doc/refman/8.0/en/innodb-in-memory-structures.html) uses memory for caching frequently accessed data and managing internal structures like the innodb buffer pool and [log buffer](https://dev.mysql.com/doc/refman/8.0/en/innodb-redo-log-buffer.html). [InnoDB buffer pool](https://dev.mysql.com/doc/refman/8.0/en/innodb-buffer-pool.html) holds table data and indexes in memory to minimize disk I/O, enhancing performance. InnoDB Buffer Pool Size parameter is calculated based on the physical memory size (GB) available on the server. [Learn more on the sizes of the InnoDB Buffer Pool available](./concepts-server-parameters.md#innodb_buffer_pool_size) in Azure Database for MySQL flexible server.
+As MySQL's default storage engine, [InnoDB](https://dev.mysql.com/doc/refman/8.0/en/innodb-in-memory-structures.html) uses memory for caching frequently accessed data and managing internal structures like the innodb buffer pool and [log buffer](https://dev.mysql.com/doc/refman/8.0/en/innodb-redo-log-buffer.html). [InnoDB buffer pool](https://dev.mysql.com/doc/refman/8.0/en/innodb-buffer-pool.html) holds table data and indexes in memory to minimize disk I/O, enhancing performance. InnoDB Buffer Pool Size parameter is calculated based on the physical memory size (GB) available on the server. [Learn more on the sizes of the InnoDB Buffer Pool available](./concepts-server-parameters.md#innodb_buffer_pool_size) in Azure Database for MySQL Flexible Server.
 
 ### Threads
 
@@ -145,7 +140,7 @@ To get more details about the compute series available, refer to Azure VM docume
 
 ## Performance limitations of burstable series instances
 
-> [!NOTE]
+> [!NOTE]  
 > For [B-series burstable virtual machine sizes](/azure/virtual-machines/sizes-b-series-burstable), if the VM is started/stopped or restarted, the credits might be lost. For more information, see [B-series burstable virtual machine sizes](/azure/virtual-machines/sizes-b-series-burstable).
 
 The burstable compute tier is designed to provide a cost-effective solution for workloads that don't require continuous full CPU continuously. This tier is ideal for nonproduction workloads like development, staging, or testing environments.
@@ -174,7 +169,7 @@ For more information on [how to set up alerts on metrics, refer to this guide](h
 
 ## Storage
 
-The storage you provision is the storage capacity available to your flexible server. Storage is used for the database files, temporary files, transaction logs, and the MySQL server logs. For Burstable and General Purpose service tiers, the storage range spans from a minimum of 20 GiB to a maximum of 16 TiB. Conversely, storage support extends up to 32 TiB for Business Critical service tier. In all service tiers, storage is scaled in 1-GiB increments and can be scaled up after the server is created.
+The storage you provision is the storage capacity available to your Flexible Server. Storage is used for the database files, temporary files, transaction logs, and the MySQL server logs. For Burstable and General Purpose service tiers, the storage range spans from a minimum of 20 GiB to a maximum of 16 TiB. Conversely, storage support extends up to 32 TiB for Business Critical service tier. In all service tiers, storage is scaled in 1-GiB increments and can be scaled up after the server is created.
 
 > [!NOTE]  
 > Storage can only be scaled up, not down.
@@ -206,7 +201,7 @@ Remember that storage, once autoscaled up, can't be scaled down.
 
 ## IOPS
 
-Azure Database for MySQL flexible server supports pre-provisioned IOPS and autoscale IOPS. [Storage IOPS in Azure Database for MySQL - Flexible Server](concepts-storage-iops.md) The minimum IOPS is 360 across all compute sizes, and the maximum IOPS is determined by the selected compute size. To learn more about the maximum IOPS per compute size, refer to the [table](#service-tiers-size-and-server-types).
+Azure Database for MySQL Flexible Server supports pre-provisioned IOPS and autoscale IOPS. [Storage IOPS in Azure Database for MySQL - Flexible Server](concepts-storage-iops.md) The minimum IOPS is 360 across all compute sizes, and the maximum IOPS is determined by the selected compute size. To learn more about the maximum IOPS per compute size, refer to the [table](#service-tiers-size-and-server-types).
 
 > [!IMPORTANT]  
 > **Minimum IOPS are 360 across all compute sizes <br>
@@ -216,13 +211,15 @@ You can monitor your I/O consumption in the Azure portal (with Azure Monitor) us
 
 ## Pre-provisioned IOPS
 
-Azure Database for MySQL flexible server offers pre-provisioned IOPS, allowing you to allocate a specific number of IOPS to your Azure Database for MySQL flexible server instance. This setting ensures consistent and predictable performance for your workloads. With pre-provisioned IOPS, you can define a specific IOPS limit for your storage volume, guaranteeing the ability to handle some requests per second. This results in a reliable and assured level of performance. Pre-provisioned IOPS enables you to provision **additional IOPS** above the IOPS limit. Using this feature, you can increase or decrease the number of IOPS provisioned based on your workload requirements at any time.
+Azure Database for MySQL Flexible Server offers pre-provisioned IOPS, allowing you to allocate a specific number of IOPS to your Azure Database for MySQL Flexible Server instance. This setting ensures consistent and predictable performance for your workloads. With pre-provisioned IOPS, you can define a specific IOPS limit for your storage volume, guaranteeing the ability to handle some requests per second. This results in a reliable and assured level of performance. Pre-provisioned IOPS enables you to provision **additional IOPS** above the IOPS limit. Using this feature, you can increase or decrease the number of IOPS provisioned based on your workload requirements at any time.
 
 ## Autoscale IOPS
 
-The cornerstone of Azure Database for MySQL flexible server is its ability to achieve the best performance for tier 1 workloads. This can be improved by enabling the server to automatically scale its database servers' performance (IO) seamlessly depending on the workload needs. This opt-in feature enables users to scale IOPS on demand without having to pre-provision a certain amount of IO per second. With the Autoscale IOPS featured enabled, you can now enjoy worry-free IO management in Azure Database for MySQL flexible server because the server scales IOPs up or down automatically depending on workload needs. AutoScale IOPS automatically scales up to the ‘Max Supported IOPS’ for each service tier and compute size, as specified in the [service tiers documentation](#service-tiers-size-and-server-types). This ensures optimal performance without the need for manual scaling efforts
 
-With Autoscale IOPS, you pay only for the IO the server uses and no longer need to provision and pay for resources they aren't fully using, saving time and money. In addition, mission-critical Tier-1 applications can achieve consistent performance by making additional IO available to the workload anytime. Autoscale IOPS eliminates the administration required to provide the best performance at the least cost for Azure Database for MySQL flexible server customers.
+The cornerstone of Azure Database for MySQL Flexible Server is its ability to achieve the best performance for tier 1 workloads. This can be improved by enabling the server to automatically scale its database servers' performance (IO) seamlessly depending on the workload needs. This opt-in feature enables users to scale IOPS on demand without having to pre-provision a certain amount of IO per second. With the Autoscale IOPS featured enabled, you can now enjoy worry-free IO management in Azure Database for MySQL Flexible Server because the server scales IOPs up or down automatically depending on workload needs. AutoScale IOPS automatically scales up to the 'Max Supported IOPS' for each service tier and compute size, as specified in the [service tiers documentation](#service-tiers-size-and-server-types). This ensures optimal performance without the need for manual scaling efforts
+
+
+With Autoscale IOPS, you pay only for the IO the server uses and no longer need to provision and pay for resources they aren't fully using, saving time and money. In addition, mission-critical Tier-1 applications can achieve consistent performance by making additional IO available to the workload anytime. Autoscale IOPS eliminates the administration required to provide the best performance at the least cost for Azure Database for MySQL Flexible Server customers.
 
 **Dynamic Scaling**: Autoscale IOPS dynamically adjusts your database server's IOPS limit based on your workload's actual demand. This ensures optimal performance without manual intervention or configuration.
 
@@ -258,5 +255,5 @@ If you would like to optimize server cost, you can consider the following tips:
 
 ## Related content
 
-- [Create an Azure Database for MySQL flexible server instance in the portal](quickstart-create-server-portal.md)
+- [Create an Azure Database for MySQL Flexible Server instance in the portal](quickstart-create-server-portal.md)
 - [Service limitations](concepts-limitations.md)

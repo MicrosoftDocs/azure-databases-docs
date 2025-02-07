@@ -1,20 +1,17 @@
 ---
-title: Identity
-description: Learn about Managed Idenities in the Flexible Server deployment option for Azure Database for PostgreSQL - Flexible Server.
+title: Managed identities
+description: Learn about Managed identities in Azure Database for PostgreSQL - Flexible Server.
 author: kabharati
 ms.author: kabharati
 ms.reviewer: maghan
-ms.date: 07/09/2024
+ms.date: 01/12/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: conceptual
-ms.custom:
-  - mvc
-  - mode-other
-ms.devlang: python
+#customer intent: As a user, I want to learn about how can I use the different types of managed identities in an Azure Database for PostgreSQL flexible server.
 ---
 
-# Managed Identity in Azure Database for PostgreSQL - Flexible Server
+# Managed identities
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
@@ -24,97 +21,39 @@ While developers can securely store the secrets in Azure Key Vault, services nee
 
 Here are some of the benefits of using managed identities:
 
-- You don't need to manage credentials. Credentials aren’t even accessible to you.
+- You don't need to manage credentials. Credentials aren't even accessible to you.
 - You can use managed identities to authenticate to any resource that supports Microsoft Entra authentication including your own applications.
 - Managed identities can be used at no extra cost.
 
-## Managed identity types
+## Types of managed identities available in Azure
 
 There are two types of managed identities:
 
-- **System-assigned**. Some Azure resources, such as virtual machines, Azure Database for PostgreSQL Flexible Server allows you to enable a managed identity directly on the resource. When you enable a system-assigned managed identity: 
-    - A service principal of a special type is created in Microsoft Entra ID for the identity. The service principal is tied to the lifecycle of that Azure resource. When the Azure resource is deleted, Azure automatically deletes the service principal for you. 
+- **System assigned**: Some Azure resource types, such as Azure Database for PostgreSQL - Flexible Server, allow you to enable a managed identity directly on the resource. They're referred to as system assigned managed identities. When you enable a system assigned managed identity: 
+    - A service principal of a special type is created in Microsoft Entra ID for the identity. The service principal is tied to the lifecycle of that Azure resource. When the Azure resource is deleted, Azure automatically deletes the service principal for you.
     - By design, only that Azure resource can use this identity to request tokens from Microsoft Entra ID.
-    - You authorize the managed identity to have access to one or more services.
-    - The name of the system-assigned service principal is always the same as the name of the Azure resource it's created for. 
-    
+    - You can authorize the service principal associated to the managed identity to have access to one or more services.
+    - The name assigned to the service principal associated to the managed identity is always the same as the name of the Azure resource for which it's created.    
 
-- **User-assigned**. You may also create a managed identity as a standalone Azure resource. You can create a user-assigned managed identity and assign it to one or more Azure Resources. When you enable a user-assigned managed identity:
+- **User assigned**: Some Azure resource types also support the assignment of managed identities created by the user as independent resources. The lifecycle of these identities is independent from the lifecycle of the resources to which they're assigned. They can be assigned to multiple resources. When you enable a user assigned managed identity:
     - A service principal of a special type is created in Microsoft Entra ID for the identity. The service principal is managed separately from the resources that use it. 
-    - Multiple resources can utilize user-assigned identities.
+    - Multiple resources can utilize user assigned identities.
     - You authorize the managed identity to have access to one or more services.
 
+## Uses of managed identities in Azure Database for PostgreSQL - Flexible Server
 
+**System assigned managed identity** for an instance of Azure Database for PostgreSQL flexible server is used by:
 
-## How to enable System Assigned Managed Identity on your Flexible Server
+- [azure_storage extension](concepts-storage-extension.md), when configured to access a storage account using the `managed-identity` authentication type. For more information, see how to [configure the azure_storage extension to use authorization with Microsoft Entra ID](how-to-use-pg-azure-storage.md#to-use-authorization-with-microsoft-entra-id).
+- [Microsoft Fabric mirrored databases from Azure Database for PostgreSQL - Flexible Server (preview)](https://techcommunity.microsoft.com/blog/adforpostgresql/mirroring-azure-database-for-postgresql-flexible-server-in-microsoft-fabric---pr/4251876) uses the credentials of the system assigned managed identity to sign the requests that your instance of flexible server sends to the Azure DataLake service in Microsoft Fabric to mirror your designated databases.
 
-## Azure portal
+**User assigned managed identities** configured for an instance of Azure Database for PostgreSQL flexible server can be used for:
 
-Follow these steps to enable System Assigned Managed Identity on your Azure Database for PostgreSQL flexible server instance.
-
-1. In the [Azure portal](https://portal.azure.com/), select your existing Azure Database for PostgreSQL flexible server instance for which you want to enable system assigned managed identity.
-
-2. On the Azure Database for PostgreSQL flexible server page, select **Identity**
-
-3. In the **Identity** section, select **On** radio button.
-
-4. Select **Save** to apply the changes.
-
-![Screenshot showing system assigned managed identity.](./media/concepts-Identity/system-assigned-managed-identity.png)
-
-5. A notification confirms that system assigned managed identity is enabled.
-
-## ARM  template
-
-Here is the ARM template to enable system assigned managed identity. You can use the 2023-06-01-preview or the latest available API.
-
-```json
-{
-    "resources": [
-        {
-            "apiVersion": "2023-06-01-preview",
-            "identity": {
-                "type": "SystemAssigned"
-            },
-            "location": "Region name",
-            "name": "flexible server name",
-            "type": "Microsoft.DBforPostgreSQL/flexibleServers"
-        }
-    ]
-}
-  ```
-
-To disable system assigned managed identity change the type to **None**
- 
-```json
-{
-    "resources": [
-        {
-            "apiVersion": "2023-06-01-preview",
-            "identity": {
-                "type": "None"
-            },
-            "location": "Region Name",
-            "name": "flexible server name",
-            "type": "Microsoft.DBforPostgreSQL/flexibleServers"
-        }
-    ]
-}
- ```
-## How to verify the newly created System Assigned Managed Identity on your Flexible Server
-
-You can verify the managed identity created by going to **Enterprise Applications** 
-
-1. Choose  **Application Type == Managed Identity**
-
-2. Provide your flexible server name in **Search by application name or Identity** as shown in the screenshot.
-
-![Screenshot verifying system assigned managed identity.](./media/concepts-Identity/verify-managed-identity.png)
-
-
+- [Data encryption with customer managed keys](concepts-data-encryption.md).
 
 ## Related content
 
-- [Microsoft Entra authentication](../concepts-aad-authentication.md)
-- [Firewall rules for IP addresses](concepts-firewall-rules.md)
-- [Private access networking with Azure Database for PostgreSQL - Flexible Server](concepts-networking.md)
+- [Configure system or user assigned managed identities in Azure Database for PostgreSQL - Flexible Server](how-to-configure-managed-identities.md).
+- [Firewall rules in Azure Database for PostgreSQL - Flexible Server](concepts-firewall-rules.md).
+- [Public access and private endpoints in Azure Database for PostgreSQL - Flexible Server](concepts-networking-public.md).
+- [Virtual network integration in Azure Database for PostgreSQL - Flexible Server](concepts-networking-private.md).

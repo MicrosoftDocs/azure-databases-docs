@@ -31,9 +31,9 @@ To choose a pricing tier, use the following table as a starting point:
 
 | Pricing tier | Target workloads |
 | :--- | :--- |
-| Burstable | Workloads that don't need the full CPU continuously. |
-| General Purpose | Most business workloads that require balanced compute and memory with scalable I/O throughput. Examples include servers for hosting web and mobile apps and other enterprise applications. |
-| Memory Optimized | High-performance database workloads that require in-memory performance for faster transaction processing and higher concurrency. Examples include servers for processing real-time data and high-performance transactional or analytical apps. |
+| Burstable | Workloads that don't need the full CPU continuously. B-series VMs utilize a CPU credit model to track how much CPU is consumed. The virtual machine accumulates CPU credits when a workload is operating below the base CPU performance threshold and uses credits when running above the base CPU performance threshold until all of its credits are consumed. Upon consuming all the CPU credits, a B-series virtual machine is throttled back to its base CPU performance until it accumulates the credits to burst again. B series VMs are ideal for web servers, proof of concepts, small databases, and development build environments. Burstable SKU is usually not recommended for production use.
+| General Purpose | D-series VMs provide a solid balance between CPU capabilities and memory size with scalable I/O throughput which makes them suitable for most production workloads. Examples include servers for hosting web and mobile apps and other enterprise applications. |
+| Memory Optimized | E- Series VMs that are suitable for high-performance database workloads that require in-memory performance for faster transaction processing and higher concurrency. Examples include servers for processing real-time data and high-performance transactional or analytical apps. |
 
 After you create a server for the compute tier, you can change the number of vCores (up or down) and the storage size (up) in seconds. You also can independently adjust the backup retention period up or down. For more information, see the [Scaling resources in Azure Database for PostgreSQL flexible server](concepts-scaling-resources.md) page.
 
@@ -90,13 +90,9 @@ The detailed specifications of the available server types are as follows:
 > [!IMPORTANT]  
 > Minimum and maximum IOPS are also determined by the storage tier so please choose a storage tier and instance type that can scale as per your workload requirements.
 
-## Price
-
-For the most up-to-date pricing information, see the [Azure Database for PostgreSQL flexible server pricing](https://azure.microsoft.com/pricing/details/postgresql/flexible-server/) page. The [Azure portal](https://portal.azure.com/#create/Microsoft.PostgreSQLServer) shows the monthly cost on the **Pricing tier** tab, based on the options that you select.
-
-If you don't have an Azure subscription, you can use the Azure pricing calculator to get an estimated price. On the [Azure pricing calculator](https://azure.microsoft.com/pricing/calculator/) website, select **Add items**, expand the **Databases** category, and then select **Azure Database for PostgreSQL** to customize the options.
+[!INCLUDE [pricing](includes/compute-storage-pricing.md)]
 
 ## Related content
 
-- [Manage Azure Database for PostgreSQL - Flexible Server using the Azure portal](how-to-manage-server-portal.md)
+- [Manage Azure Database for PostgreSQL - Flexible Server](how-to-manage-server-portal.md)
 - [Limits in Azure Database for PostgreSQL - Flexible Server](concepts-limits.md)

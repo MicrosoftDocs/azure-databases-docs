@@ -1,10 +1,11 @@
 ---
 author: abhims14
 ms.author: abhishekum
-ms.date: 03/21/2022
+ms.reviewer: randolphwest
+ms.date: 09/18/2024
 ms.service: azure-database-migration-service
 ms.topic: include
-ms.custom:
+ms.collection:
   - sql-migration-content
 ---
 

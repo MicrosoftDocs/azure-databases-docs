@@ -118,13 +118,12 @@ performance is the reason why `checkpoint_completion_target` is a target metric 
 * Intelligent tuning doesn't adjust `ANALYZE` settings.
 * Autovacuum tuning is currently supported for the General Purpose and Memory Optimized server compute tiers that have four or more vCores. The Burstable server compute tier is not supported.
 
-## Next steps
+## Related content
 
-* [Configure intelligent tuning for Azure Database for PostgreSQL - Flexible Server by using the Azure portal](how-to-enable-intelligent-performance-portal.md)
-* [Configure intelligent tuning for Azure Database for PostgreSQL - Flexible Server by using the Azure CLI](how-to-enable-intelligent-performance-cli.md)
-* [Troubleshooting guides for Azure Database for PostgreSQL - Flexible Server](concepts-troubleshooting-guides.md)
-* [Autovacuum tuning in Azure Database for PostgreSQL - Flexible Server](how-to-autovacuum-tuning.md)
-* [Troubleshoot high IOPS utilization for Azure Database for PostgreSQL - Flexible Server](how-to-high-io-utilization.md)
-* [Best practices for uploading data in bulk in Azure Database for PostgreSQL - Flexible Server](how-to-bulk-load-data.md)
-* [Troubleshoot high CPU utilization in Azure Database for PostgreSQL - Flexible Server](how-to-high-cpu-utilization.md)
-* [Query Performance Insight for Azure Database for PostgreSQL - Flexible Server](concepts-query-performance-insight.md)
+- [Configure intelligent tuning for Azure Database for PostgreSQL - Flexible Server](how-to-enable-intelligent-performance-portal.md).
+- [Troubleshooting guides for Azure Database for PostgreSQL - Flexible Server](concepts-troubleshooting-guides.md).
+- [Autovacuum tuning in Azure Database for PostgreSQL - Flexible Server](how-to-autovacuum-tuning.md).
+- [Troubleshoot high IOPS utilization in Azure Database for PostgreSQL - Flexible Server](how-to-high-io-utilization.md).
+- [Best practices for uploading data in bulk in Azure Database for PostgreSQL - Flexible Server](how-to-bulk-load-data.md).
+- [Troubleshoot high CPU utilization in Azure Database for PostgreSQL - Flexible Server](how-to-high-cpu-utilization.md).
+- [Query Performance Insight in Azure Database for PostgreSQL - Flexible Server](concepts-query-performance-insight.md).

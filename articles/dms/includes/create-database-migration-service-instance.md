@@ -1,10 +1,10 @@
 ---
 author: rwestMSFT
 ms.author: randolphwest
-ms.date: 10/10/2023
+ms.date: 09/18/2024
 ms.service: azure-database-migration-service
 ms.topic: include
-ms.custom:
+ms.collection:
   - sql-migration-content
 ---
 ### Create a Database Migration Service instance
@@ -45,7 +45,7 @@ To create a new instance of Database Migration Service:
 
    1. In the **Authentication key** table, copy one of the authentication keys that are provided in the wizard and paste it in Microsoft Integration Runtime Configuration Manager.
 
-      :::image type="content" source="media/create-database-migration-service-instance/dms-portal-shir-authentication-key.png" alt-text="Screenshot that highlights the authentication key table in the wizard.":::
+      :::image type="content" source="media/create-database-migration-service-instance/dms-portal-shir-authentication-key.png" alt-text="Screenshot that highlights the authentication key table in the wizard." lightbox="media/create-database-migration-service-instance/dms-portal-shir-authentication-key.png":::
 
       If the authentication key is valid, a green check icon appears in Integration Runtime Configuration Manager. A green check indicates that you can continue to **Register**.
 
@@ -53,5 +53,5 @@ To create a new instance of Database Migration Service:
 
       :::image type="content" source="media/create-database-migration-service-instance/dms-portal-shir-status.png" alt-text="Screenshot that highlights SHIR status on Azure portal." lightbox="media/create-database-migration-service-instance/dms-portal-shir-status.png":::
 
-      > [!NOTE]
+      > [!NOTE]  
       > For more information about the self-hosted integration runtime, see [Create and configure a self-hosted integration runtime](../../data-factory/create-self-hosted-integration-runtime.md).

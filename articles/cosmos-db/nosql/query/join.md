@@ -28,23 +28,23 @@ Let's look at an example of a self-join within an item. Consider a container wit
 ```json
 [
   {
-    "id": "863e778d-21c9-4e2a-a984-d31f947c665c",
-    "categoryId": "e592b992-d453-42ee-a74e-0de2cc97db42",
+    "id": "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb",
+    "categoryId": "bbbbbbbb-1111-2222-3333-cccccccccccc",
     "name": "Teapo Surfboard (6'10\") Grape",
     "sku": "teapo-surfboard-72109",
     "tags": [
       {
-        "id": "556dc4f5-1dbd-41dc-9674-fda626e5d15c",
+        "id": "cccccccc-2222-3333-4444-dddddddddddd",
         "slug": "tail-shape-swallow",
         "name": "Tail Shape: Swallow"
       },
       {
-        "id": "ac097b9a-8a30-4fd1-8cb6-69d3388ee8a2",
+        "id": "dddddddd-3333-4444-5555-eeeeeeeeeeee",
         "slug": "length-inches-82",
         "name": "Length: 82 inches"
       },
       {
-        "id": "ce62b524-8e96-4999-b3e1-61ae7a672e2e",
+        "id": "eeeeeeee-4444-5555-6666-ffffffffffff",
         "slug": "color-group-purple",
         "name": "Color Group: Purple"
       }
@@ -86,17 +86,17 @@ This query returns a simple array with an item for each value in the tags array.
 ```json
 [
   {
-    "id": "863e778d-21c9-4e2a-a984-d31f947c665c",
+    "id": "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb",
     "sku": "teapo-surfboard-72109",
     "slug": "tail-shape-swallow"
   },
   {
-    "id": "863e778d-21c9-4e2a-a984-d31f947c665c",
+    "id": "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb",
     "sku": "teapo-surfboard-72109",
     "slug": "length-inches-82"
   },
   {
-    "id": "863e778d-21c9-4e2a-a984-d31f947c665c",
+    "id": "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb",
     "sku": "teapo-surfboard-72109",
     "slug": "color-group-purple"
   }
@@ -162,43 +162,43 @@ Let's move on to a sample where we need to find a value within an array that exi
 ```json
 [
   {
-    "id": "80d62f31-9892-48e5-9b9b-5714d551b8b3",
-    "categoryId": "19cd9b93-bdc5-4082-97fe-2c80c2fd77dd",
+    "id": "ffffffff-5555-6666-7777-aaaaaaaaaaaa",
+    "categoryId": "cccccccc-8888-9999-0000-dddddddddddd",
     "categoryName": "Sleeping Bags",
     "name": "Maresse Sleeping Bag (6') Ming",
     "sku": "maresse-sleeping-bag-65503",
     "tags": [
       {
-        "id": "f50f3ee1-e150-4821-922b-ebe6ad82f313",
+        "id": "b1b1b1b1-cccc-dddd-eeee-f2f2f2f2f2f2",
         "slug": "bag-shape-mummy",
         "name": "Bag Shape: Mummy"
       },
       {
-        "id": "8564fb66-63ea-464a-872a-7598433b9479",
+        "id": "bbbbbbbb-7777-8888-9999-cccccccccccc",
         "slug": "bag-insulation-down-fill",
         "name": "Bag Insulation: Down Fill"
       }
     ]
   },
   {
-    "id": "6e9f51c1-6b45-440f-af5a-2abc96cd083d",
-    "categoryId": "19cd9b93-bdc5-4082-97fe-2c80c2fd77dd",
+    "id": "c2c2c2c2-dddd-eeee-ffff-a3a3a3a3a3a3",
+    "categoryId": "cccccccc-8888-9999-0000-dddddddddddd",
     "categoryName": "Sleeping Bags",
     "name": "Vareno Sleeping Bag (6') Turmeric",
     "sku": "vareno-sleeping-bag-65508",
     "tags": [
       {
-        "id": "e02502ce-367e-4fb4-940e-93d994fa6062",
+        "id": "dddddddd-9999-0000-1111-eeeeeeeeeeee",
         "slug": "bag-insulation-synthetic-fill",
         "name": "Bag Insulation: Synthetic Fill"
       },
       {
-        "id": "c0844995-3db9-4dbb-8d9d-d2c2a6151b94",
+        "id": "a0a0a0a0-bbbb-cccc-dddd-e1e1e1e1e1e1",
         "slug": "color-group-yellow",
         "name": "Color Group: Yellow"
       },
       {
-        "id": "f50f3ee1-e150-4821-922b-ebe6ad82f313",
+        "id": "b1b1b1b1-cccc-dddd-eeee-f2f2f2f2f2f2",
         "slug": "bag-shape-mummy",
         "name": "Bag Shape: Mummy"
       }

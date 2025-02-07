@@ -32,7 +32,7 @@ az login
 
 Select your subscription by using the [az account set](/cli/azure/account) command. Make a note of the **id** value from the **az login** output to use as the value for the **subscription** argument in the following command. If you have multiple subscriptions, choose the subscription to which the resource should be billed. To identify all your subscriptions, use the [az account list](/cli/azure/account#az-account-list) command.
 
-```azurecli
+```azurecli-interactive
 az account set --subscription <subscription id>
 ```
 
@@ -57,7 +57,7 @@ Following are the details for the arguments in the preceding code:
 name | mydemoserver | Enter a unique name for your server. The server name can contain only lowercase letters, numbers, and the hyphen (-) character. It must contain 3 to 63 characters.
 resource-group | myresourcegroup | Provide the name of the Azure resource group.
 sku-name|Standard_D4ds_v3|Enter the name of the compute tier and size. The value follows the convention *Standard_{VM size}* in shorthand. See the [pricing tiers](../concepts-pricing-tiers.md) for more information.
-storage-size | 6144 | Enter the storage capacity of the server in megabytes. The minimum is 5120, increasing in increments of 1024.
+storage-size | 32768 | Enter the storage capacity of the server in megabytes. The minimum storage size 32768, 
 
 > [!IMPORTANT]
 > You cannot scale down storage. 
@@ -138,7 +138,6 @@ To delete the Azure Database for PostgreSQL flexible server instance, run the [a
 az postgres flexible-server delete --resource-group myresourcegroup --name mydemoserver
 ```
 
-## Next steps
-
-- [Understand backup and restore concepts](concepts-backup-restore.md)
-- [Tune and monitor the server](concepts-monitoring.md)
+## Related content
+- [Backup and restore in Azure Database for PostgreSQL - Flexible Server](concepts-backup-restore.md).
+- [Monitor metrics in Azure Database for PostgreSQL - Flexible Server](concepts-monitoring.md).

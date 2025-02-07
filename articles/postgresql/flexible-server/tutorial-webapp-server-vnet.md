@@ -33,12 +33,12 @@ In this tutorial you'll learn how to:
 - [Install Azure CLI](/cli/azure/install-azure-cli) version 2.0 or later locally (or use [Azure Cloud Shell](https://azure.microsoft.com/get-started/azure-portal/cloud-shell/) which has CLI preinstalled). To see the version installed, run the `az --version` command. 
 - Log in to your account using the [az login](/cli/azure/authenticate-azure-cli) command. Note the **id** property from the command output for the corresponding subscription name.
 
-  ```azurecli
+  ```azurecli-interactive
   az login
   ```
 - If you have multiple subscriptions, choose the appropriate subscription in which the resource should be billed. Select the specific subscription ID under your account using [az account set](/cli/azure/account) command.
 
-  ```azurecli
+  ```azurecli-interactive
   az account set --subscription <subscription ID>
   ```
 
@@ -46,7 +46,7 @@ In this tutorial you'll learn how to:
 
 Create a private Azure Database for PostgreSQL flexible server instance inside a virtual network (VNET) using the following command:
 
-```azurecli
+```azurecli-interactive
 az postgres flexible-server create --resource-group demoresourcegroup --name demoserverpostgres --vnet demoappvnet --location westus2
 ```
 This command performs the following actions, which may take a few minutes:
@@ -88,7 +88,7 @@ In this section, you create app host in App Service app, connect this app to the
 
 Create an App Service app (the host process) with the az webapp up command.
 
-```azurecli
+```azurecli-interactive
 az webapp up --resource-group demoresourcegroup --location westus2 --plan testappserviceplan --sku P2V2 --name mywebapp
 ```
 
@@ -106,20 +106,20 @@ This command performs the following actions, which may take a few minutes:
 ### Create Subnet for Web App
 Before enabling VNET integration, you need to have subnet that is delegated to App Service Web App. Before creating the subnet, view the database subnet address to avoid using the same address-prefix for web app subnet. 
 
-```azurecli
+```azurecli-interactive
 az network vnet show --resource-group demoresourcegroup -n demoappvnet
 ```
 
 Run the following command to create a new subnet in the same virtual network as the Azure Database for PostgreSQL flexible server instance was created. **Update the address-prefix to avoid conflict with the Azure Database for PostgreSQL flexible server subnet.**
 
-```azurecli
+```azurecli-interactive
 az network vnet subnet create --resource-group demoresourcegroup --vnet-name demoappvnet --name webappsubnet  --address-prefixes 10.0.1.0/24  --delegations Microsoft.Web/serverFarms
 ```
 
 ## Add the Web App to the virtual network
 Use [az webapp vnet-integration](/cli/azure/webapp/vnet-integration) command to add a regional virtual network integration to a webapp. 
 
-```azurecli
+```azurecli-interactive
 az webapp vnet-integration add --resource-group demoresourcegroup -n  mywebapp --vnet demoappvnet --subnet webappsubnet
 ```
 
@@ -127,7 +127,7 @@ az webapp vnet-integration add --resource-group demoresourcegroup -n  mywebapp -
 With the code now deployed to App Service, the next step is to connect the app to the Azure Database for PostgreSQL flexible server instance in Azure. The app code expects to find database information in many environment variables. To set environment variables in App Service, use [az webapp config appsettings set](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) command.
 
   
-```azurecli
+```azurecli-interactive
   
 az webapp config appsettings set  --name mywebapp --settings DBHOST="<postgres-server-name>.postgres.database.azure.com" DBNAME="postgres" DBUSER="<username>" DBPASS="<password>" 
 ```
@@ -137,7 +137,7 @@ az webapp config appsettings set  --name mywebapp --settings DBHOST="<postgres-s
 - The command creates settings named **DBHOST**, **DBNAME**, **DBUSER***, and **DBPASS**. If your application code is using a different name for the database information, then use those names for the app settings as mentioned in the code.
 
 Configure the web app to allow all outbound connections from within the virtual network.
-```azurecli
+```azurecli-interactive
 az webapp config set --name mywebapp --resource-group demoresourcegroup --generic-configurations '{"vnetRouteAllEnabled": true}'
 ```
 
@@ -145,10 +145,10 @@ az webapp config set --name mywebapp --resource-group demoresourcegroup --generi
 
 Clean up all resources you created in the tutorial using the following command. This command deletes all the resources in this resource group.
 
-```azurecli
+```azurecli-interactive
 az group delete -n demoresourcegroup
 ```
 
-## Next steps
-> [!div class="nextstepaction"]
-> [Map an existing custom DNS name to Azure App Service](/azure/app-service/app-service-web-tutorial-custom-domain)
+## Related content
+
+- [Map an existing custom DNS name to Azure App Service](/azure/app-service/app-service-web-tutorial-custom-domain)

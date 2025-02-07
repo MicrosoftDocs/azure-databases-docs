@@ -12,7 +12,7 @@ ms.custom:
   - template-how-to
 ---
 
-# Troubleshoot high IOPS utilization for Azure Database for PostgreSQL - Flexible Server
+# Troubleshoot high IOPS utilization in Azure Database for PostgreSQL - Flexible Server
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
@@ -35,11 +35,11 @@ Consider the following tools to identify high I/O utilization.
 
 ### Azure Metrics
 
-Azure Metrics is a good starting point to check I/O utilization for a defined date and period. Metrics give information about the time during which I/O utilization is high. Compare the graphs of Write IOPs, Read IOPs, Read Throughput, and Write Throughput to find out times when the workload is causing high I/O utilization. For proactive monitoring, you can configure alerts on the metrics. For step-by-step guidance, see [Azure Metrics](./how-to-alert-on-metrics.md).
+Azure Metrics is a good starting point to check I/O utilization for a defined date and period. Metrics give information about the time during which I/O utilization is high. Compare the graphs of Write IOPs, Read IOPs, Read Throughput, and Write Throughput to find out times when the workload is causing high I/O utilization. For proactive monitoring, you can configure alerts on the metrics. For step-by-step guidance, see [Azure Metrics](how-to-alert-on-metrics.md).
 
 ### Query Store
 
-The Query Store feature automatically captures the history of queries and runtime statistics, and retains them for your review. It slices the data by time to see temporal usage patterns. Data for all users, databases, and queries is stored in a database named *azure_sys* in the Azure Database for PostgreSQL flexible server instance. For step-by-step guidance, see [Monitor performance with Query Store](./concepts-query-store.md).
+The Query Store feature automatically captures the history of queries and runtime statistics, and retains them for your review. It slices the data by time to see temporal usage patterns. Data for all users, databases, and queries is stored in a database named *azure_sys* in the Azure Database for PostgreSQL flexible server instance. For step-by-step guidance, see [Monitor performance with Query Store](concepts-query-store.md).
 
 Use the following statement to view the top five SQL statements that consume I/O:
 
@@ -160,13 +160,16 @@ If you observe that the checkpoint is happening too frequently, increase the `ma
 
 ### Tune autovacuum to decrease disruptions
 
-For more information about monitoring and tuning in scenarios where autovacuum is too disruptive, review [Autovacuum tuning](./how-to-autovacuum-tuning.md).
+For more information about monitoring and tuning in scenarios where autovacuum is too disruptive, review [Autovacuum tuning](how-to-autovacuum-tuning.md).
 
 ### Increase storage
 
-Increasing storage helps when you're adding more IOPS to the server. For more information about storage and associated IOPS, review [Compute and storage options](./concepts-compute-storage.md).
+Increasing storage helps when you're adding more IOPS to the server. For more information about storage and associated IOPS, review [Compute and storage options](concepts-compute.md).
 
 ## Related content
 
-- [Troubleshoot and tune autovacuum](how-to-autovacuum-tuning.md)
-- [Compute and storage options](concepts-compute-storage.md)
+- [Troubleshoot high CPU utilization in Azure Database for PostgreSQL - Flexible Server](how-to-high-cpu-utilization.md).
+- [Troubleshoot high memory utilization in Azure Database for PostgreSQL - Flexible Server](how-to-high-memory-utilization.md).
+- [Troubleshoot and identify slow-running queries in Azure Database for PostgreSQL - Flexible Server](how-to-identify-slow-queries.md).
+- [Server parameters in Azure Database for PostgreSQL - Flexible Server](concepts-server-parameters.md).
+- [Autovacuum tuning in Azure Database for PostgreSQL - Flexible Server](how-to-autovacuum-tuning.md).

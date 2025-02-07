@@ -31,12 +31,14 @@ To learn more about different connectivity options, see the [connectivity modes]
 You configure the connection mode when you create the `CosmosClient` instance in `CosmosClientOptions`.
 
 ```csharp
-string connectionString = "<your-account-connection-string>";
-CosmosClient client = new CosmosClient(connectionString,
-new CosmosClientOptions
-{
-    ConnectionMode = ConnectionMode.Gateway // ConnectionMode.Direct is the default
-});
+CosmosClient client = new CosmosClient(
+  "<nosql-account-endpoint>",
+  tokenCredential
+  new CosmosClientOptions
+  {
+      ConnectionMode = ConnectionMode.Gateway // ConnectionMode.Direct is the default
+  }
+);
 ```
 
 ### Customizing direct connection mode

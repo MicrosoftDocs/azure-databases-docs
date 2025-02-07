@@ -14,11 +14,11 @@ ms.custom:
   - build-2024
 ---
 
-# Generate vector embeddings with Azure OpenAI on Azure Database for PostgreSQL - Flexible Server
+# Generate vector embeddings with Azure OpenAI in Azure Database for PostgreSQL - Flexible Server
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
-Invoke [Azure OpenAI embeddings](/azure/ai-services/openai/reference#embeddings) easily to get a vector representation of the input, which can be used then in [vector similarity](./how-to-use-pgvector.md#vector-similarity) searches and consumed by machine learning models.
+Invoke [Azure OpenAI embeddings](/azure/ai-services/openai/reference#embeddings) easily to get a vector representation of the input, which can be used then in [vector similarity](how-to-use-pgvector.md#vector-similarity) searches and consumed by machine learning models.
 
 ## Prerequisites
 
@@ -150,8 +150,13 @@ ORDER BY
 LIMIT 1;
 
 ```
+## Related content
 
-## Next steps
-
-> [!div class="nextstepaction"]
-> [Learn more about vector similarity search using `pgvector`](./how-to-use-pgvector.md)
+- [Integrate Azure Database for PostgreSQL - Flexible Server with Azure Cognitive Services](generative-ai-azure-cognitive.md).
+- [Generate vector embeddings in Azure Database for PostgreSQL - Flexible Server with locally deployed LLM (Preview)](generative-ai-azure-local-ai.md).
+- [Integrate Azure Database for PostgreSQL with Azure Machine Learning Services](generative-ai-azure-machine-learning.md).
+- [Azure AI extension in Azure Database for PostgreSQL - Flexible Server](generative-ai-azure-overview.md).
+- [Generative AI with Azure Database for PostgreSQL - Flexible Server](generative-ai-overview.md).
+- [Recommendation System with Azure Database for PostgreSQL - Flexible Server and Azure OpenAI](generative-ai-recommendation-system.md).
+- [Semantic Search with Azure Database for PostgreSQL - Flexible Server and Azure OpenAI](generative-ai-semantic-search.md).
+- [Enable and use pgvector in Azure Database for PostgreSQL - Flexible Server](how-to-use-pgvector.md).

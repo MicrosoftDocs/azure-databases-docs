@@ -3,7 +3,7 @@ title: Logs
 description: Describes logging configuration, storage and analysis in Azure Database for PostgreSQL - Flexible Server.
 author: varun-dhawan
 ms.author: varundhawan
-ms.date: 7/11/2024
+ms.date: 1/10/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: how-to
@@ -21,7 +21,7 @@ Audit logging is made available through a Postgres extension, `pgaudit`. To lear
 
 You can configure Postgres standard logging on your server using the logging server parameters. To learn more about Postgres log parameters, visit the [When To Log](https://www.postgresql.org/docs/current/runtime-config-logging.html#RUNTIME-CONFIG-LOGGING-WHEN) and [What To Log](https://www.postgresql.org/docs/current/runtime-config-logging.html#RUNTIME-CONFIG-LOGGING-WHAT) sections of the Postgres documentation. Most, but not all, Postgres logging parameters are available to configure in Azure Database for PostgreSQL flexible server.
 
-To learn how to configure parameters in Azure Database for PostgreSQL flexible server, see the [portal documentation](howto-configure-server-parameters-using-portal.md) or the [CLI documentation](howto-configure-server-parameters-using-cli.md).
+To learn how to configure parameters in Azure Database for PostgreSQL flexible server, see the [portal documentation](how-to-configure-server-parameters.md) or the [CLI documentation](how-to-configure-server-parameters.md).
 
 > [!NOTE]
 > Configuring a high volume of logs, for example statement logging, can add significant performance overhead. 
@@ -30,9 +30,14 @@ To learn how to configure parameters in Azure Database for PostgreSQL flexible s
 
 Azure Database for PostgreSQL flexible server is integrated with Azure Monitor diagnostic settings. Diagnostic settings allows you to send your Azure Database for PostgreSQL flexible server logs in JSON format to Azure Monitor Logs for analytics and alerting, Event Hubs for streaming, and Azure Storage for archiving. 
 
-## Data retention policy and pricing
+## Data Retention Policy and Pricing
 
-If you select Event Hubs or a Storage account, you can specify a retention policy. This policy deletes data that is older than a selected time period. If you specify Log Analytics, the retention policy depends on the selected pricing tier. Logs ingested into your **Log Analytics** workspace can be retained at no charge for up to first 31 days. Logs retained beyond these no-charge periods will be charged for each GB of data retained for a month (pro-rated daily). For more details, refer [Azure Monitor pricing](https://azure.microsoft.com/pricing/details/monitor/).
+For logs sent to Event Hubs or a Storage account, you can set up a retention policy to automatically delete data after a certain period. When it comes to logs sent to Log Analytics, the costs for Azure Monitor Log Analytics are primarily influenced by two factors:
+
+- **Data Ingestion:** Charges are based on the volume of data that is ingested into the workspace.
+- **Data Retention:** Logs stored in your Log Analytics workspace are kept free of charge for the first 31 days. Beyond this free retention period, there is a fee for storing data, calculated on a daily pro-rata basis, based on the amount of data (in GB) retained each month.
+
+For a comprehensive breakdown of the costs associated with data ingestion and retention, please visit the [Azure Monitor pricing page](https://azure.microsoft.com/pricing/details/monitor/).
 
 ### Log format
 
@@ -62,9 +67,8 @@ The following table describes the fields for the **PostgreSQLLogs** type. Depend
 | DatatypeName | Name of the datatype (if applicable) |
 | _ResourceId | Resource URI |
 
+## Related content
 
-## Next steps
-
-- Learn more about how to [Configure and Access Logs](how-to-configure-and-access-logs.md).
-- Learn more about [Azure Monitor pricing](https://azure.microsoft.com/pricing/details/monitor/).
-- Learn more about [audit logs](concepts-audit.md)
+- [Configure and access logs in Azure Database for PostgreSQL - Flexible Server](how-to-configure-and-access-logs.md).
+- [Azure Monitor pricing](https://azure.microsoft.com/pricing/details/monitor/).
+- [Audit logging in Azure Database for PostgreSQL - Flexible Server](concepts-audit.md).

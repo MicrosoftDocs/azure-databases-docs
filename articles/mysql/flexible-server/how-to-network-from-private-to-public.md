@@ -1,10 +1,10 @@
 ---
-title: How to network from a private access to public access or Private Link in Azure Database for MySQL
+title: How to Network From a Private Access to Public Access or Private Link in Azure Database for MySQL
 description: Learn about moving an Azure Database for MySQL from private access (virtual network integrated) to public access or a Private Link with the Azure portal.
 author: SudheeshGH
 ms.author: sunaray
 ms.reviewer: maghan
-ms.date: 07/08/2024
+ms.date: 11/27/2024
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: how-to
@@ -12,9 +12,7 @@ ms.topic: how-to
 
 # Move from private access (virtual network integrated) to public access or Private Link with the Azure portal
 
-[!INCLUDE [applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
-This article describes moving an Azure Database for MySQL flexible server from Private access (virtual network integrated) to Public access or a Private Link with the Azure portal.
+This article describes moving an Azure Database for MySQL Flexible Server from Private access (virtual network integrated) to Public access or a Private Link with the Azure portal.
 
 ## Prerequisites
 
@@ -27,16 +25,16 @@ This article describes moving an Azure Database for MySQL flexible server from P
 
 The steps below describe moving from private access (virtual network integrated) to public access or Private Link with the Azure portal.
 
-1. In the Azure portal, select your existing Azure Database for MySQL flexible server instance.
+1. In the Azure portal, select your existing Azure Database for MySQL Flexible Server instance.
 
-1. On the Private access (virtual network Integrated) Azure Database for MySQL flexible server instance page, select **Networking** from the front panel to open the high availability page.
+1. On the Private access (virtual network Integrated) Azure Database for MySQL Flexible Server instance page, select **Networking** from the front panel to open the high availability page.
 
 1. Select **Move to Private Link**.
 
    > [!NOTE]  
    > A warning appears explaining that this operation is irreversible and has downtime.
 
-   :::image type="content" source="media/how-to-network-from-private-to-public/network-page.png" alt-text="Screenshot of the Azure network page to begin the process." lightbox="media/how-to-network-from-private-to-public/network-page.png":::
+   :::image type="content" source="media/how-to-network-from-private-to-public/network-page.png" alt-text="Screenshot of the Azure network page to begin the process.":::
 
 1. Once you select **Yes**, a wizard appears with two steps.
 

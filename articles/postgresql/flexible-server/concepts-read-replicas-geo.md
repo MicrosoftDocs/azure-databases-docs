@@ -1,7 +1,7 @@
 ---
 title: Geo-replication
 description: This article describes the Geo-replication in Azure Database for PostgreSQL - Flexible Server.
-author: akashraokm
+author: kabharati
 ms.author: kabharati
 ms.reviewer: maghan
 ms.date: 04/27/2024
@@ -70,11 +70,10 @@ This option won't require updating the connection strings in your application, p
 
 In that case, this is the only viable option. After promoting the server, you'll need to update your application's connection strings. Once the original region is restored, the old primary might become active again. Ensure to remove it to avoid incurring unnecessary costs. If you wish to maintain the previous topology, recreate the read replica.
 
-
 ## Related content
 
-- [Read replicas - overview](concepts-read-replicas.md)
-- [Promote read replicas](concepts-read-replicas-promote.md)
-- [Virtual endpoints](concepts-read-replicas-virtual-endpoints.md)
-- [Create and manage read replicas in the Azure portal](how-to-read-replicas-portal.md)
-- [Cross-region replication with virtual network](concepts-networking.md#replication-across-azure-regions-and-virtual-networks-with-private-networking)
+- [Read replicas in Azure Database for PostgreSQL - Flexible Server](concepts-read-replicas.md).
+- [Promote read replicas in Azure Database for PostgreSQL - Flexible Server](concepts-read-replicas-promote.md).
+- [Virtual endpoints for read replicas in Azure Database for PostgreSQL - Flexible Server](concepts-read-replicas-virtual-endpoints.md).
+- [Create and manage read replicas in Azure Database for PostgreSQL - Flexible Server](how-to-read-replicas-portal.md).
+- [Replication across Azure regions and virtual networks with private networking](concepts-networking-private.md#replication-across-azure-regions-and-virtual-networks-with-private-networking).

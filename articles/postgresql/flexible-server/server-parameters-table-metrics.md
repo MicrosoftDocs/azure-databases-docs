@@ -1,16 +1,24 @@
 ---
 title: Metrics server parameters
 description: Metrics server parameters for Azure Database for PostgreSQL - Flexible Server.
-author: akashraokm
-ms.author: akashrao
+author: nachoalonsoportillo
+ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 06/18/2024
+ms.date: 01/07/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
-ms.topic: include
+ms.topic: concept-article
+ms.custom: automatically generated
 zone_pivot_groups: postgresql-server-version
 ---
 # Metrics
+
+
+::: zone pivot="postgresql-17"
+
+[!INCLUDE [server-parameters-table-17-metrics](./includes/server-parameters-table-17-metrics.md)]
+
+::: zone-end
 
 
 ::: zone pivot="postgresql-16"

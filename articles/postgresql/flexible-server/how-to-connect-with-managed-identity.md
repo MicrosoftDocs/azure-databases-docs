@@ -1,14 +1,17 @@
 ---
-title: Connect with managed identity
+title: Connect With Managed Identity
 description: Learn about how to connect and authenticate using managed identity for authentication with Azure Database for PostgreSQL - Flexible Server.
 author: kabharati
 ms.author: kabharati
 ms.reviewer: maghan
-ms.date: 06/20/2024
+ms.date: 12/26/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: how-to
-ms.custom: devx-track-csharp, devx-track-extended-java, devx-track-python
+ms.custom:
+  - devx-track-csharp
+  - devx-track-extended-java
+  - devx-track-python
 ---
 
 # Connect with managed identity to Azure Database for PostgreSQL - Flexible Server
@@ -39,9 +42,9 @@ Use [az vm identity assign](/cli/azure/vm/identity/) with the `identity assign` 
 az vm identity assign -g myResourceGroup -n myVm
 ```
 
-Retrieve the application ID for the system-assigned managed identity, which you'll need in the next few steps:
+Retrieve the application ID for the system-assigned managed identity, which you need in the next few steps:
 
-```azurecli
+```azurecli-interactive
 # Get the client ID (application ID) of the system-assigned managed identity
 
 az ad sp list --display-name vm-name --query [*].appId --out tsv
@@ -51,13 +54,14 @@ az ad sp list --display-name vm-name --query [*].appId --out tsv
 
 Now, connect as the Microsoft Entra administrator user to your Azure Database for PostgreSQL flexible server database, and run the following SQL statements, replacing `<identity_name>` with the name of the resources for which you created a system-assigned managed identity:
 
-Please note **pgaadauth_create_principal** must be run  on the Postgres database.
+Note **pgaadauth_create_principal** must be run on the Postgres database.
 
 ```sql
 select * from pgaadauth_create_principal('<identity_name>', false, false);
 ```
 
 Success looks like:
+
 ```sql
     pgaadauth_create_principal
 -----------------------------------
@@ -65,14 +69,14 @@ Success looks like:
 (1 row)
 ```
 
-For more information on managing Microsoft Entra ID enabled database roles, see [how to manage Microsoft Entra ID enabled Azure Database for PostgreSQL - Flexible Server roles](./how-to-manage-azure-ad-users.md)
+For more information on managing Microsoft Entra ID enabled database roles, see [how to manage Microsoft Entra ID enabled Azure Database for PostgreSQL - Flexible Server roles](how-to-manage-azure-ad-users.md)
 
 The managed identity now has access when authenticating with the identity name as a role name and the Microsoft Entra token as a password.
 
-> [!Note]
+> [!NOTE]
 > If the managed identity is not valid, an error is returned: `ERROR:   Could not validate AAD user <ObjectId> because its name is not found in the tenant. [...]`.
-> 
-> [!Note]
+>  
+> [!NOTE]  
 > If you see an error like "No function matches...", make sure you're connecting to the `postgres` database, not a different database that you also created.
 
 ## Retrieve the access token from the Azure Instance Metadata service
@@ -81,15 +85,15 @@ Your application can now retrieve an access token from the Azure Instance Metada
 
 This token retrieval is done by making an HTTP request to `http://169.254.169.254/metadata/identity/oauth2/token` and passing the following parameters:
 
-* `api-version` = `2018-02-01`
-* `resource` = `https://ossrdbms-aad.database.windows.net`
-* `client_id` = `CLIENT_ID` (that you retrieved earlier)
+- `api-version` = `2018-02-01`
+- `resource` = `https://ossrdbms-aad.database.windows.net`
+- `client_id` = `CLIENT_ID` (that you retrieved earlier)
 
 You get back a JSON result containing an `access_token` field - this long text value is the Managed Identity access token you should use as the password when connecting to the database.
 
 For testing purposes, you can run the following commands in your shell.
 
-> [!NOTE]
+> [!NOTE]  
 > Note you need `curl`, `jq`, and the `psql` client installed.
 
 ```bash
@@ -110,91 +114,68 @@ This section shows how to get an access token using the VM's user-assigned manag
 
 ## Connect using Managed Identity in Python
 
-For a Python code example, please refer to the [Quickstart: Use Python to connect and query data in Azure Database for PostgreSQL - Flexible Server](./connect-python.md)
+For a Python code example, refer to the [Quickstart: Use Python to connect and query data in Azure Database for PostgreSQL - Flexible Server](connect-python.md)
 
 ## Connect using Managed Identity in Java
 
-For a Java code example, please refer to the [Quickstart: Use Java and JDBC with Azure Database for PostgreSQL - Flexible Server](./connect-java.md)
+For a Java code example, refer to the [Quickstart: Use Java and JDBC with Azure Database for PostgreSQL - Flexible Server](connect-java.md)
 
 ## Connect using Managed Identity in C#
 
 Here's a .NET code example of opening a connection to Azure Database for PostgreSQL flexible server using an access token. This code must run on the VM to use the system-assigned managed identity to obtain an access token from Microsoft Entra ID. Replace the values of HOST, USER (with `<identity_name>`), and DATABASE.
 
 ```csharp
-using System;
-using System.Net;
-using System.IO;
-using System.Collections;
-using System.Collections.Generic;
-using System.Text.Json;
-using System.Text.Json.Serialization;
-using Npgsql;
 using Azure.Identity;
+using Npgsql;
+using System;
 
-namespace Driver
+class Program
 {
-    class Script
+    static void Main(string[] args)
     {
-        // Obtain connection string information from the portal for use in the following variables
-        private static string Host = "HOST";
-        private static string User = "USER";
-        private static string Database = "DATABASE";
-
-        static async Task Main(string[] args)
+        try
         {
-            //
-            // Get an access token for PostgreSQL.
-            //
-            Console.Out.WriteLine("Getting access token from Azure AD...");
+            // Obtain an access token using the system-assigned managed identity
+            var tokenCredential = new DefaultAzureCredential();
+            var accessToken = tokenCredential.GetToken(
+                new Azure.Core.TokenRequestContext(new[] { "https://ossrdbms-aad.database.windows.net/.default" })
+            );
 
-            // Azure AD resource ID for Azure Database for PostgreSQL Flexible Server is https://ossrdbms-aad.database.windows.net/
-            string accessToken = null;
+            // Build the connection string
+            string host = "your-server-name.postgres.database.azure.com"; // Replace with your flexible server's host
+            string database = "your-database-name";                      // Replace with your database name
+            string user = "<identity_name>";                             // Replace with your identity name (e.g., "myManagedIdentity")
 
-            try
+            var connectionString = $"Host={host};Database={database};Username={user};Password={accessToken.Token};SSL Mode=Require;Trust Server Certificate=true";
+
+            // Open a connection to the database
+            using var connection = new NpgsqlConnection(connectionString);
+            connection.Open();
+
+            Console.WriteLine("Connection successful!");
+
+            // Optional: Perform a simple query
+            using var command = new NpgsqlCommand("SELECT version();", connection);
+            using var reader = command.ExecuteReader();
+            while (reader.Read())
             {
-                // Call managed identities for Azure resources endpoint.
-                var sqlServerTokenProvider = new DefaultAzureCredential();
-                accessToken = (await sqlServerTokenProvider.GetTokenAsync(
-                    new Azure.Core.TokenRequestContext(scopes: new string[] { "https://ossrdbms-aad.database.windows.net/.default" }) { })).Token;
-
+                Console.WriteLine($"PostgreSQL version: {reader.GetString(0)}");
             }
-            catch (Exception e)
-            {
-                Console.Out.WriteLine("{0} \n\n{1}", e.Message, e.InnerException != null ? e.InnerException.Message : "Acquire token failed");
-                System.Environment.Exit(1);
-            }
-
-            //
-            // Open a connection to the PostgreSQL server using the access token.
-            //
-            string connString =
-                String.Format(
-                    "Server={0}; User Id={1}; Database={2}; Port={3}; Password={4}; SSLMode=Prefer",
-                    Host,
-                    User,
-                    Database,
-                    5432,
-                    accessToken);
-
-            using (var conn = new NpgsqlConnection(connString))
-            {
-                Console.Out.WriteLine("Opening connection using access token...");
-                conn.Open();
-
-                using (var command = new NpgsqlCommand("SELECT version()", conn))
-                {
-
-                    var reader = command.ExecuteReader();
-                    while (reader.Read())
-                    {
-                        Console.WriteLine("\nConnected!\n\nPostgres version: {0}", reader.GetString(0));
-                    }
-                }
-            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"An error occurred: {ex.Message}");
         }
     }
 }
 ```
+
+You must fill in the following placeholders:
+
+- HOST: Replace your-server-name.postgres.database.azure.com with your flexible server's hostname.
+- USER: Replace <identity_name> with the name of your managed identity.
+- DATABASE: Replace your-database-name with the name of your Azure Database for PostgreSQL instance.
+- Microsoft Entra Authentication: The code uses the system-assigned managed identity of the VM to fetch an access token from Microsoft Entra ID.
 
 When run, this command gives an output like this:
 
@@ -204,9 +185,9 @@ Opening connection using access token...
 
 Connected!
 
-Postgres version: PostgreSQL 11.11, compiled by Visual C++ build 1800, 64-bit 
+Postgres version: PostgreSQL 11.11, compiled by Visual C++ build 1800, 64-bit
 ```
 
-## Next steps
+## Related content
 
-- Review the overall concepts for [Microsoft Entra authentication with Azure Database for PostgreSQL - Flexible Server](concepts-azure-ad-authentication.md)
+- [# Microsoft Entra authentication with Azure Database for PostgreSQL - Flexible Server](concepts-azure-ad-authentication.md)

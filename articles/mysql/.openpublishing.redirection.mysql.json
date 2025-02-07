@@ -1,6 +1,11 @@
 {
     "redirections": [
     {
+        "source_path_from_root": "/articles/mysql/flexible-server/concepts-supported-versions.md",
+        "redirect_url": "/azure/mysql/concepts-version-policy",
+        "redirect_document_id": false
+    },
+    {
         "source_path_from_root": "/articles/mysql/concepts-aad-authentication.md",
         "redirect_url": "/azure/mysql/single-server/concepts-azure-ad-authentication",
         "redirect_document_id": false
@@ -33,7 +38,7 @@
     {
         "source_path_from_root": "/articles/mysql/scripts/sample-pitr-restore.md",
         "redirect_url": "/azure/mysql/scripts/sample-point-in-time-restore",
-        "redirect_document_id": true
+        "redirect_document_id": false
     },
     {
         "source_path_from_root": "/articles/mysql/howto-database-threat-protection-portal.md",
@@ -1458,6 +1463,86 @@
       {
         "source_path_from_root": "/articles/mysql/single-server/tutorial-provision-mysql-server-using-azure-resource-manager-templates.md",
         "redirect_url": "/previous-versions/azure/mysql/single-server/tutorial-provision-mysql-server-using-azure-resource-manager-templates",
+        "redirect_document_id": false
+      },
+      {
+        "source_path_from_root": "/articles/mysql/migrate/how-to-migrate-single-flexible-minimum-downtime.md",
+        "redirect_url": "/azure/mysql/flexible-server/whats-new",
+        "redirect_document_id": false
+      },
+      {
+        "source_path_from_root": "/articles/mysql/migrate/migrate-single-flexible-in-place-auto-migration.md",
+        "redirect_url": "/azure/mysql/flexible-server/whats-new",
+        "redirect_document_id": false
+      },
+      {
+        "source_path_from_root": "/articles/mysql/migrate/migrate-single-flexible-mysql-import-cli.md",
+        "redirect_url": "/azure/mysql/flexible-server/whats-new",
+        "redirect_document_id": false
+      },
+      {
+        "source_path_from_root": "/articles/mysql/migrate/how-to-decide-on-right-migration-tools.md",
+        "redirect_url": "/azure/mysql/flexible-server/whats-new",
+        "redirect_document_id": false
+      },
+      {
+        "source_path_from_root": "/articles/mysql/migrate/sample-server-logs.md",
+        "redirect_url": "/azure/mysql/flexible-server/whats-new",
+        "redirect_document_id": false
+      },
+      {
+        "source_path_from_root": "/articles/mysql/app-development-best-practices.md",
+        "redirect_url": "/azure/mysql/flexible-server/whats-new",
+        "redirect_document_id": false
+      },
+      {
+        "source_path_from_root": "/articles/mysql/select-right-deployment-type.md",
+        "redirect_url": "/azure/mysql/flexible-server/whats-new",
+        "redirect_document_id": false
+      },
+      {
+        "source_path_from_root": "/articles/mysql/scripts/sample-change-server-configuration.md",
+        "redirect_url": "/azure/mysql/flexible-server/whats-new",
+        "redirect_document_id": false
+      },
+      {
+        "source_path_from_root": "/articles/mysql/scripts/sample-create-server-and-firewall-rule.md",
+        "redirect_url": "/azure/mysql/flexible-server/whats-new",
+        "redirect_document_id": false
+      },
+      {
+        "source_path_from_root": "/articles/mysql/scripts/sample-point-in-time-restore.md",
+        "redirect_url": "/azure/mysql/flexible-server/whats-new",
+        "redirect_document_id": false
+      },
+      {
+        "source_path_from_root": "/articles/mysql/scripts/sample-scale-server.md",
+        "redirect_url": "/azure/mysql/flexible-server/whats-new",
+        "redirect_document_id": false
+      },
+      {
+        "source_path_from_root": "/articles/mysql/scripts/sample-server-logs.md",
+        "redirect_url": "/azure/mysql/flexible-server/whats-new",
+        "redirect_document_id": false
+      },
+      {
+        "source_path_from_root": "/articles/mysql/flexible-server/concepts-monitoring.md",
+        "redirect_url": "/azure/mysql/flexible-server/concepts-monitor-mysql-reference",
+        "redirect_document_id": true
+      },
+      {
+        "source_path_from_root": "/articles/mysql/flexible-server/concepts-slow-query-logs.md",
+        "redirect_url": "/azure/mysql/flexible-server/concepts-monitor-mysql",
+        "redirect_document_id": true
+      },
+      {
+        "source_path_from_root": "/articles/mysql/flexible-server/concepts-audit-logs.md",
+        "redirect_url": "/azure/mysql/flexible-server/concepts-monitor-mysql#track-database-activity-with-audit-logs",
+        "redirect_document_id": false
+      },
+      {
+        "source_path_from_root": "/articles/mysql/flexible-server/concepts-workbooks.md",
+        "redirect_url": "/azure/mysql/flexible-server/concepts-monitor-mysql#use-azure-monitor-workbooks",
         "redirect_document_id": false
       }
   ]
