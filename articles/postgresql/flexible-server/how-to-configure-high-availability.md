@@ -189,9 +189,17 @@ Using the [Azure portal](https://portal.azure.com/):
 >[!NOTE]
 >If the region in which your server is created doesn't support high availability with zone redundancy, the **Zone redundant** option is grayed out and disabled.
 
-2.  If you select a specific zone for the primary server by setting **Availability zone** to any value other than **No preference**, when you select **Zone redundant**, you can also select an explicitly selected value for the standby server in **Standby availability zone**. Setting the zones to specific zones is useful if you want to collocate your application in the same zone as the database, to reduce latency. Choose **No preference** if you want the standby server to deploy on an availability zone automatically chosen for you.
+2.  Select a specific zone for the primary server by setting **Availability zone** to any value other than **No preference**.
 
-    :::image type="content" source="./media/how-to-configure-high-availability/high-availability-zone-redundant-server-provisioning.png" alt-text="Screenshot showing how to select specific availability zones for primary and standby servers." lightbox="./media/how-to-configure-high-availability/high-availability-zone-redundant-server-provisioning.png":::
+    :::image type="content" source="./media/how-to-configure-high-availability/high-availability-zone-redundant-server-provisioning-availability-zone.png" alt-text="Screenshot showing how to select specific availability zone for primary server." lightbox="./media/how-to-configure-high-availability/high-availability-zone-redundant-server-provisioning-availability-zone.png":::
+
+3.  When you select a specific availability zone for the primary server, and select **Zone redundant**.
+
+    :::image type="content" source="./media/how-to-configure-high-availability/high-availability-zone-redundant-server-provisioning-zone-redundant.png" alt-text="Screenshot showing how to select Zone redundant to have the standby server created in a different zone than the primary server." lightbox="./media/how-to-configure-high-availability/high-availability-zone-redundant-server-provisioning-zone-redundant.png":::
+
+4.  You can also select an explicitly a value for the standby server in **Standby availability zone**. Setting the zones to specific zones is useful if you want to collocate your application in the same zone as the database, to reduce latency. Choose **No preference** if you want the standby server to deploy on an availability zone automatically chosen for you.
+
+    :::image type="content" source="./media/how-to-configure-high-availability/high-availability-zone-redundant-server-provisioning-standby-zone.png" alt-text="Screenshot showing how to select specific availability zones for primary and standby servers." lightbox="./media/how-to-configure-high-availability/high-availability-zone-redundant-server-provisioning-standby-zone.png":::
 
 ### [CLI](#tab/cli-enable-new-server)
 
