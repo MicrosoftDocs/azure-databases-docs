@@ -18,11 +18,11 @@ This new version introduces a range of new features and enhancements, resolves k
 
 ## Engine version changes
 
-All existing 8.0 major version servers are upgraded to 8.0.40 minor version, learn more about MySQL 8.0.40 version, click [here](https://dev.mysql.com/doc/relnotes/mysql/8.0/en/news-8-0-40.html)
+All existing 8.0 major version servers are upgraded to 8.0.40 minor version, learn more about MySQL 8.0.40 version by following this [link](https://dev.mysql.com/doc/relnotes/mysql/8.0/en/news-8-0-40.html)
 
 To check your engine version, run `SELECT VERSION();` command at the MySQL prompt.
 
-After the maintenance succeed, you can run the following command in the Azure CLI to check the Azure MySQL minor version as well:
+After the maintenance succeeds, you can run the following command in the Azure CLI to check the Azure MySQL minor version as well:
 
 ```bash 
 az mysql flexible-server show --resource-group {resource group name} --name {server name} --query "fullVersion"
