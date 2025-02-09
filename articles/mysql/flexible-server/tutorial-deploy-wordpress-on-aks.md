@@ -17,6 +17,8 @@ ms.custom:
 
 # Tutorial: Deploy WordPress app on AKS with Azure Database for MySQL - Flexible Server
 
+[![Deploy to Azure](https://go.microsoft.com/fwlink/?linkid=2286232)
+
 In this tutorial, you deploy a scalable WordPress application secured via HTTPS on an Azure Kubernetes Service (AKS) cluster with Azure Database for MySQL Flexible Server using the Azure CLI.
 **[AKS](/azure/aks/intro-kubernetes)** is a managed Kubernetes service that lets you quickly deploy and manage clusters. **[What is Azure Database for MySQL - Flexible Server?](overview.md)** is a fully managed database service designed to provide more granular control and flexibility over database management functions and configuration settings.
 
