@@ -15,6 +15,9 @@ ms.topic: concept-article
 
 Extensions in PostgreSQL are powerful tools that allow users to extend the functionality of the database system. They can range from simple SQL objects to complex binary libraries, providing extra features and capabilities that aren't available in the core PostgreSQL distribution.
 
+> [!NOTE]
+> Third-party extensions and extensibility modules offered in Azure Database for PostgreSQL - Flexible Server, are open-source licensed code. We don't offer any third-party extensions or extension versions with premium or proprietary licensing models. 
+
 ## How extensions work
 
 When extensions are created (installed) in a database, they deploy a set of bundle objects that aim to extend the functionality of the engine. Those objects can be functions, operators, roles, data types, access methods, and other database object types.
