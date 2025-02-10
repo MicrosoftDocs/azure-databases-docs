@@ -4,7 +4,7 @@ description: Use Azure Database for MySQL - Flexible Server from a GitHub Action
 author: juliakm
 ms.author: jukullam
 ms.reviewer: maghan
-ms.date: 11/27/2024
+ms.date: 02/10/2025
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: quickstart
