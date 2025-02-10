@@ -4,7 +4,7 @@ description: The Azure Database for PostgreSQL single server service is being de
 author: markingmyname
 ms.author: maghan
 ms.reviewer: guybo
-ms.date: 01/24/2025
+ms.date: 02/07/2025
 ms.service: azure-database-postgresql
 ms.subservice: single-server
 ms.topic: concept-article
@@ -72,7 +72,7 @@ You can also use Automigration to migrate to Flexible server by nominating the S
 
 - Single Servers using the following features will **NOT** be automatically migrated and will be deleted in a phased manner, resulting in data loss:
   - **Customer Managed Keys(CMK)**
-  - **Deny Public Access** set to **Yes** 
+  - **Deny Public Access** set to **Yes**
 
 To avoid service disruptions, please plan your migration as soon as possible.
 

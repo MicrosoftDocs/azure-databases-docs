@@ -22,7 +22,7 @@ ms.devlang: java
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
-This article demonstrates creating a sample application that uses Java and [JDBC](https://en.wikipedia.org/wiki/Java_Database_Connectivity) to store and retrieve information in [Azure Database for PostgreSQL Flexible Server](index.yml).
+This article demonstrates creating a sample application that uses Java and [JDBC](https://en.wikipedia.org/wiki/Java_Database_Connectivity) to store and retrieve information in [Azure Database for PostgreSQL flexible server](index.yml).
 
 JDBC is the standard Java API to connect to traditional relational databases.
 
@@ -57,10 +57,10 @@ export CURRENT_USERNAME=$(az ad signed-in-user show --query userPrincipalName -o
 
 Replace the placeholders with the following values, which are used throughout this article:
 
-- `<YOUR_DATABASE_SERVER_NAME>`: The name of your Azure Database for PostgreSQL Flexible Server instance, which should be unique across Azure.
-- `<YOUR_DATABASE_NAME>`: The database name of the Azure Database for PostgreSQL Flexible Server instance, which should be unique within Azure.
+- `<YOUR_DATABASE_SERVER_NAME>`: The name of your Azure Database for PostgreSQL flexible server instance, which should be unique across Azure.
+- `<YOUR_DATABASE_NAME>`: The database name of the Azure Database for PostgreSQL flexible server instance, which should be unique within Azure.
 - `<YOUR_AZURE_REGION>`: The Azure region to use. You can use `eastus` by default, but we recommend that you configure a region closer to where you live. You can see the full list of available regions by entering `az account list-locations`.
-- `<YOUR_POSTGRESQL_AD_NON_ADMIN_USERNAME>`: The username of your Azure Database for PostgreSQL Flexible Server instance. Make ensure the username is a valid user in your Microsoft Entra tenant.
+- `<YOUR_POSTGRESQL_AD_NON_ADMIN_USERNAME>`: The username of your Azure Database for PostgreSQL flexible server instance. Make ensure the username is a valid user in your Microsoft Entra tenant.
 - `<YOUR_LOCAL_IP_ADDRESS>`: The IP address of your local computer, from which you'll run your Spring Boot application. One convenient way to find it is to open [whatismyip.akamai.com](http://whatismyip.akamai.com/).
 
 > [!IMPORTANT]
@@ -82,10 +82,10 @@ export AZ_LOCAL_IP_ADDRESS=<YOUR_LOCAL_IP_ADDRESS>
 
 Replace the placeholders with the following values, which are used throughout this article:
 
-- `<YOUR_DATABASE_SERVER_NAME>`: The name of your Azure Database for PostgreSQL Flexible Server instance, which should be unique across Azure.
-- `<YOUR_DATABASE_NAME>`: The database name of the Azure Database for PostgreSQL Flexible Server instance, which should be unique within Azure.
+- `<YOUR_DATABASE_SERVER_NAME>`: The name of your Azure Database for PostgreSQL flexible server instance, which should be unique across Azure.
+- `<YOUR_DATABASE_NAME>`: The database name of the Azure Database for PostgreSQL flexible server instance, which should be unique within Azure.
 - `<YOUR_AZURE_REGION>`: The Azure region to use. You can use `eastus` by default, but we recommend that you configure a region closer to where you live. You can see the full list of available regions by entering `az account list-locations`.
-- `<YOUR_POSTGRESQL_ADMIN_PASSWORD>` and `<YOUR_POSTGRESQL_NON_ADMIN_PASSWORD>`: The password of your Azure Database for PostgreSQL Flexible Server instance. That password should have a minimum of eight characters. The characters should be from three of the following categories: English uppercase letters, English lowercase letters, numbers (0-9), and non-alphanumeric characters (!, $, #, %, and so on).
+- `<YOUR_POSTGRESQL_ADMIN_PASSWORD>` and `<YOUR_POSTGRESQL_NON_ADMIN_PASSWORD>`: The password of your Azure Database for PostgreSQL flexible server instance. That password should have a minimum of eight characters. The characters should be from three of the following categories: English uppercase letters, English lowercase letters, numbers (0-9), and non-alphanumeric characters (!, $, #, %, and so on).
 - `<YOUR_LOCAL_IP_ADDRESS>`: The IP address of your local computer, from which you'll run your Spring Boot application. One convenient way to find it is to open [whatismyip.akamai.com](http://whatismyip.akamai.com/).
 
 ---
@@ -99,16 +99,16 @@ az group create \
     --output tsv
 ```
 
-## Create an Azure Database for PostgreSQL Flexible Server instance
+## Create an Azure Database for PostgreSQL flexible server instance
 
 The following sections describe how to create and configure your database instance.
 
-### Create an Azure Database for PostgreSQL Flexible Server instance and set up admin user
+### Create an Azure Database for PostgreSQL flexible server instance and set up admin user
 
-The first thing you create is a managed Azure Database for PostgreSQL Flexible Server instance.
+The first thing you create is a managed Azure Database for PostgreSQL flexible server instance.
 
 > [!NOTE]
-> You can read more detailed information about creating Azure Database for PostgreSQL Flexible Server instances in [Create an Azure Database for PostgreSQL Flexible Server instance by using the Azure portal](quickstart-create-server.md).
+> You can read more detailed information about creating Azure Database for PostgreSQL flexible server instances in [Create an Azure Database for PostgreSQL flexible server instance by using the Azure portal](quickstart-create-server.md).
 
 #### [Passwordless (Recommended)](#tab/passwordless)
 
@@ -132,7 +132,7 @@ az postgres flexible-server create \
 To set up a Microsoft Entra administrator after creating the server, follow the steps in [Manage Microsoft Entra roles in Azure Database for PostgreSQL - Flexible Server](how-to-manage-azure-ad-users.md).
 
 > [!IMPORTANT]
-> When setting up an administrator, a new user with full administrator privileges is added to the Azure Database for PostgreSQL Flexible Server instance's Azure database. You can create multiple Microsoft Entra administrators per Azure Database for PostgreSQL Flexible Server instance.
+> When setting up an administrator, a new user with full administrator privileges is added to the Azure Database for PostgreSQL flexible server instance's Azure database. You can create multiple Microsoft Entra administrators per Azure Database for PostgreSQL flexible server instance.
 
 #### [Password](#tab/password)
 
@@ -147,15 +147,15 @@ az postgres flexible-server create \
     --output tsv
 ```
 
-This command creates a small Azure Database for PostgreSQL Flexible Server instance.
+This command creates a small Azure Database for PostgreSQL flexible server instance.
 
 ---
 
 [Having any issues? Let us know.](https://github.com/MicrosoftDocs/azure-docs/issues)
 
-### Configure a firewall rule for your Azure Database for PostgreSQL Flexible Server instance
+### Configure a firewall rule for your Azure Database for PostgreSQL flexible server instance
 
-Azure Database for PostgreSQL Flexible Server instances are secured by default. They have a firewall that doesn't allow any incoming connection. To be able to use your database, you need to add a firewall rule that will allow the local IP address to access the database server.
+Azure Database for PostgreSQL flexible server instances are secured by default. They have a firewall that doesn't allow any incoming connection. To be able to use your database, you need to add a firewall rule that will allow the local IP address to access the database server.
 
 Because you configured your local IP address at the beginning of this article, you can open the server's firewall by running the following command:
 
@@ -169,7 +169,7 @@ az postgres flexible-server firewall-rule create \
     --output tsv
 ```
 
-If you're connecting to your Azure Database for PostgreSQL Flexible Server instance from Windows Subsystem for Linux (WSL) on a Windows computer, you'll need to add the WSL host ID to your firewall.
+If you're connecting to your Azure Database for PostgreSQL flexible server instance from Windows Subsystem for Linux (WSL) on a Windows computer, you'll need to add the WSL host ID to your firewall.
 
 Obtain the IP address of your host machine by running the following command in WSL:
 
@@ -195,7 +195,7 @@ az postgres flexible-server firewall-rule create \
     --output tsv
 ```
 
-### Configure an Azure Database for PostgreSQL Flexible Server database
+### Configure an Azure Database for PostgreSQL flexible server database
 
 Create a new database using the following command:
 
@@ -207,12 +207,12 @@ az postgres flexible-server db create \
     --output tsv
 ```
 
-### Create an Azure Database for PostgreSQL Flexible Server non-admin user and grant permission
+### Create an Azure Database for PostgreSQL flexible server non-admin user and grant permission
 
 Next, create a non-admin user and grant all permissions to the database.
 
 > [!NOTE]
-> You can read more detailed information about managing Azure Database for PostgreSQL Flexible Server users in [Manage Microsoft Entra users - Azure Database for PostgreSQL - Flexible Server](how-to-manage-azure-ad-users.md).
+> You can read more detailed information about managing Azure Database for PostgreSQL flexible server users in [Manage Microsoft Entra users - Azure Database for PostgreSQL - Flexible Server](how-to-manage-azure-ad-users.md).
 
 #### [Passwordless (Recommended)](#tab/passwordless)
 
@@ -333,7 +333,7 @@ This file is an [Apache Maven](https://maven.apache.org/) that configures our pr
 - Java 8
 - A recent PostgreSQL driver for Java
 
-### Prepare a configuration file to connect to Azure Database for PostgreSQL Flexible Server
+### Prepare a configuration file to connect to Azure Database for PostgreSQL flexible server
 
 Create a *src/main/resources/application.properties* file, then add the following contents:
 
@@ -359,7 +359,7 @@ EOF
 ---
 
 > [!NOTE]
-> The configuration property `url` has `?serverTimezone=UTC` appended tell the JDBC driver to use TLS ([Transport Layer Security](https://en.wikipedia.org/wiki/Transport_Layer_Security)) when connecting to the database. It's mandatory to use TLS with Azure Database for PostgreSQL Flexible Server, and it's a good security practice.
+> The configuration property `url` has `?serverTimezone=UTC` appended tell the JDBC driver to use TLS ([Transport Layer Security](https://en.wikipedia.org/wiki/Transport_Layer_Security)) when connecting to the database. It's mandatory to use TLS with Azure Database for PostgreSQL flexible server, and it's a good security practice.
 
 ### Create an SQL file to generate the database schema
 
@@ -374,7 +374,7 @@ CREATE TABLE todo (id SERIAL PRIMARY KEY, description VARCHAR(255), details VARC
 
 ### Connect to the database
 
-Next, add the Java code that will use JDBC to store and retrieve data from your Azure Database for PostgreSQL Flexible Server instance.
+Next, add the Java code that will use JDBC to store and retrieve data from your Azure Database for PostgreSQL flexible server instance.
 
 Create a *src/main/java/DemoApplication.java* file and add the following contents:
 
@@ -427,7 +427,7 @@ public class DemoApplication {
 
 [Having any issues? Let us know.](https://github.com/MicrosoftDocs/azure-docs/issues)
 
-This Java code will use the *application.properties* and the *schema.sql* files that we created earlier, in order to connect to the Azure Database for PostgreSQL Flexible Server instance and create a schema that will store our data.
+This Java code will use the *application.properties* and the *schema.sql* files that we created earlier, in order to connect to the Azure Database for PostgreSQL flexible server instance and create a schema that will store our data.
 
 In this file, you can see that we commented methods to insert, read, update and delete data: we will code those methods in the rest of this article, and you will be able to uncomment them one after each other.
 
@@ -439,7 +439,7 @@ You can now execute this main class with your favorite tool:
 - Using your IDE, you should be able to right-click on the *DemoApplication* class and execute it.
 - Using Maven, you can run the application by executing: `mvn exec:java -Dexec.mainClass="com.example.demo.DemoApplication"`.
 
-The application should connect to the Azure Database for PostgreSQL Flexible Server instance, create a database schema, and then close the connection, as you should see in the console logs:
+The application should connect to the Azure Database for PostgreSQL flexible server instance, create a database schema, and then close the connection, as you should see in the console logs:
 
 ```output
 [INFO   ] Loading application properties
@@ -519,7 +519,7 @@ public class Todo {
 
 This class is a domain model mapped on the `todo` table that you created when executing the *schema.sql* script.
 
-### Insert data into Azure Database for PostgreSQL Flexible Server
+### Insert data into Azure Database for PostgreSQL flexible server
 
 In the *src/main/java/DemoApplication.java* file, after the main method, add the following method to insert data into the database:
 
@@ -555,7 +555,7 @@ Executing the main class should now produce the following output:
 [INFO   ] Closing database connection
 ```
 
-### Reading data from Azure Database for PostgreSQL Flexible Server
+### Reading data from Azure Database for PostgreSQL flexible server
 
 Let's read the data previously inserted, to validate that our code works correctly.
 
@@ -599,7 +599,7 @@ Executing the main class should now produce the following output:
 [INFO   ] Closing database connection
 ```
 
-### Updating data in Azure Database for PostgreSQL Flexible Server
+### Updating data in Azure Database for PostgreSQL flexible server
 
 Let's update the data we previously inserted.
 
@@ -643,7 +643,7 @@ Executing the main class should now produce the following output:
 [INFO   ] Closing database connection
 ```
 
-### Deleting data in Azure Database for PostgreSQL Flexible Server
+### Deleting data in Azure Database for PostgreSQL flexible server
 
 Finally, let's delete the data we previously inserted.
 
@@ -686,7 +686,7 @@ Executing the main class should now produce the following output:
 
 ## Clean up resources
 
-Congratulations! You've created a Java application that uses JDBC to store and retrieve data from Azure Database for PostgreSQL Flexible Server.
+Congratulations! You've created a Java application that uses JDBC to store and retrieve data from Azure Database for PostgreSQL flexible server.
 
 To clean up all resources used during this quickstart, delete the resource group using the following command:
 
@@ -699,9 +699,9 @@ az group delete \
 ## Related content
 
 - [Manage Azure Database for PostgreSQL - Flexible Server](how-to-manage-server-portal.md).
-- [Quickstart: Use Python to connect and query data from an instance of Azure Database for PostgreSQL Flexible Server](connect-python.md).
-- [Quickstart: Use .NET (C#) to connect and query data from an instance of Azure Database for PostgreSQL Flexible Server](connect-csharp.md).
-- [Quickstart: Use Go language to connect and query data from an instance of Azure Database for PostgreSQL Flexible Server](connect-go.md).
-- [Quickstart: Use PHP to connect and query data from an instance of Azure Database for PostgreSQL Flexible Server](connect-php.md).
-- [Quickstart: Use Azure CLI to connect and query data from an instance of Azure Database for PostgreSQL Flexible Server](connect-azure-cli.md).
+- [Quickstart: Use Python to connect and query data from an instance of Azure Database for PostgreSQL flexible server](connect-python.md).
+- [Quickstart: Use .NET (C#) to connect and query data from an instance of Azure Database for PostgreSQL flexible server](connect-csharp.md).
+- [Quickstart: Use Go language to connect and query data from an instance of Azure Database for PostgreSQL flexible server](connect-go.md).
+- [Quickstart: Use PHP to connect and query data from an instance of Azure Database for PostgreSQL flexible server](connect-php.md).
+- [Quickstart: Use Azure CLI to connect and query data from an instance of Azure Database for PostgreSQL flexible server](connect-azure-cli.md).
 - [Quickstart: Import data from Azure Database for PostgreSQL - Flexible Server in Power BI](connect-with-power-bi-desktop.md).

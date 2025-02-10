@@ -3,7 +3,7 @@ title: Major version upgrades in Azure Database for PostgreSQL - Flexible Server
 description: Learn how to use Azure Database for PostgreSQL - Flexible Server to do in-place major version upgrades of PostgreSQL on a server.
 author: varun-dhawan
 ms.author: varundhawan
-ms.date: 2/7/2024
+ms.date: 12/17/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: conceptual
@@ -80,7 +80,7 @@ You can access the upgrade logs through the UI for server logs. There, you can m
 
 ## Limitations  
 
-If pre-check operations fail for an in-place major version upgrade, the upgrade fails with a detailed error message for all the following limitations:
+If precheck operations fail for an in-place major version upgrade, the upgrade fails with a detailed error message for all the following limitations:
 
 - In-place major version upgrades currently don't support read replicas. If you have a server that acts as a read replica, you need to delete the replica before you perform the upgrade on the primary server. After the upgrade, you can re-create the replica.
 
@@ -92,10 +92,9 @@ If pre-check operations fail for an in-place major version upgrade, the upgrade 
 
 - In-place major version upgrades don't support certain extensions, and there are some limitations to upgrading certain extensions. 
 - 
-    - The following extensions are unsupported for all PostgreSQL versions: `Timescaledb`, `pgaudit`, `dblink`, `orafce`, `session_variable`, `postgres_fdw`.
+    - The following extensions are unsupported for all PostgreSQL versions: `Timescaledb`, `pgaudit`, `dblink`, `orafce`, `pg_partman`, `postgres_fdw`.
   
-    - `pgrouting` and `semver` extensions in not unsupported when the upgrade target is Postgres 16 and above.
-    - `plv8` extensions in not unsupported when the upgrade target is Postgres 14 and above.
+    - `pgrouting` extensions in not unsupported when the upgrade target is Postgres 16 and above.
 
 - When you're upgrading servers with the PostGIS extension installed, set the `search_path` server parameter to explicitly include:
   
