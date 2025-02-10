@@ -14,6 +14,9 @@ ms.topic: concept-article
 
 This article describes some special considerations that you must be aware of, when using certain extensions in an Azure Database for PostgreSQL flexible server.
 
+> [!NOTE]
+> Third-party extensions and extensibility modules offered in Azure Database for PostgreSQL - Flexible Server, are open-source licensed code. We don't offer any third-party extensions or extension versions with premium or proprietary licensing models. 
+
 ## Prerequisites
 
 Refer to the following articles, to learn how to:
@@ -268,7 +271,7 @@ More details on these utilities can be found [here](https://github.com/timescale
 
 ## Extensions and major version upgrade
 
-Azure Database for PostgreSQL flexible server offers an [in-place major version upgrade feature](../flexible-server/concepts-major-version-upgrade.md), that performs an in-place upgrade of the Azure Database for PostgreSQL flexible server instance with just a simple interaction from the user. In-place major version upgrade simplifies the Azure Database for PostgreSQL flexible server upgrade process, minimizing the disruption to users and applications accessing the server. In-place major version upgrades don't support specific extensions, and there are some limitations to upgrading certain extensions.
+Azure Database for PostgreSQL flexible server offers an [in-place major version upgrade feature](../flexible-server/concepts-major-version-upgrade.md) that performs an in-place upgrade of the Azure Database for PostgreSQL flexible server instance with just a simple interaction from the user. In-place major version upgrade simplifies the Azure Database for PostgreSQL flexible server upgrade process, minimizing the disruption to users and applications accessing the server. In-place major version upgrades don't support specific extensions, and there are some limitations to upgrading certain extensions.
 
 The extensions `anon`, `Apache AGE`, `dblink`, `orafce`, `pgaudit`, `postgres_fdw`, and `timescaledb` are unsupported for all Azure Database for PostgreSQL flexible server versions when using in-place major version update feature.
 
