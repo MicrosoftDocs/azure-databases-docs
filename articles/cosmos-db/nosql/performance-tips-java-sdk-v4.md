@@ -62,7 +62,7 @@ These techniques provide advanced mechanisms to address specific latency and ava
 
 ### Threshold-based availability strategy
 
-The threshold-based availability strategy can improve tail latency and availability by sending parallel read requests to secondary regions and accepting the fastest response. This approach can drastically reduce the impact of regional outages or high-latency conditions on application performance. Additionally, proactive connection management can be employed to further enhance performance by warming up connections and caches across both the current read region and preferred remote regions.
+The threshold-based availability strategy can improve tail latency and availability by sending parallel read requests to secondary regions (as defined in `preferredRegions`) and accepting the fastest response. This approach can drastically reduce the impact of regional outages or high-latency conditions on application performance. Additionally, proactive connection management can be employed to further enhance performance by warming up connections and caches across both the current read region and preferred remote regions.
 
 **Example configuration:**
 ```java
@@ -75,7 +75,7 @@ CosmosAsyncClient clientWithOpenConnections = new CosmosClientBuilder()
           .endpoint("<account URL goes here")
           .key("<account key goes here>")
           .endpointDiscoveryEnabled(true)
-          .preferredRegions(Arrays.asList("sample_region_1", "sample_region_2"))
+          .preferredRegions(Arrays.asList("East US", "East US 2", "West US"))
           .openConnectionsAndInitCaches(new CosmosContainerProactiveInitConfigBuilder(Arrays.asList(containerIdentity))
                 .setProactiveConnectionRegionsCount(proactiveConnectionRegionsCount)
                  //setting aggressive warmup duration helps in cases where there is a high no. of partitions
