@@ -119,6 +119,8 @@ The `cron_schedule_in_database` function allows for the user name as an optional
     ```sql
     SELECT cron.alter_job(job_id:=MyJobID,database:='NewDBName');
     ```
+> [!NOTE]
+> pg_cron Version 1.6 Availability: If you can't find or use pg_cron version 1.6 in your PostgreSQL Flexible Server instance, your instance may not have received the required maintenance update yet. This version was introduced in a recent update, and instances on earlier versions won't see it. Your instance will automatically update during the next maintenance window, after which pg_cron version 1.6 should be available.
 
 ### pg_failover_slots
 
