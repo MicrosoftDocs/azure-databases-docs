@@ -26,6 +26,10 @@
       href: free-tier.md
     - name: Multicloud Solution
       href: multi-cloud.md
+    - name: Burstable tier
+      href: burstable-tier.md
+    - name: Open source
+      href: oss.md
     - name: Integrated vector database
       items:
         - name: Integrated vector database overview
