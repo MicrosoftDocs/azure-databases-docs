@@ -14,6 +14,9 @@ ms.topic: concept-article
 
 This article describes some special considerations that you must be aware of, when using certain extensions in an Azure Database for PostgreSQL flexible server.
 
+> [!NOTE]
+> Third-party extensions and extensibility modules offered in Azure Database for PostgreSQL - Flexible Server, are open-source licensed code. We don't offer any third-party extensions or extension versions with premium or proprietary licensing models. 
+
 ## Prerequisites
 
 Refer to the following articles, to learn how to:
