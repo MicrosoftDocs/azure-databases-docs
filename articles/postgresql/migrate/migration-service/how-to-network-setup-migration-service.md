@@ -5,7 +5,7 @@ description: Learn about network scenarios for connecting supported source envir
 author: apduvuri
 ms.author: adityaduvuri
 ms.reviewer: maghan
-ms.date: 01/24/2025
+ms.date: 02/07/2025
 ms.service: azure-database-postgresql
 ms.topic: how-to
 ---

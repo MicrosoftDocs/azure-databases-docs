@@ -4,7 +4,7 @@ description: Error codes for troubleshooting and resolving issues during the mig
 author: apduvuri
 ms.author: adityaduvuri
 ms.reviewer: maghan
-ms.date: 01/24/2025
+ms.date: 02/07/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: error-reference
@@ -96,5 +96,4 @@ These settings help maintain the connection by sending keepalive probes to preve
 
 - [Troubleshoot the migration service for Azure Database for PostgreSQL](how-to-network-setup-migration-service.md)
 - [Best practices for seamless migration into Azure Database for PostgreSQL](best-practices-migration-service-postgresql.md)
-- [Networking](how-to-network-setup-migration-service.md)
 - [Known issues and limitations](concepts-known-issues-migration-service.md)

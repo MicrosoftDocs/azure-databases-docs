@@ -4,7 +4,7 @@ description: Learn how to migrate offline seamlessly from Amazon Aurora to Azure
 author: apduvuri
 ms.author: adityaduvuri
 ms.reviewer: maghan
-ms.date: 01/24/2025
+ms.date: 02/07/2025
 ms.service: azure-database-postgresql
 ms.subservice: migration-guide
 ms.topic: tutorial
@@ -305,5 +305,4 @@ After migration, you can complete these tasks:
 
 - [Migrate online from Amazon Aurora PostgreSQL](tutorial-migration-service-aurora-online.md)
 - [Migration service](concepts-migration-service-postgresql.md)
-- [Migrate from on-premises and Azure VMs](tutorial-migration-service-iaas.md)
 - [Known issues and limitations](concepts-known-issues-migration-service.md)

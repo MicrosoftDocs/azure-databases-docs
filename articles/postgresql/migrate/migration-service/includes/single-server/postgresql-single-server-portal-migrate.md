@@ -2,7 +2,7 @@
 title: Azure Database for PostgreSQL - Single Server to Flexible Server CLI Migration - Single Server to Flexible Server Portal Migration
 author: markingmyname
 ms.author: maghan
-ms.date: 01/24/2025
+ms.date: 02/07/2025
 ms.service: azure-database-postgresql
 ms.topic: include
 ms.custom:
@@ -223,11 +223,7 @@ The migration service comes with a simple, wizard-based experience on the Azure 
 
 1. In the **Overview** tab of the Flexible Server, on the left menu, scroll down to **Migration** and select it.
 
-    
-
 1. Select the **Create** button to start a migration from a single server to a flexible server. If this is your first time using the migration service, an empty grid appears with a prompt to begin your first migration.
-
-    
 
     If you've already created migrations to your Flexible Server target, the grid contains information about migrations that were attempted to this target from the Single Server.
 
@@ -239,23 +235,15 @@ Alternatively, you can initiate the migration process from the Azure Database fo
 
 1. Upon selecting the Single Server, you can observe a migration-related banner in the Overview tab. Select **Migrate now** to get started.
 
-    
-
 1. You're taken to a page with two options. If you've already created a Flexible Server and want to use that as the target, choose **Select existing**, and select the corresponding **Subscription**, **Resource group**, and **Server name** details. Once the selections are made, select **Go to migration wizard** and follow the instructions under the **Setup** section.
 
-    
-
 1. Should you choose to create a new Flexible Server, select **Create new** and select **Go to create wizard**. This action takes you through the Flexible Server creation process and deploys the Flexible Server.
-
-    
 
 After deploying the Flexible Server, follow the steps 3 to 5 under [Configure the migration task.](#configure-the-migration-task)
 
 ### Setup
 
 The first tab is **Setup**. In case you missed it, allowlist necessary extensions as described in [Configure your Azure Database for PostgreSQL flexible server](#configure-your-azure-database-for-postgresql-flexible-server), before you initiate a migration.
-
-
 
 **Migration name** is the unique identifier for each migration to this Flexible Server target. This field accepts only alphanumeric characters and doesn't accept any special characters except for underscore (_) and hyphen (-). The name must start with an alphanumeric character. The name must also be unique for a target server, because no two migrations to the same Flexible Server target can have the same name.
 
@@ -278,8 +266,6 @@ Select the **Next: Select Runtime Server** button.
 
 The Migration Runtime Server is a specialized feature within the [migration service in Azure Database for PostgreSQL](../../overview-migration-service-postgresql.md), designed to act as an intermediary server during migration. It's a separate Azure Database for PostgreSQL - Flexible Server instance that isn't the target server but is used to facilitate the migration of databases from a source environment that is only accessible via a private network.
 
-
-
 For more information about the Runtime Server, visit the [Migration Runtime Server](../../concepts-migration-service-runtime-server.md).
 
 Select the **Next: Connect to source** button.
@@ -294,15 +280,11 @@ After you choose the Single Server source, the **Location**, and **PostgreSQL ve
 
 After filling out all the fields, select the **Connect to source** link. This validates that the source server details entered are correct and that the source server is reachable.
 
-
-
 Select the **Next: Select migration target** button to continue.
 
 ### Select migration target
 
 The **Select migration target** section displays metadata for the Flexible Server target, such as **Subscription**, **Resource group**, **Server name**, **Location**, and **PostgreSQL version**.
-
-
 
 Choose the appropriate values for **Authentication method** and all authentication related fields. Make sure that the identity provided is that of the administrator user in the target server. After filling all required information, select the **Connect to target** link. This validates that the target server details entered are correct and target server is reachable.
 
@@ -312,21 +294,15 @@ Select the **Next: Select database(s) for migration** button to select the datab
 
 Under this tab, there's a list of user databases inside the Single Server. You can select and migrate up to eight databases in a single migration attempt. If there are more than eight user databases, the migration process is repeated between the source and target servers for the next set of databases. Selected databases that exist on the target server with the exact same names are overwritten.
 
-
-
 Select the **Next: Summary** button to review the details.
 
 ### Summary
 
 The **Summary** tab summarizes all the details for creating the validation or migration. Review the details and select the **Start Validation and Migration** button.
 
-
-
 ## Monitor the migration portal
 
 After you start the migration, a notification appears to say that the validation or migration creation is successful. You're redirected automatically to the **Migration** page of Flexible Server. This has a new entry for the recently created validation or migration.
-
-
 
 The grid that displays the migrations has these columns: **Name**, **Status**, **Migration mode**, **Migration type**, **Source server**, **Source server type**, **Databases**, **Start time** and **Duration**. The entries are displayed in the descending order of the start time with the most recent entry on the top.
 
@@ -344,8 +320,6 @@ After the **PerformingPreRequisiteSteps** substate is completed, the validation 
 
 The validation moves to the **Succeeded** state if all validations are either in **Succeeded** or **Warning** state.
 
-
-
 The validation grid has the following information:
 - **Validation details for instance** and **Validation details for databases** sections, representing the validation rules used to check migration readiness.
 - **Validation Name** - The name of each specific validation rule.
@@ -358,33 +332,23 @@ The validation grid has the following information:
 
 The **Validation status** moves to **Failed** state if there are any errors in the validation. Select the **Validation name** or **Database name** validation that has failed, and a fan-out pane gives the details and the corrective action you should take to avoid this error.
 
-
-
 ### Migrate
 
 After the **PerformingPreRequisiteSteps** substate is completed, the migration moves to the substate of **Migrating Data** when the cloning/copying of the databases takes place. The time for migration to complete depends on the size and shape of the databases you're migrating. The migration is quick if the data is mostly evenly distributed across all the tables. Skewed table sizes take a relatively longer time.
 
 When you select any of the databases in migration, a fan-out pane appears. It has all the table counts (copied, queued, copying, and errors) and also the database migration status.
 
-
-
 The migration moves to the **Succeeded** state when the **Migrating Data** state finishes successfully. If there's an issue at the **Migrating Data** state, the migration moves into a **Failed** state.
-
-
 
 Once the migration moves to the **Succeeded** state, schema and data migration from your Single Server to your Flexible Server target is complete. You can refresh the page to check the progress.
 
-
-
-### Validate and Migrate
+### Validate and migrate
 
 In this option, validations are performed first before migration starts. After the **PerformingPreRequisiteSteps** substate is completed, the workflow moves into the substate of **Validation in Progress**.
 - If validation has errors, the migration moves into a **Failed** state.
 - If validation is complete without any error, the migration starts, and the workflow moves into the substate of **Migrating Data**.
 
 You can see the results of **Validate and Migrate** once the operation is complete.
-
-
 
 ### Cutover migration
 
