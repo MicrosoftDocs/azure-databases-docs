@@ -36,7 +36,7 @@ Data encryption with **service managed keys** for Azure Database for PostgreSQL 
 - The service automatically and fully controls your key's life cycle, including rotation of the key.
 - You don't need to worry about managing data encryption keys.
 - Data encryption based on service managed keys doesn't negatively impact the performance of your workloads.
-- It simplifies the management of 
+- It simplifies the management of encryption keys (including their regular rotation), and the management of the identities used to access those keys.
 
 Data encryption with **customer managed keys** for Azure Database for PostgreSQL flexible server provides the following benefits:
 - You fully control data access. You can remove a key to make a database inaccessible.

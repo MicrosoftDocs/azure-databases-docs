@@ -1,14 +1,14 @@
 ---
-title: Allow extensions
+title: Allow Extensions
 description: This article describes how to allow extensions in an Azure Database for PostgreSQL flexible server.
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 02/04/2025
+ms.date: 02/07/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: how-to
-#customer intent: As a user, I want to learn how to allow extensions in an Azure Database for PostgreSQL flexible server.
+# customer intent: As a user, I want to learn how to allow extensions in an Azure Database for PostgreSQL flexible server.
 ---
 
 # Allow extensions
@@ -76,8 +76,8 @@ The following example adds extensions to the allowlist `dblink`, `dict_xsyn`, `p
 
 ## Related content
 
-- [Load libraries](how-to-load-libraries.md).
-- [Create extensions](how-to-create-extensions.md).
-- [Drop extensions](how-to-drop-extensions.md).
-- [Update extensions](how-to-update-extensions.md).
-- [View installed extensions](how-to-view-installed-extensions.md).
+- [Load libraries](how-to-load-libraries.md)
+- [Create extensions](how-to-create-extensions.md)
+- [Drop extensions](how-to-drop-extensions.md)
+- [Update extensions](how-to-update-extensions.md)
+- [View installed extensions](how-to-view-installed-extensions.md)

@@ -1,14 +1,14 @@
 ---
-title: Load libraries
+title: Load Libraries
 description: This article describes how to load libraries in an Azure Database for PostgreSQL flexible server.
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 02/04/2025
+ms.date: 02/07/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: how-to
-#customer intent: As a user, I want to learn how to load libraries in an Azure Database for PostgreSQL flexible server.
+# customer intent: As a user, I want to learn how to load libraries in an Azure Database for PostgreSQL flexible server.
 ---
 
 # Load libraries
@@ -24,12 +24,12 @@ ms.topic: how-to
 Using the [Azure portal](https://portal.azure.com):
 
 1. Select your Azure Database for PostgreSQL flexible server instance.
-2. From the resource menu, under **Settings** section, select **Server parameters**.
-3. Include the libraries you wish to add in the value of `shared_preload_libraries`, and select **Save**.
+1. From the resource menu, under **Settings** section, select **Server parameters**.
+1. Include the libraries you wish to add in the value of `shared_preload_libraries`, and select **Save**.
 
     :::image type="content" source="media/how-to-allow-extensions/shared-libraries.png" alt-text="Screenshot of Server parameters page while setting shared_preload_libraries." lightbox="media/how-to-allow-extensions/shared-libraries.png":::
 
-4. Because `shared_preload_libraries`is a static server parameter, it requires a server restart so that the changes take effect.
+1. Because `shared_preload_libraries`is a static server parameter, it requires a server restart so that the changes take effect.
 
     :::image type="content" source="media/how-to-allow-extensions/save-and-restart.png" alt-text="Screenshot of Server parameters page, showing the dialog from which you can save changes and restart." lightbox="media/how-to-allow-extensions/save-and-restart.png":::
 
@@ -51,8 +51,8 @@ az postgres flexible-server restart --resource-group <resource_group> --name <se
 
 ## Related content
 
-- [Allow extensions](how-to-allow-extensions.md).
-- [Create extensions](how-to-create-extensions.md).
-- [Drop extensions](how-to-drop-extensions.md).
-- [Update extensions](how-to-update-extensions.md).
-- [View installed extensions](how-to-view-installed-extensions.md).
+- [Allow extensions](how-to-allow-extensions.md)
+- [Create extensions](how-to-create-extensions.md)
+- [Drop extensions](how-to-drop-extensions.md)
+- [Update extensions](how-to-update-extensions.md)
+- [View installed extensions](how-to-view-installed-extensions.md)

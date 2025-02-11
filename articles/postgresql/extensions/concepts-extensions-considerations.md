@@ -1,10 +1,10 @@
 ---
-title: Extension considerations specific to an Azure Database for PostgreSQL flexible server
+title: Extension Considerations Specific to an Azure Database for PostgreSQL Flexible Server
 description: Learn about the extension considerations specific to an Azure Database for PostgreSQL flexible server.
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 02/04/2025
+ms.date: 02/07/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: concept-article
@@ -14,17 +14,20 @@ ms.topic: concept-article
 
 This article describes some special considerations that you must be aware of, when using certain extensions in an Azure Database for PostgreSQL flexible server.
 
+> [!NOTE]
+> Third-party extensions and extensibility modules offered in Azure Database for PostgreSQL - Flexible Server, are open-source licensed code. We don't offer any third-party extensions or extension versions with premium or proprietary licensing models. 
+
 ## Prerequisites
 
 Refer to the following articles, to learn how to:
 
- - [Allow extensions](how-to-allow-extensions.md) in Azure Database for PostgreSQL Flexible Server.
- - [Load libraries](how-to-load-libraries.md) of extensions that deploy binary libraries. These libraries require allocating and accessing shared memory, and need to be loaded when the server starts.
- - [Create extensions](how-to-create-extensions.md) in some database, so that the SQL objects packaged in that extension are deployed in that database, and can be accessed in its context.
- - [Drop extensions](how-to-drop-extensions.md) from some database, so that the SQL objects packaged in that extension are removed from that database.
- - [Update extensions](how-to-update-extensions.md), to update, to its newest version, all the SQL artifacts deployed by an extension that is already installed.
- - [View installed extensions](how-to-view-installed-extensions.md) and their corresponding versions.
- - Learn what are the [possible errors](errors-extensions.md) you can receive when managing extensions in an Azure Database for PostgreSQL flexible server, and what could be the cause of each of them.
+- [Allow extensions](how-to-allow-extensions.md) in Azure Database for PostgreSQL Flexible Server.
+- [Load libraries](how-to-load-libraries.md) of extensions that deploy binary libraries. These libraries require allocating and accessing shared memory, and need to be loaded when the server starts.
+- [Create extensions](how-to-create-extensions.md) in some database, so that the SQL objects packaged in that extension are deployed in that database, and can be accessed in its context.
+- [Drop extensions](how-to-drop-extensions.md) from some database, so that the SQL objects packaged in that extension are removed from that database.
+- [Update extensions](how-to-update-extensions.md), to update, to its newest version, all the SQL artifacts deployed by an extension that is already installed.
+- [View installed extensions](how-to-view-installed-extensions.md) and their corresponding versions.
+- Learn what are the [possible errors](errors-extensions.md) you can receive when managing extensions in an Azure Database for PostgreSQL flexible server, and what could be the cause of each of them.
 
 ## Extensions
 
@@ -213,7 +216,11 @@ Customers can't directly grant the necessary permissions. If you need to be able
 ### timescaleDB
 
 The `timescaleDB` extension is a time-series database packaged as an extension for PostgreSQL. It provides time-oriented analytical functions and optimizations and scales Postgres for time-series workloads.
-[Learn more about TimescaleDB](https://docs.timescale.com/timescaledb/latest/), a registered trademark of Timescale, Inc. Azure Database for PostgreSQL flexible server provides the TimescaleDB [Apache-2 edition](https://www.timescale.com/legal/licenses).
+[Learn more about TimescaleDB](https://docs.timescale.com/timescaledb/latest/), a registered trademark of Timescale, Inc.
+
+Azure Database for PostgreSQL flexible server provides the TimescaleDB [Apache-2 edition](https://www.timescale.com/legal/licenses).
+
+The licensing terms of [TimescaleDB Community Edition](https://docs.timescale.com/about/latest/timescaledb-editions/#timescaledb-community-edition) don't allow us to provide that advanced and most feature complete version of TimescaleDB.
 
 #### Install TimescaleDB
 
@@ -264,12 +271,12 @@ More details on these utilities can be found [here](https://github.com/timescale
 
 ## Extensions and major version upgrade
 
-Azure Database for PostgreSQL flexible server offers an [in-place major version upgrade feature](../flexible-server/concepts-major-version-upgrade.md), that performs an in-place upgrade of the Azure Database for PostgreSQL flexible server instance with just a simple interaction from the user. In-place major version upgrade simplifies the Azure Database for PostgreSQL flexible server upgrade process, minimizing the disruption to users and applications accessing the server. In-place major version upgrades don't support specific extensions, and there are some limitations to upgrading certain extensions.
+Azure Database for PostgreSQL flexible server offers an [in-place major version upgrade feature](../flexible-server/concepts-major-version-upgrade.md) that performs an in-place upgrade of the Azure Database for PostgreSQL flexible server instance with just a simple interaction from the user. In-place major version upgrade simplifies the Azure Database for PostgreSQL flexible server upgrade process, minimizing the disruption to users and applications accessing the server. In-place major version upgrades don't support specific extensions, and there are some limitations to upgrading certain extensions.
 
 The extensions `anon`, `Apache AGE`, `dblink`, `orafce`, `pgaudit`, `postgres_fdw`, and `timescaledb` are unsupported for all Azure Database for PostgreSQL flexible server versions when using in-place major version update feature.
 
 ## Related content
 
-- [Allow extensions](how-to-allow-extensions.md).
-- [Special considerations with extensions](concepts-extensions-considerations.md).
-- [List of extensions by name](concepts-extensions-versions.md).
+- [Allow extensions](how-to-allow-extensions.md)
+- [Special considerations with extensions](concepts-extensions-considerations.md)
+- [List of extensions by name](concepts-extensions-versions.md)
