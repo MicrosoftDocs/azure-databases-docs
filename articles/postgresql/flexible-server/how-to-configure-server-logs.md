@@ -60,13 +60,13 @@ You can enable the capture of PostgreSQL server logs and major version upgrade l
 To enable the capture of the logs for download, use this command:
 
 ```azurecli-interactive
-az postgres flexible-server parameter --resource-group <resource_group> --server-name <server> --name logfiles.download_enable --value on
+az postgres flexible-server parameter set --resource-group <resource_group> --server-name <server> --name logfiles.download_enable --value on
 ```
 
 To adjust the retention period for the logs that are captured for download, use this command:
 
 ```azurecli-interactive
-az postgres flexible-server parameter --resource-group <resource_group> --server-name <server> --name logfiles.retention_days --value <retention_period_in_days>
+az postgres flexible-server parameter set --resource-group <resource_group> --server-name <server> --name logfiles.retention_days --value <retention_period_in_days>
 ```
 
 Allowed values for server parameter `logfiles.retention_days` can be between 1 and 7 days. If you try to set it to a different value, you get this error:
