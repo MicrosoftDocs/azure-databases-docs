@@ -1,14 +1,14 @@
 ---
-title: Create extensions
+title: Create Extensions
 description: This article describes how to create extensions in an Azure Database for PostgreSQL flexible server.
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 02/04/2025
+ms.date: 02/07/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: how-to
-#customer intent: As a user, I want to learn how to create extensions in an Azure Database for PostgreSQL flexible server.
+# customer intent: As a user, I want to learn how to create extensions in an Azure Database for PostgreSQL flexible server.
 ---
 
 # Create extensions
@@ -38,13 +38,13 @@ CREATE EXTENSION <extension>;
     CREATE EXTENSION <depending_extension>;
     CREATE EXTENSION <dependent_extension>;
     ```
-    
+
     - [Allowlist](how-to-allow-extensions.md) and run `CREATE EXTENSION` on the dependent extension only, but add the `CASCADE` clause, so that it automatically creates all extensions on which it depends.
 
     ```sql
     CREATE EXTENSION <dependent_extension> CASCADE;
     ```
-    
+
 > [!NOTE]  
 > Third-party extensions offered in Azure Database for PostgreSQL flexible server are open-source licensed code. We don't offer any third-party extensions or extension versions with premium or proprietary licensing models.
 
@@ -52,8 +52,8 @@ Azure Database for PostgreSQL flexible server instance supports a subset of key 
 
 ## Related content
 
-- [Allow extensions](how-to-allow-extensions.md).
-- [Load libraries](how-to-load-libraries.md).
-- [Drop extensions](how-to-drop-extensions.md).
-- [Update extensions](how-to-update-extensions.md).
-- [View installed extensions](how-to-view-installed-extensions.md).
+- [Allow extensions](how-to-allow-extensions.md)
+- [Load libraries](how-to-load-libraries.md)
+- [Drop extensions](how-to-drop-extensions.md)
+- [Update extensions](how-to-update-extensions.md)
+- [View installed extensions](how-to-view-installed-extensions.md)

@@ -2,12 +2,14 @@
 author: akashraokm
 ms.author: akashrao
 ms.reviewer: maghan, randolphwest
-ms.date: 01/29/2025
+ms.date: 02/07/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
-ms.custom: automatically generated
+ms.custom:
+  - automatically generated
 ---
+
 ## address_standardizer
 
 [address_standardizer](http://postgis.net/docs/manual-2.5/Address_Standardizer.html) is used to parse an address into constituent elements. Generally used to support geocoding address normalization step.
@@ -22,8 +24,6 @@ ms.custom: automatically generated
 | 12 | 3.2.3 |
 | 11 | 3.2.3 |
 
-
-
 ## address_standardizer_data_us
 
 [address_standardizer_data_us](http://postgis.net/docs/manual-2.5/Address_Standardizer.html) is the Address Standardizer US dataset example.
@@ -37,8 +37,6 @@ ms.custom: automatically generated
 | 13 | 3.2.3 |
 | 12 | 3.2.3 |
 | 11 | 3.2.3 |
-
-
 
 ## age
 
@@ -70,8 +68,6 @@ ms.custom: automatically generated
 | 12 | 1.2 |
 | 11 | 1.1 |
 
-
-
 ## anon
 
 [anon](https://postgresql-anonymizer.readthedocs.io/en/stable) (Preview) provides data anonymization tools.
@@ -101,8 +97,6 @@ ms.custom: automatically generated
 | 13 | 1.1.0 |
 | 12 | 1.1.0 |
 | 11 | N/A |
-
-
 
 ## azure_storage
 
@@ -134,8 +128,6 @@ ms.custom: automatically generated
 | 12 | 1.0 |
 | 11 | 1.0 |
 
-
-
 ## btree_gin
 
 [btree_gin](https://www.postgresql.org/docs/current/btree-gin.html) provides support for indexing common datatypes in GIN.
@@ -149,8 +141,6 @@ ms.custom: automatically generated
 | 13 | 1.3 |
 | 12 | 1.3 |
 | 11 | 1.3 |
-
-
 
 ## btree_gist
 
@@ -166,8 +156,6 @@ ms.custom: automatically generated
 | 12 | 1.5 |
 | 11 | 1.5 |
 
-
-
 ## citext
 
 [citext](https://www.postgresql.org/docs/current/citext.html) is a data type for case-insensitive character strings.
@@ -181,8 +169,6 @@ ms.custom: automatically generated
 | 13 | 1.6 |
 | 12 | 1.6 |
 | 11 | 1.5 |
-
-
 
 ## cube
 
@@ -198,8 +184,6 @@ ms.custom: automatically generated
 | 12 | 1.4 |
 | 11 | 1.4 |
 
-
-
 ## dblink
 
 [dblink](https://www.postgresql.org/docs/current/dblink.html) to connect to other PostgreSQL databases from within a database.
@@ -214,9 +198,8 @@ ms.custom: automatically generated
 | 12 | 1.2 |
 | 11 | 1.2 |
 
-> [!NOTE]
+> [!NOTE]  
 > Read the special considerations for extension [dblink](../concepts-extensions-considerations.md#dblink) in Flexible Server.
-
 
 ## dict_int
 
@@ -232,8 +215,6 @@ ms.custom: automatically generated
 | 12 | 1.0 |
 | 11 | 1.0 |
 
-
-
 ## dict_xsyn
 
 [dict_xsyn](https://www.postgresql.org/docs/current/dict-xsyn.html) provides a text search dictionary template for extended synonym processing.
@@ -247,8 +228,6 @@ ms.custom: automatically generated
 | 13 | 1.0 |
 | 12 | 1.0 |
 | 11 | 1.0 |
-
-
 
 ## earthdistance
 
@@ -264,8 +243,6 @@ ms.custom: automatically generated
 | 12 | 1.1 |
 | 11 | 1.1 |
 
-
-
 ## fuzzystrmatch
 
 [fuzzystrmatch](https://www.postgresql.org/docs/current/fuzzystrmatch.html) determines similarities and distance between strings.
@@ -279,8 +256,6 @@ ms.custom: automatically generated
 | 13 | 1.1 |
 | 12 | 1.1 |
 | 11 | 1.1 |
-
-
 
 ## hll
 
@@ -296,8 +271,6 @@ ms.custom: automatically generated
 | 12 | 2.18 |
 | 11 | N/A |
 
-
-
 ## hstore
 
 [hstore](https://www.postgresql.org/docs/current/hstore.html) is a data type for storing sets of (key, value) pairs.
@@ -311,8 +284,6 @@ ms.custom: automatically generated
 | 13 | 1.7 |
 | 12 | 1.6 |
 | 11 | 1.5 |
-
-
 
 ## hypopg
 
@@ -328,8 +299,6 @@ ms.custom: automatically generated
 | 12 | 1.4.0 |
 | 11 | 1.4.0 |
 
-
-
 ## intagg
 
 [intagg](https://www.postgresql.org/docs/current/intagg.html) is an obsolete extension that provides an integer aggregator and enumerator.
@@ -343,8 +312,6 @@ ms.custom: automatically generated
 | 13 | 1.1 |
 | 12 | 1.1 |
 | 11 | 1.1 |
-
-
 
 ## intarray
 
@@ -360,8 +327,6 @@ ms.custom: automatically generated
 | 12 | 1.2 |
 | 11 | 1.2 |
 
-
-
 ## isn
 
 [isn](https://www.postgresql.org/docs/current/isn.html) provides data types for international product numbering standards.
@@ -375,8 +340,6 @@ ms.custom: automatically generated
 | 13 | 1.2 |
 | 12 | 1.2 |
 | 11 | 1.2 |
-
-
 
 ## lo
 
@@ -392,8 +355,6 @@ ms.custom: automatically generated
 | 12 | 1.1 |
 | 11 | 1.1 |
 
-
-
 ## login_hook
 
 [login_hook](https://github.com/splendiddata/login_hook) is a hook to execute `login_hook.login()` at login time.
@@ -407,8 +368,6 @@ ms.custom: automatically generated
 | 13 | 1.4 |
 | 12 | 1.4 |
 | 11 | 1.4 |
-
-
 
 ## ltree
 
@@ -424,8 +383,6 @@ ms.custom: automatically generated
 | 12 | 1.1 |
 | 11 | 1.1 |
 
-
-
 ## oracle_fdw
 
 [oracle_fdw](https://github.com/laurenz/oracle_fdw) is a foreign data wrapper for Oracle databases.
@@ -439,8 +396,6 @@ ms.custom: automatically generated
 | 13 | 1.2 |
 | 12 | 1.2 |
 | 11 | N/A |
-
-
 
 ## orafce
 
@@ -456,8 +411,6 @@ ms.custom: automatically generated
 | 12 | 3.18 |
 | 11 | 3.7 |
 
-
-
 ## pageinspect
 
 [pageinspect](https://www.postgresql.org/docs/current/pageinspect.html) inspects the contents of database pages at a low level.
@@ -471,8 +424,6 @@ ms.custom: automatically generated
 | 13 | 1.8 |
 | 12 | 1.7 |
 | 11 | 1.7 |
-
-
 
 ## pgaudit
 
@@ -504,9 +455,8 @@ ms.custom: automatically generated
 | 12 | 1.3 |
 | 11 | 1.3 |
 
-> [!NOTE]
+> [!NOTE]  
 > Read the special considerations for extension [pg_buffercache](../concepts-extensions-considerations.md#pg_buffercache) in Flexible Server.
-
 
 ## pg_cron
 
@@ -523,9 +473,8 @@ ms.custom: automatically generated
 | 11 | 1.4-1 <sup>*</sup> |
 
 <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
-> [!NOTE]
+> [!NOTE]  
 > Read the special considerations for extension [pg_cron](../concepts-extensions-considerations.md#pg_cron) in Flexible Server.
-
 
 ## pgcrypto
 
@@ -541,8 +490,6 @@ ms.custom: automatically generated
 | 12 | 1.3 |
 | 11 | 1.3 |
 
-
-
 ## pg_diskann
 
 [pg_diskann](../../flexible-server/how-to-use-pgdiskann.md) (Preview) is a scalable approximate nearest neighbor search algorithm for efficient vector search at any scale.
@@ -556,8 +503,6 @@ ms.custom: automatically generated
 | 13 | N/A |
 | 12 | N/A |
 | 11 | N/A |
-
-
 
 ## pg_failover_slots
 
@@ -574,9 +519,8 @@ ms.custom: automatically generated
 | 11 | 1.0.1 <sup>*</sup> |
 
 <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
-> [!NOTE]
+> [!NOTE]  
 > Read the special considerations for extension [pg_failover_slots](../concepts-extensions-considerations.md#pg_failover_slots) in Flexible Server.
-
 
 ## pg_freespacemap
 
@@ -591,8 +535,6 @@ ms.custom: automatically generated
 | 13 | 1.2 |
 | 12 | 1.2 |
 | 11 | 1.2 |
-
-
 
 ## pg_hint_plan
 
@@ -609,9 +551,8 @@ ms.custom: automatically generated
 | 11 | 1.3.7 <sup>*</sup> |
 
 <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
-> [!NOTE]
+> [!NOTE]  
 > Read the special considerations for extension [pg_hint_plan](../concepts-extensions-considerations.md#pg_hint_plan) in Flexible Server.
-
 
 ## pglogical
 
@@ -660,9 +601,8 @@ ms.custom: automatically generated
 | 11 | 1.2 <sup>*</sup> |
 
 <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
-> [!NOTE]
+> [!NOTE]  
 > Read the special considerations for extension [pg_prewarm](../concepts-extensions-considerations.md#pg_prewarm) in Flexible Server.
-
 
 ## pg_repack
 
@@ -678,9 +618,8 @@ ms.custom: automatically generated
 | 12 | 1.4.7 |
 | 11 | 1.4.7 |
 
-> [!NOTE]
+> [!NOTE]  
 > Read the special considerations for extension [pg_repack](../concepts-extensions-considerations.md#pg_repack) in Flexible Server.
-
 
 ## pgrouting
 
@@ -696,8 +635,6 @@ ms.custom: automatically generated
 | 12 | 3.3.0 |
 | 11 | 3.3.0 |
 
-
-
 ## pgrowlocks
 
 [pgrowlocks](https://www.postgresql.org/docs/current/pgrowlocks.html) shows row-level locking information.
@@ -711,8 +648,6 @@ ms.custom: automatically generated
 | 13 | 1.2 |
 | 12 | 1.2 |
 | 11 | 1.2 |
-
-
 
 ## pg_squeeze
 
@@ -745,9 +680,8 @@ ms.custom: automatically generated
 | 11 | 1.6 <sup>*</sup> |
 
 <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
-> [!NOTE]
+> [!NOTE]  
 > Read the special considerations for extension [pg_stat_statements](../concepts-extensions-considerations.md#pg_stat_statements) in Flexible Server.
-
 
 ## pgstattuple
 
@@ -763,9 +697,8 @@ ms.custom: automatically generated
 | 12 | 1.5 |
 | 11 | 1.5 |
 
-> [!NOTE]
+> [!NOTE]  
 > Read the special considerations for extension [pgstattuple](../concepts-extensions-considerations.md#pgstattuple) in Flexible Server.
-
 
 ## pg_trgm
 
@@ -781,8 +714,6 @@ ms.custom: automatically generated
 | 12 | 1.4 |
 | 11 | 1.4 |
 
-
-
 ## pg_visibility
 
 [pg_visibility](https://www.postgresql.org/docs/current/pgvisibility.html) examines the visibility map and page-level visibility info.
@@ -796,8 +727,6 @@ ms.custom: automatically generated
 | 13 | 1.2 |
 | 12 | 1.2 |
 | 11 | 1.2 |
-
-
 
 ## plpgsql
 
@@ -813,8 +742,6 @@ ms.custom: automatically generated
 | 12 | 1.0 |
 | 11 | 1.0 |
 
-
-
 ## plv8
 
 [plv8](https://github.com/plv8/plv8) pL/JavaScript (v8) is a trusted procedural language.
@@ -828,8 +755,6 @@ ms.custom: automatically generated
 | 13 | 3.0.0 |
 | 12 | 3.0.0 |
 | 11 | 3.0.0 |
-
-
 
 ## postgis
 
@@ -845,8 +770,6 @@ ms.custom: automatically generated
 | 12 | 3.2.3 |
 | 11 | 3.2.3 |
 
-
-
 ## postgis_raster
 
 [postgis_raster](https://www.postgis.net) raster types and functions.
@@ -860,8 +783,6 @@ ms.custom: automatically generated
 | 13 | 3.2.3 |
 | 12 | 3.2.3 |
 | 11 | 3.2.3 |
-
-
 
 ## postgis_sfcgal
 
@@ -877,8 +798,6 @@ ms.custom: automatically generated
 | 12 | 3.2.3 |
 | 11 | 3.2.3 |
 
-
-
 ## postgis_tiger_geocoder
 
 [postgis_tiger_geocoder](https://www.postgis.net) tiger geocoder and reverse geocoder.
@@ -892,8 +811,6 @@ ms.custom: automatically generated
 | 13 | 3.2.3 |
 | 12 | 3.2.3 |
 | 11 | 3.2.3 |
-
-
 
 ## postgis_topology
 
@@ -909,8 +826,6 @@ ms.custom: automatically generated
 | 12 | 3.2.3 |
 | 11 | 3.2.3 |
 
-
-
 ## postgres_fdw
 
 [postgres_fdw](https://www.postgresql.org/docs/current/postgres-fdw.html) is a foreign-data wrapper for remote PostgreSQL servers.
@@ -925,9 +840,8 @@ ms.custom: automatically generated
 | 12 | 1.0 |
 | 11 | 1.0 |
 
-> [!NOTE]
+> [!NOTE]  
 > Read the special considerations for extension [postgres_fdw](../concepts-extensions-considerations.md#postgres_fdw) in Flexible Server.
-
 
 ## postgres_protobuf
 
@@ -943,8 +857,6 @@ ms.custom: automatically generated
 | 12 | 0.2 |
 | 11 | N/A |
 
-
-
 ## semver
 
 [semver](https://pgxn.org/dist/semver/doc/semver.html) provides a semantic version data type.
@@ -958,8 +870,6 @@ ms.custom: automatically generated
 | 13 | 0.32.0 |
 | 12 | 0.32.0 |
 | 11 | 0.32.0 |
-
-
 
 ## session_variable
 
@@ -975,8 +885,6 @@ ms.custom: automatically generated
 | 12 | 3.3 |
 | 11 | 3.3 |
 
-
-
 ## sslinfo
 
 [sslinfo](https://www.postgresql.org/docs/current/sslinfo.html) provides information about SSL certificates.
@@ -990,8 +898,6 @@ ms.custom: automatically generated
 | 13 | 1.2 |
 | 12 | 1.2 |
 | 11 | 1.2 |
-
-
 
 ## tablefunc
 
@@ -1007,8 +913,6 @@ ms.custom: automatically generated
 | 12 | 1.0 |
 | 11 | 1.0 |
 
-
-
 ## tdigest
 
 [tdigest](https://github.com/tvondra/tdigest) implements t-digest, a data structure for on-line accumulation of rank-based statistics such as quantiles and trimmed means.
@@ -1023,8 +927,6 @@ ms.custom: automatically generated
 | 12 | 1.4.2 |
 | 11 | N/A |
 
-
-
 ## tds_fdw
 
 [tds_fdw](https://github.com/tds-fdw/tds_fdw) is a foreign data wrapper for querying a TDS database (SAP ASE or SQL Server).
@@ -1038,8 +940,6 @@ ms.custom: automatically generated
 | 13 | 2.0.3 |
 | 12 | 2.0.3 |
 | 11 | 2.0.3 |
-
-
 
 ## timescaledb
 
@@ -1071,8 +971,6 @@ ms.custom: automatically generated
 | 12 | N/A |
 | 11 | N/A |
 
-
-
 ## tsm_system_rows
 
 [tsm_system_rows](https://www.postgresql.org/docs/13/tsm-system-rows.html) is a `TABLESAMPLE` method which accepts number of rows as a limit.
@@ -1086,8 +984,6 @@ ms.custom: automatically generated
 | 13 | 1.0 |
 | 12 | 1.0 |
 | 11 | 1.0 |
-
-
 
 ## tsm_system_time
 
@@ -1103,8 +999,6 @@ ms.custom: automatically generated
 | 12 | 1.0 |
 | 11 | 1.0 |
 
-
-
 ## unaccent
 
 [unaccent](https://www.postgresql.org/docs/current/unaccent.html) provides a text search dictionary that removes accents.
@@ -1118,8 +1012,6 @@ ms.custom: automatically generated
 | 13 | 1.1 |
 | 12 | 1.1 |
 | 11 | 1.1 |
-
-
 
 ## uuid-ossp
 
@@ -1135,8 +1027,6 @@ ms.custom: automatically generated
 | 12 | 1.1 |
 | 11 | 1.1 |
 
-
-
 ## vector
 
 [vector](https://github.com/pgvector/pgvector) is a vector data type and `ivfflat` and `hnsw` access methods.
@@ -1150,6 +1040,3 @@ ms.custom: automatically generated
 | 13 | 0.7.0 |
 | 12 | 0.7.0 |
 | 11 | 0.5.1 |
-
-
-

@@ -8,7 +8,7 @@ ms.date: 02/10/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: concept-article
-#customer intent: As a user, I want to learn what are extensions in an Azure Database for PostgreSQL flexible server.
+# customer intent: As a user, I want to learn what are extensions in an Azure Database for PostgreSQL flexible server.
 ---
 
 # Extensions
@@ -24,7 +24,7 @@ When extensions are created (installed) in a database, they deploy a set of bund
 
 When extensions are dropped (uninstalled) from a database, if there are no dependencies on any of the objects defined by the extension, all the objects that were created by the extension are removed.
 
-To define an extension, it's at least required one **script file**, that contains the SQL commands to create the extension's objects, and one **control file**, that specifies a few basic properties of the extension itself. 
+To define an extension, it's at least required one **script file**, that contains the SQL commands to create the extension's objects, and one **control file**, that specifies a few basic properties of the extension itself.
 
 The implementation of the functionality provided by those extension's objects can be written in SQL or PL/pgSQL. It can also be implemented in a separate shared library file (a binary file), which is the result of compiling the source code (typically written in C or Rust) that actually implements the functionality.
 
@@ -45,6 +45,6 @@ Through the use of these modules, PostgreSQL supports the following forms of ext
 
 ## Related content
 
-- [Allow extensions](how-to-allow-extensions.md).
-- [Special considerations with extensions](concepts-extensions-considerations.md).
-- [List of extensions by name](concepts-extensions-versions.md).
+- [Allow extensions](how-to-allow-extensions.md)
+- [Special considerations with extensions](concepts-extensions-considerations.md)
+- [List of extensions by name](concepts-extensions-versions.md)
