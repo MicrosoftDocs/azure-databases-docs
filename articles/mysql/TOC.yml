@@ -24,28 +24,24 @@
         href: flexible-server/whats-new.md
       - name: Release notes
         items:
-          - name: 2025 Release Notes
-            items:
-            - name: February 2025
-              href: flexible-server/release-notes/february-2025.md
-          - name: 2024 Release Notes
-            items:
-            - name: January 2024
-              href: flexible-server/release-notes/january-2024.md
-            - name: February 2024
-              href: flexible-server/release-notes/february-2024.md
-            - name: April 2024
-              href: flexible-server/release-notes/april-2024.md
-            - name: May 2024
-              href: flexible-server/release-notes/may-2024.md
-            - name: June 2024
-              href: flexible-server/release-notes/june-2024.md
-            - name: August 2024
-              href: flexible-server/release-notes/august-2024.md
-            - name: September 2024
-              href: flexible-server/release-notes/september-2024.md
-            - name: October 2024
-              href: flexible-server/release-notes/october-2024.md
+          - name: February 2025
+            href: flexible-server/release-notes/february-2025.md
+          - name: January 2024
+            href: flexible-server/release-notes/january-2024.md
+          - name: February 2024
+            href: flexible-server/release-notes/february-2024.md
+          - name: April 2024
+            href: flexible-server/release-notes/april-2024.md
+          - name: May 2024
+            href: flexible-server/release-notes/may-2024.md
+          - name: June 2024
+            href: flexible-server/release-notes/june-2024.md
+          - name: August 2024
+            href: flexible-server/release-notes/august-2024.md
+          - name: September 2024
+            href: flexible-server/release-notes/september-2024.md
+          - name: October 2024
+            href: flexible-server/release-notes/october-2024.md
       - name: Service tiers
         href: flexible-server/concepts-service-tiers-storage.md
   - name: Quickstarts

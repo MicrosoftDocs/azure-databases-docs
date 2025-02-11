@@ -4,7 +4,7 @@ description: Get an introduction to using the migration service to migrate to Az
 author: hariramt
 ms.author: hariramt
 ms.reviewer: maghan
-ms.date: 01/24/2025
+ms.date: 02/07/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: overview
@@ -114,6 +114,3 @@ The migration service for Azure Database for PostgreSQL is a hosted solution. It
 - [Premigration validations](concepts-premigration-migration-service.md)
 - [Migration from Azure Database for PostgreSQL - Single Server](tutorial-migration-service-single-to-flexible.md)
 - [Migrate from on-premises and Azure VMs](tutorial-migration-service-iaas.md)
-- [Migrate from Amazon RDS for PostgreSQL](tutorial-migration-service-aws.md)
-- [Network setup](how-to-network-setup-migration-service.md)
-- [Known issues and limitations](concepts-known-issues-migration-service.md)

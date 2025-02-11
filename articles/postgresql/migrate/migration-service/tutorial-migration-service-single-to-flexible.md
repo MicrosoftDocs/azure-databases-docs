@@ -5,7 +5,7 @@ description: "Learn about migrating your Single Server databases to Azure Databa
 author: hariramt
 ms.author: hariramt
 ms.reviewer: maghan, adityaduvuri
-ms.date: 01/24/2025
+ms.date: 02/07/2025
 ms.service: azure-database-postgresql
 ms.subservice: migration-guide
 ms.topic: tutorial
@@ -67,7 +67,6 @@ After migration, you can perform the following tasks:
 ## Related content
 
 - [Migration service](concepts-migration-service-postgresql.md)
-- [Migrate from AWS RDS](tutorial-migration-service-aws.md)
 - [Best practices](best-practices-migration-service-postgresql.md)
 - [Known Issues and limitations](concepts-known-issues-migration-service.md)
 - [Network setup](how-to-network-setup-migration-service.md)

@@ -3,7 +3,7 @@ title: How to Set up Azure CLI for Migration Service in Azure Database for Postg
 description: Learn how to set up Azure CLI for migration service in Azure Database for PostgreSQL - Flexible Server and begin migrating your data.
 author: markingmyname
 ms.author: maghan
-ms.date: 01/24/2025
+ms.date: 02/07/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: how-to
@@ -30,6 +30,14 @@ These steps prepare your environment for using the Azure CLI to manage the migra
 ## Set up CLI commands for the migration service
 
 All the CLI commands start with `az postgres flexible-server migration`. There are also help statements provided to assist you in understanding the various options and framing the correct syntax for the CLI commands.
+
+## Steps to set up CLI commands
+
+1. **Install Azure CLI**: Follow the instructions provided in the official Azure documentation to install the Azure CLI - [How to install the Azure CLI](/cli/azure/install-azure-cli).
+
+2. **Check Azure CLI Version**: Ensure that your Azure CLI version is at least 2.56.0 or higher. Use the command `az --version` to check your current version.
+
+3. **Sign in to Azure**: After installation, execute `az login` to authenticate. This opens your default browser to complete the sign-in process with your Azure credentials.
 
 Once the CLI is installed, open the command prompt and log into the Azure account using the following command.
 
@@ -157,9 +165,4 @@ The `az postgres flexible-server migration create` command requires a JSON file 
 
 - [What is the migration service in Azure Database for PostgreSQL?](overview-migration-service-postgresql.md)
 - [Tutorial: Migrate from Azure Database for PostgreSQL - Single Server to Flexible Server with the migration service](tutorial-migration-service-single-to-flexible.md)
-- [Tutorial: Migrate offline from Amazon RDS for PostgreSQL to Azure Database for PostgreSQL with the migration service](tutorial-migration-service-aws-offline.md)
-- [Tutorial: Migrate online from Amazon RDS for PostgreSQL to Azure Database for PostgreSQL with the migration service Preview](tutorial-migration-service-aws-online.md)
-- [Tutorial: Migrate offline from Amazon Aurora PostgreSQL to Azure Database for PostgreSQL with the migration service](tutorial-migration-service-aurora-offline.md)
-- [Tutorial: Migrate online from Amazon Aurora PostgreSQL to Azure Database for PostgreSQL with the migration service](tutorial-migration-service-aurora-online.md)
 - [Tutorial: Migrate offline from an Azure VM or an on-premises PostgreSQL server to Azure Database for PostgreSQL with the migration service](tutorial-migration-service-iaas-offline.md)
-- [Tutorial: Migrate online from an Azure VM or an on-premises PostgreSQL server to Azure Database for PostgreSQL with the migration service Preview](tutorial-migration-service-iaas-online.md)

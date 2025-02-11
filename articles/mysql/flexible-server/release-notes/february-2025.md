@@ -30,7 +30,6 @@ az mysql flexible-server show --resource-group {resource group name} --name {ser
 > [!NOTE]  
 > You must have the Azure CLI installed and updated to the latest version to run the above CLI command.
 
-
 ## Features
 
 - Support customer managed plugin enablement for MySQL Flexible Server: validate_password are supported.
