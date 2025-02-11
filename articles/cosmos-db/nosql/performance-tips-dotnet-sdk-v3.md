@@ -39,7 +39,7 @@ Reducing the frequency of garbage collection can help in some cases. In .NET, se
 If you're testing at high throughput levels, or at rates that are greater than 50,000 Request Units per second (RU/s), the client application could become a workload bottleneck. This is because the machine might cap out on CPU or network utilization. If you reach this point, you can continue to push the Azure Cosmos DB account further by scaling out your client applications across multiple servers.
 
 > [!NOTE] 
-> High CPU usage can cause increased latency and request timeout exceptions.
+> High CPU usage can cause increased latency and request time-out exceptions.
 
 ## <a id="metadata-operations"></a> Metadata operations
 
