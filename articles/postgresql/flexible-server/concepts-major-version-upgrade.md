@@ -53,7 +53,7 @@ Here are some of the important considerations with in-place major version upgrad
 
 After the major version upgrade is complete, we recommend running the `ANALYZE` command  in each database to refresh the [`pg_statistic`](https://www.postgresql.org/docs/current/catalog-pg-statistic.html) table. Otherwise, you could run into performance issues.
 
-```SQL
+```sql
 postgres=> analyze;
 ANALYZE
 ```
@@ -90,11 +90,11 @@ If precheck operations fail for an in-place major version upgrade, the upgrade f
 
       - If network rules aren't set up properly, HA isn't enabled automatically after a major version upgrade, and you should manually enable HA. Modify your NSG rules to allow traffic for the destination ports and storage, and to enable an HA feature on the server.
 
-- In-place major version upgrades don't support certain extensions, and there are some limitations to upgrading certain extensions. 
-- 
-    - The following extensions are unsupported for all PostgreSQL versions: `Timescaledb`, `pgaudit`, `dblink`, `orafce`, `pg_partman`, `postgres_fdw`.
+- In-place major version upgrades don't support certain extensions, and there are some limitations to upgrading certain extensions.
+
+  - The following extensions are unsupported for all PostgreSQL versions: `Timescaledb`, `pgaudit`, `dblink`, `orafce`, `pg_partman`, `postgres_fdw`.
   
-    - `pgrouting` extensions in not unsupported when the upgrade target is Postgres 16 and above.
+  - The `pgrouting` extension is not supported when the upgrade target is Postgres 16 and above.
 
 - When you're upgrading servers with the PostGIS extension installed, set the `search_path` server parameter to explicitly include:
   

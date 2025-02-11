@@ -4,7 +4,7 @@ description: "Learn to migrate seamlessly from Azure VM or an on-premises Postgr
 author: apduvuri
 ms.author: adityaduvuri
 ms.reviewer: maghan
-ms.date: 01/24/2025
+ms.date: 02/07/2025
 ms.service: azure-database-postgresql
 ms.subservice: migration-guide
 ms.topic: tutorial
@@ -296,7 +296,6 @@ Copy other server settings, such as tags, alerts, and firewall rules (if applica
 ## Related content
 
 - [Migration service](concepts-migration-service-postgresql.md)
-- [Migrate from AWS RDS](tutorial-migration-service-aws.md)
 - [Best practices](best-practices-migration-service-postgresql.md)
 - [Known Issues and limitations](concepts-known-issues-migration-service.md)
 - [Network setup](how-to-network-setup-migration-service.md)

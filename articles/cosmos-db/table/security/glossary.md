@@ -8,12 +8,10 @@ ms.reviewer: stefarroyo
 ms.service: azure-cosmos-db
 ms.subservice: table
 ms.topic: glossary
-ms.date: 12/18/2024
+ms.date: 02/05/2025
 ai-usage: ai-assisted
 appliesto:
   - ✅ Table
-hidden: true
-ROBOTS: NOINDEX, NOFOLLOW
 ---
 
 # Security glossary for Azure Cosmos DB for Table

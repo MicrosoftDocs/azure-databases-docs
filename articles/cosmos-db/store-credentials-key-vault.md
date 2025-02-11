@@ -8,7 +8,7 @@ ms.author: iriaosara
 ms.service: azure-cosmos-db
 ms.devlang: csharp
 ms.topic: how-to
-ms.date: 11/07/2022
+ms.date: 02/03/2025
 ---
 
 # Tutorial: Store and use Azure Cosmos DB credentials with Azure Key Vault
@@ -128,7 +128,7 @@ Now, store your Azure Cosmos DB credentials as secrets in the key vault.
 1. Select each key, select the latest version, and then copy the **Secret Identifier**. You'll use the identifier for the **cosmos-endpoint** and **cosmos-readwrite-key** secrets later in this tutorial.
 
     > [!TIP]
-    > The secret identifier will be in this format `https://<key-vault-name>.vault.azure.net/secrets/<secret-name>/<version-id>`. For example, if the name of the key vault is **msdocs-key-vault**, the name of the key is **cosmos-readwrite-key**, and the version if **83b995e363d947999ac6cf487ae0e12e**; then the secret identifier would be `https://msdocs-key-vault.vault.azure.net/secrets/cosmos-readwrite-key/83b995e363d947999ac6cf487ae0e12e`.
+    > The secret identifier is in this format `https://<key-vault-name>.vault.azure.net/secrets/<secret-name>/<version-id>`. For example, if the name of the key vault is **msdocs-key-vault**, the name of the key is **cosmos-readwrite-key**, and the version is **aaaaaaaa-0b0b-1c1c-2d2d-333333333333**; then the secret identifier is `https://msdocs-key-vault.vault.azure.net/secrets/cosmos-readwrite-key/aaaaaaaa-0b0b-1c1c-2d2d-333333333333`:
     >
     > :::image type="content" source="media/access-secrets-from-keyvault/view-secret-identifier.png" alt-text="Screenshot of a secret identifier for a key vault secret named cosmos-readwrite-key.":::
     >
@@ -214,10 +214,10 @@ Finally, inject the secrets stored in your key vault as app settings within the 
     | **Key** | Get the **secret identifier** for the **cosmos-endpoint** secret in your key vault that you created earlier in this tutorial. Enter the identifier in the following format: `@Microsoft.KeyVault(SecretUri=<secret-identifier>)`. |
 
     > [!TIP]
-    > Ensure that the environment variable has a double underscore (`__`) value instead of a single underscore. The double-underscore is a key delimeter supported by .NET on all platforms. For more information, see [environment variables configuration](/dotnet/core/extensions/configuration-providers#environment-variable-configuration-provider).
+    > Ensure that the environment variable has a double underscore (`__`) value instead of a single underscore. The double-underscore is a key delimiter supported by .NET on all platforms. For more information, see [environment variables configuration](/dotnet/core/extensions/configuration-providers#environment-variable-configuration-provider).
 
     > [!NOTE]
-    > For example, if the secret identifier is `https://msdocs-key-vault.vault.azure.net/secrets/cosmos-endpoint/69621c59ef5b4b7294b5def118921b07`, then the reference would be `@Microsoft.KeyVault(SecretUri=https://msdocs-key-vault.vault.azure.net/secrets/cosmos-endpoint/69621c59ef5b4b7294b5def118921b07)`.
+    > For example, if the secret identifier is `https://msdocs-key-vault.vault.azure.net/secrets/cosmos-endpoint/AB0CD1EF2GH3IJ4KL5MN6OP7QR8ST9`, then the reference is `@Microsoft.KeyVault(SecretUri=https://msdocs-key-vault.vault.azure.net/secrets/cosmos-endpoint/AB0CD1EF2GH3IJ4KL5MN6OP7QR8ST9)`:
     >
     > :::image type="content" source="media/access-secrets-from-keyvault/create-app-setting.png" alt-text="Screenshot of the Add/Edit application setting dialog with a new app setting referencing a key vault secret.":::
     >

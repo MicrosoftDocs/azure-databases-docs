@@ -24,7 +24,7 @@ In this article, you can learn:
 
 1. Enable troubleshooting guides by following the steps described in [use troubleshooting guides](how-to-troubleshooting-guides.md).
 
-2. Configure the `auto_explain` extension by [allowlisting](../extensions/how-to-allow-extensions.md#allow-extensions) and [loading](../extensions/how-to-allow-extensions.md#load-libraries) the extension.
+2. Configure the `auto_explain` extension by [allowlisting](../extensions/how-to-allow-extensions.md#allow-extensions) and [loading](../extensions/how-to-load-libraries.md) the extension.
 
 3. After the `auto_explain` extension is configured, change the following [server parameters](concepts-server-parameters.md), which control the behavior of the extension:
 
@@ -122,7 +122,7 @@ Output: c_id, c_w_id, c_balance
 The query ran for ~2.5 minutes, as shown in troubleshooting guide. The `duration` value of 150692.864 ms from the execution plan output fetched confirms it. Use the output of EXPLAIN ANALYZE to troubleshoot further and tune the query.
 
 > [!NOTE]  
-> Observer that the query ran 22 times during the interval, and the logs shown contain oneof  such entries captured during the interval.
+> Observe that the query ran 22 times during the interval, and the logs shown contain such entries captured during the interval.
 
 ## Identify slow-running query in a stored procedure
 

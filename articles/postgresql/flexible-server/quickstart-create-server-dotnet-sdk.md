@@ -54,7 +54,7 @@ Before using the Azure SDK for .NET to create, update, or delete an Azure Databa
 
 Log in to your account using [az CLI](/cli/azure/authenticate-azure-cli-interactively)
 
-```azurecli
+```azurecli-interactive
 az login
 ```
 

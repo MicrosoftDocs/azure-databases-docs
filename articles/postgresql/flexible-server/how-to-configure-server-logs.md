@@ -1,17 +1,17 @@
 ---
-title: Configure capture of server logs
-description: This article describes how to configure, list, and download PostgreSQL server logs and major version upgrade logs.
+title: Download PostgreSQL and upgrade logs
+description: This article describes how to configure, list, and download PostgreSQL and upgrade logs.
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 01/07/2025
+ms.date: 02/03/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: how-to
-# customer intent: As a user, I want to learn about how to configure my Azure Database for PostgreSQL flexible server, so that I can download PostgreSQL server logs and major version upgrade logs for further inspection.
+# customer intent: As a user, I want to learn how to configure, list, and download PostgreSQL and upgrade logs.
 ---
 
-# Configure capture of PostgreSQL server logs and major version upgrade logs
+# Download PostgreSQL and upgrade logs
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
@@ -21,7 +21,7 @@ By default, capturing server logs for download in an Azure Database for PostgreS
 
 This article explains how to enable and disable the feature. It also describes how you can list all available server logs, and how can you download any of them.
 
-## Enable the capture of PostgreSQL server logs and major version upgrade logs for download
+## Steps to enable the capture of PostgreSQL and upgrade logs for download
 
 ### [Portal](#tab/portal-enable-capture-of-logs)
 
@@ -60,13 +60,13 @@ You can enable the capture of PostgreSQL server logs and major version upgrade l
 To enable the capture of the logs for download, use this command:
 
 ```azurecli-interactive
-az postgres flexible-server parameter --resource-group <resource_group> --server-name <server> --name logfiles.download_enable --value on
+az postgres flexible-server parameter set --resource-group <resource_group> --server-name <server> --name logfiles.download_enable --value on
 ```
 
 To adjust the retention period for the logs that are captured for download, use this command:
 
 ```azurecli-interactive
-az postgres flexible-server parameter --resource-group <resource_group> --server-name <server> --name logfiles.retention_days --value <retention_period_in_days>
+az postgres flexible-server parameter set --resource-group <resource_group> --server-name <server> --name logfiles.retention_days --value <retention_period_in_days>
 ```
 
 Allowed values for server parameter `logfiles.retention_days` can be between 1 and 7 days. If you try to set it to a different value, you get this error:
@@ -84,7 +84,7 @@ Message: The value: [<value>] of Server Parameter: [logfiles.retention_days] is 
 > * Initially, and for approximately one hour, server logs occupy data disk space. Then, they're moved to backup storage and kept there for the configured retention period.
 
 
-## Disable the capture of PostgreSQL server logs and major version upgrade logs for download
+## Steps to disable the capture of PostgreSQL and upgrade logs for download
 
 ### [Portal](#tab/portal-disable-capture-of-logs)
 
@@ -124,7 +124,7 @@ az postgres flexible-server parameter --resource-group <resource_group> --server
 
 ---
 
-## List captured logs available for download
+## Steps to list captured logs available for download
 
 ### [Portal](#tab/portal-list-captured-logs)
 
@@ -178,7 +178,7 @@ az postgres flexible-server server-logs list --resource-group <resource_group> -
 
 ---
 
-## Download captured logs available for download
+## Steps to download captured logs
 
 ### [Portal](#tab/portal-download-captured-logs)
 
@@ -227,10 +227,7 @@ az postgres flexible-server server-logs download --resource-group <resource_grou
 
 ## Related content
 
-- [Restart an instance of Azure Database for PostgreSQL flexible server](how-to-restart-server.md).
-- [Start an instance of Azure Database for PostgreSQL flexible server](how-to-start-server.md).
-- [Stop an instance of Azure Database for PostgreSQL flexible server](how-to-stop-server.md).
-- [Restart an instance of Azure Database for PostgreSQL flexible server](how-to-restart-server.md).
-- [Compute options in Azure Database for PostgreSQL - Flexible Server](concepts-compute.md).
-- [Storage options in Azure Database for PostgreSQL - Flexible Server](concepts-storage.md).
-- [Limits in Azure Database for PostgreSQL - Flexible Server](concepts-limits.md).
+- [Configure high availability](how-to-configure-high-availability.md).
+- [Configure scheduled maintenance](how-to-configure-scheduled-maintenance.md).
+- [Create alerts on metrics using portal](how-to-alert-on-metrics.md).
+

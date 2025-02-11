@@ -4,7 +4,7 @@ description: "Learn to migrate offline seamlessly from Google Cloud SQL for Post
 author: apduvuri
 ms.author: adityaduvuri
 ms.reviewer: maghan
-ms.date: 01/24/2025
+ms.date: 02/07/2025
 ms.service: azure-database-postgresql
 ms.subservice: migration-guide
 ms.topic: tutorial
@@ -289,5 +289,4 @@ After migration, you can perform the following tasks:
 
 - [Migrate online from Google Cloud SQL for PostgreSQL](tutorial-migration-service-cloud-sql-online.md)
 - [Migration service](concepts-migration-service-postgresql.md)
-- [Migrate from on-premises and Azure VMs](tutorial-migration-service-iaas.md)
 - [Known Issues and limitations](concepts-known-issues-migration-service.md)

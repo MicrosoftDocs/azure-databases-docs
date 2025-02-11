@@ -17,6 +17,8 @@ Serverless computing is all about the ability to focus on individual pieces of l
 
 With the native integration between [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db) and Azure Functions, you can create database triggers, input bindings, and output bindings directly from your Azure Cosmos DB account. Using Azure Functions and Azure Cosmos DB, you can create and deploy event-driven serverless apps with low-latency access to rich data for a global user base.
 
+Azure Functions can create isolated database connections per invocation if the database client is not properly managed, which may impact connection performance under high concurrency, particularly in the Consumption plan. However, when using Cosmos DB bindings or triggers, Azure Functions internally reuses a shared Cosmos DB SDK client, ensuring efficient connection pooling across multiple invocations. Azure Cosmos DB supports both an HTTP-based and a TCP-based [connectivity modes](sdk-connection-modes.md). This architecture supports scalable and high-performance workloads that require dynamic data access.
+
 ## Overview
 
 Azure Cosmos DB and Azure Functions enable you to integrate your databases and serverless apps in the following ways:

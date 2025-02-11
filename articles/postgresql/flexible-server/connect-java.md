@@ -92,7 +92,7 @@ Replace the placeholders with the following values, which are used throughout th
 
 Next, create a resource group by using the following command:
 
-```azurecli
+```azurecli-interactive
 az group create \
     --name $AZ_RESOURCE_GROUP \
     --location $AZ_LOCATION \
@@ -114,13 +114,13 @@ The first thing you create is a managed Azure Database for PostgreSQL flexible s
 
 If you're using Azure CLI, run the following command to make sure it has sufficient permission:
 
-```azurecli
+```azurecli-interactive
 az login --scope https://graph.microsoft.com/.default
 ```
 
 Run the following command to create the server:
 
-```azurecli
+```azurecli-interactive
 az postgres flexible-server create \
     --resource-group $AZ_RESOURCE_GROUP \
     --name $AZ_DATABASE_SERVER_NAME \
@@ -136,7 +136,7 @@ To set up a Microsoft Entra administrator after creating the server, follow the 
 
 #### [Password](#tab/password)
 
-```azurecli
+```azurecli-interactive
 az postgres flexible-server create \
     --resource-group $AZ_RESOURCE_GROUP \
     --name $AZ_DATABASE_SERVER_NAME \
@@ -159,7 +159,7 @@ Azure Database for PostgreSQL flexible server instances are secured by default. 
 
 Because you configured your local IP address at the beginning of this article, you can open the server's firewall by running the following command:
 
-```azurecli
+```azurecli-interactive
 az postgres flexible-server firewall-rule create \
     --resource-group $AZ_RESOURCE_GROUP \
     --name $AZ_DATABASE_SERVER_NAME \
@@ -185,7 +185,7 @@ AZ_WSL_IP_ADDRESS=<the-copied-IP-address>
 
 Then, use the following command to open the server's firewall to your WSL-based app:
 
-```azurecli
+```azurecli-interactive
 az postgres flexible-server firewall-rule create \
     --resource-group $AZ_RESOURCE_GROUP \
     --name $AZ_DATABASE_SERVER_NAME \
@@ -199,7 +199,7 @@ az postgres flexible-server firewall-rule create \
 
 Create a new database using the following command:
 
-```azurecli
+```azurecli-interactive
 az postgres flexible-server db create \
     --resource-group $AZ_RESOURCE_GROUP \
     --database-name $AZ_DATABASE_NAME \
@@ -359,7 +359,7 @@ EOF
 ---
 
 > [!NOTE]
-> The configuration property `url` has `?serverTimezone=UTC` appended tell the JDBC driver to use TLS ([Transport Layer Security](https://en.wikipedia.org/wiki/Transport_Layer_Security)) when connecting to the database. It's mandatory to use TLS with Azure Database for PostgreSQL flexible server, and it's a good security practice.
+> The configuration property `url` includes `?sslmode=require` to ensure that the JDBC driver uses TLS (Transport Layer Security) when connecting to the database. Using TLS is mandatory with Azure Database for PostgreSQL flexible server and is a recommended security practice.
 
 ### Create an SQL file to generate the database schema
 
@@ -690,7 +690,7 @@ Congratulations! You've created a Java application that uses JDBC to store and r
 
 To clean up all resources used during this quickstart, delete the resource group using the following command:
 
-```azurecli
+```azurecli-interactive
 az group delete \
     --name $AZ_RESOURCE_GROUP \
     --yes

@@ -177,7 +177,7 @@ select out_recipename, out_similarityscore from recommend_recipe(1, 20); -- sear
 
 And explore the results:
 
-```javascript
+```output
             out_recipename             | out_similarityscore
 ---------------------------------------+---------------------
  Apple Pie by Grandma Ople             |                   0

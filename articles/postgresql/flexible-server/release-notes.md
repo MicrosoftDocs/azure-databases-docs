@@ -23,6 +23,7 @@ This article highlights the latest updates and enhancements for Azure Database f
 ## Release: January 2025
 
 - Public preview of [Elastic Clusters](./concepts-elastic-clusters.md) for Azure Database for PostgreSQL flexible server.
+- Support for [pg_signal_autovacuum_worker](how-to-autovacuum-tuning.md#troubleshooting-guides) role in PostgreSQL versions 15 and higher for Azure Database for PostgreSQL flexible server. 
 
 ## Release: December 2024
 
@@ -77,7 +78,7 @@ This article highlights the latest updates and enhancements for Azure Database f
 - General availability of Postgres [azure_ai](generative-ai-azure-overview.md) extension.
 - Public preview of [azure_local_ai](azure-local-ai.md) extension.
 - Public preview of [index tuning](concepts-index-tuning.md) on Azure Database for PostgreSQL flexible server.
-- Public preview of [Updating PostgreSQL extensions](../extensions/how-to-allow-extensions.md#update-extensions) on Azure Database for PostgreSQL flexible server.
+- Public preview of [Updating PostgreSQL extensions](../extensions/how-to-update-extensions.md) on Azure Database for PostgreSQL flexible server.
 - Support for the following [extensions](../extensions/how-to-allow-extensions.md):
     - [TimescaleDB (ver 2.13.0) for PG16](../extensions/concepts-extensions-versions.md#timescaledb).
     - [login_hook](../extensions/concepts-extensions-versions.md#login_hook).

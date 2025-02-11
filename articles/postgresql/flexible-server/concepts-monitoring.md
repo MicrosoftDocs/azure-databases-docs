@@ -4,7 +4,7 @@ description: Review the monitoring and metrics features in Azure Database for Po
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 12/17/2024
+ms.date: 2/5/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: conceptual
@@ -55,7 +55,7 @@ The following metrics are available for an Azure Database for PostgreSQL flexibl
 
 ### Enhanced metrics
 
-You can use enhanced metrics for Azure Database for PostgreSQL flexible server to get fine-grained monitoring and alerting on databases. You can configure alerts on the metrics. Some enhanced metrics include a `Dimension` parameter that you can use to split and filter metrics data by using a dimension like database name or state.
+You can use enhanced metrics for Azure Database for PostgreSQL flexible server to get fine-grained monitoring and alerting on databases. Each metric is emitted at a *1-minute* interval and has up to *93 days* of history. You can configure alerts on the metrics. Some enhanced metrics include a `Dimension` parameter that you can use to split and filter metrics data by using a dimension like database name or state.
 
 #### Enabling enhanced metrics
 
@@ -131,8 +131,7 @@ You can choose from the following categories of enhanced metrics:
 |Display name                              |Metric ID                             |Unit   |Description                                                                                                   |Dimension    |Default enabled|
 |------------------------------------------|--------------------------------------|-------|--------------------------------------------------------------------------------------------------------------|-------------|---------------|
 |**Max Connections** ^                     |`max_connections`                     |Count  |Number of maximum connections.                                                                                |Doesn't apply|Yes            |
-|**TCP Connection Backlog (preview)**      |`tcp_connection_backlog`              |Count  |Number of pending connections that exceed the PostgreSQL server's capacity. Applicable for 8 vCores and above.|State        |No             |
-
+|**TCP Connection Backlog (preview)**      |`tcp_connection_backlog`              |Count  |Number of pending TCP connections waiting to be processed by the server.                                      |Doesn't apply|No             |
 
 ^ **Max Connections** represents the configured value for the `max_connections` server parameter. This metric is polled every 30 minutes.
 

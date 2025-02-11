@@ -43,7 +43,7 @@ Salted Challenge Response Authentication Mechanism (SCRAM) is a password-based m
 
 1. Verify the password encryption.
 
-    ```SQL
+    ```sql
     postgres=> show password_encryption;
      password_encryption
     ---------------------
@@ -53,7 +53,7 @@ Salted Challenge Response Authentication Mechanism (SCRAM) is a password-based m
 
 1. You can then update the password for users.
 
-    ```SQL
+    ```sql
     postgres=> \password myDemoUser
     Enter new password:
     Enter it again:
@@ -62,7 +62,7 @@ Salted Challenge Response Authentication Mechanism (SCRAM) is a password-based m
 
 1. You can verify user authentication types using `azure_roles_authtype()` function.
 
-    ``` SQL
+    ```sql
     postgres=> SELECT * from azure_roles_authtype();
             rolename          | authtype
     ---------------------------+-----------

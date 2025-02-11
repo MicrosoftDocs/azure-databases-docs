@@ -32,7 +32,7 @@ az login
 
 Select your subscription by using the [az account set](/cli/azure/account) command. Make a note of the **id** value from the **az login** output to use as the value for the **subscription** argument in the following command. If you have multiple subscriptions, choose the subscription to which the resource should be billed. To identify all your subscriptions, use the [az account list](/cli/azure/account#az-account-list) command.
 
-```azurecli
+```azurecli-interactive
 az account set --subscription <subscription id>
 ```
 

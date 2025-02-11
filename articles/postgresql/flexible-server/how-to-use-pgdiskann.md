@@ -21,12 +21,12 @@ The `pg_diskann` extension adds support for using DiskANN for efficient vector i
 
 ## Enable pg_diskann
 
-To use the `pg_diskann` extension on your Azure Database for PostgreSQL flexible server instance, you need to [allow the extension](../extensions/how-to-allow-extensions.md#allow-extensions) at the instance level. Then you need to [create the extension](../extensions/how-to-allow-extensions.md#create-extensions) on each database in which you want to use the functionality provided by the extension.
+To use the `pg_diskann` extension on your Azure Database for PostgreSQL flexible server instance, you need to [allow the extension](../extensions/how-to-allow-extensions.md#allow-extensions) at the instance level. Then you need to [create the extension](../extensions/how-to-create-extensions.md) on each database in which you want to use the functionality provided by the extension.
 
 > [!IMPORTANT]
 > This preview feature is only available for newly deployed Azure Database for PostgreSQL flexible server instances.
 
-Because `pg_diskann` has a dependency on the [`vector`](../extensions/concepts-extensions-versions.md#vector) extension, either you [allow](../extensions/how-to-allow-extensions.md#allow-extensions) and [create](../extensions/how-to-allow-extensions.md#create-extensions) the `vector` extension in the same database, and the run the following command:
+Because `pg_diskann` has a dependency on the [`vector`](../extensions/concepts-extensions-versions.md#vector) extension, either you [allow](../extensions/how-to-allow-extensions.md#allow-extensions) and [create](../extensions/how-to-create-extensions.md) the `vector` extension in the same database, and the run the following command:
  
 ```sql
 CREATE EXTENSION IF NOT EXISTS pg_diskann;
@@ -79,7 +79,12 @@ LIMIT 5;
 Postgres automatically decides when to use the DiskANN index. If it chooses not to use the index in a scenario in which you want it to use it, execute the following command:
 
 ```sql
+-- Explicit Transcation block to force use for DiskANN index.
+
+BEGIN;
 SET LOCAL enable_seqscan TO OFF;
+-- Similarity search queries
+COMMIT;
 ```
 
 > [!IMPORTANT]
@@ -100,7 +105,7 @@ ALTER TABLE demo SET (parallel_workers = 8);
 Then, `CREATE INDEX` command uses the specified number of parallel workers, depending on the available resources, to build the index.
 
 ```sql
-CREATE INDEX CONCURRENTLY demo_embedding_diskann_idx ON demo USING diskann (embedding vector_cosine_ops)
+CREATE INDEX demo_embedding_diskann_idx ON demo USING diskann (embedding vector_cosine_ops)
 ```
 
 > [!IMPORTANT]
@@ -114,11 +119,13 @@ You can set these parameters at different granularity levels. For example, to se
 ```sql
 -- Set the parameters
 SET max_parallel_workers = 8;
-SET max_worker_processes = 8;
+SET max_worker_processes = 8; -- Note: Requires server restart
 SET max_parallel_maintenance_workers = 4;
 ```
 
 To learn about other options to configure these parameters in Azure Database for PostgreSQL flexible server, see [Configure server parameters](how-to-configure-server-parameters.md).
+
+[!NOTE] The max_worker_processes parameter requires a server restart to take effect.
 
 If the configuration of those parameters and the available resources on the server don't permit launching the parallel workers, PostgreSQL automatically falls back to create the index in the nonparallel mode.
 
@@ -152,29 +159,10 @@ SET diskann.l_value_is TO 20;
 To change it so that it only affects all queries executed in the current transaction, run the following statement:
 
 ```sql
+BEGIN;
 SET LOCAL diskann.l_value_is TO 20;
-```
-
-`diskann.iterative_search`: Controls the search behavior (Defaults to `relaxed_order`).
-
-`diskann.iterative_search` can be configured to the following values:
-
-- `relaxed_order` (default): Lets diskann iteratively search the graph in batches of `diskann.l_value_is`, until the desired number of tuples, possibly limited by `LIMIT` clause, are yielded. Might cause the results to be slightly out of order, if sorted by distance. Depending on the use case, you might want to sort again the results, by using an outer query with an `ORDER BY` clause.
-
-- `strict_order`: Similar to `relaxed_order`, lets diskann iteratively search the graph, until the desired number of tuples are yielded. However, it ensures that the results are returned in strict order, when sorted by distance. To ensure strict order, the index might skip yielding some tuples which are closer to the query vector, than some of the tuples that were already yielded.
-
-- `off`: Uses noniterative search functionality, which means that it attempts to fetch `diskann.l_value_is` tuples in one step. Noniterative search can only return a maximum of `diskann.l_value_is` vectors for a query, regardless of the `LIMIT` clause or the number of tuples that match the query.
-
-To change the search behavior to` strict_order`, for all queries executed in the current session, run the following statement:
-
-```sql
-SET diskann.iterative_search TO 'strict_order';
-```
-
-To change it so that it only affects all queries executed in the current transaction, run the following statement:
-
-```sql
-SET LOCAL diskann.iterative_search TO 'strict_order';
+-- All your queries
+COMMIT;
 ```
 
 ### Recommended configuration of parameters

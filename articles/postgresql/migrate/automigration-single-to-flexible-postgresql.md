@@ -4,7 +4,7 @@ description: This tutorial describes how to configure notifications, review migr
 author: hariramt
 ms.author: hariramt
 ms.reviewer: shriramm, maghan
-ms.date: 01/24/2025
+ms.date: 02/07/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: overview
@@ -21,13 +21,13 @@ ms.custom:
 
 Automigration uses the [Azure PostgreSQL migration service](./migration-service/overview-migration-service-postgresql.md) to deliver a resilient offline migration during the planned migration window. Downtime varies based on workload characteristics. For migration speed benchmarks, see [Azure PostgreSQL Migration Speed Benchmarking](./migration-service/best-practices-migration-service-postgresql.md#migration-speed-benchmarking). This migration eliminates the need for manual server migration, allowing you to benefit from Flexible Server features post-migration, including improved price-performance, granular database configuration control, and custom maintenance windows.
 
-> [!NOTE]
+> [!NOTE]  
 > The Automigration service selects Single server to migrate based on the following criteria:
 > - Servers with no complex feature such as CMK, Microsoft Entra ID, Read Replica and Private end-point.
 > - Size of data <= 100 GB
 > - Public access is enabled
 
-> [!NOTE]
+> [!NOTE]  
 > In case any of these features such as CMK, Microsoft Entra ID, Read Replica and Private end-point are used, extra planning would be required. Mention the details in the nomination form below and we will get in touch with you.
 
 ## Nominate Single servers for Automigration
@@ -89,19 +89,20 @@ The compute tier and SKU for the target flexible server is provisioned based on 
 - Both connection string formats – Single Server and Flexible Server are supported on the migrated Flexible Server.
 
 ## Automigration Across Major PostgreSQL Versions
-This migration may involve moving data from PostgreSQL Single Server (versions 9.5, 9.6, or 10) to PostgreSQL 11 on Flexible Server. Note that these earlier versions have been retired by the PostgreSQL community. To ensure security, stability, and performance, it is recommended to adopt supported community versions.
+
+This migration might involve moving data from PostgreSQL Single Server (versions 9.5, 9.6, or 10) to PostgreSQL 11 on Flexible Server. These earlier versions have been retired by the PostgreSQL community. To ensure security, stability, and performance, it is recommended to adopt supported community versions.
 
 When migrating across major PostgreSQL versions, consider the following key factors to ensure a successful and smooth transition:
 
-- **Retired Features** - Features that were retired in older versions may no longer be available in PostgreSQL 11. It is important to review the [release notes](https://www.postgresql.org/docs/11/release-11-22.html) for any breaking changes or deprecated features that could affect your application.
+- **Retired Features** - Features that were retired in older versions might no longer be available in PostgreSQL 11. It is important to review the [release notes](https://www.postgresql.org/docs/11/release-11-22.html) for any breaking changes or deprecated features that could affect your application.
 
-- **Application Testing** - Conduct thorough testing of your application on PostgreSQL 11. Pay attention to potential issues with SQL queries, functions, or third-party tools, as these may behave differently or fail entirely due to changes in the newer version.
+- **Application Testing** - Conduct thorough testing of your application on PostgreSQL 11. Pay attention to potential issues with SQL queries, functions, or third-party tools, as these might behave differently or fail entirely due to changes in the newer version.
 
 - **Configuration Changes** - Major version upgrades often introduce changes to server parameters, either by adding new parameters or altering the default values of existing ones. These changes can affect collation, query execution, and data storage. To ensure compatibility, test your application against these updated settings and address any issues that arise. If you encounter problems, use the script provided in the [**post-migration steps section**](#post-migration-steps) to copy the existing server parameters from your Single Server instance to the automigrated Flexible Server.
 
 ## Post-migration steps
 
-Here’s the information you need regarding the post-automigration steps.
+Here's the information you need regarding the post-automigration steps.
 - If automigration involves migrating across major PostgreSQL versions, thoroughly test your application to identify the impact of breaking changes and parameter adjustments. Make the necessary changes to ensure compatibility and optimal performance.
 
 - Any Terraform/CLI scripts you host to manage your Single Server instance should be updated with Flexible Server references.
@@ -139,7 +140,7 @@ To determine if your Single Server is selected for automigration, follow these s
 - **[Service Health Notifications](/azure/service-health/service-health-portal-update)** - In the Azure portal, go to **Service Health > Planned Maintenance** events. Look for events labeled **'Notification for Scheduled Auto Migration to Azure Database for PostgreSQL Single Server'**. The notifications are sent 30, 14, and 7 days before the migration date, and again during migration stages: in progress, completed, and six days before the Single Server is decommissioned.
 
   > [!NOTE]  
-  > These notifications do not land in your inbox by default. To receive them via email or SMS, you need to set up Service Health Alerts by following the steps [here](/previous-versions/azure/postgresql/single-server/concepts-planned-maintenance-notification#to-receive-planned-maintenance-notification)
+  > These notifications do not land in your inbox by default. To receive them via email or SMS, you need to set up Service Health Alerts. For more information, see [Set up Service Health Alerts](../single-server/concepts-planned-maintenance-notification.md#to-receive-planned-maintenance-notification).
 
 - **Single Server Overview Page** - Navigate to your Single Server instance in the Azure portal and check the Overview page. If scheduled for automigration, you'll find details here, including an option to defer the migration by one month at a time or reschedule within the current month.
 

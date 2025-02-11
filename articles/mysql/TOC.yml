@@ -24,6 +24,8 @@
         href: flexible-server/whats-new.md
       - name: Release notes
         items:
+          - name: February 2025
+            href: flexible-server/release-notes/february-2025.md
           - name: January 2024
             href: flexible-server/release-notes/january-2024.md
           - name: February 2024
@@ -139,16 +141,12 @@
         href: flexible-server/concepts-high-availability.md
     - name: Monitoring
       items:
-      - name: Monitoring overview
-        href: flexible-server/concepts-monitoring.md
-      - name: Slow query logs
-        href: flexible-server/concepts-slow-query-logs.md
+      - name: Monitor Azure Database for MySQL - Flexible Server
+        href: flexible-server/concepts-monitor-mysql.md
+      - name: Monitoring data reference
+        href: flexible-server/concepts-monitor-mysql-reference.md
       - name: Error logs
         href: flexible-server/concepts-error-logs.md        
-      - name: Audit logs
-        href: flexible-server/concepts-audit-logs.md
-      - name: Workbooks
-        href: flexible-server/concepts-workbooks.md
     - name: Replication
       items:
       - name: Data-in replication

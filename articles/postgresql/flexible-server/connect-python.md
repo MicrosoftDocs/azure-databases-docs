@@ -76,7 +76,7 @@ Install the Python libraries needed to run the code examples.
 
 Install the [azure-identity](https://pypi.org/project/azure-identity/) library, which provides Microsoft Entra token authentication support across the Azure SDK.                                                                                                                                      
 
-```Console
+```bash
 pip install azure-identity
 ```
 
@@ -84,7 +84,7 @@ pip install azure-identity
 
 Install the [psycopg](https://pypi.org/project/psycopg/) module, which enables connecting to and querying a PostgreSQL database.
 
-```Console
+```bash
 pip install psycopg
 ```
 
@@ -167,7 +167,7 @@ In this section, you add authentication code to your working directory and perfo
 
 1. Sign in to Azure on your workstation. You can sign in using the Azure CLI, Azure PowerShell, or Azure Developer CLI. For example, to sign in via the Azure CLI, enter this command:
 
-    ```azurecli
+    ```azurecli-interactive
     az login
     ```
 
@@ -251,7 +251,7 @@ For each code example in this article:
 
 The following code example connects to your Azure Database for PostgreSQL flexible server database using the `psycopg.connect` function, and loads data with a SQL **INSERT** statement. The `cursor.execute` function executes the SQL query against the database.
 
-```Python
+```python
 import psycopg
 from get_conn import get_connection_uri
 
@@ -294,7 +294,7 @@ Inserted 3 rows of data
 
 The following code example connects to your Azure Database for PostgreSQL flexible server database and uses cursor.execute with the SQL **SELECT** statement to read data. This function accepts a query and returns a result set to iterate over by using cursor.fetchall().
 
-```Python
+```python
 import psycopg
 from get_conn import get_connection_uri
 
@@ -331,7 +331,7 @@ Data row = (3, apple, 100)
 
 The following code example connects to your Azure Database for PostgreSQL flexible server database and uses cursor.execute with the SQL **UPDATE** statement to update data.
 
-```Python
+```python
 import psycopg
 from get_conn import get_connection_uri
 
@@ -355,7 +355,7 @@ conn.close()
 
 The following code example connects to your Azure Database for PostgreSQL flexible server database and uses cursor.execute with the SQL **DELETE** statement to delete an inventory item that you previously inserted.
 
-```Python
+```python
 import psycopg
 from get_conn import get_connection_uri
 

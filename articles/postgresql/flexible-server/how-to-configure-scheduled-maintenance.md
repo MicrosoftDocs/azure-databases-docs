@@ -1,23 +1,23 @@
 ---
-title: Configure scheduled maintenance
-description: Learn how to configure scheduled maintenance settings for an Azure Database for PostgreSQL flexible server.
+title: Schedule maintenance
+description: This article describes how to schedule maintenance of an Azure Database for PostgreSQL flexible server.
 author: techlake
 ms.author: hganten
 ms.reviewer: maghan
-ms.date: 01/08/2025
+ms.date: 02/03/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: how-to
-# customer intent: As a user, I want to learn how to configure the scheduled maintenance settings associated to my Azure Database for PostgreSQL flexible server.
+#customer intent: As a user, I want to learn how to schedule maintenance of an Azure Database for PostgreSQL flexible server.
 ---
 
-# Configure scheduled maintenance
+# Schedule maintenance
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
  
 You can specify scheduled maintenance options for each Azure Database for PostgreSQL flexible server in your Azure subscription. Options include the type of scheduled maintenance and notification settings for upcoming and finished maintenance events.
 
-## Specify scheduled maintenance options
+## Steps to schedule maintenance
 
 ### [Portal](#tab/portal-maintenance-settings)
 
@@ -85,5 +85,6 @@ You can also [set up](/azure/service-health/resource-health-alert-monitor-guide)
 
 ## Related content
 
-- [Scheduled maintenance in Azure Database for PostgreSQL - Flexible Server](concepts-maintenance.md).
-- [Azure Service Health](/azure/service-health/overview).
+- [Download PostgreSQL server logs and major version upgrade logs](how-to-configure-server-logs.md).
+- [Create alerts on metrics using portal](how-to-alert-on-metrics.md).
+- [Configure and access logs](how-to-configure-and-access-logs.md)
