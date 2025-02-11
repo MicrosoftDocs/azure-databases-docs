@@ -35,6 +35,8 @@ Writing stored procedures, triggers, and user-defined functions (UDFs) in JavaSc
 
 > [!TIP]
 > Stored procedures are best suited for operations that are write-heavy and require a transaction across a partition key value. When deciding whether to use stored procedures, optimize around encapsulating the maximum amount of writes possible. Generally speaking, stored procedures are not the most efficient means for doing large numbers of read or query operations, so using stored procedures to batch large numbers of reads to return to the client will not yield the desired benefit. For best performance, these read-heavy operations should be done on the client side, using the Azure Cosmos DB SDK. 
+> 
+> Using stored procedures with strong consistency is not suggested as mutations are local. 
 
 > [!NOTE]
 > Server-side JavaScript features including stored procedures, triggers, and user-defined functions do not support importing modules.
