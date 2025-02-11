@@ -24,7 +24,7 @@
   items:
     - name: Free tier
       href: free-tier.md
-    - name: Multicloud Solution
+    - name: Multicloud solution
       href: multi-cloud.md
     - name: Burstable tier
       href: burstable-tier.md

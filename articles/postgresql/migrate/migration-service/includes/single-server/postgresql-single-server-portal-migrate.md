@@ -342,7 +342,7 @@ The migration moves to the **Succeeded** state when the **Migrating Data** state
 
 Once the migration moves to the **Succeeded** state, schema and data migration from your Single Server to your Flexible Server target is complete. You can refresh the page to check the progress.
 
-### Validate and Migrate
+### Validate and migrate
 
 In this option, validations are performed first before migration starts. After the **PerformingPreRequisiteSteps** substate is completed, the workflow moves into the substate of **Validation in Progress**.
 - If validation has errors, the migration moves into a **Failed** state.

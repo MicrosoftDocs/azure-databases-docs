@@ -359,7 +359,7 @@ EOF
 ---
 
 > [!NOTE]
-> The configuration property `url` has `?serverTimezone=UTC` appended tell the JDBC driver to use TLS ([Transport Layer Security](https://en.wikipedia.org/wiki/Transport_Layer_Security)) when connecting to the database. It's mandatory to use TLS with Azure Database for PostgreSQL flexible server, and it's a good security practice.
+> The configuration property `url` includes `?sslmode=require` to ensure that the JDBC driver uses TLS (Transport Layer Security) when connecting to the database. Using TLS is mandatory with Azure Database for PostgreSQL flexible server and is a recommended security practice.
 
 ### Create an SQL file to generate the database schema
 
