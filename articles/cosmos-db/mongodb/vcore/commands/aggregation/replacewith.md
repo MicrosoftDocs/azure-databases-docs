@@ -1,7 +1,7 @@
 ---
 title: $replaceWith
 titleSuffix: Overview of the $replaceWith operator in Azure Cosmos DB for MongoDB vCore
-description: Overview of the $replaceWith operator in Azure Cosmos DB for MongoDB vCore
+description: The $replaceWith operator in Azure Cosmos DB for MongoDB vCore returns a document after replacing a document with the specified document
 author: abinav2307
 ms.author: abramees
 ms.service: azure-cosmos-db
@@ -23,7 +23,10 @@ The `$replaceWith` aggregation stage operator is used to replace the input docum
 ```
 
 ## Parameters
-- `newDocument`: The new document to replace the original document
+
+| | Description |
+| --- | --- |
+| **`newDocument`** | The new document to replace the original document|
 
 ## Examples
 
