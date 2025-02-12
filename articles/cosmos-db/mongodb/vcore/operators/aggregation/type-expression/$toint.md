@@ -26,7 +26,9 @@ The syntax for the `$toInt` operator is:
 
 ## Parameters
 
-- `expression`: The specified value to convert into an integer value
+| | Description |
+| --- | --- |
+| **`expression`** | The specified value to convert into an Integer value|
 
 ## Examples
 
