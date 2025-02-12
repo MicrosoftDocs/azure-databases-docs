@@ -26,7 +26,9 @@ The syntax for the `$isNumber` operator is:
 
 ## Parameters
 
-- `expression`: The specified value to check for a number
+| | Description |
+| --- | --- |
+| **`expression`** | The specified value to check for a number|
 
 ## Examples
 
