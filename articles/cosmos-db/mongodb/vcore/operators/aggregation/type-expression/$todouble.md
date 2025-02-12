@@ -1,7 +1,7 @@
 ---
 title: $toDouble
 titleSuffix: Overview of the $toDouble operator in Azure Cosmos DB for MongoDB vCore
-description: Overview of the $toDouble operator in Azure Cosmos DB for MongoDB vCore
+description: The $toDouble operator in Azure Cosmos DB for MongoDB vCore converts an expression into a Double
 author: abinav2307
 ms.author: abramees
 ms.service: azure-cosmos-db
