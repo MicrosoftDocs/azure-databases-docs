@@ -1,7 +1,7 @@
 ---
 title: $ne
 titleSuffix: Overview of the $ne query operator in Azure Cosmos DB for MongoDB vCore
-description: Overview of the $ne query operator in Azure Cosmos DB for MongoDB vCore
+description: The $ne query operator in Azure Cosmos DB for MongoDB vCore returns documents where the value of a field doesn't equal a specified value
 author: abinav2307
 ms.author: abramees
 ms.service: azure-cosmos-db
@@ -25,8 +25,11 @@ The syntax for the `$ne` operator is:
 ```
 
 ## Parameters
-- `field`: The field to be compared.
-- `value`: The value that the field shouldn't be equal to.
+
+| | Description |
+| --- | --- |
+| **`field`** | The field to be compared|
+| **`value`** | The value that the field shouldn't be equal to|
 
 ## Examples
 Consider this sample document from the stores collection in the StoreData database.
@@ -144,13 +147,34 @@ Consider this sample document from the stores collection in the StoreData databa
 ### Example 1 - Find stores whose name isn't "Delmer's Jewelry Gifts"
 
 ```javascript
-db.stores.find({ "name": {"$ne": "Delmer's Jewelry Gifts"}})
+db.stores.find({ "name": {"$ne": "Delmer's Jewelry Gifts"}}, {"_id": 1, "name": 1}, {"limit": 1})
+```
+
+This returns the following results:
+```json
+{
+    "_id": "2cf3f885-9962-4b67-a172-aa9039e9ae2f",
+    "name": "First Up Consultants | Bed and Bath Center - South Amir"
+}
 ```
 
 ### Example 2 - Find stores with promotion events that aren't in 2024
 
 ```javascript
-db.stores.find({ "promotionEvents.promotionalDates.startDate": {"$ne": "2024"}})
+db.stores.find({ "promotionEvents.promotionalDates.startDate": {"$ne": "2024"}}, {"name": 1, "promotionEvents.promotionalDates.startDate": 1}, {"limit": 1})
+```
+
+This returns the following results:
+```json
+{
+    "_id": "2cf3f885-9962-4b67-a172-aa9039e9ae2f",
+    "name": "First Up Consultants | Bed and Bath Center - South Amir",
+    "promotionEvents": [
+      {
+        "promotionalDates": { "startDate": { "Year": 2024, "Month": 9, "Day": 21 } }
+      }
+    ]
+}
 ```
 
 ## Related content
