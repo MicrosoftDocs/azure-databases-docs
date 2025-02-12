@@ -1,7 +1,7 @@
 ---
 title: $text
 titleSuffix: Overview of the $text operator in Azure Cosmos DB for MongoDB vCore
-description: Overview of the $text operator in Azure Cosmos DB for MongoDB vCore
+description: The $text operator in Azure Cosmos DB for MongoDB vCore performs a text search query
 author: abinav2307
 ms.author: abramees
 ms.service: azure-cosmos-db
@@ -29,11 +29,14 @@ The basic syntax for the $text operator is:
 }
 ```
 
-## Parameters.
--   `search` - The search string to query in the text index
--   `language` - Optional field to specify the language to be used for the search. The default value is "english".
--   `caseSensitive` - Optional boolean field to specify whether the search should be a case sensitive search. The default value is false.
--   `diacriticSensitive` - Optional boolean field to specify whether the search should be diacritic-sensitive. The default value is false.
+## Parameters
+
+| | Description |
+| --- | --- |
+| **`search`** | The search string to query in the text index|
+| **`language`** | Optional field to specify the language to be used for the search. The default value is "english"|
+| **`caseSensitive`** | Optional boolean field to specify whether the search should be a case sensitive search. The default value is false|
+| **`diacriticSensitive`** | Optional boolean field to specify whether the search should be diacritic-sensitive. The default value is false|
 
 ## Examples
 
@@ -155,7 +158,14 @@ Consider this sample document from the stores collection in the StoreData databa
 ### Example 1 - Basic text search
 
 ```mongodb
-db.stores.find({"$text": {"$search": "Ebba's Smart TVs"}})
+db.stores.find({"$text": {"$search": "Ebba's Smart TVs"}}, {"_id": 1}, {"limit": 1})
+```
+
+This returns the following results:
+```json
+{
+  "_id": "0fcc0bf0-ed18-4ab8-b558-9848e18058f4"
+}
 ```
 
 > [!NOTE]
@@ -164,7 +174,14 @@ db.stores.find({"$text": {"$search": "Ebba's Smart TVs"}})
 ### Example 2 - Basic text search on the full string
 
 ```mongodb
-db.stores.find({"$text": {"$search": "\"Ebba's Smart TVs\""}})
+db.stores.find({"$text": {"$search": "\"Ebba's Smart TVs\""}}, {"_id": 1}, {"limit": 1})
+```
+
+This returns the following results:
+```json
+{
+  "_id": "1grc25f8-7h65-3g7r-a443-0985w3244rd3"
+}
 ```
 
 > [!NOTE]
