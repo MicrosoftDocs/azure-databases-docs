@@ -28,7 +28,7 @@ The syntax for the `$toDouble` operator is:
 
 | | Description |
 | --- | --- |
-| **`expression`** | The specified value to convert into a Double value|
+| **`expression`** | The specified value to convert into a Double value |
 
 ## Examples
 
