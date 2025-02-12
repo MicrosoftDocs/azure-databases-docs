@@ -1,7 +1,7 @@
 ---
 title: delete
 titleSuffix: Overview of the delete command in Azure Cosmos DB for MongoDB vCore
-description: Overview of the delete command in Azure Cosmos DB for MongoDB vCore
+description: The delete command in Azure Cosmos DB for MongoDB vCore deletes documents that match a specified criteria
 author: abinav2307
 ms.author: abramees
 ms.service: azure-cosmos-db
@@ -32,10 +32,10 @@ db.collection.deleteMany(
 
 ### Parameters
 
-- `<filter>`: A document that specifies the criteria for deletion. Only the documents that match the filter are deleted.
-- `<options>`: Optional. A document that specifies options for the delete operation. Common options include:
-  - `writeConcern`: Specifies the level of acknowledgment requested from MongoDB for write operations.
-  - `collation`: Specifies the collation to use for the operation.
+| | Description |
+| --- | --- |
+| **<`filter`>** | A document that specifies the criteria for deletion. Only the documents that match the filter are deleted|
+| **`options`** | Optional. A document that specifies options for the delete operation. Common options include writeConcern and collation|
 
 ## Example(s)
 Consider this sample document from the stores collection in the StoreData database.
