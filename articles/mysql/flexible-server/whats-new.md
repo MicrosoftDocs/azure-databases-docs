@@ -23,6 +23,15 @@ This article summarizes new releases and features in the Azure Database for MySQ
 > [!NOTE]  
 > This article references the term slave, which Microsoft no longer uses. When the term is removed from the software, we'll remove it from this article.
 
+## February 2025
+
+- **Known Issues**
+
+Known Issue: **Azure Advisor recommendations for Accelerated Logs**  
+
+Azure Advisor recommendations may continue to recommend enabling **Accelerated logs** even after the feature is enabled on your **Azure Database for MySQL – Flexible Server**. We are actively working on a fix, and this issue will be resolved at the earliest. If [Accelerated logs](./concepts-accelerated-logs.md) is already enabled on your server, you can safely ignore this recommendation.
+
+
 ## January 2025
 
 **Default zone-resiliency for Business-Critical service tier**
