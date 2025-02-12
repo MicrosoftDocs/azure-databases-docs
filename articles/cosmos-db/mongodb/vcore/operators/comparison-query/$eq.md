@@ -1,7 +1,7 @@
 ---
 title: $eq
 titleSuffix: Overview of the $eq query operator in Azure Cosmos DB for MongoDB vCore
-description: Overview of the $eq query operator in Azure Cosmos DB for MongoDB vCore
+description: The $eq query operator in Azure Cosmos DB for MongoDB vCore compares the value of a field to a specified value
 author: abinav2307
 ms.author: abramees
 ms.service: azure-cosmos-db
@@ -26,8 +26,10 @@ The syntax for the `$eq` operator is:
 
 ## Parameters
 
-- `field`: The field to be compared.
-- `value`: The value to compare against.
+| | Description |
+| --- | --- |
+| **`field`** | The field to be compared|
+| **`value`** | The value to compare against|
 
 ## Examples
 
@@ -148,15 +150,31 @@ Consider this sample document from the stores collection in the StoreData databa
 To find a store with the name "Boulder Innovations | Home Security Place - Ankundingburgh":
 
 ```javascript
-db.stores.find({ "name": { "$eq": "Boulder Innovations | Home Security Place - Ankundingburgh" } })
+db.stores.find({ "name": { "$eq": "Boulder Innovations | Home Security Place - Ankundingburgh" } }, {"name": 1})
 ```
 
+This returns the following results:
+```json
+{
+    "_id": "bda56164-954d-4f47-a230-ecf64b317b43",
+    "name": "Boulder Innovations | Home Security Place - Ankundingburgh"
+}
+```
 ### Example 2: Find documents based on an equality match on the value of a nested field
 
 To find stores where the total sales amount is exactly $37,015:
 
 ```javascript
-db.stores.find({ "sales.totalSales": { "$eq": 37015 } })
+db.stores.find({ "sales.totalSales": { "$eq": 37015 } }, {"name": 1, "sales.totalSales": 1})
+```
+
+This returns the following results:
+```json
+{
+    "_id": "bda56164-954d-4f47-a230-ecf64b317b43",
+    "name": "Boulder Innovations | Home Security Place - Ankundingburgh",
+    "sales": { "totalSales": 37015 }
+}
 ```
 
 ### Example 3: Find documents based on an equality match on any individual item within an array
@@ -164,7 +182,21 @@ db.stores.find({ "sales.totalSales": { "$eq": 37015 } })
 This query searches for an equality match on any one of the objects within the nested discounts array
 
 ```javascript
-db.stores.find({"promotionEvents.discounts": { "$eq": {"categoryName": "Alarm Systems", "discountPercentage": 5}}})
+db.stores.find({"promotionEvents.discounts": { "$eq": {"categoryName": "Alarm Systems", "discountPercentage": 5}}}, {"name": 1}, {"limit": 2})
+```
+
+This returns the following results:
+```json
+[
+  {
+    "_id": "ece5bf6c-3255-477e-bf2c-d577c82d6995",
+    "name": "Proseware, Inc. | Home Security Boutique - Schambergertown"
+  },
+  {
+    "_id": "7baa8fd8-113a-4b10-a7b9-2c116e976491",
+    "name": "Tailwind Traders | Home Security Pantry - Port Casper"
+  }
+]
 ```
 
 ### Example 4: Find documents based on an equality on the entire array
@@ -172,7 +204,15 @@ db.stores.find({"promotionEvents.discounts": { "$eq": {"categoryName": "Alarm Sy
 This query searches for documents based on exact match on ALL the values within an array.
 
 ```javascript
-db.stores.find({"promotionEvents.discounts": { "$eq": [{"categoryName": "Alarm Systems", "discountPercentage": 5}, {"categoryName": "Door Locks", "discountPercentage": 12}]}})
+db.stores.find({"promotionEvents.discounts": { "$eq": [{"categoryName": "Alarm Systems", "discountPercentage": 5}, {"categoryName": "Door Locks", "discountPercentage": 12}]}}, {"name": 1})
+```
+
+This returns the following results:
+```json
+{
+    "_id": "aa9ad64c-29da-42f8-a1f0-30e03bf04a2d",
+    "name": "Boulder Innovations | Home Security Market - East Sheridanborough"
+}
 ```
 
 > [!NOTE]
