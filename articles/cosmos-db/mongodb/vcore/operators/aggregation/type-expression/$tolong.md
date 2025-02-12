@@ -26,7 +26,9 @@ The syntax for the `$toLong` operator is:
 
 ## Parameters
 
-- `expression`: The specified value to convert into a long value
+| | Description |
+| --- | --- |
+| **`expression`** | The specified value to convert into a long value|
 
 ## Examples
 
