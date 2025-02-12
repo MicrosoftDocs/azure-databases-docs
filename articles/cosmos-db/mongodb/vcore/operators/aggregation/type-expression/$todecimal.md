@@ -1,7 +1,7 @@
 ---
 title: $toDecimal
 titleSuffix: Overview of the $toDecimal operator in Azure Cosmos DB for MongoDB vCore
-description: Overview of the $toDecimal operator in Azure Cosmos DB for MongoDB vCore
+description: The $toDecimal operator in Azure Cosmos DB for MongoDB vCore converts an expression into a Decimal type
 author: abinav2307
 ms.author: abramees
 ms.service: azure-cosmos-db
