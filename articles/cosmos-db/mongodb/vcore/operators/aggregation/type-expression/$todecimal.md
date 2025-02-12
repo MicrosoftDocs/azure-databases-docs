@@ -26,7 +26,9 @@ The syntax for the `$toDecimal` operator is:
 
 ## Parameters
 
-- `expression`: The specified value to convert into a Decimal value
+| | Description |
+| --- | --- |
+| **`expression`** | The specified value to convert into a Decimal value|
 
 ## Examples
 
