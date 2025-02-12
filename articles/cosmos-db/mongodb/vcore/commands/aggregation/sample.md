@@ -149,11 +149,11 @@ db.stores.aggregate([{"$sample": {"size": 5}}, {"$project": {"_id": 1}}])
 This query returns the following results:
 ```json
 [
-  { _id: 'f7ae8b40-0c66-4e80-9261-ab31bbabffb4' },
-  { _id: '25350272-6797-4f98-91f8-fe79084755c7' },
-  { _id: 'c7fd1d22-1a29-4cb0-9155-1ad71d600c2b' },
-  { _id: 'e602b444-9519-42e3-a2e1-b5a3da5f6e64' },
-  { _id: '189c239a-edca-434b-baae-aada3a27a2c5' }
+  { "_id": "f7ae8b40-0c66-4e80-9261-ab31bbabffb4" },
+  { "_id": "25350272-6797-4f98-91f8-fe79084755c7" },
+  { "_id": "c7fd1d22-1a29-4cb0-9155-1ad71d600c2b" },
+  { "_id": "e602b444-9519-42e3-a2e1-b5a3da5f6e64" },
+  { "_id": "189c239a-edca-434b-baae-aada3a27a2c5" }
 ]
 ```
 
