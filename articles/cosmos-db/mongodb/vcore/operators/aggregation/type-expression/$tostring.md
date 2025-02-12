@@ -26,7 +26,9 @@ The syntax for the `$toString` operator is:
 
 ## Parameters
 
-- `expression`: The specified value to convert into a String value
+| | Description |
+| --- | --- |
+| **`expression`** | The specified value to convert into a String value|
 
 ## Examples
 
