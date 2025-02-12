@@ -1,7 +1,7 @@
 ---
 title: $toLong
 titleSuffix: Overview of the $toLong operator in Azure Cosmos DB for MongoDB vCore
-description: Overview of the $toLong operator in Azure Cosmos DB for MongoDB vCore
+description: The $toLong operator in Azure Cosmos DB for MongoDB vCore converts an expression into a Long
 author: abinav2307
 ms.author: abramees
 ms.service: azure-cosmos-db
