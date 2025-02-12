@@ -25,7 +25,9 @@ The syntax for the `$toBool` operator is:
 
 ## Parameters
 
-- `expression`: The specified value to convert into a Boolean value
+| | Description |
+| --- | --- |
+| **`expression`** | The specified value to convert into a Boolean value|
 
 ## Examples
 
