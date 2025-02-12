@@ -1,7 +1,7 @@
 ---
   title: find()
   titleSuffix: Azure Cosmos DB for MongoDB vCore
-  description: Overview of the find command on Azure Cosmos DB for MongoDB vCore
+  description: The find command in Azure Cosmos DB for MongoDB vCore returns documents that match a specified filter criteria
   author: abinav2307
   ms.author: abramees
   ms.service: azure-cosmos-db
@@ -24,9 +24,11 @@ db.collection.find(query, projection, options)
 
 ### Parameters
 
-- `query`: A document that specifies the criteria for the documents to be retrieved.
-- `projection` (Optional) A document that specifies the fields in the matching documents to be returned in the result set.
-- `options`: (Optional) A document that specifies options for query behavior and results.
+| | Description |
+| --- | --- |
+| **`query`** | A document that specifies the criteria for the documents to be retrieved|
+| **`projection`** | (Optional) A document that specifies the fields in the matching documents to be returned in the result set|
+| **`options`** | (Optional) A document that specifies options for query behavior and results|
 
 ## Example(s)
 Consider this sample document from the stores collection in the StoreData database.
