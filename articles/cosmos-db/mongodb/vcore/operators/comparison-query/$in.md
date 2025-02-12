@@ -1,7 +1,7 @@
 ---
 title: $in
 titleSuffix: Overview of the $in query operator in Azure Cosmos DB for MongoDB vCore
-description: Overview of the $in query operator in Azure Cosmos DB for MongoDB vCore
+description: The $in query operator in Azure Cosmos DB for MongoDB vCore matches value of a field against an array of specified values
 author: abinav2307
 ms.author: abramees
 ms.service: azure-cosmos-db
@@ -23,8 +23,11 @@ The `$in` operator is used to match values of a field against an array of possib
 ```
 
 ## Parameters
-- `field`: The field to match.
-- `[<value1>, <value2>, ... <valueN>]`: An array of values to match against the specified field.
+
+| | Description |
+| --- | --- |
+| **`field`** | The field to match|
+| **`[<value1>, <value2>, ... <valueN>]`** | An array of values to match against the specified field|
 
 ## Examples
 Consider this sample document from the stores collection in the StoreData database.
@@ -142,13 +145,61 @@ Consider this sample document from the stores collection in the StoreData databa
 ### Example 1 - Find documents with promotion events offering a discount percentage of either 10%, 15% or 20%
 
 ```javascript
-db.stores.find({ "promotionEvents.discounts.discountPercentage": { "$in": [10, 15, 20] }})
+db.stores.find({ "promotionEvents.discounts.discountPercentage": { "$in": [10, 15, 20] }}, {"name": 1, "promotionEvents.discounts.discountPercentage": 1}, {"limit": 1})
+```
+
+This returns the following results:
+```json
+{
+    "_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74",
+    "name": "Proseware, Inc. | Home Entertainment Hub - East Linwoodbury",
+    "promotionEvents": [
+      {
+        "discounts": [
+          { "discountPercentage": 14 },
+          { "discountPercentage": 6 },
+          { "discountPercentage": 21 },
+          { "discountPercentage": 21 },
+          { "discountPercentage": 5 },
+          { "discountPercentage": 22 }
+        ]
+      }
+    ]
+}
 ```
 
 ### Example 2 - Find documents with discount offers on specific categories of promotions
 
 ```javascript
-db.stores.find({ "promotionEvents.discounts.categoryName": { "$in": ["Smoked Salmon", "Anklets"] }})
+db.stores.find({ "promotionEvents.discounts.categoryName": { "$in": ["Smoked Salmon", "Anklets"] }}, {"name": 1, "promotionEvents.discounts.categoryName": 1}, {"limit": 1})
+```
+
+This returns the following results:
+```json
+{
+    "_id": "3f140a3f-6809-4b40-85b1-75657f5605b8",
+    "name": "Boulder Innovations | Jewelry Store - Littleborough",
+    "promotionEvents": [
+      {
+        "discounts": [ { "categoryName": "Watches" }, { "categoryName": "Rings" } ]
+      },
+      {
+        "discounts": [ { "categoryName": "Anklets" }, { "categoryName": "Earrings" } ]
+      },
+      {
+        "discounts": [ { "categoryName": "Rings" }, { "categoryName": "Anklets" } ]
+      },
+      {
+        "discounts": [ { "categoryName": "Earrings" }, { "categoryName": "Necklaces" } ]
+      },
+      {
+        "discounts": [ { "categoryName": "Charms" }, { "categoryName": "Bracelets" } ]
+      },
+      {
+        "discounts": [ { "categoryName": "Watches" }, { "categoryName": "Brooches" } ]
+      }
+    ]
+}
 ```
 
 ## Related content
