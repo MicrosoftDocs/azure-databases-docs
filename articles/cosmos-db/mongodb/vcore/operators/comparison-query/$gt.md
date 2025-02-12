@@ -1,7 +1,7 @@
 ---
 title: $gt
 titleSuffix: Overview of the $gt query operator in Azure Cosmos DB for MongoDB vCore
-description: Overview of the $gt query operator in Azure Cosmos DB for MongoDB vCore
+description: The $gt query operator in Azure Cosmos DB for MongoDB vCore selects documents where the value of a field is greater than a specified value
 author: abinav2307
 ms.author: abramees
 ms.service: azure-cosmos-db
@@ -22,8 +22,10 @@ The `$gt` operator is used to select documents where the value of a field is gre
 
 ## Parameters
 
-- `field`: The field in the document you want to compare.
-- `value`: The value that the field should be greater than.
+| | Description |
+| --- | --- |
+| **`field`** | The field in the document you want to compare|
+| **`value`** | The value that the field should be greater than|
 
 ## Examples
 Consider this sample document from the stores collection in the StoreData database.
@@ -141,19 +143,45 @@ Consider this sample document from the stores collection in the StoreData databa
 ### Example 1: Retrieve all stores where the total sales exceed $35,000
 
 ```javascript
-db.stores.find({ "sales.totalSales": { "$gt": 35000 } })
+db.stores.find({ "sales.totalSales": { "$gt": 35000 } }, {"name": 1, "sales.totalSales": 1}, {"limit": 1})
+```
+
+This returns the following results:
+```json
+{
+    "_id": "2cf3f885-9962-4b67-a172-aa9039e9ae2f",
+    "name": "First Up Consultants | Bed and Bath Center - South Amir",
+    "sales": { "totalSales": 37701 }
+}
 ```
 
 ### Example 2: Find stores with more than 12 full-time staff
 
 ```javascript
-db.stores.find({ "staff.totalStaff.fullTime": { "$gt": 12 } })
+db.stores.find({ "staff.totalStaff.fullTime": { "$gt": 12 } }, {"name": 1, "staff.totalStaff": 1}, {"limit": 1})
+```
+
+This returns the following results:
+```json
+{
+    "_id": "2cf3f885-9962-4b67-a172-aa9039e9ae2f",
+    "name": "First Up Consultants | Bed and Bath Center - South Amir",
+    "staff": { "totalStaff": { "fullTime": 18, "partTime": 17 } }
+}
 ```
 
 ### Example 3: Find promotion events with a discount percentage greater than 10% for Art & Craft Kits
 
 ```javascript
-db.stores.find({ "promotionEvents.discounts": { "$elemMatch": { "categoryName": "Art & Craft Kits", "discountPercentage": { "$gt": 10 } } } })  
+db.stores.find({ "promotionEvents.discounts": { "$elemMatch": { "categoryName": "Art & Craft Kits", "discountPercentage": { "$gt": 10 } } } }, {"name": 1, }, {"limit": 1})
+```
+
+This returns the following results:
+```json
+{
+    "_id": "64941495-5778-4e6a-9eb1-6d7f1fddae17",
+    "name": "Trey Research | Toy Haven - North Loren"
+}
 ```
 
 ## Related content
