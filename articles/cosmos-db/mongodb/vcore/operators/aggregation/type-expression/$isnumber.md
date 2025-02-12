@@ -1,7 +1,7 @@
 ---
 title: $isNumber
 titleSuffix: Overview of the $isNumber operator in Azure Cosmos DB for MongoDB vCore
-description: Overview of the $isNumber operator in Azure Cosmos DB for MongoDB vCore
+description: The $isNumber operator in Azure Cosmos DB for MongoDB vCore checks if a specified expression is a numerical type
 author: abinav2307
 ms.author: abramees
 ms.service: azure-cosmos-db
