@@ -1,7 +1,7 @@
 ---
 title: $mod
 titleSuffix: Overview of the $mod query operator in Azure Cosmos DB for MongoDB vCore
-description: Overview of the $mod query operator in Azure Cosmos DB for MongoDB vCore
+description: The $mod query operator in Azure Cosmos DB for MongoDB vCore performs a modulo opeation on the value of a specified field
 author: abinav2307
 ms.author: abramees
 ms.service: azure-cosmos-db
@@ -23,9 +23,11 @@ The syntax for the $mod operator is:
 
 ### Parameters
 
-- `field`: The field to which the modulo operation will be applied.
-- `divisor`: The number by which the field's value will be divided.
-- `remainder`: The remainder to compare against the result of the modulo operation.
+| | Description |
+| --- | --- |
+| **`field`** | The field to which the modulo operation will be applied|
+| **`divisor`** | The number by which the field's value will be divided|
+| **`remainder`** | The remainder to compare against the result of the modulo operation|
 
 ## Examples
 
