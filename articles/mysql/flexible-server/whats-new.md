@@ -25,9 +25,7 @@ This article summarizes new releases and features in the Azure Database for MySQ
 
 ## February 2025
 
-- **Known Issues**
-
-Known Issue: **Azure Advisor recommendations for Accelerated Logs**  
+**Known Issues**  
 
 Azure Advisor recommendations may continue to recommend enabling **Accelerated logs** even after the feature is enabled on your **Azure Database for MySQL – Flexible Server**. We are actively working on a fix, and this issue will be resolved at the earliest. If [Accelerated logs](./concepts-accelerated-logs.md) is already enabled on your server, you can safely ignore this recommendation.
 
