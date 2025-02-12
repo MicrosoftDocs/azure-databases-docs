@@ -1,7 +1,7 @@
 ---
 title: $lt
 titleSuffix: Overview of the $lt query operator in Azure Cosmos DB for MongoDB vCore
-description: Overview of the $lt query operator in Azure Cosmos DB for MongoDB vCore
+description: The $lt query operator in Azure Cosmos DB for MongoDB vCore matches documents where the value of field is less than a specified value
 author: abinav2307
 ms.author: abramees
 ms.service: azure-cosmos-db
@@ -25,8 +25,11 @@ The syntax for using the `$lt` operator in a MongoDB query is:
 ```
 
 ## Parameters
-- `field`: The field in the document you want to evaluate.
-- `value`: The value to compare against the field's value. The operator will match documents where the field's value is less than this specified value.
+
+| | Description |
+| --- | --- |
+| **`field`** | The field in the document you want to evaluate|
+| **`value`** | The value to compare against the field's value. The operator will match documents where the field's value is less than this specified value|
 
 ## Examples
 
@@ -145,19 +148,16 @@ Consider this sample document from the stores collection in the StoreData databa
 ### Example 1: Find stores with total sales less than $36000
 
 ```javascript
-db.stores.find({"sales.totalSales": { "$lt": 36000 }})
+db.stores.find({"sales.totalSales": { "$lt": 36000 }}, {"name": 1, "sales.totalSales": 1}, {"limit": 1})
 ```
 
-### Example 2: Find promotion events with discounts less than 20%
-
-```javascript
-db.stores.find({"promotionEvents.discounts.discountPercentage": { "$lt": 20 }})
-```
-
-### Example 3: Find stores with fewer than 20 full-time staff
-
-```javascript
-db.stores.find({"staff.totalStaff.fullTime": { "$lt": 20 }})
+This returns the following results:
+```json
+{
+    "_id": "e6895a31-a5cd-4103-8889-3b95a864e5a6",
+    "name": "VanArsdel, Ltd. | Picture Frame Store - Port Clevelandton",
+    "sales": { "totalSales": 17676 }
+}
 ```
 
 ## Related content
