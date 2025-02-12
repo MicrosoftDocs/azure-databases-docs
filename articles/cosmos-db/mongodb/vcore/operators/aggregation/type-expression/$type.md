@@ -26,7 +26,9 @@ The syntax for the `$type` operator is:
 
 ## Parameters
 
-- `expression`: The specified value whose type to retrieve
+| | Description |
+| --- | --- |
+| **`expression`** | The specified value whose type to retrieve|
 
 ## Examples
 
