@@ -1,7 +1,7 @@
 ---
 title: insert()
 titleSuffix: Overview of the insert command on Azure Cosmos DB for MongoDB vCore
-description: Overview of the insert command on Azure Cosmos DB for MongoDB vCore
+description: The insert command in Azure Cosmos DB for MongoDB vCore creates new documents in a collection
 author: abinav2307
 ms.author: abramees
 ms.service: azure-cosmos-db
@@ -29,6 +29,12 @@ db.collection.insert(
 ```
 
 ### Parameters
+
+| | Description |
+| --- | --- |
+| **`<single document or array of documents>`** | The document or array of documents to insert into the collection|
+| **`writeConcern`** | (Optional) A document expressing the write concern. The write concern describes the level of acknowledgment requested from the server for the write operation|
+| **`ordered`** | (Optional) If `true`, the server inserts the documents in the order provided. If `false`, the server can insert the documents in any order and will attempt to insert all documents regardless of errors|
 
 - `<single document or array of documents>`: The document or array of documents to insert into the collection.
 - `writeConcern`: Optional. A document expressing the write concern. The write concern describes the level of acknowledgment requested from the server for the write operation.
