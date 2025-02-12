@@ -27,7 +27,10 @@ This article summarizes new releases and features in the Azure Database for MySQ
 
 **Known Issues**  
 
-Azure Advisor recommendations may continue to recommend enabling **Accelerated logs** even after the feature is enabled on your **Azure Database for MySQL – Flexible Server**. We are actively working on a fix, and this issue will be resolved at the earliest. If [Accelerated logs](./concepts-accelerated-logs.md) is already enabled on your server, you can safely ignore this recommendation.
+
+- Azure Advisor recommendations may continue to recommend enabling accelerated logs even after the feature is enabled on your **Azure Database for MySQL – Flexible Server**. We are actively working on a fix, and this issue will be resolved at the earliest. If [accelerated logs](./concepts-accelerated-logs.md) is already enabled on your server, you can safely ignore this recommendation.
+
+- For [CMK enabled](./concepts-customer-managed-key.md) servers, enabling [accelerated logs](./concepts-accelerated-logs.md) may not work due to a current limitation. As a workaround, you can temporarily disable CMK, enable accelerated logs, and then re-enable CMK. We are actively working to resolve this issue at the earliest. For more details, refer to the [accelerated logs documentation](./concepts-accelerated-logs.md).
 
 
 ## January 2025
