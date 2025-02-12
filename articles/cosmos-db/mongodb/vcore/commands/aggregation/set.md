@@ -1,7 +1,7 @@
 ---
 title: $set
 titleSuffix: Overview of the $set operator in Azure Cosmos DB for MongoDB vCore
-description: Overview of the $set operator in Azure Cosmos DB for MongoDB vCore
+description: The $set operator in Azure Cosmos DB for MongoDB vCore updates or creates a new field with a specified value
 author: abinav2307
 ms.author: abramees
 ms.service: azure-cosmos-db
@@ -26,8 +26,11 @@ The `$set` operator updates an existing field or creates a new field with the sp
 ```
 
 ## Parameters
-- `newField`: The name of the field to update or create.
-- `expression`: The expression that defines the value of the new or updated field.
+
+| | Description |
+| --- | --- |
+| **`newField`** | The name of the field to update or create|
+| **`expression`** | The expression that defines the value of the new or updated field|
 
 ## Examples
 
