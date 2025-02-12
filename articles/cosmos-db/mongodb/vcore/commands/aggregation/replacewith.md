@@ -150,12 +150,29 @@ First, match a specific document to replace by the _id field and replace the con
 db.stores.aggregate([{ "$match": { "_id": "bda56164-954d-4f47-a230-ecf64b317b43" } }, { "$replaceWith": { "_id": "$_id", "name": "$name", "sales": "$sales.totalSales" } }])
 ```
 
+This returns the following result:
+```json
+{
+    "_id": "bda56164-954d-4f47-a230-ecf64b317b43",
+    "name": "Boulder Innovations | Home Security Place - Ankundingburgh",
+    "sales": 37015
+}
+```
+
 ### Example 2 - Return a document that replaces the contents of the original document after aggregating specified fields
 
 ```mongodb
 db.stores.aggregate([{ "$match": { "_id": "bda56164-954d-4f47-a230-ecf64b317b43" } }, { "$replaceWith": { "_id": "$_id", "name": "$name", "totalStaff": {"$add": ["$staff.totalStaff.fullTime", "$staff.totalStaff.partTime"]}}}])
 ```
 
+This returns the following result:
+```json
+{
+    "_id": "bda56164-954d-4f47-a230-ecf64b317b43",
+    "name": "Boulder Innovations | Home Security Place - Ankundingburgh",
+    "totalStaff": 29
+}
+```
 ## Related Content
 
 - [Migrate to vCore based Azure Cosmos DB for MongoDB](https://aka.ms/migrate-to-azure-cosmosdb-for-mongodb-vcore)
