@@ -53,6 +53,11 @@ The following high-level diagram summarizes how authentication works when you us
 
 For the steps to configure Microsoft Entra ID with Azure Database for PostgreSQL flexible server, see [Configure and sign in with Microsoft Entra ID for Azure Database for PostgreSQL - Flexible Server](how-to-configure-sign-in-azure-ad-authentication.md).
 
+1. Your application can request a token from the Azure Instance Metadata Service identity endpoint.
+2. When you use the client ID and certificate, a call is made to Microsoft Entra ID to request an access token.
+3. A JSON Web Token (JWT) access token is returned by Microsoft Entra ID. Your application sends the access token on a call to your Flexible Server.
+4. The Flexible Server validates the token with Microsoft Entra ID.
+
 ## Differences between a PostgreSQL administrator and a Microsoft Entra administrator
 
 When you turn on Microsoft Entra authentication for your flexible server and add a Microsoft Entra principal as a Microsoft Entra administrator, the account:
