@@ -1,7 +1,7 @@
 ---
 title: $lte
 titleSuffix: Overview of the $lte query operator in Azure Cosmos DB for MongoDB vCore
-description: Overview of the $lte query operator in Azure Cosmos DB for MongoDB vCore
+description: The $lte query operator in Azure Cosmos DB for MongoDB vCore matches documents where the value of a field is less than or equal to a specified value
 author: abinav2307
 ms.author: abramees
 ms.service: azure-cosmos-db
@@ -27,8 +27,11 @@ The syntax for using the `$lte` operator is:
 ```
 
 ## Parameters
-- `field`: The field to be compared.
-- `value`: The value to compare against.
+
+| | Description |
+| --- | --- |
+| **`field`** | The field to be compared|
+| **`value`** | The value to compare against|
 
 ## Examples
 Consider this sample document from the stores collection in the StoreData database.
@@ -146,19 +149,29 @@ Consider this sample document from the stores collection in the StoreData databa
 ### Example 1: Retrieve all stores where the total sales is less than or equal to $35,000
 
 ```javascript
-db.stores.find({ "sales.totalSales": { "$lte": 35000 } })
+db.stores.find({ "sales.totalSales": { "$lte": 35000 } }, {"_id": 1}, {"limit": 1})
+```
+
+This returns the following results:
+```json
+{
+  "_id": "e6895a31-a5cd-4103-8889-3b95a864e5a6"
+}
 ```
 
 ### Example 2: Find stores with 12 or fewer full-time staff
 
 ```javascript
-db.stores.find({ "staff.totalStaff.fullTime": { "$lte": 12 } })
+db.stores.find({ "staff.totalStaff.fullTime": { "$lte": 12 } }, {"name": 1, "staff.totalStaff.fullTime": 1}, {"limit": 1})
 ```
 
-### Example 3: Find promotion events with a discount percentage less than or equal to 15% for laptops
-
-```javascript
-db.stores.find({ "promotionEvents.discounts": { "$elemMatch": { "categoryName": "Laptops", "discountPercentage": { "$lte": 15 } } } })
+This returns the following results:
+```json
+{
+    "_id": "e6895a31-a5cd-4103-8889-3b95a864e5a6",
+    "name": "VanArsdel, Ltd. | Picture Frame Store - Port Clevelandton",
+    "staff": { "totalStaff": { "fullTime": 6 } }
+}
 ```
 
 ## Related content
