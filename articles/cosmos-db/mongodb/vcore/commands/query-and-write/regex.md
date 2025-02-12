@@ -1,7 +1,7 @@
 ---
 title: $regex
 titleSuffix: Overview of the $regex operator in Azure Cosmos DB for MongoDB vCore
-description: Overview of the $regex operator in Azure Cosmos DB for MongoDB vCore
+description: The $regex operator in Azure Cosmos DB for MongoDB vCore performs a pattern match with a regular expression
 author: abinav2307
 ms.author: abramees
 ms.service: azure-cosmos-db
@@ -21,9 +21,12 @@ The `$regex` operator is used to perform pattern matching with regular expressio
 ```
 
 ## Parameters
-- `field`: The field in the document you want to query.
-- `/pattern/`: The regular expression pattern you want to match.
-- `options`: Optional flags to modify the behavior of the regex. Common options include i for case-insensitive matching, m for multiline matching, etc.
+
+| | Description |
+| --- | --- |
+| **`field`** | The field in the document you want to query|
+| **`/pattern/`** | The regular expression pattern you want to match|
+| **`options`** | Optional flags to modify the behavior of the regex. Common options include i for case-insensitive matching, m for multiline matching, etc.|
 
 ## Examples
 
@@ -142,7 +145,25 @@ Consider this sample document from the stores collection in the StoreData databa
 ### Example 1 - Find all stores with a promotion event where the name contains the substring 'Days'
 
 ```mongodb
-db.stores.find({"promotionEvents.eventName": {"$regex": /Days/}})
+db.stores.find({"promotionEvents.eventName": {"$regex": /Days/}}, {"name": 1}, {"limit": 3})
+```
+
+This returns the following results:
+```json
+[
+  {
+    "_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74",
+    "name": "Proseware, Inc. | Home Entertainment Hub - East Linwoodbury"
+  },
+  {
+    "_id": "f2a8c190-28e4-4e14-9d8b-0256e53dca66",
+    "name": "Fabrikam, Inc. | Car Accessory Outlet - West Adele"
+  },
+  {
+    "_id": "65300639-9bf0-460c-ae1f-891b2ff479b1",
+    "name": "Wide World Importers | Fitness Equipment Emporium - Reillyborough"
+  }
+]
 ```
 
 ### Example 2 - Perform a case insensitive regex pattern match
@@ -151,6 +172,24 @@ Find all stores with a promotion event where the name contains the case insensit
 
 ```mongodb
 db.stores.find({"promotionEvents.eventName": {"$regex": /bash/i}})
+```
+
+This returns the following results:
+```json
+[
+  {
+    "_id": "40d6f4d7-50cd-4929-9a07-0a7a133c2e74",
+    "name": "Proseware, Inc. | Home Entertainment Hub - East Linwoodbury"
+  },
+  {
+    "_id": "438db151-04b8-4422-aa97-acf94bc69cfc",
+    "name": "Fourth Coffee | Turntable Boutique - Tromptown"
+  },
+  {
+    "_id": "c5041337-bd61-4efa-bc7a-02799a2ce82c",
+    "name": "Wide World Importers | Headphone Corner - McGlynnview"
+  }
+]
 ```
 ## Related Content
 
