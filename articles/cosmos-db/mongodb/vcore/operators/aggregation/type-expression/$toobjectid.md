@@ -26,7 +26,9 @@ The syntax for the `$toObject` operator is:
 
 ## Parameters
 
-- `expression`: The specified string value to convert into an ObjectId
+| | Description |
+| --- | --- |
+| **`expression`** | The specified string value to convert into an ObjectId|
 
 ## Examples
 
