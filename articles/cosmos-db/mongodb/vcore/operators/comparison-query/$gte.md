@@ -1,7 +1,7 @@
 ---
 title: $gte
 titleSuffix: Overview of the $gte query operator in Azure Cosmos DB for MongoDB vCore
-description: Overview of the $gte query operator in Azure Cosmos DB for MongoDB vCore
+description: The $gte query operator in Azure Cosmos DB for MongoDB vCore returns documents where the value of a field is greater than or equal to a specified value
 author: abinav2307
 ms.author: abramees
 ms.service: azure-cosmos-db
@@ -26,8 +26,10 @@ The syntax for using the `$gte` operator is:
 
 ## Parameters
 
-- `field`: The field in the document you want to compare.
-- `value`: The value that the field should be greater than.
+| | Description |
+| --- | --- |
+| **`field`** | The field in the document you want to compare|
+| **`value`** | The value that the field should be greater than|
 
 ## Examples
 Consider this sample document from the stores collection in the StoreData database.
@@ -145,19 +147,51 @@ Consider this sample document from the stores collection in the StoreData databa
 ### Example 1: Retrieve all stores where the total sales is greater than or equal to $35,000
 
 ```javascript
-db.stores.find({ "sales.totalSales": { "$gte": 35000 } })
+db.stores.find({ "sales.totalSales": { "$gte": 35000 } },{"name": 1, "sales.totalSales": 1}, {"limit": 1})
+```
+
+This returns the following results:
+```json
+{
+    "_id": "2cf3f885-9962-4b67-a172-aa9039e9ae2f",
+    "name": "First Up Consultants | Bed and Bath Center - South Amir",
+    "sales": { "totalSales": 37701 }
+}
 ```
 
 ### Example 2: Find stores with 12 or more full-time staff
 
 ```javascript
-db.stores.find({ "staff.totalStaff.fullTime": { "$gte": 12 } })
+db.stores.find({ "staff.totalStaff.fullTime": { "$gte": 12 } },{"name": 1, "staff.totalStaff.fullTime": 1}, {"limit": 1})
+```
+
+This returns the following results:
+```json
+{
+    "_id": "2cf3f885-9962-4b67-a172-aa9039e9ae2f",
+    "name": "First Up Consultants | Bed and Bath Center - South Amir",
+    "staff": { "totalStaff": { "fullTime": 18 } }
+}
 ```
 
 ### Example 3: Find promotion events with a discount percentage greater than or equal to 15% for Mirrors
 
 ```javascript
-db.stores.find({ "promotionEvents.discounts": { "$elemMatch": { "categoryName": "Laptops", "discountPercentage": { "$gte": 15 } } } })
+db.stores.find({ "promotionEvents.discounts": { "$elemMatch": { "categoryName": "Laptops", "discountPercentage": { "$gte": 15 } } } }, {"name": 1}, {"limit": 2})
+```
+
+This returns the following results:
+```json
+[
+  {
+    "_id": "60e43617-8d99-4817-b1d6-614b4a55c71e",
+    "name": "Wide World Importers | Electronics Emporium - North Ayanashire"
+  },
+  {
+    "_id": "3c441d5a-c9ad-47f4-9abc-ac269ded44ff",
+    "name": "Contoso, Ltd. | Electronics Corner - New Kiera"
+  }
+]
 ```
 
 ## Related content
