@@ -1,7 +1,7 @@
 ---
 title: $convert
 titleSuffix: Overview of the $convert operator in Azure Cosmos DB for MongoDB vCore
-description: Overview of the $convert operator in Azure Cosmos DB for MongoDB vCore
+description: The $convert operator in Azure Cosmos DB for MongoDB vCore converts an expression into the specified type
 author: abinav2307
 ms.author: abramees
 ms.service: azure-cosmos-db
