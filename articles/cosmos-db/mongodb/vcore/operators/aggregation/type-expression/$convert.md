@@ -24,12 +24,13 @@ The syntax for the `$convert` operator is:
 ```
 
 ## Parameters
-
-- `input`: The input value to be converted to the specified type
-- `to`: The type to convert the input value into
-- `format`: (Optional) The binData format of the input or output when converting a value to or from binData
-- `onError`: (Optional) The value to return when the conversion of the input to the specified type fails
-- `onNull`: (Optional) The value to return when the input value to be converted to the specified type is null or missing
+| | Description |
+| --- | --- |
+| **`input`** | The input value to be converted to the specified type|
+| **`to`** | The type to convert the input value into|
+| **`format`** | (Optional) The binData format of the input or output when converting a value to or from binData|
+| **`onError`** | (Optional) The value to return when the conversion of the input to the specified type fails|
+| **`onNull`** | (Optional) The value to return when the input value to be converted to the specified type is null or missing|
 
 ## Examples
 
