@@ -1,7 +1,7 @@
 ---
 title: $nin
 titleSuffix: Overview of the $nin query operator in Azure Cosmos DB for MongoDB vCore
-description: Overview of the $nin query operator in Azure Cosmos DB for MongoDB vCore
+description: The $nin query operator in Azure Cosmos DB for MongoDB vCore returns documents where the value of a field doesn't match a list of values
 author: abinav2307
 ms.author: abramees
 ms.service: azure-cosmos-db
@@ -23,8 +23,11 @@ The `$nin` operator is used to retrieve documents where the value of a specified
 ```
 
 ## Parameters
-- `field`: The field to compare.
-- `[<value1>, <value2>, ... <valueN>]`: An array of values that shouldn't match the value of the field being compared.
+
+| | Description |
+| --- | --- |
+| **`field`** | The field to compare|
+| **`[<value1>, <value2>, ... <valueN>]`** | An array of values that shouldn't match the value of the field being compared|
 
 ## Examples
 Consider this sample document from the stores collection in the StoreData database.
@@ -142,13 +145,61 @@ Consider this sample document from the stores collection in the StoreData databa
 ### Example 1 - Find documents with promotion events offering a discount percentage that isn't either of 10%, 15%, or 20%
 
 ```javascript
-db.stores.find({ "promotionEvents.discounts.discountPercentage": { "$nin": [10, 15, 20] }})
+db.stores.find({ "promotionEvents.discounts.discountPercentage": { "$nin": [10, 15, 20] }}, {"name": 1, "promotionEvents.discounts.discountPercentage": 1}, {"limit": 1})
+```
+
+This returns the following results:
+```json
+{
+    "_id": "2cf3f885-9962-4b67-a172-aa9039e9ae2f",
+    "name": "First Up Consultants | Bed and Bath Center - South Amir",
+    "promotionEvents": [
+      {
+        "discounts": [
+          { "discountPercentage": 18 },
+          { "discountPercentage": 17 },
+          { "discountPercentage": 9 },
+          { "discountPercentage": 5 },
+          { "discountPercentage": 5 },
+          { "discountPercentage": 6 },
+          { "discountPercentage": 9 },
+          { "discountPercentage": 5 },
+          { "discountPercentage": 19 },
+          { "discountPercentage": 21 }
+        ]
+      }
+    ]
+}
 ```
 
 ### Example 2 - Find documents with discount offers that aren't on specific categories of promotions
 
 ```javascript
-db.stores.find({ "promotionEvents.discounts.categoryName": { "$nin": ["Smoked Salmon", "Anklets"] }})
+db.stores.find({ "promotionEvents.discounts.categoryName": { "$nin": ["Smoked Salmon", "Anklets"] }}, {"name": 1, "promotionEvents.discounts.categoryName": 1}, {"limit": 1})
+```
+
+This returns the following results:
+```json
+{
+    "_id": "2cf3f885-9962-4b67-a172-aa9039e9ae2f",
+    "name": "First Up Consultants | Bed and Bath Center - South Amir",
+    "promotionEvents": [
+      {
+        "discounts": [
+          { "categoryName": "Bath Accessories" },
+          { "categoryName": "Pillow Top Mattresses" },
+          { "categoryName": "Bathroom Scales" },
+          { "categoryName": "Towels" },
+          { "categoryName": "Bathrobes" },
+          { "categoryName": "Mattress Toppers" },
+          { "categoryName": "Hand Towels" },
+          { "categoryName": "Shower Heads" },
+          { "categoryName": "Bedspreads" },
+          { "categoryName": "Bath Mats" }
+        ]
+      }
+    ]
+}
 ```
 
 ## Related content
