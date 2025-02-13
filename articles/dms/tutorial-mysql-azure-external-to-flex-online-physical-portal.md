@@ -15,14 +15,14 @@ ms.collection:
 # Tutorial: Migrate from MySQL to Azure Database for MySQL - Flexible Server online using DMS physical migration via the Azure portal (preview)
 
 > [!NOTE]  
-> This article contains references to the term *slave*, a term that Microsoft no longer uses. When the term is removed from the software, we'll remove it from this article.
+> This article contains references to the term *slave*, a term that Microsoft no longer uses. When the term is removed from the software, we remove it from this article.
 
-You can seamlessly migrate your MySQL on-premises or Virtual Machine (VM) workload on Azure or other cloud services to Azure Database for MySQL - Flexible Server using a physical backup file. With physical backup files you can quickly restore your source server on to the target flexible server instance with minimal downtime. In this tutorial we show you how to use Azure DMS to migrate MySQL workloads from on-premises or VMs to Azure Database for MySQL - Flexible Server with minimal downtime using [Percona XtraBackup](https://www.percona.com/mysql/software/percona-xtrabackup). 
+You can seamlessly migrate your MySQL on-premises or Virtual Machine (VM) workload on Azure or other cloud services to Azure Database for MySQL - Flexible Server using a physical backup file. With physical backup files, you can quickly restore your source server on to the target flexible server instance with minimal downtime. In this tutorial, we show you how to use Azure DMS to migrate MySQL workloads from on-premises or VMs to Azure Database for MySQL - Flexible Server with minimal downtime using [Percona XtraBackup](https://www.percona.com/mysql/software/percona-xtrabackup). 
 
 > [!NOTE]  
-> DMS **physical online data migration** is now in public preview. DMS supports migration to MySQL versions 5.7 and 8.0 and also supports migration from lower version MySQL servers (v5.6 and above) to a higher version MySQL server. In addition, DMS supports cross-region, cross-resource group, and cross-subscription migrations.
+> DMS **physical online data migration** is now in public preview. DMS supports migration to MySQL versions 5.7 and 8.0 and also supports migration from lower version MySQL servers (v5.6 and higher) to a higher version MySQL server. In addition, DMS supports cross-region, cross-resource group, and cross-subscription migrations.
 
-In this tutorial, you'll learn how to:
+In this tutorial, you learn how to:
 
 > [!div class="checklist"]
 > - Create and configure the source MySQL server, target flexible server, and other required services.
@@ -57,22 +57,22 @@ To complete this tutorial, you need to:
       - Considerations while taking the Percona XtraBackup:
         - Make sure you run both the backup and prepare step.
         - Make sure there are no errors in the backup and prepare step.
-        - Keep the backup and prepare step logs for Azure Support, which is required in case of failures.
+        - Keep the backup and prepare step logs for Azure Support, which is required if there are failures.
     > [!IMPORTANT]
-      > Attempting to access corrupted tables imported from a source server can cause the target flexible server to crash. As a result, before taking a backup using the Percona XtraBackup utility, it is strongly recommended to perform a "mysqlcheck / Optimize Table" operation on the source server.
+      > Attempting to access corrupted tables imported from a source server can cause the target flexible server to crash. As a result, before taking a backup using the Percona XtraBackup utility, it's recommended to perform a "mysqlcheck / Optimize Table" operation on the source server.
 - Create the target flexible server. For guided steps, see the quickstart [Quickstart: Create an instance of Azure Database for MySQL with the Azure portal](../mysql/flexible-server/quickstart-create-server-portal.md).
-   - On the target flexible server, set **max_allowed_packet** to **1073741824 (i.e., 1GB)** to prevent any connection issues due toa  large row data transfer.
+   - On the target flexible server, set **max_allowed_packet** to **1073741824 (i.e., 1GB)** to prevent any connection issues due to a  large row data transfer.
    - Set **sql_mode** server parameter on the target flexible server to match the source server configuration. 
    - Set the **TLS version** and **require_secure_transport** server parameter to match the values of the source server.
-   - Configure server parameters on the target flexible server to match any non-default values used on the source server.
+   - Configure server parameters on the target flexible server to match any non default values used on the source server.
 - [Create an Azure Blob container](https://learn.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal#create-a-container) and get the Shared Access Signature (SAS) Token ([Azure portal](https://learn.microsoft.com/azure/ai-services/translator/document-translation/how-to-guides/create-sas-tokens?tabs=Containers#create-sas-tokens-in-the-azure-portal) or [Azure CLI](https://learn.microsoft.com/azure/storage/blobs/storage-blob-user-delegation-sas-create-cli)) for the container. Ensure that you grant **Add**, **Create**, and **Write** in the **Permissions** dropdown list. 
     > [!IMPORTANT]
-      > Save the Blob SAS token and URL values in a secure location. They are only displayed once and can't be retrieved once the window is closed.
+      > Save the Blob SAS token and URL values in a secure location. They're only displayed once and can't be retrieved once the window is closed.
 - Upload the full backup file from Percona Xtrabackup at {backup_dir_path} to your Azure Blob storage. Follow these [steps to upload a file](https://learn.microsoft.com/azure/storage/common/storage-use-azcopy-blobs-upload#upload-a-file).
 - DMS uses the binlog positions captured at the time of taking the full backup from *xtrabackup_binlog_info* file to automatically initiate the replication process for a minimal downtime migration.
-- The Azure storage account should be publicly accessible using SAS token. Azure storage account with virtual network configuration is not supported.
-- An [App registration](https://learn.microsoft.com/entra/identity-platform/quickstart-register-app?tabs=certificate) needs to be created, and an app key using [client secret](https://learn.microsoft.com/entra/identity-platform/quickstart-register-app?tabs=client-secret#add-credentials) has to be generated to be used with physical migration workflow. This app will in turn be used with the storage account and the target flexible server for SAS key creation and server update. 
-- [Assign the RBAC role assignment](https://learn.microsoft.com/azure/role-based-access-control/role-assignments-portal) with the app registration for storage account with the following roles.
+- The Azure storage account should be publicly accessible using SAS token. Azure storage account with virtual network configuration isn't supported.
+- An [App registration](https://learn.microsoft.com/entra/identity-platform/quickstart-register-app?tabs=certificate) needs to be created, and an app key using [client secret](https://learn.microsoft.com/entra/identity-platform/quickstart-register-app?tabs=client-secret#add-credentials) needs to be generated to be used in the physical migration workflow. This app will in turn be used with the storage account and the target flexible server for SAS key creation and server update. 
+- [Assign the Role-based access control (RBAC) role assignment](https://learn.microsoft.com/azure/role-based-access-control/role-assignments-portal) with the app registration for storage account with the following roles.
     - **Storage blob data reader** for reading blob container files.
 - Assign the **Contributor** role to the **app registration** on the target MySQL flexible server.
 
@@ -80,20 +80,20 @@ To complete this tutorial, you need to:
 
 As you prepare for the migration, be sure to consider the following limitations.
 
-- Source server configuration isn't migrated. You must configure the target Flexible server appropriately prior to initiating the migration.
+- Source server configuration isn't migrated. You must configure the target Flexible server appropriately before initiating the migration.
 - Migration for encrypted backups isn't supported.
-- Migration cancellation during the import operation is not supported. 
+- Migration cancellation during the import operation isn't supported. 
 - Online migration support is limited to the **ROW** binlog format.
 - Azure Database for MySQL - Flexible Server doesn't support mixed case databases.
-- Azure DMS statement or binlog replication doesn't support the following syntax: 'CREATE TABLE `b` as SELECT * FROM `a`;'. The replication of this DDL will result in the following error: "Only BINLOG INSERT, COMMIT and ROLLBACK statements are allowed after CREATE TABLE with START TRANSACTION statement."
-- Migration duration can be affected by compute maintenance on the backend, which can reset the progress.
+- Azure DMS statement or binlog replication doesn't support the following syntax: 'CREATE TABLE `b` as SELECT * FROM `a`;'. The replication of this DDL results in the following error: "Only BINLOG INSERT, COMMIT, and ROLLBACK statements are allowed after CREATE TABLE with START TRANSACTION statement."
+- Migration duration could be affected by compute maintenance on the backend, which can reset the progress.
 
-## Best practices for a faster data loads using DMS
+## Best practices for a faster data load using DMS
 
-DMS supports cross-region, cross-resource group, and cross-subscription migrations, so you're free to select appropriate region, resource group and subscription for your target flexible server. Before you create your target flexible server, consider the following configuration guidance to help ensure faster data loads using DMS.
+DMS supports cross-region, cross-resource group, and cross-subscription migrations, so you're free to select appropriate region, resource group, and subscription for your target flexible server. Before you create your target flexible server, consider the following configuration guidance to help ensure faster data loads using DMS.
 
 - Select the [compute size and compute tier](https://learn.microsoft.com/azure/mysql/flexible-server/concepts-service-tiers-storage) for the target flexible server based on the source MySQL server configuration for an optimal migration experience.
-    - We recommend setting the target flexible server to a General Purpose or a Business Critical SKU for the duration of the migration, once the migration succeeds, you can scale the instance to an appropriate size to meet your application needs.
+    - We recommend setting the target flexible server to a General Purpose or a Business Critical SKU during the migration, once the migration succeeds, you can scale the instance to an appropriate size to meet your application needs.
 
 - The MySQL version for the target flexible server must be greater than or equal to that of the source MySQL server.
 
@@ -146,11 +146,11 @@ To register the Microsoft.DataMigration resource provider, perform the following
 
 1. On the **Configure** page, select the **Premium** pricing tier with 4 vCores for your DMS instance, and then select **Apply**.
 
-   DMS Premium 4-vCore is free for 6 months (183 days) from the DMS service creation date before incurring any charges. For more information on DMS costs and pricing tiers, see the [pricing page](https://aka.ms/dms-pricing).
+   DMS Premium 4-vCore is free for six months (183 days) from the DMS service creation date before incurring any charges. For more information on DMS costs and pricing tiers, see the [pricing page](https://aka.ms/dms-pricing).
 
    :::image type="content" source="media/tutorial-mysql-external-to-flex-online-physical-portal/8-configure-pricing-tier.png" alt-text="Screenshot of a Select Pricing tier." lightbox="media/tutorial-mysql-external-to-flex-online-physical-portal/8-configure-pricing-tier.png":::
 
-    Next, we need to specify the VNet that will provide the DMS instance with access to the source MySQL server and the target flexible server.
+    Next, we need to specify the virtual network (VNet) that will provide the DMS instance with access to the source MySQL server and the target flexible server.
 
 1. On the **Create Migration Service** page, select **Next : Networking >>**.
 
@@ -202,7 +202,7 @@ To create a migration project, perform the following steps.
 
 To configure your DMS migration project, perform the following steps.
 
-1. On the **Select source** screen, we must ensure that DMS is in the VNet which has connectivity to the source server. Here you'll input **source server name**, **server port**, **user name**, and **password** to your source MySQL server and then click **Next: Select target >>**
+1. On the **Select source** screen, we must ensure that DMS is in the VNet which has connectivity to the source server. Here you'll input **source server name**, **server port**, **user name**, and **password** to your source MySQL server and then select **Next: Select target >>**
 
    :::image type="content" source="media/tutorial-mysql-external-to-flex-online-physical-portal/4-select-source.png" alt-text="Screenshot of an Add source details screen." lightbox="media/tutorial-mysql-external-to-flex-online-physical-portal/4-select-source.png":::
 
@@ -234,7 +234,7 @@ To configure your DMS migration project, perform the following steps.
 
    After the **Initial Load** activity is completed, you're navigated to the **Replicate Data Changes** tab automatically. You can monitor the migration progress as the screen is auto-refreshed every 30 seconds or click on the **Refresh** button. 
 
-1. Once the initial data ingestion is complete. Monitor the **Seconds behind source** field under **Replicate Data Changes** tab and as soon as it is 0, proceed to start cutover by navigating to the **Start Cutover** button at the top of the migration activity screen. Select **Refresh** to update the display and view the seconds behind source when needed.
+1. Once the initial data ingestion completes, monitor the **Seconds behind source** field under **Replicate Data Changes** tab and as soon as it's 0, proceed to start cutover by navigating to the **Start Cutover** button at the top of the migration activity screen. Select **Refresh** to update the display and view the seconds behind source when needed.
 
    :::image type="content" source="media/tutorial-mysql-external-to-flex-online-physical-portal/10-migration-replication-status.png" alt-text="Screenshot of monitoring replication status." lightbox="media/tutorial-mysql-external-to-flex-online-physical-portal/10-migration-replication-status.png":::
 
@@ -246,7 +246,7 @@ To configure your DMS migration project, perform the following steps.
 
 ## Perform post-migration activities
 
-When the migration has finished, be sure to complete the following post-migration activities.
+When the migration finishes, be sure to complete the following post-migration activities.
 
 - Perform validation and data integration against the target database to certify the migration completion using one of the mentioned approaches.
     - You can validate data by comparing **row count** or **checksum** between source and target flexible servers.
