@@ -65,14 +65,14 @@ To complete this tutorial, you need to:
    - Set **sql_mode** server parameter on the target flexible server to match the source server configuration. 
    - Set the **TLS version** and **require_secure_transport** server parameter to match the values of the source server.
    - Configure server parameters on the target flexible server to match any non-default values used on the source server.
-- [Create an Azure Blob container](https://learn.microsoft.com/en-us/azure/storage/blobs/storage-quickstart-blobs-portal#create-a-container) and get the Shared Access Signature (SAS) Token ([Azure portal](https://learn.microsoft.com/en-us/azure/ai-services/translator/document-translation/how-to-guides/create-sas-tokens?tabs=Containers#create-sas-tokens-in-the-azure-portal) or [Azure CLI](https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blob-user-delegation-sas-create-cli)) for the container. Ensure that you grant **Add**, **Create**, and **Write** in the **Permissions** dropdown list. 
+- [Create an Azure Blob container](https://learn.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal#create-a-container) and get the Shared Access Signature (SAS) Token ([Azure portal](https://learn.microsoft.com/azure/ai-services/translator/document-translation/how-to-guides/create-sas-tokens?tabs=Containers#create-sas-tokens-in-the-azure-portal) or [Azure CLI](https://learn.microsoft.com/azure/storage/blobs/storage-blob-user-delegation-sas-create-cli)) for the container. Ensure that you grant **Add**, **Create**, and **Write** in the **Permissions** dropdown list. 
     > [!IMPORTANT]
       > Save the Blob SAS token and URL values in a secure location. They are only displayed once and can't be retrieved once the window is closed.
-- Upload the full backup file from Percona Xtrabackup at {backup_dir_path} to your Azure Blob storage. Follow these [steps to upload a file](https://learn.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-blobs-upload#upload-a-file).
+- Upload the full backup file from Percona Xtrabackup at {backup_dir_path} to your Azure Blob storage. Follow these [steps to upload a file](https://learn.microsoft.com/azure/storage/common/storage-use-azcopy-blobs-upload#upload-a-file).
 - DMS uses the binlog positions captured at the time of taking the full backup from *xtrabackup_binlog_info* file to automatically initiate the replication process for a minimal downtime migration.
 - The Azure storage account should be publicly accessible using SAS token. Azure storage account with virtual network configuration is not supported.
-- An [App registration](https://learn.microsoft.com/en-us/entra/identity-platform/quickstart-register-app?tabs=certificate) needs to be created, and an app key using [client secret](https://learn.microsoft.com/en-us/entra/identity-platform/quickstart-register-app?tabs=client-secret#add-credentials) has to be generated to be used with physical migration workflow. This app will in turn be used with the storage account and the target flexible server for SAS key creation and server update. 
-- [Assign the RBAC role assignment](https://learn.microsoft.com/en-us/azure/role-based-access-control/role-assignments-portal) with the app registration for storage account with the following roles.
+- An [App registration](https://learn.microsoft.com/entra/identity-platform/quickstart-register-app?tabs=certificate) needs to be created, and an app key using [client secret](https://learn.microsoft.com/entra/identity-platform/quickstart-register-app?tabs=client-secret#add-credentials) has to be generated to be used with physical migration workflow. This app will in turn be used with the storage account and the target flexible server for SAS key creation and server update. 
+- [Assign the RBAC role assignment](https://learn.microsoft.com/azure/role-based-access-control/role-assignments-portal) with the app registration for storage account with the following roles.
     - **Storage blob data reader** for reading blob container files.
 - Assign the **Contributor** role to the **app registration** on the target MySQL flexible server.
 
@@ -92,7 +92,7 @@ As you prepare for the migration, be sure to consider the following limitations.
 
 DMS supports cross-region, cross-resource group, and cross-subscription migrations, so you're free to select appropriate region, resource group and subscription for your target flexible server. Before you create your target flexible server, consider the following configuration guidance to help ensure faster data loads using DMS.
 
-- Select the [compute size and compute tier](https://learn.microsoft.com/en-us/azure/mysql/flexible-server/concepts-service-tiers-storage) for the target flexible server based on the source MySQL server configuration for an optimal migration experience.
+- Select the [compute size and compute tier](https://learn.microsoft.com/azure/mysql/flexible-server/concepts-service-tiers-storage) for the target flexible server based on the source MySQL server configuration for an optimal migration experience.
     - We recommend setting the target flexible server to a General Purpose or a Business Critical SKU for the duration of the migration, once the migration succeeds, you can scale the instance to an appropriate size to meet your application needs.
 
 - The MySQL version for the target flexible server must be greater than or equal to that of the source MySQL server.
@@ -264,7 +264,7 @@ When the migration has finished, be sure to complete the following post-migratio
 
     1. In the confirmation dialog box, in the **TYPE THE DATABASE MIGRATION SERVICE NAME** textbox, specify the name of the instance, and then select **Delete**.
 
-- Create any [read replicas](https://learn.microsoft.com/en-us/azure/mysql/flexible-server/concepts-read-replicas) for the flexible server for scalability as well as recovery purposes.
+- Create any [read replicas](https://learn.microsoft.com/azure/mysql/flexible-server/concepts-read-replicas) for the flexible server for scalability as well as recovery purposes.
 
 ## Migration best practices
 
