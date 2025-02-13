@@ -356,27 +356,7 @@ Now, assign the newly defined role to an identity so that your applications can 
 
 ::: zone pivot="azure-interface-cli"
 
-1. Use [`az cosmosdb show`](/cli/azure/cosmosdb#az-cosmosdb-show) to get the unique identifier for your current account.
-
-    ```azurecli-interactive
-    az cosmosdb show \
-        --resource-group "<name-of-existing-resource-group>" \
-        --name "<name-of-existing-nosql-account>" \
-        --query "{id:id}"
-    ```
-
-1. Observe the output of the previous command. Record the value of the `id` property for this account as it is required to use in the next step.
-
-    ```json
-    {
-      "id": "/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/msdocs-identity-example/providers/Microsoft.DocumentDB/databaseAccounts/msdocs-identity-example-nosql"
-    }
-    ```
-
-    > [!NOTE]
-    > In this example, the `id` value would be `/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/msdocs-identity-example/providers/Microsoft.DocumentDB/databaseAccounts/msdocs-identity-example-nosql`. This example uses fictitious data and your identifier would be distinct from this example.
-
-1. Assign the new role using [`az cosmosdb sql role assignment create`](/cli/azure/cosmosdb/sql/role/assignment#az-cosmosdb-sql-role-assignment-create). Use the previously recorded role definition identifiers to the `--role-definition-id` argument, and the unique identifier for your identity to the `--principal-id` argument. Finally, use your account's identifier for the `--scope` argument.
+1. Assign the new role using [`az cosmosdb sql role assignment create`](/cli/azure/cosmosdb/sql/role/assignment#az-cosmosdb-sql-role-assignment-create). Use the previously recorded role definition identifiers to the `--role-definition-id` argument, and the unique identifier for your identity to the `--principal-id` argument. Finally, use your database and/or container identifier for the `--scope` argument.
 
     ```azurecli-interactive
     az cosmosdb sql role assignment create \
@@ -384,7 +364,7 @@ Now, assign the newly defined role to an identity so that your applications can 
         --account-name "<name-of-existing-nosql-account>" \
         --role-definition-id "<id-of-new-role-definition>" \
         --principal-id "<id-of-existing-identity>" \
-        --scope "/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/msdocs-identity-example/providers/Microsoft.DocumentDB/databaseAccounts/msdocs-identity-example-nosql"
+        --scope "/dbs/mydb/colls/mycontainer"
     ```
 
 1. Use [`az cosmosdb sql role assignment list`](/cli/azure/cosmosdb/sql/role/assignment#az-cosmosdb-sql-role-assignment-list) to list all role assignments for your Azure Cosmos DB for NoSQL account. Review the output to ensure your role assignment was created.
