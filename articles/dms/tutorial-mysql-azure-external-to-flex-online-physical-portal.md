@@ -214,14 +214,14 @@ To configure your DMS migration project, perform the following steps.
 
    There's now a **Migrate user accounts and privileges** option. When selected, this option will migrate all login migrations. Additionally you can replicate any **DDL statements** from the source MySQL server to the target flexible server.
 
-   :::image type="content" source="media/tutorial-mysql-external-to-flex-online-physical-portal/6-select-backup.png" alt-text="Screenshot of a Select database." lightbox="media/tutorial-mysql-external-to-flex-online-physical-portal/6-select-backup.png":::
+   :::image type="content" source="media/tutorial-mysql-external-to-flex-online-physical-portal/6-select-backup.png" alt-text="Screenshot of a Select backup screen." lightbox="media/tutorial-mysql-external-to-flex-online-physical-portal/6-select-backup.png":::
 
 1. On the **Configure migration settings** screen, if you want to customize the migration settings, click on the check box or else advance to the summary page by clicking on the **Next: Summary >>**
 
-     :::image type="content" source="media/tutorial-mysql-external-to-flex-online-physical-portal/7-configure-migration-settings.png" alt-text="Screenshot of a Select database." lightbox="media/tutorial-mysql-external-to-flex-online-physical-portal/7-configure-migration-settings.png":::
+     :::image type="content" source="media/tutorial-mysql-external-to-flex-online-physical-portal/7-configure-migration-settings.png" alt-text="Screenshot of configuring migration settings page." lightbox="media/tutorial-mysql-external-to-flex-online-physical-portal/7-configure-migration-settings.png":::
 
 1. On the **Summary** screen, in the **Activity Name** text box, specify a name for the migration activity, then ensure all the migration related details are correct and click **Start Migration**. 
-    :::image type="content" source="media/tutorial-mysql-external-to-flex-online-physical-portal/8-migration-summary.png" alt-text="Screenshot of a Select database." lightbox="media/tutorial-mysql-external-to-flex-online-physical-portal/8-migration-summary.png":::
+    :::image type="content" source="media/tutorial-mysql-external-to-flex-online-physical-portal/8-migration-summary.png" alt-text="Screenshot of migration summary and details page." lightbox="media/tutorial-mysql-external-to-flex-online-physical-portal/8-migration-summary.png":::
 
 1. Once the migration starts, the migration activity window appears. The status changes to **Running** under the **Initial Load** tab.
 
@@ -230,13 +230,13 @@ To configure your DMS migration project, perform the following steps.
 
 1. As the migration is in flight, you can review the status of the migration and notice states such as **Importing**, and **Estimated time remaining** for the physical backup files data ingestion into the target MySQL flexible server.
 
-   :::image type="content" source="media/tutorial-mysql-external-to-flex-online-physical-portal/9-migration-status.png" alt-text="Screenshot of a completed initial load migration." lightbox="media/tutorial-mysql-external-to-flex-online-physical-portal/9-migration-status.png":::
+   :::image type="content" source="media/tutorial-mysql-external-to-flex-online-physical-portal/9-migration-status.png" alt-text="Screenshot of migration status page." lightbox="media/tutorial-mysql-external-to-flex-online-physical-portal/9-migration-status.png":::
 
    After the **Initial Load** activity is completed, you're navigated to the **Replicate Data Changes** tab automatically. You can monitor the migration progress as the screen is auto-refreshed every 30 seconds or click on the **Refresh** button. 
 
 1. Once the initial data ingestion is complete. Monitor the **Seconds behind source** field under **Replicate Data Changes** tab and as soon as it is 0, proceed to start cutover by navigating to the **Start Cutover** button at the top of the migration activity screen. Select **Refresh** to update the display and view the seconds behind source when needed.
 
-   :::image type="content" source="media/tutorial-mysql-external-to-flex-online-physical-portal/10-migration-replication-status.png" alt-text="Screenshot of a Monitoring migration." lightbox="media/tutorial-mysql-external-to-flex-online-physical-portal/10-migration-replication-status.png":::
+   :::image type="content" source="media/tutorial-mysql-external-to-flex-online-physical-portal/10-migration-replication-status.png" alt-text="Screenshot of monitoring replication status." lightbox="media/tutorial-mysql-external-to-flex-online-physical-portal/10-migration-replication-status.png":::
 
 1. Follow the steps 1 through 3 in the cutover window before you're ready to perform a cutover.
 
@@ -252,7 +252,7 @@ When the migration has finished, be sure to complete the following post-migratio
     - You can validate data by comparing **row count** or **checksum** between source and target flexible servers.
     - You can additionally go to the target flexible server, under **settings** select **Databases** blade and verify that the databases intended for migration have successfully migrated to the target. 
 
-    :::image type="content" source="media/tutorial-mysql-external-to-flex-online-physical-portal/12-validate-migration-target.png" alt-text="Screenshot of a Perform cutover." lightbox="media/tutorial-mysql-external-to-flex-online-physical-portal/12-validate-migration-target.png":::
+    :::image type="content" source="media/tutorial-mysql-external-to-flex-online-physical-portal/12-validate-migration-target.png" alt-text="Screenshot of validating migration target." lightbox="media/tutorial-mysql-external-to-flex-online-physical-portal/12-validate-migration-target.png":::
 
 - Update the connection string to point to the new flexible server.
 
