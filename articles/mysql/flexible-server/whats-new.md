@@ -23,6 +23,16 @@ This article summarizes new releases and features in the Azure Database for MySQ
 > [!NOTE]  
 > This article references the term slave, which Microsoft no longer uses. When the term is removed from the software, we'll remove it from this article.
 
+## February 2025
+
+**Known Issues**  
+
+
+- Azure Advisor recommendations may continue to recommend enabling accelerated logs even after the feature is enabled on your **Azure Database for MySQL – Flexible Server**. We are actively working on a fix, and this issue will be resolved at the earliest. If [accelerated logs](./concepts-accelerated-logs.md) is already enabled on your server, you can safely ignore this recommendation.
+
+- For [CMK enabled](./concepts-customer-managed-key.md) servers, enabling [accelerated logs](./concepts-accelerated-logs.md) may not work due to a current limitation. As a workaround, you can temporarily disable CMK, enable accelerated logs, and then re-enable CMK. We are actively working to resolve this issue at the earliest. For more details, refer to the [accelerated logs documentation](./concepts-accelerated-logs.md).
+
+
 ## January 2025
 
 **Default zone-resiliency for Business-Critical service tier**
@@ -48,8 +58,6 @@ Azure MySQL Flexible Server now supports MySQL 8.4 LTS version, bringing the lat
 
 Azure MySQL Flexible Server now supports MySQL 9.1 Innovation version, introduces experimental features, including JavaScript support for stored procedures and the new vector data type, designed for modern applications in machine learning and analytics. [Azure Database for MySQL version support policy](../concepts-version-policy.md)
 
-> [!NOTE]  
-> Due to Azure deployment restrictions during the holiday season, some users may not see the options for Azure MySQL versions 8.4 and 9.1 when creating a new server. For affected customers, you can send the subscription ID you wish to enroll in the Azure MySQL 8.4 and 9.1 public preview to this email address: AskAzureDBforMySQL@service.microsoft.com. Once we receive your email, we will unblock your subscription to enable selection of Azure MySQL 8.4 and 9.1.
 
 ## October 2024
 

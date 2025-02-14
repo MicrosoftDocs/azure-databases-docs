@@ -25,10 +25,16 @@ sections:
       - question: In what regions can I use Elastic Clusters?
         answer: |
           Elastic Clusters are currently available in the following regions:
+            - Central US
             - East Asia
             - East US
+            - Germany North
+            - Germany West Central
+            - Japan East
             - North Europe
+            - Southeast Asia
             - UK South
+            - West Europe
             - West US
             - West US 3
           

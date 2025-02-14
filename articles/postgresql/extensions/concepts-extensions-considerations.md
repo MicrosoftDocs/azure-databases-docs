@@ -10,12 +10,9 @@ ms.subservice: flexible-server
 ms.topic: concept-article
 ---
 
-# Extension considerations specific to an Azure Database for PostgreSQL flexible server
+# Extension considerations specific to an Azure Database for PostgreSQL - Flexible Server
 
 This article describes some special considerations that you must be aware of, when using certain extensions in an Azure Database for PostgreSQL flexible server.
-
-> [!NOTE]
-> Third-party extensions and extensibility modules offered in Azure Database for PostgreSQL - Flexible Server, are open-source licensed code. We don't offer any third-party extensions or extension versions with premium or proprietary licensing models. 
 
 ## Prerequisites
 
@@ -216,11 +213,7 @@ Customers can't directly grant the necessary permissions. If you need to be able
 ### timescaleDB
 
 The `timescaleDB` extension is a time-series database packaged as an extension for PostgreSQL. It provides time-oriented analytical functions and optimizations and scales Postgres for time-series workloads.
-[Learn more about TimescaleDB](https://docs.timescale.com/timescaledb/latest/), a registered trademark of Timescale, Inc.
-
-Azure Database for PostgreSQL flexible server provides the TimescaleDB [Apache-2 edition](https://www.timescale.com/legal/licenses).
-
-The licensing terms of [TimescaleDB Community Edition](https://docs.timescale.com/about/latest/timescaledb-editions/#timescaledb-community-edition) don't allow us to provide that advanced and most feature complete version of TimescaleDB.
+[Learn more about TimescaleDB](https://docs.timescale.com/timescaledb/latest/), a registered trademark of Timescale, Inc. Azure Database for PostgreSQL flexible server provides the TimescaleDB [Apache-2 edition](https://www.timescale.com/legal/licenses).
 
 #### Install TimescaleDB
 
@@ -228,28 +221,7 @@ To use `timescaleDB`, make sure that you [allowlist](how-to-allow-extensions.md#
 
 You can now create a TimescaleDB hypertable [from scratch](https://docs.timescale.com/getting-started/creating-hypertables) or migrate [existing time-series data in PostgreSQL](https://docs.timescale.com/getting-started/migrating-data).
 
-#### Restore a Timescale database using pg_dump and pg_restore
-
-To restore a Timescale database using `pg_dump` and `pg_restore`, you must run two helper procedures in the destination database: `timescaledb_pre_restore()` and `timescaledb_post restore()`.
-
-First, prepare the destination database:
-
-```sql
---create the new database where you want to perform the restore
-CREATE DATABASE tutorial;
-\c tutorial --connect to the database
-CREATE EXTENSION timescaledb;
-
-SELECT timescaledb_pre_restore();
-```
-
-Now, you can run `pg_dump` on the original database and then do `pg_restore`. After the restore, be sure to run the following command in the restored database:
-
-```sql
-SELECT timescaledb_post_restore();
-```
-
-For more information on the restore method with Timescale enabled database, see [Timescale documentation](https://docs.timescale.com/timescaledb/latest/how-to-guides/backup-and-restore/pg-dump-and-restore/#restore-your-entire-database-from-backup).
+For more information on restoring a Timescale database using `pg_dump` and `pg_restore`, see [Timescale documentation](https://docs.timescale.com/timescaledb/latest/how-to-guides/backup-and-restore/pg-dump-and-restore/#restore-your-entire-database-from-backup).
 
 #### Restore a Timescale database using timescaledb-backup
 
@@ -271,7 +243,7 @@ More details on these utilities can be found [here](https://github.com/timescale
 
 ## Extensions and major version upgrade
 
-Azure Database for PostgreSQL flexible server offers an [in-place major version upgrade feature](../flexible-server/concepts-major-version-upgrade.md) that performs an in-place upgrade of the Azure Database for PostgreSQL flexible server instance with just a simple interaction from the user. In-place major version upgrade simplifies the Azure Database for PostgreSQL flexible server upgrade process, minimizing the disruption to users and applications accessing the server. In-place major version upgrades don't support specific extensions, and there are some limitations to upgrading certain extensions.
+Azure Database for PostgreSQL flexible server offers an [in-place major version upgrade feature](../flexible-server/concepts-major-version-upgrade.md), that performs an in-place upgrade of the Azure Database for PostgreSQL flexible server instance with just a simple interaction from the user. In-place major version upgrade simplifies the Azure Database for PostgreSQL flexible server upgrade process, minimizing the disruption to users and applications accessing the server. In-place major version upgrades don't support specific extensions, and there are some limitations to upgrading certain extensions.
 
 The extensions `anon`, `Apache AGE`, `dblink`, `orafce`, `pgaudit`, `postgres_fdw`, and `timescaledb` are unsupported for all Azure Database for PostgreSQL flexible server versions when using in-place major version update feature.
 

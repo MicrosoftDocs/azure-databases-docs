@@ -18,6 +18,8 @@ This new version introduces a range of new features and enhancements, resolves k
 
 ## Engine version changes
 
+No major or minor version upgrade for existing 5.7 servers.
+
 All existing 8.0 major version servers are upgraded to 8.0.40 minor version, learn more about MySQL 8.0.40 version by following this [link](https://dev.mysql.com/doc/relnotes/mysql/8.0/en/news-8-0-40.html)
 
 To check your engine version, run `SELECT VERSION();` command at the MySQL prompt.
@@ -29,7 +31,6 @@ az mysql flexible-server show --resource-group {resource group name} --name {ser
 ```
 > [!NOTE]  
 > You must have the Azure CLI installed and updated to the latest version to run the above CLI command.
-
 
 ## Features
 

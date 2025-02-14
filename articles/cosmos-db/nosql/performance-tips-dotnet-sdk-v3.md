@@ -39,7 +39,7 @@ Reducing the frequency of garbage collection can help in some cases. In .NET, se
 If you're testing at high throughput levels, or at rates that are greater than 50,000 Request Units per second (RU/s), the client application could become a workload bottleneck. This is because the machine might cap out on CPU or network utilization. If you reach this point, you can continue to push the Azure Cosmos DB account further by scaling out your client applications across multiple servers.
 
 > [!NOTE] 
-> High CPU usage can cause increased latency and request timeout exceptions.
+> High CPU usage can cause increased latency and request time-out exceptions.
 
 ## <a id="metadata-operations"></a> Metadata operations
 
@@ -84,6 +84,64 @@ Edit your `app.config` or `web.config` files:
 ```
 
 ---
+
+## High availability
+
+For general guidance on configuring high availability in Azure Cosmos DB, see [High availability in Azure Cosmos DB](/azure/reliability/reliability-cosmos-db-nosql). 
+
+In addition to a good foundational setup in the database platform, Threshold-based availability strategy can be implemented in the .NET SDK, which can help in outage scenarios. This feature provides advanced mechanisms to address specific latency and availability challenges, going above and beyond the cross-region retry capabilities that are built into the SDK by default. This can significantly enhance the resilience and performance of your application, particularly under high-load or degraded conditions.
+
+### Threshold-based availability strategy
+
+The threshold-based availability strategy can improve tail latency and availability by sending parallel read requests to secondary regions (as defined in `ApplicationPreferredRegions`) and accepting the fastest response. This approach can drastically reduce the impact of regional outages or high-latency conditions on application performance. 
+
+**Example configuration:**
+
+Configuring this can be done using `CosmosClientBuilder`:
+
+```Csharp
+CosmosClient client = new CosmosClientBuilder("connection string")
+    .WithApplicationPreferredRegions(
+        new List<string> { "East US", "East US 2", "West US" } )
+    .WithAvailabilityStrategy(
+        AvailabilityStrategy.CrossRegionHedgingStrategy(
+        threshold: TimeSpan.FromMilliseconds(500),
+        thresholdStep: TimeSpan.FromMilliseconds(100)
+     ))
+    .Build();
+```
+
+Or by configuring options and adding them to `CosmosClient`:
+
+```Csharp
+CosmosClientOptions options = new CosmosClientOptions()
+{
+    AvailabilityStrategy
+     = AvailabilityStrategy.CrossRegionHedgingStrategy(
+        threshold: TimeSpan.FromMilliseconds(500),
+        thresholdStep: TimeSpan.FromMilliseconds(100)
+     )
+      ApplicationPreferredRegions = new List<string>() { "East US", "East US 2", "West US"},
+};
+
+CosmosClient client = new CosmosClient(
+    accountEndpoint: "account endpoint",
+    authKeyOrResourceToken: "auth key or resource token",
+    clientOptions: options);
+```
+
+**How it works:**
+
+1. **Initial Request:** At time T1, a read request is made to the primary region (for example, East US). The SDK waits for a response for up to 500 milliseconds (the `threshold` value).
+  
+2. **Second Request:** If there's no response from the primary region within 500 milliseconds, a parallel request is sent to the next preferred region (for example, East US 2).
+  
+3. **Third Request:** If neither the primary nor the secondary region responds within 600 milliseconds (500ms + 100ms, the `thresholdStep` value), the SDK sends another parallel request to the third preferred region (for example, West US).
+
+4. **Fastest Response Wins:** Whichever region responds first, that response is accepted, and the other parallel requests are ignored.
+
+> [!NOTE]
+> If the first preferred region returns a non-transient error status code (e.g., document not found, authorization error, conflict, etc.), the operation itself will fail fast, as availability strategy would not have any benefit in this scenario.
 
 ## Networking
 <a id="direct-connection"></a>
