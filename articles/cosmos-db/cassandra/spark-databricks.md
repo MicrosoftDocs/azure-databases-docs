@@ -69,4 +69,4 @@ The following are links to help you get started building Spark Scala programs to
 
 ## Next steps
 
-Get started with [creating a API for Cassandra account, database, and a table](create-account-java.md) by using a Java application.
+Get started with [creating an API for Cassandra account, database, and a table](create-account-java.md) by using a Java application.
