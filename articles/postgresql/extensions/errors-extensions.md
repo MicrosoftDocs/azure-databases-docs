@@ -4,7 +4,7 @@ description: This article describes possible errors that can be seen when managi
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 02/07/2025
+ms.date: 02/14/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: how-to
@@ -26,6 +26,10 @@ This error occurs when the user that runs a `CREATE EXTENSION` command isn't a m
 ## Only members of "azure_pg_admin" are allowed to use DROP EXTENSION
 
 This error occurs when the user that runs a `DROP EXTENSION` command isn't a member of `azure_pg_admin` role.
+
+## SET SCHEMA clause for ALTER EXTENSION is not supported.
+
+This error occurs when the user tries to use the `SET SCHEMA` clause of the `ALTER EXTENSION` command. The use of this clause would move the referred extension's objects into another schema, as long as the extension is relocatable. But this isn't supported in an Azure Database for PostgreSQL flexible server. The only supported way to move the objects created by an extension in an Azure Database for PostgreSQL flexible server to a specific schema, is at creation time. Use the `WITH SCHEMA` clause of `CREATE EXTENSION`.
 
 ## Related content
 
