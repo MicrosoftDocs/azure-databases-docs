@@ -4,7 +4,7 @@ description: Quickstart guide to create an Azure Database for PostgreSQL - Flexi
 author: gbowerman
 ms.author: guybo
 ms.reviewer: maghan
-ms.date: 05/09/2024
+ms.date: 02/14/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: tutorial
@@ -18,14 +18,14 @@ ms.devlang: azurecli
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
-This tutorial shows you how to create a Azure App Service Web app with Azure Database for PostgreSQL Flexible Server inside a [Virtual network](/azure/virtual-network/virtual-networks-overview).
+This tutorial shows you how to create a Azure App Service Web app with Azure Database for PostgreSQL flexible server inside a [Virtual network](/azure/virtual-network/virtual-networks-overview).
 
 In this tutorial you'll learn how to:
 >[!div class="checklist"]
 > * Create an Azure Database for PostgreSQL flexible server instance in a virtual network
 > * Create a web app
 > * Add the web app to the virtual network
-> * Connect to Azure Database for PostgreSQL Flexible Server from the web app 
+> * Connect to Azure Database for PostgreSQL flexible server from the web app 
 
 ## Prerequisites
 
@@ -84,7 +84,7 @@ Try using 'az postgres flexible-server connect' command to test out connection.
 ```
 
 ## Create a Web App
-In this section, you create app host in App Service app, connect this app to the Azure Database for PostgreSQL Flexible Server database, then deploy your code to that host. Make sure you're in the repository root of your application code in the terminal. Note Basic Plan doesn't support VNET integration. Use Standard or Premium. 
+In this section, you create app host in App Service app, connect this app to the Azure Database for PostgreSQL flexible server database, then deploy your code to that host. Make sure you're in the repository root of your application code in the terminal. Note Basic Plan doesn't support VNET integration. Use Standard or Premium. 
 
 Create an App Service app (the host process) with the az webapp up command.
 
