@@ -74,13 +74,13 @@ The Azure Cosmos DB SDKs don't retry on HTTP 403 failures in general, but there 
 
 ### HTTP 429
 
-The Azure Cosmos DB SDKs will retry on HTTP 429 errors by default following the client configuration and honoring the service's response `x-ms-retry-after-ms` header, by waiting the indicated time and retrying after.
+The Azure Cosmos DB SDKs retry on HTTP 429 errors by default following the client configuration and honoring the service's response `x-ms-retry-after-ms` header, by waiting the indicated time and retrying after.
 
 When the SDK retries are exceeded, the error is returned to your application. Ideally inspecting the `x-ms-retry-after-ms` header in the response can be used as a hint to decide how long to wait before retrying the request. Another alternative would be an exponential back-off algorithm or configuring the client to extend the retries on HTTP 429.
 
 ### HTTP 449
 
-The Azure Cosmos DB SDKs will retry on HTTP 449 with an incremental back-off during a fixed period of time to accommodate most scenarios.
+The Azure Cosmos DB SDKs retry on HTTP 449 with an incremental back-off during a fixed period of time to accommodate most scenarios.
 
 When the automatic SDK retries are exceeded, the error is returned to your application. HTTP 449 errors can be safely retried. Because of the highly concurrent nature of write operations, it's better to have a random back-off algorithm to avoid repeating the same degree of concurrency after a fixed interval.
 
@@ -88,10 +88,10 @@ When the automatic SDK retries are exceeded, the error is returned to your appli
 
 Network timeouts and connectivity failures are among the most common errors. The Azure Cosmos DB SDKs are themselves resilient and will retry timeouts and connectivity issues across the HTTP and TCP protocols if the retry is feasible:
 
-* For read operations, the SDKs will retry any timeout or connectivity related error.
-* For write operations, the SDKs will **not** retry because these operations are **not idempotent**. When a timeout occurs waiting for the response, it's not possible to know if the request reached the service.
+* For read operations, the SDKs retry any timeout or connectivity related error.
+* For write operations, the SDKs do **not** retry because these operations are **not idempotent**. When a timeout occurs waiting for the response, it's not possible to know if the request reached the service.
 
-If the account has multiple regions available, the SDKs will also attempt a [cross-region retry](troubleshoot-sdk-availability.md#transient-connectivity-issues-on-tcp-protocol).
+If the account has multiple regions available, the SDKs also attempt a [cross-region retry](troubleshoot-sdk-availability.md#transient-connectivity-issues-on-tcp-protocol).
 
 Because of the nature of timeouts and connectivity failures, these might not appear in your [account metrics](../monitor.md), as they only cover failures happening on the service side.
 
@@ -106,13 +106,13 @@ For further implementation details regarding a language see:
 
 ## Do retries affect my latency?
 
-From the client perspective, any retries will affect the end to end latency of an operation. When your application P99 latency is being affected, understanding the retries that are happening and how to address them is important.
+From the client perspective, any retries affect the end to end latency of an operation. When your application P99 latency is being affected, understanding the retries that are happening and how to address them is important.
 
 Azure Cosmos DB SDKs provide detailed information in their logs and diagnostics that can help identify which retries are taking place. For more information, see [how to collect .NET SDK diagnostics](troubleshoot-dotnet-sdk-slow-request.md#capture-diagnostics) and [how to collect Java SDK diagnostics](troubleshoot-java-sdk-v4.md#capture-the-diagnostics).
 
 ## How can I mitigate retry latency?
 
-Depending on the [circumstances](troubleshoot-sdk-availability.md), in most cases the SDK will route requests to either the local region, the write region (in a single-region write scenario) or the first region in the [preferred regions](tutorial-global-distribution.md#preferred-locations) list. This prioritization minimizes latency in healthy scenarios by primarily connecting to the nearest or most optimal data center.
+Depending on the [circumstances](troubleshoot-sdk-availability.md), in most cases the SDK route requests to either the local region, the write region (in a single-region write scenario) or the first region in the [preferred regions](tutorial-global-distribution.md#preferred-locations) list. This prioritization minimizes latency in healthy scenarios by primarily connecting to the nearest or most optimal data center.
 
 However, this prioritization also means that requests which are going to result in failure will always be tried in one specific region first for a given error scenario. If failover to another region is preferred in that scenario, this is typically handled at the infrastructure (traffic manager) layer rather than at the SDK level. Proper setup and configuration of your infrastructure can ensure that traffic is rerouted efficiently during regional outages, thereby mitigating the latency that can come with cross-region retries in an outage scenario. For more detailed information on setting up infrastructure-level failover, you can refer to [Azure Traffic Manager documentation](/azure/traffic-manager/). Some SDKs support implementing similar failover strategies directly at the SDK level. For example, see high availability for [Java SDK](performance-tips-java-sdk-v4.md#high-availability) and [.NET SDK](performance-tips-dotnet-sdk-v3.md#high-availability).
 
