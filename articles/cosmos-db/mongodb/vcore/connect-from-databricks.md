@@ -11,6 +11,7 @@ ms.date: 03/08/2024
 ---
 
 # Connect to Azure Cosmos DB for MongoDB vCore from Azure Databricks
+
 This article explains how to connect Azure Cosmos DB MongoDB vCore from Azure Databricks. It walks through basic Data Manipulation Language(DML) operations like Read, Filter, SQLs, Aggregation Pipelines and Write Tables using python code.
 
 ## Prerequisites
@@ -25,23 +26,20 @@ The following are the dependencies required to connect to Azure Cosmos DB for Mo
 
 * **Azure Cosmos DB for MongoDB connection strings:** Your Azure Cosmos DB for MongoDB vCore connection string, user name, and passwords.
 
-## Provision an Azure Databricks cluster
+## Provision an Azure Databricks workspace
 
-You can follow instructions to [provision an Azure Databricks cluster](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal). We recommend selecting Databricks runtime version 7.6, which supports Spark 3.0.
-
-:::image type="content" source="../media/migrate-databricks/databricks-cluster-creation.png" alt-text="Diagram of databricks new cluster creation.":::
-
+You can follow instructions to [provision an Azure Databricks workspace](/azure/databricks/getting-started). You can use the default compute available or [create a new compute resource](/azure/databricks/compute/configure#create-a-new-all-purpose-compute-resource) to run your notebook. Be sure to select a Databricks runtime that supports at least Spark 3.0.
 
 ## Add dependencies
 
-Add the MongoDB Connector for Spark library to your cluster to connect to both native MongoDB and Azure Cosmos DB for MongoDB endpoints. In your cluster, select **Libraries** > **Install New** > **Maven**, and then add `org.mongodb.spark:mongo-spark-connector_2.12:3.0.1` Maven coordinates.
+Add the MongoDB Connector for Spark library to your compute to connect to both native MongoDB and Azure Cosmos DB for MongoDB endpoints. In your compute, select **Libraries** > **Install New** > **Maven**, and then add `org.mongodb.spark:mongo-spark-connector_2.12:3.0.1` Maven coordinates.
 
-:::image type="content" source="../media/migrate-databricks/databricks-cluster-dependencies.png" alt-text="Diagram of adding databricks cluster dependencies.":::
+:::image type="content" source="../media/migrate-databricks/databricks-cluster-dependencies.png" alt-text="Diagram of adding databricks compute dependencies.":::
 
-Select **Install**, and then restart the cluster when installation is complete.
+Select **Install**, and then restart the compute when installation is complete.
 
 > [!NOTE]
-> Make sure that you restart the Databricks cluster after the MongoDB Connector for Spark library has been installed.
+> Make sure that you restart the Databricks compute after the MongoDB Connector for Spark library has been installed.
 
 After that, you may create a Scala or Python notebook for migration.
 
@@ -52,7 +50,7 @@ Create a Python Notebook in Databricks. Make sure to enter the right values for 
 ### Update Spark configuration with the Azure Cosmos DB for MongoDB connection string
 
 1. Note the connect string under the **Settings** -> **Connection strings** in Azure Cosmos DB MongoDB vCore Resource in Azure portal. It has the form of "mongodb+srv://\<user>\:\<password>\@\<database_name>.mongocluster.cosmos.azure.com"
-2. Back in Databricks in your cluster configuration, under **Advanced Options** (bottom of page), paste the connection string for both the `spark.mongodb.output.uri` and `spark.mongodb.input.uri` variables. Populate the username and password field appropriate. This way all the workbooks, which running on the cluster uses this configuration. 
+2. Back in Databricks in your compute configuration, under **Advanced Options** (bottom of page), paste the connection string for both the `spark.mongodb.output.uri` and `spark.mongodb.input.uri` variables. Populate the username and password field appropriate. This way all the workbooks, which running on the compute uses this configuration. 
 3. Alternatively you can explicitly set the `option` when calling APIs like: `spark.read.format("mongo").option("spark.mongodb.input.uri", connectionString).load()`. If you configure the variables in the cluster, you don't have to set the option.
 
 ```python
