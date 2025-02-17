@@ -1,5 +1,5 @@
 ---
-title: Extension Considerations Specific to an Azure Database for PostgreSQL Flexible Server
+title: Considerations with the use of extensions and modules in an Azure Database for PostgreSQL flexible server
 description: Learn about the extension considerations specific to an Azure Database for PostgreSQL flexible server.
 author: varun-dhawan
 ms.author: varundhawan
@@ -10,7 +10,7 @@ ms.subservice: flexible-server
 ms.topic: concept-article
 ---
 
-# Special considerations with the use of extensions and modules
+# Considerations with the use of extensions and modules
 
 This article describes some special considerations that you must be aware of, when using certain extensions or modules in an Azure Database for PostgreSQL flexible server.
 
