@@ -116,7 +116,7 @@ To achieve the optimal performance promised by this feature, certain conditions 
 
 ## Maintenance reschedule
 
-The **maintenance reschedule** feature grants you greater control over the timing of maintenance activities on your Azure Database for MySQL Flexible Server instance. After receiving a maintenance notification, you can reschedule it to a more convenient time, irrespective of whether it was system or custom managed.
+The **maintenance reschedule** feature grants you greater control over the timing of maintenance activities on your Azure Database for MySQL Flexible Server instance. After receiving a maintenance notification, you can reschedule it to a more convenient time, irrespective of whether it was system or custom managed. Please note that maintenance rescheduling is not available for Burstable SKUs, as this feature is intended for production environment servers, whereas Burstable SKU compute tiers are designed for non-production purposes.
 
 ### Reschedule parameters and notifications
 
