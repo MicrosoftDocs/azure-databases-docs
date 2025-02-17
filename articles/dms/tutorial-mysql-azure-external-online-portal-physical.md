@@ -13,12 +13,12 @@ ms.collection:
 
 # Tutorial: Migrate from MySQL to Azure Database for MySQL using DMS physical migration with the Azure portal (Preview)
 
-> [!NOTE]  
-> This article references the term *slave*, which Microsoft no longer uses. When the term is removed from the software, we remove it from this article.
+> [!NOTE]  
+> This article contains references to the term *slave*, a term that Microsoft no longer uses. When the term is removed from the software, we'll remove it from this article.
 
 Using a physical backup file, you can seamlessly migrate your MySQL on-premises or Virtual Machine (VM) workload on Azure or other cloud services to Azure Database for MySQL. With physical backup files, you can quickly restore your source server to the target flexible server instance with minimal downtime. In this tutorial, we show you how to use Azure DMS to migrate MySQL workloads from on-premises or VMs to Azure Database for MySQL with minimal downtime using [Percona XtraBackup](https://www.percona.com/mysql/software/percona-xtrabackup).
 
-> [!NOTE]  
+> [!NOTE]  
 > DMS **physical online data migration** is now in public preview. DMS supports migration to MySQL versions 5.7 and 8.0 and migration from lower version MySQL servers (v5.6 and higher) to a higher version MySQL server. In addition, DMS supports cross-region, cross-resource group, and cross-subscription migrations.
 
 In this tutorial, you learn how to:
