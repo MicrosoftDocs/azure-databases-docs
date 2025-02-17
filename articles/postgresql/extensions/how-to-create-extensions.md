@@ -1,10 +1,10 @@
 ---
-title: Create Extensions
+title: Create extensions
 description: This article describes how to create extensions in an Azure Database for PostgreSQL flexible server.
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 02/11/2025
+ms.date: 02/17/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: how-to
@@ -56,8 +56,7 @@ You can't bring your own extensions into Azure Database for PostgreSQL flexible 
 
 ## Related content
 
-- [Allow extensions](how-to-allow-extensions.md)
-- [Load libraries](how-to-load-libraries.md)
-- [Drop extensions](how-to-drop-extensions.md)
-- [Update extensions](how-to-update-extensions.md)
-- [View installed extensions](how-to-view-installed-extensions.md)
+- [Extensions and modules](concepts-extensions.md)
+- [Special considerations with extensions and modules](concepts-extensions-considerations.md)
+- [List of extensions and modules by name](concepts-extensions-versions.md)
+- [List of extensions and modules by version of PostgreSQL](concepts-extensions-by-engine.md)

@@ -4,29 +4,34 @@ description: Learn about the extension considerations specific to an Azure Datab
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 02/07/2025
+ms.date: 02/17/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: concept-article
 ---
 
-# Extension considerations specific to an Azure Database for PostgreSQL - Flexible Server
+# Special considerations with the use of extensions and modules
 
-This article describes some special considerations that you must be aware of, when using certain extensions in an Azure Database for PostgreSQL flexible server.
+This article describes some special considerations that you must be aware of, when using certain extensions or modules in an Azure Database for PostgreSQL flexible server.
 
-## Prerequisites
+## Generic considerations with extensions
 
-Refer to the following articles, to learn how to:
+To use an extension in your Azure Database for PostgreSQL flexible server, you have to:
 
-- [Allow extensions](how-to-allow-extensions.md) in Azure Database for PostgreSQL Flexible Server.
-- [Load libraries](how-to-load-libraries.md) of extensions that deploy binary libraries. These libraries require allocating and accessing shared memory, and need to be loaded when the server starts.
-- [Create extensions](how-to-create-extensions.md) in some database, so that the SQL objects packaged in that extension are deployed in that database, and can be accessed in its context.
-- [Drop extensions](how-to-drop-extensions.md) from some database, so that the SQL objects packaged in that extension are removed from that database.
-- [Update extensions](how-to-update-extensions.md), to update, to its newest version, all the SQL artifacts deployed by an extension that is already installed.
+- [Allow extension](how-to-allow-extensions.md). If the extension isn't allowed, any attempt to execute `CREATE EXTENSION`, `ALTER EXTENSION`, `DROP EXTENSION`, or `COMMENT ON EXTENSION` fails with an error indicating that the referred extension isn't allowed.
+- If the extension deploys some shared binary library which requires allocating and accessing shared memory, and need to be loaded when the server starts, you should also follow the instructions provided in [load libraries](how-to-load-libraries.md).
+- [Create extension](how-to-create-extensions.md) in the databases in which you want the extension to deploy the SQL objects distributed with that extension.
+- [Drop extension](how-to-drop-extensions.md). When you want to remove from the database in which you execute the command all the SQL objects distributed by that extension.
+- [Update extensions](how-to-update-extensions.md), to update to its newest version all the SQL artifacts deployed by an extension that is already installed.
 - [View installed extensions](how-to-view-installed-extensions.md) and their corresponding versions.
-- Learn what are the [possible errors](errors-extensions.md) you can receive when managing extensions in an Azure Database for PostgreSQL flexible server, and what could be the cause of each of them.
 
-## Extensions
+If you get any error while executing the `CREATE EXTENSION`, `ALTER EXTENSION`, `DROP EXTENSION` or `COMMENT ON EXTENSION` commands on your Azure Database for PostgreSQL flexible server, see the list of [possible errors](errors-extensions.md), and what could be the cause of each of those errors.
+
+## Generic considerations with modules
+
+To use a module in your Azure Database for PostgreSQL flexible server, you only have to add it to the `shared_preload_libraries` server parameter as described in [load libraries](how-to-load-libraries.md).
+
+## Extensions with specific considerations
 
 The following list enumerates all the supported extensions that require specific considerations when used in the Azure Database for PostgreSQL flexible server service:
 
@@ -65,7 +70,7 @@ The `pg_cron` extension can run multiple jobs in parallel, but it runs at most o
 
 Make sure that the value to which `shared_preload_libraries` is set, includes `pg_cron`. This extension doesn't support loading the library as the effect of executing [CREATE EXTENSION](https://www.postgresql.org/docs/current/sql-createextension.html). Any attempt to run CREATE EXTENSION if the extension wasn't added to `shared_preload_libraries`, or the server wasn't restarted after it was added, results in an error whose text says `pg_cron can only be loaded via shared_preload_libraries`, and whose hint is `Add pg_cron to the shared_preload_libraries configuration variable in postgresql.conf`.
 
-To use `pg_cron`, make sure it's [library is added to be loaded upon server start](how-to-load-libraries.md), it's [allowlisted](how-to-allow-extensions.md#allow-extensions), and it's [installed](how-to-create-extensions.md) in any database from which you want to interact with its functionality, using the SQL artifacts it creates.
+To use `pg_cron`, make sure you [load its shared library upon server start](how-to-load-libraries.md), it's [allowlisted](how-to-allow-extensions.md#allow-extensions), and it's [installed](how-to-create-extensions.md) in any database from which you want to interact with its functionality, using the SQL artifacts it creates.
 
 #### Examples
 
@@ -170,7 +175,7 @@ On the other hand, [pg_repack/bin](https://github.com/reorg/pg_repack/tree/maste
 
 Currently, because we grant permissions to the repack schema created by this extension, we only support running `pg_repack` functionality from the context of `azure_pg_admin`.
 
-You might notice that if the owner of a table, who isn't `azure_pg_admin`, tries to run `pg_repack`, they end up receiving an error like the following:
+You might notice that if the owner of a table, who isn't `azure_pg_admin`, tries to run `pg_repack`, they end up receiving the following error:
 
 ```sql
 NOTICE: Setting up workers.conns
@@ -182,15 +187,15 @@ To avoid that error, run pg_repack from the context of `azure_pg_admin`.
 
 ### pg_stat_statements
 
-The [pg_stat_statements extension](https://www.postgresql.org/docs/current/pgstatstatements.html) gives you a view of all the queries that run on your database. This is useful for understanding your query workload performance on a production system.
+The [pg_stat_statements extension](https://www.postgresql.org/docs/current/pgstatstatements.html) gives you a view of all the queries that run on your database. This information is useful for understanding your query workload performance on a production system.
 
 The [pg_stat_statements extension](https://www.postgresql.org/docs/current/pgstatstatements.html) is preloaded in `shared_preload_libraries` on every Azure Database for PostgreSQL flexible server instance to provide a means of tracking SQL statement execution statistics.
 
 For security reasons, you must [allowlist](how-to-allow-extensions.md#allow-extensions) the [pg_stat_statements extension](https://www.postgresql.org/docs/current/pgstatstatements.html) and install it using [CREATE EXTENSION](https://www.postgresql.org/docs/current/sql-createextension.html) command.
 
-The setting `pg_stat_statements.track`, which controls what statements are tracked by the extension, defaults to `top`, meaning all statements issued directly by clients are tracked. The two other tracking levels are `none` and `all`. This setting is configurable as a server parameter.
+The setting `pg_stat_statements.track`, which controls what statements the extension tracks, defaults to `top`, meaning all statements issued directly by clients are tracked. The two other tracking levels are `none` and `all`. This setting is configurable as a server parameter.
 
-There's a tradeoff between the query execution information the `pg_stat_statements` extension provides on the server performance as it logs each SQL statement. If you aren't actively using the `pg_stat_statements` extension, we recommend that you set `pg_stat_statements.track` to `none`. Some third-party monitoring services might rely on `pg_stat_statements` to deliver query performance insights, so confirm whether this is the case for you.
+There's a tradeoff between the query execution information the `pg_stat_statements` extension provides on the server performance as it logs each SQL statement. If you aren't actively using the `pg_stat_statements` extension, we recommend that you set `pg_stat_statements.track` to `none`. Some third-party monitoring services might rely on `pg_stat_statements` to deliver query performance insights, so confirm whether it's the case for you.
 
 ### postgres_fdw
 
@@ -225,7 +230,7 @@ For more information on restoring a Timescale database using `pg_dump` and `pg_r
 
 #### Restore a Timescale database using timescaledb-backup
 
-While running the `SELECT timescaledb_post_restore()` procedure, you might get permissions denied when updating timescaledb.restoring flag. This is due to limited ALTER DATABASE permission in Cloud PaaS database services. In this case, you can perform an alternative method using the `timescaledb-backup` tool to back up and restore the Timescale database. Timescaledb-backup is a program that makes dumping and restoring a TimescaleDB database simpler, less error-prone, and more performant.
+While running the `SELECT timescaledb_post_restore()` procedure, you might get permissions denied when updating timescaledb.restoring flag. The reason why you get this error is because of the limited ALTER DATABASE permission in Cloud PaaS database services. In this case, you can perform an alternative method using the `timescaledb-backup` tool to back up and restore the Timescale database. Timescaledb-backup is a program that makes dumping and restoring a TimescaleDB database simpler, less error-prone, and more performant.
 
 To do so, follow these steps:
 
@@ -243,12 +248,13 @@ More details on these utilities can be found [here](https://github.com/timescale
 
 ## Extensions and major version upgrade
 
-Azure Database for PostgreSQL flexible server offers an [in-place major version upgrade feature](../flexible-server/concepts-major-version-upgrade.md), that performs an in-place upgrade of the Azure Database for PostgreSQL flexible server instance with just a simple interaction from the user. In-place major version upgrade simplifies the Azure Database for PostgreSQL flexible server upgrade process, minimizing the disruption to users and applications accessing the server. In-place major version upgrades don't support specific extensions, and there are some limitations to upgrading certain extensions.
+Azure Database for PostgreSQL flexible server offers an [in-place major version upgrade feature](../flexible-server/concepts-major-version-upgrade.md) that performs an in-place upgrade of the Azure Database for PostgreSQL flexible server instance, with just a simple interaction from the user. In-place major version upgrade simplifies the Azure Database for PostgreSQL flexible server upgrade process, minimizing the disruption to users and applications accessing the server. In-place major version upgrades don't support specific extensions, and there are some limitations to upgrading certain extensions.
 
 The extensions `anon`, `Apache AGE`, `dblink`, `orafce`, `pgaudit`, `postgres_fdw`, and `timescaledb` are unsupported for all Azure Database for PostgreSQL flexible server versions when using in-place major version update feature.
 
 ## Related content
 
+- [Extensions](concepts-extensions.md)
 - [Allow extensions](how-to-allow-extensions.md)
-- [Special considerations with extensions](concepts-extensions-considerations.md)
-- [List of extensions by name](concepts-extensions-versions.md)
+- [List of extensions and modules by name](concepts-extensions-versions.md)
+- [List of extensions and modules by version of PostgreSQL](concepts-extensions-by-engine.md)
