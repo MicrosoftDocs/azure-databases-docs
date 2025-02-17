@@ -110,29 +110,29 @@ To register the Microsoft. The dataMigration resource provider performs the foll
 
 1. Before creating your first DMS instance, sign in to the Azure portal, and then search for and select **Subscriptions**.
 
- :::image type= "content" source= "media/tutorial-mysql-external-to-flex-online-physical-portal/1-subscriptions.png" alt-text= "Screenshot of Select subscriptions from Azure Marketplace." lightbox=" media/tutorial-mysql-external-to-flex-online-physical-portal/1-subscriptions.png" :::
+   :::image type= "content" source= "media/tutorial-mysql-external-to-flex-online-physical-portal/1-subscriptions.png" alt-text= "Screenshot of Select subscriptions from Azure Marketplace." lightbox=" media/tutorial-mysql-external-to-flex-online-physical-portal/1-subscriptions.png" :::
 
 1. Select the subscription for which you want to create the DMS instance, then select **Resource providers**.
 
-  :::image type="content" source="media/tutorial-mysql-external-to-flex-online-physical-portal/2-resource-provider.png" alt-text="Screenshot of a Select Resource Provider." lightbox="media/tutorial-mysql-external-to-flex-online-physical-portal/2-resource-provider.png":::
+    :::image type="content" source="media/tutorial-mysql-external-to-flex-online-physical-portal/2-resource-provider.png" alt-text="Screenshot of a Select Resource Provider." lightbox="media/tutorial-mysql-external-to-flex-online-physical-portal/2-resource-provider.png":::
 
 1. Search for "Migration" and then for **Microsoft.DataMigration**, select **Register**.
 
-  :::image type="content" source="media/tutorial-mysql-external-to-flex-online-physical-portal/3-register.png" alt-text="Screenshot of a Register your resource provider." lightbox="media/tutorial-mysql-external-to-flex-online-physical-portal/3-register.png":::
+    :::image type="content" source="media/tutorial-mysql-external-to-flex-online-physical-portal/3-register.png" alt-text="Screenshot of a Register your resource provider." lightbox="media/tutorial-mysql-external-to-flex-online-physical-portal/3-register.png":::
 
 ### Create a Database Migration Service (DMS) instance
 
 1. In the Azure portal, select **+ Create a resource**, search for the term "Azure Database Migration Service", and then select **Azure Database Migration Service** from the dropdown list.
 
-  :::image type= "content" source= "media/tutorial-mysql-external-to-flex-online-physical-portal/4-dms-portal-marketplace.png" alt-text= "Screenshot of a Search Azure Database Migration Service." lightbox="media/tutorial-mysql-external-to-flex-online-physical-portal/4-dms-portal-marketplace.png":::
+    :::image type= "content" source= "media/tutorial-mysql-external-to-flex-online-physical-portal/4-dms-portal-marketplace.png" alt-text= "Screenshot of a Search Azure Database Migration Service." lightbox="media/tutorial-mysql-external-to-flex-online-physical-portal/4-dms-portal-marketplace.png":::
 
 1. On the **Azure Database Migration Service** screen, select **Create**.
 
-  :::image type= "content" source= "media/tutorial-mysql-external-to-flex-online-physical-portal/5-dms-portal-marketplace-create.png" alt-text= "Screenshot of a Create Azure Database Migration Service instance." lightbox="media/tutorial-mysql-external-to-flex-online-physical-portal/5-dms-portal-marketplace-create.png":::
+    :::image type= "content" source= "media/tutorial-mysql-external-to-flex-online-physical-portal/5-dms-portal-marketplace-create.png" alt-text= "Screenshot of a Create Azure Database Migration Service instance." lightbox="media/tutorial-mysql-external-to-flex-online-physical-portal/5-dms-portal-marketplace-create.png":::
 
 1. On the **Select migration scenario and Database Migration Service** page, under **Migration scenario**, select **MySQL** as the source server type, and then select **Azure Database for MySQL** as target server type, and then select **Select**.
 
-  :::image type="content" source="media/tutorial-azure-mysql-external-to-flex-online/create-database-migration-service.png" alt-text="Screenshot of a Select Migration Scenario." lightbox="media/tutorial-azure-mysql-external-to-flex-online/create-database-migration-service.png":::
+    :::image type="content" source="media/tutorial-azure-mysql-external-to-flex-online/create-database-migration-service.png" alt-text="Screenshot of a Select Migration Scenario." lightbox="media/tutorial-azure-mysql-external-to-flex-online/create-database-migration-service.png":::
 
 1. On the Create Migration Service page, on the Basics tab, under Project details, select the appropriate subscription, and then select an existing resource group or create a new one.
 
@@ -140,42 +140,42 @@ To register the Microsoft. The dataMigration resource provider performs the foll
 
 1. To the right of **Pricing tier**, select **Configure tier**.
 
-  :::image type="content" source="media/tutorial-mysql-external-to-flex-online-physical-portal/7-project-details.png" alt-text="Screenshot of a Select Configure Tier." lightbox="media/tutorial-mysql-external-to-flex-online-physical-portal/7-project-details.png":::
+    :::image type="content" source="media/tutorial-mysql-external-to-flex-online-physical-portal/7-project-details.png" alt-text="Screenshot of a Select Configure Tier." lightbox="media/tutorial-mysql-external-to-flex-online-physical-portal/7-project-details.png":::
 
 1. select the Premium pricing tier with 4 vCores for your DMS instance on the Configure page and then select Apply.
+   
+    DMS Premium 4-vCore is free for six months (183 days) from the date the DMS service was created before charges are incurred. For more information on DMS costs and pricing tiers, see the [pricing page](https://aka.ms/dms-pricing). 
 
- DMS Premium 4-vCore is free for six months (183 days) from the date the DMS service was created before charges are incurred. For more information on DMS costs and pricing tiers, see the [pricing page](https://aka.ms/dms-pricing).
-
-  :::image type="content" source="media/tutorial-mysql-external-to-flex-online-physical-portal/8-configure-pricing-tier.png" alt-text="Screenshot of a Select Pricing tier." lightbox="media/tutorial-mysql-external-to-flex-online-physical-portal/8-configure-pricing-tier.png":::
-
- Next, we need to specify the virtual network (virtual network) that will provide the DMS instance access to the source MySQL server and the target flexible server.
+    :::image type="content" source="media/tutorial-mysql-external-to-flex-online-physical-portal/8-configure-pricing-tier.png" alt-text="Screenshot of a Select Pricing tier." lightbox="media/tutorial-mysql-external-to-flex-online-physical-portal/8-configure-pricing-tier.png":::
+  
+    Next, we need to specify the virtual network (virtual network) that will provide the DMS instance access to the source MySQL server and the target flexible server.
 
 1. On the **Create Migration Service** page, select **Next : Networking >>**.
 
 1. On the **Networking** tab, select an existing virtual network from the list or provide the name of the new virtual network you want to create, then select **Review + Create**.
 
- For more information, see the article [Create a virtual network using the Azure portal.](/azure/virtual-network/quick-create-portal).
+    For more information, see the article [Create a virtual network using the Azure portal.](/azure/virtual-network/quick-create-portal).
+ 
+     :::image type="content" source="media/tutorial-mysql-external-to-flex-online-physical-portal/8-1-networking.png" alt-text="Screenshot of a Select Networking." lightbox="media/tutorial-mysql-external-to-flex-online-physical-portal/8-1-networking.png":::
 
-  :::image type="content" source="media/tutorial-mysql-external-to-flex-online-physical-portal/8-1-networking.png" alt-text="Screenshot of a Select Networking." lightbox="media/tutorial-mysql-external-to-flex-online-physical-portal/8-1-networking.png":::
-
- Your virtual network must be configured with access to both the source MySQL server and the target flexible server, so be sure to:
+    Your virtual network must be configured with access to both the source MySQL server and the target flexible server, so be sure to:
    - Create a server-level firewall rule for both the source MySQL server and the target MySQL flexible server to allow the virtual network for Azure Database Migration Service access to the source and target databases.
    - Ensure that your virtual network Network Security Group (NSG) rules don't block ServiceTag's outbound port 443 for ServiceBus, Storage, and Azure Monitor. For more information about virtual network NSG traffic filtering, see [Filter network traffic with network security groups](/azure/virtual-network/virtual-network-vnet-plan-design-arm).
 
-> [!NOTE]   
+> [!NOTE]
 > To add tags to the service, advance to the **Tags** tab by selecting **Next : Tags**. Adding tags to the service is optional.
 
-1. Navigate to the **Review + create** tab, review the configurations, view the terms, and select **Create**.
+10. Navigate to the **Review + create** tab, review the configurations, view the terms, and select **Create**.
 
-  :::image type="content" source="media/tutorial-mysql-external-to-flex-online-physical-portal/9-review-create.png" alt-text="Screenshot of a Select Review+Create." lightbox="media/tutorial-mysql-external-to-flex-online-physical-portal/9-review-create.png":::
+    :::image type="content" source="media/tutorial-mysql-external-to-flex-online-physical-portal/9-review-create.png" alt-text="Screenshot of a Select Review+Create." lightbox="media/tutorial-mysql-external-to-flex-online-physical-portal/9-review-create.png":::
 
- Your DMS instance's deployment begins now. The message "Deployment is in progress" appears for a few minutes, and then it changes to "Your deployment is complete."
+   Your DMS instance's deployment begins now. The message "Deployment is in progress" appears for a few minutes, and then it changes to "Your deployment is complete."
 
-1. Select **Go to resource**.
+11. Select **Go to resource**.
 
-  :::image type="content" source="media/tutorial-mysql-external-to-flex-online-physical-portal/9-1-go-to-resource.png" alt-text="Screenshot of a Select Go to resource." lightbox="media/tutorial-mysql-external-to-flex-online-physical-portal/9-1-go-to-resource.png":::
+    :::image type="content" source="media/tutorial-mysql-external-to-flex-online-physical-portal/9-1-go-to-resource.png" alt-text="Screenshot of a Select Go to resource." lightbox="media/tutorial-mysql-external-to-flex-online-physical-portal/9-1-go-to-resource.png":::
 
-1. Identify the DMS instance's IP address from the resource overview page, create a firewall rule for your source MySQL server, and target a flexible server, allow-listing the IP address of the DMS instance.
+12. Identify the DMS instance's IP address from the resource overview page, create a firewall rule for your source MySQL server, and target a flexible server, allow-listing the IP address of the DMS instance.
 
 ### Create a migration project
 
@@ -183,17 +183,17 @@ To create a migration project, perform the following steps.
 
 1. In the Azure portal, select **All services**, search for Azure Database Migration Service, and then select **Azure Database Migration Services**.
 
-  :::image type= "content" source= "media/tutorial-mysql-external-to-flex-online-physical-portal/10-dms-search.png" alt-text= "Screenshot of a Locate all instances of Azure Database Migration Service." lightbox=" media/tutorial-mysql-external-to-flex-online-physical-portal/10-dms-search.png" :::
+    :::image type= "content" source= "media/tutorial-mysql-external-to-flex-online-physical-portal/10-dms-search.png" alt-text= "Screenshot of a Locate all instances of Azure Database Migration Service." lightbox=" media/tutorial-mysql-external-to-flex-online-physical-portal/10-dms-search.png" :::
 
 1. In the search results, select the DMS instance you created, and then select **+ New Migration Project**.
 
-  :::image type= "content" source= "media/tutorial-mysql-external-to-flex-online-physical-portal/2-create-migration-project.png" alt-text= "Screenshot of a Select a new migration project." lightbox="media/tutorial-mysql-external-to-flex-online-physical-portal/2-create-migration-project.png":::
+    :::image type= "content" source= "media/tutorial-mysql-external-to-flex-online-physical-portal/2-create-migration-project.png" alt-text= "Screenshot of a Select a new migration project." lightbox="media/tutorial-mysql-external-to-flex-online-physical-portal/2-create-migration-project.png":::
 
 1. On the **New migration project** page, specify a name for the project. In the **Source server type** selection box, select **MySQL**. In the **Target server type** selection box, select **Azure Database For MySQL**. In the **Migration activity type** selection box, select **[Preview] Physical online data migration**. Then, select **Create and run activity**.
 
- Selecting **Create project only** as the migration activity type will only create the migration project; you can then run it later.
+   Selecting **Create project only** as the migration activity type will only create the migration project; you can then run it later.
 
-  :::image type= "content" source= "media/tutorial-mysql-external-to-flex-online-physical-portal/3-migration-activity-select.png" alt-text= "Screenshot of a Create a new migration project." lightbox="media/tutorial-mysql-external-to-flex-online-physical-portal/3-migration-activity-select.png":::
+   :::image type= "content" source= "media/tutorial-mysql-external-to-flex-online-physical-portal/3-migration-activity-select.png" alt-text= "Screenshot of a Create a new migration project." lightbox="media/tutorial-mysql-external-to-flex-online-physical-portal/3-migration-activity-select.png":::
 
 ### Configure the migration project
 
@@ -201,25 +201,25 @@ To configure your DMS migration project, perform the following steps.
 
 1. On the **Select source** screen, we must ensure that DMS is in the virtual network, which has connectivity to the source server. Here you input **source server name**, **server port**, **user name**, and **password** to your source MySQL server and then select **Next: Select target >>**
 
-  :::image type="content" source="media/tutorial-mysql-external-to-flex-online-physical-portal/4-select-source.png" alt-text="Screenshot of an Add source details screen." lightbox="media/tutorial-mysql-external-to-flex-online-physical-portal/4-select-source.png":::
+    :::image type="content" source="media/tutorial-mysql-external-to-flex-online-physical-portal/4-select-source.png" alt-text="Screenshot of an Add source details screen." lightbox="media/tutorial-mysql-external-to-flex-online-physical-portal/4-select-source.png":::
 
 1. On the **Select target** screen, under automated Server selection, choose the **Subscription**, **Location**, **Resource group**, Azure Database for MySQL **server name**, **user name**, **password** for your target Azure Database for MySQL server and select **Next: Select backup >>**
 
-  :::image type="content" source="media/tutorial-mysql-external-to-flex-online-physical-portal/5-select-target.png" alt-text="Screenshot of a Select target."lightbox="media/tutorial-mysql-external-to-flex-online-physical-portal/5-select-target.png":::
+    :::image type="content" source="media/tutorial-mysql-external-to-flex-online-physical-portal/5-select-target.png" alt-text="Screenshot of a Select target."lightbox="media/tutorial-mysql-external-to-flex-online-physical-portal/5-select-target.png":::
 
 1. On the **Select backup** screen, input the **application ID** of the app registration, **client secret** from the app registration, **tenant ID** from the app registration, **subscription**, **storage account** name, **blob container** name and the **backup directory** name where the percona xtrabackup files are stored and select **Next: Configure migration settings >>**
 
- There's now a **Migrate user accounts and privileges** option. When selected, this option migrates all sign-in migrations. Additionally, you can replicate any **DDL statements** from the source MySQL server to the target flexible server.
+   There's now a **Migrate user accounts and privileges** option. When selected, this option migrates all sign-in migrations. Additionally, you can replicate any **DDL statements** from the source MySQL server to the target flexible server.
 
-  :::image type="content" source="media/tutorial-mysql-external-to-flex-online-physical-portal/6-select-backup.png" alt-text="Screenshot of a Select backup screen." lightbox="media/tutorial-mysql-external-to-flex-online-physical-portal/6-select-backup.png":::
+     :::image type="content" source="media/tutorial-mysql-external-to-flex-online-physical-portal/6-select-backup.png" alt-text="Screenshot of a Select backup screen." lightbox="media/tutorial-mysql-external-to-flex-online-physical-portal/6-select-backup.png":::
 
 1. On the **Configure migration settings** screen, if you want to customize the migration settings, select the check box or else advance to the summary page by selecting the **Next: Summary >>**
 
-  :::image type="content" source="media/tutorial-mysql-external-to-flex-online-physical-portal/7-configure-migration-settings.png" alt-text="Screenshot of configuring migration settings page." lightbox="media/tutorial-mysql-external-to-flex-online-physical-portal/7-configure-migration-settings.png":::
+    :::image type="content" source="media/tutorial-mysql-external-to-flex-online-physical-portal/7-configure-migration-settings.png" alt-text="Screenshot of configuring migration settings page." lightbox="media/tutorial-mysql-external-to-flex-online-physical-portal/7-configure-migration-settings.png":::
 
 1. On the Summary screen, in the Activity Name text box, specify a name for the migration activity. Ensure all the migration-related details are correct, then select "Start Migration."
 
-  :::image type="content" source="media/tutorial-mysql-external-to-flex-online-physical-portal/8-migration-summary.png" alt-text="Screenshot of migration summary and details page." lightbox="media/tutorial-mysql-external-to-flex-online-physical-portal/8-migration-summary.png":::
+    :::image type="content" source="media/tutorial-mysql-external-to-flex-online-physical-portal/8-migration-summary.png" alt-text="Screenshot of migration summary and details page." lightbox="media/tutorial-mysql-external-to-flex-online-physical-portal/8-migration-summary.png":::
 
 1. Once the migration starts, the migration activity window appears. Under the Initial Load tab, the status changes to Running.
 
@@ -227,19 +227,19 @@ To configure your DMS migration project, perform the following steps.
 
 1. As the migration is in flight, you can review the status of the migration and notice states such as **Importing** and **Estimated time remaining** for the physical backup files' data ingestion into the target MySQL flexible server.
 
-  :::image type="content" source="media/tutorial-mysql-external-to-flex-online-physical-portal/9-migration-status.png" alt-text="Screenshot of migration status page." lightbox="media/tutorial-mysql-external-to-flex-online-physical-portal/9-migration-status.png":::
+    :::image type="content" source="media/tutorial-mysql-external-to-flex-online-physical-portal/9-migration-status.png" alt-text="Screenshot of migration status page." lightbox="media/tutorial-mysql-external-to-flex-online-physical-portal/9-migration-status.png":::
 
- After the Initial Load activity is completed, you've automatically navigated to the Replicate Data Changes tab. You can monitor the migration progress as the screen is autorefreshed every 30 seconds or select the Refresh button.
+   After the Initial Load activity is completed, you've automatically navigated to the Replicate Data Changes tab. You can monitor the migration progress as the screen is autorefreshed every 30 seconds or select the Refresh button.
 
 1. Once the initial data ingestion completes, monitor the **Seconds behind source** field under the **Replicate Data Changes** tab. As soon as it's 0, proceed to start the cutover by navigating to the **Start Cutover** button at the top of the migration activity screen. Select **Refresh** to update the display and view the seconds behind the source when needed.
 
-  :::image type="content" source="media/tutorial-mysql-external-to-flex-online-physical-portal/10-migration-replication-status.png" alt-text="Screenshot of monitoring replication status." lightbox="media/tutorial-mysql-external-to-flex-online-physical-portal/10-migration-replication-status.png":::
+    :::image type="content" source="media/tutorial-mysql-external-to-flex-online-physical-portal/10-migration-replication-status.png" alt-text="Screenshot of monitoring replication status." lightbox="media/tutorial-mysql-external-to-flex-online-physical-portal/10-migration-replication-status.png":::
 
 1. Before you're ready to perform a cutover, follow steps 1 through 3 in the cutover window.
 
 1. After completing all steps, select **Confirm**, and then select **Apply**.
 
-  :::image type="content" source="media/tutorial-mysql-external-to-flex-online-physical-portal/11-start-cutover.png" alt-text="Screenshot of a Perform cutover." lightbox="media/tutorial-mysql-external-to-flex-online-physical-portal/11-start-cutover.png":::
+    :::image type="content" source="media/tutorial-mysql-external-to-flex-online-physical-portal/11-start-cutover.png" alt-text="Screenshot of a Perform cutover." lightbox="media/tutorial-mysql-external-to-flex-online-physical-portal/11-start-cutover.png":::
 
 ## Perform post-migration activities
 
@@ -249,7 +249,7 @@ When the migration finishes, be sure to complete the following post-migration ac
   - You can validate data by comparing **row count** or **checksum** between source and target flexible servers.
   - You can additionally go to the target flexible server, under **settings**, select **Databases** page, and verify that the databases intended for migration have successfully migrated to the target.
 
-  :::image type="content" source="media/tutorial-mysql-external-to-flex-online-physical-portal/12-validate-migration-target.png" alt-text="Screenshot of validating migration target." lightbox="media/tutorial-mysql-external-to-flex-online-physical-portal/12-validate-migration-target.png":::
+    :::image type="content" source="media/tutorial-mysql-external-to-flex-online-physical-portal/12-validate-migration-target.png" alt-text="Screenshot of validating migration target." lightbox="media/tutorial-mysql-external-to-flex-online-physical-portal/12-validate-migration-target.png":::
 
 - Update the connection string to point to the new flexible server.
 
