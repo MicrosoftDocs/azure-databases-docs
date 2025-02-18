@@ -13,10 +13,10 @@ ms.custom: devx-track-csharp, devx-track-dotnet
 # Create containers with large partition key
 [!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
-Azure Cosmos DB uses hash-based partitioning scheme to achieve horizontal scaling of data. All Azure Cosmos DB containers created before May 3, 2019 use a hash function that computes hash based on the first 101 bytes of the partition key. If there are multiple partition keys that have the same first 101 bytes, then those logical partitions are considered as the same logical partition by the service. This can lead to issues like partition size quota being incorrect, unique indexes being incorrectly applied across the partition keys, and uneven distribution of storage. Large partition keys are introduced to solve this issue. Azure Cosmos DB now supports large partition keys with values up to 2 KB.
-
+Azure Cosmos DB uses hash-based partitioning scheme to achieve horizontal scaling of data. All Azure Cosmos DB containers created before May 3, 2019 use a hash function that computes hash based on the first 101 bytes of the partition key. If there are multiple partition keys that have the same first 101 bytes, then those logical partitions are considered as the same logical partition by the service, which creates a partition key collision. This can lead to issues like partition key collisions, partition size quota being incorrect, unique indexes being incorrectly applied across the partition keys, and uneven distribution of storage. Large partition keys are introduced to solve this issue. Azure Cosmos DB now supports large partition keys with values up to 2 KB.
+ 
 Large partition keys are supported by enabling an enhanced version of the hash function, which can generate a unique hash from large partition keys up to 2 KB. 
-As a best practice, unless you need support for an [older Azure Cosmos DB SDK or application that does not support this feature](#supported-sdk-versions), it is always recommended to configure your container with support for large partition keys. 
+As a best practice, unless you need support for an [older Azure Cosmos DB SDK or application that does not support this feature](#supported-sdk-versions), it is always recommended to configure your container with support for large partition keys. Enabling large partition keys can only be done at time of container creation. If you have an existing container that does not use large partition keys, you will have to create a new container and [migrate your data](container-copy.md) to it.
 
 ## Create a large partition key (Azure portal)
 
