@@ -124,11 +124,11 @@ To register the Microsoft. The dataMigration resource provider performs the foll
 
 1. In the Azure portal, select **+ Create a resource**, search for the term "Azure Database Migration Service", and then select **Azure Database Migration Service** from the dropdown list.
 
-    :::image type="content" source="media/tutorial-mysql-external-to-flex-online-physical-portal/4-dms-portal-marketplace.png" alt-text="Screenshot of dms in marketplace." lightbox="media/tutorial-mysql-external-to-flex-online-physical-portal/4-dms-portal-marketplace.png":::
+    :::image type="content" source="media/tutorial-mysql-external-to-flex-online-physical-portal/4-dms-portal-marketplace.png" alt-text="Screenshot of DMS in Azure Marketplace." lightbox="media/tutorial-mysql-external-to-flex-online-physical-portal/4-dms-portal-marketplace.png":::
 
 1. On the **Azure Database Migration Service** screen, select **Create**.
 
-    :::image type="content" source="media/tutorial-mysql-external-to-flex-online-physical-portal/5-dms-portal-marketplace-create.png" alt-text="Screenshot of create from marketplace." lightbox="media/tutorial-mysql-external-to-flex-online-physical-portal/5-dms-portal-marketplace-create.png":::
+    :::image type="content" source="media/tutorial-mysql-external-to-flex-online-physical-portal/5-dms-portal-marketplace-create.png" alt-text="Screenshot of create from Azure Marketplace." lightbox="media/tutorial-mysql-external-to-flex-online-physical-portal/5-dms-portal-marketplace-create.png":::
 
 1. On the **Select migration scenario and Database Migration Service** page, under **Migration scenario**, select **MySQL** as the source server type, and then select **Azure Database for MySQL** as target server type, and then select **Select**.
 
@@ -183,7 +183,7 @@ To create a migration project, perform the following steps.
 
 1. In the Azure portal, select **All services**, search for Azure Database Migration Service, and then select **Azure Database Migration Services**.
 
-    :::image type="content" source="media/tutorial-mysql-external-to-flex-online-physical-portal/10-dms-search.png" alt-text="Screenshot of a dms search." lightbox="media/tutorial-mysql-external-to-flex-online-physical-portal/10-dms-search.png":::
+    :::image type="content" source="media/tutorial-mysql-external-to-flex-online-physical-portal/10-dms-search.png" alt-text="Screenshot of a DMS search." lightbox="media/tutorial-mysql-external-to-flex-online-physical-portal/10-dms-search.png":::
 
 1. In the search results, select the DMS instance you created, and then select **+ New Migration Project**.
 
@@ -193,7 +193,7 @@ To create a migration project, perform the following steps.
 
    Selecting **Create project only** as the migration activity type will only create the migration project; you can then run it later.
 
-   :::image type="content" source="media/tutorial-mysql-external-to-flex-online-physical-portal/3-migration-activity-select.png" alt-text="Screenshot of a selecting migration activity." lightbox="media/tutorial-mysql-external-to-flex-online-physical-portal/3-migration-activity-select.png":::
+   :::image type="content" source="media/tutorial-mysql-external-to-flex-online-physical-portal/3-migration-activity-select.png" alt-text="Screenshot of selecting a migration activity." lightbox="media/tutorial-mysql-external-to-flex-online-physical-portal/3-migration-activity-select.png":::
 
 ### Configure the migration project
 
