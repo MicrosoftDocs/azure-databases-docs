@@ -30,7 +30,7 @@ In summary, for SDKs in Gateway mode, you can expect HTTP traffic, while for SDK
 
 ## Client instances and connections
 
-Regardless of the connectivity mode, it's critical to maintain a Singleton instance of the SDK client per account per application. Connections, both HTTP and TCP, are scoped to the client instance. Most compute environments have limitations in terms of the number of connections that can be open at the same time and when these limits are reached, connectivity will be affected.
+Regardless of the connectivity mode, it's critical to maintain a Singleton instance of the SDK client per account per application. Connections, both HTTP, and TCP, are scoped to the client instance. Most compute environments have limitations in terms of the number of connections that can be open at the same time. When these limits are reached, connectivity is affected.
 
 ## Distributed applications and networks
 
@@ -57,7 +57,7 @@ The short answer is **yes**. But not all errors make sense to retry on, some of 
 | 403 | Optional | No | [Forbidden](troubleshoot-forbidden.md) |
 | 404 | No | No | [Resource is not found](troubleshoot-not-found.md) |
 | 408 | Yes | Yes | [Request timed out](troubleshoot-dotnet-sdk-request-timeout.md) |
-| 409 | No | No | Conflict failure is when the identity (ID and partition key) provided for a resource on a write operation has been taken by an existing resource or when a [unique key constraint](../unique-keys.md) has been violated. |
+| 409 | No | No | Conflict failure is when the ID and partition key provided for a resource on a write operation has been taken by an existing resource or when a [unique key constraint](../unique-keys.md) has been violated. |
 | 410 | Yes | Yes | Gone exceptions (transient failure that shouldn't violate SLA) |
 | 412 | No | No | Precondition failure is where the operation specified an eTag that is different from the version available at the server. It's an [optimistic concurrency](database-transactions-optimistic-concurrency.md#optimistic-concurrency-control) error. Retry the request after reading the latest version of the resource and updating the eTag on the request.
 | 413 | No | No | [Request Entity Too Large](../concepts-limits.md#per-item-limits) |
@@ -112,7 +112,7 @@ Azure Cosmos DB SDKs provide detailed information in their logs and diagnostics 
 
 ## How can I mitigate retry latency?
 
-Depending on the [circumstances](troubleshoot-sdk-availability.md), in most cases the SDK route requests to either the local region, the write region (in a single-region write scenario) or the first region in the [preferred regions](tutorial-global-distribution.md#preferred-locations) list. This prioritization minimizes latency in healthy scenarios by primarily connecting to the nearest or most optimal data center.
+Depending on the [circumstances](troubleshoot-sdk-availability.md), in most cases the SDK route requests to either the local region, the write region (in a single-region write scenario), or the first region in the [preferred regions](tutorial-global-distribution.md#preferred-locations) list. This prioritization minimizes latency in healthy scenarios by primarily connecting to the nearest or most optimal data center.
 
 However, this prioritization also means that requests which are going to result in failure will always be tried in one specific region first for a given error scenario. If failover to another region is preferred in that scenario, this is typically handled at the infrastructure (traffic manager) layer rather than at the SDK level. Proper setup and configuration of your infrastructure can ensure that traffic is rerouted efficiently during regional outages, thereby mitigating the latency that can come with cross-region retries in an outage scenario. For more detailed information on setting up infrastructure-level failover, you can refer to [Azure Traffic Manager documentation](/azure/traffic-manager/). Some SDKs support implementing similar failover strategies directly at the SDK level. For example, see high availability for [Java SDK](performance-tips-java-sdk-v4.md#high-availability) and [.NET SDK](performance-tips-dotnet-sdk-v3.md#high-availability).
 
