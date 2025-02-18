@@ -1,9 +1,9 @@
-[---
+---
 title: Troubleshoot conflict exceptions
 titleSuffix: Azure Cosmos DB for NoSQL
 description: Diagnose and fix various causes for conflict exceptions that can occur when working with Azure Cosmos DB for NoSQL.
-author: ealsur
-ms.author: maquaran
+author: gauravsaini-ms
+ms.author: gauravsaini
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: troubleshooting
@@ -24,11 +24,10 @@ Large partition keys are supported by enabling an enhanced version of the hash f
 
 ### Solution
 
-Use large partition key. Enabling large partition keys can only be done at time of container creation. If you have an existing container that does not use large partition keys, you will have to create a new container and [migrate your data](container-copy.md) to it.
+Use large partition key. Enabling large partition keys can only be done at time of container creation. If you have an existing container that does not use large partition keys, you will have to create a new container and [migrate your data](../../container-copy.md) to it.
 
 ## Related content
 
 - [IP Firewall](../how-to-configure-firewall.md).
 - [Virtual networks](../how-to-configure-vnet-service-endpoint.md).
 - [Private endpoints](../how-to-configure-private-endpoints.md).
-](https://learn.microsoft.com/en-us/azure/cosmos-db/nosql/troubleshoot-conflict)
