@@ -72,7 +72,7 @@ To complete this tutorial, you need to:
 - The Azure storage account should be publicly accessible using the SAS token. Azure storage account with virtual network configuration isn't supported.
 - An [App registration](https://learn.microsoft.com/entra/identity-platform/quickstart-register-app?tabs=certificate) needs to be created, and an app key using [client secret](https://learn.microsoft.com/entra/identity-platform/quickstart-register-app?tabs=client-secret#add-credentials) needs to be generated to be used in the physical migration workflow. This app will, in turn, be used with the storage account and the target flexible server for SAS key creation and server update.
 - [Assign the Role-based access control (RBAC) role assignment](https://learn.microsoft.com/azure/role-based-access-control/role-assignments-portal) with the app registration for storage account with the following roles.
-    - **Storage blob data reader** for reading blob container files.
+    - **Storage blob data reader** for reading blob container files.
 - Assign the **Contributor** role to the **app registration** on the target MySQL flexible server.
 
 ## Limitations
@@ -110,7 +110,7 @@ To register the Microsoft. The dataMigration resource provider performs the foll
 
 1. Before creating your first DMS instance, sign in to the Azure portal, and then search for and select **Subscriptions**.
 
-   :::image type= "content" source= "media/tutorial-mysql-external-to-flex-online-physical-portal/1-subscriptions.png" alt-text= "Screenshot of Select subscriptions from Azure Marketplace." lightbox=" media/tutorial-mysql-external-to-flex-online-physical-portal/1-subscriptions.png" :::
+   :::image type="content" source= "media/tutorial-mysql-external-to-flex-online-physical-portal/1-subscriptions.png" alt-text= "Screenshot of Select subscriptions from Azure Marketplace." lightbox="media/tutorial-mysql-external-to-flex-online-physical-portal/1-subscriptions.png" :::
 
 1. Select the subscription for which you want to create the DMS instance, then select **Resource providers**.
 
@@ -124,11 +124,11 @@ To register the Microsoft. The dataMigration resource provider performs the foll
 
 1. In the Azure portal, select **+ Create a resource**, search for the term "Azure Database Migration Service", and then select **Azure Database Migration Service** from the dropdown list.
 
-    :::image type= "content" source= "media/tutorial-mysql-external-to-flex-online-physical-portal/4-dms-portal-marketplace.png" alt-text= "Screenshot of a Search Azure Database Migration Service." lightbox="media/tutorial-mysql-external-to-flex-online-physical-portal/4-dms-portal-marketplace.png":::
+    :::image type="content" source="media/tutorial-mysql-external-to-flex-online-physical-portal/4-dms-portal-marketplace.png" alt-text="Screenshot of a Select Go to resource." lightbox="media/tutorial-mysql-external-to-flex-online-physical-portal/4-dms-portal-marketplace.png":::
 
 1. On the **Azure Database Migration Service** screen, select **Create**.
 
-    :::image type= "content" source= "media/tutorial-mysql-external-to-flex-online-physical-portal/5-dms-portal-marketplace-create.png" alt-text= "Screenshot of a Create Azure Database Migration Service instance." lightbox="media/tutorial-mysql-external-to-flex-online-physical-portal/5-dms-portal-marketplace-create.png":::
+    :::image type="content" source="media/tutorial-mysql-external-to-flex-online-physical-portal/5-dms-portal-marketplace-create.png" alt-text="Screenshot of a Select Go to resource." lightbox="media/tutorial-mysql-external-to-flex-online-physical-portal/5-dms-portal-marketplace-create.png":::
 
 1. On the **Select migration scenario and Database Migration Service** page, under **Migration scenario**, select **MySQL** as the source server type, and then select **Azure Database for MySQL** as target server type, and then select **Select**.
 
@@ -142,7 +142,7 @@ To register the Microsoft. The dataMigration resource provider performs the foll
 
     :::image type="content" source="media/tutorial-mysql-external-to-flex-online-physical-portal/7-project-details.png" alt-text="Screenshot of a Select Configure Tier." lightbox="media/tutorial-mysql-external-to-flex-online-physical-portal/7-project-details.png":::
 
-1. select the Premium pricing tier with 4 vCores for your DMS instance on the Configure page and then select Apply.
+1. Select the Premium pricing tier with 4 vCores for your DMS instance on the Configure page and then select Apply.
    
     DMS Premium 4-vCore is free for six months (183 days) from the date the DMS service was created before charges are incurred. For more information on DMS costs and pricing tiers, see the [pricing page](https://aka.ms/dms-pricing). 
 
@@ -183,17 +183,17 @@ To create a migration project, perform the following steps.
 
 1. In the Azure portal, select **All services**, search for Azure Database Migration Service, and then select **Azure Database Migration Services**.
 
-    :::image type= "content" source= "media/tutorial-mysql-external-to-flex-online-physical-portal/10-dms-search.png" alt-text= "Screenshot of a Locate all instances of Azure Database Migration Service." lightbox=" media/tutorial-mysql-external-to-flex-online-physical-portal/10-dms-search.png" :::
+    :::image type="content" source="media/tutorial-mysql-external-to-flex-online-physical-portal/10-dms-search.png" alt-text="Screenshot of a Select Go to resource." lightbox="media/tutorial-mysql-external-to-flex-online-physical-portal/10-dms-search.png":::
 
 1. In the search results, select the DMS instance you created, and then select **+ New Migration Project**.
 
-    :::image type= "content" source= "media/tutorial-mysql-external-to-flex-online-physical-portal/2-create-migration-project.png" alt-text= "Screenshot of a Select a new migration project." lightbox="media/tutorial-mysql-external-to-flex-online-physical-portal/2-create-migration-project.png":::
+    :::image type="content" source="media/tutorial-mysql-external-to-flex-online-physical-portal/2-create-migration-project.png" alt-text="Screenshot of a Select Go to resource." lightbox="media/tutorial-mysql-external-to-flex-online-physical-portal/2-create-migration-project.png":::
 
 1. On the **New migration project** page, specify a name for the project. In the **Source server type** selection box, select **MySQL**. In the **Target server type** selection box, select **Azure Database For MySQL**. In the **Migration activity type** selection box, select **[Preview] Physical online data migration**. Then, select **Create and run activity**.
 
    Selecting **Create project only** as the migration activity type will only create the migration project; you can then run it later.
 
-   :::image type= "content" source= "media/tutorial-mysql-external-to-flex-online-physical-portal/3-migration-activity-select.png" alt-text= "Screenshot of a Create a new migration project." lightbox="media/tutorial-mysql-external-to-flex-online-physical-portal/3-migration-activity-select.png":::
+   :::image type="content" source="media/tutorial-mysql-external-to-flex-online-physical-portal/3-migration-activity-select.png" alt-text="Screenshot of a Select Go to resource." lightbox="media/tutorial-mysql-external-to-flex-online-physical-portal/3-migration-activity-select.png":::
 
 ### Configure the migration project
 
