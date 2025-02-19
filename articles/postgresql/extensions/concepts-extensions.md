@@ -42,13 +42,12 @@ Although not considered extensions as such, because they don't have a **control 
 
  These files can also be loaded in memory when the server starts, and they can implement code that typically detours the natural execution path of PostgreSQL, and alters the default functioning of the engine. Such behavioral alterations normally aim to amplify some limited functionality of the engine.
 
-By using modules, PostgreSQL supports the following forms of extensibility:
+Azure Database for PostgreSQL supports the following modules:
 
- - [Archive modules](https://www.postgresql.org/docs/current/archive-modules.html): PostgreSQL provides infrastructure to create custom modules for continuous archiving.
- - [Logical decoding output plugins](https://www.postgresql.org/docs/current/logicaldecoding-output-plugin.html): Output plugins transform the data from the write-ahead log's internal representation into the format desired by the consumer of a replication slot.
- - [Pluggable JIT providers](https://www.postgresql.org/docs/current/jit-extensibility.html): PostgreSQL provides a JIT implementation based on LLVM. The interface to the JIT provider is pluggable and the provider can be changed without recompiling (although currently, the build process only provides inlining support data for LLVM).
- - [Base backups sinks](https://www.postgresql.org/docs/16/basebackup-to-shell.html): Taking a base backup produces one archive per tablespace directory plus a backup manifest. The backup process puts those archives and manifest in some place, possibly after postprocessing them in some way. Base backup sinks are objects to which those archives, and the manifest if present, can be sent. Base backups sinks can be chained.
- - Hooking Modules: Modules that implement functions which are registered with the database engine, so that they're invoked at specific points. These modules are used to implement logging, auditing, or to alter the normal execution path of a command.
+- auto_explain
+- pg_failover_slots
+- pg_partman_bgw
+- wal2json
 
 ## Related content
 

@@ -31,14 +31,15 @@ If you get any error while executing the `CREATE EXTENSION`, `ALTER EXTENSION`, 
 
 To use a module in your Azure Database for PostgreSQL flexible server, you only have to add it to the `shared_preload_libraries` server parameter as described in [load libraries](how-to-load-libraries.md).
 
+Modules don't need to be [allowlisted](how-to-allow-extensions.md). That's an exclusive requirement for extensions.
+
 ## Extensions with specific considerations
 
-The following list enumerates all the supported extensions that require specific considerations when used in the Azure Database for PostgreSQL flexible server service:
+The following list enumerates all the supported extensions that require specific considerations when used in an Azure Database for PostgreSQL flexible server:
 
 - `dblink`
 - `pg_buffercache`
 - `pg_cron`
-- `pg_failover_slots`
 - `pg_hint_plan`
 - `pg_prewarm`
 - `pg_repack`
@@ -121,16 +122,6 @@ The `cron_schedule_in_database` function allows for the user name as an optional
     ```sql
     SELECT cron.alter_job(job_id:=MyJobID,database:='NewDBName');
     ```
-
-### pg_failover_slots
-
-The `pg_failover_slots` extension enhances Azure Database for PostgreSQL flexible server when operating with both logical replication and high availability enabled servers. It effectively addresses the challenge within the standard PostgreSQL engine that doesn't preserve logical replication slots after a failover. Maintaining these slots is critical to prevent replication pauses or data mismatches during primary server role changes, ensuring operational continuity and data integrity.
-
-The extension streamlines the failover process by managing the necessary transfer, cleanup, and synchronization of replication slots, thus providing a seamless transition during server role changes.
-
-You can find more information and instructions on using the `pg_failover_slots` extension on its [GitHub page](https://github.com/EnterpriseDB/pg_failover_slots).
-
-To use the `pg_failover_slots` extension, make sure that its [library was loaded](how-to-load-libraries.md) when the server started.
 
 ### pg_hint_plan
 
@@ -251,6 +242,23 @@ More details on these utilities can be found [here](https://github.com/timescale
 Azure Database for PostgreSQL flexible server offers an [in-place major version upgrade feature](../flexible-server/concepts-major-version-upgrade.md) that performs an in-place upgrade of the Azure Database for PostgreSQL flexible server instance, with just a simple interaction from the user. In-place major version upgrade simplifies the Azure Database for PostgreSQL flexible server upgrade process, minimizing the disruption to users and applications accessing the server. In-place major version upgrades don't support specific extensions, and there are some limitations to upgrading certain extensions.
 
 The extensions `anon`, `Apache AGE`, `dblink`, `orafce`, `pgaudit`, `postgres_fdw`, and `timescaledb` are unsupported for all Azure Database for PostgreSQL flexible server versions when using in-place major version update feature.
+
+## Modules with specific considerations
+
+The following list enumerates all the supported modules that require specific considerations when used in an Azure Database for PostgreSQL flexible server:
+
+- `pg_failover_slots`
+
+### pg_failover_slots
+
+The `pg_failover_slots` extension enhances Azure Database for PostgreSQL flexible server when operating with both logical replication and high availability enabled servers. It effectively addresses the challenge within the standard PostgreSQL engine that doesn't preserve logical replication slots after a failover. Maintaining these slots is critical to prevent replication pauses or data mismatches during primary server role changes, ensuring operational continuity and data integrity.
+
+The extension streamlines the failover process by managing the necessary transfer, cleanup, and synchronization of replication slots, thus providing a seamless transition during server role changes.
+
+You can find more information and instructions on using the `pg_failover_slots` extension on its [GitHub page](https://github.com/EnterpriseDB/pg_failover_slots).
+
+To use the `pg_failover_slots` extension, make sure that its [library was loaded](how-to-load-libraries.md) when the server started.
+
 
 ## Related content
 
