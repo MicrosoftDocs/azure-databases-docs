@@ -7,7 +7,7 @@
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: conceptual
-  ms.date: 11/02/2024
+  ms.date: 02/18/2025
 ---
 
 # Read and Read/Write Privileges with Secondary Users on Azure Cosmos DB for MongoDB vCore (Preview)
@@ -23,7 +23,7 @@ Azure Cosmos DB for MongoDB vCore now supports secondary users with specialized 
 ### Using Azure CLI
 
 ```Bash
-    az resource patch --ids "/subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroup}/providers/Microsoft.DocumentDB/mongoClusters/{ClusterName}" --api-version 2024-10-01-preview --properties "{\"previewFeatures\": [\"GeoReplicas\", \"EnableReadOnlyUser\"]}"
+    az resource patch --ids "/subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroup}/providers/Microsoft.DocumentDB/mongoClusters/{ClusterName}" --api-version 2024-10-01-preview --properties "{\"previewFeatures\": [\"EnableReadOnlyUser\"]}"
 ```
 
 ### Using ARM template
