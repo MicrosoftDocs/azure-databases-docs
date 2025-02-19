@@ -29,7 +29,7 @@ In certain scenarios, such as the need to deploy urgent security fixes or update
 <a id="locating-maintenance-details"></a>
 
 ### Virtual Canary Maintenance (Public Preview)
-Virtual Canary is an experimental maintenance program offering early access to updates, enabling customers to test workload compatibility with new Azure MySQL versions. Unlike routine maintenance, Virtual Canary does not follow the 30-day minimum gap or the 7-day notification period. This program helps customers proactively validate new features and contribute early feedback for product improvements. Burstable SKU servers, commonly used for non-production environments, are automatically enrolled in the Virtual Canary program.
+Virtual Canary is an experimental maintenance program offering early access to updates, enabling customers to test workload compatibility with new Azure MySQL versions. Unlike routine maintenance, Virtual Canary doesn't follow the 30-day minimum gap or the 7-day notification period. This program helps customers proactively validate new features and contribute early feedback for product improvements. Burstable SKU servers, commonly used for non-production environments, are automatically enrolled in the Virtual Canary program.
 
 #### Managing Virtual Canary Enrollment  
 
@@ -72,7 +72,7 @@ For specific details about what each maintenance update entails, please refer to
 
 ## Select a maintenance window
 
-You can schedule maintenance during a specific day of the week and a time window within that day. Or you can let the system pick a day and a time window time for you automatically. Either way, the system will alert you seven days before running any maintenance. The system will also let you know when maintenance is started, and when it is successfully completed.
+You can schedule maintenance during a specific day of the week and a time window within that day. Or you can let the system pick a day and a time window time for you automatically. Either way, the system will alert you seven days before running any maintenance. The system will also let you know when maintenance is started, and when it's successfully completed.
 
 Notifications about upcoming scheduled maintenance can be:
 
@@ -84,18 +84,18 @@ Notifications about upcoming scheduled maintenance can be:
 
 When specifying preferences for the maintenance schedule, you can pick a day of the week and a time window. If you don't specify, the system will pick times between 11pm and 7am in your server's region time. You can define different schedules for each Flexible Server in your Azure subscription.
 
-You can update scheduling settings at any time. If there is a maintenance scheduled for your Flexible server and you update scheduling preferences, the current rollout will proceed as scheduled and the scheduling settings change will become effective upon its successful completion for the next scheduled maintenance.
+You can update scheduling settings at any time. If there's a maintenance scheduled for your Flexible server and you update scheduling preferences, the current rollout will proceed as scheduled and the scheduling settings change will become effective upon its successful completion for the next scheduled maintenance.
 
 You can define system-managed schedule or custom schedule for each Flexible Server in your Azure subscription.
 - With custom schedule, you can specify your maintenance window for the server by choosing the day of the week and a one-hour time window.
 - With system-managed schedule, the system will pick any one-hour window between 11pm and 7am in your server's region time.
 
 > [!IMPORTANT]  
-> Starting from 31st August 2024, Azure Database for MySQL will no longer support custom maintenance windows for burstable SKU instances. This change is due to the need for simplifying maintenance processes, ensuring optimal performance, and our analysis indicating that the number of users utilizing custom maintenance windows on burstable SKUs is minimal. Existing burstable SKU instances with custom maintenance window configurations will remain unaffected; however, users will not be able to modify these custom maintenance window settings moving forward.
+> Starting from 31st August 2024, Azure Database for MySQL will no longer support custom maintenance windows for burstable SKU instances. This change is due to the need for simplifying maintenance processes, ensuring optimal performance, and our analysis indicating that the number of users utilizing custom maintenance windows on burstable SKUs is minimal. Existing burstable SKU instances with custom maintenance window configurations will remain unaffected; however, users won't be able to modify these custom maintenance window settings moving forward.
 >  
 > For customers requiring custom maintenance windows, we recommend upgrading to General Purpose or Business Critical SKUs to continue using this feature.
 
-In rare cases, maintenance event can be canceled by the system or might fail to complete successfully. If the update fails, the update is reverted, and the previous version of the binaries is restored. In such failed update scenarios, you might still experience restart of the server during the maintenance window. If the update is canceled or failed, the system will create a notification about canceled or failed maintenance event respectively notifying you. The next attempt to perform maintenance will be scheduled as per your current scheduling settings and you will receive notification about it 5 days in advance.
+In rare cases, maintenance event can be canceled by the system or might fail to complete successfully. If the update fails, the update is reverted, and the previous version of the binaries is restored. In such failed update scenarios, you might still experience restart of the server during the maintenance window. If the update is canceled or failed, the system will create a notification about canceled or failed maintenance event respectively notifying you. The next attempt to perform maintenance will be scheduled as per your current scheduling settings and you'll receive notification about it five days in advance.
 
 ## Near zero downtime maintenance (Public preview) ##
 
@@ -112,11 +112,11 @@ To achieve the optimal performance promised by this feature, certain conditions 
 
 - **Primary Keys in All Tables:** Ensuring that every table has a primary key is critical. Lack of primary keys can significantly increase replication lag, affecting the downtime.
 - **Low Workload During Maintenance Times:** Maintenance periods should coincide with times of low workload on the server to ensure the downtime remains minimal. We encourage you to use the [custom maintenance window](how-to-maintenance-portal.md#specify-maintenance-schedule-options) feature to schedule maintenance during off-peak hours.
-- **Downtime Guarantees：** While we strive to keep the maintenance downtime as low as possible, we do not guarantee that it will always be less than 60 seconds in all circumstances. Various factors, such as high workload or specific server configurations, can lead to longer downtime. In the worst-case scenario, downtime might be similar to that of a standalone server.
+- **Downtime Guarantees：** While we strive to keep the maintenance downtime as low as possible, we don't guarantee that it will always be less than 60 seconds in all circumstances. Various factors, such as high workload or specific server configurations, can lead to longer downtime. In the worst-case scenario, downtime might be similar to that of a standalone server.
 
 ## Maintenance reschedule
 
-The **maintenance reschedule** feature grants you greater control over the timing of maintenance activities on your Azure Database for MySQL Flexible Server instance. After receiving a maintenance notification, you can reschedule it to a more convenient time, irrespective of whether it was system or custom managed.
+The **maintenance reschedule** feature grants you greater control over the timing of maintenance activities on your Azure Database for MySQL Flexible Server instance. After receiving a maintenance notification, you can reschedule it to a more convenient time, irrespective of whether it was system or custom managed. Please note that maintenance rescheduling isn't available for Burstable SKUs, as this feature is intended for production environment servers, whereas Burstable SKU compute tiers are designed for non-production purposes.
 
 ### Reschedule parameters and notifications
 
@@ -145,11 +145,11 @@ A: The maintenance start times differ across regions, so servers in different re
 
 **Q: Why did some servers in the same region receive maintenance notifications while others did not?**
 
-A: This could be because the servers that did not receive notifications were created more recently, and the system determined that they do not yet require maintenance.
+A: This could be because the servers that didn't receive notifications were created more recently, and the system determined that they don't yet require maintenance.
 
 **Q: Can I opt out of scheduled maintenance?**
 
-A: No, opting out of scheduled maintenance is not allowed. However, you can use the maintenance reschedule feature to adjust the timing or enable the High Availability (HA) feature to minimize downtime. As a PaaS database product, it's essential to perform timely maintenance to ensure the security and reliability of your database.
+A: No, opting out of scheduled maintenance isn't allowed. However, you can use the maintenance reschedule feature to adjust the timing or enable the High Availability (HA) feature to minimize downtime. As a PaaS database product, it's essential to perform timely maintenance to ensure the security and reliability of your database.
 
 ## Related content
 

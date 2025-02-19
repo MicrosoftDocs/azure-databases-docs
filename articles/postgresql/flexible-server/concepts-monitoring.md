@@ -4,7 +4,7 @@ description: Review the monitoring and metrics features in Azure Database for Po
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 2/5/2025
+ms.date: 2/12/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: conceptual
@@ -18,7 +18,7 @@ Monitoring data about your servers helps you troubleshoot and optimize for your 
 
 ## Metrics
 
-Azure Database for PostgreSQL flexible server provides various metrics that give insight into the behavior of the resources that support the Azure Database for PostgreSQL flexible server instance. Each metric is emitted at a 1-minute interval and has up to [93 days of history](/azure/azure-monitor/essentials/data-platform-metrics#retention-of-metrics). You can configure alerts on the metrics. Other options include setting up automated actions, performing advanced analytics, and archiving the history. For more information, see the [Azure Metrics overview](/azure/azure-monitor/essentials/data-platform-metrics).
+Azure Database for PostgreSQL flexible server provides various metrics that give insight into the behavior of the resources that support the Azure Database for PostgreSQL flexible server instance. Each metric is emitted at a 1-minute interval and has up to [93 days of retention](/azure/azure-monitor/essentials/data-platform-metrics#retention-of-metrics). You can configure alerts on the metrics. Other options include setting up automated actions, performing advanced analytics, and archiving the history. For more information, see the [Azure Metrics overview](/azure/azure-monitor/essentials/data-platform-metrics).
 
 > [!NOTE]
 > While metrics are stored for 93 days, you can only query (in the Metrics tile) for a maximum of 30 days' worth of data on any single chart. If you see a blank chart or your chart displays only part of metric data, verify that the difference between start and end dates in the time picker doesn't exceed the 30-day interval. After you've selected a 30-day interval, you can pan the chart to view the full retention window. 
@@ -55,7 +55,7 @@ The following metrics are available for an Azure Database for PostgreSQL flexibl
 
 ### Enhanced metrics
 
-You can use enhanced metrics for Azure Database for PostgreSQL flexible server to get fine-grained monitoring and alerting on databases. Each metric is emitted at a *1-minute* interval and has up to *93 days* of history. You can configure alerts on the metrics. Some enhanced metrics include a `Dimension` parameter that you can use to split and filter metrics data by using a dimension like database name or state.
+You can use enhanced metrics for Azure Database for PostgreSQL flexible server to get fine-grained monitoring and alerting on databases. Each metric is emitted at a *1-minute* interval and has up to [93 days of retention](/azure/azure-monitor/essentials/data-platform-metrics#retention-of-metrics). You can configure alerts on the metrics. Some enhanced metrics include a `Dimension` parameter that you can use to split and filter metrics data by using a dimension like database name or state.
 
 #### Enabling enhanced metrics
 
@@ -97,7 +97,7 @@ You can choose from the following categories of enhanced metrics:
 |**Temporary Files Size**             |`temp_bytes`   |Bytes|Total amount of data that's written to temporary files by queries in this database.                 |DatabaseName|No             |
 |**Total Transactions**               |`xact_total`   |Count|Number of total transactions that executed in this database.                                        |DatabaseName|No             |
 |**Transactions Committed**           |`xact_commit`  |Count|Number of transactions in this database that have been committed.                                   |DatabaseName|No             |
-|**Transactions per second (Preview)**|`tps`          |Count|Number of transactions executed within a second.                                                    |DatabaseName|No             |
+|**Transactions per second**          |`tps`          |Count|Number of transactions executed within a second.                                                    |DatabaseName|No             |
 |**Transactions Rolled back**         |`xact_rollback`|Count|Number of transactions in this database that have been rolled back.                                 |DatabaseName|No             |
 |**Tuples Deleted**                   |`tup_deleted`  |Count|Number of rows that were deleted by queries in this database.                                       |DatabaseName|No             |
 |**Tuples Fetched**                   |`tup_fetched`  |Count|Number of rows that were fetched by queries in this database.                                       |DatabaseName|No             |
@@ -144,7 +144,7 @@ You can choose from the following categories of enhanced metrics:
 
 ### Autovacuum metrics
 
-Autovacuum metrics can be used to monitor and tune autovacuum performance for Azure Database for PostgreSQL - Flexible Server. Each metric is emitted at a *30-minute* interval and has up to *93 days* of retention. You can create alerts for specific metrics, and you can split and filter metrics data by using the `DatabaseName` dimension.
+Autovacuum metrics can be used to monitor and tune autovacuum performance for Azure Database for PostgreSQL - Flexible Server. Each metric is emitted at a *30-minute* interval and has up to [93 days of retention](/azure/azure-monitor/essentials/data-platform-metrics#retention-of-metrics). You can create alerts for specific metrics, and you can split and filter metrics data by using the `DatabaseName` dimension.
 
 #### How to enable autovacuum metrics
 
@@ -159,7 +159,7 @@ Autovacuum metrics can be used to monitor and tune autovacuum performance for Az
 |**Analyze Counter User Tables**        |`analyze_count_user_tables`      |Count  |Number of times user-only tables have been manually analyzed in this database.                             |DatabaseName|No             |
 |**AutoAnalyze Counter User Tables**    |`autoanalyze_count_user_tables`  |Count  |Number of times user-only tables have been analyzed by the autovacuum daemon in this database.             |DatabaseName|No             |
 |**AutoVacuum Counter User Tables**     |`autovacuum_count_user_tables`   |Count  |Number of times user-only tables have been vacuumed by the autovacuum daemon in this database.             |DatabaseName|No             |
-|**Bloat Percent (Preview)**            |`bloat_percent`                  |Percent|Estimated bloat percentage for user only tables.                                                           |DatabaseName|No             |
+|**Bloat Percent**                      |`bloat_percent`                  |Percent|Estimated bloat percentage for user only tables.                                                           |DatabaseName|No             |
 |**Estimated Dead Rows User Tables**    |`n_dead_tup_user_tables`         |Count  |Estimated number of dead rows for user-only tables in this database.                                       |DatabaseName|No             |
 |**Estimated Live Rows User Tables**    |`n_live_tup_user_tables`         |Count  |Estimated number of live rows for user-only tables in this database.                                       |DatabaseName|No             |
 |**Estimated Modifications User Tables**|`n_mod_since_analyze_user_tables`|Count  |Estimated number of rows that were modified since user-only tables were last analyzed.                     |DatabaseName|No             |
@@ -178,7 +178,7 @@ Autovacuum metrics can be used to monitor and tune autovacuum performance for Az
 
 ### PgBouncer metrics
 
-You can use PgBouncer metrics to monitor the performance of the PgBouncer process, including details for active connections, idle connections, total pooled connections, and the number of connection pools. Each metric is emitted at a *1-minute* interval and has up to *93 days* of history. Customers can configure alerts on the metrics and also access the new metrics dimensions to split and filter metrics data by database name.
+You can use PgBouncer metrics to monitor the performance of the PgBouncer process, including details for active connections, idle connections, total pooled connections, and the number of connection pools. Each metric is emitted at a *1-minute* interval and has up to [93 days of retention](/azure/azure-monitor/essentials/data-platform-metrics#retention-of-metrics). Customers can configure alerts on the metrics and also access the new metrics dimensions to split and filter metrics data by database name.
 
 #### How to enable PgBouncer metrics
 
@@ -205,7 +205,7 @@ You can use PgBouncer metrics to monitor the performance of the PgBouncer proces
 
 ### Database availability metric
 
-Is-db-alive is a database server availability metric for Azure Database for PostgreSQL flexible server that returns `[1 for available]` and `[0 for not-available]`. Each metric is emitted at a *1 minute* frequency, and has up to *93 days* of retention. Customers can configure alerts on the metric.
+Is-db-alive is a database server availability metric for Azure Database for PostgreSQL flexible server that returns `[1 for available]` and `[0 for not-available]`. Each metric is emitted at a *1 minute* frequency, and has up to [93 days of retention](/azure/azure-monitor/essentials/data-platform-metrics#retention-of-metrics). Customers can configure alerts on the metric.
 
 |Display Name                                     |Metric ID                      |Unit   |Description                                                                                             |Dimension   |Default enabled|
 |-------------------------------------------------|-------------------------------|-------|--------------------------------------------------------------------------------------------------------|------------|---------------|

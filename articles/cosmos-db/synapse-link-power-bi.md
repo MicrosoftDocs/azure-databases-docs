@@ -77,6 +77,18 @@ AS q1
 
 Make sure to insert your Azure Cosmos DB region and the primary key in the previous SQL script. All the characters in the region name should be in lower case without spaces. Unlike the other parameters of the `OPENROWSET` command, the container name parameter should be specified without quotes around it.
 
+#### Using Managed Identity
+
+```sql
+-- Create view for RetailSales container
+CREATE VIEW  RetailSales
+AS  
+SELECT  *
+FROM OPENROWSET (
+    'CosmosDB', N'account=<Your Azure Cosmos DB account name>;database=<Your Azure Cosmos DB database name>;region=<Your Azure Cosmos DB Region>;authtype=ManagedIdentity',RetailSales)
+AS q1
+```
+
 ### StoreDemographics view:
 
 ```sql

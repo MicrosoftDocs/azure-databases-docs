@@ -117,30 +117,30 @@ When you migrate from Azure Database for MySQL - Single Server to Flexible Serve
 
 **Q. How soon do I need to migrate my single server to a flexible server?**
 
-**A.** Azure Database for MySQL - Single Server is scheduled for retirement by **September 16, 2024**, so we strongly recommend migrating your single server to a flexible server at your earliest opportunity to ensure ample time to run through the migration lifecycle, apply the benefits offered by Flexible Server, and ensure the continuity of your business.
+**A.** Azure Database for MySQL - Single Server has retired on **September 16, 2024**, so we strongly recommend migrating your single server to a flexible server before **Mar 10, 2025** to avoid any data loss.
 
 **Q. What happens to my existing Azure Database for MySQL single server instances?**
 
-**A.** Your existing Azure Database for MySQL single server workloads continues to function as before and is officially supported until the sunset date. However, no new updates are released for Single Server and we strongly advise you to start migrating to Azure Database for MySQL Flexible Server at the earliest. Post the sunset date, your Single Server instance, along with its data files, will be [force-migrated](./whats-happening-to-mysql-single-server.md#forced-migration-post-sunset-date) to an appropriate Flexible Server instance in a phased manner.
+**A.** Post **Mar 10, 2025** any remaining servers will be deleted in order to retire the platform. We strongly recommend that you migrate before Mar 10, 2025 to avoid any disruptions in business continuity.
 
 **Q. Can I choose to continue running Single Server beyond the sunset date?**
 
-**A.** Unfortunately, we don't plan to support Single Server beyond the sunset date of **September 16, 2024**, and hence we strongly advise that you start planning your migration as soon as possible. Post the sunset date, your Single Server instance, along with its data files, will be force-migrated to an appropriate Flexible Server instance in a phased manner. This might lead to limited feature availability as certain advanced functionality can't be force-migrated without customer inputs to the Flexible Server instance. Read more about steps to reconfigure such features post force-migration to minimize the potential impact [here](./whats-happening-to-mysql-single-server.md#action-required-post-forced-migration). If your server is in a region where Azure Database for MySQL - Flexible Server isn't supported, then post the sunset date, your Single Server instance is available with limited operations to access data and to be able to migrate to Flexible Server until November 15 2024.
+**A.** Unfortunately, we don't plan to support Single Server beyond the sunset date of **September 16, 2024**, and hence we strongly advise that you migrate as soon as possible. Post **Mar 10, 2025** any remaining servers will be deleted in order to retire the platform. We strongly recommend that you migrate before Mar 10, 2025 to avoid any disruptions in business continuity.
 
 **Q. My single server is deployed in a region that doesn't support flexible server. What will happen to my server post sunset date?**
 
-**A.** If your server is in a region where Azure Database for MySQL - Flexible Server isn't supported, then post the sunset date, your Single Server instance is available with limited operations to access data and to be able to migrate to Flexible Server until November 15 2024. We strongly recommend that you use one of the following options to migrate before the sunset date to avoid any disruptions in business continuity:
+**A.** If your server is in a region where Azure Database for MySQL - Flexible Server isn't supported, then post the sunset date, your Single Server instance is available with limited operations to access data and to be able to migrate to Flexible Server until Mar 10, 2025. Post **Mar 10, 2025** any remaining servers will be deleted in order to retire the platform. We strongly recommend that you use one of the following options to migrate before the sunset date to avoid any disruptions in business continuity:
 
 - Use Azure DMS to perform a cross-region migration to Flexible Server in a suitable Azure region.
 - Migrate to MySQL Server hosted on a VM in the region, if you're unable to change regions due to compliance issues.
 
 **Q. Post sunset date, will there be any data loss for my Single Server?**
 
-**A.** No, there won't be any data loss incurred for your Single Server instance. Post the sunset date, your Single Server instance, along with its data files, will be force-migrated to an appropriate Flexible Server instance. If your server is in a region where Azure Database for MySQL - Flexible Server isn't supported, then post the sunset date, your Single Server instance is available with limited operations to access data and to be able to migrate to Flexible Server in an appropriate region until November 15 2024.
+**A.** Post **Mar 10, 2025** any remaining servers will be deleted in order to retire the platform. We strongly recommend that you migrate before **Mar 10, 2025** to avoid any data loss.
 
 **Q. After the Single Server retirement announcement, what if I still need to create a new single server to meet my business needs?**
 
-**A.** As part of this retirement, we'll no longer support creating new Single Server instances from the Azure portal beginning **January 16, 2023**. Additionally, starting **March 19, 2024** you'll no longer be able to create new Azure Database for MySQL Single Server instances using Azure CLI. If you still need to create Single Server instances to meet business continuity needs, raise an Azure support ticket.
+**A.** As part of this retirement, we'll no longer support creating new Single Server instances from the Azure portal and CLI.
 
 **Q. After the Single Server retirement announcement, what if I still need to create a new read replica for my single server instance?**
 

@@ -4,7 +4,7 @@ description: Quickstart guide to create an Azure Database for PostgreSQL - Flexi
 author: gbowerman
 ms.author: guybo
 ms.reviewer: maghan
-ms.date: 05/09/2024
+ms.date: 02/14/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: tutorial
