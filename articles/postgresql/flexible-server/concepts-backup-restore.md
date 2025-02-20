@@ -188,6 +188,7 @@ On-demand backups can be taken in addition to scheduled automatic backups. These
 
 On-demand backup feature is currently not supported with the Burstable server compute tier.
 On-demand backup feature is currently not supported with the SSDv2 storage tier.
+You can take a maximum of 7 on-demand backups per flexible server, which are retained based upon the backup retention window. 
 
 #### Known Issues
 
