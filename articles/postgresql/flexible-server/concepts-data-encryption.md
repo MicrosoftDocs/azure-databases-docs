@@ -4,7 +4,7 @@ description: Learn how data encryption works in Azure Database for PostgreSQL - 
 author: techlake
 ms.author: hganten
 ms.reviewer: maghan
-ms.date: 01/09/2025
+ms.date: 02/19/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: conceptual
@@ -35,14 +35,14 @@ Data encryption with **service managed keys** for Azure Database for PostgreSQL 
 - The service automatically and fully controls data access.
 - The service automatically and fully controls your key's life cycle, including rotation of the key.
 - You don't need to worry about managing data encryption keys.
-- Data encryption based on service managed keys doesn't negatively impact the performance of your workloads.
+- Data encryption based on service managed keys doesn't negatively affect the performance of your workloads.
 - It simplifies the management of encryption keys (including their regular rotation), and the management of the identities used to access those keys.
 
 Data encryption with **customer managed keys** for Azure Database for PostgreSQL Flexible Server provides the following benefits:
 - You fully control data access. You can remove a key to make a database inaccessible.
 - You fully control a key's life cycle, including rotation of the key, to align with corporate policies.
 - You can centrally manage and organize all your encryption keys in your own instances of Azure Key Vault.
-- Data encryption based on customer managed keys doesn't negatively impact the performance of your workloads.
+- Data encryption based on customer managed keys doesn't negatively affect the performance of your workloads.
 - You can implement separation of duties between security officers, database administrators, and system administrators.
 
 ## Requirements
@@ -50,7 +50,7 @@ Data encryption with **customer managed keys** for Azure Database for PostgreSQL
 Following is the list of requirements to configure data encryption for Azure Database for PostgreSQL Flexible Server:
 
 - Key Vault and Azure Database for PostgreSQL Flexible Server must belong to the same Microsoft Entra tenant. Cross-tenant Key Vault and server interactions aren't supported. Moving the Key Vault resource afterward requires you to reconfigure the data encryption.
-- It's recommended to set the **Days to retain deleted vaults** configuration for Key Vault to 90 days. If you configured an existing Key Vault instance with a lower number, it should still be valid. However, if you wish to modify this setting and increase the value, it's necessary to create a new Key Vault instance. Once an instance is created, it isn't possible to modify this setting.
+- We recommended you to set the **Days to retain deleted vaults** configuration for Key Vault to 90 days. If you configured an existing Key Vault instance with a lower number, it should still be valid. However, if you wish to modify this setting and increase the value, it's necessary to create a new Key Vault instance. Once an instance is created, it isn't possible to modify this setting.
 - Enable the soft-delete feature in Key Vault to help you with protecting from data loss, if a key or a Key Vault instance is accidentally deleted. Key Vault retains soft-deleted resources for 90 days unless the user recovers or purges them in the meantime. The recover and purge actions have their own permissions associated with a Key Vault an RBAC role or an access policy permission. The soft-delete feature is on by default. If you have some Key Vault which was deployed long time ago, it might still have soft-delete disabled. In that case, you can turn it on using Azure CLI.
 - Enable purge protection to enforce a mandatory retention period for deleted vaults and vault objects.
 - Grant the Azure Database for PostgreSQL flexible server's user assigned managed identity access to the key by:
@@ -68,12 +68,12 @@ Following is the list of requirements to configure data encryption for Azure Dat
 ## Recommendations
 
 When you're using a customer managed key for data encryption, follow these recommendations to configure Key Vault:
-- Set a resource lock on Key Vault, to prevent accidental or unauthorized deletion of this critical resource.
+- To prevent accidental or unauthorized deletion of this critical resource, set a resource lock on Key Vault.
 - Enable auditing and reporting on all encryption keys. Key Vault provides logs that are easy to inject into other security information and event management (SIEM) tools. Azure Monitor Logs is one example of a service that's already integrated.
 - Lock down Key Vault by selecting **Disable public access** and **Allow trusted Microsoft services to bypass this firewall**.
 
 > [!NOTE]
-> After you select **Disable public access** and **Allow trusted Microsoft services to bypass this firewall**, you might get an error similar to the following when you try to use public access to administer Key Vault via the portal: "You have enabled the network access control. Only allowed networks will have access to this key vault." This error doesn't preclude the ability to provide keys during customer managed key setup or fetch keys from Key Vault during server operations.
+> After you select **Disable public access** and **Allow trusted Microsoft services to bypass this firewall**, you might get an error similar to the following when you try to use public access to administer Key Vault via the portal: "You have enabled the network access control. Only allowed networks have access to this key vault." This error doesn't preclude the ability to provide keys during customer managed key setup or fetch keys from Key Vault during server operations.
 
 - Keep a copy of the customer manged key in a secure place, or escrow it to the escrow service.
 - If Key Vault generates the key, create a key backup before you use the key for the first time. You can only restore the backup to Key Vault.
@@ -118,20 +118,24 @@ When you're creating new Azure Database for PostgreSQL flexible server instances
 
 ### Inaccessible customer managed key condition
 
-When you configure data encryption with a customer managed key stored in Key Vault, continuous access to this key is required for the server to stay online. If the server loses access to the key kept in Key Vault, the server starts denying all connections within 10 minutes. The server issues a corresponding error message and changes the server state to **Inaccessible**.
+When you configure data encryption with a customer managed key stored in Key Vault, continuous access to this key is required for the server to stay online. If that's not the case, the server changes its state to **Inaccessible** and begins denying all connections.
 
 Some of the possible reasons why the server state might become **Inaccessible** are:
-- If you rotate the key and forget to update the instance of Azure Database for PostgreSQL Flexible Server, so that it points to the new version of the key. The old key, to which the instance was pointing, eventually expires and turns the server state into **Inaccessible**. To avoid this, every time you rotate the key, make sure you also update the instance of your server to point to the new version. To do that, you can use the `az postgres flexible-server update`, following the example that describes ["Change key/identity for data encryption. Data encryption can't be enabled post server creation, this will only update the key/identity."](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-update-examples) As an alternative, you can invoke the [Servers - Update](/rest/api/postgresql/flexibleserver/servers/update) REST API of the service.
-- If you delete the Key Vault instance, the Azure Database for PostgreSQL flexible server instance can't access the key and moves to an **Inaccessible** state. To make the server **Available**, [recover the Key Vault instance](/azure/key-vault/general/key-vault-recovery) and revalidate the data encryption.
-- If you delete the key from Key Vault, the Azure Database for PostgreSQL flexible server instance can't access the key and moves to an **Inaccessible** state. To make the server **Available**, [recover the key](/azure/key-vault/general/key-vault-recovery) and revalidate the data encryption.
-- If you delete, from Microsoft Entra ID, a [managed identity](/azure/active-directory/managed-identities-azure-resources/how-manage-user-assigned-managed-identities) that's used to retrieve a key from Key Vault,  or by delete Azure RBAC role assignment with the role [Key Vault Crypto Service Encryption User](/azure/key-vault/general/rbac-guide#azure-built-in-roles-for-key-vault-data-plane-operations). the Azure Database for PostgreSQL flexible server instance can't access the key and moves to an **Inaccessible** state. To make the server **Available**, [recover the identity](/azure/active-directory/fundamentals/recover-from-deletions) and revalidate data encryption.
-- If you revoke the Key Vault **list**, **get**, **wrapKey**, and **unwrapKey** access policies from the [managed identity](/azure/active-directory/managed-identities-azure-resources/how-manage-user-assigned-managed-identities) that's used to retrieve a key from Key Vault, the Azure Database for PostgreSQL flexible server instance can't access the key and moves to an **Inaccessible** state. [Add required access policies](/azure/key-vault/general/assign-access-policy) to the identity in Key Vault.
-- If you set up overly restrictive Key Vault firewall rules, Azure Database for PostgreSQL Flexible Server can't communicate with Key Vault to retrieve keys. When you configure a Key Vault firewall, be sure to select the option to allow [trusted Microsoft services](/azure/key-vault/general/overview-vnet-service-endpoints#trusted-services) to bypass the firewall.
+
+| Cause | Resolution |
+| --- | --- |
+| Any of the encryption keys pointed by the server had an expiry date and time configured, and that date and time is reached. | You must extend the expiry date of the key. Then you must wait for the service to revalidate the key and automatically transition the server state to **Ready**. Only when the server is back on **Ready** state you can rotate the key to a newer version or create a new key, and update the server so that it refers to that new version of the same key or to the new key.|
+| You rotate the key and forget to update the instance of Azure Database for PostgreSQL Flexible Server so that it points to the new version of the key. The old key, to which the server is pointing, expires and turns the server state into **Inaccessible**. | To avoid this situation, every time you rotate the key, make sure you also update the instance of your server to point to the new version. To do that, you can use the `az postgres flexible-server update`, following the example that describes ["Change key/identity for data encryption. Data encryption can't be enabled post server creation, this will only update the key/identity."](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-update-examples). If you prefer to update it using the API, you can invoke the [Servers - Update](/rest/api/postgresql/flexibleserver/servers/update) endpoint of the service. |
+| You delete the Key Vault instance, the Azure Database for PostgreSQL flexible server instance can't access the key and moves to an **Inaccessible** state. | [Recover the Key Vault instance](/azure/key-vault/general/key-vault-recovery) and wait for the service to run the periodical revalidation of the key, and automatically transition the server state to **Ready**. |
+| You delete, from Microsoft Entra ID, a [managed identity](/azure/active-directory/managed-identities-azure-resources/how-manage-user-assigned-managed-identities) that's used to retrieve any of the encryption keys stored in Key Vault. | [Recover the identity](/azure/active-directory/fundamentals/recover-from-deletions) and wait for the service to run the periodical revalidation of the key, and automatically transition the server state to **Ready**. |
+| Your Key Vault permission model is configured to use role-based access control. You remove the [Key Vault Crypto Service Encryption User](/azure/key-vault/general/rbac-guide#azure-built-in-roles-for-key-vault-data-plane-operations) RBAC role assignment from the [managed identities](/azure/active-directory/managed-identities-azure-resources/how-manage-user-assigned-managed-identities) that are configured to retrieve any of the keys.  | Grant the RBAC role again to the [managed identity](/azure/active-directory/managed-identities-azure-resources/how-manage-user-assigned-managed-identities) and wait for the service to run the periodical revalidation of the key, and automatically transition the server state to **Ready**. An alternative approach consists on granting the role on the Key Vault to a different [managed identity](/azure/active-directory/managed-identities-azure-resources/how-manage-user-assigned-managed-identities), and update the server so that it uses this other [managed identity](/azure/active-directory/managed-identities-azure-resources/how-manage-user-assigned-managed-identities) to access the key. |
+| Your Key Vault permission model is configured to use access policies. You revoke the **list**, **get**, **wrapKey**, or **unwrapKey** access policies from the managed  the [Key Vault Crypto Service Encryption User](/azure/key-vault/general/rbac-guide#azure-built-in-roles-for-key-vault-data-plane-operations) RBAC role assignment from the [managed identities](/azure/active-directory/managed-identities-azure-resources/how-manage-user-assigned-managed-identities) that are configured to retrieve any of the keys.  | Grant the RBAC role again to the managed identity and wait for the service to run the periodical revalidation of the key, and automatically transition the server state to **Ready**. An alternative approach consists on granting the required access policies on the Key Vault to a different managed identity, and update the server so that it uses this other managed identity to access the key. |
+| You set up overly restrictive Key Vault firewall rules, so that your Azure Database for PostgreSQL flexible server can't communicate with the Key Vault to retrieve your keys. | When you configure a Key Vault firewall, make sure that you select the option to allow [trusted Microsoft services](/azure/key-vault/general/overview-vnet-service-endpoints#trusted-services) so that your Azure Database for PostgreSQL flexible server can bypass the firewall. |
 
 > [!NOTE]
-> When a key is disabled, deleted, expired, or not reachable, a server that has data encrypted through that key becomes **Inaccessible**, as stated earlier. The server doesn't become available until you re-enable the key or assign a new key.
+> When a key is disabled, deleted, expired, or not reachable, a server that has data encrypted with that key becomes **Inaccessible**, as stated earlier. The server state doesn't change to **Ready** again until it can revalidate the encryption keys.
 >
-> Generally, a server becomes **Inaccessible** within 60 minutes after a key is disabled, deleted, expired, or not reachable. After the key becomes available, the server might take up to 60 minutes to become **Accessible** again.
+> Generally, a server becomes **Inaccessible** within 60 minutes after a key is disabled, deleted, expired, or not reachable. After the key becomes available, the server might take up to 60 minutes to become **Ready** again.
 
 ### Recovering from managed identity deletion 
 
