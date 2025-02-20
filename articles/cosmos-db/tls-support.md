@@ -13,7 +13,7 @@ ms.date: 9/23/2024
 
 [!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
-Azure Cosmos DB will enable TLS 1.3 support on public endpoints across its platform globally to align with security best practices by **October 10, 2024**. [**Starting August 31, 2025, we are officially deprecating TLS 1.0/1.1.**](https://azure.microsoft.com/updates?id=update-retirement-tls1-0-tls1-1-versions-azure-services). Only TLS 1.2 or higher is supported. This article provides extra guidance on how to prepare for the upcoming support of TLS 1.3 for Azure Cosmos DB. 
+Azure Cosmos DB will enable TLS 1.3 support on public endpoints across its platform globally to align with security best practices. [**Starting August 31, 2025, we are officially deprecating TLS 1.0/1.1.**](https://azure.microsoft.com/updates?id=update-retirement-tls1-0-tls1-1-versions-azure-services). Only TLS 1.2 or higher is supported. This article provides extra guidance on how to prepare for the upcoming support of TLS 1.3 for Azure Cosmos DB. 
 
 TLS 1.3 introduces substantial enhancements compared to its predecessors. TLS 1.3 improvements focus on both performance and security, featuring faster handshakes and a streamlined set of more secure cipher suites, namely TLS_AES_256_GCM_SHA384 and TLS_AES_128_GCM_SHA256. Notably, TLS 1.3 prioritizes Perfect Forward Secrecy (PFS) by eliminating key exchange algorithms that don't support it.  
 
