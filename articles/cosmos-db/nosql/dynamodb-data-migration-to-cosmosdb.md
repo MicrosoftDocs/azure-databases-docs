@@ -33,7 +33,7 @@ There are various migration strategies available; two frequently utilized techni
 > [!TIP]
 > You could also follow an approach where data is migrated in bulk using an offline process and then switch to an online mode. This might be suitable if you have a need to (temporarily) continue using DynamoDB in parallel with Azure Cosmos DB and want the data to be synchronized in real-time.
 
-### Overview of other offline migration approaches
+### Offline migration approaches
 
 The approach followed in this article is just one of the many ways to migrate data from DynamoDB to Azure Cosmos DB, and it has its own set of pros and cons. Here is a (non-exhaustive) list of options:
 
@@ -43,7 +43,7 @@ The approach followed in this article is just one of the many ways to migrate da
 | **Export from DynamoDB to S3, use ADF to read from S3 and write to Azure Cosmos DB** | Low/No-code approach (Spark skillset not required). Suitable for simple data transformations. | Complex transformation maybe difficult to implement. |
 | **Use Spark on Azure Databricks to read from DynamoDB and write to Azure Cosmos DB** | Fit for small datasets - direct processing avoids extra storage costs. Supports complex transformations (Spark). | Higher cost on DynamoDB side due to RCU consumption (S3 export not used). Requires knowledge of Spark (learning curve). |
 
-### Overview of online migration approaches
+### Online migration approaches
 
 Online migration generally use a Change-Data-Capture (CDC) mechanism to stream data changes from DynamoDB. These often tend to be real-time (or near real-time), and you will need to build another component to process the streaming data and write it to Azure Cosmos DB. Here is a (non-exhaustive) list of options:
 
@@ -66,7 +66,7 @@ This section covers how to use Azure Data Factory, Azure Data Lake Storage, and 
 2. The DynamoDB table data in S3 is written to Azure Data Lake Storage (ADLS Gen v2) using an Azure Data Factory pipeline.
 3. Finally, data in Azure storage is processed using Spark on Azure Databricks and written to Azure Cosmos DB.
 
-## Prerequisites
+### Prerequisites
 
 Before you proceed, make sure you complete the following:
 
@@ -77,13 +77,13 @@ Before you proceed, make sure you complete the following:
 > [!TIP]
 > If you're looking to try this out in a new DynamoDB table, you can use this [data loader utility](https://github.com/AzureCosmosDB/migration-dynamodb-to-cosmosdb-nosql/tree/main/data_loader) to populate your table with sample data.
 
-## Step 1: Export data from DynamoDB to Amazon S3
+### Step 1: Export data from DynamoDB to Amazon S3
 
 DynamoDB S3 export is a built-in solution for exporting DynamoDB data to an Amazon S3 bucket. Follow the [DynamoDB documentation](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/S3DataExport_Requesting.html) for steps on how to execute this process, including setting up necessary S3 permissions, etc. DynamoDB supports DynamoDB JSON and Amazon Ion as the file formats for exported data. 
 
 Once data is exported to a S3 bucket, proceed to the next step.
 
-## Step 2: Use Azure Data Factory to transfer S3 data into Azure Storage
+### Step 2: Use Azure Data Factory to transfer S3 data into Azure Storage
 
 Clone the GitHub repository to your local machine. It contains the Azure Data Factory pipeline template and the Spark notebook used later on in this article.
 
@@ -143,7 +143,7 @@ Verify that a new container was created along with the contents of S3 bucket.
 :::image type="content" source="./media/migrate-data-dynamodb-to-cosmosdb/container-created.png" alt-text="Storage container created" lightbox="./media/migrate-data-dynamodb-to-cosmosdb/container-created.png":::
 
 
-## Step 3: Import ADLS data into Azure Cosmos DB using Spark on Azure Databricks
+### Step 3: Import ADLS data into Azure Cosmos DB using Spark on Azure Databricks
 
 This section covers how to use the [Azure Cosmos DB Spark connector](https://github.com/Azure/azure-cosmosdb-spark) to write data in Azure Cosmos DB. Azure Cosmos DB OLTP Spark connector provides Apache Spark support for Azure Cosmos DB NoSQL API. It allows you to read from and write to Azure Cosmos DB via Apache Spark DataFrames in Python and Scala.
 
@@ -157,7 +157,7 @@ Once the Databricks workspace is created, [follow the documentation](https://lea
 
 The GitHub repository [contains a notebook](https://github.com/AzureCosmosDB/migration-dynamodb-to-cosmosdb-nosql/blob/main/migration.ipynb) (`migration.ipynb`) with the Spark code to read data from ADLS and write it to Azure Cosmos DB. [Import the notebook](https://learn.microsoft.com/azure/databricks/notebooks/notebook-export-import#import-a-notebook) into your Databricks workspace.
 
-### Configure Microsoft Entra ID authentication
+#### Configure Microsoft Entra ID authentication
 
 Use [OAuth 2.0 credentials with Microsoft Entra ID service principals](https://learn.microsoft.com/azure/databricks/connect/storage/azure-storage#connect-to-azure-data-lake-storage-gen2-or-blob-storage-using-azure-credentials) to connect to Azure storage from Azure Databricks. Follow the [steps in the documentation](https://learn.microsoft.com/azure/databricks/connect/storage/aad-storage-service-principal) to complete these steps:
 
@@ -201,9 +201,9 @@ Follow these steps to configure Microsoft Entra ID authentication for Azure Cosm
     az cosmosdb sql role assignment create --resource-group <enter resource group name> --account-name <enter cosmosdb account name> --scope "/" --principal-id $SP_ID --role-definition-id <enter role definition ID> --scope "/"
     ```
 
-### Execute the steps in the notebook
+#### Execute steps in the notebook
 
-The first two steps install required dependencies:
+Run the first two steps to install required dependencies:
 
 ```bash
 pip install azure-cosmos azure-mgmt-cosmosdb azure.mgmt.authorization
