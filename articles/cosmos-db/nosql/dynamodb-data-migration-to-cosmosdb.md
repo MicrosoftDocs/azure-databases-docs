@@ -10,6 +10,8 @@ ms.topic: how-to
 ms.date: 02/21/2025
 ---
 
+# Data migration from DynamoDB to Azure Cosmos DB for NoSQL
+
 [!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
 
 ## Introduction
@@ -35,7 +37,8 @@ There are various migration strategies available; two frequently utilized techni
 
 This section covers how to use Azure Data Factory, Azure Data Lake Storage, and Spark on Azure Databricks for data migration.
 
-![Solution overview](images/architecture.png)
+:::image type="content" source="./media/migrate-data-dynamodb-to-cosmosdb/architecture.png" alt-text="Solution overview" lightbox="./media/migrate-data-dynamodb-to-cosmosdb/architecture.png":::
+
 
 1. First, data from DynamoDB table is exported to S3 (in DynamoDB JSON format) using native DynamoDB export capability.
 2. The DynamoDB table data in S3 is written to Azure Data Lake Storage using an Azure Data Factory pipeline. Azure Data Lake Storage is a cloud-based, enterprise data lake solution built on Azure Blob Storage. Azure Data Lake Storage Gen2 is a configurable capability of a StorageV2 (General Purpose V2) Azure Storage which can be enabled by selecting the option to Enable hierarchical namespace when creating the Azure storage account. Azure Data Factory is a managed cloud service built for complex hybrid extract-transform-load (ETL), extract-load-transform (ELT), and data integration projects. 
@@ -45,8 +48,8 @@ This section covers how to use Azure Data Factory, Azure Data Lake Storage, and 
 
 Before you proceed, make sure you complete the following:
 
-- [Create a storage account](https://learn.microsoft.com/en-us/azure/storage/common/storage-account-create?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&bc=%2Fazure%2Fstorage%2Fblobs%2Fbreadcrumb%2Ftoc.json&tabs=azure-portal) of type *Standard general-purpose v2*. 
-- [Create an Azure data factory](https://learn.microsoft.com/en-us/azure/data-factory/quickstart-create-data-factory)
+- [Create a storage account](https://learn.microsoft.com/azure/storage/common/storage-account-create?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&bc=%2Fazure%2Fstorage%2Fblobs%2Fbreadcrumb%2Ftoc.json&tabs=azure-portal) of type *Standard general-purpose v2*. 
+- [Create an Azure data factory](https://learn.microsoft.com/azure/data-factory/quickstart-create-data-factory)
 
 You should also have an Amazon Web Services (AWS) account and Amazon DynamoDB tables to migrate data from.
 
@@ -69,29 +72,34 @@ git clone https://github.com/AzureCosmosDB/migration-dynamodb-to-cosmosdb-nosql
 
 In the Azure portal, navigate to the Azure data factory created earlier, select **Launch Studio** to open Azure Data Factory Studio, and complete the following steps:
 
-1. Create an [Azure Data Factory linked service for Amazon S3](https://learn.microsoft.com/en-us/azure/data-factory/connector-amazon-simple-storage-service?tabs=data-factory#create-an-amazon-simple-storage-service-s3-linked-service-using-ui). Enter the details for the S3 bucket to which you exported table data earlier. 
-1. Next, create an [Azure Data Lake Storage (ADLS) Gen2 linked service](https://learn.microsoft.com/en-us/azure/data-factory/connector-azure-data-lake-storage?tabs=data-factory#create-an-azure-data-lake-storage-gen2-linked-service-using-ui). Enter the details for the storage account created earlier.
+1. Create an [Azure Data Factory linked service for Amazon S3](https://learn.microsoft.com/azure/data-factory/connector-amazon-simple-storage-service?tabs=data-factory#create-an-amazon-simple-storage-service-s3-linked-service-using-ui). Enter the details for the S3 bucket to which you exported table data earlier. 
+2. Next, create an [Azure Data Lake Storage (ADLS) Gen2 linked service](https://learn.microsoft.com/azure/data-factory/connector-azure-data-lake-storage?tabs=data-factory#create-an-azure-data-lake-storage-gen2-linked-service-using-ui). Enter the details for the storage account created earlier.
 
-![Create linked services](images/linked-services.png)
+:::image type="content" source="./media/migrate-data-dynamodb-to-cosmosdb/linked-services.png" alt-text="Linked services" lightbox="./media/migrate-data-dynamodb-to-cosmosdb/linked-services.png":::
 
-Use the [Azure portal to create a new pipeline](https://learn.microsoft.com/en-us/azure/data-factory/concepts-pipelines-activities?tabs=data-factory#creating-a-pipeline-with-ui). A Data Factory pipeline is a logical grouping of activities that together perform a task. 
+
+Use the [Azure portal to create a new pipeline](https://learn.microsoft.com/azure/data-factory/concepts-pipelines-activities?tabs=data-factory#creating-a-pipeline-with-ui). A Data Factory pipeline is a logical grouping of activities that together perform a task. 
 
 1. Navigate to the **Author** tab in Data Factory Studio, then select the plus sign and choose **Pipeline** from the menu. 
-1. From the submenu, choose **Import from pipeline template** and use the template file (*S3ToADLSGen2.zip*) that you cloned from the GitHub repository.
+2. From the submenu, choose **Import from pipeline template** and use the template file (*S3ToADLSGen2.zip*) that you cloned from the GitHub repository.
 
-![Import pipeline](images/pipeline-import.png)
+:::image type="content" source="./media/migrate-data-dynamodb-to-cosmosdb/pipeline-import.png" alt-text="Import pipeline" lightbox="./media/migrate-data-dynamodb-to-cosmosdb/pipeline-import.png":::
+
 
 In the configuration, select the linked services that you created for Amazon S3 and ADLS Gen2, and choose **Use this template** to create the pipeline.
 
-![Select linked services](images/use-linked-services.png)
+:::image type="content" source="./media/migrate-data-dynamodb-to-cosmosdb/use-linked-services.png" alt-text="Use linked services" lightbox="./media/migrate-data-dynamodb-to-cosmosdb/use-linked-services.png":::
+
 
 Select the pipeline, navigate to **Source**, and edit the source (Amazon S3) dataset.
 
-![Edit source dataset](images/edit-source-dataset.png)
+:::image type="content" source="./media/migrate-data-dynamodb-to-cosmosdb/edit-source-dataset.png" alt-text="Edit source dataset" lightbox="./media/migrate-data-dynamodb-to-cosmosdb/edit-source-dataset.png":::
+
 
 In **File path**, enter the path to the exported files in your Amazon S3 bucket.
 
-![Edit source dataset S3 bucket path](images/edit-source-dataset-2.png)
+:::image type="content" source="./media/migrate-data-dynamodb-to-cosmosdb/edit-source-dataset-2.png" alt-text="Edit source dataset" lightbox="./media/migrate-data-dynamodb-to-cosmosdb/edit-source-dataset-2.png":::
+
 
 > [!IMPORTANT]
 > You can also edit the sink dataset to update the name of the storage container in which the data from S3 will be stored. If not, the container is named `s3datacopy` by default.
@@ -101,36 +109,41 @@ Once the changes are complete, choose **Publish all** to publish the pipeline. T
 1. Choose the pipeline, select **Add trigger** at the top of the pipeline editor
 2. Select **Trigger now**, and choose **Ok**. 
 
-![Trigger pipeline manually](images/pipeline-trigger.png)
+:::image type="content" source="./media/migrate-data-dynamodb-to-cosmosdb/pipeline-trigger.png" alt-text="Trigger pipeline manually" lightbox="./media/migrate-data-dynamodb-to-cosmosdb/pipeline-trigger.png":::
 
-As the pipeline continues to execute, [you can monitor it](https://learn.microsoft.com/en-us/azure/data-factory/monitor-visually#monitor-pipeline-runs). Once it completes successfully, check the list of containers in the Azure Storage account created earlier.
 
-![Monitor pipeline](images/pipeline-run.png)
+As the pipeline continues to execute, [you can monitor it](https://learn.microsoft.com/azure/data-factory/monitor-visually#monitor-pipeline-runs). Once it completes successfully, check the list of containers in the Azure Storage account created earlier.
+
+:::image type="content" source="./media/migrate-data-dynamodb-to-cosmosdb/pipeline-run.png" alt-text="Monitor pipeline run" lightbox="./media/migrate-data-dynamodb-to-cosmosdb/pipeline-run.png":::
+
 
 Verify that a new container was created along with the contents of S3 bucket.
 
-![Verify storage container](images/container-created.png)
+:::image type="content" source="./media/migrate-data-dynamodb-to-cosmosdb/container-created.png" alt-text="Storage container created" lightbox="./media/migrate-data-dynamodb-to-cosmosdb/container-created.png":::
+
 
 ## Step 3: Import ADLS data into Azure Cosmos DB using Spark on Azure Databricks
 
 This section covers how to use the [Azure Cosmos DB Spark connector](https://github.com/Azure/azure-cosmosdb-spark) to write data in Azure Cosmos DB. Azure Cosmos DB OLTP Spark connector provides Apache Spark support for Azure Cosmos DB NoSQL API. It allows you to read from and write to Azure Cosmos DB via Apache Spark DataFrames in Python and Scala.
 
-Start by creating an [Azure Databricks workspace](https://learn.microsoft.com/en-us/azure/databricks/getting-started/free-trial#portal). To do that, review the compatibility matrix in terms of versions of various components including the Azure Cosmos DB Spark connector, Apache Spark, JVM, Scala, and Databricks Runtime. Refer to [this documentation](https://github.com/Azure/azure-sdk-for-java/tree/main/sdk/cosmos/azure-cosmos-spark_3-5_2-12#version-compatibility) for an exhaustive list.
+Start by creating an [Azure Databricks workspace](https://learn.microsoft.com/azure/databricks/getting-started/free-trial#portal). To do that, review the compatibility matrix in terms of versions of various components including the Azure Cosmos DB Spark connector, Apache Spark, JVM, Scala, and Databricks Runtime. Refer to [this documentation](https://github.com/Azure/azure-sdk-for-java/tree/main/sdk/cosmos/azure-cosmos-spark_3-5_2-12#version-compatibility) for an exhaustive list.
 
-![Databricks version](images/databricks-spark-version.png)
+:::image type="content" source="./media/migrate-data-dynamodb-to-cosmosdb/databricks-spark-version.png" alt-text="Databricks version" lightbox="./media/migrate-data-dynamodb-to-cosmosdb/databricks-spark-version.png":::
 
-Once the Databricks workspace is created, [follow the documentation](https://learn.microsoft.com/en-us/azure/databricks/libraries/package-repositories#maven-libraries) to install the appropriate connector version. The rest of the steps in this article work with the connector version `4.36.0` with Spark `3.5.0` on Databricks `15.4` (with Scala `2.12`). Here are the  Maven coordinates of the connector – [com.azure.cosmos.spark:azure-cosmos-spark_3-5_2-12:4.36.0](https://central.sonatype.com/artifact/com.azure.cosmos.spark/azure-cosmos-spark_3-5_2-12/4.36.0)
 
-![Spark connector for Azure Cosmos DB NoSQL](images/spark-connector-maven-pkg.png)
+Once the Databricks workspace is created, [follow the documentation](https://learn.microsoft.com/azure/databricks/libraries/package-repositories#maven-libraries) to install the appropriate connector version. The rest of the steps in this article work with the connector version `4.36.0` with Spark `3.5.0` on Databricks `15.4` (with Scala `2.12`). Here are the  Maven coordinates of the connector – [com.azure.cosmos.spark:azure-cosmos-spark_3-5_2-12:4.36.0](https://central.sonatype.com/artifact/com.azure.cosmos.spark/azure-cosmos-spark_3-5_2-12/4.36.0)
 
-The GitHub repository [contains a notebook](https://github.com/AzureCosmosDB/migration-dynamodb-to-cosmosdb-nosql/blob/main/migration.ipynb) (`migration.ipynb`) with the Spark code to read data from ADLS and write it to Azure Cosmos DB. [Import the notebook](https://learn.microsoft.com/en-us/azure/databricks/notebooks/notebook-export-import#import-a-notebook) into your Databricks workspace.
+:::image type="content" source="./media/migrate-data-dynamodb-to-cosmosdb/spark-connector-maven-pkg.png" alt-text="Spark connector version" lightbox="./media/migrate-data-dynamodb-to-cosmosdb/spark-connector-maven-pkg.png":::
+
+
+The GitHub repository [contains a notebook](https://github.com/AzureCosmosDB/migration-dynamodb-to-cosmosdb-nosql/blob/main/migration.ipynb) (`migration.ipynb`) with the Spark code to read data from ADLS and write it to Azure Cosmos DB. [Import the notebook](https://learn.microsoft.com/azure/databricks/notebooks/notebook-export-import#import-a-notebook) into your Databricks workspace.
 
 ### Configure authentication
 
-Use [OAuth 2.0 credentials with Microsoft Entra ID service principals](https://learn.microsoft.com/en-us/azure/databricks/connect/storage/azure-storage#connect-to-azure-data-lake-storage-gen2-or-blob-storage-using-azure-credentials) to connect to Azure storage from Azure Databricks. Follow the [steps in the documentation](https://learn.microsoft.com/en-us/azure/databricks/connect/storage/aad-storage-service-principal) to complete these steps:
+Use [OAuth 2.0 credentials with Microsoft Entra ID service principals](https://learn.microsoft.com/azure/databricks/connect/storage/azure-storage#connect-to-azure-data-lake-storage-gen2-or-blob-storage-using-azure-credentials) to connect to Azure storage from Azure Databricks. Follow the [steps in the documentation](https://learn.microsoft.com/azure/databricks/connect/storage/aad-storage-service-principal) to complete these steps:
 
 1. Register a Microsoft Entra ID application, and create a new client secret. This is a one-time step. As part of the process, note the client ID, client secret, and tenant ID as these will be used in subsequent steps. 
-1. In your Azure Storage account, under **Access control (IAM)**, assign the `Storage Blob Data Reader` role to the Microsoft Entra ID application you had created.
+2. In your Azure Storage account, under **Access control (IAM)**, assign the `Storage Blob Data Reader` role to the Microsoft Entra ID application you had created.
 
 Follow these steps to configure Microsoft Entra ID authentication for Azure Cosmos DB:
 
@@ -139,7 +152,7 @@ Follow these steps to configure Microsoft Entra ID authentication for Azure Cosm
 1. Use the Azure CLI to create the Azure Cosmos DB role definition and get the role definition ID
 
 > [!TIP]
-> If you don’t have the [Azure CLI setup](https://learn.microsoft.com/en-us/cli/azure/get-started-with-azure-cli), you can choose to use [Azure Cloud Shell](https://learn.microsoft.com/en-us/azure/cloud-shell/get-started/classic?tabs=azurecli) directly from the Azure portal instead. 
+> If you don’t have the [Azure CLI setup](https://learn.microsoft.com/cli/azure/get-started-with-azure-cli), you can choose to use [Azure Cloud Shell](https://learn.microsoft.com/azure/cloud-shell/get-started/classic?tabs=azurecli) directly from the Azure portal instead. 
 
 ```azurecli
 az cosmosdb sql role definition create --resource-group "<resource-group-name>" --account-name "<account-name>" --body '{
@@ -160,7 +173,7 @@ az cosmosdb sql role definition create --resource-group "<resource-group-name>" 
 az cosmosdb sql role definition list --resource-group "<resource-group-name>" --account-name "<account-name>"
 ```
 
-1. Once you have created the role definition and obtained the role definition ID, use the following command to [get service principal ID associated with the Microsoft Entra ID application](https://learn.microsoft.com/en-us/entra/identity-platform/app-objects-and-service-principals?tabs=azure-cli#list-service-principals-associated-with-an-app). Replace `AppId` with client ID of the Microsoft Entra ID application:
+1. Once you have created the role definition and obtained the role definition ID, use the following command to [get service principal ID associated with the Microsoft Entra ID application](https://learn.microsoft.com/entra/identity-platform/app-objects-and-service-principals?tabs=azure-cli#list-service-principals-associated-with-an-app). Replace `AppId` with client ID of the Microsoft Entra ID application:
 
 ```azurecli
 SP_ID=$(az ad sp list --filter "appId eq '{AppId}'" | jq -r '.[0].id')
