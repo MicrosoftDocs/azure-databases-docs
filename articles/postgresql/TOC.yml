@@ -150,7 +150,7 @@
       href: flexible-server/concepts-maintenance.md
     - name: Connection pooling (PgBouncer)
       href: flexible-server/concepts-pgbouncer.md
-    - name: Extensions
+    - name: Extensions and modules
       items:
       - name: Overview
         href: extensions/concepts-extensions.md
@@ -474,7 +474,7 @@
           href: flexible-server/how-to-server-parameters-revert-all-default.md
       - name: Major version upgrade
         href: flexible-server/how-to-perform-major-version-upgrade.md
-    - name: Extensions
+    - name: Extensions and modules
       items:
       - name: Allow extensions
         href: extensions/how-to-allow-extensions.md

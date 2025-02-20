@@ -1165,4 +1165,4 @@ The following example shows the export of data from a table called `events`, to 
 ## Related content
 
 - [Import and export data using Azure Storage in Azure Database for PostgreSQL - Flexible Server](concepts-storage-extension.md).
-- [Manage PostgreSQL extensions in Azure Database for PostgreSQL - Flexible Server](../extensions/how-to-allow-extensions.md).
+- [Extensions and modules](../extensions/concepts-extensions.md).

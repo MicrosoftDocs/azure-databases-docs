@@ -1,10 +1,10 @@
 ---
-title: Load Libraries
+title: Load libraries
 description: This article describes how to load libraries in an Azure Database for PostgreSQL flexible server.
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 02/07/2025
+ms.date: 02/17/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: how-to
@@ -51,8 +51,7 @@ az postgres flexible-server restart --resource-group <resource_group> --name <se
 
 ## Related content
 
-- [Allow extensions](how-to-allow-extensions.md)
-- [Create extensions](how-to-create-extensions.md)
-- [Drop extensions](how-to-drop-extensions.md)
-- [Update extensions](how-to-update-extensions.md)
-- [View installed extensions](how-to-view-installed-extensions.md)
+- [Extensions and modules](concepts-extensions.md)
+- [Special considerations with extensions and modules](concepts-extensions-considerations.md)
+- [List of extensions and modules by name](concepts-extensions-versions.md)
+- [List of extensions and modules by version of PostgreSQL](concepts-extensions-by-engine.md)
