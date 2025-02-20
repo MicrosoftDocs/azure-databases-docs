@@ -186,9 +186,9 @@ On-demand backups can be taken in addition to scheduled automatic backups. These
 
 #### Limitations
 
-On-demand backup feature is currently not supported with the Burstable server compute tier.
-On-demand backup feature is currently not supported with the SSDv2 storage tier.
-You can take a maximum of 7 on-demand backups per flexible server, which are retained based upon the backup retention window. 
+- On-demand backup feature is currently not supported with the Burstable server compute tier.
+- On-demand backup feature is currently not supported with the SSDv2 storage tier.
+- You can take a maximum of 7 on-demand backups per flexible server, which are retained based upon the backup retention window. 
 
 #### Known Issues
 
@@ -203,7 +203,7 @@ Azure Backup and Azure Database for PostgreSQL flexible server services have bui
 - Backups are stored in separate security and fault domains. If the source server or subscription is compromised, the backups remain safe in the Backup vault (in Azure Backup managed storage accounts).
 - Using pg_dump allows greater flexibility in restoring data across different database versions.
 -	Azure backup vaults support immutability and soft delete (preview) features, protecting your data.
--	LTR backup support for CMK-enabled servers
+-	LTR backup support for CMK-enabled servers.
 
 #### Limitations and considerations
 
