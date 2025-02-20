@@ -50,7 +50,7 @@ Online migration generally use a Change-Data-Capture (CDC) mechanism to stream d
 | Scenario | Pros | Cons |
 |----------|------|------|
 | **DynamoDB Streams to AWS Lambda, write to Azure Cosmos DB** | DynamoDB Streams provides ordering guarantee. Event-driven processing. Suitable for simple data transformations. | DynamoDB Streams data retention for 24 hours. Need to write custom logic (Lambda function). |
-| **Kinesis Data Streams, process using Kinesis or Flink, write to Azure Cosmos DB** | Supports complex data transformations (windowing/aggregation via Flink), better control over processing. Retention is flexible (from 24 hours, extendable to 365 days) | No ordering guarantee. Need to write custom logic (Flink job, Kinesis data stream consumer). Requires stream processing expertise |
+| **Kinesis Data Streams, process using Kinesis or Flink, write to Azure Cosmos DB** | Supports complex data transformations (windowing/aggregation with Flink), better control over processing. Retention is flexible (from 24 hours, extendable to 365 days) | No ordering guarantee. Need to write custom logic (Flink job, Kinesis data stream consumer). Requires stream processing expertise |
 
 > [!IMPORTANT]
 > It is recommended that you thoroughly evaluate and test the options using a pilot or proof-of-concept phase before actual migration. This will help assess complexity, feasibility, and fine tune your migration plan.
