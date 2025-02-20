@@ -27,11 +27,33 @@ Application migration includes refactoring your application to use Azure Cosmos 
 
 There are various migration strategies available; two frequently utilized techniques are *offline* and *online* migration. The selection should be based on your specific requirements. It's also possible to implement either one independently or employ a combination of both approaches.
 
-1. **Online migration**: Choose this approach if your applications can't tolerate downtime and real-time data migration is required. Refer to the section [Overview of other offline migration approaches](#overview-of-other-offline-migration-approaches) for options.
-2. **Offline migration**: If your application can be temporarily stopped during a maintenance window, data migration can be performed in offline mode by exporting the data from DynamoDB to an intermediate location, and then importing it into Azure Cosmos DB. There are several options for this approach. This article covers one such method. Refer to the section [Overview of online migration approaches](#overview-of-online-migration-approaches) for a list of alternatives.
+1. **Online migration**: Choose this approach if your applications can't tolerate downtime and real-time data migration is required.
+2. **Offline migration**: If your application can be temporarily stopped during a maintenance window, data migration can be performed in offline mode by exporting the data from DynamoDB to an intermediate location, and then importing it into Azure Cosmos DB. There are several options for this approach. This article covers one such method.
 
 > [!TIP]
 > You could also follow an approach where data is migrated in bulk using an offline process and then switch to an online mode. This might be suitable if you have a need to (temporarily) continue using DynamoDB in parallel with Azure Cosmos DB and want the data to be synchronized in real-time.
+
+### Overview of other offline migration approaches
+
+The approach followed in this article is just one of the many ways to migrate data from DynamoDB to Azure Cosmos DB, and it has its own set of pros and cons. Here is a (non-exhaustive) list of options:
+
+| Scenario | Pros | Cons |
+|----------|------|------|
+| **Export from DynamoDB (to S3), load to ADLS (using ADF), write to Azure Cosmos DB (using Spark on Azure Databricks)** | Fit for large datasets since it decouples storage and processing. Spark provides scalability and flexibility (add-on data transformations, processing) | Multi-stage process increases complexity, and overall latency. Requires knowledge of Spark (learning curve). |
+| **Export from DynamoDB to S3, use ADF to read from S3 and write to Azure Cosmos DB** | Low/No-code approach (Spark skillset not required). Suitable for simple data transformations. | Complex transformation maybe difficult to implement. |
+| **Use Spark on Azure Databricks to read from DynamoDB and write to Azure Cosmos DB** | Fit for small datasets - direct processing avoids extra storage costs. Supports complex transformations (Spark). | Higher cost on DynamoDB side due to RCU consumption (S3 export not used). Requires knowledge of Spark (learning curve). |
+
+### Overview of online migration approaches
+
+Online migration generally use a Change-Data-Capture (CDC) mechanism to stream data changes from DynamoDB. These often tend to be real-time (or near real-time), and you will need to build another component to process the streaming data and write it to Azure Cosmos DB. Here is a (non-exhaustive) list of options:
+
+| Scenario | Pros | Cons |
+|----------|------|------|
+| **DynamoDB Streams to AWS Lambda, write to Azure Cosmos DB** | DynamoDB Streams provides ordering guarantee. Event-driven processing. Suitable for simple data transformations. | DynamoDB Streams data retention for 24 hours. Need to write custom logic (Lambda function). |
+| **Kinesis Data Streams, process using Kinesis or Flink, write to Azure Cosmos DB** | Supports complex data transformations (windowing/aggregation via Flink), better control over processing. Retention is flexible (from 24 hours, extendable to 365 days) | No ordering guarantee. Need to write custom logic (Flink job, Kinesis data stream consumer). Requires stream processing expertise |
+
+> [!IMPORTANT]
+> It is recommended that you thoroughly evaluate and test the options using a pilot or proof-of-concept phase before actual migration. This will help assess complexity, feasibility, and fine tune your migration plan.
 
 ## Offline migration walkthrough
 
@@ -232,25 +254,6 @@ Finally, run the last (**step 6**) to write data Azure Cosmos DB. Replace the fo
 | `client_secret`      | Value of the client secret associated with the Entra ID application (found in *Certificates & secrets*) |
 
 After the cell execution completes, check the Azure Cosmos DB container to verify that the data has been migrated successfully.
-
-## Overview of other offline migration approaches
-
-The approach followed in this article is just one of the many ways to migrate data from DynamoDB to Azure Cosmos DB, and it has its own set of pros and cons. Here is a (non-exhaustive) list of options:
-
-| Scenario | Pros | Cons |
-|----------|------|------|
-| **Export from DynamoDB (to S3), load to ADLS (using ADF), write to Azure Cosmos DB (using Spark on Azure Databricks)** | Fit for large datasets since it decouples storage and processing. Spark provides scalability and flexibility (add-on data transformations, processing) | Multi-stage process increases complexity, and overall latency. Requires knowledge of Spark (learning curve). |
-| **Export from DynamoDB to S3, use ADF to read from S3 and write to Azure Cosmos DB** | Low/No-code approach (Spark skillset not required). Cost-effective for batch workloads.. | Limited transformation capabilities in ADF, may not handle very large datasets. |
-| **Use Spark on Azure Databricks to read from DynamoDB and write to Azure Cosmos DB** | Fit for small to medium size datasets - direct processing avoids extra storage costs, lower end-to-end latency. Supports complex transformations (Spark). | Higher cost on DynamoDB side due to WCU consumption (no export to S3). Requires knowledge of Spark (learning curve). |
-
-## Overview of online migration approaches
-
-Online migration generally use a Change-Data-Capture (CDC) mechanism to stream data changes from DynamoDB. These often tend to be real-time (or near real-time), and you will need to build another component to process the streaming data and write it to Azure Cosmos DB. Here is a (non-exhaustive) list of options:
-
-| Scenario | Pros | Cons |
-|----------|------|------|
-| **DynamoDB Streams to AWS Lambda, write to Azure Cosmos DB** | Low-latency event-driven processing, serverless, cost-efficient for moderate workloads | Need to write custom logic (Lambda function). Limited throughput due to Lambda concurrency limits, may not scale well for high-velocity streams |
-| **Kinesis Data Streams, process using Kinesis or Flink, write to Azure Cosmos DB** | Scalable to high-volume streams, supports windowing/aggregation via Flink, better control over processing | Need to write custom logic (Flink job, Kinesis data stream consumer). Requires stream processing expertise |
 
 ## Next steps
 
