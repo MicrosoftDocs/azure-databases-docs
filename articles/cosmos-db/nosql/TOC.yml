@@ -980,8 +980,10 @@
       href: migrate-relational-data.md
     - name: Migrate - Couchbase to API for NoSQL
       href: couchbase-cosmos-migration.md
-    - name: Migrate - DynamoDB to API for NoSQL
+    - name: Migrate - DynamoDB application to API for NoSQL
       href: dynamo-to-cosmos.md
+    - name: Migrate - DynamoDB data to API for NoSQL
+      href: dynamodb-data-migration-to-cosmosdb.md
     - name: Migrate - HBase to API for NoSQL
       href: migrate-hbase-to-cosmos-db.md
   - name: Integrate with other services
