@@ -35,6 +35,6 @@ Azure Database for PostgreSQL flexible server provides the ability to extend the
 
 ## Related content
 
-- [Manage PostgreSQL extensions in Azure Database for PostgreSQL - Flexible Server](../extensions/how-to-allow-extensions.md).
-- [List of extensions by name](../extensions/concepts-extensions-versions.md).
+- [Extensions and modules](../extensions/concepts-extensions.md).
+- [List of extensions and modules by name](../extensions/concepts-extensions-versions.md).
 - [List of extensions by version of PostgreSQL](../extensions/concepts-extensions-by-engine.md).

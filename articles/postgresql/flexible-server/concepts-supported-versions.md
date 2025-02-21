@@ -68,4 +68,4 @@ When we identify a defect with PostgreSQL engine, we take immediate action to mi
 
 ## Related content
 
-- [Manage PostgreSQL extensions in Azure Database for PostgreSQL - Flexible Server](../extensions/how-to-allow-extensions.md).
+- [Allow extensions](../extensions/how-to-allow-extensions.md).

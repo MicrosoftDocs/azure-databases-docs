@@ -2,7 +2,7 @@
 author: akashraokm
 ms.author: akashrao
 ms.reviewer: maghan, randolphwest
-ms.date: 02/07/2025
+ms.date: 02/17/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
@@ -81,6 +81,22 @@ ms.custom:
 | 13 | 1.3.2 <sup>*</sup> |
 | 12 | 1.3.2 <sup>*</sup> |
 | 11 | 1.3.2 <sup>*</sup> |
+
+<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
+
+## auto_explain
+
+[auto_explain](https://www.postgresql.org/docs/current/auto-explain.html) provides a means for logging execution plans of slow statements automatically, without having to run EXPLAIN by hand
+
+| PostgreSQL version | Extension version |
+| --- | --- |
+| 17 | N/A <sup>*</sup> |
+| 16 | N/A <sup>*</sup> |
+| 15 | N/A <sup>*</sup> |
+| 14 | N/A <sup>*</sup> |
+| 13 | N/A <sup>*</sup> |
+| 12 | N/A <sup>*</sup> |
+| 11 | N/A <sup>*</sup> |
 
 <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
 
@@ -510,7 +526,7 @@ ms.custom:
 
 | PostgreSQL version | Extension version |
 | --- | --- |
-| 17 | N/A |
+| 17 | 1.0.1 <sup>*</sup> |
 | 16 | 1.0.1 <sup>*</sup> |
 | 15 | 1.0.1 <sup>*</sup> |
 | 14 | 1.0.1 <sup>*</sup> |
@@ -573,6 +589,22 @@ ms.custom:
 ## pg_partman
 
 [pg_partman](https://github.com/pgpartman/pg_partman) manages partitioned tables by time or ID.
+
+| PostgreSQL version | Extension version |
+| --- | --- |
+| 17 | 5.0.1 <sup>*</sup> |
+| 16 | 5.0.1 <sup>*</sup> |
+| 15 | 4.7.1 <sup>*</sup> |
+| 14 | 4.6.1 <sup>*</sup> |
+| 13 | 4.5.0 <sup>*</sup> |
+| 12 | 4.5.0 <sup>*</sup> |
+| 11 | 4.5.0 <sup>*</sup> |
+
+<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
+
+## pg_partman_bgw
+
+[pg_partman_bgw](https://github.com/pgpartman/pg_partman) manages partitioned tables by time or ID.
 
 | PostgreSQL version | Extension version |
 | --- | --- |
@@ -1040,3 +1072,19 @@ ms.custom:
 | 13 | 0.7.0 |
 | 12 | 0.7.0 |
 | 11 | 0.5.1 |
+
+## wal2json
+
+[wal2json](https://github.com/eulerto/wal2json) is an output plugin for logical decoding. It means that the plugin have access to tuples produced by INSERT and UPDATE. Also, UPDATE/DELETE old row versions can be accessed depending on the configured replica identity.
+
+| PostgreSQL version | Extension version |
+| --- | --- |
+| 17 | 2.6 <sup>*</sup> |
+| 16 | 2.4 <sup>*</sup> |
+| 15 | 2.4 <sup>*</sup> |
+| 14 | 2.2 <sup>*</sup> |
+| 13 | 2.2 <sup>*</sup> |
+| 12 | 2.2 <sup>*</sup> |
+| 11 | 2.2 <sup>*</sup> |
+
+<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
