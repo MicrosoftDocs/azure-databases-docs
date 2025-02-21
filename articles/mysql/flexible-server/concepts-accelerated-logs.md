@@ -65,6 +65,7 @@ The accelerated logs feature is currently available only in the following region
   - Japan East
   - Korea Central
   - Mexico Central
+  - New Zealand North
   - North Europe
   - Norway East
   - Poland Central
