@@ -16,9 +16,9 @@ ms.date: 02/21/2025
 
 ## Introduction
 
-This article focuses on data migration from Amazon DynamoDB to Azure Cosmos DB for NoSQL. While there are multiple factors to consider for a migration, one key aspect is understanding the difference between *application* and *data* migration. Since DynamoDB already contains application data, you'll first need to migrate it to Azure Cosmos DB. This should be done during the data migration phase which will likely have many substeps including exporting, data transformations, and writing data into Azure Cosmos DB. Data migration can be done in parallel to application migration, but it’s often a prerequisite to it.  
+This article focuses on data migration from Amazon DynamoDB to Azure Cosmos DB for NoSQL. Before diving in, it’s important to understand the difference between application and data migration. 
 
-Application migration includes refactoring your application to use Azure Cosmos DB instead of DynamoDB. Depending on your application, this could include adapting and rewriting queries, redesigning partitioning strategies, indexing, consistency, and other components. In the final cutover phase, you'll need to point your application to Azure Cosmos DB and start writing application data to it directly.
+Data migration phase will likely have many sub steps including exporting data from the source system (DynamoDB in this case), additional processing such as transformations, and finally writing it into Azure Cosmos DB. On the other hand, application migration includes refactoring your application to use Azure Cosmos DB instead of DynamoDB. This could include adapting and rewriting queries, redesigning partitioning strategies, indexing, consistency, and other components. Depending on your requirements, data migration can be done in parallel to application migration, but it’s often a prerequisite to it.
 
 > [!IMPORTANT]
 > Refer to [Migrate your application from Amazon DynamoDB to Azure Cosmos DB](dynamo-to-cosmos.md) to dive into application migration. 
@@ -37,9 +37,9 @@ There are various migration strategies available; two frequently utilized techni
 
 The approach followed in this article is just one of the many ways to migrate data from DynamoDB to Azure Cosmos DB, and it has its own set of pros and cons. Here is a (non-exhaustive) list of options:
 
-| Scenario | Pros | Cons |
+| Approach | Pros | Cons |
 |----------|------|------|
-| **Export from DynamoDB (to S3), load to ADLS (using ADF), write to Azure Cosmos DB (using Spark on Azure Databricks)** | Fit for large datasets since it decouples storage and processing. Spark provides scalability and flexibility (add-on data transformations, processing) | Multi-stage process increases complexity, and overall latency. Requires knowledge of Spark (learning curve). |
+| **Export from DynamoDB to S3, load to ADLS (using ADF), write to Azure Cosmos DB (using Spark on Azure Databricks)** | Decouples storage and processing. Spark provides scalability and flexibility (additional data transformations, processing) | Multi-stage process increases complexity, and overall latency. Requires knowledge of Spark (learning curve). |
 | **Export from DynamoDB to S3, use ADF to read from S3 and write to Azure Cosmos DB** | Low/No-code approach (Spark skillset not required). Suitable for simple data transformations. | Complex transformation maybe difficult to implement. |
 | **Use Spark on Azure Databricks to read from DynamoDB and write to Azure Cosmos DB** | Fit for small datasets - direct processing avoids extra storage costs. Supports complex transformations (Spark). | Higher cost on DynamoDB side due to RCU consumption (S3 export not used). Requires knowledge of Spark (learning curve). |
 
@@ -47,13 +47,13 @@ The approach followed in this article is just one of the many ways to migrate da
 
 Online migration generally use a Change-Data-Capture (CDC) mechanism to stream data changes from DynamoDB. These often tend to be real-time (or near real-time), and you will need to build another component to process the streaming data and write it to Azure Cosmos DB. Here is a (non-exhaustive) list of options:
 
-| Scenario | Pros | Cons |
+| Approach | Pros | Cons |
 |----------|------|------|
-| **DynamoDB Streams to AWS Lambda, write to Azure Cosmos DB** | DynamoDB Streams provides ordering guarantee. Event-driven processing. Suitable for simple data transformations. | DynamoDB Streams data retention for 24 hours. Need to write custom logic (Lambda function). |
-| **Kinesis Data Streams, process using Kinesis or Flink, write to Azure Cosmos DB** | Supports complex data transformations (windowing/aggregation with Flink), better control over processing. Retention is flexible (from 24 hours, extendable to 365 days) | No ordering guarantee. Need to write custom logic (Flink job, Kinesis data stream consumer). Requires stream processing expertise |
+| **DynamoDB change data capture with DynamoDB Streams, process using AWS Lambda and write to Azure Cosmos DB** | DynamoDB Streams provides ordering guarantee. Event-driven processing. Suitable for simple data transformations. | DynamoDB Streams data retention for 24 hours. Need to write custom logic (Lambda function). |
+| **DynamoDB change data capture with Kinesis Data Streams, process using Kinesis or Flink and write to Azure Cosmos DB** | Supports complex data transformations (windowing/aggregation with Flink), better control over processing. Retention is flexible (from 24 hours, extendable to 365 days) | No ordering guarantee. Need to write custom logic (Flink job, Kinesis data stream consumer). Requires stream processing expertise |
 
 > [!IMPORTANT]
-> It is recommended that you thoroughly evaluate and test the options using a pilot or proof-of-concept phase before actual migration. This will help assess complexity, feasibility, and fine tune your migration plan.
+> It is recommended that you thoroughly evaluate and test the options using a proof-of-concept phase before actual migration. This will help assess complexity, feasibility, and fine tune your migration plan.
 
 ## Offline migration walkthrough
 
@@ -70,6 +70,7 @@ This section covers how to use Azure Data Factory, Azure Data Lake Storage, and 
 
 Before you proceed, make sure you complete the following:
 
+- [Create an Azure Cosmos DB account](quickstart-portal.md#create-an-account) (if you don’t already have one).
 - [Create a storage account](https://learn.microsoft.com/azure/storage/common/storage-account-create?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&bc=%2Fazure%2Fstorage%2Fblobs%2Fbreadcrumb%2Ftoc.json&tabs=azure-portal) of type *Standard general-purpose v2*. 
 - [Create an Azure data factory](https://learn.microsoft.com/azure/data-factory/quickstart-create-data-factory)
 - You should also have an AWS account and Amazon DynamoDB tables to migrate data from.
@@ -166,9 +167,8 @@ Use [OAuth 2.0 credentials with Microsoft Entra ID service principals](https://l
 
 Follow these steps to configure Microsoft Entra ID authentication for Azure Cosmos DB:
 
-1. Create an Azure Cosmos DB account (if you don’t already have one).
-2. In the Azure Cosmos DB account, under **Access control (IAM)**, assign the `Cosmos DB Operator` role to the Microsoft Entra ID application you had created.
-3. Use the Azure CLI to create the Azure Cosmos DB role definition and get the role definition ID (if you don’t have the [Azure CLI setup](https://learn.microsoft.com/cli/azure/get-started-with-azure-cli), you can choose to use [Azure Cloud Shell](https://learn.microsoft.com/azure/cloud-shell/get-started/classic?tabs=azurecli) directly from the Azure portal instead).
+1. In the Azure Cosmos DB account, under **Access control (IAM)**, assign the `Cosmos DB Operator` role to the Microsoft Entra ID application you had created.
+2. Use the Azure CLI to create the Azure Cosmos DB role definition and get the role definition ID (if you don’t have the [Azure CLI setup](https://learn.microsoft.com/cli/azure/get-started-with-azure-cli), you can choose to use [Azure Cloud Shell](https://learn.microsoft.com/azure/cloud-shell/get-started/classic?tabs=azurecli) directly from the Azure portal instead).
 
     ```azurecli
     az cosmosdb sql role definition create --resource-group "<resource-group-name>" --account-name "<account-name>" --body '{
@@ -189,13 +189,13 @@ Follow these steps to configure Microsoft Entra ID authentication for Azure Cosm
     az cosmosdb sql role definition list --resource-group "<resource-group-name>" --account-name "<account-name>"
     ```
 
-1. Once you have created the role definition and obtained the role definition ID, use the following command to [get service principal ID associated with the Microsoft Entra ID application](https://learn.microsoft.com/entra/identity-platform/app-objects-and-service-principals?tabs=azure-cli#list-service-principals-associated-with-an-app). Replace `AppId` with client ID of the Microsoft Entra ID application:
+3. Once you have created the role definition and obtained the role definition ID, use the following command to [get service principal ID associated with the Microsoft Entra ID application](https://learn.microsoft.com/entra/identity-platform/app-objects-and-service-principals?tabs=azure-cli#list-service-principals-associated-with-an-app). Replace `AppId` with client ID of the Microsoft Entra ID application:
 
     ```azurecli
     SP_ID=$(az ad sp list --filter "appId eq '{AppId}'" | jq -r '.[0].id')
     ```
 
-2. Now, create the role assignment using the below command. Make sure to replace resource group name, Azure Cosmos DB account name, and the role definition ID.
+4. Now, create the role assignment using the below command. Make sure to replace resource group name, Azure Cosmos DB account name, and the role definition ID.
 
     ```azurecli
     az cosmosdb sql role assignment create --resource-group <enter resource group name> --account-name <enter cosmosdb account name> --scope "/" --principal-id $SP_ID --role-definition-id <enter role definition ID> --scope "/"
