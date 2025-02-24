@@ -7,7 +7,7 @@ ms.author: abramees
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: conceptual
-ms.date: 01/06/2025
+ms.date: 02/24/2025
 ---
 
 # $isNumber
@@ -26,7 +26,7 @@ The syntax for the `$isNumber` operator is:
 
 ## Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **`expression`** | The specified value to check for a number|
 
