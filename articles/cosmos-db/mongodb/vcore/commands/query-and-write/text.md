@@ -187,7 +187,7 @@ This returns the following results:
 > [!NOTE]
 > To avoid tokenizing the terms in the search string, quotation marks must enclose the string. In this example, the query conducts a search on a single token - "Ebba's Smart TVs" without separating the three words into individual tokens.
 
-## Related Content
+## Related content
 
 - [Migrate to vCore based Azure Cosmos DB for MongoDB](https://aka.ms/migrate-to-azure-cosmosdb-for-mongodb-vcore)
 - [find with vCore based Azure Cosmos DB for MongoDB](find.md)
