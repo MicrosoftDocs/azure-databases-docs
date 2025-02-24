@@ -173,7 +173,7 @@ db.stores.deleteMany({"promotionEvents.discounts.discountPercentage": 21}, {"lim
 db.stores.deleteMany({"promotionEvents.discounts.discountPercentage": 21}, {"limit": 1})
 ```
 
-## Related Content
+## Related content
 
 - [Migrate to vCore based Azure Cosmos DB for MongoDB](https://aka.ms/migrate-to-azure-cosmosdb-for-mongodb-vcore)
 - [insert with vCore based Azure Cosmos DB for MongoDB](insert.md)
