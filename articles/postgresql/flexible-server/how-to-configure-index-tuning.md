@@ -45,7 +45,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 5. Search for `index_tuning.mode`.
 
-   :::image type="content" source="media/how-to-configure-index-tuning/search-index-tuning-mode-parameter-to-enable.png" alt-text="Screenshot that shows how to search for the index_tuning.mode server parameter." lightbox="media/how-to-configure-index-tuning/search-index-tuning-mode-parameter-to-enable.png":::
+   :::image type="content" source="media/how-to-configure-index-tuning/search-index-tuning-mode-parameter-to-enable.png" alt-text="Screenshot that shows how to search for the index_tuning.mode server parameter to set it to REPORT." lightbox="media/how-to-configure-index-tuning/search-index-tuning-mode-parameter-to-enable.png":::
 
 6. Set its value to `REPORT`.
 
@@ -56,7 +56,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 7. Select on **Save**.
 
-   :::image type="content" source="media/how-to-configure-index-tuning/save-parameters.png" alt-text="Screenshot that shows how to save the modified parameters so that they take effect." lightbox="media/how-to-configure-index-tuning/save-parameters.png":::
+   :::image type="content" source="media/how-to-configure-index-tuning/save-parameters.png" alt-text="Screenshot that shows how to save the modified parameters to enable index tuning." lightbox="media/how-to-configure-index-tuning/save-parameters.png":::
 
 8. Wait for the deployment to be completed successfully before considering the feature enabled.
 
@@ -70,7 +70,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 2. In the resource menu, under the **Query Performance Insight** section, select **Index tuning**.
 
-   :::image type="content" source="media/how-to-configure-index-tuning/enable-index-tuning-via-page-index-tuning.png" alt-text="Screenshot that shows the Index tuning menu option under the Query Performance Insight section." lightbox="media/how-to-configure-index-tuning/enable-index-tuning-via-page-index-tuning.png":::
+   :::image type="content" source="media/how-to-configure-index-tuning/enable-index-tuning-via-page-index-tuning.png" alt-text="Screenshot that shows the Index tuning menu option under the Query Performance Insight section, to enable index tuning." lightbox="media/how-to-configure-index-tuning/enable-index-tuning-via-page-index-tuning.png":::
 
 3. If either `pg_qs.query_capture_mode` is set to `NONE` or `index_tuning.mode` is set to `OFF`, the **Index tuning** page gives you the option to enable index tuning. Select on either of the two **Enable index tuning** buttons, to enable index tuning feature and its required query store dependency, if query store is disabled.
 
@@ -101,7 +101,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 3. Search for `index_tuning.mode`.
 
-   :::image type="content" source="media/how-to-configure-index-tuning/search-index-tuning-mode-parameter-to-disable.png" alt-text="Screenshot that shows how to search for the index_tuning.mode server parameter." lightbox="media/how-to-configure-index-tuning/search-index-tuning-mode-parameter-to-disable.png":::
+   :::image type="content" source="media/how-to-configure-index-tuning/search-index-tuning-mode-parameter-to-disable.png" alt-text="Screenshot that shows how to search for the index_tuning.mode server parameter to set it to OFF." lightbox="media/how-to-configure-index-tuning/search-index-tuning-mode-parameter-to-disable.png":::
 
 4. Set its value to `OFF`.
 
@@ -112,7 +112,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 5. Select on **Save**.
 
-   :::image type="content" source="media/how-to-configure-index-tuning/save-parameters-disable.png" alt-text="Screenshot that shows how to save the modified parameters so that they take effect." lightbox="media/how-to-configure-index-tuning/save-parameters-disable.png":::
+   :::image type="content" source="media/how-to-configure-index-tuning/save-parameters-disable.png" alt-text="Screenshot that shows how to save the modified parameters to disable index tuning." lightbox="media/how-to-configure-index-tuning/save-parameters-disable.png":::
 
 6. Wait for the deployment to complete successfully before considering the feature disabled.
 
@@ -126,7 +126,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 2. In the resource menu, under the **Query Performance Insight** section, select **Index tuning**.
 
-   :::image type="content" source="media/how-to-configure-index-tuning/disable-index-tuning-via-page-index-tuning.png" alt-text="Screenshot that shows the Index tuning menu option under the Query Performance Insight section." lightbox="media/how-to-configure-index-tuning/disable-index-tuning-via-page-index-tuning.png":::
+   :::image type="content" source="media/how-to-configure-index-tuning/disable-index-tuning-via-page-index-tuning.png" alt-text="Screenshot that shows the Index tuning menu option under the Query Performance Insight section, to disable index tuning." lightbox="media/how-to-configure-index-tuning/disable-index-tuning-via-page-index-tuning.png":::
 
 3. Select the **Disable index tuning** button to disable the feature.
 
