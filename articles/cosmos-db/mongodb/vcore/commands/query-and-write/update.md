@@ -198,7 +198,7 @@ Set the upsert flag to true to create a new document if the document specified i
 db.stores.updateOne({"_id": "NonExistentDocId"}, {"$set": {"name": "Brand New Store", "sales.totalSales": 0}}, {"upsert": true})
 ```
 
-## Related Content
+## Related content
 
 - [Migrate to vCore based Azure Cosmos DB for MongoDB](https://aka.ms/migrate-to-azure-cosmosdb-for-mongodb-vcore)
 - [insert with vCore based Azure Cosmos DB for MongoDB](insert.md)
