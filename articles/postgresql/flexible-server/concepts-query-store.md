@@ -4,14 +4,14 @@ description: This article describes the query store feature in Azure Database fo
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 11/05/2024
+ms.date: 02/24/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.custom:
   - ignite-2024
 ms.topic: conceptual
 ---
-# Monitor performance with query store
+# Query store
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 

@@ -21,7 +21,7 @@ Index tuning can be enabled, disabled, and configured through a [set of paramete
 
 ## Enable index tuning
 
-Index tuning depends on [Monitor performance with query store](concepts-query-store.md). We don't recommend enabling query store on the Burstable pricing tier for the performance implications it might have. For the same reason, index tuning isn't recommended for servers on the Burstable tier.
+Index tuning depends on [query store](concepts-query-store.md). We don't recommend enabling query store on the Burstable pricing tier for the performance implications it might have. For the same reason, index tuning isn't recommended for servers on the Burstable tier.
 
 Index tuning is an opt-in feature that isn't enabled by default on a server. It can be enabled or disabled globally for all databases on a given server and can't be turned on or off per database.
 
