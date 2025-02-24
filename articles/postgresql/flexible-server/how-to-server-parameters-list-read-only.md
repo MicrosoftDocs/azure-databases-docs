@@ -25,9 +25,13 @@ Using the [Azure portal](https://portal.azure.com):
 
 1. Select your Azure Database for PostgreSQL flexible server instance.
 
-2. In the resource menu, under the **Settings** section, select **Server parameters**, and then select the **Read-Only** tab. The page shows a list of read-only parameters.
+2. In the resource menu, under **Settings**, select **Server parameters**.
 
-    :::image type="content" source="./media/how-to-configure-server-parameters/read-only-parameters.png" alt-text="Screenshot of read-only server parameters." lightbox="./media/how-to-configure-server-parameters/read-only-parameters.png":::
+    :::image type="content" source="./media/how-to-configure-server-parameters/server-parameters.png" alt-text="Screenshot that shows the Server parameters menu option." lightbox="./media/how-to-configure-server-parameters/server-parameters.png":::
+
+3. Select the **Read-Only** tab. The page shows a list of read-only parameters.
+
+    :::image type="content" source="./media/how-to-configure-server-parameters/read-only-parameters.png" alt-text="Screenshot that shows the list of read-only server parameters." lightbox="./media/how-to-configure-server-parameters/read-only-parameters.png":::
 
 ### [CLI](#tab/cli-list-read-only)
 
