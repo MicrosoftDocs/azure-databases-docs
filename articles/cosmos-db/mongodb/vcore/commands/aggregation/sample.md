@@ -7,7 +7,7 @@ ms.author: abramees
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: conceptual
-ms.date: 01/03/2025
+ms.date: 02/24/2025
 ---
 
 # $sample
@@ -23,7 +23,7 @@ The `$sample` stage is used in aggregation pipelines to randomly select a specif
 
 ### Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **`size`** | The number of documents to randomly select from the collection|
 
