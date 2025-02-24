@@ -29,9 +29,9 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="./media/how-to-reset-admin-password/overview.png" alt-text="Screenshot showing the Overview page of an Azure Database for PostgreSQL flexible server." lightbox="./media/how-to-reset-admin-password/overview.png":::
 
-3. The status of the server must be **Available** for the **Reset password** button to be enabled on the toolbar.
+3. The status of the server must be **Ready** for the **Reset password** button to be enabled on the toolbar.
 
-    :::image type="content" source="./media/how-to-reset-admin-password/server-status.png" alt-text="Screenshot showing the status of the server set to Available." lightbox="./media/how-to-reset-admin-password/server-status.png":::
+    :::image type="content" source="./media/how-to-reset-admin-password/server-status.png" alt-text="Screenshot showing the status of the server set to Ready." lightbox="./media/how-to-reset-admin-password/server-status.png":::
 
 4. In the resource menu, under the **Security** section, select **Authentication**.
 
@@ -85,7 +85,7 @@ To determine if a server is configured to support password-based authentication,
 az postgres flexible-server show --resource-group <resource_group> --name <server> --query authConfig.passwordAuth --output tsv
 ```
 
-If you attempt to reset the administrator password of a server which isn't in `Available` state, you receive an error like this:
+If you attempt to reset the administrator password of a server which isn't in `Ready` state, you receive an error like this:
 
 ```output
 () Server <server> is busy with other operations. Please try later
