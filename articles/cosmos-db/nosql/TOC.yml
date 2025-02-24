@@ -983,7 +983,7 @@
     - name: Migrate - DynamoDB application to API for NoSQL
       href: dynamo-to-cosmos.md
     - name: Migrate - DynamoDB data to API for NoSQL
-      href: dynamodb-data-migration-to-cosmosdb.md
+      href: dynamodb-data-migration-cosmos-db.md
     - name: Migrate - HBase to API for NoSQL
       href: migrate-hbase-to-cosmos-db.md
   - name: Integrate with other services
