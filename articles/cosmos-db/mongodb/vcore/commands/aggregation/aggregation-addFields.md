@@ -26,8 +26,12 @@ The basic syntax for the $addFields stage is as follows:
 }
 ```
 
-newField1: The name of the new field to add or the existing field to modify.
-expression1: The expression to compute the value of newField1.
+## Parameters
+
+| | Description |
+| --- | --- |
+| **`newField1`** | The name of the new field to add or the existing field to modify. |
+| **`expression1`** | The expression to compute the value of newField1. |
 
 ## Example(s)
 ### Example 1: Adding a New Field
