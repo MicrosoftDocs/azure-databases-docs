@@ -191,7 +191,7 @@ This returns the following results:
   }
 ]
 ```
-## Related Content
+## Related content
 
 - [Migrate to vCore based Azure Cosmos DB for MongoDB](https://aka.ms/migrate-to-azure-cosmosdb-for-mongodb-vcore)
 - [find with vCore based Azure Cosmos DB for MongoDB](find.md)
