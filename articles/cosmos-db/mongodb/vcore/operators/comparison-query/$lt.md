@@ -7,7 +7,7 @@ ms.author: abramees
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: conceptual
-ms.date: 08/31/2024
+ms.date: 02/24/2025
 ---
 
 # $lt
@@ -26,7 +26,7 @@ The syntax for using the `$lt` operator in a MongoDB query is:
 
 ## Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **`field`** | The field in the document you want to evaluate|
 | **`value`** | The value to compare against the field's value. The operator will match documents where the field's value is less than this specified value|
