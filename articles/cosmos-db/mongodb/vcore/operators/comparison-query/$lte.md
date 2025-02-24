@@ -174,7 +174,7 @@ This returns the following results:
 }
 ```
 
-## Related content
+## Related Content
 
 - [Migrate to vCore based Azure Cosmos DB for MongoDB](https://aka.ms/migrate-to-azure-cosmosdb-for-mongodb-vcore)
 - [$lt for less than comparisons]($lt.md)
