@@ -22,7 +22,11 @@ The syntax for the $sortByCount stage is:
 }
 ```
 
-expression: This is the field or computed expression on which to group and count the documents.
+## Parameters
+
+| | Description |
+| --- | --- |
+| **`expression`** | This is the field or computed expression on which to group and count the documents. |
 
 ## Example(s)
 Consider a collection named stores with documents structured as described earlier. To find out the most common promotional events based on their names, you can use the $sortByCount stage as follows:

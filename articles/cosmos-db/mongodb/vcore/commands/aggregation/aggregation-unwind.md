@@ -23,10 +23,13 @@ The $unwind stage in the aggregation framework is used to deconstruct an array f
   }
 }
 ```
+## Parameters
 
-path: The field path to an array field. This is a required parameter.
-includeArrayIndex: Optional. The name of a new field to hold the array index of the unwound element.
-preserveNullAndEmptyArrays: Optional. If true, if the path is null, missing, or an empty array, $unwind outputs the document unchanged.
+| | Description |
+| --- | --- |
+| **`path`** | The field path to an array field. This is a required parameter. |
+| **`includeArrayIndex`** | Optional. The name of a new field to hold the array index of the unwound element. |
+| **`preserveNullAndEmptyArrays`** | Optional. If true, if the path is null, missing, or an empty array, `$unwind` outputs the document unchanged. |
 
 ## Example(s)
 ### Example 1: Unwind Sales by Category

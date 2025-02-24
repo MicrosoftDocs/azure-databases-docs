@@ -22,8 +22,12 @@ The syntax for the $sort stage is as follows:
 }
 ```
 
-field: The field by which to sort the documents.
-sort order: The order in which to sort the field. 1 for ascending order and -1 for descending order.
+## Parameters
+
+| | Description |
+| --- | --- |
+| **`field`** | The field by which to sort the documents. |
+| **`sort order`** | The order in which to sort the field. 1 for ascending order and -1 for descending order. |
 
 ## Example(s)
 ### Example 1: Sorting by Total Sales in Descending Order

@@ -22,8 +22,11 @@ The syntax for the $unset stage is straightforward. It accepts a single argument
 }
 ```
 
-Parameters
-field1, field2, ... : The names of the fields to remove from the documents.
+## Parameters
+
+| | Description |
+| --- | --- |
+| **`field1, field2, ...`** | The names of the fields to remove from the documents. |
 
 ## Example(s)
 Here are a few examples demonstrating how to use the $unset stage in an aggregation pipeline.
