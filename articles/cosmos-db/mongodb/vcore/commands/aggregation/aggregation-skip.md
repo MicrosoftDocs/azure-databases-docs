@@ -22,7 +22,11 @@ The syntax for the $skip stage is straightforward. It accepts a single parameter
 }
 ```
 
-number: The number of documents to skip before passing the remaining documents to the next stage.
+### Parameters
+
+| | Description |
+| --- | --- |
+| **`number`** | The number of documents to skip before passing the remaining documents to the next stage. |
 
 ## Example(s)
 ### Example 1: Skipping Documents in a Collection
