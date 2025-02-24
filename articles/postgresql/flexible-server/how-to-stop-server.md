@@ -29,7 +29,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="./media/how-to-stop-server/overview.png" alt-text="Screenshot showing how to select the Overview page." lightbox="./media/how-to-stop-server/overview.png":::
 
-3. The status of the server must be **Available**, for the **Stop** button to appear on the toolbar.
+3. The status of the server must be **Ready**, for the **Stop** button to appear on the toolbar.
 
     :::image type="content" source="./media/how-to-stop-server/server-status.png" alt-text="Screenshot showing where in the Overview page you can find the status of the server." lightbox="./media/how-to-stop-server/server-status.png":::
 
@@ -65,7 +65,7 @@ You can stop a started server via the [az postgres flexible-server stop](/cli/az
 az postgres flexible-server stop --resource-group <resource_group> --name <server>
 ```
 
-If you attempt to stop a server which isn't in `Available` state, you receive an error like this:
+If you attempt to stop a server which isn't in `Ready` state, you receive an error like this:
 
 ```output
 (ServerIsNotReady) Restart or Stop Server can only be performed on Started servers. Server Name = <server>, Current Server State = <non_started_server_state>

@@ -38,11 +38,23 @@ For this quickstart you need:
 
 Get the connection information needed to connect to the Azure Database for PostgreSQL flexible server instance. You need the fully qualified server name and login credentials.
 
-1. Log in to the [Azure portal](https://portal.azure.com/).
-2. From the left-hand menu in Azure portal, click **All resources**, and then search for the server you have created (such as **mydemoserver**).
-3. Click the server name.
-4. From the server's **Overview** panel, make a note of the **Server name** and **Server admin login name**. If you forget your password, you can also reset the password from this panel.
- :::image type="content" source="./media/connect-csharp/1-connection-string.png" alt-text="Azure Database for PostgreSQL flexible server instance name.":::
+Using the [Azure portal](https://portal.azure.com/):
+
+1. From the left-hand menu in Azure portal, click **All resources**, and then search for the server you have created.
+
+2. Click the server name.
+
+3. In the resource menu, select **Overview**.
+
+    :::image type="content" source="media/connect/overview.png" alt-text="Screenshot showing the Overview page." lightbox="media/connect/overview.png":::
+
+4. Copy the values shown as **Endpoint** and **Administrator login**.
+
+    :::image type="content" source="media/connect/endpoint-administrator-login.png" alt-text="Screenshot showing the values of Endpoint and Administrator login in the Overview page." lightbox="media/connect/endpoint-administrator-login.png":::
+
+5. If you forget the password of the administrator login, you can reset it using the **Reset password** button.
+
+    :::image type="content" source="media/connect/reset-password.png" alt-text="Screenshot showing the Reset password button in the Overview page." lightbox="media/connect/reset-password.png":::
 
 ## Step 1: Connect and insert data
 

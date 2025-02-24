@@ -8,7 +8,7 @@ ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.devlang: typescript
 ms.topic: quickstart-sdk
-ms.date: 11/07/2024
+ms.date: 02/24/2025
 ms.custom: devx-track-js, devx-track-ts, devx-track-extended-azdevcli
 zone_pivot_groups: azure-devlang-nodejs
 appliesto:
@@ -343,3 +343,4 @@ azd down
 - [Java Quickstart](quickstart-java.md)
 - [Python Quickstart](quickstart-python.md)
 - [Go Quickstart](quickstart-go.md)
+- [Rust Quickstart](quickstart-go.md)
