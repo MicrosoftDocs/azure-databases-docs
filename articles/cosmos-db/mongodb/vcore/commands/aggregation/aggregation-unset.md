@@ -41,6 +41,30 @@ db.stores.aggregate([
   }
 ])
 ```
+Sample output
+```json
+[
+  {
+    "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5",
+    "store": {
+      "name": "Downtown Store",
+      "sales": {
+        "totalSales": 15000,
+        "salesByCategory": [
+          {
+            "category": "Electronics",
+            "totalSales": 5000
+          },
+          {
+            "category": "Clothing",
+            "totalSales": 10000
+          }
+        ]
+      }
+    }
+  }
+]
+```
 
 ### Example 2: Remove Multiple Fields
 Suppose you want to remove the location and sales.totalSales fields from the documents.
@@ -52,6 +76,29 @@ db.stores.aggregate([
   }
 ])
 ```
+Sample output
+```json
+[
+  {
+    "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5",
+    "store": {
+      "name": "Downtown Store",
+      "sales": {
+        "salesByCategory": [
+          {
+            "category": "Electronics",
+            "totalSales": 5000
+          },
+          {
+            "category": "Clothing",
+            "totalSales": 10000
+          }
+        ]
+      }
+    }
+  }
+]
+```
 
 ### Example 3: Remove Nested Fields
 Suppose you want to remove the staff.totalStaff.fullTime and promotionEvents.discounts fields from the documents.
@@ -62,6 +109,23 @@ db.stores.aggregate([
     $unset: ["store.staff.totalStaff.fullTime", "store.promotionEvents.discounts"]
   }
 ])
+```
+Sample output
+```json
+[
+  {
+    "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5",
+    "store": {
+      "name": "Downtown Store",
+      "staff": {
+        "totalStaff": {
+          "partTime": 8
+        }
+      },
+      "promotionEvents": ["Summer Sale", "Black Friday", "Holiday Deals"]
+    }
+  }
+]
 ```
 
 ## Related content

@@ -38,6 +38,14 @@ db.stores.aggregate([
   { $sortByCount: "$store.promotionEvents.eventName" }
 ])
 ```
+Sample output
+```json
+[
+  { "_id": "Summer Sale", "count": 152 },
+  { "_id": "Black Friday", "count": 120 },
+  { "_id": "Holiday Deals", "count": 98 }
+]
+```
 
 This pipeline will: 1. Use $unwind to deconstruct the promotionEvents array field from the input documents. 2. Use $sortByCount to group by the eventName field and count the number of occurrences of each event name, sorting the results in descending order of the count.
 
@@ -47,6 +55,14 @@ db.stores.aggregate([
   { $unwind: "$store.sales.salesByCategory" },
   { $sortByCount: "$store.sales.salesByCategory.categoryName" }
 ])
+```
+Sample output
+```json
+[
+  { "_id": "Electronics", "count": 152 },
+  { "_id": "Clothing", "count": 120 },
+  { "_id": "Home Goods", "count": 98 }
+]
 ```
 
 This pipeline will: 1. Use $unwind to deconstruct the salesByCategory array field from the input documents. 2. Use $sortByCount to group by the categoryName field and count the number of occurrences of each category name, sorting the results in descending order of the count.

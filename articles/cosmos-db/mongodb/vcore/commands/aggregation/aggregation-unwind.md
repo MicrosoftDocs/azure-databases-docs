@@ -42,6 +42,37 @@ db.stores.aggregate([
   }
 ])
 ```
+Sample output 
+```json
+[
+  {
+    "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5",
+    "store": {
+      "name": "Downtown Store",
+      "sales": {
+        "totalSales": 15000,
+        "salesByCategory": {
+          "category": "Electronics",
+          "totalSales": 5000
+        }
+      }
+    }
+  },
+  {
+    "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5",
+    "store": {
+      "name": "Downtown Store",
+      "sales": {
+        "totalSales": 15000,
+        "salesByCategory": {
+          "category": "Clothing",
+          "totalSales": 10000
+        }
+      }
+    }
+  }
+]
+```
 
 This will output documents where each document represents a single category's sales information.
 
@@ -58,6 +89,34 @@ db.stores.aggregate([
   }
 ])
 ```
+Sample output
+```json
+[
+  {
+    "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5",
+    "store": {
+      "name": "Downtown Store",
+      "promotionEvents": {
+        "eventName": "Summer Sale",
+        "eventDate": ISODate("2024-08-01T00:00:00Z")
+      },
+      "eventIndex": 0
+    }
+  },
+  {
+    "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5",
+    "store": {
+      "name": "Downtown Store",
+      "promotionEvents": {
+        "eventName": "Black Friday",
+        "eventDate": ISODate("2024-11-25T00:00:00Z")
+      },
+      "eventIndex": 1
+    }
+  }
+]
+```
+
 
 This will output documents where each document represents a single promotion event, and the eventIndex field will contain the original index of the event in the array.
 
@@ -72,6 +131,33 @@ db.stores.aggregate([
     }
   }
 ])
+```
+Sample output
+```json
+[
+  {
+    "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5",
+    "store": {
+      "name": "Downtown Store",
+      "promotionEvents": {
+        "eventName": "Summer Sale",
+        "discounts": {
+          "discountType": "Percentage",
+          "discountAmount": 20
+        }
+      }
+    }
+  },
+  {
+    "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5",
+    "store": {
+      "name": "Downtown Store",
+      "promotionEvents": {
+        "eventName": "Black Friday"
+      }
+    }
+  }
+]
 ```
 
 This will output documents where each document represents a single discount within a promotion event, and documents with no discounts will be preserved.
