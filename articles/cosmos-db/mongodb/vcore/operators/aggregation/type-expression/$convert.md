@@ -7,7 +7,7 @@ ms.author: abramees
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: conceptual
-ms.date: 01/06/2025
+ms.date: 02/24/2025
 ---
 
 # $convert
@@ -24,7 +24,7 @@ The syntax for the `$convert` operator is:
 ```
 
 ## Parameters
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **`input`** | The input value to be converted to the specified type|
 | **`to`** | The type to convert the input value into|
