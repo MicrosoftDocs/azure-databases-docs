@@ -28,9 +28,13 @@ This section will have the syntax of the command and its parameter definitions.
 }
 ```
 
-latencyStats: Optional. Specifies whether to include latency statistics. The histograms field is a boolean that indicates whether to include histograms of latency data.
-storageStats: Optional. Specifies whether to include storage statistics. The scale field is a number that indicates the scale factor for the storage statistics.
-count: Optional. Includes the count of documents in the collection.
+## Parameters
+
+| | Description |
+| --- | --- |
+| **`latencyStats`** | Optional. Specifies whether to include latency statistics. The `histograms` field is a boolean that indicates whether to include histograms of latency data. |
+| **`storageStats`** | Optional. Specifies whether to include storage statistics. The `scale` field is a number that indicates the scale factor for the storage statistics. |
+| **`count`** | Optional. Includes the count of documents in the collection. |
 
 ## Example(s)
 This section will have one or more examples that will help explain the command usage.
