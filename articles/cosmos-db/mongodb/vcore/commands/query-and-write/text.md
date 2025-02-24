@@ -7,7 +7,7 @@ ms.author: abramees
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: conceptual
-ms.date: 08/31/2024
+ms.date: 02/24/2025
 ---
 
 # text 
@@ -31,7 +31,7 @@ The basic syntax for the $text operator is:
 
 ## Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **`search`** | The search string to query in the text index|
 | **`language`** | Optional field to specify the language to be used for the search. The default value is "english"|
