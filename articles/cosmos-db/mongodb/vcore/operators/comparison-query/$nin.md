@@ -7,7 +7,7 @@ ms.author: abramees
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: conceptual
-ms.date: 01/06/2025
+ms.date: 02/24/2025
 ---
 
 # $nin
@@ -24,7 +24,7 @@ The `$nin` operator is used to retrieve documents where the value of a specified
 
 ## Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **`field`** | The field to compare|
 | **`[<value1>, <value2>, ... <valueN>]`** | An array of values that shouldn't match the value of the field being compared|
