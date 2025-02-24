@@ -219,7 +219,7 @@ All the queries yield the same result. Two of the documents returned are:
 - If fewer than two values are specified in the array for the $mod operator, an error is thrown by the server indicating not enough arguments were passed. 
 - If more than two values are specified in the array for the $mod operator, an error is thrown by the server indicating too many arguments were passed.
 
-## Related Content
+## Related content
 
 - [Migrate to vCore based Azure Cosmos DB for MongoDB](https://aka.ms/migrate-to-azure-cosmosdb-for-mongodb-vcore)
 - [find with vCore based Azure Cosmos DB for MongoDB](find.md)
