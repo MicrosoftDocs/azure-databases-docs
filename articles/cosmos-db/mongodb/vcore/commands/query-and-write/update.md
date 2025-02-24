@@ -1,13 +1,13 @@
 ---
 title: update()
-titleSuffix: Overview of the update commands on Azure Cosmos DB for MongoDB vCore
-description: The update commands in Azure Cosmos DB for MongoDB vCore modifies documents within a collection
+titleSuffix: Overview of the update commands in Azure Cosmos DB for MongoDB vCore
+description: The update commands in Azure Cosmos DB for MongoDB vCore modify documents within a collection that match specific filters
 author: abinav2307
 ms.author: abramees
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: conceptual
-ms.date: 01/03/2025
+ms.date: 02/24/2025
 ---
 
 # update
