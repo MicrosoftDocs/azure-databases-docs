@@ -10,7 +10,7 @@ ms.topic: reference
 ms.date: 09/27/2024
 ---
 
-# $multiply (Aggregation Expression)
+# $multiply (aggregation expression)
 
 The `$multiply` operator calculates the product of numerical expressions and is supported in aggregation operations. It's a useful tool for deriving calculated fields or performing arithmetic within aggregation pipelines.
 
