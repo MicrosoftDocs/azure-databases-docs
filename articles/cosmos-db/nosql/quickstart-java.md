@@ -8,7 +8,7 @@ ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.devlang: java
 ms.topic: quickstart-sdk
-ms.date: 02/05/2025
+ms.date: 02/24/2025
 ms.custom: devx-track-extended-java, devx-track-extended-azdevcli
 appliesto:
   - ✅ NoSQL
