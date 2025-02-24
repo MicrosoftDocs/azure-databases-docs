@@ -7,7 +7,7 @@ ms.author: abramees
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: conceptual
-ms.date: 01/06/2025
+ms.date: 02/24/2025
 ---
 
 # $gt (Comparison Query)
@@ -22,7 +22,7 @@ The `$gt` operator is used to select documents where the value of a field is gre
 
 ## Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **`field`** | The field in the document you want to compare|
 | **`value`** | The value that the field should be greater than|
