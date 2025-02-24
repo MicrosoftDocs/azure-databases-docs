@@ -4,7 +4,7 @@ description: Release notes for Azure DB for PostgreSQL - Flexible Server, includ
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 1/29/2025
+ms.date: 02/24/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: overview
@@ -19,11 +19,12 @@ This article highlights the latest updates and enhancements for Azure Database f
 
 ## Release: February 2025
 - Support for new [minor versions](concepts-supported-versions.md) 17.2, 16.6, 15.10, 14.15, 13.18, and 12.22. <sup>$</sup>
+- Support for [pg_signal_autovacuum_worker](how-to-autovacuum-tuning.md#troubleshooting-guides) role in PostgreSQL versions 15 and higher for Azure Database for PostgreSQL flexible server. 
+- Public preview of [enhanced connection and CPU monitoring metrics](concepts-monitoring.md#enhanced-metrics) (`TCP_connection_backlog`, `postmaster_process_cpu_usage`) is now available.
 
 ## Release: January 2025
 
 - Public preview of [Elastic Clusters](./concepts-elastic-clusters.md) for Azure Database for PostgreSQL flexible server.
-- Support for [pg_signal_autovacuum_worker](how-to-autovacuum-tuning.md#troubleshooting-guides) role in PostgreSQL versions 15 and higher for Azure Database for PostgreSQL flexible server. 
 
 ## Release: December 2024
 
