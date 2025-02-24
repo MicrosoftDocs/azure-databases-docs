@@ -4,7 +4,7 @@ description: This article describes the scheduled maintenance feature in Azure D
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 01/08/2025
+ms.date: 02/23/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: concept-article
@@ -24,7 +24,7 @@ Your Azure Database for PostgreSQL flexible server periodically undergoes mainte
 
 You can schedule maintenance during a specific day of the week, and a time window within that day. Or you can let the system choose a day and a time window for you automatically.
 
-The system sends maintenance notifications 5 days in advance, so that you have ample time to prepare. The system also informs you about when maintenance starts and when it successfully finishes.
+The system sends maintenance notifications 5 calendar days in advance, so that you have ample time to prepare. The system also informs you about when maintenance starts and when it successfully finishes.
 
 Notifications about upcoming scheduled maintenance can be:
 
@@ -54,7 +54,7 @@ Updates for custom-schedule servers begin seven days later, during a defined mai
 
 In rare cases, the system can cancel some maintenance events, or some events can fail to finish successfully. If an update fails, the process is rolled back, and your server restored to the previous version of the binaries. The server might still restart during the maintenance window.
 
-If an update is canceled or failed, the system generates a notification about the canceled or failed maintenance event. The next attempt to perform maintenance is scheduled according to your current schedule settings, and you receive a notification about it five days in advance.
+If an update is canceled or failed, the system generates a notification about the canceled or failed maintenance event. The next attempt to perform maintenance is scheduled according to your current schedule settings, and you receive a notification about it 5 calendar days in advance.
 
 ## Consideration and limitations
 
@@ -62,6 +62,7 @@ Some considerations when considering during monthly maintenance:
 
 - Monthly maintenance is impactful and they involve some downtime.
 - Downtime depends on the transactional load on the server at the time of maintenance.
+- Once maintenance is scheduled, any changes to the maintenance settings will apply only to the next maintenance cycle, not the current one.
 
 ## Related content
 
