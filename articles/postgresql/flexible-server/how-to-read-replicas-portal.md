@@ -17,7 +17,7 @@ ms.custom:
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
-In this article, you learn how to create and manage read replicas in Azure Database for PostgreSQL flexible server from the Azure portal, CLI, and REST API. To learn more about read replicas, see the [overview](concepts-read-replicas.md).
+In this article, you learn how to create and manage read replicas in Azure Database for PostgreSQL Flexible Server from the Azure portal, CLI, and REST API. To learn more about read replicas, see the [overview](concepts-read-replicas.md).
 
 ## Prerequisites
 
@@ -28,7 +28,7 @@ In this article, you learn how to create and manage read replicas in Azure Datab
 
 ## Review primary settings
 
-Before setting up a read replica for Azure Database for PostgreSQL flexible server, ensure the primary server is configured to meet the necessary prerequisites. Specific settings on the primary server can affect the ability to create replicas.
+Before setting up a read replica for Azure Database for PostgreSQL Flexible Server, ensure the primary server is configured to meet the necessary prerequisites. Specific settings on the primary server can affect the ability to create replicas.
 
 **Storage auto-grow**: Storage autogrow settings on the primary server and its read replicas must adhere to specific guidelines to ensure consistency and prevent replication disruptions. Refer to the [Storage autogrow](concepts-read-replicas.md#storage-autogrow) for detailed rules and settings.
 
@@ -189,7 +189,7 @@ Review and note the following settings:
 
 #### [REST API](#tab/restapi)
 
-To obtain information about the configuration of a server in Azure Database for PostgreSQL flexible server, especially to view settings for recently introduced features like storage autogrow or private link, you should use the latest API version `2023-06-01-preview`. The `GET` request would be formatted as follows:
+To obtain information about the configuration of a server in Azure Database for PostgreSQL Flexible Server, especially to view settings for recently introduced features like storage autogrow or private link, you should use the latest API version `2023-06-01-preview`. The `GET` request would be formatted as follows:
 
 ```http
 https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}?api-version=2023-06-01-preview

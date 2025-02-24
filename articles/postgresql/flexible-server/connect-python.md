@@ -196,12 +196,24 @@ In this section, you add authentication code to your working directory and perfo
 
 1. Get database connection information.
 
-    1. In the [Azure portal](https://portal.azure.com/), search for and select your Azure Database for PostgreSQL flexible server name.
-    1. On the server's **Overview** page, copy the fully qualified **Server name** and the **Server admin login name**. The fully qualified **Server name** is always of the form *\<my-server-name>.postgres.database.azure.com*.
-
-       You also need your admin password. If you forget it, you can reset it using the **Reset password** button at the top of the overview page.
-
-       <!--![Azure Database for PostgreSQL server name](media/connect-python/1-connection-string.png)-->
+    Using the [Azure portal](https://portal.azure.com/):
+    
+    1. From the left-hand menu in Azure portal, click **All resources**, and then search for the server you have created.
+    
+    2. Click the server name.
+    
+    3. In the resource menu, select **Overview**.
+    
+        :::image type="content" source="media/connect/overview.png" alt-text="Screenshot showing the Overview page." lightbox="media/connect/overview.png":::
+    
+    4. Copy the values shown as **Endpoint** and **Administrator login**.
+    
+        :::image type="content" source="media/connect/endpoint-administrator-login.png" alt-text="Screenshot showing the values of Endpoint and Administrator login in the Overview page." lightbox="media/connect/endpoint-administrator-login.png":::
+    
+    5. If you forget the password of the administrator login, you can reset it using the **Reset password** button.
+    
+        :::image type="content" source="media/connect/reset-password.png" alt-text="Screenshot showing the Reset password button in the Overview page." lightbox="media/connect/reset-password.png":::
+    
 
 1. Set environment variables for the connection URI elements:
 
