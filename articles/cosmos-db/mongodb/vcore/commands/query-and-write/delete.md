@@ -7,7 +7,7 @@ ms.author: abramees
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: conceptual
-ms.date: 01/03/2025
+ms.date: 02/24/2025
 ---
 
 # delete
@@ -32,7 +32,7 @@ db.collection.deleteMany(
 
 ### Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **<`filter`>** | A document that specifies the criteria for deletion. Only the documents that match the filter are deleted|
 | **`options`** | Optional. A document that specifies options for the delete operation. Common options include writeConcern and collation|
