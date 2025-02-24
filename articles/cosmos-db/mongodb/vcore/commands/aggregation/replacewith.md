@@ -7,7 +7,7 @@ ms.author: abramees
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: conceptual
-ms.date: 01/03/2025
+ms.date: 02/24/2025
 ---
 
 # $replaceWith
@@ -24,7 +24,7 @@ The `$replaceWith` aggregation stage operator is used to replace the input docum
 
 ## Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **`newDocument`** | The new document to replace the original document|
 
