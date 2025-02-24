@@ -7,7 +7,7 @@ ms.author: abramees
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: conceptual
-ms.date: 01/06/2025
+ms.date: 02/24/2025
 ---
 
 # $in
@@ -24,7 +24,7 @@ The `$in` operator is used to match values of a field against an array of possib
 
 ## Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **`field`** | The field to match|
 | **`[<value1>, <value2>, ... <valueN>]`** | An array of values to match against the specified field|
