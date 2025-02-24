@@ -7,7 +7,7 @@ ms.author: abramees
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: conceptual
-ms.date: 01/03/2025
+ms.date: 02/24/2025
 ---
 
 # regex
@@ -22,7 +22,7 @@ The `$regex` operator is used to perform pattern matching with regular expressio
 
 ## Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **`field`** | The field in the document you want to query|
 | **`/pattern/`** | The regular expression pattern you want to match|
