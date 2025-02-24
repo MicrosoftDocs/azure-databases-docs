@@ -179,7 +179,7 @@ This table delineates the expected behavior of the $toDouble operator based on t
 | String representation of a numberi value. For example, "72"  | Output -> 72        |
 | Null value                                                   | Output -> null      |
 
-## Related Content
+## Related content
 
 - [Migrate to vCore based Azure Cosmos DB for MongoDB](https://aka.ms/migrate-to-azure-cosmosdb-for-mongodb-vcore)
 - [$type to determine the BSON type of a value]($type.md)
