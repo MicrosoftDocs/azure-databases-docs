@@ -66,7 +66,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="./media/how-to-configure-high-availability/enable-high-availability-save.png" alt-text="Screenshot showing the Save button." lightbox="./media/how-to-configure-high-availability/enable-high-availability-save.png":::
 
-9. A dialog informs you of the cost increase associated with the deployment of the standby server. If you decide to proceed, select **Enable HA**.
+9. A dialog informs you of the cost increase associated with the deployment of the standby server. If you decide to proceed, select **Enable high availability**.
 
     :::image type="content" source="./media/how-to-configure-high-availability/confirm-enable-high-availability.png" alt-text="Screenshot showing the dialog to confirm enablement of high availability." lightbox="./media/how-to-configure-high-availability/confirm-enable-high-availability.png":::
 
@@ -156,7 +156,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="./media/how-to-configure-high-availability/disable-high-availability-save.png" alt-text="Screenshot showing the Save button to disable high availability." lightbox="./media/how-to-configure-high-availability/disable-high-availability-save.png":::
 
-7.  A dialog informs you of the cost reduction associated with the removal of the standby server. If you decide to proceed, select **Disable HA**.
+7.  A dialog informs you of the cost reduction associated with the removal of the standby server. If you decide to proceed, select **Disable high availability**.
 
     :::image type="content" source="./media/how-to-configure-high-availability/confirm-disable-high-availability.png" alt-text="Screenshot showing the dialog to confirm disablement of high availability." lightbox="./media/how-to-configure-high-availability/confirm-disable-high-availability.png":::
 
