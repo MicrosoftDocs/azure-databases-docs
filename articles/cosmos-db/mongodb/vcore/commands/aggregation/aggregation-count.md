@@ -22,7 +22,11 @@ The syntax for the $count stage is straightforward. It takes a single argument, 
 }
 ```
 
-field: The name of the field in the output document where the count will be stored.
+## Parameters
+
+| | Description |
+| --- | --- |
+| **`field`** | The name of the field in the output document where the count will be stored. |
 
 ## Example(s)
 ### Example 1: Counting Total Documents
