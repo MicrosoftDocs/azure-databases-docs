@@ -27,7 +27,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 2. In the resource menu, select **Overview**.
 
-3. The status of the server must be **Available**, for the **Restart** button to appear on the toolbar.
+3. The status of the server must be **Ready**, for the **Restart** button to appear on the toolbar.
 
     :::image type="content" source="./media/how-to-restart-server/server-status.png" alt-text="Screenshot showing where in the Overview page you can find the status of the server." lightbox="./media/how-to-restart-server/server-status.png":::
 
@@ -47,9 +47,9 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="./media/how-to-restart-server/restarted-server-notification.png" alt-text="Screenshot showing the notification seen when a server completes a successful restart operation." lightbox="./media/how-to-restart-server/restarted-server-notification.png":::
 
-8. Also, the status of the server changes to **Available**.
+8. Also, the status of the server changes to **Ready**.
 
-    :::image type="content" source="./media/how-to-restart-server/restarted-server-status.png" alt-text="Screenshot showing a server which is started, highlighting its status as Available." lightbox="./media/how-to-restart-server/restarted-server-status.png":::
+    :::image type="content" source="./media/how-to-restart-server/restarted-server-status.png" alt-text="Screenshot showing a server which is started, highlighting its status as Ready." lightbox="./media/how-to-restart-server/restarted-server-status.png":::
 
 ### [CLI](#tab/cli-restart-server)
 
@@ -59,7 +59,7 @@ You can restart a started server via the [az postgres flexible-server restart](/
 az postgres flexible-server restart --resource-group <resource_group> --name <server>
 ```
 
-If you attempt to restart a server which isn't in `Available` state, you receive an error like this:
+If you attempt to restart a server which isn't in `Ready` state, you receive an error like this:
 
 ```output
 Server will be automatically started after 7 days if you do not perform a manual start operation

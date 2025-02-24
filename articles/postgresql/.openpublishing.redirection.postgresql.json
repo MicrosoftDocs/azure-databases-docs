@@ -2044,6 +2044,11 @@
         "source_path_from_root": "/articles/postgresql/videos.md",
         "redirect_url": "/azure/postgresql/flexible-server/overview",
         "redirect_document_id": false
+    },
+    {
+        "source_path_from_root": "/articles/postgresql/flexible-server/how-to-configure-managed-identities.md",
+        "redirect_url": "/azure/postgresql/flexible-server/how-to-configure-managed-identities-system-assigned",
+        "redirect_document_id": false
     }
 ]
 }
