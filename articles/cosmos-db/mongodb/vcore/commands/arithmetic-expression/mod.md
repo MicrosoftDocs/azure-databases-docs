@@ -16,7 +16,7 @@ The `$mod` query operator is used to filter documents based on the remainder of 
 
 ## Syntax
 
-```json
+```javascript
 { 
   <field>: { $mod: [ <divisor>, <remainder> ] } 
 }
@@ -31,26 +31,46 @@ The `$mod` query operator is used to filter documents based on the remainder of 
 ### Example 1: Find documents where the `sales` value is divisible by 3
 
 ```json
-db.collection.find({ "sales": { $mod: [3, 0] } })
+db.collection.find({ "sales": { "$mod": [3, 0] } })
 ```
 
-This example retrieves all documents where the `sales` field value is divisible by 3 (that is, the remainder is 0).
+This example retrieves all documents where the `sales` field value is divisible by 3 (that is, the remainder is 0). It will produce the following output:
+```json
+[
+  { "_id": 1, "sales": 9, "product": "A" },
+  { "_id": 2, "sales": 15, "product": "B" },
+  { "_id": 3, "sales": 21, "product": "C" }
+]
+```
 
 ### Example 2: Find documents where the `totalSales` value has a remainder of 2 when divided by 5
 
 ```json
-db.collection.find({ "totalSales": { $mod: [5, 2] } })
+db.collection.find({ "totalSales": { "$mod": [5, 2] } })
 ```
 
-This query filters documents where the `totalSales` field has a remainder of 2 when divided by 5.
+This query filters documents where the `totalSales` field has a remainder of 2 when divided by 5. It will produce the following output:
+```json
+[
+  { "_id": 4, "totalSales": 7, "product": "X" },
+  { "_id": 5, "totalSales": 12, "product": "Y" },
+  { "_id": 6, "totalSales": 17, "product": "Z" }
+]
+```
 
 ### Example 3: Query nested fields using $mod
 
 ```json
-db.collection.find({ "sales.monthly.total": { $mod: [4, 1] } })
+db.collection.find({ "sales.monthly.total": { "$mod": [4, 1] } })
 ```
 
-This example demonstrates querying a nested field (`sales.monthly.total`) with the `$mod` operator.
+This example demonstrates querying a nested field (`sales.monthly.total`) with the `$mod` operator. It will produce the following output:
+```json
+[
+  { "_id": 7, "sales": { "monthly": { "total": 5 } }, "category": "Electronics" },
+  { "_id": 8, "sales": { "monthly": { "total": 9 } }, "category": "Clothing" }
+]
+```
 
 ## Limitations
 

@@ -16,7 +16,7 @@ The `$multiply` operator calculates the product of numerical expressions and is 
 
 ## Syntax
 
-```json
+```javascript
 {
   $multiply: [ <expression1>, <expression2>, ... ]
 }
@@ -32,7 +32,7 @@ The `$multiply` operator calculates the product of numerical expressions and is 
 
 This example demonstrates how to double the value of the `fullSales` field:
 
-```json
+```javascript
 db.collection.aggregate([
   {
     $project: {
@@ -43,13 +43,20 @@ db.collection.aggregate([
 ])
 ```
 
-The result includes the original `sales` field and a new field `doubleSales` that is twice the value of `sales.fullSales`.
+The result includes the original `sales` field and a new field `doubleSales` that is twice the value of `sales.fullSales`. It will produce the following output:
+```json
+[
+  { "_id": 1, "sales": { "fullSales": 100 }, "doubleSales": 200 },
+  { "_id": 2, "sales": { "fullSales": 250 }, "doubleSales": 500 },
+  { "_id": 3, "sales": { "fullSales": 400 }, "doubleSales": 800 }
+]
+```
 
 ### Example 2: Calculate total discounts during a promotion
 
 This example calculates the total discount for a promotion in the "DJ Turntables" category:
 
-```json
+```javascript
 db.collection.aggregate([
   {
     $project: {
@@ -65,13 +72,33 @@ db.collection.aggregate([
 ])
 ```
 
-The `totalDiscount` field is derived by multiplying the first discount percentage from the `promotionEvents` array with the `totalSales` value.
+The `totalDiscount` field is derived by multiplying the first discount percentage from the `promotionEvents` array with the `totalSales` value. It will produce the following output:
+```json
+[
+  {
+    "_id": 4,
+    "promotionEvents": {
+      "discounts": [{ "discountPercentage": 0.10 }]
+    },
+    "sales": { "salesByCategory": { "totalSales": 5000 } },
+    "totalDiscount": 500
+  },
+  {
+    "_id": 5,
+    "promotionEvents": {
+      "discounts": [{ "discountPercentage": 0.15 }]
+    },
+    "sales": { "salesByCategory": { "totalSales": 10000 } },
+    "totalDiscount": 1500
+  }
+]
+```
 
 ### Example 3: Compute area of a rectangle
 
 This example calculates the area of a rectangle given its `width` and `height`:
 
-```json
+```javascript
 db.collection.aggregate([
   {
     $project: {
@@ -83,7 +110,14 @@ db.collection.aggregate([
 ])
 ```
 
-The resulting `area` field is the product of the rectangle's `width` and `height`.
+The resulting `area` field is the product of the rectangle's `width` and `height`. It will produce the following output:
+```json
+[
+  { "_id": 6, "dimensions": { "width": 5, "height": 10 }, "area": 50 },
+  { "_id": 7, "dimensions": { "width": 8, "height": 12 }, "area": 96 },
+  { "_id": 8, "dimensions": { "width": 3, "height": 7 }, "area": 21 }
+]
+```
 
 ## Limitations
 

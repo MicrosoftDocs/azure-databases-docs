@@ -16,7 +16,7 @@ The `$pow` operator is used to raise a number to a specified exponent. This can 
 
 ## Syntax
 
-```mongodb
+```javascript
 { $pow: [ <number>, <exponent> ] }
 ```
 
@@ -33,7 +33,7 @@ The `$pow` operator is used to raise a number to a specified exponent. This can 
 
 Suppose you want to calculate the square of the `fullSales` field in the `sales` document.
 
-```mongodb
+```javascript
 db.collection.aggregate([
   {
     $project: {
@@ -43,11 +43,20 @@ db.collection.aggregate([
 ])
 ```
 
+This output shows that the `fullSalesSquare` field contains the square of `fullSales`.
+```json
+[
+  { "_id": 1, "sales": { "fullSales": 10 }, "fullSalesSquare": 100 },
+  { "_id": 2, "sales": { "fullSales": 20 }, "fullSalesSquare": 400 },
+  { "_id": 3, "sales": { "fullSales": 30 }, "fullSalesSquare": 900 }
+]
+```
+
 ### Example 2: Calculate a power of a specific category's total sales
 
 If you want to calculate `totalSales` raised to the power of 3 for the "DJ Headphones" category:
 
-```mongodb
+```javascript
 db.collection.aggregate([
   {
     $unwind: "$sales.salesByCategory"
@@ -61,6 +70,24 @@ db.collection.aggregate([
     }
   }
 ])
+```
+
+This output shows the `totalSales` value raised to the power of 3 for the "DJ Headphones" category:
+```json
+[
+  {
+    "_id": 4,
+    "category": "DJ Headphones",
+    "sales": { "salesByCategory": { "totalSales": 5 } },
+    "totalSalesCubed": 125
+  },
+  {
+    "_id": 5,
+    "category": "DJ Headphones",
+    "sales": { "salesByCategory": { "totalSales": 10 } },
+    "totalSalesCubed": 1000
+  }
+]
 ```
 
 ## Related content

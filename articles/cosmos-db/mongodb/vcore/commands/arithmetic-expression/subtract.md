@@ -16,13 +16,13 @@ The `$subtract` operator is used to subtract two numbers and return the result. 
 
 ## Syntax
 
-```json
+```javascript
 { $subtract: [ <expression1>, <expression2> ] }
 ```
 
 ## Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **`<expression1>`** | The minuend (the number from which another number is to be subtracted). |
 | **`<expression2>`** | The subtrahend (the number to be subtracted). |
@@ -33,7 +33,7 @@ The `$subtract` operator is used to subtract two numbers and return the result. 
 
 The following example demonstrates how to subtract the `fullSales` value from the `totalSales` value in the `salesByCategory` array.
 
-```json
+```javascript
 db.collection.aggregate([
   {
     $project: {
@@ -44,11 +44,20 @@ db.collection.aggregate([
 ])
 ```
 
+This output shows the difference between totalSales and fullSales for each category:
+```json
+[
+  { "_id": 1, "category": "Electronics", "salesDifference": 500 },
+  { "_id": 2, "category": "Clothing", "salesDifference": -200 },
+  { "_id": 3, "category": "Home Appliances", "salesDifference": 1000 }
+]
+```
+
 ### Example 2: Calculating the Duration of a Promotional Event
 
 The following example calculates the duration of a promotional event in days by subtracting the `startDate` from the `endDate`.
 
-```json
+```javascript
 db.collection.aggregate([
   {
     $project: {
@@ -62,6 +71,22 @@ db.collection.aggregate([
     }
   }
 ])
+```
+
+This output calculates the number of days between the start and end date of each promotional event:
+```json
+[
+  {
+    "_id": 4,
+    "eventName": "Black Friday",
+    "eventDuration": 5
+  },
+  {
+    "_id": 5,
+    "eventName": "Holiday Sale",
+    "eventDuration": 10
+  }
+]
 ```
 
 ## Related content

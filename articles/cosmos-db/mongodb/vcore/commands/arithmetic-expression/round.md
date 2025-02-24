@@ -16,13 +16,13 @@ The `$round` operator is used to round a number to a specified decimal place. It
 
 ## Syntax
 
-```json
+```javascript
 { $round: [ <number>, <place> ] }
 ```
 
 ## Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **`<number>`** | The number to be rounded. |
 | **`<place>`** | The decimal place to which the number should be rounded. |
@@ -31,7 +31,7 @@ The `$round` operator is used to round a number to a specified decimal place. It
 
 ### Round the latitude and longitude values
 
-```json
+```javascript
 db.collection.aggregate([
   {
     $project: {
@@ -42,9 +42,17 @@ db.collection.aggregate([
 ])
 ```
 
+This rounds the latitude and longitude values to one decimal place for better readability:
+```json
+[
+  { "_id": 1, "location": { "lat": 37.774929, "lon": -122.419416 }, "roundedLat": 37.8, "roundedLon": -122.4 },
+  { "_id": 2, "location": { "lat": 40.712776, "lon": -74.005974 }, "roundedLat": 40.7, "roundedLon": -74.0 }
+]
+```
+
 ### Round the total sales to the nearest thousand
 
-```json
+```javascript
 db.collection.aggregate([
   {
     $project: {
@@ -54,9 +62,17 @@ db.collection.aggregate([
 ])
 ```
 
+This rounds total sales to the nearest thousand, which is useful for financial reporting:
+```json
+[
+  { "_id": 3, "sales": { "fullSales": 25400 }, "roundedSales": 25000 },
+  { "_id": 4, "sales": { "fullSales": 127500 }, "roundedSales": 128000 }
+]
+```
+
 ### Round the discount percentages to the nearest integer
 
-```json
+```javascript
 db.collection.aggregate([
   {
     $unwind: "$promotionEvents"
@@ -73,6 +89,25 @@ db.collection.aggregate([
   }
 ])
 ```
+
+This rounds discount percentages to the nearest whole number, which is helpful for display and pricing adjustments:
+```json
+[
+  {
+    "_id": 5,
+    "eventName": "Black Friday",
+    "categoryName": "Electronics",
+    "roundedDiscount": 20
+  },
+  {
+    "_id": 6,
+    "eventName": "Holiday Sale",
+    "categoryName": "Clothing",
+    "roundedDiscount": 15
+  }
+]
+```
+
 
 ## Related content
 [!INCLUDE[Related content](../includes/related-content.md)]

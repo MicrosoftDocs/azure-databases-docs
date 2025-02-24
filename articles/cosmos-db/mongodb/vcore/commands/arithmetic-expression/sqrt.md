@@ -16,13 +16,13 @@ The `$sqrt` operator is used to return the square root of a specified number. It
 
 ## Syntax
 
-```shell
+```javascript
 { $sqrt: <expression> }
 ```
 
 ## Parameters  
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **`<expression>`**| Any valid expression that resolves to a number. |
 
@@ -32,7 +32,7 @@ The `$sqrt` operator is used to return the square root of a specified number. It
 
 The following example demonstrates how to calculate the square root of the `fullSales` value within a document.
 
-```json
+```javascript
 db.collection.aggregate([
   {
     $project: {
@@ -44,11 +44,20 @@ db.collection.aggregate([
 ])
 ```
 
+This output includes the original fullSales value and its square root:
+```json
+[
+  { "_id": 1, "name": "Store A", "sales": { "fullSales": 100 }, "sqrtFullSales": 10 },
+  { "_id": 2, "name": "Store B", "sales": { "fullSales": 225 }, "sqrtFullSales": 15 },
+  { "_id": 3, "name": "Store C", "sales": { "fullSales": 400 }, "sqrtFullSales": 20 }
+]
+```
+
 ### Example 2: Calculate the square root of total sales by category
 
 This example shows how to calculate the square root of the `totalSales` for each sales category.
 
-```json
+```javascript
 db.collection.aggregate([
   {
     $unwind: "$sales.salesByCategory"
@@ -62,6 +71,26 @@ db.collection.aggregate([
     }
   }
 ])
+```
+
+This output calculates the square root of the totalSales for each sales category:
+```json
+[
+  {
+    "_id": 4,
+    "name": "Electronics Store",
+    "categoryName": "Laptops",
+    "totalSales": 144,
+    "sqrtTotalSales": 12
+  },
+  {
+    "_id": 5,
+    "name": "Fashion Outlet",
+    "categoryName": "Shoes",
+    "totalSales": 81,
+    "sqrtTotalSales": 9
+  }
+]
 ```
 
 ## Related content
