@@ -60,20 +60,6 @@ Sample output
 
 This example returns the count of documents in the store collection.
 
-### Example 2: Collection Statistics with Latency and Storage Stats
-```json
-db.store.aggregate([
-  {
-    $collStats: {
-      latencyStats: { histograms: true },
-      storageStats: { scale: 1 }
-    }
-  }
-])
-```
-
-
-This example returns latency statistics with histograms and storage statistics scaled to bytes for the store collection.
 
 ## Related content
 
