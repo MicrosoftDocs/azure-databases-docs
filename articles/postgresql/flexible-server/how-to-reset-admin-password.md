@@ -37,7 +37,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="./media/how-to-reset-admin-password/authentication.png" alt-text="Screenshot showing the Authentication page of an Azure Database for PostgreSQL flexible server." lightbox="./media/how-to-reset-admin-password/authentication.png":::
 
-5. **Assign access to** must be either **PostgreSQL authentication only** or **PostgreSQL and Microsoft Entra authentication** for the **Reset password** button to be enabled on the toolbar. When set to **Microsoft Entra authentication only**, the **Reset password** button is disabled.
+5. **Authentication method** must be either **PostgreSQL authentication only** or **PostgreSQL and Microsoft Entra authentication** for the **Reset password** button to be enabled on the toolbar. When set to **Microsoft Entra authentication only**, the **Reset password** button is disabled.
 
     :::image type="content" source="./media/how-to-reset-admin-password/microsoft-entra-authentication-only.png" alt-text="Screenshot showing that server's authentication is configured with Microsoft Entra authentication only." lightbox="./media/how-to-reset-admin-password/microsoft-entra-authentication-only.png":::
 
