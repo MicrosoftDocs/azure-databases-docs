@@ -218,7 +218,7 @@ This returns the following results:
 > [!NOTE]
 > For an equality match on an entire array, the order of the order of specified values in the equality predicates must also be an exact match.
 
-## Related Content
+## Related content
 
 - [Migrate to vCore based Azure Cosmos DB for MongoDB](https://aka.ms/migrate-to-azure-cosmosdb-for-mongodb-vcore)
 - [$gte for greater than or equal to comparisons]($gte.md)
