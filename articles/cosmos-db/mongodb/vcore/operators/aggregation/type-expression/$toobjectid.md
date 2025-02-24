@@ -7,7 +7,7 @@ ms.author: abramees
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: conceptual
-ms.date: 01/06/2025
+ms.date: 02/24/2025
 ---
 
 # $toObjectId 
@@ -26,7 +26,7 @@ The syntax for the `$toObject` operator is:
 
 ## Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **`expression`** | The specified string value to convert into an ObjectId|
 
