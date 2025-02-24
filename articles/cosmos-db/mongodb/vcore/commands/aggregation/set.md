@@ -7,7 +7,7 @@ ms.author: abramees
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: conceptual
-ms.date: 08/31/2024
+ms.date: 02/24/2025
 ---
 
 # $set
@@ -27,7 +27,7 @@ The `$set` operator updates an existing field or creates a new field with the sp
 
 ## Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **`newField`** | The name of the field to update or create|
 | **`expression`** | The expression that defines the value of the new or updated field|
