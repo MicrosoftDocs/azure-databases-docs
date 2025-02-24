@@ -46,6 +46,19 @@ db.stores.aggregate([
   }
 ])
 ```
+Sample output
+```json
+[
+  {
+    "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5",
+    "store": {
+      "name": "Downtown Store",
+      "promotionEvents": ["Summer Sale", "Black Friday", "Holiday Deals"]
+    },
+    "totalDiscountEvents": 3
+  }
+]
+```
 
 ### Example 2: Modifying an Existing Field
 If we want to add a field totalStaffCount that sums up the full-time and part-time staff, we can use:
@@ -61,6 +74,25 @@ db.stores.aggregate([
   }
 ])
 ```
+Sample output
+```json
+[
+  {
+    "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5",
+    "store": {
+      "name": "Downtown Store",
+      "staff": {
+        "totalStaff": {
+          "fullTime": 12,
+          "partTime": 8
+        }
+      }
+    },
+    "totalStaffCount": 20
+  }
+]
+```
+
 
 ### Example 3: Adding Nested Fields
 To add a nested field location.coordinates that combines latitude and longitude into an array, use:
@@ -73,6 +105,22 @@ db.stores.aggregate([
     }
   }
 ])
+```
+Sample output
+```json
+[
+  {
+    "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5",
+    "store": {
+      "name": "Downtown Store",
+      "location": {
+        "lat": 47.6097,
+        "lon": -122.3331,
+        "coordinates": [47.6097, -122.3331]
+      }
+    }
+  }
+]
 ```
 
 ## Related content

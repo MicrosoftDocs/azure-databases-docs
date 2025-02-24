@@ -49,6 +49,14 @@ db.store.aggregate([
   }
 ])
 ```
+Sample output
+```json
+[
+  {
+    "count": 1523
+  }
+]
+```
 
 This example returns the count of documents in the store collection.
 
@@ -63,6 +71,7 @@ db.store.aggregate([
   }
 ])
 ```
+
 
 This example returns latency statistics with histograms and storage statistics scaled to bytes for the store collection.
 

@@ -37,6 +37,25 @@ db.stores.aggregate([
   { $skip: 2 }
 ])
 ``` 
+Sample output
+```json
+[
+  {
+    "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5",
+    "store": {
+      "name": "Downtown Store",
+      "promotionEvents": ["Summer Sale", "Black Friday", "Holiday Deals"]
+    }
+  },
+  {
+    "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c6",
+    "store": {
+      "name": "Uptown Store",
+      "promotionEvents": ["Back to School", "Winter Sale"]
+    }
+  }
+]
+```
 
 ### Example 2: Skipping Documents and Then Limiting the Result
 To skip the first 2 documents and then limit the result to the next 3 documents, you can combine $skip with $limit:

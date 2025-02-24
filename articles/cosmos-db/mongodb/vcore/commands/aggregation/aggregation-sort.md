@@ -43,6 +43,55 @@ db.collection.aggregate([
   }
 ])
 ```
+Sample output
+```json
+[
+  {
+    "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5",
+    "store": {
+      "name": "Downtown Store",
+      "sales": {
+        "salesByCategory": [
+          {
+            "category": "Electronics",
+            "totalSales": 15000
+          },
+          {
+            "category": "Clothing",
+            "totalSales": 12000
+          },
+          {
+            "category": "Home Goods",
+            "totalSales": 10000
+          }
+        ]
+      }
+    }
+  },
+  {
+    "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c6",
+    "store": {
+      "name": "Uptown Store",
+      "sales": {
+        "salesByCategory": [
+          {
+            "category": "Electronics",
+            "totalSales": 20000
+          },
+          {
+            "category": "Clothing",
+            "totalSales": 18000
+          },
+          {
+            "category": "Home Goods",
+            "totalSales": 15000
+          }
+        ]
+      }
+    }
+  }
+]
+```
 
 ### Example 2: Sorting by Event Start Date in Ascending Order
 To sort the promotion events by their start dates in ascending order:
@@ -56,6 +105,62 @@ db.collection.aggregate([
     $sort: { "store.promotionEvents.promotionalDates.startDate": 1 }
   }
 ])
+```
+Sample output
+```json
+[
+  {
+    "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c5",
+    "store": {
+      "name": "Downtown Store",
+      "promotionEvents": [
+        {
+          "eventName": "Summer Sale",
+          "promotionalDates": {
+            "startDate": ISODate("2024-06-01T00:00:00Z"),
+            "endDate": ISODate("2024-06-30T23:59:59Z")
+          }
+        },
+        {
+          "eventName": "Black Friday",
+          "promotionalDates": {
+            "startDate": ISODate("2024-11-25T00:00:00Z"),
+            "endDate": ISODate("2024-11-25T23:59:59Z")
+          }
+        },
+        {
+          "eventName": "Holiday Deals",
+          "promotionalDates": {
+            "startDate": ISODate("2024-12-01T00:00:00Z"),
+            "endDate": ISODate("2024-12-31T23:59:59Z")
+          }
+        }
+      ]
+    }
+  },
+  {
+    "_id": "7954bd5c-9ac2-4c10-bb7a-2b79bd0963c6",
+    "store": {
+      "name": "Uptown Store",
+      "promotionEvents": [
+        {
+          "eventName": "Back to School",
+          "promotionalDates": {
+            "startDate": ISODate("2024-08-01T00:00:00Z"),
+            "endDate": ISODate("2024-08-31T23:59:59Z")
+          }
+        },
+        {
+          "eventName": "Winter Sale",
+          "promotionalDates": {
+            "startDate": ISODate("2024-12-01T00:00:00Z"),
+            "endDate": ISODate("2024-12-31T23:59:59Z")
+          }
+        }
+      ]
+    }
+  }
+]
 ```
 
 ## Related content

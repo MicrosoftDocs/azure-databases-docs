@@ -39,6 +39,14 @@ db.store.aggregate([
   }
 ])
 ```
+Sample output
+```json
+[
+  {
+    "totalDocuments": 1523
+  }
+]
+```
 
 ### Example 2: Counting Documents After Filtering
 To count the number of promotional events that offer a discount on laptops:
@@ -61,6 +69,14 @@ db.store.aggregate([
   }
 ])
 ```
+Sample output
+```json
+[
+  {
+    "laptopDiscountEvents": 12
+  }
+]
+```
 
 ### Example 3: Counting Documents in Nested Arrays
 To count the total number of sales categories:
@@ -74,6 +90,14 @@ db.store.aggregate([
     $count: "totalSalesCategories"
   }
 ])
+```
+Sample output
+```json
+[
+  {
+    "totalSalesCategories": 5
+  }
+]
 ```
 
 ## Related content
