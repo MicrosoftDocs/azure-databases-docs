@@ -7,7 +7,7 @@ ms.author: abramees
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: conceptual
-ms.date: 01/03/2025
+ms.date: 02/24/2025
 ---
 
 # mod
@@ -23,7 +23,7 @@ The syntax for the $mod operator is:
 
 ### Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **`field`** | The field to which the modulo operation will be applied|
 | **`divisor`** | The number by which the field's value will be divided|
