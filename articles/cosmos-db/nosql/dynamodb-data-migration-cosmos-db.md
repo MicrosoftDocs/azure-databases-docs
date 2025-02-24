@@ -57,7 +57,7 @@ Online migration generally uses a Change-Data-Capture (CDC) mechanism to stream 
 
 This section covers how to use Azure Data Factory, Azure Data Lake Storage, and Spark on Azure Databricks for data migration.
 
-:::image type="content" source="./media/migrate-data-dynamodb-to-cosmosdb/architecture.png" alt-text="Screenshot of solution overview" lightbox="./media/migrate-data-dynamodb-to-cosmosdb/architecture.png":::
+:::image type="content" source="./media/migrate-data-dynamodb-to-cosmosdb/architecture.png" alt-text="Screenshot of solution overview." lightbox="./media/migrate-data-dynamodb-to-cosmosdb/architecture.png":::
 
 
 1. Data from DynamoDB table is exported to S3 (in DynamoDB JSON format) using native DynamoDB export capability.
@@ -95,7 +95,7 @@ In the Azure portal, navigate to the Azure data factory created earlier, select 
 1. Create an [Azure Data Factory linked service for Amazon S3](https://learn.microsoft.com/azure/data-factory/connector-amazon-simple-storage-service?tabs=data-factory#create-an-amazon-simple-storage-service-s3-linked-service-using-ui). Enter the details for the S3 bucket to which you exported table data earlier. 
 2. Next, create an [Azure Data Lake Storage (ADLS) Gen2 linked service](https://learn.microsoft.com/azure/data-factory/connector-azure-data-lake-storage?tabs=data-factory#create-an-azure-data-lake-storage-gen2-linked-service-using-ui). Enter the details for the storage account created earlier.
 
-:::image type="content" source="./media/migrate-data-dynamodb-to-cosmosdb/linked-services.png" alt-text="Screenshot of linked services" lightbox="./media/migrate-data-dynamodb-to-cosmosdb/linked-services.png":::
+:::image type="content" source="./media/migrate-data-dynamodb-to-cosmosdb/linked-services.png" alt-text="Screenshot of linked services." lightbox="./media/migrate-data-dynamodb-to-cosmosdb/linked-services.png":::
 
 
 Use the [Azure portal to create a new pipeline](https://learn.microsoft.com/azure/data-factory/concepts-pipelines-activities?tabs=data-factory#creating-a-pipeline-with-ui). A Data Factory pipeline is a logical grouping of activities that together perform a task. 
@@ -103,22 +103,22 @@ Use the [Azure portal to create a new pipeline](https://learn.microsoft.com/azur
 1. Navigate to the **Author** tab in Data Factory Studio, then select the plus sign and choose **Pipeline** from the menu. 
 2. From the submenu, choose **Import from pipeline template** and use the template file (*S3ToADLSGen2.zip*) that you cloned from the GitHub repository.
 
-:::image type="content" source="./media/migrate-data-dynamodb-to-cosmosdb/pipeline-import.png" alt-text="Screenshot of import pipeline" lightbox="./media/migrate-data-dynamodb-to-cosmosdb/pipeline-import.png":::
+:::image type="content" source="./media/migrate-data-dynamodb-to-cosmosdb/pipeline-import.png" alt-text="Screenshot of import pipeline." lightbox="./media/migrate-data-dynamodb-to-cosmosdb/pipeline-import.png":::
 
 
 In the configuration, select the linked services that you created for Amazon S3 and ADLS Gen2, and choose **Use this template** to create the pipeline.
 
-:::image type="content" source="./media/migrate-data-dynamodb-to-cosmosdb/use-linked-services.png" alt-text="Screenshot of how to use linked services" lightbox="./media/migrate-data-dynamodb-to-cosmosdb/use-linked-services.png":::
+:::image type="content" source="./media/migrate-data-dynamodb-to-cosmosdb/use-linked-services.png" alt-text="Screenshot of how to use linked services." lightbox="./media/migrate-data-dynamodb-to-cosmosdb/use-linked-services.png":::
 
 
 Select the pipeline, navigate to **Source**, and edit the source (Amazon S3) dataset.
 
-:::image type="content" source="./media/migrate-data-dynamodb-to-cosmosdb/edit-source-dataset.png" alt-text="Screenshot of editing source dataset" lightbox="./media/migrate-data-dynamodb-to-cosmosdb/edit-source-dataset.png":::
+:::image type="content" source="./media/migrate-data-dynamodb-to-cosmosdb/edit-source-dataset.png" alt-text="Screenshot of editing source dataset." lightbox="./media/migrate-data-dynamodb-to-cosmosdb/edit-source-dataset.png":::
 
 
 In **File path**, enter the path to the exported files in your Amazon S3 bucket.
 
-:::image type="content" source="./media/migrate-data-dynamodb-to-cosmosdb/edit-source-dataset-2.png" alt-text="Screenshot of editing source dataset" lightbox="./media/migrate-data-dynamodb-to-cosmosdb/edit-source-dataset-2.png":::
+:::image type="content" source="./media/migrate-data-dynamodb-to-cosmosdb/edit-source-dataset-2.png" alt-text="Screenshot of editing source dataset." lightbox="./media/migrate-data-dynamodb-to-cosmosdb/edit-source-dataset-2.png":::
 
 
 > [!IMPORTANT]
@@ -129,17 +129,17 @@ Once the changes are complete, choose **Publish all** to publish the pipeline. T
 1. Choose the pipeline, select **Add trigger** at the top of the pipeline editor
 2. Select **Trigger now**, and choose **Ok**. 
 
-:::image type="content" source="./media/migrate-data-dynamodb-to-cosmosdb/pipeline-trigger.png" alt-text="Screenshot of how to trigger pipeline manually" lightbox="./media/migrate-data-dynamodb-to-cosmosdb/pipeline-trigger.png":::
+:::image type="content" source="./media/migrate-data-dynamodb-to-cosmosdb/pipeline-trigger.png" alt-text="Screenshot of how to trigger pipeline manually." lightbox="./media/migrate-data-dynamodb-to-cosmosdb/pipeline-trigger.png":::
 
 
 As the pipeline continues to execute, [you can monitor it](https://learn.microsoft.com/azure/data-factory/monitor-visually#monitor-pipeline-runs). Once it completes successfully, check the list of containers in the Azure Storage account created earlier.
 
-:::image type="content" source="./media/migrate-data-dynamodb-to-cosmosdb/pipeline-run.png" alt-text="Screenshot of monitoring pipeline run" lightbox="./media/migrate-data-dynamodb-to-cosmosdb/pipeline-run.png":::
+:::image type="content" source="./media/migrate-data-dynamodb-to-cosmosdb/pipeline-run.png" alt-text="Screenshot of monitoring pipeline run." lightbox="./media/migrate-data-dynamodb-to-cosmosdb/pipeline-run.png":::
 
 
 Verify that a new container was created along with the contents of S3 bucket.
 
-:::image type="content" source="./media/migrate-data-dynamodb-to-cosmosdb/container-created.png" alt-text="Screenshot of created storage container" lightbox="./media/migrate-data-dynamodb-to-cosmosdb/container-created.png":::
+:::image type="content" source="./media/migrate-data-dynamodb-to-cosmosdb/container-created.png" alt-text="Screenshot of created storage container." lightbox="./media/migrate-data-dynamodb-to-cosmosdb/container-created.png":::
 
 
 ### Step 3: Import ADLS data into Azure Cosmos DB using Spark on Azure Databricks
@@ -148,11 +148,11 @@ This section covers how to use the [Azure Cosmos DB Spark connector](https://git
 
 Start by creating an [Azure Databricks workspace](https://learn.microsoft.com/azure/databricks/getting-started/free-trial#portal). Make sure to review the compatibility matrix in terms of versions of various components including the Azure Cosmos DB Spark connector, Apache Spark, JVM, Scala, and Databricks Runtime. Refer to [this documentation](https://github.com/Azure/azure-sdk-for-java/tree/main/sdk/cosmos/azure-cosmos-spark_3-5_2-12#version-compatibility) for an exhaustive list.
 
-:::image type="content" source="./media/migrate-data-dynamodb-to-cosmosdb/databricks-spark-version.png" alt-text="Screenshot of Databricks version" lightbox="./media/migrate-data-dynamodb-to-cosmosdb/databricks-spark-version.png":::
+:::image type="content" source="./media/migrate-data-dynamodb-to-cosmosdb/databricks-spark-version.png" alt-text="Screenshot of Databricks version." lightbox="./media/migrate-data-dynamodb-to-cosmosdb/databricks-spark-version.png":::
 
 Once the Databricks workspace is created, [follow the documentation](https://learn.microsoft.com/azure/databricks/libraries/package-repositories#maven-libraries) to install the appropriate connector version. The rest of the steps in this article work with the connector version `4.36.0` with Spark `3.5.0` on Databricks `15.4` (with Scala `2.12`). Here are the Maven coordinates of the connector – [com.azure.cosmos.spark:azure-cosmos-spark_3-5_2-12:4.36.0](https://central.sonatype.com/artifact/com.azure.cosmos.spark/azure-cosmos-spark_3-5_2-12/4.36.0)
 
-:::image type="content" source="./media/migrate-data-dynamodb-to-cosmosdb/spark-connector-maven-package.png" alt-text="Screenshot of Spark connector version" lightbox="./media/migrate-data-dynamodb-to-cosmosdb/spark-connector-maven-package.png":::
+:::image type="content" source="./media/migrate-data-dynamodb-to-cosmosdb/spark-connector-maven-package.png" alt-text="Screenshot of Spark connector version." lightbox="./media/migrate-data-dynamodb-to-cosmosdb/spark-connector-maven-package.png":::
 
 The GitHub repository [contains a notebook](https://github.com/AzureCosmosDB/migration-dynamodb-to-cosmosdb-nosql/blob/main/migration.ipynb) (`migration.ipynb`) with the Spark code to read data from ADLS and write it to Azure Cosmos DB. [Import the notebook](https://learn.microsoft.com/azure/databricks/notebooks/notebook-export-import#import-a-notebook) into your Databricks workspace.
 
@@ -249,7 +249,6 @@ Finally, run the last (**step 6**) to write data to Azure Cosmos DB. Replace the
 | `resourceGroupName`  | Cosmos DB resource group name                                                                  |
 | `client_id`          | The application (client) ID of the Microsoft Entra ID application (found on the *Overview* page)           |
 | `tenant_id`          | The directory (tenant) ID of the Microsoft Entra ID application (found on the *Overview* page)              |
-| `client_secret`      | Value of the client secret associated with the Microsoft Entra ID application (found in *Certificates & secrets*) |
 | `client_secret`      | Value of the client secret associated with the Microsoft Entra ID application (found in *Certificates & secrets*) |
 
 After the cell execution completes, check the Azure Cosmos DB container to verify that the data has been migrated successfully.
