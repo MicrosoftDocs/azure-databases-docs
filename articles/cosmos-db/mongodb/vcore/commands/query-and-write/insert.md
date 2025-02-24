@@ -7,7 +7,7 @@ ms.author: abramees
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: conceptual
-ms.date: 01/03/2025
+ms.date: 02/24/2025
 ---
 
 # insert
@@ -30,7 +30,7 @@ db.collection.insert(
 
 ### Parameters
 
-| | Description |
+| Parameter | Description |
 | --- | --- |
 | **`<single document or array of documents>`** | The document or array of documents to insert into the collection|
 | **`writeConcern`** | (Optional) A document expressing the write concern. The write concern describes the level of acknowledgment requested from the server for the write operation|
