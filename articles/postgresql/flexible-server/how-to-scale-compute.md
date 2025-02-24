@@ -37,7 +37,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="./media/how-to-scale-compute/compute-tier.png" alt-text="Screenshot showing where to select a different compute tier." lightbox="./media/how-to-scale-compute/compute-tier.png":::
 
-4. If the region of your server supports Intel and AMD processors, you can use the **Compute Processor** radio button to filter the options listed in the **Compute size** drop-down to only hardware produced by the manufacturer selected.
+4. If the region of your server supports Intel and AMD processors, you can use the **Compute processor** radio button to filter the options listed in the **Compute size** drop-down to only hardware produced by the manufacturer selected.
 
     :::image type="content" source="./media/how-to-scale-compute/compute-processor.png" alt-text="Screenshot showing where to select a different compute processor manufacturer." lightbox="./media/how-to-scale-compute/compute-processor.png":::
 
