@@ -200,7 +200,7 @@ This query returns the following result:
 }
 ```
 
-## Related Content
+## Related content
 
 - [Migrate to vCore based Azure Cosmos DB for MongoDB](https://aka.ms/migrate-to-azure-cosmosdb-for-mongodb-vcore)
 - [$type to determine the BSON type of a value]($type.md)
