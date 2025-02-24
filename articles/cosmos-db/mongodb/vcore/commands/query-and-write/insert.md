@@ -353,7 +353,7 @@ The ordered insert command returns a response confirming the order in which docu
 }
 ```
 
-## Related Content
+## Related content
 
 - [Migrate to vCore based Azure Cosmos DB for MongoDB](https://aka.ms/migrate-to-azure-cosmosdb-for-mongodb-vcore)
 - [update with vCore based Azure Cosmos DB for MongoDB](update.md)
