@@ -49,7 +49,11 @@ Using the [Azure portal](https://portal.azure.com).
 
 2. In the resource menu, under **Monitoring**, select **Workbooks**.
 
-    :::image type="content" source="./media/concepts-workbooks/monitor-workbooks-all.png" alt-text="Screenshot showing the Overview and Enhanced Metrics templates on the Workbooks page." lightbox="media/concepts-workbooks/monitor-workbooks-all.png":::
+    :::image type="content" source="./media/concepts-workbooks/monitor-workbooks.png" alt-text="Screenshot showing the Workbooks menu option under Monitoring." lightbox="media/concepts-workbooks/monitor-workbooks.png":::
+
+3. Select the **Overview** or the **Enhanced Metrics** template.
+
+    :::image type="content" source="./media/concepts-workbooks/overview-enhanced-metrics.png" alt-text="Screenshot showing the Overview and Enhanced Metrics templates on the Workbooks page." lightbox="media/concepts-workbooks/overview-enhanced-metrics.png":::
 
 ## Related content
 
