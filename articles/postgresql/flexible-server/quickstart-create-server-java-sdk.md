@@ -42,11 +42,9 @@ You can manage configuration settings for an Azure PostgreSQL flexible server in
 - Download Maven for using the Azure Java SDK library
 - [Azure CLI](/cli/azure/install-azure-cli) installed on your local machine.
 
-## Log in to Azure
+## Setting up your account using az cli
 
 Before using the Azure SDK for Java to create, update, or delete an Azure Database for PostgreSQL flexible server instance, you must log in to your Azure account using the Azure CLI.
-
-### Run the login command
 
 - Log in to your account using [az CLI](/cli/azure/authenticate-azure-cli-interactively)
 
@@ -60,10 +58,10 @@ az login
 az account show --query tenantId --output tsv
 ```
 
-## Create the project
+### Create project
 
-Create a new Maven project in your preferred IDE and then add the dependencies mentioned below for Azure Database for PostgreSQL Flexible Server library 
-When you create a Maven project there is a pom.xml file that would be created. Please add all the dependencies in the `pom.xml` under the <dependencies> tag.
+Create a new Maven project in your preferred IDE and then add the dependencies mentioned below for Azure Database for PostgreSQL Flexible Server library. 
+Once you create a Maven project there is a pom.xml file that would be created. Please ensure that all dependencies are added under the `<dependencies>` tag in this file.
 
 ```xml
 <dependency>
@@ -101,7 +99,7 @@ When you create a Maven project there is a pom.xml file that would be created. P
 > [!NOTE]  
 > Please check the latest version for all the dependencies before adding them in your file.
 
-### Create the Server
+### Create Azure Databases for PostgreSQL Flexible Server Instance
 
 To create a PostgreSQL flexible server instance, create a file named `CreateServer.java` with the following code.
 
@@ -186,7 +184,7 @@ Replace the following parameters in the code with your data:
 
 There are different ways to authenticate your credentials, in this example we have used `DefaultAzureCredentialBuilder`  used to configure and create a DefaultAzureCredential object, which is a credential that can be used to authenticate with Azure services. Login using Azure CLI as mentioned in the prerequisites.
 
-## Run the file
+### Run the file
 Make sure that you have created a maven project and execute below commands, please make sure you run these commands everytime you add a new dependency in your `pom.xml` file to install that dependency in your local repository:
 ```cli
 mvn clean install
@@ -201,7 +199,8 @@ java <file-name>
 
 You can review the deployed flexible server instance through Azure portal, Azure CLI, Azure PowerShell, and various other tools to validate the deployment and review the deployed resources.
 
-## Create Databases for an instance
+### Create Database in Azure Databases for PostgreSQL Flexible Server Instance
+
 You can add a new database to your created server. Make sure you have your Azure Database for PostgreSQL Flexible Server instance up and running.
 
 ```java
@@ -233,7 +232,7 @@ public static void main(String args[]) {
 }
 ```
 
-## Update server data
+### Update the data - Azure Databases for PostgreSQL Flexible Server Instance
 
 Create a `UpdateServer.java` file.
 
