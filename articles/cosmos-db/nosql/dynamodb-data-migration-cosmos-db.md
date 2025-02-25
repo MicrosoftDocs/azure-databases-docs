@@ -37,7 +37,7 @@ The approach followed in this article is just one of the many ways to migrate da
 
 | Approach | Pros | Cons |
 |----------|------|------|
-| **Export from DynamoDB to S3, load to ADLS (using ADF), write to Azure Cosmos DB (using Spark on Azure Databricks)** | Decouples storage and processing. Spark provides scalability and flexibility (additional data transformations, processing) | Multi-stage process increases complexity, and overall latency. Requires knowledge of Spark (learning curve). |
+| **Export from DynamoDB to S3, load to ADLS Gen2 (using ADF), write to Azure Cosmos DB (using Spark on Azure Databricks)** | Decouples storage and processing. Spark provides scalability and flexibility (additional data transformations, processing) | Multi-stage process increases complexity, and overall latency. Requires knowledge of Spark (learning curve). |
 | **Export from DynamoDB to S3, use ADF to read from S3 and write to Azure Cosmos DB** | Low/No-code approach (Spark skillset not required). Suitable for simple data transformations. | Complex transformation maybe difficult to implement. |
 | **Use Spark on Azure Databricks to read from DynamoDB and write to Azure Cosmos DB** | Fit for small datasets - direct processing avoids extra storage costs. Supports complex transformations (Spark). | Higher cost on DynamoDB side due to RCU consumption (S3 export not used). Requires knowledge of Spark (learning curve). |
 
@@ -145,7 +145,7 @@ Verify that a new container was created along with the contents of S3 bucket.
 :::image type="content" source="./media/migrate-data-dynamodb-to-cosmosdb/container-created.png" alt-text="Screenshot of created storage container." lightbox="./media/migrate-data-dynamodb-to-cosmosdb/container-created.png":::
 
 
-### Step 3: Import ADLS data into Azure Cosmos DB using Spark on Azure Databricks
+### Step 3: Import ADLS Gen2 data into Azure Cosmos DB using Spark on Azure Databricks
 
 This section covers how to use the [Azure Cosmos DB Spark connector](https://github.com/Azure/azure-cosmosdb-spark) to write data in Azure Cosmos DB. Azure Cosmos DB OLTP Spark connector provides Apache Spark support for Azure Cosmos DB NoSQL API. It allows you to read from and write to Azure Cosmos DB via Apache Spark DataFrames in Python and Scala.
 
@@ -157,7 +157,7 @@ Once the Databricks workspace is created, [follow the documentation](https://lea
 
 :::image type="content" source="./media/migrate-data-dynamodb-to-cosmosdb/spark-connector-maven-package.png" alt-text="Screenshot of Spark connector version." lightbox="./media/migrate-data-dynamodb-to-cosmosdb/spark-connector-maven-package.png":::
 
-The GitHub repository [contains a notebook](https://github.com/AzureCosmosDB/migration-dynamodb-to-cosmosdb-nosql/blob/main/migration.ipynb) (`migration.ipynb`) with the Spark code to read data from ADLS and write it to Azure Cosmos DB. [Import the notebook](https://learn.microsoft.com/azure/databricks/notebooks/notebook-export-import#import-a-notebook) into your Databricks workspace.
+The GitHub repository [contains a notebook](https://github.com/AzureCosmosDB/migration-dynamodb-to-cosmosdb-nosql/blob/main/migration.ipynb) (`migration.ipynb`) with the Spark code to read data from ADLS Gen2 and write it to Azure Cosmos DB. [Import the notebook](https://learn.microsoft.com/azure/databricks/notebooks/notebook-export-import#import-a-notebook) into your Databricks workspace.
 
 #### Configure Microsoft Entra ID authentication
 
@@ -212,7 +212,7 @@ pip install azure-cosmos azure-mgmt-cosmosdb azure.mgmt.authorization
 dbutils.library.restartPython()
 ```
 
-The third step reads DynamoDB data from ADLS and stores it in a data frame. Before running it, replace the following information with the corresponding values in your setup:
+The third step reads DynamoDB data from ADLS Gen2 and stores it in a data frame. Before running it, replace the following information with the corresponding values in your setup:
 
 | Variable             | Description                                                                 |
 |----------------------|-----------------------------------------------------------------------------|
