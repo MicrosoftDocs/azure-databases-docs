@@ -19,7 +19,44 @@ In this quickstart, you learn how to use the Azure SDK libraries in Java to crea
 - Java Development Kit (JDK) with version 8 or above
 - Download Maven 
 - [Azure CLI](/cli/azure/install-azure-cli) installed on your local machine.
-- Adding dependencies for Maven project in `pom.xml`
+
+1. **Creating Azure PostgreSQL Flexible Servers**:\
+You can create new Flexible Servers instances with specified configurations such as location, SKU, storage, and version.
+
+2. **Updating Azure PostgreSQL Flexible Servers**:\
+You can update existing PostgreSQL flexible servers, including changing configurations like administrator login, password, SKU, storage, and version.
+
+3. **Deleting Azure PostgreSQL Flexible Servers**:\
+You can delete existing Azure PostgreSQL flexible server instances.
+
+4. **Retrieving Azure PostgreSQL Flexible Server Information**:\
+You can retrieve details about existing PostgreSQL flexible servers, including their configurations, status, and other metadata.
+
+5. **Managing Databases**:\
+You can create, update, delete, and retrieve databases within the Azure PostgreSQL flexible server instance.
+
+6. **Managing Firewall Rules**:\
+You can create, update, delete, and retrieve firewall rules for an instance to control access.
+
+7. **Managing Configuration Settings**:\
+You can manage configuration settings for an Azure PostgreSQL flexible server instance, including retrieving and updating server parameters.
+
+## Log in to Azure
+
+Before using the Azure SDK for Java to create, update, or delete an Azure Database for PostgreSQL flexible server instance, you must log in to your Azure account using the Azure CLI.
+
+### Run the login command
+
+Log in to your account using [az CLI](/cli/azure/authenticate-azure-cli-interactively)
+
+```azurecli-interactive
+az login
+```
+
+## Create the project
+
+Create a new Maven project in your preferred IDE and then add the dependencies mentioned below for Azure Database for PostgreSQL Flexible Server library 
+When you create a Maven project there is a pom.xml file that would be created. Please add all the dependencies in the `pom.xml` under the <dependencies> tag.
 
 ```xml
 <dependencies>
@@ -60,44 +97,6 @@ In this quickstart, you learn how to use the Azure SDK libraries in Java to crea
 ```
 > [!NOTE]  
 > Please check the latest version for all the dependencies before adding them in your file.
-
-
-1. **Creating Azure PostgreSQL Flexible Servers**:\
-You can create new Flexible Servers instances with specified configurations such as location, SKU, storage, and version.
-
-2. **Updating Azure PostgreSQL Flexible Servers**:\
-You can update existing PostgreSQL flexible servers, including changing configurations like administrator login, password, SKU, storage, and version.
-
-3. **Deleting Azure PostgreSQL Flexible Servers**:\
-You can delete existing Azure PostgreSQL flexible server instances.
-
-4. **Retrieving Azure PostgreSQL Flexible Server Information**:\
-You can retrieve details about existing PostgreSQL flexible servers, including their configurations, status, and other metadata.
-
-5. **Managing Databases**:\
-You can create, update, delete, and retrieve databases within the Azure PostgreSQL flexible server instance.
-
-6. **Managing Firewall Rules**:\
-You can create, update, delete, and retrieve firewall rules for an instance to control access.
-
-7. **Managing Configuration Settings**:\
-You can manage configuration settings for an Azure PostgreSQL flexible server instance, including retrieving and updating server parameters.
-
-## Log in to Azure
-
-Before using the Azure SDK for Java to create, update, or delete an Azure Database for PostgreSQL flexible server instance, you must log in to your Azure account using the Azure CLI.
-
-### Run the login command
-
-Log in to your account using [az CLI](/cli/azure/authenticate-azure-cli-interactively)
-
-```azurecli-interactive
-az login
-```
-
-## Create the project
-
-Create a new Maven project in your preferred IDE and then add the dependencies mentioned in the prerequisities for Azure Database for PostgreSQL Flexible Server library 
 
 ### Create the Server
 
@@ -141,7 +140,7 @@ import com.azure.resourcemanager.postgresqlflexibleserver.models.Storage;
 import com.azure.resourcemanager.postgresqlflexibleserver.models.StorageAutoGrow;
 import com.azure.resourcemanager.postgresqlflexibleserver.models.UserAssignedIdentity;
 import com.azure.resourcemanager.postgresqlflexibleserver.models.UserIdentity;
-public class Main {
+public class CreateServer {
 
    
     public static void main(String[] args) throws Exception {
@@ -170,7 +169,7 @@ public class Main {
     }
 ```
 
-This example demonstrates creating a PostgreSQL flexible server using the `PostgreSqlManager` class. Before calling the create method it authenticates against the TokenCredential and AzureProfile. Once that is done it defines the Flexible server instance with your given configuration.
+This example demonstrates creating a Azure Database for PostgreSQL flexible instance server using the `PostgreSqlManager` class. Before calling the create method it authenticates against the TokenCredential and AzureProfile. Once that is done it defines the Flexible server instance with your given configuration.
 
 Replace the following parameters in the code with your data:
 
@@ -264,7 +263,7 @@ import com.azure.resourcemanager.postgresqlflexibleserver.models.SkuTier;
 import com.azure.resourcemanager.postgresqlflexibleserver.models.Storage;
 import com.azure.resourcemanager.postgresqlflexibleserver.models.StorageAutoGrow;
 
-public class Update {
+public class UpdateServer {
 	public static void main(String args[]) {
 		String subscriptionId = "<subscription-id>";
     	AzureProfile profile = new AzureProfile("7<tenant-id>", subscriptionId, AzureEnvironment.AZURE);
