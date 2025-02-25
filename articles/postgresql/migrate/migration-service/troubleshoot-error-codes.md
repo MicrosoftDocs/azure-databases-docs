@@ -45,6 +45,43 @@ In the context of migration service in Azure Database for PostgreSQL, a connecti
 
 These settings help maintain the connection by sending keepalive probes to prevent timeouts due to inactivity. Importantly, modifying these TCP parameters doesn't require a restart of the source or target PostgreSQL instances. Changes can be applied dynamically, allowing for a seamless continuation of service without interrupting the database operations.
 
+## Connection Terminated Due to Idle-in-Transaction Timeout
+
+### Symptoms
+- The Migration service encounters a connection termination message.
+- Logs display the error: `terminating connection due to idle-in-transaction timeout`.
+
+### Cause
+
+This error occurs when a database connection remains idle within a transaction for longer than the value specified in the `idle_in_transaction_timeout` parameter. PostgreSQL automatically terminates such connections to avoid resource locking issues.
+
+### Resolution
+
+Set the `idle_in_transaction_timeout` parameter to `0` to disable the timeout during the migration process.
+
+Example command to apply this setting:
+```azurecli-interactive
+ALTER SYSTEM SET idle_in_transaction_timeout = 0;
+```
+
+Ensure to reset this parameter to its original value after the migration to maintain database performance and prevent prolonged idle connections.
+
+## Shared Memory Exhaustion
+
+### Symptoms
+The migration process halts unexpectedly. Logs display the error: `out of shared memory`.
+
+### Cause
+
+This error indicates that PostgreSQL has exhausted the shared memory allocated for locks. It typically occurs when the migration process involves many locks beyond the current setting of the max_locks_per_transaction parameter.
+
+### Resolution
+
+- Increase the value of the `max_locks_per_transaction` parameter to accommodate the additional locks required during the migration process.
+- Example command to modify this setting: `ALTER SYSTEM SET max_locks_per_transaction = <<>>;`
+- Ensure that, `max_locks_per_transaction * max_connections > Number of tables + Number of indexes`
+- If the issue persists, consider increasing the shared_buffers parameter to ensure sufficient shared memory is available for lock management.
+
 ## Migration error codes
 
 | Error Code | Error message | Resolution |
@@ -80,7 +117,7 @@ These settings help maintain the connection by sending keepalive probes to preve
 | 603408 | Unsupported Extensions. Target server version 16 doesn't support `{0}` extensions. Migrate to version 15 or lower, then upgrade once the extensions are supported. | N/A |
 | 603409 | User-defined casts present. Source database `{0}` contains user-defined casts that can't be migrated to the target server. | N/A |
 | 603410 | System table permission error. Users have access to system tables like pg_authid and pg_shadow that can't be migrated to the target. Revoke these permissions and retry the migration. | Validating the default permissions granted to `pg_catalog` tables/views (such as `pg_authid` and `pg_shadow`) is essential. However, these permissions can't be assigned to the target. Specifically, User `{1}` possesses `{2}` permissions, while User `{3}` holds `{4}` permissions. For a workaround, visit [User, Roles, and Permissions](https://aka.ms/troubleshooting-user-roles-permission-ownerships-issues) |
-| 603413 | Unsupported language(s). The migration service does not support the migration of databases with `{0}` language(s) on the target server. Remove the language(s) and its implemented function(s). | N/A |
+| 603413 | Unsupported language(s). The migration service does not support the migration of databases with `{0}` language(s) on the target server. Remove the language(s) and its implemented function(s). | Try  disabling or removing {cast_name} on source server before migrating to target server. |
 | 603700 | Target database cleanup failed. Unable to terminate active connections on the target database during the pre-migration/post-migration phase. | N/A |
 | 603701 | Internal server error. Failed to create roles on the target server. | [Contact Microsoft support](https://support.microsoft.com/contactus) for further analysis. |
 | 603702 | Internal server error. Failed to dump roles from source server. | [Contact Microsoft support](https://support.microsoft.com/contactus) for further analysis. |
