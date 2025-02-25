@@ -57,14 +57,12 @@ This error occurs when a database connection remains idle within a transaction f
 
 ### Resolution
 
-Set the `idle_in_transaction_timeout` parameter to `0` to disable the timeout during the migration process.
-
-Example command to apply this setting:
+- Set the `idle_in_transaction_timeout` parameter to `0` to disable the timeout during the migration process.
+- Example command to apply this setting:
 ```azurecli-interactive
 ALTER SYSTEM SET idle_in_transaction_timeout = 0;
 ```
-
-Ensure to reset this parameter to its original value after the migration to maintain database performance and prevent prolonged idle connections.
+- Ensure to reset this parameter to its original value after the migration to maintain database performance and prevent prolonged idle connections.
 
 ## Shared Memory Exhaustion
 
