@@ -78,8 +78,7 @@ Before you proceed, make sure you complete the following:
 
 ### Step 1: Export data from DynamoDB to Amazon S3
 
-DynamoDB S3 export is a built-in solution for exporting DynamoDB data to an Amazon S3 bucket. Follow the [DynamoDB documentation]
-(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/S3DataExport_Requesting.html) for steps on how to execute this process, including setting up necessary S3 permissions, etc. DynamoDB supports DynamoDB JSON and Amazon Ion as the file formats for exported data.
+DynamoDB S3 export is a built-in solution for exporting DynamoDB data to an Amazon S3 bucket. Follow the [DynamoDB documentation](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/S3DataExport_Requesting.html) for steps on how to execute this process, including setting up necessary S3 permissions. DynamoDB supports DynamoDB JSON and Amazon Ion as the file formats for exported data.
 
 > [!NOTE]
 > This sample uses data exported in DynamoDB JSON format.
