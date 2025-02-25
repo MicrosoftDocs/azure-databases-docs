@@ -102,19 +102,8 @@ az cosmosdb update -n $dbName -g $rg --minimal-tls-version $minimalTlsVersion
 To set using Azure PowerShell, use the command:
 
 ```azurepowershell-interactive
-$minimalTlsVersion = 'Tls12'
-$patchParameters = @{
-  ResourceGroupName = 'myresourcegroup'
-  Name = 'mycosmosdbaccount'
-  ResourceProviderName = 'Microsoft.DocumentDB'
-  ResourceType = 'databaseaccounts'
-  ApiVersion = '2022-11-15'
-  Payload = "{ 'properties': {
-      'minimalTlsVersion': '$minimalTlsVersion'
-  } }"
-  Method = 'PATCH'
-}
-Invoke-AzRestMethod @patchParameters
+$minimalTlsVersion = "Tls12"
+Update-AzCosmosDBAccount -ResourceGroupName myresourcegroup -Name mycosmosdbaccount -MinimalTlsVersion $minimalTlsVersion
 ```
 
 ### Set via ARM template
@@ -154,10 +143,18 @@ To set this property using an ARM template, update your existing template or exp
 
 ### For new accounts
 
-You can create accounts with the `minimalTlsVersion` property set by using the ARM template above, or by changing the PATCH method to a PUT on either Azure CLI or Azure PowerShell. Make sure to include the other properties for your account.
+You can create accounts with the `minimalTlsVersion` property set by using the ARM template above, or by using Azure PowerShell, run the command:
+
+```azurepowershell-interactive
+az cosmosdb create --name <CosmosDBAccountName> \
+  --resource-group <ResourceGroupName> \
+  --kind GlobalDocumentDB \
+  --locations regionName=<Region> \
+  --minimal-tls-version "Tls12"
+```
 
 > [!IMPORTANT]
-> If the account exists and the `minimalTlsVersion` property is omitted in a PUT request, then the property will reset to its default value, starting with the 2022-11-15 API version.
+> If the account exists and the `minimalTlsVersion` property is omitted, then the property will reset to its default value, starting with the 2022-11-15 API version.
 
 ## How to verify minimum TLS version enforcement
 
@@ -181,14 +178,6 @@ az rest --uri "/subscriptions/$subId/resourceGroups/$rg/providers/Microsoft.Docu
 To get the current value of the property using Azure PowerShell, run the command:
 
 ```azurepowershell-interactive
-$getParameters = @{
-  ResourceGroupName = 'myresourcegroup'
-  Name = 'mycosmosdbaccount'
-  ResourceProviderName = 'Microsoft.DocumentDB'
-  ResourceType = 'databaseaccounts'
-  ApiVersion = '2022-11-15'
-  Method = 'GET'
-}
-Invoke-AzRestMethod @getParameters
+Get-AzCosmosDBAccount -ResourceGroupName myresourcegroup -Name mycosmosdbaccount
 ```
 
