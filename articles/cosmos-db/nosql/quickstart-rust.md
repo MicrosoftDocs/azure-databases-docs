@@ -8,8 +8,8 @@ ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.devlang: rust
 ms.topic: quickstart-sdk
-ms.date: 02/24/2025
-ms.custom: devx-track-rust, devx-track-extended-azdevcli
+ms.date: 02/25/2025
+ms.custom: devx-track-rust
 appliesto:
   - ✅ NoSQL
 # CustomerIntent: As a developer, I want to learn the basics of the Rust library so that I can build applications with Azure Cosmos DB for NoSQL.
@@ -31,64 +31,14 @@ In this quickstart, you deploy a basic Azure Cosmos DB for Table application usi
 
 ## Prerequisites
 
-- Azure Developer CLI
 - Docker Desktop
 - Rust 1.80 or later
 
 If you don't have an Azure account, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
 
-## Initialize the project
-
-Use the Azure Developer CLI (`azd`) to create an Azure Cosmos DB for Table account and deploy a containerized sample application. The sample application uses the client library to manage, create, read, and query sample data.
-
-1. Open a terminal in an empty directory.
-
-1. If you're not already authenticated, authenticate to the Azure Developer CLI using `azd auth login`. Follow the steps specified by the tool to authenticate to the CLI using your preferred Azure credentials.
-
-    ```azurecli
-    azd auth login
-    ```
-
-1. Use `azd init` to initialize the project.
-
-    ```azurecli
-    azd init --template cosmos-db-nosql-rust-quickstart
-    ```
-
-1. During initialization, configure a unique environment name.
-
-1. Deploy the Azure Cosmos DB account using `azd up`. The Bicep templates also deploy a sample web application.
-
-    ```azurecli
-    azd up
-    ```
-
-1. During the provisioning process, select your subscription, desired location, and target resource group. Wait for the provisioning process to complete. The process can take **approximately five minutes**.
-
-1. Once the provisioning of your Azure resources is done, a URL to the running web application is included in the output.
-
-    ```output
-    Deploying services (azd deploy)
-    
-      (✓) Done: Deploying service web
-    - Endpoint: <https://[container-app-sub-domain].azurecontainerapps.io>
-    
-    SUCCESS: Your application was provisioned and deployed to Azure in 5 minutes 0 seconds.
-    ```
-
-1. Use the URL in the console to navigate to your web application in the browser. Observe the output of the running app.
-
-:::image type="content" source="media/quickstart-rust/running-application.png" alt-text="Screenshot of the running web application.":::
-
 ### Install the client library
 
 The client library is available through Rust, as the `azure_data_cosmos` crate.
-
-1. Open a terminal and navigate to the `/src` folder.
-
-    ```bash
-    cd ./src
-    ```
 
 1. If not already installed, install the `azure_data_cosmos` create using `cargo install`.
 
@@ -101,8 +51,6 @@ The client library is available through Rust, as the `azure_data_cosmos` crate.
     ```bash
     cargo install azure_identity
     ```
-
-1. Open and review the **src/Cargo.toml** file to validate that the `azure_data_cosmos` and `azure_identity` entries both exist.
 
 ## Object model
 
@@ -236,14 +184,6 @@ Use the Visual Studio Code extension for Azure Cosmos DB to explore your NoSQL d
 - Managing databases and containers
 
 For more information, see [How-to use Visual Studio Code extension to explore Azure Cosmos DB for NoSQL data](../visual-studio-code-extension.md?pivots=api-nosql).
-
-## Clean up resources
-
-When you no longer need the sample application or resources, remove the corresponding deployment and all resources.
-
-```azurecli
-azd down
-```
 
 ## Related content
 
