@@ -23,11 +23,19 @@ Before creating extensions in Azure Database for PostgreSQL flexible server, you
 
 Using the [Azure portal](https://portal.azure.com):
 
-1. Select your Azure Database for PostgreSQL flexible server instance.
-1. From the resource menu, under **Settings** section, select **Server parameters**.
-1. Select the extensions that you want to allowlist, from the ones available in the `azure.extensions` parameter, and select **Save**.
+1. Select your Azure Database for PostgreSQL flexible server.
 
-    :::image type="content" source="media/how-to-allow-extensions/allow-list.png" alt-text="Screenshot of allowlist." lightbox="media/how-to-allow-extensions/allow-list.png":::
+2. From the resource menu, under **Settings** section, select **Server parameters**.
+
+    :::image type="content" source="media/how-to-allow-extensions/server-parameters.png" alt-text="Screenshot that shows the Server parameters menu option." lightbox="media/how-to-allow-extensions/server-parameters.png":::
+
+3. Select the extensions that you want to allowlist, from the ones available in the `azure.extensions` parameter.
+
+    :::image type="content" source="media/how-to-allow-extensions/allow-list.png" alt-text="Screenshot that shows how to allowlist some extensions." lightbox="media/how-to-allow-extensions/allow-list.png":::
+
+4. Select **Save**.
+
+    :::image type="content" source="media/how-to-allow-extensions/save-extensions.png" alt-text="Screenshot that shows the Save button in the Server parameters page." lightbox="media/how-to-allow-extensions/save-extensions.png":::
 
 ### [CLI](#tab/allow-extensions-cli)
 
