@@ -38,8 +38,8 @@ You can manage configuration settings for an Azure PostgreSQL flexible server in
 ## Prerequisites
 
 - [An Azure account with an active subscription](https://azure.microsoft.com/free/).
-- Java Development Kit (JDK) with version 8 or above
-- Download Maven 
+- Java Development Kit (JDK) with latest version
+- Download Maven for using the Azure Java SDK library
 - [Azure CLI](/cli/azure/install-azure-cli) installed on your local machine.
 
 ## Log in to Azure
