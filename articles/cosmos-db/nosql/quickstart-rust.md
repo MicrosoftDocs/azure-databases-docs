@@ -90,7 +90,7 @@ The client library is available through Rust, as the `azure_data_cosmos` crate.
     cd ./src
     ```
 
-1. If not already installed, install the `azure_data_cosmos` create using ``.
+1. If not already installed, install the `azure_data_cosmos` create using `cargo install`.
 
     ```bash
     cargo install azure_data_cosmos
@@ -138,7 +138,7 @@ let client = CosmosClient::new(&endpoint, credential, None)?;
 Use `client.database` to retrieve the existing database named *`cosmicworks`*.
 
 ```rust
-let database = client.database_client("database");
+let database = client.database_client("cosmicworks");
 ```
 
 ### Get a container
