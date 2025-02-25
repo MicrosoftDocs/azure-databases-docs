@@ -8,8 +8,8 @@ ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.devlang: rust
 ms.topic: quickstart-sdk
-ms.date: 02/24/2025
-ms.custom: devx-track-rust, devx-track-extended-azdevcli
+ms.date: 02/25/2025
+ms.custom: devx-track-rust
 appliesto:
   - ✅ NoSQL
 # CustomerIntent: As a developer, I want to learn the basics of the Rust library so that I can build applications with Azure Cosmos DB for NoSQL.
@@ -31,66 +31,16 @@ In this quickstart, you deploy a basic Azure Cosmos DB for Table application usi
 
 ## Prerequisites
 
-- Azure Developer CLI
 - Docker Desktop
 - Rust 1.80 or later
 
 If you don't have an Azure account, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
 
-## Initialize the project
-
-Use the Azure Developer CLI (`azd`) to create an Azure Cosmos DB for Table account and deploy a containerized sample application. The sample application uses the client library to manage, create, read, and query sample data.
-
-1. Open a terminal in an empty directory.
-
-1. If you're not already authenticated, authenticate to the Azure Developer CLI using `azd auth login`. Follow the steps specified by the tool to authenticate to the CLI using your preferred Azure credentials.
-
-    ```azurecli
-    azd auth login
-    ```
-
-1. Use `azd init` to initialize the project.
-
-    ```azurecli
-    azd init --template cosmos-db-nosql-rust-quickstart
-    ```
-
-1. During initialization, configure a unique environment name.
-
-1. Deploy the Azure Cosmos DB account using `azd up`. The Bicep templates also deploy a sample web application.
-
-    ```azurecli
-    azd up
-    ```
-
-1. During the provisioning process, select your subscription, desired location, and target resource group. Wait for the provisioning process to complete. The process can take **approximately five minutes**.
-
-1. Once the provisioning of your Azure resources is done, a URL to the running web application is included in the output.
-
-    ```output
-    Deploying services (azd deploy)
-    
-      (✓) Done: Deploying service web
-    - Endpoint: <https://[container-app-sub-domain].azurecontainerapps.io>
-    
-    SUCCESS: Your application was provisioned and deployed to Azure in 5 minutes 0 seconds.
-    ```
-
-1. Use the URL in the console to navigate to your web application in the browser. Observe the output of the running app.
-
-:::image type="content" source="media/quickstart-rust/running-application.png" alt-text="Screenshot of the running web application.":::
-
 ### Install the client library
 
 The client library is available through Rust, as the `azure_data_cosmos` crate.
 
-1. Open a terminal and navigate to the `/src` folder.
-
-    ```bash
-    cd ./src
-    ```
-
-1. If not already installed, install the `azure_data_cosmos` create using ``.
+1. If not already installed, install the `azure_data_cosmos` create using `cargo install`.
 
     ```bash
     cargo install azure_data_cosmos
@@ -101,8 +51,6 @@ The client library is available through Rust, as the `azure_data_cosmos` crate.
     ```bash
     cargo install azure_identity
     ```
-
-1. Open and review the **src/Cargo.toml** file to validate that the `azure_data_cosmos` and `azure_identity` entries both exist.
 
 ## Object model
 
@@ -138,7 +86,7 @@ let client = CosmosClient::new(&endpoint, credential, None)?;
 Use `client.database` to retrieve the existing database named *`cosmicworks`*.
 
 ```rust
-let database = client.database_client("database");
+let database = client.database_client("cosmicworks");
 ```
 
 ### Get a container
@@ -154,16 +102,16 @@ let container = database.container_client("products");
 Build a new type with all of the members you want to serialize into JSON. In this example, the type has a unique identifier, and fields for category, name, quantity, price, and sale. Derive the `serde::Serialize` trait on this type, so that it can be serialized to JSON.
 
 ```rust
-use serde::Serialize;
+use serde::{Deserialize, Serialize};
 
-#[derive(Serialize)
-struct Item {
-    id: String,
-    category: String,
-    name: String,
-    quantity: i32,
-    price: f64,
-    clearance: bool,
+#[derive(Serialize, Deserialize)]
+pub struct Item {
+    pub id: String,
+    pub category: String,
+    pub name: String,
+    pub quantity: i32,
+    pub price: f64,
+    pub clearance: bool,
 }
 ```
 
@@ -180,8 +128,10 @@ let item = Item {
 };
 
 let partition_key = PartitionKey::from(item.category.clone());
+        
+let partition_key = PartitionKey::from(item.category.clone());
 
-container.upsert_item(partition_key, item, None).await?;
+container.upsert_item(partition_key, item.clone(), None).await?;
 ```
 
 ### Read an item
@@ -192,10 +142,9 @@ Perform a point read operation by using both the unique identifier (`id`) and pa
 let item_id = "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb";
 let item_partition_key = "gear-surf-surfboards";
 
-let item = container.read_item(item_partition_key, item_id, None)
-    .await?
-    .into_json_body()
-    .await?;
+let response = container.read_item(item_partition_key, item_id, None).await?;
+
+let item: Item = response.into_json_body().await?;
 ```
 
 ### Query items
@@ -208,15 +157,20 @@ SELECT * FROM products p WHERE p.category = @category
 
 ```rust
 let item_partition_key = "gear-surf-surfboards";
+
 let query = Query::from("SELECT * FROM c WHERE c.category = @category")
     .with_parameter("@category", item_partition_key)?;
 
-let pager = container.query_items::<Item>(query, item_partition_key, None)?;
-while let Some(page_response) = pager.next.await {
-    let page = page_response?.into_body().await?
+let mut pager = container.query_items::<Item>(query, item_partition_key, None)?;
+
+while let Some(page_response) = pager.next().await {
+
+    let page = page_response?.into_body().await?;
+
     for item in page.items {
         // Do something
     }
+
 }
 ```
 
@@ -230,14 +184,6 @@ Use the Visual Studio Code extension for Azure Cosmos DB to explore your NoSQL d
 - Managing databases and containers
 
 For more information, see [How-to use Visual Studio Code extension to explore Azure Cosmos DB for NoSQL data](../visual-studio-code-extension.md?pivots=api-nosql).
-
-## Clean up resources
-
-When you no longer need the sample application or resources, remove the corresponding deployment and all resources.
-
-```azurecli
-azd down
-```
 
 ## Related content
 
