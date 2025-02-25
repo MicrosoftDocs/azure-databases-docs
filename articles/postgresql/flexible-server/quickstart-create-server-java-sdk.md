@@ -156,7 +156,7 @@ public class CreateServer {
     }
 ```
 
-This example demonstrates creating a Azure Database for PostgreSQL flexible instance server using the `PostgreSqlManager` class. Before calling the create method it authenticates against the TokenCredential and AzureProfile. Once that is done it defines the Flexible server instance with your given configuration.
+This example demonstrates how to create an Azure Database for PostgreSQL flexible instance server using the `PostgreSqlManager` class. Before invoking the create method, it authenticates using the TokenCredential and AzureProfile. Once authenticated it defines the Flexible server instance with your specified configuration.
 
 Replace the following parameters in the code with your data:
 
@@ -170,7 +170,7 @@ Replace the following parameters in the code with your data:
 
 ### Authentication
 
-There are different ways to authenticate your credentials, in this example we have used `DefaultAzureCredentialBuilder`  used to configure and create a DefaultAzureCredential object, which is a credential that can be used to authenticate with Azure services. Login using Azure CLI as mentioned in the prerequisites.
+There are different ways to authenticate your credentials. In this example we have used `DefaultAzureCredentialBuilder`  used to configure and create a DefaultAzureCredential object, which is a credential that can be used to authenticate with Azure services. Login using Azure CLI as mentioned in the prerequisites.
 
 ### Run the file
 Make sure that you have created a maven project and execute below commands, please make sure you run these commands everytime you add a new dependency in your `pom.xml` file to install that dependency in your local repository:
