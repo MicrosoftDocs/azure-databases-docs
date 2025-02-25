@@ -67,12 +67,12 @@ Once you create a Maven project there is a pom.xml file that would be created. P
 <dependency>
     <groupId>com.azure</groupId>
     <artifactId>azure-core-management</artifactId>
-    <version>1.16.1</version>
+    <version>1.16.2</version>
 </dependency>
 <dependency>
     <groupId>com.azure</groupId>
     <artifactId>azure-identity</artifactId>
-    <version>1.15.2</version>
+    <version>1.15.3</version>
     <scope>compile</scope>
 </dependency>
 <dependency>
@@ -88,7 +88,7 @@ Once you create a Maven project there is a pom.xml file that would be created. P
 <dependency>
     <groupId>com.azure</groupId>
     <artifactId>azure-core-http-netty</artifactId>
-    <version>1.15.9</version>
+    <version>1.15.10</version>
 </dependency>
 <dependency>
     <groupId>org.apache.logging.log4j</groupId>
@@ -104,30 +104,20 @@ Once you create a Maven project there is a pom.xml file that would be created. P
 To create a PostgreSQL flexible server instance, create a file named `CreateServer.java` with the following code.
 
 ```java
-package com.example;
-import java.time.Duration;
+package com.example.restservice;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.logging.Logger;
 
 import com.azure.core.credential.TokenCredential;
-import com.azure.core.http.HttpPipeline;
-import com.azure.core.http.HttpPipelineBuilder;
 import com.azure.core.http.policy.HttpLogDetailLevel;
 import com.azure.core.http.policy.HttpLogOptions;
-import com.azure.core.http.policy.HttpLoggingPolicy;
 import com.azure.core.management.AzureEnvironment;
-import com.azure.core.management.exception.ManagementException;
 import com.azure.core.management.profile.AzureProfile;
-import com.azure.identity.AzureCliCredentialBuilder;
 import com.azure.identity.DefaultAzureCredentialBuilder;
-import com.azure.core.credential.*;
 import com.azure.resourcemanager.postgresqlflexibleserver.PostgreSqlManager;
 import com.azure.resourcemanager.postgresqlflexibleserver.models.ActiveDirectoryAuthEnum;
 import com.azure.resourcemanager.postgresqlflexibleserver.models.ArmServerKeyType;
 import com.azure.resourcemanager.postgresqlflexibleserver.models.AuthConfig;
-import com.azure.resourcemanager.postgresqlflexibleserver.models.AzureManagedDiskPerformanceTiers;
-import com.azure.resourcemanager.postgresqlflexibleserver.models.CreateMode;
 import com.azure.resourcemanager.postgresqlflexibleserver.models.DataEncryption;
 import com.azure.resourcemanager.postgresqlflexibleserver.models.HighAvailability;
 import com.azure.resourcemanager.postgresqlflexibleserver.models.HighAvailabilityMode;
@@ -138,9 +128,7 @@ import com.azure.resourcemanager.postgresqlflexibleserver.models.ServerVersion;
 import com.azure.resourcemanager.postgresqlflexibleserver.models.Sku;
 import com.azure.resourcemanager.postgresqlflexibleserver.models.SkuTier;
 import com.azure.resourcemanager.postgresqlflexibleserver.models.Storage;
-import com.azure.resourcemanager.postgresqlflexibleserver.models.StorageAutoGrow;
 import com.azure.resourcemanager.postgresqlflexibleserver.models.UserAssignedIdentity;
-import com.azure.resourcemanager.postgresqlflexibleserver.models.UserIdentity;
 public class CreateServer {   
     public static void main(String[] args) throws Exception {
     	String subscriptionId = "<subscription-id>";
