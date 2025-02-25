@@ -18,7 +18,7 @@ This article contains error message numbers and their description for premigrati
 
 The following tables provide a comprehensive list of error codes for the migration service feature in Azure Database for PostgreSQL. These error codes help you troubleshoot and resolve issues during the migration process. Each error code has an error message and other details that provide further context and guidance for resolving the issue.
 
-## Connection timeouts
+## Connection time-outs
 
 ### Symptoms
 
@@ -31,21 +31,21 @@ Migration failures often manifest through error messages that indicate connectiv
 
 ### Cause
 
-The underlying cause for these symptoms is a `connection timeout`. This occurs when the server or the client expects to receive data within a certain time frame, but no data is sent or received, leading the connection to time out. The specific reasons for a connection timeout can vary, but common factors include network congestion, misconfigured network settings, or overly aggressive timeout settings.
+The underlying cause for these symptoms is a `connection timeout`. This generally occurs when the server or the client expects to receive data within a certain time frame, but no data is sent or received, leading the connection to time out. The specific reasons for a connection time-out can vary, but common factors include network congestion, misconfigured network settings, or overly aggressive time-out settings.
 
-In the context of migration service in Azure Database for PostgreSQL, a connection timeout between the source and the migration service or between the migration service and the target can interrupt the data transfer process, resulting in the symptoms described above.
+In the context of migration service in Azure Database for PostgreSQL, a connection time-out between the source and the migration service or between the migration service and the target can interrupt the data transfer process, resulting in the symptoms described above.
 
 ### Resolution
 
-- To address the connection timeout issues, adjust the TCP parameters on both the source and target servers as follows:
+- To address the connection time-out issues, adjust the TCP parameters on both the source and target servers as follows:
 
     - `tcp_keepalives_idle=10`
     - `tcp_keepalives_interval=10`
     - `tcp_keepalives_count=60`
 
-These settings help maintain the connection by sending keepalive probes to prevent timeouts due to inactivity. Importantly, modifying these TCP parameters doesn't require a restart of the source or target PostgreSQL instances. Changes can be applied dynamically, allowing for a seamless continuation of service without interrupting the database operations.
+These settings help maintain the connection by sending keepalive probes to prevent time-outs due to inactivity. Importantly, modifying these TCP parameters doesn't require a restart of the source or target PostgreSQL instances. Changes can be applied dynamically, allowing for a seamless continuation of service without interrupting the database operations.
 
-## Connection Terminated Due to Idle-in-Transaction Timeout
+## Connection Terminated Due to Idle-in-Transaction time-out
 
 ### Symptoms
 - The Migration service encounters a connection termination message.
@@ -57,7 +57,7 @@ This error occurs when a database connection remains idle within a transaction f
 
 ### Resolution
 
-- Set the `idle_in_transaction_timeout` parameter to `0` to disable the timeout during the migration process.
+- Set the `idle_in_transaction_timeout` parameter to `0` to disable the time-out during the migration process.
 - Example command to apply this setting:
 ```azurecli-interactive
 ALTER SYSTEM SET idle_in_transaction_timeout = 0;
@@ -75,7 +75,7 @@ This error indicates that PostgreSQL has exhausted the shared memory allocated f
 
 ### Resolution
 
-- Increase the value of the `max_locks_per_transaction` parameter to accommodate the additional locks required during the migration process.
+- Increase the value of the `max_locks_per_transaction` parameter to accommodate the another locks required during the migration process.
 - Example command to modify this setting: `ALTER SYSTEM SET max_locks_per_transaction = <<>>;`
 - Ensure that, `max_locks_per_transaction * max_connections > Number of tables + Number of indexes`
 - If the issue persists, consider increasing the shared_buffers parameter to ensure sufficient shared memory is available for lock management.
