@@ -78,7 +78,11 @@ Before you proceed, make sure you complete the following:
 
 ### Step 1: Export data from DynamoDB to Amazon S3
 
-DynamoDB S3 export is a built-in solution for exporting DynamoDB data to an Amazon S3 bucket. Follow the [DynamoDB documentation](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/S3DataExport_Requesting.html) for steps on how to execute this process, including setting up necessary S3 permissions, etc. DynamoDB supports DynamoDB JSON and Amazon Ion as the file formats for exported data. 
+DynamoDB S3 export is a built-in solution for exporting DynamoDB data to an Amazon S3 bucket. Follow the [DynamoDB documentation]
+(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/S3DataExport_Requesting.html) for steps on how to execute this process, including setting up necessary S3 permissions, etc. DynamoDB supports DynamoDB JSON and Amazon Ion as the file formats for exported data.
+
+> [!NOTE]
+> This sample uses data exported in DynamoDB JSON format.
 
 Once data is exported to a S3 bucket, proceed to the next step.
 
@@ -215,7 +219,7 @@ The third step reads DynamoDB data from ADLS and stores it in a data frame. Befo
 |----------------------|-----------------------------------------------------------------------------|
 | `storage_account_name` | Azure storage account name                                                  |
 | `container_name`       | Azure storage container name, for example, `s3datacopy`                               |
-| `file_path`            | Path to the file in Azure storage container, for example, `AWSDynamoDB/01738047791106-7ba095a9/data/*` |
+| `file_path`            | Path to the folder containing the exported JSON file(s) in the Azure storage container. For example, `AWSDynamoDB/01738047791106-7ba095a9/data/*` |
 | `client_id`            | The application (client) ID of the Microsoft Entra ID application (found on the *Overview* page) |
 | `tenant_id`            | The directory (tenant) ID of the Microsoft Entra ID application (found on the *Overview* page) |
 | `client_secret`        | Value of the client secret associated with the Microsoft Entra ID application (found in *Certificates & secrets*) |
