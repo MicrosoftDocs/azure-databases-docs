@@ -154,16 +154,16 @@ let container = database.container_client("products");
 Build a new type with all of the members you want to serialize into JSON. In this example, the type has a unique identifier, and fields for category, name, quantity, price, and sale. Derive the `serde::Serialize` trait on this type, so that it can be serialized to JSON.
 
 ```rust
-use serde::Serialize;
+use serde::{Deserialize, Serialize};
 
-#[derive(Serialize)
-struct Item {
-    id: String,
-    category: String,
-    name: String,
-    quantity: i32,
-    price: f64,
-    clearance: bool,
+#[derive(Serialize, Deserialize)]
+pub struct Item {
+    pub id: String,
+    pub category: String,
+    pub name: String,
+    pub quantity: i32,
+    pub price: f64,
+    pub clearance: bool,
 }
 ```
 
@@ -180,8 +180,10 @@ let item = Item {
 };
 
 let partition_key = PartitionKey::from(item.category.clone());
+        
+let partition_key = PartitionKey::from(item.category.clone());
 
-container.upsert_item(partition_key, item, None).await?;
+container.upsert_item(partition_key, item.clone(), None).await?;
 ```
 
 ### Read an item
@@ -192,10 +194,9 @@ Perform a point read operation by using both the unique identifier (`id`) and pa
 let item_id = "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb";
 let item_partition_key = "gear-surf-surfboards";
 
-let item = container.read_item(item_partition_key, item_id, None)
-    .await?
-    .into_json_body()
-    .await?;
+let response = container.read_item(item_partition_key, item_id, None).await?;
+
+let item: Item = response.into_json_body().await?;
 ```
 
 ### Query items
@@ -208,15 +209,20 @@ SELECT * FROM products p WHERE p.category = @category
 
 ```rust
 let item_partition_key = "gear-surf-surfboards";
+
 let query = Query::from("SELECT * FROM c WHERE c.category = @category")
     .with_parameter("@category", item_partition_key)?;
 
-let pager = container.query_items::<Item>(query, item_partition_key, None)?;
-while let Some(page_response) = pager.next.await {
-    let page = page_response?.into_body().await?
+let mut pager = container.query_items::<Item>(query, item_partition_key, None)?;
+
+while let Some(page_response) = pager.next().await {
+
+    let page = page_response?.into_body().await?;
+
     for item in page.items {
         // Do something
     }
+
 }
 ```
 
