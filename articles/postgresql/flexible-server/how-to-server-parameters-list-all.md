@@ -39,7 +39,7 @@ Using the [Azure portal](https://portal.azure.com):
 
 5. The list of server parameters supported by the instance consists of several hundred items, which are rendered in pages of 20 items each. At the bottom of the page, there's a control to inform you of the position you're at.
 
-    :::image type="content" source="./media/how-to-configure-server-parameters/paging-position.png" alt-text="Screenshot that shows the position at which you're while paging in the Server parameters page." lightbox="./media/how-to-configure-server-parameters/paging-position.png":::
+    :::image type="content" source="./media/how-to-configure-server-parameters/paging-position.png" alt-text="Screenshot that shows your position while paging in the Server parameters page." lightbox="./media/how-to-configure-server-parameters/paging-position.png":::
 
 6. There's also a paging control which you can use to navigate through the whole set of pages.
 

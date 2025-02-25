@@ -29,7 +29,7 @@ Using the [Azure portal](https://portal.azure.com):
 
     :::image type="content" source="./media/how-to-configure-server-parameters/server-parameters.png" alt-text="Screenshot that shows the Server parameters menu option." lightbox="./media/how-to-configure-server-parameters/server-parameters.png":::
 
-3. Locate the read-write parameters whose current values you want to change, set them to the new desired values.
+3. Locate the read-write parameters whose current values you want to change, and set them to the new desired values.
 
     :::image type="content" source="./media/how-to-configure-server-parameters/set-value.png" alt-text="Screenshot that shows how to set the value of a server parameter." lightbox="./media/how-to-configure-server-parameters/set-value.png":::
 
