@@ -12,13 +12,7 @@ ms.topic: quickstart
 
 # Quickstart: Use Azure (SDK) libraries in Java to create, update, and delete an Azure Database for PostgreSQL instance
 
-In this quickstart, you learn how to use the Azure SDK libraries in Java to create, update, and delete an Azure PostgreSQL Flexible Server instance. Azure Database for PostgreSQL flexible server is a managed service that allows you to run, manage, and scale highly available PostgreSQL databases in the cloud. Using the Java SDK, you can provision an Azure Database for PostgreSQL flexible server instance, multiple servers, or multiple databases on a server.
-## Prerequisites
-
-- [An Azure account with an active subscription](https://azure.microsoft.com/free/).
-- Java Development Kit (JDK) with version 8 or above
-- Download Maven 
-- [Azure CLI](/cli/azure/install-azure-cli) installed on your local machine.
+In this quickstart, you learn how to use the Azure SDK libraries in Java to create, update, and delete an Azure PostgreSQL Flexible Server instance. Azure Database for PostgreSQL flexible server is a managed service that allows you to run, manage, and scale highly available PostgreSQL databases in the cloud. Using the Java SDK, you can provision an Azure Database for PostgreSQL flexible server instance, multiple servers, or multiple databases on a server. Azure Java SDK for PostgreSQL Flexible Server instance can help with all the following operations: 
 
 1. **Creating Azure PostgreSQL Flexible Servers**:\
 You can create new Flexible Servers instances with specified configurations such as location, SKU, storage, and version.
@@ -41,16 +35,29 @@ You can create, update, delete, and retrieve firewall rules for an instance to c
 7. **Managing Configuration Settings**:\
 You can manage configuration settings for an Azure PostgreSQL flexible server instance, including retrieving and updating server parameters.
 
+## Prerequisites
+
+- [An Azure account with an active subscription](https://azure.microsoft.com/free/).
+- Java Development Kit (JDK) with version 8 or above
+- Download Maven 
+- [Azure CLI](/cli/azure/install-azure-cli) installed on your local machine.
+
 ## Log in to Azure
 
 Before using the Azure SDK for Java to create, update, or delete an Azure Database for PostgreSQL flexible server instance, you must log in to your Azure account using the Azure CLI.
 
 ### Run the login command
 
-Log in to your account using [az CLI](/cli/azure/authenticate-azure-cli-interactively)
+- Log in to your account using [az CLI](/cli/azure/authenticate-azure-cli-interactively)
 
 ```azurecli-interactive
 az login
+```
+
+- Fetch your tenant id for your account
+
+```azurecli-interactive
+az account show --query tenantId --output tsv
 ```
 
 ## Create the project
@@ -59,21 +66,17 @@ Create a new Maven project in your preferred IDE and then add the dependencies m
 When you create a Maven project there is a pom.xml file that would be created. Please add all the dependencies in the `pom.xml` under the <dependencies> tag.
 
 ```xml
-<dependencies>
-	<!-- https://mvnrepository.com/artifact/com.azure/azure-core-management -->
 <dependency>
     <groupId>com.azure</groupId>
     <artifactId>azure-core-management</artifactId>
     <version>1.16.1</version>
 </dependency>
-	<!-- https://mvnrepository.com/artifact/com.azure/azure-identity -->
 <dependency>
     <groupId>com.azure</groupId>
     <artifactId>azure-identity</artifactId>
     <version>1.15.2</version>
     <scope>compile</scope>
 </dependency>
-<!-- https://mvnrepository.com/artifact/com.azure.resourcemanager/azure-resourcemanager-resources -->
 <dependency>
     <groupId>com.azure.resourcemanager</groupId>
     <artifactId>azure-resourcemanager-resources</artifactId>
@@ -140,9 +143,7 @@ import com.azure.resourcemanager.postgresqlflexibleserver.models.Storage;
 import com.azure.resourcemanager.postgresqlflexibleserver.models.StorageAutoGrow;
 import com.azure.resourcemanager.postgresqlflexibleserver.models.UserAssignedIdentity;
 import com.azure.resourcemanager.postgresqlflexibleserver.models.UserIdentity;
-public class CreateServer {
-
-   
+public class CreateServer {   
     public static void main(String[] args) throws Exception {
     	String subscriptionId = "<subscription-id>";
     	AzureProfile profile = new AzureProfile("<tenant-id>", subscriptionId, AzureEnvironment.AZURE);
@@ -221,7 +222,6 @@ public static void main(String args[]) {
 	    
 	TokenCredential credential = new DefaultAzureCredentialBuilder()
     	    .authorityHost(profile.getEnvironment().getActiveDirectoryEndpoint()).build();
-    System.out.println("subscriptionid"+profile.getSubscriptionId());
     PostgreSqlManager manager = PostgreSqlManager.authenticate(credential, profile);
 	manager.databases()
     .define("<database-name>")
@@ -266,7 +266,7 @@ import com.azure.resourcemanager.postgresqlflexibleserver.models.StorageAutoGrow
 public class UpdateServer {
 	public static void main(String args[]) {
 		String subscriptionId = "<subscription-id>";
-    	AzureProfile profile = new AzureProfile("7<tenant-id>", subscriptionId, AzureEnvironment.AZURE);
+    	AzureProfile profile = new AzureProfile("<tenant-id>", subscriptionId, AzureEnvironment.AZURE);
     	    
     	TokenCredential credential = new DefaultAzureCredentialBuilder()
         	    .authorityHost(profile.getEnvironment().getActiveDirectoryEndpoint()).build();
