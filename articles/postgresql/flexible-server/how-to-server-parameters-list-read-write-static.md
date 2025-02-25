@@ -25,9 +25,13 @@ Using the [Azure portal](https://portal.azure.com):
 
 1. Select your Azure Database for PostgreSQL flexible server instance.
 
-2. In the resource menu, under the **Settings** section, select **Server parameters**, and then select the **Static** tab. The page shows a list of read-write parameters for which, if their value is changed, require a restart of the server for the new value to take effect.
+2. In the resource menu, under **Settings**, select **Server parameters**.
 
-    :::image type="content" source="./media/how-to-configure-server-parameters/static-parameters.png" alt-text="Screenshot of static server parameters." lightbox="./media/how-to-configure-server-parameters/static-parameters.png":::
+    :::image type="content" source="./media/how-to-configure-server-parameters/server-parameters.png" alt-text="Screenshot that shows the Server parameters menu option." lightbox="./media/how-to-configure-server-parameters/server-parameters.png":::
+
+3. Select the **Static** tab. The page shows a list of read-write parameters for which, if their value is changed, require a restart of the server for the new value to take effect.
+
+    :::image type="content" source="./media/how-to-configure-server-parameters/static-parameters.png" alt-text="Screenshot that shows the list of static server parameters." lightbox="./media/how-to-configure-server-parameters/static-parameters.png":::
 
 ### [CLI](#tab/cli-list-static)
 

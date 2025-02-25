@@ -25,16 +25,22 @@ Using the [Azure portal](https://portal.azure.com):
 
 1. Select your Azure Database for PostgreSQL flexible server instance.
 
-2. In the resource menu, under the **Settings** section, select **Server parameters**.
+2. In the resource menu, under **Settings**, select **Server parameters**.
 
-3. Locate the read-write parameter whose current value you want to revert to its default, select the ellipsis at the right end side of the scree, and select **Reset to default**.
+    :::image type="content" source="./media/how-to-configure-server-parameters/server-parameters.png" alt-text="Screenshot that shows the Server parameters menu option." lightbox="./media/how-to-configure-server-parameters/server-parameters.png":::
+
+3. Select the **Modified** tab.
+
+    :::image type="content" source="./media/how-to-configure-server-parameters/modified-parameters.png" alt-text="Screenshot that shows the list of modified server parameters." lightbox="./media/how-to-configure-server-parameters/modified-parameters.png":::
+
+4. Locate the read-write parameter whose current value you want to revert to its default, select the ellipsis at the right end side of the screen, and select **Reset to default**.
 
     :::image type="content" source="./media/how-to-configure-server-parameters/reset-one-to-default.png" alt-text="Screenshot of resetting the value of one server parameter to its default." lightbox="./media/how-to-configure-server-parameters/reset-one-to-default.png":::
 
 > [!IMPORTANT]
 > For parameters designated as read-only, selecting the ellipsis doesn't pop up the **Reset to default** menu option.
 
-4. If the column **Parameter type** for the parameter you're trying to reset to default is equal to **Static**, the server requires a restart for the change to take effect. In that case, a dialog pops up so that you can select if you want to:
+5. If the column **Parameter type** for the parameter you're trying to reset to default is equal to **Static**, the server requires a restart for the change to take effect. In that case, a dialog pops up so that you can select if you want to:
     - **Save and Restart**: In case you want to persist all changes made to all parameters whose values were modified, and immediately after restart the server for any changes to static parameters to take effect.
     - **Save only**: In case you want to persist all changes made to all parameters whose set values changed, but want to defer the server restart to a later time. Until you don't complete the server restart action, changes made to any static server parameters don't take effect.
     - **Cancel**: To not implement any changes yet.
