@@ -1,74 +1,37 @@
 ---
-title: How to configure index tuning
-description: This article describes how to configure the index tuning feature in Azure Database for PostgreSQL - Flexible Server.
+title: Configure index tuning
+description: This article describes how to configure the index tuning feature in your Azure Database for PostgreSQL flexible server.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 11/06/2024
+ms.date: 02/26/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.custom:
   - build-2024
   - ignite-2024
 ms.topic: how-to
-# customer intent: As a user, I want to learn about how to enable, disable and configure the index tuning feature in Azure Database for PostgreSQL - Flexible Server.
+# customer intent: As a user, I want to learn about how to enable, disable and configure the index tuning feature in an Azure Database for PostgreSQL flexible server.
 ---
-# Configure index tuning in Azure Database for PostgreSQL - Flexible Server
+# Configure index tuning
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
 Index tuning can be enabled, disabled, and configured through a [set of parameters](#configuration-options) that control its behavior, such as how often a tuning session can run.
 
-## Enable index tuning
-
-Index tuning depends on [query store](concepts-query-store.md). We don't recommend enabling query store on the Burstable pricing tier for the performance implications it might have. For the same reason, index tuning isn't recommended for servers on the Burstable tier.
+Index tuning depends on [query store](concepts-query-store.md). We don't recommend enabling query store on the Burstable pricing tier, due to the performance implications it might have. For the same reason, index tuning isn't recommended for servers using compute from the Burstable tier.
 
 Index tuning is an opt-in feature that isn't enabled by default on a server. It can be enabled or disabled globally for all databases on a given server and can't be turned on or off per database.
 
-### Enable index tuning in the Azure portal (via Server parameters)
+### Steps to enable index tuning
+
+### [Portal](#tab/portal-enable)
 
 Using the [Azure portal](https://portal.azure.com/):
 
-1. Select your Azure Database for PostgreSQL flexible server instance.
+1. Select your Azure Database for PostgreSQL flexible server.
 
-2. In the resource menu, under the **Settings** section, select **Server parameters**.
-
-   :::image type="content" source="media/how-to-configure-index-tuning/index-tuning-via-server-parameters.png" alt-text="Screenshot that shows the Server parameters page under the Settings section." lightbox="media/how-to-configure-index-tuning/index-tuning-via-server-parameters.png":::
-
-3. Search for `pg_qs.query_capture_mode`.
-
-   :::image type="content" source="media/how-to-configure-index-tuning/search-pg-qs-query-capture-mode-to-enable.png" alt-text="Screenshot that shows how to search for the pg_qs.query_capture_mode server parameter." lightbox="media/how-to-configure-index-tuning/search-pg-qs-query-capture-mode-to-enable.png":::
-
-4. Set its value to `TOP` or `ALL`, depending on whether you want to track top-level or nested queries. Nested queries are those queries executed inside a function or procedure. To see the highest benefit of index tuning, setting this parameter to `ALL` is recommended.
-
-   :::image type="content" source="media/how-to-configure-index-tuning/set-pg-qs-query-capture-mode-parameter-to-all.png" alt-text="Screenshot that shows how to set the value of the pg_qs.query_capture_mode server parameter." lightbox="media/how-to-configure-index-tuning/set-pg-qs-query-capture-mode-parameter-to-all.png":::
-
-5. Search for `index_tuning.mode`.
-
-   :::image type="content" source="media/how-to-configure-index-tuning/search-index-tuning-mode-parameter-to-enable.png" alt-text="Screenshot that shows how to search for the index_tuning.mode server parameter to set it to REPORT." lightbox="media/how-to-configure-index-tuning/search-index-tuning-mode-parameter-to-enable.png":::
-
-6. Set its value to `REPORT`.
-
-   :::image type="content" source="media/how-to-configure-index-tuning/set-index-tuning-mode-to-report.png" alt-text="Screenshot that shows how to set the value of index_tuning.mode to REPORT." lightbox="media/how-to-configure-index-tuning/set-index-tuning-mode-to-report.png":::
-
-> [!NOTE]
-> Disabling index tuning doesn't automatically disables query store. Assess whether you want to continue using [Monitor performance with query store](concepts-query-store.md) to monitor the performance of your workload and leave it enabled or, if you want to disable it, set `pg_qs.query_capture_mode` to `NONE`.
-
-7. Select on **Save**.
-
-   :::image type="content" source="media/how-to-configure-index-tuning/save-parameters.png" alt-text="Screenshot that shows how to save the modified parameters to enable index tuning." lightbox="media/how-to-configure-index-tuning/save-parameters.png":::
-
-8. Wait for the deployment to be completed successfully before considering the feature enabled.
-
-   :::image type="content" source="media/how-to-configure-index-tuning/wait-for-save-parameters-deployment.png" alt-text="Screenshot that shows the deployment initiated to save modified server parameters when it completes successfully." lightbox="media/how-to-configure-index-tuning/wait-for-save-parameters-deployment.png":::
-
-### Enable index tuning in Azure portal (via Index tuning)
-
-Using the [Azure portal](https://portal.azure.com/):
-
-1. Select your Azure Database for PostgreSQL flexible server instance.
-
-2. In the resource menu, under the **Query Performance Insight** section, select **Index tuning**.
+2. In the resource menu, under **Query Performance Insight**, select **Index tuning**.
 
    :::image type="content" source="media/how-to-configure-index-tuning/enable-index-tuning-via-page-index-tuning.png" alt-text="Screenshot that shows the Index tuning menu option under the Query Performance Insight section, to enable index tuning." lightbox="media/how-to-configure-index-tuning/enable-index-tuning-via-page-index-tuning.png":::
 
@@ -76,7 +39,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
    :::image type="content" source="media/how-to-configure-index-tuning/enable-index-tuning-via-page-enable-index-tuning.png" alt-text="Screenshot that shows how to enable index tuning through the Index tuning page." lightbox="media/how-to-configure-index-tuning/enable-index-tuning-via-page-enable-index-tuning.png":::
 
-4. Wait for the deployment to be completed successfully before considering the feature.
+4. Wait for the deployment to complete successfully before considering that the feature is enabled.
 
    :::image type="content" source="media/how-to-configure-index-tuning/wait-for-index-tuning-deployment.png" alt-text="Screenshot that shows the deployment completed to enable index tuning." lightbox="media/how-to-configure-index-tuning/wait-for-index-tuning-deployment.png":::
 
@@ -85,46 +48,34 @@ Using the [Azure portal](https://portal.azure.com/):
 > [!IMPORTANT]  
 > When index tuning is enabled through the **Enable index tuning** button, if `pg_qs.query_capture_mode` is set to `NONE`, it's changed to `ALL`. If it was already set to either `TOP` or `ALL`, it's left in its current state.
 
-## Disable index tuning
+### [CLI](#tab/cli-enable)
 
-Disabling index tuning can also be achieved either changing the corresponding server parameter or using the **Index tuning** page.
+You can enable index tuning in an existing server via the [az postgres flexible-server index-tuning update](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-update) command.
 
-### Disable index tuning in Azure portal (via Server parameters)
+To enable index tuning, use this command:
 
-Using the [Azure portal](https://portal.azure.com/):
+```azurecli-interactive
+az postgres flexible-server index-tuning update --resource-group <resource_group> --server-name <server> --enabled true
+```
 
-1. Select your Azure Database for PostgreSQL flexible server instance.
+If the previous command executes successfully, you should see the following output:
 
-2. In the resource menu, under the **Settings** section, select **Server parameters**.
+```output
+WARNING: Enabling index tuning for the server.
+WARNING: Index tuning is enabled for the server.
+```
 
-   :::image type="content" source="media/how-to-configure-index-tuning/index-tuning-via-server-parameters.png" alt-text="Screenshot that shows the Server parameters page under the Settings section." lightbox="media/how-to-configure-index-tuning/index-tuning-via-server-parameters.png":::
+---
 
-3. Search for `index_tuning.mode`.
+### Steps to disable index tuning
 
-   :::image type="content" source="media/how-to-configure-index-tuning/search-index-tuning-mode-parameter-to-disable.png" alt-text="Screenshot that shows how to search for the index_tuning.mode server parameter to set it to OFF." lightbox="media/how-to-configure-index-tuning/search-index-tuning-mode-parameter-to-disable.png":::
-
-4. Set its value to `OFF`.
-
-   :::image type="content" source="media/how-to-configure-index-tuning/set-index-tuning-mode-to-off.png" alt-text="Screenshot that shows how to set the value of index_tuning.mode to OFF." lightbox="media/how-to-configure-index-tuning/set-index-tuning-mode-to-off.png":::
-
-> [!NOTE]
-> Disabling index tuning doesn't automatically disables query store. Assess whether you want to continue using [Monitor performance with query store](concepts-query-store.md) to monitor the performance of your workload and leave it enabled or, if you want to disable it, set `pg_qs.query_capture_mode` to `NONE`.
-
-5. Select on **Save**.
-
-   :::image type="content" source="media/how-to-configure-index-tuning/save-parameters-disable.png" alt-text="Screenshot that shows how to save the modified parameters to disable index tuning." lightbox="media/how-to-configure-index-tuning/save-parameters-disable.png":::
-
-6. Wait for the deployment to complete successfully before considering the feature disabled.
-
-   :::image type="content" source="media/how-to-configure-index-tuning/wait-for-save-parameters-deployment.png" alt-text="Screenshot that shows the deployment initiated to save modified server parameters when it completes successfully." lightbox="media/how-to-configure-index-tuning/wait-for-save-parameters-deployment.png":::
-
-### Disable index tuning in the Azure portal (via Index tuning)
+### [Portal](#tab/portal-disable)
 
 Using the [Azure portal](https://portal.azure.com/):
 
-1. Select your Azure Database for PostgreSQL flexible server instance.
+1. Select your Azure Database for PostgreSQL flexible server.
 
-2. In the resource menu, under the **Query Performance Insight** section, select **Index tuning**.
+2. In the resource menu, under **Query Performance Insight**, select **Index tuning**.
 
    :::image type="content" source="media/how-to-configure-index-tuning/disable-index-tuning-via-page-index-tuning.png" alt-text="Screenshot that shows the Index tuning menu option under the Query Performance Insight section, to disable index tuning." lightbox="media/how-to-configure-index-tuning/disable-index-tuning-via-page-index-tuning.png":::
 
@@ -132,14 +83,83 @@ Using the [Azure portal](https://portal.azure.com/):
 
    :::image type="content" source="media/how-to-configure-index-tuning/disable-index-tuning-via-page-disable-index-tuning.png" alt-text="Screenshot that shows how to disable index tuning through the Index tuning page." lightbox="media/how-to-configure-index-tuning/disable-index-tuning-via-page-disable-index-tuning.png":::
 
-4. Wait for the deployment to be completed successfully before considering the feature.
+4. Wait for the deployment to complete successfully before considering that the feature is disabled.
 
    :::image type="content" source="media/how-to-configure-index-tuning/wait-for-index-tuning-deployment.png" alt-text="Screenshot that shows the deployment completed to disable index tuning." lightbox="media/how-to-configure-index-tuning/wait-for-index-tuning-deployment.png":::
 
-5. Assess whether you want to continue using [Monitor performance with query store](concepts-query-store.md) to monitor the performance of your workload and leave it enabled or, if you want to disable it, set `pg_qs.query_capture_mode` to `NONE`.
+5. Assess whether you want to continue using [Monitor performance with query store](concepts-query-store.md) to monitor the performance of your workload and leave it enabled or, if you want to disable it, by setting `pg_qs.query_capture_mode` to `NONE`.
 
 > [!IMPORTANT]  
-> When index tuning is disabled through the **Disable index tuning** button, server parameter `pg_qs.query_capture_mode` is left intact.
+> When index tuning is disabled through the **Disable index tuning** button, server parameter `pg_qs.query_capture_mode` isn't set to `NONE`, but left as it is configured.
+
+### [CLI](#tab/CLI-disable)
+
+You can disable index tuning in an existing server via the [az postgres flexible-server index-tuning update](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-update) command.
+
+To disable index tuning, use this command:
+
+```azurecli-interactive
+az postgres flexible-server index-tuning update --resource-group <resource_group> --server-name <server> --enabled false
+```
+
+If the previous command executes successfully, you should see the following output:
+
+```output
+WARNING: Disabling index tuning for the server.
+WARNING: Index tuning is disabled for the server.
+```
+
+Assess whether you want to continue using [Monitor performance with query store](concepts-query-store.md) to monitor the performance of your workload and leave it enabled or, if you want to disable it, by setting `pg_qs.query_capture_mode` to `NONE`.
+
+> [!IMPORTANT]  
+> When index tuning is disabled through the CLI command, server parameter `pg_qs.query_capture_mode` isn't set to `NONE`, but left as it is configured.
+
+---
+
+### Steps to show state of index tuning
+
+### [Portal](#tab/portal-show-state)
+
+Using the [Azure portal](https://portal.azure.com/):
+
+1. Select your Azure Database for PostgreSQL flexible server.
+
+2. In the resource menu, under **Query Performance Insight**, select **Index tuning**.
+
+   :::image type="content" source="media/how-to-configure-index-tuning/index-tuning-page-disabled.png" alt-text="Screenshot that shows the Index tuning menu option under the Query Performance Insight section, to disable index tuning." lightbox="media/how-to-configure-index-tuning/index-tuning-page-disabled.png":::
+
+3. If index tuning is disabled, the page displays the **Enable index tuning** button.
+
+   :::image type="content" source="media/how-to-configure-index-tuning/index-tuning-page-disabled-enable-button.png" alt-text="Screenshot that shows the aspect of the Index tuning page when the feature is disabled." lightbox="media/how-to-configure-index-tuning/index-tuning-page-disabled-enable-button.png":::
+
+4. If index tuning is enabled, the page displays the **Disable index tuning** button.
+
+   :::image type="content" source="media/how-to-configure-index-tuning/index-tuning-page-enabled-disable-button.png" alt-text="Screenshot that shows the aspect of the Index tuning page when the feature is disabled." lightbox="media/how-to-configure-index-tuning/index-tuning-page-enabled-disable-button.png":::
+
+### [CLI](#tab/CLI-show-state)
+
+You can show the state of index tuning in an existing server via the [az postgres flexible-server index-tuning show](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-update) command.
+
+To disable index tuning, use this command:
+
+```azurecli-interactive
+az postgres flexible-server index-tuning show --resource-group <resource_group> --server-name <server>
+```
+
+If index tuning is enabled, you should see the following output:
+
+```output
+WARNING: Index tuning is enabled for the server.
+```
+
+If index tuning is disabled, you should see the following output:
+
+```output
+WARNING: Index tuning is disabled for the server.
+```
+
+---
+
 
 ## Configuration options
 
