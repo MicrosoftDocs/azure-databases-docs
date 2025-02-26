@@ -8,7 +8,7 @@ ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.devlang: rust
 ms.topic: quickstart-sdk
-ms.date: 02/24/2025
+ms.date: 02/26/2025
 ms.custom: devx-track-rust, devx-track-extended-azdevcli
 appliesto:
   - ✅ NoSQL
@@ -19,10 +19,10 @@ appliesto:
 
 [!INCLUDE[Developer Quickstart selector](includes/quickstart/dev-selector.md)]
 
-In this quickstart, you deploy a basic Azure Cosmos DB for Table application using the Azure SDK for Rust. Azure Cosmos DB for Table is a schemaless data store allowing applications to store structured table data in the cloud. You learn how to create tables, rows, and perform basic tasks within your Azure Cosmos DB resource using the Azure SDK for Rust.
+In this quickstart, you deploy a basic Azure Cosmos DB for NoSQL application using the Azure SDK for Rust. Azure Cosmos DB for NoSQL is a schemaless data store allowing applications to store unstructured data in the cloud. Query data in your containers and perform common operations on individual items using the Azure SDK for Rust.
 
 > [!IMPORTANT]
-> The Rust SDK for Azure Cosmos DB is currently in public preview. This preview is provided without a service-level agreement, and we don't recommend it for production workloads. Certain features might not be supported or might have constrained capabilities.
+> The Rust SDK for Azure Cosmos DB is currently in public preview. This preview is provided without a service-level agreement, and we don't recommend it for production workloads. Certain features aren't supported or have limited support with constrained capabilities.
 >
 > For more information, see [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 >
