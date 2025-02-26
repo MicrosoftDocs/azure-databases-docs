@@ -164,7 +164,7 @@ The API doesn't change for versionless keys. Instead of providing the entire key
 
 ## Limitations
 
-Here are current limitations for configuring the customer managed key in Azure Database for PostgreSQL Flexible Server:
+These are the current limitations for configuring the customer managed key in an  Azure Database for PostgreSQL flexible server:
 
 - You can configure customer managed key encryption only during creation of a new server, not as an update to an existing Azure Database for PostgreSQL flexible server instance. You can [restore a PITR backup to a new server with CMK encryption](concepts-backup-restore.md#point-in-time-recovery) instead.
 - After you configure customer managed key encryption, you can't revert back to system managed key. If you want to revert, you must [restore the server to a new one with data encryption configured with system managed key](concepts-backup-restore.md#point-in-time-recovery).
