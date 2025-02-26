@@ -128,13 +128,13 @@ Using the [Azure portal](https://portal.azure.com/):
 
    :::image type="content" source="media/how-to-configure-index-tuning/index-tuning-page-disabled.png" alt-text="Screenshot that shows the Index tuning menu option under the Query Performance Insight section, to disable index tuning." lightbox="media/how-to-configure-index-tuning/index-tuning-page-disabled.png":::
 
-3. If index tuning is disabled, the page displays the **Enable index tuning** button.
+3. If index tuning is enabled, the page displays the **Disable index tuning** button.
+
+   :::image type="content" source="media/how-to-configure-index-tuning/index-tuning-page-enabled-disable-button.png" alt-text="Screenshot that shows the aspect of the Index tuning page when the feature is enabled." lightbox="media/how-to-configure-index-tuning/index-tuning-page-enabled-disable-button.png":::
+
+4. If index tuning is disabled, the page displays the **Enable index tuning** button.
 
    :::image type="content" source="media/how-to-configure-index-tuning/index-tuning-page-disabled-enable-button.png" alt-text="Screenshot that shows the aspect of the Index tuning page when the feature is disabled." lightbox="media/how-to-configure-index-tuning/index-tuning-page-disabled-enable-button.png":::
-
-4. If index tuning is enabled, the page displays the **Disable index tuning** button.
-
-   :::image type="content" source="media/how-to-configure-index-tuning/index-tuning-page-enabled-disable-button.png" alt-text="Screenshot that shows the aspect of the Index tuning page when the feature is disabled." lightbox="media/how-to-configure-index-tuning/index-tuning-page-enabled-disable-button.png":::
 
 ### [CLI](#tab/CLI-show-state)
 
