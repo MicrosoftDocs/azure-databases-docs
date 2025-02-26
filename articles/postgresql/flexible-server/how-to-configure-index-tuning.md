@@ -116,7 +116,7 @@ Assess whether you want to continue using [Monitor performance with query store]
 
 ---
 
-### Steps to show state of index tuning
+### Steps to show the state of index tuning
 
 ### [Portal](#tab/portal-show-state)
 
@@ -160,7 +160,7 @@ WARNING: Index tuning is disabled for the server.
 
 ---
 
-### Steps to list all index tuning settings
+### Steps to list index tuning settings
 
 ### [Portal](#tab/portal-list-all-settings)
 
@@ -176,18 +176,40 @@ Using the [Azure portal](https://portal.azure.com/):
 
    :::image type="content" source="media/how-to-configure-index-tuning/index-tuning-page-disabled-tune-settings.png" alt-text="Screenshot that shows the Tune settings button in the Index tuning page." lightbox="media/how-to-configure-index-tuning/index-tuning-page-disabled-tune-settings.png":::
 
-4. Modify the values of as many settings as you want to change, and select **Save**.
-
-   :::image type="content" source="media/how-to-configure-index-tuning/index-tuning-page-tuning-settings-save.png" alt-text="Screenshot that shows the aspect of the Index tuning page when the feature is enabled." lightbox="media/how-to-configure-index-tuning/index-tuning-page-tuning-settings-save.png":::
-
-5. Wait for the deployment to complete successfully before considering that the value of the settings are changed.
-
-   :::image type="content" source="media/how-to-configure-index-tuning/index-tuning-page-tuning-settings-deployment.png" alt-text="Screenshot that shows a sucessfully completed deployment to modify one or more index tuning settings." lightbox="media/how-to-configure-index-tuning/index-tuning-page-tuning-settings-deployment.png":::
-
-
 ### [CLI](#tab/CLI-list-all-settings)
 
-You can show the state of index tuning in an existing server via the [az postgres flexible-server index-tuning list-settings](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-update) command.
+You can show the value of a single index tuning setting in an existing server via the [az postgres flexible-server index-tuning show-settings](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-update) command.
+
+For example, to show the value of the index tuning setting called `analyze_interval`, use this command:
+
+```azurecli-interactive
+az postgres flexible-server index-tuning show-settings --resource-group <resource_group> --server-name <server> --name analyze_interval
+```
+
+The command returns all information about the servr parameter corresponding to that setting of index tuning, and the output is similar to the following:
+
+```output
+{
+  "allowedValues": "60-10080",
+  "dataType": "Integer",
+  "defaultValue": "720",
+  "description": "Sets the frequency at which each index optimization session is triggered when index_tuning.mode is set to 'REPORT'.",
+  "documentationLink": "https://go.microsoft.com/fwlink/?linkid=2274149",
+    "id": "/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.DBforPostgreSQL/flexibleServers/<server>/configurations/index_tuning.analysis_interval",
+  "isConfigPendingRestart": false,
+  "isDynamicConfig": true,
+  "isReadOnly": false,
+  "name": "index_tuning.analysis_interval",
+  "resourceGroup": "<resource_group>",
+  "source": "user-override",
+  "systemData": null,
+  "type": "Microsoft.DBforPostgreSQL/flexibleServers/configurations",
+  "unit": "minutes",
+  "value": "720"
+}
+```
+
+Also, you can show the list of all index tuning settings in an existing server via the [az postgres flexible-server index-tuning list-settings](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-update) command.
 
 To list all index tuning settings, use this command:
 
@@ -420,28 +442,65 @@ The command returns all server parameters that control the different settings of
 
 ---
 
-## Configuration options
+### Steps to modify index tuning settings
 
-When index tuning is enabled, it wakes up with a frequency configured in the `index_tuning.analysis_interval` server parameter (defaults to 720 minutes or 12 hours) and starts analyzing the workload recorded by query store during that period.
+### [Portal](#tab/portal-modify-settings)
 
-Notice that if you change the value for `index_tuning.analysis_interval`, it only is observed after the next scheduled execution completes. So, for example, if you enable index tuning one day at 10:00AM, because default value for `index_tuning.analysis_interval` is 720 minutes, the first execution is scheduled to start at 10:00PM that same day. Any changes you make to the value of `index_tuning.analysis_interval` between 10:00AM and 10:00PM won't affect that initial schedule. Only when the scheduled run completes, it will read current value set for `index_tuning.analysis_interval` and will schedule next execution according to that value.
+Using the [Azure portal](https://portal.azure.com/):
 
-The following options are available for configuring index tuning parameters:
+1. Select your Azure Database for PostgreSQL flexible server.
 
-| **Parameter** | **Description** | **Default** | **Range** | **Units** |
-| --- | --- | --- | --- | --- |
-| `index_tuning.analysis_interval` | Sets the frequency at which each index optimization session is triggered when index_tuning.mode is set to `REPORT`. | `720` | `60 - 10080` | minutes |
-| `index_tuning.max_columns_per_index` | Maximum number of columns that can be part of the index key for any recommended index. | `2` | `1 - 10` | |
-| `index_tuning.max_index_count` | Maximum indexes recommended for each database during one optimization session. | `10` | `1 - 25` | |
-| `index_tuning.max_indexes_per_table` | Maximum number of indexes that can be recommended for each table. | `10` | `1 - 25` | |
-| `index_tuning.max_queries_per_database` | Number of slowest queries per database for which indexes can be recommended. | `25` | `5 - 100` | |
-| `index_tuning.max_regression_factor` | Acceptable regression introduced by a recommended index on any of the queries analyzed during one optimization session. | `0.1` | `0.05 - 0.2` | percentage |
-| `index_tuning.max_total_size_factor` | Maximum total size, in percentage of total disk space, that all recommended indexes for any given database can use. | `0.1` | `0 - 1` | percentage |
-| `index_tuning.min_improvement_factor` | Cost improvement that a recommended index must provide to at least one of the queries analyzed during one optimization session. | `0.2` | `0 - 20` | percentage |
-| `index_tuning.mode` | Configures index optimization as disabled (`OFF`) or enabled to only emit recommendation. Requires query store to be enabled by setting `pg_qs.query_capture_mode` to `TOP` or `ALL`. | `OFF` | `OFF, REPORT` | |
-| `index_tuning.unused_dml_per_table` | Minimum number of daily average DML operations affecting the table, so their unused indexes are considered for dropping. | `1000` | `0 - 9999999` | |
-| `index_tuning.unused_min_period` | Minimum number of days the index hasn't been used, based on system statistics, so it's considered for dropping. | `35` | `30 - 70` | |
-| `index_tuning.unused_reads_per_table` | Minimum number of daily average read operations affecting the table so that their unused indexes are considered for dropping. | `1000` | `0 - 9999999` | |
+2. In the resource menu, under **Query Performance Insight**, select **Index tuning**.
+
+   :::image type="content" source="media/how-to-configure-index-tuning/index-tuning-page-disabled.png" alt-text="Screenshot that shows the Index tuning menu option under the Query Performance Insight section, to disable index tuning." lightbox="media/how-to-configure-index-tuning/index-tuning-page-disabled.png":::
+
+3. Select **Tuning settings**.
+
+   :::image type="content" source="media/how-to-configure-index-tuning/index-tuning-page-disabled-tune-settings.png" alt-text="Screenshot that shows the Tune settings button in the Index tuning page." lightbox="media/how-to-configure-index-tuning/index-tuning-page-disabled-tune-settings.png":::
+
+4. Modify the values of as many settings as you want to change, and select **Save**.
+
+   :::image type="content" source="media/how-to-configure-index-tuning/index-tuning-page-tuning-settings-save.png" alt-text="Screenshot that shows the aspect of the Index tuning page when the feature is enabled." lightbox="media/how-to-configure-index-tuning/index-tuning-page-tuning-settings-save.png":::
+
+5. Wait for the deployment to complete successfully before considering that the value of the settings are changed.
+
+   :::image type="content" source="media/how-to-configure-index-tuning/index-tuning-page-tuning-settings-deployment.png" alt-text="Screenshot that shows a sucessfully completed deployment to modify one or more index tuning settings." lightbox="media/how-to-configure-index-tuning/index-tuning-page-tuning-settings-deployment.png":::
+
+
+### [CLI](#tab/CLI-modify-settings)
+
+You can modify the value of a single index tuning setting in an existing server via the [az postgres flexible-server index-tuning set-settings](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-update) command.
+
+For example, to set the value of the index tuning setting called `analyze_interval` to `1440`, use this command:
+
+```azurecli-interactive
+az postgres flexible-server index-tuning set-settings --resource-group <resource_group> --server-name <server> --name analyze_interval --value 1440
+```
+
+The command returns all information about the servr parameter corresponding to that setting of index tuning, and the output is similar to the following:
+
+```output
+{
+  "allowedValues": "60-10080",
+  "dataType": "Integer",
+  "defaultValue": "720",
+  "description": "Sets the frequency at which each index optimization session is triggered when index_tuning.mode is set to 'REPORT'.",
+  "documentationLink": "https://go.microsoft.com/fwlink/?linkid=2274149",
+  "id": "/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.DBforPostgreSQL/flexibleServers/<server>/configurations/index_tuning.analysis_interval",
+  "isConfigPendingRestart": false,
+  "isDynamicConfig": true,
+  "isReadOnly": false,
+  "name": "index_tuning.analysis_interval",
+  "resourceGroup": "<resource_group>",
+  "source": "user-override",
+  "systemData": null,
+  "type": "Microsoft.DBforPostgreSQL/flexibleServers/configurations",
+  "unit": "minutes",
+  "value": "1440"
+}
+```
+
+---
 
 ## Related content
 
