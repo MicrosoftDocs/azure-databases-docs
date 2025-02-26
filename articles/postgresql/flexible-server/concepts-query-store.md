@@ -99,7 +99,8 @@ The following options are available for configuring Query Store parameters:
 (*) Static server parameter which requires a server restart for a change in its value to take effect. 
 
 > [!NOTE]  
-> If you change the value for `pg_qs.max_query_text_length` parameter, the text of all queries that were captured before you make the change continue to use the same query_id and sql_query_text. It might give the impression that the new value doesn't take effect but, for queries that weren't recorded in query store before, you will see that the query text uses the newly configured maximum length. This is by design, and is explained at [Views and functions](#views-and-functions). If you execute [query_store.qs_reset](#query_storeqs_reset), it removes all the information recorded by query store until now, including the text that was captured for each query ID, and if any of those queries is executed again, the newly configured maximum length is applied to the text being captured.
+> If you change the value for `pg_qs.max_query_text_length` parameter, the text of all queries that were captured before you make the change continue to use the same query_id and sql_query_text. It might give the impression that the new value doesn't take effect but, for queries that weren't recorded in query store before, you will see that the query text uses the newly configured maximum length. This is by design, and is explained at [Views and functions](#views-and-functions). If you execute [query_store.qs_reset](#query_storeqs_reset), it removes all the information recorded by query store until now, including the text that was captured for each query ID, and if any of those queries is executed again, the newly configured maximum length is applied to the text being captured.
+
 
 The following options apply specifically to wait statistics:
 
@@ -287,6 +288,6 @@ Enabling query store on a server that has [read replicas](concepts-read-replicas
 
 ## Related content
 
-- [Usage scenarios for query store in Azure Database for PostgreSQL - Flexible Server](concepts-query-store-scenarios.md).
-- [Best practices for query store in Azure Database for PostgreSQL - Flexible Server](concepts-query-store-best-practices.md).
-- [Query Performance Insight in Azure Database for PostgreSQL - Flexible Server](concepts-query-performance-insight.md).
+- [Usage scenarios for query store](concepts-query-store-scenarios.md).
+- [Best practices for query store](concepts-query-store-best-practices.md).
+- [Query Performance Insight](concepts-query-performance-insight.md).

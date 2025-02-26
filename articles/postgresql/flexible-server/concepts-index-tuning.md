@@ -213,6 +213,6 @@ If you have [high availability](/azure/reliability/reliability-postgresql-flexib
 
 ## Related content
 
-- [Monitor performance with query store](concepts-query-store.md).
-- [Enable, disable, and configure index tuning](how-to-configure-index-tuning.md).
-- [Read, interpret, and use recommendations produced by index tuning](how-to-get-and-apply-recommendations-from-index-tuning.md).
+- [Query store](concepts-query-store.md).
+- [Configure index tuning](how-to-configure-index-tuning.md).
+- [Use index recommendations](how-to-get-and-apply-recommendations-from-index-tuning.md).
