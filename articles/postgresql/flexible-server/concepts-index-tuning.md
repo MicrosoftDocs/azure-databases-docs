@@ -74,7 +74,7 @@ Likewise, all index recommendations are checked to ensure that they don't introd
 > [!NOTE]
 > `index_tuning.min_improvement_factor` and `index_tuning.max_regression_factor` both refer to cost of query plans, not to their duration or the resources they consume during execution.
 
-All the parameters mentioned in the previous paragraphs, their default values and valid ranges are described in [configuration options](how-to-configure-index-tuning.md#configuration-options).
+All the parameters mentioned in the previous paragraphs, their default values and valid ranges are described in [configuration options](#configuring-index-tuning).
 
 The script produced along with the recommendation to create an index, follows this pattern:
 

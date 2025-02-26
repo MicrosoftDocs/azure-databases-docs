@@ -17,7 +17,7 @@ ms.topic: how-to
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
-Index tuning can be enabled, disabled, and configured through a [set of parameters](#configuration-options) that control its behavior, such as how often a tuning session can run.
+Index tuning can be enabled, disabled, and configured through a [set of parameters](concepts-index-tuning.md#configuring-index-tuning) that control its behavior, such as how often a tuning session can run.
 
 Index tuning depends on [query store](concepts-query-store.md). We don't recommend enabling query store on the Burstable pricing tier, due to the performance implications it might have. For the same reason, index tuning isn't recommended for servers using compute from the Burstable tier.
 
