@@ -17,7 +17,7 @@ ms.custom:
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
-Azure Database for PostgreSQL flexible server is a managed service that allows you to run, manage, and scale highly available PostgreSQL databases in the cloud.
+Azure Database for PostgreSQL Flexible Serveris a managed service that allows you to run, manage, and scale highly available PostgreSQL databases in the cloud.
 
 This article shows you how to create an instance of Azure Database for PostgreSQL Flexible Server using different mechanisms.
 
