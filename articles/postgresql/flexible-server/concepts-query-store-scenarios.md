@@ -1,10 +1,10 @@
 ---
-title: Query store scenarios
-description: This article describes some scenarios for Query store in Azure Database for PostgreSQL - Flexible Server.
+title: Usage scenarios for query store
+description: This article describes some usage scenarios for query store in an Azure Database for PostgreSQL flexible server.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 11/05/2024
+ms.date: 02/26/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.custom:
@@ -12,7 +12,7 @@ ms.custom:
 ms.topic: conceptual
 ---
 
-# Usage scenarios for query store in Azure Database for PostgreSQL - Flexible Server
+# Usage scenarios for query store
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
@@ -62,6 +62,6 @@ If you are in control of the application code, you might consider rewriting the 
 
 ## Related content
 
-- [monitor performance with query store](concepts-query-store.md)
-- [best practices for using query store](concepts-query-store-best-practices.md)
-- [visualizing data from query store via Query Performance Insight](concepts-query-performance-insight.md)
+- [Query store](concepts-query-store.md)
+- [Best practices for query store](concepts-query-store-best-practices.md)
+- [Query Performance Insight](concepts-query-performance-insight.md)
