@@ -39,7 +39,7 @@ ms.topic: include
 | Korea Central | :heavy_check_mark: (v3/v4/v5 only) | :heavy_check_mark: $ ** | :heavy_check_mark: | :heavy_check_mark: | 
 | Korea South | :heavy_check_mark: (v3/v4/v5 only) | :x: | :heavy_check_mark: | :heavy_check_mark: | 
 | Mexico Central | :heavy_check_mark: (v3/v4 only) | :heavy_check_mark: $ | :heavy_check_mark: | :x: | 
-| New Zealand North | :heavy_check_mark: (v3/v5 only) | :heavy_check_mark: | :heavy_check_mark: | :x: | 
+| New Zealand North | :heavy_check_mark: (v3/v4/v5 only) | :heavy_check_mark: | :heavy_check_mark: | :x: | 
 | North Central US | :heavy_check_mark: (all SKUs) | :x: | :heavy_check_mark: | :heavy_check_mark: | 
 | North Europe | :heavy_check_mark: (v3/v4/v5 only) | :heavy_check_mark: $ | :heavy_check_mark: | :heavy_check_mark: | 
 | Norway East * | :heavy_check_mark: (all SKUs) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | 
