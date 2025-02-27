@@ -74,7 +74,7 @@ The following are the steps for using Percona XtraBackup to take a complete back
 - Upload the full backup file from Percona Xtrabackup at {backup_dir_path} to your Azure Blob storage. Follow these [steps to upload a file](/azure/storage/common/storage-use-azcopy-blobs-upload#upload-a-file).
 - DMS uses the binlog positions captured when taking the full backup from the *xtrabackup_binlog_info* file to automatically initiate the replication process for a minimal downtime migration.
 - The Azure storage account should be publicly accessible using the SAS token. Azure storage account with virtual network configuration isn't supported.
-- An [App registration](/entra/identity-platform/quickstart-register-app?tabs=certificate) needs to be created, and an app key using [client secret](/entra/identity-platform/quickstart-register-app?tabs=client-secret#add-credentials) needs to be generated to be used in the physical migration workflow. This app will, in turn, be used with the storage account and the target flexible server for SAS key creation and server update.
+- An [App registration](/entra/identity-platform/quickstart-register-app?tabs=certificate) needs to be created, and an app key using [client secret](/entra/identity-platform/quickstart-register-app?tabs=client-secret#add-credentials) needs to be generated to be used in the physical migration workflow. This app can be used with the storage account and the target flexible server for SAS key creation and server update.
 - [Assign the Role-based access control (RBAC) role assignment](/azure/role-based-access-control/role-assignments-portal) with the app registration for storage account with the following roles.
     - **Storage blob data reader** for reading blob container files.
 - Assign the **Contributor** role to the **app registration** on the target MySQL flexible server.
@@ -89,7 +89,7 @@ The source server configuration hasn't been migrated. You must configure the tar
 - Online migration support is limited to the **ROW** binlog format.
 - Azure Database for MySQL doesn't support mixed case databases.
 - Azure DMS statement or binlog replication doesn't support the following syntax: 'CREATE TABLE `b` as SELECT * FROM `a';'. The replication of this DDL results in the following error: "Only BINLOG INSERT, COMMIT, and ROLLBACK statements are allowed after CREATE TABLE with START TRANSACTION statement."
-- Migration duration could be affected by compute maintenance on the backend, which can reset the progress.
+- Migration duration is affected by compute maintenance on the backend, which can reset the progress.
 
 ## Best practices for a faster data load using DMS
 
@@ -134,8 +134,6 @@ To register the Microsoft. The dataMigration resource provider performs the foll
 
 1. On the **Select migration scenario and Database Migration Service** page, under **Migration scenario**, select **MySQL** as the source server type, and then select **Azure Database for MySQL** as target server type, and then select **Select**.
 
-    :::image type="content" source="media/tutorial-mysql-azure-external-online-portal-physical/create-database-migration-service.png" alt-text="Screenshot of a Select Migration Scenario." lightbox="media/tutorial-mysql-azure-external-online-portal-physical/create-database-migration-service.png":::
-
 1. On the Create Migration Service page, on the Basics tab, under Project details, select the appropriate subscription, and then select an existing resource group or create a new one.
 
 1. Under **Instance details**, specify a name for the service, select a region, and verify that **Azure** is selected as the service mode.
@@ -150,7 +148,7 @@ To register the Microsoft. The dataMigration resource provider performs the foll
 
     :::image type="content" source="media/tutorial-mysql-azure-external-online-portal-physical/8-configure-pricing-tier.png" alt-text="Screenshot of a Select Pricing tier.":::
 
-    Next, we need to specify the virtual network (virtual network) that will provide the DMS instance access to the source MySQL server and the target flexible server.
+    Next, we need to specify the virtual network (virtual network) that provides the DMS instance access to the source MySQL server and the target flexible server.
 
 1. On the **Create Migration Service** page, select **Next : Networking >>**.
 
@@ -193,7 +191,7 @@ To create a migration project, perform the following steps.
 
 1. On the **New migration project** page, specify a name for the project. In the **Source server type** selection box, select **MySQL**. In the **Target server type** selection box, select **Azure Database For MySQL**. In the **Migration activity type** selection box, select **[Preview] Physical online data migration**. Then, select **Create and run activity**.
 
-   Selecting **Create project only** as the migration activity type will only create the migration project; you can then run it later.
+   Selecting **Create project only** as the migration activity type that only creates the migration project; you can then run it later.
 
    :::image type="content" source="media/tutorial-mysql-azure-external-online-portal-physical/3-migration-activity-select.png" alt-text="Screenshot of selecting a migration activity.":::
 
