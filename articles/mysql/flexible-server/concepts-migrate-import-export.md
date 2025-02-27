@@ -51,7 +51,7 @@ In the following scenarios, use MySQL tools to import and export databases into 
 - When you're migrating data from external data sources other than a MySQL database, create flat files and import them by using [mysqlimport](https://dev.mysql.com/doc/refman/5.7/en/mysqlimport.html).
 
 > [!IMPORTANT]  
-> Both Azure Database for MySQL single server and Azure Database for MySQL Flexible Server support only the InnoDB storage engine. Make sure that all tables in the database use the InnoDB storage engine when you're loading data into your Azure Database for MySQL Flexible Server instance.
+> Both Azure Database for MySQL Single Server and Azure Database for MySQL Flexible Server support only the InnoDB storage engine. Make sure that all tables in the database use the InnoDB storage engine when you're loading data into your Azure Database for MySQL Flexible Server instance.
 >  
 > If your source database uses another storage engine, convert to the InnoDB engine before you migrate the database. For example, if you have a WordPress or web app that uses the MyISAM engine, first convert the tables by migrating the data into InnoDB tables. Use the clause `ENGINE=INNODB` to set the engine for creating a table, and then transfer the data into the compatible table before the migration.
 
@@ -74,9 +74,9 @@ For optimal data import and export performance, we recommend that you do the fol
 There are two ways to export and import data in MySQL Workbench: from the object browser context menu or from the Navigator pane. Each method serves a different purpose.
 
 > [!NOTE]  
-> If you're adding a connection to Azure Database for MySQL single server or Azure Database for MySQL Flexible Server on MySQL Workbench, do the following:
+> If you're adding a connection to Azure Database for MySQL Single Server or Azure Database for MySQL Flexible Server on MySQL Workbench, do the following:
 >  
-> - For Azure Database for MySQL single server, make sure that the user name is in the format *\<username@servername>*.
+> - For Azure Database for MySQL Single Server, make sure that the user name is in the format *\<username@servername>*.
 > - For Azure Database for MySQL Flexible Server, use *\<username>* only. If you use *\<username@servername>* to connect, the connection will fail.
 
 ### Run the table data export and import wizards from the object browser context menu
