@@ -40,6 +40,6 @@ The `pg_qs.retention_period_in_days` parameter specifies the data retention peri
 
 ## Related content
 
-- [Query store](concepts-query-store.md).
-- [Usage scenarios for query store](concepts-query-store-scenarios.md).
-- [Query Performance Insight](concepts-query-performance-insight.md).
+- [Query store](concepts-query-store.md)
+- [Usage scenarios for query store](concepts-query-store-scenarios.md)
+- [Query Performance Insight](concepts-query-performance-insight.md)

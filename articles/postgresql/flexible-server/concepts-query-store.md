@@ -40,8 +40,8 @@ Allow up to 20 minutes for the first batch of data to persist in the `azure_sys`
 ## Information in query store
 
 #### Query store consists of two stores:
-1. A runtime stats store for persisting the query execution statistics information.
-1. A wait stats store for persisting wait statistics information.
+- A runtime stats store for persisting the query execution statistics information.
+- A wait stats store for persisting wait statistics information.
 
 #### Common scenarios for using query store include:
 - Determining the number of times a query was executed in a given time window.
@@ -288,6 +288,6 @@ Enabling query store on a server that has [read replicas](concepts-read-replicas
 
 ## Related content
 
-- [Usage scenarios for query store](concepts-query-store-scenarios.md).
-- [Best practices for query store](concepts-query-store-best-practices.md).
-- [Query Performance Insight](concepts-query-performance-insight.md).
+- [Usage scenarios for query store](concepts-query-store-scenarios.md)
+- [Best practices for query store](concepts-query-store-best-practices.md)
+- [Query Performance Insight](concepts-query-performance-insight.md)

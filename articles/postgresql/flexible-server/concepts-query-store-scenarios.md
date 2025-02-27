@@ -63,5 +63,5 @@ If you are in control of the application code, you might consider rewriting the 
 ## Related content
 
 - [Query store](concepts-query-store.md)
-- [Best practices for query store](concepts-query-store-best-practices.md).
-- [Query Performance Insight](concepts-query-performance-insight.md).
+- [Best practices for query store](concepts-query-store-best-practices.md)
+- [Query Performance Insight](concepts-query-performance-insight.md)

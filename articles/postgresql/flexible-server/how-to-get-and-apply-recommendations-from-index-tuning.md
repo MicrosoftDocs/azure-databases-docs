@@ -293,6 +293,6 @@ The command returns all the statements that must be run to implement all produce
 
 ## Related content
 
-- [Index tuning](concepts-index-tuning.md).
-- [Configure index tuning](how-to-configure-index-tuning.md).
-- [Query store](concepts-query-store.md).
+- [Index tuning](concepts-index-tuning.md)
+- [Configure index tuning](how-to-configure-index-tuning.md)
+- [Query store](concepts-query-store.md)

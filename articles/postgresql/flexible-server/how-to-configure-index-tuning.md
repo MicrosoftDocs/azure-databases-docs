@@ -186,7 +186,7 @@ For example, to show the value of the index tuning setting called `analyze_inter
 az postgres flexible-server index-tuning show-settings --resource-group <resource_group> --server-name <server> --name analyze_interval
 ```
 
-The command returns all information about the servr parameter corresponding to that setting of index tuning, and the output is similar to the following:
+The command returns all information about the server parameter corresponding to that setting of index tuning, and the output is similar to the following:
 
 ```output
 {
@@ -462,9 +462,9 @@ Using the [Azure portal](https://portal.azure.com/):
 
    :::image type="content" source="media/how-to-configure-index-tuning/index-tuning-page-tuning-settings-save.png" alt-text="Screenshot that shows the aspect of the Index tuning page when the feature is enabled." lightbox="media/how-to-configure-index-tuning/index-tuning-page-tuning-settings-save.png":::
 
-5. Wait for the deployment to complete successfully before considering that the value of the settings are changed.
+5. Wait for the deployment to complete successfully before considering that the value of the settings is changed.
 
-   :::image type="content" source="media/how-to-configure-index-tuning/index-tuning-page-tuning-settings-deployment.png" alt-text="Screenshot that shows a sucessfully completed deployment to modify one or more index tuning settings." lightbox="media/how-to-configure-index-tuning/index-tuning-page-tuning-settings-deployment.png":::
+   :::image type="content" source="media/how-to-configure-index-tuning/index-tuning-page-tuning-settings-deployment.png" alt-text="Screenshot that shows a successfully completed deployment to modify one or more index tuning settings." lightbox="media/how-to-configure-index-tuning/index-tuning-page-tuning-settings-deployment.png":::
 
 
 ### [CLI](#tab/CLI-modify-settings)
@@ -477,7 +477,7 @@ For example, to set the value of the index tuning setting called `analyze_interv
 az postgres flexible-server index-tuning set-settings --resource-group <resource_group> --server-name <server> --name analyze_interval --value 1440
 ```
 
-The command returns all information about the servr parameter corresponding to that setting of index tuning, and the output is similar to the following:
+The command returns all information about the server parameter corresponding to that setting of index tuning, and the output is similar to the following:
 
 ```output
 {
@@ -504,6 +504,6 @@ The command returns all information about the servr parameter corresponding to t
 
 ## Related content
 
-- [Index tuning](concepts-index-tuning.md).
-- [Using index recommendations](how-to-get-and-apply-recommendations-from-index-tuning.md).
-- [Query store](concepts-query-store.md).
+- [Index tuning](concepts-index-tuning.md)
+- [Using index recommendations](how-to-get-and-apply-recommendations-from-index-tuning.md)
+- [Query store](concepts-query-store.md)
