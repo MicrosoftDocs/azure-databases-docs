@@ -1,10 +1,10 @@
 ---
-title: "Tutorial: Migrate from MySQL to Azure Database for MySQL Online Using DMS Physical Migration via the Azure portal"
+title: "Tutorial: Migrate from MySQL to Azure Database for MySQL Online Using DMS Physical Migration via the Azure Portal"
 description: Learn to perform an online physical migration from MySQL to Azure Database for MySQL by using Azure DMS.
 author: skondapalli
 ms.author: skondapalli
 ms.reviewer: randolphwest, maghan
-ms.date: 02/14/2025
+ms.date: 02/27/2025
 ms.service: azure-database-migration-service
 ms.topic: tutorial
 ms.collection:
@@ -13,12 +13,12 @@ ms.collection:
 
 # Tutorial: Migrate from MySQL to Azure Database for MySQL using DMS physical migration with the Azure portal (Preview)
 
-> [!NOTE]  
+> [!NOTE]
 > This article contains references to the term *slave*, a term that Microsoft no longer uses. When the term is removed from the software, we'll remove it from this article.
 
 Using a physical backup file, you can seamlessly migrate your MySQL on-premises or Virtual Machine (VM) workload on Azure or other cloud services to Azure Database for MySQL. With physical backup files, you can quickly restore your source server to the target flexible server instance with minimal downtime. In this tutorial, we show you how to use Azure DMS to migrate MySQL workloads from on-premises or VMs to Azure Database for MySQL with minimal downtime using [Percona XtraBackup](https://www.percona.com/mysql/software/percona-xtrabackup).
 
-> [!NOTE]  
+> [!NOTE]
 > DMS **physical online data migration** is now in public preview. DMS supports migration to MySQL versions 5.7 and 8.0 and migration from lower version MySQL servers (v5.6 and higher) to a higher version MySQL server. In addition, DMS supports cross-region, cross-resource group, and cross-subscription migrations.
 
 In this tutorial, you learn how to:
@@ -47,31 +47,35 @@ To complete this tutorial, you need to:
   - Ensure the binlog retention period is set appropriately using parameter [binlog_expire_logs_seconds](https://dev.mysql.com/doc/refman/8.4/en/replication-options-binary-log.html#sysvar_binlog_expire_logs_seconds) to complete the online migration.
   - Ensure that the user used for migration has "REPLICATION CLIENT" and "REPLICATION SLAVE" permissions on the source server to read and apply the bin log.
 - Take a physical backup of your MySQL workload using Percona XtraBackup.
- The following are the steps for using Percona XtraBackup to take a complete backup:
+The following are the steps for using Percona XtraBackup to take a complete backup:
   - Install Percona XtraBackup on the on-premises or VM workload. For MySQL engine version v5.7, install Percona XtraBackup version 2.4, see [Installing Percona XtraBackup 2.4]( https://docs.percona.com/percona-xtrabackup/2.4/installation.html). For MySQL engine version v8.0, install Percona XtraBackup version 8.0, see [Installing Percona XtraBackup 8.0]( https://docs.percona.com/percona-xtrabackup/8.0/installation.html).
   - For instructions for taking a Full backup with Percona XtraBackup 2.4, see [Full backup](https://docs.percona.com/percona-xtrabackup/2.4/backup_scenarios/full_backup.html). For instructions for taking a Full backup with Percona XtraBackup 8.0, see [Full backup](https://docs.percona.com/percona-xtrabackup/8.0/create-full-backup.html)
   - While taking full backup, run the below commands in order:
-      -  **xtrabackup --backup --host={host} --user={user} --password={password} --target-dir={backup__dir_path}**
-      -  **xtrabackup --prepare --{backup_dir_path}** (Provide the same backup path here as in the previous command)
+      - **xtrabackup --backup --host={host} --user={user} --password={password} --target-dir={backup__dir_path}**
+      - **xtrabackup --prepare --{backup_dir_path}** (Provide the same backup path here as in the previous command)
   - Considerations while taking the Percona XtraBackup:
       - Make sure you run both the backup and prepare steps.
       - Make sure there are no errors in the backup and prepare step.
       - Keep the backup and prepare step logs for Azure Support, which is required if there are failures.
-> [!IMPORTANT]  
-> Attempting to access corrupted tables imported from a source server can cause the target flexible server to crash. As a result, before taking a backup using the Percona XtraBackup utility, performing a "mysqlcheck / Optimize Table" operation on the source server is recommended.
+
+    > [!IMPORTANT]  
+    > Attempting to access corrupted tables imported from a source server can cause the target flexible server to crash. As a result, before taking a backup using the Percona XtraBackup utility, performing a "mysqlcheck / Optimize Table" operation on the source server is recommended.
+
 - Create the target flexible server. For guided steps, see the quickstart [Quickstart: Create an instance of Azure Database for MySQL with the Azure portal](../mysql/flexible-server/quickstart-create-server-portal.md).
   - On the target flexible server, set **max_allowed_packet** to **1073741824 (i.e., 1GB)** to prevent connection issues due to a large row data transfer.
   - Set the **sql_mode** server parameter on the target flexible server to match the source server configuration.
   - Set the **TLS version** and **require_secure_transport** server parameters to match the values of the source server.
   - Configure server parameters on the target flexible server to match any non-default values used on the source server.
-- [Create an Azure Blob container](https://learn.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal#create-a-container) and get the Shared Access Signature (SAS) Token ([Azure portal](https://learn.microsoft.com/azure/ai-services/translator/document-translation/how-to-guides/create-sas-tokens?tabs=Containers#create-sas-tokens-in-the-azure-portal) or [Azure CLI](https://learn.microsoft.com/azure/storage/blobs/storage-blob-user-delegation-sas-create-cli)) for the container. Ensure you grant **Add**, **Create**, and **Write** in the **Permissions** dropdown list.
-> [!IMPORTANT]
-> Save the Blob SAS token and URL values in a secure location. They're only displayed once and can't be retrieved once the window is closed.
-- Upload the full backup file from Percona Xtrabackup at {backup_dir_path} to your Azure Blob storage. Follow these [steps to upload a file](https://learn.microsoft.com/azure/storage/common/storage-use-azcopy-blobs-upload#upload-a-file).
+- [Create an Azure Blob container](/azure/storage/blobs/storage-quickstart-blobs-portal#create-a-container) and get the Shared Access Signature (SAS) Token ([Azure portal](/azure/ai-services/translator/document-translation/how-to-guides/create-sas-tokens?tabs=Containers#create-sas-tokens-in-the-azure-portal) or [Azure CLI](/azure/storage/blobs/storage-blob-user-delegation-sas-create-cli)) for the container. Ensure you grant **Add**, **Create**, and **Write** in the **Permissions** dropdown list.
+
+    > [!IMPORTANT]  
+    > Save the Blob SAS token and URL values in a secure location. They're only displayed once and can't be retrieved once the window is closed.
+    
+- Upload the full backup file from Percona Xtrabackup at {backup_dir_path} to your Azure Blob storage. Follow these [steps to upload a file](/azure/storage/common/storage-use-azcopy-blobs-upload#upload-a-file).
 - DMS uses the binlog positions captured when taking the full backup from the *xtrabackup_binlog_info* file to automatically initiate the replication process for a minimal downtime migration.
 - The Azure storage account should be publicly accessible using the SAS token. Azure storage account with virtual network configuration isn't supported.
-- An [App registration](https://learn.microsoft.com/entra/identity-platform/quickstart-register-app?tabs=certificate) needs to be created, and an app key using [client secret](https://learn.microsoft.com/entra/identity-platform/quickstart-register-app?tabs=client-secret#add-credentials) needs to be generated to be used in the physical migration workflow. This app will, in turn, be used with the storage account and the target flexible server for SAS key creation and server update.
-- [Assign the Role-based access control (RBAC) role assignment](https://learn.microsoft.com/azure/role-based-access-control/role-assignments-portal) with the app registration for storage account with the following roles.
+- An [App registration](/entra/identity-platform/quickstart-register-app?tabs=certificate) needs to be created, and an app key using [client secret](/entra/identity-platform/quickstart-register-app?tabs=client-secret#add-credentials) needs to be generated to be used in the physical migration workflow. This app can be used with the storage account and the target flexible server for SAS key creation and server update.
+- [Assign the Role-based access control (RBAC) role assignment](/azure/role-based-access-control/role-assignments-portal) with the app registration for storage account with the following roles.
     - **Storage blob data reader** for reading blob container files.
 - Assign the **Contributor** role to the **app registration** on the target MySQL flexible server.
 
@@ -85,13 +89,13 @@ The source server configuration hasn't been migrated. You must configure the tar
 - Online migration support is limited to the **ROW** binlog format.
 - Azure Database for MySQL doesn't support mixed case databases.
 - Azure DMS statement or binlog replication doesn't support the following syntax: 'CREATE TABLE `b` as SELECT * FROM `a';'. The replication of this DDL results in the following error: "Only BINLOG INSERT, COMMIT, and ROLLBACK statements are allowed after CREATE TABLE with START TRANSACTION statement."
-- Migration duration could be affected by compute maintenance on the backend, which can reset the progress.
+- Migration duration is affected by compute maintenance on the backend, which can reset the progress.
 
 ## Best practices for a faster data load using DMS
 
 DMS supports cross-region, cross-resource group, and cross-subscription migrations, so you can select the appropriate region, resource group, and subscription for your target flexible server. Before you create your target flexible server, consider the following configuration guidance to help ensure faster data loads using DMS.
 
-- For an optimal migration experience, Select the [compute size and compute tier](https://learn.microsoft.com/azure/mysql/flexible-server/concepts-service-tiers-storage) for the target flexible server based on the source MySQL server configuration.
+- For an optimal migration experience, Select the [compute size and compute tier](/azure/mysql/flexible-server/concepts-service-tiers-storage) for the target flexible server based on the source MySQL server configuration.
   - We recommend setting the target flexible server to a General-Purpose or business-critical SKU during the migration. Once the migration succeeds, you can scale the instance to an appropriate size to meet your application needs.
 
 - The MySQL version of the target flexible server must be greater than or equal to that of the source MySQL server.
@@ -110,29 +114,25 @@ To register the Microsoft. The dataMigration resource provider performs the foll
 
 1. Before creating your first DMS instance, sign in to the Azure portal, and then search for and select **Subscriptions**.
 
-   :::image type="content" source= "media/tutorial-mysql-external-to-flex-online-physical-portal/1-subscriptions.png" alt-text= "Screenshot of Select subscriptions from Azure Marketplace." lightbox="media/tutorial-mysql-external-to-flex-online-physical-portal/1-subscriptions.png" :::
-
 1. Select the subscription for which you want to create the DMS instance, then select **Resource providers**.
 
-    :::image type="content" source="media/tutorial-mysql-external-to-flex-online-physical-portal/2-resource-provider.png" alt-text="Screenshot of a Select Resource Provider." lightbox="media/tutorial-mysql-external-to-flex-online-physical-portal/2-resource-provider.png":::
+    :::image type="content" source="media/tutorial-mysql-azure-external-online-portal-physical/2-resource-provider.png" alt-text="Screenshot of a Select Resource Provider." lightbox="media/tutorial-mysql-azure-external-online-portal-physical/2-resource-provider.png":::
 
 1. Search for "Migration" and then for **Microsoft.DataMigration**, select **Register**.
 
-    :::image type="content" source="media/tutorial-mysql-external-to-flex-online-physical-portal/3-register.png" alt-text="Screenshot of a Register your resource provider." lightbox="media/tutorial-mysql-external-to-flex-online-physical-portal/3-register.png":::
+    :::image type="content" source="media/tutorial-mysql-azure-external-online-portal-physical/3-register.png" alt-text="Screenshot of a Register your resource provider.":::
 
 ### Create a Database Migration Service (DMS) instance
 
 1. In the Azure portal, select **+ Create a resource**, search for the term "Azure Database Migration Service", and then select **Azure Database Migration Service** from the dropdown list.
 
-    :::image type="content" source="media/tutorial-mysql-external-to-flex-online-physical-portal/4-dms-portal-marketplace.png" alt-text="Screenshot of DMS in Azure Marketplace." lightbox="media/tutorial-mysql-external-to-flex-online-physical-portal/4-dms-portal-marketplace.png":::
+    :::image type="content" source="media/tutorial-mysql-azure-external-online-portal-physical/4-dms-portal-marketplace.png" alt-text="Screenshot of DMS in Azure Marketplace." lightbox="media/tutorial-mysql-azure-external-online-portal-physical/4-dms-portal-marketplace.png":::
 
 1. On the **Azure Database Migration Service** screen, select **Create**.
 
-    :::image type="content" source="media/tutorial-mysql-external-to-flex-online-physical-portal/5-dms-portal-marketplace-create.png" alt-text="Screenshot of create from Azure Marketplace." lightbox="media/tutorial-mysql-external-to-flex-online-physical-portal/5-dms-portal-marketplace-create.png":::
+    :::image type="content" source="media/tutorial-mysql-azure-external-online-portal-physical/5-dms-portal-marketplace-create.png" alt-text="Screenshot of create from Azure Marketplace." lightbox="media/tutorial-mysql-azure-external-online-portal-physical/5-dms-portal-marketplace-create.png":::
 
 1. On the **Select migration scenario and Database Migration Service** page, under **Migration scenario**, select **MySQL** as the source server type, and then select **Azure Database for MySQL** as target server type, and then select **Select**.
-
-    :::image type="content" source="media/tutorial-azure-mysql-external-to-flex-online/create-database-migration-service.png" alt-text="Screenshot of a Select Migration Scenario." lightbox="media/tutorial-azure-mysql-external-to-flex-online/create-database-migration-service.png":::
 
 1. On the Create Migration Service page, on the Basics tab, under Project details, select the appropriate subscription, and then select an existing resource group or create a new one.
 
@@ -140,42 +140,42 @@ To register the Microsoft. The dataMigration resource provider performs the foll
 
 1. To the right of **Pricing tier**, select **Configure tier**.
 
-    :::image type="content" source="media/tutorial-mysql-external-to-flex-online-physical-portal/7-project-details.png" alt-text="Screenshot of a Select Configure Tier." lightbox="media/tutorial-mysql-external-to-flex-online-physical-portal/7-project-details.png":::
+    :::image type="content" source="media/tutorial-mysql-azure-external-online-portal-physical/7-project-details.png" alt-text="Screenshot of a Select Configure Tier.":::
 
 1. Select the Premium pricing tier with 4 vCores for your DMS instance on the Configure page and then select Apply.
-   
-    DMS Premium 4-vCore is free for six months (183 days) from the date the DMS service was created before charges are incurred. For more information on DMS costs and pricing tiers, see the [pricing page](https://aka.ms/dms-pricing). 
 
-    :::image type="content" source="media/tutorial-mysql-external-to-flex-online-physical-portal/8-configure-pricing-tier.png" alt-text="Screenshot of a Select Pricing tier." lightbox="media/tutorial-mysql-external-to-flex-online-physical-portal/8-configure-pricing-tier.png":::
-  
-    Next, we need to specify the virtual network (virtual network) that will provide the DMS instance access to the source MySQL server and the target flexible server.
+    DMS Premium 4-vCore is free for six months (183 days) from the date the DMS service was created before charges are incurred. For more information on DMS costs and pricing tiers, see the [pricing page](https://aka.ms/dms-pricing).
+
+    :::image type="content" source="media/tutorial-mysql-azure-external-online-portal-physical/8-configure-pricing-tier.png" alt-text="Screenshot of a Select Pricing tier.":::
+
+    Next, we need to specify the virtual network (virtual network) that provides the DMS instance access to the source MySQL server and the target flexible server.
 
 1. On the **Create Migration Service** page, select **Next : Networking >>**.
 
 1. On the **Networking** tab, select an existing virtual network from the list or provide the name of the new virtual network you want to create, then select **Review + Create**.
 
     For more information, see the article [Create a virtual network using the Azure portal.](/azure/virtual-network/quick-create-portal).
- 
-     :::image type="content" source="media/tutorial-mysql-external-to-flex-online-physical-portal/8-1-networking.png" alt-text="Screenshot of a Select Networking." lightbox="media/tutorial-mysql-external-to-flex-online-physical-portal/8-1-networking.png":::
+
+     :::image type="content" source="media/tutorial-mysql-azure-external-online-portal-physical/8-1-networking.png" alt-text="Screenshot of a Select Networking." lightbox="media/tutorial-mysql-azure-external-online-portal-physical/8-1-networking.png":::
 
     Your virtual network must be configured with access to both the source MySQL server and the target flexible server, so be sure to:
    - Create a server-level firewall rule for both the source MySQL server and the target MySQL flexible server to allow the virtual network for Azure Database Migration Service access to the source and target databases.
    - Ensure that your virtual network Network Security Group (NSG) rules don't block ServiceTag's outbound port 443 for ServiceBus, Storage, and Azure Monitor. For more information about virtual network NSG traffic filtering, see [Filter network traffic with network security groups](/azure/virtual-network/virtual-network-vnet-plan-design-arm).
 
-> [!NOTE]
-> To add tags to the service, advance to the **Tags** tab by selecting **Next : Tags**. Adding tags to the service is optional.
+    > [!NOTE]  
+    > To add tags to the service, advance to the **Tags** tab by selecting **Next : Tags**. Adding tags to the service is optional.
 
-10. Navigate to the **Review + create** tab, review the configurations, view the terms, and select **Create**.
+1. Navigate to the **Review + create** tab, review the configurations, view the terms, and select **Create**.
 
-    :::image type="content" source="media/tutorial-mysql-external-to-flex-online-physical-portal/9-review-create.png" alt-text="Screenshot of a Select Review+Create." lightbox="media/tutorial-mysql-external-to-flex-online-physical-portal/9-review-create.png":::
+    :::image type="content" source="media/tutorial-mysql-azure-external-online-portal-physical/9-review-create.png" alt-text="Screenshot of a Select Review+Create.":::
 
    Your DMS instance's deployment begins now. The message "Deployment is in progress" appears for a few minutes, and then it changes to "Your deployment is complete."
 
-11. Select **Go to resource**.
+1. Select **Go to resource**.
 
-    :::image type="content" source="media/tutorial-mysql-external-to-flex-online-physical-portal/9-1-go-to-resource.png" alt-text="Screenshot of a Select Go to resource." lightbox="media/tutorial-mysql-external-to-flex-online-physical-portal/9-1-go-to-resource.png":::
+    :::image type="content" source="media/tutorial-mysql-azure-external-online-portal-physical/9-1-go-to-resource.png" alt-text="Screenshot of a Select Go to resource." lightbox="media/tutorial-mysql-azure-external-online-portal-physical/9-1-go-to-resource.png":::
 
-12. Identify the DMS instance's IP address from the resource overview page, create a firewall rule for your source MySQL server, and target a flexible server, allow-listing the IP address of the DMS instance.
+1. Identify the DMS instance's IP address from the resource overview page, create a firewall rule for your source MySQL server, and target a flexible server, allow-listing the IP address of the DMS instance.
 
 ### Create a migration project
 
@@ -183,17 +183,17 @@ To create a migration project, perform the following steps.
 
 1. In the Azure portal, select **All services**, search for Azure Database Migration Service, and then select **Azure Database Migration Services**.
 
-    :::image type="content" source="media/tutorial-mysql-external-to-flex-online-physical-portal/10-dms-search.png" alt-text="Screenshot of a DMS search." lightbox="media/tutorial-mysql-external-to-flex-online-physical-portal/10-dms-search.png":::
+    :::image type="content" source="media/tutorial-mysql-azure-external-online-portal-physical/10-dms-search.png" alt-text="Screenshot of a DMS search." lightbox="media/tutorial-mysql-azure-external-online-portal-physical/10-dms-search.png":::
 
 1. In the search results, select the DMS instance you created, and then select **+ New Migration Project**.
 
-    :::image type="content" source="media/tutorial-mysql-external-to-flex-online-physical-portal/2-create-migration-project.png" alt-text="Screenshot of create migration project." lightbox="media/tutorial-mysql-external-to-flex-online-physical-portal/2-create-migration-project.png":::
+    :::image type="content" source="media/tutorial-mysql-azure-external-online-portal-physical/2-create-migration-project.png" alt-text="Screenshot of create migration project.":::
 
 1. On the **New migration project** page, specify a name for the project. In the **Source server type** selection box, select **MySQL**. In the **Target server type** selection box, select **Azure Database For MySQL**. In the **Migration activity type** selection box, select **[Preview] Physical online data migration**. Then, select **Create and run activity**.
 
-   Selecting **Create project only** as the migration activity type will only create the migration project; you can then run it later.
+   Selecting **Create project only** as the migration activity type that only creates the migration project; you can then run it later.
 
-   :::image type="content" source="media/tutorial-mysql-external-to-flex-online-physical-portal/3-migration-activity-select.png" alt-text="Screenshot of selecting a migration activity." lightbox="media/tutorial-mysql-external-to-flex-online-physical-portal/3-migration-activity-select.png":::
+   :::image type="content" source="media/tutorial-mysql-azure-external-online-portal-physical/3-migration-activity-select.png" alt-text="Screenshot of selecting a migration activity.":::
 
 ### Configure the migration project
 
@@ -201,25 +201,25 @@ To configure your DMS migration project, perform the following steps.
 
 1. On the **Select source** screen, we must ensure that DMS is in the virtual network, which has connectivity to the source server. Here you input **source server name**, **server port**, **user name**, and **password** to your source MySQL server and then select **Next: Select target >>**
 
-    :::image type="content" source="media/tutorial-mysql-external-to-flex-online-physical-portal/4-select-source-latest.png" alt-text="Screenshot of an Add source details screen." lightbox="media/tutorial-mysql-external-to-flex-online-physical-portal/4-select-source-latest.png":::
+    :::image type="content" source="media/tutorial-mysql-azure-external-online-portal-physical/4-select-source-latest.png" alt-text="Screenshot of an Add source details screen." lightbox="media/tutorial-mysql-azure-external-online-portal-physical/4-select-source-latest.png":::
 
 1. On the **Select target** screen, under automated Server selection, choose the **Subscription**, **Location**, **Resource group**, Azure Database for MySQL **server name**, **user name**, **password** for your target Azure Database for MySQL server and select **Next: Select backup >>**
 
-    :::image type="content" source="media/tutorial-mysql-external-to-flex-online-physical-portal/5-select-target-latest.png" alt-text="Screenshot of a Select target."lightbox="media/tutorial-mysql-external-to-flex-online-physical-portal/5-select-target-latest.png":::
+    :::image type="content" source="media/tutorial-mysql-azure-external-online-portal-physical/5-select-target-latest.png" alt-text="Screenshot of a Select target." lightbox="media/tutorial-mysql-azure-external-online-portal-physical/5-select-target-latest.png":::
 
 1. On the **Select backup** screen, input the **application ID** of the app registration, **client secret** from the app registration, **tenant ID** from the app registration, **subscription**, **storage account** name, **blob container** name and the **backup directory** name where the percona xtrabackup files are stored and select **Next: Configure migration settings >>**
 
    There's now a **Migrate user accounts and privileges** option. When selected, this option migrates all sign-in migrations. Additionally, you can replicate any **DDL statements** from the source MySQL server to the target flexible server.
 
-     :::image type="content" source="media/tutorial-mysql-external-to-flex-online-physical-portal/6-select-backup-latest.png" alt-text="Screenshot of a Select backup screen." lightbox="media/tutorial-mysql-external-to-flex-online-physical-portal/6-select-backup-latest.png":::
+     :::image type="content" source="media/tutorial-mysql-azure-external-online-portal-physical/6-select-backup-latest.png" alt-text="Screenshot of a Select backup screen." lightbox="media/tutorial-mysql-azure-external-online-portal-physical/6-select-backup-latest.png":::
 
 1. On the **Configure migration settings** screen, if you want to customize the migration settings, select the check box or else advance to the summary page by selecting the **Next: Summary >>**
 
-    :::image type="content" source="media/tutorial-mysql-external-to-flex-online-physical-portal/7-configure-migration-settings.png" alt-text="Screenshot of configuring migration settings page." lightbox="media/tutorial-mysql-external-to-flex-online-physical-portal/7-configure-migration-settings.png":::
+    :::image type="content" source="media/tutorial-mysql-azure-external-online-portal-physical/7-configure-migration-settings.png" alt-text="Screenshot of configuring migration settings page.":::
 
 1. On the Summary screen, in the Activity Name text box, specify a name for the migration activity. Ensure all the migration-related details are correct, then select "Start Migration."
 
-    :::image type="content" source="media/tutorial-mysql-external-to-flex-online-physical-portal/8-migration-summary-latest.png" alt-text="Screenshot of migration summary and details page." lightbox="media/tutorial-mysql-external-to-flex-online-physical-portal/8-migration-summary-latest.png":::
+    :::image type="content" source="media/tutorial-mysql-azure-external-online-portal-physical/8-migration-summary-latest.png" alt-text="Screenshot of migration summary and details page." lightbox="media/tutorial-mysql-azure-external-online-portal-physical/8-migration-summary-latest.png":::
 
 1. Once the migration starts, the migration activity window appears. Under the Initial Load tab, the status changes to Running.
 
@@ -227,19 +227,19 @@ To configure your DMS migration project, perform the following steps.
 
 1. As the migration is in flight, you can review the status of the migration and notice states such as **Importing** and **Estimated time remaining** for the physical backup files' data ingestion into the target MySQL flexible server.
 
-    :::image type="content" source="media/tutorial-mysql-external-to-flex-online-physical-portal/9-migration-status-latest.png" alt-text="Screenshot of migration status page." lightbox="media/tutorial-mysql-external-to-flex-online-physical-portal/9-migration-status-latest.png":::
+    :::image type="content" source="media/tutorial-mysql-azure-external-online-portal-physical/9-migration-status-latest.png" alt-text="Screenshot of migration status page." lightbox="media/tutorial-mysql-azure-external-online-portal-physical/9-migration-status-latest.png":::
 
    After the Initial Load activity is completed, you've automatically navigated to the Replicate Data Changes tab. You can monitor the migration progress as the screen is autorefreshed every 30 seconds or select the Refresh button.
 
 1. Once the initial data ingestion completes, monitor the **Seconds behind source** field under the **Replicate Data Changes** tab. As soon as it's 0, proceed to start the cutover by navigating to the **Start Cutover** button at the top of the migration activity screen. Select **Refresh** to update the display and view the seconds behind the source when needed.
 
-    :::image type="content" source="media/tutorial-mysql-external-to-flex-online-physical-portal/10-migration-replication-status-latest.png" alt-text="Screenshot of monitoring replication status." lightbox="media/tutorial-mysql-external-to-flex-online-physical-portal/10-migration-replication-status-latest.png":::
+    :::image type="content" source="media/tutorial-mysql-azure-external-online-portal-physical/10-migration-replication-status-latest.png" alt-text="Screenshot of monitoring replication status." lightbox="media/tutorial-mysql-azure-external-online-portal-physical/10-migration-replication-status-latest.png":::
 
 1. Before you're ready to perform a cutover, follow steps 1 through 3 in the cutover window.
 
 1. After completing all steps, select **Confirm**, and then select **Apply**.
 
-    :::image type="content" source="media/tutorial-mysql-external-to-flex-online-physical-portal/11-start-cutover.png" alt-text="Screenshot of a Perform cutover." lightbox="media/tutorial-mysql-external-to-flex-online-physical-portal/11-start-cutover.png":::
+    :::image type="content" source="media/tutorial-mysql-azure-external-online-portal-physical/11-start-cutover.png" alt-text="Screenshot of a Perform cutover.":::
 
 ## Perform post-migration activities
 
@@ -249,19 +249,19 @@ When the migration finishes, be sure to complete the following post-migration ac
   - You can validate data by comparing **row count** or **checksum** between source and target flexible servers.
   - You can additionally go to the target flexible server, under **settings**, select **Databases** page, and verify that the databases intended for migration have successfully migrated to the target.
 
-    :::image type="content" source="media/tutorial-mysql-external-to-flex-online-physical-portal/12-validate-migration-target.png" alt-text="Screenshot of validating migration target." lightbox="media/tutorial-mysql-external-to-flex-online-physical-portal/12-validate-migration-target.png":::
+    :::image type="content" source="media/tutorial-mysql-azure-external-online-portal-physical/12-validate-migration-target.png" alt-text="Screenshot of validating migration target.":::
 
 - Update the connection string to point to the new flexible server.
 
   - To clean up the DMS resources, perform the following steps:
-  
+
   1. In the Azure portal, select **All services**, search for Azure Database Migration Service, and then select **Azure Database Migration Services**.
 
   1. Select your migration service instance from the search results, and then select **Delete service**.
 
   1. In the confirmation dialog box, in the **TYPE THE DATABASE MIGRATION SERVICE NAME** textbox, specify the instance's name and then select **Delete.**
 
-- Create any [read replicas](https://learn.microsoft.com/azure/mysql/flexible-server/concepts-read-replicas) for the flexible server for scalability and recovery.
+- Create any [read replicas](/azure/mysql/flexible-server/concepts-read-replicas) for the flexible server for scalability and recovery.
 
 ## Migration best practices
 
