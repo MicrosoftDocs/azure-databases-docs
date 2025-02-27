@@ -202,6 +202,9 @@ The following tables describe the migration states and substates.
 > [!NOTE]  
 > Certain limitations apply to Online migration which are documented [here](../../best-practices-migration-service-postgresql.md#online-migration). Ensure that your database is compliant to execute an Online migration.
 
+> [!IMPORTANT]  
+> Online migration replays changes that happen during the migration from the source to the target. This ensures that you do not miss out on any ongoing changes and you can reduce the downtime for your application. However, this can be achieved only if the updates at the source is kept as low as possible. Low update traffic at the source ensures that ongoing changes are replayed to the target quickly and it can catch up with the source. If you observe an increasing `latency` trend over time with your migration, it is an indication that you need to further reduce the volume of traffic at the source.
+
 ## Get started
 
 1. If you're new to Microsoft Azure, [create an account](https://azure.microsoft.com/free/) to evaluate the offerings.
