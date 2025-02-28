@@ -136,7 +136,54 @@ az postgres flexible-server index-tuning list-recommendations --resource-group <
 The command returns all information about the DROP INDEX recommendations produced by index tuning, showing something similar to the following output:
 
 ```output
-
+[
+  {
+    "analyzedWorkload": {
+      "endTime": "2025-02-26T19:02:47.522193+00:00",
+      "queryCount": 0,
+      "startTime": "2025-01-22T19:02:47.522193+00:00"
+    },
+    "details": {
+      "databaseName": "<database>",
+      "includedColumns": "",
+      "indexColumns": "<column>",
+      "indexName": "<index>",
+      "indexType": "BTREE",
+      "schema": "<schema>",
+      "table": "<table>"
+    },
+    "estimatedImpact": [
+      {
+        "absoluteValue": 35.0,
+        "dimensionName": "Benefit",
+        "queryId": null,
+        "unit": "Percentage"
+      },
+      {
+        "absoluteValue": 31.28125,
+        "dimensionName": "IndexSize",
+        "queryId": null,
+        "unit": "MB"
+      }
+    ],
+    "id": "/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.DBforPostgreSQL/flexibleServers/<server>/tuningOptions/index/recommendations/<recommendation_id>",
+    "implementationDetails": {
+      "method": "SQL",
+      "script": "drop index concurrently \"<schema>\".\"<index>\";"
+    },
+    "improvedQueryIds": null,
+    "initialRecommendedTime": "2025-02-26T19:02:47.556792+00:00",
+    "kind": "",
+    "lastRecommendedTime": "2025-02-26T19:02:47.556792+00:00",
+    "name": "DropIndex_<database>_<sechema>_<index>",
+    "recommendationReason": "Duplicate of \"<index>\". The equivalent index \"<index>\" has a shorter length compared to \"<index>\".",
+    "recommendationType": "DropIndex",
+    "resourceGroup": "<resource_group>",
+    "systemData": null,
+    "timesRecommended": 1,
+    "type": "Microsoft.DBforPostgreSQL/flexibleServers/tuningOptions/index"
+  }
+]
 ```
 
 ### [azure_sys](#tab/azure-sys)
