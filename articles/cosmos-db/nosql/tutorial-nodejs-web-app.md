@@ -196,10 +196,10 @@ After you've completed the initial setup and configuration, learn how to write t
 1. In the **routes** directory of your project, create a new file named *tasklist.js*.
 
 1. Add the following code to *tasklist.js*. This code loads the CosmosClient and async modules, which are used by *tasklist.js*. This code also defines the *TaskList* class, which is passed as an instance of the *TaskDao* object we defined earlier:
-   
+
    ```javascript
     const TaskDao = require("../models/TaskDao");
-    
+
     class TaskList {
       /**
        * Handles the various APIs for displaying and managing tasks
@@ -257,7 +257,7 @@ After you've completed the initial setup and configuration, learn how to write t
 1. At the root of your project directory, create a new file named *config.js*.
 
 1. Add the following code to *config.js* file. This code defines configuration settings and values needed for our application.
-   
+
    ```javascript
    const config = {};
 
@@ -286,7 +286,7 @@ After you've completed the initial setup and configuration, learn how to write t
 1. In the project directory, open the *app.js* file. This file was created earlier when the Express web application was created.
 
 1. Add the following code to the *app.js* file. This code defines the config file to be used and loads the values into some variables that you'll use in the next sections.
-   
+
    ```javascript
     const CosmosClient = require('@azure/cosmos').CosmosClient
     const config = require('./config')
@@ -395,7 +395,7 @@ Now build the user interface so that a user can interact with the application. T
    block content
         h1 #{title}
         br
-        
+
         form(action="/completetask", method="post")
          table.table.table-striped.table-bordered
             tr
@@ -417,7 +417,7 @@ Now build the user interface so that a user can interact with the application. T
                   - var year  = date.getFullYear();
                   td #{month + "/" + day + "/" + year}
                   td
-                   if(task.completed) 
+                   if(task.completed)
                     input(type="checkbox", name="#{task.id}", value="#{!task.completed}", checked=task.completed)
                    else
                     input(type="checkbox", name="#{task.id}", value="#{!task.completed}", checked=task.completed)
@@ -481,9 +481,6 @@ You can use information about your existing database cluster for capacity planni
 
 * [Convert the number of vCores or vCPUs in your nonrelational database to Azure Cosmos DB RU/s](../convert-vcore-to-request-unit.md)
 * [Estimate RU/s using the Azure Cosmos DB capacity planner - API for NoSQL](estimate-ru-with-capacity-planner.md)
-
-> [!div class="nextstepaction"]
-> [Build mobile applications with Xamarin and Azure Cosmos DB](/azure/architecture/solution-ideas/articles/gaming-using-cosmos-db)
 
 [Node.js]: https://nodejs.org/
 [Git]: https://git-scm.com/
