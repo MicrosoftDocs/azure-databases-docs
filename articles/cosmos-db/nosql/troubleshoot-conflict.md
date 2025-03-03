@@ -24,7 +24,7 @@ Large partition keys are supported by enabling an enhanced version of the hash f
 
 ### Solution
 
-Use [large partition key](../large-partition-keys.md). Enabling large partition keys can only be done at time of container creation. If you have an existing container that does not use large partition keys, you will have to create a new container and [migrate your data](../container-copy.md) to it.
+Use [large partition key](../large-partition-keys.md). Enabling large partition keys can only be done at time of container creation. If you have an existing container that doesn't use large partition keys, you will have to create a new container and [migrate your data](../container-copy.md) to it.
 
 ## Related content
 
