@@ -731,6 +731,8 @@
         href: troubleshoot-request-rate-too-large.md
       - name: Troubleshoot not found
         href: troubleshoot-not-found.md
+      - name: Troubleshoot conflict
+        href: troubleshoot-conflict.md
       - name: Troubleshoot unauthorized
         href: troubleshoot-unauthorized.md
       - name: Troubleshoot forbidden
