@@ -14,11 +14,11 @@ ms.topic: conceptual
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
-This article provides considerations and guidelines for working with Azure Database for PostgreSQL flexible server.
+This article provides considerations and guidelines for working with Azure Database for PostgreSQL Flexible Server.
 
 ## What is an Azure Database for PostgreSQL server?
 
-A server in the Azure Database for PostgreSQL flexible server deployment option is a central administrative point for multiple databases. It's the same PostgreSQL server construct that you might be familiar with in the on-premises world. Specifically, Azure Database for PostgreSQL flexible server is managed, provides performance guarantees, and exposes access and features at the server level.
+A server in the Azure Database for PostgreSQL flexible server deployment option is a central administrative point for multiple databases. It's the same PostgreSQL server construct that you might be familiar with in the on-premises world. Specifically, Azure Database for PostgreSQL Flexible Server is managed, provides performance guarantees, and exposes access and features at the server level.
 
 An Azure Database for PostgreSQL flexible server instance:
 
@@ -40,10 +40,10 @@ The following elements help ensure safe access to your database:
 
 | Security concept | Description |
 | :-- | :-- |
-| Authentication and authorization | Azure Database for PostgreSQL flexible server supports native PostgreSQL authentication. You can connect and authenticate to a server by using the server's admin login. |
+| Authentication and authorization | Azure Database for PostgreSQL Flexible Server supports native PostgreSQL authentication. You can connect and authenticate to a server by using the server's admin login. |
 | Protocol | The service supports a message-based protocol that PostgreSQL uses. |
 | TCP/IP | The protocol is supported over TCP/IP and over Unix-domain sockets. |
-| Firewall | To help protect your data, a firewall rule prevents all access to your server and to its databases until you specify which computers have permission. See [Azure Database for PostgreSQL flexible server firewall rules](how-to-manage-firewall-portal.md). |
+| Firewall | To help protect your data, a firewall rule prevents all access to your server and to its databases until you specify which computers have permission. See [Azure Database for PostgreSQL Flexible Server firewall rules](how-to-manage-firewall-portal.md). |
 
 ## Managing your server
 
@@ -53,14 +53,14 @@ When you create a server, you set up the credentials for your admin user. The ad
 
 The PostgreSQL superuser attribute is assigned to **azure_superuser**, which belongs to the managed service. You don't have access to this role.
 
-An Azure Database for PostgreSQL flexible server instance has default databases:
+An Azure Database for PostgreSQL flexible serverinstance has default databases:
 
 - **postgres**: A default database that you can connect to after you create your server.
 - **azure_maintenance**: A database that's used to separate the processes that provide the managed service from user actions. You don't have access to this database.
 
 ## Server parameters
 
-The Azure Database for PostgreSQL flexible server parameters determine the configuration of the server. In Azure Database for PostgreSQL flexible server, you can view and edit the list of parameters by using the Azure portal or the Azure CLI.
+The Azure Database for PostgreSQL flexible server parameters determine the configuration of the server. In Azure Database for PostgreSQL Flexible Server, you can view and edit the list of parameters by using the Azure portal or the Azure CLI.
 
 As a managed service for Postgres, Azure Database for PostgreSQL has configurable parameters that are a subset of the parameters in a local Postgres instance. For more information on Postgres parameters, see the [PostgreSQL documentation](https://www.postgresql.org/docs/current/static/runtime-config.html).
 
