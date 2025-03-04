@@ -8,7 +8,7 @@ ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.custom: build-2023, devx-track-azurecli
 ms.topic: conceptual
-ms.date: 12/13/2024
+ms.date: 3/4/2025
 ---
 
 # Azure Cosmos DB for NoSQL materialized views (preview)
@@ -16,9 +16,12 @@ ms.date: 12/13/2024
 [!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
 
 > [!IMPORTANT]
-> Azure Cosmos DB for NoSQL materialized views are currently in preview. You can enable this feature by using the Azure portal. This preview is provided without a service-level agreement. At this time, we don't recommend that you use materialized views for production workloads. Certain features of this preview might not be supported or might have constrained capabilities. For more information, see the [supplemental terms of use for Microsoft Azure previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Azure Cosmos DB for NoSQL materialized views are currently in preview. You can enable this feature by using the Azure portal and the feature can't be disabled. This preview is provided without a service-level agreement. At this time, we don't recommend that you use materialized views for production workloads. Certain features of this preview might not be supported or might have constrained capabilities. For more information, see the [supplemental terms of use for Microsoft Azure previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Materialized views are read-only containers that store a persistent copy of data from a source container. These views have their own settings, separate from the source container, such as partition key, indexing policy, Request Unit (RU) limit, and data model, which can be customized by selecting a subset of item properties. Materialized views are automatically kept in sync with the source container using change feed, managed by the materialized views builder. The materialized views builder is dedicated compute provisioned for your Azure Cosmos DB account to maintain views.
+
+> [!WARNING]
+> The materialized views feature can't be disabled on an account once enabled, however the materialized views builder and view containers themselves can be deprovisioned.
 
 ## Use cases
 
@@ -114,9 +117,10 @@ The **MaterializedViewsBuilderAverageCPUUsage** and **MaterializedViewsBuilderAv
 
 There are a few limitations with the Azure Cosmos DB for NoSQL API materialized view feature while it is in preview:
 
-- Role-based access control isn't supported for materialized views.
+- The materialized views feature can't be disabled on an account once enabled.
 - Materialized views can't be enabled on accounts that have partition merge, analytical store, or continuous backups.
-- Point-in-time restore, hierarchical partitioning, and end-to-end encryption aren't supported on source containers that have materialized views associated with them.
+- Role-based access control isn't supported for materialized views.
+- Containers that have hierarchical partitioning or end-to-end encryption aren't supported as source containers.
 - Cross-tenant customer-managed key (CMK) encryption isn't supported on materialized views.
 - Availability zones
   - Materialized views can't be enabled on an account that has availability zone-enabled regions.
