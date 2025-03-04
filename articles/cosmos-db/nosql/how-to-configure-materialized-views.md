@@ -7,7 +7,7 @@ ms.author: jucocchi
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: how-to
-ms.date: 12/13/2024
+ms.date: 3/4/2025
 ---
 
 # How to configure Azure Cosmos DB for NoSQL materialized views (preview)
@@ -15,7 +15,7 @@ ms.date: 12/13/2024
 [!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
 
 > [!IMPORTANT]
-> Azure Cosmos DB for NoSQL materialized views are currently in preview. You can enable this feature by using the Azure portal. This preview is provided without a service-level agreement. At this time, we don't recommend that you use materialized views for production workloads. Certain features of this preview might not be supported or might have constrained capabilities. For more information, see the [supplemental terms of use for Microsoft Azure previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Azure Cosmos DB for NoSQL materialized views are currently in preview. You can enable this feature by using the Azure portal and the feature can't be disabled. This preview is provided without a service-level agreement. At this time, we don't recommend that you use materialized views for production workloads. Certain features of this preview might not be supported or might have constrained capabilities. For more information, see the [supplemental terms of use for Microsoft Azure previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Materialized views provide a powerful way to optimize query performance and simplify application logic by creating views of your data with a different partition key and/ or data model. This article describes how to create materialized views and how to use them to handle cross-partition queries efficiently.
 
@@ -94,6 +94,9 @@ Use the Azure CLI to enable the materialized views feature either by using a nat
     ```
 
 ---
+
+> [!WARNING]
+> The materialized views feature can't be disabled on an account once enabled, however the materialized views builder and views themselves can be deprovisioned.
 
 ## Create a materialized view builder
 

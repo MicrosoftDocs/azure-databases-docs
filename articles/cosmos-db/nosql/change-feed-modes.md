@@ -177,6 +177,7 @@ The response object is an array of items that represent each change. Different p
         "lsn": <A number that represents the batch ID. Many items can have the same lsn.>,
         "crts": <A number that represents the Conflict Resolved Timestamp. It has the same format as _ts.>,
         "previousImageLSN" : <A number that represents the batch ID of the change prior to this one.>,
+        "timeToLiveExpired" : <'true' if it was deleted due to a TTL expiration.>,
         "id": "<Id of the deleted item.>",
         "partitionKey": {
           "<Partition key property name>": "<Partition key property value>"
@@ -189,7 +190,7 @@ The response object is an array of items that represent each change. Different p
 
 * Supported for Azure Cosmos DB for NoSQL accounts. Other Azure Cosmos DB account types aren't supported.
 
-* Continuous backups are required to use this change feed mode. The [limitations](../continuous-backup-restore-introduction.md#current-limitations) of using continuous backup can be found in the documentation.
+* Continuous backups are required to use this change feed mode. Refer to the [limitations of using continuous backups](../continuous-backup-restore-introduction.md#current-limitations).
 
 * Reading changes on a container that existed before continuous backups were enabled on the account isn't supported.
 
