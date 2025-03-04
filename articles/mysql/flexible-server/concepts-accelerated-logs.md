@@ -40,10 +40,7 @@ Benefits of accelerated logs include:
 
 - Once the accelerated logs feature is enabled, **the [`binlog_expire_logs_seconds`](https://dev.mysql.com/doc/refman/8.0/en/replication-options-binary-log.html#sysvar_binlog_expire_logs_seconds) server parameter is disregarded entirely, and any configured value will no longer have any effect**. However, if the accelerated logs feature is disabled, the server will once again adhere to the configured value of `binlog_expire_logs_seconds` for binary log retention.
 
-- For [CMK enabled](./concepts-customer-managed-key.md) Azure Database for MySQL - Flexible Server, enabling accelerated logs feature from portal may not work due to a current limitation. As a workaround, follow the steps below..
-  - Temporarily disable CMK for the server.
-  - [Enable accelerated logs feature](#enable-accelerated-logs).
-  - [Re-enable CMK](./how-to-data-encryption-portal.md) for the server.
+- [Storage autogrow](./concepts-service-tiers-storage.md#storage-autogrow) is enabled by default for a accelerated logs enabled server and can not be disabled.
 
 ## Availability of accelerated logs by region
 
