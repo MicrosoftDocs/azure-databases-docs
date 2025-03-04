@@ -122,6 +122,14 @@ You can maximize savings with the biggest reservation for your scenario. Example
 
 Create a [support request](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) to purchase any quantity of the reservations bigger than 1,000,000 RU/s.
 
+## Azure Pricing Calculator
+
+The [Azure Pricing Calculator](https://azure.microsoft.com/pricing/calculator) uses multiples of 100 RU/s minimum reservation to predict the price. If you check the price for 100 RU/s in autoscale mode, due to the 1.5 multiplication factor, you will need 150 RU/s. And for 150 RU/s, the calculator will use 2 units of 100 RU/s reservation. And 2 units of 100 RU/s reservation is more expensive than 100 RU/s. But this is a calculator specific behavior. For the same situation, you can purchase only 1 unit of the 100 RU/s minimum reservation and pay as you go the other 50 RU/s required RU/s. 
+
+Also, when you use the calculator for autoscale scenarios with less than 100% utilization, you may see that a reservation could be more expensive. This issue happens because of the fact that reservations always use 100% utilization. The Reservations system has a recommendation engine so that you can choose the best reservation size for your scenario.
+ 
+
+
 ## Reservations consumption
 
 As soon as you buy a reservation, the throughput charges that match the reservation attributes are no longer charged at the pay-as-you go rates. For more information on reservations, see the [Azure reservations](/azure/cost-management-billing/reservations/save-compute-costs-reservations) article.
