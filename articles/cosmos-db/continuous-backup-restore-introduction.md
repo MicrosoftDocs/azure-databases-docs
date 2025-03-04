@@ -92,7 +92,7 @@ However, there could be scenarios where you don't know the exact time of acciden
 Azure Cosmos DB allows you to isolate and restrict the restore permissions for continuous backup account to a specific role or a principal. To learn more, see the [Permissions](continuous-backup-restore-permissions.md) article.
 
 ## Understanding Multi-region write account restore (Public preview)
-Writes that are performed on the [hub](multi-region-writes.md#hub-region) region  are immediately confirmed and backed up asynchronously within 100 seconds. But in multi-write accounts, any mutations performed on the satellite region are sent to hub region for confirmation. The hub region checks to see if any [conflict resolution](conflict-resolution-policies#conflict-resolution-policies) is needed, assigns a “conflict resolved timestamp” after resolving the conflicts and sends back the document to satellite region. The satellite region only backs up the documents after the confirmation is received from the hub.  
+Writes that are performed on the [hub](multi-region-writes.md#hub-region) region  are immediately confirmed and backed up asynchronously within 100 seconds. In multi-write accounts, any mutations performed on the satellite region are sent to hub region for confirmation. The hub region checks to see if any [conflict resolution](conflict-resolution-policies.md#conflict-resolution-policies) is needed, assigns a [“conflict resolved timestamp”](multi-region-writes.md#understanding-timestamps)  after resolving the conflicts and sends back the document to satellite region. The satellite region only backs up the documents after the confirmation is received from the hub.  
 In short, the restore process only restores the documents confirmed by the hub region by the restore point of time.  
 
 What happens for restore for multi region write account? 
@@ -100,7 +100,7 @@ What happens for restore for multi region write account?
 - The mutations that are yet to be confirmed by the restore timestamp are not restored. 
 - The collections with custom conflict resolution policy are reset to last writer wins based on timestamp. 
 
-More information about understanding timestamps in a multi write enable account can be found [here]. (multi-region-writes.md#understanding-timestamps) 
+More information about understanding timestamps in a multi write enable account can be found [here](multi-region-writes.md#understanding-timestamps).
 Example 
 
 Given a multi-write region account with two regions East US and West US, out of which East US is the hub region, consider the following sequence of events: 
@@ -116,6 +116,8 @@ T4: East US received Doc2, confirms the document and sends of Doc2 back to West 
 T5: West US received confirmed Doc2 
 
 In this scenario, if the restore timestamp provided is T3, only Doc1 will get restored. Doc2 has not been confirmed by hub by T3. Only if the restore timestamp > T4, the doc2 will get restored. 
+
+
 
 ## <a id="continuous-backup-pricing"></a>Pricing
 
