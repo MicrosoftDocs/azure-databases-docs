@@ -4,7 +4,7 @@ description: Azure Cosmos DB pricing allows for various forms of optimization. Y
 author: rodrigossz
 ms.service: azure-cosmos-db
 ms.topic: conceptual
-ms.date: 11/14/2024
+ms.date: 03/04/2025
 ms.author: rosouz
 ---
 
