@@ -16,6 +16,8 @@ Azure Cosmos DB's point-in-time restore feature helps you to recover from an acc
 
 This article describes how to identify the restore time and restore a live or deleted Azure Cosmos DB account. It shows how to restore the account using the [Azure portal](#restore-account-portal), [PowerShell](#restore-account-powershell), [CLI](#restore-account-cli), or an [Azure Resource Manager template](#restore-arm-template).
 
+ > [!NOTE]
+ > Restoring from satellite region is slower compared to restore in hub region for multi-region account to resolve local [tentative writes](multi-region-writes.md#hub-region)
 
 
 ## <a id="restore-account-portal"></a>Restore an account using Azure portal
