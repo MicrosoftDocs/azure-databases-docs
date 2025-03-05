@@ -38,7 +38,7 @@ To complete these steps, you need:
 
 ## Assess source SSIS projects/packages
 
-While assessment of source SSISDB isn't yet integrated into the Database Migration Assistant (DMA) or the Azure Database Migration Service (DMS), your SSIS projects/packages will be assessed/validated as they are redeployed to the destination SSISDB hosted by Azure SQL Database.
+Your SSIS projects/packages are assessed/validated as they are redeployed to the destination SSISDB hosted by Azure SQL Database.
 
 ## Migrate SSIS projects/packages
 
