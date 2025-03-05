@@ -39,7 +39,7 @@ To enable vector search for Azure Cosmos DB for NoSQL, follow these steps:
 1. Select **Enable** to turn on vector search in Azure Cosmos DB for NoSQL.
 
 > [!TIP]
-> Alternatively, use the Azure CLI to update the capabilities of your account to support NoSQL vector search.
+> Alternatively, use the Azure CLI to update the capabilities of your account to support Azure Cosmos DB for NoSQL vector search.
 >
 > ```azurecli
 > az cosmosdb update \
