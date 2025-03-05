@@ -50,7 +50,7 @@ To complete these steps, you need:
 
 ## Assess source SSIS projects/packages
 
-Your SSIS projects/packages are assessed/validated as they're redeployed to the destination SSISDB hosted on a Azure SQL Managed Instance.
+Your SSIS projects/packages are assessed/validated as they're redeployed to the destination SSISDB hosted on an Azure SQL Managed Instance.
 
 ## Register the Microsoft.DataMigration resource provider
 
