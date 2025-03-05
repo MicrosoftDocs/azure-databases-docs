@@ -100,7 +100,8 @@ What happens for restore for multi region write account?
 - The mutations that are yet to be confirmed by the restore timestamp are not restored. 
 - The collections with custom conflict resolution policy are reset to last writer wins based on timestamp. 
 
-Restoring from satellite region is slower compared to restore in hub region for multi-region account to take into account local [tentative writes](multi-region-writes.md#hub-region) resolution.
+> [!NOTE]
+> Restoring from satellite region is slower compared to restore in [hub](multi-region-writes.md#hub-region) region for multi-region account to resolve local [tentative writes](multi-region-writes.md#hub-region) as confirmed or take an action to roll them back.
 
 More information about understanding timestamps in a multi write enable account can be found [here](multi-region-writes.md#understanding-timestamps).
 
