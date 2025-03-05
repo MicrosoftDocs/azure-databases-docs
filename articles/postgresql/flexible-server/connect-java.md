@@ -287,12 +287,12 @@ Using your favorite IDE, create a new Java project using Java 8 or above, and ad
       <dependency>
         <groupId>org.postgresql</groupId>
         <artifactId>postgresql</artifactId>
-        <version>42.3.6</version>
+        <version>42.7.5</version>
       </dependency>
       <dependency>
         <groupId>com.azure</groupId>
         <artifactId>azure-identity-extensions</artifactId>
-        <version>1.0.0</version>
+        <version>1.2.0</version>
       </dependency>
     </dependencies>
 </project>
