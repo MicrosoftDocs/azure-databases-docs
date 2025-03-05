@@ -204,7 +204,7 @@ sections:
       - question: |
           How do I find the IP address for Azure Database Migration Service so that I can create an allowlist for the firewall rules used to access my source database for migration?
         answer: |
-          You might need to add firewall rules allowing Azure Database Migration Service to access to your source database for migration. The IP address for the service is dynamic, but if you're using ExpressRoute, this address is privately assigned by your corporate network. The easiest way to identify the appropriate IP address is to look in the same resource group as your provisioned Azure Database Migration Service resource to find the associated Network Interface. Usually the name of the Network Interface resource begins with the NIC prefix and followed by a unique character and number sequence, for example, `NIC-jj6tnztnmarpsskr82rbndyp``. By selecting this network interface resource, you can see the IP address that needs to be included in the allowlist on the resource overview Azure portal page.
+          You might need to add firewall rules allowing Azure Database Migration Service to access to your source database for migration. The IP address for the service is dynamic, but if you're using ExpressRoute, this address is privately assigned by your corporate network. The easiest way to identify the appropriate IP address is to look in the same resource group as your provisioned Azure Database Migration Service resource to find the associated Network Interface. Usually the name of the Network Interface resource begins with the NIC prefix and followed by a unique character and number sequence, for example, `NIC-jj6tnztnmarpsskr82rbndyp`. By selecting this network interface resource, you can see the IP address that needs to be included in the allowlist on the resource overview Azure portal page.
 
           You might also need to include the port source that SQL Server is listening on the allowlist. By default, it's port 1433, but the source SQL Server can be configured to listen on other ports as well. In this case, you need to include those ports on the allowlist as well. You can determine the port that SQL Server is listening on by using a Dynamic Management View query:
 
@@ -238,7 +238,7 @@ sections:
 
           1. Create target databases.
           2. Assess your source databases.
-             * For homogenous migrations, assess your existing databases by using the Azure SQL migration extension for Azure Data Studio](/azure-data-studio/extensions/azure-sql-migration-extension).
+             * For homogenous migrations, assess your existing databases by using the [Azure SQL migration extension for Azure Data Studio](/azure-data-studio/extensions/azure-sql-migration-extension).
              * For heterogeneous migrations (from compete sources), assess your existing databases with [SSMA](/sql/ssma/sql-server-migration-assistant). You also use SSMA to convert database objects and migrate the schema to your target platform.
           3. Create an instance of Azure Database Migration Service.
           4. Create a migration project specifying the source databases, target databases, and the tables to migrate.
