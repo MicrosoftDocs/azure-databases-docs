@@ -139,27 +139,27 @@ import com.azure.resourcemanager.postgresqlflexibleserver.models.Storage;
 import com.azure.resourcemanager.postgresqlflexibleserver.models.UserAssignedIdentity;
 public class CreateServer {
     public static void main(String[] args) throws Exception {
- String subscriptionId = "<subscription-id>";
- AzureProfile profile = new AzureProfile("<tenant-id>", subscriptionId, AzureEnvironment.AZURE);
-
- TokenCredential credential = new DefaultAzureCredentialBuilder()
- .authorityHost(profile.getEnvironment().getActiveDirectoryEndpoint()).build();
- PostgreSqlManager manager = PostgreSqlManager.authenticate(credential, profile);
- Server server = manager.servers()
- .define("<server-name>")
- .withRegion("<location>")
- .withExistingResourceGroup("<resource-group-name>")
- .withSku(new Sku().withName("Standard_D4ds_v5").withTier(SkuTier.GENERAL_PURPOSE))
- .withAuthConfig(new AuthConfig().withActiveDirectoryAuth(ActiveDirectoryAuthEnum.DISABLED)
- .withPasswordAuth(PasswordAuthEnum.ENABLED))
- .withIdentity(new UserAssignedIdentity().withType(IdentityType.NONE))
- .withDataEncryption(new DataEncryption().withType(ArmServerKeyType.SYSTEM_MANAGED))
- .withVersion(ServerVersion.ONE_SIX).withAuthConfig(null)
- .withAdministratorLogin("<user-name>")
- .withAdministratorLoginPassword("<password>").withStorage(new Storage().withStorageSizeGB(32))
- .withHighAvailability(new HighAvailability().withMode(HighAvailabilityMode.DISABLED))
- .create();
- System.out.println("Azure Database for PostgreSQL Flexible server instance is created with server name"+server.name());
+          String subscriptionId = "<subscription-id>";
+          AzureProfile profile = new AzureProfile("<tenant-id>", subscriptionId, AzureEnvironment.AZURE);
+         
+          TokenCredential credential = new DefaultAzureCredentialBuilder()
+          .authorityHost(profile.getEnvironment().getActiveDirectoryEndpoint()).build();
+          PostgreSqlManager manager = PostgreSqlManager.authenticate(credential, profile);
+          Server server = manager.servers()
+          .define("<server-name>")
+          .withRegion("<location>")
+          .withExistingResourceGroup("<resource-group-name>")
+          .withSku(new Sku().withName("Standard_D4ds_v5").withTier(SkuTier.GENERAL_PURPOSE))
+          .withAuthConfig(new AuthConfig().withActiveDirectoryAuth(ActiveDirectoryAuthEnum.DISABLED)
+          .withPasswordAuth(PasswordAuthEnum.ENABLED))
+          .withIdentity(new UserAssignedIdentity().withType(IdentityType.NONE))
+          .withDataEncryption(new DataEncryption().withType(ArmServerKeyType.SYSTEM_MANAGED))
+          .withVersion(ServerVersion.ONE_SIX).withAuthConfig(null)
+          .withAdministratorLogin("<user-name>")
+          .withAdministratorLoginPassword("<password>").withStorage(new Storage().withStorageSizeGB(32))
+          .withHighAvailability(new HighAvailability().withMode(HighAvailabilityMode.DISABLED))
+          .create();
+          System.out.println("Azure Database for PostgreSQL Flexible server instance is created with server name"+server.name());
  }
  }
 ```
@@ -215,18 +215,18 @@ import com.azure.resourcemanager.postgresqlflexibleserver.PostgreSqlManager;
 
 public class CreateDatabaseSample {
 public static void main(String args[]) {
- String subscriptionId = "<subscription-id>";
- AzureProfile profile = new AzureProfile("<tenant-id>", subscriptionId, AzureEnvironment.AZURE);
-
- TokenCredential credential = new DefaultAzureCredentialBuilder()
- .authorityHost(profile.getEnvironment().getActiveDirectoryEndpoint()).build();
- PostgreSqlManager manager = PostgreSqlManager.authenticate(credential, profile);
- manager.databases()
- .define("<database-name>")
- .withExistingFlexibleServer("<resource-group-name>", "<server-name>")
- .withCharset("utf8")
- .withCollation("en_US.utf8")
- .create();
+   String subscriptionId = "<subscription-id>";
+   AzureProfile profile = new AzureProfile("<tenant-id>", subscriptionId, AzureEnvironment.AZURE);
+  
+   TokenCredential credential = new DefaultAzureCredentialBuilder()
+   .authorityHost(profile.getEnvironment().getActiveDirectoryEndpoint()).build();
+   PostgreSqlManager manager = PostgreSqlManager.authenticate(credential, profile);
+   manager.databases()
+   .define("<database-name>")
+   .withExistingFlexibleServer("<resource-group-name>", "<server-name>")
+   .withCharset("utf8")
+   .withCollation("en_US.utf8")
+   .create();
 }
 }
 ```
@@ -263,32 +263,32 @@ import com.azure.resourcemanager.postgresqlflexibleserver.models.StorageAutoGrow
 
 public class UpdateServer {
     public static void main(String args[]) {
- String subscriptionId = "<subscription-id>";
- AzureProfile profile = new AzureProfile("<tenant-id>", subscriptionId, AzureEnvironment.AZURE);
-
- TokenCredential credential = new DefaultAzureCredentialBuilder()
- .authorityHost(profile.getEnvironment().getActiveDirectoryEndpoint()).build();
- PostgreSqlManager manager = PostgreSqlManager.authenticate(credential, profile);
- PostgreSqlManager postgreSqlManager = PostgreSqlManager.configure()
- .withLogOptions(new HttpLogOptions()
- .setLogLevel(HttpLogDetailLevel.BODY_AND_HEADERS))
- .authenticate(credential, profile);
- Server resource = manager.servers()
- .getByResourceGroupWithResponse("<resource-group-name>", "<server-name>", com.azure.core.util.Context.NONE)
- .getValue();
- resource.update()
- .withSku(new Sku().withName("Standard_D16ds_v5").withTier(SkuTier.GENERAL_PURPOSE))
- .withAdministratorLoginPassword("<password>")
- .withStorage(new Storage().withStorageSizeGB(1024)
- .withAutoGrow(StorageAutoGrow.DISABLED)
- .withTier(AzureManagedDiskPerformanceTiers.P30))
- .withBackup(new Backup().withBackupRetentionDays(20))
- .withAuthConfig(new AuthConfig().withActiveDirectoryAuth(ActiveDirectoryAuthEnum.ENABLED)
- .withPasswordAuth(PasswordAuthEnum.ENABLED)
- .withTenantId("<tenant-id>"))
- .withCreateMode(CreateModeForUpdate.UPDATE)
- .apply();
- System.out.println("Updated successfully");
+         String subscriptionId = "<subscription-id>";
+         AzureProfile profile = new AzureProfile("<tenant-id>", subscriptionId, AzureEnvironment.AZURE);
+        
+         TokenCredential credential = new DefaultAzureCredentialBuilder()
+         .authorityHost(profile.getEnvironment().getActiveDirectoryEndpoint()).build();
+         PostgreSqlManager manager = PostgreSqlManager.authenticate(credential, profile);
+         PostgreSqlManager postgreSqlManager = PostgreSqlManager.configure()
+         .withLogOptions(new HttpLogOptions()
+         .setLogLevel(HttpLogDetailLevel.BODY_AND_HEADERS))
+         .authenticate(credential, profile);
+         Server resource = manager.servers()
+         .getByResourceGroupWithResponse("<resource-group-name>", "<server-name>", com.azure.core.util.Context.NONE)
+         .getValue();
+         resource.update()
+         .withSku(new Sku().withName("Standard_D16ds_v5").withTier(SkuTier.GENERAL_PURPOSE))
+         .withAdministratorLoginPassword("<password>")
+         .withStorage(new Storage().withStorageSizeGB(1024)
+         .withAutoGrow(StorageAutoGrow.DISABLED)
+         .withTier(AzureManagedDiskPerformanceTiers.P30))
+         .withBackup(new Backup().withBackupRetentionDays(20))
+         .withAuthConfig(new AuthConfig().withActiveDirectoryAuth(ActiveDirectoryAuthEnum.ENABLED)
+         .withPasswordAuth(PasswordAuthEnum.ENABLED)
+         .withTenantId("<tenant-id>"))
+         .withCreateMode(CreateModeForUpdate.UPDATE)
+         .apply();
+         System.out.println("Updated successfully");
  }
 }
 ```
@@ -314,18 +314,18 @@ import com.azure.resourcemanager.postgresqlflexibleserver.PostgreSqlManager;
 
 public class DeleteInstance {
     public static void main(String args[]) {
- String subscriptionId = "<subscription-id>";
- AzureProfile profile = new AzureProfile("<tenant-id>", subscriptionId, AzureEnvironment.AZURE);
-
- TokenCredential credential = new DefaultAzureCredentialBuilder()
- .authorityHost(profile.getEnvironment().getActiveDirectoryEndpoint()).build();
- PostgreSqlManager manager = PostgreSqlManager.authenticate(credential, profile);
- PostgreSqlManager postgreSqlManager = PostgreSqlManager.configure()
- .withLogOptions(new HttpLogOptions()
- .setLogLevel(HttpLogDetailLevel.BODY_AND_HEADERS))
- .authenticate(credential, profile);
- manager.servers().delete("<resource-group>", "<server-name>", com.azure.core.util.Context.NONE);
- System.out.println("Deleted successfully");
+          String subscriptionId = "<subscription-id>";
+          AzureProfile profile = new AzureProfile("<tenant-id>", subscriptionId, AzureEnvironment.AZURE);
+         
+          TokenCredential credential = new DefaultAzureCredentialBuilder()
+          .authorityHost(profile.getEnvironment().getActiveDirectoryEndpoint()).build();
+          PostgreSqlManager manager = PostgreSqlManager.authenticate(credential, profile);
+          PostgreSqlManager postgreSqlManager = PostgreSqlManager.configure()
+          .withLogOptions(new HttpLogOptions()
+          .setLogLevel(HttpLogDetailLevel.BODY_AND_HEADERS))
+          .authenticate(credential, profile);
+          manager.servers().delete("<resource-group>", "<server-name>", com.azure.core.util.Context.NONE);
+          System.out.println("Deleted successfully");
  }
 
 }
@@ -350,4 +350,3 @@ Alternatively, you can remove the resource group using:
 ## Related content
 
 - [Quickstart: Create an instance of Azure Database for PostgreSQL](quickstart-create-server.md)
-- 
