@@ -60,7 +60,7 @@ az account show --query tenantId --output tsv
 
 ### Create project
 
-Create a new Maven project in your preferred IDE and then add the dependencies mentioned below for Azure Database for PostgreSQL Flexible Server library. 
+Create a new Maven project in your preferred IDE and then add the dependencies mentioned below for Azure Database for PostgreSQL flexible server library. 
 Once you create a Maven project there is a pom.xml file that would be created. Please ensure that all dependencies are added under the `<dependencies>` tag in this file.
 
 ```xml
@@ -101,7 +101,7 @@ Once you create a Maven project there is a pom.xml file that would be created. P
 
 ### Create Azure Databases for PostgreSQL Flexible Server Instance
 
-To create a PostgreSQL flexible server instance, create a file named `CreateServer.java` with the following code.
+To create a Azure PostgreSQL flexible server instance, create a file named `CreateServer.java` with the following code.
 
 ```java
 package com.example.restservice;
@@ -156,7 +156,7 @@ public class CreateServer {
     }
 ```
 
-This example demonstrates how to create an Azure Database for PostgreSQL flexible instance server using the `PostgreSqlManager` class. Before invoking the create method, it authenticates using the TokenCredential and AzureProfile. Once authenticated it defines the Flexible server instance with your specified configuration.
+This example demonstrates how to create an Azure Database for PostgreSQL flexible instance server using the `PostgreSqlManager` class. Before invoking the create method, it authenticates using the TokenCredential and AzureProfile. Once authenticated it defines the Azure PostgreSQL flexible server instance with your specified configuration.
 
 Replace the following parameters in the code with your data:
 
@@ -185,11 +185,11 @@ java <file-name>
 > [!NOTE]  
 > Running this code will initiate the instance creation process, which might take a few minutes to complete.
 
-You can review the deployed flexible server instance through Azure portal, Azure CLI, Azure PowerShell, and various other tools to validate the deployment and review the deployed resources.
+You can review the deployed Azure PostgreSQL flexible server instance through Azure portal, Azure CLI, Azure PowerShell, and various other tools to validate the deployment and review the deployed resources.
 
-### Create Database in Azure Databases for PostgreSQL Flexible Server Instance
+### Create Database in Azure Databases for PostgreSQL flexible server Instance
 
-You can add a new database to your created server. Make sure you have your Azure Database for PostgreSQL Flexible Server instance up and running.
+You can add a new database to your created server. Make sure you have your Azure Database for PostgreSQL flexible server instance up and running.
 
 ```java
 package com.example.restservice;
@@ -220,11 +220,11 @@ public static void main(String args[]) {
 }
 ```
 
-### Update the data - Azure Databases for PostgreSQL Flexible Server Instance
+### Update the data - Azure Databases for PostgreSQL flexible server Instance
 
 Create a `UpdateServer.java` file.
 
-You can also update server data using the Azure PostgreSQL Flexible server Java SDK.
+You can also update server data using this Java SDK by calling the `update()` method from the `postgresqlflexibleserver` library.
 
 For example, you can update the version, admin username, password, etc., using the `update` method.
 
@@ -287,7 +287,7 @@ Run the java file and review the changes made in the resource with the 'UpdateSe
 
 ## Clean up resources
 
-You can clean up the created flexible server instances by deleting the flexible server instance with the Azure SDK for Java.
+You can clean up the created flexible server instances by deleting the flexible server instance with the `delete()` method from the `postgresqlflexibleserver` library.
 
 Create a `DeleteServer.java` file and add the following code.
 
