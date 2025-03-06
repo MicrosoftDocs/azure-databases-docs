@@ -1,10 +1,10 @@
 ---
-title: Query store best practices
-description: This article describes best practices for query store in Azure Database for PostgreSQL - Flexible Server.
+title: Best practices for query store
+description: This article describes best practices for query store in an Azure Database for PostgreSQL flexible server.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 11/05/2024
+ms.date: 02/26/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.custom:
@@ -12,7 +12,7 @@ ms.custom:
 ms.topic: conceptual
 ---
 
-# Best practices for query store in Azure Database for PostgreSQL - Flexible Server
+# Best practices for query store
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
@@ -40,6 +40,6 @@ The `pg_qs.retention_period_in_days` parameter specifies the data retention peri
 
 ## Related content
 
-- [monitor performance with query store](concepts-query-store.md)
-- [scenarios where query store can be especially helpful](concepts-query-store-scenarios.md)
-- [visualizing data from query store via Query Performance Insight](concepts-query-performance-insight.md)
+- [Query store](concepts-query-store.md)
+- [Usage scenarios for query store](concepts-query-store-scenarios.md)
+- [Query Performance Insight](concepts-query-performance-insight.md)

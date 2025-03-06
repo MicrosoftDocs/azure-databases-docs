@@ -1,19 +1,19 @@
 ---
-title: "Quickstart: Create Elastic Cluster with ARM template"
-description: In this Quickstart, learn how to create an Azure Database for PostgreSQL - Flexible Server with Elastic Cluster by using an ARM template.
+title: "Quickstart: Create elastic clusters with ARM template"
+description: In this Quickstart, learn how to create an Azure Database for PostgreSQL - Flexible Server with elastic clusters by using an ARM template.
 author: mulander
 ms.author: adamwolk
-ms.date: 11/19/2024
+ms.date: 02/28/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: quickstart
 ---
 
-# Quickstart: Use an ARM template to create an Elastic Cluster with Azure Database for PostgreSQL - Flexible Server instance
+# Quickstart: Use an ARM template to create an elastic cluster with Azure Database for PostgreSQL - Flexible Server instance (preview)
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
-Azure Database for PostgreSQL flexible server with Elastic Cluster is a managed service that you use to run, manage, and scale highly available PostgreSQL databases in the cloud with horizontal scale-out capability. You can use an Azure Resource Manager template (ARM template) to create an Elastic Cluster instance.
+Azure Database for PostgreSQL flexible server with elastic clusters is a managed service that you use to run, manage, and scale highly available PostgreSQL databases in the cloud with horizontal scale-out capability. You can use an Azure Resource Manager template (ARM template) to create an elastic clusters instance.
 
 [!INCLUDE [About Azure Resource Manager](~/reusable-content/ce-skilling/azure/includes/resource-manager-quickstart-introduction.md)]
 
@@ -184,7 +184,7 @@ These resources are defined in the template:
 
 ## Deploy the template
 
-Select **Try it** from the following PowerShell code block to open Azure Cloud Shell. The clusterSize parameter defines how many nodes your Elastic Cluster has.
+Select **Try it** from the following PowerShell code block to open Azure Cloud Shell. The clusterSize parameter defines how many nodes your elastic cluster has.
 
 ```azurepowershell-interactive
 $serverName = Read-Host -Prompt "Enter a name for the new Azure Database for PostgreSQL flexible server instance"
@@ -245,7 +245,7 @@ az resource show --resource-group $resourcegroupName --name $serverName --resour
 
 ## Clean up resources
 
-Keep this resource group and the Elastic Cluster just created if you want to use it to continue with the next suggested steps listed in the [Related content](#related-content) section. The next steps show you how to use Elastic Clusters with different application sharding models and designs.
+Keep this resource group and the elastic cluster if you want to use it to continue with the next suggested steps listed in the [Related content](#related-content) section. The next steps show you how to use elastic clusters with different application sharding models and designs.
 
 To delete the resource group:
 
@@ -281,4 +281,4 @@ az group delete --name $resourcegroupName
 
 ## Related content
 
-- [Design multitenant database with Elastic Cluster](tutorial-multitenant-database.md).
+- [Design multitenant database with elastic clusters](tutorial-multitenant-database.md).

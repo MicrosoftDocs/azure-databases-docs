@@ -37,7 +37,7 @@ The approach followed in this article is just one of the many ways to migrate da
 
 | Approach | Pros | Cons |
 |----------|------|------|
-| **Export from DynamoDB to S3, load to ADLS (using ADF), write to Azure Cosmos DB (using Spark on Azure Databricks)** | Decouples storage and processing. Spark provides scalability and flexibility (additional data transformations, processing) | Multi-stage process increases complexity, and overall latency. Requires knowledge of Spark (learning curve). |
+| **Export from DynamoDB to S3, load to ADLS Gen2 (using ADF), write to Azure Cosmos DB (using Spark on Azure Databricks)** | Decouples storage and processing. Spark provides scalability and flexibility (additional data transformations, processing) | Multi-stage process increases complexity, and overall latency. Requires knowledge of Spark (learning curve). |
 | **Export from DynamoDB to S3, use ADF to read from S3 and write to Azure Cosmos DB** | Low/No-code approach (Spark skillset not required). Suitable for simple data transformations. | Complex transformation maybe difficult to implement. |
 | **Use Spark on Azure Databricks to read from DynamoDB and write to Azure Cosmos DB** | Fit for small datasets - direct processing avoids extra storage costs. Supports complex transformations (Spark). | Higher cost on DynamoDB side due to RCU consumption (S3 export not used). Requires knowledge of Spark (learning curve). |
 
@@ -78,7 +78,10 @@ Before you proceed, make sure you complete the following:
 
 ### Step 1: Export data from DynamoDB to Amazon S3
 
-DynamoDB S3 export is a built-in solution for exporting DynamoDB data to an Amazon S3 bucket. Follow the [DynamoDB documentation](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/S3DataExport_Requesting.html) for steps on how to execute this process, including setting up necessary S3 permissions, etc. DynamoDB supports DynamoDB JSON and Amazon Ion as the file formats for exported data. 
+DynamoDB S3 export is a built-in solution for exporting DynamoDB data to an Amazon S3 bucket. Follow the [DynamoDB documentation](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/S3DataExport_Requesting.html) for steps on how to execute this process, including setting up necessary S3 permissions. DynamoDB supports DynamoDB JSON and Amazon Ion as the file formats for exported data.
+
+> [!NOTE]
+> This sample uses data exported in DynamoDB JSON format.
 
 Once data is exported to a S3 bucket, proceed to the next step.
 
@@ -142,7 +145,7 @@ Verify that a new container was created along with the contents of S3 bucket.
 :::image type="content" source="./media/migrate-data-dynamodb-to-cosmosdb/container-created.png" alt-text="Screenshot of created storage container." lightbox="./media/migrate-data-dynamodb-to-cosmosdb/container-created.png":::
 
 
-### Step 3: Import ADLS data into Azure Cosmos DB using Spark on Azure Databricks
+### Step 3: Import ADLS Gen2 data into Azure Cosmos DB using Spark on Azure Databricks
 
 This section covers how to use the [Azure Cosmos DB Spark connector](https://github.com/Azure/azure-cosmosdb-spark) to write data in Azure Cosmos DB. Azure Cosmos DB OLTP Spark connector provides Apache Spark support for Azure Cosmos DB NoSQL API. It allows you to read from and write to Azure Cosmos DB via Apache Spark DataFrames in Python and Scala.
 
@@ -154,7 +157,7 @@ Once the Databricks workspace is created, [follow the documentation](https://lea
 
 :::image type="content" source="./media/migrate-data-dynamodb-to-cosmosdb/spark-connector-maven-package.png" alt-text="Screenshot of Spark connector version." lightbox="./media/migrate-data-dynamodb-to-cosmosdb/spark-connector-maven-package.png":::
 
-The GitHub repository [contains a notebook](https://github.com/AzureCosmosDB/migration-dynamodb-to-cosmosdb-nosql/blob/main/migration.ipynb) (`migration.ipynb`) with the Spark code to read data from ADLS and write it to Azure Cosmos DB. [Import the notebook](https://learn.microsoft.com/azure/databricks/notebooks/notebook-export-import#import-a-notebook) into your Databricks workspace.
+The GitHub repository [contains a notebook](https://github.com/AzureCosmosDB/migration-dynamodb-to-cosmosdb-nosql/blob/main/migration.ipynb) (`migration.ipynb`) with the Spark code to read data from ADLS Gen2 and write it to Azure Cosmos DB. [Import the notebook](https://learn.microsoft.com/azure/databricks/notebooks/notebook-export-import#import-a-notebook) into your Databricks workspace.
 
 #### Configure Microsoft Entra ID authentication
 
@@ -209,13 +212,13 @@ pip install azure-cosmos azure-mgmt-cosmosdb azure.mgmt.authorization
 dbutils.library.restartPython()
 ```
 
-The third step reads DynamoDB data from ADLS and stores it in a data frame. Before running it, replace the following information with the corresponding values in your setup:
+The third step reads DynamoDB data from ADLS Gen2 and stores it in a data frame. Before running it, replace the following information with the corresponding values in your setup:
 
 | Variable             | Description                                                                 |
 |----------------------|-----------------------------------------------------------------------------|
 | `storage_account_name` | Azure storage account name                                                  |
 | `container_name`       | Azure storage container name, for example, `s3datacopy`                               |
-| `file_path`            | Path to the file in Azure storage container, for example, `AWSDynamoDB/01738047791106-7ba095a9/data/*` |
+| `file_path`            | Path to the folder containing the exported JSON file(s) in the Azure storage container. For example, `AWSDynamoDB/01738047791106-7ba095a9/data/*` |
 | `client_id`            | The application (client) ID of the Microsoft Entra ID application (found on the *Overview* page) |
 | `tenant_id`            | The directory (tenant) ID of the Microsoft Entra ID application (found on the *Overview* page) |
 | `client_secret`        | Value of the client secret associated with the Microsoft Entra ID application (found in *Certificates & secrets*) |

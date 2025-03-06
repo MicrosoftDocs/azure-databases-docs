@@ -24,7 +24,7 @@ Automigration uses the [Azure PostgreSQL migration service](./migration-service/
 > [!NOTE]  
 > The Automigration service selects Single server to migrate based on the following criteria:
 > - Servers with no complex feature such as CMK, Microsoft Entra ID, Read Replica and Private end-point.
-> - Size of data <= 100 GB
+> - Size of data <= 300 GB
 > - Public access is enabled
 
 > [!NOTE]  

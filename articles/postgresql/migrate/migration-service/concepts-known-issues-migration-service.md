@@ -26,7 +26,7 @@ The following list describes common limitations that apply to migration scenario
 - The migration service doesn't support moving POSTGIS_TOPOLOGY, POSTGIS_TIGER_GEOCODER, POSTGRES_FDW, and PG_PARTMAN extensions from source to target.
 
   > [!NOTE]  
-  > The feature to migrate databases that have the TIMESCALEDB extension is in preview. The option is turned off by default. To migrate your time series databases, please open a support ticket.
+  > The feature to migrate databases that have the TIMESCALEDB extension is GA. Do note that only **Offline** migration is possible for time series databases.
 
 - You can't move extensions that aren't supported by Azure Database for PostgreSQL - Flexible Server. Supported extensions are listed in [Extensions for Azure Database for PostgreSQL](/azure/postgresql/flexible-server/concepts-extensions).
 - User-defined collations can't be migrated to Azure Database for PostgreSQL - Flexible Server.
