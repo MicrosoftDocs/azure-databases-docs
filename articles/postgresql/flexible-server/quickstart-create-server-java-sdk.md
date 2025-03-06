@@ -302,7 +302,7 @@ import com.azure.core.management.profile.AzureProfile;
 import com.azure.identity.DefaultAzureCredentialBuilder;
 import com.azure.resourcemanager.postgresqlflexibleserver.PostgreSqlManager;
 
-public class ReadInstance {
+public class DeleteInstance {
 	public static void main(String args[]) {
 		String subscriptionId = "<subscription-id>";
     	AzureProfile profile = new AzureProfile("<tenant-id>", subscriptionId, AzureEnvironment.AZURE);
