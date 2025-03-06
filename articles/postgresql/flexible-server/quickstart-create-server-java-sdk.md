@@ -10,20 +10,20 @@ ms.subservice: flexible-server
 ms.topic: quickstart
 ---
 
-# Quickstart: Use Azure (SDK) libraries in Java to create, update, and delete an Azure Database for PostgreSQL Flexible Server instance
+# Quickstart: Use Azure (SDK) libraries in Java to create, update, and delete an Azure Database for PostgreSQL - Flexible Server
 
 In this quickstart, you learn how to use the Azure SDK libraries in Java to interact with Azure Database for PostgreSQL flexible server instance. Azure Database for PostgreSQL flexible server is a managed service that allows you to run, manage, and scale highly available PostgreSQL databases in the cloud. Using the Java SDK, you can provision an Azure Database for PostgreSQL flexible server instance, multiple servers, or multiple databases on a server. Azure Java SDK for PostgreSQL flexible server instance can help with all the following operations: 
 
-1. **Creating Azure Database for PostgreSQL Flexible Servers**:\
+1. **Creating Azure Database for PostgreSQL flexible servers**:\
 You can create a new Azure PostgreSQL flexible servers instances with specified configurations such as location, SKU, storage, and version.
 
-2. **Updating Azure Database for PostgreSQL Flexible Servers**:\
+2. **Updating Azure Database for PostgreSQL flexible servers**:\
 You can update existing Azure PostgreSQL flexible servers, including changing configurations like administrator login, password, SKU, storage, and version.
 
-3. **Deleting Azure Database for PostgreSQL Flexible Servers**:\
+3. **Deleting Azure Database for PostgreSQL flexible servers**:\
 You can delete existing Azure PostgreSQL flexible server instances.
 
-4. **Retrieving Azure Database for PostgreSQL Flexible Server information**:\
+4. **Retrieving Azure Database for PostgreSQL flexible server information**:\
 You can retrieve details about existing Azure PostgreSQL flexible servers, including their configurations, status, and other metadata.
 
 5. **Managing Databases**:\
