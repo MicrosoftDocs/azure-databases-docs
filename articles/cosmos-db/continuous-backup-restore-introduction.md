@@ -118,9 +118,7 @@ T4: East US received Doc2, confirms the document and sends of Doc2 back to West 
 
 T5: West US received confirmed Doc2 
 
-In this scenario, if the restore timestamp provided is T3, only Doc1 will get restored. Doc2 has not been confirmed by hub by T3. Only if the restore timestamp > T4, the doc2 will get restored. 
-
-
+In this scenario, if the restore timestamp provided is T3 for hub region as source, only Doc1 will get restored. Doc2 has not been confirmed by hub by T3. Only if the restore timestamp is more than T4, the doc2 will get restored as restore at T4 in satellite contains only doc1 since doc2 is not confirmed yet.
 
 ## <a id="continuous-backup-pricing"></a>Pricing
 
