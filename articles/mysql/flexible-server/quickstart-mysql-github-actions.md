@@ -53,8 +53,8 @@ In the Azure portal, go to your Azure Database for MySQL flexible server instanc
 
 > [!IMPORTANT]  
 >  
-> - For Azure Database for MySQL single server, use **Uid=adminusername@servername**. Note the **@servername** is required.
-> - For Azure Database for MySQL flexible server, use **Uid=adminusername** without the @servername.
+> - For Azure Database for MySQL Single Server, use **Uid=adminusername@servername**. Note the **@servername** is required.
+> - For Azure Database for MySQL Flexible Server, use **Uid=adminusername** without the @servername.
 
 You'll use the connection string as a GitHub secret.
 
