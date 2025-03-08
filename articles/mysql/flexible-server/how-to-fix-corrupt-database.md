@@ -34,7 +34,7 @@ We recommend that you resolve corruption problems by using a *dump and restore* 
 
 > [!IMPORTANT]  
 >  
-> - Make sure you have configured a firewall rule to access the server from your client machine. For more information, see [configure a firewall rule on Azure Database for MySQL single server](../single-server/how-to-manage-firewall-using-portal.md) and [configure a firewall rule on Azure Database for MySQL Flexible Server](how-to-connect-tls-ssl.md).
+> - Make sure you have configured a firewall rule to access the server from your client machine. For more information, see [configure a firewall rule on Azure Database for MySQL Single Server](../single-server/how-to-manage-firewall-using-portal.md) and [configure a firewall rule on Azure Database for MySQL Flexible Server](how-to-connect-tls-ssl.md).
 > - Use SSL option `--ssl-cert` for mysqldump if you have SSL enabled.
 
 Create a backup file from the command line by using mysqldump. Use this command:
@@ -52,7 +52,7 @@ Parameter descriptions:
 - `[backupfile.sql]`: The file name of your database backup.
 
 > [!IMPORTANT]  
-> - For Azure Database for MySQL single server, use the format `admin-user@servername` to replace `myserveradmin` in the following commands.
+> - For Azure Database for MySQL Single Server, use the format `admin-user@servername` to replace `myserveradmin` in the following commands.
 > - For Azure Database for MySQL Flexible Server, use the format `admin-user` to replace `myserveradmin` in the following commands.
 
 If a specific table is corrupt, select specific tables in your database to back up:
@@ -77,7 +77,7 @@ mysql  --ssl-cert=</path/to/pem> -h [hostname] -u [uname] -p[pass] [db_to_restor
 Here's an example that restores `testdb` from a backup file created with mysqldump:
 
 > [!IMPORTANT]  
-> - For Azure Database for MySQL single server, use the format `admin-user@servername` to replace `myserveradmin` in the following command.
+> - For Azure Database for MySQL Single Server, use the format `admin-user@servername` to replace `myserveradmin` in the following command.
 > - For Azure Database for MySQL Flexible Server, use the format ```admin-user``` to replace `myserveradmin` in the following command.
 
 ```bash
@@ -86,5 +86,5 @@ $ mysql --ssl-cert=</path/to/pem> -h mydemoserver.mysql.database.azure.com -u my
 
 ## Related content
 
-- [Restore server in Azure Database for MySQL single server](../single-server/how-to-restore-server-portal.md)
+- [Restore server in Azure Database for MySQL Single Server](../single-server/how-to-restore-server-portal.md)
 - [Point-in-time restore in Azure Database for MySQL - Flexible Server with the Azure portal](how-to-restore-server-portal.md)
