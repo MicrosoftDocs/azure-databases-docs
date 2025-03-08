@@ -1,6 +1,6 @@
 ---
 title: maintenance_work_mem server parameter
-description: maintenance_work_mem server parameter for Azure Database for PostgreSQL - Flexible Server.
+description: maintenance_work_mem server parameter for Azure Database for PostgreSQL flexible server.
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include

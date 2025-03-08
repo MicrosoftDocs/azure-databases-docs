@@ -1,6 +1,6 @@
 ---
 title: Logs
-description: Describes logging configuration, storage and analysis in Azure Database for PostgreSQL - Flexible Server.
+description: Describes logging configuration, storage and analysis in Azure Database for PostgreSQL flexible server.
 author: varun-dhawan
 ms.author: varundhawan
 ms.date: 1/10/2025
@@ -9,7 +9,7 @@ ms.subservice: flexible-server
 ms.topic: how-to
 ---
 
-# Logs in Azure Database for PostgreSQL - Flexible Server
+# Logs in Azure Database for PostgreSQL flexible server
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
@@ -69,6 +69,6 @@ The following table describes the fields for the **PostgreSQLLogs** type. Depend
 
 ## Related content
 
-- [Configure and access logs in Azure Database for PostgreSQL - Flexible Server](how-to-configure-and-access-logs.md).
+- [Configure and access logs in Azure Database for PostgreSQL flexible server](how-to-configure-and-access-logs.md).
 - [Azure Monitor pricing](https://azure.microsoft.com/pricing/details/monitor/).
-- [Audit logging in Azure Database for PostgreSQL - Flexible Server](concepts-audit.md).
+- [Audit logging in Azure Database for PostgreSQL flexible server](concepts-audit.md).

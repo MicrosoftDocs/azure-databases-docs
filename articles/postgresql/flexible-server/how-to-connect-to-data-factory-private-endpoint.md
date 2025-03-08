@@ -1,6 +1,6 @@
 ---
 title: Connect from data factory via managed private endpoint
-description: This article describes how to connect from Azure Data Factory to an instance of Azure Database for PostgreSQL - Flexible Server using Private Link.
+description: This article describes how to connect from Azure Data Factory to an instance of Azure Database for PostgreSQL flexible server using Private Link.
 author: techlake
 ms.author: hganten
 ms.reviewer: maghan
@@ -73,4 +73,4 @@ With the private endpoint deployed and approved, you can finally use the Azure D
 
 ## Related content
 
-- [Networking with Private Link in Azure Database for PostgreSQL - Flexible Server](concepts-networking-private-link.md).
+- [Networking with Private Link in Azure Database for PostgreSQL flexible server](concepts-networking-private-link.md).

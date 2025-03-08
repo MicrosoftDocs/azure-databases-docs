@@ -10,7 +10,7 @@ ms.subservice: flexible-server
 ms.topic: concept-article
 ---
 
-# Table types on elastic clusters in Azure Database for PostgreSQL - Flexible Server (preview)
+# Table types on elastic clusters in Azure Database for PostgreSQL flexible server (preview)
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
@@ -49,5 +49,5 @@ With [schema-based sharding](concepts-elastic-clusters-sharding-models.md#schema
 ## Related content
 
 - [Overview of elastic clusters](concepts-elastic-clusters.md).
-- [Sharding models on elastic clusters in Azure Database for PostgreSQL - Flexible Server](concepts-elastic-clusters-sharding-models.md).
+- [Sharding models on elastic clusters in Azure Database for PostgreSQL flexible server](concepts-elastic-clusters-sharding-models.md).
 - [Frequently asked questions about elastic clusters with Azure Database for PostgreSQL limitations](concepts-elastic-clusters-limitations.yml).

@@ -230,5 +230,5 @@ When you encounter this error, you can resolve by:
 
 ## Related content
 
-- [Enable and use pgvector in Azure Database for PostgreSQL - Flexible Server](how-to-use-pgvector.md).
+- [Enable and use pgvector in Azure Database for PostgreSQL flexible server](how-to-use-pgvector.md).
 - [Manage PostgreSQL extensions](../extensions/how-to-allow-extensions.md).

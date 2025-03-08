@@ -1,6 +1,6 @@
 ---
 title: File Locations server parameters
-description: File Locations server parameters for Azure Database for PostgreSQL - Flexible Server.
+description: File Locations server parameters for Azure Database for PostgreSQL flexible server.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
