@@ -6,7 +6,7 @@ author: jcodella
 ms.author: jacodel
 ms.service: azure-cosmos-db
 ms.topic: how-to
-ms.date: 12/03/2024
+ms.date: 03/10/2025
 ms.collection:
   - ce-skilling-ai-copilot
 appliesto:
@@ -16,6 +16,11 @@ appliesto:
 # Full-text search in Azure Cosmos DB for NoSQL (preview)
 
 Azure Cosmos DB for NoSQL now offers a powerful Full Text Search feature in preview, designed to enhance the search capabilities of your applications.
+
+## Prerequisites
+
+- Azure Cosmos DB for NoSQL account
+- [Vector search](vector-search-overview.md) feature enabled
 
 ## What is full text search?
 
