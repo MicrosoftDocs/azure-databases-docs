@@ -6,6 +6,14 @@
       href: introduction.md
     - name: FAQ
       href: faq.yml
+- name: Beginners Guide 
+  items:
+    - name: Python Guide - Connection & CRUD Operations
+      href: beginner-guide-to-vCore-with-python.md 
+    - name: Node.js Guide - Connection & CRUD Operations
+      href: beginner-guide-to-vCore-with-nodejs.md 
+    - name: Java Guide - Connection & CRUD Operations
+      href: beginner-guide-to-vCore-with-java.md    
 - name: Quickstarts
   items:
     - name: Create resources - Azure portal
