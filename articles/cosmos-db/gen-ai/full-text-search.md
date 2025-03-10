@@ -17,6 +17,11 @@ appliesto:
 
 Azure Cosmos DB for NoSQL now offers a powerful Full Text Search feature in preview, designed to enhance the search capabilities of your applications.
 
+## Prerequisites
+
+- Azure Cosmos DB for NoSQL account
+- [Vector search](vector-search-overview.md) feature enabled
+
 ## What is full text search?
 
 Azure Cosmos DB for NoSQL now offers a powerful Full Text Search feature in preview, designed to enhance your data querying capabilities. This feature includes advanced text processing techniques such as stemming, stop word removal, and tokenization, enabling efficient and effective text searches through a specialized text index. Full text search also includes *full text scoring* with a function that evaluates the relevance of documents to a given search query. BM25, or Best Matching 25, considers factors like term frequency, inverse document frequency, and document length to score and rank documents. This helps ensure that the most relevant documents appear at the top of the search results, improving the accuracy and usefulness of text searches.
