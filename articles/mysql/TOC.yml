@@ -97,7 +97,7 @@
             href: flexible-server/how-to-configure-server-parameters-cli.md
             displayName: server parameters, cli
       - name: Built-in Store Procedure
-        href: concepts-built-in-storeprocedure.md
+        href: flexible-server/concepts-built-in-storeprocedure.md
         displayName: built-in store procedure
       - name: Create databases and users
         href: how-to-create-users.md
