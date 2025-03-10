@@ -532,9 +532,9 @@ for (const item of resources) {
 
 CosmosDB JS SDK version 4.3.0 onwards, `enableQueryControl` flag has been introduced which provides greater control over query execution, offering additional flexibility in managing Request Unit (RU) consumption.
 
-By default, `enableQueryControl` is set to `false`. In such a case the SDK guarantees that each `fetchNext` call would return `maxItemCount` number of results, provided those many results existed in the backend. But to meet the guaranteed result count, the SDK may query backend partitions multiple times in a single `fetchNext` iteration. This can sometimes lead to unpredictable latency and RU drain with no user control, especially when results are scattered across partitions.
+By default, `enableQueryControl` is set to `false` and the SDK guarantees that each `fetchNext` call would return `maxItemCount` number of results, provided those many results existed in the backend. But to meet the guaranteed result count, the SDK may query backend partitions multiple times in a single `fetchNext` iteration. This can sometimes lead to unpredictable latency and RU drain with no user control, especially when results are scattered across partitions.
  
-When `enableQueryControl` is set to `true`, Each `fetchNext` call will now query up to `maxDegreeOfParallelism` physical partitions. If no results are found or results are not ready to be served yet, the SDK will return empty pages instead of continuing to search all partitions in the background. This way, users gain finer control over their query execution with predictable latency and granular RU consumption data.
+When `enableQueryControl` is set to `true`, each `fetchNext` call will now query up to `maxDegreeOfParallelism` physical partitions. If no results are found or results are not ready to be served yet, the SDK will return empty pages instead of continuing to search all partitions in the background. This way, users gain finer control over their query execution with predictable latency and granular RU consumption data.
 
 ```javascript
 const options = {
