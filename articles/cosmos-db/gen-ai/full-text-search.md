@@ -6,7 +6,7 @@ author: jcodella
 ms.author: jacodel
 ms.service: azure-cosmos-db
 ms.topic: how-to
-ms.date: 12/03/2024
+ms.date: 03/10/2025
 ms.collection:
   - ce-skilling-ai-copilot
 appliesto:
