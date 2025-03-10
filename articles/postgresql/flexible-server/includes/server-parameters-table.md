@@ -2,7 +2,7 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 01/07/2025
+ms.date: 03/10/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
@@ -246,6 +246,15 @@ ms.custom: automatically generated
 | `pg_stat_statements.save`                    | [11](../server-parameters-table-customized-options.md?pivots=postgresql-11#pg_stat_statementssave), [12](../server-parameters-table-customized-options.md?pivots=postgresql-12#pg_stat_statementssave), [13](../server-parameters-table-customized-options.md?pivots=postgresql-13#pg_stat_statementssave), [14](../server-parameters-table-customized-options.md?pivots=postgresql-14#pg_stat_statementssave), [15](../server-parameters-table-customized-options.md?pivots=postgresql-15#pg_stat_statementssave), [16](../server-parameters-table-customized-options.md?pivots=postgresql-16#pg_stat_statementssave), [17](../server-parameters-table-customized-options.md?pivots=postgresql-17#pg_stat_statementssave)                                                                                                                                      | Save pg_stat_statements statistics across server shutdowns.|
 | `pg_stat_statements.track`                   | [11](../server-parameters-table-customized-options.md?pivots=postgresql-11#pg_stat_statementstrack), [12](../server-parameters-table-customized-options.md?pivots=postgresql-12#pg_stat_statementstrack), [13](../server-parameters-table-customized-options.md?pivots=postgresql-13#pg_stat_statementstrack), [14](../server-parameters-table-customized-options.md?pivots=postgresql-14#pg_stat_statementstrack), [15](../server-parameters-table-customized-options.md?pivots=postgresql-15#pg_stat_statementstrack), [16](../server-parameters-table-customized-options.md?pivots=postgresql-16#pg_stat_statementstrack), [17](../server-parameters-table-customized-options.md?pivots=postgresql-17#pg_stat_statementstrack)                                                                                                                               | Controls which statements are counted by pg_stat_statements.|
 | `pg_stat_statements.track_utility`           | [11](../server-parameters-table-customized-options.md?pivots=postgresql-11#pg_stat_statementstrack_utility), [12](../server-parameters-table-customized-options.md?pivots=postgresql-12#pg_stat_statementstrack_utility), [13](../server-parameters-table-customized-options.md?pivots=postgresql-13#pg_stat_statementstrack_utility), [14](../server-parameters-table-customized-options.md?pivots=postgresql-14#pg_stat_statementstrack_utility), [15](../server-parameters-table-customized-options.md?pivots=postgresql-15#pg_stat_statementstrack_utility), [16](../server-parameters-table-customized-options.md?pivots=postgresql-16#pg_stat_statementstrack_utility), [17](../server-parameters-table-customized-options.md?pivots=postgresql-17#pg_stat_statementstrack_utility)                                                                       | Selects whether utility commands are tracked by pg_stat_statements.|
+
+
+
+### CxxO
+
+
+
+| Name | Versions | Description |
+|------|----------|-------------|
 
 
 

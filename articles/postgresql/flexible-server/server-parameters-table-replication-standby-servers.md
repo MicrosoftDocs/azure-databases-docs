@@ -4,7 +4,7 @@ description: Replication / Standby Servers server parameters for Azure Database 
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 01/07/2025
+ms.date: 03/10/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: concept-article

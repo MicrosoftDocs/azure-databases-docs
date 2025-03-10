@@ -2,7 +2,7 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 01/07/2025
+ms.date: 03/10/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
@@ -263,6 +263,108 @@ ms.custom: automatically generated
 
 
 
+### azure.migration_copy_with_binary
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | When set to on, this parameter will enable the use of the binary format for copying data during migration. |
+| Data type | boolean |
+| Default value | `off` |
+| Allowed values | `on, off` |
+| Parameter type | dynamic |
+| Documentation | [azure.migration_copy_with_binary](https://aka.ms/migration_parameters) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### azure.migration_skip_analyze
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | When set to on, this parameter will skip the analyze phase (`vacuumdb --analyze-only`) during the migration. |
+| Data type | boolean |
+| Default value | `off` |
+| Allowed values | `on, off` |
+| Parameter type | dynamic |
+| Documentation | [azure.migration_skip_analyze](https://aka.ms/migration_parameters) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### azure.migration_skip_extensions
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | When set to on, this parameter will skip the migration of extensions. |
+| Data type | boolean |
+| Default value | `off` |
+| Allowed values | `on, off` |
+| Parameter type | dynamic |
+| Documentation | [azure.migration_skip_extensions](https://aka.ms/migration_parameters) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### azure.migration_skip_large_objects
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | When set to on, this parameter will skip the migration of large objects such as BLOBs. |
+| Data type | boolean |
+| Default value | `off` |
+| Allowed values | `on, off` |
+| Parameter type | dynamic |
+| Documentation | [azure.migration_skip_large_objects](https://aka.ms/migration_parameters) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### azure.migration_skip_role_user
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | When set to on, this parameter will exclude user roles from the migration process. |
+| Data type | boolean |
+| Default value | `on` |
+| Allowed values | `on` |
+| Parameter type | read-only |
+| Documentation | [azure.migration_skip_role_user](https://aka.ms/migration_parameters) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### azure.migration_table_split_size
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | When set, this parameter specifies the size at which tables will be partitioned during migration. |
+| Data type | integer |
+| Default value | `20480` |
+| Allowed values | `1-204800` |
+| Parameter type | dynamic |
+| Documentation | [azure.migration_table_split_size](https://aka.ms/migration_parameters) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
 ### azure.single_to_flex_migration
 
 | Attribute | Value |
@@ -307,7 +409,7 @@ ms.custom: automatically generated
 | Default value | Depends on resources (vCores, RAM, or disk space) allocated to the server. |
 | Allowed values | `1024` |
 | Parameter type | read-only |
-| Documentation | [azure_storage.blob_block_size_mb](/rest/api/storageservices/put-block?tabs=azure-ad#remarks) |
+| Documentation | [azure_storage.blob_block_size_mb](https://learn.microsoft.com/rest/api/storageservices/put-block?tabs=azure-ad#remarks) |
 
 
 [!INCLUDE [server-parameters-azure-notes-azure-storage-blob-block-size-mb](./server-parameters-azure-notes-azure-storage-blob-block-size-mb.md)]
