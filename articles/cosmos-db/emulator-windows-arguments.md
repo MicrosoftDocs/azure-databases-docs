@@ -6,7 +6,7 @@ author: sajeetharan
 ms.author: sasinnat
 ms.service: azure-cosmos-db
 ms.topic: reference
-ms.date: 06/20/2024
+ms.date: 03/10/2025
 ---
 
 # Command-line and PowerShell reference for Windows (local) emulator
@@ -70,6 +70,7 @@ To view the list of parameters, type `Microsoft.Azure.Cosmos.Emulator.exe /?` at
 | `NoFirewall` | Don't adjust firewall rules when `/AllowNetworkAccess` option is used. | `Microsoft.Azure.Cosmos.Emulator.exe /NoFirewall` |
 | `GenKeyFile` | Generate a new authorization key and save to the specified file. The generated key can be used with the `/Key` or `/KeyFile` options. | `Microsoft.Azure.Cosmos.Emulator.exe /GenKeyFile=D:\Keys\keyfile` |
 | `Consistency` | Set the default consistency level for the account. The default value is **Session**. | `Microsoft.Azure.Cosmos.Emulator.exe /Consistency=Strong` |
+| `DisableRIO` | Switches the emulator network communication from registered I/O to windows sockets (winsock). |
 | `?` | Show the help message. | |
 
 ## Manage the emulator with PowerShell cmdlets
