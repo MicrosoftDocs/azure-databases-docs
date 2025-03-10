@@ -28,25 +28,25 @@ The Azure SDK for Java provides a set of libraries that allow you to interact wi
 Azure Java SDK for PostgreSQL flexible server instance supports these operations.
 
 - **Creating Azure Database for PostgreSQL flexible servers**:\
-    - You can create a new Azure PostgreSQL flexible server instance with specified configurations such as location, SKU, storage, and version.
+    You can create a new Azure PostgreSQL flexible server instance with specified configurations such as location, SKU, storage, and version.
 
 - **Updating Azure Database for PostgreSQL flexible servers**:\
-    - You can update existing Azure PostgreSQL flexible servers, including changing configurations like administrator sign-in, password, SKU, storage, and version.
+    You can update existing Azure PostgreSQL flexible servers, including changing configurations like administrator sign-in, password, SKU, storage, and version.
 
 - **Deleting Azure Database for PostgreSQL flexible servers**:\
-    - You can delete existing Azure PostgreSQL flexible server instances.
+    You can delete existing Azure PostgreSQL flexible server instances.
 
 - **Retrieving Azure Database for PostgreSQL flexible server information**:\
-    - You can retrieve details about existing Azure PostgreSQL flexible servers, including their configurations, status, and other metadata.
+    You can retrieve details about existing Azure PostgreSQL flexible servers, including their configurations, status, and other metadata.
 
 - **Managing Databases**:\
-    - You can create, update, delete, and retrieve databases within the Azure PostgreSQL flexible server instance.
+    You can create, update, delete, and retrieve databases within the Azure PostgreSQL flexible server instance.
 
 - **Managing Firewall Rules**:\
-    - You can create, update, delete, and retrieve firewall rules for an instance to control access.
+    You can create, update, delete, and retrieve firewall rules for an instance to control access.
 
 - **Managing Configuration Settings**:\
-    - You can manage configuration settings for an Azure PostgreSQL flexible server instance, including retrieving and updating server parameters.
+    You can manage configuration settings for an Azure PostgreSQL flexible server instance, including retrieving and updating server parameters.
 
 ## Setting up your account with az cli
 
@@ -58,7 +58,7 @@ Before using the Azure SDK for Java to create, update, or delete an Azure Databa
 az login
 ```
 
-- Fetch your tenant ID for your account
+- Fetch your tenant ID for your account as it would be needed for the code in the later.
 
 ```azurecli-interactive
 az account show --query tenantId --output tsv
