@@ -3,12 +3,12 @@ title: |
   Tutorial: Node js Integration with MongoDB vCore
 titleSuffix: Azure Cosmos DB for MongoDB (vCore)
 description: In this tutorial, create a Node js application that connects to a vCore cluster in Azure Cosmos DB for MongoDB and performs CRUD (Create, Read, Update, Delete) operations on documents within a collection.
-author: v-smedapati
-ms.author: v-smedapati
+author: saireddymicrosoft
+ms.author: saireddymicrosoft
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
-ms.topic: tutorial
-ms.date: 10/03/2025
+ms.topic: begginer-guide
+ms.date: 03/10/2025
 # CustomerIntent: As a developer, I want to connect to Azure Cosmos DB for MongoDB (vCore) from my Node js application, so I can efficiently perform CRUD operations and manage my database.
 ---
 
