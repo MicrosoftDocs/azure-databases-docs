@@ -18,29 +18,28 @@ The Azure SDK for Java provides a set of libraries that allow you to interact wi
 
 ## Prerequisites
 
-- [An Azure account with an active subscription](https://azure.microsoft.com/free/).
+- [An Azure account with an active subscription](https://azure.microsoft.com/free/)
 - Java Development Kit (JDK) with the latest version
 - Download Maven for using the Azure Java SDK library
-- [Azure CLI](/cli/azure/install-azure-cli) installed on your local machine.
+- [Azure CLI](/cli/azure/install-azure-cli) installed on your local machine
 
 ## Operations supported by Azure Java SDK
 
-Azure Java SDK for PostgreSQL flexible server instance supports these operations.
+Azure SDK for Java supports these operations.
 
 - **Creating Azure Database for PostgreSQL flexible servers**:\
-    You can create a new Azure PostgreSQL flexible server instance with specified configurations such as location, SKU, storage, and version.
+    You can create a new Azure PostgreSQL flexible server instance with specified configurations such as location, SKU, storage, and version.
 
 - **Updating Azure Database for PostgreSQL flexible servers**:\
-    You can update existing Azure PostgreSQL flexible servers, including changing configurations like administrator sign-in, password, SKU, storage, and version.
+    You can update existing Azure PostgreSQL flexible servers, including changing configurations like administrator sign-in, password, SKU, storage, and version.
 
 - **Deleting Azure Database for PostgreSQL flexible servers**:\
-    You can delete existing Azure PostgreSQL flexible server instances.
 
 - **Retrieving Azure Database for PostgreSQL flexible server information**:\
-    You can retrieve details about existing Azure PostgreSQL flexible servers, including their configurations, status, and other metadata.
+    You can retrieve details about existing Azure PostgreSQL flexible servers, including their configurations, status, and other metadata.
 
 - **Managing Databases**:\
-    You can create, update, delete, and retrieve databases within the Azure PostgreSQL flexible server instance.
+    You can create, update, delete, and retrieve databases within the Azure PostgreSQL flexible server instance.
 
 - **Managing Firewall Rules**:\
     You can create, update, delete, and retrieve firewall rules for an instance to control access.
@@ -68,7 +67,7 @@ az account show --query tenantId --output tsv
 
 Create a new Maven project in your preferred IDE and add the dependencies for the Azure Database for PostgreSQL flexible server library.
 
-Once you create a Maven project, there's a pom.xml file that is created. Ensure all dependencies are added under this file's `<dependencies>` tag.
+Once you create a Maven project, a pom.xml file that is created. Ensure all dependencies are added under this file's `<dependencies>` tag.
 
 ```xml
 <dependency>
@@ -138,30 +137,30 @@ import com.azure.resourcemanager.postgresqlflexibleserver.models.SkuTier;
 import com.azure.resourcemanager.postgresqlflexibleserver.models.Storage;
 import com.azure.resourcemanager.postgresqlflexibleserver.models.UserAssignedIdentity;
 public class CreateServer {
-    public static void main(String[] args) throws Exception {
-          String subscriptionId = "<subscription-id>";
-          AzureProfile profile = new AzureProfile("<tenant-id>", subscriptionId, AzureEnvironment.AZURE);
-         
-          TokenCredential credential = new DefaultAzureCredentialBuilder()
-          .authorityHost(profile.getEnvironment().getActiveDirectoryEndpoint()).build();
-          PostgreSqlManager manager = PostgreSqlManager.authenticate(credential, profile);
-          Server server = manager.servers()
-          .define("<server-name>")
-          .withRegion("<location>")
-          .withExistingResourceGroup("<resource-group-name>")
-          .withSku(new Sku().withName("Standard_D4ds_v5").withTier(SkuTier.GENERAL_PURPOSE))
-          .withAuthConfig(new AuthConfig().withActiveDirectoryAuth(ActiveDirectoryAuthEnum.DISABLED)
-          .withPasswordAuth(PasswordAuthEnum.ENABLED))
-          .withIdentity(new UserAssignedIdentity().withType(IdentityType.NONE))
-          .withDataEncryption(new DataEncryption().withType(ArmServerKeyType.SYSTEM_MANAGED))
-          .withVersion(ServerVersion.ONE_SIX).withAuthConfig(null)
-          .withAdministratorLogin("<user-name>")
-          .withAdministratorLoginPassword("<password>").withStorage(new Storage().withStorageSizeGB(32))
-          .withHighAvailability(new HighAvailability().withMode(HighAvailabilityMode.DISABLED))
-          .create();
-          System.out.println("Azure Database for PostgreSQL Flexible server instance is created with server name"+server.name());
- }
- }
+    public static void main(String[] args) throws Exception {
+              String subscriptionId = "<subscription-id>";
+              AzureProfile profile = new AzureProfile("<tenant-id>", subscriptionId, AzureEnvironment.AZURE);
+             
+              TokenCredential credential = new DefaultAzureCredentialBuilder()
+              .authorityHost(profile.getEnvironment().getActiveDirectoryEndpoint()).build();
+              PostgreSqlManager manager = PostgreSqlManager.authenticate(credential, profile);
+              Server server = manager.servers()
+              .define("<server-name>")
+              .withRegion("<location>")
+              .withExistingResourceGroup("<resource-group-name>")
+              .withSku(new Sku().withName("Standard_D4ds_v5").withTier(SkuTier.GENERAL_PURPOSE))
+              .withAuthConfig(new AuthConfig().withActiveDirectoryAuth(ActiveDirectoryAuthEnum.DISABLED)
+              .withPasswordAuth(PasswordAuthEnum.ENABLED))
+              .withIdentity(new UserAssignedIdentity().withType(IdentityType.NONE))
+              .withDataEncryption(new DataEncryption().withType(ArmServerKeyType.SYSTEM_MANAGED))
+              .withVersion(ServerVersion.ONE_SIX).withAuthConfig(null)
+              .withAdministratorLogin("<user-name>")
+              .withAdministratorLoginPassword("<password>").withStorage(new Storage().withStorageSizeGB(32))
+              .withHighAvailability(new HighAvailability().withMode(HighAvailabilityMode.DISABLED))
+              .create();
+              System.out.println("Azure Database for PostgreSQL Flexible server instance is created with server name"+server.name());
+    }   
+}
 ```
 
 This example demonstrates creating an Azure Database for PostgreSQL flexible instance server using the `PostgreSqlManager` class. Before invoking the create method, it authenticates using the TokenCredential and AzureProfile. Once authenticated, it defines the Azure PostgreSQL flexible server instance with your specified configuration.
@@ -214,24 +213,24 @@ import com.azure.identity.DefaultAzureCredentialBuilder;
 import com.azure.resourcemanager.postgresqlflexibleserver.PostgreSqlManager;
 
 public class CreateDatabaseSample {
-public static void main(String args[]) {
-   String subscriptionId = "<subscription-id>";
-   AzureProfile profile = new AzureProfile("<tenant-id>", subscriptionId, AzureEnvironment.AZURE);
-  
-   TokenCredential credential = new DefaultAzureCredentialBuilder()
-   .authorityHost(profile.getEnvironment().getActiveDirectoryEndpoint()).build();
-   PostgreSqlManager manager = PostgreSqlManager.authenticate(credential, profile);
-   manager.databases()
-   .define("<database-name>")
-   .withExistingFlexibleServer("<resource-group-name>", "<server-name>")
-   .withCharset("utf8")
-   .withCollation("en_US.utf8")
-   .create();
-}
+    public static void main(String args[]) {
+        String subscriptionId = "<subscription-id>";
+        AzureProfile profile = new AzureProfile("<tenant-id>", subscriptionId, AzureEnvironment.AZURE);
+        
+        TokenCredential credential = new DefaultAzureCredentialBuilder()
+        .authorityHost(profile.getEnvironment().getActiveDirectoryEndpoint()).build();
+        PostgreSqlManager manager = PostgreSqlManager.authenticate(credential, profile);
+        manager.databases()
+        .define("<database-name>")
+        .withExistingFlexibleServer("<resource-group-name>", "<server-name>")
+        .withCharset("utf8")
+        .withCollation("en_US.utf8")
+        .create();
+    }
 }
 ```
 
-### Update the data
+### Update Server Data
 
 Create a `UpdateServer.java` file.
 
