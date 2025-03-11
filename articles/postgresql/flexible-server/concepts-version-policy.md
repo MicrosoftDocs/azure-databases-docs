@@ -89,7 +89,7 @@ You might continue to run the retired version in Azure Database for PostgreSQL f
 - New service capabilities developed by Azure Database for PostgreSQL flexible server might only be available to supported database server versions.
 - Uptime SLAs apply solely to Azure Database for PostgreSQL flexible server service-related issues and not to any downtime caused by database engine-related bugs.  
 - In the extreme event of a serious threat to the service caused by the PostgreSQL database engine vulnerability identified in, the retired database version, Azure might choose to stop your database server to secure the service. In such case, you are notified to upgrade the server before bringing the server online.
-- The new extensions introduced for Axure Database for PostgreSQL flexible server will not be supported on the community retired postgres versions.
+- The new extensions introduced for Azure Database for PostgreSQL flexible server will not be supported on the community retired postgres versions.
 
   
 ## PostgreSQL version syntax
