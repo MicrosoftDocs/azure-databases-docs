@@ -50,6 +50,8 @@
         href: flexible-server/quickstart-create-server-python-sdk.md
       - name: Azure SDK for .NET
         href: flexible-server/quickstart-create-server-dotnet-sdk.md
+      - name: Azure SDK for Java
+        href: flexible-server/quickstart-create-server-java-sdk.md    
       - name: Bicep
         href: flexible-server/quickstart-create-server-bicep.md
     - name: Create an elastic cluster
