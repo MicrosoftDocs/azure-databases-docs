@@ -13,7 +13,7 @@ ms.topic: concept-article
 
 The Migration Runtime Server is a crucial component in the migration service for Azure Database for PostgreSQL. It serves as an intermediary server, ensuring secure and efficient data transfer during the migration process. This server is particularly useful when migrating databases from environments that are only accessible via private networks.
 
-By acting as a bridge between the source PostgreSQL instance and the target Azure Database for PostgreSQL - Flexible Server instance, the Migration Runtime Server facilitates seamless data migration. It ensures that the migration occurs within a secure and isolated network space, maintaining the integrity and confidentiality of the data being transferred.
+By acting as a bridge between the source PostgreSQL instance and the target Azure Database for PostgreSQL flexible server instance, the Migration Runtime Server facilitates seamless data migration. It ensures that the migration occurs within a secure and isolated network space, maintaining the integrity and confidentiality of the data being transferred.
 
 This article provides an in-depth look at the Migration Runtime Server, its supported scenarios, and how to use it effectively within the migration service in Azure Database for PostgreSQL.
 
@@ -21,10 +21,10 @@ This article provides an in-depth look at the Migration Runtime Server, its supp
 
 ## Supported migration scenarios with the Migration Runtime Server
 
-Migration Runtime Server is essential for transferring data between different source PostgreSQL instances and the Azure Database for PostgreSQL - Flexible Server instance. It's necessary in the following scenarios:
+Migration Runtime Server is essential for transferring data between different source PostgreSQL instances and the Azure Database for PostgreSQL flexible server instance. It's necessary in the following scenarios:
 
-- When the source is an Azure Database for PostgreSQL - Single Server configured with a private endpoint and the target is an Azure Database for PostgreSQL - Flexible Server with a private endpoint.
-- For sources such as on-premises databases, Azure virtual machines, or AWS instances that are only accessible via private networks and the target Azure Database for PostgreSQL - Flexible Server instance with a private endpoint.
+- When the source is an Azure Database for PostgreSQL - Single Server configured with a private endpoint and the target is an Azure Database for PostgreSQL flexible server with a private endpoint.
+- For sources such as on-premises databases, Azure virtual machines, or AWS instances that are only accessible via private networks and the target Azure Database for PostgreSQL flexible server instance with a private endpoint.
 
 ## How do you use the Migration Runtime Server feature?
 
@@ -42,8 +42,8 @@ Here's how to do it in both methods.
 1. Sign in to the Azure portal and access the migration service (from the target server) in the Azure Database for PostgreSQL instance.
 1. Begin a new migration workflow within the service.
 1. When you reach the **Select runtime server** tab, select **Yes** to use Migration Runtime Server.
-1. Select your Azure subscription and resource group. Select the location of the virtual network-integrated Azure Database for PostgreSQL - Flexible Server instance.
-1. Select the appropriate Azure Database for PostgreSQL - Flexible Server instance to serve as your Migration Runtime Server instance.
+1. Select your Azure subscription and resource group. Select the location of the virtual network-integrated Azure Database for PostgreSQL flexible server instance.
+1. Select the appropriate Azure Database for PostgreSQL flexible server instance to serve as your Migration Runtime Server instance.
 
    :::image type="content" source="media/concepts-migration-service-runtime-server/select-runtime-server.png" alt-text="Screenshot that shows selecting Migration Runtime Server." lightbox="media/concepts-migration-service-runtime-server/select-runtime-server.png":::
 
@@ -60,7 +60,7 @@ Here's how to do it in both methods.
 
 ## Migration Runtime Server essentials
 
-- **Minimal configuration**: Despite being created from Azure Database for PostgreSQL - Flexible Server, Migration Runtime Server solely facilitates migration without the need for high availability, backups, version specificity, or advanced storage features.
+- **Minimal configuration**: Despite being created from Azure Database for PostgreSQL flexible server, Migration Runtime Server solely facilitates migration without the need for high availability, backups, version specificity, or advanced storage features.
 - **Performance and sizing**: Migration Runtime Server must be appropriately scaled to manage the workload. We recommend that you select an SKU equivalent to or greater than that of the target server.
 - **Networking**: Ensure that Migration Runtime Server is appropriately integrated into the virtual network and that network security allows for secure communication with both the source and target servers. For more information, see [Network guide for migration service](how-to-network-setup-migration-service.md).
 - **Post-migration cleanup**: After the migration is finished, Migration Runtime Server should be decommissioned to avoid unnecessary costs. Before deletion, ensure that all data was successfully migrated and that the server is no longer needed.

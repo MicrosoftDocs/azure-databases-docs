@@ -24,7 +24,7 @@ The migration service in Azure Database for PostgreSQL provides the following bu
 
 ## Permissions on a single server compared to a flexible server
 
-This section describes the differences in permissions granted to the azure_pg_admin role in Azure Database for PostgreSQL - Single Server and Azure Database for PostgreSQL - Flexible Server environments.
+This section describes the differences in permissions granted to the azure_pg_admin role in Azure Database for PostgreSQL - Single Server and Azure Database for PostgreSQL flexible server environments.
 
 ### pg_catalog schema permissions
 
@@ -61,7 +61,7 @@ We removed all permissions for non-superusers on the following pg_catalog *views
 
 ### pg_pltemplate deprecation
 
-Another important consideration is the deprecation of the pg_pltemplate system table. Starting in *version 13*, PostgreSQL community deprecates the pg_pltemplate system table in the pg_catalog schema. If you migrate to Azure Database for PostgreSQL - Flexible Server version 13 or later and you granted permissions to users on the pg_pltemplate table on your single server, you must revoke these permissions before you initiate a migration.
+Another important consideration is the deprecation of the pg_pltemplate system table. Starting in *version 13*, PostgreSQL community deprecates the pg_pltemplate system table in the pg_catalog schema. If you migrate to Azure Database for PostgreSQL flexible server version 13 or later and you granted permissions to users on the pg_pltemplate table on your single server, you must revoke these permissions before you initiate a migration.
 
 #### Effects
 

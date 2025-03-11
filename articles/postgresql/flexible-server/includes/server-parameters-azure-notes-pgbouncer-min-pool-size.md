@@ -1,6 +1,6 @@
 ---
 title: pgbouncer.min_pool_size server parameter
-description: pgbouncer.min_pool_size server parameter for Azure Database for PostgreSQL - Flexible Server.
+description: pgbouncer.min_pool_size server parameter for Azure Database for PostgreSQL flexible server.
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include

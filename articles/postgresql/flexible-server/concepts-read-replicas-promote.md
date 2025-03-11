@@ -1,6 +1,6 @@
 ---
 title: Promote read replicas
-description: This article describes the promote action for read replica feature in Azure Database for PostgreSQL - Flexible Server.
+description: This article describes the promote action for read replica feature in Azure Database for PostgreSQL flexible server.
 author: kabharati
 ms.author: kabharati
 ms.reviewer: maghan
@@ -10,7 +10,7 @@ ms.subservice: flexible-server
 ms.topic: conceptual
 ---
 
-# Promote read replicas in Azure Database for PostgreSQL - Flexible Server
+# Promote read replicas in Azure Database for PostgreSQL flexible server
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
@@ -98,8 +98,8 @@ In both the Planned and Forced promotion scenarios, it's required that the lates
 
 ## Related content
 
-- [Read replicas in Azure Database for PostgreSQL - Flexible Server](concepts-read-replicas.md).
-- [Geo-replication in Azure Database for PostgreSQL - Flexible Server](concepts-read-replicas-geo.md).
-- [Virtual endpoints for read replicas in Azure Database for PostgreSQL - Flexible Server](concepts-read-replicas-virtual-endpoints.md).
-- [Create and manage read replicas in Azure Database for PostgreSQL - Flexible Server](how-to-read-replicas-portal.md).
+- [Read replicas in Azure Database for PostgreSQL flexible server](concepts-read-replicas.md).
+- [Geo-replication in Azure Database for PostgreSQL flexible server](concepts-read-replicas-geo.md).
+- [Virtual endpoints for read replicas in Azure Database for PostgreSQL flexible server](concepts-read-replicas-virtual-endpoints.md).
+- [Create and manage read replicas in Azure Database for PostgreSQL flexible server](how-to-read-replicas-portal.md).
 - [Replication across Azure regions and virtual networks with private networking](concepts-networking-private.md#replication-across-azure-regions-and-virtual-networks-with-private-networking).

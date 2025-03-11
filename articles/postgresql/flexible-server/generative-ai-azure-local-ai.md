@@ -16,7 +16,7 @@ ms.custom:
   - build-2024
 ---
 
-# Generate vector embeddings in Azure Database for PostgreSQL - Flexible Server with locally deployed LLM (Preview)
+# Generate vector embeddings in Azure Database for PostgreSQL flexible server with locally deployed LLM (Preview)
 
 ## Prerequisites
 
@@ -146,14 +146,14 @@ SELECT doc_vector FROM documents;
 
 -- Add a single record to the documents table and the vector embedding using azure_local_ai and locally deployed model will be automatically generated
 INSERT INTO documents(doc_contents) VALUES
-  ('Semantic Search with Azure Database for PostgreSQL - Flexible Server and Azure OpenAI');
+  ('Semantic Search with Azure Database for PostgreSQL flexible server and Azure OpenAI');
 
 --View all document entries, their contents, embeddings and last time the row was updated
 SELECT doc_contents, doc_vector, last_update FROM documents;
 
 -- The following command leverages the overload of azure_local_ai.create_embeddings function which accepts and array of TEXT
 -- and produces a table for which each row contains the embedding of one element in the input array
-SELECT azure_local_ai.create_embeddings('multilingual-e5-small:v1', array['Recommendation System with Azure Database for PostgreSQL - Flexible Server and Azure OpenAI.', 'Generative AI with Azure Database for PostgreSQL - Flexible Server.']);
+SELECT azure_local_ai.create_embeddings('multilingual-e5-small:v1', array['Recommendation System with Azure Database for PostgreSQL flexible server and Azure OpenAI.', 'Generative AI with Azure Database for PostgreSQL flexible server.']);
 
 ```
 
@@ -189,11 +189,11 @@ SELECT all_documents.doc_id, all_docs.doc_contents , 1 - (all_documents.doc_vect
 
 ## Related content
 
-- [Integrate Azure Database for PostgreSQL - Flexible Server with Azure Cognitive Services](generative-ai-azure-cognitive.md).
+- [Integrate Azure Database for PostgreSQL flexible server with Azure Cognitive Services](generative-ai-azure-cognitive.md).
 - [Integrate Azure Database for PostgreSQL with Azure Machine Learning Services](generative-ai-azure-machine-learning.md).
-- [Generate vector embeddings with Azure OpenAI in Azure Database for PostgreSQL - Flexible Server](generative-ai-azure-openai.md).
-- [Azure AI extension in Azure Database for PostgreSQL - Flexible Server](generative-ai-azure-overview.md).
-- [Generative AI with Azure Database for PostgreSQL - Flexible Server](generative-ai-overview.md).
-- [Recommendation System with Azure Database for PostgreSQL - Flexible Server and Azure OpenAI](generative-ai-recommendation-system.md).
-- [Semantic Search with Azure Database for PostgreSQL - Flexible Server and Azure OpenAI](generative-ai-semantic-search.md).
-- [Enable and use pgvector in Azure Database for PostgreSQL - Flexible Server](how-to-use-pgvector.md).
+- [Generate vector embeddings with Azure OpenAI in Azure Database for PostgreSQL flexible server](generative-ai-azure-openai.md).
+- [Azure AI extension in Azure Database for PostgreSQL flexible server](generative-ai-azure-overview.md).
+- [Generative AI with Azure Database for PostgreSQL flexible server](generative-ai-overview.md).
+- [Recommendation System with Azure Database for PostgreSQL flexible server and Azure OpenAI](generative-ai-recommendation-system.md).
+- [Semantic Search with Azure Database for PostgreSQL flexible server and Azure OpenAI](generative-ai-semantic-search.md).
+- [Enable and use pgvector in Azure Database for PostgreSQL flexible server](how-to-use-pgvector.md).

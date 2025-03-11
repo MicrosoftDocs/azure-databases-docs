@@ -1,6 +1,6 @@
 ---
 title: Monitoring and metrics
-description: Review the monitoring and metrics features in Azure Database for PostgreSQL - Flexible Server.
+description: Review the monitoring and metrics features in Azure Database for PostgreSQL flexible server.
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
@@ -10,7 +10,7 @@ ms.subservice: flexible-server
 ms.topic: conceptual
 ---
 
-# Monitor metrics in Azure Database for PostgreSQL - Flexible Server
+# Monitor metrics in Azure Database for PostgreSQL flexible server
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
@@ -144,7 +144,7 @@ You can choose from the following categories of enhanced metrics:
 
 ### Autovacuum metrics
 
-Autovacuum metrics can be used to monitor and tune autovacuum performance for Azure Database for PostgreSQL - Flexible Server. Each metric is emitted at a *30-minute* interval and has up to [93 days of retention](/azure/azure-monitor/essentials/data-platform-metrics#retention-of-metrics). You can create alerts for specific metrics, and you can split and filter metrics data by using the `DatabaseName` dimension.
+Autovacuum metrics can be used to monitor and tune autovacuum performance for Azure Database for PostgreSQL flexible server. Each metric is emitted at a *30-minute* interval and has up to [93 days of retention](/azure/azure-monitor/essentials/data-platform-metrics#retention-of-metrics). You can create alerts for specific metrics, and you can split and filter metrics data by using the `DatabaseName` dimension.
 
 #### How to enable autovacuum metrics
 
@@ -190,10 +190,10 @@ You can use PgBouncer metrics to monitor the performance of the PgBouncer proces
 
 |Display name|Metric ID|Unit|Description|Dimension|Default enabled|
 |---|---|---|---|---|---|
-|**Active client connections** |`client_connections_active` |Count|Connections from clients that are associated with an Azure Database for PostgreSQL - Flexible Server connection. |DatabaseName|No |
-|**Waiting client connections** |`client_connections_waiting`|Count|Connections from clients that are waiting for an Azure Database for PostgreSQL - Flexible Server connection to service them.|DatabaseName|No |
-|**Active server connections** |`server_connections_active` |Count|Connections to Azure Database for PostgreSQL - Flexible Server that are in use by a client connection. |DatabaseName|No |
-|**Idle server connections** |`server_connections_idle` |Count|Connections to Azure Database for PostgreSQL - Flexible Server that are idle and ready to service a new client connection. |DatabaseName|No |
+|**Active client connections** |`client_connections_active` |Count|Connections from clients that are associated with an Azure Database for PostgreSQL flexible server connection. |DatabaseName|No |
+|**Waiting client connections** |`client_connections_waiting`|Count|Connections from clients that are waiting for an Azure Database for PostgreSQL flexible server connection to service them.|DatabaseName|No |
+|**Active server connections** |`server_connections_active` |Count|Connections to Azure Database for PostgreSQL flexible server that are in use by a client connection. |DatabaseName|No |
+|**Idle server connections** |`server_connections_idle` |Count|Connections to Azure Database for PostgreSQL flexible server that are idle and ready to service a new client connection. |DatabaseName|No |
 |**Total pooled connections** |`total_pooled_connections`|Count|Current number of pooled connections. |DatabaseName|No |
 |**Number of connection pools** |`num_pools` |Count|Total number of connection pools. |DatabaseName|No |
 
@@ -261,6 +261,6 @@ Server logs have minimum retention 1 days and maximum retention is 7 days. If th
 
 ## Related content
 
-- [Configure logging and access logs in Azure Database for PostgreSQL - Flexible Server](how-to-configure-and-access-logs.md).
+- [Configure logging and access logs in Azure Database for PostgreSQL flexible server](how-to-configure-and-access-logs.md).
 - [Azure Monitor pricing](https://azure.microsoft.com/pricing/details/monitor/).
-- [Audit logging in Azure Database for PostgreSQL - Flexible Server](concepts-audit.md).
+- [Audit logging in Azure Database for PostgreSQL flexible server](concepts-audit.md).

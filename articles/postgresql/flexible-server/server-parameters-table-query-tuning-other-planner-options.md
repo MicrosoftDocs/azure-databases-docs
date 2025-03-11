@@ -1,6 +1,6 @@
 ---
 title: Query Tuning / Other Planner Options server parameters
-description: Query Tuning / Other Planner Options server parameters for Azure Database for PostgreSQL - Flexible Server.
+description: Query Tuning / Other Planner Options server parameters for Azure Database for PostgreSQL flexible server.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan

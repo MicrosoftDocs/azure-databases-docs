@@ -1,6 +1,6 @@
 ---
 title: "Quickstart: Connect with GitHub Actions"
-description: Use Azure Database for PostgreSQL - Flexible Server from a GitHub Actions workflow.
+description: Use Azure Database for PostgreSQL flexible server from a GitHub Actions workflow.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
@@ -14,7 +14,7 @@ ms.custom:
   - devx-track-azurecli
 ---
 
-# Quickstart: Use GitHub Actions to connect to Azure Database for PostgreSQL - Flexible Server
+# Quickstart: Use GitHub Actions to connect to Azure Database for PostgreSQL flexible server
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
@@ -27,7 +27,7 @@ You need:
 - An Azure account with an active subscription. [Create an account for free](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - A GitHub repository with sample data (`data.sql`). If you don't have a GitHub account, [sign up for free](https://github.com/join).
 - An Azure Database for PostgreSQL flexible server instance.
-- [Create an instance of Azure Database for PostgreSQL - Flexible Server](quickstart-create-server.md).
+- [Create an instance of Azure Database for PostgreSQL flexible server](quickstart-create-server.md).
 
 ## Workflow file overview
 

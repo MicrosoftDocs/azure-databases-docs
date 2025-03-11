@@ -10,7 +10,7 @@ ms.subservice: flexible-server
 ms.topic: how-to
 ---
 
-# How to optimize costs in Azure Database for PostgreSQL - Flexible Server
+# How to optimize costs in Azure Database for PostgreSQL flexible server
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
@@ -46,7 +46,7 @@ Azure Advisor is a free service that provides recommendations to help optimize y
 
 For Azure Database for PostgreSQL, Azure Advisor can provide recommendations on how to improve the performance, availability, and cost-effectiveness of your database. For example, it can suggest scaling the database up or down, using read-replicas to offload read-intensive workloads, or switching to reserved capacity pricing to reduce costs. Azure Advisor can also recommend security best practices, such as enabling encryption at rest, or enabling network security rules to limit incoming traffic to the database.
 
-You can access the recommendations provided by Azure Advisor through the Azure portal, where you can view and implement the recommendations with just a few clicks. Implementing Azure Advisor recommendations can help you optimize your Azure resources and reduce costs. To learn more, see [Azure Advisor for Azure Database for PostgreSQL - Flexible Server](concepts-azure-advisor-recommendations.md)
+You can access the recommendations provided by Azure Advisor through the Azure portal, where you can view and implement the recommendations with just a few clicks. Implementing Azure Advisor recommendations can help you optimize your Azure resources and reduce costs. To learn more, see [Azure Advisor for Azure Database for PostgreSQL flexible server](concepts-azure-advisor-recommendations.md)
 
 ## 4. Evaluate HA (high availability) and DR (disaster recovery) requirements
 

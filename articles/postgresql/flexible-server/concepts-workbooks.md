@@ -1,6 +1,6 @@
 ---
 title: Monitor by using Azure Monitor workbooks
-description: This article describes how you can monitor Azure Database for PostgreSQL - Flexible Server by using Azure Monitor workbooks.
+description: This article describes how you can monitor Azure Database for PostgreSQL flexible server by using Azure Monitor workbooks.
 author: techlake
 ms.author: hganten
 ms.reviewer: maghan
@@ -10,7 +10,7 @@ ms.subservice: flexible-server
 ms.topic: conceptual
 ---
 
-# Monitor Azure Database for PostgreSQL - Flexible Server by using Azure Monitor workbooks
+# Monitor Azure Database for PostgreSQL flexible server by using Azure Monitor workbooks
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
