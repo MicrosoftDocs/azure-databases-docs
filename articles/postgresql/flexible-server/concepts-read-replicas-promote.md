@@ -71,7 +71,7 @@ The promote operation doesn't carry over specific configurations and parameters.
 ## Considerations
 ### Server states during promotion
 
-In both the Planned and Forced promotion scenarios, it's required that servers (both primary and replica) be in an "Available" state. If a server's status is anything other than "Available" (such as "Updating" or "Restarting"), the promotion typically can't proceed without issues. However, an exception is made in the case of regional outages.
+In both the Planned and Forced promotion scenarios, it's required that servers (both primary and replica) be in an "Ready" state. If a server's status is anything other than "Ready" (such as "Updating" or "Restarting"), the promotion typically can't proceed without issues. However, an exception is made in the case of regional outages.
 
 During such regional outages, the Forced promotion method can be implemented regardless of the primary server's current status. This approach allows for swift action in response to potential regional disasters, bypassing normal checks on server availability. 
 
