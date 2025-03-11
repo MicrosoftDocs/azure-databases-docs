@@ -1,6 +1,6 @@
 ---
 title: Replication / Subscribers server parameters
-description: Replication / Subscribers server parameters for Azure Database for PostgreSQL - Flexible Server.
+description: Replication / Subscribers server parameters for Azure Database for PostgreSQL flexible server.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan

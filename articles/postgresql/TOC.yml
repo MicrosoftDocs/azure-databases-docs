@@ -1,8 +1,8 @@
-- name: Azure Database for PostgreSQL - Flexible Server documentation
+- name: Azure Database for PostgreSQL flexible server documentation
   href: index.yml
 - name: Overview
   items:
-  - name: What is Azure Database for PostgreSQL - Flexible Server?
+  - name: What is Azure Database for PostgreSQL flexible server?
     href: flexible-server/service-overview.md
   - name: Self-hosted vs. managed service
     href: flexible-server/overview-postgres-choose-server-options.md
@@ -26,7 +26,7 @@
   - name: Known issues & limitations
     href: single-server/concepts-known-issues-limitations.md
     displayName: issues, limitations, postgresql
-- name: Azure Database for PostgreSQL - Flexible Server
+- name: Azure Database for PostgreSQL flexible server
   expanded: true
   items:
   - name: Overview

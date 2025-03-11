@@ -118,4 +118,4 @@ For other PostgreSQL client users, you can merge two CA certificate files using 
 
 ## Related content
 
-- [Security in Azure Database for PostgreSQL - Flexible Server](concepts-security.md).
+- [Security in Azure Database for PostgreSQL flexible server](concepts-security.md).

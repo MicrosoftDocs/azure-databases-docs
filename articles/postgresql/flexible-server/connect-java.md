@@ -1,6 +1,6 @@
 ---
 title: "Quickstart: Use Java and JDBC"
-description: In this quickstart, you learn how to use Java and JDBC with an Azure Database for PostgreSQL - Flexible Server instance.
+description: In this quickstart, you learn how to use Java and JDBC with an Azure Database for PostgreSQL flexible server instance.
 author: agapovm
 ms.author: maximagapov
 ms.reviewer: maghan
@@ -18,7 +18,7 @@ ms.custom:
 ms.devlang: java
 ---
 
-# Quickstart: Use Java and JDBC with Azure Database for PostgreSQL - Flexible Server
+# Quickstart: Use Java and JDBC with Azure Database for PostgreSQL flexible server
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
@@ -129,7 +129,7 @@ az postgres flexible-server create \
     --output tsv
 ```
 
-To set up a Microsoft Entra administrator after creating the server, follow the steps in [Manage Microsoft Entra roles in Azure Database for PostgreSQL - Flexible Server](how-to-manage-azure-ad-users.md).
+To set up a Microsoft Entra administrator after creating the server, follow the steps in [Manage Microsoft Entra roles in Azure Database for PostgreSQL flexible server](how-to-manage-azure-ad-users.md).
 
 > [!IMPORTANT]
 > When setting up an administrator, a new user with full administrator privileges is added to the Azure Database for PostgreSQL flexible server instance's Azure database. You can create multiple Microsoft Entra administrators per Azure Database for PostgreSQL flexible server instance.
@@ -212,7 +212,7 @@ az postgres flexible-server db create \
 Next, create a non-admin user and grant all permissions to the database.
 
 > [!NOTE]
-> You can read more detailed information about managing Azure Database for PostgreSQL flexible server users in [Manage Microsoft Entra users - Azure Database for PostgreSQL - Flexible Server](how-to-manage-azure-ad-users.md).
+> You can read more detailed information about managing Azure Database for PostgreSQL flexible server users in [Manage Microsoft Entra users - Azure Database for PostgreSQL flexible server](how-to-manage-azure-ad-users.md).
 
 #### [Passwordless (Recommended)](#tab/passwordless)
 
@@ -698,10 +698,10 @@ az group delete \
 
 ## Related content
 
-- [Manage Azure Database for PostgreSQL - Flexible Server](how-to-manage-server-portal.md).
+- [Manage Azure Database for PostgreSQL flexible server](how-to-manage-server-portal.md).
 - [Quickstart: Use Python to connect and query data from an instance of Azure Database for PostgreSQL flexible server](connect-python.md).
 - [Quickstart: Use .NET (C#) to connect and query data from an instance of Azure Database for PostgreSQL flexible server](connect-csharp.md).
 - [Quickstart: Use Go language to connect and query data from an instance of Azure Database for PostgreSQL flexible server](connect-go.md).
 - [Quickstart: Use PHP to connect and query data from an instance of Azure Database for PostgreSQL flexible server](connect-php.md).
 - [Quickstart: Use Azure CLI to connect and query data from an instance of Azure Database for PostgreSQL flexible server](connect-azure-cli.md).
-- [Quickstart: Import data from Azure Database for PostgreSQL - Flexible Server in Power BI](connect-with-power-bi-desktop.md).
+- [Quickstart: Import data from Azure Database for PostgreSQL flexible server in Power BI](connect-with-power-bi-desktop.md).

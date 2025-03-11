@@ -1,6 +1,6 @@
 ---
 title: Write-Ahead Log / Recovery Target server parameters
-description: Write-Ahead Log / Recovery Target server parameters for Azure Database for PostgreSQL - Flexible Server.
+description: Write-Ahead Log / Recovery Target server parameters for Azure Database for PostgreSQL flexible server.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan

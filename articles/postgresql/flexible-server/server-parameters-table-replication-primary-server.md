@@ -1,6 +1,6 @@
 ---
 title: Replication / Primary Server server parameters
-description: Replication / Primary Server server parameters for Azure Database for PostgreSQL - Flexible Server.
+description: Replication / Primary Server server parameters for Azure Database for PostgreSQL flexible server.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan

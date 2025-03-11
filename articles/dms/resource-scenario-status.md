@@ -54,12 +54,12 @@ The following table describes the current status of Database Migration Service s
 | | Google Cloud SQL for MySQL | Yes | GA |
 | | Percona MySQL | Yes | GA |
 | | Azure Database for MySQL <sup>2</sup> | Yes | GA |
-| **Azure Database for PostgreSQL - Flexible Server** | PostgreSQL | No | |
+| **Azure Database for PostgreSQL flexible server** | PostgreSQL | No | |
 | | Amazon RDS PostgreSQL | No | |
 
 <sup>1</sup> Offline migrations through the Azure SQL Migration extension for Azure Data Studio are supported for Azure SQL Managed Instance, SQL Server on Azure Virtual Machines, and Azure SQL Database. For more information, see [Migrate databases by using the Azure SQL Migration extension for Azure Data Studio](migration-using-azure-data-studio.md).
 
-<sup>2</sup> If your source database is already in an Azure platform as a service (PaaS) like Azure Database for MySQL or Azure Database for PostgreSQL, choose the corresponding engine when you create your migration activity. For example, if you're migrating from Azure Database for MySQL - Flexible Server to another Azure Database for MySQL - Flexible Server, choose MySQL as the source engine when you create your scenario. If you're migrating from Amazon RDS for PostgreSQL to Azure Database for PostgreSQL - Flexible Server, choose PostgreSQL as the source engine when you create your scenario.
+<sup>2</sup> If your source database is already in an Azure platform as a service (PaaS) like Azure Database for MySQL or Azure Database for PostgreSQL, choose the corresponding engine when you create your migration activity. For example, if you're migrating from Azure Database for MySQL - Flexible Server to another Azure Database for MySQL - Flexible Server, choose MySQL as the source engine when you create your scenario. If you're migrating from Amazon RDS for PostgreSQL to Azure Database for PostgreSQL flexible server, choose PostgreSQL as the source engine when you create your scenario.
 
 ### Online (continuous sync) migration support
 
@@ -83,12 +83,12 @@ The following table describes the current status of Database Migration Service s
 | | Google Cloud SQL for MySQL | Yes | GA |
 | | Percona MySQL | Yes | GA |
 | | Azure Database for MySQL <sup>2</sup> | Yes | GA |
-| **Azure Database for PostgreSQL - Flexible Server** | PostgreSQL | Yes | GA |
+| **Azure Database for PostgreSQL flexible server** | PostgreSQL | Yes | GA |
 | | Amazon RDS PostgreSQL | Yes | GA |
 
 <sup>1</sup> Online migrations (minimal downtime) through the Azure SQL Migration extension for Azure Data Studio are supported for Azure SQL Managed Instance and SQL Server on Azure Virtual Machines targets. For more information, see [Migrate databases by using the Azure SQL Migration extension for Azure Data Studio](migration-using-azure-data-studio.md).
 
-<sup>2</sup> If your source database is already in an Azure PaaS like Azure Database for MySQL or Azure Database for PostgreSQL, choose the corresponding engine when you create your migration activity. For example, if you're migrating from Azure Database for MySQL - Flexible Server to another Azure Database for MySQL - Flexible Server, choose MySQL as the source engine when you create the scenario. If you're migrating from Amazon RDS for PostgreSQL to Azure Database for PostgreSQL - Flexible Server, choose PostgreSQL as the source engine when you create the scenario.
+<sup>2</sup> If your source database is already in an Azure PaaS like Azure Database for MySQL or Azure Database for PostgreSQL, choose the corresponding engine when you create your migration activity. For example, if you're migrating from Azure Database for MySQL - Flexible Server to another Azure Database for MySQL - Flexible Server, choose MySQL as the source engine when you create the scenario. If you're migrating from Amazon RDS for PostgreSQL to Azure Database for PostgreSQL flexible server, choose PostgreSQL as the source engine when you create the scenario.
 
 ## Related content
 

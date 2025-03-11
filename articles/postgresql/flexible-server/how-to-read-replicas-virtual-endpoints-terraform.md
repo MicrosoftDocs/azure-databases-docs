@@ -1,6 +1,6 @@
 ---
 title: Create Virtual Endpoints for Read Replicas With Terraform
-description: This article describes the virtual endpoints for read replica feature using Terraform for Azure Database for PostgreSQL - Flexible Server.
+description: This article describes the virtual endpoints for read replica feature using Terraform for Azure Database for PostgreSQL flexible server.
 author: akashraokm
 ms.author: akashrao
 ms.reviewer: maghan
@@ -26,7 +26,7 @@ Ensure you have a basic understanding of Terraform syntax and Azure resource pro
 
 ## Configuring virtual endpoints
 
-Follow these steps to create virtual endpoints for read replicas in Azure Database for PostgreSQL - Flexible Server:
+Follow these steps to create virtual endpoints for read replicas in Azure Database for PostgreSQL flexible server:
 
 ### Initialize the Terraform configuration
 
@@ -104,9 +104,9 @@ Confirm the apply action when prompted. Terraform provisions the resources and c
 
 ## Related content
 
-- [Read replicas in Azure Database for PostgreSQL - Flexible Server](concepts-read-replicas.md)
-- [Geo-replication in Azure Database for PostgreSQL - Flexible Server](concepts-read-replicas-geo.md)
-- [Promote read replicas in Azure Database for PostgreSQL - Flexible Server](concepts-read-replicas-promote.md)
-- [Virtual endpoints for read replicas in Azure Database for PostgreSQL - Flexible Server](concepts-read-replicas-virtual-endpoints.md)
-- [Create and manage read replicas in Azure Database for PostgreSQL - Flexible Server](how-to-read-replicas-portal.md)
+- [Read replicas in Azure Database for PostgreSQL flexible server](concepts-read-replicas.md)
+- [Geo-replication in Azure Database for PostgreSQL flexible server](concepts-read-replicas-geo.md)
+- [Promote read replicas in Azure Database for PostgreSQL flexible server](concepts-read-replicas-promote.md)
+- [Virtual endpoints for read replicas in Azure Database for PostgreSQL flexible server](concepts-read-replicas-virtual-endpoints.md)
+- [Create and manage read replicas in Azure Database for PostgreSQL flexible server](how-to-read-replicas-portal.md)
 - [Terraform Azure provider documentation](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs)

@@ -21,10 +21,10 @@ You can use PgBouncer metrics to monitor the performance of the PgBouncer proces
 
 |Display name|Metric ID|Unit|Description|Dimension|Default enabled|
 |---|---|---|---|---|---|
-|**Active client connections** |`client_connections_active` |Count|Connections from clients that are associated with an Azure Database for PostgreSQL - Flexible Server connection. |DatabaseName|No |
-|**Waiting client connections** |`client_connections_waiting`|Count|Connections from clients that are waiting for an Azure Database for PostgreSQL - Flexible Server connection to service them.|DatabaseName|No |
-|**Active server connections** |`server_connections_active` |Count|Connections to Azure Database for PostgreSQL - Flexible Server that are in use by a client connection. |DatabaseName|No |
-|**Idle server connections** |`server_connections_idle` |Count|Connections to Azure Database for PostgreSQL - Flexible Server that are idle and ready to service a new client connection. |DatabaseName|No |
+|**Active client connections** |`client_connections_active` |Count|Connections from clients that are associated with an Azure Database for PostgreSQL flexible server connection. |DatabaseName|No |
+|**Waiting client connections** |`client_connections_waiting`|Count|Connections from clients that are waiting for an Azure Database for PostgreSQL flexible server connection to service them.|DatabaseName|No |
+|**Active server connections** |`server_connections_active` |Count|Connections to Azure Database for PostgreSQL flexible server that are in use by a client connection. |DatabaseName|No |
+|**Idle server connections** |`server_connections_idle` |Count|Connections to Azure Database for PostgreSQL flexible server that are idle and ready to service a new client connection. |DatabaseName|No |
 |**Total pooled connections** |`total_pooled_connections`|Count|Current number of pooled connections. |DatabaseName|No |
 |**Number of connection pools** |`num_pools` |Count|Total number of connection pools. |DatabaseName|No |
 

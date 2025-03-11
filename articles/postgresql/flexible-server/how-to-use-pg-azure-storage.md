@@ -1,6 +1,6 @@
 ---
-title: Copy data with azure_storage extension in Azure Database for PostgreSQL - Flexible Server
-description: Learn how to use the azure_storage extension in Azure Database for PostgreSQL - Flexible Server to import and export data
+title: Copy data with azure_storage extension in Azure Database for PostgreSQL flexible server
+description: Learn how to use the azure_storage extension in Azure Database for PostgreSQL flexible server to import and export data
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
@@ -12,7 +12,7 @@ ms.custom:
   - ignite-2024
 ---
 
-# Import and export data using azure_storage extension in Azure Database for PostgreSQL - Flexible Server
+# Import and export data using azure_storage extension in Azure Database for PostgreSQL flexible server
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
@@ -1164,5 +1164,5 @@ The following example shows the export of data from a table called `events`, to 
 
 ## Related content
 
-- [Import and export data using Azure Storage in Azure Database for PostgreSQL - Flexible Server](concepts-storage-extension.md).
+- [Import and export data using Azure Storage in Azure Database for PostgreSQL flexible server](concepts-storage-extension.md).
 - [Extensions and modules](../extensions/concepts-extensions.md).

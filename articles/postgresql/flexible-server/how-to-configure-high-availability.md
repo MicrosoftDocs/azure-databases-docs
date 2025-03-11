@@ -393,7 +393,7 @@ Message: Operation HandleWalServiceFailureManagementOperation failed, because se
 
 - Enabling or disabling high availability on an Azure Database for PostgreSQL flexible server doesn't change other settings, including networking configuration, firewall settings, server parameters, or backup retention. Enabling or disabling high availability is an online operation, and doesn't affect your application connectivity and operations.
 
-- High availability with both replicas deployed in the same zone is supported and available in all regions in which Azure Database for PostgreSQL - Flexible Server is supported. However, high availability with zone redundancy is [only available in certain regions](overview.md#azure-regions).
+- High availability with both replicas deployed in the same zone is supported and available in all regions in which Azure Database for PostgreSQL flexible server is supported. However, high availability with zone redundancy is [only available in certain regions](overview.md#azure-regions).
 
 - High availability isn't supported in the **Burstable** tier. It's only supported in **General purpose** or **Memory optimized** tiers.
 
@@ -406,5 +406,5 @@ Message: Operation HandleWalServiceFailureManagementOperation failed, because se
 
 ## Related content
 
-- [Overview of business continuity with Azure Database for PostgreSQL - Flexible Server](concepts-business-continuity.md).
-- [High availability in Azure Database for PostgreSQL - Flexible Server](/azure/reliability/reliability-postgresql-flexible-server).
+- [Overview of business continuity with Azure Database for PostgreSQL flexible server](concepts-business-continuity.md).
+- [High availability in Azure Database for PostgreSQL flexible server](/azure/reliability/reliability-postgresql-flexible-server).

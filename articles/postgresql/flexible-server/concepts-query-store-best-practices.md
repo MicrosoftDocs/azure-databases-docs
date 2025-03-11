@@ -16,7 +16,7 @@ ms.topic: conceptual
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
-This article outlines best practices for using query store in Azure Database for PostgreSQL - Flexible Server.
+This article outlines best practices for using query store in Azure Database for PostgreSQL flexible server.
 
 ## Set the optimal query capture mode
 

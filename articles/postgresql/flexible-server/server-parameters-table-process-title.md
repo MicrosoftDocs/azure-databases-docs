@@ -1,6 +1,6 @@
 ---
 title: Process Title server parameters
-description: Process Title server parameters for Azure Database for PostgreSQL - Flexible Server.
+description: Process Title server parameters for Azure Database for PostgreSQL flexible server.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan

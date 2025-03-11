@@ -208,4 +208,4 @@ az postgres flexible-server show --resource-group <resource_group> --name <serve
 
 - [Scale storage size](how-to-scale-storage-size.md).
 - [Storage options](concepts-storage.md).
-- [Limits in Azure Database for PostgreSQL - Flexible Server](concepts-limits.md).
+- [Limits in Azure Database for PostgreSQL flexible server](concepts-limits.md).

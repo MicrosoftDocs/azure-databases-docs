@@ -1,6 +1,6 @@
 ---
 title: High Availability (HA) Health Status Monitoring
-description: This article describes how to monitor the health of HA-enabled instances for Azure Database for PostgreSQL - Flexible Server using Azure Resource Health.
+description: This article describes how to monitor the health of HA-enabled instances for Azure Database for PostgreSQL flexible server using Azure Resource Health.
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
@@ -10,7 +10,7 @@ ms.subservice: flexible-server
 ms.topic: how-to
 ---
 
-# High Availability (HA) health status monitoring for Azure Database for PostgreSQL - Flexible Server
+# High Availability (HA) health status monitoring for Azure Database for PostgreSQL flexible server
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
@@ -20,11 +20,11 @@ Azure Database for PostgreSQL Flexible Server includes a High Availability (HA) 
 
 Each HA state is monitored through various internal signals that represent specific conditions. Below are the possible HA states along with visual indicators and scenarios that might affect your Azure Database for PostgreSQL Flexible Server.
 
-### Available – HA is Healthy
+### Ready – HA is Healthy
 
-The *Available* status indicates that your HA-enabled server is operating normally with no detected issues affecting failover readiness. All necessary configurations are intact, and no significant error conditions have been detected.
+The *Ready* status indicates that your HA-enabled server is operating normally with no detected issues affecting failover readiness. All necessary configurations are intact, and no significant error conditions have been detected.
 
-:::image type="content" source="media/how-to-monitor-high-availability/high-availability-status-available.png" alt-text="Screenshot of showing HA Available status." lightbox="media/how-to-monitor-high-availability/high-availability-status-available.png":::
+:::image type="content" source="media/how-to-monitor-high-availability/high-availability-status-available.png" alt-text="Screenshot of showing HA Ready status." lightbox="media/how-to-monitor-high-availability/high-availability-status-available.png":::
 
 ### Degraded – Network Security Group (NSG) or Virtual Appliance Blocking Connections
 
