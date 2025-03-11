@@ -1,6 +1,6 @@
 ---
 title: Service overview
-description: Provides an overview of the Azure Database for PostgreSQL - Flexible Server relational database service.
+description: Provides an overview of the Azure Database for PostgreSQL flexible server relational database service.
 author: gbowerman
 ms.author: guybo
 ms.reviewer: maghan
@@ -12,7 +12,7 @@ ms.custom:
   - mvc
 ---
 
-# What is Azure Database for PostgreSQL - Flexible Server?
+# What is Azure Database for PostgreSQL flexible server?
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
@@ -54,7 +54,7 @@ Azure Database for PostgreSQL flexible server instances are best suited for:
 - Zone redundant high availability
 - Managed maintenance windows
 
-For a detailed overview of Azure Database for PostgreSQL flexible server deployment mode, see [Azure Database for PostgreSQL - Flexible Server](overview.md).
+For a detailed overview of Azure Database for PostgreSQL flexible server deployment mode, see [Azure Database for PostgreSQL flexible server](overview.md).
 
 ### Azure Database for PostgreSQL single server
 

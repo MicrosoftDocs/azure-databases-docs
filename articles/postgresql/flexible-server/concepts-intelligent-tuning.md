@@ -1,6 +1,6 @@
 ---
 title: Intelligent tuning
-description: This article describes the intelligent tuning feature in Azure Database for PostgreSQL - Flexible Server.
+description: This article describes the intelligent tuning feature in Azure Database for PostgreSQL flexible server.
 author: akashraokm
 ms.author: akashrao
 ms.reviewer: maghan
@@ -10,7 +10,7 @@ ms.subservice: flexible-server
 ms.topic: conceptual
 ---
 
-# Perform intelligent tuning in Azure Database for PostgreSQL - Flexible Server
+# Perform intelligent tuning in Azure Database for PostgreSQL flexible server
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
@@ -120,10 +120,10 @@ performance is the reason why `checkpoint_completion_target` is a target metric 
 
 ## Related content
 
-- [Configure intelligent tuning for Azure Database for PostgreSQL - Flexible Server](how-to-enable-intelligent-performance-portal.md).
-- [Troubleshooting guides for Azure Database for PostgreSQL - Flexible Server](concepts-troubleshooting-guides.md).
-- [Autovacuum tuning in Azure Database for PostgreSQL - Flexible Server](how-to-autovacuum-tuning.md).
-- [Troubleshoot high IOPS utilization in Azure Database for PostgreSQL - Flexible Server](how-to-high-io-utilization.md).
-- [Best practices for uploading data in bulk in Azure Database for PostgreSQL - Flexible Server](how-to-bulk-load-data.md).
-- [Troubleshoot high CPU utilization in Azure Database for PostgreSQL - Flexible Server](how-to-high-cpu-utilization.md).
-- [Query Performance Insight in Azure Database for PostgreSQL - Flexible Server](concepts-query-performance-insight.md).
+- [Configure intelligent tuning for Azure Database for PostgreSQL flexible server](how-to-enable-intelligent-performance-portal.md).
+- [Troubleshooting guides for Azure Database for PostgreSQL flexible server](concepts-troubleshooting-guides.md).
+- [Autovacuum tuning in Azure Database for PostgreSQL flexible server](how-to-autovacuum-tuning.md).
+- [Troubleshoot high IOPS utilization in Azure Database for PostgreSQL flexible server](how-to-high-io-utilization.md).
+- [Best practices for uploading data in bulk in Azure Database for PostgreSQL flexible server](how-to-bulk-load-data.md).
+- [Troubleshoot high CPU utilization in Azure Database for PostgreSQL flexible server](how-to-high-cpu-utilization.md).
+- [Query Performance Insight in Azure Database for PostgreSQL flexible server](concepts-query-performance-insight.md).

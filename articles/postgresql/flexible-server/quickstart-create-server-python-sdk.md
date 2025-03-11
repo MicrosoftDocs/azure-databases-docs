@@ -219,4 +219,4 @@ az postgres flexible-server delete --resource-group <resource-group> --name <ser
 
 ## Related content
 
-- [Create an instance of Azure Database for PostgreSQL - Flexible Server](quickstart-create-server.md).
+- [Create an instance of Azure Database for PostgreSQL flexible server](quickstart-create-server.md).

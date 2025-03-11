@@ -9,7 +9,7 @@ ms.topic: include
 ---
 ## Price
 
-For the most up-to-date pricing information, see [Azure Database for PostgreSQL - Flexible Server pricing](https://azure.microsoft.com/pricing/details/postgresql/flexible-server/).
+For the most up-to-date pricing information, see [Azure Database for PostgreSQL flexible server pricing](https://azure.microsoft.com/pricing/details/postgresql/flexible-server/).
 
 [Azure portal](https://portal.azure.com/#create/Microsoft.PostgreSQLServer) also shows you an estimation of the monthly costs of a server configuration, based on the options selected.
 

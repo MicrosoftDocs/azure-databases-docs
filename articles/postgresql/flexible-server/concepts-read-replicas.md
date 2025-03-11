@@ -1,6 +1,6 @@
 ---
 title: Read replicas
-description: This article describes the read replica feature in Azure Database for PostgreSQL - Flexible Server.
+description: This article describes the read replica feature in Azure Database for PostgreSQL flexible server.
 author: kabharati
 ms.author: kabharati
 ms.reviewer: maghan
@@ -12,7 +12,7 @@ ms.custom:
   - ignite-2023
 ---
 
-# Read replicas in Azure Database for PostgreSQL - Flexible Server
+# Read replicas in Azure Database for PostgreSQL flexible server
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
@@ -250,8 +250,8 @@ For storage scaling:
 
 ## Related content
 
-- [Geo-replication in Azure Database for PostgreSQL - Flexible Server](concepts-read-replicas-geo.md).
-- [Promote read replicas in Azure Database for PostgreSQL - Flexible Server](concepts-read-replicas-promote.md).
-- [Virtual endpoints for read replicas in Azure Database for PostgreSQL - Flexible Server](concepts-read-replicas-virtual-endpoints.md).
-- [Create and manage read replicas in Azure Database for PostgreSQL - Flexible Server](how-to-read-replicas-portal.md).
+- [Geo-replication in Azure Database for PostgreSQL flexible server](concepts-read-replicas-geo.md).
+- [Promote read replicas in Azure Database for PostgreSQL flexible server](concepts-read-replicas-promote.md).
+- [Virtual endpoints for read replicas in Azure Database for PostgreSQL flexible server](concepts-read-replicas-virtual-endpoints.md).
+- [Create and manage read replicas in Azure Database for PostgreSQL flexible server](how-to-read-replicas-portal.md).
 - [Replication across Azure regions and virtual networks with private networking](concepts-networking-private.md#replication-across-azure-regions-and-virtual-networks-with-private-networking).

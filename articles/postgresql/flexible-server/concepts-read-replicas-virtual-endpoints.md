@@ -1,6 +1,6 @@
 ---
 title: Virtual endpoints
-description: This article describes the virtual endpoints for read replica feature in Azure Database for PostgreSQL - Flexible Server.
+description: This article describes the virtual endpoints for read replica feature in Azure Database for PostgreSQL flexible server.
 author: kabharati
 ms.author: kabharati
 ms.reviewer: maghan
@@ -10,7 +10,7 @@ ms.subservice: flexible-server
 ms.topic: conceptual
 ---
 
-# Virtual endpoints for read replicas in Azure Database for PostgreSQL - Flexible Server
+# Virtual endpoints for read replicas in Azure Database for PostgreSQL flexible server
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
@@ -54,7 +54,7 @@ The sections below delve into how these endpoints react to both [Promote to prim
 
 ### Using Virtual Endpoints for Consistent Hostname During Point-in-Time Recovery (PITR) or Snapshot Restore
 
-This section explains how to use Virtual Endpoints in Azure Database for PostgreSQL - Flexible Server to maintain a consistent hostname during Point-in-Time Recovery (PITR) or Snapshot Restore, ensuring application connection strings remain unchanged. Follow below steps:
+This section explains how to use Virtual Endpoints in Azure Database for PostgreSQL flexible server to maintain a consistent hostname during Point-in-Time Recovery (PITR) or Snapshot Restore, ensuring application connection strings remain unchanged. Follow below steps:
 
 1. **Add Virtual Endpoint to Primary Server:**
     - Browse to your primary server instance in the Azure Portal.
@@ -78,8 +78,8 @@ This section explains how to use Virtual Endpoints in Azure Database for Postgre
 ## Related content
 
 - [Create virtual endpoints for read replicas with Terraform](how-to-read-replicas-virtual-endpoints-terraform.md)
-- [Read replicas in Azure Database for PostgreSQL - Flexible Server](concepts-read-replicas.md).
-- [Geo-replication in Azure Database for PostgreSQL - Flexible Server](concepts-read-replicas-geo.md).
-- [Promote read replicas in Azure Database for PostgreSQL - Flexible Server](concepts-read-replicas-promote.md).
-- [Create and manage read replicas in Azure Database for PostgreSQL - Flexible Server](how-to-read-replicas-portal.md).
+- [Read replicas in Azure Database for PostgreSQL flexible server](concepts-read-replicas.md).
+- [Geo-replication in Azure Database for PostgreSQL flexible server](concepts-read-replicas-geo.md).
+- [Promote read replicas in Azure Database for PostgreSQL flexible server](concepts-read-replicas-promote.md).
+- [Create and manage read replicas in Azure Database for PostgreSQL flexible server](how-to-read-replicas-portal.md).
 - [Replication across Azure regions and virtual networks with private networking](concepts-networking-private.md#replication-across-azure-regions-and-virtual-networks-with-private-networking).

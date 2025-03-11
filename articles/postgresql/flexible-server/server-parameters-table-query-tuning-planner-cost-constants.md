@@ -1,6 +1,6 @@
 ---
 title: Query Tuning / Planner Cost Constants server parameters
-description: Query Tuning / Planner Cost Constants server parameters for Azure Database for PostgreSQL - Flexible Server.
+description: Query Tuning / Planner Cost Constants server parameters for Azure Database for PostgreSQL flexible server.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan

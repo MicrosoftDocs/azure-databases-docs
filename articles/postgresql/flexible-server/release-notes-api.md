@@ -1,6 +1,6 @@
 ---
 title: API release notes
-description: API release notes for Azure Database for PostgreSQL - Flexible Server.
+description: API release notes for Azure Database for PostgreSQL flexible server.
 author: techieari
 ms.author: arianap
 ms.reviewer: maghan
@@ -13,7 +13,7 @@ ms.custom:
   - build-2023
 ---
 
-# API release notes - Azure Database for PostgreSQL - Flexible Server
+# API release notes - Azure Database for PostgreSQL flexible server
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
@@ -36,7 +36,7 @@ This page provides latest news and updates regarding the recommended API version
 
 ## Using preview versions of API from Terraform
 
-**[Terraform](https://www.hashicorp.com/products/terraform)** is an infrastructure-as-code (IaC) software tool created by HashiCorp. Users define and provide data center infrastructure using a declarative configuration language known as HashiCorp Configuration Language (HCL), or optionally JSON. Terraform is a common way to perform IaC management for Azure Database for PostgreSQL - Flexible Server based on GA Azure RM API, in addition to [Azure Resource Manager (ARM) Templates](/azure/azure-resource-manager/templates/overview)
+**[Terraform](https://www.hashicorp.com/products/terraform)** is an infrastructure-as-code (IaC) software tool created by HashiCorp. Users define and provide data center infrastructure using a declarative configuration language known as HashiCorp Configuration Language (HCL), or optionally JSON. Terraform is a common way to perform IaC management for Azure Database for PostgreSQL flexible server based on GA Azure RM API, in addition to [Azure Resource Manager (ARM) Templates](/azure/azure-resource-manager/templates/overview)
 Terraform community releases regular updates for **[Azure Resource Manager (AzureRM) Terraform provider](https://registry.terraform.io/providers/tfproviders/azurerm/latest/docs/resources/postgresql_flexible_server)** based on Azure Resource Manager API version in General Availability (GA). 
  If particular feature currently is in Preview API and hasn't been yet incorporated into GA API and AzureRM Terraform provider, you can use **AzAPI Terraform provider** to call Preview API directly from Terraform. **The AzAPI provider** is a thin layer on top of the  Azure Resource Manager REST APIs. The AzAPI provider enables you to manage any Azure resource type using any API version.
 The AzAPI provider is a thin layer on top of the Azure ARM REST APIs. The AzAPI provider enables you to manage any Azure resource type using any API version. This provider complements the AzureRM provider by enabling the management of new Azure resources and properties (including private preview).
@@ -66,4 +66,4 @@ In addition, consider the following points of contact as appropriate:
 
 ## Related content
 
-- [Create an instance of Azure Database for PostgreSQL - Flexible Server](quickstart-create-server.md).
+- [Create an instance of Azure Database for PostgreSQL flexible server](quickstart-create-server.md).
