@@ -36,16 +36,16 @@ You can update existing Azure PostgreSQL flexible servers, including changing co
 **3. Deleting Azure Database for PostgreSQL flexible servers**
 
 **4. Retrieving Azure Database for PostgreSQL flexible server information**\
-    You can retrieve details about existing Azure PostgreSQL flexible servers, including their configurations, status, and other metadata.
+You can retrieve details about existing Azure PostgreSQL flexible servers, including their configurations, status, and other metadata.
 
 **5. Managing Databases**\
-    You can create, update, delete, and retrieve databases within the Azure PostgreSQL flexible server instance.
+You can create, update, delete, and retrieve databases within the Azure PostgreSQL flexible server instance.
 
 **6. Managing Firewall Rules**\
-    You can create, update, delete, and retrieve firewall rules for an instance to control access.
+You can create, update, delete, and retrieve firewall rules for an instance to control access.
 
 **7. Managing Configuration Settings** \
-    You can manage configuration settings for an Azure PostgreSQL flexible server instance, including retrieving and updating server parameters.
+You can manage configuration settings for an Azure PostgreSQL flexible server instance, including retrieving and updating server parameters.
 
 ## Setting up your account with az cli
 
