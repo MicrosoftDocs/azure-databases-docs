@@ -73,7 +73,7 @@ Once you create a Maven project, a pom.xml file that is created. Ensure all depe
 <dependency>
  <groupId>com.azure</groupId>
  <artifactId>azure-core-management</artifactId>
- <version>1.16.2</version>
+ <version>1.17.0</version>
 </dependency>
 <dependency>
  <groupId>com.azure</groupId>
@@ -84,7 +84,7 @@ Once you create a Maven project, a pom.xml file that is created. Ensure all depe
 <dependency>
  <groupId>com.azure.resourcemanager</groupId>
  <artifactId>azure-resourcemanager-resources</artifactId>
- <version>2.47.0</version>
+ <version>2.48.0</version>
 </dependency>
  <dependency>
  <groupId>com.azure.resourcemanager</groupId>
@@ -94,7 +94,7 @@ Once you create a Maven project, a pom.xml file that is created. Ensure all depe
 <dependency>
  <groupId>com.azure</groupId>
  <artifactId>azure-core-http-netty</artifactId>
- <version>1.15.10</version>
+ <version>1.15.11</version>
 </dependency>
 <dependency>
  <groupId>org.apache.logging.log4j</groupId>
