@@ -49,18 +49,22 @@ SELECT NAME, FILE_SIZE, STATE FROM INFORMATION_SCHEMA.INNODB_TABLESPACES WHERE S
 call az_create_undo_tablespace(X)
 ```
 Current we only support maximum 8 table spaces, including 2 default ones), so the X value should be  X >=3 and X <=8, when the command finished, the newly created one STATE should be in active state.
+
 3. Execute the following command to deactivate the innodb_undo_001(default one)
 ```sql
 call az_deactivate_undo_tablespace(1)
 ```
 Then wait for the state of innodb_undo_001 to be empty. (it mean undo log has been truncated)
+
 4. Execute the following command to activate the innodb_undo_001(default one)
 ```sql
 call az_activate_undo_tablespace(1)
 ```
 Then wait for the state of innodb_undo_001 to be active.
+
 5. Repeat the 1-4 steps for the innodb_undo_002.
-6. execute ```call az_deactivate_undo_tablespace(3)``` to deactivate the newly created table space,  wait for the state to be empty. Then execute call ```az_drop_undo_tablespace(3)``` to drop the newly created table space. 
+
+6. Execute ```call az_deactivate_undo_tablespace(3)``` to deactivate the newly created table space, wait for the state to be empty. Then execute call ```az_drop_undo_tablespace(3)``` to drop the newly created table space. 
 You can not drop the default ones(innodb_undo_001, innodb_undo_002), only drop the one you just created, in this example it is x_undo_003.Before dropping, first deactivate x_undo_003 to empty state.
 
 ## **Conclusion**  
