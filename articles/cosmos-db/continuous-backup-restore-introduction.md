@@ -195,5 +195,5 @@ Currently the point in time restore functionality has the following limitations:
 * [Manage permissions](continuous-backup-restore-permissions.md) required to restore data with continuous backup mode.
 * [Resource model of continuous backup mode](continuous-backup-restore-resource-model.md)
 * [Understanding Multi-region write account](multi-region-writes.md)
-* [Understanding timestamps in Cosmos DB](multi-region-writes.md#understanding-timestamps.md)
+* [Understanding timestamps in Cosmos DB](multi-region-writes.md#understanding-timestamps)
 * [Understanding how Cosmos Db works behind the scenes](global-dist-under-the-hood.md)
