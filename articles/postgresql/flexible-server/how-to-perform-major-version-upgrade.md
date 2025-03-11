@@ -32,7 +32,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
    :::image type="content" source="media/how-to-perform-major-version-upgrade/overview.png" alt-text="Screenshot showing the Overview page, to demonstrate how to initiate major version upgrade of an Azure Database for PostgreSQL flexible server." lightbox="media/how-to-perform-major-version-upgrade/overview.png":::
 
-3. The status of the server must be **Available**, for the **Upgrade** button to be enabled.
+3. The status of the server must be **Ready**, for the **Upgrade** button to be enabled.
 
    :::image type="content" source="media/how-to-perform-major-version-upgrade/server-status.png" alt-text="Screenshot showing where in the Overview page you can find the status of the server." lightbox="media/how-to-perform-major-version-upgrade/server-status.png":::
 
