@@ -39,6 +39,8 @@ Azure Database for MySQL supports each major version of MySQL from the date Azur
 ## Innovation release version support
 
 The MySQL Innovation Release versions are provided to enable access to the latest MySQL features and capabilities. Support for these versions includes core functionalities, but excludes advanced features such as High Availability (HA), replicas, and automated backups. Innovation Release support is limited to the most current version, with previous versions not retained to ensure users have access to the newest advancements. Each Innovation Release server has a 30-day lifecycle from the date of creation, after which it is automatically removed. No monthly maintenance updates are applied during the lifecycle of these versions.
+> [!NOTE]  
+> Innovation Release versions are intended for early access and experimentation. As such, they do not qualify for customer support cases, and no direct support assistance is provided. Users are encouraged to refer to documentation and community resources for troubleshooting and guidance.
 
 ## Minor version support
 
