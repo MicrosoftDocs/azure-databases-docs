@@ -19,11 +19,11 @@ Azure Private Link allows you to create private endpoints for Azure Database for
 With Private Link, traffic between your virtual network and the service travels the Microsoft backbone network. Exposing your service to the public internet is no longer necessary. You can create your own private link service in your virtual network and deliver it to your customers. Setup and consumption by using Private Link is consistent across Azure PaaS, customer-owned, and shared partner services.
 
 > [!NOTE]  
-> Private endpoints cannot be created for servers that have been configured with virtual network integration.
-> 
-> Private endpoints can be only be configured for servers that were created after Azure Database for PostgreSQL flexible server introduced the support for Private Link. Those servers which were created before that date, and whose networking mode was configured to not use VNET integration but Public access, don't support yet the creation of private endpoints.
+> Private endpoints can be only be configured for servers that were created after Azure Database for PostgreSQL flexible server introduced the support for Private Link, and whose networking mode was configured to not use VNET integration but Public access.
 >
-> In the future, such limitation will be removed from those servers, so that they support private endpoints.
+> Servers which were created before that date, and whose networking mode was configured to not use VNET integration but Public access, don't support yet the creation of private endpoints. In the future, such limitation will be removed, and these servers will also support private endpoints.
+>
+> On servers created with VNET integration, the use of private endpoints isn't supported.
 
 Private Link is exposed to users through two Azure resource types:
 
