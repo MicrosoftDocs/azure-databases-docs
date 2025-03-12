@@ -51,13 +51,13 @@ You can manage configuration settings for an Azure PostgreSQL flexible server in
 
 Before using the Azure SDK for Java to create, update, or delete an Azure Database for PostgreSQL flexible server instance, you must sign in to your Azure account using the Azure CLI.
 
-- Sign in to your account using [az CLI](/cli/azure/authenticate-azure-cli-interactively)
+Sign in to your account using [az CLI](/cli/azure/authenticate-azure-cli-interactively)
 
 ```azurecli-interactive
 az login
 ```
 
-- Fetch your tenant ID for your account as it would be needed for the code in the later.
+Fetch your tenant ID for your account as it would be needed for the code in the later.
 
 ```azurecli-interactive
 az account show --query tenantId --output tsv
