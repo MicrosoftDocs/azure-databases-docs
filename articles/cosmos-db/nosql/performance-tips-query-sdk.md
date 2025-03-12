@@ -1,12 +1,12 @@
 ---
 title: Azure Cosmos DB performance tips for queries using the Azure Cosmos DB SDK
 description: Learn query configuration options to help improve performance using the Azure Cosmos DB SDK.
-author: ealsur
+author: markjbrown
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: how-to
 ms.date: 06/20/2023
-ms.author: maquaran
+ms.author: mjbrown
 ms.devlang: csharp
 # ms.devlang: csharp, java
 ms.custom: devx-track-java, devx-track-extended-java, devx-track-python, devx-track-js
