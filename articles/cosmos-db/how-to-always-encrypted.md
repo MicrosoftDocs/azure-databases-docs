@@ -136,6 +136,24 @@ CosmosEncryptionAsyncClient cosmosEncryptionAsyncClient =
     new CosmosEncryptionClientBuilder().cosmosAsyncClient(client).keyEncryptionKeyResolver(keyEncryptionKeyClientBuilder)
         .keyEncryptionKeyResolverName(CosmosEncryptionClientBuilder.KEY_RESOLVER_NAME_AZURE_KEY_VAULT).buildAsyncClient();
 ```
+
+# [NodeJS](#tab/nodejs)
+> [!NOTE]
+> Unlike .NET and Java SDK, there is no separate package for Encyption in JS. Same package can be used to encrypted and non-encrypted operations.
+
+To use Always Encrypted in JS SDK, an instance of `EncryptionKeyResolver` must be passed in `ClientEncryptionOptions` during Azure Cosmos DB SDK instance initialization. This class, is used to interact with the key store hosting your CMKs.
+
+The following snippets use the `DefaultAzureCredential` class to retrieve the Microsoft Entra identity to use when accessing your Azure Key Vault instance. You can find examples of creating different kinds of `TokenCredential` classes [here](/dotnet/api/overview/azure/identity-readme#credential-classes).
+
+> [!NOTE]
+> You will need the additional [@azure/identity](https://www.npmjs.com/package/@azure/identity) package to access the `TokenCredential` classes.
+
+```ts
+const credentials = new DefaultAzureCredential();
+const keyResolver = new AzureKeyVaultEncryptionKeyResolver(credentials);
+const cosmosClient = new CosmosClient({connectionString: "<ConnectionString>", clientEncryptionOptions: { keyEncryptionKeyResolver: keyResolver }});
+```
+
 ---
 
 ## Create a data encryption key
@@ -195,6 +213,34 @@ database.createClientEncryptionKey(
     CosmosEncryptionAlgorithm.AEAD_AES_256_CBC_HMAC_SHA256.getName(),
     metadata);
 ```
+
+# [NodeJS](#tab/nodejs)
+
+Creating a new data encryption key is done by calling the `createClientEncryptionKey` method and passing:
+
+- A string identifier that will uniquely identify the key in the database.
+- The encryption algorithm intended to be used with the key. Only one algorithm is currently supported.
+- The key identifier of the [CMK](#customer-managed-keys) stored in Azure Key Vault. This parameter is passed in a generic `EncryptionKeyWrapMetadata` object where:
+  - The `type` defines the type of key resolver (for example, Azure Key Vault).
+  - The `name` can be any friendly name you want.
+  - The `value` must be the key identifier.
+  > [!IMPORTANT]
+  > Once the key is created, browse to its current version, and copy its full key identifier: `https://<my-key-vault>.vault.azure.net/keys/<key>/<version>`. If you omit the key version at the end of the key identifier, an error will be thrown.
+  - The `algorithm` defines which algorithm shall be used to wrap the key encryption key with the customer-managed key.
+
+```ts
+const database = cosmosClient.database("my-database");
+const metadata = new EncryptionKeyWrapMetadata(
+    EncryptionKeyResolverName.AzureKeyVault, 
+    "akvKey", 
+    "https://<my-key-vault>.vault.azure.net/keys/<key>/<version>",
+    KeyEncryptionAlgorithm.RSA_OAEP);
+
+await database.createClientEncryptionKey(
+    "my-key",
+    EncryptionAlgorithm.AEAD_AES_256_CBC_HMAC_SHA256,
+    metadata);
+```
 ---
 
 ## Create a container with encryption policy
@@ -250,6 +296,35 @@ CosmosContainerProperties containerProperties =
 containerProperties.setClientEncryptionPolicy(new ClientEncryptionPolicy(paths));
 database.createEncryptionContainerAsync(containerProperties);
 ```
+
+# [NodeJS](#tab/nodejs)
+
+```ts
+const path1 = new ClientEncryptionIncludedPath(
+   "/property1",
+   "my-key",
+   EncryptionType.DETERMINISTIC,
+   EncryptionAlgorithm.AEAD_AES_256_CBC_HMAC_SHA256,
+);
+const path2 = new ClientEncryptionIncludedPath(
+   "/property2",
+   "my-key",
+   EncryptionType.DETERMINISTIC,
+   EncryptionAlgorithm.AEAD_AES_256_CBC_HMAC_SHA256,
+);
+const paths = [path1, path2];
+const clientEncryptionPolicy = new ClientEncryptionPolicy(paths, 2);
+
+const containerDefinition = {
+    id: "my-container",
+    partitionKey: {
+      paths: ["/id"],
+    },
+    clientEncryptionPolicy: clientEncryptionPolicy,
+};
+
+await database.containers.createIfNotExists(containerDefinition);
+```
 ---
 
 ## Read and write encrypted data
@@ -303,6 +378,15 @@ SqlQuerySpecWithEncryption sqlQuerySpecWithEncryption = new SqlQuerySpecWithEncr
 sqlQuerySpecWithEncryption.addEncryptionParameter(
     "/property1", new SqlParameter("@Property1", 1234))
 ```
+
+# [NodeJS](#tab/nodejs)
+
+```ts
+const queryBuilder = new EncryptionQueryBuilder("SELECT * FROM c where c.property1 = @Property1");
+queryBuilder.addIntegerParameter(@Property1, 1234, "/property1");
+
+const iterator = await container.items.getEncryptionQueryIterator(queryBuilder);
+```
 ---
 
 ### Reading documents when only a subset of properties can be decrypted
@@ -336,6 +420,20 @@ EncryptionKeyWrapMetadata metadata = new EncryptionKeyWrapMetadata(
 database.rewrapClientEncryptionKey(
     "my-key",
     metadata);
+```
+
+# [NodeJS](#tab/nodejs)
+
+```ts
+const newMetadata = new EncryptionKeyWrapMetadata(
+    EncryptionKeyResolverName.AzureKeyVault, 
+    "akvKey", 
+    "https://<my-key-vault>.vault.azure.net/keys/<new-key>/<version>",
+    KeyEncryptionAlgorithm.RSA_OAEP);
+
+await database.rewrapClientEncryptionKey(
+    "my-key",
+    newMetadata);
 ```
 ---
 
