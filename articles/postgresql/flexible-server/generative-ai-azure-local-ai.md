@@ -5,7 +5,7 @@
 
 title: Use azure_local_ai extension to generate vector embeddings in PostgreSQL with locally deployed LLM
 description: Generate text embeddings in PostgreSQL for retrieval augmented generation (RAG) patterns with the azure_local_ai extension and locally deployed LLM.
-author:      jojohnso-msft # GitHub alias
+author: jojohnso-msft
 ms.author: jojohnso
 ms.service: azure-database-postgresql
 ms.topic: how-to
@@ -22,7 +22,7 @@ ms.custom:
 
 1. An Azure Database for PostgreSQL Flexible Server instance running on a memory optimized VM SKU. Learn more about Azure memory optimized VMs here: [Azure VM sizes - Memory - Azure Virtual Machines](/azure/virtual-machines/sizes-memory)
 
-1. You may want to enable the [vector](how-to-use-pgvector.md) extension, as it provides functionality to store and efficiently index text embeddings in your database.
+1. You might want to enable the [vector](how-to-use-pgvector.md) extension, as it provides functionality to store and efficiently index text embeddings in your database.
 
 ## Enable the extension
 
@@ -30,22 +30,22 @@ Before you can enable azure_local_ai on your Azure Database for PostgreSQL fle
 
 > [!IMPORTANT]
 > Hosting language models in the database requires a large memory footprint. To support this requirement, `azure_local_ai` is only supported on **memory-optimized** Azure VM SKUs with a minimum of **4 vCores**.
-> If you are using a VM that does not meet the minimum requirements, the `azure_local_ai` extension will not appear in the list of allowed values for the `azure.extensions` server parameter.
+> If you're using a VM that doesn't meet the minimum requirements, the `azure_local_ai` extension won't appear in the list of allowed values for the `azure.extensions` server parameter.
 
 Once the extension is allowlisted, you can follow the instructions provided in [create extensions](../extensions/how-to-allow-extensions.md#allow-extensions) to install the extension in each  database from where you want to use it.
 
 > [!NOTE]  
-> Enabling Azure Local AI will deploy the [multilingual-e5-small](https://huggingface.co/intfloat/multilingual-e5-small) model to your Azure Database for PostgreSQL Flexible Server instance. The linked documentation provides licensing terms from the e5 team.
-> Additional third-party open-source models might become available for installation on an ongoing basis.
+> Enabling Azure Local AI deploys the [multilingual-e5-small](https://huggingface.co/intfloat/multilingual-e5-small) model to your Azure Database for PostgreSQL Flexible Server instance. The linked documentation provides licensing terms from the e5 team.
+> Other third-party open-source models might become available for installation on an ongoing basis.
 
 Installing the extension `azure_local_ai` creates a schema called `azure_local_ai` in which the extension stores tables, functions, and any other SQL-related objects it requires to implement and expose its functionality.
 
 > [!IMPORTANT]  
-> You may want to enable the [vector extension](how-to-use-pgvector.md), as it is required to store text embeddings in your PostgreSQL database.
+> You might want to enable the [vector extension](how-to-use-pgvector.md), as it's required to store text embeddings in your PostgreSQL database.
 
 ## Functions provided by the extension
 
-The `azure_local_ai` extension provides a set of functions. These functions allow you to create vector embeddings from text data, making it easier to develop generative AI applications. The extension offers functions for creating embeddings, getting settings, and more. By using these functions, you can simplify the development process and reduce latency by eliminating the need for additional remote API calls to AI embedding models hosted outside of the PostgreSQL boundary.
+The `azure_local_ai` extension provides a set of functions. These functions allow you to create vector embeddings from text data, making it easier to develop generative AI applications. The extension offers functions for creating embeddings, getting settings, and more. By using these functions, you can simplify the development process and reduce latency by eliminating the need for another remote API calls to AI embedding models hosted outside of the PostgreSQL boundary.
 
 |  Schema  |  Name  |  Result data type  |  Argument data types  |  
 |---|---|---|---|
@@ -130,7 +130,7 @@ CREATE TABLE documents(doc_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY, doc_
 --Insert data into the docs table
 INSERT INTO documents(doc_contents) VALUES
   ('Create in-database embeddings with azure_local_ai extension.'),
-  ('Enable RAG patterns with in-database embeddings and vectors on Azure Database for PostgreSQL - Flexible server.'),
+  ('Enable RAG patterns with in-database embeddings and vectors on Azure Database for PostgreSQL flexible server.'),
   ('Generate vector embeddings in PostgreSQL with azure_local_ai extension.'),
   ('Generate text embeddings in PostgreSQL for retrieval augmented generation (RAG) patterns with azure_local_ai extension and locally deployed LLM.'),
   ('Use vector indexes and Azure OpenAI embeddings in PostgreSQL for retrieval augmented generation.');
@@ -169,7 +169,7 @@ CREATE TABLE documents(doc_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY, doc_
 -- Insert data into the documents table
 INSERT INTO documents(doc_contents) VALUES
   ('Create in-database embeddings with azure_local_ai extension.'),
-  ('Enable RAG patterns with in-database embeddings and vectors on Azure Database for PostgreSQL - Flexible server.'),
+  ('Enable RAG patterns with in-database embeddings and vectors on Azure Database for PostgreSQL flexible server.'),
   ('Generate vector embeddings in PostgreSQL with azure_local_ai extension.'),
   ('Generate text embeddings in PostgreSQL for retrieval augmented generation (RAG) patterns with azure_local_ai extension and locally deployed LLM.'),
   ('Use vector indexes and Azure OpenAI embeddings in PostgreSQL for retrieval augmented generation.');
