@@ -103,10 +103,10 @@ Once you create a Maven project, a pom.xml file that is created. Ensure all depe
 </dependency>
 ```
 
-> [!NOTE]  
-> Check the latest version for all the dependencies before adding them to your file.
+  > [!NOTE]
+  > Check the latest version for all the dependencies before adding them to your file.
 
-### Create Azure Databases for PostgreSQL Flexible Server Instance
+### Create an Azure Database for PostgreSQL instance
 
 To create an Azure PostgreSQL flexible server instance, create a file named `CreateServer.java` with the following code.
 
@@ -192,8 +192,8 @@ To run the file, you can use your IDE to run this code or use the command line t
 javac <file-name>.java
 java <file-name>
 ```
-> [!NOTE]  
-> Running this code initiates the instance creation process, which might take a few minutes to complete.
+  > [!NOTE]  
+  > Running this code initiates the instance creation process, which might take a few minutes to complete.
 
 You can review the deployed Azure PostgreSQL flexible server instance through the Azure portal, Azure CLI, Azure PowerShell, and various other tools to validate the deployment and review the deployed resources.
 
