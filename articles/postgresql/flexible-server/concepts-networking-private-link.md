@@ -14,7 +14,7 @@ ms.custom:
 
 # Azure Database for PostgreSQL flexible server networking with Private Link
 
-Azure Private Link allows you to create private endpoints for Azure Database for PostgreSQL - flexible server to bring it inside your virtual network. This functionality is a recommended alternative to the [networking capabilities provided by virtual network integration](concepts-networking-private.md).
+Azure Private Link allows you to create private endpoints for Azure Database for PostgreSQL flexible server to bring it inside your virtual network. This functionality is a recommended alternative to the [networking capabilities provided by virtual network integration](concepts-networking-private.md).
 
 With Private Link, traffic between your virtual network and the service travels the Microsoft backbone network. Exposing your service to the public internet is no longer necessary. You can create your own private link service in your virtual network and deliver it to your customers. Setup and consumption by using Private Link is consistent across Azure PaaS, customer-owned, and shared partner services.
 
@@ -23,7 +23,7 @@ With Private Link, traffic between your virtual network and the service travels 
 > 
 > Private links can be only be configured for servers that were created after the release of this feature. Server that existed before the release of the feature can't be set with private links.
 >
-> These limitations will be removed in a future release of Azure Database for PostgreSQL - flexible server.
+> These limitations will be removed in a future release of Azure Database for PostgreSQL flexible server.
 
 Private Link is exposed to users through two Azure resource types:
 

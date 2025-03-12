@@ -130,7 +130,7 @@ CREATE TABLE documents(doc_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY, doc_
 --Insert data into the docs table
 INSERT INTO documents(doc_contents) VALUES
   ('Create in-database embeddings with azure_local_ai extension.'),
-  ('Enable RAG patterns with in-database embeddings and vectors on Azure Database for PostgreSQL - Flexible server.'),
+  ('Enable RAG patterns with in-database embeddings and vectors on Azure Database for PostgreSQL flexible server.'),
   ('Generate vector embeddings in PostgreSQL with azure_local_ai extension.'),
   ('Generate text embeddings in PostgreSQL for retrieval augmented generation (RAG) patterns with azure_local_ai extension and locally deployed LLM.'),
   ('Use vector indexes and Azure OpenAI embeddings in PostgreSQL for retrieval augmented generation.');
@@ -169,7 +169,7 @@ CREATE TABLE documents(doc_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY, doc_
 -- Insert data into the documents table
 INSERT INTO documents(doc_contents) VALUES
   ('Create in-database embeddings with azure_local_ai extension.'),
-  ('Enable RAG patterns with in-database embeddings and vectors on Azure Database for PostgreSQL - Flexible server.'),
+  ('Enable RAG patterns with in-database embeddings and vectors on Azure Database for PostgreSQL flexible server.'),
   ('Generate vector embeddings in PostgreSQL with azure_local_ai extension.'),
   ('Generate text embeddings in PostgreSQL for retrieval augmented generation (RAG) patterns with azure_local_ai extension and locally deployed LLM.'),
   ('Use vector indexes and Azure OpenAI embeddings in PostgreSQL for retrieval augmented generation.');
