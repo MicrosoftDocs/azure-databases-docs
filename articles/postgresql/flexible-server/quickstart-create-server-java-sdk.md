@@ -183,18 +183,18 @@ There are different ways to authenticate your credentials. In this example, we h
 
 Make sure that you have created a maven project and executed the below commands; make sure you run these commands every time you add a new dependency in your `pom.xml` file to install that dependency in your local repository:
 
-```cli
-mvn clean install
-```
+  ```azurecli
+  mvn clean install
+  ```
 To run the file, you can use your IDE to run this code or use the command line to run the Java file.
 
-```cli
-javac <file-name>.java
-java <file-name>
-```
-  > [!NOTE]  
-  > Running this code initiates the instance creation process, which might take a few minutes to complete.
-
+  ```azurecli
+  javac <file-name>.java
+  java <file-name>
+  ```
+> [!NOTE]  
+> Running this code initiates the instance creation process, which might take a few minutes to complete.
+        
 You can review the deployed Azure PostgreSQL flexible server instance through the Azure portal, Azure CLI, Azure PowerShell, and various other tools to validate the deployment and review the deployed resources.
 
 ### Create a database
