@@ -51,7 +51,7 @@ Before setting up a read replica for Azure Database for PostgreSQL Flexible Serv
     
       - Storage
         - Storage size (ex `128GB`)
-        - Autogrowth
+        - Autogrow
     
       - High Availability
         - Enabled / Disabled
