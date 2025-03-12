@@ -14,16 +14,16 @@ ms.custom:
 
 # Azure Database for PostgreSQL flexible server networking with Private Link
 
-Azure Private Link allows you to create private endpoints for Azure Database for PostgreSQL - flexible server to bring it inside your virtual network. This functionality is a recommended alternative to the [networking capabilities provided by virtual network integration](concepts-networking-private.md).
+Azure Private Link allows you to create private endpoints for Azure Database for PostgreSQL flexible server to bring it inside your virtual network. This functionality is a recommended alternative to the [networking capabilities provided by virtual network integration](concepts-networking-private.md).
 
 With Private Link, traffic between your virtual network and the service travels the Microsoft backbone network. Exposing your service to the public internet is no longer necessary. You can create your own private link service in your virtual network and deliver it to your customers. Setup and consumption by using Private Link is consistent across Azure PaaS, customer-owned, and shared partner services.
 
 > [!NOTE]  
-> Private links cannot be created for servers that have been configured with virtual network integration.
+> Private endpoints cannot be created for servers that have been configured with virtual network integration.
 > 
-> Private links can be only be configured for servers that were created after the release of this feature. Server that existed before the release of the feature can't be set with private links.
+> Private endpoints can be only be configured for servers that were created after Azure Database for PostgreSQL flexible server introduced the support for Private Link. Those servers which were created before that date, and whose networking mode was configured to not use VNET integration but Public access, don't support yet the creation of private endpoints.
 >
-> These limitations will be removed in a future release of Azure Database for PostgreSQL - flexible server.
+> In the future, such limitation will be removed from those servers, so that they support private endpoints.
 
 Private Link is exposed to users through two Azure resource types:
 
