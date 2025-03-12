@@ -192,8 +192,9 @@ To run the file, you can use your IDE to run this code or use the command line t
   javac <file-name>.java
   java <file-name>
   ```
-> [!NOTE]  
-> Running this code initiates the instance creation process, which might take a few minutes to complete.
+
+  > [!NOTE]
+  > Running this code initiates the instance creation process, which might take a few minutes to complete.
         
 You can review the deployed Azure PostgreSQL flexible server instance through the Azure portal, Azure CLI, Azure PowerShell, and various other tools to validate the deployment and review the deployed resources.
 
