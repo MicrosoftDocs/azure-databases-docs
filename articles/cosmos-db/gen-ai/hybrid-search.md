@@ -17,9 +17,6 @@ appliesto:
 
 Azure Cosmos DB for NoSQL now supports a powerful hybrid search capability that combines Vector Search with Full Text Search scoring (BM25) using the Reciprocal Rank Fusion (RRF) function.
 
-> [!NOTE]
-> Full Text & Hybrid Search is in early preview and may not be available in all regions at this time.
-
 ## What is hybrid search?
 
 Hybrid search leverages the strengths of both vector-based and traditional keyword-based search methods to deliver more relevant and accurate search results. Hybrid search is easy to do in Azure Cosmos DB for NoSQL due to the ability to store both metadata and vectors within the same document.
