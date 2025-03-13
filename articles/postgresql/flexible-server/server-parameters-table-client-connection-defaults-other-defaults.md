@@ -1,6 +1,6 @@
 ---
 title: Client Connection Defaults / Other Defaults server parameters
-description: Client Connection Defaults / Other Defaults server parameters for Azure Database for PostgreSQL - Flexible Server.
+description: Client Connection Defaults / Other Defaults server parameters for Azure Database for PostgreSQL flexible server.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan

@@ -29,13 +29,13 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="./media/how-to-networking/networking-overview.png" alt-text="Screenshot showing the Overview page." lightbox="./media/how-to-networking/networking-overview.png":::
 
-3. The status of the server must be **Available**, for the **Networking** menu option to be enabled.
+3. The status of the server must be **Ready**, for the **Networking** menu option to be enabled.
 
     :::image type="content" source="./media/how-to-networking/networking-server-status.png" alt-text="Screenshot showing where in the Overview page you can find the status of the server." lightbox="./media/how-to-networking/networking-server-status.png":::
 
-4. If the status of the server isn't **Available**, the **Networking** option is disabled.
+4. If the status of the server isn't **Ready**, the **Networking** option is disabled.
 
-    :::image type="content" source="./media/how-to-networking/networking-disabled.png" alt-text="Screenshot showing that Networking menu is disabled when status of server isn't Available." lightbox="./media/how-to-networking/networking-disabled.png":::
+    :::image type="content" source="./media/how-to-networking/networking-disabled.png" alt-text="Screenshot showing that Networking menu is disabled when status of server isn't Ready." lightbox="./media/how-to-networking/networking-disabled.png":::
 
 > [!NOTE]
 > Any attempt to configure the networking settings of a server whose status is other than available, would fail with an error.
@@ -64,9 +64,9 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="./media/how-to-networking/public-access-enable-public-access-succeeded-notification.png" alt-text="Screenshot showing a server whose network settings were successfully saved." lightbox="./media/how-to-networking/public-access-enable-public-access-succeeded-notification.png":::
 
-11. Also, the status of the server changes to **Available**.
+11. Also, the status of the server changes to **Ready**.
 
-    :::image type="content" source="./media/how-to-networking/public-access-available.png" alt-text="Screenshot showing that server status is Available." lightbox="./media/how-to-networking/public-access-available.png":::
+    :::image type="content" source="./media/how-to-networking/public-access-available.png" alt-text="Screenshot showing that server status is Ready." lightbox="./media/how-to-networking/public-access-available.png":::
 
 ## [CLI](#tab/cli-enable-public-access)
 
@@ -76,7 +76,7 @@ You can enable public access on a server via the [az postgres flexible-server up
 az postgres flexible-server update --resource-group <resource_group> --name <server> --public-access enabled
 ```
 
-If you attempt to enable public access on a server which isn't in `Available` state, you receive an error like this:
+If you attempt to enable public access on a server which isn't in `Ready` state, you receive an error like this:
 
 ```output
 Code: 

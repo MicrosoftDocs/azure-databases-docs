@@ -1,6 +1,6 @@
 ---
 title: Backup and restore
-description: Learn about the concepts of backup and restore with Azure Database for PostgreSQL - Flexible Server.
+description: Learn about the concepts of backup and restore with Azure Database for PostgreSQL flexible server.
 author: kabharati
 ms.author: kabharati
 ms.reviewer: maghan
@@ -13,7 +13,7 @@ ms.custom:
   - ignite-2024
 ---
 
-# Backup and restore in Azure Database for PostgreSQL - Flexible Server
+# Backup and restore in Azure Database for PostgreSQL flexible server
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
@@ -114,12 +114,12 @@ The time required to recover using the latest and custom restore point options v
 If you configure your server within a virtual network, you can restore to the same virtual network or to a different virtual network. However, you can't restore to public access. Similarly, if you configured your server with public access, you can't restore to private virtual network access.
 
 > [!IMPORTANT]
-> Deleted servers can be restored. If you delete the server, you can follow our guidance [Restore a dropped Azure Database for Azure Database for PostgreSQL - Flexible Server](how-to-restore-dropped-server.md) to recover. Use Azure resource lock to help prevent accidental deletion of your server.
+> Deleted servers can be restored. If you delete the server, you can follow our guidance [Restore a dropped Azure Database for Azure Database for PostgreSQL flexible server](how-to-restore-dropped-server.md) to recover. Use Azure resource lock to help prevent accidental deletion of your server.
 
 
 ## Geo-redundant backup and restore
 
-To enable geo-redundant backup from the **Compute + storage** pane in the Azure portal, see [Create an instance of Azure Database for PostgreSQL - Flexible Server](quickstart-create-server.md). 
+To enable geo-redundant backup from the **Compute + storage** pane in the Azure portal, see [Create an instance of Azure Database for PostgreSQL flexible server](quickstart-create-server.md). 
 
 >[!IMPORTANT]
 > Geo-redundant backup can be configured only at the time of server creation. 
@@ -152,7 +152,7 @@ If your source server is configured with a *private access* virtual network, you
 
 ### Geo-restore
 
-If your source server is configured with a *public access* network, you can only restore to public access. Existing firewall rules in the source server are copied over to the restored server. Private endpoints are not taken over. After the restore operation is complete, review if you need to adjust any of the firewall rules carried over, and create any private endpoints you may need. 
+If your source server is configured with a *public access* network, you can only restore to public access. Also, you have to apply firewall rules after the restore operation is complete.
 
 If your source server is configured with a *private access* virtual network, you can only restore to a different virtual network, because virtual networks can't span regions. You can't perform geo-restore across public and private access.
 
@@ -164,7 +164,7 @@ After you restore the server, you can perform the following tasks to get your us
 
 - The values of all [server parameters](concepts-server-parameters.md) on the original server are not automatically applied to the new server. Ensure that all server parameters on the new server are re-configured as per the requirements of that new server.
 
-- Ensure that appropriate server-level firewall, private endpoints and virtual network rules are in place for user connections. In *public access* network, rules are copied over from the original server, but those might not be the ones required in the restored environment. So, adjust them as per your requirements. Private endpoints are not carried over. Create any private endpoints you may need in the restored server. In *private access* virtual network, the restore doesn't copy over any network infrastructure artifacts from source to restored server networks. Anything related to configuration of VNET(Virtual Network), subnets, or Network Security Groups, must be taken care of as a post-restore task.
+- Ensure that appropriate server-level firewall rules, private endpoints, and virtual network rules are in place for user connections. These rules are not copied over from the original server.
   
 - Scale up or scale down the restored server's compute as needed.
 
@@ -194,9 +194,11 @@ On-demand backups can be taken in addition to scheduled automatic backups. These
 
 We are aware of an existing bug that allows taking on-demand backups on Replicas, even though Point-in-Time Restore (PITR) is not supported in this context. This issue will be addressed to ensure that on-demand backups can only be performed on the Primary server.
 
-## Long-term retention (preview)
+## Long-term retention
 
 Azure Backup and Azure Database for PostgreSQL Flexible Server services have built an enterprise-class long-term backup solution for Azure Database for PostgreSQL Flexible Server instances that retains backups for up to 10 years. You can use long-term retention (LTR) independently or in addition to the automated backup solution offered by Azure Database for PostgreSQL Flexible Server, which offers retention of up to 35 days. Automated backups are physical backups suited for operational recoveries, especially when you want to restore from the latest backups. Long-term backups help you with your compliance needs, are more granular, and are taken as logical backups using native pg_dump. In addition to long-term retention, the solution offers the following capabilities:
+
+Long-term retention is now generally available in East Asia, Central India, Southeast Asia, UK South, and UK West, with support for additional regions coming in the next few weeks.
 
 -	Customer-controlled scheduled and on-demand backups at the individual database level.
 -	Central monitoring of all operations and jobs.
@@ -207,12 +209,15 @@ Azure Backup and Azure Database for PostgreSQL Flexible Server services have bui
 
 #### Limitations and considerations
 
+- It is highly recommended to test your LTR backup and restore immediately after configuration to ensure they meet your business requirements.
 - LTR restores are currently available only as 'Restore as Files' to storage accounts, with 'Restore as Server' capability planned for the future.
 - LTR backs up all databases in flexible server instances, and individual databases cannot be selected for LTR configuration.
 - LTR backup is not supported on replicas, it can be performed on primary servers.
 - The maximum supported database size for Long-Term Retention (LTR) backups is 1 TiB. While backups can be attempted on servers exceeding 1 TiB, these are not officially supported, and the success of LTR backups for such servers cannot be guaranteed.
 - LTR backups can be scheduled weekly, monthly, or yearly. The daily backup schedule is currently unsupported.
 - LTR backups do not support tables containing a row with a BYTEA length exceeding 500 MB.
+- While restoring roles for Microsoft Entra users, please ensure that Microsoft Entra authentication is enabled and that you are logged in as a Microsoft Entra Admin to create other Entra users.
+  
 
 
 For more information about performing a long term backup, visit the [how-to guide](/azure/backup/backup-azure-database-postgresql-flex).
@@ -346,6 +351,6 @@ For more information about performing a long term backup, visit the [how-to guid
 
 ## Related content
 
-- [Overview of business continuity with Azure Database for PostgreSQL - Flexible Server](concepts-business-continuity.md).
-- [High availability in Azure Database for PostgreSQL - Flexible Server](/azure/reliability/reliability-postgresql-flexible-server).
-- [Point-in-time restore of an Azure Database for PostgreSQL - Flexible Server instance](how-to-restore-server.md).
+- [Overview of business continuity with Azure Database for PostgreSQL flexible server](concepts-business-continuity.md).
+- [High availability in Azure Database for PostgreSQL flexible server](/azure/reliability/reliability-postgresql-flexible-server).
+- [Point-in-time restore of an Azure Database for PostgreSQL flexible server instance](how-to-restore-server.md).

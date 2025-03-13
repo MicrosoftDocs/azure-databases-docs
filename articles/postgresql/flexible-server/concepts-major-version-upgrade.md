@@ -1,6 +1,6 @@
 ---
-title: Major version upgrades in Azure Database for PostgreSQL - Flexible Server
-description: Learn how to use Azure Database for PostgreSQL - Flexible Server to do in-place major version upgrades of PostgreSQL on a server.
+title: Major version upgrades in Azure Database for PostgreSQL flexible server
+description: Learn how to use Azure Database for PostgreSQL flexible server to do in-place major version upgrades of PostgreSQL on a server.
 author: varun-dhawan
 ms.author: varundhawan
 ms.date: 12/17/2024
@@ -9,7 +9,7 @@ ms.subservice: flexible-server
 ms.topic: conceptual
 ---
 
-# Major version upgrades in Azure Database for PostgreSQL - Flexible Server
+# Major version upgrades in Azure Database for PostgreSQL flexible server
 
 [!INCLUDE [applies-to-postgresql-Flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
@@ -84,7 +84,7 @@ If precheck operations fail for an in-place major version upgrade, the upgrade f
 
 - In-place major version upgrades currently don't support read replicas. If you have a server that acts as a read replica, you need to delete the replica before you perform the upgrade on the primary server. After the upgrade, you can re-create the replica.
 
-- Azure Database for PostgreSQL - Flexible Server requires the ability to send and receive traffic to destination ports 5432 and 6432 within the virtual network where the flexible server is deployed, and to Azure Storage for log archiving.
+- Azure Database for PostgreSQL flexible server requires the ability to send and receive traffic to destination ports 5432 and 6432 within the virtual network where the flexible server is deployed, and to Azure Storage for log archiving.
 
     - If you configure network security groups (NSGs) to restrict traffic to or from your flexible server within its deployed subnet, be sure to allow traffic to destination ports 5432 and 6432 within the subnet. Allow traffic to Azure Storage by using the service tag **Azure Storage** as a destination.
 
@@ -108,6 +108,6 @@ If precheck operations fail for an in-place major version upgrade, the upgrade f
 
 ## Related content
 
-- [Major version upgrade of Azure Database for PostgreSQL - Flexible Server](how-to-perform-major-version-upgrade.md?tabs=portal).
-- [High availability in Azure Database for PostgreSQL - Flexible Server](/azure/reliability/reliability-postgresql-flexible-server).
-- [Backup and restore in Azure Database for PostgreSQL - Flexible Server](concepts-backup-restore.md).
+- [Major version upgrade of Azure Database for PostgreSQL flexible server](how-to-perform-major-version-upgrade.md?tabs=portal).
+- [High availability in Azure Database for PostgreSQL flexible server](/azure/reliability/reliability-postgresql-flexible-server).
+- [Backup and restore in Azure Database for PostgreSQL flexible server](concepts-backup-restore.md).

@@ -1,6 +1,6 @@
 ---
 title: Replication / Sending Servers server parameters
-description: Replication / Sending Servers server parameters for Azure Database for PostgreSQL - Flexible Server.
+description: Replication / Sending Servers server parameters for Azure Database for PostgreSQL flexible server.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan

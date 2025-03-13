@@ -289,7 +289,7 @@ For more information, see [Azure Cosmos DB indexing policies](../index-policy.md
 
 **Measure and tune for lower RU/s usage**
 
-Azure Cosmos DB offers a rich set of database operations. These operations include relational and hierarchical queries with Universal Disk Format (UDF) files, stored procedures, and triggers, all operating on the documents within a database collection. 
+Azure Cosmos DB offers a rich set of database operations. These operations include relational and hierarchical queries with user-defined functions (UDFs), stored procedures, and triggers, all operating on the documents within a database collection. 
 
 The costs associated with each of these operations vary depending on the CPU, IO, and memory that are required to complete the operation. Instead of thinking about and managing hardware resources, you can think of a Request Unit as a single measure for the resources that are required to perform various database operations and service an application request.
 

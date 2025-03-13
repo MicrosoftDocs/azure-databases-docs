@@ -26,14 +26,14 @@ The following list describes common limitations that apply to migration scenario
 - The migration service doesn't support moving POSTGIS_TOPOLOGY, POSTGIS_TIGER_GEOCODER, POSTGRES_FDW, and PG_PARTMAN extensions from source to target.
 
   > [!NOTE]  
-  > The feature to migrate databases that have the TIMESCALEDB extension is in preview. The option is turned off by default. To migrate your time series databases, please open a support ticket.
+  > The feature to migrate databases that have the TIMESCALEDB extension is GA. Do note that only **Offline** migration is possible for time series databases.
 
-- You can't move extensions that aren't supported by Azure Database for PostgreSQL - Flexible Server. Supported extensions are listed in [Extensions for Azure Database for PostgreSQL](/azure/postgresql/flexible-server/concepts-extensions).
-- User-defined collations can't be migrated to Azure Database for PostgreSQL - Flexible Server.
+- You can't move extensions that aren't supported by Azure Database for PostgreSQL flexible server. Supported extensions are listed in [Extensions for Azure Database for PostgreSQL](/azure/postgresql/flexible-server/concepts-extensions).
+- User-defined collations can't be migrated to Azure Database for PostgreSQL flexible server.
 - You can't migrate to an earlier version. For instance, you can't migrate from Azure Database for PostgreSQL version 15 to Azure Database for PostgreSQL version 14.
 - The migration service works only with an `SSLMODE` value of `preferred` or `required`.
 - The migration service doesn't support superuser permissions and objects.
-- Azure Database for PostgreSQL - Flexible Server doesn't support the creation of custom tablespaces due to restrictions on superuser permissions. During migration, data from custom tablespaces in the source PostgreSQL instance is migrated to the default tablespaces of the target instance of Azure Database for PostgreSQL - Flexible Server.
+- Azure Database for PostgreSQL flexible server doesn't support the creation of custom tablespaces due to restrictions on superuser permissions. During migration, data from custom tablespaces in the source PostgreSQL instance is migrated to the default tablespaces of the target instance of Azure Database for PostgreSQL flexible server.
 - The following PostgreSQL objects can't be migrated to a Flexible Server target:
   - Create casts
   - Creation of full-text search (FTS) parsers and FTS templates
@@ -42,7 +42,7 @@ The following list describes common limitations that apply to migration scenario
 - The migration service doesn't support migration at the object level. That is, you can't migrate a table or a schema.
 
   > [!IMPORTANT]
-  > Though the Burstable SKU is not a limitation, it is recommended to choose a higher SKU for your flexible server to perform faster migrations. Azure Database for PostgreSQL - Flexible Server supports near-zero downtime compute and IOPS scaling, so the SKU can be updated with minimal downtime. You can always change the SKU to match the application needs post-migration.
+  > Though the Burstable SKU is not a limitation, it is recommended to choose a higher SKU for your flexible server to perform faster migrations. Azure Database for PostgreSQL flexible server supports near-zero downtime compute and IOPS scaling, so the SKU can be updated with minimal downtime. You can always change the SKU to match the application needs post-migration.
 
 ## Limitations in migrating from Azure Database for PostgreSQL - Single Server
 

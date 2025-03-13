@@ -101,7 +101,7 @@ If you're trying to connect to the Azure Database for PostgreSQL using applicati
 
 ## Update Root CA certificates for .NET (Npgsql) users on Windows, for certificate pinning scenarios
 
-For .NET (Npgsql) users on Windows, connecting to Azure Database for PostgreSQL - Flexible Servers,  make sure **all three** Microsoft RSA Root Certificate Authority 2017,  DigiCert Global Root G2, and Digicert Global Root CA all exist in Windows Certificate Store, Trusted Root Certification Authorities. If any certificates don't exist, import the missing certificate.
+For .NET (Npgsql) users on Windows, connecting to Azure Database for PostgreSQL flexible servers,  make sure **all three** Microsoft RSA Root Certificate Authority 2017,  DigiCert Global Root G2, and Digicert Global Root CA all exist in Windows Certificate Store, Trusted Root Certification Authorities. If any certificates don't exist, import the missing certificate.
 
 ## Update Root CA certificates for other clients, for certificate pinning scenarios
 
@@ -118,4 +118,4 @@ For other PostgreSQL client users, you can merge two CA certificate files using 
 
 ## Related content
 
-- [Security in Azure Database for PostgreSQL - Flexible Server](concepts-security.md).
+- [Security in Azure Database for PostgreSQL flexible server](concepts-security.md).

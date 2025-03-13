@@ -23,6 +23,24 @@ This article summarizes new releases and features in the Azure Database for MySQ
 > [!NOTE]  
 > This article references the term slave, which Microsoft no longer uses. When the term is removed from the software, we'll remove it from this article.
 
+## March 2025
+
+#### **New Built-in Stored Procedures for Plugin Management and Undo Log Cleanup**  
+We have introduced two new built-in stored procedures in Azure Database for MySQL – Flexible Server, allowing customers to manage plugin settings and clean up undo logs without requiring support intervention: 
+
+- **Validate Password Plugin Management**:  
+  - Enable: `CALL az_install_validate_password_plugin();`  
+  - Disable: `CALL az_uninstall_validate_password_plugin();`  
+  - Once enabled, the plugin’s configuration parameters will be available in the **Server Parameters** page on the Azure portal.  
+
+- **Undo Log Cleanup**:  
+  - A new stored procedure is available to manually clean up the **Undo Log**, preventing unnecessary storage consumption.
+  
+Refer to [this](./concepts-built-in-store-procedure.md) document to learn more about Azure Database for MySQL flexible server built-in store procedure
+
+#### **Caching SHA-2 Password Plugin Now Exposed by Default**  
+The **`caching_sha2_password`** plugin is now exposed to customers by default. Customers can enable and configure it by setting the relevant **server parameters** in the Azure portal.  
+
 ## February 2025
 
 **Known Issues**  

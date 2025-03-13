@@ -197,7 +197,7 @@ For example, if you have provisioned 1,000 GB of storage, and the actual utiliza
 Remember that storage, once autoscaled up, can't be scaled down.
 
 > [!NOTE]  
-> Storage autogrow is enabled by default for a high-availability configured server and can not be disabled.
+> Storage autogrow is enabled by default for a [high-availability](./concepts-high-availability.md) configured server and [accelerated logs](./concepts-accelerated-logs.md) enabled servers and can not be disabled.
 
 ## IOPS
 

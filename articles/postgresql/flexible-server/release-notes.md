@@ -1,6 +1,6 @@
 ---
-title: Release notes for Azure DB for PostgreSQL - Flexible Server
-description: Release notes for Azure DB for PostgreSQL - Flexible Server, including feature additions, engine versions support, extensions, and other announcements.
+title: Release notes for Azure DB for PostgreSQL flexible server
+description: Release notes for Azure DB for PostgreSQL flexible server, including feature additions, engine versions support, extensions, and other announcements.
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
@@ -8,19 +8,20 @@ ms.date: 02/24/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: overview
-# customer intent: As a reader, I want the title and description to meet the required length and include the relevant information about the release notes for Azure DB for PostgreSQL - Flexible Server.
+# customer intent: As a reader, I want the title and description to meet the required length and include the relevant information about the release notes for Azure DB for PostgreSQL flexible server.
 ---
 
-# Release notes - Azure Database for PostgreSQL - Flexible Server
+# Release notes - Azure Database for PostgreSQL flexible server
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
-This article highlights the latest updates and enhancements for Azure Database for PostgreSQL - Flexible Server, service including new feature releases, supported engine versions, available extensions, and other important announcements.
+This article highlights the latest updates and enhancements for Azure Database for PostgreSQL flexible server, service including new feature releases, supported engine versions, available extensions, and other important announcements.
 
 ## Release: February 2025
 - Support for new [minor versions](concepts-supported-versions.md) 17.2, 16.6, 15.10, 14.15, 13.18, and 12.22. <sup>$</sup>
 - Support for [pg_signal_autovacuum_worker](how-to-autovacuum-tuning.md#troubleshooting-guides) role in PostgreSQL versions 15 and higher for Azure Database for PostgreSQL flexible server. 
 - Public preview of [enhanced connection and CPU monitoring metrics](concepts-monitoring.md#enhanced-metrics) (`TCP_connection_backlog`, `postmaster_process_cpu_usage`) is now available.
+- General availability of New Zealand North region.
 
 ## Release: January 2025
 
@@ -37,7 +38,7 @@ This article highlights the latest updates and enhancements for Azure Database f
 
 ## Release: November 2024
 
-- General availability of [High-Availability Health Status Monitoring](how-to-monitor-high-availability.md) for Azure Database for PostgreSQL - Flexible Server.
+- General availability of [High-Availability Health Status Monitoring](how-to-monitor-high-availability.md) for Azure Database for PostgreSQL flexible server.
 - [PostgreSQL 12](concepts-version-policy.md) will retire on November 14, 2024. Please upgrade to a supported version before retirement to ensure continued support and security.
 
 ## Release: October 2024
@@ -165,7 +166,7 @@ This article highlights the latest updates and enhancements for Azure Database f
 
 - Public preview of [Database availability metric](concepts-monitoring.md#database-availability-metric) for Azure Database for PostgreSQL flexible server.
 - PostgreSQL 15 is now available in public preview for Azure Database for PostgreSQL flexible server in limited regions (West Europe, East US, West US2, South East Asia, UK South, North Europe, Japan East).
-- General availability: [Pgvector extension](how-to-use-pgvector.md) for Azure Database for PostgreSQL - Flexible Server.
+- General availability: [Pgvector extension](how-to-use-pgvector.md) for Azure Database for PostgreSQL flexible server.
 - General availability: [Azure Key Vault Managed HSM](concepts-data-encryption.md) with Azure Database for PostgreSQL flexible server.
 - General availability [32 TB Storage](concepts-storage.md) with Azure Database for PostgreSQL flexible server.
 - Support for [Ddsv5 and Edsv5 SKUs](concepts-compute.md) with Azure Database for PostgreSQL flexible server.
@@ -350,4 +351,4 @@ A. Yes. However, we'll continue to support Azure Database for PostgreSQL single 
 
 ## Related content
 
-- [Quickstart: Create an Azure Database for PostgreSQL - Flexible Server](quickstart-create-server.md).
+- [Quickstart: Create an Azure Database for PostgreSQL flexible server](quickstart-create-server.md).

@@ -1,6 +1,6 @@
 ---
 title: "Tutorial: Create Azure App Service Web App in same virtual network"
-description: Quickstart guide to create an Azure Database for PostgreSQL - Flexible Server instance with a web app in the same virtual network.
+description: Quickstart guide to create an Azure Database for PostgreSQL flexible server instance with a web app in the same virtual network.
 author: gbowerman
 ms.author: guybo
 ms.reviewer: maghan
@@ -14,7 +14,7 @@ ms.custom:
 ms.devlang: azurecli
 ---
 
-# Tutorial: Create an Azure Database for PostgreSQL - Flexible Server instance with App Services Web App in virtual network
+# Tutorial: Create an Azure Database for PostgreSQL flexible server instance with App Services Web App in virtual network
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 

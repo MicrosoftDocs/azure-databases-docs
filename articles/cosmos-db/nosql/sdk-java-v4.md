@@ -35,7 +35,7 @@ The Azure Cosmos DB Java SDK v4 for NoSQL combines an Async API and a Sync API i
 |---|---|
 | **Release Notes** | [Release notes for Java SDK v4](https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/cosmos/azure-cosmos/CHANGELOG.md) |
 | **SDK download** | [Maven](https://mvnrepository.com/artifact/com.azure/azure-cosmos) |
-| **API documentation** | [Java API reference documentation](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-cosmos/latest/index.html) |
+| **API documentation** | [Java API reference documentation](/java/api/overview/azure/cosmos-readme) |
 | **Contribute to SDK** | [Azure SDK for Java Central Repo on GitHub](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos/azure-cosmos) | 
 | **Get started** | [Quickstart: Build a Java app to manage Azure Cosmos DB for NoSQL data](./quickstart-java.md) <br> [GitHub repo with quickstart code](https://github.com/Azure-Samples/azure-cosmos-java-getting-started) | 
 | **Best Practices** | [Best Practices for Java SDK v4](best-practice-java.md) |

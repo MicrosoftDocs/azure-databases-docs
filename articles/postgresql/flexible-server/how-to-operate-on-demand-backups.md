@@ -148,5 +148,5 @@ az postgres flexible-server backup delete --resource-group <resource_group> --na
 
 ## Related content
 
-- [Overview of business continuity with Azure Database for PostgreSQL - Flexible Server](concepts-business-continuity.md).
-- [Backup and restore in Azure Database for PostgreSQL - Flexible Server](concepts-backup-restore.md).
+- [Overview of business continuity with Azure Database for PostgreSQL flexible server](concepts-business-continuity.md).
+- [Backup and restore in Azure Database for PostgreSQL flexible server](concepts-backup-restore.md).

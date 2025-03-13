@@ -1,6 +1,6 @@
 ---
 title: Resource Usage / Memory server parameters
-description: Resource Usage / Memory server parameters for Azure Database for PostgreSQL - Flexible Server.
+description: Resource Usage / Memory server parameters for Azure Database for PostgreSQL flexible server.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan

@@ -19,19 +19,20 @@ This article discusses how to enforce a minimum version of the TLS protocol for 
 
 Because of the multitenant nature of Cosmos DB, the service is required to meet the access and security needs of every user. To achieve this, **Cosmos DB enforces minimum TLS protocols at the application layer**, and not lower layers in the network stack where TLS operates. This enforcement occurs on any authenticated request to a specific database account, according to the settings set on that account by the customer.
 
-The **minimum service-wide accepted version is TLS 1.0**. This selection can be changed on a per account basis, as discussed in the following section. 
+The **minimum service-wide accepted version is TLS 1.2**. This selection can be changed on a per account basis, as discussed in the following section. 
 
 ## How to set the minimum TLS version for my Cosmos DB database account
 
 Starting with the [2022-11-15 API version of the Azure Cosmos DB Resource Provider API](), a new property is exposed for every Cosmos DB database account, called `minimalTlsVersion`. It accepts one of the following values:
-- `Tls` for setting the minimum version to TLS 1.0.
-- `Tls11` for setting the minimum version to TLS 1.1.
 - `Tls12` for setting the minimum version to TLS 1.2.
+- `Tls13` for setting the minimum version to TLS 1.3.
 
 The **default value for new accounts is `Tls12`**.
 
 > [!IMPORTANT]
 > **Starting August 31, 2025, all Cosmos DB database accounts must use Transport Layer Security (TLS) 1.2 or higher**, as [support for TLS 1.0 and 1.1 will be discontinued](https://azure.microsoft.com/updates?id=update-retirement-tls1-0-tls1-1-versions-azure-services).
+>
+> Effective **March 31, 2025 support for TLS 1.3** will be enabled for Azure Cosmos DB.
 
 ### Set Minimal TLS Protocol in Azure Cosmos DB using the Portal 
 
@@ -41,7 +42,7 @@ This self-serve feature is available in the Portal while creating and editing an
 
 - **Cassandra:** TLS 1.2
 
-- **Table, SQL and Graph:** TLS 1.0, TLS 1.1 and TLS 1.2
+- **Table, SQL and Graph:** TLS 1.2
 
   
 
@@ -181,3 +182,6 @@ To get the current value of the property using Azure PowerShell, run the command
 Get-AzCosmosDBAccount -ResourceGroupName myresourcegroup -Name mycosmosdbaccount
 ```
 
+## Related content
+- [Prepare for upcoming TLS 1.3 support for Azure Cosmos DB](./tls-support.md)
+- [Moving to TLS 1.2 for Azure Cosmos DB](https://aka.ms/tls12)

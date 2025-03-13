@@ -1,6 +1,6 @@
 ---
-title: Data encryption overview
-description: Learn how data encryption works in Azure Database for PostgreSQL - Flexible Server.
+title: Data encryption
+description: Learn how data encryption works in Azure Database for PostgreSQL flexible server.
 author: techlake
 ms.author: hganten
 ms.reviewer: maghan
@@ -17,11 +17,11 @@ ms.topic: conceptual
 
 All the data managed by an instance of Azure Database for PostgreSQL flexible is always encrypted at rest. That data includes all system and user databases, temporary files, server logs, write-ahead log segments, and backups.
 
-To achieve the encryption of your data, Azure Database for PostgreSQL - Flexible Server uses [Azure Storage encryption for data at rest](/azure/storage/common/storage-service-encryption), providing keys for encrypting and decrypting data in Blob Storage and Azure Files services. These keys must be stored in Azure Key Vault or Azure Key Vault Managed Hardware Security Module (HSM). For more information, see [customer-managed keys for Azure Storage encryption](/azure/storage/common/customer-managed-keys-overview).
+To achieve the encryption of your data, Azure Database for PostgreSQL flexible server uses [Azure Storage encryption for data at rest](/azure/storage/common/storage-service-encryption), providing keys for encrypting and decrypting data in Blob Storage and Azure Files services. These keys must be stored in Azure Key Vault or Azure Key Vault Managed Hardware Security Module (HSM). For more information, see [customer-managed keys for Azure Storage encryption](/azure/storage/common/customer-managed-keys-overview).
 
-Azure Database for PostgreSQL - Flexible Server supports configuring data encryption in two different modes: service managed key, and customer managed key. The configuration mode can only be selected at server creation time. It can't be changed from one mode to another for the lifetime of the server.
+Azure Database for PostgreSQL flexible server supports configuring data encryption in two different modes: service managed key, and customer managed key. The configuration mode can only be selected at server creation time. It can't be changed from one mode to another for the lifetime of the server.
 
-With **service managed encryption key** Azure Database for PostgreSQL - Flexible Server takes care of provisioning the Azure Key Vault in which the keys are kept, and it assumes all the responsibility of providing the key with which data is encrypted and decrypted. The service also takes care of storing, protecting, auditing access, configuring networking, and automatically rotating the key.
+With **service managed encryption key** Azure Database for PostgreSQL flexible server takes care of provisioning the Azure Key Vault in which the keys are kept, and it assumes all the responsibility of providing the key with which data is encrypted and decrypted. The service also takes care of storing, protecting, auditing access, configuring networking, and automatically rotating the key.
 
 With **customer managed encryption key** you assume all the responsibility. Hence, you must deploy your own Azure Key Vault or Azure Key Vault HSM. You must generate or import your own key. You must grant required permissions on the Key Vault, so that your Azure Database for PostgreSQL flexible server can perform the necessary actions on the key. You have to take care of configuring all networking aspects of the Azure Key Vault in which the key is kept, so that your Azure Database for PostgreSQL flexible server can access the key. Auditing access to the key is also your responsibility. Finally, you're responsible for rotating the key and, when required, updating the configuration of your Azure Database for PostgreSQL flexible server so that it references the rotated version of the key.
 

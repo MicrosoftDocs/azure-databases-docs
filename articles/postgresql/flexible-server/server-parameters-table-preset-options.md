@@ -1,6 +1,6 @@
 ---
 title: Preset Options server parameters
-description: Preset Options server parameters for Azure Database for PostgreSQL - Flexible Server.
+description: Preset Options server parameters for Azure Database for PostgreSQL flexible server.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan

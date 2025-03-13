@@ -1,6 +1,6 @@
 ---
 title: Configure data encryption
-description: Learn how to configure data encryption in Azure Database for PostgreSQL - Flexible Server.
+description: Learn how to configure data encryption in Azure Database for PostgreSQL flexible server.
 author: techlake
 ms.author: hganten
 ms.reviewer: maghan
@@ -22,7 +22,7 @@ In this article, you learn how to create a new server and configure its data enc
 - How to select a different user assigned managed identity with which the service accesses the encryption key.
 - How to specify a different encryption key or how to rotate the encryption key currently used for data encryption.
 
-To learn about data encryption in the context of Azure Database for PostgreSQL - Flexible Server, see the [data encryption](concepts-data-encryption.md).
+To learn about data encryption in the context of Azure Database for PostgreSQL flexible server, see the [data encryption](concepts-data-encryption.md).
 
 ## Configure data encryption with system managed key during server provisioning
 

@@ -1,6 +1,6 @@
 ---
-title: Limits in Azure Database for PostgreSQL - Flexible Server
-description: This article describes limits in Azure Database for PostgreSQL - Flexible Server, such as the number of connections and storage engine options.
+title: Limits in Azure Database for PostgreSQL flexible server
+description: This article describes limits in Azure Database for PostgreSQL flexible server, such as the number of connections and storage engine options.
 author: kabharati
 ms.author: kabharati
 ms.reviewer: kabharati, maghan
@@ -10,7 +10,7 @@ ms.subservice: flexible-server
 ms.topic: conceptual
 ---
 
-# Limits in Azure Database for PostgreSQL - Flexible Server
+# Limits in Azure Database for PostgreSQL flexible server
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
@@ -66,7 +66,7 @@ However, you can use the `max_connections` setting to adjust how many connection
 >
 > Instances might encounter difficulties when the workload expands and demands more memory. As the number of connections increases, memory usage also rises. Instances with limited memory might face issues such as crashes or high latency. Although a higher value for `max_connections` might be acceptable when most connections are idle, it can lead to significant performance problems after they become active.
 >
-> If you need more connections, we suggest that you instead use PgBouncer, the built-in Azure solution for connection pool management. Use it in transaction mode. To start, we recommend that you use conservative values by multiplying the vCores within the range of 2 to 5. Afterward, carefully monitor resource utilization and application performance to ensure smooth operation. For detailed information on PgBouncer, see [PgBouncer in Azure Database for PostgreSQL - Flexible Server](concepts-pgbouncer.md).
+> If you need more connections, we suggest that you instead use PgBouncer, the built-in Azure solution for connection pool management. Use it in transaction mode. To start, we recommend that you use conservative values by multiplying the vCores within the range of 2 to 5. Afterward, carefully monitor resource utilization and application performance to ensure smooth operation. For detailed information on PgBouncer, see [PgBouncer in Azure Database for PostgreSQL flexible server](concepts-pgbouncer.md).
 
 When connections exceed the limit, you might receive the following error:
 
@@ -103,7 +103,7 @@ The following sections list considerations for what is and isn't supported in Az
 
 ### High availability
 
-- See [High availability in Azure Database for PostgreSQL - Flexible Server](/azure/reliability/reliability-postgresql-flexible-server#high-availability-limitations).
+- See [High availability in Azure Database for PostgreSQL flexible server](/azure/reliability/reliability-postgresql-flexible-server#high-availability-limitations).
 
 ### Availability zones
 
@@ -143,6 +143,6 @@ The following sections list considerations for what is and isn't supported in Az
 
 ## Related content
 
-- [Compute options in Azure Database for PostgreSQL - Flexible Server](concepts-compute.md).
-- [Storage options in Azure Database for PostgreSQL - Flexible Server](concepts-storage.md).
-- [Supported versions of PostgreSQL in Azure Database for PostgreSQL - Flexible Server](concepts-supported-versions.md).
+- [Compute options in Azure Database for PostgreSQL flexible server](concepts-compute.md).
+- [Storage options in Azure Database for PostgreSQL flexible server](concepts-storage.md).
+- [Supported versions of PostgreSQL in Azure Database for PostgreSQL flexible server](concepts-supported-versions.md).
