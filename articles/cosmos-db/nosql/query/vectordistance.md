@@ -56,7 +56,7 @@ Returns a numeric expression that enumerates the similarity score between two ex
 This first example shows a top 10 vector search query with only the required arguments. One property is projected, along with the score returned by `VectorDistance`. Then, we user an `ORDER BY` clause to sort `VectorDistance` scores in order from most similar to least.
 
 ```nosql
-SELECT TOP 10 s.name, VectorDistance(c.vector1, <query_vector>)
+SELECT TOP 10 c.name, VectorDistance(c.vector1, <query_vector>)
 FROM c
 ORDER BY VectorDistance(c.vector1, <query_vector>)
 ```
@@ -64,7 +64,7 @@ ORDER BY VectorDistance(c.vector1, <query_vector>)
 This next example also includes optional arguments for `VectorDistance`
 
 ```nosql
-SELECT TOP 10 s.name, VectorDistance(c.vector1, <query_vector>, true, {'distanceFunction':'cosine', 'dataType':'float32'})
+SELECT TOP 10 c.name, VectorDistance(c.vector1, <query_vector>, true, {'distanceFunction':'cosine', 'dataType':'float32'})
 FROM c
 ORDER BY VectorDistance(c.vector1, <query_vector>, true, {'distanceFunction':'cosine', 'dataType':'float32'})
 ```
