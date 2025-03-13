@@ -307,8 +307,8 @@ The `feed_range` is a range of partition key values that specifies the items tha
 
 You can also specify `mode` parameter for the change feed mode in which you want to process changes: [LatestVersion](change-feed-modes.md#latest-version-change-feed-mode) or [AllVersionsAndDeletes](change-feed-modes.md#all-versions-and-deletes-change-feed-mode-preview) (The default value: `LatestVersion`).
 Use either `LatestVersion` or `AllVersionsAndDeletes` to indicate which mode you want to use to read the change feed. 
-When you use `AllVersionsAndDeletes` mode, `start_time` isn't supported to read the change feed from the beginning or from a point in time.
-You must either process from now by default or from a `continuation` token.
+When you use `AllVersionsAndDeletes` mode, you can either start processing changes from now or from a `continuation` token.
+Reading the change feed from the beginning or from a point in time using `start_time` isn't supported.
 
 > [!NOTE]
 > 
@@ -318,10 +318,8 @@ You must either process from now by default or from a `continuation` token.
 
 If you don't supply a `feed_range` parameter, you can process an entire container's change feed at your own pace.
 
-[//]: # (TODO: Seperate samples for Latest and AllVersions modes, and update the note section above to add the links like other languages.)
-[//]: # (TODO: Add sample codes from the following sections to the sample files like JAVA samples.)
-[//]: # (>[!NOTE])
-[//]: # (> All the following code snippets are taken from a samples in GitHub. You can use the [latest version mode sample]&#40;https://github.com/Azure/azure-sdk-for-python/blob/main/sdk/cosmos/azure-cosmos/samples/change_feed_management.py#L63-L73&#41; and the [all versions and deletes mode sample]&#40;https://github.com/Azure/azure-sdk-for-python/blob/main/sdk/cosmos/azure-cosmos/samples/change_feed_management.py#L63-L73&#41;.)
+>[!NOTE]
+> All the following code snippets are taken from a samples in GitHub. You can use the [samples](https://github.com/allenkim0129/azure-sdk-for-python/blob/main/sdk/cosmos/azure-cosmos/samples/change_feed_management.py).
 
 Here's an example of how to obtain `responseIterator` in `LatestVersion` mode from `Beginning`. Since `LatestVersion` is a default mode, `mode` parameter doesn't need to be passed:
 ```python
@@ -350,7 +348,7 @@ Here's an example that uses `LatestVersion` mode:
 
 ```python
 pk = "partition_key_value"
-responseIterator = container.query_items_change_feed(start_time="Beginning", parition_key=pk)
+responseIterator = container.query_items_change_feed(start_time="Beginning", partition_key=pk)
 for doc in responseIterator:
     print(doc)
 ```
