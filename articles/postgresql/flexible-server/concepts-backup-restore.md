@@ -209,12 +209,15 @@ Long-term retention is now generally available in East Asia, Central India, Sout
 
 #### Limitations and considerations
 
+- It is highly recommended to test your LTR backup and restore immediately after configuration to ensure they meet your business requirements.
 - LTR restores are currently available only as 'Restore as Files' to storage accounts, with 'Restore as Server' capability planned for the future.
 - LTR backs up all databases in flexible server instances, and individual databases cannot be selected for LTR configuration.
 - LTR backup is not supported on replicas, it can be performed on primary servers.
 - The maximum supported database size for Long-Term Retention (LTR) backups is 1 TiB. While backups can be attempted on servers exceeding 1 TiB, these are not officially supported, and the success of LTR backups for such servers cannot be guaranteed.
 - LTR backups can be scheduled weekly, monthly, or yearly. The daily backup schedule is currently unsupported.
 - LTR backups do not support tables containing a row with a BYTEA length exceeding 500 MB.
+- While restoring roles for Microsoft Entra users, please ensure that Microsoft Entra authentication is enabled and that you are logged in as a Microsoft Entra Admin to create other Entra users.
+  
 
 
 For more information about performing a long term backup, visit the [how-to guide](/azure/backup/backup-azure-database-postgresql-flex).
