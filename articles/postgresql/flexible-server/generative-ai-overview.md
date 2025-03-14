@@ -13,7 +13,7 @@ ms.custom:
   - ignite-2023
 ---
 
-# Generative AI with Azure Database for PostgreSQL flexible server
+# Generative AI with Azure Database for PostgreSQL
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
