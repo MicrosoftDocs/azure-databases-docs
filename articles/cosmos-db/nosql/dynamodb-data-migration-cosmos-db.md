@@ -6,6 +6,9 @@ author: abhirockzz
 ms.author: guabhishek
 ms.service: azure-cosmos-db
 ms.subservice: nosql
+ms.custom:
+  - migration
+  - aws-to-azure
 ms.topic: how-to
 ms.date: 02/21/2025
 ---
