@@ -134,8 +134,8 @@ LEFT OUTER JOIN
 WHERE
     e.session_id IS NULL;
 
--- Create a HNSW index
-CREATE INDEX ON conference_session_embeddings USING hnsw (session_embedding vector_ip_ops);
+-- Create a DiskANN index
+CREATE INDEX ON conference_session_embeddings USING diskann (session_embedding vector_cosine_ops);
 
 
 -- Retrieve top similarity match
