@@ -42,6 +42,9 @@ During public preview, the `azure_local_ai` extension is only available in these
 
 This preview feature is also only available for newly deployed Azure Database for PostgreSQL Flexible Server instances.
 
+> [!IMPORTANT]
+> The `azure_local_ai` extension is currently in preview. Microsoft's Open-source AI models for installation through the Azure Local AI extension are deemed Non-Microsoft Products under the Microsoft Product Terms. Customer's use of open-source AI models is governed by the separate license terms provided in product documentation associated with such models made available through the azure_local_ai extension. [Supplemental Terms of Use: Limited Access AI Services (Previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
+
 ## Related content
 
 - [Enable and use azure_local_ai extension](generative-ai-azure-local-ai.md).
