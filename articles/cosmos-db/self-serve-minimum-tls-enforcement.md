@@ -160,7 +160,7 @@ New-AzCosmosDBAccount `
   -Location "<AzureRegion>" `
   -Kind GlobalDocumentDB `
   -EnableAutomaticFailover $true `
-  -MinimalTlsVersion "TLS12"
+  -MinimalTlsVersion "Tls12"
 ```
 
 
