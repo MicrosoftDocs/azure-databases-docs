@@ -1,7 +1,7 @@
 - name: Security guide
   displayName: overview, summary, introduction, get started
   href: index.md
-- name: Core terminiology
+- name: Core terminology
   displayName: terms
   href: glossary.md
 - name: Get signed-in identity
