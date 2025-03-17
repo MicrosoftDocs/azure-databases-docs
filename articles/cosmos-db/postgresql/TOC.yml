@@ -72,6 +72,8 @@
           displayName: tutorial, private
 - name: Concepts
   items:
+    - name: Distributed relational databases
+      href: distributed-relational.md
     - name: Clusters
       href: concepts-cluster.md
     - name: Sharding models
