@@ -13,7 +13,7 @@ ms.topic: how-to
 
 # Add private endpoint connections
 
-Azure Database for PostgreSQL - Flexible Server is an Azure Private Link service. This means that you can create private endpoints so that your client applications can connect privately and securely to your Azure Database for PostgreSQL flexible server.
+Azure Database for PostgreSQL flexible server is an Azure Private Link service. This means that you can create private endpoints so that your client applications can connect privately and securely to your Azure Database for PostgreSQL flexible server.
 
 A private endpoint to your Azure Database for PostgreSQL flexible server is a network interface that you can inject in a subnet of an Azure virtual network. Any host or service that can route network traffic to that subnet, are able to communicate with your flexible server so that the network traffic doesn't have to traverse the internet. All traffic is sent privately using Microsoft backbone.
 
@@ -29,13 +29,13 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="./media/how-to-networking/networking-overview.png" alt-text="Screenshot showing the Overview page." lightbox="./media/how-to-networking/networking-overview.png":::
 
-3. The status of the server must be **Available**, for the **Networking** menu option to be enabled.
+3. The status of the server must be **Ready**, for the **Networking** menu option to be enabled.
 
     :::image type="content" source="./media/how-to-networking/networking-server-status.png" alt-text="Screenshot showing where in the Overview page you can find the status of the server." lightbox="./media/how-to-networking/networking-server-status.png":::
 
-4. If the status of the server isn't **Available**, the **Networking** option is disabled.
+4. If the status of the server isn't **Ready**, the **Networking** option is disabled.
 
-    :::image type="content" source="./media/how-to-networking/networking-disabled.png" alt-text="Screenshot showing that Networking menu is disabled when status of server isn't Available." lightbox="./media/how-to-networking/networking-disabled.png":::
+    :::image type="content" source="./media/how-to-networking/networking-disabled.png" alt-text="Screenshot showing that Networking menu is disabled when status of server isn't Ready." lightbox="./media/how-to-networking/networking-disabled.png":::
 
 > [!NOTE]
 > Any attempt to configure the networking settings of a server whose status is other than available, would fail with an error.
@@ -63,7 +63,7 @@ Using the [Azure portal](https://portal.azure.com/):
     | **Resource group** | The [resource group](/azure/azure-resource-manager/management/manage-resource-groups-portal#what-is-a-resource-group) in the selected subscription, in which you want to create the private endpoint. It can be an existing resource group, or you can select **Create new**, and provide a name in that subscription which is unique among the existing resource group names. It automatically selects the resource group in which your server is deployed. | A resource group is a container that holds related resources for an Azure solution. The resource group can include all the resources for the solution, or only those resources that you want to manage as a group. You decide how you want to allocate resources to resource groups based on what makes the most sense for your organization. Generally, add resources that share the same lifecycle to the same resource group so you can easily deploy, update, and delete them as a group. |
     | **Name** | The name that you want to assign to the private endpoint. | A unique name that identifies the private endpoint through which you could connect to your Azure Database for PostgreSQL flexible server. |
     | **Network Interface Name** | The name that you want to assign to the network interface associated to the private endpoint. | A unique name that identifies the network interface associated to the private endpoint. |
-    | **Region** | The name of one of the [regions in which you can create private endpoints for Azure Database for PostgreSQL - Flexible Server](/azure/private-link/availability#databases). | The region you select must match that of the virtual network in which you plan to deploy the private endpoint. |
+    | **Region** | The name of one of the [regions in which you can create private endpoints for Azure Database for PostgreSQL flexible server](/azure/private-link/availability#databases). | The region you select must match that of the virtual network in which you plan to deploy the private endpoint. |
 
 
 9. In the **Resource** page, fill all the details required. Then, select **Next: Virtual Network**.

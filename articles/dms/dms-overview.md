@@ -34,7 +34,7 @@ Newer version of the Azure Database Migration Service is available as an extensi
 
 The following table compares the functionality of the versions of the Database Migration Service:
 
-| Feature | DMS(classic) | DMS - via Azure SQL extension for ADS | DMS - via Azure portal | Notes |
+| Feature | DMS (classic) | DMS (Azure SQL extension for ADS) | DMS (Azure portal) | Notes |
 | --- | --- | --- | --- | --- |
 | Assessment | No | Yes | No | Assess compatibility of the source. |
 | SKU recommendation | No | Yes | No | SKU recommendations for the target based on the assessment of the source. |

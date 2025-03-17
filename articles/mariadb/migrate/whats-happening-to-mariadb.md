@@ -1,8 +1,8 @@
 ---
 title: What's happening to Azure Database for MariaDB?
 description: The Azure Database for MariaDB service is being deprecated.
-author: karla-escobar
-ms.author: karlaescobar
+author: andtapia
+ms.author: andreatapia
 ms.reviewer: maghan
 ms.date: 1/24/2024
 ms.service: azure-database-mariadb

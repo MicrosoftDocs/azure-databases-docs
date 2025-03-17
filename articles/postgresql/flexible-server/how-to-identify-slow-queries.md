@@ -1,6 +1,6 @@
 ---
 title: Identify slow running query
-description: Troubleshooting guide for identifying slow running queries in Azure Database for PostgreSQL - Flexible Server.
+description: Troubleshooting guide for identifying slow running queries in Azure Database for PostgreSQL flexible server.
 author: sarat0681
 ms.author: sbalijepalli
 ms.reviewer: maghan
@@ -9,7 +9,7 @@ ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: conceptual
 ---
-# Troubleshoot and identify slow-running queries in Azure Database for PostgreSQL - Flexible Server
+# Troubleshoot and identify slow-running queries in Azure Database for PostgreSQL flexible server
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
@@ -212,8 +212,8 @@ Finalize Aggregate (cost=180185.84..180185.85 rows=1 width=4) (actual time=10387
 
 ## Related content
 
-- [Troubleshoot high CPU utilization in Azure Database for PostgreSQL - Flexible Server](how-to-high-cpu-utilization.md).
-- [Troubleshoot high IOPS utilization in Azure Database for PostgreSQL - Flexible Server](how-to-high-io-utilization.md).
-- [Troubleshoot high memory utilization in Azure Database for PostgreSQL - Flexible Server](how-to-high-memory-utilization.md).
-- [Server parameters in Azure Database for PostgreSQL - Flexible Server](concepts-server-parameters.md).
-- [Autovacuum tuning in Azure Database for PostgreSQL - Flexible Server](how-to-autovacuum-tuning.md).
+- [Troubleshoot high CPU utilization in Azure Database for PostgreSQL flexible server](how-to-high-cpu-utilization.md).
+- [Troubleshoot high IOPS utilization in Azure Database for PostgreSQL flexible server](how-to-high-io-utilization.md).
+- [Troubleshoot high memory utilization in Azure Database for PostgreSQL flexible server](how-to-high-memory-utilization.md).
+- [Server parameters in Azure Database for PostgreSQL flexible server](concepts-server-parameters.md).
+- [Autovacuum tuning in Azure Database for PostgreSQL flexible server](how-to-autovacuum-tuning.md).

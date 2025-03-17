@@ -13,7 +13,7 @@ ms.topic: how-to
 
 # Approve private endpoint connections
 
-Azure Database for PostgreSQL - Flexible Server is an Azure Private Link service. This means that you can create private endpoints so that your client applications can connect privately and securely to your Azure Database for PostgreSQL flexible server.
+Azure Database for PostgreSQL flexible server is an Azure Private Link service. This means that you can create private endpoints so that your client applications can connect privately and securely to your Azure Database for PostgreSQL flexible server.
 
 A private endpoint to your Azure Database for PostgreSQL flexible server is a network interface that you can inject in a subnet of an Azure virtual network. Any host or service that can route network traffic to that subnet, are able to communicate with your flexible server so that the network traffic doesn't have to traverse the internet. All traffic is sent privately using Microsoft backbone.
 
@@ -37,13 +37,13 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="./media/how-to-networking/networking-overview.png" alt-text="Screenshot showing the Overview page." lightbox="./media/how-to-networking/networking-overview.png":::
 
-3. The status of the server must be **Available**, for the **Networking** menu option to be enabled.
+3. The status of the server must be **Ready**, for the **Networking** menu option to be enabled.
 
     :::image type="content" source="./media/how-to-networking/networking-server-status.png" alt-text="Screenshot showing where in the Overview page you can find the status of the server." lightbox="./media/how-to-networking/networking-server-status.png":::
 
-4. If the status of the server isn't **Available**, the **Networking** option is disabled.
+4. If the status of the server isn't **Ready**, the **Networking** option is disabled.
 
-    :::image type="content" source="./media/how-to-networking/networking-disabled.png" alt-text="Screenshot showing that Networking menu is disabled when status of server isn't Available." lightbox="./media/how-to-networking/networking-disabled.png":::
+    :::image type="content" source="./media/how-to-networking/networking-disabled.png" alt-text="Screenshot showing that Networking menu is disabled when status of server isn't Ready." lightbox="./media/how-to-networking/networking-disabled.png":::
 
 > [!NOTE]
 > Any attempt to configure the networking settings of a server whose status is other than available, would fail with an error.

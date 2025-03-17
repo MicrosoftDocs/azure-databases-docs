@@ -32,7 +32,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
    :::image type="content" source="media/how-to-perform-major-version-upgrade/overview.png" alt-text="Screenshot showing the Overview page, to demonstrate how to initiate major version upgrade of an Azure Database for PostgreSQL flexible server." lightbox="media/how-to-perform-major-version-upgrade/overview.png":::
 
-3. The status of the server must be **Available**, for the **Upgrade** button to be enabled.
+3. The status of the server must be **Ready**, for the **Upgrade** button to be enabled.
 
    :::image type="content" source="media/how-to-perform-major-version-upgrade/server-status.png" alt-text="Screenshot showing where in the Overview page you can find the status of the server." lightbox="media/how-to-perform-major-version-upgrade/server-status.png":::
 
@@ -72,7 +72,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="media/how-to-perform-major-version-upgrade/upgrade-verification-server-name.png" alt-text="Screenshot showing the Overview page of the upgraded Azure Database for PostgreSQL flexible server, after major version upgrade, highlighting the name of the server." lightbox="media/how-to-perform-major-version-upgrade/upgrade-verification-server-name.png":::
 
-13. Notice that the version of PostgreSQL is upgraded to the major version you selected as target. The minor version corresponds to the most recent minor version supported by Azure Database for PostgreSQL - Flexible Server at the time of the upgrade.
+13. Notice that the version of PostgreSQL is upgraded to the major version you selected as target. The minor version corresponds to the most recent minor version supported by Azure Database for PostgreSQL flexible server at the time of the upgrade.
 
     :::image type="content" source="media/how-to-perform-major-version-upgrade/upgrade-verification-server-version.png" alt-text="Screenshot showing the Overview page of the upgraded Azure Database for PostgreSQL flexible server, after major version upgrade, highlighting the version of the server." lightbox="media/how-to-perform-major-version-upgrade/upgrade-verification-server-version.png":::
 
@@ -88,7 +88,7 @@ az postgres flexible-server upgrade --resource-group <resource_group> --name <se
 
 ## Related content
 
-- [Overview of business continuity with Azure Database for PostgreSQL - Flexible Server](concepts-business-continuity.md).
-- [Major version upgrades in Azure Database for PostgreSQL - Flexible Server](concepts-major-version-upgrade.md).
-- [High availability in Azure Database for PostgreSQL - Flexible Server](/azure/reliability/reliability-postgresql-flexible-server).
-- [Backup and restore in Azure Database for PostgreSQL - Flexible Server](concepts-backup-restore.md).
+- [Overview of business continuity with Azure Database for PostgreSQL flexible server](concepts-business-continuity.md).
+- [Major version upgrades in Azure Database for PostgreSQL flexible server](concepts-major-version-upgrade.md).
+- [High availability in Azure Database for PostgreSQL flexible server](/azure/reliability/reliability-postgresql-flexible-server).
+- [Backup and restore in Azure Database for PostgreSQL flexible server](concepts-backup-restore.md).

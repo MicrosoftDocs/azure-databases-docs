@@ -1,6 +1,6 @@
 ---
 title: Developer Options server parameters
-description: Developer Options server parameters for Azure Database for PostgreSQL - Flexible Server.
+description: Developer Options server parameters for Azure Database for PostgreSQL flexible server.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan

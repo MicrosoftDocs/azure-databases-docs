@@ -1,5 +1,5 @@
 ---
-title: "Migrate to Azure Database for PostgreSQL - Flexible Server From Single Server"
+title: "Migrate to Azure Database for PostgreSQL flexible server From Single Server"
 titleSuffix: "Migrate from Single Server to Flexible Server."
 description: "Learn about migrating your Single Server databases to Azure Database for PostgreSQL Flexible Server by using the Azure portal or CLI commands."
 author: hariramt

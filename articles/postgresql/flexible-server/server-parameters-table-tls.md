@@ -1,6 +1,6 @@
 ---
 title: TLS server parameters
-description: TLS server parameters for Azure Database for PostgreSQL - Flexible Server.
+description: TLS server parameters for Azure Database for PostgreSQL flexible server.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan

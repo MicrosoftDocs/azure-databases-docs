@@ -27,11 +27,21 @@ Using the [Azure portal](https://portal.azure.com):
 
 2. In the resource menu, under the **Settings** section, select **Server parameters**.
 
-3. Select **Reset all to default**.
+    :::image type="content" source="./media/how-to-configure-server-parameters/server-parameters.png" alt-text="Screenshot that shows the Server parameters menu option." lightbox="./media/how-to-configure-server-parameters/server-parameters.png":::
 
-    :::image type="content" source="./media/how-to-configure-server-parameters/reset-all-to-default.png" alt-text="Screenshot of resetting the value of all server parameters to their defaults." lightbox="./media/how-to-configure-server-parameters/reset-all-to-default.png":::
+3. Select the **Modified** tab.
 
-4. If, for any of the parameters whose current value doesn't match their default, the column **Parameter type** is equal to **Static**, the server requires a restart for the change to take effect. In that case, a dialog pops up so that you can select if you want to:
+    :::image type="content" source="./media/how-to-configure-server-parameters/modified-parameters.png" alt-text="Screenshot that shows the list of modified server parameters." lightbox="./media/how-to-configure-server-parameters/modified-parameters.png":::
+
+4. Select **Reset all to default**.
+
+    :::image type="content" source="./media/how-to-configure-server-parameters/reset-all-to-default.png" alt-text="Screenshot that shows the Reset all to default button." lightbox="./media/how-to-configure-server-parameters/reset-all-to-default.png":::
+
+5. If you want to proceed with resetting all modified server parameters to their default values, confirm the operation in the **Reset all to default values** dialog.
+
+    :::image type="content" source="./media/how-to-configure-server-parameters/reset-all-to-default-confirm.png" alt-text="Screenshot that shows the Reset all to default values confirmation dialog." lightbox="./media/how-to-configure-server-parameters/reset-all-to-default-confirm.png":::
+
+6. If, for any of the parameters whose current value doesn't match their default, the column **Parameter type** is equal to **Static**, the server requires a restart for the change to take effect. In that case, a dialog pops up so that you can select if you want to:
     - **Save and Restart**: In case you want to persist all changes made to all parameters whose values were modified, and immediately after restart the server for any changes to static parameters to take effect.
     - **Save only**: In case you want to persist all changes made to all parameters whose set values changed, but want to defer the server restart to a later time. Until you don't complete the server restart action, changes made to any static server parameters don't take effect.
     - **Cancel**: To not implement any changes yet.

@@ -1,6 +1,6 @@
 ---
 title: Manage server - Azure CLI
-description: Learn how to manage an Azure Database for PostgreSQL - Flexible Server instance from the Azure CLI.
+description: Learn how to manage an Azure Database for PostgreSQL flexible server instance from the Azure CLI.
 author: gbowerman
 ms.author: guybo
 ms.reviewer: maghan
@@ -12,7 +12,7 @@ ms.custom:
   - devx-track-azurecli
 ---
 
-# Manage Azure Database for PostgreSQL - Flexible Server by using the Azure CLI
+# Manage Azure Database for PostgreSQL flexible server by using the Azure CLI
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
@@ -139,5 +139,5 @@ az postgres flexible-server delete --resource-group myresourcegroup --name mydem
 ```
 
 ## Related content
-- [Backup and restore in Azure Database for PostgreSQL - Flexible Server](concepts-backup-restore.md).
-- [Monitor metrics in Azure Database for PostgreSQL - Flexible Server](concepts-monitoring.md).
+- [Backup and restore in Azure Database for PostgreSQL flexible server](concepts-backup-restore.md).
+- [Monitor metrics in Azure Database for PostgreSQL flexible server](concepts-monitoring.md).

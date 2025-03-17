@@ -1,6 +1,6 @@
 ---
 title: Configure alerts - Azure portal
-description: This article describes how to configure and access metric alerts for Azure Database for PostgreSQL - Flexible Server from the Azure portal.
+description: This article describes how to configure and access metric alerts for Azure Database for PostgreSQL flexible server from the Azure portal.
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
@@ -10,7 +10,7 @@ ms.subservice: flexible-server
 ms.topic: how-to
 ---
 
-# Use the Azure portal to set up alerts on metrics for Azure Database for PostgreSQL - Flexible Server
+# Use the Azure portal to set up alerts on metrics for Azure Database for PostgreSQL flexible server
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
@@ -75,7 +75,7 @@ To [set up a new metric alert rule](/azure/azure-monitor/alerts/alerts-create-ne
 > [!IMPORTANT]
 > The resources you select must be within the same resource type, location, and subscription. Resources that do not fit these criteria are not selectable.
 
-You can also use [Azure Resource Manager templates](/azure/azure-monitor/alerts/alerts-create-new-alert-rule#create-a-new-alert-rule-using-an-arm-template) to deploy multi-resource metric alerts. To learn more about multi-resource alerts, refer our blog [Scale Monitoring with Azure Database for PostgreSQL - Flexible Server Multi-Resource Alert](https://techcommunity.microsoft.com/t5/azure-database-for-postgresql/scale-monitoring-with-azure-postgresql-multi-resource-alerts/ba-p/3866526).
+You can also use [Azure Resource Manager templates](/azure/azure-monitor/alerts/alerts-create-new-alert-rule#create-a-new-alert-rule-using-an-arm-template) to deploy multi-resource metric alerts. To learn more about multi-resource alerts, refer our blog [Scale Monitoring with Azure Database for PostgreSQL flexible server Multi-Resource Alert](https://techcommunity.microsoft.com/t5/azure-database-for-postgresql/scale-monitoring-with-azure-postgresql-multi-resource-alerts/ba-p/3866526).
 
 ## Manage your alerts
 

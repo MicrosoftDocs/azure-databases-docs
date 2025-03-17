@@ -21,6 +21,9 @@
   - name: Go
     displayName: Quickstart, AZD, Azure Developer CLI
     href: quickstart-go.md
+  - name: Rust
+    displayName: Quickstart, AZD, Azure Developer CLI
+    href: quickstart-rust.md
   - name: Portal
     displayName: Quickstart, Azure portal
     href: quickstart-portal.md
@@ -728,6 +731,8 @@
         href: troubleshoot-request-rate-too-large.md
       - name: Troubleshoot not found
         href: troubleshoot-not-found.md
+      - name: Troubleshoot conflict
+        href: troubleshoot-conflict.md
       - name: Troubleshoot unauthorized
         href: troubleshoot-unauthorized.md
       - name: Troubleshoot forbidden
@@ -980,8 +985,10 @@
       href: migrate-relational-data.md
     - name: Migrate - Couchbase to API for NoSQL
       href: couchbase-cosmos-migration.md
-    - name: Migrate - DynamoDB to API for NoSQL
+    - name: Migrate - DynamoDB application to API for NoSQL
       href: dynamo-to-cosmos.md
+    - name: Migrate - DynamoDB data to API for NoSQL
+      href: dynamodb-data-migration-cosmos-db.md
     - name: Migrate - HBase to API for NoSQL
       href: migrate-hbase-to-cosmos-db.md
   - name: Integrate with other services

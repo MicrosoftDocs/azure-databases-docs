@@ -1,6 +1,6 @@
 ---
 title: Autovacuum tuning
-description: Troubleshooting guide for autovacuum in Azure Database for PostgreSQL - Flexible Server.
+description: Troubleshooting guide for autovacuum in Azure Database for PostgreSQL flexible server.
 author: sarat0681
 ms.author: sbalijepalli
 ms.reviewer: maghan
@@ -10,7 +10,7 @@ ms.subservice: flexible-server
 ms.topic: conceptual
 ---
 
-# Autovacuum tuning in Azure Database for PostgreSQL - Flexible Server
+# Autovacuum tuning in Azure Database for PostgreSQL flexible server
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
@@ -344,9 +344,9 @@ The recommendations are:
 
 ## Related content
 
-- [Full vacuum using pg_repack in Azure Database for PostgreSQL - Flexible Server](how-to-perform-fullvacuum-pg-repack.md).
-- [Troubleshoot high CPU utilization in Azure Database for PostgreSQL - Flexible Server](how-to-high-cpu-utilization.md).
-- [Troubleshoot high memory utilization in Azure Database for PostgreSQL - Flexible Server](how-to-high-memory-utilization.md).
-- [Troubleshoot high IOPS utilization in Azure Database for PostgreSQL - Flexible Server](how-to-high-io-utilization.md).
-- [Troubleshoot and identify slow-running queries in Azure Database for PostgreSQL - Flexible Server](how-to-identify-slow-queries.md).
-- [Server parameters in Azure Database for PostgreSQL - Flexible Server](concepts-server-parameters.md).
+- [Full vacuum using pg_repack in Azure Database for PostgreSQL flexible server](how-to-perform-fullvacuum-pg-repack.md).
+- [Troubleshoot high CPU utilization in Azure Database for PostgreSQL flexible server](how-to-high-cpu-utilization.md).
+- [Troubleshoot high memory utilization in Azure Database for PostgreSQL flexible server](how-to-high-memory-utilization.md).
+- [Troubleshoot high IOPS utilization in Azure Database for PostgreSQL flexible server](how-to-high-io-utilization.md).
+- [Troubleshoot and identify slow-running queries in Azure Database for PostgreSQL flexible server](how-to-identify-slow-queries.md).
+- [Server parameters in Azure Database for PostgreSQL flexible server](concepts-server-parameters.md).

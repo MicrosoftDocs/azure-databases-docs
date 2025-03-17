@@ -1,6 +1,6 @@
 ---
 title: Query Tuning / Genetic Query Optimizer server parameters
-description: Query Tuning / Genetic Query Optimizer server parameters for Azure Database for PostgreSQL - Flexible Server.
+description: Query Tuning / Genetic Query Optimizer server parameters for Azure Database for PostgreSQL flexible server.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan

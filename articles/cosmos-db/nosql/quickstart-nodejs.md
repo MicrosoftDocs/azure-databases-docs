@@ -8,7 +8,7 @@ ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.devlang: typescript
 ms.topic: quickstart-sdk
-ms.date: 11/07/2024
+ms.date: 02/26/2025
 ms.custom: devx-track-js, devx-track-ts, devx-track-extended-azdevcli
 zone_pivot_groups: azure-devlang-nodejs
 appliesto:
@@ -20,7 +20,7 @@ appliesto:
 
 [!INCLUDE[Developer Quickstart selector](includes/quickstart/dev-selector.md)]
 
-In this quickstart, you deploy a basic Azure Cosmos DB for Table application using the Azure SDK for Node.js. Azure Cosmos DB for Table is a schemaless data store allowing applications to store structured table data in the cloud. You learn how to create tables, rows, and perform basic tasks within your Azure Cosmos DB resource using the Azure SDK for Node.js.
+In this quickstart, you deploy a basic Azure Cosmos DB for NoSQL application using the Azure SDK for Node.js. Azure Cosmos DB for NoSQL is a schemaless data store allowing applications to store unstructured data in the cloud. Query data in your containers and perform common operations on individual items using the Azure SDK for Node.js.
 
 [API reference documentation](/javascript/api/overview/azure/cosmos-readme) | [Library source code](https://github.com/azure/azure-sdk-for-js/tree/main/sdk/cosmosdb/cosmos) | [Package (npm)](https://www.npmjs.com/package/@azure/cosmos) | [Azure Developer CLI](/azure/developer/azure-developer-cli/overview)
 
@@ -34,7 +34,7 @@ If you don't have an Azure account, create a [free account](https://azure.micros
 
 ## Initialize the project
 
-Use the Azure Developer CLI (`azd`) to create an Azure Cosmos DB for Table account and deploy a containerized sample application. The sample application uses the client library to manage, create, read, and query sample data.
+Use the Azure Developer CLI (`azd`) to create an Azure Cosmos DB for NoSQL account and deploy a containerized sample application. The sample application uses the client library to manage, create, read, and query sample data.
 
 1. Open a terminal in an empty directory.
 
@@ -343,3 +343,4 @@ azd down
 - [Java Quickstart](quickstart-java.md)
 - [Python Quickstart](quickstart-python.md)
 - [Go Quickstart](quickstart-go.md)
+- [Rust Quickstart](quickstart-go.md)

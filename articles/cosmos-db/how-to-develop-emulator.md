@@ -6,7 +6,7 @@ author: sajeetharan
 ms.author: sasinnat
 ms.service: azure-cosmos-db
 ms.topic: how-to
-ms.date: 06/20/2024
+ms.date: 03/10/2025
 zone_pivot_groups: azure-cosmos-db-apis-nosql-mongodb-cassandra-gremlin-table
 # CustomerIntent: As a developer, I want to use the Azure Cosmos DB emulator so that I can develop my application against a database during development.
 ---

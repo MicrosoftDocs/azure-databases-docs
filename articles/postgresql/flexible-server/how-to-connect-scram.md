@@ -1,6 +1,6 @@
 ---
 title: Connectivity using SCRAM
-description: Instructions and information on how to configure and connect using SCRAM in Azure Database for PostgreSQL - Flexible Server.
+description: Instructions and information on how to configure and connect using SCRAM in Azure Database for PostgreSQL flexible server.
 author: akashraokm
 ms.author: akashrao
 ms.reviewer: maghan
@@ -10,7 +10,7 @@ ms.subservice: flexible-server
 ms.topic: how-to
 ---
 
-# SCRAM authentication in Azure Database for PostgreSQL - Flexible Server
+# SCRAM authentication in Azure Database for PostgreSQL flexible server
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
@@ -90,6 +90,6 @@ Salted Challenge Response Authentication Mechanism (SCRAM) is a password-based m
 
 ## Related content
 
-- [Create and manage Azure Database for PostgreSQL - Flexible Server virtual network using Azure CLI](how-to-manage-virtual-network-cli.md).
-- [Networking in Azure Database for PostgreSQL - Flexible Server](concepts-networking-private.md).
-- [Firewall rules in Azure Database for PostgreSQL - Flexible Server](concepts-networking-public.md#firewall-rules).
+- [Create and manage Azure Database for PostgreSQL flexible server virtual network using Azure CLI](how-to-manage-virtual-network-cli.md).
+- [Networking in Azure Database for PostgreSQL flexible server](concepts-networking-private.md).
+- [Firewall rules in Azure Database for PostgreSQL flexible server](concepts-networking-public.md#firewall-rules).

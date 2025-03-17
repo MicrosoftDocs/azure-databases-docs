@@ -10,7 +10,7 @@ ms.topic: how-to
 ms.devlang: azurecli
 ---
 
-# List and update configurations of an Azure Database for PostgreSQL - Flexible Server instance using Azure CLI
+# List and update configurations of an Azure Database for PostgreSQL flexible server instance using Azure CLI
 
 [!INCLUDE [applies-to-postgresql-flexible-server](../includes/applies-to-postgresql-flexible-server.md)]
 

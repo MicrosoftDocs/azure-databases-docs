@@ -2,8 +2,8 @@
 title: Time travel in Azure Synapse Link (preview)
 titleSuffix: Azure Cosmos DB for NoSQL
 description: Time travel enables you to access Azure Cosmos DB data in the analytical store, precisely as it appeared at specific points in time.
-author: Rodrigossz
-ms.author: rosouz
+author: jilmal
+ms.author: jmaldonado
 ms.topic: conceptual
 ms.service: azure-cosmos-db
 ms.subservice: nosql

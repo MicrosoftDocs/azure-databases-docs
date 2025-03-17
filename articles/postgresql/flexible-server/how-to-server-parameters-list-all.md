@@ -25,21 +25,29 @@ Using the [Azure portal](https://portal.azure.com):
 
 1. Select your Azure Database for PostgreSQL flexible server instance.
 
-2. In the resource menu, under the **Settings** section, select **Server parameters**. The page shows a list of parameters, their configured values, optional units, whether they're read-only/dynamic/static, and their descriptions.
+2. In the resource menu, under **Settings**, select **Server parameters**.
 
-    :::image type="content" source="./media/how-to-configure-server-parameters/server-parameters.png" alt-text="Screenshot of Server parameters page." lightbox="./media/how-to-configure-server-parameters/server-parameters.png":::
+    :::image type="content" source="./media/how-to-configure-server-parameters/server-parameters.png" alt-text="Screenshot that shows the Server parameters menu option." lightbox="./media/how-to-configure-server-parameters/server-parameters.png":::
 
-3. Select or hover over the **i** (information) icon to see which values are allowed for each parameter. Depending on the data type of the parameter, which can be string, enumeration, integer, boolean, numeric, set, the allowed values vary. And it can be regular expression, list of values, range of integers, on/off, range of decimals, list of values, respectively.
+3. The page shows a list of parameters, their configured values, optional units, whether they're read-only, dynamic, or static, and their descriptions.
+
+    :::image type="content" source="./media/how-to-configure-server-parameters/server-parameters-all.png" alt-text="Screenshot that shows the All tab of the Server parameters page." lightbox="./media/how-to-configure-server-parameters/server-parameters-all.png":::
+
+4. Select or hover over the **i** (information) icon to see which values are allowed for each parameter. Depending on the data type of the parameter, which can be string, enumeration, integer, boolean, numeric, set, the allowed values vary. And it can be regular expression, list of values, range of integers, on/off, range of decimals, list of values, respectively.
 
     :::image type="content" source="./media/how-to-configure-server-parameters/information-icon.png" alt-text="Screenshot showing balloon that pops up when hovering on the information icon." lightbox="./media/how-to-configure-server-parameters/information-icon.png":::
 
-4. The list of server parameters supported by the instance consists of several hundred items, which are rendered in pages of 20 items each. At the bottom of the page, there's a control to inform you of the position you're at. There's also a paging control which you can use to navigate through the whole set of pages.
+5. The list of server parameters supported by the instance consists of several hundred items, which are rendered in pages of 20 items each. At the bottom of the page, there's a control to inform you of the position you're at.
 
-    :::image type="content" source="./media/how-to-configure-server-parameters/paging.png" alt-text="Screenshot paging control in Server parameters page." lightbox="./media/how-to-configure-server-parameters/paging.png":::
+    :::image type="content" source="./media/how-to-configure-server-parameters/paging-position.png" alt-text="Screenshot that shows your position while paging in the Server parameters page." lightbox="./media/how-to-configure-server-parameters/paging-position.png":::
 
-5. If needed, use the **Search to filter items...** text box to narrow down the list to those parameters containing the search term in their name or in their description.
+6. There's also a paging control which you can use to navigate through the whole set of pages.
 
-    :::image type="content" source="./media/how-to-configure-server-parameters/search.png" alt-text="Screenshot of search in Server parameters." lightbox="./media/how-to-configure-server-parameters/search.png":::
+    :::image type="content" source="./media/how-to-configure-server-parameters/paging.png" alt-text="Screenshot that shows the paging control in the Server parameters page." lightbox="./media/how-to-configure-server-parameters/paging.png":::
+
+7. If needed, use the **Search to filter items...** text box to narrow down the list to those parameters containing the search term in their name or in their description.
+
+    :::image type="content" source="./media/how-to-configure-server-parameters/search.png" alt-text="Screenshot that shows how to search in Server parameters page." lightbox="./media/how-to-configure-server-parameters/search.png":::
 
 
 The **Parameter type** column can show any of the following values for each parameter:

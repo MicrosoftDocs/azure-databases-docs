@@ -1,6 +1,6 @@
 ---
-title: Server concepts for Azure Database for PostgreSQL - Flexible Server
-description: This article provides considerations and guidelines for configuring and managing Azure Database for PostgreSQL - Flexible Server.
+title: Server concepts for Azure Database for PostgreSQL flexible server
+description: This article provides considerations and guidelines for configuring and managing Azure Database for PostgreSQL flexible server.
 author: kabharati
 ms.author: kabharati
 ms.reviewer: maghan
@@ -10,7 +10,7 @@ ms.subservice: flexible-server
 ms.topic: conceptual
 ---
 
-# Server concepts for Azure Database for PostgreSQL - Flexible Server
+# Server concepts for Azure Database for PostgreSQL flexible server
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
@@ -68,9 +68,10 @@ Your Azure Database for PostgreSQL flexible server instance is enabled with defa
 
 ## Related content
 
-- [Overview of Azure Database for PostgreSQL - Flexible Server](overview.md).
-- [Compute options in Azure Database for PostgreSQL - Flexible Server](concepts-compute.md).
-- [Storage options in Azure Database for PostgreSQL - Flexible Server](concepts-storage.md).
-- [Supported versions of PostgreSQL in Azure Database for PostgreSQL - Flexible Server](concepts-supported-versions.md).
-- [Limits in Azure Database for PostgreSQL - Flexible Server](concepts-limits.md).
-- [Server parameters in Azure Database for PostgreSQL - Flexible Server](concepts-server-parameters.md).
+- [Overview of Azure Database for PostgreSQL flexible server](overview.md).
+- [Compute options in Azure Database for PostgreSQL flexible server](concepts-compute.md).
+- [Storage options in Azure Database for PostgreSQL flexible server](concepts-storage.md).
+- [Supported versions of PostgreSQL in Azure Database for PostgreSQL flexible server](concepts-supported-versions.md).
+- [Limits in Azure Database for PostgreSQL flexible server](concepts-limits.md).
+- [Server parameters in Azure Database for PostgreSQL flexible server](concepts-server-parameters.md).
+

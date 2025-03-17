@@ -39,9 +39,9 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="./media/how-to-configure-high-availability/high-availability-not-enabled.png" alt-text="Screenshot showing how the Enable high availability checkbox is unchecked, when high availability isn't enabled." lightbox="./media/how-to-configure-high-availability/high-availability-not-enabled.png":::
 
-4. Also, **High availability status** is shown as **Not Enabled**.
+4. Also, **High availability status** is shown as **Not enabled**.
 
-    :::image type="content" source="./media/how-to-configure-high-availability/high-availability-not-enabled-status.png" alt-text="Screenshot showing how the High availability status shows as Not Enabled, when high availability isn't enabled." lightbox="./media/how-to-configure-high-availability/high-availability-not-enabled-status.png":::
+    :::image type="content" source="./media/how-to-configure-high-availability/high-availability-not-enabled-status.png" alt-text="Screenshot showing how the High availability status shows as Not enabled, when high availability isn't enabled." lightbox="./media/how-to-configure-high-availability/high-availability-not-enabled-status.png":::
 
 5. Select the **Enable high availability** checkbox to enable the option.
 
@@ -66,7 +66,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="./media/how-to-configure-high-availability/enable-high-availability-save.png" alt-text="Screenshot showing the Save button." lightbox="./media/how-to-configure-high-availability/enable-high-availability-save.png":::
 
-9. A dialog informs you of the cost increase associated with the deployment of the standby server. If you decide to proceed, select **Enable HA**.
+9. A dialog informs you of the cost increase associated with the deployment of the standby server. If you decide to proceed, select **Enable high availability**.
 
     :::image type="content" source="./media/how-to-configure-high-availability/confirm-enable-high-availability.png" alt-text="Screenshot showing the dialog to confirm enablement of high availability." lightbox="./media/how-to-configure-high-availability/confirm-enable-high-availability.png":::
 
@@ -156,7 +156,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="./media/how-to-configure-high-availability/disable-high-availability-save.png" alt-text="Screenshot showing the Save button to disable high availability." lightbox="./media/how-to-configure-high-availability/disable-high-availability-save.png":::
 
-7.  A dialog informs you of the cost reduction associated with the removal of the standby server. If you decide to proceed, select **Disable HA**.
+7.  A dialog informs you of the cost reduction associated with the removal of the standby server. If you decide to proceed, select **Disable high availability**.
 
     :::image type="content" source="./media/how-to-configure-high-availability/confirm-disable-high-availability.png" alt-text="Screenshot showing the dialog to confirm disablement of high availability." lightbox="./media/how-to-configure-high-availability/confirm-disable-high-availability.png":::
 
@@ -282,7 +282,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="./media/how-to-configure-high-availability/high-availability-primary-standby-zones.png" alt-text="Screenshot showing the zones in which primary and standby servers are deployed." lightbox="./media/how-to-configure-high-availability/high-availability-primary-standby-zones.png":::
 
-4.	Select **Forced Failover** to initiate the manual failover procedure. A dialog informs you of the expected downtime until the failover completes. If you decide to proceed, select **OK**.
+4.	Select **Forced failover** to initiate the manual failover procedure. A dialog informs you of the expected downtime until the failover completes. If you decide to proceed, select **Initiate forced failover**.
 
     :::image type="content" source="./media/how-to-configure-high-availability/confirm-forced-failover.png" alt-text="Screenshot showing the informational message displayed before initiating a forced failover." lightbox="./media/how-to-configure-high-availability/confirm-forced-failover.png":::
 
@@ -348,7 +348,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="./media/how-to-configure-high-availability/high-availability-primary-standby-zones.png" alt-text="Screenshot showing the zones in which primary and standby servers are deployed." lightbox="./media/how-to-configure-high-availability/high-availability-primary-standby-zones.png":::
 
-4.	Select **Planned Failover** to initiate the manual failover procedure. A dialog informs you of the expected downtime until the failover completes. If you decide to proceed, select **OK**.
+4.	Select **Planned failover** to initiate the manual failover procedure. A dialog informs you of the expected downtime until the failover completes. If you decide to proceed, select **Initiate planned failover**.
 
     :::image type="content" source="./media/how-to-configure-high-availability/confirm-planned-failover.png" alt-text="Screenshot showing the informational message displayed before initiating a planned failover." lightbox="./media/how-to-configure-high-availability/confirm-planned-failover.png":::
 
@@ -393,7 +393,7 @@ Message: Operation HandleWalServiceFailureManagementOperation failed, because se
 
 - Enabling or disabling high availability on an Azure Database for PostgreSQL flexible server doesn't change other settings, including networking configuration, firewall settings, server parameters, or backup retention. Enabling or disabling high availability is an online operation, and doesn't affect your application connectivity and operations.
 
-- High availability with both replicas deployed in the same zone is supported and available in all regions in which Azure Database for PostgreSQL - Flexible Server is supported. However, high availability with zone redundancy is [only available in certain regions](overview.md#azure-regions).
+- High availability with both replicas deployed in the same zone is supported and available in all regions in which Azure Database for PostgreSQL flexible server is supported. However, high availability with zone redundancy is [only available in certain regions](overview.md#azure-regions).
 
 - High availability isn't supported in the **Burstable** tier. It's only supported in **General purpose** or **Memory optimized** tiers.
 
@@ -406,5 +406,5 @@ Message: Operation HandleWalServiceFailureManagementOperation failed, because se
 
 ## Related content
 
-- [Overview of business continuity with Azure Database for PostgreSQL - Flexible Server](concepts-business-continuity.md).
-- [High availability in Azure Database for PostgreSQL - Flexible Server](/azure/reliability/reliability-postgresql-flexible-server).
+- [Overview of business continuity with Azure Database for PostgreSQL flexible server](concepts-business-continuity.md).
+- [High availability in Azure Database for PostgreSQL flexible server](/azure/reliability/reliability-postgresql-flexible-server).
