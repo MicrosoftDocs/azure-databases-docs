@@ -31,9 +31,9 @@
 - name: Concepts
   items:
     - name: Vector database
-      href: mongodb/vcore/vector-search.md
+      href: vector-search.md
     - name: Real-time custom content generation
-      href: mongodb/vcore/ai-advertisement-generation.md
+      href: ai-advertisement-generation.md
     - name: Free tier
       href: free-tier.md
     - name: Multicloud solution
