@@ -85,24 +85,76 @@
         href: ../nosql/multi-tenancy-vector-search.md
 - name: Create secure solutions
   items:
-    - name: Security guide
-      displayName: overview, summary, introduction, get started
-      href: security/index.md
-    - name: Core terminology
-      displayName: terms
-      href: security/glossary.md
-    - name: Get signed-in identity
-      href: security/how-to-get-signed-in-identity.md
-    - name: Create managed identities
-      displayName: principals
-      href: security/how-to-create-managed-identities.md
-    - name: Disable key-based authentication
-      displayName: key, ropc, connection string
-      href: security/how-to-disable-key-based-authentication.md
-    - name: Grant control plane access
-      href: security/how-to-grant-control-plane-role-based-access.md
-    - name: Grant data plane access
-      href: security/how-to-grant-data-plane-role-based-access.md
+    - name: Developer security guide
+      items:
+        - name: Overview
+          displayName: overview, summary, introduction, get started
+          href: security/index.md
+        - name: Core terminology
+          displayName: terms
+          href: security/glossary.md
+        - name: Get signed-in identity
+          href: security/how-to-get-signed-in-identity.md
+        - name: Create managed identities
+          displayName: principals
+          href: security/how-to-create-managed-identities.md
+        - name: Disable key-based authentication
+          displayName: key, ropc, connection string
+          href: security/how-to-disable-key-based-authentication.md
+        - name: Grant control plane access
+          href: security/how-to-grant-control-plane-role-based-access.md
+        - name: Grant data plane access
+          href: security/how-to-grant-data-plane-role-based-access.md
+    - name: Security overview
+      href: ../security.yml
+    - name: Network security
+      items:
+      - name: Configure IP firewall
+        href: ../how-to-configure-firewall.md
+      - name: Configure access from virtual networks
+        displayName: service endpoints
+        href: ../how-to-configure-vnet-service-endpoint.md
+      - name: Configure access from private endpoints
+        href: ../how-to-configure-private-endpoints.md
+      - name: Configure Network Security Perimeter
+        href: ../how-to-configure-nsp.md
+    - name: Data encryption
+      items:
+      - name: Use Always Encrypted
+        href: ../how-to-always-encrypted.md
+      - name: Self-serve minimum transport-layer security (TLS) version enforcement
+        href: ../self-serve-minimum-tls-enforcement.md
+      - name: Prepare for upcoming TLS 1.3 support for Azure Cosmos DB
+        href: ../tls-support.md
+      - name: Configure customer-managed keys with Azure Key Vault
+        href: ../how-to-setup-customer-managed-keys.md
+      - name: Configure customer-managed keys on existing accounts with Azure Key Vault
+        href: ../how-to-setup-customer-managed-keys-existing-accounts.md
+      - name: customer-managed key (CMK) troubleshooting guide
+        href: ../cmk-troubleshooting-guide.md
+      - name: Configure customer-managed keys with Azure managed hardware security module (HSM) key vault
+        href: ../how-to-setup-customer-managed-keys-mhsm.md
+      - name: Configure cross-tenant customer-managed keys
+        href: ../how-to-setup-cross-tenant-customer-managed-keys.md
+      - name: Cross-tenant CMK troubleshooting guide
+        href: ../troubleshoot-cmk.md
+      - name: Access Azure Key Vault with managed identity
+        href: ../access-key-vault-managed-identity.md
+    - name: Configure Cross Origin Resource Sharing (CORS)
+      href: how-to-configure-cross-origin-resource-sharing.md
+    - name: Use Azure Key Vault to store keys
+      href: ../store-credentials-key-vault.md
+    - name: Considerations and guidance
+      href: ../security-considerations.md
+    - name: Data encryption
+      href: ../database-encryption-at-rest.md
+    - name: Azure Policy support
+      href: ../policy.md
+    - name: Security controls by Azure Policy
+      displayName: regulatory, compliance, standards, domains
+      href: ../security-controls-policy.md
+    - name: Threat protection with Microsoft Defender for Cloud
+      href: defender-for-cosmos-db.md
     - name: Reference
       items:
         - name: Control plane
@@ -121,6 +173,12 @@
               href: security/reference-data-plane-actions.md
             - name: Built-in roles
               href: security/reference-data-plane-roles.md
+        - name: Well Architected Framework security guidance
+          href: /azure/well-architected/service-guides/cosmos-db?context=/azure/cosmos-db/nosql/context/context#security
+        - name: Security baseline
+          href: /security/benchmark/azure/baselines/cosmos-db-security-baseline?bc=/azure/cosmos-db/breadcrumb/toc.json&toc=/azure/cosmos-db/toc.json
+        - name: Service tags
+          href: /azure/virtual-network/service-tags-overview?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: Frequently asked questions
           displayName: faq, questions, answers
           href: faq.yml?context=/azure/cosmos-db/nosql/context/context#security
@@ -571,30 +629,6 @@
             href: ../conflict-resolution-policies.md
       - name: Global distribution - under the hood
         href: ../global-dist-under-the-hood.md
-    - name: Security
-      items:
-      - name: Security overview
-        href: ../security.yml
-      - name: Role-based access control guide
-        displayName: RBAC, Entra
-        href: security/index.md
-      - name: Considerations and guidance
-        href: ../security-considerations.md
-      - name: Well Architected Framework security guidance
-        href: /azure/well-architected/service-guides/cosmos-db?context=/azure/cosmos-db/nosql/context/context#security
-      - name: Security baseline
-        href: /security/benchmark/azure/baselines/cosmos-db-security-baseline?bc=/azure/cosmos-db/breadcrumb/toc.json&toc=/azure/cosmos-db/toc.json
-      - name: Data encryption
-        href: ../database-encryption-at-rest.md
-      - name: Service tags
-        href: /azure/virtual-network/service-tags-overview?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
-      - name: Azure Policy support
-        href: ../policy.md
-      - name: Security controls by Azure Policy
-        displayName: regulatory, compliance, standards, domains
-        href: ../security-controls-policy.md
-      - name: Threat protection with Microsoft Defender for Cloud
-        href: defender-for-cosmos-db.md
     - name: Enterprise readiness
       items:
       - name: Service quotas
@@ -1036,52 +1070,6 @@
           href: ../periodic-backup-update-storage-redundancy.md
         - name: Modify interval retention
           href: ../periodic-backup-modify-interval-retention.md
-    - name: Security
-      items:
-      - name: Networking
-        items:
-        - name: Configure IP firewall
-          href: ../how-to-configure-firewall.md
-        - name: Configure access from virtual networks
-          displayName: service endpoints
-          href: ../how-to-configure-vnet-service-endpoint.md
-        - name: Configure access from private endpoints
-          href: ../how-to-configure-private-endpoints.md
-        - name: Configure Network Security Perimeter
-          href: ../how-to-configure-nsp.md
-      - name: Encryption
-        items:
-        - name: Use Always Encrypted
-          href: ../how-to-always-encrypted.md
-        - name: Self-serve minimum transport-layer security (TLS) version enforcement
-          href: ../self-serve-minimum-tls-enforcement.md
-        - name: Prepare for upcoming TLS 1.3 support for Azure Cosmos DB
-          href: ../tls-support.md
-        - name: Configure customer-managed keys with Azure Key Vault
-          href: ../how-to-setup-customer-managed-keys.md
-        - name: Configure customer-managed keys on existing accounts with Azure Key Vault
-          href: ../how-to-setup-customer-managed-keys-existing-accounts.md
-        - name: customer-managed key (CMK) troubleshooting guide
-          href: ../cmk-troubleshooting-guide.md
-        - name: Configure customer-managed keys with Azure managed hardware security module (HSM) key vault
-          href: ../how-to-setup-customer-managed-keys-mhsm.md
-        - name: Configure cross-tenant customer-managed keys
-          href: ../how-to-setup-cross-tenant-customer-managed-keys.md
-        - name: Cross-tenant CMK troubleshooting guide
-          href: ../troubleshoot-cmk.md
-        - name: Access Azure Key Vault with managed identity
-          href: ../access-key-vault-managed-identity.md
-      - name: Disable key-based authentication
-        displayName: key, ropc, connection string
-        href: security/how-to-disable-key-based-authentication.md?context=/azure/cosmos-db/nosql/context/context
-      - name: Grant role-based access control access for resources
-        href: security/how-to-grant-control-plane-role-based-access.md?context=/azure/cosmos-db/nosql/context/context
-      - name: Grant role-based access control access for data
-        href: security/how-to-grant-data-plane-role-based-access.md?context=/azure/cosmos-db/nosql/context/context
-      - name: Configure Cross Origin Resource Sharing (CORS)
-        href: how-to-configure-cross-origin-resource-sharing.md
-      - name: Use Azure Key Vault to store keys
-        href: ../store-credentials-key-vault.md
     - name: Monitor
       items:
       - name: Monitor Azure Cosmos DB
