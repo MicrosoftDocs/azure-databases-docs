@@ -167,8 +167,8 @@ To perform efficient vector similarity searches within our collection, we need t
 IVF stands for Inverted File Index, is the default vector indexing algorithm, which works on all cluster tiers. It's an approximate nearest neighbors (ANN) approach that uses clustering to speeding up the search for similar vectors in a dataset. To create an IVF index, use the following command:
 
 ```javascript
-db.command({
-  'createIndexes': COLLECTION_NAME,
+db.runCommand({
+  'createIndexes': 'COLLECTION_NAME',
   'indexes': [
     {
       'name': 'vectorSearchIndex',
@@ -194,7 +194,7 @@ db.command({
 HNSW stands for Hierarchical Navigable Small World, a graph-based data structure that partitions vectors into clusters and subclusters. With HNSW, you can perform fast approximate nearest neighbor search at higher speeds with greater accuracy. HNSW is an approximate (ANN) method. Here's how to set it up:
 
 ```javascript
-db.command(
+db.runCommand(
 { 
     "createIndexes": "ExampleCollection",
     "indexes": [
