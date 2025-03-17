@@ -13,8 +13,10 @@
     href: choose-api.md
   - name: Azure AI Advantage free trial
     href: ai-advantage.md
-- name: MongoDB
+- name: MongoDB (RU)
   href: mongodb/toc.yml
+- name: MongoDB (vCore)
+  href: mongodb/vcore/toc.yml
 - name: PostgreSQL
   href: postgresql/toc.yml
 - name: Apache Cassandra
