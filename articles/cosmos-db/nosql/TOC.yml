@@ -8,11 +8,11 @@
     - name: FAQ
       href: faq.yml
     - name: Understand distributed NoSQL
-      href: ../distributed-nosql.md?context=/azure/cosmos-db/nosql/context/context
+      href: ../distributed-nosql.md
     - name: Try Azure Cosmos DB free
-      href: ../try-free.md?context=/azure/cosmos-db/nosql/context/context
+      href: ../try-free.md
     - name: Azure AI Advantage free trial
-      href: ../ai-advantage.md?context=/azure/cosmos-db/nosql/context/context
+      href: ../ai-advantage.md
 - name: Get started
   items:
     - name: Implement a .NET template
@@ -50,43 +50,43 @@
     - name: Use vector search
       href: vector-search.md
     - name: Enable full-text search
-      href: ../gen-ai/full-text-search.md?context=/azure/cosmos-db/nosql/context/context
+      href: ../gen-ai/full-text-search.md
     - name: Implement hybrid search
-      href: ../gen-ai/hybrid-search.md?context=/azure/cosmos-db/nosql/context/context
+      href: ../gen-ai/hybrid-search.md
     - name: Integrate with AI tools
-      href: ../gen-ai/integrations.md?context=/azure/cosmos-db/nosql/context/context
+      href: ../gen-ai/integrations.md
     - name: Build a RAG chatbot
-      href: ../gen-ai/rag-chatbot.md?context=/azure/cosmos-db/nosql/context/context
+      href: ../gen-ai/rag-chatbot.md
     - name: Ingest and vectorize document files
-      href: ../gen-ai/document-ingestion.md?context=/azure/cosmos-db/nosql/context/context
+      href: ../gen-ai/document-ingestion.md
     - name: Create a knowledge graph
-      href: ../gen-ai/cosmos-ai-graph.md?context=/azure/cosmos-db/nosql/context/context
+      href: ../gen-ai/cosmos-ai-graph.md
     - name: Author AI agents
-      href: ../ai-agents.md?context=/azure/cosmos-db/nosql/context/context
+      href: ../ai-agents.md
     - name: Learn core AI concepts
       items:
         - name: Vector databases
-          href: ../vector-database.md?context=/azure/cosmos-db/nosql/context/context
+          href: ../vector-database.md
         - name: Vector search
-          href: ../gen-ai/vector-search-overview.md?context=/azure/cosmos-db/nosql/context/context
+          href: ../gen-ai/vector-search-overview.md
         - name: Retrieval Augmented Generation (RAG)
-          href: ../gen-ai/rag.md?context=/azure/cosmos-db/nosql/context/context
+          href: ../gen-ai/rag.md
         - name: Tokens
-          href: ../gen-ai/tokens.md?context=/azure/cosmos-db/nosql/context/context
+          href: ../gen-ai/tokens.md
         - name: Vector embeddings
-          href: ../gen-ai/vector-embeddings.md?context=/azure/cosmos-db/nosql/context/context
+          href: ../gen-ai/vector-embeddings.md
         - name: Distance functions
-          href: ../gen-ai/distance-functions.md?context=/azure/cosmos-db/nosql/context/context
+          href: ../gen-ai/distance-functions.md
         - name: kNN vs ANN
-          href: ../gen-ai/knn-vs-ann.md?context=/azure/cosmos-db/nosql/context/context
+          href: ../gen-ai/knn-vs-ann.md
         - name: Semantic cache
-          href: ../gen-ai/semantic-cache.md?context=/azure/cosmos-db/nosql/context/context
+          href: ../gen-ai/semantic-cache.md
         - name: Multi-tenancy for vector search
-          href: ../nosql/multi-tenancy-vector-search.md?context=/azure/cosmos-db/nosql/context/context
+          href: ../nosql/multi-tenancy-vector-search.md
 - name: Create secure solutions
   items:
     - name: Security
-      href: ../security.yml?context=/azure/cosmos-db/nosql/context/context
+      href: ../security.yml
     - name: Developer security guide
       items:
         - name: Overview
@@ -110,49 +110,49 @@
     - name: Network security
       items:
         - name: Configure IP firewall
-          href: ../how-to-configure-firewall.md?context=/azure/cosmos-db/nosql/context/context
+          href: ../how-to-configure-firewall.md
         - name: Configure access from virtual networks
           displayName: service endpoints
-          href: ../how-to-configure-vnet-service-endpoint.md?context=/azure/cosmos-db/nosql/context/context
+          href: ../how-to-configure-vnet-service-endpoint.md
         - name: Configure access from private endpoints
-          href: ../how-to-configure-private-endpoints.md?context=/azure/cosmos-db/nosql/context/context
+          href: ../how-to-configure-private-endpoints.md
         - name: Configure Network Security Perimeter
-          href: ../how-to-configure-nsp.md?context=/azure/cosmos-db/nosql/context/context
+          href: ../how-to-configure-nsp.md
     - name: Data encryption
       items:
         - name: Use Always Encrypted
-          href: ../how-to-always-encrypted.md?context=/azure/cosmos-db/nosql/context/context
+          href: ../how-to-always-encrypted.md
         - name: Self-serve minimum transport-layer security (TLS) version enforcement
-          href: ../self-serve-minimum-tls-enforcement.md?context=/azure/cosmos-db/nosql/context/context
+          href: ../self-serve-minimum-tls-enforcement.md
         - name: Prepare for upcoming TLS 1.3 support for Azure Cosmos DB
-          href: ../tls-support.md?context=/azure/cosmos-db/nosql/context/context
+          href: ../tls-support.md
         - name: Configure customer-managed keys with Azure Key Vault
-          href: ../how-to-setup-customer-managed-keys.md?context=/azure/cosmos-db/nosql/context/context
+          href: ../how-to-setup-customer-managed-keys.md
         - name: Configure customer-managed keys on existing accounts with Azure Key Vault
-          href: ../how-to-setup-customer-managed-keys-existing-accounts.md?context=/azure/cosmos-db/nosql/context/context
+          href: ../how-to-setup-customer-managed-keys-existing-accounts.md
         - name: customer-managed key (CMK) troubleshooting guide
-          href: ../cmk-troubleshooting-guide.md?context=/azure/cosmos-db/nosql/context/context
+          href: ../cmk-troubleshooting-guide.md
         - name: Configure customer-managed keys with Azure managed hardware security module (HSM) key vault
-          href: ../how-to-setup-customer-managed-keys-mhsm.md?context=/azure/cosmos-db/nosql/context/context
+          href: ../how-to-setup-customer-managed-keys-mhsm.md
         - name: Configure cross-tenant customer-managed keys
-          href: ../how-to-setup-cross-tenant-customer-managed-keys.md?context=/azure/cosmos-db/nosql/context/context
+          href: ../how-to-setup-cross-tenant-customer-managed-keys.md
         - name: Cross-tenant CMK troubleshooting guide
-          href: ../troubleshoot-cmk.md?context=/azure/cosmos-db/nosql/context/context
+          href: ../troubleshoot-cmk.md
         - name: Access Azure Key Vault with managed identity
-          href: ../access-key-vault-managed-identity.md?context=/azure/cosmos-db/nosql/context/context
+          href: ../access-key-vault-managed-identity.md
     - name: Configure Cross Origin Resource Sharing (CORS)
       href: how-to-configure-cross-origin-resource-sharing.md
     - name: Use Azure Key Vault to store keys
-      href: ../store-credentials-key-vault.md?context=/azure/cosmos-db/nosql/context/context
+      href: ../store-credentials-key-vault.md
     - name: Considerations and guidance
-      href: ../security-considerations.md?context=/azure/cosmos-db/nosql/context/context
+      href: ../security-considerations.md
     - name: Data encryption
-      href: ../database-encryption-at-rest.md?context=/azure/cosmos-db/nosql/context/context
+      href: ../database-encryption-at-rest.md
     - name: Azure Policy support
-      href: ../policy.md?context=/azure/cosmos-db/nosql/context/context
+      href: ../policy.md
     - name: Security controls by Azure Policy
       displayName: regulatory, compliance, standards, domains
-      href: ../security-controls-policy.md?context=/azure/cosmos-db/nosql/context/context
+      href: ../security-controls-policy.md
     - name: Threat protection with Microsoft Defender for Cloud
       href: defender-for-cosmos-db.md
     - name: Reference
@@ -162,9 +162,9 @@
           expanded: true
           items:
             - name: Actions
-              href: /azure/role-based-access-control/permissions/databases?context=/azure/cosmos-db/nosql/context/context#microsoftdocumentdb
+              href: /azure/role-based-access-control/permissions/databases#microsoftdocumentdb
             - name: Built-in roles
-              href: /azure/role-based-access-control/built-in-roles?context=/azure/cosmos-db/nosql/context/context#databases
+              href: /azure/role-based-access-control/built-in-roles#databases
         - name: Data plane
           displayName: example, permissions, rbac, role, definition, dataActions
           expanded: true
@@ -174,19 +174,19 @@
             - name: Built-in roles
               href: security/reference-data-plane-roles.md
         - name: Well Architected Framework security guidance
-          href: /azure/well-architected/service-guides/cosmos-db?context=/azure/cosmos-db/nosql/context/context#security
+          href: /azure/well-architected/service-guides/cosmos-db#security
         - name: Security baseline
           href: /security/benchmark/azure/baselines/cosmos-db-security-baseline?bc=/azure/cosmos-db/breadcrumb/toc.json&toc=/azure/cosmos-db/toc.json
         - name: Service tags
           href: /azure/virtual-network/service-tags-overview?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: Frequently asked questions
           displayName: faq, questions, answers
-          href: faq.yml?context=/azure/cosmos-db/nosql/context/context#security
+          href: faq.yml#security
 - name: Model data for partitioning
   items:
     - name: Overview of resource model
       displayName: collection, document
-      href: ../resource-model.md?context=/azure/cosmos-db/nosql/context/context
+      href: ../resource-model.md
     - name: Model document data
       displayName: document
       href: modeling-data.md
@@ -199,10 +199,10 @@
   items:
     - name: Global distribution
       displayName: replication, replicate, geo distribution
-      href: ../distribute-data-globally.md?context=/azure/cosmos-db/nosql/context/context
+      href: ../distribute-data-globally.md
     - name: Consistency levels
       displayName: session, consistency prefix, strong, eventual, bounded staleness
-      href: ../consistency-levels.md?context=/azure/cosmos-db/nosql/context/context
+      href: ../consistency-levels.md
 - name: Reference
   items:
     - name: .NET SDKs
@@ -252,7 +252,7 @@
       href: /azure/templates/microsoft.documentdb/allversions
     - name: Azure Policy built-ins
       displayName: samples, policies, definitions
-      href: ../policy-reference.md?context=/azure/cosmos-db/nosql/context/context
+      href: ../policy-reference.md
     - name: Emulator
       items:
         - name: Release notes
@@ -264,9 +264,9 @@
     - name: Build your skills with Microsoft Learn training
       href: /training/browse/?products=azure-cosmos-db
     - name: Whitepapers
-      href: ../whitepapers.md?context=/azure/cosmos-db/nosql/context/context
+      href: ../whitepapers.md
     - name: Partners
-      href: ../partners-migration.md?context=/azure/cosmos-db/nosql/context/context
+      href: ../partners-migration.md
     - name: Microsoft Questions and Answers
       href: /answers/topics/azure-cosmos-db.html
     - name: Videos
@@ -280,9 +280,9 @@
     - name: Use cases
       items:
         - name: Common use cases
-          href: ../use-cases.md?context=/azure/cosmos-db/nosql/context/context
+          href: ../use-cases.md
         - name: Social media apps
-          href: ../social-media-apps.md?context=/azure/cosmos-db/nosql/context/context
+          href: ../social-media-apps.md
 - name: "⚠️Not migrated yet⚠️"
   items:
     - name: Tutorials
@@ -319,7 +319,7 @@
           href: tutorial-spark-connector.md
         - name: Mirror database to Microsoft Fabric
           displayName: Mirroring, Warehouse, Lighthouse, Fabric
-          href: /fabric/database/mirrored-database/azure-cosmos-db-tutorial?context=/azure/cosmos-db/nosql/context/context
+          href: /fabric/database/mirrored-database/azure-cosmos-db-tutorial
     - name: Samples
       items:
         - name: Solution accelerators
@@ -585,13 +585,13 @@
             - name: Mirroring in Microsoft Fabric
               items:
                 - name: Overview
-                  href: /fabric/database/mirrored-database/azure-cosmos-db?context=/azure/cosmos-db/nosql/context/context
+                  href: /fabric/database/mirrored-database/azure-cosmos-db
                 - name: FAQ
-                  href: /fabric/database/mirrored-database/azure-cosmos-db-faq?context=/azure/cosmos-db/nosql/context/context
+                  href: /fabric/database/mirrored-database/azure-cosmos-db-faq
                 - name: Limitations
-                  href: /fabric/database/mirrored-database/azure-cosmos-db-limitations?context=/azure/cosmos-db/nosql/context/context
+                  href: /fabric/database/mirrored-database/azure-cosmos-db-limitations
                 - name: Troubleshoot
-                  href: /fabric/database/mirrored-database/azure-cosmos-db-troubleshooting?context=/azure/cosmos-db/nosql/context/context
+                  href: /fabric/database/mirrored-database/azure-cosmos-db-troubleshooting
             - name: Azure Synapse Link
               items:
                 - name: Azure Synapse Link for Azure Cosmos DB
@@ -979,15 +979,15 @@
             - name: Mirroring in Microsoft Fabric
               items:
                 - name: Overview
-                  href: /fabric/database/mirrored-database/azure-cosmos-db?context=/azure/cosmos-db/nosql/context/context
+                  href: /fabric/database/mirrored-database/azure-cosmos-db
                 - name: Get started with mirrored data
-                  href: /fabric/database/mirrored-database/azure-cosmos-db-tutorial?context=/azure/cosmos-db/nosql/context/context
+                  href: /fabric/database/mirrored-database/azure-cosmos-db-tutorial
                 - name: Join mirrored data
-                  href: /fabric/database/mirrored-database/azure-cosmos-db-how-to-join-multiple?context=/azure/cosmos-db/nosql/context/context
+                  href: /fabric/database/mirrored-database/azure-cosmos-db-how-to-join-multiple
                 - name: Query nested data
-                  href: /fabric/database/mirrored-database/azure-cosmos-db-how-to-query-nested?context=/azure/cosmos-db/nosql/context/context
+                  href: /fabric/database/mirrored-database/azure-cosmos-db-how-to-query-nested
                 - name: Access data using Lakehouse and notebooks
-                  href: /fabric/database/mirrored-database/azure-cosmos-db-lakehouse-notebooks?context=/azure/cosmos-db/nosql/context/context
+                  href: /fabric/database/mirrored-database/azure-cosmos-db-lakehouse-notebooks
             - name: Azure Synapse Link
               items:
                 - name: Configure Azure Synapse Link
