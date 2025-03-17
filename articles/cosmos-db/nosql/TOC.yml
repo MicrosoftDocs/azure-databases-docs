@@ -107,6 +107,7 @@
       items:
         - name: Control plane
           displayName: example, permissions, rbac, role, definition
+          expanded: true
           items:
             - name: Actions
               href: /azure/role-based-access-control/permissions/databases?context=/azure/cosmos-db/nosql/context/context#microsoftdocumentdb
@@ -114,6 +115,7 @@
               href: /azure/role-based-access-control/built-in-roles?context=/azure/cosmos-db/nosql/context/context#databases
         - name: Data plane
           displayName: example, permissions, rbac, role, definition, dataActions
+          expanded: true
           items:
             - name: Actions
               href: security/reference-data-plane-actions.md
