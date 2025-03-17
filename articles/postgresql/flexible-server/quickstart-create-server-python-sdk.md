@@ -196,17 +196,15 @@ from azure.identity import DefaultAzureCredential
 from azure.mgmt.postgresqlflexibleservers import PostgreSQLManagementClient
 
 def main():
-client = PostgreSQLManagementClient(
-        credential=DefaultAzureCredential(),
-        subscription_id=<subscription-id>,
- )
-
-client.servers.begin_delete(
-        resource_group_name=<rg-name>,
-        server_name=<server-name>,
-).result()
+    client = PostgreSQLManagementClient(
+          credential=DefaultAzureCredential(),
+          subscription_id=<subscription-id>,)
+    client.servers.begin_delete(
+          resource_group_name=<rg-name>,
+          server_name=<server-name>,
+    ).result()
 if __name__ == "__main__":
-main()
+    main()
 ```
 
 ### [CLI](#tab/CLI)
