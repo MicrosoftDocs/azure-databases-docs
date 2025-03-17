@@ -87,9 +87,9 @@ sections:
       answer: |
         You can follow the guide on [moving Azure resources to a new resource group or subscription](https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/move-resource-group-and-subscription) to transfer an Azure Cosmos DB account to a different resource group or subscription.
         > [!WARNING]
-        > If your account has any identities (System-Assigned or User-Assigned), you must [re-assign them](https://learn.microsoft.com/en-us/azure/cosmos-db/how-to-setup-managed-identity) after moving the account to a new resource group or subscription. If you don't, the identities won't be able to renew and will stop working once they expire.
+        > If your account has any identities (System-Assigned or User-Assigned), you must [reassign them](https://learn.microsoft.com/en-us/azure/cosmos-db/how-to-setup-managed-identity) after moving the account to a new resource group or subscription. If you don't, the identities aren't able to renew and stop working once they expire.
         > [!WARNING]
-        > If your Cosmos DB account has Customer Managed Keys enabled, you can only transfer the account to a different resource group or subscription if it is in an Active state. Accounts in a Revoked state cannot be transferred.
+        > If your Cosmos DB account has Customer Managed Keys enabled, you can only transfer the account to a different resource group or subscription if it's in an Active state. Accounts in a Revoked state can't be transferred.
     - question: |
         How do I transfer an Azure Cosmos DB account to a different tenant?
       answer: |
