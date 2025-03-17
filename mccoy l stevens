@@ -1,0 +1,8 @@
+log/
+obj/
+_site/
+.optemp/
+_themes*/
+_repo.*/
+.DS_Store
+.openpublishing.buildcore.ps1
