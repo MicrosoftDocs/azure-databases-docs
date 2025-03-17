@@ -18,7 +18,7 @@
       topicHref: /azure/cosmos-db/index
       items:
         - name: NoSQL
-          tocHref: /samples/role-based-access-control/
+          tocHref: /azure/role-based-access-control/
           topicHref: /azure/cosmos-db/nosql/index
 - name: Azure
   tocHref: /samples/
