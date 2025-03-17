@@ -22,9 +22,9 @@
       displayName: example, permissions, rbac, role, definition
       items:
         - name: Actions
-          href: /azure/role-based-access-control/permissions/databases?context=/azure/cosmos-db/nosql/security/context/context#microsoftdocumentdb
+          href: /azure/role-based-access-control/permissions/databases?context=/azure/cosmos-db/nosql/context/context#microsoftdocumentdb
         - name: Built-in roles
-          href: /azure/role-based-access-control/built-in-roles?context=/azure/cosmos-db/nosql/security/context/context#databases
+          href: /azure/role-based-access-control/built-in-roles?context=/azure/cosmos-db/nosql/context/context#databases
     - name: Data plane
       displayName: example, permissions, rbac, role, definition, dataActions
       items:
@@ -34,4 +34,4 @@
           href: reference-data-plane-roles.md
     - name: Frequently asked questions
       displayName: faq, questions, answers
-      href: ../faq.yml?context=/azure/cosmos-db/nosql/security/context/context#security
+      href: ../faq.yml?context=/azure/cosmos-db/nosql/context/context#security

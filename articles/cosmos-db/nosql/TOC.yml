@@ -121,7 +121,7 @@
       href: tutorial-spark-connector.md
     - name: Mirror database to Microsoft Fabric
       displayName: Mirroring, Warehouse, Lighthouse, Fabric
-      href: /fabric/database/mirrored-database/azure-cosmos-db-tutorial?context=/azure/cosmos-db/context/context
+      href: /fabric/database/mirrored-database/azure-cosmos-db-tutorial?context=/azure/cosmos-db/nosql/context/context
   - name: Samples
     items:
     - name: Solution accelerators
@@ -405,13 +405,13 @@
       - name: Mirroring in Microsoft Fabric
         items:
         - name: Overview
-          href: /fabric/database/mirrored-database/azure-cosmos-db?context=/azure/cosmos-db/context/context
+          href: /fabric/database/mirrored-database/azure-cosmos-db?context=/azure/cosmos-db/nosql/context/context
         - name: FAQ
-          href: /fabric/database/mirrored-database/azure-cosmos-db-faq?context=/azure/cosmos-db/context/context
+          href: /fabric/database/mirrored-database/azure-cosmos-db-faq?context=/azure/cosmos-db/nosql/context/context
         - name: Limitations
-          href: /fabric/database/mirrored-database/azure-cosmos-db-limitations?context=/azure/cosmos-db/context/context
+          href: /fabric/database/mirrored-database/azure-cosmos-db-limitations?context=/azure/cosmos-db/nosql/context/context
         - name: Troubleshoot
-          href: /fabric/database/mirrored-database/azure-cosmos-db-troubleshooting?context=/azure/cosmos-db/context/context
+          href: /fabric/database/mirrored-database/azure-cosmos-db-troubleshooting?context=/azure/cosmos-db/nosql/context/context
       - name: Azure Synapse Link
         items:
         - name: Azure Synapse Link for Azure Cosmos DB
@@ -461,7 +461,7 @@
       - name: Considerations and guidance
         href: ../security-considerations.md
       - name: Well Architected Framework security guidance
-        href: /azure/well-architected/service-guides/cosmos-db?context=/azure/cosmos-db/context/context#security
+        href: /azure/well-architected/service-guides/cosmos-db?context=/azure/cosmos-db/nosql/context/context#security
       - name: Security baseline
         href: /security/benchmark/azure/baselines/cosmos-db-security-baseline?bc=/azure/cosmos-db/breadcrumb/toc.json&toc=/azure/cosmos-db/toc.json
       - name: Data encryption
@@ -823,15 +823,15 @@
       - name: Mirroring in Microsoft Fabric
         items:
         - name: Overview
-          href: /fabric/database/mirrored-database/azure-cosmos-db?context=/azure/cosmos-db/context/context
+          href: /fabric/database/mirrored-database/azure-cosmos-db?context=/azure/cosmos-db/nosql/context/context
         - name: Get started with mirrored data
-          href: /fabric/database/mirrored-database/azure-cosmos-db-tutorial?context=/azure/cosmos-db/context/context
+          href: /fabric/database/mirrored-database/azure-cosmos-db-tutorial?context=/azure/cosmos-db/nosql/context/context
         - name: Join mirrored data
-          href: /fabric/database/mirrored-database/azure-cosmos-db-how-to-join-multiple?context=/azure/cosmos-db/context/context
+          href: /fabric/database/mirrored-database/azure-cosmos-db-how-to-join-multiple?context=/azure/cosmos-db/nosql/context/context
         - name: Query nested data
-          href: /fabric/database/mirrored-database/azure-cosmos-db-how-to-query-nested?context=/azure/cosmos-db/context/context
+          href: /fabric/database/mirrored-database/azure-cosmos-db-how-to-query-nested?context=/azure/cosmos-db/nosql/context/context
         - name: Access data using Lakehouse and notebooks
-          href: /fabric/database/mirrored-database/azure-cosmos-db-lakehouse-notebooks?context=/azure/cosmos-db/context/context
+          href: /fabric/database/mirrored-database/azure-cosmos-db-lakehouse-notebooks?context=/azure/cosmos-db/nosql/context/context
       - name: Azure Synapse Link
         items:
         - name: Configure Azure Synapse Link
@@ -953,11 +953,11 @@
           href: ../access-key-vault-managed-identity.md
       - name: Disable key-based authentication
         displayName: key, ropc, connection string
-        href: security/how-to-disable-key-based-authentication.md?context=/azure/cosmos-db/context/context
+        href: security/how-to-disable-key-based-authentication.md?context=/azure/cosmos-db/nosql/context/context
       - name: Grant role-based access control access for resources
-        href: security/how-to-grant-control-plane-role-based-access.md?context=/azure/cosmos-db/context/context
+        href: security/how-to-grant-control-plane-role-based-access.md?context=/azure/cosmos-db/nosql/context/context
       - name: Grant role-based access control access for data
-        href: security/how-to-grant-data-plane-role-based-access.md?context=/azure/cosmos-db/context/context
+        href: security/how-to-grant-data-plane-role-based-access.md?context=/azure/cosmos-db/nosql/context/context
       - name: Configure Cross Origin Resource Sharing (CORS)
         href: how-to-configure-cross-origin-resource-sharing.md
       - name: Use Azure Key Vault to store keys
