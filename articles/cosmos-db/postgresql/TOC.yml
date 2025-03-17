@@ -1,9 +1,11 @@
-- name: PostgreSQL documentation
+- name: Azure Cosmos DB for PostgreSQL documentation
   href: index.yml
-- name: What is Azure Cosmos DB for PostgreSQL?
-  href: introduction.md
-- name: Product updates
-  href: product-updates.md
+- name: Overview
+  items:
+  - name: What is Azure Cosmos DB for PostgreSQL?
+    href: introduction.md
+  - name: Product updates
+    href: product-updates.md
 - name: Quickstart
   items:
     - name: Create cluster

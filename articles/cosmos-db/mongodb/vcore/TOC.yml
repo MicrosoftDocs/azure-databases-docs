@@ -1,17 +1,17 @@
-- name: MongoDB (vCore) documentation
+- name: Azure Cosmos DB for MongoDB (vCore) documentation
   href: index.yml
-- name: What is Azure Cosmos DB for MongoDB?
-  href: ../introduction.md
-- name: Your MongoDB app reimagined
-  href: ../reimagined.md
-- name: Choose your model
-  href: ../choose-model.md
-- name: Comparing MongoDB Atlas
-  href: ../cosmos-db-vs-mongodb-atlas.md
 - name: Overview
   items:
     - name: What is Azure Cosmos DB for MongoDB (vCore)?
       href: introduction.md
+    - name: What is Azure Cosmos DB for MongoDB?
+      href: ../introduction.md
+    - name: Your MongoDB app reimagined
+      href: ../reimagined.md
+    - name: Choose your model
+      href: ../choose-model.md
+    - name: Comparing MongoDB Atlas
+      href: ../cosmos-db-vs-mongodb-atlas.md
     - name: FAQ
       href: faq.yml
 - name: Quickstarts

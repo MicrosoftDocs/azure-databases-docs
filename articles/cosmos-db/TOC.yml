@@ -18,9 +18,9 @@
 - name: MongoDB (RU)
   href: mongodb/toc.yml
 - name: MongoDB (vCore)
-  href: mongodb/vcore/toc.yml
+  href: mongodb/vcore/index.yml
 - name: PostgreSQL
-  href: postgresql/toc.yml
+  href: postgresql/index.yml
 - name: Apache Cassandra
   href: cassandra/toc.yml
 - name: Apache Gremlin
