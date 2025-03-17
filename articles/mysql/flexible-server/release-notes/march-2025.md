@@ -30,7 +30,7 @@ az mysql flexible-server show --resource-group {resource group name} --name {ser
 
 ## Features
 
-- Public Preview for HA with dedicated SLB. With this change, we don't change DNS during failover. It reduces the failover time for HA server(usually 30 seconds depending on your DNS Cache TTL setting). Note this feature won't directly applied to existing servers by default due to the nature enabling it will bringing downtime. If your existing server want to enable this feature, try re-enable your HA feature. [Learn more]()
+- Public Preview for HA with dedicated SLB. With this feature, a dedicated [SLB](https://learn.microsoft.com/en-us/azure/load-balancer/load-balancer-overview) is added to a High availability (HA) configuration, helping the HA servers leverage the benefits offered by SLB i.e. low latency, high throughput network traffic distribution of front-end requests to back-end servers. SLB managing the MySQL data traffic path will eliminate the need for changing the DNS during failover, thereby improving the failover time by ~ 20 seconds.
 
 ## Improvement
 
