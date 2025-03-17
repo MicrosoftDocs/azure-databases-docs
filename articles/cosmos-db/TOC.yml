@@ -13,6 +13,8 @@
     href: choose-api.md
   - name: Azure AI Advantage free trial
     href: ai-advantage.md
+- name: NoSQL
+  href: nosql/index.yml
 - name: MongoDB (RU)
   href: mongodb/toc.yml
 - name: MongoDB (vCore)
