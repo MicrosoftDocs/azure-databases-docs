@@ -131,7 +131,7 @@ In Amazon DynamoDB, you use the following code to connect:
         try { aws_dynamodbclient = new AmazonDynamoDBClient( addbConfig ); }
 ```
 
-#### Azure CosmosDB
+#### Azure Cosmos DB
 
 To connect Azure Cosmos DB, update your code to:
 
@@ -222,7 +222,7 @@ request = new CreateTableRequest
 };
 ```
 
-#### Azure CosmosDB
+#### Azure Cosmos DB
 
 In Amazon DynamoDB, you need to provision the read compute units and the write compute units. In Azure Cosmos DB, you specify the throughput as [request units per second (RU/s)](../request-units.md). You can use RU/s for any operations dynamically. The data is organized as database, container, and then item. You can specify the throughput at the database level, at the collection level, or both.
 
