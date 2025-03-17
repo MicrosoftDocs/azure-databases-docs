@@ -8,11 +8,11 @@
   - name: FAQ
     href: faq.yml
   - name: Understand distributed NoSQL
-    href: distributed-nosql.md
+    href: ../distributed-nosql.md
   - name: Try Azure Cosmos DB free
-    href: try-free.md
+    href: ../try-free.md
   - name: Azure AI Advantage free trial
-    href: ai-advantage.md
+    href: ../ai-advantage.md
 - name: Get started
   items:
   - name: Implement a .NET template
