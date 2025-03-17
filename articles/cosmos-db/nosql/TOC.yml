@@ -14,17 +14,207 @@
   - name: Azure AI Advantage free trial
     href: ../ai-advantage.md
 - name: Get started
-  href: TOC.start.yml
+  items:
+    - name: Implement a .NET template
+      displayName: Quickstart, ASP.NET, Blazor, AZD, Azure Developer CLI
+      href: quickstart-dotnet.md
+    - name: Implement a Python template
+      displayName: Quickstart, Spark, AZD, Azure Developer CLI
+      href: quickstart-python.md
+    - name: Implement a JavaScript/TypeScript template
+      displayName: Quickstart, Node.js, JavaScript, Express, AZD, Azure Developer CLI
+      href: quickstart-nodejs.md
+    - name: Implement a Java template
+      displayName: Quickstart, Spring, Spring Data, AZD, Azure Developer CLI
+      href: quickstart-java.md
+    - name: Implement a Go template
+      displayName: Quickstart, AZD, Azure Developer CLI
+      href: quickstart-go.md
+    - name: Implement a Rust template
+      displayName: Quickstart, AZD, Azure Developer CLI
+      href: quickstart-rust.md
+    - name: Create an account in the Azure portal
+      displayName: Quickstart, Azure portal
+      href: quickstart-portal.md
+    - name: Deploy using Bicep
+      displayName: Quickstart, ARM, Azure Resource Manager, Template, Bicep
+      href: quickstart-template-bicep.md
+    - name: Deploy using Azure Resource Manager templates
+      displayName: Quickstart, ARM, Azure Resource Manager, Template, JSON
+      href: quickstart-template-json.md
+    - name: Deploy using Terraform
+      displayName: Quickstart, ARM, Azure Resource Manager, Template, Terraform
+      href: quickstart-terraform.md
 - name: Build AI Applications
-  href: TOC.ai.yml
+  items:
+    - name: Use vector search
+      href: vector-search.md
+    - name: Enable full-text search
+      href: ../gen-ai/full-text-search.md
+    - name: Implement hybrid search
+      href: ../gen-ai/hybrid-search.md
+    - name: Integrate with AI tools
+      href: ../gen-ai/integrations.md
+    - name: Build a RAG chatbot
+      href: ../gen-ai/rag-chatbot.md
+    - name: Ingest and vectorize document files
+      href: ../gen-ai/document-ingestion.md
+    - name: Create a knowledge graph
+      href: ../gen-ai/cosmos-ai-graph.md
+    - name: Author AI agents
+      href: ../ai-agents.md
+    - name: Learn core AI concepts
+      items:
+      - name: Vector databases
+        href: ../vector-database.md
+      - name: Vector search
+        href: ../gen-ai/vector-search-overview.md
+      - name: Retrieval Augmented Generation (RAG)
+        href: ../gen-ai/rag.md
+      - name: Tokens
+        href: ../gen-ai/tokens.md
+      - name: Vector embeddings
+        href: ../gen-ai/vector-embeddings.md
+      - name: Distance functions
+        href: ../gen-ai/distance-functions.md
+      - name: kNN vs ANN
+        href: ../gen-ai/knn-vs-ann.md
+      - name: Semantic cache
+        href: ../gen-ai/semantic-cache.md
+      - name: Multi-tenancy for vector search
+        href: ../nosql/multi-tenancy-vector-search.md
 - name: Create secure solutions
-  href: TOC.security.yml
+  items:
+    - name: Security guide
+      displayName: overview, summary, introduction, get started
+      href: security/index.md
+    - name: Core terminology
+      displayName: terms
+      href: security/glossary.md
+    - name: Get signed-in identity
+      href: security/how-to-get-signed-in-identity.md
+    - name: Create managed identities
+      displayName: principals
+      href: security/how-to-create-managed-identities.md
+    - name: Disable key-based authentication
+      displayName: key, ropc, connection string
+      href: security/how-to-disable-key-based-authentication.md
+    - name: Grant control plane access
+      href: security/how-to-grant-control-plane-role-based-access.md
+    - name: Grant data plane access
+      href: security/how-to-grant-data-plane-role-based-access.md
+    - name: Reference
+      items:
+        - name: Control plane
+          displayName: example, permissions, rbac, role, definition
+          items:
+            - name: Actions
+              href: /azure/role-based-access-control/permissions/databases?context=/azure/cosmos-db/nosql/context/context#microsoftdocumentdb
+            - name: Built-in roles
+              href: /azure/role-based-access-control/built-in-roles?context=/azure/cosmos-db/nosql/context/context#databases
+        - name: Data plane
+          displayName: example, permissions, rbac, role, definition, dataActions
+          items:
+            - name: Actions
+              href: security/reference-data-plane-actions.md
+            - name: Built-in roles
+              href: security/reference-data-plane-roles.md
+        - name: Frequently asked questions
+          displayName: faq, questions, answers
+          href: faq.yml?context=/azure/cosmos-db/nosql/context/context#security
 - name: Model data for partitioning
-  href: TOC.design.yml 
+  items:
+    - name: Overview of resource model
+      displayName: collection, document
+      href: ../resource-model.md
+    - name: Model document data
+      displayName: document
+      href: modeling-data.md
+    - name: Modeling and partitioning - a real-world example
+      displayName: model, partition, example
+      href: model-partition-example.md
+    - name: Synthetic partition keys
+      href: synthetic-partition-keys.md
 - name: Reference
-  href: TOC.reference.yml
+  items:
+    - name: .NET SDKs
+      items:
+      - name: .NET SDK v3
+        href: sdk-dotnet-v3.md
+      - name: .NET SDK v2 (legacy)
+        href: sdk-dotnet-v2.md
+      - name: .NET Core SDK v2 (legacy)
+        href: sdk-dotnet-core-v2.md
+      - name: .NET change feed library v2 (legacy)
+        href: sdk-dotnet-change-feed-v2.md
+      - name: .NET bulk executor library v2 (legacy)
+        href: sdk-dotnet-bulk-executor-v2.md
+    - name: Java SDKs and Connectors
+      items:
+      - name: Java SDK v4
+        href: sdk-java-v4.md
+      - name: Sync Java SDK v2 (legacy)
+        href: sdk-java-v2.md
+      - name: Async Java SDK v2 (legacy)
+        href: sdk-java-async-v2.md
+      - name: Spring Data Connector v2 (legacy)
+        href: sdk-java-spring-data-v2.md
+      - name: Spring Data Connector v3 (legacy)
+        href: sdk-java-spring-data-v3.md
+      - name: Spring Data Connector v5
+        href: sdk-java-spring-data-v5.md
+      - name: Java bulk executor library v2 (legacy)
+        href: sdk-java-bulk-executor-v2.md
+    - name: Azure CLI
+      href: /cli/azure/azure-cli-reference-for-cosmos-db
+    - name: Node.js
+      href: sdk-nodejs.md
+    - name: Python
+      href: sdk-python.md
+    - name: Go
+      href: sdk-go.md
+    - name: REST (Data plane)
+      href: /rest/api/cosmos-db/
+    - name: REST (Management plane)
+      href: /rest/api/cosmos-db-resource-provider/2021-04-01-preview/sql-resources
+    - name: PowerShell
+      href: /powershell/module/az.cosmosdb/#cosmos-db&preserve-view=true
+    - name: Azure Resource Manager template
+      displayName: ARM
+      href: /azure/templates/microsoft.documentdb/allversions
+    - name: Azure Policy built-ins
+      displayName: samples, policies, definitions
+      href: ../policy-reference.md
+    - name: Emulator
+      items:
+      - name: Release notes
+        href: ../emulator-release-notes.md
+      - name: Windows command-line arguments
+        href: ../emulator-windows-arguments.md
 - name: Resources
-  href: TOC.resources.yml
+  items:
+    - name: Build your skills with Microsoft Learn training
+      href: /training/browse/?products=azure-cosmos-db
+    - name: Whitepapers
+      href: ../whitepapers.md
+    - name: Partners
+      href: ../partners-migration.md
+    - name: Microsoft Questions and Answers
+      href: /answers/topics/azure-cosmos-db.html
+    - name: Videos
+      href: https://azure.microsoft.com/resources/videos/index/?services=cosmos-db
+    - name: Azure Roadmap
+      href: https://azure.microsoft.com/updates/?query=Cosmos%20DB
+    - name: Try Azure Cosmos DB for free
+      href: https://azure.microsoft.com/try/cosmosdb/
+    - name: Pricing
+      href: https://azure.microsoft.com/pricing/details/cosmos-db/
+    - name: Use cases
+      items:
+      - name: Common use cases
+        href: ../use-cases.md
+      - name: Social media apps
+        href: ../social-media-apps.md
 - name: "⚠️Not migrated yet⚠️"
   items:
   - name: Tutorials
