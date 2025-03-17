@@ -1,8 +1,0 @@
-- name: $dateAdd
-  href: $dateadd.md
-- name: $datediff
-  href: $datediff.md
-- name: $datefromparts
-  href: $datefromparts.md
-- name: $datefromstring
-  href: $datefromstring.md

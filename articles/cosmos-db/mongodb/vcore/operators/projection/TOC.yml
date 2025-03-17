@@ -1,8 +1,0 @@
-- name: $
-  href: $.md
-- name: $elemMatch
-  href: $elemmatch.md
-- name: $meta
-  href: $meta.md
-- name: $slice
-  href: $slice.md

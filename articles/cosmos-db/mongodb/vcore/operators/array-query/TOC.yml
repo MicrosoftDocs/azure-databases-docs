@@ -1,6 +1,0 @@
-- name: $all
-  href: $all.md
-- name: $elemMatch
-  href: $elemmatch.md
-- name: $size
-  href: $size.md
