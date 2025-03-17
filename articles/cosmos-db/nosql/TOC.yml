@@ -14,7 +14,7 @@
   - name: Azure AI Advantage free trial
     href: ../ai-advantage.md
 - name: Get started
-  href: TOC.quickstart.yml
+  href: TOC.start.yml
 - name: Build AI Applications
   href: TOC.ai.yml
 - name: Create secure solutions
