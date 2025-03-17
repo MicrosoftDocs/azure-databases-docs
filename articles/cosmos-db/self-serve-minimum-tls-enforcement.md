@@ -25,7 +25,7 @@ The **minimum service-wide accepted version is TLS 1.2**. This selection can be 
 
 Starting with the [2022-11-15 API version of the Azure Cosmos DB Resource Provider API](), a new property is exposed for every Cosmos DB database account, called `minimalTlsVersion`. It accepts one of the following values:
 - `Tls12` for setting the minimum version to TLS 1.2.
-- `Tls13` for setting the minimum version to TLS 1.3.
+- `Tls13` for setting the minimum version to TLS 1.3. (available March 31, 2025)
 
 The **default value for new accounts is `Tls12`**.
 
