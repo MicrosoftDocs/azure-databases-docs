@@ -19,6 +19,8 @@
   href: TOC.ai.yml
 - name: Create secure solutions
   href: TOC.security.yml
+- name: Model data for partitioning
+  href: TOC.design.yml 
 - name: Reference
   href: TOC.reference.yml
 - name: Resources
@@ -149,9 +151,6 @@
       href: ../resource-graph-samples.md
   - name: Concepts
     items:
-    - name: Azure Cosmos DB resource model
-      displayName: collection, document
-      href: ../resource-model.md
     - name: Back up and restore
       items:
       - name: Back up and restore introduction
@@ -226,16 +225,7 @@
             href: ../conflict-resolution-policies.md
       - name: Global distribution - under the hood
         href: ../global-dist-under-the-hood.md
-    - name: Modeling and partitioning
-      items:
-      - name: Model document data
-        displayName: document
-        href: modeling-data.md
-      - name: Modeling and partitioning - a real-world example
-        displayName: model, partition, example
-        href: model-partition-example.md
-      - name: Synthetic partition key
-        href: synthetic-partition-keys.md
+
     - name: Partitioning and horizontal scaling
       items:
       - name: Partitioning overview
