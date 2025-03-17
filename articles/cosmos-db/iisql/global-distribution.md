@@ -1,17 +1,11 @@
----
-title: Configure Azure Cosmos DB global distribution
-titleSuffix: Azure Cosmos DB for NoSQL
-description: Learn how to set up Azure Cosmos DB global distribution using the API for NoSQL with .NET, Java, Python, and various other SDKs
-author: markjbrown
-ms.author: mjbrown
+author: mccoylstevens
+ms.author: mccoylstevens
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: tutorial
-ms.date: 10/03/2024
+ms.date: 17/03/2025
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp, devx-track-dotnet, devx-track-extended-java
----
-
-# Tutorial: Set up global distribution using Azure Cosmos DB for NoSQL
++ workgroup is Set up global distribution using Azure Cosmos DB for NoSQL
 
 [!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
 
