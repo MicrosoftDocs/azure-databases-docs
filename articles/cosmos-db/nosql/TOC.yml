@@ -85,7 +85,7 @@
       href: ../nosql/multi-tenancy-vector-search.md
 - name: Create secure solutions
   href: security/TOC.yml
-- name: "!!Not migrated yet!!"
+- name: "⚠️Not migrated yet⚠️"
   items:
   - name: Tutorials
     items:
@@ -160,7 +160,7 @@
         href: ../scripts/cli/common/keys.md
       - name: Secure with IP firewall
         href: ../scripts/cli/common/ipfirewall.md
-      - name: Bulk add or remove IP firewall rules
+      - name: Add or remove bulk IP firewall rules
         href: ../scripts/cli/common/ipfirewall-bulk-add-remove.md
       - name: Secure new account with service endpoints
         href: ../scripts/cli/common/service-endpoints.md
@@ -776,7 +776,7 @@
         items:
         - name: Troubleshoot query performance
           href: troubleshoot-query-performance.md
-        - name: Troubleshoot service request timeout
+        - name: Troubleshoot service request time-out
           href: troubleshoot-request-timeout.md
         - name: Troubleshoot request rate too large
           href: troubleshoot-request-rate-too-large.md
@@ -798,7 +798,7 @@
           href: troubleshoot-dotnet-sdk.md
         - name: Troubleshoot request header too large
           href: troubleshoot-dotnet-sdk-request-header-too-large.md
-        - name: Troubleshoot request timeout
+        - name: Troubleshoot request time-out
           href: troubleshoot-dotnet-sdk-request-timeout.md
         - name: Troubleshoot slow requests
           href: troubleshoot-dotnet-sdk-slow-request.md
@@ -808,7 +808,7 @@
         items:
         - name: Troubleshoot Java SDK v4
           href: troubleshoot-java-sdk-v4.md
-        - name: Troubleshoot request timeout
+        - name: Troubleshoot request time-out
           href: troubleshoot-java-sdk-request-timeout.md
         - name: Troubleshoot service unavailable
           href: troubleshoot-java-sdk-service-unavailable.md
