@@ -31,18 +31,18 @@ The following table lists key conceptual differences between Azure Cosmos DB and
 | Item | Document |
 | Attribute | Field |
 | Secondary index | Secondary index |
-| Primary key, partition key | Partition key |
-| Primary key, sort key | Not required |
+| Primary key > partition key | Partition key |
+| Primary key > sort key | Not required |
 | Stream | Change feed |
 | Write compute unit | Request unit (flexible, can be used for reads or writes) |
 | Read compute unit | Request unit (flexible, can be used for reads or writes) |
-| Global tables| Not required. You can directly select the region while provisioning the Azure Cosmos DB account. (You can change the region later.) |
+| Global table| Not required. You can directly select the region while provisioning the Azure Cosmos DB account. (You can change the region later.) |
 
 ## Structural differences
 
 The JSON structure of Azure Cosmos DB is simpler than the JSON structure of DynamoDB. The following example shows the differences.
 
-#### DynamoDB
+### DynamoDB
 
 The following JSON object represents the data format in DynamoDB:
 
@@ -76,7 +76,7 @@ ProvisionedThroughput: {
 }
  ```
 
-## Azure Cosmos DB
+### Azure Cosmos DB
 
 The following JSON object represents the data format in Azure Cosmos DB:
 
@@ -104,8 +104,8 @@ git clone https://github.com/Azure-Samples/DynamoDB-to-CosmosDB
 
 ### Prerequisites
 
-- .NET Framework 4.7.2
-- Latest version of [!INCLUDE [cosmos-db-visual-studio](../includes/cosmos-db-visual-studio.md)].
+- .NET Framework 4.7.2.
+- Latest version of [!INCLUDE [cosmos-db-visual-studio](../includes/cosmos-db-visual-studio.md)]
 - Access to an Azure Cosmos DB for NoSQL account.
 - Local installation of Amazon DynamoDB.
 - Java 8.

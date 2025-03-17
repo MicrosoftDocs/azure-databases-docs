@@ -22,7 +22,7 @@ This article focuses on *data migration* from Amazon DynamoDB to Azure Cosmos DB
 - Data migration likely has many steps, including exporting data from the source system (DynamoDB in this case), doing additional processing such as transformations, and finally writing the data to Azure Cosmos DB.
 - Application migration includes refactoring your application to use Azure Cosmos DB instead of DynamoDB. This process could include adapting and rewriting queries, redesigning partitioning strategies, indexing, ensuring consistency, and more.
 
-Depending on your requirements, data migration can be done in parallel to application migration, but it's often a prerequisite to it. To learn more about application migration, see [Migrate your application from Amazon DynamoDB to Azure Cosmos DB](dynamo-to-cosmos.md).
+Depending on your requirements, you can migrate data in parallel with migrating an application. But data migration is often a prerequisite to application migration. To learn more about application migration, see [Migrate your application from Amazon DynamoDB to Azure Cosmos DB](dynamo-to-cosmos.md).
 
 ## Migration techniques
 
@@ -45,7 +45,7 @@ The approach that this article follows is just one of the many ways to migrate d
 |----------|------|------|
 | Export from DynamoDB to S3, load to Azure Data Lake Storage Gen2 by using Azure Data Factory, and write to Azure Cosmos DB by using Spark on Azure Databricks. | Decouples storage and processing. Spark provides scalability and flexibility (additional data transformations, processing). | Multistage process increases complexity and overall latency. Requires knowledge of Spark. |
 | Export from DynamoDB to S3, and use Azure Data Factory to read from S3 and write to Azure Cosmos DB. | Low/No-code approach. Spark skillset not required. Suitable for simple data transformations. | Complex transformation might be difficult to implement. |
-| Use Spark on Azure Databricks to read from DynamoDB and write to Azure Cosmos DB. | Fit for small datasets, because direct processing avoids extra storage costs. Supports complex transformations (Spark). | Higher cost on DynamoDB side due to RCU consumption. (S3 export not used.) Requires knowledge of Spark. |
+| Use Spark on Azure Databricks to read from DynamoDB and write to Azure Cosmos DB. | Fit for small datasets, because direct processing avoids extra storage costs. Supports complex transformations (Spark). | Higher cost on the DynamoDB side due to RCU consumption. (S3 export not used.) Requires knowledge of Spark. |
 
 ### Online migration approaches
 
@@ -53,7 +53,7 @@ Online migration generally uses a change data capture (CDC) mechanism to stream 
 
 | Approach | Pros | Cons |
 |----------|------|------|
-| Use DynamoDB CDC with DynamoDB Streams, process by using AWS Lambda, and write to Azure Cosmos DB. | DynamoDB Streams provides an ordering guarantee. Event-driven processing. Suitable for simple data transformations. | DynamoDB Streams data retention for 24 hours. Need to write custom logic (Lambda function). |
+| Use DynamoDB CDC with DynamoDB Streams, process by using AWS Lambda, and write to Azure Cosmos DB. | DynamoDB Streams provides an ordering guarantee. Event-driven processing. Suitable for simple data transformations. | DynamoDB Streams data retention is 24 hours. Need to write custom logic (Lambda function). |
 | Use DynamoDB CDC with Kinesis Data Streams, process by using Kinesis or Flink, and write to Azure Cosmos DB. | Supports complex data transformations (windowing/aggregation with Flink) and provides better control over processing. Retention is flexible (from 24 hours, extendable to 365 days). | No ordering guarantee. Need to write custom logic (Flink job, Kinesis Data Streams consumer). Requires stream processing expertise. |
 
 ## Offline migration walkthrough
@@ -86,7 +86,7 @@ This walkthrough uses data exported in DynamoDB JSON format.
 
 ### Step 2: Use Azure Data Factory to transfer S3 data to Azure Storage
 
-Clone the GitHub repository to your local machine by using the following command. The repo contains the Azure Data Factory pipeline template and the Spark notebook that you'll use later in this article.
+Clone the GitHub repository to your local machine by using the following command. The repository contains the Azure Data Factory pipeline template and the Spark notebook that you'll use later in this article.
 
 ```bash
 git clone https://github.com/AzureCosmosDB/migration-dynamodb-to-cosmosdb-nosql
@@ -141,7 +141,7 @@ As the pipeline continues to run, you can [monitor it](/azure/data-factory/monit
 
 :::image type="content" source="./media/migrate-data-dynamodb-to-cosmosdb/pipeline-run.png" alt-text="Screenshot of the area for monitoring a pipeline run." lightbox="./media/migrate-data-dynamodb-to-cosmosdb/pipeline-run.png":::
 
-Verify that a new container was created, along with the contents of S3 bucket.
+Verify that a new container was created, along with the contents of the S3 bucket.
 
 :::image type="content" source="./media/migrate-data-dynamodb-to-cosmosdb/container-created.png" alt-text="Screenshot of a created storage container." lightbox="./media/migrate-data-dynamodb-to-cosmosdb/container-created.png":::
 
@@ -161,7 +161,7 @@ After you create the Azure Databricks workspace, follow the [documentation to in
 
 #### Configure Microsoft Entra ID authentication
 
-Use [OAuth 2.0 credentials with Microsoft Entra ID service principals](/azure/databricks/connect/storage/azure-storage#connect-to-azure-data-lake-storage-gen2-or-blob-storage-using-azure-credentials) to connect to Azure storage from Azure Databricks. Follow the [steps in the documentation](/azure/databricks/connect/storage/aad-storage-service-principal) to complete these steps:
+Use [OAuth 2.0 credentials with Microsoft Entra ID service principals](/azure/databricks/connect/storage/azure-storage#connect-to-azure-data-lake-storage-gen2-or-blob-storage-using-azure-credentials) to connect to Azure Storage from Azure Databricks. Follow the [documentation](/azure/databricks/connect/storage/aad-storage-service-principal) to complete these steps:
 
 1. Register a Microsoft Entra ID application, and create a new client secret. This is a one-time step.
 
@@ -227,8 +227,7 @@ The third step reads DynamoDB data from Data Lake Storage Gen2 and stores it in 
 | `tenant_id`            | Directory (tenant) ID of the Microsoft Entra ID application (found on the **Overview** page). |
 | `client_secret`        | Value of the client secret associated with the Microsoft Entra ID application (found in **Certificates & secrets**). |
 
-> [!NOTE]
-> If necessary, you can run the next cell (the fourth step) to execute any data transformations or implement custom logic. For example, you could add an `id` field to your data before writing it to Azure Cosmos DB.
+If necessary, you can run the next cell (the fourth step) to execute any data transformations or implement custom logic. For example, you could add an `id` field to your data before writing it to Azure Cosmos DB.
 
 Run the fifth step to create the Azure Cosmos DB database and container. Use the [Catalog API of the Azure Cosmos DB Spark connector](https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/cosmos/azure-cosmos-spark_3_2-12/docs/catalog-api.md). Replace the following information with the corresponding values in your setup:
 
