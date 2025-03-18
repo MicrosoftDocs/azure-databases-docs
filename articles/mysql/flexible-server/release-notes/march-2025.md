@@ -30,10 +30,10 @@ az mysql flexible-server show --resource-group {resource group name} --name {ser
 
 ## Features
 
-- Public Preview for HA with dedicated SLB. With this feature, a dedicated [SLB](https://learn.microsoft.com/azure/load-balancer/load-balancer-overview) is added to a High availability (HA) configuration, helping the HA servers leverage the benefits offered by SLB i.e. low latency, high throughput network traffic distribution of front-end requests to back-end servers. SLB managing the MySQL data traffic path will eliminate the need for changing the DNS during failover, thereby improving the failover time by ~ 20 seconds.
+- Public Preview for HA with dedicated SLB. With this feature, a dedicated [SLB](https://learn.microsoft.com/azure/load-balancer/load-balancer-overview) is added to a High availability (HA) configuration, helping the HA servers leverage the benefits offered by SLB i.e., low latency, high throughput network traffic distribution of front-end requests to back-end servers. SLB managing the MySQL data traffic path will eliminate the need for changing the DNS during failover, thereby improving the failover time by ~ 20 seconds.
 
 ## Improvement
 - No major improvement in this release.
 
 ## Known Issues Fix
-- Fix the issue due to an internal error, the correct charges of your consumption for geo-redundant servers was not previously reflected in your billing. This issue has now been resolved, and moving forward your billing will align with the actual usage.
+- Fix the issue due to an internal error, the correct charges of your consumption for geo-redundant servers wasn't previously reflected in your billing. This issue is now resolved, and moving forward your billing aligns with the actual usage.
