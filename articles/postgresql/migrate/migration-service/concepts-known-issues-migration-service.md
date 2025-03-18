@@ -23,7 +23,12 @@ The following list describes common limitations that apply to migration scenario
 - The migration service supports migration for users and roles only when the source is Azure Database for PostgreSQL - Single Server.
 - The migration service shows the number of tables that are copied from the source to the target. You must manually check the data and PostgreSQL objects on the target server after migration.
 - The migration service migrates only user databases. The service doesn't migrate system databases like **template_0** and **template_1**.
-- The migration service doesn't support moving POSTGIS_TOPOLOGY, POSTGIS_TIGER_GEOCODER, POSTGRES_FDW, and PG_PARTMAN extensions from source to target.
+- The following limitations apply to **Extension** migrations:
+    - The migration service does not support migrating the `pg_partman` extension from the source to the target.
+    - The migration service does not support migrating the `postgres_fdw` extension in the following scenarios:
+        - When user/roles migration is disabled using the migration server parameter that is `azure.migration_skip_role_user = on`.
+        - When the source PostgreSQL version is greater than 15.
+        - When the source is AWS, on-premises, GCP, or an Azure VM (excluding Azure Database for PostgreSQL - Single Server).
 
   > [!NOTE]  
   > The feature to migrate databases that have the TIMESCALEDB extension is GA. Do note that only **Offline** migration is possible for time series databases.
