@@ -53,7 +53,7 @@ When you create a server, you set up the credentials for your admin user. The ad
 
 The PostgreSQL superuser attribute is assigned to **azure_superuser**, which belongs to the managed service. You don't have access to this role.
 
-An Azure Database for PostgreSQL flexible serverinstance has default databases:
+An Azure Database for PostgreSQL flexible server instance has default databases:
 
 - **postgres**: A default database that you can connect to after you create your server.
 - **azure_maintenance**: A database that's used to separate the processes that provide the managed service from user actions. You don't have access to this database.
