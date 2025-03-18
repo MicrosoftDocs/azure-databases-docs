@@ -31,6 +31,10 @@ For example, customers can use the `azure.migration_skip_role_user` parameter to
 | `azure.migration_skip_large_objects` | Boolean | When set to `on`, this parameter skips the migration of large objects such as BLOBs. | All supported sources by the migration service |
 | `azure.migration_skip_extensions` | Boolean | When set to `on`, this parameter skips the migration of extensions. | All supported sources by the migration service |
 
+> [!NOTE]  
+> - The migration configurable server parameters are only applicable to the new Azure Database for PostgreSQL flexible server.
+> - Changes in the migration configurable server parameters do not require a restart.
+> - The `azure.migration_skip_role_user` parameter is disabled for the target Azure Database for PostgreSQL flexible server version 16.
 
 These parameters allow users to customize their migration process efficiently, ensuring a streamlined and optimized experience while minimizing dependencies on backend adjustments.
 
