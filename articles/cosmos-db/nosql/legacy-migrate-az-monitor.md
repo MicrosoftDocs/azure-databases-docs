@@ -1,6 +1,6 @@
 ---
 title: Migrate legacy monitoring metrics to Azure Monitor
-description: Learn how to migrate from the legacy Azure Cosmos DB monitoring metrics REST API's to Azure Monitor.
+description: Learn how to migrate from the legacy Azure Cosmos DB monitoring metrics REST APIs to Azure Monitor.
 #customer intent: As a customer I want to centralize all my monitoring to Azure Monitor
 author: markjbrown
 ms.author: mjbrown
@@ -19,15 +19,15 @@ Customers using Azure Cosmos DB's legacy monitoring metrics REST APIs are encour
 
 ## What is Azure Cosmos DB Metrics API
 
-The Azure Cosmos DB Resource Provider (RP) Get Metrics API is a legacy system used to retrieve the lists of metrics, *List Metrics API* that are available for a Cosmos DB resource, as well as the metrics themselves, *Metrics API*, directly from the Cosmos DB resource provider for accounts, databases and collections. The number of metrics it provides is limited compared to what is now available with Azure Monitor.
+The Azure Cosmos DB Metrics API is a legacy system for getting monitoring data for your accounts, databases and collections. The number of metrics it provides is limited compared to what is now available with Azure Monitor.
 
-Due to its legacy nature, the path structure for these REST calls uses the resource id (RID) for databases and collections. These are not valid resource identifiers for resources in Azure Resource Manager (ARM). All resource provider APIs refer to Cosmos DB resources by name.
+Due to its legacy nature, the path structure for the REST API calls uses the resource ID (RID) for databases and collections. Resource IDs are specific to Cosmos DB and aren't valid for anything else in Azure. All resource provider APIs refer to Cosmos DB resources by name.
 
 ## What is the Azure Monitor REST API
 
-The Azure Monitor REST API, provides metric definitions, dimension values, and metric values using the Azure Monitor API to enable use of this data in your applications, or to store in a database for analysis. Users can also list alert rules and view activity logs using the Azure Monitor API.
+The Azure Monitor REST API, provides metric definitions, dimension and metrics values for your applications in Azure. This data can be used directly in your applications, or stored in a database for later analysis. Users can also list alert rules and view activity logs using the Azure Monitor API.
 
-If you are new to using this API, please see [Azure monitoring REST API walkthrough](https://learn.microsoft.com/azure/azure-monitor/essentials/rest-api-walkthrough) for an introduction and to become familiar.
+If you're new to using this API, please see [Azure monitoring REST API walkthrough](https://learn.microsoft.com/azure/azure-monitor/essentials/rest-api-walkthrough) for an introduction and to become familiar.
 
 
 ### Listing of legacy Cosmos DB metrics APIs
@@ -45,7 +45,7 @@ This table lists the legacy metrics APIs that customers should migrate to Azure 
 
 ### Listing of Azure Monitor metrics APIs
 
-Azure Monitor has two APIs that are the equivalent to *list metric definitions* and to retrieve individual *metrics*. The links embedded here will direct you to the REST API documentation for both with a complete listing of URI parameters and examples.
+Azure Monitor has two APIs that are the equivalent to *list metric definitions* and to retrieve individual *metrics*. The links will direct you to REST API documentation with URI parameters and examples.
 
 | Operation | URI |
 |---|---|
@@ -55,7 +55,7 @@ Azure Monitor has two APIs that are the equivalent to *list metric definitions* 
 
 ### Mapping Cosmos DB RP Metrics to Azure Monitor Metrics
 
-This table below provides a mapping of all legacy Cosmos DB metrics in Azure Monitor. When migrating individual API calls for specific metrics, use this table below.
+This table provides a mapping of all legacy Cosmos DB metrics in Azure Monitor to assist in migrating individual API calls for specific metrics.
 
 | Cosmos Metrics | Azure Monitor Metric | Notes |
 |---|---|---|
@@ -75,8 +75,8 @@ This table below provides a mapping of all legacy Cosmos DB metrics in Azure Mon
 | Throttled Requests | TotalRequests | Filter by status code |
 | Service Unavailable | TotalRequests | Filter by status code |
 | Total Request Units | TotalRequestUnits |  |
-| Average Requests Per Second/RUs Per Second  | N/A | Per Second Aggregation has never been supported |
-| Max RUMP RUs Per Minute | NormalizedRUConsumption |  |
+| Average Requests Per Second/RUs Per Second  | N/A | Not supported |
+| Max RUMP (RUs Per Minute) | NormalizedRUConsumption |  |
 | Mongo * Request Charge | MongoRequestCharge |  |
 | Mongo * Request Rate | MongoRequests | Filter by status code |
 | Mongo * Failed Requests | MongoRequests | Filter by status code |
@@ -85,7 +85,7 @@ This table below provides a mapping of all legacy Cosmos DB metrics in Azure Mon
 
 ### Examples migrating Cosmos DB legacy metrics to Azure Monitor metrics
 
-Here is a comparsion for two calls between the two REST APIs. Azure Monitor supports all of the metrics returned by the legacy Cosmos DB metrics APIs but has hundreds more and also has metrics for every other Azure service making it easy to monitor multiple Azure services together.
+Here's a comparsion for two calls between the two REST APIs. Azure Monitor supports all of the metrics returned by the legacy Cosmos DB metrics APIs and has hundreds more. It also has metrics for every other Azure service making it easy to monitor multiple Azure services together.
 
 ### Example 1 - List Metrics Definition
 
