@@ -654,6 +654,8 @@
         href: migrate/migration-service/concepts-migration-service-runtime-server.md
       - name: Required User Permissions
         href: migrate/migration-service/concepts-required-user-permissions.md
+      - name: Migration Configuration Parameters
+        href: migrate/migration-service/concepts-migration-server-parameters.md
       - name: Best practices
         href: migrate/migration-service/best-practices-migration-service-postgresql.md
       - name: Known issues and limitations
