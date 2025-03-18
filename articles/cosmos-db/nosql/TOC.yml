@@ -949,6 +949,8 @@
       href: ../monitor-reference.md
     - name: Monitoring solutions
       href: ../monitoring-solutions.md
+    - name: Migrate from legacy Monitoring 
+      href: ../legacy-migrate-az-monitor.md
   - name: Server-side programming
     items:
     - name: Stored procedures, triggers, and user-defined functions (UDFs)
