@@ -43,7 +43,7 @@ To restore a dropped Azure Database for PostgreSQL flexible server instance, you
 
 1. Provide the **resourceGroupName**, **serverName** (Target server name), **subscriptionId** properties, based on the resourceId attribute JSON value captured in the preceding step 3. The api-version property is prepopulated and can be left alone.
 
-1. Go to **Request Body** section and paste the following replacing the "Dropped server Location"(for example, CentralUS, EastUS etc.), "submissionTimestamp", and "resourceId". For "pointInTimeUTC", specify a value of "submissionTimestamp" minus **5 minutes** to ensure the command doesn't error out.
+1. Go to **Request Body** section and paste the following replacing the "Dropped server Location"(for example, CentralUS, EastUS etc.), "submissionTimestamp", and "resourceId". For "pointInTimeUTC", specify a value of "submissionTimestamp" minus **10 minutes** to ensure the command doesn't error out.
 
     ```json
       {
