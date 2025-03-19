@@ -25,7 +25,7 @@ Due to its legacy nature, the path structure for the REST API calls uses the res
 
 ## What is the Azure Monitor REST API
 
-The Azure Monitor REST API, provides metric definitions, dimension and metrics values for your applications in Azure. This data can be used directly in your applications, or stored in a database for later analysis. Users can also list alert rules and view activity logs using the Azure Monitor API.
+The Azure Monitor REST API provides metric definitions, dimension and metrics values for your applications in Azure. This data can be used directly in your applications, or stored in a database for later analysis. Users can also list alert rules and view activity logs using the Azure Monitor API.
 
 If you're new to using this API, please see [Azure monitoring REST API walkthrough](/azure/azure-monitor/essentials/rest-api-walkthrough) for an introduction and to become familiar.
 
@@ -85,7 +85,7 @@ This table provides a mapping of all legacy Cosmos DB metrics in Azure Monitor t
 
 ### Examples migrating Cosmos DB legacy metrics to Azure Monitor metrics
 
-Here's a comparsion for two calls between the two REST APIs. Azure Monitor supports all of the metrics returned by the legacy Cosmos DB metrics APIs and has hundreds more. It also has metrics for every other Azure service making it easy to monitor multiple Azure services together.
+Here's a comparison for two calls between the two REST APIs. Azure Monitor supports all of the metrics returned by the legacy Cosmos DB metrics APIs and has hundreds more. It also has metrics for every other Azure service making it easy to monitor multiple Azure services together.
 
 ### Example 1 - List Metrics Definition
 
