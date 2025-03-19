@@ -97,7 +97,9 @@ Autoscale availability varies by region. Check the Azure portal for support in y
 To ensure cost transparency, we’ve introduced a new metric called 'Autoscale Utilization Percentage'. 
 This metric shows the maximum of CPU or committed memory usage over time, helping you compare it against the charges incurred.  
 
-:::image type="content" source="media/how-to-scale-cluster/autoscale-metric.jpg" alt-text="Screenshot for autoscale usage metric." lightbox="true":::
+<a href="media/how-to-scale-cluster/autoscale-metric.jpg" target="_blank">
+  <img src="media/how-to-scale-cluster/autoscale-metric.jpg" alt="Screenshot for autoscale usage metric." width="600">
+</a>
 
 
 ## Next steps
