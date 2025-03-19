@@ -75,25 +75,25 @@ This flexible pricing model helps reduce costs while maintaining optimal perform
 
 ## Frequently Asked Questions (FAQs)
 
-### 🔹 Which clusters support Autoscale?  
+### * Which clusters support Autoscale?  
 Currently, Autoscale is only available for the M200 tier, with scaling capabilities from **M80 to M200**.  
 
-### 🔹 Does Autoscale manage both compute and storage scaling?  
+### * Does Autoscale manage both compute and storage scaling?  
 No, Autoscale only manages compute resources. Storage must be scaled manually.  
 
-### 🔹 Can I switch between the General Tier and Autoscale Tier?  
+### * Can I switch between the General Tier and Autoscale Tier?  
 Yes, upgrades and downgrades between the General Tier and Autoscale Tier are supported. However, downscaling from M200-Autoscale to M200 is not available at this time. 
 
-### 🔹 Is there any downtime when Autoscale adjusts capacity?  
+### * Is there any downtime when Autoscale adjusts capacity?  
 No, Autoscale adjusts capacity instantly and seamlessly, without any downtime or performance impact.  
 
-### 🔹 What happens if my workload exceeds the M200 tier limits?  
+### * What happens if my workload exceeds the M200 tier limits?  
 If your workload consistently exceeds M200 limits, consider a higher tier or alternative scaling strategies, as Autoscale currently supports up to M200.  
 
-### 🔹 Is Autoscale available in all Azure regions?  
+### * Is Autoscale available in all Azure regions?  
 Autoscale availability varies by region. Check the Azure portal for support in your preferred region.  
 
-### 🔹 How can I verify the charges incurred with Autoscale?  
+### * How can I verify the charges incurred with Autoscale?  
 To ensure cost transparency, we’ve introduced a new metric called “Autoscale Utilization Percentage.” 
 This metric shows the maximum of CPU or committed memory usage over time, helping you compare it against the charges incurred.  
 
