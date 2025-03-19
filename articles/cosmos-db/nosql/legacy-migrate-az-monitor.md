@@ -27,7 +27,7 @@ Due to its legacy nature, the path structure for the REST API calls uses the res
 
 The Azure Monitor REST API, provides metric definitions, dimension and metrics values for your applications in Azure. This data can be used directly in your applications, or stored in a database for later analysis. Users can also list alert rules and view activity logs using the Azure Monitor API.
 
-If you're new to using this API, please see [Azure monitoring REST API walkthrough](https://learn.microsoft.com/azure/azure-monitor/essentials/rest-api-walkthrough) for an introduction and to become familiar.
+If you're new to using this API, please see [Azure monitoring REST API walkthrough](/azure-monitor/essentials/rest-api-walkthrough) for an introduction and to become familiar.
 
 
 ### Listing of legacy Cosmos DB metrics APIs
@@ -36,12 +36,12 @@ This table lists the legacy metrics APIs that customers should migrate to Azure 
 
 | Cosmos Resource | Operation | URI |
 |---|---|---|
-| Database Account | [List Metric Definitions](https://learn.microsoft.com/rest/api/cosmos-db-resource-provider/database-accounts/list-metric-definitions) | Microsoft.DocumentDB/databaseAccounts/{accountName}/metricDefinitions |
-| Database Account | [List Metrics](https://learn.microsoft.com/rest/api/cosmos-db-resource-provider/database-accounts/list-metrics) | Microsoft.DocumentDB/databaseAccounts/{accountName}/metrics |
-| Database | [List Metric Definitions](https://learn.microsoft.com/rest/api/cosmos-db-resource-provider/database/list-metric-definitions) | Microsoft.DocumentDB/databaseAccounts/{accountName}/databases/{databaseRid}/metricDefinitions  |
-| Database | [List Metrics](https://learn.microsoft.com/rest/api/cosmos-db-resource-provider/database/list-metrics) | Microsoft.DocumentDB/databaseAccounts/{accountName}/databases/{databaseRid}/metrics  |
-| Collection | [List Metric Definitions](https://learn.microsoft.com/rest/api/cosmos-db-resource-provider/collection/list-metric-definitions) | Microsoft.DocumentDB/databaseAccounts/{accountName}/databases/{databaseRid}/collections/{collectionRid}/metricDefinitions |
-| Collection | [List Metrics](https://learn.microsoft.com/rest/api/cosmos-db-resource-provider/collection/list-metrics) | Microsoft.DocumentDB/databaseAccounts/{accountName}/databases/{databaseRid}/collections/{collectionRid}/metrics |
+| Database Account | [List Metric Definitions](/rest/api/cosmos-db-resource-provider/database-accounts/list-metric-definitions) | Microsoft.DocumentDB/databaseAccounts/{accountName}/metricDefinitions |
+| Database Account | [List Metrics](/rest/api/cosmos-db-resource-provider/database-accounts/list-metrics) | Microsoft.DocumentDB/databaseAccounts/{accountName}/metrics |
+| Database | [List Metric Definitions](/rest/api/cosmos-db-resource-provider/database/list-metric-definitions) | Microsoft.DocumentDB/databaseAccounts/{accountName}/databases/{databaseRid}/metricDefinitions  |
+| Database | [List Metrics](/rest/api/cosmos-db-resource-provider/database/list-metrics) | Microsoft.DocumentDB/databaseAccounts/{accountName}/databases/{databaseRid}/metrics  |
+| Collection | [List Metric Definitions](/rest/api/cosmos-db-resource-provider/collection/list-metric-definitions) | Microsoft.DocumentDB/databaseAccounts/{accountName}/databases/{databaseRid}/collections/{collectionRid}/metricDefinitions |
+| Collection | [List Metrics](/rest/api/cosmos-db-resource-provider/collection/list-metrics) | Microsoft.DocumentDB/databaseAccounts/{accountName}/databases/{databaseRid}/collections/{collectionRid}/metrics |
 
 ### Listing of Azure Monitor metrics APIs
 
@@ -49,8 +49,8 @@ Azure Monitor has two APIs that are the equivalent to *list metric definitions* 
 
 | Operation | URI |
 |---|---|
-| [List Metric Definitions](https://learn.microsoft.com/rest/api/monitor/metric-definitions/list/) | Microsoft.Insights/metricDefinitions |
-| [List Metrics](https://learn.microsoft.com/rest/api/monitor/metrics/list/) | Microsoft.Insights/metrics |
+| [List Metric Definitions](/rest/api/monitor/metric-definitions/list/) | Microsoft.Insights/metricDefinitions |
+| [List Metrics](/rest/api/monitor/metrics/list/) | Microsoft.Insights/metrics |
 
 
 ### Mapping Cosmos DB RP Metrics to Azure Monitor Metrics
