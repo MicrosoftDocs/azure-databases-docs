@@ -51,7 +51,7 @@ sections:
           az cosmosdb show --name '<cosmos-account-name>' --resource-group '<resource-group-name>'
           ```
       - question: |     
-          What metric need to be used or referenced for scaling up and scaling down the throughput programatically?
+          What metric can be used for scaling up and scaling down the throughput programatically?
         answer: |
           The throughput returned by the ReadThroughputAsync() API in the data plane SDK and Provisioned Throughput Azure monitor metric present the 'Provisioned Throughput', which are indicative of billed throughput for that hour. This is updated with a delay of 5 to 15 minutes and the calculation for "Provisioned Throughput" may undergo implementation change as Cosmos DB continues to optimize the autoscale model. Users shouldn't rely on this metric for making scale-up or scale-down decisions, as it doesn't reflect the normalized throughput consumption and can lead to throttling of workloads. To get an accurate view of whether a container can be safely scaled up or down,  Normalized RU Consumption metric in Azure Monitor need to be used.      
       - question: |
