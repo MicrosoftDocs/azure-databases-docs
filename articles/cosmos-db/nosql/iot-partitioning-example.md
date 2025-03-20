@@ -50,7 +50,7 @@ Imagine an IoT application that collects environmental data from thousands of Io
 }
 ```
 **Access Pattern:**
-In this scenario, we're' logging data every minute, making it a write-heavy application. We'd like to optimize our partitioning strategy for ingesting data at high throughput. 
+In this scenario, we're' logging data every second, making it a write-heavy application. We'd like to optimize our partitioning strategy for ingesting data at high throughput. 
 
 For real-time analytics (for example, aggregating device data across districts), we can explore [Azure Synapse Link](../synapse-link.md)
 
@@ -58,7 +58,7 @@ For real-time analytics (for example, aggregating device data across districts),
 
 ### Hierarchical partition key
 
-It's important to note that Azure Cosmos DB limits the data per logical partition to 20-GB. In our scenario, each device is logging data per minute, logging 525,600 records per year. On average, our document size is around 50 KB, so we're guaranteed to hit the 20-GB data limit per device ID during the year by partitioning by device ID alone. 
+It's important to note that Azure Cosmos DB limits the data per logical partition to 20-GB. In our scenario, each device is logging data per second. On average, our document size is around 1 KB, so we're guaranteed to hit the 20-GB data limit per device ID during the year by partitioning by device ID alone. 
 
 To ensure that we never run into the 20-GB data limit for any of our device IDs, we can use [hierarchical partition keys](../hierarchical-partition-keys.md). We can set the following two levels:
 
@@ -84,9 +84,9 @@ While this strategy is recommended, let's also take a look at other potential op
 
 - **Pros:** This choice might work as it clusters data for each device onto the same logical partition and will distribute writes across many physical partitions since we have over 50,000 devices. Any queries for data from a specific device ID are optimized. Now, they can be scoped to the specific logical/physical partition it refers to, avoiding cross-partition queries.
 
-- **Cons:** Since we're logging device data every minute, a single device generates 525,600 records per year. Let's assume that our document size is around 100 KB. The total data size for one year for one device is around 50-GB. By partitioning by device ID, our workload is guaranteed to run into the 20-GB data size logical partition key limit for a specific device in around five months. Once this occurs on Azure Cosmos DB, any future write operations are blocked. Many of our queries will also be for specific districts, and partitioning by solely device ID will result in cross-partition queries, adding 2-3 RU/s for each physical partition we visit. 
+- **Cons:** Since we're logging device data every second, a single device generates ~31,536,000 records per year. Let's assume that our document size is around 1 KB. The total data size for one year for one device is around 30-GB. By partitioning by device ID, our workload is guaranteed to run into the 20-GB data size logical partition key limit for a specific device in around five months. Once this occurs on Azure Cosmos DB, any future write operations are blocked. Many of our queries will also be for specific districts, and partitioning by solely device ID will result in cross-partition queries, adding 2-3 RU/s for each physical partition we visit. 
 
-Because we do not want stop write operations for device IDs once it reaches 20-GB of data, we should **not** be using device ID as the final key. Moreover, there might be some different partitioning strategies to help us avoid cross partition queries.
+Because we do not want stop write operations for device IDs once it reaches 20-GB of data, we should **not** be using device ID as the final key. In cases where we're 100% confident that we would never run into the 20-GB limit, using device ID as the partition key is fine. However, it is safer to use a hierarchical partition key with the second level key being a GUID or another high cardinality value because it is a 100% guarantee that we will never hit the 20-GB limit. 
 
 ### Time-based key (month, date, hour, etc.)
 
@@ -94,22 +94,18 @@ The granularity of a time-based key directly impacts cardinality, and this comes
 
 For example, let's say our workload is provisioned with 100,000 RU/s and we have 10 physical partitions that can use up to 10K RU/s each. By partitioning our workload with a time-based key which only includes the month, all writes for the month would funnel into the same logical and physical partition, limiting our overall throughput to just 10K RU/s, rather than the 100K we have provisioned.
 
-Increasing granularity to a day-level key (for example, 2024-12-18) spreads the data across more physical partitions. However, writes for a specific day still funnel into a single logical partition, leading to hot partitions under heavy write loads. In addition to hot partitions, the workload is guaranteed to hit the 20-GB logical partition limit by using this key since **all** device data would funnel into the same logical partition, and each device ID alone is guaranteed to hit the 20-GB limit. 
+Increasing granularity to a day-level key (for example, 2024-12-18) spreads our data across many physical partitions, but writes for a specific day still funnel into a single logical partition, leading to hot partitions under heavy write loads. In addition to hot partitions, the workload is guaranteed to hit the 20-GB logical partition limit by using this key since **all** device data would funnel into the same logical partition, and each device ID alone is guaranteed to hit the 20-GB limit. 
 
 For even finer granularity, a time-stamp-based key (for example, 2024-12-18T10:00) includes the month, day, and time (down to the hour or minute). This approach reduces the likelihood of hot partitions and helps you stay within the 20-GB data limit per partition key value. However, the more granular the time-based partition key, the higher the likelihood of cross-partition queries when accessing data over broader time ranges. 
 
 For example, querying all device data for a specific day or month will result in cross-partition queries because the data is distributed across multiple logical partitions. Since the partition key includes the full path (for example, month, date, hour, and minute), the data for a single day is spread across different logical and multiple physical partitions. So, querying for all data within a specific day requires accessing multiple physical partitions to retrieve the complete dataset.
 
 > [!IMPORTANT]
->**Choosing the right time-based key is a tradeoff:**
+>**Time-based partition keys are not recommended:**
 >-   A more granular time-based key avoids hitting the 20-GB partition limit but may result in increased cross-partition queries if we query for broader time ranges (like device data for a specific date).
 >-   A less granular key reduces cross-partition queries on date, but risks hot partitions and reaching the 20-GB storage limit.
 
 Your choice should align with your application's access patterns and data distribution needs. Since we're logging data every minute and want to avoid hitting the 20-GB limit, a time-based key that includes date/hour/minute granularity could work.
-
--   **Pros:** Since we are frequently querying for specific time periods to generate reports, using a time-based partition key could work since we can efficiently filter and retrieve data by specifying the partition key and scoping our queries to the specific physical partition. This would also help us periodically delete old data by deleting entire partitions that refer to old dates.
-
--   **Cons:** However, the biggest drawback of time-based partitioning in a write-heavy scenario, like an IoT system with continuous real-time data ingestion, is the risk of concentrating all writes for a specific time into a single partition. This can lead to throttling and poor performance. With 50,000 devices writing data simultaneously, all writes would funnel into the partition for the current data, month, and minute key, limiting throughput to that single partition's throughput while other partitions remain underutilized. This creates a bottleneck that restricts overall write scalability.
 
 We do not want to run into hot partitions, and by partitioning solely on a time-based key we will inevitably run into this since our workload would be writing to one logical partition during all of our write operations. 
 
