@@ -105,9 +105,7 @@ For example, querying all device data for a specific day or month will result in
 >-   A more granular time-based key avoids hitting the 20-GB partition limit but may result in increased cross-partition queries if we query for broader time ranges (like device data for a specific date).
 >-   A less granular key reduces cross-partition queries on date, but risks hot partitions and reaching the 20-GB storage limit.
 
-Your choice should align with your application's access patterns and data distribution needs. Since we're logging data every minute and want to avoid hitting the 20-GB limit, a time-based key that includes date/hour/minute granularity could work.
-
-We do not want to run into hot partitions, and by partitioning solely on a time-based key we will inevitably run into this since our workload would be writing to one logical partition during all of our write operations. 
+Your choice should align with your application's access patterns and data distribution needs. We do not want to run into hot partitions, and by partitioning solely on a time-based key we will inevitably run into this since our workload would be writing to one logical partition during all of our write operations. 
 
 ### Synthetic Key: DeviceId + Time-based-key (Date + Hour + Minute)
 
