@@ -60,12 +60,12 @@ This quickstart demonstrates how to use the Azure CLI commands to create a clust
    ```
 
    > [!NOTE]
-   > The `assignee` and `role` values in the previous command are fixed values, enter these values exactly as mentioned in the command. Not doing so will lead to errors when creating the cluster. If you encounter any errors when executing this command, you may not have permissions to run it, please reach out to your admin for permissions.
+   > The `assignee` and `role` values in the previous command are fixed values. Enter these values exactly as mentioned in the command. Not doing so leads to errors when creating the cluster. If you encounter any errors when executing this command, you may not have permissions to run it, reach out to your admin for permissions.
 
 1. Next create the cluster in your newly created Virtual Network by using the [az managed-cassandra cluster create](/cli/azure/managed-cassandra/cluster#az-managed-cassandra-cluster-create) command. Run the following command the value of `delegatedManagementSubnetId` variable:
 
    > [!NOTE]
-   > The value of the `delegatedManagementSubnetId` variable you will supply below is exactly the same as the value of `--scope` that you supplied in the command above:
+   > The value of the `delegatedManagementSubnetId` variable you supply below is exactly the same as the value of `--scope` that you supplied in the command above:
 
 
    ```azurecli-interactive
@@ -122,7 +122,7 @@ This quickstart demonstrates how to use the Azure CLI commands to create a clust
    > Note also that `--availability-zone` is set to `false`. To enable availability zones, set this to `true`. Availability zones increase the availability SLA of the service. For more details, review the full SLA details [here](https://azure.microsoft.com/support/legal/sla/managed-instance-apache-cassandra/v1_0/).
 
    > [!WARNING]
-   > Availability zones are not supported in all regions. Deployments will fail if you select a region where Availability zones are not supported. See [here](/azure/reliability/availability-zones-region-support) for supported regions. The successful deployment of availability zones is also subject to the availability of compute resources in all of the zones in the given region. Deployments may fail if the SKU you have selected, or capacity, is not available across all zones.
+   > Availability zones are not supported in all regions. Deployments fail if you select a region where Availability zones are not supported. See [here](/azure/reliability/availability-zones-region-support) for supported regions. The successful deployment of availability zones is also subject to the availability of compute resources in all of the zones in the given region. Deployments may fail if the SKU you have selected, or capacity, is not available across all zones.
 
 1. Once the datacenter is created, if you want to scale up, or scale down the nodes in the datacenter, run the [az managed-cassandra datacenter update](/cli/azure/managed-cassandra/datacenter#az-managed-cassandra-datacenter-update) command. Change the value of `node-count` parameter to the desired value:
 
@@ -167,7 +167,7 @@ Connect by simply using cqlsh, as described in the documentation above in the la
 
 As with CQLSH, connecting from an application using one of the supported [Apache Cassandra client drivers](https://cassandra.apache.org/doc/latest/cassandra/getting_started/drivers.html) requires SSL encryption to be enabled, and certification verification to be disabled. See samples for connecting to Azure Managed Instance for Apache Cassandra using [Java](https://github.com/Azure-Samples/azure-cassandra-mi-java-v4-getting-started), [.NET](https://github.com/Azure-Samples/azure-cassandra-mi-dotnet-core-getting-started), [Node.js](https://github.com/Azure-Samples/azure-cassandra-mi-nodejs-getting-started) and [Python](https://github.com/Azure-Samples/azure-cassandra-mi-python-v4-getting-started).
 
-Disabling certificate verification is recommended because certificate verification will not work unless you map I.P addresses of your cluster nodes to the appropriate domain. If you have an internal policy which mandates that you do SSL certificate verification for any application, you can facilitate this by adding entries like `10.0.1.5 host1.managedcassandra.cosmos.azure.com` in your hosts file for each node. If taking this approach, you would also need to add new entries whenever scaling up nodes. 
+Disabling certificate verification is recommended because certificate verification does not work unless you map I.P addresses of your cluster nodes to the appropriate domain. If you have an internal policy which mandates that you do SSL certificate verification for any application, you can facilitate this by adding entries like `10.0.1.5 host1.managedcassandra.cosmos.azure.com` in your hosts file for each node. If taking this approach, you would also need to add new entries whenever scaling up nodes. 
 
 For Java, we also highly recommend enabling [speculative execution policy](https://docs.datastax.com/en/developer/java-driver/4.10/manual/core/speculative_execution/) where applications are sensitive to tail latency. You can find a demo illustrating how this works and how to enable the policy [here](https://github.com/Azure-Samples/azure-cassandra-mi-java-v4-speculative-execution).
 
