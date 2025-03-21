@@ -68,8 +68,6 @@ landingContent:
             url: flexible-server/concepts-security.md
           - text: Monitor
             url: flexible-server/concepts-monitoring.md
-          - text: Fabric mirroring
-            url: flexible-server/concepts-fabric-mirroring.md
           - text: Logical replication
             url: flexible-server/concepts-logical.md
           - text: Intelligent tuning
