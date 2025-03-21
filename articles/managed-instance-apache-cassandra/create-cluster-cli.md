@@ -45,12 +45,12 @@ This quickstart demonstrates how to use the Azure CLI commands to create a clust
    > The Deployment of a Azure Managed Instance for Apache Cassandra requires internet access. Deployment fails in environments where internet access is restricted. Make sure you aren't blocking access within your VNet to the following vital Azure services that are necessary for Managed Cassandra to work properly:
    > - Azure Storage
    > - Azure KeyVault
-   > - Azure Virtual Machine Scale Sets
+   > - Azure Virtual Machine Scale Sets (VMSS)
    > - Azure Monitoring
    > - Microsoft Entra ID
    > - Azure Security
 
-1. Apply some special permissions to the Virtual Network, which are required by the managed instance. Use the `az role assignment create` command, replacing `<subscriptionID>`, `<resourceGroupName>`, and `<vnetName>` with the appropriate values:
+1. Apply some special permissions to the Virtual Network. They are are required by the managed instance. Use the `az role assignment create` command, replacing `<subscriptionID>`, `<resourceGroupName>`, and `<vnetName>` with the appropriate values:
 
    ```azurecli-interactive
    az role assignment create \
@@ -60,12 +60,12 @@ This quickstart demonstrates how to use the Azure CLI commands to create a clust
    ```
 
    > [!NOTE]
-   > The `assignee` and `role` values in the previous command are fixed values. Enter these values exactly as mentioned in the command. Not doing so leads to errors when creating the cluster. If you encounter any errors when executing this command, you may not have permissions to run it, reach out to your admin for permissions.
+   > The `assignee` and `role` values are fixed values. Enter these values exactly as mentioned in the command. Not doing so leads to errors when creating the cluster. If you encounter any errors when executing this command, you may not have permissions to run it, reach out to your admin for permissions.
 
 1. Next create the cluster in your newly created Virtual Network by using the [az managed-cassandra cluster create](/cli/azure/managed-cassandra/cluster#az-managed-cassandra-cluster-create) command. Run the following command the value of `delegatedManagementSubnetId` variable:
 
    > [!NOTE]
-   > The value of the `delegatedManagementSubnetId` variable you supply below is exactly the same as the value of `--scope` that you supplied in the command above:
+   > The value of the `delegatedManagementSubnetId` variable is exactly the same as the value of `--scope` that you supplied before:
 
 
    ```azurecli-interactive
@@ -86,7 +86,7 @@ This quickstart demonstrates how to use the Azure CLI commands to create a clust
      --debug
    ```
 
-1. Finally, create a datacenter for the cluster, with three nodes, Standard D8s v4 VM SKU, with 4 P30 disks attached for each node, by using the [az managed-cassandra datacenter create](/cli/azure/managed-cassandra/datacenter#az-managed-cassandra-datacenter-create) command:
+1. Create a datacenter for the cluster, with three nodes using, Standard D8s v4 VM size, with 4 P30 disks attached for each node, by using the [az managed-cassandra datacenter create](/cli/azure/managed-cassandra/datacenter#az-managed-cassandra-datacenter-create) command:
 
    ```azurecli-interactive
    dataCenterName='dc1'
@@ -119,12 +119,12 @@ This quickstart demonstrates how to use the Azure CLI commands to create a clust
    > - Standard_D16s_v4
    > - Standard_D32s_v4
    >
-   > Note also that `--availability-zone` is set to `false`. To enable availability zones, set this to `true`. Availability zones increase the availability SLA of the service. For more details, review the full SLA details [here](https://azure.microsoft.com/support/legal/sla/managed-instance-apache-cassandra/v1_0/).
+   > Note also that `--availability-zone` is set to `false`. To enable availability zones, set it to `true`. Availability zones increase the availability of the service. For more details, review the full service-level agreement (SLA) details [here](https://azure.microsoft.com/support/legal/sla/managed-instance-apache-cassandra/v1_0/).
 
    > [!WARNING]
-   > Availability zones are not supported in all regions. Deployments fail if you select a region where Availability zones are not supported. See [here](/azure/reliability/availability-zones-region-support) for supported regions. The successful deployment of availability zones is also subject to the availability of compute resources in all of the zones in the given region. Deployments may fail if the SKU you have selected, or capacity, is not available across all zones.
+   > Availability zones are not supported in all regions. Deployments fail if you select a region where Availability zones are not supported. See [here](/azure/reliability/availability-zones-region-support) for supported regions. The successful deployment of availability zones is also subject to the availability of compute resources in all of the zones in the region selected. Deployments may fail if the virtual machine size you choose is not available in region.
 
-1. Once the datacenter is created, if you want to scale up, or scale down the nodes in the datacenter, run the [az managed-cassandra datacenter update](/cli/azure/managed-cassandra/datacenter#az-managed-cassandra-datacenter-update) command. Change the value of `node-count` parameter to the desired value:
+1. Once the datacenter is created, you can run the [az managed-cassandra datacenter update](/cli/azure/managed-cassandra/datacenter#az-managed-cassandra-datacenter-update) command to scale down or up your cluster. Change the value of `node-count` parameter to the desired value:
 
    ```azurecli-interactive
    resourceGroupName='<Resource_Group_Name>'
@@ -141,7 +141,7 @@ This quickstart demonstrates how to use the Azure CLI commands to create a clust
 
 ## Connect to your cluster
 
-Azure Managed Instance for Apache Cassandra does not create nodes with public IP addresses. To connect to your newly created Cassandra cluster, you must create another resource inside the virtual network. This resource can be an application, or a virtual machine with Apache's open-source query tool [CQLSH](https://cassandra.apache.org/doc/latest/cassandra/tools/cqlsh.html) installed. 
+Azure Managed Instance for Apache Cassandra does not create nodes with public IP addresses. To connect to your newly created Cassandra cluster, you must create another resource inside the virtual network. This resource can be an application, or a virtual machine (VM) with Apache's open-source query tool [CQLSH](https://cassandra.apache.org/doc/latest/cassandra/tools/cqlsh.html) installed. 
 
 You can use a [Resource Manager template](https://azure.microsoft.com/resources/templates/vm-simple-linux/) to deploy an Ubuntu virtual machine. 
 
