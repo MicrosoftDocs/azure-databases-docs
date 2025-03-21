@@ -22,7 +22,21 @@
   - name: Request quota increase
     href: flexible-server/how-to-request-quota-increase.md
   - name: Resolve capacity errors
-    href: flexible-server/how-to-resolve-capacity-errors.md    
+    href: flexible-server/how-to-resolve-capacity-errors.md  
+  - name: Building AI Applications
+    items:
+    - name: AI Agents 
+      href: flexible-server/generative-ai-ai-agents.md
+    - name: Vector Databases
+      items:
+      - name: Using vector databases in Postgres
+        href: flexible-server/generative-ai-vector-databases.md
+    - name:  AI Frameworks
+      items:
+      - name: Overview
+        href: flexible-server/generative-ai-ai-frameworks.md
+      - name: Develop with LangChain
+        href: flexible-server/generative-ai-develop-with-langchain.md
   - name: Known issues & limitations
     href: single-server/concepts-known-issues-limitations.md
     displayName: issues, limitations, postgresql
@@ -654,8 +668,6 @@
         href: migrate/migration-service/concepts-migration-service-runtime-server.md
       - name: Required User Permissions
         href: migrate/migration-service/concepts-required-user-permissions.md
-      - name: Migration Configuration Parameters
-        href: migrate/migration-service/concepts-migration-server-parameters.md
       - name: Best practices
         href: migrate/migration-service/best-practices-migration-service-postgresql.md
       - name: Known issues and limitations
