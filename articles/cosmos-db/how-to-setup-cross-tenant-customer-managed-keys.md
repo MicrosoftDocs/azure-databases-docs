@@ -78,6 +78,23 @@ You can't configure customer-managed keys with a specific version of the key ver
 
 To Revoke or Disable customer-managed keys, see [configure customer-managed keys for your Azure Cosmos DB account with Azure Key Vault](how-to-setup-customer-managed-keys.md)
 
+## FAQs
+
+**How do I migrate an Azure Cosmos DB account with Customer Managed Keys enabled to a different resource group or to a different subscription?**
+
+As a prerequisite, make sure the account is in an Active state. Accounts in a Revoked state can't be migrated.
+
+The general guideline to migrate a Cosmos DB account to a different resource group or subscription is described in the [moving Azure resources to a new resource group or subscription](https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/move-resource-group-and-subscription) article.
+
+After successfully moving the Azure Cosmos DB account per the general guideline, any identities (System-Assigned or User-Assigned) associated with the account must be [reassigned](https://learn.microsoft.com/en-us/azure/cosmos-db/how-to-setup-managed-identity). This is required in order to ensure that these identities continue to have the necessary permissions to access the Key Vault key.
+
+**How do I migrate an Azure Cosmos DB account to a different tenant?**
+
+If your Cosmos DB account has Customer Managed Keys enabled, you can only migrate the account if it is a cross-tenant customer-managed key account. For more information, see the guide on [configuring cross-tenant customer-managed keys for your Azure Cosmos DB account with Azure Key Vault](https://learn.microsoft.com/en-us/azure/cosmos-db/how-to-setup-cross-tenant-customer-managed-keys?tabs=azure-portal).
+
+> [!WARNING]
+> After migrating, it's crucial to keep the Azure Cosmos DB account and the Azure Key Vault in separate tenants to preserve the original cross-tenant relationship. Ensure the Key Vault key remains in place until the Cosmos DB account migration is complete.
+
 ## See also
 
 - [Configure customer-managed keys for your Azure Cosmos account with Azure Key Vault](how-to-setup-cmk.md)

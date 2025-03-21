@@ -158,6 +158,13 @@ The state of the key is checked when CMK encryption is triggered. If the key in 
 
 Yes. Go through the prerequisite section thoroughly. We recommend testing all scenarios first on nonproduction accounts and once you're comfortable you can consider production accounts.
 
+**How do I migrate an Azure Cosmos DB account to a different tenant?**
+
+If your Cosmos DB account has Customer Managed Keys enabled, you can only migrate the account if it is a cross-tenant customer-managed key account. For more information, see the guide on [configuring cross-tenant customer-managed keys for your Azure Cosmos DB account with Azure Key Vault](https://learn.microsoft.com/en-us/azure/cosmos-db/how-to-setup-cross-tenant-customer-managed-keys?tabs=azure-portal).
+
+> [!WARNING]
+> After migrating, it's crucial to keep the Azure Cosmos DB account and the Azure Key Vault in separate tenants to preserve the original cross-tenant relationship. Ensure the Key Vault key remains in place until the Cosmos DB account migration is complete.
+
 ## Next steps
 
 * Learn more about [data encryption in Azure Cosmos DB](database-encryption-at-rest.md).
