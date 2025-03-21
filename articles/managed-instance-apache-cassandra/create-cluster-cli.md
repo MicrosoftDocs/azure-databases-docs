@@ -50,7 +50,7 @@ This quickstart demonstrates how to use the Azure command line interface (CLI) c
    > - Microsoft Entra ID
    > - Azure Security
 
-1. Apply these specific permissions to the Virtual Network. They are are required by the managed instance. Use the `az role assignment create` command, replacing `<subscriptionID>`, `<resourceGroupName>`, and `<vnetName>` with the appropriate values:
+1. Apply these specific permissions to the Virtual Network. They are required by the managed instance. Use the `az role assignment create` command, replacing `<subscriptionID>`, `<resourceGroupName>`, and `<vnetName>` with the appropriate values:
 
    ```azurecli-interactive
    az role assignment create \
@@ -112,7 +112,7 @@ This quickstart demonstrates how to use the Azure command line interface (CLI) c
    ```
 
    > [!NOTE]
-   > The value for `--sku` can be chosen from the following available SKUs:
+   > The value for `--sku` can be chosen from the following available VM sizes:
    >
    > - Standard_E8s_v4
    > - Standard_E16s_v4
