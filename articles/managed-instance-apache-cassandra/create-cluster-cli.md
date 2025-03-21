@@ -42,7 +42,7 @@ This quickstart demonstrates how to use the Azure command line interface (CLI) c
    ```
 
    > [!NOTE]
-   > The Deployment of a Azure Managed Instance for Apache Cassandra requires internet access. Deployment fails in environments where internet access is restricted. Make sure you are not blocking access within your virtual network (VNet) to the following Azure services that are required for Managed Cassandra to work properly:
+   > The Deployment of an Azure Managed Instance for Apache Cassandra requires internet access. Deployment fails in environments where internet access is restricted. Make sure you are not blocking access within your virtual network (VNet) to the following Azure services that are required for Managed Cassandra to work properly:
    > - Azure Storage
    > - Azure KeyVault
    > - Azure Virtual Machine Scale Sets (VMSS)
@@ -50,7 +50,7 @@ This quickstart demonstrates how to use the Azure command line interface (CLI) c
    > - Microsoft Entra ID
    > - Azure Security
 
-1. Apply these specific permissions to the Virtual Network. They are required by the managed instance. Use the `az role assignment create` command, replacing `<subscriptionID>`, `<resourceGroupName>`, and `<vnetName>` with the appropriate values:
+1. Apply these specific permissions to the Virtual Network. The managed instance requires them. Use the `az role assignment create` command, replacing `<subscriptionID>`, `<resourceGroupName>`, and `<vnetName>` with the appropriate values:
 
    ```azurecli-interactive
    az role assignment create \
@@ -88,7 +88,7 @@ This quickstart demonstrates how to use the Azure command line interface (CLI) c
 
 1. Create a datacenter for the cluster, with three virtual machines using the following configuration:
 
- - VM Size: Standard D8s v4 (Other sizes can be also used depending on your deployment, but this is the minimal recommended size)
+ - VM Size: Standard D8s v4 (Other sizes can be also used depending on your deployment, this is the minimal recommended size)
  - Datadisks: 4 P30 disks attached to each of the virtual machines deployed.
 
  - With all in place, use the [az managed-cassandra datacenter create](/cli/azure/managed-cassandra/datacenter#az-managed-cassandra-datacenter-create) command:
@@ -166,18 +166,18 @@ Check which [versions of Cassandra are still supported](https://cassandra.apache
 
 Install the Cassandra libraries in order to get CQLSH by following the official steps from the [Cassandra documentation](https://cassandra.apache.org/doc/stable/cassandra/getting_started/installing.html#installing-the-debian-packages)
 
-Connect by simply using cqlsh, as described in the documentation above in the last step.
+Connect by simply using cqlsh, as described in the documentation.
 
 ### Connecting from an application
 
 As with CQLSH, connecting from an application using one of the supported [Apache Cassandra client drivers](https://cassandra.apache.org/doc/latest/cassandra/getting_started/drivers.html) requires SSL encryption to be enabled, and certification verification to be disabled. See samples for connecting to Azure Managed Instance for Apache Cassandra using [Java](https://github.com/Azure-Samples/azure-cassandra-mi-java-v4-getting-started), [.NET](https://github.com/Azure-Samples/azure-cassandra-mi-dotnet-core-getting-started), [Node.js](https://github.com/Azure-Samples/azure-cassandra-mi-nodejs-getting-started) and [Python](https://github.com/Azure-Samples/azure-cassandra-mi-python-v4-getting-started).
 
-Disabling certificate verification is recommended because certificate verification does not work unless you map IP addresses of your cluster nodes to the appropriate domain. If you have an internal policy which mandates that you do SSL certificate verification for any application, you can facilitate this by adding entries like `10.0.1.5 host1.managedcassandra.cosmos.azure.com` in your hosts file for each node. If taking this approach, you would also need to add new entries anytime you scale up nodes.
+Disabling certificate verification is recommended because certificate verification does not work unless you map IP addresses of your cluster nodes to the appropriate domain. If you have an internal policy which mandates that you do SSL certificate verification for any application, you can facilitate by adding entries like `10.0.1.5 host1.managedcassandra.cosmos.azure.com` in your hosts file for each node. If taking this approach, you would also need to add new entries anytime you scale up nodes.
 
 For Java, we highly recommend enabling [speculative execution policy](https://docs.datastax.com/en/developer/java-driver/4.10/manual/core/speculative_execution/) where applications are sensitive to tail latency. You can find a demo illustrating how this works and how to enable the policy [here](https://github.com/Azure-Samples/azure-cassandra-mi-java-v4-speculative-execution).
 
 > [!NOTE]
-> In the vast majority of cases it should **not be necessary** to configure or install certificates (rootCA, node or client, truststores, etc) to connect to Azure Managed Instance for Apache Cassandra. SSL encryption can be enabled by using the default truststore and password of the runtime being used by the client (see [Java](https://github.com/Azure-Samples/azure-cassandra-mi-java-v4-getting-started), [.NET](https://github.com/Azure-Samples/azure-cassandra-mi-dotnet-core-getting-started), [Node.js](https://github.com/Azure-Samples/azure-cassandra-mi-nodejs-getting-started) and [Python](https://github.com/Azure-Samples/azure-cassandra-mi-python-v4-getting-started) samples), because Azure Managed Instance for Apache Cassandra certificates will be trusted by that environment. In rare cases, if the certificate is not trusted, you may need to add it to the truststore.
+> In most cases it should **not be necessary** to configure or install certificates (rootCA, node or client, truststores and so on) to connect to Azure Managed Instance for Apache Cassandra. SSL encryption is enabled by using the default truststore and a password of the runtime used by the client (see [Java](https://github.com/Azure-Samples/azure-cassandra-mi-java-v4-getting-started), [.NET](https://github.com/Azure-Samples/azure-cassandra-mi-dotnet-core-getting-started), [Node.js](https://github.com/Azure-Samples/azure-cassandra-mi-nodejs-getting-started) and [Python](https://github.com/Azure-Samples/azure-cassandra-mi-python-v4-getting-started) samples), because Azure Managed Instance for Apache Cassandra certificates will be trusted by that environment. In rare cases, if the certificate is not trusted, you may need to add it to the truststore.
 
 ### Configuring client certificates (optional)
 
