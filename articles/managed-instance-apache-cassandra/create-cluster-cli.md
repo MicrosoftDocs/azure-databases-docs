@@ -88,7 +88,7 @@ This quickstart demonstrates how to use the Azure command line interface (CLI) c
 
 1. Create a datacenter for the cluster, with three virtual machines using the following configuration:
 
- - VM Size: Standard D8s v4 (Other sizes can be also used depending on your deployment, this is the minimal recommended size)
+ - VM Size: Standard E8s v5
  - Datadisks: 4 P30 disks attached to each of the virtual machines deployed.
 
  - With all in place, use the [az managed-cassandra datacenter create](/cli/azure/managed-cassandra/datacenter#az-managed-cassandra-datacenter-create) command:
@@ -114,17 +114,12 @@ This quickstart demonstrates how to use the Azure command line interface (CLI) c
    > [!NOTE]
    > The value for `--sku` can be chosen from the following available VM sizes:
    >
-   > - Standard_E8s_v4
-   > - Standard_E16s_v4
-   > - Standard_E20s_v4
-   > - Standard_E32s_v4
-   > - Standard_DS13_v2
-   > - Standard_DS14_v2
-   > - Standard_D8s_v4
-   > - Standard_D16s_v4
-   > - Standard_D32s_v4
+   > - Standard_E8s_v5
+   > - Standard_E16s_v5
+   > - Standard_E20s_v5
+   > - Standard_E32s_v5
    >
-   > Note that `--availability-zone` is set to `false`. To enable availability zones, set it to `true`. Availability zones help increasing the availability of the service. For more details, review the full service-level agreement (SLA) details [here](https://azure.microsoft.com/support/legal/sla/managed-instance-apache-cassandra/v1_0/).
+   > By default `--availability-zone` is set to `false`. To enable availability zones, set it to `true`. Availability zones help increasing the availability of the service. For more details, review the full service-level agreement (SLA) details [here](https://azure.microsoft.com/support/legal/sla/managed-instance-apache-cassandra/v1_0/).
 
    > [!WARNING]
    > Availability zones are not supported in all Azure regions. Deployments fail if you select a region where Availability zones are not supported. See [here](/azure/reliability/availability-zones-region-support) for supported regions. The successful deployment of availability zones is subject to the availability of compute resources in all of the zones in the region selected. Deployments fail if the virtual machine size you choose is not available in the region selected.
@@ -177,11 +172,11 @@ Disabling certificate verification is recommended because certificate verificati
 For Java, we highly recommend enabling [speculative execution policy](https://docs.datastax.com/en/developer/java-driver/4.10/manual/core/speculative_execution/) where applications are sensitive to tail latency. You can find a demo illustrating how this works and how to enable the policy [here](https://github.com/Azure-Samples/azure-cassandra-mi-java-v4-speculative-execution).
 
 > [!NOTE]
-> In most cases it should **not be necessary** to configure or install certificates (rootCA, node or client, truststores and so on) to connect to Azure Managed Instance for Apache Cassandra. SSL encryption is enabled by using the default truststore and a password of the runtime used by the client (see [Java](https://github.com/Azure-Samples/azure-cassandra-mi-java-v4-getting-started), [.NET](https://github.com/Azure-Samples/azure-cassandra-mi-dotnet-core-getting-started), [Node.js](https://github.com/Azure-Samples/azure-cassandra-mi-nodejs-getting-started) and [Python](https://github.com/Azure-Samples/azure-cassandra-mi-python-v4-getting-started) samples), because Azure Managed Instance for Apache Cassandra certificates will be trusted by that environment. In rare cases, if the certificate is not trusted, you may need to add it to the truststore.
+> In most cases, it should **not be necessary** to configure or install certificates , rootCA, node, client, truststores and so on, to connect to Azure Managed Instance for Apache Cassandra. SSL encryption is enabled by using the default truststore, and a password of the runtime chosen by the client (see [Java](https://github.com/Azure-Samples/azure-cassandra-mi-java-v4-getting-started), [.NET](https://github.com/Azure-Samples/azure-cassandra-mi-dotnet-core-getting-started), [Node.js](https://github.com/Azure-Samples/azure-cassandra-mi-nodejs-getting-started) and [Python](https://github.com/Azure-Samples/azure-cassandra-mi-python-v4-getting-started) samples), Azure Managed Instance for Apache Cassandra certificates are trusted by that environment. If the certificate is not trusted, you have to add it to the truststore.
 
 ### Configuring client certificates (optional)
 
-Configuring client certificates is **optional**. A client application can connect to Azure Managed Instance for Apache Cassandra as long as the above steps have been taken. However, if preferred, you can also additionally create and configure client certificates for authentication. In general, there are two ways of creating certificates:
+Configuring client certificates is **optional**. A client application can connect to Azure Managed Instance for Apache Cassandra as long as the above steps are followed. If preferred, you can also create and configure client certificates for authentication. In general, there are two ways of creating certificates:
 
 - Self signed certs. This means a private and public (no CA) certificate for each node - in this case we need all public certificates.
 - Certs signed by a CA. This can be a self-signed CA or even a public one. In this case we need the root CA certificate (refer to [instructions on preparing SSL certificates](https://docs.datastax.com/en/cassandra-oss/3.x/cassandra/configuration/secureSSLCertWithCA.html) for production), and all intermediaries (if applicable).
