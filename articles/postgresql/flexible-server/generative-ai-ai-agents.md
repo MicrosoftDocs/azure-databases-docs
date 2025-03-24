@@ -47,9 +47,9 @@ In the tutorial, we build an AI agent that helps legal teams research relevant c
 
 ### Prerequisites
 
-1. [Enable and configure](generative-ai-azure-overview.md#enable-the-azure_ai-extension) the `azure_ai` & `pg_vector` extension.
+1. [Enable and configure](generative-ai-azure-overview.md#enable-the-azure_ai-extension) `azure_ai` & `pg_vector` extension.
 1. [Create a Azure AI Foundry Project](/azure/ai-services/agents/quickstart?pivots=ai-foundry-portal).
-1. [Deploy models](/agents/quickstart?pivots=ai-foundry-portal#deploy-a-model), the `gpt-4o-mini` & `text-embedding-small`
+1. [Deploy models](/azure/ai-services/agents/quickstart?pivots=ai-foundry-portal#deploy-a-model) `gpt-4o-mini` & `text-embedding-small`
 1. Install [Visual Studio Code](https://code.visualstudio.com/download).
 1. Install the [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python) extension.
 1. Install [Python 3.11.x](https://www.python.org/downloads/).
