@@ -41,7 +41,7 @@
     - name: MongoDB compatibility and feature support
       href: compatibility-and-feature-support.md
     - name: Managed Service Compatibility
-      href: compatibility-and-feature-support.md
+      href: managed-service-compatibility.md
     - name: Support for Geospatial Queries
       href: geospatial-support.md
     - name: Availability and disaster recovery (DR)
