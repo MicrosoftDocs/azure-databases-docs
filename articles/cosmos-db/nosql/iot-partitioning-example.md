@@ -52,7 +52,7 @@ Imagine an IoT application that collects environmental data from thousands of Io
 **Access Pattern:**
 In this scenario, we're' logging data every second, making it a write-heavy application. We'd like to optimize our partitioning strategy for ingesting data at high throughput. 
 
-For real-time analytics (for example, aggregating device data across districts), we can explore [Azure Synapse Link](../synapse-link.md)
+For real-time analytics (for example, aggregating device data across districts), we can explore [Azure Synapse Link](../synapse-link.md).
 
 ## Recommended partitioning strategy
 
