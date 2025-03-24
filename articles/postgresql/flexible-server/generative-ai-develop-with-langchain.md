@@ -45,11 +45,11 @@ Azure Database for PostgreSQL uses the open-source [LangChain's Postgres support
 
 ### Enable pgvector on Azure Database for PostgreSQL - Flexible Server
 
-See [enablement instructions](how-to-use-pgvector) for Azure Database for PostgreSQL.
+See [enablement instructions](how-to-use-pgvector.md) for Azure Database for PostgreSQL.
 
 ### Credentials
 
-You need your Azure Database for PostgreSQL [connection details](quickstart-create-server-portal#get-the-connection-information) and add them as environment variables to run this notebook.
+You need your Azure Database for PostgreSQL [connection details](quickstart-create-server-portal.md#get-the-connection-information) and add them as environment variables to run this notebook.
 
 Set the `USE_ENTRA_AUTH` flag to `True` if you want to use Microsoft Entra authentication. If using Entra authentication, you only need to supply the host and database name. If using password authentication, you'll also need to set the username and password.
 
@@ -400,13 +400,8 @@ Currently, there is **no mechanism** that supports easy data migration on schema
 
 ## Related content
 
+- [GenAI Frameworks and Azure Database for PostgreSQL](generative-ai-ai-frameworks.md)
+- [AI Agents in Azure Database for PostgreSQL](generative-ai-ai-agents.md)
 - [Learn more about Azure OpenAI Service integration](generative-ai-azure-openai.md)
-- [Learn more about Azure Machine Learning integration](generative-ai-azure-machine-learning.md)
-- [Generate vector embeddings in Azure Database for PostgreSQL flexible server with locally deployed LLM (Preview)](generative-ai-azure-local-ai.md).
-- [Integrate Azure Database for PostgreSQL with Azure Machine Learning Services](generative-ai-azure-machine-learning.md).
-- [Generate vector embeddings with Azure OpenAI in Azure Database for PostgreSQL flexible server](generative-ai-azure-openai.md).
-- [Azure AI extension in Azure Database for PostgreSQL flexible server](generative-ai-azure-overview.md).
 - [Generative AI with Azure Database for PostgreSQL flexible server](generative-ai-overview.md).
-- [Recommendation System with Azure Database for PostgreSQL flexible server and Azure OpenAI](generative-ai-recommendation-system.md).
-- [Semantic Search with Azure Database for PostgreSQL flexible server and Azure OpenAI](generative-ai-semantic-search.md).
 - [Enable and use pgvector in Azure Database for PostgreSQL flexible server](how-to-use-pgvector.md).

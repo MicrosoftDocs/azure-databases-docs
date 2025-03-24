@@ -29,15 +29,15 @@ By connecting AI agents to databases like Azure Database for PostgreSQL, agents 
 ### Frameworks
 Various frameworks and tools can facilitate the development and deployment of AI agents. All these frameworks support using Azure Database for PostgreSQL as a tool 
 
-* [Azure AI Agent Service](azure/ai-services/agents/overview)
+* [Azure AI Agent Service](/azure/ai-services/agents/overview)
 * [LangChain/LangGraph](https://python.langchain.com/v0.1/docs/modules/agents/)
 * [LlamaIndex](https://docs.llamaindex.ai/en/stable/use_cases/agents/)
-* [Semantic Kernel](semantic-kernel/overview/)
+* [Semantic Kernel](/semantic-kernel/overview/)
 * [AutoGen](https://microsoft.github.io/autogen/)
 * [OpenAI Assistants API](https://platform.openai.com/docs/assistants/overview)
 
 ## Implementation sample
-We use the [Azure AI Agent Service](azure/ai-services/agents/overview) for agent planning, tool usage, and perception, while using Azure Database for PostgreSQL as a tool for vector database and semantic search capabilities.
+We use the [Azure AI Agent Service](/azure/ai-services/agents/overview) for agent planning, tool usage, and perception, while using Azure Database for PostgreSQL as a tool for vector database and semantic search capabilities.
 
 In the tutorial, we build an AI agent that helps legal teams research relevant cases to support their clients in Washington state. Our agent:
 
@@ -48,12 +48,12 @@ In the tutorial, we build an AI agent that helps legal teams research relevant c
 ### Prerequisites
 
 1. [Enable and configure](generative-ai-azure-overview.md#enable-the-azure_ai-extension) the `azure_ai` & `pg_vector` extension.
-1. [Create a Azure AI Foundry Project](azure/ai-services/agents/quickstart?pivots=ai-foundry-portal).
-1. [Deploy models](agents/quickstart?pivots=ai-foundry-portal#deploy-a-model), the `gpt-4o-mini` & `text-embedding-small`
+1. [Create a Azure AI Foundry Project](/azure/ai-services/agents/quickstart?pivots=ai-foundry-portal).
+1. [Deploy models](/agents/quickstart?pivots=ai-foundry-portal#deploy-a-model), the `gpt-4o-mini` & `text-embedding-small`
 1. Install [Visual Studio Code](https://code.visualstudio.com/download).
 1. Install the [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python) extension.
 1. Install [Python 3.11.x](https://www.python.org/downloads/).
-1. Install [Azure CLI.](cli/azure/install-azure-cli-windows?tabs=powershell)(latest version)
+1. Install [Azure CLI.](/cli/azure/install-azure-cli-windows?tabs=powershell)(latest version)
 
 > [!NOTE]  
 > You need the key, and endpoint from the deployed models you created for the agent.
@@ -302,7 +302,7 @@ After running your agent with Azure AI Agent SDK, the agent is stored in your pr
 ![Using AI Playground](./media/generative-ai/using-playground-ai-foundry.png) 
 
 ### Step 5: Debugging with Azure AI Foundry Tracing
-When developing the agent by using the Azure AI Foundry SDK, you can [debug the agent with Tracing.](azure/ai-services/agents/concepts/tracing), allowing you to debug the calls to tools like Postgres and see how the agent orchestrates each task.
+When developing the agent by using the Azure AI Foundry SDK, you can [debug the agent with Tracing.](/azure/ai-services/agents/concepts/tracing), allowing you to debug the calls to tools like Postgres and see how the agent orchestrates each task.
 
 **Debugging with Tracing:**
 
@@ -320,13 +320,9 @@ Learn more about how to set up tracing with the AI agent and Postgres in the [ad
 
 ## Related content
 
+- [GenAI Frameworks and Azure Database for PostgreSQL](generative-ai-ai-frameworks.md)
+- [Using LangChain with Azure Database for PostgreSQL](generative-ai-develop-with-langchain.md)
 - [Learn more about Azure OpenAI Service integration](generative-ai-azure-openai.md)
-- [Learn more about Azure Machine Learning integration](generative-ai-azure-machine-learning.md)
-- [Generate vector embeddings in Azure Database for PostgreSQL flexible server with locally deployed LLM (Preview)](generative-ai-azure-local-ai.md).
-- [Integrate Azure Database for PostgreSQL with Azure Machine Learning Services](generative-ai-azure-machine-learning.md).
-- [Generate vector embeddings with Azure OpenAI in Azure Database for PostgreSQL flexible server](generative-ai-azure-openai.md).
 - [Azure AI extension in Azure Database for PostgreSQL flexible server](generative-ai-azure-overview.md).
-- [Generative AI with Azure Database for PostgreSQL flexible server](generative-ai-overview.md).
-- [Recommendation System with Azure Database for PostgreSQL flexible server and Azure OpenAI](generative-ai-recommendation-system.md).
 - [Semantic Search with Azure Database for PostgreSQL flexible server and Azure OpenAI](generative-ai-semantic-search.md).
 - [Enable and use pgvector in Azure Database for PostgreSQL flexible server](how-to-use-pgvector.md).
