@@ -6,8 +6,8 @@ author: tarabhatia
 ms.author: tarabhatia
 ms.service: azure-cosmos-db
 ms.subservice: nosql
-ms.topic: conceptual
-ms.date: 11/04/2024
+ms.topic: concept-article
+ms.date: 03/24/2025
 ---
 
 # Choosing a partition key for IoT workloads
