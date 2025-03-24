@@ -3,9 +3,9 @@ title: Understanding MongoDB Compatibility in Managed MongoDB Services
 description: Learn about MongoDB feature compatibility when choosing a managed MongoDB service.
 author: gahl-levy
 ms.author: gahllevy
-ms.service: cosmos-db
+ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
-ms.topic: concept
+ms.topic: conceptual
 ms.date: 03/24/2025
 ---
 
