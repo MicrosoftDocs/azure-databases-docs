@@ -43,16 +43,6 @@ Azure Cosmos DB for MongoDB acknowledges these industry-wide practices and adopt
 - **Simplified Versions** Azure Cosmos DB for MongoDB uses a unified codebase for all server versions, offering version-dependent features without needing database version upgrades.
 - **Full Stack SLA:** Providing an SLA that covers not only the database application, but also the compute and infrastructure it runs on, to give you piece of mind.
 
-## Emphasizing Transparent Communication
-
-### Acknowledging Limitations
-
-Azure Cosmos DB for MongoDB, much like any other managed service, has its set of limitations and [unsupported features](https://learn.microsoft.com/en-us/azure/cosmos-db/mongodb/vcore/compatibility-and-feature-support). We believe in transparent communication about these aspects, empowering our users to make informed decisions. Our automatic assessmant tooling helps users determine if their workloads are a great fit for Azure Cosmos DB for MongoDB. 
-
-### Continuous Improvement and User Feedback
-
-Our development roadmap is heavily influenced by user feedback and the evolving needs of modern applications. We are committed to continuously enhancing our service, addressing limitations, and introducing features that our customers need to succeed.
-
 ## Conclusion
 
 In the managed MongoDB service space, no provider can claim absolute compatibility with open-source MongoDB due to the inherent trade-offs required to offer a managed service. Azure Cosmos DB for MongoDB vCore recognizes these industry realities and chooses to focus on transparency, customer feedback, and the continuous evolution of our service. By understanding the limitations across the board, customers can better navigate their options and choose the solution that best fits their needs.
