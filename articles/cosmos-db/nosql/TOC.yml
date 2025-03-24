@@ -247,6 +247,10 @@
       href: model-partition-example.md
     - name: Synthetic partition key
       href: synthetic-partition-keys.md
+    - name: Real-world examples
+      items:
+      - name: Choose a partition key for IoT
+        href: design-partitioning-iot.md
   - name: Partitioning and horizontal scaling
     items:
     - name: Partitioning overview
