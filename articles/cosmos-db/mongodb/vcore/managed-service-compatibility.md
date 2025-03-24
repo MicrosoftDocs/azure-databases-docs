@@ -54,4 +54,4 @@ For detailed information on Azure Cosmos DB for MongoDB vCore's features and com
 ## Next steps
 
 > [!div class="nextstepaction"]
-> [Feature Compatibility with MongoDB vCore](compatibility.md)
+> [Get started with Azure Cosmos DB for MongoDB vCore](./quickstart-portal.md)
