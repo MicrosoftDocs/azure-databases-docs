@@ -51,3 +51,7 @@ Azure Cosmos DB for MongoDB remains dedicated to providing a robust, scalable, a
 
 For detailed information on Azure Cosmos DB for MongoDB vCore's features and compatibility, please visit our [documentation](./vcore/compatibility.md).
 
+## Next steps
+
+> [!div class="nextstepaction"]
+> [Feature Compatibility with MongoDB vCore](compatibility.md)
