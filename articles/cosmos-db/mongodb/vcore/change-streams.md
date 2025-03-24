@@ -14,11 +14,33 @@
 
 Change streams are a real-time stream of database changes that flows from your database to your application. This feature enables you to build reactive applications by subscribing to database changes, eliminating the need for continuous polling to detect changes.
 
-## Enable change streams through CLI
+## Enable change streams
 
-```azurecli
-az resource patch --ids "/subscriptions/<subscription_id>/resourceGroups/<resource_group_name>/providers/Microsoft.DocumentDB/mongoClusters/<cluster_name>" --api-version 2024-10-01-preview --properties "{\"previewFeatures\": [ \"ChangeStreams\"]}"
+You can enable or disable this feature using the Azure CLI or an ARM template. Portal support will be added soon.
+
+### Steps to enable change streams on vCore cluster via CLI
+
+1. Log in to Azure CLI
+
+```bash
+az login
 ```
+
+2. Retrieve the current settings for the feature flags on your cluster. This ensures you retain any existing flags while adding the new feature.
+
+```bash
+az resource show --ids "/subscriptions/<sub id>/resourceGroups/<resource group name>/providers/Microsoft.DocumentDB/mongoClusters/<resource name of your Cosmos DB for MongoDB vCore cluster>" --api-version 2024-10-01-preview
+```
+
+3. Send PATCH request to enable the feature.
+
+```bash
+az resource patch --ids "/subscriptions/<subscription_id>/resourceGroups/<resource_group_name>/providers/Microsoft.DocumentDB/mongoClusters/<vCore_cluster_name>" --api-version 2024-10-01-preview --properties "{\"previewFeatures\": [ \"ChangeStreams\"]}"
+```
+
+4. Verify result:
+   - Ensure the response payload includes `"previewFeatures": ["ChangeStreams"]`.
+   - If you encounter the error "change streams isn't supported on this cluster," please create a support request.
 
 ## Configuring change streams
 
