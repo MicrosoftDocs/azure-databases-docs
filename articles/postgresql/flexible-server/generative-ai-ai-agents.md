@@ -12,13 +12,14 @@ ms.custom:
 ms.topic: conceptual
 ---
 
-Artificial Intelligence (AI) agents are transforming how applications interact with data by combining large language models (LLMs) with external tools and databases. Agents enable automation of complex workflows, enhances information retrieval accuracy, and facilitates natural language interfaces to databases. In this guide, we will explore how to create intelligent AI agents capable of searching and analyzing your data in Azure Database for PostgreSQL. We'll walk through setup, implementation, and testing, using a legal research assistant as our example.
+# AI Agents in Azure Database for PostgreSQL
+Artificial Intelligence (AI) agents are transforming how applications interact with data by combining large language models (LLMs) with external tools and databases. Agents enable automation of complex workflows, enhances information retrieval accuracy, and facilitates natural language interfaces to databases. In this guide, we explore how to create intelligent AI agents capable of searching and analyzing your data in Azure Database for PostgreSQL. We walk through setup, implementation, and testing, using a legal research assistant as our example.
 
 ## What are AI agents?
 AI agents go beyond simple chatbots by combining large language models (LLMs) with external tools and databases. Unlike standalone LLMs or standard RAG systems, AI agents can:
 
 * **Plan**: Break down complex tasks into smaller, sequential steps.
-* **Use Tools**: Leverage APIs, code execution, search systems to gather information or perform actions.
+* **Use Tools**: Use APIs, code execution, search systems to gather information or perform actions.
 * **Perceive**: Understand and process inputs from various data sources.
 * **Remember**: Store and recall previous interactions for better decision-making.
 
@@ -26,19 +27,19 @@ By connecting AI agents to databases like Azure Database for PostgreSQL, agents 
 
 ## Implementation of AI agents
 ### Frameworks
-Various frameworks and tools can facilitate the development and deployment of AI agents.
+Various frameworks and tools can facilitate the development and deployment of AI agents. All these frameworks support using Azure Database for PostgreSQL as a tool 
 
-* [Azure AI Agent Service](https://learn.microsoft.com/en-us/azure/ai-services/agents/overview)
-* [LangChain/LangGraph] (https://python.langchain.com/v0.1/docs/modules/agents/)
-* [LlamaIndex] (https://docs.llamaindex.ai/en/stable/use_cases/agents/)
-* [Semantic Kernel](https://learn.microsoft.com/en-us/semantic-kernel/overview/)
+* [Azure AI Agent Service](azure/ai-services/agents/overview)
+* [LangChain/LangGraph](https://python.langchain.com/v0.1/docs/modules/agents/)
+* [LlamaIndex](https://docs.llamaindex.ai/en/stable/use_cases/agents/)
+* [Semantic Kernel](semantic-kernel/overview/)
 * [AutoGen](https://microsoft.github.io/autogen/)
 * [OpenAI Assistants API](https://platform.openai.com/docs/assistants/overview)
 
-All these frameworks support using Azure Database for PostgreSQL as a tool. This uses the Azure AI Agents Service for agent planning, tool usage, and perception, while using Azure Database for PostgreSQL as a tool for vector database and semantic search capabilities.
-
 ## Implementation sample
-In this tutorial, we'll build an AI agent that helps legal teams research relevant cases to support their clients in Washington state. Our agent will:
+We use the [Azure AI Agent Service](azure/ai-services/agents/overview) for agent planning, tool usage, and perception, while using Azure Database for PostgreSQL as a tool for vector database and semantic search capabilities.
+
+In the tutorial, we build an AI agent that helps legal teams research relevant cases to support their clients in Washington state. Our agent:
 
 1. Accept natural language queries about legal situations.
 1. Use vector search in Azure Database for PostgreSQL to find relevant case precedents.
@@ -47,21 +48,21 @@ In this tutorial, we'll build an AI agent that helps legal teams research releva
 ### Prerequisites
 
 1. [Enable and configure](generative-ai-azure-overview.md#enable-the-azure_ai-extension) the `azure_ai` & `pg_vector` extension.
-1. [Create a Azure AI Foundry Project](https://learn.microsoft.com/en-us/azure/ai-services/agents/quickstart?pivots=ai-foundry-portal).
-1. [Deploy models](https://learn.microsoft.com/en-us/azure/ai-services/agents/quickstart?pivots=ai-foundry-portal#deploy-a-model), the `gpt-4o-mini` & `text-embedding-small`
+1. [Create a Azure AI Foundry Project](azure/ai-services/agents/quickstart?pivots=ai-foundry-portal).
+1. [Deploy models](agents/quickstart?pivots=ai-foundry-portal#deploy-a-model), the `gpt-4o-mini` & `text-embedding-small`
 1. Install [Visual Studio Code](https://code.visualstudio.com/download).
 1. Install the [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python) extension.
 1. Install [Python 3.11.x](https://www.python.org/downloads/).
-1. Install [Azure CLI.](https://learn.microsoft.com/cli/azure/install-azure-cli-windows?tabs=powershell)(latest version)
+1. Install [Azure CLI.](cli/azure/install-azure-cli-windows?tabs=powershell)(latest version)
 
 > [!NOTE]  
-> You will need the key, and endpoint from the deployed models you created for the agent.
+> You need the key, and endpoint from the deployed models you created for the agent.
 
 ### Getting started
 All the code and sample datasets are available in [this GitHub repository](https://github.com/Azure-Samples/postgres-agents).
 
 ### Step 1: Set Up Vector Search in Azure Database for PostgreSQL
-First, we'll prepare our database to store and search legal case data using vector embeddings:
+First, we prepare our database to store and search legal case data using vector embeddings:
 
 **Environment Setup:**
 
@@ -102,13 +103,13 @@ AZURE_PG_CONNECTION=""
  
 **Load documents and vectors**
 
-The Python file [load_data/main.py](https://github.com/Azure-Samples/postgres-agents/blob/main/load_data/main.py) serves as the central entry point for loading data into Azure Database for PostgreSQL. This code processes sample [cases data](https://github.com/Azure-Samples/postgres-agents/blob/main/load_data/cases.csv), including information about cases in Washington.
+The Python file [load_data/main.py](https://github.com/Azure-Samples/postgres-agents/blob/main/load_data/main.py) serves as the central entry point for loading data into Azure Database for PostgreSQL. The code processes the [sample cases data](https://github.com/Azure-Samples/postgres-agents/blob/main/load_data/cases.csv), including information about cases in Washington.
 
 
 High level details of [main.py](https://github.com/Azure-Samples/postgres-agents/blob/main/load_data/main.py):
 1. **Database setup and Table Creation**: Creates necessary extensions, sets up OpenAI API settings, and manages database tables by dropping existing ones and creating new ones for storing case data.
-1. **Data Ingestion**: Reads data from a CSV file and inserts it into a temporary table, then processes and transfers this data into the main cases table.
-1. **Embedding Generation**: Adds a new column for embeddings in the cases table and generates embeddings for case opinions using OpenAI's API, storing them in the new column. The embedding process will take ~3-5 minutes
+1. **Data Ingestion**: Reads data from a CSV file and inserts it into a temporary table, then processes and transfers the data into the main cases table.
+1. **Embedding Generation**: Adds a new column for embeddings in the cases table and generates embeddings for case opinions using OpenAI's API, storing them in the new column. The embedding process takes ~3-5 minutes
 
 To start the data loading process, run the following command from the *load_data* directory:
 
@@ -130,7 +131,7 @@ Embeddings added successfully All Data loaded successfully!
 ```
 
 ### Step 2: Create Postgres tool for the Agent
-In this step we will be configuring AI agent tools to retrieve data from Postgres and then using the **Azure AI Agent Service SDK** to connect your AI agent to the Postgres database.
+We are configuring AI agent tools to retrieve data from Postgres and then using the **Azure AI Agent Service SDK** to connect your AI agent to the Postgres database.
 
 **Define a function for your agent to call**
 
@@ -181,15 +182,15 @@ Now we'll set up the AI agent and integrate it with our PostgreSQL tool. The Pyt
 High level details of [simple_postgres_and_ai_agent.py](https://github.com/Azure-Samples/postgres-agents/blob/main/src/simple_postgres_and_ai_agent.py):
 
 1. **Create an Agent**: Initializes the agent in your Azure AI Project with a specific model.
-1. **Add Postgres tool**: During the agent initialization, the Postgres tool to do vector search on your Postgres DB is added.
-1. **Create a Thread**: Sets up a communication thread. This will be used to send messages to the agent to process
-1. **Run the Agent and Call Postgres tool**: Processes the user's query using the agent and tools. The agent can plan with tools to use to get the correct answer. In this use case the agent will call the Postgres tool based on the function signature and docstring to do vector search and retrieve the relevant data to answer the question.
+1. **Add Postgres tool**: During the agent initialization, the Postgres tool to do vector search on your database is added.
+1. **Create a Thread**: Sets up a communication thread. This is used to send messages to the agent to process
+1. **Run the Agent and Call Postgres tool**: Processes the user's query using the agent and tools. The agent can plan with tools to use to get the correct answer. In this use case the agent calls the Postgres tool based on the function signature and docstring to do vector search and retrieve the relevant data to answer the question.
 1. **Display the Agent’s Response**: Outputs the agent's response to the user's query.
  
 
 **Find the Project Connection String in Azure AI Foundry**:
 
-In your Azure AI Foundry project you will find you Project Connection String from the Overview page of the project we will use this string to connect the project to the AI agent SDK. We will be adding this string to the .env file.
+In your Azure AI Foundry project you find you Project Connection String from the Overview page of the project we use this string to connect the project to the AI agent SDK. Add this string to the .env file.
 
 ![Project Setup Page](./media/generative-ai/ai-foundry-project-setup.png) 
 
@@ -204,7 +205,7 @@ AZURE_TRACING_GEN_AI_CONTENT_RECORDING_ENABLED="true"
 
 ```python
 ### Create the Agent with Tool Access
-We will create the agent in the AI Foundry project and add the Postgres tools needed to query to Database. The code snippet below is an excerpt from the file [simple_postgres_and_ai_agent.py](https://github.com/Azure-Samples/postgres-agents/blob/main/src/simple_postgres_and_ai_agent.py).
+We creates the agent in the AI Foundry project and add the Postgres tools needed to query to Database. The code snippet below is an excerpt from the file [simple_postgres_and_ai_agent.py](https://github.com/Azure-Samples/postgres-agents/blob/main/src/simple_postgres_and_ai_agent.py).
 
 # Create an Azure AI Client
 project_client = AIProjectClient.from_connection_string(
@@ -227,7 +228,7 @@ agent = project_client.agents.create_agent(
 
 **Create Communication Thread:**
 
-This code snippet, shows how to create a thread and message for the agent. The thread and message will be what the agent processes in a run.
+This code snippet shows how to create a thread and message for the agent. The thread and message is what the agent processes in a run.
 
 ```python
 # Create thread for communication
@@ -245,7 +246,7 @@ message = project_client.agents.create_message(
 
 This code snippet creates a run for the agent to process the message and use the appropriate tools to provide the best result.
 
-Using the tool, the agent will be able to call your Postgres and the vector search on the query *“Water leaking into the apartment from the floor above”*, to retrieve the data it will need to answer the question best.
+Using the tool, the agent is able to call your Postgres and the vector search on the query *“Water leaking into the apartment from the floor above”* to retrieve the data it needs to answer the question best.
 
 ```python
 from pprint import pprint
@@ -269,7 +270,7 @@ To run the agent, run the following command from the src directory:
 python simple_postgres_and_ai_agent.py
 ```
 
-The agent will produce a similar result as below using the Azure Database for PostgreSQL tool to access case data saved in the Postgres Database.
+The agent produces a similar result using the Azure Database for PostgreSQL tool to access case data saved in the Postgres Database.
 
 Snippet of output from agent:
 
@@ -286,7 +287,7 @@ Summary: The Warners appealed a ruling finding them liable for negligence and nu
 ```
 
 ### Step 4: Testing and Debugging with Azure AI Foundry Playground
-After running your agent with Azure AI Agent SDK, the agent will be stored in your project, and you can experiment with the agent in the Agent playground.
+After running your agent with Azure AI Agent SDK, the agent is stored in your project, and you can experiment with the agent in the Agent playground.
 
 **Using the Agent Playground:**
 
@@ -296,12 +297,12 @@ After running your agent with Azure AI Agent SDK, the agent will be stored in yo
  
 ![Find AI Playground](./media/generative-ai/find-playground.png) 
 
-1. Test the query *“Water leaking into the apartment from the floor above, What are the prominent legal precedents in Washington?”*. The agent will pick the right tool to use and ask for the expected output for that query. Use [sample_vector_search_cases_output.json](https://github.com/Azure-Samples/postgres-agents/blob/main/src/sample_outputs_for_playground/sample_vector_search_cases_output.json) as the sample output.
+1. Test the query *“Water leaking into the apartment from the floor above, What are the prominent legal precedents in Washington?”* The agent picks the right tool to use and ask for the expected output for that query. Use [sample_vector_search_cases_output.json](https://github.com/Azure-Samples/postgres-agents/blob/main/src/sample_outputs_for_playground/sample_vector_search_cases_output.json) as the sample output.
  
 ![Using AI Playground](./media/generative-ai/using-playground-ai-foundry.png) 
 
 ### Step 5: Debugging with Azure AI Foundry Tracing
-When developing the agent by using the Azure AI Foundry SDK, you can also [debug the agent with Tracing.](https://learn.microsoft.com/en-us/azure/ai-services/agents/concepts/tracing?view=azure-python-preview) You will be able to debug the calls to tools like Postgres as well as seeing how to agent orchestrated each task.
+When developing the agent by using the Azure AI Foundry SDK, you can [debug the agent with Tracing.](azure/ai-services/agents/concepts/tracing), allowing you to debug the calls to tools like Postgres and see how the agent orchestrates each task.
 
 **Debugging with Tracing:**
 

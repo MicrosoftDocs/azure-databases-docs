@@ -1,6 +1,6 @@
 ---
-title: GenAI Frameworks and Azure Database for PostgreSQL
-description: Integrate Azure Databases for PostgreSQL with AI and large language model (LLM) orchestration packages like Semantic Kernel and LangChain.
+title: Using LangChain with Azure Database for PostgreSQL
+description: Integrate Azure Databases for PostgreSQL with AI and LangChain, enabling developers to harness the power of advanced AI capabilities within their applications.
 author: abeomor
 ms.author: abeomorogbe
 ms.date: 03/17/2025
@@ -12,23 +12,24 @@ ms.custom:
 ms.topic: conceptual
 ---
 
-Azure Database for PostgreSQL seamlessly integrates with leading large language model (LLM) orchestration packages such as [LangChain](https://www.langchain.com/), enabling developers to harness the power of advanced AI capabilities within their applications. LangChanin can streamline the management and use of LLMs, embedding models, and databases, making it even easier to develop Generative AI applications.
+# Using LangChain with Azure Database for PostgreSQL
+Azure Database for PostgreSQL seamlessly integrates with leading large language model (LLM) orchestration packages such as [LangChain](https://www.langchain.com/), enabling developers to harness the power of advanced AI capabilities within their applications. LangChain can streamline the management and use of LLMs, embedding models, and databases, making it even easier to develop Generative AI applications.
 
-This notebook shows you how to leverage Azure Database for PostgreSQL integrated [vector database](./how-to-use-pgvector.md) to store documents in collections, create indicies and perform vector search queries using approximate nearest neighbor algorithms such as Cosine Distance, L2 (Euclidean distance), and IP (inner product) to locate documents close to the query vectors.
+This tutorial shows you how to use Azure Database for PostgreSQL integrated [vector database](how-to-use-pgvector.md) to store and manage documents in collections with LangChain. It also shows how to create indices, and perform vector search queries using approximate nearest neighbor algorithms such as Cosine Distance, L2 (Euclidean distance), and IP (inner product) to locate documents close to the query vectors.
 
 
 ## Vector Support
 
-Azure Database for PostgreSQL - Flexible Server enables you to efficiently store and query millions of vector embeddings in PostgreSQL. As well as scale your AI use cases from POC to production:
+Azure Database for PostgreSQL - Flexible Server enables you to efficiently store and query millions of vector embeddings in PostgreSQL. And scale your AI use cases from POC (proof of concept) to production:
 
 -   Provides a familiar SQL interface for querying vector embeddings and relational data.
 -   Boosts `pgvector` with a faster and more precise similarity search across 100M+ vectors using DiskANN indexing algorithm.
 -   Simplifies operations by integrating relational metadata, vector embeddings, and time-series data into a single database.
--   Leverages the power of the robust PostgreSQL ecosystem and Azure Cloud for enterprise-grade features inculding replication, and high availability.
+-   Uses the power of the robust PostgreSQL ecosystem and Azure Cloud for enterprise-grade features including replication, and high availability.
 
 ## Authentication
 
-Azure Database for PostgreSQL - Flexible Server supports password-based as well as [Microsoft Entra](./concepts-azure-ad-authentication.md) (formerly Azure Active Directory) authentication. Entra authentication allows you to use Entra identity to authenticate to your PostgreSQL server. This eliminates the need to manage separate usernames and passwords for your database users, and allows you to leverage the same security mechanisms that you use for other Azure services.
+Azure Database for PostgreSQL - Flexible Server supports password-based as well as [Microsoft Entra](concepts-azure-ad-authentication.md) (formerly Azure Active Directory) authentication. Entra authentication allows you to use Entra identity to authenticate to your PostgreSQL server. The Entra ID eliminates the need to manage separate usernames and passwords for your database users, and allows you to use the same security mechanisms that you use for other Azure services.
 
 This notebook is set up to use either authentication method. You can configure whether or not to use Entra authentication later in the notebook.
 
@@ -44,13 +45,13 @@ Azure Database for PostgreSQL uses the open-source [LangChain's Postgres support
 
 ### Enable pgvector on Azure Database for PostgreSQL - Flexible Server
 
-See [enablement instructions](./how-to-use-pgvector) for Azure Database for PostgreSQL.
+See [enablement instructions](how-to-use-pgvector) for Azure Database for PostgreSQL.
 
 ### Credentials
 
-You will need you Azure Database for PostgreSQL [connection details](./quickstart-create-server-portal#get-the-connection-information) and add them as environment variables to run this notebook.
+You need your Azure Database for PostgreSQL [connection details](quickstart-create-server-portal#get-the-connection-information) and add them as environment variables to run this notebook.
 
-Set the `USE_ENTRA_AUTH` flag to `True` if you want to use Microsoft Entra authentication. If using Entra authentication, you will only need to supply the host and database name. If using password authentication, you'll also need to set the username and password.
+Set the `USE_ENTRA_AUTH` flag to `True` if you want to use Microsoft Entra authentication. If using Entra authentication, you only need to supply the host and database name. If using password authentication, you'll also need to set the username and password.
 
 ``` python
 import getpass
@@ -93,19 +94,19 @@ embeddings = AzureOpenAIEmbeddings(
 
 ### Entra Authentication
 
-The cell below contains functions that set up LangChain to use Entra authentication. It provides a function `get_token_and_username` that retrieves tokens for the Azure DB for PostgreSQL service using `DefaultAzureCredential` from the `azure.identity` library. his is used to ensure the sqlalchemy Engine has a valid token with which to create new connections. It will also parse the token, which is a Java Web Token (JWT), to extract the username that is used to connect to the database.
+The cell below contains functions that set up LangChain to use Entra authentication. It provides a function `get_token_and_username` that retrieves tokens for the Azure Databases for PostgreSQL service using `DefaultAzureCredential` from the `azure.identity` library. It ensures the sqlalchemy engine has a valid token with which to create new connections. It also parses the token, which is a Java Web Token (JWT), to extract the username that is used to connect to the database.
 
 The create_postgres_engine function creates a sqlalchemy `Engine` that dynamically sets the username and password based on the token fetched from the TokenManager. This `Engine` can be passed into the `connection` parameter of the `PGVector` LangChain VectorStore.
 
 #### Logging into Azure
 
-To log into Azure, ensure you have the [Azure CLI](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli) installed. You will need to run the following command in your terminal:
+To log into Azure, ensure you have the [Azure CLI](/cli/azure/install-azure-cli) installed. You need to run the following command in your terminal:
 
 ``` bash
 az login
 ```
 
-Once you have logged in, the below code will be able to fetch the token.
+Once you log in, the following code fetches the token.
 
 ``` python
 import base64
@@ -219,7 +220,7 @@ vector_store = PGVector(
 
 ### Add items to vector store
 
-Note that adding documents by ID will over-write any existing documents that match that ID.
+Adding documents by ID over-writes any existing documents that match that ID.
 
 ``` python
 docs = [
@@ -286,27 +287,28 @@ vector_store.delete(ids=["3"])
 
 ## Query vector store
 
-Once your vector store has been created and the relevant documents have been added you will most likely wish to query it during the running of your chain or agent.
+When your vector store has been created and the relevant documents has been added, you can query the vector store in your chain or agent.
 
 ### Filtering Support
 
-The vectorstore supports a set of filters that can be applied against the metadata fields of the documents.
+The vector store supports a set of filters that can be applied against the metadata fields of the documents.
 
-  Operator    Meaning/Category
-  ----------- ------------------------------
-  $eq        Equality (==)
-  $ne        Inequality (!=)
-  $lt        Less than (\<)
-  $lte       Less than or equal (\<=)
-  $gt        Greater than (\>)
-  $gte       Greater than or equal (\>=)
-  $in        Special Cased (in)
-  $nin       Special Cased (not in)
-  $between   Special Cased (between)
-  $like      Text (like)
-  $ilike     Text (case-insensitive like)
-  $and       Logical (and)
-  $or        Logical (or)
+
+| Operator | Meaning/Category                |
+| -------- | ------------------------------- |
+| $eq      | Equality (==)                   |
+| $ne      | Inequality (!=)                 |
+| $lt      | Less than (<)                   |
+| $lte     | Less than or equal (<=)         |
+| $gt      | Greater than (>)                |
+| $gte     | Greater than or equal (>=)      |
+| $in      | Special Cased (in)              |
+| $nin     | Special Cased (not in)          |
+| $between | Special Cased (between)         |
+| $like    | Text (like)                     |
+| $ilike   | Text (case-insensitive like)    |
+| $and     | Logical (and)                   |
+| $or      | Logical (or)                    |
 
 ### Query directly
 
@@ -327,7 +329,7 @@ for doc in results:
     * the library hosts a weekly story time for kids [{'id': 9, 'topic': 'reading', 'location': 'library'}]
 ```
 
-If you provide a dict with multiple fields, but no operators, the top level will be interpreted as a logical **AND** filter
+If you provide a dict with multiple fields, but no operators, the top level is interpreted as a logical **AND** filter
 
 ``` python
 vector_store.similarity_search(
@@ -338,8 +340,8 @@ vector_store.similarity_search(
 ```
 
 ```shell
-    [Document(id='2', metadata={'id': 2, 'topic': 'animals', 'location': 'pond'}, page_content='ducks are also found in the pond'),
-     Document(id='1', metadata={'id': 1, 'topic': 'animals', 'location': 'pond'}, page_content='there are cats in the pond')]
+[Document(id='2', metadata={'id': 2, 'topic': 'animals', 'location': 'pond'}, page_content='ducks are also found in the pond'),
+ Document(id='1', metadata={'id': 1, 'topic': 'animals', 'location': 'pond'}, page_content='there are cats in the pond')]
 ```
 
 ``` python
@@ -356,8 +358,8 @@ vector_store.similarity_search(
 ```
 
 ```shell
-    [Document(id='2', metadata={'id': 2, 'topic': 'animals', 'location': 'pond'}, page_content='ducks are also found in the pond'),
-     Document(id='1', metadata={'id': 1, 'topic': 'animals', 'location': 'pond'}, page_content='there are cats in the pond')]
+[Document(id='2', metadata={'id': 2, 'topic': 'animals', 'location': 'pond'}, page_content='ducks are also found in the pond'),
+ Document(id='1', metadata={'id': 1, 'topic': 'animals', 'location': 'pond'}, page_content='there are cats in the pond')]
 ```
 
 If you want to execute a similarity search and receive the corresponding scores you can run:
@@ -369,10 +371,10 @@ for doc, score in results:
 ```
 
 ```shell
-    * [SIM=0.528338] there are cats in the pond [{'id': 1, 'topic': 'animals', 'location': 'pond'}]
+* [SIM=0.528338] there are cats in the pond [{'id': 1, 'topic': 'animals', 'location': 'pond'}]
 ```
 
-For a full list of the different searches you can execute on a `PGVector` vector store, please refer to the [API reference](https://python.langchain.com/api_reference/postgres/vectorstores/langchain_postgres.vectorstores.PGVector.html).
+For a full list of the different searches you can execute on a `PGVector` vector store, refer to the [API reference](https://python.langchain.com/api_reference/postgres/vectorstores/langchain_postgres.vectorstores.PGVector.html).
 
 ### Query by turning into retriever
 
@@ -389,11 +391,11 @@ retriever.invoke("kitty")
 
 ## Current Limitations
 
--   langchain_postgres works only with psycopg3. Please update your connnecion strings from `postgresql+psycopg2://...` to `postgresql+psycopg://langchain:langchain@...` 
--   The schema of the embedding store and collection have been changed to make add_documents work correctly with user specified ids.
+-   langchain_postgres works only with psycopg3. Update your connection strings from `postgresql+psycopg2://...` to `postgresql+psycopg://langchain:langchain@...` 
+-   The schema of the embedding store and collection has changed to make add_documents work correctly with user specified ids.
 -   One has to pass an explicit connection object now.
 
-Currently, there is **no mechanism** that supports easy data migration on schema changes. So any schema changes in the vectorstore will require the user to recreate the tables and re-add the documents. If this is a concern, please use a different vectorstore. If not, this implementation should be fine for your use case.
+Currently, there is **no mechanism** that supports easy data migration on schema changes. So any schema changes in the vector store requires the user to recreate the tables and readd the documents.
 
 
 ## Related content
