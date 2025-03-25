@@ -386,7 +386,7 @@ retriever.invoke("kitty")
 ```
 
 ```shell
-    [Document(id='1', metadata={'id': 1, 'topic': 'animals', 'location': 'pond'}, page_content='there are cats in the pond')]
+[Document(id='1', metadata={'id': 1, 'topic': 'animals', 'location': 'pond'}, page_content='there are cats in the pond')]
 ```
 
 ## Current Limitations
