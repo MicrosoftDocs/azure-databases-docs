@@ -91,7 +91,8 @@ However, there could be scenarios where you don't know the exact time of acciden
 
 Azure Cosmos DB allows you to isolate and restrict the restore permissions for continuous backup account to a specific role or a principal. To learn more, see the [Permissions](continuous-backup-restore-permissions.md) article.
 
-## Understanding Multi-region write account restore (preview)
+## Understanding Multi-region write account restore 
+
 Writes that are performed on the [hub](multi-region-writes.md#hub-region) region  are immediately confirmed and backed up asynchronously within 100 seconds. In multi-write accounts, any mutations performed on the satellite region are sent to hub region for confirmation. The hub region checks to see if any [conflict resolution](conflict-resolution-policies.md#conflict-resolution-policies) is needed, assigns a [conflict-resolution timestamp](multi-region-writes.md#understanding-timestamps)  after resolving the conflicts and sends back the document to satellite region. The satellite region only backs up the documents after the confirmation is received from the hub.  
 In short, the restore process only restores the documents confirmed by the hub region by the restore point of time.  
 
@@ -165,8 +166,6 @@ See [How do customer-managed keys affect continuous backups](./how-to-setup-cmk.
 Currently the point in time restore functionality has the following limitations:
 
 * Azure Cosmos DB APIs for SQL, MongoDB, Gremlin, and Table supported for continuous backup. API for Cassandra isn't supported now.
-
-* `Multi region write` accounts support for point in time restore is in preview. 
 
 * Synapse Link for database accounts using continuous backup mode is GA. The opposite situation, continuous backup mode for Synapse Link enabled accounts, is in public preview. Currently, customers that disabled Synapse Link from containers can't migrate to continuous backup. And analytical store isn't included in backups. For more information about backup and analytical store, see [analytical store backup](analytical-store-introduction.md#backup).
 
