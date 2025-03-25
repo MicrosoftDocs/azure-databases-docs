@@ -216,7 +216,7 @@ Long-term retention is now generally available in East Asia, Central India, Sout
 - The maximum supported database size for Long-Term Retention (LTR) backups is 1 TiB. While backups can be attempted on servers exceeding 1 TiB, these are not officially supported, and the success of LTR backups for such servers cannot be guaranteed.
 - LTR backups can be scheduled weekly, monthly, or yearly. The daily backup schedule is currently unsupported.
 - LTR backups do not support tables containing a row with a BYTEA length exceeding 500 MB.
-- While restoring roles for Microsoft Entra users, ensure that Microsoft Entra authentication is enabled and that you are logged in as a Microsoft Entra Admin to create additional users. Additionally, pg_restore may encounter errors when applying Entra user permissions which need to be manually corrected as opensource PostgreSQL does not support Entra authentication.
+- When restoring roles for Microsoft Entra users, ensure that Microsoft Entra authentication is enabled and that you are logged in as a Microsoft Entra Admin to create additional users. Attempting to create Entra roles as a regular user will result in errors.
   
 
 
