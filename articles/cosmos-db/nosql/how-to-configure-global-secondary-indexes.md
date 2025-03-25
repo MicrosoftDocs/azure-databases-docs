@@ -1,23 +1,23 @@
 ---
-title: How to configure materialized views (preview)
+title: How to configure global secondary indexes (preview)
 titleSuffix: Azure Cosmos DB for NoSQL
-description: Learn how to configure materialized views and use them to avoid expensive cross-partition queries.
+description: Learn how to configure global secondary indexes and use them to avoid expensive cross-partition queries.
 author: jcocchi
 ms.author: jucocchi
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: how-to
-ms.date: 3/4/2025
+ms.date: 3/24/2025
 ---
 
-# How to configure Azure Cosmos DB for NoSQL materialized views (preview)
+# How to configure Azure Cosmos DB for NoSQL global secondary indexes (preview)
 
 [!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
 
 > [!IMPORTANT]
-> Azure Cosmos DB for NoSQL materialized views are currently in preview. You can enable this feature by using the Azure portal and the feature can't be disabled. This preview is provided without a service-level agreement. At this time, we don't recommend that you use materialized views for production workloads. Certain features of this preview might not be supported or might have constrained capabilities. For more information, see the [supplemental terms of use for Microsoft Azure previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Azure Cosmos DB for NoSQL global secondary indexes are currently in preview. You can enable this feature by using the Azure portal and the feature can't be disabled. This preview is provided without a service-level agreement. At this time, we don't recommend that you use global secondary indexes for production workloads. Certain features of this preview might not be supported or might have constrained capabilities. For more information, see the [supplemental terms of use for Microsoft Azure previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Materialized views provide a powerful way to optimize query performance and simplify application logic by creating views of your data with a different partition key and/ or data model. This article describes how to create materialized views and how to use them to handle cross-partition queries efficiently.
+Global secondary indexes provide a powerful way to optimize query performance and simplify application logic by storing your data with a different partition key and/ or data model. This article describes how to create global secondary indexes and how to use them to handle cross-partition queries efficiently.
 
 ## Prerequisites
 
@@ -26,9 +26,9 @@ Materialized views provide a powerful way to optimize query performance and simp
   - If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
   - Alternatively, you can [try Azure Cosmos DB free](../try-free.md) before you commit.
 
-## Enable materialized views
+## Enable global secondary indexes
 
-The materialized views feature needs to be enabled for your Azure Cosmos DB account before provisioning a builder or creating views.
+The global secondary index feature needs to be enabled for your Azure Cosmos DB account before provisioning a builder or creating index containers.
 
 ### [Azure portal](#tab/azure-portal)
 
@@ -38,13 +38,16 @@ The materialized views feature needs to be enabled for your Azure Cosmos DB acco
 
 1. In the resource menu, select **Settings**.
 
-1. In the **Features** section under **Settings**, toggle the **Materialized View for NoSQL API (preview)** option to **On**.
+1. In the **Features** section under **Settings**, toggle the **Materialized Views for NoSQL API (preview)** option to **On**.
+
+> [!NOTE]
+> Materialized Views is the prior name for this feature. Enabling materialized views will also enable global secondary indexes. 
 
 1. In the new dialog, select **Enable** to enable this feature for the account.
 
 ### [Azure CLI](#tab/azure-cli)
 
-Use the Azure CLI to enable the materialized views feature either by using a native command or a REST API operation on your Azure Cosmos DB for NoSQL account.
+Use the Azure CLI to enable the global secondary index feature either by using a native command or a REST API operation on your Azure Cosmos DB for NoSQL account.
 
 1. Sign in to the Azure CLI.
 
@@ -78,13 +81,16 @@ Use the Azure CLI to enable the materialized views feature either by using a nat
     }
     ```
 
+> [!NOTE]
+> The property name to enable the feature is `enableMaterializedViews`, which is the prior name. Enabling materialized views will also enable global secondary indexes. 
+
 1. Get the identifier of the account and store it in a shell variable named `$accountId`.
 
     ```azurecli
     $accountId="/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/$accountName"
     ```
 
-1. Enable the preview materialized views feature for the account by using the REST API and [az rest](/cli/azure/reference-index#az-rest) with an HTTP `PATCH` verb.
+1. Enable the preview global secondary index feature for the account by using the REST API and [az rest](/cli/azure/reference-index#az-rest) with an HTTP `PATCH` verb.
 
     ```azurecli
     az rest \
@@ -96,11 +102,11 @@ Use the Azure CLI to enable the materialized views feature either by using a nat
 ---
 
 > [!WARNING]
-> The materialized views feature can't be disabled on an account once enabled, however the materialized views builder and views themselves can be deprovisioned.
+> The global secondary index feature can't be disabled on an account once enabled, however the global secondary builder and index containers themselves can be deprovisioned.
 
-## Create a materialized view builder
+## Create a global secondary index builder
 
-After the materialized views feature is enabled for your account, you'll see a new page in the **Settings** section of the Azure portal for **Materialized Views Builder**. You must provision a materialized views builder before creating views in your account. The builder is responsible for automatically hydrating data in the views and keeping them in sync with source containers. Learn more about options for [provisioning the materialized view builder](./materialized-views.md#provisioning-the-materialized-views-builder).
+After the global secondary index feature is enabled for your account, you'll see a new page in the **Settings** section of the Azure portal for **Materialized Views Builder**. This is the same as the Global Secondary Index Builder, and uses a prior name for the same feature. You must provision a builder before creating index containers in your account. The builder is responsible for automatically hydrating data in the index containers and keeping them in sync with source containers. Learn more about options for [provisioning the global secondary index builder](./global-secondary-indexes.md#provisioning-the-global-secondary-index-builder).
 
 ### [Azure portal](#tab/azure-portal)
 
@@ -113,7 +119,7 @@ After the materialized views feature is enabled for your account, you'll see a n
 1. On the **Materialized Views Builder** page, configure the SKU and the number of instances for the builder.
 
    > [!NOTE]
-   > This resource menu option and page appear only when the materialized views feature is enabled for the account.
+   > This resource menu option and page appear only when the global secondary index feature is enabled for the account.
 
 1. Select **Save**.
 
@@ -144,13 +150,16 @@ After the materialized views feature is enabled for your account, you'll see a n
     }
     ```
 
+> [!NOTE]
+> The service type is `materializedViewsBuilder`, which is the prior name. Creating this resource will provision a global secondary index builder. 
+
 1. Get the identifier of the account and store it in a shell variable named `$accountId`.
 
     ```azurecli
     $accountId="/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/$accountName"
     ```
 
-1. Enable the materialized views builder for the account using the REST API and `az rest` with an HTTP `PUT` verb:
+1. Enable the global secondary index builder for the account using the REST API and `az rest` with an HTTP `PUT` verb:
 
     ```azurecli
     az rest \
@@ -169,11 +178,11 @@ After the materialized views feature is enabled for your account, you'll see a n
 
 ---
 
-## Create a materialized view
+## Create a global secondary index
 
-After the feature is enabled and the materialized view builder is provisioned, you can create materialized views using the REST API.
+After the feature is enabled and the global secondary index builder is provisioned, you can create index containers using the REST API.
 
-1. Use the Azure portal, the Azure SDKs, the Azure CLI, or the REST API to create a source container that has `/customerId` as the partition key path. Name this source container `mv-src`.
+1. Use the Azure portal, the Azure SDKs, the Azure CLI, or the REST API to create a source container that has `/customerId` as the partition key path. Name this source container `gsi-src`.
 
    > [!NOTE]
    > The `/customerId` field is used only as an example in this article. For your own containers, select a partition key that works for your solution.
@@ -190,11 +199,11 @@ After the feature is enabled and the materialized view builder is provisioned, y
     ```
 
    > [!NOTE]
-   > In this example, you populate the source container with sample data before adding a view. You can also create a materialized view from an empty source container.
+   > In this example, you populate the source container with sample data before adding an index container. You can also create a global secondary index from an empty source container.
 
-1. Now, create a materialized view named `mv-target` with a partition key path that is different from the source container. For this example, specify `/emailAddress` as the partition key path for the `mv-target` container.
+1. Now, create a global secondary index named `gsi-target` with a partition key path that is different from the source container. For this example, specify `/emailAddress` as the partition key path for the `gsi-target` container.
 
-    1. Create a definition manifest for a materialized view and save it in a JSON file named *mv-definition.json*:
+    1. Create a definition manifest for a global secondary index and save it in a JSON file named *gsi-definition.json*:
 
         ```json
         {
@@ -202,14 +211,14 @@ After the feature is enabled and the materialized view builder is provisioned, y
           "tags": {},
           "properties": {
             "resource": {
-              "id": "mv-target",
+              "id": "gsi-target",
               "partitionKey": {
                 "paths": [
                   "/emailAddress"
                 ]
               },
               "materializedViewDefinition": {
-                "sourceCollectionId": "mv-src",
+                "sourceCollectionId": "gsi-src",
                 "definition": "SELECT c.customerId, c.emailAddress FROM c"
               }
             },
@@ -221,19 +230,21 @@ After the feature is enabled and the materialized view builder is provisioned, y
         ```
 
    > [!IMPORTANT]
-   > In the template, notice that the partition key path is set as `/emailAddress`. The `sourceCollectionId` defines the source container for the view and the `definition` contains a query to determine the data model of the view. Learn more about [defining materialized views](materialized-views.md#defining-materialized-views) and the query constraints.
+   > In the template, notice that the partition key path is set as `/emailAddress`. The `sourceCollectionId` defines the source container for the index container and the `definition` contains a query to determine the data model. Learn more about [defining global secondary indexes](global-secondary-indexes.md#defining-global-secondary-indexes) and the query constraints.
    >
-   > The materialized view source container and definition query can't be changed once created.
+   > The global secondary index source container and definition query can't be changed once created.
+   > 
+   > The property for defining global secondary indexes is `materializedViewDefinition`, which is the prior name.
 
-1. Next, make a REST API call to create the materialized view as defined in the *mv-definition.json* file. Use the Azure CLI to make the REST API call.
+1. Next, make a REST API call to create the global secondary index as defined in the *gsi-definition.json* file. Use the Azure CLI to make the REST API call.
 
-    1. Create a variable for the name of the materialized view and source database name:
+    1. Create a variable for the name of the global secondary index and source database name:
 
         ```azurecli
         # This should match the resource ID you defined in your json file
-        $materializedViewName = "mv-target"
+        $gsiContainerName = "gsi-target"
         
-        # Database name for the source and view containers
+        # Database name for the source and index containers
         $databaseName = "<Database that contains source container>"
 
         # Azure Cosmos DB account name
@@ -252,40 +263,40 @@ After the feature is enabled and the materialized view builder is provisioned, y
         $accountId = "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/$accountName"
         ```
 
-    1. Make a REST API call to create the materialized view:
+    1. Make a REST API call to create the global secondary index:
 
         ```azurecli
         az rest \
             --method PUT \
             --uri "https://management.azure.com$accountId/sqlDatabases/ \
-                  $databaseName/containers/$materializedViewName/?api-version=2022-11-15-preview" \
-            --body @mv-definition.json \
+                  $databaseName/containers/$gsiContainerName/?api-version=2022-11-15-preview" \
+            --body @gsi-definition.json \
             --headers content-type=application/json
         ```
 
-    1. Check the status of the materialized view container creation by using the REST API:
+    1. Check the status of the global secondary index container creation by using the REST API:
 
         ```azurecli
         az rest \
             --method GET \
             --uri "https://management.azure.com$accountId/sqlDatabases/
-                  $databaseName/containers/$materializedViewName/?api-version=2022-11-15-preview" \
+                  $databaseName/containers/$gsiContainerName/?api-version=2022-11-15-preview" \
             --headers content-type=application/json \
             --query "{mvCreateStatus: properties.Status}"
         ```
 
-1. After the materialized view is created, the materialized view builder automatically syncs changes with the source container. Try executing create, update, and delete operations in the source container. You'll see the same changes propagated to the materialized view container.
+1. After the global secondary index is created, the builder automatically syncs changes with the source container. Try executing create, update, and delete operations in the source container. You'll see the same changes propagated to the index container.
 
-## Query data from materialized views
+## Query data from global secondary indexes
 
-In this example, we have a source container partitioned on `customerId` and a view partitioned on `emailAddress`. Without the view, queries that only include the `emailAddress` would be cross-partition, but now they can use be executed against the view instead to increase efficiency. 
+In this example, we have a source container partitioned on `customerId` and an index container partitioned on `emailAddress`. Without the index container, queries that only include the `emailAddress` would be cross-partition, but now they can use be executed against the global secondary index instead to increase efficiency. 
 
-Querying data from materialized views is similar to querying data from any other container. You can use the Azure portal, Azure SDKs, or REST API to query data in materialized views.
+Querying data from global secondary indexes is similar to querying data from any other container. You can use the Azure portal, Azure SDKs, or REST API to query data in global secondary indexes.
 
 ### [.NET](#tab/dotnet)
 
 ```csharp
-Container container = client.GetDatabase("mv-db").GetContainer("mv-target");
+Container container = client.GetDatabase("gsi-db").GetContainer("gsi-target");
 
 FeedIterator<MyClass> myQuery = container.GetItemQueryIterator<MyClass>(new QueryDefinition("SELECT * FROM c WHERE c.emailAddress = 'justine@contoso.com'"));
 ```
@@ -293,8 +304,8 @@ FeedIterator<MyClass> myQuery = container.GetItemQueryIterator<MyClass>(new Quer
 ### [Java](#tab/java)
 
 ```java
-CosmosAsyncDatabase container = client.getDatabase("mv-db");
-CosmosAsyncContainer container = database.getContainer("mv-target");
+CosmosAsyncDatabase container = client.getDatabase("gsi-db");
+CosmosAsyncContainer container = database.getContainer("gsi-target");
 
 CosmosPagedFlux<MyClass> pagedFluxResponse = container.queryItems(
         "SELECT * FROM c WHERE c.emailAddress = 'justine@contoso.com'", null, MyClass.class);
@@ -303,8 +314,8 @@ CosmosPagedFlux<MyClass> pagedFluxResponse = container.queryItems(
 ### [Node.js](#tab/nodejs)
 
 ```javascript
-const database = client.database("mv-db");
-const container = database.container("mv-target");
+const database = client.database("gsi-db");
+const container = database.container("gsi-target");
 
 const querySpec = {
     query: "SELECT * FROM c WHERE c.emailAddress = 'justine@contoso.com'"
@@ -317,8 +328,8 @@ const { resources: items } = await container.items
 ### [Python](#tab/python)
 
 ```python
-database = client.get_database_client("mv-db")
-container = database.get_container_client("mv-target")
+database = client.get_database_client("gsi-db")
+container = database.get_container_client("gsi-target")
 
 query = "SELECT * FROM c WHERE c.emailAddress = 'justine@contoso.com'"
 container.query_items(
@@ -332,4 +343,4 @@ container.query_items(
 
 > [!div class="nextstepaction"]
 > [Data modeling and partitioning](model-partition-example.md)
-> [Materialized views overview](materialized-views.md)
+> [Global secondary index overview](global-secondary-indexes.md)

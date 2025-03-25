@@ -347,8 +347,8 @@
       href: ../integrated-cache-faq.md
   - name: Integrated vector database
     href: ../vector-search.md
-  - name: Materialized views (preview)
-    href: materialized-views.md
+  - name: Global secondary indexes (preview)
+    href: global-secondary-indexes.md
   - name: Analytics and BI
     items:
     - name: Analytics and BI overview
@@ -568,8 +568,8 @@
       href: how-to-java-change-feed.md
   - name: NoSQL query
     href: query/toc.yml
-  - name: Configure materialized views (preview)
-    href: how-to-configure-materialized-views.md
+  - name: Configure global secondary indexes (preview)
+    href: how-to-configure-global-secondary-indexes.md
   - name: Index and query geospatial data
     displayName: geospatial, geojson, spatial, index, query, geography, geometry
     href: how-to-geospatial-index-query.md
