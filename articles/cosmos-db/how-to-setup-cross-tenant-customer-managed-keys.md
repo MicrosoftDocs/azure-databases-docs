@@ -84,7 +84,7 @@ To Revoke or Disable customer-managed keys, see [configure customer-managed keys
 
 As a prerequisite, make sure the account is in an Active state. Accounts in a Revoked state can't be migrated.
 
-The general guideline to migrate a Cosmos DB account to a different resource group or subscription is described in the [moving Azure resources to a new resource group or subscription](https://learn.microsoft.com/azure/azure-resource-manager/management/move-resource-group-and-subscription) article.
+The general guideline to migrate a Cosmos DB account to a different resource group or subscription is described in the [moving Azure resources to a new resource group or subscription](/azure/azure-resource-manager/management/move-resource-group-and-subscription) article.
 
 After you've successfully moving the Azure Cosmos DB account per the general guideline, any identities (System-Assigned or User-Assigned) associated with the account must be [reassigned](how-to-setup-managed-identity.md). This reassignment is required in order to ensure that these identities continue to have the necessary permissions to access the Key Vault key.
 
