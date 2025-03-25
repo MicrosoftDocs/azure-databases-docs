@@ -16,7 +16,11 @@ ms.custom:
   - build-2024
 ---
 
-# Generate vector embeddings in Azure Database for PostgreSQL flexible server with locally deployed LLM (Preview)
+# Generate vector embeddings in Azure Database for PostgreSQL with locally deployed LLM (Preview)
+
+[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
+
+[!INCLUDE [in-database-embedding-deprecation](../includes/in-database-embedding-deprecation.md)]
 
 ## Prerequisites
 

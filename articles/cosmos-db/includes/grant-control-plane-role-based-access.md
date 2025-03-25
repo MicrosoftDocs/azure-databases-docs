@@ -1,7 +1,7 @@
 ---
 ms.service: azure-cosmos-db
 ms.topic: include
-ms.date: 10/01/2024
+ms.date: 03/18/2025
 zone_pivot_groups: azure-interface-portal-cli-powershell-bicep
 ---
 
@@ -35,7 +35,7 @@ First, you must prepare a role definition with a list of `actions` to grant acce
 
 ::: zone pivot="azure-interface-cli,azure-interface-bicep"
 
-List all of the role definitions associated with your Azure Cosmos DB account using [`az role definition list`](/cli/azure/role/definition#az-role-definition-list). Review the output and locate the role definition named **Cosmos DB Built-in Data Contributor**. The output contains the unique identifier of the role definition in the `id` property. Record this value as it is required to use in the assignment step later in this guide.
+List all of the role definitions associated with your Azure Cosmos DB account using [`az role definition list`](/cli/azure/role/definition#az-role-definition-list). Review the output and locate the role definition named **Cosmos DB Operator**. The output contains the unique identifier of the role definition in the `id` property. Record this value as it is required to use in the assignment step later in this guide.
 
 ```azurecli-interactive
 az role definition list \

@@ -4,7 +4,7 @@ description: Learn about connectivity and networking options for Azure Database 
 author: gbowerman
 ms.author: guybo
 ms.reviewer: maghan
-ms.date: 01/23/2025
+ms.date: 03/17/2025
 ms.service: azure-database-postgresql
 ms.subservice: 
 ms.topic: conceptual
@@ -15,16 +15,15 @@ ms.custom:
 # Azure Database for PostgreSQL flexible server networking with Private Link
 
 Azure Private Link allows you to create private endpoints for Azure Database for PostgreSQL flexible server to bring it inside your virtual network. This functionality is a recommended alternative to the [networking capabilities provided by virtual network integration](concepts-networking-private.md).
-Azure Private Link allows you to create private endpoints for Azure Database for PostgreSQL flexible server to bring it inside your virtual network. This functionality is a recommended alternative to the [networking capabilities provided by virtual network integration](concepts-networking-private.md).
 
-With Private Link, traffic between your virtual network and the service travels the Microsoft backbone network. Exposing your service to the public internet is no longer necessary. You can create your own private link service in your virtual network and deliver it to your customers. Setup and consumption by using Private Link is consistent across Azure PaaS, customer-owned, and shared partner services.
+With Private Link, traffic between your virtual network and the service traverses the Microsoft backbone network. Exposing your service to the public internet is no longer necessary. You can create your own private link service in your virtual network and deliver it to your customers. Setup and consumption by using Private Link is consistent across Azure PaaS, customer-owned, and shared partner services.
 
 > [!NOTE]  
 > Private endpoints can only be configured for servers that were created after Azure Database for PostgreSQL flexible server introduced the support for Private Link, and whose networking mode was configured to not use virtual network integration but Public access.
 >
-> Servers which were created before that date, and whose networking mode was configured to not use virtual network integration but Public access, don't support yet the creation of private endpoints. In the future, such limitation will be removed, so that these servers can also support private endpoints.
+> Servers which were created before that date, and whose networking mode was configured to not use virtual network integration but Public access, don't yet support the creation of private endpoints. This limitation will be removed in the near future, so that these servers can also support private endpoints.
 >
-> On servers created with virtual network integration, the use of private endpoints isn't supported.
+> The use of private endpoints isn't currently supported on servers created with virtual network integration.
 
 Private Link is exposed to users through two Azure resource types:
 
@@ -34,7 +33,7 @@ Private Link is exposed to users through two Azure resource types:
 ## Private endpoints
 
 A *private endpoint* adds a network interface to a resource, providing it with a private IP address assigned from your virtual network. After it's applied, you can communicate with this resource exclusively via the virtual network.
-For a list to PaaS services that support Private Link functionality, review the Private Link [documentation](/azure/private-link/private-link-overview). A private endpoint is a private IP address within a specific [virtual network](/azure/virtual-network/virtual-networks-overview) and a subnet.
+For a list of PaaS services that support Private Link functionality, review the Private Link [documentation](/azure/private-link/private-link-overview). A private endpoint is a private IP address within a specific [virtual network](/azure/virtual-network/virtual-networks-overview) and a subnet.
 
 Multiple private endpoints in different virtual networks or subnets, even if they have overlapping address spaces, can reference the same public service instance.
 

@@ -23,9 +23,8 @@ The **minimum service-wide accepted version is TLS 1.2**. This selection can be 
 
 ## How to set the minimum TLS version for my Cosmos DB database account
 
-Starting with the [2022-11-15 API version of the Azure Cosmos DB Resource Provider API](), a new property is exposed for every Cosmos DB database account, called `minimalTlsVersion`. It accepts one of the following values:
-- `Tls12` for setting the minimum version to TLS 1.2.
-- `Tls13` for setting the minimum version to TLS 1.3.
+Starting with the [2022-11-15 API version of the Azure Cosmos DB Resource Provider API](), a new property is exposed for every Cosmos DB database account, called `minimalTlsVersion`. It accepts the following value:
+- `Tls12` for setting the minimum version to TLS 1.2
 
 The **default value for new accounts is `Tls12`**.
 
@@ -144,9 +143,9 @@ To set this property using an ARM template, update your existing template or exp
 
 ### For new accounts
 
-You can create accounts with the `minimalTlsVersion` property set by using the ARM template above, or by using Azure PowerShell, run the command:
+You can create accounts with the `minimalTlsVersion` property set by using the ARM template above, or by using Azure CLI or Azure PowerShell, run the command:
 
-```azurepowershell-interactive
+```azurecli-interactive
 az cosmosdb create --name <CosmosDBAccountName> \
   --resource-group <ResourceGroupName> \
   --kind GlobalDocumentDB \
@@ -154,8 +153,16 @@ az cosmosdb create --name <CosmosDBAccountName> \
   --minimal-tls-version "Tls12"
 ```
 
-> [!IMPORTANT]
-> If the account exists and the `minimalTlsVersion` property is omitted, then the property will reset to its default value, starting with the 2022-11-15 API version.
+```azurepowershell-interactive
+New-AzCosmosDBAccount `
+  -ResourceGroupName "<YourResourceGroupName>" `
+  -Name "<YourCosmosDBAccountName>" `
+  -Location "<AzureRegion>" `
+  -Kind GlobalDocumentDB `
+  -EnableAutomaticFailover $true `
+  -MinimalTlsVersion "Tls12"
+```
+
 
 ## How to verify minimum TLS version enforcement
 
