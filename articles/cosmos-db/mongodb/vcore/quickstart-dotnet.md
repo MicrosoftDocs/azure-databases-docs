@@ -1,21 +1,21 @@
 ---
 title: Quickstart - .NET
-titleSuffix: Azure Cosmos DB for MongoDB (RU)
-description: Deploy a .NET web application that uses the client library for .NET to interact with Azure Cosmos DB for MongoDB (RU) data in this quickstart.
+titleSuffix: Azure Cosmos DB for MongoDB (vCore)
+description: Deploy a .NET web application that uses the client library for .NET to interact with Azure Cosmos DB for MongoDB (vCore) data in this quickstart.
 author: seesharprun
 ms.author: sidandrews
 ms.service: azure-cosmos-db
-ms.subservice: mongodb
+ms.subservice: mongodb-vcore
 ms.devlang: csharp
 ms.topic: quickstart-sdk
 ms.date: 03/25/2025
 ms.custom: devx-track-csharp, devx-track-dotnet, devx-track-extended-azdevcli
 appliesto:
-  - ✅ MongoDB (RU)
-# CustomerIntent: As a developer, I want to learn the basics of the .NET library so that I can build applications with Azure Cosmos DB for MongoDB (RU).
+  - ✅ MongoDB (vCore)
+# CustomerIntent: As a developer, I want to learn the basics of the .NET library so that I can build applications with Azure Cosmos DB for MongoDB (vCore).
 ---
 
-# Quickstart: Use Azure Cosmos DB for MongoDB (RU) with .NET
+# Quickstart: Use Azure Cosmos DB for MongoDB (vCore) with .NET
 
 [!INCLUDE[Developer Quickstart selector](includes/quickstart-dev-selector.md)]
 
@@ -51,13 +51,19 @@ Use the Azure Developer CLI (`azd`) to create an Azure Cosmos DB for Table accou
 
 1. During initialization, configure a unique environment name.
 
+1. Set the `MONGODB_DEPLOYMENT_TYPE` Azure Developer CLI variable to `vcore`.
+
+    ```azurecli
+    azd env set "MONGODB_DEPLOYMENT_TYPE" "vcore"
+    ```
+
 1. Deploy the Azure Cosmos DB account using `azd up`. The Bicep templates also deploy a sample web application.
 
     ```azurecli
     azd up
     ```
 
-1. During the provisioning process, select your subscription, desired location, and target resource group. Wait for the provisioning process to complete. The process can take **approximately five minutes**.
+1. During the provisioning process, select your subscription, desired location, and target resource group. Wait for the provisioning process to complete. The process can take **approximately ten minutes**.
 
 1. Once the provisioning of your Azure resources is done, a URL to the running web application is included in the output.
 
@@ -205,7 +211,7 @@ Use the Visual Studio Code extension for Azure Cosmos DB to explore your MongoDB
 - Importing bulk data from other sources
 - Managing databases and collections
 
-For more information, see [How-to use Visual Studio Code extension to explore Azure Cosmos DB for MongoDB data](../visual-studio-code-extension.md?pivots=api-mongodb&tabs=MongoDB).
+For more information, see [How-to use Visual Studio Code extension to explore Azure Cosmos DB for MongoDB data](../../visual-studio-code-extension.md?pivots=api-mongodb&tabs=MongoDB).
 
 ## Clean up resources
 
