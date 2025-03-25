@@ -99,7 +99,7 @@ These server parameters directly affect Fabric mirroring for Azure Database for 
 
 - **max_worker_processes**: The default is 8. After the initial snapshot, we use one process per mirrored database or where mirroring is enabled (but no mirrored artifact has been created in Fabric yet). You must increase this value if you have other extensions or workloads using more worker processes.
 
-—**max_parallel_workers**: The default is 8, which limits the number of workers that can run simultaneously. If you enable multiple mirroring sessions on the same server, you might consider increasing this parameter to allow more parallel operations (for example, increasing parallelism in initial snapshots).
+- **max_parallel_workers**: The default is 8, which limits the number of workers that can run simultaneously. If you enable multiple mirroring sessions on the same server, you might consider increasing this parameter to allow more parallel operations (for example, increasing parallelism in initial snapshots).
 
 - **azure_cdc.max_fabric_mirrors** Default is 3. Customers can increase this value if they need to mirror more than three databases on this server. It's important to consider that every new mirrored database consumes server resources (five background processes using CPU and Memory resources for snapshot creation and change batching), so depending on how busy your server is, you should monitor resource utilization and scale up your compute size to the next size available if CPU and memory utilization are constantly above 80% or performance aren't what you expect.
 
@@ -107,14 +107,14 @@ These server parameters directly affect Fabric mirroring for Azure Database for 
 
 - **azure_cdc.change_batch_buffer_size**: Default is 16 MB. Maximum buffer size (in MB) for change batch. The table shows much data is buffered up to this before being written to the local disk. Depending on the data change frequency on your mirrored databases, you could tweak this value to reduce the change batch frequency or increase it if you want to prioritize overall throughput.
 
-- **azure_cdc.change_batch_export_timeout**: Default is 30. Maximum idle time (in seconds) between change batch messages. When exceeded, we mark the current batch as complete. Depending on the data change frequency on your mirrored databases, you could tweak this value to reduce the change batch frequency or increase it if you want to prioritize overall throughput.
+- **azure_cdc.change_batch_export_timeout**: Defaults is 30. Maximum idle time (in seconds) between change batch messages. When exceeded, we mark the current batch as complete. Depending on the data change frequency on your mirrored databases, you could tweak this value to reduce the change batch frequency or increase it if you want to prioritize overall throughput.
 
 - **azure_cdc.parquet_compression**: Default is ZSTD. This parameter is for internal use only, so you shouldn't modify it.
 
-- **azure_cdc.snapshot_buffer_size**: Default is 1000.
+- **azure_cdc.snapshot_buffer_size**: Defaults to 1000.
 The maximum size (in MB) of the initial snapshot buffer. Per the table, much data is buffered up to this before being sent to Fabric. Remember that azure_cdc.snapshot_buffer_size*azure_cdc.max_snapshot_workers is the total memory buffer used during the initial snapshot.
 
-- **azure_cdc.snapshot_export_timeout**: Default is 180. Maximum time (in minutes) to export initial snapshot. On exceed, we restart.
+- **azure_cdc.snapshot_export_timeout**: Defaults to 180. Maximum time (in minutes) to export initial snapshot. On exceed, we restart.
 
 ### Monitor 
 
