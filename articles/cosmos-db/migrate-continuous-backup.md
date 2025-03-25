@@ -217,17 +217,19 @@ You can restore your account after the migration completes. If the migration com
 
 Yes.
 
-### Which accounts can be targeted for backup migration?
+### Which accounts can be targeted for backup migration for continuous backup?
 
 Currently, API for NoSQL, API for Table, Gremlin API and API for MongoDB accounts with single write region that have shared, provisioned, or autoscale provisioned throughput support migration.  
-
-Accounts enabled with multiple-write regions aren't supported for migration.
 
 Currently, accounts with Synapse Link enabled, that had Synapse Link disabled for one or more collections, can't migrate to continuous backup.
 
 ### Does the migration take time? What is the typical time?
 
 Migration takes a varying amount of time that largely depends on the size of data and the number of regions in your account. You can get the migration status using Azure CLI or PowerShell commands. For large accounts with tens of terabytes of data, the migration can take up to few days to complete.
+
+### Does the migration for multi region write(mrw) account with periodic backup to multi region write with continuous backup take time? 
+
+Yes, this migration takes time that largely depends on need to wait for all old tentative writes to get drained during continous backup migration. You can get the migration status using Azure CLI or PowerShell commands. For large accounts with tens of terabytes of data, the migration can take up to few days to complete.
 
 ### Does the migration cause any availability impact/downtime?
 
