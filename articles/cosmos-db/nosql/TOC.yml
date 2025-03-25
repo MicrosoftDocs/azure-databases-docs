@@ -247,6 +247,10 @@
       href: model-partition-example.md
     - name: Synthetic partition key
       href: synthetic-partition-keys.md
+    - name: Real-world examples
+      items:
+      - name: Choose a partition key for IoT
+        href: design-partitioning-iot.md
   - name: Partitioning and horizontal scaling
     items:
     - name: Partitioning overview
@@ -951,6 +955,8 @@
       href: ../monitor-reference.md
     - name: Monitoring solutions
       href: ../monitoring-solutions.md
+    - name: Migrate from legacy Monitoring 
+      href: legacy-migrate-az-monitor.md
   - name: Server-side programming
     items:
     - name: Stored procedures, triggers, and user-defined functions (UDFs)

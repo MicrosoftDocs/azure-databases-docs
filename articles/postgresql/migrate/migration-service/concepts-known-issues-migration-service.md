@@ -23,7 +23,12 @@ The following list describes common limitations that apply to migration scenario
 - The migration service supports migration for users and roles only when the source is Azure Database for PostgreSQL - Single Server.
 - The migration service shows the number of tables that are copied from the source to the target. You must manually check the data and PostgreSQL objects on the target server after migration.
 - The migration service migrates only user databases. The service doesn't migrate system databases like **template_0** and **template_1**.
-- The migration service doesn't support moving POSTGIS_TOPOLOGY, POSTGIS_TIGER_GEOCODER, POSTGRES_FDW, and PG_PARTMAN extensions from source to target.
+- The following limitations apply to **Extension** migrations:
+    - The migration service does not support migrating the `pg_partman` extension from the source to the target.
+    - The migration service does not support migrating the `postgres_fdw` extension in the following scenarios:
+        - When user/roles migration is disabled using the migration server parameter that is `azure.migration_skip_role_user = on`.
+        - When the source PostgreSQL version is greater than 15.
+        - When the source is AWS, on-premises, GCP, or an Azure VM (excluding Azure Database for PostgreSQL - Single Server).
 
   > [!NOTE]  
   > The feature to migrate databases that have the TIMESCALEDB extension is GA. Do note that only **Offline** migration is possible for time series databases.
@@ -48,7 +53,6 @@ The following list describes common limitations that apply to migration scenario
 
 The following list describes limitations specific to migrating from Azure Database for PostgreSQL - Single Server:
 
-- Microsoft Entra users who are on your source server aren't migrated to the target server. To mitigate this limitation, see [Manage Microsoft Entra roles](../../flexible-server/how-to-manage-azure-ad-users.md). The solution is to manually create all Microsoft Entra users on your target server before you initiate a migration. If Microsoft Entra users aren't created on the target server, migration fails.
 - If the target flexible server uses the SCRAM-SHA-256 password encryption method, connection to a flexible server by using the users or roles on a single server fails. On a single server, passwords are encrypted by using the MD5 algorithm. To mitigate this limitation, for the `password_encryption` server parameter on your flexible server, select the option `MD5`.
 - Online migration uses [pgcopydb follow](https://pgcopydb.readthedocs.io/en/latest/ref/pgcopydb_follow.html). Some [logical decoding restrictions](https://pgcopydb.readthedocs.io/en/latest/ref/pgcopydb_follow.html#pgcopydb-follow) apply.
 
