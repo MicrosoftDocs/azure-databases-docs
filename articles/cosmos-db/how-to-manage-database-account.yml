@@ -181,7 +181,7 @@ procedureSection:
 
         In the case of a single-write region, if the write region is offline during the drill or an outage, bringing the region back online will restore it as a 'read region'. Afterward, you can perform the 'change write region' operation to promote the region back to a write region. 
 
-        Azure Cosmos DB offers “Region Offline” and “Region Online” metrics for users who want to create automation based on these metrics. For instance, after the region is back online, you might want to trigger an automation job to change-write region. The list of supported database account metrics can be found [here](https://learn.microsoft.com/en-us/azure/cosmos-db/monitor-reference).
+        Azure Cosmos DB offers “Region Offline” and “Region Online” metrics for users who want to create automation based on these metrics. For instance, after the region is back online, you might want to trigger an automation job to change-write region. The list of supported database account metrics can be found [here](/azure/cosmos-db/monitor-reference).
   - title: |
       Set failover priorities for your Azure Cosmos DB account
     summary: |
