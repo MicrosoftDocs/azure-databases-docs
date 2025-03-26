@@ -4,7 +4,7 @@ description: Learn about the extension considerations specific to an Azure Datab
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 02/17/2025
+ms.date: 03/26/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: concept-article
@@ -251,13 +251,13 @@ The following list enumerates all the supported modules that require specific co
 
 ### pg_failover_slots
 
-The `pg_failover_slots` extension enhances Azure Database for PostgreSQL flexible server when operating with both logical replication and high availability enabled servers. It effectively addresses the challenge within the standard PostgreSQL engine that doesn't preserve logical replication slots after a failover. Maintaining these slots is critical to prevent replication pauses or data mismatches during primary server role changes, ensuring operational continuity and data integrity.
+The `pg_failover_slots` module enhances Azure Database for PostgreSQL flexible server when operating with both logical replication and high availability enabled servers. It effectively addresses the challenge within the standard PostgreSQL engine that doesn't preserve logical replication slots after a failover. Maintaining these slots is critical to prevent replication pauses or data mismatches during primary server role changes, ensuring operational continuity and data integrity.
 
 The extension streamlines the failover process by managing the necessary transfer, cleanup, and synchronization of replication slots, thus providing a seamless transition during server role changes.
 
-You can find more information and instructions on using the `pg_failover_slots` extension on its [GitHub page](https://github.com/EnterpriseDB/pg_failover_slots).
+You can find more information and instructions on using the `pg_failover_slots` module on its [GitHub page](https://github.com/EnterpriseDB/pg_failover_slots).
 
-To use the `pg_failover_slots` extension, make sure that its [library was loaded](how-to-load-libraries.md) when the server started.
+To use the `pg_failover_slots` module, make sure that its [library was loaded](how-to-load-libraries.md) when the server started.
 
 
 ## Related content
