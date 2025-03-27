@@ -70,7 +70,7 @@ All the code and sample datasets are available in [this GitHub repository](https
 
 First, we prepare our database to store and search legal case data using vector embeddings:
 
-**Environment Setup:**
+### Environment Setup:
 
 If using macOS / bash:
 
@@ -96,7 +96,7 @@ python -m venv .pg-azure-ai
 pip install -r requirements.txt
 ```
 
-**Configure Environment Variables:**
+### Configure Environment Variables:
 
 Create a `.env` file with your credentials:
 
@@ -106,8 +106,8 @@ AZURE_OPENAI_ENDPOINT=""
 EMBEDDING_MODEL_NAME="" 
 AZURE_PG_CONNECTION=""
 ```
- 
-**Load documents and vectors**
+ 
+### Load documents and vectors
 
 The Python file [load_data/main.py](https://github.com/Azure-Samples/postgres-agents/blob/main/load_data/main.py) serves as the central entry point for loading data into Azure Database for PostgreSQL. The code processes the [sample cases data](https://github.com/Azure-Samples/postgres-agents/blob/main/load_data/cases.csv), including information about cases in Washington.
 
@@ -140,7 +140,7 @@ Embeddings added successfully All Data loaded successfully!
 
 We are configuring AI agent tools to retrieve data from Postgres and then using the **Azure AI Agent Service SDK** to connect your AI agent to the Postgres database.
 
-**Define a function for your agent to call**
+### Define a function for your agent to call
 
 Start by defining a function for your agent to call by describing its structure and any required parameters in a docstring. Include all your function definitions in a single file, [legal_agent_tools.py](https://github.com/Azure-Samples/postgres-agents/blob/main/src/legal_agent_tools.py), which you can then import into your main script.
 
@@ -194,13 +194,13 @@ High level details of [simple_postgres_and_ai_agent.py](https://github.com/Azure
 1. **Display the Agent’s Response**: This function outputs the agent's response to the user's query.
  
 
-**Find the Project Connection String in Azure AI Foundry**:
+### Find the Project Connection String in Azure AI Foundry:
 
 In your Azure AI Foundry project, you find your Project Connection String from the Overview page of the project. We use this string to connect the project to the AI agent SDK. Add this string to the .env file.
 
-![Project Setup Page](./media/generative-ai/ai-foundry-project-setup.png) 
+![Screenshot showing project setup page.](./media/generative-ai/ai-foundry-project-setup.png) 
 
-**Connection Setup:**
+### Connection Setup:
 Add these variables to your *.env* file in the root directory:
 
 ```shell
@@ -232,7 +232,7 @@ agent = project_client.agents.create_agent(
 )
 ```
 
-**Create Communication Thread:**
+### Create Communication Thread:
 
 This code snippet shows how to create an agent thread and message, which the agent processes in a run.
 
@@ -248,7 +248,7 @@ message = project_client.agents.create_message(
 )
 ```
 
-**Process the Request:**
+### Process the Request:
 
 This code snippet creates a run for the agent to process the message and use the appropriate tools to provide the best result.
 
@@ -268,7 +268,7 @@ messages = project_client.agents.list_messages(thread_id=thread.id)
 pprint(messages['data'][0]['content'][0]['text']['value'])
 ```
 
-**Run the Agent:**
+### Run the Agent:
 
 To run the agent, run the following command from the src directory:
 
@@ -295,34 +295,34 @@ Summary: The Warners appealed a ruling finding them liable for negligence and nu
 ### Step 4: Testing and Debugging with Azure AI Foundry Playground
 After running your agent with Azure AI Agent SDK, the agent is stored in your project, and you can experiment with the agent in the Agent playground.
 
-**Using the Agent Playground:**
+### Using the Agent Playground:
 
 1. Navigate to the Agents section in Azure AI Foundry
 1. Find your agent in the list and Select to open
 1. Use the playground interface to test various legal queries
- 
-![Find AI Playground](./media/generative-ai/find-playground.png) 
+ 
+![Screenshot showing how to find AI Playground.](./media/generative-ai/find-playground.png) 
 
 1. Test the query *“Water leaking into the apartment from the floor above, What are the prominent legal precedents in Washington?”* The agent picks the right tool to use and ask for the expected output for that query. Use [sample_vector_search_cases_output.json](https://github.com/Azure-Samples/postgres-agents/blob/main/src/sample_outputs_for_playground/sample_vector_search_cases_output.json) as the sample output.
- 
-![Using AI Playground](./media/generative-ai/using-playground-ai-foundry.png) 
+ 
+![Screenshot showing how to use AI Playground.](./media/generative-ai/using-playground-ai-foundry.png) 
 
 ### Step 5: Debugging with Azure AI Foundry Tracing
 
 When developing the agent using the Azure AI Foundry SDK, you can [debug the agent with Tracing.](/azure/ai-services/agents/concepts/tracing), allowing you to debug the calls to tools like Postgres and see how the agent orchestrates each task.
 
-**Debugging with Tracing:**
+### Debugging with Tracing:
 
 1. Select Tracing in the Azure AI Foundry menu
 1. Create a new Application Insights resource or connect an existing one
- 
-![Activating Tracing](./media/generative-ai/activate-tracing.png) 
+ 
+![Screenshot showing how to activate Tracing.](./media/generative-ai/activate-tracing.png) 
 
 1. View detailed traces of your agent's operations
 
-![Using Tracing in AI Foundry](./media/generative-ai/tracing-ai-foundry.png) 
+![Screenshot showing how to use Tracing in AI Foundry.](./media/generative-ai/tracing-ai-foundry.png) 
 
-Learn more about how to set up tracing with the AI agent and Postgres in the [advanced_postgres_and_ai_agent_with_tracing.py file on Github](https://github.com/Azure-Samples/postgres-agents/blob/main/src/advanced_postgres_and_ai_agent_with_tracing.py).
+Learn more about how to set up tracing with the AI agent and Postgres in the [advanced_postgres_and_ai_agent_with_tracing.py file on GitHub](https://github.com/Azure-Samples/postgres-agents/blob/main/src/advanced_postgres_and_ai_agent_with_tracing.py).
 
 
 ## Related content

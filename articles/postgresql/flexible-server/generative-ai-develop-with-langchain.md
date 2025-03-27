@@ -15,7 +15,7 @@ ms.topic: conceptual
 # Using LangChain with Azure Database for PostgreSQL
 Azure Database for PostgreSQL seamlessly integrates with leading large language model (LLM) orchestration packages such as [LangChain](https://www.langchain.com/), enabling developers to harness the power of advanced AI capabilities within their applications. LangChain can streamline the management and use of LLMs, embedding models, and databases, making it even easier to develop Generative AI applications.
 
-This tutorial shows you how to use Azure Database for PostgreSQL integrated [vector database](how-to-use-pgvector.md) to store and manage documents in collections with LangChain. It also shows how to create indices, and perform vector search queries using approximate nearest neighbor algorithms such as Cosine Distance, L2 (Euclidean distance), and IP (inner product) to locate documents close to the query vectors.
+This tutorial shows you how to use Azure Database for PostgreSQL integrated [vector database](how-to-use-pgvector.md) to store and manage documents in collections with LangChain. It also shows how to create indices and perform vector search queries using approximate nearest neighbor algorithms such as Cosine Distance, L2 (Euclidean distance), and IP (inner product) to locate documents close to the query vectors.
 
 
 ## Vector Support
@@ -392,7 +392,7 @@ retriever.invoke("kitty")
 ## Current Limitations
 
 -   langchain_postgres works only with psycopg3. Update your connection strings from `postgresql+psycopg2://...` to `postgresql+psycopg://langchain:langchain@...` 
--   The schema of the embedding store and collection has changed to make add_documents work correctly with user specified ids.
+-   The schema of the embedding store and collection has changed to make add_documents work correctly with user specified IDs.
 -   One has to pass an explicit connection object now.
 
 Currently, there is **no mechanism** that supports easy data migration on schema changes. So any schema changes in the vector store requires the user to recreate the tables and readd the documents.
@@ -400,6 +400,7 @@ Currently, there is **no mechanism** that supports easy data migration on schema
 
 ## Related content
 
+- [Learn More about LangChain PGVector support](https://python.langchain.com/docs/integrations/vectorstores/pgvector/)
 - [GenAI Frameworks and Azure Database for PostgreSQL](generative-ai-ai-frameworks.md)
 - [AI Agents in Azure Database for PostgreSQL](generative-ai-ai-agents.md)
 - [Learn more about Azure OpenAI Service integration](generative-ai-azure-openai.md)
