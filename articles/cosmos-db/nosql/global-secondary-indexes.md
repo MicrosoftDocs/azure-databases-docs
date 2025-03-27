@@ -1,7 +1,7 @@
 ---
 title: Global Secondary Indexes (preview)
 titleSuffix: Azure Cosmos DB for NoSQL
-description: Global secondary indexes are read-only containers with a persistent copy of data from a source container. They can be used to optimize cross partition queries on a source container in Azure Cosmos DB.
+description: Global secondary indexes are read-only containers with a persistent copy of data from a source container. They can be used to optimize cross-partition queries on a source container in Azure Cosmos DB.
 author: jcocchi
 ms.author: jucocchi
 ms.service: azure-cosmos-db
@@ -29,8 +29,8 @@ Applications often need to query data without specifying a partition key. These 
 
 With a global secondary index, you can:
 
-- Maintain a copy of data with a different partition key, allowing cross-partition queries to be re-targeted to the view for more efficient lookups.
-- Provide a SQL-based predicate (without conditions) to populate only specific item properties.
+- Maintain a copy of data in a container with a different partition key, allowing cross-partition queries to be re-targeted to the global secondary index for more efficient lookups.
+- Provide a SQL-based predicate to populate only specific item properties in the global secondary index.
 - Create real-time indexes to handle event-based data, which is often stored in separate containers.
 
 ## Global secondary index features
@@ -47,7 +47,7 @@ Azure Cosmos DB global secondary indexes offer the following features:
 
 ## Defining global secondary indexes
 
-Creating a global secondary index is similar to creating a new container, with requirements to specify the source container and a query defining the index. Each item in the global secondary index has a one-to-one mapping to an item in the source container. To maintain this mapping, the `id` field in global secondary index items is auto populated. The value of `id` from the source collection is represented as `_id` in the index.
+Creating a global secondary index is similar to creating a new container, with added properties to specify the source container and a query defining the index. Each item in the global secondary index has a one-to-one mapping to an item in the source container. To maintain this mapping, the `id` field in global secondary index items is auto populated. The value of `id` from the source collection is represented as `_id` in the index.
 
 The query used to define a global secondary index must adhere to the following constraints:
  - The SELECT statement allows projection of only one level of properties in the JSON tree, or it can be SELECT * to include all properties.
@@ -55,7 +55,7 @@ The query used to define a global secondary index must adhere to the following c
  - Queries can’t include a WHERE clause or other clauses such as JOIN, DISTINCT, GROUP BY, ORDER BY, TOP, OFFSET LIMIT, and EXISTS.
  - System functions and user-defined functions (UDFs) aren't supported.
 
- For example, a valid query could be: `SELECT c.userName, c.emailAddress FROM c`, which selects the `userName` and `emailAddress` properties from the source container `c`. This query defines the data model of the global secondary index, determining which properties are included in the index. The source container and definition query can't be changed once created.
+ For example, a valid query is: `SELECT c.userName, c.emailAddress FROM c`, which selects the `userName` and `emailAddress` properties from the source container `c`. This query defines the data model of the global secondary index, determining which properties are included in the index for each item. The source container and definition query can't be changed once created.
  
  [Learn how to create global secondary indexes.](how-to-configure-global-secondary-indexes.md#create-a-global-secondary-index)
  
@@ -66,7 +66,7 @@ The query used to define a global secondary index must adhere to the following c
 
 The global secondary index builder is a dedicated compute layer provisioned for your Azure Cosmos DB account that automatically maintains indexes defined for source containers. The builder reads from the [change feed](../change-feed.md) of the source container and writes changes to the index containers according to the definition, keeping them in sync. Updating index containers is asynchronous and doesn't affect writes to the source container. Updates to the indexes are eventually consistent with the source container regardless of the consistency level set for the account.
 
-You must provision a global secondary index builder for your Azure Cosmos DB account for indexes to begin populating. The amount of compute provisioned in the builder, including the SKU and the number of nodes, as well as the RUs provisioned on the index container, determine how quickly indexes are hydrated and synced. The builder can have up to five nodes by default and you can add or remove nodes at any time. Scaling up and down the number of nodes helps control the rate at which indexes are built.
+You must provision a global secondary index builder for your Azure Cosmos DB account in order for indexes to begin populating. The amount of compute provisioned in the builder, including the SKU and the number of nodes, as well as the RUs provisioned on the index container, determine how quickly indexes are hydrated and synced. The builder can have up to five nodes by default and you can add or remove nodes at any time. Scaling up and down the number of nodes helps control the rate at which indexes are built.
 
 The global secondary index builder is available in the following sizes:
 
@@ -78,7 +78,7 @@ The global secondary index builder is available in the following sizes:
 | **D16s**     | **16**   | **64 GB** |
 
 > [!TIP]
-> Once created, you can add or remove builder nodes, but you can't modify the size of the nodes. To change the size of your global secondary index builder nodes you can deprovision the builder and provision it again in a different size. Index containers don't need to be re-created and will catch up to the source once the builder is provisioned again.
+> Once created, you can add or remove builder nodes, but you can't modify the node SKU. To change the SKU of your global secondary index builder nodes you can deprovision the builder and provision it again in a different size. Index containers don't need to be re-created and will catch up to the source once the builder is provisioned again.
 
 ### Global secondary index builders in multi-region accounts
 
@@ -95,12 +95,12 @@ For Azure Cosmos DB accounts with a single region, the global secondary index bu
 
 ## Monitoring
 
-You can monitor the lag in building indexes and the health of the global secondary index builder through Metrics in the Azure portal. To learn about these metrics, see [Supported metrics for Microsoft.DocumentDB/DatabaseAccounts](../monitor-reference.md#supported-metrics-for-microsoftdocumentdbdatabaseaccounts).
+You can monitor the lag in building global secondary indexes and the health of the builder through Metrics in the Azure portal. To learn about these metrics, see [Supported metrics for Microsoft.DocumentDB/DatabaseAccounts](../monitor-reference.md#supported-metrics-for-microsoftdocumentdbdatabaseaccounts).
 
 :::image type="content" source="./media/materialized-views/materialized-views-metrics.png" alt-text="Screenshot of the Global Secondary Index Builder Average CPU Usage metric in the Azure portal." :::
 
 > [!NOTE]
-> The global secondary index metrics are prefixed with `MaterializedView`, which is the prior name of this feature. 
+> The global secondary index metrics are prefixed with "MaterializedView", which is the prior name of this feature. 
 
 ### Troubleshooting common issues
 
@@ -119,11 +119,8 @@ There are a few limitations with the Azure Cosmos DB for NoSQL API global second
 - The global secondary index feature can't be disabled on an account once enabled.
 - Global secondary indexes can't be enabled on accounts that have partition merge, analytical store, or continuous backups.
 - Role-based access control isn't supported for global secondary indexes.
-- Containers that have hierarchical partitioning or end-to-end encryption aren't supported as source containers.
+- Containers that have hierarchical partitioning or use client-side encryption aren't supported as source containers.
 - Cross-tenant customer-managed key (CMK) encryption isn't supported on global secondary indexes.
-- Availability zones
-  - Global secondary indexes can't be enabled on an account that has availability zone-enabled regions.
-  - Adding a new region with an availability zone isn't supported after global secondary indexes are enabled on an account.
 - Periodic backup and restore
   - Global secondary indexes aren't automatically restored during the restore process. You must enable the global secondary index feature on the restored account after the restore process is finished. Then, you can create the global secondary indexes and builder again.
 

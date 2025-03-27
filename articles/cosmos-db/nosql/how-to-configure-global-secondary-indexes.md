@@ -82,7 +82,7 @@ Use the Azure CLI to enable the global secondary index feature either by using a
     ```
 
 > [!NOTE]
-> The property name to enable the feature is `enableMaterializedViews`, which is the prior name. Enabling materialized views will also enable global secondary indexes. 
+> The property name to enable the feature is `enableMaterializedViews`, which is the prior name. Enabling materialized views will enable global secondary indexes. 
 
 1. Get the identifier of the account and store it in a shell variable named `$accountId`.
 
@@ -230,11 +230,9 @@ After the feature is enabled and the global secondary index builder is provision
         ```
 
    > [!IMPORTANT]
-   > In the template, notice that the partition key path is set as `/emailAddress`. The `sourceCollectionId` defines the source container for the index container and the `definition` contains a query to determine the data model. Learn more about [defining global secondary indexes](global-secondary-indexes.md#defining-global-secondary-indexes) and the query constraints.
+   > In the template, the property for defining global secondary indexes is `materializedViewDefinition`, which is the prior name.
    >
-   > The global secondary index source container and definition query can't be changed once created.
-   > 
-   > The property for defining global secondary indexes is `materializedViewDefinition`, which is the prior name.
+   > Notice that the partition key path is set as `/emailAddress`. The `sourceCollectionId` defines the source container for the index container and the `definition` contains a query to determine the data model. The global secondary index source container and definition query can't be changed once created. Learn more about [defining global secondary indexes](global-secondary-indexes.md#defining-global-secondary-indexes) and the query constraints.
 
 1. Next, make a REST API call to create the global secondary index as defined in the *gsi-definition.json* file. Use the Azure CLI to make the REST API call.
 

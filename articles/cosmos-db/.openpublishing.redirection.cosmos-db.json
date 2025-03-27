@@ -6009,6 +6009,16 @@
       "source_path_from_root": "/articles/cosmos-db/mongodb/quickstart-go.md",
       "redirect_url": "/azure/cosmos-db/mongodb",
       "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/nosql/materialized-views.md",
+      "redirect_url": "/azure/cosmos-db/nosql/global-secondary-indexes",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/nosql/how-to-configure-materialized-views.md",
+      "redirect_url": "/azure/cosmos-db/nosql/how-to-configure-global-secondary-indexes",
+      "redirect_document_id": true
     }
   ]
 }
