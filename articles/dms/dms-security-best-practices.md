@@ -66,7 +66,7 @@ For more information, see [Security recommendations for Azure Blob storage](/azu
 
 Consider the following security best practices for your target Azure SQL product:
 
-- Follow the principle of least privilege to grant the minimal granular permissions. When using Azure Azure Database Migration Service, you can configure custom roles to limit the permissions granted to the Azure Database Migration Service service.
+- Follow the principle of least privilege to grant the minimal granular permissions. When using Azure Database Migration Service, you can configure custom roles to limit the permissions granted to the Azure Database Migration Service service.
 
   For example:
 
