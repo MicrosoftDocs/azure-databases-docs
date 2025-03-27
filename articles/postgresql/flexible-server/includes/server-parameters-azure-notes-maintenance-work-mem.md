@@ -4,7 +4,7 @@ description: maintenance_work_mem server parameter for Azure Database for Postgr
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
-ms.date: 10/07/2024
+ms.date: 03/27/2025
 author: nachoalonsoportillo
 ms.author: ialonso
 zone_pivot_groups: postgresql-server-version
@@ -12,6 +12,10 @@ zone_pivot_groups: postgresql-server-version
 #### Description
 
 `maintenance_work_mem` is a configuration parameter in PostgreSQL. It governs the amount of memory allocated for maintenance operations, such as `VACUUM`, `CREATE INDEX`, and `ALTER TABLE`. Unlike `work_mem`, which affects memory allocation for query operations, `maintenance_work_mem` is reserved for tasks that maintain and optimize the database structure.
+
+> ![NOTE]
+> Setting `maintenance_work_mem` to overly aggressive values could periodically cause out of memory error in the system.
+> It's extremely important to understand the amount of memory available on the server, and the number of concurrent operations that could allocate memory for the tasks described earlier, before making changes to this parameter.
 
 #### Key points
 
