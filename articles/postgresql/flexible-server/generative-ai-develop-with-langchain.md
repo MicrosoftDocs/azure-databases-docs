@@ -401,8 +401,8 @@ Currently, there is **no mechanism** that supports easy data migration on schema
 ## Related content
 
 - [Learn More about LangChain PGVector support](https://python.langchain.com/docs/integrations/vectorstores/pgvector/)
-- [GenAI Frameworks and Azure Database for PostgreSQL](generative-ai-ai-frameworks.md)
-- [AI Agents in Azure Database for PostgreSQL](generative-ai-ai-agents.md)
+- [GenAI Frameworks and Azure Database for PostgreSQL](generative-ai-frameworks.md)
+- [AI Agents in Azure Database for PostgreSQL](generative-ai-agents.md)
 - [Learn more about Azure OpenAI Service integration](generative-ai-azure-openai.md)
 - [Generative AI with Azure Database for PostgreSQL flexible server](generative-ai-overview.md).
 - [Enable and use pgvector in Azure Database for PostgreSQL flexible server](how-to-use-pgvector.md).

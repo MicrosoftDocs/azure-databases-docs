@@ -198,7 +198,7 @@ High level details of [simple_postgres_and_ai_agent.py](https://github.com/Azure
 
 In your Azure AI Foundry project, you find your Project Connection String from the Overview page of the project. We use this string to connect the project to the AI agent SDK. Add this string to the .env file.
 
-![Screenshot showing project setup page.](./media/generative-ai/ai-foundry-project-setup.png) 
+![Screenshot showing project setup page.](./media/generative-ai-agents/ai-foundry-project-setup.png) 
 
 ### Connection Setup:
 Add these variables to your *.env* file in the root directory:
@@ -301,11 +301,11 @@ After running your agent with Azure AI Agent SDK, the agent is stored in your pr
 1. Find your agent in the list and Select to open
 1. Use the playground interface to test various legal queries
  
-![Screenshot showing how to find AI Playground.](./media/generative-ai/find-playground.png) 
+![Screenshot showing how to find AI Playground.](./media/generative-ai-agents/find-playground.png) 
 
 1. Test the query *“Water leaking into the apartment from the floor above, What are the prominent legal precedents in Washington?”* The agent picks the right tool to use and ask for the expected output for that query. Use [sample_vector_search_cases_output.json](https://github.com/Azure-Samples/postgres-agents/blob/main/src/sample_outputs_for_playground/sample_vector_search_cases_output.json) as the sample output.
  
-![Screenshot showing how to use AI Playground.](./media/generative-ai/using-playground-ai-foundry.png) 
+![Screenshot showing how to use AI Playground.](./media/generative-ai-agents/using-playground-ai-foundry.png) 
 
 ### Step 5: Debugging with Azure AI Foundry Tracing
 
@@ -316,18 +316,18 @@ When developing the agent using the Azure AI Foundry SDK, you can [debug the age
 1. Select Tracing in the Azure AI Foundry menu
 1. Create a new Application Insights resource or connect an existing one
  
-![Screenshot showing how to activate Tracing.](./media/generative-ai/activate-tracing.png) 
+![Screenshot showing how to activate Tracing.](./media/generative-ai-agents/activate-tracing.png) 
 
 1. View detailed traces of your agent's operations
 
-![Screenshot showing how to use Tracing in AI Foundry.](./media/generative-ai/tracing-ai-foundry.png) 
+![Screenshot showing how to use Tracing in AI Foundry.](./media/generative-ai-agents/tracing-ai-foundry.png) 
 
 Learn more about how to set up tracing with the AI agent and Postgres in the [advanced_postgres_and_ai_agent_with_tracing.py file on GitHub](https://github.com/Azure-Samples/postgres-agents/blob/main/src/advanced_postgres_and_ai_agent_with_tracing.py).
 
 
 ## Related content
 
-- [GenAI Frameworks and Azure Database for PostgreSQL](generative-ai-ai-frameworks.md)
+- [GenAI Frameworks and Azure Database for PostgreSQL](generative-ai-frameworks.md)
 - [Using LangChain with Azure Database for PostgreSQL](generative-ai-develop-with-langchain.md)
 - [Learn more about Azure OpenAI Service integration](generative-ai-azure-openai.md)
 - [Azure AI extension in Azure Database for PostgreSQL flexible server](generative-ai-azure-overview.md).

@@ -26,7 +26,7 @@ Azure Database for PostgreSQL seamlessly integrates with leading large language 
 ## Related content
 
 - [Using LangChain with Azure Database for PostgreSQL](generative-ai-develop-with-langchain.md)
-- [AI Agents in Azure Database for PostgreSQL](generative-ai-ai-agents.md)
+- [AI Agents in Azure Database for PostgreSQL](generative-ai-agents.md)
 - [Learn more about Azure OpenAI Service integration](generative-ai-azure-openai.md)
 - [Generative AI with Azure Database for PostgreSQL flexible server](generative-ai-overview.md).
 - [Enable and use pgvector in Azure Database for PostgreSQL flexible server](how-to-use-pgvector.md).

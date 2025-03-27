@@ -362,7 +362,7 @@
       - name: Overview
         href: flexible-server/generative-ai-overview.md
       - name: AI Agents 
-        href: flexible-server/generative-ai-ai-agents.md
+        href: flexible-server/generative-ai-agents.md
       - name: Vector Databases
         items:
         - name: Using vector databases in Postgres
@@ -370,7 +370,7 @@
       - name:  AI Frameworks
         items:
         - name: Overview
-          href: flexible-server/generative-ai-ai-frameworks.md
+          href: flexible-server/generative-ai-frameworks.md
         - name: Develop with LangChain
           href: flexible-server/generative-ai-develop-with-langchain.md
       - name: Semantic Search
