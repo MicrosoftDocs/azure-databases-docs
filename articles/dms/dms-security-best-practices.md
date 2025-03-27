@@ -20,7 +20,7 @@ This article covers the following migration scenarios from SQL Server (on-premis
 - SQL Server on Azure Virtual Machines (VMs)
 - Azure SQL Database
 
-The intended audience for this guide is customers facing questions about securely migrate to an Azure SQL product, such as database and security architects, database managers and administrators, and IT teams part of migration projects. 
+This guide is intended for customers with questions about securely migrating to an Azure SQL product, such as database and security architects, database managers and administrators, and IT teams part of migration projects. 
 
 The work in this article is ongoing. You can provide feedback or corrections using the **Feedback** option at the end of this article.
 
