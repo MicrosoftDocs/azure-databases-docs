@@ -16,6 +16,12 @@ zone_pivot_groups: postgresql-server-version
 #### Key points
 
 * **Vacuum memory cap**: If you want to speed up the cleanup of dead tuples by increasing `maintenance_work_mem`, be aware that `VACUUM` has a built-in limitation for collecting dead tuple identifiers. It can use only up to 1 GB of memory for this process.
+  
+  To set the maintenance_work_mem parameter at the session level in PostgreSQL, you can use the following command
+  
+  `SET maintenance_work_mem = '4GB'`;
+
+  **Note**: Overly aggressive maintenance_work_mem values could periodically cause out-of-memory errors in the system. It's important to understand the available RAM on the server before making any changes to the maintenance_work_mem parameter.
 * **Separation of memory for autovacuum**: You can use the `autovacuum_work_mem` setting to control the memory that autovacuum operations use independently. This setting acts as a subset of `maintenance_work_mem`. You can decide how much memory autovacuum uses without affecting the memory allocation for other maintenance tasks and data definition operations.
 
 #### Azure-specific notes
