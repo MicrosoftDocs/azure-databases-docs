@@ -33,18 +33,18 @@ Based on the previous formula, the following table lists the values this server 
 
 | Memory size | maintenance_work_mem |
 | ----------- | -------------------- |
-|       2 GiB |           99328  KiB |
-|       4 GiB |          157696  KiB |
-|       8 GiB |          216064  KiB |
-|      16 GiB |          274432  KiB |
-|      32 GiB |          332800  KiB |
-|      48 GiB |          367616  KiB |
-|      64 GiB |          392192  KiB |
-|      80 GiB |          410624  KiB |
-|     128 GiB |          450560  KiB |
-|     160 GiB |          468992  KiB |
-|     192 GiB |          484352  KiB |
-|     256 GiB |          508928  KiB |
-|     384 GiB |          542720  KiB |
-|     432 GiB |          552960  KiB |
-|     672 GiB |          590848  KiB |
+|       2 GiB |           99,328  KiB |
+|       4 GiB |          157,696  KiB |
+|       8 GiB |          216,064  KiB |
+|      16 GiB |          274,432  KiB |
+|      32 GiB |          332,800  KiB |
+|      48 GiB |          367,616  KiB |
+|      64 GiB |          392,192  KiB |
+|      80 GiB |          410,624  KiB |
+|     128 GiB |          450,560  KiB |
+|     160 GiB |          468,992  KiB |
+|     192 GiB |          484,352  KiB |
+|     256 GiB |          508,928  KiB |
+|     384 GiB |          542,720  KiB |
+|     432 GiB |          552,960  KiB |
+|     672 GiB |          590,848  KiB |
