@@ -44,6 +44,7 @@ Here are the current tiers for the service:
 | M60  | 16 | 64 GB  | 128 GB |  
 | M80  | 32 | 128 GB | 128 GB |  
 | M200 | 64 | 256 GB | 128 GB |  
+| M200 Autoscale | Up to 64 | Up to 256 GB | 128 GB | 
 | M300 | 48 | 324 GB | 128 GB |  
 | M400 | 64 | 432 GB | 128 GB |  
 | M600 | 80 | 640 GB | 128 GB |  
