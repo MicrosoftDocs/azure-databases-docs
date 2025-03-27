@@ -51,7 +51,7 @@ Alternatively, you can also use [Bicep template](quickstart-bicep.md) to provisi
 
 ## Pricing Model
 
-For simplicity it uses a core-based pricing model, where charges are based on the higher of CPU or committed memory usage 
+For simplicity it uses a core-based pricing model, where charges are based on the higher of CPU or memory usage 
 in the last hour, compared to a 35% utilization threshold.
 
 * Upto 35% Utilization: Minimum price applies.
@@ -95,7 +95,7 @@ Autoscale availability varies by region. Check the Azure portal for support in y
 
 ### How can I verify the charges incurred with Autoscale?  
 To ensure cost transparency, we’ve introduced a new metric called 'Autoscale Utilization Percentage'. 
-This metric shows the maximum of CPU or committed memory usage over time, helping you compare it against the charges incurred.  
+This metric shows the maximum of CPU or memory usage over time, helping you compare it against the charges incurred.  
 
 <a href="media/how-to-scale-cluster/autoscale-metric.jpg" target="_blank">
   <img src="media/how-to-scale-cluster/autoscale-metric.jpg" alt="Screenshot for autoscale usage metric." width="600">
