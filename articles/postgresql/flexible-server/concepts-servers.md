@@ -1,10 +1,10 @@
 ---
-title: Server concepts for Azure Database for PostgreSQL flexible server
+title: Server Concepts for Azure Database for PostgreSQL Flexible Server
 description: This article provides considerations and guidelines for configuring and managing Azure Database for PostgreSQL flexible server.
 author: kabharati
 ms.author: kabharati
-ms.reviewer: maghan
-ms.date: 04/30/2024
+ms.reviewer: maghan, randolphwest
+ms.date: 03/27/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: conceptual
@@ -45,11 +45,13 @@ The following elements help ensure safe access to your database:
 | TCP/IP | The protocol is supported over TCP/IP and over Unix-domain sockets. |
 | Firewall | To help protect your data, a firewall rule prevents all access to your server and to its databases until you specify which computers have permission. See [Azure Database for PostgreSQL Flexible Server firewall rules](how-to-manage-firewall-portal.md). |
 
-## Managing your server
+<a id="managing-your-server"></a>
+
+## Manage your server
 
 You can manage Azure Database for PostgreSQL flexible server instances by using the [Azure portal](https://portal.azure.com) or the [Azure CLI](/cli/azure/postgres).
 
-When you create a server, you set up the credentials for your admin user. The admin user is the highest-privilege user on the server. It belongs to the role **azure_pg_admin**. This role does not have full superuser permissions.
+When you create a server, you set up the credentials for your admin user. The admin user is the highest-privilege user on the server. It belongs to the role **azure_pg_admin**. This role doesn't have full superuser permissions.
 
 The PostgreSQL superuser attribute is assigned to **azure_superuser**, which belongs to the managed service. You don't have access to this role.
 
@@ -68,9 +70,9 @@ Your Azure Database for PostgreSQL flexible server instance is enabled with defa
 
 ## Related content
 
-- [Overview of Azure Database for PostgreSQL - Flexible Server](overview.md).
-- [Compute options in Azure Database for PostgreSQL - Flexible Server](concepts-compute.md).
-- [Storage options in Azure Database for PostgreSQL - Flexible Server](concepts-storage.md).
-- [Supported versions of PostgreSQL in Azure Database for PostgreSQL - Flexible Server](concepts-supported-versions.md).
-- [Limits in Azure Database for PostgreSQL - Flexible Server](concepts-limits.md).
-- [Server parameters in Azure Database for PostgreSQL - Flexible Server](concepts-server-parameters.md).
+- [Azure Database for PostgreSQL Flexible Server](overview.md)
+- [Compute options in Azure Database for PostgreSQL Flexible Server](concepts-compute.md)
+- [Storage options in Azure Database for PostgreSQL Flexible Server](concepts-storage.md)
+- [Supported versions of PostgreSQL in Azure Database for PostgreSQL Flexible Server](concepts-supported-versions.md)
+- [Limits in Azure Database for PostgreSQL Flexible Server](concepts-limits.md)
+- [Server parameters in Azure Database for PostgreSQL Flexible Server](concepts-server-parameters.md)
