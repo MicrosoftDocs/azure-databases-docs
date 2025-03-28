@@ -45,7 +45,7 @@ To enable ENN, set "exact": true in your query. For example:
     "cosmosSearch": {
       "path": "myVectorField",
       "exact": true,               // Enables ENN
-      "query": [0.2, 0.4, 0.9],    // Input vector
+      "query": [0.2, 0.4, 0.9],    // Query vector
       "k": 10,                     // Number of results to return
       "filter": {
         "tenant_id": { "$eq": "tenant123" }
