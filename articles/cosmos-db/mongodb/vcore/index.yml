@@ -35,6 +35,8 @@ landingContent:
         links:
           - text: Integrated vector database
             url: vector-search.md
+          - text: Exact Nearest Neighbor Vector Search for Precise Retrieval
+            url: enn-vector-search
           - text: Open-source vector database
             url: vector-search-ai.md
           - text: RAG 
