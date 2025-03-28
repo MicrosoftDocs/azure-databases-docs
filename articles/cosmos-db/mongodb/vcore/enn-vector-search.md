@@ -31,13 +31,13 @@ Consider using ENN Vector Search in the following scenarios:
 - **Manageable Dataset Size**: When dealing with smaller datasets or when performance constraints are less stringent, the exhaustive nature of ENN is feasible.​
 - **Low Selectivity Filtering**: If applying filters that result in a relatively small subset of data, ENN can efficiently perform exhaustive comparisons within this subset.​
 
-For example: In a large dataset containing millions of documents categorized by tenants, performing a vector search within a specific tenant (comprising a few thousand vectors) can be effectively handled by ENN.​
+**For example**: In a large dataset containing millions of documents categorized by tenants, performing a vector search within a specific tenant (comprising a few thousand vectors) can be effectively handled by ENN.​
 
 ## How to Use ENN Vector Search
 
 Before using ENN Vector Search, ensure that a [vector index](./vector-search.md) (e.g., IVF, HNSW, DiskANN) is created for the relevant path. If a vector index already exists, there's no need to rebuild it when switching between search methods, since ENN operates independently of these indexes during query execution.​
 
-To enable ENN, set "exact": true in your query. For example:
+To enable ENN, set `"exact": true` in your query. For example:
 
 ```javascript
 {
@@ -73,17 +73,6 @@ By switching to ENN Vector Search while maintaining the same filter, the client 
 
 - **Exact Nearest Neighbor (ENN) Vector Search** offers 100% accuracy by exhaustively comparing the query vector to all indexed vectors, making it suitable for applications requiring precise results or when dealing with smaller datasets or filtered subsets.
 - **Approximate Nearest Neighbor (ANN) Search** utilizes specialized indexing techniques to provide faster responses and better scalability for large datasets, though it may slightly compromise on accuracy.
-
-## Related content
-
-- [.NET RAG Pattern retail reference solution](https://github.com/Azure/Vector-Search-AI-Assistant-MongoDBvCore)
-- [.NET tutorial - recipe chatbot](https://github.com/microsoft/AzureDataRetrievalAugmentedGenerationSamples/tree/main/C%23/CosmosDB-MongoDBvCore)
-- [C# RAG pattern - Integrate OpenAI Services with Cosmos](https://github.com/microsoft/AzureDataRetrievalAugmentedGenerationSamples/tree/main/C%23/CosmosDB-MongoDBvCore)
-- [Python RAG pattern - Azure product chatbot](https://github.com/microsoft/AzureDataRetrievalAugmentedGenerationSamples/tree/main/Python/CosmosDB-MongoDB-vCore)
-- [Python notebook tutorial - Vector database integration through LangChain](https://python.langchain.com/docs/integrations/vectorstores/azure_cosmos_db)
-- [Python notebook tutorial - LLM Caching integration through LangChain](https://python.langchain.com/docs/integrations/vectorstores/azure_cosmos_db/)
-- [Python - LlamaIndex integration](https://docs.llamaindex.ai/en/stable/examples/vector_stores/AzureCosmosDBMongoDBvCoreDemo.html)
-- [Python - Semantic Kernel memory integration](https://github.com/microsoft/semantic-kernel/tree/main/python/semantic_kernel/connectors/memory/azure_cosmosdb)
 
 ## Next step
 
