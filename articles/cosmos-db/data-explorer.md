@@ -65,7 +65,7 @@ The Custom Column Selector in Azure Cosmos DB Data Explorer allows you to custom
 
 1. In the resource menu, select **Data Explorer**.
 
-1. Next, (Optional) select the **Open Full Screen** menu option.
+1. (Optional) Next, select the **Open Full Screen** menu option.
 
     ![Screenshot of the Data Explorer page with the 'Open Full Screen' option highlighted.](media/data-explorer/open-full-screen.png)
    
@@ -117,7 +117,7 @@ After applying the filter, your filter will be automatically saved and added to 
 
 1. Clear any Filter from the filter window. This step is required to be able to view your saved Filters.
 
-1. Click the Drop Down in the filter window, and select teh desired filter from the list.
+1. Click the Drop Down in the filter window, and select the desired filter from the list.
 
 1. Select Apply Filter
 
