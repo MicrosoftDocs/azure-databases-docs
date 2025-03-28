@@ -65,11 +65,12 @@ A client maintains a collection of approximately 300,000 documents, each contain
 
 By switching to ENN Vector Search while maintaining the same filter, the client achieved a **50% improvement in query performance** and attained **100% recall accuracy**.​
 
-## Limitations
+## FAQs 
+### Performance Considerations
 - **Performance on Large Datasets**: ENN may be slower for large datasets without selective filtering due to the necessity of evaluating every vector.​
 - **Higher Computational Cost**: ENN involves comparing the query vector to all (or filtered) vectors, leading to increased resource usage for a large dataset.
 
-## ANN vs ENN: What’s the Difference?
+### ANN vs ENN: What’s the Difference?
 
 - **Exact Nearest Neighbor (ENN) Vector Search** offers 100% accuracy by exhaustively comparing the query vector to all indexed vectors, making it suitable for applications requiring precise results or when dealing with smaller datasets or filtered subsets.
 - **Approximate Nearest Neighbor (ANN) Search** utilizes specialized indexing techniques to provide faster responses and better scalability for large datasets, though it may slightly compromise on accuracy.
