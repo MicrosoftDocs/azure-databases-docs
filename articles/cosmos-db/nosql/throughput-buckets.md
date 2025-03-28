@@ -17,7 +17,7 @@ When multiple workloads share the same Azure Cosmos DB container, resource conte
 
 #### Common Use Cases
 
-- Multi-tenant workloads managed by ISVs
+- Multi-tenant workloads managed by Independent Software Vendors (ISVs)
 - Bulk execution in ETL jobs
 - Data ingestion and migration processes
 - Execution of stored procedures
@@ -28,15 +28,15 @@ When multiple workloads share the same Azure Cosmos DB container, resource conte
 Each bucket is assigned a maximum throughput percentage, which determines the fraction of the container's total throughput allocated to that bucket.
 
 - Requests assigned to a bucket consume throughput only from that bucket.
-- If the total usage within a bucket exceeds its assigned percentage, additional requests will be throttled.
-- This ensures that high-usage workloads do not impact other workloads sharing the container.
+- If the total usage within a bucket exceeds its assigned percentage, subsequent requests are throttled.
+- This mechanism ensures that high-usage workloads don't impact other workloads sharing the container.
 
 > [!Note]
 > Requests that do not belong to a configured bucket will consume throughput from the overall container without restrictions.
 
 ### Configuring Throughput buckets
 
-To set up throughput buckets in the Azure Portal:
+To set up throughput buckets in the Azure portal:
 
 1. Open **Data Explorer** and navigate to the **Scale & Settings** pane of your container.
 2. Locate the **Throughput Buckets** tab.
@@ -124,12 +124,12 @@ ItemResponse<Product> response = await container.ReadItemAsync<Product>(partitio
 
 ### Bucket behavior in Data Explorer
 
-- If **Bucket 1** is configured, all requests from Data Explorer will use this bucket and adhere to its throughput limits. 
-- If **Bucket 1** is not configured, requests will utilize the container’s full available throughput.
+- If **Bucket 1** is configured, all requests from Data Explorer use this bucket and adhere to its throughput limits. 
+- If **Bucket 1** isn't configured, requests utilize the container’s full available throughput.
 
 ### Monitoring Throughput buckets 
 
-You can track bucket usage in the Azure Portal:
+You can track bucket usage in the Azure portal:
 
 - **Total Requests (preview)**: View the number of requests per bucket by splitting the metric by ThroughputBucket.
 
@@ -139,7 +139,7 @@ You can track bucket usage in the Azure Portal:
 
 - Not supported for containers in a Shared Throughput Database.
 - Not available for Serverless Cosmos DB accounts.
-- Requests assigned to a bucket cannot utilize Burst Capacity.
+- Requests assigned to a bucket can't utilize Burst Capacity.
 
 ### Next Steps
 - Read the [Frequently asked questions](throughput-buckets-faq.md) on Throughput buckets.
