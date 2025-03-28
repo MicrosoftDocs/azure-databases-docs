@@ -40,7 +40,7 @@
       items:
         - name: Integrated vector database overview
           href: vector-search.md
-        - name: Exact Nearest Neighbor Vector Search for Precise Retrieval
+        - name: Exact Nearest Neighbor (ENN) Vector Search
           href: enn-vector-search.md
         - name: Open-source vector databases
           href: vector-search-ai.md
