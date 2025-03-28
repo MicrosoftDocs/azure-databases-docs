@@ -65,7 +65,7 @@ The Custom Column Selector in Azure Cosmos DB Data Explorer allows you to custom
 
 1. In the resource menu, select **Data Explorer**.
 
-1. (Optional) Next, select the **Open Full Screen** menu option.
+1. Next, (Optional) select the **Open Full Screen** menu option.
 
     ![Screenshot of the Data Explorer page with the 'Open Full Screen' option highlighted.](media/data-explorer/open-full-screen.png)
    
@@ -117,7 +117,7 @@ After applying the filter, your filter will be automatically saved and added to 
 
 1. Clear any Filter from the filter window. This step is required to be able to view your saved Filters.
 
-1. Click the Drop Down in the filter window, and select the desired filter from the list.
+1. Click the Drop Down in the filter window, and select teh desired filter from the list.
 
 1. Select Apply Filter
 
@@ -158,7 +158,7 @@ In the Data Explorer, you can configure a limit to the request units per second 
 
     ![Screenshot of the individual settings to configure the request unit threshold.](media/data-explorer/configure-ru-threshold.png)
    
-      ```
+   ```
    > [!TIP]
    ```
    > The RU threshold is enabled automatically with a default value of **5,000** RUs.
@@ -188,26 +188,6 @@ You can use Microsoft Entra-based authentication within the explorer by enabling
 
     > [!TIP]
     > The Azure Cosmos DB Data Explorer also supports the option to manually set the value of the **`Enable Entra ID (RBAC)`** to `True` using the <https://cosmos.azure.com?feature.enableAadDataPlane=true> URL.
-
-## Select Data Explorer Client Region
-
-When accessing NoSQL accounts with Entra Authentication (control plane role-based access control), the **Region Selection** option is available.  This forces all Data Explorer requests to the selected region.
-
-
-
-![Region selection dropdown in settings menu.](media/data-explorer/region-selection-settings-menu.png)
-
-To select a region:
-
-1. Access your account with Entra Authentication through the portal or directly through your Azure subscription.
-
-1. Select the **Settings** gear in the upper right corner.
-
-1. Use the **Select Region** drop-down menu to select Global or the required region.
-
-Write, update, and delete operations are disabled when a read-only region is selected.
-
-When *Global* is selected, the account's global endpoint is used along with endpoint discovery to determine the optimal region.  When any other region is selected, endpoint discovery is disabled, and all requests are forced to the designated region.
 
 ## Known issues
 
