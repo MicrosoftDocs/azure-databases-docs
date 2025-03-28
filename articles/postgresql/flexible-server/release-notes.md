@@ -145,7 +145,7 @@ This article highlights the latest updates and enhancements for Azure Database f
 ## Release: September 2023
 
 - General availability of [Storage autogrow](concepts-storage.md) for Azure Database for PostgreSQL flexible server.
-- General availability of [Cross Subscription and Cross Resource Group Restore](how-to-restore-server.md) for Azure Database for PostgreSQL flexible server.
+- General availability of [Cross Subscription and Cross Resource Group Restore](how-to-restore-latest-restore-point.md) for Azure Database for PostgreSQL flexible server.
 
 ## Release: August 2023
 

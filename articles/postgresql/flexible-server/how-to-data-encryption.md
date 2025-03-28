@@ -159,7 +159,7 @@ az postgres flexible-server create --resource-group <resource_group> --name <ser
 
 ## Configure data encryption with customer managed key on existing servers
 
-The only point at which you can decide if you want to use a system managed key or a customer managed key for data encryption, is at server creation. Once you make that decision and create the server, you can't switch between the two options. The only alternative, if you want to change from one to the other, requires [restoring any of the backups available of server onto a new server](how-to-restore-server.md). While configuring the restore, you're allowed to change the data encryption configuration of the new server.
+The only point at which you can decide if you want to use a system managed key or a customer managed key for data encryption, is at server creation. Once you make that decision and create the server, you can't switch between the two options. The only alternative, if you want to change from one to the other, requires [restoring any of the backups available of server onto a new server](how-to-restore-latest-restore-point.md). While configuring the restore, you're allowed to change the data encryption configuration of the new server.
 
 For existing servers that were deployed with data encryption using a customer managed key, you're allowed to do several configuration changes. Things that can be changed are the references to the keys used for encryption, and references to the user assigned managed identities used by the service to access the keys kept in the key stores.
 
