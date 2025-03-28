@@ -23,7 +23,7 @@ To ensure a successful migration by using the migration service in Azure Databas
 
 In the target instance of Azure Database for PostgreSQL flexible server, enable supported extensions that are identified in the source PostgreSQL instance.
 
-For more information, see [Extensions in Azure Database for PostgreSQL](../../../../flexible-server/concepts-extensions.md#how-to-use-postgresql-extensions).
+For more information, see [Extensions in Azure Database for PostgreSQL](../../extensions/how-to-allow-extensions.md) and also some extensions needs to be added in the `shared_preload_libraries`, see [Extensions in Pre Shared Library][Load libraries](../../extensions/how-to-load-libraries.md)
 
 > [!NOTE]  
 > A restart is required when you make any changes to the `shared_preload_libraries` parameter.
