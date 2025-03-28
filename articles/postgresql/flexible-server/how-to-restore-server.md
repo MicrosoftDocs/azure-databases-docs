@@ -245,7 +245,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="./media/how-to-restore-server/fast-restore-point.png" alt-text="Screenshot showing the Select Fast restore point (Restore using full backup only) radio button selected." lightbox="./media/how-to-restore-server/fast-restore-point.png":::
 
-5. In **Fast Restore point (UTC)**, select the timestamp of any of the full backups available to restore. The list includes the full backups that the service takes automatically, and any [on-demand backups](how-to-operate-on-demand-backups.md) taken by the user.
+5. In **Fast Restore point (UTC)**, select the timestamp of any of the full backups available to restore. The list includes the full backups that the service takes automatically, and any [on-demand backups](how-to-perform-backups.md) taken by the user.
 
     :::image type="content" source="./media/how-to-restore-server/fast-restore-point-selection.png" alt-text="Screenshot showing the Fast Restore point (UTC) combobox, available to select fast restore points." lightbox="./media/how-to-restore-server/fast-restore-point-selection.png":::
 
@@ -437,4 +437,4 @@ az postgres flexible-server geo-restore --resource-group <resource_group> --name
 - [Overview of business continuity with Azure Database for PostgreSQL flexible server](concepts-business-continuity.md).
 - [High availability in Azure Database for PostgreSQL flexible server](/azure/reliability/reliability-postgresql-flexible-server).
 - [Backup and restore in Azure Database for PostgreSQL flexible server](concepts-backup-restore.md).
-- [On-demand backups (Preview)](how-to-operate-on-demand-backups.md).
+- [Perform on-demand backups (preview)](how-to-perform-backups.md).

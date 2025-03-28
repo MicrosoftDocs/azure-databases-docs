@@ -1947,12 +1947,12 @@
     },
     {
         "source_path_from_root": "/articles/postgresql/flexible-server/how-to-perform-on-demand-backup-portal.md",
-        "redirect_url": "/azure/postgresql/flexible-server/how-to-operate-on-demand-backups",
+        "redirect_url": "/azure/postgresql/flexible-server/how-to-perform-backups",
         "redirect_document_id": false
     },
     {
         "source_path_from_root": "/articles/postgresql/flexible-server/how-to-perform-on-demand-backup-cli.md",
-        "redirect_url": "/azure/postgresql/flexible-server/how-to-operate-on-demand-backups",
+        "redirect_url": "/azure/postgresql/flexible-server/how-to-perform-backups",
         "redirect_document_id": false
     },
     {
