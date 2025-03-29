@@ -121,4 +121,4 @@ In addition, consider the following points of contact as appropriate:
 
 ## Related content
 
-- [Create an instance of Azure Database for PostgreSQL flexible server](quickstart-create-server.md).
+- [Create an Azure Database for PostgreSQL flexible server flexible server](quickstart-create-server.md).

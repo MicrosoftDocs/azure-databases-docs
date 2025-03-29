@@ -25,7 +25,7 @@ Open your web browser and go to the [portal](https://portal.azure.com/). Enter y
 
 ## Create an Azure Database for PostgreSQL server
 
-An elastic cluster, like a flexible server instance are created with a configured set of [compute and storage resources](concepts-compute.md). The cluster is created within an [Azure resource group](/azure/azure-resource-manager/management/overview). The steps outlined in [Create an instance of Azure Database for PostgreSQL flexible server](quickstart-create-server.md) equally apply to elastic clusters. This section outlines the changes in the process.
+An elastic cluster, like a flexible server instance are created with a configured set of [compute and storage resources](concepts-compute.md). The cluster is created within an [Azure resource group](/azure/azure-resource-manager/management/overview). The steps outlined in [Create an Azure Database for PostgreSQL flexible server flexible server](quickstart-create-server.md) equally apply to elastic clusters. This section outlines the changes in the process.
 
 To create an Azure Database for PostgreSQL flexible server instance, take the following steps:
 
