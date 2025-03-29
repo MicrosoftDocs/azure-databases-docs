@@ -42,7 +42,7 @@ landingContent:
             url: flexible-server/concepts-limits.md
       - linkListType: quickstart
         links:
-          - text: Create an instance of Azure Database for PostgreSQL flexible server
+          - text: Create an Azure Database for PostgreSQL flexible server
             url: flexible-server/quickstart-create-server.md
       - linkListType: tutorial
         links:
