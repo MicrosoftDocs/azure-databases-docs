@@ -23,7 +23,7 @@ You can automatically deploy your database updates to Azure Database for Postgre
 - An Azure account. If you don't have one, [get a free trial](https://azure.microsoft.com/free/).
 - [Azure Resource Manager service connection](/azure/devops/pipelines/library/connect-to-azure) to your Azure account.
 - Microsoft hosted agents have Azure CLI preinstalled. However if you're using private agents, [install Azure CLI](/cli/azure/install-azure-cli) on the computers that run the build and release agent. If an agent is already running on the machine on which the Azure CLI is installed, restart the agent to ensure all the relevant stage variables are updated.
-- [Create an instance of Azure Database for PostgreSQL flexible server](quickstart-create-server.md).
+- [Create an Azure Database for PostgreSQL flexible server](quickstart-create-server.md).
 
 ## Use SQL file
 
