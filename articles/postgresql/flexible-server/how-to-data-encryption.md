@@ -16,7 +16,7 @@ ms.topic: how-to
 This article provides step-by-step instructions to configure data encryption for an Azure Database for PostgreSQL flexible server.
 
 > [!IMPORTANT]
-> You can only choose if you want to use system or customer managed encryption key for data encryption of an Azure Database for PostgreSQL flexible server before the server is deployed.
+> The only point at which you can decide if you want to use a system managed key or a customer managed key for data encryption, is at server creation. Once you make that decision and create the server, you can't switch between the two options.
 
 In this article, you learn how to create a new server and configure its data encryption options. For existing servers, whose data encryption is configured to use customer managed encryption key, you learn:
 - How to select a different user assigned managed identity with which the service accesses the encryption key.
@@ -160,11 +160,11 @@ The only point at which you can decide if you want to use a system managed key o
 For existing servers that were deployed with data encryption using a customer managed key, you're allowed to do several configuration changes. Things that can be changed are the references to the keys used for encryption, and references to the user assigned managed identities used by the service to access the keys kept in the key stores.
 
 You must update references that your Azure Database for PostgreSQL flexible server has to a key:
-- When the key stored in the key store is rotated, either manually or automatically.
+- When the key stored in the key store is rotated, either manually or automatically, and your Azure Database for PostgreSQL flexible server is pointing to a specific version of the key. If you're pointing to a key, but not to a specific version of the key (that's when you have **Use version less key (preview)** enabled), then the service will take care of automatically reference the most current version of the key, whenever they key is manually or automatically rotated.
 - When you want to use the same or a different key stored in a different key store.
 
 You must update the user assigned managed identities which are used by your Azure Database for PostgreSQL flexible server to access the encryption keys:
-- Whenever you want to use a different identity
+- Whenever you want to use a different identity.
 
 
 ### [Portal](#tab/portal-customer-managed-server-existing)
