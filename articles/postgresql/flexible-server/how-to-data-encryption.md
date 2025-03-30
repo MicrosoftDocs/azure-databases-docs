@@ -16,7 +16,7 @@ ms.topic: how-to
 This article provides step-by-step instructions to configure data encryption for an Azure Database for PostgreSQL flexible server.
 
 > [!IMPORTANT]
-> Selection of system or customer managed encryption key for data encryption of an Azure Database for PostgreSQL flexible server, can only be made when the server is deployed.
+> The only point at which you can decide if you want to use a system managed key or a customer managed key for data encryption, is at server creation. Once you make that decision and create the server, you can't switch between the two options.
 
 In this article, you learn how to create a new server and configure its data encryption options. For existing servers, whose data encryption is configured to use customer managed encryption key, you learn:
 - How to select a different user assigned managed identity with which the service accesses the encryption key.
@@ -30,15 +30,11 @@ To learn about data encryption in the context of Azure Database for PostgreSQL f
 
 Using the [Azure portal](https://portal.azure.com/):
 
-1. During provisioning of a new Azure Database for PostgreSQL flexible server, data encryption is configured in the **Security** tab.
-
-    :::image type="content" source="./media/how-to-data-encryption/create-server-security-tab.png" alt-text="Screenshot that shows how to get to the Security tab, from where you can configure data encryption settings." lightbox="./media/how-to-data-encryption/create-server-security-tab.png":::
-
-2. In the **Data encryption key**, select the **Service-managed key** radio button.
+1. During provisioning of a new Azure Database for PostgreSQL flexible Server, data encryption is configured in the **Security** tab. For **Data encryption key**, select the **Service-managed key** radio button.
 
     :::image type="content" source="./media/how-to-data-encryption/create-server-system-assigned.png" alt-text="Screenshot that shows how to select the system managed encryption key during server provisioning." lightbox="./media/how-to-data-encryption/create-server-system-assigned.png":::
 
-3. If you enable geo-redundant backup storage to be provisioned together with the server, the aspect of the **Security** tab changes slightly because the server uses two separate encryption keys. One for the primary region in which you're deploying your server, and one for the paired region to which the server backups are asynchronously replicated.
+2. If you enable geo-redundant backup storage to be provisioned together with the server, the aspect of the **Security** tab changes slightly because the server uses two separate encryption keys. One for the primary region in which you're deploying your server, and one for the paired region to which the server backups are asynchronously replicated.
 
     :::image type="content" source="./media/how-to-data-encryption/create-server-system-assigned-geo-redundant.png" alt-text="Screenshot that shows how to select the system managed encryption key during server provisioning, when the server is enabled for geo-redundant backup storage." lightbox="./media/how-to-data-encryption/create-server-system-assigned-geo-redundant.png":::
 
@@ -74,11 +70,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 3. [Create one key in your key store](/azure/key-vault/keys/quick-create-portal). If your server has geo-redundant backups enabled, you need one key on each of the key stores. With one of these keys, we encrypt all your server's data (including all system and user databases, temporary files, server logs, write-ahead log segments, and backups). With the second key, we encrypt the copies of the backups which are asynchronously copied over the [paired region](/azure/reliability/cross-region-replication-azure) of your server.
 
-4. During provisioning of a new Azure Database for PostgreSQL flexible server, data encryption is configured in the **Security** tab.
-
-    :::image type="content" source="./media/how-to-data-encryption/create-server-security-tab.png" alt-text="Screenshot that shows how to get to the Security tab, from where you can configure data encryption settings." lightbox="./media/how-to-data-encryption/create-server-security-tab.png":::
-
-5. In the **Data encryption key**, select the **Customer-managed key** radio button.
+4. During provisioning of a new Azure Database for PostgreSQL flexible Server, data encryption is configured in the **Security** tab. For **Data encryption key**, select the **Customer-managed key** radio button.
 
     :::image type="content" source="./media/how-to-data-encryption/create-server-customer-assigned.png" alt-text="Screenshot that shows how to select the customer managed encryption key during server provisioning." lightbox="./media/how-to-data-encryption/create-server-customer-assigned.png":::
 
@@ -168,11 +160,11 @@ The only point at which you can decide if you want to use a system managed key o
 For existing servers that were deployed with data encryption using a customer managed key, you're allowed to do several configuration changes. Things that can be changed are the references to the keys used for encryption, and references to the user assigned managed identities used by the service to access the keys kept in the key stores.
 
 You must update references that your Azure Database for PostgreSQL flexible server has to a key:
-- When the key stored in the key store is rotated, either manually or automatically.
+- When the key stored in the key store is rotated, either manually or automatically, and your Azure Database for PostgreSQL flexible server is pointing to a specific version of the key. If you're pointing to a key, but not to a specific version of the key (that's when you have **Use version less key (preview)** enabled), then the service will take care of automatically reference the most current version of the key, whenever they key is manually or automatically rotated.
 - When you want to use the same or a different key stored in a different key store.
 
 You must update the user assigned managed identities which are used by your Azure Database for PostgreSQL flexible server to access the encryption keys:
-- Whenever you want to use a different identity
+- Whenever you want to use a different identity.
 
 
 ### [Portal](#tab/portal-customer-managed-server-existing)
