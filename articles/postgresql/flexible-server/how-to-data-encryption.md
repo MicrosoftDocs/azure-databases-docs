@@ -16,7 +16,7 @@ ms.topic: how-to
 This article provides step-by-step instructions to configure data encryption for an Azure Database for PostgreSQL flexible server.
 
 > [!IMPORTANT]
-> Selection of system or customer managed encryption key for data encryption of an Azure Database for PostgreSQL flexible server, can only be made when the server is deployed.
+> You can only choose if you want to use system or customer managed encryption key for data encryption of an Azure Database for PostgreSQL flexible server before the server is deployed.
 
 In this article, you learn how to create a new server and configure its data encryption options. For existing servers, whose data encryption is configured to use customer managed encryption key, you learn:
 - How to select a different user assigned managed identity with which the service accesses the encryption key.
