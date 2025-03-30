@@ -39,7 +39,11 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="./media/how-to-configure-managed-identities/enable-system-assigned-managed-identity-status-on-save.png" alt-text="Screenshot that shows the Save button after having enabled the system assigned managed identity of an Azure Database for PostgreSQL flexible server." lightbox="./media/how-to-configure-managed-identities/enable-system-assigned-managed-identity-status-on-save.png":::
 
-5. When the process completes, a notification informs you that the system assigned managed identity is enabled.
+5. If the server has data encryption configured to use customer managed keys, it isn't supported to disable the system assigned managed identity of the server once you enable it. For that reason, if that condition is detected, you're requested to confirm that you want to enable the system assigned managed identity.
+
+    :::image type="content" source="./media/how-to-configure-managed-identities/enable-system-assigned-managed-identity-confirmation.png" alt-text="Screenshot that shows the confirmation dialog shown when the data encryption of the server is configured to use customer managed keys." lightbox="./media/how-to-configure-managed-identities/enable-system-assigned-managed-identity-confirmation.png":::
+
+6. When the process completes, a notification informs you that the system assigned managed identity is enabled.
 
     :::image type="content" source="./media/how-to-configure-managed-identities/enable-system-assigned-managed-identity-notification.png" alt-text="Screenshot that shows the notification informing that the system assigned managed identity is enabled." lightbox="./media/how-to-configure-managed-identities/enable-system-assigned-managed-identity-notification.png":::
 
