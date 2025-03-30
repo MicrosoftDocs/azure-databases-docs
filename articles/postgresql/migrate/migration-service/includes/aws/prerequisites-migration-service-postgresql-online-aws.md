@@ -36,7 +36,7 @@ If the source PostgreSQL version is less than 9.5, upgrade it to 9.5 or higher b
 
 - Before migrating, Azure Database for PostgreSQL – Flexible server must be created.
 - SKU provisioned for Azure Database for PostgreSQL – Flexible server should match with the source.
-- To create a new Azure Database for PostgreSQL, visit [Create an Azure Database for PostgreSQL flexible server flexible server](../../../../flexible-server/quickstart-create-server.md)
+- To create a new Azure Database for PostgreSQL, visit [Create an Azure Database for PostgreSQL flexible server](../../../../flexible-server/quickstart-create-server.md)
 
 ### Enable CDC as a source
 

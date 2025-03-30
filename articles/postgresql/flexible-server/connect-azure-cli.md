@@ -167,9 +167,9 @@ Closed the connection to server372060240
 ## Related content
 
 - [Manage Azure Database for PostgreSQL flexible server](how-to-manage-server-portal.md).
-- [Quickstart: Use Python to connect and query data from an Azure Database for PostgreSQL flexible server flexible server](connect-python.md).
-- [Quickstart: Use Java to connect and query data from an Azure Database for PostgreSQL flexible server flexible server](connect-java.md).
-- [Quickstart: Use .NET (C#) to connect and query data from an Azure Database for PostgreSQL flexible server flexible server](connect-csharp.md).
-- [Quickstart: Use Go language to connect and query data from an Azure Database for PostgreSQL flexible server flexible server](connect-go.md).
-- [Quickstart: Use PHP to connect and query data from an Azure Database for PostgreSQL flexible server flexible server](connect-php.md).
+- [Quickstart: Use Python to connect and query data from an Azure Database for PostgreSQL flexible server](connect-python.md).
+- [Quickstart: Use Java to connect and query data from an Azure Database for PostgreSQL flexible server](connect-java.md).
+- [Quickstart: Use .NET (C#) to connect and query data from an Azure Database for PostgreSQL flexible server](connect-csharp.md).
+- [Quickstart: Use Go language to connect and query data from an Azure Database for PostgreSQL flexible server](connect-go.md).
+- [Quickstart: Use PHP to connect and query data from an Azure Database for PostgreSQL flexible server](connect-php.md).
 - [Quickstart: Import data from Azure Database for PostgreSQL flexible server in Power BI](connect-with-power-bi-desktop.md).

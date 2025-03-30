@@ -1,6 +1,6 @@
 ---
 title: Connect from data factory via managed private endpoint
-description: This article describes how to connect from Azure Data Factory to an Azure Database for PostgreSQL flexible server flexible server using Private Link.
+description: This article describes how to connect from Azure Data Factory to an Azure Database for PostgreSQL flexible server using Private Link.
 author: techlake
 ms.author: hganten
 ms.reviewer: maghan
@@ -14,7 +14,7 @@ ms.topic: how-to
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
-In this article, you create a linked service in Azure Data Factory to connect to an Azure Database for PostgreSQL flexible server flexible server using a private endpoint.
+In this article, you create a linked service in Azure Data Factory to connect to an Azure Database for PostgreSQL flexible server using a private endpoint.
 
 [Azure Data Factory](/azure/data-factory/introduction) is a fully managed, serverless, data integration service built to orchestrate and operationalize complex hybrid extract-transform-load (ETL), extract-load-transform (ELT), and data integration projects. An Azure [integration runtime](/azure/data-factory/concepts-integration-runtime#azure-integration-runtime) supports connecting to data stores and compute services with public accessible endpoints. If you enable the managed virtual network feature of an Azure integration runtime, it supports connecting to data stores using Azure Private Link service in private network environments.
 
@@ -27,7 +27,7 @@ Data Factory offers an [Azure Database for PostgreSQL](/azure/data-factory/conne
 
 ## Create a private endpoint in Data Factory
 
-Using the [Azure Database for PostgreSQL connector](/azure/data-factory/connector-azure-database-for-postgresql) you can connect to an Azure Database for PostgreSQL flexible server flexible server routing all traffic privately, through a managed private endpoint.
+Using the [Azure Database for PostgreSQL connector](/azure/data-factory/connector-azure-database-for-postgresql) you can connect to an Azure Database for PostgreSQL flexible server routing all traffic privately, through a managed private endpoint.
 
 You can create the managed private endpoint using the user interface provided for such purpose in the **Managed private endpoints** option, under the **Security** section of the **Manage** hub of [Azure Data Factory Studio](https://adf.azure.com), as described in [managed private endpoints](/azure/data-factory/managed-virtual-network-private-endpoint#managed-private-endpoints). As an alternative, you can use the corresponding Azure CLI command, [az datafactory managed-private-endpoint create](/cli/azure/datafactory/managed-private-endpoint), to create a managed private endpoint in Azure Data Factory.
 

@@ -1,5 +1,5 @@
 ---
-title: "Quickstart: Create an Azure Database for PostgreSQL flexible server flexible server"
+title: "Quickstart: Create an Azure Database for PostgreSQL flexible server"
 description: Quickstart guide to creating and managing an Azure Database for PostgreSQL flexible server instance.
 author: gbowerman
 ms.author: guybo
@@ -19,7 +19,7 @@ ms.custom:
 
 Azure Database for PostgreSQL flexible server is a managed service that allows you to run, manage, and scale highly available PostgreSQL databases in the cloud.
 
-This article shows you how to create an Azure Database for PostgreSQL flexible server Flexible Server using different mechanisms.
+This article shows you how to create an Azure Database for PostgreSQL flexible server using different mechanisms.
 
 ## Create an Azure Database for PostgreSQL flexible server
 

@@ -42,12 +42,12 @@ There are two types of managed identities:
 
 ## Uses of managed identities in Azure Database for PostgreSQL flexible server
 
-**System assigned managed identity** for an Azure Database for PostgreSQL flexible server flexible server is used by:
+**System assigned managed identity** for an Azure Database for PostgreSQL flexible server is used by:
 
 - [azure_storage extension](concepts-storage-extension.md), when configured to access a storage account using the `managed-identity` authentication type. For more information, see how to [configure the azure_storage extension to use authorization with Microsoft Entra ID](how-to-use-pg-azure-storage.md#to-use-authorization-with-microsoft-entra-id).
 - [Microsoft Fabric mirrored databases from Azure Database for PostgreSQL flexible server (preview)](https://techcommunity.microsoft.com/blog/adforpostgresql/mirroring-azure-database-for-postgresql-flexible-server-in-microsoft-fabric---pr/4251876) uses the credentials of the system assigned managed identity to sign the requests that your instance of flexible server sends to the Azure DataLake service in Microsoft Fabric to mirror your designated databases.
 
-**User assigned managed identities** configured for an Azure Database for PostgreSQL flexible server flexible server can be used for:
+**User assigned managed identities** configured for an Azure Database for PostgreSQL flexible server can be used for:
 
 - [Data encryption with customer managed keys](concepts-data-encryption.md).
 
