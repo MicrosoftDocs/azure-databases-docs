@@ -71,11 +71,11 @@ Several prerequisites must be configured before using Fabric mirroring in Azure 
 
 A new page is available in the Azure portal to automate prerequisite configuration on the source server.
 
-:::image type="content" source="media/concepts-fabric-mirroring/start-enablement.png" alt-text="New Fabric mirroring page in Azure portal to start enablement." lightbox="media/concepts-fabric-mirroring/start-enablement.png":::
+:::image type="content" source="media/concepts-fabric-mirroring/start-enablement.png" alt-text="Screenshot showing New Fabric mirroring page in Azure portal to start enablement." lightbox="media/concepts-fabric-mirroring/start-enablement.png":::
 
 Select **Get Started** to initiate the enablement workflow.
 
-:::image type="content" source="media/concepts-fabric-mirroring/select-databases.png" alt-text="New Fabric mirroring page in Azure portal for select databases." lightbox="media/concepts-fabric-mirroring/select-databases.png":::
+:::image type="content" source="media/concepts-fabric-mirroring/select-databases.png" alt-text="Screenshot showing New Fabric mirroring page in Azure portal for select databases." lightbox="media/concepts-fabric-mirroring/select-databases.png":::
 
 This page shows the current status of the required prerequisites. If System Assigned Managed Identity (SAMI) isn't enabled for this server, select the link to be redirected to the page where you can enable this feature.
 
@@ -91,7 +91,7 @@ These server parameters directly affect Fabric mirroring for Azure Database for 
 
 - **Azure.fabric_mirror_enabled**: The default is off. This parameter specifies the flag indicating whether mirroring is enabled on the server. It's set automatically at the end of the server enablement workflow, so you shouldn't change it manually.
 
-- ** max_replication_slots **: Default 10. We consume one replication slot per mirrored database, but customers might consider increasing this if they create more mirrors or have other replication slots created for other purposes (logical replication).
+- **max_replication_slots**: Default 10. We consume one replication slot per mirrored database, but customers might consider increasing this if they create more mirrors or have other replication slots created for other purposes (logical replication).
 
 - **max_wal_senders**: The default is 10. As with the previous parameter, we use one `wal` sender process per mirror, which should be increased when mirroring more databases.
 
