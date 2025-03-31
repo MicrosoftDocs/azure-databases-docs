@@ -7,13 +7,14 @@ metadata:
   ms.author: richagaur
   ms.service: azure-cosmos-db
   ms.topic: conceptual
+  ms.date: 03/31/2025
 
 title: Frequently asked questions on Throughput buckets in Azure Cosmos DB
 
 summary: |
   [!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
 
-  Throughput buckets in Azure Cosmos DB allow users to control the throughput available for different workloads within a container. By configuring buckets and setting a maximum throughput allocation, users can ensure workload isolation. If a bucket exceeds its assigned throughput limit, subsequent requests to that bucket will be throttled to prevent impact on other workloads.
+  Throughput buckets in Azure Cosmos DB allow users to control the throughput available for different workloads within a container. By configuring buckets and setting a maximum throughput allocation, users can ensure workload isolation. If a bucket exceeds its assigned throughput limit, subsequent requests are throttled to prevent impact on other workloads.
 
 sections:
   - name: General
@@ -25,29 +26,27 @@ sections:
       - question: |
           Can I assign custom names to throughput buckets?
         answer: |
-          No, throughput buckets cannot be named. They are automatically assigned an Id ranging from 1 to 5.
+          No, throughput buckets can't be named. They're automatically assigned an ID ranging from 1 to 5.
       - question: |
           What happens if a bucket exceeds its configured maximum throughput?
         answer: |
-          Subsequent requests sent to that bucket will receive an HTTP 429 status code with sub-status code 3212.
+          Subsequent requests sent to that bucket receive an HTTP 429 status code with substatus code 3212.
       - question: |
           What happens if I delete an existing bucket?
         answer: |
-          Requests sent with a deleted bucket Id (1-5) will not fail but will instead consume throughput from the overall container.
-          The bucket Id will be ignored by the service.
+          Requests sent with a deleted bucket ID (1-5) won't fail, however they consume throughput from the overall container.
       - question: |
-          What if I assign a bucket Id lower than 1 or higher than 5 to a request?
+          What if I assign a bucket ID lower than 1 or higher than 5 to a request?
         answer: |
-          Requests with an invalid bucket Id (less than 1 or greater than 5) will result in an error, as only bucket Ids 1 to 5 are valid.
+          Requests with an invalid bucket ID (less than 1 or greater than 5) results in an error, as only bucket IDs 1 to 5 are valid.
       - question: | 
           Is there any minimum throughput limit for a throughput buckets?
         answer: | 
-          There is no minimum limit for throughput buckets.
-          Throughput is not reserved for specific buckets—only the maximum consumption is capped based on the configuration.
+          There's no minimum limit for throughput buckets. Throughput isn't reserved for any bucket, and the total throughput of the container is shared among all buckets. 
       - question: | 
           How often can throughput buckets be modified?
         answer: |
-          Throughput bucket configurations can be changed once every 10 minutes, otherwise the request will be throttled with an HTTP 429 status code and sub-status code 3213.
+          Throughput bucket configurations can be changed once every 10 minutes, otherwise the request is throttled with an HTTP 429 status code and substatus code 3213.
      
 additionalContent: |
 

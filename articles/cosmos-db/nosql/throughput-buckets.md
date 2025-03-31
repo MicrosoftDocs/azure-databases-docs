@@ -7,12 +7,11 @@ ms.subservice: nosql
 ms.topic: conceptual
 ms.author: richagaur
 ms.date: 03/31/2025
-
 ---
 
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
-
 # Throughput buckets in Azure Cosmos DB
+
+[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
 
 When multiple workloads share the same Azure Cosmos DB container, resource contention can lead to throttling, increased latency, and potential business impact. To address this, Cosmos DB allows you to allocate throughput buckets, ensuring better isolation and governance of resource usage for multiple workloads.
 
@@ -144,4 +143,4 @@ You can track bucket usage in the Azure portal:
 - Requests assigned to a bucket can't utilize Burst Capacity.
 
 ### Next Steps
-- Read the [Frequently asked questions](throughput-buckets-faq.md) on Throughput buckets.
+- Read the [Frequently asked questions](throughput-buckets-faq.yml) on Throughput buckets.
