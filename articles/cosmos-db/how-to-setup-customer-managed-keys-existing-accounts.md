@@ -6,7 +6,7 @@ author: dileepraotv-github
 ms.service: azure-cosmos-db
 ms.topic: how-to
 ms.date: 08/17/2023
-ms.author: turao
+ms.author: estebanmarn
 ms.devlang: azurecli
 ---
 
