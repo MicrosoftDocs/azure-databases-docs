@@ -21,9 +21,9 @@ The Migration service for Azure Database for PostgreSQL supports the migration o
 
 To ensure a successful migration by using the migration service in Azure Database for PostgreSQL, you might need to verify extensions to your source PostgreSQL instance. Extensions provide functionality and features that might be required for your application. Make sure that you verify the extensions on the source PostgreSQL instance before you initiate the migration process.
 
-In the target instance of Azure Database for PostgreSQL flexible server, enable supported extensions that are identified in the source PostgreSQL instance.
+In the target Azure Database for PostgreSQL flexible server, enable supported extensions that are identified in the source PostgreSQL instance.
 
-For more information, see [Extensions in Azure Database for PostgreSQL](../../extensions/how-to-allow-extensions.md) and also some extensions needs to be added in the `shared_preload_libraries`. See [Extensions in Pre Shared Library][Load libraries](../../extensions/how-to-load-libraries.md)
+For more information, see [Extensions in Azure Database for PostgreSQL](../../extensions/how-to-allow-extensions.md) and also some extensions needs to be added in the `shared_preload_libraries`. See [Extensions in Pre-Shared Load Library](../../extensions/how-to-load-libraries.md)
 
 > [!NOTE]  
 > A restart is required when you make any changes to the `shared_preload_libraries` parameter.
