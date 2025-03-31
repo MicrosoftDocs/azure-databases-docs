@@ -13,7 +13,7 @@ ms.custom:
   - mode-api
 ---
 
-# Automigrations of PostgreSQL Single Servers with Private End Points
+# Automigrations of PostgreSQL single servers with private end points
 
 [!INCLUDE [applies-to-postgresql-single-server](../includes/applies-to-postgresql-single-server.md)]
 
@@ -34,17 +34,17 @@ Certain advanced features, such as Private Endpoints, can't be force-migrated au
 ## Steps to configure Private End Points for an Automigrated Flexible Server
  1. Confirm that Flexible server with the same name as single server exists in the same subscription and resource group. This confirmation indicates that the automigration was successful. (Refer to the attached screenshots from Azure portal for reference).
  
- :::image type="content" source="media/automigration-private-end-point/img2.png" alt-text="Diagram that shows Single Server which was automigrated." lightbox="media/automigration-private-end-point/img2.png":::
+ :::image type="content" source="media/automigration-private-end-point/automigration-singleserver.png" alt-text="Diagram that shows Single Server which was automigrated." lightbox="media/automigration-private-end-point/automigration-singleserver.png":::
  
- :::image type="content" source="media/automigration-private-end-point/img1.png" alt-text="Diagram that shows automigrated Flexible Server." lightbox="media/automigration-private-end-point/img1.png":::
+ :::image type="content" source="media/automigration-private-end-point/automigration-flexibleserver.png" alt-text="Diagram that shows automigrated Flexible Server." lightbox="media/automigration-private-end-point/automigration-flexibleserver.png":::
 
  2. Delete the private end point associated with the Single Server using [Azure CLI](https://learn.microsoft.com/cli/azure/postgres/server/private-endpoint-connection?view=azure-cli-latest#az-postgres-server-private-endpoint-connection-delete) or by following steps in Azure portal.
  
- :::image type="content" source="media/automigration-private-end-point/img7.png" alt-text="Diagram that shows private end point on Single Server." lightbox="media/automigration-private-end-point/img7.png":::
+ :::image type="content" source="media/automigration-private-end-point/singleserver-privateendpoint-setup.png" alt-text="Diagram that shows private end point on Single Server." lightbox="media/automigration-private-end-point/singleserver-privateendpoint-setup.png":::
  
- :::image type="content" source="media/automigration-private-end-point/img3.png" alt-text="Diagram that shows delete option on private end point on Single Server." lightbox="media/automigration-private-end-point/img3.png":::
+ :::image type="content" source="media/automigration-private-end-point/singleserver-privateendpoint-delete.png" alt-text="Diagram that shows delete option on private end point on Single Server." lightbox="media/automigration-private-end-point/singleserver-privateendpoint-delete.png":::
 
- :::image type="content" source="media/automigration-private-end-point/img4.png" alt-text="Diagram that shows the deletion of private end point on Single Server." lightbox="media/automigration-private-end-point/img4.png":::
+ :::image type="content" source="media/automigration-private-end-point/privateendpoint-deletion.png" alt-text="Diagram that shows the deletion of private end point on Single Server." lightbox="media/automigration-private-end-point/privateendpoint-deletion.png":::
 
 > [!IMPORTANT]  
 > Ensure that the private end point associated with Single Server is deleted before proceeding with the next steps.
@@ -57,11 +57,11 @@ Certain advanced features, such as Private Endpoints, can't be force-migrated au
 
  4. Ensure that the deployment completes successfully and that the private end point is attached to the Flexible server.
 
- :::image type="content" source="media/automigration-private-end-point/img5.png" alt-text="Diagram that shows private end point attached to Flexible Server." lightbox="media/automigration-private-end-point/img5.png":::
+ :::image type="content" source="media/automigration-private-end-point/flexibleserver-privateendpoint.png" alt-text="Diagram that shows private end point attached to Flexible Server." lightbox="media/automigration-private-end-point/flexibleserver-privateendpoint.png":::
 
  5. After configuration, you should be able to connect to automigrated flexible server using the same connection strings as single server via the private end point. 
 
- :::image type="content" source="media/automigration-private-end-point/img6.png" alt-text="Diagram successful connection via private end point on Flexible Server." lightbox="media/automigration-private-end-point/img6.png":::
+ :::image type="content" source="media/automigration-private-end-point/flexibleserver-connectivity.png" alt-text="Diagram successful connection via private end point on Flexible Server." lightbox="media/automigration-private-end-point/flexibleserver-connectivity.png":::
 
 ## Related content
 
