@@ -46,10 +46,9 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="./media/how-to-restore-server/geo-redundant-restore.png" alt-text="Screenshot showing the Geo-redundant restore option selected." lightbox="./media/how-to-restore-server/geo-redundant-restore.png":::
 
-> [!NOTE]
-> Geo-redundant restore from the portal doesn't support setting the time that defines the recovery point objective. It automatically configures that value to the time at which you landed in the **Create Azure Database for PostgreSQL flexible server - Restore server** wizard.
+5. In the **Point-in-time-restore (PITR)** section, select **Latest restore point (Now)**, **Select a custom restore point** or **Select Fast restore point (Restore using full backup only)**, depending on what you want to restore to the new server.
 
-5. Use the following table to understand the meaning of the different fields available in the **Basics** page, and as guidance to fill the page:
+6. Use the following table to understand the meaning of the different fields available in the **Basics** page, and as guidance to fill the page:
 
     | Section | Setting | Suggested value | Description | Can be changed after instance creation |
     | --- | --- | --- | --- | --- |
@@ -66,15 +65,15 @@ Using the [Azure portal](https://portal.azure.com/):
     | | **Availability zone** | Your preferred [availability zone](/azure/reliability/availability-zones-overview). | You can choose in which availability zone you want your server to be deployed. Being able to choose the availability zone in which your instance is deployed, is useful to colocate it with your application. If you choose *No preference*, a default availability zone is automatically assigned to your instance during its creation. | Although the availability zone in which an instance is deployed can't be changed after its creation, you can use the [point in time recovery](concepts-backup-restore.md#point-in-time-recovery) feature to restore the server under a different name on a different availability zone. |
     | | **Compute + storage** | Assigns the same type and size of compute and same size of storage, as the ones used by the source server at the time the backup is restored. However, if you select the **Configure server** link, you can change the type of storage allocated to the new server, and whether or not it should be provisioned with geo-redundant backups. | | After the new server is deployed, its compute options can be scaled up or down. |
 
-6. If you want to change the type of storage assigned to the new server, or if you want to deploy it with geo-redundant backups, select **Configure server**:
+7. If you want to change the type of storage assigned to the new server, or if you want to deploy it with geo-redundant backups, select **Configure server**:
 
     :::image type="content" source="./media/how-to-restore-server/configure-server-button.png" alt-text="Screenshot showing the location of the Configure server link." lightbox="./media/how-to-restore-server/configure-server-button.png":::
 
-7. The **Compute + storage** opens to show compute and storage options for the new server:
+8. The **Compute + storage** opens to show compute and storage options for the new server:
 
     :::image type="content" source="./media/how-to-restore-server/configure-server-page.png" alt-text="Screenshot showing the Compute + storage page." lightbox="./media/how-to-restore-server/configure-server-page.png":::
 
-8. Use the following table to understand the meaning of the different fields available in the **Compute + storage** page, and as guidance to fill the page:
+9. Use the following table to understand the meaning of the different fields available in the **Compute + storage** page, and as guidance to fill the page:
 
     | Section | Setting | Suggested value | Description | Can be changed after instance creation |
     | --- | --- | --- | --- | --- |
@@ -91,19 +90,19 @@ Using the [Azure portal](https://portal.azure.com/):
     | | **Backup redundancy** | Automatically selected for you, based on the configuration of high availability and geo-redundancy of backups. | Possible values are **Locally redundant** (provides at least 99.999999999% durability of backup objects over a year), **Zone redundant** (provides at least 99.9999999999% durability of backup objects over a year), and **Geo-Redundant** (provides at least 99.99999999999999% durability of backup objects over a year). When **Geo-redundancy** is enabled for the backup, then the backup redundancy option is set to **Geo-Redundant**. Otherwise, if high availability is set to **Disabled** or **Same zone**, then backup redundancy is set to **Locally redundant**. And if high availability is set to **Zone redundant**, then backup redundancy is set to **Zone redundant**. For more information, see [Backup redundancy options in Azure Database for PostgreSQL flexible server](concepts-backup-restore.md#backup-redundancy-options). | Can't be changed after instance is created. |
     | | **Geo-redundancy** | Leave this option disabled. | Geo-redundancy in backups is only supported on instances deployed in any of the [Azure paired regions](/azure/reliability/cross-region-replication-azure). For more information, see [Geo-redundant backup and restore in Azure Database for PostgreSQL flexible server](concepts-backup-restore.md#geo-redundant-backup-and-restore)| Can't be changed after instance is created. |
 
-9. Once all the new server is configured to your needs, select **Review + create**.
+10. Once all the new server is configured to your needs, select **Review + create**.
 
     :::image type="content" source="./media/how-to-restore-server/restore-point-review-create.png" alt-text="Screenshot showing the location of the Review + create button." lightbox="./media/how-to-restore-server/restore-point-review-create.png":::
 
-10. Review that all configurations for the new deployment are correctly set, and select **Create**.
+11. Review that all configurations for the new deployment are correctly set, and select **Create**.
 
     :::image type="content" source="./media/how-to-restore-server/restore-point-create.png" alt-text="Screenshot showing the location of the Create button." lightbox="./media/how-to-restore-server/restore-point-create.png":::
 
-11. A new deployment is launched to create your new Azure Database for PostgreSQL flexible server and restore the most recent data available on the source server at the time of restore:
+12. A new deployment is launched to create your new Azure Database for PostgreSQL flexible server and restore the most recent data available on the source server at the time of restore:
 
     :::image type="content" source="./media/how-to-restore-server/restore-point-deployment-progress.png" alt-text="Screenshot that shows the deployment in progress to create your new Azure Database for PostgreSQL Flexible server, on which the most recent data available on the source server is restored." lightbox="./media/how-to-restore-server/restore-point-deployment-progress.png":::
 
-12. When the deployment completes, you can select **Go to resource**, to get you to the **Overview** page of your new Azure Database for PostgreSQL flexible server, and start using it:
+13. When the deployment completes, you can select **Go to resource**, to get you to the **Overview** page of your new Azure Database for PostgreSQL flexible server, and start using it:
 
     :::image type="content" source="./media/how-to-restore-server/restore-point-deployment-completed.png" alt-text="Screenshot that shows the deployment successfully completed of your Azure Database for PostgreSQL Flexible server." lightbox="./media/how-to-restore-server/restore-point-deployment-completed.png":::
 

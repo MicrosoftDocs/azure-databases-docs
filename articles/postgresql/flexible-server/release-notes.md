@@ -21,6 +21,7 @@ This article highlights the latest updates and enhancements for Azure Database f
 - Support for new [minor versions](concepts-supported-versions.md) 17.4, 16.8, 15.12, 14.17 and 13.20. <sup>$</sup> 
 - General Availability of [Azure Data Factory and Azure Synapse 2.0 Connector](https://learn.microsoft.com/en-us/azure/data-factory/connector-azure-database-for-postgresql?tabs=data-factory#version-20).
 
+
 ## Release: February 2025
 - Support for new [minor versions](concepts-supported-versions.md) 17.2, 16.6, 15.10, 14.15, 13.18, and 12.22. <sup>$</sup>
 - Support for [pg_signal_autovacuum_worker](how-to-autovacuum-tuning.md#troubleshooting-guides) role in PostgreSQL versions 15 and higher for Azure Database for PostgreSQL flexible server. 
@@ -146,7 +147,7 @@ This article highlights the latest updates and enhancements for Azure Database f
 ## Release: September 2023
 
 - General availability of [Storage autogrow](concepts-storage.md) for Azure Database for PostgreSQL flexible server.
-- General availability of [Cross Subscription and Cross Resource Group Restore](how-to-restore-server.md) for Azure Database for PostgreSQL flexible server.
+- General availability of [Cross Subscription and Cross Resource Group Restore](how-to-restore-latest-restore-point.md) for Azure Database for PostgreSQL flexible server.
 
 ## Release: August 2023
 

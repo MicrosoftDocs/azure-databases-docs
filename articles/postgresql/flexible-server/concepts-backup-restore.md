@@ -90,7 +90,11 @@ The physical database files are first restored from the snapshot backups to the 
 
 For example, assume that the backups are performed at 11:00 PM every night. If the restore point is for August 15 at 10:00 AM, the daily backup of August 14 is restored. The database will be recovered until 10:00 AM of August 15 by using the transaction log backup from August 14, 11:00 PM, to August 15, 10:00 AM. 
 
-To restore your database server, see [these steps](how-to-restore-server.md).
+To restore your database server, see any of the following:
+- [Restore to latest restore point](how-to-restore-latest-restore-point.md).
+- [Restore to custom restore point](how-to-restore-custom-restore-point.md).
+- [Restore to full backup (fast restore)](how-to-restore-full-backup.md).
+- [Restore to paired region (geo-restore)](how-to-restore-paired-region.md).
 
 > [!IMPORTANT]
 > A restore operation in Azure Database for PostgreSQL Flexible Server always creates a new database server with the name that you provide. It doesn't overwrite the existing database server.
@@ -119,7 +123,7 @@ If you configure your server within a virtual network, you can restore to the sa
 
 ## Geo-redundant backup and restore
 
-To enable geo-redundant backup from the **Compute + storage** pane in the Azure portal, see [Create an instance of Azure Database for PostgreSQL flexible server](quickstart-create-server.md). 
+To enable geo-redundant backup from the **Compute + storage** pane in the Azure portal, see [Create an Azure Database for PostgreSQL flexible server](quickstart-create-server.md). 
 
 >[!IMPORTANT]
 > Geo-redundant backup can be configured only at the time of server creation. 
@@ -134,12 +138,12 @@ The estimated time to recover the server RTO (recovery time objective) depends o
 
 During the geo-restore, the server configurations that can be changed include virtual network settings and the ability to remove geo-redundant backup from the restored server. Changing other server configurations -such as compute, storage, or pricing tier (Burstable, General Purpose, or Memory Optimized)- during geo-restore is not supported.
 
-For more information, see the [Restore to a paired region (geo-restore)](how-to-restore-server.md#restore-to-a-paired-region-geo-restore).
+For more information, see the [Restore to paired region (geo-restore)](how-to-restore-paired-region.md).
 
 > [!IMPORTANT]
 > When the primary region is down, you can't create geo-redundant servers in the respective geo-paired region, because storage can't be provisioned in the primary region. Before you can provision geo-redundant servers in the geo-paired region, you must wait for the primary region to be up. 
 >
-> With the primary region down, you can still geo-restore the source server to the geo-paired region. For more information, see the [Restore to a paired region (geo-restore)](how-to-restore-server.md#restore-to-a-paired-region-geo-restore).
+> With the primary region down, you can still geo-restore the source server to the geo-paired region. For more information, see the [Restore to paired region (geo-restore)](how-to-restore-paired-region.md).
 > You should use Geo-replicas as your disaster recovery (DR) strategy if you need to configure DR to any region, or if the primary region doesn't support Geo-redundant backups 
 
 ## Restore and networking
@@ -351,6 +355,7 @@ For more information about performing a long term backup, visit the [how-to guid
 
 ## Related content
 
-- [Overview of business continuity with Azure Database for PostgreSQL flexible server](concepts-business-continuity.md).
-- [High availability in Azure Database for PostgreSQL flexible server](/azure/reliability/reliability-postgresql-flexible-server).
-- [Point-in-time restore of an Azure Database for PostgreSQL flexible server instance](how-to-restore-server.md).
+- [Restore to latest restore point](how-to-restore-latest-restore-point.md).
+- [Restore to custom restore point](how-to-restore-custom-restore-point.md).
+- [Restore to full backup (fast restore)](how-to-restore-full-backup.md).
+- [Restore to paired region (geo-restore)](how-to-restore-paired-region.md).
