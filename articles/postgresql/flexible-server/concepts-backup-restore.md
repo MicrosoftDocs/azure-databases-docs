@@ -123,7 +123,7 @@ If you configure your server within a virtual network, you can restore to the sa
 
 ## Geo-redundant backup and restore
 
-To enable geo-redundant backup from the **Compute + storage** pane in the Azure portal, see [Create an instance of Azure Database for PostgreSQL flexible server](quickstart-create-server.md). 
+To enable geo-redundant backup from the **Compute + storage** pane in the Azure portal, see [Create an Azure Database for PostgreSQL flexible server](quickstart-create-server.md). 
 
 >[!IMPORTANT]
 > Geo-redundant backup can be configured only at the time of server creation. 

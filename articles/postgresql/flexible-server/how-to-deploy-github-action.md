@@ -27,7 +27,7 @@ You need:
 - An Azure account with an active subscription. [Create an account for free](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - A GitHub repository with sample data (`data.sql`). If you don't have a GitHub account, [sign up for free](https://github.com/join).
 - An Azure Database for PostgreSQL flexible server instance.
-- [Create an instance of Azure Database for PostgreSQL flexible server](quickstart-create-server.md).
+- [Create an Azure Database for PostgreSQL flexible server](quickstart-create-server.md).
 
 ## Workflow file overview
 
