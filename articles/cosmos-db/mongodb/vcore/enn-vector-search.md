@@ -66,7 +66,7 @@ A client maintains a collection of approximately 300,000 documents, each contain
 By switching to ENN Vector Search while maintaining the same filter, the client achieved a **50% improvement in query performance** and attained **100% recall accuracy**.​
 
 ## FAQs 
-### Performance Considerations
+### How Does ENN Perform at Scale?
 - **Performance on Large Datasets**: ENN may be slower for large datasets without selective filtering due to the necessity of evaluating every vector.​
 - **Higher Computational Cost**: ENN involves comparing the query vector to all (or filtered) vectors, leading to increased resource usage for a large dataset.
 
