@@ -12,7 +12,7 @@ appliesto:
   - ✅ MongoDB vCore
 ---
 
-# Exact Nearest Neighbor (ENN) Vector Search for Precise Retrieval
+# Exact Nearest Neighbor (ENN) Vector search for precise retrieval
 
 Exact Nearest Neighbor (ENN) Vector Search performs an exhaustive distance calculation across all indexed vectors to guarantee the retrieval of the closest neighbors based on a specified distance metric.​ ENN is supported on all cluster tiers at no additional cost and requires no registration.
 
