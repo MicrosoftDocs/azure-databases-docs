@@ -626,21 +626,22 @@ When you work with API for NoSQL data in Spark, you can perform partial updates 
 - [Configuration parameter reference](https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/cosmos/azure-cosmos-spark_3_2-12/docs/configuration-reference.md)
 - [Azure Cosmos DB Spark Connector Samples](https://github.com/Azure/azure-sdk-for-java/tree/main/sdk/cosmos/azure-cosmos-spark_3_2-12/Samples)
 - [Migrate from Spark 2.4 to Spark 3.*](https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/cosmos/azure-cosmos-spark_3_2-12/docs/migration.md)
+- Deprecated versions:
+  - The Azure Cosmos DB Spark Connector for Spark 3.1 and 3.2 is deprecated, because there are no supported Sprark 3.1 or 3.2 runtimes in Azure Databricks, Azure Synapse or Azure HDInsight available anymore.
+  - [Migration Guide to update from Spark 3.1](https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/cosmos/azure-cosmos-spark_3-1_2-12/migration-guide.md)
+  - [Migration Guide to update from Spark 3.2](https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/cosmos/azure-cosmos-spark_3-2_2-12/migration-guide.md)
 - Version compatibility:
-  - [Version compatibility for Spark 3.1](https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/cosmos/azure-cosmos-spark_3-1_2-12/README.md#version-compatibility)
-  - [Version compatibility for Spark 3.2](https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/cosmos/azure-cosmos-spark_3-2_2-12/README.md#version-compatibility)
   - [Version compatibility for Spark 3.3](https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/cosmos/azure-cosmos-spark_3-3_2-12/README.md#version-compatibility)
   - [Version compatibility for Spark 3.4](https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/cosmos/azure-cosmos-spark_3-4_2-12/README.md#version-compatibility)
+  - [Version compatibility for Spark 3.5](https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/cosmos/azure-cosmos-spark_3-5_2-12/README.md#version-compatibility)
 - Release notes:
-  - [Release notes for Spark 3.1](https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/cosmos/azure-cosmos-spark_3-1_2-12/CHANGELOG.md)
-  - [Release notes for Spark 3.2](https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/cosmos/azure-cosmos-spark_3-2_2-12/CHANGELOG.md)
   - [Release notes for Spark 3.3](https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/cosmos/azure-cosmos-spark_3-3_2-12/CHANGELOG.md)
   - [Release notes for Spark 3.4](https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/cosmos/azure-cosmos-spark_3-4_2-12/CHANGELOG.md)
+  - [Release notes for Spark 3.5](https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/cosmos/azure-cosmos-spark_3-5_2-12/CHANGELOG.md)  
 - Download links:
-  - [Download Azure Cosmos DB Spark connect for Spark 3.1](https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/cosmos/azure-cosmos-spark_3-1_2-12/README.md#download)
-  - [Download Azure Cosmos DB Spark connect for Spark 3.2](https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/cosmos/azure-cosmos-spark_3-2_2-12/README.md#download)
   - [Download Azure Cosmos DB Spark connect for Spark 3.3](https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/cosmos/azure-cosmos-spark_3-3_2-12/README.md#download)
   - [Download Azure Cosmos DB Spark connect for Spark 3.4](https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/cosmos/azure-cosmos-spark_3-4_2-12/README.md#download)
+  - [Download Azure Cosmos DB Spark connect for Spark 3.5](https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/cosmos/azure-cosmos-spark_3-5_2-12/README.md#download)
 
 ## Next step
 

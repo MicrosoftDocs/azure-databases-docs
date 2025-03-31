@@ -29,7 +29,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="./media/how-to-on-demand-backup/backup-and-restore-with-backups.png" alt-text="Screenshot showing the Backup and restore page with some automatic and on-demand backups available." lightbox="./media/how-to-on-demand-backup/backup-and-restore-with-backups.png":::
 
-3. In **Backup types**, select **On-Demand backup** if you want to only see the on-demand backups which are still available to be restored.
+3. In **Backup type**, select **On-demand** if you want to only see the on-demand backups which are still available to be restored.
 
     :::image type="content" source="./media/how-to-on-demand-backup/list-on-demand-backups.png" alt-text="Screenshot showing how to filter the list of backups to only display on-demand backups." lightbox="./media/how-to-on-demand-backup/list-on-demand-backups.png":::
 

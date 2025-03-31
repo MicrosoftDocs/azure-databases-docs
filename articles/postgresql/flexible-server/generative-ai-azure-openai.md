@@ -14,7 +14,7 @@ ms.custom:
   - build-2024
 ---
 
-# Generate vector embeddings with Azure OpenAI in Azure Database for PostgreSQL flexible server
+# Generate vector embeddings with Azure OpenAI in Azure Database for PostgreSQL
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 

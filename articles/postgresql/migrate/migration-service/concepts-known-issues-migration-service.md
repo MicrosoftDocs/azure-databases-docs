@@ -43,7 +43,6 @@ The following list describes common limitations that apply to migration scenario
 
 The following list describes limitations specific to migrating from Azure Database for PostgreSQL - Single Server:
 
-- Microsoft Entra users who are on your source server aren't migrated to the target server. To mitigate this limitation, see [Manage Microsoft Entra roles](../../flexible-server/how-to-manage-azure-ad-users.md). The solution is to manually create all Microsoft Entra users on your target server before you initiate a migration. If Microsoft Entra users aren't created on the target server, migration fails.
 - If the target flexible server uses the SCRAM-SHA-256 password encryption method, connection to a flexible server by using the users or roles on a single server fails. On a single server, passwords are encrypted by using the MD5 algorithm. To mitigate this limitation, for the `password_encryption` server parameter on your flexible server, select the option `MD5`.
 - Online migration uses [pgcopydb follow](https://pgcopydb.readthedocs.io/en/latest/ref/pgcopydb_follow.html). Some [logical decoding restrictions](https://pgcopydb.readthedocs.io/en/latest/ref/pgcopydb_follow.html#pgcopydb-follow) apply.
 

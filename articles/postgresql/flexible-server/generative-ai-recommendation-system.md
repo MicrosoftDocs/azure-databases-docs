@@ -14,7 +14,7 @@ ms.custom:
   - ignite-2023
 ---
 
-# Recommendation System with Azure Database for PostgreSQL flexible server and Azure OpenAI
+# Recommendation System with Azure Database for PostgreSQL Azure OpenAI
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 

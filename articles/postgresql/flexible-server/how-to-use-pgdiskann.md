@@ -125,7 +125,8 @@ SET max_parallel_maintenance_workers = 4;
 
 To learn about other options to configure these parameters in Azure Database for PostgreSQL flexible server, see [Configure server parameters](how-to-configure-server-parameters.md).
 
-[!NOTE] The max_worker_processes parameter requires a server restart to take effect.
+> [!NOTE] 
+> The max_worker_processes parameter requires a server restart to take effect.
 
 If the configuration of those parameters and the available resources on the server don't permit launching the parallel workers, PostgreSQL automatically falls back to create the index in the nonparallel mode.
 

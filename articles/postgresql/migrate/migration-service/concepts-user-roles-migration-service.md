@@ -20,7 +20,7 @@ The migration service in Azure Database for PostgreSQL provides the following bu
 - Migrates permissions of database objects like GRANT and REVOKE from your source server to the target server.
 
 > [!IMPORTANT]  
-> You can migrate users, roles, ownerships, and permissions only when the source is an instance of Azure Database for PostgreSQL - Single Server. Currently, this feature is not available for PostgreSQL version 16 servers.
+> You can migrate users, roles, ownerships, and permissions only when the source is an Azure Database for PostgreSQL flexible server - Single Server. Currently, this feature is not available for PostgreSQL version 16 servers.
 
 ## Permissions on a single server compared to a flexible server
 

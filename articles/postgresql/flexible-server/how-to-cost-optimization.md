@@ -94,7 +94,7 @@ Starting and stopping servers can be a cost-saving strategy for Azure Database f
 1. Stop the server: Stop the Azure Database for PostgreSQL Flexible Server instance when you don't need it. You can stop the server using the Azure portal, Azure CLI, or Azure REST API.
 1. Also, if a server has been in a stopped (or idle) state for several continuous weeks, you can consider dropping the server after the required due diligence.
 
-By starting and stopping the server as needed, you can reduce the cost of running Azure Database for PostgreSQL Flexible Server. To ensure smooth database performance, it is crucial to evaluate the impact of starting and stopping the server and have a reliable process in place for these actions as required. To learn more, see [Stop an instance of Azure Database for PostgreSQL Flexible Server](how-to-stop-server.md) and [Start an instance of Azure Database for PostgreSQL Flexible Server](how-to-start-server.md).
+By starting and stopping the server as needed, you can reduce the cost of running Azure Database for PostgreSQL Flexible Server. To ensure smooth database performance, it is crucial to evaluate the impact of starting and stopping the server and have a reliable process in place for these actions as required. To learn more, see [Stop an Azure Database for PostgreSQL flexible server](how-to-stop-server.md) and [Start an Azure Database for PostgreSQL flexible server](how-to-start-server.md).
 
 ## 8. Archive old data for cold storage
 
