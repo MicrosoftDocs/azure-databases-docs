@@ -312,9 +312,9 @@
     - name: Throughput buckets (preview)
       items:
       - name: Throughput buckets overview
-        href: ../throughput-buckets.md
+        href: throughput-buckets.md
       - name: Throughput buckets FAQ
-        href: ../throughput-buckets-faq.yml
+        href: throughput-buckets-faq.yml
   - name: Change feed
     items:
     - name: Change feed overview

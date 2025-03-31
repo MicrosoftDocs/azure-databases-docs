@@ -6,10 +6,11 @@ ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: conceptual
 ms.author: richagaur
+ms.date: 03/31/2025
 
 ---
 
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
+[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
 
 # Throughput buckets in Azure Cosmos DB
 
@@ -25,14 +26,15 @@ When multiple workloads share the same Azure Cosmos DB container, resource conte
 
 ### How Throughput buckets Work
 
-Each bucket is assigned a maximum throughput percentage, which determines the fraction of the container's total throughput allocated to that bucket.
+Throughput buckets help manage resource consumption for workloads sharing a Cosmos DB container by limiting the maximum throughput a bucket can consume. However, throughput isn't reserved for any bucket, it remains shared across all workloads.
 
-- Requests assigned to a bucket consume throughput only from that bucket.
-- If the total usage within a bucket exceeds its assigned percentage, subsequent requests are throttled.
-- This mechanism ensures that high-usage workloads don't impact other workloads sharing the container.
+- Each bucket has a maximum throughput percentage, capping the fraction of the container’s total throughput that it can consume.
+- Requests assigned to a bucket can consume throughput only up to this limit.
+- If the bucket exceeds its configured limit, subsequent requests are throttled.
+- This mechanism helps in preventing resource contention, ensuring that no single workload consumes excessive throughput and impacts others.
 
 > [!Note]
-> Requests that do not belong to a configured bucket will consume throughput from the overall container without restrictions.
+> Requests not assigned to a bucket will consume throughput from the container without restrictions.
 
 ### Configuring Throughput buckets
 
@@ -40,12 +42,12 @@ To set up throughput buckets in the Azure portal:
 
 1. Open **Data Explorer** and navigate to the **Scale & Settings** pane of your container.
 2. Locate the **Throughput Buckets** tab.
-3. Enable the feature by toggling the switch from inactive to active.
-4. Set the desired throughput percentage for each bucket (up to five buckets per container).
+3. Enable the desired throughput bucket by toggling it from "Inactive" to "Active."
+4. Set the desired maximum throughput percentage for enabled buckets (up to five buckets per container).
 
 ### Using Throughput buckets in SDK requests
 
-To assign a request to a specific bucket, use the RequestOption API in the SDK.
+To assign a request to a specific bucket, use RequestOptions in the SDK.
 
 #### [.NET SDK v3](#tab/net-v3)
 
@@ -53,7 +55,7 @@ To assign a request to a specific bucket, use the RequestOption API in the SDK.
 using Microsoft.Azure.Cosmos;
 
 string itemId = "<id>";
-PartitionKey partitionKey = new PartitionKey("p<key>");
+PartitionKey partitionKey = new PartitionKey("<pkey>");
 
 // Define request options with Throughput Bucket 1 for read operation
 ItemRequestOptions readRequestOptions = new ItemRequestOptions{ThroughputBucket = 1};
@@ -77,9 +79,9 @@ ItemResponse<Product> updateResponse = await container.ReplaceItemAsync(
     updateRequestOptions);
 ```
 
-To apply a throughput bucket to all requests from a client application, use the ClientOptions API in the SDK.
+To apply a throughput bucket to all requests from a client application, use ClientOptions in the SDK.
 
-#### [.NET SDK v3](#tab/net-v3)
+#### [.NET SDK v3](#tab/net-v3-bulk)
 
 ```csharp
 using Microsoft.Azure.Cosmos;
@@ -120,7 +122,7 @@ ItemResponse<Product> response = await container.ReadItemAsync<Product>(partitio
 ```
 
 > [!Note]
-> If bulk execution is enabled, a throughput bucket cannot be assigned to an individual request using the RequestOptions API.
+> If bulk execution is enabled, a throughput bucket can't be assigned to an individual request using the RequestOptions.
 
 ### Bucket behavior in Data Explorer
 

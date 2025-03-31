@@ -8,10 +8,10 @@ metadata:
   ms.service: azure-cosmos-db
   ms.topic: conceptual
 
-title: Frequently asked questions: Throughput buckets in Azure Cosmos DB
+title: Frequently asked questions on Throughput buckets in Azure Cosmos DB
 
 summary: |
-  [!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
+  [!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
 
   Throughput buckets in Azure Cosmos DB allow users to control the throughput available for different workloads within a container. By configuring buckets and setting a maximum throughput allocation, users can ensure workload isolation. If a bucket exceeds its assigned throughput limit, subsequent requests to that bucket will be throttled to prevent impact on other workloads.
 
@@ -47,7 +47,7 @@ sections:
       - question: | 
           How often can throughput buckets be modified?
         answer: |
-          Throughput bucket configurations can be changed once every 10 minutes.
+          Throughput bucket configurations can be changed once every 10 minutes, otherwise the request will be throttled with an HTTP 429 status code and sub-status code 3213.
      
 additionalContent: |
 
