@@ -4,12 +4,10 @@ description: Learn about Mirroring in Microsoft Fabric for Azure Database for Po
 author: scoriani
 ms.author: scoriani
 ms.reviewer: maghan
-ms.date: 03/21/2025
+ms.date: 03/31/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: concept-article
-ai.usage: ai-assisted
-
 # customer intent: As a user, I want to learn about how can use Fabric Mirroring for my databases in an Azure Database for PostgreSQL flexible server.
 ---
 
@@ -73,11 +71,11 @@ Several prerequisites must be configured before using Fabric mirroring in Azure 
 
 A new page is available in the Azure portal to automate prerequisite configuration on the source server.
 
-:::image type="content" source="media/concepts-fabric-mirroring/start-enablement.png" alt-text="New Fabric mirroring page in Azure portal for automate prerequisites configuration." lightbox="media/concepts-fabric-mirroring/start-enablement.png":::
+:::image type="content" source="media/concepts-fabric-mirroring/start-enablement.png" alt-text="New Fabric mirroring page in Azure portal to start enablement." lightbox="media/concepts-fabric-mirroring/start-enablement.png":::
 
 Select **Get Started** to initiate the enablement workflow.
 
-:::image type="content" source="media/concepts-fabric-mirroring/select-databases.png" alt-text="New Fabric mirroring page in Azure portal for automate prerequisites configuration." lightbox="media/concepts-fabric-mirroring/select-databases.png":::
+:::image type="content" source="media/concepts-fabric-mirroring/select-databases.png" alt-text="New Fabric mirroring page in Azure portal fto select databases." lightbox="media/concepts-fabric-mirroring/select-databases.png":::
 
 This page shows the current status of the required prerequisites. If System Assigned Managed Identity (SAMI) isn't enabled for this server, select the link to be redirected to the page where you can enable this feature.
 
@@ -107,16 +105,16 @@ These server parameters directly affect Fabric mirroring for Azure Database for 
 
 - **azure_cdc.change_batch_buffer_size**: Default is 16 MB. Maximum buffer size (in MB) for change batch. The table shows much data is buffered up to this before being written to the local disk. Depending on the data change frequency on your mirrored databases, you could tweak this value to reduce the change batch frequency or increase it if you want to prioritize overall throughput.
 
-- **azure_cdc.change_batch_export_timeout**: Defaults is 30. Maximum idle time (in seconds) between change batch messages. When exceeded, we mark the current batch as complete. Depending on the data change frequency on your mirrored databases, you could tweak this value to reduce the change batch frequency or increase it if you want to prioritize overall throughput.
+- **azure_cdc.change_batch_export_timeout**: Default is 30. Maximum idle time (in seconds) between change batch messages. When exceeded, we mark the current batch as complete. Depending on the data change frequency on your mirrored databases, you could tweak this value to reduce the change batch frequency or increase it if you want to prioritize overall throughput.
 
 - **azure_cdc.parquet_compression**: Default is ZSTD. This parameter is for internal use only, so you shouldn't modify it.
 
 - **azure_cdc.snapshot_buffer_size**: Defaults to 1000.
 The maximum size (in MB) of the initial snapshot buffer. Per the table, much data is buffered up to this before being sent to Fabric. Remember that azure_cdc.snapshot_buffer_size*azure_cdc.max_snapshot_workers is the total memory buffer used during the initial snapshot.
 
-- **azure_cdc.snapshot_export_timeout**: Defaults to 180. Maximum time (in minutes) to export initial snapshot. On exceed, we restart.
+- **azure_cdc.snapshot_export_timeout**: Defaults to 180. Maximum time (in minutes) to export initial snapshot. If the maximum time is exceeded, then it restart.
 
-### Monitor 
+### Monitor
 
 Monitoring Fabric mirroring in Azure Database for PostgreSQL flexible server is essential to ensure that the mirroring process is running smoothly and efficiently. By monitoring the status of the mirrored databases, you can identify any potential issues and take corrective actions as needed.
 
@@ -170,38 +168,38 @@ The mirroring function for Fabric mirroring in Azure Database for PostgreSQL all
 
 - **azure_cdc.tracked_publications**: one row for each existing Mirrored database in Fabric. Query this table to understand the status of each publication.
 
-| Column Name                  | Postgres Type         | Explanation                                                 |
-|------------------------------|-----------------------|-------------------------------------------------------------|
-| publication_id               | oid                   | Oid of the publication                                      |
-| destination_path             | text                  | Path to the landing zone in Fabric OneLake                  |
-| destination_format           | azure_cdc.data_format | Format of the data in Azure CDC                             |
-| include_data                 | bool                  | Whether to include initial snapshot data in the publication |
-| include_changes              | bool                  | Whether to include changes in the publication               |
-| active                       | bool                  | Whether the publication is active                           |
-| snapshot_done                | bool                  | Whether the snapshot is completed                           |
-| snapshot_progress            | smallint              | Progress of the snapshot                                    |
-| snapshot_progress_percentage | text                  | Percentage progress of the snapshot                         |
-| generation_id                | int                   | Generation identifier                                       |
-| stream_start_lsn             | pg_lsn                | Log sequence number where the change stream started         |
-| stream_start_time            | timestamp             | Timestamp when the change stream started                    |
-| stream_stop_lsn              | pg_lsn                | Log sequence number where the change stream stopped         |
-| snapshot_size                | bigint                | Total size of the snapshot (in bytes)                       |
-| total_time                   | int                   | Total time(in seconds) taken for the publication            |
+| Column Name | Postgres Type | Explanation |
+| --- | --- | --- |
+| publication_id | oid | Oid of the publication |
+| destination_path | text | Path to the landing zone in Fabric OneLake |
+| destination_format | azure_cdc.data_format | Format of the data in Azure CDC |
+| include_data | bool | Whether to include initial snapshot data in the publication |
+| include_changes | bool | Whether to include changes in the publication |
+| active | bool | Whether the publication is active |
+| snapshot_done | bool | Whether the snapshot is completed |
+| snapshot_progress | smallint | Progress of the snapshot |
+| snapshot_progress_percentage | text | Percentage progress of the snapshot |
+| generation_id | int | Generation identifier |
+| stream_start_lsn | pg_lsn | Log sequence number where the change stream started |
+| stream_start_time | timestamp | Timestamp when the change stream started |
+| stream_stop_lsn | pg_lsn | Log sequence number where the change stream stopped |
+| snapshot_size | bigint | Total size of the snapshot (in bytes) |
+| total_time | int | Total time(in seconds) taken for the publication |
 
 - **azure_cdc.tracked_batches**: one row for each change batch captured and shipped to Fabric OneLake. Query this table to understand which batch has already been captured and uploaded to Fabric OneLake. With the `last_written_lsn` column, you can understand if a given transaction in your source database has already been shipped to Fabric.
 
-| Name                  | Postgres Type | Explanation                                                              |
-|-----------------------|---------------|--------------------------------------------------------------------------|
-| publication_id        | oid           | Oid of the publication                                                   |
-| completed_batch_id    | bigint        | Sequence number(starting from 1) of the batch. Unique per publication    |
-| last_written_lsn      | pg_lsn        | LSN of the last write of this batch                                      |
-| last_received_lsn     | pg_lsn        | Last LSN received                                                        |
-| server_lsn            | pg_lsn        | current server LSN (at the time when capturing of this batch finalized)  |
-| is_batch_uploaded     | bool          | Whether the batch is uploaded                                            |
-| is_batch_acknowledged | bool          | Whether we acknowledged wal_sender for this batch data(last_written_lsn) |
-| batch_start_time      | TIMESTAMPTZ   | Timestamp of the batch start                                             |
-| batch_completion_time | TIMESTAMPTZ   | Timestamp of the batch completion                                        |
-| batch_uploaded_time   | TIMESTAMPTZ   | Timestamp of the batch upload                                            |
+| Name | Postgres Type | Explanation |
+| --- | --- | --- |
+| publication_id | oid | Oid of the publication |
+| completed_batch_id | bigint | Sequence number(starting from 1) of the batch. Unique per publication |
+| last_written_lsn | pg_lsn | LSN of the last write of this batch |
+| last_received_lsn | pg_lsn | Last LSN received |
+| server_lsn | pg_lsn | current server LSN (at the time when capturing of this batch finalized) |
+| is_batch_uploaded | bool | Whether the batch is uploaded |
+| is_batch_acknowledged | bool | Whether we acknowledged wal_sender for this batch data(last_written_lsn) |
+| batch_start_time | TIMESTAMPTZ | Timestamp of the batch start |
+| batch_completion_time | TIMESTAMPTZ | Timestamp of the batch completion |
+| batch_uploaded_time | TIMESTAMPTZ | Timestamp of the batch upload |
 | batch_acknowledged_time | TIMESTAMPTZ | Timestamp of the batch when LSN is ack`ed to the publisher |
 | batch_size | int | Size of the batch (in bytes) |
 
