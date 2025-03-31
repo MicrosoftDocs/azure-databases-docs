@@ -75,7 +75,7 @@ A new page is available in the Azure portal to automate prerequisite configurati
 
 Select **Get Started** to initiate the enablement workflow.
 
-:::image type="content" source="media/concepts-fabric-mirroring/select-databases.png" alt-text="New Fabric mirroring page in Azure portal fto select databases." lightbox="media/concepts-fabric-mirroring/select-databases.png":::
+:::image type="content" source="media/concepts-fabric-mirroring/select-databases.png" alt-text="New Fabric mirroring page in Azure portal for select databases." lightbox="media/concepts-fabric-mirroring/select-databases.png":::
 
 This page shows the current status of the required prerequisites. If System Assigned Managed Identity (SAMI) isn't enabled for this server, select the link to be redirected to the page where you can enable this feature.
 
@@ -112,7 +112,7 @@ These server parameters directly affect Fabric mirroring for Azure Database for 
 - **azure_cdc.snapshot_buffer_size**: Defaults to 1000.
 The maximum size (in MB) of the initial snapshot buffer. Per the table, much data is buffered up to this before being sent to Fabric. Remember that azure_cdc.snapshot_buffer_size*azure_cdc.max_snapshot_workers is the total memory buffer used during the initial snapshot.
 
-- **azure_cdc.snapshot_export_timeout**: Defaults to 180. Maximum time (in minutes) to export initial snapshot. If the maximum time is exceeded, then it restart.
+- **azure_cdc.snapshot_export_timeout**: Defaults to 180. Maximum time (in minutes) to export initial snapshot. If the maximum time is exceeded, then it restarts.
 
 ### Monitor
 
@@ -134,7 +134,7 @@ The mirroring function for Fabric mirroring in Azure Database for PostgreSQL all
 
 - **azure_cdc.publication_status('pub_name')**: for each publication in the source, the flexible server returns a comma-separated string with the following information
     - <status, start_lsn, stop_lsn, flush_lsn>.
-    - Status consists of ["Slot name", "Origin name", "CDC data destination path", "Active", "Snapshot Done", "Progress percentage", "Generation ID", "Completed Batch ID", "Uploaded Batch ID", "CDC start time"]
+    - Status consists of ["Slot name," "Origin name," "CDC data destination path," "Active," "Snapshot Done," "Progress percentage," "Generation ID," "Completed Batch ID," "Uploaded Batch ID," "CDC start time"]
 
 - **azure_cdc.is_table_mirrorable('schema_name','table_name')**: Given schema and table name, it returns if the table is mirrorable. For a table to be mirrorable, it needs to satisfy the following:
     - The column names don't contain any of the following characters: `[ ;{}\n\t=()]`
