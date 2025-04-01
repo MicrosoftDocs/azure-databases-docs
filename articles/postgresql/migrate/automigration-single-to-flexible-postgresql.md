@@ -22,13 +22,9 @@ ms.custom:
 Automigration uses the [Azure PostgreSQL migration service](./migration-service/overview-migration-service-postgresql.md) to deliver a resilient offline migration during the planned migration window. Downtime varies based on workload characteristics. For migration speed benchmarks, see [Azure PostgreSQL Migration Speed Benchmarking](./migration-service/best-practices-migration-service-postgresql.md#migration-speed-benchmarking). This migration eliminates the need for manual server migration, allowing you to benefit from Flexible Server features post-migration, including improved price-performance, granular database configuration control, and custom maintenance windows.
 
 > [!NOTE]  
-> The Automigration service selects Single server to migrate based on the following criteria:
-> - Servers with no complex feature such as CMK, Microsoft Entra ID, Read Replica and Private end-point.
-> - Size of data <= 300 GB
-> - Public access is enabled
-
-> [!NOTE]  
-> In case any of these features such as CMK, Microsoft Entra ID, Read Replica and Private end-point are used, extra planning would be required. Mention the details in the nomination form below and we will get in touch with you.
+> The automigration service can migrate all Single Servers, except in the following cases:
+> - Servers with  CMK configured
+> - Servers with **Deny public network access** set to **Yes**
 
 ## Nominate Single servers for Automigration
 
@@ -157,7 +153,7 @@ To determine if your Single Server is selected for automigration, follow these s
 
 **Q. How does the automigration take place? What all does it migrate?​**
 
-**A.** The Flexible Server is provisioned to closely match the same VCores and storage as that of your Single Server. Next the source Single Server is put in a read-only state, schema and data is copied to target Flexible Server. The DNS switch is performed to route all existing connections to target and the target Flexible Server is brought online. The automigration migrates the databases (including schema, data, users/roles, and privileges). The migration is offline where you see downtime of a few minutes up to 2 hours depending on the size of your workload. For migration speed benchmarks, see [Azure PostgreSQL Migration Speed Benchmarking](./migration-service/best-practices-migration-service-postgresql.md#migration-speed-benchmarking).
+**A.** The Flexible Server is provisioned to closely match the same VCores and storage as that of your Single Server. Next the source Single Server is put in a read-only state, schema and data is copied to target Flexible Server. The DNS switch is performed to route all existing connections to target and the target Flexible Server is brought online. The automigration migrates the databases (including schema, data, users/roles, and privileges). The migration is offline where you see downtime of a few minutes up to a few hours depending on the size of your workload. For migration speed benchmarks, see [Azure PostgreSQL Migration Speed Benchmarking](./migration-service/best-practices-migration-service-postgresql.md#migration-speed-benchmarking).
 
 **Q. How can I set up or view automigration alerts?​**
 
@@ -165,10 +161,6 @@ To determine if your Single Server is selected for automigration, follow these s
 
 - Configure service health alerts to receive automigration schedule and progress notifications via email/SMS by following steps [here](../single-server/concepts-planned-maintenance-notification.md#to-receive-planned-maintenance-notification).
 - Check the automigration notification on the Azure portal by following steps [here](../single-server/concepts-planned-maintenance-notification.md#check-planned-maintenance-notification-from-azure-portal).
-
-**Q. How can I defer the scheduled migration of my Single server?​**
-
-**A.** You can review the migration schedule by navigating to the Overview page of your Single Server instance. If you wish to defer the migration, you can defer by a month at the most by navigating to the Overview page of your single server instance on the Azure portal. You can reschedule the migration by selecting another migration window within a month. The migration details will be locked seven days before the scheduled migration window after which you're unable to reschedule. This automigration can be deferred monthly until 28 March, 2025.
 
 **Q. How can I opt out of a scheduled automigration of my Single server?​**
 
@@ -192,7 +184,7 @@ To determine if your Single Server is selected for automigration, follow these s
 
 **Q. What happens if I do not migrate or my server is not auto migrated by March 28th, 2025??​**
 
-**A.** After the retirement deadline of March 28, 2025, all existing single servers that have not migrated will be force migrated to Flexible server. Servers with add-on features such as CMK or Private endpoint will require more actions by the user post-migration to ensure normal operation. There are no extensions to the retirement date.
+**A.** After the retirement deadline of March 28, 2025, all existing single servers that have not migrated will be force migrated to Flexible server. Servers with add-on features such as Private endpoint and Read replicas will require more actions by the user post-migration to ensure normal operation. There are no extensions to the retirement date.
 
 ## Related content
 
