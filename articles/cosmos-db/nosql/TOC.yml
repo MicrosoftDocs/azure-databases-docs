@@ -118,7 +118,7 @@
       href: ../scripts/cli/common/keys.md?context=/azure/cosmos-db/nosql/context/context
     - name: Secure with IP firewall
       href: ../scripts/cli/common/ipfirewall.md?context=/azure/cosmos-db/nosql/context/context
-    - name: Bulk add or remove IP firewall rules
+    - name: Add or remove IP firewall rules in bulk
       href: ../scripts/cli/common/ipfirewall-bulk-add-remove.md?context=/azure/cosmos-db/nosql/context/context
     - name: Secure new account with service endpoints
       href: ../scripts/cli/common/service-endpoints.md?context=/azure/cosmos-db/nosql/context/context
