@@ -42,7 +42,7 @@ landingContent:
             url: flexible-server/concepts-limits.md
       - linkListType: quickstart
         links:
-          - text: Create an instance of Azure Database for PostgreSQL flexible server
+          - text: Create an Azure Database for PostgreSQL flexible server
             url: flexible-server/quickstart-create-server.md
       - linkListType: tutorial
         links:
@@ -108,9 +108,15 @@ landingContent:
         links:
           - text: Manage high availability
             url: flexible-server/how-to-manage-high-availability-portal.md
-          - text: Restore a server
-            url: flexible-server/how-to-restore-server.md
-
+          - text: Restore to latest restore point
+            url: flexible-server/how-to-restore-latest-restore-point.md
+          - text: Restore to custom restore point
+            url: flexible-server/how-to-restore-custom-restore-point.md
+          - text: Restore to full backup (fast restore)
+            url: flexible-server/how-to-restore-full-backup.md
+          - text: Restore to paired region (geo-restore)
+            url: flexible-server/how-to-restore-paired-region.md
+            
 # Card 5
   - title: Connect and query
     linkLists:

@@ -18,7 +18,11 @@ ms.topic: overview
 This article highlights the latest updates and enhancements for Azure Database for PostgreSQL flexible server, service including new feature releases, supported engine versions, available extensions, and other important announcements.
 
 ## Release: March 2025
-- Support for new [minor versions](concepts-supported-versions.md) 17.4, 16.8, 15.12, 14.17 and 13.20. <sup>$</sup> 
+- Support for new [minor versions](concepts-supported-versions.md) 17.4, 16.8, 15.12, 14.17 and 13.20. <sup>$</sup>
+- General Availability of [hll](../extensions/concepts-extensions-versions.md#hll) extension.
+- General Availability of [topn](../extensions/concepts-extensions-versions.md#topn) extension.
+- General Availability of [tdigest](../extensions/concepts-extensions-versions.md#tdigest) extension.
+    
 
 ## Release: February 2025
 - Support for new [minor versions](concepts-supported-versions.md) 17.2, 16.6, 15.10, 14.15, 13.18, and 12.22. <sup>$</sup>
@@ -145,7 +149,7 @@ This article highlights the latest updates and enhancements for Azure Database f
 ## Release: September 2023
 
 - General availability of [Storage autogrow](concepts-storage.md) for Azure Database for PostgreSQL flexible server.
-- General availability of [Cross Subscription and Cross Resource Group Restore](how-to-restore-server.md) for Azure Database for PostgreSQL flexible server.
+- General availability of [Cross Subscription and Cross Resource Group Restore](how-to-restore-latest-restore-point.md) for Azure Database for PostgreSQL flexible server.
 
 ## Release: August 2023
 

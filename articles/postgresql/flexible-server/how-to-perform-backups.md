@@ -29,17 +29,17 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="./media/how-to-on-demand-backup/backup-and-restore.png" alt-text="Screenshot showing the Backup and restore page." lightbox="./media/how-to-on-demand-backup/backup-and-restore.png":::
 
-3. Select **Backup now**.
+3. Select **Backup (preview)**.
 
     :::image type="content" source="./media/how-to-on-demand-backup/backup-now.png" alt-text="Screenshot showing the Backup now button in the Backup and restore page." lightbox="./media/how-to-on-demand-backup/backup-now.png":::
 
-4.  In the **Take backup** pane, the **Backup name** text box is prefilled with a unique name automatically generated for your backup. Feel free to change that name to any name of your preference.
+4.  In the **Backup (preview)** pane, the **Backup name** text box is prefilled with a unique name automatically generated for your backup. Feel free to change that name to any name of your preference.
 
     :::image type="content" source="./media/how-to-on-demand-backup/backup-name.png" alt-text="Screenshot showing the Take backup pane and highlighting the text box in which you have to provide the backup name." lightbox="./media/how-to-on-demand-backup/backup-name.png":::
 
-5. Select **Trigger**.
+5. Select the **Backup** button.
 
-    :::image type="content" source="./media/how-to-on-demand-backup/trigger.png" alt-text="Screenshot showing the Trigger button." lightbox="./media/how-to-on-demand-backup/trigger.png":::
+    :::image type="content" source="./media/how-to-on-demand-backup/backup.png" alt-text="Screenshot showing the Trigger button." lightbox="./media/how-to-on-demand-backup/backup.png":::
 
 6.  A notification informs you that the on-demand backup is initiated.
 
