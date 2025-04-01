@@ -19,11 +19,11 @@ ms.custom:
 
 **Automigration** from Azure Database for PostgreSQL – Single Server to Flexible Server is a service-initiated migration that takes place during a planned downtime window for Single Server, separate from its patching or maintenance window. The service identifies eligible servers and sends advance notifications with detailed steps about the automigration process. You can review and adjust the migration schedule if needed or submit a support request to opt out of automigration for your servers.
 
-Automigration uses the [Azure PostgreSQL migration service](./migration-service/overview-migration-service-postgresql.md) to deliver a resilient offline migration during the planned migration window. Downtime varies based on workload characteristics. For migration speed benchmarks, see [Azure PostgreSQL Migration Speed Benchmarking](./migration-service/best-practices-migration-service-postgresql.md#migration-speed-benchmarking). This migration eliminates the need for manual server migration, allowing you to benefit from Flexible Server features post-migration, including improved price-performance, granular database configuration control, and custom maintenance windows.
+Automigration uses the [Azure PostgreSQL migration service](./migration-service/overview-migration-service-postgresql.md) to deliver a resilient offline migration during the planned migration window. Downtime varies based on workload characteristics. For migration speed benchmarks, see [Azure PostgreSQL Migration Speed Benchmarking](./migration-service/best-practices-migration-service-postgresql.md#migration-speed-benchmarking). This migration removes the need for manual server migration. After migration, you can benefit from Flexible Server features such as improved price-performance, granular database configuration control, and custom maintenance windows.
 
 > [!NOTE]  
 > The automigration service can migrate all Single Servers, except in the following cases:
-> - Servers with  CMK configured
+> - Servers with  Customer Managed Keys configured
 > - Servers with **Deny public network access** set to **Yes**
 
 ## Nominate Single servers for Automigration
@@ -48,7 +48,7 @@ The automigration process includes several key phases:
 
 - **Target Flexible Server Creation** - A Flexible Server is created to match the performance and cost of your Single Server SKU. It inherits all firewall rules from the source Single Server.
 
-- **Data Migration** - Data migration occurs during the designated migration window, typically scheduled outside business hours for the server's hosting region (if the window is chosen by the service). The source Single Server is set to read-only, and all data, schemas, user roles, privileges, and ownership of database objects are migrated to the Flexible Server. Additionally, it copies all existing firewall rules to the flexible server, ensuring uninterrupted connectivity.
+- **Data Migration** - Data migration occurs during the designated migration window, typically scheduled outside business hours for the server's hosting region (if the window is chosen by the service). The source Single Server is set to read-only. The migration transfers all data, schemas, user roles, privileges, and database object ownership to the Flexible Server. Additionally, it copies all existing firewall rules to the flexible server, ensuring uninterrupted connectivity.
 
 - **DNS Switch** - After data migration, a DNS switch is performed, allowing the existing Single Server connection string to seamlessly connect to the new Flexible Server. Both Single and Flexible Server connection string formats, as well as username formats (**username@server_name** and **username**), are supported on the migrated Flexible Server.
 
@@ -60,7 +60,7 @@ The automigration process includes several key phases:
 
 ## How is the target postgresql Flexible Server provisioned?
 
-The compute tier and SKU for the target flexible server is provisioned based on the source single server's pricing tier and VCores as shown below.
+The compute tier and SKU for the target Flexible Server are provisioned based on the source Single Server's pricing tier and vCores.
 
 | Single Server Pricing Tier | Single Server VCores | Flexible Server Tier | Flexible Server SKU Name |
 | --- | --- | :---: | :---: |
@@ -78,7 +78,7 @@ The compute tier and SKU for the target flexible server is provisioned based on 
 | Memory Optimized | 16 | MemoryOptimized | Standard_E16s_v3 |
 | Memory Optimized | 32 | MemoryOptimized | Standard_E32s_v3 |
 
-- The postgresql version, region, connection string, subscription, and resource group for the target Flexible Server will remain the same as that of the source Single Server.
+- The postgresql version, region, connection string, subscription, and resource group for the target Flexible Server remain the same as those settings of the source Single Server.
 - For Single Servers with less than 20-GiB storage, the storage size is set to 32 GiB as that is the minimum storage limit on Azure Database for postgresql - Flexible Server.
 - For Single Servers with greater storage requirement, sufficient storage equivalent to 1.25 times or 25% more storage than what is being used in the Single server is allocated. During the initial base copy of data, multiple insert statements are executed on the target, which generates WALs (Write Ahead Logs). Until these WALs are archived, the logs consume storage at the target and hence the margin of safety.
 - Both username formats – username@server_name (Single Server) and username (Flexible Server) are supported on the migrated Flexible Server.
@@ -86,7 +86,7 @@ The compute tier and SKU for the target flexible server is provisioned based on 
 
 ## Automigration Across Major PostgreSQL Versions
 
-This migration might involve moving data from PostgreSQL Single Server (versions 9.5, 9.6, or 10) to PostgreSQL 11 on Flexible Server. These earlier versions have been retired by the PostgreSQL community. To ensure security, stability, and performance, it is recommended to adopt supported community versions.
+This migration might involve moving data from PostgreSQL Single Server (versions 9.5, 9.6, or 10) to PostgreSQL 11 on Flexible Server. The PostgreSQL community has retired these earlier versions. To ensure security, stability, and performance, it is recommended to adopt supported community versions.
 
 When migrating across major PostgreSQL versions, consider the following key factors to ensure a successful and smooth transition:
 
@@ -105,7 +105,7 @@ Here's the information you need regarding the post-automigration steps.
 
 - The server parameters in Flexible server are tuned to the community standards. If you want to retain the same server parameter values as your Single server, you can log in via PowerShell and run the script [here](https://github.com/hariramt/auto-migration/tree/main) to copy the parameter values.
 
-- Access Control (IAM) settings for your flexible server will be inherited from the Subscription settings. If you have provided any role assignments specific to the single server, then you must create these role assignments on your flexible server.
+- Access Control (IAM) settings for your flexible server are inherited from the Subscription settings. If you have provided any role assignments specific to the single server, you must create these role assignments on your flexible server.
 
 - Copy monitoring page settings (Alerts, Metrics, and Diagnostic settings) to Flexible server.
 
@@ -113,9 +113,9 @@ Here's the information you need regarding the post-automigration steps.
 
 - If [High Availability](/azure/reliability/reliability-postgresql-flexible-server) is needed, you can enable it with zero downtime.
 
-- Please verify that your flexible server SKU matches the one mentioned in the Service Health automigration notification. If it's different, [revert it to the SKU specified](../flexible-server/how-to-scale-compute.md) in the notification. This is crucial to ensure accurate billing.
+- Verify that your flexible server SKU matches the one mentioned in the Service Health automigration notification. If it's different, [revert it to the SKU specified](../flexible-server/how-to-scale-compute.md) in the notification. This is crucial to ensure accurate billing.
 
-- The existing connection strings of your Single Server will now point to the Flexible Server. To access your Single Server, a new set of connection strings has been generated. You can retrieve them from the Service Health notification sent for the automigration of your Single Server.
+- The existing connection strings of your Single Server now point to the Flexible Server. To access your Single Server, a new set of connection strings is generated. You can retrieve them from the Service Health notification sent for the automigration of your Single Server.
 
 ### Handling VNet rules in Flexible server
 
@@ -138,10 +138,10 @@ To determine if your Single Server is selected for automigration, follow these s
   > [!NOTE]  
   > These notifications do not land in your inbox by default. To receive them via email or SMS, you need to set up Service Health Alerts. For more information, see [Set up Service Health Alerts](../single-server/concepts-planned-maintenance-notification.md#to-receive-planned-maintenance-notification).
 
-- **Single Server Overview Page** - Navigate to your Single Server instance in the Azure portal and check the Overview page. If scheduled for automigration, you'll find details here, including an option to defer the migration by one month at a time or reschedule within the current month.
+- **Single Server Overview Page** - Navigate to your Single Server instance in the Azure portal and check the Overview page. If scheduled for automigration, you'll find details here.
 
   > [!NOTE]  
-  > The migration schedule is locked 7 days prior to the scheduled migration window during which you'll be unable to reschedule.
+  > The migration schedule is locked seven days prior to the scheduled migration window during which you are unable to reschedule.
 
 - **Azure CXP email notifications** - Azure Customer Experience(CXP) also sends direct emails to classic roles and RBAC roles associated with the subscription containing the Single Server, providing information on upcoming automigrations.
 
@@ -172,7 +172,7 @@ To determine if your Single Server is selected for automigration, follow these s
 
 **Q. Do I need to re-configure Long-term retention backups on Flexible server?​**
 
-**A.** Yes. Please refer to [this section](#long-term-retention-backup)
+**A.** Yes. Refer to [this section](#long-term-retention-backup)
 
 **Q. What username and connection string would be supported for the migrated Flexible Server? ​​**
 
@@ -180,11 +180,11 @@ To determine if your Single Server is selected for automigration, follow these s
 
 **Q. I see a pricing difference on my potential move from postgresql Basic Single Server to postgresql Flexible Server??​**
 
-**A.** Few servers might see a minor price revision after migration as the minimum storage limit on both offerings is different (5 GiB on Single Server and 32 GiB on Flexible Server). Storage cost for Flexible Server is marginally higher than Single Server. Any price increase is offset through better throughput and performance compared to Single Server. For more information on Flexible server pricing refer to this [document](https://azure.microsoft.com/pricing/details/postgresql/flexible-server/)
+**A.** Few servers might see a minor price revision after migration as the minimum storage limit on both offerings is different (5 GiB on Single Server and 32 GiB on Flexible Server). Storage cost for Flexible Server is marginally higher than Single Server. Any price increase is offset through better throughput and performance compared to Single Server. For more information on Flexible server pricing, refer to this [document](https://azure.microsoft.com/pricing/details/postgresql/flexible-server/)
 
 **Q. What happens if I do not migrate or my server is not auto migrated by March 28th, 2025??​**
 
-**A.** After the retirement deadline of March 28, 2025, all existing single servers that have not migrated will be force migrated to Flexible server. Servers with add-on features such as Private endpoint and Read replicas will require more actions by the user post-migration to ensure normal operation. There are no extensions to the retirement date.
+**A.** After the retirement deadline of March 28, 2025, all existing single servers that are not migrated will be force migrated to Flexible server. Servers with add-on features such as Private endpoint and Read replicas will require more actions by the user post-migration to ensure normal operation. There are no extensions to the retirement date.
 
 ## Related content
 
