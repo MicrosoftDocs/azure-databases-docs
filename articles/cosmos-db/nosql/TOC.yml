@@ -4,7 +4,7 @@
   expanded: true
   items:
     - name: Introduction
-      href: index.yml
+      href: overview.md
     - name: FAQ
       href: faq.yml
     - name: Understand distributed NoSQL
