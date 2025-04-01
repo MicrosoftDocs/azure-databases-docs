@@ -37,7 +37,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="./media/how-to-restore-server/fast-restore-point.png" alt-text="Screenshot showing the Select Fast restore point (Restore using full backup only) radio button selected." lightbox="./media/how-to-restore-server/fast-restore-point.png":::
 
-5. In **Fast Restore point (UTC)**, select the timestamp of any of the full backups available to restore. The list includes the full backups that the service takes automatically, and any [on-demand backups](how-to-operate-on-demand-backups.md) taken by the user.
+5. In **Fast Restore point (UTC)**, select the timestamp of any of the full backups available to restore. The list includes the full backups that the service takes automatically, and any [on-demand backups](how-to-perform-backups.md) taken by the user.
 
     :::image type="content" source="./media/how-to-restore-server/fast-restore-point-selection.png" alt-text="Screenshot showing the Fast Restore point (UTC) combobox, available to select fast restore points." lightbox="./media/how-to-restore-server/fast-restore-point-selection.png":::
 

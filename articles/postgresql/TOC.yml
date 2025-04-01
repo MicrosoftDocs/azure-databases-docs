@@ -146,6 +146,8 @@
       href: flexible-server/concepts-limits.md
     - name: Identity
       href: flexible-server/concepts-Identity.md
+    - name: Fabric mirroring
+      href: flexible-server/concepts-fabric-mirroring.md
     - name: Data encryption
       href: flexible-server/concepts-data-encryption.md
     - name: Scheduled maintenance
@@ -624,8 +626,10 @@
       items:
       - name: Migrate from Single Server
         href: migrate/migration-service/tutorial-migration-service-single-to-flexible.md
-      - name: Automigration from Azure Database for PostgreSQL - Single Server to Flexible Server
+      - name: Automigration of Azure Database for PostgreSQL - Single Server to Flexible Server
         href: migrate/automigration-single-to-flexible-postgresql.md
+      - name: Automigrations of Azure Database for PostgreSQL - Single Server with Private End Point
+        href: migrate/automigration-private-end-point.md
     - name: Tutorials for migrating from PostgreSQL
       items:
       - name: Migrate from an Azure VM or an on-premises PostgreSQL server offline
@@ -656,6 +660,8 @@
         href: migrate/migration-service/concepts-required-user-permissions.md
       - name: Migration Configuration Parameters
         href: migrate/migration-service/concepts-migration-server-parameters.md
+      - name: Extension Migrations
+        href: migrate/migration-service/concepts-migration-extensions.md
       - name: Best practices
         href: migrate/migration-service/best-practices-migration-service-postgresql.md
       - name: Known issues and limitations
