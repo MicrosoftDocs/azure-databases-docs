@@ -17,7 +17,7 @@ When multiple workloads share the same Azure Cosmos DB container, resource conte
 
 #### Common Use Cases
 
-- Multi-tenant workloads managed by Independent Software Vendors (ISVs)
+- Multitenant workloads managed by Independent Software Vendors (ISVs)
 - Bulk execution in ETL jobs
 - Data ingestion and migration processes
 - Execution of stored procedures
