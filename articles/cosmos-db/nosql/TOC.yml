@@ -73,7 +73,7 @@
     href: tutorial-deploy-app-bicep-aks.md
   - name: Kusto Query Language (KQL) transformations
     displayName: KQL, workspace, data
-    href: ../tutorial-log-transformation.md
+    href: ../tutorial-log-transformation.md?context=/azure/cosmos-db/nosql/context/context
   - name: Connect using Spark
     displayName: Python, Scala, Spark, Java, Databricks
     href: tutorial-spark-connector.md
@@ -83,7 +83,7 @@
 - name: Samples
   items:
   - name: Solution accelerators
-    href: ../solutions.md?pivots=api-nosql
+    href: ../solutions.md?pivots=api-nosql&context=/azure/cosmos-db/nosql/context/context
   - name: .NET
     href: samples-dotnet.md
   - name: Java
@@ -103,59 +103,59 @@
     - name: Overview
       href: cli-samples.md
     - name: Create account, database, and container
-      href: ../scripts/cli/nosql/create.md
+      href: ../scripts/cli/nosql/create.md?context=/azure/cosmos-db/nosql/context/context
     - name: Create serverless
-      href: ../scripts/cli/nosql/serverless.md
+      href: ../scripts/cli/nosql/serverless.md?context=/azure/cosmos-db/nosql/context/context
     - name: Create with autoscale
-      href: ../scripts/cli/nosql/autoscale.md
+      href: ../scripts/cli/nosql/autoscale.md?context=/azure/cosmos-db/nosql/context/context
     - name: Perform throughput operations
-      href: ../scripts/cli/nosql/throughput.md
+      href: ../scripts/cli/nosql/throughput.md?context=/azure/cosmos-db/nosql/context/context
     - name: Lock resources from deletion
-      href: ../scripts/cli/nosql/lock.md
+      href: ../scripts/cli/nosql/lock.md?context=/azure/cosmos-db/nosql/context/context
     - name: Add or fail over regions
-      href: ../scripts/cli/common/regions.md
+      href: ../scripts/cli/common/regions.md?context=/azure/cosmos-db/nosql/context/context
     - name: Perform account key operations
-      href: ../scripts/cli/common/keys.md
+      href: ../scripts/cli/common/keys.md?context=/azure/cosmos-db/nosql/context/context
     - name: Secure with IP firewall
-      href: ../scripts/cli/common/ipfirewall.md
+      href: ../scripts/cli/common/ipfirewall.md?context=/azure/cosmos-db/nosql/context/context
     - name: Bulk add or remove IP firewall rules
-      href: ../scripts/cli/common/ipfirewall-bulk-add-remove.md
+      href: ../scripts/cli/common/ipfirewall-bulk-add-remove.md?context=/azure/cosmos-db/nosql/context/context
     - name: Secure new account with service endpoints
-      href: ../scripts/cli/common/service-endpoints.md
+      href: ../scripts/cli/common/service-endpoints.md?context=/azure/cosmos-db/nosql/context/context
     - name: Secure existing account with service endpoints
-      href: ../scripts/cli/common/service-endpoints-ignore-missing-vnet.md
+      href: ../scripts/cli/common/service-endpoints-ignore-missing-vnet.md?context=/azure/cosmos-db/nosql/context/context
     - name: Find existing free-tier accounts
-      href: ../scripts/cli/common/free-tier.md
+      href: ../scripts/cli/common/free-tier.md?context=/azure/cosmos-db/nosql/context/context
     - name: Migrate all resources to autoscale
-      href: ../scripts/cli/common/convert-to-autoscale.md
+      href: ../scripts/cli/common/convert-to-autoscale.md?context=/azure/cosmos-db/nosql/context/context
   - name: Azure PowerShell
     items:
     - name: Overview
       href: powershell-samples.md
     - name: Create account, database, and container
-      href: ../scripts/powershell/nosql/create.md
+      href: ../scripts/powershell/nosql/create.md?context=/azure/cosmos-db/nosql/context/context
     - name: Create with autoscale
-      href: ../scripts/powershell/nosql/autoscale.md
+      href: ../scripts/powershell/nosql/autoscale.md?context=/azure/cosmos-db/nosql/context/context
     - name: Perform throughput operations
-      href: ../scripts/powershell/nosql/throughput.md
+      href: ../scripts/powershell/nosql/throughput.md?context=/azure/cosmos-db/nosql/context/context
     - name: Lock resources from deletion
-      href: ../scripts/powershell/nosql/lock.md
+      href: ../scripts/powershell/nosql/lock.md?context=/azure/cosmos-db/nosql/context/context
     - name: List and get databases and containers
-      href: ../scripts/powershell/nosql/list-get.md
+      href: ../scripts/powershell/nosql/list-get.md?context=/azure/cosmos-db/nosql/context/context
     - name: Create a container with indexing turned off
-      href: ../scripts/powershell/nosql/create-index-none.md
+      href: ../scripts/powershell/nosql/create-index-none.md?context=/azure/cosmos-db/nosql/context/context
     - name: Create a container with a large partition key
-      href: ../scripts/powershell/nosql/create-large-partition-key.md
+      href: ../scripts/powershell/nosql/create-large-partition-key.md?context=/azure/cosmos-db/nosql/context/context
     - name: Account keys or connection strings
-      href: ../scripts/powershell/common/keys-connection-strings.md
+      href: ../scripts/powershell/common/keys-connection-strings.md?context=/azure/cosmos-db/nosql/context/context
     - name: Change failover priority or trigger failover
-      href: ../scripts/powershell/common/failover-priority-update.md
+      href: ../scripts/powershell/common/failover-priority-update.md?context=/azure/cosmos-db/nosql/context/context
     - name: Create an account with IP Firewall
-      href: ../scripts/powershell/common/firewall-create.md
+      href: ../scripts/powershell/common/firewall-create.md?context=/azure/cosmos-db/nosql/context/context
     - name: Update account
-      href: ../scripts/powershell/common/account-update.md
+      href: ../scripts/powershell/common/account-update.md?context=/azure/cosmos-db/nosql/context/context
     - name: Update an account's regions
-      href: ../scripts/powershell/common/update-region.md
+      href: ../scripts/powershell/common/update-region.md?context=/azure/cosmos-db/nosql/context/context
   - name: Templates
     items:
     - name: JSON syntax templates
@@ -166,48 +166,48 @@
     - name: Terraform syntax templates
       href: samples-terraform.md
   - name: Queries for Azure Resource Graph
-    href: ../resource-graph-samples.md
+    href: ../resource-graph-samples.md?context=/azure/cosmos-db/nosql/context/context
 - name: Concepts
   items:
   - name: Azure Cosmos DB resource model
     displayName: collection, document
-    href: ../resource-model.md
+    href: ../resource-model.md?context=/azure/cosmos-db/nosql/context/context
   - name: Back up and restore
     items:
     - name: Back up and restore introduction
-      href: ../online-backup-and-restore.md
+      href: ../online-backup-and-restore.md?context=/azure/cosmos-db/nosql/context/context
     - name: Continuous backup
       items:
       - name: Continuous backup - Introduction
-        href: ../continuous-backup-restore-introduction.md
+        href: ../continuous-backup-restore-introduction.md?context=/azure/cosmos-db/nosql/context/context
       - name: Restore
         items:
         - name: Restore into a new account
           items:
           - name: Continuous backup - Resource model
-            href: ../continuous-backup-restore-resource-model.md
+            href: ../continuous-backup-restore-resource-model.md?context=/azure/cosmos-db/nosql/context/context
           - name: Continuous backup - FAQ
-            href: ../continuous-backup-restore-frequently-asked-questions.yml
+            href: ../continuous-backup-restore-frequently-asked-questions.yml?context=/azure/cosmos-db/nosql/context/context
           - name: Latest restorable timestamp
-            href: ../latest-restore-timestamp-continuous-backup.md
+            href: ../latest-restore-timestamp-continuous-backup.md?context=/azure/cosmos-db/nosql/context/context
           - name: Auditing restore action with continuous backup
-            href: ../audit-restore-continuous.md
+            href: ../audit-restore-continuous.md?context=/azure/cosmos-db/nosql/context/context
         - name: Restore in the same account
           items:
           - name: Introduction
-            href: ../restore-in-account-continuous-backup-introduction.md
+            href: ../restore-in-account-continuous-backup-introduction.md?context=/azure/cosmos-db/nosql/context/context
           - name: Resource model
-            href: ../restore-in-account-continuous-backup-resource-model.md
+            href: ../restore-in-account-continuous-backup-resource-model.md?context=/azure/cosmos-db/nosql/context/context
           - name: FAQ
-            href: ../restore-in-account-continuous-backup-frequently-asked-questions.yml
+            href: ../restore-in-account-continuous-backup-frequently-asked-questions.yml?context=/azure/cosmos-db/nosql/context/context
     - name: Periodic backup
       items:
       - name: Introduction
-        href: ../periodic-backup-restore-introduction.md
+        href: ../periodic-backup-restore-introduction.md?context=/azure/cosmos-db/nosql/context/context
       - name: Storage redundancy
-        href: ../periodic-backup-storage-redundancy.md
+        href: ../periodic-backup-storage-redundancy.md?context=/azure/cosmos-db/nosql/context/context
       - name: Request data restore
-        href: ../periodic-backup-request-data-restore.md
+        href: ../periodic-backup-request-data-restore.md?context=/azure/cosmos-db/nosql/context/context
   - name: Containers and items
     items:
     - name: Getting started with SQL query
@@ -215,37 +215,37 @@
       href: query/getting-started.md
     - name: Indexing overview
       displayName: range, spatial
-      href: ../index-overview.md
+      href: ../index-overview.md?context=/azure/cosmos-db/nosql/context/context
     - name: Time to live
       displayName: delete, delete data, ttl
       href: time-to-live.md
     - name: Unique key constraints
-      href: ../unique-keys.md
+      href: ../unique-keys.md?context=/azure/cosmos-db/nosql/context/context
     - name: Transactions and optimistic concurrency control
       href: database-transactions-optimistic-concurrency.md
   - name: Global distribution
     items:
     - name: Global distribution overview
       displayName: replication, replicate, geo distribution
-      href: ../distribute-data-globally.md
+      href: ../distribute-data-globally.md?context=/azure/cosmos-db/nosql/context/context
     - name: Consistency levels
       displayName: session, consistency prefix, strong, eventual, bounded staleness
-      href: ../consistency-levels.md
+      href: ../consistency-levels.md?context=/azure/cosmos-db/nosql/context/context
     - name: High availability
       items:
       - name: High availability and reliability
-        href: /azure/reliability/reliability-cosmos-db-nosql?toc=/azure/cosmos-db/toc.json
+        href: /azure/reliability/reliability-cosmos-db-nosql?context=/azure/cosmos-db/nosql/context/context
       - name: Proactive resiliency
-        href: /azure/reliability/resiliency-recommendations/recommend-cosmos-db-nosql?toc=/azure/cosmos-db/toc.json
+        href: /azure/reliability/resiliency-recommendations/recommend-cosmos-db-nosql?context=/azure/cosmos-db/nosql/context/context
       - name: Multi-region writes
         items:
         - name: Understanding multi-region writes
-          href: ../multi-region-writes.md
+          href: ../multi-region-writes.md?context=/azure/cosmos-db/nosql/context/context
         - name: Conflict resolution
           displayName: last write wins, custom, multi-region writes, multi-master
-          href: ../conflict-resolution-policies.md
+          href: ../conflict-resolution-policies.md?context=/azure/cosmos-db/nosql/context/context
     - name: Global distribution - under the hood
-      href: ../global-dist-under-the-hood.md
+      href: ../global-dist-under-the-hood.md?context=/azure/cosmos-db/nosql/context/context
   - name: Modeling and partitioning
     items:
     - name: Model document data
@@ -263,55 +263,55 @@
   - name: Partitioning and horizontal scaling
     items:
     - name: Partitioning overview
-      href: ../partitioning-overview.md
+      href: ../partitioning-overview.md?context=/azure/cosmos-db/nosql/context/context
     - name: Hierarchical partition keys
       items:
       - name: Hierarchical partition keys overview
-        href: ../hierarchical-partition-keys.md
+        href: ../hierarchical-partition-keys.md?context=/azure/cosmos-db/nosql/context/context
       - name: Hierarchical partition keys FAQ
-        href: ../hierarchical-partition-keys-faq.yml
+        href: ../hierarchical-partition-keys-faq.yml?context=/azure/cosmos-db/nosql/context/context
   - name: Throughput (Request units)
     items:
     - name: Request units
       displayName: RUs, RU
-      href: ../request-units.md
+      href: ../request-units.md?context=/azure/cosmos-db/nosql/context/context
     - name: Free tier
       displayName: free tier
-      href: ../free-tier.md
+      href: ../free-tier.md?context=/azure/cosmos-db/nosql/context/context
     - name: Limit total account throughput
       displayName: cost, RUs, RU
-      href: ../limit-total-account-throughput.md
+      href: ../limit-total-account-throughput.md?context=/azure/cosmos-db/nosql/context/context
     - name: Convert vCores to request units
-      href: ../convert-vcore-to-request-unit.md
+      href: ../convert-vcore-to-request-unit.md?context=/azure/cosmos-db/nosql/context/context
     - name: Provisioned throughput
       displayName: request units, RUs, RU, limits, database throughput, shared throughput, container throughput
-      href: ../set-throughput.md
+      href: ../set-throughput.md?context=/azure/cosmos-db/nosql/context/context
     - name: Autoscale throughput
       items:
       - name: Autoscale introduction
-        href: ../provision-throughput-autoscale.md
+        href: ../provision-throughput-autoscale.md?context=/azure/cosmos-db/nosql/context/context
       - name: Autoscale FAQ
-        href: ../autoscale-faq.yml
+        href: ../autoscale-faq.yml?context=/azure/cosmos-db/nosql/context/context
     - name: Serverless
       items:
       - name: Serverless overview
-        href: ../serverless.md
+        href: ../serverless.md?context=/azure/cosmos-db/nosql/context/context
       - name: Serverless Performance
-        href: ../serverless-performance.md
+        href: ../serverless-performance.md?context=/azure/cosmos-db/nosql/context/context
     - name: Choose between autoscale and standard (manual) throughput
-      href: ../how-to-choose-offer.md
+      href: ../how-to-choose-offer.md?context=/azure/cosmos-db/nosql/context/context
     - name: Choose between provisioned throughput and serverless
-      href: ../throughput-serverless.md
+      href: ../throughput-serverless.md?context=/azure/cosmos-db/nosql/context/context
     - name: Best practices for scaling provisioned throughput
-      href: ../scaling-provisioned-throughput-best-practices.md
+      href: ../scaling-provisioned-throughput-best-practices.md?context=/azure/cosmos-db/nosql/context/context
     - name: Burst capacity
       items:
       - name: Burst capacity overview
-        href: ../burst-capacity.md
+        href: ../burst-capacity.md?context=/azure/cosmos-db/nosql/context/context
       - name: Burst capacity FAQ
-        href: ../burst-capacity-faq.yml
+        href: ../burst-capacity-faq.yml?context=/azure/cosmos-db/nosql/context/context
     - name: Merge (preview)
-      href: ../merge.md
+      href: ../merge.md?context=/azure/cosmos-db/nosql/context/context
     - name: Distribute throughput across partitions (preview) - container
       displayName: request units, RUs, RU, collection levels
       items:
@@ -322,13 +322,13 @@
     - name: Priority-based execution (preview)
       items:
       - name: Priority-based execution overview
-        href: ../priority-based-execution.md
+        href: ../priority-based-execution.md?context=/azure/cosmos-db/nosql/context/context
       - name: Priority-based execution FAQ
-        href: ../priority-based-execution-faq.yml
+        href: ../priority-based-execution-faq.yml?context=/azure/cosmos-db/nosql/context/context
   - name: Change feed
     items:
     - name: Change feed overview
-      href: ../change-feed.md
+      href: ../change-feed.md?context=/azure/cosmos-db/nosql/context/context
     - name: Change feed design patterns
       href: change-feed-design-patterns.md
     - name: Change feed modes
@@ -343,27 +343,27 @@
     - name: Change feed (pull model)
       href: change-feed-pull-model.md
   - name: Emulator
-    href: ../emulator.md
+    href: ../emulator.md?context=/azure/cosmos-db/nosql/context/context
   - name: Linux emulator (preview)
-    href: ../emulator-linux.md
+    href: ../emulator-linux.md?context=/azure/cosmos-db/nosql/context/context
   - name: Integrated cache
     items:
     - name: Dedicated gateway overview
-      href: ../dedicated-gateway.md
+      href: ../dedicated-gateway.md?context=/azure/cosmos-db/nosql/context/context
     - name: Integrated cache overview
-      href: ../integrated-cache.md
+      href: ../integrated-cache.md?context=/azure/cosmos-db/nosql/context/context
     - name: Integrated cache FAQ
-      href: ../integrated-cache-faq.md
+      href: ../integrated-cache-faq.md?context=/azure/cosmos-db/nosql/context/context
   - name: Integrated vector database
-    href: ../vector-search.md
+    href: ../vector-search.md?context=/azure/cosmos-db/nosql/context/context
   - name: Materialized views (preview)
     href: materialized-views.md
   - name: Analytics and BI
     items:
     - name: Analytics and BI overview
-      href: ../analytics-and-business-intelligence-overview.md
+      href: ../analytics-and-business-intelligence-overview.md?context=/azure/cosmos-db/nosql/context/context
     - name: Analytics and BI use cases
-      href: ../analytics-and-business-intelligence-use-cases.md
+      href: ../analytics-and-business-intelligence-use-cases.md?context=/azure/cosmos-db/nosql/context/context
     - name: Mirroring in Microsoft Fabric
       items:
       - name: Overview
@@ -377,84 +377,84 @@
     - name: Azure Synapse Link
       items:
       - name: Azure Synapse Link for Azure Cosmos DB
-        href: ../synapse-link.md
+        href: ../synapse-link.md?context=/azure/cosmos-db/nosql/context/context
       - name: Azure Synapse Link supported features
-        href: /azure/synapse-analytics/synapse-link/concept-synapse-link-cosmos-db-support?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+        href: /azure/synapse-analytics/synapse-link/concept-synapse-link-cosmos-db-support?context=/azure/cosmos-db/nosql/context/context
       - name: Custom partitioning - Overview
-        href: ../custom-partitioning-analytical-store.md
+        href: ../custom-partitioning-analytical-store.md?context=/azure/cosmos-db/nosql/context/context
       - name: Azure Synapse Link FAQ
-        href: ../synapse-link-frequently-asked-questions.yml
+        href: ../synapse-link-frequently-asked-questions.yml?context=/azure/cosmos-db/nosql/context/context
       - name: Analytical store - overview
-        href: ../analytical-store-introduction.md
+        href: ../analytical-store-introduction.md?context=/azure/cosmos-db/nosql/context/context
       - name: Change data capture (CDC)
-        href: ../analytical-store-change-data-capture.md
+        href: ../analytical-store-change-data-capture.md?context=/azure/cosmos-db/nosql/context/context
       - name: Time travel (preview)
-        href: ../synapse-link-time-travel.md
+        href: ../synapse-link-time-travel.md?context=/azure/cosmos-db/nosql/context/context
   - name: Global distribution
     items:
     - name: Global distribution overview
       displayName: replication, replicate, geo distribution
-      href: ../distribute-data-globally.md
+      href: ../distribute-data-globally.md?context=/azure/cosmos-db/nosql/context/context
     - name: Consistency levels
       displayName: session, consistency prefix, strong, eventual, bounded staleness
-      href: ../consistency-levels.md
+      href: ../consistency-levels.md?context=/azure/cosmos-db/nosql/context/context
     - name: High availability
       items:
       - name: High availability and reliability
-        href: /azure/reliability/reliability-cosmos-db-nosql?toc=/azure/cosmos-db/toc.json
+        href: /azure/reliability/reliability-cosmos-db-nosql?context=/azure/cosmos-db/nosql/context/context
       - name: Proactive resiliency
-        href: /azure/reliability/resiliency-recommendations/recommend-cosmos-db-nosql?toc=/azure/cosmos-db/toc.json
+        href: /azure/reliability/resiliency-recommendations/recommend-cosmos-db-nosql?context=/azure/cosmos-db/nosql/context/context
       - name: Multi-region writes
         items:
         - name: Understanding multi-region writes
-          href: ../multi-region-writes.md
+          href: ../multi-region-writes.md?context=/azure/cosmos-db/nosql/context/context
         - name: Conflict resolution
           displayName: last write wins, custom, multi-region writes, multi-master
-          href: ../conflict-resolution-policies.md
+          href: ../conflict-resolution-policies.md?context=/azure/cosmos-db/nosql/context/context
     - name: Global distribution - under the hood
-      href: ../global-dist-under-the-hood.md
+      href: ../global-dist-under-the-hood.md?context=/azure/cosmos-db/nosql/context/context
   - name: Security
     items:
     - name: Security overview
-      href: ../security.yml
+      href: ../security.yml?context=/azure/cosmos-db/nosql/context/context
     - name: Role-based access control guide
       displayName: RBAC, Entra
       href: security/index.md
     - name: Considerations and guidance
-      href: ../security-considerations.md
+      href: ../security-considerations.md?context=/azure/cosmos-db/nosql/context/context
     - name: Well Architected Framework security guidance
       href: /azure/well-architected/service-guides/cosmos-db?context=/azure/cosmos-db/context/context#security
     - name: Security baseline
-      href: /security/benchmark/azure/baselines/cosmos-db-security-baseline?bc=/azure/cosmos-db/breadcrumb/toc.json&toc=/azure/cosmos-db/toc.json
+      href: /security/benchmark/azure/baselines/cosmos-db-security-baseline?context=/azure/cosmos-db/nosql/context/context
     - name: Data encryption
-      href: ../database-encryption-at-rest.md
+      href: ../database-encryption-at-rest.md?context=/azure/cosmos-db/nosql/context/context
     - name: Service tags
-      href: /azure/virtual-network/service-tags-overview?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+      href: /azure/virtual-network/service-tags-overview?context=/azure/cosmos-db/nosql/context/context
     - name: Azure Policy support
-      href: ../policy.md
+      href: ../policy.md?context=/azure/cosmos-db/nosql/context/context
     - name: Security controls by Azure Policy
       displayName: regulatory, compliance, standards, domains
-      href: ../security-controls-policy.md
+      href: ../security-controls-policy.md?context=/azure/cosmos-db/nosql/context/context
     - name: Threat protection with Microsoft Defender for Cloud
       href: defender-for-cosmos-db.md
   - name: Enterprise readiness
     items:
     - name: Service quotas
-      href: ../concepts-limits.md
+      href: ../concepts-limits.md?context=/azure/cosmos-db/nosql/context/context
     - name: Automatic recommendations
-      href: ../automated-recommendations.md
+      href: ../automated-recommendations.md?context=/azure/cosmos-db/nosql/context/context
     - name: Compliance
-      href: ../compliance.md
+      href: ../compliance.md?context=/azure/cosmos-db/nosql/context/context
     - name: Data residency
-      href: ../data-residency.md
+      href: ../data-residency.md?context=/azure/cosmos-db/nosql/context/context
   - name: Optimize your Azure Cosmos DB costs
-    href: ../optimize-costs.yml
+    href: ../optimize-costs.yml?context=/azure/cosmos-db/nosql/context/context
   - name: Network bandwidth
-    href: ../network-bandwidth.md
+    href: ../network-bandwidth.md?context=/azure/cosmos-db/nosql/context/context
 - name: How to
   items:
   - name: Visual Studio Code extension
-    href: ../visual-studio-code-extension.md?pivots=api-nosql
+    href: ../visual-studio-code-extension.md?pivots=api-nosql&context=/azure/cosmos-db/nosql/context/context
   - name: Configure vector database capabilities
     items:
     - name: .NET
@@ -466,7 +466,7 @@
     - name: Java
       href: how-to-java-vector-index-query.md
   - name: Access preview features
-    href: ../access-previews.md
+    href: ../access-previews.md?context=/azure/cosmos-db/nosql/context/context
   - name: Change capacity mode
     href: how-to-change-capacity-mode.md
   - name: Develop applications
@@ -526,7 +526,7 @@
     - name: Designing resilient applications
       href: conceptual-resilient-sdk-applications.md
     - name: Designing multitenant applications
-      href: /azure/architecture/guide/multitenant/service/cosmos-db?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+      href: /azure/architecture/guide/multitenant/service/cosmos-db?context=/azure/cosmos-db/nosql/context/context
     - name: Connectivity modes
       href: sdk-connection-modes.md
   - name: Operations on containers and items
@@ -534,7 +534,7 @@
     - name: Create a container
       href: how-to-create-container.md
     - name: Create a container with large partition key
-      href: ../large-partition-keys.md
+      href: ../large-partition-keys.md?context=/azure/cosmos-db/nosql/context/context
     - name: Query a container
       href: how-to-query-container.md
     - name: Migrate to partitioned containers
@@ -543,7 +543,7 @@
       displayName: delete, delete data, ttl
       href: how-to-time-to-live.md
     - name: Define unique keys
-      href: ../how-to-define-unique-keys.md
+      href: ../how-to-define-unique-keys.md?context=/azure/cosmos-db/nosql/context/context
     - name: Perform transactional batch operations
       href: transactional-batch.md
     - name: Delete items by partition key (preview)
@@ -552,15 +552,15 @@
       displayName: request units, RUs, RU, charge, consumption
       href: find-request-unit-charge.md
     - name: Move data between containers
-      href: ../container-copy.md
+      href: ../container-copy.md?context=/azure/cosmos-db/nosql/context/context
     - name: Partial document update
       items:
       - name: Partial document update overview
-        href: ../partial-document-update.md
+        href: ../partial-document-update.md?context=/azure/cosmos-db/nosql/context/context
       - name: Get started with Partial Document Update
-        href: ../partial-document-update-getting-started.md
+        href: ../partial-document-update-getting-started.md?context=/azure/cosmos-db/nosql/context/context
       - name: Partial document update FAQ
-        href: ../partial-document-update-faq.yml
+        href: ../partial-document-update-faq.yml?context=/azure/cosmos-db/nosql/context/context
   - name: Change feed
     items:
     - name: Azure Cosmos DB Trigger advanced configuration
@@ -614,7 +614,7 @@
       displayName: request units, RUs, RU, charge, consumption
       href: find-request-unit-charge.md
   - name: Develop with the emulator
-    href: ../how-to-develop-emulator.md?pivots=api-nosql
+    href: ../how-to-develop-emulator.md?pivots=api-nosql&context=/azure/cosmos-db/nosql/context/context
   - name: Tools, Software Development Kits (SDKs), and providers
     items:
     - name: Kafka Connect
@@ -644,7 +644,7 @@
     - name: Bulk executor library
       items:
       - name: Overview
-        href: ../bulk-executor-overview.md
+        href: ../bulk-executor-overview.md?context=/azure/cosmos-db/nosql/context/context
       - name: Bulk executor - .NET library
         href: bulk-executor-dotnet.md
       - name: Migrate from bulk executor to .NET SDK
@@ -662,15 +662,15 @@
       - name: Migrate to .NET V2 SDK
         href: migrate-dotnet-v2.md
     - name: Set up CI/CD with Azure Pipelines
-      href: ../tutorial-setup-ci-cd.md
+      href: ../tutorial-setup-ci-cd.md?context=/azure/cosmos-db/nosql/context/context
     - name: Azure Cosmos DB Data Explorer
       items:
       - name: Use Data Explorer
-        href: ../data-explorer.md
+        href: ../data-explorer.md?context=/azure/cosmos-db/nosql/context/context
       - name: Manage multiple items
-        href: ../how-to-data-explorer-manage-items.md
+        href: ../how-to-data-explorer-manage-items.md?context=/azure/cosmos-db/nosql/context/context
       - name: Keyboard shortcuts
-        href: ../data-explorer-shortcuts.md
+        href: ../data-explorer-shortcuts.md?context=/azure/cosmos-db/nosql/context/context
     - name: SDK observability
       href: sdk-observability.md
   - name: Performance
@@ -689,7 +689,7 @@
       items:
       - name: Indexing policies
         displayName: consistent, none, indexing, policy
-        href: ../index-policy.md
+        href: ../index-policy.md?context=/azure/cosmos-db/nosql/context/context
       - name: Manage indexing policies
         href: how-to-manage-indexing-policy.md
       - name: Index metrics
@@ -727,11 +727,11 @@
       - name: Best practices for JavaScript SDK
         href: best-practices-javascript.md
     - name: Configure the integrated cache
-      href: ../how-to-configure-integrated-cache.md
+      href: ../how-to-configure-integrated-cache.md?context=/azure/cosmos-db/nosql/context/context
     - name: Benchmarking framework
       href: benchmarking-framework.md
     - name: Cost-effective reads and writes
-      href: ../key-value-store-cost.md
+      href: ../key-value-store-cost.md?context=/azure/cosmos-db/nosql/context/context
   - name: Troubleshooting
     items:
     - name: Common errors
@@ -797,33 +797,33 @@
     - name: Azure Synapse Link
       items:
       - name: Configure Azure Synapse Link
-        href: ../configure-synapse-link.md
+        href: ../configure-synapse-link.md?context=/azure/cosmos-db/nosql/context/context
       - name: Connect to Azure Synapse Link
-        href: /azure/synapse-analytics/synapse-link/how-to-connect-synapse-link-cosmos-db?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+        href: /azure/synapse-analytics/synapse-link/how-to-connect-synapse-link-cosmos-db?context=/azure/cosmos-db/nosql/context/context
       - name: Azure Synapse Link and integrated Power BI
-        href: ../integrated-power-bi-synapse-link.md
+        href: ../integrated-power-bi-synapse-link.md?context=/azure/cosmos-db/nosql/context/context
       - name: Analytical store and private endpoints
-        href: ../analytical-store-private-endpoints.md
+        href: ../analytical-store-private-endpoints.md?context=/azure/cosmos-db/nosql/context/context
       - name: Query with Azure Synapse Spark 3
-        href: /azure/synapse-analytics/synapse-link/how-to-query-analytical-store-spark-3?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+        href: /azure/synapse-analytics/synapse-link/how-to-query-analytical-store-spark-3?context=/azure/cosmos-db/nosql/context/context
       - name: Query with Azure Synapse Spark 2
-        href: /azure/synapse-analytics/synapse-link/how-to-query-analytical-store-spark?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+        href: /azure/synapse-analytics/synapse-link/how-to-query-analytical-store-spark?context=/azure/cosmos-db/nosql/context/context
       - name: Query with serverless SQL pool
-        href: /azure/synapse-analytics/sql/query-cosmos-db-analytical-store?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+        href: /azure/synapse-analytics/sql/query-cosmos-db-analytical-store?context=/azure/cosmos-db/nosql/context/context
       - name: Configure custom partitioning
-        href: ../configure-custom-partitioning.md
+        href: ../configure-custom-partitioning.md?context=/azure/cosmos-db/nosql/context/context
       - name: Get started with change data capture
-        href: ../get-started-change-data-capture.md
+        href: ../get-started-change-data-capture.md?context=/azure/cosmos-db/nosql/context/context
     - name: Power BI
       items:
       - name: Use Power BI
         href: powerbi-visualize.md
       - name: Use Power BI with Azure Synapse Link
-        href: ../synapse-link-power-bi.md
+        href: ../synapse-link-power-bi.md?context=/azure/cosmos-db/nosql/context/context
   - name: Manage Azure Cosmos DB resources
     items:
     - name: Manage an Azure Cosmos DB account
-      href: ../how-to-manage-database-account.yml
+      href: ../how-to-manage-database-account.yml?context=/azure/cosmos-db/nosql/context/context
     - name: Using PowerShell
       href: manage-with-powershell.md
     - name: Using Azure CLI
@@ -838,9 +838,9 @@
       displayName: Terraform
       href: manage-with-terraform.md
     - name: Relocate to another region
-      href: /azure/operational-excellence/relocation-cosmos-db?toc=/azure/cosmosdb/nosql/toc.json
+      href: /azure/operational-excellence/relocation-cosmos-db?context=/azure/cosmos-db/nosql/context/context
     - name: Prevent changes or deletion
-      href: ../resource-locks.md
+      href: ../resource-locks.md?context=/azure/cosmos-db/nosql/context/context
   - name: Global distribution
     items:
     - name: Distribute data globally tutorial
@@ -859,60 +859,60 @@
     - name: Continuous backup
       items:
       - name: Permissions and roles - Continuous backup
-        href: ../continuous-backup-restore-permissions.md
+        href: ../continuous-backup-restore-permissions.md?context=/azure/cosmos-db/nosql/context/context
       - name: Create account - Continuous backup
-        href: ../provision-account-continuous-backup.md
+        href: ../provision-account-continuous-backup.md?context=/azure/cosmos-db/nosql/context/context
       - name: Migrate to continuous backup
-        href: ../migrate-continuous-backup.md
+        href: ../migrate-continuous-backup.md?context=/azure/cosmos-db/nosql/context/context
       - name: Restore
         items:
         - name: Restore to a different account
-          href: ../restore-account-continuous-backup.md
+          href: ../restore-account-continuous-backup.md?context=/azure/cosmos-db/nosql/context/context
         - name: Restore in the same account
-          href: ../how-to-restore-in-account-continuous-backup.md
+          href: ../how-to-restore-in-account-continuous-backup.md?context=/azure/cosmos-db/nosql/context/context
         - name: Get the latest restorable timestamp
-          href: ../get-latest-restore-timestamp.md
+          href: ../get-latest-restore-timestamp.md?context=/azure/cosmos-db/nosql/context/context
     - name: Periodic backup
       items:
       - name: Update storage redundancy
-        href: ../periodic-backup-update-storage-redundancy.md
+        href: ../periodic-backup-update-storage-redundancy.md?context=/azure/cosmos-db/nosql/context/context
       - name: Modify interval retention
-        href: ../periodic-backup-modify-interval-retention.md
+        href: ../periodic-backup-modify-interval-retention.md?context=/azure/cosmos-db/nosql/context/context
   - name: Security
     items:
     - name: Networking
       items:
       - name: Configure IP firewall
-        href: ../how-to-configure-firewall.md
+        href: ../how-to-configure-firewall.md?context=/azure/cosmos-db/nosql/context/context
       - name: Configure access from virtual networks
         displayName: service endpoints
-        href: ../how-to-configure-vnet-service-endpoint.md
+        href: ../how-to-configure-vnet-service-endpoint.md?context=/azure/cosmos-db/nosql/context/context
       - name: Configure access from private endpoints
-        href: ../how-to-configure-private-endpoints.md
+        href: ../how-to-configure-private-endpoints.md?context=/azure/cosmos-db/nosql/context/context
       - name: Configure Network Security Perimeter
-        href: ../how-to-configure-nsp.md
+        href: ../how-to-configure-nsp.md?context=/azure/cosmos-db/nosql/context/context
     - name: Encryption
       items:
       - name: Use Always Encrypted
-        href: ../how-to-always-encrypted.md
+        href: ../how-to-always-encrypted.md?context=/azure/cosmos-db/nosql/context/context
       - name: Self-serve minimum transport-layer security (TLS) version enforcement
-        href: ../self-serve-minimum-tls-enforcement.md
+        href: ../self-serve-minimum-tls-enforcement.md?context=/azure/cosmos-db/nosql/context/context
       - name: Prepare for upcoming TLS 1.3 support for Azure Cosmos DB
-        href: ../tls-support.md
+        href: ../tls-support.md?context=/azure/cosmos-db/nosql/context/context
       - name: Configure customer-managed keys with Azure Key Vault
-        href: ../how-to-setup-customer-managed-keys.md
+        href: ../how-to-setup-customer-managed-keys.md?context=/azure/cosmos-db/nosql/context/context
       - name: Configure customer-managed keys on existing accounts with Azure Key Vault
-        href: ../how-to-setup-customer-managed-keys-existing-accounts.md
+        href: ../how-to-setup-customer-managed-keys-existing-accounts.md?context=/azure/cosmos-db/nosql/context/context
       - name: Customer-managed key (CMK) troubleshooting guide
-        href: ../cmk-troubleshooting-guide.md
+        href: ../cmk-troubleshooting-guide.md?context=/azure/cosmos-db/nosql/context/context
       - name: Configure customer-managed keys with Azure managed hardware security module (HSM) key vault
-        href: ../how-to-setup-customer-managed-keys-mhsm.md
+        href: ../how-to-setup-customer-managed-keys-mhsm.md?context=/azure/cosmos-db/nosql/context/context
       - name: Configure cross-tenant customer-managed keys
-        href: ../how-to-setup-cross-tenant-customer-managed-keys.md
+        href: ../how-to-setup-cross-tenant-customer-managed-keys.md?context=/azure/cosmos-db/nosql/context/context
       - name: Cross-tenant CMK troubleshooting guide
-        href: ../troubleshoot-cmk.md
+        href: ../troubleshoot-cmk.md?context=/azure/cosmos-db/nosql/context/context
       - name: Access Azure Key Vault with managed identity
-        href: ../access-key-vault-managed-identity.md
+        href: ../access-key-vault-managed-identity.md?context=/azure/cosmos-db/nosql/context/context
     - name: Disable key-based authentication
       displayName: key, ropc, connection string
       href: security/how-to-disable-key-based-authentication.md?context=/azure/cosmos-db/context/context
@@ -923,47 +923,47 @@
     - name: Configure Cross Origin Resource Sharing (CORS)
       href: how-to-configure-cross-origin-resource-sharing.md
     - name: Use Azure Key Vault to store keys
-      href: ../store-credentials-key-vault.md
+      href: ../store-credentials-key-vault.md?context=/azure/cosmos-db/nosql/context/context
   - name: Monitor
     items:
     - name: Monitor Azure Cosmos DB
-      href: ../monitor.md
+      href: ../monitor.md?context=/azure/cosmos-db/nosql/context/context
     - name: Use Azure monitor metrics
       items:
       - name: Azure Cosmos DB insights
-        href: ../insights-overview.md
+        href: ../insights-overview.md?context=/azure/cosmos-db/nosql/context/context
       - name: Monitor and debug using metrics
-        href: ../use-metrics.md
+        href: ../use-metrics.md?context=/azure/cosmos-db/nosql/context/context
       - name: Monitor server-side latency
-        href: ../monitor-server-side-latency.md
+        href: ../monitor-server-side-latency.md?context=/azure/cosmos-db/nosql/context/context
       - name: Monitor request unit usage
-        href: ../monitor-request-unit-usage.md
+        href: ../monitor-request-unit-usage.md?context=/azure/cosmos-db/nosql/context/context
       - name: Monitor normalized request unit usage
-        href: ../monitor-normalized-request-units.md
+        href: ../monitor-normalized-request-units.md?context=/azure/cosmos-db/nosql/context/context
     - name: Use Azure monitor logs
       items:
       - name: Monitor with diagnostic logs
-        href: ../monitor-resource-logs.md
+        href: ../monitor-resource-logs.md?context=/azure/cosmos-db/nosql/context/context
       - name: Troubleshoot issues using basic queries
-        href: ../monitor-logs-basic-queries.md
+        href: ../monitor-logs-basic-queries.md?context=/azure/cosmos-db/nosql/context/context
       - name: Audit control plane logs
-        href: ../audit-control-plane-logs.md
+        href: ../audit-control-plane-logs.md?context=/azure/cosmos-db/nosql/context/context
       - name: Troubleshoot issues with advanced diagnostics queries
         href: diagnostic-queries.md
       - name: Add a transformation for workspace data
-        href: ../tutorial-log-transformation.md
+        href: ../tutorial-log-transformation.md?context=/azure/cosmos-db/nosql/context/context
     - name: Use Micrometer client metrics for Java
       href: client-metrics-java.md
     - name: Configure alerts
       items:
       - name: Create alert on metrics
-        href: ../create-alerts.md
+        href: ../create-alerts.md?context=/azure/cosmos-db/nosql/context/context
       - name: Create alert on logical partition key size
-        href: ../how-to-alert-on-logical-partition-key-storage-size.md
+        href: ../how-to-alert-on-logical-partition-key-storage-size.md?context=/azure/cosmos-db/nosql/context/context
     - name: Monitoring data reference
-      href: ../monitor-reference.md
+      href: ../monitor-reference.md?context=/azure/cosmos-db/nosql/context/context
     - name: Monitoring solutions
-      href: ../monitoring-solutions.md
+      href: ../monitoring-solutions.md?context=/azure/cosmos-db/nosql/context/context
     - name: Migrate from legacy Monitoring 
       href: legacy-migrate-az-monitor.md
   - name: Server-side programming
@@ -983,17 +983,17 @@
     - name: Use Power BI
       href: powerbi-visualize.md
     - name: Use Power BI with Azure Synapse Link
-      href: ../synapse-link-power-bi.md
+      href: ../synapse-link-power-bi.md?context=/azure/cosmos-db/nosql/context/context
     - name: Use Qlik Sense
-      href: ../visualize-qlik-sense.md
+      href: ../visualize-qlik-sense.md?context=/azure/cosmos-db/nosql/context/context
   - name: Migrate data
     items:
     - name: Desktop data migration tool
-      href: ../how-to-migrate-desktop-tool.md
+      href: ../how-to-migrate-desktop-tool.md?context=/azure/cosmos-db/nosql/context/context
     - name: Using .NET bulk support
       href: tutorial-dotnet-bulk-import.md
     - name: Migrate hundreds of terabytes of data into Azure Cosmos DB
-      href: ../migrate.md
+      href: ../migrate.md?context=/azure/cosmos-db/nosql/context/context
     - name: Migrate to API for NoSQL using Striim
       href: migrate-data-striim.md
     - name: Migrate one-to-few relational data
@@ -1015,29 +1015,29 @@
     - name: Azure App Service
       href: create-website.md
     - name: Azure AI Search indexer
-      href: /azure/search/search-howto-index-cosmosdb?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+      href: /azure/search/search-howto-index-cosmosdb?context=/azure/cosmos-db/nosql/context/context
     - name: Azure Functions
       items:
       - name: Serverless computing
         href: serverless-computing-database.md
       - name: Azure Function bindings
-        href: /azure/azure-functions/functions-bindings-cosmosdb?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+        href: /azure/azure-functions/functions-bindings-cosmosdb?context=/azure/cosmos-db/nosql/context/context
     - name: Azure Data Factory
-      href: /azure/data-factory/connector-azure-cosmos-db?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+      href: /azure/data-factory/connector-azure-cosmos-db?context=/azure/cosmos-db/nosql/context/context
     - name: Azure Stream Analytics
-      href: /azure/stream-analytics/stream-analytics-documentdb-output?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+      href: /azure/stream-analytics/stream-analytics-documentdb-output?context=/azure/cosmos-db/nosql/context/context
     - name: Azure Data Explorer
       href: https://github.com/Azure/azure-kusto-labs/tree/master/cosmosdb-adx-integration
     - name: Azure Event Hubs and Azure Storage
       href: https://github.com/hdinsight/hdinsight-storm-examples/blob/master/IotExample/README.md
     - name: Use Spring Boot Starter
-      href: /azure/developer/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+      href: /azure/developer/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db?context=/azure/cosmos-db/nosql/context/context
     - name: Spring Data developer guide
-      href: /azure/developer/java/spring-framework/how-to-guides-spring-data-cosmosdb?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+      href: /azure/developer/java/spring-framework/how-to-guides-spring-data-cosmosdb?context=/azure/cosmos-db/nosql/context/context
     - name: Open Database Connectivity (ODBC) driver
       href: odbc-driver.md
     - name: Vercel
-      href: ../vercel-integration.md
+      href: ../vercel-integration.md?context=/azure/cosmos-db/nosql/context/context
 - name: Reference
   items:
   - name: .NET SDKs
@@ -1087,21 +1087,21 @@
     href: /azure/templates/microsoft.documentdb/allversions
   - name: Azure Policy built-ins
     displayName: samples, policies, definitions
-    href: ../policy-reference.md
+    href: ../policy-reference.md?context=/azure/cosmos-db/nosql/context/context
   - name: Emulator
     items:
     - name: Release notes
-      href: ../emulator-release-notes.md
+      href: ../emulator-release-notes.md?context=/azure/cosmos-db/nosql/context/context
     - name: Windows command-line arguments
-      href: ../emulator-windows-arguments.md
+      href: ../emulator-windows-arguments.md?context=/azure/cosmos-db/nosql/context/context
 - name: Resources
   items:
   - name: Build your skills with Microsoft Learn training
     href: /training/browse/?products=azure-cosmos-db
   - name: Whitepapers
-    href: ../whitepapers.md
+    href: ../whitepapers.md?context=/azure/cosmos-db/nosql/context/context
   - name: Partners
-    href: ../partners-migration.md
+    href: ../partners-migration.md?context=/azure/cosmos-db/nosql/context/context
   - name: Microsoft Questions and Answers
     href: /answers/topics/azure-cosmos-db.html
   - name: Videos
@@ -1115,9 +1115,9 @@
   - name: Use cases
     items:
     - name: Common use cases
-      href: ../use-cases.md
+      href: ../use-cases.md?context=/azure/cosmos-db/nosql/context/context
     - name: Social media apps
-      href: ../social-media-apps.md
+      href: ../social-media-apps.md?context=/azure/cosmos-db/nosql/context/context
     - name: AI agents
-      href: ../ai-agents.md
+      href: ../ai-agents.md?context=/azure/cosmos-db/nosql/context/context
       
