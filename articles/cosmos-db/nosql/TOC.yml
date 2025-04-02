@@ -3,6 +3,8 @@
 - name: Overview
   expanded: true
   items:
+    - name: Introduction
+      href: overview.md
     - name: FAQ
       href: faq.yml
     - name: Understand distributed NoSQL
