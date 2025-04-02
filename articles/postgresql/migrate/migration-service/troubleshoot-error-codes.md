@@ -80,6 +80,20 @@ This error indicates that PostgreSQL has exhausted the shared memory allocated f
 - Ensure that, `max_locks_per_transaction * max_connections > Number of tables + Number of indexes`
 - If the issue persists, consider increasing the shared_buffers parameter to ensure sufficient shared memory is available for lock management.
 
+## Use of CREATE TYPE
+
+### Symptoms
+The migration process halts unexpectedly. Logs display the error: `pg_restore: error: could not execute query: ERROR:  must be superuser to create a base type `.
+
+### Cause
+
+To create a new base type, you must be a superuser (This restriction is made because an erroneous type definition could confuse or even crash the server).
+
+### Resolution
+
+- Custom base type has to be deleted and/or replaced by a recognized base type.
+- More details [here](https://www.postgresql.org/docs/current/sql-createtype.html).
+
 ## Migration error codes
 
 | Error Code | Error message | Resolution |

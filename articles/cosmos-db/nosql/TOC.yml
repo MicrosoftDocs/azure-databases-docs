@@ -247,6 +247,10 @@
       href: model-partition-example.md
     - name: Synthetic partition key
       href: synthetic-partition-keys.md
+    - name: Real-world examples
+      items:
+      - name: Choose a partition key for IoT
+        href: design-partitioning-iot.md
   - name: Partitioning and horizontal scaling
     items:
     - name: Partitioning overview
@@ -312,6 +316,12 @@
         href: ../priority-based-execution.md
       - name: Priority-based execution FAQ
         href: ../priority-based-execution-faq.yml
+    - name: Throughput buckets (preview)
+      items:
+      - name: Throughput buckets overview
+        href: throughput-buckets.md
+      - name: Throughput buckets FAQ
+        href: throughput-buckets-faq.yml
   - name: Change feed
     items:
     - name: Change feed overview
@@ -890,7 +900,7 @@
         href: ../how-to-setup-customer-managed-keys.md
       - name: Configure customer-managed keys on existing accounts with Azure Key Vault
         href: ../how-to-setup-customer-managed-keys-existing-accounts.md
-      - name: customer-managed key (CMK) troubleshooting guide
+      - name: Customer-managed key (CMK) troubleshooting guide
         href: ../cmk-troubleshooting-guide.md
       - name: Configure customer-managed keys with Azure managed hardware security module (HSM) key vault
         href: ../how-to-setup-customer-managed-keys-mhsm.md

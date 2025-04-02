@@ -8,6 +8,12 @@
       href: faq.yml
 - name: Quickstarts
   items:
+    - name: Develop app - Node.js
+      href: quickstart-nodejs.md
+    - name: Develop app - Python
+      href: quickstart-python.md
+    - name: Develop app - .NET
+      href: quickstart-dotnet.md
     - name: Create resources - Azure portal
       href: quickstart-portal.md
     - name: Create resources - Bicep template
@@ -34,6 +40,8 @@
       items:
         - name: Integrated vector database overview
           href: vector-search.md
+        - name: Exact Nearest Neighbor (ENN) Vector Search
+          href: enn-vector-search.md
         - name: Open-source vector databases
           href: vector-search-ai.md
         - name: RAG with Langchain & OpenAI
