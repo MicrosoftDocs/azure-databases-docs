@@ -325,6 +325,12 @@
         href: ../priority-based-execution.md?context=/azure/cosmos-db/nosql/context/context
       - name: Priority-based execution FAQ
         href: ../priority-based-execution-faq.yml?context=/azure/cosmos-db/nosql/context/context
+    - name: Throughput buckets (preview)
+      items:
+      - name: Throughput buckets overview
+        href: throughput-buckets.md
+      - name: Throughput buckets FAQ
+        href: throughput-buckets-faq.yml
   - name: Change feed
     items:
     - name: Change feed overview
