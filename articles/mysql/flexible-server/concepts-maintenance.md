@@ -42,9 +42,9 @@ Unlike routine maintenance, Virtual Canary doesn't follow the 30-day minimum gap
 
 #### Virtual Canary enrollment  
 
-Azure Database for MySQL provides flexibility for customers to manage their participation in the Virtual Canary program. Customers can opt in or out of Virtual Canary as needed for alignment with their operational requirements.
+Azure Database for MySQL provides flexibility for customers to manage their participation in the Virtual Canary program. Customers can opt in or out of the program as needed for alignment with their operational requirements.
 
-To verify if your server is enrolled in the Virtual Canary program, use the following command. If the result includes `"patchStrategy": "VirtualCanary"`, the server is enrolled in the Virtual Canary program.
+To verify if your server is enrolled in the Virtual Canary program, use the following command. If the result includes `"patchStrategy": "VirtualCanary"`, the server is enrolled in the program.
 
 ```bash  
 az mysql flexible-server show --resource-group {resourcegroupname} --name {servername} --query "maintenancePolicy"
@@ -86,13 +86,15 @@ You can define a system-managed schedule or a custom schedule for each flexible 
 > [!IMPORTANT]  
 > As of August 31, 2024, Azure Database for MySQL no longer supports custom maintenance windows for Burstable-tier instances. This change helps simplify maintenance processes and ensure optimal performance. Also, our analysis indicated that the number of users who use custom maintenance windows on Burstable tiers is minimal.
 >
-> Existing Burstable-tier instances with custom maintenance window configurations are unaffected. However, users can no longer modify these settings for the custom maintenance window.
+> Existing Burstable-tier instances with custom maintenance windows are unaffected. However, users can no longer modify these settings for custom maintenance windows.
 >
 > For customers who need custom maintenance windows, we recommend upgrading to the General Purpose or Business Critical tier.
 
 In rare cases, a maintenance event can be canceled by the system or might fail to finish successfully. If a maintenance event fails, the update is reverted, and the previous version of the binaries is restored. In scenarios of failed updates, you might still experience a restart of the server during the maintenance window.
 
 If a maintenance event is canceled or fails, the system sends you a notification. The next attempt to perform maintenance is scheduled according to your current settings. You receive a notification about the next attempt five days in advance.
+
+<a id="near-zero-downtime-maintenance-public-preview"></a>
 
 ## Near-zero-downtime maintenance (preview)
 
@@ -101,7 +103,7 @@ The Azure Database for MySQL *near-zero-downtime maintenance* feature is a groun
 ### Precise downtime expectations
 
 - **Downtime duration**: In most cases, the downtime during maintenance ranges from 10 to 30 seconds.
-- **Additional considerations**: After a failover event, there's an inherent DNS time-to-live (TTL) period of approximately 30 seconds. This period isn't directly controlled by the maintenance process but is a standard part of DNS behavior. So, from a customer's perspective, the total downtime experienced during maintenance could be in the range of 40 to 60 seconds.
+- **Additional considerations**: After a failover event, there's an inherent DNS time-to-live (TTL) period of approximately 30 seconds. This period isn't directly controlled by the maintenance process but is a standard part of DNS behavior. So, from a customer's perspective, the total downtime experienced during maintenance could be 40 to 60 seconds.
 
 ### Conditions and limitations
 
@@ -111,9 +113,11 @@ To achieve the optimal performance that this feature offers, note these conditio
 - **Low workload during maintenance times**: Maintenance periods should coincide with times of low workload on the server to minimize downtime. We encourage you to use the [custom maintenance window](how-to-maintenance-portal.md#specify-maintenance-schedule-options) to schedule maintenance during off-peak hours.
 - **Downtime guarantees**: Although we strive to keep the maintenance downtime as low as possible, we don't guarantee that it will be less than 60 seconds in all circumstances. Various factors, such as high workload or specific server configurations, can increase downtime. In the worst-case scenario, downtime might be similar to that of a standalone server.
 
+<a id="maintenance-reschedule"></a>
+
 ## Maintenance rescheduling
 
-The *maintenance rescheduling* feature gives you greater control over the timing of maintenance activities on your Azure Database for MySQL flexible server. After you receive a maintenance notification, you can reschedule it to a more convenient time, whether it was system or custom managed.
+The *maintenance rescheduling* feature gives you greater control over the timing of maintenance activities on your Azure Database for MySQL flexible server. After you receive a maintenance notification, you can reschedule it to a more convenient time, whether it was system managed or custom managed.
 
 Use this feature to avoid disruptions during critical database operations. We encourage your feedback as we continue to develop this functionality.
 
@@ -125,7 +129,7 @@ Rescheduling isn't confined to fixed time slots. It depends on the earliest and 
 
 Be aware of the following points about the feature:
 
-- **Tier availability**: Maintenance rescheduling isn't available for the Burstable tier. This feature is intended for servers in the production environment, whereas the Burstable compute tier is designed for non-production purposes.
+- **Tier availability**: Maintenance rescheduling isn't available for the Burstable compute tier. This feature is intended for servers in the production environment, whereas the Burstable tier is designed for non-production purposes.
 - **Demand constraints**: Your rescheduled maintenance might be canceled if a high number of maintenance activities occur simultaneously in the same region.
 - **Lock-in period**: Rescheduling is unavailable 15 minutes before the initially scheduled maintenance time, to maintain the reliability of the service.
 - **Rescheduling throttle**: If too many servers in the same region are scheduled for maintenance during the same time, rescheduling requests might fail. If this failure occurs, you receive an error notification that advises you to choose an alternative time slot. Successfully rescheduled maintenance is unlikely to be canceled.
@@ -143,7 +147,7 @@ The maintenance start times differ across regions. Servers in different regions 
 
 ### Why did some servers in the same region receive maintenance notifications while others didn't?
 
-It's possible that the servers that didn't receive notifications were created more recently, and the system determined that they don't yet require maintenance.
+It's possible that the servers that didn't receive notifications were created more recently, and the system determined that they don't yet need maintenance.
 
 ### Can I opt out of scheduled maintenance?
 
