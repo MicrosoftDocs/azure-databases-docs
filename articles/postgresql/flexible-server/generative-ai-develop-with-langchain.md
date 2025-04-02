@@ -3,7 +3,7 @@ title: Using LangChain with Azure Database for PostgreSQL
 description: Integrate Azure Databases for PostgreSQL with AI and LangChain, enabling developers to harness the power of advanced AI capabilities within their applications.
 author: abeomor
 ms.author: abeomorogbe
-ms.date: 03/17/2025
+ms.date: 03/31/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.collection: ce-skilling-ai-copilot
