@@ -1,6 +1,7 @@
 - name: Azure Cosmos DB for PostgreSQL documentation
   href: index.yml
 - name: Overview
+  expanded: true
   items:
   - name: What is Azure Cosmos DB for PostgreSQL?
     href: introduction.md

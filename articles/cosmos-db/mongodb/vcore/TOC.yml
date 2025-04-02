@@ -1,6 +1,7 @@
 - name: Azure Cosmos DB for MongoDB (vCore) documentation
   href: index.yml
 - name: Overview
+  expanded: true
   items:
     - name: What is Azure Cosmos DB for MongoDB (vCore)?
       href: introduction.md
