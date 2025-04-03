@@ -20,7 +20,7 @@ Full-text search functionality in vCore-based Azure Cosmos DB for MongoDB provid
 The integrated text search engine removes the need for external search services. This helps simplify your database architecture. It uses specialized text indexes to handle search operations efficiently. The system processes, tokenizes, and analyzes document content. As a result, your applications can quickly find documents that include specific keywords, phrases, or related terms.
 
 > [!NOTE]
-> The full-text search in vCore-based Azure Cosmos DB for MongoDB uses a PostgreSQL-style TSVector index under the hood, with support for MongoDB’s $text operator..
+> The full-text search in vCore-based Azure Cosmos DB for MongoDB uses a PostgreSQL-style TSVector index under the hood, with support for MongoDB’s `$text` operator.
 
 ## Feature Support
 
@@ -28,7 +28,7 @@ The integrated text search engine removes the need for external search services.
 |--------------------|---------------------|-------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------|
 | **Tokenization**   | Supported           | Breaks down text into individual tokens using TSVector                                          | _Internal processing step; no query needed_                                    |
 | **Stemming**       | Supported           | Converts inflected words to their root form based on language analyzers                         | _Internal processing step; no query needed_                                    |
-| **Language Support** | Partially Supported | Supports common languages like Danish (`da`), Dutch (`nl`), English (`en`), Finnish (`fi`), French (`fr`), German (`de`), Hungarian (`hu`), Italian (`it`), Norwegian (`nb`), Portuguese (`pt`), Romanian (`ro`), Russian (`ru`), Spanish (`es`), Swedish (`sv`), Turkish (`tr`) etc.            | `db.text_search.find({ "$text": { "$search": "leche", "$language": "es" } })` |
+| **Language Support** | Partially Supported | Supports common languages like Danish (`da`), Dutch (`nl`), English (`en`), Finnish (`fi`), French (`fr`), German (`de`), Hungarian (`hu`), Italian (`it`), Norwegian (`nb`), Portuguese (`pt`), Romanian (`ro`), Russian (`ru`), Spanish (`es`), Swedish (`sv`), Turkish (`tr`) etc.            | ```javascript db.text_search.find({ "$text": { "$search": "leche", "$language": "es" } })``` |
 | **Term-Based Search** | Supported         | Exact term search in indexed fields                                                             | `db.movies.find({ "$text": { "$search": "surfer" } })`                        |
 | **Phrase Search**  | Partially Supported | Exact phrase match using quotes. Some compatibility issues exist.                              | `db.text_search.find({ "$text": { "$search": "\"are cats\"" } })`           |
 | **Prefix Query**   | Supported           | Find terms starting with a pattern using regex                                                  | `db.articles.find({ title: { $regex: /^data/i } })`                            |
