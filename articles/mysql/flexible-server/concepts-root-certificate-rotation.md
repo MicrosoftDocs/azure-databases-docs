@@ -127,7 +127,7 @@ Because this update is a client-side change, if multiple clients read data from 
 
 If you're using [data-in replication](/azure/mysql/flexible-server/concepts-data-in-replication) to connect to Azure Database for MySQL, and the data replication is between two Azure Database for MySQL databases, you need to reset the replica by running `CALL mysql.az_replication_change_master`. Provide the new dual-root certificate as the last parameter, [master_ssl_ca](/azure/mysql/flexible-server/how-to-data-in-replication?tabs=bash%2Ccommand-line#link-source-and-replica-servers-to-start-data-in-replication).
 
-## Do I need to take any action needed if I already have DigiCert Global Root G2 in my certificate file?
+## Do I need to take any action if I already have DigiCert Global Root G2 in my certificate file?
 
 No. You don't need to take any action if your certificate file already has the DigiCert Global Root G2 certificate.
 
