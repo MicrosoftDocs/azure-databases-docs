@@ -6014,6 +6014,21 @@
       "source_path_from_root": "/articles/cosmos-db/nosql/security/context/context.json.yml",
       "redirect_url": "/azure/cosmos-db/nosql/context/context.json",
       "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/nosql/troubleshoot-request-timeout.md",
+      "redirect_url": "/azure/cosmos-db/nosql/troubleshoot-request-time-out",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/nosql/troubleshoot-dotnet-sdk-request-timeout.md",
+      "redirect_url": "/azure/cosmos-db/nosql/troubleshoot-dotnet-sdk-request-time-out",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/nosql/troubleshoot-java-sdk-request-timeout.md",
+      "redirect_url": "/azure/cosmos-db/nosql/troubleshoot-java-sdk-request-time-out",
+      "redirect_document_id": true
     }
   ]
 }
