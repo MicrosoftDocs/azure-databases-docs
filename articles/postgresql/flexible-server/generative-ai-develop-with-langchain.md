@@ -20,10 +20,10 @@ This tutorial shows you how to use Azure Database for PostgreSQL integrated [vec
 
 ## Vector Support
 
-Azure Database for PostgreSQL - Flexible Server enables you to efficiently store and query millions of vector embeddings in PostgreSQL. And scale your AI use cases from POC (proof of concept) to production:
+Azure Database for PostgreSQL - Flexible Server enables you to efficiently store and query millions of vector embeddings in PostgreSQL and scale your AI use cases from POC (proof of concept) to production:
 
 -   Provides a familiar SQL interface for querying vector embeddings and relational data.
--   Boosts `pgvector` with a faster and more precise similarity search across 100M+ vectors using DiskANN indexing algorithm.
+-   Boosts `pgvector` with a faster and more precise similarity search across 100M+ vectors using [DiskANN indexing algorithm](https://aka.ms/pg-diskann-docs).
 -   Simplifies operations by integrating relational metadata, vector embeddings, and time-series data into a single database.
 -   Uses the power of the robust PostgreSQL ecosystem and Azure Cloud for enterprise-grade features including replication, and high availability.
 
