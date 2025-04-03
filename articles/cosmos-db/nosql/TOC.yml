@@ -1010,8 +1010,8 @@
           items:
             - name: Troubleshoot query performance
               href: troubleshoot-query-performance.md
-            - name: Troubleshoot service request timeout
-              href: troubleshoot-request-timeout.md
+            - name: Troubleshoot service request time out
+              href: troubleshoot-request-time-out.md
             - name: Troubleshoot request rate too large
               href: troubleshoot-request-rate-too-large.md
             - name: Troubleshoot not found
@@ -1032,8 +1032,8 @@
               href: troubleshoot-dotnet-sdk.md
             - name: Troubleshoot request header too large
               href: troubleshoot-dotnet-sdk-request-header-too-large.md
-            - name: Troubleshoot request timeout
-              href: troubleshoot-dotnet-sdk-request-timeout.md
+            - name: Troubleshoot request time out
+              href: troubleshoot-dotnet-sdk-request-time-out.md
             - name: Troubleshoot slow requests
               href: troubleshoot-dotnet-sdk-slow-request.md
             - name: Troubleshoot service unavailable
@@ -1042,8 +1042,8 @@
           items:
             - name: Troubleshoot Java SDK v4
               href: troubleshoot-java-sdk-v4.md
-            - name: Troubleshoot request timeout
-              href: troubleshoot-java-sdk-request-timeout.md
+            - name: Troubleshoot request time out
+              href: troubleshoot-java-sdk-request-time-out.md
             - name: Troubleshoot service unavailable
               href: troubleshoot-java-sdk-service-unavailable.md
             - name: Troubleshoot- Async Java SDK v2
