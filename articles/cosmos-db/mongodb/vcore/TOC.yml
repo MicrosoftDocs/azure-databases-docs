@@ -49,7 +49,7 @@
       href: burstable-tier.md
     - name: Open source
       href: oss.md
-    - name: Full text search
+    - name: Full-text search
       href: full-text-search.md
     - name: Integrated vector database
       items:
