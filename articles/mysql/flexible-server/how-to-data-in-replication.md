@@ -113,8 +113,8 @@ The following steps prepare and configure the MySQL server hosted on-premises, i
    To require SSL for all user connections, use the following command to create a user:
 
    ```sql
-   CREATE USER 'syncuser'@'%' IDENTIFIED BY 'yourpassword';
-   GRANT REPLICATION SLAVE ON *.* TO ' syncuser'@'%' REQUIRE SSL;
+   CREATE USER 'syncuser'@'%' IDENTIFIED BY 'yourpassword' REQUIRE SSL;
+   GRANT REPLICATION SLAVE ON *.* TO ' syncuser'@'%';
    ```
 
    **Replication without SSL**
