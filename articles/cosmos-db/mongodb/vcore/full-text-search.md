@@ -28,7 +28,7 @@ The integrated text search engine removes the need for external search services.
 |--------------------|---------------------|-------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------|
 | **Tokenization**   | Supported           | Breaks down text into individual tokens using TSVector                                          | _Internal processing step; no query needed_                                    |
 | **Stemming**       | Supported           | Converts inflected words to their root form based on language analyzers                         | _Internal processing step; no query needed_                                    |
-| **Language Support** | Partially Supported | Supports common languages like `en`, `es`, `fr`, etc., matching MongoDB capabilities            | `db.text_search.find({ "$text": { "$search": "leche", "$language": "es" } })` |
+| **Language Support** | Partially Supported | Supports common languages like Danish (`da`), Dutch (`nl`), English (`en`), Finnish (`fi`), French (`fr`), German (`de`), Hungarian (`hu`), Italian (`it`), Norwegian (`nb`), Portuguese (`pt`), Romanian (`ro`), Russian (`ru`), Spanish (`es`), Swedish (`sv`), Turkish (`tr`) etc.            | `db.text_search.find({ "$text": { "$search": "leche", "$language": "es" } })` |
 | **Term-Based Search** | Supported         | Exact term search in indexed fields                                                             | `db.movies.find({ "$text": { "$search": "surfer" } })`                        |
 | **Phrase Search**  | Partially Supported | Exact phrase match using quotes. Some compatibility issues exist.                              | `db.text_search.find({ "$text": { "$search": "\"are cats\"" } })`           |
 | **Prefix Query**   | Supported           | Find terms starting with a pattern using regex                                                  | `db.articles.find({ title: { $regex: /^data/i } })`                            |
@@ -44,23 +44,6 @@ The integrated text search engine removes the need for external search services.
 | **Boost (per-term)** | Not Available     | No dynamic boosting at query time; only field-level weighting                                   | _Not applicable_                                                               |
 | **Proximity Search** | Not Available     | Cannot search for terms within specific word distances                                          | _Not applicable_                                                               |
 
-## Supported Languages
-
-- Danish (`da`)
-- Dutch (`nl`)
-- English (`en`)
-- Finnish (`fi`)
-- French (`fr`)
-- German (`de`)
-- Hungarian (`hu`)
-- Italian (`it`)
-- Norwegian (`nb`)
-- Portuguese (`pt`)
-- Romanian (`ro`)
-- Russian (`ru`)
-- Spanish (`es`)
-- Swedish (`sv`)
-- Turkish (`tr`)
 
 ## Next step
 
