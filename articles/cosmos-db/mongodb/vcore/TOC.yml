@@ -1,9 +1,18 @@
-- name: MongoDB (vCore) documentation
+- name: Azure Cosmos DB for MongoDB (vCore) documentation
   href: index.yml
 - name: Overview
+  expanded: true
   items:
     - name: What is Azure Cosmos DB for MongoDB (vCore)?
       href: introduction.md
+    - name: What is Azure Cosmos DB for MongoDB?
+      href: ../introduction.md?context=/azure/cosmos-db/mongodb/vcore/context/context
+    - name: Your MongoDB app reimagined
+      href: ../reimagined.md?context=/azure/cosmos-db/mongodb/vcore/context/context
+    - name: Choose your model
+      href: ../choose-model.md?context=/azure/cosmos-db/mongodb/vcore/context/context
+    - name: Comparing MongoDB Atlas
+      href: ../cosmos-db-vs-mongodb-atlas.md?context=/azure/cosmos-db/mongodb/vcore/context/context
     - name: FAQ
       href: faq.yml
 - name: Quickstarts
@@ -28,6 +37,10 @@
           href: tutorial-nodejs-web-app.md
 - name: Concepts
   items:
+    - name: Vector database
+      href: vector-search.md
+    - name: Real-time custom content generation
+      href: ai-advertisement-generation.md
     - name: Free tier
       href: free-tier.md
     - name: Multicloud solution
@@ -61,7 +74,7 @@
         - name: Best practices for HA and DR
           href: high-availability-replication-best-practices.md
         - name: Reliability
-          href: /azure/reliability/reliability-cosmos-mongodb?toc=/azure/cosmos-db/mongodb/vcore/toc.json
+          href: /azure/reliability/reliability-cosmos-mongodb?context=/azure/cosmos-db/mongodb/vcore/context/context
     - name: Scalability
       items: 
        - name: Scalability overview
@@ -101,7 +114,7 @@
 - name: How to
   items:
     - name: Visual Studio Code extension
-      href: ../../visual-studio-code-extension.md?pivots=api-mongodb&tabs=CBDMongovCore
+      href: ../../visual-studio-code-extension.md?pivots=api-mongodb&tabs=CBDMongovCore&context=/azure/cosmos-db/mongodb/vcore/context/context
     - name: Use community tools
       items:
         - name: Connect using Studio 3T
@@ -109,7 +122,7 @@
         - name: Connect using MongoDB Shell
           href: how-to-connect-mongo-shell.md
         - name: Connect using Visual Studio Code
-          href: ../../visual-studio-code-extension.md?pivots=api-mongodb      
+          href: ../../visual-studio-code-extension.md?pivots=api-mongodb&context=/azure/cosmos-db/mongodb/vcore/context/context
     - name: Develop applications
       items:
         - name: Create transactions
@@ -185,9 +198,9 @@
 - name: Samples
   items:
     - name: Solution accelerators
-      href: ../../solutions.md?pivots=api-mongodb
+      href: ../../solutions.md?pivots=api-mongodb&context=/azure/cosmos-db/mongodb/vcore/context/context
     - name: AI agent
-      href: ../../ai-agents.md
+      href: ../../ai-agents.md?context=/azure/cosmos-db/mongodb/vcore/context/context
     - name: AI-enhanced advertisement generation
       href: ai-advertisement-generation.md
       
