@@ -1,7 +1,7 @@
 ---
-title: Integrated vector store
+title: Full-Text Search
 titleSuffix: Azure Cosmos DB for MongoDB vCore
-description: Use the integrated vector store in Azure Cosmos DB for MongoDB vCore to enhance AI-based applications.
+description: Explore built-in full text search capabilities in Azure Cosmos DB for MongoDB vCore
 author: khelanmodi
 ms.author: khelanmodi
 ms.service: azure-cosmos-db
@@ -13,19 +13,16 @@ appliesto:
   - ✅ MongoDB vCore
 ---
 
-# Full-Text Search Capabilities in Azure Cosmos DB for MongoDB vCore
+# Full-Text Search Capabilities in Azure Cosmos DB for MongoDB (vCore)
 
-Azure Cosmos DB for MongoDB vCore provides **full-text search capabilities** by supporting MongoDB's `$text` query operator and text indexes. This allows developers to perform efficient search operations across one or more text fields within documents. This feature is suitable for use cases like blog search, product catalogs, and user-generated content.
+Full-text search functionality in vCore-based Azure Cosmos DB for MongoDB provides powerful document searching capabilities beyond traditional query methods. This advanced search technique enables users to discover relevant content based on natural language processing, word variations, and contextual relevance—not just exact matches.
 
-## What is Text Search?
+The integrated text search engine removes the need for external search services. This helps simplify your database architecture. It uses specialized text indexes to handle search operations efficiently. The system processes, tokenizes, and analyzes document content. As a result, your applications can quickly find documents that include specific keywords, phrases, or related terms.
 
-Text search refers to the ability to query and retrieve documents based on the content of their textual fields. Instead of relying on exact field-value matches, text search indexes the content of specified fields, allowing you to search for words, phrases, or patterns. Azure Cosmos DB for MongoDB vCore enables basic text search capabilities using the `$text` query operator.
+> [!NOTE]
+> The full-text search in vCore-based Azure Cosmos DB for MongoDB uses a PostgreSQL-style TSVector index under the hood, with support for MongoDB’s $text operator..
 
-This feature is especially useful for applications involving large amounts of text such as blogs, reviews, articles, or catalog metadata. It works by tokenizing the text (splitting it into individual words), applying stemming (reducing words to their root form), and indexing the results for fast lookups.
-
-The underlying implementation in vCore uses PostgreSQL's TSVector approach to build the text index and supports many of the same query styles as MongoDB Atlas.
-
-## Full-Text Search Feature Support
+## Feature Support
 
 | Feature            | Support Level       | Description                                                                                     | Sample Query                                                                 |
 |--------------------|---------------------|-------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------|
@@ -39,24 +36,13 @@ The underlying implementation in vCore uses PostgreSQL's TSVector approach to bu
 | **Regex Search**   | Supported           | Use regular expressions for flexible text pattern matching                                      | `db.articles.find({ title: { $regex: /^hello.*world$/i } })`                   |
 | **Boolean Operators** | Supported         | Use `+`, `-` to include/exclude terms                                                           | `db.text_search.find({ "$text": { "$search": "cafe +con" } })`                |
 | **Multi-Match**    | Partially Supported | Multi-field query via combined index with weights                                              | `db.myColl.createIndex({ title: "text", genre: "text" }, { default_language: "english", weights: { title: 10, genre: 3 } })` |
+| **Faceted Search** | Not Available       | Filter search results by categories or tags (e.g., brand, color, price). Not supported natively in vCore text search. | _Not applicable_ |
+| **Autocomplete & Boost** | Not Available | Autocomplete (type-ahead suggestions) and query-time boosting of specific terms are not supported. Boosting can only be done at index level via field weights. | _Not applicable_ |
 | **Custom Analyzers** | Not Available      | Custom tokenization or filtering not supported                                                  | _Not applicable_                                                               |
 | **Synonym Support** | Not Available      | No native support for synonyms                                                                 | _Not applicable_                                                               |
 | **Fuzzy Search**   | Not Available       | No typo-tolerant or fuzzy match support                                                         | _Not applicable_                                                               |
 | **Boost (per-term)** | Not Available     | No dynamic boosting at query time; only field-level weighting                                   | _Not applicable_                                                               |
 | **Proximity Search** | Not Available     | Cannot search for terms within specific word distances                                          | _Not applicable_                                                               |
-| **Faceted Search** | Not Available     | filter search results by different attributes or categories, making it easier to find relevant information | _Not applicable_                                                               |
-| **Autocomplete & Boost** | Not Available     |                              TODO             | _Not applicable_                                                               |
-
----
-
-## Aggregation and Compatibility Notes
-
-- **Aggregation Compatibility**: `$text` is not recognized in all aggregation stages; use `cosmosSearch` or `knnBeta` in aggregation instead.
-- **One Text Index per Collection**: MongoDB allows only one text index; multi-field support must be combined in that one index.
-- **No Regex in $text**: `$text` does not support wildcards or partial word matching directly—use regex separately.
-- **No Fuzzy Matching, Synonyms, or Proximity**: Advanced search features are not available in the vCore `$text` operator.
-
----
 
 ## Supported Languages
 
@@ -75,19 +61,6 @@ The underlying implementation in vCore uses PostgreSQL's TSVector approach to bu
 - Spanish (`es`)
 - Swedish (`sv`)
 - Turkish (`tr`)
-
----
-
-## Summary
-
-Azure Cosmos DB for MongoDB vCore enables developers to use familiar MongoDB-style full-text search capabilities with support for tokenization, stemming, boolean logic, and basic multi-field indexes. However, it lacks advanced features like fuzzy matching, synonyms, or custom analyzers.
-
-To build performant and accurate search experiences, developers should:
-- Combine text search with regex where needed
-- Carefully construct multi-field indexes with weights
-- Understand the underlying language and stemming behavior
-
-For more complex search scenarios (e.g., typo-tolerance, semantic search), consider combining vCore with external search solutions such as Azure Cognitive Search.
 
 ## Next step
 
