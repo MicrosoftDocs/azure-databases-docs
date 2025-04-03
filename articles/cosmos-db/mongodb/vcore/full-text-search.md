@@ -26,9 +26,9 @@ The integrated text search engine removes the need for external search services.
 ## Feature Support
 | Feature            | Support Level       | Description                                                                                     | Sample Query                                                                 |
 |--------------------|---------------------|-------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------|
-| **Tokenization**   | Supported           | Breaks down text into individual tokens using TSVector                                          | _Internal processing step; no query needed_                                    |
-| **Stemming**       | Supported           | Converts inflected words to their root form based on language analyzers                         | _Internal processing step; no query needed_                                    |
-| **Language Support** | Partially Supported | Supports common languages like Danish (`da`), Dutch (`nl`), English (`en`), Finnish (`fi`), French (`fr`), German (`de`), Hungarian (`hu`), Italian (`it`), Norwegian (`nb`), Portuguese (`pt`), Romanian (`ro`), Russian (`ru`), Spanish (`es`), Swedish (`sv`), Turkish (`tr`) etc.            | ```javascript db.text_search.find({ "$text": { "$search": "leche", "$language": "es" } })``` |
+| **Tokenization**   | Supported           | Breaks down text into individual tokens using TSVector                                          | _Not applicable_                                    |
+| **Stemming**       | Supported           | Converts inflected words to their root form based on language analyzers                         | _Not applicable_                                    |
+| **Language Support** | Partially Supported | Supports common languages like Danish (`da`), Dutch (`nl`), English (`en`), Finnish (`fi`), French (`fr`), German (`de`), Hungarian (`hu`), Italian (`it`), Norwegian (`nb`), Portuguese (`pt`), Romanian (`ro`), Russian (`ru`), Spanish (`es`), Swedish (`sv`), Turkish (`tr`) etc.            | `db.text_search.find({ "$text": { "$search": "leche", "$language": "es" } })` |
 | **Term-Based Search** | Supported         | Exact term search in indexed fields                                                             | `db.movies.find({ "$text": { "$search": "surfer" } })`                        |
 | **Phrase Search**  | Partially Supported | Exact phrase match using quotes. Some compatibility issues exist.                              | `db.text_search.find({ "$text": { "$search": "\"are cats\"" } })`           |
 | **Prefix Query**   | Supported           | Find terms starting with a pattern using regex                                                  | `db.articles.find({ title: { $regex: /^data/i } })`                            |
@@ -41,9 +41,7 @@ The integrated text search engine removes the need for external search services.
 | **Custom Analyzers** | Not Available      | Custom tokenization or filtering not supported                                                  | _Not applicable_                                                               |
 | **Synonym Support** | Not Available      | No native support for synonyms                                                                 | _Not applicable_                                                               |
 | **Fuzzy Search**   | Not Available       | No typo-tolerant or fuzzy match support                                                         | _Not applicable_                                                               |
-| **Boost (per-term)** | Not Available     | No dynamic boosting at query time; only field-level weighting                                   | _Not applicable_                                                               |
 | **Proximity Search** | Not Available     | Cannot search for terms within specific word distances                                          | _Not applicable_                                                               |
-
 
 ## Next step
 
