@@ -24,7 +24,6 @@ The integrated text search engine removes the need for external search services.
 > The full-text search in vCore-based Azure Cosmos DB for MongoDB uses a PostgreSQL-style TSVector index under the hood, with support for MongoDB’s `$text` operator.
 
 ## Feature Support
-
 | Feature            | Support Level       | Description                                                                                     | Sample Query                                                                 |
 |--------------------|---------------------|-------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------|
 | **Tokenization**   | Supported           | Breaks down text into individual tokens using TSVector                                          | _Internal processing step; no query needed_                                    |
