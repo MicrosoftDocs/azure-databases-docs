@@ -1,17 +1,19 @@
 ---
-title: Troubleshoot Azure Cosmos DB HTTP 408 or request timeout issues with the .NET SDK
+title: Troubleshoot HTTP 408 or request timeout issues with the .NET SDK
+titleSuffix: Azure Cosmos DB for NoSQL
 description: Learn how to diagnose and fix .NET SDK request timeout exceptions.
 author: markjbrown
+ms.author: mjbrown
 ms.service: azure-cosmos-db
 ms.subservice: nosql
-ms.date: 11/16/2023
-ms.author: mjbrown
 ms.topic: troubleshooting
+ms.date: 04/03/2025
 ms.custom: devx-track-dotnet
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Diagnose and troubleshoot Azure Cosmos DB .NET SDK request timeout exceptions
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
 
 The HTTP 408 error occurs if the SDK was unable to complete the request before the timeout limit occurred.
 
@@ -19,9 +21,9 @@ It is important to make sure the application design is following our [guide for 
 
 When evaluating the case for timeout errors:
 
-* What is the impact measured in volume of operations affected compared to the operations succeeding? Is it within the service SLAs?
-* Is the P99 latency / availability affected?
-* Are the failures affecting all your application instances or only a subset? When the issue is reduced to a subset of instances, it's commonly a problem related to those instances.
+- What is the impact measured in volume of operations affected compared to the operations succeeding? Is it within the service SLAs?
+- Is the P99 latency / availability affected?
+- Are the failures affecting all your application instances or only a subset? When the issue is reduced to a subset of instances, it's commonly a problem related to those instances.
 
 ## Customize the timeout on the Azure Cosmos DB .NET SDK
 
@@ -69,27 +71,25 @@ The timeouts will contain *Diagnostics*, which contain:
 
 ```json
 "systemHistory": [
-{
-"dateUtc": "2021-11-17T23:38:28.3115496Z",
-"cpu": 16.731,
-"memory": 9024120.000,
-"threadInfo": {
-"isThreadStarving": "False",
-....
-}
-
-},
-{
-"dateUtc": "2021-11-17T23:38:28.3115496Z",
-"cpu": 16.731,
-"memory": 9024120.000,
-"threadInfo": {
-"isThreadStarving": "False",
-....
-}
-
-},
-...
+  {
+    "dateUtc": "2021-11-17T23:38:28.3115496Z",
+    "cpu": 16.731,
+    "memory": 9024120.000,
+    "threadInfo": {
+      "isThreadStarving": "False",
+      ...
+    }
+  },
+  {
+    "dateUtc": "2021-11-17T23:38:28.3115496Z",
+    "cpu": 16.731,
+    "memory": 9024120.000,
+    "threadInfo": {
+      "isThreadStarving": "False",
+      ...
+    }
+  },
+  ...
 ]
 ```
 
@@ -147,8 +147,8 @@ Creating multiple client instances might lead to connection contention and timeo
 
 ```json
 {
-    "NumberOfClientsCreated":X,
-    "NumberOfActiveClients":Y,
+  "NumberOfClientsCreated":X,
+  "NumberOfActiveClients":Y,
 }
 ```
 
@@ -191,7 +191,7 @@ The application should be able to handle transient failures and retry when neces
 
 Contact [Azure Support](https://aka.ms/azure-support).
 
-## Next steps
+## Related content
 
-* [Diagnose and troubleshoot](troubleshoot-dotnet-sdk.md) issues when you use the Azure Cosmos DB .NET SDK.
-* Learn about performance guidelines for [.NET v3](performance-tips-dotnet-sdk-v3.md) and [.NET v2](performance-tips.md).
+- [Diagnose and troubleshoot](troubleshoot-dotnet-sdk.md) issues when you use the Azure Cosmos DB .NET SDK.
+- Learn about performance guidelines for [.NET v3](performance-tips-dotnet-sdk-v3.md) and [.NET v2](performance-tips.md).
