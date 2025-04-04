@@ -39,6 +39,10 @@ CALL az_uninstall_validate_password_plugin();
 ```
 This store procedure removes the plugin.
 
+> [!NOTE]  
+> - For **HA (High Availability) servers**, these stored procedures must be first executed on the **primary** server, after that, perform a **forced failover**, and re-execute the store procedures on the new primary.  
+> - For **Replica servers**, executing these stored procedures on the primary will **not** automatically sync to replicas. They must be manually executed on **each** replica after running them on the primary.
+
 ### 3. **Undo log cleanup**
 In some cases your undo log might grow large, and you might want to clean it up. Azure Database for MySQL provides a stored procedure to help you with this task.
 1. To check your table space, first execute the following command.

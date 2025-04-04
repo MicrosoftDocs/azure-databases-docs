@@ -14,7 +14,7 @@ ms.custom:
   - build-2024
 ---
 
-# Azure AI extension in Azure Database for PostgreSQL flexible server
+# Azure AI extension in Azure Database for PostgreSQL
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
