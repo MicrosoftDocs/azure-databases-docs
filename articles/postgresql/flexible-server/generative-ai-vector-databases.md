@@ -12,7 +12,7 @@ ms.custom:
 ms.topic: conceptual
 ---
 
-# Vector Search in Azure Database for PostgreSQL
+# Vector search in Azure Database for PostgreSQL
 
 Vector databases are used in numerous domains and situations across analytical and generative AI, including natural language processing, video and image recognition, recommendation system, and search, among others.
 

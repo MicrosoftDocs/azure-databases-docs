@@ -92,7 +92,7 @@ embeddings = AzureOpenAIEmbeddings(
 
 ## Initialization
 
-### Entra Authentication
+### Microsoft Entra Authentication
 
 The cell below contains functions that set up LangChain to use Entra authentication. It provides a function `get_token_and_username` that retrieves tokens for the Azure Databases for PostgreSQL service using `DefaultAzureCredential` from the `azure.identity` library. It ensures the sqlalchemy engine has a valid token with which to create new connections. It also parses the token, which is a Java Web Token (JWT), to extract the username that is used to connect to the database.
 
@@ -172,7 +172,7 @@ def create_postgres_engine():
     return engine
 ```
  
-### Password Authentication
+### Password authentication
 
 If not using Entra authentication, the `get_connection_uri` provides a connection URI that pulls the username and password from environment
 variables.
@@ -289,7 +289,7 @@ vector_store.delete(ids=["3"])
 
 When your vector store has been created and the relevant documents has been added, you can query the vector store in your chain or agent.
 
-### Filtering Support
+### Filtering support
 
 The vector store supports a set of filters that can be applied against the metadata fields of the documents.
 
@@ -389,13 +389,13 @@ retriever.invoke("kitty")
 [Document(id='1', metadata={'id': 1, 'topic': 'animals', 'location': 'pond'}, page_content='there are cats in the pond')]
 ```
 
-## Current Limitations
+## Current limitations
 
 -   langchain_postgres works only with psycopg3. Update your connection strings from `postgresql+psycopg2://...` to `postgresql+psycopg://langchain:langchain@...` 
 -   The schema of the embedding store and collection has changed to make add_documents work correctly with user specified IDs.
 -   One has to pass an explicit connection object now.
 
-Currently, there is **no mechanism** that supports easy data migration on schema changes. So any schema changes in the vector store requires the user to recreate the tables and readd the documents.
+Currently, there is **no mechanism** that supports easy data migration on schema changes. So any schema changes in the vector store require the user to recreate the tables and readd the documents.
 
 
 ## Related content
