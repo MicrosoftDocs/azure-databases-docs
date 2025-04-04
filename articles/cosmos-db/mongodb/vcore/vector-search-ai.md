@@ -53,6 +53,7 @@ A vector database that is integrated in a highly performant NoSQL or relational 
 
 Choosing the best open-source vector database requires considering several factors. Performance and scalability of the database are crucial, as they impact whether the database can handle your specific workload requirements. Databases with efficient indexing and querying capabilities usually offer optimal performance. Another factor is the community support and documentation available for the database. A robust community and ample documentation can provide valuable assistance. Here are some popular open-source vector databases:
 
+- [DocumentDB](https://aka.ms/documentdb_github)
 - Chroma
 - Milvus
 - Qdrant

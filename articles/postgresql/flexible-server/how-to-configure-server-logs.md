@@ -33,11 +33,11 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="./media/how-to-configure-server-logs/server-logs-page-disabled.png" alt-text="Screenshot showing the Server logs page." lightbox="./media/how-to-configure-server-logs/server-logs-page-disabled.png":::
 
-3. Under **Download server logs**, mark the **Enable** checkbox.
+3. Mark the **Capture logs for download** checkbox.
 
-    :::image type="content" source="./media/how-to-configure-server-logs/enable-server-logs.png" alt-text="Screenshot showing how to configure the server for PostgreSQL server logs and major version upgrade logs to be captured. You can download captured log files  for inspection." lightbox="./media/how-to-configure-server-logs/enable-server-logs.png":::
+    :::image type="content" source="./media/how-to-configure-server-logs/enable-server-logs.png" alt-text="Screenshot showing how to configure the server for PostgreSQL server logs and major version upgrade logs to be captured. You can download captured log files for inspection." lightbox="./media/how-to-configure-server-logs/enable-server-logs.png":::
 
-4. By default, log files are retained for three days, but you can adjust the retention period from 1 to 7 days. Use the **Retention period (in days)** slicer to adjust to your desired configuration.
+4. By default, log files are retained for three days, but you can adjust the retention period from 1 to 7 days. Use the **Log retention period (in days)** slicer to adjust to your desired configuration.
 
     :::image type="content" source="./media/how-to-configure-server-logs/adjust-retention.png" alt-text="Screenshot showing how to adjust the retention period for PostgreSQL server logs and major version upgrade logs captured." lightbox="./media/how-to-configure-server-logs/adjust-retention.png":::
 
@@ -96,7 +96,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="./media/how-to-configure-server-logs/server-logs-page-enabled-with-logs-captured.png" alt-text="Screenshot showing the Server logs page." lightbox="./media/how-to-configure-server-logs/server-logs-page-enabled-with-logs-captured.png":::
 
-3. Under **Download server logs**, clear the **Enable** checkbox.
+3. Clear the **Capture logs for download** checkbox.
 
     :::image type="content" source="./media/how-to-configure-server-logs/disable-server-logs.png" alt-text="Screenshot showing how to configure the server so that PostgreSQL server logs and major version upgrade logs stop being captured for download." lightbox="./media/how-to-configure-server-logs/disable-server-logs.png":::
 
@@ -136,11 +136,11 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="./media/how-to-configure-server-logs/server-logs-page-enabled-with-logs-captured.png" alt-text="Screenshot showing the Server logs page with some logs captured." lightbox="./media/how-to-configure-server-logs/server-logs-page-enabled-with-logs-captured.png":::
 
-3. A table shows all captured log files which aren't deleted yet. Files which were captured at some point, but were deleted because they exceeded the configured retention period, aren't visible or accessible anymore. Using the **Search for a log file**, **Log time range**, and **Log Type** boxes, you can define filtering conditions to reduce the logs shown. By selecting a column header, you can sort the list of visible log files, in ascending or descending order, by the value of the attribute represented by the selected header. Under each available column, you can see the different attributes of each file:
+3. A table shows all captured log files which aren't deleted yet. Files which were captured at some point, but were deleted because they exceeded the configured retention period, aren't visible or accessible anymore. Using the **Search for files with names that contain**, **Time range**, and **Log type** boxes, you can define filtering conditions to reduce the logs shown. By selecting a column header, you can sort the list of visible log files, in ascending or descending order, by the value of the attribute represented by the selected header. Under each available column, you can see the different attributes of each file:
     - **Name**: Name of the log file. The service assigns each log file a name with this pattern `postgresql_yyyy_mm_dd_hh_00_00.log`.
     - **Last update time**: Timestamp of the last time each log file was uploaded. Log files are uploaded, approximately, every 10 minutes.
     - **Size**: Size in bytes occupied by the log file.
-    - **Log Type**: **Server Log** indicates the file corresponds to a PostgreSQL server log. **Upgrade Log** indicates the file corresponds to a major version upgrade log.
+    - **Log type**: **Server log** indicates the file corresponds to a PostgreSQL server log. **Upgrade log** indicates the file corresponds to a major version upgrade log.
 
     :::image type="content" source="./media/how-to-configure-server-logs/server-logs-page-enabled-with-logs-captured-filter-sort.png" alt-text="Screenshot showing the Server logs page with some logs captured and highlighting column headers." lightbox="./media/how-to-configure-server-logs/server-logs-page-enabled-with-logs-captured-filter-sort.png":::
 
@@ -190,7 +190,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="./media/how-to-configure-server-logs/server-logs-page-enabled-with-logs-captured.png" alt-text="Screenshot showing the Server logs page with some logs captured." lightbox="./media/how-to-configure-server-logs/server-logs-page-enabled-with-logs-captured.png":::
 
-3. A table shows all captured log files which aren't deleted yet. Files which were captured at some point, but were deleted because they exceeded the configured retention period, aren't visible or accessible anymore. Using the **Search for a log file**, **Log time range**, and **Log Type** boxes, you can define filtering conditions to reduce the logs shown. By selecting a column header, you can sort the list of visible log files, in ascending or descending order, by the value of the attribute represented by the selected header. Identify the log that you want to download and, under the **Actions** column, select **Download**.
+3. A table shows all captured log files which aren't deleted yet. Files which were captured at some point, but were deleted because they exceeded the configured retention period, aren't visible or accessible anymore. Using the **Search for files with names that contain**, **Time range**, and **Log type** boxes, you can define filtering conditions to reduce the logs shown. By selecting a column header, you can sort the list of visible log files, in ascending or descending order, by the value of the attribute represented by the selected header. Identify the log that you want to download and, under the **Actions** column, select **Download**.
 
     :::image type="content" source="./media/how-to-configure-server-logs/server-logs-page-enabled-with-logs-captured-download.png" alt-text="Screenshot showing the Server logs page with some logs captured and highlighting how to download one of them." lightbox="./media/how-to-configure-server-logs/server-logs-page-enabled-with-logs-captured-download.png":::
 

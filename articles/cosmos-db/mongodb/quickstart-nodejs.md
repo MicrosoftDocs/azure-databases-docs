@@ -8,7 +8,7 @@ ms.service: azure-cosmos-db
 ms.subservice: mongodb
 ms.devlang: typescript
 ms.topic: quickstart-sdk
-ms.date: 01/29/2025
+ms.date: 03/25/2025
 ms.custom: devx-track-js, devx-track-ts, devx-track-dotnet, devx-track-extended-azdevcli
 zone_pivot_groups: azure-devlang-nodejs
 appliesto:
@@ -366,7 +366,7 @@ For more information, see [How-to use Visual Studio Code extension to explore Az
 When you no longer need the sample application or resources, remove the corresponding deployment and all resources.
 
 ```azurecli
-azd down
+azd down --force --purge
 ```
 
 ## Related content

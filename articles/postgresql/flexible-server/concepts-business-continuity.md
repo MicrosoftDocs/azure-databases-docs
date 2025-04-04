@@ -113,4 +113,7 @@ Below are some unplanned failure scenarios and the recovery process.
 ## Related content
 
 - [High availability in Azure Database for PostgreSQL flexible server](/azure/reliability/reliability-postgresql-flexible-server).
-- [Point-in-time restore of an Azure Database for PostgreSQL flexible server instance](how-to-restore-server.md).
+- [Restore to latest restore point](how-to-restore-latest-restore-point.md).
+- [Restore to custom restore point](how-to-restore-custom-restore-point.md).
+- [Restore to full backup (fast restore)](how-to-restore-full-backup.md).
+- [Restore to paired region (geo-restore)](how-to-restore-paired-region.md).

@@ -7,15 +7,40 @@
   ms.service: azure-cosmos-db
   ms.subservice: mongodb-vcore
   ms.topic: conceptual
-  ms.date: 09/17/2024
+  ms.date: 03/24/2025
 ---
 
 # Change Stream on vCore-based Azure Cosmos DB for MongoDB (Preview)
 
 Change streams are a real-time stream of database changes that flows from your database to your application. This feature enables you to build reactive applications by subscribing to database changes, eliminating the need for continuous polling to detect changes.
 
-> [!NOTE]
-> Please register to enrol your interest using [Form](https://forms.office.com/r/G76XDQ6YSE).
+## Enable change streams
+
+You can enable or disable this feature using the Azure CLI or an ARM template. Portal support will be added soon.
+
+### Steps to enable change streams on vCore cluster via CLI
+
+1. Log in to Azure CLI
+
+```bash
+az login
+```
+
+2. Retrieve the current settings for the feature flags on your cluster. This ensures you retain any existing flags while adding the new feature.
+
+```bash
+az resource show --ids "/subscriptions/<sub id>/resourceGroups/<resource group name>/providers/Microsoft.DocumentDB/mongoClusters/<resource name of your Cosmos DB for MongoDB vCore cluster>" --api-version 2024-10-01-preview
+```
+
+3. Send PATCH request to enable the feature.
+
+```bash
+az resource patch --ids "/subscriptions/<subscription_id>/resourceGroups/<resource_group_name>/providers/Microsoft.DocumentDB/mongoClusters/<vCore_cluster_name>" --api-version 2024-10-01-preview --properties "{\"previewFeatures\": [ \"ChangeStreams\"]}"
+```
+
+4. Verify result:
+   - Ensure the response payload includes `"previewFeatures": ["ChangeStreams"]`.
+   - If you encounter the error "change streams isn't supported on this cluster," please create a support request.
 
 ## Configuring change streams
 
@@ -108,7 +133,7 @@ public class ChangeStreamExample {
 ---
 
 > [!IMPORTANT]
-> Change streams are resumable by specifying a resume token to `resumeAfter` when opening the cursor. Though it is expected that there is enough history to locate the operation associated with the token. The document observed in changestream in `_id` field represents the resumable token.
+> Change streams are resumable by specifying a resume token to `resumeAfter` when opening the cursor. Though, it's expected that there's enough history to locate the operation associated with the token. The document observed in change stream in `_id` field represents the resumable token.
 >
 > `cursor = db.exampleCollection.watch(resume_after=resume_token)`
 
@@ -190,14 +215,9 @@ Customize your change stream output by specifying an array of one or more pipeli
 
 ## Limitations
 
-- Debezium connector is yet not supported.
-- Pymongo driver is yet not a supported option.
-- `Replace` event is yet not supported.
-- `pre-image` is yet an unsupported option.
-- Change stream cursors need to be reinitialized after a fail-over event at current state.
 - Historical change stream events from past timeline are yet not supported.
-- `Update` event yet doesn't support Update description.
 - Change stream events on multi-shard cluster are yet not supported.
-- Change stream on a sharded collection is yet not supported.
-- `showexpandedevents` isn't supported yet. It includes `createIndex`, `dropIndex`, `createCollection`, `rename` etc.
+- Change stream cursors need to be reinitialized after a fail-over event at current state.
+- `Update` event yet doesn't support Update description.
+- `pre-image` is an unsupported option.
 - `$changestream` as a nested pipeline of another stage is yet not supported.
