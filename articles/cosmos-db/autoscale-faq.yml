@@ -51,7 +51,7 @@ sections:
           az cosmosdb show --name '<cosmos-account-name>' --resource-group '<resource-group-name>'
           ```
       - question: |     
-          What metric can be used for scaling up and scaling down the throughput programatically?
+          What metric should be used to determine whether the autoscale max RU/s or manual provisioned RU/s can be scaled up or down programatically?
         answer: |
           Use the Normalized RU Consumption metric in Azure Monitor to make programmatic scaling decisions. However, using Cosmos DB’s native autoscale is recommended to seamlessly take advantage of ongoing improvements and optimizations made to this feature. ReadThroughputAsync() API and Provisioned Throughput metric reflect billed throughput with a delay and shouldn't be used for scaling decisions. 
       - question: |
