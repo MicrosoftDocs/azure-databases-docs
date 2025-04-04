@@ -22,7 +22,7 @@
   - name: Request quota increase
     href: flexible-server/how-to-request-quota-increase.md
   - name: Resolve capacity errors
-    href: flexible-server/how-to-resolve-capacity-errors.md    
+    href: flexible-server/how-to-resolve-capacity-errors.md  
   - name: Known issues & limitations
     href: single-server/concepts-known-issues-limitations.md
     displayName: issues, limitations, postgresql
@@ -122,16 +122,6 @@
       href: flexible-server/concepts-firewall-rules.md
     - name: Security
       href: flexible-server/concepts-security.md
-    - name: Generative AI
-      items:
-      - name: Overview
-        href: flexible-server/generative-ai-overview.md
-      - name: Semantic Search
-        href: flexible-server/generative-ai-semantic-search.md
-      - name: Recommendation System
-        href: flexible-server/generative-ai-recommendation-system.md
-      - name: Integrate Azure AI capabilities
-        href: flexible-server/how-to-integrate-azure-ai.md
     - name: Import and export data
       items:
       - name: azure_storage extension
@@ -369,6 +359,29 @@
         href: flexible-server/concepts-connection-pooling-best-practices.md
     - name: Azure Advisor recommendations
       href: flexible-server/concepts-azure-advisor-recommendations.md
+  - name: Generative AI
+    items:
+      - name: Overview
+        href: flexible-server/generative-ai-overview.md
+      - name: AI Agents 
+        href: flexible-server/generative-ai-agents.md
+      - name: Vector Databases
+        items:
+        - name: Using vector databases in Postgres
+          href: flexible-server/generative-ai-vector-databases.md
+      - name:  AI Frameworks
+        items:
+        - name: Overview
+          href: flexible-server/generative-ai-frameworks.md
+        - name: Develop with LangChain
+          href: flexible-server/generative-ai-develop-with-langchain.md
+      - name: Semantic Search
+        href: flexible-server/generative-ai-semantic-search.md
+      - name: Recommendation System
+        href: flexible-server/generative-ai-recommendation-system.md
+      - name: Integrate Azure AI capabilities
+        href: flexible-server/how-to-integrate-azure-ai.md
+
   - name: Integrations
     items:
     - name: Manage Azure resources with automation tasks
@@ -658,8 +671,6 @@
         href: migrate/migration-service/concepts-migration-service-runtime-server.md
       - name: Required User Permissions
         href: migrate/migration-service/concepts-required-user-permissions.md
-      - name: Migration Configuration Parameters
-        href: migrate/migration-service/concepts-migration-server-parameters.md
       - name: Extension Migrations
         href: migrate/migration-service/concepts-migration-extensions.md
       - name: Best practices
