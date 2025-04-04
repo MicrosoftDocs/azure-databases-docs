@@ -97,7 +97,7 @@ Dynamic scaling is enabled by default for all Azure Cosmos DB accounts created a
     :::image type="content" source="media/autoscale-per-partition-region/enable-feature.png" lightbox="media/autoscale-per-partition-region/enable-feature.png" alt-text="Screenshot of the 'Dynamic Scaling (Per Region and Per Partition Autoscale)' feature in the Azure portal.":::
 
     > [!IMPORTANT]
-    > The feature is enabled at the account level, so all autoscale containers and shared throughput databases within the account will automatically have this capability applied. Enabling this feature does not affect resources in the account that are using manual throughput. Manual resources will need to be changed to autoscale to take advantage of dynamic scaling. Enabling this feature has zero downtime or performance impact. This feature is not applicable for serverless accounts. This feature is supported on all clouds.
+    > The feature is enabled at the account level, so all autoscale containers and autoscale shared throughput databases within the account will automatically have this capability applied. Enabling this feature does not affect resources in the account that are using manual throughput. Manual resources will need to be changed to autoscale to take advantage of dynamic scaling. Enabling this feature has zero downtime or performance impact. This feature is not applicable for serverless accounts. This feature is supported on all clouds.
 
 ## Monitoring Metrics
 
