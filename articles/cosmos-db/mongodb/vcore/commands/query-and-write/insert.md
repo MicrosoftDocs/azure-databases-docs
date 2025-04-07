@@ -42,7 +42,7 @@ db.collection.insert(
 
 ## Example(s)
 
-### Inserting a Single Document
+### Inserting a single document
 
 The following command inserts a single document into the stores collection in the StoreData database.
 
@@ -112,7 +112,7 @@ db.stores.insertOne({
 })
 ```
 
-### Inserting Multiple Documents
+### Inserting multiple documents
 
 The following command inserts an array of documents into the stores collection.
 
