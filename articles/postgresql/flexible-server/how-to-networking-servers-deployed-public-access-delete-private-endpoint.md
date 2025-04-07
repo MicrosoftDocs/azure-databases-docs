@@ -29,19 +29,15 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="./media/how-to-networking/public-access-networking-disabled-approved-endpoint.png" alt-text="Screenshot showing the Networking page." lightbox="./media/how-to-networking/public-access-networking-disabled-approved-endpoint.png":::
 
-3. Select the private endpoint connection that you want to delete.
-
-    :::image type="content" source="./media/how-to-networking/public-access-networking-disabled-approved-endpoint-select.png" alt-text="Screenshot showing how to begin deleting an existing private endpoint connection." lightbox="./media/how-to-networking/public-access-networking-disabled-approved-endpoint-select.png":::
-
-4. Select **Delete** to trigger the deletion of the private endpoint connection.
+3. Select the private endpoint connection that you want to delete, and select **Delete** to trigger the deletion of the private endpoint connection.
 
     :::image type="content" source="./media/how-to-networking/public-access-networking-disabled-approved-endpoint-delete.png" alt-text="Screenshot showing the Delete button to trigger the deletion of an existing private endpoint connection." lightbox="./media/how-to-networking/public-access-networking-disabled-approved-endpoint-delete.png":::
 
-5. A notification informs you that the private endpoint connection is being deleted.
+4. A notification informs you that the private endpoint connection is being deleted.
 
     :::image type="content" source="./media/how-to-networking/public-access-networking-disabled-approved-endpoint-deleting-notification.png" alt-text="Screenshot showing the notification informing that it-s deleting the private endpoint connection." lightbox="./media/how-to-networking/public-access-networking-disabled-approved-endpoint-deleting-notification.png":::
 
-6. When the operation completes, a notification informs you that the private endpoint connection was successfully deleted.
+5. When the operation completes, a notification informs you that the private endpoint connection was successfully deleted.
 
     :::image type="content" source="./media/how-to-networking/public-access-networking-disabled-approved-endpoint-deleted-notification.png" alt-text="Screenshot showing the notification informing that private endpoint connection is deleted." lightbox="./media/how-to-networking/public-access-networking-disabled-approved-endpoint-deleted-notification.png":::
 
