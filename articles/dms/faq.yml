@@ -154,7 +154,7 @@ sections:
       - question: |
           Is there any data that isn't protected by CMK, and what type of data? For instance, metadata, logs, and so on.
         answer: |
-          We don't expose the capability to encrypt data on our control or data plane with Customer Managed Keys. All customer data is deleted the moment the DMS instance is deleted except service logs. DMS service logs are kept only for 30 days.
+          We don't expose the capability to encrypt data on our control or data plane with Customer Managed Keys. All customer data is deleted the moment the DMS instance is deleted except service logs. DMS service logs are kept only for 6 months.
 
       - question: |
           How does DMS support Customer Managed Keys (CMK)?
