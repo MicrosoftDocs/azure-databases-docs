@@ -143,7 +143,7 @@ Consider this sample document from the stores collection in the StoreData databa
 }
 ```
   
-### Example 1: Retrieve All Documents
+### Example 1: Retrieve all documents
 
 The find() command without any query filters returns all documents in the collection.
 
