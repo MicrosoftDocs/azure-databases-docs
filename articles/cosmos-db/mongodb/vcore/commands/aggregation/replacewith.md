@@ -30,7 +30,7 @@ The `$replaceWith` aggregation stage operator is used to replace the input docum
 
 ## Examples
 
-Consider this sample document from the Sstores collection in the StoreData database.
+Consider this sample document from the stores collection in the StoreData database.
 
 ```json
 {
