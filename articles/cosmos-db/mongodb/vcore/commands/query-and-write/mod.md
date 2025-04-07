@@ -1,7 +1,7 @@
 ---
 title: $mod
 titleSuffix: Overview of the $mod query operator in Azure Cosmos DB for MongoDB vCore
-description: The $mod query operator in Azure Cosmos DB for MongoDB vCore performs a modulo opeation on the value of a specified field
+description: The $mod query operator in Azure Cosmos DB for MongoDB vCore performs a modulo operation on the value of a specified field
 author: abinav2307
 ms.author: abramees
 ms.service: azure-cosmos-db
