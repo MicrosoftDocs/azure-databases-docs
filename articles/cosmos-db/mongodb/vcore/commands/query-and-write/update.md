@@ -195,7 +195,7 @@ db.stores.updateMany({"promotionEvents.0.promotionalDates.startDate.Month": 2}, 
 
 Set the upsert flag to true to create a new document if the document specified in the query filter does not exist in the collection.
 ```mongodb
-db.stores.updateOne({"_id": "NonExistentDocId"}, {"$set": {"name": "Brand New Store", "sales.totalSales": 0}}, {"upsert": true})
+db.stores.updateOne({"_id": "NonExistentDocId"}, {"$set": {"name": "Lakeshore Retail", "sales.totalSales": 0}}, {"upsert": true})
 ```
 
 ## Related content
