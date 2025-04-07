@@ -216,7 +216,7 @@ This returns the following results:
 ```
 
 > [!NOTE]
-> For an equality match on an entire array, the order of the order of specified values in the equality predicates must also be an exact match.
+> For an equality match on an entire array, the order of the specified values in the equality predicates must also be an exact match.
 
 ## Related content
 
