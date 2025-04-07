@@ -49,7 +49,7 @@ The following command inserts a single document into the stores collection in th
 ```javascript
 db.stores.insertOne({
   "storeId": "12345",
-  "name": "Tech Gadgets",
+  "name": "Boulder Innovations",
   "location": {
     "lat": 37.7749,
     "lon": -122.4194
@@ -120,7 +120,7 @@ The following command inserts an array of documents into the stores collection.
 db.stores.insertMany([
   {
     "storeId": "12346",
-    "name": "Gadget World",
+    "name": "Graphic Design Institute",
     "location": {
       "lat": 34.0522,
       "lon": -118.2437
@@ -166,7 +166,7 @@ db.stores.insertMany([
   },
   {
     "storeId": "12347",
-    "name": "Tech Haven",
+    "name": "Relecloud",
     "location": {
       "lat": 40.7128,
       "lon": -74.0060
@@ -247,7 +247,7 @@ db.stores.insertMany([
   {
     "_id": "123456",
     "storeId": "123456",
-    "name": "Gadget World",
+    "name": "Graphic Design Institute",
     "location": {
       "lat": 34.0522,
       "lon": -118.2437
@@ -294,7 +294,7 @@ db.stores.insertMany([
   {
     "_id": "234567",
     "storeId": "234567",
-    "name": "Tech Haven",
+    "name": "Relecloud",
     "location": {
       "lat": 40.7128,
       "lon": -74.0060
