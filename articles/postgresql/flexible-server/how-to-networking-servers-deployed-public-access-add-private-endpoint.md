@@ -4,7 +4,7 @@ description: This article describes how to add private endpoint connections to a
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 01/29/2025
+ms.date: 03/30/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: how-to
@@ -29,7 +29,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="./media/how-to-networking/public-access-networking-disabled.png" alt-text="Screenshot showing the Networking page." lightbox="./media/how-to-networking/public-access-networking-disabled.png":::
 
-3. If you have the required permissions to deploy a private endpoint, you can create it by selecting **Add private endpoint**.
+3. If you have the required permissions to deploy a private endpoint, you can create it by selecting **Create private endpoint**.
 
     :::image type="content" source="./media/how-to-networking/add-private-endpoint-connection.png" alt-text="Screenshot showing how to begin adding a new private endpoint." lightbox="./media/how-to-networking/add-private-endpoint-connection.png":::
 
