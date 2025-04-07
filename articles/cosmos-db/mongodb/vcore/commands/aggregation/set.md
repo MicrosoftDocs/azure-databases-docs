@@ -180,6 +180,6 @@ db.stores.updateOne({"_id": "8eefe8bd-5d6f-4038-90e8-05a8277637f0"}, {"$set": {"
 db.stores.updateOne({"_id": "8eefe8bd-5d6f-4038-90e8-05a8277637f0"}, {"$set": {"staff.totalStaff.partTime": 9, "sales.totalSales": 3611}})
 ```
 
-## Related Content
+## Related content
 
 - [Migrate to vCore based Azure Cosmos DB for MongoDB](https://aka.ms/migrate-to-azure-cosmosdb-for-mongodb-vcore)
