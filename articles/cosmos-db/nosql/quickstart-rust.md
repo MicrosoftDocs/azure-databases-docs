@@ -58,7 +58,7 @@ The client library is available through Rust, as the `azure_data_cosmos` crate.
 | --- | --- |
 | [`CosmosClient`](https://docs.rs/azure_data_cosmos/latest/azure_data_cosmos/clients/struct.CosmosClient.html) | This type is the primary client and is used to manage account-wide metadata or databases. |
 | [`DatabaseClient`](https://docs.rs/azure_data_cosmos/latest/azure_data_cosmos/clients/struct.DatabaseClient.html) | This type represents a database within the account. |
-| [`CollectionClient`](https://docs.rs/azure_data_cosmos/latest/azure_data_cosmos/clients/struct.CollectionClient.html) | This type is primarily used to perform read, update, and delete operations on either the container or the items stored within the container. |
+| [`ContainerClient`](https://docs.rs/azure_data_cosmos/latest/azure_data_cosmos/clients/struct.ContainerClient.html) | This type is primarily used to perform read, update, and delete operations on either the container or the items stored within the container. |
 
 ## Code examples
 
