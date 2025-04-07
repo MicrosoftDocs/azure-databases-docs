@@ -140,7 +140,7 @@ Consider this sample document from the stores collection in the StoreData databa
 }
 ```
 
-### Example 1 - Randomly select five documents and project the corresponding document ids
+### Example 1 - Randomly select five documents and project the corresponding document IDs
 
 ```mongodb
 db.stores.aggregate([{"$sample": {"size": 5}}, {"$project": {"_id": 1}}])
