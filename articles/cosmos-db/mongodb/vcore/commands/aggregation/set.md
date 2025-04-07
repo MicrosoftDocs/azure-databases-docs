@@ -149,7 +149,7 @@ Consider this sample document from the stores collection in the StoreData databa
 ### Example 1 - Update an existing field
 
 ```mongodb
-db.stores.updateOne({"_id": "8eefe8bd-5d6f-4038-90e8-05a8277637f0"}, {"$set": {"name": "Headwind Donators"}})
+db.stores.updateOne({"_id": "8eefe8bd-5d6f-4038-90e8-05a8277637f0"}, {"$set": {"name": "Lakeshore Retail"}})
 ```
 
 ### Example 2 - Update an existing field in a nested object
