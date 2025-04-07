@@ -37,23 +37,19 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="./media/how-to-networking/public-access-networking-disabled-pending-endpoint.png" alt-text="Screenshot showing the Networking page." lightbox="./media/how-to-networking/public-access-networking-disabled-pending-endpoint.png":::
 
-3. Select the private endpoint connection whose state is **Pending**, and that you want to approve.
-
-    :::image type="content" source="./media/how-to-networking/public-access-networking-disabled-pending-endpoint-select.png" alt-text="Screenshot showing how to begin approving an existing private endpoint connection with Pending state." lightbox="./media/how-to-networking/public-access-networking-disabled-pending-endpoint-select.png":::
-
-4. Select **Approve** to trigger the approval of the private endpoint connection.
+3. Select the private endpoint connection whose state is **Pending**, and you want to approve. Select **Approve** to trigger the approval of the private endpoint connection.
 
     :::image type="content" source="./media/how-to-networking/public-access-networking-disabled-pending-endpoint-approve.png" alt-text="Screenshot showing the Approve button to trigger the approval of an existing private endpoint connection." lightbox="./media/how-to-networking/public-access-networking-disabled-pending-endpoint-approve.png":::
 
-5. If you consider it necessary, in the **Description** box of the **Approve** dialog, type the reason why you're deciding to approve this private endpoint connection.
+4. If you consider it necessary, in the **Description** box of the **Approve** dialog, type the reason why you're deciding to approve this private endpoint connection, and select **Yes**.
 
     :::image type="content" source="./media/how-to-networking/public-access-networking-disabled-pending-endpoint-approve-confirm.png" alt-text="Screenshot showing the Approve dialog to provide reason why the request is approved." lightbox="./media/how-to-networking/public-access-networking-disabled-pending-endpoint-approve-confirm.png":::
 
-6. A notification informs you that the private endpoint connection is being approved.
+5. A notification informs you that the private endpoint connection is being approved.
 
     :::image type="content" source="./media/how-to-networking/public-access-networking-disabled-pending-endpoint-approving-notification.png" alt-text="Screenshot showing the notification informing that it's approving the private endpoint connection." lightbox="./media/how-to-networking/public-access-networking-disabled-pending-endpoint-approving-notification.png":::
 
-7. When the operation completes, a notification informs you that the private endpoint connection was successfully approved.
+6. When the operation completes, a notification informs you that the private endpoint connection was successfully approved.
 
     :::image type="content" source="./media/how-to-networking/public-access-networking-disabled-pending-endpoint-approved-notification.png" alt-text="Screenshot showing the notification informing that private endpoint connection is approved." lightbox="./media/how-to-networking/public-access-networking-disabled-pending-endpoint-approved-notification.png":::
 
