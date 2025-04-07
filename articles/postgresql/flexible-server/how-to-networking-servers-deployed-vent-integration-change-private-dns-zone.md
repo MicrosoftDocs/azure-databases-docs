@@ -33,32 +33,17 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="./media/how-to-networking/private-access-change-private-dns-zone.png" alt-text="Screenshot showing how to select a different private DNS zone." lightbox="./media/how-to-networking/private-access-change-private-dns-zone.png":::
 
-4. If the selected private DNS zone isn't linked to the virtual network in which your server is injected, you can see the **Link private DNS zone to your virtual network** checkbox. It's selected by default, and that means that the selected private DNS zone will be linked to the virtual network of your server. By clearing the checkbox, you're deciding to not link that private DNS zone to the virtual network of your server. As a consequence, none of the hosts in that virtual network wouldn't be able to resolve the name of your server using the A record persisted by the server in that private zone.
+4. If the selected private DNS zone isn't linked to the virtual network in which your server is injected, you can see the **Link private DNS zone to your virtual network** checkbox. It's selected by default, and that means that the selected private DNS zone will be linked to the virtual network of your server. By clearing the checkbox, you're deciding to not link that private DNS zone to the virtual network of your server. As a consequence, none of the hosts in that virtual network would be able to resolve the name of your server using the A record persisted by the server in that private zone. Select **Save**.
 
     :::image type="content" source="./media/how-to-networking/private-access-link-to-vnet.png" alt-text="Screenshot showing how to choose if you want to link the new private DNS zone to the virtual network in which the server is injected." lightbox="./media/how-to-networking/private-access-link-to-vnet.png":::
 
-> [!NOTE]
-> If you select **Link private DNS zone to your virtual network**
-
-5. Select **Save**.
-
-    :::image type="content" source="./media/how-to-networking/private-access-save.png" alt-text="Screenshot showing the Save button." lightbox="./media/how-to-networking/private-access-save.png":::
-
-6. A notification informs you that the changes are being applied.
+5. A notification informs you that the changes are being applied.
 
     :::image type="content" source="./media/how-to-networking/private-access-progressing-notification.png" alt-text="Screenshot showing a server whose network settings are being saved." lightbox="./media/how-to-networking/private-access-progressing-notification.png":::
 
-7. Also, the status of the server changes to **Updating**.
-
-    :::image type="content" source="./media/how-to-networking/public-access-updating.png" alt-text="Screenshot showing that server status is Updating." lightbox="./media/how-to-networking/public-access-updating.png":::
-
-8. When the process completes, a notification informs you that the changes were applied.
+6. When the process completes, a notification informs you that the changes were applied.
 
     :::image type="content" source="./media/how-to-networking/private-access-progressing-notification-succeeded-notification.png" alt-text="Screenshot showing a server whose network settings were successfully saved." lightbox="./media/how-to-networking/private-access-progressing-notification-succeeded-notification.png":::
-
-9. Also, the status of the server changes to **Ready**.
-
-    :::image type="content" source="./media/how-to-networking/public-access-available.png" alt-text="Screenshot showing that server status is Ready." lightbox="./media/how-to-networking/public-access-available.png":::
 
 ## [CLI](#tab/cli-change-private-dns-zone)
 
