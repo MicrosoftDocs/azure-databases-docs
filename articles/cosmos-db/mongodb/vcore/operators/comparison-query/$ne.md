@@ -144,10 +144,10 @@ Consider this sample document from the stores collection in the StoreData databa
 }
 ```
 
-### Example 1 - Find stores whose name isn't "Delmer's Jewelry Gifts"
+### Example 1 - Find stores whose name isn't "Fourth Coffee"
 
 ```javascript
-db.stores.find({ "name": {"$ne": "Delmer's Jewelry Gifts"}}, {"_id": 1, "name": 1}, {"limit": 1})
+db.stores.find({ "name": {"$ne": "Fourth Coffee"}}, {"_id": 1, "name": 1}, {"limit": 1})
 ```
 
 This returns the following results:
