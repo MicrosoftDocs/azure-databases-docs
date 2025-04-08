@@ -671,6 +671,8 @@
         href: migrate/migration-service/concepts-migration-service-runtime-server.md
       - name: Required User Permissions
         href: migrate/migration-service/concepts-required-user-permissions.md
+      - name: Migration Configuration Parameters
+        href: migrate/migration-service/concepts-migration-server-parameters.md
       - name: Extension Migrations
         href: migrate/migration-service/concepts-migration-extensions.md
       - name: Best practices
