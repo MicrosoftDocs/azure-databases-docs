@@ -1070,14 +1070,14 @@
           href: samples-python.md
         - name: Go
           href: samples-go.md
-        - name: PowerShell
-          href: powershell-samples.md
+        - name: Azure CLI
+          href: samples-cli.yml
+        - name: Azure PowerShell
+          href: samples-powershell.yml
         - name: Azure CLI
           href: samples-cli.md
         - name: Azure PowerShell
           items:
-            - name: Overview
-              href: powershell-samples.md
             - name: Create account, database, and container
               href: ../scripts/powershell/nosql/create.md?context=/azure/cosmos-db/nosql/context/context
             - name: Create with autoscale

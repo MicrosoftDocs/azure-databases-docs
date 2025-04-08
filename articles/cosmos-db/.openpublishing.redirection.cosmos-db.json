@@ -451,6 +451,16 @@
       "redirect_document_id": true
     },
     {
+      "source_path_from_root": "/articles/cosmos-db/nosql/cli-samples.md",
+      "redirect_url": "/azure/cosmos-db/nosql/samples-cli",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/nosql/powershell-samples.md",
+      "redirect_url": "/azure/cosmos-db/nosql/samples-powershell",
+      "redirect_document_id": true
+    },
+    {
       "source_path_from_root": "/articles/cosmos-db/create-sql-api-dotnet-preview.md",
       "redirect_url": "/azure/cosmos-db/create-sql-api-dotnet",
       "redirect_document_id": false

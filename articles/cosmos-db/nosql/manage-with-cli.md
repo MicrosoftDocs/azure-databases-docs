@@ -549,4 +549,3 @@ For more information on the Azure CLI, see:
 
 - [Install Azure CLI](/cli/azure/install-azure-cli)
 - [Azure CLI Reference](/cli/azure/cosmosdb)
-- [More Azure CLI samples for Azure Cosmos DB](cli-samples.md)

@@ -14,15 +14,15 @@ ms.custom: devx-track-csharp, devx-track-azurecli, devx-track-arm-template, devx
 # Create a collection in Azure Cosmos DB for MongoDB
 [!INCLUDE[MongoDB](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb.md)]
 
-This article explains the different ways to create a collection in Azure Cosmos DB for MongoDB. It shows how to create a collection using Azure portal, Azure CLI, PowerShell, or supported SDKs. This article demonstrates how to create a collection, specify the partition key, and provision throughput.
+This article explains the different ways to create a collection in Azure Cosmos DB for MongoDB. It shows how to create a collection using Azure portal, Azure CLI, PowerShell, or supported software development kits (SDKs). This article demonstrates how to create a collection, specify the partition key, and provision throughput.
 
 >[!NOTE]
 > **Containers** and **collections** are similar to a table in a relational database. We refer to **containers** in the Azure Cosmos DB for NoSQL and throughout the Azure portal, while we use **collections** in the context of the Azure Cosmos DB for MongoDB to match the terminology used in MongoDB.
 
-This article explains the different ways to create a collection in Azure Cosmos DB for MongoDB. If you are using a different API, see [API for NoSQL](../how-to-create-container.md), [API for Cassandra](../cassandra/how-to-create-container.md), [API for Gremlin](../gremlin/how-to-create-container.md), and [API for Table](../table/how-to-create-container.md) articles to create the collection.
+This article explains the different ways to create a collection in Azure Cosmos DB for MongoDB. If you're using a different API, see [API for NoSQL](../how-to-create-container.md), [API for Cassandra](../cassandra/how-to-create-container.md), [API for Gremlin](../gremlin/how-to-create-container.md), and [API for Table](../table/how-to-create-container.md) articles to create the collection.
 
 > [!NOTE]
-> When creating collections, make sure you don’t create two collections with the same name but different casing. That’s because some parts of the Azure platform are not case-sensitive, and this can result in confusion/collision of telemetry and actions on collections with such names.
+> When creating collections, make sure you don’t create two collections with the same name but different casing. That’s because some parts of the Azure platform aren't case-sensitive, and this can result in confusion/collision of telemetry and actions on collections with such names.
 
 ## <a id="portal-mongodb"></a>Create using Azure portal
 
@@ -32,7 +32,7 @@ This article explains the different ways to create a collection in Azure Cosmos 
 
 1. Open the **Data Explorer** pane, and select **New Container**. Next, provide the following details:
 
-   * Indicate whether you are creating a new database or using an existing one.
+   * Indicate whether you're creating a new database or using an existing one.
    * Enter a container ID.
    * Enter a shard key.
    * Enter a throughput to be provisioned (for example, 1000 RUs).
