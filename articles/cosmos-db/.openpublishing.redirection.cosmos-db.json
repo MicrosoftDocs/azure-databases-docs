@@ -6334,6 +6334,136 @@
       "source_path_from_root": "/articles/cosmos-db/nosql/troubleshoot-java-sdk-request-timeout.md",
       "redirect_url": "/azure/cosmos-db/nosql/troubleshoot-java-sdk-request-time-out",
       "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/scripts/cli/nosql/create.md",
+      "redirect_url": "https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/sql/create.sh",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/scripts/cli/nosql/serverless.md",
+      "redirect_url": "https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/sql/serverless.sh",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/scripts/cli/nosql/autoscale.md",
+      "redirect_url": "https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/sql/autoscale.sh",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/scripts/cli/nosql/throughput.md",
+      "redirect_url": "https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/sql/throughput.sh",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/scripts/cli/nosql/lock.md",
+      "redirect_url": "https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/sql/lock.sh",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/scripts/cli/common/regions.md",
+      "redirect_url": "https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/common/regions.sh",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/scripts/cli/common/keys.md",
+      "redirect_url": "https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/common/keys.sh",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/scripts/cli/common/ipfirewall.md",
+      "redirect_url": "https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/common/ipfirewall.sh",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/scripts/cli/common/ipfirewall-bulk-add-remove.md",
+      "redirect_url": "https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/common/ipfirewall.sh",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/scripts/cli/common/service-endpoints.md",
+      "redirect_url": "https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/common/service-endpoints.sh",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/scripts/cli/common/service-endpoints-ignore-missing-vnet.md",
+      "redirect_url": "https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/common/service-endpoints-ignore-missing-vnet.sh",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/scripts/cli/common/free-tier.md",
+      "redirect_url": "https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/common/find-free-tier-account.sh",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/scripts/cli/common/convert-to-autoscale.md",
+      "redirect_url": "https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/common/convert-to-autoscale.sh",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/scripts/powershell/nosql/create.md",
+      "redirect_url": "https://github.com/azure/azure-docs-powershell-samples/tree/master/cosmosdb/sql/ps-sql-create.ps1",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/scripts/powershell/nosql/autoscale.md",
+      "redirect_url": "https://github.com/azure/azure-docs-powershell-samples/tree/master/cosmosdb/sql/ps-sql-autoscale.ps1",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/scripts/powershell/nosql/throughput.md",
+      "redirect_url": "https://github.com/azure/azure-docs-powershell-samples/tree/master/cosmosdb/sql/ps-sql-ru-get.ps1",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/scripts/powershell/nosql/lock.md",
+      "redirect_url": "https://github.com/azure/azure-docs-powershell-samples/tree/master/cosmosdb/sql/ps-sql-lock.ps1",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/scripts/powershell/nosql/list.md",
+      "redirect_url": "https://github.com/azure/azure-docs-powershell-samples/tree/master/cosmosdb/sql/ps-sql-list-get.ps1",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/scripts/powershell/nosql/list-get.md",
+      "redirect_url": "https://github.com/azure/azure-docs-powershell-samples/tree/master/cosmosdb/sql/ps-sql-list-get.ps1",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/scripts/powershell/nosql/create-index-none.md",
+      "redirect_url": "https://github.com/azure/azure-docs-powershell-samples/tree/master/cosmosdb/sql/ps-container-create-index-none.ps1",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/scripts/powershell/nosql/create-large-partition-key.md",
+      "redirect_url": "https://github.com/azure/azure-docs-powershell-samples/tree/master/cosmosdb/sql/ps-container-large-partition-key.ps1",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/scripts/powershell/common/keys-connection-strings.md",
+      "redirect_url": "https://github.com/azure/azure-docs-powershell-samples/tree/master/cosmosdb/common/ps-account-keys-connection-strings.ps1",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/scripts/powershell/common/failover-priority-update.md",
+      "redirect_url": "https://github.com/azure/azure-docs-powershell-samples/tree/master/cosmosdb/common/ps-account-failover-priority-update.ps1",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/scripts/powershell/common/firewall-create.md",
+      "redirect_url": "https://github.com/azure/azure-docs-powershell-samples/tree/master/cosmosdb/common/ps-account-firewall-create.ps1",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/scripts/powershell/common/account-update.md",
+      "redirect_url": "https://github.com/azure/azure-docs-powershell-samples/tree/master/cosmosdb/common/ps-account-update.ps1",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/scripts/powershell/common/update-region.md",
+      "redirect_url": "https://github.com/azure/azure-docs-powershell-samples/tree/master/cosmosdb/common/ps-account-update-region.ps1",
+      "redirect_document_id": false
     }
   ]
 }
