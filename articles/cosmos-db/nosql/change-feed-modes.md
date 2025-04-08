@@ -132,6 +132,8 @@ To get started using all versions and deletes change feed mode, navigate to the 
 
 :::image type="content" source="media/change-feed-modes/enroll-in-preview.png" alt-text="Screenshot of All versions and deletes change feed mode feature in Features page in the Azure portal.":::
 
+Alternately, enable all versions and deletes mode with the REST API by adding `"enableAllVersionsAndDeletesChangeFeed" : true` to the `properties` of your account. This property is available in preview API version `2024-12-01-preview` or later. 
+
 ### Parse the response object
 
 The response object is an array of items that represent each change. Different properties will be populated depending on the change type. There's currently no way to get the previous version of items for either replace or delete operations.
