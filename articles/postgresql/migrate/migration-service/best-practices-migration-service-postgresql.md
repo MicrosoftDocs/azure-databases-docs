@@ -33,7 +33,7 @@ We recommend that you allocate sufficient storage on the flexible server, equiva
 > [!IMPORTANT]  
 > Storage size can't be reduced in manual configuration or Storage Autogrow. Each step in the storage configuration spectrum doubles in size, so estimating the required storage beforehand is prudent.
 
-The quickstart to [Create an instance of Azure Database for PostgreSQL - Flexible Server](../../flexible-server/quickstart-create-server.md) is an excellent place to begin. For more information about each server configuration, see [Compute and storage options in Azure Database for PostgreSQL - Flexible Server](../../flexible-server/concepts-compute-storage.md).
+The quickstart to [Create an Azure Database for PostgreSQL flexible server](../../flexible-server/quickstart-create-server.md) is an excellent place to begin. For more information about each server configuration, see [Compute and storage options in Azure Database for PostgreSQL flexible server](../../flexible-server/concepts-compute-storage.md).
 
 > [!IMPORTANT]  
 > Once flexible server is created, make sure to [change the **password_encryption** server parameter on your flexible server](../../flexible-server/how-to-configure-server-parameters-using-portal.md) from SCRAM-SHA-256 to MD5 before initating the migration. This is essential for the existing credentials on single server to work on your flexible server
@@ -83,7 +83,7 @@ The following table shows the time it takes to perform migrations for databases 
 The preceding numbers give you an approximation of the time taken to complete the migration. We strongly recommend running a test migration with your workload to get a precise value for migrating your server.
 
   > [!IMPORTANT]  
-  > Though the Burstable SKU is not a limitation, it is recommended to choose a higher SKU for your flexible server to perform faster migrations. Azure Database for PostgreSQL - Flexible Server supports near-zero downtime compute and IOPS scaling, so the SKU can be updated with minimal downtime. You can always change the SKU to match the application needs post-migration.
+  > Though the Burstable SKU is not a limitation, it is recommended to choose a higher SKU for your flexible server to perform faster migrations. Azure Database for PostgreSQL flexible server supports near-zero downtime compute and IOPS scaling, so the SKU can be updated with minimal downtime. You can always change the SKU to match the application needs post-migration.
 
 ### Improve migration speed: Parallel migration of tables
 

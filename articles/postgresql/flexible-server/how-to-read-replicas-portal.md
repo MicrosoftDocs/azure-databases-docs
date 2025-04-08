@@ -1,6 +1,6 @@
 ---
 title: Manage read replicas - Azure portal, REST API
-description: Learn how to manage read replicas for Azure Database for PostgreSQL - Flexible Server from the Azure portal, CLI, and REST API.
+description: Learn how to manage read replicas for Azure Database for PostgreSQL flexible server from the Azure portal, CLI, and REST API.
 author: akashraokm
 ms.author: akashrao
 ms.reviewer: maghan
@@ -13,22 +13,22 @@ ms.custom:
   - devx-track-azurecli
 ---
 
-# Create and manage read replicas in Azure Database for PostgreSQL - Flexible Server from the Azure portal, CLI, or REST API
+# Create and manage read replicas in Azure Database for PostgreSQL flexible server from the Azure portal, CLI, or REST API
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
-In this article, you learn how to create and manage read replicas in Azure Database for PostgreSQL flexible server from the Azure portal, CLI, and REST API. To learn more about read replicas, see the [overview](concepts-read-replicas.md).
+In this article, you learn how to create and manage read replicas in Azure Database for PostgreSQL Flexible Server from the Azure portal, CLI, and REST API. To learn more about read replicas, see the [overview](concepts-read-replicas.md).
 
 ## Prerequisites
 
-[Create an instance of Azure Database for PostgreSQL - Flexible Server](quickstart-create-server.md) to be the primary server.
+[Create an Azure Database for PostgreSQL flexible server](quickstart-create-server.md) to be the primary server.
 
 > [!NOTE]  
 > When deploying read replicas for persistent heavy write-intensive primary workloads, the replication lag could continue to grow and might never catch up with the primary. This might also increase storage usage at the primary as the WAL files are only deleted once received at the replica.
 
 ## Review primary settings
 
-Before setting up a read replica for Azure Database for PostgreSQL flexible server, ensure the primary server is configured to meet the necessary prerequisites. Specific settings on the primary server can affect the ability to create replicas.
+Before setting up a read replica for Azure Database for PostgreSQL Flexible Server, ensure the primary server is configured to meet the necessary prerequisites. Specific settings on the primary server can affect the ability to create replicas.
 
 **Storage auto-grow**: Storage autogrow settings on the primary server and its read replicas must adhere to specific guidelines to ensure consistency and prevent replication disruptions. Refer to the [Storage autogrow](concepts-read-replicas.md#storage-autogrow) for detailed rules and settings.
 
@@ -51,7 +51,7 @@ Before setting up a read replica for Azure Database for PostgreSQL flexible serv
     
       - Storage
         - Storage size (ex `128GB`)
-        - Autogrowth
+        - Autogrow
     
       - High Availability
         - Enabled / Disabled
@@ -189,7 +189,7 @@ Review and note the following settings:
 
 #### [REST API](#tab/restapi)
 
-To obtain information about the configuration of a server in Azure Database for PostgreSQL flexible server, especially to view settings for recently introduced features like storage autogrow or private link, you should use the latest API version `2023-06-01-preview`. The `GET` request would be formatted as follows:
+To obtain information about the configuration of a server in Azure Database for PostgreSQL Flexible Server, especially to view settings for recently introduced features like storage autogrow or private link, you should use the latest API version `2023-06-01-preview`. The `GET` request would be formatted as follows:
 
 ```http
 https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/flexibleServers/{serverName}?api-version=2023-06-01-preview
@@ -1061,10 +1061,10 @@ The **Read Replica Lag** metric shows the time since the last replayed transacti
 
 ## Related content
 
-- [Read replicas in Azure Database for PostgreSQL - Flexible Server](concepts-read-replicas.md).
-- [Geo-replication in Azure Database for PostgreSQL - Flexible Server](concepts-read-replicas-geo.md).
-- [Promote read replicas in Azure Database for PostgreSQL - Flexible Server](concepts-read-replicas-promote.md).
-- [Virtual endpoints for read replicas in Azure Database for PostgreSQL - Flexible Server](concepts-read-replicas-virtual-endpoints.md).
-- [Create and manage read replicas in Azure Database for PostgreSQL - Flexible Server](how-to-read-replicas-portal.md).
+- [Read replicas in Azure Database for PostgreSQL flexible server](concepts-read-replicas.md).
+- [Geo-replication in Azure Database for PostgreSQL flexible server](concepts-read-replicas-geo.md).
+- [Promote read replicas in Azure Database for PostgreSQL flexible server](concepts-read-replicas-promote.md).
+- [Virtual endpoints for read replicas in Azure Database for PostgreSQL flexible server](concepts-read-replicas-virtual-endpoints.md).
+- [Create and manage read replicas in Azure Database for PostgreSQL flexible server](how-to-read-replicas-portal.md).
 - [Replication across Azure regions and virtual networks with private networking](concepts-networking-private.md#replication-across-azure-regions-and-virtual-networks-with-private-networking).
 - [Terraform Azure provider documentation](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs).

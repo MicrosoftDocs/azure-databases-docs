@@ -1,6 +1,6 @@
 ---
 title: Resource Usage / Background Writer server parameters
-description: Resource Usage / Background Writer server parameters for Azure Database for PostgreSQL - Flexible Server.
+description: Resource Usage / Background Writer server parameters for Azure Database for PostgreSQL flexible server.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan

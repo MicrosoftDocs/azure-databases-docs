@@ -1,6 +1,6 @@
 ---
-title: How to Set up Azure CLI for Migration Service in Azure Database for PostgreSQL - Flexible Server
-description: Learn how to set up Azure CLI for migration service in Azure Database for PostgreSQL - Flexible Server and begin migrating your data.
+title: How to Set up Azure CLI for Migration Service in Azure Database for PostgreSQL flexible server
+description: Learn how to set up Azure CLI for migration service in Azure Database for PostgreSQL flexible server and begin migrating your data.
 author: markingmyname
 ms.author: maghan
 ms.date: 02/07/2025
@@ -11,7 +11,7 @@ ms.custom:
   - devx-track-azurecli
 ---
 
-# How to set up Azure CLI for migration service in Azure Database for PostgreSQL - Flexible Server
+# How to set up Azure CLI for migration service in Azure Database for PostgreSQL flexible server
 
 The Azure CLI is a set of commands used across Azure services to create and manage resources. It provides the same capabilities as the Azure portal but is optimized for users who prefer to work within a command-line environment. To begin migrating using Azure CLI, you need to install the Azure CLI on your local machine.
 
@@ -47,7 +47,7 @@ az login
 
 ## Migrate commands
 
-The migration service provides the following commands to help you migrate your PostgreSQL instances to Azure Database for PostgreSQL - Flexible Server.
+The migration service provides the following commands to help you migrate your PostgreSQL instances to Azure Database for PostgreSQL flexible server.
 
 ### Help command
 
@@ -61,7 +61,7 @@ The output guides you through the necessary steps and parameters required to man
 
 ### Create command
 
-The `az postgres flexible-server migration create` command in Azure CLI is used to initiate a new migration workflow. It facilitates the migration of databases from a source PostgreSQL instance to a target Azure Database for PostgreSQL - Flexible Server instance. This command sets up the necessary parameters and configurations to ensure a smooth and efficient migration process.
+The `az postgres flexible-server migration create` command in Azure CLI is used to initiate a new migration workflow. It facilitates the migration of databases from a source PostgreSQL instance to a target Azure Database for PostgreSQL flexible server instance. This command sets up the necessary parameters and configurations to ensure a smooth and efficient migration process.
 
 For more information, see [az postgres flexible-server migration create](/cli/azure/postgres/flexible-server/migration#az-postgres-flexible-server-migration-create)
 

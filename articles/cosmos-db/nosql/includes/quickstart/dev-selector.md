@@ -2,7 +2,7 @@
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: include
-ms.date: 11/07/2024
+ms.date: 02/24/2025
 ---
 
 > [!div class="op_single_selector"]
@@ -12,4 +12,5 @@ ms.date: 11/07/2024
 > - [Java](../../quickstart-java.md)
 > - [Python](../../quickstart-python.md)
 > - [Go](../../quickstart-go.md)
+> - [Rust](../../quickstart-rust.md)
 >

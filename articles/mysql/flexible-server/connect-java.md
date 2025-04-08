@@ -310,12 +310,12 @@ Using your favorite IDE, create a new Java project, and add a *pom.xml* file in 
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.30</version>
+            <version>8.0.33</version>
         </dependency>
         <dependency>
             <groupId>com.azure</groupId>
             <artifactId>azure-identity-extensions</artifactId>
-            <version>1.0.0</version>
+            <version>1.2.0</version>
         </dependency>
     </dependencies>
 </project>

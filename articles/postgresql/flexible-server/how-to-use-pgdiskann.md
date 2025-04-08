@@ -125,7 +125,8 @@ SET max_parallel_maintenance_workers = 4;
 
 To learn about other options to configure these parameters in Azure Database for PostgreSQL flexible server, see [Configure server parameters](how-to-configure-server-parameters.md).
 
-[!NOTE] The max_worker_processes parameter requires a server restart to take effect.
+> [!NOTE] 
+> The max_worker_processes parameter requires a server restart to take effect.
 
 If the configuration of those parameters and the available resources on the server don't permit launching the parallel workers, PostgreSQL automatically falls back to create the index in the nonparallel mode.
 
@@ -148,22 +149,48 @@ WITH (
 
 ### Extension parameters
 
-`diskann.l_value_is`: L value for index scanning (Defaults to 100). Increasing the value improves recall but might slow down queries.
+* `diskann.iterative_search`: Controls the search behavior.
 
-To change the L value for index scanning to 20, for all queries executed in the current session, run the following statement:
+    Configurations for `diskann.iterative_search`:
 
-```sql
-SET diskann.l_value_is TO 20;
-```
+    - `relaxed_order` (default): Lets diskann iteratively search the graph in batches of `diskann.l_value_is`, until the desired number of tuples, possibly limited by `LIMIT` clause, are yielded. Might cause the results to be out of order. 
 
-To change it so that it only affects all queries executed in the current transaction, run the following statement:
+    - `strict_order`: Similar to `relaxed_order`, lets diskann iteratively search the graph, until the desired number of tuples are yielded. However, it ensures that the results are returned in strict order sorted by distance. 
 
-```sql
-BEGIN;
-SET LOCAL diskann.l_value_is TO 20;
--- All your queries
-COMMIT;
-```
+    - `off`: Uses noniterative search functionality, which means that it attempts to fetch `diskann.l_value_is` tuples in one step. Noniterative search can only return a maximum of `diskann.l_value_is` vectors for a query, regardless of the `LIMIT` clause or the number of tuples that match the query.
+
+    To change the search behavior to` strict_order`, for all queries executed in the current session, run the following statement:
+
+    ```sql
+    SET diskann.iterative_search TO 'strict_order';
+    ```
+
+    To change it so that it only affects all queries executed in the current transaction, run the following statement:
+
+    ```sql
+    BEGIN;
+    SET LOCAL diskann.iterative_search TO 'strict_order';
+    -- All your queries
+    COMMIT;
+    ```
+
+
+* `diskann.l_value_is`: L value for index scanning (Defaults to 100). Increasing the value improves recall but might slow down queries.
+
+    To change the L value for index scanning to 20, for all queries executed in the current session, run the following statement:
+
+    ```sql
+    SET diskann.l_value_is TO 20;
+    ```
+
+    To change it so that it only affects all queries executed in the current transaction, run the following statement:
+
+    ```sql
+    BEGIN;
+    SET LOCAL diskann.l_value_is TO 20;
+    -- All your queries
+    COMMIT;
+    ```
 
 ### Recommended configuration of parameters
 
@@ -230,5 +257,5 @@ When you encounter this error, you can resolve by:
 
 ## Related content
 
-- [Enable and use pgvector in Azure Database for PostgreSQL - Flexible Server](how-to-use-pgvector.md).
+- [Enable and use pgvector in Azure Database for PostgreSQL flexible server](how-to-use-pgvector.md).
 - [Manage PostgreSQL extensions](../extensions/how-to-allow-extensions.md).

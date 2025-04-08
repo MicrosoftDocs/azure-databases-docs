@@ -23,7 +23,7 @@ Following are the different configurations of SSL and TLS settings you can have 
 
 > [!IMPORTANT]  
 > According to [Removal of Support for the TLS 1.0 and TLS 1.1 Protocols](https://dev.mysql.com/doc/refman/8.0/en/encrypted-connection-protocols-ciphers.html#encrypted-connection-deprecated-protocols), we previously planned to fully deprecate TLS 1.0 and 1.1 by September 2024. However, due to dependencies identified by some customers, we have decided to extend the timeline.
-> - By August 2025, we will complete the forced upgrade of all servers still using TLS 1.0 or 1.1 to TLS 1.2.
+> - Starting on August 31, 2025, we will begin the forced upgrade for all servers still using TLS 1.0 or 1.1. After this date, any connections relying on TLS 1.0 or 1.1 may stop working at any time. To avoid potential service disruptions, we strongly recommend that customers complete their migration to TLS 1.2 before August 31, 2025.
 > - Beginning in September 2024, new servers will no longer be permitted to use TLS 1.0 or 1.1, and existing servers will not be allowed to downgrade to these versions.
 > 
 > We strongly recommend that customers update their applications to support TLS 1.2 as soon as possible to avoid service disruptions.

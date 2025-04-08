@@ -24,6 +24,8 @@
         href: flexible-server/whats-new.md
       - name: Release notes
         items:
+          - name: March 2025
+            href: flexible-server/release-notes/march-2025.md
           - name: February 2025
             href: flexible-server/release-notes/february-2025.md
           - name: October 2024
@@ -96,6 +98,9 @@
           - name: Azure CLI
             href: flexible-server/how-to-configure-server-parameters-cli.md
             displayName: server parameters, cli
+      - name: Built-in Store Procedure
+        href: flexible-server/concepts-built-in-store-procedure.md
+        displayName: built-in store procedure
       - name: Create databases and users
         href: how-to-create-users.md
         displayName: users

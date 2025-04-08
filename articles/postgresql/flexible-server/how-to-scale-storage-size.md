@@ -47,7 +47,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="./media/how-to-scale-storage/save-size-ssd.png" alt-text="Screenshot showing the Save button enabled after changing disk size for a Premium SSD disk." lightbox="./media/how-to-scale-storage/save-size-ssd.png":::
 
-5. If you grow the disk from any size between 32 GiB and 4 TiB, to any other size in the same range, the operation is performed without causing any server downtime. It's also the case if you grow the disk from any size between 8 TiB and 32 TiB. In all those cases, the operation is performed while the server is online. However, if you increase the size of disk from any value lower or equal to 4096 GiB, to any size higher than 4096 GiB, a server restart is required. In that case, you're required to confirm that you understand the consequences of performing the operation then.
+5. If you grow the disk from any size between 32 GiB and 4 TiB, to any other size in the same range, the operation is performed without causing any server downtime. It's also the case if you grow the disk from any size between 8 TiB and 32 TiB. In all those cases, the operation is performed while the server is online. However, if you increase the size of disk from any value lower or equal to 4096 GiB, to any size higher than 4096 GiB, a server restart is required. In that case, you're required to confirm that you understand the consequences of performing the operation.
 
     :::image type="content" source="./media/how-to-scale-storage/confirmation-ssd.png" alt-text="Screenshot showing the confirmation dialog displayed when a Premium SSD disk is grown from a size smaller to 4 TiB to a size larger than 4 TiB." lightbox="./media/how-to-scale-storage/confirmation-ssd.png":::
 
@@ -169,4 +169,4 @@ az postgres flexible-server show --resource-group <resource_group> --name <serve
 
 - [Scale storage performance](how-to-scale-storage-performance.md).
 - [Storage options](concepts-storage.md).
-- [Limits in Azure Database for PostgreSQL - Flexible Server](concepts-limits.md).
+- [Limits in Azure Database for PostgreSQL flexible server](concepts-limits.md).

@@ -196,17 +196,15 @@ from azure.identity import DefaultAzureCredential
 from azure.mgmt.postgresqlflexibleservers import PostgreSQLManagementClient
 
 def main():
-client = PostgreSQLManagementClient(
-        credential=DefaultAzureCredential(),
-        subscription_id=<subscription-id>,
- )
-
-client.servers.begin_delete(
-        resource_group_name=<rg-name>,
-        server_name=<server-name>,
-).result()
+    client = PostgreSQLManagementClient(
+          credential=DefaultAzureCredential(),
+          subscription_id=<subscription-id>,)
+    client.servers.begin_delete(
+          resource_group_name=<rg-name>,
+          server_name=<server-name>,
+    ).result()
 if __name__ == "__main__":
-main()
+    main()
 ```
 
 ### [CLI](#tab/CLI)
@@ -219,4 +217,4 @@ az postgres flexible-server delete --resource-group <resource-group> --name <ser
 
 ## Related content
 
-- [Create an instance of Azure Database for PostgreSQL - Flexible Server](quickstart-create-server.md).
+- [Create an Azure Database for PostgreSQL flexible server](quickstart-create-server.md).

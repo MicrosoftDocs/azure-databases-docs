@@ -1,17 +1,17 @@
 ---
 title: Query store
-description: This article describes the query store feature in Azure Database for PostgreSQL - Flexible Server.
+description: This article describes the query store feature in Azure Database for PostgreSQL flexible server.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 11/05/2024
+ms.date: 02/24/2024
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.custom:
   - ignite-2024
 ms.topic: conceptual
 ---
-# Monitor performance with query store
+# Query store
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
@@ -40,8 +40,8 @@ Allow up to 20 minutes for the first batch of data to persist in the `azure_sys`
 ## Information in query store
 
 #### Query store consists of two stores:
-1. A runtime stats store for persisting the query execution statistics information.
-1. A wait stats store for persisting wait statistics information.
+- A runtime stats store for persisting the query execution statistics information.
+- A wait stats store for persisting wait statistics information.
 
 #### Common scenarios for using query store include:
 - Determining the number of times a query was executed in a given time window.
@@ -99,7 +99,8 @@ The following options are available for configuring Query Store parameters:
 (*) Static server parameter which requires a server restart for a change in its value to take effect. 
 
 > [!NOTE]  
-> If you change the value for `pg_qs.max_query_text_length` parameter, the text of all queries that were captured before you make the change continue to use the same query_id and sql_query_text. It might give the impression that the new value doesn't take effect but, for queries that weren't recorded in query store before, you will see that the query text uses the newly configured maximum length. This is by design, and is explained at [Views and functions](#views-and-functions). If you execute [query_store.qs_reset](#query_storeqs_reset), it removes all the information recorded by query store until now, including the text that was captured for each query id, and if any of those queries is executed again, the newly configured maximum length is applied to the text being captured.
+> If you change the value for `pg_qs.max_query_text_length` parameter, the text of all queries that were captured before you make the change continue to use the same query_id and sql_query_text. It might give the impression that the new value doesn't take effect but, for queries that weren't recorded in query store before, you will see that the query text uses the newly configured maximum length. This is by design, and is explained at [Views and functions](#views-and-functions). If you execute [query_store.qs_reset](#query_storeqs_reset), it removes all the information recorded by query store until now, including the text that was captured for each query ID, and if any of those queries is executed again, the newly configured maximum length is applied to the text being captured.
+
 
 The following options apply specifically to wait statistics:
 
@@ -281,12 +282,12 @@ This function discards all statistics gathered so far by query store. It discard
 This function discards all statistics gathered in-memory by query store (that is, the data in memory that isn't flushed yet to the on disk tables supporting persistence of collected data for query store). Only members of the server admin role (`azure_pg_admin`) can execute this function.
 
 ### Read-only mode
-When an instance of Azure Database for PostgreSQL Flexible Server is in read-only mode, such as when the `default_transaction_read_only` parameter is set to `on`, or if read-only mode is [automatically enabled due to reaching storage capacity](concepts-limits.md#storage), query store doesn't capture any data.
+When an Azure Database for PostgreSQL flexible server is in read-only mode, such as when the `default_transaction_read_only` parameter is set to `on`, or if read-only mode is [automatically enabled due to reaching storage capacity](concepts-limits.md#storage), query store doesn't capture any data.
 
 Enabling query store on a server that has [read replicas](concepts-read-replicas.md), doesn't automatically enable query store on any of the read replicas. Even if you enable it on any of the read replicas, query store doesn't record the queries executed on any read replicas, because they operate in read-only mode until you promote them to primary.
 
 ## Related content
 
-- [Usage scenarios for query store in Azure Database for PostgreSQL - Flexible Server](concepts-query-store-scenarios.md).
-- [Best practices for query store in Azure Database for PostgreSQL - Flexible Server](concepts-query-store-best-practices.md).
-- [Query Performance Insight in Azure Database for PostgreSQL - Flexible Server](concepts-query-performance-insight.md).
+- [Usage scenarios for query store](concepts-query-store-scenarios.md)
+- [Best practices for query store](concepts-query-store-best-practices.md)
+- [Query Performance Insight](concepts-query-performance-insight.md)

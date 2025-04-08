@@ -1,6 +1,6 @@
 ---
 title: Compute options
-description: This article describes the compute options in Azure Database for PostgreSQL - Flexible Server.
+description: This article describes the compute options in Azure Database for PostgreSQL flexible server.
 author: kabharati
 ms.author: kabharati
 ms.reviewer: maghan
@@ -12,7 +12,7 @@ ms.custom:
   - ignite-2023
 ---
 
-# Compute options in Azure Database for PostgreSQL - Flexible Server
+# Compute options in Azure Database for PostgreSQL flexible server
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
@@ -94,5 +94,5 @@ The detailed specifications of the available server types are as follows:
 
 ## Related content
 
-- [Manage Azure Database for PostgreSQL - Flexible Server](how-to-manage-server-portal.md)
-- [Limits in Azure Database for PostgreSQL - Flexible Server](concepts-limits.md)
+- [Manage Azure Database for PostgreSQL flexible server](how-to-manage-server-portal.md)
+- [Limits in Azure Database for PostgreSQL flexible server](concepts-limits.md)

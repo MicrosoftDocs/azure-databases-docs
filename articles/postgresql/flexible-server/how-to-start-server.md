@@ -49,9 +49,9 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="./media/how-to-start-server/started-server-notification.png" alt-text="Screenshot showing the notification seen when a server completes a successful start operation." lightbox="./media/how-to-start-server/started-server-notification.png":::
 
-7. Also, the status of the server changes to **Available**.
+7. Also, the status of the server changes to **Ready**.
 
-    :::image type="content" source="./media/how-to-start-server/started-server-status.png" alt-text="Screenshot showing a server which is started, highlighting its status as Available." lightbox="./media/how-to-start-server/started-server-status.png":::
+    :::image type="content" source="./media/how-to-start-server/started-server-status.png" alt-text="Screenshot showing a server which is started, highlighting its status as Ready." lightbox="./media/how-to-start-server/started-server-status.png":::
 
 ### [CLI](#tab/cli-start-server)
 

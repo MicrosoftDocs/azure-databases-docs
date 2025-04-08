@@ -1,10 +1,10 @@
 ---
-title: Load Libraries
+title: Load libraries
 description: This article describes how to load libraries in an Azure Database for PostgreSQL flexible server.
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 02/07/2025
+ms.date: 02/17/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: how-to
@@ -23,13 +23,21 @@ ms.topic: how-to
 
 Using the [Azure portal](https://portal.azure.com):
 
-1. Select your Azure Database for PostgreSQL flexible server instance.
-1. From the resource menu, under **Settings** section, select **Server parameters**.
-1. Include the libraries you wish to add in the value of `shared_preload_libraries`, and select **Save**.
+1. Select your Azure Database for PostgreSQL flexible server.
 
-    :::image type="content" source="media/how-to-allow-extensions/shared-libraries.png" alt-text="Screenshot of Server parameters page while setting shared_preload_libraries." lightbox="media/how-to-allow-extensions/shared-libraries.png":::
+2. From the resource menu, under **Settings** section, select **Server parameters**.
 
-1. Because `shared_preload_libraries`is a static server parameter, it requires a server restart so that the changes take effect.
+    :::image type="content" source="media/how-to-allow-extensions/server-parameters.png" alt-text="Screenshot that shows the Server parameters menu option." lightbox="media/how-to-allow-extensions/server-parameters.png":::
+
+3. Include the libraries that you want to add in the value of `shared_preload_libraries`.
+
+    :::image type="content" source="media/how-to-allow-extensions/shared-libraries.png" alt-text="Screenshot that shows how to select libraries to be loaded in memory when the server starts." lightbox="media/how-to-allow-extensions/shared-libraries.png":::
+
+4. Select **Save**.
+
+    :::image type="content" source="media/how-to-allow-extensions/save-libraries.png" alt-text="Screenshot that shows the Save button in the Server parameters page." lightbox="media/how-to-allow-extensions/save-libraries.png":::
+
+5. Because `shared_preload_libraries` is a static server parameter, it requires a server restart so that the changes take effect.
 
     :::image type="content" source="media/how-to-allow-extensions/save-and-restart.png" alt-text="Screenshot of Server parameters page, showing the dialog from which you can save changes and restart." lightbox="media/how-to-allow-extensions/save-and-restart.png":::
 
@@ -51,8 +59,7 @@ az postgres flexible-server restart --resource-group <resource_group> --name <se
 
 ## Related content
 
-- [Allow extensions](how-to-allow-extensions.md)
-- [Create extensions](how-to-create-extensions.md)
-- [Drop extensions](how-to-drop-extensions.md)
-- [Update extensions](how-to-update-extensions.md)
-- [View installed extensions](how-to-view-installed-extensions.md)
+- [Extensions and modules](concepts-extensions.md)
+- [Special considerations with extensions and modules](concepts-extensions-considerations.md)
+- [List of extensions and modules by name](concepts-extensions-versions.md)
+- [List of extensions and modules by version of PostgreSQL](concepts-extensions-by-engine.md)

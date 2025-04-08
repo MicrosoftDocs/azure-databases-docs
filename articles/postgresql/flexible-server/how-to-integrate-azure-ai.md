@@ -1,6 +1,6 @@
 ---
 title: Integrate Azure AI capabilities Preview
-description: Integrate Azure AI capabilities into Azure Database for PostgreSQL - Flexible Server - Preview.
+description: Integrate Azure AI capabilities into Azure Database for PostgreSQL flexible server - Preview.
 author: denzilribeiro
 ms.author: denzilr
 ms.reviewer: maghan, carols
@@ -13,7 +13,7 @@ ms.custom:
   - ignite-2023
 ---
 
-# Integrate Azure AI capabilities into Azure Database for PostgreSQL - Flexible Server
+# Integrate Azure AI capabilities into Azure Database for PostgreSQL flexible server
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
@@ -31,7 +31,7 @@ This tutorial showcases adding rich AI capabilities to an Azure Database for Pos
 
    - An [Azure AI Language](/azure/ai-services/language-service/overview) service. If you don't have a resource, you can [create a Language resource](https://portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics) in the Azure portal by following the instructions provided in the [quickstart for summarization](/azure/ai-services/language-service/summarization/custom/quickstart#create-a-new-resource-from-the-azure-portal) document. You can use the free pricing tier (`Free F0`) to try the service and upgrade later to a paid tier for production.
 
-   - An Azure Database for PostgreSQL flexible server instance in your Azure subscription. If you don't have a resource, see [Create an instance of Azure Database for PostgreSQL - Flexible Server](quickstart-create-server.md).
+   - An Azure Database for PostgreSQL flexible server instance in your Azure subscription. If you don't have a resource, see [Create an Azure Database for PostgreSQL flexible server](quickstart-create-server.md).
 
 ## Connect to the database using `psql` in the Azure Cloud Shell
 
@@ -237,7 +237,7 @@ The query uses the `<=>` [vector operator](https://github.com/pgvector/pgvector#
 
 The Azure AI services integrations included in the `azure_cognitive` schema of the `azure_ai` extension provide a rich set of AI Language features accessible directly from the database. The functionalities include sentiment analysis, language detection, key phrase extraction, entity recognition, and text summarization. Access to these capabilities is enabled through the [Azure AI Language service](/azure/ai-services/language-service/overview).
 
-To review the complete Azure AI capabilities accessible through the extension, view the [Integrate Azure Database for PostgreSQL - Flexible Server with Azure Cognitive Services](generative-ai-azure-cognitive.md).
+To review the complete Azure AI capabilities accessible through the extension, view the [Integrate Azure Database for PostgreSQL flexible server with Azure Cognitive Services](generative-ai-azure-cognitive.md).
 
 ### Set the Azure AI Language service endpoint and key
 
@@ -316,7 +316,7 @@ Congratulations, you just learned how to use the `azure_ai` extension to integra
 
 ## Related content
 
-- [How to use PostgreSQL extensions in Azure Database for PostgreSQL - Flexible Server](/azure/postgresql/flexible-server/concepts-extensions).
+- [How to use PostgreSQL extensions in Azure Database for PostgreSQL flexible server](/azure/postgresql/flexible-server/concepts-extensions).
 - [Learn how to generate embeddings with Azure OpenAI](/azure/ai-services/openai/how-to/embeddings).
 - [Azure OpenAI Service embeddings models](/azure/ai-services/openai/concepts/models#embeddings-models-1).
 - [Understand embeddings in Azure OpenAI Service](/azure/ai-services/openai/concepts/understand-embeddings).

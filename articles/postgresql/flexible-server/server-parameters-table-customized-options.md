@@ -1,6 +1,6 @@
 ---
 title: Customized Options server parameters
-description: Customized Options server parameters for Azure Database for PostgreSQL - Flexible Server.
+description: Customized Options server parameters for Azure Database for PostgreSQL flexible server.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan

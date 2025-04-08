@@ -70,7 +70,11 @@ Azure Database for MySQL Flexible Server supports encrypted connections using Tr
 Following are the different configurations of SSL and TLS settings you can have for your Flexible Server:
 
 > [!IMPORTANT]  
-> According to [Removal of Support for the TLS 1.0 and TLS 1.1 Protocols](https://dev.mysql.com/doc/refman/8.0/en/encrypted-connection-protocols-ciphers.html#encrypted-connection-deprecated-protocols), starting in early September 2024, new servers will no longer be permitted to use TLS 1.0 or 1.1, and existing servers will not be allowed to downgrade to these versions. Beginning mid-September 2024, we will initiate a mandatory upgrade of all servers currently using TLS 1.0 or 1.1 to TLS 1.2. This upgrade process is expected to be completed by the end of September 2024. We strongly recommend that customers ensure their applications are fully compatible with TLS 1.2 before the end of September.
+> According to [Removal of Support for the TLS 1.0 and TLS 1.1 Protocols](https://dev.mysql.com/doc/refman/8.0/en/encrypted-connection-protocols-ciphers.html#encrypted-connection-deprecated-protocols), we previously planned to fully deprecate TLS 1.0 and 1.1 by September 2024. However, due to dependencies identified by some customers, we have decided to extend the timeline.
+> - Starting on August 31, 2025, we will begin the forced upgrade for all servers still using TLS 1.0 or 1.1. After this date, any connections relying on TLS 1.0 or 1.1 may stop working at any time. To avoid potential service disruptions, we strongly recommend that customers complete their migration to TLS 1.2 before August 31, 2025.
+> - Beginning in September 2024, new servers will no longer be permitted to use TLS 1.0 or 1.1, and existing servers will not be allowed to downgrade to these versions.
+> 
+> We strongly recommend that customers update their applications to support TLS 1.2 as soon as possible to avoid service disruptions.
 
 | Scenario | Server parameter settings | Description |
 | --- | --- | --- |

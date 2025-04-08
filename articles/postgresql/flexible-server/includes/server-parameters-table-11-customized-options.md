@@ -2,7 +2,7 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 01/07/2025
+ms.date: 03/10/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
@@ -223,6 +223,108 @@ ms.custom: automatically generated
 | Allowed values | `address_standardizer,address_standardizer_data_us,amcheck,anon,bloom,btree_gin,btree_gist,citext,cube,dblink,dict_int,dict_xsyn,earthdistance,fuzzystrmatch,hstore,hypopg,intagg,intarray,isn,lo,login_hook,ltree,orafce,pageinspect,pg_buffercache,pg_cron,pg_freespacemap,pg_hint_plan,pg_partman,pg_prewarm,pg_repack,pg_squeeze,pg_stat_statements,pg_trgm,pg_visibility,pgaudit,pgcrypto,pglogical,pgrouting,pgrowlocks,pgstattuple,plpgsql,plv8,postgis,postgis_raster,postgis_sfcgal,postgis_tiger_geocoder,postgis_topology,postgres_fdw,semver,session_variable,sslinfo,tablefunc,tds_fdw,timescaledb,tsm_system_rows,tsm_system_time,unaccent,uuid-ossp,vector` |
 | Parameter type | dynamic |
 | Documentation | [azure.extensions](https://go.microsoft.com/fwlink/?linkid=2274269) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### azure.migration_copy_with_binary
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | When set to on, this parameter will enable the use of the binary format for copying data during migration. |
+| Data type | boolean |
+| Default value | `off` |
+| Allowed values | `on, off` |
+| Parameter type | dynamic |
+| Documentation | [azure.migration_copy_with_binary](https://aka.ms/migration_parameters) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### azure.migration_skip_analyze
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | When set to on, this parameter will skip the analyze phase (`vacuumdb --analyze-only`) during the migration. |
+| Data type | boolean |
+| Default value | `off` |
+| Allowed values | `on, off` |
+| Parameter type | dynamic |
+| Documentation | [azure.migration_skip_analyze](https://aka.ms/migration_parameters) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### azure.migration_skip_extensions
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | When set to on, this parameter will skip the migration of extensions. |
+| Data type | boolean |
+| Default value | `off` |
+| Allowed values | `on, off` |
+| Parameter type | dynamic |
+| Documentation | [azure.migration_skip_extensions](https://aka.ms/migration_parameters) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### azure.migration_skip_large_objects
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | When set to on, this parameter will skip the migration of large objects such as BLOBs. |
+| Data type | boolean |
+| Default value | `off` |
+| Allowed values | `on, off` |
+| Parameter type | dynamic |
+| Documentation | [azure.migration_skip_large_objects](https://aka.ms/migration_parameters) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### azure.migration_skip_role_user
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | When set to on, this parameter will exclude user roles from the migration process. |
+| Data type | boolean |
+| Default value | `off` |
+| Allowed values | `on, off` |
+| Parameter type | dynamic |
+| Documentation | [azure.migration_skip_role_user](https://aka.ms/migration_parameters) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### azure.migration_table_split_size
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | When set, this parameter specifies the size at which tables will be partitioned during migration. |
+| Data type | integer |
+| Default value | `20480` |
+| Allowed values | `1-204800` |
+| Parameter type | dynamic |
+| Documentation | [azure.migration_table_split_size](https://aka.ms/migration_parameters) |
 
 
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]

@@ -17,7 +17,7 @@ Premigration validation is a set of rules that involves assessing and verifying 
 
 ## How do you use the premigration validation feature?
 
-To use premigration validation when you migrate to Azure Database for PostgreSQL - Flexible Server, you have two migration options:
+To use premigration validation when you migrate to Azure Database for PostgreSQL flexible server, you have two migration options:
 
 - Use the Azure portal during setup.
 - Specify the `--migration-option` parameter in the Azure CLI when you create a migration.

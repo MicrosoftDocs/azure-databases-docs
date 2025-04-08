@@ -1,10 +1,10 @@
 ---
-title: Update Extensions
+title: Update extensions
 description: This article describes how to update extensions in an Azure Database for PostgreSQL flexible server.
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 02/07/2025
+ms.date: 02/17/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: how-to
@@ -35,11 +35,9 @@ While updating extensions is straightforward, there are certain limitations:
     - It constantly updates the [latest available version](concepts-extensions-versions.md).
 
 - **Downgrading**: Doesn't support downgrading an extension to a previous version. If a downgrade is necessary, it might require support assistance and depends on the availability of the previous version.
-
 ## Related content
 
-- [Allow extensions](how-to-allow-extensions.md)
-- [Load libraries](how-to-load-libraries.md)
-- [Create extensions](how-to-create-extensions.md)
-- [Drop extensions](how-to-drop-extensions.md)
-- [View installed extensions](how-to-view-installed-extensions.md)
+- [Extensions and modules](concepts-extensions.md)
+- [Special considerations with extensions and modules](concepts-extensions-considerations.md)
+- [List of extensions and modules by name](concepts-extensions-versions.md)
+- [List of extensions and modules by version of PostgreSQL](concepts-extensions-by-engine.md)

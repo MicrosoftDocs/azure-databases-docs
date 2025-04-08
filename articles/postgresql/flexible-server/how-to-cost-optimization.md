@@ -10,7 +10,7 @@ ms.subservice: flexible-server
 ms.topic: how-to
 ---
 
-# How to optimize costs in Azure Database for PostgreSQL - Flexible Server
+# How to optimize costs in Azure Database for PostgreSQL flexible server
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
@@ -46,7 +46,7 @@ Azure Advisor is a free service that provides recommendations to help optimize y
 
 For Azure Database for PostgreSQL, Azure Advisor can provide recommendations on how to improve the performance, availability, and cost-effectiveness of your database. For example, it can suggest scaling the database up or down, using read-replicas to offload read-intensive workloads, or switching to reserved capacity pricing to reduce costs. Azure Advisor can also recommend security best practices, such as enabling encryption at rest, or enabling network security rules to limit incoming traffic to the database.
 
-You can access the recommendations provided by Azure Advisor through the Azure portal, where you can view and implement the recommendations with just a few clicks. Implementing Azure Advisor recommendations can help you optimize your Azure resources and reduce costs. To learn more, see [Azure Advisor for Azure Database for PostgreSQL - Flexible Server](concepts-azure-advisor-recommendations.md)
+You can access the recommendations provided by Azure Advisor through the Azure portal, where you can view and implement the recommendations with just a few clicks. Implementing Azure Advisor recommendations can help you optimize your Azure resources and reduce costs. To learn more, see [Azure Advisor for Azure Database for PostgreSQL flexible server](concepts-azure-advisor-recommendations.md)
 
 ## 4. Evaluate HA (high availability) and DR (disaster recovery) requirements
 
@@ -94,7 +94,7 @@ Starting and stopping servers can be a cost-saving strategy for Azure Database f
 1. Stop the server: Stop the Azure Database for PostgreSQL Flexible Server instance when you don't need it. You can stop the server using the Azure portal, Azure CLI, or Azure REST API.
 1. Also, if a server has been in a stopped (or idle) state for several continuous weeks, you can consider dropping the server after the required due diligence.
 
-By starting and stopping the server as needed, you can reduce the cost of running Azure Database for PostgreSQL Flexible Server. To ensure smooth database performance, it is crucial to evaluate the impact of starting and stopping the server and have a reliable process in place for these actions as required. To learn more, see [Stop an instance of Azure Database for PostgreSQL Flexible Server](how-to-stop-server.md) and [Start an instance of Azure Database for PostgreSQL Flexible Server](how-to-start-server.md).
+By starting and stopping the server as needed, you can reduce the cost of running Azure Database for PostgreSQL Flexible Server. To ensure smooth database performance, it is crucial to evaluate the impact of starting and stopping the server and have a reliable process in place for these actions as required. To learn more, see [Stop an Azure Database for PostgreSQL flexible server](how-to-stop-server.md) and [Start an Azure Database for PostgreSQL flexible server](how-to-start-server.md).
 
 ## 8. Archive old data for cold storage
 

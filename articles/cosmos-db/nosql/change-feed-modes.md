@@ -119,7 +119,7 @@ During the preview, the following methods to read the change feed are available 
 
 | **Method to read change feed** | **.NET** | **Java** | **Python** | **Node.js** |
 | --- | --- | --- | --- | --- |
-| [Change feed pull model](change-feed-pull-model.md) | [>= 3.32.0-preview](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/3.32.0-preview) | [>= 4.42.0](https://mvnrepository.com/artifact/com.azure/azure-cosmos/4.37.0) |  No  |  [>= 4.1.0](https://www.npmjs.com/package/@azure/cosmos?activeTab=versions)  |
+| [Change feed pull model](change-feed-pull-model.md) | [>= 3.32.0-preview](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/3.32.0-preview) | [>= 4.42.0](https://mvnrepository.com/artifact/com.azure/azure-cosmos/4.37.0) | [>= 4.9.1b1](https://pypi.org/project/azure-cosmos/4.9.1b1/) |  [>= 4.1.0](https://www.npmjs.com/package/@azure/cosmos?activeTab=versions) |
 | [Change feed processor](change-feed-processor.md) | [>= 3.40.0-preview.0](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/3.40.0-preview.0) | [>= 4.42.0](https://mvnrepository.com/artifact/com.azure/azure-cosmos/4.42.0) | No | No |
 | Azure Functions trigger | No | No | No | No |
 
@@ -177,6 +177,7 @@ The response object is an array of items that represent each change. Different p
         "lsn": <A number that represents the batch ID. Many items can have the same lsn.>,
         "crts": <A number that represents the Conflict Resolved Timestamp. It has the same format as _ts.>,
         "previousImageLSN" : <A number that represents the batch ID of the change prior to this one.>,
+        "timeToLiveExpired" : <'true' if it was deleted due to a TTL expiration.>,
         "id": "<Id of the deleted item.>",
         "partitionKey": {
           "<Partition key property name>": "<Partition key property value>"
@@ -189,7 +190,7 @@ The response object is an array of items that represent each change. Different p
 
 * Supported for Azure Cosmos DB for NoSQL accounts. Other Azure Cosmos DB account types aren't supported.
 
-* Continuous backups are required to use this change feed mode. The [limitations](../continuous-backup-restore-introduction.md#current-limitations) of using continuous backup can be found in the documentation.
+* Continuous backups are required to use this change feed mode. Refer to the [limitations of using continuous backups](../continuous-backup-restore-introduction.md#current-limitations).
 
 * Reading changes on a container that existed before continuous backups were enabled on the account isn't supported.
 

@@ -1,6 +1,6 @@
 ---
-title: Copy data with azure_storage extension in Azure Database for PostgreSQL - Flexible Server
-description: Learn how to use the azure_storage extension in Azure Database for PostgreSQL - Flexible Server to import and export data
+title: Copy data with azure_storage extension in Azure Database for PostgreSQL flexible server
+description: Learn how to use the azure_storage extension in Azure Database for PostgreSQL flexible server to import and export data
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
@@ -12,11 +12,11 @@ ms.custom:
   - ignite-2024
 ---
 
-# Import and export data using azure_storage extension in Azure Database for PostgreSQL - Flexible Server
+# Import and export data using azure_storage extension in Azure Database for PostgreSQL flexible server
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
-The [azure_storage](concepts-storage-extension.md) extension allows you to import or export data in multiple file formats, directly between Azure Storage accounts and an instance of Azure Database for PostgreSQL Flexible Server.
+The [azure_storage](concepts-storage-extension.md) extension allows you to import or export data in multiple file formats, directly between Azure Storage accounts and an Azure Database for PostgreSQL flexible server.
 
 Examples of data export and import using this extension can be found in the [Examples](#examples) section of this article.
 
@@ -1164,5 +1164,5 @@ The following example shows the export of data from a table called `events`, to 
 
 ## Related content
 
-- [Import and export data using Azure Storage in Azure Database for PostgreSQL - Flexible Server](concepts-storage-extension.md).
-- [Manage PostgreSQL extensions in Azure Database for PostgreSQL - Flexible Server](../extensions/how-to-allow-extensions.md).
+- [Import and export data using Azure Storage in Azure Database for PostgreSQL flexible server](concepts-storage-extension.md).
+- [Extensions and modules](../extensions/concepts-extensions.md).

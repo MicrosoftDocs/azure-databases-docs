@@ -1,10 +1,10 @@
 ---
 title: "Quickstart: Create with Bicep"
-description: In this Quickstart, learn how to create an Azure Database for PostgreSQL - Flexible Server instance by using Bicep.
+description: In this Quickstart, learn how to create an Azure Database for PostgreSQL flexible server instance by using Bicep.
 author: mumian
 ms.author: jgao
 ms.reviewer: maghan
-ms.date: 04/27/2024
+ms.date: 02/28/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: quickstart
@@ -12,7 +12,7 @@ ms.custom:
   - devx-track-bicep
 ---
 
-# Quickstart: Use a Bicep file to create an Azure Database for PostgreSQL - Flexible Server instance
+# Quickstart: Use a Bicep file to create an Azure Database for PostgreSQL flexible server instance
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
@@ -107,7 +107,7 @@ You're prompted to enter these values:
 
 - **serverName**: enter a unique name that identifies your Azure Database for PostgreSQL Flexible Server instance. For example, `mydemoserver-pg`. The domain name `postgres.database.azure.com` is appended to the server name you provide. The server can contain only lowercase letters, numbers, and the hyphen (-) character. It must contain at least 3 through 63 characters.
 - **administratorLogin**: enter your own login account to use when you connect to the server. For example, `myadmin`. The admin login name can't be `azure_superuser`, `azure_pg_admin`, `admin`, `administrator`, `root`, `guest`, or `public`. It can't start with `pg_`.
-- **administratorLoginPassword**: enter a new password for the server admin account. It must contain between 8 and 128 characters. Your password must contain characters from three of the following categories: English uppercase letters, English lowercase letters, numbers (0 through 9), and non-alphanumeric characters (!, $, #, %, etc.).
+- **administratorLoginPassword**: enter a new password for the server admin account. It must contain between 8 and 128 characters. Your password must contain characters from three of the following categories: English uppercase letters, English lowercase letters, numbers (0 through 9), and nonalphanumeric characters (!, $, #, %, etc.).
 
 ## Review deployed resources
 
@@ -149,4 +149,4 @@ Remove-AzResourceGroup -Name exampleRG
 
 ## Related content
 
-- [Connect and query overview for Azure Database for PostgreSQL - Flexible Server](how-to-connect-query-guide.md).
+- [Connect and query overview for Azure Database for PostgreSQL flexible server](how-to-connect-query-guide.md).

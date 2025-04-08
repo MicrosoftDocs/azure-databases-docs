@@ -1,12 +1,12 @@
 ---
 title: Azure Cosmos DB performance tips for queries using the Azure Cosmos DB SDK
 description: Learn query configuration options to help improve performance using the Azure Cosmos DB SDK.
-author: ealsur
+author: markjbrown
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: how-to
 ms.date: 06/20/2023
-ms.author: maquaran
+ms.author: mjbrown
 ms.devlang: csharp
 # ms.devlang: csharp, java
 ms.custom: devx-track-java, devx-track-extended-java, devx-track-python, devx-track-js
@@ -526,6 +526,34 @@ const { resources } = await container.items.query(querySpec, { maxItemCount: 100
 for (const item of resources) {
     console.log(`${item.id}: ${item.name}, ${item.sku}`);
 }
+```
+
+## Enhanced Query Control
+
+CosmosDB JS SDK version 4.3.0 onwards, `enableQueryControl` flag has been introduced, which provides greater control over query execution, offering additional flexibility in managing Request Unit (RU) consumption.
+
+By default, `enableQueryControl` is set to `false` and the SDK guarantees that each `fetchNext` call would return `maxItemCount` number of results, provided those many results existed in the back end. But to meet the guaranteed result count, the SDK may query back end partitions multiple times in a single `fetchNext` iteration. This can sometimes lead to unpredictable latency and RU drain with no user control, especially when results are scattered across partitions.
+ 
+When `enableQueryControl` is set to `true`, each `fetchNext` call will now query up to `maxDegreeOfParallelism` physical partitions. If no results are found or results are not ready to be served yet, the SDK will return empty pages instead of continuing to search all partitions in the background. This way, users gain finer control over their query execution with predictable latency and granular RU consumption data.
+
+```javascript
+const options = {
+  enableQueryControl: true, // Flag to enable new query pipeline.
+  maxItemCount: 100,
+  maxDegreeOfParallelism: 6
+};
+
+const querySpec = {
+    query: "select * from products p where p.categoryId=@categoryId",
+    parameters: [
+        {
+            name: "@categoryId",
+            value: items[2].categoryId
+        }
+    ]
+};
+const queryIterator = container.items.query(querySpec, options);
+// use this iterator to fetch results.
 ```
 
 ## Next steps

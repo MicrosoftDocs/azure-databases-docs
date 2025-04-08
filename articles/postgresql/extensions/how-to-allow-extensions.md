@@ -1,10 +1,10 @@
 ---
-title: Allow Extensions
+title: Allow extensions
 description: This article describes how to allow extensions in an Azure Database for PostgreSQL flexible server.
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 02/07/2025
+ms.date: 02/17/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: how-to
@@ -23,11 +23,19 @@ Before creating extensions in Azure Database for PostgreSQL flexible server, you
 
 Using the [Azure portal](https://portal.azure.com):
 
-1. Select your Azure Database for PostgreSQL flexible server instance.
-1. From the resource menu, under **Settings** section, select **Server parameters**.
-1. Select the extensions that you want to allowlist, from the ones available in the `azure.extensions` parameter, and select **Save**.
+1. Select your Azure Database for PostgreSQL flexible server.
 
-    :::image type="content" source="media/how-to-allow-extensions/allow-list.png" alt-text="Screenshot of allowlist." lightbox="media/how-to-allow-extensions/allow-list.png":::
+2. From the resource menu, under **Settings** section, select **Server parameters**.
+
+    :::image type="content" source="media/how-to-allow-extensions/server-parameters.png" alt-text="Screenshot that shows the Server parameters menu option." lightbox="media/how-to-allow-extensions/server-parameters.png":::
+
+3. Select the extensions that you want to allowlist, from the ones available in the `azure.extensions` parameter.
+
+    :::image type="content" source="media/how-to-allow-extensions/allow-list.png" alt-text="Screenshot that shows how to allowlist some extensions." lightbox="media/how-to-allow-extensions/allow-list.png":::
+
+4. Select **Save**.
+
+    :::image type="content" source="media/how-to-allow-extensions/save-extensions.png" alt-text="Screenshot that shows the Save button in the Server parameters page." lightbox="media/how-to-allow-extensions/save-extensions.png":::
 
 ### [CLI](#tab/allow-extensions-cli)
 
@@ -76,8 +84,7 @@ The following example adds extensions to the allowlist `dblink`, `dict_xsyn`, `p
 
 ## Related content
 
-- [Load libraries](how-to-load-libraries.md)
-- [Create extensions](how-to-create-extensions.md)
-- [Drop extensions](how-to-drop-extensions.md)
-- [Update extensions](how-to-update-extensions.md)
-- [View installed extensions](how-to-view-installed-extensions.md)
+- [Extensions and modules](concepts-extensions.md)
+- [Special considerations with extensions and modules](concepts-extensions-considerations.md)
+- [List of extensions and modules by name](concepts-extensions-versions.md)
+- [List of extensions and modules by version of PostgreSQL](concepts-extensions-by-engine.md)

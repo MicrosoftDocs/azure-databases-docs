@@ -4,7 +4,7 @@ description: Learn about the Flexible Server deployment model for Azure Database
 author: SudheeshGH
 ms.author: sunaray
 ms.reviewer: maghan
-ms.date: 12/19/2024
+ms.date: 02/20/2025
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: overview
@@ -14,8 +14,6 @@ ms.custom:
 ---
 
 # What is Azure Database for MySQL - Flexible Server?
-
-> [!VIDEO https://aka.ms/docs/player?id=492c7a41-5f0a-4482-828b-72be1b38e691]
 
 This article provides an overview and introduction to the core concepts of the Flexible Server deployment model. For information on the appropriate deployment option for your workload, see [Choose the right MySQL Server option in Azure](../select-right-deployment-type.md).
 
@@ -243,6 +241,7 @@ One advantage of running your workload in Azure is its global reach. Azure Datab
 | Korea Central | Yes | Yes | Yes | Yes |
 | Korea South | Yes | Yes | No | Yes |
 | Mexico Central | Yes | Yes | Yes | Yes |
+| New Zealand North | Yes | Yes | Yes | Yes |
 | North Central US | Yes | Yes | No | Yes |
 | North Europe | Yes | Yes | Yes | Yes |
 | Norway East | Yes | Yes | Yes | Yes |

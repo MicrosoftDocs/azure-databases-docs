@@ -1,6 +1,6 @@
 ---
 title: Troubleshoot CLI errors
-description: This topic gives guidance on troubleshooting common issues with Azure CLI when using Azure Database for PostgreSQL - Flexible Server.
+description: This topic gives guidance on troubleshooting common issues with Azure CLI when using Azure Database for PostgreSQL flexible server.
 author: gbowerman
 ms.author: guybo
 ms.reviewer: maghan
@@ -12,7 +12,7 @@ ms.custom:
   - devx-track-azurecli
 ---
 
-# Troubleshoot Azure Database for PostgreSQL - Flexible Server CLI errors
+# Troubleshoot Azure Database for PostgreSQL flexible server CLI errors
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 

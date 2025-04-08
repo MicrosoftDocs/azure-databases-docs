@@ -1,6 +1,6 @@
 ---
 title: "Quickstart: Connect with C#"
-description: "This quickstart provides a C# (.NET) code sample you can use to connect and query data from Azure Database for PostgreSQL - Flexible Server."
+description: "This quickstart provides a C# (.NET) code sample you can use to connect and query data from Azure Database for PostgreSQL flexible server."
 author: agapovm
 ms.author: maximagapov
 ms.reviewer: maghan
@@ -17,7 +17,7 @@ ms.custom:
 ms.devlang: csharp
 ---
 
-# Quickstart: Use .NET (C#) to connect and query data in Azure Database for PostgreSQL - Flexible Server
+# Quickstart: Use .NET (C#) to connect and query data in Azure Database for PostgreSQL flexible server
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
@@ -28,7 +28,7 @@ This quickstart demonstrates how to connect to an Azure Database for PostgreSQL 
 For this quickstart you need:
 
 - An Azure account with an active subscription. [Create an account for free](https://azure.microsoft.com/free).
-- [Create an instance of Azure Database for PostgreSQL - Flexible Server](quickstart-create-server.md), if you do not have one.
+- [Create an Azure Database for PostgreSQL flexible server](quickstart-create-server.md), if you do not have one.
 - Use the empty *postgres* database available on the server or create a [new database](quickstart-create-server.md#connect-using-psql).
 - Install the [.NET SDK for your platform](https://dotnet.microsoft.com/download) (Windows, Ubuntu Linux, or macOS) for your platform.
 - Install [Visual Studio](https://www.visualstudio.com/downloads/) to build your project.
@@ -38,11 +38,23 @@ For this quickstart you need:
 
 Get the connection information needed to connect to the Azure Database for PostgreSQL flexible server instance. You need the fully qualified server name and login credentials.
 
-1. Log in to the [Azure portal](https://portal.azure.com/).
-2. From the left-hand menu in Azure portal, click **All resources**, and then search for the server you have created (such as **mydemoserver**).
-3. Click the server name.
-4. From the server's **Overview** panel, make a note of the **Server name** and **Server admin login name**. If you forget your password, you can also reset the password from this panel.
- :::image type="content" source="./media/connect-csharp/1-connection-string.png" alt-text="Azure Database for PostgreSQL flexible server instance name.":::
+Using the [Azure portal](https://portal.azure.com/):
+
+1. From the left-hand menu in Azure portal, click **All resources**, and then search for the server you have created.
+
+2. Click the server name.
+
+3. In the resource menu, select **Overview**.
+
+    :::image type="content" source="media/connect/overview.png" alt-text="Screenshot showing the Overview page." lightbox="media/connect/overview.png":::
+
+4. Copy the values shown as **Endpoint** and **Administrator login**.
+
+    :::image type="content" source="media/connect/endpoint-administrator-login.png" alt-text="Screenshot showing the values of Endpoint and Administrator login in the Overview page." lightbox="media/connect/endpoint-administrator-login.png":::
+
+5. If you forget the password of the administrator login, you can reset it using the **Reset password** button.
+
+    :::image type="content" source="media/connect/reset-password.png" alt-text="Screenshot showing the Reset password button in the Overview page." lightbox="media/connect/reset-password.png":::
 
 ## Step 1: Connect and insert data
 
@@ -338,10 +350,10 @@ az group delete \
 
 ## Related content
 
-- [Manage Azure Database for PostgreSQL - Flexible Server](how-to-manage-server-portal.md).
-- [Quickstart: Use Python to connect and query data from an instance of Azure Database for PostgreSQL flexible server](connect-python.md).
-- [Quickstart: Use Java to connect and query data from an instance of Azure Database for PostgreSQL flexible server](connect-java.md).
-- [Quickstart: Use Go language to connect and query data from an instance of Azure Database for PostgreSQL flexible server](connect-go.md).
-- [Quickstart: Use PHP to connect and query data from an instance of Azure Database for PostgreSQL flexible server](connect-php.md).
-- [Quickstart: Use Azure CLI to connect and query data from an instance of Azure Database for PostgreSQL flexible server](connect-azure-cli.md).
-- [Quickstart: Import data from Azure Database for PostgreSQL - Flexible Server in Power BI](connect-with-power-bi-desktop.md).
+- [Manage Azure Database for PostgreSQL flexible server](how-to-manage-server-portal.md).
+- [Quickstart: Use Python to connect and query data from an Azure Database for PostgreSQL flexible server](connect-python.md).
+- [Quickstart: Use Java to connect and query data from an Azure Database for PostgreSQL flexible server](connect-java.md).
+- [Quickstart: Use Go language to connect and query data from an Azure Database for PostgreSQL flexible server](connect-go.md).
+- [Quickstart: Use PHP to connect and query data from an Azure Database for PostgreSQL flexible server](connect-php.md).
+- [Quickstart: Use Azure CLI to connect and query data from an Azure Database for PostgreSQL flexible server](connect-azure-cli.md).
+- [Quickstart: Import data from Azure Database for PostgreSQL flexible server in Power BI](connect-with-power-bi-desktop.md).
