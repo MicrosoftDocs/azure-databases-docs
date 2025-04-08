@@ -1070,12 +1070,12 @@
           href: samples-python.md
         - name: Go
           href: samples-go.md
-        - name: PowerShell
-          href: powershell-samples.md
+        - name: Azure CLI
+          href: samples-cli.yml
+        - name: Azure PowerShell
+          href: samples-powershell.yml
         - name: Azure CLI
           items:
-            - name: Overview
-              href: cli-samples.md
             - name: Create account, database, and container
               href: ../scripts/cli/nosql/create.md?context=/azure/cosmos-db/nosql/context/context
             - name: Create serverless
@@ -1104,8 +1104,6 @@
               href: ../scripts/cli/common/convert-to-autoscale.md?context=/azure/cosmos-db/nosql/context/context
         - name: Azure PowerShell
           items:
-            - name: Overview
-              href: powershell-samples.md
             - name: Create account, database, and container
               href: ../scripts/powershell/nosql/create.md?context=/azure/cosmos-db/nosql/context/context
             - name: Create with autoscale
