@@ -14,12 +14,12 @@ ms.custom: devx-track-csharp, devx-track-azurecli, devx-track-dotnet, devx-track
 # Create a container in Azure Cosmos DB for NoSQL
 [!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
 
-This article explains the different ways to create an container in Azure Cosmos DB for NoSQL. It shows how to create a container using the Azure portal, Azure CLI, PowerShell, or supported SDKs. This article demonstrates how to create a container, specify the partition key, and provision throughput.
+This article explains the different ways to create a container in Azure Cosmos DB for NoSQL. It shows how to create a container using the Azure portal, Azure CLI, PowerShell, or supported software development kits (SDKs). This article demonstrates how to create a container, specify the partition key, and provision throughput.
 
-This article explains the different ways to create a container in Azure Cosmos DB for NoSQL. If you are using a different API, see [API for MongoDB](../mongodb/how-to-create-container.md), [API for Cassandra](../cassandra/how-to-create-container.md), [API for Gremlin](../gremlin/how-to-create-container.md), and [API for Table](../table/how-to-create-container.md) articles to create the container.
+This article explains the different ways to create a container in Azure Cosmos DB for NoSQL. If you're using a different API, see [API for MongoDB](../mongodb/how-to-create-container.md), [API for Cassandra](../cassandra/how-to-create-container.md), [API for Gremlin](../gremlin/how-to-create-container.md), and [API for Table](../table/how-to-create-container.md) articles to create the container.
 
 > [!NOTE]
-> When creating containers, make sure you don’t create two containers with the same name but different casing. That’s because some parts of the Azure platform are not case-sensitive, and this can result in confusion/collision of telemetry and actions on containers with such names.
+> When creating containers, make sure you don’t create two containers with the same name but different casing. That’s because some parts of the Azure platform aren't case-sensitive, and this can result in confusion/collision of telemetry and actions on containers with such names.
 
 ## <a id="portal-sql"></a>Create a container using Azure portal
 
@@ -29,7 +29,7 @@ This article explains the different ways to create a container in Azure Cosmos D
 
 1. Open the **Data Explorer** pane, and select **New Container**. Next, provide the following details:
 
-   * Indicate whether you are creating a new database or using an existing one.
+   * Indicate whether you're creating a new database or using an existing one.
    * Enter a **Container Id**.
    * Enter a **Partition key** value (for example, `/ItemID`).
    * Select **Autoscale** or **Manual** throughput and enter the required **Container throughput** (for example, 1000 RU/s). Enter a throughput that you want to provision (for example, 1000 RUs).
@@ -39,11 +39,11 @@ This article explains the different ways to create a container in Azure Cosmos D
 
 ## <a id="cli-sql"></a>Create a container using Azure CLI
 
-[Create a container with Azure CLI](manage-with-cli.md#create-a-container). For a listing of all Azure CLI samples across all Azure Cosmos DB APIs see, [Azure CLI samples for Azure Cosmos DB](cli-samples.md).
+[Create a container with Azure CLI](manage-with-cli.md#create-a-container).
 
 ## Create a container using PowerShell
 
-[Create a container with PowerShell](manage-with-powershell.md#create-container). For a listing of all PowerShell samples across all Azure Cosmos DB APIs see, [PowerShell Samples](powershell-samples.md)
+[Create a container with PowerShell](manage-with-powershell.md#create-container).
 
 ## <a id="dotnet-sql"></a>Create a container using .NET SDK
 
