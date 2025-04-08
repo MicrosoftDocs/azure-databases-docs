@@ -39,11 +39,11 @@ This article explains the different ways to create a container in Azure Cosmos D
 
 ## <a id="cli-sql"></a>Create a container using Azure CLI
 
-[Create a container with Azure CLI](manage-with-cli.md#create-a-container). For a listing of all Azure CLI samples across all Azure Cosmos DB APIs see, [Azure CLI samples for Azure Cosmos DB](cli-samples.md).
+[Create a container with Azure CLI](manage-with-cli.md#create-a-container).
 
 ## Create a container using PowerShell
 
-[Create a container with PowerShell](manage-with-powershell.md#create-container). For a listing of all PowerShell samples across all Azure Cosmos DB APIs see, [PowerShell Samples](powershell-samples.md)
+[Create a container with PowerShell](manage-with-powershell.md#create-container).
 
 ## <a id="dotnet-sql"></a>Create a container using .NET SDK
 
