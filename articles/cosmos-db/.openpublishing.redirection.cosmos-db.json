@@ -26,6 +26,11 @@
       "redirect_document_id": false
     },
     {
+      "source_path_from_root": "/articles/cosmos-db/scripts/cli/mongodb/list-get.md",
+      "redirect_url": "https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/mongodb",
+      "redirect_document_id": false
+    },
+    {
       "source_path_from_root": "/articles/cosmos-db/mongodb/cli-samples.md",
       "redirect_url": "https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/mongodb",
       "redirect_document_id": false
@@ -53,6 +58,11 @@
     {
       "source_path_from_root": "/articles/cosmos-db/scripts/cli/cassandra/lock.md",
       "redirect_url": "https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/cassandra/lock.sh",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/scripts/cli/cassandra/list-get.md",
+      "redirect_url": "https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/cassandra",
       "redirect_document_id": false
     },
     {
@@ -86,6 +96,11 @@
       "redirect_document_id": false
     },
     {
+      "source_path_from_root": "/articles/cosmos-db/scripts/cli/gremlin/list-get.md",
+      "redirect_url": "https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/gremlin",
+      "redirect_document_id": false
+    },
+    {
       "source_path_from_root": "/articles/cosmos-db/gremlin/cli-samples.md",
       "redirect_url": "https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/gremlin",
       "redirect_document_id": false
@@ -113,6 +128,11 @@
     {
       "source_path_from_root": "/articles/cosmos-db/scripts/cli/table/lock.md",
       "redirect_url": "https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/table/lock.sh",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/scripts/cli/table/list-get.md",
+      "redirect_url": "https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/table",
       "redirect_document_id": false
     },
     {
