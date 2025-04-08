@@ -57,14 +57,6 @@ db.RunCommand(shellCommand);
 
 If you encounter timeout exception when creating a collection, do a read operation to validate if the collection was created successfully. The read operation throws an exception until the collection create operation is successful. For the list of status codes supported by the create operation see the [HTTP Status Codes for Azure Cosmos DB](/rest/api/cosmos-db/http-status-codes-for-cosmosdb) article.
 
-## <a id="cli-mongodb"></a>Create using Azure CLI
-
-[Create a collection for Azure Cosmos DB for API for MongoDB with Azure CLI](../scripts/cli/mongodb/create.md). For a listing of all Azure CLI samples across all Azure Cosmos DB APIs see, [Azure CLI samples for Azure Cosmos DB](cli-samples.md).
-
-## Create using PowerShell
-
-[Create a collection for Azure Cosmos DB for API for MongoDB with PowerShell](../scripts/powershell/mongodb/create.md). For a listing of all PowerShell samples across all Azure Cosmos DB APIs see, [PowerShell Samples](powershell-samples.md)
-
 ## Create a collection using Azure Resource Manager templates
 
 [Create a collection for Azure Cosmos DB for API for MongoDB with Resource Manager template](../manage-with-templates.md#azure-cosmos-account-with-standard-provisioned-throughput).
@@ -76,5 +68,5 @@ If you encounter timeout exception when creating a collection, do a read operati
 * [Provision throughput on containers and databases](../set-throughput.md)
 * [Work with Azure Cosmos DB account](../resource-model.md)
 * Trying to do capacity planning for a migration to Azure Cosmos DB? You can use information about your existing database cluster for capacity planning.
-    * If all you know is the number of vcores and servers in your existing database cluster, read about [estimating request units using vCores or vCPUs](../convert-vcore-to-request-unit.md) 
+    * If all you know is the number of vCores and servers in your existing database cluster, read about [estimating request units using vCores or vCPUs](../convert-vcore-to-request-unit.md) 
     * If you know typical request rates for your current database workload, read about [estimating request units using Azure Cosmos DB capacity planner](estimate-ru-capacity-planner.md)
