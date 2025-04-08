@@ -120,6 +120,30 @@
       "redirect_url": "https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/table",
       "redirect_document_id": false
     },
+
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/powershell-samples.md",
+      "redirect_url": "https://github.com/Azure/azure-docs-powershell-samples/tree/master/cosmosdb/mongodb",
+      "redirect_document_id": false
+    },
+
+    {
+      "source_path_from_root": "/articles/cosmos-db/cassandra/powershell-samples.md",
+      "redirect_url": "https://github.com/Azure/azure-docs-powershell-samples/tree/master/cosmosdb/cassandra",
+      "redirect_document_id": false
+    },
+
+    {
+      "source_path_from_root": "/articles/cosmos-db/gremlin/powershell-samples.md",
+      "redirect_url": "https://github.com/Azure/azure-docs-powershell-samples/tree/master/cosmosdb/gremlin",
+      "redirect_document_id": false
+    },
+
+    {
+      "source_path_from_root": "/articles/cosmos-db/table/powershell-samples.md",
+      "redirect_url": "https://github.com/Azure/azure-docs-powershell-samples/tree/master/cosmosdb/table",
+      "redirect_document_id": false
+    },
     {
       "source_path_from_root": "/articles/cosmos-db/intra-account-container-copy.md",
       "redirect_url": "/azure/cosmos-db/container-copy",
