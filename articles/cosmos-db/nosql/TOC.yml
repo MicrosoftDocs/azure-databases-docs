@@ -1074,32 +1074,6 @@
           href: samples-cli.yml
         - name: Azure PowerShell
           href: samples-powershell.yml
-        - name: Azure PowerShell
-          items:
-            - name: Create account, database, and container
-              href: ../scripts/powershell/nosql/create.md?context=/azure/cosmos-db/nosql/context/context
-            - name: Create with autoscale
-              href: ../scripts/powershell/nosql/autoscale.md?context=/azure/cosmos-db/nosql/context/context
-            - name: Perform throughput operations
-              href: ../scripts/powershell/nosql/throughput.md?context=/azure/cosmos-db/nosql/context/context
-            - name: Lock resources from deletion
-              href: ../scripts/powershell/nosql/lock.md?context=/azure/cosmos-db/nosql/context/context
-            - name: List and get databases and containers
-              href: ../scripts/powershell/nosql/list-get.md?context=/azure/cosmos-db/nosql/context/context
-            - name: Create a container with indexing turned off
-              href: ../scripts/powershell/nosql/create-index-none.md?context=/azure/cosmos-db/nosql/context/context
-            - name: Create a container with a large partition key
-              href: ../scripts/powershell/nosql/create-large-partition-key.md?context=/azure/cosmos-db/nosql/context/context
-            - name: Account keys or connection strings
-              href: ../scripts/powershell/common/keys-connection-strings.md?context=/azure/cosmos-db/nosql/context/context
-            - name: Change failover priority or trigger failover
-              href: ../scripts/powershell/common/failover-priority-update.md?context=/azure/cosmos-db/nosql/context/context
-            - name: Create an account with IP Firewall
-              href: ../scripts/powershell/common/firewall-create.md?context=/azure/cosmos-db/nosql/context/context
-            - name: Update account
-              href: ../scripts/powershell/common/account-update.md?context=/azure/cosmos-db/nosql/context/context
-            - name: Update an account's regions
-              href: ../scripts/powershell/common/update-region.md?context=/azure/cosmos-db/nosql/context/context
         - name: Templates
           items:
             - name: JSON syntax templates
