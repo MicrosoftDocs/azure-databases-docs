@@ -16,10 +16,10 @@ ms.custom: devx-track-csharp, devx-track-azurecli, devx-track-dotnet, devx-track
 
 This article explains the different ways to create a container in Azure Cosmos DB for Apache Cassandra. It shows how to create a container using Azure portal, Azure CLI, PowerShell, or supported SDKs. This article demonstrates how to create a container, specify the partition key, and provision throughput.
 
-This article explains the different ways to create a container in Azure Cosmos DB for Apache Cassandra. If you are using a different API, see [API for MongoDB](../mongodb/how-to-create-container.md), [API for Gremlin](../gremlin/how-to-create-container.md), [API for Table](../table/how-to-create-container.md), and [API for NoSQL](../how-to-create-container.md) articles to create the container.
+This article explains the different ways to create a container in Azure Cosmos DB for Apache Cassandra. If you're using a different API, see [API for MongoDB](../mongodb/how-to-create-container.md), [API for Gremlin](../gremlin/how-to-create-container.md), [API for Table](../table/how-to-create-container.md), and [API for NoSQL](../how-to-create-container.md) articles to create the container.
 
 > [!NOTE]
-> When creating containers, make sure you don’t create two containers with the same name but different casing. That’s because some parts of the Azure platform are not case-sensitive, and this can result in confusion/collision of telemetry and actions on containers with such names.
+> When creating containers, make sure you don’t create two containers with the same name but different casing. That’s because some parts of the Azure platform aren't case-sensitive, and this can result in confusion/collision of telemetry and actions on containers with such names.
 
 ## <a id="portal-cassandra"></a>Create using Azure portal
 
@@ -29,7 +29,7 @@ This article explains the different ways to create a container in Azure Cosmos D
 
 1. Open the **Data Explorer** pane, and select **New Table**. Next, provide the following details:
 
-   * Indicate whether you are creating a new keyspace, or using an existing one.
+   * Indicate whether you're creating a new keyspace, or using an existing one.
    * Enter a table name.
    * Enter the properties and specify a primary key.
    * Enter a throughput to be provisioned (for example, 1000 RUs).
