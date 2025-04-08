@@ -13,7 +13,7 @@ ms.author: mjbrown
 
 [!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
 
-The following guide describes common commands to automate management of your Azure Cosmos DB accounts, databases, and containers using Azure CLI. Reference pages for all Azure Cosmos DB CLI commands are available in the [Azure CLI Reference](/cli/azure/cosmosdb). You can also find more examples in [Azure CLI samples for Azure Cosmos DB](cli-samples.md), including how to create and manage Azure Cosmos DB accounts, databases and containers for MongoDB, Gremlin, Cassandra, and API for Table.
+The following guide describes common commands to automate management of your Azure Cosmos DB accounts, databases, and containers using Azure CLI. Reference pages for all Azure Cosmos DB CLI commands are available in the [Azure CLI Reference](/cli/azure/cosmosdb).
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](~/reusable-content/azure-cli/azure-cli-prepare-your-environment.md)]
 
