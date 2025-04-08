@@ -6276,6 +6276,36 @@
       "redirect_document_id": false
     },
     {
+      "source_path_from_root": "/articles/cosmos-db/nosql/samples-dotnet.md",
+      "redirect_url": "https://github.com/azure/azure-cosmos-dotnet-v3#readme",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/nosql/samples-python.md",
+      "redirect_url": "https://github.com/azure/azure-sdk-for-python/tree/main/sdk/cosmos#readme",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/nosql/samples-nodejs.md",
+      "redirect_url": "https://github.com/azure/azure-sdk-for-js/tree/main/sdk/cosmosdb/cosmos#readme",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/nosql/samples-go.md",
+      "redirect_url": "https://github.com/azure/azure-sdk-for-go/tree/main/sdk/data/azcosmos#readme",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/nosql/samples-java.md",
+      "redirect_url": "https://github.com/azure/azure-sdk-for-java/tree/main/sdk/cosmos#readme",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/nosql/samples-java-spring-data.md",
+      "redirect_url": "https://github.com/azure/azure-sdk-for-java/tree/azure-spring-data-cosmos_5.21.0/sdk/spring/azure-spring-data-cosmos#readme",
+      "redirect_document_id": false
+    },
+    {
       "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/quickstart-cross-region-replica-portal.md",
       "redirect_url": "/azure/cosmos-db/mongodb/vcore/how-to-cross-region-replica-portal",
       "redirect_document_id": false
