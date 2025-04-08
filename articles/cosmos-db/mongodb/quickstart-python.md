@@ -92,6 +92,14 @@ The client library is available through PyPi, as the `pymongo` package.
 
 1. Open and review the **src/requirements.txt** file to validate that the `pymongo` entry exists.
 
+### Import libraries
+
+Import the `MongoClient` type into your application code.
+
+```python
+from pymongo import MongoClient
+```
+
 ## Object model
 
 | Name | Description |

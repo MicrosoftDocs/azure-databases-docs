@@ -125,6 +125,28 @@ The client library is available through npm, as the `mongodb` package.
 
 ::: zone-end
 
+### Import libraries
+
+::: zone pivot="programming-language-js"
+
+Import the `MongoClient` type into your application code.
+
+```javascript
+import { MongoClient } from 'mongodb';
+```
+
+:::zone-end
+
+::: zone pivot="programming-language-js"
+
+Import all required types into your application code.
+
+```typescript
+import { Collection, Db, Filter, FindCursor, MongoClient, UpdateFilter, UpdateOptions, UpdateResult, WithId } from 'mongodb';
+```
+
+:::zone-end
+
 ## Object model
 
 | Name | Description |
