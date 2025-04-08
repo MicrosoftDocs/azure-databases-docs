@@ -6,7 +6,7 @@ ms.author: jucocchi
 ms.service: azure-cosmos-db
 ms.custom: build-2023
 ms.topic: conceptual
-ms.date: 11/11/2024
+ms.date: 4/8/2025
 ---
 # Change feed modes in Azure Cosmos DB
 
@@ -128,13 +128,9 @@ During the preview, the following methods to read the change feed are available 
 
 ### Get started
 
-To get started using all versions and deletes change feed mode, enroll in the preview via the [Preview Features page](/azure/azure-resource-manager/management/preview-features) in your Azure Subscription overview page. Search for the **AllVersionsAndDeletesChangeFeed** feature and select **Register**.
+To get started using all versions and deletes change feed mode, navigate to the **Features** page in your Azure Cosmos DB account. Select and enable the **All versions and deletes change feed mode (preview)** feature. You must have [continuous backups](../continuous-backup-restore-introduction.md) configured for your Azure Cosmos DB account before enabling the feature. The enablement process can take up to 30 minutes to be complete and no other changes can be made to the account during this time. 
 
-:::image type="content" source="media/change-feed-modes/enroll-in-preview.png" alt-text="Screenshot of All versions and deletes change feed mode feature in Preview Features page in Subscriptions overview in Azure portal.":::
-
-Before you submit your request, ensure that you have at least one Azure Cosmos DB account in the subscription. This account can be an existing account or a new account that you created to try out the preview feature. If you have no accounts in the subscription when your request is received, the request is declined because there are no accounts to apply the feature to.
-
-The Azure Cosmos DB team reviews your request and contacts you via email to confirm which Azure Cosmos DB accounts in the subscription you want to enroll in the preview. To use the preview, you must have [continuous backups](../continuous-backup-restore-introduction.md) configured for your Azure Cosmos DB account. Continuous backups can be enabled either before or after being admitted to the preview, but continuous backups must be enabled before you attempt to read from the change feed in all versions and deletes mode.
+:::image type="content" source="media/change-feed-modes/enroll-in-preview.png" alt-text="Screenshot of All versions and deletes change feed mode feature in Features page in the Azure portal.":::
 
 ### Parse the response object
 
