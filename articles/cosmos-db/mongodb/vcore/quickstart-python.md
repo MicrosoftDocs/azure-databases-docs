@@ -8,7 +8,7 @@ ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.devlang: python
 ms.topic: quickstart-sdk
-ms.date: 03/25/2025
+ms.date: 04/08/2025
 ms.custom: devx-track-python, devx-track-extended-azdevcli
 appliesto:
   - ✅ MongoDB (vCore)
@@ -97,6 +97,14 @@ The client library is available through PyPi, as the `pymongo` package.
     ```
 
 1. Open and review the **src/requirements.txt** file to validate that the `pymongo` entry exists.
+
+### Import libraries
+
+Import the `MongoClient` type into your application code.
+
+```python
+from pymongo import MongoClient
+```
 
 ## Object model
 

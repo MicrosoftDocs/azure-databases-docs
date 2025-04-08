@@ -8,7 +8,7 @@ ms.service: azure-cosmos-db
 ms.subservice: mongodb
 ms.devlang: typescript
 ms.topic: quickstart-sdk
-ms.date: 03/25/2025
+ms.date: 04/08/2025
 ms.custom: devx-track-js, devx-track-ts, devx-track-dotnet, devx-track-extended-azdevcli
 zone_pivot_groups: azure-devlang-nodejs
 appliesto:
@@ -124,6 +124,28 @@ The client library is available through npm, as the `mongodb` package.
 1. Open and review the **src/js/package.json** file to validate that the `mongodb` entry exists.
 
 ::: zone-end
+
+### Import libraries
+
+::: zone pivot="programming-language-js"
+
+Import the `MongoClient` type into your application code.
+
+```javascript
+import { MongoClient } from 'mongodb';
+```
+
+:::zone-end
+
+::: zone pivot="programming-language-js"
+
+Import all required types into your application code.
+
+```typescript
+import { Collection, Db, Filter, FindCursor, MongoClient, UpdateFilter, UpdateOptions, UpdateResult, WithId } from 'mongodb';
+```
+
+:::zone-end
 
 ## Object model
 
