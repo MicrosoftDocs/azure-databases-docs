@@ -53,7 +53,7 @@ The following metrics are available for an Azure Database for PostgreSQL flexibl
 |**Write IOPS ^**                  |`write_iops`                 |Count     |Number of data disk I/O write operations per second.                                                                                                                                                                                                                                                                                                                                        |Yes            |
 
 > [!Note]
-> These metrics are emitted every one minute, however, are processed and displayed in 5-minute batches. This means you may see up to a 5 minute delay in metric visibility. When creating alerts on these metrics, account for this latency to ensure accurate and reliable alerting.
+> Metrics marked with `^` are emitted every one minute but are processed and displayed in 5-minute batches. This results in up to a 5-minute delay in metric visibility. When creating alerts on these metrics, please account for this latency to ensure accurate and timely alerting.
 
 ### Enhanced metrics
 
