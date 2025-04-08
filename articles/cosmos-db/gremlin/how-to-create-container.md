@@ -1,6 +1,6 @@
 ---
 title: Create a container in Azure Cosmos DB for Gremlin
-description: Learn how to create a container in Azure Cosmos DB for Gremlin by using Azure portal, .NET and other SDKs.
+description: Learn how to create a container in Azure Cosmos DB for Gremlin by using Azure portal, .NET, and other SDKs.
 ms.service: azure-cosmos-db
 ms.subservice: apache-gremlin
 ms.topic: how-to
@@ -14,12 +14,12 @@ ms.custom: devx-track-csharp, devx-track-azurecli, devx-track-dotnet
 # Create a container in Azure Cosmos DB for Gremlin
 [!INCLUDE[Gremlin](../includes/appliesto-gremlin.md)]
 
-This article explains the different ways to create a container in Azure Cosmos DB for Gremlin. It shows how to create a container using Azure portal, Azure CLI, PowerShell, or supported SDKs. This article demonstrates how to create a container, specify the partition key, and provision throughput.
+This article explains the different ways to create a container in Azure Cosmos DB for Gremlin. It shows how to create a container using Azure portal, Azure CLI, PowerShell, or supported software development kits (SDKs). This article demonstrates how to create a container, specify the partition key, and provision throughput.
 
-This article explains the different ways to create a container in Azure Cosmos DB for Gremlin. If you are using a different API, see [API for MongoDB](../mongodb/how-to-create-container.md), [API for Cassandra](../cassandra/how-to-create-container.md), [API for Table](../table/how-to-create-container.md), and [API for NoSQL](../how-to-create-container.md) articles to create the container.
+This article explains the different ways to create a container in Azure Cosmos DB for Gremlin. If you're using a different API, see [API for MongoDB](../mongodb/how-to-create-container.md), [API for Cassandra](../cassandra/how-to-create-container.md), [API for Table](../table/how-to-create-container.md), and [API for NoSQL](../how-to-create-container.md) articles to create the container.
 
 > [!NOTE]
-> When creating containers, make sure you don’t create two containers with the same name but different casing. That’s because some parts of the Azure platform are not case-sensitive, and this can result in confusion/collision of telemetry and actions on containers with such names.
+> When creating containers, make sure you don’t create two containers with the same name but different casing. That’s because some parts of the Azure platform aren't case-sensitive, and this can result in confusion/collision of telemetry and actions on containers with such names.
 
 ## <a id="portal-gremlin"></a>Create using Azure portal
 
@@ -29,7 +29,7 @@ This article explains the different ways to create a container in Azure Cosmos D
 
 1. Open the **Data Explorer** pane, and select **New Graph**. Next, provide the following details:
 
-   * Indicate whether you are creating a new database, or using an existing one.
+   * Indicate whether you're creating a new database, or using an existing one.
    * Enter a Graph ID.
    * Select **Unlimited** storage capacity.
    * Enter a partition key for vertices.
