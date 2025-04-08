@@ -158,9 +158,13 @@ Azure Database for PostgreSQL Flexible Server supports advanced [data recovery](
 
 ### Versionless customer managed keys (preview)
 
-Versionless keys are recommended for data encryption in Azure Database for PostgreSQL flexible server. It correctly covers any of the key rotation scenarios described earlier. After a new key version is available, the server will automatically use the new version of the key version for encrypting and decrypting data.
+Version-less keys simplify key rotation. Using [auto-rotation in Key Vault](/azure/key-vault/keys/how-to-configure-key-rotation) without version-less keys requires custom automation to detect the rotation and update the CMK in PostgreSQL with the new key version.
 
-The API doesn't change for versionless keys. Instead of providing the entire key identifier URI, omit the version portion of the key identifier. This applies to the API, to Azure CLI, to ARM templates, and to Bicep templates. Azure portal has a checkbox to enable versionless, which you can use to select just the versionless key identifier.
+The version-less keys feature covers auto and manual key rotation in Key Vault: After a new key version is available, the server will automatically use the new version of the key version for encrypting and decrypting data. 
+
+The API doesn't change for version-less keys. Instead of providing the entire key identifier URI, omit the version portion of the key identifier. This applies to the API, Azure CLI, ARM, and Bicep.
+
+Azure portal has a checkbox to enable version-less. This flag changes the key URI entry to not require a version.
 
 ## Limitations
 
