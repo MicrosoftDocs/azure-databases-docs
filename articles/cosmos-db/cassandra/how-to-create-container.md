@@ -52,14 +52,6 @@ session.Execute(CREATE TABLE myKeySpace.myTable(
 
 If you encounter timeout exception when creating a collection, do a read operation to validate if the collection was created successfully. The read operation throws an exception until the collection create operation is successful. For the list of status codes supported by the create operation see the [HTTP Status Codes for Azure Cosmos DB](/rest/api/cosmos-db/http-status-codes-for-cosmosdb) article.
 
-## <a id="cli-mongodb"></a>Create using Azure CLI
-
-[Create a Cassandra table with Azure CLI](../scripts/cli/cassandra/create.md). For a listing of all Azure CLI samples across all Azure Cosmos DB APIs see, [Azure CLI samples for Azure Cosmos DB](cli-samples.md).
-
-## Create using PowerShell
-
-[Create a Cassandra table with PowerShell](../scripts/powershell/cassandra/create.md). For a listing of all PowerShell samples across all Azure Cosmos DB APIs see, [PowerShell Samples](powershell-samples.md)
-
 ## Next steps
 
 * [Partitioning in Azure Cosmos DB](../partitioning-overview.md)
