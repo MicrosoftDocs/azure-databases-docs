@@ -6261,6 +6261,21 @@
       "redirect_document_id": false
     },
     {
+      "source_path_from_root": "/articles/cosmos-db/nosql/tutorial-dotnet-console-app.md",
+      "redirect_url": "/azure/cosmos-db/nosql/quickstart-dotnet",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/nosql/tutorial-java-web-app.md",
+      "redirect_url": "/azure/cosmos-db/nosql/quickstart-java",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/nosql/tutorial-nodejs-web-app.md",
+      "redirect_url": "/azure/cosmos-db/nosql/quickstart-nodejs",
+      "redirect_document_id": false
+    },
+    {
       "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/quickstart-cross-region-replica-portal.md",
       "redirect_url": "/azure/cosmos-db/mongodb/vcore/how-to-cross-region-replica-portal",
       "redirect_document_id": false
