@@ -1052,18 +1052,6 @@
       items:
         - name: Solution accelerators
           href: ../solutions.md?pivots=api-nosql&context=/azure/cosmos-db/nosql/context/context
-        - name: .NET
-          href: samples-dotnet.md
-        - name: Java
-          href: samples-java.md
-        - name: Spring Data
-          href: samples-java-spring-data.md
-        - name: Node.js
-          href: samples-nodejs.md
-        - name: Python
-          href: samples-python.md
-        - name: Go
-          href: samples-go.md
         - name: Azure CLI
           href: samples-cli.yml
         - name: Azure PowerShell
