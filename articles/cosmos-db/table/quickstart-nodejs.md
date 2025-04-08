@@ -126,6 +126,30 @@ The client library is available through npm, as the `@azure/data-tables` package
 
 ::: zone-end
 
+### Import libraries
+
+::: zone pivot="programming-language-js"
+
+Import the `DefaultAzureCredential`, `TableServiceClient`, and `TableClient` types into your application code.
+
+```javascript
+import { DefaultAzureCredential } from '@azure/identity';
+import { TableServiceClient, TableClient } from '@azure/data-tables';
+```
+
+:::zone-end
+
+::: zone pivot="programming-language-js"
+
+Import all required types into your application code.
+
+```typescript
+import { DefaultAzureCredential, TokenCredential } from '@azure/identity';
+import { TableServiceClient, TableClient, TableEntityResult, GetTableEntityResponse, TableEntityResultPage, TableEntityQueryOptions } from '@azure/data-tables';
+```
+
+:::zone-end
+
 ## Object model
 
 | Name | Description |

@@ -92,6 +92,16 @@ The client library is available through NuGet, as the `Azure.Data.Tables` packag
 
 1. Open and review the **src/web/Microsoft.Samples.Cosmos.Table.Quickstart.Web.csproj** file to validate that the `Azure.Data.Tables` entry exists.
 
+### Import libraries
+
+Import the `Azure.Identity` and `Azure.Data.Tables` namespaces into your application code.
+
+```csharp
+using Azure.Identity;
+
+using Azure.Data.Tables;
+```
+
 ## Object model
 
 | Name | Description |

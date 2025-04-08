@@ -93,6 +93,15 @@ The client library is available through PyPi, as the `azure-data-tables` package
 
 1. Open and review the **src/requirements.txt** file to validate that the `azure-data-tables` entry exists.
 
+### Import libraries
+
+Import the `DefaultAzureCredential` and `TableServiceClient` types into your application code.
+
+```python
+from azure.data.tables import TableServiceClient
+from azure.identity import DefaultAzureCredential
+```
+
 ## Object model
 
 | Name | Description |

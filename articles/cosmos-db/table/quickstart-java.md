@@ -94,6 +94,20 @@ The client library is available through Maven, as the `azure-data-tables` packag
     </dependency>
     ```
 
+### Import libraries
+
+Import all of the required namespaces into your application code.
+
+```java
+import com.azure.core.http.rest.PagedFlux;
+import com.azure.data.tables.TableAsyncClient;
+import com.azure.data.tables.TableClientBuilder;
+import com.azure.data.tables.models.ListEntitiesOptions;
+import com.azure.data.tables.models.TableEntity;
+import com.azure.identity.DefaultAzureCredential;
+import com.azure.identity.DefaultAzureCredentialBuilder;
+```
+
 ## Object model
 
 | Name | Description |

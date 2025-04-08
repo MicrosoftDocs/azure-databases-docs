@@ -93,6 +93,17 @@ The client library is available through Go, as the `aztables` package.
 
 1. Open and review the **src/go.mod** file to validate that the `github.com/Azure/azure-sdk-for-go/sdk/data/aztables` entry exists.
 
+### Import libraries
+
+Import the `github.com/Azure/azure-sdk-for-go/sdk/azidentity` and `github.com/Azure/azure-sdk-for-go/sdk/data/aztables` packages into your application code.
+
+```go
+import (
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/data/aztables"
+)
+```
+
 ## Object model
 
 | Name | Description |
