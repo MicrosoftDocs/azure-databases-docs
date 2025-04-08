@@ -8,7 +8,7 @@ ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.devlang: rust
 ms.topic: quickstart-sdk
-ms.date: 02/26/2025
+ms.date: 04/08/2025
 ms.custom: devx-track-rust
 appliesto:
   - ✅ NoSQL
@@ -51,6 +51,15 @@ The client library is available through Rust, as the `azure_data_cosmos` crate.
     ```bash
     cargo install azure_identity
     ```
+
+### Import libraries
+
+Import the `DefaultAzureCredential`, `CosmosClient`, `PartitionKey`, and `Query` types into your application code.
+
+```rust
+use azure_data_cosmos::{CosmosClient, PartitionKey, Query};
+use azure_identity::DefaultAzureCredential;
+```
 
 ## Object model
 

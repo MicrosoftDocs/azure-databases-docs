@@ -17,11 +17,10 @@ ms.custom: devx-track-js
 
 |Resource  |Link  |
 |---------|---------|
-|Download SDK  |   [@azure/cosmos](https://www.npmjs.com/package/@azure/cosmos) 
+|Download SDK  |   [`@azure/cosmos`](https://www.npmjs.com/package/@azure/cosmos) 
 |API Documentation  |  [JavaScript SDK reference documentation](/javascript/api/%40azure/cosmos/)
 |SDK installation instructions  |  `npm install @azure/cosmos`
 |Contribute to SDK | [Contributing guide for azure-sdk-for-js repo](https://github.com/Azure/azure-sdk-for-js/blob/main/CONTRIBUTING.md)
-| Samples | [Node.js code samples](samples-nodejs.md)
 | Getting started tutorial | [Get started with the JavaScript SDK](sql-api-nodejs-get-started.md)
 | Web app tutorial | [Build a Node.js web application using Azure Cosmos DB](tutorial-nodejs-web-app.md)
 | Current supported Node.js platforms | [LTS versions of Node.js](https://github.com/nodejs/release#release-schedule)
@@ -83,15 +82,17 @@ for await(const { result: item } in client.databases.readAll().getAsyncIterator(
 
 ### Fixed containers are now partitioned
 
-The Azure Cosmos DB service now supports partition keys on all containers, including those that were previously created as fixed containers. The v3 SDK updates to the latest API version that implements this change, but it isn't breaking. If you don't supply a partition key for operations, we'll default to a system key that works with all your existing containers and documents.
+The Azure Cosmos DB service now supports partition keys on all containers, including those that were previously created as fixed containers. The v3 SDK updates to the latest API version that implements this change, but it isn't breaking. If you don't supply a partition key for operations, we default to a system key that works with all your existing containers and documents.
 
 ### Upsert removed for stored procedures
 
-Previously upsert was allowed for non-partitioned collections, but with the API version update, all collections are partitioned so we removed it entirely.
+Previously upsert was allowed for nonpartitioned collections, but with the API version update, all collections are partitioned so we removed it entirely.
 
 ### Item reads won't throw on 404
 
+```javascript
 const container = client.database(dbId).container(containerId)
+```
 
 ```javascript
 // v2
@@ -118,7 +119,7 @@ Failed requests now throw proper Error or subclasses of Error. Previously they t
 
 #### User-cancelable requests
 
-The move to fetch internally allows us to use the browser AbortController API to support user-cancelable operations. In the case of operations where multiple requests are potentially in progress (like cross-partition queries), all requests for the operation will be canceled. Modern browser users will already have AbortController. Node.js users will need to use a Polyfill library
+The move to fetch internally allows us to use the browser AbortController API to support user-cancelable operations. In the case of operations where multiple requests are potentially in progress (like cross-partition queries), all requests for the operation will be canceled. Modern browser users will already have AbortController. Node.js users need to use a Polyfill library
 
 ```javascript
  const controller = new AbortController()
@@ -133,9 +134,9 @@ const { database }  = client.databases.create({ id: 'my-database', throughput: 1
 database.containers.create({ id: 'my-container', throughput: 10000 })
 ```
 
-#### @azure/cosmos-sign
+#### `@azure/cosmos-sign`
 
-Header token generation was split out into a new library, @azure/cosmos-sign. Anyone calling the Azure Cosmos DB REST API directly can use this to sign headers using the same code we call inside @azure/cosmos.
+Header token generation was split out into a new library, `@azure/cosmos-sign`. Anyone calling the Azure Cosmos DB REST API directly can use this to sign headers using the same code we call inside `@azure/cosmos`.
 
 #### UUID for generated IDs
 
