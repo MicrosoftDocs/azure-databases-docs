@@ -65,7 +65,7 @@ The Custom Column Selector in Azure Cosmos DB Data Explorer allows you to custom
 
 1. In the resource menu, select **Data Explorer**.
 
-1. Next, (Optional) select the **Open Full Screen** menu option.
+1. (Optional) Next, select the **Open Full Screen** menu option.
 
     ![Screenshot of the Data Explorer page with the 'Open Full Screen' option highlighted.](media/data-explorer/open-full-screen.png)
    
@@ -117,7 +117,7 @@ After applying the filter, your filter will be automatically saved and added to 
 
 1. Clear any Filter from the filter window. This step is required to be able to view your saved Filters.
 
-1. Click the Drop Down in the filter window, and select teh desired filter from the list.
+1. Click the Drop Down in the filter window, and select the desired filter from the list.
 
 1. Select Apply Filter
 
@@ -186,7 +186,8 @@ You can use Microsoft Entra-based authentication within the explorer by enabling
 
     > [!TIP]
     > The Azure Cosmos DB Data Explorer also supports the option to manually set the value of the **`Enable Entra ID (RBAC)`** to `True` using the <https://cosmos.azure.com?feature.enableAadDataPlane=true> URL.
-## Select Data Explorer Client Region
+
+## Select Data Explorer client region
 
 When you access a NoSQL account with Entra Authentication (control plane role-based access control), you’ll see the Region Selection option in settings. Selecting a region forces Data Explorer to send all requests to that specific region. 
 
