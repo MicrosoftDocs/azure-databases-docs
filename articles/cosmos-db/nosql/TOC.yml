@@ -423,12 +423,6 @@
               items:
                 - name: Create a container
                   href: how-to-python-create-container.md
-    - name: Build a Java web app
-      href: tutorial-java-web-app.md
-    - name: Build a Node.js web app
-      href: tutorial-nodejs-web-app.md
-    - name: Build a .NET console app
-      href: tutorial-dotnet-console-app.md
     - name: Query data
       href: tutorial-query.md
     - name: Create Visual Studio Code notebook
