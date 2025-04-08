@@ -8,7 +8,7 @@ ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.devlang: java
 ms.topic: quickstart-sdk
-ms.date: 02/26/2025
+ms.date: 04/08/2025
 ms.custom: devx-track-extended-java, devx-track-extended-azdevcli
 appliesto:
   - ✅ NoSQL
@@ -97,6 +97,24 @@ The client library is available through Maven, as the `azure-spring-data-cosmos`
         <artifactId>azure-identity</artifactId>
     </dependency>
     ```
+
+### Import libraries
+
+Import all of the required namespaces into your application code.
+
+```java
+import com.azure.cosmos.CosmosClientBuilder;
+import com.azure.cosmos.models.PartitionKey;
+import com.azure.identity.DefaultAzureCredential;
+import com.azure.identity.DefaultAzureCredentialBuilder;
+import com.azure.spring.data.cosmos.config.AbstractCosmosConfiguration;
+import com.azure.spring.data.cosmos.config.CosmosConfig;
+import com.azure.spring.data.cosmos.core.mapping.Container;
+import com.azure.spring.data.cosmos.core.mapping.PartitionKey;
+import com.azure.spring.data.cosmos.repository.CosmosRepository;
+import com.azure.spring.data.cosmos.repository.Query;
+import com.azure.spring.data.cosmos.repository.config.EnableCosmosRepositories;
+```
 
 ## Object model
 

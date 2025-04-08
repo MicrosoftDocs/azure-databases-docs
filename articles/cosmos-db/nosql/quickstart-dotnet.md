@@ -8,7 +8,7 @@ ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.devlang: csharp
 ms.topic: quickstart-sdk
-ms.date: 02/26/2025
+ms.date: 04/08/2025
 ms.custom: devx-track-csharp, devx-track-dotnet, devx-track-extended-azdevcli
 appliesto:
   - ✅ NoSQL
@@ -97,6 +97,16 @@ The client library is available through NuGet, as the `Microsoft.Azure.Cosmos` p
     ```
 
 1. Open and review the **src/web/Cosmos.Samples.NoSQL.Quickstart.Web.csproj** file to validate that the `Microsoft.Azure.Cosmos` and `Azure.Identity` entries both exist.
+
+### Import libraries
+
+Import the `Azure.Identity` and `Microsoft.Azure.Cosmos` namespaces into your application code.
+
+```csharp
+using Azure.Identity;
+
+using Microsoft.Azure.Cosmos;
+```
 
 ## Object model
 
