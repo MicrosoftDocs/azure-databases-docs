@@ -1073,6 +1073,10 @@
         - name: PowerShell
           href: powershell-samples.md
         - name: Azure CLI
+          href: samples-cli.yml
+        - name: Azure PowerShell
+          href: samples-powershell.yml
+        - name: Azure CLI
           items:
             - name: Overview
               href: cli-samples.md
