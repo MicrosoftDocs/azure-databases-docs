@@ -6322,27 +6322,27 @@
     },
     {
       "source_path_from_root": "/articles/cosmos-db/scripts/cli/nosql/create.md",
-      "redirect_url": "https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/nosql/create.sh",
+      "redirect_url": "https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/sql/create.sh",
       "redirect_document_id": false
     },
     {
       "source_path_from_root": "/articles/cosmos-db/scripts/cli/nosql/serverless.md",
-      "redirect_url": "https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/nosql/serverless.sh",
+      "redirect_url": "https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/sql/serverless.sh",
       "redirect_document_id": false
     },
     {
       "source_path_from_root": "/articles/cosmos-db/scripts/cli/nosql/autoscale.md",
-      "redirect_url": "https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/nosql/autoscale.sh",
+      "redirect_url": "https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/sql/autoscale.sh",
       "redirect_document_id": false
     },
     {
       "source_path_from_root": "/articles/cosmos-db/scripts/cli/nosql/throughput.md",
-      "redirect_url": "https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/nosql/throughput.sh",
+      "redirect_url": "https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/sql/throughput.sh",
       "redirect_document_id": false
     },
     {
       "source_path_from_root": "/articles/cosmos-db/scripts/cli/nosql/lock.md",
-      "redirect_url": "https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/nosql/lock.sh",
+      "redirect_url": "https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/sql/lock.sh",
       "redirect_document_id": false
     },
     {
