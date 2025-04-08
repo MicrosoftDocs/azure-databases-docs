@@ -51,6 +51,9 @@ You can also assign the server to a **batch** (`Batch 1` or `Batch 2`) to help s
 - **Batch 1**: Maintenance occurs in the **first 7 days** of the regional maintenance window.
 - **Batch 2**: Maintenance occurs in the **second 7 days**.
 
+> [!NOTE]  
+> The 7-day maintenance batches are **not aligned with calendar weeks** (e.g., starting on Sunday or Monday). Instead, the first 7-day period begins from the actual start date of the maintenance cycle in the server's region.
+
 Once CMW is configured, the new schedule will take effect in the **next regional maintenance cycle**.  
 To change the timing of a **currently scheduled** maintenance, use the **Maintenance Reschedule** feature.
 
