@@ -1,6 +1,286 @@
 {
   "redirections": [
     {
+      "source_path_from_root": "/articles/cosmos-db/scripts/cli/mongodb/create.md",
+      "redirect_url": "https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/mongodb/create.sh",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/scripts/cli/mongodb/serverless.md",
+      "redirect_url": "https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/mongodb/serverless.sh",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/scripts/cli/mongodb/autoscale.md",
+      "redirect_url": "https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/mongodb/autoscale.sh",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/scripts/cli/mongodb/throughput.md",
+      "redirect_url": "https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/mongodb/throughput.sh",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/scripts/cli/mongodb/lock.md",
+      "redirect_url": "https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/mongodb/lock.sh",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/scripts/cli/mongodb/list-get.md",
+      "redirect_url": "https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/mongodb",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/cli-samples.md",
+      "redirect_url": "https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/mongodb",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/scripts/cli/cassandra/create.md",
+      "redirect_url": "https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/cassandra/create.sh",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/scripts/cli/cassandra/serverless.md",
+      "redirect_url": "https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/cassandra/serverless.sh",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/scripts/cli/cassandra/autoscale.md",
+      "redirect_url": "https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/cassandra/autoscale.sh",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/scripts/cli/cassandra/throughput.md",
+      "redirect_url": "https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/cassandra/throughput.sh",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/scripts/cli/cassandra/lock.md",
+      "redirect_url": "https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/cassandra/lock.sh",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/scripts/cli/cassandra/list-get.md",
+      "redirect_url": "https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/cassandra",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/cassandra/cli-samples.md",
+      "redirect_url": "https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/cassandra",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/scripts/cli/gremlin/create.md",
+      "redirect_url": "https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/gremlin/create.sh",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/scripts/cli/gremlin/serverless.md",
+      "redirect_url": "https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/gremlin/serverless.sh",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/scripts/cli/gremlin/autoscale.md",
+      "redirect_url": "https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/gremlin/autoscale.sh",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/scripts/cli/gremlin/throughput.md",
+      "redirect_url": "https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/gremlin/throughput.sh",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/scripts/cli/gremlin/lock.md",
+      "redirect_url": "https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/gremlin/lock.sh",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/scripts/cli/gremlin/list-get.md",
+      "redirect_url": "https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/gremlin",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/gremlin/cli-samples.md",
+      "redirect_url": "https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/gremlin",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/scripts/cli/table/create.md",
+      "redirect_url": "https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/table/create.sh",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/scripts/cli/table/serverless.md",
+      "redirect_url": "https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/table/serverless.sh",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/scripts/cli/table/autoscale.md",
+      "redirect_url": "https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/table/autoscale.sh",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/scripts/cli/table/throughput.md",
+      "redirect_url": "https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/table/throughput.sh",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/scripts/cli/table/lock.md",
+      "redirect_url": "https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/table/lock.sh",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/scripts/cli/table/list-get.md",
+      "redirect_url": "https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/table",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/table/cli-samples.md",
+      "redirect_url": "https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/table",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/scripts/powershell/mongodb/create.md",
+      "redirect_url": "https://github.com/azure/azure-docs-powershell-samples/tree/master/cosmosdb/mongodb/ps-mongodb-create.ps1",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/scripts/powershell/mongodb/autoscale.md",
+      "redirect_url": "https://github.com/azure/azure-docs-powershell-samples/tree/master/cosmosdb/mongodb/ps-mongodb-autoscale.ps1",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/scripts/powershell/mongodb/throughput.md",
+      "redirect_url": "https://github.com/azure/azure-docs-powershell-samples/tree/master/cosmosdb/mongodb/ps-mongodb-ru-get.ps1",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/scripts/powershell/mongodb/lock.md",
+      "redirect_url": "https://github.com/azure/azure-docs-powershell-samples/blob/master/cosmosdb/mongodb/ps-mongodb-lock.ps1",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/scripts/powershell/mongodb/list.md",
+      "redirect_url": "https://github.com/azure/azure-docs-powershell-samples/blob/master/cosmosdb/mongodb/ps-mongodb-list-get.ps1",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/scripts/powershell/mongodb/list-get.md",
+      "redirect_url": "https://github.com/azure/azure-docs-powershell-samples/blob/master/cosmosdb/mongodb/ps-mongodb-list-get.ps1",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/powershell-samples.md",
+      "redirect_url": "https://github.com/azure/azure-docs-powershell-samples/tree/master/cosmosdb/mongodb",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/scripts/powershell/cassandra/create.md",
+      "redirect_url": "https://github.com/azure/azure-docs-powershell-samples/tree/master/cosmosdb/cassandra/ps-cassandra-create.ps1",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/scripts/powershell/cassandra/autoscale.md",
+      "redirect_url": "https://github.com/azure/azure-docs-powershell-samples/tree/master/cosmosdb/cassandra/ps-cassandra-autoscale.ps1",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/scripts/powershell/cassandra/throughput.md",
+      "redirect_url": "https://github.com/azure/azure-docs-powershell-samples/tree/master/cosmosdb/cassandra/ps-cassandra-ru-get.ps1",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/scripts/powershell/cassandra/lock.md",
+      "redirect_url": "https://github.com/azure/azure-docs-powershell-samples/tree/master/cosmosdb/cassandra/ps-cassandra-lock.ps1",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/scripts/powershell/cassandra/list.md",
+      "redirect_url": "https://github.com/azure/azure-docs-powershell-samples/tree/master/cosmosdb/cassandra/ps-cassandra-list-get.ps1",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/scripts/powershell/cassandra/list-get.md",
+      "redirect_url": "https://github.com/azure/azure-docs-powershell-samples/tree/master/cosmosdb/cassandra/ps-cassandra-list-get.ps1",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/cassandra/powershell-samples.md",
+      "redirect_url": "https://github.com/azure/azure-docs-powershell-samples/tree/master/cosmosdb/cassandra",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/scripts/powershell/gremlin/create.md",
+      "redirect_url": "https://github.com/azure/azure-docs-powershell-samples/tree/master/cosmosdb/gremlin/ps-gremlin-create.ps1",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/scripts/powershell/gremlin/autoscale.md",
+      "redirect_url": "https://github.com/azure/azure-docs-powershell-samples/tree/master/cosmosdb/gremlin/ps-gremlin-autoscale.ps1",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/scripts/powershell/gremlin/throughput.md",
+      "redirect_url": "https://github.com/azure/azure-docs-powershell-samples/tree/master/cosmosdb/gremlin/ps-gremlin-ru-get.ps1",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/scripts/powershell/gremlin/lock.md",
+      "redirect_url": "https://github.com/azure/azure-docs-powershell-samples/tree/master/cosmosdb/gremlin/ps-gremlin-lock.ps1",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/scripts/powershell/gremlin/list.md",
+      "redirect_url": "https://github.com/azure/azure-docs-powershell-samples/tree/master/cosmosdb/gremlin/ps-gremlin-list-get.ps1",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/scripts/powershell/gremlin/list-get.md",
+      "redirect_url": "https://github.com/azure/azure-docs-powershell-samples/tree/master/cosmosdb/gremlin/ps-gremlin-list-get.ps1",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/gremlin/powershell-samples.md",
+      "redirect_url": "https://github.com/azure/azure-docs-powershell-samples/tree/master/cosmosdb/gremlin",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/scripts/powershell/table/create.md",
+      "redirect_url": "https://github.com/azure/azure-docs-powershell-samples/tree/master/cosmosdb/table/ps-table-create.ps1",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/scripts/powershell/table/autoscale.md",
+      "redirect_url": "https://github.com/azure/azure-docs-powershell-samples/tree/master/cosmosdb/table/ps-table-autoscale.ps1",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/scripts/powershell/table/throughput.md",
+      "redirect_url": "https://github.com/azure/azure-docs-powershell-samples/tree/master/cosmosdb/table/ps-table-ru-get.ps1",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/scripts/powershell/table/lock.md",
+      "redirect_url": "https://github.com/azure/azure-docs-powershell-samples/tree/master/cosmosdb/table/ps-table-lock.ps1",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/scripts/powershell/table/list.md",
+      "redirect_url": "https://github.com/azure/azure-docs-powershell-samples/tree/master/cosmosdb/table/ps-table-list-get.ps1",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/scripts/powershell/table/list-get.md",
+      "redirect_url": "https://github.com/azure/azure-docs-powershell-samples/tree/master/cosmosdb/table/ps-table-list-get.ps1",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/table/powershell-samples.md",
+      "redirect_url": "https://github.com/azure/azure-docs-powershell-samples/tree/master/cosmosdb/table",
+      "redirect_document_id": false
+    },
+    {
       "source_path_from_root": "/articles/cosmos-db/intra-account-container-copy.md",
       "redirect_url": "/azure/cosmos-db/container-copy",
       "redirect_document_id": true

@@ -132,7 +132,7 @@ The following example shows a variable or unpredictable workload using autoscale
 
 ## Migrate standard provisioned throughput to autoscale
 
-Users that want to migrate a large number of resources from standard provisioned throughput to autoscale can use an Azure CLI script that will migrate every throughput resource in an Azure subscription to autoscale. For more details see, [Convert to Autoscale](./scripts/cli/common/convert-to-autoscale.md).
+Users that want to migrate a large number of resources from standard provisioned throughput to autoscale can use an Azure CLI script that will migrate every throughput resource in an Azure subscription to autoscale.
 
 ## Next steps
 * Use [RU calculator](https://cosmos.azure.com/capacitycalculator/) to estimate throughput for new workloads.
