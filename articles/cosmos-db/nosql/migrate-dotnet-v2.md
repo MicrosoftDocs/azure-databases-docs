@@ -38,7 +38,7 @@ Most of the retry logic and lower levels of the SDK remains largely unchanged.
 
 ## Why migrate to the .NET v2 SDK
 
-In addition to the numerous performance improvements, new feature investments made in the latest SDK will not be back ported to older versions.
+In addition to the numerous performance improvements, new feature investments made in the latest SDK won't be back ported to older versions.
 
 Additionally, the older SDKs will be replaced by newer versions and the v1 SDK will go into [maintenance mode](sdk-dotnet-v2.md). For the best development experience, we recommend migrating your application to a later version of the SDK.
 
