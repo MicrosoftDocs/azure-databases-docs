@@ -79,6 +79,28 @@
   - name: Kusto Query Language (KQL) transformations
     displayName: KQL, workspace, data
     href: ../tutorial-log-transformation.md
+- name: Automate account management
+  items:
+  - name: Create database and collection
+    href: https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/mongodb/create.sh
+  - name: Create serverless
+    href: https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/mongodb/serverless.sh
+  - name: Create with autoscale
+    href: https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/mongodb/autoscale.sh
+  - name: Perform throughput operations
+    href: https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/mongodb/throughput.sh
+  - name: Lock resources from deletion
+    href: https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/mongodb/lock.sh
+  - name: Add or fail over regions
+    href: https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/common/regions.sh
+  - name: Manage IP firewall rules
+    href: https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/common/ipfirewall.sh
+  - name: Secure account with service endpoints
+    href: https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/common/service-endpoints.sh
+  - name: Find existing free-tier accounts
+    href: https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/common/find-free-tier-account.sh
+  - name: Migrate all resources to autoscale
+    href: https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/common/convert-to-autoscale.sh
 - name: Samples
   items:
   - name: Azure PowerShell
