@@ -6121,8 +6121,18 @@
       "redirect_document_id": false
     },
     {
-      "source_path_from_root": "/articles/cosmos-db/scripts/powershell/nosql/create.md",
-      "redirect_url": "https://github.com/azure/azure-docs-powershell-samples/tree/master/cosmosdb/sql/ps-sql-create.ps1",
+      "source_path_from_root": "/articles/cosmos-db/scripts/powershell/nosql/list-get.md",
+      "redirect_url": "https://github.com/azure/azure-docs-powershell-samples/tree/master/cosmosdb/sql/ps-sql-list-get.ps1",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/scripts/powershell/nosql/create-index-none.md",
+      "redirect_url": "https://github.com/azure/azure-docs-powershell-samples/tree/master/cosmosdb/sql/ps-container-create-index-none.ps1",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/scripts/powershell/nosql/create-large-partition-key.md",
+      "redirect_url": "https://github.com/azure/azure-docs-powershell-samples/tree/master/cosmosdb/sql/ps-container-large-partition-key.ps1",
       "redirect_document_id": false
     },
     {
