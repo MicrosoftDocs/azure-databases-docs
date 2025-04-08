@@ -158,10 +158,8 @@ In the Data Explorer, you can configure a limit to the request units per second 
 
     ![Screenshot of the individual settings to configure the request unit threshold.](media/data-explorer/configure-ru-threshold.png)
    
-         ```
-   > [!TIP]
-   ```
-   > The RU threshold is enabled automatically with a default value of **5,000** RUs.
+    > [!TIP]
+    > The RU threshold is enabled automatically with a default value of **5,000** RUs.
 
 ## Use with Microsoft Entra authentication
 
@@ -192,7 +190,7 @@ You can use Microsoft Entra-based authentication within the explorer by enabling
 
 When you access a NoSQL account with Entra Authentication (control plane role-based access control), you’ll see the Region Selection option in settings. Selecting a region forces Data Explorer to send all requests to that specific region. 
 
-![region-selection-settings-menu](media/data-explorer/region-selection-settings-menu.png)
+![Screenshot of region selection menu with global option and two regional options.](media/data-explorer/region-selection-settings-menu.png)
 
 To select a region:
 
