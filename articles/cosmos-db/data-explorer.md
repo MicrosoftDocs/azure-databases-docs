@@ -65,7 +65,7 @@ The Custom Column Selector in Azure Cosmos DB Data Explorer allows you to custom
 
 1. In the resource menu, select **Data Explorer**.
 
-1. Next, (Optional) select the **Open Full Screen** menu option.
+1. (Optional) Next, select the **Open Full Screen** menu option.
 
     ![Screenshot of the Data Explorer page with the 'Open Full Screen' option highlighted.](media/data-explorer/open-full-screen.png)
    
@@ -117,7 +117,7 @@ After applying the filter, your filter will be automatically saved and added to 
 
 1. Clear any Filter from the filter window. This step is required to be able to view your saved Filters.
 
-1. Click the Drop Down in the filter window, and select teh desired filter from the list.
+1. Click the Drop Down in the filter window, and select the desired filter from the list.
 
 1. Select Apply Filter
 
@@ -158,10 +158,8 @@ In the Data Explorer, you can configure a limit to the request units per second 
 
     ![Screenshot of the individual settings to configure the request unit threshold.](media/data-explorer/configure-ru-threshold.png)
    
-   ```
-   > [!TIP]
-   ```
-   > The RU threshold is enabled automatically with a default value of **5,000** RUs.
+    > [!TIP]
+    > The RU threshold is enabled automatically with a default value of **5,000** RUs.
 
 ## Use with Microsoft Entra authentication
 
@@ -188,6 +186,24 @@ You can use Microsoft Entra-based authentication within the explorer by enabling
 
     > [!TIP]
     > The Azure Cosmos DB Data Explorer also supports the option to manually set the value of the **`Enable Entra ID (RBAC)`** to `True` using the <https://cosmos.azure.com?feature.enableAadDataPlane=true> URL.
+
+## Select Data Explorer client region
+
+When you access a NoSQL account with Entra Authentication (control plane role-based access control), you’ll see the Region Selection option in settings. Selecting a region forces Data Explorer to send all requests to that specific region. 
+
+![Screenshot of region selection menu with global option and two regional options.](media/data-explorer/region-selection-settings-menu.png)
+
+To select a region:
+
+1. Sign in to your account with Entra Authentication through the portal or directly through your Azure subscription.
+
+1. Open the **Settings** menu.
+
+1. Use the **Select Region** drop-down to choose **Global** or the required region.
+
+If you select a **read-only** region, Data Explorer disables write, update, and delete operations.
+
+If you select **Global**, the client uses the account's global endpoint and enables endpoint discovery to route requests to the optimal region.  If you select any **specific region**, the client disables endpoint discovery and sends all requests only to the selected region. 
 
 ## Known issues
 
