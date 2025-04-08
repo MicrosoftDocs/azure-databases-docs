@@ -6356,6 +6356,11 @@
       "redirect_document_id": false
     },
     {
+      "source_path_from_root": "/articles/cosmos-db/scripts/cli/common/ipfirewall.md",
+      "redirect_url": "https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/common/ipfirewall.sh",
+      "redirect_document_id": false
+    },
+    {
       "source_path_from_root": "/articles/cosmos-db/scripts/cli/common/ipfirewall-bulk-add-remove.md",
       "redirect_url": "https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/common/ipfirewall.sh",
       "redirect_document_id": false
@@ -6421,7 +6426,7 @@
       "redirect_document_id": false
     },
     {
-      "source_path_from_root": "/articles/cosmos-db/scripts/powershell/common/keys-connection-string.md",
+      "source_path_from_root": "/articles/cosmos-db/scripts/powershell/common/keys-connection-strings.md",
       "redirect_url": "https://github.com/azure/azure-docs-powershell-samples/tree/master/cosmosdb/common/ps-account-keys-connection-strings.ps1",
       "redirect_document_id": false
     },
