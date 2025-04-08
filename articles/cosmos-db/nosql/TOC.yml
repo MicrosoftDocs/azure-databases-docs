@@ -1070,8 +1070,6 @@
           href: samples-python.md
         - name: Go
           href: samples-go.md
-        - name: PowerShell
-          href: powershell-samples.md
         - name: Azure CLI
           items:
             - name: Overview

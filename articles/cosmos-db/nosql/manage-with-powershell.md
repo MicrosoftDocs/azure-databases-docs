@@ -776,7 +776,6 @@ Remove-AzResourceLock `
 
 ## Next steps
 
-* [All PowerShell Samples](powershell-samples.md)
 * [How to manage Azure Cosmos DB account](../how-to-manage-database-account.yml)
 * [Create an Azure Cosmos DB container](how-to-create-container.md)
 * [Configure time-to-live in Azure Cosmos DB](how-to-time-to-live.md)
