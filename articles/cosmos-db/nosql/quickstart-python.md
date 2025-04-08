@@ -8,7 +8,7 @@ ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.devlang: python
 ms.topic: quickstart-sdk
-ms.date: 02/26/2025
+ms.date: 04/08/2025
 ms.custom: devx-track-python, devx-track-extended-azdevcli
 appliesto:
   - ✅ NoSQL
@@ -97,6 +97,15 @@ The client library is available through the Python Package Index, as the `azure-
     ```
 
 1. Open and review the **src/requirements.txt** file to validate that the `azure-cosmos` and `azure-identity` entries both exist.
+
+### Import libraries
+
+Import the `DefaultAzureCredential` and `CosmosClient` types into your application code.
+
+```python
+from azure.identity import DefaultAzureCredential
+from azure.cosmos import CosmosClient
+```
 
 ## Object model
 
