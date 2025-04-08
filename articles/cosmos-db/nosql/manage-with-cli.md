@@ -13,7 +13,7 @@ ms.author: mjbrown
 
 [!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
 
-The following guide describes common commands to automate management of your Azure Cosmos DB accounts, databases and containers using Azure CLI. Reference pages for all Azure Cosmos DB CLI commands are available in the [Azure CLI Reference](/cli/azure/cosmosdb). You can also find more examples in [Azure CLI samples for Azure Cosmos DB](cli-samples.md), including how to create and manage Azure Cosmos DB accounts, databases and containers for MongoDB, Gremlin, Cassandra and API for Table.
+The following guide describes common commands to automate management of your Azure Cosmos DB accounts, databases, and containers using Azure CLI. Reference pages for all Azure Cosmos DB CLI commands are available in the [Azure CLI Reference](/cli/azure/cosmosdb). You can also find more examples in [Azure CLI samples for Azure Cosmos DB](cli-samples.md), including how to create and manage Azure Cosmos DB accounts, databases and containers for MongoDB, Gremlin, Cassandra, and API for Table.
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](~/reusable-content/azure-cli/azure-cli-prepare-your-environment.md)]
 
@@ -22,9 +22,9 @@ The following guide describes common commands to automate management of your Azu
 For Azure CLI samples for other APIs see [CLI Samples for Cassandra](../cassandra/cli-samples.md), [CLI Samples for API for MongoDB](../mongodb/cli-samples.md), [CLI Samples for Gremlin](../graph/cli-samples.md), [CLI Samples for Table](../table/cli-samples.md)
 
 > [!IMPORTANT]
-> Azure Cosmos DB resources cannot be renamed as this violates how Azure Resource Manager works with resource URIs.
+> Azure Cosmos DB resources can't be renamed as this violates how Azure Resource Manager works with resource URIs.
 
-## Azure Cosmos DBAccounts
+## Azure Cosmos DB accounts
 
 The following sections demonstrate how to manage the Azure Cosmos DB account, including:
 
@@ -44,7 +44,7 @@ The following sections demonstrate how to manage the Azure Cosmos DB account, in
 Create an Azure Cosmos DB account with API for NoSQL, Session consistency in West US and East US regions:
 
 > [!IMPORTANT]
-> The Azure Cosmos DB account name must be lowercase and less than 44 characters.
+> The Azure Cosmos DB account name must be lowercase and fewer than 44 characters.
 
 ```azurecli-interactive
 resourceGroupName='MyResourceGroup'
@@ -63,7 +63,7 @@ az cosmosdb create \
 Create an Azure Cosmos DB account with two regions, add a region, and remove a region.
 
 > [!NOTE]
-> You cannot simultaneously add or remove regions `locations` and change other properties for an Azure Cosmos DB account. Modifying regions must be performed as a separate operation than any other change to the account resource.
+> You can't simultaneously add or remove regions `locations` and change other properties for an Azure Cosmos DB account. Modifying regions must be performed as a separate operation than any other change to the account resource.
 > [!NOTE]
 > This command allows you to add and remove regions but does not allow you to modify failover priorities or trigger a manual failover. See [Set failover priority](#set-failover-priority) and [Trigger manual failover](#trigger-manual-failover).
 > [!TIP]
