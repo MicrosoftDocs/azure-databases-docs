@@ -48,6 +48,9 @@
       href: ../tutorial-log-transformation.md
   - name: Automate account management
     items:
+    - name: Azure CLI
+      expanded: true
+      items:
       - name: Create account, keyspace, and table
         href: https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/cassandra/create.sh
       - name: Create serverless
