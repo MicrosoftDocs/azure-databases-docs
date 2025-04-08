@@ -166,6 +166,11 @@
       "redirect_document_id": false
     },
     {
+      "source_path_from_root": "/articles/cosmos-db/scripts/powershell/mongodb/list-get.md",
+      "redirect_url": "https://github.com/azure/azure-docs-powershell-samples/blob/master/cosmosdb/mongodb/ps-mongodb-list-get.ps1",
+      "redirect_document_id": false
+    },
+    {
       "source_path_from_root": "/articles/cosmos-db/mongodb/powershell-samples.md",
       "redirect_url": "https://github.com/azure/azure-docs-powershell-samples/tree/master/cosmosdb/mongodb",
       "redirect_document_id": false
@@ -192,6 +197,11 @@
     },
     {
       "source_path_from_root": "/articles/cosmos-db/scripts/powershell/cassandra/list.md",
+      "redirect_url": "https://github.com/azure/azure-docs-powershell-samples/tree/master/cosmosdb/cassandra/ps-cassandra-list-get.ps1",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/scripts/powershell/cassandra/list-get.md",
       "redirect_url": "https://github.com/azure/azure-docs-powershell-samples/tree/master/cosmosdb/cassandra/ps-cassandra-list-get.ps1",
       "redirect_document_id": false
     },
@@ -226,6 +236,11 @@
       "redirect_document_id": false
     },
     {
+      "source_path_from_root": "/articles/cosmos-db/scripts/powershell/gremlin/list-get.md",
+      "redirect_url": "https://github.com/azure/azure-docs-powershell-samples/tree/master/cosmosdb/gremlin/ps-gremlin-list-get.ps1",
+      "redirect_document_id": false
+    },
+    {
       "source_path_from_root": "/articles/cosmos-db/gremlin/powershell-samples.md",
       "redirect_url": "https://github.com/azure/azure-docs-powershell-samples/tree/master/cosmosdb/gremlin",
       "redirect_document_id": false
@@ -252,6 +267,11 @@
     },
     {
       "source_path_from_root": "/articles/cosmos-db/scripts/powershell/table/list.md",
+      "redirect_url": "https://github.com/azure/azure-docs-powershell-samples/tree/master/cosmosdb/table/ps-table-list-get.ps1",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/scripts/powershell/table/list-get.md",
       "redirect_url": "https://github.com/azure/azure-docs-powershell-samples/tree/master/cosmosdb/table/ps-table-list-get.ps1",
       "redirect_document_id": false
     },
