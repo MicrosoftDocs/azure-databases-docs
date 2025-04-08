@@ -54,14 +54,6 @@ await client.CreateDocumentCollectionAsync(
     new RequestOptions { OfferThroughput = 1000 });
 ```
 
-## <a id="cli-mongodb"></a>Create using Azure CLI
-
-[Create a Gremlin graph with Azure CLI](../scripts/cli/gremlin/create.md). For a listing of all Azure CLI samples across all Azure Cosmos DB APIs see, [Azure CLI samples for Azure Cosmos DB](cli-samples.md).
-
-## Create using PowerShell
-
-[Create a Gremlin graph with PowerShell](../scripts/powershell/gremlin/create.md). For a listing of all PowerShell samples across all Azure Cosmos DB APIs see, [PowerShell Samples](powershell-samples.md)
-
 ## Next steps
 
 * [Partitioning in Azure Cosmos DB](../partitioning-overview.md)
