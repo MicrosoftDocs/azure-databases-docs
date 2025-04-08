@@ -58,10 +58,3 @@ In the examples above, the response from the requests is a [``ContainerProxy``](
 The following example shows the **create_container_if_not_exists** method returning a **container** object.
 
 :::code language="python" source="~/cosmos-db-nosql-python-samples/005-create-container/app_exists.py" id="parse_response":::
-
-## Next steps
-
-Now that you've create a container, use the next guide to create items.
-
-> [!div class="nextstepaction"]
-> [Examples for Azure Cosmos DB for NoSQL SDK for Python](samples-python.md)
