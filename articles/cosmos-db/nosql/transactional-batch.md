@@ -284,8 +284,7 @@ Currently, there are two known limits:
 * The Azure Cosmos DB request size limit constrains the size of the Transactional Batch payload to not exceed 2 MB, and the maximum execution time is 5 seconds.
 * There's a current limit of 100 operations per Transactional Batch to ensure the performance is as expected and within SLAs.
 
-## Next steps
+## Next step
 
-* Learn more about [what you can do with TransactionalBatch](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/TransactionalBatch)
-
-* Visit our [samples](samples-dotnet.md) for more ways to use our Azure Cosmos DB .NET SDK
+> [!div class="nextstepaction"]
+> [`TransactionalBatch` usage](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/TransactionalBatch)
