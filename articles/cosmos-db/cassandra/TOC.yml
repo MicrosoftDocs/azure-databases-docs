@@ -73,30 +73,6 @@
         href: https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/common/convert-to-autoscale.sh
   - name: Samples
     items:
-    - name: Azure PowerShell
-      items:
-      - name: Overview
-        href: powershell-samples.md
-      - name: Create account, keyspace, and table
-        href: ../scripts/powershell/cassandra/create.md
-      - name: Create with autoscale
-        href: ../scripts/powershell/cassandra/autoscale.md
-      - name: Perform throughput operations
-        href: ../scripts/powershell/cassandra/throughput.md
-      - name: Lock resources from deletion
-        href: ../scripts/powershell/cassandra/lock.md
-      - name: List and get keyspaces and table
-        href: ../scripts/powershell/cassandra/list-get.md
-      - name: Account keys or connection strings
-        href: ../scripts/powershell/common/keys-connection-strings.md
-      - name: Change failover priority or trigger failover
-        href: ../scripts/powershell/common/failover-priority-update.md
-      - name: Create an account with IP Firewall
-        href: ../scripts/powershell/common/firewall-create.md
-      - name: Update account
-        href: ../scripts/powershell/common/account-update.md
-      - name: Update an account's regions
-        href: ../scripts/powershell/common/update-region.md
     - name: Templates
       items:
       - name: JSON syntax templates
