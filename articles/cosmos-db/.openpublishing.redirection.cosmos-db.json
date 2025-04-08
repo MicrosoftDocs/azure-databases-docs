@@ -6029,6 +6029,71 @@
       "source_path_from_root": "/articles/cosmos-db/nosql/troubleshoot-java-sdk-request-timeout.md",
       "redirect_url": "/azure/cosmos-db/nosql/troubleshoot-java-sdk-request-time-out",
       "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/scripts/cli/nosql/create.md",
+      "redirect_url": "https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/nosql/create.sh",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/scripts/cli/nosql/serverless.md",
+      "redirect_url": "https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/nosql/serverless.sh",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/scripts/cli/nosql/autoscale.md",
+      "redirect_url": "https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/nosql/autoscale.sh",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/scripts/cli/nosql/throughput.md",
+      "redirect_url": "https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/nosql/throughput.sh",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/scripts/cli/nosql/lock.md",
+      "redirect_url": "https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/nosql/lock.sh",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/scripts/cli/common/regions.md",
+      "redirect_url": "https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/common/regions.sh",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/scripts/cli/common/keys.md",
+      "redirect_url": "https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/common/keys.sh",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/scripts/cli/common/ipfirewall.md",
+      "redirect_url": "https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/common/ipfirewall.sh",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/scripts/cli/common/ipfirewall.md",
+      "redirect_url": "https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/common/ipfirewall.sh",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/scripts/cli/common/service.md",
+      "redirect_url": "https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/common/service.sh",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/scripts/cli/common/service.md",
+      "redirect_url": "https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/common/service.sh",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/scripts/cli/common/free.md",
+      "redirect_url": "https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/common/free.sh",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/scripts/cli/common/convert.md",
+      "redirect_url": "https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/common/convert.sh",
+      "redirect_document_id": false
     }
   ]
 }

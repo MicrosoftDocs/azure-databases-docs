@@ -1073,35 +1073,7 @@
         - name: PowerShell
           href: powershell-samples.md
         - name: Azure CLI
-          items:
-            - name: Overview
-              href: cli-samples.md
-            - name: Create account, database, and container
-              href: ../scripts/cli/nosql/create.md?context=/azure/cosmos-db/nosql/context/context
-            - name: Create serverless
-              href: ../scripts/cli/nosql/serverless.md?context=/azure/cosmos-db/nosql/context/context
-            - name: Create with autoscale
-              href: ../scripts/cli/nosql/autoscale.md?context=/azure/cosmos-db/nosql/context/context
-            - name: Perform throughput operations
-              href: ../scripts/cli/nosql/throughput.md?context=/azure/cosmos-db/nosql/context/context
-            - name: Lock resources from deletion
-              href: ../scripts/cli/nosql/lock.md?context=/azure/cosmos-db/nosql/context/context
-            - name: Add or fail over regions
-              href: ../scripts/cli/common/regions.md?context=/azure/cosmos-db/nosql/context/context
-            - name: Perform account key operations
-              href: ../scripts/cli/common/keys.md?context=/azure/cosmos-db/nosql/context/context
-            - name: Secure with IP firewall
-              href: ../scripts/cli/common/ipfirewall.md?context=/azure/cosmos-db/nosql/context/context
-            - name: Add or remove IP firewall rules in bulk
-              href: ../scripts/cli/common/ipfirewall-bulk-add-remove.md?context=/azure/cosmos-db/nosql/context/context
-            - name: Secure new account with service endpoints
-              href: ../scripts/cli/common/service-endpoints.md?context=/azure/cosmos-db/nosql/context/context
-            - name: Secure existing account with service endpoints
-              href: ../scripts/cli/common/service-endpoints-ignore-missing-vnet.md?context=/azure/cosmos-db/nosql/context/context
-            - name: Find existing free-tier accounts
-              href: ../scripts/cli/common/free-tier.md?context=/azure/cosmos-db/nosql/context/context
-            - name: Migrate all resources to autoscale
-              href: ../scripts/cli/common/convert-to-autoscale.md?context=/azure/cosmos-db/nosql/context/context
+          href: samples-cli.md
         - name: Azure PowerShell
           items:
             - name: Overview
