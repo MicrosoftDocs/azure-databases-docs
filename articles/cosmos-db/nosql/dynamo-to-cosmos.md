@@ -4,7 +4,7 @@ description: Learn how to migrate your .NET application from Amazon DynamoDB to 
 author: manishmsfte
 ms.service: azure-cosmos-db
 ms.subservice: nosql
-ms.collection: 
+ms.collection:
  - migration
  - aws-to-azure
 ms.custom: devx-track-dotnet

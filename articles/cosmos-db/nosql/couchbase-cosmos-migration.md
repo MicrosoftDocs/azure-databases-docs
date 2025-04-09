@@ -10,8 +10,6 @@ author: manishmsfte
 ms.custom: devx-track-java, devx-track-extended-java
 ms.collection: 
  - migration
- - aws-to-azure
- - gcp-to-azure
 ---
 
 # Migrate from CouchBase to Azure Cosmos DB for NoSQL
