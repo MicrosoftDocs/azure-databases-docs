@@ -8,10 +8,10 @@ ms.reviewer: iriaosara
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: reference
-ms.date: 10/01/2024
+ms.date: 04/09/2025
 ---
 
-# Azure Cosmos DB for NoSQL data plane actions reference
+# Azure Cosmos DB for NoSQL data plane security reference
 
 [!INCLUDE[NoSQL](../../includes/appliesto-nosql.md)]
 
@@ -19,12 +19,12 @@ ms.date: 10/01/2024
 Diagram of the sequence of the deployment guide including these locations, in order: Overview, Concepts, Prepare, Role-based access control, Network, and Reference. The 'Reference' location is currently highlighted.
 :::image-end:::
 
-Azure Cosmos DB for NoSQL exposes a unique set of data actions within its native role-based access control implementation. This article includes a list of those actions and descriptions on what permissions are granted for each action.
+Azure Cosmos DB for NoSQL exposes a unique set of data actions and roles within its native role-based access control implementation. This article includes a list of those actions and roles with descriptions on what permissions are granted for each resource.
 
 > [!WARNING]
 > Azure Cosmos DB for NoSQL's native role-based access control doesn't support the `notDataActions` property. Any action that is not specified as an allowed `dataAction` is excluded automatically.
 
-## Data actions
+## Built-in actions
 
 Here's a list of data actions that can be individually set in a role definition.
 
@@ -52,6 +52,29 @@ Wildcards are supported at both containers and items levels.
 | --- | --- |
 | **`Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/*`** | Perform all container-specific operations like executing queries, reading the change feed, managing conflicts, and executing stored procedures |
 | **`Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/*`** | Perform all item-specific operations like creating, reading, updating, replacing, and deleting items |
+
+## Built-in roles
+
+Azure Cosmos DB for NoSQL defines data plane-specific role definitions. These roles are distinct from Azure role-based access control role definitions.
+
+### Cosmos DB Built-in Data Reader
+
+**ID**: `00000000-0000-0000-0000-000000000001`
+
+- **Included actions**
+  - `Microsoft.DocumentDB/databaseAccounts/readMetadata`
+  - `Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/read`
+  - `Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/executeQuery`
+  - `Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/readChangeFeed`
+
+### Cosmos DB Built-in Data Contributor
+
+**ID**: `00000000-0000-0000-0000-000000000002`
+
+- **Included actions**
+  - `Microsoft.DocumentDB/databaseAccounts/readMetadata`
+  - `Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/*`
+  - `Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/*`
 
 ## Required metadata
 
