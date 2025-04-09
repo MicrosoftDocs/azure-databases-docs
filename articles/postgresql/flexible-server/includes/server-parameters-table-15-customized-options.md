@@ -2,7 +2,7 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 03/10/2025
+ms.date: 04/09/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
@@ -263,6 +263,23 @@ ms.custom: automatically generated
 
 
 
+### azure_cdc.max_fabric_mirrors
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Maximum number of parallel fabric mirrors that can be run at the same time. |
+| Data type | integer |
+| Default value | `3` |
+| Allowed values | `1-6` |
+| Parameter type | static |
+| Documentation | |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
 ### azure_cdc.max_snapshot_workers
 
 | Attribute | Value |
@@ -365,6 +382,23 @@ ms.custom: automatically generated
 
 
 
+### azure.fabric_mirror_enabled
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Sepcifies the flag indicating if mirroring is enabled on server. |
+| Data type | boolean |
+| Default value | `off` |
+| Allowed values | `on,off` |
+| Parameter type | dynamic |
+| Documentation | |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
 ### azure.migration_copy_with_binary
 
 | Attribute | Value |
@@ -461,6 +495,40 @@ ms.custom: automatically generated
 | Allowed values | `1-204800` |
 | Parameter type | dynamic |
 | Documentation | [azure.migration_table_split_size](https://aka.ms/migration_parameters) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### azure.service_principal_id
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | A unique identifier for a service principal in Azure, used to grant permissions and access to resources within a tenant. |
+| Data type | string |
+| Default value | |
+| Allowed values | |
+| Parameter type | read-only |
+| Documentation | |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### azure.service_principal_tenant_id
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | A unique identifier for the tenant in which a service principal is created, ensuring the necessary permissions and access to resources within that tenant. |
+| Data type | string |
+| Default value | |
+| Allowed values | |
+| Parameter type | read-only |
+| Documentation | |
 
 
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
