@@ -132,7 +132,7 @@ Permissions.NotDataActions :
 > - `Microsoft.DocumentDB/databaseAccounts/sqlRoleDefinitions/read`
 > - `Microsoft.DocumentDB/databaseAccounts/sqlRoleDefinitions/write`
 >
-> For more information, see [grant control plane role-based access](how-to-grant-control-plane-role-based-access.md).
+> For more information, see [grant control plane role-based access](how-to-grant-control-plane-access.md).
 
 > [!WARNING]
 > Azure Cosmos DB for NoSQL's native role-based access control doesn't support the `notDataActions` property. Any action that isn't specified as an allowed `dataAction` is excluded automatically.
