@@ -15,10 +15,6 @@ ms.date: 04/09/2025
 
 [!INCLUDE[NoSQL](../../includes/appliesto-nosql.md)]
 
-:::image type="complex" source="media/reference-data-plane-actions/map.svg" border="false" alt-text="Diagram of the current location ('Reference') in the sequence of the deployment guide.":::
-Diagram of the sequence of the deployment guide including these locations, in order: Overview, Concepts, Prepare, Role-based access control, Network, and Reference. The 'Reference' location is currently highlighted.
-:::image-end:::
-
 Azure Cosmos DB for NoSQL exposes a unique set of data actions and roles within its native role-based access control implementation. This article includes a list of those actions and roles with descriptions on what permissions are granted for each resource.
 
 > [!WARNING]
@@ -106,4 +102,6 @@ The action can be assigned at any level in an Azure Cosmos DB account's hierarch
 
 ## Related content
 
-- [Data plane roles](reference-data-plane-roles.md)
+- [Security best practices](security.md)
+- [Grant data plane role-based access](how-to-grant-data-plane-access.md)
+- [Grant data plane control-plane access](how-to-grant-control-plane-access.md)

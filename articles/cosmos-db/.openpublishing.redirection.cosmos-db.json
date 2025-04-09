@@ -6522,12 +6522,12 @@
     },
     {
       "source_path_from_root": "/articles/cosmos-db/nosql/security/how-to-grant-control-plane-role-based-access.md",
-      "redirect_url": "/azure/cosmos-db/nosql/how-to-grant-control-plane-role-based-access",
+      "redirect_url": "/azure/cosmos-db/nosql/how-to-grant-control-plane-access",
       "redirect_document_id": true
     },
     {
       "source_path_from_root": "/articles/cosmos-db/nosql/security/how-to-grant-data-plane-role-based-access.md",
-      "redirect_url": "/azure/cosmos-db/nosql/how-to-grant-data-plane-role-based-access",
+      "redirect_url": "/azure/cosmos-db/nosql/how-to-grant-data-plane-access",
       "redirect_document_id": true
     }
   ]

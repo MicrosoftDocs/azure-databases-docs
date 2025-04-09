@@ -8,7 +8,7 @@ ms.reviewer: iriaosara
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: how-to
-ms.date: 10/01/2024
+ms.date: 04/09/2025
 zone_pivot_groups: azure-interface-cli-powershell-bicep
 #Customer Intent: As a security user, I want to disable key-based auth in an Azure Cosmos DB for NoSQL account, so that my developers or applications can no longer access the account in an insecure manner.
 ---
@@ -16,10 +16,6 @@ zone_pivot_groups: azure-interface-cli-powershell-bicep
 # Disable key-based authentication with Azure Cosmos DB for NoSQL
 
 [!INCLUDE[NoSQL](../../includes/appliesto-nosql.md)]
-
-:::image type="complex" source="media/how-to-disable-key-based-authentication/map.svg" border="false" alt-text="Diagram of the current location ('Prepare') in the sequence of the deployment guide.":::
-Diagram of the sequence of the deployment guide including these locations, in order: Overview, Concepts, Prepare, Role-based access control, Network, and Reference. The 'Prepare' location is currently highlighted.
-:::image-end:::
 
 This article covers the process of disabling key-based authorization (or resource owner password credential auth) for an Azure Cosmos DB for NoSQL account.
 
@@ -121,7 +117,8 @@ public class NoSQL{
 
 ---
 
-## Next step
+## Related content
 
-> [!div class="nextstepaction"]
-> [Grant your identity control plane role-based access](how-to-grant-control-plane-role-based-access.md)
+- [Security best practices](security.md)
+- [Grant data plane role-based access](how-to-grant-data-plane-access.md)
+- [Grant data plane control-plane access](how-to-grant-control-plane-access.md)

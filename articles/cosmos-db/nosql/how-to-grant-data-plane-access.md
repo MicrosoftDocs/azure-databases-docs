@@ -17,13 +17,6 @@ zone_pivot_groups: azure-interface-cli-powershell-bicep
 
 [!INCLUDE[NoSQL](../../includes/appliesto-nosql.md)]
 
-:::image type="complex" source="media/how-to-grant-control-plane-role-based-access/map.svg" border="false" alt-text="Diagram of the current location ('Role-based access control') in the sequence of the deployment guide.":::
-Diagram of the sequence of the deployment guide including these locations, in order: Overview, Concepts, Prepare, Role-based access control, Network, and Reference. The 'Role-based access control' location is currently highlighted.
-:::image-end:::
-
-> [!Tip] 
-> Visit our new **[Samples Gallery](https://aka.ms/AzureCosmosDB/Gallery)** for the latest samples for building new apps
-
 This article walks through the steps to grant an identity access to manage data in an Azure Cosmos DB for NoSQL account.
 
 > [!IMPORTANT]
@@ -677,3 +670,9 @@ fn main() {
 > This code samples uses the [`azure_data_cosmos`](https://crates.io/crates/azure_data_cosmos) and [`azure_identity`](https://crates.io/crates/azure_identity) crates from Cargo.
 
 ---
+
+## Related content
+
+- [Security best practices](security.md)
+- [Disable key-based authentication](how-to-disable-key-based-authentication.md)
+- [Grant data plane control-plane access](how-to-grant-control-plane-access.md)

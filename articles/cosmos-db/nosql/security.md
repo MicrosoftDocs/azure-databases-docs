@@ -66,6 +66,6 @@ Finally, you can scope the assignment to a single container, the most granular s
 
 ## Related content
 
-- [TODO](about:blank)
-- [TODO](about:blank)
-- [TODO](about:blank)
+- [Disable key-based authentication](how-to-disable-key-based-authentication.md)
+- [Grant data plane role-based access](how-to-grant-data-plane-access.md)
+- [Grant data plane control-plane access](how-to-grant-control-plane-access.md)
