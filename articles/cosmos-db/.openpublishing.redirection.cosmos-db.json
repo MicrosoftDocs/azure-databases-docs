@@ -6494,6 +6494,16 @@
       "source_path_from_root": "/articles/cosmos-db/scripts/powershell/common/update-region.md",
       "redirect_url": "https://github.com/azure/azure-docs-powershell-samples/tree/master/cosmosdb/common/ps-account-update-region.ps1",
       "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/nosql/security/index.md",
+      "redirect_url": "/azure/cosmos-db/nosql/security",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/nosql/security/glossary.md",
+      "redirect_url": "/azure/cosmos-db/nosql/security#glossary",
+      "redirect_document_id": false
     }
   ]
 }

@@ -1,30 +1,48 @@
 ---
-title: Security terminology glossary
+title: Secure your account
 titleSuffix: Azure Cosmos DB for NoSQL
-description: Explore common glossary terminology used when describing how to managed role-based access control within Azure Cosmos DB for NoSQL.
+description: Review the fundamentals of securing Azure Cosmos DB for NoSQL from the pespective of data and networking security.
 author: seesharprun
 ms.author: sidandrews
-ms.reviewer: iriaosara
 ms.service: azure-cosmos-db
 ms.subservice: nosql
-ms.topic: glossary
-ms.date: 10/01/2024
+ms.topic: best-practice
+ms.date: 04/09/2025
+ms.custom: security-horizontal-2025
 ai-usage: ai-assisted
 ---
 
-# Security glossary for Azure Cosmos DB for NoSQL
+# Secure your Azure Cosmos DB for NoSQL account
 
-[!INCLUDE[NoSQL](../../includes/appliesto-nosql.md)]
+TODO
 
-:::image type="complex" source="media/glossary/map.svg" border="false" alt-text="Diagram of the current location ('Concepts') in the sequence of the deployment guide.":::
-Diagram of the sequence of the deployment guide including these locations, in order: Overview, Concepts, Prepare, Role-based access control, Network, and Reference. The 'Concepts' location is currently highlighted.
-:::image-end:::
+This article provides guidance on how to best secure your Azure Cosmos DB for NoSQL deployment.
 
-This article includes a glossary of common terminology used in this security guide for Azure Cosmos DB for NoSQL.
+## Secure your network
 
-[!INCLUDE[Security glossary](../../includes/security-glossary.md)]
+TODO
 
-## Scope (Azure Cosmos DB native)
+### TODO - networking focus
+
+TODO
+
+## Secure your data
+
+When working with Azure Cosmos DB for NoSQL, it's important to ensure that authorized users and applications have access to data while preventing unintentional or unauthorized access.
+
+[!INCLUDE[Security data overview](../includes/security-data-overview.md)]
+
+### TODO - data focus
+
+TODO
+
+## Glossary
+
+This section includes a glossary of common terminology used in this security guide for Azure Cosmos DB for NoSQL.
+
+[!INCLUDE[Security glossary](../includes/security-glossary.md)]
+
+### Scope (Azure Cosmos DB native)
 
 In Azure Cosmos DB's native implementation of role-based access control, scope refers to the granularity of resources within an account for which you want permission applied.
 
@@ -46,7 +64,8 @@ Finally, you can scope the assignment to a single container, the most granular s
 /subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.DocumentDB/databaseAccounts/<account-name>/dbs/<database-name>/colls/<container-name>
 ```
 
-## Next step
+## Related content
 
-> [!div class="nextstepaction"]
-> [Get signed in account's identity](how-to-get-signed-in-identity.md)
+- [TODO](about:blank)
+- [TODO](about:blank)
+- [TODO](about:blank)
