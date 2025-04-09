@@ -10,17 +10,19 @@ ms.subservice: nosql
 ms.topic: how-to
 ms.date: 04/09/2025
 zone_pivot_groups: azure-interface-cli-powershell-bicep
+appliesto:
+  - ✅ NoSQL
 #Customer Intent: As a security user, I want to grant an identity data-plane access to Azure Cosmos DB for NoSQL, so that my developer team can use the SDK of their choice with minimal code change.
 ---
 
 # Use data plane role-based access control with Azure Cosmos DB for NoSQL
 
-[!INCLUDE[NoSQL](../../includes/appliesto-nosql.md)]
+[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
 
 This article walks through the steps to grant an identity access to manage data in an Azure Cosmos DB for NoSQL account.
 
 > [!IMPORTANT]
-> The steps in this article only cover data plane access to perform operations on individual items and run queries. To learn how to manage databases and containers for the control plane, see [grant control plane role-based access](how-to-grant-control-plane-role-based-access.md).
+> The steps in this article only cover data plane access to perform operations on individual items and run queries. To learn how to manage databases and containers for the control plane, see [grant control plane role-based access](how-to-grant-control-plane-access.md).
 
 ## Prerequisites
 
@@ -51,7 +53,7 @@ First, you must prepare a role definition with a list of `dataActions` to grant 
 >
 > - `Microsoft.DocumentDB/databaseAccounts/sqlRoleDefinitions/read`
 >
-> For more information, see [grant control plane role-based access](how-to-grant-control-plane-role-based-access.md).
+> For more information, see [grant control plane role-based access](how-to-grant-control-plane-access.md).
 
 ::: zone pivot="azure-interface-cli,azure-interface-bicep"
 
@@ -345,7 +347,7 @@ Now, assign the newly defined role to an identity so that your applications can 
 > - `Microsoft.DocumentDB/databaseAccounts/sqlRoleAssignments/read`
 > - `Microsoft.DocumentDB/databaseAccounts/sqlRoleAssignments/write`
 >
-> For more information, see [grant control plane role-based access](how-to-grant-control-plane-role-based-access.md).
+> For more information, see [grant control plane role-based access](how-to-grant-control-plane-access.md).
 
 ::: zone pivot="azure-interface-cli"
 

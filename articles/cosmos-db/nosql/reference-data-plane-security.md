@@ -9,11 +9,11 @@ ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: reference
 ms.date: 04/09/2025
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Azure Cosmos DB for NoSQL data plane security reference
-
-[!INCLUDE[NoSQL](../../includes/appliesto-nosql.md)]
 
 Azure Cosmos DB for NoSQL exposes a unique set of data actions and roles within its native role-based access control implementation. This article includes a list of those actions and roles with descriptions on what permissions are granted for each resource.
 
