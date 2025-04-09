@@ -521,7 +521,9 @@ TokenCredential credential = new DefaultAzureCredential();
 
 CosmosClient client = new(endpoint, credential);
 
+Container container = client.GetContainer("<database-name>", "<container-name>");
 
+await container.ReadItemAsync<dynamic>("<item-id>", new PartitionKey("<partition-key>"));
 ```
 
 > [!IMPORTANT]
@@ -539,7 +541,9 @@ const credential = new DefaultAzureCredential();
 
 const client = new CosmosClient({ endpoint, aadCredentials:credential});
 
+const container = client.database('<database-name>').container('<container-name>');
 
+await container.item('<item-id>', '<partition-key>').read<String>();
 ```
 
 > [!IMPORTANT]
@@ -548,7 +552,7 @@ const client = new CosmosClient({ endpoint, aadCredentials:credential});
 ### [TypeScript](#tab/typescript)
 
 ```typescript
-import { CosmosClient, CosmosClientOptions } from '@azure/cosmos'
+import { Container, CosmosClient, CosmosClientOptions } from '@azure/cosmos'
 import { TokenCredential, DefaultAzureCredential } from '@azure/identity'
 
 let endpoint: string = '<account-endpoint>';
@@ -562,7 +566,9 @@ let options: CosmosClientOptions = {
 
 const client: CosmosClient = new CosmosClient(options);
 
+const container: Container = client.database('<database-name>').container('<container-name>');
 
+await container.item('<item-id>', '<partition-key>').read<String>();
 ```
 
 > [!IMPORTANT]
@@ -580,7 +586,12 @@ credential = DefaultAzureCredential()
 
 client = CosmosClient(endpoint, credential=credential)
 
+container = client.get_database_client("<database-name>").get_container_client("<container-name>")
 
+container.read_item(
+    item="<item-id>",
+    partition_key="<partition-key>",
+)
 ```
 
 > [!IMPORTANT]
@@ -589,9 +600,9 @@ client = CosmosClient(endpoint, credential=credential)
 ### [Go](#tab/go)
 
 ```go
-package main
-
 import (
+    "context"
+    
     "github.com/Azure/azure-sdk-for-go/sdk/azidentity"
     "github.com/Azure/azure-sdk-for-go/sdk/data/azcosmos"
 )
@@ -601,8 +612,14 @@ const endpoint = "<account-endpoint>"
 func main() {
     credential, _ := azidentity.NewDefaultAzureCredential(nil)
     client, _ := azcosmos.NewClient(endpoint, credential, nil)
-
     
+    database, _ := client.NewDatabase("<database-name>")
+    container, _ := database.NewContainer("<container-name>")
+    
+    _, err := container.ReadItem(context.TODO(), azcosmos.NewPartitionKeyString("<partition-key>"), "<item-id>", nil)
+    if err != nil {
+        panic(err)
+    }
 }
 ```
 
@@ -614,20 +631,24 @@ func main() {
 ```java
 import com.azure.cosmos.CosmosClient;
 import com.azure.cosmos.CosmosClientBuilder;
+import com.azure.cosmos.CosmosContainer;
+import com.azure.cosmos.models.PartitionKey;
 import com.azure.identity.DefaultAzureCredential;
 import com.azure.identity.DefaultAzureCredentialBuilder;
 
-public class NoSQL{
-    public static void main(String[] args){
+public class NoSQL {
+    public static void main(String[] args) {   
         DefaultAzureCredential credential = new DefaultAzureCredentialBuilder()
             .build();
-        
+            
         CosmosClient client = new CosmosClientBuilder()
             .endpoint("<account-endpoint>")
             .credential(credential)
             .buildClient();
 
-        
+        CosmosContainer container = client.getDatabase("<database-name>").getContainer("<container-name>");
+
+        container.readItem("<item-id>", new PartitionKey("<partition-key>"), Object.class);
     }
 }
 ```
@@ -643,9 +664,9 @@ use azure_identity::DefaultAzureCredential;
 
 fn main() {
     let credential = DefaultAzureCredential::new().unwrap();
-    let client = CosmosClient::new("<account-endpoing>", credential, None).unwrap();
+    let client = CosmosClient::new("<account-endpoint>", credential, None).unwrap();
 
-    let container = client.database_client("<database-name>").container_client("<container-name>>");
+    let container = client.database_client("<database-name>").container_client("<container-name>");
 
     let response = container.read_item("<partition-key>", "<item-id>", None);
     tokio::runtime::Runtime::new().unwrap().block_on(response).unwrap();
