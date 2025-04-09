@@ -8,7 +8,7 @@ ms.reviewer: stefarroyo
 ms.service: azure-cosmos-db
 ms.subservice: table
 ms.topic: how-to
-ms.date: 02/05/2025
+ms.date: 04/09/2025
 zone_pivot_groups: azure-interface-cli-powershell-bicep
 appliesto:
   - ✅ Table

@@ -8,7 +8,7 @@ ms.reviewer: iriaosara
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: how-to
-ms.date: 10/09/2024
+ms.date: 04/09/2025
 zone_pivot_groups: azure-interface-cli-powershell-bicep
 #Customer Intent: As a security user, I want to grant an identity data-plane access to Azure Cosmos DB for NoSQL, so that my developer team can use the SDK of their choice with minimal code change.
 ---
@@ -520,6 +520,8 @@ string endpoint = "<account-endpoint>";
 TokenCredential credential = new DefaultAzureCredential();
 
 CosmosClient client = new(endpoint, credential);
+
+
 ```
 
 > [!IMPORTANT]
@@ -535,7 +537,9 @@ const endpoint = '<account-endpoint>';
 
 const credential = new DefaultAzureCredential();
 
-const client = new CosmosClient({ endpoint, aadCredentials:credential})
+const client = new CosmosClient({ endpoint, aadCredentials:credential});
+
+
 ```
 
 > [!IMPORTANT]
@@ -557,6 +561,8 @@ let options: CosmosClientOptions = {
 };
 
 const client: CosmosClient = new CosmosClient(options);
+
+
 ```
 
 > [!IMPORTANT]
@@ -573,6 +579,8 @@ endpoint = "<account-endpoint>"
 credential = DefaultAzureCredential()
 
 client = CosmosClient(endpoint, credential=credential)
+
+
 ```
 
 > [!IMPORTANT]
@@ -593,6 +601,8 @@ const endpoint = "<account-endpoint>"
 func main() {
     credential, _ := azidentity.NewDefaultAzureCredential(nil)
     client, _ := azcosmos.NewClient(endpoint, credential, nil)
+
+    
 }
 ```
 
@@ -616,11 +626,33 @@ public class NoSQL{
             .endpoint("<account-endpoint>")
             .credential(credential)
             .buildClient();
+
+        
     }
 }
 ```
 
 > [!IMPORTANT]
 > This code samples uses the [`com.azure/azure-cosmos`](https://mvnrepository.com/artifact/com.azure/azure-cosmos) and [`com.azure/azure-identity`](https://mvnrepository.com/artifact/com.azure/azure-identity) packages from Maven.
+
+### [Rust](#tab/rust)
+
+```rust
+use azure_data_cosmos::CosmosClient;
+use azure_identity::DefaultAzureCredential;
+
+fn main() {
+    let credential = DefaultAzureCredential::new().unwrap();
+    let client = CosmosClient::new("<account-endpoing>", credential, None).unwrap();
+
+    let container = client.database_client("<database-name>").container_client("<container-name>>");
+
+    let response = container.read_item("<partition-key>", "<item-id>", None);
+    tokio::runtime::Runtime::new().unwrap().block_on(response).unwrap();
+}
+```
+
+> [!IMPORTANT]
+> This code samples uses the [`azure_data_cosmos`](https://crates.io/crates/azure_data_cosmos) and [`azure_identity`](https://crates.io/crates/azure_identity) crates from Cargo.
 
 ---
