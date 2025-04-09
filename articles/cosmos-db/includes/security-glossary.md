@@ -42,7 +42,7 @@ Azure has a large set of built-in roles that you can use to grant access to vari
 In this example, you're assigned the `CosmosBackupOperator` role for a specific resource group. This assignment gives you access to either perform the `backup` or `restore` actions on any Azure Cosmos DB account within that resource group.
 
 > [!IMPORTANT]
-> Some Azure services, like Azure Cosmos DB, have their own native role-based access control implementation that uses different Azure Resource Manager properties, Azure CLI commands, and Azure PowerShell cmdLets. The commands you typically use to manage role-based access control will not work with Azure Cosmos DB data plane access. Some of the commands for Azure role-based access control may work with Azure Cosmos DB control plane access.
+> Some Azure services, like Azure Cosmos DB, have their own native role-based access control implementation that uses different Azure Resource Manager properties, Azure CLI commands, and Azure PowerShell cmdLets. Azure Cosmos DB data plane access doesn't work with commands you typically use to manage role-based access control. Some of the commands for Azure role-based access control might work with Azure Cosmos DB control plane access.
 
 For more information, see [built-in Azure roles](/azure/role-based-access-control/built-in-roles)
 
@@ -87,7 +87,7 @@ A role assignment grants an identity access to a specific Azure resource. Role a
 | **Name/Description** | Metadata that makes it easier to manage assignments at scale |
 
 > [!TIP]
-> In role-based access control, you may see the terms **identity** and **principal** used interchangably.
+> In role-based access control, you can see the terms **identity** and **principal** used interchangeably.
 
 For more information, see [role assignment concepts](/azure/role-based-access-control/role-assignments).
 
@@ -112,7 +112,7 @@ Actions can also contain `*` (wildcard) characters so you don't have to manually
 Actions are separated into [control plane](#control-plane) and [data plane](#data-plane). You must separately define actions on control plane resources and actions that can influence data. In a [role definition](#role-definition), control plane actions use the `actions` property and data plane actions are within the `dataActions` property. You can also define actions that an identity can’t perform using the respective `notActions` and `notDataActions` properties.
 
 > [!NOTE]
-> The seperation of actions into control and data plane is a security measure to prevent wildcard actions from legacy role definitions from having unrestricted and unintentional access to data.
+> The separation of actions into control and data plane is a security measure to prevent wildcard actions from legacy role definitions from having unrestricted and unintentional access to data.
 
 For more information, see [control and data actions](/azure/role-based-access-control/role-definitions#control-and-data-actions).
 
@@ -123,7 +123,7 @@ The concept of "least privilege" refers to an operational best practice to ensur
 - The application could errantly destroy data
 - An unauthorized user could get access to the application's credentials and modify data
 
-Following the practice of least privilege ensures that any potential data breaches are limited in scope. This practice maximises operational security while allowing users to remain effective.
+Following the practice of least privilege ensures that any potential data breaches are limited in scope. This practice maximizes operational security while allowing users to remain effective.
 
 For more information, see [recommended least privileged roles by task](/entra/identity/role-based-access-control/delegate-by-task).
 
@@ -139,7 +139,7 @@ Control plane access refers to the ability to manage resources for an Azure serv
 - Modify account properties
 
 > [!IMPORTANT]
-> In Azure Cosmos DB, you need control plane acccess to manage native data-plane role-based access control definitions and assignments. Since Azure Cosmos DB's data plane role-based access control mechanism is native, you will need control plane access to create definitions and assignments and store them as resources within an Azure Cosmos DB account.
+> In Azure Cosmos DB, you need control plane access to manage native data-plane role-based access control definitions and assignments. Since Azure Cosmos DB's data plane role-based access control mechanism is native, you need control plane access to create definitions and assignments and store them as resources within an Azure Cosmos DB account.
 
 ### Data plane
 
@@ -171,7 +171,7 @@ The **Azure Identity** client library is available in multiple programming langu
 Each modern Azure SDK library supports a constructor for their respective client objects or classes that accept a `DefaultAzureCredential` instance or its base type.
 
 > [!TIP]
-> To make your production code easier to debug and more predictable, you can opt to use `DefaultAzureCredential` in development and swap to a more specific credential like `WorkloadIdentityCredential` or `ManagedIdentityCredential` once the application is deployed. All of these classes are based on the `TokenCredential` class that many Azure SDKs expect as part of their client initialization logic making it straightforward to swap back and forth.
+> To make your production code easier to debug and more predictable, you can opt to use `DefaultAzureCredential` in development and swap to a more specific credential like `WorkloadIdentityCredential` or `ManagedIdentityCredential` once the application is deployed. All of these classes are based on the `TokenCredential` class that many Azure software development kits (SDKs) expect as part of their client initialization logic making it straightforward to swap back and forth.
 
 ### Unique identifier
 

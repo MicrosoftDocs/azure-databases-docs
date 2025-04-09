@@ -18,7 +18,7 @@ appliesto:
 Azure Cosmos DB for NoSQL exposes a unique set of data actions and roles within its native role-based access control implementation. This article includes a list of those actions and roles with descriptions on what permissions are granted for each resource.
 
 > [!WARNING]
-> Azure Cosmos DB for NoSQL's native role-based access control doesn't support the `notDataActions` property. Any action that is not specified as an allowed `dataAction` is excluded automatically.
+> Azure Cosmos DB for NoSQL's native role-based access control doesn't support the `notDataActions` property. Any action that isn't specified as an allowed `dataAction` is excluded automatically.
 
 ## Built-in actions
 
@@ -98,7 +98,7 @@ The action can be assigned at any level in an Azure Cosmos DB account's hierarch
   - Resolving the address of each physical partition
 
 > [!IMPORTANT]
-> You cannot manage throughput with the `Microsoft.DocumentDB/databaseAccounts/readMetadata` data action.
+> You can't manage throughput with the `Microsoft.DocumentDB/databaseAccounts/readMetadata` data action.
 
 ## Related content
 

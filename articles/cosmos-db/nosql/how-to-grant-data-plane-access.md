@@ -135,7 +135,7 @@ Permissions.NotDataActions :
 > For more information, see [grant control plane role-based access](how-to-grant-control-plane-role-based-access.md).
 
 > [!WARNING]
-> Azure Cosmos DB for NoSQL's native role-based access control doesn't support the `notDataActions` property. Any action that is not specified as an allowed `dataAction` is excluded automatically.
+> Azure Cosmos DB for NoSQL's native role-based access control doesn't support the `notDataActions` property. Any action that isn't specified as an allowed `dataAction` is excluded automatically.
 
 ::: zone pivot="azure-interface-cli"
 
@@ -447,7 +447,7 @@ Now, assign the newly defined role to an identity so that your applications can 
 1. Repeat these steps to grant access to the account from any other identities you would like to use.
 
     > [!TIP]
-    > You can repeat these steps for as many identities as you'd like. Typically, these steps are at least repeated to allow developers access to an account using their human identity and to allow applications access using a managed identity.
+    > You can repeat these steps for as many identities as you'd like. Typically, these steps are at least repeated to allow developers access to an account using their human identity. You can also repeat these steps to allow applications to access resources using a managed identity.
 
 ::: zone-end
 

@@ -1,7 +1,7 @@
 ---
 ms.service: azure-cosmos-db
 ms.topic: include
-ms.date: 10/09/2024
+ms.date: 04/09/2025
 zone_pivot_groups: azure-interface-cli-powershell-bicep
 ---
 
