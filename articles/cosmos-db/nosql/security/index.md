@@ -8,7 +8,7 @@ ms.reviewer: iriaosara
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: solution-overview
-ms.date: 10/01/2024
+ms.date: 04/09/2025
 ai-usage: ai-assisted
 #Customer Intent: As a developer, I want to review the major security areas related to Azure Cosmos DB for NoSQL, so that I can build secure applications using the API for NoSQL.
 ---

@@ -8,7 +8,7 @@ ms.reviewer: iriaosara
 ms.service: azure-cosmos-db
 ms.subservice: table
 ms.topic: solution-overview
-ms.date: 02/05/2025
+ms.date: 04/09/2025
 ai-usage: ai-assisted
 appliesto:
   - ✅ Table
