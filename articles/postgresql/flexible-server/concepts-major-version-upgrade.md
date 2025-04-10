@@ -106,6 +106,11 @@ If precheck operations fail for an in-place major version upgrade, the upgrade f
 - Servers using SSDv2 storage don't support Major Version Upgrades.
 - Server using views dependent on `pg_stat_activity` aren't supported.
 
+> [!NOTE]  
+> In-place major version upgrades are supported on automigrated servers. After a successful in-place Major Version Upgrade on an automigrated server, the username format **username@servername** will no longer be supported. Instead, you must use the standard format: **username**.
+To avoid authentication issues, carefully review and update all connection strings in your applications and scripts to ensure they use the updated username format after the upgrade.
+
+
 ## Related content
 
 - [Major version upgrade of Azure Database for PostgreSQL flexible server](how-to-perform-major-version-upgrade.md?tabs=portal).
