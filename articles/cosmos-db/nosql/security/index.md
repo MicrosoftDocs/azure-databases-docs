@@ -23,7 +23,7 @@ Diagram of the sequence of the deployment guide including these locations, in or
 
 When working with Azure Cosmos DB for NoSQL, it's important to ensure that authorized users and applications have access to data while preventing unintentional or unauthorized access.
 
-[!INCLUDE[Security overview](../../includes/security-overview.md)]
+[!INCLUDE[Security overview](../../includes/security-data-overview.md)]
 
 ## Next step
 
