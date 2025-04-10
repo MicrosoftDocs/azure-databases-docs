@@ -6496,6 +6496,26 @@
       "redirect_document_id": false
     },
     {
+      "source_path_from_root": "/articles/cosmos-db/nosql/security/how-to-create-managed-identities.md",
+      "redirect_url": "/entra/identity/managed-identities-azure-resources/quickstart-host-service-identity",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/nosql/security/how-to-get-signed-in-identity.md",
+      "redirect_url": "/entra/identity/users/how-to-get-signed-in-identity",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/table/security/how-to-create-managed-identities.md",
+      "redirect_url": "/entra/identity/managed-identities-azure-resources/quickstart-host-service-identity",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/table/security/how-to-get-signed-in-identity.md",
+      "redirect_url": "/entra/identity/users/how-to-get-signed-in-identity",
+      "redirect_document_id": false
+    },
+    {
       "source_path_from_root": "/articles/cosmos-db/nosql/security/index.md",
       "redirect_url": "/azure/cosmos-db/nosql/security",
       "redirect_document_id": true
