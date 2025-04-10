@@ -18,7 +18,7 @@ TODO
 
 This article provides guidance on how to best secure your Azure Cosmos DB for NoSQL deployment.
 
-## Secure your network
+## Secure networking
 
 TODO
 
@@ -26,13 +26,21 @@ TODO
 
 TODO
 
-## Secure your data
+## Secure data in flight
 
 When working with Azure Cosmos DB for NoSQL, it's important to ensure that authorized users and applications have access to data while preventing unintentional or unauthorized access.
 
 [!INCLUDE[Security data overview](../includes/security-data-overview.md)]
 
-### TODO - data focus
+### TODO - data access focus
+
+TODO
+
+## Secure data at rest
+
+TODO
+
+### TODO - data encryption focus
 
 TODO
 
