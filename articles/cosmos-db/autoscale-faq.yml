@@ -24,7 +24,7 @@ sections:
           How can I enable dynamic autoscale on an account programatically?
         answer: |
           You can use a [Resource Manager template with preview version `2023-11-15-preview` or later and stable version `2024-11-15` or later ](/azure/templates/microsoft.documentdb/2023-11-15-preview/databaseaccounts) to set the property `enablePerRegionPerPartitionAutoscale` to true.
-          You can use a [Resource Provider REST API version `2024-11-15` or later ](/rest/api/cosmos-db-resource-provider/database-accounts) to set the property `enablePerRegionPerPartitionAutoscale` to true.  
+          You can use a [Resource Provider REST API version `2024-11-15` or later ](/rest/api/cosmos-db-resource-provider/database-accounts) to set `enablePerRegionPerPartitionAutoscale` to true.  
           You can also use the Azure CLI or PowerShell.
 
            #### [PowerShell](#tab/azure-powerShell)
