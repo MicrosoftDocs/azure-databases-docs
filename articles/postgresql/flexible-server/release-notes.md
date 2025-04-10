@@ -22,7 +22,7 @@ This article highlights the latest updates and enhancements for Azure Database f
 - Public preview of [Version-less Customer Managed Key](./concepts-data-encryption.md#versionless-customer-managed-keys-preview).
 
 ## Release: March 2025
-- General Availability of [Azure Data Factory and Azure Synapse 2.0 Connector](https://learn.microsoft.com/en-us/azure/data-factory/connector-azure-database-for-postgresql?tabs=data-factory#version-20).
+- General Availability of [Azure Data Factory and Azure Synapse 2.0 Connector](/azure/data-factory/connector-azure-database-for-postgresql?tabs=data-factory#version-20).
 - General Availability of [hll](../extensions/concepts-extensions-versions.md#hll), [topn](../extensions/concepts-extensions-versions.md#topn) and [tdigest](../extensions/concepts-extensions-versions.md#tdigest) extension.  
 - Support for new [minor versions](concepts-supported-versions.md) 17.4, 16.8, 15.12, 14.17 and 13.20. <sup>$</sup> 
 
