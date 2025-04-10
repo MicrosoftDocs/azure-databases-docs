@@ -99,3 +99,14 @@ $resource | Set-AzResource -Force
 ```
 
 ::: zone-end
+
+::: zone pivot="azure-interface-portal"
+
+First, create a new account with key-based authentication disabled so that applications are required to use Microsoft Entra authentication.
+
+1. When setting up a new Cosmos DB account, navigate to the **Security** tab. Then, select **Disable** for the option related to **Key-based authentication**.
+
+:::image source="media/database-security/disable-localauth.png" alt-text="Screenshot of how to disable local auth on the Azure portal.":::
+
+
+::: zone-end
