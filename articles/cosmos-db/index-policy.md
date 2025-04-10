@@ -41,6 +41,11 @@ In Azure Cosmos DB, the total consumed storage is the combination of both the Da
 * When data is deleted, indexes are compacted on a near continuous basis. However, for small data deletions, you might not immediately observe a decrease in index size.
 * The Index size can temporarily grow when physical partitions split. The index space is released after the partition split is completed.
 
+> [!NOTE]
+>  - The partition key (unless it is also "/id") is not indexed and should be included in the index.
+- The system properties id and _ts will always be indexed when the cosmos account indexing mode is Consistent
+- The system properties id and _ts are not included in the container policy’s indexed paths description. This is by design because these system properties are indexed by default and this behavior cannot be disabled.
+
 ## Including and excluding property paths
 
 A custom indexing policy can specify property paths that are explicitly included or excluded from indexing. By optimizing the number of paths that are indexed, you can substantially reduce the latency and RU charge of write operations. These paths are defined following [the method described in the indexing overview section](index-overview.md#from-trees-to-property-paths) with the following additions:
@@ -72,6 +77,8 @@ Taking the same example again:
 - the path to anything under `headquarters` is `/headquarters/*`
 
 For example, we could include the `/headquarters/employees/?` path. This path would ensure that we index the `employees` property but wouldn't index extra nested JSON within this property.
+
+ 
 
 ## Include/exclude strategy
 

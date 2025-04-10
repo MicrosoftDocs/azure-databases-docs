@@ -33,42 +33,23 @@ Using the [Azure portal](https://portal.azure.com/):
 
 1. Select your Azure Database for PostgreSQL flexible server.
 
-2. In the resource menu, select **Overview**.
-
-    :::image type="content" source="./media/how-to-networking/networking-overview.png" alt-text="Screenshot showing the Overview page." lightbox="./media/how-to-networking/networking-overview.png":::
-
-3. The status of the server must be **Ready**, for the **Networking** menu option to be enabled.
-
-    :::image type="content" source="./media/how-to-networking/networking-server-status.png" alt-text="Screenshot showing where in the Overview page you can find the status of the server." lightbox="./media/how-to-networking/networking-server-status.png":::
-
-4. If the status of the server isn't **Ready**, the **Networking** option is disabled.
-
-    :::image type="content" source="./media/how-to-networking/networking-disabled.png" alt-text="Screenshot showing that Networking menu is disabled when status of server isn't Ready." lightbox="./media/how-to-networking/networking-disabled.png":::
-
-> [!NOTE]
-> Any attempt to configure the networking settings of a server whose status is other than available, would fail with an error.
-
-5. In the resource menu, select **Networking**.
+2. In the resource menu, select **Networking**.
 
     :::image type="content" source="./media/how-to-networking/public-access-networking-disabled-pending-endpoint.png" alt-text="Screenshot showing the Networking page." lightbox="./media/how-to-networking/public-access-networking-disabled-pending-endpoint.png":::
 
-6. Select the private endpoint connection whose state is **Pending**, and that you want to approve.
-
-    :::image type="content" source="./media/how-to-networking/public-access-networking-disabled-pending-endpoint-select.png" alt-text="Screenshot showing how to begin approving an existing private endpoint connection with Pending state." lightbox="./media/how-to-networking/public-access-networking-disabled-pending-endpoint-select.png":::
-
-7. Select **Approve** to trigger the approval of the private endpoint connection.
+3. Select the private endpoint connection whose state is **Pending**, and you want to approve. Select **Approve** to trigger the approval of the private endpoint connection.
 
     :::image type="content" source="./media/how-to-networking/public-access-networking-disabled-pending-endpoint-approve.png" alt-text="Screenshot showing the Approve button to trigger the approval of an existing private endpoint connection." lightbox="./media/how-to-networking/public-access-networking-disabled-pending-endpoint-approve.png":::
 
-8. If you consider it necessary, in the **Description** box of the **Approve** dialog, type the reason why you're deciding to approve this private endpoint connection.
+4. If you consider it necessary, in the **Description** box of the **Approve** dialog, type the reason why you're deciding to approve this private endpoint connection, and select **Yes**.
 
     :::image type="content" source="./media/how-to-networking/public-access-networking-disabled-pending-endpoint-approve-confirm.png" alt-text="Screenshot showing the Approve dialog to provide reason why the request is approved." lightbox="./media/how-to-networking/public-access-networking-disabled-pending-endpoint-approve-confirm.png":::
 
-9. A notification informs you that the private endpoint connection is being approved.
+5. A notification informs you that the private endpoint connection is being approved.
 
     :::image type="content" source="./media/how-to-networking/public-access-networking-disabled-pending-endpoint-approving-notification.png" alt-text="Screenshot showing the notification informing that it's approving the private endpoint connection." lightbox="./media/how-to-networking/public-access-networking-disabled-pending-endpoint-approving-notification.png":::
 
-8. When the operation completes, a notification informs you that the private endpoint connection was successfully approved.
+6. When the operation completes, a notification informs you that the private endpoint connection was successfully approved.
 
     :::image type="content" source="./media/how-to-networking/public-access-networking-disabled-pending-endpoint-approved-notification.png" alt-text="Screenshot showing the notification informing that private endpoint connection is approved." lightbox="./media/how-to-networking/public-access-networking-disabled-pending-endpoint-approved-notification.png":::
 

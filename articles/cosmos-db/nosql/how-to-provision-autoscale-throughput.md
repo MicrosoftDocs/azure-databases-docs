@@ -244,11 +244,11 @@ Azure Resource Manager templates can be used to provision autoscale throughput o
 
 ## Azure CLI
 
-Azure CLI can be used to provision autoscale throughput on a new database or container-level resource for all Azure Cosmos DB APIs, or enable autoscale on an existing resource. For samples see [Azure CLI Samples for Azure Cosmos DB](cli-samples.md).
+Azure CLI can be used to provision autoscale throughput on a new database or container-level resource for all Azure Cosmos DB APIs, or enable autoscale on an existing resource.
 
 ## Azure PowerShell
 
-Azure PowerShell can be used to provision autoscale throughput on a new database or container-level resource for all Azure Cosmos DB APIs, or enable autoscale on an existing resource. For samples see [Azure PowerShell samples for Azure Cosmos DB](powershell-samples.md).
+Azure PowerShell can be used to provision autoscale throughput on a new database or container-level resource for all Azure Cosmos DB APIs, or enable autoscale on an existing resource.
 
 ## Next steps
 

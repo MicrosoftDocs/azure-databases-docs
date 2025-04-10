@@ -8,7 +8,7 @@ ms.service: azure-cosmos-db
 ms.subservice: mongodb
 ms.devlang: python
 ms.topic: quickstart-sdk
-ms.date: 01/29/2025
+ms.date: 04/08/2025
 ms.custom: devx-track-python, devx-track-extended-azdevcli
 appliesto:
   - ✅ MongoDB (RU)
@@ -91,6 +91,14 @@ The client library is available through PyPi, as the `pymongo` package.
     ```
 
 1. Open and review the **src/requirements.txt** file to validate that the `pymongo` entry exists.
+
+### Import libraries
+
+Import the `MongoClient` type into your application code.
+
+```python
+from pymongo import MongoClient
+```
 
 ## Object model
 
@@ -203,7 +211,7 @@ For more information, see [How-to use Visual Studio Code extension to explore Az
 When you no longer need the sample application or resources, remove the corresponding deployment and all resources.
 
 ```azurecli
-azd down
+azd down --force --purge
 ```
 
 ## Related content

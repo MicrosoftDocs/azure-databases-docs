@@ -8,7 +8,7 @@ ms.service: azure-cosmos-db
 ms.subservice: table
 ms.devlang: csharp
 ms.topic: quickstart-sdk
-ms.date: 11/07/2024
+ms.date: 04/08/2025
 ms.custom: devx-track-csharp, devx-track-dotnet, devx-track-extended-azdevcli
 appliesto:
   - ✅ Table
@@ -91,6 +91,16 @@ The client library is available through NuGet, as the `Azure.Data.Tables` packag
     ```
 
 1. Open and review the **src/web/Microsoft.Samples.Cosmos.Table.Quickstart.Web.csproj** file to validate that the `Azure.Data.Tables` entry exists.
+
+### Import libraries
+
+Import the `Azure.Identity` and `Azure.Data.Tables` namespaces into your application code.
+
+```csharp
+using Azure.Identity;
+
+using Azure.Data.Tables;
+```
 
 ## Object model
 
