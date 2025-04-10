@@ -107,7 +107,7 @@ If precheck operations fail for an in-place major version upgrade, the upgrade f
 - Server using views dependent on `pg_stat_activity` aren't supported.
 
 > [!NOTE]  
-> In-place major version upgrades are supported on automigrated servers. After a successful in-place Major Version Upgrade on an automigrated server, the username format **username@servername** will no longer be supported. Instead, you must use the standard format: **username**.
+> In-place major version upgrades are supported on [automigrated servers](../migrate/automigration-single-to-flexible-postgresql.md). After a successful in-place Major Version Upgrade on an automigrated server, the username format **username@servername** will no longer be supported. Instead, you must use the standard format: **username**.
 To avoid authentication issues, carefully review and update all connection strings in your applications and scripts to ensure they use the updated username format after the upgrade.
 
 
