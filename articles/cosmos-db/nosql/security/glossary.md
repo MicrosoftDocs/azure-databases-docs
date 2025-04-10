@@ -49,4 +49,4 @@ Finally, you can scope the assignment to a single container, the most granular s
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Get signed in account's identity](how-to-get-signed-in-identity.md)
+> [Disable key-based authentication](how-to-disable-key-based-authentication.md)

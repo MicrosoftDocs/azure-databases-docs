@@ -36,9 +36,9 @@ landingContent:
       - linkListType: how-to-guide
         links:
           - text: Get signed-in identity
-            url: nosql/security/how-to-get-signed-in-identity.md
+            url: /entra/identity/users/how-to-get-signed-in-identity
           - text: Create managed identities
-            url: nosql/security/how-to-create-managed-identities.md
+            url: /entra/identity/managed-identities-azure-resources/quickstart-host-service-identity
           - text: Disable key-based authentication
             url: nosql/security/how-to-disable-key-based-authentication.md
           - text: Grant control plane access
