@@ -1,11 +1,11 @@
 ---
 title: Cross Tenant CMK Troubleshooting Guide
 description: Cross Tenant CMK Troubleshooting Guide
-author: dileepraotv-github
+author: sudhanshukhera
+ms.author: skhera
 ms.service: azure-cosmos-db
 ms.topic: how-to
 ms.date: 12/25/2022
-ms.author: turao
 ms.devlang: azurecli
 ---
 
@@ -26,10 +26,10 @@ ms.devlang: azurecli
   - if YES, recover the key vault from recycle bin.
 - Is the Key Vault Key Disabled?
   - if YES, re-enable the key.
-- Check Key Vault -\> Networking -\> Firewalls and virtual networks are set to either "Allow public access from all networks" or "Allow public access from specific virtual networks and IP addresses". If later is selected, check if Firewall allow-lists are configured correctly, and "Allow trusted Microsoft services to bypass this firewall" is selected.
+- Check Key Vault -\> Networking -\> Firewalls and virtual networks are set to either "Allow public access from all networks" or "Allow public access from specific virtual networks and IP addresses". If later is selected, check if Firewall allowlists are configured correctly, and "Allow trusted Microsoft services to bypass this firewall" is selected.
 - Check if Key Vault missing any of the Wrap/Unwrap/Get permission in the access policy following [Cosmos DB Customer Managed Key Documentation:](./how-to-setup-customer-managed-keys.md#add-an-access-policy)
   - If YES, regrant the access
-- In case the Multi-Tenant App used in the default identity has been mistakenly deleted
+- In case the multitenant App used in the default identity has been mistakenly deleted
   - If YES, follow [restore application documentation](/azure/active-directory/manage-apps/restore-application) to restore the Application.
 - In case UserAssigned identity used in the default identity has been mistakenly deleted
   - If YES, since UserAssigned identity isn't recoverable once deleted. The customer needs to create new UserAssigned Identity to the db account, and then follow the exact same configuration steps during provision like set FedereatedCrdential with Multi-Tenant App. Finally, customer need to update the db account's default identity with the new UserAssigned identity.
@@ -94,7 +94,7 @@ In Scenario 1:  Expected
 
 In Scenario 2: the missing of “&FederatedClientId=<00000000-0000-0000-0000-000000000000>” make the system think the key vault is in the same tenant as the db account, however customer might not have such key vault with same name in the same tenant, which results in this error.
 
-In Scenario 3: Expected as the Multi-tenant App is not there or deleted.
+In Scenario 3: Expected as the Multi-tenant App isn't there or deleted.
 
 
 **Mitigation**
@@ -325,7 +325,7 @@ Forbidden (403)
 
 **Root Cause** 
 
-There could be multi reason that the db account go revoke state, refer to the “6 checks” of the “Key Vault Revoke State Troubleshooting guide”.
+There could be multi reason that the db account go revoke state, refer to the “six checks” of the “Key Vault Revoke State Troubleshooting guide”.
 
 **Mitigation**
 
@@ -349,7 +349,7 @@ Unauthorized (401)
 
 **Root Cause** 
 
-There could be multi reason that the db account go revoke state, refer to the “6 checks” of the “Key Vault Revoke State Troubleshooting guide”.
+There could be multi reason that the db account go revoke state, refer to the “six checks” of the “Key Vault Revoke State Troubleshooting guide”.
 
 **Mitigation**
 
@@ -431,7 +431,7 @@ BadRequest(400)
 
 **Root Cause** 
 
-Continuous backup mode and multiple write locations cannot be enabled together
+Continuous backup mode and multiple write locations can't be enabled together
 
 **Mitigation**
 
@@ -512,7 +512,7 @@ BadRequest(400)
 
 **Root Cause** 
 
-Today, Azure Synapse Link once turned on, cannot be turned off.
+Today, Azure Synapse Link once turned on, can't be turned off.
 
 **Mitigation**
 
@@ -536,7 +536,7 @@ BadRequest(400)
 
 **Root Cause** 
 
-Today, Continuous backup mode once turned on, cannot be turned off.
+Today, Continuous backup mode once turned on, can't be turned off.
 
 **Mitigation**
 
@@ -560,7 +560,7 @@ BadRequest(400)
 
 **Root Cause** 
 
-Today, Materialized View once turned on, cannot be turned off.
+Today, Materialized View once turned on, can't be turned off.
 
 **Mitigation**
 
@@ -589,7 +589,7 @@ BadRequest(400)
 
 **Root Cause** 
 
-Enable continuous backup mode with any other properties on existing account is not supported. 
+Enable continuous backup mode with any other properties on existing account isn't supported. 
 
 
 **Mitigation**
@@ -614,7 +614,7 @@ BadRequest(400)
 
 **Root Cause** 
 
-Continuous backup (also called PITR) and Azure Synapse Link (also called analytical storage) cannot be enabled during creation at the same time. However, customer can enable Azure Synapse Link on an existing db account with Continuous backup enabled.
+Continuous backup (also called PITR) and Azure Synapse Link (also called analytical storage) can't be enabled during creation at the same time. However, customer can enable Azure Synapse Link on an existing db account with Continuous backup enabled.
 
 **Mitigation**
 
@@ -638,7 +638,7 @@ BadRequest(400)
 
 **Root Cause** 
 
-Customer Managed Key and Full Fidelity Change Feed cannot be enabled together for a global database account today.
+Customer Managed Key and Full Fidelity Change Feed can't be enabled together for a global database account today.
 
 **Mitigation**
 
@@ -662,7 +662,7 @@ BadRequest(400)
 
 **Root Cause** 
 
-enable Materialized View when continuous backup mode is already enabled is not supported.
+enable Materialized View when continuous backup mode is already enabled isn't supported.
 
 **Mitigation**
 
@@ -769,7 +769,7 @@ BadRequest(400)
 
 **Root Cause** 
 
-Continuous backup mode cannot be enabled together with Cassandra database
+Continuous backup mode can't be enabled together with Cassandra database
 
 **Mitigation**
 
@@ -795,7 +795,7 @@ BadRequest(400)
 
 **Root Cause** 
 
-Continuous backup mode cannot be enabled together with Gremlin V1 account right now.
+Continuous backup mode can't be enabled together with Gremlin V1 account right now.
 
 
 **Mitigation**
@@ -822,7 +822,7 @@ BadRequest(400)
 
 **Root Cause** 
 
-Continuous backup mode cannot be enabled together with table enabled database account.
+Continuous backup mode can't be enabled together with table enabled database account.
 
 **Mitigation**
 
@@ -898,7 +898,7 @@ BadRequest(400)
 **Root Cause** 
 
 As customer has removed the current default identity’s “GET/WRAP/Unwrap” permission from the Key Vault access policy for a while, both Cosmos DB account and the dedicated storage account no longer able to access the key vault and will go to revoke state. The Azure Synapse Link will query data from the dedicated storage account, which is in revoke state: 
-“Caused by: com.microsoft.azure.storage.StorageException: The key vault key is not found to unwrap the encryption key.”
+“Caused by: com.microsoft.azure.storage.StorageException: The key vault key isn't found to unwrap the encryption key.”
 
 
 **Mitigation**
