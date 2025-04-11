@@ -6,7 +6,7 @@ ms.author: nlarin
 ms.service: azure-cosmos-db
 ms.subservice: postgresql
 ms.topic: how-to
-ms.date: 08/21/2024
+ms.date: 04/04/2025
 ---
 
 # Use Microsoft Entra ID and native PostgreSQL roles for authentication with Azure Cosmos DB for PostgreSQL
@@ -183,7 +183,7 @@ To connect by using a Microsoft Entra ID token with PgAdmin, follow these steps:
 Here are some essential considerations when you're connecting:
 
 - `user@tenant.onmicrosoft.com` is the name of the Microsoft Entra ID user.
-- Be sure to use the exact way the Azure user is spelled. Microsoft Entra ID user and group names are case-sensitive.
+- Be sure to use the exact way the Azure user is spelled. Microsoft Entra ID user names are case-sensitive.
 - If the name contains spaces, use a backslash (`\`) before each space to escape it.
 - The access token's validity is 5 minutes to 90 minutes. You should get the access token before initiating the sign-in to Azure Cosmos for PostgreSQL.
 
