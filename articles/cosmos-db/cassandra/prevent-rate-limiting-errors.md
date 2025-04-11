@@ -1,13 +1,13 @@
 ---
 title: Prevent rate-limiting errors for Azure Cosmos DB for Apache Cassandra.
 description: Prevent your Azure Cosmos DB for Apache Cassandra operations from hitting rate limiting errors with the SSR (server-side retry) feature
-author: dileepraotv-github
+author: TheovanKraay
+ms.author: thvankra
 ms.service: azure-cosmos-db
 ms.subservice: apache-cassandra
 ms.custom: devx-track-azurecli
 ms.topic: how-to
 ms.date: 10/11/2021
-ms.author: turao
 ---
 
 # Prevent rate-limiting errors for Azure Cosmos DB for Apache Cassandra operations

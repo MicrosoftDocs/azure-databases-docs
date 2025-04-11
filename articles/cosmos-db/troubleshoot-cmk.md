@@ -1,11 +1,11 @@
 ---
 title: Cross Tenant CMK Troubleshooting Guide
 description: Cross Tenant CMK Troubleshooting Guide
-author: dileepraotv-github
+author: sudhanshukhera
+ms.author: skhera
 ms.service: azure-cosmos-db
 ms.topic: how-to
 ms.date: 12/25/2022
-ms.author: turao
 ms.devlang: azurecli
 ---
 
