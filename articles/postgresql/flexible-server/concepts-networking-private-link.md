@@ -169,6 +169,11 @@ If you have connectivity issues when you use private endpoint-based networking, 
 
 More information on troubleshooting private endpoints is also available in [Troubleshoot Azure private endpoint connectivity problems](/azure/private-link/troubleshoot-private-endpoint-connectivity).
 
+> [!NOTE]  
+> In rare circumstances, a sudden connectivity loss via a private endpoint can happen after management operation like scaling up or down the compute for Azure Database for PostgreSQL Flexible Server. If you encounter this issue, please stop and then start the server. If the problem persists, recreate the private endpoint to restore the database connection. This problem is targeted to be fixed in a future update.
+>
+
+
 ### DNS resolution with private endpoint-based networking
 
 If you have DNS resolution issues when you use private endpoint-based networking, check the following areas:
