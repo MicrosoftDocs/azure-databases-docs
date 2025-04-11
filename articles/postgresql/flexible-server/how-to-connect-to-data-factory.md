@@ -25,7 +25,7 @@ Azure Data Factory offers an [Azure Database for PostgreSQL](/azure/data-factory
 
 ## Linked service
 
-In Azure Data Factory, a linked service is a connection to a data source. When working with Azure Database for PostgreSQL, you can define a linked service using JSON to specify the connection details programmatically. This approach is useful for automation, version control, and deployment scenarios. The JSON definition includes properties such as the server name, database name, authentication type, and other connection parameters. By creating a linked service, you can easily connect to your Azure Database for PostgreSQL instance and perform data integration tasks within Azure Data Factory.
+In Azure Data Factory, a [linked service](/azure/data-factory/concepts-linked-services) is a connection to a data source. When working with Azure Database for PostgreSQL, you can define a linked service using JSON to specify the connection details programmatically. This approach is useful for automation, version control, and deployment scenarios. The JSON definition includes properties such as the server name, database name, authentication type, and other connection parameters. By creating a linked service, you can easily connect to your Azure Database for PostgreSQL instance and perform data integration tasks within Azure Data Factory.
 
 You can create a linked service using the Azure Data Factory UI or programmatically using JSON. The linked service allows you to connect to your Azure Database for PostgreSQL instance and perform data integration tasks within Azure Data Factory.
 
@@ -260,14 +260,11 @@ When creating a linked service, the user needs appropriate authorization for the
 
 Activities are tasks within a pipeline that can execute specific tasks. With script activity, users can run PostgreSQL scripts to query or modify their databases.
 
-- Script Activity:
-  - [Transform data using the Script activity in Azure Data Factory or Synapse Analytics](/azure/data-factory/transform-data-using-script).
+- Script Activity: [Transform data using the Script activity in Azure Data Factory or Synapse Analytics](/azure/data-factory/transform-data-using-script).
 
-- Copy Activity:
-  - [Copy activity in Azure Data Factory and Azure Synapse Analytics](/azure/data-factory/copy-activity-overview).
+- Copy Activity: [Copy activity in Azure Data Factory and Azure Synapse Analytics](/azure/data-factory/copy-activity-overview).
 
-- Lookup Activity
-  - [Control flow lookup activity](/azure/data-factory/control-flow-lookup-activity).
+- Lookup Activity: [Control flow lookup activity](/azure/data-factory/control-flow-lookup-activity).
 
 ## Related content
 
