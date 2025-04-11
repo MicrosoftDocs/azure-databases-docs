@@ -19,7 +19,7 @@ This article highlights the latest updates and enhancements for Azure Database f
 
 ## Release: April 2025
 - Public preview of [Fabric Mirroring](https://techcommunity.microsoft.com/blog/adforpostgresql/announcing-mirroring-for-azure-database-for-postgresql-in-microsoft-fabric-for-p/4396750) for Azure Database for PostgreSQL flexible server.
-- Public preview of [Version-less Customer Managed Key](./concepts-data-encryption.md#versionless-customer-managed-keys-preview).
+- Public preview of [Version-less Customer Managed Key](./concepts-data-encryption.md#version-less-customer-managed-keys).
 
 ## Release: March 2025
 - Support for new [minor versions](concepts-supported-versions.md) 17.4, 16.8, 15.12, 14.17 and 13.20. <sup>$</sup>
