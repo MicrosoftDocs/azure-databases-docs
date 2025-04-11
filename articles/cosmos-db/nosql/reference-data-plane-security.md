@@ -8,7 +8,7 @@ ms.reviewer: iriaosara
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: reference
-ms.date: 04/09/2025
+ms.date: 04/11/2025
 appliesto:
   - ✅ NoSQL
 ---
