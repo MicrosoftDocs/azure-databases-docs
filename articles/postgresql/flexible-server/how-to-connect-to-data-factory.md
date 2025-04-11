@@ -51,11 +51,11 @@ You can create a linked service using the Azure Data Factory UI or programmatica
 
 1. From the linked services page, create a new linked service by selecting **+ New**. This opens a window with a list of all Azure Data Factory connectors. Search for **Azure Database for PostgreSQL**, select it, and then select **Continue**.
 
-:::image type="content" source="media/how-to-connect-to-data-factory/AzureDataFactory_AzureDatabaseForPostgreSQL_LinkedService_Search.png" alt-text="Searching for 'Azure Database for PostgreSQL' in new linked service field." lightbox="media/how-to-connect-to-data-factory/AzureDataFactory_AzureDatabaseForPostgreSQL_LinkedService_Search.png":::
+    :::image type="content" source="media/how-to-connect-to-data-factory/AzureDataFactory_AzureDatabaseForPostgreSQL_LinkedService_Search.png" alt-text="Searching for 'Azure Database for PostgreSQL' in new linked service field." lightbox="media/how-to-connect-to-data-factory/AzureDataFactory_AzureDatabaseForPostgreSQL_LinkedService_Search.png":::
 
 1. Make sure that **Version 2.0** is selected
 
-:::image type="content" source="media/how-to-connect-to-data-factory/AzureDataFactory_AzureDatabaseForPostgreSQL_LinkedService.png" alt-text="New linked service window for Azure Database for PostgreSQL connector." lightbox="media/how-to-connect-to-data-factory/AzureDataFactory_AzureDatabaseForPostgreSQL_LinkedService.png":::
+    :::image type="content" source="media/how-to-connect-to-data-factory/AzureDataFactory_AzureDatabaseForPostgreSQL_LinkedService.png" alt-text="New linked service window for Azure Database for PostgreSQL connector." lightbox="media/how-to-connect-to-data-factory/AzureDataFactory_AzureDatabaseForPostgreSQL_LinkedService.png":::
 
 ## Authentication
 
