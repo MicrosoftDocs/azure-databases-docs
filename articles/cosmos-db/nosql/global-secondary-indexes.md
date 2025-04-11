@@ -8,7 +8,7 @@ ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.custom: build-2023, devx-track-azurecli
 ms.topic: conceptual
-ms.date: 3/24/2025
+ms.date: 4/11/2025
 ---
 
 # Azure Cosmos DB for NoSQL global secondary indexes (preview)
@@ -97,16 +97,16 @@ For Azure Cosmos DB accounts with a single region, the global secondary index bu
 
 You can monitor the lag in building global secondary indexes and the health of the builder through Metrics in the Azure portal. To learn about these metrics, see [Supported metrics for Microsoft.DocumentDB/DatabaseAccounts](../monitor-reference.md#supported-metrics-for-microsoftdocumentdbdatabaseaccounts).
 
-:::image type="content" source="./media/materialized-views/materialized-views-metrics.png" alt-text="Screenshot of the Global Secondary Index Builder Average CPU Usage metric in the Azure portal." :::
+:::image type="content" source="./media/global-secondary-indexes/global-secondary-indexes-metrics.png" alt-text="Screenshot of the Global Secondary Index Builder Average CPU Usage metric in the Azure portal." :::
 
 > [!NOTE]
-> The global secondary index metrics are prefixed with "MaterializedView", which is the prior name of this feature. 
+> The global secondary index metrics are prefixed with "MaterializedView", which is the former name of this feature. 
 
 ### Troubleshooting common issues
 
-#### I want to understand the lag between my source container and indexes
+#### I want to understand the lag between my source container and index containers
 
-The **MaterializedViewCatchupGapInMinutes** metric shows the maximum difference in minutes between data in a source container and an index. While there can be multiple indexes created in a single account, this metric exposes the highest lag among all indexes. A high value indicates the builder needs more compute to keep up with the volume of changes to source containers. The RUs provisioned on source and index containers can also affect the rate at which changes are propagated to the index. Check the **Total Requests** metric and split by **StatusCode** to determine if there are throttled requests on these containers. Throttled requests have status code 429.
+The **MaterializedViewCatchupGapInMinutes** metric shows the maximum difference in minutes between data in source containers and a global secondary index containers. To view the lag for an individual index container, select **Apply splitting** then **Split by** and select **MaterializedViewName**. A high value indicates the builder needs more compute to keep up with the volume of changes to source containers. The RUs provisioned on source and index containers can also affect the rate at which changes are propagated to the index. Check the **Total Requests** metric and split by **StatusCode** to determine if there are throttled requests on these containers. Throttled requests have status code 429.
 
 #### I want to understand if my global secondary index builder has the right number of nodes
 
@@ -117,12 +117,8 @@ The **MaterializedViewsBuilderAverageCPUUsage** and **MaterializedViewsBuilderAv
 There are a few limitations with the Azure Cosmos DB for NoSQL API global secondary index feature while it is in preview:
 
 - The global secondary index feature can't be disabled on an account once enabled.
-- Global secondary indexes can't be enabled on accounts that have partition merge, analytical store, or continuous backups.
-- Role-based access control isn't supported for global secondary indexes.
-- Containers that have hierarchical partitioning or use client-side encryption aren't supported as source containers.
-- Cross-tenant customer-managed key (CMK) encryption isn't supported on global secondary indexes.
-- Periodic backup and restore
-  - Global secondary indexes aren't automatically restored during the restore process. You must enable the global secondary index feature on the restored account after the restore process is finished. Then, you can create the global secondary indexes and builder again.
+- Global secondary indexes can't be enabled on accounts that have analytical store or continuous backups.
+- Global secondary index containers aren't automatically restored during the account restore process. You must enable the global secondary index feature on the restored account after the restore process is finished. Then, you can create the global secondary index containers and builder again.
 
 ## Next steps
 
