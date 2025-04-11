@@ -295,9 +295,9 @@
         href: flexible-server/server-parameters-table-write-ahead-log-settings.md?pivots=postgresql-16
     - name: Azure Data Factory and Synapse Analytics
       items:
-      - name: Connect to Data Factory and Synapse Analytics
+      - name: Connect to Azure Data Factory and Synapse Analytics
         href: flexible-server/how-to-connect-to-data-factory.md
-      - name: Connect from data factory via managed private endpoint
+      - name: Connect from Azure Data Factory via managed private endpoint
         href: flexible-server/how-to-connect-to-data-factory-private-endpoint.md
     - name: Troubleshooting guides
       href: flexible-server/concepts-troubleshooting-guides.md
