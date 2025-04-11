@@ -57,11 +57,11 @@ You can create a linked service using the Azure Data Factory UI or programmatica
 
     :::image type="content" source="media/how-to-connect-to-data-factory/AzureDataFactory_AzureDatabaseForPostgreSQL_LinkedService.png" alt-text="New linked service window for Azure Database for PostgreSQL connector." lightbox="media/how-to-connect-to-data-factory/AzureDataFactory_AzureDatabaseForPostgreSQL_LinkedService.png":::
 
-## Authentication
+#### Authentication
 
 There are two supported methods for authentication: service principal and basic authentication.
 
-### Basic Authentication
+##### Basic Authentication
 
 1. Select **Basic auth** as the Authentication type and make sure to enter your Azure PostgreSQL flexible server connection details, including **Server name**, **Username**, and **Password**.
 
@@ -69,13 +69,13 @@ There are two supported methods for authentication: service principal and basic 
 
 1. Select between **From Azure subscription** or **Enter manually** in **Account selection method**
 
-    #### [From Azure subscription](#tab/from-azure-subscription)
+    ###### [From Azure subscription](#tab/from-azure-subscription)
     
     Select the **Azure subscription**, **Server name**, and **Database name**. Also, enter the **Port**.
     
     :::image type="content" source="media/how-to-connect-to-data-factory/AzureDataFactory_AzureDatabaseForPostgreSQL_Authentication_AccountSelectionMethod.png" alt-text="Account selection method Azure subscription." lightbox="media/how-to-connect-to-data-factory/AzureDataFactory_AzureDatabaseForPostgreSQL_Authentication_AccountSelectionMethod.png":::
     
-    #### [Enter manually](#tab/enter-manually)
+    ###### [Enter manually](#tab/enter-manually)
     
     Enter the **Fully qualified domain name**, **Port**, and **Database name**
     
@@ -86,7 +86,7 @@ There are two supported methods for authentication: service principal and basic 
 
 :::image type="content" source="media/how-to-connect-to-data-factory/AzureDataFactory_AzureDatabaseForPostgreSQL_Authentication_Username_Password.png" alt-text="Username and password." lightbox="media/how-to-connect-to-data-factory/AzureDataFactory_AzureDatabaseForPostgreSQL_Authentication_Username_Password.png":::
 
-### Service principal authentication
+##### Service principal authentication
 
 Following the steps below requires setting up a linked service in Azure Data Factory or Synapse Analytics to connect to your Azure Database for PostgreSQL. This process involves selecting the appropriate authentication method, configuring connection details, and verifying the connection. Ensure you have the necessary prerequisites and permissions before proceeding.
 
@@ -100,13 +100,13 @@ Following the steps below requires setting up a linked service in Azure Data Fac
 
 1. Select between **From Azure subscription** or **Enter manually** in **Account selection method**
 
-    #### [From Azure subscription](#tab/from-azure-subscription)
+    ###### [From Azure subscription](#tab/from-azure-subscription)
     
     Select the **Azure subscription**, **Server name**, and **Database name**. Also, enter the **Port**.
     
     :::image type="content" source="media/how-to-connect-to-data-factory/AzureDataFactory_AzureDatabaseForPostgreSQL_Authentication_AccountSelectionMethod.png" alt-text="Account selection method Azure subscription." lightbox="media/how-to-connect-to-data-factory/AzureDataFactory_AzureDatabaseForPostgreSQL_Authentication_AccountSelectionMethod.png":::
 
-    #### [Enter manually](#tab/enter-manually)
+    ###### [Enter manually](#tab/enter-manually)
     
     Enter the **Fully qualified domain name**, **Port**, and **Database name**
     
@@ -128,13 +128,13 @@ Following the steps below requires setting up a linked service in Azure Data Fac
 
 1. Select **Service Principal Certificate** or **Service Principal Key** in the **Service principal credential type**
 
-    #### [Service Principal Certificate](#tab/service-principal-certificate)
+    ###### [Service Principal Certificate](#tab/service-principal-certificate)
     
     **Service principal certificate** authentication requires a **service principal certificate** and optionally a **service principal password**.
     
     :::image type="content" source="media/how-to-connect-to-data-factory/AzureDataFactory_AzureDatabaseForPostgreSQL_LinkedService_Authentication_ServicePrincipal_Certificate.png" alt-text="New linked service window for Azure Database for PostgreSQL connector with service principal certificate authentication type." lightbox="media/how-to-connect-to-data-factory/AzureDataFactory_AzureDatabaseForPostgreSQL_LinkedService_Authentication_ServicePrincipal.png":::
 
-    #### [Service Principal Key](#tab/service-principal-key)
+    ###### [Service Principal Key](#tab/service-principal-key)
     
     **Service principal key** authentication requires a **service principal key**.
     
@@ -152,7 +152,7 @@ Following the steps below requires setting up a linked service in Azure Data Fac
 
     :::image type="content" source="media/how-to-connect-to-data-factory/AzureDataFactory_AzureDatabaseForPostgreSQL_LinkedService_TestConnection.png" alt-text="New linked service window for Azure Database for PostgreSQL connector test connection.":::
 
-## Linked service JSON
+### Linked service JSON
 
 The following table describes the properties of the linked service for Azure Database for PostgreSQL flexible server. The properties are defined in JSON format, which is used to create the linked service programmatically.
 
@@ -248,7 +248,7 @@ A linked service using **Service Principal key** is defined in JSON format as fo
 }
 ```
 
-## Create linked services via API
+### Create linked services via API
 
 Linked services can be created in the Azure Data Factory UX via the [management hub](/azure/data-factory/author-management-hub) and any activities, datasets, or data flows that reference them.
 
