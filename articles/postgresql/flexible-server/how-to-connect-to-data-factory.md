@@ -108,7 +108,7 @@ Following the steps below requires setting up a linked service in Azure Data Fac
 
     #### [Enter manually](#tab/enter-manually)
     
-    Enter the **Fully qualified domain name**, **Port, and **Database name**
+    Enter the **Fully qualified domain name**, **Port**, and **Database name**
     
     :::image type="content" source="media/how-to-connect-to-data-factory/AzureDataFactory_AzureDatabaseForPostgreSQL_Authentication_AccountSelectionMethod_Manually.png" alt-text="Account selection method Enter manually." lightbox="media/how-to-connect-to-data-factory/AzureDataFactory_AzureDatabaseForPostgreSQL_Authentication_AccountSelectionMethod_Manually.png":::
 
