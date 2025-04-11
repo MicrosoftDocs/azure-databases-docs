@@ -26,12 +26,10 @@ The following are the key reasons to migrate into continuous mode:
 
 > [!NOTE]
 > The migration capability is one-way only and it's an irreversible action. Which means once you migrate from periodic mode to continuous mode, you can’t switch back to periodic mode.
->
-> You can migrate an account to continuous backup mode only if the following conditions are true. Also checkout the [point in time restore limitations](continuous-backup-restore-introduction.md#current-limitations) before migrating your account:
->
-> * If the account is of type API for NoSQL,API for Table, Gremlin or API for MongoDB.
-> * If the account has a single write region.
-> * If the account never had Synapse Link disabled for a container.
+> > You can migrate an account to continuous backup mode only if the following conditions are true. Also checkout the [point in time restore limitations](continuous-backup-restore-introduction.md#current-limitations) before migrating your account:
+> > * If the account is of type API for NoSQL,API for Table, Gremlin or API for MongoDB.
+* If the account never had Synapse Link disabled for a container.
+
 
 >
 > If the account is using [customer-managed keys](./how-to-setup-cmk.md), a managed identity (System-assigned or User-assigned) must be declared in the Key Vault access policy and must be set as the default identity on the account.
@@ -61,7 +59,6 @@ Use the following steps to migrate your account from periodic backup to continuo
 ## <a id="powershell"></a>Migrate using PowerShell
 
 1. Install the [latest version of Azure PowerShell](/powershell/azure/install-azure-powershell) or any version higher than 6.2.0.
-2. To use ``Continous7Days`` mode for provisioning or migrating, you'll have to use preview of the ``cosmosdb`` extension. Use ``Install-Module -Name Az.CosmosDB -AllowPrerelease``
 3. Next, run the following steps:
 
     1. Connect to your Azure account:
@@ -203,7 +200,7 @@ Update-AzCosmosDBAccount `
 You can also use an ARM template in a method similar to using the Azure CLI and Azure PowerShell.
 
 > [!NOTE]
-> When changing from the 30 to 7 days tier, the ability to restore more than 7 days in history is immediately unavaiailable. When changing from 7 to 30 days tier, you will not be able to restore more than 7 days immediately. The earliest time to restore can be extracted from the account metadata available via Azure Powershell or Azure CLI. The price impact of switching between the 7 and 30 days tiers would also be immediately visible.
+> When changing from the 30 to 7 days tier, the ability to restore more than 7 days in history is immediately unavailable. When changing from 7 to 30 days tier, you will not be able to restore more than 7 days immediately. The earliest time to restore can be extracted from the account metadata available via Azure Powershell or Azure CLI. The price impact of switching between the 7 and 30 days tiers would also be immediately visible.
 
 ## What to expect during and after migration?
 
@@ -219,9 +216,9 @@ Yes.
 
 ### Which accounts can be targeted for backup migration for continuous backup?
 
-Currently, API for NoSQL, API for Table, Gremlin API and API for MongoDB accounts with single write region that have shared, provisioned, or autoscale provisioned throughput support migration.  
+Currently, API for NoSQL, API for Table, Gremlin API and API for MongoDB accounts that have shared, provisioned, or autoscale provisioned throughput support migration are supported.  
 
-Currently, accounts with Synapse Link enabled, that had Synapse Link disabled for one or more collections, can't migrate to continuous backup.
+Accounts with Synapse Link enabled, or that had Synapse Link disabled for one or more collections, can't migrate to continuous backup.
 
 ### Does the migration take time? What is the typical time?
 
@@ -229,7 +226,7 @@ Migration takes a varying amount of time that largely depends on the size of dat
 
 ### Does the migration for multi region write(mrw) account with periodic backup to multi region write with continuous backup take time? 
 
-Yes, this migration takes time that largely depends on need to wait for all old tentative writes to get drained during continous backup migration. You can get the migration status using Azure CLI or PowerShell commands. For large accounts with tens of terabytes of data, the migration can take up to few days to complete.
+Yes, this migration takes time that largely depends on need to wait for all old tentative writes to get drained during continuous backup migration. You can get the migration status using Azure CLI or PowerShell commands. For large accounts with tens of terabytes of data, the migration can take up to few days to complete.
 
 ### Does the migration cause any availability impact/downtime?
 
@@ -257,11 +254,11 @@ Failed migration won't block any control plane operations. If migration fails, i
 
 ### Is it possible to cancel the migration?
 
-It isn't possible to cancel the migration because migrations aren't a reversible operation.
+It isn't possible to cancel the migration because migrations aren't a reversible operation. Via support call team can cancel temporarily and let the offline operations continue. But one cannot move back to periodic backup state. 
 
 ### Is there a tool that can help estimate migration time based on the data usage and number of regions?
 
-There isn't a tool to estimate time. Our testings and scale runs indicate that a single region account with 1 TB of data takes roughly 90 minutes.
+There isn't a tool to estimate time. Our testing and scale runs indicate that an account with 1 TB of data takes roughly 90 minutes.
 
 For multi-region accounts, calculate the total data size as ``Number_of_regions * Data_in_single_region``.
 
