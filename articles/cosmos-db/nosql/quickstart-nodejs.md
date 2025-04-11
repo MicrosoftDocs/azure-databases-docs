@@ -8,7 +8,7 @@ ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.devlang: typescript
 ms.topic: quickstart-sdk
-ms.date: 02/26/2025
+ms.date: 04/08/2025
 ms.custom: devx-track-js, devx-track-ts, devx-track-extended-azdevcli
 zone_pivot_groups: azure-devlang-nodejs
 appliesto:
@@ -108,6 +108,31 @@ The client library is available through the Node Package Manager, as the `@azure
     ```
 
 1. Open and review the **src/package.json** file to validate that the `azure-cosmos` and `azure-identity` entries both exist.
+
+### Import libraries
+
+::: zone pivot="programming-language-js"
+
+Import the `DefaultAzureCredential` and `CosmosClient` types into your application code.
+
+```javascript
+import { DefaultAzureCredential } from '@azure/identity';
+import { CosmosClient } from '@azure/cosmos';
+```
+
+:::zone-end
+
+::: zone pivot="programming-language-js"
+
+Import all required types into your application code.
+
+```typescript
+import { PagedAsyncIterableIterator } from '@azure/core-paging';
+import { DefaultAzureCredential, TokenCredential } from '@azure/identity';
+import { Container, CosmosClient, Database, FeedResponse, ItemResponse, SqlQuerySpec } from '@azure/cosmos';
+```
+
+:::zone-end
 
 ## Object model
 

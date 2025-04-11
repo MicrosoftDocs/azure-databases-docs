@@ -423,12 +423,6 @@
               items:
                 - name: Create a container
                   href: how-to-python-create-container.md
-    - name: Build a Java web app
-      href: tutorial-java-web-app.md
-    - name: Build a Node.js web app
-      href: tutorial-nodejs-web-app.md
-    - name: Build a .NET console app
-      href: tutorial-dotnet-console-app.md
     - name: Query data
       href: tutorial-query.md
     - name: Create Visual Studio Code notebook
@@ -1058,78 +1052,10 @@
       items:
         - name: Solution accelerators
           href: ../solutions.md?pivots=api-nosql&context=/azure/cosmos-db/nosql/context/context
-        - name: .NET
-          href: samples-dotnet.md
-        - name: Java
-          href: samples-java.md
-        - name: Spring Data
-          href: samples-java-spring-data.md
-        - name: Node.js
-          href: samples-nodejs.md
-        - name: Python
-          href: samples-python.md
-        - name: Go
-          href: samples-go.md
-        - name: PowerShell
-          href: powershell-samples.md
         - name: Azure CLI
-          items:
-            - name: Overview
-              href: cli-samples.md
-            - name: Create account, database, and container
-              href: ../scripts/cli/nosql/create.md?context=/azure/cosmos-db/nosql/context/context
-            - name: Create serverless
-              href: ../scripts/cli/nosql/serverless.md?context=/azure/cosmos-db/nosql/context/context
-            - name: Create with autoscale
-              href: ../scripts/cli/nosql/autoscale.md?context=/azure/cosmos-db/nosql/context/context
-            - name: Perform throughput operations
-              href: ../scripts/cli/nosql/throughput.md?context=/azure/cosmos-db/nosql/context/context
-            - name: Lock resources from deletion
-              href: ../scripts/cli/nosql/lock.md?context=/azure/cosmos-db/nosql/context/context
-            - name: Add or fail over regions
-              href: ../scripts/cli/common/regions.md?context=/azure/cosmos-db/nosql/context/context
-            - name: Perform account key operations
-              href: ../scripts/cli/common/keys.md?context=/azure/cosmos-db/nosql/context/context
-            - name: Secure with IP firewall
-              href: ../scripts/cli/common/ipfirewall.md?context=/azure/cosmos-db/nosql/context/context
-            - name: Add or remove IP firewall rules in bulk
-              href: ../scripts/cli/common/ipfirewall-bulk-add-remove.md?context=/azure/cosmos-db/nosql/context/context
-            - name: Secure new account with service endpoints
-              href: ../scripts/cli/common/service-endpoints.md?context=/azure/cosmos-db/nosql/context/context
-            - name: Secure existing account with service endpoints
-              href: ../scripts/cli/common/service-endpoints-ignore-missing-vnet.md?context=/azure/cosmos-db/nosql/context/context
-            - name: Find existing free-tier accounts
-              href: ../scripts/cli/common/free-tier.md?context=/azure/cosmos-db/nosql/context/context
-            - name: Migrate all resources to autoscale
-              href: ../scripts/cli/common/convert-to-autoscale.md?context=/azure/cosmos-db/nosql/context/context
+          href: samples-cli.yml
         - name: Azure PowerShell
-          items:
-            - name: Overview
-              href: powershell-samples.md
-            - name: Create account, database, and container
-              href: ../scripts/powershell/nosql/create.md?context=/azure/cosmos-db/nosql/context/context
-            - name: Create with autoscale
-              href: ../scripts/powershell/nosql/autoscale.md?context=/azure/cosmos-db/nosql/context/context
-            - name: Perform throughput operations
-              href: ../scripts/powershell/nosql/throughput.md?context=/azure/cosmos-db/nosql/context/context
-            - name: Lock resources from deletion
-              href: ../scripts/powershell/nosql/lock.md?context=/azure/cosmos-db/nosql/context/context
-            - name: List and get databases and containers
-              href: ../scripts/powershell/nosql/list-get.md?context=/azure/cosmos-db/nosql/context/context
-            - name: Create a container with indexing turned off
-              href: ../scripts/powershell/nosql/create-index-none.md?context=/azure/cosmos-db/nosql/context/context
-            - name: Create a container with a large partition key
-              href: ../scripts/powershell/nosql/create-large-partition-key.md?context=/azure/cosmos-db/nosql/context/context
-            - name: Account keys or connection strings
-              href: ../scripts/powershell/common/keys-connection-strings.md?context=/azure/cosmos-db/nosql/context/context
-            - name: Change failover priority or trigger failover
-              href: ../scripts/powershell/common/failover-priority-update.md?context=/azure/cosmos-db/nosql/context/context
-            - name: Create an account with IP Firewall
-              href: ../scripts/powershell/common/firewall-create.md?context=/azure/cosmos-db/nosql/context/context
-            - name: Update account
-              href: ../scripts/powershell/common/account-update.md?context=/azure/cosmos-db/nosql/context/context
-            - name: Update an account's regions
-              href: ../scripts/powershell/common/update-region.md?context=/azure/cosmos-db/nosql/context/context
+          href: samples-powershell.yml
         - name: Templates
           items:
             - name: JSON syntax templates

@@ -8,7 +8,7 @@ ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.devlang: csharp
 ms.topic: quickstart-sdk
-ms.date: 03/25/2025
+ms.date: 04/08/2025
 ms.custom: devx-track-csharp, devx-track-dotnet, devx-track-extended-azdevcli
 appliesto:
   - ✅ MongoDB (vCore)
@@ -97,6 +97,14 @@ The client library is available through NuGet, as the `MongoDB.Driver` package.
     ```
 
 1. Open and review the **src/web/Microsoft.Samples.Cosmos.MongoDB.Quickstart.Web.csproj** file to validate that the `MongoDB.Driver` entry exists.
+
+### Import libraries
+
+Import the `MongoDB.Driver` namespace into your application code.
+
+```csharp
+using MongoDB.Driver;
+```
 
 ## Object model
 

@@ -17,7 +17,7 @@ ms.custom: devx-track-python, devguide-python, cosmos-db-dev-journey, devx-track
 
 This article shows you how to connect to Azure Cosmos DB for NoSQL using the Python SDK. Once connected, you can perform operations on databases, containers, and items.
 
-[Package (PyPi)](https://pypi.org/project/azure-cosmos/) | [Samples](samples-python.md) | [API reference](/python/api/azure-cosmos/azure.cosmos) | [Library source code](https://github.com/Azure/azure-sdk-for-python/tree/main/sdk/cosmos/azure-cosmos) | [Give Feedback](https://github.com/Azure/azure-sdk-for-python/issues)
+[Package (PyPi)](https://pypi.org/project/azure-cosmos/) | [API reference](/python/api/azure-cosmos/azure.cosmos) | [Library source code](https://github.com/Azure/azure-sdk-for-python/tree/main/sdk/cosmos/azure-cosmos) | [Give Feedback](https://github.com/Azure/azure-sdk-for-python/issues)
 
 ## Prerequisites
 
@@ -137,12 +137,10 @@ The following guides show you how to use each of these classes to build your app
 |--|---|
 | [Create a database](how-to-python-create-database.md) | Create databases |
 | [Create container](how-to-python-create-container.md) | Create containers |
-| [Item examples](./samples-python.md#item-examples) | Point read a specific item |
 
 ## See also
 
 - [PyPi](https://pypi.org/project/azure-cosmos/)
-- [Samples](samples-python.md)
 - [API reference](/python/api/azure-cosmos/azure.cosmos)
 - [Library source code](https://github.com/Azure/azure-sdk-for-python/tree/main/sdk/cosmos/azure-cosmos)
 - [Give Feedback](https://github.com/Azure/azure-sdk-for-python/issues)

@@ -8,7 +8,7 @@ ms.reviewer: stefarroyo
 ms.service: azure-cosmos-db
 ms.subservice: table
 ms.topic: how-to
-ms.date: 02/05/2025
+ms.date: 04/09/2025
 zone_pivot_groups: azure-interface-cli-powershell-bicep
 appliesto:
   - ✅ Table
@@ -594,6 +594,11 @@ TableServiceClient client = new(
 TableClient table = client.GetTableClient(
     tableName: "<name-of-table>"
 );
+
+await table.GetEntityAsync<TableEntity>(
+    partitionKey: "<partition-key>",
+    rowKey: "<row-key>"
+);
 ```
 
 > [!IMPORTANT]
@@ -612,6 +617,8 @@ let credential = new DefaultAzureCredential();
 let client = new TableServiceClient(endpoint, credential);
 
 let table = new TableClient(endpoint, "<table-name>", credential);
+
+await table.getEntity("<partition-key>", "<row-key>");
 ```
 
 > [!IMPORTANT]
@@ -630,6 +637,8 @@ let credential: TokenCredential = new DefaultAzureCredential();
 let client: TableServiceClient = new TableServiceClient(endpoint, credential);
 
 let table: TableClient = new TableClient(endpoint, "<table-name>", credential);
+
+await table.getEntity("<partition-key>", "<row-key>");
 ```
 
 > [!IMPORTANT]
@@ -638,7 +647,7 @@ let table: TableClient = new TableClient(endpoint, "<table-name>", credential);
 ### [Python](#tab/python)
 
 ```python
-from azure.data.tables import TableServiceClient, TableClient
+from azure.data.tables import TableServiceClient
 from azure.identity import DefaultAzureCredential
 
 endpoint = "<account-endpoint>"
@@ -648,6 +657,11 @@ credential = DefaultAzureCredential()
 client = TableServiceClient(endpoint, credential=credential)
 
 table = client.get_table_client("<table-name>")
+
+table.get_entity(
+    row_key="<row-key>",
+    partition_key="<partition-key>"
+)
 ```
 
 > [!IMPORTANT]
@@ -656,9 +670,9 @@ table = client.get_table_client("<table-name>")
 ### [Go](#tab/go)
 
 ```go
-package main
-
 import (
+    "context"
+    
     "github.com/Azure/azure-sdk-for-go/sdk/azidentity"
     "github.com/Azure/azure-sdk-for-go/sdk/data/aztables"
 )
@@ -668,7 +682,12 @@ const endpoint = "<account-endpoint>"
 func main() {
     credential, _ := azidentity.NewDefaultAzureCredential(nil)
     client, _ := aztables.NewServiceClient(endpoint, credential, nil)
-    table, _ := client.NewClient("<table-name>")
+    table := client.NewClient("<table-name>")
+    
+    _, err := table.GetEntity(context.TODO(), "<partition-key>", "<row-key>", nil)
+    if err != nil {
+        panic(err)
+    }
 }
 ```
 
@@ -696,6 +715,8 @@ public class Table{
 
         TableClient table = client
             .getTableClient("<table-name>");
+
+        table.getEntity("<partition-key>", "<row-key>");
     }
 }
 ```
