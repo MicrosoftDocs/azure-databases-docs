@@ -293,6 +293,14 @@
         href: flexible-server/server-parameters-table-write-ahead-log-recovery.md?pivots=postgresql-16
       - name: Write-Ahead Log / Settings
         href: flexible-server/server-parameters-table-write-ahead-log-settings.md?pivots=postgresql-16
+    - name: Azure Data Factory
+      items:
+      - name: Connect from data factory via managed private endpoint
+        href: flexible-server/how-to-connect-to-data-factory-private-endpoint.md
+      - name: Copy activity
+        href: flexible-server/how-to-use-data-factory-copy-activity.md
+      - name: Script activity
+        href: flexible-server/how-to-use-data-factory-script-activity.md
     - name: Troubleshooting guides
       href: flexible-server/concepts-troubleshooting-guides.md
     - name: Logical replication and logical decoding
@@ -557,8 +565,6 @@
           href: flexible-server/how-to-connect-tls-ssl.md
         - name: Update application client certificates
           href: flexible-server/how-to-update-client-certificates-java.md
-        - name: Connect from data factory via managed private endpoint
-          href: flexible-server/how-to-connect-to-data-factory-private-endpoint.md
     - name: Scaling
       items:
       - name: Scale compute
