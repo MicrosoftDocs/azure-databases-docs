@@ -4,7 +4,7 @@ description: Guide on how to connect an Azure Database for PostgreSQL flexible s
 author: MitchellGale
 ms.author: v-mgale
 ms.reviewer: dabukhari, maghan
-ms.date: 04/11/2025
+ms.date: 04/11/2025 
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: how-to
