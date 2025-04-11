@@ -46,6 +46,13 @@ Here are some examples of indexing policies shown in [their JSON format](../inde
 }
 ```
 
+
+> [!NOTE]
+>  - The partition key (unless it is also "/id") is not indexed and should be included in the index.
+- The system properties id and _ts will always be indexed when the cosmos account indexing mode is Consistent
+- The system properties id and _ts are not included in the container policy’s indexed paths description. This is by design because these system properties are indexed by default and this behavior cannot be disabled.
+
+
 ### Opt-in policy to selectively include some property paths
 
 ```json
