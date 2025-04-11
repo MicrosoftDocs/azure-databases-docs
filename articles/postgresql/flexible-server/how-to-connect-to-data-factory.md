@@ -158,19 +158,19 @@ The following table describes the properties of the linked service for Azure Dat
 
 | Property | Description | Required |
 | --- | --- | --- |
-name | Name of the linked service. See [Naming rules](/azure/data-factory/naming-rules). |  Yes |
-type | Type of the linked service. In this case should be **AzurePostgreSql**. | Yes |
+name | Name of the linked service. See [Naming rules](/azure/data-factory/naming-rules) |  Yes |
+type | Type of the linked service. In this case should be **AzurePostgreSql** | Yes |
 server | Full qualified host name for Azure database for PostgreSQL flexible server | Yes |
-port | The Azure database for PostgreSQL flexible server port number. | Yes |
-database | Database name. | Yes |
-sslMode | A numeric value representing the SSL connection configuration. **0** for Disabled, **1** for Allow, **2** for Prefer, **3** for Require, **4** for VerifyCA and **5** for VerifyFull. | Yes |
-authenticationType | Specify the authentication to be used. **BasicAuth** or **ServicePrincipal**. | Yes |
+port | The Azure database for PostgreSQL flexible server port number | Yes |
+database | Database name | Yes |
+sslMode | A numeric value representing the SSL connection configuration. **0** for Disabled, **1** for Allow, **2** for Prefer, **3** for Require, **4** for VerifyCA and **5** for VerifyFull | Yes |
+authenticationType | Specify the authentication to be used. **BasicAuth** or **ServicePrincipal** | Yes |
 username | username for basic auth or Service principal name for service principal authentication | Yes |
-password | Username password for the Basic Auth | Required if is a **BasicAuth**. Otherwise isn't required. |
-tenant | Tenant ID. | Required for **ServicePrincipal** authentication type |
+password | Username password for the Basic Auth | Required if is a **BasicAuth**. Otherwise isn't required |
+tenant | Tenant ID | Required for **ServicePrincipal** authentication type |
 servicePrincipalId | Service Principal ID | Required for **ServicePrincipal** authentication type |
-servicePrincipalCredentialType | Service Principal Type. **ServicePrincipalCert** or **ServicePrincipalKey**.| Yes |
-servicePrincipalEmbeddedCert | The service principal certificate | Required if is a **ServicePrincipalCert**. Otherwise isn't required. |
+servicePrincipalCredentialType | Service Principal Type. **ServicePrincipalCert** or **ServicePrincipalKey**| Yes |
+servicePrincipalEmbeddedCert | The service principal certificate | Required if is a **ServicePrincipalCert**. Otherwise isn't required |
 servicePrincipalEmbeddedCertPassword | The service principal certificate password | No |
 servicePrincipalKey | The service Principal key | Required if **ServicePrincipalKey** is the servicePrincipalCredentialType. Otherwise isn't required |
 
@@ -250,7 +250,7 @@ A linked service using **Service Principal key** is defined in JSON format as fo
 
 ### Create linked services via API
 
-Linked services can be created in the Azure Data Factory UX via the [management hub](/azure/data-factory/author-management-hub) and any activities, datasets, or data flows that reference them.
+Linked services can be created in the Azure Data Factory Portal via the [management hub](/azure/data-factory/author-management-hub) and any activities, datasets, or data flows that reference them.
 
 You can create linked services by using one of these tools: [.NET API](/azure/data-factory/quickstart-create-data-factory-dot-net), [PowerShell](/azure/data-factory/quickstart-create-data-factory-powershell), [REST API](/azure/data-factory/quickstart-create-data-factory-rest-api), [Azure Resource Manager Template](/azure/data-factory/quickstart-create-data-factory-resource-manager-template), and [Azure portal](/azure/data-factory/quickstart-create-data-factory-portal).
 
