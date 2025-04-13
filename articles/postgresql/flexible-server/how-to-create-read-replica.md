@@ -36,7 +36,7 @@ Before setting up a read replica for Azure Database for PostgreSQL flexible serv
 
 Using the [Azure portal](https://portal.azure.com/):
 
-1. Select your Azure Database for PostgreSQL flexible server that you want to use as the primary server.
+1. Select theh Azure Database for PostgreSQL flexible server that you want to use as the primary server.
 
 2. In the resource menu, under the **Settings** section, select **Replication**.
 
@@ -44,7 +44,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 3.  In the **Servers** section, select **Create replica**.
 
-    :::image type="content" source="./media/how-to-read-replicas/create-replica.png" alt-text="Screenshot showing the location of the Create replica button in the Replication page.." lightbox="./media/how-to-read-replicas/create-replica.png":::
+    :::image type="content" source="./media/how-to-read-replicas/create-replica.png" alt-text="Screenshot showing the location of the Create replica button in the Replication page." lightbox="./media/how-to-read-replicas/create-replica.png":::
 
 4. You're redirected to the **Add read replica to Azure Database for PostgreSQL flexible server** wizard, from where you can configure some settings for the new read replica that is created.
 
