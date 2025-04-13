@@ -1,6 +1,6 @@
 ---
-title: Create virtual endpoints
-description: This article describes how to create virtual endpoints for an Azure Database for PostgreSQL flexible server.
+title: Modify virtual endpoints
+description: This article describes how to modify virtual endpoints for an Azure Database for PostgreSQL flexible server.
 author: akashraokm
 ms.author: akashrao
 ms.reviewer: maghan
@@ -10,19 +10,19 @@ ms.subservice: flexible-server
 ms.topic: how-to
 ---
 
-# Create vierual endpoints
+# Modify vierual endpoints
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
 This article provides step-by-step instructions to create virtual endpoints for an Azure Database for PostgreSQL flexible server.
 
-## Steps to create virtual endpoints
+## Steps to modify virtual endpoints
 
-### [Portal](#tab/portal-create-virtual-endpoints)
+### [Portal](#tab/portal-modify-virtual-endpoints)
 
 Using the [Azure portal](https://portal.azure.com/):
 
-1. Select the Azure Database for PostgreSQL flexible server for which you want to create virtual endpoints.
+1. Select the Azure Database for PostgreSQL flexible server for which you want to modify its associated virtual endpoints.
 
 2. In the resource menu, under the **Settings** section, select **Replication**.
 
@@ -36,24 +36,20 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="./media/how-to-read-replicas/virtual-endpoints-base-name.png" alt-text="Screenshot showing where to enter the virtual endpoints base name." lightbox="./media/how-to-read-replicas/virtual-endpoints-base-name.png":::
 
-5. **Target of writer virtual endpoint** must always point to the primary server, because that's the only server that is configured to support user initiated write operations. If the server on on which you're creating the virtual endpoints don't have any read replica, then **Target of reader virtual endpoint** also points to the primary server. However, if the server on which you're creating the virtual endpoints has some read replica, by default **Target of reader virtual endpoint** is pointed to one of the read replicas, and can be changed to point to the primary server or to any other read replica, provided there's more than one.
-
-    :::image type="content" source="./media/how-to-read-replicas/target-of-reader-virtual-endpoint.png" alt-text="Screenshot showing how the Target of reader virtual endpoint refers to a read replica when there's one configured." lightbox="./media/how-to-read-replicas/target-of-reader-virtual-endpoint.png":::
-
-6. Select **Create**.
+5. Select **Create**.
 
     :::image type="content" source="./media/how-to-read-replicas/create-virtual-endpoints-create.png" alt-text="Screenshot showing the Create button to create the virtual endpoints." lightbox="./media/how-to-read-replicas/create-virtual-endpoints-create.png":::
 
 
-7. A notification informs you that the virtual endpoints are being created.
+6. A notification informs you that the virtual endpoints are being created.
 
     :::image type="content" source="./media/how-to-read-replicas/notification-creating-virtual-endpoints.png" alt-text="Screenshot showing a notification informing that the virtual endpoints are being created." lightbox="./media/how-to-read-replicas/notification-creating-virtual-endpoints.png":::
 
-8. When the process completes, a notification informs you that the virtual endpoints were successfully created.
+7. When the process completes, a notification informs you that the virtual endpoints were successfully created.
 
     :::image type="content" source="./media/how-to-read-replicas/notification-created-virtual-endpoints.png" alt-text="Screenshot showing a notification informing that the virtual endpoints were created successfully." lightbox="./media/how-to-read-replicas/notification-created-virtual-endpoints.png":::
 
-### [Portal](#tab/cli-create-virtual-endpoints)
+### [Portal](#tab/cli-modify-virtual-endpoints)
 
 You can create a read replica for your Azure PostgreSQL flexible server via the [`az postgres flexible-server virtual-endpoint create`](/cli/azure/postgres/flexible-server/replica#az-postgres-flexible-server-virtual-endpoint-create) command. 
 
