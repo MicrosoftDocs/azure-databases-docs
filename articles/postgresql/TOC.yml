@@ -527,6 +527,8 @@
             href: flexible-server/how-to-enable-intelligent-performance-portal.md
           - name: Azure CLI
             href: flexible-server/how-to-enable-intelligent-performance-cli.md
+      - name: Read replicas
+        href: flexible-server/how-to-monitor-read-replicas.md
     - name: Networking
       items:
       - name: Public access (allowed IP addresses)
@@ -569,10 +571,14 @@
         href: flexible-server/how-to-scale-storage-performance.md
       - name: Configure storage autogrow
         href: flexible-server/how-to-auto-grow-storage.md
-      - name: Replication
+      - name: Read replicas
         items:
-        - name: Azure portal, CLI, REST API
-          href: flexible-server/how-to-read-replicas-portal.md
+        - name: Create a read replica
+          href: flexible-server/how-to-create-read-replica.md
+        - name: Switch over replica as primary
+          href: flexible-server/how-to-switch-over-replica.md
+        - name: Promote replica as standalone server
+          href: flexible-server/how-to-promote-replica.md
         - name: Read replica with Terraform
           href: flexible-server/how-to-read-replicas-virtual-endpoints-terraform.md
     - name: Backup and restore
