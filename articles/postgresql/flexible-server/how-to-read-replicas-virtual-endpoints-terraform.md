@@ -108,5 +108,5 @@ Confirm the apply action when prompted. Terraform provisions the resources and c
 - [Geo-replication in Azure Database for PostgreSQL flexible server](concepts-read-replicas-geo.md)
 - [Promote read replicas in Azure Database for PostgreSQL flexible server](concepts-read-replicas-promote.md)
 - [Virtual endpoints for read replicas in Azure Database for PostgreSQL flexible server](concepts-read-replicas-virtual-endpoints.md)
-- [Create and manage read replicas in Azure Database for PostgreSQL flexible server](how-to-read-replicas-portal.md)
+- [Create a read replica](how-to-create-read-replica.md)
 - [Terraform Azure provider documentation](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs)
