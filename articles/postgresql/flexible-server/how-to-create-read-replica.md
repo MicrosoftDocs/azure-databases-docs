@@ -109,7 +109,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 11. In the resource menu, under the **Settings** section, select **Replication**. Under **Servers**, find the list of servers that conform the replication set, and the role that each of them is taking.
 
-    :::image type="content" source="./media/how-to-read-replicas/list-replicas-from-replica.png" alt-text="Screenshot that shows the list of servers that conform a replication set." lightbox="./media/how-to-read-replicas/list-replicas-from-primary.png":::
+    :::image type="content" source="./media/how-to-read-replicas/list-replicas-from-replica.png" alt-text="Screenshot that shows the list of servers that conform a replication set." lightbox="./media/how-to-read-replicas/list-replicas-from-replica.png":::
 
 ### [Portal](#tab/cli-create-read-replica)
 

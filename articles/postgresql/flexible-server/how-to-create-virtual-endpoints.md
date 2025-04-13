@@ -32,8 +32,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="./media/how-to-read-replicas/create-virtual-endpoints.png" alt-text="Screenshot showing the location of the Create virtual endpoints button in the Replication page." lightbox="./media/how-to-read-replicas/create-virtual-endpoints.png":::
 
-4. The two fully qualified domain name aliases (CNAME) records that get created when you create virtual endpoints, have the following pattern: <virtual-endpoints-base-name>.writer.postgres.database.azure.com
- and <virtual-endpoints-base-name>.reader.postgres.database.azure.com. In the **Create virtual endpoints** dialog, in the **Virtual endpoints base name**, enter a meaningful name which isn't taken already by some other server.
+4. The two fully qualified domain name aliases (CNAME) records that get created when you create virtual endpoints, have the following pattern: `<virtual-endpoints-base-name>.writer.postgres.database.azure.com` and `<virtual-endpoints-base-name>.reader.postgres.database.azure.com`. In the **Create virtual endpoints** dialog, in the **Virtual endpoints base name**, enter a meaningful name which isn't taken already by some other server.
 
     :::image type="content" source="./media/how-to-read-replicas/virtual-endpoints-base-name.png" alt-text="Screenshot showing where to enter the virtual endpoints base name." lightbox="./media/how-to-read-replicas/virtual-endpoints-base-name.png":::
 
