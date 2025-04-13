@@ -17,12 +17,12 @@ ms.topic: how-to
 This article provides step-by-step instructions to create a read replica of an Azure Database for PostgreSQL flexible server.
 
 > [!NOTE]  
-> When deploying read replicas for persistent heavy write-intensive primary workloads, the replication lag could continue to grow and might never catch up with the primary. This might also increase storage usage at the primary as the WAL files are only deleted once received at the replica.
+> When deploying read replicas for persistent heavy write-intensive primary workloads, the replication lag could continue to grow and might never catch up with the primary. It might also increase storage usage at the primary as the WAL files are only deleted once received at the replica.
 
 > [!IMPORTANT]  
 > Review the [considerations section in the overview article of read replicas](concepts-read-replicas.md#considerations).
 >  
-> Before changing the values of the following server parameters on the primary server, change them on the read replicas first, to avoid issues during promotion of a read replica to primary: `max_connections`, `max_prepared_transactions`, `max_locks_per_transaction`, `max_wal_senders`, `max_worker_processes`.
+> Before changing the values of the following server parameters on the primary server, change them on the read replicas first. In doing so, you avoid issues during promotion of a read replica to primary: `max_connections`, `max_prepared_transactions`, `max_locks_per_transaction`, `max_wal_senders`, `max_worker_processes`.
 
 Before setting up a read replica for Azure Database for PostgreSQL flexible server, ensure the primary server is configured to meet the necessary prerequisites. Specific settings on the primary server can affect the ability to create replicas.
 
@@ -36,7 +36,7 @@ Before setting up a read replica for Azure Database for PostgreSQL flexible serv
 
 Using the [Azure portal](https://portal.azure.com/):
 
-1. Select theh Azure Database for PostgreSQL flexible server that you want to use as the primary server.
+1. Select the Azure Database for PostgreSQL flexible server that you want to use as the primary server.
 
 2. In the resource menu, under the **Settings** section, select **Replication**.
 
@@ -87,7 +87,7 @@ Using the [Azure portal](https://portal.azure.com/):
     | | **Storage autogrow** | Can't be changed and is automatically set to the same value as the source server. | Notice that this option might not be supported for some storage types, and it might not be honored for certain storage sizes. For more information, see [Configure storage autogrow in an Azure Database for PostgreSQL flexible server](how-to-auto-grow-storage.md). | Can be changed after the instance is created, as long as the storage type supports this feature. |
 
 
-5.  Continue to the **Networking**, **Security** or **Tags** tabs, if you need to change any of the settings which are allowed to differ from the primary server. Once all the new replica is configured to your needs, select **Review + create**.
+5.  Continue to the **Networking**, **Security**, or **Tags** tabs, if you need to change any of the settings which are allowed to differ from the primary server. Once all the new replica is configured to your needs, select **Review + create**.
 
     :::image type="content" source="./media/how-to-read-replicas/review-and-create.png" alt-text="Screenshot showing the location of the Review + create button." lightbox="./media/how-to-read-replicas/review-and-create.png":::
 
@@ -103,7 +103,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="./media/how-to-read-replicas/create-replica-deployment-completed.png" alt-text="Screenshot that shows the deployment successfully completed of your Azure Database for PostgreSQL flexible server." lightbox="./media/how-to-read-replicas/create-replica-deployment-completed.png":::
 
-10. It will take you to the **Overview** page of the replica server.
+10. It takes you to the **Overview** page of the replica server.
 
     :::image type="content" source="./media/how-to-read-replicas/read-replica-overview.png" alt-text="Screenshot that shows the Overview page of the read replica." lightbox="./media/how-to-read-replicas/read-replica-overview.png":::
 

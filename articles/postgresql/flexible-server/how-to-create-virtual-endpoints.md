@@ -47,7 +47,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 7. When the process completes, a notification informs you that the virtual endpoints were successfully created.
 
-    :::image type="content" source="./media/how-to-read-replicas/notification-created-virtual-endpoints.png" alt-text="Screenshot showing a notification informing that the virtual endpoints were created successfuly." lightbox="./media/how-to-read-replicas/notification-created-virtual-endpoints.png":::
+    :::image type="content" source="./media/how-to-read-replicas/notification-created-virtual-endpoints.png" alt-text="Screenshot showing a notification informing that the virtual endpoints were created successfully." lightbox="./media/how-to-read-replicas/notification-created-virtual-endpoints.png":::
 
 ### [Portal](#tab/cli-create-virtual-endpoints)
 
