@@ -6,7 +6,7 @@ ms.author: nlarin
 ms.service: azure-cosmos-db
 ms.subservice: postgresql
 ms.topic: how-to
-ms.date: 04/04/2025
+ms.date: 04/12/2025
 ---
 
 # Use Microsoft Entra ID and native PostgreSQL roles for authentication with Azure Cosmos DB for PostgreSQL
