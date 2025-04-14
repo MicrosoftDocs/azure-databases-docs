@@ -10,7 +10,7 @@ ms.subservice: flexible-server
 ms.topic: how-to
 ---
 
-# Create vierual endpoints
+# Create virtual endpoints
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
@@ -55,7 +55,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 ### [Portal](#tab/cli-create-virtual-endpoints)
 
-You can create a read replica for your Azure PostgreSQL flexible server via the [`az postgres flexible-server virtual-endpoint create`](/cli/azure/postgres/flexible-server/replica#az-postgres-flexible-server-virtual-endpoint-create) command. 
+You can create virtual endpoints for your Azure PostgreSQL flexible server via the [`az postgres flexible-server virtual-endpoint create`](/cli/azure/postgres/flexible-server/replica#az-postgres-flexible-server-virtual-endpoint-create) command. 
 
 ```azurecli-interactive
 az postgres flexible-server virtual-endpoint create \
