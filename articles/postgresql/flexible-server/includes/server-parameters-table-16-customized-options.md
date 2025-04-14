@@ -387,7 +387,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Customized Options |
-| Description | Sepcifies the flag indicating if mirroring is enabled on server. |
+| Description | Specifies the flag indicating if mirroring is enabled on server. |
 | Data type | boolean |
 | Default value | `off` |
 | Allowed values | `on,off` |
