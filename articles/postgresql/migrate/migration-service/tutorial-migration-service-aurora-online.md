@@ -1,15 +1,18 @@
 ---
-title: "Migrate from Amazon Aurora online by using the migration service"
-description: Learn how to migrate online seamlessly from Amazon Aurora to Azure Database for PostgreSQL by using the new migration service in Azure. Simplify the migration while ensuring data integrity and efficient deployment."
+title: "Migrate From Amazon Aurora Online By Using the Migration Service"
+description: Learn how to migrate online seamlessly from Amazon Aurora to Azure Database for PostgreSQL by using the new migration service in Azure. Simplify the migration while ensuring data integrity and efficient deployment.
 author: apduvuri
 ms.author: adityaduvuri
 ms.reviewer: maghan
-ms.date: 06/19/2024
+ms.date: 02/07/2025
 ms.service: azure-database-postgresql
 ms.subservice: migration-guide
 ms.topic: tutorial
 ms.custom:
   - devx-track-azurecli
+ms.collection:
+ - migration
+ - aws-to-azure
 # customer intent: As a developer, I want to learn how to migrate from Amazon Aurora to Azure Database for PostgreSQL using the migration service, so that I can simplify the transition and ensure data integrity.
 ---
 
@@ -22,7 +25,7 @@ The migration service in Azure Database for PostgreSQL is a fully managed servic
 In this tutorial, you:
 
 > [!div class="checklist"]
->
+>  
 > - Complete prerequisites
 > - Initiate the migration
 > - Monitor the migration
@@ -39,7 +42,7 @@ You can migrate by using the Azure portal or the Azure CLI.
 
 # [Azure portal](#tab/azure-portal)
 
-The Azure portal offers a simple and intuitive wizard-based experience to guide you through migration. By completing the steps that are outlined in this tutorial, you can seamlessly transfer your database to Azure Database for PostgreSQL - Flexible Server and take advantage of its powerful features and scalability.
+The Azure portal offers a simple and intuitive wizard-based experience to guide you through migration. By completing the steps that are outlined in this tutorial, you can seamlessly transfer your database to Azure Database for PostgreSQL flexible server and take advantage of its powerful features and scalability.
 
 To migrate by using the Azure portal, first configure the migration task. Then, connect to the source and target, and initiate the migration.
 
@@ -49,11 +52,11 @@ To configure the migration task in the Azure portal:
 
 1. Open your web browser and go to the [Azure portal](https://portal.azure.com/). Enter your credentials to sign in.
 
-1. Go to your instance of Azure Database for PostgreSQL - Flexible Server.
+1. Go to your instance of Azure Database for PostgreSQL flexible server.
 
 1. On the service menu, select **Migration**.
 
-    :::image type="content" source="media/tutorial-migration-service-aurora-online/migration-portal-select.png" alt-text="Screenshot of the Migration selection." lightbox="media/tutorial-migration-service-aurora-online/migration-portal-select.png":::
+    :::image type="content" source="media/tutorial-migration-service-aurora-online/migration-portal-select.png" alt-text="Screenshot showing the Migration selection in the Azure portal." lightbox="media/tutorial-migration-service-aurora-online/migration-portal-select.png":::
 
 1. Select **Create** to migrate from Amazon Aurora to a flexible server.
 
@@ -61,7 +64,7 @@ To configure the migration task in the Azure portal:
 
 1. Select **Create** to step through a series of tabs to set up a migration.
 
-    :::image type="content" source="media/tutorial-migration-service-aurora-online/portal-online-create-migration.png" alt-text="creenshot of the migration selection in the Azure portal." lightbox="media/tutorial-migration-service-aurora-online/portal-online-create-migration.png":::
+    :::image type="content" source="media/tutorial-migration-service-aurora-online/portal-online-create-migration.png" alt-text="Screenshot of the migration selection in the Azure portal." lightbox="media/tutorial-migration-service-aurora-online/portal-online-create-migration.png":::
 
 #### Setup
 
@@ -89,7 +92,7 @@ Select **Next: Connect to source**.
 
 #### Select the runtime server
 
-The migration runtime server is a specialized feature of the migration service. The runtime server acts as an intermediary server during migration. It's a separate instance of Azure Database for PostgreSQL - Flexible Server that isn't the target server. The runtime server facilitates the migration of databases from a source environment that is accessible only via a private network.
+The migration runtime server is a specialized feature of the migration service. The runtime server acts as an intermediary server during migration. It's a separate instance of Azure Database for PostgreSQL flexible server that isn't the target server. The runtime server facilitates the migration of databases from a source environment that is accessible only via a private network.
 
 For more information, see [Migration runtime server](concepts-migration-service-runtime-server.md).
 
@@ -116,7 +119,7 @@ On the **Select migration target** tab, enter or select the following informatio
 
 - **Admin username**: The admin username of the target PostgreSQL server.
 - **Password**: The password of the target PostgreSQL server.
-- **Custom FQDN/IP (Optional)**: The custom FQDN/IP field is optional and can be used when the target is behind a custom DNS server or has custom DNS namespaces, making it accessible only via specific FQDNs or IP addresses. For example, this could include entries like `flexibleserver.example.com`, `198.1.0.2`, or a PostgreSQL FQDN such as `flexibleserver.postgres.database.azure.com`, if the custom DNS server contains the DNS zone `postgres.database.azure.com` or forwards queries for this zone to `168.63.129.16`, where the FQDN is resolved in the Azure public or private DNS zone. 
+- **Custom FQDN/IP (Optional)**: The custom FQDN/IP field is optional and can be used when the target is behind a custom DNS server or has custom DNS namespaces, making it accessible only via specific FQDNs or IP addresses. For example, this could include entries like `flexibleserver.example.com`, `198.1.0.2`, or a PostgreSQL FQDN such as `flexibleserver.postgres.database.azure.com`, if the custom DNS server contains the DNS zone `postgres.database.azure.com` or forward queries for this zone to `168.63.129.16`, where the FQDN is resolved in the Azure public or private DNS zone.
 - **Test Connection**: Initiates a connectivity test between the target and the source. When the connection is successful, go to the next step to identify networking issues between the target and source and to verify the username and password for the target server. Establishing a test connection takes a few minutes.
 
 After a successful test connection, select **Next: Select database(s) for migration**.
@@ -129,13 +132,13 @@ On the **Select database for migration** tab, select from a list of user databas
 
 After you select the databases, select **Next: Summary**.
 
-:::image type="content" source="media\tutorial-migration-service-aurora-online\05-portal-online-select-database-migration-aurora.png" alt-text="Screenshot of the Select databases for migration tab.":::
+:::image type="content" source="media/tutorial-migration-service-aurora-online/05-portal-online-select-database-migration-aurora.png" alt-text="Screenshot of the Select databases for migration tab." lightbox="media/tutorial-migration-service-aurora-online/05-portal-online-select-database-migration-aurora.png":::
 
 #### Summary
 
 The **Summary** tab summarizes all the source and target details for creating the validation or migration. Review the details, and then select **Start Validation and Migration**.
 
-:::image type="content" source="media/tutorial-migration-service-aurora-online/06-portal-online-summary-aurora.png" alt-text="Screenshot of the migration Summary tab.":::
+:::image type="content" source="media/tutorial-migration-service-aurora-online/06-portal-online-summary-aurora.png" alt-text="Screenshot of the migration Summary tab." lightbox="media/tutorial-migration-service-aurora-online/06-portal-online-summary-aurora.png":::
 
 ### Monitor the migration
 
@@ -171,11 +174,11 @@ You can check validation details at the instance level and at the database level
 
 - Validation at the instance level:
 
-  - Check validation related to the connectivity check for the source version (the `PostgreSQL version >= 9.5` server parameter check) if the extensions are enabled in the server parameters of the instance of Azure Database for PostgreSQL - Flexible Server.
+  - Check validation related to the connectivity check for the source version (the `PostgreSQL version >= 9.5` server parameter check) if the extensions are enabled in the server parameters of the instance of Azure Database for PostgreSQL flexible server.
 
 - Validation at the database level:
 
-  - Check validation of the individual databases related to extensions and collations support in Azure Database for PostgreSQL - Flexible Server.
+  - Check validation of the individual databases related to extensions and collations support in Azure Database for PostgreSQL flexible server.
 
 You can see the current status for the migration and validation on the migration details pane.
 
@@ -273,7 +276,7 @@ az login
     }
     ```
 
-1. Run the following command to check if any migrations are running. The migration name is unique for migrations in the Azure Database for PostgreSQL - Flexible Server target.
+1. Run the following command to check if any migrations are running. The migration name is unique for migrations in the Azure Database for PostgreSQL flexible server target.
 
     ```azurecli-interactive
     az postgres flexible-server migration list --subscription 11111111-1111-1111-1111-111111111111 --resource-group my-learning-rg --name myflexibleserver --filter All
@@ -291,7 +294,7 @@ az login
     az postgres flexible-server migration show --subscription 11111111-1111-1111-1111-111111111111 --resource-group my-learning-rg --name myflexibleserver --migration-name migration1
     ```
 
-   The status of the migration appears in the Azure CLI. You also can see the status of the instance of Azure Database for PostgreSQL - Flexible Server in the Azure portal.
+   The status of the migration appears in the Azure CLI. You also can see the status of the instance of Azure Database for PostgreSQL flexible server in the Azure portal.
 
 ### Cancel or delete a migration
 
@@ -333,5 +336,4 @@ After migration, you can complete these tasks:
 
 - [Migrate offline from Amazon Aurora PostgreSQL](tutorial-migration-service-aurora-offline.md)
 - [Migration service](concepts-migration-service-postgresql.md)
-- [Migrate from on-premises and Azure VMs](tutorial-migration-service-iaas.md)
 - [Known issues and limitations](concepts-known-issues-migration-service.md)

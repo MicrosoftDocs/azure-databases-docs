@@ -2,7 +2,7 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 01/07/2025
+ms.date: 04/09/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
@@ -19,6 +19,23 @@ ms.custom: automatically generated
 | Allowed values | `-1-2097151` |
 | Parameter type | dynamic |
 | Documentation | [autovacuum_work_mem](https://www.postgresql.org/docs/17/runtime-config-resource.html#GUC-AUTOVACUUM-WORK-MEM) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### commit_timestamp_buffers
+
+| Attribute | Value |
+| --- | --- |
+| Category | Resource Usage / Memory |
+| Description | Specifies the amount of memory to use to cache the contents of pg_commit_ts. Unit is 8kb. |
+| Data type | integer |
+| Default value | `1024` |
+| Allowed values | `0-131072` |
+| Parameter type | static |
+| Documentation | [commit_timestamp_buffers](https://www.postgresql.org/docs/17/runtime-config-resource.html#GUC-COMMIT_TIMESTAMP_BUFFERS) |
 
 
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
@@ -178,6 +195,74 @@ ms.custom: automatically generated
 
 
 
+### multixact_member_buffers
+
+| Attribute | Value |
+| --- | --- |
+| Category | Resource Usage / Memory |
+| Description | Specifies the amount of shared memory to use to cache the contents of pg_multixact/members. Unit is 8kb. |
+| Data type | integer |
+| Default value | `32` |
+| Allowed values | `16-131072` |
+| Parameter type | static |
+| Documentation | [multixact_member_buffers](https://www.postgresql.org/docs/17/runtime-config-resource.html#GUC-MUTIXACT_MEMBER_BUFFERS) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### multixact_offset_buffers
+
+| Attribute | Value |
+| --- | --- |
+| Category | Resource Usage / Memory |
+| Description | Specifies the amount of shared memory to use to cache the contents of pg_multixact/offsets. Unit is 8kb. |
+| Data type | integer |
+| Default value | `16` |
+| Allowed values | `16-131072` |
+| Parameter type | static |
+| Documentation | [multixact_offset_buffers](https://www.postgresql.org/docs/17/runtime-config-resource.html#GUC-MULTIXACT_OFFSET_BUFFERS) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### notify_buffers
+
+| Attribute | Value |
+| --- | --- |
+| Category | Resource Usage / Memory |
+| Description | Specifies the amount of shared memory to use to cache the contents of pg_notify. Unit is 8kb. |
+| Data type | integer |
+| Default value | `16` |
+| Allowed values | `16-131072` |
+| Parameter type | static |
+| Documentation | [notify_buffers](https://www.postgresql.org/docs/17/runtime-config-resource.html#GUC-NOTIFY_BUFFERS) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### serializable_buffers
+
+| Attribute | Value |
+| --- | --- |
+| Category | Resource Usage / Memory |
+| Description | Specifies the amount of shared memory to use to cache the contents of pg_serial. Unit is 8kb. |
+| Data type | integer |
+| Default value | `32` |
+| Allowed values | `16-131072` |
+| Parameter type | static |
+| Documentation | [serializable_buffers](https://www.postgresql.org/docs/17/runtime-config-resource.html#GUC-SERIALIZABLE_BUFFERS) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
 ### shared_buffers
 
 | Attribute | Value |
@@ -212,6 +297,23 @@ ms.custom: automatically generated
 
 
 
+### subtransaction_buffers
+
+| Attribute | Value |
+| --- | --- |
+| Category | Resource Usage / Memory |
+| Description | Specifies the amount of shared memory to use to cache the contents of pg_subtrans. Unit is 8kb. |
+| Data type | integer |
+| Default value | `1024` |
+| Allowed values | `0-131072` |
+| Parameter type | static |
+| Documentation | [subtransaction_buffers](https://www.postgresql.org/docs/17/runtime-config-resource.html#GUC-SUBTRANSACTION_BUFFERS) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
 ### temp_buffers
 
 | Attribute | Value |
@@ -223,6 +325,23 @@ ms.custom: automatically generated
 | Allowed values | `100-1073741823` |
 | Parameter type | dynamic |
 | Documentation | [temp_buffers](https://www.postgresql.org/docs/17/runtime-config-resource.html#GUC-TEMP-BUFFERS) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### transaction_buffers
+
+| Attribute | Value |
+| --- | --- |
+| Category | Resource Usage / Memory |
+| Description | Specifies the amount of shared memory to use to cache the contents of pg_xact. Unit is 8kb. |
+| Data type | integer |
+| Default value | `1024` |
+| Allowed values | `0-131072` |
+| Parameter type | static |
+| Documentation | [transaction_buffers](https://www.postgresql.org/docs/17/runtime-config-resource.html#GUC-TRANSACTION_BUFFERS) |
 
 
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]

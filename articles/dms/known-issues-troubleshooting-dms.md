@@ -130,7 +130,7 @@ When you try to connect Azure Database Migration Service to SQL Server source th
 
 ## Related content
 
-- [Azure Database Migration Service PowerShell](/powershell/module/azurerm.datamigration#data_migration)
+- [Azure Database Migration Service PowerShell](/powershell/module/az.datamigration#data_migration)
 - [How to configure server parameters in Azure Database for MySQL by using the Azure portal](../mysql/howto-server-parameters.md)
 - [Overview of prerequisites for using Azure Database Migration Service](pre-reqs.md)
 - [FAQ about using Azure Database Migration Service](faq.yml)

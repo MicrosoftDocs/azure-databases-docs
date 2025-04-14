@@ -84,7 +84,7 @@ For more information about troubleshooting issues related to connecting to a sou
 
 ## Related content
 
-- [Azure Database Migration Service PowerShell](/powershell/module/azurerm.datamigration/?view=azurermps-6.13.0&preserve-view=true#data_migration)
+- [Azure Database Migration Service PowerShell](/powershell/module/az.datamigration#data_migration)
 - [How to configure server parameters in Azure Database for MySQL by using the Azure portal](../mysql/howto-server-parameters.md)
 - [Overview of prerequisites for using Azure Database Migration Service](pre-reqs.md)
 - [FAQ about using Azure Database Migration Service](faq.yml)

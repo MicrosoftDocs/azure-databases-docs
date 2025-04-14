@@ -24,22 +24,26 @@
         href: flexible-server/whats-new.md
       - name: Release notes
         items:
-          - name: January 2024
-            href: flexible-server/release-notes/january-2024.md
-          - name: February 2024
-            href: flexible-server/release-notes/february-2024.md
-          - name: April 2024
-            href: flexible-server/release-notes/april-2024.md
-          - name: May 2024
-            href: flexible-server/release-notes/may-2024.md
-          - name: June 2024
-            href: flexible-server/release-notes/june-2024.md
-          - name: August 2024
-            href: flexible-server/release-notes/august-2024.md
-          - name: September 2024
-            href: flexible-server/release-notes/september-2024.md
+          - name: March 2025
+            href: flexible-server/release-notes/march-2025.md
+          - name: February 2025
+            href: flexible-server/release-notes/february-2025.md
           - name: October 2024
             href: flexible-server/release-notes/october-2024.md
+          - name: September 2024
+            href: flexible-server/release-notes/september-2024.md
+          - name: August 2024
+            href: flexible-server/release-notes/august-2024.md
+          - name: June 2024
+            href: flexible-server/release-notes/june-2024.md
+          - name: May 2024
+            href: flexible-server/release-notes/may-2024.md
+          - name: April 2024
+            href: flexible-server/release-notes/april-2024.md
+          - name: February 2024
+            href: flexible-server/release-notes/february-2024.md
+          - name: January 2024
+            href: flexible-server/release-notes/january-2024.md
       - name: Service tiers
         href: flexible-server/concepts-service-tiers-storage.md
   - name: Quickstarts
@@ -94,6 +98,9 @@
           - name: Azure CLI
             href: flexible-server/how-to-configure-server-parameters-cli.md
             displayName: server parameters, cli
+      - name: Built-in Store Procedure
+        href: flexible-server/concepts-built-in-store-procedure.md
+        displayName: built-in store procedure
       - name: Create databases and users
         href: how-to-create-users.md
         displayName: users
@@ -139,16 +146,12 @@
         href: flexible-server/concepts-high-availability.md
     - name: Monitoring
       items:
-      - name: Monitoring overview
-        href: flexible-server/concepts-monitoring.md
-      - name: Slow query logs
-        href: flexible-server/concepts-slow-query-logs.md
+      - name: Monitor Azure Database for MySQL - Flexible Server
+        href: flexible-server/concepts-monitor-mysql.md
+      - name: Monitoring data reference
+        href: flexible-server/concepts-monitor-mysql-reference.md
       - name: Error logs
         href: flexible-server/concepts-error-logs.md        
-      - name: Audit logs
-        href: flexible-server/concepts-audit-logs.md
-      - name: Workbooks
-        href: flexible-server/concepts-workbooks.md
     - name: Replication
       items:
       - name: Data-in replication

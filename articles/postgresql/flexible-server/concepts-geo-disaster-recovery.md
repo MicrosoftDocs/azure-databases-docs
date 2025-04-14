@@ -1,6 +1,6 @@
 ---
 title: Geo-disaster recovery
-description: Learn about the concepts of Geo-disaster recovery with Azure Database for PostgreSQL - Flexible Server.
+description: Learn about the concepts of Geo-disaster recovery with Azure Database for PostgreSQL flexible server.
 author: akashraokm
 ms.author: akashrao
 ms.reviewer: maghan
@@ -12,7 +12,7 @@ ms.custom:
   - ignite-2023
 ---
 
-# Geo-disaster recovery in Azure Database for PostgreSQL - Flexible Server
+# Geo-disaster recovery in Azure Database for PostgreSQL flexible server
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
@@ -58,5 +58,5 @@ For more information on unplanned downtime mitigation and recovery after regiona
 
 ## Related content
 
-- [Azure Database for PostgreSQL - Flexible Server documentation](/azure/postgresql/).
+- [Azure Database for PostgreSQL flexible server documentation](/azure/postgresql/).
 - [Reliability in Azure](/azure/reliability/availability-zones-overview).

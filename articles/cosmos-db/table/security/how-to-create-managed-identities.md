@@ -8,13 +8,11 @@ ms.reviewer: stefarroyo
 ms.service: azure-cosmos-db
 ms.subservice: table
 ms.topic: how-to
-ms.date: 12/18/2024
+ms.date: 02/05/2025
 ms.custom: subject-msia
 zone_pivot_groups: azure-interface-portal-cli-powershell-bicep
 appliesto:
   - ✅ Table
-hidden: true
-ROBOTS: NOINDEX, NOFOLLOW
 #Customer Intent: As a security user, I want to create managed identities for use with Azure hosting services, so that my developer team can write portable authentication code for their client.
 ---
 

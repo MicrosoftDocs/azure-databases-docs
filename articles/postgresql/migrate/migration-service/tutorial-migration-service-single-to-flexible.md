@@ -1,11 +1,11 @@
 ---
-title: "Migrate to Azure Database for PostgreSQL - Flexible Server from Single Server"
+title: "Migrate to Azure Database for PostgreSQL flexible server From Single Server"
 titleSuffix: "Migrate from Single Server to Flexible Server."
 description: "Learn about migrating your Single Server databases to Azure Database for PostgreSQL Flexible Server by using the Azure portal or CLI commands."
 author: hariramt
 ms.author: hariramt
 ms.reviewer: maghan, adityaduvuri
-ms.date: 06/19/2024
+ms.date: 02/07/2025
 ms.service: azure-database-postgresql
 ms.subservice: migration-guide
 ms.topic: tutorial
@@ -18,7 +18,7 @@ ms.custom:
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
-Using the Azure portal, you can migrate an instance of Azure Database for PostgreSQL – Single Server to Azure Database for PostgreSQL – Flexible Server. In this tutorial, we perform migration of a sample database from an Azure Database for PostgreSQL single server to a PostgreSQL flexible server using the Azure portal.
+Using the Azure portal, you can migrate an Azure Database for PostgreSQL flexible server – Single Server to Azure Database for PostgreSQL – Flexible Server. In this tutorial, we perform migration of a sample database from an Azure Database for PostgreSQL single server to a PostgreSQL flexible server using the Azure portal.
 
 > [!div class="checklist"]
 >  
@@ -40,13 +40,13 @@ Using the Azure portal, you can migrate an instance of Azure Database for Postgr
 
 ## Check the migration once complete
 
-After a successful migration, ensure you can log in to your flexible server using the same credentials as on the single server. If you're encountering authentication errors on your flexible server after migrating from a single server, it may be due to the flexible server's VM being [FIPS-compliant](/compliance/regulatory/offering-FIPS-140-2) or using a different password encryption algorithm (SCRAM-SHA-256) compared to the single server's MD5 encryption. To mitigate this issue, follow these steps:
+After a successful migration, ensure you can log in to your flexible server using the same credentials as on the single server. If you're encountering authentication errors on your flexible server after migrating from a single server, it might be due to the flexible server's VM being [FIPS-compliant](/compliance/regulatory/offering-FIPS-140-2) or using a different password encryption algorithm (SCRAM-SHA-256) compared to the single server's MD5 encryption. To mitigate this issue, follow these steps:
 
- 1) Change the password_encryption [server parameter on your flexible server](../../flexible-server/how-to-configure-server-parameters-using-portal.md) from SCRAM-SHA-256 to MD5.
- 2) Reinitiate the migration from your single server to the flexible server.
- 3) If authentication issues persist, delete the existing flexible server and [provision a new one](../../flexible-server/quickstart-create-server.md). Repeat steps 1 and 2 to resolve the issue.
+1) Change the password_encryption [server parameter on your flexible server](../../flexible-server/how-to-configure-server-parameters-using-portal.md) from SCRAM-SHA-256 to MD5.
+2) Reinitiate the migration from your single server to the flexible server.
+3) If authentication issues persist, delete the existing flexible server and [provision a new one](../../flexible-server/quickstart-create-server.md). Repeat steps 1 and 2 to resolve the issue.
 
- This should resolve the authentication errors.
+This should resolve the authentication errors.
 
 After migration, you can perform the following tasks:
 
@@ -67,7 +67,6 @@ After migration, you can perform the following tasks:
 ## Related content
 
 - [Migration service](concepts-migration-service-postgresql.md)
-- [Migrate from AWS RDS](tutorial-migration-service-aws.md)
 - [Best practices](best-practices-migration-service-postgresql.md)
 - [Known Issues and limitations](concepts-known-issues-migration-service.md)
 - [Network setup](how-to-network-setup-migration-service.md)

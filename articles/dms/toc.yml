@@ -43,6 +43,8 @@
       href: concepts-migrate-azure-mysql-replicate-changes.md
   - name: Security
     items: 
+    - name: DMS security best practices
+      href: dms-security-best-practices.md
     - name: Security baseline
       href: /security/benchmark/azure/baselines/database-migration-security-baseline?toc=/azure/dms/toc.json
 
@@ -71,7 +73,9 @@
     - name: to Azure Database for MySQL (online)
       href: tutorial-mysql-azure-external-to-flex-online-portal.md 
     - name: to Azure Database for MySQL (Replicate Changes)
-      href: tutorial-mysql-azure-external-replicate-changes-portal.md       
+      href: tutorial-mysql-azure-external-replicate-changes-portal.md
+    - name: to Azure Database for MySQL (physical migration)
+      href: tutorial-mysql-azure-external-online-portal-physical.md   
   - name: Migrate Azure DB for MySQL - Single Server
     items:
     - name: to Azure DB for MySQL Flexible Server (online)

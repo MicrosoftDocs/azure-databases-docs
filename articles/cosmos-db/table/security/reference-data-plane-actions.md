@@ -8,11 +8,9 @@ ms.reviewer: stefarroyo
 ms.service: azure-cosmos-db
 ms.subservice: table
 ms.topic: reference
-ms.date: 12/18/2024
+ms.date: 02/05/2025
 appliesto:
   - ✅ Table
-hidden: true
-ROBOTS: NOINDEX, NOFOLLOW
 ---
 
 # Azure Cosmos DB for Table data plane actions reference (preview)

@@ -1,6 +1,6 @@
 ---
 title: Troubleshoot CLI errors
-description: This topic gives guidance on troubleshooting common issues with Azure CLI when using Azure Database for PostgreSQL - Flexible Server.
+description: This topic gives guidance on troubleshooting common issues with Azure CLI when using Azure Database for PostgreSQL flexible server.
 author: gbowerman
 ms.author: guybo
 ms.reviewer: maghan
@@ -12,7 +12,7 @@ ms.custom:
   - devx-track-azurecli
 ---
 
-# Troubleshoot Azure Database for PostgreSQL - Flexible Server CLI errors
+# Troubleshoot Azure Database for PostgreSQL flexible server CLI errors
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
@@ -31,14 +31,14 @@ Currently, Azure CLI doesn't support turning on debug logging, but you can retri
 
 1. List the deployments in resource group to identify the Azure Database for PostgreSQL flexible server deployment.
 
-    ```azurecli
+    ```azurecli-interactive
         az deployment operation group list \
           --resource-group examplegroup \
           --name exampledeployment
     ```
 
 2. Get the request content of the Azure Database for PostgreSQL flexible server deployment. 
-    ```azurecli
+    ```azurecli-interactive
         az deployment operation group list \
           --name exampledeployment \
           -g examplegroup \
@@ -47,7 +47,7 @@ Currently, Azure CLI doesn't support turning on debug logging, but you can retri
 
 3. Examine the response content. 
 
-    ```azurecli
+    ```azurecli-interactive
     az deployment operation group list \
       --name exampledeployment \
       -g examplegroup \

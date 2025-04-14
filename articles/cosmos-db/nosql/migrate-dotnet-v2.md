@@ -38,7 +38,7 @@ Most of the retry logic and lower levels of the SDK remains largely unchanged.
 
 ## Why migrate to the .NET v2 SDK
 
-In addition to the numerous performance improvements, new feature investments made in the latest SDK will not be back ported to older versions.
+In addition to the numerous performance improvements, new feature investments made in the latest SDK won't be back ported to older versions.
 
 Additionally, the older SDKs will be replaced by newer versions and the v1 SDK will go into [maintenance mode](sdk-dotnet-v2.md). For the best development experience, we recommend migrating your application to a later version of the SDK.
 
@@ -79,7 +79,6 @@ For more information, see the [Azure Cosmos DB bulk executor library overview](.
 ## Next steps
 
 * Read about [additional performance tips](quickstart-dotnet.md) using Azure Cosmos DB for API for NoSQL v2 for optimization your application to achieve max performance
-* Learn more about [what you can do with the v2 SDK](samples-dotnet.md)
 * Trying to do capacity planning for a migration to Azure Cosmos DB?
     * If all you know is the number of vcores and servers in your existing database cluster, read about [estimating request units using vCores or vCPUs](../convert-vcore-to-request-unit.md) 
     * If you know typical request rates for your current database workload, read about [estimating request units using Azure Cosmos DB capacity planner](estimate-ru-with-capacity-planner.md)

@@ -2,7 +2,7 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 01/07/2025
+ms.date: 04/09/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
@@ -220,8 +220,8 @@ ms.custom: automatically generated
 | Description | Enables the planner's use of parallel append plans. |
 | Data type | boolean |
 | Default value | `on` |
-| Allowed values | `on` |
-| Parameter type | read-only |
+| Allowed values | `on,off` |
+| Parameter type | dynamic |
 | Documentation | [enable_parallel_append](https://www.postgresql.org/docs/17/runtime-config-query.html#GUC-ENABLE-PARALLEL-APPEND) |
 
 

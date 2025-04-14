@@ -1,6 +1,6 @@
 ---
 title: Connect With Managed Identity
-description: Learn about how to connect and authenticate using managed identity for authentication with Azure Database for PostgreSQL - Flexible Server.
+description: Learn about how to connect and authenticate using managed identity for authentication with Azure Database for PostgreSQL flexible server.
 author: kabharati
 ms.author: kabharati
 ms.reviewer: maghan
@@ -14,7 +14,7 @@ ms.custom:
   - devx-track-python
 ---
 
-# Connect with managed identity to Azure Database for PostgreSQL - Flexible Server
+# Connect with managed identity to Azure Database for PostgreSQL flexible server
 
 [!INCLUDE [applies-to-postgresql-Flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
@@ -44,7 +44,7 @@ az vm identity assign -g myResourceGroup -n myVm
 
 Retrieve the application ID for the system-assigned managed identity, which you need in the next few steps:
 
-```azurecli
+```azurecli-interactive
 # Get the client ID (application ID) of the system-assigned managed identity
 
 az ad sp list --display-name vm-name --query [*].appId --out tsv
@@ -69,7 +69,7 @@ Success looks like:
 (1 row)
 ```
 
-For more information on managing Microsoft Entra ID enabled database roles, see [how to manage Microsoft Entra ID enabled Azure Database for PostgreSQL - Flexible Server roles](how-to-manage-azure-ad-users.md)
+For more information on managing Microsoft Entra ID enabled database roles, see [how to manage Microsoft Entra ID enabled Azure Database for PostgreSQL flexible server roles](how-to-manage-azure-ad-users.md)
 
 The managed identity now has access when authenticating with the identity name as a role name and the Microsoft Entra token as a password.
 
@@ -114,11 +114,11 @@ This section shows how to get an access token using the VM's user-assigned manag
 
 ## Connect using Managed Identity in Python
 
-For a Python code example, refer to the [Quickstart: Use Python to connect and query data in Azure Database for PostgreSQL - Flexible Server](connect-python.md)
+For a Python code example, refer to the [Quickstart: Use Python to connect and query data in Azure Database for PostgreSQL flexible server](connect-python.md)
 
 ## Connect using Managed Identity in Java
 
-For a Java code example, refer to the [Quickstart: Use Java and JDBC with Azure Database for PostgreSQL - Flexible Server](connect-java.md)
+For a Java code example, refer to the [Quickstart: Use Java and JDBC with Azure Database for PostgreSQL flexible server](connect-java.md)
 
 ## Connect using Managed Identity in C#
 
@@ -190,4 +190,4 @@ Postgres version: PostgreSQL 11.11, compiled by Visual C++ build 1800, 64-bit
 
 ## Related content
 
-- [# Microsoft Entra authentication with Azure Database for PostgreSQL - Flexible Server](concepts-azure-ad-authentication.md)
+- [# Microsoft Entra authentication with Azure Database for PostgreSQL flexible server](concepts-azure-ad-authentication.md)

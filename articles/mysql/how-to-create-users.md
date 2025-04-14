@@ -27,8 +27,10 @@ After you create an Azure Database for the MySQL server, you can use the first s
 
 > [!NOTE]  
 > The SUPER privilege and DBA role aren't supported. Review the [privileges](concepts-limits.md#privileges--data-manipulation-support) in the limitations article to understand what's not supported in the service.
->  
-> Password plugins like `validate_password` and `caching_sha2_password` aren't supported by the service.
+> 
+> Password related plugin `caching_sha2_password` are enabled by default.
+> 
+> Refer to this document if you want to enable `validate_password` plugin: [Built-in stored procedures in Azure Database for MySQL](flexible-server/concepts-built-in-store-procedure.md#2-plugin-management)
 
 ## Create a database
 

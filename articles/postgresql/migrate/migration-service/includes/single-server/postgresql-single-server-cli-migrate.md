@@ -1,8 +1,8 @@
 ---
-title: Azure Database for PostgreSQL - Single Server to Flexible Server CLI migration
+title: Azure Database for PostgreSQL - Single Server to Flexible Server CLI Migration
 author: markingmyname
 ms.author: maghan
-ms.date: 09/18/2024
+ms.date: 01/24/2025
 ms.service: azure-database-postgresql
 ms.topic: include
 ms.custom:
@@ -94,22 +94,22 @@ The structure of the JSON is:
 
 ```json
 {
-	"properties": {
-		"sourceDbServerResourceId": "/subscriptions/<subscriptionid>/resourceGroups/<sourceServerResourceGroup>/providers/Microsoft.DBforPostgreSQL/servers/<sourceServer>",
-		"secretParameters": {
-			"adminCredentials": {
-				"sourceServerPassword": "<password>",
-				"targetServerPassword": "<password>"
-			},
-			"sourceServerUserName": "<username>@<servername>",
-			"targetServerUserName": "<username>"
-		},
-		"dbsToMigrate": [
-			"<db1>",
-			"<db2>"
-		],
-		"overwriteDbsInTarget": "true"
-	}
+    "properties": {
+        "sourceDbServerResourceId": "/subscriptions/<subscriptionid>/resourceGroups/<sourceServerResourceGroup>/providers/Microsoft.DBforPostgreSQL/servers/<sourceServer>",
+        "secretParameters": {
+            "adminCredentials": {
+                "sourceServerPassword": "<password>",
+                "targetServerPassword": "<password>"
+            },
+            "sourceServerUserName": "<username>@<servername>",
+            "targetServerUserName": "<username>"
+        },
+        "dbsToMigrate": [
+            "<db1>",
+            "<db2>"
+        ],
+        "overwriteDbsInTarget": "true"
+    }
 }
 ```
 
@@ -202,6 +202,9 @@ The following tables describe the migration states and substates.
 > [!NOTE]  
 > Certain limitations apply to Online migration which are documented [here](../../best-practices-migration-service-postgresql.md#online-migration). Ensure that your database is compliant to execute an Online migration.
 
+> [!IMPORTANT]  
+> Online migration replays changes that happen during the migration from the source to the target. This ensures that you do not miss out on any ongoing changes and you can reduce the downtime for your application. However, this can be achieved only if the updates at the source is kept as low as possible. Low update traffic at the source ensures that ongoing changes are replayed to the target quickly and it can catch up with the source. If you observe an increasing `latency` trend over time with your migration, it is an indication that you need to further reduce the volume of traffic at the source.
+
 ## Get started
 
 1. If you're new to Microsoft Azure, [create an account](https://azure.microsoft.com/free/) to evaluate the offerings.
@@ -230,8 +233,6 @@ az postgres flexible-server migration --help
 
 Executing previous command returns the following output:
 
-
-
 The output lists the supported migration commands, along with their actions. Let's look at these commands in detail.
 
 ### Create a migration using the Azure CLI
@@ -243,8 +244,6 @@ az postgres flexible-server migration create --help
 ```
 
 Executing previous command returns the following output:
-
-
 
 It lists the expected arguments and has an example syntax for successfully creating a migration from the source server to the target server. Here's the CLI command to create a new migration:
 

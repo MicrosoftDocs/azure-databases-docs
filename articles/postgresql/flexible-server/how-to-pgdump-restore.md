@@ -1,6 +1,6 @@
 ---
 title: Best practices for pg_dump and pg_restore
-description: This article discusses best practices for pg_dump and pg_restore in Azure Database for PostgreSQL - Flexible Server.
+description: This article discusses best practices for pg_dump and pg_restore in Azure Database for PostgreSQL flexible server.
 author: sarat0681
 ms.author: sbalijepalli
 ms.reviewer: maghan
@@ -12,7 +12,7 @@ ms.custom:
   - template-how-to
 ---
 
-# Best practices for pg_dump and pg_restore for Azure Database for PostgreSQL - Flexible Server
+# Best practices for pg_dump and pg_restore for Azure Database for PostgreSQL flexible server
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
@@ -46,7 +46,7 @@ Before you start the pg_dump process, consider whether table vacuuming is necess
 select schemaname,relname,n_dead_tup,n_live_tup,round(n_dead_tup::float/n_live_tup::float*100) dead_pct,autovacuum_count,last_vacuum,last_autovacuum,last_autoanalyze,last_analyze from pg_stat_all_tables where n_live_tup >0;
 ```
 
-The `dead_pct` column in this query is the percentage of dead tuples when compared to live tuples. A high `dead_pct` value for a table might indicate that the table isn't being properly vacuumed. For more information, see [Autovacuum tuning in Azure Database for PostgreSQL - Flexible Server](how-to-autovacuum-tuning.md).
+The `dead_pct` column in this query is the percentage of dead tuples when compared to live tuples. A high `dead_pct` value for a table might indicate that the table isn't being properly vacuumed. For more information, see [Autovacuum tuning in Azure Database for PostgreSQL flexible server](how-to-autovacuum-tuning.md).
 
 
 For each table that you identify, you can perform a manual vacuum analysis by running the following:
@@ -120,9 +120,9 @@ For more information about the SKUs, see:
 
 ## Related content
 
-- [Configure intelligent tuning for Azure Database for PostgreSQL - Flexible Server](how-to-enable-intelligent-performance-portal.md).
-- [Troubleshooting guides for Azure Database for PostgreSQL - Flexible Server](concepts-troubleshooting-guides.md).
-- [Autovacuum tuning in Azure Database for PostgreSQL - Flexible Server](how-to-autovacuum-tuning.md).
-- [Troubleshoot high IOPS utilization in Azure Database for PostgreSQL - Flexible Server](how-to-high-io-utilization.md).
-- [Troubleshoot high CPU utilization in Azure Database for PostgreSQL - Flexible Server](how-to-high-cpu-utilization.md).
-- [Query Performance Insight in Azure Database for PostgreSQL - Flexible Server](concepts-query-performance-insight.md).
+- [Configure intelligent tuning for Azure Database for PostgreSQL flexible server](how-to-enable-intelligent-performance-portal.md).
+- [Troubleshooting guides for Azure Database for PostgreSQL flexible server](concepts-troubleshooting-guides.md).
+- [Autovacuum tuning in Azure Database for PostgreSQL flexible server](how-to-autovacuum-tuning.md).
+- [Troubleshoot high IOPS utilization in Azure Database for PostgreSQL flexible server](how-to-high-io-utilization.md).
+- [Troubleshoot high CPU utilization in Azure Database for PostgreSQL flexible server](how-to-high-cpu-utilization.md).
+- [Query Performance Insight in Azure Database for PostgreSQL flexible server](concepts-query-performance-insight.md).

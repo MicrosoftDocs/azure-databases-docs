@@ -1,13 +1,13 @@
 ---
-title: Best practices to migrate into Flexible Server
+title: Best Practices to Migrate Into Flexible Server
 description: Best practices for migration into Azure Database for PostgreSQL, including premigration validation, target server configuration, migration timeline, and migration speed benchmarking.
 author: hariramt
 ms.author: hariramt
 ms.reviewer: maghan
-ms.date: 06/19/2024
+ms.date: 01/24/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Best practices for seamless migration into Azure Database for PostgreSQL
@@ -33,7 +33,7 @@ We recommend that you allocate sufficient storage on the flexible server, equiva
 > [!IMPORTANT]  
 > Storage size can't be reduced in manual configuration or Storage Autogrow. Each step in the storage configuration spectrum doubles in size, so estimating the required storage beforehand is prudent.
 
-The quickstart to [Create an instance of Azure Database for PostgreSQL - Flexible Server](../../flexible-server/quickstart-create-server.md) is an excellent place to begin. For more information about each server configuration, see [Compute and storage options in Azure Database for PostgreSQL - Flexible Server](../../flexible-server/concepts-compute-storage.md).
+The quickstart to [Create an Azure Database for PostgreSQL flexible server](../../flexible-server/quickstart-create-server.md) is an excellent place to begin. For more information about each server configuration, see [Compute and storage options in Azure Database for PostgreSQL flexible server](../../flexible-server/concepts-compute-storage.md).
 
 > [!IMPORTANT]  
 > Once flexible server is created, make sure to [change the **password_encryption** server parameter on your flexible server](../../flexible-server/how-to-configure-server-parameters-using-portal.md) from SCRAM-SHA-256 to MD5 before initating the migration. This is essential for the existing credentials on single server to work on your flexible server
@@ -56,7 +56,7 @@ The following phases are considered for calculating the total downtime to perfor
    - Matching counts for all the database objects (tables, sequences, extensions, procedures, and indexes).
    - Comparing maximum or minimum IDs of key application-related columns.
 
-    > [!NOTE]
+    > [!NOTE]  
     > The comparative size of databases is not the right metric for validation. The source instance might have bloats or dead tuples, which can bump up the size of the source instance. It's normal to have size differences between source instances and target servers. An issue in the preceding three steps of validation indicates a problem with the migration.
 
 - **Migration of server settings**: Any custom server parameters, firewall rules (if applicable), tags, and alerts must be manually copied from the source instance to the target.
@@ -82,8 +82,8 @@ The following table shows the time it takes to perform migrations for databases 
 
 The preceding numbers give you an approximation of the time taken to complete the migration. We strongly recommend running a test migration with your workload to get a precise value for migrating your server.
 
-  > [!IMPORTANT]
-  > Though the Burstable SKU is not a limitation, it is recommended to choose a higher SKU for your flexible server to perform faster migrations. Azure Database for PostgreSQL - Flexible Server supports near-zero downtime compute and IOPS scaling, so the SKU can be updated with minimal downtime. You can always change the SKU to match the application needs post-migration.
+  > [!IMPORTANT]  
+  > Though the Burstable SKU is not a limitation, it is recommended to choose a higher SKU for your flexible server to perform faster migrations. Azure Database for PostgreSQL flexible server supports near-zero downtime compute and IOPS scaling, so the SKU can be updated with minimal downtime. You can always change the SKU to match the application needs post-migration.
 
 ### Improve migration speed: Parallel migration of tables
 
@@ -93,7 +93,7 @@ If the data distribution on the source is highly skewed, with most of the data p
 
 - The table must have a column with a simple (not composite) primary key or unique index of type `smallint`, `integer` or `big int`.
 
-    > [!NOTE]
+    > [!NOTE]  
     > In the case of the first or second approaches, you must carefully evaluate the implications of adding a unique index column to the source schema. Only after confirmation that adding a unique index column won't affect the application should you go ahead with the changes.
 
 - If the table doesn't have a simple primary key or unique index of type `smallint`, `integer` or `big int` but has a column that meets the data type criteria, the column can be converted into a unique index by using the following command. This command doesn't require a lock on the table.
@@ -165,7 +165,7 @@ There are special conditions that typically refer to unique circumstances, confi
 
 Online migration makes use of [pgcopydb follow](https://pgcopydb.readthedocs.io/en/latest/ref/pgcopydb_follow.html), and some of the [logical decoding restrictions](https://pgcopydb.readthedocs.io/en/latest/ref/pgcopydb_follow.html#pgcopydb-follow) apply. We also recommend that you have a primary key in all the tables of a database that's undergoing online migration. If a primary key is absent, the deficiency results in only `insert` operations being reflected during migration, excluding updates or deletes. Add a temporary primary key to the relevant tables before you proceed with the online migration.
 
-> [!NOTE]
+> [!NOTE]  
 > In the case of online migration of tables without a primary key, only `insert` operations are replayed on the target. This can potentially introduce inconsistency in the database if records that are updated or deleted on the source don't reflect on the target.
 
 An alternative is to use the `ALTER TABLE` command where the action is [REPLICA IDENTIY](https://www.postgresql.org/docs/current/sql-altertable.html#SQL-ALTERTABLE-REPLICA-IDENTITY) with the `FULL` option. The `FULL` option records the old values of all columns in the row so that even in the absence of a primary key, all CRUD operations are reflected on the target during the online migration. If none of these options work, perform an offline migration as an alternative.

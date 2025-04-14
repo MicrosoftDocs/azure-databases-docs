@@ -8,12 +8,10 @@ ms.reviewer: iriaosara
 ms.service: azure-cosmos-db
 ms.subservice: table
 ms.topic: solution-overview
-ms.date: 12/18/2024
+ms.date: 04/09/2025
 ai-usage: ai-assisted
 appliesto:
   - ✅ Table
-hidden: true
-ROBOTS: NOINDEX, NOFOLLOW
 #Customer Intent: As a developer, I want to review the major security areas related to Azure Cosmos DB for Table, so that I can build secure applications using the API for Table.
 ---
 
@@ -25,7 +23,7 @@ Diagram of the sequence of the deployment guide including these locations, in or
 
 When working with Azure Cosmos DB for Table, it's important to ensure that authorized users and applications have access to data while preventing unintentional or unauthorized access.
 
-[!INCLUDE[Security overview](../../includes/security-overview.md)]
+[!INCLUDE[Security overview](../../includes/security-data-overview.md)]
 
 ## Next step
 

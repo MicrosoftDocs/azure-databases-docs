@@ -12,7 +12,7 @@ ms.topic: how-to
 
 # Move from private access (virtual network integrated) to public access or Private Link with the Azure portal
 
-This article describes moving an Azure Database for MySQL flexible server from Private access (virtual network integrated) to Public access or a Private Link with the Azure portal.
+This article describes moving an Azure Database for MySQL Flexible Server from Private access (virtual network integrated) to Public access or a Private Link with the Azure portal.
 
 ## Prerequisites
 
@@ -25,9 +25,9 @@ This article describes moving an Azure Database for MySQL flexible server from P
 
 The steps below describe moving from private access (virtual network integrated) to public access or Private Link with the Azure portal.
 
-1. In the Azure portal, select your existing Azure Database for MySQL flexible server instance.
+1. In the Azure portal, select your existing Azure Database for MySQL Flexible Server instance.
 
-1. On the Private access (virtual network Integrated) Azure Database for MySQL flexible server instance page, select **Networking** from the front panel to open the high availability page.
+1. On the Private access (virtual network Integrated) Azure Database for MySQL Flexible Server instance page, select **Networking** from the front panel to open the high availability page.
 
 1. Select **Move to Private Link**.
 

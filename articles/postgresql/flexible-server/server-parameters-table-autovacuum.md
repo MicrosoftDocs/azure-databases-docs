@@ -1,13 +1,13 @@
 ---
 title: Autovacuum server parameters
-description: Autovacuum server parameters for Azure Database for PostgreSQL - Flexible Server.
+description: Autovacuum server parameters for Azure Database for PostgreSQL flexible server.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
 ms.date: 01/07/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
-ms.topic: include
+ms.topic: concept-article
 ms.custom: automatically generated
 zone_pivot_groups: postgresql-server-version
 ---

@@ -1,24 +1,26 @@
 ### YamlMime:Landing
-title:  Azure Database for PostgreSQL - Flexible Server documentation
-summary: "Azure Database for PostgreSQL - Flexible Server is a relational database service based on the open-source Postgres database engine. It's a fully managed database-as-a-service that can handle mission-critical workloads with predictable performance, security, high availability, and dynamic scalability."
 metadata:
-  description: "Azure Database for PostgreSQL - Flexible Server is a relational database service in the Microsoft cloud that is built for developers based on the open-source PostgreSQL database engine."
+  title: Azure Database for PostgreSQL documentation landing page
+  description: "Azure Database for PostgreSQL is a relational database service in the Microsoft cloud that is built for developers based on the open-source PostgreSQL database engine."
   author: nachoalonsoportillo
   ms.author: ialonso
   ms.reviewer: maghan
   ms.date: 01/04/2025
   ms.service: azure-database-postgresql
   ms.topic: landing-page
+
+title:  Azure Database for PostgreSQL documentation
+summary: "Azure Database for PostgreSQL is a relational database service based on the open-source Postgres database engine. It's a fully managed database-as-a-service that can handle mission-critical workloads with predictable performance, security, high availability, and dynamic scalability."
 # linkListType: architecture | concept | deploy | download | get-started | how-to-guide | learn | overview | quickstart | reference | tutorial | whats-new
 
 landingContent:
 
 # Card 1
-  - title: Azure Database for PostgreSQL - Flexible Server
+  - title: Azure Database for PostgreSQL
     linkLists:
       - linkListType: overview
         links:
-          - text: What is Azure Database for PostgreSQL - Flexible Server?
+          - text: What is Azure Database for PostgreSQL flexible server?
             url: flexible-server/service-overview.md
       - linkListType: whats-new
         links:
@@ -26,11 +28,11 @@ landingContent:
             url: https://techcommunity.microsoft.com/t5/Azure-Database-for-PostgreSQL/bg-p/ADforPostgreSQL
 
 # Card 2
-  - title: Azure Database for PostgreSQL - Flexible Server
+  - title: Azure Database for PostgreSQL flexible server
     linkLists:
       - linkListType: get-started
         links:
-          - text: Try Azure Database for PostgreSQL - Flexible Server for free
+          - text: Try Azure Database for PostgreSQL flexible server for free
             url: flexible-server/how-to-deploy-on-azure-free-account.md
       - linkListType: concept
         links:
@@ -42,7 +44,7 @@ landingContent:
             url: flexible-server/concepts-limits.md
       - linkListType: quickstart
         links:
-          - text: Create an instance of Azure Database for PostgreSQL - Flexible Server
+          - text: Create an Azure Database for PostgreSQL flexible server
             url: flexible-server/quickstart-create-server.md
       - linkListType: tutorial
         links:
@@ -50,7 +52,7 @@ landingContent:
             url: flexible-server/tutorial-webapp-server-vnet.md
 
 # Card 3
-  - title: Manage Azure Database for PostgreSQL - Flexible Server
+  - title: Manage Azure Database for PostgreSQL flexible server
     linkLists:
       - linkListType: concept
         links:
@@ -108,9 +110,15 @@ landingContent:
         links:
           - text: Manage high availability
             url: flexible-server/how-to-manage-high-availability-portal.md
-          - text: Restore a server
-            url: flexible-server/how-to-restore-server.md
-
+          - text: Restore to latest restore point
+            url: flexible-server/how-to-restore-latest-restore-point.md
+          - text: Restore to custom restore point
+            url: flexible-server/how-to-restore-custom-restore-point.md
+          - text: Restore to full backup (fast restore)
+            url: flexible-server/how-to-restore-full-backup.md
+          - text: Restore to paired region (geo-restore)
+            url: flexible-server/how-to-restore-paired-region.md
+            
 # Card 5
   - title: Connect and query
     linkLists:
@@ -168,7 +176,7 @@ landingContent:
     linkLists:
       - linkListType: learn
         links:
-          - text: 'Learning module: Create an Azure Database for PostgreSQL - Flexible Server instance'
+          - text: 'Learning module: Create an Azure Database for PostgreSQL flexible server instance'
             url: /training/modules/create-azure-db-for-postgresql-server/
       - linkListType: deploy
         links:
@@ -193,5 +201,5 @@ landingContent:
     linkLists:
       - linkListType: learn
         links:
-          - text: Azure Database for PostgreSQL - Flexible Server
+          - text: Azure Database for PostgreSQL flexible server
             url: /training/paths/introduction-to-azure-postgres/

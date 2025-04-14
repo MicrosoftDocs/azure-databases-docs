@@ -35,6 +35,8 @@ landingContent:
         links:
           - text: Integrated vector database
             url: vector-search.md
+          - text: Exact Nearest Neighbor (ENN) Vector Search 
+            url: enn-vector-search.md
           - text: Open-source vector database
             url: vector-search-ai.md
           - text: RAG 
@@ -121,6 +123,8 @@ landingContent:
             url: cross-region-replication.md
           - text: HA and DR - behind the scenes
             url: availability-disaster-recovery-under-hood.md
+          - text: Best practices for HA and DR
+            url: high-availability-replication-best-practices.md
   - title: Security
     linkLists:
       - linkListType: how-to-guide

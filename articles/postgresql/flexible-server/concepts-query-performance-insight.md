@@ -1,6 +1,6 @@
 ---
 title: Query Performance Insight
-description: This article describes the Query Performance Insight feature in  Azure Database for PostgreSQL - Flexible Server.
+description: This article describes the Query Performance Insight feature in  Azure Database for PostgreSQL flexible server.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
@@ -10,7 +10,7 @@ ms.subservice: flexible-server
 ms.topic: conceptual
 ---
 
-# Query Performance Insight in Azure Database for PostgreSQL - Flexible Server
+# Query Performance Insight in Azure Database for PostgreSQL flexible server
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
@@ -38,7 +38,7 @@ Query Performance Insight provides intelligent query analysis for Azure Database
 3. **[Log analytics workspace](how-to-configure-and-access-logs.md)** is configured for storing 3 log categories including - Azure Database for PostgreSQL flexible server Sessions logs, Azure Database for PostgreSQL flexible server Query Store and Runtime, and Azure Database for PostgreSQL flexible server Query Store Wait Statistics. To configure log analytics, refer [Log analytics workspace](how-to-configure-and-access-logs.md#configure-diagnostic-settings).
 
 > [!NOTE]
-> The **Query Store data isn't being transmitted to the log analytics workspace**. The Azure Database for PostgreSQL flexible server logs (Sessions data / Query Store Runtime / Query Store Wait Statistics) aren't being sent to the log analytics workspace, which is necessary to use Query Performance Insight. To configure the diagnostic settings for Azure Database for PostgreSQL flexible server and send the data to a log analytics workspace, please refer to [Configure and access logs in Azure Database for PostgreSQL - Flexible Server](how-to-configure-and-access-logs.md).
+> The **Query Store data isn't being transmitted to the log analytics workspace**. The Azure Database for PostgreSQL flexible server logs (Sessions data / Query Store Runtime / Query Store Wait Statistics) aren't being sent to the log analytics workspace, which is necessary to use Query Performance Insight. To configure the diagnostic settings for Azure Database for PostgreSQL flexible server and send the data to a log analytics workspace, please refer to [Configure and access logs in Azure Database for PostgreSQL flexible server](how-to-configure-and-access-logs.md).
 
 ## Permissions
 
@@ -90,4 +90,4 @@ The Query Performance Insight view in the Azure portal surfaces visualizations o
 
 ## Related content
 
-- [Monitor metrics in Azure Database for PostgreSQL - Flexible Server](concepts-monitoring.md).
+- [Monitor metrics in Azure Database for PostgreSQL flexible server](concepts-monitoring.md).

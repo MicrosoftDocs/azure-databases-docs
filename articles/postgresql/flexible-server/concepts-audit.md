@@ -1,6 +1,6 @@
 ---
 title: Audit Logging
-description: Concepts for `pgaudit` audit logging in Azure Database for PostgreSQL - Flexible Server.
+description: Concepts for `pgaudit` audit logging in Azure Database for PostgreSQL flexible server.
 author: techlake
 ms.author: hganten
 ms.reviewer: maghan
@@ -10,7 +10,7 @@ ms.subservice: flexible-server
 ms.topic: concept-article
 ---
 
-# Audit logging in Azure Database for PostgreSQL - Flexible Server
+# Audit logging in Azure Database for PostgreSQL flexible server
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
@@ -26,7 +26,7 @@ To learn how to set up logging to Azure Storage, Event Hubs, or Azure Monitor lo
 
 ## Installing the extension
 
-To be able to use `pgaudit` extension, you need to [allowlist](../extensions/how-to-allow-extensions.md#allow-extensions), [load](../extensions/how-to-allow-extensions.md#load-libraries), and [create](../extensions/how-to-allow-extensions.md#create-extensions) the extension in the database on which you plan to use it.
+To be able to use `pgaudit` extension, you need to [allowlist](../extensions/how-to-allow-extensions.md#allow-extensions), [load](../extensions/how-to-load-libraries.md), and [create](../extensions/how-to-create-extensions.md) the extension in the database on which you plan to use it.
 
 ## Configure extension settings
 
@@ -99,5 +99,5 @@ AzureDiagnostics
 
 ## Related content
 
-- [Logging in Azure Database for PostgreSQL - Flexible Server](concepts-logging.md).
-- [Configure logging and access logs in Azure Database for PostgreSQL - Flexible Server](how-to-configure-and-access-logs.md).
+- [Logging in Azure Database for PostgreSQL flexible server](concepts-logging.md).
+- [Configure logging and access logs in Azure Database for PostgreSQL flexible server](how-to-configure-and-access-logs.md).

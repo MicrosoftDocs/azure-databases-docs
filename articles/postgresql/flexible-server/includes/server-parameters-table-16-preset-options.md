@@ -2,7 +2,7 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 01/07/2025
+ms.date: 04/09/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
@@ -202,8 +202,8 @@ ms.custom: automatically generated
 | Category | Preset Options |
 | Description | Shows the server version. |
 | Data type | string |
-| Default value | `16.4` |
-| Allowed values | `16.4` |
+| Default value | `16.8` |
+| Allowed values | `16.8` |
 | Parameter type | read-only |
 | Documentation | [server_version](https://www.postgresql.org/docs/16/runtime-config-preset.html#GUC-SERVER-VERSION) |
 
@@ -219,8 +219,8 @@ ms.custom: automatically generated
 | Category | Preset Options |
 | Description | Shows the server version as an integer. |
 | Data type | integer |
-| Default value | `160004` |
-| Allowed values | `160004` |
+| Default value | `160008` |
+| Allowed values | `160008` |
 | Parameter type | read-only |
 | Documentation | [server_version_num](https://www.postgresql.org/docs/16/runtime-config-preset.html#GUC-SERVER-VERSION-NUM) |
 
@@ -236,8 +236,8 @@ ms.custom: automatically generated
 | Category | Preset Options |
 | Description | Shows the size of the server's main shared memory area (rounded up to the nearest MB). |
 | Data type | integer |
-| Default value | `8570` |
-| Allowed values | `8570` |
+| Default value | `8571` |
+| Allowed values | `8571` |
 | Parameter type | read-only |
 | Documentation | [shared_memory_size](https://www.postgresql.org/docs/16/runtime-config-preset.html#GUC-SHARED-MEMORY-SIZE) |
 
@@ -253,8 +253,8 @@ ms.custom: automatically generated
 | Category | Preset Options |
 | Description | Shows the number of huge pages needed for the main shared memory area. |
 | Data type | integer |
-| Default value | `4285` |
-| Allowed values | `4285` |
+| Default value | `4286` |
+| Allowed values | `4286` |
 | Parameter type | read-only |
 | Documentation | [shared_memory_size_in_huge_pages](https://www.postgresql.org/docs/16/runtime-config-preset.html#GUC-SHARED-MEMORY-SIZE-IN-HUGE-PAGES) |
 

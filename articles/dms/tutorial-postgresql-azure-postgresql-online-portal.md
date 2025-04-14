@@ -38,7 +38,7 @@ Using Azure Database Migration Service to perform an online migration requires c
 
 To complete this tutorial, you need to:
 
-- Download and install [PostgreSQL community edition](https://www.postgresql.org/download/). The source PostgreSQL Server version must be >= 9.4. For more information, see [Supported PostgreSQL versions in Azure Database for PostgreSQL - Flexible Server](../postgresql/flexible-server/concepts-supported-versions.md).
+- Download and install [PostgreSQL community edition](https://www.postgresql.org/download/). The source PostgreSQL Server version must be >= 9.4. For more information, see [Supported PostgreSQL versions in Azure Database for PostgreSQL flexible server](../postgresql/flexible-server/concepts-supported-versions.md).
 
   Also note that the target Azure Database for PostgreSQL version must be equal to or later than the on-premises PostgreSQL version. For example, PostgreSQL 12 can migrate to Azure Database for PostgreSQL >= 12 version but not to Azure Database for PostgreSQL 11.
 

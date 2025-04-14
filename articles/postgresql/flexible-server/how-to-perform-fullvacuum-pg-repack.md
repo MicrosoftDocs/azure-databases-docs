@@ -10,7 +10,7 @@ ms.subservice: flexible-server
 ms.topic: conceptual
 ---
 
-# Full vacuum using pg_repack in Azure Database for PostgreSQL - Flexible Server
+# Full vacuum using pg_repack in Azure Database for PostgreSQL flexible server
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
@@ -49,7 +49,7 @@ During these steps, `pg_repack` only holds an exclusive access lock for a short 
 
 ### Prerequisites
 
-1. Configure the `pg_repack` extension by [allowlisting](../extensions/how-to-allow-extensions.md#allow-extensions) and [creating](../extensions/how-to-allow-extensions.md#create-extensions) the extension.
+1. Configure the `pg_repack` extension by [allowlisting](../extensions/how-to-allow-extensions.md#allow-extensions) and [creating](../extensions/how-to-create-extensions.md) the extension.
 
 ### Build pg_repack client application
 
@@ -134,4 +134,4 @@ On the other hand, [pg_repack/bin](https://github.com/reorg/pg_repack/tree/maste
 
 ## Related content
 
-- [Autovacuum tuning in Azure Database for PostgreSQL - Flexible Server](how-to-autovacuum-tuning.md).
+- [Autovacuum tuning in Azure Database for PostgreSQL flexible server](how-to-autovacuum-tuning.md).

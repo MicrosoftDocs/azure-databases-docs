@@ -36,6 +36,9 @@ You can:
 - Create one DEK per property to encrypt, or
 - Use the same DEK to encrypt multiple properties.
 
+> [!NOTE]
+> Resource limit for Client Encryption Key is 20
+
 #### Customer-managed keys
 
 Before DEKs get stored in Azure Cosmos DB, they are wrapped by a customer-managed key (CMK). By controlling the wrapping and unwrapping of DEKs, CMKs effectively control the access to the data that's encrypted with their corresponding DEKs. CMK storage is designed as an extensible, with a default implementation that expects them to be stored in Azure Key Vault.
@@ -69,7 +72,7 @@ The first step to get started with Always Encrypted is to create your CMKs in Az
 
 1. Create a new Azure Key Vault instance or browse to an existing one.
 1. Create a new key in the **Keys** section.
-1. Once the key is created, browse to its current version, and copy its full key identifier:<br>`https://<my-key-vault>.vault.azure.net/keys/<key>/<version>`. If you omit the key version at the end of the key identifier, the latest version of the key is used.
+1. Once the key is created, browse to its current version, and copy its full key identifier:<br>`https://<my-key-vault>.vault.azure.net/keys/<key>/<version>`.
 
 Next, you need to configure how the Azure Cosmos DB SDK will access your Azure Key Vault instance. This authentication is done through a Microsoft Entra identity. Most likely, you'll use the identity of a Microsoft Entra application or a [managed identity](/azure/active-directory/managed-identities-azure-resources/overview) as the proxy between your client code and your Azure Key Vault instance, although any kind of identity could be used. Use the following steps to use your Microsoft Entra identity as the proxy:
 
@@ -150,7 +153,7 @@ Creating a new data encryption key is done by calling the `CreateClientEncryptio
   - The `name` can be any friendly name you want.
   - The `value` must be the key identifier.
   > [!IMPORTANT]
-  > Once the key is created, browse to its current version, and copy its full key identifier: `https://<my-key-vault>.vault.azure.net/keys/<key>/<version>`. If you omit the key version at the end of the key identifier, the latest version of the key is used.
+  > Once the key is created, browse to its current version, and copy its full key identifier: `https://<my-key-vault>.vault.azure.net/keys/<key>/<version>`.
   - The `algorithm` defines which algorithm shall be used to wrap the key encryption key with the customer-managed key.
 
 ```csharp
