@@ -54,7 +54,10 @@ Using the [Azure portal](https://portal.azure.com/):
 You can initiate an on-demand backup of a server via the [az postgres flexible-server backup create](/cli/azure/postgres/flexible-server/backup#az-postgres-flexible-server-backup-create) command.
 
 ```azurecli-interactive
-az postgres flexible-server backup create --resource-group <resource_group> --name <server> --backup-name <backup>
+az postgres flexible-server backup create \
+  --resource-group <resource_group> \
+  --name <server> \
+  --backup-name <backup>
 ```
 
 ---

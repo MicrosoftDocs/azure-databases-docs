@@ -38,7 +38,10 @@ Using the [Azure portal](https://portal.azure.com):
 You can list all server parameters whose values are modified from defaults, via the [az postgres flexible-server parameter list](/cli/azure/postgres/flexible-server/parameter#az-postgres-flexible-server-parameter-list) command.
 
 ```azurecli-interactive
-az postgres flexible-server parameter list --resource-group <resource_group> --server-name <server> --query "[?value!=defaultValue && isReadOnly==\`false\` && name!='temp_tablespaces' && name!='vacuum_cost_page_miss'] | [].name"
+az postgres flexible-server parameter list \
+  --resource-group <resource_group> \
+  --server-name <server> \
+  --query "[?value!=defaultValue && isReadOnly==\`false\` && name!='temp_tablespaces' && name!='vacuum_cost_page_miss'] | [].name"
 ```
 
 > [!NOTE]  

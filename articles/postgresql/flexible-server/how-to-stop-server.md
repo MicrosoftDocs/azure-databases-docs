@@ -62,7 +62,9 @@ Using the [Azure portal](https://portal.azure.com/):
 You can stop a started server via the [az postgres flexible-server stop](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-stop) command.
 
 ```azurecli-interactive
-az postgres flexible-server stop --resource-group <resource_group> --name <server>
+az postgres flexible-server stop \
+  --resource-group <resource_group> \
+  --name <server>
 ```
 
 If you attempt to stop a server which isn't in `Ready` state, you receive an error like this:

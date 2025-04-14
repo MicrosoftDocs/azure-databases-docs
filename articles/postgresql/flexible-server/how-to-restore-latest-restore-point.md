@@ -102,7 +102,10 @@ Using the [Azure portal](https://portal.azure.com/):
 You can restore a backup of a server to the latest restore point via the [az postgres flexible-server restore](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-restore) command.
 
 ```azurecli-interactive
-az postgres flexible-server restore --resource-group <resource_group> --name <server> --source-server <source_server>
+az postgres flexible-server restore \
+  --resource-group <resource_group> \
+  --name <server> \
+  --source-server <source_server>
 ```
 
 > [!NOTE]

@@ -81,19 +81,29 @@ You can enable high availability in an existing server via the [az postgres flex
 To enable high availability so that standby server is deployed in the same zone as the primary server, use this command:
 
 ```azurecli-interactive
-az postgres flexible-server update --resource-group <resource_group> --name <server> --high-availability SameZone
+az postgres flexible-server update \
+  --resource-group <resource_group> \
+  --name <server> \
+  --high-availability SameZone
 ```
 
 To enable high availability with standby server deployed in a different zone than the primary server, and if you want the zone to be automatically selected, use this command:
 
 ```azurecli-interactive
-az postgres flexible-server update --resource-group <resource_group> --name <server> --high-availability ZoneRedundant
+az postgres flexible-server update \
+  --resource-group <resource_group> \
+  --name <server> \
+  --high-availability ZoneRedundant
 ```
 
 Also, optionally, you can select the availability zone in which the standby server should be deployed. To do so, use this command:
 
 ```azurecli-interactive
-az postgres flexible-server update --resource-group <resource_group> --name <server> --high-availability ZoneRedundant --standby-zone <standby_zone>
+az postgres flexible-server update \
+  --resource-group <resource_group> \
+  --name <server> \
+  --high-availability ZoneRedundant \
+  --standby-zone <standby_zone>
 ```
 
 If you're enabling high availability with zone redundancy, and the zone specified for standby matches the zone of the primary, you get this error:
@@ -171,7 +181,10 @@ You can disable high availability in an existing server via the [az postgres fle
 To disable high availability, use this command:
 
 ```azurecli-interactive
-az postgres flexible-server update --resource-group <resource_group> --name <server> --high-availability Disabled
+az postgres flexible-server update \
+  --resource-group <resource_group> \
+  --name <server> \
+  --high-availability Disabled
 ```
 
 ---
@@ -211,13 +224,20 @@ You can enable high availability while provisioning a new server via the [az pos
 To deploy the primary server with a standby server in the same zone, and let the service choose for you the zone, use this command:
 
 ```azurecli-interactive
-az postgres flexible-server create --resource-group <resource_group> --name <server> --high-availability SameZone ...
+az postgres flexible-server create \
+  --resource-group <resource_group> \
+  --name <server> \
+  --high-availability SameZone ...
 ```
 
 To deploy the primary server with a standby server in the same zone, and explicitly choose the zone, use this command:
 
 ```azurecli-interactive
-az postgres flexible-server create --resource-group <resource_group> --name <server> --high-availability SameZone --zone <zone> ...
+az postgres flexible-server create \
+  --resource-group <resource_group> \
+  --name <server> \
+  --high-availability SameZone \
+  --zone <zone> ...
 ```
 
 If the availability zone specified isn't supported in the selected region, you get this error:
@@ -230,19 +250,31 @@ Message: Specified availability zone is not supported in this region. Please cho
 To deploy the primary server with a standby server in a different zone, and let the service choose for you both zones, use this command:
 
 ```azurecli-interactive
-az postgres flexible-server create --resource-group <resource_group> --name <server> --high-availability ZoneRedundant ...
+az postgres flexible-server create \
+  --resource-group <resource_group> \
+  --name <server> \
+  --high-availability ZoneRedundant ...
 ```
 
 To deploy the primary server with a standby server in a different zone, explicitly specify the zone for the primary but let the service choose the zone for the standby, use this command:
 
 ```azurecli-interactive
-az postgres flexible-server create --resource-group <resource_group> --name <server> --high-availability ZoneRedundant --zone <zone> ...
+az postgres flexible-server create \
+  --resource-group <resource_group> \
+  --name <server> \
+  --high-availability ZoneRedundant \
+  --zone <zone> ...
 ```
 
 To deploy the primary server with a standby server in a different zone, and explicitly specify the zone for the primary and the standby, use this command:
 
 ```azurecli-interactive
-az postgres flexible-server create --resource-group <resource_group> --name <server> --high-availability ZoneRedundant --zone <zone> --standby-zone <standby_zone>...
+az postgres flexible-server create \
+  --resource-group <resource_group> \
+  --name <server> \
+  --high-availability ZoneRedundant \
+  --zone <zone> \
+  --standby-zone <standby_zone>...
 ```
 
 If you choose zone redundant high availability, and the same value is specified for the zones of the primary and standby servers, you get this error:
@@ -305,7 +337,10 @@ You can enable high availability while provisioning a new server via the [az pos
 To initiate a forced failover, use this command:
 
 ```azurecli-interactive
-az postgres flexible-server restart --resource-group <resource_group> --name <server> --failover Forced
+az postgres flexible-server restart \
+  --resource-group <resource_group> \
+  --name <server> \
+  --failover Forced
 ```
 
 If you try to force a failover of an Azure Database for PostgreSQL flexible server that doesn't have high availability enabled, you get this error:
@@ -371,7 +406,10 @@ You can enable high availability while provisioning a new server via the [az pos
 To initiate a forced failover, use this command:
 
 ```azurecli-interactive
-az postgres flexible-server restart --resource-group <resource_group> --name <server> --failover Planned
+az postgres flexible-server restart \
+  --resource-group <resource_group> \
+  --name <server> \
+  --failover Planned
 ```
 
 If you try to force a failover of an Azure Database for PostgreSQL flexible server that doesn't have high availability enabled, you get this error:
