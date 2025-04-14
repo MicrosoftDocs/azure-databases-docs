@@ -30,7 +30,7 @@ Before you can enable `azure_ai` on your Azure Database for PostgreSQL flexible 
 Then you can install the extension, by connecting to your target database and running the [CREATE EXTENSION](https://www.postgresql.org/docs/current/static/sql-createextension.html) command. You need to repeat the command separately for every database you want the extension to be available in.
 
 ```sql
-CREATE EXTENSION azure_ai;
+CREATE EXTENSION IF NOT EXISTS azure_ai;
 ```
 
 > [!NOTE]
