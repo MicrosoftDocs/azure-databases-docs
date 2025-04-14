@@ -20,7 +20,7 @@ This quickstart demonstrates how to use the Azure CLI commands to configure a hy
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](~/reusable-content/azure-cli/azure-cli-prepare-your-environment.md)]
 
-* This article requires the Azure CLI version 2.30.0 or higher. If you are using Azure Cloud Shell, the latest version is already installed.
+* This article requires the Azure CLI version 2.30.0 or higher. If you're using Azure Cloud Shell, the latest version is already installed.
 
 * [Azure Virtual Network](/azure/virtual-network/virtual-networks-overview) with connectivity to your self-hosted or on-premises environment. For more information on connecting on premises environments to Azure, see the [Connect an on-premises network to Azure](/azure/architecture/reference-architectures/hybrid-networking/) article.
 
@@ -34,7 +34,7 @@ This quickstart demonstrates how to use the Azure CLI commands to configure a hy
     <!-- ![image](./media/configure-hybrid-cluster/subnet.png) -->
 
    > [!NOTE]
-   > The Deployment of a Azure Managed Instance for Apache Cassandra requires internet access. Deployment fails in environments where internet access is restricted. Make sure you aren't blocking access within your VNet to the following vital Azure services that are necessary for Managed Cassandra to work properly. You can also find an extensive list of IP address and port dependencies [here](network-rules.md).
+   > The Deployment of an Azure Managed Instance for Apache Cassandra requires internet access. Deployment fails in environments where internet access is restricted. Make sure you aren't blocking access within your VNet to the following vital Azure services that are necessary for Managed Cassandra to work properly. You can also find an extensive list of IP address and port dependencies [here](network-rules.md).
    > - Azure Storage
    > - Azure KeyVault
    > - Azure Virtual Machine Scale Sets
@@ -42,7 +42,7 @@ This quickstart demonstrates how to use the Azure CLI commands to configure a hy
    > - Microsoft Entra ID
    > - Azure Security
 
-1. Now we will apply some special permissions to the VNet and subnet which Cassandra Managed Instance requires, using Azure CLI. Use the `az role assignment create` command, replacing `<subscriptionID>`, `<resourceGroupName>`, and `<vnetName>` with the appropriate values:
+1. Now we'll apply some special permissions to the VNet and subnet which Cassandra Managed Instance requires, using Azure CLI. Use the `az role assignment create` command, replacing `<subscriptionID>`, `<resourceGroupName>`, and `<vnetName>` with the appropriate values:
 
    ```azurecli-interactive
    az role assignment create \
@@ -54,18 +54,18 @@ This quickstart demonstrates how to use the Azure CLI commands to configure a hy
    > [!NOTE]
    > The `assignee` and `role` values in the previous command are fixed service principal and role identifiers respectively.
 
-1. Next, we will configure resources for our hybrid cluster. Since you already have a cluster, the cluster name here will only be a logical resource to identify the name of your existing cluster. Make sure to use the name of your existing cluster when defining `clusterName` and `clusterNameOverride` variables in the following script.
+1. Next, we'll configure resources for our hybrid cluster. Since you already have a cluster, the cluster name here will only be a logical resource to identify the name of your existing cluster. Make sure to use the name of your existing cluster when defining `clusterName` and `clusterNameOverride` variables in the following script.
 
-   You also need, at minimum, the seed nodes from your existing datacenter, and the gossip certificates required for node-to-node encryption. Azure Managed Instance for Apache Cassandra requires node-to-node encryption for communication between datacenters. If you do not have node-to-node encryption implemented in your existing cluster, you would need to implement it - see documentation [here](https://docs.datastax.com/en/cassandra-oss/3.x/cassandra/configuration/secureSSLNodeToNode.html). You should supply the path to the location of the certificates. Each certificate should be in PEM format, e.g. `-----BEGIN CERTIFICATE-----\n...PEM format 1...\n-----END CERTIFICATE-----`. In general, there are two ways of implementing certificates:
+   You also need, at minimum, the seed nodes from your existing datacenter, and the gossip certificates required for node-to-node encryption. Azure Managed Instance for Apache Cassandra requires node-to-node encryption for communication between datacenters. If you don't have node-to-node encryption implemented in your existing cluster, you would need to implement it - see documentation [here](https://docs.datastax.com/en/cassandra-oss/3.x/cassandra/configuration/secureSSLNodeToNode.html). You should supply the path to the location of the certificates. Each certificate should be in PEM format, e.g. `-----BEGIN CERTIFICATE-----\n...PEM format 1...\n-----END CERTIFICATE-----`. In general, there are two ways of implementing certificates:
 
    1. Self signed certs. This means a private and public (no CA) certificate for each node - in this case we need all public certificates.
 
    1. Certs signed by a CA. This can be a self-signed CA or even a public one. In this case we need the root CA certificate (refer to instructions on [preparing SSL certificates for production](https://docs.datastax.com/en/cassandra-oss/3.x/cassandra/configuration/secureSSLCertWithCA.html)), and all intermediaries (if applicable).
 
-   Optionally, if you want to implement client-to-node certificate authentication or mutual Transport Layer Security (mTLS) as well, you need to provide the certificates in the same format as when creating the hybrid cluster. See Azure CLI sample below - the certificates are provided in the `--client-certificates` parameter. This will upload and apply your client certificates to the truststore for your Cassandra Managed Instance cluster (i.e. you do not need to edit cassandra.yaml settings). Once applied, your cluster will require Cassandra to verify the certificates when a client connects (see `require_client_auth: true` in Cassandra [client_encryption_options](https://cassandra.apache.org/doc/latest/cassandra/configuration/cass_yaml_file.html#client_encryption_options)).
+   Optionally, if you want to implement client-to-node certificate authentication or mutual Transport Layer Security (mTLS) as well, you need to provide the certificates in the same format as when creating the hybrid cluster. See Azure CLI sample below - the certificates are provided in the `--client-certificates` parameter. This will upload and apply your client certificates to the truststore for your Cassandra Managed Instance cluster (i.e. you don't need to edit cassandra.yaml settings). Once applied, your cluster will require Cassandra to verify the certificates when a client connects (see `require_client_auth: true` in Cassandra [client_encryption_options](https://cassandra.apache.org/doc/latest/cassandra/configuration/cass_yaml_file.html#client_encryption_options)).
 
    > [!NOTE]
-   > The value of the `delegatedManagementSubnetId` variable you will supply below is exactly the same as the value of `--scope` that you supplied in the command above:
+   > The value of the `delegatedManagementSubnetId` variable you'll supply below is exactly the same as the value of `--scope` that you supplied in the command above:
 
    ```azurecli-interactive
    resourceGroupName='MyResourceGroup'
@@ -74,7 +74,7 @@ This quickstart demonstrates how to use the Azure CLI commands to configure a hy
    location='eastus2'
    delegatedManagementSubnetId='/subscriptions/<subscriptionID>/resourceGroups/<resourceGroupName>/providers/Microsoft.Network/virtualNetworks/<vnetName>/subnets/<subnetName>'
 
-   # You can override the cluster name if the original name is not legal for an Azure resource:
+   # You can override the cluster name if the original name isn't legal for an Azure resource:
    # overrideClusterName='ClusterNameIllegalForAzureResource'
    # the default cassandra version will be v3.11
 
@@ -90,7 +90,7 @@ This quickstart demonstrates how to use the Azure CLI commands to configure a hy
    ```
 
    > [!NOTE]
-   > If your cluster already has node-to-node and client-to-node encryption, you should know where your existing client and/or gossip SSL certificates are kept. If you are uncertain, you should be able to run `keytool -list -keystore <keystore-path> -rfc -storepass <password>` to print the certs.
+   > If your cluster already has node-to-node and client-to-node encryption, you should know where your existing client and/or gossip SSL certificates are kept. If you're uncertain, you should be able to run `keytool -list -keystore <keystore-path> -rfc -storepass <password>` to print the certs.
 
 1. After the cluster resource is created, run the following command to get the cluster setup details:
 
@@ -112,7 +112,7 @@ This quickstart demonstrates how to use the Azure CLI commands to configure a hy
    > The certificates returned from the above command contain line breaks represented as text, for example `\r\n`. You should copy each certificate to a file and format it before attempting to import it into your existing datacenter's trust store.
 
    > [!TIP]
-   > Copy the `gossipCertificates` array value shown in the above screen shot into a file, and use the following bash script (you would need to [download and install jq](https://stedolan.github.io/jq/download/) for your platform) to format the certs and create separate pem files for each.
+   > Copy the `gossipCertificates` array value shown in the above screenshot into a file, and use the following bash script (you would need to [download and install jq](https://stedolan.github.io/jq/download/) for your platform) to format the certs and create separate pem files for each.
    >
    > ```bash
    > readarray -t cert_array < <(jq -c '.[]' gossipCertificates.txt)
@@ -166,7 +166,7 @@ This quickstart demonstrates how to use the Azure CLI commands to configure a hy
    > Note also that `--availability-zone` is set to `false`. To enable availability zones, set this to `true`. Availability zones increase the availability SLA of the service. For more details, review the full SLA details [here](https://azure.microsoft.com/support/legal/sla/managed-instance-apache-cassandra/v1_0/).
 
    > [!WARNING]
-   > Availability zones are not supported in all regions. Deployments will fail if you select a region where Availability zones are not supported. See [here](/azure/reliability/availability-zones-region-support) for supported regions. The successful deployment of availability zones is also subject to the availability of compute resources in all of the zones in the given region. Deployments may fail if the SKU you have selected, or capacity, is not available across all zones.
+   > Availability zones aren't supported in all regions. Deployments will fail if you select a region where Availability zones aren't supported. See [here](/azure/reliability/availability-zones-region-support) for supported regions. The successful deployment of availability zones is also subject to the availability of compute resources in all of the zones in the given region. Deployments may fail if the SKU you have selected, or capacity, isn't available across all zones.
 
 1. Now that the new datacenter is created, run the show datacenter command to view its details:
 
@@ -217,7 +217,7 @@ This quickstart demonstrates how to use the Azure CLI commands to configure a hy
    ```
 
    > [!IMPORTANT]
-   > If the data center(s) in your existing cluster do not enforce [client-to-node encryption (SSL)](https://cassandra.apache.org/doc/3.11/cassandra/operating/security.html#client-to-node-encryption), and you intend for your application code to connect directly to Cassandra Managed Instance, you will also need to enable SSL in your application code. 
+   > If the data center(s) in your existing cluster don't enforce [client-to-node encryption (SSL)](https://cassandra.apache.org/doc/3.11/cassandra/operating/security.html#client-to-node-encryption), and you intend for your application code to connect directly to Cassandra Managed Instance, you'll also need to enable SSL in your application code. 
 
 
 ## <a id="hybrid-real-time-migration"></a>Use hybrid cluster for real-time migration
@@ -233,7 +233,7 @@ The above instructions provide guidance for configuring a hybrid cluster. Howeve
       --cluster-name $clusterName --repair-enabled false
     ```
 
-1. In Azure CLI, run the below command to execute `nodetool rebuild` on each node in your new Azure Managed Instance for Apache Cassandra data center, replacing `<ip address>` with the IP address of the node, and `<sourcedc>` with the name of your existing data center (the one you are migrating from):
+1. In Azure CLI, run the below command to execute `nodetool rebuild` on each node in your new Azure Managed Instance for Apache Cassandra data center, replacing `<ip address>` with the IP address of the node, and `<sourcedc>` with the name of your existing data center (the one you're migrating from):
 
     ```azurecli-interactive
     az managed-cassandra cluster invoke-command \
@@ -254,7 +254,7 @@ The above instructions provide guidance for configuring a hybrid cluster. Howeve
 1. Cut over your application code to point to the seed nodes in your new Azure Managed Instance for Apache Cassandra data center(s).
 
     > [!IMPORTANT]
-    > As also mentioned in the hybrid setup instructions, if the data center(s) in your existing cluster do not enforce [client-to-node encryption (SSL)](https://cassandra.apache.org/doc/3.11/cassandra/operating/security.html#client-to-node-encryption), you will need to enable this in your application code, as Cassandra Managed Instance enforces this. 
+    > As also mentioned in the hybrid setup instructions, if the data center(s) in your existing cluster don't enforce [client-to-node encryption (SSL)](https://cassandra.apache.org/doc/3.11/cassandra/operating/security.html#client-to-node-encryption), you'll need to enable this in your application code, as Cassandra Managed Instance enforces this. 
 
 1. Run ALTER KEYSPACE for each keyspace, in the same manner as done earlier, but now removing your old data center(s).
 
