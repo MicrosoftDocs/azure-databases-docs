@@ -214,7 +214,7 @@ ms.custom:
 | 11 | 1.2 |
 
 > [!NOTE]
-> Read the special considerations for extension [dblink](../concepts-extensions-considerations.md#dblink) in Flexible Server.
+> Read the special considerations for extension [dblink](../concepts-extensions-considerations.md#dblink) in flexible server|.
 ## dict_int
 
 [dict_int](https://www.postgresql.org/docs/current/dict-int.html) provides a text search dictionary template for integers.
@@ -470,7 +470,7 @@ ms.custom:
 | 11 | 1.3 |
 
 > [!NOTE]
-> Read the special considerations for extension [pg_buffercache](../concepts-extensions-considerations.md#pg_buffercache) in Flexible Server.
+> Read the special considerations for extension [pg_buffercache](../concepts-extensions-considerations.md#pg_buffercache) in flexible server|.
 ## pg_cron
 
 [pg_cron](https://github.com/citusdata/pg_cron) is a job scheduler for PostgreSQL.
@@ -487,7 +487,7 @@ ms.custom:
 
 <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
 > [!NOTE]
-> Read the special considerations for extension [pg_cron](../concepts-extensions-considerations.md#pg_cron) in Flexible Server.
+> Read the special considerations for extension [pg_cron](../concepts-extensions-considerations.md#pg_cron) in flexible server|.
 ## pgcrypto
 
 [pgcrypto](https://www.postgresql.org/docs/current/pgcrypto.html) provides cryptographic functions.
@@ -532,7 +532,7 @@ ms.custom:
 
 <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
 > [!NOTE]
-> Read the special considerations for extension [pg_failover_slots](../concepts-extensions-considerations.md#pg_failover_slots) in Flexible Server.
+> Read the special considerations for extension [pg_failover_slots](../concepts-extensions-considerations.md#pg_failover_slots) in flexible server|.
 ## pg_freespacemap
 
 [pg_freespacemap](https://www.postgresql.org/docs/current/pgfreespacemap.html) examines the free space map (FSM).
@@ -563,7 +563,7 @@ ms.custom:
 
 <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
 > [!NOTE]
-> Read the special considerations for extension [pg_hint_plan](../concepts-extensions-considerations.md#pg_hint_plan) in Flexible Server.
+> Read the special considerations for extension [pg_hint_plan](../concepts-extensions-considerations.md#pg_hint_plan) in flexible server|.
 ## pglogical
 
 [pglogical](https://github.com/2ndQuadrant/pglogical) manages PostgreSQL Logical Replication.
@@ -628,7 +628,7 @@ ms.custom:
 
 <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
 > [!NOTE]
-> Read the special considerations for extension [pg_prewarm](../concepts-extensions-considerations.md#pg_prewarm) in Flexible Server.
+> Read the special considerations for extension [pg_prewarm](../concepts-extensions-considerations.md#pg_prewarm) in flexible server|.
 ## pg_repack
 
 [pg_repack](https://reorg.github.io/pg_repack/) reorganizes tables in PostgreSQL databases with minimal locks.
@@ -644,7 +644,7 @@ ms.custom:
 | 11 | 1.4.7 |
 
 > [!NOTE]
-> Read the special considerations for extension [pg_repack](../concepts-extensions-considerations.md#pg_repack) in Flexible Server.
+> Read the special considerations for extension [pg_repack](../concepts-extensions-considerations.md#pg_repack) in flexible server|.
 ## pgrouting
 
 [pgrouting](https://pgrouting.org/) provides geospatial routing functionality.
@@ -705,7 +705,7 @@ ms.custom:
 
 <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
 > [!NOTE]
-> Read the special considerations for extension [pg_stat_statements](../concepts-extensions-considerations.md#pg_stat_statements) in Flexible Server.
+> Read the special considerations for extension [pg_stat_statements](../concepts-extensions-considerations.md#pg_stat_statements) in flexible server|.
 ## pgstattuple
 
 [pgstattuple](https://www.postgresql.org/docs/current/pgstattuple.html) shows tuple-level statistics.
@@ -721,7 +721,7 @@ ms.custom:
 | 11 | 1.5 |
 
 > [!NOTE]
-> Read the special considerations for extension [pgstattuple](../concepts-extensions-considerations.md#pgstattuple) in Flexible Server.
+> Read the special considerations for extension [pgstattuple](../concepts-extensions-considerations.md#pgstattuple) in flexible server|.
 ## pg_trgm
 
 [pg_trgm](https://www.postgresql.org/docs/current/pgtrgm.html) provides text similarity measurement and index searching based on trigrams.
@@ -849,7 +849,7 @@ ms.custom:
 | 11 | 1.0 |
 
 > [!NOTE]
-> Read the special considerations for extension [postgres_fdw](../concepts-extensions-considerations.md#postgres_fdw) in Flexible Server.
+> Read the special considerations for extension [postgres_fdw](../concepts-extensions-considerations.md#postgres_fdw) in flexible server|.
 ## postgres_protobuf
 
 [postgres_protobuf](https://github.com/mpartel/postgres-protobuf) provides protocol buffers for PostgreSQL.
