@@ -32,21 +32,17 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="./media/how-to-read-replicas/switch-over-or-promote-to-standalone.png" alt-text="Screenshot showing the Switch over or Promote to standalone pane." lightbox="./media/how-to-read-replicas/switch-over-or-promote-to-standalone.png":::
 
-4. If the server doesn't have the virtual endpoints created, or if the read replica which you're trying to switch over to primary isn't the reader virtual endpoint's target server, an attempt to switch over a read replica to primary fails. That's what the warning displayed in the dialog reminds you. 
+4. In **Replica server to promote**, select **Promote to independent server and remove from replication. This won't impact the primary server.** for **Action**. And select **Planned** or **Forced** for **Data sync**, depending on what suits your needs best. if you decide to use the **Planned** option, you have to mark the **I understand that this read replica will become an independent server and that this action can't be undone.** to acknowledge that the read replica will be dettached into its own standalone entity. If you decide to use the **Forced** option, you have to mark the **I understand that this read replica will become an independent server and that its data won't be synced first. This action can't be undone.** checkbox to also acknowledge the potential data loss. Finally, select **Promote**.
 
-    :::image type="content" source="./media/how-to-read-replicas/warning-switch-over-without-virtual-endpoints.png" alt-text="Screenshot showing the Switch over or Promote to standalone pane when there aren't virtual endpoints or aren't correctly configured to support the switch over operation." lightbox="./media/how-to-read-replicas/warning-switch-over-without-virtual-endpoints.png":::
+    :::image type="content" source="./media/how-to-read-replicas/promote-to-standalone.png" alt-text="Screenshot showing the Promote to standalone pane." lightbox="./media/how-to-read-replicas/promote-to-standalone.png":::
 
-5. In **Replica server to promote**, select **Promote to primary server** for **Action**. And select **Planned** or **Forced** for **Data sync**, depending on what suits your needs best. if you decide to use the **Forced** option, you have to mark the **I understand that any data changes that have not been replicated from the primary server will be lost. The read replica lag time is the approximate period of data loss.** checkbox to acknowledge the potential data loss. Finally, select **Promote**.
+6. A notification informs you that the read replica is being promoted to a standalone server.
 
-    :::image type="content" source="./media/how-to-read-replicas/promoting.png" alt-text="Screenshot showing the Switch over or Promote to standalone pane." lightbox="./media/how-to-read-replicas/switch-over-or-promote-to-standalone.png":::
+    :::image type="content" source="./media/how-to-read-replicas/notification-promoting-to-standalone.png" alt-text="Screenshot showing a notification informing that the read replica is being promoted to a standalone server." lightbox="./media/how-to-read-replicas/notification-promoting-to-standalone.png":::
 
-6. A notification informs you that the read replica is being switched over to primary.
+7. When the process completes, a notification informs you that the read replica successfully promoted to a standalone server.
 
-    :::image type="content" source="./media/how-to-read-replicas/notification-switching-over-to-primary.png" alt-text="Screenshot showing a notification informing that the read replica is being switched over to primary." lightbox="./media/how-to-read-replicas/notification-switching-over-to-primary.png":::
-
-7. When the process completes, a notification informs you that the read replica successfully switched over to primary.
-
-    :::image type="content" source="./media/how-to-read-replicas/notification-switched-over-to-primary.png" alt-text="Screenshot showing a notification informing that the read replica switched over to primary successfully." lightbox="./media/how-to-read-replicas/notification-switched-over-to-primary.png":::
+    :::image type="content" source="./media/how-to-read-replicas/notification-promoted-to-standalone.png" alt-text="Screenshot showing a notification informing that the read replica promoted to a standalone server successfully." lightbox="./media/how-to-read-replicas/notification-promoted-to-standalone.png":::
 
 ### [CLI](#tab/cli-promote-replica-to-standalone-server)
 
