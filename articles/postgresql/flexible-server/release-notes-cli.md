@@ -16,7 +16,7 @@ ms.custom:
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
-This page provides latest news and updates regarding the Azure Database for PostgreSQL Flexible Server additions for Azure CLI.  
+This page provides latest news and updates regarding the Azure Database for PostgreSQL flexible server additions for Azure CLI.  
 
 ## Azure CLI Releases
 
@@ -24,7 +24,7 @@ This page provides latest news and updates regarding the Azure Database for Post
 
 | Additions and Changes | Comments |
 | --- | --- | 
-|az postgres flexible-server upgrade|Add capability to perform major version upgrade to PG16|
+| az postgres flexible-server upgrade | Add capability to perform major version upgrade to PG16 |
 
 
 ### January 09 2024 - version 2.56.0
