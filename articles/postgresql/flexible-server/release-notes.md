@@ -342,7 +342,7 @@ The server parameters page in the Azure portal shows a unit of measurement and t
 - Several bug fixes, stability, and performance improvements.
 
 > [!IMPORTANT]
-> **$** - New servers get these features automatically. Your existing servers will be automatically upgraded to the latest supported minor version and also new features are enabled during your server's future maintenance window.
+> **$** - New servers get these features automatically. Your existing servers will be automatically upgraded to the latest supported minor version and also new features are enabled during your server's future maintenance window. At this moment, there is no option to selectively stop to upgrade minor versions.
 
 ## Contacts
 
