@@ -52,7 +52,7 @@ This quickstart demonstrates how to use the Azure CLI commands to configure a hy
    ```
 
    > [!NOTE]
-   > The `assignee` and `role` values in the previous command are fixed service principle and role identifiers respectively.
+   > The `assignee` and `role` values in the previous command are fixed service principal and role identifiers respectively.
 
 1. Next, we will configure resources for our hybrid cluster. Since you already have a cluster, the cluster name here will only be a logical resource to identify the name of your existing cluster. Make sure to use the name of your existing cluster when defining `clusterName` and `clusterNameOverride` variables in the following script.
 
