@@ -111,7 +111,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="./media/how-to-read-replicas/list-replicas-from-replica.png" alt-text="Screenshot that shows the list of servers that conform a replication set." lightbox="./media/how-to-read-replicas/list-replicas-from-replica.png":::
 
-### [Portal](#tab/cli-create-read-replica)
+### [CLI](#tab/cli-create-read-replica)
 
 You can create a read replica for your Azure PostgreSQL flexible server via the [`az postgres flexible-server replica create`](/cli/azure/postgres/flexible-server/replica#az-postgres-flexible-server-replica-create) command. 
 

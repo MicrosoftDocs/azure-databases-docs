@@ -49,7 +49,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="./media/how-to-read-replicas/notification-updated-virtual-endpoints.png" alt-text="Screenshot showing a notification informing that the virtual endpoints were updated successfully." lightbox="./media/how-to-read-replicas/notification-updated-virtual-endpoints.png":::
 
-### [Portal](#tab/cli-update-virtual-endpoints)
+### [CLI](#tab/cli-update-virtual-endpoints)
 
 You can update the existing virtual endpoints of your Azure PostgreSQL flexible server via the [`az postgres flexible-server virtual-endpoint update`](/cli/azure/postgres/flexible-server/replica#az-postgres-flexible-server-virtual-endpoint-update) command. 
 

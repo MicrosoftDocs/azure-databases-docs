@@ -53,7 +53,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="./media/how-to-read-replicas/notification-created-virtual-endpoints.png" alt-text="Screenshot showing a notification informing that the virtual endpoints were created successfully." lightbox="./media/how-to-read-replicas/notification-created-virtual-endpoints.png":::
 
-### [Portal](#tab/cli-create-virtual-endpoints)
+### [CLI](#tab/cli-create-virtual-endpoints)
 
 You can create virtual endpoints for your Azure PostgreSQL flexible server via the [`az postgres flexible-server virtual-endpoint create`](/cli/azure/postgres/flexible-server/replica#az-postgres-flexible-server-virtual-endpoint-create) command. 
 
