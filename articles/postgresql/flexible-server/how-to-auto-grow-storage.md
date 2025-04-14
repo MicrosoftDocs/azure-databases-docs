@@ -55,7 +55,10 @@ Using the [Azure portal](https://portal.azure.com/):
 You can enable storage autogrow in an existing server via the [az postgres flexible-server update](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-update) command.
 
 ```azurecli-interactive
-az postgres flexible-server update --resource-group <resource_group> --name <server> --storage-auto-grow enabled
+az postgres flexible-server update \
+  --resource-group <resource_group> \
+  --name <server> \
+  --storage-auto-grow enabled
 ```
 ---
 
@@ -88,7 +91,10 @@ Using the [Azure portal](https://portal.azure.com/):
 You can enable storage autogrow in an existing server via the [az postgres flexible-server update](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-update) command. 
 
 ```azurecli-interactive
-az postgres flexible-server update --resource-group <resource_group> --name <server> --storage-auto-grow disabled
+az postgres flexible-server update \
+  --resource-group <resource_group> \
+  --name <server> \
+  --storage-auto-grow disabled
 ```
 
 ---
@@ -112,7 +118,10 @@ Using the [Azure portal](https://portal.azure.com/):
 You can enable storage autogrow while provisioning a new server via the [az postgres flexible-server create](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-create) command.
 
 ```azurecli-interactive
-az postgres flexible-server create --resource-group <resource_group> --name <server> --storage-auto-grow disabled ...
+az postgres flexible-server create \
+  --resource-group <resource_group> \
+  --name <server> \
+  --storage-auto-grow disabled ...
 ```
 
 > [!NOTE]

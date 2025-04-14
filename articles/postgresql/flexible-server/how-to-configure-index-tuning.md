@@ -55,7 +55,10 @@ You can enable index tuning in an existing server via the [az postgres flexible-
 To enable index tuning, use this command:
 
 ```azurecli-interactive
-az postgres flexible-server index-tuning update --resource-group <resource_group> --server-name <server> --enabled true
+az postgres flexible-server index-tuning update \
+  --resource-group <resource_group> \
+  --server-name <server> \
+  --enabled true
 ```
 
 If the previous command executes successfully, you should see the following output:
@@ -99,7 +102,10 @@ You can disable index tuning in an existing server via the [az postgres flexible
 To disable index tuning, use this command:
 
 ```azurecli-interactive
-az postgres flexible-server index-tuning update --resource-group <resource_group> --server-name <server> --enabled false
+az postgres flexible-server index-tuning update \
+  --resource-group <resource_group> \
+  --server-name <server> \
+  --enabled false
 ```
 
 If the previous command executes successfully, you should see the following output:
@@ -143,7 +149,9 @@ You can show the state of index tuning in an existing server via the [az postgre
 To disable index tuning, use this command:
 
 ```azurecli-interactive
-az postgres flexible-server index-tuning show --resource-group <resource_group> --server-name <server>
+az postgres flexible-server index-tuning show \
+  --resource-group <resource_group> \
+  --server-name <server>
 ```
 
 If index tuning is enabled, you should see the following output:
@@ -183,7 +191,10 @@ You can show the value of a single index tuning setting in an existing server vi
 For example, to show the value of the index tuning setting called `analyze_interval`, use this command:
 
 ```azurecli-interactive
-az postgres flexible-server index-tuning show-settings --resource-group <resource_group> --server-name <server> --name analyze_interval
+az postgres flexible-server index-tuning show-settings \
+  --resource-group <resource_group> \
+  --server-name <server> \
+  --name analyze_interval
 ```
 
 The command returns all information about the server parameter corresponding to that setting of index tuning, and the output is similar to the following:
@@ -214,7 +225,9 @@ Also, you can show the list of all index tuning settings in an existing server v
 To list all index tuning settings, use this command:
 
 ```azurecli-interactive
-az postgres flexible-server index-tuning list-settings --resource-group <resource_group> --server-name <server>
+az postgres flexible-server index-tuning list-settings \
+  --resource-group <resource_group> \
+  --server-name <server>
 ```
 
 The command returns all server parameters that control the different settings of index tuning, and the output is similar to the following:
@@ -474,7 +487,11 @@ You can modify the value of a single index tuning setting in an existing server 
 For example, to set the value of the index tuning setting called `analyze_interval` to `1440`, use this command:
 
 ```azurecli-interactive
-az postgres flexible-server index-tuning set-settings --resource-group <resource_group> --server-name <server> --name analyze_interval --value 1440
+az postgres flexible-server index-tuning set-settings \
+  --resource-group <resource_group> \
+  --server-name <server> \
+  --name analyze_interval \
+  --value 1440
 ```
 
 The command returns all information about the server parameter corresponding to that setting of index tuning, and the output is similar to the following:

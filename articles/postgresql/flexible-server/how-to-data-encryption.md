@@ -43,7 +43,9 @@ Using the [Azure portal](https://portal.azure.com/):
 You can enable data encryption with system assigned encryption key, while provisioning a new server, via the [az postgres flexible-server create](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-create) command.
 
 ```azurecli-interactive
-az postgres flexible-server create --resource-group <resource_group> --name <server> ...
+az postgres flexible-server create \
+  --resource-group <resource_group> \
+  --name <server> ...
 ```
 
 > [!NOTE]
@@ -136,7 +138,12 @@ You can enable data encryption with user assigned encryption key, while provisio
 If your server doesn't have geo-redundant backups enabled:
 
 ```azurecli-interactive
-az postgres flexible-server create --resource-group <resource_group> --name <server> --geo-redundant-backup Disabled --identity <managed_identity_to_access_primary_encryption_key> --key <resource_identifier_of_primary_encryption_key> ...
+az postgres flexible-server create \
+  --resource-group <resource_group> \
+  --name <server> \
+  --geo-redundant-backup Disabled \
+  --identity <managed_identity_to_access_primary_encryption_key> \
+  --key <resource_identifier_of_primary_encryption_key> ...
 ```
 
 > [!NOTE]
@@ -145,7 +152,14 @@ az postgres flexible-server create --resource-group <resource_group> --name <ser
 If your server has geo-redundant backups enabled:
 
 ```azurecli-interactive
-az postgres flexible-server create --resource-group <resource_group> --name <server> --geo-redundant-backup Enabled --identity <managed_identity_to_access_primary_encryption_key> --key <resource_identifier_of_primary_encryption_key> --backup-identity <managed_identity_to_access_geo_backups_encryption_key> --backup-key <resource_identifier_of_geo_backups_encryption_key> ...
+az postgres flexible-server create \
+  --resource-group <resource_group> \
+  --name <server> \
+  --geo-redundant-backup Enabled \
+  --identity <managed_identity_to_access_primary_encryption_key> \
+  --key <resource_identifier_of_primary_encryption_key> \
+  --backup-identity <managed_identity_to_access_geo_backups_encryption_key> \
+  --backup-key <resource_identifier_of_geo_backups_encryption_key> ...
 ```
 
 > [!NOTE]
@@ -257,7 +271,11 @@ Using the [Azure portal](https://portal.azure.com/):
 You can configure data encryption with user assigned encryption key, for an existing server, via the [az postgres flexible-server update](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-update) command.
 
 ```azurecli-interactive
-az postgres flexible-server update --resource-group <resource_group> --name <server> --identity <managed_identity_to_access_primary_encryption_key> --key <resource_identifier_of_primary_encryption_key> ...
+az postgres flexible-server update \
+  --resource-group <resource_group> \
+  --name <server> \
+  --identity <managed_identity_to_access_primary_encryption_key> \
+  --key <resource_identifier_of_primary_encryption_key> ...
 ```
 
 > [!NOTE]
@@ -283,7 +301,11 @@ Message: The operation could not be completed because the Azure Key Vault Key na
 If your server has geo-redundant backups enabled, you can configure the key used for encryption of geo-redundant backups, and the identity used to access that key. To do so, you can use the `--backup-identity` and `--backup-key` parameters.
 
 ```azurecli-interactive
-az postgres flexible-server update --resource-group <resource_group> --name <server> --backup-identity <managed_identity_to_access_georedundant_encryption_key> --backup-key <resource_identifier_of_georedundant_encryption_key> ...
+az postgres flexible-server update \
+  --resource-group <resource_group> \
+  --name <server> \
+  --backup-identity <managed_identity_to_access_georedundant_encryption_key> \
+  --backup-key <resource_identifier_of_georedundant_encryption_key> ...
 ```
 
 If you pass the parameters `--backup-identity` and `--backup-key` to the `az postgres flexible server update` command, and refer to an existing server which doesn't have geo-redundant backup enabled, you get the following error:

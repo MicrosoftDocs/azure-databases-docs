@@ -74,7 +74,10 @@ Using the [Azure portal](https://portal.azure.com/):
 You can reset the password of as server via the [az postgres flexible-server update](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-update) command.
 
 ```azurecli-interactive
-az postgres flexible-server update --resource-group <resource_group> --name <server> --admin-password <new_password>
+az postgres flexible-server update \
+  --resource-group <resource_group> \
+  --name <server> \
+  --admin-password <new_password>
 ```
 
 If you attempt to reset the administrator password of a server which isn't configured with password-based authentication enabled, the command doesn't report any error. However, it doesn't change the password of the server administrator, provided one exists.
@@ -82,7 +85,11 @@ If you attempt to reset the administrator password of a server which isn't confi
 To determine if a server is configured to support password-based authentication, run the following command:
 
 ```azurecli-interactive
-az postgres flexible-server show --resource-group <resource_group> --name <server> --query authConfig.passwordAuth --output tsv
+az postgres flexible-server show \
+  --resource-group <resource_group> \
+  --name <server> \
+  --query authConfig.passwordAuth \
+  --output tsv
 ```
 
 If you attempt to reset the administrator password of a server which isn't in `Ready` state, you receive an error like this:

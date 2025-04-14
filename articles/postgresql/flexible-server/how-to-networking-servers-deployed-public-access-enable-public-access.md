@@ -58,7 +58,10 @@ Using the [Azure portal](https://portal.azure.com/):
 You can enable public access on a server via the [az postgres flexible-server update](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-update) command.
 
 ```azurecli-interactive
-az postgres flexible-server update --resource-group <resource_group> --name <server> --public-access enabled
+az postgres flexible-server update \
+  --resource-group <resource_group> \
+  --name <server> \
+  --public-access enabled
 ```
 
 If you attempt to enable public access on a server which isn't in `Ready` state, you receive an error like this:
@@ -73,7 +76,10 @@ If you attempt to enable public access on a server which wasn't deployed with ne
 To determine if a server has public access enabled or disabled, run the following command:
 
 ```azurecli-interactive
-az postgres flexible-server show --resource-group <resource_group> --name <server> --query '{"publicAccess":network.publicNetworkAccess}'
+az postgres flexible-server show \
+  --resource-group <resource_group> \
+  --name <server> \
+  --query '{"publicAccess":network.publicNetworkAccess}'
 ```
 
 ---

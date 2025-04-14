@@ -38,7 +38,11 @@ Using the [Azure portal](https://portal.azure.com/):
 You can list currently available on-demand backups of a server via the [az postgres flexible-server backup list](/cli/azure/postgres/flexible-server/backup#az-postgres-flexible-server-backup-list) command.
 
 ```azurecli-interactive
-az postgres flexible-server backup list --resource-group <resource_group> --name <server> --query "[?backupType=='Customer On-Demand']" --output table
+az postgres flexible-server backup list \
+  --resource-group <resource_group> \
+  --name <server> \
+  --query "[?backupType=='Customer On-Demand']" \
+  --output table
 ```
 
 ---
