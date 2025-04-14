@@ -23,8 +23,6 @@ ms.custom:
 | 12 | 3.2.3 |
 | 11 | 3.2.3 |
 
-
-
 ## address_standardizer_data_us
 
 [address_standardizer_data_us](http://postgis.net/docs/manual-2.5/Address_Standardizer.html) is the Address Standardizer US dataset example.
@@ -38,8 +36,6 @@ ms.custom:
 | 13 | 3.2.3 |
 | 12 | 3.2.3 |
 | 11 | 3.2.3 |
-
-
 
 ## age
 
@@ -70,8 +66,6 @@ ms.custom:
 | 13 | 1.2 |
 | 12 | 1.2 |
 | 11 | 1.1 |
-
-
 
 ## anon
 
@@ -119,8 +113,6 @@ ms.custom:
 | 12 | 1.1.0 |
 | 11 | N/A |
 
-
-
 ## azure_storage
 
 [azure_storage](../../flexible-server/concepts-storage-extension.md) provides Azure Storage integration for PostgreSQL.
@@ -151,8 +143,6 @@ ms.custom:
 | 12 | 1.0 |
 | 11 | 1.0 |
 
-
-
 ## btree_gin
 
 [btree_gin](https://www.postgresql.org/docs/current/btree-gin.html) provides support for indexing common datatypes in GIN.
@@ -166,8 +156,6 @@ ms.custom:
 | 13 | 1.3 |
 | 12 | 1.3 |
 | 11 | 1.3 |
-
-
 
 ## btree_gist
 
@@ -183,8 +171,6 @@ ms.custom:
 | 12 | 1.5 |
 | 11 | 1.5 |
 
-
-
 ## citext
 
 [citext](https://www.postgresql.org/docs/current/citext.html) is a data type for case-insensitive character strings.
@@ -199,8 +185,6 @@ ms.custom:
 | 12 | 1.6 |
 | 11 | 1.5 |
 
-
-
 ## cube
 
 [cube](https://www.postgresql.org/docs/current/cube.html) is a data type for multidimensional cubes.
@@ -214,8 +198,6 @@ ms.custom:
 | 13 | 1.4 |
 | 12 | 1.4 |
 | 11 | 1.4 |
-
-
 
 ## dblink
 
@@ -233,8 +215,6 @@ ms.custom:
 
 > [!NOTE]
 > Read the special considerations for extension [dblink](../concepts-extensions-considerations.md#dblink) in Flexible Server.
-
-
 ## dict_int
 
 [dict_int](https://www.postgresql.org/docs/current/dict-int.html) provides a text search dictionary template for integers.
@@ -248,8 +228,6 @@ ms.custom:
 | 13 | 1.0 |
 | 12 | 1.0 |
 | 11 | 1.0 |
-
-
 
 ## dict_xsyn
 
@@ -265,8 +243,6 @@ ms.custom:
 | 12 | 1.0 |
 | 11 | 1.0 |
 
-
-
 ## earthdistance
 
 [earthdistance](https://www.postgresql.org/docs/current/earthdistance.html) calculates great-circle distances on the surface of the Earth.
@@ -280,8 +256,6 @@ ms.custom:
 | 13 | 1.1 |
 | 12 | 1.1 |
 | 11 | 1.1 |
-
-
 
 ## fuzzystrmatch
 
@@ -297,8 +271,6 @@ ms.custom:
 | 12 | 1.1 |
 | 11 | 1.1 |
 
-
-
 ## hll
 
 [hll](https://github.com/citusdata/postgresql-hll) introduces a new data type hll which is a HyperLogLog data structure.
@@ -312,8 +284,6 @@ ms.custom:
 | 13 | 2.18 |
 | 12 | 2.18 |
 | 11 | N/A |
-
-
 
 ## hstore
 
@@ -329,8 +299,6 @@ ms.custom:
 | 12 | 1.6 |
 | 11 | 1.5 |
 
-
-
 ## hypopg
 
 [hypopg](https://github.com/HypoPG/hypopg) provides hypothetical indexes for PostgreSQL.
@@ -344,8 +312,6 @@ ms.custom:
 | 13 | 1.4.0 |
 | 12 | 1.4.0 |
 | 11 | 1.4.0 |
-
-
 
 ## intagg
 
@@ -361,8 +327,6 @@ ms.custom:
 | 12 | 1.1 |
 | 11 | 1.1 |
 
-
-
 ## intarray
 
 [intarray](https://www.postgresql.org/docs/current/intarray.html) provides functions, operators, and index support for 1-D arrays of integers.
@@ -376,8 +340,6 @@ ms.custom:
 | 13 | 1.3 |
 | 12 | 1.2 |
 | 11 | 1.2 |
-
-
 
 ## isn
 
@@ -393,8 +355,6 @@ ms.custom:
 | 12 | 1.2 |
 | 11 | 1.2 |
 
-
-
 ## lo
 
 [lo](https://www.postgresql.org/docs/current/lo.html) provides support for managing Large Objects (also called LOs or BLOBs). This includes a data type lo and a trigger lo_manage.
@@ -408,8 +368,6 @@ ms.custom:
 | 13 | 1.1 |
 | 12 | 1.1 |
 | 11 | 1.1 |
-
-
 
 ## login_hook
 
@@ -425,8 +383,6 @@ ms.custom:
 | 12 | 1.4 |
 | 11 | 1.4 |
 
-
-
 ## ltree
 
 [ltree](https://www.postgresql.org/docs/current/ltree.html) is a data type for hierarchical tree-like structures.
@@ -440,8 +396,6 @@ ms.custom:
 | 13 | 1.2 |
 | 12 | 1.1 |
 | 11 | 1.1 |
-
-
 
 ## oracle_fdw
 
@@ -457,8 +411,6 @@ ms.custom:
 | 12 | 1.2 |
 | 11 | N/A |
 
-
-
 ## orafce
 
 [orafce](https://github.com/orafce/orafce) provides functions and operators that emulate a subset of functions and packages from the Oracle RDBMS.
@@ -473,8 +425,6 @@ ms.custom:
 | 12 | 3.18 |
 | 11 | 3.7 |
 
-
-
 ## pageinspect
 
 [pageinspect](https://www.postgresql.org/docs/current/pageinspect.html) inspects the contents of database pages at a low level.
@@ -488,8 +438,6 @@ ms.custom:
 | 13 | 1.8 |
 | 12 | 1.7 |
 | 11 | 1.7 |
-
-
 
 ## pgaudit
 
@@ -523,8 +471,6 @@ ms.custom:
 
 > [!NOTE]
 > Read the special considerations for extension [pg_buffercache](../concepts-extensions-considerations.md#pg_buffercache) in Flexible Server.
-
-
 ## pg_cron
 
 [pg_cron](https://github.com/citusdata/pg_cron) is a job scheduler for PostgreSQL.
@@ -542,8 +488,6 @@ ms.custom:
 <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
 > [!NOTE]
 > Read the special considerations for extension [pg_cron](../concepts-extensions-considerations.md#pg_cron) in Flexible Server.
-
-
 ## pgcrypto
 
 [pgcrypto](https://www.postgresql.org/docs/current/pgcrypto.html) provides cryptographic functions.
@@ -558,8 +502,6 @@ ms.custom:
 | 12 | 1.3 |
 | 11 | 1.3 |
 
-
-
 ## pg_diskann
 
 [pg_diskann](../../flexible-server/how-to-use-pgdiskann.md) (Preview) is a scalable approximate nearest neighbor search algorithm for efficient vector search at any scale.
@@ -573,8 +515,6 @@ ms.custom:
 | 13 | N/A |
 | 12 | N/A |
 | 11 | N/A |
-
-
 
 ## pg_failover_slots
 
@@ -593,8 +533,6 @@ ms.custom:
 <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
 > [!NOTE]
 > Read the special considerations for extension [pg_failover_slots](../concepts-extensions-considerations.md#pg_failover_slots) in Flexible Server.
-
-
 ## pg_freespacemap
 
 [pg_freespacemap](https://www.postgresql.org/docs/current/pgfreespacemap.html) examines the free space map (FSM).
@@ -608,8 +546,6 @@ ms.custom:
 | 13 | 1.2 |
 | 12 | 1.2 |
 | 11 | 1.2 |
-
-
 
 ## pg_hint_plan
 
@@ -628,8 +564,6 @@ ms.custom:
 <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
 > [!NOTE]
 > Read the special considerations for extension [pg_hint_plan](../concepts-extensions-considerations.md#pg_hint_plan) in Flexible Server.
-
-
 ## pglogical
 
 [pglogical](https://github.com/2ndQuadrant/pglogical) manages PostgreSQL Logical Replication.
@@ -695,8 +629,6 @@ ms.custom:
 <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
 > [!NOTE]
 > Read the special considerations for extension [pg_prewarm](../concepts-extensions-considerations.md#pg_prewarm) in Flexible Server.
-
-
 ## pg_repack
 
 [pg_repack](https://reorg.github.io/pg_repack/) reorganizes tables in PostgreSQL databases with minimal locks.
@@ -713,8 +645,6 @@ ms.custom:
 
 > [!NOTE]
 > Read the special considerations for extension [pg_repack](../concepts-extensions-considerations.md#pg_repack) in Flexible Server.
-
-
 ## pgrouting
 
 [pgrouting](https://pgrouting.org/) provides geospatial routing functionality.
@@ -729,8 +659,6 @@ ms.custom:
 | 12 | 3.3.0 |
 | 11 | 3.3.0 |
 
-
-
 ## pgrowlocks
 
 [pgrowlocks](https://www.postgresql.org/docs/current/pgrowlocks.html) shows row-level locking information.
@@ -744,8 +672,6 @@ ms.custom:
 | 13 | 1.2 |
 | 12 | 1.2 |
 | 11 | 1.2 |
-
-
 
 ## pg_squeeze
 
@@ -780,8 +706,6 @@ ms.custom:
 <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
 > [!NOTE]
 > Read the special considerations for extension [pg_stat_statements](../concepts-extensions-considerations.md#pg_stat_statements) in Flexible Server.
-
-
 ## pgstattuple
 
 [pgstattuple](https://www.postgresql.org/docs/current/pgstattuple.html) shows tuple-level statistics.
@@ -798,8 +722,6 @@ ms.custom:
 
 > [!NOTE]
 > Read the special considerations for extension [pgstattuple](../concepts-extensions-considerations.md#pgstattuple) in Flexible Server.
-
-
 ## pg_trgm
 
 [pg_trgm](https://www.postgresql.org/docs/current/pgtrgm.html) provides text similarity measurement and index searching based on trigrams.
@@ -813,8 +735,6 @@ ms.custom:
 | 13 | 1.5 |
 | 12 | 1.4 |
 | 11 | 1.4 |
-
-
 
 ## pg_visibility
 
@@ -830,8 +750,6 @@ ms.custom:
 | 12 | 1.2 |
 | 11 | 1.2 |
 
-
-
 ## plv8
 
 [plv8](https://github.com/plv8/plv8) pL/JavaScript (v8) is a trusted procedural language.
@@ -845,8 +763,6 @@ ms.custom:
 | 13 | 3.0.0 |
 | 12 | 3.0.0 |
 | 11 | 3.0.0 |
-
-
 
 ## postgis
 
@@ -862,8 +778,6 @@ ms.custom:
 | 12 | 3.2.3 |
 | 11 | 3.2.3 |
 
-
-
 ## postgis_raster
 
 [postgis_raster](https://www.postgis.net) raster types and functions.
@@ -877,8 +791,6 @@ ms.custom:
 | 13 | 3.2.3 |
 | 12 | 3.2.3 |
 | 11 | 3.2.3 |
-
-
 
 ## postgis_sfcgal
 
@@ -894,8 +806,6 @@ ms.custom:
 | 12 | 3.2.3 |
 | 11 | 3.2.3 |
 
-
-
 ## postgis_tiger_geocoder
 
 [postgis_tiger_geocoder](https://www.postgis.net) tiger geocoder and reverse geocoder.
@@ -910,8 +820,6 @@ ms.custom:
 | 12 | 3.2.3 |
 | 11 | 3.2.3 |
 
-
-
 ## postgis_topology
 
 [postgis_topology](https://postgis.net/docs/Topology.html) spatial types and functions.
@@ -925,8 +833,6 @@ ms.custom:
 | 13 | 3.2.3 |
 | 12 | 3.2.3 |
 | 11 | 3.2.3 |
-
-
 
 ## postgres_fdw
 
@@ -944,8 +850,6 @@ ms.custom:
 
 > [!NOTE]
 > Read the special considerations for extension [postgres_fdw](../concepts-extensions-considerations.md#postgres_fdw) in Flexible Server.
-
-
 ## postgres_protobuf
 
 [postgres_protobuf](https://github.com/mpartel/postgres-protobuf) provides protocol buffers for PostgreSQL.
@@ -959,8 +863,6 @@ ms.custom:
 | 13 | 0.2 |
 | 12 | 0.2 |
 | 11 | N/A |
-
-
 
 ## semver
 
@@ -976,8 +878,6 @@ ms.custom:
 | 12 | 0.32.0 |
 | 11 | 0.32.0 |
 
-
-
 ## session_variable
 
 [session_variable](https://github.com/splendiddata/session_variable) provides registration and manipulation of session variables and constants.
@@ -991,8 +891,6 @@ ms.custom:
 | 13 | 3.3 |
 | 12 | 3.3 |
 | 11 | 3.3 |
-
-
 
 ## sslinfo
 
@@ -1008,8 +906,6 @@ ms.custom:
 | 12 | 1.2 |
 | 11 | 1.2 |
 
-
-
 ## tablefunc
 
 [tablefunc](https://www.postgresql.org/docs/current/tablefunc.html) provides functions that manipulate whole tables, including crosstab.
@@ -1023,8 +919,6 @@ ms.custom:
 | 13 | 1.0 |
 | 12 | 1.0 |
 | 11 | 1.0 |
-
-
 
 ## tdigest
 
@@ -1040,8 +934,6 @@ ms.custom:
 | 12 | 1.4.2 |
 | 11 | N/A |
 
-
-
 ## tds_fdw
 
 [tds_fdw](https://github.com/tds-fdw/tds_fdw) is a foreign data wrapper for querying a TDS database (SAP ASE or SQL Server).
@@ -1055,8 +947,6 @@ ms.custom:
 | 13 | 2.0.3 |
 | 12 | 2.0.3 |
 | 11 | 2.0.3 |
-
-
 
 ## timescaledb
 
@@ -1088,8 +978,6 @@ ms.custom:
 | 12 | N/A |
 | 11 | N/A |
 
-
-
 ## tsm_system_rows
 
 [tsm_system_rows](https://www.postgresql.org/docs/13/tsm-system-rows.html) is a `TABLESAMPLE` method which accepts number of rows as a limit.
@@ -1103,8 +991,6 @@ ms.custom:
 | 13 | 1.0 |
 | 12 | 1.0 |
 | 11 | 1.0 |
-
-
 
 ## tsm_system_time
 
@@ -1120,8 +1006,6 @@ ms.custom:
 | 12 | 1.0 |
 | 11 | 1.0 |
 
-
-
 ## unaccent
 
 [unaccent](https://www.postgresql.org/docs/current/unaccent.html) provides a text search dictionary that removes accents.
@@ -1135,8 +1019,6 @@ ms.custom:
 | 13 | 1.1 |
 | 12 | 1.1 |
 | 11 | 1.1 |
-
-
 
 ## uuid-ossp
 
@@ -1152,8 +1034,6 @@ ms.custom:
 | 12 | 1.1 |
 | 11 | 1.1 |
 
-
-
 ## vector
 
 [vector](https://github.com/pgvector/pgvector) is a vector data type and `ivfflat` and `hnsw` access methods.
@@ -1167,8 +1047,6 @@ ms.custom:
 | 13 | 0.8.0 |
 | 12 | 0.7.0 |
 | 11 | 0.5.1 |
-
-
 
 ## wal2json
 
