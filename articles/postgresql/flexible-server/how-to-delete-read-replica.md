@@ -32,13 +32,13 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="./media/how-to-read-replicas/delete-read-replica.png" alt-text="Screenshot showing the location of the Delete button in the Replication page." lightbox="./media/how-to-read-replicas/delete-read-replica.png":::
 
-4.  In the **Delete <server>** dialog, mark the **I have read and understand that this server, as well as any databases it contains, will be deleted.** checkbox to acknowledge that you understand the effects of the action, and select **Delete**.
+4.  In the **Delete \<server\>** dialog, mark the **I have read and understand that this server, as well as any databases it contains, will be deleted.** checkbox to acknowledge that you understand the effects of the action, and select **Delete**.
 
     :::image type="content" source="./media/how-to-read-replicas/confirm-and-delete-read-replica.png" alt-text="Screenshot showing the Delete server dialog." lightbox="./media/how-to-read-replicas/confirm-and-delete-read-replica.png":::
 
 7. A notification informs you that the read replica is being deleted.
 
-    :::image type="content" source="./media/how-to-read-replicas/notification-deleting-read-replica.png" alt-text="Screenshot showing a notification informing that the read replica is being deleted." lightbox="./media/how-to-read-replicas/notification-deleting-read-replica.png.png":::
+    :::image type="content" source="./media/how-to-read-replicas/notification-deleting-read-replica.png" alt-text="Screenshot showing a notification informing that the read replica is being deleted." lightbox="./media/how-to-read-replicas/notification-deleting-read-replica.png":::
 
 8. When the process completes, a notification informs you that the read replica was successfully deleted.
 

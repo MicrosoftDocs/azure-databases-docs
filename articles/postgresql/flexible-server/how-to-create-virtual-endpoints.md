@@ -60,10 +60,10 @@ You can create virtual endpoints for your Azure PostgreSQL flexible server via t
 ```azurecli-interactive
 az postgres flexible-server virtual-endpoint create \
   --resource-group <resource_group> \
-  --server-name <server_name> \
-  --name <name> \
+  --server-name <server> \
+  --name <virtual_endpoints_base_name> \
   --endpoint-type ReadWrite
-  --members <replica-name>
+  --members <replica>
 ```
 
 ## Related content

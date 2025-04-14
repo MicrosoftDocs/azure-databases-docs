@@ -37,14 +37,14 @@ Because only one pair of virtual endpoints is allowed per replication set, both 
 ```azurecli-interactive
 az postgres flexible-server virtual-endpoint show \
   --resource-group <resource_group> \
-  --server-name <server_name> \
-  --name <name>
+  --server-name <server> \
+  --name <virtual_endpoints_base_name>
 ```
 
 ```azurecli-interactive
 az postgres flexible-server virtual-endpoint list \
   --resource-group <resource_group> \
-  --server-name <server_name> \
+  --server-name <server> \
 ```
 
 ## Related content

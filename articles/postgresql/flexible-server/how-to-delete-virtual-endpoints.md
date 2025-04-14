@@ -51,8 +51,8 @@ You can delete the existing virtual endpoints of your Azure PostgreSQL flexible 
 ```azurecli-interactive
 az postgres flexible-server virtual-endpoint delete \
   --resource-group <resource_group> \
-  --server-name <server_name> \
-  --name <name>
+  --server-name <server> \
+  --name <virtual_endpoints_base_name>
 ```
 
 ## Related content
