@@ -10,11 +10,11 @@ ms.subservice: flexible-server
 ms.topic: how-to
 ---
 
-# Connect an Azure Database for PostgreSQL flexible server to Azure Data Factory and Synapse Analytics
+# Connect Azure Database for PostgreSQL to Azure Data Factory and Synapse Analytics
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
-> [!IMPORTANT]  
+> [!IMPORTANT]
 > The Azure Database for PostgreSQL version 2.0 provides an improved native Azure Database for PostgreSQL support. If you use the Azure Database for PostgreSQL version 1.0 in your solution, you should upgrade your Azure Database for PostgreSQL linked service at your earliest convenience.
 
 ## What is Azure Data Factory
@@ -69,7 +69,7 @@ There are two supported methods for authentication: service principal and basic 
 
 1. Select between **From Azure subscription** or **Enter manually** in **Account selection method**
 
-    ###### [From Azure subscription](#tab/from-azure-subscription)
+    ###### [Azure subscription](#tab/from-azure-subscription)
     
     Select the **Azure subscription**, **Server name**, and **Database name**. Also, enter the **Port**.
     
@@ -100,7 +100,7 @@ Following the steps below requires setting up a linked service in Azure Data Fac
 
 1. Select between **From Azure subscription** or **Enter manually** in **Account selection method**.
 
-    ###### [From Azure subscription](#tab/from-azure-subscription)
+    ###### [Azure subscription](#tab/from-azure-subscription)
     
     Select the **Azure subscription**, **Server name**, and **Database name**. Also, enter the **Port**.
     
