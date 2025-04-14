@@ -1,6 +1,6 @@
 ---
-title: Update virtual endpoints
-description: This article describes how to update virtual endpoints for an Azure Database for PostgreSQL flexible server.
+title: Delete virtual endpoints
+description: This article describes how to delete virtual endpoints for an Azure Database for PostgreSQL flexible server.
 author: akashraokm
 ms.author: akashrao
 ms.reviewer: maghan
@@ -10,19 +10,19 @@ ms.subservice: flexible-server
 ms.topic: how-to
 ---
 
-# Update virtual endpoints
+# Delete virtual endpoints
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
-This article provides step-by-step instructions to create virtual endpoints for an Azure Database for PostgreSQL flexible server.
+This article provides step-by-step instructions to delete virtual endpoints associated to an Azure Database for PostgreSQL flexible server.
 
-## Steps to update virtual endpoints
+## Steps to delete virtual endpoints
 
-### [Portal](#tab/portal-update-virtual-endpoints)
+### [Portal](#tab/portal-delete-virtual-endpoints)
 
 Using the [Azure portal](https://portal.azure.com/):
 
-1. Select the Azure Database for PostgreSQL flexible server for which you want to update its associated virtual endpoints.
+1. Select the Azure Database for PostgreSQL flexible server for which you want to delete its associated virtual endpoints.
 
 2. In the resource menu, under the **Settings** section, select **Replication**.
 
