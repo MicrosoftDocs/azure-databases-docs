@@ -579,6 +579,8 @@
           href: flexible-server/how-to-create-virtual-endpoints.md
         - name: Update virtual endpoints
           href: flexible-server/how-to-update-virtual-endpoints.md
+        - name: Show virtual endpoints
+          href: flexible-server/how-to-show-virtual-endpoints.md
         - name: Delete virtual endpoints
           href: flexible-server/how-to-delete-virtual-endpoints.md
         - name: Switch over replica to primary
