@@ -296,9 +296,9 @@
     - name: Azure Data Factory and Synapse Analytics
       items:
       - name: Connect to Azure Data Factory and Synapse Analytics
-        href: flexible-server/how-to-connect-to-data-factory.md
+        href: flexible-server/how-to-connect-data-factory.md
       - name: Connect from Azure Data Factory via managed private endpoint
-        href: flexible-server/how-to-connect-to-data-factory-private-endpoint.md
+        href: flexible-server/how-to-connect-data-factory-private-endpoint.md
     - name: Troubleshooting guides
       href: flexible-server/concepts-troubleshooting-guides.md
     - name: Logical replication and logical decoding
