@@ -30,7 +30,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 3. Select the **Promote** icon to the side of the name of the endpoint of the read replica to which you want to switch over.
 
-    :::image type="content" source="./media/how-to-read-replicas/switch-over-or-promote-to-standalone.png" alt-text="Screenshot showing the Switch over or Promote to standalone pane." lightbox="./media/how-to-read-replicas/switch-over-or-promote-to-standalone.png":::
+    :::image type="content" source="./media/how-to-read-replicas/switch-over-or-promote-to-standalone.png" alt-text="Screenshot showing the location of the Promore action in the Replication page." lightbox="./media/how-to-read-replicas/switch-over-or-promote-to-standalone.png":::
 
 4. If the server doesn't have the virtual endpoints created, or if the read replica which you're trying to switch over to primary isn't the reader virtual endpoint's target server, an attempt to switch over a read replica to primary fails. That's what the warning displayed in the dialog reminds you. 
 
