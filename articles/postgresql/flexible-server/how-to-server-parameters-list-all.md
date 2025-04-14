@@ -64,7 +64,9 @@ The **Parameter type** column can show any of the following values for each para
 You can list all server parameters in a server via the [az postgres flexible-server parameter list](/cli/azure/postgres/flexible-server/parameter#az-postgres-flexible-server-parameter-list) command.
 
 ```azurecli-interactive
-az postgres flexible-server parameter list --resource-group <resource_group> --server-name <server>
+az postgres flexible-server parameter list \
+  --resource-group <resource_group> \
+  --server-name <server>
 ```
 
 Each parameter has the following attributes:

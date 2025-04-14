@@ -51,7 +51,10 @@ You can change the private DNS zone associated to your server via the [az postgr
 
 ```azurecli-interactive
 privateZoneId=$(az network private-dns zone show --resource-group <private_dns_zone_resource_group> --name <private_dns_zone> --query id --output tsv)
-az postgres flexible-server update --resource-group <server_resource_group> --name <server> --private-dns-zone $privateZoneId
+az postgres flexible-server update \
+  --resource-group <server_resource_group> \
+  --name <server> \
+  --private-dns-zone $privateZoneId
 ```
 
 If you want to link the private DNS zone to the virtual network of your server, run the following commands:

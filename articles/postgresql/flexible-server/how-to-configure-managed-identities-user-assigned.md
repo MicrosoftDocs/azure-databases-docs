@@ -39,7 +39,10 @@ You can associate a user assigned identity to an Azure Database for PostgreSQL f
 resourceGroup=<resource-group>
 server=<server>
 identity=<identity>
-az postgres flexible-server identity assign --resource-group $resourceGroup --server-name $server --identity $identity
+az postgres flexible-server identity assign \
+  --resource-group $resourceGroup \
+  --server-name $server \
+  --identity $identity
 ```
 
 ---
@@ -64,7 +67,10 @@ You can dissociate a user assigned identity from an Azure Database for PostgreSQ
 resourceGroup=<resource-group>
 server=<server>
 identity=<identity>
-az postgres flexible-server identity remove --resource-group $resourceGroup --server-name $server --identity $identity
+az postgres flexible-server identity remove \
+  --resource-group $resourceGroup \
+  --server-name $server \
+  --identity $identity
 ```
 
 If you try to remove a user assigned managed identity which is used to access a data encryption key, you get the following error:
@@ -100,7 +106,10 @@ Using the [Azure portal](https://portal.azure.com/):
 # List all associated user assigned managed identities
 resourceGroup=<resource-group>
 server=<server>
-az postgres flexible-server identity list --resource-group $resourceGroup --server-name $server --query "userAssignedIdentities"
+az postgres flexible-server identity list \
+  --resource-group $resourceGroup \
+  --server-name $server \
+  --query "userAssignedIdentities"
 ```
 
 ---

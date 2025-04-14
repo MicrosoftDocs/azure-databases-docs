@@ -67,7 +67,10 @@ Using the [Azure portal](https://portal.azure.com/):
 You can initiate the scaling of your storage, to increase the size of your Premium SSD disk, via the [az postgres flexible-server update](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-update) command.
 
 ```azurecli-interactive
-az postgres flexible-server update --resource-group <resource_group> --name <server> --storage-size <storage_size>
+az postgres flexible-server update \
+  --resource-group <resource_group> \
+  --name <server> \
+  --storage-size <storage_size>
 ```
 
 > [!NOTE]
@@ -90,7 +93,10 @@ Updating storage cannot be smaller than the original storage size <current_stora
 You can determine the current storage size of your server via the [az postgres flexible-server show](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-show) command.
 
 ```azurecli-interactive
-az postgres flexible-server show --resource-group <resource_group> --name <server> --query storage.storageSizeGb
+az postgres flexible-server show \
+  --resource-group <resource_group> \
+  --name <server> \
+  --query storage.storageSizeGb
 ```
 
 > [!IMPORTANT]
@@ -137,7 +143,10 @@ Using the [Azure portal](https://portal.azure.com/):
 You can initiate the scaling of your storage, to increase the size of your Premium SSD disk, via the [az postgres flexible-server update](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-update) command.
 
 ```azurecli-interactive
-az postgres flexible-server update --resource-group <resource_group> --name <server> --storage-size <storage_size>
+az postgres flexible-server update \
+  --resource-group <resource_group> \
+  --name <server> \
+  --storage-size <storage_size>
 ```
 
 > [!NOTE]
@@ -160,7 +169,10 @@ Updating storage cannot be smaller than the original storage size <current_stora
 You can determine the current storage size of your server via the [az postgres flexible-server show](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-show) command.
 
 ```azurecli-interactive
-az postgres flexible-server show --resource-group <resource_group> --name <server> --query storage.storageSizeGb
+az postgres flexible-server show \
+  --resource-group <resource_group> \
+  --name <server> \
+  --query storage.storageSizeGb
 ```
 
 ---

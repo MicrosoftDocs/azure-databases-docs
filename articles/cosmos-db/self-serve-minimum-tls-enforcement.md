@@ -2,8 +2,8 @@
 title: Self-serve minimum tls version enforcement in Azure Cosmos DB
 titleSuffix: Azure Cosmos DB
 description: Learn how to self-serve minimum TLS version enforcement for your Azure Cosmos DB account to improve your security posture.
-author: dileepraotv-github
-ms.author: turao
+author: sudhanshukhera
+ms.author: skhera
 ms.service: azure-cosmos-db
 ms.topic: conceptual
 ms.date: 01/18/2023

@@ -39,11 +39,23 @@ Because the `shared_preload_libraries` is static, the server must be restarted f
 # [CLI](#tab/cli-01)
 
 ```azurecli-interactive
-az postgres flexible-server parameter set --resource-group <flexible_server_resource_group> --server-name <flexible_server_name> --name shared_preload_libraries --source user-override --value azure_storage,$(az postgres flexible-server parameter show --resource-group <flexible_server_resource_group> --server-name <flexible_server_name> --name shared_preload_libraries --query value --output tsv)
+az postgres flexible-server parameter set \
+  --resource-group <resource_group> 
+  --server-name <server> 
+  --name shared_preload_libraries \
+  --source user-override \
+  --value azure_storage,$(az postgres flexible-server parameter show \
+                            --resource-group <resource_group> \
+                            --server-name <server> \
+                            --name shared_preload_libraries \
+                            --query value \
+                            --output tsv)
 ```
 Because the `shared_preload_libraries` is static, the server must be restarted for a change to take effect:
 ```azurecli-interactive
-az postgres flexible-server restart --resource-group <flexible_server_resource_group> --name <flexible_server_name>
+az postgres flexible-server restart \
+  --resource-group <resource_group> \
+  --name <server>
 ```
 
 # [REST API](#tab/rest-01)
@@ -63,7 +75,17 @@ Because the `shared_preload_libraries` is static, the server must be restarted f
 # [CLI](#tab/cli-02)
 
 ```azurecli-interactive
-az postgres flexible-server parameter set --resource-group <flexible_server_resource_group> --server-name <flexible_server_name> --name azure.extensions --source user-override --value azure_storage,$(az postgres flexible-server parameter show --resource-group <flexible_server_resource_group> --server-name <flexible_server_name> --name azure.extensions --query value --output tsv)
+az postgres flexible-server parameter set \
+  --resource-group <resource_group> \
+  --server-name <server> \
+  --name azure.extensions \
+  --source user-override \
+  --value azure_storage,$(az postgres flexible-server parameter show \
+                            --resource-group <resource_group> 
+                            --server-name <server> \
+                            --name azure.extensions \
+                            --query value \
+                            --output tsv)
 ```
 
 # [REST API](#tab/rest-02)
@@ -102,7 +124,10 @@ The `azure_storage_admin` role is, by default, granted to the `azure_pg_admin` r
 # [CLI](#tab/cli-03)
 
 ```azurecli-interactive
-az rest --method patch --url https://management.azure.com/subscriptions/<subscriptionId>/resourceGroups/<flexible_server_resource_group>/providers/Microsoft.DBforPostgreSQL/flexibleServers/<flexible_server_name>?api-version=2024-08-01 --body '{"identity":{"type":"SystemAssigned"}}'
+az rest \
+  --method patch \
+  --url https://management.azure.com/subscriptions/<subscriptionId>/resourceGroups/<flexible_server_resource_group>/providers/Microsoft.DBforPostgreSQL/flexibleServers/<flexible_server_name>?api-version=2024-08-01 \
+  --body '{"identity":{"type":"SystemAssigned"}}'
 ```              
 
 # [REST API](#tab/rest-03)
@@ -125,7 +150,10 @@ Using the [Servers - Update](/rest/api/postgresql/flexibleserver/servers/update)
 # [CLI](#tab/cli-04)
 
 ```azurecli-interactive
-az storage account update --resource-group <storage_account_resource_group> --name <account_name> --allow-shared-key-access true
+az storage account update \
+  --resource-group <storage_account_resource_group> \
+  --name <account_name> \
+  --allow-shared-key-access true
 ```
 
 # [REST API](#tab/rest-04)
@@ -143,7 +171,11 @@ Using [Storage Accounts - Update](/rest/api/storagerp/storage-accounts/update) R
 # [CLI](#tab/cli-05)
 
 ```azurecli-interactive
-az storage account keys list --resource-group <storage_account_resource_group> --account-name <account_name> --query [0].value -o tsv
+az storage account keys list \
+  --resource-group <storage_account_resource_group> \
+  --account-name <account_name> \
+  --query [0].value \
+  --output tsv
 ```
 
 # [REST API](#tab/rest-05)
