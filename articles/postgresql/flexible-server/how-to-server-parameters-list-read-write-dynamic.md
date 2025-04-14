@@ -38,7 +38,10 @@ Using the [Azure portal](https://portal.azure.com):
 You can list all server parameters that don't require a restart after their values are changed for the changes to take effect, via the [az postgres flexible-server parameter list](/cli/azure/postgres/flexible-server/parameter#az-postgres-flexible-server-parameter-list) command.
 
 ```azurecli-interactive
-az postgres flexible-server parameter list --resource-group <resource_group> --server-name <server> --query "[?isDynamicConfig==\`true\` && isReadOnly==\`false\`] | [].name"
+az postgres flexible-server parameter list \
+  --resource-group <resource_group> \
+  --server-name <server> \
+  --query "[?isDynamicConfig==\`true\` && isReadOnly==\`false\`] | [].name"
 ```
 
 ---

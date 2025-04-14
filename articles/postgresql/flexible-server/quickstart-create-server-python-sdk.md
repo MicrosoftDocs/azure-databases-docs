@@ -210,7 +210,9 @@ if __name__ == "__main__":
 ### [CLI](#tab/CLI)
 
 ```azurecli-interactive
-az postgres flexible-server delete --resource-group <resource-group> --name <server-name>
+az postgres flexible-server delete \
+  --resource-group <resource-group> \
+  --name <server-name>
 ```
 
 ---

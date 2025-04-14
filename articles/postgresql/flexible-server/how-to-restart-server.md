@@ -56,7 +56,9 @@ Using the [Azure portal](https://portal.azure.com/):
 You can restart a started server via the [az postgres flexible-server restart](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-restart) command.
 
 ```azurecli-interactive
-az postgres flexible-server restart --resource-group <resource_group> --name <server>
+az postgres flexible-server restart \
+  --resource-group <resource_group> \
+  --name <server>
 ```
 
 If you attempt to restart a server which isn't in `Ready` state, you receive an error like this:

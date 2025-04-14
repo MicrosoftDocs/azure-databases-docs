@@ -64,7 +64,10 @@ Using the [Azure portal](https://portal.azure.com/):
 You can initiate the scaling of your storage, to increase the performance tier of your Premium SSD disk, via the [az postgres flexible-server update](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-update) command.
 
 ```azurecli-interactive
-az postgres flexible-server update --resource-group <resource_group> --name <server> --performance-tier <performance_tier>
+az postgres flexible-server update \
+  --resource-group <resource_group> \
+  --name <server> \
+  --performance-tier <performance_tier>
 ```
 
 > [!NOTE]
@@ -81,7 +84,10 @@ Incorrect value for --performance-tier for storage-size: <storage_size>. Allowed
 You can determine the performance tier currently set for the storage of your server via the [az postgres flexible-server show](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-show) command.
 
 ```azurecli-interactive
-az postgres flexible-server show --resource-group <resource_group> --name <server> --query storage.tier
+az postgres flexible-server show \
+  --resource-group <resource_group> \
+  --name <server> \
+  --query storage.tier
 ```
 
 ---
@@ -122,7 +128,10 @@ Using the [Azure portal](https://portal.azure.com/):
 You can initiate the scaling of your storage, to change the IOPS of your Premium SSD v2 disk, via the [az postgres flexible-server update](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-update) command.
 
 ```azurecli-interactive
-az postgres flexible-server update --resource-group <resource_group> --name <server> --iops <iops>
+az postgres flexible-server update \
+  --resource-group <resource_group> \
+  --name <server> \
+  --iops <iops>
 ```
 
 > [!NOTE]
@@ -181,7 +190,10 @@ Using the [Azure portal](https://portal.azure.com/):
 You can initiate the scaling of your storage, to change the throughput of your Premium SSD v2 disk, via the [az postgres flexible-server update](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-update) command.
 
 ```azurecli-interactive
-az postgres flexible-server update --resource-group <resource_group> --name <server> --throughput <throughput>
+az postgres flexible-server update \
+  --resource-group <resource_group> \
+  --name <server> \
+  --throughput <throughput>
 ```
 
 > [!NOTE]
@@ -198,7 +210,10 @@ The requested value for throughput does not fall between 125 and <maximum_allowe
 You can determine the throughput currently set for the storage of your server via the [az postgres flexible-server show](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-show) command.
 
 ```azurecli-interactive
-az postgres flexible-server show --resource-group <resource_group> --name <server> --query '{"storageType":storage.type,"throughput":storage.throughput}'
+az postgres flexible-server show \
+  --resource-group <resource_group> \
+  --name <server> \
+  --query '{"storageType":storage.type,"throughput":storage.throughput}'
 
 ```
 
