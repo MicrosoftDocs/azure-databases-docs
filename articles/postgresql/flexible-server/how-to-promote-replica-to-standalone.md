@@ -1,6 +1,6 @@
 ---
-title: Switch over read replica to primary
-description: This article describes how to switch over a read replica so that it becomes the primary.
+title: Promote replica to standalone server
+description: This article describes how to promote a read replica so that it becomes an independent standalone server.
 author: akashraokm
 ms.author: akashrao
 ms.reviewer: maghan
@@ -10,15 +10,15 @@ ms.subservice: flexible-server
 ms.topic: how-to
 ---
 
-# Switch over read replica to primary
+# Promote replica to standalone server
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
 This article provides step-by-step instructions to swicth over a read replica of an Azure Database for PostgreSQL flexible server so that it becomes the new primary server of the replication set.
 
-## Steps to switch over read replica to primary
+## Steps to promote replica to standalone server
 
-### [Portal](#tab/portal-switch-over-read-replica-to-primary)
+### [Portal](#tab/portal-promote-replica-to-standalone-server)
 
 Using the [Azure portal](https://portal.azure.com/):
 
@@ -48,7 +48,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="./media/how-to-read-replicas/notification-switched-over-to-primary.png" alt-text="Screenshot showing a notification informing that the read replica switched over to primary successfully." lightbox="./media/how-to-read-replicas/notification-switched-over-to-primary.png":::
 
-### [CLI](#tab/cli-switch-over-read-replica-to-primary)
+### [CLI](#tab/cli-promote-replica-to-standalone-server)
 
 You can switch over a read replica to become the new primary of your Azure PostgreSQL flexible server via the [`az postgres flexible-server replica promote`](/cli/azure/postgres/flexible-server/replica#az-postgres-flexible-server-replica-promote) command.
 
@@ -58,7 +58,7 @@ If you want to make sure that the read replica is first synchronized with all th
 az postgres flexible-server replica promote \
   --resource-group <resource_group> \
   --name <server> \
-  --promote-mode SwitchOver \
+  --promote-mode Standalone \
   --promote-option Planned
 ```
 
@@ -68,7 +68,7 @@ If you prefer the switch over to complete faster, and can assume that the change
 az postgres flexible-server replica promote \
   --resource-group <resource_group> \
   --name <server> \
-  --promote-mode SwitchOver \
+  --promote-mode Standalone \
   --promote-option Forced
 ```
 

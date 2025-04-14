@@ -584,9 +584,9 @@
         - name: Delete virtual endpoints
           href: flexible-server/how-to-delete-virtual-endpoints.md
         - name: Switch over replica to primary
-          href: flexible-server/how-to-switch-over-replica.md
+          href: flexible-server/how-to-switch-over-replica-to-primary.md
         - name: Promote replica to standalone server
-          href: flexible-server/how-to-promote-replica.md
+          href: flexible-server/how-to-promote-replica-to-standalone.md
         - name: Delete read replica
           href: flexible-server/how-to-delete-read-replica.md
         - name: Read replica with Terraform
