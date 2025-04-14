@@ -156,7 +156,7 @@ Azure Database for PostgreSQL Flexible Server supports advanced [data recovery](
 - You can't use the same [user-managed identity](/azure/active-directory/managed-identities-azure-resources/how-manage-user-assigned-managed-identities) to authenticate for the primary database's Key Vault instance and the Key Vault instance that holds the encryption key for geo-redundant backup. To maintain regional resiliency, we recommend that you create the user-managed identity in the same region as the geo-redundant backups.
 - If you set up a [read replica database](../flexible-server/concepts-read-replicas.md) to be encrypted with CMKs during creation, its encryption key needs to be in a Key Vault instance in the region where the read replica database resides. The [user-assigned identity](/azure/active-directory/managed-identities-azure-resources/how-manage-user-assigned-managed-identities) to authenticate against this Key Vault instance needs to be created in the same region.
 
-### Versionless customer managed keys (preview)
+### Version less customer managed keys
 
 Version-less keys simplify key rotation. Using [auto-rotation in Key Vault](/azure/key-vault/keys/how-to-configure-key-rotation) without version-less keys requires custom automation to detect the rotation and update the CMK in PostgreSQL with the new key version.
 
