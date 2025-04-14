@@ -573,7 +573,7 @@
         href: flexible-server/how-to-auto-grow-storage.md
       - name: Read replicas
         items:
-        - name: Create a read replica
+        - name: Create read replica
           href: flexible-server/how-to-create-read-replica.md
         - name: Create virtual endpoints
           href: flexible-server/how-to-create-virtual-endpoints.md

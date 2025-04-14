@@ -28,38 +28,31 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="./media/how-to-read-replicas/replication-with-virtual-endpoints.png" alt-text="Screenshot showing the Replication page with virtual endpoints created." lightbox="./media/how-to-read-replicas/replication-with-virtual-endpoints.png":::
 
-3.  In the **Virtual endpoints** section, select the pencil icon, which lets you update one property of the existing virtual endpoints.
+3.  In the **Virtual endpoints** section, select the ellipsis to the right of the pencil icon, then select **Delete**.
 
-    :::image type="content" source="./media/how-to-read-replicas/update-virtual-endpoints.png" alt-text="Screenshot showing the location of the pencil icon in the Replication page." lightbox="./media/how-to-read-replicas/update-virtual-endpoints.png":::
+    :::image type="content" source="./media/how-to-read-replicas/delete-virtual-endpoints.png" alt-text="Screenshot showing the location of the Delete virtual endpoints button in the Replication page." lightbox="./media/how-to-read-replicas/delete-virtual-endpoints.png":::
 
-4. The only property you can update of an existing pair of virtual endpoints is the **Target of the reader virtual endpoint**. However, it can only be changed if there's at least one read replica created. Otherwise, it will refer to the primary server, just like the **Target of writer virtual endpoint** property does. If the server doesn't have read replicas, you cannot change any property, and you must select **Cancel**.
+4. A dialog box asks for confirmation to proceed with the deletion of the virtual endpoints. Select **Delete** to proceed.
 
-    :::image type="content" source="./media/how-to-read-replicas/update-virtual-endpoints-no-replicas.png" alt-text="Screenshot showing the update virtual endpoints dialog when there're no read replicas." lightbox="./media/how-to-read-replicas/update-virtual-endpoints-no-replicas.png":::
+    :::image type="content" source="./media/how-to-read-replicas/delete-virtual-endpoints-confirmation.png" alt-text="Screenshot showing the Delete confirmation dialog." lightbox="./media/how-to-read-replicas/delete-virtual-endpoints-confirmation.png":::
 
-5. If the server has read replicas and you change the value of **Target of the reader virtual endpoint**, select **Save** to persist the changes.
+5. A notification informs you that the virtual endpoints are being deleted.
 
-    :::image type="content" source="./media/how-to-read-replicas/save-virtual-endpoints-update.png" alt-text="Screenshot showing the Save button to persist changes made to existing virtual endpoints." lightbox="./media/how-to-read-replicas/save-virtual-endpoints-update.png":::
+    :::image type="content" source="./media/how-to-read-replicas/notification-deleting-virtual-endpoints.png" alt-text="Screenshot showing a notification informing that the virtual endpoints are being deleted." lightbox="./media/how-to-read-replicas/notification-deleting-virtual-endpoints.png":::
 
+6. When the process completes, a notification informs you that the virtual endpoints were successfully deleted.
 
-6. A notification informs you that the virtual endpoints are being updated.
+    :::image type="content" source="./media/how-to-read-replicas/notification-deleted-virtual-endpoints.png" alt-text="Screenshot showing a notification informing that the virtual endpoints were deleted successfully." lightbox="./media/how-to-read-replicas/notification-deleted-virtual-endpoints.png":::
 
-    :::image type="content" source="./media/how-to-read-replicas/notification-updating-virtual-endpoints.png" alt-text="Screenshot showing a notification informing that the virtual endpoints are being updated." lightbox="./media/how-to-read-replicas/notification-updating-virtual-endpoints.png":::
+### [Portal](#tab/cli-delete-virtual-endpoints)
 
-7. When the process completes, a notification informs you that the virtual endpoints were successfully updated.
-
-    :::image type="content" source="./media/how-to-read-replicas/notification-updated-virtual-endpoints.png" alt-text="Screenshot showing a notification informing that the virtual endpoints were updated successfully." lightbox="./media/how-to-read-replicas/notification-updated-virtual-endpoints.png":::
-
-### [Portal](#tab/cli-update-virtual-endpoints)
-
-You can update the existing virtual endpoints of your Azure PostgreSQL flexible server via the [`az postgres flexible-server virtual-endpoint update`](/cli/azure/postgres/flexible-server/replica#az-postgres-flexible-server-virtual-endpoint-update) command. 
+You can delete the existing virtual endpoints of your Azure PostgreSQL flexible server via the [`az postgres flexible-server virtual-endpoint delete`](/cli/azure/postgres/flexible-server/replica#az-postgres-flexible-server-virtual-endpoint-delete) command. 
 
 ```azurecli-interactive
-az postgres flexible-server virtual-endpoint update \
+az postgres flexible-server virtual-endpoint delete \
   --resource-group <resource_group> \
   --server-name <server_name> \
-  --name <name> \
-  --endpoint-type ReadWrite
-  --members <replica-name>
+  --name <name>
 ```
 
 ## Related content
