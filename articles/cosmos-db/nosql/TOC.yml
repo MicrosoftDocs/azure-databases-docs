@@ -56,6 +56,8 @@
           href: quickstart-terraform.md
 - name: Build AI Applications
   items:
+    - name: Why use for AI Apps
+      href: ../gen-ai/why-cosmos-ai.md
     - name: Use vector search
       href: vector-search.md
     - name: Enable full-text search
