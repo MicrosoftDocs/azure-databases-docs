@@ -68,20 +68,18 @@ Define a configuration dictionary (cosmos_config) in your notebook to connect yo
     ```python
     # Set configuration settings
     cosmos_config = {
-   "spark.cosmos.accountEndpoint": "<nosql-account-endpoint>",
-   "spark.cosmos.accountKey": "<nosql-account-key>",
+    "spark.cosmos.accountEndpoint": "<nosql-account-endpoint>",
+    "spark.cosmos.accountKey": "<nosql-account-key>",
     # "spark.cosmos.account.subscriptionId": subscriptionId,
     # "spark.cosmos.account.tenantId": tenantId,
     # "spark.cosmos.account.resourceGroupName":resourceGroupName,
-   "spark.cosmos.database": "cosmicworks",
-   "spark.cosmos.container": "products",
-   "spark.cosmos.throughputControl.enabled": "true",
-   "spark.cosmos.throughputControl.name": "TargetContainerThroughputControl",
-   "spark.cosmos.throughputControl.targetThroughputThreshold": "0.30", 
-   "spark.cosmos.throughputControl.globalControl.useDedicatedContainer": "false"
-
-
-    }
+    "spark.cosmos.database": "cosmicworks",
+    "spark.cosmos.container": "products",
+    "spark.cosmos.throughputControl.enabled": "true",
+    "spark.cosmos.throughputControl.name": "TargetContainerThroughputControl",
+    "spark.cosmos.throughputControl.targetThroughputThreshold": "0.30", 
+    "spark.cosmos.throughputControl.globalControl.useDedicatedContainer": "false"
+     }
     ```
 
     ::: zone-end
