@@ -16,7 +16,7 @@ appliesto:
 ---
 
 # Why use Azure Cosmos DB for NoSQL for your AI applications
-Developers and architects face difficult challenges in understanding how they can use the capabilities brought by Generative-AI into their own businesses and workloads. This includes understanding what technologies to use to build these types of applications. This article explains why users should use Azure Cosmos DB to build AI applications
+Developers and architects face difficult challenges in understanding how they can use the capabilities brought by Generative-AI into their own businesses and workloads. One challenge includes understanding what technologies to use to build these types of applications. This article explains why users should use Azure Cosmos DB to build AI applications
 
 ## Unified Indexing and Query for Hybrid Search:
 Azure Cosmos DB unifies multiple indexing, search and query capabilities in a distributed, transactional NoSQL database.
