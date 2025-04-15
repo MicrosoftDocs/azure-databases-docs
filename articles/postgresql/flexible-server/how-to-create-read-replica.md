@@ -1,8 +1,8 @@
 ---
 title: Create read replica
 description: This article describes how to create a read replica of an Azure Database for PostgreSQL flexible server.
-author: akashraokm
-ms.author: akashrao
+author: kabharati
+ms.author: kabharati
 ms.reviewer: maghan
 ms.date: 04/13/2025
 ms.service: azure-database-postgresql

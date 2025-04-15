@@ -587,8 +587,6 @@
           href: flexible-server/how-to-promote-replica-to-standalone.md
         - name: Delete read replica
           href: flexible-server/how-to-delete-read-replica.md
-        - name: Read replica with Terraform
-          href: flexible-server/how-to-read-replicas-virtual-endpoints-terraform.md
     - name: Backup and restore
       items:
         - name: Backup

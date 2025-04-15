@@ -1,8 +1,8 @@
 ---
 title: Create virtual endpoints
 description: This article describes how to create virtual endpoints for an Azure Database for PostgreSQL flexible server.
-author: akashraokm
-ms.author: akashrao
+author: kabharati
+ms.author: kabharati
 ms.reviewer: maghan
 ms.date: 04/13/2025
 ms.service: azure-database-postgresql
