@@ -87,11 +87,18 @@ Define a configuration dictionary (cosmos_config) in your notebook to connect yo
 
 ```scala
 # Set configuration settings
-val config = Map(
+  val cosmosConfig = Map(
   "spark.cosmos.accountEndpoint" -> "<nosql-account-endpoint>",
   "spark.cosmos.accountKey" -> "<nosql-account-key>",
+  # "spark.cosmos.account.subscriptionId" -> subscriptionId,
+  # "spark.cosmos.account.tenantId" -> tenantId,
+  # "spark.cosmos.account.resourceGroupName" -> resourceGroupName,
   "spark.cosmos.database" -> "cosmicworks",
-  "spark.cosmos.container" -> "products"
+  "spark.cosmos.container" -> "products",
+  "spark.cosmos.throughputControl.enabled" -> "true",
+  "spark.cosmos.throughputControl.name" -> "TargetContainerThroughputControl",
+  "spark.cosmos.throughputControl.targetThroughputThreshold" -> "0.30", 
+  "spark.cosmos.throughputControl.globalControl.useDedicatedContainer" -> "false"
 )
 ```
 
@@ -119,12 +126,13 @@ df.write.mode("append").format("delta").saveAsTable("products_delta")
 
 ```scala
 # Ingest Sample Product Data to Delta Table
-val config = Map(
-  "spark.cosmos.accountEndpoint" -> "<nosql-account-endpoint>",
-  "spark.cosmos.accountKey" -> "<nosql-account-key>",
-  "spark.cosmos.database" -> "cosmicworks",
-  "spark.cosmos.container" -> "products"
-)
+# Create sample data as a sequence and convert it to a DataFrame
+val df = Seq(
+  ("p001", "Contoso Coffee Mug", "drinkware", 12.95),
+  ("p002", "Contoso T-Shirt", "apparel", 19.99)
+).toDF("id", "name", "category", "price") #Convert the sequence to a DataFrame
+# Write the DataFrame to a Delta table
+df.write.mode("append").format("delta").saveAsTable("products_delta")
 ```
 
 ::: zone-end
@@ -138,7 +146,7 @@ Read the products_delta Delta table into a Spark DataFrame and perform an initia
 ```python
 # Initial Batch Load to Cosmos DB
 df_delta = spark.read.format("delta").table("products_delta")
-df_delta.write.format("cosmos.oltp") .mode("append").options(**cosmos_config) .save()
+df_delta.write.format("cosmos.oltp").mode("append").options(**cosmos_config).save()
 ```
 
 ::: zone-end
@@ -147,12 +155,11 @@ df_delta.write.format("cosmos.oltp") .mode("append").options(**cosmos_config) .s
 
 ```scala
 # Initial Batch Load to Cosmos DB
-val config = Map(
-  "spark.cosmos.accountEndpoint" -> "<nosql-account-endpoint>",
-  "spark.cosmos.accountKey" -> "<nosql-account-key>",
-  "spark.cosmos.database" -> "cosmicworks",
-  "spark.cosmos.container" -> "products"
-)
+# Read the Delta table into a DataFrame
+val df_delta = spark.read.format("delta").table("products_delta")
+
+# Write the DataFrame to Cosmos DB using the Cosmos OLTP format
+df_delta.write.format("cosmos.oltp").mode("append").options(cosmos_config).save()
 ```
 
 ::: zone-end
@@ -176,13 +183,10 @@ spark.sql("""
 ::: zone pivot="programming-language-scala"
 
 ```scala
-# Enable CDC for Delta table
-val config = Map(
-  "spark.cosmos.accountEndpoint" -> "<nosql-account-endpoint>",
-  "spark.cosmos.accountKey" -> "<nosql-account-key>",
-  "spark.cosmos.database" -> "cosmicworks",
-  "spark.cosmos.container" -> "products"
-)
+# Enable CDC for the Delta table by altering its table properties
+spark.sql("""
+  ALTER TABLE products_delta SET TBLPROPERTIES (delta.enableChangeDataFeed = true)
+""")
 ```
 
 ::: zone-end
@@ -211,12 +215,11 @@ cdc_batch_df.write.format("cosmos.oltp").mode("append").options(**cosmos_config)
 
 ```scala
 # Batch CDC Sync to Cosmos DB
-val config = Map(
-  "spark.cosmos.accountEndpoint" -> "<nosql-account-endpoint>",
-  "spark.cosmos.accountKey" -> "<nosql-account-key>",
-  "spark.cosmos.database" -> "cosmicworks",
-  "spark.cosmos.container" -> "products"
-)
+# Read the Change Data Capture (CDC) data from the Delta table
+val cdc_batch_df = spark.read.format("delta").option("readChangeData", "true").option("startingVersion", "1").table("products_delta")
+
+# Write the captured changes to Cosmos DB in append mode
+cdc_batch_df.write.format("cosmos.oltp").mode("append").options(cosmos_config).save()
 ```
 
 ::: zone-end
@@ -270,12 +273,8 @@ df_cosmos.select("id", "name", "category", "price").show()
 
 ```scala
 # Query Cosmos DB from Spark
-val config = Map(
-  "spark.cosmos.accountEndpoint" -> "<nosql-account-endpoint>",
-  "spark.cosmos.accountKey" -> "<nosql-account-key>",
-  "spark.cosmos.database" -> "cosmicworks",
-  "spark.cosmos.container" -> "products"
-)
+val dfCosmos = spark.read.format("cosmos.oltp").options(cosmosConfig).load()
+dfCosmos.select("id", "name", "category", "price").show()
 ```
 
 ::: zone-end
@@ -283,7 +282,7 @@ val config = Map(
 ## Related content
 
 - [Apache Spark](https://spark.apache.org/)
-- [Azure Cosmos DB Spark Connector](articles/cosmos-db/nosql/tutorial-spark-connector.md)
-- [Throughput Control](articles\cosmos-db\nosql\throughput-control-spark.md)
+- [Azure Cosmos DB Spark Connector](/articles/cosmos-db/nosql/tutorial-spark-connector.md)
+- [Throughput Control](/articles\cosmos-db\nosql\throughput-control-spark.md)
 - [Azure Cosmos DB Partitioning and Partition Key Recommendation](/azure/cosmos-db/partitioning-overview)
-- [Azure Cosmos DB Partitioning and Partition Key Recommendation](https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/cosmos/azure-cosmos-spark_3_2-12/docs/AAD-Auth.md)
+- [AAD authentication in Apache Spark](https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/cosmos/azure-cosmos-spark_3_2-12/docs/AAD-Auth.md)
