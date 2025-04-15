@@ -20,12 +20,12 @@ Developers and architects face difficult challenges in understanding how they ca
 
 ## Unified Indexing and Query for Hybrid Search:
 Azure Cosmos DB unifies multiple indexing, search and query capabilities in a distributed, transactional NoSQL database.
-Azure Cosmos DB is a full-featured transactional database. Its indexing engine is highly configurable, letting you index JSON documents, vector representations and full-text indexes all on the same data.
+Azure Cosmos DB is a full-featured transactional database. Its indexing engine is highly configurable, letting you index JSON documents, vector representations and text and language-specific data all on the same data.
 Developers can combine scalar, range, and geospatial filters in a unified query syntax alongside similarity and keyword searches for a complete hybrid query capability in a single datastore.
-This hybrid capability makes it easier to build applications that need to retrieve data based on both semantic similarity and classical attribute searches. This capability also contrasts with specialized vector databases, which are optimized solely for similarity search.
+This hybrid capability makes it easier to build applications that need to retrieve data based on both semantic similarity and classical attribute searches. This also contrasts with specialized vector databases, which are optimized solely for similarity search.
 
 ## Serverless and Elastic Scalability:
-Cosmos DB provides this capability via dedicated, provisioned throughput or as a Serverless database with pay per request pricing.
+Azure Cosmos DB provides multiple billing models: serverless, provisioned throughput, and provisioned throughout with autoscale.
 
 Azure Cosmos DB is also a scale-out database with automatic scaling of throughput and storage. Automatic scaling is especially valuable for AI applications that can experience variable load patterns. This elasticity means that as your data volume or query complexity grows — whether in processing new embeddings or handling an increasing number of hybrid queries — Azure Cosmos DB can scale without compromising performance.
 
@@ -40,6 +40,9 @@ Azure Cosmos DB is a first-class citizen in the Azure ecosystem. It easily integ
 
 ## Enterprise-Grade Security and Compliance:
 For applications involving sensitive data or operating in regulated industries, Azure Cosmos DB offers enterprise-grade security, compliance, and robust data governance features. This helps ensure that your AI applications are not only powerful but also secure and compliant by design.
+
+## Multi-tenancy:
+Azure Cosmos DB provides a flexible and scalable foundation for building multi-tenant SaaS applications with support for various tenancy models, including partition key per tenant within shared containers, container per tenant, or dedicated accounts per tenant. This allows developers to balance isolation, performance, and cost based on requirements. Features like provisioned throughput, autoscaling, serverless configurations, and burst capacity enable dynamic resource scaling to accommodate varying tenant workloads. For enhanced security, Azure Cosmos DB offers customer-managed keys, ensuring data encryption tailored to individual tenant needs.
 
 ## Related content
 
