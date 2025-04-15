@@ -100,7 +100,6 @@ Define a configuration dictionary (cosmos_config) in your notebook to connect yo
 
     ::: zone-end
 
-
 **Step 3: Ingest Sample Product Data to Delta Table**
 
 Create a sample DataFrame with product information and write it into a Delta table named products_delta. This step simulates curated, transformed data in your data lake that you intend to sync to Cosmos DB. Writing to Delta ensures you can later enable change data capture (CDC) for incremental syncs.
