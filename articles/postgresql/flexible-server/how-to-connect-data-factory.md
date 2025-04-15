@@ -55,7 +55,7 @@ You can create a linked service using the Azure Data Factory UI or programmatica
 
 1. Make sure that **Version 2.0** is selected.
 
-    :::image type="content" source="media/how-to-connect-data-factory/linked-service.png" alt-text="Screenshot of New linked service window for Azure Database for PostgreSQL connector." lightbox="media/how-to-connect-data-factory/linked-service.png":::
+    :::image type="content" source="media/how-to-connect-data-factory/linked-service-new.png" alt-text="Screenshot of New linked service window for Azure Database for PostgreSQL connector." lightbox="media/how-to-connect-data-factory/linked-service-new.png":::
 
 #### Authentication
 
@@ -83,7 +83,7 @@ There are two supported methods for authentication: service principal and basic 
 
 1. Enter the **Username** and **Password**.
 
-:::image type="content" source="media/how-to-connect-data-factory/authentication-username-password.png" alt-text="Screenshot of Username and password." lightbox="media/how-to-connect-data-factory/authentication-username-password.png":::
+    :::image type="content" source="media/how-to-connect-data-factory/authentication-username-password.png" alt-text="Screenshot of Username and password." lightbox="media/how-to-connect-data-factory/authentication-username-password.png":::
 
 ##### Service principal authentication
 
