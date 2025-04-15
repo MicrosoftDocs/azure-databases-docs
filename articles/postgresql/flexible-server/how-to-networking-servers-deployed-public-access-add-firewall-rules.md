@@ -69,7 +69,12 @@ Using the [Azure portal](https://portal.azure.com/):
 You can add firewall rules to a server via the [az postgres flexible-server firewall-rule create](/cli/azure/postgres/flexible-server/firewall-rule#az-postgres-flexible-server-firewall-rule-create) command.
 
 ```azurecli-interactive
-az postgres flexible-server firewall-rule create --resource-group <resource_group> --name <server> --rule-name <rule> --start-ip-address <start_ip_address> --end-ip-address <end_ip_address>
+az postgres flexible-server firewall-rule create \
+  --resource-group <resource_group> \
+  --name <server> \
+  --rule-name <rule> \
+  --start-ip-address <start_ip_address> \
+  --end-ip-address <end_ip_address>
 ```
 
 If you attempt to add a firewall rule on a server which isn't in `Ready` state, you receive an error like this:

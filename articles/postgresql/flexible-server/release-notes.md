@@ -1,17 +1,17 @@
 ---
-title: Release notes for Azure DB for PostgreSQL flexible server
-description: Release notes for Azure DB for PostgreSQL flexible server, including feature additions, engine versions support, extensions, and other announcements.
+title: Release notes for Azure Database for PostgreSQL
+description: Release notes for Azure Database for PostgreSQL, including feature additions, engine versions support, extensions, and other announcements.
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 4/8/2025
+ms.date: 4/10/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: overview
 # customer intent: As a reader, I want the title and description to meet the required length and include the relevant information about the release notes for Azure DB for PostgreSQL flexible server.
 ---
 
-# Release notes - Azure Database for PostgreSQL flexible server
+# Release notes - Azure Database for PostgreSQL
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
@@ -22,8 +22,9 @@ This article highlights the latest updates and enhancements for Azure Database f
 - Public preview of [Version-less Customer Managed Key](./concepts-data-encryption.md#versionless-customer-managed-keys-preview).
 
 ## Release: March 2025
-- Support for new [minor versions](concepts-supported-versions.md) 17.4, 16.8, 15.12, 14.17 and 13.20. <sup>$</sup>
+- General Availability of [Azure Data Factory and Azure Synapse 2.0 Connector](/azure/data-factory/connector-azure-database-for-postgresql?tabs=data-factory#version-20).
 - General Availability of [hll](../extensions/concepts-extensions-versions.md#hll), [topn](../extensions/concepts-extensions-versions.md#topn) and [tdigest](../extensions/concepts-extensions-versions.md#tdigest) extension.  
+- Support for new [minor versions](concepts-supported-versions.md) 17.4, 16.8, 15.12, 14.17 and 13.20. <sup>$</sup> 
 
 ## Release: February 2025
 - Support for new [minor versions](concepts-supported-versions.md) 17.2, 16.6, 15.10, 14.15, 13.18, and 12.22. <sup>$</sup>
@@ -341,7 +342,7 @@ The server parameters page in the Azure portal shows a unit of measurement and t
 - Several bug fixes, stability, and performance improvements.
 
 > [!IMPORTANT]
-> **$** - New servers get these features automatically. Your existing servers will be automatically upgraded to the latest supported minor version and also new features are enabled during your server's future maintenance window.
+> **$** - New servers get these features automatically. Your existing servers will be automatically upgraded to the latest supported minor version and also new features are enabled during your server's future maintenance window. At this moment, there is no option to selectively stop to upgrade minor versions.
 
 ## Contacts
 

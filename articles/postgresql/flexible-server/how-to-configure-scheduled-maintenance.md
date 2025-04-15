@@ -60,19 +60,28 @@ You can configure the maintenance schedule settings via the [az postgres flexibl
 To configure system managed schedule, use this command:
 
 ```azurecli-interactive
-az postgres flexible-server update --resource-group <resource_group> --name <server> --maintenance-window Disabled
+az postgres flexible-server update \
+  --resource-group <resource_group> \
+  --name <server> \
+  --maintenance-window Disabled
 ```
 
 To configure custom schedule, for a one hour window starting on Wednesdays at 2:29PM (UTC), use this command:
 
 ```azurecli-interactive
-az postgres flexible-server update --resource-group <resource_group> --name <server> --maintenance-window Wed:14:29
+az postgres flexible-server update \
+  --resource-group <resource_group> \
+  --name <server> \
+  --maintenance-window Wed:14:29
 ```
 
 To configure custom schedule, for a one hour window starting on Saturdays at midnight (UTC), use this command:
 
 ```azurecli-interactive
-az postgres flexible-server update --resource-group <resource_group> --name <server> --maintenance-window Wed
+az postgres flexible-server update \
+  --resource-group <resource_group> \
+  --name <server> \
+  --maintenance-window Wed
 ```
 
 ---

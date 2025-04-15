@@ -60,7 +60,10 @@ Using the [Azure portal](https://portal.azure.com/):
 You can disable public access on a server via the [az postgres flexible-server update](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-update) command.
 
 ```azurecli-interactive
-az postgres flexible-server update --resource-group <resource_group> --name <server> --public-access disabled
+az postgres flexible-server update \
+  --resource-group <resource_group> \
+  --name <server> \
+  --public-access disabled
 ```
 
 If you attempt to disable public access on a server which isn't in `Ready` state, you receive an error like this:
@@ -75,7 +78,10 @@ If you attempt to disable public access on a server which wasn't deployed with n
 To determine if a server has public access disabled or enabled, run the following command:
 
 ```azurecli-interactive
-az postgres flexible-server show --resource-group <resource_group> --name <server> --query '{"publicAccess":network.publicNetworkAccess}'
+az postgres flexible-server show \
+  --resource-group <resource_group> \
+  --name <server> \
+  --query '{"publicAccess":network.publicNetworkAccess}'
 ```
 
 ---
