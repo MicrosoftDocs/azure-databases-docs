@@ -41,7 +41,7 @@ In this tutorial, you learn how to:
 - An existing Azure Databricks workspace.
   - You can create a new Azure Databricks workspace by following steps here,  [create a new Azure Databricks workspace](/azure/databricks/getting-started/).
 
-## Getting Started
+## Detailed Steps and Sample Code to Setup Reverse ETL Pipeline
 
 In this tutorial, we set up a reverse ETL pipeline to move enriched data from Delta tables in Databricks to Azure Cosmos DB NoSQL. We use the Cosmos DB OLTP Spark Connector for batch or streaming data synchronization, ensuring data is available instantly for operational use.
 
@@ -67,21 +67,20 @@ Define a configuration dictionary (cosmos_config) in your notebook to connect yo
 
     ```python
     # Set configuration settings
-    cosmos_config = {
-    "spark.cosmos.accountEndpoint": "<nosql-account-endpoint>",
-    "spark.cosmos.accountKey": "<nosql-account-key>",
-    # "spark.cosmos.account.subscriptionId": subscriptionId,
-    # "spark.cosmos.account.tenantId": tenantId,
-    # "spark.cosmos.account.resourceGroupName":resourceGroupName,
-    "spark.cosmos.database": "cosmicworks",
-    "spark.cosmos.container": "products",
-    "spark.cosmos.throughputControl.enabled": "true",
-    "spark.cosmos.throughputControl.name": "TargetContainerThroughputControl",
-    "spark.cosmos.throughputControl.targetThroughputThreshold": "0.30", 
-    "spark.cosmos.throughputControl.globalControl.useDedicatedContainer": "false"
-     }
+      cosmos_config = {
+      "spark.cosmos.accountEndpoint": "<nosql-account-endpoint>",
+      "spark.cosmos.accountKey": "<nosql-account-key>",
+      #"spark.cosmos.account.subscriptionId": subscriptionId,
+      #"spark.cosmos.account.tenantId": tenantId,
+      #"spark.cosmos.account.resourceGroupName":resourceGroupName,
+      "spark.cosmos.database": "cosmicworks",
+      "spark.cosmos.container": "products",
+      "spark.cosmos.throughputControl.enabled": "true",
+      "spark.cosmos.throughputControl.name": "TargetContainerThroughputControl",
+      "spark.cosmos.throughputControl.targetThroughputThreshold": "0.30", 
+      "spark.cosmos.throughputControl.globalControl.useDedicatedContainer": "false"
+      }
     ```
-
     ::: zone-end
 
     ::: zone pivot="programming-language-scala"
@@ -102,19 +101,19 @@ Define a configuration dictionary (cosmos_config) in your notebook to connect yo
 
 Create a sample DataFrame with product information and write it into a Delta table named products_delta. This step simulates curated, transformed data in your data lake that you intend to sync to Cosmos DB. Writing to Delta ensures you can later enable change data capture (CDC) for incremental syncs.
 
-    ::: zone pivot="programming-language-python"
+::: zone pivot="programming-language-python"
 
-    ```python
-    # Ingest Sample Product Data to Delta Table
-    from pyspark.sql import SparkSession
-    df = spark.createDataFrame([
-        ("p001", "Contoso Coffee Mug", "drinkware", 12.95),
-        ("p002", "Contoso T-Shirt", "apparel", 19.99)
-    ], ["id", "name", "category", "price"])
-    df.write.mode("append").format("delta").saveAsTable("products_delta")
-    ```
+```python
+# Ingest Sample Product Data to Delta Table
+from pyspark.sql import SparkSession
+df = spark.createDataFrame([
+    ("p001", "Contoso Coffee Mug", "drinkware", 12.95),
+    ("p002", "Contoso T-Shirt", "apparel", 19.99)
+], ["id", "name", "category", "price"])
+df.write.mode("append").format("delta").saveAsTable("products_delta")
+```
 
-    ::: zone-end
+::: zone-end
 
     ::: zone pivot="programming-language-scala"
 
