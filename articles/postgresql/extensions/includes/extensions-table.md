@@ -2,7 +2,7 @@
 author: akashraokm
 ms.author: akashrao
 ms.reviewer: maghan, randolphwest
-ms.date: 03/10/2025
+ms.date: 04/14/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
@@ -15,7 +15,7 @@ ms.custom:
 
 | PostgreSQL version | Extension version |
 | --- | --- |
-| 17 | 3.5.0 |
+| 17 | 3.5.2 |
 | 16 | 3.3.3 |
 | 15 | 3.3.1 |
 | 14 | 3.2.3 |
@@ -29,7 +29,7 @@ ms.custom:
 
 | PostgreSQL version | Extension version |
 | --- | --- |
-| 17 | 3.5.0 |
+| 17 | 3.5.2 |
 | 16 | 3.3.3 |
 | 15 | 3.3.1 |
 | 14 | 3.2.3 |
@@ -119,7 +119,7 @@ ms.custom:
 
 | PostgreSQL version | Extension version |
 | --- | --- |
-| 17 | N/A |
+| 17 | 1.5 |
 | 16 | 1.5 <sup>*</sup> |
 | 15 | 1.5 <sup>*</sup> |
 | 14 | 1.5 <sup>*</sup> |
@@ -214,7 +214,7 @@ ms.custom:
 | 11 | 1.2 |
 
 > [!NOTE]
-> Read the special considerations for extension [dblink](../concepts-extensions-considerations.md#dblink) in Flexible Server.
+> Read the special considerations for extension [dblink](../concepts-extensions-considerations.md#dblink) in flexible server.
 
 ## dict_int
 
@@ -358,7 +358,7 @@ ms.custom:
 
 ## lo
 
-[lo](https://www.postgresql.org/docs/current/lo.html) provides data types for international product numbering standards.
+[lo](https://www.postgresql.org/docs/current/lo.html) provides support for managing Large Objects (also called LOs or BLOBs). This includes a data type lo and a trigger lo_manage.
 
 | PostgreSQL version | Extension version |
 | --- | --- |
@@ -471,7 +471,7 @@ ms.custom:
 | 11 | 1.3 |
 
 > [!NOTE]
-> Read the special considerations for extension [pg_buffercache](../concepts-extensions-considerations.md#pg_buffercache) in Flexible Server.
+> Read the special considerations for extension [pg_buffercache](../concepts-extensions-considerations.md#pg_buffercache) in flexible server.
 
 ## pg_cron
 
@@ -489,7 +489,7 @@ ms.custom:
 
 <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
 > [!NOTE]
-> Read the special considerations for extension [pg_cron](../concepts-extensions-considerations.md#pg_cron) in Flexible Server.
+> Read the special considerations for extension [pg_cron](../concepts-extensions-considerations.md#pg_cron) in flexible server.
 
 ## pgcrypto
 
@@ -511,10 +511,10 @@ ms.custom:
 
 | PostgreSQL version | Extension version |
 | --- | --- |
-| 17 | N/A |
-| 16 | 0.5.0 |
-| 15 | 0.5.0 |
-| 14 | 0.5.0 |
+| 17 | 0.6.2 |
+| 16 | 0.6.2 |
+| 15 | 0.6.2 |
+| 14 | 0.6.2 |
 | 13 | N/A |
 | 12 | N/A |
 | 11 | N/A |
@@ -535,7 +535,7 @@ ms.custom:
 
 <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
 > [!NOTE]
-> Read the special considerations for extension [pg_failover_slots](../concepts-extensions-considerations.md#pg_failover_slots) in Flexible Server.
+> Read the special considerations for extension [pg_failover_slots](../concepts-extensions-considerations.md#pg_failover_slots) in flexible server.
 
 ## pg_freespacemap
 
@@ -567,7 +567,7 @@ ms.custom:
 
 <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
 > [!NOTE]
-> Read the special considerations for extension [pg_hint_plan](../concepts-extensions-considerations.md#pg_hint_plan) in Flexible Server.
+> Read the special considerations for extension [pg_hint_plan](../concepts-extensions-considerations.md#pg_hint_plan) in flexible server.
 
 ## pglogical
 
@@ -633,7 +633,7 @@ ms.custom:
 
 <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
 > [!NOTE]
-> Read the special considerations for extension [pg_prewarm](../concepts-extensions-considerations.md#pg_prewarm) in Flexible Server.
+> Read the special considerations for extension [pg_prewarm](../concepts-extensions-considerations.md#pg_prewarm) in flexible server.
 
 ## pg_repack
 
@@ -650,7 +650,7 @@ ms.custom:
 | 11 | 1.4.7 |
 
 > [!NOTE]
-> Read the special considerations for extension [pg_repack](../concepts-extensions-considerations.md#pg_repack) in Flexible Server.
+> Read the special considerations for extension [pg_repack](../concepts-extensions-considerations.md#pg_repack) in flexible server.
 
 ## pgrouting
 
@@ -712,8 +712,7 @@ ms.custom:
 
 <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
 > [!NOTE]
-> Read the special considerations for extension [pg_stat_statements](../concepts-extensions-considerations.md#pg_stat_statements) in Flexible Server.
-
+> Read the special considerations for extension [pg_stat_statements](../concepts-extensions-considerations.md#pg_stat_statements) in flexible server.
 
 ## pgstattuple
 
@@ -730,7 +729,7 @@ ms.custom:
 | 11 | 1.5 |
 
 > [!NOTE]
-> Read the special considerations for extension [pgstattuple](../concepts-extensions-considerations.md#pgstattuple) in Flexible Server.
+> Read the special considerations for extension [pgstattuple](../concepts-extensions-considerations.md#pgstattuple) in flexible server.
 
 ## pg_trgm
 
@@ -760,20 +759,6 @@ ms.custom:
 | 12 | 1.2 |
 | 11 | 1.2 |
 
-## plpgsql
-
-[plpgsql](https://www.postgresql.org/docs/current/plpgsql.html) pL/pgSQL is a SQL procedural language.
-
-| PostgreSQL version | Extension version |
-| --- | --- |
-| 17 | 1.0 |
-| 16 | 1.0 |
-| 15 | 1.0 |
-| 14 | 1.0 |
-| 13 | 1.0 |
-| 12 | 1.0 |
-| 11 | 1.0 |
-
 ## plv8
 
 [plv8](https://github.com/plv8/plv8) pL/JavaScript (v8) is a trusted procedural language.
@@ -794,7 +779,7 @@ ms.custom:
 
 | PostgreSQL version | Extension version |
 | --- | --- |
-| 17 | 3.5.0 |
+| 17 | 3.5.2 |
 | 16 | 3.3.3 |
 | 15 | 3.3.1 |
 | 14 | 3.2.3 |
@@ -808,7 +793,7 @@ ms.custom:
 
 | PostgreSQL version | Extension version |
 | --- | --- |
-| 17 | 3.5.0 |
+| 17 | 3.5.2 |
 | 16 | 3.3.3 |
 | 15 | 3.3.1 |
 | 14 | 3.2.3 |
@@ -822,7 +807,7 @@ ms.custom:
 
 | PostgreSQL version | Extension version |
 | --- | --- |
-| 17 | 3.5.0 |
+| 17 | 3.5.2 |
 | 16 | 3.3.3 |
 | 15 | 3.3.1 |
 | 14 | 3.2.3 |
@@ -836,7 +821,7 @@ ms.custom:
 
 | PostgreSQL version | Extension version |
 | --- | --- |
-| 17 | 3.5.0 |
+| 17 | 3.5.2 |
 | 16 | 3.3.3 |
 | 15 | 3.3.1 |
 | 14 | 3.2.3 |
@@ -850,7 +835,7 @@ ms.custom:
 
 | PostgreSQL version | Extension version |
 | --- | --- |
-| 17 | 3.5.0 |
+| 17 | 3.5.2 |
 | 16 | 3.3.3 |
 | 15 | 3.3.1 |
 | 14 | 3.2.3 |
@@ -873,7 +858,7 @@ ms.custom:
 | 11 | 1.0 |
 
 > [!NOTE]
-> Read the special considerations for extension [postgres_fdw](../concepts-extensions-considerations.md#postgres_fdw) in Flexible Server.
+> Read the special considerations for extension [postgres_fdw](../concepts-extensions-considerations.md#postgres_fdw) in flexible server.
 
 ## postgres_protobuf
 
@@ -1088,3 +1073,4 @@ ms.custom:
 | 11 | 2.2 <sup>*</sup> |
 
 <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
+
