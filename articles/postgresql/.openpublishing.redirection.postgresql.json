@@ -2059,6 +2059,16 @@
         "source_path_from_root": "/articles/postgresql/flexible-server/how-to-restore-server.md",
         "redirect_url": "/azure/postgresql/flexible-server/how-to-restore-latest-restore-point",
         "redirect_document_id": false
+    },
+    {
+        "source_path_from_root": "/articles/postgresql/flexible-server/how-to-read-replicas-portal.md",
+        "redirect_url": "/azure/postgresql/flexible-server/how-to-create-read-replica",
+        "redirect_document_id": false
+    },
+    {
+        "source_path_from_root": "/articles/postgresql/flexible-server/how-to-read-replicas-virtual-endpoints-terraform.md",
+        "redirect_url": "/azure/postgresql/flexible-server/how-to-create-read-replica",
+        "redirect_document_id": false
     }
 ]
 }

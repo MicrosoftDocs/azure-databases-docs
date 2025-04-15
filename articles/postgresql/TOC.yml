@@ -573,12 +573,24 @@
         href: flexible-server/how-to-scale-storage-performance.md
       - name: Configure storage autogrow
         href: flexible-server/how-to-auto-grow-storage.md
-      - name: Replication
+      - name: Read replicas
         items:
-        - name: Azure portal, CLI, REST API
-          href: flexible-server/how-to-read-replicas-portal.md
-        - name: Read replica with Terraform
-          href: flexible-server/how-to-read-replicas-virtual-endpoints-terraform.md
+        - name: Create read replica
+          href: flexible-server/how-to-create-read-replica.md
+        - name: Create virtual endpoints
+          href: flexible-server/how-to-create-virtual-endpoints.md
+        - name: Update virtual endpoints
+          href: flexible-server/how-to-update-virtual-endpoints.md
+        - name: Show virtual endpoints
+          href: flexible-server/how-to-show-virtual-endpoints.md
+        - name: Delete virtual endpoints
+          href: flexible-server/how-to-delete-virtual-endpoints.md
+        - name: Switch over replica to primary
+          href: flexible-server/how-to-switch-over-replica-to-primary.md
+        - name: Promote replica to standalone server
+          href: flexible-server/how-to-promote-replica-to-standalone.md
+        - name: Delete read replica
+          href: flexible-server/how-to-delete-read-replica.md
     - name: Backup and restore
       items:
         - name: Backup
