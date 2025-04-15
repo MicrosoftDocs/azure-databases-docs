@@ -14,7 +14,7 @@ ms.topic: how-to
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
-This article provides step-by-step instructions to swicth over a read replica of an Azure Database for PostgreSQL flexible server so that it becomes the new primary server of the replication set.
+This article provides step-by-step instructions to switch over a read replica of an Azure Database for PostgreSQL flexible server so that it becomes the new primary server of the replication set.
 
 ## Steps to promote replica to standalone server
 
@@ -32,7 +32,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="./media/how-to-read-replicas/switch-over-or-promote-to-standalone.png" alt-text="Screenshot showing the Switch over or Promote to standalone pane." lightbox="./media/how-to-read-replicas/switch-over-or-promote-to-standalone.png":::
 
-4. In **Replica server to promote**, select **Promote to independent server and remove from replication. This won't impact the primary server.** for **Action**. And select **Planned** or **Forced** for **Data sync**, depending on what suits your needs best. if you decide to use the **Planned** option, you have to mark the **I understand that this read replica will become an independent server and that this action can't be undone.** to acknowledge that the read replica will be dettached into its own standalone entity. If you decide to use the **Forced** option, you have to mark the **I understand that this read replica will become an independent server and that its data won't be synced first. This action can't be undone.** checkbox to also acknowledge the potential data loss. Finally, select **Promote**.
+4. In **Replica server to promote**, select **Promote to independent server and remove from replication. This won't impact the primary server.** for **Action**. And select **Planned** or **Forced** for **Data sync**, depending on what suits your needs best. if you decide to use the **Planned** option, you have to mark the **I understand that this read replica will become an independent server and that this action can't be undone.** to acknowledge that the read replica will be detached into its own standalone entity. If you decide to use the **Forced** option, you have to mark the **I understand that this read replica will become an independent server and that its data won't be synced first. This action can't be undone.** checkbox to also acknowledge the potential data loss. Finally, select **Promote**.
 
     :::image type="content" source="./media/how-to-read-replicas/promote-to-standalone.png" alt-text="Screenshot showing the Promote to standalone pane." lightbox="./media/how-to-read-replicas/promote-to-standalone.png":::
 

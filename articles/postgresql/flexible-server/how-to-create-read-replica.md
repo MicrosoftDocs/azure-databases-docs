@@ -97,7 +97,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 8.  A new deployment is launched to create your new Azure Database for PostgreSQL flexible server and make it a read replica of the primary server.
     
-    :::image type="content" source="./media/how-to-read-replicas/create-replica-deployment-progress.png" alt-text="Screenshot that shows the deployment in progress to create your new Azure Database for PostgreSQL flexible server" lightbox="./media/how-to-read-replicas/create-replica-deployment-progress.png":::
+    :::image type="content" source="./media/how-to-read-replicas/create-replica-deployment-progress.png" alt-text="Screenshot that shows the deployment in progress to create your new Azure Database for PostgreSQL flexible server." lightbox="./media/how-to-read-replicas/create-replica-deployment-progress.png":::
 
 9. When the deployment completes, you can select **Go to resource**, to start using your new Azure Database for PostgreSQL flexible server.
 

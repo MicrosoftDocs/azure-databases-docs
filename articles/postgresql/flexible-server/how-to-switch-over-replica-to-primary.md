@@ -14,7 +14,7 @@ ms.topic: how-to
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
-This article provides step-by-step instructions to swicth over a read replica of an Azure Database for PostgreSQL flexible server so that it becomes the new primary server of the replication set.
+This article provides step-by-step instructions to switch over a read replica of an Azure Database for PostgreSQL flexible server so that it becomes the new primary server of the replication set.
 
 ## Steps to switch over read replica to primary
 
