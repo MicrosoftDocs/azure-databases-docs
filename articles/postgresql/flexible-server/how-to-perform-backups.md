@@ -11,7 +11,7 @@ ms.topic: how-to
 # customer intent: As a user, I want to learn how can I performn on-demand backups of an Azure Database for PostgreSQL flexible server.
 ---
 
-# Perform on-demand backups (preview)
+# Perform on-demand backups
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
