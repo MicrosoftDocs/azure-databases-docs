@@ -550,7 +550,7 @@ Below are the list of operators currently supported on Azure Cosmos DB for Mongo
 </table>
 
 > [!NOTE]
-> Schema validation supports: insert, update, findAndModify, and the $merge / $out stages in aggregation. Use bypassDocumentValidation to skip validation if needed.
+> *Schema validation supports: insert, update, findAndModify, and the $merge / $out stages in aggregation. Use bypassDocumentValidation to skip validation if needed.
 
 ## Indexes and index properties
 
