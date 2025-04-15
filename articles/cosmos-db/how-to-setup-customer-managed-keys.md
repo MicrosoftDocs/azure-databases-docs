@@ -59,6 +59,9 @@ If the **Microsoft.DocumentDB** resource provider isn't already registered, you 
 > [!IMPORTANT]
 > Your Azure Key Vault instance must be accessible through public network access or allow trusted Microsoft services to bypass its firewall. An instance that is exclusively accessible through [private endpoints](/azure/key-vault/general/private-link-service) cannot be used to host your customer-managed keys.
 
+> [!NOTE]
+> It is highly recommended that, when the key vault resource is created, it leverages the existing [data replication mechanisms](azure/key-vault/general/disaster-recovery-guidance#data-replication) in order to ensure continous availability during potential regional outtages.
+
 Using customer-managed keys with Azure Cosmos DB requires you to set two properties on the Azure Key Vault instance that you plan to use to host your encryption keys: **Soft Delete** and **Purge Protection**.
 
 1. If you create a new Azure Key Vault instance, enable these properties during creation:
