@@ -63,39 +63,39 @@ Set the default language to Python or Scala and attach it to the cluster.
 
 Define a configuration dictionary (cosmos_config) in your notebook to connect your Spark session with Cosmos DB. These details include the Cosmos DB account endpoint, Managed Identity, Subscription, Tenant, database, and container name. It also enables throughput control to limit the RU consumption from Spark jobs, which helps prevent overloading the Cosmos DB account. Throughput control options include the control name, RU threshold, and the metadata container details
 
-    ::: zone pivot="programming-language-python"
+::: zone pivot="programming-language-python"
 
-    ```python
-    # Set configuration settings
-      cosmos_config = {
-      "spark.cosmos.accountEndpoint": "<nosql-account-endpoint>",
-      "spark.cosmos.accountKey": "<nosql-account-key>",
-      #"spark.cosmos.account.subscriptionId": subscriptionId,
-      #"spark.cosmos.account.tenantId": tenantId,
-      #"spark.cosmos.account.resourceGroupName":resourceGroupName,
-      "spark.cosmos.database": "cosmicworks",
-      "spark.cosmos.container": "products",
-      "spark.cosmos.throughputControl.enabled": "true",
-      "spark.cosmos.throughputControl.name": "TargetContainerThroughputControl",
-      "spark.cosmos.throughputControl.targetThroughputThreshold": "0.30", 
-      "spark.cosmos.throughputControl.globalControl.useDedicatedContainer": "false"
-      }
-    ```
-    ::: zone-end
+```python
+# Set configuration settings
+  cosmos_config = {
+  "spark.cosmos.accountEndpoint": "<nosql-account-endpoint>",
+  "spark.cosmos.accountKey": "<nosql-account-key>",
+  #"spark.cosmos.account.subscriptionId": subscriptionId,
+  #"spark.cosmos.account.tenantId": tenantId,
+  #"spark.cosmos.account.resourceGroupName":resourceGroupName,
+  "spark.cosmos.database": "cosmicworks",
+  "spark.cosmos.container": "products",
+  "spark.cosmos.throughputControl.enabled": "true",
+  "spark.cosmos.throughputControl.name": "TargetContainerThroughputControl",
+  "spark.cosmos.throughputControl.targetThroughputThreshold": "0.30", 
+  "spark.cosmos.throughputControl.globalControl.useDedicatedContainer": "false"
+  }
+```
+::: zone-end
 
-    ::: zone pivot="programming-language-scala"
+::: zone pivot="programming-language-scala"
 
-    ```scala
-    # Set configuration settings
-    val config = Map(
-      "spark.cosmos.accountEndpoint" -> "<nosql-account-endpoint>",
-      "spark.cosmos.accountKey" -> "<nosql-account-key>",
-      "spark.cosmos.database" -> "cosmicworks",
-      "spark.cosmos.container" -> "products"
-    )
-    ```
+```scala
+# Set configuration settings
+val config = Map(
+  "spark.cosmos.accountEndpoint" -> "<nosql-account-endpoint>",
+  "spark.cosmos.accountKey" -> "<nosql-account-key>",
+  "spark.cosmos.database" -> "cosmicworks",
+  "spark.cosmos.container" -> "products"
+)
+```
 
-    ::: zone-end
+::: zone-end
 
 **Step 3: Ingest Sample Product Data to Delta Table**
 
@@ -115,77 +115,77 @@ df.write.mode("append").format("delta").saveAsTable("products_delta")
 
 ::: zone-end
 
-    ::: zone pivot="programming-language-scala"
+::: zone pivot="programming-language-scala"
 
-    ```scala
-    # Ingest Sample Product Data to Delta Table
-    val config = Map(
-      "spark.cosmos.accountEndpoint" -> "<nosql-account-endpoint>",
-      "spark.cosmos.accountKey" -> "<nosql-account-key>",
-      "spark.cosmos.database" -> "cosmicworks",
-      "spark.cosmos.container" -> "products"
-    )
-    ```
+```scala
+# Ingest Sample Product Data to Delta Table
+val config = Map(
+  "spark.cosmos.accountEndpoint" -> "<nosql-account-endpoint>",
+  "spark.cosmos.accountKey" -> "<nosql-account-key>",
+  "spark.cosmos.database" -> "cosmicworks",
+  "spark.cosmos.container" -> "products"
+)
+```
 
-    ::: zone-end
+::: zone-end
 
 **Step 4: Initial Batch Load to Cosmos DB**
 
 Read the products_delta Delta table into a Spark DataFrame and perform an initial batch write to Cosmos DB using the cosmos.oltp format. Use the append mode to add the data without overwriting existing content in Cosmos DB. This step ensures that all the baseline data is available in Cosmos DB before CDC begins
 
-    ::: zone pivot="programming-language-python"
+::: zone pivot="programming-language-python"
 
-    ```python
-    # Initial Batch Load to Cosmos DB
-    df_delta = spark.read.format("delta").table("products_delta")
-    df_delta.write.format("cosmos.oltp") .mode("append").options(**cosmos_config) .save()
-    ```
+```python
+# Initial Batch Load to Cosmos DB
+df_delta = spark.read.format("delta").table("products_delta")
+df_delta.write.format("cosmos.oltp") .mode("append").options(**cosmos_config) .save()
+```
 
-    ::: zone-end
+::: zone-end
 
-    ::: zone pivot="programming-language-scala"
+::: zone pivot="programming-language-scala"
 
-    ```scala
-    # Initial Batch Load to Cosmos DB
-    val config = Map(
-      "spark.cosmos.accountEndpoint" -> "<nosql-account-endpoint>",
-      "spark.cosmos.accountKey" -> "<nosql-account-key>",
-      "spark.cosmos.database" -> "cosmicworks",
-      "spark.cosmos.container" -> "products"
-    )
-    ```
+```scala
+# Initial Batch Load to Cosmos DB
+val config = Map(
+  "spark.cosmos.accountEndpoint" -> "<nosql-account-endpoint>",
+  "spark.cosmos.accountKey" -> "<nosql-account-key>",
+  "spark.cosmos.database" -> "cosmicworks",
+  "spark.cosmos.container" -> "products"
+)
+```
 
-    ::: zone-end
+::: zone-end
 
 **Step 5: Enable Change Data Feed for Delta table**
 
 Enable Delta Lake's Change Data Feed on the products_delta table by altering its table properties. CDF allows Delta to track all future row-level inserts, updates, and deletes. Enabling this property is essential for performing incremental syncs to Cosmos DB, as it exposes changes without needing to compare snapshots.
 
 
-    ::: zone pivot="programming-language-python"
+::: zone pivot="programming-language-python"
 
-    ```python
-    # Enable CDC for Delta table
-    spark.sql("""
-      ALTER TABLE products_delta SET TBLPROPERTIES (delta.enableChangeDataFeed = true)
-    """)
-    ```
+```python
+# Enable CDC for Delta table
+spark.sql("""
+  ALTER TABLE products_delta SET TBLPROPERTIES (delta.enableChangeDataFeed = true)
+""")
+```
 
-    ::: zone-end
+::: zone-end
 
-    ::: zone pivot="programming-language-scala"
+::: zone pivot="programming-language-scala"
 
-    ```scala
-    # Enable CDC for Delta table
-    val config = Map(
-      "spark.cosmos.accountEndpoint" -> "<nosql-account-endpoint>",
-      "spark.cosmos.accountKey" -> "<nosql-account-key>",
-      "spark.cosmos.database" -> "cosmicworks",
-      "spark.cosmos.container" -> "products"
-    )
-    ```
+```scala
+# Enable CDC for Delta table
+val config = Map(
+  "spark.cosmos.accountEndpoint" -> "<nosql-account-endpoint>",
+  "spark.cosmos.accountKey" -> "<nosql-account-key>",
+  "spark.cosmos.database" -> "cosmicworks",
+  "spark.cosmos.container" -> "products"
+)
+```
 
-    ::: zone-end
+::: zone-end
 
 **Step 6: Perform Change Data Capture (CDC) Reads from Delta Table**
 
@@ -197,88 +197,88 @@ Runs on a schedule (for example, daily or hourly) and loads an incremental snaps
 
 Read the changes from the Delta table starting from a specific version or specific timestamp using the readChangeData option. Write the resulting changes to Cosmos DB using the same connector and configuration.
 
-    ::: zone pivot="programming-language-python"
+::: zone pivot="programming-language-python"
 
-    ```python
-    # Batch CDC Sync to Cosmos DB
-    cdc_batch_df = spark.read.format("delta").option("readChangeData", "true").option("startingVersion", "1").table("products_delta")
-    cdc_batch_df.write.format("cosmos.oltp").mode("append").options(**cosmos_config).save()
-    ```
+```python
+# Batch CDC Sync to Cosmos DB
+cdc_batch_df = spark.read.format("delta").option("readChangeData", "true").option("startingVersion", "1").table("products_delta")
+cdc_batch_df.write.format("cosmos.oltp").mode("append").options(**cosmos_config).save()
+```
 
-    ::: zone-end
+::: zone-end
 
-    ::: zone pivot="programming-language-scala"
+::: zone pivot="programming-language-scala"
 
-    ```scala
-    # Batch CDC Sync to Cosmos DB
-    val config = Map(
-      "spark.cosmos.accountEndpoint" -> "<nosql-account-endpoint>",
-      "spark.cosmos.accountKey" -> "<nosql-account-key>",
-      "spark.cosmos.database" -> "cosmicworks",
-      "spark.cosmos.container" -> "products"
-    )
-    ```
+```scala
+# Batch CDC Sync to Cosmos DB
+val config = Map(
+  "spark.cosmos.accountEndpoint" -> "<nosql-account-endpoint>",
+  "spark.cosmos.accountKey" -> "<nosql-account-key>",
+  "spark.cosmos.database" -> "cosmicworks",
+  "spark.cosmos.container" -> "products"
+)
+```
 
-    ::: zone-end
+::: zone-end
 
 **Step 6b: Stream CDC to Cosmos DB**
 
 Continuously syncs incremental changes in near real-time, keeping the target system up to date with minimal lag. Use spark Structured Streaming to continuously capture and write changes. The Delta table acts as a streaming source with readChangeData = true, and the Cosmos DB connector acts as a streaming sink. Specify a checkpoint location to ensure progress is tracked and duplicate writes are avoided.
 
-    ::: zone pivot="programming-language-python"
+::: zone pivot="programming-language-python"
 
-    ```python
-    # Stream CDC to Cosmos DB
-    cdc_stream_df = spark.readStream.format("delta").option("readChangeData", "true").table("products_delta")
-    streaming_query = cdc_stream_df.writeStream.format("cosmos.oltp").outputMode("append").options(**cosmos_config).option("checkpointLocation", "/mnt/checkpoints/products-stream").start()
-    try:   streaming_query.awaitTermination(60)
-    except:     print("Stream stopped or timed out.")
-    if streaming_query.isActive: streaming_query.stop()
-    ```
+```python
+# Stream CDC to Cosmos DB
+cdc_stream_df = spark.readStream.format("delta").option("readChangeData", "true").table("products_delta")
+streaming_query = cdc_stream_df.writeStream.format("cosmos.oltp").outputMode("append").options(**cosmos_config).option("checkpointLocation", "/mnt/checkpoints/products-stream").start()
+try:   streaming_query.awaitTermination(60)
+except:     print("Stream stopped or timed out.")
+if streaming_query.isActive: streaming_query.stop()
+```
 
-    ::: zone-end
+::: zone-end
 
-    ::: zone pivot="programming-language-scala"
+::: zone pivot="programming-language-scala"
 
-    ```scala
-    # Stream CDC to Cosmos DB
-    val config = Map(
-      "spark.cosmos.accountEndpoint" -> "<nosql-account-endpoint>",
-      "spark.cosmos.accountKey" -> "<nosql-account-key>",
-      "spark.cosmos.database" -> "cosmicworks",
-      "spark.cosmos.container" -> "products"
-    )
-    ```
+```scala
+# Stream CDC to Cosmos DB
+val config = Map(
+  "spark.cosmos.accountEndpoint" -> "<nosql-account-endpoint>",
+  "spark.cosmos.accountKey" -> "<nosql-account-key>",
+  "spark.cosmos.database" -> "cosmicworks",
+  "spark.cosmos.container" -> "products"
+)
+```
 
-    ::: zone-end
-    
+::: zone-end
+
 **Step 7: Query Cosmos DB from Spark**
 
 After writing to Cosmos DB, verify the data by reading it back into Spark using the same Cosmos DB configuration. Then inspect the ingested data, run validations, or join with other datasets in Delta for analytics or reporting. Cosmos DB supports fast, indexed reads for real-time query performance.
 
-    ::: zone pivot="programming-language-python"
+::: zone pivot="programming-language-python"
 
-    ```python
-    # Query Cosmos DB from Spark
-    df_cosmos = spark.read.format("cosmos.oltp").options(**cosmos_config).load()
-    df_cosmos.select("id", "name", "category", "price").show()
-    ```
+```python
+# Query Cosmos DB from Spark
+df_cosmos = spark.read.format("cosmos.oltp").options(**cosmos_config).load()
+df_cosmos.select("id", "name", "category", "price").show()
+```
 
-    ::: zone-end
+::: zone-end
 
-    ::: zone pivot="programming-language-scala"
+::: zone pivot="programming-language-scala"
 
-    ```scala
-    # Query Cosmos DB from Spark
-    val config = Map(
-      "spark.cosmos.accountEndpoint" -> "<nosql-account-endpoint>",
-      "spark.cosmos.accountKey" -> "<nosql-account-key>",
-      "spark.cosmos.database" -> "cosmicworks",
-      "spark.cosmos.container" -> "products"
-    )
-    ```
+```scala
+# Query Cosmos DB from Spark
+val config = Map(
+  "spark.cosmos.accountEndpoint" -> "<nosql-account-endpoint>",
+  "spark.cosmos.accountKey" -> "<nosql-account-key>",
+  "spark.cosmos.database" -> "cosmicworks",
+  "spark.cosmos.container" -> "products"
+)
+```
 
-    ::: zone-end
+::: zone-end
     
 ## Related content
 
