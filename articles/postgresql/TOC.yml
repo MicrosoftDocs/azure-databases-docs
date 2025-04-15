@@ -527,8 +527,6 @@
             href: flexible-server/how-to-enable-intelligent-performance-portal.md
           - name: Azure CLI
             href: flexible-server/how-to-enable-intelligent-performance-cli.md
-      - name: Read replicas
-        href: flexible-server/how-to-monitor-read-replicas.md
     - name: Networking
       items:
       - name: Public access (allowed IP addresses)
