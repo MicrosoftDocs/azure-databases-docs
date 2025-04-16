@@ -55,7 +55,7 @@ You can create a linked service using the Azure Data Factory UI or programmatica
 
 1. Make sure that **Version 2.0** is selected.
 
-    :::image type="content" source="media/how-to-connect-data-factory/linked-service.png" alt-text="Screenshot of New linked service window for Azure Database for PostgreSQL connector." lightbox="media/how-to-connect-data-factory/linked-service.png":::
+    :::image type="content" source="media/how-to-connect-data-factory/linked-service-new.png" alt-text="Screenshot of New linked service window for Azure Database for PostgreSQL connector." lightbox="media/how-to-connect-data-factory/linked-service-new.png":::
 
 #### Authentication
 
@@ -79,11 +79,11 @@ There are two supported methods for authentication: service principal and basic 
     
     Enter the **Fully qualified domain name**, **Port**, and **Database name**.
     
-    :::image type="content" source="media/how-to-connect-data-factory/authentication-username-password.png" alt-text="Screenshot of Account selection method Enter manually." lightbox="media/how-to-connect-data-factory/authentication-username-password.png":::
+    :::image type="content" source="media/how-to-connect-data-factory/authentication-account-selection-method-manual.png" alt-text="Screenshot of Account selection method Enter manually." lightbox="media/how-to-connect-data-factory/authentication-account-selection-method-manual.png":::
 
 1. Enter the **Username** and **Password**.
 
-:::image type="content" source="media/how-to-connect-data-factory/authentication-username-password.png" alt-text="Screenshot of Username and password." lightbox="media/how-to-connect-data-factory/authentication-username-password.png":::
+    :::image type="content" source="media/how-to-connect-data-factory/authentication-username-password.png" alt-text="Screenshot of Username and password." lightbox="media/how-to-connect-data-factory/authentication-username-password.png":::
 
 ##### Service principal authentication
 
@@ -109,7 +109,7 @@ Following the steps below requires setting up a linked service in Azure Data Fac
     
     Enter the **Fully qualified domain name**, **Port**, and **Database name**.
     
-    :::image type="content" source="media/how-to-connect-data-factory/authentication-username-password.png" alt-text="Screenshot of Account selection method Enter manually." lightbox="media/how-to-connect-data-factory/authentication-username-password.png":::
+    :::image type="content" source="media/how-to-connect-data-factory/authentication-account-selection-method-manual.png" alt-text="Screenshot of Account selection method Enter manually." lightbox="media/how-to-connect-data-factory/authentication-account-selection-method-manual.png":::
 
 1. Enter your **Service Principal Name**, also shown as the **Display Name** for your service principal key.
 
