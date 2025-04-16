@@ -154,6 +154,6 @@ ms.devlang: java
 
 ## 📚 References
 
-- [V2 Connector GitHub](https://github.com/Azure/azure-cosmos-kafka-connect)
+- [V2 Connector GitHub](https://github.com/Azure/azure-sdk-for-java/tree/main/sdk/cosmos/azure-cosmos-kafka-connect)
 - [Kafka Connect Docs](https://kafka.apache.org/documentation/#connect)
 
