@@ -14,6 +14,12 @@ appliesto:
 
 # Use Microsoft Entra ID users for authentication with Azure Cosmos DB for MongoDB vCore
 
+> [!IMPORTANT]
+> Microsoft Entra ID authentication in Azure Cosmos DB for MongoDB vCore is currently in preview.
+> This preview version is provided without a service level agreement, and it's not recommended
+> for production workloads. Certain features might not be supported or might have constrained
+> capabilities.
+
 In this article, you configure administrative Microsoft Entra ID users to be used with Azure Cosmos DB for MongoDB vCore. You also learn how to use a Microsoft Entra ID token with Azure Cosmos DB for MongoDB vCore. Microsoft Entra ID user can be a user or a service principal.
 
 Microsoft Entra ID users added to the cluster are going to be in addition to native DocumentDB users defined on the cluster. An Azure Cosmos DB for MongoDB vCore cluster is created with one built-in native DocumentDB user. You can add more native DocumentDB users after cluster provisioning is completed.
@@ -72,7 +78,7 @@ If you see the following in the output, Microsoft Entra ID authentication method
 
 To add or remove Microsoft Entra ID users with administative permissions on cluster, follow these steps:
 
-1. Get OIDC identifier for the security principal such as Entra ID user that needs to be added to Azure Cosmos DB for MongoDB vCore cluster.
+1. Get OpenID Connect (OIDC) identifier for the security principal such as Entra ID user that needs to be added to Azure Cosmos DB for MongoDB vCore cluster.
     1. Search for 'Microsoft Entra ID' in [Azure portal](https://portal.azure.com/).
     1. Open 'Microsoft Entra ID' service.
     1. On the **Overview** page of Microsoft Entra ID service in the **Overview** section, search for the user to be added, e.g. dbadmin@contoso.com.
@@ -97,22 +103,20 @@ To add or remove Microsoft Entra ID users with administative permissions on clus
     --url https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.DocumentDB/mongoClusters/{cluster-name}/users/{oidc-identifier}?api-version=2025-04-01-preview 
     ```
 
+## Connect to Azure Cosmos for MongoDB using Microsoft Entra ID authentication
 
-## Connect to Azure Cosmos for MongoDB by using Microsoft Entra ID authentication
-
-Microsoft Entra ID integration works with standard MongoDB client tools like **psql**, which aren't Microsoft Entra ID aware and support only specifying the username and password when you're connecting to MongoDB. In such cases, the Microsoft Entra ID token is passed as the password.
+Microsoft Entra ID integration works with standard MongoDB client tools like **MongoDB Shell**, which aren't Microsoft Entra ID aware and support only specifying the OpenID Connect (OIDC) identificator and password when you're connecting to MongoDB. In such cases, the Microsoft Entra ID token is passed as the password.
 
 We tested the following clients:
 
-- **psql command line**: Use the `PGPASSWORD` variable to pass the token.
-- **Other libpq-based clients**: Examples include common application frameworks and object-relational mappers (ORMs).
-- **pgAdmin**: Clear **Connect now** at server creation.
+- **Mongo Shell command line**.
+- **Compass**.
 
-Use the following procedures to authenticate with Microsoft Entra ID as an Azure Cosmos DB for MongoDB vCore user. You can follow along in [Azure Cloud Shell](/azure/cloud-shell/get-started), on an Azure virtual machine, or on your local machine.
+Use the following procedures to authenticate with Microsoft Entra ID as an Azure Cosmos DB for MongoDB vCore user. You can follow along on an Azure virtual machine, or on your local machine.
 
 ### Sign in to the user's Azure subscription
 
-Start by authenticating with Microsoft Entra ID by using the Azure CLI. This step isn't required in Azure Cloud Shell.
+Start by authenticating with Microsoft Entra ID by using the [Azure CLI](/cli/azure/get-started-with-azure-cli). This step isn't required in Azure Cloud Shell.
 
 ```azurecli
 az login
@@ -122,14 +126,12 @@ The command opens a browser window to the Microsoft Entra ID authentication page
 
 The user account name you use to authenticate (for example, user@tenant.onmicrosoft.com) is the one the access token will be generated for in the next step.
 
-<a name='retrieve-the-azure-ad-access-token'></a>
-
 ### Retrieve the Microsoft Entra ID access token
 
 Use the Azure CLI to acquire an access token for the Microsoft Entra ID authenticated user to access Azure Cosmos for MongoDB. Here's an example:
 
 ```azurecli-interactive
-az account get-access-token --resource https://token.MongoDB.cosmos.azure.com
+az account get-access-token --resource-type arm
 ```
 
 After authentication is successful, Microsoft Entra ID returns an access token for current Azure subscription:
@@ -146,113 +148,69 @@ After authentication is successful, Microsoft Entra ID returns an access token f
 
 The TOKEN is a Base64 string. It encodes all the information about the authenticated user and is associated with the Azure Cosmos DB for MongoDB vCore service. The token is valid for at least 5 minutes with the maximum of 90 minutes. The **expiresOn** defines actual token expiration time.
 
-### Use a token as a password for signing in with client psql
+### Use a token as a password for signing in with Mongo Shell
 
 When connecting, it's best to use the access token as the MongoDB user password.
 
-While using the psql command-line client, the access token needs to be passed through the `PGPASSWORD` environment variable. The reason is that the access token exceeds the password length that psql can accept directly.
+While using [the Mongo Shell command-line client](https://www.mongodb.com/try/download/shell), the access token needs to be passed through an environment variable. The reason is that the access token exceeds the password length that Mongo Shell can accept directly.
 
 Here's a Windows example:
 
 ```cmd
-set PGPASSWORD=<TOKEN value from the previous step>
+set MONGOPASSWORD=<TOKEN value from the previous step>
 ```
 
 ```powerShell
-$env:PGPASSWORD='<TOKEN value from the previous step>'
+$env:MONGOPASSWORD='<TOKEN value from the previous step>'
 ```
 
 Here's a Linux/macOS example:
 
 ```bash
-export PGPASSWORD=<TOKEN value from the previous step>
+export MONGOPASSWORD=<TOKEN value from the previous step>
 ```
 
-You can also combine the previous two steps together using command substitution. The token retrieval can be encapsulated into a variable and passed directly as a value for `PGPASSWORD` environment variable:
+You can also combine the previous two steps together using command substitution. The token retrieval can be encapsulated into a variable and passed directly as a value for `MONGOPASSWORD` environment variable:
 
 ```bash
-export PGPASSWORD=$(az account get-access-token --resource https://token.MongoDB.cosmos.azure.com --query "[accessToken]" -o tsv)
+export MONGOPASSWORD=$(az account get-access-token --resource https://token.MongoDB.cosmos.azure.com --query "[accessToken]" -o tsv)
 ```
 
 
 > [!NOTE]
-> Make sure PGPASSWORD variable is set to the Microsoft Entra ID access token for your
+> Make sure MONGOPASSWORD variable is set to the Microsoft Entra ID access token for your
 > subscription for Microsoft Entra ID authentication. If you need to do MongoDB user authentication
-> from the same session you can set PGPASSWORD to the MongoDB user password
-> or clear the PGPASSWORD variable value to enter the password interactively.
-> Authentication would fail with the wrong value in PGPASSWORD.
+> from the same session you can set MONGOPASSWORD to the MongoDB user password
+> or clear the MONGOPASSWORD variable value to enter the password interactively.
+> Authentication would fail with the wrong value in MONGOPASSWORD.
 
-Now you can initiate a connection with Azure Cosmos DB for MongoDB vCore using the Microsoft Entra ID user account that the access token was generated for. You would do it as you usually would with the user account as the user and without 'password' parameter in the command line:
+Now you can initiate a connection with Azure Cosmos DB for MongoDB vCore using the Microsoft Entra ID user account that the access token was generated for. You would do it as you usually do with the user account as the user and without 'password' parameter in the command line:
 
 ```sql
-psql "host=mycluster.[uniqueID].MongoDB.cosmos.azure.com user=user@tenant.onmicrosoft.com dbname=[db_name] sslmode=require"
+mongosh "host=mycluster.global.MongoDB.cosmos.azure.com user=user@tenant.onmicrosoft.com sslmode=require"
 ```
 
-### Use a token as a password for signing in with PgAdmin
+### Use a token as a password for signing in with Compass
 
-To connect by using a Microsoft Entra ID token with PgAdmin, follow these steps:
+To connect by using a Microsoft Entra ID token with Compass, follow these steps:
 
-1. Clear the **Connect now** option at server creation.
-1. Enter your server details on the **Connection** tab and save.
-    1. Make sure a valid Microsoft Entra ID user is specified in **Username**.
-1. From the pgAdmin **Object** menu, select **Connect Server**.
-1. Enter the Microsoft Entra ID token password when you're prompted.
+1. Copy Entra ID connection string to the **URI** field. 
+1. Open **Advanced Connect Options**.
+1. On the **Authentication** tab, select **OIDC**. 
+1. Enter the Microsoft Entra ID access token when you're prompted.
 
 Here are some essential considerations when you're connecting:
 
-- `user@tenant.onmicrosoft.com` is the name of the Microsoft Entra ID user.
-- Be sure to use the exact way the Azure user is spelled. Microsoft Entra ID user and group names are case-sensitive.
-- If the name contains spaces, use a backslash (`\`) before each space to escape it.
+- Be sure to use [OIDC identifier](#add-microsoft-entra-id-administrative-users-to-azure-cosmos-db-for-mongodb-vcore-cluster) for the Entra ID user as the user name.
 - The access token's validity is 5 minutes to 90 minutes. You should get the access token before initiating the sign-in to Azure Cosmos for MongoDB.
 
-You're now authenticated to your Azure Cosmos for MongoDB server through Microsoft Entra ID authentication.
+You're now authenticated to your Azure Cosmos for MongoDB vCore cluster in Compass through Microsoft Entra ID authentication.
 
-## Manage native MongoDB users
+## Preivew limitations
 
-When native MongoDB authentication is enabled on cluster, you can add and delete MongoDB users in addition to built-in 'citus' user. You can also reset password and modify MongoDB privileges for native users.
-
-### How to delete a native MongoDB user user or change their password
-
-To update a user, visit the **Authentication** page for your cluster,
-and select the ellipses **...** next to the user. The ellipses open a menu
-to delete the user or reset their password.
-
-The `citus` user is privileged and can't be deleted. However, `citus` user would be *disabled*, if 'Microsoft Entra ID authentication only' authentication method is selected for the cluster.
-
-## How to modify privileges for user users
-
-New user users are commonly used to provide database access with restricted
-privileges. To modify user privileges, use standard MongoDB commands, using
-a tool such as PgAdmin or psql. For more information, see [Connect to a cluster](quickstart-connect-psql.md).
-
-For example, to allow MongoDB `db_user` to read `mytable`, grant the permission:
-
-```sql
-GRANT SELECT ON mytable TO db_user;
-```
-
-To grant the same permissions to Microsoft Entra ID user `user@tenant.onmicrosoft.com` use the following command:
-
-```sql
-GRANT SELECT ON mytable TO "user@tenant.onmicrosoft.com";
-```
-
-Azure Cosmos DB for MongoDB vCore propagates single-table GRANT statements through the entire
-cluster, applying them on all worker nodes. It also propagates GRANTs that are
-system-wide (for example, for all tables in a schema):
-
-```sql
--- applies to the coordinator node and propagates to worker nodes for MongoDB user db_user
-GRANT SELECT ON ALL TABLES IN SCHEMA public TO db_user;
-```
-
-Or for Microsoft Entra ID user
-
-```sql
--- applies to the coordinator node and propagates to worker nodes for Azure AD user user@tenant.onmicrosoft.com
-GRANT SELECT ON ALL TABLES IN SCHEMA public TO "user@tenant.onmicrosoft.com";
-```
-
+The following section describes functional limits in the Azure Cosmos DB for MongoDB vCore service when Microsoft Entra ID preview is used.
+- Entra ID is not supported on replica clusters.
+- Entra ID is not supported on restored clusters. 
 
 ## Next steps
 

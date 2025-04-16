@@ -14,6 +14,12 @@ appliesto:
 
 # Microsoft Entra ID authentication with Azure Cosmos DB for MongoDB vCore
 
+> [!IMPORTANT]
+> Microsoft Entra ID authentication in Azure Cosmos DB for MongoDB vCore is currently in preview.
+> This preview version is provided without a service level agreement, and it's not recommended
+> for production workloads. Certain features might not be supported or might have constrained
+> capabilities.
+
 Azure Cosmos DB for MongoDB vCore supports integration with Microsoft Entra ID and native DocumentDB authentication. Each Azure Cosmos DB for MongoDB vCore cluster is created with native DocumentDB authentication enabled and one built-in administrative user.
 
 You can enable Microsoft Entra ID (formerly Azure Active Directory) authentication on a cluster in addition to the native DocumentDB authentication method or instead of it. You can configure authentication methods on each Azure Cosmos DB for MongoDB vCore cluster independently. If you need to change authentication method, you can do it at any time after cluster provisioning is completed. Changing authentication methods doesn't require cluster restart.
@@ -41,7 +47,7 @@ Additionally, one or more non-administrative Microsoft Entra ID urser can be add
 
 - Microsoft Entra ID can be the only authentication method enabled on a 
 - Multiple Microsoft Entra ID principals (a user, service principal, or managed identity) can be configured as Microsoft Entra ID administrator for an Azure Cosmos DB for MongoDB vCore cluster at any time.
--  If a Microsoft Entra ID principal is deleted from Microsoft Entra ID service, it still remains as a PostgreSQL role on the cluster, but it's no longer able to acquire new access token. In this case, although the matching role still exists in the Postgres database it's unable to authenticate to the cluster nodes. Database administrators need to transfer ownership and drop such roles manually.
+- If a Microsoft Entra ID principal is deleted from Microsoft Entra ID service, it still remains as a PostgreSQL role on the cluster, but it's no longer able to acquire new access token. In this case, although the matching role still exists in the Postgres database it's unable to authenticate to the cluster nodes. Database administrators need to transfer ownership and drop such roles manually.
 
 > [!NOTE]  
 > Login with the deleted Microsoft Entra ID user can still be done till the token expires (up to 90 minutes from token issuing).  If you also remove the user from Azure Cosmos DB for PostgreSQL cluster this access will be revoked immediately.
@@ -52,4 +58,3 @@ Additionally, one or more non-administrative Microsoft Entra ID urser can be add
 
 - Learn [how to manage authentication and Entra ID users in Azure Cosmos DB for MongoDB vCore](./how-to-configure-authentication.md)
 - Review [Microsoft Entra ID fundamentals](/entra/fundamentals/whatis)
-
