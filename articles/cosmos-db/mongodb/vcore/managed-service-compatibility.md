@@ -31,15 +31,15 @@ Lower-tier clusters such as M0, M2, and M5 have many additional notable limitati
 
 These constraints underscore a critical point: managed services, including MongoDB Atlas, must balance offering MongoDB features with ensuring the stability, security, and performance of their platforms.
 
-### Azure Cosmos DB for MongoDB vCore's Approach
+### Azure Cosmos DB for MongoDB vCore's approach
 
 Azure Cosmos DB for MongoDB acknowledges these industry-wide practices and adopts a customer-centric [approach to feature support and compatibility](./compatibility-and-feature-support.md). We prioritize features that deliver the most value to our users, focusing on:
 
 - **AI-First:** Our AI-first approach is embodied in our **Vector Search** features, powered by [DiskANN](./vector-search-ai.md), providing a solid foundation for generative AI applications without the need for complex and expensive integrations. 
-- **Performance and Scalability:** Offering customizable performance tiers, decoupled from storage, and global distribution to meet diverse workload requirements. Passing down the cost savings from our the Open Source [DocumentDB engine](https://github.com/microsoft/documentdb) (which powers the service) to customers to save money.
+- **Performance and Scalability:** Offering customizable performance tiers, decoupled from storage, and global distribution to meet diverse workload requirements. Passing down the cost savings from the Open Source [DocumentDB engine](https://github.com/microsoft/documentdb) (which powers the service) to customers to save money.
 - **Security and Compliance:** Providing advanced security features such Private Link and Entra ID integration to ensure data protection and compliance with regulatory standards.
 - **Operational Flexibility:** Supporting a broad set of MongoDB features (97% of aggregation operators, 96% of query/projections operators, and 100% of update operators etc.) while also innovating with Azure-specific capabilities such as [instant autoscale](./autoscale.md) to enhance usability and management.
-- **Transparent support infrastructure:** No need for seperate complex and expensive support contracts from 3rd party vendors.
+- **Transparent support infrastructure:** No need for seperate complex and expensive support contracts from third party vendors.
 - **Simplified Versions** Azure Cosmos DB for MongoDB uses a unified codebase for all server versions, offering version-dependent features without needing database version upgrades.
 - **Full Stack SLA:** Providing an SLA that covers not only the database application, but also the compute and infrastructure it runs on, to give you piece of mind.
 
