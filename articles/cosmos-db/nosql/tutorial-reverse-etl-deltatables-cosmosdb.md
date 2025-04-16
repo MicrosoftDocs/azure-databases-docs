@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Reverse ETL (Extract Transform & Load) to Azure Cosmos DB NoSQL from Delta Tables'
+title: 'Tutorial: Reverse ETL (Extract Transform & Load) to Azure Cosmos DB from Delta Tables'
 titleSuffix: Reverse ETL to Azure Cosmos DB for NoSQL
 description: Reverse ETL moves data from your data lake layer (like Delta Lake in Databricks, Fabric) back into operational systems such as Azure Cosmos DB NoSQL using Cosmos DB Spark OLTP (Online Transaction Processing) connector. 
 author: rakhithejraj
@@ -12,7 +12,7 @@ ms.date: 04/15/2025
 zone_pivot_groups: programming-languages-spark-all-minus-sql-r-csharp
 ---
 
-# Tutorial: Reverse ETL to Azure Cosmos DB NoSQL from Delta Tables
+# Tutorial: Reverse ETL from Delta Lake to Cosmos DB with Spark OLTP Connector
 
 [!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
 
