@@ -61,7 +61,7 @@ Set the default language to Python or Scala and attach it to the cluster.
 
 **Step 2: Set Cosmos DB Configuration**
 
-Define a configuration dictionary (cosmos_config) in your notebook to connect your Spark session with Cosmos DB. These details include the Cosmos DB account endpoint, Managed Identity, Subscription, Tenant, database, and container name. It also enables throughput control to limit the RU consumption from Spark jobs, which helps prevent overloading the Cosmos DB account. Throughput control options include the control name, RU threshold. Target Throughput Threshold of 0.30 indicates that 30% of the allocated RUs on the target Cosmos DB container **products** is available for the spark operations
+Define a configuration dictionary (cosmos_config) in your notebook to connect your Spark session with Cosmos DB. These details include the Cosmos DB account endpoint, Managed Identity, Subscription, Tenant, database, and container name. It also enables throughput control to limit the RU consumption from Spark jobs, which helps prevent overloading the Cosmos DB account. Throughput control options include the control name, RU threshold. Target Throughput Threshold of 0.30 indicates that 30% of the allocated RUs on the target Cosmos DB container **products** is available for the spark operations.
 
 ::: zone pivot="programming-language-python"
 
