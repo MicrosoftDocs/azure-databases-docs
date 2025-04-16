@@ -49,6 +49,8 @@
       href: burstable-tier.md
     - name: Open source
       href: oss.md
+    - name: First-party MongoDB Service
+      href: first-party-azure-mongo.md
     - name: Integrated vector database
       items:
         - name: Integrated vector database overview
