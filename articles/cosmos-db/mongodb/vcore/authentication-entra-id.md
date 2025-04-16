@@ -41,7 +41,7 @@ Interoperability with MongoDB drivers is provided via [OpenID Connect (OIDC) sup
 
 When Microsoft Entra ID authentication is enabled on an Azure Cosmos DB for MongoDB vCore cluster, you can add one or more Microsoft Entra ID principals as *administrator users* to that cluster. The Microsoft Entra ID administrator sign-in can be a Microsoft Entra ID user, a service principal, or a managed identity. Multiple Microsoft Entra ID administrators can be configured at any time. 
 
-Additionally, one or more non-administrative Microsoft Entra ID user can be added to a cluster at any time once Microsoft Entra ID authentication is enabled. Non-administrative users are often used for ongoing production tasks that don't require administrative privileges.
+Additionally, one or more non-administrative Microsoft Entra ID users can be added to a cluster at any time once Microsoft Entra ID authentication is enabled. Non-administrative users are often used for ongoing production tasks that don't require administrative privileges.
 
 ## Considerations
 
@@ -50,7 +50,7 @@ Additionally, one or more non-administrative Microsoft Entra ID user can be adde
 - If a Microsoft Entra ID principal is deleted from Microsoft Entra ID service, it still remains as a PostgreSQL role on the cluster, but it's no longer able to acquire new access token. In this case, although the matching role still exists in the Postgres database it's unable to authenticate to the cluster nodes. Database administrators need to transfer ownership and drop such roles manually.
 
 > [!NOTE]  
-> Login with the deleted Microsoft Entra ID user can still be done untill the token expires (up to 90 minutes from token issuing).  If you also remove the user from Azure Cosmos DB for PostgreSQL cluster this access will be revoked immediately.
+> Login with the deleted Microsoft Entra ID user can still be done until the token expires (up to 90 minutes from token issuing).  If you also remove the user from Azure Cosmos DB for PostgreSQL cluster this access are revoked immediately.
 
 - Azure Cosmos DB for PostgreSQL matches access tokens to the database role using the user’s unique Microsoft Entra ID user ID, as opposed to using the username. If a Microsoft Entra ID user is deleted and a new user is created with the same name, Azure Cosmos DB for PostgreSQL considers that a different user. Therefore, if a user is deleted from Microsoft Entra ID and a new user is added with the same name the new user would be unable to connect with the existing role.
 

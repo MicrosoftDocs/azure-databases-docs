@@ -79,6 +79,7 @@ If you see the following in the output, Microsoft Entra ID authentication method
 To add or remove Microsoft Entra ID users with administrative permissions on cluster, follow these steps:
 
 1. Get OpenID Connect (OIDC) identifier for the security principal such as Entra ID user that needs to be added to Azure Cosmos DB for MongoDB vCore cluster.
+    # [Azure portal](#tab/portal)
     1. Search for 'Microsoft Entra ID' in [Azure portal](https://portal.azure.com/).
     1. Open 'Microsoft Entra ID' service.
     1. On the **Overview** page of Microsoft Entra ID service in the **Overview** section, search for the user to be added, e.g. dbadmin@contoso.com.
@@ -86,11 +87,18 @@ To add or remove Microsoft Entra ID users with administrative permissions on clu
     1. On the **Overview** tab of the **Overview** page of the user account, copy **Object ID** identifier.
         1. Object ID has 12345678-90ab-cdef-1234-1234567890ab format.
         1. This is the OIDC identifier used to log in to Azure Cosmos DB for MongoDB vCore cluster.
+        1. 
+    # [Azure CLI](#tab/cli)
+    1. ```azurecli
+       az rest --method GET --url https://graph.microsoft.com/v1.0/users/{user-name}
+       ```
+       1. {user-name} is the Entra ID account for authentication. For example, user@tenant.onmicrosoft.com.
+       1. **id** field in the output is the OIDC identifier.
 1. Add Entra ID user as an administrator to the cluster:
     ```azurecli
     az rest --method PUT \
     --url https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.DocumentDB/mongoClusters/{cluster-name}/users/{oidc-identifier}?api-version=2025-04-01-preview \ 
-    -- body { "location": "**cluster-region**", "properties": { "identityProvider": { "type": "MicrosoftEntraID", "properties": { "principalType": "User" } }, "roles": [{"db": "admin", "role": "dbOwner"}] } }
+    -- body { "location": "<cluster-region>", "properties": { "identityProvider": { "type": "MicrosoftEntraID", "properties": { "principalType": "User" } }, "roles": [{"db": "admin", "role": "dbOwner"}] } }
     ```
 1. Verify that Entra ID account is added to the cluster: 
     ```azurecli
@@ -210,7 +218,8 @@ You're now authenticated to your Azure Cosmos for MongoDB vCore cluster in Compa
 
 The following section describes functional limits in the Azure Cosmos DB for MongoDB vCore service when Microsoft Entra ID preview is used.
 - Entra ID isn't supported on replica clusters.
-- Entra ID isn't supported on restored clusters. 
+- Entra ID isn't supported on restored clusters.
+- Entra ID isn't supported in South Central US region.
 
 ## Next steps
 
