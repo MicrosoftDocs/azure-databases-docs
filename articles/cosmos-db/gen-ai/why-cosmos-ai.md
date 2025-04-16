@@ -19,7 +19,7 @@ appliesto:
 Developers and architects face difficult challenges in understanding how they can use the capabilities brought by Generative-AI into their own businesses and workloads. One challenge includes understanding what technologies to use to build these types of applications. This article explains why users should use Azure Cosmos DB to build AI applications
 
 ## Unified Indexing and Query for Hybrid Search:
-Azure Cosmos DB unifies multiple indexing, search and query capabilities in a distributed, transactional NoSQL database.
+Azure Cosmos DB unifies multiple indexing, search, and query capabilities in a distributed, transactional NoSQL database.
 Azure Cosmos DB is a full-featured transactional database. Its indexing engine is highly configurable, letting you index JSON documents, vector representations and text and language-specific data all on the same data.
 Developers can combine scalar, range, and geospatial filters in a unified query syntax alongside similarity and keyword searches for a complete hybrid query capability in a single datastore.
 This hybrid capability makes it easier to build applications that need to retrieve data based on both semantic similarity and classical attribute searches. This also contrasts with specialized vector databases, which are optimized solely for similarity search.
@@ -27,7 +27,7 @@ This hybrid capability makes it easier to build applications that need to retrie
 ## Serverless and Elastic Scalability:
 Azure Cosmos DB provides multiple billing models: serverless, provisioned throughput, and provisioned throughout with autoscale.
 
-Azure Cosmos DB is also a scale-out database with automatic scaling of throughput and storage. Automatic scaling is especially valuable for AI applications that can experience variable load patterns. This elasticity means that as your data volume or query complexity grows — whether in processing new embeddings or handling an increasing number of hybrid queries — Azure Cosmos DB can scale without compromising performance.
+Azure Cosmos DB is also a scale-out database with automatic scaling of throughput and storage. Automatic scaling is especially valuable for AI applications that can experience variable load patterns. This elasticity means that as your data volume or query complexity grows—whether in processing new embeddings or handling an increasing number of hybrid queries—Azure Cosmos DB can scale without compromising performance.
 
 ## Single-digit Latency and 99.999% Availability:
 Azure Cosmos DB is designed as a globally distributed database that can replicate data to every region within Azure providing 99.999% availability guarantees. This replication also offers low-latency access regardless of where users or applications are located. For AI applications that may need to serve users worldwide, this means faster retrieval times and consistent performance.
