@@ -529,6 +529,8 @@
               href: kafka-connector-source-v2.md
             - name: Kafka Connect V2 - Sink
               href: kafka-connector-sink-v2.md
+            - name: Migration guide
+              href: how-to-migrate-from-kafka-connector-v1-to-v2.md
         - name: Spark Connector
           items:
             - name: Spark 3.x online transaction processing (OLTP) connector
