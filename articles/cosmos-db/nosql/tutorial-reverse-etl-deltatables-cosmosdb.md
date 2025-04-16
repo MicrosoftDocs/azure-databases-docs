@@ -245,11 +245,14 @@ Continuously syncs incremental changes in near real-time, keeping the target sys
 # Stream CDC to Cosmos DB
 # Read Change Data Capture (CDC) stream from the Delta table 'products_delta'
 cdc_stream_df = spark.readStream.format("delta").option("readChangeData", "true").table("products_delta")
+
 # Write the CDC stream to Azure Cosmos DB using the OLTP connector with checkpointing
 streaming_query = cdc_stream_df.writeStream.format("cosmos.oltp").outputMode("append").options(**cosmos_config).option("checkpointLocation", "/mnt/checkpoints/products-stream").start()
+
 # Wait for the stream to terminate or time out after 60 seconds
 try:   streaming_query.awaitTermination(60)
 except:     print("Stream stopped or timed out.")
+
 # Stop the stream if it’s still running after the timeout
 if streaming_query.isActive: streaming_query.stop()
 ```
