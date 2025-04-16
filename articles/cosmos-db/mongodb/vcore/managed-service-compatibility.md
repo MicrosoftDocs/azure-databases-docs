@@ -9,7 +9,7 @@ ms.topic: conceptual
 ms.date: 03/24/2025
 ---
 
-# Understanding MongoDB Compatibility in Managed MongoDB Services
+# Understanding MongoDB compatibility in managed MongoDB services
 
 ## Introduction
 
