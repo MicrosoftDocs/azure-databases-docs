@@ -242,9 +242,9 @@ After the historical data load, changes in the Delta table can be captured using
 
   **Step 6a: Batch CDC Sync to Cosmos DB**
 
-  Runs on a schedule (for example, daily or hourly) and loads an incremental snapshot of the data based on changes captured since the last version or timestamp. To avoid data inconsistencies when large incremental volumes are being loaded from Delta tables to Cosmos DB, there has to be a way to atomically switch from the old Cosmos DB snapshot to the new one. For example, by writing to a new container or using a version flag, then flipping a pointer once the new data is fully loaded.
+  Runs on a schedule (for example, daily or hourly) and loads an incremental snapshot of the data based on changes captured since the last version or timestamp. To avoid data inconsistencies when large incremental volumes are being loaded from Delta tables to Cosmos DB, it is recommended to switch from the old Cosmos DB snapshot to the new one. For example, by writing to a new container or using a version flag, then flipping a pointer once the new data is fully loaded.
 
-  Read the changes from the Delta table starting from a specific version or specific timestamp using the readChangeData option. Write the resulting changes to Cosmos DB using the same connector and configuration.
+  Read the changes from the Delta table starting from a specific version or specific timestamp using the readChangeData option. Write the resulting changes to Cosmos DB using the same connector and configuration. The selected version number or timestamp needs to be after the change data feed enablement of delta table.
 
   ::: zone pivot="programming-language-python"
 
