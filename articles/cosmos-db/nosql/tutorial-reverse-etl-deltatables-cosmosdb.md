@@ -84,17 +84,17 @@ In this tutorial, we set up a reverse ETL pipeline to move enriched data from De
 
 **Step 1: Set Up Spark and Connector in Databricks**
 
-a. Create a Cluster:
-Open your Azure Databricks workspace.
-Create a new cluster with Runtime version 15.4 which has Long Term Support (Spark 3.5.0, Scala 2.12).
+  a. Create a Cluster:
+  Open your Azure Databricks workspace.
+  Create a new cluster with Runtime version 15.4 which has Long Term Support (Spark 3.5.0, Scala 2.12).
 
-b. Install the Cosmos DB Spark Connector:
-Go to Libraries > Install New > Maven.
-Use: Group ID: com.azure.cosmos.spark, Artifact ID: azure-cosmos-spark_3-5_2-12
+  b. Install the Cosmos DB Spark Connector:
+  Go to Libraries > Install New > Maven.
+  Use: Group ID: com.azure.cosmos.spark, Artifact ID: azure-cosmos-spark_3-5_2-12
 
-c. Create a Notebook:
-Go to Workspace > Your Folder > New > Notebook.
-Set the default language to Python or Scala and attach it to the cluster.
+  c. Create a Notebook:
+  Go to Workspace > Your Folder > New > Notebook.
+  Set the default language to Python or Scala and attach it to the cluster.
 
 **Step 2: Set Cosmos DB Configuration**
 
@@ -240,85 +240,85 @@ spark.sql("""
 
 After the historical data load, changes in the Delta table can be captured using Delta Change Data Feed (CDF). You can implement either batch-based or streaming-based CDC.
 
-**Step 6a: Batch CDC Sync to Cosmos DB**
+  **Step 6a: Batch CDC Sync to Cosmos DB**
 
-Runs on a schedule (for example, daily or hourly) and loads an incremental snapshot of the data based on changes captured since the last version or timestamp. To avoid data inconsistencies when large incremental volumes are being loaded from Delta tables to Cosmos DB, there has to be a way to atomically switch from the old Cosmos DB snapshot to the new one. For example, by writing to a new container or using a version flag, then flipping a pointer once the new data is fully loaded.
+  Runs on a schedule (for example, daily or hourly) and loads an incremental snapshot of the data based on changes captured since the last version or timestamp. To avoid data inconsistencies when large incremental volumes are being loaded from Delta tables to Cosmos DB, there has to be a way to atomically switch from the old Cosmos DB snapshot to the new one. For example, by writing to a new container or using a version flag, then flipping a pointer once the new data is fully loaded.
 
-Read the changes from the Delta table starting from a specific version or specific timestamp using the readChangeData option. Write the resulting changes to Cosmos DB using the same connector and configuration.
+  Read the changes from the Delta table starting from a specific version or specific timestamp using the readChangeData option. Write the resulting changes to Cosmos DB using the same connector and configuration.
 
-::: zone pivot="programming-language-python"
+  ::: zone pivot="programming-language-python"
 
-```python
-# Batch CDC Sync to Cosmos DB
-# Read the Change Data Capture (CDC) data from the Delta table
-cdc_batch_df = spark.read.format("delta").option("readChangeData", "true").option("startingVersion", "1").table("products_delta")
+  ```python
+  # Batch CDC Sync to Cosmos DB
+  # Read the Change Data Capture (CDC) data from the Delta table
+  cdc_batch_df = spark.read.format("delta").option("readChangeData", "true").option("startingVersion", "1").table("products_delta")
 
-# Write the captured changes to Cosmos DB in append mode
-cdc_batch_df.write.format("cosmos.oltp").mode("append").options(**cosmos_config).save()
-```
+  # Write the captured changes to Cosmos DB in append mode
+  cdc_batch_df.write.format("cosmos.oltp").mode("append").options(**cosmos_config).save()
+  ```
 
-::: zone-end
+  ::: zone-end
 
-::: zone pivot="programming-language-scala"
+  ::: zone pivot="programming-language-scala"
 
-```scala
-// Batch CDC Sync to Cosmos DB
-// Read the Change Data Capture (CDC) data from the Delta table
-val cdc_batch_df = spark.read.format("delta").option("readChangeData", "true").option("startingVersion", "1").table("products_delta")
+  ```scala
+  // Batch CDC Sync to Cosmos DB
+  // Read the Change Data Capture (CDC) data from the Delta table
+  val cdc_batch_df = spark.read.format("delta").option("readChangeData", "true").option("startingVersion", "1").table("products_delta")
 
-// Write the captured changes to Cosmos DB in append mode
-cdc_batch_df.write.format("cosmos.oltp").mode("append").options(cosmos_config).save()
-```
+  // Write the captured changes to Cosmos DB in append mode
+  cdc_batch_df.write.format("cosmos.oltp").mode("append").options(cosmos_config).save()
+  ```
 
-::: zone-end
+  ::: zone-end
 
-**Step 6b: Stream CDC to Cosmos DB**
+  **Step 6b: Stream CDC to Cosmos DB**
 
-Continuously syncs incremental changes in near real-time, keeping the target system up to date with minimal lag. Use spark Structured Streaming to continuously capture and write changes. The Delta table acts as a streaming source with readChangeData = true, and the Cosmos DB connector acts as a streaming sink. Specify a checkpoint location to ensure progress is tracked and duplicate writes are avoided.
+  Continuously syncs incremental changes in near real-time, keeping the target system up to date with minimal lag. Use spark Structured Streaming to continuously capture and write changes. The Delta table acts as a streaming source with readChangeData = true, and the Cosmos DB connector acts as a streaming sink. Specify a checkpoint location to ensure progress is tracked and duplicate writes are avoided.
 
-::: zone pivot="programming-language-python"
+  ::: zone pivot="programming-language-python"
 
-```python
-# Stream CDC to Cosmos DB
-# Read Change Data Capture (CDC) stream from the Delta table 'products_delta'
-cdc_stream_df = spark.readStream.format("delta").option("readChangeData", "true").table("products_delta")
+  ```python
+  # Stream CDC to Cosmos DB
+  # Read Change Data Capture (CDC) stream from the Delta table 'products_delta'
+  cdc_stream_df = spark.readStream.format("delta").option("readChangeData", "true").table("products_delta")
 
-# Write the CDC stream to Azure Cosmos DB using the OLTP connector with checkpointing
-streaming_query = cdc_stream_df.writeStream.format("cosmos.oltp").outputMode("append").options(**cosmos_config).option("checkpointLocation", "/mnt/checkpoints/products-stream").start()
+  # Write the CDC stream to Azure Cosmos DB using the OLTP connector with checkpointing
+  streaming_query = cdc_stream_df.writeStream.format("cosmos.oltp").outputMode("append").options(**cosmos_config).option("checkpointLocation", "/mnt/checkpoints/products-stream").start()
 
-# Wait for the stream to terminate or time out after 60 seconds
-try:   streaming_query.awaitTermination(60)
-except:     print("Stream stopped or timed out.")
+  # Wait for the stream to terminate or time out after 60 seconds
+  try:   streaming_query.awaitTermination(60)
+  except:     print("Stream stopped or timed out.")
 
-# Stop the stream if it’s still running after the timeout
-if streaming_query.isActive: streaming_query.stop()
-```
+  # Stop the stream if it’s still running after the timeout
+  if streaming_query.isActive: streaming_query.stop()
+  ```
 
-::: zone-end
+  ::: zone-end
 
-::: zone pivot="programming-language-scala"
+  ::: zone pivot="programming-language-scala"
 
-```scala
-# Stream CDC to Cosmos DB
-// Read Change Data Capture (CDC) stream from the Delta table 'products_delta'
-val cdcStreamDF = spark.readStream.format("delta").option("readChangeData", "true").table("products_delta")
+  ```scala
+  # Stream CDC to Cosmos DB
+  // Read Change Data Capture (CDC) stream from the Delta table 'products_delta'
+  val cdcStreamDF = spark.readStream.format("delta").option("readChangeData", "true").table("products_delta")
 
-// Write the CDC stream to Azure Cosmos DB using the OLTP connector with checkpointing
-val streamingQuery = cdcStreamDF.writeStream.format("cosmos.oltp").outputMode("append").options(cosmosconfig).option("checkpointLocation", "/mnt/checkpoints/products-stream").start()
+  // Write the CDC stream to Azure Cosmos DB using the OLTP connector with checkpointing
+  val streamingQuery = cdcStreamDF.writeStream.format("cosmos.oltp").outputMode("append").options(cosmosconfig).option("checkpointLocation", "/mnt/checkpoints/products-stream").start()
 
-// Wait for the stream to terminate or time out after 60 seconds
-try {
-  streamingQuery.awaitTermination(60000) // time out in milli seconds
-} catch {
-  case e: Exception => println("Stream stopped or timed out.")
-}
-// Stop the stream if it’s still running after the timeout
-if (streamingQuery.isActive) {
-  streamingQuery.stop()
-}
-```
+  // Wait for the stream to terminate or time out after 60 seconds
+  try {
+    streamingQuery.awaitTermination(60000) // time out in milli seconds
+  } catch {
+    case e: Exception => println("Stream stopped or timed out.")
+  }
+  // Stop the stream if it’s still running after the timeout
+  if (streamingQuery.isActive) {
+    streamingQuery.stop()
+  }
+  ```
 
-::: zone-end
+  ::: zone-end
 
 **Step 7: Query Cosmos DB from Spark**
 
