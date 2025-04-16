@@ -42,12 +42,12 @@ In this tutorial, you learn how to:
   - You can create a new Azure Databricks workspace by following steps here,  [create a new Azure Databricks workspace](/azure/databricks/getting-started/).
 - Setting up Managed Identity (AAD) based authentication to write to Cosmos DB using  Databricks
 
-  Perform these 4 steps to faciliate Managed Identity based authentication:
+  - Perform these 4 steps to faciliate Managed Identity based authentication:
 
-    **1. Get the Managed Identity Object ID (dbmanagedidentity)**
+    **a. Get the Managed Identity Object ID (dbmanagedidentity)**
     This identity is used by Databricks when authenticating to Cosmos DB. This can be obtained either from Azure portal or CLI:
 
-    In Azure portal, go to the Azure Databricks workspace, open the Managed Resource Group, find dbmanagedidentity, and copy its Object ID (Principal ID) from the Overview tab.
+    In Azure portal, go to the Azure Databricks workspace, open the Managed Resource Group under Overview, select dbmanagedidentity resource, and copy its Object ID (Principal ID) from the Overview tab.
 
     ```azurecli
 
@@ -55,28 +55,28 @@ In this tutorial, you learn how to:
 
     ```
 
-    **2. Assign Cosmos DB Data Plane Role (Built-in Data Contributor)**
-    This data plane role grants the managed identity permission to read and write data in Cosmos DB containers. You can grant this role using the below CLI command
+    **b. Assign Cosmos DB Data Plane Role (Built-in Data Contributor)**
+    This data plane role grants the managed identity permission to read and write data in Cosmos DB containers. You can grant this role using this CLI command
 
     ```azurecli
-    az cosmosdb sql role assignment create --account-name <your-cosmos-account-name> --resource-group <your-cosmos-rg> --scope "/" --principal-id <object-id-from-1> --role-definition-id "00000000-0000-0000-0000-000000000002"
+    az cosmosdb sql role assignment create --account-name <your-cosmos-account-name> --resource-group <your-cosmos-rg> --scope "/" --principal-id <object-id-from-step a> --role-definition-id "00000000-0000-0000-0000-000000000002"
 
     ```
 
-    **3. Assign Cosmos DB Control Plane Role (IAM)**
+    **c. Assign Cosmos DB Control Plane Role (IAM)**
     This control plane role allows the managed identity to access account metadata (required for the Spark connector to initialize).
 
-    You can assign this role in Azure portal. Go to Cosmos DB Account → Access Control (IAM) → Click Add → Add role assignment → Select Cosmos DB Account Reader Role and assign it to the dbmanagedidentity from Step 1.
+    You can assign this role in Azure portal. Go to Cosmos DB Account → Access Control (IAM) → Select Add → Add role assignment → Select Cosmos DB Account Reader Role  → Next  →  Assign access to "User, group, or service principal" →  select "select members" and add the dbmanagedidentity obtained from Step a  → select Review + Assign
 
-    **4. Get Your Tenant ID (for AAD Auth)**
-    This identifies your Azure Active Directory (AAD/Entra) instance. It is required by the Spark connector when using Managed Identity. You can obtain the Tenant Id using the below CLI command
+    **d. Get Your Tenant ID (for AAD Auth)**
+    This identifies your Azure Active Directory (AAD/Entra) instance. It's required by the Spark connector when using Managed Identity. You can obtain the Tenant ID using this CLI command
 
     ```azurecli
     az account show --query tenantId --output tsv
 
     ```
 
-    This Tenant id is one of the config inputs in the **Set Cosmos DB Configuration step** below.
+    This Tenant ID is one of the config inputs in the **Set Cosmos DB Configuration step** .
 
 ## Detailed Steps and Sample Code to Setup Reverse ETL Pipeline
 
