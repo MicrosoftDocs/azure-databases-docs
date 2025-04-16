@@ -16,9 +16,9 @@ ms.date: 03/24/2025
 In the realm of managed MongoDB services, understanding the landscape of compatibility and feature support is crucial to remain vendor-agnostic. While it's a common perception that all services strive for full MongoDB compatibility, practical constraints and strategic decisions often lead to selective feature support. This document aims to shed light on these aspects, using MongoDB Atlas as a case study to illustrate the broader industry practice, including how Azure Cosmos DB for MongoDB approaches these challenges.
 
 
-## The Reality of Managed MongoDB Services
+## The reality of managed MongoDB services
 
-### Is MongoDB Atlas Really MongoDB
+### Is MongoDB Atlas Really MongoDB?
 
 Despite perceptions, MongoDB Atlas lacks full compatibility, failing nearly 20% of MongoDB’s own official test suite. Unsupported features include: 
 
