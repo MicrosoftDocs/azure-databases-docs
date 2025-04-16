@@ -132,15 +132,15 @@ If the configuration of those parameters and the available resources on the serv
 
 ## Scale efficiently with Quantization
 
-DiskANN uses product quantization (PQ) to dramatically reduce the memory footprint of the vectors. Unlike other quantization techniques, the PQ algorithm can compress vectors more effectively, significantly improving performance.  DiskANN using PQ can keep more data in memory, reducing the need to access slower storage, as well as using less compute when comparing compressed vectors. This will result in better performance and significant cost saving when working with larger amounts of data (> 1 million rows)
+DiskANN uses product quantization (PQ) to dramatically reduce the memory footprint of the vectors. Unlike other quantization techniques, the PQ algorithm can compress vectors more effectively, significantly improving performance.  DiskANN using PQ can keep more data in memory, reducing the need to access slower storage, as well as using less compute when comparing compressed vectors. This results in better performance and significant cost savings when working with larger amounts of data (> 1 million rows)
 
-To reduce the size of your index and fit more of into memory, you can utilize PQ:
+To reduce the size of your index and fit more data into memory, you can utilize PQ:
 ```sql
 CREATE INDEX demo_embedding_diskann_idx ON demo USING diskann(embedding vector_cosine_ops) 
 WITH(
     product_quantized=true, 
-    pq_param_num_chunks = 0, -- Range from 0-128.
-    pq_param_training_samples = 0 
+    pq_param_num_chunks = 0, -- 0 means it is determined automatically
+    pq_param_training_samples = 0 -- 0 means it is determined automatically
     );
 ```
 
@@ -153,8 +153,8 @@ When creating a `diskann` index, you can specify various parameters to control i
 - `max_neighbors`: Maximum number of edges per node in the graph (Defaults to 32). A higher value can improve the recall up to a certain point.
 - `l_value_ib`: Size of the search list during index build (Defaults to 100). A higher value makes the build slower, but the index would be of higher quality.
 - `product_quantized`: Enables product quantization (Defaults to false).
-- `pq_param_num_chunks`: Number of chunks for product quantization (Defaults to 0). Realistic range is 0-128.
-- `pq_param_training_samples`: Number of vectors to train the PQ pivot table on (Defaults to 0).
+- `pq_param_num_chunks`: Number of chunks for product quantization (Defaults to 0). 0 means it is determined automatically, based on embedding dimensions. It is recommended to use 1/3 of the original embedding dimensions.
+- `pq_param_training_samples`: Number of vectors to train the PQ pivot table on (Defaults to 0). 0 means it is determined automatically, based on table size.
 
 ```sql
 CREATE INDEX demo_embedding_diskann_custom_idx ON demo USING diskann (embedding vector_cosine_ops)
