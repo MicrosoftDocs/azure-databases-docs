@@ -29,7 +29,7 @@ Microsoft Entra ID users added to the cluster are going to be in addition to nat
 Users need to be allowed to sign in to Azure Cosmos DB for MongoDB vCore in the Microsoft Entra ID tenant. These steps should be performed **once** for the Microsoft Entra ID *tenant* that is going to be used for authentication on Azure Cosmos DB for MongoDB vCore clusters.
 
 > [!IMPORTANT]
-> Microsoft Entra ID tenant administrator permissions are needed to make the change. See [guidance for troubleshooting permissions](/entra/identity/enterprise-apps/add-application-portal-configure#prerequisites).
+> [Microsoft Entra ID tenant administrator permissions](/entra/identity/role-based-access-control/permissions-reference) are needed to make the change.
 
 # [Azure portal](#tab/portal)
 
@@ -48,7 +48,7 @@ az ad sp update --id b4fa09d8-5da5-4352-83d9-05c2a44cf431 --set accountEnabled=t
 ---
 
 > [!NOTE]
-> Editing enterprise application's properties such as "Enabled for users to sign-in" requires permissions granted to a user with privileges to update enterprise application properties. users, such as **Enterprise application owner**, must have the *"update enterprise application properties"* permisssion. For more information, see [Microsoft Entra least privileged users by task - Enterprise applications](/entra/identity/user-based-access-control/delegate-by-task#enterprise-applications).
+> Editing enterprise application's properties such as "Enabled for users to sign-in" requires permissions granted to a user with privileges to update enterprise application properties. Users, such as **Enterprise application owner**, must have the *"update enterprise application properties"* permission. For more information, see [Microsoft Entra least privileged users by task - Enterprise applications](/entra/identity/role-based-access-control/delegate-by-task#enterprise-applications-least-privileged-roles).
 
 ## Enable Microsoft Entra ID authentication method on Azure Cosmos DB for MongoDB vCore cluster
 
@@ -76,7 +76,7 @@ If you see the following in the output, Microsoft Entra ID authentication method
 
 ## Add Microsoft Entra ID administrative users to Azure Cosmos DB for MongoDB vCore cluster
 
-To add or remove Microsoft Entra ID users with administative permissions on cluster, follow these steps:
+To add or remove Microsoft Entra ID users with administrative permissions on cluster, follow these steps:
 
 1. Get OpenID Connect (OIDC) identifier for the security principal such as Entra ID user that needs to be added to Azure Cosmos DB for MongoDB vCore cluster.
     1. Search for 'Microsoft Entra ID' in [Azure portal](https://portal.azure.com/).
@@ -85,7 +85,7 @@ To add or remove Microsoft Entra ID users with administative permissions on clus
     1. Choose the user account in the search results.
     1. On the **Overview** tab of the **Overview** page of the user account, copy **Object ID** identifier.
         1. Object ID has 12345678-90ab-cdef-1234-1234567890ab format.
-        1. This is the OIDC identifier used to login to Azure Cosmos DB for MongoDB vCore cluster.
+        1. This is the OIDC identifier used to log in to Azure Cosmos DB for MongoDB vCore cluster.
 1. Add Entra ID user as an administrator to the cluster:
     ```azurecli
     az rest --method PUT \
@@ -105,7 +105,7 @@ To add or remove Microsoft Entra ID users with administative permissions on clus
 
 ## Connect to Azure Cosmos for MongoDB using Microsoft Entra ID authentication
 
-Microsoft Entra ID integration works with standard MongoDB client tools like **MongoDB Shell**, which aren't Microsoft Entra ID aware and support only specifying the OpenID Connect (OIDC) identificator and password when you're connecting to MongoDB. In such cases, the Microsoft Entra ID token is passed as the password.
+Microsoft Entra ID integration works with standard MongoDB client tools like **MongoDB Shell**, which aren't Microsoft Entra ID aware and support only specifying the OpenID Connect (OIDC) identifier and password when you're connecting to MongoDB. In such cases, the Microsoft Entra ID token is passed as the password.
 
 We tested the following clients:
 
@@ -206,15 +206,14 @@ Here are some essential considerations when you're connecting:
 
 You're now authenticated to your Azure Cosmos for MongoDB vCore cluster in Compass through Microsoft Entra ID authentication.
 
-## Preivew limitations
+## Preview limitations
 
 The following section describes functional limits in the Azure Cosmos DB for MongoDB vCore service when Microsoft Entra ID preview is used.
-- Entra ID is not supported on replica clusters.
-- Entra ID is not supported on restored clusters. 
+- Entra ID isn't supported on replica clusters.
+- Entra ID isn't supported on restored clusters. 
 
 ## Next steps
 
-- Learn about [authentication in Azure Cosmos DB for MongoDB vCore](./concepts-authentication.md)
-- Check out [Microsoft Entra ID limits and limitations in Azure Cosmos DB for MongoDB vCore](./reference-limits.md#azure-active-directory-authentication)
+- Learn about [authentication in Azure Cosmos DB for MongoDB vCore](./authentication-entra-id.md)
 - Review [Microsoft Entra ID fundamentals](/entra/fundamentals/whatis)
-- [Learn more about SQL GRANT in MongoDB](https://www.MongoDB.org/docs/current/sql-grant.html)
+
