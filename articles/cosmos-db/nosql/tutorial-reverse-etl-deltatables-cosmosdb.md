@@ -61,15 +61,15 @@ Set the default language to Python or Scala and attach it to the cluster.
 
 **Step 2: Set Cosmos DB Configuration**
 
-Define a configuration dictionary (cosmos_config) in your notebook to connect your Spark session with Cosmos DB. These details include the Cosmos DB account endpoint, Managed Identity, Subscription, Tenant, database, and container name. It also enables throughput control to limit the RU consumption from Spark jobs, which helps prevent overloading the Cosmos DB account. Throughput control options include the control name, RU threshold, and the metadata container details
+Define a configuration dictionary (cosmos_config) in your notebook to connect your Spark session with Cosmos DB. These details include the Cosmos DB account endpoint, Managed Identity, Subscription, Tenant, database, and container name. It also enables throughput control to limit the RU consumption from Spark jobs, which helps prevent overloading the Cosmos DB account. Throughput control options include the control name, RU threshold. Target Throughput Threshold of 0.30 indicates that 30% of the allocated RUs on the target Cosmos DB container **products** is available for the spark operations
 
 ::: zone pivot="programming-language-python"
 
 ```python
 # Set configuration settings
-  cosmos_config = {
-  "spark.cosmos.accountEndpoint": "<nosql-account-endpoint>",
-  "spark.cosmos.accountKey": "<nosql-account-key>",
+cosmos_config = {
+  "spark.cosmos.accountEndpoint": "<endpoint>",
+  "spark.cosmos.accountKey": "<key>",
   #"spark.cosmos.account.subscriptionId": subscriptionId,
   #"spark.cosmos.account.tenantId": tenantId,
   #"spark.cosmos.account.resourceGroupName":resourceGroupName,
@@ -86,13 +86,13 @@ Define a configuration dictionary (cosmos_config) in your notebook to connect yo
 ::: zone pivot="programming-language-scala"
 
 ```scala
-# Set configuration settings
-  val cosmosConfig = Map(
-  "spark.cosmos.accountEndpoint" -> "<nosql-account-endpoint>",
-  "spark.cosmos.accountKey" -> "<nosql-account-key>",
-  # "spark.cosmos.account.subscriptionId" -> subscriptionId,
-  # "spark.cosmos.account.tenantId" -> tenantId,
-  # "spark.cosmos.account.resourceGroupName" -> resourceGroupName,
+// Set configuration settings
+  val cosmosconfig = Map(
+  "spark.cosmos.accountEndpoint" -> endpoint,
+  "spark.cosmos.accountKey" -> key,
+  // "spark.cosmos.account.subscriptionId" -> subscriptionId,
+  // "spark.cosmos.account.tenantId" -> tenantId,
+  // "spark.cosmos.account.resourceGroupName" -> resourceGroupName,
   "spark.cosmos.database" -> "cosmicworks",
   "spark.cosmos.container" -> "products",
   "spark.cosmos.throughputControl.enabled" -> "true",
@@ -113,10 +113,14 @@ Create a sample DataFrame with product information and write it into a Delta tab
 ```python
 # Ingest Sample Product Data to Delta Table
 from pyspark.sql import SparkSession
+
+# Create sample data and convert it to a DataFrame
 df = spark.createDataFrame([
     ("p001", "Contoso Coffee Mug", "drinkware", 12.95),
     ("p002", "Contoso T-Shirt", "apparel", 19.99)
 ], ["id", "name", "category", "price"])
+
+# Write the DataFrame to a Delta table
 df.write.mode("append").format("delta").saveAsTable("products_delta")
 ```
 
@@ -125,13 +129,14 @@ df.write.mode("append").format("delta").saveAsTable("products_delta")
 ::: zone pivot="programming-language-scala"
 
 ```scala
-# Ingest Sample Product Data to Delta Table
-# Create sample data as a sequence and convert it to a DataFrame
+// Ingest Sample Product Data to Delta Table
+// Create sample data as a sequence and convert it to a DataFrame
 val df = Seq(
   ("p001", "Contoso Coffee Mug", "drinkware", 12.95),
   ("p002", "Contoso T-Shirt", "apparel", 19.99)
-).toDF("id", "name", "category", "price") #Convert the sequence to a DataFrame
-# Write the DataFrame to a Delta table
+).toDF("id", "name", "category", "price") 
+
+// Write the DataFrame to a Delta table
 df.write.mode("append").format("delta").saveAsTable("products_delta")
 ```
 
@@ -145,7 +150,10 @@ Read the products_delta Delta table into a Spark DataFrame and perform an initia
 
 ```python
 # Initial Batch Load to Cosmos DB
+# Read the Delta table into a DataFrame
 df_delta = spark.read.format("delta").table("products_delta")
+
+# Write the DataFrame to Cosmos DB using the Cosmos OLTP format
 df_delta.write.format("cosmos.oltp").mode("append").options(**cosmos_config).save()
 ```
 
@@ -154,12 +162,12 @@ df_delta.write.format("cosmos.oltp").mode("append").options(**cosmos_config).sav
 ::: zone pivot="programming-language-scala"
 
 ```scala
-# Initial Batch Load to Cosmos DB
-# Read the Delta table into a DataFrame
+// Initial Batch Load to Cosmos DB
+// Read the Delta table into a DataFrame
 val df_delta = spark.read.format("delta").table("products_delta")
 
-# Write the DataFrame to Cosmos DB using the Cosmos OLTP format
-df_delta.write.format("cosmos.oltp").mode("append").options(cosmos_config).save()
+// Write the DataFrame to Cosmos DB using the Cosmos OLTP format
+df_delta.write.format("cosmos.oltp").mode("append").options(cosmosconfig).save()
 ```
 
 ::: zone-end
@@ -183,7 +191,7 @@ spark.sql("""
 ::: zone pivot="programming-language-scala"
 
 ```scala
-# Enable CDC for the Delta table by altering its table properties
+// Enable CDC for the Delta table
 spark.sql("""
   ALTER TABLE products_delta SET TBLPROPERTIES (delta.enableChangeDataFeed = true)
 """)
@@ -205,7 +213,10 @@ Read the changes from the Delta table starting from a specific version or specif
 
 ```python
 # Batch CDC Sync to Cosmos DB
+# Read the Change Data Capture (CDC) data from the Delta table
 cdc_batch_df = spark.read.format("delta").option("readChangeData", "true").option("startingVersion", "1").table("products_delta")
+
+# Write the captured changes to Cosmos DB in append mode
 cdc_batch_df.write.format("cosmos.oltp").mode("append").options(**cosmos_config).save()
 ```
 
@@ -214,11 +225,11 @@ cdc_batch_df.write.format("cosmos.oltp").mode("append").options(**cosmos_config)
 ::: zone pivot="programming-language-scala"
 
 ```scala
-# Batch CDC Sync to Cosmos DB
-# Read the Change Data Capture (CDC) data from the Delta table
+// Batch CDC Sync to Cosmos DB
+// Read the Change Data Capture (CDC) data from the Delta table
 val cdc_batch_df = spark.read.format("delta").option("readChangeData", "true").option("startingVersion", "1").table("products_delta")
 
-# Write the captured changes to Cosmos DB in append mode
+// Write the captured changes to Cosmos DB in append mode
 cdc_batch_df.write.format("cosmos.oltp").mode("append").options(cosmos_config).save()
 ```
 
@@ -232,10 +243,14 @@ Continuously syncs incremental changes in near real-time, keeping the target sys
 
 ```python
 # Stream CDC to Cosmos DB
+# Read Change Data Capture (CDC) stream from the Delta table 'products_delta'
 cdc_stream_df = spark.readStream.format("delta").option("readChangeData", "true").table("products_delta")
+# Write the CDC stream to Azure Cosmos DB using the OLTP connector with checkpointing
 streaming_query = cdc_stream_df.writeStream.format("cosmos.oltp").outputMode("append").options(**cosmos_config).option("checkpointLocation", "/mnt/checkpoints/products-stream").start()
+# Wait for the stream to terminate or time out after 60 seconds
 try:   streaming_query.awaitTermination(60)
 except:     print("Stream stopped or timed out.")
+# Stop the stream if it’s still running after the timeout
 if streaming_query.isActive: streaming_query.stop()
 ```
 
@@ -245,12 +260,22 @@ if streaming_query.isActive: streaming_query.stop()
 
 ```scala
 # Stream CDC to Cosmos DB
-val config = Map(
-  "spark.cosmos.accountEndpoint" -> "<nosql-account-endpoint>",
-  "spark.cosmos.accountKey" -> "<nosql-account-key>",
-  "spark.cosmos.database" -> "cosmicworks",
-  "spark.cosmos.container" -> "products"
-)
+// Read Change Data Capture (CDC) stream from the Delta table 'products_delta'
+val cdcStreamDF = spark.readStream.format("delta").option("readChangeData", "true").table("products_delta")
+
+// Write the CDC stream to Azure Cosmos DB using the OLTP connector with checkpointing
+val streamingQuery = cdcStreamDF.writeStream.format("cosmos.oltp").outputMode("append").options(cosmosconfig).option("checkpointLocation", "/mnt/checkpoints/products-stream").start()
+
+// Wait for the stream to terminate or time out after 60 seconds
+try {
+  streamingQuery.awaitTermination(60000) // time out in milli seconds
+} catch {
+  case e: Exception => println("Stream stopped or timed out.")
+}
+// Stop the stream if it’s still running after the timeout
+if (streamingQuery.isActive) {
+  streamingQuery.stop()
+}
 ```
 
 ::: zone-end
@@ -282,7 +307,7 @@ dfCosmos.select("id", "name", "category", "price").show()
 ## Related content
 
 - [Apache Spark](https://spark.apache.org/)
-- [Azure Cosmos DB Spark Connector](/articles/cosmos-db/nosql/tutorial-spark-connector.md)
-- [Throughput Control](/articles\cosmos-db\nosql\throughput-control-spark.md)
+- [Azure Cosmos DB Spark Connector](/azure/cosmos-db/nosql/tutorial-spark-connector)
+- [Throughput Control](/azure/cosmos-db/nosql/throughput-control-spark)
 - [Azure Cosmos DB Partitioning and Partition Key Recommendation](/azure/cosmos-db/partitioning-overview)
 - [AAD authentication in Apache Spark](https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/cosmos/azure-cosmos-spark_3_2-12/docs/AAD-Auth.md)
