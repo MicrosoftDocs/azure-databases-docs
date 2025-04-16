@@ -40,6 +40,31 @@ In this tutorial, you learn how to:
   - No Azure subscription? You can [try Azure Cosmos DB free](../try-free.md) with no credit card required.
 - An existing Azure Databricks workspace.
   - You can create a new Azure Databricks workspace by following steps here,  [create a new Azure Databricks workspace](/azure/databricks/getting-started/).
+- Setting up Managed Identity (AAD) based authentication to write to Cosmos DB using  Databricks
+
+  **1. Get the Managed Identity Object ID (dbmanagedidentity)**
+  This identity is used by Databricks when authenticating to Cosmos DB. This can be obtained either from Azure portal or CLI:
+
+  **Azure Portal**: Go to the Azure Databricks workspace, open the Managed Resource Group, find dbmanagedidentity, and copy its Object ID (Principal ID) from the Overview tab.
+
+  **Azure CLI**: az resource show --name dbmanagedidentity --resource-group <your-managed-resource-group> --namespace Microsoft.ManagedIdentity --resource-type "userAssignedIdentities" --query "properties.principalId" --output tsv
+
+  **1. Assign Cosmos DB Data Plane Role (Built-in Data Contributor)**
+  This data plane role grants the managed identity permission to read and write data in Cosmos DB containers. You can grant this role using the below CLI command
+
+  **Azure CLI**: az cosmosdb sql role assignment create --account-name <your-cosmos-account-name> --resource-group <your-cosmos-rg> --scope "/" --principal-id <object-id-from-1> --role-definition-id "00000000-0000-0000-0000-000000000002"
+
+  **1. Assign Cosmos DB Control Plane Role (IAM)**
+  This control plane role allows the managed identity to access account metadata (required for the Spark connector to initialize).
+
+  **Azure Portal**: Go to Cosmos DB Account → Access Control (IAM) → Click Add → Add role assignment → Select Cosmos DB Account Reader Role and assign it to the dbmanagedidentity from Step 1.
+
+  **1. Get Your Tenant ID (for AAD Auth)**
+  This identifies your Azure Active Directory (AAD/Entra) instance. It is required by the Spark connector when using Managed Identity. You can obtain the Tenant Id using the below CLI command
+
+  **Azure CLI**: az account show --query tenantId --output tsv
+
+  This Tenant id is one of the config inputs in the **Set Cosmos DB Configuration step** below.
 
 ## Detailed Steps and Sample Code to Setup Reverse ETL Pipeline
 
@@ -47,15 +72,15 @@ In this tutorial, we set up a reverse ETL pipeline to move enriched data from De
 
 **Step 1: Set Up Spark and Connector in Databricks**
 
-1. Create a Cluster:
+a. Create a Cluster:
 Open your Azure Databricks workspace.
 Create a new cluster with Runtime version 15.4 which has Long Term Support (Spark 3.5.0, Scala 2.12).
 
-1. Install the Cosmos DB Spark Connector:
+b. Install the Cosmos DB Spark Connector:
 Go to Libraries > Install New > Maven.
 Use: Group ID: com.azure.cosmos.spark, Artifact ID: azure-cosmos-spark_3-5_2-12
 
-1. Create a Notebook:
+c. Create a Notebook:
 Go to Workspace > Your Folder > New > Notebook.
 Set the default language to Python or Scala and attach it to the cluster.
 
@@ -69,10 +94,10 @@ Define a configuration dictionary (cosmos_config) in your notebook to connect yo
 # Set configuration settings
 cosmos_config = {
   "spark.cosmos.accountEndpoint": "<endpoint>",
-  "spark.cosmos.accountKey": "<key>",
-  #"spark.cosmos.account.subscriptionId": subscriptionId,
-  #"spark.cosmos.account.tenantId": tenantId,
-  #"spark.cosmos.account.resourceGroupName":resourceGroupName,
+  "spark.cosmos.auth.type":"ManagedIdentity",
+  "spark.cosmos.account.subscriptionId": "<subscriptionId>",
+  "spark.cosmos.account.tenantId": "<tenantId>",
+  "spark.cosmos.account.resourceGroupName":"<resourceGroupName>",
   "spark.cosmos.database": "cosmicworks",
   "spark.cosmos.container": "products",
   "spark.cosmos.throughputControl.enabled": "true",
@@ -88,11 +113,11 @@ cosmos_config = {
 ```scala
 // Set configuration settings
   val cosmosconfig = Map(
-  "spark.cosmos.accountEndpoint" -> endpoint,
-  "spark.cosmos.accountKey" -> key,
-  // "spark.cosmos.account.subscriptionId" -> subscriptionId,
-  // "spark.cosmos.account.tenantId" -> tenantId,
-  // "spark.cosmos.account.resourceGroupName" -> resourceGroupName,
+  "spark.cosmos.accountEndpoint" -> "<endpoint>",
+  "spark.cosmos.auth.type"-> "ManagedIdentity",
+  "spark.cosmos.account.subscriptionId" -> "<subscriptionId>",
+  "spark.cosmos.account.tenantId" -> "<tenantId>",
+  "spark.cosmos.account.resourceGroupName" -> "<resourceGroupName>",
   "spark.cosmos.database" -> "cosmicworks",
   "spark.cosmos.container" -> "products",
   "spark.cosmos.throughputControl.enabled" -> "true",
