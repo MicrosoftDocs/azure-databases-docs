@@ -7,7 +7,7 @@ ms.author: nlarin
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: how-to
-ms.date: 04/13/2025
+ms.date: 04/14/2025
 appliesto:
   - ✅ MongoDB vCore
 ---
@@ -44,37 +44,57 @@ az ad sp update --id b4fa09d8-5da5-4352-83d9-05c2a44cf431 --set accountEnabled=t
 > [!NOTE]
 > Editing enterprise application's properties such as "Enabled for users to sign-in" requires permissions granted to a user with privileges to update enterprise application properties. users, such as **Enterprise application owner**, must have the *"update enterprise application properties"* permisssion. For more information, see [Microsoft Entra least privileged users by task - Enterprise applications](/entra/identity/user-based-access-control/delegate-by-task#enterprise-applications).
 
-## Add Microsoft Entra ID administrative users to Azure Cosmos DB for MongoDB vCore cluster
+## Enable Microsoft Entra ID authentication method on Azure Cosmos DB for MongoDB vCore cluster
 
-To add or remove Microsoft Entra ID users with administative permissions on cluster, follow these steps in [Azure CLI](/cli/azure/get-started-with-azure-cli):
+When an Azure Cosmos DB for MongoDB vCore cluster is created, only native DocumentDB authentication is enabled on it. To allow Microsoft Entra ID users access cluster's database, Microsoft Entra ID authentication method should be enabled. Follow these steps to enable Microsoft Entra ID authentication method in [Azure CLI](/cli/azure/get-started-with-azure-cli):
 
 1. Enable Microsoft Entra ID authentication on cluster in addition to the native DocumentDB authentication:
 ```azurecli
-az rest --method put --url https://eastus2euap.management.azure.com/subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.DocumentDB/mongoClusters/<clusterName>?api-version=2025-04-01-preview --body "{'location': '<cluterRegion>', 'properties': {'authConfig': {'allowedModes': ['MicrosoftEntraID', 'NativeAuth'] } } }"
+az rest --method PUT --url https://management.azure.com/subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.DocumentDB/mongoClusters/<clusterName>?api-version=2025-04-01-preview --body "{'location': '<cluterRegion>', 'properties': {'authConfig': {'allowedModes': ['MicrosoftEntraID', 'NativeAuth'] } } }"
+```
+1. Verify that Microsoft Entra ID authentication method is enabled on the cluster:
+```azurecli
+az rest --method GET --url https://management.azure.com/subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.DocumentDB/mongoClusters/<clusterName>?api-version=2025-04-01-preview
 ```
 
-1. In **Select Microsoft Entra ID Admins** panel, select one or more valid Microsoft Entra ID user or enterprise application in the current AD tenant to be a Microsoft Entra ID administrator on your Azure Cosmos DB for MongoDB vCore cluster.
-1. Use **Select** to confirm your choice.
-1. In the **Authentication** page, select **Save** in the toolbar to save changes or proceed with adding native MongoDB users.
+If you see the following in the output, Microsoft Entra ID authentication method is enabled on the cluster.
 
+```azurecli
+    "authConfig": {
+      "allowedModes": [
+        "MicrosoftEntraID",
+        "NativeAuth" ] }
+```
 
-Go to Body and choose json: { "location": "cluter region", "properties": { "authConfig": { "allowedModes": ["MicrosoftEntraID", "NativeAuth"] } }
+## Add Microsoft Entra ID administrative users to Azure Cosmos DB for MongoDB vCore cluster
 
-# Command format example
-az rest --method put --url https://management.azure.com/subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.ContainerRegistry/registries/<containerRegistryName>?api-version=2023-01-01-preview --body "{'location': '<locationName>', 'sku': {'name': '<skuName>'}, 'properties': {'adminUserEnabled': '<propertyValue>'}}"
+To add or remove Microsoft Entra ID users with administative permissions on cluster, follow these steps:
 
+1. Get OIDC identifier for the security principal such as Entra ID user that needs to be added to Azure Cosmos DB for MongoDB vCore cluster.
+    1. Search for 'Microsoft Entra ID' in [Azure portal](https://portal.azure.com/).
+    1. Open 'Microsoft Entra ID' service.
+    1. On the **Overview** page of Microsoft Entra ID service in the **Overview** section, search for the user to be added, e.g. dbadmin@contoso.com.
+    1. Choose the user account in the search results.
+    1. On the **Overview** tab of the **Overview** page of the user account, copy **Object ID** identifier.
+        1. Object ID has 12345678-90ab-cdef-1234-1234567890ab format.
+        1. This is the OIDC identifier used to login to Azure Cosmos DB for MongoDB vCore cluster.
+1. Add Entra ID user as an administrator to the cluster:
+```azurecli
+az rest --method PUT \
+--url https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.DocumentDB/mongoClusters/{cluster-name}/users/{oidc-identifier}?api-version=2025-04-01-preview \ 
+-- body { "location": "**cluster-region**", "properties": { "identityProvider": { "type": "MicrosoftEntraID", "properties": { "principalType": "User" } }, "roles": [{"db": "admin", "role": "dbOwner"}] } }
+```
+1. Verify that Entra ID account is added to the cluster: 
+```azurecli
+az rest --method GET \
+--url https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.DocumentDB/mongoClusters/{cluster-name}/users?api-version=2025-04-01-preview
+```
+1. Remove Entra ID user from the cluster: 
+```azurecli
+az rest --method DELETE \
+--url https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.DocumentDB/mongoClusters/{cluster-name}/users/{oidc-identifier}?api-version=2025-04-01-preview 
+```
 
-## Configure native MongoDB authentication
-
-To add MongoDB users on cluster, follow these steps on **Authentication** page:
-
-1. In **MongoDB authentication** section, select **Add MongoDB user**.
-1. Enter the user name and password. Select **Save**.
-1. In the **Authentication** page, select **Save** in the toolbar to save changes or proceed with adding Microsoft Entra ID admin users.
-
-The native MongoDB user is created on the coordinator node of the cluster, and propagated to all the worker nodes. users created through the Azure portal have the LOGIN attribute, which means they’re true users who can sign in to the database.
-
-<a name='connect-to-azure-cosmos-for-MongoDB-by-using-azure-ad-authentication'></a>
 
 ## Connect to Azure Cosmos for MongoDB by using Microsoft Entra ID authentication
 
