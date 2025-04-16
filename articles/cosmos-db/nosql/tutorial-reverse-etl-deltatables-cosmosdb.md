@@ -8,7 +8,7 @@ ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.custom: devx-track-python
 ms.topic: tutorial
-ms.date: 04/17/2025
+ms.date: 04/15/2025
 zone_pivot_groups: programming-languages-spark-all-minus-sql-r-csharp
 ---
 
