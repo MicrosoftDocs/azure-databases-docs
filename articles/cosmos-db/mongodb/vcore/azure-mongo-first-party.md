@@ -32,7 +32,7 @@ Azure Marketplace includes both **first-party** services (built and operated by 
 
 ### 1. **Security and Compliance**
 
-Mission-critical workloads demand full control over data and infrastructure. First-party services like **Cosmos DB for MongoDB vCore** inherit Microsoft’s extensive compliance portfolio, including:
+Mission-critical workloads demand full control over data and infrastructure. First-party services like **Cosmos DB for MongoDB vCore** inherit [Microsoft’s extensive compliance portfolio](https://learn.microsoft.com/azure/compliance/), including:
 
 - UAE DESC
 - FedRAMP
