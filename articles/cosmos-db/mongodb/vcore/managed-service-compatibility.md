@@ -6,7 +6,7 @@ ms.author: gahllevy
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: conceptual
-ms.date: 03/24/2025
+ms.date: 04/17/2025
 ---
 
 # Understanding MongoDB compatibility in managed MongoDB services
