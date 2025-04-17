@@ -396,7 +396,7 @@ Content    : {
 Now, assign the newly defined role to an identity so that your applications can access data in Azure Cosmos DB for Table.
 
 > [!IMPORTANT]
-> This assignment task requires you to have the unique identifier of any identity you want to grant role-based access control permissions. If you do not have a unique identifier for an identity, follow the instructions in the [create managed identity](how-to-create-managed-identities.md) or [get signed-in identity](how-to-get-signed-in-identity.md) guides.
+> This assignment task requires you to have the unique identifier of any identity you want to grant role-based access control permissions. If you do not have a unique identifier for an identity, follow the instructions in the [create managed identity](/entra/identity/managed-identities-azure-resources/how-to-configure-managed-identities) or [get signed-in identity](/cli/azure/ad/signed-in-user) guides.
 
 ::: zone pivot="azure-interface-cli"
 

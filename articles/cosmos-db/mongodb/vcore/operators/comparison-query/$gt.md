@@ -1,7 +1,7 @@
 ---
-title: $eq
-titleSuffix: Overview of the $eq query operator in Azure Cosmos DB for MongoDB vCore
-description: The $eq query operator in Azure Cosmos DB for MongoDB vCore compares the value of a field to a specified value
+title: $gt
+titleSuffix: Overview of the $gt query operator in Azure Cosmos DB for MongoDB vCore
+description: The $gt query operator in Azure Cosmos DB for MongoDB vCore selects documents where the value of a field is greater than a specified value
 author: abinav2307
 ms.author: abramees
 ms.service: azure-cosmos-db
@@ -10,29 +10,24 @@ ms.topic: conceptual
 ms.date: 02/24/2025
 ---
 
-# $eq (Comparison Query)
+# $gt (Comparison Query)
 
-[!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
-
-The `$eq` operator is used to match documents where the value of a field is equal to a specified value. This operator is used to filter documents based on exact matches and with query predicates to retrieve documents with specific values, objects and arrays.
+The `$gt` operator is used to select documents where the value of a field is greater than a specified value. The `$gt` operator queries numerical and date values to filter records that exceed a specified threshold.
 
 ## Syntax
 
-The syntax for the `$eq` operator is:
-
-```json
-{ "field": { "$eq": "value" } }
+```mongodb
+{ "field": { "$gt": value } }
 ```
 
 ## Parameters
 
 | Parameter | Description |
 | --- | --- |
-| **`field`** | The field to be compared|
-| **`value`** | The value to compare against|
+| **`field`** | The field in the document you want to compare|
+| **`value`** | The value that the field should be greater than|
 
 ## Examples
-
 Consider this sample document from the stores collection in the StoreData database.
 
 ```json
@@ -145,78 +140,49 @@ Consider this sample document from the stores collection in the StoreData databa
 }
 ```
 
-### Example 1: Find documents based an equality match on the value of a root level field
-
-To find a store with the name "Boulder Innovations | Home Security Place - Ankundingburgh":
+### Example 1: Retrieve all stores where the total sales exceed $35,000
 
 ```javascript
-db.stores.find({ "name": { "$eq": "Boulder Innovations | Home Security Place - Ankundingburgh" } }, {"name": 1})
+db.stores.find({ "sales.totalSales": { "$gt": 35000 } }, {"name": 1, "sales.totalSales": 1}, {"limit": 1})
 ```
 
 This returns the following results:
 ```json
 {
-    "_id": "bda56164-954d-4f47-a230-ecf64b317b43",
-    "name": "Boulder Innovations | Home Security Place - Ankundingburgh"
+    "_id": "2cf3f885-9962-4b67-a172-aa9039e9ae2f",
+    "name": "First Up Consultants | Bed and Bath Center - South Amir",
+    "sales": { "totalSales": 37701 }
 }
 ```
-### Example 2: Find documents based on an equality match on the value of a nested field
 
-To find stores where the total sales amount is exactly $37,015:
+### Example 2: Find stores with more than 12 full-time staff
 
 ```javascript
-db.stores.find({ "sales.totalSales": { "$eq": 37015 } }, {"name": 1, "sales.totalSales": 1})
+db.stores.find({ "staff.totalStaff.fullTime": { "$gt": 12 } }, {"name": 1, "staff.totalStaff": 1}, {"limit": 1})
 ```
 
 This returns the following results:
 ```json
 {
-    "_id": "bda56164-954d-4f47-a230-ecf64b317b43",
-    "name": "Boulder Innovations | Home Security Place - Ankundingburgh",
-    "sales": { "totalSales": 37015 }
+    "_id": "2cf3f885-9962-4b67-a172-aa9039e9ae2f",
+    "name": "First Up Consultants | Bed and Bath Center - South Amir",
+    "staff": { "totalStaff": { "fullTime": 18, "partTime": 17 } }
 }
 ```
 
-### Example 3: Find documents based on an equality match on any individual item within an array
-
-This query searches for an equality match on any one of the objects within the nested discounts array
+### Example 3: Find promotion events with a discount percentage greater than 10% for Art & Craft Kits
 
 ```javascript
-db.stores.find({"promotionEvents.discounts": { "$eq": {"categoryName": "Alarm Systems", "discountPercentage": 5}}}, {"name": 1}, {"limit": 2})
-```
-
-This returns the following results:
-```json
-[
-  {
-    "_id": "ece5bf6c-3255-477e-bf2c-d577c82d6995",
-    "name": "Proseware, Inc. | Home Security Boutique - Schambergertown"
-  },
-  {
-    "_id": "7baa8fd8-113a-4b10-a7b9-2c116e976491",
-    "name": "Tailwind Traders | Home Security Pantry - Port Casper"
-  }
-]
-```
-
-### Example 4: Find documents based on an equality on the entire array
-
-This query searches for documents based on exact match on ALL the values within an array.
-
-```javascript
-db.stores.find({"promotionEvents.discounts": { "$eq": [{"categoryName": "Alarm Systems", "discountPercentage": 5}, {"categoryName": "Door Locks", "discountPercentage": 12}]}}, {"name": 1})
+db.stores.find({ "promotionEvents.discounts": { "$elemMatch": { "categoryName": "Art & Craft Kits", "discountPercentage": { "$gt": 10 } } } }, {"name": 1, }, {"limit": 1})
 ```
 
 This returns the following results:
 ```json
 {
-    "_id": "aa9ad64c-29da-42f8-a1f0-30e03bf04a2d",
-    "name": "Boulder Innovations | Home Security Market - East Sheridanborough"
+    "_id": "64941495-5778-4e6a-9eb1-6d7f1fddae17",
+    "name": "Trey Research | Toy Haven - North Loren"
 }
 ```
-
-> [!NOTE]
-> For an equality match on an entire array, the order of the specified values in the equality predicates must also be an exact match.
 
 ## Related content
 
