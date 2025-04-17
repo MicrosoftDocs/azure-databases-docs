@@ -4,7 +4,7 @@ titleSuffix: Azure Cosmos DB for NoSQL
 description: Learn how to disable key-based auth with Azure Cosmos DB for NoSQL to prevent an account from being used with insecure authentication methods.
 author: seesharprun
 ms.author: sidandrews
-ms.reviewer: iriaosara
+ms.reviewer: skhera
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: how-to

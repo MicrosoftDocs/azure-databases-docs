@@ -4,7 +4,7 @@ titleSuffix: Azure Cosmos DB for NoSQL
 description: This article includes a list of all potential data plane actions for use with role-based access control (RBAC) in Azure Cosmos DB for NoSQL.
 author: seesharprun
 ms.author: sidandrews
-ms.reviewer: iriaosara
+ms.reviewer: skhera
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: reference
