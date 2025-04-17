@@ -42,7 +42,7 @@ In this tutorial, you learn how to:
   - You can create a new Azure Databricks workspace by following steps here,  [create a new Azure Databricks workspace](/azure/databricks/getting-started/).
 - Setting up Managed Identity (AAD) based authentication to write to Cosmos DB using  Databricks
 
-  - Perform these 4 steps to faciliate Managed Identity based authentication:
+  - Managed Identity enables secure, passwordless authentication to Azure Cosmos DB from Databricks without managing secrets or keys.Perform these 4 steps to faciliate Managed Identity based authentication:
 
     **a. Get the Managed Identity Object ID (dbmanagedidentity)**
     This identity is used by Databricks when authenticating to Cosmos DB. This can be obtained either from Azure portal or CLI:
@@ -76,7 +76,10 @@ In this tutorial, you learn how to:
 
     ```
 
-    This Tenant ID is one of the config inputs in the **Set Cosmos DB Configuration step** .
+    This Tenant ID is one of the config inputs in the **Set Cosmos DB Configuration step** for the final configuration of Managed Identity. 
+
+  If you're performing one-time testing using keys, the above four steps for setting up Managed Identity can be temporarily skipped. 
+
 
 ## Detailed Steps and Sample Code to Setup Reverse ETL Pipeline
 
@@ -98,20 +101,25 @@ In this tutorial, we set up a reverse ETL pipeline to move enriched data from De
 
 **Step 2: Set Cosmos DB Configuration**
 
-Define a configuration dictionary (cosmos_config) in your notebook to connect your Spark session with Cosmos DB. These details include the Cosmos DB account endpoint, Managed Identity, Subscription, Tenant, database, and container name. It also enables throughput control to limit the RU consumption from Spark jobs, which helps prevent overloading the Cosmos DB account. Throughput control options include the control name, RU threshold. Target Throughput Threshold of 0.30 indicates that 30% of the allocated RUs on the target Cosmos DB container **products** is available for the spark operations.
+Define a configuration dictionary (cosmos_config) in your notebook to connect your Spark session with Cosmos DB. These details include the Cosmos DB account endpoint, Managed Identity, Subscription, Tenant, database, and container name. It also enables throughput control to limit the RU consumption from Spark jobs, which helps prevent overloading the Cosmos DB account. Throughput control options include the control name and RU threshold. Target Throughput Threshold of 0.30 indicates that 30% of the allocated RUs on the target Cosmos DB container **products** is available for the spark operations.
 
 ::: zone pivot="programming-language-python"
 
 ```python
 # Set configuration settings
 cosmos_config = {
+  # Generic Cosmos DB config settings
   "spark.cosmos.accountEndpoint": "<endpoint>",
+  "spark.cosmos.database": "cosmicworks",
+  "spark.cosmos.container": "products",
+  # Managed Identity Based Cosmos DB config settings
   "spark.cosmos.auth.type":"ManagedIdentity",
   "spark.cosmos.account.subscriptionId": "<subscriptionId>",
   "spark.cosmos.account.tenantId": "<tenantId>",
   "spark.cosmos.account.resourceGroupName":"<resourceGroupName>",
-  "spark.cosmos.database": "cosmicworks",
-  "spark.cosmos.container": "products",
+  # Key Based Cosmos DB config settings for one-time testing
+  # "spark.cosmos.accountKey": "<nosql-account-key>",
+  # Throughput control based Cosmos DB config settings for managing the RU used by Spark
   "spark.cosmos.throughputControl.enabled": "true",
   "spark.cosmos.throughputControl.name": "TargetContainerThroughputControl",
   "spark.cosmos.throughputControl.targetThroughputThreshold": "0.30", 
@@ -125,13 +133,18 @@ cosmos_config = {
 ```scala
 // Set configuration settings
   val cosmosconfig = Map(
+  // Generic Cosmos DB config settings
   "spark.cosmos.accountEndpoint" -> "<endpoint>",
+  "spark.cosmos.database" -> "cosmicworks",
+  "spark.cosmos.container" -> "products",
+  // Managed Identity Based Cosmos DB config settings
   "spark.cosmos.auth.type"-> "ManagedIdentity",
   "spark.cosmos.account.subscriptionId" -> "<subscriptionId>",
   "spark.cosmos.account.tenantId" -> "<tenantId>",
   "spark.cosmos.account.resourceGroupName" -> "<resourceGroupName>",
-  "spark.cosmos.database" -> "cosmicworks",
-  "spark.cosmos.container" -> "products",
+  // Key Based Cosmos DB config settings for one-time testing
+  // "spark.cosmos.accountKey" -> "<nosql-account-key>",
+  // Throughput control based Cosmos DB config settings for managing the RU used by Spark
   "spark.cosmos.throughputControl.enabled" -> "true",
   "spark.cosmos.throughputControl.name" -> "TargetContainerThroughputControl",
   "spark.cosmos.throughputControl.targetThroughputThreshold" -> "0.30", 
