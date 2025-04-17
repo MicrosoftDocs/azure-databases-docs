@@ -20,7 +20,7 @@ In the realm of managed MongoDB services, understanding the landscape of compati
 
 ### Is MongoDB Atlas Really MongoDB?
 
-Despite perceptions, MongoDB Atlas lacks full compatibility, failing nearly 20% of MongoDB’s own official test suite. Unsupported features include: 
+Despite perceptions, MongoDB Atlas lacks full compatibility, failing nearly 10% of MongoDB’s own official test suite. Unsupported features include: 
 
 - **Administrative Commands:** Actions such as `setParameter`, `logRotate`, and `shutdown` are either limited or unavailable, affecting the ability to customize and control the database environment fully.
 - **Access Control Commands:** Limitations include lack of support for `createUser`, `updateUser`, `dropUser` for user management; `createRole`, `updateRole`, `dropRole` for role management; and `grantRolesToUser`, `revokeRolesFromUser` for privilege management, impacting applications that leverage these. Just like Azure Cosmos DB, MongoDB  Atlas requires users to utilize a first-party solution for access and role management. 
@@ -39,7 +39,7 @@ Azure Cosmos DB for MongoDB acknowledges these industry-wide practices and adopt
 - **Performance and Scalability:** Offering customizable performance tiers, decoupled from storage, and global distribution to meet diverse workload requirements. Passing down the cost savings from the Open Source [DocumentDB engine](https://github.com/microsoft/documentdb) (which powers the service) to customers to save money.
 - **Security and Compliance:** Providing advanced security features such Private Link and Entra ID integration to ensure data protection and compliance with regulatory standards.
 - **Operational Flexibility:** Supporting a broad set of MongoDB features (97% of aggregation operators, 96% of query/projections operators, and 100% of update operators etc.) while also innovating with Azure-specific capabilities such as [instant autoscale](./autoscale.md) to enhance usability and management.
-- **Transparent support infrastructure:** No need for seperate complex and expensive support contracts from third party vendors.
+- **Transparent support infrastructure:** No need for separate complex and expensive support contracts from third party vendors.
 - **Simplified Versions** Azure Cosmos DB for MongoDB uses a unified codebase for all server versions, offering version-dependent features without needing database version upgrades.
 - **Full Stack SLA:** Providing an SLA that covers not only the database application, but also the compute and infrastructure it runs on, to give you piece of mind.
 
