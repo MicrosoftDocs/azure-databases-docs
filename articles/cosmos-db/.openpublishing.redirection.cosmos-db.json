@@ -6498,7 +6498,7 @@
     {
       "source_path_from_root": "/articles/cosmos-db/nosql/security/how-to-create-managed-identities.md",
       "redirect_url": "/entra/identity/managed-identities-azure-resources/how-to-configure-managed-identities",
-      "redirect_document_id": true
+      "redirect_document_id": false
     },
     {
       "source_path_from_root": "/articles/cosmos-db/nosql/security/how-to-get-signed-in-identity.md",
@@ -6508,7 +6508,7 @@
     {
       "source_path_from_root": "/articles/cosmos-db/table/security/how-to-create-managed-identities.md",
       "redirect_url": "/entra/identity/managed-identities-azure-resources/how-to-configure-managed-identities",
-      "redirect_document_id": true
+      "redirect_document_id": false
     },
     {
       "source_path_from_root": "/articles/cosmos-db/table/security/how-to-get-signed-in-identity.md",
