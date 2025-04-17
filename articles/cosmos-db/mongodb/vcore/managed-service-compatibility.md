@@ -11,7 +11,6 @@ ms.date: 04/17/2025
 
 # Understanding MongoDB compatibility in managed MongoDB services
 
-## Introduction
 
 In the realm of managed MongoDB services, understanding the landscape of compatibility and feature support is crucial to remain vendor-agnostic. While it's a common perception that all services strive for full MongoDB compatibility, practical constraints and strategic decisions often lead to selective feature support. This document aims to shed light on these aspects, using MongoDB Atlas as a case study to illustrate the broader industry practice, including how Azure Cosmos DB for MongoDB approaches these challenges.
 
