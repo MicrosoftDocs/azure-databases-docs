@@ -11,10 +11,10 @@
   expanded: true
   items:
     - name: Get signed-in identity
-      href: /entra/identity/users/how-to-get-signed-in-identity
+      href: /cli/azure/ad/signed-in-user
     - name: Create managed identities
       displayName: principals
-      href: /entra/identity/managed-identities-azure-resources/quickstart-host-service-identity
+      href: /entra/identity/managed-identities-azure-resources/how-to-configure-managed-identities
     - name: Disable key-based authentication
       displayName: key, ropc, connection string
       href: how-to-disable-key-based-authentication.md
