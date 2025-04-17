@@ -2074,6 +2074,11 @@
             "source_path_from_root": "/articles/postgresql/flexible-server/how-to-connect-to-data-factory-private-endpoint.md",
             "redirect_url": "/azure/postgresql/flexible-server/how-to-connect-data-factory-private-endpoint",
             "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/migrate/whats-happening-to-postgresql-single-server.md",
+            "redirect_url": "/azure/postgresql/flexible-server/overview",
+            "redirect_document_id": false
         }
     ]
 }
