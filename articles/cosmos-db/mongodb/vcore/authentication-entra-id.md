@@ -39,13 +39,13 @@ Interoperability with MongoDB drivers is provided via [OpenID Connect (OIDC) sup
 
 ### Administrative and non-administrative access for Microsoft Entra ID principals
 
-When Microsoft Entra ID authentication is enabled on an Azure Cosmos DB for MongoDB vCore cluster, you can add one or more Microsoft Entra ID principals as *administrator users* to that cluster. The Microsoft Entra ID administrator sign-in can be a Microsoft Entra ID user, a service principal, or a managed identity. Multiple Microsoft Entra ID administrators can be configured at any time. 
+When Microsoft Entra ID authentication is enabled on an Azure Cosmos DB for MongoDB vCore cluster, you can add one or more Microsoft Entra ID principals as *administrator users* to that cluster. The Microsoft Entra ID administrator can be a Microsoft Entra ID user, a service principal, or a managed identity. Multiple Microsoft Entra ID administrators can be configured at any time. 
 
 Additionally, one or more non-administrative Microsoft Entra ID users can be added to a cluster at any time once Microsoft Entra ID authentication is enabled. Non-administrative users are often used for ongoing production tasks that don't require administrative privileges.
 
 ## Considerations
 
-- Microsoft Entra ID can be the only authentication method enabled on a 
+- Microsoft Entra ID can be the only authentication method enabled on a cluster.
 - Multiple Microsoft Entra ID principals (a user, service principal, or managed identity) can be configured as Microsoft Entra ID administrator for an Azure Cosmos DB for MongoDB vCore cluster at any time.
 - If a Microsoft Entra ID principal is deleted from Microsoft Entra ID service, it still remains as a PostgreSQL role on the cluster, but it's no longer able to acquire new access token. In this case, although the matching role still exists in the Postgres database it's unable to authenticate to the cluster nodes. Database administrators need to transfer ownership and drop such roles manually.
 

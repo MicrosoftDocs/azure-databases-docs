@@ -111,16 +111,7 @@ To add or remove Microsoft Entra ID users with administrative permissions on clu
     --url https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.DocumentDB/mongoClusters/{cluster-name}/users/{oidc-identifier}?api-version=2025-04-01-preview 
     ```
 
-## Connect to Azure Cosmos for MongoDB using Microsoft Entra ID authentication
-
-Microsoft Entra ID integration works with standard MongoDB client tools like **MongoDB Shell**, which aren't Microsoft Entra ID aware and support only specifying the OpenID Connect (OIDC) identifier and password when you're connecting to MongoDB. In such cases, the Microsoft Entra ID token is passed as the password.
-
-We tested the following clients:
-
-- **Mongo Shell command line**.
-- **Compass**.
-
-Use the following procedures to authenticate with Microsoft Entra ID as an Azure Cosmos DB for MongoDB vCore user. You can follow along on an Azure virtual machine, or on your local machine.
+## Connect to Azure Cosmos DB for MongoDB using Microsoft Entra ID authentication
 
 ### Sign in to the user's Azure subscription
 
@@ -155,64 +146,6 @@ After authentication is successful, Microsoft Entra ID returns an access token f
 ```
 
 The TOKEN is a Base64 string. It encodes all the information about the authenticated user and is associated with the Azure Cosmos DB for MongoDB vCore service. The token is valid for at least 5 minutes with the maximum of 90 minutes. The **expiresOn** defines actual token expiration time.
-
-### Use a token as a password for signing in with Mongo Shell
-
-When connecting, it's best to use the access token as the MongoDB user password.
-
-While using [the Mongo Shell command-line client](https://www.mongodb.com/try/download/shell), the access token needs to be passed through an environment variable. The reason is that the access token exceeds the password length that Mongo Shell can accept directly.
-
-Here's a Windows example:
-
-```cmd
-set MONGOPASSWORD=<TOKEN value from the previous step>
-```
-
-```powerShell
-$env:MONGOPASSWORD='<TOKEN value from the previous step>'
-```
-
-Here's a Linux/macOS example:
-
-```bash
-export MONGOPASSWORD=<TOKEN value from the previous step>
-```
-
-You can also combine the previous two steps together using command substitution. The token retrieval can be encapsulated into a variable and passed directly as a value for `MONGOPASSWORD` environment variable:
-
-```bash
-export MONGOPASSWORD=$(az account get-access-token --resource https://token.MongoDB.cosmos.azure.com --query "[accessToken]" -o tsv)
-```
-
-
-> [!NOTE]
-> Make sure MONGOPASSWORD variable is set to the Microsoft Entra ID access token for your
-> subscription for Microsoft Entra ID authentication. If you need to do MongoDB user authentication
-> from the same session you can set MONGOPASSWORD to the MongoDB user password
-> or clear the MONGOPASSWORD variable value to enter the password interactively.
-> Authentication would fail with the wrong value in MONGOPASSWORD.
-
-Now you can initiate a connection with Azure Cosmos DB for MongoDB vCore using the Microsoft Entra ID user account that the access token was generated for. You would do it as you usually do with the user account as the user and without 'password' parameter in the command line:
-
-```sql
-mongosh "host=mycluster.global.MongoDB.cosmos.azure.com user=user@tenant.onmicrosoft.com sslmode=require"
-```
-
-### Use a token as a password for signing in with Compass
-
-To connect by using a Microsoft Entra ID token with Compass, follow these steps:
-
-1. Copy Entra ID connection string to the **URI** field. 
-1. Open **Advanced Connect Options**.
-1. On the **Authentication** tab, select **OIDC**. 
-1. Enter the Microsoft Entra ID access token when you're prompted.
-
-Here are some essential considerations when you're connecting:
-
-- Be sure to use [OIDC identifier](#add-microsoft-entra-id-administrative-users-to-azure-cosmos-db-for-mongodb-vcore-cluster) for the Entra ID user as the user name.
-- The access token's validity is 5 minutes to 90 minutes. You should get the access token before initiating the sign-in to Azure Cosmos for MongoDB.
-
-You're now authenticated to your Azure Cosmos for MongoDB vCore cluster in Compass through Microsoft Entra ID authentication.
 
 ## Preview limitations
 
