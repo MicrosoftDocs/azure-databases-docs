@@ -70,7 +70,7 @@ This ensures centralized governance of who accesses what—and how.
 Azure Cosmos DB for MongoDB vCore is a first-party service delivering:
 
 - **MongoDB wire protocol compatibility**
-- **Open-source engine optimizations**
+- **Truly (MIT) open source, multi-cloud engine. Without [server-side public license](https://en.wikipedia.org/wiki/Server_Side_Public_License) limitations**
 - **AI-first capabilities like vector search**
 - **Global scalability, autoscale, and hybrid identity**
 - **Full stack SLA** covering the database, compute, storage, and networking
