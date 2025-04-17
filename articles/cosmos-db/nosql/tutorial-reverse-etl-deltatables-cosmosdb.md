@@ -363,3 +363,5 @@ dfCosmos.select("id", "name", "category", "price").show()
 - [Throughput Control](/azure/cosmos-db/nosql/throughput-control-spark)
 - [Azure Cosmos DB Partitioning and Partition Key Recommendation](/azure/cosmos-db/partitioning-overview)
 - [AAD authentication in Apache Spark](https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/cosmos/azure-cosmos-spark_3_2-12/docs/AAD-Auth.md)
+- [Data Plane Role Based Access Control](/azure/cosmos-db/nosql/security/how-to-grant-data-plane-role-based-access)
+
