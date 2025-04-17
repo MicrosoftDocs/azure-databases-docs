@@ -53,7 +53,7 @@ When running a native service:
 
 Cosmos DB for MongoDB vCore integrates natively with:
 
-- Entra ID (formerly Azure AD)
+- Entra ID (formerly Azure AD) to **access your data** and **manage resources**. 
 - Azure Role-Based Access Control (RBAC)
 - Azure policies and Private Link
 
