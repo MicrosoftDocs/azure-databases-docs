@@ -112,7 +112,11 @@ If your server was deployed with geo-redundant backup, you can initiate the rest
 
 
 ```azurecli-interactive
-az postgres flexible-server geo-restore --resource-group <resource_group> --name <server> --source-server <source_server> --location <paired_region>
+az postgres flexible-server geo-restore \
+  --resource-group <resource_group> \
+  --name <server> \
+  --source-server <source_server> \
+  --location <paired_region>
 ```
 
 ---

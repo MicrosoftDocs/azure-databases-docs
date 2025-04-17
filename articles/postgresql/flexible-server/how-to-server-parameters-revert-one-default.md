@@ -52,16 +52,30 @@ Using the [Azure portal](https://portal.azure.com):
 You can revert the value of a server parameter to its default via the [az postgres flexible-server parameter set](/cli/azure/postgres/flexible-server/parameter#az-postgres-flexible-server-parameter-set) command.
 
 ```azurecli-interactive
-az postgres flexible-server parameter set --resource-group <resource_group> --server-name <server> --source user-override --name <parameter> --value $(az postgres flexible-server parameter show --resource-group <resource_group> --server-name <server> --name <parameter> --output tsv) 
+az postgres flexible-server parameter set \
+  --resource-group <resource_group> \
+  --server-name <server> \
+  --source user-override \
+  --name <parameter> \
+  --value $(az postgres flexible-server parameter show \
+              --resource-group <resource_group> \
+              --server-name <server> \
+              --name <parameter> \
+              --output tsv) 
 ```
 
 And you can use the following script to conditionally restart the server, if the parameter changed requires a restart for the change to take effect:
 
 ```azurecli-interactive
-parameters_requiring_restart=$(az postgres flexible-server parameter list --resource-group <resource_group> --server-name <server> --query "[?isConfigPendingRestart==\`true\`] | length(@)")
+parameters_requiring_restart=$(az postgres flexible-server parameter list \
+                                 --resource-group <resource_group> \
+                                 --server-name <server> \
+                                 --query "[?isConfigPendingRestart==\`true\`] | length(@)")
 
 if [ "$parameters_requiring_restart" -gt 0 ]; then
-  az postgres flexible-server restart --resource-group <resource_group> --name <server>
+  az postgres flexible-server restart \
+    --resource-group <resource_group> \
+    --name <server>
 fi
 ```
 

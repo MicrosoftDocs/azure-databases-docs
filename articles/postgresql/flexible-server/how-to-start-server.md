@@ -58,7 +58,9 @@ Using the [Azure portal](https://portal.azure.com/):
 You can start a stopped server via the [az postgres flexible-server start](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-start) command.
 
 ```azurecli-interactive
-az postgres flexible-server start --resource-group <resource_group> --name <server>
+az postgres flexible-server start \
+  --resource-group <resource_group> \
+  --name <server>
 ```
 
 If you attempt to start a server which isn't in `Stopped` state, you receive an error like this:
