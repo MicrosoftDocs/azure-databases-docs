@@ -1,7 +1,7 @@
 ---
-title: $eq
-titleSuffix: Overview of the $eq query operator in Azure Cosmos DB for MongoDB vCore
-description: The $eq query operator in Azure Cosmos DB for MongoDB vCore compares the value of a field to a specified value
+title: $ne
+titleSuffix: Overview of the $ne query operator in Azure Cosmos DB for MongoDB vCore
+description: The $ne query operator in Azure Cosmos DB for MongoDB vCore returns documents where the value of a field doesn't equal a specified value
 author: abinav2307
 ms.author: abramees
 ms.service: azure-cosmos-db
@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 02/24/2025
 ---
 
-# $eq (Comparison Query)
+# $ne
 
 [!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 
-The `$eq` operator is used to match documents where the value of a field is equal to a specified value. This operator is used to filter documents based on exact matches and with query predicates to retrieve documents with specific values, objects and arrays.
+The `$ne` operator is used to select documents where the value of a field doesn't equal a specified value.
 
 ## Syntax
 
-The syntax for the `$eq` operator is:
+The syntax for the `$ne` operator is:
 
-```json
-{ "field": { "$eq": "value" } }
+```mongodb
+{ field: { $ne: value } }
 ```
 
 ## Parameters
@@ -29,10 +29,9 @@ The syntax for the `$eq` operator is:
 | Parameter | Description |
 | --- | --- |
 | **`field`** | The field to be compared|
-| **`value`** | The value to compare against|
+| **`value`** | The value that the field shouldn't be equal to|
 
 ## Examples
-
 Consider this sample document from the stores collection in the StoreData database.
 
 ```json
@@ -145,81 +144,40 @@ Consider this sample document from the stores collection in the StoreData databa
 }
 ```
 
-### Example 1: Find documents based an equality match on the value of a root level field
-
-To find a store with the name "Boulder Innovations | Home Security Place - Ankundingburgh":
+### Example 1 - Find stores whose name isn't "Fourth Coffee"
 
 ```javascript
-db.stores.find({ "name": { "$eq": "Boulder Innovations | Home Security Place - Ankundingburgh" } }, {"name": 1})
+db.stores.find({ "name": {"$ne": "Fourth Coffee"}}, {"_id": 1, "name": 1}, {"limit": 1})
 ```
 
 This returns the following results:
 ```json
 {
-    "_id": "bda56164-954d-4f47-a230-ecf64b317b43",
-    "name": "Boulder Innovations | Home Security Place - Ankundingburgh"
+    "_id": "2cf3f885-9962-4b67-a172-aa9039e9ae2f",
+    "name": "First Up Consultants | Bed and Bath Center - South Amir"
 }
 ```
-### Example 2: Find documents based on an equality match on the value of a nested field
 
-To find stores where the total sales amount is exactly $37,015:
+### Example 2 - Find stores with promotion events that aren't in 2024
 
 ```javascript
-db.stores.find({ "sales.totalSales": { "$eq": 37015 } }, {"name": 1, "sales.totalSales": 1})
+db.stores.find({ "promotionEvents.promotionalDates.startDate": {"$ne": "2024"}}, {"name": 1, "promotionEvents.promotionalDates.startDate": 1}, {"limit": 1})
 ```
 
 This returns the following results:
 ```json
 {
-    "_id": "bda56164-954d-4f47-a230-ecf64b317b43",
-    "name": "Boulder Innovations | Home Security Place - Ankundingburgh",
-    "sales": { "totalSales": 37015 }
+    "_id": "2cf3f885-9962-4b67-a172-aa9039e9ae2f",
+    "name": "First Up Consultants | Bed and Bath Center - South Amir",
+    "promotionEvents": [
+      {
+        "promotionalDates": { "startDate": { "Year": 2024, "Month": 9, "Day": 21 } }
+      }
+    ]
 }
 ```
-
-### Example 3: Find documents based on an equality match on any individual item within an array
-
-This query searches for an equality match on any one of the objects within the nested discounts array
-
-```javascript
-db.stores.find({"promotionEvents.discounts": { "$eq": {"categoryName": "Alarm Systems", "discountPercentage": 5}}}, {"name": 1}, {"limit": 2})
-```
-
-This returns the following results:
-```json
-[
-  {
-    "_id": "ece5bf6c-3255-477e-bf2c-d577c82d6995",
-    "name": "Proseware, Inc. | Home Security Boutique - Schambergertown"
-  },
-  {
-    "_id": "7baa8fd8-113a-4b10-a7b9-2c116e976491",
-    "name": "Tailwind Traders | Home Security Pantry - Port Casper"
-  }
-]
-```
-
-### Example 4: Find documents based on an equality on the entire array
-
-This query searches for documents based on exact match on ALL the values within an array.
-
-```javascript
-db.stores.find({"promotionEvents.discounts": { "$eq": [{"categoryName": "Alarm Systems", "discountPercentage": 5}, {"categoryName": "Door Locks", "discountPercentage": 12}]}}, {"name": 1})
-```
-
-This returns the following results:
-```json
-{
-    "_id": "aa9ad64c-29da-42f8-a1f0-30e03bf04a2d",
-    "name": "Boulder Innovations | Home Security Market - East Sheridanborough"
-}
-```
-
-> [!NOTE]
-> For an equality match on an entire array, the order of the specified values in the equality predicates must also be an exact match.
 
 ## Related content
 
 - [Migrate to vCore based Azure Cosmos DB for MongoDB](https://aka.ms/migrate-to-azure-cosmosdb-for-mongodb-vcore)
-- [$gte for greater than or equal to comparisons]($gte.md)
-- [$lte for less than or equal to comparisons]($lte.md)
+- [$eq for equality comparisons]($eq.md)
