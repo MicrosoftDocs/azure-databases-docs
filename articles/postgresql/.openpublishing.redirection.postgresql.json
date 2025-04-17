@@ -2077,7 +2077,7 @@
         },
         {
             "source_path_from_root": "/articles/postgresql/migrate/whats-happening-to-postgresql-single-server.md",
-            "redirect_url": "/azure/postgresql/flexible-server/overview",
+            "redirect_url": "/azure/postgresql/index",
             "redirect_document_id": false
         }
     ]
