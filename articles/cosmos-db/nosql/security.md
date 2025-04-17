@@ -7,7 +7,7 @@ ms.author: sidandrews
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: best-practice
-ms.date: 04/11/2025
+ms.date: 04/18/2025
 ms.custom: security-horizontal-2025
 ai-usage: ai-assisted
 ---
