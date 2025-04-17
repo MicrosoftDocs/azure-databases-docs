@@ -6494,6 +6494,26 @@
       "source_path_from_root": "/articles/cosmos-db/scripts/powershell/common/update-region.md",
       "redirect_url": "https://github.com/azure/azure-docs-powershell-samples/tree/master/cosmosdb/common/ps-account-update-region.ps1",
       "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/nosql/security/how-to-create-managed-identities.md",
+      "redirect_url": "/entra/identity/managed-identities-azure-resources/how-to-configure-managed-identities",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/nosql/security/how-to-get-signed-in-identity.md",
+      "redirect_url": "/cli/azure/ad/signed-in-user",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/table/security/how-to-create-managed-identities.md",
+      "redirect_url": "/entra/identity/managed-identities-azure-resources/how-to-configure-managed-identities",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/table/security/how-to-get-signed-in-identity.md",
+      "redirect_url": "/cli/azure/ad/signed-in-user",
+      "redirect_document_id": false
     }
   ]
 }

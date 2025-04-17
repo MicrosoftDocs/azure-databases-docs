@@ -1,7 +1,7 @@
 ---
-title: $eq
-titleSuffix: Overview of the $eq query operator in Azure Cosmos DB for MongoDB vCore
-description: The $eq query operator in Azure Cosmos DB for MongoDB vCore compares the value of a field to a specified value
+title: $lt
+titleSuffix: Overview of the $lt query operator in Azure Cosmos DB for MongoDB vCore
+description: The $lt query operator in Azure Cosmos DB for MongoDB vCore matches documents where the value of field is less than a specified value
 author: abinav2307
 ms.author: abramees
 ms.service: azure-cosmos-db
@@ -10,26 +10,26 @@ ms.topic: conceptual
 ms.date: 02/24/2025
 ---
 
-# $eq (Comparison Query)
+# $lt
 
 [!INCLUDE[MongoDB (vCore)](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb-vcore.md)]
 
-The `$eq` operator is used to match documents where the value of a field is equal to a specified value. This operator is used to filter documents based on exact matches and with query predicates to retrieve documents with specific values, objects and arrays.
+The `$lt` operator is used to match documents where the value of a field is strictly less than a specified value. The `$lt` operator filters documents based on numeric, date, or string values.
 
 ## Syntax
 
-The syntax for the `$eq` operator is:
+The syntax for using the `$lt` operator in a MongoDB query is:
 
-```json
-{ "field": { "$eq": "value" } }
+```mongodb
+{ "field": { "$lt": value } }
 ```
 
 ## Parameters
 
 | Parameter | Description |
 | --- | --- |
-| **`field`** | The field to be compared|
-| **`value`** | The value to compare against|
+| **`field`** | The field in the document you want to evaluate|
+| **`value`** | The value to compare against the field's value. The operator will match documents where the field's value is less than this specified value|
 
 ## Examples
 
@@ -145,81 +145,23 @@ Consider this sample document from the stores collection in the StoreData databa
 }
 ```
 
-### Example 1: Find documents based an equality match on the value of a root level field
-
-To find a store with the name "Boulder Innovations | Home Security Place - Ankundingburgh":
+### Example 1: Find stores with total sales less than $36000
 
 ```javascript
-db.stores.find({ "name": { "$eq": "Boulder Innovations | Home Security Place - Ankundingburgh" } }, {"name": 1})
+db.stores.find({"sales.totalSales": { "$lt": 36000 }}, {"name": 1, "sales.totalSales": 1}, {"limit": 1})
 ```
 
 This returns the following results:
 ```json
 {
-    "_id": "bda56164-954d-4f47-a230-ecf64b317b43",
-    "name": "Boulder Innovations | Home Security Place - Ankundingburgh"
+    "_id": "e6895a31-a5cd-4103-8889-3b95a864e5a6",
+    "name": "VanArsdel, Ltd. | Picture Frame Store - Port Clevelandton",
+    "sales": { "totalSales": 17676 }
 }
 ```
-### Example 2: Find documents based on an equality match on the value of a nested field
-
-To find stores where the total sales amount is exactly $37,015:
-
-```javascript
-db.stores.find({ "sales.totalSales": { "$eq": 37015 } }, {"name": 1, "sales.totalSales": 1})
-```
-
-This returns the following results:
-```json
-{
-    "_id": "bda56164-954d-4f47-a230-ecf64b317b43",
-    "name": "Boulder Innovations | Home Security Place - Ankundingburgh",
-    "sales": { "totalSales": 37015 }
-}
-```
-
-### Example 3: Find documents based on an equality match on any individual item within an array
-
-This query searches for an equality match on any one of the objects within the nested discounts array
-
-```javascript
-db.stores.find({"promotionEvents.discounts": { "$eq": {"categoryName": "Alarm Systems", "discountPercentage": 5}}}, {"name": 1}, {"limit": 2})
-```
-
-This returns the following results:
-```json
-[
-  {
-    "_id": "ece5bf6c-3255-477e-bf2c-d577c82d6995",
-    "name": "Proseware, Inc. | Home Security Boutique - Schambergertown"
-  },
-  {
-    "_id": "7baa8fd8-113a-4b10-a7b9-2c116e976491",
-    "name": "Tailwind Traders | Home Security Pantry - Port Casper"
-  }
-]
-```
-
-### Example 4: Find documents based on an equality on the entire array
-
-This query searches for documents based on exact match on ALL the values within an array.
-
-```javascript
-db.stores.find({"promotionEvents.discounts": { "$eq": [{"categoryName": "Alarm Systems", "discountPercentage": 5}, {"categoryName": "Door Locks", "discountPercentage": 12}]}}, {"name": 1})
-```
-
-This returns the following results:
-```json
-{
-    "_id": "aa9ad64c-29da-42f8-a1f0-30e03bf04a2d",
-    "name": "Boulder Innovations | Home Security Market - East Sheridanborough"
-}
-```
-
-> [!NOTE]
-> For an equality match on an entire array, the order of the specified values in the equality predicates must also be an exact match.
 
 ## Related content
 
 - [Migrate to vCore based Azure Cosmos DB for MongoDB](https://aka.ms/migrate-to-azure-cosmosdb-for-mongodb-vcore)
-- [$gte for greater than or equal to comparisons]($gte.md)
+- [$gt for greater than comparisons]($gt.md)
 - [$lte for less than or equal to comparisons]($lte.md)
