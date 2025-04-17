@@ -8,7 +8,7 @@ ms.reviewer: iriaosara
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: how-to
-ms.date: 04/11/2025
+ms.date: 04/18/2025
 zone_pivot_groups: azure-interface-portal-cli-powershell-bicep
 appliesto:
   - ✅ NoSQL

@@ -1,7 +1,7 @@
 ---
 ms.service: azure-cosmos-db
 ms.topic: include
-ms.date: 04/11/2025
+ms.date: 04/18/2025
 ms.custom: subject-msia
 ai-usage: ai-assisted
 ---
