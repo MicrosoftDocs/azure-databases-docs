@@ -106,13 +106,21 @@ Using the [Azure portal](https://portal.azure.com/):
 First, you need to identify the backup that you want to restore, and fetch the exact date and time when it completed. For that, you can use the [az postgres flexible-server backup list](/cli/azure/postgres/flexible-server/backup#az-postgres-flexible-server-backup-list) command.
 
 ```azurecli-interactive
-az postgres flexible-server backup list --resource-group <resource_group> --name <server> --query sort_by([].{name:name, backupType:backupType, completedTime:completedTime, source:source}, &completedTime) --output table
+az postgres flexible-server backup list \
+  --resource-group <resource_group> \
+  --name <server> \
+  --query sort_by([].{name:name, backupType:backupType, completedTime:completedTime, source:source}, &completedTime) \
+  --output table
 ```
 
 Once you have the completion time of the full backup that you want to restore, you can restore the backup via the [az postgres flexible-server restore](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-restore) command.
 
 ```azurecli-interactive
-az postgres flexible-server restore --resource-group <resource_group> --name <server> --source-server <source_server> --restore-time <backup_completed_time>
+az postgres flexible-server restore \
+  --resource-group <resource_group> \
+  --name <server> \
+  --source-server <source_server> \
+  --restore-time <backup_completed_time>
 ```
 
 > [!NOTE]

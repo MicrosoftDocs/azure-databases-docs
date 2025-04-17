@@ -143,7 +143,11 @@ Using the [Azure portal](https://portal.azure.com/):
 # Show the system assigned managed identity
 resourceGroup=<resource-group>
 server=<server>
-az postgres flexible-server identity list --resource-group $resourceGroup --server-name $server --query "{principalId:principalId, tenantId:tenantId}" --output table
+az postgres flexible-server identity list \
+  --resource-group $resourceGroup \
+  --server-name $server \
+  --query "{principalId:principalId, tenantId:tenantId}" \
+  --output table
 ```
 
 ---

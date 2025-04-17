@@ -70,7 +70,9 @@ Using the [Azure portal](https://portal.azure.com/):
 You can delete a server via the [az postgres flexible-server delete](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-delete) command.
 
 ```azurecli-interactive
-az postgres flexible-server delete --resource-group <resource_group> --name <server>
+az postgres flexible-server delete \
+  --resource-group <resource_group> \
+  --name <server>
 ```
 
 If you run the previous command, it requires you to explicitly confirm, responding with a `y` (yes):
@@ -82,7 +84,10 @@ Are you sure you want to delete the server '<server>' in resource group '<resour
 If you want to run the command without needing the user interaction, you can add the `--yes` parameter like this:
 
 ```azurecli-interactive
-az postgres flexible-server delete --resource-group <resource_group> --name <server> --yes
+az postgres flexible-server delete \
+  --resource-group <resource_group> \
+  --name <server> \
+  --yes
 ```
 
 ---

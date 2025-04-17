@@ -18,12 +18,12 @@ ms.topic: include
 | Canada Central | :heavy_check_mark: (all SKUs) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | 
 | Canada East | :heavy_check_mark: (all SKUs) | :x: | :heavy_check_mark: | :heavy_check_mark: | 
 | Central India | :heavy_check_mark: (v3/v4/v5 only) | :heavy_check_mark: $ | :heavy_check_mark: | :heavy_check_mark: | 
-| Central US | :heavy_check_mark: (v3/v4/v5 only) | :heavy_check_mark: $ | :heavy_check_mark: | :heavy_check_mark: | 
+| Central US | :heavy_check_mark: (v3/v4/v5 only) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | 
 | China East 2 | :heavy_check_mark: (v3/v4 only) | :x: | :heavy_check_mark: | :x: | 
 | China East 3 | :heavy_check_mark: (v3/v4 only) | :x: | :heavy_check_mark: | :heavy_check_mark: | 
 | China North 2 | :heavy_check_mark: (v3/v4 only) | :x: | :heavy_check_mark: | :x: | 
 | China North 3 | :heavy_check_mark: (v3/v4/v5 only) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | 
-| East Asia | :heavy_check_mark: (v3/v4/v5 only) | :heavy_check_mark: ** | :heavy_check_mark: | :heavy_check_mark: | 
+| East Asia | :heavy_check_mark: (v3/v4/v5 only) | :heavy_check_mark: $ ** | :heavy_check_mark: | :heavy_check_mark: | 
 | East US | :heavy_check_mark: (all SKUs) | :heavy_check_mark: $ | :heavy_check_mark: | :heavy_check_mark: | 
 | East US 2 | :heavy_check_mark: (v3/v4 only) | :heavy_check_mark: $ | :heavy_check_mark: | :heavy_check_mark: | 
 | France Central | :heavy_check_mark: (v3/v4/v5 only) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | 
@@ -32,11 +32,11 @@ ms.topic: include
 | Germany West Central | :heavy_check_mark: (v3/v4/v5 only) | :heavy_check_mark: $ | :heavy_check_mark: | :heavy_check_mark: | 
 | Israel Central | :heavy_check_mark: (v3/v4 only) | :heavy_check_mark: | :heavy_check_mark: | :x: | 
 | Italy North | :heavy_check_mark: (v3/v4/v5 only) | :heavy_check_mark: | :heavy_check_mark: | :x: | 
-| Japan East | :heavy_check_mark: (v3/v4 only) | :heavy_check_mark: $ | :heavy_check_mark: | :heavy_check_mark: | 
+| Japan East | :heavy_check_mark: (v3/v4 only) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | 
 | Japan West | :heavy_check_mark: (v3/v4/v5 only) | :x: | :heavy_check_mark: | :heavy_check_mark: | 
 | Jio India Central | :heavy_check_mark: (v3 only) | :x: | :heavy_check_mark: | :heavy_check_mark: | 
 | Jio India West | :heavy_check_mark: (v3 only) | :x: | :heavy_check_mark: | :heavy_check_mark: | 
-| Korea Central | :heavy_check_mark: (v3/v4/v5 only) | :heavy_check_mark: $ ** | :heavy_check_mark: | :heavy_check_mark: | 
+| Korea Central | :heavy_check_mark: (v3/v4/v5 only) | :heavy_check_mark: ** | :heavy_check_mark: | :heavy_check_mark: | 
 | Korea South | :heavy_check_mark: (v3/v4/v5 only) | :x: | :heavy_check_mark: | :heavy_check_mark: | 
 | Mexico Central | :heavy_check_mark: (v3/v4 only) | :heavy_check_mark: $ | :heavy_check_mark: | :x: | 
 | New Zealand North | :heavy_check_mark: (v3/v4/v5 only) | :heavy_check_mark: | :heavy_check_mark: | :x: | 
@@ -50,10 +50,10 @@ ms.topic: include
 | South Africa West * | :heavy_check_mark: (v3/v4/v5 only) | :x: | :heavy_check_mark: | :heavy_check_mark: | 
 | South Central US | :heavy_check_mark: (v3/v4 only) | :heavy_check_mark: $ | :heavy_check_mark: | :heavy_check_mark: | 
 | South India | :heavy_check_mark: (v3/v4/v5 only) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | 
-| Southeast Asia | :heavy_check_mark: (all SKUs) | :heavy_check_mark: $ | :heavy_check_mark: | :heavy_check_mark: | 
+| Southeast Asia | :heavy_check_mark: (v3/v4 only) | :heavy_check_mark: $ | :heavy_check_mark: | :heavy_check_mark: | 
 | Spain Central | :heavy_check_mark: (v3/v4 only) | :heavy_check_mark: | :heavy_check_mark: | :x: | 
 | Sweden Central | :heavy_check_mark: (v3/v4/v5 only) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | 
-| Switzerland North | :heavy_check_mark: (v3/v4/v5 only) | :heavy_check_mark: $ | :heavy_check_mark: | :heavy_check_mark: | 
+| Switzerland North | :heavy_check_mark: (v3/v4/v5 only) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | 
 | Switzerland West * | :heavy_check_mark: (v3/v4/v5 only) | :x: | :heavy_check_mark: | :heavy_check_mark: | 
 | UAE Central * | :heavy_check_mark: (v3/v5 only) | :x: | :heavy_check_mark: | :heavy_check_mark: | 
 | UAE North | :heavy_check_mark: (v3/v4/v5 only) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | 

@@ -65,7 +65,11 @@ Using the [Azure portal](https://portal.azure.com/):
 You can initiate the scaling of your compute via the [az postgres flexible-server update](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-update) command.
 
 ```azurecli-interactive
-az postgres flexible-server update --resource-group <resource_group> --name <server> --tier <tier> --sku-name <sku_name>
+az postgres flexible-server update \
+  --resource-group <resource_group> \
+  --name <server> \
+  --tier <tier> \
+  --sku-name <sku_name>
 ```
 
 > [!NOTE]

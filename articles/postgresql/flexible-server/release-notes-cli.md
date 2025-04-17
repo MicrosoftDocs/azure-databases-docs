@@ -16,40 +16,42 @@ ms.custom:
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
-This page provides latest news and updates regarding the Azure Database for PostgreSQL Flexible Server additions for Azure CLI.  
+This page provides latest news and updates regarding the Azure Database for PostgreSQL flexible server additions for Azure CLI.  
 
 ## Azure CLI Releases
 
 ### April 30, 2024 - Version 2.60.0
-|Additions and Changes              |Comments                                               |
-|-----------------------------------|-------------------------------------------------------|
-|az postgres flexible-server upgrade|Add capability to perform major version upgrade to PG16|
+
+| Additions and Changes | Comments |
+| --- | --- | 
+| az postgres flexible-server upgrade | Add capability to perform major version upgrade to PG16 |
 
 
 ### January 09 2024 - version 2.56.0
 
-| Additions and Changes |Comments|
+| Additions and Changes | Comments |
 | --- | --- | 
-|az postgres flexible-server virtual-endpoint | Add support for virtual endpoints for PostgreSQL flexible server| 
-|az postgres flexible-server replica promote| Add capability to stop replication and promote to primary or standalone server with the selection of planned/force data syncs|
- az postgres flexible-server server-logs list| List server log files for PostgreSQL flexible server|
-|az postgres flexible-server server-logs download|Download server log files for PostgreSQL flexible server|
-|az postgres flexible-server create|  Add capability to set storage type to PremiumV2_LRS and provide values for IOPS and Throughput during creation|
-|az postgres flexible-server update|Add capability to update the values of IOPS and Throughput during update}
-|az postgres flexible-server migration create|Add migration option like Migrate, Validate and ValidateAndMigrate using parameter--migration-option and json file for Migration configuration to support another properties like sourceType and sslMode|
+| az postgres flexible-server virtual-endpoint | Add support for virtual endpoints for PostgreSQL flexible server |
+| az postgres flexible-server replica promote | Add capability to stop replication and promote to primary or standalone server with the selection of planned/force data syncs |
+| az postgres flexible-server server-logs list | List server log files for PostgreSQL flexible server |
+| az postgres flexible-server server-logs download | Download server log files for PostgreSQL flexible server |
+| az postgres flexible-server create | Add capability to set storage type to PremiumV2_LRS and provide values for IOPS and Throughput during creation |
+| az postgres flexible-server update | Add capability to update the values of IOPS and Throughput during update |
+| az postgres flexible-server migration create | Add migration option like Migrate, Validate and ValidateAndMigrate using parameter--migration-option and json file for Migration configuration to support another properties like sourceType and sslMode |
 
 ### November 14  2023 - version 2.54.0
 
-| Additions and Changes |Comments|
+| Additions and Changes | Comments |
 | --- | --- | 
-|az postgres flexible-server geo-restore|Add cross subscription geo-restore support for PostgreSQL flexible server|
-|az postgres flexible-server restore|  Add cross subscription restore support for PostgreSQL flexible server |
-|az postgres flexible-server upgrade| Add MVU support for PG version 15|
+| az postgres flexible-server geo-restore | Add cross subscription geo-restore support for PostgreSQL flexible server |
+| az postgres flexible-server restore |  Add cross subscription restore support for PostgreSQL flexible server |
+| az postgres flexible-server upgrade | Add MVU support for PG version 15 |
 
 ### September 26 2023 - version 2.53.0
-| Additions and Changes |Comments|
+
+| Additions and Changes | Comments |
 | --- | --- | 
-|az postgres flexible-server create/update|Add capability to enable/disable storage autogrow during creation and update|
+| az postgres flexible-server create/update | Add capability to enable/disable storage autogrow during creation and update |
 
 ## Contacts
 

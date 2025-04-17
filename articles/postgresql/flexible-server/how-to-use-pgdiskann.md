@@ -90,8 +90,27 @@ COMMIT;
 > [!IMPORTANT]
 > Setting `enable_seqscan` to off, it discourages the planner from using the query planner's use of sequential scan plan if there are other methods available. Because it's disable using the `SET LOCAL` command, the setting takes effect for only the current transaction. After a COMMIT or ROLLBACK, the session level setting takes effect again. Notice that if the query involves other tables, the setting also discourages the use of sequential scans in all of them.
 
-## Speed up index build with parallelization
+## Speed up index build
+There are a few ways we recommend to improve your index build times.
 
+### Using more memory
+To speed up the creation of the index, you can increase the memory allocated on your Postgres instance for the index build. The memory usage can be specified through the [`maintenance_work_mem`](https://www.postgresql.org/docs/current/runtime-config-resource.html#GUC-MAINTENANCE-WORK-MEM) parameter. 
+
+```sql
+-- Set the parameters
+SET maintenance_work_mem = '8GB'; -- Depending on your resources
+```
+
+Then, `CREATE INDEX` command uses the specified work memory, depending on the available resources, to build the index.
+
+```sql
+CREATE INDEX demo_embedding_diskann_idx ON demo USING diskann (embedding vector_cosine_ops)
+```
+
+> [!TIP] 
+> You can scale up your memory resources during index build to improve indexing speed, then scale back down when indexing is complete.
+
+### Using parallelization
 To speed up the creation of the index, you can use parallel workers. The number of workers can be specified through the `parallel_workers` storage parameter of the [`CREATE TABLE`](https://www.postgresql.org/docs/current/sql-createtable.html#RELOPTION-PARALLEL-WORKERS) statement, when creating the table. And it can be adjusted later using the `SET` clause of the [`ALTER TABLE`](https://www.postgresql.org/docs/current/sql-altertable.html#SQL-ALTERTABLE-DESC-SET-STORAGE-PARAMETER) statement.
 
 ```sql
