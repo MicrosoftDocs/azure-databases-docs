@@ -27,7 +27,6 @@ In this tutorial, you learn how to:
 > - Sync data using batch or streaming modes for efficient updates.
 > - Query data from Cosmos DB for verification and analysis.
 
-
 ## Reverse ETL Overview
 
   **What is Reverse ETL?**  
@@ -39,12 +38,14 @@ In this tutorial, you learn how to:
   Reverse ETL plays a crucial role in unlocking the full potential of your data assets by bridging the gap between analytics and operations, enabling better decision-making.
 
   **Reverse ETL Architecture**  
-  The Reverse ETL layer depcited below is powered by Databricks and Apache Spark. It extracts cleansed and enriched data (e.g., Delta Tables), and writes it back into operational stores in Cosmos DB. This process enables:
+  The Reverse ETL layer depcited below is powered by Databricks and Apache Spark. It extracts cleansed and enriched data (e.g., Delta Tables), and writes it back into operational stores in Cosmos DB. 
+
+    :::image type="content" source="../media/cosmosdbingestion/reverseetl.png" lightbox="../media/cosmosdbingestion/reverseetl.png" alt-text="Reverse ETL Achitecture":::
+
+  Reverse ETL process enables:
   - **Real-Time Decisions:** Apps get access to the freshest data without relying on analysts or SQL.
   - **Data Activation:** Insights are pushed where they’re needed—not just in dashboards.
   - **Unified Source of Truth:** Delta Lake acts as the canonical layer, ensuring consistency across systems.
-
-    :::image type="content" source="../media/cosmosdbingestion/reverseetl.png" lightbox="../media/cosmosdbingestion/reverseetl.png" alt-text="Reverse ETL Achitecture":::
 
   **Why Reverse ETL to Cosmos DB?**  
   Azure Cosmos DB is designed for ultra-low latency, global distribution, and NoSQL scalability, making it ideal for real-time applications.
@@ -55,8 +56,11 @@ In this tutorial, you learn how to:
 
   When building a reverse ETL pipeline from Delta Lake to Azure Cosmos DB for scenarios like feature store, recommendation engines, fraud detection, or real-time product catalogs, it's important to separate the data flow into two stages:
 
+    :::image type="content" source="../media/cosmosdbingestion/reverseetlloadstages.png" lightbox="../media/cosmosdbingestion/reverseetlloadstages.png" alt-text="Reverse ETL Achitecture":::
+
   **1.Initial Load:**  
   One-time Ingestion of historical data into Cosmos DB.
+
   **Best Practices:**
   - Use Spark batch jobs with Cosmos DB Spark Connector.
   - Optimize ingestion throughput by switching to provisioned throughput (instead of autoscale) if you expect to saturate RUs for hours.
@@ -66,6 +70,7 @@ In this tutorial, you learn how to:
 
   **2.CDC(Change Data Capture) Sync:**  
   Incremental, continuous sync of changes from Delta tables to Cosmos DB.
+
   **Best Practices:**
   - Use Structured Streaming in Databricks with the Delta table CDC feature. Combine with Azure Cosmos DB Spark Connector for NoSQL in write mode.
   - Prefer autoscale throughput in Cosmos DB for CDC sync as autoscale scales up/down RU/s dynamically based on usage. This is ideal for periodic, spiky workloads like hourly or daily CDC sync jobs.
@@ -138,7 +143,7 @@ In this tutorial, we set up a reverse ETL pipeline to move enriched data from De
 
 **Step 2: Set Cosmos DB Configuration**
 
-Define a configuration dictionary (cosmos_config) in your notebook to connect your Spark session with Cosmos DB. These details include the Cosmos DB account endpoint, Managed Identity, Subscription, Tenant, database, and container name. It also enables throughput control to limit the RU consumption from Spark jobs, which helps prevent overloading the Cosmos DB account. Throughput control options include the control name and RU threshold. Target Throughput Threshold of 0.30 indicates that 30% of the allocated RUs on the target Cosmos DB container **products** is available for the spark operations.
+Define a configuration dictionary (cosmos_config) in your notebook to connect your Spark session with Cosmos DB. These details include the Cosmos DB account endpoint, Managed Identity, Subscription, Tenant, database, and container name. It also enables throughput control to limit the RU consumption from Spark jobs, which helps prevent overloading the Cosmos DB account. Throughput control options include the control name and RU threshold. Target Throughput Threshold of 0.30 indicates that 30% of the allocated RUs on the target Cosmos DB container **recommendations** is available for the spark operations.
 
 ::: zone pivot="programming-language-python"
 
@@ -147,8 +152,8 @@ Define a configuration dictionary (cosmos_config) in your notebook to connect yo
 cosmos_config = {
   # Generic Cosmos DB config settings
   "spark.cosmos.accountEndpoint": "<endpoint>",
-  "spark.cosmos.database": "cosmicworks",
-  "spark.cosmos.container": "products",
+  "spark.cosmos.database": "products",
+  "spark.cosmos.container": "recommendations",
   # Managed Identity Based Cosmos DB config settings
   "spark.cosmos.auth.type":"ManagedIdentity",
   "spark.cosmos.account.subscriptionId": "<subscriptionId>",
@@ -172,8 +177,8 @@ cosmos_config = {
   val cosmosconfig = Map(
   // Generic Cosmos DB config settings
   "spark.cosmos.accountEndpoint" -> "<endpoint>",
-  "spark.cosmos.database" -> "cosmicworks",
-  "spark.cosmos.container" -> "products",
+  "spark.cosmos.database" -> "products",
+  "spark.cosmos.container" -> "recommendations",
   // Managed Identity Based Cosmos DB config settings
   "spark.cosmos.auth.type"-> "ManagedIdentity",
   "spark.cosmos.account.subscriptionId" -> "<subscriptionId>",
@@ -191,24 +196,24 @@ cosmos_config = {
 
 ::: zone-end
 
-**Step 3: Ingest Sample Product Data to Delta Table**
+**Step 3: Ingest Sample product recommendations Data to Delta Table**
 
-Create a sample DataFrame with product information and write it into a Delta table named products_delta. This step simulates curated, transformed data in your data lake that you intend to sync to Cosmos DB. Writing to Delta ensures you can later enable change data capture (CDC) for incremental syncs.
+Create a sample DataFrame with product recommendations information and write it into a Delta table named recommendations_delta. This step simulates curated, transformed data in your data lake that you intend to sync to Cosmos DB. Writing to Delta ensures you can later enable change data capture (CDC) for incremental syncs.
 
 ::: zone pivot="programming-language-python"
 
 ```python
-# Ingest Sample Product Data to Delta Table
+# Ingest Sample product recommendations Data to Delta Table
 from pyspark.sql import SparkSession
 
 # Create sample data and convert it to a DataFrame
 df = spark.createDataFrame([
     ("p001", "Contoso Coffee Mug", "drinkware", 12.95),
     ("p002", "Contoso T-Shirt", "apparel", 19.99)
-], ["id", "name", "category", "price"])
+], ["id", "name", "category", "recommendation_score"])
 
 # Write the DataFrame to a Delta table
-df.write.mode("append").format("delta").saveAsTable("products_delta")
+df.write.mode("append").format("delta").saveAsTable("recommendations_delta")
 ```
 
 ::: zone-end
@@ -216,7 +221,7 @@ df.write.mode("append").format("delta").saveAsTable("products_delta")
 ::: zone pivot="programming-language-scala"
 
 ```scala
-// Ingest Sample Product Data to Delta Table
+// Ingest Sample product recommendations Data to Delta Table
 // Create sample data as a sequence and convert it to a DataFrame
 val df = Seq(
   ("p001", "Contoso Coffee Mug", "drinkware", 12.95),
@@ -224,21 +229,21 @@ val df = Seq(
 ).toDF("id", "name", "category", "price") 
 
 // Write the DataFrame to a Delta table
-df.write.mode("append").format("delta").saveAsTable("products_delta")
+df.write.mode("append").format("delta").saveAsTable("recommendations_delta")
 ```
 
 ::: zone-end
 
 **Step 4: Initial Batch Load to Cosmos DB**
 
-Read the products_delta Delta table into a Spark DataFrame and perform an initial batch write to Cosmos DB using the cosmos.oltp format. Use the append mode to add the data without overwriting existing content in Cosmos DB. This step ensures that all the baseline data is available in Cosmos DB before CDC begins
+Read the recommendations_delta Delta table into a Spark DataFrame and perform an initial batch write to Cosmos DB using the cosmos.oltp format. Use the append mode to add the data without overwriting existing content in Cosmos DB. This step ensures that all the baseline data is available in Cosmos DB before CDC begins
 
 ::: zone pivot="programming-language-python"
 
 ```python
 # Initial Batch Load to Cosmos DB
 # Read the Delta table into a DataFrame
-df_delta = spark.read.format("delta").table("products_delta")
+df_delta = spark.read.format("delta").table("recommendations_delta")
 
 # Write the DataFrame to Cosmos DB using the Cosmos OLTP format
 df_delta.write.format("cosmos.oltp").mode("append").options(**cosmos_config).save()
@@ -251,7 +256,7 @@ df_delta.write.format("cosmos.oltp").mode("append").options(**cosmos_config).sav
 ```scala
 // Initial Batch Load to Cosmos DB
 // Read the Delta table into a DataFrame
-val df_delta = spark.read.format("delta").table("products_delta")
+val df_delta = spark.read.format("delta").table("recommendations_delta")
 
 // Write the DataFrame to Cosmos DB using the Cosmos OLTP format
 df_delta.write.format("cosmos.oltp").mode("append").options(cosmosconfig).save()
@@ -261,7 +266,7 @@ df_delta.write.format("cosmos.oltp").mode("append").options(cosmosconfig).save()
 
 **Step 5: Enable Change Data Feed for Delta table**
 
-Enable Delta Lake's Change Data Feed on the products_delta table by altering its table properties. CDF allows Delta to track all future row-level inserts, updates, and deletes. Enabling this property is essential for performing incremental syncs to Cosmos DB, as it exposes changes without needing to compare snapshots.
+Enable Delta Lake's Change Data Feed on the recommendations_delta table by altering its table properties. CDF allows Delta to track all future row-level inserts, updates, and deletes. Enabling this property is essential for performing incremental syncs to Cosmos DB, as it exposes changes without needing to compare snapshots.
 
 
 ::: zone pivot="programming-language-python"
@@ -269,7 +274,7 @@ Enable Delta Lake's Change Data Feed on the products_delta table by altering its
 ```python
 # Enable CDC for Delta table
 spark.sql("""
-  ALTER TABLE products_delta SET TBLPROPERTIES (delta.enableChangeDataFeed = true)
+  ALTER TABLE recommendations_delta SET TBLPROPERTIES (delta.enableChangeDataFeed = true)
 """)
 ```
 
@@ -280,7 +285,7 @@ spark.sql("""
 ```scala
 // Enable CDC for the Delta table
 spark.sql("""
-  ALTER TABLE products_delta SET TBLPROPERTIES (delta.enableChangeDataFeed = true)
+  ALTER TABLE recommendations_delta SET TBLPROPERTIES (delta.enableChangeDataFeed = true)
 """)
 ```
 
@@ -301,7 +306,7 @@ After the historical data load, changes in the Delta table can be captured using
   ```python
   # Batch CDC Sync to Cosmos DB
   # Read the Change Data Capture (CDC) data from the Delta table
-  cdc_batch_df = spark.read.format("delta").option("readChangeData", "true").option("startingVersion", "1").table("products_delta")
+  cdc_batch_df = spark.read.format("delta").option("readChangeData", "true").option("startingVersion", "1").table("recommendations_delta")
 
   # Write the captured changes to Cosmos DB in append mode
   cdc_batch_df.write.format("cosmos.oltp").mode("append").options(**cosmos_config).save()
@@ -314,7 +319,7 @@ After the historical data load, changes in the Delta table can be captured using
   ```scala
   // Batch CDC Sync to Cosmos DB
   // Read the Change Data Capture (CDC) data from the Delta table
-  val cdc_batch_df = spark.read.format("delta").option("readChangeData", "true").option("startingVersion", "1").table("products_delta")
+  val cdc_batch_df = spark.read.format("delta").option("readChangeData", "true").option("startingVersion", "1").table("recommendations_delta")
 
   // Write the captured changes to Cosmos DB in append mode
   cdc_batch_df.write.format("cosmos.oltp").mode("append").options(cosmos_config).save()
@@ -330,11 +335,11 @@ After the historical data load, changes in the Delta table can be captured using
 
   ```python
   # Stream CDC to Cosmos DB
-  # Read Change Data Capture (CDC) stream from the Delta table 'products_delta'
-  cdc_stream_df = spark.readStream.format("delta").option("readChangeData", "true").table("products_delta")
+  # Read Change Data Capture (CDC) stream from the Delta table 'recommendations_delta'
+  cdc_stream_df = spark.readStream.format("delta").option("readChangeData", "true").table("recommendations_delta")
 
   # Write the CDC stream to Azure Cosmos DB using the OLTP connector with checkpointing
-  streaming_query = cdc_stream_df.writeStream.format("cosmos.oltp").outputMode("append").options(**cosmos_config).option("checkpointLocation", "/mnt/checkpoints/products-stream").start()
+  streaming_query = cdc_stream_df.writeStream.format("cosmos.oltp").outputMode("append").options(**cosmos_config).option("checkpointLocation", "/mnt/checkpoints/recommendations-stream").start()
 
   # Wait for the stream to terminate or time out after 60 seconds
   try:   streaming_query.awaitTermination(60)
@@ -350,11 +355,11 @@ After the historical data load, changes in the Delta table can be captured using
 
   ```scala
   # Stream CDC to Cosmos DB
-  // Read Change Data Capture (CDC) stream from the Delta table 'products_delta'
-  val cdcStreamDF = spark.readStream.format("delta").option("readChangeData", "true").table("products_delta")
+  // Read Change Data Capture (CDC) stream from the Delta table 'recommendations_delta'
+  val cdcStreamDF = spark.readStream.format("delta").option("readChangeData", "true").table("recommendations_delta")
 
   // Write the CDC stream to Azure Cosmos DB using the OLTP connector with checkpointing
-  val streamingQuery = cdcStreamDF.writeStream.format("cosmos.oltp").outputMode("append").options(cosmosconfig).option("checkpointLocation", "/mnt/checkpoints/products-stream").start()
+  val streamingQuery = cdcStreamDF.writeStream.format("cosmos.oltp").outputMode("append").options(cosmosconfig).option("checkpointLocation", "/mnt/checkpoints/recommendations-stream").start()
 
   // Wait for the stream to terminate or time out after 60 seconds
   try {
@@ -379,7 +384,7 @@ After writing to Cosmos DB, verify the data by reading it back into Spark using 
 ```python
 # Query Cosmos DB from Spark
 df_cosmos = spark.read.format("cosmos.oltp").options(**cosmos_config).load()
-df_cosmos.select("id", "name", "category", "price").show()
+df_cosmos.select("id", "productname", "category", "recommendationscore").show()
 ```
 
 ::: zone-end
@@ -389,7 +394,7 @@ df_cosmos.select("id", "name", "category", "price").show()
 ```scala
 # Query Cosmos DB from Spark
 val dfCosmos = spark.read.format("cosmos.oltp").options(cosmosConfig).load()
-dfCosmos.select("id", "name", "category", "price").show()
+dfCosmos.select("id", "productname", "category", "recommendationscore").show()
 ```
 
 ::: zone-end
