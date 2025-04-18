@@ -40,10 +40,7 @@ In this tutorial, you learn how to:
   **Reverse ETL Architecture**  
   The Reverse ETL layer depcited below is powered by Databricks and Apache Spark. It extracts cleansed and enriched data (e.g., Delta Tables), and writes it back into operational stores in Cosmos DB. 
 
-    ```
-    :::image type="content" source="../media/cosmosdbingestion/reverseetl.png" lightbox="../media/cosmosdbingestion/reverseetl.png" alt-text="Reverse ETL Achitecture":::
-
-    ```
+  :::image type="content" source="../media/cosmosdbingestion/reverseetl.png" lightbox="../media/cosmosdbingestion/reverseetl.png" alt-text="Reverse ETL Achitecture":::
 
   Reverse ETL process enables:
   - **Real-Time Decisions:** Apps get access to the freshest data without relying on analysts or SQL.
@@ -58,11 +55,9 @@ In this tutorial, you learn how to:
 ## Reverse ETL Data Load Stages
 
   When building a reverse ETL pipeline from Delta Lake to Azure Cosmos DB for scenarios like feature store, recommendation engines, fraud detection, or real-time product catalogs, it's important to separate the data flow into two stages:
-  
-    ```
-    :::image type="content" source="../media/cosmosdbingestion/reverseetlloadstages.png" lightbox="../media/cosmosdbingestion/reverseetlloadstages.png" alt-text="Reverse ETL LoadStages":::
-    ```
 
+  :::image type="content" source="../media/cosmosdbingestion/reverseetlloadstages.png" lightbox="../media/cosmosdbingestion/reverseetlloadstages.png" alt-text="Reverse ETL LoadStages":::
+    
   **1.Initial Load:**  
   One-time Ingestion of historical data into Cosmos DB.
 
@@ -215,7 +210,7 @@ from pyspark.sql import SparkSession
 df = spark.createDataFrame([
     ("p001", "Contoso Coffee Mug", "drinkware", 12.95),
     ("p002", "Contoso T-Shirt", "apparel", 19.99)
-], ["id", "name", "category", "recommendation_score"])
+], ["id", "productname", "category", "recommendationscore"])
 
 # Write the DataFrame to a Delta table
 df.write.mode("append").format("delta").saveAsTable("recommendations_delta")
@@ -231,7 +226,7 @@ df.write.mode("append").format("delta").saveAsTable("recommendations_delta")
 val df = Seq(
   ("p001", "Contoso Coffee Mug", "drinkware", 12.95),
   ("p002", "Contoso T-Shirt", "apparel", 19.99)
-).toDF("id", "name", "category", "price") 
+).toDF("id", "productname", "category", "recommendationscore") 
 
 // Write the DataFrame to a Delta table
 df.write.mode("append").format("delta").saveAsTable("recommendations_delta")
