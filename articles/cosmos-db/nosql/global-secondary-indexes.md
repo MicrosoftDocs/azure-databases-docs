@@ -106,7 +106,7 @@ You can monitor the lag in building global secondary indexes and the health of t
 
 #### I want to understand the lag between my source container and index containers
 
-The **MaterializedViewCatchupGapInMinutes** metric shows the maximum difference in minutes between data in source containers and a global secondary index containers. To view the lag for an individual index container, select **Apply splitting** then **Split by** and select **MaterializedViewName**. A high value indicates the builder needs more compute to keep up with the volume of changes to source containers. The RUs provisioned on source and index containers can also affect the rate at which changes are propagated to the index. Check the **Total Requests** metric and split by **StatusCode** to determine if there are throttled requests on these containers. Throttled requests have status code 429.
+The **MaterializedViewCatchupGapInMinutes** metric shows the maximum difference in minutes between data in source containers and a global secondary index containers. To view the lag for an individual index container, select **Apply splitting** then **Split by** and select **MaterializedViewName**. A high value indicates the builder needs more compute to keep up with the volume of changes to source containers. The RUs provisioned on source and index containers can also affect the rate at which changes are propagated to the index. Check the **Normalized RU Consumption** metric to determine if the container would benefit from increasing the maximum RUs.
 
 #### I want to understand if my global secondary index builder has the right number of nodes
 
