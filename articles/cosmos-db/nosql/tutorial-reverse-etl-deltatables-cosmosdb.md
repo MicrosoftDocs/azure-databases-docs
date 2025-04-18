@@ -16,29 +16,18 @@ zone_pivot_groups: programming-languages-spark-all-minus-sql-r-csharp
 
 [!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
 
-In this tutorial, you learn how to:
-
-> [!div class="checklist"]
-> - Set up a reverse ETL pipeline to move data from Delta tables in Databricks to Azure Cosmos DB NoSQL.
-> - Configure Cosmos DB connection using the Cosmos DB Spark Connector.
-> - Implement throughput control to limit Request Units (RUs) consumed by Spark jobs and manage the throughput for efficient data ingestion.
-> - Perform initial data load from Delta tables to Cosmos DB.
-> - Enable Change Data Capture (CDC) for real-time data synchronization.
-> - Sync data using batch or streaming modes for efficient updates.
-> - Query data from Cosmos DB for verification and analysis.
-
 ## Reverse ETL Overview
 
   **What is Reverse ETL?**  
   Reverse ETL moves data from your Datawarehouses or data lake layer (like Delta Lake in Databricks, Fabric) back into operational systems. This data allows downstream apps to use the most recent, enriched data for real-time operational analytics.
 
   **Need for Reverse ETL**  
-  Cloud data warehouses and data lakes have transformed data management, centralizing information and enabling powerful analytics. But the real value of data lies in turning insights into real-world decisions and customer experiences. To achieve this, clean, reliable data must move out of the warehouse / data lakes into operational systems. 
+  Cloud data warehouses and data lakes enrich data, centralize information, and enable powerful analytics. But the real value of data lies in turning insights into real-world decisions and customer experiences. To achieve this, clean, reliable data must move out of the warehouse / data lakes into operational systems. 
   
   Reverse ETL plays a crucial role in unlocking the full potential of your data assets by bridging the gap between analytics and operations, enabling better decision-making.
 
   **Reverse ETL Architecture**  
-  The Reverse ETL layer depcited below is powered by Databricks and Apache Spark. It extracts cleansed and enriched data (e.g., Delta Tables), and writes it back into operational stores in Cosmos DB. 
+  The Reverse ETL layer depicted below is powered by Databricks and Apache Spark. It extracts cleansed and enriched data (for example, Delta Tables), and writes it back into operational stores in Cosmos DB. 
 
   :::image type="content" source="../media/cosmosdbingestion/reverseetl.png" lightbox="../media/cosmosdbingestion/reverseetl.png" alt-text="Reverse ETL Achitecture":::
 
@@ -52,31 +41,35 @@ In this tutorial, you learn how to:
 
   With Reverse ETL, you can sync Delta-enriched data into Cosmos DB, enabling real-time operational analytics. Push data like product catalogs, personalized customer info, pricing updates, inventory data, and feature recommendations into Cosmos DB, empowering downstream apps to make data-driven decisions instantly.
 
-## Reverse ETL Data Load Stages
+## Reverse ETL Data Ingestion Stages
 
   When building a reverse ETL pipeline from Delta Lake to Azure Cosmos DB for scenarios like feature store, recommendation engines, fraud detection, or real-time product catalogs, it's important to separate the data flow into two stages:
 
   :::image type="content" source="../media/cosmosdbingestion/reverseetlloadstages.png" lightbox="../media/cosmosdbingestion/reverseetlloadstages.png" alt-text="Reverse ETL LoadStages":::
     
   **1.Initial Load:**  
-  One-time Ingestion of historical data into Cosmos DB.
-
-  **Best Practices:**
-  - Use Spark batch jobs with Cosmos DB Spark Connector.
-  - Optimize ingestion throughput by switching to provisioned throughput (instead of autoscale) if you expect to saturate RUs for hours.
-  - Choose an effective partition key that maximizes parallelism (e.g., customer_id, product_id, or a composite key).
-  - Optimize RUs for Large Ingestion
-  - Control load saturation using Spark Throughput Control.
+  The initial load is a one-time batch process to ingest all historical data from your Delta tables into Azure Cosmos DB. It sets the foundation for your reverse ETL pipeline by ensuring Cosmos DB has complete historic data before starting incremental syncs.
 
   **2.CDC(Change Data Capture) Sync:**  
-  Incremental, continuous sync of changes from Delta tables to Cosmos DB.
+  Incremental, continuous sync of changes from Delta tables to Cosmos DB. Changes in the Delta table can be captured after enabling Delta Change Data Feed (CDF). You can implement either batch-based or streaming-based CDC.
 
-  **Best Practices:**
-  - Use Structured Streaming in Databricks with the Delta table CDC feature. Combine with Azure Cosmos DB Spark Connector for NoSQL in write mode.
-  - Prefer autoscale throughput in Cosmos DB for CDC sync as autoscale scales up/down RU/s dynamically based on usage. This is ideal for periodic, spiky workloads like hourly or daily CDC sync jobs.
-  - Control load saturation using Spark Throughput Control.
+  **Batch CDC Sync to Cosmos DB**  
+  Runs on a schedule (for example, daily or hourly) and loads an incremental snapshot of the data based on changes captured since the last version or timestamp. To avoid data inconsistencies when large incremental volumes are being loaded from Delta tables to Cosmos DB, it is recommended to switch from the old Cosmos DB snapshot to the new one. For example, by writing to a new container or using a version flag, then flipping a pointer once the new data is fully loaded.
 
-## Prerequisites for Reverse ETL Pipeline
+  **Stream CDC to Cosmos DB**  
+  Continuously syncs incremental changes in near real-time, keeping the target system up to date with minimal lag. Use spark Structured Streaming to continuously capture and write changes. The Delta table acts as a streaming source with readChangeData = true, and the Cosmos DB connector acts as a streaming sink. Specify a checkpoint location to ensure progress is tracked and duplicate writes are avoided.
+
+## Reverse ETL Data Ingestion Best Practices
+
+  - Use Spark batch jobs with Cosmos DB Spark Connector to perform initial load.
+  - Optimize ingestion throughput by switching to standard provisioned throughput (instead of autoscale) if the initial load is expected to consume maximum RU/s consistently for major duration of Initial load. If [Normalized RU Consumption metric](monitor-normalized-request-units.md) is consistently 100%, then it indicates that maximum autoscale RUs are consistently consumed by the initial load.
+  - Choose an effective partition key that maximizes parallelism. Refer [Azure Cosmos DB Partitioning and Partition Key Recommendations](/azure/cosmos-db/partitioning-overview) for best practices.
+  - Refer the [Recommendations for number of partitions required and total RU/s across all partitions for large Ingestions](/azure/cosmos-db/scaling-provisioned-throughput-best-practices#how-to-optimize-rus-for-large-data-ingestion) for a seamless ingestion experience.
+  - Use [Spark throughput control](/azure/cosmos-db/nosql/throughput-control-spark) to limit the RU consumption of Spark jobs, which helps prevent overloading the Cosmos DB container.
+  - Prefer autoscale throughput in Cosmos DB for CDC sync as autoscale scales up/down RU/s dynamically based on usage. This is ideal for periodic, spiky workloads like hourly or daily CDC sync jobs. Refer[Provisioned Throughput Recommendations](/azure/cosmos-db/how-to-choose-offer#overview-of-provisioned-throughput-types) for best practices.
+  - You can [estimate the Initial ingestion duration for your initial load](azure/cosmos-db/scaling-provisioned-throughput-best-practices#example-1) based on the example mentioned here.
+
+## Prerequisites for Reverse ETL Pipeline Setup
 
 - An existing Azure Cosmos DB for NoSQL account.
   - You can create a new Cosmos DB account by following steps here, [create a new account](how-to-create-account.md?tabs=azure-portal).
@@ -236,7 +229,7 @@ df.write.mode("append").format("delta").saveAsTable("recommendations_delta")
 
 **Step 4: Initial Batch Load to Cosmos DB**
 
-Read the recommendations_delta Delta table into a Spark DataFrame and perform an initial batch write to Cosmos DB using the cosmos.oltp format. Use the append mode to add the data without overwriting existing content in Cosmos DB. This step ensures that all the baseline data is available in Cosmos DB before CDC begins
+Read the recommendations_delta Delta table into a Spark DataFrame and perform an initial batch write to Cosmos DB using the cosmos.oltp format. Use the append mode to add the data without overwriting existing content in Cosmos DB. This step ensures that all the historic data is available in Cosmos DB before CDC begins
 
 ::: zone pivot="programming-language-python"
 
@@ -297,8 +290,6 @@ After the historical data load, changes in the Delta table can be captured using
 
   **Step 6a: Batch CDC Sync to Cosmos DB**
 
-  Runs on a schedule (for example, daily or hourly) and loads an incremental snapshot of the data based on changes captured since the last version or timestamp. To avoid data inconsistencies when large incremental volumes are being loaded from Delta tables to Cosmos DB, it is recommended to switch from the old Cosmos DB snapshot to the new one. For example, by writing to a new container or using a version flag, then flipping a pointer once the new data is fully loaded.
-
   Read the changes from the Delta table starting from a specific version or specific timestamp using the readChangeData option. Write the resulting changes to Cosmos DB using the same connector and configuration. The selected version number or timestamp needs to be after the change data feed enablement of delta table.
 
   ::: zone pivot="programming-language-python"
@@ -329,7 +320,7 @@ After the historical data load, changes in the Delta table can be captured using
 
   **Step 6b: Stream CDC to Cosmos DB**
 
-  Continuously syncs incremental changes in near real-time, keeping the target system up to date with minimal lag. Use spark Structured Streaming to continuously capture and write changes. The Delta table acts as a streaming source with readChangeData = true, and the Cosmos DB connector acts as a streaming sink. Specify a checkpoint location to ensure progress is tracked and duplicate writes are avoided.
+   Use spark Structured Streaming to continuously capture and write changes. The Delta table acts as a streaming source with readChangeData = true, and the Cosmos DB connector acts as a streaming sink. Specify a checkpoint location to ensure progress is tracked and duplicate writes are avoided.
 
   ::: zone pivot="programming-language-python"
 
@@ -401,10 +392,7 @@ dfCosmos.select("id", "productname", "category", "recommendationscore").show()
     
 ## Related content
 
-- [Apache Spark](https://spark.apache.org/)
 - [Azure Cosmos DB Spark Connector](/azure/cosmos-db/nosql/tutorial-spark-connector)
-- [Throughput Control](/azure/cosmos-db/nosql/throughput-control-spark)
-- [Azure Cosmos DB Partitioning and Partition Key Recommendation](/azure/cosmos-db/partitioning-overview)
 - [AAD authentication in Apache Spark](https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/cosmos/azure-cosmos-spark_3_2-12/docs/AAD-Auth.md)
 - [Data Plane Role Based Access Control](/azure/cosmos-db/nosql/security/how-to-grant-data-plane-role-based-access)
 
