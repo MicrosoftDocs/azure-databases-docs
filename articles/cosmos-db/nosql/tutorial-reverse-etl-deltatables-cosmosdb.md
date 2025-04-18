@@ -18,25 +18,30 @@ zone_pivot_groups: programming-languages-spark-all-minus-sql-r-csharp
 
 ## Reverse ETL Overview
 
-  **What is Reverse ETL?**
-  
+  **What is Reverse ETL?**  
   Reverse ETL moves data from your Datawarehouses or data lake layer (like Delta Lake in Databricks, Fabric) back into operational systems. This data allows downstream apps to use the most recent, enriched data for real-time operational analytics.
 
   **Need for Reverse ETL**
-
   Cloud data warehouses and data lakes have transformed data management, centralizing information and enabling powerful analytics. But the real value of data lies in activation: turning insights into real-world decisions and customer experiences. To achieve this, clean, reliable data must move out of the warehouse / data lakes into operational systems. However, common challenges include:
 
-  - Data warehouses are typically only accessible to technical users 
+  - Data warehouses / Data are typically only accessible to technical users 
   - Moving data into operational tools often requires manual work, custom scripts, and ongoing maintenance — making it slow and error-prone.
   - Key metrics and features often remain locked inside dashboards or reports, limiting their real-world impact.
 
-  This is where Reverse ETL comes into the picture.
+  This is where Reverse ETL comes into the picture. Reverse ETL plays a crucial role in unlocking the full potential of your data assets by bridging the gap between analytics and operations, enabling better decision-making.
 
   **Why Reverse ETL to Cosmos DB?**
-
   Azure Cosmos DB is designed for ultra-low latency, global distribution, and NoSQL scalability, making it ideal for real-time applications.
 
   With Reverse ETL, you can sync Delta-enriched data into Cosmos DB, enabling real-time operational analytics. Push data like product catalogs, personalized customer info, pricing updates, inventory data, and feature recommendations into Cosmos DB, empowering downstream apps to make data-driven decisions instantly.
+
+  **Reverse ETL Architecture**
+  The Reverse ETL layer depcited below is powered by Databricks and Apache Spark. It extracts cleansed and enriched data (e.g., Delta Tables), and writes it back into operational stores. This process enables:
+  - **Real-Time Decisions:** Apps get access to the freshest data without relying on analysts or SQL.
+  - **Data Activation:** Insights are pushed where they’re needed—not just in dashboards.
+  - **Unified Source of Truth:** Delta Lake acts as the canonical layer, ensuring consistency across systems.
+  
+      :::image type="content" source="media\cosmosdbingestion\reverseetl.jpg" lightbox="media\cosmosdbingestion\reverseetl.jpg" alt-text="Reverse ETL Achitecture":::
 
 In this tutorial, you learn how to:
 
