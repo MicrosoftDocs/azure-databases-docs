@@ -44,7 +44,7 @@ In this tutorial, you learn how to:
   - **Data Activation:** Insights are pushed where they’re needed—not just in dashboards.
   - **Unified Source of Truth:** Delta Lake acts as the canonical layer, ensuring consistency across systems.
 
-  :::image type="content" source="../media/cosmosdbingestion/reverseetl.png" lightbox="../media/cosmosdbingestion/reverseetl.png" alt-text="Reverse ETL Achitecture":::
+    :::image type="content" source="../media/cosmosdbingestion/reverseetl.png" lightbox="../media/cosmosdbingestion/reverseetl.png" alt-text="Reverse ETL Achitecture":::
 
   **Why Reverse ETL to Cosmos DB?**  
   Azure Cosmos DB is designed for ultra-low latency, global distribution, and NoSQL scalability, making it ideal for real-time applications.
