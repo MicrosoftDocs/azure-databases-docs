@@ -24,8 +24,10 @@ zone_pivot_groups: programming-languages-spark-all-minus-sql-r-csharp
   **Need for Reverse ETL**  
   Cloud data warehouses and data lakes have transformed data management, centralizing information and enabling powerful analytics. But the real value of data lies in activation: turning insights into real-world decisions and customer experiences. To achieve this, clean, reliable data must move out of the warehouse / data lakes into operational systems. However, common challenges include:
 
-  - Data warehouses / Data lakes are typically only accessible to technical users 
+  - Data warehouses / Data lakes are typically only accessible to technical users.
+
   - Moving data into operational tools often requires manual work, custom scripts, and ongoing maintenance — making it slow and error-prone.
+
   - Key metrics and features often remain locked inside dashboards or reports, limiting their real-world impact.
 
   This is where Reverse ETL comes into the picture. Reverse ETL plays a crucial role in unlocking the full potential of your data assets by bridging the gap between analytics and operations, enabling better decision-making.
@@ -41,7 +43,7 @@ zone_pivot_groups: programming-languages-spark-all-minus-sql-r-csharp
   - **Data Activation:** Insights are pushed where they’re needed—not just in dashboards.
   - **Unified Source of Truth:** Delta Lake acts as the canonical layer, ensuring consistency across systems.
   
-      :::image type="content" source="media/cosmosdbingestion/reverseetl.jpg" lightbox="media/cosmosdbingestion/reverseetl.jpg" alt-text="Reverse ETL Achitecture":::
+      :::image type="content" source="media/cosmosdbingestion/reverseetl.png" lightbox="media/cosmosdbingestion/reverseetl.png" alt-text="Reverse ETL Achitecture":::
 
 In this tutorial, you learn how to:
 
