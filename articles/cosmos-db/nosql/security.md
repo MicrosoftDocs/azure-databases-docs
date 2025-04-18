@@ -4,6 +4,7 @@ titleSuffix: Azure Cosmos DB for NoSQL
 description: Review the fundamentals of securing Azure Cosmos DB for NoSQL from the perspective of data and networking security.
 author: seesharprun
 ms.author: sidandrews
+ms.reviewer: skhera
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: best-practice
