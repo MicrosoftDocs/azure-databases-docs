@@ -22,20 +22,9 @@ zone_pivot_groups: programming-languages-spark-all-minus-sql-r-csharp
   Reverse ETL moves data from your Datawarehouses or data lake layer (like Delta Lake in Databricks, Fabric) back into operational systems. This data allows downstream apps to use the most recent, enriched data for real-time operational analytics.
 
   **Need for Reverse ETL**  
-  Cloud data warehouses and data lakes have transformed data management, centralizing information and enabling powerful analytics. But the real value of data lies in activation: turning insights into real-world decisions and customer experiences. To achieve this, clean, reliable data must move out of the warehouse / data lakes into operational systems. However, common challenges include:
-
-  - Data warehouses / Data lakes are typically only accessible to technical users.
-
-  - Moving data into operational tools often requires manual work, custom scripts, and ongoing maintenance — making it slow and error-prone.
-
-  - Key metrics and features often remain locked inside dashboards or reports, limiting their real-world impact.
-
-  This is where Reverse ETL comes into the picture. Reverse ETL plays a crucial role in unlocking the full potential of your data assets by bridging the gap between analytics and operations, enabling better decision-making.
-
-  **Why Reverse ETL to Cosmos DB?**  
-  Azure Cosmos DB is designed for ultra-low latency, global distribution, and NoSQL scalability, making it ideal for real-time applications.
-
-  With Reverse ETL, you can sync Delta-enriched data into Cosmos DB, enabling real-time operational analytics. Push data like product catalogs, personalized customer info, pricing updates, inventory data, and feature recommendations into Cosmos DB, empowering downstream apps to make data-driven decisions instantly.
+  Cloud data warehouses and data lakes have transformed data management, centralizing information and enabling powerful analytics. But the real value of data lies in turning insights into real-world decisions and customer experiences. To achieve this, clean, reliable data must move out of the warehouse / data lakes into operational systems. 
+  
+  Reverse ETL plays a crucial role in unlocking the full potential of your data assets by bridging the gap between analytics and operations, enabling better decision-making.
 
   **Reverse ETL Architecture**  
   The Reverse ETL layer depcited below is powered by Databricks and Apache Spark. It extracts cleansed and enriched data (e.g., Delta Tables), and writes it back into operational stores in Cosmos DB. This process enables:
@@ -43,7 +32,12 @@ zone_pivot_groups: programming-languages-spark-all-minus-sql-r-csharp
   - **Data Activation:** Insights are pushed where they’re needed—not just in dashboards.
   - **Unified Source of Truth:** Delta Lake acts as the canonical layer, ensuring consistency across systems.
 
-      :::image type="content" source="./media/cosmosdbingestion/reverseetl.png" lightbox="./media/cosmosdbingestion/reverseetl.png" alt-text="Reverse ETL Achitecture":::
+  :::image type="content" source="./media/cosmosdbingestion/reverseetl.png" lightbox="./media/cosmosdbingestion/reverseetl.png" alt-text="Reverse ETL Achitecture":::
+
+  **Why Reverse ETL to Cosmos DB?**  
+  Azure Cosmos DB is designed for ultra-low latency, global distribution, and NoSQL scalability, making it ideal for real-time applications.
+
+  With Reverse ETL, you can sync Delta-enriched data into Cosmos DB, enabling real-time operational analytics. Push data like product catalogs, personalized customer info, pricing updates, inventory data, and feature recommendations into Cosmos DB, empowering downstream apps to make data-driven decisions instantly.
 
 ## Reverse ETL Data Load Stages
 
@@ -59,17 +53,6 @@ In this tutorial, you learn how to:
 > - Query data from Cosmos DB for verification and analysis.
 
 ## Reverse ETL Data Load Best Practices 
-
-In this tutorial, you learn how to:
-
-> [!div class="checklist"]
-> - Set up a reverse ETL pipeline to move data from Delta tables in Databricks to Azure Cosmos DB NoSQL.
-> - Configure Cosmos DB connection using the Cosmos DB Spark Connector.
-> - Implement throughput control to limit Request Units (RUs) consumed by Spark jobs and manage the throughput for efficient data ingestion.
-> - Perform initial data load from Delta tables to Cosmos DB.
-> - Enable Change Data Capture (CDC) for real-time data synchronization.
-> - Sync data using batch or streaming modes for efficient updates.
-> - Query data from Cosmos DB for verification and analysis.
 
 ## Prerequisites for Reverse ETL Pipeline
 
