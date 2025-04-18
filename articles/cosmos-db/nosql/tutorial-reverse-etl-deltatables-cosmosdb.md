@@ -18,22 +18,22 @@ zone_pivot_groups: programming-languages-spark-all-minus-sql-r-csharp
 
 ## Reverse ETL Overview
 
-  ## What is Reverse ETL?
+  **What is Reverse ETL?**
   
-  Reverse ETL moves data from your Datawarehouses or data lake layer (like Delta Lake in Databricks, Fabric) back into operational systems such as Azure Cosmos DB for NoSQL. This data allows downstream apps to use the most recent, transformed data for real-time operational analytics.
+  Reverse ETL moves data from your Datawarehouses or data lake layer (like Delta Lake in Databricks, Fabric) back into operational systems. This data allows downstream apps to use the most recent, enriched data for real-time operational analytics.
 
-  ## Why Reverse ETL
+  **Need for Reverse ETL**
 
   Cloud data warehouses and data lakes have transformed data management, centralizing information and enabling powerful analytics. But the real value of data lies in activation: turning insights into real-world decisions and customer experiences. To achieve this, clean, reliable data must move out of the warehouse / data lakes into operational systems. However, common challenges include:
 
-    - Data warehouses are typically only accessible to technical users 
-    - Moving data into operational tools often requires manual work, custom scripts, and ongoing maintenance — making it slow and error-prone.
-    - Key metrics and features often remain locked inside dashboards or reports, limiting their real-world impact.
+  - Data warehouses are typically only accessible to technical users 
+  - Moving data into operational tools often requires manual work, custom scripts, and ongoing maintenance — making it slow and error-prone.
+  - Key metrics and features often remain locked inside dashboards or reports, limiting their real-world impact.
 
   This is where Reverse ETL comes into the picture.
 
-  ## Why Reverse ETL to Cosmos DB?
-  
+  **Why Reverse ETL to Cosmos DB?**
+
   Azure Cosmos DB is designed for ultra-low latency, global distribution, and NoSQL scalability, making it ideal for real-time applications.
 
   With Reverse ETL, you can sync Delta-enriched data into Cosmos DB, enabling real-time operational analytics. Push data like product catalogs, personalized customer info, pricing updates, inventory data, and feature recommendations into Cosmos DB, empowering downstream apps to make data-driven decisions instantly.
