@@ -772,6 +772,9 @@
               href: ../synapse-link-power-bi.md?context=/azure/cosmos-db/nosql/context/context
             - name: Use Qlik Sense
               href: ../visualize-qlik-sense.md?context=/azure/cosmos-db/nosql/context/context
+            - name: Reverse extract, transform, & load (ETL)
+              displayName: Python, Scala, Spark, Databricks, Azure Cosmos DB
+              href: tutorial-reverse-extract-transform-load.md
             - name: Connect using Spark
               displayName: Python, Scala, Spark, Java, Databricks
               href: tutorial-spark-connector.md

@@ -1,7 +1,7 @@
 ---
-title: 'Tutorial: Reverse ETL (Extract Transform & Load) to Azure Cosmos DB from Delta Tables'
-titleSuffix: Reverse ETL to Azure Cosmos DB for NoSQL
-description: Reverse ETL moves data from your data lake layer (like Delta Lake in Databricks, Fabric) back into operational systems such as Azure Cosmos DB NoSQL using Cosmos DB Spark OLTP (Online Transaction Processing) connector. 
+title: 'Tutorial: Reverse extract, transform, & load (ETL)'
+titleSuffix: Azure Cosmos DB for NoSQL
+description: Reverse ETL moves data from data lake layer back into operational systems for real-time analytics. 
 author: rakhithejraj
 ms.author: rakhithejraj
 ms.service: azure-cosmos-db
@@ -12,21 +12,21 @@ ms.date: 04/15/2025
 zone_pivot_groups: programming-languages-spark-all-minus-sql-r-csharp
 ---
 
-# Tutorial: Reverse ETL from Delta Lake to Cosmos DB with Spark OLTP Connector
+# Tutorial: Reverse ETL from Delta Lake to Azure Cosmos DB for NoSQL with Spark OLTP connector
 
 [!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
 
-## Reverse ETL Overview
+## Reverse ETL overview
 
   **What is Reverse ETL?**  
-  Reverse ETL moves data from your Datawarehouses or data lake layer (like Delta Lake in Databricks, Fabric) back into operational systems. This data allows downstream apps to use the most recent, enriched data for real-time operational analytics.
+  Reverse ETL moves data from your Datawarehouses or Data lake layer (like Delta Lake in Databricks, Fabric) back into operational systems. This data allows downstream apps to use the most recent, enriched data for real-time operational analytics.
 
   **Need for Reverse ETL**  
   Cloud data warehouses and data lakes enrich data, centralize information, and enable powerful analytics. But the real value of data lies in turning insights into real-world decisions and customer experiences. To achieve this, clean, reliable data must move out of the warehouse / data lakes into operational systems. 
   
   Reverse ETL plays a crucial role in unlocking the full potential of your data assets by bridging the gap between analytics and operations, enabling better decision-making.
 
-  **Reverse ETL Architecture**  
+  **Reverse ETL architecture**  
   The Reverse ETL layer depicted below is powered by Databricks and Apache Spark. It extracts cleansed and enriched data (for example, Delta Tables), and writes it back into operational stores in Cosmos DB. 
 
   :::image type="content" source="../media/cosmosdbingestion/reverseetl.png" lightbox="../media/cosmosdbingestion/reverseetl.png" alt-text="Reverse ETL Achitecture":::
@@ -36,30 +36,30 @@ zone_pivot_groups: programming-languages-spark-all-minus-sql-r-csharp
   - **Data Activation:** Insights are pushed where they’re needed—not just in dashboards.
   - **Unified Source of Truth:** Delta Lake acts as the canonical layer, ensuring consistency across systems.
 
-  **Why Reverse ETL to Cosmos DB?**  
+  **Why Reverse ETL to Azure Cosmos DB?**  
   Azure Cosmos DB is designed for ultra-low latency, global distribution, and NoSQL scalability, making it ideal for real-time applications.
 
   With Reverse ETL, you can sync Delta-enriched data into Cosmos DB, enabling real-time operational analytics. Push data like product catalogs, personalized customer info, pricing updates, inventory data, and feature recommendations into Cosmos DB, empowering downstream apps to make data-driven decisions instantly.
 
-## Reverse ETL Data Ingestion Stages
+## Reverse ETL data ingestion stages
 
   When building a reverse ETL pipeline from Delta Lake to Azure Cosmos DB for scenarios like feature store, recommendation engines, fraud detection, or real-time product catalogs, it's important to separate the data flow into two stages:
 
   :::image type="content" source="../media/cosmosdbingestion/reverseetlloadstages.png" lightbox="../media/cosmosdbingestion/reverseetlloadstages.png" alt-text="Reverse ETL LoadStages":::
     
-  **1.Initial Load:**  
+  **1.Initial load:**  
   The initial load is a one-time batch process to ingest all historical data from your Delta tables into Azure Cosmos DB. It sets the foundation for your reverse ETL pipeline by ensuring Cosmos DB has complete historic data before starting incremental syncs.
 
-  **2.CDC(Change Data Capture) Sync:**  
+  **2.CDC(Change Data Capture) sync:**  
   Incremental, continuous sync of changes from Delta tables to Cosmos DB. Changes in the Delta table can be captured after enabling Delta Change Data Feed (CDF). You can implement either batch-based or streaming-based CDC.
 
-  **Batch CDC Sync to Cosmos DB**  
+  **Batch CDC sync to Azure Cosmos DB**  
   Runs on a schedule (for example, daily or hourly) and loads an incremental snapshot of the data based on changes captured since the last version or timestamp. To avoid data inconsistencies when large incremental volumes are being loaded from Delta tables to Cosmos DB, it is recommended to switch from the old Cosmos DB snapshot to the new one. For example, by writing to a new container or using a version flag, then flipping a pointer once the new data is fully loaded.
 
-  **Stream CDC to Cosmos DB**  
+  **Stream CDC to Azure Cosmos DB**  
   Continuously syncs incremental changes in near real-time, keeping the target system up to date with minimal lag. Use spark Structured Streaming to continuously capture and write changes. The Delta table acts as a streaming source with readChangeData = true, and the Cosmos DB connector acts as a streaming sink. Specify a checkpoint location to ensure progress is tracked and duplicate writes are avoided.
 
-## Reverse ETL Data Ingestion Best Practices
+## Reverse ETL data ingestion best practices
 
   - Use Spark batch jobs with Cosmos DB Spark Connector to perform initial load.
   - Optimize ingestion throughput by switching to standard provisioned throughput (instead of autoscale) if the initial load is expected to consume maximum RU/s consistently for major duration of Initial load. If [Normalized RU Consumption metric](/azure/cosmos-db/monitor-normalized-request-units) is consistently 100%, then it indicates that maximum autoscale RUs are consistently consumed by the initial load.
@@ -69,7 +69,7 @@ zone_pivot_groups: programming-languages-spark-all-minus-sql-r-csharp
   - Prefer autoscale throughput in Cosmos DB for CDC sync as autoscale scales up/down RU/s dynamically based on usage. This is ideal for periodic, spiky workloads like hourly or daily CDC sync jobs. Refer [Provisioned Throughput Recommendations](/azure/cosmos-db/how-to-choose-offer#overview-of-provisioned-throughput-types) for best practices.
   - You can [Estimate the Initial ingestion duration for your initial load](/azure/cosmos-db/scaling-provisioned-throughput-best-practices#example-1) based on the example mentioned here.
 
-## Prerequisites for Reverse ETL Pipeline Setup
+## Prerequisites for Reverse ETL pipeline setup
 
 - An existing Azure Cosmos DB for NoSQL account.
   - You can create a new Cosmos DB account by following steps here, [create a new account](how-to-create-account.md?tabs=azure-portal).
@@ -90,7 +90,7 @@ zone_pivot_groups: programming-languages-spark-all-minus-sql-r-csharp
 
     ```
 
-    **b. Assign Cosmos DB Data Plane Role (Built-in Data Contributor)**
+    **b. Assign Azure Cosmos DB data plane role (Built-in Data Contributor)**
     This data plane role grants the managed identity permission to read and write data in Cosmos DB containers. You can grant this role using this CLI command
 
     ```azurecli
@@ -98,12 +98,12 @@ zone_pivot_groups: programming-languages-spark-all-minus-sql-r-csharp
 
     ```
 
-    **c. Assign Cosmos DB Control Plane Role (IAM)**
+    **c. Assign Azure Cosmos DB control plane role (IAM)**
     This control plane role allows the managed identity to access account metadata (required for the Spark connector to initialize).
 
     You can assign this role in Azure portal. Go to Cosmos DB Account → Access Control (IAM) → Select Add → Add role assignment → Select Cosmos DB Account Reader Role  → Next  →  Assign access to "User, group, or service principal" →  select "select members" and add the dbmanagedidentity obtained from Step a  → select Review + Assign
 
-    **d. Get Your Tenant ID (for AAD Auth)**
+    **d. Get your Tenant Id (for AAD Auth)**
     This identifies your Azure Active Directory (AAD/Entra) instance. It's required by the Spark connector when using Managed Identity. You can obtain the Tenant ID using this CLI command
 
     ```azurecli
@@ -113,14 +113,11 @@ zone_pivot_groups: programming-languages-spark-all-minus-sql-r-csharp
 
     This Tenant ID is one of the config inputs in the **Set Cosmos DB Configuration step** for the final configuration of Managed Identity. 
 
-  If you're performing one-time testing using keys, the above four steps for setting up Managed Identity can be temporarily skipped. 
-
-
-## Detailed Steps and Sample Code to Setup Reverse ETL Pipeline
+## Detailed steps and sample code to setup Reverse ETL pipeline
 
 In this tutorial, we set up a reverse ETL pipeline to move enriched data from Delta tables in Databricks to Azure Cosmos DB NoSQL. We use the Cosmos DB OLTP Spark Connector for batch or streaming data synchronization, ensuring data is available instantly for operational use.
 
-**Step 1: Set Up Spark and Connector in Databricks**
+**Step 1: Set up Spark and connector in Databricks**
 
   a. Create a Cluster:
   Open your Azure Databricks workspace.
@@ -134,7 +131,7 @@ In this tutorial, we set up a reverse ETL pipeline to move enriched data from De
   Go to Workspace > Your Folder > New > Notebook.
   Set the default language to Python or Scala and attach it to the cluster.
 
-**Step 2: Set Cosmos DB Configuration**
+**Step 2: Set Cosmos DB configuration**
 
 Define a configuration dictionary (cosmos_config) in your notebook to connect your Spark session with Cosmos DB. These details include the Cosmos DB account endpoint, Managed Identity, Subscription, Tenant, database, and container name. It also enables throughput control to limit the RU consumption from Spark jobs, which helps prevent overloading the Cosmos DB account. Throughput control options include the control name and RU threshold. Target Throughput Threshold of 0.30 indicates that 30% of the allocated RUs on the target Cosmos DB container **recommendations** is available for the spark operations.
 
@@ -152,8 +149,6 @@ cosmos_config = {
   "spark.cosmos.account.subscriptionId": "<subscriptionId>",
   "spark.cosmos.account.tenantId": "<tenantId>",
   "spark.cosmos.account.resourceGroupName":"<resourceGroupName>",
-  # Key Based Cosmos DB config settings for one-time testing
-  # "spark.cosmos.accountKey": "<nosql-account-key>",
   # Throughput control based Cosmos DB config settings for managing the RU used by Spark
   "spark.cosmos.throughputControl.enabled": "true",
   "spark.cosmos.throughputControl.name": "TargetContainerThroughputControl",
@@ -177,8 +172,6 @@ cosmos_config = {
   "spark.cosmos.account.subscriptionId" -> "<subscriptionId>",
   "spark.cosmos.account.tenantId" -> "<tenantId>",
   "spark.cosmos.account.resourceGroupName" -> "<resourceGroupName>",
-  // Key Based Cosmos DB config settings for one-time testing
-  // "spark.cosmos.accountKey" -> "<nosql-account-key>",
   // Throughput control based Cosmos DB config settings for managing the RU used by Spark
   "spark.cosmos.throughputControl.enabled" -> "true",
   "spark.cosmos.throughputControl.name" -> "TargetContainerThroughputControl",
@@ -189,7 +182,7 @@ cosmos_config = {
 
 ::: zone-end
 
-**Step 3: Ingest Sample Product Recommendations Data to Delta Table**
+**Step 3: Ingest sample product recommendations data to Delta table**
 
 Create a sample DataFrame with product recommendations information for users and write it into a Delta table named recommendations_delta. This step simulates curated, transformed data in your data lake that you intend to sync to Cosmos DB. Writing to Delta ensures you can later enable change data capture (CDC) for incremental syncs.
 
@@ -227,7 +220,7 @@ df.write.mode("append").format("delta").saveAsTable("recommendations_delta")
 
 ::: zone-end
 
-**Step 4: Initial Batch Load to Cosmos DB**
+**Step 4: Initial batch load to Azure Cosmos DB**
 
 Read the recommendations_delta Delta table into a Spark DataFrame and perform an initial batch write to Cosmos DB using the cosmos.oltp format. Use the append mode to add the data without overwriting existing content in Cosmos DB. This step ensures that all the historic data is available in Cosmos DB before CDC begins
 
@@ -257,7 +250,7 @@ df_delta.write.format("cosmos.oltp").mode("append").options(cosmosconfig).save()
 
 ::: zone-end
 
-**Step 5: Enable Change Data Feed for Delta table**
+**Step 5: Enable change data feed for Delta table**
 
 Enable Delta Lake's Change Data Feed on the recommendations_delta table by altering its table properties. CDF allows Delta to track all future row-level inserts, updates, and deletes. Enabling this property is essential for performing incremental syncs to Cosmos DB, as it exposes changes without needing to compare snapshots.
 
@@ -284,11 +277,11 @@ spark.sql("""
 
 ::: zone-end
 
-**Step 6: Perform Change Data Capture (CDC) Reads from Delta Table**
+**Step 6: Perform change data capture (CDC) reads from Delta table**
 
 After the historical data load, changes in the Delta table can be captured using Delta Change Data Feed (CDF). You can implement either batch-based or streaming-based CDC.
 
-  **Step 6a: Batch CDC Sync to Cosmos DB**
+  **Step 6a: Batch CDC sync to Azure Cosmos DB**
 
   Read the changes from the Delta table starting from a specific version or specific timestamp using the readChangeData option. Write the resulting changes to Cosmos DB using the same connector and configuration. The selected version number or timestamp needs to be after the change data feed enablement of delta table.
 
@@ -318,7 +311,7 @@ After the historical data load, changes in the Delta table can be captured using
 
   ::: zone-end
 
-  **Step 6b: Stream CDC to Cosmos DB**
+  **Step 6b: Stream CDC sync to Azure Cosmos DB**
 
    Use spark Structured Streaming to continuously capture and write changes. The Delta table acts as a streaming source with readChangeData = true, and the Cosmos DB connector acts as a streaming sink. Specify a checkpoint location to ensure progress is tracked and duplicate writes are avoided.
 
@@ -366,7 +359,7 @@ After the historical data load, changes in the Delta table can be captured using
 
   ::: zone-end
 
-**Step 7: Query Cosmos DB from Spark**
+**Step 7: Query Azure Cosmos DB from Spark**
 
 After writing to Cosmos DB, verify the data by reading it back into Spark using the same Cosmos DB configuration. Then inspect the ingested data, run validations, or join with other datasets in Delta for analytics or reporting. Cosmos DB supports fast, indexed reads for real-time query performance.
 
