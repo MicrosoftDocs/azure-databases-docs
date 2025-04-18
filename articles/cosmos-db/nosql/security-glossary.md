@@ -14,7 +14,7 @@ appliesto:
   - ✅ NoSQL
 ---
 
-## Security glossary
+# Security glossary
 
 This article includes a glossary of common terminology used in this security guide for Azure Cosmos DB for NoSQL.
 
