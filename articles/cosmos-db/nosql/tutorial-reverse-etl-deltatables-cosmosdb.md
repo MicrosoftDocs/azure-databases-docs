@@ -66,8 +66,8 @@ zone_pivot_groups: programming-languages-spark-all-minus-sql-r-csharp
   - Choose an effective partition key that maximizes parallelism. Refer [Azure Cosmos DB Partitioning and Partition Key Recommendations](/azure/cosmos-db/partitioning-overview) for best practices.
   - Refer the [Recommendations for number of partitions required and total RU/s across all partitions for large Ingestions](/azure/cosmos-db/scaling-provisioned-throughput-best-practices#how-to-optimize-rus-for-large-data-ingestion) for a seamless ingestion experience.
   - Use [Spark throughput control](/azure/cosmos-db/nosql/throughput-control-spark) to limit the RU consumption of Spark jobs, which helps prevent overloading the Cosmos DB container.
-  - Prefer autoscale throughput in Cosmos DB for CDC sync as autoscale scales up/down RU/s dynamically based on usage. This is ideal for periodic, spiky workloads like hourly or daily CDC sync jobs. Refer[Provisioned Throughput Recommendations](/azure/cosmos-db/how-to-choose-offer#overview-of-provisioned-throughput-types) for best practices.
-  - You can [estimate the Initial ingestion duration for your initial load](azure/cosmos-db/scaling-provisioned-throughput-best-practices#example-1) based on the example mentioned here.
+  - Prefer autoscale throughput in Cosmos DB for CDC sync as autoscale scales up/down RU/s dynamically based on usage. This is ideal for periodic, spiky workloads like hourly or daily CDC sync jobs. Refer [Provisioned Throughput Recommendations](/azure/cosmos-db/how-to-choose-offer#overview-of-provisioned-throughput-types) for best practices.
+  - You can [Estimate the Initial ingestion duration for your initial load](azure/cosmos-db/scaling-provisioned-throughput-best-practices#example-1) based on the example mentioned here.
 
 ## Prerequisites for Reverse ETL Pipeline Setup
 
@@ -189,9 +189,9 @@ cosmos_config = {
 
 ::: zone-end
 
-**Step 3: Ingest Sample product recommendations Data to Delta Table**
+**Step 3: Ingest Sample Product Recommendations Data to Delta Table**
 
-Create a sample DataFrame with product recommendations information and write it into a Delta table named recommendations_delta. This step simulates curated, transformed data in your data lake that you intend to sync to Cosmos DB. Writing to Delta ensures you can later enable change data capture (CDC) for incremental syncs.
+Create a sample DataFrame with product recommendations information for users and write it into a Delta table named recommendations_delta. This step simulates curated, transformed data in your data lake that you intend to sync to Cosmos DB. Writing to Delta ensures you can later enable change data capture (CDC) for incremental syncs.
 
 ::: zone pivot="programming-language-python"
 
@@ -201,8 +201,8 @@ from pyspark.sql import SparkSession
 
 # Create sample data and convert it to a DataFrame
 df = spark.createDataFrame([
-    ("p001", "Contoso Coffee Mug", "drinkware", 12.95),
-    ("p002", "Contoso T-Shirt", "apparel", 19.99)
+    ("User01", "Contoso Coffee Mug", "drinkware", 80),
+    ("User02", "Contoso T-Shirt", "apparel", 90)
 ], ["id", "productname", "category", "recommendationscore"])
 
 # Write the DataFrame to a Delta table
@@ -217,8 +217,8 @@ df.write.mode("append").format("delta").saveAsTable("recommendations_delta")
 // Ingest Sample product recommendations Data to Delta Table
 // Create sample data as a sequence and convert it to a DataFrame
 val df = Seq(
-  ("p001", "Contoso Coffee Mug", "drinkware", 12.95),
-  ("p002", "Contoso T-Shirt", "apparel", 19.99)
+  ("User01", "Contoso Coffee Mug", "drinkware", 12.95),
+  ("User02", "Contoso T-Shirt", "apparel", 19.99)
 ).toDF("id", "productname", "category", "recommendationscore") 
 
 // Write the DataFrame to a Delta table
