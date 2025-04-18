@@ -186,6 +186,10 @@ To determine if your Single Server is selected for automigration, follow these s
 
 **A.** After the retirement deadline of March 28, 2025, all existing single servers that are not migrated will be force migrated to Flexible server. Servers with add-on features such as Private endpoint and Read replicas will require more actions by the user post-migration to ensure normal operation. There are no extensions to the retirement date.
 
+**Q. Are there any caveats when performing a [Major Version Upgrade (MVU)](../flexible-server/concepts-major-version-upgrade.md) on an automigrated server?**
+
+**A.** Yes, there is one important caveat to be aware of. While major version upgrades to any PostgreSQL version supported on Flexible Server are fully supported for automigrated servers, the connection string format changes slightly after a successful upgrade. Specifically, the username format **"username@servername"** will no longer be supported post-upgrade. If your application or scripts currently use this format in the connection string, you’ll need to update them to use the standard format: just **"username"**. Make sure to review and update all affected connection strings after the upgrade to avoid connection issues.
+
 ## Related content
 
 - [Manage an Azure Database for postgresql - Flexible Server using the Azure portal.](../flexible-server/how-to-manage-server-portal.md)
