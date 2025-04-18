@@ -62,12 +62,12 @@ zone_pivot_groups: programming-languages-spark-all-minus-sql-r-csharp
 ## Reverse ETL Data Ingestion Best Practices
 
   - Use Spark batch jobs with Cosmos DB Spark Connector to perform initial load.
-  - Optimize ingestion throughput by switching to standard provisioned throughput (instead of autoscale) if the initial load is expected to consume maximum RU/s consistently for major duration of Initial load. If [Normalized RU Consumption metric](monitor-normalized-request-units.md) is consistently 100%, then it indicates that maximum autoscale RUs are consistently consumed by the initial load.
+  - Optimize ingestion throughput by switching to standard provisioned throughput (instead of autoscale) if the initial load is expected to consume maximum RU/s consistently for major duration of Initial load. If [Normalized RU Consumption metric](/azure/cosmos-db/monitor-normalized-request-units) is consistently 100%, then it indicates that maximum autoscale RUs are consistently consumed by the initial load.
   - Choose an effective partition key that maximizes parallelism. Refer [Azure Cosmos DB Partitioning and Partition Key Recommendations](/azure/cosmos-db/partitioning-overview) for best practices.
   - Refer the [Recommendations for number of partitions required and total RU/s across all partitions for large Ingestions](/azure/cosmos-db/scaling-provisioned-throughput-best-practices#how-to-optimize-rus-for-large-data-ingestion) for a seamless ingestion experience.
   - Use [Spark throughput control](/azure/cosmos-db/nosql/throughput-control-spark) to limit the RU consumption of Spark jobs, which helps prevent overloading the Cosmos DB container.
   - Prefer autoscale throughput in Cosmos DB for CDC sync as autoscale scales up/down RU/s dynamically based on usage. This is ideal for periodic, spiky workloads like hourly or daily CDC sync jobs. Refer [Provisioned Throughput Recommendations](/azure/cosmos-db/how-to-choose-offer#overview-of-provisioned-throughput-types) for best practices.
-  - You can [Estimate the Initial ingestion duration for your initial load](azure/cosmos-db/scaling-provisioned-throughput-best-practices#example-1) based on the example mentioned here.
+  - You can [Estimate the Initial ingestion duration for your initial load](/azure/cosmos-db/scaling-provisioned-throughput-best-practices#example-1) based on the example mentioned here.
 
 ## Prerequisites for Reverse ETL Pipeline Setup
 
