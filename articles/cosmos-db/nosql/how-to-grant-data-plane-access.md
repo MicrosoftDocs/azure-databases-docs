@@ -382,6 +382,16 @@ Now, assign the newly defined role to an identity so that your applications can 
         --scope "/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/msdocs-identity-example/providers/Microsoft.DocumentDB/databaseAccounts/msdocs-identity-example-nosql"
     ```
 
+    > [!TIP]
+    > If you're attempting to grant data plane role-based access control to your own identity, you can use this command to get the identity:
+    >
+    > ```azurecli-interactive
+    > az ad signed-in-user show
+    > ```
+    >
+    > For more information, see [`az ad signed-in-user`](/cli/azure/ad/signed-in-user).
+    
+
 1. Use [`az cosmosdb sql role assignment list`](/cli/azure/cosmosdb/sql/role/assignment#az-cosmosdb-sql-role-assignment-list) to list all role assignments for your Azure Cosmos DB for NoSQL account. Review the output to ensure your role assignment was created.
 
     ```azurecli-interactive
@@ -406,7 +416,7 @@ Now, assign the newly defined role to an identity so that your applications can 
     param roleDefinitionId string
     
     @description('Id of the identity/principal to assign this role in the context of the account.')
-    param identityId string
+    param identityId string = deployer().objectId
     
     resource account 'Microsoft.DocumentDB/databaseAccounts@2024-05-15' existing = {
       name: accountName
@@ -434,6 +444,9 @@ Now, assign the newly defined role to an identity so that your applications can 
     param roleDefinitionId = '<id-of-new-role-definition>'
     param identityId = '<id-of-existing-identity>'
     ```
+
+    > [!TIP]
+    > If you're attempting to grant data plane role-based access control to your own identity, you can omit the `identityId` parameter. The Bicep template will then use `deployer().objectId` to get the identity of the principal that deployed the template. For more information, see [`deployer`](/azure/azure-resource-manager/bicep/bicep-functions-deployment#deployer).
 
 1. Deploy the Bicep template using `az deployment group create`.
 
@@ -486,6 +499,16 @@ Now, assign the newly defined role to an identity so that your applications can 
     }    
     New-AzCosmosDBSqlRoleAssignment @parameters
     ```
+
+    > [!TIP]
+    > If you're attempting to grant data plane role-based access control to your own identity, you can use this command to get the identity:
+    >
+    > ```azurepowershell-interactive
+    > Get-AzADUser -SignedIn | Format-List `
+    >     -Property Id, DisplayName, Mail, UserPrincipalName
+    > ```
+    >
+    > For more information, see [`Get-AzADUser`](/powershell/module/az.resources/get-azaduser).
 
 1. List all role assignments for your Azure Cosmos DB for NoSQL account using [`Get-AzCosmosDBSqlRoleAssignment`](/powershell/module/az.cosmosdb/get-azcosmosdbsqlroleassignment). Review the output to ensure your role assignment was created.
 

@@ -10,6 +10,8 @@ ms.subservice: nosql
 ms.topic: how-to
 ms.date: 04/18/2025
 zone_pivot_groups: azure-interface-portal-cli-powershell-bicep
+appliesto:
+  - ✅ NoSQL
 #Customer Intent: As a security user, I want to disable key-based auth in an Azure Cosmos DB for NoSQL account, so that my developers or applications can no longer access the account in an insecure manner.
 ---
 

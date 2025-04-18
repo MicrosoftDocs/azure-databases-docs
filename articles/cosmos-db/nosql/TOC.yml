@@ -105,6 +105,8 @@
       href: how-to-grant-control-plane-access.md
     - name: Grant data plane role-based access
       href: how-to-grant-data-plane-access.md
+    - name: Glossary
+      href: security-glossary.md
     - name: Network security
       items:
         - name: Configure IP firewall
