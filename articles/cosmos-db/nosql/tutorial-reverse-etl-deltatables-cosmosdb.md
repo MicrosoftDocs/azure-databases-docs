@@ -42,8 +42,12 @@ zone_pivot_groups: programming-languages-spark-all-minus-sql-r-csharp
   - **Real-Time Decisions:** Apps get access to the freshest data without relying on analysts or SQL.
   - **Data Activation:** Insights are pushed where they’re needed—not just in dashboards.
   - **Unified Source of Truth:** Delta Lake acts as the canonical layer, ensuring consistency across systems.
+
+      :::image type="content" source="media/autoscale-per-partition-region/enable-feature.png" lightbox="media/autoscale-per-partition-region/enable-feature.png" alt-text="Screenshot of the 'Dynamic Scaling (Per Region and Per Partition Autoscale)' feature in the Azure portal.":::
   
   :::image type="content" source="media/cosmosdbingestion/reverseetl.png" lightbox="media/cosmosdbingestion/reverseetl.png" alt-text="Reverse ETL Achitecture":::
+
+## Reverse ETL Data Laod Stages
 
 In this tutorial, you learn how to:
 
@@ -56,7 +60,20 @@ In this tutorial, you learn how to:
 > - Sync data using batch or streaming modes for efficient updates.
 > - Query data from Cosmos DB for verification and analysis.
 
-## Prerequisites
+## Reverse ETL Data Load Best Practices 
+
+In this tutorial, you learn how to:
+
+> [!div class="checklist"]
+> - Set up a reverse ETL pipeline to move data from Delta tables in Databricks to Azure Cosmos DB NoSQL.
+> - Configure Cosmos DB connection using the Cosmos DB Spark Connector.
+> - Implement throughput control to limit Request Units (RUs) consumed by Spark jobs and manage the throughput for efficient data ingestion.
+> - Perform initial data load from Delta tables to Cosmos DB.
+> - Enable Change Data Capture (CDC) for real-time data synchronization.
+> - Sync data using batch or streaming modes for efficient updates.
+> - Query data from Cosmos DB for verification and analysis.
+
+## Prerequisites for Reverse ETL Pipeline
 
 - An existing Azure Cosmos DB for NoSQL account.
   - You can create a new Cosmos DB account by following steps here, [create a new account](how-to-create-account.md?tabs=azure-portal).
