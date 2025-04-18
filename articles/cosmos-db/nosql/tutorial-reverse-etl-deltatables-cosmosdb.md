@@ -43,7 +43,7 @@ zone_pivot_groups: programming-languages-spark-all-minus-sql-r-csharp
   - **Data Activation:** Insights are pushed where they’re needed—not just in dashboards.
   - **Unified Source of Truth:** Delta Lake acts as the canonical layer, ensuring consistency across systems.
   
-      :::image type="content" source="media/cosmosdbingestion/reverseetl.png" lightbox="media/cosmosdbingestion/reverseetl.png" alt-text="Reverse ETL Achitecture":::
+  :::image type="content" source="media/cosmosdbingestion/reverseetl.png" lightbox="media/cosmosdbingestion/reverseetl.png" alt-text="Reverse ETL Achitecture":::
 
 In this tutorial, you learn how to:
 
