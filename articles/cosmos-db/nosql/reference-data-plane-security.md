@@ -4,27 +4,23 @@ titleSuffix: Azure Cosmos DB for NoSQL
 description: This article includes a list of all potential data plane actions for use with role-based access control (RBAC) in Azure Cosmos DB for NoSQL.
 author: seesharprun
 ms.author: sidandrews
-ms.reviewer: iriaosara
+ms.reviewer: skhera
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: reference
-ms.date: 10/01/2024
+ms.date: 04/18/2025
+appliesto:
+  - ✅ NoSQL
 ---
 
-# Azure Cosmos DB for NoSQL data plane actions reference
+# Azure Cosmos DB for NoSQL data plane security reference
 
-[!INCLUDE[NoSQL](../../includes/appliesto-nosql.md)]
-
-:::image type="complex" source="media/reference-data-plane-actions/map.svg" border="false" alt-text="Diagram of the current location ('Reference') in the sequence of the deployment guide.":::
-Diagram of the sequence of the deployment guide including these locations, in order: Overview, Concepts, Prepare, Role-based access control, Network, and Reference. The 'Reference' location is currently highlighted.
-:::image-end:::
-
-Azure Cosmos DB for NoSQL exposes a unique set of data actions within its native role-based access control implementation. This article includes a list of those actions and descriptions on what permissions are granted for each action.
+Azure Cosmos DB for NoSQL exposes a unique set of data actions and roles within its native role-based access control implementation. This article includes a list of those actions and roles with descriptions on what permissions are granted for each resource.
 
 > [!WARNING]
-> Azure Cosmos DB for NoSQL's native role-based access control doesn't support the `notDataActions` property. Any action that is not specified as an allowed `dataAction` is excluded automatically.
+> Azure Cosmos DB for NoSQL's native role-based access control doesn't support the `notDataActions` property. Any action that isn't specified as an allowed `dataAction` is excluded automatically.
 
-## Data actions
+## Built-in actions
 
 Here's a list of data actions that can be individually set in a role definition.
 
@@ -53,6 +49,29 @@ Wildcards are supported at both containers and items levels.
 | **`Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/*`** | Perform all container-specific operations like executing queries, reading the change feed, managing conflicts, and executing stored procedures |
 | **`Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/*`** | Perform all item-specific operations like creating, reading, updating, replacing, and deleting items |
 
+## Built-in roles
+
+Azure Cosmos DB for NoSQL defines data plane-specific role definitions. These roles are distinct from Azure role-based access control role definitions.
+
+### Cosmos DB Built-in Data Reader
+
+**ID**: `00000000-0000-0000-0000-000000000001`
+
+- **Included actions**
+  - `Microsoft.DocumentDB/databaseAccounts/readMetadata`
+  - `Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/read`
+  - `Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/executeQuery`
+  - `Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/readChangeFeed`
+
+### Cosmos DB Built-in Data Contributor
+
+**ID**: `00000000-0000-0000-0000-000000000002`
+
+- **Included actions**
+  - `Microsoft.DocumentDB/databaseAccounts/readMetadata`
+  - `Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/*`
+  - `Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/*`
+
 ## Required metadata
 
 The Azure Cosmos DB software development kits (SDKs) issue read-only metadata requests during initialization and to serve specific data requests. These requests fetch various configuration details such as:
@@ -79,8 +98,10 @@ The action can be assigned at any level in an Azure Cosmos DB account's hierarch
   - Resolving the address of each physical partition
 
 > [!IMPORTANT]
-> You cannot manage throughput with the `Microsoft.DocumentDB/databaseAccounts/readMetadata` data action.
+> You can't manage throughput with the `Microsoft.DocumentDB/databaseAccounts/readMetadata` data action.
 
 ## Related content
 
-- [Data plane roles](reference-data-plane-roles.md)
+- [Security best practices](security.md)
+- [Grant data plane role-based access](how-to-grant-data-plane-access.md)
+- [Grant data plane control-plane access](how-to-grant-control-plane-access.md)

@@ -4,30 +4,25 @@ titleSuffix: Azure Cosmos DB for NoSQL
 description: Grant access to run queries, manage entities, and perform operations using role-based access control, Microsoft Entra, and Azure Cosmos DB for NoSQL.
 author: seesharprun
 ms.author: sidandrews
-ms.reviewer: iriaosara
+ms.reviewer: skhera
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: how-to
-ms.date: 04/09/2025
+ms.date: 04/18/2025
 zone_pivot_groups: azure-interface-cli-powershell-bicep
+appliesto:
+  - ✅ NoSQL
 #Customer Intent: As a security user, I want to grant an identity data-plane access to Azure Cosmos DB for NoSQL, so that my developer team can use the SDK of their choice with minimal code change.
 ---
 
 # Use data plane role-based access control with Azure Cosmos DB for NoSQL
 
-[!INCLUDE[NoSQL](../../includes/appliesto-nosql.md)]
-
-:::image type="complex" source="media/how-to-grant-control-plane-role-based-access/map.svg" border="false" alt-text="Diagram of the current location ('Role-based access control') in the sequence of the deployment guide.":::
-Diagram of the sequence of the deployment guide including these locations, in order: Overview, Concepts, Prepare, Role-based access control, Network, and Reference. The 'Role-based access control' location is currently highlighted.
-:::image-end:::
-
-> [!Tip] 
-> Visit our new **[Samples Gallery](https://aka.ms/AzureCosmosDB/Gallery)** for the latest samples for building new apps
+[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
 
 This article walks through the steps to grant an identity access to manage data in an Azure Cosmos DB for NoSQL account.
 
 > [!IMPORTANT]
-> The steps in this article only cover data plane access to perform operations on individual items and run queries. To learn how to manage databases and containers for the control plane, see [grant control plane role-based access](how-to-grant-control-plane-role-based-access.md).
+> The steps in this article only cover data plane access to perform operations on individual items and run queries. To learn how to manage databases and containers for the control plane, see [grant control plane role-based access](how-to-grant-control-plane-access.md).
 
 ## Prerequisites
 
@@ -58,7 +53,7 @@ First, you must prepare a role definition with a list of `dataActions` to grant 
 >
 > - `Microsoft.DocumentDB/databaseAccounts/sqlRoleDefinitions/read`
 >
-> For more information, see [grant control plane role-based access](how-to-grant-control-plane-role-based-access.md).
+> For more information, see [grant control plane role-based access](how-to-grant-control-plane-access.md).
 
 ::: zone pivot="azure-interface-cli,azure-interface-bicep"
 
@@ -137,10 +132,10 @@ Permissions.NotDataActions :
 > - `Microsoft.DocumentDB/databaseAccounts/sqlRoleDefinitions/read`
 > - `Microsoft.DocumentDB/databaseAccounts/sqlRoleDefinitions/write`
 >
-> For more information, see [grant control plane role-based access](how-to-grant-control-plane-role-based-access.md).
+> For more information, see [grant control plane role-based access](how-to-grant-control-plane-access.md).
 
 > [!WARNING]
-> Azure Cosmos DB for NoSQL's native role-based access control doesn't support the `notDataActions` property. Any action that is not specified as an allowed `dataAction` is excluded automatically.
+> Azure Cosmos DB for NoSQL's native role-based access control doesn't support the `notDataActions` property. Any action that isn't specified as an allowed `dataAction` is excluded automatically.
 
 ::: zone pivot="azure-interface-cli"
 
@@ -352,7 +347,7 @@ Now, assign the newly defined role to an identity so that your applications can 
 > - `Microsoft.DocumentDB/databaseAccounts/sqlRoleAssignments/read`
 > - `Microsoft.DocumentDB/databaseAccounts/sqlRoleAssignments/write`
 >
-> For more information, see [grant control plane role-based access](how-to-grant-control-plane-role-based-access.md).
+> For more information, see [grant control plane role-based access](how-to-grant-control-plane-access.md).
 
 ::: zone pivot="azure-interface-cli"
 
@@ -387,6 +382,16 @@ Now, assign the newly defined role to an identity so that your applications can 
         --scope "/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/msdocs-identity-example/providers/Microsoft.DocumentDB/databaseAccounts/msdocs-identity-example-nosql"
     ```
 
+    > [!TIP]
+    > If you're attempting to grant data plane role-based access control to your own identity, you can use this command to get the identity:
+    >
+    > ```azurecli-interactive
+    > az ad signed-in-user show
+    > ```
+    >
+    > For more information, see [`az ad signed-in-user`](/cli/azure/ad/signed-in-user).
+    
+
 1. Use [`az cosmosdb sql role assignment list`](/cli/azure/cosmosdb/sql/role/assignment#az-cosmosdb-sql-role-assignment-list) to list all role assignments for your Azure Cosmos DB for NoSQL account. Review the output to ensure your role assignment was created.
 
     ```azurecli-interactive
@@ -411,7 +416,7 @@ Now, assign the newly defined role to an identity so that your applications can 
     param roleDefinitionId string
     
     @description('Id of the identity/principal to assign this role in the context of the account.')
-    param identityId string
+    param identityId string = deployer().objectId
     
     resource account 'Microsoft.DocumentDB/databaseAccounts@2024-05-15' existing = {
       name: accountName
@@ -440,6 +445,9 @@ Now, assign the newly defined role to an identity so that your applications can 
     param identityId = '<id-of-existing-identity>'
     ```
 
+    > [!TIP]
+    > If you're attempting to grant data plane role-based access control to your own identity, you can omit the `identityId` parameter. The Bicep template will then use `deployer().objectId` to get the identity of the principal that deployed the template. For more information, see [`deployer`](/azure/azure-resource-manager/bicep/bicep-functions-deployment#deployer).
+
 1. Deploy the Bicep template using `az deployment group create`.
 
     ```azurecli-interactive
@@ -452,7 +460,7 @@ Now, assign the newly defined role to an identity so that your applications can 
 1. Repeat these steps to grant access to the account from any other identities you would like to use.
 
     > [!TIP]
-    > You can repeat these steps for as many identities as you'd like. Typically, these steps are at least repeated to allow developers access to an account using their human identity and to allow applications access using a managed identity.
+    > You can repeat these steps for as many identities as you'd like. Typically, these steps are at least repeated to allow developers access to an account using their human identity. You can also repeat these steps to allow applications to access resources using a managed identity.
 
 ::: zone-end
 
@@ -491,6 +499,16 @@ Now, assign the newly defined role to an identity so that your applications can 
     }    
     New-AzCosmosDBSqlRoleAssignment @parameters
     ```
+
+    > [!TIP]
+    > If you're attempting to grant data plane role-based access control to your own identity, you can use this command to get the identity:
+    >
+    > ```azurepowershell-interactive
+    > Get-AzADUser -SignedIn | Format-List `
+    >     -Property Id, DisplayName, Mail, UserPrincipalName
+    > ```
+    >
+    > For more information, see [`Get-AzADUser`](/powershell/module/az.resources/get-azaduser).
 
 1. List all role assignments for your Azure Cosmos DB for NoSQL account using [`Get-AzCosmosDBSqlRoleAssignment`](/powershell/module/az.cosmosdb/get-azcosmosdbsqlroleassignment). Review the output to ensure your role assignment was created.
 
@@ -677,3 +695,9 @@ fn main() {
 > This code samples uses the [`azure_data_cosmos`](https://crates.io/crates/azure_data_cosmos) and [`azure_identity`](https://crates.io/crates/azure_identity) crates from Cargo.
 
 ---
+
+## Related content
+
+- [Security best practices](security.md)
+- [Disable key-based authentication](how-to-disable-key-based-authentication.md)
+- [Grant data plane control-plane access](how-to-grant-control-plane-access.md)
