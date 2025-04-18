@@ -96,7 +96,7 @@
           href: ../nosql/multi-tenancy-vector-search.md?context=/azure/cosmos-db/nosql/context/context
 - name: Create secure solutions
   items:
-    - name: Security overview
+    - name: Security
       href: security.md
     - name: Disable key-based authentication
       displayName: key, ropc, connection string
