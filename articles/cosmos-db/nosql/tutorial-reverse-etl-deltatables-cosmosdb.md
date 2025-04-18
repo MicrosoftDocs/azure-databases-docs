@@ -16,6 +16,18 @@ zone_pivot_groups: programming-languages-spark-all-minus-sql-r-csharp
 
 [!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
 
+In this tutorial, you learn how to:
+
+> [!div class="checklist"]
+> - Set up a reverse ETL pipeline to move data from Delta tables in Databricks to Azure Cosmos DB NoSQL.
+> - Configure Cosmos DB connection using the Cosmos DB Spark Connector.
+> - Implement throughput control to limit Request Units (RUs) consumed by Spark jobs and manage the throughput for efficient data ingestion.
+> - Perform initial data load from Delta tables to Cosmos DB.
+> - Enable Change Data Capture (CDC) for real-time data synchronization.
+> - Sync data using batch or streaming modes for efficient updates.
+> - Query data from Cosmos DB for verification and analysis.
+
+
 ## Reverse ETL Overview
 
   **What is Reverse ETL?**  
@@ -32,7 +44,7 @@ zone_pivot_groups: programming-languages-spark-all-minus-sql-r-csharp
   - **Data Activation:** Insights are pushed where they’re needed—not just in dashboards.
   - **Unified Source of Truth:** Delta Lake acts as the canonical layer, ensuring consistency across systems.
 
-  :::image type="content" source="./media/cosmosdbingestion/reverseetl.png" lightbox="./media/cosmosdbingestion/reverseetl.png" alt-text="Reverse ETL Achitecture":::
+  :::image type="content" source="../media/cosmosdbingestion/reverseetl.png" lightbox="../media/cosmosdbingestion/reverseetl.png" alt-text="Reverse ETL Achitecture":::
 
   **Why Reverse ETL to Cosmos DB?**  
   Azure Cosmos DB is designed for ultra-low latency, global distribution, and NoSQL scalability, making it ideal for real-time applications.
@@ -41,18 +53,23 @@ zone_pivot_groups: programming-languages-spark-all-minus-sql-r-csharp
 
 ## Reverse ETL Data Load Stages
 
-In this tutorial, you learn how to:
+  When building a reverse ETL pipeline from Delta Lake to Azure Cosmos DB for scenarios like feature store, recommendation engines, fraud detection, or real-time product catalogs, it's important to separate the data flow into two stages:
 
-> [!div class="checklist"]
-> - Set up a reverse ETL pipeline to move data from Delta tables in Databricks to Azure Cosmos DB NoSQL.
-> - Configure Cosmos DB connection using the Cosmos DB Spark Connector.
-> - Implement throughput control to limit Request Units (RUs) consumed by Spark jobs and manage the throughput for efficient data ingestion.
-> - Perform initial data load from Delta tables to Cosmos DB.
-> - Enable Change Data Capture (CDC) for real-time data synchronization.
-> - Sync data using batch or streaming modes for efficient updates.
-> - Query data from Cosmos DB for verification and analysis.
+  **1.Initial Load:**  
+  One-time Ingestion of historical data into Cosmos DB.
+  **Best Practices:**
+  - Use Spark batch jobs with Cosmos DB Spark Connector.
+  - Optimize ingestion throughput by switching to provisioned throughput (instead of autoscale) if you expect to saturate RUs for hours.
+  - Choose an effective partition key that maximizes parallelism (e.g., customer_id, product_id, or a composite key).
+  - Optimize RUs for Large Ingestion
+  - Control load saturation using Spark Throughput Control.
 
-## Reverse ETL Data Load Best Practices 
+  **2.CDC(Change Data Capture) Sync:**  
+  Incremental, continuous sync of changes from Delta tables to Cosmos DB.
+  **Best Practices:**
+  - Use Structured Streaming in Databricks with the Delta table CDC feature. Combine with Azure Cosmos DB Spark Connector for NoSQL in write mode.
+  - Prefer autoscale throughput in Cosmos DB for CDC sync as autoscale scales up/down RU/s dynamically based on usage. This is ideal for periodic, spiky workloads like hourly or daily CDC sync jobs.
+  - Control load saturation using Spark Throughput Control.
 
 ## Prerequisites for Reverse ETL Pipeline
 
