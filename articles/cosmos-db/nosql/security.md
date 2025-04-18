@@ -29,21 +29,21 @@ This article provides guidance on how to best secure your Azure Cosmos DB for No
 
 ## Identity management
 
-- **Use managed identities to access your account from other Azure services**: Managed identities eliminate the need to manage credentials by providing an automatically managed identity in Microsoft Entra ID. Use managed identities to securely access Azure Cosmos DB from other Azure services without embedding credentials in your code. For more information, see [Managed identities for Azure resources](https://learn.microsoft.com/azure/managed-identities/overview).
+- **Use managed identities to access your account from other Azure services**: Managed identities eliminate the need to manage credentials by providing an automatically managed identity in Microsoft Entra ID. Use managed identities to securely access Azure Cosmos DB from other Azure services without embedding credentials in your code. For more information, see [Managed identities for Azure resources](/entra/identity/managed-identities-azure-resources/overview).
 
 - **Use Azure control plane role-based access control to manage account databases and containers**: Apply Azure role-based access control to define fine-grained permissions for managing Azure Cosmos DB accounts, databases, and containers. This control ensures that only authorized users or services can perform administrative operations. For more information, see [Grant control plane access](how-to-grant-control-plane-access.md).
 
-- **Use native data plane role-based access control to query, create, and access items within a container**: Implement data plane role-based access control to enforce least privilege access for querying, creating, and accessing items within Azure Cosmos DB containers. This control helps secure your data operations. For more information, see [Grant data plane access](how-to-grant-data-plane-access).
+- **Use native data plane role-based access control to query, create, and access items within a container**: Implement data plane role-based access control to enforce least privilege access for querying, creating, and accessing items within Azure Cosmos DB containers. This control helps secure your data operations. For more information, see [Grant data plane access](how-to-grant-data-plane-access.md).
 
 - **Separate the Azure identities used for data and control plane access**: Use distinct Azure identities for control plane and data plane operations to reduce the risk of privilege escalation and ensure better access control. This separation enhances security by limiting the scope of each identity.
 
 ## Transport security
 
-- **Use and enforce TLS 1.3 for transport security**: Enforce transport layer security (TLS) 1.3 to secure data in transit with the latest cryptographic protocols, ensuring stronger encryption and improved performance. For more information, see [Minimum TLS enforcement](../self-serve-minimum-tls-enforcement).
+- **Use and enforce TLS 1.3 for transport security**: Enforce transport layer security (TLS) 1.3 to secure data in transit with the latest cryptographic protocols, ensuring stronger encryption and improved performance. For more information, see [Minimum TLS enforcement](../self-serve-minimum-tls-enforcement.md).
 
 ## Data encryption
 
-- **Encrypt data at rest or in-motion using service-managed keys or customer-managed keys (CMKs)**: Protect sensitive data by encrypting it at rest and in transit. Use service-managed keys for simplicity or customer-managed keys for greater control over encryption. For more information, see [Configure customer-managed keys](how-to-setup-customer-managed-keys.md).
+- **Encrypt data at rest or in-motion using service-managed keys or customer-managed keys (CMKs)**: Protect sensitive data by encrypting it at rest and in transit. Use service-managed keys for simplicity or customer-managed keys for greater control over encryption. For more information, see [Configure customer-managed keys](../how-to-setup-customer-managed-keys.md).
 
 - **Use Always Encrypted to secure data with client-side encryption**: Always Encrypted ensures that sensitive data is encrypted on the client side before being sent to Azure Cosmos DB, providing an extra layer of security. For more information, see [Always Encrypted](../how-to-always-encrypted.md).
 
@@ -51,7 +51,7 @@ This article provides guidance on how to best secure your Azure Cosmos DB for No
 
 - **Enable native continuous backup and restore**: Protect your data by enabling continuous backup, which allows you to restore your Azure Cosmos DB account to any point in time within the retention period. For more information, see [Continuous backup and restore](../online-backup-and-restore.md).
 
-- **Test backup and recovery procedures**: To verify the effectiveness of backup processes, regularly test the restoration of databases, containers, and items. For more information, see [restore a container or database](how-to-restore-in-account-continuous-backup.md).
+- **Test backup and recovery procedures**: To verify the effectiveness of backup processes, regularly test the restoration of databases, containers, and items. For more information, see [restore a container or database](../how-to-restore-in-account-continuous-backup.md).
 
 ## Related content
 
