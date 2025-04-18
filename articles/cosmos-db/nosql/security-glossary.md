@@ -4,27 +4,23 @@ titleSuffix: Azure Cosmos DB for NoSQL
 description: Explore common glossary terminology used when describing how to managed role-based access control within Azure Cosmos DB for NoSQL.
 author: seesharprun
 ms.author: sidandrews
-ms.reviewer: iriaosara
+ms.reviewer: skhera
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: glossary
-ms.date: 10/01/2024
+ms.date: 04/18/2025
 ai-usage: ai-assisted
+appliesto:
+  - ✅ NoSQL
 ---
 
-# Security glossary for Azure Cosmos DB for NoSQL
-
-[!INCLUDE[NoSQL](../../includes/appliesto-nosql.md)]
-
-:::image type="complex" source="media/glossary/map.svg" border="false" alt-text="Diagram of the current location ('Concepts') in the sequence of the deployment guide.":::
-Diagram of the sequence of the deployment guide including these locations, in order: Overview, Concepts, Prepare, Role-based access control, Network, and Reference. The 'Concepts' location is currently highlighted.
-:::image-end:::
+# Security glossary
 
 This article includes a glossary of common terminology used in this security guide for Azure Cosmos DB for NoSQL.
 
-[!INCLUDE[Security glossary](../../includes/security-glossary.md)]
+[!INCLUDE[Security glossary](../includes/security-glossary.md)]
 
-## Scope (Azure Cosmos DB native)
+### Scope (Azure Cosmos DB native)
 
 In Azure Cosmos DB's native implementation of role-based access control, scope refers to the granularity of resources within an account for which you want permission applied.
 
@@ -46,7 +42,22 @@ Finally, you can scope the assignment to a single container, the most granular s
 /subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.DocumentDB/databaseAccounts/<account-name>/dbs/<database-name>/colls/<container-name>
 ```
 
-## Next step
+> [!TIP]
+> In many cases, you can use the relative scope instead of the fully qualified scope. For example, you can use this relative scope to grant data plane role-based access control permissions to a specific database and container from an Azure CLI command:
+>
+> ```output
+> /dbs/<database-name>/colls/<container-name>
+> ```
+>
+> You can also grant universal access to all databases and containers using the relative scope:
+>
+> ```output
+> /
+> ```
+>
 
-> [!div class="nextstepaction"]
-> [Disable key-based authentication](how-to-disable-key-based-authentication.md)
+## Related content
+
+- [Security overview](security.md)
+- [Disable key-based authentication](how-to-disable-key-based-authentication.md)
+- [Grant data plane role-based access](how-to-grant-data-plane-access.md)
