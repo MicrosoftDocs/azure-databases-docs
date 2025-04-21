@@ -35,6 +35,8 @@ landingContent:
         links:
           - text: Integrated vector database
             url: vector-search.md
+          - text: Full-text search
+            url: full-text-search.md
           - text: Exact Nearest Neighbor (ENN) Vector Search 
             url: enn-vector-search.md
           - text: Open-source vector database
