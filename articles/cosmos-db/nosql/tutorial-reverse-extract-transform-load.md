@@ -98,7 +98,7 @@ Azure managed identities ensure secure, passwordless authentication to Azure Cos
 
 1. Search for the Spark connector for Azure Cosmos DB for NoSQL by using the **Group ID** filter `com.azure.cosmos.spark` and selecting the package with an **Artifact ID** of `azure-cosmos-spark_3-5_2-12`.
 
-1. Create a new notebook by navigating to **Workspace** > ***/<Some Folder/>*** > **New** > **Notebook**.
+1. Create a new notebook by navigating to **Workspace** > ***\[Folder\]*** > **New** > **Notebook**.
 
 1. Attach the notebook to your cluster.
 
