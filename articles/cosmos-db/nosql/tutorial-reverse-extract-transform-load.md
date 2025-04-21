@@ -27,9 +27,9 @@ In this tutorial, you set up a reverse ETL pipeline to move enriched data from D
 - Latest version of Azure CLI.
   - If you prefer, you can also use the [Azure Cloud Shell](/azure/cloud-shell/overview).
 
-## Configure data plane Microsoft Entra authentication
+## Configure role-based access control with Microsoft Entra
 
-Azure managed identities ensure secure, passwordless authentication to Azure Cosmos DB for NoSQL without manually managing credentials. In this prerequisite step, set up the user-assigned managed identity that Azure Databricks automatically creates to have write access to your Azure Cosmos DB for NoSQL account.
+Azure managed identities ensure secure, passwordless authentication to Azure Cosmos DB for NoSQL without manually managing credentials. In this prerequisite step, set up the user-assigned managed identity that Azure Databricks automatically creates with read access to metadata and write access to data for your Azure Cosmos DB for NoSQL account. This step configures both control and data plane role-based access control roles for the managed identity.
 
 1. Sign in to the Azure portal (<https://portal.azure.com>).
 
