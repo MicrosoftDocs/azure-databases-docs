@@ -30,11 +30,9 @@ This diagram includes the following components:
 
 - **Data sources** that include data such as; product data, CRM data, order information, and ad information.
 
-- **ETL workflow** moving data from the original data sources to the intermediate data store.
+- **ETL workflow** moving data from the original data sources to a data warehouse or data lake to store and enrich the data using solutions like Azure Databricks or Microsoft Fabric.
 
-- **Data warehouse or data lake** to store and enrich data in solutions like Azure Databricks or Microsoft Fabric.
-
-- **Reverse ETL workflow** to migrate data to an operational data store using a solution like Apache Spark.
+- **Reverse ETL workflow** to migrate the enriched data to an operational data store using Apache Spark and Delta tables
 
 - **Operation data store** like Azure Cosmos DB for NoSQL to use the enriched data in real-time applications.
 
