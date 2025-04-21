@@ -6,7 +6,7 @@ metadata:
   ms.author: dech
   ms.service: azure-cosmos-db
   ms.topic: faq
-  ms.date: 09/26/2024
+  ms.date: 04/21/2025
 title: Frequently asked questions about autoscale provisioned throughput in Azure Cosmos DB
 summary: |
   [!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
