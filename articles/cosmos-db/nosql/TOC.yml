@@ -764,6 +764,8 @@
             - name: Use Qlik Sense
               href: ../visualize-qlik-sense.md?context=/azure/cosmos-db/nosql/context/context
             - name: Reverse extract, transform, & load (ETL)
+              href: reverse-extract-transform-load.md
+            - name: Use Databricks for reverse ETL
               displayName: Python, Scala, Spark, Databricks, Azure Cosmos DB
               href: tutorial-reverse-extract-transform-load.md
             - name: Connect using Spark
