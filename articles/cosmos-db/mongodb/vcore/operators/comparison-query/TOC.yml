@@ -1,3 +1,17 @@
 - name: $eq
   href: $eq.md
+- name: $gt
+  href: $gt.md
+- name: $gte
+  href: $gte.md
+- name: $in
+  href: $in.md
+- name: $lt
+  href: $lt.md
+- name: $lte
+  href: $lte.md
+- name: $ne
+  href: $ne.md
+- name: $nin
+  href: $nin.md
   
