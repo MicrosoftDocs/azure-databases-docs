@@ -6,7 +6,7 @@ metadata:
   ms.author: dech
   ms.service: azure-cosmos-db
   ms.topic: faq
-  ms.date: 09/26/2024
+  ms.date: 04/21/2025
 title: Frequently asked questions about autoscale provisioned throughput in Azure Cosmos DB
 summary: |
   [!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
@@ -23,14 +23,15 @@ sections:
       - question: |          
           How can I enable dynamic autoscale on an account programatically?
         answer: |
-          You can use a [Resource Manager template with API version `2023-11-15-preview` or later preview version](/azure/templates/microsoft.documentdb/2023-11-15-preview/databaseaccounts) to set the property `enablePerRegionPerPartitionAutoscale` to true. You can see this property in the JSON view by using preview version 2023-11-15-preview or a later preview version.
+          You can use a [Resource Manager template with preview version `2023-11-15-preview` or later and stable version `2024-11-15` or later ](/azure/templates/microsoft.documentdb/2023-11-15-preview/databaseaccounts) to set the property `enablePerRegionPerPartitionAutoscale` to true.
+          You can use a [Resource Provider REST API version `2024-11-15` or later ](/rest/api/cosmos-db-resource-provider/database-accounts) to set `enablePerRegionPerPartitionAutoscale` to true.  
           You can also use the Azure CLI or PowerShell.
 
            #### [PowerShell](#tab/azure-powerShell)
 
           ```azurepowershell
-          // Add Azure Cosmos DB extension 2.0.6-preview for PowerShell
-          Install-Module -Name Az.CosmosDB -RequiredVersion 2.0.6-preview -AllowPrerelease -AllowClobber -Force
+          // Add Azure Cosmos DB extension 1.18.0 or later for PowerShell
+          Install-Module -Name Az.CosmosDB -RequiredVersion 1.18.0
 
           // update the account using this command to enable or disable the property
           Update-AzCosmosDBAccount -EnablePerRegionPerPartitionAutoscale $true -ResourceGroupName "<resource-group-name>" -Name "<cosmos-account-name>"
@@ -41,9 +42,7 @@ sections:
           #### [Azure CLI](#tab/azure-cli)
 
           ```azurecli
-          // Add Azure Cosmos DB extension for CLI
-          az extension add --name cosmosdb-preview --allow-preview true
-
+          // Check if the azure cli version is 2.71.0 or later
           // update the account using this command to enable or disable the property
           az cosmosdb update --enable-prpp-autoscale true --name '<cosmos-account-name>' --resource-group '<resource-group-name>'
 
