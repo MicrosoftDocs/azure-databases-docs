@@ -106,7 +106,7 @@ Azure managed identities ensure secure, passwordless authentication to Azure Cos
 
 Configure the Spark connector to connect to your account's container using Microsoft Entra authentication. Also, configure the connector to only use a limited threshold of throughput for Spark operations. To configure the spark connector, define a configuration dictionary with credentials to connect to your account. These credentials include:
 
-| | Values |
+| | Value |
 | --- | --- |
 | **`spark.cosmos.accountEndpoint`** | The NoSQL account endpoint  |
 | **`spark.cosmos.database`** | The name of the target database |
