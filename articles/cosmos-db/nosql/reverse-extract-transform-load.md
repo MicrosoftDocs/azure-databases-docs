@@ -22,7 +22,7 @@ Azure Cosmos DB for NoSQL is designed for ultra-low latency, global distribution
 
 A streamlined architecture to implement reverse ETL is composed of Apache Spark and Azure Databricks. This architecture extracts cleansed and enriched data from sources like Delta Tables and writes the data back to the operational store in Azure Cosmos DB for NoSQL.
 
-:::image type="complex" source="media/tutorial-reverse-extract-transform-load/solution.png" lightbox="media/tutorial-reverse-extract-transform-load/solution-expanded.png" alt-text="Diagram of a reverse ETL architecture comprised of multiple components migrating data.":::
+:::image type="complex" source="media/reverse-extract-transform-load/solution.png" lightbox="media/reverse-extract-transform-load/solution-expanded.png" alt-text="Diagram of a reverse ETL architecture comprised of multiple components migrating data.":::
     Diagram of a reverse ETL architecture comprised of multiple components migrating data. The components include data sources that could include product, CRM, order, or ad data. The data from the data sources is then ingested into a data warehouse or data lake using an ETL workflow. Finally, the data is sent out of the intermediate storage using a reverse ETL workflow. The data is sent into an operational data store like Azure Cosmos DB for NoSQL.
 :::image-end:::
 
@@ -50,7 +50,7 @@ The reverse ETL process enables scenarios such as:
 
 For scenarios like feature store, recommendation engines, fraud detection, or real-time product catalogs, it's important to separate the data flow into two stages. These stages assume you have a reverse ETL pipeline from Delta Lake to Azure Cosmos DB for NoSQL.
 
-:::image type="complex" source="media/tutorial-reverse-extract-transform-load/stages.png" lightbox="media/tutorial-reverse-extract-transform-load/stages-expanded.png" alt-text="Diagram of the two reverse ETL stages from Delta Lake to Azure Cosmos DB for NoSQL.":::
+:::image type="complex" source="media/reverse-extract-transform-load/stages.png" lightbox="media/reverse-extract-transform-load/stages-expanded.png" alt-text="Diagram of the two reverse ETL stages from Delta Lake to Azure Cosmos DB for NoSQL.":::
     Diagram of the two reverse ETL stages from Delta Lake to Azure Cosmos DB for NoSQL. The first stage loads data using a one-time batch process. The second stage uses change data capture to sync the data. Both stages output data into Azure Cosmos DB for NoSQL as the operational data store.
 :::image-end:::
 
