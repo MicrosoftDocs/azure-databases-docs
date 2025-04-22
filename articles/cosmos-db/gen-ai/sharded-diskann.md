@@ -14,7 +14,7 @@ appliesto:
   - ✅ NoSQL
 ---
 
-# Introduction to Sharded DiskANN
+# Sharded DiskANN: Focused vector search
 
 Sharded DiskANN is a feature that allows a user to manually shard (or partition) a DiskANN vector index into smaller or more manageable indexes that are more efficient to search through. You can define an optional parameter in your container’s indexing policy, the `vectorIndexShardKey`, which points to a property in your documents. This essentially creates multiple distinct DiskANN vector indexes for your container, one for each unique value that the property can take. 
 
