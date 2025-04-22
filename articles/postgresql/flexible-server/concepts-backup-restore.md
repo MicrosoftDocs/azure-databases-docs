@@ -180,7 +180,7 @@ After you restore the server, you can perform the following tasks to get your us
 
 - If the source server from which you restored was configured with read replicas, and you want to configure read replicas on the restored server, you can then follow the instructions in [Create a read replica](how-to-create-read-replica.md).
  
-## On-demand Backups (preview)
+## On-demand Backups
 
 Azure Database for PostgreSQL Flexible Server automatically generates storage volume snapshots of your entire database instance, covering all databases, as part of its scheduled backups. Additionally, you can create an on-demand backup whenever needed which is ideal for scenarios such as preparing for a potentially risky operation or performing periodic refreshes outside the usual backup schedule.
 
@@ -194,9 +194,6 @@ On-demand backups can be taken in addition to scheduled automatic backups. These
 - On-demand backup feature is currently not supported with the SSDv2 storage tier.
 - You can take a maximum of 7 on-demand backups per flexible server, which are retained based upon the backup retention window. 
 
-#### Known Issues
-
-We are aware of an existing bug that allows taking on-demand backups on Replicas, even though Point-in-Time Restore (PITR) is not supported in this context. This issue will be addressed to ensure that on-demand backups can only be performed on the Primary server.
 
 ## Long-term retention
 

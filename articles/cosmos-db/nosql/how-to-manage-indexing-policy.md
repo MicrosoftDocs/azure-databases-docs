@@ -168,6 +168,23 @@ The `diskANN` and `quantizedFlat` indexes can take optional index build paramete
 - `quantizationByteSize`: Sets the size (in bytes) for product quantization. Min=1, Default=dynamic (system decides), Max=512. Setting this larger may result in higher accuracy vector searches at expense of higher RU cost and higher latency. This applies to both `quantizedFlat` and `DiskANN` index types.
 - `indexingSearchListSize`: Sets how many vectors to search over during index build construction. Min=10, Default=100, Max=500. Setting this larger may result in higher accuracy vector searches at the expense of longer index build times and higher vector ingest latencies. This applies to `DiskANN` indexes only.
 
+### Using Sharded DiskANN
+Sharded DiskANN helps you optimize large-scale vector search by splitting a DiskANN index into smaller, more manageable pieces. By specifying a VectorIndexShardKey in your container’s indexing policy, you can create multiple DiskANN indexes—one for each unique value of a chosen document property.
+
+This approach can lead to faster query performance, improved recall, and lower RU costs, especially when working with high-cardinality data. Whether you're building recommendation engines, semantic search, or intelligent agents, Sharded DiskANN gives you more control over how vector indexing is structured and executed.
+
+Here, we can see an example of defining the shard key based on a tenantID property. This can be any property of the data item, even the partition key. Note that the single string needs to be enclosed in an array. [Learn more about Sharded DiskANN](../gen-ai/sharded-diskann.md).
+
+```json
+"vectorIndexes": [
+    {
+        "path": "/vector2",
+        "type": "DiskANN",
+        "vectorIndexShardKey": ["/tenantID"]
+    }
+]
+```
+
 ### Tuple indexing policy examples
 
 This example indexing policy defines a tuple index on events.name and events.category
