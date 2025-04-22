@@ -141,7 +141,6 @@ mongodb+srv://<cluster-name>.mongocluster.cosmos.azure.com/?tls=true&authMechani
 The following section describes functional limits in the Azure Cosmos DB for MongoDB vCore service when Microsoft Entra ID preview is used.
 - Entra ID isn't supported on replica clusters.
 - Entra ID isn't supported on restored clusters.
-- Entra ID isn't supported in South Central US region.
 
 ## Next steps
 
