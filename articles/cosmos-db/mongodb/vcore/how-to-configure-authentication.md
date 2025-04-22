@@ -16,7 +16,7 @@ appliesto:
 
 > [!IMPORTANT]
 > Microsoft Entra ID authentication in Azure Cosmos DB for MongoDB vCore is currently in preview.
-> This preview version is provided without a service level agreement, and it's not recommended
+> This preview version is provided without a service level agreement, and it isn't recommended
 > for production workloads. Certain features might not be supported or might have constrained
 > capabilities.
 
@@ -26,29 +26,10 @@ Microsoft Entra ID users added to the cluster are going to be in addition to nat
 
 ## Prerequisites
 
-Users need to be allowed to sign in to Azure Cosmos DB for MongoDB vCore in the Microsoft Entra ID tenant. These steps should be performed **once** for the Microsoft Entra ID *tenant* that is going to be used for authentication on Azure Cosmos DB for MongoDB vCore clusters.
+Users need to be allowed to sign in to the Microsoft Entra ID tenant. These steps should be performed **once** for the Microsoft Entra ID *tenant* that is going to be used for authentication on Azure Cosmos DB for MongoDB vCore clusters.
 
-> [!IMPORTANT]
-> [Microsoft Entra ID tenant administrator permissions](/entra/identity/role-based-access-control/permissions-reference) are needed to make the change.
-
-# [Azure portal](#tab/portal)
-
-1. Search for 'Microsoft Entra ID' in [Azure portal](https://portal.azure.com/).
-1. Open 'Microsoft Entra ID' service.
-1. On the **Overview** page of Microsoft Entra ID service in the **Overview** section, search for 'b4fa09d8-5da5-4352-83d9-05c2a44cf431' application ID.
-1. Choose 'Azure Cosmos DB for MongoDB vCore AAD Authentication' enterprise application in the search results.
-1. In the **Azure Cosmos DB for MongoDB vCore AAD Authentication** enterprise application, choose **Properties** page.
-1. Set **Enabled for users to sign-in?** to **Yes** and save the change.
-
-# [Azure CLI](#tab/cli)
-
-```azurecli
-az ad sp update --id b4fa09d8-5da5-4352-83d9-05c2a44cf431 --set accountEnabled=true
-```
----
-
-> [!NOTE]
-> Editing enterprise application's properties such as "Enabled for users to sign-in" requires permissions granted to a user with privileges to update enterprise application properties. Users, such as **Enterprise application owner**, must have the *"update enterprise application properties"* permission. For more information, see [Microsoft Entra least privileged users by task - Enterprise applications](/entra/identity/role-based-access-control/delegate-by-task#enterprise-applications-least-privileged-roles).
+1. [An Azure Cosmos DB for MongoDB vCore cluster](./quickstart-portal.md)
+1. [A Microsoft Entra ID tenant](/entra/identity-platform/quickstart-create-new-tenant)  
 
 ## Enable Microsoft Entra ID authentication method on Azure Cosmos DB for MongoDB vCore cluster
 
@@ -166,4 +147,3 @@ The following section describes functional limits in the Azure Cosmos DB for Mon
 
 - Learn about [authentication in Azure Cosmos DB for MongoDB vCore](./authentication-entra-id.md)
 - Review [Microsoft Entra ID fundamentals](/entra/fundamentals/whatis)
-

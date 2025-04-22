@@ -16,7 +16,7 @@ appliesto:
 
 > [!IMPORTANT]
 > Microsoft Entra ID authentication in Azure Cosmos DB for MongoDB vCore is currently in preview.
-> This preview version is provided without a service level agreement, and it's not recommended
+> This preview version is provided without a service level agreement, and it isn't recommended
 > for production workloads. Certain features might not be supported or might have constrained
 > capabilities.
 
