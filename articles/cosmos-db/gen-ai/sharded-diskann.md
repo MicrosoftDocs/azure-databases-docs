@@ -1,13 +1,15 @@
 ---
-title: Sharded DiskANN: Focused Vector Search for Better Performance and Lower Cost
+title: Sharded DiskANN Focused Vector Search for Better Performance and Lower Cost
 titleSuffix: Azure Cosmos DB
 description: Learn how to setup Sharded DiskANN for focused vector search with improved performance and lower costs
 author: jcodella
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: concept-article
-ms.date: 12/03/2024
 ms.author: jacodel
+ms.date: 04/22/2025
+ms.collection:
+  - ce-skilling-ai-copilot
 appliesto:
   - ✅ NoSQL
 ---

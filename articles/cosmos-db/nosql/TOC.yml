@@ -60,11 +60,10 @@
       href: ../gen-ai/why-cosmos-ai.md
     - name: Use vector search
       items:
-        - name: Basic vector indexing and search
+        - name: Vector indexing and search
           href: vector-search.md
         - name: Sharded DiskANN for focused search
           href: ../gen-ai/sharded-diskann.md
-    
     - name: Enable full-text search
       href: ../gen-ai/full-text-search.md?context=/azure/cosmos-db/nosql/context/context
     - name: Implement hybrid search
