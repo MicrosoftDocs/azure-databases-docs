@@ -45,7 +45,7 @@ This article highlights the latest updates and enhancements for Azure Database f
 - General Availability of the [Semantic Ranker Solution Accelerator](https://aka.ms/pg-ranker) for Azure Database for PostgreSQL flexible server.
 - Public preview of [age](../extensions/concepts-extensions-versions.md#age) extension.
 - Public preview of [GraphRAG Solution Accelerator](https://aka.ms/pg-graphrag) for Azure Database for PostgreSQL flexible server.
-- Public preview of [On-Demand Backups](concepts-backup-restore.md#on-demand-backups-preview).
+
 
 ## Release: November 2024
 
