@@ -121,7 +121,7 @@ Before proceeding with the User-assigned managed identity.
     1. Verify if Authentication method is **Microsoft Entra authentication only** or **PostgreSQL and Microsoft Entra authentication**
     1. Click on **+ Add Microsoft Entra administrators** and select your user-assigned managed identity
 
-        :::image type="content" source="media/how-to-connect-data-factory/user-managed-identity-posrgresql-configuration.png" alt-text="Screenshot of the user-assigned managed identity configuration in the Azure database for PostgreSQL server." lightbox="media/how-to-connect-data-factory/user-managed-identity-posrgresql-configuration.png":::
+        :::image type="content" source="media/how-to-connect-data-factory/user-managed-identity-postgresql-configuration.png" alt-text="Screenshot of the user-assigned managed identity configuration in the Azure database for PostgreSQL server." lightbox="media/how-to-connect-data-factory/user-managed-identity-postgresql-configuration.png":::
 
 1. Assign the **User-assigned Managed Identity** to your Azure Data Factory resource
     1. Select **Settings** and then **Managed Identities**
@@ -216,21 +216,22 @@ The following table describes the properties of the linked service for Azure Dat
 
 | Property | Description | Required |
 | --- | --- | --- |
-name | Name of the linked service. See [Naming rules](/azure/data-factory/naming-rules) |  Yes |
-type | Type of the linked service. It should be **AzurePostgreSql** | Yes |
-server | Full qualified host name for Azure database for PostgreSQL flexible server | Yes |
-port | The Azure database for PostgreSQL flexible server port number | Yes |
-database | Database name | Yes |
-sslMode | A numeric value representing the SSL connection configuration. **0** for Disabled, **1** for Allow, **2** for Prefer, **3** for Require, **4** for VerifyCA and **5** for VerifyFull | Yes |
-authenticationType | Specify the authentication to be used. **BasicAuth** or **ServicePrincipal** | Yes |
-username | username for basic auth or Service principal name for service principal authentication | Yes |
-password | Username password for the Basic Auth | Required when **BasicAuth**. Otherwise isn't required |
-tenant | Tenant ID | Required for **ServicePrincipal** authentication type |
-servicePrincipalId | Service Principal ID | Required for **ServicePrincipal** authentication type |
-servicePrincipalCredentialType | Service Principal Type. **ServicePrincipalCert** or **ServicePrincipalKey**| Yes |
-servicePrincipalEmbeddedCert | The service principal certificate | Required when **ServicePrincipalCert**. Otherwise isn't required |
-servicePrincipalEmbeddedCertPassword | The service principal certificate password | No |
-servicePrincipalKey | The service Principal key | Required if **ServicePrincipalKey** is the servicePrincipalCredentialType. Otherwise isn't required |
+| name | Name of the linked service. See [Naming rules](/azure/data-factory/naming-rules) |  Yes |
+| type | Type of the linked service. It should be **AzurePostgreSql** | Yes |
+| server | Full qualified host name for Azure database for PostgreSQL flexible server | Yes |
+| port | The Azure database for PostgreSQL flexible server port number | Yes |
+| database | Database name | Yes |
+| sslMode | A numeric value representing the SSL connection configuration. **0** for Disabled, **1** for Allow, **2** for Prefer, **3** for Require, **4** for VerifyCA and **5** for VerifyFull | Yes |
+| authenticationType | Specify the authentication to be used. **BasicAuth**, **ServicePrincipal**, **SystemAssignedManagedIdentity**, or **UserAssignedManagedIdentity** | Yes |
+| credential | Specify the user-assigned managed identity as the credential object. | Required for **UserAssignedManagedIdentity**. Otherwise isn't required |
+| username | username for basic auth or Service principal name for service principal authentication | Yes |
+| password | Username password for the Basic Auth | Required when **BasicAuth**. Otherwise isn't required |
+| tenant | Tenant ID | Required for **ServicePrincipal** authentication type |
+| servicePrincipalId | Service Principal ID | Required for **ServicePrincipal** authentication type |
+| servicePrincipalCredentialType | Service Principal Type. **ServicePrincipalCert** or **ServicePrincipalKey**| Yes |
+| servicePrincipalEmbeddedCert | The service principal certificate | Required when **ServicePrincipalCert**. Otherwise isn't required |
+| servicePrincipalEmbeddedCertPassword | The service principal certificate password | No |
+| servicePrincipalKey | The service Principal key | Required if **ServicePrincipalKey** is the servicePrincipalCredentialType. Otherwise isn't required |
 
 Depending on the type of authentication, different fields require a different JSON payload.
 
@@ -301,6 +302,52 @@ A linked service using **Service Principal key** is defined in JSON format as fo
             "servicePrincipalId": "<SP ID>",
             "servicePrincipalCredentialType": "ServicePrincipalKey",
             "servicePrincipalKey": "<Service Principal Key>"
+        }
+    }
+}
+```
+
+Example with **system-assigned managed identity**:
+
+```json
+{
+    "name": "AzurePostgreSqlLinkedService",
+    "type": "Microsoft.DataFactory/factories/linkedservices",
+    "properties": {
+        "annotations": [],
+        "type": "AzurePostgreSql",
+        "version": "2.0",
+        "typeProperties": {
+            "server": "<server name>",
+            "port": 5432,
+            "database": "<database name>",
+            "sslMode": 2,
+            "authenticationType": "SystemAssignedManagedIdentity"
+        }
+    }
+}
+```
+
+Example with **user-assigned managed identity**:
+
+```json
+{
+    "name": "AzurePostgreSqlLinkedService",
+    "type": "Microsoft.DataFactory/factories/linkedservices",
+    "properties": {
+        "annotations": [],
+        "type": "AzurePostgreSql",
+        "version": "2.0",
+        "typeProperties": {
+            "server": "<server name>",
+            "port": 5432,
+            "database": "<database name>",
+            "sslMode": 2,
+            "authenticationType": "UserAssignedManagedIdentity",
+            "credential": {
+                "referenceName": "<your credential>",
+                "type": "CredentialReference"
+            }
         }
     }
 }
