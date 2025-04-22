@@ -7,7 +7,7 @@ ms.author: nlarin
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: concept-article
-ms.date: 04/14/2025
+ms.date: 04/20/2025
 appliesto:
   - ✅ MongoDB vCore
 ---
@@ -56,5 +56,6 @@ Additionally, one or more non-administrative Microsoft Entra ID users can be add
 
 ## Next steps
 
-- Learn [how to manage authentication and Entra ID users in Azure Cosmos DB for MongoDB vCore](./how-to-configure-authentication.md)
+- Learn how to manage [authentication and Entra ID users in Azure Cosmos DB for MongoDB vCore](./how-to-configure-authentication.md)
 - Review [Microsoft Entra ID fundamentals](/entra/fundamentals/whatis)
+- Learn more about [Open ID Connect (OIDC) support in Microsoft Entra ID](/entra/architecture/auth-oidc)
