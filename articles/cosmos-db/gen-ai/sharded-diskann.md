@@ -1,7 +1,7 @@
 ---
 title: Sharded DiskANN Focused Vector Search for Better Performance and Lower Cost
 titleSuffix: Azure Cosmos DB
-description: Learn how to setup Sharded DiskANN for focused vector search with improved performance and lower costs
+description: Learn how to set up Sharded DiskANN for focused vector search with improved performance and lower costs
 author: jcodella
 ms.service: azure-cosmos-db
 ms.subservice: nosql
@@ -25,7 +25,7 @@ Sharded DiskANN offers many benefits including:
 - **Scalability.** Sharding allows the system to handle larger datasets by distributing the data across multiple shards, making it easier to scale as the dataset grows.
 - **Isolation of Vector Data.** Sharded DiskANN ensures that vector data can be isolated based on specific attributes (shard keys), providing better data management, and security. Your searches are constrained to data items only matching that shard key.
 
-## Use Cases
+## Use cases
 
 Sharded DiskANN is useful in the following scenarios:
 - **Multi-Tenant Environments.** In multitenant scenarios, Sharded DiskANN allows for the isolation of data for different tenants, ensuring that each tenant's data is queried independently.
@@ -33,7 +33,7 @@ Sharded DiskANN is useful in the following scenarios:
 
 
 ## How to use Sharded DiskANN
-### Using DiskANN without sharding
+### Use DiskANN without sharding
 As the VectorIndexShard key is an optional parameter, omitting it creates one DiskANN index per physical partition as usual.
 
 ```json
@@ -42,7 +42,7 @@ As the VectorIndexShard key is an optional parameter, omitting it creates one Di
 ]
 ```
 
-### Using a vectorIndexShardKey
+### Use a vectorIndexShardKey
 Here, we can see an example of defining the shard key based on a tenantID property. This can be any property of the data item, even the partition key. The single string needs to be enclosed in an array. 
 
 ```json
@@ -55,7 +55,7 @@ Here, we can see an example of defining the shard key based on a tenantID proper
 ]
 ```
 
-### Writing a vector search query focused to a shard key
+### Write a vector search query focused to a shard key
 To focus a vector search query on the specific shard key value, simply filter the path to the value using a WHERE clause as in the following example:
 
 ```sql
