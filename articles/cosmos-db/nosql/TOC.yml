@@ -59,7 +59,12 @@
     - name: Why use for AI apps?
       href: ../gen-ai/why-cosmos-ai.md
     - name: Use vector search
-      href: vector-search.md
+      items:
+        - name: Basic vector indexing and search
+          href: vector-search.md
+        - name: Sharded DiskANN for focused search
+          href: ../gen-ai/sharded-diskann.md
+    
     - name: Enable full-text search
       href: ../gen-ai/full-text-search.md?context=/azure/cosmos-db/nosql/context/context
     - name: Implement hybrid search
