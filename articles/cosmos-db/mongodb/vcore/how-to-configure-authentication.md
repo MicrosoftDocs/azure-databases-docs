@@ -147,6 +147,14 @@ After authentication is successful, Microsoft Entra ID returns an access token f
 
 The TOKEN is a Base64 string. It encodes all the information about the authenticated user and is associated with the Azure Cosmos DB for MongoDB vCore service. The token is valid for at least 5 minutes with the maximum of 90 minutes. The **expiresOn** defines actual token expiration time.
 
+### Connection string for OIDC authentication using Microsoft Entra ID access token
+
+Use the following connection string to connect to an Azure Cosmos DB for MonogDB vCore cluster using OIDC authentication:
+
+```code
+mongodb+srv://<cluster-name>.mongocluster.cosmos.azure.com/?tls=true&authMechanism=MONGODB-OIDC&retrywrites=false&maxIdleTimeMS=120000
+```
+
 ## Preview limitations
 
 The following section describes functional limits in the Azure Cosmos DB for MongoDB vCore service when Microsoft Entra ID preview is used.
