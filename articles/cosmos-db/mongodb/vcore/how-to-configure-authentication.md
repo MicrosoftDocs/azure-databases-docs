@@ -132,7 +132,7 @@ The TOKEN is a Base64 string. It encodes all the information about the authentic
 
 Use the following connection string to connect to an Azure Cosmos DB for MonogDB vCore cluster using OIDC authentication:
 
-```connection string
+```mongodb
 mongodb+srv://<cluster-name>.mongocluster.cosmos.azure.com/?tls=true&authMechanism=MONGODB-OIDC&retrywrites=false&maxIdleTimeMS=120000
 ```
 
