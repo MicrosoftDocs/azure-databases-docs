@@ -459,11 +459,11 @@
       items:
       - name: Power management
         items:
-        - name: Start a server
+        - name: Start compute of a server
           href: flexible-server/how-to-start-server.md
-        - name: Stop a server
+        - name: Stop compute of a server
           href: flexible-server/how-to-stop-server.md
-        - name: Restart a server
+        - name: Restart PostgreSQL engine
           href: flexible-server/how-to-restart-server.md
       - name: Configure high availability
         href: flexible-server/how-to-configure-high-availability.md
