@@ -40,7 +40,7 @@ The global secondary index feature needs to be enabled for your Azure Cosmos DB 
 
 1. Navigate to the **Features** page. Then select **Global Secondary Index for NoSQL API (preview)** and **Enable**.
 
-:::image type="content" source="./media/how-to-configure-global-secondary-indexes/enable-gsi.png" alt-text="Screenshot of how to enable the Global Secondary Index feature in the Azure portal." :::
+    :::image type="content" source="./media/how-to-configure-global-secondary-indexes/enable-global-secondary-indexes.png" alt-text="Screenshot of how to enable the Global Secondary Index feature in the Azure portal." :::
 
 ### [Azure CLI](#tab/azure-cli)
 
@@ -78,8 +78,8 @@ Use the Azure CLI to enable the global secondary index feature either by using a
     }
     ```
 
-> [!NOTE]
-> The property name to enable global secondary indexes is `enableMaterializedViews`, which is the former feature name. Enabling materialized views will enable global secondary indexes. 
+    > [!NOTE]
+    > The property name to enable global secondary indexes is `enableMaterializedViews`, which is the former feature name. Enabling materialized views will enable global secondary indexes. 
 
 1. Get the identifier of the account and store it in a shell variable named `$accountId`.
 
@@ -147,8 +147,8 @@ After the global secondary index feature is enabled for your account, you'll see
     }
     ```
 
-> [!NOTE]
-> The service type is `materializedViewsBuilder`, which is the former feature name. Creating this resource will provision a global secondary index builder. 
+    > [!NOTE]
+    > The service type is `materializedViewsBuilder`, which is the former feature name. Creating this resource will provision a global secondary index builder. 
 
 1. Get the identifier of the account and store it in a shell variable named `$accountId`.
 
@@ -204,21 +204,21 @@ Global secondary indexes store a copy of data from the source container. Before 
 
 ### Create a global secondary index container
 
-Once the source container is created, you can create a global secondary index container using the Azure Portal or Azure CLI.
+Once the source container is created, you can create a global secondary index container using the Azure portal or Azure CLI.
 
 ### [Azure portal](#tab/azure-portal)
 
-1. Navigate to **Data Explorer** in your Azure Cosmos DB account. Select your source container, `gsi-src` in this example, and select **New Global Secondary Index** from the drop down.
+1. Navigate to **Data Explorer** in your Azure Cosmos DB account. Select your source container, `gsi-src` in this example, and select **New Global Secondary Index** from the drop-down.
 
-:::image type="content" source="./media/how-to-configure-global-secondary-indexes/create-gsi.png" alt-text="Screenshot of how to create a Global Secondary Index in the Data Explorer page of the Azure portal." :::
+    :::image type="content" source="./media/how-to-configure-global-secondary-indexes/create-global-secondary-indexes.png" alt-text="Screenshot of how to create a Global Secondary Index in the Data Explorer page of the Azure portal." :::
 
-1. The source container id will be populated for you. In the **Index container id** field, enter `gsi-target`.
+1. The source container ID will be populated for you. In the **Index container id** field, enter `gsi-target`.
 
 1. In the **Global secondary index definition** field, enter `SELECT c.customerId, c.emailAddress FROM c`.
 
 1. In the **Partition key** field, enter `/emailAddress`.
 
-:::image type="content" source="./media/how-to-configure-global-secondary-indexes/configure-gsi.png" alt-text="Screenshot of how to configure a Global Secondary Index in the Data Explorer page of the Azure portal." :::
+    :::image type="content" source="./media/how-to-configure-global-secondary-indexes/configure-global-secondary-indexes.png" alt-text="Screenshot of how to configure a Global Secondary Index in the Data Explorer page of the Azure portal." :::
 
 1. Configure any other container settings you'd like and select **OK** to create the global secondary index container.
 

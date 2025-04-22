@@ -97,7 +97,7 @@ For Azure Cosmos DB accounts with a single region, the global secondary index bu
 
 You can monitor the lag in building global secondary indexes and the health of the builder through Metrics in the Azure portal. To learn about these metrics, see [Supported metrics for Microsoft.DocumentDB/DatabaseAccounts](../monitor-reference.md#supported-metrics-for-microsoftdocumentdbdatabaseaccounts).
 
-:::image type="content" source="./media/global-secondary-indexes/global-secondary-indexes-metrics.png" alt-text="Screenshot of the Global Secondary Index Builder Average CPU Usage metric in the Azure portal." :::
+:::image type="content" source="./media/global-secondary-indexes/global-secondary-indexes-metrics.png" alt-text="Screenshot of the Global Secondary Index Builder Average CPU Usage metric in the Azure portal." lightbox="./media/global-secondary-indexes/global-secondary-indexes-metrics.png":::
 
 > [!NOTE]
 > The global secondary index metrics are prefixed with "MaterializedView", which is the former name of this feature. 
@@ -106,7 +106,7 @@ You can monitor the lag in building global secondary indexes and the health of t
 
 #### I want to understand the lag between my source container and index containers
 
-The **MaterializedViewCatchupGapInMinutes** metric shows the maximum difference in minutes between data in source containers and a global secondary index containers. To view the lag for an individual index container, select **Apply splitting** then **Split by** and select **MaterializedViewName**. A high value indicates the builder needs more compute to keep up with the volume of changes to source containers. The RUs provisioned on source and index containers can also affect the rate at which changes are propagated to the index. Check the **Normalized RU Consumption** metric to determine if the container would benefit from increasing the maximum RUs.
+The **MaterializedViewCatchupGapInMinutes** metric shows the maximum difference in minutes between data in source containers and global secondary index containers. To view the lag for an individual index container, select **Apply splitting** then **Split by** and select **MaterializedViewName**. A high value indicates the builder needs more compute to keep up with the volume of changes to source containers. The RUs provisioned on source and index containers can also affect the rate at which changes are propagated to the index. Check the **Normalized RU Consumption** metric to determine if the container would benefit from increasing the maximum RUs.
 
 #### I want to understand if my global secondary index builder has the right number of nodes
 
