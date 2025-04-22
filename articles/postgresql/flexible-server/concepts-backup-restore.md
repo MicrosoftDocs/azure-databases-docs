@@ -194,9 +194,6 @@ On-demand backups can be taken in addition to scheduled automatic backups. These
 - On-demand backup feature is currently not supported with the SSDv2 storage tier.
 - You can take a maximum of 7 on-demand backups per flexible server, which are retained based upon the backup retention window. 
 
-#### Known Issues
-
-We are aware of an existing bug that allows taking on-demand backups on Replicas, even though Point-in-Time Restore (PITR) is not supported in this context. This issue will be addressed to ensure that on-demand backups can only be performed on the Primary server.
 
 ## Long-term retention
 
