@@ -1547,7 +1547,7 @@
       },
       {
         "source_path_from_root": "/articles/mysql/flexible-server/whats-happening-to-mysql-single-server.md",
-        "redirect_url": "/azure/mysql/index",
+        "redirect_url": "/azure/mysql/flexible-server/whats-new",
         "redirect_document_id": false
       }
   ]
