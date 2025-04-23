@@ -10,7 +10,7 @@ ms.subservice: flexible-server
 ms.topic: overview
 ---
 
-# What's new in Azure Database for MySQL
+# What's new in Azure Database for MySQL?
 
 [What is Azure Database for MySQL](overview.md) Is an Azure Database service that provides more granular control and flexibility over database management functions and configuration settings. The service currently supports the community versions of MySQL 5.7 and 8.0.
 
