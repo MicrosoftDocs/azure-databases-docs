@@ -95,9 +95,7 @@ For Azure Cosmos DB accounts with a single region, the global secondary index bu
 
 ## Monitoring
 
-You can monitor the lag in building global secondary indexes and the health of the builder through Metrics in the Azure portal. To learn about these metrics, see [Supported metrics for Microsoft.DocumentDB/DatabaseAccounts](../monitor-reference.md#supported-metrics-for-microsoftdocumentdbdatabaseaccounts).
-
-:::image type="content" source="./media/global-secondary-indexes/global-secondary-indexes-metrics.png" alt-text="Screenshot of the Global Secondary Index Builder Average CPU Usage metric in the Azure portal." lightbox="./media/global-secondary-indexes/global-secondary-indexes-metrics.png":::
+You can monitor the lag in building global secondary indexes and the health of the builder through **Metrics** in the Azure portal. To learn about these metrics, see [Supported metrics for Microsoft.DocumentDB/DatabaseAccounts](../monitor-reference.md#supported-metrics-for-microsoftdocumentdbdatabaseaccounts).
 
 > [!NOTE]
 > The global secondary index metrics are prefixed with "MaterializedView", which is the former name of this feature. 
