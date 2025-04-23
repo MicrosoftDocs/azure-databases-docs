@@ -65,7 +65,7 @@ Azure Database for MySQL now supports MySQL 8.4 LTS version, bringing the latest
 
 ### MySQL 9.1 innovation version support - Public Preview
 
-Azure Database fr MySQL now supports MySQL 9.1 Innovation version, introduces experimental features, including JavaScript support for stored procedures and the new vector data type, designed for modern applications in machine learning and analytics. [Azure Database for MySQL version support policy](../concepts-version-policy.md)
+Azure Database for MySQL now supports MySQL 9.1 Innovation version, introduces experimental features, including JavaScript support for stored procedures and the new vector data type, designed for modern applications in machine learning and analytics. [Azure Database for MySQL version support policy](../concepts-version-policy.md)
 
 ## Feedback and support
 
