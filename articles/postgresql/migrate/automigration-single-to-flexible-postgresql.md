@@ -4,7 +4,7 @@ description: This tutorial describes how to configure notifications, review migr
 author: hariramt	
 ms.author: hariramt	
 ms.reviewer: shriramm, maghan	
-ms.date: 03/31/2025
+ms.date: 03/28/2025
 ms.service: azure-database-postgresql	
 ms.subservice: flexible-server	
 ms.topic: conceptual

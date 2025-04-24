@@ -3,7 +3,7 @@ title: Azure Database for PostgreSQL single server is now retired.
 description: Azure Database for PostgreSQL single server is now retired. As a result, the migration articles related to this service will be removed soon. It is essential to migrate to Azure Database for PostgreSQL flexible server to ensure continued service and support.    
 author: markingmyname
 ms.author: maghan
-ms.date: 03/31/2025
+ms.date: 03/28/2025
 ms.service: azure-database-postgresql
 ms.topic: include
 ms.custom: "Remove in June 2025"
