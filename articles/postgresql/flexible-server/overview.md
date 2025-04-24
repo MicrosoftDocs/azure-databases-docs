@@ -83,7 +83,7 @@ $$ New server deployments are temporarily blocked in these regions. Already prov
 
 (*) Certain regions are access-restricted to support specific customer scenarios, such as in-country/region disaster recovery. These regions are available only upon request by creating a new support request.
 
-> [!NOTE]  
+> [!NOTE]
 > If your application requires Zone redundant HA and is unavailable in your preferred Azure region, consider using other regions within the same geography where Zone redundant HA is available, such as US East for US East 2, Central US for North Central US, etc.
 
 ## Migration
@@ -105,8 +105,8 @@ Refer to Microsoft's current policy [here](../../postgresql/flexible-server/conc
 
 If you have any questions or suggestions about the Azure Database for PostgreSQL flexible server, send an email to the [Azure Database for PostgreSQL team](mailto:AskAzurePostgreSQL@microsoft.com).
 
-> [!NOTE]  
-> This email address isn't a technical support alias.
+> [!NOTE]
+> This email address is for general inquiries and suggestions only. It is not a technical support alias.
 
 In addition, consider the following points of contact as appropriate:
 
