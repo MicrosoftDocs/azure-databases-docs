@@ -20,17 +20,17 @@ appliesto:
 
 Half-precision vector indexing allows you to store and index vector embeddings using 16-bit floating-point numbers instead of the standard 32-bit floats. This optimization leads to substantial reductions in both memory usage and storage costs, making it more feasible to work with larger datasets and higher-dimensional vectors. Furthermore, by optimizing data density, it can contribute to improved query performance in many vector search scenarios.
 
-## Key Benefits:
+## Key Benefits
 
 * **Increased Dimensionality Support:** With half-precision, you can now index vectors with up to **4,000 dimensions**. 
 * **Reduced Storage Footprint:** Storing vectors in a 16-bit format significantly decreases the amount of storage required compared to full-precision vectors. This can lead to considerable cost savings, especially for large-scale vector databases.
 * **Configurable Performance vs. Precision:** To fine-tune your search results, we provide an **oversampling** parameter during query execution. This allows you to control the trade-off between retrieval speed and the potential impact of reduced precision.
 
-## Creating a Half-Precision Vector Index:
+## Creating a Half-Precision Vector Index
 
 When defining a vector index for your collection, you can enable half-precision compression by specifying the `"compression": "half"` option within the `cosmosSearchOptions`.
 
-### Index Specification Parameter:
+### Index Specification Parameter
 
 * `"compression": "half"`: Activates half-precision compression for the vector data in the index.
 
@@ -59,8 +59,8 @@ When querying a vector index that utilizes half-precision compression, you can u
 ## Search Specification Parameter
 
 `"oversampling": double`: A scaling factor that determines the number of candidate vectors to retrieve from the index before ranking them using the original, full-precision vectors.
-    - Minimum value: `1.0`
-    - Only applicable when `"compression": "half"` is used for the index.
+- Minimum value: `1.0`
+- Only applicable when `"compression": "half"` is used for the index.
 
 ```javascript
 db.your_vector_collection_name.aggregate([
