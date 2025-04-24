@@ -1,5 +1,5 @@
 ---
-title: Promote replica to standalone server
+title: Promote read replica to standalone server
 description: This article describes how to promote a read replica so that it becomes an independent standalone server.
 author: kabharati
 ms.author: kabharati
@@ -10,7 +10,7 @@ ms.subservice: flexible-server
 ms.topic: how-to
 ---
 
-# Promote replica to standalone server
+# Promote read replica to standalone server
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
@@ -67,7 +67,10 @@ az postgres flexible-server replica promote \
   --promote-mode Standalone \
   --promote-option Forced
 ```
+---
 
 ## Related content
 
 - [Read replicas](concepts-read-replicas.md).
+- [Switch over read replica to primary](how-to-switch-over-replica-to-primary.md).
+- [Delete a read replica](how-to-delete-read-replica.md).
