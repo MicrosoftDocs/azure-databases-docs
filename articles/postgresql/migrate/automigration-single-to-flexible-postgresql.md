@@ -163,9 +163,9 @@ To determine if your Single Server is selected for automigration, follow these s
 
 **A.** If you wish to opt out of the automigration, you can raise a support ticket for this purpose.	
 
-**Q. What post-migration steps should I follow if my Single server uses VNet rules?​**	
+**Q. What post-migration steps should I follow if my Single server uses virtual network rules rules?​**	
 
-**A.** Virtual network rules aren't supported on Flexible server. Refer to [this section](#handling-vnet-rules-in-flexible-server)	
+**A.** Virtual network rules aren't supported on Flexible server. Refer to [this section](#handling-virtual-network-rules-in-flexible-server)	
 
 **Q. Do I need to re-configure Long-term retention backups on Flexible server?​**	
 
@@ -192,5 +192,5 @@ To determine if your Single Server is selected for automigration, follow these s
 - [Manage an Azure Database for postgresql - Flexible Server using the Azure portal.](../flexible-server/how-to-manage-server-portal.md)	
   2 changes: One addition & 1 deletion2  
 articles/postgresql/migrate/partners-migration-postgresql.md
-- [Azure Database for PostgreSQL - Flexible Server](../flexible-server/overview-flexible-server.md)
+- [Azure Database for PostgreSQL - Flexible Server](../flexible-server/overview.md)
 - [Azure Database for PostgreSQL - Flexible Server pricing](https://azure.microsoft.com/pricing/details/postgresql/flexible-server/)   
