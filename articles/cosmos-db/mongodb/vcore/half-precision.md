@@ -7,7 +7,7 @@ ms.author: khelanmodi
 ms.service: azure-cosmos-db
 ms.subservice: mongodb-vcore
 ms.topic: concept-article
-ms.date: 12/03/2024
+ms.date: 24/04/2025
 ms.collection:
   - ce-skilling-ai-copilot
 appliesto:
