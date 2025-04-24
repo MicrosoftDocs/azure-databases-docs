@@ -258,3 +258,4 @@ Here, you need to replace `{subscriptionId}`, `{resourceGroupName}`, and `{sourc
 - [Create virtual endpoints](how-to-create-virtual-endpoints.md).
 - [Switch over read replica to primary](how-to-switch-over-replica-to-primary.md).
 - [Promote read replica to standalone server](how-to-promote-replica-to-standalone.md).
+- [Delete a read replica](how-to-delete-read-replica.md).
