@@ -40,7 +40,7 @@ Certain advanced features, such as Private Endpoints, can't be force-migrated au
 
 :::image type="content" source="media/automigration-private-end-point/automigration-flexible-server.png" alt-text="Diagram that shows automigrated Flexible Server." lightbox="media/automigration-private-end-point/automigration-flexible-server.png":::
 
-1. Delete the private endpoint associated with the single server deployment using [Azure CLI](https://learn.microsoft.com/cli/azure/postgres/server/private-endpoint-connection#az-postgres-server-private-endpoint-connection-delete) or by following steps in Azure portal.
+1. Delete the private endpoint associated with the single server deployment using [Azure CLI](/cli/azure/postgres/server/private-endpoint-connection#az-postgres-server-private-endpoint-connection-delete) or by following steps in Azure portal.
 
 :::image type="content" source="media/automigration-private-end-point/single-server-private-endpoint-setup.png" alt-text="Diagram that shows private end point on single server deployment." lightbox="media/automigration-private-end-point/single-server-private-endpoint-setup.png":::
 
