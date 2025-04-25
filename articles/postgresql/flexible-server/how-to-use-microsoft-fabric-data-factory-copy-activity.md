@@ -94,9 +94,8 @@ There are three acceptable ways to use the **Key Columns**:
 
    :::image type="content" source="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/empty-key-columns.png" alt-text="Screenshot that shows an example with no key columns selected." lightbox="./media/how-to-use-microsoft-fabric-data-factory-copy-activity/empty-key-columns.png":::
 
-
 ## Related content
 
-- [Learn More about Copy Activity in Microsoft Fabric Data Factory Data Pipeline](/fabric/data-factory/connector-azure-database-for-postgresql-copy-activity).
-- [Learn More about Azure Database for PostgreSQL Data Pipeline Connector in Microsoft Fabric Data Factory](/fabric/data-factory/connector-azure-database-for-postgresql-overview).
-- [Learn More about Script Activity in Microsoft Fabric Data Factory Data Pipeline to work with Azure Database for PostgreSQL flexible server](how-to-use-microsoft-fabric-data-factory-script-activity.md).
+- [Learn more about Copy Activity in Microsoft Fabric Data Factory Data Pipeline](/fabric/data-factory/connector-azure-database-for-postgresql-copy-activity).
+- [Learn more about Azure Database for PostgreSQL Data Pipeline Connector in Microsoft Fabric Data Factory](/fabric/data-factory/connector-azure-database-for-postgresql-overview).
+- [Learn more about Script Activity in Microsoft Fabric Data Factory Data Pipeline to work with Azure Database for PostgreSQL flexible server](how-to-use-microsoft-fabric-data-factory-script-activity.md).

@@ -429,15 +429,8 @@ For activity output logging, expand the **Advanced** section and check **Enable 
 }
 ```
 
-
 ## Related content
 
-- [How to use Script Activity in Microsoft Fabric Data Factory Data Pipeline](how-to-use-microsoft-fabric-data-factory-script-activity.md).
-
-
-- [Learn More about Script Activity for Microsoft Fabric Data Factory](/fabric/data-factory/script-activity)
-- [Learn More about Azure Database for PostgreSQL Data Pipeline Connector in Microsoft Fabric Data Factory](/fabric/data-factory/connector-azure-database-for-postgresql-overview).
-- [Learn More about Copy activity in Microsoft Fabric Data Factory Data Pipeline to work with Azure Database for PostgreSQL flexible server](how-to-use-microsoft-fabric-data-factory-copy-activity.md).
-
-
-https://github.com/MicrosoftDocs/fabric-docs/blob/main/docs/data-factory/connector-azure-database-for-postgresql-overview.md
+- [Learn more about Script activity in Microsoft Fabric Data Factory](/fabric/data-factory/script-activity).
+- [Learn more about Azure Database for PostgreSQL Data Pipeline Connector in Microsoft Fabric Data Factory](/fabric/data-factory/connector-azure-database-for-postgresql-overview).
+- [Learn more about Copy activity in Microsoft Fabric Data Factory Data Pipeline to work with Azure Database for PostgreSQL flexible server](how-to-use-microsoft-fabric-data-factory-copy-activity.md).
