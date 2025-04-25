@@ -1,10 +1,10 @@
 ---
 title: Using script activity in Fabric Data Factory
 description: Guide on using script activity in the Azure Database for PostgreSQL connector in Fabric Data Factory
-author: MitchellGale
-ms.author: v-mgale
-ms.reviewer: 
-ms.date: 03/27/2025
+author: KazimMir
+ms.author: v-kmir
+ms.reviewer: danyal.bukhari
+ms.date: 04/25/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: how-to

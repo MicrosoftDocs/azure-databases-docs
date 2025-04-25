@@ -4,7 +4,7 @@ description: Guide to use Copy Activity in Microsoft Fabric Data Factory for Azu
 author: KazimMir
 ms.author: v-kmir
 ms.reviewer: danyal.bukhari
-ms.date: 03/27/2025
+ms.date: 04/25/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: how-to
