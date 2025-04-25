@@ -19,7 +19,7 @@ appliesto:
 
 [!INCLUDE[Developer Quickstart selector](includes/quickstart-dev-selector.md)]
 
-In this quickstart, you deploy a basic Azure Cosmos DB for MongoDB application using Python. Azure Cosmos DB for MongoDB is a schemaless data store allowing applications to store unstructured documents in the cloud with MongoDB libraries. You learn how to create documents and perform basic tasks within your Azure Cosmos DB resource using Python.
+In this quickstart, you deploy a basic Azure Cosmos DB for MongoDB application using .NET. Azure Cosmos DB for MongoDB is a schemaless data store allowing applications to store unstructured documents in the cloud with MongoDB libraries. You learn how to create documents and perform basic tasks within your Azure Cosmos DB resource using .NET.
 
 [Library source code](https://github.com/mongodb/mongo-csharp-driver) | [Package (NuGet)](https://www.nuget.org/packages/MongoDB.Driver) | [Azure Developer CLI](/azure/developer/azure-developer-cli/overview)
 
@@ -46,16 +46,10 @@ Use the Azure Developer CLI (`azd`) to create an Azure Cosmos DB for Table accou
 1. Use `azd init` to initialize the project.
 
     ```azurecli
-    azd init --template cosmos-db-mongodb-dotnet-quickstart
+    azd init --template documentdb-dotnet-quickstart
     ```
 
 1. During initialization, configure a unique environment name.
-
-1. Set the `MONGODB_DEPLOYMENT_TYPE` Azure Developer CLI variable to `vcore`.
-
-    ```azurecli
-    azd env set "MONGODB_DEPLOYMENT_TYPE" "vcore"
-    ```
 
 1. Deploy the Azure Cosmos DB account using `azd up`. The Bicep templates also deploy a sample web application.
 
@@ -73,16 +67,16 @@ Use the Azure Developer CLI (`azd`) to create an Azure Cosmos DB for Table accou
       (✓) Done: Deploying service web
     - Endpoint: <https://[container-app-sub-domain].azurecontainerapps.io>
     
-    SUCCESS: Your application was provisioned and deployed to Azure in 5 minutes 0 seconds.
+    SUCCESS: Your application was provisioned and deployed to Azure in 10 minutes 0 seconds.
     ```
 
 1. Use the URL in the console to navigate to your web application in the browser. Observe the output of the running app.
 
-:::image type="content" source="media/quickstart-dotnet/running-application.png" alt-text="Screenshot of the running web application.":::
+:::image type="content" source="media/quickstart-dotnet/running-application.png" alt-text="Screenshot of the running sample dashboard web application.":::
 
 ### Install the client library
 
-The client library is available through NuGet, as the `MongoDB.Driver` package.
+The client library is available through NuGet, as the `MongoDB.Driver` package. For Entra authentication, you will use the `Azure.Identity` package
 
 1. Open a terminal and navigate to the `/src/web` folder.
 
@@ -96,11 +90,14 @@ The client library is available through NuGet, as the `MongoDB.Driver` package.
     dotnet add package MongoDB.Driver
     ```
 
-1. Open and review the **src/web/Microsoft.Samples.Cosmos.MongoDB.Quickstart.Web.csproj** file to validate that the `MongoDB.Driver` entry exists.
+1. Open and review the **src/api/Microsoft.Learn.AzureCosmosDBMongoDBQuickstart.Api.csproj** file to validate that the `MongoDB.Driver` entry exists.
 
 ### Import libraries
 
-Import the `MongoDB.Driver` namespace into your application code.
+Import the following namespaces into your application code:
+
+- `Azure.Identity`
+- `MongoDB.Driver`
 
 ```csharp
 using MongoDB.Driver;
@@ -110,7 +107,7 @@ using MongoDB.Driver;
 
 | Name | Description |
 | --- | --- |
-| [`MongoClient`](https://www.mongodb.com/docs/drivers/csharp/current/quick-start/) | Type used to connect to MongoDB. |
+| `MongoClient` | Type used to connect to MongoDB. |
 | `Database` | Represents a database in the account. |
 | `Collection` | Represents a collection within a database in the account. |
 
@@ -127,12 +124,22 @@ The sample code in the template uses a database named `cosmicworks` and collecti
 
 ### Authenticate the client
 
-This sample creates a new instance of the `MongoClient` class.
+TODO
 
 ```csharp
-string connectionString = "<azure-cosmos-db-for-mongodb-connection-string>";
 
-MongoClient client = new(connectionString);
+```
+
+TODO
+
+```csharp
+
+```
+
+TODO
+
+```csharp
+
 ```
 
 ### Get a database
@@ -208,6 +215,14 @@ foreach (Product document in await documents.ToListAsync())
 {
     // Do something with each item
 }
+```
+
+### Delete a document
+
+TODO
+
+```csharp
+
 ```
 
 ### Explore your data
