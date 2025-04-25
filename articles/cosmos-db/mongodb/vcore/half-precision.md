@@ -22,9 +22,9 @@ Half-precision vector indexing allows you to store and index vector embeddings u
 
 ## Key Benefits
 
-* **Increased Dimensionality Support:** With half-precision, you can now index vectors with up to **4,000 dimensions**. 
-* **Reduced Storage Footprint:** Storing vectors in a 16-bit format significantly decreases the amount of storage required compared to full-precision vectors. This can lead to considerable cost savings, especially for large-scale vector databases.
-* **Configurable Performance vs. Precision:** To fine-tune your search results, we provide an **oversampling** parameter during query execution. This allows you to control the trade-off between retrieval speed and the potential impact of reduced precision.
+- **Increased Dimensionality Support:** With half-precision, you can now index vectors with up to **4,000 dimensions**. 
+- **Reduced Storage Footprint:** Storing vectors in a 16-bit format significantly decreases the amount of storage required compared to full-precision vectors. This can lead to considerable cost savings, especially for large-scale vector databases.
+- **Configurable Performance vs. Precision:** To fine-tune your search results, we provide an **oversampling** parameter during query execution. This allows you to control the trade-off between retrieval speed and the potential impact of reduced precision.
 
 ## Creating a Half-Precision Vector Index
 
@@ -32,15 +32,15 @@ When defining a [vector index](./vector-search.md#create-a-vector-index) for you
 
 ```javascript
 db.runCommand({
-  "createIndexes": "your_vector_collection_name",
+  "createIndexes": "<vector_collection_name>",
   "indexes": [
     {
-      "key": { "your_vector_field_name": "cosmosSearch" },
-      "name": "your_index_name",
+      "key": { "<vector_field_name>": "cosmosSearch" },
+      "name": "<index_name>",
       "cosmosSearchOptions": {
         "kind": "vector-hnsw",
-        "similarity": "L2",
-        "dimensions": your_vector_dimension_count,
+        "similarity": "cos",
+        "dimensions": integer_value, // max 4000
         "compression": "half"
       }
     }
@@ -57,15 +57,14 @@ The `oversampling` factor, allows you to retrieve more potential nearest neighbo
 For instance, if you set `k` to 10 and `oversampling` to 1.5, the system will fetch 15 candidate vectors from the half-precision index and then rank the top 10 based on their full-precision values.
 
 ```javascript
-db.your_vector_collection_name.aggregate([
+db.collection.aggregate([
   {
     "$search": {
       "cosmosSearch": {
-        "vector": your_query_vector,
-        "path": "your_vector_field_name",
-        "k": number_of_results_to_return,
-        "efSearch": your_efSearch_value,
-        "oversampling": <double>
+        "vector": query_vector,
+        "path": path_to_property,
+        "k":  num_results_to_return,
+        "oversampling": double_value
       }
     }
   },
