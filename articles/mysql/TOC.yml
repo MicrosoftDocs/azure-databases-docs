@@ -3,7 +3,7 @@
 - name: Overview
   expanded: true
   items:
-  - name: What is Azure Database for MySQL - Flexible Server?
+  - name: What is Azure Database for MySQL?
     href: flexible-server/overview.md
   - name: Select the right deployment type
     href: select-right-deployment-type.md
@@ -13,9 +13,7 @@
     href: flexible-server/concept-reserved-pricing.md
   - name: Version support policy
     href: concepts-version-policy.md
-  - name: What happened to Single Server?
-    href: migrate/whats-happening-to-mysql-single-server.md
-- name: Azure Database for MySQL - Flexible Server
+- name: Azure Database for MySQL
   items:
   - name: Overview
     expanded: true
