@@ -1,5 +1,5 @@
 ---
-title: Develop a console app
+title: Authenticate to a console app
 titleSuffix: Azure Cosmos DB for MongoDB vCore
 description: Connect to an Azure Cosmos DB for MongoDB (vCore) cluster by using a console application in your preferred developer language.
 author: seesharprun
@@ -16,7 +16,7 @@ appliesto:
 # Customer Intent: As a database owner, I want to use Mongo Shell to connect to and query my database and collections.
 ---
 
-# Develop a console app to connect to Azure Cosmos DB for MongoDB vCore
+# Connect to Azure Cosmos DB for MongoDB vCore with Microsoft Entra authentication
 
 In this guide, you build a console application to connect to an existing Azure Cosmos DB for MongoDB vCore cluster. This guide covers the required steps to configure the cluster for Microsoft Entra authentication and then to connect to the same cluster using the identity that you're currently signed-in with.
 
