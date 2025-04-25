@@ -35,16 +35,24 @@ After authenticating, you can use this library to interact with Azure Cosmos DB 
 ## Prerequisites
 
 - An existing Azure Cosmos DB for MongoDB (vCore) cluster.
+
 - The latest version of the [Azure CLI](/cli/azure) in [Azure Cloud Shell](/azure/cloud-shell).
   - If you prefer to run CLI reference commands locally, sign in to the Azure CLI by using the [`az login`](/cli/azure/reference-index#az-login) command.
+
 :::zone pivot="programming-language-csharp"
-- [.NET](/dotnet).
+
+- Latest version of [.NET](/dotnet).
+
 :::zone-end
 :::zone pivot="programming-language-ts"
-- Latest version of [TypeScript](https://www.typescriptlang.org)
+
+- Latest version of [TypeScript](https://www.typescriptlang.org).
+
 :::zone-end
 :::zone pivot="programming-language-python"
-- Latest version of [Python](https://www.python.org)
+
+- Latest version of [Python](https://www.python.org).
+
 :::zone-end
 
 ## Grant your identity access
@@ -496,8 +504,11 @@ Finally, use the official `MongoDB.Driver` library to perform common tasks with 
 ## Related content
 
 - [Microsoft Entra authentication overview](entra-authentication.md)
+
 :::zone pivot="programming-language-csharp"
+
 - [.NET web application template](quickstart-dotnet.md)
+
 :::zone-end
 :::zone pivot="programming-language-ts"
 :::zone-end
